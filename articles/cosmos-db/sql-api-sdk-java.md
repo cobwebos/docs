@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444848"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -43,16 +43,17 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name245245"></a><a name="2.4.5"/>2.4。5
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
 * 如果用户提供了 pkRangeId，则避免重试无效分区键范围错误。
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4。4
 * 优化分区键范围缓存刷新。
+* 修复了以下情况： SDK 不会从服务器进行娱乐分区拆分提示，并导致客户端路由缓存刷新不正确。
 
-### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2 sections
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
 * 优化的集合缓存刷新。
 
-### <a name="a-name241241"></a><a name="2.4.1"/>2.4。1
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 * 添加了支持，以检索来自请求诊断字符串的内部异常消息。
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
@@ -298,7 +299,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459168"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
@@ -205,7 +205,7 @@ Azure 提供了以下加密类型来保护数据：
 
 -   [传输级别加密](../../storage/common/storage-security-guide.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--   [线路加密](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
+-   [线路加密](../../storage/common/storage-security-guide.md)，例如 Azure 文件共享的 SMB 3.0 加密。
 
 -   [客户端加密](../../storage/common/storage-security-guide.md)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 

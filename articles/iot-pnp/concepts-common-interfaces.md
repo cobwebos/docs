@@ -3,16 +3,16 @@ title: 常见接口-IoT 即插即用预览版 |Microsoft Docs
 description: 适用于 IoT 即插即用开发人员的常见界面的说明
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935326"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531405"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 即插即用预览通用接口
 
@@ -20,7 +20,7 @@ ms.locfileid: "70935326"
 
 ## <a name="summary-of-common-interfaces"></a>公共接口摘要
 
-| 姓名 | id | 描述 | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
+| 名称 | ID | Description | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | 模型信息 | urn： azureiot： ModelDiscovery： ModelInformation：1 | 用于设备声明功能模型 ID 和接口。 所有 IoT 即插即用设备都是必需的。 | 是 | 否 |
 | 数字克隆客户端 SDK 信息 | urn： azureiot：客户端： SDKInformation：1 | 用于将设备连接到 Azure 的客户端 SDK。 [认证](tutorial-build-device-certification.md)所必需 | 是 | 否 |
@@ -29,7 +29,7 @@ ms.locfileid: "70935326"
 | 数字输出 | urn： azureiot： ModelDiscovery： DigitalTwin：1 | 供解决方案开发人员检索数字克隆的功能模型 ID 和接口 Id。 IoT 即插即用设备不声明或实现此接口。 | 否 | 否 |
 
 - 由 Azure IoT SDK 实现-Azure IoT SDK 是否实现了在接口中声明的功能。 使用 Azure IoT SDK 的 IoT 即插即用设备无需实现此接口。
-- 必须在功能模型中声明-如果是 "yes"，则必须在此 IoT 即插即用`"implements":`设备的设备功能模型的部分中声明此接口。
+- 必须在功能模型中声明-如果是 "yes"，则必须在此 IoT 即插即用设备的设备功能模型的 `"implements":` 部分中声明此接口。
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>从公共存储库检索接口定义
 
@@ -49,7 +49,7 @@ az iot pnp capability-model show --model {ModelID}
 
 1. 按 **Ctrl+Shift+P** 打开命令面板。
 
-1. 输入**即插即用**，然后选择**IoT 即插即用：** 打开模型存储库”命令。 选择 "**公共存储库**"。 公共模型存储库将在 VS Code 中打开。
+1. 输入**即插即用**，然后选择 " **IoT 即插即用：打开模型存储库**" 命令。 选择 "**公共存储库**"。 公共模型存储库将在 VS Code 中打开。
 
 1. 在 "公共模型存储库" 中，在搜索字段中输入接口名称。
 

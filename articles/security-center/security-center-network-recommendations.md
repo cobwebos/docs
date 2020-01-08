@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997133"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552910"
 ---
 # <a name="protect-your-network-resources"></a>保护网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
 
-本文介绍 Azure 安全中心的 "资源安全性" 部分的 "**网络**" 页，以及你将在其中看到的一些建议。
+本文介绍安全中心的 "资源安全性" 部分的 "**网络**" 页。
 
-有关网络建议的完整列表，请参阅[网络建议](recommendations-network.md)。
+有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-network)。
 
 本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议中心围绕下一代防火墙、网络安全组、JIT VM 访问、过度许可的入站流量规则等。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
 
@@ -40,7 +40,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 - 网络安全建议。
 - 旧版“网络”边栏选项卡（以前的网络边栏选项卡） 
  
-![网络窗格](./media/security-center-network-recommendations/networking-pane.png)
+[![网络 "窗格](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>网络映射
 交互式网络映射提供了带有安全覆盖的图形视图，提供了强化网络资源的建议和见解。 你可以通过映射查看 Azure 工作负载的拓扑、虚拟机和子网之间的连接、从映射向下钻取特定资源的功能以及这些资源的建议。
@@ -59,11 +59,11 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 - 面向 Internet 的资源
 - 该映射针对在 Azure 中选择的订阅进行了优化。 如果修改了选择，则会根据新设置重新计算并重新优化映射。  
 
-![拓扑图](./media/security-center-network-recommendations/network-map-info.png)
+[![网络拓扑图](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>了解网络映射
 
-网络映射可以在“拓扑”视图和“流量”视图中显示 Azure 资源。
+网络映射可以在“拓扑”视图和“流量”视图中显示 Azure 资源。 
 
 ### <a name="the-topology-view"></a>拓扑视图
 
@@ -111,7 +111,8 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 此数据基于对网络安全组的分析以及分析多个规则以了解其交叉和交互的高级机器学习算法。 
 
-![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)
+[![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+
 
 ## 旧网络 <a name ="legacy-networking"></a>
 
@@ -119,7 +120,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 要访问此信息，请在“网络”边栏选项卡中单击“查看旧网络”。 
 
-![旧网络](./media/security-center-network-recommendations/legacy-networking.png)
+[![旧版网络](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>面向 Internet 的终结点部分
 在“面向 Internet 的终结点”部分中，可以查看当前配置了面向 Internet 的终结点的虚拟机及其状态。
@@ -135,7 +136,8 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 第三层级显示虚拟机，与前面的描述类似。 您可以单击任何资源来了解详细信息或应用所需的安全控制或配置。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
+
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
 
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)

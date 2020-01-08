@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447714"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -28,10 +28,10 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名称|位置|目的|
+|名称|位置|用途|
 |--|--|--|
-|订阅密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
-|终结点密钥|[QnA Maker 门户](http://www.qnamaker.ai)|这些密钥用于访问已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
+|订阅密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用于访问[QnA Maker 管理服务 api](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些密钥用于访问已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
 
 ## <a name="create-a-new-qna-maker-service"></a>新建 QnA Maker 服务
 
@@ -63,7 +63,7 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
     * 选择是否要启用**Application Insights**。 如果启用了 **Application Insights**，则 QnA Maker 会收集有关流量、聊天日志和错误的遥测数据。
     * 选择将在其中部署 Application Insights 资源的**App insights 位置**。
-    * 为了节省成本，可以[共享](#share-existing-services-with-qna-maker)某些但不是所有为 QnA Maker 创建的 Azure 资源。 
+    * 为了节省成本，可以[共享](#share-existing-services-with-qna-maker)为 QnA Maker 创建的某些 Azure 资源，但不是所有。
 
 1. 验证所有字段后，选择 "**创建**"。 此过程可能需要几分钟才能完成。
 
@@ -159,7 +159,7 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
@@ -187,7 +187,7 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamaker-service-azure.md)时部署的 Azure App Service 实例的一部分。 对运行时的更新定期进行。 2019年4月版（版本 5 +）之后，QnA Maker 应用服务实例处于自动更新模式。 此更新旨在在升级过程中处理零停机时间。
 
-你可以在 https://www.qnamaker.ai/UserSettings上检查当前版本。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
+你可以在 https://www.qnamaker.ai/UserSettings 上检查当前版本。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
 
 1. 在[Azure 门户](https://portal.azure.com)中转到你的 QnAMaker 服务（资源组）。
 

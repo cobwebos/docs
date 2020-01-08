@@ -1,6 +1,6 @@
 ---
-title: 错误和异常处理
-description: 了解 Azure 逻辑应用中的错误和异常处理模式
+title: 处理错误和异常
+description: 了解如何处理在使用 Azure 逻辑应用创建的自动任务和工作流中发生的错误和异常
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453395"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -27,9 +27,9 @@ ms.locfileid: "74792088"
 
 重试策略类型如下所示： 
 
-| Type | 描述 | 
+| 类型 | Description | 
 |------|-------------| 
-| **默认** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
+| **Default** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 | 
 | 无  | 不重新发送请求。 | 
@@ -69,19 +69,19 @@ ms.locfileid: "74792088"
 
 *必需*
 
-| Value | Type | 描述 |
+| 值 | 类型 | Description |
 |-------|------|-------------|
-| <*retry-policy-type*> | 字符串 | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
-| <*retry-interval*> | 字符串 | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
+| <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
+| <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
 | <*retry-attempts*> | Integer | 重试尝试次数，它必须介于 1 和 90 之间 | 
 ||||
 
-可选
+*可选*
 
-| Value | Type | 描述 |
+| 值 | 类型 | Description |
 |-------|------|-------------|
-| <*minimum-interval*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
-| <*maximum-interval*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
+| <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
+| <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
 |||| 
 
 下面详细介绍不同的策略类型。
@@ -112,7 +112,7 @@ ms.locfileid: "74792088"
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>无
 
 要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
 

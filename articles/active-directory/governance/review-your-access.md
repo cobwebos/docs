@@ -1,6 +1,6 @@
 ---
-title: 在访问评审中评审自己对组或应用程序的访问权限 - Azure Active Directory | Microsoft Docs
-description: 了解如何在 Azure Active Directory 访问评审中评审自己对组或应用程序的访问权限。
+title: 在访问评审中查看对组 & 应用的访问权限-Azure AD
+description: 了解如何在 Azure Active Directory 访问评审中查看自己对组或应用程序的访问权限。
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -15,70 +15,70 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422405"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审自己对组或应用程序的访问权限
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看 Azure AD 访问评审中的组或应用程序的访问权限
 
-Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功能，简化了企业对 Azure AD 及其他 Microsoft Online Services 中的组或应用程序访问权限的管理方式。
+Azure Active Directory （Azure AD）简化了企业如何使用一项名为 Azure AD 访问评审的功能来管理对 Azure AD 和其他 Microsoft Online Services 中的组或应用程序的访问。
 
-本文介绍如何评审自己对组或应用程序的访问权限。
+本文介绍如何查看自己对组或应用程序的访问权限。
 
 ## <a name="open-the-access-review"></a>打开访问评审
 
-执行访问评审的第一步是找到并打开访问评审。
+执行访问评审的第一步是查找并打开访问评审。
 
-1. 找到要求你执行访问评审的 Microsoft 电子邮件。 以下示例电子邮件要求评审你对某个组的访问权限。
+1. 查找 Microsoft 提供的一封电子邮件，要求您查看访问权限。 下面是一个示例电子邮件，用于查看对组的访问权限。
 
-    ![要求评审你对某个组的访问权限的 Microsoft 示例电子邮件](./media/review-your-access/access-review-email.png)
+    ![Microsoft 的电子邮件示例，用于查看对组的访问权限](./media/review-your-access/access-review-email.png)
 
-1. 单击“评审访问权限”链接，打开访问评审。
+1. 单击 "**查看访问权限**" 链接以打开访问评审。
 
-如果未收到该电子邮件，可遵循以下步骤找到待处理的访问评审。
+如果没有电子邮件，可以通过执行以下步骤来查找待定的访问评审。
 
-1. 登录到“我的应用”门户 ([https://myapps.microsoft.com](https://myapps.microsoft.com))。
+1. 在[https://myapps.microsoft.com](https://myapps.microsoft.com)登录到 MyApps 门户。
 
-    ![“我的应用”门户，其中列出了你有权访问的应用](./media/review-your-access/myapps-access-panel.png)
+    ![MyApps 门户列出你有权访问的应用](./media/review-your-access/myapps-access-panel.png)
 
 1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
-1. 在页面右侧，单击“访问评审”磁贴来查看待处理的访问评审。
+1. 在页面右侧，单击 "**访问评审**" 磁贴以查看待定访问评审的列表。
 
     如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-    ![应用和组的待处理访问评审列表](./media/review-your-access/access-reviews-list.png)
+    ![应用和组的挂起访问审阅列表](./media/review-your-access/access-reviews-list.png)
 
-1. 单击你要执行的访问评审对应的“开始评审”链接。
+1. 单击要执行的访问评审的 "**开始审阅**" 链接。
 
 ## <a name="perform-the-access-review"></a>执行访问评审
 
-打开访问评审以后，即可看到自己的访问权限。
+打开访问评审后，可以看到您的访问权限。
 
-1. 评审你的访问权限，决定是否仍需要访问权限。
+1. 查看访问权限，并决定是否仍需要访问权限。
 
-    如果请求是评审他人的访问权限，则页面内容会有所不同。 有关详细信息，请参阅[评审对组或应用程序的访问权限](perform-access-review.md)。
+    如果请求要查看其他人的访问权限，则页面看起来会有所不同。 有关详细信息，请参阅[查看对组或应用程序的访问权限](perform-access-review.md)。
 
-    ![打开访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review.png)
+    ![打开访问评审询问你是否仍需要访问组](./media/review-your-access/perform-access-review.png)
 
-1. 单击“是”保留访问权限，或者单击“否”删除访问权限。
+1. 单击 **"是"** 以保留访问权限，或者单击 "**否**" 以删除访问权限。
 
-1. 如果单击“是”，你可能需要在“原因”框中指出原因。
+1. 如果单击 **"是**"，则可能需要在 "**原因**" 框中指定理由。
 
-    ![完成访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review-submit.png)
+    ![完成访问评审询问你是否仍需要访问组](./media/review-your-access/perform-access-review-submit.png)
 
 1. 单击“提交”。
 
-    此时会提交你所做的选择，并会将你返回到“我的应用”门户。
+    你的选择已提交并返回到 MyApps 门户。
 
-    若要更改响应，请重新打开访问评审页面并更新响应。 在访问评审结束之前，随时可以更改响应。
+    如果要更改您的响应，请重新打开 "访问评审" 页并更新您的响应。 你可以随时更改你的响应，直到访问评审结束。
 
     > [!NOTE]
-    > 如果你指出不再需要访问权限，系统不会立即将你删除。 系统会在评审结束时或者在管理员停止评审时将你删除。
+    > 如果你指出不再需要访问，则不会立即删除。 当评审结束或管理员停止评审时，将删除。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [完成组或应用程序的访问评审](complete-access-review.md)
+- [完成对组或应用程序的访问评审](complete-access-review.md)

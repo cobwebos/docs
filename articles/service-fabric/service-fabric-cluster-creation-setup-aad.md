@@ -1,25 +1,14 @@
 ---
-title: 为 Service Fabric 客户端身份验证设置 Azure Active Directory | Microsoft Docs
+title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901508"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614683"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -31,6 +20,11 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 > [!NOTE]
 > 在 Linux 上，必须先完成以下步骤，然后才能创建群集。 在 Windows 上，你还可以选择为[现有群集配置 Azure AD 身份验证](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)。
+
+> [!NOTE]
+> 这是一个[已知问题](https://github.com/microsoft/service-fabric/issues/399)，即无法在 Azure 门户中查看 Linux 上启用 AAD 的群集上的应用程序和节点。
+
+
 
 ## <a name="prerequisites"></a>必备组件
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。

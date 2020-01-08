@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0fbdba5c3fbfdfab5267407ccec9c611d74a5e02
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463982"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610635"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
 
 
+当你连接用于发送 CEF 消息的外部解决方案时，使用 Azure Sentinel 连接三个步骤：
 
-本文介绍如何将 Azure Sentinel 与在 Syslog 之上发送通用事件格式（CEF）消息的外部安全解决方案连接起来。 
+步骤1：[通过部署代理连接 CEF](connect-cef-agent.md)步骤2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)步骤3：[验证连接性](connect-cef-verify.md)
+
+本文介绍连接的工作原理，提供系统必备组件，并提供有关在 Syslog 上发送常见事件格式（CEF）消息的安全解决方案上部署代理的步骤。 
 
 > [!NOTE] 
 > 数据存储在运行 Azure Sentinel 的工作区的地理位置。
 
-## <a name="how-it-works"></a>工作原理
-
-需要在专用 Linux 计算机（VM 或本地）上部署代理，以支持设备与 Azure Sentinel 之间的通信。 下图说明了 Azure 中 Linux VM 的情况下的设置。
+若要进行此连接，需要在专用 Linux 计算机（VM 或本地）上部署代理，以支持设备与 Azure Sentinel 之间的通信。 下图说明了 Azure 中 Linux VM 的情况下的设置。
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -45,10 +46,10 @@ ms.locfileid: "74463982"
 
 请确保根据组织的安全策略配置计算机的安全性。 例如，你可以将网络配置为与你的企业网络安全策略一致，并更改守护程序中的端口和协议以符合你的要求。 你可以使用以下说明来改善计算机安全配置：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、[网络安全的最佳做法](../security/fundamentals/network-best-practices.md)。
 
-若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为在 TLS 中进行通信：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[使用 tls 加密日志消息–syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
+若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为在 TLS 中进行通信：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用[tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 请确保用作代理的 Linux 计算机运行的是以下操作系统之一：
 
 - 64 位
@@ -79,48 +80,7 @@ ms.locfileid: "74463982"
     - 您的计算机上必须具有提升的权限（sudo）。 
 - 软件要求
     - 请确保在计算机上运行 Python
-## <a name="step-1-deploy-the-agent"></a>步骤1：部署代理
 
-在此步骤中，需要选择将充当 Azure Sentinel 和安全解决方案之间代理的 Linux 计算机。 你将需要在代理计算机上运行脚本：
-- 安装 Log Analytics 代理，并根据需要对其进行配置以侦听 Syslog 消息。
-- 将 Syslog 守护程序配置为使用 TCP 端口514侦听 Syslog 消息，然后使用 TCP 端口25226将 CEF 消息仅转发到 Log Analytics 代理。
-- 设置 Syslog 代理以收集数据并将其安全地发送到 Azure Sentinel，并对其进行分析和设置。
- 
- 
-1. 在 Azure Sentinel 门户中，单击 "**数据连接器**"，然后选择 "**通用事件格式（CEF）** "，然后单击 "**连接器" 页**。 
-
-1. 在 "**安装并配置 Syslog 代理**" 下，选择你的计算机类型（Azure、其他云或本地）。 
-   > [!NOTE]
-   > 因为下一步中的脚本会安装 Log Analytics 代理，并将计算机连接到 Azure Sentinel 工作区，请确保此计算机未连接到任何其他工作区。
-1. 您的计算机上必须具有提升的权限（sudo）。 请确保使用以下命令在计算机上具有 Python： `python –version`
-
-1. 在代理计算机上运行以下脚本。
-   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. 脚本运行时，请检查以确保没有收到任何错误或警告消息。
-
-
-## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤2：配置安全解决方案以发送 CEF 消息
-
-1. 在设备上，你需要设置这些值，以便设备根据 Log Analytics 代理将必要的格式的必要日志发送到 Azure Sentinel Syslog 代理。 你可以在设备中修改这些参数，只要你还在 Azure Sentinel 代理上的 Syslog 后台程序中修改它们即可。
-    - 协议 = TCP
-    - 端口 = 514
-    - Format = CEF
-    - IP 地址-请确保将 CEF 消息发送到专用于此目的的虚拟机的 IP 地址。
-
-   > [!NOTE]
-   > 此解决方案支持 Syslog RFC 3164 或 RFC 5424。
-
-
-1. 若要在 CEF 事件的 Log Analytics 中使用相关架构，请搜索 `CommonSecurityLog`。
-
-## <a name="step-3-validate-connectivity"></a>步骤3：验证连接性
-
-1. 打开 Log Analytics，确保使用 CommonSecurityLog 架构接收日志。<br> 可能需要长达20分钟的时间，日志才会开始出现在 Log Analytics 中。 
-
-1. 在运行该脚本之前，我们建议您从安全解决方案发送消息，以确保将这些消息转发到您配置的 Syslog 代理计算机。 
-1. 您的计算机上必须具有提升的权限（sudo）。 请确保使用以下命令在计算机上具有 Python： `python –version`
-1. 运行以下脚本，检查代理、Azure Sentinel 和安全解决方案之间的连接。 它会检查是否正确配置了守护程序转发，侦听了正确的端口，并且没有阻止守护程序与 Log Analytics 代理之间的通信。 该脚本还会发送模拟消息 "TestCommonEventFormat" 来检查端到端连接。 <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>后续步骤

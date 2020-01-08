@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895354"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526356"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）
 
@@ -177,7 +177,8 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 - Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。  
 - 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
-- 故障转移完成后，以下功能将在初始启用时停止工作：[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
+- 不能对包含任何启用了[蠕虫永久性策略](../blobs/storage-blob-immutable-storage.md)的容器的存储帐户进行故障转移。 已解锁/锁定的基于时间的保留或法律封存策略阻止故障转移，以便保持符合性。
+- 故障转移完成后，以下功能可能会在初始启用时停止工作：[事件订阅](../blobs/storage-blob-event-overview.md)、[更改源](../blobs/storage-blob-change-feed.md)、[生命周期策略](../blobs/storage-lifecycle-management-concepts.md)和[存储分析日志记录](storage-analytics-logging.md)。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>除了故障转移外，还可以复制数据
 

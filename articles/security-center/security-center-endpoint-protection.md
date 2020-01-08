@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748432"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552927"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心的 Endpoint protection 评估和建议
 
-Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.microsoft.com/azure/security-center/security-center-os-coverage)的版本提供运行状况评估。 本文介绍领导安全中心生成以下两个建议的方案：
+Azure 安全中心为 Endpoint protection 解决方案[支持](security-center-services.md#supported-endpoint-protection-solutions-)的版本提供运行状况评估。 本文介绍领导安全中心生成以下两个建议的方案：
 
 * **在虚拟机上安装 endpoint protection 解决方案**
 * **解决计算机上的 endpoint protection 运行状况问题**
@@ -55,7 +55,7 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center endpoint protection
 
-* 导入**SCEPMpModule （"$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"）** 并运行 **时，安全中心建议你 "在虚拟机上安装 endpoint protection 解决方案"** **AMServiceEnabled = False**的 MProtComputerStatus 结果
+* 安全中心建议你在导入**SCEPMpModule （"$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"）** 时 **"在虚拟机上安装 endpoint protection 解决方案**"，并通过**AMServiceEnabled = false**运行**MProtComputerStatus**结果
 
 * 安全中心建议在**MprotComputerStatus**运行和以下任何情况时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 
@@ -84,21 +84,21 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](https://docs.micr
 * 当不满足以下任何检查时，安全中心建议你 **"在虚拟机上安装 endpoint protection 解决方案"** ：
     * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全代理**已存在
     * **HKLM： \ SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** exists
-    * **Dsa_query**文件位于安装文件夹中
-    * 运行带**dsa_query 的命令**的结果。**模式：检测到趋势微 Deep Security 代理**
+    * 在安装文件夹中找到**dsa_query .cmd**文件
+    * 运行带 Component 的**dsa_query .cmd**结果 **：检测到趋势微 Deep Security 代理**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec endpoint protection
 当不满足以下任何检查时，安全中心建议你 **"在虚拟机上安装 endpoint protection 解决方案"** ：
 
 * **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 或
 
-* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 

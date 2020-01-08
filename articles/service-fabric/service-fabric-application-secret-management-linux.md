@@ -1,31 +1,22 @@
 ---
-title: 在 Azure Service Fabric Linux 群集上设置加密证书并对机密进行加密 | Microsoft Docs
+title: 在 Linux 群集上设置加密证书
 description: 了解如何在 Linux 群集上设置加密证书并对机密进行加密。
-services: service-fabric
-documentationcenter: .net
 author: shsha
-manager: ''
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126981"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614700"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
-本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[在 Windows 群集上设置加密证书并对机密进行加密][secret-management-windows-specific-link]。
+本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[设置加密证书和加密 windows 群集上的机密][secret-management-windows-specific-link]。
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>获取数据加密证书
-数据加密证书专门用来对服务 Settings.xml 中的[参数][parameters-link]以及服务 ServiceManifest.xml 中的[环境变量][environment-variables-link]进行加密和解密。 它不用于密码文本的身份验证或签名。 该证书必须满足以下要求：
+数据加密证书只用于加密和解密服务的 Settings 中的[参数][parameters-link]，xml 和[环境变量][environment-variables-link]在服务的 servicemanifest.xml 中。 它不用于密码文本的身份验证或签名。 该证书必须满足以下要求：
 
 * 证书必须包含私钥。
 * 证书密钥用途必须包括数据加密 (10)，不应包括服务器身份验证或客户端身份验证。
@@ -54,7 +45,7 @@ user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[在应用程序中指定加密的机密。][secret-management-specify-encrypted-secrets-link]
+了解如何[在应用程序中指定加密机密。][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

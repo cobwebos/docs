@@ -1,22 +1,21 @@
 ---
 title: 在 Azure 流分析中使用机器学习终结点
 description: 本文介绍如何在 Azure 流分析中使用机器语言用户定义的函数。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 1adb7d58246ea37fd8322cb6fc6ffd53c5f19efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426197"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>流分析中的 Azure 机器学习 Studio （经典）集成（预览版）
-流分析支持调用 Azure 机器学习 Studio （经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了此功能的 REST API 支持。 本文提供在流分析中成功实现此功能所需的补充信息。 还发布了教程，可从[此处](stream-analytics-machine-learning-integration-tutorial.md)获取。
+流分析支持调用 Azure 机器学习 Studio （经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了此功能的 REST API 支持。 本文提供了在流分析中成功实现此功能所需的补充信息。 还发布了教程，可从[此处](stream-analytics-machine-learning-integration-tutorial.md)获取。
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>概述： Azure 机器学习 Studio （经典）术语
 Microsoft Azure 机器学习工作室（经典）提供了一个协作式拖放式工具，可用于生成、测试和部署数据的预测分析解决方案。 此工具称为*Azure 机器学习 Studio （经典）* 。 该工作室用于与机器学习资源交互，并轻松生成、测试和循环访问设计。 这些资源及其定义如下。
@@ -41,7 +40,7 @@ Microsoft Azure 机器学习工作室（经典）提供了一个协作式拖放�
 5. 编写用于调用 UDF 的流分析转换
 6. 启动作业
 
-## <a name="creating-a-udf-with-basic-properties"></a>使用基本属性创建 UDF
+## <a name="creating-a-udf-with-basic-properties"></a>创建具有基本属性的 UDF
 例如，下面的示例代码创建一个名为*newudf*的标量 UDF，该 UDF 绑定到 Azure 机器学习 Studio （经典）终结点。 请注意，*终结点*（服务 URI）可以在所选服务的 API 帮助页上找到，而 *apiKey* 可以在服务主页上找到。
 
 ```
@@ -87,7 +86,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
     }
 ```
 
-其示例输出类似如下所示。
+此处的示例输出应如下所示。
 
 ```json
     {
@@ -128,7 +127,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 ```
 
 ## <a name="patch-udf-with-the-response"></a>根据响应修补 UDF
-现在，必须使用之前的响应修补 UDF，如下所示。
+现在，必须根据先前的响应修补 UDF，如下所示。
 
 ```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>

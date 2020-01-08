@@ -1,19 +1,14 @@
 ---
-title: 通过 Azure 顾问改进 Azure 订阅的操作 excellency |Microsoft Docs
-description: 使用顾问优化 Azure 订阅，并使其成为成熟的操作。
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: 通过 Azure 顾问改进 Azure 订阅的操作 excellency
+description: 使用顾问优化 Azure 订阅，并使其成为成熟的操作
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443076"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>通过 Azure 顾问实现卓越运营
 
@@ -37,7 +32,7 @@ Azure 顾问将检测到其条件部分中指定了无效查询的警报规则�
 
 ## <a name="follow-best-practices-using-azure-policy"></a>使用 Azure 策略遵循最佳做法
 
-Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略对资源强制实施不同的规则和影响。 下面是 Azure 策略建议，可帮助你实现运营 excellency： 
+Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略对资源强制实施不同的规则和效果。 下面是 Azure 策略建议，可帮助你实现运营 excellency： 
 1. 使用 Azure 策略管理标记：在创建或更新任何资源时，此策略将添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源。 同样，这也不会修改资源组上的标记。
 2. 使用 Azure 策略强制实施地区遵从性要求：通过策略，你可以限制组织在部署资源时可以指定的位置。 
 3. 为部署指定允许的虚拟机 Sku：通过此策略，你可以指定组织可部署的一组虚拟机 Sku。

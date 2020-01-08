@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894424"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552808"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -88,7 +88,7 @@ ms.locfileid: "74894424"
 
 标准负载均衡器通过 Azure Monitor 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。  以下是支持的诊断的简要概述：
 
-| 指标 | 描述 |
+| 度量值 | Description |
 | --- | --- |
 | VIP 可用性 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。|
 | DIP 可用性 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。  可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。
@@ -182,14 +182,6 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 3. 如果适用，从所有 VM 实例中删除基本 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
 
 4. 将所有 VM 实例附加到新的标准 SKU 资源。
-
-### <a name="migrate-from-standard-to-basic-sku"></a>从标准 SKU 迁移到基本 SKU
-
-1. 根据需要创建新的基本版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。  将 HTTPS 探测更改为针对 443/tcp 的 TCP 探测。 
-
-2. 如果适用，从所有 VM 实例中删除标准 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
-
-3. 将所有 VM 实例附加到新的基本 SKU 资源。
 
 >[!IMPORTANT]
 >

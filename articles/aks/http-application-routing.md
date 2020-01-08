@@ -8,32 +8,32 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cfd69ebf6408acaa2938271ba87f36768416de80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442948"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
-可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后, 它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
+可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
-启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 开销的详细信息, 请参阅[dns 定价][dns-pricing]。
+启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 开销的详细信息，请参阅[dns 定价][dns-pricing]。
 
 > [!CAUTION]
 > HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 建议不要将此加载项用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](https://docs.microsoft.com/azure/aks/ingress-tls)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
-外接程序部署两个组件: 一个[Kubernetes 入口控制器][ingress]和一个[外部 DNS][external-dns]控制器。
+外接程序部署两个组件：一个[Kubernetes 入口控制器][ingress]和一个[外部 DNS][external-dns]控制器。
 
-- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource], 这些资源创建指向应用程序终结点的路由。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
 - **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
 
-HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure CLI 来启用。 为此, 请将[az aks create][az-aks-create]命令与`--enable-addons`参数一起使用。
+HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure CLI 来启用。 为此，请将[az aks create][az-aks-create]命令与 `--enable-addons` 参数一起使用。
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
@@ -48,15 +48,16 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-部署或更新群集后, 使用[az aks show][az-aks-show]命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
+部署或更新群集后，使用[az aks show][az-aks-show]命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
-
-Result
------------------------------------------------------
-9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
 ```
+
+结果
+
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+
 
 ## <a name="deploy-http-routing-portal"></a>部署 HTTP 路由：门户
 
@@ -179,7 +180,7 @@ az aks disable-addons --addons http_application_routing --name myAKSCluster --re
 
 当禁用了 HTTP 应用程序路由加载项时，某些 Kubernetes 资源可能会保留在群集中。 这些资源包括 *configMap* 和 *secret*，并且是在 *kube-system* 命名空间中创建的。 为了维护一个干净的群集，你可能想要删除这些资源。
 
-使用以下[kubectl get][kubectl-get]命令查找*加载项-http 应用程序-路由*资源:
+使用以下[kubectl get][kubectl-get]命令查找*加载项-http 应用程序-路由*资源：
 
 ```console
 kubectl get deployments --namespace kube-system
@@ -199,7 +200,7 @@ kube-system   addon-http-application-routing-tcp-services                0      
 kube-system   addon-http-application-routing-udp-services                0      9m7s
 ```
 
-若要删除资源, 请使用[kubectl delete][kubectl-delete]命令。 指定资源类型、资源名称和命名空间。 以下示例删除上面的 configmap 之一：
+若要删除资源，请使用[kubectl delete][kubectl-delete]命令。 指定资源类型、资源名称和命名空间。 以下示例删除上面的 configmap 之一：
 
 ```console
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
@@ -261,7 +262,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 删除在本文中创建的相关 Kubernetes 对象。
 
@@ -275,7 +276,7 @@ ingress "party-clippy" deleted
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何在 AKS 中安装受 HTTPS 保护的入口控制器的信息, 请参阅[Azure Kubernetes 服务 (AKS) 上的 Https 入口][ingress-https]。
+有关如何在 AKS 中安装受 HTTPS 保护的入口控制器的信息，请参阅[Azure Kubernetes 服务（AKS）上的 Https 入口][ingress-https]。
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

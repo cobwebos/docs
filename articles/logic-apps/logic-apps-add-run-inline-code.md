@@ -1,17 +1,17 @@
 ---
-title: 添加和运行代码片段
-description: 在 Azure 逻辑应用中添加和运行内联代码的代码片段
+title: 使用内联代码添加和运行代码片段
+description: 了解如何通过对使用 Azure 逻辑应用创建的自动任务和工作流使用内联代码操作来创建和运行代码片段
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f28a93e47aa028f152d7ca797abb17cb3832aa60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453500"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
 
@@ -128,7 +128,7 @@ ms.locfileid: "74792603"
 
 此表包含有关这些子属性的详细信息：
 
-| properties | Type | 描述 |
+| 属性 | 类型 | Description |
 |----------|------|-------|
 | `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个*键值*对，其中键是操作的名称，该值等效于使用 `@actions('<action-name>')`调用[actions （）函数](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者用下划线（_）替换操作名称中的空格（""）。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
 | `trigger` | 对象 | 触发器中的 Result 对象并等效于调用[trigger （）函数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
@@ -218,7 +218,7 @@ ms.locfileid: "74792603"
 
    ![添加参数](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
-   | 参数 | 描述 |
+   | 参数 | Description |
    |-----------|-------------|
    | **操作** | 包括先前操作的结果。 请参阅[包括操作结果](#action-results)。 |
    | **触发器** | 包含触发器的结果。 请参阅[包含触发器结果](#trigger-results)。 |

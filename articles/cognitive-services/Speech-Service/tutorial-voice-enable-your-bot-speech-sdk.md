@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815205"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495174"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -65,7 +65,7 @@ ms.locfileid: "74815205"
 
 你将在本教程中创建的客户端应用使用少量的 Azure 服务。 若要减少来自机器人的响应的往返时间，需要确保这些服务位于同一 Azure 区域。 在本部分中，你将在**美国西部**区域创建一个资源组。 此资源组将在为 Bot 框架、直接线路语音通道和语音服务创建单个资源时使用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 从左侧导航栏中选择 "**资源组**"。 然后单击 "**添加**" 以添加新的资源组。
 1. 系统将提示你提供一些信息：
    * 将 "**订阅**" 设置为 "**免费试用**" （也可以使用现有订阅）。
@@ -187,7 +187,7 @@ ms.locfileid: "74815205"
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-1. 在**解决方案资源管理器**中，右键单击**EchoBot**解决方案，然后选择 "**发布 ...** "
+1. 在**解决方案资源管理器**中，右键单击**EchoBot**项目，然后选择 "**发布 ...** "
 1. 将打开一个名为 "**选取" 的**新窗口。
 1. 从左侧导航栏中选择 "**应用服务**"，选择 "**新建**"，然后单击 "**发布**"。
 1. "**创建应用服务**" 窗口出现时：
@@ -221,7 +221,7 @@ ms.locfileid: "74815205"
 2. 在左侧导航栏中，在 "**设置**" 下单击 "**配置**"。
 3. 选择 "**常规设置**" 选项卡。
 4. 找到 " **Web 套接字**" 的切换，并将其设置为 **"开**"。
-5. 单击“保存”。
+5. 单击“ **保存**”。
 
 > [!TIP]
 > 您可以使用 Azure App Service 页顶部的控件来停止或重新启动该服务。 故障排除时，这可能很方便。
@@ -237,7 +237,7 @@ ms.locfileid: "74815205"
 2. 在搜索栏类型**机器人**中显示结果后，选择 "**机器人频道注册**"。
 3. 单击“创建”。
 4. 系统将提示你提供一些信息：
-   * 对于 " **Bot 名称**"，输入**SpeechEchoBotTutorial-BotRegistration**。
+   * 对于**机器人句柄**，请输入**SpeechEchoBotTutorial-BotRegistration**。
    * 对于 "**订阅**"，请选择 "**免费试用**"。
    * 对于 "**资源组**"，选择 " **SpeechEchoBotTutorial**"。
    * 对于 "**位置**"，请选择 "**美国西部**"。
@@ -245,7 +245,7 @@ ms.locfileid: "74815205"
      * 对于 "**消息传递终结点**"，请输入 web 应用的 URL，并在末尾追加 `/api/messages` 路径。 例如：如果全局唯一的应用名称为**EchoBot20190805125647**，则消息传递终结点将为： `https://EchoBot20190805125647.azurewebsites.net/api/messages/`。
      * 对于**application insights**，你可以将其设置为**Off**。 有关详细信息，请参阅[机器人分析](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)。
      * 忽略**自动创建应用 ID 和密码**。
-5. 导航回**机器人频道注册**，并单击 "**创建**"。
+5. 在 "**机器人频道注册**" 边栏选项卡底部，单击 "**创建**"。
 
 此时，请查看 Azure 门户中的资源组**SpeechEchoBotTutorial** 。 它现在应显示四个资源：
 
@@ -268,11 +268,11 @@ ms.locfileid: "74815205"
    * 查找**更多通道**，找到并单击 "**直接连线语音**"。
    * 查看标题为 "**配置直接线路语音**" 的页面上的文本，然后展开标记为 "认知服务帐户" 的下拉菜单。
    * 从菜单中选择先前创建的语音资源（例如**SpeechEchoBotTutorial**），将机器人关联到语音订阅密钥。
-   * 单击“保存”。
+   * 单击“ **保存**”。
 
 1. 从左侧导航栏中，单击 "**设置**"。
    * 选中标记为**启用流式处理终结点**的框。 这是在机器人和直接线路语音通道之间启用基于 web 套接字构建的通信协议所必需的。
-   * 单击“保存”。
+   * 单击“ **保存**”。
 
 > [!TIP]
 > 若要了解详细信息，请参阅[连接机器人以定向语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包含其他信息和已知问题。
@@ -383,29 +383,50 @@ ms.locfileid: "74815205"
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs)包括对语音 SDK 方法[`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-)的调用，该方法用于实例化磁盘上的本地文件中的模型。
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs)包括对语音 SDK 方法[`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)的调用，该方法将激活连续关键字检测。
 
-## <a name="optional-change-the-language-and-redeploy-your-bot"></a>可有可无更改语言并重新部署机器人
+## <a name="optional-change-the-language-and-bot-voice"></a>可有可无更改语言和机器人声音
 
-你创建的机器人将侦听并响应英语。 但是，你并不局限于使用英语。 在本部分中，你将了解如何更改机器人侦听和响应的语言，以及如何重新部署机器人。
+你创建的机器人将使用默认的美国英语文本语音语音来侦听并响应英语。 但是，你并不局限于使用英语或默认语音。 在本部分中，你将了解如何更改机器人侦听和响应的语言。 你还将了解如何为该语言选择其他语音。
 
 ### <a name="change-the-language"></a>更改语言
 
-1. 首先打开 `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`。
-2. 接下来，找到 SSML。 很容易找到，因为它包含在 `<speak></speak>` 的标记中。
-3. 在 SSML 字符串中，找到 `<voice name>` 标记，将其替换为 `<voice name='de-DE-Stefan-Apollo'>`并保存。 此格式字符串告诉文本到语音服务如何使用语音 `de-DE-Stefan-Apollo`（经过了德语优化）返回合成的语音响应。
+你可以从 "[语音到文本](language-support.md#speech-to-text)" 表中所述的任何一种语言中进行选择。 在下面的示例中，我们将语言更改为德语。
 
->[!NOTE]
-> 你不限于德语，并且可以从[语音服务](language-support.md#text-to-speech)的可用语音列表中进行选择。
+1. 打开 "语音语音客户端应用"，单击 "设置" 按钮（右上角的齿轮图标），并在 "语言" 字段中输入 `de-de` （这是 "[语音到文本](language-support.md#speech-to-text)" 表中提到的 "区域设置" 值）。 这将设置要识别的口述语言，并覆盖默认 `en-us`。 这也指示 "直接线路语音频道" 使用默认的德语语音进行机器人回复。
+2. 关闭 "设置" 页，然后单击 "重新连接" 按钮，建立与 echo bot 的新连接。
+3. 单击麦克风按钮，并口述德语短语。 你将看到已识别的文本，并且 echo bot 将用默认的德语语音进行回复。
+
+
+### <a name="change-the-default-bot-voice"></a>更改默认机器人语音
+
+如果机器人以[语音合成标记语言](speech-synthesis-markup.md)（SSML）而不是简单文本的形式指定答复，则可以选择文本到语音声音并控制发音。 Echo bot 不使用 SSML，但我们可以轻松修改代码来执行此操作。 在下面的示例中，我们将 SSML 添加到回响机器人回复，以便使用德语语音 Stefan Apollo （一种男语音）而不是默认的女性声音。 请参阅你的语言支持的[标准语音](language-support.md#standard-voices)和[神经声音](language-support.md#neural-voices)列表。
+
+1. 首先打开 `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`。
+2. 找到以下两行：
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    ```
+3. 将它们替换为：
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    var replySpeak = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>
+                    <voice name='Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)'>" +
+                    $"{replyText}" + "</voice></speak>";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replySpeak), cancellationToken);
+    ```
+4. 在 Visual Studio 中生成解决方案并修复任何生成错误。
+
+方法 "MessageFactory" 中的第二个参数设置了机器人回复中的[活动讲述字段](https://github.com/Microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)。 进行上述更改后，已将其从简单文本替换为 SSML，以指定非默认的德语语音。
 
 ### <a name="redeploy-your-bot"></a>重新部署机器人
 
 完成机器人的必要更改后，下一步就是将其重新发布到 Azure App Service 并试用：
 
-1. 在 Visual Studio 中生成解决方案并修复任何生成错误。
-2. 在 "解决方案资源管理器" 窗口中，右键单击**EchoBot**项目，然后选择 "**发布**"。
-3. 以前的部署配置已作为默认值加载。 只需单击 "EchoBot20190805125647" 旁边**Web 部署的**"**发布**"。
-4. "**发布成功**" 消息将显示在 Visual Studio 的 "输出" 窗口中，并且网页将启动并显示消息 "机器人已就绪！"。
-5. 打开 "语音语音客户端应用"，单击 "设置" 按钮（右上角的齿轮图标），并在 "语言" 字段中输入 `de-de`。 这将设置要识别的口述语言，并覆盖默认 `en-us`。
-6. 按照[生成直接连线语音客户端](#build-the-direct-line-speech-client)中的说明重新连接到你的新部署的机器人，并以新语言讲述，并听到你用新的语音以该语言回复了机器人。
+1. 在 "解决方案资源管理器" 窗口中，右键单击**EchoBot**项目，然后选择 "**发布**"。
+2. 以前的部署配置已作为默认值加载。 只需单击 "EchoBot20190805125647" 旁边**Web 部署的**"**发布**"。
+3. "**发布成功**" 消息将显示在 Visual Studio 的 "输出" 窗口中，并且网页将启动并显示消息 "机器人已就绪！"。
+4. 打开 "语音语音客户端应用"，单击 "设置" 按钮（右上角的齿轮图标），并确保在 "语言" 字段中仍有 `de-de`。
+5. 按照[生成直接连线语音客户端](#build-the-direct-line-speech-client)中的说明重新连接到你的新部署的机器人，并以新语言讲述，并听到你用新的语音以该语言回复了机器人。
 
 ## <a name="clean-up-resources"></a>清理资源
 

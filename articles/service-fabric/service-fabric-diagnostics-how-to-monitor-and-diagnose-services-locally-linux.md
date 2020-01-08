@@ -1,27 +1,16 @@
 ---
-title: 在 Linux 中调试 Azure Service Fabric 应用 | Microsoft Docs
+title: 在 Linux 中调试 Azure Service Fabric 应用
 description: 了解如何在本地 Linux 开发计算机上监视和诊断 Service Fabric 服务。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168859"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526288"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>在本地 Linux 计算机开发安装过程中监视和诊断服务
 
 
 > [!div class="op_single_selector"]
@@ -78,7 +67,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-可以使用自定义 EventListener 侦听服务事件，并将它们相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
+可以使用自定义 EventListener 侦听服务事件，然后将其相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
 
 
 ```csharp
@@ -137,7 +126,7 @@ internal class ServiceEventListener : EventListener
 public static TextWriter Out = Console.Out;
 ```
 
-[C# 示例](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)中的示例使用 EventSource 和自定义 EventListener 在文件中记录事件。
+[C# 示例](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)上的示例使用 EventSource 和自定义 EventListener 将事件记录到文件中。
 
 
 

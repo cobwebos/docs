@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 云预配新代理配置
-description: 本主题介绍如何安装云设置。
+description: 本文介绍如何安装云设置。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,74 +11,83 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997116"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549425"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect 云预配新配置
+# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect 云预配新代理配置
 
-安装代理后，需要登录到 Azure 门户并配置设置。  使用以下步骤启用代理。
+安装代理后，你需要登录到 Azure 门户并配置 Azure Active Directory （Azure AD）连接云设置。 按照以下步骤启用代理。
 
 ## <a name="configure-provisioning"></a>配置设置
-若要配置预配，请执行以下步骤：
+若要配置预配，请执行以下步骤。
 
-1.  在 Azure AD 门户中，单击 " **Azure Active Directory**
-2.  单击**Azure AD Connect**
-3.  选择 "**管理预配（预览版）** "
-![](media/how-to-configure/manage1.png)
+1.  在 Azure 门户中，选择“Azure Active Directory”。
+1.  选择“Azure AD Connect”。
+1.  选择 "**管理预配（预览版）** "。
 
-4.  单击 "**新建配置**"。
-5.  在 "配置" 屏幕上，将预填充本地域
-6. 输入**通知电子邮件**。 设置不正常时，此电子邮件将收到通知。  
-8. 将选择器移动到 "**启用**"，然后单击 "**保存**"。
-![](media/tutorial-single-forest/configure2.png)
+    ![管理预配（预览版）](media/how-to-configure/manage1.png)
 
-## <a name="scoping-provisioning-to-specific-users-and-groups"></a>向特定用户和组设置作用域
-如果要将代理的作用域限定为仅同步特定的用户和组，则可以执行此操作。 你可以使用本地 AD 组或组织单位来确定范围。 不能在配置中配置组和组织单位。 
+1.  选择 "**新配置**"。
+1.  在 "配置" 屏幕上，预填充了本地域。
+1.  输入**通知电子邮件**。 设置不正常时，此电子邮件将收到通知。
+1.  将选择器移动到 "**启用**"，然后选择 "**保存**"。
 
-1.  在 Azure AD 门户中，单击 " **Azure Active Directory**
-2.  单击**Azure AD Connect**
-3.  选择 "**管理预配（预览版）** "
-4.  在 "**配置**" 下单击配置。  
-![](media/how-to-configure/scope1.png)
+    ![Azure AD 预配（预览版）](media/tutorial-single-forest/configure2.png)
 
-5.  在 "**配置**" 下，选择 "**所有用户**" 以更改配置规则的作用域。
-![](media/how-to-configure/scope2.png)
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>向特定用户和组设置作用域
+可以通过使用本地 Active Directory 组或组织单位来确定代理的范围，以便同步特定的用户和组。 不能在配置中配置组和组织单位。 
 
-6. 在右侧，可以通过输入组的可分辨名称并单击 "**添加**"，将作用域更改为仅包含安全组。
-![](media/how-to-configure/scope3.png)
+1.  在 Azure 门户中，选择“Azure Active Directory”。
+1.  选择“Azure AD Connect”。
+1.  选择 "**管理预配（预览版）** "。
+1.  在 "**配置**" 下，选择您的配置。
 
-7. 或将其更改为仅包括特定 Ou。 单击 "**完成**" 并**保存**。
-![](media/how-to-configure/scope4.png)
+    ![“配置”部分](media/how-to-configure/scope1.png)
+
+1.  在“配置”下选择“所有用户”，以更改配置规则的范围。
+
+    ![所有用户选项](media/how-to-configure/scope2.png)
+
+1. 在右侧，可以将作用域更改为仅包括安全组。 输入组的可分辨名称，然后选择 "**添加**"。
+
+    ![选择的安全组选项](media/how-to-configure/scope3.png)
+
+1.  或者，你可以更改范围以仅包括特定的组织单位。 选择 "**完成**并**保存**"。
+
+    ![所选组织单位选项](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>重新启动预配 
-如果不想等待下一个计划的运行，可以使用 "重新启动设置" 按钮触发设置运行。 
-1.  在 Azure AD 门户中，单击 " **Azure Active Directory**
-2.  单击**Azure AD Connect**
-3.  选择 "**管理预配（预览版）** "
-4.  在 "**配置**" 下单击配置。  
-![](media/how-to-configure/scope1.png)
+如果不想等待下一次计划的运行，请使用 "**重新启动设置**" 按钮触发设置运行。 
+1.  在 Azure 门户中，选择“Azure Active Directory”。
+1.  选择“Azure AD Connect”。
+1.  选择 "**管理预配（预览版）** "。
+1.  在 "**配置**" 下，选择您的配置。
 
-5.  在顶部单击 "**重新启动设置**"。
+    ![用于重新启动预配的配置选择](media/how-to-configure/scope1.png)
 
-## <a name="removing-a-configuration"></a>删除配置
-如果要删除配置，可以使用以下步骤来执行此操作。
+1.  在顶部，选择 "**重新启动设置**"。
 
-1.  在 Azure AD 门户中，单击 " **Azure Active Directory**
-2.  单击**Azure AD Connect**
-3.  选择 "**管理预配（预览版）** "
-4.  在 "**配置**" 下单击配置。  
-![](media/how-to-configure/scope1.png)
+## <a name="remove-a-configuration"></a>删除配置
+若要删除配置，请执行以下步骤。
 
-5.  在顶部，单击 "**删除**"。
-![](media/how-to-configure/remove1.png)
+1.  在 Azure 门户中，选择“Azure Active Directory”。
+1.  选择“Azure AD Connect”。
+1.  选择 "**管理预配（预览版）** "。
+1.  在 "**配置**" 下，选择您的配置。
+
+    ![要删除配置的配置选择](media/how-to-configure/scope1.png)
+
+1.  在配置屏幕的顶部，选择 "**删除**"。
+
+    ![“删除”按钮](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->在删除配置之前没有确认，因此请确保在单击 "**删除**" 之前要执行的操作。
+>在删除配置之前，没有确认。 在选择 "**删除**" 之前，请确保这是要执行的操作。
 
 
 ## <a name="next-steps"></a>后续步骤 

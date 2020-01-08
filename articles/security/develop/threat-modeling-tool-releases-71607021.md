@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool 发行版 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool 版本 7/2/2019-Azure
 description: 阐述 Threat Modeling Tool 的发行说明
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: jegeib
-ms.openlocfilehash: 44fd84af629fadfc96d738e81f2568359ee19d66
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d26ff015156f5d050a74733ff82c811ff5f1700a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219848"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548769"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool 更新版本 7.1.60702.1-7/2/2019
 
-Microsoft Threat Modeling Tool (TMT) 的版本7.1.60702.1 于 2 2019 年7月发布, 并且包含以下更改:
+Microsoft Threat Modeling Tool （TMT）的版本7.1.60702.1 于 2 2019 年7月发布，并且包含以下更改：
 
 - 辅助功能改进
 - Bug 修复
@@ -34,13 +26,13 @@ Microsoft Threat Modeling Tool (TMT) 的版本7.1.60702.1 于 2 2019 年7月发�
 
 ### <a name="a-new-medical-devices-stencil-set-provided-by-the-open-source-community-is-available"></a>开源社区提供的新医疗设备模具集可用
 
-用于为医疗设备建模的模具集已由开源社区提供。 更新后, 新的模具集将出现在 "模板选择" 下拉菜单中。 有关将模具或内容提供给模板的详细信息, 请查看项目[GitHub 页](https://github.com/Microsoft/threat-modeling-templates)上的信息。
+用于为医疗设备建模的模具集已由开源社区提供。 更新后，新的模具集将出现在 "模板选择" 下拉菜单中。 有关将模具或内容提供给模板的详细信息，请查看项目[GitHub 页](https://github.com/Microsoft/threat-modeling-templates)上的信息。
 
 ![“模型验证”选项](./media/threat-modeling-tool-releases-71607021/tmt-template-selection.png)
 
 ## <a name="system-requirements"></a>系统要求
 
-- 支持的操作系统
+- 受支持的操作系统
   - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
   - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更高版本

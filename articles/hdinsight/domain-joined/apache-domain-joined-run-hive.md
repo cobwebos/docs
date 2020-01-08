@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688107"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435871"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
@@ -40,11 +40,11 @@ ms.locfileid: "74688107"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本文中使用这两个用户帐户。
+请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本文中使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分中，你将在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分中，你将在 Excel 中测试两个策略。
 
 **创建 Ranger 策略**
 
@@ -52,16 +52,16 @@ ms.locfileid: "74688107"
 2. 选择 " **CLUSTERNAME_Hive**"，然后单击 " **Hive**"。 应会看到两个预配置策略。
 3. 选择 "**添加新策略**"，然后输入以下值：
 
-    |properties |Value |
+    |属性 |值 |
     |---|---|
     |策略名称|hivesampletable-all|
     |Hive 数据库|default|
     |表|hivesampletable|
     |Hive 列|*|
     |选择用户|hiveuser1|
-    |权限|选择|
+    |权限|select|
 
-    ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
 
     > [!NOTE]  
     > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
@@ -70,20 +70,20 @@ ms.locfileid: "74688107"
 
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
-    |properties |Value |
+    |属性 |值 |
     |---|---|
     |策略名称|hivesampletable-devicemake|
     |Hive 数据库|default|
     |表|hivesampletable|
     |Hive 列|clientid，devicemake|
     |选择用户|hiveuser2|
-    |权限|选择|
+    |权限|select|
 
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | properties  |描述 |
+ | 属性  |Description |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
@@ -92,7 +92,7 @@ ms.locfileid: "74688107"
  | Hive 服务器类型 | 选择“Hive Server 2” |
  | 机制 | 选择“Azure HDInsight 服务” |
  | HTTP 路径 | 将此字段留空。 |
- | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com 。 如果域名不同，请更新域名。 |
+ | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
  | 密码 | 输入 hiveuser1 的密码。 |
 
 在保存数据源之前，请务必单击“测试”。

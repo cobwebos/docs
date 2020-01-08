@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129345"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639865"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 
@@ -21,7 +21,7 @@ ms.locfileid: "74129345"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks 体系结构
 
-在较高层面上，当你通过 Azure 门户创建 Azure Databricks 工作区时，会在所选的 Azure 区域（例如“美国西部”），将某个[托管设备](../managed-applications/overview.md)部署为订阅中的 Azure 资源。 此设备部署在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中，该网络具有[网络安全组](../virtual-network/manage-network-security-group.md)和订阅中的 Azure 存储帐户。 该虚拟网络为 Databricks 工作区提供外围级安全性，并受网络安全组的保护。 在工作区中，可以通过提供辅助角色和驱动程序 VM 类型与 Databricks 运行时版本来创建 Databricks 群集。 保留的数据在存储帐户中可用，可以是 Azure Blob 存储或 Azure Data Lake Storage。 创建群集后，可以通过笔记本、REST API、ODBC/JDBC 终结点运行作业：只需将作业附加到特定的群集即可。
+在较高层面上，当你通过 Azure 门户创建 Azure Databricks 工作区时，会在所选的 Azure 区域（例如“美国西部”），将某个[托管设备](../azure-resource-manager/managed-applications/overview.md)部署为订阅中的 Azure 资源。 此设备部署在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中，该网络具有[网络安全组](../virtual-network/manage-network-security-group.md)和订阅中的 Azure 存储帐户。 该虚拟网络为 Databricks 工作区提供外围级安全性，并受网络安全组的保护。 在工作区中，可以通过提供辅助角色和驱动程序 VM 类型与 Databricks 运行时版本来创建 Databricks 群集。 保留的数据在存储帐户中可用，可以是 Azure Blob 存储或 Azure Data Lake Storage。 创建群集后，可以通过笔记本、REST API、ODBC/JDBC 终结点运行作业：只需将作业附加到特定的群集即可。
 
 Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管理操作（例如创建群集）将从控制平面发起。 所有元数据（例如计划的作业）存储在可通过异地复制实现容错的 Azure 数据库中。
 
@@ -90,7 +90,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
    > [!NOTE]
    > 此步骤不会复制库，因为基础 API 不支持库。
 
-   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py`。
+   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py` 。
 
    ```python
    from subprocess import call, check_output
@@ -133,7 +133,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
    下面提供的脚本列显从旧群集 ID 到新群集 ID 的映射，稍后可对作业迁移（配置为使用现有群集的作业）使用该映射。
 
-   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py`。
+   复制以下 python 脚本并将其保存到某个文件，然后在 Databricks 命令行中运行它。 例如，`python scriptname.py` 。
 
    ```python
    from subprocess import call, check_output

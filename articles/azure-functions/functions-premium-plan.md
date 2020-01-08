@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532900"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561948"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
-Azure Functions 高级计划是函数应用的托管选项。 高级计划提供 VNet 连接、无冷启动和高级硬件等功能。  可以将多个函数应用部署到相同的高级计划，该计划允许配置计算实例大小、基本计划大小和最大计划大小。  有关高级计划以及其他计划和托管类型的比较，请参阅[函数缩放和宿主选项](functions-scale.md)。
+"Azure Functions 高级计划" （有时称为 "弹性高级计划"）是函数应用的托管选项。 高级计划提供 VNet 连接、无冷启动和高级硬件等功能。  可以将多个函数应用部署到相同的高级计划，该计划允许配置计算实例大小、基本计划大小和最大计划大小。  有关高级计划以及其他计划和托管类型的比较，请参阅[函数缩放和宿主选项](functions-scale.md)。
 
 ## <a name="create-a-premium-plan"></a>创建高级计划
 
@@ -45,7 +45,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 ![弹性缩放设置](./media/functions-premium-plan/scale-out.png)
 
-你还可以使用 Azure CLI 配置应用的预准备好实例
+你还可以使用 Azure CLI 配置应用的预准备好实例。
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -103,27 +103,28 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |澳大利亚中部| ✔<sup>1</sup> | |
 |澳大利亚中部 2| ✔<sup>1</sup> | |
 |澳大利亚东部| ✔ | |
-|澳大利亚东南部 | ✔ | ✔ |
+|澳大利亚东南部 | ✔ | ✔<sup>1</sup> |
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
 |亚洲东部| ✔ |  |
-|美国东部 | ✔ | ✔ |
+|美国东部 | ✔ | ✔<sup>1</sup> |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |
-|日本东部| ✔ | ✔ |
+|德国中西部| ✔ | |
+|日本东部| ✔ | ✔<sup>1</sup> |
 |日本西部| ✔ | |
 |韩国中部| ✔ |  |
 |美国中北部| ✔ |  |
-|北欧| ✔ | ✔ |
-|美国中南部| ✔ |  |
+|欧洲北部| ✔ | ✔<sup>1</sup> |
+|美国中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
-|亚洲东南部| ✔ | ✔ |
+|亚洲东南部| ✔ | ✔<sup>1</sup> |
 |英国南部| ✔ | |
 |英国西部| ✔ |  |
-|欧洲西部| ✔ | ✔ |
+|欧洲西部| ✔ | ✔<sup>1</sup> |
 |印度西部| ✔ |  |
-|美国西部| ✔ | ✔ |
+|美国西部| ✔ | ✔<sup>1</sup> |
 |美国西部 2| ✔ |  |
 
 <sup>1</sup>最大扩大范围限制为20个实例。  

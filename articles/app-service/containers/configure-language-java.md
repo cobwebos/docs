@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
-ms.translationtype: MT
+ms.openlocfilehash: 5ee07e5b0ac9c73a686a0f8c7d489ecc7ee96425
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422198"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -248,8 +248,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
-
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
 
@@ -663,7 +662,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 下次应用服务重新启动时，它将运行启动脚本并执行必要的配置步骤。 若要测试此配置是否正常发生，可以使用 SSH 访问应用服务，然后从 Bash 提示符自行运行启动脚本。 你还可以检查应用服务日志。 有关这些选项的详细信息，请参阅[日志记录和调试应用](#logging-and-debugging-apps)。
 
-接下来，需要更新应用的 WildFly 配置并重新部署。 请执行以下步骤：
+接下来，需要更新应用的 WildFly 配置并重新部署。 请使用以下步骤：
 
 1. 打开应用的*src/main/resources/META-INF/持久性 .xml*文件，并找到 `<jta-data-source>` 元素。 替换其内容，如下所示：
 
@@ -709,7 +708,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 1. 打开 Bash 终端，并使用以下命令将 Azure 资源信息保存在环境变量中。 将占位符（包括尖括号）替换为指示的值。
 
-    | 变量            | Value                                                                      |
+    | 变量            | 值                                                                      |
     |---------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME  | 包含应用服务实例的资源组的名称。       |
     | WEBAPP_NAME         | 应用服务实例的名称。                                     |
@@ -993,7 +992,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 1. 打开 Bash 终端并使用 `<variable>=<value>` 设置以下每个环境变量。
 
-    | 变量                 | Value                                                                      |
+    | 变量                 | 值                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | 包含应用服务实例的资源组的名称。       |
     | WEBAPP_NAME              | 应用服务实例的名称。                                     |

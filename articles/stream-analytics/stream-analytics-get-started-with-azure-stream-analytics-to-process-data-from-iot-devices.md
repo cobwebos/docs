@@ -1,19 +1,18 @@
 ---
 title: 利用 Azure 流分析处理实时 IoT 数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426248"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>利用 Azure 流分析处理实时 IoT 数据流
 
@@ -24,7 +23,7 @@ ms.locfileid: "74559879"
 * 创建免费的[Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
 * 从[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 可以通过传感器数据使用流分析查询语言（SAQL），从传入的数据流中查找感兴趣的模式。
 

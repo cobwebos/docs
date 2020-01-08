@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895219"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614886"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>异地冗余存储 (GRS)：Azure 存储的跨区域复制
 
@@ -31,7 +31,7 @@ ms.locfileid: "74895219"
 
 - 应用程序必须管理在使用 RA-GRS 时与之交互的终结点。
 - 由于异步复制涉及延迟，因此如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改可能会丢失。
-- 可以检查存储帐户的上次同步时间。 上次同步时间是 GMT 日期/时间值。 在上次同步时间之前主要位置的写入内容已成功写入次要位置，这意味着可以从次要位置读取这些内容。 在上次同步时间之后主要位置的写入内容不一定可供读取。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md) 或通过 Azure 存储客户端库之一查询此值。
+- 可以检查存储帐户的 "**上次同步时间**" 属性。 **上次同步时间**是 GMT 日期/时间值。 在**上次同步时间**之前进行的所有主写入已成功写入辅助位置，这意味着可以从辅助位置读取这些内容。 **上次同步时间**之后的主写入操作可能会也可能不可用于读取。 可以使用 PowerShell、Azure CLI 或 Azure 存储客户端库之一查询此值。 有关详细信息，请参阅[使用读取访问异地冗余存储来设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time)中**的 "上次同步时间"** 。
 - 如果启动 GRS 或 RA-GRS 帐户到次要区域的帐户故障转移（预览版），则在故障转移完成之后会还原该帐户的写入访问权限。 有关详细信息，请参阅 [灾难恢复和存储帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)。
 - RA-GRS 的用途是实现高可用性。 有关可伸缩性的指南，请查看[性能清单](storage-performance-checklist.md)。
 - 有关如何使用 RA-GRS 进行高可用性设计的建议，请参阅[使用 RA-GRS 存储设计高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)。

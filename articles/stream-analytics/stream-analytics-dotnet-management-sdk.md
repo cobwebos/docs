@@ -1,37 +1,36 @@
 ---
 title: 用于 Azure 流分析的管理 .NET SDK
 description: 流分析管理 .NET SDK 入门。 了解如何设置和运行分析作业。 创建项目、输入、输出和转换。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426259"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理 .NET SDK：设置和运行使用 .NET 版 Azure 流分析 API 的分析作业
 了解如何通过 Management .NET SDK 使用用于 .NET 的流分析 API 设置和运行分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
 
 请参阅 [.NET 版流分析 API 的管理参考文档](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
 
-Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可伸缩且复杂的事件处理。 客户可以使用流分析来设置流式处理作业，分析数据流和进行近实时分析。  
+Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可伸缩且复杂的事件处理。 客户可以使用流分析来设置流式处理作业，以便分析数据流并进行近实时分析。  
 
 > [!NOTE]
 > 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
 
-## <a name="prerequisites"></a>先决条件
-开始阅读本文之前，必须具有以下要求：
+## <a name="prerequisites"></a>必备组件
+在开始本文之前，必须具备以下要求：
 
-* 安装 Visual Studio 2019 或 2015年。
+* 安装 Visual Studio 2019 或2015。
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 下面的示例是一个示例 Azure PowerShell 脚本。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
+* 在订阅中创建 Azure 资源组。 下面的示例是 Azure PowerShell 脚本的示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * 设置作业要连接到的输入源和输出目标。
 
 ## <a name="set-up-a-project"></a>设置项目
-若要创建的分析作业，用于.NET 中，先设置你的项目中的 Stream Analytics API。
+若要创建分析作业，请使用适用于 .NET 的流分析 API，首先设置你的项目。
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个用于 Azure 客户端身份验证。
@@ -134,14 +133,14 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
     };
    ```
 
-resourceGroupName 变量的值应该与你在先决条件步骤中创建或选取的资源组的名称相同  。
+resourceGroupName 变量的值应该与你在先决条件步骤中创建或选取的资源组的名称相同。
 
 若要自动执行凭据演示方面的作业创建，请参阅[使用 Azure 资源管理器对服务主体进行身份验证](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 本文的剩余部分假定此代码位于 **Main** 方法的开头。
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
-下面的代码会在你所定义的资源组下创建流分析作业。 可以在以后向作业添加输入、输出和转换。
+下面的代码会在你所定义的资源组下创建流分析作业。 将在以后向作业添加输入、输出和转换。
 
    ```csharp
    // Create a streaming job
@@ -168,7 +167,7 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>创建流分析输入源
-下面的代码使用 blob 输入源类型和 CSV 序列化创建流分析输入源。 若要创建事件中心输入源，请使用 **EventHubStreamInputDataSource** 而非 **BlobStreamInputDataSource**。 同样，可以自定义输入源的序列化类型。
+下面的代码将使用 blob 输入源类型和 CSV 序列化创建流分析输入源。 若要创建事件中心输入源，请使用 **EventHubStreamInputDataSource** 而非 **BlobStreamInputDataSource**。 同样，可以自定义输入源的序列化类型。
 
    ```csharp
    // Create an input
@@ -203,7 +202,7 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
 输入源（不管是来自 Blob 存储还是来自事件中心）将绑定到特定作业。 要将同一输入源用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
 ## <a name="test-a-stream-analytics-input-source"></a>测试流分析输入源
-**TestConnection** 方法可测试流分析作业是否能够连接到输入源，并测试特定于输入源类型的其他方面。 例如，在 blob 输入源（已在此前的步骤中创建过）中，该方法可检查存储帐户名称和密钥对能否用于连接到存储帐户，并检查指定的容器是否存在。
+**TestConnection** 方法可测试流分析作业是否能够连接到输入源，并测试特定于输入源类型的其他方面。 例如，在 blob 输入源（已在此前的步骤中创建过）中，该方法会检查存储帐户名称和密钥对能否用于连接到存储帐户，并检查指定的容器是否存在。
 
    ```csharp
    // Test the connection to the input
@@ -211,9 +210,9 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>创建流分析输出目标
-创建输出目标是类似于创建 Stream 分析输入的源。 像输入源一样，输出目标会被绑定到特定的作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
+创建输出目标类似于创建流分析输入源。 像输入源一样，输出目标会被绑定到特定的作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
-以下代码可创建一个输出目标（Azure SQL 数据库）。 可以自定义输出目标的数据类型和/或序列化类型。
+下面的代码将创建一个输出目标（Azure SQL 数据库）。 可以自定义输出目标的数据类型和/或序列化类型。
 
    ```csharp
    // Create an output
@@ -278,7 +277,7 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
    ```
 
 ## <a name="delete-a-stream-analytics-job"></a>删除流分析作业
-**Delete** 方法会删除作业以及基础性的子资源，包括作业的输入、输出和转换。
+**Delete** 方法将删除作业以及基础性的子资源，包括作业的输入、输出和转换。
 
    ```csharp
    // Delete a streaming job
@@ -289,7 +288,7 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
 如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
-现已介绍完使用 .NET SDK 创建和运行分析作业的基础知识。 若要了解更多信息，请参阅下列文章：
+现已介绍完使用 .NET SDK 创建和运行分析作业的基础知识。 若要了解详细信息，请参阅以下文章：
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)

@@ -3,12 +3,12 @@ title: 建议的安全做法
 description: 使用 Azure 委派资源管理时，请务必考虑安全性和访问控制。
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456879"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -16,7 +16,7 @@ ms.locfileid: "74463899"
 
 ## <a name="require-azure-multi-factor-authentication"></a>需要 Azure 多重身份验证
 
-[Azure 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)（也称为双重验证）通过要求进行多重身份验证步骤，以防止攻击者获取帐户的访问权限。 你应要求服务提供商租户中的所有用户（包括任何将有权访问客户资源的用户）都进行多重身份验证。
+[Azure 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)（也称为双重验证）可帮助防止攻击者通过要求多个身份验证步骤来访问帐户。 你应要求服务提供商租户中的所有用户（包括任何将有权访问客户资源的用户）都进行多重身份验证。
 
 建议你要求客户对其租户也实施 Azure 多重身份验证。
 

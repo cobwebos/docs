@@ -1,26 +1,18 @@
 ---
-title: Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: Microsoft 威胁建模工具的主页，包含有关如何开始使用该工具的信息（包括威胁建模过程）
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool 概述-Azure
+description: Microsoft Threat Modeling Tool 概述，其中包含有关工具入门的信息，包括威胁建模过程。
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: jegeib
-ms.openlocfilehash: 47ae7661874bec211935315679e6e2c79e6d59ef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727824"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548752"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
 
@@ -36,16 +28,16 @@ ms.locfileid: "68727824"
 
 * **自动化：** 有关绘制模型的指导和反馈
 * **STRIDE per Element：** 引导式威胁分析和缓解措施
-* **报表：** 验证阶段的安全活动与测试
-* **唯一方法：** 使用户能够更好地直观了解威胁
+* **报告：** 安全活动与验证阶段的测试
+* **独特的方法：** 使用户能够更好地可视化和了解威胁
 * **专为开发人员设计，以软件为中心：** 许多方法是以资产或攻击者为中心。 我们是以软件为中心。 我们的解决方案构建在所有软件开发人员和架构师都很熟悉的活动基础之上 - 例如，为软件体系结构绘图
-* **注重设计分析：** 术语“威胁建模”可以指需求，也可以指设计分析技术。 有时，它指的是两者的复杂混合形式。 Microsoft SDL 的威胁建模方法是一种有重点的设计分析技术
+* **注重设计分析：** 术语“威胁建模”可以表示某项要求或设计分析技术。 有时，它指的是两者的复杂混合形式。 Microsoft SDL 的威胁建模方法是一种有重点的设计分析技术
 
 ## <a name="next-steps"></a>后续步骤
 
 下表包含可帮助你开始使用此威胁建模工具的重要链接：
 
-| 步骤  | 描述                                                                                   |
+| 步骤  | Description                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [下载威胁建模工具](https://aka.ms/threatmodelingtool)                                |
 | **2** | [阅读入门指南](threat-modeling-tool-getting-started.md)    |
@@ -57,7 +49,7 @@ ms.locfileid: "68727824"
 
 下面是几篇较旧的文章，仍然与目前的威胁建模相关：
 
-* [有关威胁建模的重要性的文章](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [有关威胁建模的重要性的文章](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [可信任计算发布的培训](https://www.microsoft.com/download/details.aspx?id=16420)
 
 查看一些威胁建模工具专家已完成的作品：

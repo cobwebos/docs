@@ -1,16 +1,16 @@
 ---
-title: 用于 Azure Notebooks 的用户个人资料和 ID
+title: 与 Azure Notebooks 预览一起使用的用户配置文件和 ID
 description: 如何创建和管理 Azure Notebooks 的用户配置文件和用户 ID，该配置文件将成为共享笔记本的 URL 的一部分。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 0874fe8223ae9c49ccfe4e8efedf2620117a0f8c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277612"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646273"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>用于 Azure Notebooks 预览的个人资料和用户 ID
 
 在 Azure Notebooks 强大的协作空间中，用户个人资料将向其他人提供公共图像：
 
@@ -23,6 +23,8 @@ ms.locfileid: "74277612"
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`：项目文件。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`：特定项目的克隆。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`：特定笔记本或文件的 HTML 预览。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>用户 ID
 

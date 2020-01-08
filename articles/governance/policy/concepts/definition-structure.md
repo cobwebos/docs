@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436414"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -20,7 +20,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
 - mode
-- 参数
+- parameters
 - 显示名称
 - description
 - 策略规则
@@ -63,7 +63,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>“模式”
 
 **模式**的配置取决于策略是以 Azure 资源管理器属性还是资源提供程序属性为目标。
 
@@ -90,7 +90,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，并在预览时不支持计划。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -308,7 +308,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。
@@ -318,7 +318,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 #### <a name="value-examples"></a>Value 示例
 
-此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 此规则拒绝名称以 `*netrg` 结尾的资源组中 **type** 不为 `Microsoft.Network/*` 的资源。
+此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 规则在名称以 `*netrg`结尾的任何资源组中拒绝 `Microsoft.Network/*`**类型**的任何资源。
 
 ```json
 {
@@ -339,7 +339,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-此策略规则示例使用 **value** 来检查多个嵌套函数的结果是否 **equals** `true`。 此规则拒绝并没有至少三个标记的资源。
+此策略规则示例使用**value**来检查多个嵌套函数的结果是否**等于**`true`。 此规则拒绝并没有至少三个标记的资源。
 
 ```json
 {
@@ -374,9 +374,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-上面的示例策略规则使用[substring （）](../../../azure-resource-manager/resource-group-template-functions-string.md#substring)将**name**的前三个字符与**abc**进行比较。 如果**name**小于三个字符，`substring()` 函数将导致错误。 此错误将导致策略变成**拒绝**效果。
+上面的示例策略规则使用[substring （）](../../../azure-resource-manager/templates/template-functions-string.md#substring)将**name**的前三个字符与**abc**进行比较。 如果**name**小于三个字符，`substring()` 函数将导致错误。 此错误将导致策略变成**拒绝**效果。
 
-相反，请使用[if （）](../../../azure-resource-manager/resource-group-template-functions-logical.md#if)函数检查**name**等于**abc**的前三个字符是否不允许**名称**少于三个字符来导致错误：
+相反，请使用[if （）](../../../azure-resource-manager/templates/template-functions-logical.md#if)函数检查**name**等于**abc**的前三个字符是否不允许**名称**少于三个字符来导致错误：
 
 ```json
 {

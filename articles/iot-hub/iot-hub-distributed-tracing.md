@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457047"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -30,7 +30,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 本文将[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md) 与分布式跟踪配合使用。 对其他 SDK 的分布式跟踪支持仍在开发中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 分布式跟踪预览版目前仅支持在以下区域中创建的 IoT 中心：
 
@@ -88,22 +88,23 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="clone-the-source-code-and-initialize"></a>克隆源代码并初始化
 
-1. 安装适用于 Visual Studio 2015 或 2017 的[“使用 C++ 的桌面开发”工作负荷](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017)。
+1. 安装适用于 Visual Studio 2019 的["桌面开发C++" 工作负载](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)。 还支持 Visual Studio 2017 和2015。
 
-1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `PATH`，确保 CMake 位于 `cmake -version` 中。
+1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `cmake -version`，确保 CMake 位于 `PATH` 中。
 
-1. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+1. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库的最新版本：
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     应该预料到此操作需要几分钟才能完成。
 
-1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。
+1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录中运行以下命令：
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -135,7 +136,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](./quickstart-send-telemetry-c.md#register-a-device)的[注册设备](./quickstart-send-telemetry-c.md)部分记下的设备连接字符串。
+    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](./quickstart-send-telemetry-c.md)的[注册设备](./quickstart-send-telemetry-c.md#register-a-device)部分记下的设备连接字符串。
 
 1. 将 `MESSAGE_COUNT` 定义更改为 `5000`：
 
@@ -153,7 +154,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="compile-and-run"></a>编译和运行
 
-1. 从前面创建的 CMake 目录 ( *) 导航到* iothub_ll_telemetry_sample`azure-iot-sdk-c/cmake` 项目目录，并编译示例：
+1. 从前面创建的 CMake 目录 (`azure-iot-sdk-c/cmake`) 导航到 *iothub_ll_telemetry_sample* 项目目录，并编译示例：
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -166,7 +167,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     Debug/iothub_ll_telemetry_sample.exe
     ```
 
-1. 使应用保持运行状态。 （可选）通过查看控制台窗口来观察正在发送到 IoT 中心的消息。
+1. 保持运行该应用。 （可选）通过查看控制台窗口来观察正在发送到 IoT 中心的消息。
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
@@ -197,7 +198,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 选择介于 0% 与 100% 之间的**采样率**。
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。
 
@@ -240,7 +241,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 }
 ```
 
-| 元素名称 | 必选 | 类型 | 说明 |
+| 元素名称 | 需要 | 类型 | Description |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 表示启用，`2` 表示禁用。 |
 | `sampling_rate` | 是 | Integer | 此值是百分比。 只允许使用从 `0` 到 `100`（含）的值。  |
@@ -265,9 +266,9 @@ Log Analytics 显示的示例日志：
 
 | TimeGenerated | OperationName | 类别 | 级别 | CorrelationId | DurationMs | 属性 |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | 信息性 | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 信息性 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | 信息性 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | 信息 | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 信息 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | 信息 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 若要了解不同类型的日志，请参阅 [Azure IoT 中心诊断日志](iot-hub-monitor-resource-health.md#distributed-tracing-preview)。
 
@@ -306,7 +307,7 @@ Log Analytics 显示的示例日志：
 1. IoT 中心在消息应用程序属性中查找 `tracestate`，并检查其格式是否正确。
 1. 如果正确，则 IoT 中心生成 `trace-id` 和 `span-id`，并将其记录到 Azure Monitor 诊断日志的 `DiagnosticIoTHubD2C` 类别下。
 1. 消息处理完成后，IoT 中心生成另一个 `span-id`，并将其连同现有的 `trace-id` 记录到 `DiagnosticIoTHubIngress` 类别下。
-1. 如果为消息启用了路由，则 IoT 中心会将消息写入自定义终结点，并在 `span-id` 类别下记录名为 `trace-id` 的另一个 `DiagnosticIoTHubEgress`。
+1. 如果为消息启用了路由，则 IoT 中心会将消息写入自定义终结点，并在 `DiagnosticIoTHubEgress` 类别下记录名为 `trace-id` 的另一个 `span-id`。
 1. 针对生成的每条消息重复上述步骤。
 
 ## <a name="public-preview-limits-and-considerations"></a>公共预览版限制和注意事项

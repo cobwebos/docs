@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442980"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围保护对 API 服务器的访问
 
@@ -21,13 +21,13 @@ ms.locfileid: "74013011"
 本文介绍如何使用 API 服务器授权的 IP 地址范围来限制哪些 IP 地址和 CIDRs 可以访问控制平面。
 
 > [!IMPORTANT]
-> 在新群集上，仅在*标准*SKU 负载平衡器上支持 API 服务器授权的 IP 地址范围。 配置了*基本*SKU 负载平衡器和 API 服务器授权 IP 地址范围的现有群集将继续按原样工作。 这些现有群集也可以升级，它们将继续工作。
+> 在新群集上，仅在*标准*SKU 负载平衡器上支持 API 服务器授权的 IP 地址范围。 配置了*基本*sku 负载平衡器和 API 服务器授权 IP 地址范围的现有群集将继续工作，但无法迁移到*标准*SKU 负载平衡器。 如果升级 Kubernetes 版本或控制面，则这些现有群集也会继续工作。
 
 ## <a name="before-you-begin"></a>开始之前
 
 API 服务器授权的 IP 范围仅适用于你创建的新 AKS 群集。 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 
-需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 运行  `az --version` 即可查找版本。 如果需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API 服务器授权的 IP 范围概述
 
@@ -102,7 +102,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>更新群集的 API 服务器授权的 IP 范围
 
-若要在现有群集上更新 API 服务器授权的 IP 范围，请使用[az aks update][az-aks-update]命令并使用--- *-* -------------------- *---* ------------------- *---* 或 *--负载均衡器--ip 前缀*参数。
+若要在现有群集上更新 API 服务器授权的 IP 范围，请使用[az aks update][az-aks-update]命令并使用--- *----* ------------------ *---* ---------------- *---* ------- *---*
 
 以下示例在名为*myResourceGroup*的资源组中，在名为*myAKSCluster*的群集上更新 API 服务器授权的 IP 范围。 要授权的 IP 地址范围为*73.140.245.0/24*：
 

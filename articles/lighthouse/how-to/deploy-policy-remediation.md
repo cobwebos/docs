@@ -3,20 +3,20 @@ title: 部署可修正的策略
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456858"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
-服务提供商可以通过 [Azure Lighthouse](../overview.md) 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[补救任务](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)的策略（即，具有 [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) 或 [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) 效果的策略），需在客户租户中创建[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
+服务提供商可以通过 [Azure Lighthouse](../overview.md) 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[补救任务](../../governance/policy/how-to/remediate-resources.md)的策略（即，具有 [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) 或 [modify](../../governance/policy/concepts/effects.md#modify) 效果的策略），需在客户租户中创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>创建一个可以在客户租户中将角色分配给托管标识的用户
 
-载入 Azure 委托资源管理的客户时，我们使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template)以及用于在管理租户中定义用户、用户组和服务主体的参数文件，而管理租户将能够访问客户租户中的委托资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**)。
+载入 Azure 委托资源管理的客户时，我们使用 [Azure 资源管理器模板](onboard-customer.md#create-an-azure-resource-manager-template)以及用于在管理租户中定义用户、用户组和服务主体的参数文件，而管理租户将能够访问客户租户中的委托资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的[内置角色](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**)。
 
 若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
 
@@ -66,5 +66,5 @@ ms.locfileid: "74463878"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)。
-- 了解 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+- 了解 [Azure Policy](../../governance/policy/index.yml)。
+- 了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。

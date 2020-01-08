@@ -6,23 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494650"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494983"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负荷的性能
 
-IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://tez.apache.org/) 群集上运行的 [Apache TEZ](https://hive.apache.org/) 和 [Apache Hive](https://spark.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
+IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://spark.apache.org/) 群集上运行的 [Apache TEZ](https://tez.apache.org/) 和 [Apache Hive](https://hive.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
 
 大多数 SSD 提供超过 1 GB/秒的带宽。 此带宽由操作系统内存中文件缓存补充，提供的带宽足以加载大数据计算处理引擎（如 Apache Spark）。 剩余的操作内存可供 Apache Spark 处理很大程度依赖于内存的任务（如数据重组）。 独占使用操作内存可让 Apache Spark 实现最佳资源使用情况。  
 
 > [!Note]  
 > IO 缓存当前将 RubiX 用作缓存组件，但在该服务的将来版本中可能会有所更改。 请使用 IO 缓存接口，并且不要直接对 RubiX 实现执行任何依赖项。
->目前仅支持 Azure BLOB 存储的 IO 缓存。 
+>目前仅支持 Azure BLOB 存储的 IO 缓存。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO 缓存的优点
 
@@ -32,21 +32,19 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 ## <a name="getting-started"></a>入门
 
-默认情况下，在预览版中将停用 Azure HDInsight IO 缓存。 IO 缓存可用于运行 Apache Spark 2.3 的 Azure HDInsight 3.6+ Spark 群集。  若要激活 IO 缓存，请执行以下操作：
+默认情况下，在预览版中将停用 Azure HDInsight IO 缓存。 IO 缓存可用于运行 Apache Spark 2.3 的 Azure HDInsight 3.6+ Spark 群集。  若要在 HDInsight 4.0 上激活 IO 缓存，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。
-
-1. 在“概述”页（选择群集时默认打开）中，选择“群集仪表板”下的“Ambari 主页”。
+1. 在 web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
 1. 选择左侧的“IO 缓存”服务。
 
-1. 依次选择”操作”和“激活”。
+1. 选择**操作**（HDI 3.6 中的**服务操作**）并**激活**。
 
     ![在 Ambari 中启用 IO 缓存服务](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "在 Ambari 中启用 IO 缓存服务")
 
 1. 确认重新启动群集上所有受影响的服务。
 
->[!NOTE]  
+> [!NOTE]  
 > 即使进度栏显示已激活，但 IO 缓存实际上未启用，直到重新启动其他受影响的服务。
 
 ## <a name="troubleshooting"></a>故障排除
@@ -75,8 +73,8 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 选择“确认全部重启”。
 
-如果不起作用，请禁用 IO 缓存。
+如果这不起作用，请禁用 IO 缓存。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关 IO 缓存的详细信息，包括以下博客文章中的性能基准：[Apache Spark 作业通过 HDInsight IO 缓存使速度加快 9 倍](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+阅读有关 IO 缓存的详细信息，包括以下博客文章中的性能基准：[Apache Spark 作业通过 HDInsight IO 缓存使速度加快 9 倍](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

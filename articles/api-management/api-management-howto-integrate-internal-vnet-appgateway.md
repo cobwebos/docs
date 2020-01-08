@@ -1,5 +1,6 @@
 ---
-title: 如何在包含应用程序网关的虚拟网络中使用 Azure API 管理 | Microsoft 文档
+title: 如何在使用应用程序网关的虚拟网络中使用 API 管理
+titleSuffix: Azure API Management
 description: 了解如何在使用应用程序网关 (WAF) 作为前端的内部虚拟网络中设置和配置 Azure API 管理
 services: api-management
 documentationcenter: ''
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442704"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
-## <a name="overview"> </a> 概述
+## <a name="overview"></a>概述
 
 可在内部模式下的虚拟网络中配置 API 管理服务，以便只能从该虚拟网络内部访问该服务。 Azure 应用程序网关是一种 PAAS 服务，提供第 7 层负载均衡器。 它充当反向代理服务，并提供 Web 应用程序防火墙 (WAF) 及其他产品/服务。
 
@@ -46,7 +47,7 @@ ms.locfileid: "73176740"
 
 * 证书 - pfx 和 cer 用于 API 主机名，pfx 用于开发人员门户主机名。
 
-## <a name="scenario"> </a> 方案
+## <a name="scenario"></a>方案
 
 本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其成为本地和云 Api 的单一前端。 另外，它还介绍了如何使用应用程序网关中提供的路由功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
 
@@ -54,7 +55,7 @@ ms.locfileid: "73176740"
 
 ![url 路由](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> 准备工作
+## <a name="before-you-begin"></a>开始之前
 
 * 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)上的安装说明。 
 
@@ -68,7 +69,7 @@ ms.locfileid: "73176740"
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
 * **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
 
-## <a name="overview-steps"></a> 集成 API 管理和应用程序网关所要执行的步骤
+## <a name="overview-steps"></a>集成 API 管理和应用程序网关所需的步骤
 
 1. 创建 Resource Manager 的资源组。
 2. 创建应用程序网关的虚拟网络、子网和公共 IP。 为 API 管理创建另一个子网。
@@ -359,10 +360,10 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a> 摘要
+## <a name="summary"></a>摘要
 VNET 中配置的 Azure API 管理为配置的所有 Api 提供单个网关接口，无论这些 Api 是托管在本地还是在云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
 
-## <a name="next-steps"> </a> 后续步骤
+## <a name="next-steps"></a>后续步骤
 * 详细了解 Azure 应用程序网关
   * [应用程序网关概述](../application-gateway/application-gateway-introduction.md)
   * [应用程序网关 Web 应用程序防火墙](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

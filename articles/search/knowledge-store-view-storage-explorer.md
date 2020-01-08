@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 176f0f197db3393c4ef8c37d05234fce41a494e1
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406551"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563201"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>使用存储资源管理器查看知识存储
 
@@ -22,9 +22,9 @@ ms.locfileid: "74406551"
 
 在本文中，你将学习如何使用 Azure 门户中的存储资源管理器连接到知识库并进行浏览。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-+ 按照在 Azure 门户中[创建知识库](knowledge-store-create-portal.md)中的步骤或[通过使用 REST 创建 Azure 认知搜索知识库](knowledge-store-create-rest.md)中的步骤创建本演练中使用的示例知识存储。
++ 按照[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)中的步骤创建本演练中使用的示例知识存储。
 
 + 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74406551"
 
 1. 展开**表**列表以显示对酒店评论示例数据运行“导入数据”向导时创建的 Azure 表投影列表。
 
-选择任何表可查看已扩充的数据，包括关键短语情绪评分、纬度和经度位置数据等。
+选择任何表以查看已扩充的数据，包括关键短语和情绪分数。
 
    ![在存储资源管理器中查看表](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "在存储资源管理器中查看表")
 
@@ -48,7 +48,7 @@ ms.locfileid: "74406551"
 
    ![在存储资源管理器中查询表](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "在存储资源管理器中查询表")
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

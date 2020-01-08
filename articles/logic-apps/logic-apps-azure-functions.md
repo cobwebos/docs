@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 逻辑应用中添加和调用 Azure 函数
-description: 从逻辑应用添加和运行 Azure 函数
+title: 在 Azure 逻辑应用中添加和调用 Azure Functions
+description: 在 Azure 逻辑应用中的自动任务和工作流中调用并运行 Azure Functions 中的自定义代码
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453473"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 

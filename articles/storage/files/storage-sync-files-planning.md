@@ -4,18 +4,18 @@ description: 了解规划 Azure 文件部署时应考虑的问题。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927864"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665263"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
-使用 Azure 文件同步，可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
+使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 本指南介绍有关 Azure 文件同步部署的重要注意事项。 我们建议另外阅读[规划 Azure 文件部署](storage-files-planning.md)。 
 
@@ -28,14 +28,14 @@ ms.locfileid: "74927864"
 存储同步服务是 Azure 文件同步的顶级 Azure 资源。存储同步服务资源是存储帐户资源的对等方，可同样部署到 Azure 资源组。 由于存储同步服务可通过多个同步组创建与多个存储帐户的同步关系，因此需要从存储帐户资源中获得一个不同的顶级资源。 一个订阅可部署有多个存储同步服务资源。
 
 ### <a name="sync-group"></a>同步组
-同步组定义一组文件的同步拓扑。 同步组中的终结点保持彼此同步。 例如，如果想使用 Azure 文件同步管理两组不同文件，需创建两个同步组并在每个同步组中添加不同的终结点。 存储同步服务可承载任意数量的同步组。  
+同步组定义一组文件的同步拓扑。 同步组中的终结点保持彼此同步。 例如，如果您要使用 Azure 文件同步管理两个不同的文件集，则可以创建两个同步组并向每个同步组中添加不同的终结点。 存储同步服务可承载任意数量的同步组。  
 
 ### <a name="registered-server"></a>已注册服务器
 已注册服务器对象表示服务器（或群集）与存储同步服务之间的信任关系。 可在存储同步服务实例中随意注册任意数量的服务器。 但是，每次只能将服务器（或群集）注册到一个存储同步服务。
 
 ### <a name="azure-file-sync-agent"></a>Azure 文件同步代理
 Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 Azure 文件共享的同步。 Azure 文件同步代理包含 3 个主要组件： 
-- **FileSyncSvc.exe**：后台 Windows 服务，负责监视服务器终结点的更改并启动到 Azure 的同步会话。
+- **FileSyncSvc**：负责监视服务器终结点上的更改和启动到 Azure 的同步会话的后台服务。
 - **StorageSync.sys**：Azure 文件同步系统筛选器，负责将文件分层存入 Azure 文件（若云分层已启用）。
 - **PowerShell 管理 cmdlet**：PowerShell cmdlet，用于与 Microsoft.StorageSync Azure 资源提供程序进行交互。 可在以下位置（默认位置）找到这些文件：
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 本部分介绍了 Azure 文件同步代理的系统要求以及与 Windows Server 功能和角色以及第三方解决方案的互操作性。
 
 ### <a name="evaluation-cmdlet"></a>评估 cmdlet
-在部署 Azure 文件同步之前，你应该使用 Azure 文件同步评估 cmdlet 评估它是否与你的系统兼容。 此 cmdlet 将检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的操作系统版本。 请注意，其检查涵盖了下面提到的大多数但并非全部功能；建议你仔细读完本部分的剩余内容，以确保你的部署顺利进行。 
+在部署 Azure 文件同步之前，你应该使用 Azure 文件同步评估 cmdlet 评估它是否与你的系统兼容。 此 cmdlet 将检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的操作系统版本。 它的检查涵盖了下面提到的大多数但不是所有的功能;建议你仔细阅读本部分的其余部分，以确保部署顺利完成。 
 
 可以通过安装 Az PowerShell 模块来安装评估 cmdlet，该模块可按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
@@ -122,7 +122,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 ### <a name="file-system-features"></a>文件系统功能
 
-| Feature | 支持状态 | 说明 |
+| 功能 | 支持状态 | 说明 |
 |---------|----------------|-------|
 | 访问控制列表 (ACL) | 完全支持 | Windows ACL 由 Azure 文件同步进行保留，并由 Windows Server 在服务器终结点上强制实施。 如果直接在云中访问文件，则 Azure 文件不（尚不）支持 Windows ACL。 |
 | 硬链接 | 已跳过 | |
@@ -141,8 +141,10 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 | 文件/文件夹 | 说明 |
 |-|-|
+| pagefile.sys | 特定于系统的文件 |
 | Desktop.ini | 特定于系统的文件 |
-| ethumbs.db$ | 缩略图的临时文件 |
+| thumbs.db | 缩略图的临时文件 |
+| ehthumbs.db | 媒体缩略图的临时文件 |
 | ~$\*.\* | Office 临时文件 |
 | \*.tmp | 临时文件 |
 | \*.laccdb | Access DB 锁定文件|
@@ -194,10 +196,10 @@ Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进�
 **DFS 复制（dfs-r）** ：由于 DFS-r 和 Azure 文件同步都是复制解决方案，因此在大多数情况下，我们建议用 AZURE 文件同步替换 dfs。但在某些情况下，你可能想要同时使用 DFS R 和 Azure 文件同步：
 
 - 从 DFS-R 部署迁移至 Azure 文件同步部署。 有关详细信息，请参阅[将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)。
-- 并非需要文件数据副本的每个本地服务器都可以直接连接至 Internet。
+- 并非需要文件数据副本的每个本地服务器都可以直接连接到 internet。
 - 分支服务器将数据合并至单个中心服务器，你希望在该服务器中使用 Azure 文件同步。
 
-对于 Azure 文件同步和 DFS-R 并行工作的情况：
+对于 Azure 文件同步和 DFS 并行工作：
 
 1. 必须在包含 DFS-R 复制文件夹的卷上禁用 Azure 文件同步云分层。
 2. 不应在 DFS-R 只读复制文件夹上配置服务器终结点。
@@ -205,7 +207,7 @@ Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进�
 有关详细信息，请参阅 [DFS 复制概述](https://technet.microsoft.com/library/jj127250)。
 
 ### <a name="sysprep"></a>Sysprep
-不支持在安装了 Azure 文件同步代理的服务器上使用 sysprep，那样做会导致意外结果。 应该在部署服务器映像并完成 sysprep 迷你安装后再安装代理和注册服务器。
+不支持在安装了 Azure 文件同步代理的服务器上使用 sysprep，这可能会导致意外的结果。 应该在部署服务器映像并完成 sysprep 迷你安装后再安装代理和注册服务器。
 
 ### <a name="windows-search"></a>Windows 搜索
 如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会由 Windows 搜索进行索引。 非分层文件会适当进行索引。
@@ -221,13 +223,13 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
 
-如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
+如果使用本地备份解决方案，则应在禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
 
 > [!Note]  
 > 祼机 (BMR) 还原可能会导致意外的结果且当前不受支持。
 
 > [!Note]  
-> 使用 Azure 文件同步代理的版本9，现在支持在启用云分层的卷上使用 VSS 快照（包括 "以前的版本" 选项卡）。 但是，必须通过 PowerShell 启用以前版本的兼容性。 [了解操作方法](storage-files-deployment-guide.md)。
+> 使用 Azure 文件同步代理的版本9时，现在支持在启用云分层的卷上使用 VSS 快照（包括 "以前的版本" 选项卡）。 但是，必须通过 PowerShell 启用以前版本的兼容性。 [了解操作方法](storage-files-deployment-guide.md)。
 
 ### <a name="encryption-solutions"></a>加密解决方案
 是否支持加密解决方案取决于其实现方式。 Azure 文件同步现支持：
@@ -266,7 +268,7 @@ Azure 文件同步仅在以下区域中可用：
 | 日本东部 | 东京都埼玉县 |
 | 日本西部 | 大阪 |
 | 美国中北部 | 伊利诺斯州 |
-| 北欧 | 爱尔兰 |
+| 欧洲北部 | 爱尔兰 |
 | 南非北部 | 约翰内斯堡 |
 | 南非西部 * | 开普敦 |
 | 美国中南部 | 德克萨斯 |
@@ -289,7 +291,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 对于用星号标记的区域，必须与 Azure 支持部门联系，请求访问这些区域中的 Azure 存储。 [本文档](https://azure.microsoft.com/global-infrastructure/geographies/)概述了此过程。
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
-为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
+为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 如果发生导致 Azure 区域暂时或永久脱机的灾难，则 Microsoft 会将存储故障转移到配对区域。 
 
 > [!Warning]  
 > 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
@@ -314,7 +316,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 日本西部          | 日本东部         |
 | 韩国中部       | 韩国南部        |
 | 韩国南部         | 韩国中部      |
-| 北欧        | 欧洲西部        |
+| 欧洲北部        | 欧洲西部        |
 | 美国中北部    | 美国中南部   |
 | 南非北部  | 南非西部  |
 | 南非西部   | 南非北部 |
@@ -326,13 +328,37 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | US Gov 亚利桑那州      | US Gov 德克萨斯州       |
 | US Gov 爱荷华州         | 美国弗吉尼亚州政府    |
 | 美国弗吉尼亚州政府      | US Gov 德克萨斯州       |
-| 欧洲西部         | 北欧       |
+| 欧洲西部         | 欧洲北部       |
 | 美国中西部     | 美国西部 2          |
 | 美国西部             | 美国东部            |
 | 美国西部 2           | 美国中西部    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>建议 Azure 文件同步计算机配置
+
+Azure 文件同步计算机要求由命名空间中的对象数和数据集上的改动决定。 单个服务器可以附加到多个同步组，而对于服务器附加到的完整命名空间，可以在下表中列出的对象数。 例如，具有10000000对象的服务器终结点 + 带有10000000对象的服务器终结点 B = 20000000 对象。 对于该示例部署，我们建议将8CPU、16GiB 内存用于稳定状态，并为初始迁移建议（如果可能）内存48GiB。
+ 
+出于性能原因，命名空间数据存储在内存中。 因此，较大的命名空间需要更多内存来保持良好的性能，并且更多的改动需要更多的 CPU 来处理。 
+ 
+在下表中，我们提供了命名空间的大小以及转换为典型常规用途文件共享的容量，其中平均文件大小为512KiB。 如果文件大小较小，请考虑为同一容量增加额外的内存。 将内存配置基于命名空间的大小。
+
+| 命名空间大小-文件 & 目录（百万）  | 典型容量（TiB）  | CPU 内核数  | 推荐的内存（GiB） |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8（初始同步）/2 （典型变动）      |
+| 5        | 2.3     | 2        | 16（初始同步）/4 （典型变动）    |
+| 10       | 4.7     | 4        | 32（初始同步）/8 （典型变动）   |
+| 30       | 14.0    | 8        | 48（初始同步）/16 （典型变动）   |
+| 50       | 23.3    | 16       | 64（初始同步）/32 （典型变动）  |
+| 100*     | 46.6    | 32       | 128（初始同步）/32 （典型变动）  |
+
+目前不支持 \*超过100000000个文件 & 目录。 这是一个软限制。
+
+> [!TIP]
+> 命名空间的初始同步是一种密集型操作，我们建议在初始同步完成之前分配更多内存。 这不是必需的，但可能会加速初始同步。 
+> 
+> 通常，每日更改的命名空间为0.5%。 对于较高级别的改动，请考虑添加更多 CPU。 
 
 ## <a name="next-steps"></a>后续步骤
 * [考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)

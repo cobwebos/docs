@@ -3,18 +3,18 @@ title: 术语词汇表-IoT 即插即用预览版 |Microsoft Docs
 description: 概念-与 IoT 即插即用预览相关的常见术语的词汇表。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890342"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531195"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -38,7 +38,7 @@ Azure CLI 是一种跨平台的命令行工具，用于管理 Azure 资源。 �
 - 调用设备[命令](#commands)。
 - 管理[模型存储库](#model-repository)、[接口](#interface)和[设备功能模型](#device-capability-model)。
 
-## <a name="azure-iot-central"></a>Azure IoT Central
+## <a name="azure-iot-central"></a>Azure IoT 中心
 
 Azure IoT Central 是一种完全托管的软件即服务解决方案，可让你轻松地连接、监视和管理[IoT 即插即用设备](#iot-plug-and-play-device)。 你可以使用[设备功能模型](#device-capability-model)自动配置 IoT Central 应用程序，以监视和管理你的设备。
 
@@ -105,7 +105,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="device-certification"></a>设备认证
 
-设备证书是验证[IoT 即插即用设备](#iot-plug-and-play-device)的过程，以便可以将其添加到[IoT 认证设备目录](#certified-for-iot-device-catalog)及其[设备功能模型](#device-capability-model)和添加到公共模型的[接口](#interface) [存储库](#public-model-repository)。
+设备证书是验证[IoT 即插即用设备](#iot-plug-and-play-device)的过程，以便可以将其添加到[IoT 认证设备目录](#certified-for-iot-device-catalog)及其[设备功能模型](#device-capability-model)和添加到[公共模型存储库](#public-model-repository)的[接口](#interface)。
 
 ## <a name="device-developer"></a>设备开发人员
 

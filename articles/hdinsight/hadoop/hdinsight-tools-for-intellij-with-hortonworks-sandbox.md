@@ -3,18 +3,18 @@ title: 将 Azure Toolkit for IntelliJ 与 Hortonworks 沙盒配合使用
 description: 了解如何将用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具与 Hortonworks 沙盒配合使用。
 keywords: hadoop 工具,hive 查询,intellij,hortonworks 沙盒,用于 intellij 的 azure 工具包
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076259"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647826"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "71076259"
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](apache-hadoop-introduction.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始阅读本文前，必须具有以下项目：
 
@@ -57,7 +57,7 @@ ms.locfileid: "71076259"
 
    ![Intellij 新建 scala 项目](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. 选择“**下一步**”。
+2. 选择“**下一页**”。
 3. 在接下来显示的“新建项目”对话框中，完成以下步骤：
 
    1. 在“项目名称”框中输入项目名称。
@@ -139,12 +139,12 @@ ms.locfileid: "71076259"
 若要将项目提交到模拟器，请执行以下操作：
 
 1. 在“项目资源管理器”中，右键单击项目，并选择“将 Spark 应用程序提交到 HDInsight”。
-2. 完成以下步骤：
+2. 请完成下列步骤：
 
     1. 在“Spark 群集(仅 Linux)”下拉列表中，选择本地 Hortonworks 沙盒。
     2. 在“主类名”框中，选择或输入主类名。 对于本文，名称为**GroupByTest**。
 
-3. 选择**提交**。 作业提交日志显示在“Spark”提交工具窗口。
+3. 选择“提交”。 作业提交日志显示在“Spark”提交工具窗口。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -158,4 +158,3 @@ ms.locfileid: "71076259"
 
 - 了解如何[使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Apache Spark 应用程序](../spark/apache-spark-eclipse-tool-plugin.md)。
 
-- 有关用于 Eclipse 的 HDInsight 工具的视频，请参阅[通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序](https://mix.office.com/watch/1rau2mopb6fha)。

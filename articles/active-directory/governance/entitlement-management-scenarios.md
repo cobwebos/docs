@@ -1,5 +1,5 @@
 ---
-title: Azure AD 权限管理的常见方案-Azure Active Directory
+title: 授权管理的常见方案-Azure AD
 description: 了解 Azure Active Directory 授权管理的常见方案应遵循的高级步骤。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173502"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422509"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 授权管理的常见方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "73173502"
 
 ### <a name="catalog-creator-delegate-management-of-resources"></a>目录创建者：委派资源管理
 
-- [创建新目录](entitlement-management-catalog-create.md#create-a-catalog)
+- [“创建新目录”](entitlement-management-catalog-create.md#create-a-catalog)
 
 ### <a name="catalog-owner-delegate-management-of-resources"></a>目录所有者：委派资源管理
 

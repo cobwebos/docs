@@ -1,14 +1,14 @@
 ---
 title: 云解决方案提供商计划注意事项
 description: 对于 CSP 合作伙伴，Azure 委派资源管理通过启用细化权限来帮助提高安全性和控制力。
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456917"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 和云解决方案提供商计划
 
@@ -34,9 +34,9 @@ ms.locfileid: "74463958"
 ![使用 AOBO 和 Azure 委派资源管理进行租户管理](../media/csp-2.jpg)
 
 > [!NOTE]
-> [Azure 门户中的“我的客户”页**现在包含“云解决方案提供程序(预览版)”部分，该部分显示了已**签署 Microsoft 客户协议 (MCA)](../how-to/view-manage-customers.md) 并且处于 Azure 计划下的 CSP 客户的帐单信息和资源[](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
+> Azure 门户中的 " [**我的客户**" 页面](../how-to/view-manage-customers.md)现在包含一个 "**云解决方案提供商（预览版）** " 部分，该部分显示已[签署 Microsoft 客户协议（MCA）](https://docs.microsoft.com/partner-center/confirm-customer-agreement)并位于[Azure 计划下](https://docs.microsoft.com/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../billing/mpa-overview.md)。
 >
-> 无论是否已载入 Azure 委托资源管理，CSP 客户都可能出现在此部分中。 如果已载入，则它们也会显示在“客户”部分中，如[查看和管理客户和委托的资源](../how-to/view-manage-customers.md)中所述。
+> CSP 客户可能会在此部分中出现，无论他们是否已载入 Azure 委托资源管理。 如果有，则它们也会显示在**customers**节中，如[查看和管理客户和委派的资源](../how-to/view-manage-customers.md)中所述。 同样，CSP 客户无需显示在 "**我的客户**的**云解决方案提供商（预览版）** " 部分中，即可将它们加入 Azure 委托资源管理。
 
 ## <a name="next-steps"></a>后续步骤
 

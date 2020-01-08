@@ -1,5 +1,6 @@
 ---
-title: 适用于 Azure 存储的高级威胁防护
+title: 配置高级威胁防护
+titleSuffix: Azure Storage
 description: 为 Azure 存储配置高级威胁防护，以检测帐户活动中的异常，并通知可能有害的访问帐户尝试。
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457411"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>适用于 Azure 存储的高级威胁防护
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>配置 Azure 存储的高级威胁防护
 
 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
 
@@ -54,7 +55,7 @@ ms.locfileid: "73495962"
 1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中，单击 "**已启用**" 或 "**已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ### <a name="templatetabtemplate"></a>[模板](#tab/template)
 

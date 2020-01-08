@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9a36b46d11657ef52051f8bf8df1e4944051da23
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445178"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>监视 Azure Cosmos DB
 如果你有依赖于 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure Cosmos 数据库生成的监视数据，以及如何使用 Azure Monitor 的功能对此数据进行分析和发出警报。
@@ -37,46 +37,15 @@ Azure Cosmos DB 使用[Azure Monitor](../azure-monitor/overview.md)创建监视�
 ![Cosmos DB 的 Azure Monitor](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>监视从 Azure Cosmos DB 收集的数据
+
 Azure Cosmos DB 收集相同种类的监视数据，如[监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中的数据中所述的其他 azure 资源。 有关 Azure Cosmos DB 创建的日志和指标的详细参考信息，请参阅[Azure Cosmos DB 监视数据参考](monitor-cosmos-db-reference.md)。
 
 每个 Azure Cosmos 数据库的 Azure 门户中的 "**概述**" 页包含数据库使用情况的简要视图，包括请求和每小时计费。 这是有用的信息，但只提供少量的监视数据。 在您创建数据库时，会自动收集这些数据，并可进行分析，同时可以使用某些配置启用其他数据收集。
 
 ![概述页](media/monitor-cosmos-db/overview-page.png)
 
-
-
-## <a name="diagnostic-settings"></a>诊断设置
-平台指标和活动日志会自动收集，但你必须创建诊断设置以收集资源日志，或将其转发到 Azure Monitor 之外。 有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)。
-
-创建诊断设置时，可指定要收集的日志类别。 下面列出了 Azure Cosmos DB 的类别以及示例数据。
-
- * **DataPlaneRequests**：选择此选项可将后端请求记录到包含 Azure Cosmos DB 中的 SQL、Graph、MongoDB、Cassandra 和表 API 帐户的所有 api。 要注意的关键属性包括： Requestcharge、statusCode、clientIPaddress 和 partitionID。
-
-    ```
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
-
-* **MongoRequests**：选择此选项以记录前端的用户启动的请求，以便为 MongoDB 提供 Azure Cosmos DB API 的请求。 MongoDB 请求会显示在 MongoRequests 和 DataPlaneRequests 中。 要注意的关键属性包括： Requestcharge、操作码。
-
-    ```
-    { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
-    ```
-
-* **QueryRuntimeStatistics**：选择此选项可记录已执行的查询文本。 
-
-    ```
-    { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
-    ```
-
-* **PartitionKeyStatistics**：选择此选项以记录分区键的统计信息。 当前用分区键的存储大小（KB）表示。 日志针对占用大部分数据存储空间的前三个分区键发出。
-
-    ```
-    { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
-    ```
-
-* **指标请求**：选择此选项可将指标数据从 Azure Cosmos DB 收集到诊断设置中的目标。 这是在 Azure 指标中自动收集的相同数据。 收集包含资源日志的指标数据，将这两种类型的数据组合在一起，并发送 Azure Monitor 之外的指标数据。
-
 ## <a name="analyzing-metric-data"></a>分析指标数据
+
 Azure Cosmos DB 提供了使用指标的自定义体验。 有关使用此体验和分析不同的 Azure Cosmos DB 方案的详细信息，请参阅[监视和调试 Azure Monitor 中的 Azure Cosmos DB 度量](cosmos-db-azure-monitor-metrics.md)。
 
 可以通过在 " **Azure Monitor** " 菜单中打开 "**指标**"，使用指标资源管理器从其他 Azure 服务中的指标 Azure Cosmos DB 分析指标。 有关使用此工具的详细信息，请参阅[Azure 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)入门。 Azure Cosmos DB 的所有指标都在命名空间**Cosmos DB 标准指标**中。 向图表添加筛选器时，可以使用以下维度和这些指标：
@@ -91,7 +60,7 @@ Azure Cosmos DB 提供了使用指标的自定义体验。 有关使用此体验
 ## <a name="analyzing-log-data"></a>分析日志数据
 Azure Monitor 日志中的数据存储在表中，每个表都具有自己的唯一属性集。 Azure Cosmos DB 将数据存储在下表中。
 
-| 表 | 说明 |
+| 表 | Description |
 |:---|:---|
 | AzureDiagnostics | 多个服务用来存储资源日志的公用表。 Azure Cosmos DB 中的资源日志可通过 `MICROSOFT.DOCUMENTDB`标识。   |
 | AzureActivity    | 用于存储活动日志中所有记录的公用表。 

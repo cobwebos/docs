@@ -1,10 +1,10 @@
 ---
 title: 以编程方式创建 Azure 仪表板 | Microsoft Docs
-description: 本文介绍如何以编程方式创建 Azure 仪表板。
+description: 你可以使用 Azure 门户中的仪表板作为模板来以编程方式创建 Azure 仪表板。 包含 JSON 引用。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: 498e0255cfa289f7d8ccb93040980c362cf510a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552136"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640340"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -32,7 +32,7 @@ Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源]
 
 所有这些 API 和工具都提供了创建、罗列、检索、修改和删除资源的方法。  由于仪表板是资源，因此可以选择使用最喜欢的 API/工具。
 
-无论使用哪种工具，都需要先构造仪表板对象的 JSON 表示形式，然后才能调用资源创建 API。 此对象包含有关仪表板上部件（也称为 磁贴）的信息。 包括大小、位置、绑定到的资源和任何用户自定义项。
+无论使用哪种工具，都需要先构造仪表板对象的 JSON 表示形式，然后才能调用资源创建 API。 此对象包含有关仪表板上部件（也称为 磁贴）的对象。 包括大小、位置、绑定到的资源和任何用户自定义项。
 
 构建此 JSON 文档的最实用方法是使用[门户](https://portal.azure.com/)以交互方式添加并放置磁贴。 然后，导出 JSON。 最后，从结果创建模板，以供后面在脚本、程序和部署工具中使用。
 
@@ -380,7 +380,7 @@ __可在本文档末尾查看完整的工作模板。__
 
 ### <a name="template-representation-of-our-example-dashboard"></a>示例仪表板的模板表示形式
 
-仪表板的模板版本定义了三个参数，分别为virtualMachineName、virtualMachineResourceGroup 和 dashboardName    。  使用这些参数可在每次部署时将此仪表板指向不同的 Azure 虚拟机。 突出显示了参数化的 id，用于指示此仪表板可以编程方式配置并部署为指向任何 Azure 虚拟机。 测试此功能的最简单方法是复制以下模板并将其粘贴到 [Azure 门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)。 
+仪表板的模板版本定义了三个参数，分别为virtualMachineName、virtualMachineResourceGroup 和 dashboardName。  使用这些参数可在每次部署时将此仪表板指向不同的 Azure 虚拟机。 突出显示了参数化的 id，用于指示此仪表板可以编程方式配置并部署为指向任何 Azure 虚拟机。 测试此功能的最简单方法是复制以下模板并将其粘贴到 [Azure 门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)。 
 
 此示例自行部署了一个仪表板，但使用模板语言可部署多个资源并将其与一个或多个仪表板绑定。 
 

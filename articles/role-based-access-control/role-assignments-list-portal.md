@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462248"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
 
@@ -80,6 +80,32 @@ ms.locfileid: "74710420"
     ![分配窗格](./media/role-assignments-list-portal/check-access-assignments.png)
 
     在此窗格中，可以看到分配给所选安全主体和范围的角色。 如果此范围内有任何拒绝分配或继承到此范围的角色，则会将其列出。
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>为系统分配的托管标识列出角色分配
+
+1. 在 Azure 门户中，打开一个系统分配的托管标识。
+
+1. 在左侧菜单中，单击 "**标识**"。
+
+    ![系统分配的托管标识](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. 在 "**角色分配**" 下，单击 **"显示分配给此托管标识的 Azure RBAC 角色"** 。
+
+    在管理组、订阅、资源组或资源等不同范围内，你会看到分配给所选系统分配的托管标识的角色的列表。 此列表包含您有权读取的所有角色分配。
+
+    ![系统分配的托管标识的角色分配](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>列出用户分配的托管标识的角色分配
+
+1. 在 Azure 门户中，打开一个系统分配的托管标识。
+
+1. 单击“Azure 资源”。
+
+    在管理组、订阅、资源组或资源等不同范围内，你会看到分配给所选用户分配的托管标识的角色的列表。 此列表包含您有权读取的所有角色分配。
+
+    ![系统分配的托管标识的角色分配](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. 若要更改订阅，请单击 "**订阅**" 列表。
 
 ## <a name="next-steps"></a>后续步骤
 

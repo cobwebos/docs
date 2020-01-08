@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 36a0c36de7b3f6c6aa4932770e6264bc14c2790f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518081"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610618"
 ---
-# <a name="connect-citrix-analytics-security"></a>连接 Citrix Analytics （安全） 
+# <a name="connect-citrix-analytics-security"></a>连接 Citrix Analytics（安全） 
 
 通过与 Azure Sentinel 集成，citrix 分析（安全）可帮助你将分析的风险事件的数据导出到 Azure Sentinel。 你可以创建自定义仪表板、从 Citrix 分析（安全）分析其他数据源中的数据，以及使用逻辑应用创建自定义工作流来监视和缓解安全事件。 
 
@@ -44,6 +44,8 @@ ms.locfileid: "73518081"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Citrix 分析（安全）连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+
 

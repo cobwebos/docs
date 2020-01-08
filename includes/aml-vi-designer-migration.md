@@ -8,14 +8,14 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517847"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75541798"
 ---
-1. 登录到[Azure 机器学习 studio](https://ml.azure.com)。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)。
 
 1. 将工作区升级到 Enterprise edition。
 
@@ -38,5 +38,5 @@ ms.locfileid: "73517847"
 
 - **导入数据**或**导出数据**模块
         
-    如果在试验中有 "**导入数据**" 或 "**导出数据**" 模块，则需要更新数据源以使用数据存储。 若要了解如何创建数据存储，请参阅[如何访问 Azure 存储服务中的数据](../articles/machine-learning/service/how-to-access-data.md)。 为了方便起见，已在 "**导入数据**" 或 "**导出数据**" 模块的注释中添加了你的云存储帐户信息。 
+    如果在试验中有 "**导入数据**" 或 "**导出数据**" 模块，则需要更新数据源以使用数据存储。 若要了解如何创建数据存储，请参阅[如何访问 Azure 存储服务中的数据](../articles/machine-learning/how-to-access-data.md)。 为了方便起见，已在 "**导入数据**" 或 "**导出数据**" 模块的注释中添加了你的云存储帐户信息。 
       

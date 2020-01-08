@@ -1,5 +1,6 @@
 ---
-title: 如何将 Azure API 管理与 Azure Application Insights 集成 | Microsoft Docs
+title: 将 Azure API 管理与 Azure 应用程序 Insights 集成
+titleSuffix: Azure API Management
 description: 了解如何在 Azure Application Insights 中记录和查看来自 Azure API 管理的事件。
 services: api-management
 documentationcenter: ''
@@ -12,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442714"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
 Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可扩展的服务，可让 Web 开发人员在多个平台上生成和管理应用）。 本指南逐步讲解这种集成的每个步骤，并介绍可以采取哪些策略来降低对 API 管理服务实例的性能影响。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要执行本指南中的步骤，需要一个 Azure API 管理实例。 如果没有该实例，请先完成[此教程](get-started-create-service-instance.md)。
 
@@ -63,7 +64,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 6. 选中“启用”框。
 7. 在“目标”下拉列表中选择附加的记录器。
 8. 输入 **100** 作为“采样率”，并勾选“始终记录错误”复选框。
-9. 单击“保存”。
+9. 单击“ **保存**”。
 
 > [!WARNING]
 > 重写“正文的第一个字节”字段中的默认值“0”可能会显著降低 API 的性能。
@@ -71,15 +72,15 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 > [!NOTE]
 > 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) 实体。
 
-| 设置名称                        | 值类型                        | 描述                                                                                                                                                                                                                                                                                                                                      |
+| 设置名称                        | 值类型                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 启用                              | boolean                           | 指定是否要启用此 API 的日志记录。                                                                                                                                                                                                                                                                                                |
-| Destination                         | Azure Application Insights 记录器 | 指定要使用的 Azure Application Insights 记录器                                                                                                                                                                                                                                                                                           |
-| 采样率                        | decimal                           | 值为 0 到 100（百分比）。 <br/> 指定要将多少百分比的请求记录到 Azure Application Insights。 0% 采样表示不记录任何请求，100% 采样表示记录所有请求。 <br/> 此设置用于降低将请求记录到 Azure Application Insights 时所造成的性能影响（请参阅以下部分）。 |
+| 目标                         | Azure Application Insights 记录器 | 指定要使用的 Azure Application Insights 记录器                                                                                                                                                                                                                                                                                           |
+| 采样率                        | Decimal                           | 值为 0 到 100（百分比）。 <br/> 指定要将多少百分比的请求记录到 Azure Application Insights。 0% 采样表示不记录任何请求，100% 采样表示记录所有请求。 <br/> 此设置用于降低将请求记录到 Azure Application Insights 时所造成的性能影响（请参阅以下部分）。 |
 | 始终记录错误                   | boolean                           | 如果选择此设置，则会将所有错误记录到 Azure Application Insights，不管“采样率”设置如何。                                                                                                                                                                                                                  |
 | 基本选项：标头              | list                              | 指定要记录到 Azure Application Insights 的请求和响应标头。  默认值：不记录标头。                                                                                                                                                                                                             |
-| 基本选项：正文的第一个字节  | integer                           | 指定要将请求和响应正文的最前面多少个字节记录到 Azure Application Insights。  默认值：不记录正文。                                                                                                                                                                                                    |
-| 高级选项：Verbosity         |                                   | 指定详细级别。 将仅记录具有较高严重性级别的自定义跟踪。 默认值：信息.                                                                                                                                                                                                                               |
+| 基本选项：正文的前几个字节  | integer                           | 指定要将请求和响应正文的最前面多少个字节记录到 Azure Application Insights。  默认值：不记录正文。                                                                                                                                                                                                    |
+| 高级选项：详细级别         |                                   | 指定详细级别。 将仅记录具有较高严重性级别的自定义跟踪。 默认值：信息。                                                                                                                                                                                                                               |
 | 高级选项：前端请求  |                                   | 指定是否以及如何将前端请求记录到 Azure Application Insights。 前端请求是传入 Azure API 管理服务的请求。                                                                                                                                                                        |
 | 高级选项：前端响应 |                                   | 指定是否以及如何将前端响应记录到 Azure Application Insights。 前端响应是传出 Azure API 管理服务的响应。                                                                                                                                                                   |
 | 高级选项：后端请求   |                                   | 指定是否以及如何将后端请求记录到 Azure Application Insights。 后端请求是传出 Azure API 管理服务的请求。                                                                                                                                                                        |

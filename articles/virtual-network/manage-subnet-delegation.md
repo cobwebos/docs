@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425885"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委派
 
@@ -33,17 +33,17 @@ ms.locfileid: "73747879"
 
 在本部分中，将创建一个虚拟网络和子网，稍后将其委托给 Azure 服务。
 
-1. 在屏幕的左上方，选择“创建资源” **“网络”** “虚拟网络” >  > 。
+1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”。
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入*MyVirtualNetwork*。 |
+    | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
     | 位置 | 选择**EastUS**。|
-    | 子网 - 名称 | 输入*mySubnet*。 |
+    | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 *10.0.0.0/24*。 |
     |||
 1. 将 rest 保留为默认值，然后选择 "**创建**"。
@@ -90,7 +90,7 @@ ms.locfileid: "73747879"
 ```
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 **az network vnet create** 在 **myResourceGroup** 中创建名为 **myVnet** 的虚拟网络，该虚拟网络包含名为 [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) 的子网。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 **myResourceGroup** 中创建名为 **myVnet** 的虚拟网络，该虚拟网络包含名为 **mySubnet** 的子网。
 
 ```azurecli-interactive
   az network vnet create \
@@ -124,7 +124,7 @@ ms.locfileid: "73747879"
 若要验证委派是否已应用，请使用[az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 验证是否已将服务委托给属性**serviceName**下的子网：
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet

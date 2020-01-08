@@ -1,6 +1,6 @@
 ---
-title: 使用基于 Azure Sentinel 中 Azure Monitor 工作簿的仪表板监视数据 |Microsoft Docs
-description: 使用本教程了解如何使用基于 Azure Sentinel 中工作簿的仪表板监视数据。
+title: 使用基于 Azure Sentinel 中 Azure Monitor 工作簿的仪表板可视化数据 |Microsoft Docs
+description: 本教程介绍如何使用基于 Azure Sentinel 中工作簿的仪表板来可视化数据。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2019
+ms.date: 01/01/2020
 ms.author: rkarlin
-ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158855"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610448"
 ---
-# <a name="tutorial-monitor-your-data"></a>教程：监视数据
+# <a name="tutorial-visualize-and-monitor-your-data"></a>教程：可视化和监视你的数据
 
 
 
-将 [数据源连接](quickstart-onboard.md)到 azure sentinel 后，可以使用 azure sentinel 与 Azure Monitor 工作簿集成来监视数据，这在创建自定义仪表板的同时提供了丰富的 。 尽管工作簿在 Azure Sentinel 中以不同的方式显示，但你可以查看如何[通过 Azure Monitor 工作簿创建交互式报表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
+将 [数据源连接](quickstart-onboard.md) 到 azure sentinel 后，可以使用 azure sentinel 采用 Azure Monitor 工作簿来可视化和监视数据，这在创建自定义仪表板的同时提供了丰富的用途。 尽管工作簿在 Azure Sentinel 中以不同的方式显示，但你可以查看如何[通过 Azure Monitor 工作簿创建交互式报表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
 
 
-本教程可帮助你在 Azure Sentinel 中监视数据。
+本教程可帮助你在 Azure Sentinel 中直观显示数据。
 > [!div class="checklist"]
 > * 使用内置工作簿
 > * 创建新工作簿
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 对于 Azure Sentinel 工作区的资源组，您必须至少具有工作簿读取器或工作簿参与者权限。
 

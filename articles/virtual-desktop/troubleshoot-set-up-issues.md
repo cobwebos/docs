@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: MT
+ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459484"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -59,7 +59,7 @@ ms.locfileid: "73607430"
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>正在创建 Windows 虚拟桌面会话主机 Vm
 
-可以通过多种方式创建会话主机 Vm，但远程桌面服务/Windows 虚拟桌面团队仅支持 Azure 资源管理器模板相关的 VM 设置问题。 Azure [Marketplace](https://azuremarketplace.microsoft.com/)和[GitHub](https://github.com/)中提供了 azure 资源管理器模板。
+可以通过多种方式创建会话主机 Vm，但 Windows 虚拟桌面团队仅支持与[Azure Marketplace](https://azuremarketplace.microsoft.com/)产品/服务相关的 VM 设置问题。 有关更多详细信息，请参阅[使用 Windows 虚拟桌面的问题-预配主机池 Azure Marketplace 产品/服务](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)。
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>使用 Windows 虚拟桌面的问题–预配主机池 Azure Marketplace 产品/服务
 
@@ -87,6 +87,27 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>错误：收到 "模板部署无效" 错误
+
+![模板部署的屏幕截图 .。。无效 "错误](media/troubleshooting-marketplace-validation-error-generic.png)
+
+在采取特定操作之前，需要检查活动日志以查看失败的部署验证的详细错误。
+
+查看活动日志中的错误：
+
+1. 退出当前的 Azure Marketplace 部署产品/服务。
+2. 在顶部搜索栏中，搜索并选择 "**活动日志**"。
+3. 找到名为 "**验证部署** **" 的活动，并选择**该活动。
+   ![单个 * * 验证部署的屏幕截图 * * 状态为 "失败" 的活动 * * 状态](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. 选择 "JSON"，然后向下滚动到屏幕底部，直到看到 "statusMessage" 字段。
+   失败活动 ![屏幕截图，JSON 文本的 statusMessage 属性周围有一个红色框。](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+如果操作模板超过配额限制，则可以执行下列操作之一来解决此问题：
+
+ - 使用首次使用的参数运行 Azure Marketplace，但这次使用的 Vm 和 VM 内核数更少。
+ - 在浏览器中打开在**statusMessage**字段中看到的链接，以提交为指定 VM SKU 增加 Azure 订阅配额的请求。
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure 资源管理器模板和 PowerShell 所需状态配置（DSC）错误
 
@@ -346,9 +367,10 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 - 有关 Windows 虚拟桌面故障排除和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
 - 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
-- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
-- 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。
+- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
+- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)。
+- 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/resource-manager-deployment-operations.md)。

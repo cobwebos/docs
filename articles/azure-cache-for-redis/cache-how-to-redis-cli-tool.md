@@ -1,17 +1,17 @@
 ---
 title: 如何将 redis 与用于 Redis 的 Azure 缓存配合使用
-description: 了解如何将 redis-cli 与 Azure Redis 缓存配合使用。
+description: 了解如何使用*redis-cli.exe*作为一个命令行工具，用于与用于 Redis 的 Azure 缓存作为客户端进行交互。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: yegu
-ms.openlocfilehash: 510110a201e943b8ffce07fc7d0de1361264ae62
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412671"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -48,7 +48,7 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
     右键单击 stunnel 服务器的任务栏图标，然后单击“显示日志窗口”。
 
-    在 stunnel“日志窗口”菜单上，单击“配置” **“编辑配置”，打开当前配置文件** > 。
+    在 stunnel“日志窗口”菜单上，单击“配置” > “编辑配置”，打开当前配置文件。
 
     在“服务定义”部分下向 redis-cli.exe 添加以下项。 将 `yourcachename` 替换为实际缓存名称。 
 
@@ -61,7 +61,7 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
     保存并关闭配置文件。 
   
-    在 stunnel“日志窗口”菜单中，单击“配置” **“重新加载配置”**  > 。
+    在 stunnel“日志窗口”菜单中，单击“配置” > “重新加载配置”。
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>使用 Redis 命令行工具进行连接。
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![在 stunnel 中运行 redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-如果将测试缓存与不安全的非 SSL 端口一起使用，请运行  **并传递主机名、端口和访问密钥（主要或次要），以连接到测试缓存**`redis-cli.exe`。
+如果将测试缓存与不安全的非 SSL 端口一起使用，请运行 `redis-cli.exe` 并传递主机名、端口和访问密钥（主要或次要），以连接到测试缓存。
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

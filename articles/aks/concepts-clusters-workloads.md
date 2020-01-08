@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442975"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
-随着应用程序开发向基于容器的方法发展，安排和管理资源的需求变得很重要。 Kubernetes 是提供可靠的容错应用程序工作负荷计划能力的领先平台。 Azure Kubernetes 服务 (AKS) 是一种托管 Kubernetes 产品/服务，可进一步简化基于容器的应用程序部署和管理。
+当应用程序开发向基于容器的开发转变时，资源的安排和管理就变得非常重要。 Kubernetes 是提供可靠的容错应用程序工作负荷计划能力的领先平台。 Azure Kubernetes 服务 (AKS) 是一种托管 Kubernetes 产品/服务，可进一步简化基于容器的应用程序部署和管理。
 
 本文介绍了核心 Kubernetes 基础结构组件，如*控制平面*、*节点*和*节点池*。 还介绍了 Pod、部署和集等工作负荷资源，以及如何将资源分组到命名空间。
 
@@ -28,7 +28,7 @@ Kubernetes 是一个快速发展的平台，用于管理基于容器的应用程
 
 作为开放平台，Kubernetes 可使用首选的编程语言、OS、库或消息总线生成应用程序。 现有的持续集成和持续交付 (CI/CD) 工具可以与 Kubernetes 集成，以计划和部署版本。
 
-Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 AKS 控制平面由 Azure 平台管理，你只需为运行你的应用程序的 AKS 节点付费。 AKS 建立在开放源代码 Azure Kubernetes 服务引擎 ([aks-engine][aks-engine]) 的基础之上。
+Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 AKS 控制平面由 Azure 平台管理，你只需为运行你的应用程序的 AKS 节点付费。 AKS 基于开源 Azure Kubernetes 服务引擎（[AKS][aks-engine]）构建。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 群集体系结构
 
@@ -56,7 +56,7 @@ AKS 提供单租户控制平面，具有专用 API 服务器、计划程序等�
 
 如果需要以特定方式配置控制平面或需要直接访问它，则可以使用[aks][aks-engine]部署自己的 Kubernetes 群集。
 
-如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]。
+有关相关的最佳实践，请参阅[AKS 中群集安全性和升级的最佳实践][operator-best-practices-cluster-security]。
 
 ## <a name="nodes-and-node-pools"></a>节点和节点池
 
@@ -64,47 +64,47 @@ AKS 提供单租户控制平面，具有专用 API 服务器、计划程序等�
 
 - `kubelet` 是处理来自控制平面的业务流程请求和运行所请求的容器的计划的 Kubernetes 代理。
 - 虚拟网络由每个节点上的 kube-proxy 处理。 代理路由流量并管理服务和 Pod 的 IP 地址。
-- 容器运行时是允许容器化应用程序运行并与其他资源（如虚拟网络和存储）进行交互的组件。 在 AKS 中，Moby 用作容器运行时。
+- 容器运行时是允许容器化应用程序运行并与其他资源（如虚拟网络和存储）进行交互的组件。 在 AKS 中，小鲸鱼用作容器运行时。
 
 ![Azure 虚拟机和 Kubernetes 节点的支持资源](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点按标准虚拟机计费，因此会自动应用你所使用的 VM 大小（包括[Azure 预订][reservation-discounts]）的任何折扣。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。 代理节点按标准虚拟机计费，因此会自动应用你所使用的 VM 大小（包括[Azure 预订][reservation-discounts]）的任何折扣。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果你想要使用小鲸鱼以外的容器运行时，则可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机操作系统、容器运行时或包含自定义包，可以使用[aks][aks-engine]部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果你想要使用小鲸鱼以外的容器运行时，则可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
-AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 在 AKS 中使用时，这可能会在节点的总资源和资源 allocatable 之间产生差异。 在为用户部署的 Pod 设置请求和限制时，必须注意这一点。
+AKS 使用节点资源将节点函数作为群集的一部分。 在 AKS 中使用时，这可能会在节点的总资源和资源 allocatable 之间产生差异。 在为用户部署的 pod 设置请求和限制时，必须注意这一点。
 
-若要查找节点的可分配资源，请运行：
+若要查找节点的 allocatable 资源运行，请执行以下操作：
 ```kubectl
 kubectl describe node [NODE_NAME]
 
 ```
 
-为了保持节点性能和功能，AKS 在每个节点上预留资源。 随着节点资源的增加，由于需要管理的用户部署的 Pod 数量增加，资源预留也会增加。
+为维护节点的性能和功能，AKS 将在每个节点上保留资源。 随着节点在资源中的增长，资源预留量会增长，因为需要管理的用户数更多。
 
 >[!NOTE]
 > 使用 AKS 加载项（例如 Container Insights （OMS））将使用其他节点资源。
 
-- **CPU** - 预留的 CPU 取决于节点类型和群集配置，这可能会由于运行其他功能而导致可分配的 CPU 较少
+- **Cpu**预留 cpu 依赖于节点类型和群集配置，这可能会由于运行其他功能而导致 CPU allocatable
 
-| 主机上的 CPU 核心数 | 1 | 2 | 4 | 8 | 16 | 32|64|
+| 主机上的 CPU 内核数 | 第 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kube 预留 (millicore)|60|100|140|180|260|420|740|
+|Kube （millicores）|60|100|140|180|260|420|740|
 
 - **内存**保留内存包含两个值的和
 
 1. Kubelet 后台程序安装在所有 Kubernetes 代理节点上，用于管理容器创建和终止。 默认情况下，在 AKS 上，此守护程序具有以下逐出规则： memory。可用 < 750Mi，这意味着节点必须始终至少具有 750 Mi allocatable。  当主机低于可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机计算机上的内存并对其进行保护。
 
 2. 第二个值是为 kubelet 后台程序正常运行而保留的内存（kube）的逐渐速率。
-    - 前 4 GB 内存的 25%
-    - 下一个 4 GB 内存的 20%（最多 8 GB）
-    - 下一个 8 GB 内存的 10%（最多 16 GB）
-    - 下一个 112 GB 内存的 6%（最多 128 GB）
-    - 128 GB 以上任何内存的 2%
+    - 前 4 GB 内存的25%
+    - 下 4 GB 内存的20% （最多 8 GB）
+    - 下 8 GB 内存的10% （高达 16 GB）
+    - 下一个 112 GB 内存的6% （最大为 128 GB）
+    - 超过 128 GB 的任何内存的2%
 
 由于这两个已定义的规则使 Kubernetes 和代理节点保持正常运行，因此 allocatable CPU 和内存的数量将会比节点本身提供的数量少。 无法更改上面定义的资源预留。
 
@@ -114,14 +114,14 @@ kubectl describe node [NODE_NAME]
 
 除了 Kubernetes 的保留，基础节点 OS 还会保留大量的 CPU 和内存资源来维护 OS 函数。
 
-如需相关的最佳做法，请参阅 [AKS 中适用于基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
+有关相关的最佳实践，请参阅[AKS 中的基本计划程序功能的最佳实践][operator-best-practices-scheduler]。
 
 ### <a name="node-pools"></a>节点池
 
 具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
 
 > [!NOTE]
-> 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
+> 若要确保群集能够可靠运行，应在默认节点池中至少运行2个节点。
 
 缩放或升级 AKS 群集时，将对默认节点池执行操作。 你还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划正在运行的容器，直到成功升级所有节点。
 
@@ -152,9 +152,9 @@ spec:
 
 Kubernetes 使用 Pod 来运行应用程序的实例。 Pod 表示应用程序的单个实例。 Pod 通常与容器存在 1 对 1 映射，但高级方案中一个 Pod 可能包含多个容器。 在同一个节点上共同计划这些多容器 Pod，并允许容器共享相关资源。
 
-创建 Pod 时，可以定义资源限制以请求一定数量的 CPU 或内存资源。 Kubernetes 计划程序尝试计划在具有可用资源的节点上运行 Pod，以满足请求。 此外可以指定最大资源限制，防止给定的 Pod 从基础节点消耗过多计算资源。 最佳做法是包括所有 Pod 的资源限制，以帮助 Kubernetes 计划程序了解所需和允许的资源。
+创建 pod 时，可以定义*资源请求*来请求特定数量的 CPU 或内存资源。 Kubernetes 计划程序尝试计划在具有可用资源的节点上运行 Pod，以满足请求。 此外可以指定最大资源限制，防止给定的 Pod 从基础节点消耗过多计算资源。 最佳做法是包括所有 Pod 的资源限制，以帮助 Kubernetes 计划程序了解所需和允许的资源。
 
-有关详细信息，请参阅 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命周期][kubernetes-pod-lifecycle]。
+有关详细信息，请参阅[Kubernetes][kubernetes-pods] [pod 和 Kubernetes pod 生命周期][kubernetes-pod-lifecycle]。
 
 Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod 通常是短暂的可支配资源，单独计划的 Pod 会错过 Kubernetes 提供的一些高可用性和冗余功能。 相反，Pod 通常由 Kubernetes 控制器（例如 Deployment 控制器）进行部署和管理。
 
@@ -164,7 +164,7 @@ Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod
 
 可以更新部署以更改 Pod 的配置、使用的容器映像或附加存储。 Deployment 控制器耗尽并终止给定数量的副本，从新部署定义创建副本，并继续该过程，直至部署中的所有副本都已更新。
 
-AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。 只计划单个 Pod 时，如果 Pod 出现故障则不会重启；如果当前节点出现故障，则不会在正常节点上重新计划。
+AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。 如果仅计划单独的 pod，如果他们遇到问题，则不会重新启动 pod，并且如果其当前节点遇到问题，则不会在正常的节点上重新计划 pod。
 
 如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有 5 个副本，则可以定义 4 个 Pod 中断，以便一次只允许删除/重新计划一个副本。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
 
@@ -201,17 +201,17 @@ spec:
 
 通过在 YAML 清单中包含负载均衡器等服务，还可以创建更复杂的应用程序。
 
-有关详细信息，请参阅 [Kubernetes 部署][kubernetes-deployments]。
+有关详细信息，请参阅[Kubernetes 部署][kubernetes-deployments]。
 
 ### <a name="package-management-with-helm"></a>使用 Helm 进行包管理
 
-在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
+在 Kubernetes 中管理应用程序的常见方法是使用[Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm 的图表可以存储在本地，也可以经常存储在远程存储库中，如[Azure 容器注册表 Helm 图表][acr-helm]存储库。
 
 为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中 chart 的安装。 Helm 客户端本身安装在本地计算机上，也可在[Azure Cloud Shell][azure-cloud-shell]中使用。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。
 
 ![Helm 包括客户端组件和服务器端 Tiller 组件，用于在 Kubernetes 群集内创建资源](media/concepts-clusters-workloads/use-helm.png)
 
-有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][aks-helm]。
+有关详细信息，请参阅[在 Azure Kubernetes Service 中安装具有 Helm 的应用程序（AKS）][aks-helm]。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet 和 DaemonSet
 
@@ -228,7 +228,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 
 使用 `kind: StatefulSet` 以 YAML 格式定义应用程序，然后 StatefulSet 控制器处理所需副本的部署和管理。 数据会写入到由 Azure 托管磁盘或 Azure 文件提供的永久性存储。 使用 StatefulSet，删除 StatefulSet 时，基础持久性存储仍然保持不变。
 
-有关详细信息，请参阅 [Kubernetes StatefulSet][kubernetes-statefulsets]。
+有关详细信息，请参阅[Kubernetes StatefulSets][kubernetes-statefulsets]。
 
 计划 StatefulSet 中的副本，并在 AKS 群集中的任何可用节点上运行这些副本。 如需确保集中至少有一个 Pod 在节点上运行，则可以改用 DaemonSet。
 
@@ -240,7 +240,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 
 与 StatefulSet 一样，系统使用 `kind: DaemonSet` 将 DaemonSet 定义为 YAML 定义的一部分。
 
-有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
+有关详细信息，请参阅[Kubernetes daemonset][kubernetes-daemonset]。
 
 > [!NOTE]
 > 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
@@ -257,7 +257,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 - kube-system - 此命名空间是核心资源的所在位置，例如 DNS 和代理等网络功能或 Kubernetes 仪表板。 通常不会将应用程序部署到此命名空间中。
 - kube-public - 通常不使用此命名空间，但可以用于在整个群集中可见的资源，并且可供任何用户查看。
 
-有关详细信息，请参阅 [Kubernetes 命名空间][kubernetes-namespaces]。
+有关详细信息，请参阅[Kubernetes 命名空间][kubernetes-namespaces]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -267,7 +267,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
 - [Kubernetes/AKS 存储][aks-concepts-storage]
-- [Kubernetes/AKS 规模][aks-concepts-scale]
+- [Kubernetes/AKS scale][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 [aks-engine]: https://github.com/Azure/aks-engine

@@ -1,18 +1,18 @@
 ---
-title: 限制对 IP 地址的访问
-description: 了解如何通过显式允许列表客户端 IP 地址或地址范围，在 Azure App Service 中保护应用。
+title: Azure App Service 访问限制
+description: 了解如何通过指定访问限制在 Azure App Service 中保护应用。
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422236"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 访问限制 #
 
@@ -24,7 +24,7 @@ ms.locfileid: "74672181"
 
 访问限制功能在应用服务前端角色中实现，这些角色是运行代码的辅助角色主机的上游。 因此，访问限制是有效的网络 Acl。
 
-从 Azure 虚拟网络（VNet）限制对 web 应用的访问的能力称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制对选定子网的多租户服务的访问。 必须在网络端和正在启用它的服务上启用它。 它不能用于将流量限制到应用服务环境中托管的应用。  如果你使用的是应用服务环境，则可以使用 IP 地址规则控制对应用程序的访问。
+从 Azure 虚拟网络（VNet）限制对 web 应用的访问的能力称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制对选定子网的多租户服务的访问。 必须在网络端和正在启用它的服务上启用它。 它不能用于将流量限制到应用服务环境中托管的应用。 如果你使用的是应用服务环境，则可以使用 IP 地址规则控制对应用程序的访问。
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "74672181"
 
 服务终结点不能用于限制对在应用服务环境中运行的应用程序的访问。 当应用处于应用服务环境时，可以使用 IP 访问规则来控制对应用的访问。 
 
-通过服务终结点，你可以配置应用程序网关或其他 WAF 设备。 还可以配置具有 secure 后端的多层应用程序。 有关某些可能性的详细信息，请参阅[联网功能和应用服务](networking-features.md)。
+通过服务终结点，你可以配置应用程序网关或其他 WAF 设备。 还可以配置具有 secure 后端的多层应用程序。 有关某些可能性的详细信息，请参阅[联网功能和应用服务](networking-features.md)以及[应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)。
 
 ## <a name="managing-access-restriction-rules"></a>管理访问限制规则
 
@@ -90,34 +90,49 @@ ms.locfileid: "74672181"
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>访问限制规则的编程操作 ##
 
-目前没有用于新访问限制功能的 CLI 或 PowerShell，但可以使用[Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT 操作对资源管理器中的应用配置手动设置这些值。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest)和[Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0)支持编辑访问限制。 使用 Azure CLI 添加访问限制的示例：
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+使用 Azure PowerShell 添加访问限制的示例：
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+还可使用[azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT 操作在资源管理器或使用 azure 资源管理器模板的应用配置上手动设置值。 例如，可以使用 resources.azure.com 并编辑 ipSecurityRestrictions 块以添加所需的 JSON。
 
 此信息在资源管理器中的位置为：
 
 management.azure.com/subscriptions/subscription ID/resourceGroups/resource groups/providers/Microsoft.Web/sites/web app name/config/web?api-version=2018-02-01
 
 前面的示例的 JSON 语法为：
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>Function App IP 限制
+## <a name="azure-function-app-access-restrictions"></a>Azure Function App 访问限制
 
-与应用服务计划具有相同功能的两个函数应用均提供 IP 限制。 启用 IP 限制将对任何不允许的 Ip 禁用门户代码编辑器。
+访问限制适用于其功能与应用服务计划相同的函数应用。 启用访问限制将对任何不允许的 Ip 禁用门户代码编辑器。
 
-[在此处了解更多信息](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>后续步骤
+[Azure Function App 的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

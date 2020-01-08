@@ -1,21 +1,14 @@
 ---
-title: Azure 顾问简介 | Microsoft Docs
+title: Azure 顾问简介
 description: 使用 Azure 顾问优化 Azure 部署。
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443092"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -64,7 +57,7 @@ ms.locfileid: "74145371"
 
 顾问为应用程序网关、应用服务、可用性集、Azure 缓存、Azure 数据工厂、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure 公共提供建议IP 地址、SQL 数据仓库、SQL server、存储帐户、流量管理器配置文件和虚拟机。
 
-Azure 顾问还包括来自 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)的建议，其中可能包含有关其他资源类型的建议。
+Azure 顾问还包括[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)提供的建议，其中可能包括其他资源类型的建议。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422005"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -38,9 +38,9 @@ ms.locfileid: "74688618"
 
 3. 选择 "**标识**"。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“保存”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“ **保存**”。
 
-    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -169,7 +169,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 6. 搜索之前创建的标识并选择它。 单击“添加”。
 
-    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
@@ -251,19 +251,19 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 “MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
-> |参数名称|In|描述|
+> |参数名称|In|Description|
 > |-----|-----|-----|
-> |resource|Query|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
-> |api-version|Query|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
+> |resource|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
+> |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
 > |secret|标头|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
-> |clientid|Query|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+> |clientid|查询|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
 
 > [!IMPORTANT]
 > 如果尝试获取用户分配的标识的令牌，则必须包含 `clientid` 属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
-> |属性名称|描述|
+> |属性名称|Description|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|

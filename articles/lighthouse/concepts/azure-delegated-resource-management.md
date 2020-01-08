@@ -3,12 +3,12 @@ title: Azure 委派资源管理
 description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453628"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
@@ -25,7 +25,7 @@ Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 借�
 
 [跨租户管理体验](cross-tenant-management-experience.md)有助于你使用 Azure Policy、Azure 安全中心等 Azure 管理服务更有效率地工作。 所有服务提供商活动均记录在活动日志中，该日志同时存储在服务提供商的租户和客户的租户中。 这意味着客户和服务提供商可以轻松地识别与任何更改关联的用户。
 
-将客户载入到 Azure 委派资源管理时，他们将具有访问 Azure 门户中新的“服务提供商”页的权限，他们可在该位置**确认并管理其产品/服务、服务提供商以及委派资源**[](../how-to/view-manage-service-providers.md)。 如果客户想撤销服务提供商的访问权限，则可在此处随时撤销。
+将客户载入到 Azure 委派资源管理时，他们将具有访问 Azure 门户中新的“服务提供商”页的权限，他们可在该位置[确认并管理其产品/服务、服务提供商以及委派资源](../how-to/view-manage-service-providers.md)。 如果客户想撤销服务提供商的访问权限，则可在此处随时撤销。
 
 你可以[将新的托管服务产品类型发布到 Azure 市场](../how-to/publish-managed-services-offers.md)，以轻松将客户载入到 Azure 委派资源管理。 或者，可以[通过部署 Azure 资源管理器模板来完成载入过程](../how-to/onboard-customer.md)。
 
@@ -33,7 +33,7 @@ Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 借�
 
 概括而言，Azure 委派资源管理的工作原理如下：
 
-1. 作为服务提供商，你需要确定你的组、服务主体或用户管理客户的 Azure 资源所需的访问权限（角色）。 访问权限定义包含服务提供商的租户 ID 以及产品/服务的所需访问权限，使用来自映射到**内置 roleDefinition 值**的租户的 principalId 标识（参与者、VM 参与者、读者等）[](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+1. 作为服务提供商，你需要确定你的组、服务主体或用户管理客户的 Azure 资源所需的访问权限（角色）。 访问权限定义包含服务提供商的租户 ID 以及产品/服务的所需访问权限，使用来自映射到[内置 roleDefinition 值](../../role-based-access-control/built-in-roles.md)的租户的 principalId 标识（参与者、VM 参与者、读者等）。
 2. 可使用以下两种方式之一来指定此访问权限并将客户载入到 Azure 委派资源管理：
    - [发布 Azure 市场托管服务产品](../how-to/publish-managed-services-offers.md)（专用或公用），客户将接受这些产品
    - 为一个或多个特定订阅或资源组[将 Azure 资源管理器模板部署到客户的租户](../how-to/onboard-customer.md)

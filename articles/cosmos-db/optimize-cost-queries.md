@@ -1,17 +1,17 @@
 ---
-title: 优化 Azure Cosmos DB 中运行查询的请求单位和成本
+title: 优化成本和 RU/秒以在 Azure Cosmos DB 中运行查询
 description: 了解如何评估查询的请求单位费用，并在查询性能和成本方面优化查询。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445131"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
@@ -104,8 +104,8 @@ Total Query Execution Time               :   �
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
 * 详细了解 [Azure Cosmos 定价的原理](how-pricing-works.md)
-* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
-* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[开发和测试优化](optimize-dev-test.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)

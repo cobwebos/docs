@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422302"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中轮替证书
 
@@ -22,20 +22,7 @@ Azure Kubernetes Service （AKS）使用证书进行身份验证，使其包含�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文要求运行 Azure CLI 版本2.0.76 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
-
-
-### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-
-若要使用此功能，需要*aks* CLI 扩展版本0.4.21 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+本文要求运行 Azure CLI 版本2.0.77 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS 证书、证书颁发机构和服务帐户
 
@@ -51,7 +38,13 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
 > [!NOTE]
-> 2019年3月之前创建的 AKS 群集包含两年后过期的证书。 2019年3月之后创建的任何群集或已旋转证书的任何群集都具有30年后过期的证书。
+> 2019年3月之前创建的 AKS 群集包含两年后过期的证书。 2019年3月之后创建的任何群集或已旋转证书的任何群集都具有30年后过期的证书。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*使用期限*。
+> 
+> 此外，还可以检查群集证书的到期日期。 例如，以下命令显示*myAKSCluster*群集的证书详细信息。
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>旋转群集证书
 

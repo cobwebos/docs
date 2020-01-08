@@ -1,25 +1,14 @@
 ---
 title: Azure Service Fabric 中的可靠并发队列
 description: 可靠并发队列是一种高吞吐量队列，允许并行排队和取消排队。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462739"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -52,7 +41,7 @@ ms.locfileid: "71350276"
 ## <a name="code-snippets"></a>代码片段
 让我们看看一些代码片段及其预期输出。 本部分忽略异常处理。
 
-### <a name="instantiation"></a>例
+### <a name="instantiation"></a>实例化
 创建可靠并发队列的实例类似于任何其他可靠集合。
 
 ```csharp
@@ -62,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 下面是使用 EnqueueAsync 的一些代码片段及其预期输出。
 
-- *案例 1：单个排队任务*
+- 案例 1：单个排队任务
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -81,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20, 10
 
 
-- *案例 2：并行排队任务*
+- 案例 2：并行排队任务
 
 ```
 // Parallel Task 1
@@ -110,7 +99,7 @@ using (var txn = this.StateManager.CreateTransaction())
 下面是使用 TryDequeueAsync 的一些代码片段及预期输出。 假定已在队列中填充以下项：
 > 10, 20, 30, 40, 50, 60
 
-- *案例 1：单个取消排队任务*
+- 案例 1：单个取消排队任务
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -125,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 假定任务已成功完成，且没有并发事务在修改队列。 由于无法推断队列中项的顺序，可能会采用任意顺序取消任意三个项的排队。 队列会尝试让项保持原有的（排队）顺序，但在出现并发操作或错误的情况下，也可能会强制其重新排序。  
 
-- *案例 2：并行取消排队任务*
+- 案例 2：并行取消排队任务
 
 ```
 // Parallel Task 1
@@ -153,7 +142,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同一项不会出现在两个列表中。 因此，如果 dequeue1 包含 10、30，则 dequeue2 就会包含 20、40。
 
-- *案例 3：通过中止事务排定取消排队任务顺序*
+- 案例 3：通过中止事务排定取消排队任务顺序
 
 中止正在取消排队的事务，项就会重新回到队列头。 项回到队列头的顺序是不确定的。 请看以下代码：
 
@@ -313,8 +302,8 @@ do
 } while (ret.HasValue);
 ```
 
-### <a name="peek"></a>快速查看
-可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 *TryDequeueAsync*，然后中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
+### <a name="peek"></a>速览
+可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 TryDequeueAsync，再中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
 
 ```
 using (var txn = this.StateManager.CreateTransaction())

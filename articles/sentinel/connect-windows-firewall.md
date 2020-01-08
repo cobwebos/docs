@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240628"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610397"
 ---
 # <a name="connect-windows-firewall"></a>连接 Windows 防火墙
 
@@ -30,7 +30,8 @@ Windows 防火墙连接器可让你轻松连接到你的 Windows 防火墙日志
 
 
 > [!NOTE]
-> 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
+> - 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
+> - 如果将 Azure Sentinel 和 Azure 安全中心收集到相同的工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 如果仍启用此功能，则不会导致重复的数据。 
 
 ## <a name="enable-the-connector"></a>启用连接器 
 
@@ -58,6 +59,6 @@ Windows 防火墙连接器可让你轻松连接到你的 Windows 防火墙日志
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Windows 防火墙连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 

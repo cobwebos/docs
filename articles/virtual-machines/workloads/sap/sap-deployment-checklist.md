@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425931"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -60,7 +60,7 @@ ms.locfileid: "73891419"
         - 根据 RTO 和 RPO，定义高可用性和灾难恢复体系结构的外观。
         - 若要在区域中实现高可用性，请检查所需的 DBMS 在 Azure 中提供的功能。 大多数 DBMS 包提供同步热备用的同步方法，我们建议将其用于生产系统。 还要查看不同数据库的 SAP 相关文档，从[Azure 虚拟机 DBMS 部署适用于 sap 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)和相关文档的注意事项开始。
            不支持将 Windows Server 故障转移群集与 DBMS 层的共享磁盘配置一起使用，例如[SQL Server 所述](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)。 相反，请使用如下所示的解决方案：
-           - [SQL Server Always On](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
            - [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - 对于跨 Azure 区域的灾难恢复，请查看不同 DBMS 供应商提供的解决方案。 其中的大多数支持异步复制或日志传送。
@@ -77,7 +77,7 @@ ms.locfileid: "73891419"
     - Vm 和其他基础结构组件以及/或逻辑名称的命名约定。
 5.  Microsoft 顶级支持合同。 确定你的 Microsoft 技术客户经理（TAM）。 有关 SAP 支持的要求，请参阅[sap 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
 6.  订阅的 Azure 订阅数和核心配额。 根据需要[打开支持请求以增加 Azure 订阅配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
-7.  将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的准则。 有关 SAP ERP 系统中的数据管理，请参阅[此 sap 指南](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)。 一些内容通常也适用于 NetWeaver 和 S/4HANA 系统。
+7.  将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的准则。 有关 SAP ERP 系统中的数据管理，请参阅[此 sap 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)。 一些内容通常也适用于 NetWeaver 和 S/4HANA 系统。
 8.  自动部署方法。 Azure 上的基础结构部署自动化的目标是以确定性的方式进行部署并获得确定性的结果。 许多客户使用 PowerShell 或基于 CLI 的脚本。 但你可以使用多种开源技术来部署适用于 SAP 的 Azure 基础结构，甚至还可以安装 SAP 软件。 可在 GitHub 上找到示例：
     - [Azure 云中的自动 SAP 部署](https://github.com/Azure/sap-hana)
     - [SAP HANA 安装](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -102,7 +102,7 @@ ms.locfileid: "73891419"
         - 评估和测试你在规划阶段中所选 VM 类型的最大存储吞吐量和网络吞吐量方面的 Azure Vm 大小。 可在此处找到数据：
            -  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
            -  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
-   2. 存储。
+   2. 存储空间。
         - 至少，将[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
         - 通常，我们不建议使用[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)。
         - 对远程性能敏感的任何 DBMS Vm 使用[Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。
@@ -111,7 +111,7 @@ ms.locfileid: "73891419"
         - 对于不同的 DBMS 类型，请查看一般的[与 SAP 相关的 dbms 文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)和一般文档指向的 DBMS 特定文档。
         - 有关 SAP HANA 的详细信息，请参阅[SAP HANA 基础结构配置和 Azure 上的操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
         - 请勿使用设备 ID 将 Azure 数据磁盘装载到 Azure Linux VM 中。 而应该使用全局唯一标识符 (UUID)。 例如，使用图形化工具装载 Azure 数据磁盘时应小心。 仔细检查/etc/fstab 中的条目，以确保使用 UUID 装载磁盘。 可以在[本文](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)中找到更多详细信息。
-   3. 上网.
+   3. 联网。
         - 在不同的 Azure 虚拟网络中测试和评估虚拟网络基础结构以及 SAP 应用程序的分布情况。
         -  评估单个 Azure 虚拟网络中的中心辐射型虚拟网络体系结构方法或 microsegmentation 方法。 此评估基于：
                1. 在[对等互连 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)之间交换数据的成本。 有关成本的信息，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network/)。
@@ -255,7 +255,7 @@ ms.locfileid: "73891419"
         - 每个磁盘以 KBps 为单位的磁盘写入
         - 磁盘写入/秒，按单个磁盘
         - 磁盘写入（以微秒为单位），按单个磁盘读取
-    - 网桥.
+    - 网络。
         - 每秒网络数据包数
         - 每秒的网络数据包数
         - 每秒的网络 KB

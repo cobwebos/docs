@@ -1,25 +1,24 @@
 ---
-title: 使用 Azure 流分析作业的 .NET 反
+title: 使用 Azure 流分析中的 .NET 自定义反以任意格式读取输入
 description: 本文介绍了为 Azure 流分析云和边缘作业定义自定义 .NET 反的序列化格式和接口。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024942"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553012"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>使用 Azure 流分析作业的 .NET 反
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反以任意格式读取输入
 
-自定义 .NET 反允许 Azure 流分析作业从三种[内置数据格式](stream-analytics-parsing-json.md)之外的格式读取数据。 本文介绍了为 Azure 流分析云和边缘作业定义自定义 .NET 反的序列化格式和接口。 还提供了协议缓冲区和 CSV 格式的示例反。
+.NET 自定义反允许 Azure 流分析作业从三种[内置数据格式](stream-analytics-parsing-json.md)之外的格式读取数据。 本文介绍了为 Azure 流分析云和边缘作业定义 .NET 自定义反的序列化格式和接口。 还提供了协议缓冲区和 CSV 格式的示例反。
 
-## <a name="custom-net-deserializer"></a>自定义 .NET 反序列化程序
+## <a name="net-custom-deserializer"></a>.NET 自定义反序列化程序
 
 下面的代码示例是定义自定义反序列化程序并实现 `StreamDeserializer<T>`的接口。
 
@@ -134,7 +133,7 @@ message MessageBodyProto {
     }
 ```
 
-### <a name="csv"></a>.CSV
+### <a name="csv"></a>CSV
 
 以下代码片段是一个简单的 CSV 反序列化程序，它还演示传播错误。
 
@@ -226,12 +225,12 @@ namespace ExampleCustomCode.Serialization
 
 此功能在以下区域中提供：
 
-* 美国中部（可用）
-* 北欧（可用）
-* 美国东部（可用）
-* 美国西部（即将推出）
-* 美国东部2（即将推出）
-* 西欧（即将推出）
+* 美国中西部
+* 欧洲北部
+* 美国东部
+* 美国西部
+* 美国东部 2
+* 欧洲西部
 
 你可以为其他区域[请求支持](https://aka.ms/ccodereqregion)。
 
@@ -239,11 +238,11 @@ namespace ExampleCustomCode.Serialization
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>此功能何时在所有 Azure 区域中可用？
 
-此功能在6个区域（#region 支持）中提供。 如果你有兴趣在另一个区域中使用此功能，则可以[提交请求](https://aka.ms/ccodereqregion)。 所有 Azure 区域都支持所有 Azure 区域。
+此功能在6个[区域](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)中提供。 如果你有兴趣在另一个区域中使用此功能，则可以[提交请求](https://aka.ms/ccodereqregion)。 所有 Azure 区域都支持所有 Azure 区域。
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>我是否可以从类似于 GetMetadataPropertyValue 函数的输入访问 MetadataPropertyValue？
 
-此功能不受支持。 如果需要此功能，可以在[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)上为此请求投票。
+现在不支持此功能。 如果需要此功能，可以在[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)上为此请求投票。
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>我是否可以与社区共享反序列化程序实现，以便其他人能够受益？
 
@@ -251,4 +250,4 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="next-steps"></a>后续步骤
 
-* [用于 Azure 流分析云作业的自定义 .NET 反](custom-deserializer.md)
+* [用于 Azure 流分析云作业的 .NET 自定义反](custom-deserializer.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795835"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531473"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -22,10 +22,10 @@ ms.locfileid: "73795835"
 
 [认知服务](welcome.md)是一组服务，每个服务支持不同的通用化预测功能。 服务分为不同的类别，以帮助你找到正确的服务。 
 
-|服务类别|目的|
+|服务类别|用途|
 |--|--|
-|[确定](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|构建应用，用于呈现有助于做出明智和高效决策的建议。|
-|语言[](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。|
+|[决定](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|构建应用，用于呈现有助于做出明智和高效决策的建议。|
+|[语言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。|
 |[搜索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。|
 |[语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|将语音转换为文本，将文本转换为自然语音。 从一种语言翻译成另一种语言，并启用说话人验证和识别。|
 |[影像](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|识别和确定你的图片、视频和数字墨迹内容，为它们添加描述文字和编制索引，并审查这些内容。|
@@ -91,25 +91,25 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 
 |认知服务|无需定型数据|提供了部分或全部定型数据|实时或近乎实时的数据收集|
 |--|--|--|--|
-|[异常探测器](./Anomaly-Detector/overview.md)|x|x|x|
-|必应搜索 |x|||
-|[计算机视觉](./Computer-vision/Home.md)|x|||
-|[内容审查器](./Content-Moderator/overview.md)|x||x|
-|[自定义视觉](./Custom-Vision-Service/home.md)||x||
-|[人脸](./Face/Overview.md)|x|x||
-|[表单识别器](./form-recognizer/overview.md)||x||
-|[沉浸式读者](./immersive-reader/overview.md)|x|||
-|[手写识别器](./Ink-recognizer/overview.md)|x|x||
-|[语言理解 (LUIS)](./LUIS/what-is-luis.md)||x||
-|[个性化体验创建服务](./personalizer/what-is-personalizer.md)|x*|x*|x|
-|[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[发言人识别器](./speaker-recognition/home.md)||x||
-|[语音文本到语音转换（TTS）](speech-service/text-to-speech.md)|x|x||
-|[语音转换到文本（STT）](speech-service/speech-to-text.md)|x|x||
-|[语音翻译](speech-service/speech-translation.md)|x|||
-|[文本分析](./text-analytics/overview.md)|x|||
-|[文本翻译](./translator/translator-info-overview.md)|x|||
-|[文本翻译-自定义转换器](./translator/custom-translator/overview.md)||x||
+|[异常探测器](./Anomaly-Detector/overview.md)|不可以|不可以|不可以|
+|必应搜索 |不可以|||
+|[计算机视觉](./Computer-vision/Home.md)|不可以|||
+|[内容审查器](./Content-Moderator/overview.md)|不可以||不可以|
+|[自定义视觉](./Custom-Vision-Service/home.md)||不可以||
+|[人脸](./Face/Overview.md)|不可以|不可以||
+|[窗体识别器](./form-recognizer/overview.md)||不可以||
+|[沉浸式读者](./immersive-reader/overview.md)|不可以|||
+|[手写识别器](./Ink-recognizer/overview.md)|不可以|不可以||
+|[语言理解 (LUIS)](./LUIS/what-is-luis.md)||不可以||
+|[个性化体验创建服务](./personalizer/what-is-personalizer.md)|x*|x*|不可以|
+|[QnA Maker](./QnAMaker/Overview/overview.md)||不可以||
+|[发言人识别器](./speaker-recognition/home.md)||不可以||
+|[语音文本到语音转换（TTS）](speech-service/text-to-speech.md)|不可以|不可以||
+|[语音转换到文本（STT）](speech-service/speech-to-text.md)|不可以|不可以||
+|[语音翻译](speech-service/speech-translation.md)|不可以|||
+|[文本分析](./text-analytics/overview.md)|不可以|||
+|[文本翻译](./translator/translator-info-overview.md)|不可以|||
+|[文本翻译-自定义转换器](./translator/custom-translator/overview.md)||不可以||
 
 \* Personalizer 只需要服务收集的定型数据（它在实时运行时）来评估策略和数据。 Personalizer 不需要较大的历史数据集来进行前期或批处理培训。 
 
@@ -131,10 +131,10 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 |--|--|
 |[自定义视觉](./custom-vision-service/home.md)|适用于 Android 的 Tensorflow[导出](./Custom-Vision-Service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 * [体系结构指南-Microsoft 的机器学习产品有哪些？](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [机器学习-深度学习和机器学习简介](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [机器学习-深度学习和机器学习简介](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>后续步骤
 

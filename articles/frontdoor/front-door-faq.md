@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790525"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639848"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure 前门服务常见问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "74790525"
 2. [Azure 前门服务 UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
 3. **Microsoft 支持部门：** 若要创建新的支持请求，请在 "Azure 门户中的"**帮助**"选项卡上，选择"**帮助 + 支持**"按钮，然后选择"**新建支持请求**"。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-is-azure-front-door-service"></a>什么是 Azure Front Door 服务？
 
@@ -132,7 +132,7 @@ Azure 前门（AFD）要求使用公共 IP 或可公开解析的 DNS 名称来�
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Azure 前门服务有哪些不同的超时和限制？
 
-了解 Azure 前门服务的所有已记录的[超时和限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits)。
+了解 Azure 前门服务的所有已记录的[超时和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
 
 ## <a name="performance"></a>性能
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445271"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将非分区容器迁移到已分区容器
 
@@ -117,6 +117,14 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 旧版本的 Azure Cosmos DB Sdk （例如 V2. x. x. x. x. x）不支持系统定义的分区键属性。 因此，当从较旧的 SDK 读取容器定义时，它不包含任何分区键定义，这些容器的行为与以前完全相同。 使用早期版本的 Sdk 构建的应用程序将继续使用非分区方式，而无需进行任何更改。 
 
 如果迁移的容器由 SDK 的最新版本和 V3 版本使用，并且你开始在新文档中填充系统定义的分区键，则不能再从较旧的 Sdk 访问（读取、更新、删除、查询）此类文档。
+
+## <a name="known-issues"></a>已知问题
+
+**使用 V3 SDK 查询未通过分区键插入的项的计数可能涉及更高的吞吐量消耗**
+
+如果从 V3 SDK 中查询使用 V2 SDK 插入的项，或通过使用带 `PartitionKey.None` 参数的 V3 SDK 来插入的项，则在 FeedOptions 中提供了 `PartitionKey.None` 参数时，计数查询可能会消耗更多的 RU/秒。 如果未使用分区键插入其他项，则建议你不要提供 `PartitionKey.None` 参数。
+
+如果使用不同的分区键值插入新项，则通过在 `FeedOptions` 中传递适当的密钥来查询此类项计数不会有任何问题。 插入具有分区键的新文档后，如果只需要查询不带分区键值的文档计数，则该查询可能会再次产生比常规分区集合更高的 RU/秒。
 
 ## <a name="next-steps"></a>后续步骤
 

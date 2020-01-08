@@ -1,5 +1,5 @@
 ---
-title: 查看 Azure AD 权限管理中的报告和日志-Azure Active Directory
+title: 在授权管理中查看报表 & 日志-Azure AD
 description: 了解如何在 Azure Active Directory 授权管理中查看 "用户分配" 报表和 "审核日志"。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173881"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422558"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>查看 Azure AD 权利管理中的报告和日志
 

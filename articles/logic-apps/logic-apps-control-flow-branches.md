@@ -1,17 +1,17 @@
 ---
-title: 创建或联接并行分支
-description: 如何创建或联接 Azure 逻辑应用中的工作流的并行分支
+title: 为工作流中的操作创建或联接并行分支
+description: 了解如何在 Azure 逻辑应用中创建或合并独立工作流操作的并行运行的分支
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: bb1c615852fb2bf810abec97e3faeb5775c4a57a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
-ms.translationtype: HT
+ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453435"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>创建或联接 Azure 逻辑应用中的工作流的并行分支
 
@@ -117,7 +117,7 @@ ms.locfileid: "74791457"
 
 1. 在 [Azure 门户](https://portal.azure.com)中的逻辑应用设计器中查找并打开逻辑应用。 
 
-1. 在想要联接的平行分支下，选择 **“新建步骤”** 。 
+1. 在想要联接的平行分支下，选择 **新建步骤**。 
 
    ![添加要联接的步骤](media/logic-apps-control-flow-branches/add-join-step.png)
 

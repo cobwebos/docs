@@ -1,22 +1,21 @@
 ---
 title: 在 Azure 流分析中分析 JSON 和 AVRO
 description: 本文介绍如何针对复杂数据类型（如数组、JSON、CSV 格式数据）进行操作。
-services: stream-analytics
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431597"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
-Azure Stream Analytics 支持 CSV、 JSON 和 Avro 数据格式处理事件。 JSON 和 Avro 数据可以结构化，并且包含一些复杂的类型，如嵌套的对象 （记录） 和数组。 
+Azure 流分析支持处理 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以进行结构化，并且包含某些复杂类型（如嵌套对象（记录）和数组）。 
 
 
 
@@ -48,8 +47,8 @@ Azure Stream Analytics 支持 CSV、 JSON 和 Avro 数据格式处理事件。 J
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>已知的架构中的访问嵌套字段
-使用点表示法 （.） 来直接从你的查询轻松访问嵌套的字段。 例如，此查询将在前面的 JSON 数据中选择位置属性下的纬度和经度坐标。 可以使用点表示法来导航多个级别，如下所示。
+### <a name="access-nested-fields-in-known-schema"></a>访问已知架构中的嵌套字段
+使用点表示法（.）可以轻松地直接从查询中访问嵌套字段。 例如，下面的查询在前面的 JSON 数据的 Location 属性下选择纬度和经度坐标。 点表示法可用于导航多个级别，如下所示。
 
 ```SQL
 SELECT
@@ -61,7 +60,7 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>选择所有属性
-可以使用“*”通配符选择嵌套记录的所有属性。 请看下面的示例：
+可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
 
 ```SQL
 SELECT input.Location.*
@@ -78,10 +77,10 @@ FROM input
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>访问嵌套字段时的属性名称是一个变量
-使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)函数如果属性名称是变量。 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
+如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)函数。 
 
-例如，假设示例数据流需要与每个设备传感器的参考数据包含阈值联接。 此类引用数据的代码段如下所示。
+例如，假设有一个示例数据流需要与包含每个设备传感器的阈值的引用数据联接。 下面显示了此类引用数据的代码段。
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>记录字段转换为单独的事件
-若要将记录字段转换为单独事件，请结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。 例如，如果前面的示例为 SensorReading 有几条记录，可以使用下面的查询，将它们提取到不同的事件：
+### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
+若要将记录字段转换为单独事件，请结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。 例如，如果前面的示例具有 SensorReading 的多个记录，可以使用以下查询将它们提取到不同的事件中：
 
 ```SQL
 SELECT
@@ -124,7 +123,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
 
-### <a name="working-with-a-specific-array-element"></a>使用特定的数组元素
+### <a name="working-with-a-specific-array-element"></a>使用特定数组元素
 选择指定索引中的数组元素（选择第一个数组元素）：
 
 ```SQL
@@ -141,7 +140,7 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>数组元素转换为单独的事件
+### <a name="convert-array-elements-into-separate-events"></a>将数组元素转换为单独的事件
 选择所有数组元素作为各个事件。 结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 内置函数，提取所有数组元素作为各个事件：
 
 ```SQL

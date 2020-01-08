@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure DevOps 持续交付函数代码更新-Azure Functions
+title: 使用 Azure DevOps 连续更新函数应用代码
 description: 了解如何设置面向 Azure Functions 的 Azure DevOps 管道。
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: e2dbcadab662caf641716272db1f860c3a6bafa5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1358ac667903e5a1a3f00e4f069a448f0cfdc8f7
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230538"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531575"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -25,7 +25,7 @@ ms.locfileid: "74230538"
 
 若要创建基于 YAML 的管道，请首先构建你的应用程序，然后部署该应用。
 
-### <a name="build-your-app"></a>生成应用
+### <a name="build-your-app"></a>构建你的应用程序
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于在 Azure 中部署函数应用。
 
@@ -57,7 +57,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 
 #### <a name="javascript"></a>JavaScript
@@ -85,7 +85,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 
 #### <a name="python"></a>Python
@@ -119,7 +119,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 #### <a name="powershell"></a>PowerShell
 
@@ -138,7 +138,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
-    name: 'drop'
+    artifactName: 'drop'
 ```
 
 ### <a name="deploy-your-app"></a>部署应用
@@ -184,7 +184,7 @@ steps:
 
 Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
-### <a name="build-your-app"></a>生成应用
+### <a name="build-your-app"></a>构建你的应用程序
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于更新 Azure 中的函数应用。
 

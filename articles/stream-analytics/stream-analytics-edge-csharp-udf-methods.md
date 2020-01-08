@@ -1,33 +1,30 @@
 ---
 title: 为 Azure 流分析作业开发 .NET Standard 函数（预览版）
 description: '了解如何为流分析作业编写 c # 用户定义函数。'
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426317"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义的函数（预览版）
 
-Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行转换和计算。 其中有许多内置函数，但在某些复杂的情况下需要更大的灵活性。 通过使用 .NET Standard 用户定义函数 (UDF)，可以调用以任何 .NET Standard 语言（C#、F# 等）编写的自己的函数来扩展流分析查询语言。 UDF 可用于执行复杂的数学计算，使用 ML.NET 导入自定义 ML 模型，并对丢失的数据使用自定义插补逻辑。 流分析作业的 UDF 功能目前处于预览阶段，不应在生产工作负荷中使用。
+Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行转换和计算。 其中有许多内置函数，但在某些复杂的情况下需要更大的灵活性。 通过使用 .NET Standard 用户定义函数 (UDF)，可以调用以任何 .NET Standard 语言（C#、F# 等）编写的自己的函数来扩展流分析查询语言。 UDF 可用于执行复杂的数学计算，使用 ML.NET 导入自定义 ML 模型，并对丢失的数据使用自定义插补逻辑。 流分析作业的 UDF 功能目前处于预览状态，不应在生产工作负荷中使用。
 
 适用于云作业的 .NET 用户定义功能在中提供：
-* 美国中部（可用）
-* 北欧（可用）
-* 美国东部（可用）
-* 美国西部（即将推出）
-* 美国东部2（即将推出）
-* 西欧（即将推出）
+* 美国中西部
+* 欧洲北部
+* 美国东部
+* 美国西部
+* 美国东部 2
+* 欧洲西部
 
 如果你有兴趣在任何其他区域中使用此功能，则可以[请求访问](https://aka.ms/ccodereqregion)。
 
@@ -124,11 +121,11 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
    |**设置**|建议的值|
    |-------|---------------|
    |全局存储设置资源|选择当前帐户中的数据源|
-   |全局存储设置订阅| < 订阅 >|
-   |全局存储设置存储帐户| < 存储帐户 >|
+   |全局存储设置订阅| <你的订阅>|
+   |全局存储设置存储帐户| <你的存储帐户>|
    |自定义代码存储设置资源|选择当前帐户中的数据源|
-   |自定义代码存储设置存储帐户|< 存储帐户 >|
-   |自定义代码存储设置容器|< 存储容器 >|
+   |自定义代码存储设置存储帐户|<你的存储帐户>|
+   |自定义代码存储设置容器|<你的存储容器>|
    |自定义代码程序集源|云中的现有程序集包|
    |自定义代码程序集源|UserCustomCode .zip|
 

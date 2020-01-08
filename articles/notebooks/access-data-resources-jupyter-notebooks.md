@@ -1,14 +1,14 @@
 ---
-title: 从 Azure 的 Jupyter Notebook 访问数据资源
-description: 如何从 Jupyter Notebook 中访问文件、REST API、数据库和不同的 Azure 存储资源。
-ms.topic: article
+title: 访问 Jupyter 笔记本中的数据-Azure Notebooks 预览
+description: 了解如何从 Jupyter 笔记本访问文件、REST Api、数据库和不同的 Azure 存储资源。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277698"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646341"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
 
@@ -17,6 +17,8 @@ ms.locfileid: "74277698"
 当然可[将数据文件导入项目](work-with-project-data-files.md)，甚至可以使用 Notebook 中的 `curl` 等命令直接下载文件。 但极有可能需要使用非文件源（如 REST API、关系数据库和 Azure 存储（如 Azure 表））提供的更广泛的数据。
 
 本文简要概述了这些不同的选项。 由于在操作中最容易看到数据访问，因此可在 [Azure Notebooks 示例 -访问数据](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)中找到可运行的代码。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API
 
@@ -45,7 +47,7 @@ if response.status_code == 200:
 
 [使用 Python 查询 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)介绍了如何创建包含 AdventureWorks 数据的数据库，并演示了如何查询该数据。 本文的示例 Notebook 中显示了相同的代码。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储器
 
 Azure 存储提供了几种不同类型的非关系存储，具体取决于你拥有的数据类型以及所需的访问方式：
 

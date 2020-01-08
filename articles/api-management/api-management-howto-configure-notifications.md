@@ -1,5 +1,6 @@
 ---
-title: 在 Azure API 管理中配置通知和电子邮件模板 | Microsoft 文档
+title: 配置通知和电子邮件模板
+titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中配置通知和电子邮件模板。
 services: api-management
 documentationcenter: ''
@@ -12,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442683"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中配置通知和电子邮件模板
 API 管理提供的功能为特定事件配置通知，以及配置用于和 API 管理实例的管理员及开发人员通信的电子邮件模板。 本文演示如何为可用事件配置通知，并提供配置用于这些事件的电子邮件模板的概述。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-如果没有 API 管理服务实例，请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
+如果没有 API 管理服务实例，请完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -37,15 +38,15 @@ API 管理提供的功能为特定事件配置通知，以及配置用于和 API
 
     为通知可以配置以下事件的列表。
 
-   * **订阅请求(需要批准)** - 指定的电子邮件收件人和用户将收到关于需要批准的 API 产品的订阅请求的电子邮件通知。
+   * **订阅请求（需要批准）** - 指定的电子邮件收件人和用户将收到关于需要批准的 API 产品的订阅请求的电子邮件通知。
    * **新订阅** - 指定的电子邮件收件人和用户将收到关于新 API 产品订阅的电子邮件通知。
-   * **应用程序库请求** - 指定的电子邮件收件人和用户会在新的应用程序提交到应用程序库时收到电子邮件通知。
-   * **BCC** - 指定的电子邮件收件人和用户将收到发送给开发人员的所有电子邮件的电子邮件密件副本。
-   * **新的问题或评论** - 在开发人员门户上提交新问题或评论时，指定的电子邮件收件人和用户将收到电子邮件通知。
-   * **关闭帐户消息** - 指定的电子邮件收件人和用户会在关闭帐户时收到电子邮件通知。
+   * **应用程序库请求** - 指定电子邮件收件人和用户会在新的应用程序提交到应用程序库时收到电子邮件通知。
+   * **BCC** - 指定电子邮件收件人和用户将收到发送给开发人员的所有电子邮件的电子邮件密件副本。
+   * **新的问题或评论** - 在开发人员门户上提交新问题或注释时，指定电子邮件收件人和用户将收到电子邮件通知。
+   * **关闭帐户消息** - 指定电子邮件收件人和用户会在关闭帐户时收到电子邮件通知。
    * **接近订阅配额限制** - 以下电子邮件收件人和用户会在订阅使用量接近使用量配额时收到电子邮件通知。
 
-     对于每个事件，可以指定电子邮件收件人（使用电子邮件地址文本框，或从列表中选择用户）。
+     对于每个事件，可以指定电子邮件收件人使用电子邮件地址文本框，或从列表中选择用户。
 
 3. 要指定被通知的电子邮件地址，请在电子邮件地址文本框中输入。 如果有多个电子邮件地址，使用逗号分隔它们。
 

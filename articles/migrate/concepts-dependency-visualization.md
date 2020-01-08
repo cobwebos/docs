@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489214"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494506"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -32,14 +32,14 @@ ms.locfileid: "73489214"
 
 可通过两个选项来部署依赖关系可视化：
 
-- **无代理依赖项可视化**：此选项当前为预览版。 不需要在计算机上安装任何代理。 
+- **无代理依赖项可视化**：此选项当前为预览版，仅适用于 VMware vm。 不需要在计算机上安装任何代理。 
     - 它的工作原理是从启用了它的计算机捕获 TCP 连接数据。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。
 启动依赖项发现后，设备会按5分钟的轮询间隔从计算机收集数据。
     - 收集以下数据：
         - TCP 连接
         - 具有活动连接的进程的名称
         - 运行上述进程的已安装应用程序的名称
-        - 不能。 每个轮询间隔检测到的连接
+        - 不。 每个轮询间隔检测到的连接
 - **基于代理的依赖项可视化**：若要使用基于代理的依赖项可视化，需要在要分析的每台本地计算机上下载并安装以下代理。  
     - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)有关如何安装 MMA 代理的详细信息。
     - 需要在每台计算机上安装[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
@@ -54,7 +54,7 @@ ms.locfileid: "73489214"
 [详细了解](how-to-assess.md)如何添加该工具，以及如何为[hyper-v](how-to-set-up-appliance-hyper-v.md)、 [VMware](how-to-set-up-appliance-vmware.md)或物理服务器部署设备。
 
 
-### <a name="how-does-it-work"></a>工作原理
+### <a name="how-does-it-work"></a>它是如何工作的？
 
 Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖关系可视化。
 
@@ -93,6 +93,6 @@ Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overvi
 
 ## <a name="next-steps"></a>后续步骤
 - [使用计算机依赖项分组计算机](how-to-create-group-machine-dependencies.md)
-- [详细了解](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)依赖项可视化相关的常见问题解答。
+- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)。
 
 

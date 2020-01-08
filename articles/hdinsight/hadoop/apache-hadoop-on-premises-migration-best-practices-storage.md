@@ -2,18 +2,18 @@
 title: 存储：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的存储最佳做法。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: b22c3c7e7dbbf7a93fff10ded1fbb7bef8fc5900
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435773"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -23,7 +23,7 @@ ms.locfileid: "73494949"
 
 可在 Azure 存储或 Azure Data Lake Storage 重新创建本地 Apache Hadoop 文件系统 (HDFS) 目录结构。 可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。 这两种服务既可以用作默认文件系统，也可以用作 HDInsight 群集的附加文件系统。 HDInsight 群集和存储帐户必须位于同一区域。
 
-### <a name="azure-storage"></a>Azure 存储
+### <a name="azure-storage"></a>Azure 存储器
 
 HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或其他文件系统。 标准层存储帐户支持与 HDInsight 群集配合使用。 不支持高级层。 默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 不支持为多个群集共享一个 blob 容器作为默认文件系统。
 
@@ -33,18 +33,17 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 可以使用以下格式之一访问存储在 Azure 存储中的数据：
 
-|数据访问格式 |说明 |
+|数据访问格式 |Description |
 |---|---|
 |`wasb:///`|使用未加密通信访问默认存储。|
 |`wasbs:///`|使用加密通信访问默认存储。|
 |`wasb://<container-name>@<account-name>.blob.core.windows.net/`|与非默认存储帐户通信时使用。 |
 
+[标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)列出 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
 
-[Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)列出了 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
+[Azure 存储分析](../../storage/storage-analytics.md) 提供了所有存储服务的指标，可配置 Azure 门户来收集这些指标，以便通过图表直观显示。 可以创建警报，以便在达到存储资源指标的阈值时收到通知。
 
-[Azure 存储分析](../../storage/storage-analytics.md)  提供了所有存储服务的指标，可配置 Azure 门户来收集这些指标，以便通过图表直观显示。 可以创建警报，以便在达到存储资源指标的阈值时收到通知。
-
-Azure 存储现提供 [Blob 对象软删除](../../storage/blobs/storage-blob-soft-delete.md)，以便在应用程序或其他存储帐户用户意外修改或删除数据后恢复数据。
+当应用程序或其他存储帐户用户意外修改或删除数据时，Azure 存储[为 blob 对象提供软删除](../../storage/blobs/storage-blob-soft-delete.md)。
 
 可创建 [blob 快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)。 快照是在某一时间点拍摄的只读版本的 blob，这是一种备份 blob 的方法。 在创建快照后，可以读取、复制或删除该快照，但无法对其进行修改。
 
@@ -74,7 +73,8 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 有关详细信息，请参阅以下文章：
 
 - [将 Azure 存储与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)
+- [标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)
+- [Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)
 - [Microsoft Azure 存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)
 - [监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [在 Azure 门户中监视存储帐户](../../storage/common/storage-monitor-storage-account.md)
@@ -90,7 +90,7 @@ Azure Data Lake Storage 实现了 HDFS 和 POSIX 样式的访问控制模型。 
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 是最新的存储套餐。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
+Azure Data Lake Storage Gen2 是最新的存储产品/服务。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
 
 ADLS Gen 2 基于  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)构建，可使用文件系统和对象存储范例与数据进行交互。  [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) 的功能（如文件系统语义、文件级安全性和规模）可与低成本的分层存储、高可用性/灾难恢复功能以及  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)中的大量 SDK/工具生态系统结合使用。 在 Data Lake Storage Gen2 中，在添加针对分析工作负载优化的文件系统接口的优点的同时，还保留了对象存储的所有功能。
 
@@ -98,7 +98,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Azure Data Lake Storage (ADLS) Gen2 的主要功能如下：
 
-- **Hadoop 兼容访问**：Azure Data Lake Storage Gen2 允许你管理和访问数据，就像在  [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。  [Azure HDInsight](../../storage/data-lake-storage/abfs-driver.md) 中包含的所有 Apache Hadoop 环境中都提供了新的  ABFS 驱动程序 [](../index.yml)。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
+- **Hadoop 兼容访问**：Azure Data Lake Storage Gen2 允许你管理和访问数据，就像在  [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。  [Azure HDInsight](../index.yml) 中包含的所有 Apache Hadoop 环境中都提供了新的  [ABFS 驱动程序](../../storage/data-lake-storage/abfs-driver.md) 。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
 
 - **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
 
@@ -120,7 +120,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>在本地 Hadoop 群集配置中保护 Azure 存储密钥
 
-添加到 Hadoop 配置文件的 Azure 存储密钥在本地 HDFS 和 Azure Blob 存储之间建立连接。 可以使用 Hadoop 凭据提供程序框架对这些密钥进行加密来保护这些密钥。 加密后，可以安全地存储和访问它们。
+添加到 Hadoop 配置文件中的 Azure 存储密钥在本地 HDFS 和 Azure Blob 存储之间建立连接。 可以使用 Hadoop 凭据提供程序框架对这些密钥进行加密来保护这些密钥。 加密后，可以安全地存储和访问它们。
 
 **预配凭据：**
 
@@ -155,7 +155,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 打开 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 文件并更改以下值：
 
-    |令牌属性|说明|
+    |令牌属性|Description|
     |---|---|
     |policy_name|要创建的存储策略所用的名称。|
     |storage_account_name|你的存储帐户的名称。|
@@ -173,7 +173,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 6. 在“密钥”和“值”字段中使用以下值：
 
-    **密钥**：`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**：Python 应用程序从上面的步骤 4 返回的 SAS 密钥。
+    **密钥**： `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net`**值**： Python 应用程序从上述步骤4返回的 SAS 密钥。
 
 7. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
 
@@ -181,13 +181,13 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 9. 对 MapReduce2 和 YARN 重复此过程。
 
-关于在 Azure 中使用 SAS 令牌，有三个重要事项需要记住：
+有关在 Azure 中使用 SAS 令牌，请记住以下三个重要事项：
 
 1. 使用“READ + LIST”权限创建 SAS 令牌时，使用该 SAS 令牌访问 Blob 容器的用户将无法“写入和删除”数据。 使用该 SAS 令牌访问 Blob 容器并尝试写入或删除操作的用户将收到类似 `"This request is not authorized to perform this operation"` 的消息。
 
-2. 当使用 `READ + LIST + WRITE` 权限生成 SAS 令牌（仅限 `DELETE`）时，`hadoop fs -put` 等命令首先写入 `\_COPYING\_` 文件，然后尝试重命名该文件。 此 HDFS 操作映射到 WASB 的 `copy+delete`。 由于未提供 `DELETE` 权限，因此“put”将失败。 `\_COPYING\_` 操作是一个 Hadoop 功能，旨在提供一些并发控制。 目前，没有办法仅限制“DELETE”操作而不影响“WRITE”操作。
+2. 当使用 `READ + LIST + WRITE` 权限生成 SAS 令牌（仅限 `DELETE`）时，`hadoop fs -put` 等命令首先写入 `\_COPYING\_` 文件，然后尝试重命名该文件。 此 HDFS 操作映射到 WASB 的 `copy+delete`。 由于未提供 `DELETE` 权限，因此 "put" 将失败。 `\_COPYING\_` 操作是一个 Hadoop 功能，旨在提供一些并发控制。 目前没有办法限制 "删除" 操作，也不会影响 "写入" 操作。
 
-3. 遗憾的是，hadoop 凭证提供程序和解密密钥提供程序 (ShellDecryptionKeyProvider) 当前不能与 SAS 令牌配合使用，因此目前无法对其可见性提供保护。
+3. 遗憾的是，hadoop 凭据提供程序和解密密钥提供程序（ShellDecryptionKeyProvider）当前无法使用 SAS 令牌，因此当前无法从可见性中保护。
 
 有关详细信息，请参阅[使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据](../hdinsight-storage-sharedaccesssignature-permissions.md)。
 
@@ -200,16 +200,16 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 - [异地冗余存储 (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [读取访问异地冗余存储 (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数据复制到另一个区域中的另一个 Data Lake Storage 帐户，复制频率与灾难恢复计划的需求应保持一致。 有多种方法可以复制数据，包括 [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、DistCp、 [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)或 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)。 还建议为 Data Lake Storage 帐户强制实施访问策略，以防止意外删除。
+Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数据复制到另一个区域中的另一个 Data Lake Storage 帐户，复制频率与灾难恢复计划的需求应保持一致。 可以通过不同的方法来复制数据，包括 [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、 [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)或 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)。 还建议为 Data Lake Storage 帐户强制实施访问策略，以防止意外删除。
 
 有关详细信息，请参阅以下文章：
 
 - [Azure 存储复制](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage (ADLS) 灾难恢复指南](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>将其他 Azure 存储帐户附加到该群集
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>将其他 Azure 存储帐户附加到群集
 
-在 HDInsight 创建过程中，将选择 Azure 存储帐户或者 Azure Data Lake Storage 作为默认文件系统。 除了此默认存储帐户，在群集创建过程中或群集创建完成后，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。
+在 HDInsight 创建过程中，会选择 Azure 存储帐户或 Azure Data Lake Storage 帐户作为默认文件系统。 除了此默认存储帐户，在群集创建过程中或群集创建完成后，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。
 
 可以通过以下方式之一添加其他存储帐户：
 - 在“Ambari HDFS 配置高级自定义”核心站点，添加存储帐户名称和密钥并重启服务
@@ -218,11 +218,8 @@ Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数�
 > [!Note]
 > 在有效的用例中，可以通过向  [Azure 支持](https://azure.microsoft.com/support/faq/)发出的请求来增加对 Azure 存储的限制。
 
-有关详细信息，请参阅以下文章：
-- [将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)
+有关详细信息，请参阅[将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列的下一篇文章：
-
-- [有关从本地迁移到 Azure HDInsight Hadoop 的数据迁移最佳做法](apache-hadoop-on-premises-migration-best-practices-data-migration.md)
+阅读本系列文章中的下一篇文章：[本地到 Azure HDInsight Hadoop 迁移的数据迁移最佳实践](apache-hadoop-on-premises-migration-best-practices-data-migration.md)。

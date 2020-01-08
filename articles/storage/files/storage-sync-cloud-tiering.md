@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431742"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -70,12 +70,13 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
    *  **查看文件上的文件属性。**
      右键单击文件，转到“详细信息”，再向下滚动到“属性”属性。 分层的文件具有以下属性集：     
         
-        | 属性字母 | 特性 | 定义 |
+        | 属性字母 | Attribute | 定义 |
         |:----------------:|-----------|------------|
         | A | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
-        | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 |
+        | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 此属性仅在 Windows Server 2016 及更低版本上设置。|
+        | 百万次 | 回调数据访问 | 指示文件的数据不会在本地存储上全部显示。 读取文件将导致至少从服务器终结点所连接到的 Azure 文件共享提取一些文件内容。 仅在 Windows Server 2019 上设置此属性。 |
         | L | 重分析点 | 指示该文件包含重分析点。 重分析点是供文件系统筛选器使用的特殊指针。 Azure 文件同步使用重分析点来定义 Azure 文件同步文件系统筛选器 (StorageSync.sys) 存储文件的云位置。 这样即可支持无缝访问。 用户无需知道是否使用了 Azure 文件同步或如何获取在 Azure 文件共享中的文件访问权限。 如果文件被完全召回，则 Azure 文件同步将从此文件中删除重分析点。 |
-        | O | 脱机 | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
+        | O | Offline | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
 
         ![文件的“属性”对话框（“详细信息”选项卡被选中）](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
@@ -88,7 +89,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
         fsutil reparsepoint query <your-file-name>
         ```
 
-        如果文件包含重分析点，应能看到“重分析标记值:0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
+        如果文件包含重分析点，应能看到“重分析标记值: 0x8000001e”。 此十六进制值是 Azure 文件同步拥有的重分析点值。输出还包含用于表示 Azure 文件共享上的文件路径的重分析数据。
 
         > [!WARNING]  
         > 同时，`fsutil reparsepoint` 实用程序命令还包含删除重分析点的功能。 除非 Azure 文件同步工程团队要求，否则请不要执行此命令。 运行此命令可能会导致数据丢失。 
@@ -105,18 +106,18 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
 
-指定`-Order CloudTieringPolicy`将首先撤回最近修改的文件。
+指定 `-Order CloudTieringPolicy` 将首先撤回最近修改的文件。
 其他可选参数：
-* `-ThreadCount`确定可并行回调的文件数。
+* `-ThreadCount` 确定可并行回调的文件数。
 * `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
-* `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
+* `-PerFileRetryDelaySeconds`确定重试两次重试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
 
 > [!Note]  
 > 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 文件同步后，为什么文件的“磁盘占用空间”属性与“大小”属性不一致？ 
-Windows 文件资源管理器公开了两个属性来表示文件的大小：即“大小”和“占用空间”。 这些属性的含义略有不同。 “大小”表示文件的完整大小。 “占用空间”表示存储在磁盘上的文件流的大小。 这些属性的值存在差异的原因有多种，例如压缩、使用重复数据删除，或使用 Azure 文件同步进行的云分层。如果文件被分层到 Azure 文件共享，则占用空间为零，因为该文件流存储在 Azure 文件共享中，而未存储在磁盘上。 另外，文件也可能会被部分分层（或部分召回）。 在部分分层文件中，该文件的一部分位于磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 
+Windows 文件资源管理器公开了两个属性来表示文件的大小：即“大小”和“占用空间”。 这些属性的含义略有不同。 “大小”表示文件的完整大小。 “占用空间”表示存储在磁盘上的文件流的大小。 这些属性的值可能因多种原因而异，例如压缩、使用重复数据删除或使用 Azure 文件同步进行云分层。如果将文件分层到 Azure 文件共享，则磁盘上的大小为零，因为文件流存储在 Azure 文件共享中，而不是存储在磁盘上。 另外，文件也可能会被部分分层（或部分召回）。 在部分分层文件中，该文件的一部分位于磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>如何强制对文件或目录进行分层？

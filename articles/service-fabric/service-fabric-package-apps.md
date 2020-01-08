@@ -1,25 +1,14 @@
 ---
-title: 打包 Azure Service Fabric 应用 | Microsoft Docs
-description: 如何打包 Service Fabric 应用程序后将其部署到群集。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 打包 Azure Service Fabric 应用
+description: 了解如何打包 Azure Service Fabric 应用程序以及如何准备部署到群集。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718356"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639677"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -73,7 +62,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置会显示在“输出”  窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
 
@@ -143,7 +132,7 @@ True
 与上传未压缩的包相比，对于压缩的应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)可能要花费更长的时间，尤其是当压缩是在复制过程中执行的时。 使用压缩，[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[注销应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)时速度会更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
-压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩不会产生任何更改。
+压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
 可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
@@ -239,9 +228,9 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 [部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例
 
-[管理多个环境的应用程序参数][11]介绍如何配置不同应用程序实例的参数和环境变量。
+[管理多个环境的应用程序参数][11]介绍了如何为不同的应用程序实例配置参数和环境变量。
 
-[配置应用程序的安全策略][12] 介绍如何根据安全策略运行服务，从而限制访问。
+[为应用程序配置安全策略][12]介绍了如何在安全策略下运行服务以限制访问。
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

@@ -1,28 +1,28 @@
 ---
-title: 什么是团队数据科学过程？
+title: 什么是 Team Data Science Process？
 description: 提供数据科学方法来交付预测分析解决方案和智能应用程序。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/04/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429367"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665067"
 ---
-# <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
+# <a name="what-is-the-team-data-science-process"></a>什么是 Team Data Science Process？
 
-Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 TDSP 有助于改进团队协作和学习。 它包含来自 Microsoft 及本行业中其他企业的最佳做法与结构精华，能够促进数据科学方案的成功实现。 其目标是帮助公司完全实现其分析程序的优势。
+Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 TDSP 通过说明团队角色如何最好地协同工作，帮助改进团队协作和学习。 TDSP 包括 Microsoft 和其他行业领先公司的最佳做法和结构，以帮助成功实现数据科学计划。 其目标是帮助公司完全实现其分析程序的优势。
 
-本文提供 TDSP 及其主要组件的概述。 我们将提供可以通过各种工具实现的过程的一般说明。 其他链接主题中提供了过程生命周期所涉及的项目任务和角色的更详细说明。 此外，还提供了有关如何使用一套具体 Microsoft 工具和基础结构实现 TDSP 的指导（我们的团队就是使用这些工具和基础结构来实现 TDSP）。
+本文提供 TDSP 及其主要组件的概述。 我们在此处提供了可使用不同类型的工具实现的流程的一般说明。 其他链接主题中提供了过程生命周期所涉及的项目任务和角色的更详细说明。 此外，还提供了有关如何使用一套具体 Microsoft 工具和基础结构实现 TDSP 的指导（我们的团队就是使用这些工具和基础结构来实现 TDSP）。
 
 ## <a name="key-components-of-the-tdsp"></a>TDSP 的关键组件
 
@@ -77,7 +77,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 - 模型性能指标，例如 ROC 曲线或 MSE
 
 
-[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-目录](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 可以从 [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 克隆目录结构。
 
@@ -86,7 +86,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 
 - 用于存储数据集的云文件系统 
-- 数据库
+- databases
 - 大数据（Hadoop 或 Spark）群集 
 - 机器学习服务 
 

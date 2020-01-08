@@ -3,12 +3,12 @@ title: 了解 azure Kubernetes Service 的 Azure 策略
 description: 了解 Azure 策略如何使用 Rego 并打开策略代理来管理 Azure Kubernetes 服务中的群集。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436392"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>了解 azure Kubernetes Service 的 Azure 策略
 
@@ -29,11 +29,11 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ## <a name="opt-in-for-preview"></a>选择加入预览版
 
-在安装 Azure 策略加载项或启用任何服务功能之前，你的订阅必须启用**ContainerService**资源提供程序和**PolicyInsights**资源提供程序，并批准到加入预览版。 若要加入预览，请在 Azure 门户或 Azure CLI 中执行以下步骤：
+在安装 Azure 策略外接程序或启用任何服务功能之前，订阅必须启用**ContainerService**资源提供程序和**PolicyInsights**资源提供程序，并批准加入预览。 若要加入预览，请在 Azure 门户或 Azure CLI 中执行以下步骤：
 
 - Azure 门户：
 
-  1. 注册**ContainerService**和**PolicyInsights**资源提供程序。 有关步骤，请参阅[资源提供程序和类型](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)。
+  1. 注册**ContainerService**和**PolicyInsights**资源提供程序。 有关步骤，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
   1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
 
@@ -89,11 +89,11 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ### <a name="installing-the-add-on"></a>安装外接程序
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 
 在 AKS 群集中安装外接程序之前，必须安装预览扩展。 此步骤通过 Azure CLI 来完成：
 
-1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. AKS 群集必须是_1.10_版或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -230,7 +230,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure 策略加载项收集的诊断数据
 
-用于 Kubernetes 的 Azure 策略外接程序将收集有限的群集诊断数据。 此诊断数据是与软件和性能相关的重要技术数据。 它按以下方式使用：
+用于 Kubernetes 的 Azure 策略外接程序将收集有限的群集诊断数据。 此诊断数据是与软件和性能相关的重要技术数据。 它的使用方式如下所示：
 
 - 将 Azure 策略添加到最新
 - 保持 Azure 策略附加安全安全、可靠、高性能
@@ -253,10 +253,10 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看[策略定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

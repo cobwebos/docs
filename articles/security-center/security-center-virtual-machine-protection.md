@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766797"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552995"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护您的计算机和应用程序
-当安全中心识别到潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件的过程。 
+当 Azure 安全中心识别到潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
 
-本文介绍 Azure 安全中心的资源安全性部分的 "**计算和应用**" 页。 还介绍了其中的一些建议。
+本文介绍安全中心的 "资源安全性" 部分的 "**计算和应用**" 页。
 
-有关计算和应用服务的建议的完整列表，请参阅[计算和应用建议](recommendations-compute-and-apps.md)。
+有关此页上可能会看到的建议的完整列表，请参阅[数据和存储建议](recommendations-reference.md#recs-computeapp)。
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>查看计算和应用资源的安全性
 
-![安全中心仪表板](./media/security-center-virtual-machine-recommendations/overview.png)
+[![安全中心仪表板](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 若要查看计算和应用资源的状态，请在 "安全中心" 边栏中的 "**资源**" 下选择 "**计算 & 应用**"。 提供以下选项卡：
 
@@ -74,7 +75,8 @@ ms.locfileid: "74766797"
 
 若要向下钻取每个 VM 的安全建议，请单击相应的 VM。
 此处显示 VM 或计算机的安全详细信息。 在底部，可以看到建议的操作以及每个问题的严重性。
-![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+
+[![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>云服务
 对于云服务，会在操作系统版本过期时创建建议。
@@ -141,6 +143,7 @@ ms.locfileid: "74766797"
 ## <a name="next-steps"></a>后续步骤
 若要详细了解适用于其他 Azure 资源类型的建议，请参阅以下文章：
 
+* [Azure 安全中心安全建议的完整参考列表](recommendations-reference.md)
 * [在 Azure 安全中心监视标识和访问](security-center-identity-access.md)
 * [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
 * [保护 Azure 安全中心中的 Azure SQL 服务](security-center-sql-service-recommendations.md)

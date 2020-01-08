@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435647"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
 
@@ -179,9 +179,9 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 3. 滚动到“视图”页的底部。 在“权限”部分下面，可使用两个选项向域用户授予对该视图的权限：
 
-**向这些用户授予权限**![向这些用户授予权限](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+向**这些用户授予**权限 ![向这些用户授予权限](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**向这些组授予权限**![向这些组授予权限](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+向这些**组授予**权限 ![向这些组授予权限](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. 若要添加用户，请选择“添加用户”按钮。
 
@@ -248,7 +248,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
     ![Apache Ambari 角色列表视图-用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[在启用了 ESP 的情况下创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)。
+* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[在启用了 ESP 的情况下创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。
 
     ![Apache Ambari 角色列表视图-组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

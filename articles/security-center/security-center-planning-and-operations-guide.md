@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462456"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于信息技术（IT）专业人员、IT 架构师、信息安全分析师和云管理员，计划使用 Azure 安全中心。
@@ -83,6 +83,10 @@ Jeff（工作负荷所有者）
 
 * 资源组所有者/参与者
 
+**Ellen（首席信息安全官/首席信息官）**
+
+* 订阅所有者/参与者或安全管理员
+
 **David（IT 安全）**
 
 * 订阅所有者/参与者或安全管理员
@@ -111,9 +115,9 @@ Jeff（工作负荷所有者）
 >
 
 ## <a name="security-policies-and-recommendations"></a>安全策略和建议
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 可以在安全中心定义 Azure 订阅的策略，按照工作负荷的类型或数据的敏感程度对其进行调整。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在安全中心内，可以定义 Azure 订阅策略，即根据工作负载类型或数据机密性量身定制。
 
-安全中心策略包含以下组件：
+安全中心策略由以下部分组成：
 - [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
 - [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure Policy](../governance/policy/overview.md) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
 - [电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全联系人和通知设置。
@@ -195,7 +199,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 
 你还应定期监视现有资源，以了解可能会产生安全风险、与推荐的基准的偏差和安全警报的配置更改。 从“安全中心”仪表板开始。 从这里开始，你有三个主要区域需要定期查看。
 
-![操作](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. 可通过“预防”部分面板快速访问关键资源。 使用此选项来监视“计算”、“网络”、“存储和数据”以及“应用程序”。
 2. 可以通过“建议”面板查看安全中心的建议。 在持续监视过程中，你可能会发现你每天不会有任何建议，这是正常的，因为你在初始安全中心设置中提出了所有建议。 因此，此部分可能不是每天都有新信息，只需根据需要进行访问即可。
@@ -249,6 +253,6 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
-* [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

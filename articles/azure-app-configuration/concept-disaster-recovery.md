@@ -1,23 +1,17 @@
 ---
-title: 使用 Azure 应用程序配置实现复原和灾难恢复 | Microsoft Docs
-description: 概述如何使用 Azure 应用程序配置实现复原和灾难恢复。
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure 应用配置复原和灾难恢复
+description: 了解如何通过 Azure 应用配置实现复原和灾难恢复。
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 05/29/2019
+ms.openlocfilehash: f2f914ec993670b8ba7a596f873234afd9ffc8e8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185280"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665057"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
 
@@ -29,7 +23,7 @@ ms.locfileid: "74185280"
 
 ![异地冗余的存储](./media/geo-redundant-app-configuration-stores.png)
 
-应用程序会以并行方式从主要存储和辅助存储加载其配置。 这样做可以提高成功获取配置数据的可能性。 使两个存储中的数据保持同步由你负责。以下部分介绍如何将异地复原能力内置到应用程序中。
+应用程序会以并行方式从主要存储和辅助存储加载其配置。 这样做可以提高成功获取配置数据的可能性。 你负责使两个存储中的数据保持同步。以下部分说明了如何在应用程序中构建异地复原功能。
 
 ## <a name="failover-between-configuration-stores"></a>配置存储之间的故障转移
 
@@ -52,15 +46,15 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 ## <a name="synchronization-between-configuration-stores"></a>配置存储之间的同步
 
-所有异地冗余的配置存储必须包含相同的数据集，这一点非常重要。 可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储  。 可通过 Azure 门户和 CLI 使用此功能。
+所有异地冗余的配置存储必须包含相同的数据集，这一点非常重要。 可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储。 可通过 Azure 门户和 CLI 使用此功能。
 
 在 Azure 门户中，可以按照以下步骤将更改推送到另一个配置存储。
 
-1. 转到“导入/导出”选项卡  ，然后依次选择“导出”   > “应用配置”   > “目标”   > “选择资源”  。
+1. 转到“导入/导出”选项卡，然后依次选择“导出” > “应用配置” > “目标” > “选择资源”。
 
-2. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择“应用”  。
+2. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择“应用”。
 
-3. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 可将默认时间值保持原样，并将“原始标签”  和“添加标签”  设置为相同的值。 选择“应用”。 
+3. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 可将默认时间值保持原样，并将“原始标签”和“添加标签”设置为相同的值。 选择“应用”。
 
 4. 针对所有配置更改重复执行上述步骤。
 

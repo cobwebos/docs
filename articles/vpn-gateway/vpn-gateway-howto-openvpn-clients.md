@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997150"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425777"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 
@@ -28,7 +28,7 @@ ms.locfileid: "74997150"
 
 1. 从官方[OpenVPN 网站](https://openvpn.net/index.php/open-source/downloads.html)下载并安装 OpenVPN 客户端（版本2.4 或更高版本）。
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
-3. 将该配置文件解压。 接下来，使用记事本打开 OpenVPN 文件夹中的 *vpnconfig.ovpn* 配置文件。
+3. 解压缩该配置文件。 接下来，使用记事本打开 OpenVPN 文件夹中的 *vpnconfig.ovpn* 配置文件。
 4. [导出](vpn-gateway-certificates-point-to-site.md#clientexport)创建的 P2S 客户端证书，并将其上传到网关上的 P2S 配置。
 5. 从 *.pfx* 中提取私钥和 base64 指纹。 有多种方法可执行此操作。 其中一种方法是在计算机上使用 OpenSSL。 *profileinfo.txt* 文件包含 CA 和客户端证书的私钥与指纹。 请务必使用客户端证书的指纹。
 
@@ -57,13 +57,13 @@ ms.locfileid: "74997150"
    ```
 10. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
 11. 将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
-12. 右键单击在系统托盘中的 OpenVPN 图标，然后单击“连接”。
+12. 右键单击系统托盘中的 OpenVPN 图标，然后单击“连接”。
 
 ## <a name="mac"></a>Mac 客户端
 
 1. 下载并安装 OpenVPN 客户端（如[TunnelBlick](https://tunnelblick.net/downloads.html)）。 
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡，或使用 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
-3. 将该配置文件解压。 在记事本中打开 OpenVPN 文件夹中的 vpnconfig.ovpn 配置文件。
+3. 解压缩该配置文件。 在文本编辑器中打开 OpenVPN 文件夹中的 vpnconfig ovpn 配置文件。
 4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 有关如何导出证书以获取已编码的公钥的详细信息，请参阅[导出公钥](vpn-gateway-certificates-point-to-site.md#cer)
 5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 有关如何提取私钥的详细信息，请参阅[导出私钥](https://openvpn.net/community-resources/how-to/#pki)。
 6. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
@@ -74,6 +74,39 @@ ms.locfileid: "74997150"
 > [!IMPORTANT]
 >仅 iOS 11.0 及更高版本和 MacOS 10.13 及更高版本支持 OpenVPN 协议。
 >
+## <a name="iOS"></a>iOS 客户端
+
+1. 从应用商店安装 OpenVPN 客户端（版本2.4 或更高版本）。
+2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡，或使用 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
+3. 解压缩该配置文件。 在文本编辑器中打开 OpenVPN 文件夹中的 vpnconfig ovpn 配置文件。
+4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 有关如何导出证书以获取已编码的公钥的详细信息，请参阅[导出公钥](vpn-gateway-certificates-point-to-site.md#cer)
+5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 有关如何提取私钥的详细信息，请参阅[导出私钥](https://openvpn.net/community-resources/how-to/#pki)。
+6. 不要更改任何其他字段。
+7. 将配置文件（. ovpn）通过电子邮件发送到你的电子邮件帐户，该帐户在 iPhone 上的邮件应用中进行配置。 
+8. 在 iPhone 上的邮件应用中打开电子邮件，然后点击附加的文件
+
+    ![打开电子邮件](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. 如果看不**到 "复制到 OpenVPN** " 选项，请点击 "**更多**"
+
+    ![复制到 OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. 点击 "**复制到 OpenVPN** " 
+
+    ![复制到 OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. 点击 "**导入配置文件**" 页中的 "**添加**"
+
+    ![复制到 OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. 在**导入的配置文件**页中点击 "**添加**"
+
+    ![复制到 OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. 启动 OpenVPN 应用，并在**配置文件**页右侧滑动交换机以连接
+
+    ![连接](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux 客户端
 

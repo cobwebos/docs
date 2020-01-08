@@ -1,28 +1,24 @@
 ---
-title: Azure Service Fabric-通过支持托管标识部署新的 Azure Service Fabric 群集 |Microsoft Docs
+title: 使用托管标识部署新的 Service Fabric 群集
 description: 本文介绍如何创建启用了托管标识的新 Service Fabric 群集
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640717"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614853"
 ---
-# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>使用托管标识支持创建新的 Azure Service Fabric 群集 (预览版)
+# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>使用托管标识支持创建新的 Azure Service Fabric 群集（预览版）
 
-为了访问 Azure Service Fabric 应用程序的托管标识功能, 你必须首先在群集上启用托管标识令牌服务。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证, 并负责代表用户获取访问令牌。 启用该服务后, 可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务, 并在其他系统服务旁的 name **Fabric:/system/ManagedIdentityTokenService**下运行。
+为了访问 Azure Service Fabric 应用程序的托管标识功能，你必须首先在群集上启用托管标识令牌服务。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证，并负责代表用户获取访问令牌。 启用该服务后，可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务，并在其他系统服务旁的 name **Fabric：/system/ManagedIdentityTokenService**下运行。
 
 > [!NOTE]
 > 启用**托管标识令牌服务**需要 Service Fabric 运行时版本6.5.658.9590 或更高版本。  
 
 ## <a name="enable-the-managed-identity-token-service"></a>启用托管标识令牌服务 
-若要在创建群集时启用托管标识令牌服务, 可以在 Azure 资源管理器模板中使用以下代码片段:
+若要在创建群集时启用托管标识令牌服务，可以在 Azure 资源管理器模板中使用以下代码片段：
 
 ```json
 "fabricSettings": [
@@ -40,7 +36,7 @@ ms.locfileid: "69640717"
 
 ## <a name="errors"></a>错误
 
-如果部署失败并出现此消息, 则表示群集未处于所需的 Service Fabric 版本 (支持的最低运行时为 6.5 CU2):
+如果部署失败并出现此消息，则表示群集未处于所需的 Service Fabric 版本（支持的最低运行时为 6.5 CU2）：
 
 
 

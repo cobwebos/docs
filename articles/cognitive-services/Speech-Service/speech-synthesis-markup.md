@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815515"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562521"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -55,7 +55,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | 版本 | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为1.0。 | 需要 |
 | xml:lang | 指定根文档的语言。 该值可以包含小写字母、两个字母的语言代码（例如， **en**）或语言代码和大写字母（例如**en-us**）。 | 需要 |
@@ -75,7 +75,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | name | 标识用于文本到语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 需要 |
 
@@ -98,7 +98,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | name | 标识用于文本到语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 需要 |
 
@@ -136,17 +136,19 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | type | 指定讲话样式。 目前，说出的样式是特定于语音的。 | 如果调整用于 "神经" 的说话风格，则需要。 如果使用 `mstts:express-as`，则必须提供类型。 如果提供了无效的值，则将忽略此元素。 |
 
 使用此表来确定每个神经语音支持的说话风格。
 
-| 语音 | Type | 描述 |
+| 语音 | 类型 | Description |
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | 表达非常好的情感 |
 | | type=`empathy` | 表达关心和理解 |
 | | type=`chat` | 用一种偶然、宽松的音调说话 |
+| | type=`newscast` | 表达与新闻广播类似的正式音调 |
+| | type=`customerservice` | 以友好且患者的方式与客户服务交流 |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | 表达与新闻广播类似的正式音调 |
 | | type=`sentiment` | 传达触摸消息或故事 |
 
@@ -180,12 +182,12 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
-| 程度 | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x 弱</li><li>薄弱</li><li>中（默认值）</li><li>强</li><li>x-强</li></ul> | 可选 |
+| 程度 | 使用以下值之一指定暂停的相对持续时间：<ul><li>none</li><li>x 弱</li><li>薄弱</li><li>中（默认值）</li><li>强</li><li>x-强</li></ul> | 可选 |
 | time | 指定暂停的绝对持续时间（以秒或毫秒为单位）。 有效值的示例有2和500 | 可选 |
 
-| 强度 | 描述 |
+| 强度 | Description |
 |----------|-------------|
 | 无; 如果未提供任何值，则为 | 0 毫秒 |
 | x 弱 | 250 ms |
@@ -251,7 +253,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | 逆 | 指定综合属性 `ph` 中字符串的发音时要使用的拼音字母表。 指定字母表的字符串必须以小写字母指定。 下面是可以指定的可能字母表。<ul><li>ipa &ndash; 国际注音字母</li><li>sapi &ndash; 语音 API 电话集</li><li>ups &ndash; 通用手机集</li></ul>字母表仅适用于元素中的音素。 有关详细信息，请参阅[拼音字母参考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 可选 |
 | 三相 | 一个包含手机的字符串，该字符串指定 `phoneme` 元素中单词的发音。 如果指定的字符串包含无法识别的手机，则文本语音转换（TTS）服务将拒绝整个 SSML 文档并不生成文档中指定的任何语音输出。 | 如果使用音素，则是必需的。 |
@@ -288,9 +290,9 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
-| 推广 | 指示文本的基线间距。 你可以表达以下内容：<ul><li>一个绝对值，以数字开头，后跟 "Hz" （赫兹）。 例如，600Hz。</li><li>一个相对值，表示为以 "+" 或 "-" 开头、"Hz" 或 "st" 开头的数字，用于指定要更改的间距。 例如： + 80Hz 或-2st。 "St" 表示变更单位为半音，这是标准 diatonic 比例的半色调（半步）。</li><li>常量值：<ul><li>x-低</li><li>低</li><li>中</li><li>高</li><li>x-高</li><li>default</li></ul></li></ul>. | 可选 |
+| 推广 | 指示文本的基线间距。 你可以表达以下内容：<ul><li>一个绝对值，以数字开头，后跟 "Hz" （赫兹）。 例如，600Hz。</li><li>一个相对值，表示为以 "+" 或 "-" 开头、"Hz" 或 "st" 开头的数字，用于指定要更改的间距。 例如： + 80Hz 或-2st。 "St" 表示变更单位为半音，这是标准 diatonic 比例的半色调（半步）。</li><li>常量值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>。 | 可选 |
 | 轮廓 | 神经语音不支持等高线。 等高线表示语音内容在语音输出中指定时间位置作为目标数组的间距变化。 每个目标由参数对的集合定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每组参数中的第一个值指定间距更改的位置（以文本持续时间的百分比表示）。 第二个值指定升高或降低跨度的量，使用相对值或音调的枚举值（请参阅 `pitch`）。 | 可选 |
 | range  | 一个值，该值表示文本的间距范围。 您可以使用相同的绝对值、相对值或用于描述 `pitch`的枚举值表示 `range`。 | 可选 |
 | rate  | 指示文本的说话速率。 您可以将 `rate` 表达为：<ul><li>一个相对值，表示为作为默认值的倍数的数字。 例如，如果值为*1* ，则费率不会更改。 如果值为*0.5* ，则会产生一半。 如果值为*3* ，则会 tripling 速率。</li><li>常量值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-fast</li><li>default</li></ul></li></ul> | 可选 |
@@ -329,7 +331,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 </speak>
 ```
 
-### <a name="change-pitch"></a>更改音调
+### <a name="change-pitch"></a>更改音高
 
 可以在单词或句子级将间距变化应用到标准语音。 而只能对句子级别的神经语音应用螺距更改。
 
@@ -371,7 +373,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | 解释为 | 指示元素的文本的内容类型。 有关类型的列表，请参阅下表。 | 需要 |
 | format | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的其他信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
@@ -383,13 +385,13 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 | 解释为 | format | 解释 |
 |--------------|--------|----------------|
-| 地址 | | 该文本称为地址。 语音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />作为 "我在150th 的法庭 redmond 华盛顿州"。 |
+| address | | 该文本称为地址。 语音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />作为 "我在150th 的法庭 redmond 华盛顿州"。 |
 | 基数、数字 | | 此文本被称为基数数字。 语音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />如 "有三个替代方法。" |
 | 字符，拼写输出 | | 此文本被称为单个字母（拼写出）。 语音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />作为 "T E S T"。 |
 | date  | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文本被称为日期。 `format` 属性指定日期的格式（*d = day、m = month 和 y = year*）。 语音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"今天是10月第19个 2016"。 |
 | 数字，number_digit | | 文本被称为单个数字的序列。 语音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />为 "1 2 3 4 5 6 7 8 9"。 |
 | 分数 | | 该文本称为小数。 语音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />为 "八分之三英寸"。 |
-| ordinal  | | 此文本被称为序号。 语音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"选择第三个选项"。 |
+| 序号  | | 此文本被称为序号。 语音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"选择第三个选项"。 |
 | telephone  | | 此文本被称为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，"1" 表示美国，"39" 表示意大利。 语音合成引擎可能会使用此信息来指导其电话号码的发音。 电话号码也可能包含国家/地区代码，如果是，则优先于 `format`中的国家/地区代码。 语音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"我的数字是区域代码 8 8 8 5 5 5 1 2 1 2"。 |
 | time | hms12, hms24 | 该文本称为 "一次"。 `format` 属性指定时间是使用12小时制（hms12）还是24小时制（hms24）来指定。 使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和02:50:45。 语音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"训练离开为四个 A M"。 |
 
@@ -433,7 +435,7 @@ SSML 文档中包含的任何音频都必须满足以下要求：
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | src | 指定音频文件的位置/URL。 | 如果在 SSML 文档中使用音频元素，则是必需的。 |
 
@@ -466,10 +468,10 @@ SSML 文档中包含的任何音频都必须满足以下要求：
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| Attribute | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | src | 指定后台音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则是必需的。 |
-| 卷 | 指定后台音频文件的卷。 **接受的值**： `0` `100` 包含的值。 默认值为 `1`。 | 可选 |
+| 卷 | 指定后台音频文件的卷。 **接受的值**： `0` `100` 包含的值。 默认值是 `1`。 | 可选 |
 | fadein | 指定背景音频淡入的持续时间（以毫秒为单位）。 默认值为 `0`，这等同于不淡化。 **接受的值**： `0` `10000` 包含的值。  | 可选 |
 | fadeout | 指定背景音频的持续时间（以毫秒为单位）。 默认值为 `0`，这等效于不淡出。**接受的值**： `0` `10000` 包含的值。  | 可选 |
 

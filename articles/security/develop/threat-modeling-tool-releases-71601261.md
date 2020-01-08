@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool 发行版 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool 版本 1/29/2019-Azure
 description: 阐述 Threat Modeling Tool 的发行说明
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928102"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548782"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新版 7.1.60126.1 - 2019 年 1 月 29 日
 
@@ -37,7 +29,7 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布
 
 ### <a name="model-validation-option"></a>“模型验证”选项
 
-根据客户反馈，已向该工具添加一个选项以启用或禁用模型验证。 以前，如果模板使用两个对象之间的单个单向数据流，你可能会在“消息”框中收到一条错误消息指示：ObjectsName 至少需要一个“Any”。 禁用模型验证将阻止在视图中显示这些警告。
+根据客户反馈，已向该工具添加一个选项以启用或禁用模型验证。 以前，如果你的模板在两个对象之间使用了单单向数据流，则你可能会在消息框中收到一条错误消息，指出： ObjectsName 至少需要一个 "Any"。 禁用模型验证将阻止在视图中显示这些警告。
 
 可在“文件”->“设置”->“选项”菜单中找到打开和关闭模型验证的切换选项。 此设置的默认值为“禁用”。
 
@@ -45,7 +37,7 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布
 
 ## <a name="system-requirements"></a>系统要求
 
-- 支持的操作系统
+- 受支持的操作系统
   - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
   - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本

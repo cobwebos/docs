@@ -11,16 +11,16 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462616"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-Azure SQL 数据库使你能够以最小的[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)向数据库动态添加更多资源；但是，存在一个切换期间，在此期间与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。
+利用 Azure SQL 数据库，你可以将更多资源动态添加到数据库，使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是，在一段较短的时间内，会有一次与数据库的连接丢失的情况，可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -40,7 +40,7 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 可以在小型单一数据库中构建第一个应用，每个月只需在“常规用途”服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为“业务关键”服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 > [!NOTE]
-> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在最短停机时间的情况下进行手动缩放。
+> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间，而动态可伸缩性允许在最短的停机时间内进行手动缩放。
 
 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。
 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -58,13 +58,13 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
 
 > [!NOTE]
-> 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
+> 缩小/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 
-在不更改数据库或应用程序代码的情况下，缩放资源是提升数据库性能的最简单和最有效的方法。 在某些情况下，即使是最高的服务层级、计算大小和性能优化，也可能无法以成功和经济高效的方式处理工作负荷。 在该情况下，可选择其他选项对数据库进行缩放：
+缩放资源是在不更改数据库或应用程序代码的情况下提高数据库性能的最简单且最有效的方法。 在某些情况下，即使是最高的服务层、计算大小和性能优化，也可能不会以成功且经济高效的方式处理工作负荷。 在这种情况下，可以使用以下附加选项来扩展数据库：
 
-- [读取扩展](sql-database-read-scale-out.md)是一项在获取数据的一个只读副本时可用的功能，可在该副本中执行要求的只读查询，如报表。 只读副本将处理只读工作负荷，而不会影响主数据库上的资源使用情况。
+- [读取扩展](sql-database-read-scale-out.md)是一项可用功能，您可以在其中获取数据的一个只读副本，您可以在其中执行要求严格的只读查询（如报表）。 只读副本将处理只读工作负荷，而不会影响主数据库上的资源使用情况。
 - [数据库分片](sql-database-elastic-scale-introduction.md)是一组技术，可用于将数据拆分为多个数据库，并单独对这些数据库进行缩放。
 
 ## <a name="next-steps"></a>后续步骤

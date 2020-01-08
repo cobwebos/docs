@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457432"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -24,9 +24,9 @@ ms.locfileid: "74892220"
 > [!IMPORTANT]
 > 将常规用途 v1 或 Blob 存储帐户升级为常规用途 v2 是永久性的，无法撤消。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
 3. 在“设置”部分单击“配置”。
 4. 在“帐户类型”下单击“升级”。
@@ -168,4 +168,3 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 ## <a name="next-steps"></a>后续步骤
 
 * [创建存储帐户](storage-quickstart-create-account.md)
-* [管理 Azure 存储帐户](storage-account-manage.md)

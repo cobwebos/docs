@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435666"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -51,7 +51,7 @@ ms.locfileid: "74995909"
 
 本文介绍异地复制方案。
 
-为了帮助设置环境，我们创建了一些 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md)。 如果想要使用其他方法设置环境，请参阅：
+为了帮助设置环境，我们创建了一些 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)。 如果想要使用其他方法设置环境，请参阅：
 
 - [在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)
 - [在 Azure 虚拟网络中创建 Apache HBase 群集](apache-hbase-provision-vnet.md)
@@ -66,9 +66,9 @@ ms.locfileid: "74995909"
 
 **VNet 1**
 
-| properties | Value |
+| 属性 | 值 |
 |----------|-------|
-| Location | 美国西部 |
+| 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -83,9 +83,9 @@ ms.locfileid: "74995909"
 
 **VNet 2**
 
-| properties | Value |
+| 属性 | 值 |
 |----------|-------|
-| Location | 美国东部 |
+| 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -182,7 +182,7 @@ ms.locfileid: "74995909"
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后将使用它。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后会使用它。
 
     还必须从其他 DNS 服务器中找出 DNS 后缀。 因为下一步骤需要用到。
 
@@ -285,7 +285,7 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
 3. 在群集菜单中，选择“脚本操作”。
 4. 在页面顶部，选择“提交新项”。
@@ -303,11 +303,11 @@ sudo service bind9 status
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集，确定活动头节点。
 
-6. 选择**创建**。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|名称|描述|
+|名称|Description|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -316,7 +316,7 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|描述|
+|名称|Description|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |

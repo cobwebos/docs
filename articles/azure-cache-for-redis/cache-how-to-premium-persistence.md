@@ -1,17 +1,17 @@
 ---
-title: 如何为高级 Azure Redis 缓存配置数据暂留
+title: 配置数据暂留-适用于 Redis 的高级 Azure 缓存
 description: 了解如何为高级层的 Azure Redis 缓存实例配置和管理数据暂留
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: yegu
-ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412831"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置数据暂留
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留功能。
@@ -77,7 +77,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 
 启用 AOF 暂留后，写入缓存操作会保存到指定的存储帐户（如果配置了第二个存储帐户，还可指定该帐户）。 如果灾难性故障导致主缓存和副本缓存均无法使用，则使用存储的 AOF 日志重新生成缓存。
 
-## <a name="persistence-faq"></a>暂留常见问题
+## <a name="persistence-faq"></a>保留常见问题
 以下列表包含对 Azure Redis 缓存暂留相关常见问题的解答。
 
 * [能否对此前创建的缓存启用暂存？](#can-i-enable-persistence-on-a-previously-created-cache)
@@ -160,7 +160,7 @@ RDB 暂留备份频率间隔在先前备份过程已成功完成后才会开始�
 
 AOF 文件中存储的数据在每个节点分为多个页 Blob，以便提升将数据保存至存储的性能。 下表介绍每个定价层使用的页 Blob 数量：
 
-| 高级层 | Blob |
+| 高级级别 | Blob |
 |--------------|-------|
 | P1           | 4 个/分片    |
 | P2           | 8 个/分片    |

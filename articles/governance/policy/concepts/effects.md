@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436367"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -19,16 +19,16 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - [Append](#append)
 - [审核](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Deny](#deny)
+- [拒绝](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [已禁用](#disabled)
 - [EnforceOPAConstraint](#enforceopaconstraint) （预览版）
 - [EnforceRegoPolicy](#enforceregopolicy) （预览版）
-- [Modify](#modify)
+- [修改](#modify)
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure Policy 创建应用于资源的所有分配列表，然后根据每个定义评估资源。 Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 这样做可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。
+Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure 策略将创建应用于该资源的所有分配的列表，并根据每个定义计算资源。 在将请求提交到相应的资源提供程序之前，Azure 策略将处理多个影响。 这样做可以防止资源提供程序在资源不符合 Azure 策略的设计调控控制时不必要地处理。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
 - 然后计算**追加**和**修改**。 由于可能会改变请求，所做的更改可能会阻止审核或拒绝的影响。
@@ -61,7 +61,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 ### <a name="append-properties"></a>“附加”属性
 
-附加效果只有“详细信息”数组，它是必需的。 因为“详细信息”是一个数组，它可能需要单个字段/值对或倍数。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
+附加效果只有“详细信息”数组，它是必需的。 因为“详细信息”是一个数组，它可能需要单个或多个字段/值对。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
 
 ### <a name="append-examples"></a>“附加”示例
 
@@ -158,11 +158,11 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 **操作**属性具有以下选项：
 
-|Operation |说明 |
+|操作 |Description |
 |-|-|
 |addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
 |添加 |将已定义的标记和值添加到资源。 |
-|删除 |从资源中删除定义的标记。 |
+|移除 |从资源中删除定义的标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 
@@ -210,7 +210,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 }
 ```
 
-## <a name="deny"></a>DENY
+## <a name="deny"></a>拒绝
 
 “拒绝”用于通过策略定义防止与定义的标准不匹配的资源请求，并使请求失败。
 
@@ -240,7 +240,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是创建或更新资源期间由 Azure Policy 检查的最后一个效果。 然后，Azure Policy 将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
+Audit 是在创建或更新资源的过程中由 Azure 策略检查的最后一个影响。 然后，Azure 策略将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -262,7 +262,7 @@ AuditIfNotExists 对匹配 **if** 条件的资源启用审核，但没有在 **t
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 与使用“审核”效果时一样，Azure Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，其方式与审核效果相同。 触发后，满足 if 条件的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 
@@ -270,10 +270,10 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
-  - 如果 **details.type** 是 **If** 条件资源下的资源类型，则策略将在已评估资源的范围内查询此**类型**的资源。 否则，策略将在与已评估资源相同的资源组内进行查询。
+  - 如果**详细信息**为，则 type 是**if**条件资源下面的资源类型，策略在计算资源的作用域内查询此**类型**的资源。 否则，策略查询将与计算资源位于同一资源组中。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。 但是，应改为考虑 [audit](#audit) 效果。
+  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。 但是，应考虑使用[审核](#audit)效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -327,7 +327,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 与 AuditIfNotExists 类似，DeployIfNotExists 策略定义在满足条件时执行模板部署。
 
 > [!NOTE]
-> [deployIfNotExists](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) 支持**嵌套模板**，但目前不支持[链接模版](../../../azure-resource-manager/resource-group-linked-templates.md)。
+> **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
@@ -344,7 +344,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
   - 首先尝试提取 if条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。
+  - 如果 When 的条件值为，**则** **键入**，然后按 "**名称**" 是_必需_的，并且必须 `[field('name')]`。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -568,9 +568,9 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 "看门程序 v2" 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -2,19 +2,15 @@
 title: 管理 Azure 自动化数据
 description: 本文包含管理 Azure 自动化环境的多个主题。  Azure 自动化目前包括数据保留和备份 Azure 自动化灾难恢复。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421892"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -67,11 +63,11 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 
 下表显示了可用的主要区域和次要区域配对。
 
-| 主要 | 辅助 |
+| 主 | 辅助副本 |
 | --- | --- |
 | 美国中南部 |美国中北部 |
 | 美国东部 2 |美国中部 |
-| 欧洲西部 |北欧 |
+| 欧洲西部 |欧洲北部 |
 | 亚洲东南部 |亚洲东部 |
 | 日本东部 |日本西部 |
 

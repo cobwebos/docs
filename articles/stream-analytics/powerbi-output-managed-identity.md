@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459691"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>使用托管标识对要 Power BI 的 Azure 流分析作业进行身份验证（预览）
 
@@ -19,7 +19,7 @@ ms.locfileid: "73693548"
 
 本文介绍如何通过 Azure 门户和 Azure 资源管理器部署，为流分析作业的 Power BI 输出启用托管标识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用此功能需要以下各项：
 
@@ -29,7 +29,7 @@ ms.locfileid: "73693548"
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 门户创建流分析作业
 
-1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。 确保选中 "使用系统分配的托管标识"，然后选择屏幕底部的 "**保存**" 按钮。
+1. 创建新的流分析作业，或在 Azure 门户中打开现有作业。 在屏幕左侧的菜单栏中，选择 "**配置**" 下的 "**托管标识**"。 确保选中 "使用系统分配的托管标识"，然后选择屏幕底部的 "**保存**" 按钮。
 
    ![配置流分析托管标识](./media/common/stream-analytics-enable-managed-identity.png)
 
@@ -45,10 +45,10 @@ ms.locfileid: "73693548"
 
 ## <a name="azure-resource-manager-deployment"></a>Azure 资源管理器部署
 
-Azure 资源管理器允许你完全自动部署流分析作业。 可以使用 Azure PowerShell 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 部署资源管理器模板。 以下示例使用 Azure CLI。
+Azure 资源管理器允许你完全自动部署流分析作业。 你可以使用 Azure PowerShell 或[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)部署资源管理器模板。 下面的示例使用 Azure CLI。
 
 
-1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 **Microsoft.StreamAnalytics/streamingjobs** 资源：
+1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建具有托管标识的**streamanalytics-default-central-us/streamingjobs**资源：
 
     ```json
     "identity": {
@@ -56,7 +56,7 @@ Azure 资源管理器允许你完全自动部署流分析作业。 可以使用 
     }
     ```
 
-   此属性告知 Azure 资源管理器为流分析作业创建和管理标识。 下面是一个示例模板示例资源管理器模板，该模板部署启用了托管标识的流分析作业，并使用托管标识 Power BI 输出接收器：
+   此属性告知 Azure 资源管理器创建和管理流分析作业的标识。 下面是一个示例模板示例资源管理器模板，该模板部署启用了托管标识的流分析作业，并使用托管标识 Power BI 输出接收器：
 
     ```json
     {
@@ -109,7 +109,7 @@ Azure 资源管理器允许你完全自动部署流分析作业。 可以使用 
     az resource show --ids /subscriptions/<subsription-id>/resourceGroups/<resource-group>/providers/Microsoft.StreamAnalytics/StreamingJobs/<resource-name>
     ```
 
-    以上命令将返回如下所示的响应：
+    上述命令将返回如下所示的响应：
 
     ```json
     {
@@ -170,6 +170,29 @@ Azure 资源管理器允许你完全自动部署流分析作业。 可以使用 
 
    ![将流分析作业添加到 Power BI 工作区](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>使用 Power BI PowerShell cmdlet
+
+1. 安装 Power BI `MicrosoftPowerBIMgmt` PowerShell cmdlet。
+
+   > [!Important]
+   > 请确保使用的是版本1.0.821 或更高版本的 cmdlet。
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. 登录到 Power BI。
+
+```powershell
+Login-PowerBI
+```
+
+3. 将流分析作业作为参与者添加到工作区。
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>使用 Power BI REST API
 
 还可以通过直接使用 "添加组用户" REST API 将流分析作业作为参与者添加到工作区。 有关此 API 的完整文档，请参阅：[组-添加组用户](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser)。
@@ -192,9 +215,9 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
 
 - 不支持经典 Power BI 工作区。
 
-- 不包含 Azure Active Directory 的 Azure 帐户。
+- 无 Azure Active Directory 的 Azure 帐户。
 
-- 不支持多租户访问。 为给定流分析作业创建的服务主体必须驻留在创建了该作业的同一 Azure Active Directory 租户中，而不可用于驻留在其他 Azure Active Directory 租户中的资源。
+- 不支持多租户访问。 为给定的流分析作业创建的服务主体必须位于创建该作业的 Azure Active Directory 租户中，并且不能与驻留在不同 Azure Active Directory 租户中的资源一起使用。
 
 - 不支持[用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md)。 这意味着不能输入自己的服务主体供其流分析作业使用。 服务主体必须由 Azure 流分析生成。
 

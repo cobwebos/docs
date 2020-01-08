@@ -1,20 +1,15 @@
 ---
-title: Azure Service Fabric 网格常见问题 | Microsoft Docs
+title: Azure Service Fabric 网格的常见问题
 description: 了解 Azure Service Fabric 网格的常见问题和解答。
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168681"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461995"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -32,12 +27,12 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-是。 每个订阅的配额是：
+可以。 每个订阅的配额是：
 
 - 应用程序数量：5
-- 每个应用程序的核心数：12
-- 每个应用程序的总内存：48 GB
-- 网络和入口终结点：5
+- 每个应用程序的内核数：12
+- 每个应用程序的总 RAM： 48 GB
+- 网络和入口端点：5
 - 可以附加的 Azure 卷：10
 - 服务副本数：3
 - 可以部署的最大容器限制为 4 个内核，16GB RAM。
@@ -86,7 +81,6 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 如果是在 Windows 10 April 2018 Update（版本 1803）计算机上进行开发，则可以使用 Windows 1709 或 Windows 1803 版本的 Docker 映像。
 
 以下容器 OS 映像可以用来部署服务：
-
 - Windows - windowsservercore 和 nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -109,7 +103,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 在某些情况下，从容器到 Service Fabric DNS 服务的传出 DNS 查询可能会失败。 正在调查此问题。 缓解措施：
 
 - 使用 Windows Fall Creators 更新（版本 1709）或更高版本作为基容器映像。
-- 如果单独的服务名称无效，请尝试完全限定的名称：ServiceName.ApplicationName。
+- 如果服务名称单独不起作用，请尝试使用完全限定的名称： ServiceName. ApplicationName。
 - 在服务的 Docker 文件中添加 `EXPOSE <port>`，其中的端口是在其上公开服务的端口。 例如：
 
 ```Dockerfile
@@ -124,9 +118,9 @@ EXPOSE 80
 
 Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
-有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 Windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知的 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
+有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
 
-### <a name="networking"></a>网络
+### <a name="networking"></a>联网
 
 在本地计算机上运行应用时，ServiceFabric 网络 NAT 可能会消失。 若要诊断是否发生了这种情况，请从命令提示符处运行以下命令：
 

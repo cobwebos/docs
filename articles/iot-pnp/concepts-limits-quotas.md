@@ -3,16 +3,16 @@ title: 限制和配额 IoT 即插即用预览 |Microsoft Docs
 description: 了解使用 IoT 即插即用预览时适用的限制、配额和限制。
 author: miagdp
 ms.author: miag
-ms.date: 08/01/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2df8a8820422a22b0512e24c4b052377cb0e61e0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879560"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531371"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT 即插即用预览限制、配额和限制
 
@@ -20,32 +20,32 @@ ms.locfileid: "69879560"
 
 ## <a name="iot-hub"></a>IoT 中心
 
-对于公共预览版, 以下限制和配额适用于 IoT 中心:
+对于公共预览版，以下限制和配额适用于 IoT 中心：
 
-| 限制、限制和限制 | ReplTest1 | 说明 |
+| 限制、限制和限制 | 值 | 说明 |
 |-----|-----|-----|
-| 每个中心可注册的设备功能模型 (DCMs) 或接口数量 | 1500 ||
+| 每个中心可注册的设备功能模型（DCMs）或接口数量 | 1500 ||
 | 每个设备可以注册的接口的最大数目 | 40 ||
-| 每个设备可以注册的最大 DCMs 数 | 1 ||
+| 每个设备可以注册的最大 DCMs 数 | 第 ||
 | 接口/DCM 文件的最大大小 | 512个字符 ||
 | 接口名称的最大大小 | 256个字符 ||
-| 属性名的最大大小  | 64字节, 深度为7个级别 (为保留`$iotin`第一个级别) | 允许的字符: a-z、a-z、0-9 (不是第一个字符) 和下划线。 |
+| 属性名的最大大小  | 64字节，深度为7个级别（为 `$iotin`保留第一个级别） | 允许的字符： a-z、a-z、0-9 （不是第一个字符）和下划线。 |
 | 属性值的最大大小 | 512 字节 ||
 | 命令名称的最大大小 | 100 字节 ||
 | 设备克隆的大小 | 与[IoT 中心限制](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)相同 ||
-| 跨 SKU 的解析 API 调用 (与设备无关) | 每秒100请求数 ||
+| 跨 SKU 的解析 API 调用（与设备无关） | 每秒100请求数 ||
 
 ## <a name="model-repository"></a>模型存储库
 
-对于公共预览版, 以下限制和配额适用于模型存储库:
+对于公共预览版，以下限制和配额适用于模型存储库：
 
-| 限制、限制和限制| ReplTest1 |
+| 限制、限制和限制| 值 |
 |-----|-----|
-| 每 Azure Active Directory 租户的公司型号存储库数 | 1 |
+| 每 Azure Active Directory 租户的公司型号存储库数 | 第 |
 | 每个模型存储库的授权密钥数 | 10  |
-| 每个公司模型存储库的模型数 (DCMs 或接口)| 1500  |
-| 每 Azure Active Directory 租户的公共模型存储库中的模型数 (DCMs 或接口)| 1500  |
-| 公司模型存储库中要删除的 DCMs 或接口数量 | 每秒10个查询 (QPS)|
+| 每个公司模型存储库的模型数（DCMs 或接口）| 1500  |
+| 每 Azure Active Directory 租户的公共模型存储库中的模型数（DCMs 或接口）| 1500  |
+| 公司模型存储库中要删除的 DCMs 或接口数量 | 每秒10个查询（QPS）|
 | 租户创建/更新的模型存储库数| 1 QPS |
 | 在模型存储库中创建/更新/删除的授权密钥数 | 1 QPS|
 | 在公司模型存储库中创建的 DCMs 数 | 10 QPS |

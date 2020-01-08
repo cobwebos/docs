@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457037"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure 资源管理器模板创建 IoT 中心 (.NET)
 
@@ -23,26 +23,26 @@ ms.locfileid: "65827782"
 可以使用 Azure 资源管理器以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何使用 Azure 资源管理器模板通过 C# 程序创建 IoT 中心。
 
 > [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍了如何使用 Azure 资源管理器部署模型。
+> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure 资源管理器模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍了如何使用 Azure 资源管理器部署模型。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 要完成本教程，需要以下各项：
 
 * Visual Studio。
-* 有效的 Azure 帐户。 <br/>如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
-* 可用于存储 Azure 资源管理器模板文件的 [Azure 存储帐][lnk-storage-account]。
-* [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
+* 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。
+* 一个[Azure 存储帐户][lnk-storage-account]，你可以在其中存储 azure 资源管理器模板文件。
+* [Azure PowerShell 1.0][lnk-powershell-install]或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>准备 Visual Studio 项目
 
-1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”  项目模板创建 Visual C# Windows 经典桌面项目。 将项目命名为 **CreateIoTHub**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板创建 Visual C# Windows 经典桌面项目。 将项目命名为 **CreateIoTHub**。
 
-2. 在解决方案资源管理器中右键单击用户的项目，并单击“**管理 NuGet 包**”。
+2. 在解决方案资源管理器中右键单击项目，然后单击“**管理 NuGet 包**”。
 
-3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**   。 选择该包，单击“安装”  ，在“审阅更改”  中单击“确定”  ，并单击“我接受”  以接受许可证。
+3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**。 选择该包，单击“安装”，在“审阅更改”中单击“确定”，并单击“我接受”以接受许可证。
 
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，并单击“**我接受**”以接受许可证。
 
@@ -56,7 +56,7 @@ ms.locfileid: "65827782"
     using Microsoft.Rest;
     ```
 
-6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure 资源管理器模板文件的 Azure 存储帐户的名称。 资源组名称  是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称**是部署的名称，例如 **Deployment_01**。
+6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure 资源管理器模板文件的 Azure 存储帐户的名称。 资源组名称是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称**是部署的名称，例如 **Deployment_01**。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -76,7 +76,7 @@ ms.locfileid: "65827782"
 
 1. 在解决方案资源管理器中右键单击项目，单击“**添加**”，然后单击“**新建项**”。 将名为 **template.json** 的 JSON 文件添加到项目。
 
-2. 若要在美国东部  区域中添加一个标准 IoT 中心，请将“template.json”  的内容替换为以下资源定义。 有关支持 IoT 中心的区域的最新列表，请参阅 [Azure 状态][lnk-status]：
+2. 若要在美国东部区域中添加一个标准 IoT 中心，请将“template.json”的内容替换为以下资源定义。 有关支持 IoT 中心的区域的最新列表，请参阅[Azure 状态][lnk-status]：
 
     ```json
     {
@@ -127,9 +127,9 @@ ms.locfileid: "65827782"
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. 在**服务器资源管理器**中，连接到 Azure 订阅，并在 Azure 存储帐户中创建名为 **templates** 的容器。 在“属性”  面板中，将 **templates** 容器的“公共读取访问权限”  权限设置为“Blob”  。
+5. 在**服务器资源管理器**中，连接到 Azure 订阅，并在 Azure 存储帐户中创建名为 **templates** 的容器。 在“**属性**”面板中，将 **templates** 容器的“**公共读取访问权限**”权限设置为“**Blob**”。
 
-6. 在“**服务器资源管理器**”中，右键单击 **templates** 容器，并单击“**查看 Blob 容器**”。 单击“**上传 Blob**”按钮，选择“**parameters.json**”和“**templates.json**”这两个文件，并单击“**打开**”，将 JSON 文件上传到 **templates** 容器。 包含 JSON 数据的 Blob 的 URL 如下：
+6. 在“**服务器资源管理器**”中，右键单击 **templates** 容器，并单击“**查看 Blob 容器**”。 单击“**上传 Blob**”按钮，选择“**parameters.json**”和“**templates.json**”这两个文件，然后单击“**打开**”，将 JSON 文件上传到 **templates** 容器。 包含 JSON 数据的 Blob 的 URL 如下：
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
@@ -144,7 +144,7 @@ ms.locfileid: "65827782"
     }
     ```
 
-8. 在 **CreateIoTHub** 方法中添加以下代码，向 Azure Resource Manager 提交模板和参数文件：
+8. 将以下代码添加到 **CreateIoTHub** 方法以将模板和参数文件提交到 Azure 资源管理器：
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -182,7 +182,7 @@ ms.locfileid: "65827782"
 
 ## <a name="complete-and-run-the-application"></a>完成并运行应用程序
 
-现在，可以调用 CreateIoTHub  方法来完成应用程序，然后生成并运行该应用程序。
+现在，可以调用 CreateIoTHub 方法来完成应用程序，然后生成并运行该应用程序。
 
 1. 将以下代码添加到 **Main** 方法末尾：
 
@@ -195,16 +195,16 @@ ms.locfileid: "65827782"
 
 3. 单击“**调试**”，并单击“**开始调试**”以运行应用程序。 运行部署可能需要几分钟时间。
 
-4. 若要验证应用程序是否添加了新的 IoT 中心，请访问 [Azure 门户][lnk-azure-portal]并查看资源列表。 另外，也可以使用 **Get-AzResource** PowerShell cmdlet。
+4. 若要验证应用程序是否添加了新的 IoT 中心，请访问[Azure 门户][lnk-azure-portal]并查看资源列表。 或者，使用**AzResource** PowerShell cmdlet。
 
 > [!NOTE]
-> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 在完成任务后，可以通过 [Azure 门户][lnk-azure-portal] 或者使用 **Remove-AzResource** PowerShell cmdlet 删除该 IoT 中心。
+> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 完成后，可以通过[Azure 门户][lnk-azure-portal]或使用**AzResource** PowerShell cmdlet 删除 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已经使用包含 C# 程序的 Azure 资源管理器模板部署了 IoT 中心，你可能想要进一步探究：
 
-* 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
-* 有关 Azure 资源管理器功能的详细信息，请参阅 [Azure 资源管理器概述][lnk-azure-rm-overview]。
+* 了解[IoT 中心资源提供程序][lnk-rest-api]的功能 REST API。
+* 阅读[azure 资源管理器概述][lnk-azure-rm-overview]，了解有关 Azure 资源管理器功能的详细信息。
 * 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Devices 资源类型](/azure/templates/microsoft.devices/iothub-allversions)。
 
 若要详细了解如何开发 IoT 中心，请参阅以下文章：
@@ -222,7 +222,7 @@ ms.locfileid: "65827782"
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

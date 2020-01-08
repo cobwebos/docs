@@ -2,19 +2,15 @@
 title: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
 description: 本文演示如何将作业状态和 runbook 作业流发送到 Azure Monitor 日志，以提供更多见解和管理。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421916"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>将作业状态和作业流从自动化转发到 Azure Monitor 日志
 
@@ -89,7 +85,7 @@ Azure Automation 中的诊断在 Azure Monitor 日志中创建两种类型的记
 
 ### <a name="job-logs"></a>作业日志
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -105,13 +101,13 @@ Azure Automation 中的诊断在 Azure Monitor 日志中创建两种类型的记
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
 | ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| resourceGroup | 自动化帐户的资源组的名称。 |
+| ResourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 
 ### <a name="job-streams"></a>作业流
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -128,7 +124,7 @@ Azure Automation 中的诊断在 Azure Monitor 日志中创建两种类型的记
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
 | ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| resourceGroup | 自动化帐户的资源组的名称。 |
+| ResourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
@@ -176,7 +172,7 @@ $automationAccountId = "[resource id of your automation account]"
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 通过将自动化作业状态和流数据发送到 Azure Monitor 日志，可以通过以下方式更好地了解自动化作业的状态：
 + 设置警报，以便在出现问题时获得通知。

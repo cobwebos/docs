@@ -3,25 +3,25 @@ title: 策略分配结构的详细信息
 description: 描述 Azure 策略使用的策略分配定义，用于将策略定义和参数关联到资源进行评估。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 5f6b097b82d31926b7b5d3099d1f3f23669e78c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436381"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
-策略分配由 Azure 策略用于定义在策略或计划中分配的资源。 在分配时，策略分配可以确定该组资源的参数值，这样就可以重复使用策略定义来处理相同的资源属性，同时满足不同的遵从性需求。
+Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计划。 在分配时，策略分配可以确定该组资源的参数值，这样就可以重复使用策略定义来处理相同的资源属性，同时满足不同的遵从性需求。
 
 使用 JSON 创建策略分配。 策略分配包含的元素：
 
 - 显示名称
-- 说明
+- description
 - metadata
 - 强制模式
 - 策略定义
-- 参数
+- parameters
 
 例如，以下 JSON 显示了具有动态参数的_DoNotEnforce_模式下的策略分配：
 
@@ -47,7 +47,7 @@ ms.locfileid: "74279480"
 }
 ```
 
-所有 Azure Policy 示例均位于 [Azure Policy 示例](../samples/index.md)中。
+所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
@@ -59,9 +59,9 @@ ms.locfileid: "74279480"
 
 此属性具有以下值：
 
-|Mode |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
+|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |Description |
 |-|-|-|-|-|-|
-|Enabled |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
+|已启用 |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
 |已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
 
 如果策略或计划定义中未指定**enforcementMode** ，则使用值_Default_ 。 即使将**enforcementMode**设置为_DoNotEnforce_，也可以为[deployIfNotExists](./effects.md#deployifnotexists)策略启动[修正任务](../how-to/remediate-resources.md)。
@@ -92,7 +92,7 @@ ms.locfileid: "74279480"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[策略定义结构](./definition-structure.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

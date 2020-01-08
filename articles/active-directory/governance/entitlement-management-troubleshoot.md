@@ -1,5 +1,5 @@
 ---
-title: Azure AD 权限管理疑难解答-Azure Active Directory
+title: 权利管理疑难解答-Azure AD
 description: 了解你应检查哪些项目以帮助你解决 Azure Active Directory 的权利管理。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422493"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD 权限管理疑难解答
 
@@ -57,7 +57,7 @@ ms.locfileid: "73173328"
 
 * 如果之前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则在 SharePoint Online 中预配其帐户之前，其访问包将显示为 "未完全传递"。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
-## <a name="requests"></a>Requests
+## <a name="requests"></a>请求
 
 * 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
 

@@ -1,23 +1,24 @@
 ---
 title: Apache Oozie 工作流 & 企业安全性-Azure HDInsight
 description: 使用 Azure HDInsight 企业安全性套餐保护 Apache Oozie 工作流。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,seodec18
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.openlocfilehash: 03826d1005253c408374ea4c78266eef97aab2aa
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/09/2019
+ms.openlocfilehash: ce51923dbc6f909adad1df5a8c0bcd0723371970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435833"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
 
 Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
+
 - Apache MapReduce
 - Apache Pig
 - Apache Hive
@@ -27,33 +28,37 @@ Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 
 
 ## <a name="prerequisite"></a>先决条件
 
-- 具有企业安全性套餐 (ESP) 的 Azure HDInsight Hadoop 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
+具有企业安全性套餐 (ESP) 的 Azure HDInsight Hadoop 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
-    > [!NOTE]  
-    > 有关在非 ESP 群集中使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
+> [!NOTE]  
+> 有关如何在非 ESP 群集上使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="connect-to-an-esp-cluster"></a>连接到 ESP 群集
 
 有关安全外壳 (SSH) 的详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. 使用 SSH 连接到 HDInsight 群集：  
-   ```bash
-   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
-   ```
+1. 使用 SSH 连接到 HDInsight 群集：
 
-2. 若要验证 Kerberos 身份验证是否成功，请使用 `klist` 命令。 如果不成功，请使用 `kinit` 启动 Kerberos 身份验证。
+    ```bash
+    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+    ```
 
-3. 登录到 HDInsight 网关，注册访问 Azure Data Lake Storage 所需的 OAuth 标记：   
-     ```bash
-     curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
-     ```
+1. 若要验证 Kerberos 身份验证是否成功，请使用 `klist` 命令。 如果不成功，请使用 `kinit` 启动 Kerberos 身份验证。
+
+1. 登录到 HDInsight 网关，注册访问 Azure Data Lake Storage 所需的 OAuth 标记：
+
+    ```bash
+    curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
+    ```
 
     状态响应代码 **200 OK** 表示注册成功。 如果收到未经授权的响应（如 401），请检查用户名和密码。
 
 ## <a name="define-the-workflow"></a>定义工作流
+
 Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。 hPDL 是一种 XML 过程定义语言。 按照以下步骤定义工作流：
 
 1. 设置域用户的工作区：
+
    ```bash
    hdfs dfs -mkdir /user/<DomainUser>
    cd /home/<DomainUserPath>
@@ -61,17 +66,20 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
+
    将 `DomainUser` 替换为域用户名。
    将 `DomainUserPath` 替换为域用户的主目录路径。
    将 `ClusterVersion` 替换为群集数据平台版本。
 
 2. 使用以下语句创建并编辑新文件：
+
    ```bash
    nano workflow.xml
    ```
 
 3. 打开 nano 编辑器后，输入以下 XML 作为文件内容：
-   ```xml
+
+    ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -166,19 +174,21 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
        </kill>
        <end name="end" />
     </workflow-app>
-   ```
-4. 将 `clustername` 替换为群集的名称。 
+    ```
 
-5. 若要保存该文件，请选择 Ctrl+X。 输入 `Y` 。 然后选择 Enter。
+4. 将 `clustername` 替换为群集的名称。
+
+5. 若要保存文件，请选择 " **Ctrl + X**"。 输入**Y**。然后选择**Enter**。
 
     工作流分为两部分：
-   * **凭据部分。** 此部分接收用于验证 Oozie 操作的凭据：
+
+   - **Credential.** 此部分接收用于验证 Oozie 操作的凭据：
 
      此示例对 Hive 操作进行身份验证。 若要了解详细信息，请参阅[操作身份验证](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
 
      凭据服务允许 Oozie 操作模拟用户访问 Hadoop 服务。
 
-   * **操作部分。** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
+   - **采取.** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
 
      - map-reduce 操作针对输出聚合字数统计的映射化简运行来自 Oozie 包的示例。
 
@@ -187,9 +197,10 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
      Hive 操作借助操作元素中的关键字 `cred`，使用凭据部分中定义的凭据进行身份验证。
 
 6. 使用以下命令将 `workflow.xml` 文件复制到 `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`：
-     ```bash
+
+    ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
-     ```
+    ```
 
 7. 将 `domainuser` 替换为你的域用户名。
 
@@ -197,33 +208,33 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
 1. 使用以下语句为作业属性创建并编辑新文件：
 
-   ```bash
-   nano job.properties
-   ```
+    ```bash
+    nano job.properties
+    ```
 
 2. 打开 nano 编辑器后，使用以下 XML 作为该文件的内容：
 
-   ```bash
-       nameNode=adl://home
-       jobTracker=headnodehost:8050
-       queueName=default
-       examplesRoot=examples
-       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-       oozie.use.system.libpath=true
-       user.name=[domainuser]
-       jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-       jdbcURL=[jdbcurlvalue]
-       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-   ```
+    ```bash
+    nameNode=adl://home
+    jobTracker=headnodehost:8050
+    queueName=default
+    examplesRoot=examples
+    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+    oozie.use.system.libpath=true
+    user.name=[domainuser]
+    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
+    jdbcURL=[jdbcurlvalue]
+    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+    ```
 
-   * 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，则更改为 `wasb://home`。 如果使用的是 Azure Data Lake Storage Gen2，则更改为 `abfs://home`。
-   * 将 `domainuser` 替换为你的域用户名。  
-   * 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad。  
-   * 将 `jdbcurlvalue` 替换为 Hive 配置中的 JDBC URL。 例如，jdbc:hive2://headnodehost:10001/;transportMode=http。      
-   * 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
+   - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，请将其更改为 `wasb://home`。 如果使用 Azure Data Lake Storage Gen2，则将其更改为 `abfs://home`。
+   - 将 `domainuser` 替换为你的域用户名。  
+   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad。  
+   - 将 `jdbcurlvalue` 替换为 Hive 配置中的 JDBC URL。 例如，jdbc:hive2://headnodehost:10001/;transportMode=http。
+   - 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
 
    运行 Oozie 作业时，必须在本地提供此属性文件。
 
@@ -233,38 +244,44 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
 ### <a name="hive-server-1-file"></a>Hive server 1 文件
 
-1.  创建和编辑 Hive server 1 操作文件：
+1. 创建和编辑 Hive server 1 操作文件：
+
     ```bash
     nano countrowshive1.hql
     ```
 
-2.  创建脚本：
+2. 创建脚本：
+
     ```sql
-    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  将文件保存到 Apache Hadoop 分布式文件系统 (HDFS)：
+3. 将文件保存到 Apache Hadoop 分布式文件系统 (HDFS)：
+
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
 ### <a name="hive-server-2-file"></a>Hive server 2 文件
 
-1.  创建和编辑 Hive server 2 操作字段：
+1. 创建和编辑 Hive server 2 操作字段：
+
     ```bash
     nano countrowshive2.hql
     ```
 
-2.  创建脚本：
+2. 创建脚本：
+
     ```sql
     INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     select devicemodel from hivesampletable limit 2;
     ```
 
-3.  将文件保存到 Hdfs：
+3. 将文件保存到 Hdfs：
+
     ```bash
     hdfs dfs -put countrowshive2.hql countrowshive2.hql
     ```
@@ -276,39 +293,38 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 有关详细信息，请参阅[在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="results-from-an-oozie-job-submission"></a>Oozie 作业提交结果
+
 Oozie 作业为用户而运行。 因此，Apache Hadoop YARN 和 Apache Ranger 审核日志会显示正在以被模拟用户身份运行的作业。 Oozie 作业的命令行界面输出如以下代码所示：
 
+```output
+Job ID : 0000015-180626011240801-oozie-oozi-W
+------------------------------------------------------------------------------------------------
+Workflow Name : map-reduce-wf
+App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
+Status        : SUCCEEDED
+Run           : 0
+User          : alicetest
+Group         : -
+Created       : 2018-06-26 19:25 GMT
+Started       : 2018-06-26 19:25 GMT
+Last Modified : 2018-06-26 19:30 GMT
+Ended         : 2018-06-26 19:30 GMT
+CoordAction ID: -
 
-
-```bash
-    Job ID : 0000015-180626011240801-oozie-oozi-W
-    ------------------------------------------------------------------------------------------------
-    Workflow Name : map-reduce-wf
-    App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
-    Status        : SUCCEEDED
-    Run           : 0
-    User          : alicetest
-    Group         : -
-    Created       : 2018-06-26 19:25 GMT
-    Started       : 2018-06-26 19:25 GMT
-    Last Modified : 2018-06-26 19:30 GMT
-    Ended         : 2018-06-26 19:30 GMT
-    CoordAction ID: -
-    
-    Actions
-    ------------------------------------------------------------------------------------------------
-    ID                      Status  Ext ID          ExtStatus   ErrCode
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
-    -----------------------------------------------------------------------------------------------
+Actions
+------------------------------------------------------------------------------------------------
+ID                      Status  Ext ID          ExtStatus   ErrCode
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+-----------------------------------------------------------------------------------------------
 ```
 
 Hive server 2 操作的 Ranger 审核日志显示 Oozie 为用户运行操作。 Ranger 和 YARN 视图仅对群集管理员可见。
@@ -330,5 +346,6 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 2. 按照 [Oozie Web UI](../hdinsight-use-oozie-linux-mac.md) 步骤启用 SSH 隧道以连接到边缘节点并访问 Web UI。
 
 ## <a name="next-steps"></a>后续步骤
-* [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
-* [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+
+- [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
+- [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

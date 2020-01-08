@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442902"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
@@ -24,13 +24,15 @@ ms.locfileid: "67614819"
 > * 扫描并修复映像漏洞
 > * 在更新基础映像时自动触发并重新部署容器映像
 
-还可以阅读[群集安全性][best-practices-cluster-security]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
+你还可以阅读[群集安全][best-practices-cluster-security]的最佳方案和[pod 安全性][best-practices-pod-security]。
+
+你还可以使用[安全中心中的容器安全性][security-center-containers]来帮助扫描容器中的漏洞。  此外， [Azure 容器注册表][security-center-acr]与安全中心集成，可帮助保护映像和注册表免受漏洞的影响。
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 
 **最佳做法指南** - 扫描容器映像是否存在漏洞，只部署通过了验证的映像。 定期更新基础映像和应用程序运行时，然后在 AKS 群集中重新部署工作负荷。
 
-采用基于容器的工作负荷的一个要素是：验证用于生成自己的应用程序的映像和运行时的安全性。 如何确保不向部署中引入安全漏洞？ 部署工作流应包含一个使用 [Twistlock][twistlock] 或 [Aqua][aqua] 等工具扫描容器映像的流程，然后只允许部署经过验证的映像。
+采用基于容器的工作负荷的一个要素是：验证用于生成自己的应用程序的映像和运行时的安全性。 如何确保不向部署中引入安全漏洞？ 部署工作流应包含使用[Twistlock][twistlock]或[浅绿色][aqua]等工具扫描容器映像的过程，然后仅允许部署已验证的映像。
 
 ![扫描并修复容器映像、验证和部署](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
@@ -44,7 +46,7 @@ ms.locfileid: "67614819"
 
 Azure 容器注册表任务也可以在更新基础映像时自动更新容器映像。 通过此功能，你可以生成少量基础映像，并通过 bug 修复和安全修复定期更新它们。
 
-有关基本映像更新的详细信息, 请参阅[通过 Azure 容器注册表任务在基本映像更新上自动构建映像][acr-base-image-update]。
+有关基本映像更新的详细信息，请参阅[通过 Azure 容器注册表任务在基本映像更新上自动构建映像][acr-base-image-update]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -61,3 +63,5 @@ Azure 容器注册表任务也可以在更新基础映像时自动更新容器�
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

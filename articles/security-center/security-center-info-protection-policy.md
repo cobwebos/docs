@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664391"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611060"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
 可以在 Azure 安全中心为整个 Azure 租户定义和自定义 SQL 信息保护策略。
 
-信息保护是一项高级安全功能，可用于发现、分类、标记和保护 Azure 数据资源中的敏感数据。 发现和分类最敏感的数据（业务、财务、医疗保健、个人数据等）可以在组织信息保护威望中扮演 pivotal 角色。 它可以作为基础结构，用于：
-- 帮助满足数据隐私标准和法规符合性要求
+信息保护是一项高级安全功能，用于发现、分类、标记和报告 Azure 数据资源中的敏感数据。 发现和分类最敏感的数据（业务、财务、医疗保健、个人数据等）可以在组织信息保护威望中扮演 pivotal 角色。 它可以充当基础结构，用于：
+- 帮助满足数据隐私标准和法规遵从性要求
 - 安全方案，如监视（审核）和对敏感数据的异常访问发出警报
 - 控制对包含高度敏感数据的数据存储的访问并增强其安全性
  
@@ -50,7 +50,7 @@ ms.locfileid: "73664391"
  
 1. 可以编辑或删除任何现有标签，也可以添加新标签。 要编辑现有标签，请选择该标签，然后单击顶部或右侧上下文菜单中的“配置”。 要添加新标签，请单击顶部菜单栏或标签表底部的“创建标签”。
 2. 在“配置敏感度标签”屏幕中，可以创建或更改标签名称和描述。 还可以通过打开或关闭“已启用”开关来设置标签的状态（活动或禁用）。 最后，可以添加或删除与标签关联的信息类型。 若发现与该信息类型匹配的任何数据，该数据将自动在分类建议中包含关联的敏感度标签。
-3. 单击 **“确定”** 。
+3. 单击“确定”。
  
    ![配置敏感度标签](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  

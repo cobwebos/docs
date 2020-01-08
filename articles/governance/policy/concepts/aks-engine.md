@@ -3,16 +3,16 @@ title: 了解 Azure Policy for AKS 引擎
 description: 了解 Azure 策略如何使用 CustomResourceDefinitions 并从守卫 v3 打开策略代理，使用 AKS 引擎管理群集。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436427"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>了解 Azure Policy for AKS 引擎
 
-Azure 策略与[AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)（一种提供便利工具的系统）集成，可在 Azure 上快速启动自托管 Kubernetes 群集。 通过这种集成，可以集中、一致的方式为 AKS 引擎自行管理的群集提供大规模操作和安全措施。 通过扩展[开放策略代理](https://www.openpolicyagent.org/)（OPA）[守卫](https://github.com/open-policy-agent/gatekeeper)v3 （beta）的使用，Kubernetes 的_许可控制器 webhook_ ，Azure 策略可以管理和报告 azure 资源和 AKS 引擎的符合性状态从一个位置自行管理的群集。
+Azure 策略与[AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)（一种提供便利工具的系统）集成，可在 Azure 上快速启动自托管 Kubernetes 群集。 通过这种集成，可以集中、一致的方式为 AKS 引擎自行管理的群集提供大规模操作和安全措施。 通过扩展[开放策略代理](https://www.openpolicyagent.org/)（OPA）[守卫](https://github.com/open-policy-agent/gatekeeper)v3 （beta）的使用，Kubernetes 的_许可控制器 webhook_ ，azure 策略使你可以从一个位置管理和报告 Azure 资源和 AKS 引擎自我管理群集的符合性状态。
 
 > [!NOTE]
 > 适用于 AKS 引擎的 Azure 策略是公共预览版，没有 SLA。 此网关守卫是 Beta 版本，由开放源社区支持。 服务仅支持内置策略定义，并为配置有服务主体的每个资源组提供单个 AKS 引擎群集。
@@ -29,11 +29,11 @@ Azure 策略与[AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs
 - [为 AKS 引擎分配策略定义](#built-in-policies)
 - [等待验证](#validation-and-reporting-frequency)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在安装 Azure 策略外接程序或启用任何服务功能之前，订阅必须启用**PolicyInsights**资源提供程序，并为群集服务主体创建角色分配。 
 
-1. 若要启用资源提供程序，请按照[资源提供程序和类型](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)中的步骤操作，或者运行 Azure CLI 或 Azure PowerShell 命令：
+1. 若要启用资源提供程序，请按照[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)中的步骤操作，或者运行 Azure CLI 或 Azure PowerShell 命令：
 
    - Azure CLI
 
@@ -233,7 +233,7 @@ kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 
   1. 删除旧约束
 
-     目前，卸载机制仅删除该网关守卫系统，它不会删除用户创建的任何_ConstraintTemplate_、_约束_或_配置_资源，也不会删除其随附的_CRDs_.
+     目前，卸载机制仅删除该网关守卫系统，它不会删除用户创建的任何_ConstraintTemplate_、_约束_或_配置_资源，也不会删除其随附的_CRDs_。
 
      当网关守卫运行时，可以通过以下方式删除不需要的约束：
 
@@ -255,7 +255,7 @@ kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 
 ## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure 策略加载项收集的诊断数据
 
-用于 Kubernetes 的 Azure 策略外接程序将收集有限的群集诊断数据。 此诊断数据是与软件和性能相关的重要技术数据。 它按以下方式使用：
+用于 Kubernetes 的 Azure 策略外接程序将收集有限的群集诊断数据。 此诊断数据是与软件和性能相关的重要技术数据。 它的使用方式如下所示：
 
 - 保持 Azure 策略添加到最新状态
 - 保持 Azure 策略附加安全安全、可靠、高性能
@@ -278,10 +278,10 @@ kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看[策略定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

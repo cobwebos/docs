@@ -1,20 +1,18 @@
 ---
-title: Azure 流分析中 JavaScript 用户定义的聚合
+title: Azure 流分析中的 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426087"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -22,7 +20,7 @@ Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可�
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript 用户定义的聚合
 
-用户定义的聚合在时间窗口规范的顶层使用，可基于该窗口内的事件进行聚合，并生成单个结果值。 流分析目前支持两种类型的 UDA 接口：AccumulateOnly 和 AccumulateDeaccumulate。 翻转、跳跃、滑动和会话窗口均可使用这两种类型的 UDA。 与跳跃、滑动和会话窗口一起使用时, AccumulateDeaccumulate UDA 的性能比 AccumulateOnly UDA 更好。 可以根据所用的算法选择其中一种类型。
+用户定义的聚合在时间窗口规范的顶层使用，可基于该窗口内的事件进行聚合，并生成单个结果值。 流分析目前支持两种类型的 UDA 接口：AccumulateOnly 和 AccumulateDeaccumulate。 翻转、跳跃、滑动和会话窗口均可使用这两种类型的 UDA。 与跳跃、滑动和会话窗口一起使用时，AccumulateDeaccumulate UDA 的性能比 AccumulateOnly UDA 更好。 可以根据所用的算法选择其中一种类型。
 
 ### <a name="accumulateonly-aggregates"></a>AccumulateOnly 聚合
 
@@ -80,7 +78,7 @@ function main() {
 
 ### <a name="function-alias"></a>函数别名
 
-函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀开头。
+函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀。
 
 ### <a name="function-type"></a>函数类型
 
@@ -90,7 +88,7 @@ function main() {
 
 流分析作业支持的特定类型；如果想要在查询中处理类型，则值为“Any”。
 
-### <a name="function-name"></a>函数名
+### <a name="function-name"></a>函数名称
 
 此函数对象的名称。 函数名称应与 UDA 别名匹配。
 
@@ -100,11 +98,11 @@ Init() 方法初始化聚合的状态。 窗口启动时会调用此方法。
 
 ### <a name="method--accumulate"></a>方法 – accumulate()
 
-Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当事件进入时间窗口 (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW) 时, 将调用此方法。
+Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）时，将调用此方法。
 
 ### <a name="method--deaccumulate"></a>方法 – deaccumulate()
 
-deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件离开 SLIDINGWINDOW 或 SESSIONWINDOW 时, 将调用此方法。
+deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件离开 SLIDINGWINDOW 或 SESSIONWINDOW 时，将调用此方法。
 
 ### <a name="method--deaccumulatestate"></a>方法 – deaccumulateState()
 
@@ -112,7 +110,7 @@ deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。
 
 ### <a name="method--computeresult"></a>方法 – computeResult()
 
-computeResult() 方法基于当前状态返回聚合结果。 此方法在时间窗口 (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW) 结束时调用。
+computeResult() 方法基于当前状态返回聚合结果。 此方法在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支持的输入和输出数据类型
 有关 JavaScript UDA 数据类型，请参阅[集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**流分析和 JavaScript 类型转换**部分。

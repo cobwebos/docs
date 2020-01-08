@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965470"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615049"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "72965470"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS 虚拟机监视
 
-若要监视来宾 VM，请使用 Azure VM 监视，这会提醒你某些高级资源条件。 若要检查是否已启用 VM 诊断，请参阅[Azure 资源日志概述](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs)。 如果看到以下内容，则很可能尚未启用诊断：
+若要监视来宾 VM，请使用 Azure VM 监视，这会提醒你某些高级资源条件。 若要检查是否已启用 VM 诊断，请参阅[Azure 资源日志概述](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)。 如果看到以下内容，则很可能尚未启用诊断：
 
 ![未启用监视](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -137,7 +137,7 @@ ms.locfileid: "72965470"
 
 峰值和常量/恒定稳定消耗-高内存使用率可能不是性能不佳，因为某些应用程序（例如关系数据库引擎）分配了大量内存，并且此利用率可能并不重要。 但是，如果有多个内存密集型应用程序，则可能会出现内存争用导致修整和分页/交换到磁盘的性能下降。 这种性能不佳通常是应用程序性能影响的明显原因。
 
-持续增长的消耗–可能的应用程序的 "预热"，这种消耗是在启动数据库引擎的情况下进行的。 但是，它也可以是应用程序中的内存泄漏的符号。 确定应用程序并了解行为是否正常。
+持续增长的消耗–可能的应用程序的 "预热"，这种消耗是在启动数据库引擎的情况下进行的。 然而，这也可能是应用程序内存泄漏的迹象。 确定应用程序并了解行为是否正常。
 
 页面或交换文件使用情况–检查是否正在使用 Windows 分页文件（位于 D：\) 或 Linux 交换文件（位于 `/dev/sdb`上）是否使用过度。 如果这些文件以外的卷上没有内容，请检查这些磁盘上的读/写是否较高。 此问题表示内存不足的情况。
 

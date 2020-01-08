@@ -1,20 +1,22 @@
 ---
-title: 在 Azure 上的 Jupyter 笔记本中安装包
-description: 如何从在 Azure 上运行的 Jupyter 笔记本内安装 Python、R 和 F# 包。
-ms.topic: article
+title: 在 Jupyter 笔记本中安装包-Azure Notebooks 预览
+description: 了解如何在 Azure 上运行的 Jupyter 笔记本F#中安装 Python、R 和包。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277535"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646222"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>从笔记本内安装包
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>从 Azure Notebooks 预览中安装包
 
 虽然可以在[项目级别为笔记本配置环境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，但你可能希望直接在一个单独的笔记本内安装包。
 
 从笔记本中安装的包仅适用于当前服务器会话。 服务器关闭后，不保留包安装。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -61,7 +63,7 @@ Paket.Package
   ]
 ```
 
-然后加载 paket 生成器：
+然后加载 Paket 生成器：
 ```fsharp
 #load "Paket.Generated.Refs.fsx"
 ```

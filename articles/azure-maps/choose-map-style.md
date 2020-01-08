@@ -1,5 +1,6 @@
 ---
-title: Azure Maps 中的地图样式功能 | Microsoft Docs
+title: 在 Azure Maps 中选择地图样式
+titleSuffix: Azure Maps
 description: 了解 Azure Maps 样式的相关功能。
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: eb667c398be0bd51e05a6b65d416d5bce54e4386
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e1d3d1b5904eded9f35c5ba628bea6426e7afaf0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881968"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531541"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>在 Azure Maps 中选择地图样式
 
@@ -21,7 +22,7 @@ Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)�
 
 ## <a name="set-style-on-map-load"></a>设置地图加载的样式
 
-在下面的代码中, `style`在初始化时, 映射的选项`grayscale_dark`设置为。
+在下面的代码中，在初始化时，映射的 `style` 选项设置为 `grayscale_dark`。
 
 <br/>
 
@@ -30,7 +31,7 @@ Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)�
 
 ## <a name="update-the-style"></a>更新样式
 
-在下面的代码中, 在加载映射实例之后, 会将映射样式从`road`更新为`satellite`使用地图的[system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)函数。
+在下面的代码中，加载了一个映射实例之后，地图样式将从 `road` 更新为使用地图的[system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)函数 `satellite`。
 
 <br/>
 
@@ -39,7 +40,7 @@ Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)�
 
 ## <a name="add-the-style-picker"></a>添加样式选取器
 
-下面的代码将[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)添加到地图中, 以便用户可以轻松地在不同的地图样式之间切换。 
+下面的代码将[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)添加到地图中，以便用户可以轻松地在不同的地图样式之间切换。 
 
 <br/>
 
@@ -47,7 +48,7 @@ Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)�
 </iframe>
 
 > [!TIP]
-> 默认情况下, "样式选取器" 控件默认列出默认情况下使用 Azure Maps 的 S0 定价层时可用的所有样式。 如果要减少此列表中的样式数量, 请将你希望在列表中显示的样式数组传递到样式选取器的`mapStyle`选项中。 如果使用的是 S1 并想要显示所有可用样式, 请将样式`mapStyles`选取器的选项设置为`"all"`。
+> 默认情况下，"样式选取器" 控件默认列出默认情况下使用 Azure Maps 的 S0 定价层时可用的所有样式。 如果要减少此列表中的样式数量，请将希望在列表中显示的样式数组传递到样式选取器的 "`mapStyle`" 选项中。 如果使用的是 S1 并想要显示所有可用样式，请将样式选取器的 "`mapStyles`" 选项设置为 "`"all"`"。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -56,7 +57,7 @@ Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)�
 > [!div class="nextstepaction"]
 > [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-将控件添加到地图:
+将控件添加到地图：
 
 > [!div class="nextstepaction"]
 > [添加地图控件](map-add-controls.md)

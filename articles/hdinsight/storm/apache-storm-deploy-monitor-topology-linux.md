@@ -1,25 +1,25 @@
 ---
 title: 在 Azure HDInsight 中部署和管理 Apache Storm 拓扑
 description: 了解如何在基于 Linux 的 HDInsight 上使用风暴仪表板部署、监视和管理 Apache Storm 拓扑。 使用 Hadoop Tools for Visual Studio。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228938"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494967"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑
 
 本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 [Apache Storm](https://storm.apache.org/) 拓扑的基本知识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
@@ -34,42 +34,40 @@ ms.locfileid: "74228938"
 1. 如果尚未安装最新版本的适用于 Visual Studio 的 Data Lake 工具，请参阅[使用 Visual studio Data Lake 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
     > [!NOTE]  
-    > 针对 Visual Studio 的 Data Lake 工具以前称为 Visual Studio 的 HDInsight 工具。
+    > Azure Data Lake 和流分析工具以前称为用于 Visual Studio 的 HDInsight 工具。
     >
-    > 适用于 Visual Studio 的 Data Lake 工具包含在 Visual Studio 2019 的**Azure 工作负荷**中。
+    > 适用于 Visual Studio 的 Azure Data Lake 和流分析工具包含在 Visual Studio 2019 的**Azure 开发**工作负荷中。
 
-2. 打开 Visual Studio。
+1. 启动 Visual Studio。
 
-3. 在 "**开始**" 窗口中，选择 "**创建新项目**"。
+1. 在 "**开始**" 窗口中，选择 "**创建新项目**"。
 
-4. 在 "**新建项目**" 窗口中，选择 "搜索" 框，并输入 "*风暴*"。 然后从结果列表中选择 "**风暴示例**"，然后选择 "**下一步**"。
+1. 在 "**新建项目**" 窗口中，选择 "搜索" 框，然后输入 `Storm`。 然后从结果列表中选择 "**风暴示例**"，然后选择 "**下一步**"。
 
-5. 在 "**配置新项目**" 窗口中，输入**项目名称**，然后前往或创建保存新项目的**位置**。 然后，选择“创建”。
+1. 在 "**配置新项目**" 窗口中，输入**项目名称**，然后前往或创建保存新项目的**位置**。 然后选择“创建”。
 
     ![配置新的项目窗口 Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. 在**解决方案资源管理器**中，右键单击项目，然后选择 "**在 HDInsight 上提交到风暴**"。
+1. 在**服务器资源管理器**中，右键单击 " **Azure** "，并选择 "**连接到 Microsoft Azure 订阅 ...** "，然后完成登录过程。
+
+1. 在**解决方案资源管理器**中，右键单击该项目，然后选择 "**在 HDInsight 上提交到风暴"** 。
 
     > [!NOTE]  
     > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
-7. 在 "**提交拓扑**" 对话框中，在 "**风暴群集**" 下拉列表中，选择 "风暴 on HDInsight 群集"，然后选择 "**提交**"。 可以通过查看 "**输出**" 窗格监视提交是否成功。
+1. 在 "**提交拓扑**" 对话框中，在 "**风暴群集**" 下拉列表中，选择 "风暴 on HDInsight 群集"，然后选择 "**提交**"。 可以通过查看 "**输出**" 窗格监视提交是否成功。
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>使用 SSH 和风暴命令提交拓扑
 
-使用 SSH 将拓扑提交到风暴：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 将 CLUSTERNAME 替换为群集名称，然后输入以下命令，以编辑以下命令：
 
-1. 使用 SSH 连接到 HDInsight 群集。 将 `USERNAME` 替换为 SSH 用户名的名称（例如*sshuser*）。 将 `CLUSTERNAME` 替换为 HDInsight 群集名。
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    有关使用 SSH 连接到 HDInsight 群集的详细信息，请参阅[使用 Ssh 连接到 hdinsight （Apache Hadoop）](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 在 ssh 会话中，使用以下命令启动**WordCount**示例拓扑：
 
-2. 使用以下命令启动*WordCount*示例拓扑：
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
@@ -174,67 +172,67 @@ storm rebalance TOPOLOGYNAME
 
 Storm UI 的主页面提供以下信息：
 
-| 部分 | 说明 |
+| 部分 | Description |
 | --- | --- |
-| **群集摘要** | 有关 Storm 群集的基本信息。 |
-| **Nimbus 摘要** | 基本 Nimbus 信息的列表。 |
-| **拓扑摘要** | 正在运行的拓扑的列表。 若要查看有关特定拓扑的详细信息，请在 "**名称**" 列中选择其链接。 |
-| **主管摘要** | 有关 Storm 监督器的信息。 若要查看与特定监控器关联的辅助角色资源，请在 "**主机**" 或 " **Id** " 列中选择其链接。 |
-| **Nimbus 配置** | 群集的 Nimbus 配置。 |
+| 群集摘要| 有关 Storm 群集的基本信息。 |
+| Nimbus 摘要 | 基本 Nimbus 信息的列表。 |
+| 拓扑摘要 | 正在运行的拓扑的列表。 若要查看有关特定拓扑的详细信息，请在 "**名称**" 列中选择其链接。 |
+| 主管摘要 | 有关 Storm 监督器的信息。 若要查看与特定监控器关联的辅助角色资源，请在 "**主机**" 或 " **Id** " 列中选择其链接。 |
+| Nimbus 配置 | 群集的 Nimbus 配置。 |
 
 风暴 UI 主页类似于以下网页：
 
-![主页，风暴 UI，Apache Storm 拓扑，Azure 见解](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![主页，风暴 UI，Apache Storm 拓扑，Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>拓扑摘要
 
 选择“拓扑摘要”部分中的链接会显示有关拓扑的以下信息：
 
-| 部分 | 说明 |
+| 部分 | Description |
 | --- | --- |
-| **拓扑摘要** | 有关拓扑的基本信息。 |
-| **拓扑操作** | 可对拓扑执行的管理操作。 本部分稍后将介绍可用的操作。 |
-| **拓扑统计信息** | 有关拓扑的统计信息。 若要为此部分中的条目设置时间范围，请在 "**窗口**" 列中选择其链接。 |
-| **Spout** *（时间范围）* | 拓扑使用的 Spout。 若要查看有关特定 spout 的详细信息，请在 " **Id** " 列中选择其链接。 |
-| **螺栓** *（时间范围）* | 拓扑使用的 Bolt。 若要查看有关特定螺栓的详细信息，请在 " **Id** " 列中选择其链接。 |
-| **辅助角色资源** | 辅助角色的列表。 若要查看有关特定辅助角色资源的详细信息，请在 "**主机**" 列中选择其链接。 |
-| **拓扑可视化** | 显示拓扑可视化的 "**显示可视化效果**" 按钮。 |
-| **拓扑配置** | 所选拓扑的配置。 |
+| 拓扑摘要 | 有关拓扑的基本信息。 |
+| 拓扑操作| 可对拓扑执行的管理操作。 本部分稍后将介绍可用的操作。 |
+| 拓扑统计信息 | 有关拓扑的统计信息。 若要为此部分中的条目设置时间范围，请在 "**窗口**" 列中选择其链接。 |
+| Spout *（时间范围）* | 拓扑使用的 Spout。 若要查看有关特定 spout 的详细信息，请在 " **Id** " 列中选择其链接。 |
+| 螺栓 *（时间范围）* | 拓扑使用的 Bolt。 若要查看有关特定螺栓的详细信息，请在 " **Id** " 列中选择其链接。 |
+| 辅助角色资源 | 辅助角色的列表。 若要查看有关特定辅助角色资源的详细信息，请在 "**主机**" 列中选择其链接。 |
+| 拓扑可视化 | 显示拓扑可视化的 "**显示可视化效果**" 按钮。 |
+| 拓扑配置 | 所选拓扑的配置。 |
 
 "风暴拓扑摘要" 页看起来与此网页类似：
 
-![拓扑摘要页，风暴 UI，Apache Storm，Azure 见解](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![拓扑摘要页，风暴 UI，Apache Storm，Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 在 "**拓扑操作**" 部分中，可以选择以下按钮执行操作：
 
-| 按钮 | 说明 |
+| 按钮 | Description |
 | --- | --- |
-| **激活** | 继续处理已停用的拓扑。 |
-| **禁止** | 暂停正在运行的拓扑。 |
-| **重新平衡** | 调整拓扑的并行度。 更改群集中的节点数后，应该重新平衡正在运行的拓扑。 此操作可让拓扑调整并行度，以弥补群集中增加或减少的节点数。<br/><br/>有关详细信息，请参阅<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Apache Storm 拓扑的并行度</a>。
-| **终止** | 在经过指定的超时之后终止 Storm 拓扑。 |
-| **调试** | 为正在运行的拓扑启动调试会话。 |
-| **停止调试** | 结束正在运行的拓扑的调试会话。 |
-| **更改日志级别** | 修改调试日志级别。 |
+| 激活 | 继续处理已停用的拓扑。 |
+| 停用 | 暂停正在运行的拓扑。 |
+| 重新平衡 | 调整拓扑的并行度。 更改群集中的节点数后，应该重新平衡正在运行的拓扑。 此操作可让拓扑调整并行度，以弥补群集中增加或减少的节点数。<br/><br/>有关详细信息，请参阅<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Apache Storm 拓扑的并行度</a>。
+| 终止 | 在经过指定的超时之后终止 Storm 拓扑。 |
+| 调试 | 为正在运行的拓扑启动调试会话。 |
+| 停止调试 | 结束正在运行的拓扑的调试会话。 |
+| 更改日志级别 | 修改调试日志级别。 |
 
 ##### <a name="spout-and-bolt-summary"></a>Spout 和螺栓摘要
 
 从“Spout”或“Bolt”部分中选择 spout 会显示有关选定项的以下信息：
 
-| 部分 | 说明 |
+| 部分 | Description |
 | --- | --- |
-| **组件摘要** | 有关 Spout 或 Bolt 的基本信息。 |
-| **组件操作** | **调试**和**停止调试**按钮。 |
-| **Spout 统计**信息或**螺栓统计** | 有关 Spout 或 Bolt 的统计信息。 若要为此部分中的条目设置时间范围，请在 "**窗口**" 列中选择其链接。 |
-| （仅限螺栓）<br/>**输入统计**信息 *（时间范围）* | 有关 Bolt 使用的输入流的信息。 |
-| **输出统计**信息 *（时间范围）* | 有关 Spout 或 Bolt 所发出的流的信息。 |
-| **分析和调试** | 用于分析和调试此页上的组件的控件。 可以设置 "**状态/超时（分钟）** " 值，还可以选择 " **JStack**"、"**重新启动辅助角色**" 和 "**堆**" 按钮。 |
+| 组件摘要 | 有关 Spout 或 Bolt 的基本信息。 |
+| 组件操作 | **调试**和**停止调试**按钮。 |
+| Spout 统计信息或螺栓统计 | 有关 Spout 或 Bolt 的统计信息。 若要为此部分中的条目设置时间范围，请在 "**窗口**" 列中选择其链接。 |
+| （仅限螺栓）<br/>输入统计信息 *（时间范围）* | 有关 Bolt 使用的输入流的信息。 |
+| 输出统计信息 *（时间范围）* | 有关 Spout 或 Bolt 所发出的流的信息。 |
+| 分析和调试 | 用于分析和调试此页上的组件的控件。 可以设置 "**状态/超时（分钟）** " 值，还可以选择 " **JStack**"、"**重新启动辅助角色**" 和 "**堆**" 按钮。 |
 | 执行器 *（时间范围）* | 有关 Spout 或 Bolt 实例的信息。 若要查看为此实例生成的诊断信息的日志，请选择特定执行器的**端口**条目。 还可以通过在 "**主机**" 列中选择与特定执行器关联的辅助角色来查看该执行器。 |
-| **错误** | Spout 或 Bolt 的任何错误信息。 |
+| 错误 | Spout 或 Bolt 的任何错误信息。 |
 
 "风暴螺栓摘要" 页看起来与此网页类似：
 
-![螺栓摘要页面，风暴 UI，Apache Storm，Azure 见解](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![螺栓摘要页面，风暴 UI，Apache Storm，Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>使用 REST API 监视和管理拓扑
 
@@ -251,11 +249,11 @@ Storm UI 的主页面提供以下信息：
 
 可以通过多种方式找到群集头节点的完全限定的域名（FQDN）：
 
-| FQDN 发现方法 | 说明 |
+| FQDN 发现方法 | Description |
 | --- | --- |
-| SSH 会话 | 通过与群集建立的 SSH 会话使用 `headnode -f` 命令。 |
+| SSH 会话 | 使用命令 `headnode -f` 从 SSH 会话连接到群集。 |
 | Ambari Web | 在 Ambari 群集网页（`https://CLUSTERNAME.azurehdinsight.net`）上，从页面顶部选择 "**服务**"，然后选择 "**风暴**"。 在“摘要”选项卡中，选择“Storm UI 服务器”。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。 |
-| Ambari REST API | 使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将*CLUSTERNAME*的两个实例替换为群集名称。 出现提示时，输入用户（管理员）帐户的密码。 在响应中，JSON 输出的 "host_name" 条目包含节点的 FQDN。 |
+| Ambari REST API | 使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 来检索有关风暴 UI 和 REST API 正在其上运行的节点的信息。 将*CLUSTERNAME*的两个实例替换为群集名称。 出现提示时，输入用户（管理员）帐户的密码。 在响应中，JSON 输出的 "host_name" 条目包含节点的 FQDN。 |
 
 ### <a name="authentication"></a>身份验证
 

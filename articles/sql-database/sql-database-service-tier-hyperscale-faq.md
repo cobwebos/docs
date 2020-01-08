@@ -1,5 +1,5 @@
 ---
-title: 常见问题-超大规模（Citus）-Azure Database for PostgreSQL
+title: Azure SQL Database 超大规模常见问题
 description: 对客户关于“超大规模”服务层级中的 Azure SQL 数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974013"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614992"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大规模常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "74974013"
 - 本常见问题解答适用于对“超大规模”服务层级有基本了解并希望其具体问题得到解答的读者。
 - 此常见问题并非 guidebook 或回答有关如何使用超大规模数据库的问题。 有关超大规模的简介，建议参阅[AZURE SQL 数据库超大规模](sql-database-service-tier-hyperscale.md)文档。
 
-## <a name="general-questions"></a>一般问题
+## <a name="general-questions"></a>常规问题
 
 ### <a name="what-is-a-hyperscale-database"></a>什么是“超大规模”数据库
 
@@ -157,7 +157,7 @@ ms.locfileid: "74974013"
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>我的 `tempdb` 随着数据库的增长而扩展
 
-`tempdb` 数据库位于本地 SSD 存储，是根据预配的计算大小配置的。 你的 `tempdb` 经过优化，可提供最大的性能优势。 `tempdb` 大小不可配置，将为你进行管理。
+你的 `tempdb` 数据库位于本地 SSD 存储上，并且大小与你预配的计算大小成比例。 你的 `tempdb` 经过优化，可提供最大的性能优势。 `tempdb` 大小不可配置，将为你进行管理。
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>数据库的大小是否自动增长，或者是否需要管理数据文件的大小
 
@@ -165,7 +165,7 @@ ms.locfileid: "74974013"
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>超大规模支持或开头的最小数据库大小
 
-10 GB。
+40 GB。 创建的超大规模数据库的起始大小为 10 GB。 然后，它每10分钟开始增加 10 GB，直到达到 40 GB 的大小。 每个 10 GB chucks 都在不同的页面服务器中分配，以便提供更多 IOPS 和更高的 i/o 并行度。 由于此优化，即使您选择的初始数据库大小小于 40 GB，数据库也将自动增长到至少 40 GB。
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>数据库的大小按多少增量增长
 
@@ -268,13 +268,13 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 RPO 为0分钟。不管数据库大小如何，RTO 目标不到10分钟。 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>大型数据库的备份是否影响主计算节点的计算性能
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>数据库备份是否会影响主副本或辅助副本上的计算性能
 
-不。 备份由存储子系统管理，并利用存储快照。 它们不会影响主副本上的用户工作负荷。
+不。 备份由存储子系统管理，并利用存储快照。 它们不会影响用户工作负荷。
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>能否对超大规模数据库执行异地还原
 
-可以。  完全支持异地还原。
+可以。  完全支持异地还原。 与时间点还原不同，异地还原可能需要长时间运行的数据大小操作。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>能否通过超大规模数据库设置异地复制
 
@@ -296,7 +296,7 @@ RPO 为0分钟。不管数据库大小如何，RTO 目标不到10分钟。
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>超大规模是否支持 R 和 Python
 
-不。 Azure SQL 数据库中不支持 R 和 Python。
+现在不行。
 
 ### <a name="are-compute-nodes-containerized"></a>计算节点容器化
 
@@ -306,7 +306,7 @@ RPO 为0分钟。不管数据库大小如何，RTO 目标不到10分钟。
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>可以在超大规模数据库中推送多少写入吞吐量
 
-对于任何超大规模计算大小，事务日志吞吐量限制设置为 100 MB/s。 达到此速率的能力取决于多个因素，包括但不限于工作负荷类型、客户端配置，并在主计算副本上具有足够的计算能力，以便以该速率生成日志。
+对于任何超大规模计算大小，事务日志吞吐量上限设置为 100 MB/s。 达到此速率的能力取决于多个因素，包括但不限于工作负荷类型、客户端配置，并在主计算副本上具有足够的计算能力，以便以该速率生成日志。
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>对最大计算有多少 IOPS
 
@@ -318,7 +318,11 @@ IOPS 和 IO 延迟将因工作负荷模式而异。 如果要访问的数据缓�
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>我的吞吐量在预配其他计算副本时受到影响
 
-由于存储是共享的，并且在主副本和辅助计算副本之间没有直接的物理复制，因此在技术上，主副本的吞吐量不会受添加辅助副本的影响。 但是，我们可能会限制持续的主动写入工作负荷，以允许在辅助副本和页面服务器上应用日志，并避免辅助副本上的读取性能不佳。
+因为存储是共享的，并且在主和辅助计算副本之间没有直接的物理复制，所以，主副本的吞吐量不会通过添加辅助副本而直接影响。 但是，我们可能会限制主副本上的连续主动写入工作负荷，以使日志适用于辅助副本和页面服务器，以避免辅助副本上的读取性能不佳。
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>如何实现诊断和解决超大规模数据库中的性能问题
+
+对于大多数性能问题，特别是不是以存储性能为根的问题，会应用常见 SQL Server 诊断和故障排除步骤。 有关特定于超大规模的存储诊断，请参阅[SQL 超大规模性能疑难解答诊断](sql-database-hyperscale-performance-diagnostics.md)。
 
 ## <a name="scalability-questions"></a>可伸缩性问题
 
@@ -367,7 +371,7 @@ IOPS 和 IO 延迟将因工作负荷模式而异。 如果要访问的数据缓�
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>系统是否对读取工作负荷进行智能负载均衡
 
-不。 具有只读意向的连接将重定向到任意读取横向扩展副本。
+不。 具有只读目的的新连接将重定向到任意读取横向扩展副本。
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>能否独立于主副本扩展/缩减辅助计算副本
 
@@ -383,7 +387,7 @@ IOPS 和 IO 延迟将因工作负荷模式而异。 如果要访问的数据缓�
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>主要和辅助计算副本之间存在多少延迟
 
-在主副本上提交事务时，根据当前日志生成速率，可以是瞬时的，也可以是低毫秒。
+从事务在主副本上提交到它在辅助数据库上可见的时间的数据延迟取决于当前日志生成速率。 典型的数据延迟以低毫秒为单位。
 
 ## <a name="next-steps"></a>后续步骤
 

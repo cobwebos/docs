@@ -3,23 +3,23 @@ title: 使用 Visual Studio 和 Visual Studio Code 来构建 IoT 即插即用预
 description: 使用 Visual Studio 和 Visual Studio Code 加速创作 IoT 即插即用设备型号和实现设备代码。
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748035"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531320"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>使用 Visual Studio 和 Visual Studio Code 来构建 IoT 即插即用设备
 
 适用于 Visual Studio Code 的 Azure IoT 工具提供了一个集成环境，用于创作设备功能模型（DCM）和接口、发布到模型存储库，以及生成用于实现设备应用程序的框架 C 代码。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 生成设备代码和应用程序项目。
 - 使用设备项目中生成的代码。
@@ -27,7 +27,7 @@ ms.locfileid: "73748035"
 
 若要了解有关使用 VS Code 开发 IoT 设备的详细信息，请参阅[https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 安装 [Visual Studio Code](https://code.visualstudio.com/)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "73748035"
 
 代码生成完成后，扩展将使用代码打开一个新的 VS Code 窗口。 如果打开生成的文件（如**main. c**），则可能会发现 IntelliSense 会报告它无法打开 c SDK 源文件。 若要启用正确的 IntelliSense 和代码导航，请使用以下步骤包括 C SDK 源：
 
-1. 在 VS Code 中，使用**Ctrl + Shift + P**打开命令面板，键入并选择 " **C/C++：编辑配置（JSON）** "，打开**c_cpp_properties**文件。
+1. 在 VS Code 中，使用**Ctrl + Shift + P**打开命令面板，键入并选择 " **C/C++：编辑配置（JSON）** " 以打开**c_cpp_properties JSON**文件。
 
 1. 在 `includePath` 部分添加设备 SDK 的路径：
 
@@ -99,7 +99,7 @@ ms.locfileid: "73748035"
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    验证 `cmake` 的版本高于**2.8.12** ，并且**GCC**的版本高于**4.4.7**。
+    验证 `cmake` 的版本是否高于 2.8.12，GCC 的版本是否高于 4.4.7。
 
     ```bash
     cmake --version
@@ -150,13 +150,13 @@ ms.locfileid: "73748035"
 
 ### <a name="windows"></a>Windows
 
-若要在 Windows 上使用 CMake 和 Visual Studio C/C++编译器通过命令行使用设备 C SDK 生成设备代码，请参阅[IoT 即插即用快速入门](./quickstart-create-pnp-device.md)。 以下步骤演示如何在 Visual Studio 中将设备代码和设备 C SDK Vcpkg 作为 CMake 项目一起生成。
+若要在 Windows 上使用 CMake 和 Visual Studio C/C++编译器通过命令行使用设备 C SDK 生成设备代码，请参阅[IoT 即插即用快速入门](./quickstart-create-pnp-device-windows.md)。 以下步骤演示如何在 Visual Studio 中将设备代码和设备 C SDK Vcpkg 作为 CMake 项目一起生成。
 
-1. 按照[快速入门](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment)中的步骤，通过 Vcpkg 安装适用于 C 的 Azure IOT 设备 SDK。
+1. 按照[快速入门](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment)中的步骤，通过 Vcpkg 安装适用于 C 的 Azure IOT 设备 SDK。
 
 1. 安装[Visual Studio 2019 （社区版、专业版或企业版）](https://visualstudio.microsoft.com/downloads/) -确保包括**NuGet 包管理器**组件和具有**C++** 工作负载的桌面开发。
 
-1. 打开 Visual Studio，选择 "**文件" > 打开 "> CMake"。** 若要打开文件夹中的 `CMakeLists.txt`，则包含生成的代码。
+1. 打开 Visual Studio，选择 "**文件" > 打开 "> CMake** "，以打开包含生成代码的文件夹中的 `CMakeLists.txt`。
 
 1. 在**常规**工具栏中，查找 "**配置**" 下拉列表。 选择 "**管理配置**"，为你的项目添加 CMake 设置。
 

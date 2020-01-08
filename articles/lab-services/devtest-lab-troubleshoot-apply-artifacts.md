@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456990"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>排查在 Azure 开发测试实验室虚拟机中应用项目时出现的问题
 由于各种原因，在虚拟机上应用项目可能会失败。 本文将指导您完成一些方法，以帮助确定可能的原因。
@@ -69,7 +69,7 @@ $vm.Properties.canApplyArtifacts
 - **尝试执行项目时**。 这可能是由于网络或存储问题导致的。 有关详细信息，请参阅本文后面的相应部分。 这也可能是由于编写脚本的方式导致的。 例如：
     - PowerShell 脚本具有**必需的参数**，但一个参数无法向其传递值，这是因为你允许用户将其保留为空，或者因为你没有 artifactfile.json 定义文件中的属性的默认值。 由于正在等待用户输入，该脚本将挂起。
     - PowerShell 脚本需要在执行过程中**输入用户**。 必须编写脚本以无提示方式运行，无需任何用户干预。
-- **VM 代理需要很长时间才能准备就绪**。 首次启动 VM 时，或首次安装自定义脚本扩展以提供应用项目的请求时，VM 可能需要升级 VM 代理或等待 VM 代理初始化。 可能存在 VM 代理所依赖的服务，这些服务需要很长时间来初始化。 在这种情况下，请参阅[Azure 虚拟机代理概述](/virtual-machines/extensions/agent-windows.md)，进一步进行故障排除。
+- **VM 代理需要很长时间才能准备就绪**。 首次启动 VM 时，或首次安装自定义脚本扩展以提供应用项目的请求时，VM 可能需要升级 VM 代理或等待 VM 代理初始化。 可能存在 VM 代理所依赖的服务，这些服务需要很长时间来初始化。 在这种情况下，请参阅[Azure 虚拟机代理概述](../virtual-machines/extensions/agent-windows.md)，进一步进行故障排除。
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>验证项目是否由于脚本而看似挂起
 
@@ -101,7 +101,7 @@ $vm.Properties.canApplyArtifacts
     在此示例中，可以看到 VM 代理启动时间花了10分钟到20秒，因为发送了检测信号。 这种情况的原因是，OOBE 服务需要很长时间才能启动。
 
 > [!TIP]
-> 有关 Azure 扩展的常规信息，请参阅[azure 虚拟机扩展和功能](/virtual-machines/extensions/overview.md)。
+> 有关 Azure 扩展的常规信息，请参阅[azure 虚拟机扩展和功能](../virtual-machines/extensions/overview.md)。
 
 ## <a name="storage-errors"></a>存储错误
 开发测试实验室需要访问为缓存项目创建的实验室存储帐户。 当开发测试实验室应用项目时，它将从配置的存储库读取项目配置及其文件。 默认情况下，开发测试实验室配置对**公共项目**存储库的访问权限。

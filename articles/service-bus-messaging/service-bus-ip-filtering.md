@@ -9,26 +9,26 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 59afdb0e273511f3d8255a9c859b86f93e0b7269
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462406"
 ---
-# <a name="use-firewall-rules"></a>使用防火墙规则
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure 服务总线-使用防火墙规则
 
 对于只能从某些已知站点访问 Azure 服务总线的方案，防火墙规则使你能够配置规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
 
-## <a name="when-to-use"></a>何时使用
+## <a name="when-to-use"></a>使用时机
 
-如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点。 例如，结合使用服务总线和 [Azure Express Route][express-route]，以创建到本地基础结构的专用连接。 
+如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点。 例如，你将服务总线与[Azure Express Route][express-route]一起使用，以创建到本地基础结构的专用连接。 
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过各种受支持协议从客户端发出的所有连接。
+IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
 
 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
 
@@ -52,13 +52,13 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > - Azure IoT Device Explorer
 >
 > 以下 Microsoft 服务必须在虚拟网络中
-> - Azure 应用服务
+> - Azure App Service
 > - Azure Functions
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则
 
 > [!IMPORTANT]
-> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。
+> 仅服务总线的**高级**层支持防火墙和虚拟网络。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
@@ -70,7 +70,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> from
+> 从
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -141,7 +141,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
   }
 ```
 
-若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
+若要部署模板，请按照[Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

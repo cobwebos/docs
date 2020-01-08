@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4dbc830ea106dee7ef21a28eb3aee63c94680be2
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927601"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664857"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -98,7 +98,7 @@ ms.locfileid: "74927601"
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
@@ -160,7 +160,7 @@ ms.locfileid: "74927601"
 
 3. 请使用 Azure 凭据登录，并选择在其中创建了混合连接的订阅。
 
-4. 单击“保存”。
+4. 单击“ **保存**”。
 
 现已成功连接到混合连接。
 
@@ -180,7 +180,7 @@ ms.locfileid: "74927601"
 ### <a name="prerequisites"></a>必备组件
 请确保满足以下先决条件：
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支持的版本：马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基、Geneva。
+- ServiceNow 支持的版本：纽约、马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基、Geneva。
 
 **ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
 - 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：

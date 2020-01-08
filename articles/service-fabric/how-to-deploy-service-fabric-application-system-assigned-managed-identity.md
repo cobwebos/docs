@@ -1,31 +1,27 @@
 ---
-title: Azure Service Fabric 使用系统分配的托管标识部署 Azure Service Fabric 应用程序 |Microsoft Docs
+title: 使用系统分配的 MI 部署 Service Fabric 应用
 description: 本文介绍如何将系统分配的托管标识分配给 Azure Service Fabric 应用程序
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973410"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614819"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>使用系统分配的托管标识部署 Service Fabric 应用程序（预览）
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>部署包含系统分配的托管标识的 Service Fabric 应用程序（预览版）
 
-若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
+为了访问 Azure Service Fabric 应用程序的托管标识功能，你必须首先在群集上启用托管标识令牌服务。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证，并负责代表用户获取访问令牌。 启用该服务后，可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务，并在其他系统服务旁的 name **Fabric：/system/ManagedIdentityTokenService**下运行。
 
 > [!NOTE] 
-> 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 在 additoin 中，生成/包环境还应具有 SF .Net SDK CU2 或更高版本
+> 从 API 版本 `"2019-06-01-preview"`开始支持部署具有托管标识的 Service Fabric 应用程序。 还可以对应用程序类型、应用程序类型版本和服务资源使用相同的 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 在 additoin 中，生成/包环境还应具有 SF .Net SDK CU2 或更高版本
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
 ### <a name="application-template"></a>应用程序模板
 
-若要为应用程序启用系统分配的托管标识，请将类型为 **systemAssigned** 的 **identity** 属性添加到应用程序资源，如以下示例所示：
+若要使用系统分配的托管标识启用应用程序，请使用类型**systemAssigned**将**标识**属性添加到应用程序资源，如以下示例中所示：
 
 ```json
     {
@@ -47,13 +43,13 @@ ms.locfileid: "71973410"
       }
     }
 ```
-此属性向 Azure 资源管理器、托管标识和 Service Fabric 资源提供程序分别声明：此资源应该有一个隐式 (`system assigned`) 托管标识。
+此属性分别向 Azure 资源管理器、托管标识和 Service Fabric 资源提供程序声明，此资源应具有隐式（`system assigned`）托管标识。
 
 ### <a name="application-and-service-package"></a>应用程序和服务包
 
-1. 更新应用程序清单，在 **Principals** 节添加包含单个条目的 **ManagedIdentity** 元素，如下所示：
+1. 更新应用程序清单以在**主体**节中添加**对 microsoft.managedidentity**元素，其中包含单一条目，如下所示：
 
-    **ApplicationManifest.xml**
+    **Applicationmanifest.xml**
 
     ```xml
     <Principals>
@@ -62,11 +58,11 @@ ms.locfileid: "71973410"
       </ManagedIdentities>
     </Principals>
     ```
-    这会将分配给应用程序作为资源的标识映射到某个易记名称，以便进一步分配给包含该应用程序的服务。 
+    这会将分配给应用程序的标识作为资源映射到友好名称，以便进一步分配给构成应用程序的服务。 
 
-2. 在 **ServiceManifestImport** 节（对应于已向其分配了托管标识的服务）中添加 **IdentityBindingPolicy** 元素，如下所示：
+2. 在对应于正在分配托管标识的服务的**ServiceManifestImport**节中，添加**IdentityBindingPolicy**元素，如下所示：
 
-    **ApplicationManifest.xml**
+    **Applicationmanifest.xml**
 
       ```xml
         <ServiceManifestImport>
@@ -76,11 +72,11 @@ ms.locfileid: "71973410"
         </ServiceManifestImport>
       ```
 
-    此元素将应用程序的标识分配给服务；没有此分配，服务将无法访问应用程序的标识。 在上面的代码片段中，`SystemAssigned` 标识（保留关键字）映射到服务的定义，采用的易记名称为 `WebAdmin`。
+    此元素将应用程序的标识分配给服务;如果没有此分配，服务将无法访问应用程序的标识。 在上面的代码片段中，`SystemAssigned` 标识（保留关键字）将映射到友好名称下的服务定义 `WebAdmin`。
 
-3. 更新服务清单，将 **ManagedIdentity** 元素添加到 **Resources** 节中，其名称与 `ServiceIdentityRef` 设置的值匹配，该设置来自应用程序清单中的 `IdentityBindingPolicy` 定义：
+3. 更新服务清单以在**资源**部分中添加**对 microsoft.managedidentity**元素，该元素的名称与应用程序清单中 `IdentityBindingPolicy` 定义的 `ServiceIdentityRef` 设置的值匹配：
 
-    **ServiceManifest.xml**
+    **Servicemanifest.xml**
 
     ```xml
       <Resources>
@@ -90,12 +86,12 @@ ms.locfileid: "71973410"
         </ManagedIdentities>
       </Resources>
     ```
-    这是一个等效映射，等效于将标识映射到服务（如上所述），但却是从服务定义的角度来看。 在这里，标识按其易记名称 (`WebAdmin`) 引用，如应用程序清单所述。
+    这是从服务定义的角度来看，从标识到服务的等效映射。 根据应用程序清单中的声明，该标识按其友好名称（`WebAdmin`）引用。
 
 ## <a name="next-steps"></a>后续步骤
-* 查看 Azure Service Fabric 中的[托管标识支持](./concepts-managed-identity.md)
-* [部署](./configure-new-azure-service-fabric-enable-managed-identity.md)支持托管标识的新 Azure Service Fabric 群集 
+* 查看 Azure 中的[托管标识支持](./concepts-managed-identity.md)Service Fabric
+* [部署新的](./configure-new-azure-service-fabric-enable-managed-identity.md)支持托管标识的 Azure Service Fabric 群集 
 * 在现有 Azure Service Fabric 群集中[启用托管标识](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* 利用 Service Fabric 应用程序的[托管标识（来自源代码）](./how-to-managed-identity-service-fabric-app-code.md)
+* 利用源代码中 Service Fabric 应用程序的[托管标识](./how-to-managed-identity-service-fabric-app-code.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [向 Azure Service Fabric 应用程序授予其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)

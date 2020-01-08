@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453416"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建和管理 B2B 企业集成的集成帐户
 
@@ -55,14 +55,14 @@ ms.locfileid: "74793060"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
-   | 名称 | 是 | <integration-account-name> | 集成帐户的名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）和句点（`.`）。 此示例使用 "Fabrikam-集成"。 |
-   | 订阅 | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
-   | **资源组** | 是 | <*Azure-resource-group-name*> | 用于组织相关资源的[Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 在此示例中，创建名为 "FabrikamIntegration" 的新资源组。 |
+   | **名称** | 是 | <integration-account-name> | 集成帐户的名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）和句点（`.`）。 此示例使用 "Fabrikam-集成"。 |
+   | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
+   | **资源组** | 是 | <*Azure-resource-group-name*> | 用于组织相关资源的[Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 在此示例中，创建名为 "FabrikamIntegration" 的新资源组。 |
    | **定价层** | 是 | <*定价级别*> | 可在以后更改的集成帐户的定价层。 对于本示例，请选择 "**免费**"。 有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | 位置 | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意**：若要在[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ISE" 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
-   | **Log Analytics** | No | 关闭，打开 | 对于本示例，请保留**Off**设置。 |
+   | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意**：若要在[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ISE" 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+   | **Log Analytics** | 否 | 关闭，打开 | 对于本示例，请保留**Off**设置。 |
    |||||
 
 1. 完成后，选择 "**创建**"。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815334"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562538"
 ---
 # <a name="long-audio-api-preview"></a>长音频 API （预览）
 
@@ -42,15 +42,24 @@ ms.locfileid: "74815334"
 准备文本文件时，请确保：
 
 * 为纯文本（.txt）或 SSML 文本（.txt）
-  * 对于纯文本，每个段落都按 "**输入/返回**-查看[纯文本输入" 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)分隔
-  * 对于 SSML 文本，每个 SSML 部分都被视为一个段落。 SSML 部分应由不同的段落分隔-查看[ssml 文本输入示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)。 有关语言代码，请参阅[语音合成标记语言（SSML）](speech-synthesis-markup.md)
 * 编码为[utf-8，具有字节顺序标记（BOM）](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
-* 包含超过10000个字符或超过50个段落
 * 是单个文件，而不是 zip
+* 对于 SSML 文本，对于 SSML 文本包含400个以上的字符[，对于 SSML 文本包含400个](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note)，小于10000个段落
+  * 对于纯文本，每个段落都按 "**输入/返回**-查看[纯文本输入" 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)分隔
+  * 对于 SSML 文本，每个 SSML 部分都被视为一个段落。 SSML 部分应由不同的段落分隔-查看[ssml 文本输入示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+> [!NOTE]
+> 对于中文（大陆）、中文（香港特别行政区）、中文（台湾）、日语和韩语，一个字将被计为两个字符。 
+
+## <a name="submit-synthesis-requests"></a>提交合成请求
+
+准备好输入内容后，请遵循[长格式的音频合成快速](https://aka.ms/long-audio-python)启动来提交请求。 如果有多个输入文件，则需要提交多个请求。 存在一些需要注意的限制： 
+* 每个 Azure 订阅帐户都允许客户端每秒向服务器提交多达5次请求。 如果超出限制，客户端将收到429错误代码（请求过多）。 请减少每秒请求数
+* 允许服务器运行每个 Azure 订阅帐户，并为其列队多达120请求。 如果超过此限制，则服务器将返回429错误代码（请求过多）。 请等待，并避免提交新请求，直到完成一些请求
+* 服务器将为每个 Azure 订阅帐户最多保留20000请求。 如果超出限制，请在提交新请求之前删除一些请求
 
 ## <a name="audio-output-formats"></a>音频输出格式
 
-长音频 API 支持以下音频输出格式：
+支持灵活的音频输出格式。 可以通过设置 "concatenateResult" 参数，按段落生成音频输出或将音频连接到一个输出。 长音频 API 支持以下音频输出格式：
 
 > [!NOTE]
 > 默认音频格式为 riff-16khz-16 位。

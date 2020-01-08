@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5c407edfedd6eb1156a0fec5719cc9435858bd4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456923"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像工厂
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中设置保留策略
 本文介绍如何设置保留策略、清理工厂以及从组织中的其他所有开发测试实验室中停用旧映像。 
 
 ## <a name="prerequisites"></a>必备组件
@@ -66,7 +66,7 @@ ms.locfileid: "74560165"
 
 
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 现在，你有一个正在运行的映像工厂，可以根据需要生成自定义映像并将其分发到实验室。 此时，只需正确设置映像并识别目标实验室即可。 如前一篇文章中所述，位于**配置**文件夹中的**Labs**文件指定应在每个目标实验室中提供的映像。 将其他开发测试实验室添加到组织中时，只需在实验室中为新实验室添加一个条目。
 
 将新图像添加到工厂也很简单。 如果要在工厂中包含新映像，请打开[Azure 门户](https://portal.azure.com)，导航到工厂开发测试实验室，选择按钮以添加 VM，然后选择所需的 marketplace 映像和项目。 选择 "**查看 Azure 资源管理器模板**"，而不是选择 "创建" 按钮来**创建**新的 VM，并将模板另存为存储库中**GoldenImages**文件夹内的一个 json 文件。 下次运行映像工厂时，它会创建自定义映像。

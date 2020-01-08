@@ -4,16 +4,16 @@ description: 在 Azure 流分析中创建 edge 作业，并将其部署到运行
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff2a7e571c771a73c46959f35e341d861533bb55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426333"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>针对 IoT Edge 的 Azure 流分析
  
@@ -151,7 +151,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 * 在单个步骤中使用超过 14 个聚合。
 * 用于输入/输出的 AVRO 格式。 目前仅支持 CSV 和 JSON。
 * 以下 SQL 运算符：
-    * 分区依据
+    * PARTITION BY
     * GetMetadataPropertyValue
 
 

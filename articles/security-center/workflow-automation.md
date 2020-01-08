@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462440"
 ---
 # <a name="workflow-automation-preview"></a>工作流自动化（预览）
 
@@ -87,6 +87,9 @@ ms.locfileid: "74151694"
 
 [![手动触发逻辑应用](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>数据类型架构
+
+若要查看传递到逻辑应用实例的安全警报或建议事件的原始事件架构，请访问[工作流自动化数据类型架构](https://aka.ms/ASCAutomationSchemas)。 如果你不使用上面所述的安全中心的内置逻辑应用连接器，而是使用逻辑应用的通用 HTTP 连接器，则可以使用事件 JSON 架构手动分析它，就像你所看到的那样。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -98,3 +101,4 @@ ms.locfileid: "74151694"
 - [Azure 安全中心中的安全警报](security-center-alerts-overview.md)
 - [关于 Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [逻辑应用连接器](https://docs.microsoft.com/connectors/)
+- [Workflow 自动化数据类型架构](https://aka.ms/ASCAutomationSchemas)

@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430192"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)来管理支持它的应用程序的自动用户帐户预配和取消预配。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](user-provisioning.md)。
+本文介绍管理自动用户帐户预配和取消预配（适用于支持它的应用程序）的常规步骤。 *用户帐户预配*是一种在应用程序的本地用户配置文件存储中，创建、更新和/或禁用用户帐户记录的操作。 大多数云和 SaaS 应用程序将用户角色和权限存储在用户自己的本地用户配置文件存储区中，并且用户本地存储中存在此类用户记录是单一登录和访问工作*所必需*的。 若要了解有关自动用户帐户预配的详细信息，请参阅[通过 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](user-provisioning.md)。
+
+> [!IMPORTANT]
+> Azure Active Directory （Azure AD）有一个库，其中包含数千个预先集成的应用程序，这些应用程序通过 Azure AD 启用了自动预配。 首先应在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)中找到应用程序特定的预配安装教程。 你可能会找到有关配置应用程序和 Azure AD 以创建预配连接的分步指导。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
 

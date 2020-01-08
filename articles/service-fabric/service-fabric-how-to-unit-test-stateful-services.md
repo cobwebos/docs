@@ -1,25 +1,14 @@
 ---
-title: 为 Azure Service Fabric 中的有状态服务开发单元测试 | Microsoft Docs
-description: 了解如何为 Service Fabric 有状态服务开发单元测试。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 为有状态服务开发单元测试
+description: 了解 Azure Service Fabric 中有状态服务的单元测试，以及在开发期间要牢记的特殊注意事项。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720121"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639830"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
 对 Service Fabric 有状态服务进行单元测试可发现传统应用程序或特定于域的单元测试不一定会捕获的常见错误。 在为有状态服务开发单元测试时，应牢记一些特殊注意事项。
@@ -36,7 +25,7 @@ ms.locfileid: "60720121"
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric.Mocks 不归 Microsoft 所有或维护。但是，这是当前 Microsoft 建议用于对有状态服务进行单元测试的库。*
+*ServiceFabric 不由 Microsoft 拥有或维护。但是，这是 Microsoft 建议的用于单元测试有状态服务的库。*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>设置模拟业务流程和状态
 作为测试的排列部分的一部分，将创建模拟副本集和状态管理器。 然后，副本集将自己为每个副本创建已测试服务的实例。 它还将自己执行生命周期事件，例如 `OnChangeRole` 和 `RunAsync`。 模拟状态管理器将确保对状态管理器执行的任何操作均按照实际状态管理器那样运行和保持。

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459302"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>集成 Microsoft Azure 和 Oracle 云基础结构（预览版）的 oracle 应用程序解决方案
 
@@ -50,9 +50,9 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量跨云连接，使你�
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 预览版中的跨云连接仅限于 Azure 美国东部（eastus） & 英国南部（uksouth）区域和 OCI 阿什本（美国东部） & 伦敦（英国南部）区域。 对于英国南部，请在部署连接间以降低延迟，使用 OCI 中的可用性域1（AD 1）。
+* 预览版中的跨云连接仅限于 Azure 美国东部（eastus）、英国南部（uksouth）和加拿大中部（canadacentral）区域和加拿大中部（）区域和 OCI 阿什本（美国东部）、伦敦（英国南部）和多伦多（加拿大东南部）区域。 对于英国南部，请在部署连接间以降低延迟，使用 OCI 中的可用性域1（AD 1）。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 企业客户常常出于各种业务和操作原因选择多元化并部署多个云上的工作负载。 若要多元化，客户需要通过 internet、IPSec VPN 或通过本地网络使用云提供商的直接连接解决方案来互连云网络。 互连云网络可能需要大量的时间、资金、设计、采购、安装、测试和操作方面的投资。 
 
@@ -66,7 +66,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量跨云连接，使你�
 
 此外，还可以在 OCI 虚拟云网络和安全规则（附加到 Azure[网络安全组](../../../virtual-network/security-overview.md)）上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中的计算机之间的流量。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
  
-## <a name="identity"></a>标识
+## <a name="identity"></a>身份标识
 
 标识是 Microsoft 与 Oracle 之间合作关系的核心支柱之一。 将[Oracle 标识云服务](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html)（IDCS）与[Azure Active Directory](../../../active-directory/index.yml) （Azure AD）集成的工作已完成。 Azure AD 是 Microsoft 的基于云的标识和访问管理服务。 它可帮助用户登录和访问各种资源。 Azure AD 还允许管理用户及其权限。
 

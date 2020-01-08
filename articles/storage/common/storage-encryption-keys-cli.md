@@ -6,26 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9b9ec315954f5916339bb006cb020acc28886839
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: db0b5db98f654c140a640f10df2c22c22c85c848
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895324"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665296"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 配置客户管理的密钥 Azure Key Vault
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
 本文说明如何使用 Azure CLI 配置使用客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 从 Azure Key Vault 设置和检索机密](../../key-vault/quick-create-cli.md)。
-
-> [!IMPORTANT]
-> 将客户托管的密钥用于 Azure 存储加密要求在 key vault 上设置两个属性，**软删除**并不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。
-> 仅支持 RSA 密钥和密钥大小2048。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>为存储帐户分配标识
 
@@ -46,7 +42,7 @@ az storage account update \
 
 ## <a name="create-a-new-key-vault"></a>创建新的密钥保管库
 
-用于存储 Azure 存储加密的客户托管密钥的密钥保管库必须启用两个密钥保护设置，**软删除**并不**清除**。 若要在启用了这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的密钥保管库，请执行以下命令。 请记得将占位符值替换为您自己的值。 
+用于存储 Azure 存储加密的客户托管密钥的密钥保管库必须启用两个密钥保护设置，**软删除**并不**清除**。 若要在启用了这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的密钥保管库，请执行以下命令。 请记得将占位符值替换为您自己的值。
 
 若要使用 Azure CLI 创建新的密钥保管库，请调用[az keyvault create](/cli/azure/keyvault#az-keyvault-create)。 请记得将占位符值替换为您自己的值。
 
@@ -58,6 +54,8 @@ az keyvault create \
     --enable-soft-delete \
     --enable-purge-protection
 ```
+
+若要了解如何启用**软删除**，**并且不会**在具有 Azure CLI 的现有密钥保管库中清除，请参阅[如何在 CLI 中使用软删除来](../../key-vault/key-vault-soft-delete-cli.md)启用**软**删除和**启用清除保护**部分。
 
 ## <a name="configure-the-key-vault-access-policy"></a>配置密钥保管库访问策略
 
@@ -92,7 +90,7 @@ az keyvault key create
 
 默认情况下，Azure 存储加密使用 Microsoft 托管密钥。 为客户管理的密钥配置 Azure 存储帐户，并指定与存储帐户关联的密钥。
 
-若要更新存储帐户的加密设置，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)。 此示例还查询密钥保管库 URI 和最新密钥版本，这两个值都是将密钥与存储帐户相关联所需要的。 请记得将占位符值替换为您自己的值。
+若要更新存储帐户的加密设置，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)，如以下示例中所示。 包括 `--encryption-key-source` 参数，并将其设置为 `Microsoft.Keyvault` 以启用存储帐户的客户管理的密钥。 该示例还查询密钥保管库 URI 和最新的密钥版本，这两个值都是将密钥与存储帐户相关联所需要的。 请记得将占位符值替换为您自己的值。
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -105,7 +103,7 @@ key_version=$(az keyvault key list-versions \
     --vault-name <key-vault> \
     --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
-az storage account update 
+az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \
     --encryption-key-name <key> \
@@ -117,6 +115,21 @@ az storage account update
 ## <a name="update-the-key-version"></a>更新密钥版本
 
 当你创建新的密钥版本时，你将需要更新存储帐户以使用新版本。 首先，通过调用 az [keyvault show](/cli/azure/keyvault#az-keyvault-show)来查询 KEY vault URI，并通过调用[az keyvault key list 版本](/cli/azure/keyvault/key#az-keyvault-key-list-versions)来查询密钥版本。 然后调用[az storage account update](/cli/azure/storage/account#az-storage-account-update) ，将存储帐户的加密设置更新为使用新的密钥版本，如前一部分中所示。
+
+## <a name="use-a-different-key"></a>使用其他密钥
+
+若要更改用于 Azure 存储加密的密钥，请调用[az 存储帐户更新](/cli/azure/storage/account#az-storage-account-update)，如[使用客户管理的密钥配置加密](#configure-encryption-with-customer-managed-keys)和提供新的密钥名称和版本中所示。 如果新密钥在不同的密钥保管库中，则还要更新密钥保管库 URI。
+
+## <a name="disable-customer-managed-keys"></a>禁用客户管理的密钥
+
+当你禁用客户管理的密钥时，存储帐户将通过 Microsoft 管理的密钥进行加密。 若要禁用客户托管的密钥，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例中所示。 请记住，将占位符中的占位符值替换为自己的值，并使用在前面的示例中定义的变量。
+
+```powershell
+az storage account update
+    --name <storage-account> \
+    --resource-group <resource_group> \
+    --encryption-key-source Microsoft.Storage
+```
 
 ## <a name="next-steps"></a>后续步骤
 

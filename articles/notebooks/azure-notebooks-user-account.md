@@ -1,22 +1,24 @@
 ---
-title: 登录到 Azure Notebooks
+title: 登录 Azure Notebooks 预览
 description: 使用 Microsoft 帐户或工作/学校帐户配置 Azure Notebooks 的用户帐户。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277626"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646290"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks 的用户帐户
+# <a name="your-user-account-for-azure-notebooks-preview"></a>用于 Azure Notebooks 预览的用户帐户
 
 无论是否使用用户帐户登录，都可以使用 Azure Notebooks：
 
 - 无需登录，你可以创建和运行 Notebooks，但不能将 Notebooks 或数据文件保留为项目的一部分。 例如，收到 Azure Notebooks 链接的用户无需登录即可享受笔记本。
 - 登录后，Azure Notebooks 将保留你帐户中的所有项目。 登录用户也有一个用户 ID，使其可与他人共享项目和 Notebooks。
-  - 当用于 Azure Notebooks 的帐户也与 Azure 订阅相关联时，你将获得其他好处，例如在功能更强大的服务器上运行 Notebooks、创建私有 Notebooks 以及向单个用户授予 Notebooks 权限。
+- 当用于 Azure Notebooks 的帐户也与 Azure 订阅相关联时，你将获得其他好处，例如在功能更强大的服务器上运行 Notebooks、创建私有 Notebooks 以及向单个用户授予 Notebooks 权限。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 登录 Azure Notebooks 需要 Microsoft 帐户或“工作或学校”帐户。 在 Notebooks 页右上侧选择“登录”命令时，将提示你输入帐户：
 

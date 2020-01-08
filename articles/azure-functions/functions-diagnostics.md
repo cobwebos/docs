@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227019"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562045"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 诊断概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "74227019"
 
 ## <a name="use-the-interactive-interface"></a>使用交互式接口
 
-选择最适合您的函数应用程序问题的主页类别后，Azure Functions 诊断 "交互式界面精灵，可以指导您完成应用程序的诊断和解决问题。 可以使用精灵提供的磁贴快捷方式查看感兴趣的问题类别的完整诊断报告。 磁贴快捷方式为您提供了一种访问诊断指标的直接方式。
+选择最适合您的函数应用程序问题的主页类别后，Azure Functions 诊断 "交互式界面精灵，可以指导您完成应用程序的诊断和解决问题。 你可以使用精灵提供的磁贴快捷方式查看你感兴趣的问题类别的完整诊断报告。 磁贴快捷方式为您提供了一种访问诊断指标的直接方式。
 
 ![精灵](./media/functions-diagnostics/genie.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "74227019"
 
 ## <a name="find-the-problem-code"></a>查找问题代码 
 
-对于基于脚本的函数，可以**在 Function App 关闭或报告错误**的情况下使用**函数执行**和错误，缩小导致异常或错误的代码行。 此功能可能是一个有用的工具，可用于从特定代码行获取根本原因并解决问题。 此选项不适用于预编译C#和 Java 函数。
+对于基于脚本的函数，可以在**Function App 关闭或报告错误**的情况下使用**函数执行**和**错误**，缩小导致异常或错误的代码行。 此功能可能是一个有用的工具，可用于从特定代码行获取根本原因并解决问题。 此选项不适用于预编译C#和 Java 函数。
 
 ![有关函数执行错误的诊断报告](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

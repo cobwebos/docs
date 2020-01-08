@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459186"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>导出安全警报和建议（预览）
 
@@ -41,7 +41,7 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中（例如，在中央事件中心实例或中央 Log Analytics 工作区中）。
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>通过 Azure 事件中心连续导出  
 
@@ -50,6 +50,8 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 > [!NOTE]
 > 如果以前使用 Azure 活动日志将安全中心警报导出到 SIEM，则以下过程将取代该方法。
+
+若要查看导出的数据类型的事件架构，请访问[事件中心事件架构](https://aka.ms/ASCAutomationSchemas)。
 
 ### <a name="to-integrate-with-a-siem"></a>与 SIEM 集成 
 
@@ -66,13 +68,17 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 此外，如果你想要从已配置的事件中心自动将连续导出的数据移至 Azure 数据资源管理器，请按照将[数据从事件中心引入 azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub)中的说明进行操作。
 
 
-## <a name="continuous-export-to-log-analytics-workspace"></a>连续导出到 Log Analytics 工作区
+## <a name="continuous-export-to-a-log-analytics-workspace"></a>连续导出到 Log Analytics 工作区
 
 若要导出到 Log Analytics 工作区，必须在工作区中启用安全中心的免费或标准层 Log Analytics 解决方案。 如果你使用的是 Azure 门户，则当你启用连续导出时，将自动启用安全中心免费层解决方案。 但是，如果要以编程方式配置连续导出设置，则必须从**定价 & 设置**中手动选择所需工作区的 "免费" 或 "标准" 定价层。  
 
-安全警报和建议分别存储在*SecurityAlert*和*SecurityRecommendations*表中。 包含这些表的 Log Analytics 解决方案的名称取决于你是在 "免费" 层还是 "标准" 级别（请参阅[定价](security-center-pricing.md)）： Security 或 SecurityCenterFree。
+### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
+
+安全警报和建议分别存储在*SecurityAlert*和*SecurityRecommendations*表中。 包含这些表的 Log Analytics 解决方案的名称取决于你是在 "免费" 层还是 "标准" 层上（请参阅[定价](security-center-pricing.md)）：安全性（"安全和审核"）或 SecurityCenterFree。
 
 ![Log Analytics 中的 * SecurityAlert * 表](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+若要查看导出的数据类型的事件架构，请访问[Log Analytics 表架构](https://aka.ms/ASCAutomationSchemas)。
 
 ###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>在 Azure Monitor 中查看导出的安全警报和建议
 
@@ -104,7 +110,7 @@ Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标
 [![将警报数据作为 CSV 文件下载](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
-> 这些报表包含 Azure 门户中 "目录 + 订阅" 筛选器中当前所选订阅中的资源的警报和建议： ![用于选择目录 + 订阅的筛选器](./media/continuous-export/filter-for-export-csv.png)
+> 这些报表包含当前所选订阅中的资源的警报和建议。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -115,3 +121,4 @@ Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标
 - [Azure 事件中心文档](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel 文档](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor 文档](https://docs.microsoft.com/azure/azure-monitor/)
+- [工作流自动化和连续导出数据类型架构](https://aka.ms/ASCAutomationSchemas)
