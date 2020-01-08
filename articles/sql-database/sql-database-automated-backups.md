@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 09/26/2019
-ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 12/13/2019
+ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348965"
 ---
 # <a name="automated-backups"></a>自动化的备份
 
-SQL 数据库会自动创建保留7到35天之间的数据库备份，并使用 Azure[读取访问异地冗余存储（GRS）](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)来确保即使数据中心不可用，也会保留这些备份。 这些备份是自动创建的。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则要求你的备份长时间可用（长达10年），可以在单一数据库和弹性池上配置[长期保留](sql-database-long-term-retention.md)。
+SQL 数据库会自动创建在配置的保留期内保留的数据库备份，并使用 Azure[读取访问异地冗余存储（GRS）](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)来确保即使数据中心不可用，也会保留这些备份。 这些备份是自动创建的。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果你的安全规则要求你的备份长时间可用（长达10年），可以在单一数据库和弹性池上配置[长期保留](sql-database-long-term-retention.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,8 +32,6 @@ SQL 数据库使用 SQL Server 技术每周创建[完整备份](https://docs.mic
 可使用这些备份执行以下任务：
 
 - 使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 将**现有数据库还原到保持期过去的时间点**。 在单一数据库和弹性池中，此操作会在与原始数据库相同的服务器中创建新的数据库。 在托管实例中，此操作可在同一订阅下创建数据库的副本或相同或不同的托管实例。
-  - 将 **[备份保持期更改](#how-to-change-the-pitr-backup-retention-period)** 为7到35天，以配置备份策略。
-  - 使用[Azure 门户](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell)，**将长期保留策略更改为最多10年**的单一数据库和弹性池。
 - 将**已删除的数据库还原到它删除的时间**或保留期内的任何时间。 删除的数据库只能在创建原始数据库的同一逻辑服务器或托管实例中还原。
 - **将数据库还原到另一个地理区域**。 在无法访问服务器和数据库的情况下，异地还原可帮助从地理位置灾难中恢复。 它会在全球任意位置的任意现有服务器中创建新数据库。
 - 如果数据库已配置长期保留策略（LTR），请从单一数据库或弹性池上**的特定长期备份还原数据库**。 LTR 允许使用[Azure 门户](sql-database-long-term-backup-retention-configure.md#using-azure-portal)或[Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell)还原旧版本的数据库，以满足符合性请求或运行旧版本的应用程序。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
@@ -52,9 +50,85 @@ SQL 数据库使用 SQL Server 技术每周创建[完整备份](https://docs.mic
 | 还原已删除的数据库 | [单个数据库](sql-database-recovery-using-backups.md) | [单个数据库](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [托管实例](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | 从 Azure Blob 存储还原数据库 | 单一数据库-不适用 <br/>托管实例-N/A  | 单一数据库-不适用 <br/>[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="how-long-are-backups-kept"></a>备份保留多长时间？
 
-所有 Azure SQL 数据库（单一数据库、共用实例数据库和托管实例数据库）的默认备份保持期为**七**天。 你可以[将备份保持期更改为最多35天](#how-to-change-the-pitr-backup-retention-period)。
+## <a name="backup-frequency"></a>备份频率
+
+### <a name="point-in-time-restore"></a>时间点还原
+
+SQL 数据库通过自动创建完整备份、差异备份和事务日志备份支持时间点还原 (PITR) 的自助服务。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于计算大小和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，会在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。 不能更改或禁用备份作业。 
+
+PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护
+
+有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
+
+### <a name="long-term-retention"></a>长期保留
+
+单一数据库和共用数据库提供选项，用于在 Azure Blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
+
+类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
+
+有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
+
+## <a name="backup-storage-consumption"></a>备份存储消耗 
+
+对于单一数据库，将按如下所示计算总备份存储使用量：   
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`。
+
+对于弹性池，总备份存储大小在池级别聚合，并按如下所示进行计算：   
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`。 
+
+早于保留期的备份会根据其时间戳自动清除。 因为差异备份和日志备份需要较早的完整备份才能有用，所以它们将在每周的区块中一起清除。 
+
+Azure SQL Database 会将总保留备份存储计算为累积值。 每小时，此值将报告给 Azure 计费管道，该管道负责聚合这一小时的使用情况，以便在每月结束时计算消耗。 删除数据库后，消耗会缩短为备份期限。 一旦备份早于保持期，计费就会停止。 
+
+
+### <a name="monitoring-consumption"></a>监视消耗
+
+每种类型的备份（完整备份、差异备份和日志备份）都作为单独的指标在 "数据库监视" 边栏选项卡上报告。 下图显示了如何监视备份存储消耗。  
+
+![监视 Azure 门户的 "数据库监视" 边栏选项卡上的数据库备份消耗](media/sql-database-automated-backup/backup-metrics.png)
+
+### <a name="fine-tune-the-backup-storage-consumption"></a>微调备份存储消耗
+
+多余的备份存储消耗将取决于各个数据库的工作负荷和大小。 可以考虑实现以下某些优化技术，进一步减少备份存储消耗：
+
+* 将[备份保持期](#change-pitr-backup-retention-period-using-azure-portal)缩短到可能的最小需求。
+* 避免比需要更频繁地执行大型写入操作，如索引重新生成。
+* 对于大型数据加载操作，请考虑使用[聚集列存储索引](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)，减少非聚集索引的数目，并考虑行计数约为1000000的大容量加载操作。
+* 在常规用途的服务层中，预配的数据存储的成本低于额外的备份存储的价格，因为在这种情况下，可能需要增加数据存储，以便将数据存储在备份存储。
+* 在 ETL 逻辑中使用 TempDB 来存储临时结果，而不是永久表（仅适用于托管实例）。
+* 对于不包含敏感数据的数据库（例如，开发或测试数据库），请考虑关闭 TDE 加密。 通常使用较高的压缩率压缩非加密数据库的备份。
+
+> [!IMPORTANT]
+> 对于分析和数据仓库 \ 数据仓库工作负荷，强烈建议使用[聚集列存储索引](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)，减少非聚集索引的数量，还可以考虑使用行数大约为1000000的大容量加载操作来减少多余的备份存储消耗。
+
+
+## <a name="storage-costs"></a>存储成本
+
+
+### <a name="dtu-model"></a>DTU 模型
+
+使用 DTU 模型对数据库和弹性池的备份存储不收取额外费用。 
+
+### <a name="vcore-model"></a>vCore 模型
+
+对于单一数据库，提供了等于100% 的数据库大小的最小备份存储量，无需额外付费。 对于弹性池和托管实例，提供的最小备份存储量仅等于为池或实例大小分配的数据存储的100%，无需额外付费。 超出此部分的其他备份存储空间按 GB/月收费。 这一额外消耗将取决于各个数据库的工作负荷和大小。
+
+Azure SQL DB 会将总保留备份存储计算为累积值。 每小时将此值报告给 Azure 计费管道，该管道负责聚合这一小时的使用情况，以便在每月结束时使用。 删除数据库后，会将使用情况减少为备份保留时间。 一旦它们早于保持期，计费就会停止。 由于所有日志备份和差异备份都保留了完整的保留期，因此，修改过的数据库将具有更高的备份费用。 
+
+假设数据库的备份存储量为 744 GB，此数量在整个月内保持不变。 若要将此累积存储消耗量转换为每小时使用，我们将除以744.0 （每月31天 * 24 小时/天）。 因此，SQL DB 每小时报告数据库使用了 1 GB 的 PITR 备份。 Azure 计费将聚合此项，并显示整月 744 GB 的使用情况，并根据你所在地区的 $/GB/mo 费率计算成本。 
+
+现在，这是一个更复杂的示例。 假设数据库的保留期增加到了月份中间的14天，此（假设）会导致总备份存储量翻倍到 1488 GB。 SQL DB 会报告小时1-372 的使用量为 1 GB，然后将其报告为 2 GB，时间为373-744。 这会被聚合为 1116 GB/mo 的最终帐单。 
+
+你可以使用 Azure 订阅成本分析来确定你当前在备份存储上的支出。
+
+![备份存储成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+例如，若要了解托管实例的备份存储成本，请在 Azure 门户中找到你的订阅，并打开 "成本分析" 边栏选项卡。 选择计量子类别**mi pitr 备份存储**，以查看当前的备份成本和费用预测。 还可以包括其他计量子类别，如**托管实例常规用途存储**或**托管实例常规用途-计算 gen5** ，将备份存储成本与其他成本类别进行比较。
+
+## <a name="backup-retention"></a>备份保留
+
+所有 Azure SQL 数据库（单一数据库、共用实例数据库和托管实例数据库）的默认备份保持期为**七**天。 你可以[将备份保持期更改为最多35天](#change-pitr-backup-retention-period)。
 
 如果删除一个数据库，SQL 数据库将保留其备份，就像保留联机数据库的备份一样。 例如，如果删除保留期为 7 天的基本数据库，已保留 4 天的备份将继续保存 3 天。
 
@@ -63,43 +137,11 @@ SQL 数据库使用 SQL Server 技术每周创建[完整备份](https://docs.mic
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有弹性池和数据库也会被删除且不可恢复。 无法还原已删除的服务器。 但是，如果配置了长期保留，将不会删除具有 LTR 的数据库的备份，并且可以还原这些数据库。
 
-## <a name="how-often-do-backups-happen"></a>备份发生的频率
-
-### <a name="backups-for-point-in-time-restore"></a>时间点还原的备份
-
-SQL 数据库通过自动创建完整备份、差异备份和事务日志备份支持时间点还原 (PITR) 的自助服务。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于计算大小和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，会在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。 不能更改或禁用备份作业。 
-
-PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护
-
-有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
-
-### <a name="backups-for-long-term-retention"></a>长期保留的备份
-
-单一数据库和共用数据库提供选项，用于在 Azure Blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
-
-类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
-
-有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
-
-## <a name="storage-costs"></a>存储成本
-对于单一数据库和托管实例，提供了等于100% 的数据库大小的最小备份存储量，无需额外付费。 对于弹性池，为池分配的数据存储的最小备份存储量等于100%，无需额外付费。 超出此部分的其他备份存储空间按 GB/月收费。 这一额外消耗将取决于各个数据库的工作负荷和大小。
-
-你可以使用 Azure 订阅成本分析来确定你当前在备份存储上的支出。
-
-![备份存储成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
-
-如果你访问你的订阅并打开 "成本分析" 边栏选项卡，则可以选择 "计量子类别" **mi pitr 备份存储**来查看当前的备份成本和费用预测。 还可以包括其他计量子类别，如**托管实例常规用途存储**或**托管实例常规用途-计算 gen5** ，将备份存储成本与其他成本类别进行比较。
-
-> [!Note]
-> 你可以[将保留期更改为7天](#change-pitr-backup-retention-period-using-azure-portal)，以降低备份存储的成本。
-
-有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。 
-
-## <a name="are-backups-encrypted"></a>备份是否已加密
+## <a name="encrypted-backups"></a>加密备份
 
 如果使用 TDE 加密数据库，备份会在静止时自动加密，包括 LTR 备份。 为 Azure SQL 数据库启用 TDE 时，也会加密备份。 默认情况下，将所有新的 Azure SQL 数据库都配置为启用 TDE。 有关 TDE 的详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
-## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft 如何确保备份完整性
+## <a name="backup-integrity"></a>备份完整性
 
 在日常工作中，Azure SQL 数据库工程团队会自动测试还原逻辑服务器和弹性池中的数据库的自动数据库备份（这在托管实例中不可用）。 在时间点还原时，数据库还使用 DBCC CHECKDB 接收完整性检查。
 
@@ -107,13 +149,13 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 
 在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关 Azure SQL 数据库中数据完整性的详细信息，请参阅 [Azure SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
-## <a name="how-do-automated-backups-impact-compliance"></a>自动备份如何影响符合性
+## <a name="compliance"></a>合规
 
-将数据库从默认 PITR 保留期为 35 天的基于 DTU 的服务层级迁移到基于 vCore 的服务层级时，将保留 PITR 保留期以确保不会违反应用程序的数据恢复策略。 如果默认保留期不满足符合性要求，可以使用 PowerShell 或 REST API 更改 PITR 保留期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
+将数据库从基于 DTU 的服务层迁移到基于 vCore 的服务层时，会保留 PITR 保留，以确保应用程序的数据恢复策略不会受到侵害。 如果默认保留期不满足符合性要求，可以使用 PowerShell 或 REST API 更改 PITR 保留期。 有关详细信息，请参阅[更改备份保持期](#change-pitr-backup-retention-period)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-the-pitr-backup-retention-period"></a>如何更改 PITR 备份保持期
+## <a name="change-pitr-backup-retention-period"></a>更改 PITR 备份保持期
 
 你可以使用 Azure 门户、PowerShell 或 REST API 更改默认的 PITR 备份保留期。 以下示例演示如何将 PITR 保留期更改为 28 天。
 

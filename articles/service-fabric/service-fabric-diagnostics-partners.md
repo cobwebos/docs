@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 监视合作伙伴 | Microsoft Docs
-description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 监视合作伙伴
+description: 了解如何通过合作伙伴监视解决方案监视 Azure Service Fabric 应用程序、群集和基础结构。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232454"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645712"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 
@@ -43,11 +34,11 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ## <a name="elk"></a>ELK 
 
-ELK 堆栈是以下开源技术的集合：Elasticsearch、Logstash 和 Kibana。 结合使用这些技术可以收集、存储和分析 Service Fabric 监视与诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
+ELK stack 是开放源代码技术的集合： Elasticsearch、Logstash 和 Kibana。 结合使用这些技术，您可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
 
 ## <a name="humio"></a>Humio
 
-Humio 是一种日志收集服务，它可以在云中或本地 Service Fabric 从应用程序和事件收集日志。 除了实时可观察性外，Humio 还提供有关查看和收集诊断信息的艺术分析和可视化功能的状态。 Humio 提供经济高效的定价计划，并可进行扩展，同时保持速度快。 它直接与 Service Fabric 平台事件和应用程序遥测集成。 可在[此处](https://github.com/humio/service-fabric-humio)阅读有关 Humio 和 Service Fabric 集成的详细信息。
+Humio 是一种日志收集服务，它可以在云中或本地 Service Fabric 从应用程序和事件收集日志。 除了实时可观察性外，Humio 还提供了一些先进的分析和可视化功能，可用于查看和收集诊断信息。 Humio 提供经济高效的定价计划，并可进行扩展，同时保持速度快。 它直接与 Service Fabric 平台事件和应用程序遥测集成。 可在[此处](https://github.com/humio/service-fabric-humio)阅读有关 Humio 和 Service Fabric 集成的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c39546d47e9916dbc138a4660d73b79e54ebbe3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425249"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -29,7 +29,7 @@ ms.locfileid: "74964049"
 
 **通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户在**每次登录时**执行双重验证，并覆盖条件访问策略。
 
-启用条件访问策略-这是为用户启用双重验证的最灵活的方式。 启用条件访问策略仅适用于云中的 Azure MFA，是 Azure AD 的一项高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
+**启用条件访问策略**-这是为用户启用双重验证的最灵活的方式。 启用条件访问策略仅适用于云中的 Azure MFA，是 Azure AD 的一项高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
 
 通过“Azure AD 标识保护”启用 - 此方法使用“Azure AD 标识保护”风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](../identity-protection/howto-sign-in-risk-policy.md)
 
@@ -44,9 +44,9 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 > [!IMPORTANT]
 > 通过条件性访问策略启用 Azure MFA 将不会更改用户的状态。 不会发出警报，用户显示为禁用状态。 条件访问不会更改状态。 **如果组织使用条件性访问策略，则不应启用或强制用户。**
 
-| 状态 | 描述 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | Description | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:| --- |:---:|:--:|:--:|
-| Disabled | 没有在 Azure MFA 中注册某个新用户的默认状态。 | No | No | No |
+| 已禁用 | 没有在 Azure MFA 中注册某个新用户的默认状态。 | 否 | 否 | 否 |
 | 已启用 | 用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不。  它们继续工作，直到注册过程完成。 | 可以。 会话过期后，会要求进行 Azure MFA 注册。| 可以。 访问令牌过期后，会要求进行 Azure MFA 注册。 |
 | 强制 | 用户已加入，并已完成 Azure MFA 的注册过程。 | 可以。 应用需要应用密码。 | 可以。 在登录时会要求进行 Azure MFA。 | 可以。 在登录时会要求进行 Azure MFA。 |
 
@@ -90,7 +90,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 * 已启用
 * 强制
-* Disabled  
+* 已禁用  
 
 不要直接将用户移动到“强制”状态。 如果这样做了，则非基于浏览器的应用将停止工作，因为用户尚未完成 Azure MFA 注册并获得[应用密码](howto-mfa-mfasettings.md#app-passwords)。
 

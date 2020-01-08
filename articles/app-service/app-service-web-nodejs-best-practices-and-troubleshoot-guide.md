@@ -1,19 +1,19 @@
 ---
 title: Node.js 最佳实践和故障排除
 description: 了解 Azure App Service 中运行的 node.js 应用程序的最佳做法和故障排除步骤。
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430569"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -87,7 +87,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-默认值为 false。 如果启用，节点应用程序可以连接到命名管道（环境变量 IISNODE\_CONTROL\_PIPE）并发送“回收”消息。 可以通过此方式正常回收 w3wp。
+默认值是 False。 如果启用，节点应用程序可以连接到命名管道（环境变量 IISNODE\_CONTROL\_PIPE）并发送“回收”消息。 可以通过此方式正常回收 w3wp。
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +99,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-默认值为 false。 如果设置为 true，iisnode 会将 HTTP 响应标头 `iisnode-debug` 添加到它所发送的每个 HTTP 响应，`iisnode-debug` 标头值是一个 URL。 查看 URL 片段即可收集各项诊断信息，但在浏览器中打开该 URL 可达到更好的视觉效果。
+默认值是 False。 如果设置为 true，iisnode 会将 HTTP 响应标头 `iisnode-debug` 添加到它所发送的每个 HTTP 响应，`iisnode-debug` 标头值是一个 URL。 查看 URL 片段即可收集各项诊断信息，但在浏览器中打开该 URL 可达到更好的视觉效果。
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-默认值为 false。 如果设置为 true，iisnode 会在浏览器上显示 HTTP 状态代码和 Win32 错误代码。 在调试特定类型的问题时，win32 代码很有用。
+默认值是 False。 如果设置为 true，iisnode 会在浏览器上显示 HTTP 状态代码和 Win32 错误代码。 在调试特定类型的问题时，win32 代码很有用。
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled（请勿在实际生产站点上启用）
 
@@ -251,7 +251,7 @@ node.exe 随机关闭的原因有多种：
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 
-`cnodeconstants` [源文件](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)列出了 iisnode 可在发生错误时返回的所有可能的状态/子状态组合。
+`cnodeconstants`[源文件](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)列出了由于错误，iisnode 可能返回的所有可能的状态/子状态组合。
 
 为应用程序启用 FREB 以查看 win32 错误代码（出于性能方面的原因，请确保只在非生产站点上启用 FREB）。
 
@@ -278,4 +278,4 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)
-* [探索神秘无比的 Kudu 调试控制台](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [Kudu 调试控制台探秘](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -4,15 +4,15 @@ description: 可以使用 Application Insights 连接器解决方案来诊断性
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396552"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -43,12 +43,12 @@ ms.locfileid: "72932745"
 
 与其他大多数 Log Analytics 解决方案不同，代理不会收集 Application Insights 连接器的数据。 该解决方案使用的全部数据都直接来自于 Azure。
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 受支持 | Description |
 | --- | --- | --- |
-| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | No | 解决方案不会从 Windows 代理收集信息。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | 解决方案不会从 Linux 代理收集信息。 |
-| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | No | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
-| [Azure 存储帐户](collect-azure-metrics-logs.md) | No | 该解决方案不会从 Azure 存储收集信息。 |
+| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
+| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
+| [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
+| [Azure 存储帐户](collect-azure-metrics-logs.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -61,7 +61,7 @@ ms.locfileid: "72932745"
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”以打开 Application Insights。 然后，搜索 Application Insights。 
 3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。
-4. 单击“保存”。
+4. 单击“ **保存**”。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
 
@@ -162,8 +162,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 解决方案从连接的 Application Insights 应用接收以下遥测类型的数据：
 
 - 可用性
-- 例外
-- Requests
+- 异常
+- 请求
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
 
@@ -175,9 +175,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | 记录的时间 |
 | ApplicationId | Application Insights 应用的检测密钥 |
@@ -201,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -226,7 +226,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>异常特定的字段
 
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 异常 |
 | ExceptionType | 异常的类型 |
@@ -243,9 +243,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
 | ResponseCode | 发送到客户端的 HTTP 响应 |
 | RequestSuccess | 指示成功或失败。 True 或 False。 |

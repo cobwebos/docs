@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425412"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -82,7 +82,7 @@ ms.locfileid: "74848368"
 * Windows Server 软件
 * 库
 * 将 Azure Active Directory (Azure AD) 与本地 Active Directory 同步
-* Azure Active Directory  GUID ID
+* Azure Active Directory GUID ID
 
 ### <a name="vpn-infrastructure"></a>VPN 基础结构
 
@@ -119,7 +119,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory  GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 
 若要安装 NPS 扩展，则需要知道 Azure Active Directory 的 GUID。 下一节中提供了有关查找 Azure Active Directory 的 GUID 的说明。
 
@@ -178,7 +178,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
     ![指定用户组窗口以允许或拒绝访问](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. 选择“**下一步**”。
+9. 选择“**下一页**”。
 
 10. 在“指定 IP 筛选器”窗口中，选择“下一步”。
 
@@ -240,9 +240,9 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 7. 在“添加 RADIUS 服务器”窗口中，进行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“服务器名称”框中，输入上一部分中配置的 RADIUS 服务器的名称或 IP 地址。
 
-    b. 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。
+    b.保留“数据库类型”设置，即设置为“共享”。 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。
 
     c. 在 "**超时（秒）** " 框中，输入值**30**。  
     需要超时值以提供足够的时间来完成二次身份验证因素。
@@ -326,13 +326,13 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在左窗格中，选择“Azure Active Directory”按钮。
+2. 在 "Azure 门户" 菜单中，选择 " **Azure Active Directory**"，或从任意页面搜索并选择 " **Azure Active Directory** "。
 
 3. 选择“属性”。
 
 4. 若要复制 Azure AD ID，请选择“复制”按钮。
 
-    ![Azure 门户中的 Azure AD 目录 ID](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Azure 门户中的 Azure AD 目录 ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -390,7 +390,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
     ![显示自签名证书的 PowerShell 窗口](./media/howto-mfa-nps-extension-vpn/image41.png)
 
-6. 重启服务器。
+6. 重新启动服务器。
 
 ### <a name="verify-the-configuration"></a>验证配置
 

@@ -1,25 +1,16 @@
 ---
-title: 在 Azure Service Fabric 中还原备份 | Microsoft Docs
+title: 在 Azure Service Fabric 中还原备份
 description: 使用 Service Fabric 中的定期备份和还原功能从应用程序数据的备份还原数据。
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377899"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -32,18 +23,18 @@ ms.locfileid: "73819327"
 - **数据丢失的情况**：服务意外删除或损坏。 例如，管理员错误地删除了服务。
 - **数据损坏的情况**：服务中的 bug 导致数据损坏。 例如，当某个服务代码升级程序将错误数据写入到可靠集合时，可能会发生数据损坏。 在此情况下，可能需要将代码和数据都还原到先前的状态。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 若要触发还原，必须为群集启用故障分析服务 (FAS)
 - 备份还原服务 (BRS) 已创建备份。
 - 只能在分区触发还原。
-- 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
+- 安装 ServiceFabric 模块 [In Preview]，以便进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
+- 使用 ServiceFabric 模块进行任何配置请求之前，请确保使用 `Connect-SFCluster` 命令连接群集。
 
 ```powershell
 
@@ -65,7 +56,7 @@ ms.locfileid: "73819327"
 
 以下示例假设丢失的群集是[为可靠有状态服务和 Reliable Actors 启用定期备份](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)中所述的同一群集。 在本例中，部署的 `SampleApp` 已启用备份策略，备份配置为存储在 Azure 存储中。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
@@ -165,7 +156,7 @@ FailureError            :
 
 对于已命名分区，将比较名称值以识别备用群集中的目标分区。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 
@@ -210,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![触发器分区还原文件共享][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>在数据损坏_数据丢失时进行数据还原_/
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>在数据损坏/数据丢失时进行数据还原
 
 对于数据丢失或数据损坏的情况，可靠有状态服务和 Reliable Actors 的已备份分区可以还原到任何所选备份。
 
@@ -218,7 +209,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 从 [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups) 的输出中选择备份。 在此方案中，备份是从过去的同一个群集生成的。
 
-若要触发还原，请从列表中选择一个备份。 对于当前存在的数据丢失_数据损坏，请选择以下备份：_ /
+若要触发还原，请从列表中选择一个备份。 对于当前存在的数据丢失/数据损坏，请选择以下备份：
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -237,7 +228,7 @@ FailureError            :
 对于还原 API，请提供 _BackupId_ 和 _BackupLocation_ 详细信息。 群集已启用备份，因此 Service Fabric 备份还原服务 (BRS) 可识别出关联备份策略中的正确存储位置。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
@@ -264,7 +255,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 可靠有状态服务或 Reliable Actor 的分区一次仅接受一个还原请求。 仅当已完成当前的还原请求后，分区才接受另一个请求。 可以同时在不同的分区上触发多个还原请求。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
     Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'

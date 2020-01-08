@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424797"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -58,7 +58,7 @@ ms.locfileid: "72893460"
 - Microsoft Intune 注册
 - Microsoft Planner
 - Microsoft PowerApps
-- 必应的 Microsoft 搜索
+- Microsoft Search in Bing
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -71,7 +71,7 @@ ms.locfileid: "72893460"
 - Power BI 服务
 - Project Online
 - Skype for Business Online
-- 虚拟专用网络（VPN）
+- 虚拟专用网络 (VPN)
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>其他应用程序
@@ -144,7 +144,7 @@ ms.locfileid: "72893460"
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | 名称 | 第 |
-| Type | REG_SZ (String) |
+| 类型 | REG_SZ (String) |
 | 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -153,7 +153,7 @@ ms.locfileid: "72893460"
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | 名称 | 第 |
-| Type | REG_SZ (String) |
+| 类型 | REG_SZ (String) |
 | 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
@@ -182,7 +182,7 @@ ms.locfileid: "72893460"
 | Outlook 2016 (Office for macOS) | Office 365 Exchange Online | macOS |
 | Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） | Office 365 Exchange Online | Windows 8.1、Windows 7 |
 | Outlook 移动应用 | Office 365 Exchange Online | Android、iOS |
-| Power BI 应用 | Power BI 服务 | Windows 10、Windows 8.1、Windows 7、Android 和 iOS |
+| Power BI 应用程序 | Power BI 服务 | Windows 10、Windows 8.1、Windows 7、Android 和 iOS |
 | Skype for Business | Office 365 Exchange Online| Android、IOS |
 | Visual Studio Team Services 应用 | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS 和 Android |
 
@@ -230,11 +230,12 @@ ms.locfileid: "72893460"
 - Microsoft Word
 - Microsoft Yammer
 
-**备注**
+**注释**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
+- 条件性访问无法在 InPrivate 模式下将 Microsoft Edge 视为批准的客户端应用。
 
 ## <a name="app-protection-policy-requirement"></a>应用保护策略要求 
 
@@ -249,7 +250,7 @@ ms.locfileid: "72893460"
 - Microsoft Outlook
 - Microsoft Planner
 
-**备注**
+**注释**
 
 - 适用于应用保护策略的应用支持 Intune 移动应用程序管理功能与策略保护。
 - **需要应用保护策略**要求：

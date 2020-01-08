@@ -7,27 +7,40 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 0d05802c9d5d80f91913291d710b674369f0ff17
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427144"
 ---
 # <a name="payout-reporting"></a>付款报告
 
-费用**摘要**显示了你在 Microsoft 获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。
+费用[**摘要**](https://docs.microsoft.com/windows/uwp/publish/payout-summary)显示了你在 Microsoft 获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。
 
 如果你在 Azure Marketplace 中销售产品/服务，你**还将看到**有关付款的信息。 有关 Azure Marketplace 支付的详细信息，请参阅[Microsoft Azure 市场参与策略](https://go.microsoft.com/fwlink/p/?LinkId=722436)和[Microsoft Azure 市场发行者协议](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
 
 > [!NOTE]
 > 为了满足付出的条件，你的继续必须达到[支付阈值](payment-thresholds-methods-timeframes.md)$50。 有关付款阈值的详细信息，请参阅此页并查看[Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
 
+- [用于访问支出报表的角色和权限](#roles-and-permission-to-access-the-payout-report)
 - [支出报表：云合作伙伴门户和合作伙伴中心之间的差异](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
 - [客户类型](#customer-types)
 - [支出与使用量之间的相关](#corelation-between-payout-and-usage)
 - [事务历史记录下载](#transaction-history-download-export)
 - [计费问题和支持](#billing-questions-and-support)
+
+## <a name="roles-and-permission-to-access-the-payout-report"></a>用于访问支出报表的角色和权限
+
+| 报表/页    | 帐户所有者    | Manager  | Developer | 业务参与者 |  财务参与者 | 营销人员 |
+|------------------|------------------|----------|-----------|----|----|-----|
+| 购置报表（包括近乎实时的数据） | 可以查看 | 可以查看 | 无法访问 | 无法访问 | 可以查看 | 无法访问 |
+| 反馈报告/响应 | 可以查看和发送反馈 | 可以查看和发送反馈 | 可以查看和发送反馈 | 无法访问 | 无法访问 | 可以查看和发送反馈 |
+| 运行状况报告（包括近乎实时的数据） | 可以查看 | 可以查看 | 可以查看 | 可以查看 | 无法访问 | 无法访问 |
+| 使用情况报告 | 可以查看 | 可以查看 | 可以查看 | 可以查看 | 无法访问 | 无法访问 |
+| 付款帐户 | 可以更新 | 无法访问 | 无法访问 | 无法访问 | 可以更新 | 无法访问 |
+| 税务配置文件 | 可以更新 | 无法访问 | 无法访问 | 无法访问 | 可以更新 | 无法访问 |
+| 付款摘要 | 可以查看 | 无法访问 | 无法访问 | 无法访问 | 可以查看 | 无法访问 |
 
 ## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>支出报表：云合作伙伴门户和合作伙伴中心之间的差异
 
@@ -55,23 +68,23 @@ ms.locfileid: "74980265"
 
 ## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关 
 
-|描述    |    日期  | 订单/使用情况  | 付款 |
+|Description    |    Date  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
-|订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>客户 ID</li> </ul> <br> **使用情况** <br> <ul> <li>客户 ID </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估算的付款金额 (PC) </li> </ul> |  |
+|订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>CustomerId</li> </ul> <br> **使用情况** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
 |期限结束（月）   | 8月30日，2019 | | |
 |计费日期 | 9月1日，2019 | | |
 |客户付款日期 | 9月1日，2019 | | |
-|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
+|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
 |费用收集期开始 | 9月1日，2019 | | |
 |费用收集期结束（最大值，30 天） | 9月30日，2019 | | |
-|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
-|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
+|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
+|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
-| 描述 |    日期  | 使用情况 | 付款 |
+| Description |    Date  | 使用情况 | 付款 |
 |----------|----------|---------|-----------|
-|订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>客户 ID</li> </ul> <br> **使用情况报告** <br> <ul> <li>客户 ID </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估算的付款金额 (PC) </li> </ul> | |
+|订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>CustomerId</li> </ul> <br> **使用情况报告** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> | |
 |期限结束（季度） | 9月30日，2019 | | |
 |计费日期 | 十月15，2019 | | |
 |代管期（仅限信用卡，30 天） | 不适用 | | |
@@ -80,107 +93,13 @@ ms.locfileid: "74980265"
 |费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
 |客户付款日期 | 2019年12月30日 | | |
 |支出计算 | 2020年1月15日 | | |
-|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
-
-<!---
-## Billing
-
-Depending on the transaction option used, the publisher’s software license fees can be presented as follows:
-
-* Free: No charge for software licenses.
-* **Bring the own license (BYOL)**: Any applicable charges for software licenses are managed directly between the publisher and customer. Microsoft only passes through Azure infrastructure usage fees. (Virtual Machines and Azure Applications only).
-* **Pay-as-you-go**: Software license fees are presented as a per-hour, per-core (VCPU) pricing rate based on the Azure infrastructure used. This only applies to Virtual Machines and Azure Applications. 
-* **Subscription pricing**: Software license fees are presented as a monthly or annual recurring fee billed as a flat rate or per-seat. This only applies to SaaS Apps and Azure Applications - Managed Apps.
-
-### Pay as you go
-
-If you enable the Pay-As-You-Go option, then you have the following cost structure. 
-
-* If you enable the Pay-As-You-Go option, then you have the following cost structure.
-
-|Your license cost  | $1.00 per hour  |
-|---------|---------|
-|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
-|*Customer is billed by Microsoft*    |  *$1.14 per hour*       |
-
-* In this scenario, Microsoft bills $1.14 per hour for use of your published VM image.
-
-|Microsoft bills  | $1.14 per hour  |
-|---------|---------|
-|Microsoft pays you 80% of your license cost|   $0.80 per hour     |
-|Microsoft keeps 20% of your license cost  |  $0.20 per hour       |
-|Microsoft keeps 100% of the Azure usage cost | $0.14 per hour |
-
-### Bring Your Own License (BYOL)
-
-* If you enable the BYOL option, then you have the following cost structure.
-
-|Your license cost  | License fee negotiated and billed by you  |
-|---------|---------|
-|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
-|*Customer is billed by Microsoft*    |  *$0.14 per hour*       |
-
-* In this scenario, Microsoft bills $0.14 per hour for use of your published VM image.
-
-|Microsoft bills  | $0.14 per hour  |
-|---------|---------|
-|Microsoft keeps the Azure usage cost    |   $0.14 per hour     |
-|Microsoft keeps 0% of your license cost   |  $0.00 per hour       |
-
-### SaaS App subscription
-
-This option must be configured to sell through Microsoft and can be priced at a flat rate or per user on a monthly or annual basis.
-•   If you enable the Sell through Microsoft option for a SaaS offer, then you have the following cost structure.
-
-|Your license cost       | $100.00 per month  |
-|--------------|---------|
-|Azure usage cost (D1/1-Core)    | Billed directly to the publisher, not the customer |
-|*Customer is billed by Microsoft*    |  *$100.00 per month (note: publisher must account for any incurred or pass-through infrastructure costs in the license fee)*  |
-
-* In this scenario, Microsoft bills $100.00 for your software license and pays out $80.00 to the publisher.
-* Partners who have qualified for the Reduced Marketplace Service Fee will see a reduced transaction fee on the SaaS offers from May 2019 until June 2020. In this scenario, Microsoft bills $100.00 for your software license and pays out $90.00 to the publisher.
-
-|Microsoft bills  | $100.00 per month  |
-|---------|---------|
-|Microsoft pays you 80% of your license cost <br> \* Microsoft pays you 90% of your license cost for any qualified SaaS apps   |   $80.00 per month <br> \* $90.00 per month    |
-|Microsoft keeps 20% of your license cost <br> \* Microsoft keeps 10% of your license cost for any qualified SaaS apps.  |  $20.00 per month <br> \* $10.00     |
-
-**Reduced Marketplace Service Fee:** For certain SaaS Products that you publish on our Commercial Marketplace, Microsoft will reduce its Marketplace Service Fee from 20% (as described in the Microsoft Publisher Agreement) to 10%.  In order for your Product to qualify, at least one of your products must be designated by Microsoft as either IP co-sell ready or IP co-sell prioritized. To receive this reduced Marketplace Service Fee for the month, eligibility must be met at least five (5) business days before the end of the previous calendar month. Reduced Marketplace Service fee will not apply to VMs, Managed Apps or any other products made available through our Commercial Marketplace.  This Reduced Marketplace Service Fee will be available to qualified offers, with license charges collected by Microsoft between May 1, 2019 and June 30, 2020.  After that time, the Marketplace Service Fee will return to its normal amount.
-
-### Customer invoicing, payment, billing, and collections
-
-**Invoicing and payment**
-
-Publisher can use the customer's preferred invoicing method to deliver subscription or PAYGO software license fees.
-
-**Enterprise agreement** 
-
-If the customer's preferred invoicing method is the Microsoft Enterprise Agreement, your software license fees will be billed using this invoicing method as an itemized cost, separate from any Azure-specific usage costs.
-
-**Credit cards and monthly invoice** 
-
-Customers can also pay using a credit card and a monthly invoice. In this case, your software license fees will be billed just like the Enterprise Agreement scenario, as an itemized cost, separate from any Azure-specific usage costs.
-
-
-
-**Billing and collections** 
-
-Publisher software license billing is presented using the customer selected method of invoicing and follows the invoicing timeline. Customers without an Enterprise Agreement in place are billed monthly for marketplace software licenses. Customers with an Enterprise Agreement are billed monthly via an invoice that is presented quarterly.
-
-When subscription or Pay-as-You-Go pricing models are selected, Microsoft acts as the agent of the publisher and is responsible for all aspects of billing, payment, and collection.
-
-### Publisher payout and reporting
-
-* Any software licensing fees collected by Microsoft as an agent are subject to a 20% transaction fee unless otherwise specified and are deducted at the time of publisher payout.
-
-* Customers typically purchase using the Enterprise Agreement or a credit-card enabled pay-as-you-go agreement. The agreement type determines billing, invoicing, collection, and payout timing.
---->
+|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
 
 ## <a name="transaction-history-download-export"></a>事务历史记录下载导出
 
 此选项提供了在交易历史记录页中看到的每个收益行项的下载、收入类型、日期、关联的交易金额、客户、产品和其他适用于激励计划的事务详细信息。 
 
-| 列名称     | 描述    | 
+| 列名称     | Description    | 
 |-------------|-------------------------------|
 | earningId                      | 每个收益的唯一标识符                                                                                                       |
 | participantId                  | 计划下合作伙伴收益的主要标识                                                                            | 

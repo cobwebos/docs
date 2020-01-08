@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367410"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为适用于 Linux 的基于C# IoT 的安全代理部署 Azure 安全中心
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
 
 本指南介绍了如何在 Linux 上安装和部署基于 IoT C#的安全代理的 Azure 安全中心。
@@ -34,9 +34,9 @@ ms.locfileid: "68596301"
 > * 卸载代理
 > * 故障排除 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-有关其他平台和代理风格, 请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
+有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
 
 1. 若要部署安全代理，需要在安装计算机上拥有本地管理员权限。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "68596301"
 
 ## <a name="installation"></a>安装 
 
-若要部署安全代理, 请使用以下步骤:
+若要部署安全代理，请使用以下步骤：
 
 1. 从[GitHub](https://aka.ms/iot-security-github-cs)下载最新版本到您的计算机。
 
@@ -52,19 +52,19 @@ ms.locfileid: "68596301"
 
 1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本** 
 
-1. 然后运行： 
+1. 接下来，请在**根权限**下运行以下命令： 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
    
-   有关身份验证参数的详细信息, 请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
+   有关身份验证参数的详细信息，请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
 
 此脚本可执行以下操作：
 
 - 安装必备组件。
 
-- 添加服务用户 (禁用交互式登录)。
+- 添加服务用户（禁用交互式登录）。
 
 - 将代理安装为**后台**程序-假定设备使用**systemd**进行经典部署模型。
 
@@ -82,7 +82,7 @@ ms.locfileid: "68596301"
 > [!NOTE]
 > 卸载时，不会删除在安装过程中安装的任何缺失的必备组件。
 
-## <a name="troubleshooting"></a>疑难解答  
+## <a name="troubleshooting"></a>故障排除  
 
 1. 运行以下命令来检查部署状态：
 

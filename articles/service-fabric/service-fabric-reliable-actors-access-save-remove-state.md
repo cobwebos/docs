@@ -1,25 +1,16 @@
 ---
-title: 管理 Azure Service Fabric 状态 | Microsoft Docs
-description: 了解如何访问、保存和删除 Service Fabric Reliable Actors 状态。
-services: service-fabric
-documentationcenter: .net
+title: 管理 Azure Service Fabric 状态
+description: 了解如何访问、保存和删除 Azure Service Fabric 可靠执行组件的状态，以及设计应用程序时的注意事项。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725391"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645627"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>访问、保存和删除 Reliable Actors 状态
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封装逻辑与状态并稳定维护状态的单线程对象。 每个执行组件实例都有其自身的[状态管理器](service-fabric-reliable-actors-state-management.md)：一种类似于字典的数据结构，能够可靠地存储密钥/值对。 状态管理器是围绕状态提供程序的包装。 无论使用哪个[持久性设置](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)，都可以使用它来存储数据。

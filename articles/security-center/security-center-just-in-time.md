@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355568"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
 实时 (JIT) 虚拟机 (VM) 访问可用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还可轻松连接到 VM。
 
 > [!NOTE]
-> 实时功能在安全中心的标准层上可用。 请参阅[定价](security-center-pricing.md)，详细了解安全中心的定价层。
+> 实时功能在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
 
 
 > [!NOTE]
@@ -76,7 +76,7 @@ ms.locfileid: "74997184"
 
     “实时 VM 访问”窗口随即打开。
 
-      ![启用实时 VM 访问](./media/security-center-just-in-time/enable-just-in-time.png)
+      ![启用实时访问](./media/security-center-just-in-time/enable-just-in-time.png)
 
     “实时 VM 访问”提供 VM 的状态信息：
 
@@ -106,9 +106,9 @@ ms.locfileid: "74997184"
     - **允许的源 IP 地址** - 批准某个请求时，此端口允许的 IP 范围。
     - **最大请求时间** - 可以打开特定端口的最大时间范围。
 
-     3. 单击 **“确定”** 。
+     3. 单击“确定”。
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 > [!NOTE]
 >为 VM 启用 JIT VM 访问时，Azure 安全中心会在与之关联的网络安全组和 Azure 防火墙中为所选端口创建 "拒绝所有入站流量" 规则。 如果为所选端口创建了其他规则，则现有规则优先于新的 "拒绝所有入站流量" 规则。 如果所选端口上没有现有规则，则新的 "拒绝所有入站流量" 规则优先于网络安全组和 Azure 防火墙。
@@ -286,7 +286,7 @@ ms.locfileid: "74997184"
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解了安全中心中的实时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。
 
-若要了解有关安全中心的详细信息，请参阅以下内容：
+若要了解有关安全中心的详细信息，请参阅以下文章：
 
 - [设置安全策略](tutorial-security-policy.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
 - [管理安全建议](security-center-recommendations.md) — 了解建议如何帮助你保护 Azure 资源。

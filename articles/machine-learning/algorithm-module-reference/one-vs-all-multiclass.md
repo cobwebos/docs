@@ -1,7 +1,7 @@
 ---
-title: “一对多”多类分类
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的“一对多”多类分类模块，通过二元分类模型的系综创建多类分类模型。
+title: 一对多多类
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的“一对多”多类分类模块，通过二元分类模型的系综创建多类分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428500"
 ---
-# <a name="one-vs-all-multiclass"></a>“一对多”多类分类
+# <a name="one-vs-all-multiclass"></a>一对多多类
 
 本文介绍如何使用 Azure 机器学习设计器（预览版）中的“一对多”多类分类模块。 目标是使用*一种与所有*方法创建可预测多个类的分类模型。
 
-当结果依赖于连续或分类预测器变量时，此模块可用于创建预测三个或更多可能的结果的模型。 此方法还允许对需要多个输出类的问题使用二进制分类方法。
+此模块可用于创建能够预测三个或多个可能结果的模型，具体结果取决于连续或分类预测器变量。 此方法还允许你使用二元分类方法来解决需要多个输出类的问题。
 
 ### <a name="more-about-one-versus-all-models"></a>有关一对多模型的详细信息
 
@@ -61,4 +61,4 @@ ms.locfileid: "73717194"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

@@ -4,15 +4,15 @@ description: 通过用于 VM 的 Azure Monitor 的预定义和自定义参数化
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365914"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>用于 VM 的 Azure Monitor 工作簿创建交互式报表
 
@@ -27,7 +27,7 @@ ms.locfileid: "73200546"
 
 用于 VM 的 Azure Monitor 包括多个工作簿以使你入门，下表对它们进行了总结。
 
-| 工作簿 | 描述 | 范围 |
+| 工作簿 | Description | 范围 |
 |----------|-------------|-------|
 | 性能 | 在单个工作簿中提供了一个可自定义的版本，其中包含已启用的所有 Log Analytics 性能计数器。| 大规模 |
 | 性能计数器 | 跨各种性能计数器的前 N 个图表视图。 | 大规模 |
@@ -45,7 +45,7 @@ ms.locfileid: "73200546"
 
 工作簿由可单独编辑的图表、表格、文本和输入控件构成的各部分组成。 为了更好地理解工作簿，我们首先打开一个模板并演练如何创建自定义工作簿。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 选择“虚拟机”。
 

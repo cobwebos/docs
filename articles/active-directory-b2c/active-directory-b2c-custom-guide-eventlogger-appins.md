@@ -1,7 +1,7 @@
 ---
 title: 跟踪 Application Insights 的用户行为
 titleSuffix: Azure AD B2C
-description: 了解如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志（预览版）。
+description: 了解如何使用自定义策略从 Azure AD B2C 用户旅程中启用 Application Insights 的事件日志。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367954"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -33,7 +33,7 @@ ms.locfileid: "74948940"
 
 Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`。 它使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。
 
-某个技术配置文件会使用此提供程序来定义 Azure AD B2C 提供的事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 然后会在自定义用户旅程中将此技术配置文件作为 `orchestration step` 或 `validation technical profile` 添加，以便发布事件。
+某个技术配置文件会使用此提供程序来定义 Azure AD B2C 提供的事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 若要发布事件，请将技术配置文件作为 `orchestration step` 添加到自定义用户旅程中。
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
@@ -45,7 +45,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的订阅的目录，确保你正在使用包含你的 Azure 订阅的目录。 此租户不是 Azure AD B2C 租户。
 3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”。
 4. 单击“创建”。
@@ -182,7 +182,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 </OrchestrationStep>
 ```
 
-添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行 `SendClaims` 业务流程步骤。 当用户在注册/登录旅程中选择注册按钮时，会触发此步骤。
+添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行`SendClaims` 业务流程步骤。 当用户在注册/登录旅程中选择注册按钮时，会触发此步骤。
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->

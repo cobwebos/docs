@@ -1,6 +1,6 @@
 ---
-title: 用于从应用注册（旧）过渡到 Azure 门户新应用注册体验的培训指南
-description: Azure 门户中的新应用注册体验简介
+title: 新 Azure 门户应用注册培训指南
+description: 介绍新的 Azure 门户应用注册体验
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424658"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>从应用注册（旧版）转换到 Azure 门户中的新应用注册体验
+# <a name="new-azure-portal-app-registration-training-guide"></a>新 Azure 门户应用注册培训指南
 
 您可以在 Azure 门户中找到许多新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验的改进。 如果你熟悉 Azure 门户中的应用注册（旧）体验，请使用本培训指南开始使用新体验。
 
@@ -55,7 +55,7 @@ ms.locfileid: "74844254"
 
 旧体验具有 "**属性**" 页。 **属性**具有以下字段：
 
-- 名称
+- **名称**
 - **对象 ID**
 - **应用程序 ID**
 - 应用 ID URI

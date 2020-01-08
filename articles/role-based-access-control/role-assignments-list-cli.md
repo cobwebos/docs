@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1a58d2170ec1107222f0e37e432063af23743e42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 12ecca5873ac7c2c3bfa30d4c73c7d8e268aabfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355723"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
 
@@ -37,7 +37,7 @@ ms.locfileid: "74710433"
 az role assignment list --assignee <assignee>
 ```
 
-默认情况下，仅显示作用域为订阅的直接分配。 若要查看按资源或组划分作用域的分配，请使用 `--all`，若要查看继承的分配，请使用 `--include-inherited`。
+默认情况下，只会显示当前订阅的角色分配。 若要查看当前订阅和下面的角色分配，请添加 `--all` 参数。 若要查看继承的角色分配，请添加 `--include-inherited` 参数。
 
 以下示例列出了直接分配给*patlong\@contoso.com*用户的角色分配：
 
@@ -110,6 +110,30 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 ```Example
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
+
+1. 获取系统分配的或用户分配的托管标识的对象 ID。 
+
+    若要获取用户分配的托管标识的对象 ID，可以使用[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)或[az identity list](/cli/azure/identity#az-identity-list)。
+
+    ```azurecli
+    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```
+
+    若要获取系统分配的托管标识的对象 ID，可以使用[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
+
+    ```azurecli
+    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```
+
+1. 若要列出角色分配，请使用[az role 分配 list](/cli/azure/role/assignment#az-role-assignment-list)。
+
+    默认情况下，只会显示当前订阅的角色分配。 若要查看当前订阅和下面的角色分配，请添加 `--all` 参数。 若要查看继承的角色分配，请添加 `--include-inherited` 参数。
+
+    ```azurecli
+    az role assignment list --assignee <objectid>
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

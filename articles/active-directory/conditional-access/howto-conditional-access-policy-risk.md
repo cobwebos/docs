@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424829"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>条件性访问：基于风险的条件性访问
 
@@ -30,7 +30,7 @@ ms.locfileid: "74803574"
 
 启用此策略将要求所有用户在14天内注册 Azure 多重身份验证。 
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 单击“所有服务”，然后浏览到“Azure AD 标识保护”。
 1. 单击“MFA 注册”。
 1. 在 "**分配**" 下，选择 "**用户**"。
@@ -38,13 +38,13 @@ ms.locfileid: "74803574"
    1. 在 "**排除**" 下，选择 "**选择排除的用户**"，选择你的组织的紧急访问或中断玻璃帐户，然后选择 "**选择**"。 
    1. 选择“完成”。
 1. 将 "**强制实施策略**" 设置为 **"开"** 。
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="require-a-password-change-high-risk-users"></a>要求密码更改高风险用户
 
 Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他受信任的源合作，以查找用户名和密码对。 当这些对中的某一对与你环境中的某个帐户匹配时，则可通过以下策略触发基于风险的密码更改。
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 单击“所有服务”，然后浏览到“Azure AD 标识保护”。
 1. 单击 "**用户风险策略**"。
 1. 在 "**分配**" 下，选择 "**用户**"
@@ -56,13 +56,13 @@ Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他
 1. 在 "**控件** > **访问**" 下，选择 "**允许访问**"，然后选择 "**需要密码更改**"。
    1. 单击“选择”。
 1. 将 "**强制实施策略**" 设置为 **"开"** 。
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>需要 MFA 中型或高登录风险用户
 
 大多数用户的正常行为是可以跟踪的，如果其行为超出规范，则允许他们登录可能很危险。 你可能想要阻止该用户，或者只要求他们执行多重身份验证，以证明他们确实是他们所说的。 若要启用一项在检测到风险登录时会要求用户执行 MFA 的策略，请启用以下策略。
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 单击“所有服务”，然后浏览到“Azure AD 标识保护”。
 1. 单击 "**登录风险策略**"
 1. 在 "**分配**" 下，选择 "**用户**"
@@ -74,11 +74,13 @@ Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他
 1. 在 "**控件** > **访问**" 下，选择 "**允许访问**"，然后选择 "**需要多重身份验证**"。
    1. 单击“选择”。
 1. 将 "**强制实施策略**" 设置为 **"开"** 。
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="next-steps"></a>后续步骤
 
 [条件访问公用策略](concept-conditional-access-policy-common.md)
+
+[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
 
 [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 

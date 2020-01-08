@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394489"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor 工作簿可视化效果
 
@@ -197,7 +197,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 | `Show the expander on` | 要显示树扩展器的列。 树形网格通常会隐藏其 id 和父 id 字段，因为它们不是非常可读的。 而是显示在具有更具可读性的值的字段上（如实体的名称） |
 | `Expand the top level of the tree` | 如果选中，则树网格将在顶级展开。 如果希望在默认情况下显示详细信息，则此方法很有用 |
 
-## <a name="graphs"></a>图形
+## <a name="graphs"></a>关系图
 
 工作簿支持根据日志中的数据可视化任意图形，以显示监视实体之间的关系。
 

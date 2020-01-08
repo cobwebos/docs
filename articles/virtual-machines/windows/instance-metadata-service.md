@@ -1,6 +1,6 @@
 ---
 title: Azure 实例元数据服务
-description: 一个 RESTful 接口，用于获取有关 Windows VM 计算、网络和即将发生的维护事件的信息。
+description: RESTful 接口，用于获取有关 Windows VM 计算、网络和即将发生的维护事件的信息。
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f62406a341c7e1467cdf17b21662bb5c0993881c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358354"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
 Azure 实例元数据服务提供有关运行虚拟机实例的信息，这些实例可用于管理和配置虚拟机。
-这些信息中包括 SKU、网络配置和即将发送的维护事件等相关信息。 若要详细了解可用信息类型，请参阅[元数据 API](#metadata-apis)。
+这些信息中包括 SKU、网络配置和即将发送的维护事件等相关信息。 有关提供的信息类型的详细信息，请参阅[元数据 api](#metadata-apis)。
 
 Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建的所有 IaaS VM 使用。
 该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，该地址只能从 VM 中访问。
 
 > [!IMPORTANT]
-> 此服务在所有 Azure 区域中提供有正式版。  它会定期更新，发布有关虚拟机实例的新信息。 本页反映了最新可用的[元数据 API](#metadata-apis)。
+> 此服务在所有 Azure 区域中提供有正式版。  它会定期更新，发布有关虚拟机实例的新信息。 此页反映了最新可用的[元数据 api](#metadata-apis) 。
 
 ## <a name="service-availability"></a>服务可用性
 
 此服务在所有 Azure 区域中提供有可用的正式版。 并非所有 API 版本在所有 Azure 区域中可用。
 
-Regions                                        | 可用性？                                 | 支持的版本
+区域                                        | 可用性？                                 | 支持的版本
 -----------------------------------------------|-----------------------------------------------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30、2019-06-01、2019-06-04
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30
@@ -47,17 +47,17 @@ Regions                                        | 可用性？                   
 
 若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 ### <a name="versioning"></a>版本控制
 
-实例元数据服务进行了版本控制，必须在 HTTP 请求中指定 API 版本。
+实例元数据服务进行了版本控制，并在 HTTP 请求中指定 API 版本是必需的。
 
-可以查看已在此[可用性表](#service-availability)中列出的最新版本。
+你可以看到此[可用性表](#service-availability)中列出的最新版本。
 
 在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
 
-如果未指定版本，则会返回错误并列出受支持的最新版本。
+当未指定版本时，将返回一个错误，其中包含最新的受支持版本的列表。
 
 > [!NOTE]
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
@@ -104,8 +104,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 API | 默认数据格式 | 其他格式
 --------|---------------------|--------------
 /instance | json | text
-/scheduledevents | json | 无
-/attested | json | 无
+/scheduledevents | json | none
+/attested | json | none
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
@@ -114,18 +114,18 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 ```
 
 > [!NOTE]
-> 对于叶节点，`format=json` 不起作用。 对于这些查询，如果默认格式是 JSON，则需要显式指定 `format=text`。
+> 对于叶节点，`format=json` 不起作用。 对于这些查询，如果默认格式为 json，则需要显式指定 `format=text`。
 
 ### <a name="security"></a>安全性
 
 只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务终结点。 此外，服务会拒绝任何带有 `X-Forwarded-For` 标头的请求。
 请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。
 
-### <a name="error"></a>Error
+### <a name="error"></a>错误
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务将返回标准 HTTP 错误。 例如：
 
-HTTP 状态代码 | Reason
+HTTP 状态代码 | 原因
 ----------------|-------
 200 正常 |
 400 错误请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少格式
@@ -137,7 +137,7 @@ HTTP 状态代码 | Reason
 ### <a name="examples"></a>示例
 
 > [!NOTE]
-> 所有 API 响应均为 JSON 字符串。 以下所有响应示例都以美观的形式输出以提高可读性。
+> 所有 API 响应均为 JSON 字符串。 为了便于阅读，所有以下示例响应都具有良好的打印效果。
 
 #### <a name="retrieving-network-information"></a>检索网络信息
 
@@ -339,12 +339,12 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>元数据 API
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>可以通过元数据终结点使用以下 API：
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>以下 Api 可通过元数据终结点获得：
 
-数据 | 说明 | 引入的版本
+数据 | Description | 引入的版本
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
-identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+标识 | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | 请参阅[实例 API](#instance-api) | 2017-04-02
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 
@@ -352,41 +352,41 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 ##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>可以通过实例 API 使用以下计算类别：
 
 > [!NOTE]
-> 在元数据终结点中通过实例/计算访问以下类别
+> 通过元数据终结点，可通过实例/计算访问以下类别
 
-数据 | 说明 | 引入的版本
+数据 | Description | 引入的版本
 -----|-------------|-----------------------
-azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
-customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
+azEnvironment | VM 在其中运行的 Azure 环境 | 2018-10-01
+customData | 查看[自定义数据](#custom-data) | 2019-02-01
 location | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
-offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
+offer | 为 VM 映像提供信息，并且仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)包含 VM 的名称、产品和发布者（如果是 Azure 市场映像） | 2018-04-02
+计划 | 包含 VM 的名称、产品和发布者的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)（如果 VM 的 Azure Marketplace 映像） | 2018-04-02
 platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
 platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
-provider | VM 的提供商 | 2018-10-01
-publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
+provider | VM 的提供程序 | 2018-10-01
+publicKeys | 分配给 VM 和路径[的公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 发布者 | VM 映像的发布者 | 2017-04-02
-resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
-resourceId | 资源的[完全限定](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID | 2019-03-11
+resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
+resourceId | 资源的[完全限定](https://docs.microsoft.com/rest/api/resources/resources/getbyid)ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
-version | VM 映像的版本 | 2017-04-02
+版本 | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>可以通过实例 API 使用以下网络类别：
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>以下网络类别可通过实例 API 使用：
 
 > [!NOTE]
-> 在元数据终结点中通过实例/网络/接口访问以下类别
+> 通过元数据终结点，可通过实例/网络/接口访问以下类别
 
-数据 | 说明 | 引入的版本
+数据 | Description | 引入的版本
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
@@ -411,7 +411,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 
 ```
 
-Api-version 是必填字段。 若要获取受支持的 API 版本，请参阅[服务可用性部分](#service-availability)。
+Api-版本为必填字段。 有关支持的 API 版本，请参阅[服务可用性部分](#service-availability)。
 Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果未提供，则响应编码字符串中会返回当前 UTC 时间戳。
 
  **响应**
@@ -425,7 +425,7 @@ Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果
 }
 ```
 
-> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、nonce、subscriptionId、文档创建和过期的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>检索 Windows 虚拟机中的证明元数据
 
@@ -443,7 +443,7 @@ curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
 ```
 
-Api-version 是必填字段。 若要获取受支持的 API 版本，请参阅服务可用性部分。
+Api-版本为必填字段。 有关支持的 API 版本，请参阅服务可用性部分。
 Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果未提供，则响应编码字符串中会返回当前 UTC 时间戳。
 
  **响应**
@@ -457,7 +457,7 @@ Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果
 }
 ```
 
-> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+> 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、nonce、subscriptionId、文档创建和过期的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
@@ -545,16 +545,16 @@ AzurePublicCloud
 
 下面列出了 Azure 环境的区域和值。
 
- Regions | Azure 环境
+ 区域 | Azure 环境
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure 中国：](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
-### <a name="getting-the-tags-for-the-vm"></a>获取 VM 的标记
+### <a name="getting-the-tags-for-the-vm"></a>正在获取 VM 的标记
 
-系统可能已将标记应用到 Azure VM，以便按逻辑方式将其组织成分类。 可使用以下请求检索分配给 VM 的标记。
+标记可能已应用到 Azure VM 以逻辑方式将它们组织到分类。 可以使用以下请求检索分配给 VM 的标记。
 
 **请求**
 
@@ -568,7 +568,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身中使用了分号，这可能是一个问题。 如果编写分析程序以编程方式提取标记，则应该依赖 `tagsList` 字段（不带分隔符的 JSON 数组，因此更容易分析）。
+`tags` 字段是带有用分号分隔的标记的字符串。 如果标记本身中使用了分号，这可能是一个问题。 如果编写分析器以编程方式提取标记，则应该依赖于不带分隔符的 JSON 数组的 `tagsList` 字段，因此更易于分析。
 
 **请求**
 
@@ -597,7 +597,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>验证 VM 是否在 Azure 中运行
 
-市场供应商希望确保其软件仅许可在 Azure 中运行。 如果有人将 VHD 复制到本地，则他们应该能够检测到这一点。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证响应仅来自 Azure。
+市场供应商希望确保其软件仅获许在 Azure 中运行。 如果有人将 VHD 复制到本地，则他们应该能够检测到这一点。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证响应仅来自 Azure。
 
 > [!NOTE]
 > 需要安装 jq。
@@ -641,14 +641,14 @@ Verification successful
 }
 ```
 
-数据 | 说明
+数据 | Description
 -----|------------
 nonce | 用户提供了带有请求的可选字符串。 如果请求中未提供 nonce，则返回当前 UTC 时间戳
 计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者
 timestamp/createdOn | 创建第一个签名文档的时间戳
 timestamp/expiresOn | 签名文档到期的时间戳
 vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | `2019-04-30` 中引入的虚拟机的 Azure 订阅
+subscriptionId | 虚拟机的 Azure 订阅，在 `2019-04-30` 中引入
 
 #### <a name="verifying-the-signature"></a>验证签名
 
@@ -678,7 +678,7 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-如果由于验证期间出现网络限制，导致中间证书无法下载，可以固定中间证书。 但是，Azure 会根据标准的 PKI 做法滚动更新证书。 发生滚动更新时，需要更新固定的证书。 每当规划某项更改来更新中间证书，就会更新 Azure 博客并向 Azure 客户发出通知。 [此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)可找到中间证书。 每个区域的中间证书可能并不相同。
+如果在验证期间由于网络限制而无法下载中间证书，则可以固定中间证书。 但是，Azure 将根据标准 PKI 实践滚动更新证书。 发生滚动更新时，需要更新固定的证书。 每当计划更新中间证书的更改时，将更新 Azure 博客并通知 Azure 客户。 可在[此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到中间证书。 每个区域的中间证书可能不同。
 
 ### <a name="failover-clustering-in-windows-server"></a>Windows Server 中的故障转移群集
 
@@ -726,23 +726,23 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>自定义数据
-实例元数据服务提供让 VM 访问其自定义数据的功能。 二进制数据必须不到 64 KB，以 base64 编码形式提供给 VM。
+实例元数据服务为 VM 提供对其自定义数据的访问权限。 二进制数据必须小于 64 KB，并以 base64 编码形式提供给 VM。
 
-可以通过 REST API、PowerShell Cmdlet、Azure 命令行界面 (CLI) 或 ARM 模板将 Azure 自定义数据插入 VM。
+可以通过 REST Api、PowerShell Cmdlet、Azure 命令行接口（CLI）或 ARM 模板将 Azure 自定义数据插入到 VM 中。
 
 有关 Azure 命令行接口示例，请参阅[Microsoft Azure 上的自定义数据和云初始化](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)。
 
-如需 ARM 模板示例，请参阅[使用 CustomData 部署虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
+有关 ARM 模板示例，请参阅[使用 CustomData 部署虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
 
-自定义数据可供在 VM 中运行的所有进程使用。 建议客户不要将机密信息插入自定义数据中。
+自定义数据适用于 VM 中运行的所有进程。 建议客户不要在自定义数据中插入机密信息。
 
-目前可保证自定义数据在启动 VM 期间可用。 如果更新 VM（例如添加磁盘或重设 VM 大小），则实例元数据服务不会提供自定义数据。 通过实例元数据服务持久提供自定义数据的功能目前正在开发。
+目前，可保证自定义数据在 VM 的启动期间可用。 如果对 VM 进行了更新（如添加磁盘或调整 VM 大小），实例元数据服务将不会提供自定义数据。 当前正在通过实例元数据服务提供自定义数据。
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>在虚拟机中检索自定义数据
-实例元数据服务向 VM 提供 base64 编码形式的自定义数据。 以下示例解码 base64 编码的字符串。
+#### <a name="retrieving-custom-data-in-virtual-machine"></a>正在检索虚拟机中的自定义数据
+实例元数据服务以 base64 编码形式向 VM 提供自定义数据。 下面的示例对 base64 编码的字符串进行解码。
 
 > [!NOTE]
-> 此示例中的自定义数据解释为 ASCII 字符串，其内容是“My custom data.”。
+> 此示例中的自定义数据解释为读取 "我的自定义数据" 的 ASCII 字符串。
 
 **请求**
 

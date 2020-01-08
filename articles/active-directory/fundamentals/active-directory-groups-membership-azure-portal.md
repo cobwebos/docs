@@ -1,5 +1,5 @@
 ---
-title: 在组中添加或删除另一个组 - Azure Active Directory | Microsoft Docs
+title: 在另一个组中添加或删除组-Azure AD
 description: 有关如何使用 Azure Active Directory 在组中添加或删除另一个组的说明。
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896a8b2c96dc10afbc3f179aed5a8497a8948ca9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423052"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 在组中添加或删除另一个组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。
@@ -30,7 +30,7 @@ ms.locfileid: "68561929"
 可以将现有安全组添加到其他现有安全组（也称为“嵌套组”），以创建成员组（子组）和父组。 成员组会继承父组的特性和属性，从而节省配置时间。
 
 >[!Important]
->当前不支持：<ul><li>将组添加到与本地 Active Directory 同步的组。</li><li>将安全组添加到 Office 365 组。</li><li>将 Office 365 组添加到安全组或其他 Office 365 组。</li><li>将应用分配到嵌套组。</li><li>将许可证应用于嵌套组。</li></ul>
+>当前不支持：<ul><li>将组添加到与本地 Active Directory 同步的组。</li><li>将安全组添加到 Office 365 组。</li><li>将 Office 365 组添加到安全组或其他 Office 365 组。</li><li>将应用分配到嵌套组。</li><li>将许可证应用于嵌套组。</li><li>在嵌套方案中添加通讯组。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>若要将组作为成员添加到其他组
 
@@ -49,15 +49,11 @@ ms.locfileid: "68561929"
 
     “MDM 策略 - 西部”组现在是“MDM 策略 - 所有组织”组的成员，继承“MDM 策略 - 所有组织”组的所有属性和配置。
 
-    ![通过将组添加到其他组来创建组成员身份](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+    ![通过将组添加到其他组来创建组成员身份](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
 5. 查看“MDM 策略 - 西部 - 组成员身份”页，以查看组和成员关系。
 
-    ![显示父组的“MDM 策略 - 西部 - 组成员身份”页](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-
 6. 有关组和成员关系的更加详细的视图，请选择组名称（“MDM 策略 - 所有组织”）并查看“MDM 策略 - 西部”页详细信息。
-
-    ![显示成员和组详细信息的“组成员身份”页](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
 ## <a name="remove-a-group-from-another-group"></a>从另一个组中删除组
 可以从其他安全组中删除现有安全组。 但是，删除组也会删除其成员的所有继承特性和属性。
@@ -67,12 +63,9 @@ ms.locfileid: "68561929"
 
 2. 在“MDM 策略 - 西部概述”页上，选择“组成员身份”。
 
-    ![“MDM 策略 - 西部概述”页](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
-
 3. 从“MDM 策略 - 西部 - 组成员身份”页中选择“MDM 策略 - 所有组织”组，然后选择“MDM 策略 - 西部”页详细信息中的“删除”。
 
     ![显示成员和组详细信息的“组成员身份”页](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
-
 
 ## <a name="additional-information"></a>其他信息
 这些文章提供了有关 Azure Active Directory 的更多信息。

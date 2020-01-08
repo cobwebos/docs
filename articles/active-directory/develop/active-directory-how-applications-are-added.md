@@ -1,5 +1,5 @@
 ---
-title: 如何以及为何将应用添加到 Azure AD
+title: 将应用添加到 Azure AD 的方式及原因
 titleSuffix: Microsoft identity platform
 description: 为何要将应用程序添加到 Azure AD，如何添加？
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f031389dc37fbf48f8a69db8c42419eed9605373
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9f4814026de5ba92d6470c503f8d316c0ceba0da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424744"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -107,7 +107,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Azure AD 图形 REST API 参考文档：
   * [应用程序](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [服务主体](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Service Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 

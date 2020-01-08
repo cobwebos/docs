@@ -1,5 +1,5 @@
 ---
-title: 按帐户类型的验证差异-Microsoft 标识平台 |Microsoft
+title: 受支持的帐户类型的验证差异-Microsoft 标识平台 |Microsoft
 description: 在向 Microsoft 标识平台注册应用程序时，了解不同支持的帐户类型的各种属性的验证差异。
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2d15c22e2495432926285dbdbd55a4a6f3b0aa35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423458"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按支持的帐户类型的验证差异（signInAudience）
 
@@ -34,7 +34,7 @@ ms.locfileid: "74919352"
 
 请参阅下表，了解不同支持的帐户类型的各种属性的验证差异。
 
-| properties | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
+| 属性 | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
 | 应用程序 ID URI （`identifierURIs`）  | 在租户中必须是唯一的 <br><br> 支持 urn://方案 <br><br> 不支持通配符 <br><br> 支持查询字符串和片段 <br><br> 最大长度为255个字符 <br><br> IdentifierURIs 数量没有限制 *  | 必须全局唯一 <br><br> 支持 urn://方案 <br><br> 不支持通配符 <br><br> 支持查询字符串和片段 <br><br> 最大长度为255个字符 <br><br> IdentifierURIs 数量没有限制 * | 必须全局唯一 <br><br> 不支持 urn://方案 <br><br> 不支持通配符、段和查询字符串 <br><br> 最大长度为120个字符 <br><br> 最大 50 identifierURIs |
 | 证书（`keyCredentials`） | 对称签名密钥 | 对称签名密钥 | 加密和非对称签名密钥 | 

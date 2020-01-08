@@ -8,22 +8,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427216"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power Apps 和 Power BI 产品/服务发布指南
 
 AppSource 店面包括在 Dynamics 365、Office 365、Power BI 和 Power Apps 基础上构建或扩展的产品/服务。 其中每个产品都有特定文档来指导你完成发布过程。 请参阅以下链接，了解每种产品/服务类型的更多详细信息。 
 
-AppSource 提供了列表和试用产品/服务，其号召性用语为“与我联系”或“立即试用”。 AppSource 目前没有交易功能。
+AppSource 已付费、列出和试用产品/服务，并且调用了 "立即获取" 和 "立即试用" 这一操作。 
 
 ## <a name="product-specific-guides"></a>特定于产品的指南
 
-### <a name="office-365"></a>Office 365
+### <a name="office-365"></a>PowerApps
 
 查看[发布过程和指导](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
 
@@ -35,7 +35,7 @@ AppSource 提供了列表和试用产品/服务，其号召性用语为“与我
 
 查看[发布过程和指导](https://docs.microsoft.com/power-bi/developer/office-store)。
 
-### <a name="dynamics-365"></a>Dynamics 365
+### <a name="dynamics-365"></a>PowerApps
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
 为 Enterprise Edition 生成项目时，请查看[发布过程和指导](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)

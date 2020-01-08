@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359356"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -23,7 +23,7 @@ ms.locfileid: "74073154"
 > [!IMPORTANT]
 > 有关 2.3 版和更早版本，请参阅[此文档](../linux/classic/diagnostic-extension-v2.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM 的运行状况。 它具有以下功能：
 
@@ -49,7 +49,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 可下载配置只是一个示例；请对其进行修改以适应你的需求。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
@@ -135,7 +135,7 @@ storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://a
 mdsdHttpProxy | （可选）允许扩展连接到指定存储帐户和终结点所需的 HTTP 代理信息。
 sinksConfig | （可选）可将指标和事件传递到的替换目标的详细信息。 扩展所支持的每个数据接收器的具体详细信息将在下面各节中介绍。
 
-若要在资源管理器模板中获取 SAS 令牌，请使用 **listAccountSas** 函数。 有关示例模板，请参阅 [List 函数示例](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)。
+若要在资源管理器模板内获取 SAS 令牌，请使用**listAccountSas**函数。 有关示例模板，请参阅[List function example](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
 
 可通过 Azure 门户轻松构造所需的 SAS 令牌。
 
@@ -144,7 +144,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![图像](./media/diagnostics-linux/make_sas.png)
+![image](./media/diagnostics-linux/make_sas.png)
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -314,12 +314,12 @@ type | 标识指标的实际提供程序。
 class | 与“counter”一起标识提供程序的命名空间中的特定指标。
 counter | 与“class”一起标识提供程序的命名空间中的特定指标。
 counterSpecifier | 标识 Azure Metrics 命名空间中的特定指标。
-条件 | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
+条件 (condition) | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
 sampleRate | IS 8601 时间间隔，用于设置收集此指标原始样本的速率。 如果未设置，则收集时间间隔由 [sampleRateInSeconds](#ladcfg) 的值设置。 支持的最短采样率为 15 秒 (PT15S)。
 单位 | 应为以下字符串之一：“Count”、“Bytes”、“Seconds”、“Percent”、“CountPerSecond”、“BytesPerSecond”、“Millisecond”。 定义指标的单位。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 将忽略此字段。
 displayName | Azure Metrics 中要附加到此数据的标签（使用由相关区域设置指定的语言）。 LAD 将忽略此字段。
 
-counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 下面是一些示例：
+counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 以下是一些示例：
 
 * `/builtin/Processor/PercentIdleTime` - 所有 vCPU 的平均空闲时间
 * `/builtin/Disk/FreeSpace(/mnt)` - /mnt 文件系统的可用空间
@@ -385,9 +385,9 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 元素 | 值
 ------- | -----
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
-查询 | 要执行的 OMI 查询。
+query | 要执行的 OMI 查询。
 表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
-frequency | （可选）两次执行查询之间的秒数。 默认值为 300（5 分钟）；最小值为 15 秒。
+频率 | （可选）两次执行查询之间的秒数。 默认值为 300（5 分钟）；最小值为 15 秒。
 sinks | （可选）应将原始样本指标结果发布到的附加接收器的名称的逗号分隔列表。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
 
 必须指定“表”和/或“接收器”。
@@ -408,7 +408,7 @@ sinks | （可选）应将原始样本指标结果发布到的附加接收器的
 
 元素 | 值
 ------- | -----
-file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
+文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
@@ -421,7 +421,7 @@ sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔
 * 处理器
 * 内存
 * 网络
-* 文件系统
+* Filesystem
 * 磁盘
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>处理器类的内置指标
@@ -686,7 +686,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![图像](./media/diagnostics-linux/graph_metrics.png)
+![image](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -699,7 +699,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![图像](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
 请参阅相关 [ EventHubs 文档](../../event-hubs/event-hubs-what-is-event-hubs.md)，了解如何使用发布到 EventHubs 终结点的消息。
 

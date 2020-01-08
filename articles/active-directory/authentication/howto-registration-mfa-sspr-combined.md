@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425150"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册（预览）
 
@@ -39,10 +39,10 @@ ms.locfileid: "74847348"
 完成以下步骤以启用组合注册：
 
 1. 以用户管理员或全局管理员身份登录到 Azure 门户。
-2. 请参阅**Azure Active Directory** > **用户设置** > **管理访问面板预览功能的设置**。
-3. 在 "**用户可以使用预览功能注册和管理安全信息-刷新**" 下，选择为**选定**的一组用户或为**所有**用户启用。
+2. 请参阅**Azure Active Directory** > **用户设置** > **管理用户功能预览设置**。
+3. 在 "**用户可以使用预览功能注册和管理安全信息**" 下，选择为**选择**的用户组或为**所有**用户启用。
 
-   ![为所有用户启用组合的安全信息预览体验](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![为所有用户启用组合的安全信息预览体验](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > 从2019年3月开始，电话呼叫选项不能用于多重身份验证和 SSPR Azure AD 的用户。 SMS 消息不受此更改的影响。 电话呼叫选项将仍然可供付费 Azure AD 租户中的用户使用。
@@ -64,9 +64,9 @@ ms.locfileid: "74847348"
 
 以下策略适用于所有选定的用户，这些用户尝试使用组合注册体验进行注册，并阻止访问，除非它们从标记为受信任网络的位置进行连接。
 
-![创建用于控制安全信息注册的 CA 策略](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![创建用于控制安全信息注册的 CA 策略](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **条件访问**
+1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **安全** > **条件性访问**
 1. 选择“新建策略”
 1. 在 "名称" 中，输入此策略的名称。 例如，**受信任的网络上的合并安全信息注册**
 1. 在 "**分配**" 下，单击 "**用户和组**"，然后选择你想要将此策略应用到的用户和组

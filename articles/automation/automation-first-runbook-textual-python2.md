@@ -2,19 +2,15 @@
 title: 我在 Azure 自动化中的第一个 Python Runbook
 description: 本教程指导创建、测试和发布一个简单的 Python Runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 54b008939b3d083769756b9ac3c3c9e3f7aebea5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b17a0403a3b2a3ff8c3586ed26a4b833db54922d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365931"
 ---
 # <a name="my-first-python-runbook"></a>我的第一个 Python Runbook
 
@@ -31,7 +27,7 @@ ms.locfileid: "74850272"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 - Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [自动化帐户](automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。

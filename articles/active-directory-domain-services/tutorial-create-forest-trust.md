@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: f861303b7f3bc8d37caf6da0eaf2f4cef4b36ee5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233592"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425437"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建对本地域的出站林信任
 
@@ -23,7 +23,7 @@ ms.locfileid: "74233592"
 
 ![从 Azure AD DS 到本地 AD DS 的林信任关系图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在本地 AD DS 环境中配置 DNS 以支持 Azure AD DS 连接
@@ -31,9 +31,9 @@ ms.locfileid: "74233592"
 > * 在 Azure AD DS 中创建单向出站林信任
 > * 测试和验证身份验证和资源访问的信任关系
 
-如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需有以下资源和特权才能完成本教程：
 
@@ -43,6 +43,9 @@ ms.locfileid: "74233592"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 使用资源林创建并在 Azure AD 租户中配置的 Azure Active Directory 域服务托管域。
     * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance-advanced]。
+    
+    > [!IMPORTANT]
+    > 请确保使用*资源*林创建 Azure AD DS 托管域。 默认选项创建*用户*林。 只有资源林可以创建对本地 AD DS 环境的信任。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -82,6 +85,10 @@ ms.locfileid: "74233592"
 1. 选择**开始 |管理工具 |Active Directory 域和信任关系**
 1. 右键选择域（如*onprem.contoso.com*），选择 "**属性**"
 1. 选择 "**信任**" 选项卡，然后选择 "**新建信任**"
+
+   > [!NOTE]
+   > 如果看不到 "**信任**" 菜单选项，请在 "*林类型*" 的 "**属性**" 下查看。 只有*资源*林可以创建信任。 如果林类型是*用户*，则不能创建信任。 目前没有办法更改 Azure AD DS 托管域的林类型。 需要删除并重新创建托管域作为资源林。
+
 1. 在 Azure AD DS 域名上输入名称（例如*aadds.contoso.com*），然后选择 "**下一步**"
 1. 选择用于创建**林信任**的选项，然后创建**一个方法：传入**信任。
 1. 选择**仅为此域**创建信任。 在下一步中，你将在 Azure AD DS 托管域的 Azure 门户中创建信任。
@@ -181,7 +188,7 @@ ms.locfileid: "74233592"
 1. 从 "**组或用户名**" 列表中选择 " *FileServerAccess* "。 在 " **FileServerAccess 的权限**" 列表中，选择 "*允许***修改**和**写入**权限"，然后选择 **"确定"** 。
 1. 选择 "**共享**" 选项卡，然后选择 "**高级共享 ...** "
 1. 选择 "**共享此文件夹**"，然后为**共享名称**（如*CrossForestShare*）中的文件共享输入一个便于记忆的名称。
-1. 选择**权限**。 在 "**适用于每个人的权限**" 列表中，选择 "**允许** **更改**权限"。
+1. 选择“权限”。 在 "**适用于每个人的权限**" 列表中，选择 "**允许** **更改**权限"。
 1. 选择 **"确定"** 两次，然后**关闭**。
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>验证资源的跨林身份验证
@@ -197,7 +204,7 @@ ms.locfileid: "74233592"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在本地 AD DS 环境中配置 DNS 以支持 Azure AD DS 连接

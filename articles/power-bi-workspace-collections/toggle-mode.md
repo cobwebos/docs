@@ -1,5 +1,5 @@
 ---
-title: 在 Power BI 工作区集合中在报表的查看和编辑模式之间切换 | Microsoft Docs
+title: 在报表的查看和编辑模式之间切换
 description: 了解在 Power BI 工作区集合中如何在报表的查看和编辑模式之间切换。
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
@@ -8,12 +8,12 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b2696560b5d5013fe337b51ec61cbfac9e512610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357658"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中在报表的查看和编辑模式之间切换
 
@@ -27,7 +27,7 @@ ms.locfileid: "67672366"
 需要创建一个访问令牌，令牌可授予你查看和编辑报表的能力。 要编辑并保存报表，需要 **Report.ReadWrite** 令牌权限。 有关详细信息，请参阅[在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)。
 
 > [!NOTE]
-> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”  的功能，则需要提供额外的权限。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
+> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”的功能，则需要提供额外的权限。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -77,7 +77,7 @@ var token = embedToken.Generate("{access key}");
     </script>
 ```
 
-这表示会根据设置为 models.ViewMode.View  的 viewMode  在查看模式下嵌入报表。
+这表示会根据设置为 models.ViewMode.View 的 viewMode 在查看模式下嵌入报表。
 
 ## <a name="view-mode"></a>查看模式
 
@@ -111,7 +111,7 @@ report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [示例入门](get-started-sample.md)  
 [嵌入报表](embed-report.md)  

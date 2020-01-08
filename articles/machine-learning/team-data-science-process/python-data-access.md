@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427392"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -66,7 +66,7 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
 
 出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 你的角色会显示在 "**用户**" 页上的 "**设置**" 中 Azure 机器学习 Studio （经典） "。
 
-![“安全”][security]
+![安全性][security]
 
 如果角色未设置为**所有者**，可以请求重新邀请为所有者，或询问工作区所有者以提供代码片段。
 
@@ -96,7 +96,7 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
     ![将代码粘贴到笔记本中][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
-在机器学习 Studio 的经典版本中运行试验后，可以从模块的输出节点访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
+在机器学习 Studio （经典）中运行试验后，可以从模块的输出节点访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
 
 只要数据格式符合 Python 客户端库，就可以访问中间数据集。
 

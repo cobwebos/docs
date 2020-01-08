@@ -1,5 +1,5 @@
 ---
-title: 从“应用程序注册”门户转换到 Azure 门户中的新应用注册体验
+title: 新 Azure 门户应用注册体验
 titleSuffix: Microsoft identity platform
 description: Azure 门户中的新应用注册体验简介
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424639"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>从“应用程序注册”门户转换到 Azure 门户中的新应用注册体验
+# <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 门户应用注册体验
 
 Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验有很多改进。 如果你更熟悉注册或管理聚合应用程序的应用程序注册门户（apps.dev.microsoft.com）体验（称为旧体验），本培训指南将帮助你开始使用新体验。
 
 ## <a name="whats-not-changing"></a>什么不更改？
 
--   你的应用程序和相关配置可以在新体验中按原样找到。 无需再次注册应用程序，应用程序的用户将不需要再次登录。
+- 你的应用程序和相关配置可以在新体验中按原样找到。 无需再次注册应用程序，应用程序的用户将不需要再次登录。
 
     > [!NOTE]
     > 必须使用注册应用程序时使用的帐户登录，以便在 Azure 门户中查找它们。 建议你查看 Azure 门户中已登录的用户是否与已登录到应用程序注册门户的用户相匹配，方法是将你的个人资料中的电子邮件地址进行比较。
     > 
     > 在某些情况下，特别是当你使用 Azure AD 电子邮件地址登录时，尤其是在你使用个人 Microsoft 帐户（例如 Outlook、Live、Xbox 等）登录时，我们发现，当你从旧经验中访问 Azure 门户时，它会将你登录到不同的帐户，Azure AD 租户中的电子邮件。 如果你仍相信你的应用程序丢失，请注销并以正确的帐户登录。
 
--   在 Azure 门户中尚不支持使用个人 Microsoft 帐户创建的 Live SDK 应用，并将在不久的将来继续保留旧体验。
+- 在 Azure 门户中尚不支持使用个人 Microsoft 帐户创建的 Live SDK 应用，并将在不久的将来继续保留旧体验。
 
 ## <a name="key-changes"></a>关键更改
 

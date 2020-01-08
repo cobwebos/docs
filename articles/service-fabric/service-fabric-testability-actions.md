@@ -1,30 +1,21 @@
 ---
-title: 在 Azure 微服务中模拟故障 | Microsoft Docs
+title: 在 Azure 微服务中模拟故障
 description: 本文介绍了 Microsoft Azure Service Fabric 中的可测试性操作。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: chackdan
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465584"
 ---
 # <a name="testability-actions"></a>可测试性操作
-为了模拟一个不可靠的基础结构，Azure Service Fabric 向开发人员提供了众多方式来模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可为服务编写全面的测试方案。
+为了模拟不可靠的基础结构，Azure Service Fabric 向开发者提供了众多选项，用于模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可以为服务编写全面的测试方案。
 
-Service Fabric 提供某些由这些操作组成的常见测试方案。 强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。 但是，希望添加尚未包含在内置方案中的方案时，或者需要为应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
+Service Fabric 提供某些由这些操作组成的常见测试方案。 强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。 但是，当希望添加尚未包含在内置方案中的方案时，或者需要为应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
 
 System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.ServiceFabric.Powershell.dll 程序集包含了 System Fabric PowerShell 模块。 作为运行时安装的一部分，安装了 ServiceFabric PowerShell 模块以便易于使用。
 
@@ -32,12 +23,12 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 可测试性操作分为两个主要的类型：
 
 * 非常规故障：这些故障诸如计算机重新启动和进程崩溃等故障。 在此类故障情形下，进程的执行上下文将突然停止。 这意味着在该应用程序重新启动之前，无法运行任何状态清理。
-* 常规故障：这些故障模拟诸如副本移动和负载均衡触发的删除等常规操作。 在此类情形下，服务收到关闭通知并且可以在退出前清理状态。
+* 常规错误：这些故障模拟诸如副本移动和负载均衡触发的删除等常规操作。 在此类情形下，服务收到关闭通知并且可以在退出前清理状态。
 
 为了实现更好的质量验证，在引入各种常规故障和非常规故障的情况下运行服务和业务工作负荷。 非常规故障执行服务进程在某些工作流程中实然退出的方案。 这会在 Service Fabric 恢复服务副本时立即测试恢复路径。 这会有助于一致性地测试数据以及是否在故障之后正确维护服务状态。 另一组故障，即常规故障，测试服务是否对 Service Fabric 正在移动的副本做出正确的反应。 这会测试 RunAsync 方法中的取消处理。 服务需要检查是否正在设置取消标记、正确保存其状态及退出 RunAsync 方法。
 
 ## <a name="testability-actions-list"></a>可测试性操作列表
-| 操作 | 描述 | 托管 API | PowerShell cmdlet | 常规/非常规故障 |
+| 行动 | Description | 托管 API | PowerShell Cmdlet | 常规/非常规故障 |
 | --- | --- | --- | --- | --- |
 | CleanTestState |在测试驱动器非正常关闭时从群集删除所有测试状态。 |CleanTestStateAsync |Remove-ServiceFabricTestState |不适用 |
 | InvokeDataLoss |将数据丢失引入到服务分区。 |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |常规 |
@@ -55,7 +46,7 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 | ValidateService |验证一个 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateServiceAsync |Test-ServiceFabricService |不适用 |
 
 ## <a name="running-a-testability-action-using-powershell"></a>使用 PowerShell 运行可测试性操作
-本教程说明如何使用 PowerShell 运行可测试性操作。 将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。 安装 Microsoft Service Fabric MSI 时，会自动安装 Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）。 该模块在打开 PowerShell 提示符时自动加载。
+本教程说明如何使用 PowerShell 运行可测试性操作。 将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。 Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）在安装 Microsoft Service Fabric MSI 时自动安装。 该模块在打开一个 PowerShell 提示符时自动加载。
 
 教程章节：
 

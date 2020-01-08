@@ -1,25 +1,16 @@
 ---
 title: 用 Azure Monitor 容器监视 Kubernetes 群集运行状况 |Microsoft Docs
 description: 本文介绍了如何通过 Azure Monitor 容器来查看和分析 AKS 和非 AKS 群集的运行状况。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279650"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405099"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>了解 Azure Monitor 容器的 Kubernetes 群集运行状况
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 Kubernetes 群集运行状况
 
 对于容器 Azure Monitor，它会监视和报告托管基础结构组件的运行状况状态，以及在 Azure Monitor for 容器支持的任何 Kubernetes 群集上运行的所有节点的运行状况状态。 此体验超出了在[多群集视图](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上计算和报告的群集运行状况状态，现在你可以了解群集中的一个或多个节点是否受资源约束，或者节点或 pod 是否不可用，可能会影响群集中正在运行的应用程序（基于特选指标）。
 
@@ -27,7 +18,7 @@ ms.locfileid: "74279650"
 >运行状况功能目前处于公共预览状态。
 >
 
-若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
+有关如何为容器启用 Azure Monitor 的信息，请参阅[容器的板载 Azure Monitor](container-insights-onboard.md)。
 
 >[!NOTE]
 >若要支持 AKS 引擎群集，请验证它是否满足以下各项：
@@ -57,13 +48,13 @@ Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的
 * 评估节点和容器的内存使用率。
 * 基于 Kubernetes 报告的就绪状态的计算箱和节点的状态。
 
-用于指示状态的图标如下所示：
+用于表示状态的图标如下所示：
 
 |图标|含义|  
 |--------|-----------|  
 |![绿色复选图标指示正常](./media/container-insights-health/healthyicon.png)|成功、运行状况正常（绿色）|  
 |![黄色三角形和感叹号为警告](./media/container-insights-health/warningicon.png)|警告（黄色）|  
-|![带有白色 X 的红色按钮指示严重状态](./media/container-insights-health/criticalicon.png)|严重（红色）|  
+|![带白色 X 的红色按钮指示严重状态](./media/container-insights-health/criticalicon.png)|严重（红色）|  
 |![灰显图标](./media/container-insights-health/grayicon.png)|未知（灰色）|  
 
 ## <a name="monitor-configuration"></a>监视配置
@@ -72,7 +63,7 @@ Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。 
+登录 [Azure 门户](https://portal.azure.com)。 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>查看 AKS 或非 AKS 群集的运行状况
 
@@ -111,4 +102,4 @@ Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及有关群集警报、可视化或分析的评估或自定义示例。
+查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，了解预定义的查询和示例，以便对群集进行警报、可视化或分析。

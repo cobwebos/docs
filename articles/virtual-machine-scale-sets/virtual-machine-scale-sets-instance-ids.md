@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure VM 规模集 VM 的实例 ID | Microsoft Docs
-description: 了解 Azure VM 规模集 VM 的实例 ID
+title: 了解 Azure VM 规模集 VM 的实例 ID
+description: 了解 Azure VM 规模集虚拟机的实例 Id 及其表面的各种方式。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1eb0cf1de3b0ebffac8810e19d69515224147bc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356002"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。

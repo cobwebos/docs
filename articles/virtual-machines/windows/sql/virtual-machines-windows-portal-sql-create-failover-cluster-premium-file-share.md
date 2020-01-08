@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464988"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>使用 Azure 虚拟机上的高级文件共享配置 SQL Server 故障转移群集实例
 
@@ -55,7 +55,7 @@ ms.locfileid: "74792204"
 
 有关高级文件共享性能的详细信息，请参阅[文件共享性能层](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers)。
 
-### <a name="licensing-and-pricing"></a>许可与定价
+### <a name="licensing-and-pricing"></a>许可和定价
 
 在 Azure 虚拟机上，你可以使用即用即付（PAYG）或自带许可证（BYOL） VM 映像来许可 SQL Server。 你选择的映像类型将影响你的收费方式。
 
@@ -84,7 +84,6 @@ ms.locfileid: "74792204"
    - 每个 FCI 的 IP 地址。
 - 在 Azure 网络上配置的、指向域控制器的 DNS。
 - 基于你的数据文件的数据库存储配额的[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
-- 与用于数据文件的高级文件共享不同的备份的文件共享。 此文件共享可以是标准或高级。
 
 准备好这些先决条件后，即可开始构建故障转移群集。 第一步是创建虚拟机。
 
@@ -100,7 +99,7 @@ ms.locfileid: "74792204"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。
    1. 选择 "**可用性集**"。
-   1. 选择**创建**。
+   1. 选择“创建”。
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -220,14 +219,14 @@ ms.locfileid: "74792204"
 
 1. 在 "**服务器管理器**" 下，选择 "**工具**"，然后选择 "**故障转移群集管理器**"。
 1. 在 "**故障转移群集管理器**" 下，选择 "**操作**"，然后选择 "**验证配置**"。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在 "**选择服务器或群集**" 下，输入这两个虚拟机的名称。
-1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择“**下一步**”。
+1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择“**下一页**”。
 1. 在 "**测试选择**" 下，选择 "**存储**和**存储空间直通**以外的所有测试"，如下所示：
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="选择群集验证测试":::
 
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. **确认**下，选择 "**下一步**"。
 
 “验证配置向导”将运行验证测试。
@@ -297,7 +296,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 "**新建" SQL Server 故障转移群集安装**。 遵照向导中的说明安装 SQL Server FCI。
 
-   FCI 数据目录需要位于高级文件共享上。 输入共享的完整路径，格式为： `\\storageaccountname.file.core.windows.net\filesharename\foldername`。 将显示一条警告，告诉您已指定文件服务器作为数据目录。 应出现此警告。 确保保存文件共享所用的帐户与 SQL Server 服务用来避免可能出现的故障的帐户相同。
+   FCI 数据目录需要位于高级文件共享上。 输入共享的完整路径，格式为： `\\storageaccountname.file.core.windows.net\filesharename\foldername`。 将显示一条警告，告诉您已指定文件服务器作为数据目录。 此警告是在意料之内。 确保保存文件共享所用的帐户与 SQL Server 服务用来避免可能出现的故障的帐户相同。
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="使用文件共享作为 SQL 数据目录":::
 
@@ -326,7 +325,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 1. 使用以下值设置负载均衡器：
 
@@ -351,7 +350,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 "**后端池**"，然后选择 "**添加**"。
 
-1. 将后端池与包含 VM 的可用性集相关联。
+1. 将该后端池与包含 VM 的可用性集进行关联。
 
 1. 在 "**目标网络 IP 配置**" 下，选择 "**虚拟机**" 并选择将作为群集节点加入的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。
 

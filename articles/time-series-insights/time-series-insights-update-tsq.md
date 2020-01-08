@@ -1,6 +1,6 @@
 ---
 title: 预览中的数据查询-Azure 时序见解 |Microsoft Docs
-description: 了解 Azure 时序见解预览数据查询。
+description: Azure 时序见解预览版中的数据查询概念和 HTTP REST API 概述。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374572"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据查询
 
@@ -74,5 +74,5 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 Azure 时序见解预览版中的[存储和入口](./time-series-insights-update-storage-ingress.md)。
-- 阅读 Azure 时序见解预览版[数据建模](./time-series-insights-update-tsm.md)一文。
+- 阅读时序见解预览[数据建模](./time-series-insights-update-tsm.md)一文。
 - 了解[选择时序 ID 的最佳实践](./time-series-insights-update-how-to-id.md)。

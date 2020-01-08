@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427349"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -26,10 +26,10 @@ ms.locfileid: "61429482"
 
 下表汇总了用于将数据移到 Azure 虚拟机上的 SQL Server 的选项。
 
-| <b>源</b> | <b>目标：Azure VM 上的 SQL Server</b> |
+| <b>源</b> | <b>目标：Azure 虚拟机上的 SQL Server</b> |
 | --- | --- |
-| <b>平面文件</b> |1.<a href="#insert-tables-bcp">命令行大容量复制实用程序 (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">批量插入 SQL 查询</a><br> 3.<a href="#sql-builtin-utilities">SQL Server 中的图形内置实用程序</a> |
-| <b>本地 SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导</a><br> 2.<a href="#export-flat-file">导出到平面文件</a><br> 3.<a href="#sql-migration">SQL 数据库迁移向导</a> <br> 4.<a href="#sql-backup">数据库备份和还原</a><br> |
+| <b>平面文件</b> |1.<a href="#insert-tables-bcp">命令行大容量复制实用工具（BCP）</a><br> 2.<a href="#insert-tables-bulkquery">批量插入 SQL 查询</a><br> 3. <a href="#sql-builtin-utilities">SQL Server 中的图形内置实用程序</a> |
+| <b>本地 SQL Server</b> |1. 将<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">SQL Server 数据库部署到 MICROSOFT AZURE VM 向导</a><br> 2.<a href="#export-flat-file">导出到平面文件</a><br> 3. <a href="#sql-migration">SQL 数据库迁移向导</a> <br> 4.<a href="#sql-backup">数据库备份和还原</a><br> |
 
 请注意，本文档假设你从 SQL Server Management Studio 或 Visual Studio 数据库资源管理器执行 SQL 命令。
 
@@ -42,7 +42,7 @@ ms.locfileid: "61429482"
 本教程假设你拥有：
 
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
@@ -212,7 +212,7 @@ SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照�
 ## <a name="resources"></a>资源
 [将数据库迁移到 Azure 虚拟机上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
 
-[Azure 虚拟机上的 SQL Server 概述](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure 虚拟机上 SQL Server 的概述](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

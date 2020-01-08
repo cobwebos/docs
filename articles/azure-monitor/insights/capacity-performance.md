@@ -4,15 +4,15 @@ description: 使用监视器中的容量和性能解决方案来帮助你了解 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 8b130b800b53afadc40e0c9b9a2b730f24da396e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c444991166d9c7d3f1d8ed39e19e333d3c27f982
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899065"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405743"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案规划 Hyper-v 虚拟机容量（弃用）
 
@@ -40,12 +40,12 @@ ms.locfileid: "72899065"
 
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 支持 | Description |
 |---|---|---|
 | [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
 | [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
-| [Azure 存储帐户](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Azure 存储不包括容量和性能数据。|
+| [Azure 存储帐户](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 存储不包括容量和性能数据。|
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -118,7 +118,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 下表提供的示例日志搜索针对该解决方案所收集和计算的容量和性能数据。
 
 
-| Query | 描述 |
+| 查询 | Description |
 |:--- |:--- |
 | 所有主机内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "Host Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
 | 所有 VM 内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "VM Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |

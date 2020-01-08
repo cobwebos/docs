@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931340"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373224"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 
@@ -58,7 +58,7 @@ ms.locfileid: "74931340"
 
 ## <a name="prerequisites"></a>必备组件
 
-创建虚拟网络点击之前，必须先收到在预览版中注册的确认邮件，并使用 Azure 创建一个或多个虚拟机，[资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型，以及用于聚合同一 Azure 区域中的点击流量的合作伙伴解决方案。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
+创建虚拟网络点击之前，必须先收到在预览版中注册的确认邮件，并使用 Azure 创建一个或多个虚拟机，[资源管理器](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型，以及用于聚合同一 Azure 区域中的点击流量的合作伙伴解决方案。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
 
 ## <a name="permissions"></a>权限
 

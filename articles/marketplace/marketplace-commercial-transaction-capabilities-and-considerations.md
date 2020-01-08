@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427158"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业市场交易功能和注意事项
 
@@ -163,7 +163,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 例如，如果客户使用信用卡购买：
 
-|描述    |    日期  |
+|Description    |    Date  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -177,7 +177,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 如果客户使用企业协议购买：
 
-| 描述 |    日期  |
+| Description |    Date  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |
@@ -223,7 +223,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 - 无论产品/服务的定价模型如何，都需要 Microsoft 帐户和财务信息。
 - 必需的财务信息包括支出帐户和税务配置文件。
 
-有关设置这些帐户的详细信息，请参阅[管理合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details)。
+有关设置这些帐户的详细信息，请参阅[管理合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
 
 
 ### <a name="requirements-for-specific-offer-types"></a>特定产品/服务类型的要求

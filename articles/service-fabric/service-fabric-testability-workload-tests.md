@@ -1,38 +1,29 @@
 ---
-title: 在 Azure Service Fabric 应用中模拟故障 | Microsoft Docs
-description: 如何针对常规/非常规故障强化服务。
-services: service-fabric
-documentationcenter: .net
+title: 模拟 Azure Service Fabric 应用中的故障
+description: 了解如何针对正常和非常规故障强化 Azure Service Fabric 服务。
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348720"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645984"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>在服务工作负荷期间模拟故障
+# <a name="simulate-failures-during-service-workloads"></a>模拟服务工作负荷期间的故障
 Azure Service Fabric 中的可测试性方案可让开发人员不用再担心如何处理单个故障。 然而也存在一些方案，可能需要客户端工作负荷与故障有明显的交错。 客户端工作负荷与故障的交错确保在发生故障时，服务实际在执行某些操作。 考虑到可测试性功能提供的控制等级，这些交错应该在精确的工作负荷执行点进行。 这种在应用程序的不同状态下引入故障可以找出 bug 并提高质量。
 
 ## <a name="sample-custom-scenario"></a>自定义方案示例
 此测试显示一种方案，其中业务工作负荷与[常规故障和非常规故障](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)交错出现。 为了获得最佳结果，故障应在服务操作或计算的中间引入。
 
-我们来看一个公开四个工作负荷的服务示例:A、B、C 和 D。每个对应于一组工作流, 并且可以是计算、存储或混合。 为简单起见，我们将对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
+让我们来了解一个显示了四个工作负荷 A、B、C、D 的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。 为简单起见，我们将对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
 
-* RestartNode用于模拟计算机重启的非常规错误。
-* RestartDeployedCodePackage:用于模拟服务主机进程崩溃的非常规错误。
-* RemoveReplica用于模拟副本删除操作的正常故障。
-* MovePrimary用于模拟 Service Fabric 负载均衡器触发的副本移动的正常错误。
+* RestartNode：用于模拟计算机重启操作的非正常故障。
+* RestartDeployedCodePackage：用于模拟服务主机进程崩溃的非正常故障。
+* RemoveReplica：用于模拟副本删除操作的正常故障。
+* MovePrimary：用于模拟 Service Fabric 负载均衡器触发的副本移动操作的正常故障。
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

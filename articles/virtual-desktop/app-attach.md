@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356250"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -172,8 +172,8 @@ sc config wuauserv start=disabled
 如果你的应用使用不受信任的证书或自签名证书，请参阅下面的安装方法：
 
 1. 右键单击包，然后选择 "**属性**"。
-2. 在出现的窗口中，选择 "**数字签名**" 选项卡。选项卡上的列表中只能有一个项目，如下图所示。 选择该项以突出显示该项，然后选择 * * De
-3. 当 "数字信号详细信息" 窗口出现时，选择 "**常规**" 选项卡，然后选择 "**安装证书**"。
+2. 在出现的窗口中，选择 "**数字签名**" 选项卡。选项卡上的列表中只能有一个项目，如下图所示。 选择该项以突出显示该项，然后选择 "**详细信息**"。
+3. 当 "数字签名详细信息" 窗口出现时，选择 "**常规**" 选项卡，然后选择 "**安装证书**"。
 4. 当安装程序打开时，选择 "**本地计算机**" 作为存储位置，然后选择 "**下一步**"。
 5. 如果安装程序询问你是否允许应用对设备进行更改，请选择 **"是"** 。
 6. 选择 **"将所有证书放入下列存储**"，然后选择 "**浏览**"。
@@ -199,12 +199,12 @@ sc config wuauserv start=disabled
 
 2.  右键单击 VHD，然后选择 "**装载**"。 这会将 VHD 装载到驱动器号。
 
-3.  装入 VHD 后，将打开 "**文件资源管理器**" 窗口。 捕获父文件夹并更新 **\$parentFolder**变量
+3.  装入 VHD 后，将打开 "**文件资源管理器**" 窗口。 捕获父文件夹并更新 **$parentFolder**变量
 
     >[!NOTE]
     >如果看不到父文件夹，这意味着 .MSIX 未正确扩展。 重做上一部分，然后重试。
 
-4.  打开父文件夹。 如果正确扩展，则会看到一个与包同名的文件夹。 更新 **\$packageName**变量，使其与此文件夹的名称相匹配。
+4.  打开父文件夹。 如果正确扩展，则会看到一个与包同名的文件夹。 更新 **$packageName**变量以匹配此文件夹的名称。
 
     例如，`VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe` 。
 
@@ -227,7 +227,7 @@ sc config wuauserv start=disabled
     ```
 
 
-6.  将 **\$volumeGuid**变量更新为刚复制的卷 GUID。
+6.  用刚才复制的卷 GUID 更新 **$volumeGuid**变量。
 
 7. 打开管理员 PowerShell 提示符并使用适用于你的环境的变量更新以下 PowerShell 脚本。
 
@@ -256,9 +256,9 @@ sc config wuauserv start=disabled
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ sc config wuauserv start=disabled
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ sc config wuauserv start=disabled
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>取消注册 PowerShell 脚本
 
-对于此脚本，请将 **\$packageName**的占位符替换为要测试的包的名称。
+对于此脚本，请将 **$packageName**的占位符替换为要测试的包的名称。
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>转储 PowerShell 脚本
 
-对于此脚本，请将 **\$packageName**的占位符替换为要测试的包的名称。
+对于此脚本，请将 **$packageName**的占位符替换为要测试的包的名称。
 
 ```powershell
 #MSIX app attach de staging sample

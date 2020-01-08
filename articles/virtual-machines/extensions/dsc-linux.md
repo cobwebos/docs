@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359147"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展（Microsoft.ostcextensions. DSCForLinux）
 
@@ -38,13 +38,13 @@ DSCForLinux 扩展已发布并受 Microsoft 支持。 该扩展在 Azure 虚拟�
 
  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
-| 分发 | 版本 |
+| 分配 | 版本 |
 |---|---|
 | Debian | 所有版本 |
 | Ubuntu| 18.04 |
@@ -69,7 +69,7 @@ DSCForLinux 扩展要求目标虚拟机连接到 internet。 例如，注册扩�
 * `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
 
 > [!NOTE]
-> 如果使用早于2.3 的版本，则模式参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 为了避免混淆，ExtensionAction 从版本2.3 开始使用。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
+> 如果使用早于2.3 的版本，则模式参数与 ExtensionAction 相同。 模式似乎是重载的字词。 为了避免混淆，ExtensionAction 从版本2.3 开始使用。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
 >
 
 ### <a name="protected-configuration"></a>受保护的配置
@@ -281,7 +281,7 @@ $publicConfig = '{
 
 [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) 和 [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) 是示例资源管理器模板。
 
-有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署

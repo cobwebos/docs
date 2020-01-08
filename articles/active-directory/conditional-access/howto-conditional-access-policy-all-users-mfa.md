@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424935"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>条件性访问：要求对所有用户进行 MFA
 
@@ -57,8 +57,24 @@ ms.locfileid: "74803880"
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以启用策略。
 
+### <a name="named-locations"></a>命名位置
+
+组织可以选择将已知的网络位置（称为 "**已命名位置**"）合并为其条件性访问策略。 这些命名位置可能包含受信任的 IPv4 网络，如用于总部办公位置的网络。 有关配置命名位置的详细信息，请参阅文章[Azure Active Directory 条件性访问中的位置条件是什么？](location-condition.md)
+
+在上述示例策略中，组织可以选择不需要多重身份验证（如果从其企业网络访问云应用）。 在这种情况下，它们可以将以下配置添加到策略：
+
+1. 在 "**分配**" 下，选择 "**条件** > **位置**"。
+   1. 配置 **"是"** 。
+   1. 包含**任何位置**。
+   1. 排除**所有受信任的位置**。
+   1. 选择“完成”。
+1. 选择“完成”。
+1. **保存**策略更改。
+
 ## <a name="next-steps"></a>后续步骤
 
 [条件访问公用策略](concept-conditional-access-policy-common.md)
+
+[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
 
 [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

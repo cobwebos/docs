@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430516"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
@@ -32,9 +32,9 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 创建 ASE 后，不能更改以下项：
 
-- Location
-- Subscription
-- Resource group
+- 位置
+- 订阅
+- 资源组
 - 使用的 VNet
 - 使用的子网
 - 子网大小
@@ -85,9 +85,9 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 9. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 VNet 地址块（若有多个）。
 
-    b. 输入新的子网名称。
+    b.保留“数据库类型”设置，即设置为“共享”。 输入新的子网名称。
 
     c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长。 建议使用 `/24`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
 
@@ -121,9 +121,9 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 1. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 VNet 地址块（若有多个）。
 
-    b. 输入新的子网名称。
+    b.保留“数据库类型”设置，即设置为“共享”。 输入新的子网名称。
 
     c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长。 建议使用 `/24`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
 
@@ -199,4 +199,4 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md

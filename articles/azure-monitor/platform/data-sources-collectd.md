@@ -4,15 +4,15 @@ description: CollectD 是一个开源 Linux 守护程序，它定期从应用程
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395874"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
@@ -109,12 +109,12 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 | CollectD 指标字段 | Azure Monitor 字段 |
 |:--|:--|
 | `host` | Computer |
-| `plugin` | None |
+| `plugin` | 无 |
 | `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null，则 InstanceName="_Total" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>如果 **type_instance** 为 null，则 CounterName=**空白** |
 | `dsnames[]` | CounterName |
-| `dstypes` | None |
+| `dstypes` | 无 |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>后续步骤

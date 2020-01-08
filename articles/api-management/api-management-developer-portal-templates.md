@@ -1,5 +1,6 @@
 ---
-title: 使用模板自定义 API 管理开发人员门户 - Azure | Microsoft 文档
+title: 使用模板自定义 API 管理开发人员门户
+titleSuffix: Azure API Management
 description: 如何使用模板自定义 Azure API 管理开发人员门户。
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430790"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 

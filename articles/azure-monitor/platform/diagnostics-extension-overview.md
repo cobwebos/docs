@@ -4,15 +4,15 @@ description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中�
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395370"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -23,7 +23,7 @@ Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收�
 ## <a name="data-you-can-collect"></a>可以收集的数据
 Azure 诊断扩展可收集以下类型的数据：
 
-| 数据源 | 描述 |
+| 数据源 | Description |
 | --- | --- |
 | 性能计数器指标 |操作系统和自定义性能计数器 |
 | 应用程序日志 |应用程序写入的跟踪消息 |

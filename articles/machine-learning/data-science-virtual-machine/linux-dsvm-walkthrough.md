@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428395"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Linux Data Science Virtual Machine 进行数据科学
 
@@ -24,7 +24,7 @@ ms.locfileid: "73929546"
 
 在本演练中，我们将分析[spambase](https://archive.ics.uci.edu/ml/datasets/spambase)数据集。 Spambase 是一组标记为垃圾邮件或 ham （而不是垃圾邮件）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论统计信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Linux DSVM 之前，必须具备以下先决条件：
 
@@ -139,7 +139,7 @@ ms.locfileid: "73929546"
     plot(model.rpart)
     text(model.rpart)
 
-结果如下：
+下面是结果：
 
 ![创建的决策树的关系图](./media/linux-dsvm-walkthrough/decision-tree.png)
 
@@ -174,17 +174,17 @@ ms.locfileid: "73929546"
 
 ## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>将模型部署到 Azure 机器学习 Studio （经典）
 
-[Azure 机器学习 Studio （经典）](https://studio.azureml.net/)是一种云服务，可让你轻松构建和部署预测分析模型。 Azure 机器学习 Studio 经典版的一项良好功能是能够将任何 R 函数发布为 web 服务。 Azure 机器学习 Studio R 包可让你轻松地从 DSVM 上的 R 会话进行部署。
+[Azure 机器学习 Studio （经典）](https://studio.azureml.net/)是一种云服务，可让你轻松构建和部署预测分析模型。 Azure 机器学习 Studio （经典）的一项不错的功能是能够将任何 R 函数发布为 web 服务。 Azure 机器学习 Studio （经典） R 包可让你轻松地从 DSVM 上的 R 会话进行部署。
 
 若要从上一节中部署决策树代码，请登录到 Azure 机器学习 Studio （经典）。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并将 Azure 机器学习变量初始化为这些值，请完成以下步骤：
 
 1. 在左侧菜单中，选择 "**设置**"。 请注意 "**工作区 ID**" 的值。
 
-   ![Azure 机器学习 Studio 工作区 ID](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![Azure 机器学习 Studio （经典）工作区 ID](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 1. 选择 "**授权令牌**" 选项卡。请记下**主授权令牌**的值。
 
-   ![Azure 机器学习 Studio 主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
+   ![Azure 机器学习 Studio （经典）主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. 加载**AzureML**包，然后在 DSVM 上的 R 会话中将变量的值设置为令牌和工作区 ID：
 
         if(!require("AzureML")) install.packages("AzureML")
@@ -382,12 +382,12 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数�
 
 1. 选择”**分布**“。
 1. 对于**word_freq_remove**和**word_freq_you**，请选择 "**直方图**"。
-1. 选择”**执行**“。 你应在单个图形窗口中看到两个密度图，在这种情况下，_在电子_邮件中显示的词比_删除_更频繁。
+1. 选择“执行”。 你应在单个图形窗口中看到两个密度图，在这种情况下，_在电子_邮件中显示的词比_删除_更频繁。
 
 **相关**图形也很有趣。 创建绘图：
 
 1. 对于 "**类型**"，请选择 "**关联**"。
-1. 选择”**执行**“。
+1. 选择“执行”。
 1. Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
 这会带来一些有趣的相关性：例如，_技术_与_HP_和_实验室_密切相关。 由于数据集赞助者的区号为650，因此它也强烈关联到_650_ 。
@@ -409,7 +409,7 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-返回到 "**群集**" 选项卡。选择 " **KMeans**"，然后将 "**群集数**" 设置为**4**。 选择”**执行**“。 结果会显示在输出窗口中。 一个群集具有高频率的_george_和_hp_，可能是合法的业务电子邮件。
+返回到 "**群集**" 选项卡。选择 " **KMeans**"，然后将 "**群集数**" 设置为**4**。 选择“执行”。 结果会显示在输出窗口中。 一个群集具有高频率的_george_和_hp_，可能是合法的业务电子邮件。
 
 构建基本决策树机器学习模型：
 
@@ -421,7 +421,7 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 Rattle 的一项有用功能是它能够运行多个机器学习方法并快速对它们进行评估。 步骤如下：
 
 1. 对于 "**类型**"，请选择 "**全部**"。
-1. 选择”**执行**“。
+1. 选择“执行”。
 1. Rattle 完成运行后，可以选择任意**类型**值（如**SVM**），然后查看结果。
 1. 您还可以通过使用 "**评估**" 选项卡来比较验证集上的模型的性能。例如，**错误矩阵**选择显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。 还可以绘制 ROC 曲线、运行敏感度分析和执行其他类型的模型评估。
 

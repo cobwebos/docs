@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425373"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -31,7 +31,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 以下审核事件类别可用：
 
-| 审核类别名称 | 描述 |
+| 审核类别名称 | Description |
 |:---|:---|
 | 帐户登录|审核尝试对域控制器或本地安全帐户管理器（SAM）上的帐户数据进行身份验证。</p>登录和注销策略设置和事件跟踪尝试访问特定的计算机。 此类别中的设置和事件侧重于所使用的帐户数据库。 此类别包括以下子类别：<ul><li>[审核凭据验证](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[审核 Kerberos 身份验证服务](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[审核 Kerberos 服务票证操作](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[审核其他登录/注销事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帐户管理|审核对用户和计算机帐户和组所做的更改。 此类别包括以下子类别：<ul><li>[审核应用程序组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[审核计算机帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[审核通讯组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[审核其他帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[审核安全组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[审核用户帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -51,10 +51,10 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 |:---|:---|
 |帐户登录安全|4767、4774、4775、4776、4777|
 |帐户管理安全性|4720、4722、4723、4724、4725、4726、4727、4728、4729、4730、4731、4732、4733、4734、4735、4737、4738、4740、4741、4742、4743、4754、4755、4756、4757、4758、4764、4765、4766、4780、4781、4782、4793、4798、4799、5376、5377、、、|
-|详细信息跟踪安全性|None|
+|详细信息跟踪安全性|无|
 |DS 访问安全性|5136、5137、5138、5139、5141|
 |登录-注销安全性|4624、4625、4634、4647、4648、4672、4675、4964|
-|对象访问安全性|None|
+|对象访问安全性|无|
 |策略更改安全性|4670、4703、4704、4705、4706、4707、4713、4715、4716、4717、4718、4719、4739、4864、4865、4866、4867、4904、4906、4911、4912|
 |权限使用安全性|4985|
 |系统安全|4612、4621|
@@ -68,9 +68,9 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 > [!IMPORTANT]
 > 在启用 Azure AD 域服务安全审核之前，需要创建目标资源。 您可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建这些资源。
 
-| 目标资源 | 场景 |
+| 目标资源 | 方案 |
 |:---|:---|
-|Azure 存储器| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1)。|
+|Azure 存储器| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 在启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)。|
 |Azure 事件中心| 当主要需要与其他软件（如数据分析软件或安全信息 & 事件管理（SIEM）软件）共享安全审核事件时，应使用此目标。 启用 Azure AD DS 安全审核事件之前，请[使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。 在启用 Azure AD DS 安全审核事件之前，请[在 Azure 门户中创建 Log Analytics 工作区。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
@@ -82,7 +82,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 > Azure AD DS 安全审核不是追溯的。 不能从过去检索事件，也不能重播过去的事件。 Azure AD DS 只能发送启用后发生的事件。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 选择托管域，如*aadds.contoso.com*。
+1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 选择你的托管域，例如 *aadds.contoso.com*。
 1. 在 "Azure AD DS" 窗口中，选择左侧的 "**诊断设置**"。
 1. 默认情况下不配置任何诊断。 若要开始，请选择 "**添加诊断设置**"。
 
@@ -173,7 +173,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 日志分析工作区使你可以使用 Azure Monitor 和 Kusto 查询语言来查看和分析安全审核事件。 此查询语言用于只读的 power 分析功能和易于阅读的语法的只读使用。 有关 Kusto 查询语言入门的详细信息，请参阅以下文章：
 
 * [Azure Monitor 文档](https://docs.microsoft.com/azure/azure-monitor/)
-* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
 * [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
 * [创建和共享 Log Analytics 数据的仪表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

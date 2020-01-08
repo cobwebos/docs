@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 2e5cebb05549c2bd3cd810da58930efdae1422e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 313b9c92b10d3170eb71bb8290a9388bb8dcc67c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427524"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中创建情绪分析模型
 
@@ -66,7 +66,7 @@ ms.locfileid: "73838621"
 ## <a name="step-3-train-classification-or-regression-model"></a>步骤 3：定型分类或回归模型
 文本现已转换为数值特征列。 数据集仍包含上一阶段中的字符串列，因此我们使用“选择数据集中的列中”来将其排除。
 
-然后，我们使用[二元逻辑回归](https://msdn.microsoft.com/library/azure/dn905994.aspx)来预测我们的目标：高或低评论分数。 在这种情况下，文本分析问题已转换为常规分类问题。 您可以使用 Azure 机器学习 Studio 经典版中提供的工具来改进模型。 例如，可以实验不同的分类器，以了解如何它们给出结果的准确度，或使用超参数调整改进准确度。
+然后，我们使用[二元逻辑回归](https://msdn.microsoft.com/library/azure/dn905994.aspx)来预测我们的目标：高或低评论分数。 在这种情况下，文本分析问题已转换为常规分类问题。 您可以使用 Azure 机器学习 Studio （经典）中提供的工具来改进模型。 例如，可以实验不同的分类器，以了解如何它们给出结果的准确度，或使用超参数调整改进准确度。
 
 ![定型和评分](./media/text-analytics-module-tutorial/scoring-text.png)
 

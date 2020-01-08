@@ -4,15 +4,15 @@ description: 了解如何通过 Azure Log Analytics 连接器使用 Microsoft Fl
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395079"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Monitor 日志流程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  可以借助用于 Microsoft Flow 的 Azure Log Analytics 连接器来构建工作流，以包括 Azure Monitor 中的 Log Analytics 工作区中的日志查询检索到的数据。

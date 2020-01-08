@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422841"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -73,6 +73,9 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 在租户中启用安全默认设置后，较旧协议发出的所有身份验证请求都将被阻止。 安全默认值不会阻止 Exchange ActiveSync。
 
+> [!WARNING]
+> 启用安全性默认值之前，请确保管理员没有使用较旧的身份验证协议。 有关详细信息，请参阅[如何离开旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
+
 ### <a name="protecting-privileged-actions"></a>保护特权操作
 
 组织使用通过 Azure 资源管理器 API 管理的各种 Azure 服务，包括：
@@ -89,22 +92,30 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 如果用户未注册多重身份验证，则用户将需要使用 Microsoft Authenticator 应用进行注册，然后才能继续操作。 不会提供14天的多重身份验证注册期限。
 
+> [!NOTE]
+> Azure AD Connect 同步帐户将从安全默认值中排除，系统不会提示注册或执行多重身份验证。 组织不应出于其他目的使用此帐户。
+
 ## <a name="deployment-considerations"></a>部署注意事项
 
 以下其他注意事项与为租户部署安全默认值相关。
 
-### <a name="older-protocols"></a>旧协议
+### <a name="authentication-methods"></a>身份验证方法
 
-邮件客户端使用较旧的身份验证协议（如 IMAP、SMTP 和 POP3）发出身份验证请求。 这些协议不支持多重身份验证。 Microsoft 看到的大多数帐户损害都受到对尝试绕过多重身份验证的旧版协议的攻击。 
+安全默认值允许使用**通知仅通过 Microsoft Authenticator 应用**注册和使用 Azure 多重身份验证。 条件性访问允许使用管理员选择启用的任何身份验证方法。
 
-为了确保登录到管理帐户时需要多重身份验证，并且攻击者无法跳过它，默认情况下，安全默认情况下会阻止从较旧的协议向管理员帐户发出的所有身份验证请求。
+|   | 安全默认值 | 条件访问 |
+| --- | --- | --- |
+| 通过移动应用发送通知 | X | X |
+| 移动应用或硬件标志提供的验证码 |   | X |
+| 向手机发送短信 |   | X |
+| 拨打电话 |   | X |
+| 应用密码 |   | X * * |
 
-> [!WARNING]
-> 在启用此设置之前，请确保你的管理员没有使用较旧的身份验证协议。 有关详细信息，请参阅[如何离开旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
+\* * 只有在管理员启用了旧身份验证方案的情况下，才能在每用户 MFA 中使用应用密码。
 
 ### <a name="conditional-access"></a>条件访问
 
-可以使用条件性访问来配置策略，这些策略提供的行为由安全默认值启用。 如果使用条件访问，并且在您的环境中启用了条件性访问策略，则不能使用安全默认值。 如果你的许可证提供条件性访问，但你的环境中未启用任何条件性访问策略，则欢迎使用安全默认设置，直至你启用条件性访问策略。
+您可以使用条件性访问来配置类似于安全默认设置的策略，但更多的粒度包括用户排除，这在安全性默认值中不可用。 如果使用条件访问，并且在您的环境中启用了条件性访问策略，则不能使用安全默认值。 如果你的许可证提供条件性访问，但你的环境中未启用任何条件性访问策略，则欢迎使用安全默认设置，直至你启用条件性访问策略。 有关 Azure AD 许可的详细信息，请参阅[Azure AD 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ![不能同时具有安全默认值或条件访问的警告消息](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

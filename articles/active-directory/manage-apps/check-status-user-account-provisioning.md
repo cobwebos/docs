@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275065"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430224"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
 
@@ -30,7 +30,7 @@ Azure Active Directory （Azure AD）包含一个[用户帐户预配服务](user
 
 ## <a name="overview"></a>概述
 
-预配连接器是按照受支持应用程序的[随附文档](https://portal.azure.com)，使用 [Azure 门户](../saas-apps/tutorial-list.md)设置和配置的。 配置并运行预配作业后，可使用以下两种方法之一报告这些作业的状态：
+预配连接器是按照受支持应用程序的[随附文档](../saas-apps/tutorial-list.md)，使用 [Azure 门户](https://portal.azure.com)设置和配置的。 配置并运行预配作业后，可使用以下两种方法之一报告这些作业的状态：
 
 * **Azure 门户**-本文主要介绍如何从[Azure 门户](https://portal.azure.com)检索报表信息，该信息提供了预配摘要报告以及给定应用程序的详细预配审核日志。
 * **审核 API** - Azure Active Directory 还提供审核的 API，用于以编程方式检索详细预配审核日志。 请参阅 [Azure Active Directory 审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)，获取有关使用此 API 的具体文档。 尽管本文未专门介绍如何使用该 API，但详细说明了审核日志中记录的预配事件类型。
@@ -44,7 +44,7 @@ Azure Active Directory （Azure AD）包含一个[用户帐户预配服务](user
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>从 Azure 门户获取预配报告
 
-若要获取给定应用程序的预配报表信息，请首先启动[Azure 门户](https://portal.azure.com)，并**Azure Active Directory** "**活动**" 部分中的 "&gt;**预配日志（预览版）** " &gt;**企业应用程序**。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
+若要获取给定应用程序的预配报表信息，请 先启动 [Azure 门户](https://portal.azure.com)Azure Active Directory &gt;企业应用&gt; 预配日志（预览）并在活动部分。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
 
 “Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”
 
@@ -55,8 +55,8 @@ Azure Active Directory （Azure AD）包含一个[用户帐户预配服务](user
 [预配进度栏](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)在给定应用程序的 "**预配**" 选项卡中可见。 它位于 "**设置**" 下的 "**当前状态**" 部分，并显示当前初始或增量周期的状态。 本部分还显示：
 
 * 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数。
-* 上次运行同步的时间。 [初始循环](user-provisioning.md#what-happens-during-provisioning)完成后，同步通常每20-40 分钟发生一次。
-* [初始周期](user-provisioning.md#what-happens-during-provisioning)是否已完成。
+* 上次运行同步的时间。 [初始循环](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)完成后，同步通常每20-40 分钟发生一次。
+* [初始周期](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)是否已完成。
 * 预配过程是否已被隔离，隔离状态的原因是什么（例如，由于管理员凭据无效，与目标系统通信失败）。
 
 **当前状态**应该是管理员检查设置作业的操作运行状况的第一个地方。

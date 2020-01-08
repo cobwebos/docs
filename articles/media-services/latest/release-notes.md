@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427083"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
+
+>通过复制并粘贴以下 URL，获取有关何时通过复制和粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` 到 RSS 源读者。
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -34,13 +36,47 @@ ms.locfileid: "74420038"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
+## <a name="november-2019"></a>2019 年 11 月
+
+### <a name="live-transcription-preview"></a>实时脚本预览
+
+Live 脚本现提供公共预览版，可在美国西部2地区使用。
+
+Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递和标准或高级编码实时事件上都受支持。  启用此功能后，服务将使用认知服务的[语音到文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的朗读字词转录为文本。 然后，可以在 MPEG-短线和 HLS 协议中将此文本连同视频和音频一起送达。 计费基于新的外接程序计量器，在实时事件处于 "正在运行" 状态时，它会产生额外的成本。  有关实时脚本和计费的详细信息，请参阅[实时](live-transcription.md)脚本
+
+> [!NOTE]
+> 目前，只能在美国西部2区域中使用预览功能。 它目前只支持英语（en-us）的口头字词。
+
+### <a name="content-protection"></a>内容保护
+
+现在，所有区域都提供了在9月份后的有限区域中发布的*令牌重播防护*功能。
+媒体服务客户现在可以对用于请求密钥或许可证的相同令牌的次数设置限制。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
+
+### <a name="new-recommended-live-encoder-partners"></a>新建议的实时编码器合作伙伴
+
+添加了对 RTMP 实时流式处理的以下新建议合作伙伴编码器的支持：
+
+- [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 和 Max 操作相机](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>文件编码增强功能
+
+- 改善了 Media Encoder Standard 中 sizer 的性能和多线程处理。 在特定情况下，客户应看到 5-40% VOD 编码之间的性能提升。 编码为多个比特率的低复杂性内容会显示最高的性能。 
+- 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间为可变帧速率（VFR）内容保留常规 GOP 节奏。  这意味着，如果客户提交的混合帧速率内容在 15-30 fps 之间有所不同，示例现在应查看在输出时计算为自适应比特率流式处理的文件。 这将提高在 HLS 或短划线交付时无缝切换跟踪的功能。 
+-  改善了可变帧速率（VFR）源内容的 AV 同步
+
+### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
+
+- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是调整大小。 高分辨率关键帧提取提供原始质量的图像，并使你能够利用 Microsoft 计算机视觉和自定义视觉服务提供的基于映像的人工智能模型，从视频获得更多见解。
+
 ## <a name="september-2019"></a>2019 年 9 月
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
 
-#### <a name="live-linear-encoding-of-live-events"></a>直播活动的实时线性编码
+#### <a name="live-linear-encoding-of-live-events"></a>实时事件的实时线性编码
 
-媒体服务 v3 宣布推出对直播活动进行实时线性编码的 24 小时 x 365 天预览版。
+媒体服务 v3 宣布推出实时事件实时线性编码的24小时 x 365 天的预览。
 
 ###  <a name="media-services-v2"></a>媒体服务 v2  
 
@@ -66,28 +102,28 @@ ms.locfileid: "74420038"
 
 我们宣布不推荐在2020年3月31日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
 
-有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>内容保护
 
-当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 *令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
+当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 使用*令牌重播防护*功能，媒体服务客户可以设置一个限制，该限制可用于请求密钥或许可证。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
 
-此功能目前已在美国中部和美国西部中部提供。
+截止到7月，预览版功能仅在美国中部和美国西部提供。
 
-## <a name="june-2019"></a>2019 年 7 月
+## <a name="june-2019"></a>2019 年 6 月
 
 ### <a name="video-subclipping"></a>视频子剪辑
 
-现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
+你现在可以在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时剪裁或子剪辑视频。 
 
-此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)。 
+此功能适用于使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设或[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
 
 请参阅示例：
 
-* [使用 .NET 创建视频的子剪辑](subclip-video-dotnet-howto.md)
-* [使用 REST 对视频进行子剪辑](subclip-video-rest-howto.md)
+* [使用 .NET 子剪辑视频](subclip-video-dotnet-howto.md)
+* [使用 REST 子剪辑视频](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -100,9 +136,9 @@ ms.locfileid: "74420038"
 
 有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频轨道支持 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频跟踪支持 
 
-使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
+当使用多个编解码器和语言的多个音频轨迹流式传输资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出的多个音频轨迹（版本4或更高版本）。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
 
@@ -110,29 +146,29 @@ ms.locfileid: "74420038"
 
 有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
-### <a name="performance-improvements"></a>性能提升
+### <a name="performance-improvements"></a>性能改进
 
-添加了包括媒体服务性能改进的更新。
+添加了更新，其中包括媒体服务性能改进。
 
-* 更新了处理所支持的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
-* [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* 已更新处理所支持的最大文件大小。 请参阅、[配额和限制](limits-quotas-constraints.md)。
+* [编码加快了提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-presets"></a>新增预设
+### <a name="new-presets"></a>新预设
 
-* 向内置分析器预设添加了 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
-* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](cae-experimental.md)。 
+* 已将[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)添加到内置分析器预设。
+* 已将[ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)添加到内置编码器预设。 有关详细信息，请参阅[内容感知编码](cae-experimental.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
+动态打包现在支持杜比 Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
 
-现在，可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 有关详细信息，请参阅[将筛选器与流定位器相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+你现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-媒体服务 v3 目前在 Azure 国家云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+媒体服务 v3 现在在 Azure 国内云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
@@ -199,7 +235,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 - ```--preset-names``` 参数已替换为 ```--preset```。 现在只能一次设置 1 个输出/预设（若要添加更多，必须运行 ```az ams transform output add```）。 此外，还可以通过将路径传递到自定义 JSON 来设置自定义 StandardEncoderPreset。
 - 可以通过传递要删除的输出索引来执行 ```az ams transform output remove```。
-- 在 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 和 ```az ams transform create``` 命令中添加了 ```az ams transform output add``` 参数。
+- 在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中添加了 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 参数。
 
 ## <a name="october-2018---ga"></a>October 2018 - GA
 

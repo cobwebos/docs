@@ -1,7 +1,7 @@
 ---
-title: Azure AD 证书凭据
+title: Microsoft 标识平台证书凭据
 titleSuffix: Microsoft identity platform
-description: 本文讨论注册和使用证书凭据进行应用程序身份验证
+description: 本文介绍了如何注册和使用证书凭据进行应用程序身份验证。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424721"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD 应用程序身份验证证书凭据
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
-Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流（[v1.0](v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)）和代理流（[v1.0](v1-oauth2-on-behalf-of-flow.md)、[v2.0](v2-oauth2-on-behalf-of-flow.md)）中就是如此。
+Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，例如，在[OAuth 2.0 客户端凭据 Grant flowv 2.0](v2-oauth2-client-creds-grant-flow.md)和代理[流](v2-oauth2-on-behalf-of-flow.md)中。
 
 应用程序可用于身份验证的凭据的一种形式使用应用程序拥有的证书进行签名的 JSON Web 令牌 (JWT) 断言。
 
 ## <a name="assertion-format"></a>断言格式
-
-若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
+用于计算断言的 Microsoft 标识平台，可以使用所选语言的多个[JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
 ### <a name="header"></a>标头
 
@@ -89,9 +88,9 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>向 Microsoft 标识平台注册证书
 
-可以使用以下任意方法通过 Azure 门户将证书凭据与 Azure AD 中的客户端应用程序相关联：
+可以通过使用以下任一方法，将证书凭据与 Microsoft 标识平台中的客户端应用程序相关联 Azure 门户：
 
 ### <a name="uploading-the-certificate-file"></a>上传证书文件
 
@@ -125,7 +124,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
        }
    ]
    ```
-3. 将所做的编辑保存到应用程序清单，然后将清单上传到 Azure AD。 
+3. 将编辑保存到应用程序清单，然后将该清单上传到 Microsoft 标识平台。 
 
    `keyCredentials` 属性具有多个值，因此可上传多个证书实现更丰富的密钥管理。
    
@@ -134,4 +133,4 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 > [!NOTE]
 > 必须通过使用证书的哈希来计算 X5T 标头，并将其转换为 base64 字符串。 C#其中类似于： `System.Convert.ToBase64String(cert.GetCertHash());`
 
-[在守护程序应用中使用证书向 Azure AD 进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)中的代码示例演示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)执行创建证书、计算指纹等操作。
+[使用证书在守护程序应用中对 Microsoft 标识平台进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)的代码示例显示应用程序如何使用其自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)执行创建证书、计算指纹等操作。

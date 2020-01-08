@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: 489ac7fa37c10a27de971151f0be35c647d2186f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 006a44e42ed209b6f0e614b92f97e43ec30b99ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468303"
 ---
 Azure HPC 优化虚拟机（Vm）旨在为各种真实的应用程序提供领先的性能、MPI 可伸缩性和成本效益。
  
@@ -34,7 +34,7 @@ HBv2 系列 Vm 针对内存带宽驱动的应用程序进行了优化，例如�
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储（GB） | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs | 120 | AMD EPYC 7742 | 480 | 350 | 2.45 | 2.45 | 3.4 | 200 | All | 480 + 960 | 8 | 1 |
+| Standard_HB120rs | 120 | AMD EPYC 7742 | 480 | 350 | 2.45 | 2.45 | 3.4 | 200 | 所有 | 480 + 960 | 8 | 第 |
 
 <br>
 
@@ -47,9 +47,9 @@ ACU：199-216
 
 高级存储缓存：支持
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储（GB） | 最大数据磁盘数 | 最大以太网 Nic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GiB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（GiB/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | All | 700 | 4 | 1 |
+| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | 所有 | 700 | 4 | 第 |
 
 <br>
 
@@ -63,9 +63,9 @@ ACU：297-315
 高级存储缓存：支持
 
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储（GB） | 最大数据磁盘数 | 最大以太网 Nic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GiB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（GiB/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | Intel 强白金8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | All | 700 | 4 | 1 |
+| Standard_HC44rs | 44 | Intel 强白金8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | 所有 | 700 | 4 | 第 |
 
 
 <br>
@@ -79,7 +79,7 @@ ACU：290-300
 
 高级存储缓存：不支持
 
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储（GB） | 最大数据磁盘数 | 最大以太网 Nic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GiB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（GiB/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 | 8 | Intel 至强 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 1000 | 32 | 2 |
 | Standard_H16 | 16 | Intel 至强 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 1.x，MS-MPI | 2000 | 64 | 4 |

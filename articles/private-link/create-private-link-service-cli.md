@@ -2,17 +2,17 @@
 title: 使用 Azure CLI 创建 Azure 专用链接服务
 description: 了解如何使用 Azure CLI 创建 Azure 专用链接服务
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 3cc171ddabbe8241622d4e599b4b3cd281558976
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350240"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -23,7 +23,7 @@ ms.locfileid: "74229361"
 ## <a name="create-a-private-link-service"></a>创建专用链接服务
 ### <a name="create-a-resource-group"></a>创建资源组
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westcentralus* " 位置创建名为 " *myResourceGroup* " 的资源组：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 *westcentralus* 位置创建名为 *myResourceGroup* 的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
@@ -62,7 +62,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myHTTPRule*，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli-interactive
   az network lb rule create \

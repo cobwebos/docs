@@ -1,5 +1,6 @@
 ---
-title: 在 Azure API 管理中修改开发人员门户中的页面内容 | Microsoft Docs
+title: 在 API 管理中修改开发人员门户中的页面内容
+titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中编辑开发人员门户上的页面内容。
 services: api-management
 documentationcenter: ''
@@ -13,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430637"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中修改开发人员门户上的页面内容和页面布局
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
-* [编辑静态页和页面布局元素的内容][modify-content-layout](本指南中所述)
+* [编辑静态页和页面布局元素的内容][modify-content-layout]（在本指南中介绍）
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates](例如, API 文档、产品、用户身份验证等)
+* [修改门户生成的页面所用的模板][portal-templates]（例如，API 文档、产品、用户身份验证等）
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>开发人员门户页面结构
+## <a name="page-structure"></a>开发人员门户页面的结构
 
 开发人员门户基于内容管理系统。 每页的布局是基于一组小型页面元素（称为小组件）构建的：
 
@@ -41,7 +42,7 @@ ms.locfileid: "70072253"
 
 在日常页面编辑中，通常只修改“内容”小组件，此组件拥有针对每个单独页面的不同内容。
 
-## <a name="modify-layout-widget"> </a>修改布局小组件的内容
+## <a name="modify-layout-widget"></a>修改布局小组件的内容
 
 开发人员门户可从 Azure 门户进行访问。
 
@@ -56,7 +57,7 @@ ms.locfileid: "70072253"
 
 ## <a name="next-steps"></a>后续步骤
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates](例如, API 文档、产品、用户身份验证等)
+* [修改门户生成的页面所用的模板][portal-templates]（例如，API 文档、产品、用户身份验证等）
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

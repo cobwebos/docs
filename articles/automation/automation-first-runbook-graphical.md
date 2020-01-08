@@ -3,19 +3,15 @@ title: 我在 Azure 自动化中的第一个图形 Runbook
 description: 本教程指导完成创建、 测试和发布一个简单图形 Runbook。
 keywords: runbook, runbook 模板, runbook 自动化, azure runbook
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a93263cf968fc4804d7bbc59e15121d6061dd40a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366526"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -30,7 +26,7 @@ ms.locfileid: "74850306"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自动化帐户](automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
@@ -152,8 +148,8 @@ ms.locfileid: "74850306"
 2. 将 **Start-AzureRmVM** 添加到画布，然后单击并将其拖放到“指定订阅 ID”下面。
 1. 将鼠标悬停在 **Specify Subscription Id** 上方，直到在该形状的底部显示一个圆圈。 单击该圆圈并将箭头拖至 **Start-AzureRmVM**。
 1. **Start-AzureRmVM**。 单击“参数”，并单击“参数集”查看 **Start-AzureRmVM** 的参数集。 **ResourceGroupNameParameterSetName** 参数集。 **ResourceGroupName** 和“名称”旁边有感叹号。 这表示它们是必需的参数。 另请注意，两者都需要字符串值。
-1. 选择“名称”。 选择“PowerShell 表达式”作为“数据源”，然后键入带双引号的虚拟机名称（一开始用于此 Runbook）。 单击 **“确定”** 。
-1. 选择“ResourceGroupName”。 使用“PowerShell 表达式”作为“数据源”，并键入带双引号的资源组名称。 单击 **“确定”** 。
+1. 选择“名称”。 选择“PowerShell 表达式”作为“数据源”，然后键入带双引号的虚拟机名称（一开始用于此 Runbook）。 单击“确定”。
+1. 选择“ResourceGroupName”。 使用“PowerShell 表达式”作为“数据源”，并键入带双引号的资源组名称。 单击“确定”。
 1. 单击“测试”窗格，以便测试 Runbook。
 1. 单击“启动”以启动测试 。 一旦测试完成后，检查已启动的虚拟机。
 
@@ -165,7 +161,7 @@ Runbook 目前在资源组中启动虚拟机，该虚拟机已在 **Start-AzureR
 
 1. 在“MyFirstRunbook-Graphical”窗格上单击“编辑”，打开图形编辑器。
 1. 依次选择“输入和输出”和“添加输入”，打开“Runbook 输入参数”窗格。
-1. 指定 *VMName* 作为**名称**。 保留“字符串”作为“类型”，但将“必需”更改为“是”。 单击 **“确定”** 。
+1. 指定 *VMName* 作为**名称**。 保留“字符串”作为“类型”，但将“必需”更改为“是”。 单击“确定”。
 1. 创建第二个名为 *ResourceGroupName* 的必需输入参数，并单击“确定”关闭“输入和输出”窗格。<br> ![Runbook 输入参数](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 1. 选择 **Start-AzureRmVM** 活动，并单击“参数”。
 1. 将“名称”的“数据源”更改为“Runbook 输入”，然后选择 **VMName**。
@@ -186,9 +182,9 @@ Runbook 目前在资源组中启动虚拟机，该虚拟机已在 **Start-AzureR
 1. 在“库”控件的搜索文本框中，键入“Get-AzureRm”。
 1. 将 **Get-AzureRmVM** 添加到画布。
 1. 选择“Get-AzureRmVM”，并选择“参数集”以查看 **Get-AzureRmVM** 的参数集。 **GetVirtualMachineInResourceGroupNameParamSet** 参数集。 **ResourceGroupName** 和“名称”旁边有感叹号。 这表示它们是必需的参数。 另请注意，两者都需要字符串值。
-1. 在“名称”的“数据源”下，选择“Runbook 输入”，并选择 **VMName**。 单击 **“确定”** 。
-1. 将“ResourceGroupName”的“数据源”下，选择“Runbook 输入”，然后选择“ResourceGroupName”。 单击 **“确定”** 。
-1. 在“状态”的“数据源”下，选择“常数值”，并单击“True”。 单击 **“确定”** 。
+1. 在“名称”的“数据源”下，选择“Runbook 输入”，并选择 **VMName**。 单击“确定”。
+1. 将“ResourceGroupName”的“数据源”下，选择“Runbook 输入”，然后选择“ResourceGroupName”。 单击“确定”。
+1. 在“状态”的“数据源”下，选择“常数值”，并单击“True”。 单击“确定”。
 1. 创建从“指定订阅 ID”到 **Get-AzureRmVM** 的链接。
 1. 在“库”控件中，展开“Runbook 控件”，然后将“Code”添加到画布。  
 1. 创建从“Get-AzureRmVM”到“Code”的链接。  

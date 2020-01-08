@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d071ff071c13637b15479d86a699d0b368119196
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422902"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
 如果组织中的用户需要管理 Azure Active Directory (Azure AD) 资源的权限，则必须根据用户需要权限才能执行的操作为 Azure AD 中的用户分配适当的角色。
@@ -31,17 +31,24 @@ ms.locfileid: "73742601"
 还可以使用 Privileged Identity Management (PIM) 分配角色。 了解如何使用 PIM 的详细信息，请参阅 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
 ### <a name="to-assign-a-role-to-a-user"></a>向用户分配角色
-1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
+1. 中转到[Azure 门户](https://portal.azure.com/)，并使用目录的全局管理员帐户登录。 
 
-2. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择要获得角色分配的用户。 例如，Alain Charon。
+2. 搜索并选择“Azure Active Directory”。
+
+      ![Azure 门户搜索 Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
+
+
+3. 选择“用户”。
+
+4. 搜索并选择获取角色分配的用户。 例如，Alain Charon。
 
       !["所有用户" 页-选择用户](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-3. 在 " **Alain Charon-配置文件**" 页上，选择 "**分配的角色**"。
+5. 在 " **Alain Charon-配置文件**" 页上，选择 "**分配的角色**"。
 
     将出现“Alain Charon - 目录角色”页面。
 
-4. 选择 "**添加分配**"，选择要分配给 Alain 的角色（例如，_应用程序管理员_），然后选择 "**选择**"。
+6. 选择 "**添加分配**"，选择要分配给 Alain 的角色（例如，_应用程序管理员_），然后选择 "**选择**"。
 
     !["分配的角色" 页-显示所选角色](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
@@ -58,7 +65,7 @@ ms.locfileid: "73742601"
 
     !["分配的角色" 页，显示所选角色和删除选项](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    “应用程序管理员”角色将从 Alain Charon 中删除，并且不再显示在“Alain Charon - 目录角色”页面上。
+    应用程序管理员角色已从 Alain Charon 删除，并且不再显示在“Alain Charon - 目录角色”页面上。
 
 ## <a name="next-steps"></a>后续步骤
 - [添加或删除用户](add-users-azure-active-directory.md)

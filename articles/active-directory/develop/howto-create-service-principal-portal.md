@@ -1,5 +1,5 @@
 ---
-title: 使用门户创建 Azure AD 应用 & 服务主体
+title: 在门户中创建 Azure AD 应用 & 服务主体
 titleSuffix: Microsoft identity platform
 description: 使用 Azure 资源管理器中的基于角色的访问控制创建新的 Azure Active Directory 应用 & 服务主体，以管理对资源的访问权限。
 services: active-directory
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0261c060358b9f0f42624008341f80245ff57aca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424536"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 

@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI - sfctl replica | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl replica 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl 副本
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理副本的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901057"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646035"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | deployed | 获取部署在 Service Fabric 节点上的副本的详细信息。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的副本的列表。 |
@@ -44,7 +35,7 @@ ms.locfileid: "72901057"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -53,13 +44,13 @@ ms.locfileid: "72901057"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-deployed-list"></a>sfctl replica deployed-list
 获取部署在 Service Fabric 节点上的副本的列表。
@@ -68,9 +59,9 @@ ms.locfileid: "72901057"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --application-id [必需] | 应用程序标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
+| --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
 | --partition-id | 分区的标识。 |
 | --service-manifest-name | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单的名称。 |
@@ -78,13 +69,13 @@ ms.locfileid: "72901057"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。
@@ -93,22 +84,22 @@ ms.locfileid: "72901057"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id    [必需] | 分区的标识。 |
 | --replica-id      [必需] | 副本的标识符。 |
-| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任意 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
+| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
 获取有关 Service Fabric 分区的副本的信息。
@@ -117,7 +108,7 @@ ms.locfileid: "72901057"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
@@ -125,13 +116,13 @@ ms.locfileid: "72901057"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list
 获取有关 Service Fabric 服务分区的副本的信息。
@@ -140,21 +131,21 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-remove"></a>sfctl replica remove
 删除节点上运行的服务副本。
@@ -163,7 +154,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -173,13 +164,13 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-report-health"></a>sfctl replica report-health
 发送有关 Service Fabric 副本的运行状况报告。
@@ -188,7 +179,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -205,13 +196,13 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-replica-restart"></a>sfctl replica restart
 重启节点上运行的持久性服务的服务副本。
@@ -220,7 +211,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -229,13 +220,13 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

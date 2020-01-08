@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: d6cc6c787e38cc72a0a3d4340d55c0248918dba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392355"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -63,8 +63,7 @@ ms.locfileid: "74980525"
 | 负载均衡器 | 1,000 | 
 | 每个资源的规则数，基本 | 250 |
 | 每个资源的规则数，标准 | 1,500 | 
-| 每个 IP 配置的规则数 | 299 |
-| 每个 NIC 的规则数 | 300 |
+| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300 |
 | 前端 IP 配置，基本 | 200 |
 | 前端 IP 配置，标准 | 600 |
 | 后端池，基本 | 100，单个可用性集 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355593"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租户管理
 
@@ -53,7 +53,7 @@ ms.locfileid: "74558953"
 - **管理高级云防御功能等**：管理各种威胁检测和保护服务，例如实时[（JIT） VM 访问](security-center-just-in-time.md)、[自适应网络强化](security-center-adaptive-network-hardening.md)、[自适应应用程序控件](security-center-adaptive-application.md)等。
  
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在安全中心进行跨租户管理。 若要了解有关安全中心的详细信息，请参阅以下内容：
+本文介绍了如何在安全中心进行跨租户管理。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [通过 Azure 安全中心增强安全状况](security-center-monitoring.md)-了解如何监视 azure 资源的运行状况。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。

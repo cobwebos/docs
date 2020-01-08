@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric CLI - sfctl mesh | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl mesh 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl 网格
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理 Service Fabric 网格应用程序的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a97cf0a9dd9eccea2db60d73308338350102cb8c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 608efba614f17932b3bfb7852c16ffbeaca02457
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901112"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646069"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 删除和管理 Service Fabric 网格应用程序。
 
 ## <a name="subgroups"></a>子组
-|子组|描述|
+|子组|Description|
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | 获取和删除应用程序资源。 |
 | [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | 获取给定服务副本的指定代码包的容器日志。 |
@@ -34,11 +25,11 @@ ms.locfileid: "72901112"
 | [network](service-fabric-sfctl-mesh-network.md) | 获取和删除网格网络资源。 |
 | [secret](service-fabric-sfctl-mesh-secret.md) | 获取和删除网格机密资源。 |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | 获取和删除网格机密值资源。 |
-| [service](service-fabric-sfctl-mesh-service.md) | 获取服务详细信息并列出应用程序资源的服务。 |
+| [服务](service-fabric-sfctl-mesh-service.md) | 获取服务详细信息并列出应用程序资源的服务。 |
 | [service-replica](service-fabric-sfctl-mesh-service-replica.md) | 获取副本详细信息并列出应用程序资源中给定服务的副本。 |
 | [volume](service-fabric-sfctl-mesh-volume.md) | 获取和删除卷资源。 |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

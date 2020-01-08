@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846107"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424994"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
 
-基线保护策略非常好，但很多组织需要比其提供的灵活性更高的灵活性。 例如，许多组织都需要能够从需要多重身份验证的条件性访问策略中排除特定帐户，如其紧急访问或中断玻璃管理帐户。 对于这些组织，可以使用本文中提到的常见策略。
+[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)非常适用于某些组织，但对于许多组织而言，需要的灵活性比提供的要高。 例如，许多人需要能够从需要多重身份验证的条件性访问策略中排除特定的帐户，例如其紧急访问或中断型管理帐户。 对于这些组织，可以使用本文中提到的常见策略。
 
 ![Azure 门户中的条件性访问策略](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 

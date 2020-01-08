@@ -1,7 +1,7 @@
 ---
 title: 基于筛选器的特征选择：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中基于筛选器的特征选择模块来识别数据集中具有最高预测能力的功能。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的基于筛选器的特征选择模块来识别数据集中具有最高预测能力的功能。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428529"
 ---
-# <a name="filter-based-feature-selection"></a>基于筛选器的功能选择
+# <a name="filter-based-feature-selection"></a>基于筛选器的特征选择
 
 本文介绍如何在 Azure 机器学习设计器（预览版）中使用基于筛选器的功能选择模块。 此模块有助于标识输入数据集中具有最大预测能力的列。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "73717203"
 
 此功能选择模块称为 "基于筛选器"，因为您使用所选指标来查找不相关的属性。 然后从模型中筛选出冗余列。 您可以选择一个适合您的数据的统计度量值，并且该模块计算每个特征列的分数。 列按其功能分数返回排名。 
 
-通过选择适当的功能，你可能会提高分类的准确性和效率。 
+通过选择适当的特征，也许可以提高分类的准确性和效率。 
 
 通常只使用具有最佳分数的列来构建预测模型。 具有不良功能选择得分的列可以保留在数据集中，并且在您生成模型时将被忽略。  
 
@@ -40,13 +40,13 @@ ms.locfileid: "73717203"
 
 -   **皮尔逊相关**  
 
-    皮尔逊的相关统计信息或皮尔逊的相关系数在统计模型中也称为 `r` 值。 对于任意两个变量，它将返回指示相关性强度的值。
+    皮尔逊的相关统计信息或皮尔逊的相关系数在统计模型中也称为 `r` 值。 对于任何两个变量，它返回一个指示相关强度的值。
 
-    皮尔逊的相关系数是通过对两个变量进行协方差并除以其标准偏差的乘积来计算的。 这两个变量中的缩放更改不会影响系数。  
+    皮尔逊相关系数的计算方法为两个变量的协方差除以其标准方差的积。 这两个变量中的缩放更改不会影响系数。  
 
 -   **Χ2**  
 
-    双向χ2测试是一种统计方法，用于度量接近预期值与实际结果的接近程度。 方法假定变量是随机的，并从一个足够的独立变量示例中提取。 生成的χ2统计信息指示结果与预期（随机）结果的距离。  
+    双向的卡方测试是一种统计方法，用于测量预期值离实际结果有多近。 该方法假定变量是随机的并且绘制自独立变量的足够示例。 生成的卡方统计信息指示结果与预期（随机）结果的距离。  
 
 
 > [!TIP]
@@ -86,7 +86,7 @@ ms.locfileid: "73717203"
 
     - 可以指定的最小功能数目为1，但建议增加此值。  
 
-    - 如果指定的所需功能数目大于数据集中的列数，则返回所有功能。 将返回甚至包含零分数的特征。  
+    - 如果指定的所需特征数大于数据集中的列数，则返回所有特征。 将返回甚至包含零分数的特征。  
 
     - 如果指定的结果列比特征列少，则特征按降序排名。 仅返回顶级功能。 
 
@@ -135,5 +135,5 @@ ms.locfileid: "73717203"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 
 

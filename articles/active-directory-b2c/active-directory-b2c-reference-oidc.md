@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b3f3727fe3705d686f25faedf1871e5aacb74352
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367614"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -32,7 +32,7 @@ Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了
 
 当 web 应用程序需要对用户进行身份验证并运行用户流时，可以将用户定向到 `/authorize` 终结点。 用户根据用户流执行操作。
 
-在此请求中，客户端指示需要在 `scope` 参数中从用户获取的权限，并指定要运行的用户流。 若要查看请求的工作方式，请尝试将请求粘贴到浏览器并运行该请求。 将 `{tenant}` 替换为租户的名称。 将 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 替换为之前在租户中注册的应用程序的应用程序 ID。 还将策略名称（`{policy}`）更改为你在租户中拥有的策略名称，例如 `b2c_1_sign_in`。
+在此请求中，客户端指示它需要在 `scope` 参数中从用户获取的权限，并指定要运行的用户流。 若要查看请求的工作方式，请尝试将请求粘贴到浏览器并运行该请求。 将 `{tenant}` 替换为租户的名称。 将 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 替换为之前在租户中注册的应用程序的应用程序 ID。 还将策略名称（`{policy}`）更改为你在租户中拥有的策略名称，例如 `b2c_1_sign_in`。
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 需要 | Description |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
@@ -53,10 +53,10 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | nonce | 是 | 包含在请求中的值（由应用程序生成），在生成的 ID 令牌中包含为声明。 然后，应用程序可以验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
 | response_type | 是 | 必须包括用于 OpenID Connect 的 ID 令牌。 如果 web 应用程序还需要标记来调用 web API，则可以使用 `code+id_token`。 |
 | scope | 是 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 对于 web 应用程序，`offline_access` 范围是可选的。 它表示你的应用程序将需要一个*刷新令牌*来扩展对资源的访问。 |
-| prompt | No | 需要的用户交互类型。 此时唯一有效的值为 `login`，这会强制用户在该请求上输入其凭据。 |
-| redirect_uri | No | 应用程序的 `redirect_uri` 参数，应用程序可在其中发送和接收身份验证响应。 它必须与你在 Azure 门户中注册的某个 `redirect_uri` 参数完全匹配，但必须对其进行 URL 编码。 |
-| response_mode | No | 用于将生成的授权代码发送回应用程序的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
-| state | No | 请求中包含的值，也会在令牌响应中返回。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 状态还用于在身份验证请求出现之前，在应用程序中编码有关用户状态的信息，例如它们所在的页。 |
+| prompt | 否 | 需要的用户交互类型。 此时唯一有效的值为 `login`，这会强制用户在该请求上输入其凭据。 |
+| redirect_uri | 否 | 应用程序的 `redirect_uri` 参数，应用程序可在其中发送和接收身份验证响应。 它必须与你在 Azure 门户中注册的某个 `redirect_uri` 参数完全匹配，但必须对其进行 URL 编码。 |
+| response_mode | 否 | 用于将生成的授权代码发送回应用程序的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
+| state | 否 | 请求中包含的值，也会在令牌响应中返回。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 状态还用于在身份验证请求出现之前，在应用程序中编码有关用户状态的信息，例如它们所在的页。 |
 
 此时，系统会要求用户完成工作流。 用户可能必须输入其用户名和密码、使用社交标识登录或注册目录。 可能有任何其他数量的步骤，具体取决于如何定义用户流。
 
@@ -71,7 +71,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | id_token | 应用程序请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 |
 | 代码 | 如果使用 `response_type=code+id_token`，则为应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码通常在大约10分钟后过期。 |
@@ -86,7 +86,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | error | 可用于分类发生的错误类型的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的特定错误消息。 |
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 需要 | Description |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取授权代码的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
@@ -153,7 +153,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | 代码 | 是 | 用户流开始时获取的授权代码。 |
 | grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
 | redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可用于获取应用程序自己的后端 web API 的标记，它由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
+| scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可用于获取应用程序自己的后端 web API 的标记，它由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
 
 成功的令牌响应如下所示：
 
@@ -168,7 +168,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一受支持的类型。 |
@@ -186,14 +186,14 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | error | 可用于对发生的错误类型进行分类的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的消息。 |
 
 ## <a name="use-the-token"></a>使用令牌
 
-现在，已成功获取访问令牌，可通过在 `Authorization` 标头中包含令牌，在后端 Web API 请求中使用令牌：
+现在你已成功获取访问令牌，可通过在 `Authorization` 标头中加入令牌的方式，在后端 Web API 请求中使用该令牌：
 
 ```HTTP
 GET /tasks
@@ -213,7 +213,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 需要 | Description |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取原始刷新令牌的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
@@ -221,8 +221,8 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | client_secret | 是，在 Web 应用中 | 在[Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 在此流中，客户端密码用于 Web 应用方案，在这些方案中，客户端可以安全地存储客户端机密。 对于本机应用（公共客户端）方案，不能安全地存储客户端机密，threfore 不能用于此调用。 如果使用客户端机密，请定期更改。 |
 | grant_type | 是 | 授权的类型，该类型必须是授权代码流的此部分的刷新令牌。 |
 | refresh_token | 是 | 流的第二部分中获取的原始刷新令牌。 必须在授权和令牌请求中都使用 `offline_access` 作用域，才能接收刷新令牌。 |
-| redirect_uri | No | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| scope | No | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可用于将令牌发送到应用程序的后端 web API，该 API 由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
+| redirect_uri | 否 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
+| scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可用于将令牌发送到应用程序的后端 web API，该 API 由与客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用程序需要刷新令牌才能对资源进行扩展访问。 |
 
 成功的令牌响应如下所示：
 
@@ -237,7 +237,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一受支持的类型。 |
@@ -255,7 +255,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | error | 可用于对发生的错误类型进行分类的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的消息。 |
@@ -270,13 +270,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 需要 | Description |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |
-| id_token_hint| No | 以前颁发的 ID 令牌，作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册答复 URL。 |
-| post_logout_redirect_uri | No | 用户在成功注销后应重定向到的 URL。如果未包含，Azure AD B2C 向用户显示一般消息。 除非提供 `id_token_hint`，否则不应将此 URL 注册为 Azure AD B2C 应用程序设置中的答复 URL。 |
-| state | No | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的 `state` 值是否相同。 |
+| id_token_hint| 否 | 以前颁发的 ID 令牌，作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册答复 URL。 |
+| client_id | 否* | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。<br><br>\**如果使用 `Application` 隔离 SSO 配置，并要求注销请求中的_ID 令牌_设置为 `No`，则此项是必需的。* |
+| post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含，Azure AD B2C 向用户显示一般消息。 除非提供 `id_token_hint`，否则不应将此 URL 注册为 Azure AD B2C 应用程序设置中的答复 URL。 |
+| state | 否 | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的 `state` 值是否相同。 |
 
 ### <a name="secure-your-logout-redirect"></a>保护注销重定向
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425302"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -24,7 +24,7 @@ ms.locfileid: "74848317"
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
-| 错误代码 | 故障排除步骤 |
+| 错误代码 | 疑难解答步骤 |
 | ---------- | --------------------- |
 | **CONTACT_SUPPORT** | [联系支持人员](#contact-microsoft-support)，并指明收集日志的步骤列表。 尽量详细地提供出错之前发生的情况，包括租户 ID 和用户主体名称 (UPN)。 |
 | **CLIENT_CERT_INSTALL_ERROR** | 客户端证书的安装方式或者与租户的关联方式可能有问题。 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书问题。 |
@@ -39,7 +39,7 @@ ms.locfileid: "74848317"
 
 ### <a name="alternate-login-id-errors"></a>备用登录 ID 错误
 
-| 错误代码 | 错误消息 | 故障排除步骤 |
+| 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：userObjectSid 查找失败 | 验证用户是否存在于本地 Active Directory 实例中。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 查找失败 | 验证 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 是否已设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 设置为 True，或者 LDAP_LOOKUP_FORESTS 配置了非空值，请验证是否已配置全局目录以及是否已将 AlternateLoginId 属性添加到它。 <br><br> 如果 LDAP_LOOKUP_FORESTS 配置了非空值，请验证该值是否正确。 如果有多个林名称，必须用分号（而不是空格）分隔名称。 <br><br> 如果这些步骤不能解决此问题，请[与支持人员联系](#contact-microsoft-support)获取更多帮助。 |
@@ -47,7 +47,7 @@ ms.locfileid: "74848317"
 
 ## <a name="errors-your-users-may-encounter"></a>用户可能会遇到的错误
 
-| 错误代码 | 错误消息 | 故障排除步骤 |
+| 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
 | **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
@@ -95,6 +95,10 @@ ms.locfileid: "74848317"
 ### <a name="troubleshoot-user-accounts"></a>排查用户帐户问题
 
 如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。
+
+### <a name="health-check-script"></a>运行状况检查脚本
+
+TechNet 库上提供了[AZURE MFA NPS 扩展运行状况检查脚本](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)，以便在排除 NPS 扩展时执行基本运行状况检查。 运行脚本并选择选项3。
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 

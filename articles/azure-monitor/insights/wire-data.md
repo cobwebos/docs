@@ -4,15 +4,15 @@ description: 线路数据是具有 Log Analytics 代理的计算机提供的整�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 5e19c9bd47fe253f9a416b923ec0cb1748682842
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900592"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365795"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0 （预览版）解决方案
 
@@ -57,7 +57,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机到 Azure Monitor 的直接连接。 |
-| Azure 存储帐户 | No | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
+| Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
 在 Windows 上，System Center Operations Manager 和 Azure Monitor 使用 Microsoft Monitoring Agent （MMA）来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略微不同的 MMA 版本。 每个版本都可以 System Center Operations Manager、Azure Monitor 或两者。
 
@@ -127,14 +127,14 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 ##### <a name="centosplus"></a>CentOSPlus
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 6.9 | 2.6.32-696.18。7<br>2.6.32-696.30。1 |
-| 6.10 | 2.6.32-696.30。1<br>2.6.32-754.3。5 |
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ##### <a name="ubuntu-server"></a>Ubuntu Server
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| Ubuntu 18.04 | 内核4.15。\*<br>4.18 * |
+| Ubuntu 18.04 | 内核4.15。\*<br>4.18* |
 | Ubuntu 16.04.3 | 内核 4.15.* |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
@@ -143,7 +143,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 | OS 版本 | 内核版本
 |:--|:--|
-| 11 SP4 | 3.0. * |
+| 11 SP4 | 3.0.* |
 
 ##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -224,7 +224,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent 的文件放置在以下目录中：
 
-| **文件** | 位置 |
+| **文件** | **位置** |
 | --- | --- |
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |
@@ -341,7 +341,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 - Wire Data 解决方案从运行 Windows Server 2012 R2、Windows 8.1 和更高版本操作系统的计算机获取数据。
 - 想要获取线路数据的计算机上需要安装 Microsoft.NET Framework 4.0 或更高版本。
-- 使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，将网络数据解决方案添加到 Log Analytics 工作区。 无需进一步配置。
+- 使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，将网络数据解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 - 如果想要查看特定解决方案的线路数据，需要先将该解决方案添加到工作区。
 
 在安装代理并安装解决方案后，Wire Data 2.0 磁贴将出现在工作区中。
@@ -382,7 +382,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 将为每种输入数据创建 _WireData_ 类型的记录。 WireData 记录具有下表中所示的属性：
 
-| properties | 描述 |
+| 属性 | Description |
 |---|---|
 | Computer | 从中收集了数据的计算机名称 |
 | TimeGenerated | 记录的时间 |
@@ -391,9 +391,9 @@ rpm -e dependency-agent dependency-agent-connector
 | ReceivedBytes | 已接收的字节数 |
 | ProtocolName | 使用的网络协议的名称 |
 | IPVersion | IP 版本 |
-| Direction | 入站或出站 |
+| 方向 | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
-| Severity | 可疑恶意软件的严重性 |
+| 严重性 | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址的国家/地区 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |

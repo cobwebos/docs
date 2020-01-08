@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh secretvalue | Microsoft Docs
-description: 介绍了 Service Fabric CLI sfctl mesh secretvalue 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI sfctl 网格 secretvalue
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取和删除 Service Fabric 网格 secretvalue 资源的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a29d32dff9ad51942acb30dd834ad6fbd362ac65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901182"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646103"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 获取和删除网格机密值资源。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | delete | 删除已命名机密资源的指定值。 |
 | list | 列出指定的机密资源的所有值的名称。 |
@@ -39,20 +30,20 @@ ms.locfileid: "72901182"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 | --version -v     [必需] | 机密版本的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-mesh-secretvalue-list"></a>sfctl mesh secretvalue list
 列出指定的机密资源的所有值的名称。
@@ -61,26 +52,26 @@ ms.locfileid: "72901182"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
 列出机密资源的指定值。
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 | --version -v     [必需] | 机密版本的名称。 |
@@ -88,15 +79,15 @@ ms.locfileid: "72901182"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 跟踪遥测 | Microsoft Docs
+title: Azure 应用程序 Insights 数据模型-跟踪遥测
 description: 适用于跟踪遥测的 Application Insights 数据模型
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 6e188039a86f4c655df3098be1d769668dcf3571
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407140"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>跟踪遥测：Application Insights 数据模型
 
@@ -37,6 +37,6 @@ ms.locfileid: "72678119"
 
 - [在 Application Insights 中浏览 .NET 跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)。
 - [在 Application Insights 中浏览 Java 跟踪日志](../../azure-monitor/app/java-trace-logs.md)。
-- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - [编写自定义跟踪遥测](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

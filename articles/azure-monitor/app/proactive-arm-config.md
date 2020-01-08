@@ -8,16 +8,16 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406485"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)来管理和配置 Application Insights 中的智能检测规则。
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)来管理和配置 Application Insights 中的智能检测规则。
 使用 Azure 资源管理器自动化部署新的 Application Insights 资源或修改现有资源的设置时，可以使用此方法。
 
 ## <a name="smart-detection-rule-configuration"></a>智能检测规则配置

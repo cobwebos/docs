@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 存储中存储和查看诊断数据
+title: 在 Azure 存储空间中存储和查看诊断数据
 description: 了解如何在 Azure 存储帐户中收集 Azure 诊断数据，以便你可以使用多种可用工具之一查看该数据。
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395015"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
 诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。

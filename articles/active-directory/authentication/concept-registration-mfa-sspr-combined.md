@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425346"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合安全信息注册（预览）
 
@@ -49,15 +49,15 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 |   | 注册 | 更改 | 删除 |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | 是（最多5个） | No | 是 |
-| 其他验证器应用 | 是（最多5个） | No | 是 |
-| 硬件令牌 | No | No | 是 |
+| Microsoft Authenticator | 是（最多5个） | 否 | 是 |
+| 其他验证器应用 | 是（最多5个） | 否 | 是 |
+| 硬件令牌 | 否 | 否 | 是 |
 | 手机 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
-| 办公电话 | No | No | No |
+| 办公电话 | 否 | 否 | 否 |
 | 电子邮件 | 是 | 是 | 是 |
-| 安全提问 | 是 | No | 是 |
-| 应用密码 | 是 | No | 是 |
+| 安全提问 | 是 | 否 | 是 |
+| 应用密码 | 是 | 否 | 是 |
 
 > [!NOTE]
 > 应用密码仅适用于已强制执行多重身份验证的用户。 对于通过条件性访问策略启用多重身份验证的用户，不能使用应用密码。
@@ -67,7 +67,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 - Microsoft Authenticator –通知。
 - 验证器应用或硬件令牌-代码。
 - 电话呼叫。
-- 短信。
+- 文本消息。
 
 由于我们继续将更多的身份验证方法添加到 Azure AD，因此这些方法将在组合注册中可用。
 
@@ -108,7 +108,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 如果同时启用了多重身份验证和 SSPR，我们建议强制实施多重身份验证注册。
 
-如果 SSPR 策略要求用户定期检查其安全信息，则用户会在登录期间中断，并显示其所有注册方法。 如果是最新的，他们可以确认当前信息，如果需要，也可以进行更改。
+如果 SSPR 策略要求用户定期检查其安全信息，则用户会在登录期间中断，并显示其所有注册方法。 如果是最新的，他们可以确认当前信息，如果需要，也可以进行更改。 访问此页时，用户必须执行多重身份验证。
 
 ### <a name="manage-mode"></a>管理模式
 

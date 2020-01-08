@@ -4,15 +4,15 @@ description: 有关收集 Azure 虚拟机、VM 规模集、Service Fabric 和云
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/04/2019
-ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fe1c1018768c81248640521ae278bfb571934601
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395128"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 诊断扩展配置架构版本和历史记录
 此页为 Microsoft Azure SDK 附带的 Azure 诊断扩展架构版本编制了索引。  

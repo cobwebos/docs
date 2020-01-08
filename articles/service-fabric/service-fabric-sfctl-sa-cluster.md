@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl sa-cluster | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl standalone cluster 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl sa-群集
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理独立群集的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901015"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646018"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | config | 获取 Service Fabric 独立群集配置。 |
 | config-upgrade | 开始升级 Service Fabric 独立群集的配置。 |
@@ -39,20 +30,20 @@ ms.locfileid: "72901015"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --configuration-api-version [必需] | 独立群集 json 配置的 API 版本。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-sa-cluster-config-upgrade"></a>sfctl sa-cluster config-upgrade
 开始升级 Service Fabric 独立群集的配置。
@@ -61,7 +52,7 @@ ms.locfileid: "72901015"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --cluster-config            [必需] | 群集配置。 |
 | --application-health-policies | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -78,13 +69,13 @@ ms.locfileid: "72901015"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ### <a name="examples"></a>示例
 
@@ -101,21 +92,21 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

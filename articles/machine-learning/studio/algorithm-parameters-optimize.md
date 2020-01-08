@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4d44598bd1352ac6d4d98ae73838fbfc9e2485e7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427702"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>选择参数以优化 Azure 机器学习 Studio （经典）中的算法
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838439"
 
 
 
-有多种方法可选择模型。 在机器学习中，交叉验证是一种用于模型选择的最广泛使用的方法，并且是 Azure 机器学习 Studio 经典版中的默认模型选择机制。 由于 Azure 机器学习 Studio 的经典版支持 R 和 Python，因此你始终可以通过使用 R 或 Python 来实现其自己的模型选择机制。
+有多种方法可选择模型。 在机器学习中，交叉验证是用于模型选择的最广泛使用的方法之一，并且是 Azure 机器学习 Studio （经典）中的默认模型选择机制。 由于 Azure 机器学习 Studio （经典）同时支持 R 和 Python，因此你始终可以通过使用 R 或 Python 来实现其自己的模型选择机制。
 
 查找最佳参数集有四个步骤：
 
@@ -32,7 +32,7 @@ ms.locfileid: "73838439"
 3. **定义指标**：决定用于确定最佳参数集的指标，例如准确性、均方根误差、精度、撤销率或 F 分数。
 4. **训练、评估和比较**：对于每个独一无二的参数值组合，交叉验证基于定义的误差指标进行执行。 评估和比较后，可选择最佳模型。
 
-下图演示了如何在经典版 Azure 机器学习 Studio 中实现此目的。
+下图演示了如何在 Azure 机器学习 Studio （经典）中实现此目的。
 
 ![查找最佳参数集](./media/algorithm-parameters-optimize/fig1.png)
 

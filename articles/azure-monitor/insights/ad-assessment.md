@@ -4,15 +4,15 @@ description: 可以使用 Active Directory 运行状况检查解决方案定期�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406137"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "72899188"
 
 ## <a name="prerequisites"></a>必备组件
 
-* Active Directory 运行状况检查解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.5.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
+* Active Directory 运行状况检查解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.6.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 不需要其他配置。
 
@@ -64,7 +64,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 - Active Directory 服务接口 (ADSI)
 - Windows PowerShell
 - 文件数据
-- Windows Management Instrumentation (WMI)
+- Windows 管理规范 (WMI)
 - DCDIAG 工具 API
 - 文件复制服务 (NTFRS) API
 - 自定义 C# 代码
@@ -119,7 +119,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
     ![健康检查建议的图像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. 可以采取“**建议的操作**”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
+4. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 

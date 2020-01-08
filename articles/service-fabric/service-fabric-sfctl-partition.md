@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI - sfctl partition | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl partition 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl 分区
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理服务分区的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 2c2ebb7cb08cb6b6b2130290c81fa9e07766b5e2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646052"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | data-loss | 此 API 会造成指定的分区发生数据丢失。 |
 | data-loss-status | 获取使用 StartDataLoss API 启动的分区数据丢失操作的进度。 |
@@ -53,7 +44,7 @@ ms.locfileid: "72901082"
 > 此 API 一旦被调用就无法撤消。 调用 CancelOperation 只会停止执行操作并清除内部系统状态。 如果命令的执行时间很长，已导致数据丢失，则不会还原数据。 使用同一 OperationId 调用 GetDataLossProgress API 会返回使用此 API 启动的操作的信息。
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --data-loss-mode [必需] | 此枚举会传递到 StartDataLoss API，表示会导致哪种类型的数据丢失。 |
 | --operation-id   [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
@@ -63,13 +54,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-data-loss-status"></a>sfctl partition data-loss-status
 获取使用 StartDataLoss API 启动的分区数据丢失操作的进度。
@@ -78,7 +69,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -87,13 +78,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-health"></a>sfctl partition health
 获取指定 Service Fabric 分区的运行状况。
@@ -102,23 +93,23 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id      [必需] | 分区的标识。 |
-| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任意 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
+| --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
-| --replicas-health-state-filter | 用于筛选分区中 ReplicaHealthState 对象的集合。 可从位运算的成员或 HealthStateFilter 的成员获取该值。 只会返回与筛选器匹配的副本。 所有副本都会用于评估聚合运行状态。 如果未指定，将返回所有条目。状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则会返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 此参数的可能值包括以下运行状态之一的整数值。  <br> - Default - 默认值。 匹配任意 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
+| --replicas-health-state-filter | 用于筛选分区中 ReplicaHealthState 对象的集合。 可从位运算的成员或 HealthStateFilter 的成员获取该值。 只会返回与筛选器匹配的副本。 所有副本都会用于评估聚合运行状态。 如果未指定，将返回所有条目。状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则会返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 此参数的可能值包括以下运行状态之一的整数值。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-info"></a>sfctl partition info
 获取有关 Service Fabric 分区的信息。
@@ -127,20 +118,20 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-list"></a>sfctl partition list
 获取 Service Fabric 服务的分区列表。
@@ -149,21 +140,21 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --service-id [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-load"></a>sfctl partition load
 获取指定的 Service Fabric 分区的负载信息。
@@ -172,20 +163,20 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-load-reset"></a>sfctl partition load-reset
 重置 Service Fabric 分区的当前负载。
@@ -194,20 +185,20 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-quorum-loss"></a>sfctl partition quorum-loss
 造成给定的有状态服务分区发生仲裁丢失。
@@ -216,7 +207,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --operation-id         [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id         [必需] | 分区的标识。 |
@@ -227,13 +218,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-quorum-loss-status"></a>sfctl partition quorum-loss-status
 获取使用 StartQuorumLoss API 在分区上启动的仲裁丢失操作的进度。
@@ -242,7 +233,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -251,13 +242,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-recover"></a>sfctl partition recover
 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的特定分区。
@@ -266,20 +257,20 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-recover-all"></a>sfctl partition recover-all
 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的所有服务（包括系统服务）。
@@ -288,19 +279,19 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-report-health"></a>sfctl partition report-health
 发送有关 Service Fabric 分区的运行状况报告。
@@ -309,7 +300,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -324,13 +315,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 此 API 会重启指定分区的部分或所有副本或者实例。
@@ -339,7 +330,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --operation-id           [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id           [必需] | 分区的标识。 |
@@ -349,13 +340,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-restart-status"></a>sfctl partition restart-status
 获取使用 StartPartitionRestart 启动的 PartitionRestart 操作的进度。
@@ -364,7 +355,7 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -373,13 +364,13 @@ ms.locfileid: "72901082"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-partition-svc-name"></a>sfctl partition svc-name
 获取分区的 Service Fabric 服务名称。
@@ -388,20 +379,20 @@ ms.locfileid: "72901082"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

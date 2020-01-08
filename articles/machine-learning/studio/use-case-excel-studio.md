@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5f4169753e653a1c6c82c997d37769d8548e76ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427450"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>将分析从 Excel 迁移到 Azure 机器学习 Studio （经典）
 
@@ -26,24 +26,24 @@ ms.locfileid: "73839439"
 我们的项目开始时有两个目标： 
 
 1. 使用预测分析来提高我们组织每月收入预测的准确性 
-2. 使用 Azure 机器学习 Studio 的经典版本来确认、优化、提高速度并缩放我们的结果。 
+2. 使用 Azure 机器学习 Studio （经典）来确认、优化、提高速度并缩放我们的结果。 
 
-与许多企业一样，我们的组织每月也会经历收入预测过程。 我们的一小业务分析人员团队使用 Azure 机器学习 Studio 的经典版本来支持该过程和提高预测准确性。 小组花费了几个月的时间从多个源中收集数据，并通过标识与服务销售预测相关的重要属性的统计分析来运行数据属性。 后续步骤是要开始在 Excel 中为数据建立统计回归模型的原型。 在几个星期内，我们便有了 Excel 回归模型，其效果优于当前字段和财务预测过程。 这也成为预测结果的基线。 
+与许多企业一样，我们的组织每月也会经历收入预测过程。 我们的小型业务分析人员团队使用 Azure 机器学习 Studio （经典）来支持该过程和提高预测准确性。 小组花费了几个月的时间从多个源中收集数据，并通过标识与服务销售预测相关的重要属性的统计分析来运行数据属性。 后续步骤是要开始在 Excel 中为数据建立统计回归模型的原型。 在几个星期内，我们便有了 Excel 回归模型，其效果优于当前字段和财务预测过程。 这也成为预测结果的基线。 
 
-然后，我们采取了下一步，将我们的预测分析转移到经典版 Studio，以了解经典版 Studio 如何提高预测性能。
+然后，我们采取了下一步，将我们的预测分析转移到工作室（经典），了解 Studio （经典）如何提高预测性能。
 
 ## <a name="achieving-predictive-performance-parity"></a>实现预测性能奇偶校验
-第一种优先级是在经典版 Studio 和 Excel 回归模型之间实现奇偶校验。 对于定型数据和测试数据，在给定相同的数据和拆分的情况下，我们想要在 Excel 和经典版 Studio 之间实现预测性能奇偶校验。 最初我们失败了。 Excel 模型效果好 Studio （经典）模型。 失败是因为缺乏了解经典版 Studio 中的基本工具设置。 与经典版 Studio 产品团队同步之后，我们可以更好地了解数据集所需的基本设置，并实现了这两个模型之间的奇偶校验。 
+第一种优先级是实现 Studio （经典）和 Excel 回归模型之间的奇偶校验。 对于定型数据和测试数据，在给定相同数据的情况下，我们想要在 Excel 和 Studio （经典）之间实现预测性能。 最初我们失败了。 Excel 模型效果好 Studio （经典）模型。 失败是由于缺乏了解 Studio （经典）中基本工具设置的原因。 与 Studio （经典）产品团队同步之后，我们可以更好地了解数据集所需的基本设置，并实现了这两个模型之间的奇偶校验。 
 
 ### <a name="create-regression-model-in-excel"></a>在 Excel 中创建回归模型
 我们的 Excel 回归使用 Excel 分析工具库中找到的标准线性回归模型。 
 
-我们计算出*平均绝对百分比误差*，并将其用作模型的性能度量。 花费了 3 个月的时间来实现使用 Excel 的工作模型。 我们将许多学习投入了经典版本的工作室试验，最终对理解要求有利。
+我们计算出*平均绝对百分比误差*，并将其用作模型的性能度量。 花费了 3 个月的时间来实现使用 Excel 的工作模型。 我们将许多学习引入了工作室（经典）试验，最终对于理解要求非常有利。
 
 ### <a name="create-comparable-experiment-in-studio-classic"></a>在 Studio （经典）中创建可比较试验
-我们按照以下步骤在经典版 Studio 中创建实验： 
+我们按照以下步骤在 Studio （经典）中创建实验： 
 
-1. 将数据集以 csv 文件上传到经典版 Studio （非常小的文件）
+1. 将数据集以 csv 文件上传到 Studio （经典）（非常小的文件）
 2. 创建新实验，并使用 "[选择数据集中的列][select-columns]" 模块来选择 Excel 中使用的相同数据功能 
 3. 使用[拆分数据][split]模块（使用*相对表达式*模式）将数据划分为与在 Excel 中所执行的相同定型数据集 
 4. 带有[线性回归][linear-regression]模块的 vspackage （仅限默认选项），记录并将结果与我们的 Excel 回归模型进行比较
@@ -51,35 +51,35 @@ ms.locfileid: "73839439"
 ### <a name="review-initial-results"></a>查看初始结果
 最初，Excel 模型会清晰地效果好 Studio （经典）模型： 
 
-|  | Excel | Studio （经典） |
+|  | Excel | 工作室（经典版） |
 | --- |:---:|:---:|
 | 性能 | | |
-| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不适用 |
-| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不适用 |0.78<br />（低准确性） |
+| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |N/A |
+| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |N/A |0.78<br />（低准确性） |
 | 平均绝对误差 |$9.5M |$ 19.4 M |
 | 平均绝对误差 (%) |6.03% |12.2% |
 
 当我们向机器学习团队的开发人员和数据科学家运行我们的过程和结果时，他们快速提供了一些有用的提示。 
 
-* 在经典版 Studio 中使用[线性回归][linear-regression]模块时，将提供两种方法：
+* 如果在 Studio （经典）中使用[线性回归][linear-regression]模块，则会提供两个方法：
   * 在线梯度下降：可能更适合于大规模的问题
   * 普通最小二乘法：这是大多数人在听到线性回归时会想到的方法。 对于小型数据集，普通最小二乘法是较好的选择。
 * 考虑调整 L2 正则化权重参数，以提高性能。 默认情况下，其设置为 0.001，而对于我们的小型数据集，将其设置为 0.005 以提高性能。 
 
 ### <a name="mystery-solved"></a>谜题解决了！
-当我们应用了建议时，我们在经典版 Studio 中实现了与 Excel 相同的基线性能： 
+当我们应用了建议时，我们在 Studio （经典）中实现了与 Excel 相同的基线性能： 
 
 |  | Excel | Studio （经典）（初始） | Studio （经典） w/最小平方 |
 | --- |:---:|:---:|:---:|
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
-| 学习器选项 |不适用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
+| 学习器选项 |N/A |默认值 |普通最小二乘法<br />L2 = 0.005 |
 | 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
 | 拆分：训练 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
-| **性能** | | | |
-| 调整 R 平方 |0.96 |不适用 | |
-| 决定系数 |不适用 |0.78 |0.952049 |
+| **“性能”** | | | |
+| 调整 R 平方 |0.96 |N/A | |
+| 决定系数 |N/A |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -95,7 +95,7 @@ ms.locfileid: "73839439"
 ## <a name="next-steps"></a>后续步骤
 我们想要在 Excel 内使用机器学习 Web 服务。 我们的业务分析人员依靠 Excel，而我们需要一种方法来调用机器学习 Web 服务和 Excel 数据，并使其将预测的值返回到 Excel。 
 
-我们还想使用经典版 Studio 中提供的选项和算法来优化模型。
+我们还希望使用 Studio 中提供的选项和算法来优化模型（经典）。
 
 ### <a name="integration-with-excel"></a>与 Excel 集成
 我们的解决方案是：通过从训练模型中创建 Web 服务，使我们的机器学习回归模型实现可操作化。 在数分钟内，Web 服务即已创建，我们可以直接从 Excel 进行调用，以返回预测的收入值。 
@@ -113,7 +113,7 @@ ms.locfileid: "73839439"
 
 接下来，我们计划在实验中包含其他算法，如[Bayesian][bayesian-linear-regression]或[提升决策树][boosted-decision-tree-regression]，以比较性能。 
 
-如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 数据集作为经典版 Studio 中的示例数据集的一部分提供。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
+如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 数据集作为 Studio （经典）中的示例数据集的一部分提供。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
 
 | 模型 | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
 | --- | --- | --- | --- | --- | --- |
@@ -123,18 +123,18 @@ ms.locfileid: "73839439"
 | 线性回归（普通最小二乘法） |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>要点
-通过并行运行 Excel 回归和经典版本的 Studio 试验，我们学到了很多知识。 在 Excel 中创建基线模型，并将其与使用机器学习[线性回归][linear-regression]的模型进行比较，帮助我们了解 Studio （经典），并且我们发现了改进数据选择和模型性能的机会。 
+通过并行运行 Excel 回归和 Studio （经典）试验，我们学到了很多知识。 在 Excel 中创建基线模型，并将其与使用机器学习[线性回归][linear-regression]的模型进行比较，帮助我们了解 Studio （经典），并且我们发现了改进数据选择和模型性能的机会。 
 
-我们还发现，建议使用[基于筛选器的功能选择][filter-based-feature-selection]来加速未来的预测项目。 通过对数据应用功能选择，可以在经典版本的 Studio 中创建改进的模型，以获得更好的整体性能。 
+我们还发现，建议使用[基于筛选器的功能选择][filter-based-feature-selection]来加速未来的预测项目。 通过对数据应用功能选择，可以在 Studio （经典）中创建改进的模型，以获得更好的整体性能。 
 
-如果能够将预测分析预测从经典版 Studio 传输到 Excel 能力使得，则可大大提高向广泛的业务用户受众成功提供结果的能力。 
+如果能够将预测分析预测从 Studio （经典）传输到 Excel 能力使得，则可大大提高向广泛的业务用户受众成功提供结果的能力。 
 
 ## <a name="resources"></a>资源
 下面是一些可帮助用户处理回归的资源： 
 
 * Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
-* 普通最小二乘法线性回归：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* 普通最小二乘法线性回归：缺陷、问题和陷阱。 有关回归的介绍和讨论： [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

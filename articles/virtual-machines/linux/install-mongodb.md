@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430291"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>如何在 Linux VM 上安装和配置 MongoDB
 
@@ -50,7 +50,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-使用自己的用户名和上一步骤中的输出中列出的 `publicIpAddress` 以 SSH 方式登录到 VM：
+使用你自己的用户名和上一步骤中的输出中列出的 `publicIpAddress` 以 SSH 方式登录到 VM：
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -117,7 +117,7 @@ sudo chkconfig mongod on
 
 
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>使用模板在 CentOS 上创建基本 MongoDB 实例
-可以使用 GitHub 中的以下 Azure 快速入门模板，在单个 CentOS VM 上创建基本的 MongoDB 实例。 此模板使用适用于 Linux 的自定义脚本扩展将 yum 存储库添加到新建的 CentOS VM，并安装 MongoDB。
+可以使用 GitHub 中的以下 Azure 快速入门模板，在单个 CentOS VM 上创建基本的 MongoDB 实例。 此模板使用适用于 Linux 的自定义脚本扩展将 yum 存储库添加到新建的 CentOS VM，然后安装 MongoDB。
 
 * [CentOS 上的基本 MongoDB 实例](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
@@ -213,9 +213,9 @@ az group deployment show \
 ## <a name="next-steps"></a>后续步骤
 在上述示例中，已在本地从 VM 连接到 MongoDB 实例。 如果想要从另一个 VM 或网络连接到 MongoDB 实例，请确保[创建相应的网络安全组规则](nsg-quickstart.md)。
 
-这些示例部署用于开发的核心 MongoDB 环境。 请为环境应用必需的安全配置选项。 有关详细信息，请参阅 [MongoDB 安全文档](https://docs.mongodb.com/manual/security/)。
+这些示例部署用于开发的核心 MongoDB 环境。 请为你的环境应用必需的安全配置选项。 有关详细信息，请参阅 [MongoDB 安全文档](https://docs.mongodb.com/manual/security/)。
 
-有关使用模板创建这些规则的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+有关使用模板创建这些规则的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 Azure 资源管理器模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
 

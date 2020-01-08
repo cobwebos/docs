@@ -1,19 +1,15 @@
 ---
 title: Azure 中的自动缩放入门
 description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、虚拟机或虚拟机规模集。
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396351"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -23,7 +19,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 可在 Azure Monitor 中查找自动缩放功能适用的所有资源。 按下列步骤进行分步演练：
 
-1. 打开 [Azure 门户][1]。
+1. 打开[Azure 门户。][1]
 1. 单击左窗格中的“Azure Monitor”图标。
   ![打开 Azure Monitor][2]
 1. 单击“自动缩放”以查看自动缩放适用的所有资源及其当前的自动缩放状态。
@@ -33,32 +29,32 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 对于每个资源，将会看到其当前实例计数和自动缩放状态。 自动缩放状态可以是：
 
-- **未配置**：尚未对此资源启用自动缩放功能。
-- **已启用**：已对此资源启用自动缩放功能。
-- **已禁用**：已对此资源禁用自动缩放功能。
+- 未配置：尚未对此资源启用自动缩放功能。
+- 已启用：已对此资源启用自动缩放功能。
+- 已禁用：已对此资源禁用自动缩放功能。
 
 ## <a name="create-your-first-autoscale-setting"></a>创建第一个自动缩放设置
 
 现在，让我们完成一个简单的分步演练，以创建第一个自动缩放设置。
 
-1. 在 Azure Monitor 中打开“自动缩放”边栏选项卡，然后选择要缩放的资源。 （以下步骤使用与某 Web 应用关联的应用服务计划。 [仅需 5 分钟，就可在 Azure 中创建首个 ASP.NET Web 应用。][4]）
+1. 在 Azure Monitor 中打开“自动缩放”边栏选项卡，然后选择要缩放的资源。 （以下步骤使用与某 Web 应用关联的应用服务计划。 可[在5分钟内在 Azure 中创建第一个 ASP.NET web 应用。][4]）
 1. 请注意当前实例计数为 1。 单击“启用自动缩放”。
   ![新 Web 应用的缩放设置][5]
 1. 提供缩放设置的名称，然后单击“添加规则”。 请注意右侧以上下文窗格形式打开的缩放规则选项。 默认情况下，这将选项设置为当资源的 CPU 百分比超过 70% 时，将实例计数缩放 1 个单位。 请将此选项保留默认值，并单击“添加”。
   ![为 Web 应用创建缩放设置][6]
 1. 现已创建第一个缩放规则。 请注意，UX 建议了最佳做法，并指出“建议至少在规则中包含一个缩放设置”。 为此，请执行以下操作：
 
-    a. 单击“添加规则”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加规则”。
 
-    b. 将“运算符”设置为“小于”。
+    b.保留“数据库类型”设置，即设置为“共享”。 将“运算符”设置为“小于”。
 
     c. 将“阈值”设置为 20。
 
-    d. 将“操作”设置为“按以下值递减计数”。
+    d.单击“下一步”。 将“操作”设置为“按以下值递减计数”。
 
    现在应已创建一个可以根据 CPU 使用率进行扩展/缩减的缩放设置。
    ![基于 CPU 进行缩放][8]
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 祝贺你！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
 

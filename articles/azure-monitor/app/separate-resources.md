@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs
+title: Azure 应用程序 Insights 中分隔遥测数据
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c58a54dd4916b5687d46cbf4b816bd656113f9ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406414"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -50,7 +50,7 @@ ms.locfileid: "73928305"
 
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
-### <a name="web-pages"></a>网页
+### <a name="web-pages"></a>Web 页面
 在应用程序的网页中，还[可以从 "快速入门" 边栏选项卡中获取的脚本](../../azure-monitor/app/javascript.md)中使用 iKey。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*

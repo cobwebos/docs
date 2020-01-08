@@ -1,24 +1,24 @@
 ---
-title: 什么是用于 VM 的 Azure Monitor（预览版）？ | Microsoft 文档
+title: 什么是用于 VM 的 Azure Monitor（预览版）？ | Microsoft Docs
 description: 用于 VM 的 Azure Monitor 的概述，它监视 Azure Vm 的运行状况和性能，以及自动发现和映射应用程序组件及其依赖项。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 17aa81c626c1bfa8a8a344552b7a0fe61dd85a7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365778"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
 用于 VM 的 Azure Monitor 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 
 
-它支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。 以下主要功能提供了深入了解：
+它包括对监视本地或其他云提供程序中的 Vm 的性能和应用程序依赖关系的支持。 以下主要功能提供了深入了解：
 
 - **预定义的趋势性能图表**：显示来宾 VM 操作系统中的核心性能指标。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74307302"
 - 创建的预警规则。
 - 发送的通知。 
 
-日志大小因性能计数器的字符串长度而异，并且可能会随分配给 VM 的逻辑磁盘和网络适配器的数量而增大。 如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。 如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
+日志大小根据性能计数器的字符串长度而变化，并且可以增加逻辑磁盘数和分配给 VM 的网络适配器数。 如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。 如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
 
 ## <a name="next-steps"></a>后续步骤
 

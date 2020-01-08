@@ -5,23 +5,23 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430528"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
 
-* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这是在门户 GUI（例如应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。 当通过基于角色的访问控制（RBAC）或 coadmin 权限向用户授予应用访问权限时，该用户可以使用其自己的用户级别的凭据，直到吊销访问权限。 请勿与其他 Azure 用户共享这些凭据。
+* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这是在门户 GUI（例如应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。 当通过基于角色的访问控制（RBAC）或 coadmin 权限向用户授予应用访问权限时，该用户可以使用其自己的用户级别的凭据，直到吊销访问权限。 请勿与其他 Azure 用户共享这些凭据。
 
 * **应用级凭据**：一组适用于每个应用的凭据。 若要只部署到该应用，则可使用这组凭据。 每个应用的凭据在其创建时自动生成。 这些凭据不能手动进行配置，但可随时进行重置。 如果要通过 (RBAC) 授予用户访问应用级别凭据的权限，该用户必须是应用的参与者或更高级别身份。 读者不可进行发布，因此无法访问这些凭据。
 
 ## <a name="userscope"></a>配置用户级凭据
 
-可以在应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)中配置用户级凭据。 不管是在哪个应用中配置这些凭据，该凭据适用于所有应用以及 Azure 帐户中的所有订阅。 
+可以在应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)中配置用户级凭据。 不管是在哪个应用中配置这些凭据，该凭据适用于所有应用以及 Azure 帐户中的所有订阅。 
 
 ### <a name="in-the-cloud-shell"></a>在 Cloud Shell
 

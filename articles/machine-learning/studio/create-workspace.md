@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427617"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>创建并共享 Azure 机器学习 Studio （经典）工作区
 
@@ -47,7 +47,7 @@ ms.locfileid: "73839921"
 > 机器学习 Studio （经典）依赖于你提供的 Azure 存储帐户，以便在执行工作流时保存中间数据。 创建工作区后，如果删除了存储帐户或如果更改了访问密钥，工作区将停止运行，该工作区中的所有试验会失败。
 如果意外删除了存储帐户，可在相同区域重新创建与删除的存储帐户同名的存储帐户，并重新同步访问密钥。 如果更改了存储帐户访问密钥，请使用 Azure 门户在工作区中重新同步访问密钥。
 
-部署工作区后，可以在经典版本的机器学习 Studio 中打开它。
+部署工作区后，可以在机器学习 Studio （经典）中打开它。
 
 1. 浏览到[https://studio.azureml.net/](https://studio.azureml.net/)机器学习 Studio （经典）。
 
@@ -76,7 +76,7 @@ ms.locfileid: "73839921"
 
 ### <a name="to-share-a-studio-classic-workspace"></a>共享 Studio （经典）工作区
 
-1. 在[https://studio.azureml.net/Home](https://studio.azureml.net/Home)登录到经典版本的机器学习 Studio
+1. 登录到[https://studio.azureml.net/Home](https://studio.azureml.net/Home)机器学习 Studio （经典）
 
 2. 在左面板中，单击“设置”
 

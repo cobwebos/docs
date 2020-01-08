@@ -2,19 +2,15 @@
 title: 在 Azure Automation State Configuration 中编译配置
 description: 本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9d8efce09c2981e4ee256228d4792bcf97172e6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366407"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
@@ -277,7 +273,7 @@ Windows PowerShell 中的编译还提供了用于对配置内容进行签名的�
    ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
 
 1. 在“配置名称”文本框中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
-1. 单击 **“确定”** 。
+1. 单击“确定”。
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>使用 Azure PowerShell 导入节点配置
 
@@ -289,7 +285,7 @@ Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomatio
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)

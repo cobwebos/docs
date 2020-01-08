@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407234"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -77,9 +77,9 @@ ms.locfileid: "74850068"
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-支持以下版本的 .NET Core： ASP.NET Core 2.0、ASP.NET Core 2.1 ASP.NET Core 2。2
+支持以下版本的 .NET Core： ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2 ASP.NET Core 3。0
 
-基于 .NET Core、自包含部署和 ASP.NET Core 3.0 的完整框架当前**不支持**基于代理/扩展的监视。 （通过代码进行的[手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)将适用于上述所有情况。）
+当前**不支持**基于 .net Core、自包含部署和基于 Linux 的应用程序的完整框架。 （通过代码进行的[手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)将适用于上述所有情况。）
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
@@ -92,7 +92,7 @@ ms.locfileid: "74850068"
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用的资源后，可以选择希望 Application Insights 如何为应用程序收集每个平台的数据。 .NET Core 为 .NET Core 2.0、2.1 和2.2 提供**推荐收集**或**禁用**。
+2. 指定要使用的资源后，可以选择希望 Application Insights 如何为应用程序收集每个平台的数据。 .NET Core 为 .NET Core 2.0、2.1、2.2 和3.0 提供**推荐的收集**或**禁用**。
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -168,10 +168,10 @@ ms.locfileid: "74850068"
 
 ### <a name="application-settings-definitions"></a>应用程序设置定义
 
-|应用设置名称 |  定义 | Value |
+|应用设置名称 |  定义 | 值 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 主扩展，控制运行时监视。 | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  仅在默认模式下，启用了基本功能，以便确保最佳性能。 | `default`或`recommended`。 |
+|XDT_MicrosoftApplicationInsights_Mode |  仅在默认模式下，启用了基本功能，以便确保最佳性能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否将启用二进制重写引擎 `InstrumentationEngine`。 此设置会影响性能，并影响冷启动/启动时间。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否将捕获 SQL & Azure 表文本以及依赖项调用。 性能警告：此设置需要 `InstrumentationEngine`。 | `~1` |
 
@@ -377,7 +377,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 下表提供了有关这些值的含义、其根本原因和推荐修补程序的更详细说明：
 
-|问题值|说明|解决方法
+|问题值|说明|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值指示该扩展已检测到 SDK 的某个方面已经存在于应用程序中，并将进行回退。 这可能是由于引用 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`或 `Microsoft.ApplicationInsights`  | 删除引用。 某些 Visual studio 模板默认情况下会添加其中的某些引用，较旧版本的 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights`的引用。
 |`AppAlreadyInstrumented:true` | 如果应用程序面向 .NET Core 2.1 或2.2，并引用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.All) ，则会将其引入 Application Insights，扩展将会关闭。 | [建议](https://github.com/aspnet/Announcements/issues/287)使用 .net Core 2.1、2.2 的客户改为使用 AspNetCore 元包。|

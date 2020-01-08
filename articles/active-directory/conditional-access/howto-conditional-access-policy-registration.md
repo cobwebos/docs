@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 866b682c9e1ebcb1b3458d26c638237905d06b05
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424853"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件性访问：要求受信任的位置进行 MFA 注册
 
@@ -50,5 +50,7 @@ ms.locfileid: "74889728"
 ## <a name="next-steps"></a>后续步骤
 
 [条件访问公用策略](concept-conditional-access-policy-common.md)
+
+[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
 
 [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed35abd5b9bfb8b9a74d598f1fa93d8f1a985bfb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425298"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报告 | Location | 描述 |
+| 报告 | 位置 | Description |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD > 安全 > MFA > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
@@ -32,7 +32,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 ## <a name="view-mfa-reports"></a>查看 MFA 报告
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧，选择 " **Azure Active Directory** > **Security** > **MFA**"。
 3. 选择要查看的报告。
 
@@ -134,11 +134,21 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 ```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
+标识注册的用户和输出方法。 
+
+```PowerShell
+Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
+
+@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},
+
+@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
+```
+
 ## <a name="possible-results-in-activity-reports"></a>活动报表中可能的结果
 
 下表可用于通过多因素身份验证活动报表的下载版本排查多重身份验证问题。 它们不会直接显示在 Azure 门户中。
 
-| 调用结果 | 描述 | 广泛说明 |
+| 调用结果 | Description | 广泛说明 |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则他们输入了正确的 PIN 码。  如果身份验证被拒绝，则他们输入的 PIN 不正确，或用户设置为 "标准" 模式。 |
 | SUCCESS_NO_PIN | 仅输入 # | 如果用户被设置为“PIN”模式并且身份验证被拒绝，这表示用户没有输入自己的 PIN，而只输入了 #。  如果用户被设置为“标准”模式并且身份验证成功，这表示用户只输入了 #，而这在“标准”模式下是正确的做法。 |

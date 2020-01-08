@@ -1,23 +1,14 @@
 ---
 title: 容器的 Azure Monitor 运行状况监视器配置 |Microsoft Docs
 description: 本文提供了介绍 Azure Monitor for 容器中的运行状况监视器的详细配置的内容。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405037"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>容器的 Azure Monitor 运行状况监视器配置指南
 
@@ -29,13 +20,13 @@ ms.locfileid: "74664941"
 
 ## <a name="monitors"></a>监视器
 
-监视器衡量托管对象某个方面的运行状况。 监视器每个具有两个或三个运行状况状态。 在任何给定时间，监视器都将处于一种或多种状态。 容器化代理加载监视器时，会将监视器初始化为正常状态。 仅当检测到另一种状态的指定条件时，状态才会更改。
+监视器衡量托管对象某个方面的运行状况。 监视器各具有两个或三个运行状况状态。 无论何时，监视器将处于一种且仅处于一种其潜在状态。 容器化代理加载监视器时，会将监视器初始化为正常状态。 仅当检测到另一种状态的指定条件时，状态才会更改。
 
-特定对象的总体运行状况由其每个监视器的运行状况确定。 此层次结构在容器 Azure Monitor 中的 "运行状况层次结构" 窗格中进行说明。 如何汇总运行状况的策略是聚合监视器的配置的一部分。
+特定对象的总体运行状况的确定依据是其每个监视器的运行状况。 此层次结构在容器 Azure Monitor 中的 "运行状况层次结构" 窗格中进行说明。 如何汇总运行状况的策略是聚合监视器的配置的一部分。
 
 ## <a name="types-of-monitors"></a>监视器类型
 
-|监视 | 描述 | 
+|监视 | Description | 
 |--------|-------------|
 | 单元监视器 |单元监视器测量资源或应用程序的某个方面。 这可能会检查性能计数器以确定资源的性能或其可用性。 |
 |聚合监视器 | 聚合监视器将多个监视器组合在一起，以提供单个运行状况聚合运行状况状态。 单元监视器通常在特定聚合监视器下进行配置。 例如，节点聚合监视器汇总节点的 CPU 使用率、内存使用率和节点状态的状态。

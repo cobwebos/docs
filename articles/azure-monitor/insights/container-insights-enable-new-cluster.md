@@ -1,24 +1,20 @@
 ---
-title: 监视新的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
-description: 了解如何使用用于容器的 Azure Monitor 订阅启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视。
-ms.service: azure-monitor
-ms.subservice: ''
+title: 监视新的 Azure Kubernetes 服务（AKS）群集 |Microsoft Docs
+description: 了解如何使用 Azure Monitor for 容器订阅为新的 Azure Kubernetes 服务（AKS）群集启用监视。
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405436"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务（AKS）群集的监视
 
-本文介绍如何设置用于容器的 Azure Monitor，以监视准备在订阅中部署的 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上托管的托管 Kubernetes 群集。
+本文介绍如何设置容器的 Azure Monitor，以监视在你准备在订阅中部署的[Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)上托管的托管 Kubernetes 群集。
 
-可以使用下述支持的方法之一，启用对 AKS 群集的监视：
+可以使用受支持的方法之一来启用对 AKS 群集的监视：
 
 * Azure CLI
 * Terraform
@@ -37,7 +33,7 @@ ms.locfileid: "73478706"
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
 
-要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile **，以及指定 oms_agent，完成配置文件**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)。 
+要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)，以及指定 oms_agent，完成配置文件。 
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 

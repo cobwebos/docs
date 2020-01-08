@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427427"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中使用示例数据集（经典）
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 乘客航班时间从美国交通部的 TranStats 数据收集获取的时间性能数据（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">按时）。</a>
 <p></p>
-数据集涵盖 2013 年 4 月到 10 月的时间段。 将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
+数据集涵盖 2013 年 4 月到 10 月的时间段。 上载到 Azure 机器学习 Studio （经典）之前，数据集的处理方式如下：
 <ul>
   <li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li>
   <li>取消的航班标记为延误超过 15 分钟</li>
@@ -329,7 +329,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 美国国家海洋和大气局每小时发布的陆基天气观测（<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
 <p></p>
-该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
+该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 上载到 Azure 机器学习 Studio （经典）之前，数据集的处理方式如下：
 <ul>
   <li>气象站 ID 已映射到相应的机场 ID</li>
   <li>与 70 个最繁忙的机场无关的气象站已筛选掉</li>
@@ -344,7 +344,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 数据来自维基百科 (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
 <p></p>
-将数据集上传到经典版 Azure 机器学习 Studio 之前，将按如下所示处理数据集：
+上载到 Azure 机器学习 Studio （经典）之前，数据集的处理方式如下：
 <ul>
   <li>提取每个特定公司的文本内容</li>
   <li>去除维基百科的格式设置</li>
@@ -390,7 +390,7 @@ RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
-RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配给新闻文章多个主题。 每行的格式为“&lt;主题名称&gt; &lt;文档 ID&gt; 1”。 数据集包含 2.6M 个主题分配。 数据集由 David 提供。 D. Lewis。
+RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配给新闻文章多个主题。 每行的格式为 "&lt;主题名称&gt; &lt;文档 id&gt; 1"。 数据集包含 2.6M 个主题分配。 数据集由 David 提供。 D. Lewis。
   </td>
 </tr>
 

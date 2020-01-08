@@ -1,25 +1,20 @@
 ---
-title: 从通用本地 VHD 创建托管 Azure VM
+title: 从已上传的通用 VHD 创建 VM
 description: 将通用化 VHD 上传到 Azure 并使用它来创建新的 VM（使用 Resource Manager 部署模型）。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464947"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新的 VM
 
@@ -30,14 +25,12 @@ ms.locfileid: "74067431"
 ## <a name="before-you-begin"></a>开始之前
 
 - 将任何 VHD 上传到 Azure 之前，应按照[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 进行操作。
-- 开始迁移到[托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)之前，请先查看[规划迁移到托管磁盘](managed-disks-overview.md)。
+- 开始迁移到[托管磁盘](managed-disks-overview.md)之前，请先查看[规划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
 
  
-
-
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 通用化源 VM
 
-Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅 [Sysprep Overview](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)（Sysprep 概述）。
+如果尚未将 VHD 上传到 Azure，则需要先将 VM Sysprep。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅 [Sysprep Overview](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)（Sysprep 概述）。
 
 确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
@@ -56,40 +49,49 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
 6. Sysprep 在完成后会关闭虚拟机。 请勿重启 VM。
 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户
+## <a name="upload-the-vhd"></a>上传 VHD 
 
 你现在可以将 VHD 直接上传到托管磁盘。 有关说明，请参阅[使用 Azure PowerShell 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>从上传的 VHD 中创建托管映像 
 
-从通用 OS 托管磁盘创建托管映像。 将以下值替换为自己的信息。
+将 VHD 上传到托管磁盘后，需要使用[AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)获取托管磁盘。
 
-
-首先，设置以下参数：
-
-```powershell
-$location = "East US" 
-$imageName = "myImage"
+```azurepowershell-interactive
+$disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-使用通用化的 OS VHD 创建映像。
+## <a name="create-the-image"></a>创建映像
+从通用 OS 托管磁盘创建托管映像。 将以下值替换为自己的信息。
+
+首先，设置以下变量：
 
 ```powershell
+$location = 'East US'
+$imageName = 'myImage'
+$rgName = 'myResourceGroup'
+```
+
+使用托管磁盘创建映像。
+
+```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `
    -Location $location
 $imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
-   -OsType Windows `
    -OsState Generalized `
-   -BlobUri $urlOfUploadedImageVhd `
-   -DiskSizeGB 20
-New-AzImage `
+   -OsType Windows `
+   -ManagedDiskId $disk.Id
+```
+
+创建映像。
+
+```azurepowershell-interactive
+$image = New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
 ```
-
 
 ## <a name="create-the-vm"></a>创建 VM
 
@@ -100,7 +102,7 @@ New-AzImage `
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
-    -ImageName $imageName `
+    -Image $image.Id `
     -Location $location `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `

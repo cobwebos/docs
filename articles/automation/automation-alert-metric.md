@@ -2,18 +2,14 @@
 title: 使用指标警报监视 Azure 自动化 Runbook
 description: 本文逐步讲解如何基于指标监视 Azure 自动化 Runbook
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367087"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422949"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作指南参考
 
@@ -31,7 +31,7 @@ ms.locfileid: "74535296"
 
 管理 Azure Active Directory 需要持续执行关键操作任务和进程，这可能不是一个部署项目的一部分。 设置这些任务以优化环境仍非常重要。 关键任务及其建议所有者包括：
 
-| 任务 | 所有者 |
+| 任务 | “所有者” |
 | :- | :- |
 | 提高了对标识安全分数的改进 | InfoSec 运营团队 |
 | 维护 Azure AD Connect 服务器 | IAM 操作团队 |
@@ -107,7 +107,7 @@ ms.locfileid: "74535296"
 #### <a name="on-premises-agents-management-recommended-reading"></a>本地代理管理建议阅读
 
 - [了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Azure AD 传递身份验证-快速入门](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Azure AD 传递身份验证-快速入门](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大规模管理
 
@@ -119,7 +119,7 @@ ms.locfileid: "74535296"
 - 规划标识安全改进
 - 审查改进措施的成败
 
-![安全评分](./media/active-directory-ops-guide/active-directory-ops-img17.png)
+![安全功能分数](./media/active-directory-ops-guide/active-directory-ops-img17.png)
 
 如果你的组织当前没有可用于监视身份安全分数变化的计划，则建议你实现计划并分配所有者来监视和推动改进操作。 组织应尽快纠正提高操作的得分，使得分超过30。
 
@@ -131,7 +131,7 @@ Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com>，�
 
 - [Azure AD 访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD 标识保护](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD 标识保护](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [企业应用过期证书通知](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
 - 企业应用预配服务通知
@@ -162,17 +162,17 @@ Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com>，�
 
 组织应使用与本地域相同的方式锁定对具有本地混合组件的计算机的访问。 例如，备份操作员或 Hyper-v 管理员应无法登录到 Azure AD Connect 服务器来更改规则。
 
-Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识系统，该环境在完全控制环境（第0层）与攻击者经常泄露的高风险工作站资产之间使用。 ![显示层模型的三个层的关系图](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识系统，该环境在完全控制环境（第0层）与攻击者经常泄露的高风险工作站资产之间使用。 ![层模型的三个层图示](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
 [层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)由三个级别组成，只包括管理帐户，而不包括标准用户帐户。
 
-- **第0层** -对环境中企业标识的直接控制。 第0层包括帐户、组和其他资产，这些资产对 Active Directory 林、域或域控制器以及其中的所有资产具有直接或间接管理控制。 所有第0层资产的安全敏感度都是等效的，因为它们都可以有效地进行控制。
-- **第1层** 控制企业服务器和应用程序。 第1层资源包括服务器操作系统、云服务和企业应用程序。 第1层管理员帐户对这些资产上托管的大量业务价值具有管理控制权限。 常见的示例角色是服务器管理员，它们维护这些操作系统的功能能够影响所有企业服务。
-- **第2层** 控制用户工作站和设备。 第2层管理员帐户对用户工作站和设备上托管的大量业务价值具有管理控制。 例如，"技术支持" 和 "计算机支持管理员"，因为它们可能会影响几乎任何用户数据的完整性。
+- **第0层** -对环境中企业标识的直接控制。 第 0 层包括帐户、组以及对 Active Directory 林、域或域控制器及其中的所有资产具有直接或间接管理控制权的其他资产。 第 0 层中所有资产的安全敏感性是等同的，因为它们均可以有效地相互控制。
+- **第1层** 控制企业服务器和应用程序。 第 1 层资产包括服务器操作系统、云服务和企业应用程序。 第 1 层的管理员帐户能够管理控制这些资产上托管的大量业务价值。 常见的示例角色是服务器管理员，此角色可维护这些操作系统并能够影响所有企业服务。
+- **第2层** 控制用户工作站和设备。 第 2 层的管理员帐户对用户工作站和设备上托管的大量业务价值具有管理控制权。 示例包括技术支持和计算机支持管理员，因为它们可以影响几乎任何用户数据的完整性。
 
 使用与域控制器相同的方式锁定对本地标识组件（例如 Azure AD Connect、AD FS 和 SQL 服务）的访问。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 安全标识基础结构有七个方面。 此列表将帮助你找到为 Azure Active Directory （Azure AD）优化操作而应执行的操作。
 

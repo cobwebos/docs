@@ -1,5 +1,5 @@
 ---
-title: 适用于 .NET 应用的 Azure Application Insights 快照调试器 | Microsoft Docs
+title: 适用于 .NET 应用的 Azure 应用程序 Insights Snapshot Debugger
 description: 生产 .NET 应用中出现异常时会自动收集调试快照
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: brahmnes
-ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 681190a23fd09402ae96c328b7d98044baf3444e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406399"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 在应用程序中包括[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，还可以选择在[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中配置集合参数。快照在 Application Insights 门户中出现[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要使用源代码获取更强大的调试体验，请使用 Visual Studio 2019 企业版打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
-调试快照存储15天。 此保留策略基于每个应用程序进行设置。 如果需要增加此值，则可以通过在 Azure 门户中建立支持案例来请求增加。
+调试快照存储15天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>为应用程序启用 Application Insights Snapshot Debugger
 快照集合可用于：

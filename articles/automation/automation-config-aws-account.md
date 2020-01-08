@@ -3,19 +3,15 @@ title: 使用 Amazon Web Services 配置身份验证
 description: 本文介绍如何创建和验证 Azure 自动化管理的 AWS 资源中的 Runbook 的 AWS 凭据。
 keywords: AWS 身份验证, 配置 AWS
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 9bca59efc374fedf04600ae165f04215016dd4af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366934"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 进行 Runbook 身份验证
 

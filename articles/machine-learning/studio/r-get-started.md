@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: f55b6e743ff82d4192cbdd91ba54c92efef432bc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427575"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure 机器学习 Studio 中的 R 编程语言入门（经典）
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
-本教程将帮助你开始使用 R 编程语言扩展 Azure 机器学习 Studio （经典）。 按照此 R 编程教程在 Studio （经典）中创建、测试和执行 R 代码。 在学习本教程时，你将使用经典版 Studio 中的 R 语言创建完整的预测解决方案。  
+本教程将帮助你开始使用 R 编程语言扩展 Azure 机器学习 Studio （经典）。 按照此 R 编程教程在 Studio （经典）中创建、测试和执行 R 代码。 在学习本教程时，你将使用 Studio 中的 R 语言（经典）创建完整的预测解决方案。  
 
-Azure 机器学习 Studio 的经典版包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 令人高兴的是，可以使用 R 扩展经典版 Studio 中的分析和数据操作。这种组合提供了对经典版 Studio 的可伸缩性和轻松部署，并且具有 R 的灵活性和深度分析。
+Azure 机器学习 Studio （经典）包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 令人高兴的是，可以使用 R 扩展工作室（经典）中的分析和数据操作。这种组合提供了通过 R 的灵活性和深度分析实现 Studio （经典）部署的可伸缩性和易用性。
 
 ### <a name="forecasting-and-the-dataset"></a>预测和数据集
 
@@ -39,23 +39,23 @@ Azure 机器学习 Studio 的经典版包含许多功能强大的机器学习和
 
 ### <a name="organization"></a>组织
 
-在 Azure 机器学习 Studio 环境的经典版中，我们将逐步完成几个步骤，了解如何创建、测试和执行分析和数据操作。  
+当你了解如何在 Azure 机器学习 Studio （经典）环境中创建、测试和执行分析和数据操作时，我们将逐步完成几个步骤。  
 
-* 首先，我们将探讨在经典版的 Azure 机器学习工作室环境中使用 R 语言的基础知识。
-* 接下来，我们将讨论 Azure 机器学习工作室环境经典版中的数据、R 代码和图形的 i/o 的各个方面。
+* 首先，我们将探讨在 Azure 机器学习 Studio （经典）环境中使用 R 语言的基础知识。
+* 接下来，我们将讨论 Azure 机器学习 Studio （经典）环境中的数据、R 代码和图形的 i/o 的各个方面。
 * 接着我们通过创建用于数据清理和转换的代码来构建预测解决方案的第一部分。
 * 准备好数据之后，在数据集的几个变量之间执行相关性分析。
 * 最后，我们创建牛奶生产的季节性时序预测模型。
 
 ## <a id="mlstudio"></a>在机器学习 Studio 中与 R 语言交互（经典）
 
-本部分将介绍在机器学习 Studio （经典）环境中与 R 编程语言交互的一些基础知识。 R 语言提供了一个功能强大的工具，可用于在经典版本的 Azure 机器学习 Studio 环境中创建自定义的分析和数据操作模块。
+本部分将介绍在机器学习 Studio （经典）环境中与 R 编程语言交互的一些基础知识。 R 语言提供了一个功能强大的工具，可用于在 Azure 机器学习 Studio （经典）环境中创建自定义的分析和数据操作模块。
 
-我将使用 RStudio 开发、测试和调试小规模的 R 代码。 然后，将此代码剪切并粘贴到[执行 R 脚本][execute-r-script]模块中，以便在经典版本的机器学习 Studio 中运行。  
+我将使用 RStudio 开发、测试和调试小规模的 R 代码。 然后，将此代码剪切并粘贴到[执行 R 脚本][execute-r-script]模块中，以便在 Azure 机器学习 Studio （经典）中运行。  
 
 ### <a name="the-execute-r-script-module"></a>执行 R 脚本模块
 
-在经典版的机器学习 Studio 中，R 脚本在[执行 r 脚本][execute-r-script]模块中运行。 图1中显示了经典版机器学习 Studio 中的[执行 R 脚本][execute-r-script]模块的示例。
+在机器学习 Studio （经典）中，R 脚本在[执行 r 脚本][execute-r-script]模块中运行。 图1中显示了机器学习 Studio （经典）中的[执行 R 脚本][execute-r-script]模块的示例。
 
  ![R 编程语言：在机器学习 Studio 中选择的执行 R 脚本模块（经典）](./media/r-quickstart/fig1.png)
 
@@ -69,7 +69,7 @@ Azure 机器学习 Studio 的经典版包含许多功能强大的机器学习和
 
 当然，我们将在本文的其余部分更详细地讨论[执行 R 脚本][execute-r-script]。
 
-使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 r 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法可让你充分利用 RStudio 集成开发环境（IDE）和经典版 Azure 机器学习 Studio 的强大功能。  
+使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 r 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法可让你充分利用 RStudio 集成开发环境（IDE）和 Azure 机器学习 Studio （经典）的强大功能。  
 
 #### <a name="execute-r-code"></a>执行 R 代码
 
@@ -77,17 +77,17 @@ Azure 机器学习 Studio 的经典版包含许多功能强大的机器学习和
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>适用于 Azure 机器学习的防御性 R 编码
 
-如果要使用 Azure 机器学习 Studio 的经典版本为 web 服务开发 R 代码，则应该明确计划代码如何处理意外的数据输入和异常。 为了保持代码的清晰度，在显示的大部分代码示例中未包含太多检查或异常处理方面的代码。 但是，后面我会提供几个使用 R 的异常处理功能的函数示例。  
+如果你正在使用 Azure 机器学习 Studio （经典）为 web 服务开发 R 代码，则应明确计划你的代码将如何处理意外的数据输入和异常。 为了保持代码的清晰度，在显示的大部分代码示例中未包含太多检查或异常处理方面的代码。 但是，后面我会提供几个使用 R 的异常处理功能的函数示例。  
 
 如果需要更完整地处理 R 异常处理，建议阅读下面的书籍中的适用部分， [Wickham 阅读下面](#appendixb)的内容。
 
 #### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>在机器学习 Studio 中调试和测试 R （经典）
 
-重申一下，我建议在 RStudio 中测试和调试小规模的 R 代码。 但是，在某些情况下，你需要在[执行 r 脚本][execute-r-script]本身中跟踪 R 代码问题。 此外，最好是在经典版本的机器学习 Studio 中检查结果。
+重申一下，我建议在 RStudio 中测试和调试小规模的 R 代码。 但是，在某些情况下，你需要在[执行 r 脚本][execute-r-script]本身中跟踪 R 代码问题。 此外，最好是在机器学习 Studio （经典）中检查结果。
 
-从执行 R 代码和经典版的 Azure 机器学习 Studio 平台的输出主要在输出中找到。 其他一些信息可在 error.log 中看到。  
+从执行 R 代码和在 Azure 机器学习 Studio （经典）平台上的输出主要在输出中找到。 其他一些信息可在 error.log 中看到。  
 
-如果在运行 R 代码时在经典版本的机器学习 Studio 中出现错误，则第一项操作应该是查看错误 .log。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看错误 .log，请在 "**属性" 窗格**中[选择 "][execute-r-script] **查看错误日志**"。
+如果在运行 R 代码时机器学习 Studio （经典）中发生错误，则第一项操作应该是查看错误 .log。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看错误 .log，请在 "**属性" 窗格**中[选择 "][execute-r-script] **查看错误日志**"。
 
 例如，我在[执行 r 脚本][execute-r-script]模块中运行了以下 r 代码，其中包含未定义的变量 y：
 
@@ -149,18 +149,18 @@ RStudio 是用于 R 的广泛使用的 IDE。我将使用 RStudio 来编辑、�
 
 #### <a id="loading"></a>加载数据集
 
-首先，我们将**csdairydata.csv**文件加载到经典版本的 Azure 机器学习 Studio 中。
+首先，将**csdairydata.csv**文件加载到 Azure 机器学习 Studio （经典）。
 
-1. 开始经典版本的 Azure 机器学习 Studio 环境。
+1. 启动 Azure 机器学习 Studio （经典）环境。
 1. 选择屏幕左下角的 " **+ 新建**"，然后选择 "**数据集**"。
 1. 选择“从本地文件”，并单击“浏览”以选择文件。
 1. 请确保选择了**具有标题 (.csv) 的通用 CSV 文件**作为数据集的类型。
-1. 选择复选标记。
+1. 选中复选标记。
 1. 上载数据集后，您应通过选择 "**数据集**" 选项卡来查看新的数据集。  
 
 #### <a name="create-an-experiment"></a>创建试验
 
-现在，我们在经典版的机器学习 Studio 中有一些数据，我们需要创建一个试验来进行分析。  
+现在，我们已在机器学习 Studio （经典）中创建了一些数据，我们需要创建一个试验来进行分析。  
 
 1. 选择左下角的 " **+ 新建**"，选择 "**试验**"，然后选择 "**空白试验**"。
 1. 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
@@ -185,11 +185,11 @@ RStudio 是用于 R 的广泛使用的 IDE。我将使用 RStudio 来编辑、�
 
 *图4：Cadairydata.csv 数据集的摘要。*
 
-在此视图中可看到大量有用的信息。 可以看到该数据集的前几个行。 如果选择一列，“统计信息”部分显示有关该列的详细信息。 例如，"功能类型" 行显示 Azure 机器学习 Studio 的经典版本分配给该列的数据类型。 在开始执行任何重要的工作之前，像这样快速浏览数据是一种很好的数据完好性检查方式。
+在此视图中可看到大量有用的信息。 可以看到该数据集的前几个行。 如果选择一列，“统计信息”部分显示有关该列的详细信息。 例如，"功能类型" 行显示分配给列 Azure 机器学习 Studio （经典）的数据类型。 在开始执行任何重要的工作之前，像这样快速浏览数据是一种很好的数据完好性检查方式。
 
 ### <a name="first-r-script"></a>第一个 R 脚本
 
-让我们创建一个简单的第一个 R 脚本，在经典版本的 Azure 机器学习 Studio 中进行试验。 我已在 RStudio 中创建并测试了以下脚本。  
+让我们创建一个简单的第一个 R 脚本来试验 Azure 机器学习 Studio （经典）。 我已在 RStudio 中创建并测试了以下脚本。  
 
 ```R
 ## Only one of the following two lines should be used
@@ -204,7 +204,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 maml.mapOutputPort('cadairydata')
 ```
 
-现在，我需要将此脚本传输到 Azure 机器学习 Studio 的经典版本。 我只需要剪切并粘贴。 但是，在该例中，我通过 zip 文件传输 R 脚本。
+现在，我需要将此脚本传输到 Azure 机器学习 Studio （经典）。 我只需要剪切并粘贴。 但是，在该例中，我通过 zip 文件传输 R 脚本。
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>输入到执行 R 脚本模块的数据
 
@@ -224,7 +224,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure 机器学习 Studio 的经典版处理 zip 中的文件，就像它们位于 src/目录中一样，因此，你需要在文件名前加上此目录名称前缀。 例如，如果 zip 包含位于该 zip 根目录下的文件 `yourfile.R` 和 `yourData.rdata`，那么在使用 `src/yourfile.R` 和 `src/yourData.rdata` 时会这两个文件处理为 `source` 和 `load`。
+> Azure 机器学习 Studio （经典）处理 zip 中的文件，就像它们位于 src/目录中一样，因此，你需要在文件名前加上此目录名称的前缀。 例如，如果 zip 包含位于该 zip 根目录下的文件 `yourfile.R` 和 `yourData.rdata`，那么在使用 `source` 和 `load` 时会这两个文件处理为 `src/yourfile.R` 和 `src/yourData.rdata`。
 
 我们已经讨论了如何加载[数据集](#loading)。 一旦创建并测试上一节中所示的 R 脚本后，请执行以下操作：
 
@@ -245,7 +245,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 创建一个 zip 文件，并将脚本复制到此 zip 文件。 在 Windows 上，可以右键单击该文件，然后选择 "**发送到**"，然后选择 "**压缩文件夹**"。 此时将创建包含"simpleplot.R"文件的新的 zip 文件。
 
-1. 将文件添加到经典版机器学习 Studio 中的**数据集**，并将类型指定为**zip**。 现在可在数据集中看到此 zip 文件。
+1. 将文件添加到 Azure 机器学习 Studio （经典）中的**数据集**，并将类型指定为**zip**。 现在可在数据集中看到此 zip 文件。
 
 1. 将 zip 文件从**数据集**拖放到**ML Studio （经典）画布**上。
 
@@ -253,7 +253,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 在 "[执行 R 脚本][execute-r-script]" 模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
 
-1. 请务必选择“保存”。
+1. 请确保选择 "**保存**"。
 
 完成这些步骤后，在运行试验时，[执行 r 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
@@ -374,7 +374,7 @@ R 是一个具有动态类型的语言，这表示可以根据需要将数据类
 
 看一看上一节中输入的列的数据类型：所有列都为数值类型，除了标记为“Month”的列为字符类型。 让我们将该列转换为一个因子并测试结果。  
 
-我删除了创建散点图矩阵的行，并添加了将“Month”列转换为因子的行。 在我的试验中，只需将 R 代码剪切并粘贴到[执行 r 脚本][execute-r-script]模块的代码窗口中。 你还可以更新 zip 文件并将其上传到经典版本的 Azure 机器学习 Studio，但这需要执行几个步骤。  
+我删除了创建散点图矩阵的行，并添加了将“Month”列转换为因子的行。 在我的试验中，只需将 R 代码剪切并粘贴到[执行 r 脚本][execute-r-script]模块的代码窗口中。 你还可以更新 zip 文件并将其上载到 Azure 机器学习 Studio （经典），但这需要几个步骤。  
 
 ```R
 ## Only one of the following two lines should be used
@@ -468,7 +468,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 我们要对数据集进行一点筛选。 如果看一下 cadairydata 数据框中的列，会发现两个不必要的列。 第一列只包含一行数字，不是很有用。 第二列 Year.Month 包含冗余的信息。 使用以下 R 代码可轻松地排除这两列。
 
 > [!NOTE]
-> 从现在开始，我将向您显示在[执行 R 脚本][execute-r-script]模块中添加的附加代码。 我会在  **函数**前面`str()`添加一个新行。 我使用此函数验证经典版 Azure 机器学习 Studio 中的结果。
+> 从现在开始，我将向您显示在[执行 R 脚本][execute-r-script]模块中添加的附加代码。 我会在 `str()` 函数**前面**添加一个新行。 我使用此函数验证 Azure 机器学习 Studio （经典）中的结果。
 
 我将以下行添加到[执行 r 脚本][execute-r-script]模块中的 r 代码。
 
@@ -813,7 +813,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = d
 
 请注意，用于去趋势的线性回归是一个时序回归。 预测器变量是一个时序对象。  
 
-定义 `ts.detrend()` 函数后，就将其应用到数据框中的相关变量。 必须使用 `lapply()` 将 `as.data.frame()` 创建的结果列表强制转换为数据框。 由于 `ts.detrend()` 的防御性，处理一个变量的失败不会阻止其他变量的正常处理。  
+定义 `ts.detrend()` 函数后，就将其应用到数据框中的相关变量。 必须使用 `as.data.frame()` 将 `lapply()` 创建的结果列表强制转换为数据框。 由于 `ts.detrend()` 的防御性，处理一个变量的失败不会阻止其他变量的正常处理。  
 
 最后一行代码创建了成对的散点图。 运行此 R 代码后，散点图的结果如图 17 所示。
 
@@ -931,7 +931,7 @@ outframe
 第一行代码有点复杂，这里的一些解释可以帮助你理解它。 对该代码进行从内到外的解释，如下：
 
 1. **[[** 运算符及参数 **1** 用于从 ccf 对象列表的第一个元素中选择滞后时间中的相关性向量。
-2. `do.call()` 函数对 `rbind()` 返回的列表的元素应用 `lapply()` 函数。
+2. `do.call()` 函数对 `lapply()` 返回的列表的元素应用 `rbind()` 函数。
 3. `data.frame()` 函数将 `do.call()` 生成的结果强制转换为数据框。
 
 请注意，行名在数据框的一个列中。 这样做会在[执行 R 脚本][execute-r-script]输出时保留行名称。
@@ -1030,7 +1030,7 @@ Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, t
 
 创建时序对象和查看数据后，让我们开始构造加利福尼亚州牛奶生产数据的趋势模型。 我们可以使用时序回归来执行此操作。 但是，从图中可以清晰地看出，我们需要不止一个斜率和截距来精确地为训练数据中观察到的趋势建模。
 
-考虑到少量的数据，我将在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到经典版本的 Azure 机器学习 Studio 中。 RStudio 为此类型的交互式分析提供了交互式环境。
+考虑到少量的数据，我将在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到 Azure 机器学习 Studio （经典）中。 RStudio 为此类型的交互式分析提供了交互式环境。
 
 在第一次尝试中，我使用 3 次多项式回归。 存在过拟合这些类型的模型的实际危险。 因此，最好避免使用高阶项。 `I()` 函数禁止解释内容（即“按原样”解释内容），并且允许在回归等式中编写按字面意思解释的函数。
 
@@ -1094,7 +1094,7 @@ summary(milk.lm)
 
 这个结果看起来好多了。 所有项都重要。 但是，2e-16 值是默认值，不必太关心。  
 
-在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习 Studio[执行 R 脚本][execute-r-script]模型（而不是 RStudio）的经典版本中添加了以下代码，用于创建模型并绘制绘图。 结果如图 23 所示。
+在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习 Studio （经典）中添加了以下代码，用于[创建模型并][execute-r-script]创建绘图。 结果如图 23 所示。
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1156,7 +1156,7 @@ summary(milk.lm2)
 
 我们看到该模型不再具有截距项，并且有 12 个重要的月因子。 这正是我们想要看到的。
 
-让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我已经在经典版的 Azure 机器学习 Studio[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型并绘制绘图。
+让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我在 Azure 机器学习 Studio （经典）[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型并创建绘图。
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,7 +1165,7 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-在经典版的 Azure 机器学习 Studio 中运行此代码会生成图24中所示的绘图。
+在 Azure 机器学习 Studio （经典）中运行此代码会生成如图24所示的绘图。
 
 ![包含季节性效应的加利福尼亚州牛奶生产模型](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1310,7 +1310,7 @@ RStudio 有很好的文档。 下面是有关 RStudio 文档的关键部分的�
 
 ## <a id="appendixb"></a>进一步阅读
 
-此 R 编程教程介绍了在经典版本的 Azure 机器学习 Studio 中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
+此 R 编程教程介绍了将 R 语言与 Azure 机器学习 Studio （经典）结合使用所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
 * [适用于初学者的 R](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis 是一个不错的开端。  
 * [R](https://cran.r-project.org/doc/manuals/R-intro.html) by W 的简介。 Venables et. al.） 更深入地探讨。

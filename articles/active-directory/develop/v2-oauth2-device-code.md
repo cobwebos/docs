@@ -1,7 +1,7 @@
 ---
-title: 在不使用浏览器的情况下登录用户 |Microsoft
+title: OAuth 2.0 设备代码流 |Microsoft
 titleSuffix: Microsoft identity platform
-description: 使用 device authorization grant 构建嵌入和无浏览器的身份验证流。
+description: 无需浏览器即可登录用户。 使用 device authorization grant 构建嵌入和无浏览器的身份验证流。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1035d5cd7c992bea74180b482bb8e3c2c9e0f461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423253"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 device authorization grant flow
 
@@ -61,7 +61,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | Description |
 | --- | --- | --- |
 | `tenant` | 需要 | 可以是/common、/consumers 或/organizations。  它还可以是要从 GUID 或友好名称格式请求权限的目录租户。  |
 | `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
@@ -71,14 +71,14 @@ scope=user.read%20openid%20profile
 
 成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | Description |
 | ---              | --- | --- |
-|`device_code`     | 字符串 | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数来请求授权服务器的访问令牌。 |
-|`user_code`       | 字符串 | 显示给用户的简短字符串，用于标识辅助设备上的会话。|
+|`device_code`     | String | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数来请求授权服务器的访问令牌。 |
+|`user_code`       | String | 显示给用户的简短字符串，用于标识辅助设备上的会话。|
 |`verification_uri`| URI | 用户在登录时应使用 `user_code` 转到的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 过期之前的秒数。 |
 |`interval`        | int | 在发出下一个轮询请求之前客户端应等待的秒数。 |
-| `message`        | 字符串 | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
+| `message`        | String | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
 
 > [!NOTE]
 > 此时不包括或支持 `verification_uri_complete` 响应字段。  我们提到这样做的原因是，如果您阅读了[标准版](https://tools.ietf.org/html/rfc8628)，则会看到 `verification_uri_complete` 作为设备代码流标准的可选部分列出。
@@ -100,7 +100,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 参数 | 需要 | 描述|
+| 参数 | 需要 | Description|
 | -------- | -------- | ---------- |
 | `tenant`  | 需要 | 初始请求中使用的同一个租户或租户别名。 | 
 | `grant_type` | 需要 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
@@ -111,7 +111,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 设备代码流是一种轮询协议，因此客户端必须在用户完成身份验证之前接收到错误。  
 
-| 错误 | 描述 | 客户端操作 |
+| 错误 | Description | 客户端操作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
@@ -133,9 +133,9 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | Description |
 | --------- | ------ | ----------- |
-| `token_type` | 字符串| 始终为“Bearer”。 |
+| `token_type` | String| 始终为“Bearer”。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则会列出该访问令牌的有效范围。 |
 | `expires_in`| int | 包含的访问令牌在生效之前所要经过的秒数。 |
 | `access_token`| 不透明字符串 | 针对请求的[范围](v2-permissions-and-consent.md)颁发。  |

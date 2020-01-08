@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328300"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645797"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -77,8 +77,8 @@ ms.locfileid: "74328300"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "74328300"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74328300"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -415,7 +415,7 @@ SQL Server 2014 引入了一项称为[缓冲池扩展](https://docs.microsoft.co
 - 多个（最多 64 个） Azure 块 blob，这将使理论备份大小为 12 TB。 但是，对客户数据库的测试显示，最大备份大小可能小于其理论限制大小。 在此情况下，用户需要负责管理备份的保留期以及对备份的访问。
 
 
-### <a name="automated-backup-for-sql-server"></a>SQL Server 自动备份
+### <a name="automated-backup-for-sql-server"></a>对 SQL Server 进行自动备份
 自动备份为 Azure Windows VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。 如果在安装了 SQL Server 情况下部署自己的 OS 映像，需要单独安装 VM 扩展。 本[文章](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)介绍了必要的步骤。
 
 有关此方法的功能的详细信息，请参阅以下文章：
@@ -552,7 +552,7 @@ Azure 提供 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服务
 1. 使用最新的 DBMS 版本（例如 SQL Server 2017），其在 Azure 中最具优势。 
 2. 在 Azure 中仔细规划 SAP 系统布局，以平衡数据文件布局和 Azure 限制：
    * 不要有太多磁盘，但必须足以确保可以达到所需的 IOPS。
-   * 如果不使用托管磁盘，请记住，每个 Azure 存储帐户的 IOPS 也受到限制，并且在每个 Azure 订阅内限制了存储帐户（[更多详细信息][azure-subscription-service-limits]）。 
+   * 如果不使用托管磁盘，请记住，每个 Azure 存储帐户的 IOPS 也受到限制，并且在每个 Azure 订阅内限制了存储帐户（[更多详细信息][azure-resource-manager/management/azure-subscription-service-limits]）。 
    * 只有在需要达到更高的吞吐量时，才在磁盘上划分带区。
 3. 永远不要在 D:\ 驱动器上安装软件或放置任何需要永久保留的文件，因为它不是永久性的，此驱动器上的所有内容都会在 Windows 重新启动时丢失。
 4. 不要对 Azure 标准存储使用磁盘缓存。

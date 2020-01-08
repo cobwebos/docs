@@ -1,23 +1,23 @@
 ---
-title: 集成的解决方案 |Microsoft
+title: 集成解决方案-Azure Marketplace
 description: Azure Marketplace 和 Microsoft AppSource 中的集成解决方案
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 12/16/2019
 ms.author: v-qiwe
-ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b00cc2917ac15797ed98af9793533d9bc12eeaaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427192"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
-在单个捆绑产品中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴列出 Azure Marketplace 中的产品/服务，或 Microsoft AppSource 作为[咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)。
+在单个捆绑产品中，集成解决方案结合了软件供应商的点解决方案技术与服务合作伙伴的部署和支持。 服务合作伙伴将 Microsoft AppSource 或 Azure Marketplace 中的产品/服务作为[咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)列出。
 
 集成解决方案旨在满足特定客户的需求或方案。 提供商首先了解行业挑战或痛点。 然后，他们将两个或更多同类最佳的技术相集成，为客户创造统一且可重复的部署体验。 提供商可以快速启动并运行客户。 它们提供与客户的单一联系点，提供相关的自定义、咨询和解决方案支持。 其结果是一个集成的解决方案，其中包括技术和服务。
 
@@ -30,7 +30,7 @@ ms.locfileid: "73818566"
 * 服务合作伙伴创建预定义的预先集成解决方案，该解决方案具有一流的技术，可在更多客户帐户中进行缩放、土地和扩展。
 * Microsoft 可以使用这些预先集成的行业协调解决方案来更轻松地与客户合作。 将提前排序定价和条款。 
 
-## <a name="eligibility-criteria"></a>资格准则
+## <a name="eligibility-criteria"></a>资格条件
 
 * 参与方伙伴必须具有 MPN ID。
 * 参与服务提供商应共同销售。
@@ -43,13 +43,13 @@ ms.locfileid: "73818566"
     * 云平台
     * 数据分析
     * 数据中心
-    * 数据平台
-    * DevOps
+    * Data Platform
+    * 开发运营
 
 * 解决方案必须包含至少两个合作伙伴组织，将 IP 和服务组合在一起，以获得完整的客户解决方案和体验。
 * 必须在 Azure、Dynamics 365 或 Power Platform 上构建合作伙伴 IP。
 * 集成解决方案的 IP 只需与软件供应商和基本服务提供商产品的 IP 区分开来。
-* 所有合作伙伴都在创建可重复提供的目标，该产品可通过 Azure Marketplace、Microsoft AppSource 或两者进行列出并最终进行处理。
+* 所有合作伙伴都具有创建可重复产品/服务的目标，该产品可通过 Microsoft AppSource、Azure Marketplace 或两者进行列出并最终进行事务处理。
 
 ## <a name="submit-a-nomination"></a>提交提名
 
@@ -65,7 +65,7 @@ ms.locfileid: "73818566"
     * 范围
     * 面向客户
     * 价值主张
-    * 定价
+    * 价格
     * 许可
     * 条款和条件
     * 支持方法
@@ -93,9 +93,9 @@ ms.locfileid: "73818566"
 
 1. 开发解决方案的完整技术集成。
 
-1. 决定要在 Azure Marketplace 或 Microsoft AppSource 上显示的解决方案定价和单个价格点。
+1. 在 Microsoft AppSource 或 Azure Marketplace 上确定解决方案定价和单个价格点。
 
-1. 完成 Azure Marketplace 或 Microsoft AppSource 列表的营销宣传资料，包括：
+1. 完成 Microsoft AppSource 或 Azure Marketplace 列表的营销宣传品，其中包括：
 
     * 组合解决方案名称。
     * 集成解决方案的列表说明。 遵循[产品/服务-列出最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
@@ -105,13 +105,13 @@ ms.locfileid: "73818566"
 
 ## <a name="publish-your-integrated-solution"></a>发布集成解决方案 
 
-完成技术集成和市场宣传材料后，请参阅[Azure Marketplace 咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)的发布者指南和 Microsoft AppSource。 使用此资源确定是否要在 Azure Marketplace 中发布解决方案或 Microsoft AppSource。 还可以使用指南准备发布项目并完成发布过程。
+完成技术集成和市场宣传材料后，请参阅适用于[Microsoft AppSource 和 Azure Marketplace 咨询服务](https://docs.microsoft.com/azure/marketplace/consulting-services)的发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure Marketplace 中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
 
 尽管有5种服务类型可用于咨询服务产品/服务，但集成解决方案必须是概念证明或完全实现。
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>通过集成解决方案进入市场 
 
-当你的解决方案居住在 Azure Marketplace 或 AppSource 中时，你需要通过市场营销活动推动认知和需求。 查看[项目计划和时间线](https://aka.ms/AA5qiuc)中列出的活动。 此资源包括合作伙伴可在其自己的团队中推动的活动。 然后为在 marketplace 中发布的合作伙伴访问[市场推广权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)。 所有集成解决方案产品/服务都有资格获得试用级别的权益。
+如果你的解决方案居住在 Microsoft AppSource 或 Azure Marketplace 中，你将希望通过市场营销活动推动认知和需求。 查看[项目计划和时间线](https://aka.ms/AA5qiuc)中列出的活动。 此资源包括合作伙伴可在其自己的团队中推动的活动。 然后为在 marketplace 中发布的合作伙伴访问[市场推广权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)。 所有集成解决方案产品/服务都有资格获得试用级别的权益。
 
 ## <a name="next-steps"></a>后续步骤
 

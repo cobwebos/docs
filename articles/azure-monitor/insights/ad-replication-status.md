@@ -4,15 +4,15 @@ description: Active Directory 复制状态解决方案包定期监视 Active Dir
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 04112042c871f5268c64bda374f040f1bba92969
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406097"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -20,12 +20,19 @@ ms.locfileid: "72931357"
 
 Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性和高性能，每个域控制器都有其自己的 Active Directory 数据库副本。 域控制器会彼此相互复制，以便在整个企业内传播更改。 这一复制过程中的失败可能导致整个企业内出现各种问题。
 
-AD 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
+AD 复制状态解决方案定期监视 Active Directory 环境中是否有任何复制失败。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
+
+### <a name="prerequisites"></a>必备组件
+
+* AD 复制状态解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.6.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
+* 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
+* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 不需要其他配置。
+
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md)。
@@ -40,7 +47,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
    > [!NOTE]
    > 在重新启动 Microsoft Monitoring Agent 服务（运行状况服务）之前，这些更改不会生效。
    > ### <a name="install-solution"></a>安装解决方案
-   > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步配置。
+   > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息

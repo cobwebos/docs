@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台支持的授权协议 |Microsoft
+title: OAuth 2.0 和 OpenID Connect 协议-Microsoft 标识平台 |Microsoft
 description: Microsoft 标识平台终结点支持的 OAuth 2.0 和 OpenID Connect 协议的指南。
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918282"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424735"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议
 
 Microsoft 标识平台终结点，适用于使用行业标准协议的身份即服务，OpenID Connect 和 OAuth 2.0。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
 
@@ -60,7 +60,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| Value | 描述 |
+| 值 | Description |
 | --- | --- |
 | `common` | 允许用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure AD 登录应用程序。 |
 | `organizations` | 仅允许用户使用工作/学校帐户从 Azure AD 登录应用程序。 |

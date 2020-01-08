@@ -1,7 +1,7 @@
 ---
 title: 导出并删除数据
 titleSuffix: ML Studio (classic) - Azure
-description: Azure 机器学习 Studio （经典）存储的产品内数据可通过 Azure 门户以及通过身份验证的 REST Api 进行导出和删除。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
+description: Azure 机器学习 Studio （经典）存储的产品内数据可通过 Azure 门户以及通过身份验证的 REST Api 进行导出和删除。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9d17ff38ad521dcc282be4f06d33021faeb495b8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427588"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习 Studio （经典）导出和删除产品内用户数据
 
@@ -70,7 +70,7 @@ ms.locfileid: "73837614"
 ![在机器学习 Studio 中删除免费工作区（经典）](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>通过 PowerShell 导出 Studio （经典）数据
-使用 PowerShell，使用命令将所有信息从经典版的 Azure 机器学习 Studio 中导出为可移植格式。 有关详细信息，请参阅[PowerShell module for Azure 机器学习 Studio （经典）](powershell-module.md)一文。
+使用 PowerShell 通过命令从 Azure 机器学习 Studio （经典）将所有信息导出为可移植格式。 有关详细信息，请参阅[PowerShell module for Azure 机器学习 Studio （经典）](powershell-module.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,18 +1,18 @@
 ---
-title: 辅助角色服务应用的 Application Insights （非 HTTP 应用） |Microsoft Docs
-description: 通过 Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
+title: 辅助角色服务应用的 Application Insights （非 HTTP 应用）
+description: 利用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2019
-ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/16/2019
+ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406190"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>辅助角色服务应用程序的 Application Insights （非 HTTP 应用程序）
 
@@ -35,7 +35,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
     </ItemGroup>
 ```
 
@@ -251,7 +251,8 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
                 IServiceCollection services = new ServiceCollection();
 
                 // Being a regular console app, there is no appsettings.json or configuration providers enabled by default.
-                // Hence instrumentation key must be specified here.
+                // Hence instrumentation key and any changes to default logging level must be specified here.
+                services.AddLogging(loggingBuilder => loggingBuilder.AddFilter<Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider>("Category", LogLevel.Information));
                 services.AddApplicationInsightsTelemetryWorkerService("instrumentationkeyhere");
 
                 // Build ServiceProvider.
@@ -354,12 +355,12 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 `ApplicationInsightsServiceOptions` 中的常用设置
 
-|设置 | 描述 | 默认
+|设置 | Description | 默认
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | 是
-|EnableAdaptiveSampling | 启用/禁用自适应采样 | 是
-|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | 是
-|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | 是
+|EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | true
+|EnableAdaptiveSampling | 启用/禁用自适应采样 | true
+|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartBeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | true
+|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序，它是一种 TelemetryProcessor，它在采样发生之前发送有关请求/依赖项的预聚合度量值。 | true
 
 有关最新列表，请参阅[`ApplicationInsightsServiceOptions`中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 

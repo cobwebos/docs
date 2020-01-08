@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427657"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中执行 Python 机器学习脚本
 
@@ -53,7 +53,7 @@ Python 模块的输入公开为 Pandas DataFrames。 `azureml_main` 函数最多
 
 ## <a name="translation-of-input-and-output-data-types"></a>输入和输出数据类型的转换
 
-Studio 数据集不同于 Panda DataFrames。 因此，经典版 Studio 中的输入数据集会转换为 Pandas 数据帧，并且输出 DataFrames 将转换回 Studio （经典）数据集。 在此转换过程中，还会执行以下转换：
+Studio 数据集不同于 Panda DataFrames。 因此，Studio （经典）中的输入数据集会转换为 Pandas 数据帧，并且输出 DataFrames 将转换回 Studio （经典）数据集。 在此转换过程中，还会执行以下转换：
 
  **Python 数据类型** | **Studio 翻译过程** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio 数据集不同于 Panda DataFrames。 因此，经典版 Studio 中的�
 
 ## <a id="import-modules"></a>导入现有的 Python 脚本模块
 
-用于执行 Python 的后端基于[Anaconda](https://www.anaconda.com/distribution/)，这是一种广泛使用的科学 Python 分布。 它200包含在以数据为中心的工作负荷中最常见的 Python 包。 经典版 Studio 目前不支持使用 Conda 等包管理系统来安装和管理外部库。  如果你发现需要合并其他库，请使用以下方案作为指导。
+用于执行 Python 的后端基于[Anaconda](https://www.anaconda.com/distribution/)，这是一种广泛使用的科学 Python 分布。 它200包含在以数据为中心的工作负荷中最常见的 Python 包。 Studio （经典）目前不支持使用程序包管理系统（如 Pip 或 Conda）来安装和管理外部库。  如果你发现需要合并其他库，请使用以下方案作为指导。
 
-常见的用例是将现有 Python 脚本合并到经典版本的 Studio 试验中。 [执行 Python 脚本][execute-python-script]模块接受包含第三个输入端口的 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
+常见的用例是将现有 Python 脚本合并到 Studio （经典）试验中。 [执行 Python 脚本][execute-python-script]模块接受包含第三个输入端口的 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
 
 例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
 
@@ -79,7 +79,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，经典版 Studio 中的�
 
 ![Zip 文件包含用户定义的 Python 代码](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到经典版 Studio 中。 然后，通过将 Python 代码附加到**执行 Python 脚本**模块的第三个输入端口（如下图所示），创建并运行一个试验。
+将 zip 文件作为数据集上传到 Studio （经典）。 然后，通过将 Python 代码附加到**执行 Python 脚本**模块的第三个输入端口（如下图所示），创建并运行一个试验。
 
 ![使用 Hello 作为执行 Python 脚本模块输入的示例试验](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![使用 Python 代码为示例试验可视化绘图](./media/execute-python-scripts/figure-v2-9b.png)
 
-可以通过将多个图形保存到不同图像来返回这些图形。 经典版 Studio 运行时选取所有图像，并将其连接起来以进行可视化。
+可以通过将多个图形保存到不同图像来返回这些图形。 Studio （经典）运行时选择所有映像并连接这些图像以进行可视化。
 
 ## <a name="advanced-examples"></a>高级示例
 
-Studio 中安装的 Anaconda 环境包含常用包，如 NumPy、SciPy 和 Scikits-learn。 这些包可在机器学习管道中有效地用于处理数据。
+Studio （经典）中安装的 Anaconda 环境包含常用包，例如 NumPy、SciPy 和 Scikits-learn。 这些包可在机器学习管道中有效地用于处理数据。
 
 例如，以下试验和脚本说明了如何在 Scikits-learn 中使用系综学习器-了解如何计算数据集的功能重要性分数。 得分可用于在送入其他模型之前执行受监督的功能选择。
 
@@ -153,7 +153,7 @@ Studio 中安装的 Anaconda 环境包含常用包，如 NumPy、SciPy 和 Sciki
 
 ![用于按分数对功能进行排序的函数](./media/execute-python-scripts/figure8.png)
 
-接下来，试验将计算并返回 Azure 机器学习 Studio 经典版的 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
+接下来，试验将计算并返回 Azure 机器学习 Studio （经典）中 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
 
 ![使用 Python 对 Pima indian diabetes 印度糖尿病数据集中的功能进行试验](./media/execute-python-scripts/figure9a.png)
 

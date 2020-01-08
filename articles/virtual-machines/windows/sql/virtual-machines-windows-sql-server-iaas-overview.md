@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790415"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374282"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -103,14 +103,16 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 
 Azure 门户提供了一个页面，可在其中管理[所有 AZURE sql 资源](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)（包括 SQL 虚拟机）。
 
-若要访问 " **AZURE sql 资源**" 页，请在 Azure 门户的左侧菜单中选择 " **azure sql** "。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL”。
+若要访问 " **AZURE sql 资源**" 页，请在 "Azure 门户" 菜单中选择 " **azure sql** "，或从任意页面搜索并选择 " **azure sql** "。
+
+![搜索 Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **AZURE sql**提供一种便捷的方式来访问所有 SQL 数据库、弹性池、数据库服务器、sql 托管实例和 sql 虚拟机。 Azure SQL 不是服务或资源。 
 
 若要管理现有资源，请在列表中选择所需的项。 若要创建新的 Azure SQL 资源，请选择 " **+ 添加**"。 
 
-![Azure SQL 门户页](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![创建 Azure SQL 资源](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 选择 " **+ 添加**" 后，通过选择 "在任何磁贴上**显示详细**信息" 来查看有关不同选项的其他信息。
 
@@ -124,7 +126,7 @@ Azure 门户提供了一个页面，可在其中管理[所有 AZURE sql 资源](
 - [创建 SQL 虚拟机](quickstart-sql-vm-create-portal.md)
 
 ## <a id="lifecycle"></a> SQL VM 映像刷新策略
-对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅 [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
+对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅[SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)
 客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
@@ -134,9 +136,9 @@ Azure 门户提供了一个页面，可在其中管理[所有 AZURE sql 资源](
 * [虚拟机概述](../overview.md)
 
 ### <a name="storage"></a>存储空间
-* [Microsoft Azure 存储空间简介](../../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>网络
+### <a name="networking"></a>联网
 * [虚拟网络概述](../../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 地址](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [在 Azure 门户中创建完全限定的域名](../portal-create-fqdn.md)

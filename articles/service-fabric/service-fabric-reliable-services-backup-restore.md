@@ -1,25 +1,16 @@
 ---
-title: Service Fabric 备份和还原 | Microsoft 文档
-description: Service Fabric 备份和还原的概念文档
-services: service-fabric
-documentationcenter: .net
+title: 备份和还原 Service Fabric
+description: Service Fabric 备份和还原的概念文档，一种用于配置可靠有状态服务和 Reliable Actors 备份的服务。
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723832"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645542"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的此内置冗余对某些情况来说可能已足够用了，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -171,7 +162,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 
 在检测到这样一个导致数据损坏的严重 bug 之后首先要做的是在应用程序级别冻结服务，并且如果可以，请升级到没有此 bug 的应用程序代码版本。  但是，即使修复了服务代码，数据仍可能是损坏的，因此可能需要还原数据。  在此情况下，还原最新备份可能不足以解决问题，因为此最新备份可能已损坏。  因此，需要查找在数据被损坏之前创建的最新备份。
 
-如果不确定哪些备份已损坏，那么可以部署一个新的 Service Fabric 群集，并还原受影响分区的备份，正如上面的“删除或丢失服务”情况一样。  针对每个分区，从最新备份到最旧备份开始还原。 找到一个未被损坏的备份时，移动或删除此分区的较新（比此备份更新）的所有备份。 对每个分区重复此过程。 此时，如果在生产群集中的分区上调用 `OnDataLossAsync`，在外部存储中找到的最新备份将是通过上述过程选取的备份。
+如果不确定哪些备份已损坏，那么可以部署一个新的 Service Fabric 群集，并还原受影响分区的备份，正如上面的“删除或丢失服务”情况一样。  针对每个分区，从最新备份到最旧备份开始还原。 找到一个未被损坏的备份时，移动或删除此分区的比此备份更新的所有备份。 对每个分区重复此过程。 此时，如果在生产群集中的分区上调用 `OnDataLossAsync`，在外部存储中找到的最新备份将是通过上述过程选取的备份。
 
 现在，可使用“删除或丢失服务”部分中的步骤来将服务的状态还原到错误代码损坏此状态之前的状态。
 

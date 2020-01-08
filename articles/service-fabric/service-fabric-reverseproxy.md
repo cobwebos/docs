@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 反向代理 | Microsoft 文档
+title: Azure Service Fabric 反向代理
 description: 使用 Service Fabric 的反向代理从群集内部和外部与微服务通信
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464297"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -44,8 +35,8 @@ Service Fabric 中的微服务在群集中的部分节点上运行，可以出�
 > **支持的平台**
 >
 > Service Fabric 中的反向代理目前支持以下平台
-> * *Windows 群集*：Windows 8 及更高版本，或 Windows Server 2012 及更高版本
-> * *Linux 群集*：反向代理当前不适用于 Linux 群集
+> * Windows 群集：Windows 8 及更高版本，或 Windows Server 2012 及更高版本
+> * Linux 群集：反向代理暂不适用于 Linux 群集
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>从群集外部访问微服务
@@ -76,13 +67,13 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 
 * **http(s)：** 可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 对于 HTTPS 转发，在设置反向代理侦听 HTTPS 后，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
 * **群集的完全限定域名 (FQDN) | 内部 IP：** 对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。 默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
-* **Port：** 这是为反向代理指定的端口，例如 19081。
+* Port：为反向代理指定的端口，例如 19081。
 * **ServiceInstanceName：** 在不使用“fabric:/”方案的情况下尝试访问的已部署服务实例的完全限定名称。 例如，若要访问 *fabric:/myapp/myservice/* 服务，可以使用 *myapp/myservice*。
 
     服务实例名称要区分大小写。 若 URL 中的服务实例名称大小写不同，则会导致请求失败，并显示 404（未找到）。
-* **Suffix path：** 要连接到的服务的实际 URL 路径，例如 *myapi/values/add/3*。
+* **后缀路径：** 要连接到的服务的实际 URL 路径，例如 *myapi/values/add/3*。
 * **PartitionKey：** 对于分区服务，这是针对要访问的分区计算出的分区键。 请注意，这*不*是分区 ID GUID。 对于使用单独分区方案的服务，此参数不是必需的。
-* **PartitionKind：** 这是服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
+* **PartitionKind：** 服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
 * **ListenerName** 服务中的终结点采用以下形式：{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}。 当服务公开了多个终结点时，此参数标识应将客户端请求转发到的终结点。 如果服务只有一个侦听器，则可以省略此项。
 * **TargetReplicaSelector** 这指定应当如何选择目标副本或实例。
   * 当目标服务为有状态服务时，TargetReplicaSelector 可以是下列其中一项：“PrimaryReplica”、“RandomSecondaryReplica”或“RandomReplica”。 如果未指定此参数，默认值为“PrimaryReplica”。
@@ -132,8 +123,8 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 在这样的情形下，可能会出现 Web 服务器出现在主机进程中并且能够响应请求，而被解析的服务实例或副本却再也不能在主机上使用的情况。 这种情况下，网关会从 Web 服务器收到 HTTP 404 响应。 因此，HTTP 404 响应可能有两种不同的含义：
 
-- 案例 #1：服务地址正确，但用户请求的资源不存在。
-- 案例 #2：服务地址不正确，且用户请求的资源可能在其他节点上。
+- 情况 #1：服务地址正确，但用户请求的资源不存在。
+- 情况 #2：服务地址不正确，且用户请求的资源可能在其他节点上。
 
 第一种情况是正常的 HTTP 404，属于用户错误。 在第二种情况中，用户请求的资源确实存在。 反向代理找不到该资源，因为服务本身已移动。 反向代理需要重新解析地址，并重试请求。
 
@@ -156,7 +147,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 对于本地群集，`Fabric_NodeIPOrFQDN` 默认设置为“localhost”。 使用 `-UseMachineName` 参数启动本地群集，确保容器可访问节点上运行的反向代理。 有关详细信息，请参阅[配置开发人员环境以调试容器](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)。
 
-在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置  。 有关详细信息，请参阅 [Azure Service Fabric 中的 Docker Compose 部署支持](service-fabric-docker-compose.md)。
+在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置。 有关详细信息，请参阅 [Azure Service Fabric 中的 Docker Compose 部署支持](service-fabric-docker-compose.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [在群集上设置和配置反向代理](service-fabric-reverseproxy-setup.md)。

@@ -3,12 +3,12 @@ title: 通过 VM 设置备份 Azure VM
 description: 本文介绍如何使用 Azure 备份服务备份单一 Azure VM 或多个 Azure Vm。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391435"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "74172511"
 
 ## <a name="back-up-from-azure-vm-settings"></a>通过 Azure VM 设置进行备份
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 单击“所有服务”，在“筛选器”中键入“虚拟机”，然后单击“虚拟机”。
 3. 从 VM 列表中选择要备份的 VM。
 4. 在 VM 菜单上单击“备份”。
@@ -58,13 +58,9 @@ ms.locfileid: "74172511"
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
+10. 启用备份后，将运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
     - 在初始备份完成之前，“上次备份状态”显示为“警告(初始备份挂起)”。
     - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
-
-> [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而不是 VM 资源组）来存储快照，命名格式**AzureBackupRG_geography_number** （例如： AzureBackupRG_northeurope_1）。 此资源组中的数据将保留在 Azure 虚拟机备份策略的 "保留即时恢复快照" 部分中指定的天数内。 对此资源组应用锁定可能会导致备份失败。<br>
-此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份
 

@@ -1,5 +1,6 @@
 ---
-title: 使用 API 管理中的客户端证书身份验证确保 API 安全 - Azure API 管理 | Microsoft 文档
+title: 在 API 管理中使用客户端证书身份验证保护 Api
+titleSuffix: Azure API Management
 description: 了解如何使用客户端证书保护对 API 的访问
 services: api-management
 documentationcenter: ''
@@ -12,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: 263f8495b9dbb0a1c5b3c54301b4b4deab425e31
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430652"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
-API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 可以使用策略表达式验证传入证书并根据所需值检查证书属性。
+API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 您可以使用策略表达式来验证传入证书，并根据所需值检查证书属性。
 
-有关使用客户端证书保护对 API 后端服务的访问 (即, API 管理到后端) 的信息, 请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> 若要在“消耗”层中接收并验证客户端证书，必须先在“自定义域”边栏选项卡上启用“请求客户端证书”设置，如下所示。
+> 若要接收和验证消耗层中的客户端证书，必须先在 "自定义域" 边栏选项卡上打开 "请求客户端证书" 设置，如下所示。
 
 ![请求客户端证书](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
@@ -45,8 +46,8 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 ```
 
 > [!NOTE]
-> 若要禁止检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
-> 如果客户端证书是自签名证书，则必须将根（或中间）CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，`context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 才能正常工作。
+> 若要禁用检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
+> 如果客户端证书是自签名的，则必须将根（或中间） CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，以便 `context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 工作。
 
 ## <a name="checking-the-thumbprint"></a>检查指纹
 
@@ -63,8 +64,8 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 ```
 
 > [!NOTE]
-> 若要禁止检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
-> 如果客户端证书是自签名证书，则必须将根（或中间）CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，`context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 才能正常工作。
+> 若要禁用检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
+> 如果客户端证书是自签名的，则必须将根（或中间） CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，以便 `context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 工作。
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上传到 API 管理的证书检查指纹
 
@@ -82,12 +83,12 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 ```
 
 > [!NOTE]
-> 若要禁止检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
-> 如果客户端证书是自签名证书，则必须将根（或中间）CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，`context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 才能正常工作。
+> 若要禁用检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
+> 如果客户端证书是自签名的，则必须将根（或中间） CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，以便 `context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 工作。
 
 > [!TIP]
-> 本[文](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的客户端证书死锁问题可以通过多种方式表现出来，例如：请求冻结、请求在超时后生成 `403 Forbidden` 状态代码、`context.Request.Certificate` 为 `null`。 此问题通常会影响内容长度约为 60KB 或更大的 `POST` 和 `PUT` 请求。
-> 若要防止出现此问题，请在“自定义域”边栏选项卡上为所需主机名启用“协商客户端证书”设置，如下所示。 在“消耗”层中，此功能不可用。
+> [本文](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的客户端证书死锁问题可以通过多种方式（例如，请求冻结，请求导致在超时后 `403 Forbidden` 状态代码，`context.Request.Certificate` 为 `null`。 此问题通常会影响 `POST` 和 `PUT` 请求，其内容长度约为60KB 或更大。
+> 若要防止出现此问题，请在 "自定义域" 边栏选项卡上打开所需主机名的 "协商客户端证书" 设置，如下所示。 此功能在消耗层中不可用。
 
 ![协商客户端证书](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

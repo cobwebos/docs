@@ -2,19 +2,15 @@
 title: Azure 自动化中的连接资产
 description: Azure 自动化中的连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 本文介绍了有关连接的详细信息，以及如何在文本和图形创作中使用连接。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366784"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -39,7 +35,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|描述|
+|Cmdlet|Description|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|创建新连接。|
@@ -50,7 +46,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|描述|
+|活动|Description|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
@@ -61,7 +57,7 @@ Azure 自动化中有三种类型的内置连接：
 ## <a name="python2-functions"></a>Python2 函数
 下表中的函数用于在 Python2 Runbook 中访问连接。
 
-| 函数 | 描述 |
+| 函数 | Description |
 |:---|:---|
 | automationassets.get_automation_connection | 检索连接。 返回包括该连接属性的字典。 |
 

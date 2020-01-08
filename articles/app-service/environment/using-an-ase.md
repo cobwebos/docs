@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687099"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374924"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -55,15 +55,15 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 1. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“新建”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“新建”。
 
-    b. 输入应用服务计划的名称。
+    b.保留“数据库类型”设置，即设置为“共享”。 输入应用服务计划的名称。
 
     c. 在“位置”下拉列表中选择自己的 ASE。 
     
     d.单击“下一步”。 选择“隔离”定价层。 选择“选择”。
 
-    e. 选择“确定”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“确定”。
     
     ![“隔离”定价层][2]
 
@@ -71,7 +71,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
     > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
     >
 
-2. 选择**创建**。
+2. 选择“创建”。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 
@@ -172,7 +172,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md

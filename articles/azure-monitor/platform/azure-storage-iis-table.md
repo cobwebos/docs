@@ -4,15 +4,15 @@ description: Azure Monitor 可以读取将诊断写入到表存储或写入到 b
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 04/12/2017
-ms.openlocfilehash: 2d2d8d43cb5ee91810d639c4ee8925d185987954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3e8968f544e347b7b4cfe6db484c2ce8bd404820
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395994"
 ---
 # <a name="collect-azure-resource-logs-from-azure-storage"></a>从 Azure 存储收集 Azure 资源日志
 
@@ -30,7 +30,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
 为了 Azure Monitor 收集这些 Azure 诊断日志，日志必须位于以下位置：
 
-| 日志类型 | 资源类型 | Location |
+| 日志类型 | 资源类型 | 位置 |
 | --- | --- | --- |
 | IIS 日志 |虚拟机 <br> Web 角色 <br> 辅助角色 |wad-iis-logfiles（Blob 存储） |
 | Syslog |虚拟机 |LinuxsyslogVer2v0（表存储） |
@@ -61,11 +61,11 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 2. 在现有 VM 中启用监视，并配置事件日志记录。 可以启用 VM 级别的诊断。 若要启用诊断并配置事件日志记录，请执行以下步骤：
 
    1. 选择 VM。
-   2. 单击“监视”。
+   2. 单击 **“监视”** 。
    3. 单击“诊断”。
    4. 将“状态”设置为“开”。
    5. 选择想要收集的每个诊断日志。
-   6. 单击 **“确定”** 。
+   6. 单击“确定”。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>在 Web 角色中为 IIS 日志和事件收集启用 Azure 诊断
 

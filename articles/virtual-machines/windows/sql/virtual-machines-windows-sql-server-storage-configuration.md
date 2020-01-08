@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373975"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -46,7 +46,7 @@ ms.locfileid: "72896959"
 
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-在 "**存储优化**" 下选择要为其部署 SQL Server 的工作负载的类型。 使用**常规**优化选项时，默认情况下，你将有一个数据磁盘的最大 IOPS 为5000，并且你的数据、事务日志和 TempDB 存储将使用此相同驱动器。 选择**事务处理**（OLTP）或**数据仓库**时，将为数据创建单独的磁盘，为事务日志创建单独的磁盘，并将本地 SSD 用于 TempDB。 **事务处理**和**数据仓库**之间没有存储差别，但它确实更改了[条带配置和跟踪标志](#workload-optimization-settings)。 选择 "高级存储" 可将数据驱动器的缓存设置为*Readonly* ，而对于日志驱动器，则设置为 "*无*"，因为每[SQL Server VM 性能最佳做法](virtual-machines-windows-sql-performance.md)。 
+在 "**存储优化**" 下选择要为其部署 SQL Server 的工作负载的类型。 使用**常规**优化选项时，默认情况下，你将有一个数据磁盘的最大 IOPS 为5000，并且你的数据、事务日志和 TempDB 存储将使用此相同驱动器。 选择**事务处理**（OLTP）或**数据仓库**时，将为数据创建单独的磁盘，为事务日志创建单独的磁盘，并将本地 SSD 用于 TempDB。 **事务处理**和**数据仓库**之间没有存储差别，但它确实更改了[条带配置和跟踪标志](#workload-optimization-settings)。 选择 "高级存储" 可将数据驱动器的缓存设置为*ReadOnly* ，而对于日志驱动器，则设置为 "*无*"，因为每[SQL Server VM 性能最佳做法](virtual-machines-windows-sql-performance.md)。 
 
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
 
@@ -110,7 +110,6 @@ ms.locfileid: "72896959"
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-
 ## <a name="storage-configuration"></a>存储配置
 
 本部分提供有关 Azure 在 Azure 门户中的 SQL VM 预配或配置期间自动执行的存储配置更改的参考。
@@ -124,7 +123,7 @@ ms.locfileid: "72896959"
 
 Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
-| 设置 | Value |
+| 设置 | 值 |
 | --- | --- |
 | 条带大小 |256 KB（数据仓库）；64 KB（事务） |
 | 磁盘大小 |每个磁盘 1 TB |
@@ -141,9 +140,9 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
 下表描述了三个可用的工作负荷类型选项及其对应的优化：
 
-| 工作负荷类型 | 描述 | 优化 |
+| 工作负载类型 | Description | 优化 |
 | --- | --- | --- |
-| **常规** |支持大多数工作负荷的默认设置 |None |
+| **常规** |支持大多数工作负荷的默认设置 |无 |
 | **事务处理** |针对传统数据库 OLTP 工作负荷优化存储 |跟踪标志 1117<br/>跟踪标志 1118 |
 | **数据仓库** |针对分析和报告工作负荷优化存储 |跟踪标志 610<br/>跟踪标志 1117 |
 

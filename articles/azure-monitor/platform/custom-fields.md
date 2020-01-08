@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 中的自定义字段 |Microsoft Docs
+title: Azure Monitor 中的自定义字段（预览版） |Microsoft Docs
 description: 利用 Azure Monitor 的 "自定义字段" 功能，您可以通过添加到所收集记录的属性的 Log Analytics 工作区中的记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396882"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中的 Log Analytics 工作区中创建自定义字段
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure Monitor 中创建 Log Analytics 工作区中的自定义字段（预览）
 
 > [!NOTE]
 > 本文介绍如何在收集 Log Analytics 工作区中分析文本数据。 建议按照 Azure Monitor 中的[分析文本数据](../log-query/parse-text.md)中所述的指南收集查询筛选器中的文本数据。 与使用自定义字段相比，它具有几个优点。
@@ -79,7 +79,7 @@ Azure Monitor 的 "**自定义字段**" 功能，您可以通过添加自己的�
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 
-![Query](media/custom-fields/query.png)
+![查询](media/custom-fields/query.png)
 
 然后，选择并展开包含事件 ID 7036 的任何记录。
 
@@ -113,7 +113,7 @@ Azure Monitor 的 "**自定义字段**" 功能，您可以通过添加自己的�
 
 ![搜索结果](media/custom-fields/search-results-02.png)
 
-现在，我们可以运行验证**Service_CF**已创建但尚未添加到任何记录的查询。 这是因为自定义字段对现有记录不起作用，因此我们需要等待收集新记录。
+现在，可以运行验证**Service_CF**已创建但尚未添加到任何记录的查询。 这是因为自定义字段对现有记录不起作用，因此我们需要等待收集新记录。
 
 ![初始计数](media/custom-fields/initial-count.png)
 

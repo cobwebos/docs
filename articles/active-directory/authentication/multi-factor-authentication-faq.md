@@ -11,24 +11,27 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425134"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 > [!IMPORTANT]
 > 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 
+> 自2018年9月1日起，新客户不再能够使用基于消费的许可。
+> 2018年9月1日生效，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
+
 > [!NOTE]
 > 以下与 Azure 多重身份验证服务器相关的信息仅适用于已运行 MFA 服务器的用户。
-
 
 **问：Azure 多重身份验证服务器如何处理用户数据？**
 
@@ -202,7 +205,7 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 - 组织已创建并启用一个 MFA 注册策略，该策略已应用到该用户。
 - 该用户以前已注册 MFA，但选择的验证方法后来被管理员禁用。 因此，该用户必须再次完成 MFA 注册，以选择新的默认验证方法。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>错误
 
 **问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166467"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645763"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -80,13 +80,13 @@ NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，�
 
 如果要将 Azure Blob 存储与缓存一起使用，则需要一个兼容的存储帐户，以及一个使用 Azure HPC 缓存格式化数据填充的空 Blob 容器或容器，如[将数据移动到 Azure Blob 存储](hpc-cache-ingest.md)中所述。
 
-请先创建帐户和容器，然后再尝试将其添加为存储目标。
+尝试添加存储目标之前，请先创建帐户。 添加目标时，可以创建新的容器。
 
 若要创建兼容的存储帐户，请使用以下设置：
 
 * 性能：**标准**
 * 帐户类型： **StorageV2 （常规用途 v2）**
-* 复制：**本地冗余存储(LRS)**
+* 复制：**本地冗余存储（LRS）**
 * 访问层（默认）：**热**
 
 最好使用与缓存位于同一位置的存储帐户。

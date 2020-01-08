@@ -1,25 +1,16 @@
 ---
-title: 对本地 Azure Service Fabric 群集设置进行故障排除 | Microsoft Docs
+title: 对本地 Azure Service Fabric 群集设置进行故障排除
 description: 本文就本地开发群集的故障介绍一些建议
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465503"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障
 如果在与本地 Azure Service Fabric 开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。
@@ -43,7 +34,7 @@ ms.locfileid: "60864433"
 
 ### <a name="type-initialization-exception"></a>类型初始化异常
 #### <a name="problem"></a>问题
-在 PowerShell 中连接到群集时，你会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
+在 PowerShell 中连接到群集时，会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
 
 #### <a name="solution"></a>解决方案
 在安装期间未正确设置路径变量。 从 Windows 注销并重新登录。 这将刷新你的路径。

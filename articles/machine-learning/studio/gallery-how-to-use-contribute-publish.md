@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 9fe52fc16b763a03738442bb49a4969244a1d3c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427555"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "73837580"
 
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
 
-Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括：
+Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 具体包括：
 
 * **试验**-库包含了在 Azure 机器学习 Studio （经典）中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
 * **教程** - 可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
@@ -59,15 +59,15 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 ![从 AI 库打开项](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-若要从经典版 Studio 内下载资源，请执行以下操作：
+若要从 Studio （经典）中下载资源，请执行以下操作：
 
-1. 在经典版 Studio 中，选择 "**新建**"。
+1. 在 Studio （经典）中，选择 "**新建**"。
 1. 选择“模块”、“试验”或“Notebook”。
 1. 通过浏览或搜索找到库资源。
 1. 将鼠标指向资源，然后选择“在工作室中打开”。
     ![在机器学习 Studio （经典）中打开库实验](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-一旦资源位于您的工作区中，就可以像在经典版 Studio 中创建的任何内容一样，对其进行自定义和使用。
+一旦资源位于你的工作区中，就可以自定义并使用它，就像在 Studio （经典）中创建的任何内容一样。
 
 若要使用导入的自定义模块：
 
@@ -77,12 +77,12 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 ## <a name="contribute-experiments"></a>贡献试验
 
-为了演示分析技术，或为其他人提供其解决方案的快速入门，你可以提供在经典版 Studio 中开发的**试验**。
+为了演示分析技术，或为其他人提供其解决方案的快速入门，你可以提供在 Studio （经典）中开发的**实验**。
 当其他人在库中浏览你的贡献内容时，你可以跟进贡献内容的查看次数和下载次数。
 用户还可以添加评论并与数据科学社区的其他成员分享你的贡献内容。
 可以登录到 Disqus 等论坛，这样，在有人对你的贡献内容发表评论后，你可以收到通知。
 
-1. 在经典版 Studio 中打开试验。
+1. 在 Studio （经典）中打开实验。
 
 1. 在试验画布下面的操作列表中，选择“发布到库”。
 
@@ -121,7 +121,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 * 实验名称
 * 摘要或说明
 * 标记
-* 映像
+* 图像
 * 可见性设置（“公开”或“未列出”）
 
 还可以从库中删除实验。
@@ -195,7 +195,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 输入标记之后，若要输入其他标记，请按 Tab 键。
 
-## <a name="we-want-to-hear-from-you"></a>我们希望倾听意见！
+## <a name="we-want-to-hear-from-you"></a>我们希望倾听你的意见！
 
 我们希望库能由用户驱动并能为用户所用。 使用右侧的笑脸告诉我们你喜欢或不喜欢库。  
 

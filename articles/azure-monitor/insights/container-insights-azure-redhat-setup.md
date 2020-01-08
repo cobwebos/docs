@@ -1,18 +1,14 @@
 ---
 title: 配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集 |Microsoft Docs
 description: 本文介绍如何配置容器 Azure Monitor，以监视托管在 Azure Red Hat OpenShift 上的 Kubernetes 群集。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: 07d84175325226af755712ec38ab93b901bbd361
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405572"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 
@@ -100,7 +96,7 @@ ms.locfileid: "74707523"
 
 4. 编辑 JSON 参数文件**newClusterWithMonitoringParam**并更新以下值：
 
-    - *位置*
+    - *location*
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*
@@ -129,7 +125,7 @@ ms.locfileid: "74707523"
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
  
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 "Azure 门户" 菜单或从 "主页" 中，选择 " **Azure Monitor**"。 在“见解”部分，选择“容器”。 
 

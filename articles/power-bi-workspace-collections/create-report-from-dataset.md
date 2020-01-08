@@ -1,5 +1,5 @@
 ---
-title: 在 Power BI 工作区集合中基于数据集创建新报表 | Microsoft Docs
+title: 基于数据集创建报表-Power BI 工作区集合
 description: 现在，可以基于自有应用程序中的数据集创建 Power BI 工作区集合报表。
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
@@ -8,12 +8,12 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bcc6044d0f0f5270f81a619e4d1ad71ea35cc170
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427060"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中基于数据集创建新报表
 
@@ -93,7 +93,7 @@ var embedCreateConfiguration = {
 
 ## <a name="save-new-reports"></a>保存新报表
 
-在调用“另存为”操作之前，不会创建报表。  可以通过文件菜单或 JavaScript 完成此操作。
+在调用“另存为”操作之前，不会创建报表。 可以通过文件菜单或 JavaScript 完成此操作。
 
 ```javascript
  // Get a reference to the embedded report.
@@ -108,7 +108,7 @@ var embedCreateConfiguration = {
 ```
 
 > [!IMPORTANT]
-> 只有在调用“另存为”之后，才创建新报表。  保存后，画布仍以编辑模式而不是报表模式显示数据集。 需要重新加载新报表，就像使用其他任何报表时一样。
+> 只有在调用“另存为”之后，才创建新报表。 保存后，画布仍以编辑模式而不是报表模式显示数据集。 需要重新加载新报表，就像使用其他任何报表时一样。
 
 ![文件菜单 - 另存为](media/create-report-from-dataset/save-new-report.png)
 
@@ -196,7 +196,7 @@ var embedCreateConfiguration = {
 </script>
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [示例入门](get-started-sample.md)  
 [保存报表](save-reports.md)  
@@ -207,4 +207,4 @@ var embedCreateConfiguration = {
 [Power BI Core NuGut 包](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
-更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

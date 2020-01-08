@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355631"
 ---
-# <a name="alert-confidence-score"></a>警报置信度分数 
+# <a name="alert-confidence-score-preview"></a>警报置信度评分（预览）
 
 在 Azure 安全中心可以查看 Azure 中运行的各个资源，以及在安全中心检测到潜在问题时发出的警报。 安全运营团队可能难以逐个解决警报列中的每个警报，因此有必要设定需要调查的警报的优先级。 警报调查工作可能很复杂且很耗时，因此需要忽略一些警报。
 
-安全中心内的置信度评分可以帮助团队会审警报并设定其优先级。 安全中心自动运用行业最佳做法、智能算法和分析师使用的流程来确定某个威胁是否合法，并以置信度评分的形式提供有意义的见解。
+安全中心的置信度评分（目前为预览版）可帮助你的团队会审并排定警报优先级。 安全中心自动运用行业最佳做法、智能算法和分析师使用的流程来确定某个威胁是否合法，并以置信度评分的形式提供有意义的见解。
 
 ## <a name="how-the-confidence-score-is-triggered"></a>置信度评分的触发方式
 
@@ -50,7 +50,7 @@ ms.locfileid: "74558967"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用置信度评分来设定警报调查的优先级。 若要了解有关安全中心的详细信息，请参阅以下内容：
+本文介绍了如何使用置信度评分来设定警报调查的优先级。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。

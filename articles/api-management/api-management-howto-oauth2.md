@@ -1,5 +1,6 @@
 ---
-title: 在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权 | Microsoft 文档
+title: 在 API 管理中使用 OAuth 2.0 授权开发人员帐户
+titleSuffix: Azure API Management
 description: 了解如何在 API 管理中使用 OAuth 2.0 为用户授权。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430677"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 
@@ -26,7 +27,7 @@ ms.locfileid: "73176628"
 > [!IMPORTANT]
 > 在新的开发人员门户中，OAuth 2.0 授权尚未提供。
 
-## <a name="prerequisites"> </a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 本指南介绍如何配置 API 管理服务实例，以便针对开发人员帐户使用 OAuth 2.0 授权，但不介绍如何配置 OAuth 2.0 提供程序。 每个 OAuth 2.0 提供程序的配置均不相同，虽然步骤类似，不过在 API 管理服务实例中配置 OAuth 2.0 时使用的必需信息是相同的。 本主题介绍的示例使用 Azure Active Directory 作为 OAuth 2.0 提供程序。
 
@@ -35,7 +36,7 @@ ms.locfileid: "73176628"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>在 API 管理中配置 OAuth 2.0 授权服务器
+## <a name="step1"></a>在 API 管理中配置 OAuth 2.0 授权服务器
 
 > [!NOTE]
 > 如果尚未创建 API 管理服务实例，请参阅[创建 Api 管理服务实例][Create an API Management service instance]。
@@ -81,7 +82,7 @@ ms.locfileid: "73176628"
 
     完成窗体的操作后，单击“创建”保存 API 管理 OAuth 2.0 授权服务器配置。 保存服务器配置后，可将 API 配置为使用此配置，如下一部分所示。
 
-## <a name="step2"> </a>将 API 配置为使用 OAuth 2.0 用户授权
+## <a name="step2"></a>配置 API 以使用 OAuth 2.0 用户授权
 
 1. 单击左侧“API 管理”菜单中的“API”。
 
@@ -106,7 +107,7 @@ ms.locfileid: "73176628"
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
-> 如果必须只有一个 API 得到配置或对帐户可见，然后单击 API 直接进入该 API 的操作。
+> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
 
 选择“GET 资源”操作，单击“打开控制台”，并从下拉列表中选择“授权代码”。
 

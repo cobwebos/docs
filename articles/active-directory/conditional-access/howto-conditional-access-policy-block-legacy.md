@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b4627080879c9e7d2635b950bb7f31b7d23581
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424921"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件性访问：阻止旧身份验证
 
@@ -34,9 +34,11 @@ ms.locfileid: "74803625"
    1. 在 "**包括**" 下，选择 "**所有用户**"。
    1. 在 "**排除**" 下，选择 "**用户和组**"，然后选择必须保留使用旧身份验证的功能的任何帐户。 
    1. 选择“完成”。
+1. 在 "**云应用" 或 "操作**" 下选择 "**所有云应用**"。
+   1. 选择“完成”。
 1. 在 "**条件**" > **客户端应用（预览）** "下，将**配置**设置为 **" 是 "** 。
    1. 仅选中 "**移动应用和桌面客户端** > **其他客户端**" 框。
-   2. 选择“完成”。
+   1. 选择“完成”。
 1. 在 "**访问控制**" > **Grant**"下，选择"**阻止访问**"。
    1. 选择“选择”。
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
@@ -45,5 +47,7 @@ ms.locfileid: "74803625"
 ## <a name="next-steps"></a>后续步骤
 
 [条件访问公用策略](concept-conditional-access-policy-common.md)
+
+[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
 
 [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

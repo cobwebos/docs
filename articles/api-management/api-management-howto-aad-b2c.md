@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure Active Directory B2C 为开发人员帐户授权 - Azure API 管理 | Microsoft 文档
+title: 使用 Azure Active Directory B2C 为开发人员帐户授权
+titleSuffix: Azure API Management
 description: 了解如何在 API 管理中使用 Azure Active Directory B2C 为用户授权。
 services: api-management
 documentationcenter: API Management
@@ -12,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d6e7c04cbd5a7f1ed509b27cf87ac3f692c28d9f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430748"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
 
 ## <a name="overview"></a>概述
 
-Azure Active Directory B2C 是面向消费者的 web 和移动应用程序的云标识管理解决方案。 可以使用它来管理对开发人员门户的访问。 本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理中完成哪些配置。 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权]。
+Azure Active Directory B2C 是一种云标识管理解决方案，适用于消费型 Web 和移动应用程序。 可以使用它来管理对开发人员门户的访问。 本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理中完成哪些配置。 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权]。
 
 > [!NOTE]
 > 若要完成本指南中的步骤，必须先获取一个可在其中创建应用程序的 Azure Active Directory B2C 租户。 此外，需要准备好注册和登录策略。 有关详细信息，请参阅 [Azure Active Directory B2C 概述]。
@@ -89,7 +90,7 @@ Azure Active Directory B2C 是面向消费者的 web 和移动应用程序的云
 
 在开发人员门户中，可以通过**OAuth 按钮**小组件以 AAD B2C 登录。 小组件已包含在默认开发人员门户内容的登录页中。
 
-![“AAD 按钮”小组件](./media/api-management-howto-aad/portal-oauth-widget.png)
+![AAD 按钮小组件](./media/api-management-howto-aad/portal-oauth-widget.png)
 
 尽管当新用户使用 AAD B2C 登录时，将自动创建一个新帐户，但你可以考虑将同一小组件添加到注册页面。
 

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423287"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -38,7 +38,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 > [!NOTE]
 > Microsoft 标识平台终结点并不支持所有 Azure AD 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
-在较典型的三重 OAuth中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。
+在较典型的“三重 OAuth”中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -65,7 +65,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 ### <a name="application-permissions"></a>应用程序权限
 
-可使用 API 公开一组应用程序权限，而不是使用 ACL。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限以执行以下操作：
+您可以使用 Api 公开一组**应用程序权限**，而不是使用 acl。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限以执行以下操作：
 
 * 读取所有邮箱中的邮件
 * 在所有邮箱中读取和写入邮件
@@ -75,6 +75,11 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 有关应用程序权限的详细信息，请转到 [Microsoft Graph](https://developer.microsoft.com/graph)。
 
 若要在应用中使用应用程序权限，请执行后续部分所述的步骤。
+
+
+> [!NOTE]
+> 作为应用程序进行身份验证时，与用户不同，你不能使用 "委托的权限" （用户授予的作用域）。  必须使用应用程序的管理员授予的 "应用程序权限" （也称为 "角色"），该权限由应用程序的管理员授予（或通过 web API 预授权）。    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
@@ -113,7 +118,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | Description |
 | --- | --- | --- |
 | `tenant` | 需要 | 要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
 | `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
@@ -130,7 +135,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
 | `state` | 同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
@@ -144,7 +149,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `error` | 可用于分类错误类型，并响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别错误根本原因的特定错误消息。 |
@@ -176,7 +181,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | Description |
 | --- | --- | --- |
 | `tenant` | 需要 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 需要 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
@@ -198,13 +203,13 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | Description |
 | --- | --- | --- |
 | `tenant` | 需要 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 需要 |分配给应用的应用程序（客户端）ID。 |
 | `scope` | 需要 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br/>此值向 Microsoft 标识平台终结点通知你已为你的应用配置的所有直接应用程序权限，它应该为与你要使用的资源相关联的用户颁发一个令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_assertion_type` | 需要 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为应用程序凭据注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)。|
+| `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
 | `grant_type` | 需要 | 必须设置为 `client_credentials`。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
@@ -221,7 +226,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `access_token` | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如验证 Web API。 |
 | `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `bearer`。 |
@@ -244,7 +249,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -275,7 +280,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 阅读 Microsoft 身份验证库中的[客户端凭据概述文档](https://aka.ms/msal-net-client-credentials)
 
-| 示例 | 平台 |描述 |
+| 示例 | 平台 |Description |
 |--------|----------|------------|
 |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 控制台 | 一个简单的 .NET Core 应用程序，该应用程序显示某个租户的用户在使用应用程序的标识查询 Microsoft Graph，而不是代表用户来查询。 该示例还演示了使用证书进行身份验证的变体。 |
 |[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | 一个 Web 应用程序，该应用程序使用应用程序的标识来同步 Microsoft Graph 的数据，而不是代表用户来同步。 |

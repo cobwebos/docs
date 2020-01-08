@@ -1,27 +1,18 @@
 ---
-title: Service Fabric 中的 Reliable Actors | Microsoft 文档
+title: Service Fabric 上的 Reliable Actors
 description: 介绍 Reliable Actors 如何在 Reliable Services 上进行分层以及如何使用 Service Fabric 平台的功能。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349234"
 ---
-# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台
+# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何运用 Service Fabric 平台
 本文介绍了 Reliable Actors 如何使用 Azure Service Fabric 平台。 Reliable Actors 在有状态的可靠服务（称为*执行组件服务*）的实现托管的框架中运行。 执行组件服务包含管理执行组件的生命周期和消息发送所需的所有组件：
 
 * 执行组件运行时管理生命周期、垃圾回收，并强制执行单线程访问。
@@ -51,7 +42,7 @@ ms.locfileid: "60725888"
 ### <a name="service-manifest"></a>服务清单
 执行组件框架生成工具自动生成执行组件服务的 ServiceManifest.xml 文件的内容。 此文件包括：
 
-* 执行组件服务类型。 根据执行组件项目名称生成此类型名称。 根据执行组件的持久性属性，还会相应设置 HasPersistedState 标志。
+* 执行组件服务类型。 根据执行组件项目名称生成此类型名称。 根据执行组件的持久性属性，还将相应设置 HasPersistedState 标志。
 * 代码包。
 * 配置包。
 * 资源和终结点。
@@ -93,7 +84,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-使用 GUID/UUID 和字符串时，这些值经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 会直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
+使用 GUID/UUID 和字符串时，这些值将经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 将直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
 
 
 ## <a name="next-steps"></a>后续步骤

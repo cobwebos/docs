@@ -2,17 +2,17 @@
 title: 使用 Azure PowerShell 创建 Azure 专用终结点 |Microsoft Docs
 description: 了解 Azure 专用链接
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430346"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
@@ -59,6 +59,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
 ```
+
+> [!CAUTION]
+> 可以轻松地将 `PrivateEndpointNetworkPoliciesFlag` 参数与其他可用标志混淆，`PrivateLinkServiceNetworkPoliciesFlag`，因为它们既是长词，也具有类似的外观。  请确保使用的是正确的 `PrivateEndpointNetworkPoliciesFlag`。
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>将子网关联到虚拟网络
 
@@ -192,7 +195,7 @@ mstsc /v:<publicIpAddress>
 3. 选择“确定”。 
 4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”。 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
+## <a name="access-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
 2. 输入 `nslookup myserver.database.windows.net`。 
@@ -211,7 +214,7 @@ mstsc /v:<publicIpAddress>
       服务器名称选择 "myserver.database.windows.net 用户名" 输入创建过程中提供的用户名。
       密码输入创建过程中提供的密码。
       记住密码选择是。
-5. 选择 "连接"。
+5. 选择“连接”。
 6. 浏览左侧菜单中的数据库。 
 7. 同时创建或查询来自 mydatabase 的信息
 8. 关闭与*myVM*的远程桌面连接。 
@@ -224,4 +227,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure 专用链接](private-link-overview.md)的详细信息
+- 详细了解 [Azure 专用链接](private-link-overview.md)

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fb4deaf3d8fdc0347058b0af2079aebbd4cb22e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424545"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -41,7 +41,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="application-manifest"></a>应用程序清单
 
-[Azure 门户][AZURE-portal]提供的一项功能，该功能将生成应用程序标识配置的 JSON 表示形式，用作更新其关联的[应用程序][AAD-Graph-App-Entity]和[ServicePrincipal][AAD-Graph-Sp-Entity]实体的机制。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
+[Azure 门户][AZURE-portal]提供的一项功能，该功能将生成应用程序标识配置的 JSON 表示形式，用作更新其关联的[应用程序][Graph-App-Resource]和[ServicePrincipal][Graph-Sp-Resource]实体的机制。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
 
 ## <a name="application-object"></a>应用程序对象
 
@@ -59,7 +59,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 有关更多详细信息，请参阅将[应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]。
 
-## <a name="authentication"></a>authentication
+## <a name="authentication"></a>身份验证
 
 向访问方质询合法凭据的措施，提供创建用于标识和访问控制的安全主体的基础。 例如，在 [OAuth2 授权](#authorization-grant)期间，访问方身份验证根据使用的授权填充[资源所有者](#resource-owner)或[客户端应用程序](#client-application)角色。
 
@@ -82,7 +82,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="authorization-grant"></a>授权
 
-授予[客户端应用程序](#client-application)的凭据，代表[资源所有者](#resource-owner)对其受保护资源访问权限的[授权](#authorization)。 根据客户端类型/要求，客户端应用程序可以使用[OAuth2 授权框架定义的四种授权类型][OAuth2-AuthZ-Grant-Types]之一来获取授权： "授权代码授予"、"客户端凭据授予"、"隐式授予" 和 "资源所有者密码凭据授予"。 根据使用的授权类型，返回给客户端的凭据是[访问令牌](#access-token)或[授权代码](#authorization-code)（稍后用于交换访问令牌）。
+一个凭据，表示[资源所有者](#resource-owner)[授权](#authorization)访问其受保护资源的权限，并授予[客户端应用程序](#client-application)。 根据客户端类型/要求，客户端应用程序可以使用[OAuth2 授权框架定义的四种授权类型][OAuth2-AuthZ-Grant-Types]之一来获取授权： "授权代码授予"、"客户端凭据授予"、"隐式授予" 和 "资源所有者密码凭据授予"。 根据使用的授权类型，返回给客户端的凭据是[访问令牌](#access-token)或[授权代码](#authorization-code)（稍后用于交换访问令牌）。
 
 ## <a name="authorization-server"></a>授权服务器
 
@@ -96,7 +96,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 有关更多详细信息，请参阅[Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
 
-## <a name="client-application"></a>客户端应用程序
+## <a name="client-application"></a>客户端应用程序 (client application)
 
 根据[OAuth2 授权框架][OAuth2-Role-Def]的定义，这是代表[资源所有者](#resource-owner)发出受保护资源请求的应用程序。 “客户端”一词并不代表任何特定的硬件实现特征（例如，应用程序是在服务器、台式机还是其他设备上执行）。
 
@@ -137,7 +137,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 权限也会在[同意](#consent)过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
 
-通过选择所需的 "委派的权限" 和 "应用程序权限" （后者需要全局管理员角色的成员资格），在[Azure 门户][AZURE-portal]中的应用程序的 " **API 权限**" 页上配置权限请求。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其[requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
+通过选择所需的 "委派的权限" 和 "应用程序权限" （后者需要全局管理员角色的成员资格），在[Azure 门户][AZURE-portal]中的应用程序的 " **API 权限**" 页上配置权限请求。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其[requiredResourceAccess 属性][Graph-App-Resource]中。
 
 ## <a name="resource-owner"></a>资源所有者
 
@@ -147,25 +147,25 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 根据[OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，能够接受并响应提供[访问令牌](#access-token)的[客户端应用程序](#client-application)的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 Azure AD Graph API，以及可访问邮件和日历等数据的 Office 365 API。 同时，还可以通过[MICROSOFT GRAPH API][Microsoft-Graph]访问这两种方法。
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括[Microsoft Graph API][Microsoft-Graph] ，该 api 提供对 Azure AD 租户数据的访问，以及提供对诸如邮件和日历等数据的访问的 Office 365 api。 
 
-与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的[注册](#application-registration)来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Azure AD 图形 API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
+与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的[注册](#application-registration)来建立的，可提供应用程序和服务主体对象。 某些 Microsoft 提供的 Api （如 Microsoft Graph API）在预配期间，所有租户都提供预注册的服务主体。
 
 ## <a name="roles"></a>角色
 
 与[范围](#scopes)一样，角色提供某种方式让[资源服务器](#resource-server)控制其受保护资源的访问权限。 有两种类型的角色：“用户”角色为需要资源访问权限的用户/组实现基于角色的访问控制，“应用程序”角色为需要访问权限的[客户端应用程序](#client-application)实现相同的访问控制。
 
-角色是资源定义的字符串（例如 "支出审批者"、"只读" 和 "appRoles"），在[Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并存储在资源的 " [" 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
+角色是资源定义的字符串（例如 "支出审批者"、"只读" 和 "appRoles"），在[Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并存储在资源的 " [" 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
 
-有关 Azure AD 图形 API 公开的应用程序角色的详细讨论，请参阅[图形 API 权限范围][AAD-Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 RBAC 和 Azure 门户管理访问权限][AAD-RBAC]。
+有关 Microsoft Graph API 公开的应用程序角色的详细讨论，请参阅[图形 API 权限范围][Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 RBAC 和 Azure 门户管理访问权限][AAD-RBAC]。
 
 ## <a name="scopes"></a>范围
 
 与[角色](#roles)一样，范围提供某种方式让[资源服务器](#resource-server)控制其受保护资源的访问权限。 范围用于实现[基于作用域][OAuth2-Access-Token-Scopes]的访问控制，适用于已被其所有者委托访问资源的[客户端应用程序](#client-application)。
 
-作用域是资源定义的字符串（例如 "Mail. Read"、"node.js"），在[Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并存储在资源的[oauth2Permissions 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
+作用域是资源定义的字符串（例如 "Mail. Read"、"node.js"），在[Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并存储在资源的[oauth2Permissions 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
 
-命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Azure AD 图形 API 公开的范围的详细讨论，请参阅[图形 API 权限范围][AAD-Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅[office 365 API 权限参考][O365-Perm-Ref]。
+命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅[图形 API 权限范围][Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅[office 365 API 权限参考][O365-Perm-Ref]。
 
 ## <a name="security-token"></a>安全令牌
 
@@ -207,7 +207,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 
 ## <a name="user-principal"></a>用户主体
 
-与服务主体对象用于表示应用程序实例的方式一样，用户主体对象是另一种类型的安全主体，它代表用户。 Azure AD Graph[用户实体][AAD-Graph-User-Entity]定义用户对象的架构，包括用户相关属性，例如名字和姓氏、用户主体名称、目录角色成员身份等。这为 Azure AD 提供用户标识配置，以便在运行时建立用户主体。 用户主体用于代表经身份验证的用户执行单一登录、记录[同意](#consent)委托、做出访问控制决策等操作。
+与服务主体对象用于表示应用程序实例的方式一样，用户主体对象是另一种类型的安全主体，它代表用户。 Microsoft Graph[用户资源类型][Graph-User-Resource]定义用户对象的架构，包括用户相关属性，例如名字和姓氏、用户主体名称、目录角色成员身份等。这为 Azure AD 提供用户标识配置，以便在运行时建立用户主体。 用户主体用于代表经身份验证的用户执行单一登录、记录[同意](#consent)委托、做出访问控制决策等操作。
 
 ## <a name="web-client"></a>Web 客户端
 
@@ -226,10 +226,10 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: /graph/permissions-reference
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[Graph-Perm-Scopes]: /graph/permissions-reference
+[Graph-App-Resource]: /graph/api/resources/application
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md

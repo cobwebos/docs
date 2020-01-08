@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375009"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -29,8 +29,8 @@ ms.locfileid: "74687129"
 
 如果拥有外部 ASE，则公共 VIP 还是 ASE 应用针对下述项解析到的终结点：
 
-* HTTP/秒 
-* FTP/秒
+* HTTP/S 
+* FTP/S
 * Web 部署
 * 远程调试
 
@@ -53,7 +53,7 @@ ms.locfileid: "74687129"
 
 仅为 ASE 操作，ASE 需要打开以下端口：
 
-| 用途 | 起价 | 目标 |
+| 使用 | 起价 | 到 |
 |-----|------|----|
 | 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
@@ -69,7 +69,7 @@ ms.locfileid: "74687129"
 
 你需要考虑的其他端口是应用程序端口：
 
-| 用途 | 端口 |
+| 使用 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -84,7 +84,7 @@ ms.locfileid: "74687129"
 
 ASE 在以下端口上与可访问 internet 的地址通信：
 
-| 使用 | 端口 |
+| 用途 | 端口 |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
@@ -122,7 +122,7 @@ ASE 在以下端口上与可访问 internet 的地址通信：
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
-ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
+ASE 具有一些需要注意的 IP 地址。 它们分别是：
 
 - 公共入站 IP 地址：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
 - 出站公共 IP：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
@@ -152,7 +152,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 要使 ASE 正常工作，NSG 中的必需条目为允许流量：
 
-**站**
+**入站**
 * 在端口454455上从 IP 服务标记 AppServiceManagement
 * 从端口16001上的负载均衡器
 * 从 ASE 子网到所有端口上的 ASE 子网
@@ -166,7 +166,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 不需要在 dns 中添加 DNS 端口，因为 NSG 规则不会影响 dns 的流量。 这些端口不包括应用成功使用所需的端口。 常规应用访问端口为：
 
-| 用途 | 端口 |
+| 使用 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -244,7 +244,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

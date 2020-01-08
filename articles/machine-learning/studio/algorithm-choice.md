@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: c69b4c15397dc13f36a707f932c2464a4ff94ca7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2073123a61e919c10caaaea141f776e842f4d717
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427733"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>如何为 Azure 机器学习 Studio （经典）选择算法
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838464"
 
 “应使用何种机器学习算法？”这一问题的答案 始终是“视情况而定。” 这取决于数据的大小、质量和性质。 这取决于想用算法做什么。 这取决于算法的数学如何转换为所使用的计算机的指令。 还取决于可用时间的长短。 即使是经验最丰富的数据科学家也无法在试用之前判断哪种算法执行效果最佳。
 
-机器学习 Studio （经典）提供了最先进的算法，例如可缩放的提升决策树、Bayesian 推荐系统、深度神经网络和在 Microsoft Research 开发的决策森林。 此外还包括可缩放的开源代码机器学习包，例如 Vowpal Wabbit。 机器学习 Studio 的经典版本支持多类和二元分类、回归和聚类分析的机器学习算法。 请参阅[机器学习模块](/azure/machine-learning/studio-module-reference/index)的完整列表。
+机器学习 Studio （经典）提供了最先进的算法，例如可缩放的提升决策树、Bayesian 推荐系统、深度神经网络和在 Microsoft Research 开发的决策森林。 此外还包括可缩放的开源代码机器学习包，例如 Vowpal Wabbit。 机器学习 Studio （经典）支持多类和二元分类、回归和聚类分析的机器学习算法。 请参阅[机器学习模块](/azure/machine-learning/studio-module-reference/index)的完整列表。
 文档提供了有关每个算法的一些信息，以及如何调整参数来优化所使用的算法。  
 
 
@@ -49,7 +49,7 @@ ms.locfileid: "73838464"
 
 监督式学习算法基于一组示例进行预测。 例如，可以使用历史股票价格来对未来价格进行猜测。 用于定型的每个示例都标有相关的值 — 本例中是股票价格。 监督式学习算法查找这些值标签中的模式。 它可以使用任何可能相关的信息，包括星期几，季节，公司的财务数据，行业类型，存在的破坏性地缘政治事件，并且每种算法查找不同类型的模式。 算法找到可能的最佳模式之后，使用该模式对未标记的测试数据（明天的价格）进行预测。
 
-监督式学习是一种常用且有用的机器学习类型。 除了一个例外，经典版 Azure 机器学习 Studio 中的所有模块都是监督式学习算法。 Azure 机器学习 Studio （经典）中显示了几种特定类型的监督式学习：分类、回归和异常情况检测。
+监督式学习是一种常用且有用的机器学习类型。 除了一个例外，Azure 机器学习 Studio （经典）中的所有模块都是监督式学习算法。 Azure 机器学习 Studio （经典）中显示了几种特定类型的监督式学习：分类、回归和异常情况检测。
 
 * **分类**。 在数据用于预测类别时，监督式学习也称为分类。 将图像分配为“猫”或“狗”的图片时，就是这种情况。 如果只有两个选项，这就称为**双类**或**二元分类**。 如果有多个类别，如预测 NCAA 疯狂三月锦标赛的冠军时，则称为**多类分类**。
 * **回归**。 在预测一个值时，如股票价格，监督式学习称为回归。
@@ -66,7 +66,7 @@ ms.locfileid: "73838464"
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>选择算法时的注意事项
 
-### <a name="accuracy"></a>准确性
+### <a name="accuracy"></a>精确度
 
 获取最准确的答案可能并不总是必要的。
 有时，近似值便已足够，具体取决于想要将其用于何处。 如果是这种情况，则可以通过坚持使用更多的近似值的方法大大减少处理时间。 更接近的方法的另一个优点是，它们自然会避免过度拟合。
@@ -83,11 +83,11 @@ ms.locfileid: "73838464"
 
 ![非线性类边界](./media/algorithm-choice/image1.png)
 
-***非线性类边界*** - 依赖于线性分类算法会导致较低的准确性
+非线性***类边界*** *-依赖线性分类算法会导致低准确性*
 
 ![非线性趋势数据](./media/algorithm-choice/image2.png)
 
-***非线性趋势数据*** - 使用线性回归方法会生成比必要的更大的错误
+***带有非线性趋势的数据*** *-使用线性回归方法会产生比必需的更大的错误*
 
 尽管其危险，线性算法作为攻击的第一线仍然非常受欢迎。 它们往往算法简单且可快速定型。
 
@@ -95,7 +95,7 @@ ms.locfileid: "73838464"
 
 参数是数据科学家在设置算法时要旋转的旋钮。 它们是影响算法行为的数字，例如错误容限、迭代次数，或算法行为方式的变体之间的选项。 算法的定型时间和准确性有时可能对获取正确设置相当敏感。 通常，具有大量参数的算法需要最多的试用和错误才能找到良好的组合。
 
-或者，在经典版的 Azure 机器学习 Studio 中有一个[参数扫描](algorithm-parameters-optimize.md)模块块，自动尝试使用所选的任何粒度的所有参数组合。 虽然这是确保跨越参数空间的好方法，但定型模型所需的时间随参数数量呈指数增长。
+或者，在 Azure 机器学习 Studio （经典）中有一个[参数扫描](algorithm-parameters-optimize.md)模块块，它会在你选择的任何粒度自动尝试所有参数组合。 虽然这是确保跨越参数空间的好方法，但定型模型所需的时间随参数数量呈指数增长。
 
 优点是通常情况下，参数较多说明算法具有更大的灵活性。 它通常可以实现非常好的准确性，前提是可以找到参数设置的正确组合。
 
@@ -161,7 +161,7 @@ ms.locfileid: "73838464"
 
 ![逻辑回归到仅具有一个特征的双类数据](./media/algorithm-choice/image4.png)
 
-***逻辑回归到仅具有一个特征的双类数据*** - 类边界是逻辑曲线与两个类都接近的点
+***仅具有一个功能的双类数据的逻辑回归*** *-类边界是逻辑曲线刚好与这两个类接近的点*
 
 ### <a name="trees-forests-and-jungles"></a>树、林和森林
 
@@ -179,7 +179,7 @@ ms.locfileid: "73838464"
 
 ### <a name="neural-networks-and-perceptrons"></a>神经网络和感知
 
-神经网络是涵盖[多类](/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类](/azure/machine-learning/studio-module-reference/two-class-neural-network)和[回归](/azure/machine-learning/studio-module-reference/neural-network-regression)问题的大脑启发式学习算法。 它们是一种无限多样的，但经典版 Azure 机器学习 Studio 中的神经网络都属于定向非循环图形的形式。 这意味着输入特征在被转换为输出之前通过一系列层向前（不向后）传递。 在每个层中，输入以各种组合加权、求和，并传递到下一层。 这种简单计算的结合会不可思议的导致产生学习复杂的类边界和数据趋势的能力。 这种多层网络执行的“深度学习”，极大的促进了技术报告和科幻小说。
+神经网络是涵盖[多类](/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类](/azure/machine-learning/studio-module-reference/two-class-neural-network)和[回归](/azure/machine-learning/studio-module-reference/neural-network-regression)问题的大脑启发式学习算法。 它们是一种无限多样的，但 Azure 机器学习 Studio （经典）中的神经网络均为定向非循环图形的形式。 这意味着输入特征在被转换为输出之前通过一系列层向前（不向后）传递。 在每个层中，输入以各种组合加权、求和，并传递到下一层。 这种简单计算的结合会不可思议的导致产生学习复杂的类边界和数据趋势的能力。 这种多层网络执行的“深度学习”，极大的促进了技术报告和科幻小说。
 
 但是，此高性并非免费提供。 神经网络定型可能耗时很长，特别是对于具有大量特征的大型数据集。 它们还具有比大多数算法更多的参数，这意味着参数扫描在很大程度上加长了定型时间。
 对于那些希望[指定自己的网络结构](azure-ml-netsharp-reference-guide.md)的成就突出者来说，一切皆有可能。
@@ -205,7 +205,7 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](/azure/machine-lea
 
 ### <a name="bayesian-methods"></a>贝叶斯方法
 
-贝叶斯方法具有非常理想的质量：它们避免过度拟合。 其提前对答案的可能分布做出一些假设，从而实现避免过度拟合。 这种方法的另一个副产品是它们的参数非常少。 Azure 机器学习 Studio 的经典版具有适用于分类（[双类 Bayes "点机](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)）和回归（[Bayesian 线性回归](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)）的 Bayesian 算法。
+贝叶斯方法具有非常理想的质量：它们避免过度拟合。 其提前对答案的可能分布做出一些假设，从而实现避免过度拟合。 这种方法的另一个副产品是它们的参数非常少。 Azure 机器学习 Studio （经典）具有适用于分类（[双类 Bayes "点机](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)）和回归（[Bayesian 线性回归](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)）的 Bayesian 算法。
 注意，这些方法都假定数据可以分割或用直线拟合。
 
 在历史上，贝叶斯点机是由 Microsoft Research 开发的。 它们背后具有极其出色的理论工作。 感兴趣的学习者可以直接转到阅读 [JMLR 中的原始文章](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf)和 [Chris Bishop 撰写的充满见地的博客](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)。
@@ -220,7 +220,7 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](/azure/machine-lea
 
 ![基于 PCA 的异常情况检测](./media/algorithm-choice/image8.png)
 
-***基于 PCA 的异常情况检测*** - 大多数数据是模式化分布；明显偏离该分布的点都是值得怀疑的
+***基于 PCA 的异常情况检测*** *-绝大多数数据都属于所谓分布; 这种分布中的与偏差大大*降低了
 
 ![使用 K-means 分组的数据集](./media/algorithm-choice/image9.png)
 
@@ -232,7 +232,7 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](/azure/machine-lea
 
 ***双类分类器组合形成一个三类分类器***
 
-经典版 Azure 机器学习 Studio 还包括对[Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model)标题下的功能强大的机器学习框架的访问。
+Azure 机器学习 Studio （经典）还包括对[Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model)标题下的功能强大的机器学习框架的访问权限。
 VW 在这里分类，因为可以学习分类和回归问题，甚至可以从部分未标记的数据学习。 可以将其配置为使用多种学习算法、损失函数和优化算法中的任何一种。 它的设计从根本上是高效、并行的，且速度非常快。 其可轻松的处理超级大型的特征集。
 VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法领域的一级方程式赛车。 不是每个问题都适用于 VW，但如果问题适合，则可能值得继续深入学习。 它也有多种语言的[独立开放源代码](https://github.com/JohnLangford/vowpal_wabbit)。
 
@@ -242,4 +242,4 @@ VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法
 
 * 有关机器学习 Studio （经典）中可用的所有机器学习算法的类别列表，请参阅机器学习 Studio （经典）算法和模块帮助中的[初始化模型](/azure/machine-learning/studio-module-reference/machine-learning-initialize-model)。
 
-* 有关经典版机器学习 Studio 中算法和模块的完整列表（按字母顺序排列），请参阅机器学习 Studio （经典）算法和模块帮助中[的机器学习 Studio （经典）模块的 a-z 列表](/azure/machine-learning/studio-module-reference/a-z-module-list)。
+* 有关机器学习 Studio （经典）中算法和模块的完整列表（按字母顺序排列），请参阅机器学习 Studio （经典）算法和模块帮助中[的机器学习 Studio （经典）模块的 a-z 列表](/azure/machine-learning/studio-module-reference/a-z-module-list)。

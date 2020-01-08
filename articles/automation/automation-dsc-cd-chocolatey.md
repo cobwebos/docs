@@ -2,19 +2,15 @@
 title: 使用 Chocolatey 进行 Azure Automation State Configuration 持续部署
 description: 使用 Azure Automation State Configuration、DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON 资源管理器模板和 PowerShell 源代码的示例。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366424"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -187,7 +183,7 @@ Get-AzureRmAutomationDscCompilationJob `
 
 ## <a name="notes"></a>说明
 
-本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。 可以从任何存储的映像开始，然后使用 DSC 配置对其进行调整。
+本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。 可以从任何存储的映像开始，并使用 DSC 配置对其进行调整。
 不过，更改已刻入映像的配置要比使用 DSC 动态更新配置难得多。
 
 将此技巧运用于 VM 时，不需要使用资源管理器模板和 VM 扩展。 即使 VM 不在 Azure 上，也能由 CD 管理。 只需在 VM 上安装 Chocolatey 并配置 LCM，以使其知道“拉”服务器的所在位置即可。
@@ -197,14 +193,14 @@ Get-AzureRmAutomationDscCompilationJob `
 GitHub 上的[此 Visual Studio 项目](https://github.com/sebastus/ARM/tree/master/CDIaaSVM)中提供了本用例的完整源代码。
 
 ## <a name="related-articles"></a>相关文章
-* [Azure 自动化 DSC 概述](automation-dsc-overview.md)
+* [Azure Automation DSC 概述](automation-dsc-overview.md)
 * [Azure 自动化 DSC cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
-* [载入用于根据 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)
+* [载入计算机以便通过 Azure 自动化 DSC 进行管理](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关概述，请参阅 [Azure Automation State Configuration](automation-dsc-overview.md)
-- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)

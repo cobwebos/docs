@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351181"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -41,7 +41,7 @@ ms.locfileid: "60848276"
 <th></th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>营销</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -49,8 +49,8 @@ ms.locfileid: "60848276"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Age</th>
-<th>Email</th>
+<th>年龄</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -61,7 +61,7 @@ ms.locfileid: "60848276"
 </table>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>营销</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
@@ -69,11 +69,11 @@ ms.locfileid: "60848276"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Age</th>
-<th>Email</th>
+<th>年龄</th>
+<th>电子邮件</th>
 </tr>
 <tr>
-<td>Jun</td>
+<td>六月</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -81,8 +81,8 @@ ms.locfileid: "60848276"
 </table>
 </tr>
 <tr>
-<td>Marketing</td>
-<td>系</td>
+<td>营销</td>
+<td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -91,14 +91,14 @@ ms.locfileid: "60848276"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>营销</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>销售热线</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -106,8 +106,8 @@ ms.locfileid: "60848276"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Age</th>
-<th>Email</th>
+<th>年龄</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -128,16 +128,16 @@ ms.locfileid: "60848276"
 一个表包含一个或多个分区，为优化解决方案，所做的很多设计决策都将围绕选取合适的 **PartitionKey** 和 **RowKey** 而展开。 一个解决方案可以仅包含单个表，该表包含组织为分区的所有实体，但通常一个解决方案具有多个表。 表可帮助你在逻辑上组织实体，帮助你使用访问控制列表管理对数据的访问，并且可以使用单个存储操作删除整个表。  
 
 ## <a name="table-partitions"></a>表分区
-帐户名称、表名称和 **PartitionKey** 共同标识存储服务中表服务用于存储实体的分区。 作为实体寻址方案的一部分，分区定义事务的作用域（详见下方的[实体组事务](#entity-group-transactions)），并构成表服务缩放方式的基础。 有关分区的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。  
+帐户名称、表名称和 **PartitionKey** 共同标识存储服务中表服务用于存储实体的分区。 作为实体寻址方案的一部分，分区定义事务的作用域（详见下方的[实体组事务](#entity-group-transactions)），并构成表服务缩放方式的基础。 有关分区的详细信息，请参阅[表存储的性能和可伸缩性清单](storage-performance-checklist.md)。  
 
 在表服务中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点负载过轻，表服务将该节点针对的分区范围*拆分*为不同节点；流量下降时，该服务可将无操作的节点的分区范围*合并*为单个节点。  
 
-有关表服务的内部细节（特别是服务管理分区的方式）的详细信息，请参阅文章 [Microsoft Azure 存储：具有非常一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
+若要深入了解表服务的内部细节（特别是服务管理分区的方式），请参阅文章 [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（Microsoft Azure 存储：具有高度一致性的高可用云存储服务）。  
 
 ## <a name="entity-group-transactions"></a>实体组事务
-在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”  。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
+在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
 
-EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 存储帐户和表服务的可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。   
+EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)。 有关表服务的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 下表介绍了设计表服务解决方案时需要注意的一些关键值：  
@@ -152,7 +152,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使
 | **RowKey** 的大小 |大小最大为 1 KB 的字符串 |
 | 实体组事务的大小 |一个事务最多可包含 100 个实体，并且负载大小必须小于 4 MB。 EGT 只能更新一次实体。 |
 
-有关详细信息，请参阅 [了解表服务数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。  
+有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。  
 
 ## <a name="cost-considerations"></a>成本注意事项
 表存储的价格相对便宜，但在评估任何表服务解决方案时，应同时针对容量使用情况和事务数量进行成本估算。 但是，在许多情况下，为提高解决方案的性能或可伸缩性，存储非规范化或重复的数据是一种有效方法。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。  
@@ -161,6 +161,6 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使
 
 - [表设计模式](table-storage-design-patterns.md)
 - [为关系建模](table-storage-design-modeling.md)
-- [针对查询进行设计](table-storage-design-for-query.md)
+- [针对查询的设计](table-storage-design-for-query.md)
 - [对表数据进行加密](table-storage-design-encrypt-data.md)
-- [针对数据修改进行设计](table-storage-design-for-modification.md)
+- [针对数据修改的设计](table-storage-design-for-modification.md)

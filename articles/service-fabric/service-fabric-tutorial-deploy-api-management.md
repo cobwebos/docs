@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中将 API 管理与 Service Fabric 集成 |Microsoft Docs
+title: 在 Azure 中将 API 管理与 Service Fabric 集成
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465356"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -36,7 +25,7 @@ ms.locfileid: "68598826"
 > [!IMPORTANT]
 > 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 开始之前：
 
@@ -88,7 +77,7 @@ az account set --subscription <guid>
     </Resources>
     ```
 
-    通过删除该端口, Service Fabric 可以从应用程序端口范围动态指定一个端口, 该范围通过群集资源管理器模板中的网络安全组打开, 允许流量从 API 管理流向该端口。
+    通过删除该端口，Service Fabric 可以从应用程序端口范围动态指定一个端口，该范围通过群集资源管理器模板中的网络安全组打开，允许流量从 API 管理流向该端口。
 
  6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
@@ -108,10 +97,10 @@ az account set --subscription <guid>
 
 下载并保存以下资源管理器模板和参数文件：
 
-* [network-apim.json][network-arm]
-* [network-apim.parameters.json][network-parameters-arm]
-* [apim.json][apim-arm]
-* [apim.parameters.json][apim-parameters-arm]
+* [apim][network-arm]
+* [apim 的网络][network-parameters-arm]
+* [apim][apim-arm]
+* [apim][apim-parameters-arm]
 
 *network-apim.json* 模板将新的子网和网络安全组部署在已部署的 Service Fabric 群集所在的虚拟网络中。
 
@@ -145,7 +134,7 @@ az account set --subscription <guid>
 
 * “displayName”可以是 API 的任意名称。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
+* “serviceUrl”引用实现 API 的 HTTP 服务。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 本文内容，例如 "http：\//servicefabric"。
 * “path”附加到 API 管理服务的基础 URL。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀。 对于本文，请使用“myapp”。
@@ -201,7 +190,7 @@ az account set --subscription <guid>
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|开发人员|
+|apimSku|Developer|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
@@ -288,7 +277,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和所有群集资源。
+登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用[AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有群集资源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

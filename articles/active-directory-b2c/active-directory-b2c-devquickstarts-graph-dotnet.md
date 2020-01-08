@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367990"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -29,9 +29,6 @@ Azure Active Directory B2C （Azure AD B2C）租户可以拥有数千或数百�
 * 对于**自动**的连续任务，你应使用你为执行管理任务所需的权限而提供的某种类型的服务帐户。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/service-to-service.md)的*应用程序 ID* 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
 
 本文介绍如何执行自动用例。 构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 但是，代码以非交互式、自动化的方式进行编写。
-
->[!IMPORTANT]
-> **必须**使用[Azure AD 图形 API](../active-directory/develop/active-directory-graph-api-quickstart.md)在 Azure AD B2C 目录中管理用户。 Azure AD 图形 API 与 Microsoft Graph API 不同。 在此 MSDN 博客文章中了解详细信息： [Microsoft Graph 或 Azure AD 图](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -63,8 +60,9 @@ Azure AD B2C 租户后，需要使用[Azure 门户](https://portal.azure.com)注
 
 如果要使应用程序能够删除用户或更新密码，则需要向其授予 "*用户管理员*" 角色。
 
-1. 登录到[Azure 门户](https://portal.azure.com)并切换到包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中选择 " **Azure AD B2C** "。 或者，选择 "**所有服务**"，然后搜索并选择**Azure AD B2C**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 1. 在 "**管理**" 下，选择 "**角色和管理员**"。
 1. 选择 "**用户管理员**" 角色。
 1. 选择 "**添加分配**"。

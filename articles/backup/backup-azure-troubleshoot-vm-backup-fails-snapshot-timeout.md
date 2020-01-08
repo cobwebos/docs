@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391848"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -28,6 +28,7 @@ Azure VM 代理可能已停止、过时、处于不一致的状态，或者未�
 - **打开 Azure 门户 > VM > 设置 "> 属性" 边栏选项 > 卡**，确保 vm**状态**为 "**正在运行**" 且**代理状态**为 "**就绪**"。 如果 VM 代理已停止或处于不一致的状态，请重新启动该代理<br>
   - 对于 Windows Vm，请按照以下[步骤](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重启来宾代理。<br>
   - 对于 Linux Vm，请遵循以下[步骤](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重启来宾代理。
+- **打开 Azure 门户 > VM > 设置 > 扩展**> 确保所有扩展都处于**预配成功**状态。 否则，请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)解决此问题。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态
 
@@ -53,7 +54,7 @@ Azure VM 代理可能已停止、过时、处于不一致的状态，或者未�
 
 如果其中一个扩展失败导致 VM 处于预配失败状态，则会出现此错误。<br>**打开 Azure 门户 > VM > 设置 > 扩展 > 扩展状态**，并检查所有扩展是否处于**预配成功**状态。
 
-- 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发即席备份，这将重新安装扩展并运行备份作业。  <br>
+- 如果 VMSnapshot 扩展处于失败状态，请右键单击失败的扩展并将其删除。 触发按需备份，这将重新安装扩展并运行备份作业。  <br>
 - 如果任何其他扩展处于 "失败" 状态，则它可能会干扰备份。 请确保解决这些扩展问题，然后重试备份操作。  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已达到还原点集合的最大限制
@@ -229,7 +230,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 1. 在 [Azure 门户](https://portal.azure.com/)中，找到备份失败的 VM。
 2. 选择“设置”。
 3. 选择“扩展”。
-4. 选择“Vmsnapshot 扩展”。
+4. 选择 "**快照扩展**"。
 5. 选择“卸载”。
 
 对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，然后运行备份。
@@ -238,7 +239,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。
 3. 在“设置”部分，选择“锁”以显示锁。
 4. 若要删除锁，请选择省略号，然后单击“删除”。
@@ -267,7 +268,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 若要手动清除由于资源组上的锁定而未清除的还原点集合，请尝试执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。
 
     ![删除锁](./media/backup-azure-arm-vms-prepare/resource-group.png)

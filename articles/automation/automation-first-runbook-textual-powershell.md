@@ -3,19 +3,15 @@ title: 我在 Azure 自动化中的第一个 PowerShell Runbook
 description: 本教程指导创建、测试和发布一个简单的 PowerShell Runbook。
 keywords: azure powershell, powershell 脚本教程, powershell 自动化
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07be9aa9ab576845c5b2ad94b1a2b3fb828ea514
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366390"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -34,7 +30,7 @@ ms.locfileid: "74850867"
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自动化帐户](automation-quickstart-create-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
 * Azure 虚拟机。 停止和启动此虚拟机，因此它不应为生产用 VM。
-* 可能需要根据所使用的 cmdlet 来[更新 Azure 模块](automation-update-azure-modules.md)。
+* 可能需要根据所使用的 cmdlet[导入](shared-resources/modules.md)/[更新 Azure 模块](automation-update-azure-modules.md)。
 
 ## <a name="create-new-runbook"></a>创建新的 Runbook
 
@@ -163,7 +159,7 @@ ms.locfileid: "74850867"
 1. 单击“测试”窗格，以便测试 Runbook。
 1. 单击“启动”以启动测试 。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此输出确认运行方式帐户有效。
 
-   ![身份验证](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![Authenticate](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>添加代码以启动虚拟机
 

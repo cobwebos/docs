@@ -2,20 +2,16 @@
 title: 在 Azure 自动化 Runbook 中部署 Azure 资源管理器模板
 description: 如何通过 Runbook 部署 Azure 存储中存储的 Azure 资源管理器模板
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: 922a4e8d98405de9e2b8420da4abf0e157011546
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366628"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
 
@@ -34,7 +30,7 @@ ms.locfileid: "74850918"
 * 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 * 在本地计算机上安装的 Azure Powershell。 若要详细了解如何获得 Azure PowerShell，请参阅 [Install and configure Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)（安装和配置 Azure PowerShell）。
 
-## <a name="create-the-resource-manager-template"></a>创建 Resource Manager 模板
+## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 
 在本示例中，我们使用用于部署新 Azure 存储帐户的资源管理器模板。
 
@@ -238,13 +234,13 @@ Runbook 会获取资源管理器模板，并使用它来部署新的 Azure 存�
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 就这么简单！ 现在，可以使用 Azure 自动化、Azure 存储和资源管理器模板来部署所有 Azure 资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关资源管理器模板的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
+* 若要了解有关资源管理器模板的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)
 * 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/common/storage-introduction.md)。
 * 若要查找其他有用的 Azure 自动化 Runbook，请参阅 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)。
 * 若要查找其他有用的资源管理器模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)

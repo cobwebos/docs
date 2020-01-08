@@ -1,6 +1,6 @@
 ---
-title: 利用 Microsoft 标识平台隐式流保护单页面应用 |Microsoft
-description: 使用 Microsoft 标识平台为单页面应用隐式流的实现生成 web 应用程序。
+title: OAuth 2.0 隐式授权流-Microsoft 标识平台 |Microsoft
+description: 使用 Microsoft 标识平台隐式流保护单页应用。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afae9535c190c05bca3153dfbe5279cd4c47968
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a73056914d08cc9c0c90b1c91cc67c18eaad86da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423232"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -74,7 +74,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 若要使用隐式流测试登录，请单击 " <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize.. "。</a>登录后，应将浏览器重定向到地址栏中的 `id_token` `https://localhost/myapp/` 。
 >
 
-| 参数 |  | 描述 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | `tenant` | 必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必填 | [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
@@ -104,7 +104,7 @@ GET https://localhost/myapp/#
 &state=12345
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌。 不应对访问令牌进行解码或检查，而应将其视为不透明的字符串。 |
 | `token_type` |如果 `response_type` 包含 `token`，则包含该参数。 始终为 `Bearer`。 |
@@ -123,7 +123,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -172,7 +172,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。 不应对访问令牌进行解码或检查，而应将其视为不透明的字符串。 |
 | `token_type` | 始终为 `Bearer`。 |
@@ -191,7 +191,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -210,7 +210,7 @@ OpenID Connect `end_session_endpoint` 允许你的应用程序将请求发送到
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| 参数 |  | 描述 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | `tenant` |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `post_logout_redirect_uri` | 建议 | 注销完成后用户应返回到的 URL。 此值必须与为应用程序注册的重定向 URI 之一匹配。 如果不包含，则 Microsoft 标识平台终结点会向用户显示一条一般消息。 |

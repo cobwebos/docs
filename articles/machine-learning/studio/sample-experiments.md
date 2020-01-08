@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 6b9f9e3cfc198610cf1f5f76b267ea52c551716a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427511"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>从 Azure AI 库中的工作示例创建 Azure 机器学习 Studio （经典）试验
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838647"
 
 该库包含 Microsoft Azure 机器学习工作室（经典）团队的示例试验，以及机器学习社区共享的示例。 此外，还可以提出问题或发布有关试验的评论。
 
-若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)。
+若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
 
 
 
@@ -49,7 +49,7 @@ ms.locfileid: "73838647"
     ![示例试验](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>使用示例作为模板，创建新的试验
-还可以使用库示例作为模板在经典版本的机器学习 Studio 中创建新的实验。
+还可以使用库示例作为模板在机器学习 Studio （经典）中创建新的实验。
 
 1. 使用 Microsoft 帐户凭据登录到[工作室](https://studio.azureml.net)，并单击“新建”以创建新试验。
 2. 浏览示例内容并单击其中一个。

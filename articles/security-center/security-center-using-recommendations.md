@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355284"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 
@@ -28,7 +28,7 @@ ms.locfileid: "71200702"
 - 操作系统安全配置建议在48小时内更新
 - Endpoint Protection 问题建议在8小时内更新
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 此方案显示如何通过监视安全中心建议并采取措施，来使用安全中心帮助降低发生安全事件的可能性。 本方案使用虚构的公司 Contoso，以及安全中心[规划和操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中提供的角色。 在此方案中，我们将着重探讨以下角色：
 
 ![方案角色](./media/security-center-using-recommendations/scenario-roles.png)
@@ -63,7 +63,7 @@ Jeff 执行以下任务：
 
 5. 当 Jeff 单击 "**计算" 和 "应用**" 时，它们会看到建议列表，并根据安全分数影响来处理它们。
 
-6. Jeff 拥有很多面向 Internet 的 Vm，因为它们的端口是公开的，因此它们担心攻击者可以获得对服务器的控制。 因此 Jeff 选择使用（实时 VM 访问）[security-center-just-in-time.md]。
+6. Jeff 拥有很多面向 Internet 的 Vm，因为它们的端口是公开的，因此它们担心攻击者可以获得对服务器的控制。 因此，Jeff 选择使用实时[**VM 访问**](security-center-just-in-time.md)。
 
 Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决策。 对于每项建议，Jeff 会查看安全中心提供的详细信息，以了解受影响的资源、安全功能分数的影响、每项建议的含义以及缓解每个问题的修正步骤。
 

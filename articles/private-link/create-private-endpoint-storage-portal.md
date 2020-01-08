@@ -2,23 +2,25 @@
 title: 使用 Azure 专用终结点将专用连接到存储帐户
 description: 了解如何使用专用终结点将专用连接到 Azure 中的存储帐户。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357560"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点将专用连接到存储帐户
 Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。
 
 在本快速入门中，你将了解如何在 Azure 虚拟网络上创建 VM，这是一个具有使用 Azure 门户的专用终结点的存储帐户。 然后，可以从 VM 安全地访问存储帐户。
 
+> [!NOTE]
+> 不允许将专用终结点与同一子网中的服务终结点结合使用！
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -34,13 +36,13 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”。
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
-    | Subscription | 选择订阅。|
-    | Resource group | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | Location | 选择“WestCentralUS”。|
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
+    | 位置 | 选择“WestCentralUS”。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     |||
@@ -53,11 +55,11 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
     | 地区 | 选择“WestCentralUS”。 |
@@ -80,14 +82,14 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
     | 公共入站端口 | 选择“允许所选端口”。 |
-    | 选择入站端口 | 选择 HTTP 和 RDP。|
+    | 选择入站端口 | 选择“HTTP”和“RDP”。|
     ||
 
 1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
@@ -101,11 +103,11 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 在 "**创建存储帐户-基础知识**" 中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。 已在上一部分创建此内容。|
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 存储帐户名称  | 输入*mystorageaccount*。 如果此名称已被使用，请创建唯一的名称。 |
     | 地区 | 选择“WestCentralUS”。 |
@@ -119,12 +121,12 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 5. 在 "**创建存储帐户-网络**" 中，选择 "**添加专用终结点**"。 
 6. 在 "**创建专用终结点**" 中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。 已在上一部分创建此内容。|
-    |Location|选择“WestCentralUS”。|
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
+    |位置|选择“WestCentralUS”。|
     |名称|输入 *myPrivateEndpoint*。  |
     |存储子资源|保留默认**Blob**。 |
     | **网络** |  |
@@ -149,9 +151,9 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开。
 
-1. 选择“下载 RDP 文件”。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开*下载的 .rdp*文件。
+1. 打开 downloaded.rdp 文件。
 
     1. 出现提示时，选择“连接”。
 
@@ -184,9 +186,9 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 4. 单击右键，选择 "**存储帐户**"。
 5. 选择 "**连接到 azure 存储**"。
 6. 选择 "**使用连接字符串**"。
-7. 选择“**下一步**”。
+7. 选择“**下一页**”。
 8. 通过粘贴之前复制的信息来输入连接字符串。
-9. 选择“**下一步**”。
+9. 选择“**下一页**”。
 10. 选择“连接”。
 11. 从 mystorageaccount 浏览 Blob 容器 
 12. 同时创建文件夹，并/或将文件上传到*mystorageaccount*。 

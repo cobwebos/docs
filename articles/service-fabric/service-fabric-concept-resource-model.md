@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric 应用程序资源模型 |Microsoft Docs
+title: Azure Service Fabric 应用程序资源模型
 description: 本文概述如何使用 Azure 资源管理器管理 Azure Service Fabric 应用程序
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.author: atsenthi
-ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b3cf0b8f21565a8d51b16ff6c8b4c52bbfe8edc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464800"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>什么是 Service Fabric 应用程序资源模型？
 建议通过 Azure 资源管理器将 Service Fabric 应用程序部署到 Service Fabric 群集。 此方法可以在 JSON 中描述应用程序和服务，并将其部署在与群集相同的资源管理器模板中。 与通过 PowerShell 或 Azure CLI 部署和管理应用程序相反，无需等待群集准备就绪。 只需执行一步操作，即可完成注册、预配和部署应用程序的整个过程。 这是在群集中管理应用程序生命周期的最佳做法。 有关详细信息，请查看[最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)。
@@ -57,10 +53,10 @@ ms.locfileid: "72752307"
 1. 在 Visual Studio 中，右键单击投票项目，然后选择 "包"。   
 ![包应用程序][PackageApplication]  
 2. 打开刚刚创建的 **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug**目录，并将内容压缩到名为 "**投票**" 的文件中，以便 applicationmanifest.xml 位于 zip 文件的根目录下。  
-![Zip 应用程序 ][ZipApplication]  
+![Zip 应用程序][ZipApplication]  
 3. 将该文件的扩展名从 .zip 重命名为 **.sfpkg**。
 4. 在 Azure 门户的存储帐户的 "**应用**" 容器中，单击 "**上传**" 并上传 **.sfpkg**。  
-![Upload 应用包 ][UploadAppPkg]
+![上传应用程序包][UploadAppPkg]
 
 应用程序现已暂存。 现在，我们已准备好创建 Azure 资源管理器模板来部署应用程序。      
    
@@ -72,12 +68,12 @@ ms.locfileid: "72752307"
 >
 >
 
-| 参数              | 描述                                 | 示例                                                      | 注释                                                     |
+| 参数              | Description                                 | 示例                                                      | 注释                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 要部署到的群集的名称 | sf-cluster123                                                |                                                              |
 | application            | 应用程序的名称                 | 否决                                                       |
 | applicationTypeName    | 应用程序的类型名称           | VotingType                                                   | 必须匹配 Applicationmanifest.xml 中的内容                 |
-| ApplicationTypeVersion | 应用程序类型的版本         | 1.0.0                                                        | 必须匹配 Applicationmanifest.xml 中的内容                 |
+| applicationTypeVersion | 应用程序类型的版本         | 1.0.0                                                        | 必须匹配 Applicationmanifest.xml 中的内容                 |
 | serviceName            | 服务的服务名称。         | 投票 ~ VotingWeb                                             | 必须采用 ApplicationName ~ ServiceType 格式            |
 | serviceTypeName        | 服务的类型名称                | VotingWeb                                                    | 必须与 Servicemanifest.xml 中的内容匹配                 |
 | appPackageUrl          | 应用程序的 blob 存储 URL     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL （如下所述的过程） |
@@ -162,7 +158,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 * [Service Fabric 应用程序和服务清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
 
 ## <a name="see-also"></a>另请参阅
-* [最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [最佳做法](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 * [将应用程序和服务作为 Azure 资源进行管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->

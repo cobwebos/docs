@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396520"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -79,7 +79,7 @@ ms.locfileid: "74951133"
 
 支持以下警报状态。
 
-| 状况 | 描述 |
+| 状况 | Description |
 |:---|:---|
 | 新 | 此问题刚刚检测到，尚未进行评审。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
@@ -106,15 +106,15 @@ ms.locfileid: "74951133"
 
 您可以通过在页面顶部的下拉菜单中选择值来筛选此视图。
 
-| 柱形图​​ | 描述 |
+| 柱形图​​ | Description |
 |:---|:---|
-| Subscription | 选择要查看其警报的 Azure 订阅。 您可以选择选择所有订阅。 此视图仅包括你在所选订阅中有权访问的警报。 |
-| Resource group | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
+| 订阅 | 选择要查看其警报的 Azure 订阅。 您可以选择选择所有订阅。 此视图仅包括你在所选订阅中有权访问的警报。 |
+| 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 时间范围 | 此视图仅包含在所选时间范围内触发的警报。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 |
 
 选择 "警报" 页顶部的以下值可打开另一个页面：
 
-| Value | 描述 |
+| 值 | Description |
 |:---|:---|
 | 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
 | 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
@@ -149,13 +149,13 @@ ms.locfileid: "74951133"
 
 可以通过在页面顶部的下拉菜单中选择以下值来筛选视图：
 
-| 柱形图​​ | 描述 |
+| 柱形图​​ | Description |
 |:---|:---|
-| Subscription | 选择要查看其警报的 Azure 订阅。 您可以选择选择所有订阅。 此视图仅包括你在所选订阅中有权访问的警报。 |
-| Resource group | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
+| 订阅 | 选择要查看其警报的 Azure 订阅。 您可以选择选择所有订阅。 此视图仅包括你在所选订阅中有权访问的警报。 |
+| 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
 | 资源 | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
-| Severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
+| 严重性 | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
 | 监视条件 | 选择监视条件，或选择 "**全部**" 以包括所有条件的警报。 |
 | 警报状态 | 选择警报状态，或选择 "**全部**" 以包含所有状态的警报。 |
 | 监视服务 | 选择一个服务，或选择“所有”以包含所有服务。 只会包含使用该服务（作为目标）的规则创建的警报。 |
@@ -170,9 +170,9 @@ ms.locfileid: "74951133"
 
 "警报详细信息" 页包含以下部分：
 
-| 部分 | 描述 |
+| 部分 | Description |
 |:---|:---|
-| 总结 | 显示警报的属性和其他重要信息。 |
+| 摘要 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
 | 诊断 | 包含警报的智能组的相关信息。 “警报计数”表示包含在智能组中的警报数量。 包括在过去30天内创建的同一智能组中的其他警报，而不考虑警报列表页中的时间筛选器。 选择某个警报以查看其详细信息。 |
 
@@ -184,23 +184,23 @@ ms.locfileid: "74951133"
 
 您可能希望以编程方式查询针对您的订阅生成的警报。 这可能是在 Azure 门户之外创建自定义视图，也可能是为了分析警报来确定模式和趋势。
 
-你可以通过使用[警报管理 REST API](https://aka.ms/alert-management-api)或使用[Azure 资源 Graph REST API 通知](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)）来查询针对订阅生成的警报。
+你可以通过使用[警报管理 REST API](https://aka.ms/alert-management-api)或使用[Azure 资源关系图](../../governance/resource-graph/overview.md)和[资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)查询针对订阅生成的警报。
 
-[用于警报的 Azure 资源关系图 REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)）允许你按比例查询警报实例。 如果必须管理多个订阅中生成的警报，则建议使用此设置。 
+资源的资源关系图 REST API 允许你按比例查询警报实例。 如果必须管理多个订阅中生成的警报，则建议使用此设置。 
 
-以下对 API 的示例请求将返回一个订阅中的警报计数：
+以下示例请求资源图 REST API 返回一个订阅中的警报计数：
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+还可以通过 Azure 资源图资源管理器在门户中查看此资源图形查询的结果： [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 您可以查询警报中的[重要](alerts-common-schema-definitions.md#essentials)字段。
 
 使用[警报管理 REST API](https://aka.ms/alert-management-api)获取有关特定警报的详细信息，包括[警报上下文](alerts-common-schema-definitions.md#alert-context)字段。

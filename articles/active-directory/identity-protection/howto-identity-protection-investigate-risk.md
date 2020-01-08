@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430969"
 ---
 # <a name="how-to-investigate-risk"></a>如何：调查风险
 
@@ -30,7 +30,7 @@ ms.locfileid: "74382123"
 
 ## <a name="navigating-the-reports"></a>导航报表
 
-每个报表都将使用报表顶部显示的期间的所有检测项列表来启动。 每个报表都允许根据管理员偏好添加或删除列。 管理员可以选择在中下载数据。CSV 格式。 使用报表顶部的筛选器可以筛选报表。
+每个报表都将使用报表顶部显示的期间的所有检测项列表来启动。 每个报表都允许根据管理员偏好添加或删除列。 管理员可以选择在中下载数据。CSV 或。JSON 格式。 使用报表顶部的筛选器可以筛选报表。
 
 选择各个条目可能会在报表顶部启用附加条目，例如，能够确认登录为 "已泄露" 或 "安全"，确认用户是否被泄露或消除用户风险。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74382123"
 
 - 哪些用户面临风险、已补救风险或已消除风险？
 - 有关检测的详细信息
-- 风险登录的历史记录
+- 所有危险登录的历史记录
 - 风险历史记录
  
 然后，管理员可以选择对这些事件执行操作。 管理员可以选择：

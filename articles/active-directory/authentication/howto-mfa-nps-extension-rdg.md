@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425447"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -43,7 +43,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 
 现在提供了 Azure 的 NPS 扩展之后，可使组织选择部署基于内部部署的 MFA 解决方案或基于云的 MFA 解决方案来保护 RADIUS 客户端身份验证。
 
-## <a name="authentication-flow"></a>身份验证流
+## <a name="authentication-flow"></a>身份验证流程
 
 通过远程桌面网关授予网络资源访问权限的用户，必须满足一个 RD 连接授权策略 (RD CAP) 和一个 RD 资源授权策略 (RD RAP) 中指定的条件。 RD CAP 指定授权连接到 RD 网关的人员。 RD RAP 指定允许用户通过 RD 网关连接到的网络资源，如远程桌面或远程应用程序。
 
@@ -68,7 +68,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 * Windows Server 软件
 * 网络策略和访问服务 (NPS) 角色
 * 将 Azure Active Directory 与本地 Active Directory 同步
-* Azure Active Directory  GUID ID
+* Azure Active Directory GUID ID
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>远程桌面服务 (RDS) 基础结构
 
@@ -95,7 +95,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 要使用 NPS 扩展，本地用户必须与 Azure AD 同步并启用 MFA。 本部分内容假设内部部署用户使用 AD Connect 与 Azure AD 同步。 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory  GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
 
 若要安装 NPS 扩展，需要知道 Azure AD 的 GUID。 下面提供了用于查找 Azure AD 的 GUID 的说明。
 
@@ -120,11 +120,11 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 作为 NPS 扩展配置的一部分，你需要为 Azure AD 租户提供管理员凭据和 Azure AD ID。 以下步骤演示如何获取租户 ID。
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航栏中，选择“Azure Active Directory”图标。
+1. 在 "Azure 门户" 菜单中，选择 " **Azure Active Directory**"，或从任意页面搜索并选择 " **Azure Active Directory** "。
 1. 选择“属性”。
 1. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”图标，如下所示，将 ID 复制到剪贴板。
 
-   ![正在从 Azure 门户获取目录 ID](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![正在从 Azure 门户获取目录 ID](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -202,7 +202,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![创建共享机密来建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击“确定”以关闭该对话框。
+1. 单击 **“确定”** 关闭对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 
@@ -301,7 +301,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击 **“确定”** 。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)

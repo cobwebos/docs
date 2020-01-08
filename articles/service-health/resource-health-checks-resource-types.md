@@ -1,17 +1,14 @@
 ---
 title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465269"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -64,7 +61,7 @@ ms.locfileid: "68955033"
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |执行的检查|
 |---|
-|<ul><li>是否有用户无法提交或列出 Data Lake Analytics 作业？</li><li>是否因系统错误而无法完成 Data Lake Analytics 作业？</li></ul>|
+|<ul><li>是否有用户无法提交或列出 Data Lake Analytics 作业？</li><li>Data Lake Analytics 作业是否因系统错误而无法完成？</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -85,17 +82,17 @@ ms.locfileid: "68955033"
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |执行的检查|
@@ -107,15 +104,15 @@ ms.locfileid: "68955033"
 |---|
 |<ul><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的数据库或集合请求？</li><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的文档请求？</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
+## <a name="microsofteventhubnamespaces"></a>Node.js/命名空间
 |执行的检查|
 |---|
-|<ul><li>事件中心命名空间是否遇到用户生成的错误？</li><li>事件中心命名空间当前是否正在升级？</li></ul>|
+|<ul><li>事件中心命名空间是否遇到用户生成的错误？</li><li>当前是否正在升级事件中心命名空间？</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+## <a name="microsofthdinsightclusters"></a>Microsoft hdinsight/群集
 |执行的检查|
 |---|
-|<ul><li>HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问用于 BYOK 静态加密的密钥？</li></ul>|
+|<ul><li>在 HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问静态 BYOK 加密的密钥？</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |执行的检查|
@@ -135,7 +132,7 @@ ms.locfileid: "68955033"
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |执行的检查|
 |---|
-|<ul><li>应用程序网关的性能是否下降了？</li><li>应用程序网关是否可用？</li></ul>|
+|<ul><li>应用程序网关性能是否下降？</li><li>应用程序网关是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |执行的检查|
@@ -145,12 +142,12 @@ ms.locfileid: "68955033"
 ## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
 |执行的检查|
 |---|
-|<ul><li>ExpressRoute 线路是否正常运行？</li></ul>|
+|<ul><li>ExpressRoute 线路是否正常？</li></ul>|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |执行的检查|
 |---|
-|<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否延迟了？</li></ul>|
+|<ul><li>前门后端是否响应了运行状况探测的错误？</li><li>配置更改是否延迟？</li></ul>|
 
 ## <a name="microsoftnetworkloadbalancers"></a>LoadBalancers/网络
 |执行的检查|

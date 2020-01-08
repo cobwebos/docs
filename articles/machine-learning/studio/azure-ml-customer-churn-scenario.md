@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 8fd88c3bfad962f264efa030d0a3aea44e95dc8c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427689"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习 Studio （经典）分析客户流失
 ## <a name="overview"></a>概述
@@ -25,7 +25,7 @@ ms.locfileid: "73839768"
 此试验由 Serge Berger、Microsoft 的主要数据科研人员和 Roger Barga，以前的产品经理（经典） Microsoft Azure 机器学习工作室进行开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)中的[零售流失模型模板](https://gallery.azure.ai/)
+> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -71,7 +71,7 @@ ms.locfileid: "73839768"
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>在机器学习 Studio （经典）中实现建模原型
-根据描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，我们将演示如何使用 Azure 机器学习 Studio 的经典版本来实现此目的。  
+根据描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，我们将演示如何使用 Azure 机器学习 Studio （经典）完成此操作。  
 
 多模型方法是为流失问题设计全局原型所必不可少的。 甚至方法的评分（预测）部分也应该是多模型。  
 
@@ -135,7 +135,7 @@ ms.locfileid: "73839768"
 在本部分中，会根据评分数据集，介绍关于模型的准确性的查找结果。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>评分的准确性和精度
-通常情况下，Azure 机器学习 Studio 经典版中的实现在 SAS 后精确到10-15% （曲线或 AUC 下的区域）。  
+通常情况下，Azure 机器学习 Studio （经典）中的实现在 SAS 后精确到10-15% （曲线或 AUC 下的区域）。  
 
 但是，流失中最重要的指标是错误分类率：即，根据分类器预测的前 N 个流失者，其中哪些实际**不会**流失，但尚未收到特殊处理方式？ 下图比较了所有模型的错误分类率：  
 
@@ -178,7 +178,7 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 *表1。算法的常规性能（准确性）*
 
-| LR | BT | AP | SVM |
+| LR | BT | 亚太地区 | SVM |
 | --- | --- | --- | --- |
 | 平均模型 |最佳模型 |表现不佳 |平均模型 |
 
@@ -200,13 +200,13 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 不过，通过使用机器学习 Studio （经典）实现自助分析的承诺，这四个类别的信息（按部门或部门评分）成为了机器学习对变动的重要来源。  
 
-在经典版的 Azure 机器学习 Studio 中，另一个令人兴奋的功能是将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 它是市场领域 Azure 机器学习工作室的经典版本的重要区别。  
+Azure 机器学习 Studio （经典）中的另一个令人兴奋的功能是将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 它是市场领域 Azure 机器学习 Studio （经典）的重要区别。  
 
 希望将来能继续本主题，尤其是与大数据分析相关的部分。
   
 
 ## <a name="conclusion"></a>结束语
-此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 我们被视为评分模型的原型，并通过使用 Azure 机器学习 Studio 的经典版本实现。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
+此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 我们被视为评分模型的原型，并通过使用 Azure 机器学习 Studio （经典）实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
 
  
 
@@ -219,7 +219,7 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Azure AI 库](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 中的 [电信流失模型模板](https://gallery.azure.ai/) 
+[5] [Azure AI 库](https://gallery.azure.ai/) 中的 [电信流失模型模板](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>附录

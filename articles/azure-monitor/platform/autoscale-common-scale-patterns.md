@@ -1,19 +1,15 @@
 ---
 title: 常见自动缩放模式的概述
 description: 了解一些可在 Azure 中自动缩放资源的常见模式。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396097"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
@@ -22,7 +18,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="lets-get-started"></a>入门
 
-本文假定使用者熟悉自动缩放。 可以[开始在此处缩放资源][1]。 下面是一些常见缩放模式。
+本文假定使用者熟悉自动缩放。 你可以[开始在此处缩放资源][1]。 下面是一些常见缩放模式。
 
 ## <a name="scale-based-on-cpu"></a>基于 CPU 进行缩放
 
@@ -54,9 +50,9 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="scale-based-on-custom-metric"></a>基于自定义指标进行缩放
 
-有一个 Web 前端和一个可与后端通信的 API 层。
+你有一个 web 前端和一个与后端通信的 API 层。
 
-- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结帐进程）
+- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
 
 ![基于自定义指标进行缩放][5]
 

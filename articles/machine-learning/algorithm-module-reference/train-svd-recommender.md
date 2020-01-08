@@ -1,7 +1,7 @@
 ---
 title: 训练 SVD 推荐器： Module Reference
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务中使用训练 SVD 推荐器模块通过使用 SVD 算法训练 Bayesian 推荐器。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用训练 SVD 推荐器模块通过使用 SVD 算法训练 Bayesian 推荐器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428423"
 ---
 # <a name="train-svd-recommender"></a>训练 SVD 推荐器
 
@@ -50,14 +50,14 @@ SVD 推荐器使用用户和项的标识符，以及用户向这些项提供的�
 
 Azure 机器学习设计器中的**餐馆分级**数据集（选择**保存的数据集**，然后选择**示例**）演示了预期的格式：
 
-|Id|placeID|rating|
+|userID|placeID|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
 
 在此示例中，你可以看到一个用户已将两个不同的餐厅分级。 
 
-### <a name="train-the-model"></a>训练模型
+### <a name="train-the-model"></a>定型模型
 
 1.  将定型 SVD 推荐器模块添加到设计器中的管道，并将其连接到定型数据。  
    
@@ -65,7 +65,7 @@ Azure 机器学习设计器中的**餐馆分级**数据集（选择**保存的�
     
     每个因素都度量用户与项的关联程度。 系数数量也是潜在系数空间的维数。 随着用户和项目数量的增加，最好设置更多的因素。 但如果数字太大，性能可能会下降。
     
-3.  **建议算法迭代数**指示算法处理输入数据的次数。 此数字越大，预测就越精确。 但数字越大，培训速度越慢。 默认值为30。
+3.  **建议算法迭代数**指示算法处理输入数据的次数。 此数字越大，预测就越精确。 但数字越大，培训速度越慢。 默认值为 30。
 
 4.  对于 "**学习速率**"，请输入一个介于0.0 和2.0 之间的数字，用于定义学习的步长大小。
 
@@ -76,4 +76,4 @@ Azure 机器学习设计器中的**餐馆分级**数据集（选择**保存的�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

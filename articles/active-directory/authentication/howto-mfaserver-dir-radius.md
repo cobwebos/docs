@@ -11,18 +11,20 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dd2aa7d804b4609e3e2fc1e38b6e29056b5d5ac
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425203"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
 RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请求。 Azure 多重身份验证服务器可充当 RADIUS 服务器。 将其插入 RADIUS 客户端（VPN 设备）和身份验证目标之间，以便添加双重验证。 身份验证目标可以是 Active Directory、LDAP 目录或其他 RADIUS 服务器。 要使 Azure 多重身份验证 (MFA) 起作用，必须配置 Azure MFA 服务器，使其可以同时与户端服务器和身份验证目标进行通信。 Azure MFA 服务器将接受来自 RADIUS 客户端的请求，针对身份验证目标验证凭据，添加 Azure 多重身份验证，并将响应发送回 RADIUS 客户端。 只有主要身份验证和 Azure 多重身份验证都成功，身份验证才成功。
 
 > [!IMPORTANT]
+> 本文仅适用于 Azure MFA 服务器的用户。 如果你使用基于云的 Azure MFA，请参阅如何[与 AZURE mfa 的 RADIUS 身份验证集成](howto-mfa-nps-extension.md)。
+>
 > 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 > [!NOTE]
@@ -48,7 +50,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 6. 如果所有用户均已导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器或者将免除进行双重验证，请使该框处于未选中状态。
 7. 如果想使用移动身份验证应用中的 OATH 密码作为备份方法，请选中“启用回退 OATH 令牌”框。
-8. 单击 **“确定”** 。
+8. 单击“确定”。
 
 重复执行步骤 4 到步骤 8，添加所需的其他 RADIUS 客户端。
 
@@ -64,7 +66,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
    Azure多重身份验证服务器和 RADIUS 服务器上的共享机密必须相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
 
-1. 单击 **“确定”** 。
+1. 单击“确定”。
 1. 在其他 RADIUS 服务器中将 Azure MFA 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure MFA 服务器发送给它的访问请求。 使用 Azure 多重身份验证服务器中配置的共享机密。
 
 重复上述步骤，添加更多 RADIUS 服务器。 使用“上移”和“下移”按钮配置 Azure MFA 服务器调用这些 RADIUS 服务器时应使用的顺序。

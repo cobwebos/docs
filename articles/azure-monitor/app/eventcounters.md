@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889118"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406926"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -55,7 +55,7 @@ Application Insights 支持收集 `EventCounters` 及其 `EventCounterCollection
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> AspNetCore 类别的计数器仅添加到 Asp.Net Core 应用程序中。
+> AspNetCore 类别的计数器仅添加到 ASP.NET Core 的应用程序中。
 
 ## <a name="customizing-counters-to-be-collected"></a>自定义要收集的计数器
 
@@ -95,19 +95,19 @@ Application Insights 支持收集 `EventCounters` 及其 `EventCounterCollection
 
 ## <a name="event-counters-in-metric-explorer"></a>指标资源管理器中的事件计数器
 
-若要在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)中查看 EventCounter 指标，请选择 Application Insights 资源，并选择 "基于日志的指标" 作为 "指标命名空间"。 然后，EventCounter 度量值将显示在 "PerformanceCounter" 类别下。
+若要在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)中查看 EventCounter 指标，请选择 Application Insights 资源，并选择 "基于日志的指标" 作为 "指标命名空间"。 然后，EventCounter 度量值将显示在 "自定义" 类别下。
 
 > [!div class="mx-imgBorder"]
 > Application Insights](./media/event-counters/metrics-explorer-counter-list.png) 中报告 ![事件计数器
 
 ## <a name="event-counters-in-analytics"></a>分析中的事件计数器
 
-你还可以在**performanceCounters**表的[分析](../../azure-monitor/app/analytics.md)中搜索和显示事件计数器报表。
+你还可以在**customMetrics**表的[分析](../../azure-monitor/app/analytics.md)中搜索和显示事件计数器报表。
 
 例如，运行以下查询，以查看收集了哪些计数器并可用于查询：
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 若要获取特定计数器的图表（例如： `ThreadPool Completed Work Item Count`），请运行以下查询。
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > 在 Application Insights 中 ![聊天单个计数器](./media/event-counters/analytics-completeditems-counters.png)
 
-与其他遥测一样，**performanceCounters** 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上面的查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
+与其他遥测一样， **customMetrics**还具有列 `cloud_RoleInstance`，指示运行应用的主机服务器实例的标识。 上面的查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 
 ## <a name="alerts"></a>警报
 与其他指标一样，可以[设置警报](../../azure-monitor/app/alerts.md)，以便在事件计数器超出您指定的限制时发出警告。 打开“警报”窗格，并单击“添加警报”。

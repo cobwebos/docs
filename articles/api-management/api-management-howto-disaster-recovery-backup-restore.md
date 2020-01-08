@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure API 管理中的备份和还原实现灾难恢复 | Microsoft 文档
+title: 在 API 管理中使用备份和还原实现灾难恢复
+titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。
 services: api-management
 documentationcenter: ''
@@ -12,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430700"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
 通过 Azure API 管理来发布和管理 API，即可充分利用容错和基础结构功能，否则需手动设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
-若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
+若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，可能要在一个或多个区域中保留备用服务。 你还可以尝试根据恢复点目标使其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
 
-备份和还原操作还可用于在操作环境（例如，开发环境和过渡环境）之间复制 API 管理服务配置。 请注意，运行时数据（如用户和订阅）也将被复制，这可能并不总是理想的。
+备份和还原操作还可用于在操作环境（例如开发和过渡）之间复制 API 管理服务配置。 请注意，也会复制诸如用户和订阅之类的运行时数据，这可能并不总是需要这样做。
 
-本指南介绍如何自动执行备份和还原操作，以及如何确保 Azure 资源管理器成功验证备份和还原请求。
+本指南演示如何自动执行备份和还原操作，以及如何确保 Azure 资源管理器对备份和还原请求进行成功的身份验证。
 
 > [!IMPORTANT]
-> 还原操作不会更改目标服务的自定义主机名配置。 我们建议对活动服务和备用服务使用相同的自定义主机名和 TLS 证书，以便在还原操作完成后，可以通过简单的 DNS CNAME 更改将流量重定向到备用实例。
+> 还原操作不会更改目标服务的自定义主机名配置。 建议为 active 和备用服务使用相同的自定义主机名和 TLS 证书，以便还原操作完成后，可以通过简单的 DNS CNAME 更改将流量重定向到备用实例。
 >
-> 备份操作不会捕获 Azure 门户的 Analytics 边栏选项卡上显示的报告中使用的预聚合日志数据。
+> 备份操作不会捕获在 Azure 门户中的分析边栏选项卡上显示的报告中使用的预聚合日志数据。
 
 > [!WARNING]
 > 每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
@@ -54,7 +55,7 @@ ms.locfileid: "71958529"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。
 
     > [!NOTE]
@@ -66,8 +67,8 @@ ms.locfileid: "71958529"
 
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。
-6. 输入占位符 URL，例如，为“重定向 URI”`http://resources`**输入** ，因为它是必填字段，但以后不使用该值。 单击此复选框以保存应用程序。
-7. 单击“**创建**”。
+6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+7. 单击“创建”。
 
 ### <a name="add-an-application"></a>添加应用程序
 
@@ -75,7 +76,7 @@ ms.locfileid: "71958529"
 2. 单击“所需权限”。
 3. 单击“+添加”。
 4. 按“选择 API”。
-5. 选择“Windows Azure 服务管理 API”。
+5. 选择 " **microsoft** **AZURE 服务管理 API**"。
 6. 按“选择”。
 
     ![添加权限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -115,7 +116,7 @@ namespace GetTokenResourceManagerRequests
 
 根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” **“终结点”访问此 ID。**  -> 
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。
 
     ![终结点][api-management-endpoint]
 
@@ -167,7 +168,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
 发出备份请求时请注意以下限制：
 
@@ -178,8 +179,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   此外，以下项不是备份数据的一部分：自定义域 SSL 证书、客户上传的任何中间或根证书、开发人员门户内容和虚拟网络集成设置。
 -   执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 -   备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能不包含在备份中，会丢失**。
--   **允许**从控制平面访问 Azure 存储帐户。 客户应在其存储帐户上打开以下一组入站 IP 以进行备份。 
-    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
+-   **允许**从控制平面访问 Azure 存储帐户。 客户应在存储帐户上打开以下一组入站 Ip 以进行备份。 
+    > 13.84.189.17/32，13.85.22.63/32，23.96.224.175/32，23.101.166.38/32，52.162.110.80/32，104.214.19.224/32，13.64.39.16/32，40.81.47.216/32，51.145.179.78/32，52.142.95.35/32，40.90.185.46/32，20.40.125.155/32
 ### <a name="step2"></a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
@@ -208,7 +209,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
@@ -218,7 +219,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> 也可分别使用 PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) 和 [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) 命令，执行备份和还原操作。
+> 还可以分别通过 PowerShell [_AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement)和[_AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement)命令执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
 

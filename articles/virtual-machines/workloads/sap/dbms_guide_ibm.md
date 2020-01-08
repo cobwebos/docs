@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b53207802b84e63f08c26de254ccd86a6b4620e2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 679e033418fba34eddddd21ddca66b1d9bb2fd48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100009"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645882"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -77,8 +77,8 @@ ms.locfileid: "70100009"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +236,7 @@ ms.locfileid: "70100009"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +250,7 @@ ms.locfileid: "70100009"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -314,7 +314,7 @@ ms.locfileid: "70100009"
 
 有关 Azure 上 Db2 for LUW 的 SAP 的详细信息和更新，请参阅 SAP 说明[2233094]。 
 
-Azure 上发布了有关 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)开始，然后选择感兴趣的领域
+已发布有关 Azure 上 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)开始，然后选择感兴趣的领域
 
 以下 SAP 说明与 Azure 上的 SAP 有关，涉及本文档中介绍的领域：
 
@@ -323,7 +323,7 @@ Azure 上发布了有关 SAP 工作负荷的各种文章。  建议从 [Azure �
 | [1928533] |Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
-| [2178632] |Microsoft Azure 上的 SAP 关键监控指标 |
+| [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
 | [1409604] |Windows 上的虚拟化：增强型监视 |
 | [2191498] |使用 Azure 的 Linux 上的 SAP：增强型监视 |
 | [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 — 附加信息 |

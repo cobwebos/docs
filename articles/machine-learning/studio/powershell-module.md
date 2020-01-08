@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427534"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 PowerShell 模块（经典）
 
 使用 PowerShell 模块，可以通过编程方式管理 Studio （经典）资源和资产，如工作区、数据集和 web 服务。
 
-你可以使用以下三个 Powershell 模块与经典版 Studio 资源交互：
+可以使用三个 Powershell 模块与 Studio （经典）资源交互：
 
 * 于 2018 年发布的 [Azure PowerShell Az](#az-rm)，包含 AzureRM 的所有功能，尽管使用不同的 cmdlet 名称
 * [AzureRM](#az-rm)发布在2016中，由 PowerShell Az 替换
@@ -44,7 +44,7 @@ Studio （经典） [PowerShell 经典模块](https://aka.ms/amlps)允许管理�
 
 但是，Microsoft 建议你为所有未来资源使用资源管理器部署模型，以简化资源的部署和管理。 若要了解有关部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)一文。
 
-若要开始使用 PowerShell（经典），请从 GitHub 下载[发行包](https://github.com/hning86/azuremlps/releases)并按照[安装说明](https://github.com/hning86/azuremlps/blob/master/README.md)执行操作。 这些说明解释了如何取消阻止已下载/解压缩的 DLL，并将它导入到 PowerShell 环境。
+若要开始使用 PowerShell（经典），请从 GitHub 下载[发行包](https://github.com/hning86/azuremlps/releases)并按照[安装说明](https://github.com/hning86/azuremlps/blob/master/README.md)执行操作。 这些说明解释了如何取消阻止已下载/解压缩的 DLL，然后将它导入到 PowerShell 环境。
 
 可以与 Az 或 AzureRM 一起安装 PowerShell 经典，同时涵盖 "new" 和 "经典" 资源类型。
 
@@ -53,11 +53,11 @@ Studio （经典） [PowerShell 经典模块](https://aka.ms/amlps)允许管理�
 
 | | **Az** |  **PowerShell 经典** |
 | --- | --- | --- |
-| 创建/删除工作区 | [Resource Manager 模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| 创建/删除工作区 | [资源管理器模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作区承诺计划 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | 管理工作区用户 |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | 管理 Web 服务 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>（"新的" web 服务）|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>（"经典" web 服务） |
-| 管理 web 服务终结点/密钥 |  [AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| 管理 web 服务终结点/密钥 |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | 管理用户数据集/训练的模型| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | 管理用户试验 |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
 | 管理自定义模块 | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |

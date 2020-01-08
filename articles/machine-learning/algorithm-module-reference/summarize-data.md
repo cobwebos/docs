@@ -1,7 +1,7 @@
 ---
 title: 汇总数据
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "汇总数据" 模块为数据集中的列生成基本描述性统计信息报告。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "汇总数据" 模块为数据集中的列生成基本描述性统计信息报告。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428458"
 ---
 # <a name="summarize-data"></a>汇总数据
 
@@ -22,9 +22,9 @@ ms.locfileid: "73492570"
 
 使用 "汇总数据" 模块可创建一组标准统计度量值，这些度量值用于描述输入表中的每一列。
 
-当您想要了解完整数据集的特征时，汇总统计信息非常有用。 例如，你可能需要知道：
+当您想要了解完整数据集的特征时，汇总统计信息非常有用。 例如，你可能需要了解以下内容：
 
-- 每个列中的缺失值有多少？
+- 每个列中缺少多少个值？
 - 功能列中有多少个唯一值？
 - 每个列的平均值和标准偏差是怎样的？
 
@@ -46,18 +46,18 @@ ms.locfileid: "73492570"
 
 模块中的报表可以包含以下统计信息。 
 
-|列名称|说明|
+|列名称|Description|
 |------|------|  
 |**功能**|列的名称|
-|**Count**|所有行的计数|
+|**Count**|统计所有行|
 |**唯一值计数**|列中的唯一值数|
 |**缺少值计数**|列中的唯一值数|
 |**Min**|列中的最小值|  
-|**数量**|列中的最大值|
-|**格林威治时间**|所有列值的平均值|
+|**Max**|列中的最大值|
+|**中间线**|所有列值的平均值|
 |**平均偏差**|列值的平均偏差|
 |**第一四分四**|第四个级别的值|
-|**平均**|中间列值|
+|**Median**|中间列值|
 |**第三个分位**|第三个四分|
 |**模式**|列值的模式|
 |**范围**|表示最大值和最小值之间的值数的整数|
@@ -65,7 +65,7 @@ ms.locfileid: "73492570"
 |**样本标准偏差**|列的标准偏差;请参阅说明|
 |**样本偏斜度**|列偏斜度;请参阅说明|
 |**示例峰值**|列峰值;请参阅说明|
-|**P 0。5**|0.5% 百分点|
+|**P 0。5**|0.5% 百评分|
 |**P1**|1% 百分点|
 |**P5**|5% 百分点|
 |**P95**|95% 百分点|
@@ -73,4 +73,4 @@ ms.locfileid: "73492570"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。  
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。  

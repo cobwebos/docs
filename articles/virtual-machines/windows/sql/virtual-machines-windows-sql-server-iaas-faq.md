@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791047"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374074"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -53,7 +53,7 @@ ms.locfileid: "74791047"
 
    是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
 
-1. **能否创建 SQL Server VM 的一般化 Azure SQL Server marketplace 映像，并使用它来部署 Vm？**
+1. **能否创建 SQL Server VM 的一般化 Azure SQL Server Marketplace 映像，并使用它来部署 Vm？**
 
    是，但你必须随后向[SQL Server VM 资源提供程序注册每个 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) ，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 向资源提供程序注册时，还需要指定每个 SQL Server VM 的许可证类型。 
 
@@ -84,12 +84,12 @@ ms.locfileid: "74791047"
 
 1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
 
-   若要为备用次要可用性组或故障转移群集实例提供免费的被动许可证，必须满足以下所有条件，如[许可指南 PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf)所述：
+   若要为备用次要可用性组或故障转移群集实例提供免费的被动许可证，必须满足以下所有条件，如[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)所述：
 
    1. 你有通过[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得的[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
-   1. 被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步，否则，维护被动数据库处于热备用状态。 如果它正在为数据提供服务（例如向运行活动 SQL Server 工作负荷的客户端报告，或执行任何 "工作"，如辅助服务器的其他备份），则必须是付费许可 SQL Server 实例。 
+   1. 被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步，否则，维护被动数据库处于热备用状态。 如果它正在为数据提供服务（例如，向运行活动 SQL Server 工作负荷的客户端报告，或者执行产品条款中未指定的任何工作，则必须是付费许可 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 你还可以同时运行主和相应的灾难恢复实例，每隔90天运行一次灾难恢复测试。 
    1. Active SQL Server 许可证由软件保障涵盖，并允许使用**一个**被动辅助 SQL Server 实例，最多可有与许可的活动服务器相同的计算量。 
-   1. 辅助 SQL Server VM 利用自带许可证（BYOL）或 Azure 混合权益（AHB）[许可证模型](virtual-machines-windows-sql-ahb.md)。 
+   1. 辅助 SQL Server VM 利用 Azure 门户中的[灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)许可证。
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
@@ -163,8 +163,8 @@ ms.locfileid: "74791047"
 
 1. **在哪里可以获取安装媒体来更改 SQL Server 的版本？**
 
-  具有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客户可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获得其安装媒体。 没有软件保障的客户可以使用具有所需版本的 marketplace SQL Server VM 映像中的设置媒体。
-
+   具有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客户可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获得其安装媒体。 没有软件保障的客户可以使用具有所需版本的 Marketplace SQL Server VM 映像中的设置媒体。
+   
 1. **如何将更新和服务包应用到 SQL Server VM？**
 
    虚拟机允许控制主机，包括应用更新的时间与方法。 对于操作系统，可以手动应用 Windows 更新，或者启用名为[自动修补](virtual-machines-windows-sql-automated-patching.md)的计划服务。 自动修补将安装任何标记为重要的更新，包括该类别中的 SQL Server 更新。 必须手动安装其他可选的 SQL Server 更新。
@@ -173,7 +173,13 @@ ms.locfileid: "74791047"
 
    可以。 你可以使用任何安装媒体来升级 SQL Server 的版本和版本，然后从_无代理_[升级到](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)_完整_版本。 这样做将使你能够访问 SQL IaaS 扩展的所有优点，例如门户可管理性、自动备份和自动修补。 
 
-## <a name="general"></a>一般信息
+1. **如何获取 SQL Server 2008 和 SQL Server 2008 R2 实例支持的免费扩展安全更新？**
+
+   可以通过将 SQL Server 按原样移动到 Azure SQL 虚拟机来获取[免费的扩展安全更新](virtual-machines-windows-sql-server-2008-eos-extend-support.md)。 有关详细信息，请参阅[支持选项的结束](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)。 
+  
+   
+
+## <a name="general"></a>常规
 
 1. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
 

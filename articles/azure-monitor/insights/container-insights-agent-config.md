@@ -1,18 +1,14 @@
 ---
 title: 为容器配置 Azure Monitor 代理数据收集 |Microsoft Docs
 description: 本文介绍如何配置容器代理的 Azure Monitor，以控制 stdout/stderr 和环境变量日志收集。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405682"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>为容器 Azure Monitor 配置代理数据收集
 
@@ -31,15 +27,16 @@ ms.locfileid: "74951575"
 
 下面是可以配置以控制数据收集的设置。
 
-|密钥 |数据类型 |Value |描述 |
+|密钥 |数据类型 |值 |Description |
 |----|----------|------|------------|
 |`schema-version` |String （区分大小写） |v1 |这是分析此 ConfigMap 时代理使用的架构版本。 当前支持的架构版本为 v1。 在计算 ConfigMap 时，不支持修改此值，将拒绝此值。|
-|`config-version` |字符串 | | 支持在源代码管理系统/存储库中跟踪此配置文件的版本。 允许的最大字符数为10，所有其他字符都将被截断。 |
-|`[log_collection_settings.stdout] enabled =` |布尔 | true 或 false | 这会控制是否启用 stdout 容器日志收集。 如果设置为 `true` 并且没有为 stdout 日志收集排除命名空间（`log_collection_settings.stdout.exclude_namespaces` 设置为），则将从群集中的所有 pod/节点上的所有容器中收集 stdout 日志。 如果未在 ConfigMaps 中指定，则默认值为 `enabled = true`。 |
-|`[log_collection_settings.stdout] exclude_namespaces =`|字符串 | 逗号分隔的数组 |将不收集其 stdout 日志的 Kubernetes 命名空间的数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true`时，此设置才有效。 如果未在 ConfigMap 中指定，则默认值为 `exclude_namespaces = ["kube-system"]`。|
-|`[log_collection_settings.stderr] enabled =` |布尔 | true 或 false |这会控制是否已启用 stderr 容器日志收集。 如果设置为 `true` 并且没有为 stdout 日志收集（`log_collection_settings.stderr.exclude_namespaces` 设置）排除命名空间，则将从群集中的所有 pod/节点上的所有容器中收集 stderr 日志。 如果未在 ConfigMaps 中指定，则默认值为 `enabled = true`。 |
-|`[log_collection_settings.stderr] exclude_namespaces =` |字符串 |逗号分隔的数组 |将不收集 stderr 日志的 Kubernetes 命名空间的数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true`时，此设置才有效。 如果未在 ConfigMap 中指定，则默认值为 `exclude_namespaces = ["kube-system"]`。 |
-| `[log_collection_settings.env_var] enabled =` |布尔 | true 或 false | 此设置控制群集中的所有 pod/节点上的环境变量集合，如果 ConfigMaps 中未指定，则默认为 `enabled = true`。 如果已全局启用了环境变量的集合，则可以通过将环境变量设置 `AZMON_COLLECT_ENV` 为 False，将环境变量设置为**False** ，方法是使用 Dockerfile 设置，或在**env：** 节下的[Pod 的配置文件](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中。 如果已全局禁用环境变量的集合，则无法为特定容器启用收集（也就是说，可在容器级别应用的唯一重写是在全局启用时禁用集合）。 |
+|`config-version` |String | | 支持在源代码管理系统/存储库中跟踪此配置文件的版本。 允许的最大字符数为10，所有其他字符都将被截断。 |
+|`[log_collection_settings.stdout] enabled =` |Boolean | True 或 False | 这会控制是否启用 stdout 容器日志收集。 如果设置为 `true` 并且没有为 stdout 日志收集排除命名空间（`log_collection_settings.stdout.exclude_namespaces` 设置为），则将从群集中的所有 pod/节点上的所有容器中收集 stdout 日志。 如果未在 ConfigMaps 中指定，则默认值为 `enabled = true`。 |
+|`[log_collection_settings.stdout] exclude_namespaces =`|String | 逗号分隔的数组 |将不收集其 stdout 日志的 Kubernetes 命名空间的数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true`时，此设置才有效。 如果未在 ConfigMap 中指定，则默认值为 `exclude_namespaces = ["kube-system"]`。|
+|`[log_collection_settings.stderr] enabled =` |Boolean | True 或 False |这会控制是否已启用 stderr 容器日志收集。 如果设置为 `true` 并且没有为 stdout 日志收集（`log_collection_settings.stderr.exclude_namespaces` 设置）排除命名空间，则将从群集中的所有 pod/节点上的所有容器中收集 stderr 日志。 如果未在 ConfigMaps 中指定，则默认值为 `enabled = true`。 |
+|`[log_collection_settings.stderr] exclude_namespaces =` |String |逗号分隔的数组 |将不收集 stderr 日志的 Kubernetes 命名空间的数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true`时，此设置才有效。 如果未在 ConfigMap 中指定，则默认值为 `exclude_namespaces = ["kube-system"]`。 |
+| `[log_collection_settings.env_var] enabled =` |Boolean | True 或 False | 此设置控制群集中的所有 pod/节点上的环境变量集合，如果 ConfigMaps 中未指定，则默认为 `enabled = true`。 如果已全局启用了环境变量的集合，则可以通过将环境变量设置 `AZMON_COLLECT_ENV` 为 False，将环境变量设置为**False** ，方法是使用 Dockerfile 设置，或在**env：** 节下的[Pod 的配置文件](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中。 如果已全局禁用环境变量的集合，则无法为特定容器启用收集（也就是说，可在容器级别应用的唯一重写是在全局启用时禁用集合）。 |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Boolean | True 或 False | 此设置控制容器日志扩充，以填充群集中所有容器日志的每个日志记录的名称和图像属性值。 如果 ConfigMap 中未指定，则默认为 `enabled = false`。 |
 
 ConfigMaps 是一个全局列表，只能有一个 ConfigMap 应用于代理。 不能将其他 ConfigMaps overruling 到集合中。
 

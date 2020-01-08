@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367886"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -31,10 +31,10 @@ ms.locfileid: "74664057"
 
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的 "**目录 + 订阅**" 筛选器选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 在 "概述" 页上，从 "**策略**" 窗格中选择 "**标识体验框架**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
+1. 在 "概述" 页的 "**策略**" 下，选择 "**标识体验框架**"。
 
 ### <a name="create-the-signing-key"></a>创建签名密钥
 
@@ -43,7 +43,7 @@ ms.locfileid: "74664057"
 1. 在“名称”中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择**创建**。
+1. 选择“创建”。
 
 ### <a name="create-the-encryption-key"></a>创建加密密钥
 
@@ -52,7 +52,7 @@ ms.locfileid: "74664057"
 1. 在“名称”中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“加密”。
-1. 选择**创建**。
+1. 选择“创建”。
 
 ### <a name="create-the-facebook-key"></a>创建 Facebook 密钥
 
@@ -63,7 +63,7 @@ ms.locfileid: "74664057"
 1. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
 1. 在 "**密钥**" 中，输入 Facebook 应用程序在 developers.facebook.com 中的*应用机密*。 此值是机密，而不是应用程序 ID。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择**创建**。
+1. 选择“创建”。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
@@ -77,15 +77,14 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
-1. 选择 Azure 门户左上角的 "**所有服务**"。
-1. 在搜索框中输入 `Azure Active Directory`。
-1. 在搜索结果中选择“Azure Active Directory”。
-1. 在左侧菜单中的 "**管理**" 下，选择 "**应用注册（旧）** "。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
+1. 在**Azure Active Directory**概述 "菜单中的"**管理**"下，选择"**应用注册（旧）** "。
 1. 选择“新建应用程序注册”。
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“Web 应用/API”。
 1. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
-1. 选择**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
@@ -95,7 +94,7 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 在 "**重定向 URI**" 下，选择 " **Web**"，然后输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是 Azure AD B2C 租户域名。
 1. 在“权限”下，选择“授予对 openid 和 office_access 权限的管理员许可”复选框。
 1. 选择“注册”。
-1. 记下“应用程序(客户端) ID”，以便在后续步骤中使用。
+1. 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 
 接下来，通过添加作用域公开 API：
 
@@ -117,7 +116,7 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“本机”。
 1. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
-1. 选择**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 1. 选择 "**设置**"，然后选择 "**所需权限**"，然后选择 "**添加**"。
 1. 选择 "**选择 API**"，搜索并选择 " **IdentityExperienceFramework**"，然后单击 "**选择**"。
 1. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
@@ -132,7 +131,7 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
 1. 在“权限”下，选择“授予对 openid 和 office_access 权限的管理员许可”复选框。
 1. 选择“注册”。
-1. 记下“应用程序(客户端) ID”，以便在后续步骤中使用。
+1. 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 
 接下来，指定应用程序应被视为公共客户端：
 

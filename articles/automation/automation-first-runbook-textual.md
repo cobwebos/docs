@@ -3,19 +3,15 @@ title: 我在 Azure 自动化中的第一个 PowerShell 工作流 Runbook
 description: 本教程指导使用 PowerShell 工作流创建、测试和发布一个简单的文本 Runbook。
 keywords: powershell 工作流, powershell 工作流示例, 工作流 powershell
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdaadcfa3108ca847443e100bc624c2458c34115
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365948"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
@@ -29,7 +25,7 @@ ms.locfileid: "74850833"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自动化帐户](automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
@@ -150,7 +146,7 @@ ms.locfileid: "74850833"
 1. 单击“测试”窗格，以便测试 Runbook。
 1. 单击“启动”以启动测试 。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此操作可确认凭据有效。
 
-   ![身份验证](media/automation-first-runbook-textual/runbook-auth-output.png)
+   ![Authenticate](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
 

@@ -8,17 +8,17 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 94ae9035c1657c1ce20c40234ddca95ae30d9edd
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407104"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 通过调整配置文件，可以启用或禁用遥测模块和初始值设定项，并为其中一些参数设置参数。
 
-配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start]时，会自动将其添加到你的项目中。 默认情况下，在使用支持**Add > Application Insights 遥测**的 Visual Studio 模板项目中的自动体验时，将在项目根文件夹中创建 applicationinsights.config 文件，并在将编译复制到bin 文件夹。 还可以通过[在 IIS 服务器上状态监视器][redfield]来将其添加到 web 应用。 如果使用 azure[网站的扩展](azure-web-apps.md)或[azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md)，则会忽略配置文件。
+配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start]时，会自动将其添加到你的项目中。 默认情况下，在使用支持**Add > Application Insights 遥测**的 Visual Studio 模板项目中的自动体验时，将在项目根文件夹中创建 applicationinsights.config 文件，并在将编译复制到 bin 文件夹时创建该文件。 还可以通过[在 IIS 服务器上状态监视器][redfield]来将其添加到 web 应用。 如果使用 azure[网站的扩展](azure-web-apps.md)或[azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md)，则会忽略配置文件。
 
 [在网页中][client]不存在用于控制 SDK 的等效文件。
 
@@ -230,47 +230,23 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
    </ApplicationInsights>
 ```
 
-#### <a name="local-forwarder"></a>本地转发器
-
-[本地转发器](opencensus-local-forwarder.md)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 本地转发器与 Application Insights Java SDK 结合使用时，可为[实时指标](../../azure-monitor/app/live-stream.md)和自适应采样提供全面支持。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-如果使用的是 SpringBoot 入门版，请将以下内容添加到配置文件（application.properties）中：
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
-
 ## <a name="instrumentationkey"></a>InstrumentationKey
 确定显示数据的 Application Insights 资源。 通常，我们会使用单独的密钥为每个应用程序单独创建一个资源。
 
 如果想要以动态方式设置密钥（例如，要将应用程序的结果发送到不同的资源），可以在配置文件中省略密钥，并在代码中设置密钥。
 
-若要设置 TelemetryClient 的所有实例（包括标准遥测模块）的密钥，请在 TelemetryConfiguration 中设置密钥。 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
+设置 TelemetryClient 的所有实例的密钥，包括标准遥测模块。 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights;
 
     protected void Application_Start()
     {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey =
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      //...
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+        var telemetryClient = new TelemetryClient(configuration);
+   
 ```
 
 如果只想将特定的一组事件发送到不同的资源，可以针对特定的 TelemetryClient 设置密钥：

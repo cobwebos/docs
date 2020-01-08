@@ -1,31 +1,33 @@
 ---
-title: 集成的解决方案 |Microsoft
+title: 集成解决方案-Azure Marketplace
 description: Azure Marketplace 和 AppSource 中的集成解决方案
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427181"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace 和 AppSource 中的集成解决方案
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource 和 Azure Marketplace 中的集成解决方案
 
-集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术结合在一起，并提供咨询、部署和专家系统集成商（SI）提供的支持。
+集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术结合在一起，并提供咨询、部署和专家提供的支持。
 
-这些解决方案的构建旨在满足特定的客户需求或方案，这一点首先了解行业挑战或痛点。 两个或更多同类最佳的技术通过 SI 进行集成，为客户创建统一且可重复的部署体验，这有助于快速启动和运行。 系统集成商还为客户提供单一联系点，提供有关解决方案的相关自定义、咨询和支持。  其结果是一个集成的解决方案，其中包括技术和服务。
+两个或两个以上的 Microsoft 合作伙伴集成其技术和服务，以创建一个统一、无缝且可重复的部署体验，以便快速启动并运行客户。  解决方案中的潜在客户合作伙伴（通常是服务合作伙伴）为客户提供了单一联系点，并提供有关解决方案的相关自定义、咨询和支持。
+
+在其他方案中，合作伙伴共同销售或共同营销其解决方案，而集成解决方案是一种联合构建的新解决方案，可跨合作伙伴集成技术和服务。
 
 ## <a name="advantages"></a>优点
 
 集成方法的优点是：
 
-* *行业专业知识*：提供特定于行业的解决方案和知识的系统集成商
+* *行业专业知识*：提供特定于行业的解决方案和知识的服务合作伙伴
 * 实现*价值*：集成部署方法以帮助你实现直接的优势
 * *同类最佳的解决方案*：发现易于集成的购买和实现体验
 

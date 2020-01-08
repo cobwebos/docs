@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 618d9a8d941202db05981566203bf96c02f415a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358303"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -133,14 +133,14 @@ ms.locfileid: "74039719"
     graphURL=https://graph.windows.net/
     ```
 
-    将 **subscription-id&lt; 替换为订阅标识符，&gt;application-id** 替换为 Active Directory 应用程序标识符，**authentication-key&lt; 替换为授权密钥，&gt;tenant-id** 替换为租户标识符 **&lt;&gt;** **&lt;&gt;** 。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符。
 
 2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开 `App.java` 下的 `src\main\java\com\fabrikam` 文件，确保此包语句处于顶部：
+1. 打开 `src\main\java\com\fabrikam` 下的 `App.java` 文件，确保此包语句处于顶部：
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -188,7 +188,7 @@ ms.locfileid: "74039719"
 
 ### <a name="create-the-resource-group"></a>创建资源组
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+必须在[资源组](../../azure-resource-manager/management/overview.md)中包含所有资源。
 
 若要指定应用程序的值并创建资源组，请将此代码添加到 main 方法中的 try 块：
 
@@ -269,7 +269,7 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-创建所有支持资源后，即可创建虚拟机。
+创建所有支持的资源后，可以创建虚拟机。
 
 若要创建虚拟机，请将此代码添加到 main 方法的 try 块：
 

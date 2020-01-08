@@ -10,14 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373241"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>什么是适用于 Azure 虚拟网络的 IPv6？ （预览）
 
@@ -59,7 +59,7 @@ ms.locfileid: "73053464"
     - 可选的出站规则，提供对出站连接的完全声明性控制，以根据特定需求缩放和优化此功能。
     - 可选的多个前端配置，这些配置允许单个负载均衡器使用多个 IPv6 公共 IP 地址-相同的前端协议和端口可在前端地址之间重复使用。
     - 使用负载均衡规则的*浮动 IP*功能，可以在后端实例上重用可选 IPv6 端口 
-- [标准 IPV6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure vnet 中创建弹性多层应用程序。  
+- [标准 IPv6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure vnet 中创建弹性多层应用程序。  
 - 基本 IPv6 公共负载均衡器支持与旧版部署兼容
 - [保留的 Ipv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 ipv6 地址，可轻松为公司和客户允许列表 azure 托管的应用程序。
 - 实例层级公共 IP 提供直接连接到单个 Vm 的 IPv6 Internet 连接。

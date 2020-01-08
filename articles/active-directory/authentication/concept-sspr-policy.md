@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425326"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -54,22 +54,22 @@ ms.locfileid: "74848538"
   * 特权身份验证管理员
 
 * 如果在试用订阅中已过 30 天；或
-* 虚域存在（例如 contoso.com）；或
+* 已为 Azure AD 租户配置了自定义域，如*contoso.com*;或
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中；或
-* 虚域不存在 (*.onmicrosoft.com)；并且
+* 尚未为 Azure AD 租户配置自定义域，因此使用默认的 * *. onmicrosoft.com*。 请注意，不建议在生产环境中使用默认的 * *. onmicrosoft.com*域;与
 * Azure AD Connect 未同步标识
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
 
 需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于同步到云的本地 Active Directory 用户帐户，又适用于仅限云的用户帐户的策略：
 
-| properties | UserPrincipalName 要求 |
+| 属性 | UserPrincipalName 要求 |
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的“\@\"”字符。</li> <li>不能包含紧靠在“\@\"”符号前面的点字符“.”</li></ul> |
@@ -79,7 +79,7 @@ ms.locfileid: "74848538"
 
 下表描述了应用于在 Azure AD 中创建和管理的用户帐户的密码策略设置：
 
-| properties | 要求 |
+| 属性 | 要求 |
 | --- | --- |
 | 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空格</li></ul> |
 | 不允许的字符 | Unicode 字符。 |
@@ -162,11 +162,11 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
 
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
-* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
