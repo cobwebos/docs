@@ -1,20 +1,16 @@
 ---
-title: 容器化用于 Service Fabric 网格的现有 .NET 应用 | Microsoft Docs
+title: 容器化用于 Service Fabric 网格的现有 .NET 应用
 description: 向使用完整 .NET framework 的 ASP.NET 和控制台项目添加 Service Fabric 网格容器业务流程支持。
-services: service-fabric-mesh
-keywords: 容器化 Service Fabric 网格
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462049"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>容器化用于 Service Fabric 网格的现有 .NET 应用
 
@@ -25,7 +21,7 @@ ms.locfileid: "73686278"
 > [!NOTE]
 > 当前不支持 .NET **Core** 项目。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果没有 Azure 订阅，可以在开始前[创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -49,7 +45,7 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 使用 Service Fabric 网格工具向现有 ASP.NET 或控制台项目添加容器业务流程支持，如下所述：
 
-在 Visual Studio 解决方案资源管理器中，右键单击项目名称（在示例中为 **eShopLegacyWebForms**），然后选择“添加” **“容器业务流程协调程序支持”。**  > 
+在 Visual Studio 解决方案资源管理器中，右键单击项目名称（在示例中为 **eShopLegacyWebForms**），然后选择“添加” > “容器业务流程协调程序支持”。
 此时将显示“添加容器业务流程协调程序支持”对话框。
 
 ![Visual Studio“添加容器业务流程协调程序”对话框](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c30f1246dccbe14445b0f7db8584e37c0f4be6ab
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f728338284c755116414a03cbc586915e1cc9325
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462211"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 列出角色分配
 
@@ -146,6 +146,22 @@ PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGr
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
+
+1. 获取系统分配的或用户分配的托管标识的对象 ID。 
+
+    若要获取用户分配的托管标识的对象 ID，可以使用[AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。
+
+    ```azurepowershell
+    Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
+    ```
+
+1. 若要列出角色分配，请使用[AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。
+
+    ```azurepowershell
+    Get-AzRoleAssignment -ObjectId <objectid>
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

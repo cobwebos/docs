@@ -1,6 +1,6 @@
 ---
 title: 虚拟网络服务终结点-Azure 服务总线
-description: 将 Microsoft.ServiceBus 服务终结点添加到虚拟网络。
+description: 本文提供了有关如何将 Microsoft. 服务器服务终结点添加到虚拟网络的信息。
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -8,18 +8,18 @@ editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462064"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
-通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
+利用服务总线与[虚拟网络（VNet）服务终结点][vnet-sep]的集成，可以安全地从绑定到虚拟网络的工作负荷（例如虚拟机）访问消息传送功能，同时在两端保护网络流量路径。
 
 配置为绑定到至少一个虚拟网络子网服务终结点后，相应的服务总线命名空间将不再接受授权虚拟网络以外的任何位置的流量。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74277309"
 > - Azure IoT Device Explorer
 >
 > 以下 Microsoft 服务必须在虚拟网络中
-> - Azure 应用服务
+> - Azure App Service
 > - Azure Functions
 
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ ms.locfileid: "74277309"
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 服务总线服务器接受来自特定虚拟网络子网的连接。
 
-将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照**服务终结点概述**中的说明为“Microsoft.ServiceBus”启用该终结点[][vnet-sep]。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
+将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网中创建一个**虚拟网络服务终结点**，并为 "node.js" 启用该终结点，如[服务终结点概述][vnet-sep]中所述。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
 
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
@@ -76,7 +76,7 @@ ms.locfileid: "74277309"
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> from
+> 从
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -186,7 +186,7 @@ ms.locfileid: "74277309"
   }
 ```
 
-若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
+若要部署模板，请按照[Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用共享访问签名进行 Azure 服务总线访问控制 | Microsoft Docs
+title: 使用共享访问签名进行 Azure 服务总线访问控制
 description: 根据如何使用共享访问签名进行服务总线访问控制，并详细介绍如何使用 Azure 服务总线进行 SAS 授权。
 services: service-bus-messaging
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462071"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
@@ -27,10 +27,10 @@ ms.locfileid: "70013048"
 SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
 > [!NOTE]
-> Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性, 并可通过共享访问签名 (SAS) 轻松使用。 在 Azure AD 中, 无需在代码中存储令牌并存在潜在的安全漏洞。
+> Azure 服务总线支持使用 Azure Active Directory （Azure AD）授权对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性，并可通过共享访问签名（SAS）轻松使用。 在 Azure AD 中，无需在代码中存储令牌并存在潜在的安全漏洞。
 >
 > Microsoft 建议尽可能将 Azure AD 用于 Azure 服务总线应用程序。 有关详细信息，请参阅以下文章：
-> - [使用 Azure Active Directory 访问 Azure 服务总线实体, 对应用程序进行身份验证和授权](authenticate-application.md)。
+> - [使用 Azure Active Directory 访问 Azure 服务总线实体，对应用程序进行身份验证和授权](authenticate-application.md)。
 > - [使用 Azure Active Directory 验证托管标识以访问 Azure 服务总线资源](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS 概述
@@ -110,7 +110,7 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 下面所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
 
-有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅而在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)。
+有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅，在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
@@ -187,11 +187,11 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>使用共享访问签名（在 AMQP 级别）
 
-在前一部分中，已介绍如何使用 SAS 令牌配合 HTTP POST 请求将数据发送到服务总线。 如你所了解，可以使用高级消息队列协议 (AMQP) 访问服务总线。在许多方案中，都会出于性能原因而将该协议用作首选协议。 文档[基于 AMQP 声明的安全性版本 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)（自 2013 年以来以有效草案版推出，不过 Azure 现在能够很好地支持它）中介绍了如何配合 AMQP 使用 SAS 令牌。
+在前一部分中，已了解如何使用 SAS 令牌配合 HTTP POST 请求将数据发送到服务总线。 如你所了解，可以使用高级消息队列协议 (AMQP) 来访问服务总线。在许多方案中，都会出于性能原因而将该协议用作首选协议。 文档[基于 AMQP 声明的安全性版本 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)（自 2013 年以来以有效草案版推出，不过 Azure 现在能够很好地支持它）中介绍了如何配合 AMQP 使用 SAS 令牌。
 
 开始将数据发送到服务总线之前，发布者必须将 AMQP 消息中的 SAS 令牌发送到正确定义的名为 $cbs 的 AMQP 节点（可以将它视为一个由服务使用的“特殊”队列，用于获取和验证所有 SAS 令牌）。 发布者必须在 AMQP 消息中指定 **ReplyTo** 字段；这是服务向发布者回复令牌验证结果（发布者与服务之间的简单请求/回复模式）时所在的节点。 根据 AMQP 1.0 规范中有关“动态创建远程节点”的论述，此回复节点是“在运行中”创建的。 在检查 SAS 令牌有效之后，发布者可以继续将数据发送到服务。
 
-以下步骤演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库通过 AMQP 协议发送 SAS 令牌。 如果你不能使用官方的服务总线 SDK (例如, 在 WinRT、.NET Compact Framework、.NET 微框架和 Mono 上) 在 C\#中进行开发, 则此方法很有用。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识, 可以将官方的服务总线 SDK 用于 .NET Framework 应用程序, 这将为你执行此操作。
+以下步骤演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库通过 AMQP 协议发送 SAS 令牌。 如果你不能使用官方的服务总线 SDK （例如，在 WinRT、.NET Compact Framework、.NET 微框架和 Mono 上）以 C\#进行开发，这会很有用。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识，可以将官方的服务总线 SDK 用于 .NET Framework 应用程序，这将为你执行此操作。
 
 ### <a name="c35"></a>C&#35;
 
@@ -263,7 +263,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 
 | 操作 | 所需声明 | 声明范围 |
 | --- | --- | --- |
-| **命名空间** | | |
+| **Namespace** | | |
 | 在命名空间上配置授权规则 |管理 |任何命名空间地址 |
 | **服务注册表** | | |
 | 枚举私有策略 |管理 |任何命名空间地址 |
@@ -295,7 +295,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 | 删除订阅 |管理 |../myTopic/Subscriptions/mySubscription |
 | 枚举订阅 |管理 |../myTopic/Subscriptions |
 | 获取订阅说明 |管理 |../myTopic/Subscriptions/mySubscription |
-| 在速览-锁定模式下接收消息后放弃或完成消息 |侦听 |../myTopic/Subscriptions/mySubscription |
+| 在查看锁定模式下接收消息后放弃或完成消息 |侦听 |../myTopic/Subscriptions/mySubscription |
 | 推迟消息以供将来检索 |侦听 |../myTopic/Subscriptions/mySubscription |
 | 将消息放入死信队列 |侦听 |../myTopic/Subscriptions/mySubscription |
 | 获取与主题会话关联的状态 |侦听 |../myTopic/Subscriptions/mySubscription |
@@ -310,7 +310,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题。
 
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
-* [如何使用服务总线队列](service-bus-dotnet-get-started-with-queues.md)
+* [如何使用 Service Bus 队列](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Azure portal]: https://portal.azure.com

@@ -1,5 +1,5 @@
 ---
-title: 从 Azure AD 访问控制服务迁移到 SAS
+title: Azure 服务总线-迁移到共享访问签名授权
 description: 了解如何从 Azure Active Directory 的访问控制服务迁移到共享访问签名授权。
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: ae0dd3827e17cc63b4b698eb8d88a08799c7278f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462161"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
 以前，服务总线应用程序有两种不同的授权模型可以选择。一种是服务总线直接提供的[共享访问签名 (SAS)](service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/azure/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到服务总线，以授予对所需功能的访问权限。
 
@@ -39,7 +39,7 @@ ACS 和服务总线是通过签名密钥这一共用概念进行集成。 ACS �
 
 1.  **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与服务总线命名空间配对）自动生成的所有者服务标识及其密钥，，未添加新规则。
 
-2.  **包含简单规则的自定义服务标识**： 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”、“侦听”和“管理”权限。
+2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”、“侦听”和“管理”权限。
 
 3.  **包含复杂规则的自定义服务标识**。 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
 

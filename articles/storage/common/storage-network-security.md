@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 71922a9da594de3402caf778b1e066da9d20505c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28ab1eaa860c0d684182f5f1660daed2751a9c6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465084"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 网络规则有助于在大多数情况下为应用程序和数据创建安全的环境。 但是，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则唯一隔离的 Azure 服务。 但是，必须将此类服务授予存储，以实现完整的应用程序功能。 在这种情况下，你可以使用 "***允许受信任的 Microsoft 服务 ...*** " 设置来启用此类服务访问你的数据、日志或分析。
 
@@ -379,7 +379,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 设置新 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 监视器            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure 联网         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
 | Azure 站点恢复      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，启用复制来实现 Azure IaaS 虚拟机灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
@@ -389,10 +389,10 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | :----------------------------- | :------------------------------------- | :---------- |
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | 在构建容器映像时，ACR 任务可以访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 允许通过 ADF 运行时访问存储帐户。 |
-| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md)。 |
-| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
+| Azure 机器学习 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL 数据仓库       | Microsoft.Sql                          | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 流分析         | Microsoft.StreamAnalytics             | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity.md)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics             | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Synapse/工作区          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 

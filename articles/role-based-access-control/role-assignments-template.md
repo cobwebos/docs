@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462195"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 外，还可以使用[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 外，还可以使用[Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
 
 ## <a name="get-object-ids"></a>获取对象 Id
 
@@ -52,7 +52,7 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>应用程序
 
 若要获取服务主体（应用程序使用的标识）的 ID，可以使用[AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)或[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)命令。 对于服务主体，请使用对象 ID，而**不**是应用程序 id。
 
@@ -362,6 +362,6 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
+- [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/deploy-to-subscription.md)
-- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
