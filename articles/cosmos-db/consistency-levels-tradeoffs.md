@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 中各种一致性级别的可用性和性能权衡
+title: Azure Cosmos DB 一致性、可用性和性能折衷
 description: Azure Cosmos DB 中各种一致性级别的可用性和性能利弊。
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445551"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -54,10 +54,10 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 |---------|---------|---------|---------|---------|
 |第|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
 |>1|单主数据库|会话、一致的前缀或最终|< 15 分钟|< 15 分钟|
-|>1|单主数据库|有限过期|*K*  & *t*|< 15 分钟|
+|>1|单主数据库|有限过期|*K* & *T*|< 15 分钟|
 |>1|单主数据库|Strong|0|< 15 分钟|
 |>1|多主数据库|会话、一致的前缀或最终|< 15 分钟|0|
-|>1|多主数据库|有限过期|*K*  & *t*|0|
+|>1|多主数据库|有限过期|*K* & *T*|0|
 
 *K* = 项的 *"K"* 版本（即更新）的数目。
 

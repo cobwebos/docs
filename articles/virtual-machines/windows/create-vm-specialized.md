@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460186"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "74033856"
 
 有几种选项：
 * [使用现有托管磁盘](#option-1-use-an-existing-disk)。 如果你有一个未正常工作的 VM，此选项很有用。 可以删除该 VM，然后重用托管磁盘创建新 VM。 
-* 上传 VHD 
+* [上传 VHD](#option-2-upload-a-specialized-vhd) 
 * [使用快照复制现有 Azure VM](#option-3-copy-an-existing-azure-vm)
 
 还可以使用 Azure 门户[从专用 VHD 创建新 VM](create-vm-specialized-portal.md)。
@@ -57,7 +57,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>准备 VM
 使用原始 VHD 创建新的 VM。 
   
-  * 准备好要上传到 Azure 的 Windows VHD。 **不要**使用 Sysprep 通用化 VM。
+  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
   * 确保 VM 配置为从 DHCP 获取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得虚拟网络中的 IP 地址。 
 
@@ -70,7 +70,7 @@ $osDisk = Get-AzDisk `
 
 通过拍摄 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
 
-如果要将现有 VM 复制到其他区域，你可能想要使用 azcopy[在另一区域中的磁盘副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
+如果要将现有 VM 复制到其他区域，可能需要使用 azcopy[在另一区域中创建磁盘的副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘快照
 
@@ -118,7 +118,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-若要使用快照创建高性能的 VM，请将 `-AccountType Premium_LRS` 参数添加到 New-AzSnapshotConfig 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘的费用比标准托管磁盘更高，因此，在使用该参数之前，请确认需要高级托管磁盘。
+若要使用此快照创建需要高性能的 VM，请将参数 `-AccountType Premium_LRS` 添加到 AzSnapshotConfig 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘的费用比标准托管磁盘更高，因此，在使用该参数之前，请确认需要高级托管磁盘。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
@@ -211,7 +211,7 @@ $nsg = New-AzNetworkSecurityGroup `
        -AllocationMethod Dynamic
     ```       
     
-2. 创建 NIC。 在此示例中，NIC 名称设置为 *myNicName*。
+2. 创建 NIC。 在本示例中，NIC 名称设置为 *myNicName*。
    
     ```powershell
     $nicName = "myNicName"
@@ -267,7 +267,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.com)的“浏览” **“虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。**  > 
+应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

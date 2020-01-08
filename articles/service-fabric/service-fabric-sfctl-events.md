@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric sfctl 事件 |Microsoft Docs
+title: Azure Service Fabric sfctl 事件
 description: 介绍 Service Fabric CLI sfctl events 命令。
-services: service-fabric
-documentationcenter: na
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 858fd1971a22b1db2d243838558c3792d3a60cc9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 35dfbdb3f8b84e797d35c8d7ec1020509f7e8b57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466048"
 ---
 # <a name="sfctl-events"></a>sfctl 事件
 从事件存储中检索事件（如果已安装 EventStore 服务）。
@@ -28,7 +19,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | 所有应用程序-列表 | 获取与应用程序相关的所有事件。 |
 | 所有节点-列表 | 获取与节点相关的所有事件。 |
@@ -49,7 +40,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
@@ -60,13 +51,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-all-nodes-list"></a>sfctl 事件所有节点-列表
 获取与节点相关的所有事件。
@@ -75,7 +66,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
@@ -86,13 +77,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-all-partitions-list"></a>sfctl 事件所有分区-列表
 获取与分区相关的所有事件。
@@ -101,7 +92,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
@@ -112,13 +103,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-all-services-list"></a>sfctl 事件所有服务-列表
 获取与服务相关的所有事件。
@@ -127,7 +118,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
@@ -138,13 +129,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-application-list"></a>sfctl events 应用程序-列表
 获取与应用程序相关的事件。
@@ -153,9 +144,9 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --application-id [必需] | 应用程序标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
+| --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --事件类型-筛选器 | 这是一个逗号分隔的字符串，用于指定只应包括在响应中的 FabricEvents 类型。 |
@@ -165,13 +156,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-cluster-list"></a>sfctl 事件群集-列表
 获取与群集相关的所有事件。
@@ -180,7 +171,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --启动时间-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-Yyyy-mm-ddthh\:MM\:ssZ。 |
@@ -191,13 +182,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-node-list"></a>sfctl 事件节点-列表
 获取与节点相关的事件。
@@ -206,7 +197,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --node-name [必需] | 节点的名称。 |
@@ -218,13 +209,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-partition-all-replicas-list"></a>sfctl 事件分区-所有副本-列表
 获取分区的所有副本相关事件。
@@ -233,7 +224,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -245,13 +236,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-partition-list"></a>sfctl 事件分区-列表
 获取与分区相关的事件。
@@ -260,7 +251,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -272,13 +263,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-partition-replica-list"></a>sfctl 事件分区-副本-列表
 获取与分区副本相关的事件。
@@ -287,7 +278,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -300,13 +291,13 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-events-service-list"></a>sfctl 事件服务-列表
 获取与服务相关的事件。
@@ -315,7 +306,7 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --结束时间-utc [必需] | 查找查询的结束时间，格式为 ISO UTC yyyy-mm-dd-Yyyy-mm-ddthh\:MM\:ssZ。 |
 | --service-id     [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
@@ -327,11 +318,11 @@ EventStore 系统服务可以通过配置升级添加到运行 > = 6.4 的任何
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 

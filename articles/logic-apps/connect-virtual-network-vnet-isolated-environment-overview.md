@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792729"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527852"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
 有时，你的逻辑应用和集成帐户需要访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中受保护的资源，例如虚拟机（vm）以及其他系统或服务。 若要设置此访问权限，可以[创建一个*integration service 环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) ，以便在其中运行逻辑应用并创建集成帐户。
 
-创建 ISE 时，Azure 会将 ISE*注入*到 azure 虚拟网络，然后在 azure 虚拟网络中将逻辑应用服务的专用实例和隔离实例部署到 azure 虚拟网络。 此专用实例使用专用资源（如存储），并与公用“全局”逻辑应用服务分开运行。 分离隔离的私有实例和公共全局实例还有助于降低其他 Azure 租户对应用性能的影响，这也称为["干扰邻居"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)。
+创建 ISE 时，Azure 会将 ISE*注入*到 azure 虚拟网络，然后在 azure 虚拟网络中将逻辑应用服务的专用实例和隔离实例部署到 azure 虚拟网络。 此专用实例使用专用资源（如存储），并独立于公共的 "全局" 多租户逻辑应用服务运行。 分离隔离的私有实例和公共全局实例还有助于降低其他 Azure 租户对应用性能的影响，这也称为["干扰邻居"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)。 ISE 还提供自己的静态 IP 地址。 这些 IP 地址独立于公共多租户服务中的逻辑应用共享的静态 IP 地址。
 
 创建 ISE 后，当你开始创建逻辑应用或集成帐户时，可以选择你的 ISE 作为逻辑应用或集成帐户的位置：
 
@@ -47,7 +47,7 @@ ISE 中的逻辑应用可提供与全局逻辑应用服务相同的用户体验�
 
 * Azure Blob 存储、文件存储和表存储
 * Azure 队列、Azure 服务总线、Azure 事件中心和 IBM MQ
-* 文件系统、FTP 和 SFTP SSH
+* FTP 和 SFTP-SSH
 * SQL Server、Azure SQL 数据仓库、Azure Cosmos DB
 * AS2、X12 和 EDIFACT
 
@@ -86,11 +86,13 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
 ## <a name="ise-endpoint-access"></a>ISE 终结点访问
 
-创建 ISE 时，可以选择使用内部或外部访问终结点。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 这些终结点还会影响对逻辑应用运行历史记录中的输入和输出的访问。
+创建 ISE 时，可以选择使用内部或外部访问终结点。 你的选择将确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。
 
-* **内部**：允许在 ISE 中调用逻辑应用的专用终结点，以及仅*从虚拟网络内部*运行历史记录中的输入和输出的访问权限
+这些终结点还会影响可在逻辑应用的运行历史记录中访问输入和输出的方式。
 
-* **External**：允许在 ISE 中调用逻辑应用的公共终结点，以及*从虚拟网络外部*运行历史记录中的输入和输出的访问权限
+* **内部**：允许在 ISE 中调用逻辑应用的专用终结点，你可以在其中查看和访问仅运行历史记录中的逻辑应用的输入和输出（*仅从虚拟网络内部*）
+
+* **External**：允许在 ISE 中调用逻辑应用的公共终结点，可在其中*从虚拟网络外部*查看和访问逻辑应用的输入和输出。 如果使用网络安全组（Nsg），请确保将其设置为具有入站规则，以允许访问运行历史记录的输入和输出。 有关详细信息，请参阅[为 ISE 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
 
 > [!IMPORTANT]
 > "访问终结点" 选项仅在创建 ISE 时可用，不能在以后更改。

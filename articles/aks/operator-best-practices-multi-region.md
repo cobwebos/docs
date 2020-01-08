@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971649"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613102"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 AKS 通过在可用性集中使用多个节点来提供高可用性。 但这些多个节点不会保护你的系统免受区域故障的问题。 为了最大限度地延长运行时间，请提前计划维护业务连续性并为灾难恢复做准备。
 
-本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 你将学习如何：
+本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 学习如何：
 
 > [!div class="checklist"]
 > * 规划多个区域中的 AKS 群集。
@@ -114,7 +114,7 @@ AKS 区域可用性和配对区域是共同考虑因素。 将 AKS 群集部署�
 
 即使在删除 pod 后，应用程序也可能需要持久存储。 在 Kubernetes 中，可以使用永久卷来持久保存数据存储。 永久性卷装载到节点 VM，然后公开到 pod。 即使将 pod 移至同一群集内的其他节点，永久卷也会跟随盒。
 
-你使用的复制策略取决于你的存储解决方案。 常见的存储解决方案（例如[gluster storage](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、 [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[车](https://rook.io/docs/rook/master/disaster-recovery.html)和[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ）提供了自己的有关灾难恢复和复制的指导。
+你使用的复制策略取决于你的存储解决方案。 常见的存储解决方案（例如[gluster storage](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、 [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[车](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)和[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ）提供了自己的有关灾难恢复和复制的指导。
 
 典型的策略是提供公共存储点，应用程序可在其中写入数据。 然后跨区域复制此数据，在本地访问。
 

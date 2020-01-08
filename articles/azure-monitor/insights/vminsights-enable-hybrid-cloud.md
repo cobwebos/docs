@@ -4,15 +4,15 @@ description: 本文介绍如何为包含一个或多个虚拟机的混合云环�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: e9e5504125920cedaf383f8fa4299a4b1b1d60ed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400688"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>启用混合环境的用于 VM 的 Azure Monitor （预览版）
 
@@ -49,7 +49,7 @@ ms.locfileid: "72553870"
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | 描述 |
+| 参数 | Description |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -66,10 +66,10 @@ ms.locfileid: "72553870"
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 描述 |
+| 参数 | Description |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
-| -s | 执行无提示安装，无用户提示。 |
+| -S | 执行无提示安装，无用户提示。 |
 | --check | 检查权限和操作系统，但不安装代理。 |
 
 例如，若要用 `-help` 参数运行安装程序，请输入**installdependencyagent-linux64.bin-help**。
@@ -80,7 +80,7 @@ ms.locfileid: "72553870"
 
 Dependency Agent 的文件放置在以下目录中：
 
-| 文件 | Location |
+| 文件 | 位置 |
 |:--|:--|
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |

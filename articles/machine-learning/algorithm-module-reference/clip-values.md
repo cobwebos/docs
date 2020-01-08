@@ -1,7 +1,7 @@
 ---
-title: 剪辑值
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "剪裁值" 模块来检测离群值并剪切或替换其值。
+title: 剪切值
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "剪裁值" 模块来检测离群值并剪切或替换其值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428591"
 ---
-# <a name="clip-values"></a>剪辑值
+# <a name="clip-values"></a>剪切值
 
 本文介绍 Azure 机器学习设计器（预览）的模块。
 
@@ -90,11 +90,11 @@ ms.locfileid: "73493827"
  
 ### <a name="examples-for-clipping-using-percentiles"></a>使用百分位数进行剪辑的示例
 
-若要了解百分位数的剪辑如何工作，请考虑一个包含10行的数据集，其中每个值都为1-10。  
+若要了解通过百分裁剪的工作方式，请考虑具有 10 行，每个实例的值 1-10 的数据集。  
   
-- 如果使用百分位数作为上限阈值，则在90% 的值处，数据集中所有值90% 的值必须小于该值。  
+- 如果将百评分用作上限阈值，在第 90 个百评分的值处，数据集中 90% 的值必须小于该值。  
   
-- 如果使用百分点作为下限阈值，则在第10个百分点值的值中，数据集中所有值的10% 必须小于该值。  
+- 如果将百评分用作下限阈值，在第 10 个百评分的值处，数据集中 10% 的值必须小于该值。  
   
 1.  对于 "**阈值集**"，请选择 " **ClipPeaksAndSubPeaks**"。  
   
@@ -108,16 +108,16 @@ ms.locfileid: "73493827"
   
 1.  取消选中 "**覆盖标志**" 选项，然后选择 "**添加指示器列**" 选项。  
   
-现在，请尝试使用60作为上百分位阈值，并使用30作为百分比下限阈值，并使用阈值作为替换值。 下表比较了这两个结果：  
+现在，请尝试使用60作为上百分位阈值，并使用30作为百分比下限阈值，并使用阈值作为替换值。 下表比较了以下两个结果：  
   
 1.  替换为缺少的;阈值上限 = 90;阈值下限 = 20  
   
 1.  替换为阈值;高百分位数 = 60;低百分位数 = 40  
   
-|原始数据|替换为缺失|替换为阈值|  
+|原始数据|替换为缺失值|替换为阈值|  
 |-------------------|--------------------------|----------------------------|  
-|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3、FALSE<br /><br /> 4、FALSE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、FALSE<br /><br /> 8，FALSE<br /><br /> 9，FALSE<br /><br /> TRUE|4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE| 
+|第<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3、FALSE<br /><br /> 4、FALSE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、FALSE<br /><br /> 8，FALSE<br /><br /> 9，FALSE<br /><br /> TRUE|4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 4，TRUE<br /><br /> 5、FALSE<br /><br /> 6、FALSE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE<br /><br /> 7、TRUE| 
  
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

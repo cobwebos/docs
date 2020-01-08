@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436818"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
@@ -130,7 +130,7 @@ Get-AzBgpServiceCommunity
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>关于 Azure 资源管理器模板示例
 
-这些示例使用 Azure 资源管理器模板配置 VPN 网关和 IPsec 隧道终端。 如果不熟悉资源管理器模板的用法或不了解资源管理器模板的基础知识，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。 本节中的模板会创建一个全新的 Azure 环境 (VNet)。 但如果有现成的 VNet，则可在模板中引用它。 如果不熟悉 VPN 网关 IPsec/IKE 站点到站点配置，请参阅[创建站点到站点的连接](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。
+这些示例使用 Azure 资源管理器模板配置 VPN 网关和 IPsec 隧道终端。 如果不熟悉资源管理器模板的用法或不了解资源管理器模板的基础知识，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。 本节中的模板会创建一个全新的 Azure 环境 (VNet)。 但如果有现成的 VNet，则可在模板中引用它。 如果不熟悉 VPN 网关 IPsec/IKE 站点到站点配置，请参阅[创建站点到站点的连接](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。
 
 >[!NOTE]
 >无需使用 Azure 资源管理器模板来创建此配置。 可使用 Azure 门户或 PowerShell 创建此配置。

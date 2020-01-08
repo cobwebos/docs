@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 中的 & Acl 使用 Java （预览）
+title: Azure Data Lake Storage Gen2 Java SDK for files & Acl （预览版）
 description: 使用用于 Java 的 Azure 存储库管理已启用分层命名空间（HNS）的存储帐户中的目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5a08a1f104e1820755f231ae6d1248ccc21ce330
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431837"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 中的 & Acl 使用 Java （预览）
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Java 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
 本文介绍如何使用 Java 创建和管理已启用分层命名空间（HNS）的存储帐户中的目录、文件和权限。 
 

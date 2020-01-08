@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707642"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552740"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -65,7 +65,7 @@ ms.locfileid: "74707642"
 
 - 对于托管实例，可以将实例数据库备份到最多32条带化的备份，如果使用备份压缩，这对于最大为 4 TB 的数据库来说就足够了。
 - 不能对使用服务托管透明数据加密（TDE）加密的数据库执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出密钥，因此无法还原备份。 使用自动备份和时间点还原，或改为使用[客户托管（BYOK） TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) 。 您还可以在数据库上禁用加密。
-- 使用托管实例中的 `BACKUP` 命令的最大备份条带大小为 195 GB，这是最大 blob 大小。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
+- 使用托管实例中的 `BACKUP` 命令的最大备份条带大小为 195 GB，这是最大 blob 大小。 增加备份命令中的带状线数量以缩小单个带状线大小，将其保持在限制范围内。
 
     > [!TIP]
     > 若要解决此限制，请在本地环境或虚拟机中的 SQL Server 备份数据库时，可以：
@@ -78,11 +78,11 @@ ms.locfileid: "74707642"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 ### <a name="auditing"></a>审核
 
-在 Azure SQL 数据库中的数据库中审核与在 SQL Server 中的数据库中审核的主要差异为：
+在审核 Azure SQL 数据库和 SQL Server 中的数据库方面，主要差异是：
 
 - 使用 Azure SQL 数据库中的托管实例部署选项，审核在服务器级别工作。 `.xel` 日志文件存储在 Azure Blob 存储中。
 - 使用 Azure SQL 数据库中的单一数据库和弹性池部署选项，审核是在数据库一级执行。
@@ -191,7 +191,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - [缓冲池扩展](/sql/database-engine/configure-windows/buffer-pool-extension)不受支持。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>排序规则
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](/sql/t-sql/statements/collations)。
 
@@ -362,7 +362,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 数据库中的 R 和 Python 目前尚不支持外部库。 请参阅 [SQL Server 机器学习服务](/sql/advanced-analytics/r/sql-server-r-services)。
 
-### <a name="filestream-and-filetable"></a>Filestream 和 FileTable
+### <a name="filestream-and-filetable"></a>文件流和 FileTable
 
 - 不支持 Filestream 数据。
 - 该数据库不能包含具有 `FILESTREAM` 数据的文件组。
@@ -381,7 +381,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 不支持[语义搜索](/sql/relational-databases/search/semantic-search-sql-server)。
 
-### <a name="linked-servers"></a>链接的服务器
+### <a name="linked-servers"></a>链接服务器
 
 托管实例中的链接服务器支持的目标数有限：
 
@@ -394,7 +394,7 @@ Operations
 - 不支持跨实例写入事务。
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数可用于仅对 SQL Server 实例执行查询。 它们可以是托管、在本地或虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
-- `OPENDATASOURCE` 函数可用于仅对 SQL Server 实例执行查询。 它们可以是托管、在本地或虚拟机中。 仅支持 `SQLNCLI`、`SQLNCLI11`和 `SQLOLEDB` 值作为提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
+- `OPENDATASOURCE` 函数可用于仅对 SQL Server 实例执行查询。 它们可以是托管、在本地或虚拟机中。 仅支持 `SQLNCLI`、`SQLNCLI11`和 `SQLOLEDB` 值作为提供程序。 示例为 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
 - 链接服务器不能用于从网络共享读取文件（Excel、CSV）。 尝试使用从 Azure Blob 存储读取 CSV 文件[BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)或[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 。 在[托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)| 上跟踪此请求
 
 ### <a name="polybase"></a>PolyBase
@@ -406,41 +406,12 @@ Operations
 - 支持快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
 - [事务复制](sql-database-managed-instance-transactional-replication.md)可用于托管实例上的公共预览版，但有一些限制：
     - 所有类型的复制参与者（发布服务器、分发服务器、请求订阅服务器和推送订阅服务器）都可放置在托管实例上，但发布服务器和分发服务器必须都在云中或同时位于本地。
-    - 托管实例可以与 SQL Server 的最新版本通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看受支持的版本。
+    - 托管实例可以与 SQL Server 的最新版本通信。 有关详细信息，请参阅[支持的版本矩阵](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)。
     - 事务复制有一些[额外的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
-有关配置复制的信息，请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
-
-
-如果对[故障转移组](sql-database-auto-failover-group.md)中的数据库启用了复制，则托管实例管理员必须清除旧主副本上的所有发布，并在发生故障转移后在新的主副本上重新配置这些发布。 在此方案中，需要执行以下活动：
-
-1. 停止在数据库上运行的所有复制作业（如果存在）。
-2. 通过在发布服务器数据库上运行以下脚本，删除发布服务器上的订阅元数据：
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. 删除订阅服务器上的订阅元数据。 在订阅服务器实例的订阅数据库中运行以下脚本：
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. 通过在发布的数据库中运行以下脚本，强制删除发布服务器中的所有复制对象：
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. 强制删除原始主实例中的旧分发服务器（如果故障回复到用于建立分发服务器的旧主实例）。 在旧的分发服务器托管实例中的 master 数据库上运行以下脚本：
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+有关配置事务复制的详细信息，请参阅以下教程：
+- [MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
+- [MI 发布服务器、MI 分发服务器与 SQL Server 订阅服务器之间的复制](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -535,17 +506,61 @@ Operations
 
 `tempdb` 的最大文件大小不能大于常规用途层上每个核心的 24 GB。 业务关键层上的最大 `tempdb` 大小受实例存储大小的限制。 常规用途层上 `Tempdb` 日志文件大小限制为 120 GB。 如果 `tempdb` 中的每个核心需要超过 24 GB，或者它们产生超过 120 GB 的日志数据，则某些查询可能会返回错误。
 
+### <a name="msdb"></a>MSDB
+
+托管实例中的以下 MSDB 架构必须由其各自的预定义角色拥有：
+
+- 常规角色
+  - TargetServersRole
+- [固定数据库角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [数据库邮件角色](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
+  - DatabaseMailUserRole
+- [Integration services 角色](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
+  - msdb
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> 更改用户的预定义角色名称、架构名称和架构所有者将会影响服务的正常运行。 对它们所做的任何更改都将还原到预定义的值，一旦检测到，或在最新的下一次服务更新中，以确保正常服务操作。
+
 ### <a name="error-logs"></a>错误日志
 
 托管实例将详细信息放在错误日志中。 错误日志中记录了很多内部系统事件。 使用自定义过程来读取用于筛选出某些不相关项的错误日志。 有关详细信息，请参阅[托管实例–](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) Azure Data Studio 的 sp_readmierrorlog 或[托管实例扩展（预览版）](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
 
-## <a name="Issues"></a>已知问题
+## <a name="Issues"></a> 已知问题
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理角色需要对非 sysadmin 登录名的显式执行权限
+
+**日期：** Dec 2019
+
+如果将非 sysadmin 登录名添加到[SQL 代理固定数据库角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)中的任何一个，则会出现一个问题，需要对这些登录名的主存储过程授予显式执行权限才能正常工作。 如果遇到此问题，将显示错误消息 "对象 < 上的 EXECUTE 权限被拒绝 object_name > （Microsoft SQL Server，错误：229）"。
+
+**解决方法**：将登录名添加到 SQL 代理固定数据库角色之一： SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole 后，对于每个添加到这些角色的登录名，请执行以下 t-sql 脚本，将 execute 权限显式授予列出的存储过程。
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL 代理作业可能会在代理进程重新启动后中断
+
+**日期：** Dec 2019
+
+SQL 代理在每次启动作业时都会创建一个新会话，这逐渐增加了内存消耗。 若要避免出现会阻止执行计划作业的内部内存限制，则在内存占用达到阈值时，将重新启动代理进程。 这可能会导致在重新启动时中断运行的作业。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>不应用内存中 OLTP 内存限制
 
 **日期：** Oct 2019
 
-在某些情况下，业务关键服务层将无法正确应用[内存优化对象的最大内存限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 托管实例可使工作负荷对内存中 OLTP 操作使用更多内存，这可能会影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题即将解决。 如果使用内存中 OLTP 内存更多的查询达到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)，则会更快地失败。
+在某些情况下，业务关键服务层将无法正确应用[内存优化对象的最大内存限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 托管实例可使工作负荷对内存中 OLTP 操作使用更多内存，这可能会影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题将很快得到解决。 如果使用内存中 OLTP 内存更多的查询达到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)，则会更快地失败。
 
 **解决方法：** 使用[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)，确保工作负荷不会使用超过可用内存。 增加依赖于 Vcore 数量的内存限制，或优化工作负荷以使用更少的内存。
 
@@ -577,7 +592,7 @@ SQL Server/托管实例[不允许用户删除不为空的文件](/sql/relational
 
 **日期：** 2019年8月
 
-更改服务层操作后，跨数据库 Service Broker 对话框将停止向其他数据库中的服务传递消息。 消息不会**丢失**，并且可以在发送方队列中找到它们。 在托管实例中更改 Vcore 或实例存储大小将导致为所有数据库更改[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)视图中 `service_broke_guid` 值。 使用[BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句创建的任何 `DIALOG` 引用其他数据库中的 Service broker，都将停止向目标服务传递消息。
+更改服务层操作后，跨数据库 Service Broker 对话框将停止向其他数据库中的服务传递消息。 消息不会**丢失**，并且可以在发送方队列中找到它们。 在托管实例中对 vCore 或实例存储大小进行任何更改都会导致 [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 视图中所有数据库的 `service_broke_guid` 值发生更改。 使用[BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql)语句创建的任何 `DIALOG` 引用其他数据库中的 Service broker，都将停止向目标服务传递消息。
 
 **解决方法：** 先停止使用跨数据库 Service Broker 对话会话的任何活动，然后再更新服务层并在之后重新初始化它们。 如果存在服务层更改后未传递的剩余消息，请从源队列中读取消息，并将其重新发送到目标队列。
 

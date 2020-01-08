@@ -1,5 +1,5 @@
 ---
-title: 为使用 Azure Cosmos DB 的应用程序选择适当的一致性级别
+title: 为 Azure Cosmos DB 应用选择适当的一致性级别
 description: 在 Azure Cosmos DB 中为你的应用程序选择适当的一致性级别。
 author: markjbrown
 ms.author: mjbrown
@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441920"
 ---
 # <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 
 
-依赖于复制以实现高可用性、低延迟或这两者的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。 开发人员使用 Azure Cosmos DB 可在五个妥善定义的一致性模型（非常、有限过期、会话、一致前缀和最终）之间进行选择。 这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种在精确的[可用性与性能方面都进行了权衡](consistency-levels-tradeoffs.md)，并有全面的 SLA 作为保障。 以下简单的注意事项将有助于你在许多常见方案中做出正确的选择。
+依赖于复制以实现高可用性、低延迟或这两者的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商业可用分布式数据库要求开发人员在两个极端一致性模型之间进行选择：*高度*一致性和*最终*一致性。 Azure Cosmos DB 允许开发人员在五个完善定义的一致性模型中进行选择：*强*、*有限过期*、*会话*、*一致前缀*和*最终*。 这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种都提供了精确的[可用性和性能折衷](consistency-levels-tradeoffs.md)，并受全面 sla 的支持。 以下简单的注意事项将有助于你在许多常见方案中做出正确的选择。
 
 ## <a name="sql-api-and-table-api"></a>SQL API 和表 API
 
-如果应用程序是使用 SQL API 或表 API 生成的，请注意以下几点：
+如果使用 SQL API 或表 API 生成应用程序，请注意以下几点：
 
 - 对于许多真实场景中，会话一致性是最佳也是推荐的选项。 有关详细信息，请参阅[如何管理应用程序的会话令牌](how-to-manage-consistency.md#utilize-session-tokens)。
 
@@ -32,11 +32,11 @@ ms.locfileid: "68384908"
 
 - 如果需要的一致性不如会话一致性提供的那么严格的话，建议使用一致前缀一致性级别。
 
-- 如果需要最高可用性和最低延迟，请使用最终一致级别。
+- 如果需要最高可用性和最低延迟，请使用最终一致性级别。
 
 - 如果需要更高的数据持久性而不想牺牲性能，可以在应用层创建自定义一致性级别。 有关详细信息，请参阅[如何在应用程序中实现自定义同步](how-to-custom-synchronization.md)。
 
-## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra、MongoDB 和 Gremlin API
+## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra、MongoDB 和 Gremlin Api
 
 - 有关 Apache Cassandra 提供的“读取一致性级别”与 Cosmos DB 一致性级别之间的映射的详细信息，请参阅[一致性级别和 Cosmos DB API](consistency-levels-across-apis.md#cassandra-mapping)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "68384908"
 
 ## <a name="consistency-guarantees-in-practice"></a>一致性保证的实践
 
-在实践中，你可能经常会获得更强的一致性保证。 读取操作的一致性保证对应于所请求的数据库状态的新旧程度和顺序。 读取一致性与写入/更新操作的排序和传播有关。  
+在实践中，您可能经常获得更强的一致性保证。 读取操作的一致性保证对应于所请求的数据库状态的新旧程度和顺序。 读取一致性与写入/更新操作的排序和传播有关。  
 
 * 当一致性级别设置为“有限过期”时，Cosmos DB 保证客户端始终读取前一次写入的值，伴有一个受到过期窗口限制的延迟。
 
@@ -52,9 +52,9 @@ ms.locfileid: "68384908"
 
 * 对于剩余的三个一致性级别，过期窗口在很大程度上取决于你的工作负载。 例如，如果未在数据库上执行任何写入操作，具有“最终”、“会话”或“一致前缀”一致性级别的读取操作可能产生与具有非常一致级别的读取操作相同的结果。
 
-如果使用非常一致性以外的一致性级别配置了 Azure Cosmos 帐户，则可以通过查看概率有限过期 (PBS) 指标，找到客户端获得工作负荷的非常一致读取的概率。 此指标在 Azure 门户中公开，若要了解详细信息，请参阅[监视概率有限过期性 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
+如果你的 Azure Cosmos 帐户配置的一致性级别不是强一致性，则可以通过查看*Probabilistic 有限过期*（PBS）指标了解你的客户端可能会对工作负荷进行严格且一致的读取。 此指标在 Azure 门户中公开，若要了解详细信息，请参阅[监视概率有限过期性 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
 
-概率有限过期表明了最终一致的最终程度。 通过此指标可深入了解在 Azure Cosmos 帐户中目前配置的一致性级别之间获得更非常一致性的频率。 换句话说，可看到获得写入和读取区域组合的非常一致读取的概率（以毫秒计量）。
+概率有限过期表明了最终一致的最终程度。 此指标可以深入了解你可以获得比你当前在 Azure Cosmos 帐户上配置的一致性级别更强的一致性的频率。 换句话说，可看到获得写入和读取区域组合的非常一致读取的概率（以毫秒计量）。
 
 ## <a name="next-steps"></a>后续步骤
 

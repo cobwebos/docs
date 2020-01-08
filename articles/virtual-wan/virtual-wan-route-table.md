@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014992"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645100"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>创建一个虚拟中心路由表来将流量引导到网络虚拟设备。
 
@@ -36,9 +36,9 @@ ms.locfileid: "74014992"
 
 验证是否符合以下条件：
 
-1. 已有一个网络虚拟设备 (NVA)。 它是所选的第三方软件，通常是通过虚拟网络中的 Azure 市场预配的。
+1. 你拥有网络虚拟设备（NVA）。 这是所选的第三方软件，通常是从虚拟网络中的 Azure Marketplace 进行预配的。
 2. 你向 NVA 网络接口分配了一个专用 IP。 
-3. NVA 不能部署在虚拟中心内。 它必须部署在单独的 VNet 中。 在本文中，NVA VNet 称为“DMZ VNet”。
+3. 无法在虚拟中心部署 NVA。 它必须部署在单独的 VNet 中。 在本文中，NVA VNet 称为“DMZ VNet”。
 4. “DMZ VNet”可以有一个或多个虚拟网络连接到它。 在本文中，此 VNet 称为“间接辐射 VNet”。 这些 VNet 可以使用 VNet 对等互连连接到 DMZ VNet。
 5. 验证已创建了 2 个 VNet。 它们将用作辐射 VNet。 对于本文，VNet 辐射地址空间是 10.0.2.0/24 和 10.0.3.0/24。 如果需要有关如何创建 VNet 的信息，请参阅[使用 PowerShell 创建虚拟网络](../virtual-network/quick-create-powershell.md)。
 6. 请确保任何 VNet 中都没有虚拟网络网关。
@@ -116,7 +116,7 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 将更改提交到虚拟中心。
 
 ```powershell
-Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
+Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
 ```
 
 ## <a name="next-steps"></a>后续步骤

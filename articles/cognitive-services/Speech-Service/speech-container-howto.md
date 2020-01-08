@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "74815355"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
@@ -99,7 +99,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ***
 
-* 每个核心必须至少为 2.6 千兆赫（GHz）或更快。
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
@@ -273,7 +273,7 @@ ApiKey={API_KEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | 描述 |
+| 参数 | Description |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -335,7 +335,7 @@ ApiKey={API_KEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | 描述 |
+| 参数 | Description |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -414,9 +414,9 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
-本文介绍了用于下载、安装和运行语音容器的概念和工作流。 摘要：
+本文介绍了用于下载、安装和运行语音容器的概念和工作流。 综上所述：
 
 * 语音为 Docker 提供四个 Linux 容器，封装各种功能：
   * *语音转文本*

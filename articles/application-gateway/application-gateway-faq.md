@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996643"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658298"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "74996643"
 
 下面是有关 Azure 应用程序网关的常见问题。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-is-application-gateway"></a>什么是应用程序网关？
 
@@ -158,7 +158,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>应用程序网关有哪些限制？ 是否可以提高这些限制？
 
-请参阅[应用程序网关限制](../azure-subscription-service-limits.md#application-gateway-limits)。
+请参阅[应用程序网关限制](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>是否可以同时对外部和内部流量使用应用程序网关？
 
@@ -200,6 +200,9 @@ Host 字段指定在应用程序网关上配置了多站点时将探测发送到
 
 可以。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
 
+### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
+
+应用程序网关 v2 当前不支持 IPv6。 它只能使用 IPv4 在双堆栈 VNet 中运行，但网关子网必须仅使用 IPv4。 应用程序网关 v1 不支持双 stack Vnet。 
 
 ## <a name="configuration---ssl"></a>配置-SSL
 
@@ -380,6 +383,30 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 - 你已部署应用程序网关 v2
 - 应用程序网关子网上有 NSG
 - 已启用该 NSG 上的 NSG 流日志
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>如何实现将应用程序网关 V2 仅用于专用前端 IP 地址？
+
+应用程序网关 V2 目前不支持专用 IP 模式。 它支持以下组合
+* 专用 IP 和公共 IP
+* 仅限公共 IP
+
+但如果你想要将应用程序网关 V2 仅用于专用 IP，则可以按照以下过程操作：
+1. 使用公用和专用前端 IP 地址创建应用程序网关
+2. 不要为公共前端 IP 地址创建任何侦听器。 如果没有为其创建侦听器，应用程序网关将不会侦听公共 IP 地址上的任何流量。
+3. 为应用程序网关子网创建并附加具有以下配置的[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)（按优先级顺序）：
+    
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 允许来自源的流量作为**GatewayManager**服务标记，将目标作为**任何**和目标端口为**65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 外部实体（包括网关用户管理员）无法在没有适当证书的情况下启动对这些终结点所做的更改
+    
+    b.保留“数据库类型”设置，即设置为“共享”。 允许来自源的流量作为**AzureLoadBalancer**服务标记，目标和目标端口作为**任何**
+    
+    c. 将源中的所有入站流量拒绝为**Internet**服务标记，并将目标和目标端口视为**任意**。 在入站规则中为此规则指定*最小优先级*
+    
+    d.单击“下一步”。 保留默认规则，例如允许 VirtualNetwork 入站，以便不阻止对专用 IP 地址的访问
+    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 不能阻止出站 Internet 连接。 否则，你将面临日志记录、指标等问题。
+
+仅适用于专用 ip 的 NSG 配置示例：仅限专用 IP 访问的 ![应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

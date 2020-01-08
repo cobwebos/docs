@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279308"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638249"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 数据库资源限制和资源调控
 
@@ -27,7 +27,7 @@ ms.locfileid: "74279308"
 
 ## <a name="maximum-resource-limits"></a>最大资源限制
 
-| Resource | 限制 |
+| 资源 | 限制 |
 | :--- | :--- |
 | 每个服务器的数据库数 | 5000 |
 | 任意区域中每个订阅的服务器默认数量 | 20 |
@@ -60,7 +60,7 @@ ms.locfileid: "74279308"
 - 提高数据库或弹性池的计算大小，为数据库提供更多计算资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 优化查询，减少每个查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 
 当使用的数据库空间到达上限时，将无法进行增加数据大小的数据库插入和更新操作，客户端会收到[错误消息](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)。 SELECT 和 DELETE 语句将继续成功。
 
@@ -99,39 +99,41 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 对于使用 Azure 存储中的数据文件的基本、标准和常规用途数据库，如果数据库没有足够的数据文件要累积的数据文件提供此 IOPS 数，或者如果数据未在文件之间均匀分布，或者基础 blob 的性能层限制了低于资源调控限制的 IOPS/吞吐量，则可能无法实现 `primary_group_max_io` 值。 同样，对于频繁的事务提交生成的小日志 Io，工作负荷可能无法实现 `primary_max_log_rate` 值，因为基础 Azure 存储 blob 的 IOPS 限制。
 
-资源利用率值（如 `avg_data_io_percent` 和 `avg_log_write_percent`）在[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [sys.databases resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告，其计算方式为最大资源调控限制的百分比。 因此，当资源管理限制 IOPS/吞吐量以外的其他因素时，如果工作负荷增加，则可以查看 IOPS/吞吐量修整和延迟增加，即使报告的资源利用率仍低于100%。 若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用[sys. dm_io_virtual_file_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函数。 此函数对数据库的所有 IO （包括不会考虑 `avg_data_io_percent`的后台 IO）进行图面，但使用基础存储的 IOPS 和吞吐量，并可能影响观察到的存储延迟。
+资源利用率值（如 `avg_data_io_percent` 和 `avg_log_write_percent`）在[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [sys.databases resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告，其计算方式为最大资源调控限制的百分比。 因此，当资源管理限制 IOPS/吞吐量以外的其他因素时，如果工作负荷增加，则可以查看 IOPS/吞吐量修整和延迟增加，即使报告的资源利用率仍低于100%。 
+
+若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用[sys. dm_io_virtual_file_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函数。 此函数对数据库的所有 IO （包括不会考虑 `avg_data_io_percent`的后台 IO）进行图面，但使用基础存储的 IOPS 和吞吐量，并可能影响观察到的存储延迟。 此函数还会在 "`io_stall_queued_read_ms`" 和 "`io_stall_queued_write_ms`" 列中，为读取和写入的 IO 资源调控引入额外的延迟。
 
 ### <a name="transaction-log-rate-governance"></a>事务日志速率管理
 
-事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 在亚秒级级别跟踪和强制执行日志记录生成速率，而不考虑可以对数据文件发出的 Io 数。  当前，事务日志生成速率以线性方式扩展到与硬件相关的点，并且最大对数率允许使用 vCore 购买模型 96 MB/s。 
+事务日志速率管理是 Azure SQL 数据库中的一个过程，用于限制工作负荷（例如大容量插入、SELECT INTO 和索引生成）的高引入率。 在亚秒级级别跟踪和强制执行日志记录生成速率，而不考虑可以对数据文件发出的 Io 数。  当前，事务日志生成速率以线性方式扩展到与硬件相关的点，并且最大对数率允许使用 vCore 购买模型 96 MB/s。 
 
 > [!NOTE]
-> 向事务日志文件发出的实际物理 IO 不会受到调控或限制。
+> 实际的物理 Io 到事务日志文件不受管辖或限制。
 
-日志速率的设置应该做到可在各种场合下实现并保持该速率，同时，整个系统可以在尽量减轻对用户负载造成的影响的前提下保持其功能。 日志速率调控可确保事务日志备份保留在已发布的可恢复性 SLA 范围内。  这种调控还可以防止次要副本带来过多的积压工作。
+设置日志速率是为了能够在各种情况下实现和持续，而整体系统可以保持其功能，同时对用户负载产生最小的影响。 日志速率监管可确保事务日志备份保留在已发布的可恢复性 Sla 中。  此监管还会阻止辅助副本上出现过多的积压。
 
-生成日志记录后，将评估每个操作，以确定是否要将其延迟，从而保持最大所需日志速率（MB/秒）。 将日志记录刷新到存储时不会增大延迟，日志速率调控是在日志速率生成期间应用的。
+随着日志记录的生成，会对每个操作进行评估并评估其是否应该延迟，以便保持最大的所需对数率（每秒 MB/秒）。 将日志记录刷新到存储时，将不会添加延迟，而是在生成日志时应用日志速率调控。
 
-在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。
+在运行时施加的实际日志生成速率也可能受到反馈机制的影响，暂时降低允许的对数率，使系统能够稳定。 日志文件空间管理，避免在日志空间不足的情况下运行，并可暂时降低总体系统限制。
 
-可通过以下 wait 类型（在 [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公开）查看日志速率调控器流量的形状：
+日志速率调控器流量造型通过以下等待类型（在[dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公开）进行呈现：
 
-| Wait 类型 | 说明 |
+| 等待类型 | 说明 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |
-| INSTANCE_LOG_RATE_GOVERNOR | 实例级限制 |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控制。高级/业务关键型工作负荷中的可用性组物理复制不会保持 |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制。限制速率可以避免出现日志空间不足的情况 |
+| INSTANCE_LOG_RATE_GOVERNOR | 实例级别限制 |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 高级/业务关键的反馈控制、可用性组物理复制不能保持 |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制，限制速率以避免超出日志空间条件 |
 |||
 
-当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：
+如果遇到的日志速率限制牵制所需的可伸缩性，请考虑以下选项：
 - 向上缩放到更高的服务级别，以获取最大 96 MB/秒的日志速率。 
 - 如果加载的数据是暂时性的，例如 ETL 过程中的临时数据，则可以将其加载到 tempdb （这是最小日志记录）。 
-- 对于分析方案，可将数据载入聚集列存储涵盖的表中。 这样，可以通过压缩来降低所需的日志速率。 此方法确实会增大 CPU 利用率，并且仅适用于可从聚集列存储索引受益的数据集。 
+- 对于分析方案，请加载到聚集列存储涵盖的表中。 这会减少压缩所需的日志速率。 此方法会增加 CPU 使用率，并且仅适用于受益于聚集列存储索引的数据集。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
+- 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 - 有关 tempdb 大小限制的信息，请参阅 [Azure SQL 数据库中的 TempDB](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。

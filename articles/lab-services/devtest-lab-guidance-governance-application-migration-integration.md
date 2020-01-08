@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560651"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644880"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
 建立开发/测试实验室环境之后，你需要考虑以下问题：
@@ -76,7 +76,7 @@ ms.locfileid: "74560651"
 ### <a name="answer"></a>答案
 可以。 有两个方面需要考虑，即入站和出站流量。
 
-入站流量 – 如果虚拟机没有公用 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公共 IP 地址。
+入站流量 – 如果虚拟机没有公共 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公共 IP 地址。
 
 出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
 
@@ -93,7 +93,7 @@ ms.locfileid: "74560651"
 ### <a name="answer"></a>答案
 如果你的 VM 需要与现有基础结构进行交互，则应考虑使用开发测试实验室环境中的现有虚拟网络。 此外，如果使用 ExpressRoute，则可能需要最大限度减少 VNet/子网的数量，以便不会分割已分配供在订阅中使用的 IP 地址空间。 另外，还应该考虑在此处使用 VNet 对等互连模式（中心辐射型模型）。 此方法支持在给定区域内跨订阅进行 VNet/子网通信，但跨区域对等互连是 Azure 网络中的一项即将推出的新功能。
 
-除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 但请注意，每个订阅的虚拟网络数量有[限制](../azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
+除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 但请注意，每个订阅的虚拟网络数量有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
 
 ## <a name="shared-public-or-private-ip"></a>共享 IP、公用 IP 或专用 IP
 
@@ -117,7 +117,7 @@ ms.locfileid: "74560651"
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
 - 团队在实验室资源上花费的总成本。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
-- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验室，实验室可能会在每个实验室中容纳大约79的虚拟机（10个实验室自身的800上限–10个资源组） = 79 每个实验室的虚拟机数。
+- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验室，实验室可能会在每个实验室中容纳大约79的虚拟机（10个实验室自身的800上限–10个资源组） = 79 每个实验室的虚拟机数。
 - 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
 ## <a name="use-resource-manager-templates"></a>使用资源管理器模板

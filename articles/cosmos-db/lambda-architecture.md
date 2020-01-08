@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Cosmos DB 和 HDInsight (Apache Spark) 的 Lambda 体系结构
+title: 具有 Azure Cosmos DB 和 Apache Spark 的 Lambda 体系结构
 description: 本文介绍如何实现使用 Azure Cosmos DB、HDInsight 和 Spark 的 lambda 体系结构
 ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d16a9b07ffb77145a6903bfb0de387c2b94c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441756"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 
@@ -114,7 +114,7 @@ val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0))
 
  1. 所有**数据**只会推送到 Azure Cosmos DB（以避免多重强制转换问题）。
  2. **批处理层**包含 Azure Cosmos DB 中存储的主数据集（不可变、仅限追加的原始数据集）。 使用 HDI Spark 可以预先计算要存储在计算的批处理视图中的聚合。
- 3. **服务层**是一个 Azure Cosmos 数据库, 其中包含主数据集和计算的批处理视图的集合。
+ 3. **服务层**是一个 Azure Cosmos 数据库，其中包含主数据集和计算的批处理视图的集合。
  4. 本文稍后将介绍**速度层**。
  5. 通过合并批处理视图和实时视图中的结果或者单独 ping 每个结果，可以应答所有查询。
 
@@ -161,7 +161,7 @@ limit 10
 
 ![按井号标签显示推文数量的图表](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-创建查询后，让我们使用 Spark 连接器将它保存回到某个集合，以便将输出数据保存到不同的集合中。  此示例使用 Scala 来展示连接。 与前面的示例类似, 创建配置连接将 Apache Spark 数据帧保存到不同的 Azure Cosmos 容器。
+创建查询后，让我们使用 Spark 连接器将它保存回到某个集合，以便将输出数据保存到不同的集合中。  此示例使用 Scala 来展示连接。 与前面的示例类似，创建配置连接将 Apache Spark 数据帧保存到不同的 Azure Cosmos 容器。
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-此最后一条语句现在已将 Spark 数据帧保存到新的 Azure Cosmos 容器;从 lambda 体系结构的角度来看, 这是**服务层**中的**批处理视图**。
+此最后一条语句现在已将 Spark 数据帧保存到新的 Azure Cosmos 容器;从 lambda 体系结构的角度来看，这是**服务层**中的**批处理视图**。
  
 #### <a name="resources"></a>资源
 
@@ -205,7 +205,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 ![突出显示 lambda 体系结构的速度层的示意图](./media/lambda-architecture/lambda-architecture-speed.png)
 
-为此, 请创建一个单独的 Azure Cosmos 容器来保存结构化流查询的结果。  这样，就可以让其他系统（而不只是 Apache Spark）访问此信息。 另外，使用 Cosmos DB 生存时间 (TTL) 功能，可以配置为在设置的期限后自动删除文档。  有关 Azure Cosmos DB TTL 功能的详细信息, 请参阅在[Azure Cosmos 容器中自动使数据过期, 并显示生存时间](time-to-live.md)
+为此，请创建一个单独的 Azure Cosmos 容器来保存结构化流查询的结果。  这样，就可以让其他系统（而不只是 Apache Spark）访问此信息。 另外，使用 Cosmos DB 生存时间 (TTL) 功能，可以配置为在设置的期限后自动删除文档。  有关 Azure Cosmos DB TTL 功能的详细信息，请参阅在[Azure Cosmos 容器中自动使数据过期，并显示生存时间](time-to-live.md)
 
 ```
 // Import Libraries
@@ -240,7 +240,7 @@ var streamingQuery = streamingQueryWriter.start()
 
 ```
 
-## <a name="lambda-architecture-rearchitected"></a>Lambda 体系结构：重新构建
+## <a name="lambda-architecture-rearchitected"></a>Lambda 体系结构：重建
 如前面的部分中所述，可以使用以下组件来简化原始的 lambda 体系结构：
 * Azure Cosmos DB
 * 使用 Azure Cosmos DB 更改源库来避免对批处理层与速度层之间的数据执行多重强制转换
@@ -259,11 +259,11 @@ var streamingQuery = streamingQueryWriter.start()
 ### <a name="resources"></a>资源
 
 * **新数据**：[将源从 Twitter 流式传输到 CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed)，这是将新数据推送到 Azure Cosmos DB 的机制。
-* **批处理层：** 批处理层由主数据集（不可变、仅限追加的原始数据集）组成，可以预先计算已推送到服务层的数据的批处理视图。
+* **批处理层：** 批处理层由主数据集（不可变、仅限追加的原始数据集）组成，可以预先计算已推送到**服务层**的数据的批处理视图。
    * **重建的 Lambda 体系结构 - 批处理层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 查询批处理视图的主数据集。
-* **服务层：** 服务层由预先计算的数据组成，这些数据生成用于快速查询的批处理视图（例如聚合、特定的切片器等等）。
+* **服务层：** **服务层**由预先计算的数据组成，这些数据生成用于快速查询的批处理视图（例如聚合、特定的切片器，等等）。
   * **重建的 Lambda 体系结构 - 批处理层到服务层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) 将批处理数据推送到服务层；即，Spark 将查询推文的批处理集合、对其进行处理，然后将其存储到另一个集合（计算的批处理）中。
-    * **速度层：** 速度层由利用 Azure Cosmos DB 更改源读取并立即处理数据的 Spark 组成。 还可以将数据保存到计算的 RT 中，使其他系统可以查询已处理的实时数据，而无需自行运行实时查询。
+    * **速度层：** **速度层**由利用 Azure Cosmos DB 更改源读取并立即处理数据的 Spark 组成。 还可以将数据保存到计算的 RT 中，使其他系统可以查询已处理的实时数据，而无需自行运行实时查询。
   * [Cosmos DB 更改源中的流查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算间隔计数。
   * [Cosmos DB 更改源中的流标记查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算标记的间隔计数。
   

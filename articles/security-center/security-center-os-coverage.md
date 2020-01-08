@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353323"
 ---
-# <a name="supported-platforms"></a>受支持的平台 
+# <a name="supported-platforms"></a>支持的平台 
 
 ## 虚拟机/服务器<a name="vm-server"></a>
 
@@ -56,7 +56,7 @@ ms.locfileid: "74307319"
 
 * CentOS 6 和 7
 * Amazon Linux 2017.09
-* Oracle Linux 6 和 7
+* Oracle Linux 6 和 Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 和 7
 * Debian GNU/Linux 8 和 9
 * Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
@@ -95,7 +95,7 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 * 函数
 * 云服务
 * VNet
-* Subnet
+* 子网
 * NIC
 * NSG
 * 批处理帐户
@@ -106,9 +106,9 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 * 服务总线命名空间
 * 流分析
 * 事件中心命名空间
-* 逻辑应用
+* Logic Apps
 * Redis
-* 数据湖分析
+* Data Lake 分析
 * Data Lake Store
 * 密钥保管库
 

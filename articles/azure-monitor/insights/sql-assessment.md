@@ -4,15 +4,15 @@ description: 使用 Azure Monitor，可以使用 SQL 运行状况检查解决方
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401037"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>利用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -34,7 +34,7 @@ ms.locfileid: "72900667"
 
 ## <a name="prerequisites"></a>必备组件
 
-* SQL 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
+* SQL 运行状况检查解决方案要求在每台安装了 Microsoft Monitoring Agent （MMA）的计算机上安装 .NET Framework 4.6.2 的受支持版本。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
 * 该解决方案支持 SQL Server 版本 2012、2014 和 2016。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 SQL 运行状况检查解决方案。  只有 Azure 订阅中的管理员或参与者才能安装该解决方案。
 
@@ -56,7 +56,7 @@ SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、�
 ## <a name="sql-health-check-data-collection-details"></a>SQL 运行状况检查数据集合详细信息
 SQL 运行状况检查使用已启用的代理收集以下来源的数据：
 
-* Windows Management Instrumentation (WMI)
+* Windows 管理规范 (WMI)
 * 注册表
 * 性能计数器
 * SQL Server 动态管理视图结果
@@ -86,7 +86,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
    > 运行方式帐户类型必须是 Windows。 在托管 SQL Server 实例的所有 Windows Server 上，运行方式帐户还必须属于本地管理员组。
    >
    >
-5. 单击“保存”。
+5. 单击“ **保存**”。
 6. 在每个 SQL Server 实例上先修改再执行以下 T-SQL 示例，以授予运行方式帐户执行运行状况检查所需的最低权限。 但是，如果运行方式帐户已是 SQL Server 实例上 sysadmin 服务器角色的一部分，则无需执行此操作。
 
 ```
@@ -109,7 +109,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 ```
 
 #### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>使用 Windows PowerShell 配置 SQL 运行方式帐户
-打开 PowerShell 窗口，使用信息更新以下脚本，然后运行该脚本：
+打开 PowerShell 窗口，使用自己的信息更新以下脚本，并运行该脚本：
 
 ```
     import-module OperationsManager
@@ -162,7 +162,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。
 5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![SQL 运行状况检查建议图像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. 可以采取“**建议的操作**”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
+7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 如果有要忽略的建议，可以创建 Azure Monitor 用来防止建议出现在评估结果中的文本文件。

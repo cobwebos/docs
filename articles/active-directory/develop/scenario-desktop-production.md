@@ -17,12 +17,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423811"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的桌面应用-迁移到生产
 
@@ -50,7 +50,7 @@ Microsoft 标识平台（v2.0）终结点不允许同时为多个资源获取令
 
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
-```CSharp
+```csharp
 string[] scopesForCustomerApi = new string[]
 {
   "https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -103,7 +103,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 需要调用第二个 web API 时，可以调用 `AcquireTokenSilent` API：
 
-```CSharp
+```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 

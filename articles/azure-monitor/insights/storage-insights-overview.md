@@ -4,15 +4,15 @@ description: 本文介绍存储功能的 Azure Monitor，该功能可让存储�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401128"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
 
@@ -47,7 +47,7 @@ ms.locfileid: "74286395"
 
 若要查看所有订阅中的存储帐户的使用情况和可用性，请执行以下步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 从 "Azure 门户中的左窗格中选择"**监视器**"，然后在"**见解**"部分，选择"**存储帐户（预览）** "。
 

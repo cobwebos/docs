@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838080"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644896"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -56,7 +56,7 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 体验版使用完全自动化模式运行部署，因此，体验版模板具有以下限制。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 大多数模板都有一组参数。 参数定义了资源名称、资源大小（例如存储帐户类型或虚拟机大小）、用户名及密码、DNS 名称等。 使用 Azure 门户部署解决方案时，可以手动填充所有的这些参数、选择可用的 DNS 名称或存储帐户名称等。
 
@@ -83,11 +83,11 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的参数元数据类型
 
-| 元数据类型   | 参数类型  | 说明     | 示例值    |
+| 元数据类型   | 参数类型  | Description     | 示例值    |
 |---|---|---|---|
 | baseuri     | 字符串          | 部署包的基 URI| https：\//\<\.。blob.core.windows.net/\<\.\>。\> |
 | **username**    | 字符串          | 随机的新用户名。| admin68876      |
-| **password**    | 安全字符串    | 随机的新密码 | Lp!ACS\^2kh     |
+| password    | 安全字符串    | 随机的新密码 | Lp!ACS\^2kh     |
 | 会话 ID   | 字符串          | 唯一的体验版会话 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>username
@@ -289,7 +289,7 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 此外，还需考虑订阅和服务限制。 如若要部署多达 10 个 4 核虚拟机，需确保用于实验室的订阅允许使用 40 核。
 
-有关详细信息，可查看[本文中](https://docs.microsoft.com/azure/azure-subscription-service-limits)的 Azure 订阅和服务限制。 由于可同时使用多个体验版，因此，请验证订阅是否能够处理可采用的并发体验版总数乘以核数后的总核数。
+有关详细信息，可查看[本文中](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)的 Azure 订阅和服务限制。 由于可同时使用多个体验版，因此，请验证订阅是否能够处理可采用的并发体验版总数乘以核数后的总核数。
 
 ### <a name="what-to-upload"></a>要上传的内容
 
@@ -303,14 +303,14 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 |---|---|
 | main-template.json                | https：\//\<\.。\>\<\.blob.core.windows.net/。\>/main-template.json  |
 | templates/solution.json           | https：\//\<\.。\>\<\.blob.core.windows.net/。\>/templates/solution.json |
-| scripts/warmup.ps1                | https：\//\<\.。\>\<\.blob.core.windows.net/。\>/scripts/warmup.ps1  |
+| scripts/warmup.ps1                | https:\//\<\...\>.blob.core.windows.net/\<\...\>/scripts/warmup.ps1  |
 
 
 我们将此 blob 容器的 URI 称为基 URI。 实验室的每个修订版有其自己的 blob 容器，因此，实验室的每个修订版有其自己的基 URI。 体验版可以通过模板参数将未解压的部署包的基 URI 传递到模板。
 
 ## <a name="transforming-template-examples-for-test-drive"></a>体验版模板转换示例
 
-将资源体系结构转换为体验版资源管理器模板的过程可能会让人望而却步。 为此，我们提供了以最佳方式\'转换当前的部署模板[示例，以便简化此过程。
+将资源体系结构转换为体验版资源管理器模板的过程可能会让人望而却步。 为此，我们提供了以最佳方式[转换当前的部署模板](./transforming-examples-for-test-drive.md)示例，以便简化此过程。
 
 ## <a name="how-to-publish-a-test-drive"></a>如何发布体验版
 
@@ -324,15 +324,15 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 ### <a name="details"></a>详细信息
 
-要填写的下一个部分是有关体验版套餐的详细信息。
+要填写的下一个部分是体验版产品/服务的详细信息。
 
 ![体验版详细信息](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-说明 - [必填] 在此处编写体验版功能的主要说明。 客户将在此处阅读产品体验版涵盖的方案。 
+**说明-** *需要*此项，你可以在其中编写有关测试驱动器上的内容的主要说明。 客户将在此处阅读产品体验版涵盖的方案。 
 
-用户手册 - 必填。体验版体验的深入演练。 客户将打开此文档，并完全根据其中的说明演练整个体验版的操作。 此内容必须容易理解和遵循！ （必须是 .pdf 文件）
+**用户手册-** *必需*这是测试驱动器体验的详细演练。 客户将打开此文档，并完全根据其中的说明演练整个体验版的操作。 此内容必须容易理解和遵循！ （必须是 .pdf 文件）
 
-体验版演示视频 - 建议填写。类似于用户手册，最好是在其中包含体验版体验的视频教程。 客户在使用体验版之前和使用期间将会观看此视频，并完全根据其中的说明演练整个体验版的操作。 此内容必须容易理解和遵循！
+试用**演示视频-** *建议*类似于用户手册，最好是包含测试驱动器体验的视频教程。 客户在使用体验版之前和使用期间将会观看此视频，并完全根据其中的说明演练整个体验版的操作。 此内容必须容易理解和遵循！
 
 - 名称 - 视频的标题
 - 链接 - 必须是视频网站或视频的嵌入式 URL。 下面是有关如何获取嵌入式 URL 的示例：
@@ -348,7 +348,7 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-实例-必填。在此处配置需要多少个实例、在哪些区域及客户多久可以获得体验版。
+**实例-** *需要*此项，你可以配置所需的实例数，以及你的客户可以获取测试驱动器的速度。
 
 - 实例 - “选择区域”处用于选择在何处部署体验版资源管理器模板。 建议仅选择一个最希望客户位于的区域。
 - 热 - 每个选定区域中已部署的和正在等待访问的体验版实例数。 客户无需等待部署，就能立即访问此体验版。 弊端在于这些实例始终在 Azure 订阅上运行，因此，它们会产生较高的运行时间成本。 强烈建议拥有至少一个“热门”实例，因为多数客户不想等待完整部署完成，这样客户使用量就会有所下降。
@@ -359,11 +359,11 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 （选定区域数 x “热”实例数）+（选定区域数 x “暖”实例数）+（选定区域数 x “冷”实例数）
 
-体验版持续时间(小时) – 必填。体验版保持活动状态的持续时间，以小时为单位。 此时间段结束后，体验版会自动终止。
+**测试驱动器持续时间（小时）-** 测试驱动器保持活动状态*的时间长度*（\# 以小时为单位）。 此时间段结束后，体验版会自动终止。
 
-体验版资源管理器模板 -必填。在此处上传资源管理器模板。 这是指在上一个部分中生成的文件。 将主模板文件命名为“main-template.json”，并确保资源管理器模板包含所需的关键变量的输出参数。 （必须是 .zip 文件）
+**测试驱动器资源管理器模板-** *需要*在此处上传资源管理器模板。 这是指在上一个部分中生成的文件。 将主模板文件命名为“main-template.json”，并确保资源管理器模板包含所需的关键变量的输出参数。 （必须是 .zip 文件）
 
-访问信息 - 必填。客户获取体验版后，会向他们显示访问信息。 这些说明旨在共享体验版资源管理器模板中的有用输出参数。 若要包含输出参数，请使用双大括号（例如{{outputname}}），这样，它们就会正确插入到相应的位置。 （建议在此处使用 HTML 字符串格式，以便在前端正确显示）。
+**访问信息-** 客户获取其测试驱动器后，将向*其提供访问*信息。 这些说明旨在共享体验版资源管理器模板中的有用输出参数。 若要包含输出参数，请使用双大括号（例如{{outputname}}），这样，它们就会正确插入到相应的位置。 （建议在此处使用 HTML 字符串格式，以便在前端正确显示）。
 
 ### <a name="test-drive-deployment-subscription-details"></a>体验版部署订阅详细信息
 
@@ -371,11 +371,11 @@ Azure 资源管理器（资源管理器）模板是你设计以最好地表示�
 
 ![体验版部署订阅详细信息](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-Azure 订阅 ID - 必填。授予对 Azure 服务和 Azure 门户的访问权限。 将在该订阅中报告资源用量和计收服务费用。 如果没有一个专门用于体验版的独立 Azure 订阅，请创建一个订阅。 登录到 Azure 门户并导航到左侧菜单中的“订阅”，即可找到 Azure 订阅 ID。 （示例：“a83645ac-1234-5ab6-6789-1h234g764ghty”）
+**Azure 订阅 ID-** *必需*这会授予对 Azure 服务和 Azure 门户的访问权限。 将在该订阅中报告资源用量和计收服务费用。 如果没有一个专门用于体验版的独立 Azure 订阅，请创建一个订阅。 登录到 Azure 门户并导航到左侧菜单中的“订阅”，即可找到 Azure 订阅 ID。 （示例：“a83645ac-1234-5ab6-6789-1h234g764ghty”）
 
 ![Azure 订阅](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-Azure AD 租户 ID - 必填。如果已有一个租户 ID，可在“属性”- *“目录 ID”下面找到它。* \>
+**Azure AD 租户 id-** 如果你的租户 id 已可用，则*必须*在 "属性-\> 目录 ID" 中找到它。
 
 ![Azure Active Directory 属性](./media/azure-resource-manager-test-drive/subdetails3.png)
 
@@ -387,7 +387,7 @@ Azure AD 租户 ID - 必填。如果已有一个租户 ID，可在“属性”- 
 
 ![确认所选内容](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-Azure AD 应用 ID - 必填。下一步是创建并注册新应用程序。 我们将使用此应用程序对体验版实例执行操作。
+**AZURE AD 应用 ID-** *必需*的下一步是创建并注册新的应用程序。 我们将使用此应用程序对体验版实例执行操作。
 
 1. 导航到新建的目录或现有目录，然后在筛选器窗格中选择“Azure Active Directory”。
 2. 搜索“应用注册”，然后单击“添加”
@@ -410,20 +410,20 @@ Azure AD 应用 ID - 必填。下一步是创建并注册新应用程序。 我�
 1. 将角色设置为“参与者”。
 1. 键入 Azure AD 应用程序的名称，并选择要向其分配该角色的应用程序。
     ![添加权限](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
-Azure AD 应用密钥 - 必填。最终的字段将会生成身份验证密钥。 在密钥下添加密钥说明，将持续时间设置为永不过期，然后选择“保存”。 必须避免使用已过期的密钥，否则，在生产环境中体验版将会中断。 复制此值，并将其粘贴到所需的体验版字段中。
+**Azure AD 应用键-** *需要*最终字段生成身份验证密钥。 在密钥下添加密钥说明，将持续时间设置为永不过期，然后选择“保存”。 必须避免使用已过期的密钥，否则，在生产环境中体验版将会中断。 复制此值，并将其粘贴到所需的体验版字段中。
 
 ![显示 Azure AD 应用程序密钥](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-填写所有体验版字段后，请继续**重新发布**套餐。 在体验版通过认证后，应该对产品/服务预览版中的客户体验进行广泛的测试。 在 UI 中启动体验版，然后在 Azure 门户内打开 Azure 订阅并验证是否已正确地完整部署了体验版。
+填写所有体验版字段后，请继续重新发布产品/服务。 在体验版通过认证后，应该对产品/服务预览版中的客户体验进行广泛的测试。 在 UI 中启动体验版，然后在 Azure 门户内打开 Azure 订阅并验证是否已正确地完整部署了体验版。
 
 ![Azure 门户](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 请务必注意，不要删除为客户预配的任何体验版实例，在客户用完体验版之后，体验版服务将自动清理这些资源组。
 
-如果对预览版套餐感到满意，现在就可以将它**上线**！ 发布产品/服务后，Microsoft 会完成最终评审过程，以仔细检查完整的端到端体验。 如果出于某种原因拒绝了该产品/服务，我们会向产品/服务的工程联系人发送通知，解释需要解决哪些问题。
+如果对预览版产品/服务感到满意，现在就可以将它上线！ 发布产品/服务后，Microsoft 会完成最终评审过程，以仔细检查完整的端到端体验。 如果出于某种原因拒绝了该产品/服务，我们会向产品/服务的工程联系人发送通知，解释需要解决哪些问题。
 
 如果有其他问题、寻求故障排除建议，或想要让体验版获得更大的成功，请访问[常见问题解答、故障排除和最佳做法](./marketing-and-best-practices.md)。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b671fe9a4ecd35cbe9d70f398f8d39664203fc58
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782107"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663167"
 ---
 使用污点 Vm，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
@@ -78,7 +78,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 
 **问：** 如何为专色 Vm 管理配额？
 
-**答：** 污点 Vm 将有单独的配额池。 将在 Vm 与规模集实例之间共享点配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
+**答：** 污点 Vm 将有单独的配额池。 将在 Vm 与规模集实例之间共享点配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 
 **问：** 能否为查找附加的配额？

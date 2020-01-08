@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Cosmos DB 中的更改源处理器库
-description: 了解如何使用 Azure Cosmos DB 更改源处理器库读取更改源、更改源处理器的组件以及实现生命周期
+title: 在 Azure Cosmos DB 中更改源处理器库
+description: 了解如何使用 Azure Cosmos DB 更改源处理器库读取更改源处理器的更改源
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445564"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 

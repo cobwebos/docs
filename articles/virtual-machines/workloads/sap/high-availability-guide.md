@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a76515fdeb7d812c42a83d8a53fb83ac71407a2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9fb093312365ce965c6baf3c9f50d74359cec0a7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099779"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647690"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -76,8 +76,8 @@ ms.locfileid: "70099779"
 [azure-ps]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -362,7 +362,7 @@ ms.locfileid: "70099779"
 [sap-ha-guide-figure-6003]:media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]: https://support.sap.com/pam (SAP 产品可用性对照表)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -379,15 +379,15 @@ ms.locfileid: "70099779"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-azurerm-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
@@ -435,7 +435,7 @@ ms.locfileid: "70099779"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源的组织的解决方案，没有冗长的采购周期。 Azure 虚拟机可用于部署经典应用程序，如基于 SAP NetWeaver 的 ABAP、Java 和 ABAP+Java 堆栈。 无需额外本地资源即可扩展可靠性和可用性。 Azure 虚拟机支持跨界连接，因此可将 Azure 虚拟机集成到组织的本地域、私有云和 SAP 系统布局中。
+Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源的组织的解决方案，没有冗长的采购周期。 Azure 虚拟机可用于部署经典应用程序，如基于 SAP NetWeaver 的 ABAP、Java 和 ABAP+Java 堆栈。 无需额外本地资源即可扩展可靠性和可用性。 Azure 虚拟机支持跨界连接，因此，可将 Azure 虚拟机集成到组织的本地域、私有云和 SAP 系统布局中。
 
 本文介绍使用 Azure 资源管理器部署模型在 Azure 中部署高可用性 SAP 系统可采用的步骤。 我们演练以下主要任务：
 
@@ -454,7 +454,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure 资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 
-## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>资源
+## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Resources
 这些文章介绍了 Azure 中的 SAP 部署：
 
 * [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]
@@ -474,11 +474,11 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 | [1928533] |Azure 上的 SAP 应用程序：支持的产品和规模 |
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视 |
-| [2178632] |Microsoft Azure 上的 SAP 关键监控指标 |
+| [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
 | [1999351] |Windows 上的虚拟化：增强型监视 |
 | [2243692] |适用于 SAP DBMS 实例的 Azure 高级 SSD 存储的使用 |
 
-了解有关[Azure 订阅的限制][azure-subscription-service-limits-subscription]的详细信息，包括常规默认限制和最大限制。
+了解有关[Azure 订阅的限制][azure-resource-manager/management/azure-subscription-service-limits-subscription]的详细信息，包括常规默认限制和最大限制。
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>使用 Azure 资源管理器与 Azure 经典部署模型的高可用性 SAP
 Azure 资源管理器和 Azure 经典部署模型在以下方面有所不同：
@@ -488,7 +488,7 @@ Azure 资源管理器和 Azure 经典部署模型在以下方面有所不同：
 - 对 SAP 多 SID 方案的支持
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>资源组
-在 Azure 资源管理器中，可使用资源组管理 Azure 订阅中的所有应用程序资源。 使用集成方法时，资源组中的所有资源具有相同的生命周期。 例如，所有资源同时创建并同时删除。 了解有关 [资源组](../../../azure-resource-manager/resource-group-overview.md#resource-groups)的详细信息。
+在 Azure 资源管理器中，可使用资源组管理 Azure 订阅中的所有应用程序资源。 使用集成方法时，资源组中的所有资源具有相同的生命周期。 例如，所有资源同时创建并同时删除。 了解有关 [资源组](../../../azure-resource-manager/management/overview.md#resource-groups)的详细信息。
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure 内部负载均衡器与 Azure 资源组的依赖关系
 
@@ -602,7 +602,7 @@ Azure 在 Azure 负载均衡器服务中具有内部负载均衡器。 借助内
 
 详细了解如何[管理虚拟机的可用性][virtual-machines-manage-availability]。
 
-由于 Azure 存储帐户是潜在的单一故障点，因此务必至少拥有两个 Azure 存储帐户，并且至少要将两个虚拟机分配到其中。 在理想的设置中，运行 SAP 对话实例的每个虚拟机的磁盘都应部署在不同的存储帐户中。
+由于 Azure 存储帐户是潜在的单一故障点，因此必须至少有两个 Azure 存储帐户，并且在其中至少分配两个虚拟机。 在理想的设置中，运行 SAP 对话实例的每个虚拟机的磁盘都应部署在不同的存储帐户中。
 
 ### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>高可用性 SAP ASCS/SCS 实例
 图 5 是高可用性 SAP ASCS/SCS 实例的一个示例。
@@ -716,7 +716,7 @@ Azure 资源管理器中的三层模板还支持高可用性方案，例如体�
     * 带有 <*SAPSystemSID*>-ascs-0 虚拟机的开放外部远程桌面协议 (RDP) 端口
 
 > [!NOTE]
-> 网卡和 Azure 内部负载均衡器的所有 IP 地址默认为 **动态** 。 将它们更改为“静态”IP 地址。 本文稍后介绍操作方法。
+> 默认情况下，网卡和 Azure 内部负载均衡器的所有 IP 地址均为“动态”。 将它们更改为“静态”IP 地址。 本文稍后介绍操作方法。
 >
 >
 
@@ -866,7 +866,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 1. 在 Azure 门户中的“DNS 服务器”边栏选项卡上，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
    * [企业网络连接（跨界）][planning-guide-2.2]：添加本地 DNS 服务器的 IP 地址。  
-   可以将本地 DNS 服务器扩展到 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
+   可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
    * 对于在 Azure 中隔离的部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
 
    ![图 12：为 Azure 虚拟网络配置 DNS 服务器][sap-ha-guide-figure-3001]
@@ -902,7 +902,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>设置 SAP 虚拟机的静态 IP 地址
 部署虚拟机以供在群集中使用后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
-1. 在 Azure 门户中，选择“资源组” **“网卡”** “设置” > “IP 地址”。 >  > 
+1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
 2. 在“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。 在“IP 地址”框中，输入要使用的 IP 地址。
 
    > [!NOTE]
@@ -949,11 +949,11 @@ SAP Azure 资源管理器模板创建用于 SAP ASCS/SCS 实例群集和 DBMS �
 
    图 14：为 SAP ASCS/SCS 实例的内部负载均衡器设置静态 IP 地址
 
-在本示例中，有两个 Azure 内部负载均衡器使用这些静态 IP 地址：
+在本例中，有两个具有以下静态 IP 地址的 Azure 内部负载均衡器：
 
 | Azure 内部负载均衡器角色 | Azure 内部负载均衡器名称 | 静态 IP 地址 |
 | --- | --- | --- |
-| SAP ASCS/SCS 实例的内部负载均衡器 |pr1-lb-ascs |10.0.0.43 |
+| SAP ASCS/SCS 实例内部负载均衡器 |pr1-lb-ascs |10.0.0.43 |
 | SAP DBMS 内部负载均衡器 |pr1-lb-dbms |10.0.0.33 |
 
 
@@ -1013,11 +1013,11 @@ SAP Azure 资源管理器模板创建所需的端口：
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1. 在 Azure 门户中，依次选择“**SID>-lb-ascs 负载均衡器”<“负载均衡规则”**  > 。
-2. 针对属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
+1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”。
+2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
    * 名称
-   * 端口
+   * Port
    * 后端端口
 
    例如，如果要将默认 ASCS 实例编号从 00 更改为 31，需要为表 1 中列出的所有端口进行更改。
@@ -1064,7 +1064,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
 **若要应用更改，请重新启动两个群集节点。**
 
-### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>为 ASCS/SCS 实例设置 Windows Server 故障转移群集
+### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>为 SAP ASCS/SCS 实例设置 Windows Server 故障转移群集
 
 为 SAP ASCS/SCS 实例设置 Windows Server故障转移群集的过程包括以下任务：
 
@@ -1074,7 +1074,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 #### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>收集群集配置中的群集节点
 
 1. 在“添加角色和功能向导”中，将故障转移群集功能添加到两个群集节点。
-2. 使用故障转移群集管理器设置故障转移群集。 在故障转移群集管理器中选择“创建群集”，只添加第一个群集节点 A 的名称。暂时不要添加第二个节点；将在后面的步骤中添加第二个节点。
+2. 使用故障转移群集管理器设置故障转移群集。 在故障转移群集管理器中选择“创建群集”，然后只添加第一个群集节点 A 的名称。暂时不要添加第二个节点；会在后面的步骤中添加第二个节点。
 
    ![图 18：添加第一个群集节点的服务器或虚拟机名称][sap-ha-guide-figure-3007]
 
@@ -1268,7 +1268,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 #### <a name="dd41d5a2-8083-415b-9878-839652812102"></a>安装 SIOS DataKeeper
 
-在群集中的每个节点上安装 SIOS DataKeeper Cluster Edition。 如果要使用 SIOS DataKeeper 创建虚拟共享存储，请创建同步的镜像，并模拟群集共享存储。
+在群集中的每个节点上安装 SIOS DataKeeper Cluster Edition。 要创建包含 SIOS DataKeeper 的虚拟共享存储，请创建同步的镜像，并模拟群集共享存储。
 
 在安装 SIOS 软件前，创建域用户 **DataKeeperSvc**。
 
@@ -1392,7 +1392,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 ### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>使用高可用性 ASCS/SCS 实例安装 SAP
 
 > [!IMPORTANT]
-> 切勿将页面文档放在 DataKeeper 镜像卷上。 DataKeeper 不支持镜像卷。 可将页面文件保留在 Azure 虚拟机的临时驱动器 D 中，这是默认设置。 将 Windows 页面文件移到 Azure 虚拟机的驱动器 D（如果不在该位置）。
+> 请确保不要将页面文件放置在 DataKeeper 镜像卷上。 DataKeeper 不支持镜像卷。 可将页面文件保留在 Azure 虚拟机的临时驱动器 D 上，这是默认值。 如果它尚未在该位置，请将 Windows 页面文件移到 Azure 虚拟机的驱动器 D。
 >
 >
 
@@ -1409,7 +1409,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
    > [!IMPORTANT]
-   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (**SID>-lb-ascs) 的 IP 地址相同<** 。  
+   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同。  
    >
    >
 
@@ -1419,13 +1419,13 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    图 56：为 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址定义 DNS 条目
 
-2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” **“域”。**  > 
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
 
    ![图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
    图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址
 
-#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 第一个群集节点
+#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
 
 1. 在群集节点 A 上执行第一个群集节点选项。例如，在 **pr1-ascs-0** 主机上。
 2. 若要保留 Azure 内部负载均衡器的默认端口，请选择：
@@ -1569,7 +1569,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**ProbePort** 设置为 **62000**。 现在，可从其他主机（例如 **ascsha-dbas\\）访问文件共享** **\ascsha-clsap\sapmnt**。
+**ProbePort** 设置为 **62000**。 现在，可从其他主机（例如 **ascsha-dbas**）访问文件共享 **\\\ascsha-clsap\sapmnt**。
 
 ### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
 

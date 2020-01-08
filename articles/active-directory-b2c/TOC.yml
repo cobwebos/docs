@@ -72,12 +72,15 @@
           href: active-directory-b2c-overview-custom.md
     - name: 用户帐户
       href: user-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 应用集成
       items:
-        - name: 注册应用程序
+        - name: 注册 OIDC 应用程序
           href: tutorial-register-applications.md
+        - name: 注册 SAML 服务提供程序
+          href: connect-with-saml-service-providers.md
+          displayName: 'SP, RP, service provider, connect'
         - name: 添加 Web API 应用程序
           href: add-web-application.md
         - name: 添加本机客户端应用程序
@@ -160,6 +163,9 @@
               href: active-directory-b2c-reference-kmsi-custom.md
             - name: 密码更改
               href: active-directory-b2c-reference-password-change-custom.md
+            - name: 手机注册和登录
+              href: phone-authentication.md
+              displayName: 'otp, passwordless, phone number'
         - name: UX 自定义
           items:
             - name: 配置用户输入
@@ -168,6 +174,9 @@
               href: active-directory-b2c-ui-customization-custom.md
             - name: 动态自定义 UI
               href: active-directory-b2c-ui-customization-custom-dynamic.md
+            - name: 自定义电子邮件
+              href: custom-email.md
+              displayName: verification
             - name: 页面布局
               href: page-layout.md
             - name: 启用 JavaScript
@@ -196,8 +205,10 @@
               items:
                 - name: ADFS
                   href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                  displayName: SAML
                 - name: Salesforce
                   href: active-directory-b2c-setup-sf-app-custom.md
+                  displayName: SAML
         - name: 令牌和会话管理
           items:
             - name: 自定义令牌
@@ -230,7 +241,7 @@
               href: active-directory-b2c-guide-troubleshooting-custom.md
         - name: 使用情况分析
           href: active-directory-b2c-custom-guide-eventlogger-appins.md
-        - name: 引用
+        - name: 参考
           items:
             - name: 信任框架定义
               href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
@@ -246,7 +257,7 @@
                   items:
                     - name: Boolean
                       href: boolean-transformations.md
-                    - name: 日期
+                    - name: Date
                       href: date-transformations.md
                     - name: 常规
                       href: general-transformations.md
@@ -254,6 +265,8 @@
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
+                    - name: 电话号码
+                      href: phone-number-claims-transformations.md
                     - name: 外部帐户
                       href: social-transformations.md
                     - name: StringCollection
@@ -277,6 +290,9 @@
                   items:
                     - name: 关于技术配置文件
                       href: technical-profiles-overview.md
+                    - name: Azure 多重身份验证
+                      href: multi-factor-auth-technical-profile.md
+                      displayName: mfa
                     - name: 声明解析程序
                       href: claim-resolver-overview.md
                     - name: Azure Active Directory
@@ -289,6 +305,9 @@
                       href: oauth1-technical-profile.md
                     - name: OAuth2
                       href: oauth2-technical-profile.md
+                    - name: 一次性密码
+                      href: one-time-password-technical-profile.md
+                      displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
                     - name: REST
@@ -301,6 +320,11 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: 验证
                       href: validation-technical-profile.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: 验证
+                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
@@ -340,7 +364,7 @@
           href: active-directory-b2c-user-migration.md
         - name: 迁移具有外部标识的用户
           href: active-directory-b2c-social-migration.md
-- name: 引用
+- name: 参考
   items:
     - name: Identity Experience Framework 发行说明
       href: active-directory-b2c-developer-notes-custom.md

@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765200"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659213"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>处理暂时性错误并高效连接到 Azure Database for MySQL
 
@@ -52,7 +52,7 @@ ms.locfileid: "74765200"
 
 管理数据库连接可能对应用程序的性能有很大的影响。 若要优化应用程序的性能，目标应该是减少建立连接的次数以及在关键代码路径中建立连接的时间。 强烈建议使用数据库连接池或持久连接连接到 Azure Database for MySQL。 数据库连接池处理数据库连接的创建、管理和分配。 当程序请求数据库连接时，它会划分现有空闲数据库连接的分配，而不是创建新连接。 在程序完成使用数据库连接后，连接将会恢复，以便进一步使用，而不是只是关闭。
 
-为了更好地说明，本文提供了一个使用 JAVA 作为示例的[示例代码](./sample-scripts-java-connection-pooling.md)。 有关详细信息，请参阅[Apache COMMON DBCP](http://commons.apache.org/proper/commons-dbcp/)。
+为了更好地说明，本文提供了一个使用 JAVA 作为示例的[示例代码](./sample-scripts-java-connection-pooling.md)。 有关详细信息，请参阅[Apache COMMON DBCP](https://commons.apache.org/proper/commons-dbcp/)。
 
 > [!NOTE]
 > 服务器配置超时机制，以便在一段时间内关闭处于空闲状态的连接，以释放资源。 请确保设置验证系统，以确保在使用永久性连接时的有效性。 有关详细信息，请参阅在[客户端配置验证系统以确保永久性连接的有效性](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)。

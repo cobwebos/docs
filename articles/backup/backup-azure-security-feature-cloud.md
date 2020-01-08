@@ -3,16 +3,16 @@ title: 用于帮助保护云工作负荷的安全功能
 description: 了解如何在 Azure 备份中使用安全功能，使备份更安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894022"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496919"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
-对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现在提供了安全功能来帮助保护备份数据，即使在删除后也是如此。 其中一项功能是软删除。 使用软删除，即使恶意执行组件删除了 VM 的备份（或意外删除了备份数据），备份数据仍将保留14天，允许恢复该备份项目，而不会丢失数据。 在 "软删除" 状态中，这些额外的14天的备份数据保留不会对客户产生任何费用。
+对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现在提供了安全功能来帮助保护备份数据，即使在删除后也是如此。 其中一项功能是软删除。 使用软删除，即使恶意执行组件删除了 VM 的备份（或意外删除了备份数据），备份数据仍将保留14天，允许恢复该备份项目，而不会丢失数据。 在 "软删除" 状态中，这些额外的14天的备份数据保留不会对客户产生任何费用。 Azure 还会使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)对静态中所有已备份的数据进行加密，以便进一步保护数据。
 
 > [!NOTE]
 > 软删除仅保护已删除的备份数据。 如果在没有备份的情况下删除 VM，软删除功能不会保留数据。 所有资源都应通过 Azure 备份进行保护，以确保完全恢复能力。
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 备份项的 "DeleteState" 将恢复为 "NotDeleted"。 但保护仍处于停止状态。 你需要[恢复备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)以重新启用保护。
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 的 Vm 软删除
+
+- 如[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述，使用 REST API 删除备份。
+- 如果用户想要撤消这些删除操作，请参阅[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)所述的步骤。
+
 ## <a name="disabling-soft-delete"></a>禁用软删除
 
 默认情况下，在新创建的保管库上启用软删除，以防止意外或恶意删除备份数据。  不建议禁用此功能。 你应考虑禁用软删除的唯一情况是，如果你计划将受保护的项移动到新的保管库，并且无法在删除和重新保护之前等待14天（例如在测试环境中）。只有备份管理员可以禁用此功能。 如果禁用此功能，则受保护项的所有删除都将导致立即删除，而不能还原。 在禁用此功能之前，以软删除状态备份数据，将保持软删除状态。 如果希望立即永久删除这些文件，则需要取消删除并再次将其删除，以使其永久删除。
@@ -146,15 +151,19 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>使用 REST API 禁用软删除
+
+若要使用 REST API 禁用软删除功能，请参阅[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤。
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>永久删除软删除的备份项
 
 在禁用此功能之前，以软删除状态备份数据，将保持软删除状态。 如果希望立即永久删除这些文件，请取消删除并再次将其删除，以使其永久删除。
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-执行以下步骤：
+执行以下步骤:
 
-1. 按照以下步骤[禁用软删除](#disabling-soft-delete)。 
+1. 按照以下步骤[禁用软删除](#disabling-soft-delete)。
 2. 在 Azure 门户中，请前往保管库，中转到 "**备份项**"，然后选择软删除 VM
 
 ![选择软删除 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>使用 REST API
+
+如果在禁用软删除之前删除了项目，则这些项目将处于软删除状态。 若要立即删除它们，删除操作需要反向，然后再次执行。
+
+1. 首先，请按照[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)所述的步骤撤消删除操作。
+2. 然后，使用[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤，使用 REST API 禁用软删除功能。
+3. 然后使用[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述的 REST API 删除备份。
+
 ## <a name="other-security-features"></a>其他安全功能
 
 ### <a name="storage-side-encryption"></a>存储端加密
@@ -223,7 +240,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 在 Azure 中，Azure 存储和保管库之间传输的数据受 HTTPS 的保护。 此数据保留在 Azure 主干网络上。
 
-有关详细信息，请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+有关详细信息，请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。  请参阅[Azure 备份常见问题解答](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption)，回答有关加密的任何问题。
 
 ### <a name="vm-encryption"></a>VM 加密
 
@@ -237,7 +254,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="soft-delete"></a>软删除
+### <a name="for-soft-delete"></a>用于软删除
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>是否需要在每个保管库上启用软删除功能？
 

@@ -3,21 +3,21 @@ title: 监视 Azure 云服务 | Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386062"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
-可以监视任何云服务的关键性能指标。 每个云服务角色都会收集最少的数据：CPU 使用率、网络使用量和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
+可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 
 使用基本监视时，默认情况下，将每隔 3 分钟从角色实例中采样和收集性能计数器数据。 此基本监视数据不会存储在存储帐户中，并且不会产生相关的额外费用。
 
@@ -96,4 +96,7 @@ ms.locfileid: "68359114"
 
 - [了解包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)
 - [设置性能计数器](diagnostics-performance-counters.md)
+
+
+
 

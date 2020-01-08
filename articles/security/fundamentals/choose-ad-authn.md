@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483948"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460689"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
 
@@ -26,9 +26,10 @@ ms.locfileid: "74483948"
 
 3. 它是 Azure AD 中所有其他高级安全和用户体验功能的基础。
 
-4. 身份验证方法在实现后很难更改。
+标识是 IT 安全的新控制平面，因此身份验证是组织对新云世界的访问防护。 组织需要一个标识控制平面，以便增强其安全性并使其云应用免受入侵者攻击。
 
-标识是 IT 安全性的新控制平面。 因此，身份验证是组织对全新云世界的访问防护。 组织需要一个标识控制平面，以便增强其安全性并使其云应用免受入侵者攻击。
+> [!NOTE]
+> 更改身份验证方法需要规划、测试和可能的停机时间。 [分阶段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是测试和逐步从联合身份验证迁移到云身份验证的一种绝佳方式。
 
 ### <a name="out-of-scope"></a>超出范围
 没有现有本地目录占用的组织不是本文的重点。 通常，那些仅在云中创建标识的企业不需要混合标识解决方案。 “仅限云”标识单独存在于云中，不与相应本地标识相关联。
@@ -69,7 +70,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 1. Azure AD 可以处理不依赖于本地组件来验证密码的用户的登录。
 2. Azure AD 可以将用户登录移交给受信任的身份验证提供 程序，例如 Microsoft 的 AD FS。
-3. 如果需要应用，用户级 Active Directory 安全策略（例如帐户已过期、已禁用帐户、密码已过期、帐户锁定和登录时间），Azure AD 需要某些本地组件。
+3. 如果需要在用户每次登录时应用用户级 Active Directory 安全策略，例如帐户过期、帐户禁用、密码过期、帐户锁定和登录小时数，则 Azure AD 需要一些本地组件。
 4. Azure AD 本身不支持的登录功能：
    * 使用智能卡或证书进行登录。
    * 使用本地 MFA 服务器进行登录。
@@ -100,7 +101,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 * **注意事项**。 目前，密码哈希同步不会即时强制本地帐户状态更改生效。 在此情况下，除非用户帐户状态已同步到 Azure AD，否则用户有权访问云应用。 组织可能希望在管理员对本地用户帐户状态执行批量更新后运行新的同步循环来克服此限制。 例如禁用帐户。
 
 > [!NOTE]
-> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 更改用户的密码并将 "*用户必须在下一次登录时更改密码*" 标志设置为时，不会将密码哈希同步到 Azure AD Connect Azure AD，直到用户更改其密码。
+> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 更改用户的密码并将 "*用户必须在下一次登录时更改密码*" 标志设置为时，不会将密码哈希同步到 Azure AD Connect Azure AD，直至用户更改其密码。
 
 请参阅[实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)了解相关部署步骤。
 
@@ -112,7 +113,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随直通身份验证一起部署。 在用户登录后，无缝 SSO 将消除不必要的提示。
 
-* **高级方案**。 传递身份验证在登录时强制执行本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。
+* **高级方案**。 传递身份验证在登录时强制执行本地帐户策略。 例如，当本地用户的帐户状态为 "已禁用"、"已锁定" 或 "已锁定" 或 "[密码已过期](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)" 时，或者在允许用户登录时，登录尝试处于非高峰时间时，拒绝访问。
 
     需要使用传递身份验证进行多重身份验证的组织必须使用 Azure 多重身份验证（MFA）或[条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合的第三方或本地多重因素身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如“标识保护”的已泄漏凭据报表。
 
@@ -137,7 +138,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
   * 需要智能卡或证书的身份验证。
   * 需要联合标识提供者的本地 MFA 服务器或第三方多因素提供程序。
   * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)。
-  * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
+  * 登录时需要 sAMAccountName （例如 "域 \ 用户名"），而不是用户主体名称（UPN），例如 user@domain.com。
 
 * **业务连续性**。 联合身份验证系统通常需要负载均衡的服务器阵列（称为场）。 此场在内部网络和外围网络拓扑中配置，以便为身份验证请求确保高可用性。
 
@@ -145,7 +146,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **注意事项**。 联合系统通常在本地基础结构方面需要更可观的投资。 大多数组织会选择此选项，前提是它们已有本地联合身份验证投资， 并且使用单标识提供者是非常强烈的业务需求。 与云身份验证解决方案相比，联合的操作和故障排除更加复杂。
 
-对于无法在 Azure AD 中验证的不可路由域，需要进行额外配置才能实现用户 ID 登录。 此要求被称为“备用登录 ID 支持”。 相关限制和要求，请参阅[配置备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。 如果选择将第三方多重身份验证提供程序与联合身份验证配合使用，请确保该提供程序支持 WS-Trust，以允许设备加入 Azure AD。
+对于无法在 Azure AD 中验证的不可路由域，需要额外的配置才能实现用户 ID 登录。 此要求被称为“备用登录 ID 支持”。 相关限制和要求，请参阅[配置备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。 如果选择将第三方多重身份验证提供程序与联合身份验证配合使用，请确保该提供程序支持 WS-Trust，以允许设备加入 Azure AD。
 
 有关部署步骤，请参阅[部署联合服务器](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers)。
 
@@ -176,7 +177,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |除预配系统外的本地服务器要求是什么：Azure AD Connect？|无|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
 |除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
 |是否有 SSL 证书要求？|否|否|是|
-|是否有运行状况监视解决方案？|不是必需|[Azure Active Directory 管理中心](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)提供的代理状态|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|是否有运行状况监视解决方案？|无需|[Azure Active Directory 管理中心](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)提供的代理状态|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](../../active-directory/hybrid/how-to-connect-sso.md)|是，同时使用[无缝 SSO](../../active-directory/hybrid/how-to-connect-sso.md)|是|
 |支持哪些登录类型？|UserPrincipalName + 密码<br><br>使用[无缝 SSO 实现](../../active-directory/hybrid/how-to-connect-sso.md)Windows 集成的身份验证<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + 密码<br><br>使用[无缝 SSO 实现](../../active-directory/hybrid/how-to-connect-sso.md)Windows 集成的身份验证<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成的身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |是否支持 Windows Hello 企业版？|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*需要 Windows Server 2016 域功能级别*|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[证书信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
@@ -197,21 +198,21 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 1. **高可用性和灾难恢复**。 直通身份验证和联合身份验证依赖于本地基础结构。 对于直通身份验证，本地占用的设备包括直通身份验证代理所需的服务器硬件和网络。 对于联合身份验证，本地占用的设备更多。 它需要外围网络中的服务器来代理身份验证请求，并且还需要内部联合服务器。
 
-    若要避免单点故障，请部署冗余的服务器。 这样，如果任何组件出现故障，系统均会始终为身份验证请求提供服务。 直通身份验证和联合身份验证都也依赖于域控制器来响应身份验证请求（也可能会失败）。 这些组件中的许多组件都需要维护以保持正常运行。 如果未正确计划并实施维护，很有可能会发生服务中断。 请使用密码哈希同步避免服务中断，因为 Microsoft Azure AD 云身份验证服务可在全球扩展且始终可用。
+    若要避免单点故障，请部署冗余服务器。 这样，如果任何组件出现故障，系统均会始终为身份验证请求提供服务。 直通身份验证和联合身份验证都也依赖于域控制器来响应身份验证请求（也可能会失败）。 这些组件中的许多组件都需要维护以保持正常运行。 如果未正确计划并实施维护，很有可能会发生服务中断。 请使用密码哈希同步避免服务中断，因为 Microsoft Azure AD 云身份验证服务可在全球扩展且始终可用。
 
-2. **本地服务中断生存**。  网络攻击或灾难造成的本地服务中断可能导致从品牌信誉损失到瘫痪的组织无法处理攻击等一系列的严重后果。 最近，许多组织都受到了恶意软件（包括有针对性的勒索软件）的攻击，导致其本地服务器停机。 Microsoft 在帮助客户处理这些类型的攻击时发现两种类型的组织：
+2. **本地服务中断生存**。  网络攻击或灾难造成的本地服务中断可能导致从品牌信誉损失到瘫痪的组织无法处理攻击等一系列的严重后果。 最近，许多组织都是恶意软件攻击的受害者，其中包括目标勒索软件，导致其本地服务器停机。 Microsoft 在帮助客户处理这些类型的攻击时发现两种类型的组织：
 
    * 先前已启用密码哈希同步的组织更改了其身份验证方法以使用密码哈希同步。 它们在数小时内即可重新联机。 通过 Office 365 使用对电子邮件的访问权限，可以解决问题并访问其他基于云的工作负荷。
 
    * 之前未启用密码哈希同步的组织必须使用不受信任的外部消费者电子邮件系统来解决问题。 在这些情况下，在用户能够再次登录到基于云的应用之前，需要几周的时间来还原其本地标识基础结构。
 
-3. **标识保护**。 在云中保护用户的最佳方法之一是将 Azure AD 标识保护与 Azure AD Premium P2 配合使用。 Microsoft 不断扫描 Internet 以查找歹徒在暗网上销售和提供的用户和密码列表。 Azure AD 可以用此信息验证组织的任意用户名和密码是否泄漏。 所以，无论使用哪种身份验证方法（无论其是联合身份验证还是直通身份验证），启用密码哈希同步都至关重要。 泄漏的凭据将以报表形式提供。 使用此信息可阻止或强制用户在尝试使用泄漏的密码登录时更改其密码。
+3. **标识保护**。 在云中保护用户的最佳方法之一是将 Azure AD 标识保护与 Azure AD Premium P2 配合使用。 Microsoft 不断扫描 Internet 以查找歹徒在暗网上销售和提供的用户和密码列表。 Azure AD 可以用此信息验证组织的任意用户名和密码是否泄漏。 因此，无论使用哪种身份验证方法，都必须启用密码哈希同步，无论该方法是联合身份验证还是传递身份验证。 泄漏的凭据将以报表形式提供。 使用此信息可阻止或强制用户在尝试使用泄漏的密码登录时更改其密码。
 
 ## <a name="conclusion"></a>结束语
 
 本文概述了多种身份验证选项，组织可以配置和部署它们以支持对云应用的访问。 为了满足各种业务、安全和技术要求，组织可以在密码哈希同步、直通身份验证和联合身份验证之间进行选择。
 
-请考虑每一种身份验证方法。 部署解决方案的工作量以及登录过程的用户体验是否满足你的业务要求？ 请评估组织是否需要每种身份验证方法的高级方案和业务连续性功能。 最后，请评估每种身份验证方法的注意事项。 其中是否有任何注意事项会阻止你实现你的选择？
+请考虑每一种身份验证方法。 是否需要部署解决方案，用户在登录过程中的体验是否能满足你的业务需求？ 请评估组织是否需要每种身份验证方法的高级方案和业务连续性功能。 最后，请评估每种身份验证方法的注意事项。 其中是否有任何注意事项会阻止你实现你的选择？
 
 ## <a name="next-steps"></a>后续步骤
 

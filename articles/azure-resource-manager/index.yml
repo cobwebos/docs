@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Azure 资源管理器文档
-summary: 资源管理器模板是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。
+summary: Azure 资源管理器是 Azure 的部署和管理服务。 使用基础结构即代码来可靠地部署和管理 Azure 解决方案。
+brand: azure
 metadata:
   title: Azure 资源管理器文档
-  description: 了解如何开发 Azure 资源管理器模板并将其用于部署 Azure 资源
-  services: azure-resource-manager
+  description: Azure 资源管理器是 Azure 的部署和管理服务。
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483427"
-landingContent:
-- title: Azure 资源管理器
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642466"
+highlightedContent:
+  items:
+  - title: 什么是模板？
+    itemType: overview
+    url: templates/overview.md
+  - title: 创建第一个模板
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: 什么是资源管理器？
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: 部署资源管理器模板
     links:
-    - text: 什么是资源管理器？
-      url: resource-group-overview.md
-    - text: 什么是资源管理器模板？
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: 概述
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: 初学者教程系列
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: 模板文件结构
+    - url: templates/template-functions.md
+      itemType: reference
+      text: 模板函数
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: 部署
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: 最佳做法
+    footerLink:
+      url: templates/index.yml
+      text: 查看详细信息
+  - title: 管理资源
     links:
-    - text: 最佳做法
-      url: template-best-practices.md
-    - text: 部署模式
-      url: deployment-modes.md
-    - text: 链接模板
-      url: resource-group-linked-templates.md
-    - text: 订阅级部署
-      url: deploy-to-subscription.md
-    - text: 部署管理器
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: 概述
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: 标记资源
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: 移动资源
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: 锁定资源
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: 资源提供程序和类型
+    footerLink:
+      url: management/index.yml
+      text: 查看详细信息
+  - title: 托管应用程序
     links:
-    - text: 新增功能
-      url: https://youtu.be/3D-JIKShrws
-- title: 入门
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: 概述
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: 发布服务目录应用
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: 创建 UI 定义
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: 添加到市场
+    footerLink:
+      url: managed-applications/index.yml
+      text: 查看详细信息
+  - title: Azure Custom Providers
     links:
-    - text: 创建模板 - 门户
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: 创建模板 - VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: 创建模板 - Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: 入门教程
-      url: template-tutorial-create-first-template.md
-    - text: 部署多个实例
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: 设置部署顺序
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: 集成密钥保管库
-      url: resource-manager-tutorial-use-key-vault.md
-- title: 开发模板
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 VS Code
-      url: resource-manager-tools-vs-code.md
-    - text: 使用函数
-      url: resource-group-template-functions.md
-    - text: 定义参数
-      url: template-parameters.md
-    - text: 定义变量
-      url: template-variables.md
-    - text: 定义资源
-      url: child-resource-name-type.md
-    - text: 定义输出
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Azure 快速入门模板
-      url: template-deployment-overview.md
-- title: 部署模板
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 PowerShell
-      url: resource-group-template-deploy.md
-    - text: 使用 CLI
-      url: resource-group-template-deploy-cli.md
-    - text: 使用门户
-      url: resource-group-template-deploy-portal.md
-    - text: 使用 REST API
-      url: resource-group-template-deploy-rest.md
-- title: 管理模板
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 导出模板
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: 管理资源
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 移动资源
-      url: resource-group-move-resources.md
-    - text: 标记资源
-      url: resource-group-using-tags.md
-    - text: 锁定资源
-      url: resource-group-lock-resources.md
-- title: 监视和故障排除
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 查看活动日志
-      url: resource-group-audit.md
-    - text: 查看部署操作
-      url: resource-manager-deployment-operations.md
-    - text: 排查部署错误
-      url: resource-manager-common-deployment-errors.md
-- title: 浏览参考内容
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 资源提供程序和类型
-      url: resource-manager-supported-services.md
-    - text: 模板参考
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: 概述
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: 创建自定义提供程序
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: 创建自定义操作和资源
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: 将自定义操作添加到 Azure REST API
+    footerLink:
+      url: custom-providers/index.yml
+      text: 查看详细信息

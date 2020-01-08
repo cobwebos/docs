@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684179"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640818"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -195,7 +195,7 @@ ms.locfileid: "74684179"
 
 1. 选择在其中创建了应用服务应用的同一**区域**或者靠近的区域。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
    ![创建存储帐户](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -326,7 +326,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
-   |名称  |Value  |
+   |名称  |值  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -399,21 +399,23 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 像[前面](#trigger-the-function-in-azure)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
+1. 使用 Visual Studio 中的**服务器资源管理器**创建类似于你[之前](#test-locally)执行的队列消息，但输入*Hello App Insights！* 作为消息文本。
 
 1. 运行该项目。
 
-   WebJobs SDK 将处理队列消息，控制台窗口中会显示日志。
+   Web 作业 SDK 处理队列消息，并在控制台窗口中看到日志。
 
 1. 关闭控制台窗口。
 
-1. 打开 [Azure 门户](https://portal.azure.com/)并转到 Application Insights 资源。
+1. 请参阅[Azure 门户](https://portal.azure.com/)查看 Application Insights 资源。 搜索并选择“Application Insights”。
+
+1. 选择 Application Insights 的实例。
 
 1. 选择“搜索”。
 
    ![选择“搜索”](./media/webjobs-sdk-get-started/select-search.png)
 
-1. 如果未看到“Hello App Insights!” 消息，请定期选择“刷新”几分钟。 （日志不会立即显示，因为 Application Insights 客户端需要花费片刻时间来刷新它处理的日志。）
+1. 如果未看到“Hello App Insights!” 消息，请定期选择“刷新”几分钟。 （日志不会立即出现，因为 Application Insights 客户端需要一段时间来刷新它所处理的日志。）
 
    ![Application Insights 中的日志](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
@@ -472,15 +474,15 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在存储帐户中创建 Blob 容器。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Visual Studio 的“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Visual Studio 的“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
 
-   b. 在“创建 Blob 容器”对话框中，输入 *container* 作为容器名称，然后单击“确定”。
+   b.保留“数据库类型”设置，即设置为“共享”。 在“创建 Blob 容器”对话框中，输入 *container* 作为容器名称，然后单击“确定”。
 
 1. 将 *Program.cs* 文件上传到 Blob 容器。 （此处使用的文件用作示例；可以上传任何文本文件，并使用该文件的名称创建队列消息。）
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器资源管理器”中，双击创建的容器所在的节点。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“服务器资源管理器”中，双击创建的容器所在的节点。
 
-   b. 在“容器”窗口中，选择“上传”按钮。
+   b.保留“数据库类型”设置，即设置为“共享”。 在“容器”窗口中，选择“上传”按钮。
 
    ![Blob 上传按钮](./media/webjobs-sdk-get-started/blob-upload-button.png)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380348"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -24,26 +24,26 @@ ms.locfileid: "74816601"
 
 **新功能**
 
-- 添加了 FromHost （） API，以方便地与本地容器和主权云一起使用。
+- 添加了 `FromHost()` API，以便于本地容器和主权云轻松使用。
 - 为语音识别添加了自动源语言检测（在 Java C++和中）
-- 添加了用于语音识别的 SourceLanguageConfig 对象，用于指定预期的源语言（在C++Java 和中）
-- 通过 Nuget 和 Unity 包在 Windows 上添加了 KeywordRecognizer 支持（UWP）、Android 和 iOS
+- 添加了 `SourceLanguageConfig` 对象用于语音识别，用于指定预期的源语言（在 Java C++和中）
+- 通过 Nuget 和 Unity 包增加了对 Windows （UWP）、Android 和 iOS 的 `KeywordRecognizer` 支持
 - 添加了用于执行会话的远程会话 Java API 异步批处理。
 
 **重大更改**
 
-- 在命名空间 Cognitiveservices account 下移动的会话 Transcriber 功能。
-- 会话 Transcriber 方法的一部分被移动到新的会话类。
+- 在命名空间 `Microsoft.CognitiveServices.Speech.Transcription`下移动的会话 Transcriber 功能。
+- 会话 Transcriber 方法的一部分被移动到新 `Conversation` 类中。
 - 丢弃对32位（ARMv7 和 x86） iOS 的支持
 
 **Bug 修复**
 
-- 如果在不使用有效语音服务订阅密钥的情况下使用本地 KeywordRecognizer，则修复故障
+- 如果在不使用有效语音服务订阅密钥的情况下使用本地 `KeywordRecognizer`，则修复故障
 
 **示例**
 
-- 适用于 KeywordRecognizer 的 Xamarin 示例
-- 适用于 KeywordRecognizer 的 Unity 示例
+- 适用于 `KeywordRecognizer` 的 Xamarin 示例
+- `KeywordRecognizer` 的 Unity 示例
 - C++用于自动源语言检测的和 Java 示例。
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0： 2019-九月发行版
@@ -52,9 +52,9 @@ ms.locfileid: "74816601"
 
 - 为通用 Windows 平台（UWP）、Android 和 iOS 上的 Xamarin 添加了 beta 支持
 - 添加了对 Unity 的 iOS 支持
-- 为 Android、iOS 和 Linux 上的 ALaw、Mulaw、FLAC 添加了压缩的输入支持
-- 在连接类中添加了用于向服务发送消息的 SendMessageAsync
-- 在连接类中添加了 SetMessageProperty，用于设置消息的属性
+- 添加了 `Compressed` 输入支持 Android、iOS 和 Linux 上的 ALaw、Mulaw、FLAC
+- 在 `Connection` 类中添加了 `SendMessageAsync`，以便将消息发送到服务
+- 在用于设置消息属性 `Connection` 类中添加了 `SetMessageProperty`
 - TTS 为 Java 添加了绑定（Jre 和 Android）、Python、Swift 和目标-C
 - TTS 添加了对 macOS、iOS 和 Android 的播放支持。
 - 为 TTS 添加了 "单词边界" 信息。
@@ -66,10 +66,10 @@ ms.locfileid: "74816601"
 - 修复了某些连接属性中的 Uuid 不唯一的问题
 - 修复了有关 Swift 绑定中的可为 null 说明符的一些警告（可能需要较小的代码更改）
 - 修复了一个 bug，该 bug 导致在网络负载下意外关闭 websocket 连接
-- 修复了 Android 上的一个问题，有时会导致 DialogServiceConnector 使用重复的印象 Id
-- 改进了跨多个交互的连接稳定性，并在 DialogServiceConnector 发生故障时报告故障（通过取消事件）
-- DialogServiceConnector 会话启动现在会正确地提供事件，包括在活动 StartKeywordRecognitionAsync 期间调用 ListenOnceAsync （）时。
-- 解决了与接收的 DialogServiceConnector 活动相关联的故障
+- 修复了 Android 上的一个问题，有时会导致 `DialogServiceConnector` 使用重复的印记 Id
+- 改进了跨多个交互的连接稳定性，并在发生故障时报告故障（通过 `Canceled` 事件） `DialogServiceConnector`
+- `DialogServiceConnector` 会话启动现在会正确地提供事件，包括在活动 `StartKeywordRecognitionAsync()` 调用 `ListenOnceAsync()` 时
+- 解决了与接收的 `DialogServiceConnector` 活动相关联的故障
 
 **示例**
 
@@ -84,14 +84,14 @@ ms.locfileid: "74816601"
 - UWP 和 Unity 上的文本到语音的快速入门示例
 - IOS 上的 Swift 快速入门示例
 - 用于语音 & 意向识别和翻译的 Unity 示例
-- 更新了 DialogServiceConnector 的快速入门示例
+- `DialogServiceConnector` 更新的快速入门示例
 
 **改进 / 更改**
 
 - 对话框命名空间：
-  - SpeechBotConnector 已重命名为 DialogServiceConnector
-  - BotConfig 已重命名为 DialogServiceConfig
-  - BotConfig：： FromChannelSecret （）已重新映射到 DialogServiceConfig：： FromBotSecret （）
+  - `SpeechBotConnector` 已重名为 `DialogServiceConnector`
+  - `BotConfig` 已重名为 `DialogServiceConfig`
+  - `BotConfig::FromChannelSecret()` 已重新映射到 `DialogServiceConfig::FromBotSecret()`
   - 重命名后继续支持所有现有的直接连线语音客户端
 - 更新 TTS REST 适配器以支持代理，永久连接
 - 如果传递了无效的区域，则改进错误消息
@@ -101,7 +101,7 @@ ms.locfileid: "74816601"
 
 **Bug 修复**
 
-- TTS 的修复： SpeakTextAsync 的未来返回，无需等到音频完成呈现
+- 针对 TTS 的修复：在何处 `SpeakTextAsync` 以后返回，无需等到音频完成呈现
 - 修复中C#的封送字符串以启用完整语言支持
 - 修复 .NET core 应用问题，以在示例中加载包含 net461 目标框架的核心库
 - 解决在示例中将本机库部署到输出文件夹的偶尔问题
@@ -136,7 +136,7 @@ ms.locfileid: "74816601"
 
 - 添加了各种识别器属性以调整服务行为或服务结果（如屏蔽猥亵和其他）。
 - 你现在可以通过标准配置属性配置识别器，即使 `FromEndpoint`创建了识别器。
-- 目标-C： `OutputFormat` 属性已添加到 SPXSpeechConfiguration。
+- 目标-C： `OutputFormat` 属性已添加到 `SPXSpeechConfiguration`中。
 - SDK 现在支持 Debian 9 作为 Linux 分发版。
 
 **Bug 修复**
@@ -157,7 +157,7 @@ ms.locfileid: "74816601"
 
 **新功能**
 
-- SDK 现在支持使用文本到语音服务作为 beta 版本。 它在C++和C#的 Windows 和 Linux 桌面上都受支持。 有关详细信息，请查看[文本到语音转换概述](text-to-speech.md#get-started-with-text-to-speech)。
+- SDK 现在支持使用文本到语音服务作为 beta 版本。 它在C++和C#的 Windows 和 Linux 桌面上都受支持。 有关详细信息，请查看[文本到语音转换概述](text-to-speech.md#get-started)。
 - SDK 现在支持 MP3 和 Opus/OGG 音频文件作为流输入文件。 此功能仅适用于C++和C#中的 Linux，当前为 beta 版（更多[详细信息）](how-to-use-codec-compressed-audio-input-streams.md)。
 - Speech SDK for Java、.NET core C++和目标-C 已获得 macOS 支持。 针对 macOS 的目标-C 支持当前为 beta 版本。
 - iOS：适用于 iOS 的语音 SDK （目标-C）现在也作为 CocoaPod 发布。
@@ -193,7 +193,7 @@ ms.locfileid: "74816601"
 
 **新功能**
 
-- 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这允许你从非默认麦克风将音频数据流式传输到语音服务。 有关详细信息，请参阅说明[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 此功能尚不能通过 JavaScript 提供。
+- 语音 SDK 支持通过 `AudioConfig` 类选择输入麦克风。 这允许你从非默认麦克风将音频数据流式传输到语音服务。 有关详细信息，请参阅说明[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 此功能尚不能通过 JavaScript 提供。
 - 语音 SDK 目前在 beta 版本中支持 Unity。 通过[GitHub 示例存储库](https://aka.ms/csspeech/samples)中的问题部分提供反馈。 此版本支持在 Windows x86 和 x64（桌面或通用 Windows 平台应用程序）以及 Android（ARM32/64，x86）上使用 Unity。 [Unity 快速入门](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)中提供了更多信息。
 - 不再需要文件 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` （在以前的版本中随附）。 此功能现已集成到 core SDK。
 
@@ -201,17 +201,17 @@ ms.locfileid: "74816601"
 
 [示例存储库](https://aka.ms/csspeech/samples)中提供了以下新内容：
 
-- 有关 AudioConfig.FromMicrophoneInput 的更多示例。
+- `AudioConfig.FromMicrophoneInput`的其他示例。
 - 有关意向识别和翻译的更多 Python 示例。
-- 有关在 iOS 中使用连接对象的更多示例。
+- 在 iOS 中使用 `Connection` 对象的其他示例。
 - 有关具有音频输出的翻译的更多 Java 示例。
 - 有关使用[批量听录 REST API](batch-transcription.md) 的新示例。
 
 **改进 / 更改**
 
 - Python
-  - 改进了 SpeechConfig 中的参数验证和错误消息。
-  - 增加了对连接对象的支持。
+  - 提高了 `SpeechConfig`中的参数验证和错误消息。
+  - 添加对 `Connection` 对象的支持。
   - 支持 Windows 上的 32 位 Python (x86)。
   - 适用于 Python 的语音 SDK 已完成 beta 版本。
 - iOS
@@ -219,7 +219,7 @@ ms.locfileid: "74816601"
   - SDK 现在支持 iOS 版本 9.2 及更高版本。
   - 改进了参考文档并修复了多个属性名称。
 - JavaScript
-  - 增加了对连接对象的支持。
+  - 添加对 `Connection` 对象的支持。
   - 添加了捆绑的 JavaScript 的类型定义文件
   - 首次支持并实现了短语提示。
   - 随服务 JSON 返回属性集合以用于识别
@@ -230,8 +230,8 @@ ms.locfileid: "74816601"
 
 - 过去无法正确处理空的代理用户名和代理密码。 在此版本中，如果将代理用户名和代理密码设置为空字符串，则在连接到代理时不会提交它们。
 - 对于某些语言&nbsp;/ 环境，由 SDK 创建的 SessionId 并非总是真正随机的。 添加了随机生成器初始化，以解决此问题。
-- 改进了对授权令牌的处理。 如果希望使用授权令牌，请在 SpeechConfig 中进行指定并将订阅密钥保留为空。 然后，像往常一样创建识别器。
-- 过去，在某些情况下，连接对象不能正确释放。 现在已修复此问题。
+- 改进了对授权令牌的处理。 如果要使用授权令牌，请在 `SpeechConfig` 中指定，并将订阅密钥留空。 然后，像往常一样创建识别器。
+- 在某些情况下，`Connection` 对象未正确发布。 现在已修复此问题。
 - JavaScript 示例已修复，在 Safari 上也支持用于翻译合成的音频输出。
 
 ## <a name="speech-sdk-121"></a>语音 SDK 1.2.1
@@ -254,8 +254,8 @@ ms.locfileid: "74816601"
   - 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
   - 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
   - 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
-- 连接对象
-  - 从识别器，你可以访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
+- （属于`Connection` 对象）的父级。
+  - 在 `Recognizer`中，可以访问 `Connection` 对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
     （此功能尚不适用于 JavaScript 和 Python。）
 - 支持 Ubuntu 18.04。
 - Android
@@ -269,15 +269,15 @@ ms.locfileid: "74816601"
 
 **Bug 修复**
 
-- 修复了由于 RecognizeAsync 中的类型不匹配导致的内存泄漏。
+- 修复了内存泄漏，因为 `RecognizeAsync`中存在类型不匹配的问题。
 - 在某些情况下，异常会被泄露。
 - 修复了翻译事件参数中的内存泄漏。
 - 修复了长时间运行的会话中与重新连接相关的锁定问题。
 - 修复了可能导致转换失败的最终结果的问题。
-- C#：如果在主线程中未等待异步操作，则可能会在异步任务完成之前释放识别器。
+- C#：如果在主线程中未等待 `async` 操作，则可能会在异步任务完成之前释放识别器。
 - Java：修复了导致 Java VM 崩溃的问题。
-- 目标-C：固定枚举映射;返回了 RecognizedIntent 而不是 RecognizingIntent。
-- JavaScript：在 SpeechConfig 中将默认输出格式设置为 "simple"。
+- 目标-C：固定枚举映射;返回 RecognizedIntent，而不是 `RecognizingIntent`。
+- JavaScript：在 `SpeechConfig`中将默认输出格式设置为 "simple"。
 - JavaScript：删除 JavaScript 和其他语言中的配置对象上的属性之间的不一致。
 
 **示例**
@@ -290,7 +290,7 @@ ms.locfileid: "74816601"
 **新功能**
 
 - 对 Android x86/x64 的支持。
-- 代理支持：在 SpeechConfig 对象中，你现在可以调用函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
+- 代理支持：在 `SpeechConfig` 对象中，你现在可以调用函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
 - 改进了错误代码和消息。 如果识别返回了错误，这在过去会将 `Reason`（在已取消事件中）或 `CancellationDetails`（在识别结果中）设置为 `Error`。 取消的事件现在包含两个附加的成员：`ErrorCode` 和 `ErrorDetails`。 如果服务器随所报告的错误返回了附加的错误信息，则现在将在新成员中提供该信息。
 
 **改进**
@@ -301,7 +301,7 @@ ms.locfileid: "74816601"
 
 **Bug 修复**
 
-- 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为取消事件。
+- 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为 `Canceled` 事件。
 - 修复了属性管理中的内存泄漏。
 - 修复了音频输入文件可能会导致识别器发生故障的 bug。
 - 修复了在会话停止事件后无法检索事件的 bug。
@@ -309,12 +309,12 @@ ms.locfileid: "74816601"
 - 修复了可能会导致故障的 iOS 兼容性问题。
 - 改进了对 Android 麦克风的支持的稳定性。
 - 修复了 JavaScript 中的识别器将忽略识别语言的 bug。
-- 修复了阻止在 JavaScript 中设置 EndpointId（在某些情况下）的 bug。
-- 更改了 JavaScript 中的 AddIntent 中的参数顺序，并添加了缺少的 AddIntent JavaScript 签名。
+- 修复了在 JavaScript 中阻止设置 `EndpointId` （某些情况下）的错误。
+- JavaScript 中的 AddIntent 更改了参数顺序，并添加了缺少的 `AddIntent` JavaScript 签名。
 
 **示例**
 
-- 在[示例存储库](https://aka.ms/csspeech/samples)中添加了拉取和推送流用法的 C++ 和 C# 示例。
+- 在C++ C# [示例存储库](https://aka.ms/csspeech/samples)中添加了请求和推送流使用的示例。
 
 ## <a name="speech-sdk-101"></a>语音 SDK 1.0.1
 
@@ -387,8 +387,8 @@ ms.locfileid: "74816601"
 
 **重大更改**
 
-- 识别事件：NoMatch 事件类型已合并到 Error 事件中。
-- C# 中的 SpeechOutputFormat 已重命名为 OutputFormat 以与 C++ 保持一致。
+- 识别事件： `NoMatch` 事件类型已合并到 `Error` 事件。
+- 中C#的 SpeechOutputFormat 已重命名为 `OutputFormat` 以保持C++一致。
 - `AudioInputStream` 接口的某些方法的返回类型略有更改：
   - 在 Java 中，`read` 方法现返回 `long` 而不是 `int`。
   - 在 C# 中，`Read` 方法现返回 `uint` 而不是 `int`。
@@ -424,19 +424,12 @@ ms.locfileid: "74816601"
 **Bug 修复**
 
 - 修复了关闭期间 USP 层中可能出现的回叫问题。
-
 - 如果识别器使用了音频输入文件，则它在文件句柄上停留的时间将超过必要时间。
-
 - 删除了消息泵和识别器之间的多个死锁。
-
 - 在服务的响应超时后触发 `NoMatch` 结果。
-
 - Windows 上的媒体基础库为延迟加载。 此库仅用于麦克风输入。
-
 - 音频数据的上传速度约限制为原始音频速度的两倍。
-
 - 在 Windows 上，C# .NET 程序集现在为强命名。
-
 - 文档修复：`Region` 是创建识别器所必需的信息。
 
 已添加更多示例，还将持续更新。 有关最新的示例集，请参阅[语音 SDK 示例 GitHub 存储库](https://aka.ms/csspeech/samples)。

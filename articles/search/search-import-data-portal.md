@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460704"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -61,7 +61,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 在运行该向导之前应创建此单个表或视图，并且它必须包含内容。 出于明显原因，对空数据源运行 "**导入数据**" 向导并无意义。
 
-|  选项 | 描述 |
+|  选项 | Description |
 | ---------- | ----------- |
 | **现有数据源** |如果已在搜索服务中定义索引器，则可能具有可重复使用的现有数据源定义。 在 Azure 认知搜索中，数据源对象仅供索引器使用。 您可以通过编程方式或通过**导入数据**向导来创建数据源对象，并根据需要重新使用它们。|
 | **示例**| Azure 认知搜索提供了两个教程和快速入门中使用的内置示例数据源：一个房地产 SQL 数据库和一个托管在 Cosmos DB 上的酒店数据库。 有关基于酒店样品的演练，请参阅在 Azure 门户快速入门[中创建索引](search-get-started-portal.md)。 |
@@ -75,10 +75,10 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 在幕后，向导将创建、配置和调用以下对象。 向导运行完成后，可以在门户页中找到它的输出。 服务的 "概述" 页包含索引、索引器、数据源和技能集的列表。 可以在门户中以完整的 JSON 格式查看索引定义。 对于其他定义，可以使用[REST API](https://docs.microsoft.com/rest/api/searchservice/)获取特定的对象。
 
-| 对象 | 描述 | 
+| 对象 | Description | 
 |--------|-------------|
 | [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 将连接信息保存到源数据，包括凭据。 数据源对象专用于索引器。 | 
-| [索引](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用于全文搜索和其他查询的物理数据结构。 | 
+| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用于全文搜索和其他查询的物理数据结构。 | 
 | [技能组合](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | 用于操作、转换和调整内容的完整说明集，包括分析和提取图像文件中的信息。 除了非常简单的结构有限以外，它还包括对提供扩充的认知服务资源的引用。 此外，它还可能包含知识存储定义。  | 
 | [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | 一个配置对象，用于指定数据源、目标索引、可选的技能组合、可选计划以及用于错误处理和64编码的可选配置设置。 |
 
@@ -109,7 +109,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 1. 设置属性以确定该字段在索引中的使用方式。 
 
-   请花时间执行此步骤，因为属性确定索引中字段的物理表达式。 如果要在以后更改属性，甚至以编程方式更改属性，几乎总是需要删除并重建索引。 可**搜索**和可**检索**的核心属性对存储的影响可[忽略不计](search-what-is-an-index.md#storage-implications)。 启用筛选器并使用建议器会提高存储要求。 
+   请花时间执行此步骤，因为属性确定索引中字段的物理表达式。 如果要在以后更改属性，甚至以编程方式更改属性，几乎总是需要删除并重建索引。 可**搜索**和可**检索**的核心属性对存储的影响可[忽略不计](search-what-is-an-index.md#index-size)。 启用筛选器并使用建议器会提高存储要求。 
    
    + “可搜索”启用全文搜索。 在自由格式查询或查询表达式中使用的每个字段必须有此属性。 为标记为“可搜索”的每个字段创建反向索引。
 

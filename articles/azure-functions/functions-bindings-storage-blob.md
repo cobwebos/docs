@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0c9534878dd1d53b9a11802a960f2ab345fde654
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996487"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551227"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -25,9 +25,9 @@ ms.locfileid: "74996487"
 > [!NOTE]
 > 将事件网格触发器而非 Blob 存储触发器用于仅限 Blob 的存储帐户、大规模，或者降低延迟。 有关详细信息，请参阅[触发器](#trigger)部分。
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
+在[Azure Web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs)Nuget 包版本2.x 中提供 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "74996487"
 
 ## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
-[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包 3.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub 存储库中提供了此包的源代码。
+Blob 存储绑定在[Microsoft. 存储](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage)Nuget 包，版本2.x 中提供了。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -87,7 +87,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-下面的示例演示*函数 json*文件中的 blob 触发器绑定，以及使用绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
+下面的示例演示*函数 json*文件中的 blob 触发器绑定，以及使用绑定的代码。 在 `samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 blob 时，该函数会写入日志。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -168,7 +168,7 @@ module.exports = function(context) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
+以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 blob 时，该函数会写入日志。
 
 function.json 文件如下所示：
 
@@ -322,13 +322,13 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
 |name | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#trigger---blob-name-patterns)。 |
-|**连接** | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接 | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -344,7 +344,7 @@ Python 不支持特性。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>`访问 blob 数据。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与*函数 json*中定义的值匹配。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -757,14 +757,14 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `blob`。 |
+|type | 不适用 | 必须设置为 `blob`。 |
 |direction | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
 |name | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
-|**连接** |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **访问** | 表示是要读取还是写入。 |
+|连接 |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|不适用 | **Access** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -780,7 +780,7 @@ Python 不支持特性。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>`访问 blob 数据。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与*函数 json*中定义的值匹配。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -811,41 +811,44 @@ using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 
-[FunctionName("ResizeImage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image,
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+public class ResizeImages
 {
-    IImageFormat format;
-
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    [FunctionName("ResizeImage")]
+    public static void Run([BlobTrigger("sample-images/{name}")] Stream image,
+        [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
+        [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
     {
-      ResizeImage(input, imageSmall, ImageSize.Small, format);
+        IImageFormat format;
+
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageSmall, ImageSize.Small, format);
+        }
+
+        image.Position = 0;
+        using (Image<Rgba32> input = Image.Load<Rgba32>(image, out format))
+        {
+            ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        }
     }
 
-    image.Position = 0;
-    using (Image<Rgba32> input = Image.Load(image, out format))
+    public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
     {
-      ResizeImage(input, imageMedium, ImageSize.Medium, format);
+        var dimensions = imageDimensionsTable[size];
+
+        input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
+        input.Save(output, format);
     }
+
+    public enum ImageSize { ExtraSmall, Small, Medium }
+
+    private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+        { ImageSize.ExtraSmall, (320, 200) },
+        { ImageSize.Small,      (640, 400) },
+        { ImageSize.Medium,     (800, 600) }
+    };
+
 }
-
-public static void ResizeImage(Image<Rgba32> input, Stream output, ImageSize size, IImageFormat format)
-{
-    var dimensions = imageDimensionsTable[size];
-
-    input.Mutate(x => x.Resize(dimensions.Item1, dimensions.Item2));
-    input.Save(output, format);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
 ```
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
@@ -1124,14 +1127,14 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `blob`。 |
+|type | 不适用 | 必须设置为 `blob`。 |
 |direction | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |
 |name | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
 |**路径** |**BlobPath** | Blob 容器的路径。 |
-|**连接** |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **访问** | 表示是要读取还是写入。 |
+|连接 |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|不适用 | **Access** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

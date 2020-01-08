@@ -2,19 +2,15 @@
 title: 了解如何在 Azure 自动化中为多台 VM 载入更新管理、更改跟踪和清单解决方案
 description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421860"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -89,7 +85,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
-   ![“取消链接工作区”页](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png)。
 
    系统会提示用户确认是否要继续。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 12/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4effd14029eaaee1e1c22cdb814096820e19e089
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381114"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -30,9 +30,19 @@ ms.locfileid: "73794031"
 |---|---|---|---|---|---|----|
 |已发布知识库的最大允许数量|2|14|49|199|199|2,999|
 
- 例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引 `testkb` 用于所有知识库以进行创作和测试。 
+ 例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引 `testkb` 用于所有知识库以进行创作和测试。
 
 ## <a name="extraction-limits"></a>提取限制
+
+### <a name="maximum-file-size"></a>文件大小上限
+
+|格式|最大文件大小（MB）|
+|--|--|
+|`.docx`|10|
+|`.pdf`|25|
+|`.tsv`|10|
+|`.txt`|10|
+|`.xlsx`|3|
 
 ### <a name="maximum-number-of-files"></a>最大文件数
 
@@ -67,12 +77,12 @@ ms.locfileid: "73794031"
 * 答案文本的长度：25,000
 * 问题文本的长度：1,000
 * 元数据键/值文本的长度：100
-* 支持的元数据名称字符：字母、数字和 `_`  
-* 元数据值支持的字符：除 `:` 和 `|` 之外的所有字符 
+* 支持的元数据名称字符：字母、数字和 `_`
+* 元数据值支持的字符：除 `:` 和 `|` 之外的所有字符
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 最大替代问题数：300
-* 问题答案对的最大数目：取决于所选的 **[Azure 认知搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** 。 问题和答案对映射到 Azure 认知搜索索引上的文档。 
+* 问题答案对的最大数目：取决于所选的 **[Azure 认知搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** 。 问题和答案对映射到 Azure 认知搜索索引上的文档。
 * URL/HTML 页面：1000000个字符
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：

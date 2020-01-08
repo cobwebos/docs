@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828949"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640782"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
 将现有的 Azure 虚拟网络从一个区域移到另一个区域的方案有多种。 例如，你可能希望使用与现有虚拟网络相同的测试和可用性配置来创建虚拟网络。 或者，您可能希望将生产虚拟网络作为灾难恢复计划的一部分转移到另一个区域。
 
-你可以使用 Azure 资源管理器模板来完成将虚拟网络移动到另一个区域。 为此，可将虚拟网络导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。 有关资源管理器模板的详细信息，请参阅 [Quickstart：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+你可以使用 Azure 资源管理器模板来完成将虚拟网络移动到另一个区域。 为此，可将虚拟网络导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 确保你的虚拟网络位于要移动的 Azure 区域中。
 
@@ -32,7 +32,7 @@ ms.locfileid: "71828949"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需的配额，请联系支持人员。
 
-- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-for-the-move"></a>准备移动
@@ -42,7 +42,7 @@ ms.locfileid: "71828949"
 
 1. 登录到[Azure 门户](https://portal.azure.com)，然后选择 "**资源组**"。
 1. 找到包含源虚拟网络的资源组，然后选择它。
-1. 选择 "**设置** > " "**导出模板**"。
+1. 选择 "**设置**" > **导出模板**"。
 1. 在 "**导出模板**" 窗格中，选择 "**部署**"。
 1. 若要在在线编辑器中打开*parameters*文件，请选择 "**模板** > **编辑参数**"。
 1. 若要编辑虚拟网络名称的参数，请在 "**参数**" 下更改 "**值**" 属性：
@@ -89,7 +89,7 @@ ms.locfileid: "71828949"
 
 1. 可有可无还可以根据需要更改模板中的其他参数：
 
-    * **地址空间**：在保存文件之前，可以通过修改**资源** > **addressSpace**部分并更改**addressPrefixes**属性，来更改虚拟网络的地址空间：
+    * **地址空间**：在保存文件之前，可以通过修改**addressSpace**部分的 > **资源**并更改**addressPrefixes**属性来更改虚拟网络的地址空间：
 
         ```json
                 "resources": [
@@ -109,7 +109,7 @@ ms.locfileid: "71828949"
 
         ```
 
-    * **子网**：可以通过更改模板的**子网**部分来更改或添加到子网名称和子网地址空间。 可以通过更改 "**名称**" 属性来更改子网的名称。 您可以通过更改**addressPrefix**属性来更改子网地址空间：
+    * **子网**：可以通过更改模板的**子**网部分来更改或添加到子网名称和子网地址空间。 可以通过更改 "**名称**" 属性来更改子网的名称。 您可以通过更改**addressPrefix**属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -184,7 +184,7 @@ ms.locfileid: "71828949"
 
     如果需要为目标虚拟网络创建新的资源组，请选择 "**新建**"。 请确保名称与现有虚拟网络中的源资源组名称不同。
 
-1. 验证**基本** > **位置**是否设置为要在其中部署虚拟网络的目标位置。
+1. 验证 "**基础** > **位置**" 是否已设置为要在其中部署虚拟网络的目标位置。
 
 1. 在 "**设置**" 下，验证名称是否与您之前在参数编辑器中输入的名称相匹配。
 
@@ -198,7 +198,7 @@ ms.locfileid: "71828949"
 1. 在 Azure 门户 "仪表板上，选择资源组。
 1. 在 "**概述**" 窗格的顶部，选择 "**删除**"。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成虚拟网络移动，请删除源虚拟网络或资源组。 为此，请执行以下操作：
 1. 在 Azure 门户仪表板上，选择虚拟网络或资源组。

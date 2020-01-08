@@ -5,21 +5,18 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a46be5dea8286194ccd2558b2e6e301e2624a5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460205"
 ---
 # <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
 > 适用于： macOS 10.12 或更高版本
-
->[!NOTE]
-> 当前在预览版中提供从 macOS 客户端访问 Windows 虚拟桌面资源的功能。
 
 可以使用可下载的客户端从 macOS 设备访问 Windows 虚拟桌面资源。 本指南将说明如何设置客户端。
 
@@ -34,11 +31,11 @@ ms.locfileid: "73605810"
 订阅源：
 
 1. 在主页上选择 "**添加源**" 以连接到服务并检索资源。
-2. 输入源 URL。 这可以是 URL 或电子邮件地址：
+2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请使用管理员提供的 URL。 通常，该 URL <https://rdweb.wvd.microsoft.com>。
    - 若要使用电子邮件，请输入你的电子邮件地址。 如果管理员已将服务器配置为，则此方法将通知客户端搜索与你的电子邮件地址关联的 URL。
 3. 选择 "**订阅**"。
-4. 出现提示时，请用用户帐户登录。
+4. 出现提示时，请使用用户帐户登录。
 
 登录后，应会看到可用资源的列表。
 

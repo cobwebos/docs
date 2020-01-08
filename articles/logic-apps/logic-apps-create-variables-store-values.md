@@ -1,17 +1,17 @@
 ---
-title: 创建和管理用于存储值的变量
-description: 如何在 Azure 逻辑应用中使用变量来存储和管理值
+title: 创建和管理用于存储和传递值的变量
+description: 了解如何在使用 Azure 逻辑应用创建的自动任务和工作流中使用变量来存储、管理、使用和传递值。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456697"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值
 
@@ -65,11 +65,11 @@ ms.locfileid: "74793169"
 
 1. 按如下所述提供变量的相关信息：
 
-   | properties | 需要 | Value |  描述 |
+   | 属性 | 需要 | 值 |  Description |
    |----------|----------|-------|--------------|
-   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 |
+   | **名称** | 是 | <*variable-name*> | 要递增的变量的名称 |
    | 类型 | 是 | <*variable-type*> | 变量的数据类型 |
-   | **值** | No | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 |
+   | **值** | 否 | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 |
    |||||
 
    例如：
@@ -205,10 +205,10 @@ ms.locfileid: "74793169"
 
 1. 提供用于递增变量的以下信息：
 
-   | properties | 需要 | Value |  描述 |
+   | 属性 | 需要 | 值 |  Description |
    |----------|----------|-------|--------------|
-   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 |
-   | **值** | No | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 |
+   | **名称** | 是 | <*variable-name*> | 要递增的变量的名称 |
+   | **值** | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 |
    ||||
 
    例如：
@@ -326,10 +326,10 @@ ms.locfileid: "74793169"
 
 下面是“递减变量”操作的属性：
 
-| properties | 需要 | Value |  描述 |
+| 属性 | 需要 | 值 |  Description |
 |----------|----------|-------|--------------|
-| 名称 | 是 | <*variable-name*> | 要递减的变量的名称 | 
-| **值** | No | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 |
+| **名称** | 是 | <*variable-name*> | 要递减的变量的名称 | 
+| **值** | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 |
 ||||| 
 
 如果从设计器切换到代码视图编辑器，则可以通过以下方式在逻辑应用定义（采用 JSON 格式）内显示**减量变量**操作。
@@ -359,9 +359,9 @@ ms.locfileid: "74793169"
 
 下面是“设置变量”操作的属性：
 
-| properties | 需要 | Value |  描述 |
+| 属性 | 需要 | 值 |  Description |
 |----------|----------|-------|--------------|
-| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 |
+| **名称** | 是 | <*variable-name*> | 要更改的变量的名称 |
 | **值** | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 |
 ||||| 
 
@@ -417,9 +417,9 @@ ms.locfileid: "74793169"
 
 下面是“追加到...”操作的属性：
 
-| properties | 需要 | Value |  描述 |
+| 属性 | 需要 | 值 |  Description |
 |----------|----------|-------|--------------|
-| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 |
+| **名称** | 是 | <*variable-name*> | 要更改的变量的名称 |
 | **值** | 是 | <*append-value*> | 要追加的值，可以是任何类型 |
 |||||
 

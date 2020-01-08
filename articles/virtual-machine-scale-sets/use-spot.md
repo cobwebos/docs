@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782237"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647622"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>预览版：用于虚拟机规模集的 Azure 点 Vm 
 
@@ -137,7 +137,7 @@ $vmssConfig = New-AzVmssConfig `
   }
 }
 ```
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **问：** 创建后，点实例是否与标准实例相同？
 
@@ -151,7 +151,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 如何对配额进行位置管理？
 
-**答：** 污点实例和标准实例将具有不同的配额池。 将在 Vm 与规模集实例之间共享点配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
+**答：** 污点实例和标准实例将具有不同的配额池。 将在 Vm 与规模集实例之间共享点配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 
 **问：** 能否为查找附加的配额？

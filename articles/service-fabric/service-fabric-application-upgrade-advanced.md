@@ -1,25 +1,14 @@
 ---
-title: 高级应用程序升级主题 | Microsoft Docs
+title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: e29585ff-e96f-46f4-a07f-6682bbe63281
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bd95d651e02cb61bcbe7a108db92afce8b5484bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457532"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
@@ -48,7 +37,7 @@ ms.locfileid: "72167587"
 使用差异包的方案有：
 
 * 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时。
-* 当部署系统直接在应用程序生成过程中产生生成布局时。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 使用完整的应用程序包要求更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
+* 当部署系统直接在应用程序生成过程中产生生成布局时。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
 
 如果应用程序是使用 Visual Studio 升级的，则会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
@@ -88,7 +77,7 @@ app1/
 
 ## <a name="upgrade-application-parameters-independently-of-version"></a>独立于版本升级应用程序参数
 
-有时，需要更改 Service Fabric 应用程序的参数，而无需更改清单版本。 可以通过将 **-ApplicationParameter** 标志与 **Start-ServiceFabricApplicationUpgrade** 一起使用来方便地完成此操作。 假设 Service Fabric 应用程序具有以下属性：
+有时，需要更改 Service Fabric 应用程序的参数，而无需更改清单版本。 可以通过将 **-ApplicationParameter**标志与**Get-servicefabricapplicationupgrade** Azure Service Fabric PowerShell cmdlet 一起使用来方便地完成此操作。 假设有以下属性的 Service Fabric 应用程序：
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -101,7 +90,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-现在使用 **Start-ServiceFabricApplicationUpgrade** cmdlet 升级该应用程序。 此示例显示了受监视的升级，但也可以使用不受监视的升级。 若要查看此 cmdlet 接受的标志的完整说明，请参阅 [Azure Service Fabric PowerShell 模块参考](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
+现在，使用**get-servicefabricapplicationupgrade** cmdlet 升级应用程序。 此示例显示了监视的升级，但也可以使用不受监视的升级。 若要查看此 cmdlet 接受的标志的完整说明，请参阅[Azure Service Fabric PowerShell 模块参考](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -111,7 +100,7 @@ ion 1.0.0 -ApplicationParameter $appParams -Monitored
 
 ```
 
-升级后，确认应用程序具有已更新的参数和相同的版本：
+升级后，确认应用程序包含更新的参数和相同的版本：
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1

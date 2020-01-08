@@ -1,17 +1,17 @@
 ---
-title: 如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
+title: 使用真实的示例对 Azure Cosmos DB 上的模型和分区数据
 description: 了解如何使用 Azure Cosmos DB Core API 为某个真实示例建模和分区
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445378"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 
@@ -53,7 +53,7 @@ ms.locfileid: "70093410"
 - **[Q5]** 列出帖子的点赞数
 - **[Q6]** 以短格式列出最近创建的 *x* 个帖子（源）
 
-在此阶段，我们尚未考虑每个实体（用户、帖子等）将要包含的详细信息。 针对关系存储进行设计时，此步骤往往是要处理的最初几个步骤之一，因为我们需要确定这些实体在表、列、外键等方面如何进行转换。对于在写入时不会实施任何架构的文档数据库，基本上不必要予以考虑。
+在此阶段，我们尚未考虑每个实体（用户、帖子等）将要包含的详细信息。 此步骤通常在针对关系存储区进行设计时要处理的第一个步骤，因为我们必须确定这些实体在表、列、外键等方面的转换方式。对于未在写入时强制执行任何架构的文档数据库，这不是个问题。
 
 必须从一开始就标识访问模式的主要原因在于，请求列表将会成为我们的测试套件。 每当循环访问数据模型时，我们都会遍历每个请求，并检查其性能和可伸缩性。
 
@@ -124,7 +124,7 @@ ms.locfileid: "70093410"
 
 ![将单个项写入用户容器](./media/how-to-model-partition-example/V1-C1.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 7 毫秒 | 5.71 RU | ✅ |
 
@@ -134,7 +134,7 @@ ms.locfileid: "70093410"
 
 ![从用户容器检索单个项](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -144,7 +144,7 @@ ms.locfileid: "70093410"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 8.76 RU | ✅ |
 
@@ -156,7 +156,7 @@ ms.locfileid: "70093410"
 
 每个附加查询根据相应容器的分区键进行筛选，而我们恰好需要使用分区来最大化性能和可伸缩性。 但是，我们最终需要执行四个操作才能返回一个帖子，因此，我们将在下一次迭代中改进此方法。
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 19.54 RU | ⚠ |
 
@@ -171,7 +171,7 @@ ms.locfileid: "70093410"
 - 必须针对第一个查询返回的每个帖子，发出用于聚合评论数和点赞数的查询；
 - 主查询不会根据 `posts` 容器的分区键进行筛选，导致扇出并在整个容器中进行分区扫描。
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 130 毫秒 | 619.41 RU | ⚠ |
 
@@ -181,7 +181,7 @@ ms.locfileid: "70093410"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 7 毫秒 | 8.57 RU | ✅ |
 
@@ -193,7 +193,7 @@ ms.locfileid: "70093410"
 
 尽管主查询会根据容器的分区键进行筛选，但单独聚合用户名会降低总体性能。 稍后我们将会改进。
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 23 毫秒 | 27.72 RU | ⚠ |
 
@@ -203,7 +203,7 @@ ms.locfileid: "70093410"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 6 毫秒 | 7.05 RU | ✅ |
 
@@ -213,7 +213,7 @@ ms.locfileid: "70093410"
 
 ![检索帖子的所有点赞并聚合其附加数据](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 59 毫秒 | 58.92 RU | ⚠ |
 
@@ -223,9 +223,9 @@ ms.locfileid: "70093410"
 
 ![检索最近的帖子并聚合其附加数据](./media/how-to-model-partition-example/V1-Q6.png)
 
-同样，我们的初始查询不会根据 `posts` 容器的分区键进行筛选，这会触发高开销的扇出。但这一次情况更糟，因为我们的目标是一个大得多的结果集，并要使用 `ORDER BY` 子句将结果排序，因此会消耗更多的请求单位。
+再次重申，初始查询不会过滤 `posts` 容器的分区键，这会引发代价高昂的扇出。这一点甚至更糟，因为我们以一个更大的结果集为目标，并使用 `ORDER BY` 子句对结果进行排序，这使得请求单位的开销更高。
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 306 毫秒 | 2063.54 RU | ⚠ |
 
@@ -238,7 +238,7 @@ ms.locfileid: "70093410"
 
 让我们解决上述每个问题，从第一个问题开始。
 
-## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2：引入反规范化以优化读取查询
+## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2：引入非规范化以优化读取查询
 
 之所以需要在某些情况下发出附加请求，是因为初始请求的结果不包含需要返回的所有数据。 使用 Azure Cosmos DB 之类的非关系数据存储时，通常可以通过反规范化数据集中的数据来解决此类问题。
 
@@ -370,7 +370,7 @@ function updateUsernames(userId, username) {
 
 ![从帖子容器检索单个项](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -380,7 +380,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有评论](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 7.72 RU | ✅ |
 
@@ -390,7 +390,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有点赞](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
@@ -450,7 +450,7 @@ function updateUsernames(userId, username) {
 
 ![检索用户的所有帖子](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 6.46 RU | ✅ |
 
@@ -534,7 +534,7 @@ function truncateFeed() {
 
 ![检索最近的帖子](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **滞后时间** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 16.97 RU | ✅ |
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415060"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授权非所有者部署 Avere vFXT
 
@@ -19,11 +19,11 @@ ms.locfileid: "72256178"
 
 （部署 Avere vFXT 系统的推荐方法是让拥有所有者权限的用户执行创建步骤，如[准备创建 Avere vFXT](avere-vfxt-prereqs.md) 中所述。）  
 
-解决方法涉及创建其他访问角色，为其用户提供足够的权限来安装群集。 该角色必须由订阅所有者创建，并且所有者必须将其分配给适当的用户。 
+解决方法涉及创建其他访问角色，为其用户提供足够的权限来安装群集。 该角色必须由订阅所有者创建，并且所有者必须将其分配给适当的用户。
 
-订阅所有者还必须[接受 Avere vFXT 市场映像的使用条款](avere-vfxt-prereqs.md)。 
+订阅所有者还必须[接受 Avere vFXT 市场映像的使用条款](avere-vfxt-prereqs.md)。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 所有这些不走必须由对用于群集的订阅具有所有者特权的用户执行。
 
 1. 复制这些行并将其保存在文件中（例如，`averecreatecluster.json`）。 在 `AssignableScopes` 语句中使用订阅 ID。
@@ -49,7 +49,7 @@ ms.locfileid: "72256178"
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -62,7 +62,8 @@ ms.locfileid: "72256178"
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
-    例如：
+    示例：
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ ms.locfileid: "72256178"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-完成此过程后，分配了此角色的任何用户均对订阅有下列权限： 
+完成此过程后，分配了此角色的任何用户均对订阅有下列权限：
 
 * 创建和配置网络基础结构
 * 创建群集控制器

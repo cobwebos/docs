@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jeconnoc
-ms.openlocfilehash: b8bcbabe4b355e4e9cd617e9003902885b8edd88
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5c807397af3ee06b490017b7e14f7b64123b5075
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872451"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645219"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
-本文介绍如何查看已在订阅中部署的每种网络资源类型的数量，以及[订阅限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)是什么。 根据限制查看资源使用情况的功能有助于跟踪当前使用情况，并为将来使用做出计划。 可以使用 [Azure 门户](#azure-portal)、[PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 跟踪使用情况。
+本文介绍如何查看已在订阅中部署的每种网络资源类型的数量，以及[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)是什么。 根据限制查看资源使用情况的功能有助于跟踪当前使用情况，并为将来使用做出计划。 可以使用 [Azure 门户](#azure-portal)、[PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 跟踪使用情况。
 
 ## <a name="azure-portal"></a>Azure 门户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户左上角选择“所有服务”  。
-3. 在“筛选器”框中，键入“订阅”。   当“订阅”出现在搜索结果中时，请选择它。 
+2. 在 Azure 门户左上角选择“所有服务”。
+3. 在“筛选器”框中，键入“订阅”。 当“订阅”出现在搜索结果中时，请选择它。
 4. 选择要查看其使用情况信息的订阅的名称。
-5. 在“设置”  下选择“使用情况 + 配额”  。
+5. 在“设置”下选择“使用情况 + 配额”。
 6. 可以选择以下选项：
    - **资源类型**：可选择所有资源类型，也可选择要查看的特定资源类型。
-   - **提供程序**：可选择所有资源提供程序，也可选择“计算”  、“网络”  或“存储”  。
+   - **提供程序**：可选择所有资源提供程序，也可选择“计算”、“网络”或“存储”。
    - **位置**：可以选择所有 Azure 位置，也可选择特定位置。
    - 可以选择显示所有资源，也可只显示至少部署了一个资源的资源。
 
@@ -43,15 +43,15 @@ ms.locfileid: "67872451"
 
        ![查看使用情况数据](./media/check-usage-against-limits/view-usage.png)
 
-     可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”  ，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
+     可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果从计算机运行 PowerShell，则需要 Azure PowerShell 模块1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
 
-使用 [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage) 根据限制查看使用情况。 以下示例获取在“美国东部”位置至少部署了一个资源的资源的使用情况：
+查看使用[AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)的限制的使用情况。 以下示例获取在“美国东部”位置至少部署了一个资源的资源的使用情况：
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `

@@ -3,12 +3,12 @@ title: 从门户更新现有分配
 description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
 ms.date: 11/21/2019
 ms.topic: how-to
-ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436586"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -55,7 +55,7 @@ ms.locfileid: "74873159"
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
 
-更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [Azure 资源管理器](../../../azure-resource-manager/resource-group-overview.md)支持的任何更改都可以进行，但是任何会在 Azure 资源管理器中导致错误的更改也将导致分配失败。
+更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [Azure 资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但是任何会在 Azure 资源管理器中导致错误的更改也将导致分配失败。
 
 可以更新分配的次数没有限制。 如果发生错误，请确定该错误并对分配进行其他更新。  示例错误场景：
 

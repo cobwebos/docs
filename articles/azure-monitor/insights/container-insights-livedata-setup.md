@@ -1,24 +1,14 @@
 ---
 title: 设置 Azure Monitor 容器实时数据（预览版） |Microsoft Docs
 description: 本文介绍如何设置容器日志（stdout/stderr）和事件的实时视图，而无需将 kubectl 与 Azure Monitor for 容器一起使用。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404700"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>如何设置实时数据（预览）功能
 
@@ -28,7 +18,7 @@ ms.locfileid: "73514363"
 
 - 没有启用 Kubernetes RBAC 授权的 AKS
 - 启用了 Kubernetes RBAC 授权的 AKS
-- 启用了基于 SAML 的 Azure Active Directory (AD) 单一登录的 AKS
+- AKS 启用了基于 SAML 的 Azure Active Directory （AD）单一登录
 
 这些说明需要对 Kubernetes 群集的管理访问权限，并且如果将配置为使用 Azure Active Directory （AD）进行用户身份验证，则可以通过管理访问 Azure AD。  
 
@@ -104,7 +94,7 @@ Azure 门户提示你验证 Azure Active Directory 群集的登录凭据，并�
 
 ## <a name="configure-ad-integrated-authentication"></a>配置 AD 集成身份验证 
 
-配置为使用 Azure Active Directory （AD）进行用户身份验证的 AKS 群集利用访问此功能的人员的登录凭据。 在此配置中，你可以使用自己的 Azure AD 身份验证令牌登录到 AKS 群集。
+配置为使用 Azure Active Directory （AD）进行用户身份验证的 AKS 群集利用访问此功能的人员的登录凭据。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。
 
 Azure AD 客户端注册必须重新配置为允许 Azure 门户将授权页面重定向为受信任的重定向 URL。 然后，将 Azure AD 中的用户通过**ClusterRoles**和**ClusterRoleBindings**向相同的 Kubernetes API 终结点授予访问权限。 
 
@@ -119,7 +109,7 @@ Azure AD 客户端注册必须重新配置为允许 Azure 门户将授权页面�
 
 2. 从左侧窗格中选择 "**身份验证**"。 
 
-3. 将两个重定向 Url 作为**Web**应用程序类型添加到此列表。 第一个基 URL 值应为 `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+3. 将两个重定向 Url 作为**Web**应用程序类型添加到此列表。 应 `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` 第一个基本 URL 值，并且应 `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`第二个基 URL 值。
 
     >[!NOTE]
     >如果在 Azure 中国区使用此功能，则应 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` 第一个基本 URL 值，并且应 `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`第二个基本 URL 值。 
@@ -127,10 +117,10 @@ Azure AD 客户端注册必须重新配置为允许 Azure 门户将授权页面�
 4. 注册重定向 Url 之后，在 "**高级设置**" 下，选择 "**访问令牌**" 和 " **ID 令牌**" 选项，并保存所做的更改。
 
 >[!NOTE]
->通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。
+>只能在初次部署新的 AKS 群集期间完成为单一登录配置身份 Azure Active Directory 验证。 不能为已部署的 AKS 群集配置单一登录。
   
 >[!IMPORTANT]
->如果使用更新的 URI 重新配置了用于用户身份验证的 Azure AD，请清除浏览器的缓存，确保更新的身份验证令牌已下载并应用。
+>如果使用更新的 URI 将 Azure AD 重新配置为进行用户身份验证，请清除浏览器的缓存，以确保下载并应用更新的身份验证令牌。
 
 ## <a name="grant-permission"></a>授予权限
 

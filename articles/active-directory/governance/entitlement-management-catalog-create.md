@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 的权利管理中创建和管理资源目录 Azure Active Directory
+title: 在授权管理中创建 & 管理资源-Azure AD
 description: 了解如何在 Azure Active Directory 的权利管理中创建新的资源容器和访问包。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422645"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
 
@@ -129,7 +129,7 @@ ms.locfileid: "73174426"
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="delete-a-catalog"></a>删除目录
 

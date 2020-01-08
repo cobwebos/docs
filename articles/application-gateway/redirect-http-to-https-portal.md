@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012870"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613323"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -27,11 +27,11 @@ ms.locfileid: "74012870"
 > * 添加侦听器和重定向规则
 > * 使用默认后端池创建虚拟机规模集
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
+本教程需要 Azure PowerShell 模块1.0.0 或更高版本来创建证书和安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -69,7 +69,7 @@ Export-PfxCertificate `
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 单击 Azure 门户左上角的“创建资源”。
-3. 选择“网络”，然后在“特别推荐”列表中选择“应用程序网关”。
+3. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
 4. 输入应用程序网关的以下值：
 
    - *myAppGateway* - 应用程序网关的名称。
@@ -90,9 +90,9 @@ Export-PfxCertificate `
 7. 单击“确定”创建虚拟网络和子网。
 8. 在“前端 IP 配置”下，确保“IP 地址类型”设置为“公用”，并且选择了“新建”。 输入 myAGPublicIPAddress 作为名称。 接受其他设置的默认值，然后单击“确定”。
 9. 在“侦听器配置”下，选择“HTTPS”，然后选择“选择文件”导航到 c:\appgwcert.pfx 文件并选择“打开”。
-10. 输入 appgwcert 作为证书名称并输入 Azure123456! 作为密码。
+10. 输入 appgwcert 作为证书名称并输入 Azure123456! 密码。
 11. 将 Web 应用程序防火墙保持为已禁用状态，然后选择“确定”。
-12. 检查摘要页上的设置，然后选择“确定”创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后再转到下一部分。
+12. 检查摘要页上的设置，然后选择“确定”创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
 
 ### <a name="add-a-subnet"></a>添加子网
 
@@ -118,15 +118,15 @@ Export-PfxCertificate `
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>添加具有重定向配置的路由规则
 
-1. 在“myAppGateway”上，选择“规则”，然后选择“+基本”。
-2. 对于“名称”，输入 Rule2。
+1. 在**myAppGateway**上，选择 "**规则**"，然后选择 " **+ 请求路由规则**"。
+2. 对于 "**规则名称**"，请键入*Rule2*。
 3. 确保对于侦听器选择 MyListener。
-4. 选中“配置重定向”复选框。
+4. 单击 "**后端目标**" 选项卡，然后选择**目标类型**作为*重定向*。
 5. 对于“重定向类型”，选择“永久”。
 6. 对于“重定向目标”，选择“侦听器”。
 7. 确保“目标侦听器”设置为“appGatewayHttpListener”。
-8. 选中“包含查询字符串”和“包含路径”复选框。
-9. 选择“确定”。
+8. 对于 "**包括查询字符串**" 和 "**包含路径**"，请选择 *"是"* 。
+9. 选择 **添加** 。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
@@ -215,13 +215,13 @@ Update-AzVmss `
 1. 选择“myAppGateway”。
 2. 在“概述”页面上，记下“前端公共 IP 地址”下的 IP 地址。
 
-3. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 http://52.170.203.149
+3. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如： http://52.170.203.149
 
    ![安全警告](./media/redirect-http-to-https-powershell/application-gateway-secure.png)
 
 4. 若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 IIS 网站，如下例所示：
 
-   ![应用程序网关中的测试基 URL](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
+   ![在应用程序网关中测试基 URL](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>后续步骤
 

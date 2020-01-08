@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 控制 VM
+    - name: 10 - 管理 VM
       href: tutorial-govern-resources.md
     - name: 11 - 跟踪和更新 VM
       href: tutorial-config-management.md

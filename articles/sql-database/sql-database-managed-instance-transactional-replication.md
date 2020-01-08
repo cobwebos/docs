@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823296"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691003"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -27,7 +27,7 @@ ms.locfileid: "73823296"
 在以下情况下，事务复制非常有用：
 - 发布数据库的一个或多个表中所做的更改，并将其分发到订阅了更改的一个或多个 SQL Server 或 Azure SQL 数据库。
 - 将多个分布式数据库保持同步状态。
-- 通过持续发布更改，将数据库从一个 SQL Server 或托管实例迁移到另一个数据库。
+- 通过连续发布所做的更改，将数据库从一个 SQL Server 或托管实例迁移到其他数据库。
 
 ## <a name="overview"></a>概述
 
@@ -45,7 +45,7 @@ ms.locfileid: "73823296"
 - SQL Server 2012 SP2 CU8 (11.0.5634.0)
 - 对于不支持发布到 Azure 中的对象的其他 SQL Server 版本，可以利用[重新发布数据](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)方法将数据转移到较新版本的 SQL Server。 
 
-**分发服务器**是从发布服务器收集项目中的更改，并将其分发到订阅服务器的实例或服务器。 分发服务器可以是 Azure SQL 数据库托管实例或 SQL Server（可以采用等于或高于发布服务器版本的任何版本）。 
+**分发服务器**是从发布服务器收集项目中的更改，并将其分发到订阅服务器的实例或服务器。 分发服务器可以是 Azure SQL 数据库托管实例或 SQL Server （任何版本，只要它等于或高于发布者版本）。 
 
 **订阅服务器**是接收发布服务器上发生的更改的实例或服务器。 订阅服务器可以是 Azure SQL 数据库或 SQL Server 数据库中的单一数据库、共用数据库和实例数据库。 单一数据库或共用数据库上的订阅服务器必须配置为推送订阅服务器。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "73823296"
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > 当分发服务器是实例数据库而订阅服务器不是时，不支持请求订阅。 
+  > 如果分发服务器是实例数据库，而订阅服务器不受支持，则不支持请求订阅。 
 
 有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
 
@@ -78,32 +78,35 @@ ms.locfileid: "73823296"
   > - 若要使用 Azure SQL 数据库的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的可支持性矩阵
-  实例数据库的复制可支持性矩阵与本地 SQL Server 的相同。 
+  实例数据库的复制可支持性矩阵与用于本地 SQL Server 的矩阵相同。 
   
-  | **发布者**   | **分发服务器** | **订阅服务器** |
+| **发布者**   | **分发服务器** | **订阅服务器** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>要求
 
 - 连接时，在复制参与者之间使用 SQL 身份验证。 
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
-- 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
-- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
+- 需要在托管实例子网的安全规则中打开端口445（TCP 出站）才能访问 Azure 文件共享。 
+- 如果发布服务器/分发服务器位于托管实例上并且订阅服务器在本地，则需要打开端口1433（TCP 出站）。
+- 所有类型的复制参与者（发布服务器、分发服务器、请求订阅服务器和推送订阅服务器）都可放置在托管实例上，但发布服务器和分发服务器必须都在云中或同时位于本地。
+- 如果发布服务器、分发服务器和/或订阅服务器存在于不同的虚拟网络中，则必须在每个实体之间建立 VPN 对等互连，以使发布服务器和分发服务器之间有 VPN 对等互连，并且/或在分发服务器和订阅服务器之间存在 VPN 对等互连。 
 
 
 >[!NOTE]
-> - 当分发服务器为实例数据库且订阅服务器位于本地时，如果阻止出站网络安全组 (NSG) 端口 445，则会在连接到 Azure 存储文件时遇到错误 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 以解决此问题。 
-> - 如果托管实例上的发布服务器和分发服务器数据库使用[自动故障转移组](sql-database-auto-failover-group.md)，则托管实例管理员必须[删除旧主节点上的所有发布内容，并在故障转移后在新的主节点上重新配置发布内容](sql-database-managed-instance-transact-sql-information.md#replication)。
+> - 连接到 Azure 存储文件时，如果出站网络安全组（NSG）端口445在分发服务器是实例数据库并且订阅服务器在本地时被阻止，则可能会遇到错误53。 [更新 VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以解决此问题。 
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 
-| | 数据同步 | 事务性复制 |
+| | 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
 | 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或共用数据库发布<br/>- 维护成本高 |
@@ -113,21 +116,21 @@ ms.locfileid: "73823296"
 
 一般情况下，发布服务器和分发服务器必须都在云中，或者都在本地。 支持以下配置： 
 
-### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>带本地分发服务器的发布服务器位于托管实例上
+### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>托管实例上具有本地分发服务器的发布服务器
 
 ![用作发布服务器和分发服务器的单个实例](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-发布服务器和分发服务器在单个托管实例中配置，并将更改分发到本地的其他托管实例、单一数据库、共用数据库或 SQL Server。 
+发布服务器和分发服务器在单个托管实例内进行配置，并将更改分发到其他托管实例、单一数据库、共用数据库或本地 SQL Server。 
 
-### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>带远程分发服务器的发布服务器位于托管实例上
+### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>托管实例上具有远程分发服务器的发布服务器
 
-在此配置中，由一个托管实例将更改发布到能够为许多源托管实例提供服务的另一个托管实例上的分发服务器，并将更改分发到托管实例、单一数据库、共用数据库或 SQL Server 上的一个或多个目标。
+在此配置中，一个托管实例将对分发服务器所做的更改发布到另一个托管实例上，该托管实例可为多个源托管实例提供服务，并将更改分发到托管实例、单一数据库、共用数据库或SQL Server。
 
 ![发布服务器和分发服务器的独立实例](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-在两个托管实例上配置发布服务器和分发服务器。 此配置存在一些约束： 
+在两个托管实例上配置发布服务器和分发服务器。 此配置有一些约束： 
 
-- 两个托管实例位于同一 vNet 中。
+- 这两个托管实例都位于同一 vNet 中。
 - 两个托管实例都位于同一位置。
 
 
@@ -137,19 +140,59 @@ ms.locfileid: "73823296"
  
 在此配置中，Azure SQL 数据库（单一数据库、共用数据库和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一数据库或共用数据库上，则它必须处于推送模式。  
 
+## <a name="with-failover-groups"></a>与故障转移组
+
+如果在[故障转移组](sql-database-auto-failover-group.md)中的**发布服务器**或**分发服务器**实例上启用了异地复制，则托管实例管理员必须清除旧主副本上的所有发布，并在发生故障转移后在新的主副本上重新配置这些发布。 在此方案中，需要执行以下活动：
+
+1. 停止在数据库上运行的所有复制作业（如果存在）。
+2. 通过在发布服务器数据库上运行以下脚本，删除发布服务器上的订阅元数据：
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. 删除订阅服务器上的订阅元数据。 在订阅服务器实例的订阅数据库上运行以下脚本：
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. 通过在发布的数据库中运行以下脚本，强制删除发布服务器中的所有复制对象：
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. 强制删除原始主实例中的旧分发服务器（如果故障回复到用于建立分发服务器的旧主实例）。 在旧的分发服务器托管实例中的 master 数据库上运行以下脚本：
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+如果在故障转移组中的**订阅服务器**实例上启用了异地复制，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型： 
+
+- 对于不丢失数据的故障转移，在故障转移后复制将继续工作。 
+- 对于发生数据丢失的故障转移，复制也能正常工作。 它将再次复制丢失的更改。 
+- 对于数据丢失的故障转移，但数据丢失超出了分发数据库的保持期，托管实例管理员将需要重新初始化订阅数据库。 
 
 ## <a name="next-steps"></a>后续步骤
 
-1. [配置两个托管实例之间的复制](replication-with-sql-database-managed-instance.md)。 
-1. [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
-1. 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 [）并使用 Azure SQL 数据库名称作为目标数据库（例如 ](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)Adventureworks`N'azuresqldbdns.database.windows.net`）来**创建推送订阅**。 ）
-1. 了解[托管实例的事务复制限制](sql-database-managed-instance-transact-sql-information.md#replication)
+- [配置 MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
+- [配置 MI 发布服务器、MI 分发服务器和 SQL Server 订阅服务器之间的复制](sql-database-managed-instance-configure-replication-tutorial.md)
+- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
+- 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.windows.net`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
+
+
+有关配置事务复制的详细信息，请参阅以下教程：
 
 
 
 ## <a name="see-also"></a>另请参阅  
 
-- [托管实例和故障转移组的复制](sql-database-managed-instance-transact-sql-information.md#replication)
+- [使用 MI 和故障转移组进行复制](sql-database-managed-instance-transact-sql-information.md#replication)
 - [复制到 SQL 数据库](replication-to-sql-database.md)
 - [复制到托管实例](replication-with-sql-database-managed-instance.md)
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

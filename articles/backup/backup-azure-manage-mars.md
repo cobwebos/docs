@@ -4,73 +4,16 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665587"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497009"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务（MARS）代理备份
 
 本文介绍如何管理 Microsoft Azure 恢复服务代理备份的文件和文件夹。
-
-## <a name="create-a-backup-policy"></a>创建备份策略
-
-备份策略指定何时拍摄数据快照以创建恢复点和恢复点的保留时间。 使用 MARS 代理配置备份策略。
-
-创建策略，如下所示：
-
-1. 下载并注册 MARS 代理后，启动代理控制台。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。  
-2. 在 "**操作**" 中，单击 "**计划备份**"。
-
-    ![计划 Windows Server 备份](./media/backup-configure-vault/schedule-first-backup.png)
-3. 在计划备份向导中 >**开始**，单击 "**下一步**"。
-4. 在 "**选择要备份的项**" 中，单击 "**添加项**"。
-
-    ![选择要备份的项](./media/backup-azure-manage-mars/select-item-to-backup.png)
-
-5. 在 "**选择项目**" 中，选择要备份的内容，然后单击 **"确定"** 。
-
-    ![要备份的选定项](./media/backup-azure-manage-mars/selected-items-to-backup.png)
-
-6. 在 "**选择要备份的项**" 页上，单击 "**下一步**"。
-7. 在 "**指定备份计划**" 页上，指定要进行每日或每周备份的时间。 然后单击“下一步”。
-
-    - 执行备份时，将创建恢复点。
-    - 你的环境中创建的恢复点的数量取决于你的备份计划。
-
-8. 你可以计划每日备份，一天最多三次。 例如，屏幕快照显示两个每日备份，一个为午夜，另一个在下午6:00。
-
-    ![每日计划](./media/backup-configure-vault/day-schedule.png)
-
-9. 还可以运行每周备份。 例如，屏幕截图显示每个备用星期日 & 星期三 9:30 AM 到 1:00 AM 创建的备份。
-
-    ![每周日程安排](./media/backup-configure-vault/week-schedule.png)
-
-10. 在 "**选择保留策略**" 页上，指定存储数据的历史副本的方式。 然后单击“下一步”。
-
-    - 保留设置指定应存储的恢复点，以及存储这些恢复点的时间长度。
-    - 例如，当你设置每日保留设置时，你指示在为每日保留指定的时间，将在指定的天数内保留最新的恢复点。 或者，您也可以指定每月保留策略，以指示每月30日创建的恢复点应存储12个月。
-    - 每日和每周恢复点保留期通常与备份计划一致。 这意味着，根据计划触发备份时，将在每日或每周保留策略中指定的持续时间内存储备份创建的恢复点。
-    - 例如，在以下屏幕截图中：-每日午夜备份和 6:00 PM 保留7天。
-            -在星期六午夜和下午6:00 进行的备份保留四周。
-            -在每月最后一周的午夜和 6:00 PM 进行的备份保留12个月。
-            -三月份的最后一周在星期六创建的备份保留10年。
-
-    ![保留示例](./media/backup-configure-vault/retention-example.png)
-
-11. 在 "**选择初始备份类型**" 中，决定是要通过网络进行初始备份还是使用脱机备份（有关脱机备份的详细信息，请参阅此[文](backup-azure-backup-import-export.md)）。 若要通过网络进行初始备份，请选择 "**自动通过网络**"，然后单击 "**下一步**"。
-
-    ![初始备份类型](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
-
-12. 在 "**确认**" 中，查看信息，然后单击 "**完成**"。
-    ![确认备份类型](./media/backup-azure-manage-mars/confirm-backup-type.png)
-
-13. 在向导完成创建备份计划后，请单击“**关闭**”。
-  ![确认修改备份过程](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
-
-你必须在安装了代理的每台计算机上创建一个策略。
 
 ## <a name="modify-a-backup-policy"></a>修改备份策略
 
@@ -83,7 +26,7 @@ ms.locfileid: "74665587"
   - 重新选择这些项，将导致首次完整备份，而新的策略更改不会应用于旧备份。
   - 取消选中整个卷将保留过去的备份，而不包含任何用于修改保留策略的作用域。
 - **排除设置**使用此选项可从备份中排除特定项目。
-  
+
 ### <a name="add-new-items-to-existing-policy"></a>将新项添加到现有策略
 
 1. 在 "**操作**" 中，单击 "**计划备份**"。
@@ -158,12 +101,17 @@ ms.locfileid: "74665587"
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保护并保留备份数据
 
 1. 打开 MARS 管理控制台，中转到 "**操作" 窗格**，然后**选择 "计划备份**"。
+
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/mars-actions.png)
 1. 在 "**选择策略项**" 页上，选择 "**修改文件和文件夹的备份计划**"，然后单击 "**下一步**"。
+
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 从 "**修改或停止计划的备份**" 页上，选择 **"停止使用此备份计划"，但保留存储的备份，直到再次激活计划**。 然后，选择“下一步”。  
+1. 从 "**修改或停止计划的备份**" 页上，选择 **"停止使用此备份计划"，但保留存储的备份，直到再次激活计划**。 然后，选择“下一步”。
+
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. 在 "**暂停计划的备份**" 中，查看信息，然后单击 "**完成**" ![修改或停止计划的备份。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. 在 "**暂停计划的备份**" 中，查看信息，然后单击 "**完成**"。
+
+    ![修改或停止计划的备份。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. 在 "**修改备份过程**" 中，检查计划备份暂停是否处于成功状态，并单击 "**关闭**" 完成操作。
 
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保护并删除备份数据
@@ -194,15 +142,34 @@ ms.locfileid: "74665587"
 如果在保留数据的同时停止了保护并决定恢复保护，则可以使用修改备份策略重新启用备份计划。
 
 1. 在 "**操作**" 中选择 "**计划备份**"。
-1. 选择**重新启用备份计划。你还可以修改备份项或时间**，然后单击 "**下一步**"。
+1. 选择**重新启用备份计划。你还可以修改备份项或时间**，然后单击 "**下一步**"。<br>
+
     ![删除备份基础结构。](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. 在 "**选择要备份的项**" 中，单击 "**下一步**"。
+
     ![删除备份基础结构。](./media/backup-azure-manage-mars/re-enable-next.png)
 1. 在 "**指定备份计划**" 中，指定备份计划，然后单击 "**下一步**"。
 1. 在 "**选择保留策略**" 中，指定保持期，并单击 "**下一步**"。
-1. 最后，在 "**聘约确认**" 屏幕中查看策略详细信息，然后单击 "**完成**"。
+1. 最后在**确认**屏幕中查看策略详细信息，然后单击 "**完成**"。
+
+## <a name="re-generate-passphrase"></a>重新生成密码
+
+使用密码来加密和解密数据，同时使用 MARS 代理从 Azure 备份或还原本地或本地计算机。 如果丢失或忘记了通行短语，则可以通过执行以下步骤，重新生成通行短语（前提是计算机仍注册了恢复服务保管库，并配置了备份）：
+
+- 在 MARS 代理控制台中，转到 "**操作" 窗格** > **更改属性**>。 然后，中转到**加密选项卡**。<br>
+- 选择 "**更改密码**" 复选框。<br>
+- 输入新密码或单击 "**生成密码**"。
+- 单击 "**浏览**" 保存新通行短语。
+
+    ![生成通行短语。](./media/backup-azure-manage-mars/passphrase.png)
+- 单击“确定”以应用更改。  如果在恢复服务保管库的 Azure 门户上启用了[安全功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features)，则系统会提示输入安全 PIN。 若要接收此 PIN，请按照[本文](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)中列出的步骤进行操作。<br>
+- 粘贴门户中的安全 PIN，并单击 **"确定"** 应用更改。<br>
+
+    ![生成通行短语。](./media/backup-azure-manage-mars/passphrase2.png)
+- 确保密码安全保存在备用位置（源计算机除外）中，最好是在 Azure Key Vault 中。 如果有多台计算机使用 MARS 代理进行备份，请跟踪所有密码。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关支持的方案和限制的详细信息，请参阅[MARS 的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
+- 有关支持的方案和限制的详细信息，请参阅[MARS 代理的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
 - 了解有关[按需备份策略保留行为的](backup-configure-vault.md#on-demand-backup-policy-retention-behavior)详细信息。

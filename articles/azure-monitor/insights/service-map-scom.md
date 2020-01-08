@@ -4,15 +4,15 @@ description: 用于 VM 的 Azure Monitor 自动发现 Windows 和 Linux 系统�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402622"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 映射功能集成
 

@@ -1,38 +1,38 @@
 ---
 title: Azure HDInsight 管理 IP 地址
-description: 了解必须允许来自哪些 IP 地址的入站流量，以便为 Azure HDInsight 中的虚拟网络正确配置网络安全组和用户定义的路由。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: 了解必须允许哪些 IP 地址来自的入站流量，以便正确配置网络安全组和用户定义的路由，以便与 Azure HDInsight 建立虚拟网络连接。
+author: hol82
+ms.author: hol
+ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/16/2019
+ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435484"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
 > [!Important]
 > 使用网络安全组的[服务标记](hdinsight-service-tags.md)功能。 将仅为服务标记添加新区域，并且最终将不推荐使用静态 IP 地址。
 
-如果使用网络安全组 (NSG) 或用户定义的路由 (UDR) 来控制流向 HDInsight 群集的入站流量，则必须确保群集能够与关键的 Azure 运行状况和管理服务通信。  这些服务的有些 IP 地址特定于区域，而有些则适用于所有 Azure 区域。 如果不使用自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
+如果使用网络安全组（Nsg）或用户定义的路由（Udr）来控制到 HDInsight 群集的入站流量，则必须确保群集可以与关键 Azure 运行状况和管理服务通信。  这些服务的某些 IP 地址是特定于区域的，其中某些地址适用于所有 Azure 区域。 如果不使用自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
 
-以下部分介绍了必须允许的特定 IP 地址。
+以下部分讨论了必须允许的特定 IP 地址。
 
 ## <a name="azure-dns-service"></a>Azure DNS 服务
 
-如果使用的是 Azure 提供的 DNS 服务，则允许通过端口 53 从 __168.63.129.16__ 进行访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
+如果你使用的是 Azure 提供的 DNS 服务，则允许从端口53上的__168.63.129.16__访问。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
 
 ## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 
-对于适用于所有 Azure 区域的 Azure HDInsight 运行状况和管理服务，允许来自其以下 IP 地址的流量：
+允许 Azure HDInsight 运行状况和管理服务的下列 IP 地址的流量适用于所有 Azure 区域：
 
-| 源 IP 地址 | 目标  | Direction |
+| 源 IP 地址 | 目标  | 方向 |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 入站 |
 | 23.99.5.239 | \*:443 | 入站 |
@@ -41,15 +41,15 @@ ms.locfileid: "74185655"
 
 ## <a name="health-and-management-services-specific-regions"></a>运行状况和管理服务：特定区域
 
-对于位于资源所在特定 Azure 区域中的 Azure HDInsight 运行状况和管理服务，允许来自以下 IP 地址的流量：
+允许 Azure HDInsight 运行状况和管理服务在资源所在的特定 Azure 区域中列出的 IP 地址的流量：
 
 > [!IMPORTANT]  
 > 如果你使用的 Azure 区域未列出，请使用网络安全组的[服务标记](hdinsight-service-tags.md)功能。
 
-| 国家/地区 | 地区 | 允许的源 IP 地址 | 允许的目标 | Direction |
+| 国家/地区 | 地区 | 允许的源 IP 地址 | 允许的目标 | 方向 |
 | ---- | ---- | ---- | ---- | ----- |
-| 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
-| &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
+| 亚洲 | 亚洲东部 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
+| &nbsp; | 亚洲东南部 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
 | 澳大利亚 | 澳大利亚东部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 入站 |
 | &nbsp; | 澳大利亚东南部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 入站 |
 | 巴西 | 巴西南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 入站 |
@@ -59,8 +59,8 @@ ms.locfileid: "74185655"
 | &nbsp; | 中国东部 | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | 入站 |
 | &nbsp; | 中国北部 2 | 40.73.37.141</br>40.73.38.172 | \*:443 | 入站 |
 | &nbsp; | 中国东部 2 | 139.217.227.106</br>139.217.228.187 | \*:443 | 入站 |
-| 欧洲 | 北欧 | 52.164.210.96</br>13.74.153.132 | \*:443 | 入站 |
-| &nbsp; | 西欧| 52.166.243.90</br>52.174.36.244 | \*:443 | 入站 |
+| 欧洲 | 欧洲北部 | 52.164.210.96</br>13.74.153.132 | \*:443 | 入站 |
+| &nbsp; | 欧洲西部| 52.166.243.90</br>52.174.36.244 | \*:443 | 入站 |
 | 法国 | 法国中部| 20.188.39.64</br>40.89.157.135 | \*:443 | 入站 |
 | 德国 | 德国中部 | 51.4.146.68</br>51.4.146.80 | \*:443 | 入站 |
 | &nbsp; | 德国东北部 | 51.5.150.132</br>51.5.144.101 | \*:443 | 入站 |
@@ -78,12 +78,13 @@ ms.locfileid: "74185655"
 | &nbsp; | 美国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 入站 |
 | &nbsp; | 美国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 入站 |
 | &nbsp; | 美国西部 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | 入站 |
+| &nbsp; | 阿拉伯联合酋长国北部 | 65.52.252.96</br>65.52.252.97 | \*:443 | 入站 |
 
 若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
 
 有关详细信息，请参阅[控制网络流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)一节。
 
-如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自 VNET 的出站流量到达下一跃点设置为“Internet”的上述 IP。
+如果你使用的是用户定义的路由（Udr），则应指定路由，并允许从 VNET 到上述 Ip 的出站流量，并将下一个跃点设置为 "Internet"。
 
 ## <a name="next-steps"></a>后续步骤
 

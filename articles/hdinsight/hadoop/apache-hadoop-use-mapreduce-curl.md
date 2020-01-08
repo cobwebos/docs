@@ -2,18 +2,18 @@
 title: 将 MapReduce 和 Curl 与 HDInsight 中的 Apache Hadoop 配合使用 - Azure
 description: 了解如何使用 Curl 通过 HDInsight 上的 Apache Hadoop 远程运行 MapReduce 作业。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 274d8dc80d9318aa3ddf4a904a5b623319ea01f4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716121"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644998"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -77,7 +77,7 @@ ms.locfileid: "64716121"
    * **-u**：指示用来对请求进行身份验证的用户名和密码
    * **-G**：指示此操作是 GET 请求。
 
-   URI 的开头 ( **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** ) 对于所有请求都是相同的。
+   URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`的开头对于所有请求都是相同的。
 
 4. 若要提交 MapReduce 作业，请使用以下命令：
 
@@ -111,7 +111,7 @@ ms.locfileid: "64716121"
      * **class**：包含 MapReduce 逻辑的类
      * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-   此命令应返回可用来检查作业状态的作业 ID：
+   此命令应会返回可用来检查作业状态的作业 ID：
 
        job_1415651640909_0026
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的数据流活动
+title: 数据流活动
 description: 如何从数据工厂管道内部执行数据流。
 services: data-factory
 documentationcenter: ''
@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/07/2019
-ms.openlocfilehash: 47126d1cf51f4b27863bb0b11e73cfe5592b8d57
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: d0b9c59852175b91b4bf799a366ae5124fa0ae42
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929879"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644778"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -30,6 +30,10 @@ ms.locfileid: "74929879"
       "dataflow": {
          "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
+      },
+      "compute": {
+         "coreCount": 8,
+         "computeType": "General"
       },
       "staging": {
           "linkedService": {
@@ -48,18 +52,20 @@ ms.locfileid: "74929879"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 描述 | 允许的值 | 需要
+属性 | Description | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
-integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReference | 是
+integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时 | IntegrationRuntimeReference | 否
+coreCount | Spark 群集中使用的内核数。 仅当使用自动解析 Azure 集成运行时，才能指定 | 8、16、32、48、80、144、272 | 否
+computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 Azure 集成运行时，才能指定 | "常规"、"ComputeOptimized"、"MemoryOptimized" | 否
 暂存。 linkedService | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | LinkedServiceReference | 仅当数据流读取或写入 SQL DW 时
-暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | 字符串 | 仅当数据流读取或写入 SQL DW 时
+暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | String | 仅当数据流读取或写入 SQL DW 时
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
 ### <a name="data-flow-integration-runtime"></a>数据流集成运行时
 
-选择要用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用具有四个辅助角色的 "自动解析 Azure 集成运行时" 和 "无生存时间（TTL）"。 此 IR 具有常规用途计算类型，并与工厂在同一区域中运行。 你可以创建自己的 Azure 集成运行时，用于定义数据流活动执行的特定区域、计算类型、核心计数和 TTL。
+选择要用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用带有四个辅助角色的自动解析 Azure 集成运行时，而不提供生存时间（TTL）。 此 IR 具有常规用途计算类型，并与工厂在同一区域中运行。 你可以创建自己的 Azure 集成运行时，用于定义数据流活动执行的特定区域、计算类型、核心计数和 TTL。
 
 对于管道执行，群集是作业群集，在执行开始之前需要几分钟时间启动。 如果未指定 TTL，则每次运行管道时都需要此启动时间。 如果指定 TTL，则在上一次执行之后指定的时间，温群集池将保持活动状态，从而缩短启动时间。 例如，如果 TTL 为60分钟，并且一小时运行一次数据流，则群集池将保持活动状态。 有关详细信息，请参阅[Azure 集成运行时](concepts-integration-runtime.md)。
 
@@ -78,13 +84,19 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 
 如果数据流使用参数化数据集，则在 "**设置**" 选项卡中设置参数值。
 
-![执行数据流参数](media/data-flow/params.png "parameters")
+![执行数据流参数](media/data-flow/params.png "参数")
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 
 如果您的数据流已参数化，则在 "**参数**" 选项卡中设置数据流参数的动态值。您可以使用 ADF 管道表达式语言（仅适用于字符串类型）或数据流表达式语言来分配动态或文本参数值。 有关详细信息，请参阅[数据流参数](parameters-data-flow.md)。
 
 ![Execute 数据流参数示例](media/data-flow/parameter-example.png "参数示例")
+
+### <a name="parameterized-compute-properties"></a>参数化计算属性。
+
+如果使用自动解析 Azure Integration runtime 并指定 coreCount 和 computeType 的值，则可以参数化核心计数或计算类型。
+
+![Execute 数据流参数示例](media/data-flow/parameterize-compute.png "参数示例")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>数据流活动的管道调试
 
@@ -143,6 +155,6 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

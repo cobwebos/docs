@@ -1,17 +1,17 @@
 ---
-title: 如何创建多个独立的适用于 Cosmos DB 的 Azure Functions 触发器
+title: 为 Cosmos DB 创建多个独立的 Azure Functions 触发器
 description: 了解如何配置多个独立的适用于 Cosmos DB 的 Azure Functions 触发器以创建事件驱动的体系结构。
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445356"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 
@@ -31,14 +31,14 @@ ms.locfileid: "70093382"
 
 可以使用以下两个选项：
 
-* 为每个函数创建一个租用容器：除非使用[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)，否则此方法可能会转化为其他成本。 请记住，容器级别的最小吞吐量是 400 个[请求单位](./request-units.md)，对于租用容器，它仅用于检查进度和维护状态。
-* 创建一个租用容器并为所有函数共享：第二个选项更好地利用了容器上预配的请求单元，因为它允许多个 Azure Functions 共享和使用相同的预配吞吐量。
+* 为**每个函数创建一个租约容器**：此方法可以转换为其他成本，除非使用的是[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)。 请记住，容器级别的最小吞吐量是 400 个[请求单位](./request-units.md)，对于租用容器，它仅用于检查进度和维护状态。
+* 有**一个租赁容器，并**为所有函数共享它：第二个选项可以更好地使用容器上预配的请求单位，因为它允许多个 Azure Functions 共享和使用相同的预配吞吐量。
 
 本文的目的是指导你完成第二个选项。
 
 ## <a name="configuring-a-shared-leases-container"></a>配置共享的租用容器
 
-若要配置共享的租用容器，需要在触发器上进行的唯一额外配置是在使用 C# 时添加 `LeaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes)，或在使用 JavaScript 时添加 `leaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example)。 属性的值应是特定触发器的逻辑描述符。
+若要配置共享租约容器，需要在触发器中进行的唯一额外配置是在使用C#或 `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example)时添加 `LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes)（如果使用的是 JavaScript）。 属性的值应是特定触发器的逻辑描述符。
 
 例如，如果有三个触发器：一个发送电子邮件，一个执行聚合以创建具体化视图，一个将更改发送到另一个存储，供以后分析，那么可以将“电子邮件”的 `LeaseCollectionPrefix` 分配到第一个触发器，“具体化”分配到第二个触发器，“分析”分配到第三个触发器。
 

@@ -2,19 +2,15 @@
 title: 了解如何在 Azure 自动化中载入更新管理、更改跟踪和清单解决方案
 description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 4/11/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ab934db026b598e80541f98d74df70c893692120
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421879"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -129,7 +125,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
-   ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)。
 
    系统会提示用户确认是否要继续。
 

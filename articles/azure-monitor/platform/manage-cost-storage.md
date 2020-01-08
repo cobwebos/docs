@@ -3,7 +3,7 @@ title: 管理 Azure Monitor 日志的使用情况和成本 |Microsoft Docs
 description: 了解如何在 Azure Monitor 中更改定价计划和管理 Log Analytics 工作区的数据量和保留策略。
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: magoedte
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f60b0b9294fa3f11889613a7d63f21e87fbea201
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894107"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658013"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本
 
@@ -90,7 +90,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 在2016年4月之前创建的工作区还可以访问原始**标准**和**高级**定价层，它们分别固定数据保持期30和365天。 无法在**标准**定价层或**高级**定价层中创建新工作区。如果工作区移出了这些层，则不能将其移回。 
 
-有关定价层限制的更多详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)文。
+有关定价层限制的更多详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)文。
 
 > [!NOTE]
 > 若要使用通过购买用于 System Center 的 OMS E1 套件、OMS E2 套件或 OMS 附加产品所获得的权利，请选择 Log Analytics 的“按节点”定价层。
@@ -438,7 +438,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
-   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
+   - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“24 小时内的数据量大于 100 GB”
@@ -452,7 +452,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
+   - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
@@ -487,7 +487,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 ## <a name="limits-summary"></a>限制摘要
 
-还有其他 Log Analytics 限制，其中一些限制依赖于 Log Analytics 定价层。 [此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)介绍了这些内容。
+还有其他 Log Analytics 限制，其中一些限制依赖于 Log Analytics 定价层。 [此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)介绍了这些内容。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996623"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658332"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -46,9 +46,9 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>应用程序网关子网中的网络安全组
 
-应用程序网关上支持网络安全组（Nsg）。 但有几个限制：
+应用程序网关上支持网络安全组（Nsg）。 但存在一些限制：
 
-- 对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为*Any*）。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 外部实体（包括这些网关的客户）无法在没有适当证书的情况下在这些终结点上启动更改。
+- 对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为**Any** and Source as **GatewayManager** service 标记）。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 外部实体（包括这些网关的客户）无法在这些终结点上进行通信。
 
 - 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 internet 连接。 建议：
 
@@ -57,12 +57,12 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 - 必须允许来自**AzureLoadBalancer**标记的流量。
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 Ip
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 Ip
 
 对于此方案，请在应用程序网关子网中使用 Nsg。 按照此优先级顺序在子网上施加以下限制：
 
-1. 允许来自源 IP 或 IP 范围的传入流量和目标作为整个应用程序网关子网，或作为特定的已配置专用前端 IP。 NSG 不适用于公共 IP。
-2. 对于应用程序网关 v1 SKU，允许所有源的传入请求传入端口65503-65534，为 v2 SKU 允许端口65200-65535 进行[后端运行状况通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 如果没有适当的证书，外部实体将无法在这些终结点上启动更改。
+1. 允许来自源 IP 或 IP 范围的传入流量，其目标为整个应用程序网关子网地址范围和目标端口作为入站访问端口，例如，HTTP 访问端口80。
+2. 允许来自源的传入请求作为**GatewayManager**服务标记，目标作为应用程序网关 v1 SKU 为65503-65534 的**任何**和目标端口，为 v2 sku 允许端口65200-65535 用于[后端运行状况状态通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 如果没有适当的证书，外部实体将无法在这些终结点上启动更改。
 3. 允许[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)上的传入 Azure 负载均衡器探测（*AzureLoadBalancer*标记）和入站虚拟网络流量（*VirtualNetwork*标记）。
 4. 使用 "全部拒绝" 规则阻止其他所有传入流量。
 5. 允许所有目的地的 Internet 出站流量。
@@ -74,10 +74,10 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 对于 v2 SKU，应用程序网关子网不支持 Udr。 有关详细信息，请参阅[Azure 应用程序 Gateway V2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
 
 > [!NOTE]
-> V2 SKU 不支持 Udr。  如果需要 Udr，应继续部署 v1 SKU。
+> 目前，v2 SKU 不支持 Udr。
 
 > [!NOTE]
-> 在应用程序网关子网上使用 Udr 会导致[后端运行状况视图](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状况状态显示为 "未知"。 它还会导致生成应用程序网关日志和指标失败。 建议你不要在应用程序网关子网中使用 Udr，以便可以查看后端运行状况、日志和指标。
+> 在应用程序网关子网上使用 Udr 可能会导致[后端运行状况视图](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状况状态显示为 "未知"。 它还可能导致生成应用程序网关日志和指标失败。 建议你不要在应用程序网关子网中使用 Udr，以便可以查看后端运行状况、日志和指标。
 
 ## <a name="front-end-ip"></a>前端 IP
 
@@ -165,7 +165,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 可以集中 SSL 证书管理，并减少后端服务器场的加密解密开销。 集中式 SSL 处理还允许指定适合于安全要求的中央 SSL 策略。 你可以选择*默认*、*预定义*或*自定义*SSL 策略。
 
-你可以配置 SSL 策略来控制 SSL 协议版本。 你可以将应用程序网关配置为使用 TLS 1.0、TLS 1.1 和 TLS 1.2 中 TLS 握手的最小协议版本。 默认情况下，SSL 2.0 和3.0 处于禁用状态且不可配置。 有关详细信息，请参阅[应用程序网关 SSL 策略概述](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)。
+你可以配置 SSL 策略来控制 SSL 协议版本。 你可以将应用程序网关配置为将最低协议版本用于 TLS 1.0、TLS 1.1 和 TLS 1.2 中的 TLS 握手。 默认情况下，SSL 2.0 和3.0 处于禁用状态且不可配置。 有关详细信息，请参阅[应用程序网关 SSL 策略概述](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)。
 
 创建侦听器后，将其与请求路由规则相关联。 该规则确定如何将侦听器上收到的请求路由到后端。
 
@@ -256,7 +256,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="connection-draining"></a>连接清空
 
-连接排出有助于在计划内服务更新期间正常删除后端池成员。 你可以在创建规则期间将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例都继续维持现有连接，并为可配置的超时提供正在进行的请求，而不会收到任何新的请求或连接。 这种情况的唯一例外是，由于网关托管会话相关性，将请求绑定到 deregistring 实例，并将继续代理到 deregistring 实例。 连接排出适用于从后端池中显式删除的后端实例。
+连接排出有助于在计划内服务更新期间正常删除后端池成员。 你可以在创建规则期间将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例都继续维持现有连接，并为可配置的超时提供正在进行的请求，而不会收到任何新的请求或连接。 这种情况的唯一例外是，由于网关托管会话相关性，为注销实例绑定的请求将继续转发到取消注册实例。 连接排出适用于从后端池中显式删除的后端实例。
 
 ### <a name="protocol"></a>协议
 

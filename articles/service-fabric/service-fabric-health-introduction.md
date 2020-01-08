@@ -1,25 +1,16 @@
 ---
-title: Service Fabric 中的运行状况监视 | Microsoft 文档
+title: Service Fabric 中的运行状况监视
 description: Azure Service Fabric 运行状况监视模型简介，该模型对群集及其应用程序和服务进行监视。
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60949120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433904"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -37,9 +28,9 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 ## <a name="health-entities-and-hierarchy"></a>运行状况实体和层次结构
 运行状况实体采用逻辑层次结构进行组织，该结构会捕获不同实体之间的交互和依赖项。 基于从 Service Fabric 组件收到的报告，运行状况存储自动生成实体和层次结构。
 
-运行状况实体镜像 Service Fabric 实体。 （例如，**运行状况应用程序实体**匹配群集中部署的应用程序实例，**运行状况节点实体**匹配 Service Fabric 群集节点。）运行状况层次结构捕获系统实体的交互并且是进行高级运行状况评估的基础。 可以通过 [Service Fabric 技术概述](service-fabric-technical-overview.md)了解 Service Fabric 的关键概念。 有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](service-fabric-application-model.md)。
+运行状况实体镜像 Service Fabric 实体。 （例如，**运行状况应用程序实体**匹配群集中部署的应用程序实例，**运行状况节点实体**匹配 Service Fabric 群集节点。）运行状况层次结构捕获系统实体的交互，它是高级运行状况评估的基础。 可以通过 [Service Fabric 技术概述](service-fabric-technical-overview.md)了解 Service Fabric 的关键概念。 有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](service-fabric-application-model.md)。
 
-利用运行状况实体和层次结构，可有效报告、调试和监视群集和应用程序。 运行状况模型为群集中许多移动片段的运行状况提供准确而*精细*的表示。
+利用运行状况实体和层次结构，能够有效地报告、调试和监视群集和应用程序。 运行状况模型为群集中许多移动片段的运行状况提供准确而*精细*的表示。
 
 ![运行状况实体。][1]
 运行状况实体基于父-子关系在层次结构中进行组织。
@@ -49,7 +40,7 @@ Service Fabric 组件使用这种提供丰富信息的运行状况模型报告�
 运行状况实体是：
 
 * **群集**。 表示 Service Fabric 群集的运行状况。 群集运行状况报告说明影响整个群集的条件。 这些条件会影响群集中的多个实体或群集本身。 根据条件，报告者不能将问题缩小到一个或多个不正常子级范围内。 示例包括因网络分区或通信问题而导致的群集裂脑。
-* **节点**。 表示 Service Fabric 节点的运行状况。 节点运行状况报告说明影响节点功能的条件。 它们通常会影响在其上运行的所有已部署的实体。 示例包括当节点磁盘空间不足（或其他计算机范围属性，例如内存、连接）以及节点已关闭时。 节点实体由节点名称（字符串）标识。
+* **Node**。 表示 Service Fabric 节点的运行状况。 节点运行状况报告说明影响节点功能的条件。 它们通常会影响在其上运行的所有已部署的实体。 示例包括当节点磁盘空间不足（或其他计算机范围属性，例如内存、连接）以及节点已关闭时。 节点实体由节点名称（字符串）标识。
 * **应用程序**。 表示在群集中运行的应用程序实例的运行状况。 应用程序运行状况报告说明影响应用程序整体运行状况的条件。 它们不能将范围缩小至单个的子项（服务或已部署的应用程序）。 示例包括应用程序中不同服务之间的端到端交互。 应用程序实体由应用程序名称 (URI) 标识。
 * **服务**。 表示在群集中运行的服务的运行状况。 服务运行状况报告说明影响服务整体运行状况的条件。 报告者不能将问题范围缩小到不正常分区或副本。 示例包括导致全部分区问题的服务配置（如端口或外部文件共享）。 服务实体由服务名称 (URI) 标识。
 * **分区**。 表示服务分区的运行状况。 分区运行状况报告说明影响整个副本集的条件。 示例包括当副本数目低于目标计数以及当分区发生仲裁丢失时。 分区实体由分区 ID (GUID) 标识。
@@ -114,9 +105,9 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 可配置的策略是：
 
 * [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定是否在运行状况评估期间将“警告”运行状况报告视为错误。 默认值：false。
-* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 指定应用程序被视为“错误”之前可以保留不正常的已部署应用程序的最大容忍百分比。 此百分比的计算方式为：不正常的已部署应用程序数除以群集中目前已部署应用程序的节点数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比：零。
+* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 指定应用程序被视为“错误”之前可以保留不正常的已部署应用程序的最大容忍百分比。 此百分比是将不正常的已部署应用程序数目除以目前在群集中部署的应用程序节点数目计算得出的。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 默认百分比：零。
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 指定默认服务类型运行状况策略，该策略会替换应用程序中所有服务类型的默认运行状况策略。
-* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 针对每个服务类型提供服务运行状况策略的映射。 这些策略取代每个指定服务类型的默认服务类型运行状况策略。 例如，如果某个应用程序包含无状态网关服务类型和有状态引擎服务类型，可以针对这些类型的评估配置不同的运行状况策略。 按服务类型指定策略时，可以更精细地控制服务的运行状况。
+* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 针对每个服务类型提供服务运行状况策略的映射。 这些策略取代每个指定服务类型的默认服务类型运行状况策略。 例如，如果某个应用程序包含无状态网关服务类型和有状态引擎服务类型，可以针对这些类型的评估配置不同的运行状况策略。 针对每个服务类型指定策略时，可以更精细地控制服务的运行状况。
 
 ### <a name="service-type-health-policy"></a>服务类型运行状况策略
 [服务类型运行状况策略](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy)指定如何评估和聚合服务及服务的子项。 该策略包含：
@@ -161,7 +152,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 [2]: ./media/service-fabric-health-introduction/servicefabric-health-report-eval-error.png
 
-如果没有任何“错误”报告但有一个或多个“警告”，则聚合的健康状况为“警告”或“错误”，具体取决于 ConsiderWarningAsError 策略标志。
+如果没有任何“错误”报告并有一个或多个“警告”，已聚合运行状况状态则为“警告”或“错误”，具体取决于 ConsiderWarningAsError 策略标志。
 
 ![运行状况报告与“警告”报告聚合，ConsiderWarningAsError 为 false。][3]
 
@@ -208,7 +199,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * **说明**。 报告器用于提供有关运行状况事件的详细信息的字符串。 **SourceId**、**属性**和 **HealthState** 应完整说明报告。 说明中添加了用户可读的报告相关信息。 文本可让管理员和用户更容易了解运行状况报告。
 * **HealthState**。 说明报告的运行状况状态的[枚举](service-fabric-health-introduction.md#health-states)。 已接受值为“确定”、“警告”和“错误”。
 * **TimeToLive**。 指示运行状况报告的有效时间的时间跨度。 结合 **RemoveWhenExpired** 时，它能够使运行状况存储知道如何评估过期的事件。 默认情况下，此值为无穷大，表示报告将永远有效。
-* **RemoveWhenExpired**。 一个布尔值。 如果设置为 true，过期的运行状况报告会自动从运行状况存储中删除，并且该报告不会影响实体运行状况评估。 仅当报告在一段指定时间内有效且报告器不需要显式清除它时使用。它也用于从运行状况存储中删除报告（例如，更改监视器，并停止发送具有以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，过期的报告在运行状况评估中则被视为错误。 false 值向运行状况存储发出指示，源应该对此属性进行定期报告。 如果没有报告，则一定是监视器出现了一些问题。 通过将事件视为错误来捕获监视器运行状况。
+* **RemoveWhenExpired**。 一个布尔值。 如果设置为 true，过期的运行状况报告会自动从运行状况存储中删除，并且该报告不会影响实体运行状况评估。 当报表仅在指定的时间段内有效，并且报告器不需要显式清除它时使用。它也用于从运行状况存储中删除报告（例如，更改监视器，并停止发送具有以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，过期的报告在运行状况评估中则被视为错误。 false 值向运行状况存储发出指示，源应该对此属性进行定期报告。 如果没有报告，则一定是监视器出现了一些问题。 通过将事件视为错误来捕获监视器运行状况。
 * **SequenceNumber**。 需要不断增加的正整数，它表示报告的顺序。 运行状况存储使用它来检测因网络延迟或其他问题而较晚收到的过时报告。 针对相同的实体、源和属性，如果序列号小于或等于最新应用的序列号，则报告会被拒绝。 如果未指定，则会自动生成序列号。 只有在报告状态转换时，才需放入序列号。 在此情况下，源必须记住它所发送的报告，并保留信息以便在故障转移时进行恢复。
 
 每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。 不允许 SourceId 字符串以前缀“**System.** ”开头，该字符串是为系统报告保留的。 对于相同实体，相同的源和属性只有一个报告。 如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。 根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。
@@ -229,7 +220,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * 仅针对在最后 X 分钟内更改的条件发出警报。 如果在指定时间之前，报告已处于“错误”状态，则可以忽略它，因为之前已对它发出指示。
 * 如果属性在“警告”和“错误”之间切换，则确定它处于不正常状态（即不“正常”）的时长。 例如，当属性处于不正常状态超过 5 分钟时发出警报，可以转化为（HealthState != 正常并且立即 - LastOkTransitionTime > 5 分钟）。
 
-## <a name="example-report-and-evaluate-application-health"></a>例如：报告和评估应用程序运行状况
+## <a name="example-report-and-evaluate-application-health"></a>示例：报告和评估应用程序运行状况
 下列示例在源 **MyWatchdog** 中的应用程序 **fabric:/WordCount** 上通过 PowerShell 发送运行状况报告。 运行状况报告包含有关“错误”运行状况状态下的运行状况属性可用性的信息，含无限 TimeToLive。 然后，它会查询应用程序运行状况，此查询会返回已聚合运行状况状态错误和运行状况事件列表中已报告的运行状况事件。
 
 ```powershell

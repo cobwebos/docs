@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444136"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -111,7 +111,7 @@ ADF 副本可在不同级别进行缩放：
 
    在此示例中，在运行复制的过程中，Azure 数据工厂会通知接收器 Azure SQL 数据库已达到高 DTU 使用率，从而减慢了写入操作的速度。 建议增加具有更多 Dtu 的 Azure SQL 数据库层。 
 
-   ![使用性能调优技巧进行复制监视](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+   ![包含性能优化提示的复制监视](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
    此外，还应注意以下一些性能优化功能：
 
@@ -242,12 +242,12 @@ Azure 数据工厂提供以下性能优化功能：
 
 在复制活动中配置**enableStaging**设置，以指定在将数据加载到目标数据存储之前，是否要在 Blob 存储中对数据进行暂存。 将**enableStaging**设置为 `TRUE`时，请指定下表中列出的其他属性。 还需要为过渡创建 Azure 存储或存储共享访问签名链接服务（如果没有）。
 
-| properties | 描述 | 默认值 | 需要 |
+| 属性 | Description | 默认值 | 需要 |
 | --- | --- | --- | --- |
-| enableStaging |指定是否要通过过渡暂存存储复制数据。 |错误 |No |
+| enableStaging |指定是否要通过过渡暂存存储复制数据。 |错误 |否 |
 | linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能将存储与共享访问签名一起使用，以通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |N/A |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| 路径 |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，服务将创建一个容器来存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |No |
-| enableCompression |指定是否应在将数据复制到目标之前对其进行压缩。 此设置可减少传输的数据量。 |错误 |No |
+| 路径 |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，服务将创建一个容器来存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |否 |
+| enableCompression |指定是否应在将数据复制到目标之前对其进行压缩。 此设置可减少传输的数据量。 |错误 |否 |
 
 >[!NOTE]
 > 如果在启用了压缩的情况下使用暂存复制，则不支持暂存 blob 链接服务的服务主体或 MSI 身份验证。
@@ -293,7 +293,8 @@ Azure 数据工厂提供以下性能优化功能：
 
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure 存储，包括 Blob 存储和表存储： [Azure 存储可伸缩性目标](../storage/common/storage-scalability-targets.md)和[azure 存储性能和可伸缩性清单](../storage/common/storage-performance-checklist.md)。
+* Azure Blob 存储： [blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)，以及[Blob 存储的性能和可伸缩性清单](../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：表存储[的可伸缩性和性能目标](../storage/tables/scalability-targets.md)，以及[表存储的性能和可伸缩性清单](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可以[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位（DTU）百分比。
 * Azure SQL 数据仓库：其功能以数据仓库单位（Dwu）度量。 请参阅[管理 AZURE SQL 数据仓库中的计算能力（概述）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB： [Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。

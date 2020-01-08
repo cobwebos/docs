@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123541"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647724"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
 本文介绍如何管理 Azure HDInsight 上的现有 ML 服务群集，以执行以下任务：添加多个并发用户、远程连接到 ML 服务群集、更改计算上下文等。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。
 
-* 安全外壳（SSH）客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（将 SSH 与 HDInsight 配合使用）。
+* 安全外壳（SSH）客户端：使用 SSH 客户端远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（将 SSH 与 HDInsight 配合使用）。
 
 ## <a name="enable-multiple-concurrent-users"></a>允许多个并发用户
 
@@ -70,7 +70,7 @@ ms.locfileid: "71123541"
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>步骤 3：通过已创建的用户使用 RStudio Community 版本
 
-从 https://CLUSTERNAME.azurehdinsight.net/rstudio/ 访问 RStudio。 如果是在创建群集后首次登录，请输入群集管理员凭据后跟创建的 SSH 用户凭据。 如果不是首次登录，则仅输入所创建的 SSH 用户的凭据。
+从 `https://CLUSTERNAME.azurehdinsight.net/rstudio/` 访问 RStudio。 如果是在创建群集后首次登录，请输入群集管理员凭据后跟创建的 SSH 用户凭据。 如果不是首次登录，则仅输入所创建的 SSH 用户的凭据。
 
 也可同时使用原始凭据（默认为 sshuser）从其他浏览器窗口登录。
 

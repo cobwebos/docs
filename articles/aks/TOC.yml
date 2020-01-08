@@ -55,7 +55,7 @@
       href: concepts-clusters-workloads.md
     - name: 访问和标识
       href: concepts-identity.md
-    - name: 安全
+    - name: 安全性
       href: concepts-security.md
       items: null
     - name: 网络
@@ -104,7 +104,7 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes 服务诊断概述
       href: concepts-diagnostics.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 群集操作
       items:
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: 轮换证书
           href: certificate-rotation.md
+        - name: 创建专用群集
+          href: private-clusters.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor
@@ -236,7 +238,7 @@
           href: windows-container-cli.md
         - name: 远程连接
           href: rdp.md
-        - name: 已知限制
+        - name: 已知的限制
           href: windows-node-limitations.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
@@ -309,6 +311,9 @@
         - name: 使用 Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+        - name: 使用 Azure API 管理
+          href: ../api-management/api-management-kubernetes.md
+          maintainContext: true
     - name: 选择并部署服务网格
       items:
         - name: 关于服务网格
@@ -355,7 +360,7 @@
           href: kube-advisor-tool.md
         - name: SSH 节点访问权限
           href: ssh.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/aks

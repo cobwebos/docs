@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428849"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>用于公共基本负载均衡器的 Azure Monitor 日志
 
@@ -38,10 +38,10 @@ ms.locfileid: "74214915"
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 启用事件和运行状况探测日志记录，开始收集通过这些日志提供的数据。 使用以下步骤启用日志记录。
 
-登录到 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal)，再继续。
+登录 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal)，再继续。
 
 1. 在门户中，单击 "**资源组**"。
-2. 选择负载均衡器 **>\<资源组名称**。
+2. 选择负载均衡器 **\<资源组名称**。
 3. 选择负载均衡器。
 4. 选择 "**监视** > **诊断设置**"。
 5. 在 "**诊断设置**" 窗格的 "**诊断设置**" 下，选择 " **+ 添加诊断设置**"。
@@ -171,7 +171,7 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *DipDown
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="stream-to-an-event-hub"></a>流式传输到事件中心
-将诊断信息流式传输到事件中心时，可以将其用于在 Azure Monitor 集成的第三方 SIEM 工具中进行集中式日志分析。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+将诊断信息流式传输到事件中心时，可以将其用于在 Azure Monitor 集成的第三方 SIEM 工具中进行集中式日志分析。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>发送到 Log Analytics
 Azure 中的资源可以将其诊断信息直接发送到 Log Analytics 工作区，在此工作区中，可以针对疑难解答和分析信息运行复杂的查询。  有关详细信息，请参阅[在 Azure Monitor 中 Log Analytics 工作区收集 Azure 资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)

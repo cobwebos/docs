@@ -1,26 +1,21 @@
 ---
 title: 统一多个 Azure Monitor Application Insights 资源 | Microsoft Docs
 description: 本文详细介绍了如何在 Azure Monitor 日志中使用函数来查询多个 Application Insights 资源并直观呈现这些数据。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364962"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
-本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据, 即使它们位于不同的 Azure 订阅中, 也可以取代 Application Insights 连接器的弃用。 可以在单个查询中包含的 Application Insights 资源的数量限制为 100。
+本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据，即使它们位于不同的 Azure 订阅中，也可以取代 Application Insights 连接器的弃用。 可在单个查询中包含 Application Insights 资源数限制为100。
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>用于查询多个 Application Insights 资源的建议做法 
 在查询中列出多个 Application Insights 资源可能很繁琐且难以维护。 可以改为利用函数将查询逻辑从应用程序范围中分离出来。  
@@ -37,9 +32,9 @@ ApplicationInsights
 可以通过导航到工作区中的查询资源管理器，然后选择要编辑的函数并保存，或使用 `SavedSearch` PowerShell cmdlet 来随时修改列出的应用程序。 
 
 >[!NOTE]
->此方法不能用于日志警报, 因为警报规则资源 (包括工作区和应用程序) 的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 如果希望在日志警报中使用资源范围的函数, 则需要在门户中编辑警报规则, 或使用资源管理器模板来更新已确定作用域的资源。 或者, 可以在日志警报查询中包含资源列表。
+>此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 如果希望在日志警报中使用资源范围的函数，则需要在门户中编辑警报规则，或使用资源管理器模板来更新已确定作用域的资源。 或者，可以在日志警报查询中包含资源列表。
 
-`withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 Parse 运算符在此示例中是可选的, 并使用从 SourceApp 属性中提取应用程序名称。 
+`withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 Parse 运算符在此示例中是可选的，并使用从 SourceApp 属性中提取应用程序名称。 
 
 ```
 union withsource=SourceApp 
@@ -70,7 +65,7 @@ applicationsScoping
 停止连接器时，如果需要在 Application Insights 数据保留（90 天）调整的时间范围内执行查询，则需于中期在工作区和 Application Insights 资源上执行[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)。 应用程序数据按照上述新的 Application Insights 数据保留累积之前均是如此。 由于 Application Insights 和工作区中的架构不同，因此查询需要一些操作。 请参阅本节后面的表格，其中突出显示了架构差异。 
 
 >[!NOTE]
->新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换 – 但是此警报规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 管理，而不可以从 Mzure 门户进行管理。
+>新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 例如，如果连接器于 2018 年 11 月 1 日停止工作，则在 Application Insights 资源和工作区中的应用程序数据之间查询日志时，查询的构造方式类似于以下示例：
 
@@ -103,44 +98,44 @@ applicationsScoping //this brings data from Application Insights resources
 | ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
-| AvailabilityDuration | 持续时间 |
-| AvailabilityMessage | 消息 |
+| AvailabilityDuration | duration |
+| AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
-| City | client_city |
+| 浏览器 | client_browser |
+| 城市 | client_city |
 | ClientIP | client_IP |
-| 计算机 | cloud_RoleInstance | 
-| Country | client_CountryOrRegion | 
+| Computer | cloud_RoleInstance | 
+| 国家/地区 | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
 | DeviceModel | client_Model | 
-| DeviceType | client_Type | 
+| DeviceType | client_type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | 消息 | 
+| ExceptionMessage | message | 
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
 | PageViewCount | itemCount |
-| PageViewDuration | 持续时间 | 
+| PageViewDuration | duration | 
 | PageViewName | name | 
-| ParentOperationID | operation_id | 
+| ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
-| RequestDuration | 持续时间 | 
+| RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | success | 
+| RequestSuccess | 成功 | 
 | ResponseCode | resultCode | 
-| Role | cloud_RoleName |
+| 角色 | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryType | type |
 | URL | url |
 | UserAccountId | user_AccountId |
 

@@ -1,18 +1,18 @@
 ---
 title: 如何使用用于 VM 的 Azure Monitor（预览版）绘制性能图表 | Microsoft Docs
-description: “性能”是用于 VM 的 Azure Monitor 的一项功能，可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文详细介绍如何在各种场景中使用映射。
+description: “性能”是用于 VM 的 Azure Monitor 的一项功能，可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文详细介绍如何在各种场景中使用该功能。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399284"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>如何使用用于 VM 的 Azure Monitor（预览版）绘制性能图表
 
@@ -38,7 +38,7 @@ ms.locfileid: "72555177"
 * 可用内存 - 显示平均可用内存量最低的 5 台计算机 
 * 已用逻辑磁盘空间百分比 - 显示所有磁盘卷中平均已用磁盘空间百分比最高的 5 台计算机 
 * 字节发送速率 - 显示平均发送字节数最高的 5 台计算机 
-* 字节接收速率 - 显示平均发送字节数最高的 5 台计算机 
+* 字节接收速率-显示最高五台计算机，接收的字节数最高。 
 
 单击其中任何一个图表右上角的 "固定" 图标，即可将所选图表固定到上次查看的 Azure 仪表板。  在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表将重定向到用于 VM 的 Azure Monitor 并加载正确的作用域和视图。  
 
@@ -83,7 +83,7 @@ ms.locfileid: "72555177"
 若要直接从虚拟机访问，请执行以下步骤。
 
 1. 在 Azure 门户中，选择“虚拟机”。 
-2. 在列表中选择 VM，然后在“监视”部分选择“见解(预览版)”。  
+2. 在列表中，选择 VM 并“监视”分区中选择“见解(预览)”。  
 3. 选择“性能”选项卡。 
 
 此页面不仅包含性能利用率图表，而且还包含一个表格，其中显示了发现的每个逻辑磁盘、其容量、利用率，以及按每个度量列出的总平均值。  

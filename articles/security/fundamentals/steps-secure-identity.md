@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353239"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -112,9 +112,14 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 使用假设违规思路会减少用户凭据泄露造成的影响。 对于环境中的每个应用，请考虑有效的方案：要为哪些组、哪些网络、哪些设备和其他元素授权 – 然后阻止余下的部分。 使用[Azure AD 条件性访问](../../active-directory/conditional-access/overview.md)，你可以根据你定义的特定条件控制授权用户访问其应用和资源的方式。
 
-### <a name="block-end-user-consent"></a>阻止最终用户许可
+### <a name="restrict-user-consent-operations"></a>限制用户同意操作
 
-默认情况下，Azure AD 中的所有用户都可以向利用 OAuth 2.0 和 Microsoft 标识[许可框架](../../active-directory/develop/consent-framework.md)的应用程序授予对公司数据的访问权限。 尽管许可确实可让用户轻松获取与 Microsoft 365 和 Azure 集成的有用应用程序，但如果使用不当或未受到密切的监视，它可能会带来风险。 [禁用将来的所有用户许可操作](../../active-directory/manage-apps/methods-for-removing-user-access.md)有助于减小受攻击面并缓解此风险。 如果禁用最终用户许可，则仍会遵循以前的许可授予，但将来的所有许可操作必须由管理员执行。 在禁用此功能前，建议确保用户了解如何请求对新应用程序进行管理员批准;执行此操作应有助于减少用户的摩擦，最小化支持量，并确保用户不会使用非 Azure AD 凭据注册应用程序。
+务必了解各种[Azure AD 的应用程序许可体验](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)、[权限类型和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)，以及他们对组织安全状况的影响。 默认情况下，Azure AD 中的所有用户都可以授予利用 Microsoft 标识平台的应用程序访问你组织的数据。 尽管允许用户自行同意，但允许用户轻松获取与 Microsoft 365、Azure 和其他服务集成的有用应用程序，如果不小心使用和监视，则可能会造成风险。
+
+Microsoft 建议[禁用未来的用户同意操作](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application)，以帮助减少您的 surface 区域并降低这种风险。 如果禁用了最终用户许可，则仍将接受以前的许可授权，但所有未来的同意操作都必须由管理员执行。 用户可以通过集成的[管理员同意请求工作流](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)或通过你自己的支持过程来请求管理员许可。 在禁用此功能之前，建议你查看审核日志以了解用户同意的应用程序并相应地计划更改。 对于你希望允许所有用户访问的应用程序，请考虑[代表所有用户授予同意](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)，以确保尚未单独同意的用户能够访问该应用程序。 如果你不希望所有方案中的所有用户都可以使用这些应用程序，请使用[应用程序分配](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)和[条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)限制用户对应用的访问权限。
+
+请确保用户可以为新的应用程序请求管理员批准，以减少用户的不受限制，最小化支持量，并防止用户使用非 Azure AD 凭据注册应用程序。 在您对同意操作进行控制后，管理员应定期审核应用和许可权限。
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>实施 Azure AD Privileged Identity Management
 
@@ -173,7 +178,9 @@ Azure AD 标识保护提供两份应该每日监视的重要报告：
 
 ### <a name="audit-apps-and-consented-permissions"></a>审核应用和许可的权限
 
-用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应该审查并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户授予的权限。
+用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应查看并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户提供的权限，或者禁止用户在默认情况下授予许可。 
+
+除了审核用户提供的权限之外，它还有助于尝试并专门[查找有风险或不需要的 OAuth 应用程序](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)，这是高级环境可用的一项功能。
 
 ## <a name="step-5---enable-end-user-self-service"></a>步骤 5-启用最终用户自助服务
 
@@ -191,7 +198,7 @@ Azure AD 使非管理员能够使用安全组、Office 365 组、应用程序角
 
 通过[Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)，你可以管理访问包和组成员身份、访问企业应用程序和特权角色分配，以确保维护安全标准。  用户自身、资源所有者和其他审阅者进行定期监督，确保用户在不再需要访问权限时，不会长时间保留访问权限。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 保护安全标识基础结构涉及到很多方面，但此五步骤查检表可帮助你快速实现一个更可靠的安全标识基础结构：
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810394"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552774"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>什么是 SQL 数据库实例池（预览版）？
 
@@ -61,7 +61,7 @@ ms.locfileid: "73810394"
 
 实例池与常规托管实例（*单一实例*）具有相似的体系结构。 为了支持 [Azure 虚拟网络（vnet）中的部署](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) 并为客户提供隔离和安全性，实例池还依赖于 [虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)。 虚拟群集表示在客户的虚拟网络子网中部署的一组专用虚拟机。
 
-这两个部署模型之间的主要区别在于，实例池允许多个 SQL Server 处理同一虚拟机节点上的部署（这是使用[Windows 作业对象](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)进行资源管理的资源），而单一实例则始终独立于虚拟机节点。
+这两个部署模型之间的主要区别在于，实例池允许多个 SQL Server 进程部署在同一虚拟机节点上（这是使用[Windows 作业对象](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)管理的资源），而单个实例在虚拟机节点上始终是唯一的。
 
 下图显示了在同一子网中部署的实例池和两个单独的实例，并阐释了这两种部署模型的主要体系结构详细信息：
 
@@ -108,7 +108,7 @@ ms.locfileid: "73810394"
 
 要求你选择特定值的可选功能或功能（例如，实例级别的排序规则、时区、数据流量的公共终结点、故障转移组）在实例级别配置，并且对于池中的每个实例都可能不同。
 
-## <a name="performance-considerations"></a>性能注意事项
+## <a name="performance-considerations"></a>性能考虑
 
 尽管池中的托管实例有专用的 vCore 和 RAM，但它们共享本地磁盘（用于 tempdb 使用情况）和网络资源。 这不太可能，但如果池中的多个实例同时消耗大量资源，则可能会遇到干扰性的*邻居*影响。 如果观察到此行为，请考虑将这些实例部署到更大的池或单个实例。
 
@@ -126,7 +126,7 @@ ms.locfileid: "73810394"
 
 如果遇到与池中的单个实例或数据库相关的问题，则应为 Azure SQL 数据库托管实例创建常规支持票证。
 
-若要创建更大的托管实例部署（具有或不具有实例池），可能需要获得更大的区域配额。 使用[标准托管实例过程请求更大的配额](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)，但请注意，如果使用的是实例池，则部署逻辑会*将池级别的*vCore 总消耗量与配额进行比较，以确定是否允许创建新资源，而无需进一步增加配额。
+若要创建更大的托管实例部署（具有或不具有实例池），可能需要获得更大的区域配额。 使用[标准托管实例过程来请求更大的配额](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)，但请注意，如果使用的是实例池，则部署逻辑会*将池级别的*vCore 总消耗量与配额进行比较，以确定是否允许创建新的资源，而无需进一步增加配额。
 
 ## <a name="instance-pool-billing"></a>实例池计费
 
@@ -136,7 +136,7 @@ ms.locfileid: "73810394"
 
 对于计算价格（以 Vcore 度量），提供两个定价选项：
 
-  1. *包含的许可证*：将现有 SQL Server 许可证应用于软件保障。
+  1. *随附的许可证*：包含 SQL 许可证的价格。 这适用于选择不应用现有 SQL Server 许可证和软件保障的客户。
   2. *Azure 混合权益*：为 SQL Server 提供 Azure 混合权益的减少价格。 客户可以通过使用具有软件保障的现有 SQL Server 许可证来选择此价格。 有关资格和其他详细信息，请参阅[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 对于池中的单个实例，不能设置不同的定价选项。 父池中的所有实例都必须是许可证附带价格或 Azure 混合权益价格。 创建池后，可以更改池的许可证模型。

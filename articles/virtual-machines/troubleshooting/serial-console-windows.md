@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0d48f3eacad86dac520d837b80605a75cce8cfd5
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451257"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -29,7 +29,7 @@ Azure 门户中的串行控制台提供对 Windows 虚拟机（Vm）和虚拟机
 有关适用于 Linux 的串行控制台文档，请参阅[适用于 linux 的 Azure 串行控制台](serial-console-linux.md)。
 
 > [!NOTE]
-> 串行控制台已在全球 Azure 区域正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
+> 在全球 Azure 区域和 Azure 政府公共预览版中，此串行控制台已正式发布。 它目前在 Azure 中国云中不可用。
 
 
 ## <a name="prerequisites"></a>必备组件
@@ -124,7 +124,7 @@ Azure 上的更新版本的 Windows Server 映像在默认情况下已启用[特
 有关配置 Windows 在收到 NMI 时创建故障转储文件的信息，请参阅[如何使用 NMI 生成故障转储文件](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)。
 
 ### <a name="use-function-keys-in-serial-console"></a>在串行控制台中使用函数密钥
-针对 Windows VM 中的串行控制台的使用情况，将启用函数密钥。 利用串行控制台下拉列表中的 F8 可以很方便地进入高级启动设置菜单，但串行控制台与所有其他功能键兼容。 根据使用串行控制台的计算机，你可能需要在键盘上按**Fn**  + **F1** （或 F2，F3 等）。
+针对 Windows VM 中的串行控制台的使用情况，将启用函数密钥。 利用串行控制台下拉列表中的 F8 可以很方便地进入高级启动设置菜单，但串行控制台与所有其他功能键兼容。 根据使用串行控制台的计算机，你可能需要在键盘上按**Fn** + **F1** （或 F2，F3 等）。
 
 ### <a name="use-wsl-in-serial-console"></a>在串行控制台中使用 WSL
 针对 Windows Server 2019 或更高版本，已启用 Windows Subsystem for Linux (WSL)，因此如果运行 Windows Server 2019 或更高版本，也可以启用 WSL 以用于串行控制台。 这对于熟悉 Linux 命令的用户可能有所帮助。 有关为 Windows Server 启用 WSL 的说明，请参阅[安装指南](https://docs.microsoft.com/windows/wsl/install-on-server)。
@@ -170,7 +170,7 @@ Azure 上的更新版本的 Windows Server 映像在默认情况下已启用[特
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>要访问串行控制台的常见场景
 
-场景          | 串行控制台中的操作
+方案          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。
 文件系统损坏/检查 | 访问串行控制台并恢复文件系统。
@@ -181,7 +181,7 @@ RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，
 ## <a name="known-issues"></a>已知问题
 我们注意到串行控制台和 VM 的操作系统出现一些问题。 下面列出了这些问题以及 Windows Vm 的缓解步骤。 这些问题和缓解措施适用于 Vm 和虚拟机规模集实例。 如果这些错误与你看到的错误不匹配，请参阅常见的串行控制台服务错误和[常见的串行控制台错误](./serial-console-errors.md)。
 
-问题                             |   缓解措施
+问题                             |   缓解操作
 :---------------------------------|:--------------------------------------------|
 在出现连接标题后按 **Enter** 不会显示登录提示。 | 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口的启动配置，则可能会发生此错误。 如果你运行的是 Windows 10 VM，则也会发生此错误，因为只有 Windows Server Vm 配置为启用 EMS。
 连接到 Windows VM 时，仅显示运行状况信息| 如果尚未为 Windows 映像启用特殊管理控制台，则会出现此错误。 有关如何在 Windows VM 上手动启用 SAC 的说明，请参阅[在自定义或更低版本的映像中启用串行控制台](#enable-the-serial-console-in-custom-or-older-images)。 有关详细信息，请参阅 [Windows 运行状况信号](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)。

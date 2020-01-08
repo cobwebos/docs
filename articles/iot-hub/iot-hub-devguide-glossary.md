@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457160"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -47,22 +47,22 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 [Microsoft Azure 门户](https://portal.azure.com)是一个中心位置，可在其中预配和管理 Azure 资源。 该门户使用_边栏选项卡_组织其内容。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
+[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 你可以使用 cmdlet 创建、测试、部署和管理通过 Azure 平台提供的解决方案和服务。
 
-## <a name="azure-resource-manager"></a>Azure 资源管理器
-可以使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
+## <a name="azure-resource-manager"></a>Azure Resource Manager
+可以使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
 
 ## <a name="azure-service-bus"></a>Azure 服务总线
 通过[服务总线](../service-bus/index.md)，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储器
 [Azure 存储](../storage/common/storage-introduction.md)是一种云存储解决方案。 它包含可用于存储非结构化的对象数据的 Blob 存储服务。 某些 IoT 中心教程使用 blob 存储。
 
 ## <a name="back-end-app"></a>后端应用
 在 [IoT 中心](#iot-hub)环境中，后端应用是指连接到 IoT 中心的一个面向服务的终结点的应用。 例如，后端应用可能检索[设备到云](#device-to-cloud)的消息或管理[标识注册表](#identity-registry)。 通常，后端应用在云中运行，但在许多教程中，后端应用是在本地开发计算机上运行的控制台应用。
 
 ## <a name="built-in-endpoints"></a>内置终结点
-每个 IoT 中心都包括一个与事件中心兼容的内置[终结点](iot-hub-devguide-endpoints.md)。 可以使用任何适用于事件中心的机制从此终结点读取设备到云消息。
+每个 IoT 中心都包括一个与事件中心兼容的内置[终结点](iot-hub-devguide-endpoints.md)。 可使用任何适用于事件中心的机制从该终结点读取设备到云的消息。
 
 ## <a name="cloud-gateway"></a>云网关
 云网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 与在设备本地运行的[现场网关](#field-gateway)相反，云网关在云中托管。 云网关的一个典型用例是实现设备的协议转换。
@@ -161,11 +161,11 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 ## <a name="iot-hub"></a>IoT 中心
 IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
 
-## <a name="iot-hub-metrics"></a>IoT 中心度量值
+## <a name="iot-hub-metrics"></a>IoT 中心指标
 [IoT 中心指标](iot-hub-metrics.md)向用户提供有关 [Azure 订阅](#subscription)中的 IoT 中心的状态数据。 可以使用 IoT 中心度量值评估服务以及连接到服务的设备的总体运行状况。 IoT 中心度量值可以帮助用户了解 IoT 中心发生的情况，并调查根本原因，而无需联系 Azure 支持部门。
 
 ## <a name="iot-hub-query-language"></a>IoT 中心查询语言
-[IoT 中心查询语言](iot-hub-devguide-query-language.md)是一种类似于 SQL 的语言，用于查询 [](#job) 和设备孪生。
+[IoT 中心查询语言](iot-hub-devguide-query-language.md)是一种类似于 SQL 的语言， [用于查询](#job) 和设备孪生。
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT 中心资源 REST API
 使用 [IoT 中心资源 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)，可以管理 [Azure 订阅](#subscription)中的 IoT 中心，包括创建、更新和删除中心等操作。
@@ -177,7 +177,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。
 
 ## <a name="job"></a>作业
-解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)中[导入和导出](#identity-registry)内容。
+解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)内容。
 
 ## <a name="modules"></a>模块
 在设备端，可以使用 IoT 中心设备 SDK 创建[模块](iot-hub-devguide-module-twins.md)，其中每个模块都与 IoT 中心单独建立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。
@@ -254,10 +254,10 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 设备收集遥测数据，如风速或温度，并使用数据点消息将遥测数据发送到 IoT 中心。
 
 ## <a name="token-service"></a>令牌服务
-可以使用令牌服务对设备实施身份验证机制。 它使用包含 [DeviceConnect](#shared-access-policy) 权限的 IoT 中心**共享访问策略** 创建*设备范围的*令牌。 这些令牌可让设备连接到 IoT 中心。 设备通过令牌服务使用自定义的身份验证机制进行身份验证。 如果设备成功通过身份验证，那么令牌服务向设备颁发 SAS 令牌用于访问 IoT 中心。
+可以使用令牌服务对设备实施身份验证机制。 它使用包含 **DeviceConnect** 权限的 IoT 中心[共享访问策略](#shared-access-policy) 创建*设备范围的* 令牌。 这些令牌可让设备连接到 IoT 中心。 设备通过令牌服务使用自定义的身份验证机制进行身份验证。 如果设备成功通过身份验证，那么令牌服务向设备颁发 SAS 令牌用于访问 IoT 中心。
 
 ## <a name="twin-queries"></a>孪生查询
-[设备和模块孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生或模块孪生中检索信息。 可以使用相同的 IoT 中心查询语言，检索在 IoT 中心内运行的 [](#job) 的相关信息。
+[设备和模块孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生或模块孪生中检索信息。 可以使用相同的 IoT 中心查询语言，检索在 IoT  [中心内运行的](#job) 的相关信息。
 
 ## <a name="twin-synchronization"></a>孪生同步
 孪生同步使用设备孪生或模块孪生中的[所需属性](#desired-properties)配置设备或模块，并检索其中的[报告属性](#reported-properties)，以将这些属性存储在孪生中。

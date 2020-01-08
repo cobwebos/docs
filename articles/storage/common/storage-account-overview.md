@@ -1,21 +1,22 @@
 ---
-title: Azure 存储帐户概述 | Microsoft Docs
+title: 存储帐户概述
+titleSuffix: Azure Storage
 description: 了解用于创建和使用 Azure 存储帐户的选项。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460615"
 ---
-# <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
+# <a name="storage-account-overview"></a>存储帐户概述
 
 Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为 Azure 存储数据提供唯一的命名空间，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 Azure 存储帐户中的数据是持久的、高度可用的、安全且高度可缩放的。
 
@@ -55,11 +56,11 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 大多数情况下，应使用常规用途 v2 帐户。 可以在以下情况下使用常规用途 v1 帐户：
 
-* 应用程序需要 Azure 经典部署模型。 常规用途 v2 帐户和 Blob 存储帐户仅支持 Azure 资源管理器部署模型。
+- 应用程序需要 Azure 经典部署模型。 常规用途 v2 帐户和 Blob 存储帐户仅支持 Azure 资源管理器部署模型。
 
-* 您的应用程序需要进行事务密集型或使用大量异地复制带宽，但不需要大容量。 在这种情况下，常规用途 v1 可能是最经济节省的选择。
+- 您的应用程序需要进行事务密集型或使用大量异地复制带宽，但不需要大容量。 在这种情况下，常规用途 v1 可能是最经济节省的选择。
 
-* 你使用的是早于2014-02-14 的[存储 REST API 服务](https://msdn.microsoft.com/library/azure/dd894041.aspx)的版本，或者使用的是版本低于4.x 的客户端库。 无法升级应用程序。
+- 你使用的是早于2014-02-14 的[存储 REST API 服务](https://msdn.microsoft.com/library/azure/dd894041.aspx)的版本，或者使用的是版本低于4.x 的客户端库。 无法升级应用程序。
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帐户
 
@@ -86,12 +87,12 @@ FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 �
 
 可为以下任一性能层配置常规用途存储帐户：
 
-* 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。
-* 仅用于存储非托管虚拟机磁盘的高级性能层。
+- 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。 有关标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](scalability-targets-standard-account.md)。
+- 仅用于存储非托管虚拟机磁盘的高级性能层。 Microsoft 建议将托管磁盘与 Azure 虚拟机配合使用，而不是使用非托管磁盘。 有关高级性能层的可伸缩性目标的详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
 
-BlockBlobStorage 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。
+BlockBlobStorage 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。 有关详细信息，请参阅[高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)。
 
-FileStorage 存储帐户为 Azure 文件共享提供高级性能层。
+FileStorage 存储帐户为 Azure 文件共享提供高级性能层。 有关详细信息，请参阅[Azure 文件可伸缩性和性能目标](../files/storage-files-scale-targets.md)。
 
 ## <a name="access-tiers-for-block-blob-data"></a>块 Blob 数据的访问层
 
@@ -99,9 +100,9 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 可用的访问层包括：
 
-* **热**访问层。 此层经过优化，可用于频繁访问存储帐户中的对象。 访问热层中的数据是最具成本效益的，而存储成本则更高。 默认情况下，新存储帐户在热层中创建。
-* **冷**访问层。 此层经过优化，可存储不常访问且至少在30天内存储的大量数据。 将数据存储在酷层中更为经济高效，但访问数据比访问热层中的数据可能更昂贵。
-* **存档**层。 此级别仅适用于单个块 blob。 存档层针对的数据进行了优化，这些数据可容忍几个小时的检索延迟，并将在至少180天内保留在存档层中。 存档层是存储数据的最具成本效益的选项。 但是，访问这些数据比访问热层或冷层中的数据更昂贵。
+- **热**访问层。 此层经过优化，可用于频繁访问存储帐户中的对象。 访问热层中的数据是最具成本效益的，而存储成本则更高。 默认情况下，新存储帐户在热层中创建。
+- **冷**访问层。 此层经过优化，可存储不常访问且至少在30天内存储的大量数据。 将数据存储在酷层中更为经济高效，但访问数据比访问热层中的数据可能更昂贵。
+- **存档**层。 此级别仅适用于单个块 blob。 存档层针对的数据进行了优化，这些数据可容忍几个小时的检索延迟，并将在至少180天内保留在存档层中。 存档层是存储数据的最具成本效益的选项。 但是，访问这些数据比访问热层或冷层中的数据更昂贵。
 
 如果数据的使用模式发生了变化，则可以随时在这些访问层之间进行切换。 有关访问层的详细信息，请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -124,13 +125,13 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 例如，如果常规用途存储帐户名为 *mystorageaccount*，则该帐户的默认终结点为：
 
-* Blob 存储： http://*mystorageaccount*.blob.core.windows.net
-* 表存储： http://*mystorageaccount*.table.core.windows.net
-* 队列存储： http://*mystorageaccount*.queue.core.windows.net
-* Azure 文件： http://*mystorageaccount*.file.core.windows.net
+- Blob 存储： `https://*mystorageaccount*.blob.core.windows.net`
+- 表存储： `https://*mystorageaccount*.table.core.windows.net`
+- 队列存储： `https://*mystorageaccount*.queue.core.windows.net`
+- Azure 文件： `https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
-> 块 blob 和 blob 存储帐户仅公开 blob 服务终结点。
+> 块 blob 和 blob 存储帐户仅公开 Blob 服务终结点。
 
 通过在存储帐户中将对象的位置附加到终结点，构造用于访问该对象的 URL。 例如，Blob 地址可能具有以下格式： http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
 
@@ -171,7 +172,7 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 
 你可以创建自定义应用程序，将数据从常规用途 v1 存储帐户迁移到 Blob 存储帐户中。 使用其中一个 Azure 客户端库或 Azure 存储服务 REST API。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对可以由发出 HTTP/HTTPS 请求的任何语言调用的 REST API 进行开发。
 
-有关 Azure 存储 REST API 的详细信息，请参阅 [Azure 存储服务 REST API 参考](https://docs.microsoft.com/rest/api/storageservices/)。 
+有关 Azure 存储 REST API 的详细信息，请参阅 [Azure 存储服务 REST API 参考](https://docs.microsoft.com/rest/api/storageservices/)。
 
 > [!IMPORTANT]
 > 使用客户端加密进行加密的 Blob 会将与加密相关的元数据与 Blob 一起存储。 如果复制使用客户端加密来加密的 Blob，请确保复制操作保留 Blob 元数据，尤其是与加密相关的元数据。 如果复制不包含此加密元数据的 Blob，则不能再次检索 Blob 内容。 有关加密相关元数据的详细信息，请参阅 [Azure 存储客户端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
@@ -182,6 +183,5 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建存储帐户](storage-quickstart-create-account.md)
-* [创建块 Blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)
-* [管理 Azure 存储帐户](storage-account-manage.md)
+- [创建存储帐户](storage-quickstart-create-account.md)
+- [创建块 Blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)

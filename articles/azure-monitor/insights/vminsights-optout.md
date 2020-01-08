@@ -4,15 +4,15 @@ description: 本文介绍如何在用于 VM 的 Azure Monitor 中停止监视虚
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: 70e71688fde5aff4002c7d49b1408bcefeab1eed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399305"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>禁用用于 VM 的 Azure Monitor 中的 Vm 监视（预览版）
 
@@ -43,7 +43,7 @@ ms.locfileid: "72555164"
 >如果在启用用于 VM 的 Azure Monitor 之前使用了服务映射监视解决方案，但仍依赖于它，请不要删除此解决方案，如以下过程的最后一步所述。  
 >
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，列表会根据输入筛选建议。 选择“Log Analytics”。
 3. 在 Log Analytics 工作区列表中，选择启用用于 VM 的 Azure Monitor 时选择的工作区。
 4. 在左侧选择 "**解决方案**"。  
@@ -64,7 +64,7 @@ ms.locfileid: "72555164"
 >
 > 如果删除 Log Analytics 代理，则会阻止这些服务和解决方案主动管理你的 VM。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在 Azure 门户中，选择“虚拟机”。 
 3. 从列表中选择一个虚拟机。 
 4. 在左侧选择 "**扩展**"。 在 "**扩展**" 页上，选择 " **DependencyAgent**"。

@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423533"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登录用户的 Web 应用：代码配置
 
@@ -31,11 +31,11 @@ ms.locfileid: "74964865"
 <!-- This section can be in an include for Web App and Web APIs -->
 用于保护 web 应用（和 web API）的库包括：
 
-| 平台 | 库 | 描述 |
+| 平台 | 库 | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 适用于 .NET Framework .NET 的 Microsoft 标识模型扩展，可由 ASP.NET 和 ASP.NET Core 直接使用。 从 ASP.NET 或 ASP.NET Core web 应用，可以使用**TokenValidationParameters**类（特别是在某些合作伙伴方案中）控制令牌验证。 |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 适用于 Java 的 Microsoft 身份验证库（MSAL）。 当前在公共预览版中。 |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 用于 Python 的 MSAL。 当前在公共预览版中。 |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 对 Java web 应用程序的支持 |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 支持 Python web 应用程序 |
 
 选择与你感兴趣的平台相对应的选项卡：
 
@@ -210,7 +210,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core web 应用（和 web Api）中，应用程序受到保护，因为控制器或控制器操作具有 `[Authorize]` 属性。 此属性检查是否对用户进行了身份验证。 正在初始化该应用程序的代码位于 Startup.cs 文件中。 
+在 ASP.NET Core web 应用（和 web Api）中，应用程序受到保护，因为控制器或控制器操作具有 `[Authorize]` 属性。 此属性检查是否对用户进行了身份验证。 正在初始化该应用程序的代码位于 Startup.cs 文件中。
 
 若要通过 Microsoft 标识平台（以前称为 Azure AD v2.0）添加身份验证，则需要添加以下代码。 代码中的注释应一目了然。
 
@@ -221,7 +221,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 可从[启动 .cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)获取以下代码。
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -256,7 +256,7 @@ public class Startup
 
 如果身份验证不起作用，则跟踪 OpenId Connect 中间件事件可帮助你对 web 应用程序进行故障排除。 将 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` 设置为 `true` 将向你显示在 ASP.NET Core 中间件从 HTTP 响应前进到 `HttpContext.User`中的用户标识时，如何详细阐述信息。
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -321,7 +321,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 与 ASP.NET web 应用和 web Api 中的身份验证相关的代码位于[App_Start/startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61)文件中。
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -345,7 +345,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了一个筛选器，该筛选器会截获每个 HTTP 响应。 在 Java web 应用快速入门中，此筛选器在 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`中 `AuthFilter`。 
+Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了一个筛选器，该筛选器会截获每个 HTTP 响应。 在 Java web 应用快速入门中，此筛选器在 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`中 `AuthFilter`。
 
 筛选器处理 OAuth 2.0 授权代码流，并检查用户是否已通过身份验证（`isAuthenticated()` 方法）。 如果用户未通过身份验证，则会计算 Azure AD 授权终结点的 URL，并将浏览器重定向到此 URI。
 

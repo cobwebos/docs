@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443379"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>为多租户应用程序选择适当的联合身份验证协议
 
@@ -44,9 +44,9 @@ ms.locfileid: "74232294"
 
 ## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 和 Open ID Connect
 
-OAuth 2.0 是一种[行业标准](https://oauth.net/2/)的授权协议。 OIDC （OpenID Connect）是在 Oath 2.0 协议基础之上构建的[行业标准](https://openid.net/connect/)标识身份验证层。
+OAuth 2.0 是一种[行业标准](https://oauth.net/2/)的授权协议。 OIDC （OpenID Connect）是在 OAuth 2.0 协议基础之上构建的[行业标准](https://openid.net/connect/)标识身份验证层。
 
-### <a name="benefits"></a>优点
+### <a name="benefits"></a>优势
 
 Microsoft 建议使用 OIDC/OAuth 2.0，因为它们具有内置于协议的身份验证和授权。 对于 SAML，还必须实现授权。
 
@@ -74,7 +74,7 @@ Microsoft 建议使用 OIDC/OAuth 2.0，因为它们具有内置于协议的身�
 
 Web Services 联合身份验证（WSFed）是一种[行业标准](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)，通常用于使用 .net 平台开发的 web 应用程序。
 
-### <a name="benefits"></a>优点
+### <a name="benefits"></a>优势
 
 SAML 2.0 是一种成熟的标准，大多数技术平台支持 SAML 2.0 的开源库。 可以为客户提供管理界面来配置 SAML SSO。 它们可以配置 SAML SSO for Microsoft Azure AD 和任何其他支持 SAML 2 的标识提供者
 

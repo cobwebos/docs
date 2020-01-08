@@ -113,13 +113,13 @@
       items:
         - name: 存储帐户
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 安全
+        - name: 安全性
           items:
-            - name: 安全概述
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 安全建议
+              href: security-recommendations.md
             - name: Azure 存储加密
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 授权
+            - name: 授权数据操作
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
                 - name: 通过 Azure AD 授权
@@ -130,6 +130,8 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 匿名访问 Blob
                   href: storage-manage-access-to-resources.md
+            - name: 授权管理操作
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 不可变 blob
               href: storage-blob-immutable-storage.md
             - name: 高级威胁防护
@@ -165,8 +167,6 @@
               href: storage-lifecycle-management-concepts.md
         - name: 性能、缩放和成本优化
           items:
-            - name: 可伸缩性和性能目标
-              href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 性能和可伸缩性清单
               href: storage-performance-checklist.md
             - name: Blob 存储中的延迟
@@ -259,11 +259,9 @@
           items:
             - name: 创建常规用途存储帐户
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
-              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 创建块 Blob 存储帐户
               href: storage-blob-create-account-block-blob.md
-            - name: 管理存储帐户
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 升级存储帐户
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 获取帐户类型和 SKU 名称 (.NET)
@@ -276,8 +274,6 @@
               href: storage-blob-containers-list.md
             - name: 管理属性和元数据 (.NET)
               href: storage-blob-container-properties-metadata.md
-            - name: 设置和管理不可变性策略
-              href: storage-blob-immutability-policies-manage.md
         - name: 创建并管理 blob
           items:
             - name: 列出 Blob (.NET)
@@ -296,8 +292,10 @@
                   items:
                     - name: 门户
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell 或 Azure CLI
-                      href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: PowerShell
+                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: Azure CLI
+                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 使用 RBAC 管理访问权限
                   items:
                     - name: 门户
@@ -314,6 +312,8 @@
                       href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 通过共享密钥进行授权
                   items:
+                    - name: 查看和管理帐户密钥
+                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: 配置连接字符串
                       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: 使用 Azure 存储 REST API
@@ -368,6 +368,8 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 启用传输层安全性
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 设置和管理不可变性策略
+              href: storage-blob-immutability-policies-manage.md
         - name: 灾难恢复
           items:
             - name: 启动帐户故障转移
@@ -440,8 +442,20 @@
           items:
             - name: 延迟问题
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 引用
+    - name: 参考
       items:
+        - name: 可伸缩性和性能目标
+          items:
+            - name: Blob 存储
+              href: scalability-targets.md
+            - name: 标准存储帐户
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 高级块 Blob 存储帐户
+              href: scalability-targets-premium-block-blobs.md
+            - name: 高级页 Blob 存储帐户
+              href: scalability-targets-premium-page-blobs.md
+            - name: 存储资源提供程序
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: /powershell/module/az.storage
         - name: Azure CLI
@@ -655,7 +669,7 @@
               href: storage-blob-storage-tiers.md
             - name: 管理 Azure Blob 存储生命周期
               href: storage-lifecycle-management-concepts.md
-        - name: 安全
+        - name: 安全性
           items:
             - name: 存储安全概述
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -675,8 +689,6 @@
           items:
             - name: 为 Data Lake 创建存储帐户
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 管理存储帐户
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 使用存储资源管理器管理数据
               href: ../blobs/data-lake-storage-explorer.md
             - name: 升级存储帐户
@@ -765,7 +777,7 @@
           href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 与 Power BI 配合使用
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 引用
+    - name: 参考
       items:
         - name: PowerShell
           href: /powershell/module/azure.storage

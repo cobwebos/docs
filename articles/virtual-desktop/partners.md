@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451359"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -38,7 +38,6 @@ Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft 
 
 - [在 Microsoft Azure 上注册适用于地平线云的技术预览版](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 d
 
 - [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
 
+## <a name="hp"></a>HP
+
+![HP 徽标](./media/partners/hp.png)
+
+HP 瘦客户端是 Microsoft Azure 和 Windows 虚拟桌面服务的经批准和验证的合作伙伴。 具有 Windows 10 IoT 企业版的 HP 瘦客户端提供对基于 Azure 的工作负荷和 Windows 虚拟桌面托管桌面的现成支持。 硬件和操作系统经过了优化，可提供一流的体验，该体验可有效地交付远程工作负载，同时降低操作系统占用量、硬件和维护成本。
+
+当 HP 了解到行业趋势、客户难题和开发过程中提供的解决方案虚拟化时，他们可以使用四支柱的价值主张来制定理想的云终结点：设计、可管理性、安全性和丰富. 每个 HP 瘦客户端都是专门为 IT 决策者设计的。 HP 瘦客户端具有长久、安全、易于部署和管理且功能强大的功能，因此你可以轻松地过渡到 VDI 或云计算。 HP 的通用产品组合使你可以自由选择适合你的新式终结点解决方案。
+
+- [请参阅合作伙伴网站](https://hp.com/go/thin)。
+
 ## <a name="igel"></a>IGEL
 
 ![IGEL 徽标](./media/partners/igel.png)
@@ -90,7 +99,7 @@ IGEL 是经过批准和验证的 Microsoft Azure 和 Windows 虚拟桌面服务�
  
 IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、桌面和云工作区客户端协议。 它包括85外设、接口和协议合作伙伴提供的集成技术，可帮助组织快速将 Windows 虚拟桌面服务采用其自己独特的用户环境。 IGEL OS 是一个只读的模块化终结点操作系统，可帮助防止其被篡改。 它现在还包括了一个完整的 "信任链"，它可验证在终结点上运行的所有主要进程的完整性，从终结点硬件（某些选定的模型）或 UEFI 过程一直到 Azure 云和 Windows 虚拟桌面服务。 借助 IGEL 操作系统，企业可以从 Azure 云中订阅 Windows 虚拟桌面，以完全相信其用户终结点设备的完整性、安全性和可管理性。
 
-- [请参阅合作伙伴网站。](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [请参阅合作伙伴网站](https://www.igel.com/igel-os-universal-desktop-operating-system/)。
 
 ## <a name="ivanti"></a>Ivanti
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534139"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612354"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>为 Nva 创建虚拟 WAN 中心路由表： Azure 门户
 
@@ -67,7 +67,7 @@ ms.locfileid: "74534139"
 
 使用集线器路由表更新中心。 对于本练习，可以使用以下值：
 
-* **间接轮辐 VNet 地址空间：** （VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
+* **分支 VNet 地址空间：** （VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
 * **DMZ NVA 网络接口专用 IP 地址：** 10.0.4。5
 
 1. 导航到虚拟 WAN。

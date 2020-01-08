@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: allensu
-ms.openlocfilehash: 5d4cc57c4cb5db7f04d604c8ccbc408df1a3e707
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e6b5dc200f49b34d8f808e5587b173197b9da8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437316"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>如何在 Azure 门户中管理 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [Portal](dns-operations-dnszones-portal.md)
+> * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
@@ -41,9 +41,9 @@ ms.locfileid: "74211912"
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
-   |**Name**|contoso.com|DNS 区域的名称|
+   |**名称**|contoso.com|DNS 区域的名称|
    |**订阅**|[订阅]|选择要在其中创建 DNS 区域的订阅。|
-   |**资源组**|**新建：** contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
+   |**资源组**|**新建：** contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|美国西部||
 
 > [!NOTE]

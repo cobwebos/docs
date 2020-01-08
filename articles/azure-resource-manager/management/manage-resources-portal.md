@@ -1,0 +1,124 @@
+---
+title: 管理资源-Azure 门户
+description: 使用 Azure 门户和 Azure 资源管理器来管理资源。 演示如何部署和删除资源。
+author: mumian
+ms.topic: conceptual
+ms.date: 02/11/2019
+ms.author: jgao
+ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75478794"
+---
+# <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源
+
+了解如何使用[azure 资源管理器](overview.md) [Azure 门户](https://portal.azure.com)来管理 azure 资源。 若要管理资源组，请参阅[使用 Azure 门户管理 Azure 资源组](manage-resource-groups-portal.md)。
+
+有关管理资源的其他文章：
+
+- [使用 Azure CLI 管理 Azure 资源](manage-resources-cli.md)
+- [使用 Azure PowerShell 管理 Azure 资源](manage-resources-powershell.md)
+
+[!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="deploy-resources-to-a-resource-group"></a>将资源部署到资源组
+
+创建资源管理器模板之后，可以使用 Azure 门户来部署 Azure 资源。 若要创建模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../templates/quickstart-create-templates-use-the-portal.md)。 若要使用门户部署模板，请参阅[使用资源管理器模板和 Azure 门户部署资源](../templates/deploy-portal.md)。
+
+## <a name="open-resources"></a>打开资源
+
+Azure 资源由 Azure 服务和资源组来组织。 以下过程说明如何打开名为**mystorage0207**的存储帐户。 虚拟机位于名为**mystorage0207rg**的资源组中。
+
+若要按服务类型打开资源，请执行以下操作：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在左窗格中，选择 "Azure 服务"。 在这种情况下，**存储帐户**。  如果看不到列出的服务，请选择 "**所有服务**"，然后选择 "服务类型"。
+
+    ![在门户中打开 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
+
+3. 选择要打开的资源。
+
+    ![在门户中打开 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+
+    存储帐户如下所示：
+
+    ![在门户中打开 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+
+按资源组打开资源：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在左侧窗格中，选择 "**资源组**" 以列出组中的资源。
+3. 选择要打开的资源。 
+
+## <a name="manage-resources"></a>管理资源
+
+在门户中查看某一资源时，可以看到用于管理该特定资源的选项。
+
+![管理 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-manage-resource.png)
+
+屏幕截图显示了 Azure 虚拟机的管理选项。 可以执行一些操作，例如启动、重新启动和停止虚拟机。
+
+## <a name="delete-resources"></a>删除资源
+
+1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
+2. 选择“删除”。 以下屏幕截图显示了虚拟机的管理选项。
+
+    ![删除 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
+3. 键入要确认删除的资源的名称，然后选择 "**删除**"。
+
+有关资源管理器 Azure 如何对资源删除进行排序的详细信息，请参阅[azure 资源管理器资源组删除](delete-resource-group.md)。
+
+## <a name="move-resources"></a>移动资源
+
+1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
+2. 选择“移动”。 以下屏幕截图显示了存储帐户的管理选项。
+
+    ![移动 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
+3. 选择 "**移到另一个资源组**" 或 "**移到另一个订阅**"，具体取决于你的需求。
+
+有关详细信息，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
+
+## <a name="lock-resources"></a>锁定资源
+
+锁定可防止组织中的其他用户意外删除或修改关键资源，如 Azure 订阅、资源组或资源。 
+
+1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
+2. 选择 "**锁定**"。 以下屏幕截图显示了存储帐户的管理选项。
+
+    ![锁定 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
+3. 选择 "**添加**"，然后指定锁属性。
+
+有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](lock-resources.md)。
+
+## <a name="tag-resources"></a>标记资源
+
+标记有助于以逻辑方式组织资源组和资源。 
+
+1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
+2. 选择“标记”。 以下屏幕截图显示了存储帐户的管理选项。
+
+    ![标记 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
+3. 指定标记属性，然后选择 "**保存**"。
+
+有关信息，请参阅[使用标记来组织 Azure 资源](tag-resources.md#portal)。
+
+## <a name="monitor-resources"></a>监视资源
+
+打开资源时，门户会显示用于监视该资源类型的默认图形和表。 以下屏幕截图显示了虚拟机的关系图：
+
+![监视 azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
+
+您可以选择关系图右上角的固定图标，将图形固定到仪表板。 若要了解如何使用仪表板，请参阅[在 Azure 门户中创建和共享仪表板](../../azure-portal/azure-portal-dashboards.md)。
+
+## <a name="manage-access-to-resources"></a>管理对资源的访问权限
+
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+- 若要了解 Azure 资源管理器，请参阅[azure 资源管理器概述](overview.md)。
+- 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
+- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
+- 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

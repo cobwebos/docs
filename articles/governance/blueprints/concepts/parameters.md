@@ -3,12 +3,12 @@ title: 使用参数创建动态蓝图
 description: 了解静态和动态参数，以及如何使用它们创建安全、动态的蓝图。
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128935"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644964"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -40,7 +40,7 @@ ms.locfileid: "74128935"
 如果蓝图分配使用**用户分配的托管标识**，则引用的 Key Vault_可能_存在于集中订阅中。 在蓝图分配之前，必须向托管标识授予对 Key Vault 的适当权限。
 
 > [!IMPORTANT]
-> 在这两种情况下，Key Vault 必须对在 "**访问策略**" 页上配置的**模板部署启用对 Azure 资源管理器的访问**。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../managed-applications/key-vault-access.md#enable-template-deployment)。
+> 在这两种情况下，Key Vault 必须对在 "**访问策略**" 页上配置的**模板部署启用对 Azure 资源管理器的访问**。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
 
 有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/key-vault-overview.md)。
 
@@ -131,11 +131,11 @@ ms.locfileid: "74128935"
   }
   ```
 
-在此示例中，**principalIds** 属性通过 **的值使用**owners`[parameters('owners')]` 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
+在此示例中，**principalIds** 属性通过 `[parameters('owners')]` 的值使用 **owners** 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
 
 ##### <a name="artifact-level-parameter"></a>项目级别参数
 
-在项目上创建“静态参数”情况相似，但采用直接值而不是使用  **函数**`parameters()`。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
+在项目上创建“静态参数”情况相似，但采用直接值而不是使用 `parameters()` 函数。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
 
 - REST API URI
 

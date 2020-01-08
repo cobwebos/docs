@@ -4,17 +4,17 @@ description: Azure 存储通过在将数据保存到云之前自动对其进行�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895133"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665435"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -47,7 +47,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    支持 Azure 存储服务    |    所有                                                |    Blob 存储，Azure 文件                                                                                                               |    Blob 存储                                                                  |
-|    密钥存储                         |    Microsoft 密钥存储    |    Azure 密钥保管库                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
+|    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
 |    关键轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
 |    密钥使用情况                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API （Blob 存储）、Azure 存储客户端库    |
 |    密钥访问权限                          |    仅限 Microsoft                                     |    Microsoft，客户                                                                                                                    |    仅限客户                                                                 |
@@ -62,7 +62,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>客户托管的密钥与 Azure Key Vault
 
-可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 在存储帐户级别指定客户托管密钥时，该密钥用于加密和解密存储帐户中的所有 blob 和文件数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
+可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 当你在存储帐户级别指定客户托管密钥时，该密钥用于保护和控制访问存储帐户的根加密密钥，而该密钥反过来用于加密和解密所有 blob 和文件数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
 
 必须使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
@@ -80,9 +80,11 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>为存储帐户启用客户管理的密钥
 
-使用存储帐户的客户托管密钥启用加密时，Azure 存储会使用关联的密钥保管库中的客户密钥包装帐户加密密钥。 启用客户管理的密钥不会影响性能，并且会立即用新密钥加密帐户，而不会有任何时间延迟。
+使用存储帐户的客户托管密钥启用加密时，Azure 存储使用关联的密钥保管库中客户托管的密钥来包装帐户加密密钥。 启用客户管理的密钥不会影响性能，并且会立即用新密钥加密帐户，而不会有任何时间延迟。
 
 新的存储帐户始终使用 Microsoft 托管的密钥进行加密。 创建帐户时，不能启用客户管理的密钥。 客户托管的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，这些策略将对与存储帐户关联的托管标识授予密钥权限。 托管标识仅在创建存储帐户后可用。
+
+如果通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥来修改用于 Azure 存储加密的密钥，则根密钥的加密会更改，但 Azure 存储帐户中的数据不会需要重新加密。
 
 若要了解如何将客户托管的密钥用于 Azure 存储加密的 Azure Key Vault，请参阅以下文章之一：
 
@@ -96,6 +98,8 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户托管的密钥存储在 Azure Key Vault
 
 若要在存储帐户上启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用**软删除**和不**清除**密钥保管库中的属性。
+
+Azure 存储加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 密钥**。
 
 密钥保管库必须位于与存储帐户相同的订阅中。 Azure 存储使用 Azure 资源的托管标识向密钥保管库进行身份验证，以便进行加密和解密操作。 托管标识当前不支持跨目录方案。
 
@@ -137,7 +141,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 对于 REST 调用，客户端可以使用以下标头安全地将请求中的加密密钥信息传递到 Blob 存储：
 
-|请求标头 | 描述 |
+|请求标头 | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |写入和读取请求均需要。 Base64 编码的256加密密钥值。 |
 |`x-ms-encryption-key-sha256`| 写入和读取请求均需要。 Base64 编码的加密密钥 SHA256。 |

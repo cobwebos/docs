@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: c3eeb59809a4028702022e8a18db633a26b01d5c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460421"
 ---
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
@@ -41,9 +41,9 @@ ms.locfileid: "74981196"
 
     1. 通过检查**访问令牌**或**ID 令牌**来启用隐式授权流。
 
-   [![创建新客户端机密](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+   [![创建重定向 Uri 和配置隐式授权](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-   单击“保存”。
+   单击“ **保存**”。
 
 1. 选择“证书和机密”，然后选择“新建客户端机密”来创建客户端可用来证明其身份的应用程序密码。
 

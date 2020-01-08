@@ -4,15 +4,15 @@ description: 本文介绍在计算机上部署 Log Analytics Windows 或 Linux �
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364775"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932790"
 
 适用于 Windows 和 Linux 的 Log Analytics 代理可以手动或自动升级到最新版本，具体取决于正在运行 VM 的部署方案和环境。 可以使用以下方法来升级代理。
 
-| 环境 | 安装方法 | 升级方法 |
+| 环境 | 安装方式 | 升级方法 |
 |--------|----------|-------------|
 | Azure VM | 适用于 Windows/Linux 的 Log Analytics 代理 VM 扩展 | 默认情况下会自动升级代理，除非已将 Azure 资源管理器模板配置为通过将属性*autoUpgradeMinorVersion*设置为**false**来选择退出。 |
 | 自定义 Azure VM 映像 | 手动安装适用于 Windows/Linux 的 Log Analytics 代理 | 若要将 Vm 更新到最新版本的代理，需要从运行 Windows installer 包或 Linux 自解压并可安装的 shell 脚本捆绑的命令行执行。|
@@ -34,7 +34,7 @@ ms.locfileid: "72932790"
 
 可以通过执行以下步骤从 Log Analytics 工作区下载最新版本的 Windows 代理。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 
@@ -58,7 +58,7 @@ ms.locfileid: "72932790"
 
 4. 在 " **Microsoft Monitoring Agent 安装**" 对话框中，单击 "**我同意**接受许可协议"。
 
-5. 在 " **Microsoft Monitoring Agent 设置**" 对话框中，单击 "**升级**"。 "状态" 页将显示升级的进度。
+5. 在“Microsoft Monitoring Agent 安装程序” 对话框中，单击“升级”。 状态页面将显示升级的进度。
 
 6. 如果**Microsoft Monitoring Agent 配置已成功完成。** 页，单击 "**完成**"。
 
@@ -68,7 +68,7 @@ ms.locfileid: "72932790"
 
 2. 若要提取代理安装文件，请在提升的命令提示符处运行 `MMASetup-<platform>.exe /c`，这会提示要将文件提取到的路径。 或者，可以通过传递参数 `MMASetup-<platform>.exe /c /t:<Full Path>` 来指定路径。
 
-3. 运行以下命令，其中 D:\升级日志文件的位置。
+3. 运行以下命令，其中 D:\ 是升级日志文件的位置。
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -99,7 +99,7 @@ ms.locfileid: "72932790"
 
 5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥）。 如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 美国政府”。
 
-6. 单击“确定” 保存更改。
+6. 单击 **“确定”** 保存所做的更改。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 删除工作区
 

@@ -1,18 +1,14 @@
 ---
 title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
-author: stephbaron
-ms.author: stbaron
-services: service-health
-ms.service: service-health
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 3e3c83b7233ad4da263dec31c6012209ebaca0fe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6a06ae22493292e33c94cc83cba1f17361bce45f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451576"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450663"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 
@@ -75,7 +75,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 下表提供了有效模式示例，用来指定不同的日志文件。
 
-| 描述 | 路径 |
+| Description | 路径 |
 |:--- |:--- |
 | Windows 代理上的 *C:\Logs* 中带 .txt 扩展名的所有文件 |C:\Logs\\\*.txt |
 | Windows 代理上的 *C:\Logs* 中具有以 log 开头的名称和 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
@@ -86,14 +86,14 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 2. 键入路径，并单击 **+** 按钮。
 3. 其他任何路径请重复此步骤。
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4。 提供日志名称及描述
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4. 提供日志名称及描述
 指定的名称用于日志类型，如上所述。  它将始终以 _CL 结尾，以将其与自定义日志区分开来。
 
 1. 为日志键入名称。  系统会自动提供 **\_CL** 后缀。
 2. 添加可选“说明”。
 3. 单击“下一步”，保存自定义日志的定义。
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5. 验证是否正在收集自定义日志
+### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5。 验证是否正在收集自定义日志
 新自定义日志的初始数据可能需要一个小时才能在 Azure Monitor 中出现。  它将从指定路径的日志中，收集在自定义日志的定义时间之后生成的条目。  它不会在自定义日志创建过程中保留上传的条目，但是它将收集它找到的日志文件中的现有条目。
 
 Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志查询。  将为自定义日志指定的名称用作查询中的**类型**。
@@ -118,7 +118,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="custom-log-record-properties"></a>自定义日志记录属性
 自定义日志记录的类型与提供的日志名称一致，且具有下表中的属性。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor 收集该记录时的日期和时间。  如果日志使用基于时间的分隔符，则此时间是从条目中收集的时间。 |
 | SourceSystem |从中收集记录的代理类型。 <br> OpsManager – Windows 代理，直接连接或 System Center Operations Manager <br> Linux - 所有 Linux 代理 |

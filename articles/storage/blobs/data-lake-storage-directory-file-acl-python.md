@@ -1,5 +1,5 @@
 ---
-title: 将 Python 用于 Azure Data Lake Storage Gen2 中的 & Acl 的文件（预览）
+title: 用于文件 & Acl 的 Azure Data Lake Storage Gen2 Python SDK （预览版）
 description: 使用启用了分层命名空间（HNS）的存储帐户中的 Python 管理目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a65e8b2c5fbcdd4f6df0f8f39b24fa97b8deeca3
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e07bb6aa9d1fe22baaebb7bc7239ce03a728c6b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431806"
 ---
-# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>将 Python 用于 Azure Data Lake Storage Gen2 中的 & Acl 的文件（预览）
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Python 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
 本文介绍如何使用 Python 在已启用分层命名空间（HNS）的存储帐户中创建和管理目录、文件和权限。 
 

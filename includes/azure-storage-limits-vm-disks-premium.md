@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 12/25/2019
 ms.locfileid: "67172939"
 ---
 **高级非托管虚拟机磁盘：每个帐户的限制**
 
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | --- |
 | 每个帐户的总磁盘容量 |35 TB |
 | 每个帐户的总快照容量 |10 TB |
 | 每个帐户的最大带宽（传入 + 传出）<sup>1</sup> |<=50 Gbps |
 
-<sup>1</sup>*入口*是指发送到存储帐户的请求中的所有数据。 *传出*是指从存储帐户接收的响应中的所有数据。
+<sup>1</sup>个*入口*是指发送到存储帐户的请求中的所有数据。 *传出*是指从存储帐户接收的响应中的所有数据。
 
-**高级非托管虚拟机磁盘：每磁盘限制**
+**高级非托管虚拟机磁盘：每个磁盘的限制**
 
 | 高级存储磁盘类型 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
@@ -32,7 +32,7 @@ ms.locfileid: "67172939"
 
 **高级非托管虚拟机磁盘：每个 VM 的限制**
 
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | --- |
 | 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS |
 | 每个 VM 的最大吞吐量 |2000 MB/秒，含 GS5 VM |

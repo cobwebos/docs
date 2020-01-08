@@ -4,15 +4,15 @@ description: 本文介绍了如何在订阅中跨多个工作区以及从特定�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/05/2019
-ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0eaaf1157bf49068958bc07d17a23fc31dd99de0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365489"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
@@ -24,7 +24,7 @@ ms.locfileid: "72894495"
 
 * 可在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数目限制为100。
 * 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创建查询并将其固定到 Azure 仪表板，以[可视化日志查询](../learn/tutorial-logs-dashboards.md)。 
-* 新的[SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 你可以创建跨资源查询日志警报规则，而无需使用[SCHEDULEDQUERYRULES api 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)进行切换–但此警报规则可通过[scheduledQueryRules api](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)进行管理，而不能通过 Azure 门户.
+* 新的[SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 你可以创建跨资源查询日志警报规则，而无需使用[SCHEDULEDQUERYRULES api 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)进行切换–但此警报规则可通过[scheduledQueryRules api](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)而不是从 Azure 门户管理。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询

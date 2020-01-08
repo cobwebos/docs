@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db58f94501590eb3150700d282377ec1b2378cea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3f56d55a08c46338fb7916664834b69005419e72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423760"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 web Api 的移动应用-调用 web API
 
@@ -134,7 +134,7 @@ task.resume()
 
 如果需要为同一个用户调用多个 Api，一旦你为用户获取了令牌，你就可以通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复询问用户提供凭据。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -147,7 +147,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 - 用户同意第一个 API，但现在需要同意更多作用域（增量许可）
 - 第一个 API 不需要多重身份验证，而是下一个 API。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

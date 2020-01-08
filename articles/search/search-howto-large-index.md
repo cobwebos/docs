@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460737"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何为 Azure 中的大型数据集编制索引认知搜索
 
@@ -74,7 +74,7 @@ ms.locfileid: "72793763"
 + 将所有索引器计划为在同一时间运行。
 
 > [!NOTE]
-> Azure 认知搜索不支持专用于特定工作负荷的副本或分区。 重度并发索引的风险是使系统过载，导致查询性能下降。 如果创建了测试环境，请先在该环境中实施并行索引，以了解利弊。
+> 在 Azure 认知搜索中，不能将各个副本或分区分配给索引或查询处理。 系统确定如何使用资源。 要了解对查询性能的影响，你可以在将其投入生产之前，在测试环境中尝试并行索引。  
 
 ### <a name="how-to-configure-parallel-indexing"></a>如何配置并行索引编制
 

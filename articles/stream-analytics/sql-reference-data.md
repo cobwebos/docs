@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 流分析作业中使用 SQL 数据库引用数据
 description: 本文介绍如何在 Azure 门户和 Visual Studio 中对 Azure 流分析作业使用 SQL 数据库作为参考数据输入。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426500"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>在 Azure 流分析作业中使用 SQL 数据库中的引用数据
 
@@ -176,7 +175,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 ## <a name="test-your-query"></a>测试查询
    务必验证查询是否返回流分析作业将用作引用数据的所需数据集。 若要测试查询，请在门户中的 "作业拓扑" 部分下中转到 "输入"。 然后，你可以在 SQL 数据库引用输入上选择 "示例数据"。 示例变为可用后，您可以下载该文件，然后查看返回的数据是否与预期的相同。 如果希望优化开发和测试迭代，建议使用[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)。 你还可以使用首选项的任何其他工具，以首先确保查询从 Azure SQL 数据库返回正确结果，然后在流分析作业中使用该结果。 
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 **在 Azure 流分析中使用 SQL 参考数据输入是否会产生额外的费用？**
 

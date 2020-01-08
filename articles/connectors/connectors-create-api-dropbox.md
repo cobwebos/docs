@@ -1,18 +1,18 @@
 ---
 title: 连接到 Dropbox
-description: 使用 Dropbox REST API 和 Azure 逻辑应用上传和管理文件
+description: 使用 Azure 逻辑应用自动完成上传和管理 Dropbox 中的文件的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789819"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665745"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用上传和管理 Dropbox 中的文件
 
@@ -64,7 +64,7 @@ ms.locfileid: "74789819"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/dropbox/)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/dropbox/)。
 
 ## <a name="next-steps"></a>后续步骤
 

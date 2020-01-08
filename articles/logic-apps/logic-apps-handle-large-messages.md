@@ -1,18 +1,18 @@
 ---
-title: 处理大型消息
-description: 了解如何在 Azure 逻辑应用中使用分块处理大型消息
+title: 使用分块处理大消息
+description: 了解如何在使用 Azure 逻辑应用创建的自动任务和工作流中使用分块来处理大消息大小
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456549"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
@@ -113,18 +113,18 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 1. 你的逻辑应用使用空的消息正文发送初始的 HTTP POST 或 PUT 请求。 请求标头包括与逻辑应用需要以区块形式上传的内容的以下信息：
 
-   | 逻辑应用请求标头字段 | Value | Type | 描述 |
+   | 逻辑应用请求标头字段 | 值 | 类型 | Description |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | 分块 | 字符串 | 指示内容以区块形式上传 |
+   | **x-ms-transfer-mode** | 分块 | String | 指示内容以区块形式上传 |
    | **x-ms-content-length** | <*content-length*> | Integer | 整个内容在分块之前的大小（以字节为单位） |
    ||||
 
 2. 终结点以“200”成功状态代码和以下可选信息进行响应：
 
-   | 终结点响应标头字段 | Type | 需要 | 描述 |
+   | 终结点响应标头字段 | 类型 | 需要 | Description |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Integer | No | 建议的区块大小（以字节为单位） |
-   | 位置 | 字符串 | 是 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
+   | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
+   | **位置** | String | 是 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
    ||||
 
 3. 逻辑应用创建并发送后续 HTTP PATCH 消息 - 每条消息包含以下信息：
@@ -133,19 +133,19 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
    * 这些标头详述了在每个 PATCH 消息中发送的内容区块：
 
-     | 逻辑应用请求标头字段 | Value | Type | 描述 |
+     | 逻辑应用请求标头字段 | 值 | 类型 | Description |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*range*> | 字符串 | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
-     | **Content-Type** | <*content-type*> | 字符串 | 分块内容的类型 |
-     | **Content-Length** | <*content-length*> | 字符串 | 当前区块的大小长度（以字节为单位） |
+     | **Content-Range** | <*range*> | String | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
+     | **Content-Type** | <*content-type*> | String | 分块内容的类型 |
+     | **Content-Length** | <*content-length*> | String | 当前区块的大小长度（以字节为单位） |
      |||||
 
 4. 每次修补请求后，端点通过使用 "200" 状态代码和以下响应标头来确认每个区块的回执：
 
-   | 终结点响应标头字段 | Type | 需要 | 描述 |
+   | 终结点响应标头字段 | 类型 | 需要 | Description |
    |--------------------------------|------|----------|-------------|
-   | **范围** | 字符串 | 是 | 终结点收到的内容的字节范围，例如： "bytes = 0-1023" |   
-   | **x-ms-chunk-size** | Integer | No | 建议的区块大小（以字节为单位） |
+   | **范围** | String | 是 | 终结点收到的内容的字节范围，例如： "bytes = 0-1023" |   
+   | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
    ||||
 
 例如，此操作定义显示一个要求将分块内容上传到终结点的 HTTP POST 请求。 在操作的 `runTimeConfiguration` 属性中，`contentTransfer` 属性将 `transferMode` 设置为 `chunked`：

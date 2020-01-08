@@ -1,25 +1,16 @@
 ---
-title: 了解 Azure Service Fabric 支持选项 | Microsoft Docs
+title: 了解 Azure Service Fabric 支持选项
 description: 支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465618"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -35,9 +26,9 @@ ms.locfileid: "68679061"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在青铜可靠性层或单节点群集上运行的群集只允许运行测试工作负荷。 如果在青铜色或单节点群集上运行的群集遇到问题, Microsoft 支持团队将会帮助你缓解问题, 但不会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
+> 在青铜可靠性层或单节点群集上运行的群集只允许运行测试工作负荷。 如果在青铜色或单节点群集上运行的群集遇到问题，Microsoft 支持团队将会帮助你缓解问题，但不会执行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
 >
-> 若要详细了解生产就绪性群集的必要信息，请参阅[生产就绪性核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 有关生产就绪群集所需内容的详细信息，请参阅[生产准备情况清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -64,7 +55,7 @@ ms.locfileid: "68679061"
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[适用于 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是提交有关产品的重要功能构想的最佳位置, 因为我们查看最常见的请求是中型到长期规划的一部分。 我们鼓励你在社区内争取大家对建议的支持。
+[适用于 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是提交有关产品的重要功能构想的最佳位置，因为我们查看最常见的请求是中型到长期规划的一部分。 我们鼓励你在社区内争取大家对建议的支持。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用
 

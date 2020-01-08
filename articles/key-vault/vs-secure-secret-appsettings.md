@@ -9,21 +9,21 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2b4893ab804d7e3394320284399626437e5e78dc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645118"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
 
 ## <a name="overview"></a>概述
 本文介绍如何安全地保存 Azure 应用程序的密钥应用程序配置设置。
 
-传统上，所有 Web 应用配置设置都保存在配置文件（如 Web.config）中。这一做法会导致将密钥设置（如云凭据）签入到公共源代码管理系统（如 GitHub）中。 同时，因为更改源代码和重新配置开发设置都需要开销，因此会难以遵循安全最佳实践。
+传统上，所有 web 应用程序配置设置都保存在配置文件（如 web.config）中。这种做法可以将机密设置（如云凭据）签入到公共源代码管理系统（如 GitHub）中。 同时，因为更改源代码和重新配置开发设置都需要开销，因此会难以遵循安全最佳实践。
 
-为了确保开发过程是安全的, 可以创建工具和框架库, 以便在不更改源代码的情况下安全地保存应用程序密钥设置。
+为了确保开发过程是安全的，可以创建工具和框架库，以便在不更改源代码的情况下安全地保存应用程序密钥设置。
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET 和 .NET Core 应用程序
 
@@ -42,6 +42,7 @@ ms.locfileid: "69639481"
     ![创建 Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. 授予你和团队成员访问密钥保管库的权限。 如果你的团队规模较大，可以创建 [Azure Active Directory 组](../active-directory/active-directory-groups-create-azure-portal.md)并将该安全组访问权限添加到密钥保管库。 在“密钥权限”下拉列表中，检查“密钥管理操作”下的“获取”和“列表”。
+如果已创建 web 应用，请向 web 应用授予对 Key Vault 的访问权限，以便它可以访问密钥保管库，而无需在应用设置或文件中存储密钥配置。 按名称搜索你的 web 应用，并以向用户授予访问权限的相同方式添加该应用。
 
     ![添加密钥保管库访问策略](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,10 +50,10 @@ ms.locfileid: "69639481"
 
     ![添加密钥保管库密钥](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
-    > 在 Visual Studio 2017 V15.6 之前，我们曾建议安装 Visual Studio 的 Azure 服务身份验证扩展。 但现在, 在 Visual Studio 中集成功能后, 该功能已弃用。 因此，如果你使用的是旧版本的 Visual Studio 2017，我们建议你更新至至少 VS 2017 15.6 或更高版本，以便可以本机使用此功能并使用 Visual Studio 登录标识本身访问密钥保管库。
+    > [!NOTE]
+    > 在 Visual Studio 2017 V 15.6 之前，我们使用建议安装适用于 Visual Studio 的 Azure 服务身份验证扩展。 但现在，在 Visual Studio 中集成功能后，该功能已弃用。 因此，如果您使用的是较旧版本的 visual Studio 2017，建议至少更新到 VS 2017 15.6 或更高版本，以便您可以在本机使用此功能，并使用 Visual Studio 登录标识本身访问密钥保管库。
     >
- 
+
 4. 将以下 NuGet 包添加到项目：
 
     ```
@@ -145,7 +146,7 @@ ms.locfileid: "69639481"
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. 定义 Web.config 中的密钥保管库配置生成器。将该部分置于 appSettings 部分前。 如果密钥保管库位于公共 Azure 中，则将 vaultName 替换为密钥保管库名称，如果正在使用 Sovereign 云，则将其替换为完整的 URI。
+2. 在 web.config 中定义 Key Vault 配置生成器。请将此部分放置在*appSettings*部分之前。 如果密钥保管库位于公共 Azure 中，则将 vaultName 替换为密钥保管库名称，如果正在使用 Sovereign 云，则将其替换为完整的 URI。
 
     ```xml
     <configSections>

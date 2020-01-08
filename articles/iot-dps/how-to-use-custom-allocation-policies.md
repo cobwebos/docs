@@ -7,12 +7,12 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453944"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -41,7 +41,10 @@ ms.locfileid: "74974864"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
+以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档中的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
+
+* 已启用["桌面开发C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) " 工作负载的[Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 还支持 visual Studio 2015 和 Visual Studio 2017。
+
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -96,7 +99,7 @@ ms.locfileid: "74974864"
 
 在本部分中，将创建一个实现自定义分配策略的 Azure 函数。 此函数根据设备的注册 ID 是否包含 string **-tstrsd-007**或 **-hpsd-088**，决定应将设备注册到哪个部门 IoT 中心。 它还根据设备是 toaster 还是热泵来设置设备克隆的初始状态。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 从主页中，选择 " **+ 创建资源**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 从主页中，选择 " **+ 创建资源**"。
 
 2. 在 "*搜索 Marketplace*搜索" 框中，键入 "Function App"。 从下拉列表中选择 " **Function App**"，然后选择 "**创建**"。
 
@@ -304,7 +307,7 @@ ms.locfileid: "74974864"
 
     组名称：输入 contoso-custom-allocated-devices。
 
-    证明类型：选择“对称密钥”。
+    **证明类型**：选择**对称密钥**。
 
     自动生成密钥：此复选框应已处于选中状态。
 
@@ -406,25 +409,28 @@ ms.locfileid: "74974864"
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负载）。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
+2. 查找 SDK[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest)的标记名称。
+
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库的最新版本。 使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     应该预料到此操作需要几分钟才能完成。
 
-3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
+4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录中运行以下命令：
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
+5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -552,7 +558,7 @@ ms.locfileid: "74974864"
 
 下表显示了预期的方案以及可能会收到的结果错误代码。 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
 
-| 场景 | 预配服务的注册结果 | 预配 SDK 结果 |
+| 方案 | 预配服务的注册结果 | 预配 SDK 结果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 返回 200 OK，其中“iotHubHostName”被设置为有效的 IoT 中心主机名 | 结果状态：已分配  | SDK 返回 PROV_DEVICE_RESULT_OK 和中心信息 |
 | Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |

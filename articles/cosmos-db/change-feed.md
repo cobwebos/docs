@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Cosmos DB 中的更改源支持
-description: 使用 Azure Cosmos DB 的更改源支持跟踪文档中发生的更改，执行基于事件的处理（例如触发器），使缓存和分析系统保持最新状态。
+description: 使用 Azure Cosmos DB 更改源支持跟踪文档中的更改、基于事件的处理（例如触发器），并使缓存和分析系统保持最新状态
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445593"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
@@ -35,10 +35,10 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 | **客户端驱动程序** | **Azure CLI** | **SQL API** | **Azure Cosmos DB 的 Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | 是 | 是 | 是 | 是 | No |
-|Java|NA|是|是|是|是|No|
-|Python|NA|是|是|是|是|No|
-|Node/JS|NA|是|是|是|是|No|
+| .NET | 不可用 | 是 | 是 | 是 | 是 | 否 |
+|Java|不可用|是|是|是|是|否|
+|Python|不可用|是|是|是|是|否|
+|Node/JS|不可用|是|是|是|是|否|
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
@@ -128,7 +128,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以在以下文章中了解有关更改流的详细信息：
+接下来，请通过以下文章继续详细了解更改源：
 
 * [读取更改源的选项](read-change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)

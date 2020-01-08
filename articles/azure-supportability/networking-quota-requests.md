@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120964"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659298"
 ---
 # <a name="networking-limit-increase"></a>网络限制提高
 
@@ -27,7 +27,7 @@ ms.locfileid: "74120964"
 
 按照下面的说明通过 Azure 的 "帮助 + 支持" 边栏选项卡，在 Azure 门户中创建支持请求。 
 
-1. 在 https://portal.azure.com中，选择 "**帮助 + 支持**"。
+1. 在 https://portal.azure.com 中，选择 "**帮助 + 支持**"。
 
     ![帮助 + 支持](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -84,4 +84,4 @@ ms.locfileid: "74120964"
 
 ## <a name="about-networking-limits"></a>关于网络限制
 
-若要了解有关网络限制的详细信息，请参阅 "限制" 页的 "[网络" 部分](../azure-subscription-service-limits.md#networking-limits)或我们的网络限制常见问题
+若要了解有关网络限制的详细信息，请参阅 "限制" 页的 "[网络" 部分](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)或我们的网络限制常见问题

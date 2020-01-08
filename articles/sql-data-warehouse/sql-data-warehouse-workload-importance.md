@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28d239d47b46a5aafdf65c72ef826a0efb79f52b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351430"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL 数据仓库工作负荷重要性
 
@@ -26,7 +26,7 @@ ms.locfileid: "74974627"
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-业务需求可能要求数据仓库工作负荷比其他工作负载更重要。  考虑在会计期结束前加载任务关键销售数据的方案。  其他源的数据加载（如天气数据）没有严格的 Sla。 为请求设置较高的重要性，以便加载销售数据，并将数据的重要性降低到加载请求，从而确保销售数据负载首先访问资源并完成速度更快。
+业务需求可能要求数据仓库工作负荷比其他工作负载更重要。  考虑在会计期结束前加载任务关键销售数据的方案。  其他源的数据加载（如天气数据）没有严格的 Sla。 为加载销售数据的请求设置高重要性，并为加载天气数据的请求设置低重要性，可确保销售数据负载首先获取对资源的访问权限，并快速完成。
 
 ## <a name="importance-levels"></a>重要性级别
 
@@ -38,13 +38,13 @@ ms.locfileid: "74974627"
 
 ### <a name="locking"></a>锁定
 
-对读取和写入活动的锁定的访问是一种自然争用区域。 [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重命名对象](/sql/t-sql/statements/rename-transact-sql)等活动需要提升的锁定。  如果没有工作负荷重要性，SQL 数据仓库将针对吞吐量进行优化。  针对吞吐量进行优化意味着在运行和排队请求具有相同的锁定需求和资源时，排队的请求可以绕过传入请求队列的更高锁定需求的请求。  如果将工作负荷重要性应用于具有更高锁定需求的请求，则重要性较高的请求会在重要性较低的请求之前运行。
+对读取和写入活动的锁定的访问是一种自然争用区域。 [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重命名对象](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)等活动需要提升的锁定。  如果没有工作负荷重要性，SQL 数据仓库将针对吞吐量进行优化。 针对吞吐量进行优化意味着在运行和排队请求具有相同的锁定需求和资源时，排队的请求可以绕过传入请求队列的更高锁定需求的请求。 一旦将工作负荷重要性应用于具有更高锁定需求的请求。 重要性较高的请求会在具有较低重要性的请求之前运行。
 
-下面是一个示例：
+请考虑以下示例：
 
-Q1 正在积极运行并从 Prd.salesfact 中选择数据。
-第2季度排队等候完成 Q1。  它在上午9点提交，尝试将新数据分区到 Prd.salesfact 中。
-3季度提交于9：01am，并希望从 Prd.salesfact 选择数据。
+- Q1 正在积极运行并从 Prd.salesfact 中选择数据。
+- 第2季度排队等候完成 Q1。  它在上午9点提交，尝试将新数据分区到 Prd.salesfact 中。
+- 3季度提交于9：01am，并希望从 Prd.salesfact 选择数据。
 
 如果第2季度和第3季度仍在执行，则第三季度会开始执行。 第2季度将继续等待 Prd.salesfact 上的排他锁。  如果第2季度的重要性高于第3季度，则第三季度将等待第二季度完成，然后才能开始执行。
 
@@ -54,9 +54,9 @@ Q1 正在积极运行并从 Prd.salesfact 中选择数据。
   
 请在 DW500c 上考虑以下示例：
 
-Q1、第2季度、第3季度和第四季度正在运行 smallrc 查询。
-Q5 随 mediumrc 资源类在上午9点提交。
-Q6 是在9：01am 上的 smallrc 资源类中提交的。
+- Q1、第2季度、第3季度和第四季度正在运行 smallrc 查询。
+- Q5 随 mediumrc 资源类在上午9点提交。
+- Q6 是在9：01am 上的 smallrc 资源类中提交的。
 
 因为 Q5 是 mediumrc，所以它需要两个并发槽。 Q5 需要等待两个正在运行的查询完成。  但是，当其中一个正在运行的查询（Q1-Q4）完成时，将立即计划 Q6，因为存在用于执行查询的资源。  如果 Q5 具有比 Q6 更高的重要性，则 Q6 将等待，直到运行 Q5，然后才能开始执行。
 
@@ -64,6 +64,6 @@ Q6 是在9：01am 上的 smallrc 资源类中提交的。
 
 - 有关创建分类器的详细信息，请参阅[创建工作负荷分类器（transact-sql）](/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
 - 有关 SQL 数据仓库工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
-- 有关如何创建工作负荷分类器的详细说明，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。
+- 有关如何创建工作负荷分类器的详细说明，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。 
 - 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)和[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。
-- 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
+- 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 以查看查询和分配的重要性。

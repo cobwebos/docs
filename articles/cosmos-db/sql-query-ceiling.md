@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言的天花板
-description: 了解 Azure Cosmos DB 中的天花板 SQL 系统函数如何返回 y/x 的反正切值（以弧度表示）
+description: 了解 Azure Cosmos DB 中的天花板 SQL 系统函数如何返回大于或等于指定数值表达式的最小整数值。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2da7820a6c9f1f90585b4deb605bb99c7580b0e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444808"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>天花板（Azure Cosmos DB）
  返回大于或等于指定数值表达式的最小整数值。  
@@ -40,7 +40,7 @@ CEILING (<numeric_expr>)
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{c1: 124, c2: -123, c3: 0}]  

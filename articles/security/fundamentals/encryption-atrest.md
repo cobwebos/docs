@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795802"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497297"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -111,7 +111,7 @@ Azure 中支持的加密模型分为两个主要的组：“客户端加密”�
 
 客户端加密模型是指由服务或调用应用程序在资源提供程序或 Azure 外部执行的加密。 加密可以由 Azure 中的服务应用程序执行，也可以由在客户数据中心运行的应用程序执行。 不管哪种情况，在采用此加密模型时，Azure 资源提供程序都会收到加密的数据 blob，但却无法以任何方式解密数据，也无法访问加密密钥。 在此模型中，密钥管理由调用服务/应用程序执行，对 Azure 服务来说是不透明的。
 
-![客户端](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
+![Client](./media/encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
 ### <a name="server-side-encryption-model"></a>服务器端加密模型
 
@@ -248,7 +248,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 - 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/storage-encryption-keys-portal.md)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务器端和客户端加密方案。
 
@@ -284,7 +284,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | SAP HANA                         | 是                | 是，RSA 2048 位  | -                  |
 | **数据库**                    |                    |                    |                    |
 | 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
-| Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL Database               | 是                | 是，RSA 2048 位  | 是                |
 | 用于 MariaDB 的 Azure SQL 数据库   | 是                | -                  | -                  |
 | 用于 MySQL 的 Azure SQL 数据库     | 是                | -                  | -                  |
 | 用于 PostgreSQL 的 Azure SQL 数据库 | 是                | -                  | -                  |
@@ -305,8 +305,8 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | IoT 服务                 |                    |                    |                    |
 | IoT 中心                          | 是                | -                  | 是                |
 | **管理和管理**    |                    |                    |                    |
-| Azure Site Recovery              | 是                | 是，RSA 2048 位  | 是                |
-| **许可证**                        |                    |                    |                    |
+| Azure 站点恢复              | 是                | -                  | -                  |
+| **介质**                        |                    |                    |                    |
 | 媒体服务                   | 是                | -                  | 是                |
 | **存储**                      |                    |                    |                    |
 | Blob 存储                     | 是                | 是，RSA 2048 位  | 是                |

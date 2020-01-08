@@ -4,15 +4,15 @@ description: 可以使用 Azure Monitor HTTP 数据收集器 API，从能够调�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363959"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
 
@@ -21,7 +21,7 @@ ms.locfileid: "72932627"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>示例问题
-本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假设方案中，我们想要将 Application Insights SDK 默认收集的地理信息关联到包含世界上每个国家/地区的人口的自定义数据中，目的是确定应支出的位置。最多营销资金。 
+本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假设方案中，我们想要将 Application Insights SDK 默认收集的地理信息关联到包含世界上每个国家/地区的人口数据的自定义数据中，目的是确定应在何处支出最多营销资金。 
 
 为此，我们使用公开的数据源，例如 [UN World Population Prospects](https://esa.un.org/unpd/wpp/)（联合国世界人口展望）。 数据将采用以下简单架构：
 

@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688280"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658434"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
-[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)为[Azure 门户](https://portal.azure.com)中的 web 应用、移动和 API 应用提供内置的监视功能。
 
-在 Azure 门户中，可以查看应用和应用服务计划的*配额*和*度量值*，并设置基于指标的*警报*和*自动缩放*。
+在 Azure 门户中，可以查看应用和应用服务计划的*配额*和*度量值*，并设置基于指标的*警报*和自动*缩放*。
 
 ## <a name="understand-quotas"></a>了解配额
 
@@ -31,17 +31,17 @@ ms.locfileid: "74688280"
 
 “免费”或“共享”应用的配额如下：
 
-| Quota | 描述 |
+| 配额 | Description |
 | --- | --- |
 | **CPU（短期）** | 5 分钟间隔内允许此应用使用的 CPU 量。 此配额每五分钟重置。 |
 | **CPU（天）** | 一天内允许此应用使用的 CPU 总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
-| 内存 | 允许此应用具有的内存总量。 |
+| **内存** | 允许此应用具有的内存总量。 |
 | **带宽** | 一天内允许此应用使用的传出带宽总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
 | **文件系统** | 允许的存储空间总量。 |
 
 适用于 "*基本*"、"*标准*" 和 "*高级*" 的应用的唯一配额是文件系统。
 
-有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)。
+有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。
 
 ### <a name="quota-enforcement"></a>配额强制执行
 
@@ -65,7 +65,7 @@ ms.locfileid: "74688280"
 
 应用的可用指标包括：
 
-| 指标 | 描述 |
+| 度量值 | Description |
 | --- | --- |
 | **平均响应时间** | 应用处理请求所用的平均时间（以秒为单位）。 |
 | **平均内存工作集** | 应用使用的平均内存量，以兆字节 (MiB) 为单位。 |
@@ -87,14 +87,14 @@ ms.locfileid: "74688280"
 | **Http 406** | 导致 HTTP 406 状态代码的请求计数。 |
 | **Http 4xx** | 导致 HTTP 状态代码的请求计数大于等于 400，但小于 500。 |
 | **Http 服务器错误** | 导致 HTTP 状态代码的请求计数大于等于 500，但小于 600。 |
-| **IO 每秒其他字节数** | 应用进程向不涉及数据的 I/O 操作（例如控制操作）发出字节的速率。|
+| **IO 每秒其他字节数** | 应用进程向不涉及数据的 i/o 操作（如控制操作）发出字节的速率。|
 | **IO 每秒其他操作数** | 应用进程发出非读取或写入操作的 i/o 操作的速率。|
 | **IO 每秒读取字节数** | 应用进程通过 I/O 操作读取字节的速率。|
 | **IO 每秒读取操作数** | 应用进程发出读取 I/O 操作的速率。|
 | **IO 每秒写入字节数** | 应用进程向 I/O 操作写入字节的速率。|
 | **IO 每秒写入操作数** | 应用进程发出写入 I/O 操作的速率。|
 | **内存工作集** | 应用当前使用的内存量，以 MiB 为单位。 |
-| **专用字节数** | 专用字节数是应用进程已分配的无法与其他进程共享的内存的当前大小（字节）。|
+| **专用字节数** | "专用字节" 是应用进程分配的不能与其他进程共享的内存的当前大小（以字节为单位）。|
 | **请求** | 请求总数，不考虑是否导致 HTTP 状态代码。 |
 | **应用程序队列中的请求数** | 应用程序请求队列中的请求数。|
 | **线程计数** | 应用进程中当前处于活动状态的线程数。|
@@ -108,13 +108,13 @@ ms.locfileid: "74688280"
 > 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。
 > 
 
-| 指标 | 描述 |
+| 度量值 | Description |
 | --- | --- |
 | **CPU 百分比** | 计划的所有实例使用的平均 CPU 量。 |
 | **内存百分比** | 计划的所有实例使用的平均内存量。 |
 | **数据输入** | 计划的所有实例使用的平均输入带宽量。 |
 | **数据输出** | 计划的所有实例使用的平均输出带宽量。 |
-| **磁盘队列长度** | 在存储上排队的读取和写入请求的平均数量。 过高的磁盘队列长度表示应用可能由于磁盘 I/O 过多而速度变慢。 |
+| **磁盘队列长度** | 在存储上排队的读取和写入请求的平均数量。 较高的磁盘队列长度表示应用程序可能由于磁盘 i/o 过多而速度变慢。 |
 | **Http 队列长度** | 必须在队列排满之前排入队列中的 HTTP 请求的平均数量。 较高或不断增长的 HTTP 队列长度表示计划处于高负载状态。 |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU 时间和 CPU 百分比
@@ -129,9 +129,9 @@ ms.locfileid: "74688280"
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
 应用和应用服务计划的指标由具有下列粒度和保留策略的服务进行记录和聚合：
 
-* “分钟”粒度级的指标将保留 30 小时。
-* “小时”粒度级的指标将保留 30 天。
-* “天”粒度级的指标将保留 30 天。
+* **分钟**粒度指标保留30小时。
+* **小时**粒度度量值将保留30天。
+* **天**粒度指标保留30天。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.com)。
@@ -144,19 +144,16 @@ ms.locfileid: "74688280"
 1. 配额的当前限制。
 1. 配额的当前值。
 
-![Azure 门户中的“指标”图表][metrics]可以直接从“资源”页访问指标。 自定义图表： 
-1. 选择该图表。
-1. 选择“编辑图表”。
-1. 编辑“时间范围”。
-1. 编辑“图表类型”。
-1. 编辑要显示的指标。  
+![Azure 门户中的指标图表][metrics] 可以直接从资源**概述**页访问指标。 在这里，你将看到表示某些应用指标的图表。
+
+单击其中任何图表将转到 "指标" 视图，您可以在其中创建自定义图表，查询不同的指标等等。 
 
 若要详细了解指标，请参阅[监视服务指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
 可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
-托管在“基本”、“标准”或“高级”应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
+在基本或更高的应用服务计划中托管的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
 
 有关自动缩放的详细信息，请参阅[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及[有关 Azure Monitor 自动缩放的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 

@@ -3,14 +3,14 @@ title: Azure Functions 最佳做法
 description: 了解 Azure Functions 的最佳做法和模式。
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433298"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -22,7 +22,7 @@ ms.locfileid: "74227369"
 
 ### <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
 
-长时间运行的大型函数可能会引起意外超时问题。 若要详细了解给定托管计划的超时，请参阅[函数应用超时持续时间](functions-scale.md#timeout)。 
+长时间运行的大型函数可能会引起意外超时问题。 若要了解有关给定宿主计划的超时的详细信息，请参阅[函数应用超时持续时间](functions-scale.md#timeout)。 
 
 由于许多 node.js 依赖项，函数可能会变得很大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。 
 
@@ -58,11 +58,11 @@ ms.locfileid: "74227369"
  
 根据系统的复杂程度，你可能会遇到以下情况：所涉及的下游服务的行为错误、网络中断或达到了配额限制等。所有这些都可能会影响你的函数。 需设计函数，使其做好该准备。
 
-如果将 5,000 个那些项插入到队列中进行处理，并发生故障，代码将如何响应？ 跟踪已完成的一组中的项。 否则，下次可能再次插入它们。 这种双插入操作可能会对工作流产生严重影响，因此[使函数成为幂等](functions-idempotent.md)的。 
+如果将 5,000 个那些项插入到队列中进行处理，然后发生故障，代码将如何响应？ 跟踪已完成的一组中的项。 否则，下次可能再次插入它们。 这种双插入操作可能会对工作流产生严重影响，因此[使函数成为幂等](functions-idempotent.md)的。 
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 **Azure 存储队列触发器和绑定**文档中的[处理有害队列消息](functions-bindings-storage-queue.md#trigger---poison-messages)。 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue.md#trigger---poison-messages)文档中的**处理有害队列消息**。 
 
 ## <a name="scalability-best-practices"></a>可伸缩性最佳做法
 
@@ -70,7 +70,11 @@ ms.locfileid: "74227369"
 
 ### <a name="share-and-manage-connections"></a>共享和管理连接
 
-尽可能重复使用与外部资源的连接。  请参阅[如何管理 Azure Functions 中的连接](./manage-connections.md)。
+尽可能重复使用与外部资源的连接。 请参阅[如何管理 Azure Functions 中的连接](./manage-connections.md)。
+
+### <a name="avoid-sharing-storage-accounts"></a>避免共享存储帐户
+
+创建 function app 时，必须将其与存储帐户相关联。 存储帐户连接在[AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 若要最大程度地提高性能，请对每个 function app 使用单独的存储帐户。 如果有 Durable Functions 或事件中心触发的函数，这两种函数都会产生大量存储事务，这一点特别重要。 当应用程序逻辑与 Azure 存储交互时，无论是直接（使用存储 SDK）还是通过某个存储绑定进行交互，都应使用专用存储帐户。 例如，如果有事件中心触发的函数将一些数据写入 blob 存储，请使用两个存储帐户&mdash;一个用于函数应用，另一个用于由函数存储的 blob。
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 
@@ -78,21 +82,29 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 请注意在生产 Function App 中加载的内容。 将内存平均分配给应用中的每个函数。
 
-如果在多个 .NET 函数中引用共享程序集，请将其放在常用的共享文件夹中。 否则，可能会意外地部署不同函数之间行为不同的多个版本。
+如果有多个 .NET 函数引用的共享程序集，请将其放在公共共享文件夹中。 否则，可能会意外地部署不同函数之间行为不同的多个版本。
 
 不要在生产代码中使用详细日志记录，这会对性能产生负面影响。
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>使用异步代码，但避免阻止调用
 
-异步编程是推荐的最佳做法。 但是，请始终避免引用 `Result` 属性或在 `Wait` 实例上调用 `Task` 方法。 这种方法会导致线程耗尽。
+异步编程是推荐的最佳做法，在涉及到阻止 i/o 操作时更是如此。
+
+在C#中，始终避免引用 `Task` 实例上的 `Result` 属性或调用 `Wait` 方法。 这种方法会导致线程耗尽。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
+### <a name="use-multiple-worker-processes"></a>使用多个工作进程
+
+默认情况下，函数的任何主机实例均使用单个辅助进程。 若要提高性能，尤其是在单线程运行时（例如 Python），请使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)增加每个主机的工作进程数（最多10个）。 然后 Azure Functions 尝试在这些辅助角色之间平均分配并行函数调用。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于在扩展应用程序以满足需求时创建的每个宿主。 
+
 ### <a name="receive-messages-in-batch-whenever-possible"></a>尽量批量接收消息
 
-某些触发器（例如事件中心）允许通过单次调用接收一批消息。  批处理消息可大幅提升性能。  可以根据 `host.json`host.json 参考文档[中的详述，在 ](functions-host-json.md) 文件中配置最大批大小
+某些触发器（例如事件中心）允许通过单次调用接收一批消息。  批处理消息可大幅提升性能。  可以根据 [host.json 参考文档](functions-host-json.md)中的详述，在 `host.json` 文件中配置最大批大小
 
-对于C#函数，可以将类型更改为强类型数组。  例如，方法签名可以是 `EventData sensorEvent`，而不是 `EventData[] sensorEvent`。  对于其他语言，你需要将 `function.json` 中的基数属性显式设置为 `many` 以启用批处理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
+对于C#函数，可以将类型更改为强类型数组。  例如，方法签名可以是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  对于其他语言，你需要将 `function.json` 中的基数属性显式设置为 `many` 以启用批处理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>配置主机行为以更好地处理并发性
 

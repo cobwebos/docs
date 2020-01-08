@@ -1,23 +1,16 @@
 ---
-title: 在 Azure Service Fabric 中参数化配置文件 | Microsoft Docs
-description: 了解如何在 Service Fabric 中参数化配置文件。
-documentationcenter: .net
+title: 在 Azure 中参数化配置文件 Service Fabric
+description: 了解如何在 Service Fabric 中参数化配置文件，这是管理多个环境时的一种有用方法。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464785"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644624"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -27,7 +20,7 @@ ms.locfileid: "68464785"
 
 在此示例中，在应用程序部署中使用参数来替代配置值。
 
-1. 打开你的服务项目中的 *\<MyService>\PackageRoot\Config\Settings.xml* 文件。
+1. 在服务项目中打开 *\<MyService > \PackageRoot\Config\Settings.xml*文件。
 1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
    ```xml
@@ -37,7 +30,7 @@ ms.locfileid: "68464785"
    ```
 
 1. 保存并关闭该文件。
-1. 打开 *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 文件。
+1. 打开 *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml*文件。
 1. 在 ApplicationManifest.xml 文件的 `Parameters` 元素中声明参数和默认值。  建议参数名称包含服务的名称（例如，“MyService”）。
 
    ```xml
@@ -45,7 +38,7 @@ ms.locfileid: "68464785"
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. 在 applicationmanifest.xml `ServiceManifestImport`文件的节中, 添加一个`ConfigOverrides`和`ConfigOverride`元素, 引用配置包、节和参数。
+1. 在 Applicationmanifest.xml 文件的 `ServiceManifestImport` 节中，添加 `ConfigOverrides` 和 `ConfigOverride` 元素，并引用配置包、节和参数。
 
    ```xml
     <ConfigOverrides>

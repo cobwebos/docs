@@ -3,22 +3,22 @@ title: 将 Azure Policy 大规模部署到委托订阅
 description: 了解 Azure 委托资源管理如何允许跨多个租户部署策略定义和策略分配。
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456844"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
 作为服务提供商，你可能已经载入了多个客户租户进行 Azure 委派资源管理。 [Azure Lighthouse](../overview.md) 允许服务提供商同时在多个租户之间大规模执行操作，从而提高管理任务的效率。
 
-本主题说明如何按照 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) 使用 PowerShell 命令在多个租户中部署策略定义和策略分配。 在此示例中，策略定义确保通过允许仅 HTTPS 流量来保护存储帐户。
+本主题说明如何按照 [Azure Policy](../../governance/policy/index.yml) 使用 PowerShell 命令在多个租户中部署策略定义和策略分配。 在此示例中，策略定义确保通过允许仅 HTTPS 流量来保护存储帐户。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客户租户之间执行查询
 
-你可以使用 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将在这些订阅中识别当前不需要 HTTPS 流量的所有存储帐户。  
+你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将在这些订阅中识别当前不需要 HTTPS 流量的所有存储帐户。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)。
+- 了解 [Azure Policy](../../governance/policy/index.yml)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。

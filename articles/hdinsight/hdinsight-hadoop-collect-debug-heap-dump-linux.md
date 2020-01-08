@@ -2,26 +2,26 @@
 title: 在 HDInsight 上为 Apache Hadoop 服务启用堆转储 - Azure
 description: 为基于 Linux 的 HDInsight 群集中的 Apache Hadoop 服务启用堆转储，以便进行调试和分析。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494858"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658791"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-堆转储包含应用程序的内存快照，包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
+堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们有助于诊断在运行时发生的问题。
 
-## <a name="whichServices"></a>服务
+## <a name="services"></a>服务
 
 可以启用以下服务的堆转储：
 
@@ -33,13 +33,13 @@ ms.locfileid: "73494858"
 
 还可以启用映射的堆转储，并减少由 HDInsight 运行的流程数。
 
-## <a name="configuration"></a>了解堆转储配置
+## <a name="understanding-heap-dump-configuration"></a>了解堆转储配置
 
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 [Apache Hadoop](https://hadoop.apache.org/) 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
 
-在每个脚本中，有一个针对 **\*\_OPTS** 的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
+在每个脚本中，有一个导出 **\*\_** 选择程序，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
 
-映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml**中：
+映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml** 中：
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
@@ -53,7 +53,7 @@ ms.locfileid: "73494858"
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**指示是否启用了此选项+** 。 默认为禁用。
++ 指示是否启用了此选项。 默认为禁用。
 
 > [!WARNING]  
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
@@ -81,12 +81,7 @@ ms.locfileid: "73494858"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.net。
-
-    出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
-
-   > [!NOTE]  
-   > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请输入相同的帐户名和密码。
+1. 在 web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”选项卡。
 
@@ -121,4 +116,3 @@ ms.locfileid: "73494858"
    > 其他服务的“重启”按钮条目可能会有所不同。
 
 8. 一旦重启服务，可使用“服务操作”按钮“关闭维护模式”。 这样一来，Ambari 就可以继续监视服务的警报。
-

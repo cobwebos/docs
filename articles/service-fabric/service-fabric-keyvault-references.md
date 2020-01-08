@@ -1,25 +1,20 @@
 ---
-title: Azure Service Fabric-使用 Service Fabric application KeyVault 引用 |Microsoft Docs
+title: Azure Service Fabric-使用 Service Fabric application KeyVault 引用
 description: 本文介绍如何使用 service fabric KeyVaultReference 支持应用程序机密。
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463038"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>对 Service Fabric 应用程序（预览版）的 KeyVaultReference 支持
 
 构建云应用程序时，常见的难题是如何安全地存储应用程序所需的机密。 例如，你可能想要将容器存储区凭据存储在 keyvault 中，并在应用程序清单中引用它。 Service Fabric KeyVaultReference 使用 Service Fabric 管理的标识，并使其易于引用 keyvault 的机密。 本文的其余部分详细介绍了如何使用 Service Fabric KeyVaultReference，并提供了一些典型的用法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 应用程序的托管标识（MIT）
     
@@ -36,8 +31,8 @@ ms.locfileid: "74307329"
     [
         ...
     {
-        "parameters":  [
-            "name":  "CentralSecretService",
+                "name":  "CentralSecretService",
+                "parameters":  [
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -50,7 +45,7 @@ ms.locfileid: "74307329"
                     "name":  "TargetReplicaSetSize",
                     "value":  "3"
                 }
-                ],
+                ]
             },
             {
                 "name":  "ManagedIdentityTokenService",

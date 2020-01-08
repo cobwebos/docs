@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2b74523f42a1f57805388aa8c60cf1ad5b1d1331
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b24400b2a6a2050fa74b23f936253046f96a9028
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436895"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型
 
@@ -22,10 +22,10 @@ ms.locfileid: "74080086"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* 验证你是否有最新版本的 Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 若要安装 PowerShell 服务管理模块（经典部署模型需要此模块），请参阅[安装 Azure PowerShell 服务管理模块](/powershell/azure/servicemanagement/install-azure-ps)。
+* 验证是否具有最新版本的 Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 若要安装 PowerShell 服务管理模块（对于经典部署模型是必需的），请参阅[安装 Azure PowerShell 服务管理模块](/powershell/azure/servicemanagement/install-azure-ps)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。 请确保完全了解限制和局限性。
-* 验证线路在经典部署模型中可完全正常运行。
+* 验证该线路是否在经典部署模型中完全正常运行。
 * 确保拥有一个在 Resource Manager 部署模型中创建的资源组。
 * 查看以下资源迁移文档：
 
@@ -40,10 +40,10 @@ ms.locfileid: "74080086"
 * 可以在不停机的情况下，将同一订阅中的虚拟网络、网关，以及附加到 ExpressRoute 线路的虚拟网络中的关联部署迁移到 Resource Manager 环境。 可以按照后面描述的步骤来迁移各种资源，例如虚拟网络、网关以及部署在虚拟网络中的虚拟机。 必须确保虚拟网络配置正确，才能进行迁移。 
 * 若要完成虚拟网络、网关以及处于虚拟网络中但与 ExpressRoute 线路不属同一订阅的关联部署的迁移，则需停机一段时间。 文档最后一部分介绍了在迁移资源时必须执行的步骤。
 * 无法迁移使用 ExpressRoute 网关和 VPN 网关的虚拟网络。
-* 不支持 ExpressRoute 线路跨订阅迁移。 有关详细信息，请参阅 [Microsoft.Network 移动支持](../azure-resource-manager/move-support-resources.md#microsoftnetwork)。
+* 不支持 ExpressRoute 线路跨订阅迁移。 有关详细信息，请参阅[Microsoft。网络移动支持](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork)。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
-必须先将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境，才能尝试迁移附加到 ExpressRoute 线路的资源。 若要完成此任务，请参阅以下文章：
+必须先将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境，然后才能尝试迁移附加到 ExpressRoute 线路的资源。 若要完成此任务，请参阅以下文章：
 
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。
 * [使用 Azure PowerShell 将线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)。
@@ -53,7 +53,7 @@ ms.locfileid: "74080086"
 
 ## <a name="migrate-virtual-networks-gateways-and-associated-deployments"></a>迁移虚拟网络、网关和关联的部署
 
-进行迁移时，需要执行哪些步骤取决于资源是在同一订阅中，还是在不同的订阅中，或者二者都有。
+迁移所需步骤取决于资源是位于同一订阅中还是不同订阅中，还是两种情况都存在。
 
 ### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-the-same-subscription-as-the-expressroute-circuit"></a>迁移与 ExpressRoute 线路属于同一订阅的虚拟网络、网关和关联的部署
 此部分介绍了如何执行相关步骤，以便迁移与 ExpressRoute 线路属于同一订阅的虚拟网络、网关和关联的部署。 无需停机即可进行此迁移。 在整个迁移过程中，仍然可以使用所有资源。 正在进行迁移时，管理平面是锁定的。 

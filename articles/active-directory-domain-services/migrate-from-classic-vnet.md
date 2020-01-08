@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674907"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893053"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>预览-将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -306,12 +306,13 @@ Azure AD DS 需要使用网络安全组来保护托管域所需的端口，并�
 
 如果在步骤2中运行 PowerShell cmdlet 准备迁移时出现错误，或者在步骤3中的迁移本身中出现错误，则 Azure AD DS 托管域可回滚到原始配置。 此回滚需要原始经典虚拟网络。 请注意，在回滚后，IP 地址可能仍会更改。
 
-使用 *-Abort*参数运行 `Migrate-Aadds` cmdlet。 为您自己的 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，在上一部分中准备好，如*contoso.com*：
+使用 *-Abort*参数运行 `Migrate-Aadds` cmdlet。 为您自己的 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，该域是在上一节中准备的，如*contoso.com*和经典虚拟网络名称，例如*myClassicVnet*：
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Migrate-Aadds `
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

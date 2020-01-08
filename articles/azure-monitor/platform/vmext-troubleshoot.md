@@ -4,15 +4,15 @@ description: 针对 Windows 和 Linux Azure VM 的 Log Analytics VM 扩展的最
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 9ec0d5036632c575415a7de19b9ea35eb2a28118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e0f41529c5daed134c6eb8efb3595e311cf5fee1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363144"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>排查 Azure Monitor 中 Log Analytics VM 扩展的问题
 本文可帮助排查使用 Microsoft Azure 上运行的 Windows 和 Linux 虚拟机的 Log Analytics VM 扩展时可能遇到的错误，并建议解决这些问题可能的解决方案。

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930341"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644744"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
@@ -31,6 +31,9 @@ ms.locfileid: "74930341"
 
 左外部联接返回左侧流中的所有行，并匹配正确流中的记录。 如果左侧流中的某一行没有匹配项，则正确流中的输出列将设置为 NULL。 输出将是内部联接返回的行以及左侧流中不匹配的行。
 
+> [!NOTE]
+> 数据流中使用的 Spark 引擎有时可能会出现联接条件中的笛卡尔积。 在这种情况下，您可以切换到自定义交叉联接，并手动输入您的联接条件。 这可能会导致数据流中的性能下降，因为执行引擎可能需要计算关系两端的所有行，然后筛选行。
+
 ### <a name="right-outer"></a>右外部
 
 右外部联接返回右侧流中的所有行，并匹配左侧流中的记录。 如果右侧流中的某一行没有匹配项，则将左侧流中的输出列设置为 NULL。 输出将是内部联接返回的行以及右侧流中不匹配的行。
@@ -39,9 +42,16 @@ ms.locfileid: "74930341"
 
 完全外部联接从两端输出所有列和行，并为不匹配的列提供 NULL 值。
 
-### <a name="cross-join"></a>交叉联接
+### <a name="custom-cross-join"></a>自定义交叉联接
 
-交叉联接根据条件输出两个流的叉积。 如果要使用不相等的条件，请将自定义表达式指定为交叉联接条件。 输出流将为满足联接条件的所有行。 若要创建输出每个行组合的笛卡尔积，请将 `true()` 指定为联接条件。
+交叉联接根据条件输出两个流的叉积。 如果要使用不相等的条件，请将自定义表达式指定为交叉联接条件。 输出流将为满足联接条件的所有行。
+
+可以将此联接类型用于非同等联接和 ```OR``` 条件。
+
+如果要显式生成笛卡尔积，请在联接之前，在两个独立流中的每个流之间使用派生列转换，以创建要匹配的合成键。 例如，在名为 ```SyntheticKey``` 的每个流的派生列中创建新列，并将其设置为等于 ```1```。 然后，将 ```a.SyntheticKey == b.SyntheticKey``` 用作自定义联接表达式。
+
+> [!NOTE]
+> 请确保在自定义交叉联接的左侧和右侧关系的每一侧至少包含一列。 如果对静态值执行交叉联接，而不是从每一方的列中执行，则会对整个数据集执行完全扫描，从而导致数据流的性能下降。
 
 ## <a name="configuration"></a>配置
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>交叉联接示例
+### <a name="custom-cross-join-example"></a>自定义交叉联接示例
 
-下面的示例是一个名为 `CartesianProduct` 的联接转换，它采用 `TripData` 和右流 `TripFare`的左流。 此转换采用两个流，并返回其行的笛卡尔积。 联接条件是 `true()` 的，因为它会输出完整的笛卡尔积。 `joinType` 为 `cross`。 我们只启用左侧流中的广播，因此 `broadcast` 的值 `'left'`。
+下面的示例是一个名为 `JoiningColumns` 的联接转换，它采用 `LeftStream` 和右流 `RightStream`的左流。 此转换采用两个流，并将列 `leftstreamcolumn` 大于列 `rightstreamcolumn`的所有行联接在一起。 `joinType` 为 `cross`。 未启用广播，`broadcast` 的值 `'none'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 
@@ -115,12 +125,12 @@ TripData, TripFare
 此转换的数据流脚本位于下面的代码片段中：
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>后续步骤

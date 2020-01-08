@@ -1,6 +1,6 @@
 ---
-title: Azure 门户：地域复制
-description: 使用 Azure 门户为 Azure SQL 数据库中的单个或共用数据库配置异地复制，并启动故障转移
+title: 教程：在门户中执行异地复制 & 故障转移
+description: 使用 Azure 门户，为 Azure SQL 数据库中的单个或共用数据库配置异地复制，并启动故障转移。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348882"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
-本文说明如何使用 [Azure 门户](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](https://portal.azure.com)，以及如何启动故障转移。
+本文说明如何使用 [Azure 门户](https://portal.azure.com)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
 有关自动故障转移组与单一数据库和共用数据库的信息，请参阅[将故障转移组与单一数据库和共用数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关使用托管实例的自动故障转移组的信息，请参阅将[故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用 Azure 门户配置活动异地复制，需要以下资源：
 
@@ -52,7 +52,7 @@ ms.locfileid: "73808125"
 3. 选择或配置辅助数据库的服务器和定价层。
 
     ![配置辅助数据库](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. 可以选择将辅助数据库添加到弹性池中。 要在池中创建辅助数据库，单击“弹性池”，并在目标服务器上选择一个池。 池必须已在目标服务器上存在。 此工作流不会创建池。
+4. 可以选择将辅助数据库添加到弹性池中。 要在池中创建辅助数据库，单击“弹性池”，并在目标服务器上选择一个池。 目标服务器上必须已存在一个池。 此工作流不会创建池。
 5. 单击“创建”添加辅助数据库。
 6. 此时会创建辅助数据库，种子设定过程开始。
 
@@ -69,10 +69,10 @@ ms.locfileid: "73808125"
 2. 在 SQL 数据库边栏选项卡中，选择“所有设置” > “异地复制”。
 3. 在“辅助数据库”列表中，选择想要其成为新的主数据库的数据库并单击“故障转移”。
 
-    ![故障转移](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. 单击“是”开始故障转移。
 
-该命令会立即将辅助数据库切换为主数据库角色。 此过程通常会在 30 秒或更短的时间内完成。
+该命令会立即将辅助数据库切换为主数据库角色。 此过程通常应在30秒内完成。
 
 切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令会自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。
 

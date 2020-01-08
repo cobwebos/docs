@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444498"
 ---
 # <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
@@ -60,6 +60,8 @@ ms.locfileid: "74928288"
 如果并行执行管道中的数据流，则 ADF 会根据附加到每个活动的 Azure Integration Runtime 中的设置，为每个活动执行开启单独 Azure Databricks 的群集。 若要在 ADF 管道中设计并行执行，请在 UI 中添加无优先约束的数据流活动。
 
 在这三个选项中，此选项可能会在最短时间内执行。 但是，将在单独的群集上同时执行每个并行数据流，因此事件的顺序是不确定的。
+
+如果在管道内并行执行数据流活动，则建议不要使用 TTL。 这是因为，同时使用相同的 Azure Integration Runtime 并行执行数据流将导致为数据工厂提供多个温池实例。
 
 ##### <a name="overload-single-data-flow"></a>重载单一数据流
 

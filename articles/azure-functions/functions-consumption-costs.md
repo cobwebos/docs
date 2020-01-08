@@ -1,109 +1,109 @@
 ---
-title: 估算 Azure Functions 中的消耗计划成本
-description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
+title: 估计 Azure Functions 的消耗计划成本
+description: 了解如何更好地估计在 Azure 中的消耗计划中运行函数应用时可能会产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230859"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613052"
 ---
-# <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
+# <a name="estimating-consumption-plan-costs"></a>估计消耗计划成本
 
-在 Azure Functions 中运行的应用目前有三种类型的托管计划，每种计划具有自身的定价模型： 
+目前有三种类型的适用于在 Azure Functions 中运行的应用的托管计划，每个计划都有自己的定价模型： 
 
-| 计划 | 说明 |
+| 套餐 | Description |
 | ---- | ----------- |
-| [**消耗**](functions-scale.md#consumption-plan) | 只根据函数应用的运行时间收费。 此计划包括基于订阅的[免费授予][定价页]。|
+| [**料**](functions-scale.md#consumption-plan) | 只需为函数应用运行的时间付费。 此计划包括每个订阅的[免费授予][定价页]。|
 | [**价格**](functions-scale.md#premium-plan) | 提供与消耗计划相同的功能和缩放机制，但具有增强的性能和 VNET 访问权限。 成本取决于所选的定价层。 若要了解详细信息，请参阅[Azure Functions 高级计划](functions-premium-plan.md)。 |
-| [**专用（应用服务）** ](functions-scale.md#app-service-plan) <br/>（基本或更高层） | 需要在专用 VM 或隔离的环境中运行、自定义映像，或想要使用超额的应用服务计划容量时。 使用[常规应用服务计划计费](https://azure.microsoft.com/pricing/details/app-service/)。 成本取决于所选的定价层。|
+| [**专用（应用服务）** ](functions-scale.md#app-service-plan) <br/>（基本层或更高级别） | 需要在专用 Vm 或隔离中运行时，请使用自定义映像，或者想要使用过量的应用服务计划容量。 使用[常规应用服务计划计费](https://azure.microsoft.com/pricing/details/app-service/)。 成本取决于所选的定价层。|
 
-选择对函数性能和成本要求最有利的计划。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
+你选择了最能实现函数性能和成本要求的计划。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
-本文仅涉及到消耗计划，因为此计划产生可变的成本。 
+本文仅处理消耗计划，因为此计划会产生可变成本。 
 
-Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 Durable Functions 时的成本注意事项，请参阅 [Durable Functions 计费](./durable/durable-functions-billing.md)。
+Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 Durable Functions 时的成本注意事项的详细信息，请参阅[Durable Functions 计费](./durable/durable-functions-billing.md)。
 
 ## <a name="consumption-plan-costs"></a>消耗计划成本
 
-单个函数执行的执行成本以“GB 秒”来度量。 执行成本是通过将其内存用量与执行时间相结合计算得出的。 函数的运行时间越长，其成本越高；同理，函数消耗的内存越多，其成本越高。 
+单个函数执行的执行*开销*以*GB 秒*为单位。 执行开销是通过将其内存使用率与执行时间相结合来计算的。 用于运行的函数比使用更多内存的函数更长。 
 
-假设函数使用的内存量保持恒定。 在这种情况下，进行简单的相乘即可计算成本。 例如，假设函数运行了 3 秒，消耗了 0.5 GB。 那么，执行成本为 `0.5GB * 3s = 1.5 GB-seconds`。 
+假设函数使用的内存量保持不变。 在这种情况下，计算成本是简单的乘法。 例如，假设函数使用了 0.5 GB，3秒。 然后 `0.5GB * 3s = 1.5 GB-seconds`的执行开销。 
 
-由于内存用量会不断变化，计算结果实质上是不同时间的内存用量的积分。  进行这种计算时，系统会按固定的时间间隔对进程（及其子进程）的内存用量采样。 如[定价页]中所述，内存用量将向上舍入到最近似的 128-MB 桶。 如果进程使用 160 MB，则你需要按 256 MB 的用量付费。 计算中会考虑并发性，即，同一进程中的多个并发函数执行。
+由于内存使用量随时间而变化，因此计算实质上是一段时间内内存使用量的整数。  系统会按固定的时间间隔对进程的内存使用量（以及子进程）执行此计算。 如[定价页]中所述，内存使用量向上舍入到最接近的 128-MB 存储桶。 如果你的进程使用 160 MB，则需支付 256 MB。 计算采用并发性，这是同一进程中的多个并发函数执行。
 
 > [!NOTE]
-> 尽管执行成本中不直接考虑 CPU 用量，但如果该用量会影响函数的执行时间，则也会影响成本。
+> 尽管在执行开销中不会直接考虑 CPU 使用率，但它可能会影响函数的执行时间。
 
 ## <a name="other-related-costs"></a>其他相关成本
 
-在估算任何计划中运行函数的总体成本时，请记住，函数运行时将使用其他多个 Azure 服务，而每个服务单独计费。 计算函数应用的定价时，对于与其他 Azure 服务集成的任何触发器和绑定，需要创建这些附加的服务并为其付费。 
+估计在任何计划中运行函数的总成本时，请记住，函数运行时使用多个其他 Azure 服务，每个服务都单独计费。 计算 function apps 的定价时，与其他 Azure 服务集成的任何触发器和绑定都要求你为这些附加服务创建并支付费用。 
 
-对于在消耗计划中运行的函数，总成本是函数的执行成本加上带宽和附加服务的成本。 
+对于在消耗计划中运行的函数，总成本是函数的执行开销，增加了带宽和其他服务的成本。 
 
-估算函数应用和相关服务的总体成本时，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=functions)。 
+估计函数应用和相关服务的总体成本时，请使用[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=functions)。 
 
-| 相关成本 | 说明 |
+| 相关成本 | Description |
 | ------------ | ----------- |
-| **存储帐户** | 需要为每个函数应用提供一个关联的常规用途 [Azure 存储帐户](../storage/common/storage-introduction.md#types-of-storage-accounts)，该帐户[单独计费](https://azure.microsoft.com/pricing/details/storage/)。 函数运行时在内部使用此帐户，但你也可以将其用于存储触发器和绑定。 如果你没有存储帐户，系统会在创建函数应用时创建一个存储帐户。 有关详细信息，请参阅[存储帐户要求](functions-scale.md#storage-account-requirements)。|
+| **存储帐户** | 每个函数应用都要求有一个关联的常规用途[Azure 存储帐户](../storage/common/storage-introduction.md#types-of-storage-accounts)，该帐户[单独计费](https://azure.microsoft.com/pricing/details/storage/)。 此帐户由函数运行时在内部使用，但你也可以将其用于存储触发器和绑定。 如果没有存储帐户，则会在创建函数应用时为你创建一个。 若要了解详细信息，请参阅[存储帐户要求](functions-scale.md#storage-account-requirements)。|
 | **Application Insights** | 函数依赖于[Application Insights](../azure-monitor/app/app-insights-overview.md)来为函数应用提供高性能的监视体验。 虽然不是必需的，但应[启用 Application Insights 集成](functions-monitoring.md#enable-application-insights-integration)。 每个月都包含遥测数据的免费授予。 若要了解详细信息，请参阅[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 |
-| **网络带宽** | 无需为同一区域中的 Azure 服务之间的数据传输付费。 但是，将数据出站传输到另一区域或 Azure 外部可能会产生费用。 有关详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 |
+| **网络带宽** | 无需为同一区域中的 Azure 服务之间的数据传输付费。 但是，对于到其他区域或 Azure 外部的出站数据传输，可能会产生费用。 若要了解详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 |
 
 ## <a name="behaviors-affecting-execution-time"></a>影响执行时间的行为
 
 函数的以下行为可能会影响执行时间：
 
-+ **触发器和绑定**：从读取输入并将输出写入[函数绑定](functions-triggers-bindings.md)所用的时间将计入执行时间。 例如，如果函数使用某个输出绑定将消息写入 Azure 存储队列，则执行时间包括将该消息写入该队列所花费的时间，而函数成本计算包括该写入时间。 
++ **触发器和绑定**：从读取输入并将输出写入[函数绑定](functions-triggers-bindings.md)所用的时间将计入执行时间。 例如，当函数使用输出绑定将消息写入到 Azure 存储队列时，执行时间包括将消息写入队列所用的时间，包括在函数开销的计算中。 
 
-+ **异步执行**：函数等待异步请求（`await` C#）结果的时间被计为执行时间。 “GB 秒”计算基于函数的开始和结束时间，以及该时间段内的内存用量。 计算中不考虑该时间段内发生的 CPU 活动。 也许可以使用 [Durable Functions](durable/durable-functions-overview.md) 来降低异步操作期间产生的成本。 业务流程协调程序函数中的等待时间不产生费用。
++ **异步执行**：函数等待异步请求（`await` C#）结果的时间被计为执行时间。 GB-秒计算基于函数的开始和结束时间以及该时间段内的内存使用量。 在这段时间内，不会将 CPU 活动分解为计算。 在异步操作期间，可以使用[Durable Functions](durable/durable-functions-overview.md)降低成本。 在业务流程协调程序函数中等待等待的时间不计费。
 
 ## <a name="view-execution-data"></a>查看执行数据
 
 在[您的发票](/azure/billing/billing-download-azure-invoice)中，可以查看所有执行的与成本相关的数据 **-函数**和**执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
 
-若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 可以使用 [Azure 门户](../azure-monitor/platform/metrics-getting-started.md)中的 [Azure 门户]或使用 REST API 来获取此数据。
+为了更好地了解函数的成本影响，可以使用 Azure Monitor 查看函数应用当前生成的与成本相关的指标。 可以在[Azure 门户]或 REST api 中使用[Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)来获取此数据。
 
-### <a name="monitor-metrics-explorer"></a>Monitor 指标资源管理器
+### <a name="monitor-metrics-explorer"></a>监视指标资源管理器
 
-使用 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)可以图形格式查看消耗计划函数应用的成本相关数据。 
+使用[Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)以图形格式查看消耗计划函数应用的成本相关数据。 
 
-1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 **，然后选择“服务”下的“Monitor”。** `monitor`
+1. 在搜索 "服务"、"**资源" 和 "文档**" 中[Azure 门户]的顶部，搜索 `monitor` 并选择 "**服务**" 下的 "**监视**"。
 
-1. 在左侧选择“指标” **“选择资源”，然后使用图像下方的设置选择你的函数应用。**  > 
+1. 在左侧，选择 "**指标**" > **选择资源**，然后使用图像下方的设置选择 function app。
 
-    ![选择函数应用资源](media/functions-consumption-costing/select-a-resource.png)
+    ![选择 function app 资源](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |设置  |建议的值  |说明  |
+    |设置  |建议的值  |Description  |
     |---------|---------|---------|
-    | 订阅    |  订阅  | 包含你的函数应用的订阅。  |
-    | 资源组     | 你的资源组  | 包含你的函数应用的资源组。   |
-    | 资源类型     |  应用服务 | 函数应用将作为应用服务实例显示在 Monitor 中。 |
-    | Resource     |  你的函数应用  | 要监视的函数应用。        |
+    | 订阅    |  订阅  | 包含 function app 的订阅。  |
+    | 资源组     | 你的资源组  | 包含 function app 的资源组。   |
+    | 资源类型     |  应用服务 | 函数应用显示为监视器中的应用服务实例。 |
+    | 资源     |  函数应用  | 要监视的函数应用。        |
 
-1. 选择“应用”以选择你的函数应用作为要监视的资源。
+1. 选择 "**应用**"，选择要监视的函数应用。
 
-1. 在“指标”中，为“聚合”选择“函数执行计数”和“求和”。 这会在图表中将所选时间段内的执行计数之和相加。
+1. 对于 "**度量值**"，选择 "**函数执行计数**" 和 "**聚合** **总计**"。 这会将所选时间段内执行计数的总和添加到图表中。
 
     ![定义要添加到图表中的函数应用指标](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. 选择“添加指标”并重复步骤 2-4，将“函数执行单位”添加到图表中。 
+1. 选择 "**添加度量值**"，然后重复步骤2-4，将**函数执行单元**添加到图表中。 
 
-生成的图表包含所选时间范围内（在本例中为 2 小时）两个执行指标的总和。
+生成的图表包含所选时间范围内两个执行度量值的总和，在本例中为2小时。
 
-![函数执行计数和执行单位图表](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
+![函数执行计数和执行单元的关系图](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
 
-由于执行单位数远远大于执行计数，因此图表只显示执行单位。
+由于执行单元数量大于执行计数，因此图表只显示执行单元。
 
-此图显示两小时时间段内总共消耗了 11.1 亿个 `Function Execution Units`（以“MB 毫秒”度量）。 若要转换为 GB 秒，请除以 1024000。 在此示例中，函数应用消耗了 `1110000000 / 1024000 = 1083.98` GB 秒。 可将此值乘以 [Functions 定价页][定价页]上的当前执行时间价格，得出这两个小时的成本（假设已用完了所有免费授予的执行时间）。 
+此图显示了在两个小时内使用的总 1110000000 `Function Execution Units` （以 MB 为单位）。 若要转换为 GB 秒，请除以1024000。 在此示例中，函数应用 `1110000000 / 1024000 = 1083.98` GB-秒使用。 您可以采用此值并乘以 "[函数定价" 页][定价页]上的当前执行时间价格，这将为您提供两个小时的成本，假定您已使用任何免费的执行时间授予。 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure/) 提供了用于检索指标的命令。 可以从本地命令环境使用 CLI，也可以直接从门户使用[Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令返回以前使用的同一时间段内的每小时数据。
+[Azure CLI](/cli/azure/)包含用于检索度量值的命令。 可以从本地命令环境使用 CLI，也可以直接从门户使用[Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下[az monitor 公制 list](/cli/azure/monitor/metrics#az-monitor-metrics-list)命令将返回以前使用的相同时间段内的每小时数据。
 
-请务必将 `<AZURE_SUBSCRIPTON_ID>` 替换为运行该命令的 Azure 订阅 ID。
+请确保将 `<AZURE_SUBSCRIPTON_ID>` 替换为运行命令的 Azure 订阅 ID。
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
@@ -188,15 +188,15 @@ az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resour
   ]
 }
 ```
-此特定响应显示，在从 `2019-09-11T21:46` 到 `2019-09-11T23:18` 的时间段内，应用消耗了 1110000000 MB 毫秒（1083.98 GB 秒）。
+此特定响应显示，从 `2019-09-11T21:46` 到 `2019-09-11T23:18`，应用占用了 1110000000 MB-毫秒（1083.98 GB）。
 
-## <a name="determine-memory-usage"></a>确定内存用量
+## <a name="determine-memory-usage"></a>确定内存使用情况
 
-函数执行单位是执行时间与内存用量的组合，因此很难使用此指标来了解内存用量。 目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果想要优化应用程序的内存使用情况，可以使用 Application Insights 收集的性能计数器数据。  
+函数执行单位是执行时间与内存使用情况的组合，这使得它成为了解内存使用的难以理解的指标。 内存数据不是当前通过 Azure Monitor 提供的指标。 但是，如果想要优化应用程序的内存使用情况，可以使用 Application Insights 收集的性能计数器数据。  
 
 如果尚未执行此操作，请[在函数应用中启用 Application Insights](functions-monitoring.md#enable-application-insights-integration)。 启用此集成后，可以[在门户中查询此遥测数据](functions-monitoring.md#query-telemetry-data)。  
 
-在“监视”下选择“日志(分析)”，复制以下遥测查询并将其粘贴到查询窗口中，然后选择“运行”。 此查询返回每个采样时间的总内存用量。
+在 "**监视**" 下，选择 "**日志（分析）** "，复制以下遥测查询并将其粘贴到查询窗口中，然后选择 "**运行**"。 此查询返回每个采样时间的总内存使用量。
 
 ```
 performanceCounters
@@ -206,14 +206,14 @@ performanceCounters
 
 结果类似于以下示例：
 
-| 时间戳 \[UTC\]          | name          | 值       |
+| timestamp \[UTC\]          | name          | 值       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | 专用字节 | 209,932,288 |
-| 9/12/2019, 1:06:14\.994 AM | 专用字节 | 212,189,184 |
-| 9/12/2019, 1:06:30\.010 AM | 专用字节 | 231,714,816 |
-| 9/12/2019, 1:07:15\.040 AM | 专用字节 | 210,591,744 |
-| 9/12/2019, 1:12:16\.285 AM | 专用字节 | 216,285,184 |
-| 9/12/2019, 1:12:31\.376 AM | 专用字节 | 235,806,720 |
+| 9/12/2019，1:05:14\.947 AM | 专用字节 | 209932288 |
+| 9/12/2019，1:06:14\.994 AM | 专用字节 | 212189184 |
+| 9/12/2019，1:06:30\.010 AM | 专用字节 | 231714816 |
+| 9/12/2019，1:07:15\.040 AM | 专用字节 | 210591744 |
+| 9/12/2019，1:12:16\.285 AM | 专用字节 | 216285184 |
+| 9/12/2019，1:12:31\.376 AM | 专用字节 | 235806720 |
 
 ## <a name="function-level-metrics"></a>函数级指标
 

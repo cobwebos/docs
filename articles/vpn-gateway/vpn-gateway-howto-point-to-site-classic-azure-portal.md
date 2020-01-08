@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450808"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -43,7 +43,7 @@ ms.locfileid: "74424157"
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 点到站点证书身份验证连接需要以下先决条件：
 
@@ -101,7 +101,7 @@ ms.locfileid: "74424157"
 
 5. 从下拉列表中选择要使用的“订阅”。
 
-6. 选择现有“资源组”。 或者，通过选择“新建”并输入名称，创建新的资源组。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 选择现有“资源组”。 或者，通过选择“新建”并输入名称，创建新的资源组。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md#resource-groups)。
 
 7. 为 VNet 选择“位置”。 此设置确定部署到此 VNet 的资源的地理位置。
 
@@ -280,7 +280,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 3. 中转到经典虚拟网络。 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页。
 4. 选择“吊销列表”，打开“吊销列表”页。 
 5. 选择“添加证书”，打开“将证书添加到吊销列表”页。
-6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格。 选择“确定”完成操作。
+6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格。 选择“确定”，以完成操作。
 
 更新完成后，不再可以使用证书来连接。 客户端在尝试使用此证书进行连接时，会收到一条消息，指出证书不再有效。
 

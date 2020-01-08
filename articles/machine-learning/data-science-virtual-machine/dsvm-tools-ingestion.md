@@ -6,16 +6,16 @@ keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 12/12/2019
+ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330678"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612623"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -30,7 +30,7 @@ ms.locfileid: "72330678"
 | 它是什么？   | 用于将数据从 Azure Blob 存储复制到 Azure Data Lake Store 的工具。 此外，也可在两个 Azure Data Lake Store 帐户之间复制数据。      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将多个 blob 从 Azure Blob 存储导入 Azure Data Lake Store。      |
-|  如何使用/运行它？    |   打开命令提示符，然后键入 `adlcopy` 获取帮助。    |
+|  如何使用/运行它？    |   打开命令提示符，然后键入 `adlcopy` 以获得帮助。    |
 | 指向示例的链接      | [使用 AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | DSVM 上的相关工具      | AzCopy、Azure CLI     |
 
@@ -41,7 +41,7 @@ ms.locfileid: "72330678"
 | 它是什么？   | Azure 的管理工具。 它还包含用于从 azure 数据平台（如 Azure Blob 存储和 Azure Data Lake Store）移动数据的命令谓词。     |
 | 支持的 DSVM 版本      | Windows、Linux     |
 | 典型用途      | 在 Azure 存储和 Azure Data Lake Store 中导入和导出数据。      |
-|  如何使用/运行它？    |   打开命令提示符，然后键入 `az` 获取帮助。    |
+|  如何使用/运行它？    |   打开命令提示符，然后键入 `az` 以获得帮助。    |
 | 指向示例的链接      | [使用 Azure CLI](https://docs.microsoft.com/cli/azure)     |
 | DSVM 上的相关工具      | AzCopy、AdlCopy      |
 
@@ -53,7 +53,7 @@ ms.locfileid: "72330678"
 | 它是什么？   | 用于在本地文件、Azure Blob 存储、文件和表之间复制数据的工具。      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件复制到 Azure Blob 存储并在帐户之间复制 blob。      |
-|  如何使用/运行它？    |   打开命令提示符，然后键入 `azcopy` 获取帮助。    |
+|  如何使用/运行它？    |   打开命令提示符，然后键入 `azcopy` 以获得帮助。    |
 | 指向示例的链接      | [Windows 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | DSVM 上的相关工具      | AdlCopy     |
 
@@ -77,7 +77,7 @@ ms.locfileid: "72330678"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 从 DSVM 导入和导出数据。    |
 |  如何使用/运行它？    | 在 "开始" 菜单中搜索 "Azure 存储资源管理器"。 |
-| 指向示例的链接      | [Azure 存储空间资源管理器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| 指向示例的链接      | [Azure 存储浏览器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
@@ -87,7 +87,7 @@ ms.locfileid: "72330678"
 | 它是什么？   | 在 SQL Server 和数据文件之间复制数据的 SQL Server 工具。      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将 CSV 文件导入到 SQL Server 表中，并将 SQL Server 表导出到文件。      |
-|  如何使用/运行它？    |   打开命令提示符，然后键入 `bcp` 获取帮助。    |
+|  如何使用/运行它？    |   打开命令提示符，然后键入 `bcp` 以获得帮助。    |
 | 指向示例的链接      | [bcp 实用工具](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | DSVM 上的相关工具      | SQL Server、sqlcmd      |
 

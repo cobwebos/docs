@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428965"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 实验室服务中配置实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室类型的容器，例如教室实验室。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -82,7 +82,7 @@ ms.locfileid: "73583940"
 ## <a name="specify-marketplace-images-available-to-lab-creators"></a>指定可供实验室创建者使用的市场映像
 作为实验室帐户所有者，你可以指定可供实验室创建者用来在实验室帐户中创建实验室的市场映像。 
 
-1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的**仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。** / 
+1. 在左侧的菜单上选择“市场映像”。 默认情况下，可以看到映像的完整列表（包括启用的和禁用的）。 可以通过从顶部的下拉列表中选择“仅启用的/仅禁用的”选项对列表进行筛选来仅查看启用的/禁用的映像。 
     
     ![“市场映像”页](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
@@ -133,6 +133,14 @@ ms.locfileid: "73583940"
 
 最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当讲师选择**下一个**时，会自动发生这种情况。  然后，教师会立即登录并连接到教室实验室。
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>断开连接时自动关闭 Vm
+断开远程桌面连接后，可以启用或禁用 Windows 实验室 Vm （模板或学生）的自动关闭。 你还可以指定 Vm 在自动关机之前应等待用户重新连接的时间。
+
+![实验室帐户中的自动关闭设置](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+此设置适用于在实验室帐户中创建的所有实验室。 实验室所有者可以在实验室级别覆盖此设置。 在实验室帐户中对此设置的更改将只影响在更改后创建的实验室。
+
+若要了解实验室所有者如何在实验室级别配置此设置，请参阅[此文](how-to-enable-shutdown-disconnect.md)
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

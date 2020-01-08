@@ -4,16 +4,16 @@ description: 监视 Azure 备份工作负荷，并使用 Azure Monitor 创建自
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894056"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611690"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
-Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 这些功能在没有任何附加管理基础结构的情况下可用。 但在以下方案中，此内置服务将受到限制：
+Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需任何附加的管理基础结构即可使用这些功能。 但在以下方案中，此内置服务将受到限制：
 
 - 如果在多个订阅中监视多个恢复服务保管库中的数据
 - 如果首选的通知通道*不*是电子邮件
@@ -35,9 +35,9 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 
 在 "监视" 部分，选择 "**诊断设置**" 并指定恢复服务保管库的诊断数据的目标。
 
-![恢复服务保管库的诊断设置，目标为 Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![恢复服务保管库的诊断设置，目标为 Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-你可以将其他订阅中的 Log Analytics 工作区设定为目标。 若要在一个位置监视跨订阅的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 若要将有关 Azure 备份的所有信息都通道到 Log Analytics 工作区，请选择显示的切换中的 "**资源特定**"，并选择以下事件- **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage**、 **AddonAzureBackupProtectedInstance**。 有关配置 LA 诊断设置的更多详细信息，请参阅[此文](backup-azure-diagnostic-events.md)。
+你可以将其他订阅中的 Log Analytics 工作区设定为目标。 若要在一个位置监视跨订阅的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 若要将有关 Azure 备份的所有信息通过通道传入 Log Analytics 工作区，请在显示的切换中选择 " **AzureDiagnostics** "，并选择 " **AzureBackupReport** " 事件。
 
 > [!IMPORTANT]
 > 完成配置后，应该等待24小时，以便初始数据推送完成。 在此初始数据推送之后，将按本文后面的 "[频率" 部分](#diagnostic-data-update-frequency)中所述推送所有事件。
@@ -50,9 +50,6 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 数据位于 Log Analytics 工作区内后，将[GitHub 模板部署](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)到 Log Analytics，以可视化数据。 若要正确标识工作区，请确保为其提供相同的资源组、工作区名称和工作区位置。 然后在工作区上安装此模板。
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>使用 Log Analytics 查看 Azure 备份数据
-
-> [!IMPORTANT]
-> LA 报表模板目前支持 AzureDiagnostics 模式下的旧事件 AzureBackupReport 中的数据。 若要使用此模板，你将需要[在 Azure 诊断模式下配置保管库诊断设置](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)。 
 
 - **Azure Monitor**：在 "**见解**" 部分中，选择 "**更多**"，然后选择相关工作区。
 - **Log Analytics 工作区**：选择相关工作区，然后在 "**常规**" 下选择 "**工作区摘要**"。
@@ -113,65 +110,90 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 - 所有成功的备份作业
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
     ````
 
 - 所有失败的备份作业
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Failed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
     ````
 
 - 所有成功的 Azure VM 备份作业
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - 所有成功的 SQL 日志备份作业
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup" and JobOperationSubType=="Log"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - 所有成功的 Azure 备份代理作业
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>诊断数据更新频率
@@ -217,7 +239,7 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 尽管可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics 而不是活动日志进行大规模监视。 原因是：
 
 - **有限方案**：通过活动日志的通知仅适用于 Azure VM 备份。 必须为每个恢复服务保管库设置通知。
-- **定义大小**：计划的备份活动不适用于活动日志的最新定义。 相反，它会与[资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)对齐。 当流过活动日志通道的数据发生变化时，此对齐方式会导致意外的影响。
+- **定义大小**：计划的备份活动不适用于活动日志的最新定义。 相反，它会与[资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)对齐。 当流过活动日志通道的数据发生变化时，此对齐方式会导致意外的影响。
 - **活动日志通道的问题**：在恢复服务保管库中，从 Azure 备份抽取的活动日志遵循新的模型。 遗憾的是，此更改会影响 Azure 政府、Azure 德国和 Azure 中国世纪互联活动日志的生成。 如果这些云服务的用户在 Azure Monitor 中的活动日志中创建或配置任何警报，则不会触发警报。 此外，在所有 Azure 公共区域中，如果用户将[恢复服务活动日志收集到 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)中，则不会显示这些日志。
 
 使用 Log Analytics 工作区进行大规模监视和警报，以适合受 Azure 备份保护的所有工作负荷。

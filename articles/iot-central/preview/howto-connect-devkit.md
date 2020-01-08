@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9ba68e90b5ac64c7bdb08af2b567f00c1a076808
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453922"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序（预览功能）
 
@@ -52,7 +52,7 @@ ms.locfileid: "74848920"
 
 ## <a name="prepare-the-device"></a>准备设备
 
-1. 从 GitHub 下载适用于 DevKit 设备的最新[预建 Azure IoT Central 即插即用固件](https://github.com/MXCHIP/IoTDevKit/raw/master/pnp/iotc_devkit/bin/iotc_devkit.bin)。
+1. 从 GitHub 下载适用于 DevKit 设备的最新[预建 Azure IoT Central 即插即用固件](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin)。
 
 1. 使用 USB 线缆将 DevKit 设备连接到开发计算机。 在 Windows 中，已映射到 DevKit 设备上的存储的驱动器中会打开一个文件资源管理器窗口。 例如，该驱动器可能名为 **AZ3166 (D:)** 。
 

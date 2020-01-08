@@ -4,15 +4,15 @@ description: 了解 VMware 监视解决方案如何帮助管理日志和监视 E
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dc453ad42312bb096aed1356d376b0906870a7b0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ac735c9131ebe7b7273d93a927cb4d4a8be24508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399193"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -152,7 +152,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存日志查询是 Azure Monitor 中的一项标准功能，可帮助您保留发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从“[我的仪表板](../learn/tutorial-logs-dashboards.md)”页（可在其中创建自己的自定义仪表板）轻松地对其进行重复使用。
+保存日志查询是 Azure Monitor 中的一项标准功能，可帮助您保留发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
@@ -189,9 +189,9 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
-     b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
+     b.保留“数据库类型”设置，即设置为“共享”。 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 
      c. 验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 

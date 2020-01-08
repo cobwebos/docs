@@ -3,12 +3,12 @@ title: SQL Server 数据库备份的疑难解答
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 95f7966fa59f0a1f6f6a3c9c6832cc573f89e05c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172130"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659247"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -20,11 +20,30 @@ ms.locfileid: "74172130"
 
 若要为虚拟机上的 SQL Server 数据库配置保护，必须在该虚拟机上安装**AzureBackupWindowsWorkload**扩展。 如果收到错误**UserErrorSQLNoSysadminMembership**，则表示 SQL Server 实例没有所需的备份权限。 若要修复此错误，请按照[设置 VM 权限](backup-azure-sql-database.md#set-vm-permissions)中的步骤操作。
 
+## <a name="troubleshoot-discover-and-configure-issues"></a>发现和配置问题疑难解答
+创建和配置恢复服务保管库后，发现数据库和配置备份的过程分为两个步骤。<br>
+
+![sql](./media/backup-azure-sql-database/sql.png)
+
+在备份配置过程中，如果 SQL VM 及其实例在**vm 的发现**数据库中不可见并**配置备份**（请参阅上图），请确保：
+
+### <a name="step-1-discovery-dbs-in-vms"></a>步骤1： Vm 中的发现数据库
+
+- 如果 VM 未列在 "已发现的 VM" 列表中，也未在其他保管库中为 SQL 备份注册，请按照[发现 SQL Server 备份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases)步骤操作。
+
+### <a name="step-2-configure-backup"></a>步骤2：配置备份
+
+- 如果在用于保护数据库的同一个保管库中注册了 SQL VM 的保管库，请按照[配置备份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)步骤操作。
+
+如果需要在新保管库中注册 SQL VM，则必须将其从旧保管库中注销。  从保管库中取消注册 SQL VM 需要停止保护所有受保护的数据源，然后可以删除已备份的数据。 删除备份的数据是一种破坏性操作。  查看并采取取消注册 SQL VM 的所有预防措施后，请将此同一 VM 注册到新的保管库，然后重试备份操作。
+
+
+
 ## <a name="error-messages"></a>错误消息
 
 ### <a name="backup-type-unsupported"></a>不支持的备份类型
 
-| 严重性 | 说明 | 可能的原因 | 建议的操作 |
+| 严重性 | Description | 可能的原因 | 建议的操作 |
 |---|---|---|---|
 | 警告 | 此数据库的当前设置不支持关联策略中存在特定的备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为仅包括支持的备份类型。 否则，在计划的备份过程中将跳过不支持的备份类型，否则备份作业将失败。
 
@@ -125,18 +144,27 @@ ms.locfileid: "74172130"
 |---|---|---|
 操作被阻止，因为保管库已达到范围24小时内允许的此类操作的最大限制。 | 如果已达到24小时内操作的最大允许限制，则会出现此错误。 当存在大规模操作（如修改策略或自动保护）时，通常会出现此错误。 与 CloudDosAbsoluteLimitReached 不同的是，为了解决这种状态，实际上，Azure 备份服务将为相关的所有项目重试操作。<br> 例如：如果你有大量使用策略保护的数据源，并且你尝试修改该策略，则它将为每个受保护的项触发配置保护作业，有时可能会达到每日此类操作允许的最大限制。| Azure 备份服务会在24小时后自动重试此操作。
 
+### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+由于 internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| -如果你使用 NSG 来限制连接，则应使用 AzureBackup service 标记，以允许对 azure 备份服务、Azure 存储或 Azure Active Directory 服务的出站访问。 请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)授予访问权限。<br>-确保 DNS 正在解析 Azure 终结点。<br>-检查 VM 是否在阻止访问 internet 的负载均衡器后面。 通过向 Vm 分配公共 IP，发现将起作用。<br>-验证没有防火墙/防病毒/代理正在阻止调用上述三个目标服务。
+
+
 ## <a name="re-registration-failures"></a>重新注册失败
 
 在触发重新注册操作之前，请检查是否有以下一个或多个症状：
 
-* 所有操作（例如备份、还原和配置备份）在 VM 上失败，并出现以下错误代码之一： **WorkloadExtensionNotReachable**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**， **WorkloadExtensionDidntDequeueMsg**。
-* 备份项的**备份状态**区域显示为 "**无法访问**"。 排除可能导致相同状态的所有其他原因：
+* 所有操作（例如备份、还原和配置备份）在 VM 上失败，并出现以下错误代码之一： **WorkloadExtensionNotReachable**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
+* 如果备份项的**备份状态**区域显示为 "**无法访问**"，请排除可能导致相同状态的所有其他原因：
 
-  * 缺少对 VM 执行与备份相关的操作的权限  
-  * VM 关闭，因此无法进行备份
-  * 网络问题  
+  * 缺少对 VM 执行与备份相关的操作的权限。
+  * 关闭 VM，因此无法进行备份。
+  * 网络问题。
 
-  ![重新注册 VM 时的 "无法访问" 状态](./media/backup-azure-sql-database/re-register-vm.png)
+   ![正在重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * 如果是 Always On 可用性组，则在更改备份首选项或故障转移后，备份会失败。
 

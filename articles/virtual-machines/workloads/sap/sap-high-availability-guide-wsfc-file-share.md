@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8db3baf9fa4c0d054e743d0b52964847b37ec281
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f42713eb579da34ad4b150eec2c89b9645315d0b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078295"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638062"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -37,8 +37,8 @@ ms.locfileid: "70078295"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -197,7 +197,7 @@ ms.locfileid: "70078295"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -212,7 +212,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始本文所述的任务之前，请先查看此文：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -236,7 +236,7 @@ Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器。 借
 
 ![图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1001]
 
-_**图 1：** Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_
+_图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_
 
 ## <a name="sap-ascsscs-ha-with-file-share"></a>采用文件共享的 SAP ASCS/SCS HA
 
@@ -251,13 +251,13 @@ SAP 开发了可以取代群集共享磁盘的新方法和新方案，用于将 
 * SAP 中心服务（具有自身的文件结构以及消息和排队进程）与 SAP 全局主机文件相互独立。
 * SAP 中心服务在 SAP ASCS/SCS 实例下运行。
 * SAP ASCS/SCS 实例已群集化，可以通过 \<ASCS/SCS 虚拟主机名\> 虚拟主机名来访问。
-* SAP 全局文件放置在 SMB 文件共享中，可使用 \<SAP 全局主机\>主机名：\\\\&lt;SAP global host&gt;\sapmnt\\&lt;SID&gt;\SYS\. 进行访问。
+* SAP 全局文件放置在 SMB 文件共享中，可使用 \<SAP 全局主机\> 主机名: \\\\&lt;SAP 全局主机&gt;\sapmnt\\&lt;SID&gt;\SYS\... 进行访问。
 * SAP ASCS/SCS 实例安装在两个群集节点的本地磁盘上。
 * \<ASCS/SCS 虚拟主机名\> 网络名称不同于 &lt;SAP 全局主机&gt;。
 
 ![图 2：采用 SMB 文件共享的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8004]
 
-_**图 2：** 采用 SMB 文件共享的新 SAP ASCS/SCS HA 体系结构_
+**图 2：** 采用 SMB 文件共享的新 SAP ASCS/SCS HA 体系结构
 
 SMB 文件共享的先决条件：
 
@@ -272,7 +272,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 ![图 3：使用文件共享所需的 SAP \<SID\> 群集角色资源][sap-ha-guide-figure-8005]
 
-_**图 3：** 使用文件共享所需的 SAP &lt;SID&gt; 群集角色资源_
+**图 3：** 使用文件共享所需的 SAP &lt;SID&gt; 群集角色资源
 
 
 ## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>在 Azure 中用作 SAPMNT 文件共享且具有存储空间直通功能的横向扩展文件共享
@@ -281,7 +281,7 @@ _**图 3：** 使用文件共享所需的 SAP &lt;SID&gt; 群集角色资源_
 
 ![图 4：用于保护 SAP 全局主机文件的横向扩展文件共享][sap-ha-guide-figure-8006]
 
-_**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
+**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享
 
 > [!IMPORTANT]
 > Microsoft Azure 云和本地环境均完全支持横向扩展文件共享。
@@ -291,10 +291,10 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 
 存储空间直通用作横向扩展文件共享的共享磁盘。 可以借助存储空间直通，使用具有本地存储的服务器构建高度可用且可缩放的存储。 用于横向扩展文件共享（例如 SAP 全局主机文件）的共享存储不是单一故障点。
 
-选择存储空间直通时, 请考虑以下用例:
+选择存储空间直通时，请考虑以下用例：
 
 - 需要在 Azure 可用性集中部署用于构建存储空间直通群集的虚拟机。
-- 对于存储空间直通群集的灾难恢复, 可以使用[Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 对于存储空间直通群集的灾难恢复，可以使用[Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
 - 不支持将存储空间直通群集延伸到不同的 Azure 可用性区域。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中的横向扩展文件共享的 SAP 先决条件
@@ -311,19 +311,19 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 * 必须使用 Azure 高级磁盘。
 * 建议使用 Azure 托管磁盘。
 * 建议使用复原文件系统 (ReFS) 来格式化卷。
-    * 有关详细信息, 请参阅[Sap 说明 1869038-对 ReFs 文件系统的 sap 支持][1869038]和[选择文件系统][planning-volumes-s2d-choosing-filesystem]一章中的 "规划卷" 存储空间直通。
+    * 有关详细信息，请参阅[Sap 说明 1869038-对 ReFs 文件系统的 sap 支持][1869038]和[选择文件系统][planning-volumes-s2d-choosing-filesystem]一章中的 "规划卷" 存储空间直通。
     * 请确保安装[MICROSOFT KB4025334 累积更新][kb4025334]。
 * 可以使用“DS 系列”或“DSv2 系列”Azure VM 大小。
 * 若要获得良好的 VM 间网络性能以顺利进行存储空间直通磁盘同步，请使用至少能够提供“高”网络带宽的 VM 类型。
-    有关详细信息, 请参阅[DSv2 系列][dv2-series]和[DS 系列][ds-series]规范。
-* 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息, 请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
+    有关详细信息，请参阅[DSv2 系列][dv2-series]和[DS 系列][ds-series]规范。
+* 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息，请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
 * 不需针对横向扩展文件共享网络名称（例如 \<SAP 全局主机\>）来配置 Azure 内部负载均衡器。 此操作针对 SAP ASCS/SCS 实例的 \<ASCS/SCS 虚拟主机名\>，或者针对 DBMS。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP 全局主机\> 将本地 IP 地址用于所有群集节点。
 
 
 > [!IMPORTANT]
 > 不能重命名指向 \<SAP 全局主机\> 的 SAPMNT 文件共享。 SAP 仅支持共享名“sapmnt”。
 >
-> 有关详细信息, 请参阅[SAP 说明 2492395-是否可以更改共享名 sapmnt？][2492395]
+> 有关详细信息，请参阅[SAP 说明 2492395-是否可以更改共享名 sapmnt？][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>在两个群集中配置 SAP ASCS/SCS 实例和横向扩展文件共享
 
@@ -335,10 +335,10 @@ _**图 4：** 用于保护 SAP 全局主机文件的横向扩展文件共享_
 
 ![图 5：在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享][sap-ha-guide-figure-8007]
 
-_**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享_
+**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享
 
 > [!IMPORTANT]
-> 在 Azure 云中, 用于 SAP 和横向扩展文件共享的每个群集都必须部署在其自己的 Azure 可用性集中或跨 Azure 可用性区域。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 此技术支持可用性区域部署。
+> 在 Azure 云中，用于 SAP 和横向扩展文件共享的每个群集都必须部署在其自己的 Azure 可用性集中或跨 Azure 可用性区域。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 此技术支持可用性区域部署。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>将 SIOS DataKeeper 用作群集共享磁盘的通用文件共享
@@ -350,7 +350,7 @@ _**图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享, 为 SAP HA 准备 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
+* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享，为 SAP HA 准备 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
 * [在 SAP ASCS/SCS 实例的 Windows 故障转移群集和文件共享上安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
 * [在 Azure 中部署 UPD 存储的双节点存储空间直通横向扩展文件服务器][deploy-sofs-s2d-in-azure]
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]

@@ -1,28 +1,19 @@
 ---
-title: Service Fabric 群集 Resource Manager：移动成本 | Microsoft 文档
-description: Service Fabric 服务的移动成本概述
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric 群集资源管理器：移动成本
+description: 了解 Service Fabric 服务的移动成本，以及如何将其指定为适合任何结构需求（包括动态配置）。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243010"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563337"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
-尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。 
+尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。
 
 移动服务可将 CPU 时间和网络带宽的成本降到最低。 对于有状态服务，需要复制消耗额外内存和磁盘的这些服务的状态。 将 Azure Service Fabric 群集资源管理器所提出的解决方案成本降到最低有助于避免使用不必要的群集资源。 但是，也不希望忽略可大幅改善群集中资源分配的解决方案。
 
@@ -76,7 +67,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移动成本的影响
-MoveCost 有五个级别：零、低、中、高和 VeryHigh。 以下规则适用：
+MoveCost 有五个级别：零、低、中、高和 VeryHigh。 下列规则适用：
 
 * Movecost 彼此相关，但零和 VeryHigh 除外。 
 * 零移动成本表示移动不会产生成本，不应计入解决方案的分数。

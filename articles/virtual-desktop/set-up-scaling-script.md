@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451340"
 ---
 # <a name="scale-session-hosts-dynamically"></a>动态缩放会话主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "73607456"
 
 本文使用简单的缩放脚本来自动缩放 Windows 虚拟桌面环境中的会话主机虚拟机。 若要了解有关缩放脚本工作方式的详细信息，请参阅[缩放脚本的工作](#how-the-scaling-script-works)原理部分。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 运行脚本的环境必须具有以下各项：
 
@@ -50,7 +50,7 @@ ms.locfileid: "73607456"
 
 1. 登录到将使用域管理帐户运行计划任务的 VM （scaler VM）。
 2. 在 scaler VM 上创建一个文件夹来保存缩放脚本及其配置（例如， **C：\\缩放-HostPool1**）。
-3. 下载**basicScale**和**Functions-PSStoredCredentials** **文件，并**从[扩展脚本存储库](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)下载**PowershellModules**文件夹，并将其复制到在步骤2中创建的文件夹。 可以通过两种主要方式获取文件，然后将其复制到 scaler VM：
+3. 从[缩放脚本存储库](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)下载**basicScale**、 **.config**和**Functions-PSStoredCredentials**文件，**并将其**复制到在步骤2中创建的文件夹。 可以通过两种主要方式获取文件，然后将其复制到 scaler VM：
     - 将 git 存储库克隆到本地计算机。
     - 查看每个文件的**原始**版本，将每个文件的内容复制并粘贴到文本编辑器中，然后使用相应的文件名和文件类型保存文件。 
 
@@ -73,15 +73,15 @@ ms.locfileid: "73607456"
     ```
     
     例如， **KeyPath-Scope 全局值 "c：\\HostPool1"**
-5. 运行**StoredCredential-KeyPath \$KeyPath** cmdlet。 出现提示时，输入具有查询主机池权限的 Windows 虚拟桌面凭据（在**config.xml**中指定主机池）。
+5. 运行**StoredCredential-KeyPath \$KeyPath** cmdlet。 出现提示时，输入具有查询主机池权限的 Windows 虚拟桌面凭据（在**配置**中指定主机池）。
     - 如果使用不同的服务主体或标准帐户，请对每个帐户运行**StoredCredential-KeyPath \$KeyPath** cmdlet，以创建本地存储的凭据。
 6. 运行**StoredCredential-List**确认已成功创建凭据。
 
-### <a name="configure-the-configxml-file"></a>配置 config.xml 文件
+### <a name="configure-the-configjson-file"></a>配置配置 json 文件
 
-在以下字段中输入相关值，以更新 config.xml 中的缩放脚本设置：
+在以下字段中输入相关值，以更新配置中的扩展脚本设置：
 
-| 字段                     | 说明                    |
+| 字段                     | Description                    |
 |-------------------------------|------------------------------------|
 | AADTenantId                   | 将会话主机 Vm 运行到的订阅关联的 Azure AD 租户 ID     |
 | AADApplicationId              | 服务主体应用程序 ID                                                       |
@@ -103,7 +103,7 @@ ms.locfileid: "73607456"
 
 ### <a name="configure-the-task-scheduler"></a>配置任务计划程序
 
-配置 config.xml 文件后，需要将任务计划程序配置为按固定时间间隔运行 basicScaler 文件。
+配置 JSON 文件配置后，需要将任务计划程序配置为按固定间隔运行 basicScaler 文件。
 
 1. 开始**任务计划程序**。
 2. 在 "**任务计划程序**" 窗口中，选择 "**创建任务 ...** "
@@ -117,13 +117,13 @@ ms.locfileid: "73607456"
 
 ## <a name="how-the-scaling-script-works"></a>缩放脚本的工作原理
 
-此缩放脚本从 config.xml 文件中读取设置，包括一天中高峰使用期限的开始和结束时间。
+此扩展脚本从配置文件中读取设置，包括一天中高峰使用期限的开始和结束。
 
-高峰使用时间期间，该脚本会检查当前会话数和每个主机池的当前正在运行的 RDSH 容量。 它计算正在运行的会话主机 Vm 是否有足够的容量来支持基于 config.xml 文件中定义的 SessionThresholdPerCPU 参数的现有会话。 否则，该脚本会在主机池中启动其他会话主机 Vm。
+高峰使用时间期间，该脚本会检查当前会话数和每个主机池的当前正在运行的 RDSH 容量。 它计算正在运行的会话主机 Vm 是否有足够的容量来支持基于配置文件中定义的 SessionThresholdPerCPU 参数的现有会话。 否则，该脚本会在主机池中启动其他会话主机 Vm。
 
-在非高峰使用时间，该脚本根据 config.xml 文件中的 MinimumNumberOfRDSH 参数确定应关闭哪些会话主机 Vm。 此脚本会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果将 config.xml 文件中的**LimitSecondsToForceLogOffUser**参数设置为非零正值，则该脚本将通知所有当前已登录的用户保存工作，等待配置的时间长度，然后强制用户注销。在会话主机 VM 上注销所有用户会话后，该脚本将关闭服务器。
+在非高峰使用时间内，该脚本根据 config.xml 文件中的 MinimumNumberOfRDSH 参数确定应关闭的会话主机。 此脚本会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果在配置文件中将**LimitSecondsToForceLogOffUser**参数设置为非零正值，则该脚本将通知所有当前已登录的用户保存工作，等待配置的时间长度，然后强制用户注销。在会话主机 VM 上注销所有用户会话后，该脚本将关闭服务器。
 
-如果将 config.xml 文件中的**LimitSecondsToForceLogOffUser**参数设置为零，则该脚本将允许主机池属性中的会话配置设置处理注销用户会话。 如果会话主机 VM 上有任何会话，它会使会话主机 VM 运行。 如果没有任何会话，该脚本将关闭会话主机 VM。
+如果在配置文件中将**LimitSecondsToForceLogOffUser**参数设置为零，则该脚本将允许主机池属性中的会话配置设置处理注销用户会话。 如果会话主机 VM 上有任何会话，它会使会话主机 VM 运行。 如果没有任何会话，该脚本将关闭会话主机 VM。
 
 此脚本设计为在 scaler VM 服务器上使用任务计划程序定期运行。 根据远程桌面服务环境的大小选择适当的时间间隔，并记住启动和关闭虚拟机可能需要一些时间。 建议每15分钟运行一次缩放脚本。
 

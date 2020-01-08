@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561617"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563388"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "74561617"
 
     输入命名空间的连接字符串作为 `ServiceBusConnectionString` 变量。 输入队列名称。
 
-1. 将 `Main()` 方法替换为以下**async** `Main` 方法。 它调用 SendMessagesAsync 方法，你将在下一步中添加该方法，以将消息发送到队列。 
+1. 将 `Main()` 方法替换为以下**async** `Main` 方法。 它调用 `SendMessagesAsync()` 方法，你将在下一步中添加该方法，以将消息发送到队列。 
 
     ```csharp
     public static async Task Main(string[] args)

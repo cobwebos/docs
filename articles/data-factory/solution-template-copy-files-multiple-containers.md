@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439768"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
 
@@ -34,9 +34,11 @@ ms.locfileid: "74927702"
 - **ForEach**从**GetMetadata**活动获取容器列表，然后循环访问该列表并将每个容器传递到复制活动。
 - **Copy**将源存储存储中的每个容器复制到目标存储中。
 
-该模板定义两个参数：
-- *SourceFilePath*是你的数据源存储的路径，你可以在其中获取容器列表。 在大多数情况下，该路径是包含多个容器文件夹的根目录。 此参数的默认值为 `/`。
-- *DestinationFilePath*是要将文件复制到目标存储中的路径。 此参数的默认值为 `/`。
+模板定义以下参数：
+- *SourceFileFolder*是你的数据源存储的文件夹路径，你可以在其中获取容器列表。 路径是根目录，其中包含多个容器文件夹。 此参数的默认值为 `sourcefolder`。
+- *SourceFileDirectory*是数据源存储的根目录下的子文件夹路径。 此参数的默认值为 `subfolder`。
+- *DestinationFileFolder*是要将文件复制到目标存储中的文件夹路径。 此参数的默认值为 `destinationfolder`。
+- *DestinationFileDirectory*是要将文件复制到目标存储中的子文件夹路径。 此参数的默认值为 `subfolder`。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 

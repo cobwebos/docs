@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2430b5135a5d3f7ad1f9ef0bd17d9149bf48ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793454"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690781"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -61,8 +61,8 @@ ms.locfileid: "74793454"
 
 若要向资源提供程序注册你的 SQL Server VM，你将需要： 
 
-- [Azure 订阅帐户](https://azure.microsoft.com/free/)。
-- 部署到公有云的 Azure 资源模型[SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) 。 
+- 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
+- 部署到公共或 Azure 政府云的 Azure 资源模型[SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) 。 
 - [Azure CLI](/cli/azure/install-azure-cli)或[PowerShell](/powershell/azure/new-azureps-module-az)的最新版本。 
 
 ## <a name="management-modes"></a>管理模式
@@ -223,7 +223,7 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[NoAgent �
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 中转到[SQL 虚拟机](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)资源。 
 1. 选择 SQL Server 虚拟机，然后选择 "**概述**"。 
 1. 对于 NoAgent 或轻型 IaaS 模式下的 SQL Server Vm，请选择 " **SQL IaaS 扩展消息仅提供许可证类型" 和 "版本更新**"。
@@ -265,7 +265,7 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[NoAgent �
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 中转到[SQL Server 虚拟机](virtual-machines-windows-sql-manage-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未向 SQL VM 资源提供程序注册它。 
 1. 查看 "**状态**" 下的值。 如果**状态**为 "**成功**"，则已成功向 SQL VM 资源提供程序注册了 SQL Server VM。 
@@ -286,8 +286,7 @@ Windows Server 2008 上安装的 SQL Server 2008 和 2008 R2 可以在[NoAgent �
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
-  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
   ```
 
 ---
@@ -349,7 +348,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 SQL VM 资源提供程序仅支持：
 - SQL Server 通过 Azure 资源管理器部署的 Vm。 不支持 SQL Server 通过经典模型部署的 Vm。 
-- 将 Vm 部署到公有云 SQL Server。 不支持部署到私有或政府云。 
+- 将 Vm 部署到公共或 Azure 政府云 SQL Server。 不支持部署到其他私有云或政府云。 
 
 
 ## <a name="frequently-asked-questions"></a>常见问题 

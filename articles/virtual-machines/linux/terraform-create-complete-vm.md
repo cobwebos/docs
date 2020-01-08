@@ -14,16 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368923"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 
 使用 Terraform 可以在 Azure 中定义和创建完整的基础结构部署。 以用户可读格式生成 Terraform 模板，用于以一致且可重现的方式创建和配置 Azure 资源。 本文介绍了如何使用 Terraform 创建完整的 Linux 环境和支持资源。 另外，还可以了解如何[安装和配置 Terraform](terraform-install-configure.md)。
+
+> [!NOTE]
+> 有关 Terraform 的特定支持，请直接使用其一个社区渠道联系 Terraform：
+>
+>   •社区门户的[Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用的模式。
+>
+>   •对于与提供程序相关的问题，请访问社区门户的[Terraform 提供程序](https://discuss.hashicorp.com/c/terraform-providers)部分。
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>创建 Azure 连接和资源组
@@ -44,7 +51,7 @@ provider "azurerm" {
 }
 ```
 
-以下部分在 `myResourceGroup` 位置创建名为 `eastus` 的资源组：
+以下部分在 `eastus` 位置创建名为 `myResourceGroup` 的资源组：
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893359"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560379"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -361,7 +361,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 在“使用情况和预估成本”页面中设置采样率：
 
-![从应用程序“概述”边栏选项卡中，依次单击“设置”、“配额”、“示例”，选择采样率，并单击“更新”。](./media/sampling/04.png)
+![从应用程序“概述”边栏选项卡中，依次单击“设置”、“配额”、“示例”，选择采样率，并单击“更新”。](./media/sampling/data-sampling.png)
 
 与其他类型的采样一样，该算法会保留相关的遥测项。 例如，在“搜索”中检查遥测数据时，可以查找与特定异常相关的请求。 诸如请求速率和异常率等指标计数会正确保留。
 
@@ -543,7 +543,7 @@ ASP.NET 版本 2.0.0 和 Java SDK 版本 2.0.1 及以上版本中 SDK 的固定�
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

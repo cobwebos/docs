@@ -1,20 +1,21 @@
 ---
-title: 确定用于存储帐户的加密密钥模型-Azure 存储
+title: 确定用于存储帐户的加密密钥模型
+titleSuffix: Azure Storage
 description: 使用 Azure 门户、PowerShell 或 Azure CLI 检查如何为存储帐户管理加密密钥。 密钥可能由 Microsoft 管理（默认设置），或由客户管理。 客户管理的密钥必须存储在 Azure Key Vault 中。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666593"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665411"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>确定存储帐户使用的 Azure 存储加密密钥模型
 
@@ -35,7 +36,7 @@ ms.locfileid: "74666593"
 
 若要使用 Azure 门户检查存储帐户的加密模型，请执行以下步骤：
 
-1. 在 Azure 门户中，导航到存储帐户。
+1. 在 Azure 门户中导航到存储帐户。
 1. 选择**加密**设置，并记下设置。
 
 下图显示了用于加密的客户托管密钥的存储帐户：

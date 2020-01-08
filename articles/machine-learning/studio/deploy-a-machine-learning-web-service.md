@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454787"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习 Studio （经典） web 服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "74851088"
 
 机器学习 Studio （经典） web 服务在应用程序和机器学习 Studio （经典）工作流评分模型之间提供了一个接口。 外部应用程序可实时与机器学习 Studio （经典）工作流评分模型通信。 对机器学习 Studio （经典） web 服务的调用会将预测结果返回到外部应用程序。 若要调用 Web 服务，需要在传递部署 Web 服务时创建的 API 密钥。 机器学习 Studio （经典） web 服务基于 REST，这是 web 编程项目的常用体系结构选择。
 
-Azure 机器学习 Studio 的经典版具有两种类型的 web 服务：
+Azure 机器学习 Studio （经典）有两种类型的 web 服务：
 
 * 请求-响应服务（RR）：对单个数据记录进行评分的低延迟、高度可缩放的服务。
 * 批处理执行服务（BE）：对一批数据记录进行评分的异步服务。
@@ -32,13 +32,13 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 概括而言，可以通过以下三个步骤来部署模型：
 
-* **[创建训练实验]** -在经典版 Studio 中，可以使用所提供的定型数据来定型和测试预测分析模型，并使用大量的内置机器学习算法。
+* **[创建培训体验]** 工作室（经典），可以使用所提供的定型数据，使用大量内置机器学习算法来定型和测试预测分析模型。
 * **[将其转换为预测试验]** - 利用现有数据定型模型后，你就可以使用它来对新数据进行评分，为预测准备并简化你的试验。
 * 将其**部署**为 **[新 Web 服务]** 或 **[经典 Web 服务]** - 将预测实验部署为 Azure Web 服务时，用户可以将数据发送到模型并接收模型的预测。
 
 ## <a name="create-a-training-experiment"></a>创建训练实验
 
-若要训练预测分析模型，请使用经典版本的 Azure 机器学习 Studio 创建一个训练试验，其中包含用于加载定型数据的各种模块，根据需要准备数据，应用机器学习算法，以及计算结果。 可以迭代实验，尝试不同的机器学习算法来比较和评估结果。
+若要训练预测分析模型，请使用 Azure 机器学习 Studio （经典）创建一个训练试验，其中包含用于加载定型数据的各种模块，根据需要准备数据，应用机器学习算法，并评估后果. 可以迭代实验，尝试不同的机器学习算法来比较和评估结果。
 
 在别处对创建和管理训练实验的过程进行了更详细地介绍。 有关详细信息，请参阅以下文章：
 
@@ -95,9 +95,9 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ![输入适当的值以测试 web 服务](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-若要测试 BES，请单击“Batch”。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果你没有 CSV 文件，并且使用经典版本的机器学习 Studio 创建了预测实验，则可以下载预测试验的数据集并使用它。
+若要测试 BES，请单击“Batch”。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果你没有 CSV 文件，并且使用机器学习 Studio （经典）创建了预测试验，则可以下载预测试验的数据集并使用它。
 
-若要下载数据集，请打开经典版本的机器学习 Studio。 打开预测实验，右键单击实验的输入。 从上下文菜单中，选择“数据集”，并选择“下载”。
+若要下载数据集，请打开机器学习 Studio （经典）。 打开预测实验，右键单击实验的输入。 从上下文菜单中，选择“数据集”，并选择“下载”。
 
 ![从 Studio （经典）画布下载数据集](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ### <a name="access-your-new-web-service"></a>访问新 Web 服务
 
-从机器学习 Studio 的经典版本部署 web 服务后，可以将数据发送到服务，并以编程方式接收响应。
+从机器学习 Studio （经典）部署 web 服务后，可以将数据发送到服务，并以编程方式接收响应。
 
 **使用**页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
 
@@ -136,7 +136,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 3. 在视图页中的“计划”上，单击“新建”。
 4. 从“订阅”下拉列表中，选择新计划将驻留的订阅。
 5. 从“区域”下拉列表中，选择适用于新计划的区域。 所选区域的“计划选项”会显示在该页的“计划选项”部分中。
-6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 7. 在“计划名称”中，键入计划的名称。
 8. 在“计划选项”中，单击新计划的计费级别。
 9. 单击“创建”。
@@ -145,15 +145,15 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 1. 在 Microsoft Azure 机器学习 Web 服务页上，单击“Web 服务”菜单选项。
 2. 选择要部署到新区域的 Web 服务。
-3. 单击“复制”。
+3. 单击 **“复制”** 。
 4. 在“Web 服务名称”中，键入 Web 服务的新名称。
 5. 在“Web 服务描述”中，键入 Web 服务的描述。
 6. 从“订阅”下拉列表中，选择新的 Web 服务将驻留的订阅。
-7. 从“资源组”下拉列表中，选择适用于该 Web 服务的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+7. 从“资源组”下拉列表中，选择适用于该 Web 服务的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 8. 从“区域”下拉列表中，选择要部署 Web 服务的区域。
 9. 从“存储帐户”下拉列表中，选择要存储 Web 服务的存储帐户。
 10. 从“价格计划”下拉列表中，选择步骤 8 中所选的区域中的计划。
-11. 单击“复制”。
+11. 单击 **“复制”** 。
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>部署为经典 Web 服务
 
@@ -169,9 +169,9 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 若要测试请求响应 Web 服务，请单击 Web 服务仪表板中的“测试”按钮。 将弹出一个对话框，要求输入服务的输入数据。 下面是评分实验预期的列。 输入一组数据，并单击“确定”。 Web 服务生成的结果显示在仪表板的底部。
 
-你可以单击 "**测试**预览" 链接，在经典版本的 Azure 机器学习 Studio Web 服务门户中测试你的服务，如前面的 "新建 Web 服务" 部分所示。
+你可以单击 "**测试**预览" 链接，在 Azure 机器学习 Studio （经典） web 服务门户中测试你的服务，如前面的 "新建 Web 服务" 部分所示。
 
-若要测试 Batch 执行服务，请单击“测试”预览链接。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果你没有 CSV 文件，并且使用经典版本的机器学习 Studio 创建了预测实验，则可以下载预测试验的数据集并使用它。
+若要测试 Batch 执行服务，请单击“测试”预览链接。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果你没有 CSV 文件，并且使用机器学习 Studio （经典）创建了预测试验，则可以下载预测试验的数据集并使用它。
 
 ![测试 Web 服务](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ### <a name="access-your-classic-web-service"></a>访问经典 Web 服务
 
-从机器学习 Studio 的经典版本部署 web 服务后，可以将数据发送到服务，并以编程方式接收响应。
+从 Azure 机器学习 Studio （经典）部署 web 服务后，可以将数据发送到服务，并以编程方式接收响应。
 
 仪表板提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问，并提供 API 帮助页以帮助你开始编写代码。
 
@@ -220,7 +220,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 * 可通过多种方法来使用 REST API 和访问 Web 服务。 请参阅[如何使用 Azure 机器学习 Studio （经典） web 服务](consume-web-services.md)。
 
 <!-- internal links -->
-[创建训练实验]: #create-a-training-experiment
+[创建培训体验]: #create-a-training-experiment
 [将其转换为预测试验]: #convert-the-training-experiment-to-a-predictive-experiment
 [新 Web 服务]: #deploy-it-as-a-new-web-service
 [经典 Web 服务]: #deploy-it-as-a-classic-web-service

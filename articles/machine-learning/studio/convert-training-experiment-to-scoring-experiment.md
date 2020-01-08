@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e397cfaa9ce521ebe3c2f46ef6cc015bff3112f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454828"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>如何在 Azure 机器学习 Studio （经典）中准备要部署的模型
 
 Azure 机器学习 Studio （经典）提供开发预测分析模型所需的工具，然后将其部署为 Azure web 服务操作。
 
-为此，请使用经典版本的 Studio 创建一个试验，即训练*试验*-您在何处训练、评分和编辑模型。 满意以后，即可将训练实验转换为*预测实验*（已配置为对用户数据进行评分），使模型做好部署准备。
+为此，您可以使用 Studio （经典）创建一个试验，即训练*试验*-您在何处训练、评分和编辑您的模型。 满意以后，即可将训练实验转换为*预测实验*（已配置为对用户数据进行评分），使模型做好部署准备。
 
 你可以在[教程1：预测信用风险](tutorial-part1-credit-risk.md)中查看此过程的示例。
 

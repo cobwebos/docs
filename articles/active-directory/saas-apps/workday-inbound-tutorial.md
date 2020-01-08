@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849322"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613750"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -120,7 +120,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 > 普通的“Workday”应用用于在 Workday 与 Azure Active Directory 之间设置单一登录。
 
 使用下面的决策流程图来确定哪些 Workday 预配应用与你的方案相关。
-    ![决策流程图](./media/workday-inbound-tutorial/wday_app_flowchart.png "Decis离子流程图 "）
+    ![决策流程图](./media/workday-inbound-tutorial/wday_app_flowchart.png "决策流程图")
 
 按照目录转到本教程的相关部分。
 
@@ -292,7 +292,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
      ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
-     单击 **“确定”** 。
+     单击“确定”。
 
 3. 在显示的报表中，选择“外部帐户预配”旁边显示的省略号 (...)，然后单击菜单选项“域”->“编辑安全策略权限”
 
@@ -308,9 +308,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 6. 针对剩余的每个安全策略重复上述步骤 3-5：
 
-   | Operation | 域安全策略 |
+   | 操作 | 域安全策略 |
    | ---------- | ---------- |
-   | “获取”和“放置” | 员工数据：公职人员报告 |
+   | “获取”和“放置” | 工作人员数据：公职人员报告 |
    | “获取”和“放置” | 人员数据：工作联系人信息 |
    | 获取 | 工作人员数据：所有职位 |
    | 获取 | 工作人员数据：当前人员配备信息 |
@@ -366,9 +366,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **若要配置 Workday 到 Active Directory 的预配：**
 
-1. 转到 <https://portal.azure.com>
+1. 转到  <https://portal.azure.com> 。
 
-2. 在左侧导航栏中选择“Azure Active Directory”。
+2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
 
 3. 依次选择“企业应用程序”、“所有应用程序”。
 
@@ -376,9 +376,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 到 Active Directory 的预配”，然后从库中添加该应用。
 
-6. 添加应用并显示应用详细信息屏幕后，请选择“预配”
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将“预配模式”更改为“自动”
+7. 将**设置** **模式**更改为 "**自动**"。
 
 8. 单击显示的信息横幅以下载设置代理。 
 
@@ -468,7 +468,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
      > [!NOTE]
-     > 如果预配作业进入[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine)状态，Azure AD 预配服务将发送电子邮件通知。
+     > 如果预配作业进入[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状态，Azure AD 预配服务将发送电子邮件通知。
 
    * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果连接测试失败，请仔细检查代理设置上配置的 Workday 凭据和 AD 凭据是否有效。
 
@@ -527,7 +527,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
       * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Active Directory 之间的用户。 该值通常是在 Workday 的“工作人员 ID”字段中设置的，它通常映射到 Active Directory 中的某个“员工 ID”属性。
 
-      * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配项，就不再继续评估其他匹配属性。
+      * 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配项，就不再继续评估其他匹配属性。
 
       * **应用此映射**
 
@@ -565,7 +565,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 | **Municipality**   |   l   |     | 创建 + 更新 |
 | **CountryReferenceTwoLetter**      |   co |     |   创建 + 更新 |
 | **CountryReferenceTwoLetter**    |  c  |     |         创建 + 更新 |
-| **CountryRegionReference** |  号     |     | 创建 + 更新 |
+| **CountryRegionReference** |  st     |     | 创建 + 更新 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
 | **PostalCode**  |   postalCode  |     | 创建 + 更新 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 创建 + 更新 |
@@ -593,7 +593,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 1. 转到  <https://portal.azure.com> 。
 
-2. 在左侧导航栏中选择“Azure Active Directory”。
+2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
 
 3. 依次选择“企业应用程序”、“所有应用程序”。
 
@@ -601,9 +601,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 到 Azure AD 的预配”，然后从库中添加该应用。
 
-6. 添加应用并显示应用详细信息屏幕后，请选择“预配”
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将“预配模式”更改为“自动”
+7. 将**设置** **模式**更改为 "**自动**"。
 
 8. 按如下所述完成“管理员凭据”部分：
 
@@ -664,7 +664,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * **使用此属性匹配对象** - 是否应使用此属性唯一标识 Workday 与 Azure AD 之间的用户。 此值通常是在 Workday 的“工作人员 ID”字段中设置的，它通常映射到 Azure AD 中的“员工 ID”属性（新属性）或扩展属性。
 
-   * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+   * 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
    * **应用此映射**
 
@@ -688,9 +688,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **配置 Workday 写回连接器：**
 
-1. 转到 <https://portal.azure.com>
+1. 转到  <https://portal.azure.com> 。
 
-2. 在左侧导航栏中选择“Azure Active Directory”。
+2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
 
 3. 依次选择“企业应用程序”、“所有应用程序”。
 
@@ -698,9 +698,9 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 5. 搜索“Workday 写回”，然后从库中添加该应用。
 
-6. 添加应用并显示应用详细信息屏幕后，请选择“预配”
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**设置**"。
 
-7. 将“预配模式”更改为“自动”
+7. 将**设置** **模式**更改为 "**自动**"。
 
 8. 按如下所述完成“管理员凭据”部分：
 
@@ -737,7 +737,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 Workday 租户中的用户数。 
 
@@ -905,7 +905,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* 在显示的代理列表中，从其 resourceName 等于你的 AD 域名的资源中复制“ID”字段的值。
+* 从显示的代理列表中，将 "`id`" 字段的值*从其资源*名称等于 AD 域名的资源中复制。
 * 将 ID 值粘贴到此命令中，并在 PowerShell 中执行该命令。
 
   ```powershell
@@ -946,7 +946,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 可通过设置“属性映射”边栏选项卡中的“目标对象操作”来实现此配置，如下所示：
 
-![更新操作](./media/workday-inbound-tutorial/wd_target_update_only.png)
+![Update 操作](./media/workday-inbound-tutorial/wd_target_update_only.png)
 
 仅针对从 Workday 流向 AD 的更新操作勾选“更新”复选框。 
 
@@ -960,7 +960,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 * 单击“属性映射” 
 * 在“映射”下，选择“将 Workday 工作人员同步到本地 Active Directory”（或“将 Workday 工作人员同步到 Azure AD”）。
 * 在“属性映射”页面上，向下滚动并选中“显示高级选项”框。  单击“编辑 Workday 属性列表”
-* 在打开的边栏选项卡中，找到“Mobile”属性并单击该行，从而编辑 API 表达式![移动 GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* 在打开的边栏选项卡中，找到 "Mobile" 属性，然后单击该行，以便可以编辑**API 表达式**![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png)
 
 * 将 API 表达式替换为下列的新表达式，后者仅当 Workday 中的“公开使用标志”设置为“True”时，才会检索工作手机号码。
 
@@ -1191,7 +1191,7 @@ manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性�
 |#|错误场景 |可能的原因|推荐的解决方案|
 |--|---|---|---|
 |1.| 安装预配代理时出错，错误消息：*服务 "Microsoft Azure AD 连接预配代理" （AADConnectProvisioningAgent）无法启动。请确认您有足够的特权启动系统。* | 如果尝试在域控制器上安装预配代理，而组策略阻止服务启动，通常就会显示此错误。  如果正在运行代理的旧版本，并且在启动新的安装项之前未安装代理，则也会看见此消息。| 在非 DC 服务器上安装预配代理。 请务必在安装新代理之前卸载旧版本的代理。|
-|2.| Windows 服务“Microsoft Azure AD Connect Provisioning Agent”处于“正在启动”状态，且未切换到“正在运行”状态。 | 在安装期间，代理向导会在服务器上创建一个本地帐户（NT 服务 \\AADConnectProvisioningAgent），这是用于启动服务的登录帐户。 如果 Windows Server 上的安全策略阻止从本地帐户运行服务，则将遇到此错误。 | 请打开服务控制台。 右键单击 Windows 服务“Microsoft Azure AD Connect 预配代理”，然后在“登录”选项卡中指定域管理员的帐户来运行该服务。 重启服务。 |
+|2.| Windows 服务“Microsoft Azure AD Connect Provisioning Agent”处于“正在启动”状态，且未切换到“正在运行”状态。 | 作为安装的一部分，代理向导将在服务器上创建一个本地帐户（**NT Service\\AADConnectProvisioningAgent**），这是用于启动该服务的登录帐户。 如果 Windows Server 上的安全策略阻止从本地帐户运行服务，则将遇到此错误。 | 请打开服务控制台。 右键单击 Windows 服务 "Microsoft Azure AD 连接设置代理"，然后在 "登录" 选项卡中指定域管理员帐户以运行服务。 重启服务。 |
 |3.| 在“连接 Active Directory”步骤中向 AD 域配置预配代理时，向导需要很长时间才能尝试加载 AD 架构且最终会超时。 | 如果由于防火墙问题导致向导无法连接 AD 域控制器服务器，则通常会显示此错误。 | 在“连接 Active Directory”向导屏幕上，当为 AD 域提供凭据时，有一个名为“选择域控制器优先级”的选项。 使用此选项可选择与代理服务器位于同一站点的域控制器，并确保防火墙规则均未阻止通信。 |
 
 #### <a name="connectivity-errors"></a>连接错误

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226757"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612966"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "74226757"
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Summary
+### <a name="summary"></a>摘要
 当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，Function App 无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>故障排除
@@ -31,6 +31,8 @@ ms.locfileid: "74226757"
 1. 存储帐户凭据无效
 1. 无法访问存储帐户
 1. 每日执行配额已满
+1. 应用位于防火墙后面
+
 
 ## <a name="storage-account-deleted"></a>存储帐户已删除
 
@@ -48,7 +50,7 @@ ms.locfileid: "74226757"
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
-* 必需
+* 需要
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -59,7 +61,7 @@ ms.locfileid: "74226757"
 ### <a name="guidance"></a>指南
 
 * 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，Function 将中断。
-* 在自动部署过程中，请勿修改这些设置。
+* 请勿在自动部署过程中修改这些设置。
 * 必须在创建时提供这些设置并使其有效。 不包含这些设置的自动部署将导致应用程序无法运行，即使事后添加了这些设置也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效
@@ -80,6 +82,12 @@ Function App 必须能够访问存储帐户。 阻止 Function 访问存储帐�
 * 若要进行验证，请在门户中检查“平台功能”>“Function App 设置”。 如果超过配额，则将看到以下消息
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * 删除配额并重启应用可解决此问题。
+
+## <a name="app-is-behind-a-firewall"></a>应用位于防火墙后面
+
+如果函数应用托管在[内部负载平衡应用服务环境](../app-service/environment/create-ilb-ase.md)中，并且配置为阻止入站 internet 流量，或具有配置为阻止 internet 访问的[入站 IP 限制](functions-networking-options.md#inbound-ip-restrictions)，则函数运行时将无法访问。 Azure 门户直接调用正在运行的应用程序以提取函数列表，同时对 KUDU 终结点进行 http 调用。 "`Platform Features`" 选项卡下的平台级别设置仍可用。
+
+* 若要验证 ASE 配置，请导航到 ASE 所在子网的 NSG，并验证入站规则，以允许来自要访问应用程序的计算机的公共 IP 的流量。 你还可以从连接到运行应用的虚拟网络的计算机或虚拟网络中运行的虚拟机使用门户。 [在此处阅读有关入站规则配置的详细信息](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>后续步骤
 

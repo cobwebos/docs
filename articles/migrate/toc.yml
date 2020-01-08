@@ -6,6 +6,14 @@
       href: migrate-services-overview.md
     - name: 新增功能
       href: whats-new.md
+    - name: 常见问题
+      items:
+        - name: 有关 Azure Migrate 的问题
+          href: resources-faq.md
+        - name: 有关 Azure Migrate 设备的问题
+          href: common-questions-appliance.md
+        - name: 有关发现、评估/依赖项可视化的问题
+          href: common-questions-discovery-assessment.md
 - name: 教程
   items:
     - name: 评估和迁移 VMware VM
@@ -44,8 +52,6 @@
           href: tutorial-assess-import.md
 - name: 概念
   items:
-    - name: 常见问题
-      href: resources-faq.md
     - name: 支持矩阵
       items:
         - name: Azure Migrate 的支持矩阵
@@ -70,7 +76,7 @@
       href: concepts-assessment-calculation.md
     - name: 依赖项可视化
       href: concepts-dependency-visualization.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用以前的版本
       href: migrate-v1.md

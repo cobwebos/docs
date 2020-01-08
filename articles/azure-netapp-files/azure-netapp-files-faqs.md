@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546941"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658281"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -131,7 +131,7 @@ Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本创
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支持多少个 Active Directory 连接？
 
-Azure NetApp 文件目前支持每个订阅一个 Active Directory 连接。 此外，Active Directory 连接特定于单个 NetApp 帐户;不在帐户之间共享。 
+目前，对于每个 NetApp 帐户、每个订阅和每个区域，Azure NetApp 文件仅支持一个 Active Directory 连接;不会在 NetApp 帐户之间共享连接。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp 文件是否支持 Azure Active Directory？ 
 

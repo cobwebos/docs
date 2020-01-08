@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 19a65e688d66738db0b6e4dcca383c6e4abed262
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974389"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691048"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的更改源支持（预览）
 
@@ -55,7 +55,7 @@ ms.locfileid: "74974389"
 > [!IMPORTANT]
 > 更改源以公共预览版提供，并在**westcentralus**和**westus2**区域中提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。 必须先注册你的订阅，然后才能在存储帐户上启用更改源。
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户在存储帐户上启用更改源：
 
@@ -96,7 +96,7 @@ ms.locfileid: "74974389"
 5. 为存储帐户启用 "更改源"。
 
    ```powershell
-   Update-AzStorageBlobServiceProperty -ResourceGroupName -StorageAccountName -EnableChangeFeed $true
+   Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="templatetabtemplate"></a>[模板](#tab/template)
@@ -317,7 +317,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 当你调用 ListContainers API 时，你当前无法看到 **$blobchangefeed**容器，并且容器未显示在 Azure 门户或存储资源管理器
 - 以前启动的[帐户故障转移](../common/storage-disaster-recovery-guidance.md)的存储帐户可能在出现日志文件时出现问题。 将来的任何帐户故障转移也可能会影响预览期间的日志文件。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 ### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>更改源和存储分析日志记录之间的区别是什么？
 分析日志包含所有操作的成功和失败请求的所有读取、写入、列出和删除操作的记录。 分析日志是最大努力，不保证顺序。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929050"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658536"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务（AKS）
 
@@ -82,7 +82,7 @@ az aks create \
 * Log Analytics
 * Application Insights
 * 流量管理器
-* 存储帐户
+* 存储器帐户
 * 外部数据库
 
 ## <a name="ensure-valid-quotas"></a>确保有效配额
@@ -91,19 +91,19 @@ az aks create \
 
 可能需要请求增加[网络配额](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests)，以确保不会耗尽 ip。 有关其他信息，请参阅[AKS 的网络和 IP 范围](https://docs.microsoft.com/azure/aks/configure-kubenet)。
 
-有关详细信息，请参阅 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。
+有关详细信息，请参阅[Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 若要检查当前配额，请在 Azure 门户中，选择 "[订阅" 边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择你的订阅，然后选择 "**使用情况 + 配额**"。
 
 ## <a name="high-availability-and-business-continuity"></a>高可用性和业务连续性
 
 如果你的应用程序无法处理停机时间，你将需要遵循高可用性迁移方案的最佳实践。  对于复杂的业务连续性规划、灾难恢复和最大化运行时间，最佳做法超出了本文档的讨论范围。  有关详细信息，请参阅[Azure Kubernetes Service （AKS）中有关业务连续性和灾难恢复的最佳实践](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)。
 
-对于复杂的应用程序，我们通常会分阶段迁移，而不是一次性整个迁移。 这意味着，新旧环境可能需要通过网络进行通信。 以前能够使用 `ClusterIP` 服务进行通信的应用程序可能需要公开为 `LoadBalancer` 类型，并得到相应的保护。
+对于复杂的应用程序，我们通常会分阶段迁移，而不是一次性整个迁移。 这意味着新旧环境可能需要通过网络进行通信。 以前使用 `ClusterIP` 服务进行通信的应用程序可能需要公开为类型 `LoadBalancer` 并适当地进行保护。
 
-若要完成迁移，需将客户端指向 AKS 上运行的新服务。 建议通过将 DNS 更新为指向 AKS 群集前面的负载均衡器，来重定向流量。
+若要完成迁移，你需要将客户端指向在 AKS 上运行的新服务。 建议通过更新 DNS 来重定向流量，使之指向位于 AKS 群集前面的负载均衡器。
 
-[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)可以将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是一种基于 DNS 的流量负载均衡器，可以在区域之间分配网络流量。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
+[Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/)可以将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是一种基于 DNS 的流量负载均衡器，可以在区域之间分配网络流量。  为了获得最佳性能和冗余，请在应用程序流量进入 AKS 群集之前，直接通过流量管理器进行所有应用程序流量。  在 multicluster 部署中，客户应连接到流量管理器 DNS 名称，该名称指向每个 AKS 群集上的服务。 使用流量管理器终结点定义这些服务。 每个终结点都是*服务负载均衡器 IP*。 使用此配置可将网络流量从一个区域中的流量管理器终结点定向到不同区域中的终结点。
 
-![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
+![与流量管理器 AKS](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
 [Azure 前门服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
 
@@ -113,7 +113,7 @@ az aks create \
 
 ### <a name="considers-for-stateful-applications"></a>考虑有状态的应用程序
 
-精心规划有状态应用程序的迁移，以避免数据丢失或意外停机。
+仔细规划有状态应用程序的迁移，以避免数据丢失或意外停机。
 
 如果使用 Azure 文件，可以将文件共享作为卷装载到新群集中：
 * [装载静态 Azure 文件作为卷](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
@@ -126,37 +126,37 @@ az aks create \
 
 #### <a name="azure-files"></a>Azure 文件
 
-与磁盘不同，Azure 文件可同时装载到多个主机。 在 AKS 群集中，Azure 和 Kubernetes 都不会阻止你创建 ACS 群集仍在使用的 Pod。 若要防止数据丢失和意外行为，请确保这两个群集不会同时向相同的文件写入数据。
+与磁盘不同，Azure 文件可同时装载到多个主机。 在 AKS 群集中，Azure 和 Kubernetes 不会阻止你创建 ACS 群集仍然使用的 pod。 若要防止数据丢失和意外行为，请确保群集不会同时写入同一文件。
 
-如果应用程序可以托管指向同一文件共享的多个副本，请遵循无状态迁移步骤，将 YAML 定义部署到新群集。 否则，可以采用包括以下步骤的可行迁移方法：
+如果你的应用程序可以承载指向同一文件共享的多个副本，请执行无状态迁移步骤，并将 YAML 定义部署到新群集。 否则，可以采用包括以下步骤的可行迁移方法：
 
 * 验证应用程序是否正常工作。
 * 将实时流量指向新的 AKS 群集。
 * 断开旧群集的连接。
 
-若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
+如果要从空共享开始，并复制源数据，可以使用[`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest)命令来迁移数据。
 
 
-#### <a name="migrating-persistent-volumes"></a>迁移永久性卷。
+#### <a name="migrating-persistent-volumes"></a>迁移永久性卷
 
-将现有的永久性卷迁移到 AKS 时，通常需要遵循以下步骤：
+如果要将现有的永久性卷迁移到 AKS，通常需要执行以下步骤：
 
-* 暂停写入到应用程序。 （此步骤是可选的，需要停机。）
-* 创建磁盘的快照。
+* 向应用程序停止写入。 （此步骤是可选的，需要停机。）
+* 拍摄磁盘快照。
 * 从快照创建新的托管磁盘。
 * 在 AKS 中创建永久性卷。
-* 将 Pod 规范更新为[使用现有卷](https://docs.microsoft.com/azure/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）。
+* 更新 pod 规范以[使用现有卷](https://docs.microsoft.com/azure/aks/azure-disk-volume)，而不是 PersistentVolumeClaims （静态预配）。
 * 将应用程序部署到 AKS。
 * 验证应用程序是否正常工作。
 * 将实时流量指向新的 AKS 群集。
 
 > [!IMPORTANT]
-> 如果不暂停写入，则需要将数据复制到新部署。 否则在创建磁盘快照后，写入的数据将会丢失。
+> 如果选择不停止写入，则需要将数据复制到新部署。 否则，你将会错过拍摄磁盘快照后写入的数据。
 
-可以借助一些开源工具来创建托管磁盘，并在 Kubernetes 群集之间迁移卷：
+某些开源工具可帮助你创建托管磁盘并在 Kubernetes 群集之间迁移卷：
 
-* [Azure CLI 磁盘复制扩展](https://github.com/noelbundick/azure-cli-disk-copy-extension)可跨资源组和 Azure 区域复制并转换磁盘。
-* [Azure Kube CLI 扩展](https://github.com/yaron2/azure-kube-cli)可枚举 ACS Kubernetes 卷并将其迁移到 AKS 群集。
+* [Azure CLI 磁盘复制扩展](https://github.com/noelbundick/azure-cli-disk-copy-extension)跨资源组和 Azure 区域复制和转换磁盘。
+* [Azure KUBE CLI 扩展](https://github.com/yaron2/azure-kube-cli)枚举 ACS Kubernetes 卷，并将其迁移到 AKS 群集。
 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>部署群集配置

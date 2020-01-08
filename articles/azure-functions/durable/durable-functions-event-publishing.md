@@ -3,12 +3,12 @@ title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231449"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613119"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "74231449"
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在 Durable Functions 项目中安装 " [DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) "。
 * 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)。
@@ -73,7 +73,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 在 Durable Functions 项目中，找到 `host.json` 文件。
 
-在 `eventGridTopicEndpoint` 属性中添加 `eventGridKeySettingName` 和 `durableTask`。
+在 `durableTask` 属性中添加 `eventGridTopicEndpoint` 和 `eventGridKeySettingName`。
 
 ```json
 {
@@ -86,7 +86,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 可以在[host json 文档](../functions-host-json.md#durabletask)中找到可能的 Azure 事件网格配置属性。 配置 `host.json` 文件后，函数应用将生命周期事件发送到事件网格主题。 这适用于在本地和 Azure 中运行函数应用的情况。
 
-在函数应用和 `local.setting.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
+在函数应用和 `local.settings.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
 ```json
 {

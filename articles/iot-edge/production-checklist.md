@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a19fdfaf70dffb7f0bcb8001475fee89b2d05086
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1213ab4c623cb1d475dff1d71e65439b1d08f5c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429436"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -39,7 +39,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件引用这些证书的详细信息，请参阅[将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。 无论是否要将设备用作网关，配置证书的步骤都是相同的。 本文提供的脚本可以生成仅限测试的示例证书。 请不要在生产环境中使用这些示例证书。 
+有关如何在 IoT Edge 设备上安装证书并从 yaml 文件中引用它们的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-create-transparent-gateway.md)。 
 
 ### <a name="have-a-device-management-plan"></a>创建设备管理计划
 
@@ -148,7 +148,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 有关标记约定的示例，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md#understand-iot-edge-tags)，了解 IoT Edge 如何使用滚动更新标记和特定标记来跟踪版本。 
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 * **有用提示**
     * 检查出站/入站配置
@@ -224,7 +224,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 将此信息添加（或追加）到名为 `daemon.json` 的文件，并将其放置在设备平台的适当位置。
 
-| 平台 | Location |
+| 平台 | 位置 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

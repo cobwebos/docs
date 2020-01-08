@@ -1,32 +1,24 @@
 ---
-title: 适用于 Windows Server 的 Service Fabric 独立包 | Microsoft Docs
-description: 适用于 Windows Server 的 Azure Service Fabric 独立包的说明和内容。
-services: service-fabric
-documentationcenter: .net
+title: 适用于 Windows Server 的 Azure Service Fabric 独立包
+description: 适用于 Windows Server 的 AzureService Fabric 独立包的说明和内容。
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451849"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
-在 [已下载](https://go.microsoft.com/fwlink/?LinkId=730690) 的 Service Fabric 独立包中，找到以下文件：
+在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
 | **文件名** | **简短说明** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置创建群集。 |
-| RemoveServiceFabricCluster.ps1 |一个 PowerShell 脚本，它可以使用 ClusterConfig.json 中的设置删除群集。 |
+| RemoveServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置删除群集。 |
 | AddNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点添加到现有的部署群集。 |
 | RemoveNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点从现有的部署群集中删除。 |
 | CleanFabric.ps1 |PowerShell 脚本，用于从当前计算机中清除独立 Service Fabric 安装。 应使用以前的 MSI 安装的自身关联卸载程序来删除以前的安装。 |
@@ -52,11 +44,11 @@ ms.locfileid: "60711078"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保护该群集。 |
 
 ## <a name="cluster-configuration-samples"></a>群集配置示例
-可在以下 GitHub 页中找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
+可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>独立运行时包
 在从[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 部署群集的过程中，会自动下载最新的运行时包。
 
-## <a name="related"></a>相关内容
+## <a name="related"></a>相关
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * [Service Fabric 群集安全性方案](service-fabric-windows-cluster-windows-security.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432995"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -21,11 +21,11 @@ ms.locfileid: "74484353"
 
 ## <a name="view-authentication-details"></a>查看身份验证详细信息
 
+创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 当使用[共享密钥身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)调用 Azure Maps 时，建议使用主密钥作为订阅密钥。 辅助密钥可用于诸如滚动密钥更改这样的方案。 若要了解详细信息，请参阅[Azure Maps 的身份验证](https://aka.ms/amauth)。
+
 你可以在 Azure 门户上查看身份验证详细信息。 请在 "**设置**" 菜单中转到你的帐户并选择 "**身份验证**"。
 
 ![身份验证详细信息](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- 若要了解详细信息，请参阅[Azure Maps 的身份验证](https://aka.ms/amauth)。
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>设置 Azure AD 应用注册
@@ -91,12 +91,12 @@ RBAC 提供粒度访问控制。
 
 * 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，则需要使用 Azure Maps 的客户端 ID 和 Azure AD 应用 ID 来配置 HTML 页面。
 
-* 如果你的应用程序使用服务器/应用程序身份验证，则需要使用 Azure AD 资源 ID `https://atlas.microsoft.com/`Azure AD 令牌终结点 `https://login.microsoftonline.com` 请求令牌、Azure Maps 的客户端 ID、Azure AD 的应用程序 ID 和 Azure AD 应用注册密码，或证书.
+* 如果你的应用程序使用服务器/应用程序身份验证，则需要使用 Azure AD 资源 ID `https://atlas.microsoft.com/`、Azure Maps 的客户端 ID、Azure AD 的应用程序 ID 以及 Azure AD 的应用注册密码或证书，从 Azure AD 令牌终结点 `https://login.microsoftonline.com` 请求令牌。
 
 | Azure 环境   | Azure AD 令牌终结点 | Azure 资源 ID |
 | --------------------|-------------------------|-------------------|
 | Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
-| Azure 政府    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
+| Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 有关请求用户和服务主体 Azure AD 的访问令牌的详细信息，请参阅[Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
 

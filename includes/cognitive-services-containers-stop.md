@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: a642160fc7e94979a91687b07c26fafeb786bbb4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "67704199"
 ---
-若要关闭的情况下该容器，其中容器正在运行，在命令行环境中选择<kbd>Ctrl + C</kbd>。
+若要关闭容器，请在容器运行的命令行环境中，选择 " <kbd>Ctrl + C</kbd>"。

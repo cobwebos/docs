@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432977"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时数据
 
@@ -27,9 +27,10 @@ ms.locfileid: "70914385"
  * 请求给定自行车扩展坞的实时信息。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要对 Azure Maps 公共传输 Api 进行任何调用，需要一个 Maps 帐户和密钥。 有关创建帐户的信息，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明进行操作，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤检索帐户的主要订阅密钥。
+若要对 Azure Maps 公共传输 Api 进行任何调用，需要一个 Maps 帐户和密钥。 有关创建帐户和获取密钥的信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
+
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
 
@@ -129,7 +130,7 @@ Azure Maps 移动服务的[获取传输坞站信息 API](https://aka.ms/AzureMap
 
 若要获取**dockID**，请按照以下步骤发出对 "获取附近传输" API 的请求：
 
-1. 在 Postman 中，单击 "**新建请求** | **获取请求**并将其命名为**获取停靠 ID**"。
+1. 在 Postman 中，单击 "**新建请求**" | **获取请求**并将其命名为**获取 dock ID**。
 
 2.  在 "生成器" 选项卡上，选择 "**获取**HTTP" 方法，输入以下请求 URL，然后单击 "**发送**"。
  
@@ -178,7 +179,7 @@ Azure Maps 移动服务的[获取传输坞站信息 API](https://aka.ms/AzureMap
 
 按照以下步骤发出对获取中转坞信息 API 的请求，以获取所选停靠的实时数据。
 
-1. 在 Postman 中，单击 "**新建请求** | " "**get 请求**" 并将其命名为 "**获取实时停靠数据**"。
+1. 在 Postman 中，单击 "**新建请求** | **获取请求**并将其命名为**获取实时停靠数据**"。
 
 2.  在 "生成器" 选项卡上，选择 "**获取**HTTP" 方法，输入以下请求 URL，然后单击 "**发送**"。
  

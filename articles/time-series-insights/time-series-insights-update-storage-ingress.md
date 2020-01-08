@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014706"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615094"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -23,21 +23,23 @@ ms.locfileid: "74014706"
 
 ## <a name="data-ingress"></a>数据入口
 
-你的 Azure 时序见解环境包含一个引入引擎，用于收集、处理和存储时序数据。 规划环境时，需要考虑一些注意事项，以确保处理所有传入的数据，并实现高进入规模，并最大限度地减少引入延迟（由 TSI 读取和处理事件中的数据所花费的时间）源）。 在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
+你的 Azure 时序见解环境包含一个引入引擎，用于收集、处理和存储时序数据。 规划环境时，需要考虑一些注意事项，以确保处理所有传入的数据，并实现高进入规模，并最大限度地减少引入延迟（由 TSI 读取和处理事件中的数据所花费的时间）源）。 
 
-### <a name="ingress-policies"></a>流入策略
+在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
+
+### <a name="ingress-policies"></a>入口策略
 
 时序见解预览版支持以下事件源：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
-时序见解预览版每个实例最多支持两个事件源。
-  
-Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。
+时序见解预览版每个实例最多支持两个事件源。 Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。
 
 > [!WARNING] 
-> 将新的事件源附加到时序见解预览环境时，根据 IoT 中心或事件中心内当前的事件数，可能会遇到较高的初始引入延迟。 当数据引入时，你应预计到下降的延迟很高，但如果你的经验指出，请通过 Azure 门户提交支持票证来联系我们。
+> * 将事件源附加到预览环境时，可能会遇到较高的初始延迟。 
+> 事件源延迟取决于当前在 IoT 中心或事件中心内的事件数。
+> * 在事件源数据第一次引入后，会下降高延迟。 如果你遇到持续的高延迟，请通过 Azure 门户提交支持票证来联系我们。
 
 ## <a name="ingress-best-practices"></a>入口最佳实践
 
@@ -49,12 +51,19 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>预览中的入口规模和限制
 
-默认情况下，时序见解预览版支持每秒最大为 1 mb/秒（MB/秒）的每个环境的初始入口。 如果需要，最高可达 16 MB/秒的吞吐量，请在 Azure 门户中提交支持票证（如果需要）。 此外，每个分区的限制为 0.5 MB/s。 这对于在 IoT 中心设备与分区之间的关联，特别适用于使用 IoT 中心的客户。 如果一个网关设备使用自己的设备 ID 和连接字符串将消息转发到中心，则给定消息到达单个分区时，可以达到 0.5 MB/s 的限制，即使事件负载指定了不同的 TS 也是如此。标识符. 通常，入口速率被视为你的组织中的设备数、事件发射频率以及事件大小的一个因素。 计算引入速率时，IoT 中心用户应该使用正在使用的集线器连接数，而不是组织中的设备总数。 我们正在增强缩放支持， 此文档将更新以反映这些改进。 
+默认情况下，预览版环境支持**每秒 1 mb/秒（MB/s）每个环境**的入口速率。 如果需要，客户可以将其预览版环境扩展到**16 MB/秒**的吞吐量。
+此外，每个分区的限制为**0.5 MB/s**。 
 
-> [!WARNING]
-> 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器设备数来计算引入速率。
+每个分区的限制对于使用 IoT 中心的客户是有意义的。 具体来说，假设 IoT 中心设备与分区之间的相关性。 在一个网关设备使用其自己的设备 ID 和连接字符串将消息转发到中心时，即使事件负载指定了不同的时序 Id，也有可能达到 0.5 MB/s 的限制。 
 
-有关吞吐量单元和分区的详细信息，请参阅以下链接：
+通常，会将入口速率视为你的组织中的设备数、事件发射频率和每个事件的大小的系数：
+
+*  **设备数**×**事件发射频率**×**每个事件的大小**。
+
+> [!TIP]
+> 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器连接数来计算引入速率，而不是使用或组织中的设备总数。
+
+有关吞吐量单元、限制和分区的详细信息，请执行以下操作：
 
 * [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -81,7 +90,7 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 > [!IMPORTANT]
 > 在从事件源读取数据后的60秒内，将推出时序见解的未来公开上市（GA）版本。 预览期间，你可能会遇到较长的一段时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储器
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
@@ -95,7 +104,7 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 
 时序见解预览版对为时序见解查询进行优化的 Parquet 文件。 还会保存此数据的重新分区副本。
 
-在公共预览版中，数据无限期存储在 Azure 存储帐户中。
+公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 
@@ -109,11 +118,11 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 
 * 通过时序见解预览版资源管理器。 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
 * 来自时序见解预览 API。 可以在 `/getRecorded`访问 API 终结点。 有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
-* 从 Azure 存储帐户直接访问。 需要对用于访问时序见解预览数据的任何帐户进行读取访问。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
+* 直接从 Azure 存储帐户。 需要对用于访问时序见解预览数据的任何帐户进行读取访问。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
 ### <a name="data-deletion"></a>数据删除
 
-请勿删除时序见解预览文件。 只应在时序见解预览版中管理相关数据。
+请勿删除时序见解预览文件。 仅在时序见解预览版中管理相关数据。
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
 
@@ -136,7 +145,7 @@ Parquet 是一种开源纵栏文件格式，旨在实现高效的存储和性能
 > [!NOTE]
 > * `<YYYY>` 映射为四位数年份表示形式。
 > * `<MM>` 映射到两位数的月份表示形式。
-> * `<YYYYMMDDHHMMSSfff>` 映射到具有四位数年份（`YYYY`）、两位数月（`MM`）、两位数日期（`DD`）、两位数小时（`HH`）、两位数分钟（`MM`）、两位数秒（`SS`）和三位数毫秒（`fff`）。
+> * `<YYYYMMDDHHMMSSfff>` 映射到具有四位数年份（`YYYY`）、两位数月份（`MM`）、两位数日期（`DD`）、两位数小时（`HH`）、两位数分钟（`MM`）、两位数秒（`SS`）和三位数毫秒（`fff`）的时间戳表示形式。
 
 时序见解预览版事件映射到 Parquet 文件内容，如下所示：
 

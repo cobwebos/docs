@@ -1,5 +1,5 @@
 ---
-title: 注销时从缓存中删除帐户-Microsoft 标识平台 |Microsoft
+title: 注销时从令牌缓存中删除帐户-Microsoft 标识平台 |Microsoft
 description: 了解如何在注销时从令牌缓存中删除帐户
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423504"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>在全局注销时从缓存中删除帐户
 
@@ -38,7 +38,7 @@ ms.locfileid: "74961652"
 
 为应用程序注册的**注销 Url**允许实现单一注销。Microsoft 标识平台 `logout` 终结点将调用注册到你的应用程序的**注销 URL** 。 如果从 web 应用或其他 web 应用或浏览器启动注销，则会发生此调用。 有关详细信息，请参阅[单一登录](v2-protocols-oidc.md#single-sign-out)。
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

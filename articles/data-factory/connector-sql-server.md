@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 8fa4f3b7dfbebb65b1ae60791027eb5fd31a24fb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9c9064778f29e9f53f48d8be2f127fe51e936af4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444221"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 SQL Server
 
@@ -63,13 +63,13 @@ ms.locfileid: "74931045"
 
 SQL Server 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SqlServer**。 | 是 |
-| connectionString |使用 SQL 身份验证或 Windows 身份验证来指定连接到 SQL Server 数据库所需的**connectionString**信息。 请参阅以下示例。<br/>将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
-| userName |如果使用 Windows 身份验证，请指定用户名。 例如，**domainname\\username**。 |No |
-| password |指定为 "用户名" 指定的用户帐户的密码。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 或者，可以[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |No |
-| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认的 Azure 集成运行时。 |No |
+| connectionString |使用 SQL 身份验证或 Windows 身份验证来指定连接到 SQL Server 数据库所需的**connectionString**信息。 请参阅以下示例。<br/>还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
+| userName |如果使用 Windows 身份验证，请指定用户名。 例如，**domainname\\username**。 |否 |
+| password |指定为 "用户名" 指定的用户帐户的密码。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 或者，可以[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
+| connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认的 Azure 集成运行时。 |否 |
 
 >[!TIP]
 >如果遇到错误代码为 "UserErrorFailedToConnectToSqlServer" 的错误和消息，如 "数据库的会话限制为 XXX 并已达到"，请 "将 `Pooling=false` 添加到连接字符串，然后重试。
@@ -82,10 +82,7 @@ SQL Server 链接服务支持以下属性：
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -103,10 +100,7 @@ SQL Server 链接服务支持以下属性：
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -132,10 +126,7 @@ SQL Server 链接服务支持以下属性：
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;",
             "userName": "<domain\\username>",
             "password": {
                 "type": "SecureString",
@@ -156,10 +147,10 @@ SQL Server 链接服务支持以下属性：
 
 若要将数据从和复制到 SQL Server 数据库，支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SqlServerTable。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -192,12 +183,12 @@ SQL Server 链接服务支持以下属性：
 
 要从 SQL Server 复制数据，请将复制活动中的源类型设置为 SqlSource。 复制活动的 source 节支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 节的 type 属性必须设置为 SqlSource。 | 是 |
-| sqlReaderQuery |使用自定义 SQL 查询读取数据。 例如 `select * from MyTable`。 |No |
-| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |No |
-| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写相匹配。 |No |
+| sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例为 `select * from MyTable`。 |否 |
+| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
+| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写相匹配。 |否 |
 
 **需要注意的要点：**
 
@@ -298,17 +289,17 @@ GO
 
 要向 SQL Server 复制数据，请将复制活动中的接收器类型设置为 SqlSink。 复制活动的 sink 节支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink。 | 是 |
-| writeBatchSize |*每批*插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。 |No |
-| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值为 timespan。 例如，"00:30:00" 表示30分钟。 如果未指定任何值，则超时默认为 "02:00:00"。 |No |
-| preCopyScript |此属性指定在将数据写入 SQL Server 之前要运行的复制活动的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |No |
-| sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 对于仅运行一次并且与源数据不执行任何操作（例如，删除或截断）的操作，请使用 `preCopyScript` 属性。 | No |
-| storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |No |
-| sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |No |
-| storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | No |
-| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置了 sink 指定存储过程或暂存副本时，不支持创建自动表。 允许的值为： `none` （默认值），`autoCreate`。 |No |
+| writeBatchSize |*每批*插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。 |否 |
+| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值为 timespan。 例如，"00:30:00" 表示30分钟。 如果未指定任何值，则超时默认为 "02:00:00"。 |否 |
+| preCopyScript |此属性指定在将数据写入 SQL Server 之前要运行的复制活动的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
+| sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 对于仅运行一次并且与源数据不执行任何操作（例如，删除或截断）的操作，请使用 `preCopyScript` 属性。 | 否 |
+| storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
+| sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
+| storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
+| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置了 sink 指定存储过程或暂存副本时，不支持创建自动表。 允许的值为： `none` （默认值），`autoCreate`。 |否 |
 
 **示例1：追加数据**
 
@@ -503,7 +494,7 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |日期/时间 |
 | Datetime |日期/时间 |
@@ -562,7 +553,7 @@ END
 3. 在同一窗口中，双击 " **tcp/ip** " 以启动 " **tcp/ip 属性**" 窗口。
 4. 切换到 " **IP 地址**" 选项卡。向下滚动查看 " **IPAll** " 部分。 记下**TCP 端口**。 默认值为**1433**。
 5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。 
-6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请使用来自其他计算机的 SQL Server Management Studio。 例如 `"<machine>.<domain>.corp.<company>.com,1433"`。
+6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请使用来自其他计算机的 SQL Server Management Studio。 示例为 `"<machine>.<domain>.corp.<company>.com,1433"`。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

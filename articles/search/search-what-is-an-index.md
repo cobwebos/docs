@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460747"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 中创建基本索引认知搜索
 
@@ -37,7 +37,7 @@ ms.locfileid: "72794200"
 
 3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
 
-   接下来，你将切换到基于代码的方法。 门户并不十分适合用于迭代，因为在其中无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
+   接下来，你将切换到基于代码的方法。 门户不太适合用于迭代，因为您无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
 
 4. [加载索引和数据](search-what-is-data-import.md)。 Azure 认知搜索接受 JSON 文档。 若要以编程方式加载数据，可以在请求有效负载中使用包含 JSON 文档的 Postman。 如果无法轻松将数据表示为 JSON，此步骤耗费的精力是最大的。
 
@@ -145,7 +145,7 @@ ms.locfileid: "72794200"
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="data-types"></a>数据类型
-| Type | 描述 |
+| 类型 | Description |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |
@@ -166,7 +166,7 @@ ms.locfileid: "72794200"
 
 用于生成索引的 Api 具有不同的默认行为。 对于[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，默认情况下会启用大多数属性（例如，字符串字段的可**搜索**和可**检索**值），并且如果要将其关闭，通常只需要设置它们。 对于 .NET SDK，相反的情况也是如此。 在未显式设置的任何属性上，默认情况下将禁用相应的搜索行为，除非您专门启用此操作。
 
-| 属性 | 描述 |
+| Attribute | Description |
 | --- | --- |
 | `key` |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | `retrievable` |指定是否可以在搜索结果中返回字段。 |
@@ -175,10 +175,9 @@ ms.locfileid: "72794200"
 | `facetable` |允许在 [分面导航](search-faceted-navigation.md) 结构中使用字段进行用户自主筛选。 通常，包含重复值的字段更适合分面导航，这些重复值可用于将多个文档（例如，同属一个品牌或服务类别的多个文档）组合在一起。 |
 | `searchable` |将字段标记为可全文搜索。 |
 
+## <a name="index-size"></a>索引大小
 
-## <a name="storage-implications"></a>存储影响
-
-所选的属性会影响存储。 以下屏幕截图演示了各种属性组合产生的索引存储模式。
+索引的大小由您上传的文档的大小和索引配置确定，例如是否包括建议器，以及如何在各个字段上设置属性。 以下屏幕截图演示了各种属性组合产生的索引存储模式。
 
 索引基于内置的房地产[示例](search-get-started-portal.md)数据源，可以在门户中对其进行索引和查询。 尽管未显示索引架构，但可以基于索引名称推断属性。 例如，只选择了 *realestate-searchable* 索引中的 **searchable** 属性，只选择了 *realestate-retrievable* 索引中的 **retrievable** 属性，等等。
 
@@ -186,13 +185,13 @@ ms.locfileid: "72794200"
 
 尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 不。 将字段添加到**建议器**是否会增大索引大小？ 可以。
 
-支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 原因在于，筛选和排序操作基于精确匹配执行查询，因此文档将按原样存储。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。
+支持筛选和排序的索引的比例比只支持全文搜索的索引要大。 筛选和排序操作扫描是否完全匹配，并要求存在不完整的文档。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。 
 
 > [!Note]
 > 存储体系结构被视为 Azure 认知搜索的实现细节，可能在不通知的情况下更改。 不保证将来仍会保持当前的行为。
 
 ## <a name="suggesters"></a>建议
-建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 当用户尝试键入搜索查询时，通常将部分搜索字符串发送到[建议 (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions)，该 API 返回一组建议的短语。 
+建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 通常，当用户键入搜索查询时，会将部分搜索字符串发送到[建议（REST API）](https://docs.microsoft.com/rest/api/searchservice/suggestions) ，API 将返回一组建议的文档或短语。 
 
 添加到建议器的字段用于生成自动提示搜索词。 在索引编制期间创建所有搜索词，并单独存储它们。 有关创建建议器结构的详细信息，请参阅[添加建议器](index-add-suggesters.md)。
 
@@ -220,7 +219,7 @@ ms.locfileid: "72794200"
 
 ## <a name="encryption-key"></a>加密密钥
 
-尽管默认情况下使用 Microsoft 托管密钥对所有 Azure 认知搜索索引进行加密，但可以将索引配置为使用 Key Vault 中的**客户托管密钥**进行加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。
+虽然默认情况下使用 Microsoft 托管的密钥对所有 Azure 认知搜索索引进行加密，但可以将索引配置为在 Key Vault 中使用**客户托管的密钥**进行加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,15 +4,15 @@ description: 可以使用 System Center Operations Manager 运行状况检查解
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402867"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -34,7 +34,7 @@ ms.locfileid: "72898770"
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 
-此解决方案适用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 和 Microsoft System中心 Operations Manager 1807
+此解决方案适用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 和 Microsoft System居中 Operations Manager 1807。 必须在每个管理服务器上安装 .NET Framework 4.6.2 的受支持版本。
 
 使用以下信息安装和配置解决方案。
 
@@ -56,7 +56,7 @@ ms.locfileid: "72898770"
 System Center Operations Manager 运行状况检查解决方案从以下源收集数据：
 
 * 注册表
-* Windows Management Instrumentation (WMI)
+* Windows 管理规范 (WMI)
 * 事件日志
 * 文件数据
 * 使用 PowerShell 和 SQL 查询直接从 Operations Manager 收集，以及从指定的管理服务器收集。  
@@ -215,7 +215,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![重点区域](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. 可以采取“**建议的操作**”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
+7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 

@@ -7,16 +7,16 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444471"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>使用 VS Code 调试 Kusto 查询语言内联 Python
 
-Azure 数据资源管理器支持使用[python （）插件](/azure/kusto/query/pythonplugin)运行使用 Kusto 查询语言嵌入的 python 代码。 插件运行时托管在沙箱中，这是一个隔离和安全的 Python 环境。 Python （）插件功能将 Kusto 查询语言本机功能扩展到 OSS Python 包的巨大存档。 此扩展使你可以在查询过程中运行高级算法，如机器学习、人工智能、统计和时间系列。
+Azure 数据资源管理器支持使用[python （）插件](/azure/kusto/query/pythonplugin)运行使用 Kusto 查询语言嵌入的 python 代码。 插件运行时托管在沙箱中，这是一个隔离和安全的 Python 环境。 Python （）插件功能将 Kusto 查询语言本机功能扩展到 OSS Python 包的巨大存档。 此扩展使你能够在查询过程中运行高级算法，如机器学习、人工智能、统计和时间系列。
 
 Kusto 查询语言工具不适用于开发和调试 Python 算法。 因此，在你最喜爱的 Python 集成开发环境（如 Jupyter、PyCharm、VS 或 VS Code）上制定算法。 完成算法后，复制并粘贴到 KQL。 为了改进和简化此工作流，Azure 数据资源管理器支持 Kusto 资源管理器或 Web UI 客户端之间的集成，以及用于创作和调试 KQL 内联 Python 代码的 VS Code。 
 
@@ -32,7 +32,7 @@ Kusto 查询语言工具不适用于开发和调试 Python 算法。 因此，�
 ## <a name="run-your-query-in-your-client-application"></a>在客户端应用程序中运行查询
 
 1. 在客户端应用程序中，使用 `set query_python_debug;`
-1. 运行该查询。
+1. 运行查询。
     * Kusto 资源管理器： *debug_python 通过 py*脚本自动启动 VS Code。
     * Kusto Web UI： 
         1. 下载并保存*debug_python py*、 *df .txt*和*kargs*。 在窗口中，选择 "**允许**"。 **保存**所选目录中的文件。 

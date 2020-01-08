@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403148"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -37,17 +37,25 @@ ms.locfileid: "74665638"
  
 ## <a name="supported-regions"></a>支持的区域
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
+* 欧洲北部
 * 欧洲西部
+* 法国中部
+
 * 美国中西部
 * 美国中北部
+* 美国中南部
+* 美国中部
 * 美国东部
 * 美国东部 2
+* 美国西部 2
 * 日本东部
 * 亚洲东南部
 * 澳大利亚东南部
 * 澳大利亚中部
 * 澳大利亚东部
 * 英国南部
+* 亚洲东部
+* 韩国中部
 * 印度中部
 * 美国弗吉尼亚州政府
 * 中国东部 2
@@ -120,7 +128,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    **ExpressRoute 监视器**：选择“立即发现”，以便发现所有已连接到 Azure 订阅（通过此 Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。 
 
-   ![“ExpressRoute 监视器”视图](media/network-performance-monitor/npm-express-route.png)
+   ![ExpressRoute 监视器”视图](media/network-performance-monitor/npm-express-route.png)
 
    发现完成后，发现的线路和对等互连将在表中列出。 
 

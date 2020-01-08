@@ -1,18 +1,14 @@
 ---
 title: 如何更新用于指标的容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何更新容器 Azure Monitor，以启用支持对聚合指标进行浏览和警报的自定义指标功能。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403225"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新容器 Azure Monitor 以启用指标
 
@@ -24,10 +20,10 @@ ms.locfileid: "74707489"
 
 以下度量值作为此功能的一部分启用：
 
-| 指标命名空间 | 指标 | 描述 |
+| 指标命名空间 | 度量值 | Description |
 |------------------|--------|-------------|
-| 见解：容器/节点 | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | 这些是*节点*指标，并将*主机*作为维度包括在内，它们还包括<br> 作为*主机*维度的值的节点名称。 |
-| 见解/容器 | podCount | 这些是*pod*指标，包括以下各项： ControllerName、Kubernetes 命名空间、名称和阶段。 |
+| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | 这些是*节点*指标，并将*主机*作为维度包括在内，它们还包括<br> 作为*主机*维度的值的节点名称。 |
+| insights.container/pods | podCount | 这些是*pod*指标，包括以下各项： ControllerName、Kubernetes 命名空间、名称和阶段。 |
 
 更新群集以支持这些新功能可以从 Azure 门户、Azure PowerShell 或 Azure CLI 执行。 使用 Azure PowerShell 和 CLI，可以为订阅中的每个群集或所有群集启用此项。 新的 AKS 部署将自动包括此配置更改和功能。
 

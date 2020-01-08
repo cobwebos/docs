@@ -5,17 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 53ccd439429dc7df311e086d79f7234e26fd8b0e
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460549"
 ---
-> [!IMPORTANT]
-> 存储帐户密钥类似于存储帐户的根密码。 始终要小心保护帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其以纯文本形式保存在其他人可以访问的任何位置。 如果认为帐户密钥可能已泄漏，请使用 Azure 门户重新生成帐户密钥。
->
-> 就像帐户访问密钥一样，对 SAS（共享访问签名）令牌进行保护至关重要。 然而，提供粒度 SAS 会授权客户端访问存储帐户中的资源，不应当将其公开共享。 如果出于故障排除原因而需要共享，请考虑使用日志文件的修订版本或者将 SAS 令牌从日志文件中删除（如果存在），并确保屏幕截图也不包含 SAS 信息。
+## <a name="protect-your-access-keys"></a>保护访问密钥
+
+存储帐户访问密钥类似于存储帐户的根密码。 务必小心保护访问密钥。 使用 Azure Key Vault 来安全地管理和轮换密钥。 避免将访问密钥分发给其他用户、对其进行硬编码或将其以纯文本形式保存在其他用户可以访问的位置。 如果你认为密钥可能已泄漏，请对其进行轮替。
+
+如果可能，请使用 Azure Active Directory （Azure AD）授权对 Blob 和队列存储而不是共享密钥的请求。 Azure AD 通过共享密钥提供更高的安全性和易用性。 有关使用 Azure AD 授权对数据的访问的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](../articles/storage/common/storage-auth-aad.md)。

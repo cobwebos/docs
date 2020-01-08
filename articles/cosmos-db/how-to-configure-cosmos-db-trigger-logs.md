@@ -1,17 +1,17 @@
 ---
-title: 使用适用于 Cosmos DB 的 Azure Functions 触发器时配置和读取日志
+title: 配置和读取包含 Cosmos DB Azure Functions 触发器的日志
 description: 了解如何在使用适用于 Cosmos DB 的 Azure Functions 触发器时向 Azure Functions 日志记录管道公开日志
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 17b2d4854e3222e5bdb607c6c80b0ec5ed6177d3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441831"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>如何在使用适用于 Cosmos DB 的 Azure Functions 触发器时配置和读取日志
 
@@ -39,7 +39,7 @@ ms.locfileid: "70093600"
 }
 ```
 
-使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 可以在类别 `Host.Triggers.CosmosDB` 下查看所配置的日志记录提供程序中的日志。
+使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 可以在 `Host.Triggers.CosmosDB`的*类别*下查看配置的日志提供程序中的日志。
 
 ## <a name="query-the-logs"></a>查询日志
 

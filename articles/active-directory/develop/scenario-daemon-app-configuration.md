@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423938"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api 的后台应用程序-代码配置
 
@@ -31,11 +31,11 @@ ms.locfileid: "74962638"
 
 支持后台程序应用的 Microsoft 库包括：
 
-  MSAL 库 | 描述
+  MSAL 库 | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持构建后台应用程序的平台是 .NET Framework 和 .NET Core 平台（而不是 UWP、Xamarin 和 Xamarin，因为这些平台用于构建公共客户端应用程序）
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 开发中 -目前为公共预览版
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 开发中 -目前为公共预览版
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 中的后台应用程序支持
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 对 Java 中的后台应用程序的支持
 
 ## <a name="configuration-of-the-authority"></a>颁发机构的配置
 
@@ -136,7 +136,7 @@ public class TestData {
 在 MSAL.NET 中，机密客户端应用程序由 `IConfidentialClientApplication` 接口表示。
 在源代码中使用 MSAL.NET 命名空间
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -271,7 +271,7 @@ MSAL.NET 提供了两种方法来向机密客户端应用提供签名断言：
 
 使用 `WithClientAssertion`时，需要提供已签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 使用 `WithClientClaims`时，MSAL.NET 会将其自身计算为包含 Azure AD 所需的声明以及要发送的其他客户端声明的签名断言。
 下面是有关如何执行此操作的代码片段：
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

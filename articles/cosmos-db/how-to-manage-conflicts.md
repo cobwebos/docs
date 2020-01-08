@@ -1,17 +1,17 @@
 ---
-title: 了解如何管理 Azure Cosmos DB 中区域之间的冲突
+title: 管理 Azure Cosmos DB 中的区域之间的冲突
 description: 了解如何通过创建最后编写器-入选或自定义冲突解决策略来管理 Azure Cosmos DB 中的冲突
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441795"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
 

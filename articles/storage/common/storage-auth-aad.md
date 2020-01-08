@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460504"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 blob 和队列的访问权限
 
-Azure 存储支持使用 Azure Active Directory （AD）对 Blob 和队列存储的请求进行授权。 使用 Azure AD，你可以使用基于角色的访问控制（RBAC）向安全主体授予权限，这可能是用户、组或应用程序服务主体。 通过 Azure AD 对安全主体进行身份验证，以返回 OAuth 2.0 令牌。 令牌可用于授权请求访问 Blob 或队列存储中的资源。
+Azure 存储支持使用 Azure Active Directory （Azure AD）授权对 Blob 和队列存储的请求。 使用 Azure AD，你可以使用基于角色的访问控制（RBAC）向安全主体授予权限，这可能是用户、组或应用程序服务主体。 通过 Azure AD 对安全主体进行身份验证，以返回 OAuth 2.0 令牌。 然后，令牌可用于对 Blob 或队列存储的请求进行授权。
 
-使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性，并通过共享密钥授权和共享访问签名（SAS）轻松使用。 在 Azure AD 中，无需将帐户访问密钥与代码一起存储，并存在潜在的安全漏洞。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 Microsoft 建议尽可能使用 Azure 存储应用程序 Azure AD 授权。
+使用 Azure AD 对 Azure 存储的请求进行授权，可通过共享密钥授权提供更高的安全性和易用性。 Microsoft 建议尽可能将 Azure AD 授权与 blob 和队列应用程序一起使用，以最大程度地减少共享密钥中固有的潜在安全漏洞。
 
-使用 Azure AD 的授权适用于所有公共区域和全国云中的所有常规用途和 Blob 存储帐户。 只有用 Azure 资源管理器部署模型创建的存储帐户才支持 Azure AD 授权。 Azure 表存储不支持带有 Azure AD 的授权。
+使用 Azure AD 的授权适用于所有公共区域和全国云中的所有常规用途和 Blob 存储帐户。 只有用 Azure 资源管理器部署模型创建的存储帐户才支持 Azure AD 授权。
+
+Blob 存储还支持创建使用 Azure AD 凭据签名的共享访问签名（SAS）。 有关详细信息，请参阅[使用共享访问签名授予对数据的有限访问权限](storage-sas-overview.md)。
+
+对于已加入域的 Vm，Azure 文件仅支持通过 SMB Azure AD 的授权。 若要了解如何在 Azure 文件的 SMB 上使用 Azure AD，请参阅[Azure 文件的 smb 的 Azure Active Directory 授权概述](../files/storage-files-active-directory-overview.md)。
+
+Azure 表存储不支持带有 Azure AD 的授权。 使用共享密钥对表存储的请求进行授权。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 和队列 Azure AD 概述
 
@@ -78,10 +84,6 @@ Azure 门户指示导航到容器或队列时使用的是哪个授权方案。 �
 ### <a name="data-access-from-powershell-or-azure-cli"></a>从 PowerShell 或 Azure CLI 进行数据访问
 
 Azure CLI 和 PowerShell 支持通过 Azure AD 凭据进行登录。 登录后，你的会话将在这些凭据下运行。 若要了解详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](storage-auth-aad-script.md)。
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>针对 Azure 文件的 SMB Azure AD 授权
-
-Azure 文件支持通过 SMB Azure AD 仅限已加入域的 Vm （预览版）的授权。 若要了解如何在 Azure 文件的 SMB 上使用 Azure AD，请参阅[Azure 文件的 smb 的 Azure Active Directory 授权概述（预览版）](../files/storage-files-active-directory-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

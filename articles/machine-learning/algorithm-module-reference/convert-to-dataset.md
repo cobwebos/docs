@@ -1,7 +1,7 @@
 ---
 title: 转换为数据集：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "转换为数据集" 模块将数据输入转换为 Microsoft Azure 机器学习使用的内部数据集格式。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "转换为数据集" 模块将数据输入转换为 Microsoft Azure 机器学习使用的内部数据集格式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428577"
 ---
 # <a name="convert-to-dataset"></a>转换为数据集
 
@@ -65,9 +65,9 @@ ms.locfileid: "73717253"
   
 -   当你指定自定义替换操作时，搜索和替换操作将应用于完成值。 不允许使用部分匹配项。 例如，可以将3替换为-1 或使用33，但不能替换两位数（如35）中的3。  
   
--   对于自定义替换操作，如果你使用替换不符合列的当前数据类型的任何字符，则替换将以静默方式失败。  
+-   对于自定义替换操作，如果替换字符不符合列的当前数据类型，则替换操作将失败并且不会进行提示。  
 
   
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

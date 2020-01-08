@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414223"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>适用于 Azure 的 Avere vFXT 的灾难恢复指南
 
@@ -104,7 +104,7 @@ Azure 群集的每个 Avere vFXT 必须位于单个可用性区域中，但你�
 1. 如果需要，请在不受影响的区域中为 Azure 群集创建新的 Avere vFXT。
 
    > [!TIP]
-   > 为 Azure 群集创建 Avere vFXT 时，可以保存其创建模板和参数的副本。 如果在创建主群集时保存此信息，则可以使用它创建具有相同属性的替代群集。 在 "[验证和摘要](avere-vfxt-deploy.md#validation-and-purchase)" 页上，单击 "**下载模板和参数**" 链接。 在单击 **"确定"** 按钮创建群集之前，请将该信息保存到文件。
+   > 为 Azure 群集创建 Avere vFXT 时，可以保存其创建模板和参数的副本。 如果在创建主群集时保存此信息，则可以使用它创建具有相同属性的替代群集。 在 "[摘要](avere-vfxt-deploy.md#validation-and-purchase)" 页上，单击 "**下载模板和参数**" 链接。 创建群集之前，请将信息保存到文件。
 
 1. 添加指向重复 Blob 容器的新云核心文件服务器。
 

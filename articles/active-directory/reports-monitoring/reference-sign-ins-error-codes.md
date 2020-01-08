@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429490"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -36,9 +36,13 @@ ms.locfileid: "74786361"
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>如何才能显示失败的登录？ 
 
-导航到 [Azure 门户](https://portal.azure.com)中的[登录报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+在 " [Azure 门户](https://portal.azure.com)" 菜单上，选择 " **Azure Active Directory**"，或从任意页面搜索并选择 " **Azure Active Directory** "。
 
-![登录活动](./media/reference-sign-ins-error-codes/61.png "登录活动")
+![选择 Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+在 "**监视**" 下，选择 "**登录**" 以打开 "[登录" 报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+
+![登录活动](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
 
 在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。
 
@@ -53,7 +57,7 @@ ms.locfileid: "74786361"
 ## <a name="error-codes"></a>错误代码
 
 
-|错误|描述|
+|错误|Description|
 |---|---|
 |16000|这是内部实现详细信息，而不是错误条件。 可以放心地忽略此引用。|
 |20001|联合标识提供者出现问题。 请联系 IDP 解决此问题。|

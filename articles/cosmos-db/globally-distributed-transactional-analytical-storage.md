@@ -1,72 +1,72 @@
 ---
-title: Azure Cosmos 容器的全球分布式事务和分析存储
-description: 了解 Azure Cosmos 容器的事务和分析存储及其配置选项。
+title: Azure Cosmos 容器的全球分布式事务和分析（在个人预览版中）存储
+description: 了解事务和分析存储以及它们的 Azure Cosmos 容器配置选项。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445399"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的全球分布式事务和分析存储
 
-Azure Cosmos 容器在内部以两个存储引擎（事务存储引擎和可更新的分析存储引擎）为后盾。 这两个存储引擎采用结构化的日志，并已经过写入优化，可加快更新速度。 但是，两者的编码方式有所不同：
+Azure Cosmos 容器由两个存储引擎（在个人预览版中）内部支持。 这两个存储引擎都进行了日志结构化和写入优化，以实现更快的更新。 但是，其中每个编码都以不同方式进行编码：
 
 * **事务存储引擎**–以行方向格式编码，用于快速事务读取和查询。
 
-* **分析存储引擎** - 以列格式进行编码，可实现快速分析查询和扫描。
+* **分析存储引擎**-以纵栏式格式编码，用于快速分析查询和扫描。
 
 ![存储引擎和 Azure Cosmos DB API 映射](./media/globally-distributed-transactional-analytical-storage/storage-engines-api-mapping.png)
 
-事务存储引擎以本地 SSD 为后盾，而分析存储则存储在群集外部的经济型 SSD 存储上。 下表汇总了事务存储与分析存储之间的重要差异。
+事务存储引擎受本地 Ssd 的支持，而分析存储则存储在群集以外的 SSD 存储上。 下表捕获了事务存储与分析存储之间的明显差异。
 
 
 |功能  |事务存储  |分析存储 |
 |---------|---------|---------|
-|每个 Azure Cosmos 容器的最大存储空间 |   不受限制      |    不受限制     |
-|每个逻辑分区键的最大存储空间   |   10 GB      |   不受限制      |
-|存储编码  |   行导向，使用内部格式。   |   列导向，使用 Apache Parquet 格式。 |
-|存储区域性 |   以本地/群集内部 SSD 为后盾的复制存储。 |  以经济型远程/群集外部 SSD 为后盾的复制存储。       |
-|持续性  |    99.99999（7-9 秒）     |  99.99999（7-9 秒）       |
-|用于访问数据的 API  |   SQL、MongoDB、Cassandra、Gremlin、Tables 和 etcd。       | Apache Spark         |
-|保留期（生存时间或 TTL）   |  由策略驱动，使用 `DefaultTimeToLive` 属性在 Azure Cosmos 容器中配置。       |   由策略驱动，使用 `ColumnStoreTimeToLive` 属性在 Azure Cosmos 容器中配置。      |
-|每 GB 价格    |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|每个 Azure Cosmos 容器的最大存储空间 |   无限制      |    无限制     |
+|每个逻辑分区键的最大存储空间   |   10 GB      |   无限制      |
+|存储编码  |   使用内部格式的行方向。   |   使用 Apache Parquet 格式面向列。 |
+|存储区域 |   由本地/内部群集 Ssd 支持的复制存储。 |  廉价远程/脱离群集 Ssd 支持的复制存储。       |
+|持续性  |    99.99999 （7-9 秒）     |  99.99999 （7-9 秒）       |
+|访问数据的 Api  |   SQL、MongoDB、Cassandra、Gremlin、Tables 和 etcd。       | Apache Spark         |
+|保留期（生存时间或 TTL）   |  策略驱动，在 Azure Cosmos 容器上通过使用 `DefaultTimeToLive` 属性进行配置。       |   策略驱动，在 Azure Cosmos 容器上通过使用 `ColumnStoreTimeToLive` 属性进行配置。      |
+|每 GB 的价格    |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 |存储事务的价格    |  请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
-## <a name="benefits-of-transactional-and-analytical-storage"></a>事务存储和分析存储的优势
+## <a name="benefits-of-transactional-and-analytical-storage"></a>事务性和分析存储的优点
 
 ### <a name="no-etl-operations"></a>无 ETL 操作
 
-传统的分析管道比较复杂，它们包含多个阶段，而每个阶段都需要与计算和存储层之间来回执行提取-转换-加载 (ETL) 操作。 这会导致数据处理体系结构变得复杂。 这也意味着，存储和计算层的多个阶段会产生较高的成本，而且在存储和计算层的各个阶段之间传输大量数据会造成较高的延迟。  
+传统分析管道具有多个阶段，每个阶段都需要对计算层和存储层进行提取-转换-加载（ETL）操作。 这会导致复杂的数据处理体系结构。 这意味着，多个存储和计算阶段需要高昂的成本，并在存储和计算的各个阶段之间传输大量数据时造成高延迟。  
 
-对 Azure Cosmos DB 执行 ETL 操作不会产生任何开销。 每个 Azure Cosmos 容器以事务和分析存储引擎为后盾，事务与分析存储引擎之间的数据传输是在数据库引擎内部执行的，无需任何网络跃点。 与传统的分析解决方案相比，产生的延迟和成本要低得多。 并为事务和分析工作负荷获取一个全局分布式存储系统。  
+Azure Cosmos DB 执行 ETL 操作无开销。 每个 Azure Cosmos 容器均由事务和分析存储引擎支持，并在数据库引擎中执行事务和分析存储引擎之间的数据传输，无需任何网络跃点。 与传统的分析解决方案相比，产生的延迟和成本明显较低。 并为事务和分析工作负荷获取一个全局分布式存储系统。  
 
-### <a name="store-multiple-versions-update-and-query-the-analytical-storage"></a>存储多个版本并可更新和查询分析存储
+### <a name="store-multiple-versions-update-and-query-the-analytical-storage"></a>存储多个版本、更新和查询分析存储
 
-分析存储完全可更新，其中包含 Azure Cosmos 容器中发生的所有事务更新的完整版本历史记录。
+分析存储是完全可更新的，它包含 Azure Cosmos 容器上发生的所有事务更新的完整版本历史记录。
 
-保证在 30 秒内，分析存储就能看到对事务存储所做的任何更新。 
+在30秒内，将保证对事务存储的任何更新对分析存储可见。 
 
 ### <a name="globally-distributed-multi-master-analytical-storage"></a>全球分布式多主机分析存储
 
-如果 Azure Cosmos 帐户的范围限定为单个区域，则容器中存储的数据（存储在事务存储和分析存储中）的范围也限定为单个区域。 另一方面，如果 Azure Cosmos 帐户是全局分布的，则存储在容器中的数据也是全局分布的。
+如果你的 Azure Cosmos 帐户的作用域限定为单个区域，则容器中存储的数据（在事务存储和分析存储中）也将作用域限定为单个区域。 另一方面，如果 Azure Cosmos 帐户是全局分布的，则存储在容器中的数据也是全局分布的。
 
-对于配置了多个写入区域的 Azure Cosmos 帐户，始终在本地区域中执行对容器的写入操作（写入事务存储和分析存储），因此写入速度很快。
+对于配置了多个写入区域的 Azure Cosmos 帐户，将始终在本地区域中执行对容器（对于事务存储和分析存储的写入）的写入操作，因此它们速度很快。
 
-对于单区域或多区域 Azure Cosmos 帐户，无论使用单个写入区域（单主数据库）还是多个写入区域（也称为多主数据库），都会在给定区域的本地执行事务和分析读取/查询操作。
+对于单区域或多区域 Azure Cosmos 帐户，不管是单个写入区域（单主机）还是多个写入区域（也称为多主机），都将在给定区域本地执行事务读取/查询。
 
-### <a name="performance-isolation-between-transactional-and-analytical-workloads"></a>事务和分析工作负荷之间的性能隔离
+### <a name="performance-isolation-between-transactional-and-analytical-workloads"></a>事务性和分析工作负载之间的性能隔离
 
-在给定区域中，事务工作负荷针对容器的事务性/行存储进行操作。 另一方面，分析工作负荷针对容器的分析/列存储进行操作。 这两个存储引擎独立运行，在工作负荷之间提供严格的性能隔离。
+在给定区域中，事务工作负荷针对容器的事务性/行存储进行操作。 另一方面，分析工作负荷针对容器的分析/列存储进行操作。 这两个存储引擎独立运行，并在工作负荷之间提供严格的性能隔离。
 
-事务工作负荷消耗预配的吞吐量 (RU)。 与事务工作负荷不同，分析工作负荷的吞吐量基于实际消耗量。 分析工作负荷按需消耗资源。
+事务工作负荷使用预配的吞吐量（ru）。 与事务工作负载不同，分析工作负荷的吞吐量取决于实际消耗情况。 分析工作负荷按需使用资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Cosmos DB 中的生存时间](time-to-live.md)
+* [Azure Cosmos DB 的生存时间](time-to-live.md)

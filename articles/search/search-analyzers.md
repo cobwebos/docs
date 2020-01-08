@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460715"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 认知搜索中的文本处理分析器
 
-分析器是*全文搜索引擎*的组成部分，负责在查询字符串和带索引文档中进行文本处理[](search-lucene-query-architecture.md)。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
 
 语言分析器是最常使用的，默认语言分析器分配给 Azure 认知搜索索引中的每个可搜索字段。 下面是文本分析过程中的典型语言转换：
 
@@ -39,7 +39,7 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 
 下面的列表介绍 Azure 认知搜索中可用的分析器。
 
-| 类别 | 说明 |
+| 类别 | Description |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 Lucene 语言分析器和 50 Microsoft 自然语言处理分析器。 |
@@ -54,6 +54,9 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 2. 在索引中的[字段定义](https://docs.microsoft.com/rest/api/searchservice/create-index)中，将字段的 **analyzer** 属性设置为某个目标分析器的名称（例如 `"analyzer" = "keyword"`。 有效值包括预定义分析器、语言分析器或在索引架构中定义的自定义分析器的名称。 在服务中创建索引之前，请在索引定义阶段规划好分析器的分配。
 
 3. 或者，可以不使用单个 **analyzer** 属性，而使用 **indexAnalyzer** 和 **searchAnalyzer** 字段参数分别设置用于索引和查询的不同分析器。 如果其中的某个活动需要特定的转换，而其他活动不需要该转换，则你可以使用不同的分析器来准备和检索数据。
+
+> [!NOTE]
+> 在索引时，不能在索引时使用不同的[语言分析器](index-add-language-analyzers.md)，而不能在查询时使用。 为[自定义分析器](index-add-custom-analyzers.md)保留该功能。 出于此原因，如果尝试将**searchAnalyzer**或**indexAnalyzer**属性设置为语言分析器的名称，REST API 将返回错误响应。 您必须改用**analyzer**属性。
 
 不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
  
@@ -271,9 +274,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
   }
 ~~~~
 
-## <a name="c-examples"></a>C# 示例
+## <a name="c-examples"></a>C#示例
 
-如果使用 .NET SDK 代码示例，则可追加这些示例，以便使用或配置分析器。
+如果你使用的是 .NET SDK 代码示例，则可以附加这些示例以使用或配置分析器。
 
 + [分配内置分析器](#Assign-a-language-analyzer)
 + [配置分析器](#Define-a-custom-analyzer)
@@ -282,9 +285,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="assign-a-language-analyzer"></a>分配语言分析器
 
-任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 没有创建分析器构造的要求。 
+按原样使用的任何分析器（无配置）都是在字段定义中指定的。 不需要创建分析器构造。 
 
-此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
+此示例将 Microsoft 英语和法语分析器分配给说明字段。 这是来自更大的酒店索引定义的代码片段，使用[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例的 hotels.cs 文件中的酒店类创建。
 
 调用[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)类型，该类型提供 Azure 认知搜索中支持的文本分析器。
 
@@ -310,9 +313,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="define-a-custom-analyzer"></a>定义自定义分析器
 
-如果需要自定义或配置，则需向索引添加分析器构造。 定义以后，即可将其添加到字段定义，如上一示例所示。
+需要自定义或配置时，需要将分析器构造添加到索引。 定义后，可以按照前面示例中所示，将其添加到字段定义。
 
-创建 [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
+创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {

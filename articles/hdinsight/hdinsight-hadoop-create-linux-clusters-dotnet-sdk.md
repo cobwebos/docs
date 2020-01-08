@@ -2,23 +2,22 @@
 title: 使用 .NET 创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 HDInsight .NET SDK 在 Linux for HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 928955adbc5ced7c693407d6c8d3643f9f094d82
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916486"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612268"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
-
 
 了解如何使用 .NET SDK 在 Azure HDInsight 群集中创建 [Apache Hadoop](https://hadoop.apache.org/) 群集。
 
@@ -27,20 +26,22 @@ ms.locfileid: "70916486"
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="prerequisites"></a>先决条件
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
-* **Visual Studio**。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="prerequisites"></a>必备组件
+
+* 一个 Azure 存储帐户。 请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/)。
 
 ## <a name="create-clusters"></a>创建群集
 
 1. 打开 Visual Studio。
-2. 创建新的 Visual C# 控制台应用程序。
-3. 在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。
-4. 在控制台中运行下列命令以安装程序包：
+1. 创建新C#的控制台应用程序。
+1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
+1. 在控制台中运行下列命令以安装程序包：
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -49,7 +50,7 @@ ms.locfileid: "70916486"
     ```
 
     这些命令将 .NET 库以及对这些库的引用添加到当前 Visual Studio 项目中。
-5. 在解决方案资源管理器中双击“Program.cs”将它打开，粘贴以下代码，并提供变量的值：
+1. 在解决方案资源管理器中双击“Program.cs”将它打开，粘贴以下代码，并提供变量的值：
 
     ```csharp
     using System;
@@ -184,8 +185,9 @@ ms.locfileid: "70916486"
     }
     ```
 
-6. 替换类成员值。
-7. 按 **F5** 运行应用程序。 控制台窗口应打开并显示应用程序的状态。 系统会提示输入 Azure 帐户凭据。 创建 HDInsight 群集可能需要几分钟时间（通常是 15 分钟）。
+1. 替换类成员值。
+
+1. 按 **F5** 运行应用程序。 控制台窗口应打开并显示应用程序的状态。 系统会提示输入 Azure 帐户凭据。 创建 HDInsight 群集可能需要几分钟时间（通常是 15 分钟）。
 
 ## <a name="use-bootstrap"></a>使用 bootstrap
 
@@ -366,14 +368,13 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
 ## <a name="next-steps"></a>后续步骤
-成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集。 
+成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集
@@ -388,11 +389,10 @@ static void Main(string[] args)
 ### <a name="apache-spark-clusters"></a>Apache Spark 群集
 * [使用 Scala 创建独立的应用程序](spark/apache-spark-create-standalone-application.md)
 * [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>运行作业
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [在 HDInsight 中运行 Apache Oozie 作业](hdinsight-use-oozie-linux-mac.md)
-

@@ -2,18 +2,18 @@
 title: Apache HBase 的备份 & 复制，Phoenix-Azure HDInsight
 description: 在 Azure HDInsight 中设置 Apache HBase 和 Apache Phoenix 的备份和复制
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 9611199cf08084505381223ef485ae2b6f00cb21
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044697"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495931"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -60,15 +60,19 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 ## <a name="export-then-import"></a>导出再导入
 
-在源 HDInsight 群集上，使用“导出”实用工具（HBase 已随附）将数据从源表导出到默认的附加存储。 然后，可将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行“导入”实用工具。
+在源 HDInsight 群集上，使用[导出实用程序](https://hbase.apache.org/book.html#export)（包含在 HBase 中）将数据从源表导出到默认附加存储。 然后，可以将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行[导入实用工具](https://hbase.apache.org/book.html#import)。
 
-若要导出表，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
+若要导出表数据，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-若要导入表，请通过 SSH 连接到目标 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
+导出目录不能已存在。 表名称区分大小写。
+
+若要导入表数据，请通过 SSH 连接到目标 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+该表必须已存在。
 
 指定默认存储或任何附加存储选项的完整导出路径。 例如，在 Azure 存储中：
 
@@ -90,11 +94,12 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 ## <a name="copy-tables"></a>复制表
 
-CopyTable 实用工具将数据从源表逐行复制到架构与源相同的现有目标表。 目标表可以位于相同的群集中，或不同的 HBase 群集中。
+[CopyTable 实用工具](https://hbase.apache.org/book.html#copy.table)按行将数据从源表复制到与源相同的架构的现有目标表。 目标表可以位于相同的群集中，或不同的 HBase 群集中。 表名称区分大小写。
 
 若要在群集中使用 CopyTable，请通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+
 
 若要使用 CopyTable 复制不同群集中的表，请添加 `peer` 开关和目标群集的地址：
 
@@ -125,7 +130,7 @@ CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>手动收集 Apache ZooKeeper 仲裁列表
 
-如果两个 HDInsight 群集位于同一个虚拟网络中，如前所述，内部主机名解析会自动进行。 若要对通过 VPN 网关连接的两个不同虚拟网络中的 HDInsight 群集使用 CopyTable，需要提供仲裁中 Zookeeper 节点的主机 IP 地址。
+如果两个 HDInsight 群集位于同一个虚拟网络中，如前所述，内部主机名解析会自动进行。 若要在通过 VPN 网关连接的两个不同虚拟网络中的 HDInsight 群集上使用 CopyTable，需要提供仲裁中 Zookeeper 节点的主机 IP 地址。
 
 若要获取仲裁主机名，请运行以下 curl 命令：
 
@@ -155,7 +160,7 @@ CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在
 
 ## <a name="snapshots"></a>快照
 
-使用快照可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。
+[快照](https://hbase.apache.org/book.html#ops.snapshots)使你能够对 HBase 数据存储中的数据进行时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。
 
 若要创建快照，请通过 SSH 连接到 HDInsight HBase 群集的头节点，然后启动 `hbase` shell：
 
@@ -185,11 +190,11 @@ CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在
 
 导出快照后，通过 SSH 连接到目标群集的头节点，然后根据前面所述使用 restore_snapshot 命令还原快照。
 
-快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间范围执行增量快照的功能，也不允许指定要包含在快照中的列系列子集。
+快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间窗口执行增量快照的功能，也无法指定要包含在快照中的列系列子集。
 
 ## <a name="replication"></a>复制
 
-HBase 复制使用异步机制自动将事务从源群集推送到目标群集，并且只会在源群集上产生极少的开销。 在 HDInsight 中，可以在群集之间设置复制，其中：
+[HBase 复制](https://hbase.apache.org/book.html#_cluster_replication)使用异步机制自动将源群集中的事务推送到目标群集，并且源群集上的开销最小。 在 HDInsight 中，可以在群集之间设置复制，其中：
 
 * 源群集和目标群集位于同一虚拟网络中。
 * 源群集和目标群集位于通过 VPN 网关连接的不同虚拟网络中，但两个群集位于相同的地理位置。
@@ -209,3 +214,4 @@ HBase 复制使用异步机制自动将事务从源群集推送到目标群集�
 ## <a name="next-steps"></a>后续步骤
 
 * [配置 Apache HBase 复制](apache-hbase-replication.md)
+* [使用 HBase 导入和导出实用工具](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)

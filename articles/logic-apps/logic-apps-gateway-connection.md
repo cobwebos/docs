@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456575"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -78,12 +78,12 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 1. 在 "**创建连接网关**" 下，提供网关资源的此信息。 完成操作后，选择“创建”。
 
-   | properties | 描述 |
+   | 属性 | Description |
    |----------|-------------|
    | 资源名称 | 提供网关资源的名称，该名称只包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）或句点（`.`）。 |
-   | 订阅 | 选择用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
-   | **资源组** | 要使用的[Azure 资源组](../azure-resource-manager/resource-group-overview.md) |
-   | 位置 | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)过程中为网关云服务选择的同一区域或位置。 否则，网关安装将不会显示在 "**安装名称**" 列表中。 逻辑应用位置可能与网关资源位置不同。 |
+   | **订阅** | 选择用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
+   | **资源组** | 要使用的[Azure 资源组](../azure-resource-manager/management/overview.md) |
+   | **位置** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)过程中为网关云服务选择的同一区域或位置。 否则，网关安装将不会显示在 "**安装名称**" 列表中。 逻辑应用位置可能与网关资源位置不同。 |
    | **安装名称** | 选择仅当满足以下条件时才会出现在列表中的网关安装： <p><p>-网关安装使用的区域与你要创建的网关资源的区域相同。 <br>-网关安装未链接到另一个 Azure 网关资源。 <br>-网关安装已链接到用于创建网关资源的同一个 Azure 帐户。 <br>-你的 Azure 帐户属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并且与用于网关安装的帐户相同。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
    |||
 

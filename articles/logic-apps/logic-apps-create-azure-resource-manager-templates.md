@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428727"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以便自动部署 Azure 逻辑应用
 
-为了帮助你自动创建和部署逻辑应用，本文介绍了可为逻辑应用创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)的方式。 有关包含工作流定义和部署所需的其他资源的模板的结构和语法的概述，请参阅[概述：使用 Azure 资源管理器模板自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)。
+为了帮助你自动创建和部署逻辑应用，本文介绍了可为逻辑应用创建[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)的方式。 有关包含工作流定义和部署所需的其他资源的模板的结构和语法的概述，请参阅[概述：使用 Azure 资源管理器模板自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)。
 
 Azure 逻辑应用提供了一个[预建的逻辑应用 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)，你可以重复使用该模板来创建逻辑应用，还可以定义用于部署的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。
 
@@ -24,8 +24,8 @@ Azure 逻辑应用提供了一个[预建的逻辑应用 Azure 资源管理器模
 
 有关 Azure 资源管理器模板的详细信息，请参阅以下主题：
 
-* [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
-* [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure 资源管理器模板结构和语法](../azure-resource-manager/templates/template-syntax.md)
+* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
 * [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
@@ -104,10 +104,10 @@ PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-n
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| parameters | 需要 | 描述 |
+| 参数 | 需要 | Description |
 |------------|----------|-------------|
 | TemplateFile | 是 | 模板文件的文件路径 |
-| KeyVault | No | 描述如何处理可能的 key vault 值的枚举。 默认为 `None`。 |
+| KeyVault | 否 | 描述如何处理可能的 key vault 值的枚举。 默认为 `None`。 |
 ||||
 
 ## <a name="next-steps"></a>后续步骤

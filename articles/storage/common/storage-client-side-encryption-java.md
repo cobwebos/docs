@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4fa5657a7ee2043e09c80593651d88a527770d7a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998983"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460446"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -56,9 +56,9 @@ ms.locfileid: "70998983"
 > 
 > 
 
-下载已加密的 Blob 需要使用 **download**/**openInputStream** 便捷方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 涉及使用**下载**/**openInputStream**便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载已加密 blob 中的任意范围（**downloadRange** 方法）需要调整用户提供的范围，获取少量可用于成功解密所请求范围的附加数据。  
+下载已加密的 blob 中的任意范围（**downloadRange**方法）涉及调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。  
 
 所有 Blob 类型（块 Blob、页 Blob 和追加 Blob）都可以使用此方案进行加密/解密。
 
@@ -246,11 +246,13 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 ```
 
 ## <a name="encryption-and-performance"></a>加密和性能
+
 注意，加密存储数据会导致额外的性能开销。 必须生成内容密钥和 IV，内容本身必须进行加密，并且其他元数据必须进行格式化并上传。 此开销将因所加密的数据量而有所变化。 我们建议客户在开发过程中始终测试其应用程序的性能。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 下载[适用于 Java 的 Azure 存储客户端库 Maven 程序包](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
-* 从 GitHub 下载[适用于 Java 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-java)   
+* 从 GitHub 下载[适用于 Java 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-java)
 * 下载适用于 Java 的 Azure 密钥保管库 Maven 程序包：
   * [核心](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
   * [客户端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包

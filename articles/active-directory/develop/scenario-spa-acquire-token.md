@@ -1,5 +1,5 @@
 ---
-title: 在单页面应用中获取令牌-Microsoft 标识平台 |Microsoft
+title: 获取用于调用 web API （单页面应用）的令牌-Microsoft 标识平台 |Microsoft
 description: 了解如何生成单页面应用程序（获取用于调用 API 的令牌）
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9723e9a58704a583c7332db11bae7da6b045a5f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17c11b8cb4c1d7f4eef22903b81f38d93b54b41b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423680"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取用于调用 API 的令牌
 

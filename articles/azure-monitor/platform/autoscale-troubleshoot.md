@@ -1,19 +1,15 @@
 ---
 title: Azure 自动缩放疑难解答
 description: 跟踪在 Service Fabric、虚拟机、Web 应用和云服务中使用的 Azure 自动缩放问题。
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364435"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自动缩放疑难解答
  

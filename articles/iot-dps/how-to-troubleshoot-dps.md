@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974813"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646466"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT 中心设备预配服务疑难解答
 
@@ -23,7 +23,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 
 以下过程介绍了如何查看和设置 IoT 中心设备预配服务指标的警报。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 浏览到 IoT 中心设备预配服务。
 
@@ -32,7 +32,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 4. 选择所需的指标。 
    <br />对于 DPS，当前有三个指标：
 
-    | 指标名称 | 描述 |
+    | 标准名称 | Description |
     |-------|------------|
     | 证明尝试次数 | 尝试通过设备预配服务进行身份验证的设备数|
     | 注册尝试次数 | 身份验证成功后试图注册到 IoT 中心的设备数|
@@ -48,7 +48,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>使用日志分析查看和解决错误
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 浏览到 IoT 中心。
 
@@ -58,7 +58,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 
 5. 启用要收集的所需日志。
 
-    | 日志名称 | 描述 |
+    | 日志名称 | Description |
     |-------|------------|
     | DeviceOperations | 与设备连接事件相关的日志 |
     | ServiceOperations | 与使用服务 SDK （例如创建或更新注册组）相关的事件日志|
@@ -75,11 +75,11 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 ## <a name="common-error-codes"></a>常见错误代码
 使用下表来了解和解决常见错误。
 
-| 错误代码| 描述 | HTTP 状态代码 |
+| 错误代码| Description | HTTP 状态代码 |
 |-------|------------|------------|
 | 400 | 请求正文无效;例如，无法对其进行分析，或者无法验证对象。| 400格式错误 |
 | 401 | 无法验证授权令牌;例如，它已过期或不适用于请求的 URI。 此错误代码也作为 TPM 证明流的一部分返回到设备。 | 401 未授权|
 | 404 | 设备预配服务实例或资源（例如注册）不存在。 |404 未找到 |
 | 412 | 根据 RFC7232，请求中的 ETag 与现有资源的 ETag 不匹配。 | 412预处理失败 |
-| 429 | 服务正在阻止操作。 有关特定服务限制，请参阅[IoT 中心设备预配服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)。 | 429请求太多 |
+| 429 | 服务正在阻止操作。 有关特定服务限制，请参阅[IoT 中心设备预配服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)。 | 429请求太多 |
 | 500 | 发生了内部错误。 | 500 内部服务器错误|

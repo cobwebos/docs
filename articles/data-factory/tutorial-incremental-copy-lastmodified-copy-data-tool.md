@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05696ae2fed31c267aa37013fac32db0916e24bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439324"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具以增量方式复制基于 LastModifiedDate 的新文件和更改的文件
 
@@ -68,12 +68,12 @@ ms.locfileid: "74923138"
 
     * 选择“新建”，并输入资源组的名称。 
          
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
 5. 在 "**版本**" 下，选择**V2**。
 6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 SQL 数据库）和计算（例如，Azure HDInsight）可以位于其他位置和区域。
 7. 选择“固定到仪表板”。 
-8. 选择**创建**。
+8. 选择“创建”。
 9. 在仪表板上，请参阅**部署数据工厂**磁贴以查看进程状态。
 
     ![部署数据工厂磁贴](media/tutorial-copy-data-tool/deploying-data-factory.png)
@@ -90,15 +90,15 @@ ms.locfileid: "74923138"
    
 2. 在 "**属性**" 页上，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 "**任务名称**" 下输入**DeltaCopyFromBlobPipeline**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 "**任务名称**" 下输入**DeltaCopyFromBlobPipeline**。
 
-    b. 在**任务节奏**或**任务计划**下，选择 "**按计划定期运行**"。
+    b.保留“数据库类型”设置，即设置为“共享”。 在**任务节奏**或**任务计划**下，选择 "**按计划定期运行**"。
 
     c. 在 "**触发器类型**" 下，选择 "**翻转窗口**"。
     
     d.单击“下一步”。 在 "**重复周期**" 下，输入**15 分钟**。 
     
-    e. 选择“**下一步**”。 
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“**下一页**”。 
     
     数据工厂 UI 将使用指定的任务名称创建一个管道。 
 
@@ -106,11 +106,11 @@ ms.locfileid: "74923138"
     
 3. 在“源数据存储”页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 " **+ 新建连接**" 以添加连接。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 " **+ 新建连接**" 以添加连接。
     
     ![“源数据存储”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
 
-    b. 从库中选择“Azure Blob 存储”，然后选择“继续”。
+    b.保留“数据库类型”设置，即设置为“共享”。 从库中选择“Azure Blob 存储”，然后选择“继续”。
     
     ![“源数据存储”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
@@ -124,11 +124,11 @@ ms.locfileid: "74923138"
 
 4. 在“选择输入文件或文件夹”页中完成以下步骤：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 浏览并选择**源**文件夹，然后选择 "**选择**"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 浏览并选择**源**文件夹，然后选择 "**选择**"。
     
     ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. 在 "**文件加载行为**" 下，选择 "**增量加载： LastModifiedDate**"。
+    b.保留“数据库类型”设置，即设置为“共享”。 在 "**文件加载行为**" 下，选择 "**增量加载： LastModifiedDate**"。
     
     ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
@@ -142,11 +142,11 @@ ms.locfileid: "74923138"
     
 6. 在“选择输出文件或文件夹”页中完成以下步骤：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 浏览并选择**目标**文件夹，然后选择 "**选择**"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 浏览并选择**目标**文件夹，然后选择 "**选择**"。
     
     ![选择输出文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
-    b. 选择“**下一步**”。
+    b.保留“数据库类型”设置，即设置为“共享”。 选择“**下一页**”。
     
      ![选择输出文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     

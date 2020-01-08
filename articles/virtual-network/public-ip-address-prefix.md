@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488436"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640714"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
 
@@ -32,14 +32,14 @@ ms.locfileid: "73488436"
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>为什么要创建公共 IP 地址前缀？
 
-创建公共 IP 地址资源时，Azure 会从区域中使用的任何一个范围分配可用的公共 IP 地址。 Azure 分配地址后，你就会知道是哪一个地址，但在 Azure 分配地址之前，你并不知道可能会分配哪个地址。 有时这可能会是一个问题，例如，你或你的业务合作伙伴设置防火墙规则，允许使用特定 IP 地址。 每当向资源分配新的公共 IP 地址时，必需将该地址添加到防火墙规则。 当从公共 IP 地址前缀向资源分配地址时，无需在每次分配一个地址时都更新防火墙规则，因为可以将整个范围添加到规则。
+创建公共 IP 地址资源时，Azure 会从该区域中使用的任何范围分配一个可用的公共 IP 地址。 Azure 分配地址后，你就会知道是哪一个地址，但在 Azure 分配地址之前，你并不知道可能会分配哪个地址。 有时这可能会是一个问题，例如，你或你的业务合作伙伴设置防火墙规则，允许使用特定 IP 地址。 每当向资源分配新的公共 IP 地址时，必需将该地址添加到防火墙规则。 当从公共 IP 地址前缀向资源分配地址时，无需在每次分配一个地址时都更新防火墙规则，因为可以将整个范围添加到规则。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>优势
 
 - 可以从已知范围创建公共 IP 地址资源。
 - 你或你的业务合作伙伴可以使用包括当前分配的公共 IP 地址以及尚未分配的地址范围创建防火墙规则。 这样便可在向新资源分配 IP 地址时省去更改防火墙规则的需要。
 - 可创建的默认范围大小为 /28 或 16 个 IP 地址。
-- 可创建的范围数没有限制，但 Azure 订阅中可包括的静态公共 IP 地址的最大数有一定限制。 因此，可创建的范围数包含的静态公共 IP 地址数不能超过订阅中包含的地址数。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+- 可创建的范围数没有限制，但 Azure 订阅中可包括的静态公共 IP 地址的最大数有一定限制。 因此，可创建的范围数包含的静态公共 IP 地址数不能超过订阅中包含的地址数。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 使用来自前缀的地址创建的地址可以分配到可向其分配公共 IP 地址的任何 Azure 资源。
 - 可轻松查看分配的 IP 地址和范围中尚未分配的地址。
 
@@ -56,9 +56,9 @@ ms.locfileid: "73488436"
 ## <a name="constraints"></a>约束
 
 - 不能指定前缀的 IP 地址。 Azure 将根据指定的大小分配前缀的 IP 地址。
-- 可以创建前缀最多为 16 的 IP 地址或 /28。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+- 你可以创建最多为16个 IP 地址的前缀或/28。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 创建前缀后，无法更改该范围。
-- 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公用 IP 地址 SKU，请参阅[公用 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公共 IP 地址 SKU，请参阅[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 范围中的地址只能分配到 Azure 资源管理器资源。 这些地址不能分配到通过经典部署模型创建的资源。
 - 使用前缀创建的所有公共 IP 地址都必须位于同一 Azure 区域和订阅作为前缀，并且必须分配到相同区域和订阅中的资源。
 - 如果前缀中的任何地址被分配到与某个资源关联的公共 IP 地址资源，则无法删除该前缀。 首先应取消关联所有公共 IP 地址资源，这些资源通过前缀分配有 IP 地址。

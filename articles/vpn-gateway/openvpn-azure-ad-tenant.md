@@ -5,21 +5,21 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 73c379d914f37de351165c19e3d73425e9a202b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.openlocfilehash: 2e62708c98ac86354777cf1bdd93a3deff943b98
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151866"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665343"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
 连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，当你使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 本文可帮助你设置用于 P2S Open VPN 身份验证的 Azure AD 租户。
 
 > [!NOTE]
-> 仅 OpenVPN®协议连接支持 Azure AD 身份验证。
+> Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
 >
 
 ## <a name="tenant"></a>1. 创建 Azure AD 租户
@@ -95,10 +95,10 @@ ms.locfileid: "74151866"
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. 通过运行以下命令创建并下载配置文件。 更改-ResourcGroupName 和-Name 值，使其与你自己的值匹配。
+9. 通过运行以下命令创建并下载配置文件。 更改-ResourceGroupName 和-Name 值，使其与你自己的值匹配。
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"

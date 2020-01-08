@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433037"
 ---
 # <a name="clustering-point-data"></a>聚类数据
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource` 类还具有以下与聚类分析相关的方法：
 
-| 方法 | 返回类型 | 说明 |
+| 方法 | 返回类型 | Description |
 |--------|-------------|-------------|
 | getClusterChildren （clusterId： number） | 承诺&lt;数组&lt;功能&lt;几何，任何&gt; \| 形状&gt;&gt; | 在下一个缩放级别检索给定分类的子项。 这些子级可以是形状和 subclusters 的组合。 Subclusters 将是具有与 ClusteredProperties 匹配的属性的功能。 |
 | getClusterExpansionZoom （clusterId： number） | 承诺&lt;号&gt; | 计算群集开始展开或分离的缩放级别。 |
@@ -88,12 +88,12 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件发生在包含群集数据点的层上时，群集数据点将作为 GeoJSON 点功能对象返回到事件。 此点功能将具有以下属性：
 
-| 属性名 | 类型 | 说明 |
-|---------------|------|-------------|
-| cluster | boolean | 指示功能是否表示群集。 |
-| cluster_id | 字符串 | 可以与 DataSource 一起使用的群集的唯一 ID `getClusterExpansionZoom`、`getClusterChildren`和 `getClusterLeaves` 方法。 |
-| point_count | number | 群集包含的点数。 |
-| point_count_abbreviated | 字符串 | 一个字符串，如果 `point_count` 值过长，则该字符串缩写。 （例如，4000变为4K） |
+| 属性名称             | 类型    | Description   |
+|---------------------------|---------|---------------|
+| `cluster`                 | boolean | 指示功能是否表示群集。 |
+| `cluster_id`              | 字符串  | 可以与 DataSource 一起使用的群集的唯一 ID `getClusterExpansionZoom`、`getClusterChildren`和 `getClusterLeaves` 方法。 |
+| `point_count`             | 数字  | 群集包含的点数。  |
+| `point_count_abbreviated` | 字符串  | 一个字符串，如果 `point_count` 值过长，则该字符串缩写。 （例如，4000变为4K）  |
 
 此示例采用一个呈现分类点的气泡图层，并添加一个单击事件，当触发、计算并缩放地图到下一个缩放级别时，将会使用 `DataSource` 类的 `getClusterExpansionZoom` 方法和已单击的群集数据点的 `cluster_id` 属性来分离该地图。 
 
@@ -128,7 +128,7 @@ var datasource = new atlas.source.DataSource(null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [数据源类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)

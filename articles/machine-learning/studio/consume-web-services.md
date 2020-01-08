@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 1a567e8f910ccf539038a19eef0319f21833f336
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a53128605e1f124cbd26fb679e799822b8abad29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454805"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习 Studio （经典） web 服务
 
@@ -32,7 +32,7 @@ ms.locfileid: "73839694"
 ## <a name="overview"></a>概述
 外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
 
-Azure 机器学习 Studio 的经典版具有两种类型的服务：
+Azure 机器学习 Studio （经典）有两种类型的服务：
 
 * 请求-响应服务（RR）–低延迟、高度可缩放的服务，它为从机器学习 Studio （经典）创建和部署的无状态模型提供接口。
 * 批处理执行服务 (BES) - 为一批数据记录进行评分的异步服务。
@@ -63,7 +63,7 @@ Azure 机器学习 Studio 的经典版具有两种类型的服务：
 ### <a name="classic-web-service"></a>经典 Web 服务
  还可以从机器学习 Studio （经典）检索经典 Web 服务的密钥。
 
-#### <a name="machine-learning-studio-classic"></a>机器学习 Studio （经典）
+#### <a name="machine-learning-studio-classic"></a>机器学习工作室（经典版）
 1. 在机器学习 Studio （经典）中，单击左侧的 " **WEB 服务**"。
 2. 单击一个 Web 服务。 “API 密钥”位于“仪表板”选项卡。
 

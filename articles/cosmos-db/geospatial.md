@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441881"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
 
@@ -94,7 +94,7 @@ GeoJSON 中的多边形
 ### <a name="coordinate-reference-systems"></a>坐标参考系统
 由于地球的形状不规则，地理空间数据的坐标可以用许多坐标参考系统 (CRS) 来表示，而这些系统各有自己的参考框架和测量单位。 例如，“英国国家网格”对英国而言是非常精确的参考系统，但对其他地区则不是。 
 
-现今最常使用的 CRS 是世界测地系统 [WGS-84](http://earth-info.nga.mil/GandG/wgs84/)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持对使用 WGS-84 CRS 的地理空间数据进行索引编制和查询。 
+现今最常使用的 CRS 是世界测地系统 [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持对使用 WGS-84 CRS 的地理空间数据进行索引编制和查询。 
 
 ## <a name="creating-documents-with-spatial-data"></a>创建包含空间数据的文档
 创建包含 GeoJSON 值的文档时，值会根据容器的索引策略，自动以空间索引进行索引编制。 如果以动态类型化语言（如 Python 或 Node.js）使用 Azure Cosmos DB SDK，则必须创建有效的 GeoJSON。
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-如果没有经纬度信息，但有物理地址或位置名称，如城市或国家/地区，则可以使用必应地图 REST 服务等地理编码服务来查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
+如果没有纬度和经度信息，但具有物理地址或位置名称（如 city 或国家/地区），则可以使用地理编码服务（如 Bing 地图 REST 服务）查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
 
 ## <a name="querying-spatial-types"></a>查询空间类型
 我们已经探讨过如何插入地理空间数据，现在就来看看如何通过 SQL 和 LINQ 使用 Azure Cosmos DB 查询此数据。
@@ -153,7 +153,7 @@ Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息�
 |**使用情况**|**说明**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。|
-|ST_WITHIN (spatial_expr, spatial_expr) | 返回一个布尔表达式，该表达式指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象（点、多边形或 LineString）内。|
+|ST_WITHIN (spatial_expr, spatial_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。|
 |ST_INTERSECTS (spatial_expr, spatial_expr)| 返回一个布尔表达式，指示两个指定的 GeoJSON 对象 （点、多边形或 LineString）是否相交。|
 |ST_ISVALID| 返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。|
 | ST_ISVALIDDETAILED| 如果指定的 GeoJSON 点、多边形或 LineString 表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外加上作为字符串值的原因。|
@@ -249,7 +249,7 @@ ST_ISVALID 和 ST_ISVALIDDETAILED 可用来检查空间对象是否有效。 例
 ### <a name="linq-querying-in-the-net-sdk"></a>.NET SDK 中的 LINQ 查询
 SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LINQ 表达式中使用。 SQL LINQ 提供程序会将这些方法调用转换为等效的 SQL 内置函数调用（分别为 ST_DISTANCE 和 ST_WITHIN）。 
 
-下面是 LINQ 查询的示例, 该查询查找 Azure Cosmos 容器中其 "location" 值在指定点的30公里半径内的所有文档。
+下面是 LINQ 查询的示例，该查询查找 Azure Cosmos 容器中其 "location" 值在指定点的30公里半径内的所有文档。
 
 **LINQ 距离查询**
 
@@ -284,7 +284,7 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 
 我们已经探讨过如何使用 LINQ 和 SQL 查询文档，现在我们来看一下如何针对空间索引配置 Azure Cosmos DB。
 
-## <a name="indexing"></a>索引
+## <a name="indexing"></a>索引编制
 如[使用 Azure Cosmos DB 进行架构不可知的索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)一文中所述，我们设计的 Azure Cosmos DB 数据库引擎具有真正不可知的架构，并提供一流的 JSON 支持。 Azure Cosmos DB 的写入优化数据库引擎可以通过本机方式了解用 GeoJSON 标准表示的空间数据（点、多边形和线）。
 
 简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用**四叉树**以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线**内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为“分割”的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
@@ -371,5 +371,5 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 * 使用 [GitHub 上的地理空间 .NET 代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)开始编写代码
 * 在 [Azure Cosmos DB 查询板块](https://www.documentdb.com/sql/demo#geospatial)中实际操作地理空间查询
 * 深入了解 [Azure Cosmos DB 查询](how-to-sql-query.md)
-* 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)
+* 深入了解 [Azure Cosmos DB 索引策略](index-policy.md)
 

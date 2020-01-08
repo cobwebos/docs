@@ -1,27 +1,18 @@
 ---
-title: 使用 Azure Service Fabric Explorer 可视化群集 | Microsoft Docs
+title: 使用 Azure Service Fabric Explorer 可视化群集
 description: Service Fabric Explorer 是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的应用程序。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464118"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 资源管理器直观显示群集
 
 Service Fabric Explorer (SFX) 是一种用于检验和管理 Azure Service Fabric 群集的开源工具。 Service Fabric Explorer 是适用于 Windows、macOS 和 Linux 的桌面应用程序。
 
@@ -46,7 +37,7 @@ Service Fabric Explorer (SFX) 是一种用于检验和管理 Azure Service Fabri
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>从群集运行 Service Fabric Explorer
 
-Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 Web 浏览器中启动 SFX，请从任意浏览器浏览到群集的 HTTP 管理终结点（例如 https:\//clusterFQDN:19080）。
+Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 web 浏览器中启动 SFX，请从任何浏览器浏览到该群集的 HTTP 管理终结点，例如，https：\//clusterFQDN：19080。
 
 对于开发人员工作站设置，可以通过导航到 https://localhost:19080/Explorer 在本地群集上启动 Service Fabric Explorer。 阅读本文，了解如何[准备开发环境](service-fabric-get-started.md)。
 
@@ -61,7 +52,7 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
 
-如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
+如果尝试连接到安全群集，则需要提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
@@ -124,7 +115,7 @@ EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 S
 >从 Service Fabric 版本 6.4 开始。 EventStore API 仅可用于在 Azure 上运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 ## <a name="image-store-viewer"></a>映像存储查看器
-映像存储查看器是使用本机映像存储时提供的一项功能，使用它可以查看映像存储的当前内容、获取文件和文件夹信息，以及删除文件/文件夹。
+映像存储查看器是在使用本机映像存储时提供的一项功能，它允许查看映像存储的当前内容并获取文件和文件夹信息以及删除文件/文件夹。
 
 ![Service Fabric Explorer 群集图][sfx-imagestore]
 

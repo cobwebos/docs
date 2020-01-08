@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453971"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -33,7 +33,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure
 
 ![创建适用于 CSP 的管理器](media/howto-create-application-csp/image3.png)
 
-若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择 "**生成**"。 选择一个行业模板，或选择 "**自定义应用**" 从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
+若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择 "**生成**"。 选择一个行业模板，或选择 "**旧应用程序**" 以从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 ## <a name="application-template"></a>应用程序模板
 
-可以为新的 Azure IoT Central 应用程序选择一个可用的应用程序模板。 应用程序模板可能包含入门所需的预定义项目（例如设备模板和仪表板）。
+你可以为新的 Azure IoT Central 应用程序选择以下应用程序模板。
 
-| 应用程序模板 | 描述 |
+| 应用程序模板 | Description |
 | -------------------- | ----------- |
-| 自定义应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
-| 示例 Contoso       | 创建一个应用程序，其中包含用于简单的已连接设备的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |
-| 示例 Devkit       | 创建一个应用程序，其中的设备模板可以用来连接 MXChip 或 Raspberry Pi 设备。 如果你是在这其中的某个设备上进行代码试验的设备开发人员，请使用此模板。 |
+| 旧应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

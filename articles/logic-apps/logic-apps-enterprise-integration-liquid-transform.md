@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456644"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
@@ -29,14 +29,14 @@ ms.locfileid: "74792512"
 
 * 基本[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* 关于 [Liquid 模板语言](https://shopify.github.io/liquid/)的基本知识。
+* 关于[液体模板语言](https://shopify.github.io/liquid/)的基本知识
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
 1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在液体模板中，可以使用[液体过滤器](https://shopify.github.io/liquid/basics/introduction/#filters)，使用[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
 
    > [!NOTE]
-   > 请确保筛选器名称在模板中使用*句子大小写*。 否则，筛选器将不起作用。
+   > 请确保筛选器名称在模板中使用*句子大小写*。 否则，筛选器将不起作用。 此外，映射具有[文件大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -57,7 +57,7 @@ ms.locfileid: "74792512"
    }
    ```
 
-2. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，查找并选择你的集成帐户。
+2. 登录 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”。 在搜索框中，查找并选择你的集成帐户。
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "74792512"
 
 4. 选择“添加”，并为映射提供以下详细信息：
 
-   | properties | Value | 描述 | 
+   | 属性 | 值 | Description | 
    |----------|-------|-------------|
-   | 名称 | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
+   | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”。 | 
-   | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 |
+   | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 有关地图大小限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)。 |
    ||| 
 
    ![添加 liquid 模板](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

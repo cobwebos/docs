@@ -1,7 +1,7 @@
 ---
 title: 如何在客户端上通过语音 SDK 完成自定义命令
 titleSuffix: Azure Cognitive Services
-description: 本文介绍了如何在客户端上利用语音 SDK 处理自定义命令活动
+description: 本文介绍如何在客户端上利用语音 SDK 处理自定义命令活动。
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d17ccc67f8254f05461012a9ae443d96ffd58fa5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446933"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>如何：在客户端上通过语音 SDK 完成命令（预览）
 
@@ -49,7 +49,7 @@ ms.locfileid: "74806144"
    > [!div class="mx-imgBorder"]
    > ![发送活动完成规则](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 设置 | 建议的值 | 描述 |
+   | 设置 | 建议的值 | Description |
    | ------- | --------------- | ----------- |
    | 规则名称 | UpdateDeviceState | 描述规则用途的名称 |
    | 条件 | 必需参数-`OnOff` 和 `SubjectDevice` | 确定何时可以运行规则的条件 |

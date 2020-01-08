@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561644"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644862"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
 本文介绍组织中开发测试实验室的资源调配和管理。 
@@ -44,7 +44,7 @@ ms.locfileid: "74561644"
 
 此模型可让组织灵活地大规模部署 Azure 开发测试实验室。 组织可以支持各个业务单位运作的数百个实验室，其中可以并行运行 100 到 1000 个虚拟机。 这样可以提升集中式企业实验室解决方案的概念，并可以共享相同的配置管理和安全控制原则。
 
-此模型还确保组织不会耗尽其 Azure 订阅关联的资源限制。 有关订阅和服务限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 开发测试实验室预配过程可能会消耗大量的资源组。 可以通过 Azure 开发测试订阅中的支持请求来请求提高限制。 随着开发订阅的用量增加，生产订阅中的资源不受影响。 有关缩放开发测试实验室的详细信息，请参阅[开发测试实验室中的缩放配额和限制](devtest-lab-scale-lab.md)。
+此模型还确保组织不会耗尽其 Azure 订阅关联的资源限制。 有关订阅和服务限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。 开发测试实验室预配过程可能会消耗大量的资源组。 可以通过 Azure 开发测试订阅中的支持请求来请求提高限制。 随着开发订阅的用量增加，生产订阅中的资源不受影响。 有关缩放开发测试实验室的详细信息，请参阅[开发测试实验室中的缩放配额和限制](devtest-lab-scale-lab.md)。
 
 需要考虑的常见订阅级限制是如何分配网络 IP 范围，以支持生产和开发订阅。 这些分配应该考虑到不同时间段的发展（假设本地连接或其他网络拓扑需要企业管理其网络堆栈，而不是默认使用 Azure 的实施方案）。 建议的做法是在一些虚拟网络中分配较大的 IP 地址前缀，并将这些虚拟网络分割成多个大型子网，而不是组建多个包含小型子网的虚拟网络。 例如，使用 10 个订阅时，可以定义 10 个虚拟网络（每个订阅对应一个虚拟网络）。 不需要隔离的所有实验室可以共享订阅 VNet 中的同一子网。
 

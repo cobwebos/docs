@@ -1,7 +1,7 @@
 ---
 title: 应用数学运算
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习 service 中的 "应用数学运算" 模块将数学运算应用于管道中的列值。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的 "应用数学运算" 模块将数学运算应用于管道中的列值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428607"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
 
@@ -72,7 +72,7 @@ ms.locfileid: "73493936"
 1.  选择要对其执行计算的一个或多个源列。   
   
     - 您选择的任何列都必须是数值数据类型。 
-    - 数据范围必须对选定的数学运算有效。 否则，可能会出现错误或 NaN （不是数字）结果。 例如，Ln （-1.0）是无效的操作，将导致值 `NaN`。
+    - 数据范围必须对选定的数学运算有效。 否则可能会出现错误或 NaN（非数字）结果。 例如，Ln （-1.0）是无效的操作，将导致值 `NaN`。
   
 1.  单击 "**类别**" 以选择要执行的数学运算**类型**。
     
@@ -82,7 +82,7 @@ ms.locfileid: "73493936"
   
 1.  使用 "**输出模式**" 选项指示如何生成数学运算： 
 
-    - **追加**。 用作输入的所有列都包括在输出数据集中，另外还会追加一个包含数学运算结果的附加列。
+    - **Append**。 用作输入的所有列都包括在输出数据集中，另外还会追加一个包含数学运算结果的附加列。
     - **就地**。 用作输入的列中的值将替换为新的计算值。 
     - **ResultOnly**。 返回一列，其中包含数学运算的结果。
   
@@ -92,8 +92,8 @@ ms.locfileid: "73493936"
 
 如果使用**Append**或**ResultOnly**选项生成结果，则返回的数据集的列标题指示操作和所使用的列。 例如，如果使用**Equals**运算符比较两个列，结果将如下所示：  
   
--   **Equals （Col2_Col1）** ，表示您针对 Col1 测试了 Col2。  
--   **Equals （Col2_ $ 10）** ，表示将第2列与常量10进行比较。  
+-   **等于（Col2_Col1）** ，表示您针对 Col1 测试了 Col2。  
+-   **等于（Col2_ $ 10）** ，表示将第2列与常量10进行比较。  
 
 即使使用**就地**选项，也不会删除或更改源数据;原始数据集中的列仍可用于设计器中。 若要查看原始数据，可以连接 "[添加列](add-columns.md)" 模块并将其联接到 "**应用数学" 操作**的输出。  
     
@@ -128,9 +128,9 @@ ms.locfileid: "73493936"
 
 ### <a name="eps"></a>Eps
 
-返回当前值和下一最大双精度数字之间的间距大小。 对应于 Matlab 中的 EPS 函数。  
+返回当前值和下一最大双精度数之间的差异大小。 对应于 Matlab 中的 EPS 函数。  
   
-### <a name="exp"></a>.Exp
+### <a name="exp"></a>Exp
 
 返回 e 的在所选列中的值的幂。 这与 Excel EXP 函数相同。  
 
@@ -151,10 +151,10 @@ ms.locfileid: "73493936"
 ### <a name="factorial"></a>阶乘
 返回所选列中的值的阶乘。  
 
-### <a name="hypotenuse"></a>斜边
+### <a name="hypotenuse"></a>Hypotenuse
 为一个三角形计算斜边，其中一方的长度指定为值的一列，而另一端的长度指定为一个常量或两列。  
 
-### <a name="ln"></a>Ln
+### <a name="ln"></a>自然对数
 
 返回所选列中的值的自然对数。  
 
@@ -164,7 +164,7 @@ ms.locfileid: "73493936"
 
 ### <a name="log"></a>日志
 
-返回所选列中的值的日志，前提是指定了 base。  
+返回选定列中的值的指定底对数。  
 
 您可以将基本（第二个参数）指定为常量，也可以选择其他值列。  
 
@@ -192,7 +192,7 @@ ms.locfileid: "73493936"
 
 在 "**第二个参数类型**" 中，选择包含指数的列，或指定要用作指数的常量。  
 
-如果第二个参数是列，则列中的每个值将用作对应行的指数。 如果第二个参数为常量，请在 "**第二个参数**" 文本框中键入指数值。  
+如果第二个参数为列，该列中的每个值将用作对应行的指数。 如果第二个参数为常量，请在 "**第二个参数**" 文本框中键入指数值。  
 
 ### <a name="sqrt"></a>Sqrt
 
@@ -251,14 +251,14 @@ ms.locfileid: "73493936"
 
 选择除法和减法列的顺序可能看起来不够直观。但是，为了更容易理解结果，列标题提供操作名称和列的使用顺序。
 
-Operation|Num1|Num2|结果列|结果值|
+操作|Num1|Num2|结果列|结果值|
 ----|----|----|----|----
-|加|1|5|添加（Num2_Num1）| 4|
-|乘|1|5|多（Num2_Num1）|5|
-|减|1|5|减法（Num2_Num1）|4|
-|减|0|1|减法（Num2_Num1）|0|
-|除|1|5|除（Num2_Num1）|5|
-|除|0|1|除（Num2_Num1）|Infinity|
+|加|第|5|添加（Num2_Num1）| 4|
+|乘|第|5|多（Num2_Num1）|5|
+|减|第|5|减（Num2_Num1）|4|
+|减|0|第|减（Num2_Num1）|0|
+|除|第|5|除（Num2_Num1）|5|
+|除|0|第|除（Num2_Num1）|Infinity|
 
 ### <a name="add"></a>添加
 
@@ -266,7 +266,7 @@ Operation|Num1|Num2|结果列|结果值|
 
 若要添加两个列中的值，请使用**列集**选择一个或多个列，然后使用**第二个参数**选择第二列。  
 
-### <a name="divide"></a>除
+### <a name="divide"></a>Divide
 
 **将列集中**的值除以一个常量，或除以**第二个参数**中定义的列值。  换句话说，您首先选取除数，然后选择被除数。 输出值为商。
 
@@ -286,7 +286,7 @@ Azure 机器学习设计器支持各种舍入操作。 对于许多操作，必�
 
 - 若要为数据集中的每个行使用不同的精度值，请将 "**精度类型**" 设置为**列集**，然后选择包含相应精度值的列。  
 
-### <a name="ceiling"></a>顶角
+### <a name="ceiling"></a>Ceiling
 
 返回**列集中**的值的上限。  
 
@@ -302,11 +302,11 @@ Azure 机器学习设计器支持各种舍入操作。 对于许多操作，必�
 
 将**列集中**的值的小数部分返回到指定的精度。  
 
-### <a name="quotient"></a>之
+### <a name="quotient"></a>Quotient
 
 将**列集中**的值的小数部分返回到指定的精度。  
 
-### <a name="remainder"></a>剩下
+### <a name="remainder"></a>余数
 
 返回**列集中**的值的余数。  
 
@@ -330,7 +330,7 @@ Azure 机器学习设计器支持各种舍入操作。 对于许多操作，必�
 
 返回 "**列集**" 中的值，舍入为最接近的整数，奇数。  
 
-### <a name="truncate"></a>去
+### <a name="truncate"></a>Truncate
 
 通过删除指定精度不允许的所有位数，截断**列集中**的值。  
   
@@ -340,7 +340,7 @@ Azure 机器学习设计器支持各种舍入操作。 对于许多操作，必�
 
 ### <a name="beta"></a>Beta
 
-返回欧拉的 beta 函数的值。  
+返回 Euler beta 函数的值。  
 
 ### <a name="ellipticintegrale"></a>EllipticIntegralE
 返回不完整椭圆整数的值。  
@@ -348,75 +348,75 @@ Azure 机器学习设计器支持各种舍入操作。 对于许多操作，必�
 
 ### <a name="ellipticintegralk"></a>EllipticIntegralK
 
-返回完整的椭圆整数（K）的值。  
+返回完全椭圆积分 (K) 的值。  
 
 ### <a name="erf"></a>Erf
 
-返回错误函数的值。  
+返回误差函数的值。  
 
-Error 函数（也称为高斯错误函数）是 sigmoid 形状的特殊功能，用于描述分散。  
+误差函数（也称为高斯误差函数）是一种特殊的 S 形函数，它在概率中使用以描述扩散。  
 
 ### <a name="erfc"></a>Erfc
 
-返回互补错误函数的值。  
+返回余补误差函数的值。  
 
 Erfc 定义为1– erf （x）。  
 
 ### <a name="erfscaled"></a>ErfScaled
 
-返回缩放错误函数的值。  
+返回缩放误差函数的值。  
 
-可以使用错误函数的缩放版本来避免算术下溢。  
+误差函数的缩放版本可用于避免算术下溢。  
 
 ### <a name="erfinverse"></a>ErfInverse
 
-返回反向 erf 函数的值。  
+返回反 erf 函数的值。  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 
 返回指数整型值的值。  
 
-### <a name="gamma"></a>Γ
+### <a name="gamma"></a>伽玛
 
-返回伽玛函数的值。  
+返回伽马函数的值。  
 
 ### <a name="gammaln"></a>GammaLn
 
-返回伽玛函数的自然对数。  
+返回伽马函数的自然对数。  
 
 ### <a name="gammaregularizedp"></a>GammaRegularizedP
 
-返回正则化不完整伽玛函数的值。  
+返回正则化不完全伽马函数的值。  
 
 此函数采用第二个参数，可将其作为一个常量或一列值提供。  
 
 ### <a name="gammaregularizedpinverse"></a>GammaRegularizedPInverse
 
-返回反向正则化不完整伽玛函数的值。  
+返回反正则化不完全伽马函数的值。  
 
 此函数采用第二个参数，可将其作为一个常量或一列值提供。  
 
 ### <a name="gammaregularizedq"></a>GammaRegularizedQ  
 
-返回正则化不完整伽玛函数的值。  
+返回正则化不完全伽马函数的值。  
 
 此函数采用第二个参数，可将其作为一个常量或一列值提供。  
 
 ### <a name="gammaregularizedqinverse"></a>GammaRegularizedQInverse
 
-返回反向通用化正则化不完整伽玛函数的值。
+返回反广义正则化不完全伽马函数的值。
 
 此函数采用第二个参数，可将其作为一个常量或一列值提供。  
 
 ### <a name="polygamma"></a>PolyGamma
 
-返回 polygamma 函数的值。  
+返回多伽马函数的值。  
 
 此函数采用第二个参数，可将其作为一个常量或一列值提供。
 
 ##  <a name="trigonometric-functions"></a>三角函数 
 
-此类别 iIncludes 大部分重要的三角函数和反三角函数。 所有三角函数均为一元函数，不需要其他参数。  
+此类别 iIncludes 大部分重要的三角函数和反三角函数。 所有三角函数都是一元函数，无需额外参数。  
 
 ### <a name="acos"></a>Acos
 
@@ -485,7 +485,7 @@ Erfc 定义为1– erf （x）。
 
 计算列值的双曲反正切值。  
 
-### <a name="cos"></a>缆
+### <a name="cos"></a>Cos
 
 计算列值的余弦值。  
 
@@ -508,7 +508,7 @@ Erfc 定义为1– erf （x）。
 ### <a name="coth"></a>Coth
 计算列值的双曲余切值。  
 
-### <a name="csc"></a>Csc.exe
+### <a name="csc"></a>Csc
 
 计算列值的余割值。  
 
@@ -524,7 +524,7 @@ Erfc 定义为1– erf （x）。
 
 将度转换为弧度。  
 
-### <a name="sec"></a>秒
+### <a name="sec"></a>次要
 
 计算列值的正割值。  
 
@@ -544,7 +544,7 @@ Erfc 定义为1– erf （x）。
 
 计算列值的正弦值。  
 
-### <a name="sinc"></a>由于
+### <a name="sinc"></a>Sinc
 
 计算列值的正弦余弦值。  
 
@@ -556,7 +556,7 @@ Erfc 定义为1– erf （x）。
 
 计算列值的双曲正弦值。  
 
-### <a name="tan"></a>tan
+### <a name="tan"></a>Tan
 
 计算列值的正切值。  
 
@@ -576,9 +576,9 @@ Erfc 定义为1– erf （x）。
   
 |Num1|Num2|Num3|添加（Num1_Num1）|添加（Num2_Num2）|添加（Num3_Num3）|
 |----|----|----|----|----|----|
-|1|5|2|2|10|4|
+|第|5|2|2|10|4|
 |2|3|-1|4|6|-2|
-|0|1|-1|0|2|-2|
+|0|第|-1|0|2|-2|
 
 如果需要执行更复杂的计算，可以链接多个**应用数学运算**的实例。 例如，您可以使用一个 "**应用数学运算**" 实例来添加两个列，然后使用 "**应用数学运算**" 的另一个实例来将和除以一个常量，以获取平均值。  
   
@@ -590,4 +590,4 @@ Erfc 定义为1– erf （x）。
   
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084696"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638623"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -30,16 +30,16 @@ ms.locfileid: "74084696"
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+- 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
-- 必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)”中所列适当操作的[自定义角色](#permissions)。
+- 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择“+ 创建资源” **“网络”** “虚拟网络”。 >  > 
+1. 选择“+ 创建资源” > “网络” > “虚拟网络”。
 2. 为以下设置输入或选择值，然后选择“创建”：
-   - **名称**：该名称在选择创建虚拟网络的 [资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 有关命名建议，请参阅[命名约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)。 遵循命名约定有助于更加轻松地管理多个虚拟网络。
+   - 名称：该名称在选择创建虚拟网络的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 有关命名建议，请参阅[命名约定](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)。 遵循命名约定有助于更加轻松地管理多个虚拟网络。
    - **地址空间**：虚拟网络的地址空间由以 CIDR 表示法指定的一个或多个非重叠地址范围组成。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 无法添加以下的地址范围：
      - 224.0.0.0/4（多播）
      - 255.255.255.255/32（广播）
@@ -61,9 +61,9 @@ ms.locfileid: "74084696"
        >
 
      - 子网地址范围：此范围必须处于为虚拟网络输入的地址空间内。 可以指定的最小范围为 /29，为子网提供八个 IP 地址。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，子网地址范围为 /29 的虚拟网络仅有三个可用 IP 地址。 如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可以在子网创建后更改地址范围。 若要了解如何更改子网地址范围，请参阅[管理子网](virtual-network-manage-subnet.md)。
-     - **订阅**：[选择订阅。](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) 不能在多个 Azure 订阅中使用同一个虚拟网络。 但是，可通过[虚拟网络对等](virtual-network-peering-overview.md)将一个订阅中的虚拟网络连接到另一个订阅中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络处于同一订阅中。
-     - **资源组**：选择现有[资源组](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)或创建新的资源组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可处于不同资源组中。
-     - **位置**：选择 Azure [位置](https://azure.microsoft.com/regions/)（也称为区域）。 虚拟网络只能位于一个 Azure 区域中。 但是，可以使用 VPN 网关将一个位置中的虚拟网络连接到另一个位置中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络位于同一区域中。
+     - 订阅：选择[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 不能在多个 Azure 订阅中使用同一个虚拟网络。 但是，可通过[虚拟网络对等](virtual-network-peering-overview.md)将一个订阅中的虚拟网络连接到另一个订阅中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络处于同一订阅中。
+     - 资源组：选择现有[资源组](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)或创建新的资源组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可处于不同资源组中。
+     - 位置：选择 Azure [位置](https://azure.microsoft.com/regions/)（也称为区域）。 虚拟网络只能位于一个 Azure 区域中。 但是，可以使用 VPN 网关将一个位置中的虚拟网络连接到另一个位置中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络位于同一区域中。
 
 **命令**
 
@@ -92,7 +92,7 @@ ms.locfileid: "74084696"
      - [访问控制 (IAM)](../role-based-access-control/overview.md)
      - [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [自动化脚本](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [自动化脚本](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **命令**
 
@@ -103,9 +103,9 @@ ms.locfileid: "74084696"
 
 可以为虚拟网络添加和删除地址范围。 地址范围必须以 CIDR 表示法指定，并且不能和同一虚拟网络中的其他地址范围重叠。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 
 
-如果没有与虚拟网络关联的子网，可以减小其地址范围。 否则，只能扩展地址范围，例如，将 /16 更改为 /8。 你可以从一个较小的地址范围开始，以后对其进行扩展或添加其他范围。
+可以减小虚拟网络的地址范围，只要它仍包含任何关联的子网的范围。 此外，可以扩展地址范围，例如，将/16 更改为/8。 
 
-<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the above statement has been edited to reflect the most recent comments on the reopened issue: https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 无法添加以下的地址范围：
 
@@ -139,13 +139,13 @@ ms.locfileid: "74084696"
 3. 选择“设置”下的“DNS 服务器”。
 4. 选择以下选项之一：
    - **默认(Azure 提供)** ：所有资源名称和专用 IP 地址将自动注册到 Azure DNS 服务器。 可以解析连接到同一虚拟网络的任何资源之间的名称。 不能使用此选项跨虚拟网络解析名称。 若要跨虚拟网络解析名称，必须使用自定义 DNS 服务器。
-   - 自定义：可以添加一个或多个服务器，直至达到虚拟网络的 Azure 限制。 要了解有关 DNS 服务器限制的详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 可以使用以下选项：
+   - 自定义：可以添加一个或多个服务器，直至达到虚拟网络的 Azure 限制。 要了解有关 DNS 服务器限制的详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 可以使用以下选项：
    - 添加地址：将服务器添加到虚拟网络 DNS 服务器列表。 此选项还会向 Azure 注册 DNS 服务器。 如果已将 DNS 服务器注册到 Azure，则可以在列表中选择该 DNS 服务器。
    - **删除地址**：在要删除的服务器旁，选择“...”，然后选择“删除”。 删除服务器只会将服务器从此虚拟网络列表中删除。 DNS 服务器在 Azure 中仍为注册状态，可供其他虚拟网络使用。
    - **重新排列 DNS 服务器的地址**：确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 将按指定服务器的顺序使用 DNS 服务器列表。 它们并非以轮循机制工作。 如果列表中的第一个 DNS 服务器可访问，则无论此 DNS 服务器是否运行正常，客户端都会使用该 DNS 服务器。 删除列出的所有 DNS 服务器，然后按照所需顺序，将这些服务器重新添加到列表中。
    - 更改地址：在列表中突出显示 DNS 服务器，然后输入新地址。
 5. 选择“保存”。
-6. 重启已连接到虚拟网络的 VM，以便为它们分配新的 DNS 服务器设置。 VM 在重启之前，将继续使用其当前 DNS 设置。
+6. 重启已连接到虚拟网络的 VM，以便为它们分配新的 DNS 服务器设置。 VM 在重新启动之前，将继续使用其当前 DNS 设置。
 
 **命令**
 
@@ -171,7 +171,7 @@ ms.locfileid: "74084696"
 
 若要在虚拟网络上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：
 
-| 操作                                  |   名称                                |
+| 行动                                  |   名称                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   读取虚拟网络              |
 |Microsoft.Network/virtualNetworks/write  |   创建或更新虚拟网络  |

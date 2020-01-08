@@ -4,23 +4,23 @@ description: Map 是用于 VM 的 Azure Monitor 的一项功能。 它会自动�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450706"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor （预览版）的地图功能了解应用程序组件
 在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或环境中运行的 Windows 和 Linux 虚拟机（Vm）上发现的应用程序组件。 可以通过两种方式观察 Vm。 直接从 VM 查看地图，或从 Azure Monitor 查看地图，查看跨 Vm 组的组件。 本文将帮助你了解这两种查看方法，以及如何使用地图功能。 
 
-有关配置适用于 VM 的 Azure Monitor 的信息，请参阅[启用适用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
+有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="introduction-to-the-map-experience"></a>地图体验简介
 在深入探讨地图体验之前，您应该了解它如何呈现和可视化信息。 无论是直接从 VM 选择地图功能还是从 Azure Monitor 中选择地图功能，地图功能都可以提供一致的体验。 唯一的区别是，从 Azure Monitor 中，一个映射显示多层应用程序或群集的所有成员。
@@ -35,7 +35,7 @@ ms.locfileid: "73199083"
 
 选择 VM 时，右侧的 "**属性**" 窗格将显示 vm 的属性。 属性包括操作系统报告的系统信息、Azure VM 的属性，以及汇总发现的连接的圆环图。 
 
-!["属性" 窗格](./media/vminsights-maps/properties-pane-01.png)
+![“属性”窗格](./media/vminsights-maps/properties-pane-01.png)
 
 在窗格的右侧，选择 "**日志事件**" 以显示 VM 发送到 Azure Monitor 的数据列表。 此数据可用于查询。  选择 "任何记录类型" 打开 "**日志**" 页，您可以在其中看到该记录类型的结果。 还会看到根据 VM 筛选的预配置查询。  
 

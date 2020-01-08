@@ -1,19 +1,14 @@
 ---
 title: 什么是 Azure 服务运行状况通知？
 description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
-author: stephbaron
-services: monitoring
-ms.service: azure-monitor
-ms.topic: conceptual
+ms.topic: article
 ms.date: 4/12/2018
-ms.author: stbaron
-ms.subservice: logs
-ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451555"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -29,7 +24,7 @@ ms.locfileid: "74007089"
 
 每个服务运行状况通知将包含有关适用范围和资源所受影响的详细信息。 详细信息包括：
 
-属性名 | 说明
+属性名称 | Description
 -------- | -----------
 channels | 以下值之一：“Admin”、“Operation”。
 correlationId | 通常为字符串格式的 GUID。 属于同一操作的事件通常共享相同的 correlationId。
@@ -53,7 +48,7 @@ Properties.trackingId | 与此事件关联的事件。 使用此属性将与某�
 Properties.impactedServices | 转义 JSON blob，描述受事件影响的服务和区域。 属性包括服务列表，每个服务具有一个 ServiceName，以及一个 受影响区域的列表，其中每个区域具有一个 RegionName。
 Properties.defaultLanguageTitle | 英语通信。
 Properties.defaultLanguageContent | HTML 标记或纯文本格式的英语通信。
-Properties.stage | **Incident** 和 **Security** 的可能值为 **Active**、**Resolved** 或 **RCA**。 对于 ActionRequired 或 Informational，唯一的值为 Active。 对于 **Maintenance**，可能值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
+Properties.stage | **事件**和**安全**的可能值为 **"活动"、"** **已解决**" 或 " **RCA**"。 对于 ActionRequired 或 Informational，唯一的值为 Active。 对于 **Maintenance**，可能值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
 Properties.communicationId | 与此事件关联的通信。
 
 ### <a name="details-on-service-health-level-information"></a>服务运行状况级别信息的详细信息

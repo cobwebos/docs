@@ -8,18 +8,18 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401588"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
-> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
+> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。  
 
-Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
+Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../../azure-resource-manager/templates/template-syntax.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
 
 
 ## <a name="tools"></a>工具
@@ -33,7 +33,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ## <a name="structure"></a>结构
-管理解决方案文件的基本结构与如下所示的[资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)相同。  以下各节描述了解决方案中的顶级元素及其内容。  
+管理解决方案文件的基本结构与如下所示的[资源管理器模板](../../azure-resource-manager/templates/template-syntax.md#template-format)相同。  以下各节描述了解决方案中的顶级元素及其内容。  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -44,8 +44,8 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
        "outputs": {  }
     }
 
-## <a name="parameters"></a>parameters
-[parameters](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
+## <a name="parameters"></a>参数
+[parameters](../../azure-resource-manager/templates/template-syntax.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
 用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](solutions.md#install-a-monitoring-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
@@ -62,11 +62,11 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| 属性 | 描述 |
+| Attribute | Description |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
-| control |字符串参数的其他功能。<br><br>datetime - 显示 Datetime 控件。<br>guid - 自动生成的 Guid 值，不显示参数。 |
+| 控制 |字符串参数的其他功能。<br><br>datetime - 显示 Datetime 控件。<br>guid - 自动生成的 Guid 值，不显示参数。 |
 | description |参数的可选说明。  显示在参数旁边信息气球。 |
 
 ### <a name="standard-parameters"></a>标准参数
@@ -77,7 +77,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 >
 >
 
-| 参数 | Type | 描述 |
+| 参数 | 类型 | Description |
 |:--- |:--- |:--- |
 | accountName |字符串 |Azure 自动化帐户名称。 |
 | pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
@@ -126,7 +126,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，要访问工作区名称，将使用 **parameters('workspaceName')**
 
 ## <a name="variables"></a>变量
-[Variables](../../azure-resource-manager/resource-group-authoring-templates.md#variables) 是会在管理解决方案的其余部分使用的值。  这些值不公开给安装解决方案的用户。  它们旨在向作者提供一个位置，供作者在该位置中管理可在整个解决方案中使用多次的值。 应将任何特定于解决方案的值放在变量中，而不是在 **resources** 元素中对其进行硬编码。  这使代码更具可读性，并允许在更高版本中轻松地更改这些值。
+[Variables](../../azure-resource-manager/templates/template-syntax.md#variables) 是会在管理解决方案的其余部分使用的值。  这些值不公开给安装解决方案的用户。  它们旨在向作者提供一个位置，供作者在该位置中管理可在整个解决方案中使用多次的值。 应将任何特定于解决方案的值放在变量中，而不是在 **resources** 元素中对其进行硬编码。  这使代码更具可读性，并允许在更高版本中轻松地更改这些值。
 
 下面是具有在解决方案中使用的典型参数的 **variables** 元素示例。
 
@@ -155,7 +155,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 在此情况下，引用整个解决方案中语法为 **variables('variable name').property** 的变量值。  例如，若要访问 Solution Name 变量，需使用 **variables('Solution').Name**。
 
 ## <a name="resources"></a>资源
-[Resources](../../azure-resource-manager/resource-group-authoring-templates.md#resources) 用于定义管理解决方案要安装和配置的不同资源。  这会是模板的最大且最复杂的部分。  可在[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md#resources)中获取资源元素的结构和完整说明。  本文档的其他文章中详述了通常需定义的其他资源。 
+[Resources](../../azure-resource-manager/templates/template-syntax.md#resources) 用于定义管理解决方案要安装和配置的不同资源。  这会是模板的最大且最复杂的部分。  可在[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md#resources)中获取资源元素的结构和完整说明。  本文档的其他文章中详述了通常需定义的其他资源。 
 
 
 ### <a name="dependencies"></a>依赖项
@@ -205,9 +205,9 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
-| workspaceResourceId |*@No__t_1Resource 组 id >/providers/Microsoft.OperationalInsights/workspaces/\<Workspace 名称 \>* 格式的 Log Analytics 工作区 id。 |
+| workspaceResourceId |以\<资源组 ID 形式 Log Analytics 工作区的 ID *>/providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>* 。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
@@ -216,7 +216,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="plan"></a>套餐
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | name |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |
@@ -229,5 +229,5 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 * [已保存的搜索和警报](solutions-resources-searches-alerts.md)到管理解决方案。
 * [将视图](solutions-resources-views.md)添加到管理解决方案。
 * [将 runbook 和其他自动化资源添加](solutions-resources-automation.md)到管理解决方案。
-* 了解[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
+* 了解[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。

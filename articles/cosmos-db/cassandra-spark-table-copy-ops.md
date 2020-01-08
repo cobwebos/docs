@@ -1,5 +1,5 @@
 ---
-title: 通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作。
+title: 通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作
 description: 本文详细介绍了如何在 Azure Cosmos DB Cassandra API 中的表之间复制数据
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445631"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作
 

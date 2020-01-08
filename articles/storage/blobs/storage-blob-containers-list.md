@@ -1,40 +1,40 @@
 ---
-title: 使用 .NET 列出 Blob 容器 - Azure 存储
-description: 了解如何使用 .NET 客户端库列出 Azure 存储帐户中的 Blob 容器。
+title: 列出 blob 容器与 .NET-Azure 存储
+description: 了解如何使用 .NET 客户端库列出 Azure 存储帐户中的 blob 容器。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598128"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690987"
 ---
-# <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
+# <a name="list-blob-containers-with-net"></a>用 .NET 列出 blob 容器
 
-通过代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储返回结果。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)列出容器。  
+当你从代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储中返回结果。 本文介绍如何使用[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)列出容器。  
 
-## <a name="understand-container-listing-options"></a>了解容器列出选项
+## <a name="understand-container-listing-options"></a>了解容器列表选项
 
 若要列出存储帐户中的容器，请调用以下方法之一：
 
 - [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
 - [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-这些方法的重载提供更多选项用于管理列出操作返回容器的方式。 后续部分将介绍这些选项。
+这些方法的重载提供其他选项，用于管理列表操作返回容器的方式。 以下部分介绍了这些选项。
 
-### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
+### <a name="manage-how-many-results-are-returned"></a>管理返回的结果数
 
-默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 `maxresults`ListContainerSegmented**方法时为** 参数提供非零值。
+默认情况下，列表操作一次最多返回5000个结果。 若要返回较小的结果集，请在调用**ListContainerSegmented**方法之一时为 `maxresults` 参数提供一个非零值。
 
-如果存储帐户包含 5000 个以上的容器，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含容器列表的继续标记。 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
+如果你的存储帐户包含5000个以上的容器，或者，如果你已为 `maxresults` 指定了一个值，这样，列表操作将返回存储帐户中的容器的子集，则 Azure 存储将返回一个*继续标记*，其中包含容器的列表。 继续标记是可用于从 Azure 存储中检索下一组结果的不透明值。
 
-在代码中检查继续标记的值，以确定它是否为 null。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为 null，则再次调用 **ListContainersSegmented** 或 **ListContainersSegmentedAsync**，并传入继续标记以检索下一组结果，直到继续标记为 null。
+在代码中检查继续标记的值，以确定它是否为 null。 当继续标记为 null 时，结果集将完成。 如果继续标记不为 null，则再次调用**ListContainersSegmented**或**ListContainersSegmentedAsync** ，并传入继续标记以检索下一组结果，直到继续标记为 null。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前缀筛选结果
 
@@ -42,14 +42,15 @@ ms.locfileid: "72598128"
 
 ### <a name="return-metadata"></a>返回元数据
 
-若要连同结果一起返回容器元数据，请指定 **ContainerListingDetails** 枚举的 [Metadata](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 值。 Azure 存储包含每个返回的容器的元数据，因此无需同时调用 **FetchAttributes** 方法之一即可检索容器元数据。
+若要返回包含结果的容器元数据，请指定[ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails)枚举的**元数据**值。 Azure 存储包括每个返回的容器的元数据，因此你无需调用**FetchAttributes**方法之一来检索容器元数据。
 
 ## <a name="example-list-containers"></a>示例：列出容器
 
-以下示例以异步方式列出存储帐户中以指定的前缀开头的容器。 该示例每次以 5 个结果为增量列出容器，并使用继续标记获取下一个结果段。 该示例还会连同结果一起返回容器元数据。
+下面的示例以异步方式列出了以指定前缀开头的存储帐户中的容器。 该示例一次列出容器以5个结果为增量，并使用继续标记获取下一段结果。 该示例还返回容器元数据和结果。
 
 ```csharp
-private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
+private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
+                                                        string prefix)
 {
     Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
 

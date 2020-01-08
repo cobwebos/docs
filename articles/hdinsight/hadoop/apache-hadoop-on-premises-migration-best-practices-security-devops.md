@@ -2,18 +2,18 @@
 title: 安全性：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的安全性和 DevOps 最佳做法。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494973"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496396"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "73494973"
 
 企业安全性套餐 (ESP) 支持基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 选择 ESP 选项后，HDInsight 群集将加入 Active Directory 域，企业管理员可以使用 Apache Ranger 为 Apache Hive 安全性配置基于角色的访问控制 (RBAC)。 管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。
 
-ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka 和 Interactive Query (Hive LLAP)。 
+ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka 和 Interactive Query (Hive LLAP)。
 
 使用以下步骤部署已加入域的 HDInsight 群集：
 
@@ -37,23 +37,23 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 - 为 AAD DS 启用 LDAPS。
 - 在 Azure Active Directory 中创建一个服务帐户，并为 OU 授予读写管理权限，以便它可进行这些操作。 然后，此服务帐户可将计算机加入域，并将计算机主体置于 OU 中。 还可在群集创建期间指定的 OU 内创建服务主体。
 
-
     > [!Note]
     > 服务帐户不需要是 AD 域管理员帐户。
 
-
 - 通过设置以下参数来部署 HDInsight ESP 群集：
-    - **域名**：与 Azure AD DS 关联的域名。
-    - **域用户名**：在前面的部分中创建的 Azure AD DS DC 托管域中的服务帐户，例如：`hdiadmin@contoso.onmicrosoft.com`。 此域用户将成为此 HDInsight 群集的管理员。
-    - **域密码**：服务帐户的密码。
-    - **组织单位**：要与 HDInsight 群集配合使用的 OU 的可分辨名称，例如：`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，则 HDInsight 群集会尝试使用服务帐户拥有的权限创建 OU。
-    - **LDAPS URL**：例如，`ldaps://contoso.onmicrosoft.com:636`。
-    - **访问用户组**：其用户要同步到群集的安全组，例如：`HiveUsers`。 如果想要指定多个用户组，请使用分号“;”分隔。 创建 ESP 群集之前，组必须存在于目录中。
+
+    |参数 |Description |
+    |---|---|
+    |域名|与 Azure AD DS 关联的域名。|
+    |域用户名|在上一部分中创建的 Azure AD DS DC 托管域中的服务帐户，例如： `hdiadmin@contoso.onmicrosoft.com`。 此域用户将成为此 HDInsight 群集的管理员。|
+    |域密码|服务帐户的密码。|
+    |组织单位|要用于 HDInsight 群集的 OU 的可分辨名称，例如： `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，HDInsight 群集将尝试使用服务帐户的权限创建 OU。|
+    |LDAPS URL|例如，`ldaps://contoso.onmicrosoft.com:636`。|
+    |访问用户组|要将其用户同步到群集的安全组，例如： `HiveUsers`。 如果想要指定多个用户组，请使用分号“;”分隔。 创建 ESP 群集之前，组必须存在于目录中。|
 
 有关详细信息，请参阅以下文章：
 
 - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](../domain-joined/hdinsight-security-overview.md)
-
 - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](../domain-joined/apache-domain-joined-architecture.md)
 - [使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 - [将 Azure Active Directory 用户同步到 HDInsight 群集](../hdinsight-sync-aad-users-to-cluster.md)
@@ -64,22 +64,22 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 使用以下控件可以实现端到端的企业安全性：
 
-- **专用和受保护的数据管道（外围级别安全性）**
+**专用和受保护的数据管道（外围级别安全性）**
     - 可以通过 Azure 虚拟网络、网络安全组和网关服务实现外围级别安全性。
 
-- **数据访问的身份验证和授权**
+**数据访问的身份验证和授权**
     - 使用 Azure Active Directory 域服务创建已加入域的 HDInsight 群集。 （企业安全性套餐）。
     - 使用 Ambari 为 AD 用户提供对群集资源的基于角色的访问。
     - 使用 Apache Ranger 在表/列/行级别为 Hive 设置访问控制策略。
     - 此外，只有管理员能够通过 SSH 访问群集。
 
-- **审核**
+**审核**
     - 查看和报告对 HDInsight 群集资源与数据的所有访问。
     - 查看并报告对访问控制策略的所有更改。
 
-- **加密**
+**加密**
     - 使用 Microsoft 托管的密钥或客户管理的密钥进行透明的服务器端加密。
-    - 使用客户端加密的传输加密、https 和 TLS。
+    - 使用客户端加密、https 和 TLS 的传输加密。
 
 有关详细信息，请参阅以下文章：
 
@@ -104,7 +104,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 1. 根据需要修改作业、应用程序或工作负载。
 1. 备份所有存储在本地群集节点上的暂时性数据。
 1. 删除现有的群集。
-1. 使用与先前群集相同的默认数据和元存储，在同一 VNET 子网中创建最新 HDInsight 版本的群集。
+1. 使用与上一个群集相同的默认数据和元存储，在同一虚拟网络子网中创建最新 HDInsight 版本的群集。
 1. 导入任何已备份的临时数据。
 1. 使用新群集启动作业/继续处理。
 
@@ -124,4 +124,4 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction) 的详细信息。
+了解有关 [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction) 的详细信息。
