@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 0c1ca054f9d28bb81c6f8acf6c0f43b134a596ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293786"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75499992"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图形遍历语言（称为 [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)）。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
@@ -48,7 +48,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin 网络格式：GraphSON
 
-从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](http://tinkerpop.apache.org/docs/current/reference/#graphson)。 Azure Cosmos DB 目前支持“GraphSONv2”版本。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。
+从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](https://tinkerpop.apache.org/docs/current/reference/#graphson)。 Azure Cosmos DB 目前支持“GraphSONv2”版本。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。
 
 例如，以下代码片段显示了从 Azure Cosmos DB *返回到客户端*的某个顶点的 GraphSON 表示形式。 
 
@@ -91,7 +91,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 下面介绍 GraphSON 使用的顶点属性：
 
-| 属性 | 说明 | 
+| properties | 说明 | 
 | --- | --- | --- |
 | `id` | 顶点的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并）。 如果未提供任何值，则系统会自动提供一个包含 GUID 的值 | 
 | `label` | 顶点的标签。 此属性用于描述实体类型。 |
@@ -102,7 +102,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 边缘包含以下信息，以方便导航到图形的其他部件。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | `id` | 边缘的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并） |
 | `label` | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
@@ -111,14 +111,14 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 每个属性可在一个数组中存储多个值。 
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | `value` | 属性的值
 
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 现在，让我们了解 Azure Cosmos DB 支持的 Gremlin 步骤。 有关 Gremlin 的完整参考信息，请参阅 [TinkerPop 参考](https://tinkerpop.apache.org/docs/3.3.2/reference)。
 
-| 步骤 | Description | TinkerPop 3.2 文档 |
+| 步骤 | 说明 | TinkerPop 3.2 文档 |
 | --- | --- | --- |
 | `addE` | 在两个顶点之间添加边缘 | [addE 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | 将顶点添加到图形 | [addV 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |

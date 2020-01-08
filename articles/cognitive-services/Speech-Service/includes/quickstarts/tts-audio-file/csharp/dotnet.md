@@ -7,24 +7,24 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b34c65f6b7003cbdd4d99b684fe2b5a3249c410
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467290"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建一个空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -185,8 +185,8 @@ namespace helloworld
 
 现在，可以使用语音服务构建应用并测试语音合成。
 
-1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
+1. **编译代码** - 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”   。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 3. 开始合成 - 将文本转换为语音，并保存在指定的音频数据中  。
 
    ```text

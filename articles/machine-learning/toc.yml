@@ -1,6 +1,399 @@
-- name: Azure 机器学习
-  href: service/overview-what-is-azure-ml.md
-- name: Azure 机器学习工作室
-  href: studio/index.yml
-- name: 比较 Microsoft 的 ML 产品
-  href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
+- name: Azure 机器学习文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是 Azure 机器学习？
+      displayName: 'AML, services, overview, introduction'
+      href: overview-what-is-azure-ml.md
+    - name: Azure 机器学习与工作室
+      displayName: 'AML, Studio, designer'
+      href: compare-azure-ml-to-studio-classic.md
+    - name: 体系结构和术语
+      displayName: 'architecture, concepts, definitions, glossary'
+      href: concept-azure-machine-learning-architecture.md
+- name: 教程
+  items:
+    - name: 工作室和设计器
+      items:
+        - name: 设计器：1. 训练回归模型
+          displayName: studio
+          href: tutorial-designer-automobile-price-train-score.md
+        - name: 设计器：2. 部署该模型
+          displayName: studio
+          href: tutorial-designer-automobile-price-deploy.md
+        - name: 创建自动化 ML 试验
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
+    - name: Python SDK
+      items:
+        - name: 创建首个 ML 试验
+          items:
+            - name: 1. 设置工作区和开发环境
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. 训练你的第一个模型
+              href: tutorial-1st-experiment-sdk-train.md
+        - name: 图像分类（MNIST 数据）
+          items:
+            - name: 1. 训练模型
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. 部署模型
+              href: tutorial-deploy-models-with-aml.md
+        - name: 通过自动化 ML 进行回归分析（NYC 出租车数据）
+          items:
+            - name: 自动训练 ML 模型
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+        - name: 机器学习管道（高级）
+          items:
+            - name: 对分类模型进行批量评分
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: 创建首个 ML 试验 (R)
+          href: tutorial-1st-r-experiment.md
+    - name: 机器学习 CLI
+      href: tutorial-train-deploy-model-cli.md
+- name: 示例
+  items:
+    - name: Jupyter Notebook
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: Azure 开放数据集
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: 端到端 MLOps 示例
+      href: 'https://github.com/microsoft/MLOps'
+- name: 概念
+  items:
+    - name: 工作区
+      href: concept-workspace.md
+    - name: 环境
+      href: concept-environments.md
+    - name: data
+      href: concept-data.md
+    - name: 模型定型
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
+    - name: 模型管理 (MLOps)
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
+      href: concept-model-management-and-deployment.md
+    - name: 可解释性
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 设计器：无代码 ML
+      displayName: studio
+      href: concept-designer.md
+    - name: 算法备忘单
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: 自动化机器学习
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: 计算实例
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: 计算目标
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
+    - name: ML 管道
+      href: concept-ml-pipelines.md
+    - name: ONNX
+      href: concept-onnx.md
+    - name: 企业就绪情况和安全性
+      items:
+        - name: 企业安全性
+          items:
+            - name: 企业安全概述
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: 管理用户和角色
+              href: how-to-assign-roles.md
+            - name: 使用虚拟网络
+              displayName: 'vnet, blob'
+              href: how-to-enable-virtual-network.md
+            - name: 使用 SSL 保护 Web 服务
+              href: how-to-secure-web-service.md
+            - name: 重新生成存储访问密钥
+              href: how-to-change-storage-access-key.md
+        - name: 设置身份验证
+          displayName: 'authentication, auth, oauth'
+          href: how-to-setup-authentication.md
+        - name: 监视 Azure 机器学习
+          href: monitor-azure-machine-learning.md
+        - name: 事件网格集成
+          href: concept-event-grid-integration.md
+    - name: 深度学习
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
+- name: 操作方法指南
+  items:
+    - name: 创建并管理工作区
+      items:
+        - name: 使用 Azure 门户
+          href: how-to-manage-workspace.md
+        - name: 使用 Azure CLI
+          href: how-to-manage-workspace-cli.md
+        - name: 使用 Resource Manager 模板
+          displayName: arm
+          href: how-to-create-workspace-template.md
+    - name: 设置你的环境
+      items:
+        - name: 设置开发环境
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: 设置软件环境
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-environments.md
+        - name: 启用日志记录
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: 设置输入和输出目录
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
+        - name: 使用 VS Code 扩展
+          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
+          href: how-to-vscode-tools.md
+        - name: 交互式调试
+          displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-set-up-vs-code-remote.md
+        - name: Git 集成
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
+    - name: 处理数据
+      items:
+        - name: 连接到 Azure 存储中的数据
+          displayName: 'blob, get, fileshare, access storage, mount, download'
+          href: how-to-access-data.md
+        - name: 从数据存储中获取数据
+          displayName: 'data, data set, register, access data'
+          href: how-to-create-register-datasets.md
+        - name: 使用数据集进行训练
+          displayName: 'data, dataset, mount'
+          href: how-to-train-with-datasets.md
+        - name: 检测数据集上的偏移
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
+        - name: 版本和跟踪数据集
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
+        - name: 标记数据
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: 标记图像
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
+    - name: 训练模型
+      items:
+        - name: 使用设计器
+          displayName: sample designer experiments
+          items:
+            - name: 预测价格
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-basic.md
+            - name: 预测价格（高级）
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: 预测收入
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-predict-income.md
+            - name: 预测信用风险（高级）
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
+            - name: 预测变动率
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-churn.md
+            - name: 预测航班延误
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: 文本分类
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
+        - name: 将估算器用于 ML
+          items:
+            - name: 在训练期间创建估算器
+              href: how-to-train-ml-models.md
+            - name: 设置训练环境
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: 优化超参数
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: 训练时使用 Key Vault
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
+    - name: 解释模型
+      displayName: interpretability
+      items:
+        - name: 解释本地模型和远程模型
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: 解释自动化 ML 模型
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
+    - name: 自动化机器学习
+      displayName: 'automl, auto ml'
+      items:
+        - name: 使用自动化 ML (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: 使用自动化 ML（界面）
+          href: how-to-create-portal-experiments.md
+        - name: 使用远程计算目标
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: 定义 ML 任务
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
+        - name: 自动训练预测模型
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+        - name: 了解图表和指标
+          href: how-to-understand-automated-ml.md
+    - name: 跟踪和监视试验
+      items:
+        - name: 启动、监视或取消运行
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: 记录训练运行的指标
+          href: how-to-track-experiments.md
+        - name: 使用 MLflow 对试验进行跟踪
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: 使用 TensorBoard 将运行可视化
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
+    - name: 部署和提供模型
+      items:
+        - name: 在何处以及如何部署
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
+          href: how-to-deploy-and-where.md
+        - name: Azure Kubernetes 服务
+          displayName: 'aks, aad, authentication, azure active directory'
+          href: how-to-deploy-azure-kubernetes-service.md
+        - name: Azure 容器实例
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA 推理
+          href: how-to-deploy-fpga-web-service.md
+        - name: GPU 推理
+          href: how-to-deploy-inferencing-gpus.md
+        - name: Azure 应用服务
+          displayName: web app
+          href: how-to-deploy-app-service.md
+        - name: Azure Functions
+          displayName: functions app
+          href: how-to-deploy-functions.md
+        - name: 计算实例
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: 使用自定义 Docker 映像
+          href: how-to-deploy-custom-docker-image.md
+        - name: 使用现有模型
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
+        - name: 排查问题和调试
+          href: how-to-troubleshoot-deployment.md
+    - name: 使用 Web 服务
+      items:
+        - name: 实时使用
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: 运行批量预测
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-run-batch-predictions.md
+        - name: 设计器批量预测
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: 调试批量预测并排查其问题
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-batch-predictions.md
+    - name: 监视模型
+      items:
+        - name: 收集和评估模型数据
+          displayName: track production
+          href: how-to-enable-data-collection.md
+        - name: 检测数据偏差
+          href: how-to-monitor-data-drift.md
+        - name: 使用 Application Insights 进行监视
+          href: how-to-enable-app-insights.md
+    - name: 构建并使用 ML 管道
+      displayName: pipelines
+      items:
+        - name: 创建 ML 管道 (Python)
+          href: how-to-create-your-first-pipeline.md
+        - name: 计划管道 (Python)
+          href: how-to-schedule-pipelines.md
+        - name: 调试管道并排查管道问题
+          href: how-to-debug-pipelines.md
+        - name: 用于 CI/CD 的 Azure Pipelines
+          displayName: 'continuous, integration, delivery'
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: 设计器：使用已发布的管道进行保留
+          displayName: 'retrain, designer, published pipeline'
+          href: how-to-retrain-designer.md
+    - name: 管理资源配额
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: 导出和删除数据
+      displayName: GDPR
+      href: how-to-export-delete-data.md
+    - name: 创建事件驱动的工作流
+      displayName: event grid
+      href: how-to-use-event-grid.md
+- name: 参考
+  items:
+    - name: Python SDK
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: R SDK
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
+    - name: CLI
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
+    - name: 设计器模块参考
+      displayName: 'module, reference, algorithm, studio'
+      href: algorithm-module-reference/module-reference.md
+    - name: 大规模 ML
+      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
+    - name: 监视数据参考
+      href: monitor-resource-reference.md
+    - name: 机器学习管道 YAML 参考
+      href: reference-pipeline-yaml.md
+- name: 资源
+  items:
+    - name: 发行说明
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 已知问题
+      displayName: 'bugs, errors, troubleshoot'
+      href: resource-known-issues.md
+    - name: 用户论坛
+      href: 'https://aka.ms/aml-forum-service'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
+    - name: 比较我们的 ML 产品
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
+    - name: Workbench 发生了什么情况
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
+      href: overview-what-happened-to-workbench.md

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9cf1a7a1b9c6d0f35bf3cc9151e30141fd432a54
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410863"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -44,7 +44,7 @@ ms.locfileid: "74951541"
 > 不能使用 Azure 免费试用订阅完成本教程  。
 > 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”  。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”  定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，请确保满足以下要求：
 - Azure 事件中心命名空间。
@@ -56,7 +56,7 @@ ms.locfileid: "74951541"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -72,11 +72,11 @@ ms.locfileid: "74951541"
 
     提供以下值：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
-    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/management/overview.md)。 |
     |**位置**     | 选择“美国东部 2”。  有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
     |**定价层**     |  选择“标准”或“高级”。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
@@ -151,14 +151,14 @@ ms.locfileid: "74951541"
 
 6. 针对 Twitter 包 `twitter4j-core:4.0.7` 重复上述步骤。
 
-## <a name="create-notebooks-in-databricks"></a>在 Databricks 中创建笔记本
+## <a name="create-notebooks-in-databricks"></a>在 Databricks 中创建 Notebook
 
 在本部分，我们将使用以下名称在 Databricks 工作区中创建两个笔记本：
 
-- **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者笔记本。
+- **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者 Notebook。
 - **ReadTweetsFromEventHub** - 用于从事件中心读取推文的使用者笔记本。
 
-1. 在左窗格中选择**工作区**。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
+1. 在左窗格中选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
 
     ![在 Databricks 中创建笔记本](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
@@ -292,7 +292,7 @@ ms.locfileid: "74951541"
 
 ## <a name="read-tweets-from-event-hubs"></a>读取事件中心的推文
 
-在 **ReadTweetsFromEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的 Azure 事件中心的值。 此笔记本读取前面已使用 **SendTweetsToEventHub** 笔记本流式传输到事件中心的推文。
+在 **ReadTweetsFromEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的 Azure 事件中心的值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
 
 ```scala
 
@@ -409,13 +409,13 @@ ms.locfileid: "74951541"
 如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Databricks 工作区
 > * 在 Azure Databricks 中创建 Spark 群集
 > * 创建用于生成流数据的 Twitter 应用
-> * 在 Azure Databricks 中创建笔记本
+> * 在 Azure Databricks 中创建 Notebook
 > * 添加事件中心和 Twitter API 的库
 > * 将推文发送到事件中心
 > * 读取事件中心的推文

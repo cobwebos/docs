@@ -3,17 +3,17 @@ title: Azure 流分析的概述
 description: 了解流分析，这是一种托管的服务，可以帮助你分析物联网 (IoT) 实时提供的流式数据。
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426171"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -31,7 +31,7 @@ Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时�
 
 Azure 流分析作业由输入、查询和输出构成。 流分析从 Azure 事件中心、Azure IoT 中心或 Azure Blob 存储引入数据。 基于 SQL 查询语言的查询可用于对某个时段的流数据轻松进行筛选、排序、聚合和联接。 还可以使用 JavaScript 和 C# 用户定义函数 (UDF) 扩展此 SQL 语言。 通过简单的语言构造和/或配置执行聚合操作时，可以轻松地调整事件排序选项和时间窗口的持续时间。
 
-每个作业提供转换后数据的输出，你可以针对所要分析的信息控制过程。 例如，可以：
+每个作业提供转换后数据的输出，你可以针对所要分析的信息控制过程。 例如，你能够：
 
 * 将数据发送到 Azure Functions、服务总线主题或队列等服务，以触发下游的通信或自定义工作流。
 * 将数据发送到 Power BI 仪表板进行实时仪表板操作。
@@ -87,7 +87,7 @@ Azure 流分析有内置的恢复功能，可以在事件传送失败时发挥�
 
 作为一项托管服务，流分析可保证事件处理在分钟级别粒度具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) 页。 
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 在安全性方面，Azure 流分析会加密所有传入和传出通信，并支持 TLS 1.2。 内置检查点也是加密的。 流分析不存储传入数据，因为所有处理都在内存中完成。
 

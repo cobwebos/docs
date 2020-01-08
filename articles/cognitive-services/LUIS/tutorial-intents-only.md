@@ -9,41 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381556"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
-在本教程中，创建一个自定义应用，以便根据言语（文本）预测用户的意向。 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+在本教程中，创建一个自定义应用，以便根据言语（文本）预测用户的意向。
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
-> * 创建新应用 
+> * 创建新应用
 > * 创建意向
 > * 添加示例话语
 > * 训练应用
 > * 发布应用
 > * 从终结点获取意向预测
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>将用户意向用作意向
 
-此应用的目的是确定聊天性的自然语言文本的意图： 
+此应用的目的是确定聊天性的自然语言文本的意图：
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-这些意图可以归类为**意向**。 
+这些意图可以归类为**意向**。
 
 |Intent|目的|
 |--|--|
@@ -56,11 +51,11 @@ ms.locfileid: "74325935"
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>创建新意向 
+## <a name="create-a-new-intent"></a>创建新意向
 
 1. 在门户中应用的“生成”部分，选择“+ 创建”   。 输入新意向名称 `OrderPizza`，然后选择“完成”  。
 
-    在用户想要订购披萨时，预测 `OrderPizza` 意向。 
+    在用户想要订购披萨时，预测 `OrderPizza` 意向。
 
 1. 将多个示例话语添加到你预期用户会请求的此意向：
 
@@ -74,9 +69,9 @@ ms.locfileid: "74325935"
 
     ![添加示例话语](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    可通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向  。 
+    可通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向  。
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>创建其余意向
 
@@ -90,7 +85,7 @@ ms.locfileid: "74325935"
     |`Start`|
     |`Begin`|
 
-1. 创建 `Confirm` 意向，并添加以下示例言语。 这是一个意向，用于确定用户是否已完成订购并接受订单详细信息。 
+1. 创建 `Confirm` 意向，并添加以下示例言语。 这是一个意向，用于确定用户是否已完成订购并接受订单详细信息。
 
     |`Confirm` 示例言语|
     |--|
@@ -104,13 +99,13 @@ ms.locfileid: "74325935"
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>训练应用 
+## <a name="train-the-app"></a>训练应用
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>发布应用 
+## <a name="publish-the-app"></a>发布应用
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>获取意向预测
 
@@ -118,11 +113,11 @@ ms.locfileid: "74325935"
 
 1. 转到地址栏中 URL 的末尾，输入：
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     这与示例示例言语并不完全相同，因此，要查看 LUIS 是否可以了解通过此意向预测的内容。
 
-    最后一个查询字符串参数为 `query`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `OrderPizza` 意向（评分最高的意向）。 
+    最后一个查询字符串参数为 `query`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `OrderPizza` 意向（评分最高的意向）。
 
     ```JSON
     {
@@ -148,15 +143,15 @@ ms.locfileid: "74325935"
     }
     ```
 
-    实体数组为空，因为此应用当前没有任何实体（言语中可供提取的数据单元）。 
+    实体数组为空，因为此应用当前没有任何实体（言语中可供提取的数据单元）。
 
-    JSON 结果中标识了评分最高的意向作为 **`prediction.topIntent`** 属性。 所有评分介于 1 和 0 之间，评分越接近 1 越好。 
+    JSON 结果中标识了评分最高的意向作为 **`prediction.topIntent`** 属性。 所有评分介于 1 和 0 之间，评分越接近 1 越好。
 
 1. 更改 URL 查询  参数以符合“问候语”  意向：
 
     `Howdy`
 
-    这与示例示例言语并不完全相同，因此，要查看 LUIS 是否可以了解通过此意向预测的内容。 
+    这与示例示例言语并不完全相同，因此，要查看 LUIS 是否可以了解通过此意向预测的内容。
 
     ```json
     {
@@ -179,14 +174,14 @@ ms.locfileid: "74325935"
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    此预测的置信度分数为 44%。 若要提高置信度分数，请添加 15 到 30 个示例言语。  
+
+    此预测的置信度分数为 44%。 若要提高置信度分数，请添加 15 到 30 个示例言语。
 
 ## <a name="client-application-next-steps"></a>客户端应用程序后续步骤
 
-LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用户话语的应答，只会识别以自然语言请求的信息类型。 会话跟进由客户端应用程序（如 Azure 机器人）提供。 
+LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用户话语的应答，只会识别以自然语言请求的信息类型。 会话跟进由客户端应用程序（如 Azure 机器人）提供。
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
@@ -202,7 +197,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程创建了 LUIS 应用、创建了意向、向每个意向添加了示例言语、向 None 意向添加了示例言语，并在终结点上进行了训练、发布和测试操作。 这些是生成 LUIS 模型的基本步骤。 
+本教程创建了 LUIS 应用、创建了意向、向每个意向添加了示例言语、向 None 意向添加了示例言语，并在终结点上进行了训练、发布和测试操作。 这些是生成 LUIS 模型的基本步骤。
 
 > [!div class="nextstepaction"]
 > [将可分解实体添加到此应用](tutorial-machine-learned-entity.md)

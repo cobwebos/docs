@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: 使用 Postman 或 cURL 获取回答
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: 使用批处理文件进行测试
+      href: Quickstarts/batch-testing.md
     - name: 使用 REST API
       items:
         - name: 创建新的知识库
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: 发布知识库
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: 获取答案
@@ -88,7 +90,7 @@
     - name: 支持的数据源
       href: Concepts/data-sources-supported.md
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 编辑知识库
       items:
@@ -135,7 +137,7 @@
           href: Tutorials/choosing-capacity-qnamaker-deployment.md
         - name: 创建业务连续性计划
           href: How-To/business-continuity-plan.md
-- name: 引用
+- name: 参考
   items:
     - name: Languages
       href: Overview/language-support.md

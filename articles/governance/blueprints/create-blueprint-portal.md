@@ -3,18 +3,18 @@ title: 快速入门：在门户中创建蓝图
 description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436621"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
 了解如何创建和分配蓝图时，可以定义常见的模式，以便根据 Azure 资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务。 这些任务包括：
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -268,7 +268,9 @@ ms.locfileid: "74321944"
 
 1. 在“蓝图分配”页面上，验证是否已成功部署所有项目，以及在部署期间是否未出现任何错误  。 如果发生错误，请参阅[蓝图故障排除](./troubleshoot/general.md)，了解确定错误原因的操作步骤。
 
-## <a name="unassign-a-blueprint"></a>取消分配蓝图
+## <a name="clean-up-resources"></a>清理资源
+
+### <a name="unassign-a-blueprint"></a>取消分配蓝图
 
 如果不再需要蓝图，请从订阅中删除蓝图分配。 蓝图可能已被替换为更新的蓝图，后者具有更新的模式、策略和设计。 删除蓝图时，作为该蓝图的一部分分配的项目将保留。 若要删除蓝图分配，请按照下列步骤操作：
 
@@ -278,7 +280,7 @@ ms.locfileid: "74321944"
 
 1. 阅读确认消息，然后选择“确定”  。
 
-## <a name="delete-a-blueprint"></a>删除蓝图
+### <a name="delete-a-blueprint"></a>删除蓝图
 
 1. 从左侧页面中选择“蓝图定义”  。
 

@@ -1,93 +1,166 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Service Fabric 文档
+summary: Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。
 metadata:
-  title: Azure Service Fabric 文档 - 教程和 API 参考 | Microsoft 文档
-  meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
-  services: service-fabric
-  author: georgewallace
-  manager: gwallace
-  layout: LandingPage
   ms.service: service-fabric
   ms.topic: landing-page
-  ms.date: 11/03/2017
-  ms.author: gwallace
-abstract:
-  description: Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 参考我们的快速入门、教程和示例了解如何使用 Azure Service Fabric。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何将你的第一个 Service Fabric 应用程序部署到云：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_net.svg'
-            text: .NET
-            href: service-fabric-quickstart-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
-            text: Java (Reliable Services)
-            href: service-fabric-quickstart-java-reliable-services
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Java.svg'
-            text: Java (Spring Boot)
-            href: service-fabric-quickstart-java-spring-boot
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux 容器
-            href: service-fabric-quickstart-containers-linux
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows 容器
-            href: service-fabric-quickstart-containers
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 上部署、管理和监视安全的 Web 应用程序
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="service-fabric-tutorial-create-dotnet-app">部署 .NET 应用程序</a>
-          - html: <a href="service-fabric-tutorial-create-java-app">部署 Java 应用程序</a>
-          - html: <a href="service-fabric-host-app-in-a-container">将现有 .NET 应用程序容器化</a>
-          - html: <a href="service-fabric-tutorial-create-container-images">创建 Linux 容器应用程序</a>
-          - html: 创建和管理 <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> 或 <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> 群集
-  - title: 概念
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="service-fabric-overview-microservices">了解微服务</a>
-          - html: <a href="service-fabric-content-roadmap">大图</a>
-          - html: <a href="service-fabric-application-scenarios">应用程序方案</a>
-          - html: <a href="service-fabric-technical-overview">术语</a>
-          - html: <a href="service-fabric-choose-framework">“构建应用程序”概述</a>
-          - html: <a href="service-fabric-deploy-anywhere">群集概述</a>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 查找常见管理任务的脚本：
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 示例
-            html: <p><a href="service-fabric-powershell-samples">Azure PowerShell</a></p><p><a href="samples-cli">Service Fabric CLI</a></p>
-          - title: .NET
-            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-getting-started/">入门</a></p><p><a href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-web-reference-app/">Web 引用</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a href="https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/">监视程序</a></p>'
-          - title: Java
-            html: '<p><a href="https://azure.microsoft.com/resources/samples/service-fabric-java-getting-started/">入门</a></p>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/cli/azure/sf">Azure CLI</a></p><p><a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl">Service Fabric CLI</a></p><p><a href="/powershell/module/az.servicefabric">Azure PowerShell</a></p><p><a href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>'
-          - title: Languages
-            html: <p><a href="/java/api/overview/azure/servicefabric">Java API</a></p><p><a href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p><p><a href="/azure/service-fabric/service-fabric-service-model-schema">服务模型 XML 架构</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicefabric">REST API 参考</a></p>
+  author: erikadoyle
+  ms.author: edoyle
+  ms.date: 12/04/2019
+  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75452227"
+landingContent:
+- title: 关于 Service Fabric
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Service Fabric 概述
+      url: service-fabric-overview.md
+    - text: 了解有关 Service Fabric 的详细信息
+      url: service-fabric-content-roadmap.md
+    - text: Service Fabric 编程模型概述
+      url: service-fabric-choose-framework.md
+  - linkListType: get-started
+    links:
+    - text: 在 Windows 上开发
+      url: service-fabric-get-started.md
+    - text: 在 Linux 上开发
+      url: service-fabric-get-started-linux.md
+    - text: 在 Mac OS 上开发
+      url: service-fabric-get-started-mac.md
+    - text: 安装 Azure Service Fabric CLI
+      url: service-fabric-cli.md
+  - linkListType: concept
+    links:
+    - text: 了解微服务
+      url: service-fabric-overview-microservices.md
+    - text: 应用程序方案
+      url: service-fabric-application-scenarios.md
+    - text: 来宾可执行文件
+      url: service-fabric-guest-executables-introduction.md
+    - text: Reliable Services
+      url: service-fabric-reliable-services-introduction.md
+  - linkListType: whats-new
+    links:
+    - text: 发行说明
+      url: release-notes.md
+- title: .NET 应用程序和 Windows 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 .NET Service Fabric 应用
+      url: service-fabric-quickstart-dotnet.md
+    - text: 将 Windows 容器应用部署到 Service Fabric
+      url: service-fabric-quickstart-containers.md
+    - text: 创建基于 Windows 的来宾可执行应用
+      url: quickstart-guest-app.md
+  - linkListType: tutorial
+    links:
+    - text: 创建、部署和管理 Service Fabric .NET 应用
+      url: service-fabric-tutorial-create-dotnet-app.md
+    - text: 容器化用于 Service Fabric 的现有 .NET 应用
+      url: service-fabric-host-app-in-a-container.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio 开发应用
+      url: service-fabric-manage-application-in-visual-studio.md
+    - text: Reliable Services 入门（Windows 上的 C#）
+      url: service-fabric-reliable-services-quick-start.md
+    - text: 在 Azure 虚拟网络中创建 Windows 群集
+      url: service-fabric-tutorial-create-vnet-and-windows-cluster.md
+    - text: Windows 群集诊断
+      url: service-fabric-diagnostics-event-aggregation-wad.md
+- title: Java 应用程序和 Linux 入门
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Linux 和 Windows 之间的 Service Fabric 差异
+      url: service-fabric-linux-windows-differences.md
+  - linkListType: quickstart
+    links:
+    - text: 将 Linux 容器应用部署到 Service Fabric
+      url: service-fabric-quickstart-containers-linux.md
+  - linkListType: tutorial
+    links:
+    - text: 创建、部署和管理 Service Fabric Java 应用
+      url: service-fabric-tutorial-create-java-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Eclipse 开发应用
+      url: service-fabric-get-started-eclipse.md
+    - text: Reliable Services 入门（Linux 上的 Java）
+      url: service-fabric-reliable-services-quick-start-java.md
+    - text: 在 Azure 虚拟网络中创建 Linux 群集
+      url: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+    - text: Linux 群集诊断
+      url: service-fabric-diagnostics-oms-syslog.md
+- title: 保护群集
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全最佳做法
+      url: service-fabric-best-practices-security.md
+    - text: 应用程序安全性
+      url: service-fabric-application-and-service-security.md
+    - text: 群集安全性
+      url: service-fabric-cluster-security.md
+    - text: Service Fabric 的安全控制
+      url: service-fabric-security-controls.md
+    - text: Service Fabric 机密存储
+      url: service-fabric-application-secret-store.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到安全群集
+      url: service-fabric-connect-to-secure-cluster.md
+    - text: 将托管标识用于 Service Fabric 应用
+      url: configure-existing-cluster-enable-managed-identity-token-service.md
+- title: 管理群集
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Service Fabric Explorer 可视化群集
+      url: service-fabric-visualizing-your-cluster.md
+    - text: 应用程序升级故障排除
+      url: service-fabric-application-upgrade-troubleshooting.md
+    - text: 本地群集故障排除
+      url: service-fabric-troubleshoot-local-cluster-setup.md
+    - text: 系统运行状况报告故障排除
+      url: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+    - text: Service Fabric 社区故障排除指南
+      url: https://github.com/Azure/Service-Fabric-Troubleshooting-Guides
+    - text: 用于 Service Fabric 管理的 PowerShell 示例脚本
+      url: service-fabric-powershell-samples.md
+    - text: 用于 Service Fabric 管理的 Azure CLI 脚本
+      url: samples-cli.md
+  - linkListType: whats-new
+    links:
+    - text: 有关 Service Fabric 的常见问题
+      url: service-fabric-common-questions.md
+- title: 在本地使用 Service Fabric
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 独立群集概述
+      url: service-fabric-standalone-clusters-overview.md
+    - text: 独立包的内容
+      url: service-fabric-cluster-standalone-package-contents.md
+  - linkListType: concept
+    links:
+    - text: 升级独立群集
+      url: service-fabric-cluster-upgrade-standalone.md
+    - text: 缩放独立群集
+      url: service-fabric-cluster-scaling-standalone.md
+  - linkListType: how-to-guide
+    links:
+    - text: 规划独立群集部署
+      url: service-fabric-cluster-standalone-deployment-preparation.md
+    - text: 创建在 Windows Server 上运行的独立群集
+      url: service-fabric-cluster-creation-for-windows-server.md
+    - text: 配置定期备份
+      url: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
+    - text: 升级 Service Fabric 运行时
+      url: service-fabric-cluster-upgrade-windows-server.md

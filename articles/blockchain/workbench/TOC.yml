@@ -18,7 +18,7 @@
       href: architecture.md
     - name: 集成模式
       href: integration-patterns.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 部署 Workbench
@@ -43,7 +43,7 @@
           href: data-powerbi.md
         - name: 使用 SQL Management Studio 中的数据
           href: data-sql-management-studio.md
-- name: 引用
+- name: 参考
   items:
     - name: 配置
       href: configuration.md
@@ -55,14 +55,16 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: 资源
   items:
-    - name: 博客
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: 代码示例
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: 社区
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: 支持论坛
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN 支持论坛
       href: 'https://aka.ms/workbenchforum'
+    - name: 社区支持
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow 支持
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: 产品反馈
       href: 'https://aka.ms/blockchainuservoice'
 - name: 解决方案模板

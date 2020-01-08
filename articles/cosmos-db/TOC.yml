@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: 预配吞吐量 - autopilot 模式
           href: provision-throughput-autopilot.md
+        - name: Autopilot 常见问题解答
+          href: autopilot-faq.md
     - name: SQL 查询参考
       items:
         - name: 入门
@@ -166,7 +168,7 @@
         - name: 数组和对象
           displayName: 'object and array creation, object and array'
           href: sql-query-object-array.md
-        - name: 关键字
+        - name: Keywords
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
         - name: 运算符
@@ -508,7 +510,7 @@
           href: optimize-dev-test.md
         - name: 借助保留容量优化成本
           href: cosmos-db-reserved-capacity.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 概述
           href: database-security.md
@@ -566,7 +568,7 @@
             - name: 4 - 迁移数据
               displayName: import
               href: cassandra-import-data.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 更改源
               href: cassandra-change-feed.md
@@ -653,7 +655,7 @@
               href: tutorial-query-mongodb.md
             - name: 4 - 全球分配数据
               href: tutorial-global-distribution-mongodb.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 迁移前指南
               href: mongodb-pre-migration.md
@@ -717,7 +719,7 @@
           items:
             - name: 1 - 查询数据
               href: tutorial-query-graph.md
-        - name: 引用
+        - name: 参考
           items:
             - name: 响应标头
               href: gremlin-headers.md
@@ -725,7 +727,7 @@
               href: gremlin-limits.md
             - name: 兼容性
               href: gremlin-compatibility.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 图形数据建模
               href: graph-modeling.md
@@ -796,7 +798,7 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 使用表 API 构建应用
               href: table-support.md
@@ -808,7 +810,7 @@
               href: powershell-samples-table.md
             - name: 使用 Azure CLI 进行管理
               href: cli-samples-table.md
-        - name: 引用
+        - name: 参考
           items:
             - name: .NET
               href: table-sdk-dotnet.md
@@ -828,7 +830,7 @@
           href: etcd-api-introduction.md
         - name: 将 Azure Kubernetes 与 Azure Cosmos DB 配合使用
           href: bootstrap-kubernetes-cluster.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Azure Cosmos 帐户
       href: how-to-manage-database-account.md
@@ -955,7 +957,7 @@
           href: how-to-write-javascript-query-api.md
         - name: 使用存储过程、触发器和 UDF
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 配置 IP 防火墙
           href: how-to-configure-firewall.md
@@ -982,6 +984,8 @@
       items:
         - name: 监视 Cosmos DB
           href: monitor-cosmos-db.md
+        - name: 使用诊断日志进行监视
+          href: cosmosdb-monitor-resource-logs.md
         - name: 用于 Cosmos 的 Azure Monitor（预览版）
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: 从 Cosmos DB 帐户中查看指标
@@ -1062,7 +1066,7 @@
           href: bulk-executor-dot-net.md
         - name: 批量执行程序 - Java 库
           href: bulk-executor-java.md
-- name: 引用
+- name: 参考
   items:
     - name: .NET
       href: sql-api-sdk-dotnet.md

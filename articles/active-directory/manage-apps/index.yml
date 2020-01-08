@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 7ebb44ec1f3483b9bf3f29ddb6dc7a73266b8cea
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73882804"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443358"
 landingContent:
 - title: 关于应用程序管理
   linkLists:
@@ -53,22 +53,22 @@ landingContent:
     links:
     - text: 自动用户预配是什么？
       url: user-provisioning.md
-  - linkListType: concept
+    - text: 预配工作原理
+      url: how-provisioning-works.md
+  - linkListType: tutorial
     links:
-    - text: 使用 SCIM 预配用户和组
-      url: use-scim-to-provision-users-and-groups.md
+    - text: SaaS 应用预配教程
+      url: /azure/active-directory/saas-apps/
   - linkListType: how-to-guide
     links:
-    - text: 配置自动用户预配
+    - text: 构建应用？ 将 SCIM 用于自动预配
+      url: use-scim-to-provision-users-and-groups.md
+    - text: 想要添加库应用？ 配置到应用的预配
       url: configure-automatic-user-provisioning-portal.md
     - text: 自定义属性映射
       url: customize-application-attributes.md
-    - text: 检查预配状态
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: 为属性映射编写表达式
-      url: functions-for-customizing-application-data.md
+    - text: 使用范围筛选器
+      url: define-conditional-rules-for-provisioning-user-accounts.md
 - title: 使用应用程序代理发布本地应用
   linkLists:
   - linkListType: overview

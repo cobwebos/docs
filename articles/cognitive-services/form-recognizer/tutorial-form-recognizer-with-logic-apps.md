@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446474"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>教程：使用表单识别器和 Azure 逻辑应用分析发票
 
@@ -31,7 +31,7 @@ ms.locfileid: "73176996"
 > * 配置逻辑应用以使用表单识别器资源
 > * 运行逻辑应用测试工作流
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 
@@ -81,11 +81,11 @@ ms.locfileid: "73176996"
 
 1. 在“创建逻辑应用”下，提供有关逻辑应用的详细信息，如下所示。  完成后，选择“创建”  。
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | <*logic-app-name*> | 逻辑应用名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅名称 |
-   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](./../../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“My-First-LA-RG”。 |
+   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](./../../azure-resource-manager/management/overview.md)的名称。 此示例使用“My-First-LA-RG”。 |
    | **位置** | <*Azure-region*> | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
    | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
    ||||

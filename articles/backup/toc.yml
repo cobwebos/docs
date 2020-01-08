@@ -36,6 +36,14 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: 将文件还原到 Windows Server
       href: tutorial-backup-restore-files-windows-server.md
+    - name: Azure VM 上的 SAP HANA 数据库 - 使用 CLI
+      items:
+        - name: 备份 SAP HANA 数据库 - CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: 还原 SAP HANA 数据库 - CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: 管理已备份的 SQL Server 数据库 - CLI
+          href: tutorial-sap-hana-manage-cli.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -58,7 +66,7 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure Policy 支持的 VM SKU
           href: backup-azure-policy-supported-skus.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 基于角色的访问控制
           href: backup-rbac-rs-vault.md
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: Azure VM 上的 SAP HANA 数据库
       items:
+        - name: 关于 Azure VM 上的 SAP HANA 备份
+          href: sap-hana-db-about.md
         - name: 备份 Azure VM 上的 SAP HANA 数据库
           href: backup-azure-sap-hana-database.md
         - name: 还原 Azure VM 中的 SAP HANA 数据库
@@ -304,7 +314,7 @@
           href: backup-azure-monitoring-built-in-monitor.md
         - name: 使用 Azure Monitor
           href: backup-azure-monitoring-use-azuremonitor.md
-- name: 引用
+- name: 参考
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup

@@ -2,17 +2,17 @@
 title: 快速入门 - 管理 Azure 中的专用终结点
 description: 在本快速入门中了解如何使用 Azure 门户创建专用终结点
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459932"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -20,9 +20,6 @@ ms.locfileid: "74899869"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
-> [!NOTE]
-> 不允许将专用终结点与同一子网中的服务终结点结合使用！
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

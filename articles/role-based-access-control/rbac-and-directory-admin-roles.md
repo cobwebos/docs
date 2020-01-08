@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357510"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -50,7 +50,7 @@ ms.locfileid: "71803158"
 
 在 Azure 门户中，可以使用“经典管理员”  选项卡管理共同管理员或查看服务管理员。
 
-![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 在 Azure 门户中，可以在订阅的属性边栏选项卡上，查看或更改服务管理员，或是查看帐户管理员。
 
@@ -70,7 +70,7 @@ Azure 订阅可帮助你组织 Azure 资源的访问权限。 它们还可帮助
 
 ## <a name="azure-rbac-roles"></a>Azure RBAC 角色
 
-Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)构建的授权系统，它针对 Azure 资源（例如计算和存储）提供精细的访问权限管理。 Azure RBAC 包括 70 多个内置角色。 有四个基本的 RBAC 角色。 前三个角色适用于所有资源类型：
+Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，它针对 Azure 资源（例如计算和存储）提供精细的访问权限管理。 Azure RBAC 包括 70 多个内置角色。 有四个基本的 RBAC 角色。 前三个角色适用于所有资源类型：
 
 | Azure RBAC 角色 | 权限 | 说明 |
 | --- | --- | --- |

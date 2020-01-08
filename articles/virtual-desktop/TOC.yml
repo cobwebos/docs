@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: 共用主机池的负载均衡
           href: configure-host-pool-load-balancing.md
+        - name: 个人桌面分配类型
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: 使用 Windows 虚拟桌面许可证
       href: apply-windows-license.md
     - name: 自定义会话主机映像
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: 自定义源
       href: customize-feed-for-virtual-desktop-users.md
-    - name: 部署诊断工具
-      href: deploy-diagnostics.md
+    - name: 使用服务诊断
+      items:
+        - name: 部署诊断工具
+          href: deploy-diagnostics.md
+        - name: 将诊断与 Log Analytics 配合使用
+          href: diagnostics-log-analytics.md
     - name: 发布内置应用
       href: publish-apps.md
     - name: 设置 MSIX 应用附加
@@ -78,8 +84,6 @@
   items:
     - name: Windows 虚拟桌面环境
       href: environment-setup.md
-    - name: 远程会话的带宽建议
-      href: bandwidth-recommendations.md
     - name: 确定用户连接延迟
       href: connection-latency.md
     - name: Windows 虚拟桌面中的委托访问
@@ -110,13 +114,15 @@
       href: troubleshoot-windows-7-vm.md
     - name: 排查 Windows 虚拟桌面管理工具问题
       href: troubleshoot-management-tool.md
-    - name: 远程桌面客户端连接
-      href: troubleshoot-client-connection.md
+    - name: 远程桌面服务连接
+      href: troubleshoot-service-connection.md
+    - name: 远程桌面客户端问题
+      href: troubleshoot-client.md
     - name: Windows 虚拟桌面 PowerShell
       href: troubleshoot-powershell.md
     - name: 诊断图形性能问题
       href: remotefx-graphics-performance-counters.md
-- name: 引用
+- name: 参考
   items:
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview

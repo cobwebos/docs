@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873720"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500061"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 
@@ -23,7 +23,7 @@ ms.locfileid: "74873720"
 本指南中概述的过程基于以下假设：
  * 识别了问题空间中的实体  。 每个请求以原子方式使用这些实体  。 换句话说，数据库系统不会在多个查询请求中检索单个实体的数据。
  * 了解数据库系统的读取和写入要求  。 这些要求将指导图形数据模型所需的优化。
- * 充分了解 [Apache Tinkerpop 属性图形标准](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)的原则。
+ * 充分了解 [Apache Tinkerpop 属性图形标准](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)的原则。
 
 ## <a name="when-do-i-need-a-graph-database"></a>何时需要图形数据库？
 
@@ -41,11 +41,11 @@ ms.locfileid: "74873720"
 
 ## <a name="how-to-use-graph-objects"></a>如何使用图形对象
 
-[Apache Tinkerpop 属性图形标准](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)定义了两种类型的对象：顶点和边缘   。 
+[Apache Tinkerpop 属性图形标准](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)定义了两种类型的对象：顶点和边缘   。 
 
 以下是图形对象中属性的最佳实践：
 
-| Object | 属性 | 类型 | 说明 |
+| Object | properties | 类型 | 说明 |
 | --- | --- | --- |  --- |
 | 顶点 | ID | String | 每个分区唯一强制执行。 如果插入时未提供值，则将存储自动生成的 GUID。 |
 | 顶点 | label | String | 此属性用于定义顶点表示的实体类型。 如果未提供值，则将使用默认值 vertex。 |

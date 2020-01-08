@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: 托管应用程序文档
+summary: 提供可让使用者轻松部署和操作的云解决方案。
+metadata:
+  title: Azure 托管应用程序文档
+  description: 使用 Azure 托管应用程序，可以提供可让使用者轻松部署和操作的云解决方案。
+  ms.service: managed-applications
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 60f7d4b9c9bd9057e0869b3efe1843eeb8d873f8
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648372"
+landingContent:
+- title: 关于托管应用程序
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 托管应用程序？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 视图定义项目
+      url: concepts-view-definition.md
+    - text: 用于关联的 Azure Policy
+      url: concepts-built-in-policy.md
+    - text: 角色定义项目
+      url: concepts-custom-role-definition.md
+- title: 创建托管应用程序
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 发布应用程序定义
+      url: publish-managed-app-definition-quickstart.md
+    - text: 部署服务目录应用
+      url: deploy-service-catalog-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 创建定义文件
+      url: publish-service-catalog-app.md
+    - text: 发布市场应用程序
+      url: publish-marketplace-app.md
+    - text: 创建包含自定义提供程序的托管应用程序
+      url: tutorial-create-managed-app-with-custom-provider.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用来自 Key Vault 的机密
+      url: key-vault-access.md
+    - text: 通过门户发布
+      url: publish-portal.md
+- title: 访问控制
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 请求实时访问
+      url: request-just-in-time-access.md
+    - text: 批准实时访问
+      url: approve-just-in-time-access.md
+    - text: 使用托管标识进行部署
+      url: publish-managed-identity.md
+- title: 创建门户 UI
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建门户界面
+      url: create-uidefinition-overview.md
+    - text: 测试门户界面
+      url: test-createuidefinition.md
+    - text: 用户界面元素项目
+      url: reference-createuidefinition-artifact.md
+    - text: 界面元素
+      url: create-uidefinition-elements.md
+    - text: 界面函数
+      url: create-uidefinition-functions.md
+- title: 管理资源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 监视已部署的实例
+      url: monitor-managed-application-portal.md
+    - text: 使用通知进行部署
+      url: publish-notifications.md
+    - text: 更新托管资源
+      url: update-managed-resources.md

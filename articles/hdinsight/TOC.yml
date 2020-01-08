@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: 管理 HDInsight 群集 - Powershell
           href: ./hdinsight-administer-use-powershell.md
+        - name: 使用 Runbook 创建群集
+          href: ./manage-clusters-runbooks.md
         - name: 构建 ETL 管道
           href: ./hdinsight-sales-insights-etl.md
     - name: 示例
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: 使用 .NET 创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: 使用群集存储
-          items:
-            - name: 使用 Azure 存储
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: 使用 Azure Data Lake Storage Gen2
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: 使用 Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: 群集创建错误
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: 使用群集存储
+                  items:
+                    - name: 使用 Azure 存储
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: 使用 Azure Data Lake Storage Gen2
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: 使用 Azure Data Lake Storage Gen1
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: 扩展群集
           items:
             - name: 安装 HDInsight 应用
@@ -201,7 +218,7 @@
               href: ./hdinsight-key-scenarios-to-monitor.md
             - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
               href: ./hdinsight-cluster-availability.md
-    - name: 引用
+    - name: 参考
       items:
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: 概念
       items:
+        - name: 将 Kafka 工作负荷迁移到 4.0
+          href: ./kafka/migrate-versions.md
         - name: 存储和可伸缩性
           href: ./kafka/apache-kafka-scalability.md
         - name: 数据的高可用性
@@ -545,6 +564,8 @@
       items:
         - name: 开发
           items:
+            - name: 使用 Kafka REST 代理
+              href: ./kafka/rest-proxy.md
             - name: 启用自动创建主题功能
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: 将 Apache Kafka 与 IoT 中心配合使用
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: 减速器运行速度缓慢
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Apache Hive 网关超时
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Apache Hive 视图超时
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: 创建表时出现权限错误
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: 如何
       items:
+        - name: 使用 ID 代理进行凭据管理
+          href: ./domain-joined/identity-broker.md
         - name: 创建 ESP 群集并与本地同步
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: 为 HDInsight 创建 VNET
           href: ./hdinsight-create-virtual-network.md
         - name: 将 HDInsight 与本地网络相连
           href: ./connect-on-premises-network.md
-        - name: 在 HDInsight 中配置企业安全性
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: 使用 Azure AD DS 配置 ESP 群集
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: 将 Azure AD 用户同步到 HDInsight 群集

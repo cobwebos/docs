@@ -2,25 +2,21 @@
 title: 从 Azure 自动化 runbook 发送电子邮件
 description: 了解如何使用 SendGrid 从 runbook 中发送电子邮件。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420707"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
 
 可以使用 PowerShell 通过 [SendGrid](https://sendgrid.com/solutions) 从 runbook 发送电子邮件。 本教程介绍如何创建一个可重用的 runbook，以便使用在 [Azure KeyVault](/azure/key-vault/) 中存储的 API 密钥发送电子邮件。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -28,7 +24,7 @@ ms.locfileid: "74849609"
 > * 将 SendGrid API 密钥存储在 KeyVault 中
 > * 创建一个 runbook，用于检索 API 密钥和发送电子邮件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程需要以下各项：
 

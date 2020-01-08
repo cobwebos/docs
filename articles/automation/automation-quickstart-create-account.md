@@ -2,19 +2,16 @@
 title: Azure 快速入门 - 创建 Azure 自动化帐户 | Microsoft Docs
 description: 了解如何创建 Azure 自动化帐户和运行 Runbook
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 04/04/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 80a175aad3c692a5dfd04c7399211c58134c5164
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: a2d15dd520db16012f530d2ac6188a4642c89795
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421663"
 ---
 # <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 

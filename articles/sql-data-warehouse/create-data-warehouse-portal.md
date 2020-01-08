@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457814"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库
 
@@ -33,11 +33,11 @@ ms.locfileid: "74815798"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
-使用一组定义好的[计算资源](memory-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-logical-servers.md)中创建。 
+使用一组定义好的[计算资源](memory-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-logical-servers.md)中创建。 
 
 按照这些步骤创建包含 AdventureWorksDW 示例数据的 SQL 数据仓库。 
 
@@ -49,9 +49,9 @@ ms.locfileid: "74815798"
 
 3. 使用以下信息填写“SQL 数据仓库”表单：
 
-    | 设置 | 建议的值 | Description |
+    | 设置 | 建议的值 | 说明 |
     | :------ | :-------------- | :---------- |
-    | **订阅** | 你的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
+    | **订阅** | 订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
     | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
     | **数据仓库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，数据仓库是一种数据库。|
     ||||
@@ -111,7 +111,7 @@ SQL 数据仓库服务会在服务器级别创建防火墙。 此防火墙会阻
 
 1. 在工具栏上单击“添加客户端 IP”  ，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-1. 单击“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+1. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
 1. 单击“确定”，然后关闭“防火墙设置”页。  
 
@@ -124,7 +124,7 @@ SQL 数据仓库服务会在服务器级别创建防火墙。 此防火墙会阻
 
 请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据仓库”，然后单击“SQL 数据仓库”页上的数据仓库   。
 3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。
 
@@ -149,9 +149,9 @@ SQL 数据仓库服务会在服务器级别创建防火墙。 此防火墙会阻
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. 单击“连接”  。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+3. 单击“连接”  。 对象资源管理器窗口在 SSMS 中打开。 
 
-4. 在对象资源管理器中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
+4. 在“对象资源管理器”中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
 
     ![数据库对象](media/create-data-warehouse-portal/connected.png) 
 
@@ -159,7 +159,7 @@ SQL 数据仓库服务会在服务器级别创建防火墙。 此防火墙会阻
 
 SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并运行一些 T-SQL 查询，请使用以下步骤：
 
-1. 右键单击“mySampleDataWarehouse”  ，然后选择“新建查询”  。 此时会打开一个新的查询窗口。
+1. 右键单击“mySampleDataWarehouse”  ，然后选择“新建查询”  。 “新建查询”窗口随即打开。
 2. 在查询窗口中，输入以下命令以查看数据库列表。
 
     ```sql

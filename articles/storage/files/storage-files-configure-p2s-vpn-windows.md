@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 527ab905997d18433d1dba5c16ee67c8146f5afa
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126453"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560345"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -21,7 +21,7 @@ ms.locfileid: "73126453"
 
 本文详细介绍了在 Windows（Windows 客户端和 Windows Server）上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的相关步骤。 如果想要通过 VPN 路由 Azure 文件同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 最新版本的 Azure PowerShell 模块。 若要详细了解如何安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)并选择操作系统。 如果你更想在 Windows 上使用 Azure CLI，也可以使用，但下面是针对 Azure PowerShell 的说明。
 
 - Azure 专用 DNS PowerShell 模块。 此模块当前未作为 Azure PowerShell 模块的一部分进行分发，因此可以通过以下方法进行安装：
@@ -90,7 +90,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ## <a name="restrict-the-storage-account-to-the-virtual-network"></a>仅限虚拟网络访问存储帐户
 默认情况下，当你创建一个存储帐户时，只要有验证请求的方法（例如使用 Active Directory 标识或使用存储帐户密钥），就可以随时随地对其进行访问。 若要仅限刚创建的虚拟网络访问此存储帐户，则需要创建一个允许在虚拟网络中访问且拒绝所有其他访问的网络规则集。
 
-仅限虚拟网络访问存储帐户时，需要使用服务终结点。 服务终结点是一种网络结构，通过该网络结构，只能从虚拟网络内部访问公共 DNS/公共 IP。 由于无法保证公共 IP 保持不变，因此我们最终希望对存储帐户使用专用终结点而不是服务终结点，但是，除非同时公开服务终结点，否则无法限制存储帐户。
+仅限虚拟网络访问存储帐户时，需要使用服务终结点。 服务终结点是一种网络结构，通过该网络结构，只能从虚拟网络内部访问公共 DNS/公共 IP。 由于无法保证公共 IP 地址保持不变，因此我们最终希望对存储帐户使用专用终结点而不是服务终结点，但是，除非同时公开服务终结点，否则无法限制存储帐户。
 
 请记得将 `<storage-account-name>` 替换为要访问的存储帐户。
 
@@ -161,7 +161,7 @@ foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
         $recordName = $fqdn.split('.', 2)[0]
         $dnsZone = $fqdn.split('.', 2)[1]
         New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName ` 
+            -ResourceGroupName $resourceGroupName `
             -Name $recordName `
             -RecordType A `
             -ZoneName $zone.Name `

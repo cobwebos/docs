@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Python SDK 调用必应自定义搜索终结点 | Microsoft Docs
+title: 快速入门：使用 Python SDK 调用必应自定义搜索终结点
 titleSuffix: Azure Cognitive Services
 description: 参考本快速入门开始使用 Python SDK 从必应自定义搜索实例请求搜索结果。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ca0c1174abb80452f78766c3c4f49af73c790d3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976037"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448678"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>快速入门：使用 Python SDK 调用必应自定义搜索终结点 
 
 参考本快速入门开始使用 Python SDK 从必应自定义搜索实例请求搜索结果 虽然必应自定义搜索具有与大多数编程语言兼容的 REST API，但必应自定义搜索 SDK 提供了一种简单方法来将服务集成到应用程序中。 在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) 上可以找到此示例的源代码，以及附加的错误处理方法和注释。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
 - Python [2.x 或 3.x](https://www.python.org/) 

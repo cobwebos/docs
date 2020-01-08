@@ -3,6 +3,12 @@
 - name: 了解 Azure 计费
   expanded: true
   items:
+    - name: 计费帐户和范围
+      href: billing-view-all-accounts.md
+    - name: Microsoft 客户协议的计费帐户
+      href: billing-mca-overview.md
+    - name: Microsoft 合作伙伴协议的计费帐户
+      href: mpa-overview.md
     - name: 了解帐单
       href: billing-understand-your-bill.md
     - name: 了解帐单 - Microsoft 客户协议
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: 如何支付帐单 - Microsoft 客户协议
       href: billing-how-to-pay-bill.md
-    - name: Microsoft 客户协议的计费帐户
-      href: billing-mca-overview.md
-    - name: Microsoft 合作伙伴协议的计费帐户
-      href: mpa-overview.md
 - name: 管理成本
   items:
     - name: 防止意外成本
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: 链接合作伙伴 ID
       href: billing-partner-admin-link-started.md
-    - name: 查看计费帐户
-      href: billing-view-all-accounts.md
     - name: 按发票科目管理成本
       href: billing-mca-section-invoice.md
     - name: Microsoft 客户协议中的 EA 任务
@@ -216,7 +216,7 @@
     - name: 链接 Azure AD 租户
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: 限制和配额
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: 故障排除
   items:
     - name: 找不到任何订阅
@@ -251,7 +251,7 @@
           href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
         - name: RateCard API 代码示例
           href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
-- name: 引用
+- name: 参考
   items:
     - name: 计费自动化方案
       href: billing-cost-management-automation-scenarios.md

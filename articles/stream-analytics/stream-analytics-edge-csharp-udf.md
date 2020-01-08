@@ -1,7 +1,6 @@
 ---
 title: 教程 - 在 Visual Studio 中为 Azure 流分析作业编写 C# 用户定义函数（预览）
 description: 本教程介绍如何在 Visual Studio 中为流分析作业编写 C# 用户定义函数。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,25 +8,25 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426297"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教程：为 Azure 流分析作业编写 C# 用户定义函数（预览）
 
 使用 Visual Studio 中创建的 C# 用户定义函数 (UDF)，使你能够使用自己的函数扩展 Azure 流分析查询语言。 可以重复使用现有代码（包括 DLL），并对 C# 使用数学或复杂逻辑。 可通过三种方式实现 UDF：流分析项目中的 CodeBehind 文件、本地 C# 项目的 UDF 或存储帐户中现有包的 UDF。 本教程使用 CodeBehind 方法来实现基本的 C# 函数。 流分析作业的 UDF 功能目前处于预览状态，不应在生产工作负荷中使用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 CodeBehind 创建 C# 用户定义函数。
 > * 在本地测试流分析作业。
 > * 将作业发布到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保已完成以下先决条件：
 

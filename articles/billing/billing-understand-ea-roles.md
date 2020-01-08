@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 62a16a6a96fbfdfbb4ed2d70b74470e29efaa844
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 03464fca6d7e0694d9492de698c70d5caac89358
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849847"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644471"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
 
@@ -38,10 +38,10 @@ ms.locfileid: "74849847"
 
 |角色| 用户限制|
 |---|---|
-|企业管理员|不受限制|
-|企业管理员（只读）|不受限制|
-|部门管理员|不受限制|
-|部门管理员（只读）|不受限制|
+|企业管理员|无限制|
+|企业管理员（只读）|无限制|
+|部门管理员|无限制|
+|部门管理员（只读）|无限制|
 |帐户所有者|每个帐户 1 个<sup>1</sup>|
 
 <sup>1</sup> 每个帐户需要一个唯一的 Microsoft 帐户，或者工作或学校帐户。
@@ -93,11 +93,11 @@ ms.locfileid: "74849847"
 
 |企业协议管理员角色|角色的视图费用策略|RBAC 角色|定价视图|
 |---|---|---|---|
-|帐户所有者或部门管理员|✔ 已启用|所有者|组织的 EA 定价|
-|帐户所有者或部门管理员|✘ 已禁用|所有者|零售定价|
-|帐户所有者或部门管理员|✔ 已启用 |无|无定价|
-|帐户所有者或部门管理员|✘ 已禁用 |无|无定价|
-|无|不适用 |所有者|零售定价|
+|帐户所有者或部门管理员|✔ 已启用|“所有者”|组织的 EA 定价|
+|帐户所有者或部门管理员|✘ 已禁用|“所有者”|零售定价|
+|帐户所有者或部门管理员|✔ 已启用 |none|无定价|
+|帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
+|无|不适用 |“所有者”|零售定价|
 
 在企业门户中设置企业管理员角色和视图费用策略。 RBAC 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 

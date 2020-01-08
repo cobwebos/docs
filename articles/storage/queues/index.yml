@@ -12,12 +12,12 @@ metadata:
   author: mhopkins-msft
   ms.author: mhopkins
   ms.date: 08/27/2019
-  ms.openlocfilehash: 4dcf6ae4e9a5a65e060b647f02761b2c46238d13
-  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70277916"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75457286"
 landingContent:
 - title: 关于 Azure 队列
   linkLists:
@@ -31,10 +31,18 @@ landingContent:
     links:
     - text: 使用 Azure 门户创建队列并添加消息
       url: storage-quickstart-queues-portal.md
-    - text: 使用 .NET 在 Azure 存储中创建队列
-      url: storage-quickstart-queues-dotnet.md
 - title: 使用队列进行开发
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 用于 .NET 的 Azure 队列存储
+      url: storage-quickstart-queues-dotnet.md
+    - text: 用于 Java 的 Azure 队列存储
+      url: storage-quickstart-queues-java.md
+    - text: 用于 Python 的 Azure 队列存储
+      url: storage-quickstart-queues-python.md
+    - text: 用于 JavaScript 的 Azure 队列存储
+      url: storage-quickstart-queues-nodejs.md
   - linkListType: how-to-guide
     links:
     - text: 通过 .NET 开始使用 Azure 队列存储

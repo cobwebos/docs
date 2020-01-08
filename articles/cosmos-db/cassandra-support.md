@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能和命令
+title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能
 description: 了解 Azure Cosmos DB Cassandra API 中的 Apache Cassandra 功能支持
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889228"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445643"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -43,13 +43,13 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
 * ascii  
 * bigint  
-* Blob  
-* 布尔值  
+* blob  
+* boolean  
 * counter  
 * date  
-* decimal  
+* Decimal  
 * double  
-* float  
+* FLOAT  
 * frozen  
 * inet  
 * int  
@@ -73,9 +73,9 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
 Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
-* 令牌  
+* 标记  
 * 聚合函数
-  * 最小值、最大值、平均值、计数
+  * min, max, avg, count
 * Blob 转换函数 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -108,7 +108,7 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 CQLSH 命令行实用程序随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。
 
-**Windows**：
+**Windows：**
 
 如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
 
@@ -151,7 +151,7 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 * SELECT 
 * UPDATE 
 * BATCH - 仅支持未记录的命令 
-* 删除
+* DELETE
 
 通过兼容 CQL V4 的 SDK 执行的所有 CRUD 操作都将返回有关错误及已使用请求单位的其他信息。 处理 DELETE 和 UPDATE 命令时应考虑资源治理，以确保最有效地使用预配的吞吐量。
 

@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456615"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于审批的工作流
 
 本教程介绍如何生成[逻辑应用](../logic-apps/logic-apps-overview.md)，以便自动完成基于审批的工作流。 具体说来，此逻辑应用处理通过 [MailChimp](https://mailchimp.com/) 服务托管的邮件列表的订阅请求。 此逻辑应用会监视电子邮件帐户中是否存在这些请求，发送这些请求进行审批，并向邮件列表添加批准的成员。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建空白逻辑应用。
@@ -33,7 +33,7 @@ ms.locfileid: "74784657"
 
 ![完成的高级逻辑应用概述](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果你没有 Azure 订阅，请在开始之前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -55,11 +55,11 @@ ms.locfileid: "74784657"
 
    ![提供有关逻辑应用的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | LA-MailingList | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-MailingList”。 |
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅名称 |
-   | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“LA-MailingList-RG”。 |
+   | **资源组** | LA-MailingList-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“LA-MailingList-RG”。 |
    | **位置** | 美国西部 | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
    | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
    ||||
@@ -95,7 +95,7 @@ ms.locfileid: "74784657"
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | 属性 | 值 | 说明 |
+      | properties | 值 | 说明 |
       |----------|-------|-------------|
       | **文件夹** | `Inbox` | 要监视的电子邮件文件夹 |
       | 间隔  | `1` | 在两次检查之间需等待的时间间隔数 |
@@ -136,7 +136,7 @@ ms.locfileid: "74784657"
 
    ![“发送审批电子邮件”操作的属性](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **收件人** | <*your-email-address*> | 审批者的电子邮件地址。 可以使用自己的地址进行测试。 此示例使用虚构的“sophia.owen@fabrikam.com”电子邮件地址。 |
    | **主题** | `Approve member request for test-members-ML` | 一个描述性的电子邮件主题 |
@@ -203,7 +203,7 @@ ms.locfileid: "74784657"
 
    ![为“将成员添加到列表”提供信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **列表 ID** | 是 | `test-members-ML` | MailChimp 邮件列表的名称。 此示例使用“test-members-ML”。 |
    | **Status** | 是 | `subscribed` | 选择新成员的订阅状态。 本示例使用“subscribed”。 <p>有关详细信息，请参阅 [Manage subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/)（使用 MailChimp API 管理订户）。 |
@@ -258,7 +258,7 @@ ms.locfileid: "74784657"
 
    ![提供成功电子邮件的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 一个电子邮件地址，可向其发送成功电子邮件。 为进行测试，可以使用自己的电子邮件地址。 |
    | **主题** | 是 | <*subject-for-success-email*> | 成功电子邮件的主题。 对于本教程，请输入以下文本： <p>`Success! Member added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。   |
@@ -283,7 +283,7 @@ ms.locfileid: "74784657"
 
    ![提供失败电子邮件的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 一个电子邮件地址，可向其发送失败电子邮件。 为进行测试，可以使用自己的电子邮件地址。 |
    | **主题** | 是 | <*subject-for-failure-email*> | 失败电子邮件的主题。 对于本教程，请输入以下文本： <p>`Failed, member not added to "test-members-ML": ` <p>在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。   |

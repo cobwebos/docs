@@ -3,17 +3,17 @@ title: 快速入门 - 将模拟设备添加到 Azure IoT Central
 description: 本快速入门介绍如何创建设备模板并将模拟设备添加到 IoT Central 应用程序中。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434828"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>快速入门：将模拟设备添加到 IoT Central 应用程序（预览功能）
 
@@ -30,7 +30,7 @@ ms.locfileid: "74706700"
 * 响应打开和关闭等命令。
 * 报告常规设备属性，例如固件版本和序列号。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成[创建 Azure IoT Central 应用程序（预览功能）](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“预览应用程序”模板创建 IoT Central 应用程序  。
 

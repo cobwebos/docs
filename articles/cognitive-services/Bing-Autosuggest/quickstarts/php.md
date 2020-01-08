@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384707"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 
 使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 PHP 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [PHP 5.6.x](https://php.net/downloads.php) 或更高版本
 
@@ -30,9 +30,10 @@ ms.locfileid: "68565797"
 ## <a name="get-autosuggest-results"></a>获取自动建议结果
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+4. 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+5. 运行该程序。
 
 ```php
 <?php

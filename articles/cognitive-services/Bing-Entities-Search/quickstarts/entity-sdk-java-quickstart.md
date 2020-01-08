@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448640"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应实体搜索 SDK 来发送搜索请求
 
 使用本快速入门开始通过适用于 Java 的必应实体搜索 SDK 来搜索实体。 虽然必应实体搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) 上找到此示例的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
@@ -67,7 +67,7 @@ ms.locfileid: "74327144"
 
 ## <a name="create-a-search-client"></a>创建搜索客户端
 
-1. 实现 `dominantEntityLookup` 客户端，它需要你的 API 终结点以及 `ServiceClientCredentials` 类的实例。
+1. 实现 `dominantEntityLookup` 客户端，这需要使用你的 API 终结点以及 `ServiceClientCredentials` 类的实例。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -106,7 +106,7 @@ ms.locfileid: "74327144"
        ///...
        ```
 
-   3. 在 `intercept` 函数中，为请求创建变量。 使用 `Request.Builder()` 生成请求。 将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象上的 `chain.proceed()`。
+   3. 在 `intercept` 函数中，为请求创建变量。 使用 `Request.Builder()` 生成请求。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象中的 `chain.proceed()`。
             
        ```java
        //...

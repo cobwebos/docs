@@ -3,12 +3,12 @@ title: 通过 Azure 门户在 Linux 上创建函数应用
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410505"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure 应用服务计划中创建 Linux 上的函数应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "74233091"
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
     | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 | 
-    |  [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
+    |  [资源组](../azure-resource-manager/management/overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
     | **OS** | Linux | 该函数应用在 Linux 上运行。 |
     | **发布** | 代码 | 将使用**运行时堆栈**的默认 Linux 容器。 只需提供函数应用项目代码即可。 另一个选项是发布自定义的 [Docker 映像](functions-create-function-linux-custom-image.md)。 |
     |  [托管计划](functions-scale.md) | 应用服务计划 | 定义如何将资源分配给 Function App 的托管计划。 在应用服务计划中运行时，可以控制[函数应用的缩放](functions-scale.md)。  |

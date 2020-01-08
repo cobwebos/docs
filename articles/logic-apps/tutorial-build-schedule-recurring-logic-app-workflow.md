@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456630"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
 
 本教程介绍如何生成[逻辑应用](../logic-apps/logic-apps-overview.md)，并自动化一个按计划运行的重复工作流。 具体而言，此示例逻辑应用将在每个工作日的早晨运行，检查两个地点之间的行程时间，包括交通情况。 如果该时间超过特定的限制，逻辑应用会发送一封电子邮件，其中包括到达目的地所需的行程时间和额外时间。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建空白逻辑应用。
@@ -32,7 +32,7 @@ ms.locfileid: "74790301"
 
 ![高级逻辑应用工作流概述](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果你没有 Azure 订阅，请在开始之前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -54,11 +54,11 @@ ms.locfileid: "74790301"
 
    ![提供有关逻辑应用的信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | LA-TravelTime | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-TravelTime”。 |
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅名称 |
-   | **资源组** | LA-TravelTime-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“LA-TravelTime-RG”。 |
+   | **资源组** | LA-TravelTime-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“LA-TravelTime-RG”。 |
    | **位置** | 美国西部 | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
    | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
    ||||
@@ -89,10 +89,10 @@ ms.locfileid: "74790301"
 
    ![更改重复触发器的间隔和频率](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | 间隔  | 是 | 1 | 在两次检查之间需等待的时间间隔数 |
-   | **频率** | 是 | 周次 | 用于定期触发的时间单位 |
+   | **频率** | 是 | Week | 用于定期触发的时间单位 |
    |||||
 
 1. 在“间隔”和“频率”下，打开“添加新参数”列表，然后选择要添加到触发器的这些属性。   
@@ -107,7 +107,7 @@ ms.locfileid: "74790301"
 
    ![提供计划和定期触发详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **在这些日期** | 星期一、星期二、星期三、星期四、星期五 | 仅当“频率”设置为“周”时可用  |
    | **在这些小时** | 7,8,9 | 仅当“频率”设置为“周”或“天”时可用  。 选择一天中的某些小时，用于运行此定期触发。 此示例在 7、8、9 点运行。 |
@@ -138,7 +138,7 @@ ms.locfileid: "74790301"
 
    ![创建与必应地图 API 的连接](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | BingMapsConnection | 提供连接的名称。 此示例使用“BingMapsConnection”。 |
    | **API 密钥** | 是 | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 如果没有必应地图密钥，请了解[如何获取密钥](https://msdn.microsoft.com/library/ff428642.aspx)。 |
@@ -158,7 +158,7 @@ ms.locfileid: "74790301"
 
    ![提供“获取路线”操作的详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **路标 1** | 是 | <*start-location*> | 路线起点 |
    | **路标 2** | 是 | <*end-location*> | 路由终点 |
@@ -189,7 +189,7 @@ ms.locfileid: "74790301"
 
 1. 提供变量的详细信息，如下所述：
 
-   | 属性 | 必选 | Value | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | travelTime | 变量的名称。 此示例使用“travelTime”。 |
    | 类型  | 是 | Integer | 变量的数据类型 |

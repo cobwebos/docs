@@ -63,6 +63,17 @@
         - name: 部署步骤
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: 概述
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: 控制映射
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: 概述
@@ -184,7 +195,7 @@
     - name: 蓝图中的资源锁定
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 PowerShell 管理分配
       displayName: 'create, update, remove'
@@ -203,7 +214,7 @@
 - name: 故障排除
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

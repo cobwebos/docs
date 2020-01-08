@@ -1,18 +1,17 @@
 ---
 title: 快速入门 - 使用 Visual Studio 创建 Azure 流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707338"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431528"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
@@ -22,7 +21,7 @@ ms.locfileid: "74707338"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 
 * 安装 Visual Studio 2019、Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。
 
@@ -32,7 +31,7 @@ ms.locfileid: "74707338"
 
 在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”    。
 
@@ -40,8 +39,8 @@ ms.locfileid: "74707338"
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |Subscription  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
-   |Resource group   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
+   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |资源组   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
    |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
    |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
@@ -114,7 +113,7 @@ ms.locfileid: "74707338"
    |源类型   |  数据流 |  选择合适的输入源：数据流或参考数据。   |
    |源  |  IoT 中心 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
-   |Subscription  |  用户的订阅\<\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
+   |订阅  |  用户的订阅\<\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
    |IoT 中心  |  MyASAIoTHub   |  选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。   |
    
 3. 让其他选项保留默认值，然后选择“保存”以保存设置。   
@@ -132,7 +131,7 @@ ms.locfileid: "74707338"
    |输出别名  |  输出   |  输入一个名称，用于标识作业的输出。   |
    |接收器   |  Blob 存储 |  选择合适的接收器。    |
    |资源  |  手动提供数据源设置 |  选择手动输入数据或选择现有帐户。   |
-   |Subscription  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
+   |订阅  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
    |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |
    |容器  |  container1   |  选择你在存储帐户中创建的现有容器。   |
    |路径模式  |  output   |  输入要在容器内创建的文件路径的名称。   |
@@ -168,7 +167,7 @@ ms.locfileid: "74707338"
 
 2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
    ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 

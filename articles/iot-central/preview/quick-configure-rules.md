@@ -3,18 +3,18 @@ title: 快速入门 - 在 Azure IoT Central 中配置规则和操作
 description: 本快速入门演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434817"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作（预览功能）
 
@@ -24,7 +24,7 @@ ms.locfileid: "74706723"
 
 在本快速入门中，将创建一个规则，用于在环境传感器设备中的温度超过 90&deg; F 时发送电子邮件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，应先完成前面的两个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)，以创建要使用的环境传感器设备模板  。
 
@@ -43,7 +43,7 @@ ms.locfileid: "74706723"
     | 字段                                        | 值                             |
     | -------------------------------------------- | ------------------------------    |
     | 度量                                  | 温度                       |
-    | 运算符                                     | 大于                   |
+    | 操作员                                     | 大于                   |
     | 值                                        | 90                                |
 
     若要添加更多条件，请选择“+条件”  。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439459"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -42,7 +42,7 @@ ms.locfileid: "74926616"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 存储帐户。 可将 Blob 存储用作源数据存储。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 * Azure 存储资源管理器下载。 若要安装此工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。
@@ -342,7 +342,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 ## <a name="fail-email-workflow"></a>失败电子邮件工作流
 
-克隆 **CopySuccessEmail** 作为名为 *CopyFailEmail* 的另一个逻辑应用工作流。 在请求触发器中，`Request Body JSON schema` 是相同的。 更改电子邮件的格式（例如 `Subject`）即可定制失败电子邮件。 下面是一个示例：
+克隆 **CopySuccessEmail** 作为名为 *CopyFailEmail* 的另一个逻辑应用工作流。 在请求触发器中，`Request Body JSON schema` 是相同的。 更改电子邮件的格式（例如 `Subject`）即可定制失败电子邮件。 以下是示例：
 
 ![逻辑应用设计器 - 失败电子邮件工作流](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -453,9 +453,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 管道代码的第一个部分定义参数。
 
-* `sourceBlobContainer`。 源 Blob 数据集在管道中使用此参数。
-* `sinkBlobContainer`。 接收器 Blob 数据集在管道中使用此参数。
-* `receiver`。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
+* `sourceBlobContainer` 列中的一个值匹配。 源 Blob 数据集在管道中使用此参数。
+* `sinkBlobContainer` 列中的一个值匹配。 接收器 Blob 数据集在管道中使用此参数。
+* `receiver` 列中的一个值匹配。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...

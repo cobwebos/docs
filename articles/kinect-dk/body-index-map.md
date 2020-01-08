@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 索引, 分段, 映射
-ms.openlocfilehash: e8ada12f9bca5d21476f32a020456fdac4e654f0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: cf86d38ae783ed70cea51f66759ea0d1a7f3aa53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456991"
 ---
 # <a name="azure-kinect-body-tracking-index-map"></a>Azure Kinect 人体跟踪索引映射
 
@@ -22,7 +22,7 @@ ms.locfileid: "73932221"
 ![人体索引映射示例](./media/concepts/body-index-map.png)
 
 >[!NOTE]
-> 人体索引不同于人体 ID。可以调用 API [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga673def22c3e3d4683a5702d8fe3cdc5e.html#ga673def22c3e3d4683a5702d8fe3cdc5e) 从给定的人体索引中查询人体 ID。
+> 人体索引不同于人体 ID。可以调用 API [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92) 从给定的人体索引中查询人体 ID。
 
 
 ## <a name="using-body-index-map"></a>使用人体索引映射

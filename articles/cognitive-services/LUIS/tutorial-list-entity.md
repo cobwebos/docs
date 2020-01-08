@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447787"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>教程：使用列表实体从言语中获取文本完全匹配的数据
 
 本教程介绍如何获取与预定义的项列表完全匹配的数据。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -51,7 +49,7 @@ ms.locfileid: "74852467"
 
 ## <a name="import-example-json-and-add-utterances"></a>导入示例 .json 并添加言语
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)。
+1.  下载并保存[应用 JSON 文件](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)。
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435858"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
 了解如何为企业安全性套餐 (ESP) Apache Kafka 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 `sales` 和 `marketingspend` 主题的访问。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建域用户
@@ -93,7 +93,7 @@ ms.locfileid: "73044636"
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   将 `DOMAINADMIN` 替换为在[创建群集](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)期间为你的群集配置的管理员用户，将 `CLUSTERNAME` 替换为你的群集的名称。 出现提示时，输入管理员用户帐户的密码。 有关在 HDInsight 中使用 `SSH` 的详细信息，请参阅[在 HDInsight 中使用 SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+   将 `DOMAINADMIN` 替换为在[创建群集](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)期间为你的群集配置的管理员用户，将 `CLUSTERNAME` 替换为你的群集的名称。 出现提示时，输入管理员用户帐户的密码。 有关在 HDInsight 中使用 `SSH` 的详细信息，请参阅[在 HDInsight 中使用 SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令将群集名称保存到一个变量中并安装 JSON 分析实用工具 (`jq`)。 出现提示时，请输入 Kafka 群集名称。
 
@@ -131,7 +131,7 @@ ms.locfileid: "73044636"
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. 运行以下命令：
+2. 执行以下命令：
 
    ```bash
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
@@ -189,11 +189,11 @@ ms.locfileid: "73044636"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 Kafka 群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 1. 选择“服务”下的“HDInsight 群集”   。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
-1. 单击“删除”  。 单击 **“是”** 。
+1. 单击 **“删除”** 。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

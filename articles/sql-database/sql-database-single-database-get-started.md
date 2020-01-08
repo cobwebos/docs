@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443837"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 
@@ -33,7 +33,7 @@ ms.locfileid: "73821011"
 - 预配计算层中的单一数据库已使用两个[购买模型](sql-database-purchase-models.md)之一预分配固定数量的计算资源，包括 CPU 和内存。
 - 无服务器计算层中的单一数据库具有一系列计算资源，包括可自动扩展且仅在[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中提供的 CPU 和内存。
 
-创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
+创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/management/overview.md)中。
 
 > [!NOTE]
 > 本快速入门使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，但[基于 DTU 的购买模型](sql-database-service-tiers-DTU.md)也可用。

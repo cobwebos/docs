@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453668"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>快速入门：使用资源管理器模板设置机密以及从 Azure Key Vault 检索机密
 
@@ -25,7 +25,7 @@ ms.locfileid: "71161469"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -153,6 +153,6 @@ Write-Host "Press [ENTER] to continue..."
 在本快速入门中，你使用 Azure 资源管理器模板创建了密钥保管库和机密，并验证了部署。 若要详细了解 Key Vault 和 Azure 资源管理器，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](key-vault-overview.md)
-- 了解有关 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)的详细信息
+- 了解有关 [Azure 资源管理器](../azure-resource-manager/management/overview.md)的详细信息
 - 获取有关[密钥、机密和证书](about-keys-secrets-and-certificates.md)的详细信息
 - 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

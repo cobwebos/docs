@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406414"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563269"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>教程：使用 REST 和 Python 创建 AI 扩充管道
 
@@ -40,7 +40,7 @@ ms.locfileid: "74406414"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程使用了以下服务、工具和数据。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "74406414"
 ## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
 
 > [!Note]
-> 本文介绍如何使用一系列 Python 脚本构建数据源、索引、索引器和技能组。 要下载完整的笔记本示例，请转到[Azure-Search-python-samples 存储库](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook)。
+> 本文介绍如何使用一系列 Python 脚本构建数据源、索引、索引器和技能组。 要下载完整的笔记本示例，请转到[Azure-Search-python-samples 存储库](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)。
 
 使用 Anaconda 导航器启动 Jupyter Notebook，并创建新的 Python 3 笔记本。
 
@@ -276,7 +276,7 @@ print(r.status_code)
 
 本演练使用以下字段和字段类型：
 
-| field-names: | id         | 内容   | languageCode | keyPhrases         | organizations     |
+| field-names: | id         | content   | languageCode | keyPhrases         | 组织     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -517,4 +517,4 @@ pprint(json.dumps(r.json(), indent=1))
 使用自定义技能自定义或扩展管道。 创建自定义技能并将其添加到技能集可以载入自己编写的文本或图像分析代码。
 
 > [!div class="nextstepaction"]
-> 示例：[创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
+> [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)

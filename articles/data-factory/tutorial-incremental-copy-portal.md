@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c8df388bcd3956746edba9a721b0598025b827e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927983"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439179"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -62,7 +62,7 @@ ms.locfileid: "74927983"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
 * **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
 
@@ -150,7 +150,7 @@ END
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源”   > “Analytics”   > “数据工厂”  ： 
+2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：    
    
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -165,7 +165,7 @@ END
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
       - 选择“新建”，并输入资源组的名称。    
          
-        若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+        若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”  作为“版本”  。
 7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 8. 单击“创建”。       
@@ -202,7 +202,7 @@ END
     7. 对于“链接服务”，确认选择了“AzureSqlDatabaseLinkedService”。  
        
         ![“新建链接服务”窗口](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. 选择“完成”。 
+    8. 选择“完成”  。
 9. 在“连接”  选项卡中，对于“表”，选择“[dbo].[watermarktable]”。   若要预览表中的数据，请单击“预览数据”。 
 
     ![水印数据集 - 连接设置](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
@@ -215,7 +215,7 @@ END
 13. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。    
 14. 在属性窗口的“常规”选项卡中，对于“名称”输入“SourceDataset”   。  为“链接服务”选择“AzureSqlDatabaseLinkedService”。  
 15. 对于“表”，请选择“[dbo].[data_source_table]”。  本教程后面需指定一个针对此数据集的查询。 此查询优先于在此步骤中指定的表。
-16. 选择“完成”。  
+16. 选择“完成”  。 
 17. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到管道编辑器。 在**查找**活动的属性窗口中，确认对于“源数据集”字段，是否已选择 **SourceDataset**。  
 18. 对于“使用查询”字段，请选择“查询”，   然后输入以下查询：仅从 **data_source_table** 中选择 **LastModifytime** 的最大值。 请确保还选中了“仅第一行”  。
 
@@ -253,10 +253,10 @@ END
     2. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
     3. 测试连接，然后单击  “完成”。 
 
-27. 在“设置属性”窗口中，对于“链接服务”，确认选择了“AzureStorageLinkedService”。    然后选择“完成”。 
+27. 在“设置属性”窗口中，对于“链接服务”，确认选择了“AzureStorageLinkedService”。    然后选择“完成”  。
 28. 转到 SinkDataset 的“连接”  选项卡，然后执行以下步骤：
     1. 对于“文件路径”字段  ，请输入“adftutorial/incrementalcopy”  。 **adftutorial** 是 Blob 容器名称，**incrementalcopy** 是文件夹名称。 此代码片段假设 Blob 存储中有一个名为 adftutorial 的 Blob 容器。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 Azure 数据工厂自动创建输出文件夹 **incrementalcopy**（如果不存在）。 对于“文件路径”，也可使用“浏览”按钮导航到 Blob 容器中的某个文件夹。  
-    2. 对于“文件路径”字段的“文件”部分，选择“添加动态内容 [Alt+P]”，然后在打开的窗口中输入 `@CONCAT('Incremental-', pipeline().RunId, '.txt')`。    然后选择“完成”。  文件名是使用表达式动态生成的。 每次管道运行都有唯一的 ID。 “复制”活动使用运行 ID 生成文件名。 
+    2. 对于“文件路径”字段的“文件”部分，选择“添加动态内容 [Alt+P]”，然后在打开的窗口中输入 `@CONCAT('Incremental-', pipeline().RunId, '.txt')`。    然后选择“完成”  。 文件名是使用表达式动态生成的。 每次管道运行都有唯一的 ID。 “复制”活动使用运行 ID 生成文件名。 
 
 28. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到**管道**编辑器。 
 29. 在“活动”工具箱中，展开“常规”  ，然后将**存储过程**活动从“活动”工具箱拖放到管道设计器图面。   将**复制**活动的绿色（成功）输出**连接**到**存储过程**活动。 

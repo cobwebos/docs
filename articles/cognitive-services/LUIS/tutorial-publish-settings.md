@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 0e105d70ff7f590a84e0a82c15bcdd83052b63a8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447694"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>教程：将情绪分析添加为发布设置
 
@@ -35,7 +35,7 @@ ms.locfileid: "74808001"
 
 以下陈述显示了情绪的示例：
 
-|情绪|得分|话语|
+|情绪|Score|话语|
 |:--|:--|:--|
 |消极|0.01 |这披萨太难吃了。|
 |积极|0.97 |这份奶酪披萨很棒。|
@@ -46,7 +46,7 @@ ms.locfileid: "74808001"
 
 ## <a name="import-example-json-to-begin-app"></a>导入示例 .json 以开始应用
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)。
+1.  下载并保存[应用 JSON 文件](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)。
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

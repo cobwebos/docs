@@ -3,18 +3,18 @@ title: 快速入门：使用 REST API 创建蓝图
 description: 在本快速入门中，通过 REST API 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436601"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入门：使用 REST API 定义和分配 Azure 蓝图
 
 了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -407,7 +407,9 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      > [!IMPORTANT]
      > 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
 
-## <a name="unassign-a-blueprint"></a>取消分配蓝图
+## <a name="clean-up-resources"></a>清理资源
+
+### <a name="unassign-a-blueprint"></a>取消分配蓝图
 
 可以从订阅中删除蓝图。 通常会在不再需要项目资源时将其删除。 删除蓝图时，作为该蓝图的一部分分配的项目将保留。 若要删除蓝图分配，请使用以下 REST API 操作：
 
@@ -417,7 +419,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>删除蓝图
+### <a name="delete-a-blueprint"></a>删除蓝图
 
 若要删除蓝图本身，请使用以下 REST API 操作：
 

@@ -1,19 +1,18 @@
 ---
 title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 65114f2ddb7567b47ac3951fbaf6664654e379f0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431554"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -23,13 +22,13 @@ ms.locfileid: "74707375"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
 
 在定义流分析作业之前，应该准备输入数据。 实时传感器数据将引入到 IoT 中心，随后配置为作业输入。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”    。
 
@@ -37,8 +36,8 @@ ms.locfileid: "74707375"
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |Subscription  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
-   |Resource group   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
+   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |资源组   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
    |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
    |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
@@ -89,8 +88,8 @@ ms.locfileid: "74707375"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称   |  MyASAJob   |   输入用于标识流分析作业的名称。 流分析作业名称只能包含字母数字字符、连字符和下划线，其长度必须介于 3 到 63 个字符之间。 |
-   |Subscription  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
-   |Resource group   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
+   |订阅  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
+   |资源组   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
    |位置  |  \<选择离用户最近的区域\> | 选择可以在其中托管流分析作业的地理位置。 使用最靠近用户的位置，以便改进性能并减少数据传输成本。 |
    |流式处理单位  | 1  |   流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。   |
    |宿主环境  |  云  |   流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。 |
@@ -114,7 +113,7 @@ ms.locfileid: "74707375"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  IoTHubInput   |  输入一个名称，用于标识作业的输入。   |
-   |Subscription   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |IoT 中心  |  MyASAIoTHub |  输入在上一部分创建的 IoT 中心的名称。 |
 
 4. 让其他选项保留默认值，然后选择“保存”以保存设置。   
@@ -132,7 +131,7 @@ ms.locfileid: "74707375"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名 |   BlobOutput   |   输入一个名称，用于标识作业的输出。 |
-   |Subscription  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |订阅  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |存储帐户 |  asaquickstartstorage |   选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。       |
    |容器 |   container1  |  选择你在存储帐户中创建的现有容器。   |
 
@@ -163,7 +162,7 @@ ms.locfileid: "74707375"
 
 2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
    ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 

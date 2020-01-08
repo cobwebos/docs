@@ -3,7 +3,7 @@ title: 使用 Azure Monitor 从混合 Windows 计算机收集数据
 description: 本快速入门介绍如何为 Azure 外部运行的 Windows 计算机部署 Log Analytics 代理，并通过 Azure Monitor 日志启用数据收集。
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
-ms.author: magoedte
+ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398946"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 
@@ -123,7 +123,7 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 
 8. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 每个选项将会列出，其旁边带有一个复选框：
 
-    ![Windows 性能计数器](media/quick-collect-windows-computer/windows-perfcounters-default.png).
+    ![Windows 性能计数器](media/quick-collect-windows-computer/windows-perfcounters-default.png)。
     
     选择“添加所选性能计数器”  。 随即会添加这些计数器，并为其预设 10 秒收集采样间隔。
 

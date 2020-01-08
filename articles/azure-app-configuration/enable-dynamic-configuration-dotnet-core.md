@@ -1,5 +1,6 @@
 ---
-title: 关于在 .NET Core 应用中使用 Azure 应用配置动态配置的教程 | Microsoft Docs
+title: 教程：在 .NET Core 应用中使用动态配置
+titleSuffix: Azure App Configuration
 description: 本教程介绍如何动态更新 .NET Core 应用的配置数据
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,30 +14,30 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433682"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
 应用配置 .NET Core 客户端库支持按需更新一组配置设置，不需让应用程序重启。 可以这样实现这一点：首先从配置提供程序的选项中获取 `IConfigurationRefresher` 的实例，然后在代码中的任何位置调用该实例上的 `Refresh`。
 
-为了确保更新设置并避免对配置存储区进行太多的调用，可将缓存用于每个设置。 在设置的缓存值过期前，刷新操作不会更新该值，即使该值在配置存储区中已发生更改。 每个请求的默认过期时间为 30 秒，但是，如果需要，可以重写该过期时间。
+为了使设置保持更新并避免对配置存储区进行太多的调用，对每个设置使用了一个缓存。 在设置的缓存值过期前，刷新操作不会更新该值，即使该值在配置存储区中已发生更改。 每个请求的默认过期时间为 30 秒，但是，如果需要，可以重写该过期时间。
 
 本教程演示如何在代码中实现动态配置更新。 它建立在快速入门中介绍的应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 .NET Core 应用](./quickstart-dotnet-core-app.md)。
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置 .NET Core 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
 > * 在应用程序中使用最新配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -93,11 +94,11 @@ class Program
 `ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
     
 > [!NOTE]
-> 配置设置的默认缓存过期时间为 30 秒，但是，可以通过对作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项调用 `SetCacheExpiration` 方法来重写该过期时间。
+> 配置设置的默认缓存过期时间为 30 秒，但是，可以通过调用作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项上的 `SetCacheExpiration` 方法来重写该过期时间。
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -119,7 +120,7 @@ class Program
 
     ![本地启动应用快速入门](./media/quickstarts/dotnet-core-app-run.png)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
 1. 选择“配置资源管理器”  并更新以下键的值：
 

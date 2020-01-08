@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 45b9cdc74fc57e53ca2cd76f8b1f98671f5bbc7e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428764"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -42,11 +42,11 @@ ms.locfileid: "74791860"
 
    ![提供有关新逻辑应用的详细信息](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | <*logic-app-name*> | 逻辑应用名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅名称 |
-   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“My-First-LA-RG”。 |
+   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“My-First-LA-RG”。 |
    | **位置** | <*Azure-region*> | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
    | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
    ||||
@@ -77,11 +77,11 @@ ms.locfileid: "74791860"
 
    ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **RSS 源 URL** | `http://feeds.reuters.com/reuters/topNews` | 要监视的 RSS 源的链接 |
    | 间隔  | 1 | 在两次检查之间需等待的时间间隔数 |
-   | **频率** | 分钟 | 两次检查的间隔的时间单位  |
+   | **频率** | Minute | 两次检查的间隔的时间单位  |
    ||||
 
    时间间隔和频率合在一起，即可定义逻辑应用的触发器的计划。 此逻辑应用每分钟检查一次源。
@@ -147,7 +147,7 @@ ms.locfileid: "74791860"
 
       ![选择电子邮件正文内容的属性](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | 属性 | 说明 |
+      | properties | 说明 |
       |----------|-------------|
       | 源标题  | 项的标题 |
       |  源发布日期 | 项的发布日期和时间 |

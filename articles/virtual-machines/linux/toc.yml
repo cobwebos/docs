@@ -43,8 +43,10 @@
       href: tutorial-azure-security.md
     - name: 14 - 部署 Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15 - 将 CI/CD 与 Azure Pipelines 配合使用
+    - name: 15a - 使用 Azure Pipelines 进行部署
       href: tutorial-build-deploy-jenkins.md
+    - name: 15b - 使用 Azure Pipelines 进行 CI/CD
+      href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - 创建 LAMP 堆栈
       href: tutorial-lamp-stack.md
     - name: 16b - 创建 LEMP 堆栈
@@ -62,7 +64,7 @@
 - name: 概念
   items:
     - name: Azure 资源管理器
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 区域
       href: regions.md
     - name: 可用性和性能
@@ -162,7 +164,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 基础结构自动化
       href: infrastructure-automation.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全和策略
           href: security-policy.md
@@ -178,7 +180,7 @@
       href: backup-recovery.md
     - name: 基础结构指南
       href: infrastructure-example.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建 VM
       items:
@@ -655,7 +657,7 @@
               href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 常见问题解答
               href: migration-classic-resource-manager-faq.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/vm

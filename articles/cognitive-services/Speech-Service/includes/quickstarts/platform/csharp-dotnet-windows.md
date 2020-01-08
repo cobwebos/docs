@@ -7,21 +7,21 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: a858a078f8e22a7176fc0eeb09ae0133e2ea11a4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469793"
 ---
 本指南介绍如何安装用于 .NET Framework (Windows) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要：
 
@@ -57,7 +57,7 @@ ms.locfileid: "74818562"
 
    ![NuGet 包管理器](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. 在右上角找到“包源”  下拉框，确保选择了 **`nuget.org`** 。
+1. 在右上角找到“包源”下拉框，确保选择了 `nuget.org`   。
 
 1. 在左上角，选择“浏览”  。
 

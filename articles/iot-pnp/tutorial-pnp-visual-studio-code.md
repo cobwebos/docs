@@ -3,18 +3,18 @@ title: 创建和测试 IoT 即插即用预览版设备 | Microsoft Docs
 description: 向设备开发人员介绍如何使用 VS Code 为 IoT 即插即用预览版设备创建和测试新的设备功能模型。
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569884"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550260"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>教程：使用 Visual Studio Code 创建和测试设备功能模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "73569884"
 
 本教程中介绍如何生成该主干代码的部分假设使用的是 Windows。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建设备功能模型
@@ -30,7 +30,7 @@ ms.locfileid: "73569884"
 > * 在生成的代码中实现存根
 > * 运行代码以测试与 IoT 中心之间的交互
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用本教程所述的设备功能模型，需要：
 
@@ -43,7 +43,7 @@ ms.locfileid: "73569884"
 
 若要生成本教程所述的在 Windows 上生成的 C 代码，需要：
 
-* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 NuGet 包管理器组件工作负荷   。 或者，如果 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015 安装了相同的工作负荷。
+* [适用于 Visual Studio 的生成工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)，其中包含 C++ 生成工具和 NuGet 包管理器组件工作负荷   。 安装了相同工作负荷的 [Visual Studio（Community、Professional 或 Enterprise）](https://visualstudio.microsoft.com/downloads/)2019、2017 或 2015。
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
 

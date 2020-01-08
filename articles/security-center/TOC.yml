@@ -6,7 +6,7 @@
       href: security-center-intro.md
     - name: 支持的平台
       href: security-center-os-coverage.md
-    - name: 受支持的功能
+    - name: 支持的功能
       href: security-center-services.md
 - name: 快速入门
   expanded: true
@@ -49,6 +49,8 @@
       items:
         - name: 安全警报概述
           href: security-center-alerts-overview.md
+        - name: 警报参考列表
+          href: alerts-reference.md
         - name: 管理安全警报
           href: security-center-managing-and-responding-alerts.md
         - name: 管理安全事件
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure 服务层的威胁检测
           href: security-center-alerts-service-layer.md
-        - name: 与 Azure 安全产品集成
+        - name: 通过威胁检测进行 Azure WAF 和 Azure DDoS 防护
           href: security-center-alerts-integration.md
         - name: 云智能警报关联（事件）
           href: security-center-alerts-cloud-smart.md
@@ -69,12 +71,20 @@
           href: security-center-threat-intel.md
         - name: 警报验证（EICAR 测试文件）
           href: security-center-alert-validation.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 提高安全分数
       href: security-center-secure-score.md
     - name: 升级到高级安全
       href: security-center-onboarding.md
+    - name: 扫描 VM 中的漏洞
+      items:
+        - name: 漏洞扫描概述
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: VM 的集成漏洞扫描程序
+          href: built-in-vulnerability-assessment.md
+        - name: 使用外部扫描程序
+          href: partner-vulnerability-assessment.md
     - name: 使用 Microsoft Defender ATP 保护服务器
       href: security-center-wdatp.md
     - name: 使用 Azure VM 上的 SQL 高级数据安全
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: 加强安全态势
           href: security-center-monitoring.md
+        - name: 建议的参考列表
+          href: recommendations-reference.md
         - name: 保护计算机和应用
           href: security-center-virtual-machine-protection.md
-        - name: 计算机和应用建议参考
-          href: recommendations-compute-and-apps.md
         - name: 保护网络资源
           href: security-center-network-recommendations.md
-        - name: 网络建议参考
-          href: recommendations-network.md
         - name: 保护数据和存储服务
           href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: 安装终结点保护
           href: security-center-install-endpoint-protection.md
-        - name: 未安装漏洞评估
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: 威胁报告
           href: security-center-threat-report.md
         - name: 警报置信度分数
@@ -169,7 +175,7 @@
           href: security-center-playbooks.md
         - name: 规划和操作
           href: security-center-planning-and-operations-guide.md
-- name: 引用
+- name: 参考
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'

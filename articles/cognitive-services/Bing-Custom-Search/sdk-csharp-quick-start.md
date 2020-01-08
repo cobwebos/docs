@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 C# SDK 调用必应自定义搜索终结点 | Microsoft Docs
+title: 快速入门：使用 C# SDK 调用必应自定义搜索终结点
 titleSuffix: Azure Cognitive Services
 description: 参考本快速入门开始使用 C# SDK 从必应自定义搜索实例请求搜索结果。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5e932b1ff597fc0170a6bb83841bc6ca7306693a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977142"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448720"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>快速入门：使用 C# SDK 调用必应自定义搜索终结点 
 
 参考本快速入门开始使用 C# SDK 从必应自定义搜索实例请求搜索结果 虽然必应自定义搜索具有与大多数编程语言兼容的 REST API，但必应自定义搜索 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) 上找到此示例的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)

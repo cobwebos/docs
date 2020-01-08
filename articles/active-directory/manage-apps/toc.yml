@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
       href: application-proxy-add-on-premises-application.md
+- name: 示例
+  items:
+    - name: 适用于应用程序代理的 Azure PowerShell 示例
+      href: application-proxy-powershell-samples.md
 - name: 概念
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: 应用程序预配 (SCIM)
       items:
+        - name: 预配工作原理
+          href: how-provisioning-works.md
         - name: 规划自动用户预配部署
           href: plan-auto-user-provisioning.md
-        - name: 对启用 SCIM 的应用自动执行预配
-          href: use-scim-to-provision-users-and-groups.md
-        - name: 手动预配与自动预配
-          href: application-provisioning-config-how-to.md
     - name: 云 HR 预配
       items:
         - name: 规划云 HR 用户预配部署
@@ -90,7 +92,7 @@
           href: application-proxy-connectors.md
         - name: 连接器组
           href: application-proxy-connector-groups.md
-        - name: 安全
+        - name: 安全性
           href: application-proxy-security.md
         - name: 网络拓扑
           href: application-proxy-network-topology.md
@@ -98,7 +100,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: 比较远程访问解决方案
           href: application-proxy-migration.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 云应用和单一登录
@@ -139,6 +141,8 @@
           items:
             - name: 配置用户同意
               href: configure-user-consent.md
+            - name: 授予租户范围的管理员许可
+              href: grant-admin-consent.md
             - name: 配置管理员同意工作流（预览版）
               href: configure-admin-consent-workflow.md
             - name: 用于将用户和组分配到应用的方法
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: 应用程序预配 (SCIM)
       items:
-        - name: 配置应用预配
+        - name: 为库应用配置预配
+          href: configure-automatic-user-provisioning-portal.md
+        - name: 生成 SCIM 终结点并配置预配
+          href: use-scim-to-provision-users-and-groups.md
+        - name: 编辑属性映射
           items:
-            - name: 配置自动用户预配
-              href: configure-automatic-user-provisioning-portal.md
-            - name: 将 SCIM 用于自动预配
-              href: use-scim-to-provision-users-and-groups.md
             - name: 自定义属性映射
               href: Customize-application-attributes.md
             - name: 为属性映射编写表达式
               href: functions-for-customizing-application-data.md
+        - name: 在范围中包括或排除用户和组
+          items:
             - name: 设置要预配的用户或组的范围
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: 对超出范围的用户跳过删除
               href: skip-out-of-scope-deletions.md
+        - name: 监视和报告预配情况
+          items:
             - name: 监视预配状态和性能
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 报告有关应用预配的信息
               href: check-status-user-account-provisioning.md
             - name: 导出和导入配置
               href: export-import-provisioning-configuration.md
-            - name: 使用 MS Graph 自动执行配置
-              href: application-provisioning-configure-api.md
+        - name: 使用 MS Graph 自动执行配置
+          href: application-provisioning-configure-api.md
         - name: 排查用户预配问题
           items:
             - name: 排查应用预配问题
@@ -377,7 +385,7 @@
       items:
         - name: 通过应用交付控制器和网络保护旧版应用
           href: secure-hybrid-access.md
-- name: 引用
+- name: 参考
   items:
     - name: 应用程序预配 (SCIM)
       items:

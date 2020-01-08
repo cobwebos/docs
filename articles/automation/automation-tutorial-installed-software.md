@@ -3,20 +3,16 @@ title: 使用 Azure 自动化发现在计算机上安装的软件 | Microsoft Do
 description: 使用清单发现在环境中的计算机上安装的软件。
 services: automation
 keywords: 清单, 自动化, 更改, 跟踪
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
-ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420559"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -31,7 +27,7 @@ ms.locfileid: "67476821"
 > * 查看已安装软件
 > * 在清单日志中搜索已安装的软件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

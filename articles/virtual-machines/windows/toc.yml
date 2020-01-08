@@ -141,7 +141,7 @@
 - name: 概念
   items:
     - name: Azure 资源管理器
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
       href: regions.md
     - name: 可用性和性能
@@ -186,6 +186,8 @@
               href: sizes-gpu.md
             - name: 安装 GPU 驱动程序
               href: n-series-driver-setup.md
+            - name: 安装 AMD GPU 驱动程序
+              href: n-series-amd-driver-setup.md
         - name: 高性能计算
           displayName: H-series
           href: sizes-hpc.md
@@ -246,7 +248,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 基础结构自动化
       href: infrastructure-automation.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全和策略
           href: security-policy.md
@@ -262,7 +264,7 @@
       href: backup-recovery.md
     - name: 基础结构示例
       href: infrastructure-example.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建 VM
       items:
@@ -648,7 +650,7 @@
               href: migration-classic-resource-manager-faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/vm
@@ -672,7 +674,7 @@
 - name: 资源
   items:
     - name: 创作模板
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure 路线图

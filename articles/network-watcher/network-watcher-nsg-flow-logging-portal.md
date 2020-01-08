@@ -18,16 +18,16 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f6740076600854f612cfdd6324d93325f0cd5c05
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766593"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667518"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
-可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 本教程介绍如何执行下列操作：
+可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过网络安全组创建 VM
@@ -46,10 +46,10 @@ ms.locfileid: "74766593"
 
     |设置|值|
     |---|---|
-    |Name|myVm|
+    |名称|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |Subscription| 选择订阅。|
+    |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -89,15 +89,11 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
     | 设置        | 值                                                        |
     | ---            | ---   |
-    | Name           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
+    | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
     | 位置       | 选择“美国东部”                                            |
-    | Resource group | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
+    | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
 
-    创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。    在所有情况下，存储帐户必须与 NSG 位于同一区域中。 
-    
-    > [!NOTE]
-    > 虽然当前支持将 Microsoft.Insight 和 Microsoft.Network 提供程序作为 [Azure 存储的受信任 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)，但 NSG 流日志尚未完全上线。 若要启用 NSG 流日志记录，必须如上所述选择“所有网络”  。
-    
+    创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。    在所有情况下，存储帐户必须与 NSG 位于同一区域中。     
 4. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 5. 在“日志”下选择“NSG 流日志”，如下图所示   ：
 
@@ -116,8 +112,6 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
    > * 存储帐户已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。
 1. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。  
-    > [!IMPORTANT]
-    > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 ## <a name="download-flow-log"></a>下载流日志
 

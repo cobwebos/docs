@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951422"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659615"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>什么是用于服务器的 Azure Arc
 
@@ -30,7 +30,7 @@ ms.locfileid: "74951422"
 
 ## <a name="clients"></a>客户端
 
-### <a name="supported-operating-systems"></a>支持的操作系统
+### <a name="supported-operating-systems"></a>受支持的操作系统
 
 在公开预览版中，支持以下操作系统：
 
@@ -41,7 +41,7 @@ ms.locfileid: "74951422"
 
 ## <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
-请务必阅读 Azure 资源管理器限制，并根据针对[订阅](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[资源组](../../azure-subscription-service-limits.md#resource-group-limits)列出的准则来规划要连接的计算机的数量。 尤其在默认情况下，每个资源组的服务器数量限制为 800。
+请务必阅读 Azure 资源管理器限制，并根据针对[订阅](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[资源组](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)列出的准则来规划要连接的计算机的数量。 尤其在默认情况下，每个资源组的服务器数量限制为 800。
 
 ## <a name="networking-configuration"></a>网络配置
 
@@ -69,7 +69,7 @@ ms.locfileid: "74951422"
 
 如果要从官方分发服务器下载 [Azure 连接的计算机代理包](https://aka.ms/AzureConnectedMachineAgent)，则必须可从环境中访问以下站点。 可以选择将包下载到文件共享，并从该位置安装代理。 在这种情况下，可能需要修改从 Azure 门户生成的载入脚本。
 
-Windows:
+Windows：
 
 * `aka.ms`
 * `download.microsoft.com`
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-此外，还可以按照 [Azure 门户](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)下的步骤，使用门户注册资源提供程序。
+此外，还可以按照 [Azure 门户](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)下的步骤，使用门户注册资源提供程序。
 
 ## <a name="machine-changes-after-installing-the-agent"></a>安装代理后的计算机更改
 

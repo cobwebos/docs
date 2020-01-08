@@ -35,6 +35,7 @@
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
               href: quickstart-v2-nodejs-webapp.md
+              displayName: OIDC
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -135,7 +136,7 @@
                   href: scenario-web-app-call-api-app-registration.md
                 - name: 代码配置
                   href: scenario-web-app-call-api-app-configuration.md
-                - name: 登录
+                - name: 全局注销
                   href: scenario-web-app-call-api-sign-in.md
                 - name: 获取应用的令牌
                   href: scenario-web-app-call-api-acquire-token.md
@@ -213,7 +214,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
-                    - name: 将代理与 Xamarin iOS 和 Android 应用程序配合使用
+                    - name: 将代理与 Xamarin iOS 和 Android 配合使用
+                      displayName: Microsoft Authenticator Microsoft Intune
                       href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: 通用 Windows 平台
                       href: msal-net-uwp-considerations.md
@@ -241,13 +243,13 @@
                   href: msal-compare-msal-js-and-adal-js.md
                 - name: 迁移到 MSAL.Android
                   href: migrate-android-adal-msal.md
-                - name: 迁移到 MSAL.iOS 和 MacOS
+                - name: 迁移到 MSAL.iOS/MacOS
                   href: migrate-objc-adal-msal.md
                 - name: 迁移到 MSAL Python
                   href: migrate-python-adal-msal.md
                 - name: 迁移到适用于 Java 的 MSAL
                   href: migrate-adal-msal-java.md
-                - name: 使用代理将 Xamarin 应用从 ADAL.NET 迁移到 MSAL.NET
+                - name: 使用代理将 Xamarin 应用迁移到 MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: 支持的身份验证流
               href: msal-authentication-flows.md
@@ -263,7 +265,7 @@
               items:
                 - name: 客户端应用程序
                   href: msal-client-applications.md
-                - name: 应用程序配置 (.NET)
+                - name: 应用程序配置
                   href: msal-client-application-configuration.md
                 - name: 初始化应用程序 (.NET)
                   href: msal-net-initializing-client-applications.md
@@ -317,7 +319,7 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: 已知问题 - Safari
                       href: msal-js-known-issues-safari-browser.md
-                - name: iOS 和 MacOS SSL 的 MSAL 问题
+                - name: 排查 SSL 问题 (MSAL iOS/macOS)
                   href: ssl-issues.md
         - name: 身份验证协议
           items:
@@ -384,7 +386,7 @@
               href: /azure/active-directory/manage-apps/user-provisioning
             - name: 生成和集成 SCIM 终结点
               href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: Authentication
           items:
@@ -400,9 +402,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: 应用程序配置
           items:
-            - name: 从应用注册（旧版）转换到 Azure 门户中的新应用注册体验
+            - name: 新的 Azure 门户应用注册培训指南
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: 从“应用程序注册”门户转换到 Azure 门户中的新应用注册体验
+            - name: 新的 Azure 门户应用注册体验
               href: app-registration-portal-training-guide.md
             - name: 将单租户应用转换为多租户应用
               href: howto-convert-app-to-be-multi-tenant.md
@@ -418,7 +420,7 @@
               href: howto-add-app-roles-in-azure-ad-apps.md
             - name: 品牌准则
               href: howto-add-branding-in-azure-ad-apps.md
-            - name: 发布者域
+            - name: 配置发布服务器域
               href: howto-configure-publisher-domain.md
             - name: 服务条款和隐私声明
               href: howto-add-terms-of-service-privacy-statement.md
@@ -432,7 +434,7 @@
                   href: msal-net-token-cache-serialization.md
                 - name: 清除令牌缓存
                   href: msal-net-clear-token-cache.md
-                - name: 通过选项实例化公共客户端
+                - name: 实例化公共客户端应用
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: 通过选项实例化机密客户端
                   href: msal-net-instantiate-confidential-client-config-options.md
@@ -462,13 +464,13 @@
                   href: redirect-uris-ios.md
             - name: 适用于 Python 的 MSAL
               items:
-                - name: 令牌缓存序列化
+                - name: 自定义令牌缓存序列化
                   href: msal-python-token-cache-serialization.md
             - name: 适用于 Java 的 MSAL
               items:
-                - name: 令牌缓存序列化
+                - name: 自定义令牌缓存序列化
                   href: msal-java-token-cache-serialization.md
-                - name: 在令牌缓存中添加和删除帐户
+                - name: 在令牌缓存中获取和删除帐户
                   href: msal-java-get-remove-accounts-token-cache.md
         - name: 使用 Visual Studio
           items:
@@ -482,7 +484,7 @@
               href: vs-active-directory-webapi-getting-started.md
             - name: 我的 WebAPI 项目发生了什么情况？
               href: vs-active-directory-webapi-what-happened.md
-            - name: 身份验证检测期间的错误
+            - name: 诊断身份验证期间的错误
               href: vs-active-directory-error.md
     - name: 参考
       items:
@@ -497,7 +499,7 @@
           href: msal-configuration.md
         - name: 身份验证和授权错误代码
           href: reference-aadsts-error-codes.md
-        - name: 重大变化
+        - name: 重大更改
           href: reference-breaking-changes.md
 - name: v1.0
   expanded: false
@@ -637,7 +639,7 @@
           href: conditional-access-dev-guide.md
         - name: 国家云
           href: authentication-national-cloud.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: Authentication
           items:
@@ -726,7 +728,7 @@
           href: reference-app-manifest.md
         - name: 身份验证和授权错误代码
           href: reference-aadsts-error-codes.md
-        - name: 重大变化
+        - name: 重大更改
           href: reference-breaking-changes.md
 - name: 资源
   items:

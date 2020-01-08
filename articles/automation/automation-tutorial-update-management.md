@@ -2,19 +2,16 @@
 title: 管理 Azure VM 的更新和修补程序
 description: 本文概述了如何使用 Azure 自动化更改管理来管理 Azure VM 和非 Azure VM 的更新和修补程序。
 services: automation
-author: mgoedtel
-ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/03/2019
-ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420637"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -22,7 +19,7 @@ ms.locfileid: "74806552"
 
 有关定价信息，请参阅[更新管理自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 载入用于更新管理的 VM
@@ -31,7 +28,7 @@ ms.locfileid: "74806552"
 > * 计划更新部署
 > * 查看部署结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -136,7 +133,7 @@ ms.locfileid: "74806552"
 
 在“新建更新部署”  下，指定以下信息：
 
-* **名称**：输入用于更新部署的唯一名称。
+* **Name**：输入用于更新部署的唯一名称。
 
 * **操作系统**：选择更新部署的目标 OS。
 
@@ -148,7 +145,7 @@ ms.locfileid: "74806552"
 
   分类类型：
 
-   |操作系统  |Type  |
+   |OS  |类型  |
    |---------|---------|
    |Windows     | 关键更新</br>安全更新</br>更新汇总</br>功能包</br>服务包</br>定义更新</br>工具</br>更新        |
    |Linux     | 关键和安全更新</br>其他更新       |
@@ -178,8 +175,8 @@ ms.locfileid: "74806552"
 
 * **重启选项**:此设置确定应如何处理重启。 可用选项包括：
   * 需要时重新启动(默认)
-  * 始终重新启动
-  * 从不重新启动
+  * 永远重启
+  * 永不重启
   * 仅重启 - 不安装更新
 
 > [!NOTE]
@@ -224,7 +221,7 @@ ms.locfileid: "74806552"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 载入用于更新管理的 VM

@@ -2,27 +2,23 @@
 title: Azure 快速入门 - 使用 DSC 配置 VM | Microsoft Docs
 description: 使用 Desired State Configuration 在 Linux 虚拟机上配置 LAMP 堆栈
 services: automation
-ms.service: automation
 ms.subservice: dsc
 keywords: dsc, 配置, 自动化
-author: KrisBash
-ms.author: krbash
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421640"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置虚拟机
 
 启用 Desired State Configuration (DSC) 即可管理和监视 Windows 和 Linux 服务器的配置。 可以标识或自动更正不符合所需配置的配置。 本快速入门逐步介绍了如何使用 DSC 载入 Linux VM 并部署 LAMP 堆栈。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，你需要：
 

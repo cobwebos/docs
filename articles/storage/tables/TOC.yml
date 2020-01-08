@@ -45,11 +45,6 @@
   items:
     - name: 存储帐户
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-      items:
-        - name: 管理存储帐户
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: 升级存储帐户
-          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 数据冗余
       items:
         - name: Azure 存储复制
@@ -62,10 +57,8 @@
           href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: 异地区域冗余存储
           href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: 性能和缩放
+    - name: 性能、缩放和成本优化
       items:
-        - name: 可伸缩性和性能目标
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: 性能和可伸缩性清单
           href: storage-performance-checklist.md
         - name: 设计可伸缩的高性能表
@@ -82,14 +75,18 @@
       href: table-storage-design-modeling.md
     - name: 表设计模式
       href: table-storage-design-patterns.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建存储帐户
       displayName: 'resource manager, resource manager template, template, ARM'
-      href: /azure/storage/common/storage-quickstart-create-account
+      href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: 升级存储帐户
+      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: 查看和管理帐户密钥
+      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 如何使用存储模拟器
-      href: /azure/storage/common/storage-use-emulator
+      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
     - name: 传输数据
       items:
@@ -105,8 +102,16 @@
       items:
         - name: 延迟问题
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-- name: 资源
+- name: 参考
   items:
+    - name: 可伸缩性和性能目标
+      items:
+        - name: 表存储
+          href: scalability-targets.md
+        - name: 标准存储帐户
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: 存储资源提供程序
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 表存储 REST API
       href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
       maintainContext: true

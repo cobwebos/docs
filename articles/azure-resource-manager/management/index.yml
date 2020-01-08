@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: 管理资源文档
+summary: 了解如何管理和使用资源。
+metadata:
+  title: Azure 资源管理器文档
+  description: 了解如何开发 Azure 资源管理器模板并将其用于部署 Azure 资源
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657924"
+landingContent:
+- title: 关于 Azure 资源管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是资源管理器？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 资源管理器部署和经典部署
+      url: deployment-models.md
+- title: 关于 Azure 服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 订阅和服务限制
+      url: azure-subscription-service-limits.md
+    - text: 资源提供程序和类型
+      url: resource-providers-and-types.md
+    - text: 适用于每项 Azure 服务的资源提供程序
+      url: azure-services-resource-providers.md
+- title: 管理资源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 跨资源组和订阅进行移动
+      url: move-resource-group-and-subscription.md
+    - text: 跨区域移动
+      url: move-region.md
+    - text: 标记资源
+      url: tag-resources.md
+    - text: 锁定资源
+      url: lock-resources.md
+    - text: 删除资源组
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: 移动支持
+      url: move-support-resources.md
+    - text: 标记支持
+      url: tag-support.md
+    - text: 资源实例限制
+      url: resources-without-resource-group-limit.md
+- title: SDK 和工具
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: 跟踪操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看活动日志
+      url: view-activity-logs.md
+    - text: 请求限制
+      url: request-limits-and-throttling.md
+    - text: 异步操作
+      url: async-operations.md

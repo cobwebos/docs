@@ -10,12 +10,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439213"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -30,7 +30,7 @@ ms.locfileid: "74925102"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -99,7 +99,7 @@ ms.locfileid: "74925102"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-   本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+   本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 对于“版本”，选择“V2”。  
 1. 对于“位置”，请选择数据工厂所在的位置。  
 
@@ -164,7 +164,7 @@ ms.locfileid: "74925102"
    
    j. 输入该用户的**群集密码**。 
    
-   k. 选择“完成”。  
+   k. 选择“完成”  。 
 
    ![HDInsight 链接服务设置](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -241,7 +241,7 @@ ms.locfileid: "74925102"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何： 
+此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。 

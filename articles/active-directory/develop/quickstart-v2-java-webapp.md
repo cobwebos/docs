@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920695"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549935"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -28,7 +28,7 @@ ms.locfileid: "74920695"
 
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要运行此示例，需要：
 
@@ -61,14 +61,14 @@ ms.locfileid: "74920695"
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
 > 1. 在“概述”  页上，找到应用程序的“应用程序(客户端) ID”  和“目录(租户) ID”  值。 复制这些值，供以后使用。
 > 1. 从菜单选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me`。 
+>    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。 
 >    - 选择“保存”。 
 > 1. 在菜单中选择“证书和密码”，然后在“客户端密码”部分中单击“新建客户端密码”：   
 >
 >    - 键入（实例应用密码的）密钥说明。
 >    - 选择密钥持续时间“1 年”。 
 >    - 选择“添加”  时，将显示密钥值。
->    - 复制密钥的值供以后使用。 该密钥值将不会再次显示，也无法通过其他任何方式检索，因此，该值一旦在 Azure 门户中显示，请立即记下来。
+>    - 复制密钥的值供以后使用。 该密钥值将不会再次显示，也无法通过其他任何方式检索，因此，该值在 Azure 门户中显示时，请立即记下来。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -121,7 +121,7 @@ ms.locfileid: "74920695"
 
 1. 在前面的页面上，选择“登录”  按钮以重定向到 Azure Active Directory 并提示用户输入其凭据。
 
-1. 用户通过身份验证后，会重定向到 http://localhost:8080/msal4jsamples/secure/aad  。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
+1. 用户通过身份验证后，会重定向到 http://localhost:8080/msal4jsample/secure/aad  。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含该令牌的请求调用 Microsoft Graph，这将返回有关已登录用户的基本信息。
 

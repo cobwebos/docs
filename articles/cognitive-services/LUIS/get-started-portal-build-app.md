@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381981"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 本快速入门介绍如何在 LUIS 门户中生成新应用。 首先创建应用的基本部件、**意向**和**实体**。 然后，通过在交互式测试面板中提供用于获取预测的意向的示例用户话语，对应用进行测试。
 
@@ -37,7 +35,7 @@ ms.locfileid: "74278579"
 
    |设置名称| 值 | 目的|
    |--|--|--|
-   |Name|`myEnglishApp`|唯一的 LUIS 应用名称<br>必填|
+   |名称|`myEnglishApp`|唯一的 LUIS 应用名称<br>必填|
    |环境|**英语**|用户的言语语言：**en-us**<br>必填|
    |说明（可选）|`App made with LUIS Portal`|应用的说明<br>可选|
    |预测资源（可选） |-  |请不要选择。 LUIS 免费提供一个初学者密钥用于创作和发出 1,000 个预测终结点请求。 |

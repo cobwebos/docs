@@ -37,7 +37,7 @@
       href: limits.md
     - name: 修补、更新和版本控制
       href: ledger-versions.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 配置 Azure AD 访问
       href: configure-aad.md
@@ -61,23 +61,23 @@
       href: data-manager-cosmosdb.md
 - name: 资源
   items:
+    - name: Azure 区块链开发工具包
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: 区块链 REST API
       href: 'https://docs.microsoft.com/rest/api/blockchain/'
-    - name: 博客
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Azure 区块链服务 Visual Studio Code 扩展
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: 代码示例
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: 社区
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: 论坛
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN 支持论坛
       href: 'https://aka.ms/workbenchforum'
+    - name: 社区支持
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow 支持
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
     - name: 产品反馈
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

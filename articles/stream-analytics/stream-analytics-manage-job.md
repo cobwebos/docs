@@ -1,26 +1,24 @@
 ---
 title: 教程 - 使用 Azure 门户创建和管理流分析作业
 description: 本教程以端到端方式演示了如何使用 Azure 流分析来分析电话呼叫流中的欺诈性呼叫。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 488664b028568b3014b9b839122705d35104861e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459557"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
 本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些欺诈性呼叫，这些呼叫将由流分析作业进行筛选。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 生成示例性的电话呼叫数据并将其发送到 Azure 事件中心
@@ -30,12 +28,12 @@ ms.locfileid: "74707380"
 > * 测试和启动作业
 > * 在 Power BI 中可视化结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前，请执行以下操作：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 * 请从 Microsoft 下载中心下载电话呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，或者从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取源代码。
 * 你将需要 Power BI 帐户。
 
@@ -45,7 +43,7 @@ ms.locfileid: "74707380"
 
 请按以下步骤创建一个事件中心，然后向该事件中心发送呼叫数据：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源” > “物联网” > “事件中心”    。
 
    ![在门户中创建 Azure 事件中心](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -53,9 +51,9 @@ ms.locfileid: "74707380"
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
-   |Subscription     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
-   |Resource group     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
+   |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
+   |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
+   |资源组     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
    |位置     |   美国西部 2      |    一个位置，可在其中部署事件中心命名空间。     |
 
 4. 对其余设置使用默认选项，然后选择“创建”。 
@@ -137,8 +135,8 @@ ms.locfileid: "74707380"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称     |  ASATutorial       |   用于标识事件中心命名空间的唯一名称。      |
-   |Subscription    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
-   |Resource group   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
+   |订阅    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
+   |资源组   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
    |位置   |    美国西部 2     |      一个位置，可在其中部署作业。 为获得最佳性能，建议将作业和事件中心放置在同一区域，这样在不同区域之间传输数据时就不需要付费。      |
    |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。    |
    |流式处理单位     |    1       |      流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。      |
@@ -160,7 +158,7 @@ ms.locfileid: "74707380"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名     |  CallStream       |  提供用于标识输入的友好名称。 输入别名只能包含字母数字字符、连字符和下划线，而且长度必须介于 3 到 63 个字符之间。       |
-   |Subscription    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
+   |订阅    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
    |事件中心命名空间    |  myEventHubsNS       |  选择在上一部分创建的事件中心命名空间。 当前订阅中所有可用的事件中心命名空间均列在下拉列表中。       |
    |事件中心名称    |   MyEventHub      |  选择在上一部分创建的事件中心。 当前订阅中所有可用的事件中心均列在下拉列表中。       |
    |事件中心策略名称   |  MyPolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |

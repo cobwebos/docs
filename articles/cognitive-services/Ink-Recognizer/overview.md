@@ -3,19 +3,19 @@ title: 什么是墨迹识别器？ - 墨迹识别器 API
 titleSuffix: Azure Cognitive Services
 description: 将墨迹识别器集成到你的应用程序、网站、工具和其他解决方案中，以允许识别墨迹笔划数据并将其用作输入。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448147"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什么是墨迹识别器 API？
 
@@ -52,7 +52,7 @@ ms.locfileid: "68478372"
 请尝试学习以下语言的快速入门，以开始调用墨迹识别器 API。
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 若要了解墨迹识别 API 在数字墨迹应用中的工作原理，请查看 GitHub 上的以下示例应用程序：
 * [C# 和通用 Windows 平台 (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

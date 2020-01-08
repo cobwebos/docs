@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439407"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 
@@ -65,9 +65,9 @@ ms.locfileid: "74923486"
     ![增量加载流程图](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
@@ -169,7 +169,7 @@ ms.locfileid: "74923486"
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
       - 选择“新建”，并输入资源组的名称。    
          
-        若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+        若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2 (预览)”  作为**版本**。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”  。     
@@ -290,7 +290,7 @@ ms.locfileid: "74923486"
     ![完整复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
 4. 切换到“源”选项卡，为“源数据集”字段选择“SourceDataset”。    
 
-    ![复制活动 - 源](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png)
+    ![“复制”活动 - 源](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png)
 5. 切换到“接收器”选项卡，为“接收器数据集”字段选择“SinkDataset”。    
 
     ![复制活动 - 接收器](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
@@ -373,7 +373,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![查找活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤：  
 
-   1. 为“源数据集”字段选择“SourceDataset”。  
+   1. 对于“源数据集”字段，请选择“SourceDataset”。  
    2. 为“使用查询”选择“查询”。   
    3. 为“查询”输入以下 SQL 查询。  
 

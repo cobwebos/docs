@@ -2,21 +2,17 @@
 title: 排查 Azure 虚拟机上的更改错误 | Microsoft Docs
 description: 使用更改跟踪排查 Azure 虚拟机上的更改错误。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: 更改, 跟踪, 自动化
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420640"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -34,7 +30,7 @@ ms.locfileid: "67476863"
 > * 查看更改
 > * 配置警报
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -99,7 +95,7 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”  
 
-|属性  |说明  |
+|properties  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
@@ -112,7 +108,7 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”  
 
-|属性  |说明  |
+|properties  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
@@ -127,7 +123,7 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Linux 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”  
 
-|属性  |说明  |
+|properties  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |

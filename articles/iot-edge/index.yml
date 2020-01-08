@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure IoT Edge 文档
-summary: Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备或“边缘”上（而不是在云中）分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对事件更快地做出响应。
+summary: Azure IoT Edge 扩展了 IoT 中心。 在本地而不是云中分析设备数据、减少发送到云的数据、快速响应事件，以及进行脱机操作。
 metadata:
   title: Azure IoT Edge 文档
-  description: Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备或“边缘”上（而不是在云中）分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对事件更快地做出响应。
+  description: Azure IoT Edge 扩展了 IoT 中心。 在本地而不是云中分析设备数据、减少发送到云的数据、快速响应事件，以及进行脱机操作。
   services: iot-edge
   ms.service: iot-edge
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 673243b2e38b6d93091faea2e32a40d23b2a5267
-  ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+  ms.openlocfilehash: bf968da3bba6510b3ce273ba1049f4ad164319c2
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/06/2019
-  ms.locfileid: "68815768"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75457215"
 landingContent:
 - title: 针对 Linux 设备进行开发
   linkLists:

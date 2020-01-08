@@ -3,18 +3,18 @@ title: IoT 即插即用预览版简介 | Microsoft Docs
 description: 了解 IoT 即插即用预览版。 IoT 即插即用基于开放式建模语言，使 IoT 设备能够声明其功能。 IoT 设备在连接到 Azure IoT Central 等云解决方案或合作伙伴应用程序时，会出示该声明（称为“设备功能模型”）。 然后，云解决方案可以自动了解该设备，并开始与其交互 - 无需编写任何代码。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935398"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531156"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
@@ -86,6 +86,6 @@ IoT 即插即用适用于两种类型的开发人员：
 
 大致了解 IoT 即插即用后，我们建议接下来尝试学习以下快速入门之一：
 
-- [使用设备功能模型创建 IoT 即插即用设备](./quickstart-create-pnp-device.md)
-- [将设备连接到 IoT 中心](./quickstart-connect-pnp-device.md)
-- [连接到解决方案中的设备](./quickstart-connect-pnp-device-solution.md)
+- [使用设备功能模型创建 IoT 即插即用设备](./quickstart-create-pnp-device-windows.md)
+- [将设备连接到 IoT 中心](./quickstart-connect-pnp-device-c-windows.md)
+- [连接到解决方案中的设备](./quickstart-connect-pnp-device-solution-node.md)

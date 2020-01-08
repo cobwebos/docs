@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453520"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -42,8 +42,8 @@ ms.locfileid: "74225224"
    
 1. 在“创建虚拟网络”窗格中键入或选择以下值： 
    
-   - **名称**：键入“MyVNet”  。
-   - **资源组**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”   。 
+   - **Name**：键入“MyVNet”  。
+   - **ResourceGroup**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”   。 
    - **子网** > **名称**：键入“MyBackendSubnet”  。
    
 1. 选择“创建”  。
@@ -61,7 +61,7 @@ ms.locfileid: "74225224"
      1. 在下拉列表中选择“可用性集”。  
      2. 选择“新建”，键入  *MyAvailabilitySet*，然后选择“确定”。 
    
-1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:网络”** 。 
+1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -91,10 +91,10 @@ ms.locfileid: "74225224"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription               | 选择订阅。    |    
-    | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
-    | Name                   | *myLoadBalancer*                                   |
-    | 区域         | 选择“西欧”  。                                        |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
+    | 名称                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“美国东部 2”。                                         |
     | 类型          | 选择“内部”。                                         |
     | SKU           | 选择“基本”。                           |
     | 虚拟网络           | 选择“MyVNet”  。                          |    
@@ -120,7 +120,7 @@ ms.locfileid: "74225224"
    
 1. 在“添加后端池”  页上，键入或选择以下值：
    
-   - **名称**：键入 *MyBackendPool*。
+   - **Name**：键入 *MyBackendPool*。
    - **关联到**：在下拉列表中选择“可用性集”。 
    - **可用性集**：选择“MyAvailabilitySet”  。
    
@@ -149,7 +149,7 @@ ms.locfileid: "74225224"
    
 1. 在“添加运行状况探测”  页上，键入或选择以下值：
    
-   - **名称**：键入 *MyHealthProbe*。
+   - **Name**：键入 *MyHealthProbe*。
    - **协议**：下拉并选择“HTTP”  。 
    - **端口**：键入 *80*。 
    - **路径**：接受 */* 作为默认 URI。 可以将此值替换为任何其他的 URI。 
@@ -174,7 +174,7 @@ ms.locfileid: "74225224"
    
 1. 在“添加负载均衡规则”  页上，键入或选择以下值（如果还没有这些值）：
    
-   - **名称**：键入 *MyLoadBalancerRule*。
+   - **Name**：键入 *MyLoadBalancerRule*。
    - **前端 IP 地址：** 键入 *LoadBalancerFrontEnd*（如果不存在）。
    - **协议**：选择“TCP”  。
    - **端口**：键入 *80*。

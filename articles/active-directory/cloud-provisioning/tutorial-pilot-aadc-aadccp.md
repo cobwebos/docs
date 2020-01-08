@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425085"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -35,7 +35,7 @@ ms.locfileid: "74868756"
 
 4. 这是一种高级方案。 请确保严格按照本教程所述的步骤操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需的先决条件
 - 装有 Azure AD Connect sync 1.4.32.0 或更高版本的测试环境
 - 处于同步范围内的且可用于试运行的 OU 或组。 我们建议从少量的对象开始。
@@ -47,7 +47,7 @@ ms.locfileid: "74868756"
 至少应安装 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0。 若要更新 Azure AD Connect sync，请完成 [Azure AD Connect：升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)中的步骤。  
 
 ## <a name="stop-the-scheduler"></a>停止计划程序
-Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 若要修改和添加自定义规则，可以禁用该计划程序，以便在处理此操作时同步不会运行。  请执行以下步骤：
+Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 若要修改和添加自定义规则，可以禁用该计划程序，以便在处理此操作时同步不会运行。  请使用以下步骤：
 
 1.  在运行 Azure AD Connect sync 的服务器上，使用管理特权打开 PowerShell。
 2.  运行 `Stop-ADSyncSyncCycle`。  按 Enter。
@@ -78,7 +78,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  
  4. 在“范围筛选器”页上，输入试运行所依据的 OU 或安全组。   若要按 OU 筛选，请添加可分辨名称的 OU 部分。 此规则将应用到该 OU 中的所有用户。  因此，如果 DN 以“OU=CPUsers,DC=contoso,DC=com”结尾，请添加此筛选器。  然后单击“下一步”  。 
 
-    |规则|属性|运算符|值|
+    |规则|Attribute|操作员|值|
     |-----|----|----|-----|
     |范围 OU|DN|ENDSWITH|OU 的可分辨名称。|
     |范围组||ISMEMBEROF|安全组的可分辨名称。|
@@ -119,21 +119,6 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
 1. 以企业管理员权限登录到要使用的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则该服务器是 CP1。
-2. 在[此处](https://go.microsoft.com/fwlink/?linkid=2109037)下载 Azure AD Connect 云预配代理。
-3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
-3. 在初始屏幕上**接受**许可条款，然后单击“安装”。 </br>
-![欢迎屏幕](media/how-to-install/install1.png)</br>
-
-4. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。
-5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。    此操作将添加本地目录。  单击“下一步”。 </br>
-![欢迎屏幕](media/how-to-install/install3.png)</br>
-
-6. 在“配置完成”屏幕上，单击“确认”。    此操作将注册并重启代理。</br>
-![欢迎屏幕](media/how-to-install/install4.png)</br>
-
-7. 完成此操作后，应会看到通知“已成功验证”。   可以单击“退出”。 </br>
-![欢迎屏幕](media/how-to-install/install5.png)</br>
-8. 如果仍然显示了初始屏幕，请单击“关闭”。1.  以企业管理员权限登录到要使用的服务器。
 2. 在[此处](https://go.microsoft.com/fwlink/?linkid=2109037)下载 Azure AD Connect 云预配代理。
 3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
 3. 在初始屏幕上**接受**许可条款，然后单击“安装”。 </br>
@@ -207,7 +192,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 此外，可以验证相应的用户和组是否在 Azure AD 中存在。
 
 ## <a name="start-the-scheduler"></a>启动计划程序
-Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 修改规则后，接下来可以重启计划程序。  请执行以下步骤：
+Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 修改规则后，接下来可以重启计划程序。  请使用以下步骤：
 
 1.  在运行 Azure AD Connect sync 的服务器上，使用管理特权打开 PowerShell
 2.  运行 `Set-ADSyncScheduler -SyncCycleEnabled $true`。
@@ -231,7 +216,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  5. 在“连接目录”屏幕上，单击“下一步”。  
  6. 在“域和 OU 筛选”屏幕上，选择“同步选定的域和 OU”。  
  7. 展开自己的域，**取消选择**“CPUsers”OU。   单击“下一步”。 
-![scope](media/tutorial-existing-forest/scope1.png)</br>
+![作用域](media/tutorial-existing-forest/scope1.png)</br>
  9. 在“可选功能”屏幕上单击“下一步”。  
  10. 在“准备好配置”  屏幕上，单击“配置”  。
  11. 完成该操作后，单击“退出”。  

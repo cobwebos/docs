@@ -1,13 +1,13 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
 - name: 语音服务文档
   href: index.md
 - name: 概述
-  expanded: false
+  expanded: true
   items:
     - name: 什么是语音服务？
       href: overview.md
     - name: 语言和区域支持
       href: language-support.md
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
 - name: 语音转文本
   expanded: false
   items:
@@ -17,13 +17,13 @@
           href: speech-to-text.md
     - name: 快速入门
       items:
-        - name: 识别来自音频文件的语音
+        - name: 识别音频文件中的语音
           href: quickstarts/speech-to-text-from-file.md
         - name: 识别来自麦克风输入的语音
           href: quickstarts/speech-to-text-from-microphone.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 更改语音识别源语言
           href: how-to-specify-source-language.md
@@ -45,24 +45,31 @@
           href: how-to-use-codec-compressed-audio-input-streams-android.md
         - name: 将语音识别与 Docker 容器配合使用
           href: speech-container-howto.md?tabs=stt
-    - name: 引用
+    - name: 参考
       items:
         - name: 语音 SDK API
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API
           items:
             - name: 语音转文本 REST API
@@ -73,8 +80,9 @@
       items:
         - name: 语音转文本常见问题解答
           href: faq-stt.md
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
 - name: 文本转语音
-  exanded: false
+  expanded: false
   items:
     - name: 概述
       items:
@@ -88,7 +96,7 @@
           href: quickstarts/text-to-speech.md
         - name: 用于长格式音频的异步合成
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 使用 SSML 改进输出
           href: speech-synthesis-markup.md
@@ -98,24 +106,31 @@
           href: long-audio-api.md
         - name: 将语音合成与 Docker 容器配合使用
           href: speech-container-howto.md?tabs=tts
-    - name: 引用
+    - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API
           items:
             - name: 文本转语音 REST API
@@ -124,41 +139,50 @@
       items:
         - name: 文本转语音常见问题解答
           href: faq-text-to-speech.md
+          displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
 - name: 意向识别
-  exanded: false
+  expanded: false
   items:
     - name: 快速入门
       items:
         - name: 识别语音、意向和实体
           href: quickstarts/intent-recognition.md
-    - name: 操作指南
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: 操作方法指南
       items:
         - name: '使用 LUIS、C# 识别语音意向'
           href: how-to-recognize-intents-from-speech-csharp.md
-    - name: 引用
+    - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: LUIS 服务
           items:
             - name: LUIS 开发人员资源
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: 语音翻译
-  exanded: false
+  expanded: false
   items:
     - name: 概述
       items:
@@ -176,24 +200,31 @@
       items:
         - name: 生成可翻译和合成文本的 Flask 应用，REST
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
-    - name: 引用
+    - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
     - name: 资源
       items:
         - name: 语音翻译常见问题解答
@@ -205,30 +236,37 @@
       items:
         - name: 什么是对话听录？
           href: conversation-transcription.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 实时对话听录
           href: how-to-use-conversation-transcription.md
         - name: 异步对话听录
           href: how-to-async-conversation-transcription.md
-    - name: 引用
+    - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API
           items:
             - name: 对话听录 REST API
@@ -258,14 +296,20 @@
           href: quickstart-custom-speech-commands-create-new.md
         - name: 创建带参数的自定义命令（预览版）
           href: quickstart-custom-speech-commands-create-parameters.md
+        - name: 借助自定义语言使用自定义命令（预览版）
+          href: quickstart-custom-speech-commands-select-custom-voice.md
         - name: 借助语音 SDK 使用自定义命令（预览版）
           href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 使用语音 SDK 履行自定义命令（预览版）
           href: how-to-custom-speech-commands-fulfill-sdk.md
         - name: 向自定义命令添加参数验证
           href: how-to-custom-speech-commands-validations.md
+        - name: 向自定义命令添加确认
+          href: how-to-custom-speech-commands-confirmations.md
+        - name: 向自定义命令添加单步更正
+          href: how-to-custom-speech-commands-one-step-correction.md
     - name: 教程
       items:
         - name: 使用语音 SDK 为机器人启用语音
@@ -275,7 +319,7 @@
         - name: 语音助手常见问题解答
           href: faq-voice-assistants.md
 - name: 自定义
-  exanded: false
+  expanded: false
   items:
     - name: 语音转文本
       items:
@@ -329,6 +373,8 @@
           items:
             - name: 操作说明：音频内容创建
               href: how-to-audio-content-creation.md
+    - name: 自定义关键字命名准则
+      href: speech-devices-sdk-kws-guidelines.md
     - name: 自定义关键字发现
       href: speech-devices-sdk-create-kws.md
 - name: 语音服务
@@ -339,30 +385,34 @@
         - name: 呼叫中心
           href: call-center-transcription.md
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 免费试用语音服务
           href: get-started.md
         - name: 创建语音服务资源
           href: 'get-started.md#create-a-speech-resource-in-azure'
         - name: 容器
-          exanded: false
+          expanded: false
           items:
             - name: 安装和运行容器
               href: speech-container-howto.md
+              displayName: 'containers,install container,run container'
             - name: 配置容器
               href: speech-container-configuration.md
+              displayName: 'containers,configure containers,container config,configuration'
             - name: Kubernetes 和 Helm
               href: speech-container-howto-on-premises.md
+              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
             - name: Azure 容器实例
               href: deploy-speech-on-container-instances.md
+              displayName: 'ACI,azure container instances,container instances,containers'
     - name: 示例
       items:
         - name: 文本转语音 REST 示例
           href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
         - name: 批量听录 REST 示例
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: 引用
+    - name: 参考
       items:
         - name: REST API
           items:
@@ -389,27 +439,23 @@
       items:
         - name: 创建一个项目
           href: quickstarts/create-project.md
-        - name: '安装用于 C# 的语音 SDK'
-          href: quickstarts/setup-platform.md?pivots=programming-language-csharp
-        - name: 安装用于 C++ 的语音 SDK
-          href: quickstarts/setup-platform.md?pivots=programming-language-cpp
-        - name: 安装用于 Java 的语音 SDK
-          href: quickstarts/setup-platform.md?pivots=programming-language-java
-        - name: 安装用于 Python 的语音 SDK
-          href: quickstarts/setup-platform.md?pivots=programming-language-python
-        - name: 安装用于其他平台的语音 SDK
-          href: quickstarts/setup-platform.md?pivots=programming-language-more
-    - name: 操作指南
+        - name: 安装语音 SDK
+          href: quickstarts/setup-platform.md
+          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+    - name: 操作方法指南
       items:
-        - name: 启用日志记录
+        - name: 如何启用日志记录
           href: how-to-use-logging.md
+        - name: 如何跟踪内存使用情况
+          href: how-to-track-speech-sdk-memory-usage.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
     - name: 示例
       items:
         - name: 语音 SDK 示例 (GitHub)
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
         - name: 语音设备 SDK 示例 (GitHub)
           href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: 引用
+    - name: 参考
       items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
@@ -426,7 +472,7 @@
         - name: 语音 SDK 发行说明
           href: releasenotes.md
 - name: 设备
-  exanded: false
+  expanded: false
   items:
     - name: 概述
       items:
@@ -452,8 +498,12 @@
       items:
         - name: 排查语音设备 SDK 问题
           href: speech-devices-sdk-troubleshooting.md
+    - name: 参考
+      items:
+        - name: 语音设备 SDK 发行说明
+          href: devices-sdk-release-notes.md
 - name: 迁移
-  exanded: false
+  expanded: false
   items:
     - name: 从必应语音
       href: how-to-migrate-from-bing-speech.md
@@ -462,10 +512,11 @@
     - name: 从语音翻译 API
       href: how-to-migrate-from-translator-speech-api.md
 - name: 资源
-  exanded: false
+  expanded: false
   items:
     - name: 支持
       href: support.md
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: 区域
       href: regions.md
     - name: 定价和限制

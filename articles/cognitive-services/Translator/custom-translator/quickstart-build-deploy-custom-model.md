@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975748"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446747"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 
 本文提供的分步说明介绍如何使用自定义翻译生成一个翻译系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 若要使用[自定义翻译](https://portal.customtranslator.azure.ai)门户，需要通过 [Microsoft 帐户](https://signup.live.com)或 [Azure AD 帐户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)（在 Azure 上托管的组织帐户）进行登录。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74975748"
 
 ## <a name="upload-documents"></a>上传文档
 
-接下来，上传[训练](training-and-model.md#training-dataset-for-custom-translator)、[优化](training-and-model.md#tuning-dataset-for-custom-translator)和[测试](training-and-model.md#testing-dataset-for-custom-translator)文档设置。 可以上传[并行](what-are-parallel-documents.md)文档和组合文档。 还可以上传[字典](what-is-dictionary.md)。
+接下来，上传[训练](training-and-model.md#training-document-type-for-custom-translator)、[优化](training-and-model.md#tuning-document-type-for-custom-translator)和[测试](training-and-model.md#testing-dataset-for-custom-translator)文档设置。 可以上传[并行](what-are-parallel-documents.md)文档和组合文档。 还可以上传[字典](what-is-dictionary.md)。
 
 可以通过文档选项卡或特定项目的页面上传文档。
 
@@ -49,7 +49,7 @@ ms.locfileid: "74975748"
 
 所有必需文档都上传以后，下一步是生成模型。
 
-选择已创建的项目。 将会看到已上传的所有文档，这些文档与此项目共享一个语言对。 选择要包括在模型中的文档。 可以选择[训练](training-and-model.md#training-dataset-for-custom-translator)、[优化](training-and-model.md#tuning-dataset-for-custom-translator)和[测试](training-and-model.md#testing-dataset-for-custom-translator)数据，或者只选择训练数据，让自定义翻译自动为模型生成优化和测试设置。
+选择已创建的项目。 将会看到已上传的所有文档，这些文档与此项目共享一个语言对。 选择要包括在模型中的文档。 可以选择[训练](training-and-model.md#training-document-type-for-custom-translator)、[优化](training-and-model.md#tuning-document-type-for-custom-translator)和[测试](training-and-model.md#testing-dataset-for-custom-translator)数据，或者只选择训练数据，让自定义翻译自动为模型生成优化和测试设置。
 
 ![创建模型](media/quickstart/ct-how-to-train.png)
 

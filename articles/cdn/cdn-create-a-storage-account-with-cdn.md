@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386980"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 在此快速入门中，你将启用 [Azure 内容分发网络 (CDN)](cdn-overview.md) 来缓存 Azure 存储中的内容。 Azure CDN 为开发人员提供了一个用于交付高带宽内容的全局解决方案。 它可以在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 blob 和计算实例的静态内容。
@@ -72,10 +72,10 @@ ms.locfileid: "74083071"
     | **帐户种类** | 使用默认值。 |
     | **位置**    | 从下拉列表中选择“美国中部”。  |
     | **复制** | 使用默认值。 |
-    | **性能** | 使用默认值。 |
+    | **“性能”** | 使用默认值。 |
     | **需要安全传输** | 使用默认值。 |
     | **订阅** | 从下拉列表中选择一个 Azure 订阅。 |
-    | **资源组** | 选择“新建”，然后输入 *my-resource-group-123* 作为资源组名称。  该名称必须全局唯一。 如果它已被使用，可以输入一个不同的名称，也可以选择“使用现有”  并从下拉列表中选择 **my-resource-group-123**。 <br />有关资源组的信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。| 
+    | **资源组** | 选择“新建”，然后输入 *my-resource-group-123* 作为资源组名称。  该名称必须全局唯一。 如果它已被使用，可以输入一个不同的名称，也可以选择“使用现有”  并从下拉列表中选择 **my-resource-group-123**。 <br />有关资源组的信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md#resource-groups)。| 
     | **配置虚拟网络** | 使用默认值。 |  
     
 5. 选择“固定到仪表板”  ，以便在创建存储帐户后将其保存到仪表板。

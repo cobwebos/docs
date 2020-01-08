@@ -2,17 +2,17 @@
 title: 快速入门 - 使用 Azure CLI 创建 Azure 专用终结点
 description: 在本快速入门中了解 Azure 专用终结点
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459971"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>快速入门：使用 Azure CLI 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本快速入门中，你将了解如何使用 Azure CLI 在虚拟网络中创建一个 VM，以及一个包含专用终结点的 SQL 数据库服务器。 然后，可以访问该 VM，并安全地访问专用链接资源（本示例中的专用 Azure SQL 数据库服务器）。 
