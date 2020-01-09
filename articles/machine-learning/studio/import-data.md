@@ -1,5 +1,5 @@
 ---
-title: 导入训练数据
+title: 导入培训数据
 titleSuffix: ML Studio (classic) - Azure
 description: 如何将数据从各种数据源导入 Azure 机器学习 Studio （经典）。 了解受支持的数据类型和数据格式。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: b59d965d991124f2bf8d0abc10c4afbe7a95292a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 95938b979a90766c7e50f2560cf72266e287bfb5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454690"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习 Studio （经典）
 
@@ -23,21 +23,21 @@ ms.locfileid: "73837572"
 
 * **本地文件** - 提前从硬盘驱动器加载本地数据，以便在工作区中创建数据集模块
 * **联机数据源**-使用 "[导入数据][import-data]" 模块从多个联机数据源之一访问实验，同时试验运行
-* **机器学习 Studio （经典）试验**-使用经典版机器学习 Studio 中保存为数据集的数据
+* **机器学习 studio （经典）试验**-使用在机器学习 Studio （经典）中保存为数据集的数据
 * [**本地 SQL Server 数据库**](use-data-from-an-on-premises-sql-server.md) - 使用来自本地 SQL Server 数据库的数据，而无需手动复制数据
 
 > [!NOTE]
-> 经典版的机器学习 Studio 中提供了许多可用于训练数据的示例数据集。 有关这些示例的信息，请参阅[使用 Azure 机器学习 Studio （经典）中的示例数据集](use-sample-datasets.md)。
+> 机器学习 Studio （经典）中提供了许多可用于定型数据的示例数据集。 有关这些示例的信息，请参阅[使用 Azure 机器学习 Studio （经典）中的示例数据集](use-sample-datasets.md)。
 
 ## <a name="prepare-data"></a>准备数据
 
-经典版的机器学习 Studio 设计用于处理矩形数据或表格数据，例如，在某些情况下可能会使用非矩形数据的文本数据（如从数据库中分隔或结构化的数据）。
+机器学习 Studio （经典）设计用于处理矩形数据或表格数据，例如，在某些情况下可能会使用非矩形数据的文本数据（如从数据库中分隔或结构化的数据）。
 
-在将数据导入经典版 Studio 之前，最好是让数据相对干净。 例如，你需要处理不带引号的字符串之类的问题。
+在将数据导入到 Studio （经典）之前，最好是让数据相对干净。 例如，你需要处理不带引号的字符串之类的问题。
 
-但是，经典版 Studio 中提供了一些模块，可在导入数据后，在实验中对数据进行某种操作。 根据要使用的机器学习算法，可能需要确定处理数据结构问题（如缺失值和稀疏数据）的方法，并且提供有模块帮助处理这些问题。 请查看模块控制板的“数据转换”部分，了解执行这些函数的模块。
+但是，在导入数据后，Studio （经典）中提供了一些模块，可在实验中实现数据的某些操作。 根据要使用的机器学习算法，可能需要确定处理数据结构问题（如缺失值和稀疏数据）的方法，并且提供有模块帮助处理这些问题。 请查看模块控制板的“数据转换”部分，了解执行这些函数的模块。
 
-通过单击输出端口，任何时候都可在试验中查看或下载模块生成的数据。 根据具体的模块，可能有不同的下载选项可用，或者您可能能够在经典版 Studio 的 web 浏览器中直观显示数据。
+通过单击输出端口，任何时候都可在试验中查看或下载模块生成的数据。 根据具体的模块，可能有不同的下载选项可用，或者您可以在 web 浏览器（经典）中直观显示数据。
 
 ## <a name="supported-data-formats-and-data-types"></a>支持的数据格式和数据类型
 
@@ -56,19 +56,19 @@ ms.locfileid: "73837572"
 * Zip 文件 (.zip)
 * R 对象或工作区文件 (.RData)
 
-如果导入包含元数据的格式的数据（如 ARFF），则经典版 Studio 将使用此元数据来定义每个列的标题和数据类型。
+如果导入包含元数据的 ARFF 格式的数据，则 Studio （经典）将使用此元数据来定义每个列的标题和数据类型。
 
-如果导入的数据（如 TSV 或 CSV 格式不包含此元数据），则经典版本的 Studio 会通过对数据进行采样来推导每个列的数据类型。 如果数据也没有列标题，则经典版 Studio 会提供默认名称。
+如果导入的数据（如 TSV 或 CSV 格式不包含此元数据），Studio （经典）将通过对数据进行采样来推导每个列的数据类型。 如果数据也没有列标题，Studio （经典）将提供默认名称。
 
 可以使用[编辑元数据][edit-metadata]模块显式指定或更改列的标题和数据类型。
 
-经典版 Studio 可识别以下数据类型：
+Studio （经典）识别以下数据类型：
 
 * String
 * Integer
 * Double
-* 布尔值
-* DateTime
+* Boolean
+* 日期/时间
 * TimeSpan
 
 工作室使用名为“数据表”的内部数据类型在模块间传递数据。 您可以使用 "[转换为数据集][convert-to-dataset]" 模块将数据显式转换为数据表格式。
@@ -80,14 +80,14 @@ ms.locfileid: "73837572"
 
 ## <a name="data-capacities"></a>数据容量
 
-经典版机器学习 Studio 中的模块支持最多 10 GB 的数据集，用于常见用例。 如果模块接受多个输入，10 GB 这个值是所有输入大小的总计。 可通过 Hive 或 Azure SQL 数据库查询对更大的数据集采样，或者在导入数据之前使用“按计数学习”预处理。  
+机器学习 Studio （经典）中的模块支持最多 10 GB 的数据集，用于常见用例。 如果模块接受多个输入，10 GB 这个值是所有输入大小的总计。 可通过 Hive 或 Azure SQL 数据库查询对更大的数据集采样，或者在导入数据之前使用“按计数学习”预处理。  
 
 以下数据类型可以在特征规范化期间扩展为较大数据集，其限制为小于 10 GB：
 
 * 稀疏
 * 分类
 * 字符串
-* 二进制数据
+* Binary data
 
 以下模块限制为小于 10 GB 的数据集：
 
@@ -103,7 +103,7 @@ ms.locfileid: "73837572"
 
 ## <a name="import-from-a-local-file"></a>从本地文件导入
 
-你可以将硬盘上的数据文件上传到经典版 Studio 中的训练数据。 导入数据文件时，你将在工作区中创建一个就绪可在试验中使用的数据集模块。
+你可以从硬盘上传数据文件，以用作 Studio （经典）中的定型数据。 导入数据文件时，你将在工作区中创建一个就绪可在试验中使用的数据集模块。
 
 若要从本地硬盘驱动器导入数据，请执行以下操作：
 
@@ -115,7 +115,7 @@ ms.locfileid: "73837572"
 
 ![上传新的数据集](./media/import-data/upload-dataset-from-local-file.png)
 
-上传时间取决于数据大小和连接到服务的速度。 如果知道该文件需要很长时间，则可以在经典版本的 Studio 中执行其他操作，同时等待。 但是，在数据上传完成之前关闭浏览器将导致上传失败。
+上传时间取决于数据大小和连接到服务的速度。 如果知道该文件需要很长时间，则可以在等待时在 Studio （经典）中执行其他操作。 但是，在数据上传完成之前关闭浏览器将导致上传失败。
 
 数据上传后，将存储在数据集模块中，并且可用于工作区中的任何实验。
 
@@ -132,7 +132,7 @@ ms.locfileid: "73837572"
 
 * 使用 HTTP 的 Web URL
 * 使用 HiveQL 的 Hadoop
-* Azure Blob 存储
+* Azure blob 存储
 * Azure 表
 * Azure SQL 数据库，或 Azure VM 上的 SQL Server
 * 本地 SQL Server 数据库
@@ -154,14 +154,14 @@ ms.locfileid: "73837572"
 > 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../storage/blobs/storage-blob-storage-tiers.md)。
 
 ### <a name="supported-online-data-sources"></a>支持的联机数据源
-Azure 机器学习 Studio**导入数据**模块的经典版本支持以下数据源：
+Azure 机器学习 Studio （经典）**导入数据**模块支持以下数据源：
 
-| 数据源 | 说明 | parameters |
+| 数据源 | Description | 参数 |
 | --- | --- | --- |
 | 通过 HTTP 的 Web URL |从使用 HTTP 的任何 Web URL 中读取逗号分隔值 (CSV)、制表符分隔值 (TSV)、属性关系文件格式 (ARFF) 和支持向量机 (SVM-light) 格式的数据 |<b>URL</b>：指定文件的完整名称，包括站点 URL 和文件名与任何扩展名。 <br/><br/><b>数据格式</b>：指定支持的数据格式之一：CSV、TSV、ARFF 或 SVM-light。 如果数据包含标头行，该数据用于分配列名。 |
-| Hadoop/HDFS |从 Hadoop 中的分布式存储读取数据。 可以使用 HiveQL（类似于 SQL 的查询语言）指定所需的数据。 在将数据添加到经典版 Studio 之前，还可以使用 HiveQL 来聚合数据并执行数据筛选。 |<b>Hive 数据库查询</b>：指定用于生成数据的 Hive 查询。<br/><br/><b>HCatalog 服务器 URI</b>：使用 *&lt;群集名称&gt;.azurehdinsight.net 格式指定群集的名称。*<br/><br/><b>Hadoop 用户帐户名</b>：指定用于预配群集的 Hadoop 用户帐户名。<br/><br/><b>Hadoop 用户帐户密码</b>：指定预配群集时使用的凭据。 有关详细信息，请参阅 [Create Hadoop clusters in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)（在 HDInsight 中创建 Hadoop 群集）。<br/><br/><b>输出数据的位置</b>：指定数据是要存储在 Hadoop 分布式文件系统 (HDFS) 还是 Azure 中。 <br/><ul>如果将输出数据存储在 HDFS 中，请指定 HDFS 服务器的 URI。 （请务必使用不带 HTTPS:// 前缀的 HDInsight 群集名称）。 <br/><br/>如果将输出数据存储在 Azure 中，则必须指定 Azure 存储帐户名、存储访问密钥和存储容器名称。</ul> |
+| Hadoop/HDFS |从 Hadoop 中的分布式存储读取数据。 可以使用 HiveQL（类似于 SQL 的查询语言）指定所需的数据。 在将数据添加到 Studio （经典）之前，还可以使用 HiveQL 来聚合数据并执行数据筛选。 |<b>Hive 数据库查询</b>：指定用于生成数据的 Hive 查询。<br/><br/><b>HCatalog 服务器 URI</b>：使用 *&lt;群集名称&gt;.azurehdinsight.net 格式指定群集的名称。*<br/><br/><b>Hadoop 用户帐户名</b>：指定用于预配群集的 Hadoop 用户帐户名。<br/><br/><b>Hadoop 用户帐户密码</b>：指定预配群集时使用的凭据。 有关详细信息，请参阅 [Create Hadoop clusters in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)（在 HDInsight 中创建 Hadoop 群集）。<br/><br/><b>输出数据的位置</b>：指定数据是要存储在 Hadoop 分布式文件系统 (HDFS) 还是 Azure 中。 <br/><ul>如果将输出数据存储在 HDFS 中，请指定 HDFS 服务器的 URI。 （请务必使用不带 HTTPS:// 前缀的 HDInsight 群集名称）。 <br/><br/>如果将输出数据存储在 Azure 中，则必须指定 Azure 存储帐户名、存储访问密钥和存储容器名称。</ul> |
 | SQL 数据库 |读取存储在 Azure SQL 数据库中或 Azure 虚拟机上运行的 SQL Server 数据库中的数据。 |<b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><ul>对于 Azure SQL 数据库，请输入生成的服务器名称。 其格式通常为 *&lt;生成的标识符&gt;.database.windows.net。* <br/><br/>对于托管在 Azure 虚拟机上的 SQL server，请输入*tcp：&lt;虚拟机 DNS 名称&gt;，1433*</ul><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>服务器用户帐户密码</b>：指定用户帐户的密码。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |
-| 本地 SQL 数据库 |读取本地 SQL 数据库中存储的数据。 |<b>数据网关</b>：指定可访问 SQL Server 数据库的计算机上安装的数据管理网关的名称。 有关设置网关的信息，请参阅[使用经典版本的 Azure 机器学习 Studio 使用本地 SQL server 中的数据执行高级分析](use-data-from-an-on-premises-sql-server.md)。<br/><br/><b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>用户名和密码</b>：单击“输入值”输入数据库凭据。<b></b> 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |
+| 本地 SQL 数据库 |读取本地 SQL 数据库中存储的数据。 |<b>数据网关</b>：指定可访问 SQL Server 数据库的计算机上安装的数据管理网关的名称。 有关设置网关的信息，请参阅[使用本地 SQL server 中的数据通过 Azure 机器学习 Studio （经典）执行高级分析](use-data-from-an-on-premises-sql-server.md)。<br/><br/><b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>用户名和密码</b>：单击“输入值”输入数据库凭据。<b></b> 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |
 | Azure 表 |从 Azure 存储中的表服务读取数据。<br/><br/>如果不常读取大量数据，请使用 Azure 表服务。 它提供了一个灵活、非关系 (NoSQL)、可大规模缩放、成本较低且高度可用的存储解决方案。 |**导入数据**中的选项根据访问的是公共信息还是需要登录凭据的专用存储帐户而变化。 这一点可以根据“身份验证类型”来确定，其值可能是“PublicOrSAS”或“Account”，两者都有自身的参数集。<b></b> <br/><br/><b>公共或共享访问签名 (SAS) URI</b>：参数为：<br/><br/><ul><b>表 URI</b>：指定表的公共 URL 或 SAS URL。<br/><br/><b>指定要扫描属性名称的行</b>：值为 <i>TopN</i>（扫描指定的行数）或 <i>ScanAll</i>（获取表中的所有行）。 <br/><br/>如果数据是同构的且可预测，我们建议选择“TopN”并为 N 输入一个数字。对于大型表，这样可以加快读取速度。<br/><br/>如果已使用根据表的深度和位置变化的属性集将数据结构化，请选择“ScanAll”选项来扫描所有行。 这可确保生成的属性和元数据转换的完整性。<br/><br/></ul><b>专用存储帐户</b>：参数为： <br/><br/><ul><b>帐户名</b>：指定要读取的表所在的帐户的名称。<br/><br/><b>帐户密钥</b>：指定与帐户关联的存储密钥。<br/><br/><b>表名称</b>：指定要读取的数据所在的表的名称。<br/><br/><b>要扫描属性名称的行</b>：值为 <i>TopN</i>（扫描指定的行数）或 <i>ScanAll</i>（获取表中的所有行）。<br/><br/>如果数据是同构的且可预测，我们建议选择“TopN”并为 N 输入一个数字。对于大型表，这样可以加快读取速度。<br/><br/>如果已使用根据表的深度和位置变化的属性集将数据结构化，请选择“ScanAll”选项来扫描所有行。 这可确保生成的属性和元数据转换的完整性。<br/><br/> |
 | Azure Blob 存储 |读取存储在 Azure 存储的 Blob 服务中的数据，包括图像、非结构化文本或二元数据。<br/><br/>可以使用 Blob 服务公开数据，或者私下存储应用程序数据。 可以使用 HTTP 或 HTTPS 连接从任意位置访问数据。 |**导入数据**模块中的选项根据访问的是公共信息还是需要登录凭据的专用存储帐户而变化。 这一点可以根据“身份验证类型”来确定，其值可能是“PublicOrSAS”或“Account”。<b></b><br/><br/><b>公共或共享访问签名 (SAS) URI</b>：参数为：<br/><br/><ul><b>URI</b>：指定存储 Blob 的公共 URL 或 SAS URL。<br/><br/><b>文件格式</b>：指定 Blob 服务中数据的格式。 支持的格式包括 CSV、TSV 和 ARFF。<br/><br/></ul><b>专用存储帐户</b>：参数为： <br/><br/><ul><b>帐户名</b>：指定要读取的 Blob 所在的帐户的名称。<br/><br/><b>帐户密钥</b>：指定与帐户关联的存储密钥。<br/><br/><b>容器、目录或 Blob 的路径</b>：指定要读取的数据所在的 Blob 的名称。<br/><br/><b>Blob 文件格式</b>：指定 Blob 服务中数据的格式。 支持的数据格式包括 CSV、TSV、ARFF、CSV（使用指定的编码）和 Excel。 <br/><br/><ul>如果格式是 CSV 或 TSV，请务必指明文件是否包含标头行。<br/><br/>可以使用“Excel”选项从 Excel 工作簿中读取数据。 在“Excel 数据格式”选项中，指明数据是在 Excel 工作表范围内还是在 Excel 表中。<i></i> 在“Excel 工作表或嵌入表”选项中，指定要从中读取数据的工作表或表的名称。<i></i></ul><br/> |
 | 数据馈送提供程序 |从支持的馈送提供程序读取数据。 目前仅支持开放数据协议 (OData) 格式。 |<b>数据内容类型</b>：指定 OData 格式。<br/><br/><b>源 URL</b>：指定数据馈送的完整 URL。 <br/>例如，从 Northwind 示例数据库读取以下 URL： https://services.odata.org/northwind/northwind.svc/ |

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706260"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644590"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -114,7 +114,7 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>如何实现更改 Ambari 中的时区？
 
-1. 在 https://CLUSTERNAME.azurehdinsight.net 打开 Ambari Web UI，其中 CLUSTERNAME 是群集的名称。
+1. 在 `https://CLUSTERNAME.azurehdinsight.net`打开 Ambari Web UI，其中 CLUSTERNAME 是群集的名称。
 2. 在右上角选择 "管理" |设置。 
 
    ![Ambari 设置](media/hdinsight-faq/ambari-settings.png)

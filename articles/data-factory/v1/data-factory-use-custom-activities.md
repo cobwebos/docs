@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438828"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,14 +59,14 @@ ms.locfileid: "74927954"
 2. 创建 **Azure Batch 池**。
 
    1. 在 [Azure 门户](https://portal.azure.com)中，单击左侧菜单中的“浏览”，并单击“Batch 帐户”。
-   2. 选择 Azure Batch 帐户以打开“Batch 帐户”边栏选项卡。
+   2. 选择 Azure Batch 帐户，打开“Batch 帐户”边栏选项卡。
    3. 单击“池”磁贴。
    4. 在“池”边栏选项卡中，单击工具栏上的“添加”按钮以添加池。
       1. 输入池的 ID（池 ID）。 请记下“池的 ID”；创建数据工厂解决方案时需要使用。
       2. 为操作系统系列设置指定 **Windows Server 2012 R2**。
       3. 选择**节点定价层**。
-      4. 输入 **2** 作为**目标专用**设置的值。
-      5. 输入 **2** 作为**每个节点最大任务**设置的值。
+      4. 输入 **2** 作为“目标专用”设置的值。
+      5. 输入 **2** 作为“每个节点最大任务”设置的值。
    5. 单击“确定”创建池。
    6. 记下该池的 **ID**。
 
@@ -417,11 +417,11 @@ test custom activity Microsoft test custom activity Microsoft
 ### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 请在登录到 Azure 门户后执行以下步骤：
    1. 在左侧菜单上单击“创建资源”。
-   2. 在“新建”边栏选项卡中单击“数据 + 分析”。
-   3. 在“数据分析”边栏选项卡中单击“数据工厂”。
+   2. 单击“新建”边栏选项卡中的“数据 + 分析”。
+   3. 单击“数据分析”边栏选项卡中的“数据工厂”。
 
       ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. 在“新建数据工厂”边栏选项卡中，对“名称”输入 **CustomActivityFactory**。 Azure 数据工厂的名称必须是全局唯一的。 如果收到错误： **数据工厂名称“CustomActivityFactory”不可用**，请更改该数据工厂名称（例如改为 **yournameCustomActivityFactory**），并尝试再次创建。
+2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“CustomActivityFactory”不可用**，请更改数据工厂名称（例如改为 **yournameCustomActivityFactory**），并再次尝试创建。
 
     ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 单击“资源组名称”，并选择现有资源组或创建资源组。
@@ -436,11 +436,11 @@ test custom activity Microsoft test custom activity Microsoft
 链接服务将数据存储区或计算服务链接到 Azure 数据工厂。 在此步骤中，将 Azure 存储帐户和 Azure Batch 帐户链接到数据工厂。
 
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
-1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上单击“作者和部署”磁贴 。 随即显示“数据工厂编辑器”。
+1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上，单击“作者和部署”磁贴。 随即显示“数据工厂编辑器”。
 2. 单击命令栏上的“新建数据存储”，并选择“Azure 存储”。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
 
     ![新建数据存储 - Azure 存储](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../../storage/common/storage-account-manage.md#access-keys)（查看、复制和重新生成存储访问密钥）。
+3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
     ![Azure 存储链接服务](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. 单击命令栏上的“部署”，部署链接服务。
@@ -607,16 +607,16 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    注意以下几点：
+    请注意以下几点：
 
-   * **Concurrency** 设置为 **2**，以便在 Azure Batch 池中通过 2 个 VM 并行处理 2 个切片。
+   * 将**并发**设置为 **2**以便在 Azure Batch 池通过 2 个 VM 并行处理 2 个切片。
    * 在活动部分中包含一个活动，其类型为：**DotNetActivity**。
    * **AssemblyName** 设置为 DLL 的名称：**MyDotnetActivity.dll**。
    * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。
    * **PackageLinkedService** 设置为 **AzureStorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的 Azure 存储帐户，则需创建另一个 Azure 存储链接服务。 本文假定使用相同的 Azure 存储帐户。
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：containerforthezip/nameofthezip.zip。
    * 自定义活动采用 **InputDataset** 作为输入，采用 **OutputDataset** 作为输出。
-   * 自定义活动的 linkedServiceName 属性指向 **AzureBatchLinkedService**，它告知 Azure 数据工厂自定义活动需要在 Azure Batch VM 上运行。
+   * 自定义活动的 linkedServiceName 属性指向 **AzureBatchLinkedService**它将告诉 Azure 数据工厂自定义活动需要在 Azure Batch VM 上运行。
    * **isPaused** 属性默认设置为 **false**。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 true 以暂停管道，然后将其设置回 false 以重新启动。
    * **start** 时间和 **end** 时间相隔 **5** 小时且切片按小时生成，因此管道将生成五个切片。
 3. 若要部署管道，请在命令栏上单击“部署”。
@@ -689,17 +689,17 @@ test custom activity Microsoft test custom activity Microsoft
 3. 如果输入切片未设置为 **Ready**，请确认输入文件夹结构正确，并且 **file.txt** 存在于输入文件夹中。
 3. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息会显示在用户日志文件（一个或多个文件，命名为 user-0.log、user-1.log、user-2.log 等）中。
 
-   在“OutputDataset”边栏选项卡中，单击切片以查看该切片的“数据切片”边栏选项卡。 可看到为切片**运行的活动**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
+   在“OutputDataset”边栏选项卡中，单击切片以查看该切片的“数据切片”边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
 
    单击活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 user_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，会显示日志文件，可查看文件解决该错误。
 
-   在日志文件列表中，单击“user-0.log”**用户 0.log**。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果看不到所有消息，请检查是否有更多名为的日志文件： user_1 日志记录、user_2 日志等。否则，在上次记录消息后，代码可能已失败。
+   在日志文件列表中，单击“user-0.log”。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果看不到所有消息，请检查是否有更多名为的日志文件： user_1 日志记录、user_2 日志等。否则，在上次记录消息后，代码可能已失败。
 
    此外，检查 **system-0.log** 中是否包含任何系统错误消息和异常。
 4. 将 **PDB** 文件包含在 zip 文件中，这样，在发生错误时，错误详细信息中会提供**调用堆栈**等信息。
 5. 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 6. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的**通用** Azure Blob 存储）已设置为正确的值。
-7. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，并单击“运行”。
+7. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后单击“运行”。
 8. 如果出现以下错误，则表示正在使用 4.3.0 以上版本的 Azure 存储包。 数据工厂服务启动器需要 4.3 版本 的 WindowsAzure.Storage。 如果必须使用 Azure 存储程序集的更高版本，请参阅 [Appdomain 隔离](#appdomain-isolation)部分解决此问题。
 
     ```
@@ -760,7 +760,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。
 
-此处的示例公式实现以下行为：最初创建池后，它以 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
 自动缩放公式：
 
@@ -774,7 +774,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 有关详细信息，请参阅 [Automatically scale compute nodes in an Azure Batch pool](../../batch/batch-automatic-scaling.md)（自动缩放 Azure Batch 池中的计算节点）。
 
-如果池使用默认值 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), ，则在运行自定义活动之前，Batch 服务可能需要 15-30 分钟时间准备 VM。  如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval + 10 分钟。
+如果池使用默认 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，则在运行自定义活动之前，Batch 服务可能需要 15-30 分钟准备 VM。  如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval + 10 分钟。
 
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>使用 .NET SDK 创建自定义活动

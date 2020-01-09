@@ -1,25 +1,16 @@
 ---
-title: Service Fabric 服务的可伸缩性 | Microsoft 文档
-description: 介绍如何缩放 Service Fabric 服务
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric 服务的可伸缩性
+description: 了解如何在 Azure 中进行缩放 Service Fabric 以及用于缩放应用程序的各种方法。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035924"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610006"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 此第 9 频道视频介绍了如何构建可缩放的微服务应用程序：
@@ -46,7 +37,7 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-Powershell：
+PowerShell：
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
@@ -63,7 +54,7 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Powershell：
+PowerShell：
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
@@ -78,7 +69,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 将如何对此特定服务进行缩放？ 服务可以是某种形式的多租户，并一次性接受同一工作流的多个不同实例的调用和启动步骤。 但是，这可能使代码更复杂，因为现在它需要考虑同一工作流的多个不同实例，所有实例处于不同的阶段，来自不同的客户。 此外，同时处理多个工作流不能解决缩放问题。 这是因为此服务在某个时间点将占用过多资源，以适应特定计算机。 许多最初并不是针对此模式生成的服务也会因其代码中的一些固有瓶颈或速度减慢而遇到困难。 这些类型的问题将导致服务跟踪的并发工作流数量增多时，服务无法正常运行。  
 
-一种解决方案是为想要跟踪的工作流的每个不同实例创建一个此服务的实例。这是一种很好的模式，无论服务是无状态还是有状态均能正常运行。 为使此模式正常运行，通常会使用用作“工作负荷管理器服务”的另一服务。 此服务的功能是接收请求，并将这些请求路由到其他服务。 管理器在收到消息时可动态创建工作负荷服务的实例，然后将请求传递到这些服务。 给定工作流服务完成其工作后，管理器服务也可接收回调。 管理器接收这些回调后，可删除工作流服务的该实例，或者如果需要更多调用，可将其保留。 
+解决方案是为想要跟踪的工作流的每个不同实例创建此服务的实例。这是一种很好的模式，无论服务是无状态还是有状态。 为使此模式正常运行，通常会使用用作“工作负荷管理器服务”的另一服务。 此服务的功能是接收请求，并将这些请求路由到其他服务。 管理器在收到消息时可动态创建工作负荷服务的实例，然后将请求传递到这些服务。 给定工作流服务完成其工作后，管理器服务也可接收回调。 管理器接收这些回调后，可删除工作流服务的该实例，或者如果需要更多调用，可将其保留。 
 
 这种管理器的高级版本甚至可以创建它所管理的服务的池。 池有助于确保在传入新请求时，无需等待服务启动。 管理器可以从池中只选取当前不繁忙的工作流服务，或随机路由。 保持服务池可用性可更快速处理新请求，因为请求不太可能必须等待新服务启动。 创建新服务很快，但也不是免费或瞬时完成。 池有助于最大程度减少请求在维护之前需要等待的时间。 当响应时间是最重要因素时，经常使用此管理器和池模式。 请求排队，并在后台创建服务，然后将其传递也是一种常用的管理器模式，如同基于服务当前挂起的工作量的一些跟踪，创建和删除服务。 
 
@@ -103,15 +94,15 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 <center>
 
-![包含三个节点的分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
-</center>
+![具有三个节点](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+的分区布局 </center>
 
 如果增加节点数目，Service Fabric 将移动其中的一些现有副本。 例如，假设节点数增加到 4，且已重新分发副本。 现在，服务在每个节点上有 3 个正在运行的副本，每个副本均属于不同的分区。 这可以实现更高的资源利用率，因为新节点不冷。 通常情况下，这还可提高性能，因为每项服务均有更多可用资源。
 
 <center>
 
-![包含四个节点的分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
-</center>
+](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+具有四个节点的 ![分区布局 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>使用 Service Fabric 群集资源管理器和指标进行缩放
 [指标](service-fabric-cluster-resource-manager-metrics.md)是服务向 Service Fabric 表示其资源消耗的方式。 使用指标可使群集资源管理器重新组织和优化群集布局。 例如，群集中可能有充足的资源，但可能未向当前执行操作的服务分配这些资源。 通过使用指标，群集资源管理器可重新组织群集，确保服务有权访问可用资源。 
@@ -124,7 +115,7 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 ## <a name="choosing-a-platform"></a>选择平台
 
-由于操作系统之间的实现差异, 选择使用 Windows 或 Linux Service Fabric 可能是缩放应用程序的重要部分。 一个潜在的障碍是如何执行暂存日志记录。 Windows 上的 Service Fabric 使用内核驱动程序进行一台每台计算机的日志, 在有状态服务副本之间共享。 此日志约为 8 GB。 另一方面, Linux 对每个副本使用 256 MB 暂存日志, 这使得对于想要最大程度地减少在给定节点上运行的轻型服务副本数量的应用程序而言, 这种情况并不理想。 临时存储要求的这些差异可能会通知所需的平台进行 Service Fabric 群集部署。
+由于操作系统之间的实现差异，选择使用 Windows 或 Linux Service Fabric 可能是缩放应用程序的重要部分。 一个潜在的障碍是如何执行暂存日志记录。 Windows 上的 Service Fabric 使用内核驱动程序进行一台每台计算机的日志，在有状态服务副本之间共享。 此日志约为 8 GB。 另一方面，Linux 对每个副本使用 256 MB 暂存日志，这使得对于想要最大程度地减少在给定节点上运行的轻型服务副本数量的应用程序而言，这种情况并不理想。 临时存储要求的这些差异可能会通知所需的平台进行 Service Fabric 群集部署。
 
 ## <a name="putting-it-all-together"></a>汇总
 让我们汇总已在此文中讨论的所有观点，并讨论一个示例。 请考虑以下服务：你想要生成一个充当通讯簿的服务，其中保存名称和联系信息。 

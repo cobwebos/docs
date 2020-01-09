@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598224"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647282"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-is-network-watcher"></a>什么是网络观察程序？
 网络观察程序用于监视和修复 IaaS （基础结构即服务）组件的网络运行状况，其中包括虚拟机、虚拟网络、应用程序网关、负载均衡器和 Azure 虚拟网络中的其他资源。 它不是用于监视 PaaS （平台即服务）基础结构或获取 web/移动分析的解决方案。
@@ -51,14 +51,20 @@ ms.locfileid: "72598224"
 ### <a name="how-does-network-watcher-pricing-work"></a>网络观察程序定价如何工作？
 有关网络观察程序组件及其定价，请访问[定价页](https://azure.microsoft.com/pricing/details/network-watcher/)。
 
-### <a name="which-regions-is-network-watcher-available-in"></a>哪些区域是可用的网络观察程序？
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>哪些区域是支持的网络观察程序/哪些区域可用？
 可以在[Azure 服务可用性页](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的区域可用性
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>什么是网络观察程序的资源限制？
-有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits)页。  
+有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)页。  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？
 仅需为订阅启用一次网络观察程序，才能使用它的功能，这并不是服务限制。
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>为什么需要安装网络观察程序扩展？ 
+需要生成或拦截来自 VM 的流量的任何功能都需要网络观察程序扩展。 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>哪些功能需要网络观察程序扩展？
+只有数据包捕获、连接故障排除和连接监视器需要网络观察程序扩展。
 
 ## <a name="nsg-flow-logs"></a>NSG 流日志
 

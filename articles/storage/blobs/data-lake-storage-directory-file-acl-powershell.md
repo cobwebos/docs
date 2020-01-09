@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Data Lake Storage Gen2 中使用 & Acl 的 PowerShell （预览版）
+title: '& Acl 的 Azure Data Lake Storage Gen2 PowerShell （预览版）'
 description: 使用 PowerShell cmdlet 管理已启用分层命名空间（HNS）的存储帐户中的目录和文件和目录访问控制列表（ACL）。
 services: storage
 author: normesta
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be5a1dce89219957f98c585d8e531c369e2f23c4
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973894"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690417"
 ---
-# <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>在 Azure Data Lake Storage Gen2 中使用 & Acl 的 PowerShell （预览版）
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
 本文介绍如何使用 PowerShell 创建和管理已启用分层命名空间（HNS）的存储帐户中的目录、文件和权限。 
 
@@ -59,37 +59,36 @@ ms.locfileid: "74973894"
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-1. 打开 Windows PowerShell 命令窗口。
+打开 Windows PowerShell 命令窗口，然后使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
-2. 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
+```powershell
+Connect-AzAccount
+```
 
-   ```powershell
-   Connect-AzAccount
-   ```
+如果你的标识与多个订阅相关联，请将你的活动订阅设置为要在其中创建和管理目录的存储帐户的订阅。 在此示例中，请将 `<subscription-id>` 的占位符值替换为你的订阅的 ID。
 
-3. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为要在其中创建和管理目录的存储帐户的订阅。
+```powershell
+Select-AzSubscription -SubscriptionId <subscription-id>
+```
 
-   ```powershell
-   Select-AzSubscription -SubscriptionId <subscription-id>
-   ```
+接下来，选择你希望命令如何获取对存储帐户的授权。 
 
-   将 `<subscription-id>` 占位符值替换为你的订阅的 ID。
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>选项1：使用 Azure Active Directory 获取授权（AD）
 
-4. 获取存储帐户。
+使用此方法，系统可确保你的用户帐户具有相应的基于角色的访问控制（RBAC）分配和 ACL 权限。 
 
-   ```powershell
-   $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-   ```
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+```
 
-   * 将 `<resource-group-name>` 的占位符值替换为资源组的名称。
+### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>选项2：使用存储帐户密钥获取授权
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+使用此方法时，系统不会检查资源的 RBAC 或 ACL 权限。
 
-5. 获取存储帐户上下文。
-
-   ```powershell
-   $ctx = $storageAccount.Context
-   ```
+```powershell
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+$ctx = $storageAccount.Context
+```
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
@@ -189,9 +188,7 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 使用 `Get-AzDataLakeGen2ChildItem` cmdlet 列出目录的内容。
 
-此示例列出名为 `my-directory`的目录的内容。 
-
-若要列出文件系统的内容，请从命令中省略 `-Path` 参数。
+此示例列出名为 `my-directory`的目录的内容。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -199,15 +196,21 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
-此示例列出名为 `my-directory` 的目录的内容，并在列表中包含 Acl。 它还使用 `-Recurse` 参数列出所有子目录的内容。
+此示例不返回 `ACL`、`Permissions`、`Group`和 `Owner` 属性的值。 若要获取这些值，请使用 `-FetchPermission` 参数。 
 
-若要列出文件系统的内容，请从命令中省略 `-Path` 参数。
+下面的示例列出了同一目录的内容，但它也使用 `-FetchPermission` 参数为 `ACL`、`Permissions`、`Group`和 `Owner` 属性返回值。 
 
 ```powershell
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties.ACL
+$properties.Permissions
+$properties.Group
+$properties.Owner
 ```
+
+若要列出文件系统的内容，请从命令中省略 `-Path` 参数。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -339,19 +342,60 @@ $file.ACL
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the directory ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew  
+
 ```
+
 此示例为用户提供对文件的 "写入" 和 "执行" 权限。
 
 ```powershell
 $filesystemName = "my-file-system"
 $fileName = "my-directory/upload.txt"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the file ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $aclnew 
+
 ```
 
 ### <a name="set-permissions-on-all-items-in-a-file-system"></a>对文件系统中的所有项设置权限

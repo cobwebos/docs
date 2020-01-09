@@ -4,15 +4,15 @@ description: 排查在 Azure 虚拟机、Service Fabric 或云服务中使用 Az
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450561"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -22,7 +22,7 @@ ms.locfileid: "73834696"
 
 诊断插件 (DiagnosticsPlugin.exe)：配置、启动和管理监视代理的生命周期。 这是由启动器启动的主要进程。
 
-监视代理（MonAgent **.exe 进程）：监视、收集和传输诊断数据\*** 。  
+监视代理（MonAgent\*.exe 进程）：监视、收集和传输诊断数据。  
 
 ## <a name="logartifact-paths"></a>日志/项目路径
 以下是一些重要日志和项目的路径。 文档剩余部分将始终引用此信息。
@@ -55,9 +55,9 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集。 RowKey 是指标名称（也称为性能计数器名称）。
 
-如果资源 ID 不正确，请检查“诊断配置” **“指标”** “ResourceId”，以查看是否已正确设置资源 ID >  > 。
+如果资源 ID 不正确，请检查 "**诊断** **配置**" > **度量值** > **ResourceId** ，查看是否已正确设置资源 id。
 
-如果没有特定指标数据，请检查“诊断配置” **“PerformanceCounter”，以查看是否包含指标（性能计数器）**  > 。 默认启用以下计数器：
+如果没有特定指标数据，请检查“诊断配置” > “PerformanceCounter”，以查看是否包含指标（性能计数器）。 默认启用以下计数器：
 - \Processor(_Total)\% 处理器时间
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -90,7 +90,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-如果发现退出代码为负数，请参阅**参考部分**中的[退出代码表](#azure-diagnostics-plugin-exit-codes)[](#references)。
+如果发现退出代码为负数，请参阅[参考部分](#references)中的[退出代码表](#azure-diagnostics-plugin-exit-codes)。
 
 ## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>未将诊断数据记录到 Azure 存储
 确定是未显示数据还是仅显示部分数据。
@@ -103,11 +103,11 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解决方案：更正诊断配置，然后重新安装 Azure 诊断。
 
-如果存储帐户配置正确，请远程访问计算机，验证 DiagnosticsPlugin.exe 和 MonAgentCore.exe 是否正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。
+如果存储帐户配置正确，则远程访问计算机，并验证*diagnosticsplugin.exe*和*monagentcore.exe*是否正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。
 
 如果进程正在运行，请转到[数据是否是本地捕获的？](#is-data-getting-captured-locally)并按此处的介绍进行操作。
 
-如果这样做无法解决问题，请尝试以下操作：
+如果这不能解决问题，请尝试执行以下操作：
 
 1. 卸载代理
 2. 删除目录 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
@@ -126,7 +126,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 - 跟踪日志：远程访问 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 https://msdn.microsoft.com/library/sk36c28t.aspx 设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果没有看到生成跟踪日志，请查看“关于跟踪日志丢失的更多信息”。
 
-- ETW 跟踪：远程访问 VM 并安装 PerfView。  在 PerfView 中运行“文件” **“用户命令”** “侦听 etwprovder1” > “etwprovider2”等 >  > 。 侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。 如果命令未能运行，可选择 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，则会弹出一个新窗口。 几秒钟后，即可看到 ETW 跟踪信息。
+- ETW 跟踪：远程访问 VM 并安装 PerfView。  在 PerfView 中运行“文件” > “用户命令” > “侦听 etwprovder1” > “etwprovider2”等。 侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。 如果命令未能运行，可选择 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，则会弹出一个新窗口。 几秒钟后，即可看到 ETW 跟踪信息。
 
 - 事件日志：远程访问 VM。 打开 `Event Viewer`确保事件存在。
 
@@ -229,7 +229,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：
 
-| 退出代码 | 说明 |
+| 退出代码 | Description |
 | --- | --- |
 | 0 |成功。 |
 | -1 |常规错误。 |
@@ -257,7 +257,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-将在与相应 `<relevantLogFile>.csv` 文件相同的路径中创建一个名为 `.tsf` 的新文件。
+将在与相应 `.tsf` 文件相同的路径中创建一个名为 `<relevantLogFile>.csv` 的新文件。
 
 >[!NOTE]
 > 只需对主 tsf 文件（例如 PerformanceCountersTable.tsf）运行此实用工具。 将自动处理随附的文件（例如 PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf 等）。
@@ -295,7 +295,7 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 默认情况下，虚拟机中的门户体验会显示某些性能计数器。 如果未看到性能计数器，且知道正在生成数据，因为数据在存储中可用，此时进行以下检查：
 
-- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” **“区域”** “管理” > “复制设置” >  > 。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
+- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
 
 - 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：若要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到[“Azure Monitor”接收器](diagnostics-extension-schema.md#diagnostics-extension-111)。
 

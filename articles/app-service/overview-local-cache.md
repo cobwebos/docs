@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687077"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680879"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -36,7 +36,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
 * D:\home 指向本地缓存，它是应用启动时在 VM 实例上创建的。 D:\local 继续指向特定于临时 VM 的存储。
-* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。 应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 300 MB，但最高可增至 2 GB。
+* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。 应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 300 MB，但最高可增至 2 GB。 如果复制的文件超出了本地缓存的大小，应用服务会以无提示方式忽略本地缓存并从远程文件共享读取。
 * 本地缓存是可以读写的。 不过，如果应用移动了虚拟机，或者系统重启了应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
 * D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。 两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
 * [日志流式处理](troubleshoot-diagnostic-logs.md#stream-logs)受最大努力副本的影响。 可以在流式传输的日志中观察到最多一分钟的延迟。
@@ -83,7 +83,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>更改本地缓存中的大小设置
-默认情况下，本地缓存大小为**1 GB**。 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。
+本地缓存大小默认为 **300 MB**， 其中包括从内容存储复制过来的 /site 和 /siteextensions 文件夹，以及任何本地创建的日志和数据文件夹。 若要增加此限制，请使用应用设置 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 最高可将此大小增加到每个应用 **2 GB** (2000 MB)。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。

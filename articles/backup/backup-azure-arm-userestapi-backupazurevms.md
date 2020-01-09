@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450164"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -37,11 +37,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>响应
 
-“刷新”操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着此操作会创建另一个需要单独跟踪的操作。
+“刷新”操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |204 无内容     |         |  确定无内容返回      |
 |202 已接受     |         |     已接受    |
@@ -100,11 +100,11 @@ X-Powered-By: ASP.NET
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter=backupManagementType eq 'AzureIaasVM'
 ```
 
-“GET”URI 具有所有必需的参数。 无需额外的请求正文。
+*GET* URI 包含所有必需的参数。 无需额外的请求正文。
 
 #### <a name="responses-1"></a>响应
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |200 正常     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       确定 |
 
@@ -180,9 +180,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 对于创建受保护的项，以下是请求正文的组成部分。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
-|属性     | AzureIaaSVMProtectedItem        |ProtectedItem 资源属性         |
+|properties     | AzureIaaSVMProtectedItem        |ProtectedItem 资源属性         |
 
 有关请求正文的完整定义列表和其他详细信息，请参阅[“创建受保护的项”REST API 文档](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body)。
 
@@ -204,11 +204,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="responses"></a>响应
 
-创建受保护项的是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着此操作会创建另一个需要单独跟踪的操作。
+创建受保护项的是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |200 正常     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  确定       |
 |202 已接受     |         |     已接受    |
@@ -294,9 +294,9 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 对于触发按需备份，以下是请求正文的组成部分。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
-|属性     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 属性         |
+|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 属性         |
 
 有关请求正文的完整定义列表和其他详细信息，请参阅[“触发受保护的项的备份”REST API 文档](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)。
 
@@ -315,11 +315,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>响应
 
-触发按需备份是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着此操作会创建另一个需要单独跟踪的操作。
+触发按需备份是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -433,16 +433,38 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>响应
+#### <a name="responses-2"></a>响应
 
-DELETE 操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着此操作会创建另一个需要单独跟踪的操作。
+DELETE 操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），然后在该操作完成时为 204（无内容）。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |204 无内容     |         |  无内容       |
 |202 已接受     |         |     已接受    |
+
+> [!IMPORTANT]
+> 为了防止意外删除方案，有一个可用于恢复服务保管库的[软删除功能](use-restapi-update-vault-properties.md#soft-delete-state)。 如果保管库的软删除状态设置为 "已启用"，则删除操作不会立即删除数据。 它将保留14天，然后被永久清除。 此14天内不会向客户收取存储费用。 若要撤消删除操作，请参阅[撤消-删除部分](#undo-the-stop-protection-and-delete-data)。
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>撤消停止保护并删除数据
+
+撤消意外删除类似于创建备份项。 撤消删除后，将保留该项，但不会触发任何将来的备份。
+
+撤消删除操作是一个非常类似于[更改策略](#changing-the-policy-of-protection)和/或[启用保护的](#enabling-protection-for-the-azure-vm) *PUT*操作。 只需通过[请求正文](#example-request-body)中的变量*isRehydrate*来撤消删除操作，并提交请求。 例如：若要撤消对 testVM 的删除操作，应使用以下请求正文。
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+响应将与上文所述的[触发按需备份](#example-responses-3)中采用相同的格式。 应按[“使用 REST API 监视作业”文档](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)中所述来跟踪生成的作业。
 
 ## <a name="next-steps"></a>后续步骤
 

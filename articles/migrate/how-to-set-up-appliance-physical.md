@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: db67defc72dcc7d913f897c6fb61548c5c33cf52
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 548ebfca9a937e58dfc5c1aff1adf6f6cb2dcc5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454596"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -41,7 +41,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 下载设备的压缩文件。
 
 1. 在 "**迁移目标** > **服务器** > **Azure Migrate：服务器评估**中，单击"**发现**"。
-2. 在“发现计算机” **“计算机是否已虚拟化?”中，单击“未虚拟化/其他”。**  > 
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。
 3. 单击“下载”以下载压缩文件。
 
     ![下载 VM](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
@@ -55,7 +55,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  对于最新的设备版本，生成的哈希应与这些设置相符。
+3.  对于最新设备版本，生成的哈希应与这些设置匹配。
 
   **算法** | **哈希值**
   --- | ---
@@ -82,7 +82,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令运行脚本：
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    AzureMigrateInstaller.ps1
     ```
 脚本将在成功完成时启动设备 Web 应用程序。
 
@@ -102,7 +102,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用检查 VM 是否可以访问 internet。 如果 VM 使用代理：
-        - 单击“代理设置”，并以 **或** 格式指定代理地址和侦听端口。 http://ProxyIPAddresshttp://ProxyFQDN
+        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
     - **时间同步**：时间已验证。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。
@@ -128,7 +128,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 指定“操作系统”、凭据的友好名称、“用户名”和“密码”，然后单击“添加”。
 你可以为 Windows 和 Linux 服务器分别添加一组凭据。
 4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器。
-3. 单击“验证”。 验证后，将显示可发现的服务器列表。
+3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
     - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
     - 若要删除服务器，请选择 >“删除”。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。

@@ -3,19 +3,19 @@ title: 如何将 Azure 诊断 (.NET) 与云服务配合使用 | Microsoft Docs
 description: 使用 Azure 诊断从 Azure 云服务收集数据，以用于调试、衡量性能、监视和流量分析等目的。
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359685"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361107"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
@@ -23,19 +23,19 @@ ms.locfileid: "68359685"
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在辅助角色中启用诊断
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。 创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。 以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 本文假定你具有 Azure 订阅，并要将 Visual Studio 与 Azure SDK 配合使用。 如果没有 Azure 订阅，可以注册[免费试用版][Free Trial]。 请确保[安装并配置 Azure PowerShell 0.8.7 或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步骤 1：创建辅助角色
 1. 启动 **Visual Studio**。
-2. 从面向 .NET Framework 4.5 的云模板创建 Azure 云服务项目   。  将该项目命名为“WadExample”。
-3. 选择“辅助角色”  并单击“确定”。 随后将创建该项目。
-4. 在“解决方案资源管理器”中，双击 WorkerRole1 属性文件   。
-5. 在“配置”选项卡中，取消选中“启用诊断”，以禁用 Diagnostics 1.0（Azure SDK 2.4 和更低版本）   。
+2. 从面向 .NET Framework 4.5 的云模板创建 Azure 云服务项目。  将该项目命名为“WadExample”。
+3. 选择“辅助角色”并单击“确定”。 随后将创建该项目。
+4. 在“解决方案资源管理器”中，双击 WorkerRole1 属性文件。
+5. 在“配置”选项卡中，取消选中“启用诊断”，以禁用 Diagnostics 1.0（Azure SDK 2.4 和更低版本）。
 6. 生成解决方案以验证无误。
 
 ### <a name="step-2-instrument-your-code"></a>步骤 2：检测代码
-将 WorkerRole.cs 的内容替换为以下代码。 继承自[EventSource 类][EventSource Class]的 SampleEventSourceWriter 类实现四个日志记录方法:**SendEnums**、**MessageMethod**、**SetOther** 和 HighFreq。 **WriteEvent** 方法的第一个参数定义相关事件的 ID。 Run 方法实现一个无限循环，该循环每隔 10 秒调用 **SampleEventSourceWriter** 类中实现的每个日志记录方法。
+将 WorkerRole.cs 的内容替换为以下代码。 继承自[EventSource 类][EventSource Class]的 SampleEventSourceWriter 类实现四个日志记录方法： **SendEnums**、 **MessageMethod**、 **SetOther**和**HighFreq**。 **WriteEvent** 方法的第一个参数定义相关事件的 ID。 Run 方法实现一个无限循环，该循环每隔 10 秒调用 **SampleEventSourceWriter** 类中实现的每个日志记录方法。
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -122,13 +122,13 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. 通过选择解决方案资源管理器中的 **WadExample** 项目，然后在“生成”  菜单中选择“发布”  ，在 Visual Studio 中将辅助角色部署到 Azure。
+1. 通过选择解决方案资源管理器中的 **WadExample** 项目，然后在“生成”菜单中选择“发布”，在 Visual Studio 中将辅助角色部署到 Azure。
 2. 选择订阅。
-3. 在“Microsoft Azure 发布设置”对话框中，选择“新建...”   。
-4. 在“创建云服务和存储帐户”对话框中输入一个“名称”（例如“WadExample”），然后选择区域或地缘组   。
-5. 将“环境”  设置为“过渡”  。
-6. 适当地修改任何其他**设置**，并单击“发布”  。
-7. 完成部署后，在 Azure 门户中验证云服务是否处于“正在运行”状态  。
+3. 在“Microsoft Azure 发布设置”对话框中，选择“新建...”。
+4. 在“创建云服务和存储帐户”对话框中输入一个“名称”（例如“WadExample”），然后选择区域或地缘组。
+5. 将“环境”设置为“过渡”。
+6. 适当地修改任何其他**设置**，并单击“发布”。
+7. 完成部署后，在 Azure 门户中验证云服务是否处于“正在运行”状态。
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>步骤 4：创建 Diagnostics 配置文件并安装扩展
 1. 通过执行以下 PowerShell 命令来下载公共配置文件架构定义：
@@ -136,10 +136,10 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. 通过右键单击 WorkerRole1 项目并选择“添加” -> “新建项...”，将 XML 文件添加到 WorkerRole1 项目中     -> “Visual C# 项”   -> “数据”   -> “XML 文件”  。 将该文件命名为“WadExample.xml”。
+2. 右键单击 **WorkerRole1** 项目并选择“添加” -> “新建项...”，将 XML 文件添加到 **WorkerRole1** 项目中。 -> “Visual C# 项” -> “数据” -> “XML 文件”。 将该文件命名为“WadExample.xml”。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 将 WadConfig.xsd 与配置文件相关联。 确保 WadExample.xml 编辑器窗口是活动的窗口。 按 **F4** 打开“属性”窗口。  在“属性”窗口中单击“架构”属性   。 在“架构”属性中  单击“...”。  在“架构”属性中单击“...” 。 单击 **“确定”** 。
+3. 将 WadConfig.xsd 与配置文件相关联。 确保 WadExample.xml 编辑器窗口是活动的窗口。 按 **F4** 打开“属性”窗口。 在“属性”窗口中单击“架构”属性。 在“架构”属性中 单击“...”。 单击“添加...” 按钮并导航到 XSD 文件的保存位置，然后选择文件 WadConfig.xsd。 单击“确定”。
 
 4. 将 WadExample.xml 配置文件的内容替换为以下 XML 并保存该文件。 此配置文件定义两个要收集的性能计数器：一个对应于 CPU 使用率，另一个对应于内存使用率。 配置将定义对应于 SampleEventSourceWriter 类中方法的四个事件。
 
@@ -182,14 +182,14 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>步骤 6：查看遥测数据
-在 Visual Studio 的“服务器资源管理器”中，导航到 wadexample 存储帐户  。 在云服务大约运行 5 分钟后，你应该会看到表 WADEnumsTable、WADHighFreqTable、WADMessageTable、WADPerformanceCountersTable 和 WADSetOtherTable      。 双击其中一个表即可查看已收集的遥测数据。
+在 Visual Studio 的“服务器资源管理器”中，导航到 wadexample 存储帐户。 在云服务大约运行 5 分钟后，你应该会看到表 WADEnumsTable、WADHighFreqTable、WADMessageTable、WADPerformanceCountersTable 和 WADSetOtherTable。 双击其中一个表即可查看已收集的遥测数据。
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>配置文件架构
 诊断配置文件定义启动诊断代理时用于初始化诊断配置设置的值。 有关有效值和示例，请参阅[最新架构参考](/azure/azure-monitor/platform/diagnostics-extension-schema)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-diagnostics-troubleshooting.md)，以获取有关常见问题的帮助。
 
 ## <a name="next-steps"></a>后续步骤
@@ -201,3 +201,6 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

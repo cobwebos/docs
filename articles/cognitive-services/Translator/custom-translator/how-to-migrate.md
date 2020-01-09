@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446786"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -27,7 +27,7 @@ ms.locfileid: "73836576"
 * 随时可以“MT Hub 中的 Bleu 分数”的标题在模型的 TrainingDetails 页面查看从 Hub 训练迁移的 BLEU 分数。
 
 > [!Note] 
-> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的[最小值](sentence-alignment.md#suggested-minimum-number-of-sentences)更少的培训。
+> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的[最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的培训。
 
 ## <a name="find-custom-translator-workspace-id"></a>查找自定义翻译器工作区 ID
 
@@ -80,9 +80,9 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 4. 在下一页上，选择以下两个选项之一：
 
-    a. 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
 
-    b. 所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
+    b.保留“数据库类型”设置，即设置为“共享”。 所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
 
     c. 在自定义翻译中输入目标工作区 ID。
 
@@ -132,7 +132,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 |   | Hub | 自定义翻译 |
 |:-----|:----:|:----:|
-|自定义功能状态   | 正式版  | 正式版 |
+|自定义功能状态   | 常规可用性  | 常规可用性 |
 | 文本 API 版本  | V2    | V3  |
 | SMT 自定义 | 是   | 否 |
 | NMT 自定义 | 否    | 是 |

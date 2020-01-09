@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941825"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667535"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -129,7 +129,6 @@ ms.locfileid: "74941825"
 
     | Linux 分发版 | 版本 |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
@@ -155,7 +154,7 @@ ms.locfileid: "74941825"
 
 Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
-版本 2.x 要求在初始化项目时为项目选择默认语言，添加的所有函数使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
+版本2.x 要求在初始化项目时为其选择默认语言。 在版本2.x 中，添加的所有函数都使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
@@ -189,7 +188,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | 初始化[ C#类库（.cs）项目](functions-dotnet-class-library.md)。 |
 | **`--csx`** | 初始化[ C#脚本（. run.csx）项目](functions-reference-csharp.md)。 必须在后续命令中指定 `--csx`。 |
@@ -203,7 +202,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--python`**  | 初始化[Python 项目](functions-reference-python.md)。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
 | **`--typescript`**  | 初始化[TypeScript 项目](functions-reference-node.md#typescript)。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp`、`dotnet`、`java`、`javascript`、`node` （JavaScript）、`powershell`、`python`和 `typescript`。 如果未设置，则初始化期间系统会提示你选择运行时。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp`、`dotnet`、`java`、`javascript`、`node` （JavaScript）、`powershell`、`python`和 `typescript`。 如果未设置，则系统会提示你在初始化期间选择运行时。 |
 
 > [!IMPORTANT]
 > 默认情况下，Core Tools 版本 2.x 会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
@@ -227,7 +226,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>获取存储连接字符串
 
-即使在使用存储仿真器进行开发时，你也可能希望使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
+即使使用 Microsoft Azure 存储模拟器进行开发，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
 - 在[Azure 门户]中，搜索并选择 "**存储帐户**"。 
   ![从 Azure 门户中选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
@@ -252,7 +251,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    如果你尚未登录到 Azure，系统会要求登录。
+    如果尚未登录到 Azure，系统会提示你执行此操作。
 
 ## <a name="create-func"></a>创建函数
 
@@ -290,7 +289,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 也可以在命令中使用以下参数指定这些选项：
 
-| 参数     | 描述                            |
+| 参数     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
 | **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项，或选择与辅助角色运行时匹配的语言。 |
@@ -346,13 +345,13 @@ func host start
 
 `func start` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 仅限版本 2.x。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 仅限版本 2.x。 |
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
-| **`--language-worker`** | 用于配置语言辅助角色的参数。 仅限版本 2.x。 |
+| **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需的参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)来启用语言辅助角色调试。 仅限版本 2.x。 |
 | **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
@@ -436,7 +435,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | 内联内容。 |
 | **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -472,14 +471,14 @@ func azure functionapp publish <FunctionAppName>
 
 以下发布选项适用于这两个版本：1.x 和2.x：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
+| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下发布选项仅在版本 2.x 中受支持：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
@@ -503,7 +502,7 @@ func deploy
 
 可使用以下自定义容器部署选项：
 
-| 选项     | 描述                            |
+| 选项     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 当前用户登录到的 Docker 注册表的名称。 |
 | **`--platform`** | 函数应用的托管平台。 有效选项为 `kubernetes` |
@@ -516,9 +515,9 @@ func deploy
 
 若要监视函数的执行，推荐的方法是将与 Azure 应用程序 Insights 集成。 你还可以将执行日志流式传输到你的本地计算机。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
-### <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
+### <a name="application-insights-integration"></a>Application Insights 集成
 
-在 Azure 门户中创建函数应用时，默认情况下将为你执行 Application Insights 集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
+在 Azure 中创建函数应用时，应启用 Application Insights 集成。 如果由于某种原因，函数应用未连接到 Application Insights 实例，则在 Azure 门户中可以很轻松地执行此集成。 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,7 +529,7 @@ func deploy
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-这种类型的流式处理日志要求你为 function app[启用 Application Insights 集成](#enable-application-insights-integration)。   
+这种类型的流式传输日志需要为 function app 启用 Application Insights 集成。   
 
 
 ## <a name="next-steps"></a>后续步骤

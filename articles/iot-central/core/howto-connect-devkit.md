@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435076"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -25,12 +25,12 @@ ms.locfileid: "73582968"
 
 若要完成本文中的步骤，需要以下资源：
 
-1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+1. 从**旧应用**程序应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)。
 
-## <a name="sample-devkits-application"></a>示例 Devkits 应用程序
+## <a name="add-a-device-template"></a>添加设备模板
 
-从**示例 Devkits**应用程序模板创建的应用程序包括定义以下设备特征的**MXChip**设备模板：
+在 Azure IoT Central 应用程序中，添加一个新的**MXChip**设备模板来定义以下设备特征：
 
 - **湿度**、**温度**、**压力**、**磁力仪**（沿 x、y、z 轴测量）、**加速感应**程序（沿 x、y、z 轴）和**陀螺仪**（沿 x、y、z 轴测量）的遥测度量值。
 - **设备状态**测量。
@@ -40,6 +40,11 @@ ms.locfileid: "73582968"
 - **在中制造的**云属性。
 - 命令**回显**和**倒计时**。 当真实设备收到**Echo**命令时，它会在设备的显示中显示发送的值。 当真实设备收到**倒计时**命令时，LED 会循环一种模式，并且设备将倒计时值发送回 IoT Central。
 
+1. 在设备模板 ![设备模板 "中选择" **+ 新建**"](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. 选择**MXChip**并创建 MXChip 设备模板 ![添加设备模板](media/howto-connect-devkit/newtemplate.png)
+
 有关配置的完整详细信息，请参阅[MXChip 设备模板详细信息](#mxchip-device-template-details)
 
 ## <a name="add-a-real-device"></a>添加真实设备
@@ -48,7 +53,7 @@ ms.locfileid: "73582968"
 
 在 Azure IoT Central 应用程序中，从**MXChip**设备模板添加真实设备，并记下设备连接详细信息：**作用域 ID、设备 ID 和主密钥**：
 
-1. 从 Device Explorer 中添加一个**真实设备**，选择 " **+ 新建 >** " "真实" 以添加实际设备。
+1. 从 "设备" 添加一个**真实设备**，选择 " **+ 新建" > real**添加一个真实设备。
 
     * 输入小写**设备 id**，或使用建议的**设备 id**。
     * 输入**设备名称**，或使用建议的名称
@@ -104,7 +109,7 @@ ms.locfileid: "73582968"
 
 1. 按设备上的“重置”按钮。
 
-## <a name="view-the-telemetry"></a>查看遥测数据
+## <a name="view-the-telemetry"></a>查看遥测
 
 当 DevKit 设备重启时，设备上的屏幕会显示：
 
@@ -156,7 +161,7 @@ git clone https://github.com/Azure/iot-central-firmware
 上述命令会将源代码下载到名为 `iot-central-firmware` 的文件夹。
 
 > [!NOTE]
-> 如果开发环境中未安装 git，可以从[ 下载 https://git-scm.com/download](https://git-scm.com/download)。
+> 如果开发环境中未安装 git，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
 
 ## <a name="review-the-code"></a>查看代码
 
@@ -184,7 +189,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 **AzureIOTClient**源文件中的代码使用[Microsoft Azure IoT sdk 中的函数和用于 C 的库](https://github.com/Azure/azure-iot-sdk-c)来与 IoT 中心进行交互。
 
-有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 **文件夹中的**readme.md`MXCHIP/mxchip_advanced` 文件。
+有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 `MXCHIP/mxchip_advanced` 文件夹中的 **readme.md** 文件。
 
 ## <a name="mxchip-device-template-details"></a>MXChip 设备模板详细信息
 
@@ -194,7 +199,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 #### <a name="telemetry"></a>遥测
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
@@ -210,12 +215,12 @@ git clone https://github.com/Azure/iot-central-firmware
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| Name          | 显示名称   | 正常 | 小心 | 危险 | 
+| 名称          | 显示名称   | NORMAL | 小心 | 危险 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
+| DeviceState   | 设备状态   | 绿色  | Orange  | 红色    | 
 
-#### <a name="events"></a>事件 
-| Name             | 显示名称      | 
+#### <a name="events"></a>活动 
+| 名称             | 显示名称      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | 按钮 B 已按下  | 
 
@@ -223,7 +228,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 数字设置
 
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
+| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
 | 当前      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
@@ -231,23 +236,23 @@ git clone https://github.com/Azure/iot-central-firmware
 
 切换设置
 
-| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | 初始 |
+| 显示名称 | 字段名 | 打开文本 | 关闭文本 | 初始 |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
+| IR           | activateIR | ON      | OFF      | 关闭     |
 
 ### <a name="properties"></a>属性
 
-| 类型            | 显示名称 | 字段名称 | 数据类型 |
+| 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
 | 设备属性 | 设备位置   | location  | location    |
-| 文本            | 制造于     | manufacturedIn   | 不适用       |
+| 文本            | 制造于     | manufacturedIn   | N/A       |
 
 ### <a name="commands"></a>命令
 
-| 显示名称 | 字段名称 | 返回类型 | 输入字段显示名称 | 输入字段名称 | 输入字段类型 |
+| 显示名称 | 字段名 | 返回类型 | 输入字段显示名称 | 输入字段名称 | 输入字段类型 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| 传回         | echo       | text        | 要显示的值         | displayedValue   | text             |
+| Echo         | echo       | text        | 要显示的值         | displayedValue   | text             |
 | 倒    | 倒  | 数字      | 计数起始               | countFrom        | 数字           |
 
 ## <a name="next-steps"></a>后续步骤

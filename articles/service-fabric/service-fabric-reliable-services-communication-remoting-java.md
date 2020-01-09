@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric 中使用 Java 的服务远程处理 | Microsoft Docs
+title: 在 Azure 中使用 Java 进行服务远程处理 Service Fabric
 description: Service Fabric 远程处理允许客户端和服务使用远程过程调用来与 Java 服务进行通信。
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426632"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>通过 Reliable Services 在 Java 中进行服务远程处理
 > [!div class="op_single_selector"]

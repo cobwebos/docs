@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric 有状态服务中 Reliable Collections 的简介 | Microsoft Docs
+title: 可靠集合简介
 description: Service Fabric 有状态服务提供可靠集合，方便用户编写高度可用、高度可缩放且低延迟的云应用程序。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 1/3/2019
-ms.author: atsenthi
-ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599264"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609717"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 
@@ -47,7 +36,7 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 可靠集合 API 由并发集合 API（位于 **System.Collections.Concurrent** 命名空间中）演变而来：
 
 * 异步：返回任务；不同于并发集合，其操作会受到复制及保存。
-* 没有 out 参数：使用 `ConditionalValue<T>` 返回 `bool` 和值，而不是返回 out 参数。 `ConditionalValue<T>` 与 `Nullable<T>` 类似，但不要求 T 是一个 struct。
+* No out 参数：使用 `ConditionalValue<T>` 返回 `bool` 和值，而不是输出参数。 `ConditionalValue<T>` 与 `Nullable<T>` 类似，但不要求 T 是一个 struct。
 * 事务：使用事务对象，让用户可以对事务中多个 Reliable Collections 上的操作分组。
 
 目前，**Microsoft.ServiceFabric.Data.Collections** 包含三个集合：

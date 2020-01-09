@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231930"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681321"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>更改双因素验证方法和设置
 
@@ -32,16 +32,16 @@ ms.locfileid: "74231930"
 
 ## <a name="using-the-additional-security-verification-page"></a>使用 "其他安全性验证" 页
 
-如果你的组织提供了有关如何启用和管理你的双因素验证的特定步骤，你应遵循这些说明。 否则，你可以从 "[其他安全验证](https://aka.ms/mfasetup)" 页访问你的安全验证方法设置。
+如果你的组织提供了有关如何启用和管理你的双因素验证的特定步骤，你应遵循这些说明。 否则，你可以从 "[其他安全验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)" 页访问你的安全验证方法设置。
 
 >[!Note]
 >如果你在屏幕上看到的内容与本文中所述的内容不匹配，则表示你的管理员已启用安全信息（预览版）体验或你的组织有其自己的自定义门户。 有关安全信息体验的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。 若要详细了解组织的自定义门户，必须与支持人员联系。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>转到 "其他安全验证" 页
 
-- 转到 https://aka.ms/mfasetup。
+- 请参阅 "[其他安全性验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)" 页。
 
-    !["其他安全验证" 屏幕，其中包含可用的安全验证方法详细信息](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    !["其他安全验证" 页，其中包含可用的安全验证方法详细信息](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     如果单击该链接对你无效，还可以按照以下步骤访问“其他安全性验证”页：
 

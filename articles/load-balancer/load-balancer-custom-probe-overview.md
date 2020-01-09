@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077078"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690394"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
-使用 Azure 负载均衡器的负载均衡规则时，需要指定运行状况探测，以允许负载均衡器检测后端终结点状态。  运行状况探测和探测响应的配置确定将接收新流的后端池实例。 可以使用运行状况探测来检测后端终结点上的应用程序失败。 还可以对运行状况探测生成自定义响应，并使用用于控制流的运行状况探测来管理负载或计划内停机。 当运行状况探测失败时，负载均衡器将停止向相应的不正常实例发送新流。
+使用 Azure 负载均衡器的负载均衡规则时，需要指定运行状况探测，以允许负载均衡器检测后端终结点状态。  运行状况探测和探测响应的配置确定将接收新流的后端池实例。 可以使用运行状况探测来检测后端终结点上的应用程序失败。 还可以对运行状况探测生成自定义响应，并使用用于控制流的运行状况探测来管理负载或计划内停机。 当运行状况探测失败时，负载均衡器将停止向相应的不正常实例发送新流。 出站连接不受影响，仅入站连接受到影响。
 
 运行状况探测支持多个协议。 特定运行状况探测协议的可用性因负载平衡器 SKU 而异。  此外，服务的行为因负载平衡器 SKU 而异，如下表所示：
 
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
 | [探测类型](#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [探测停止行为](#probedown) | 所有探测停止，所有 TCP 流继续。 | 所有探测停止，所有 TCP 流过期。 | 
+| [探测停止行为](#probedown) | 所有探测停止，所有 TCP 流继续。 | 所有探测都将过期。 | 
 
 
 >[!IMPORTANT]
@@ -49,8 +49,8 @@ ms.locfileid: "74077078"
 - 探测端口
 - 使用 HTTP （S）探测时用于 HTTP GET 的 HTTP 路径
 
-> [!NOTE]
-> 使用 Azure PowerShell、Azure CLI、模板或 API 时，不强制使用或检查探测器定义。 只能在使用 Azure 门户时执行探测验证测试。
+>[!NOTE]
+>使用 Azure PowerShell、Azure CLI、模板或 API 时，不强制使用或检查探测器定义。 只能在使用 Azure 门户时执行探测验证测试。
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>了解应用程序信号、信号检测和平台反应
 
@@ -112,7 +112,7 @@ TCP 探测通过使用定义的端口执行三方开放式 TCP 握手来初始�
       },
 ```
 
-### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP/HTTPS 探测
+### <a name="httpprobe"></a><a name="httpsprobe"></a> HTTP/HTTPS 探测
 
 >[!NOTE]
 >HTTPS 探测仅适用于[标准负载均衡器](load-balancer-standard-overview.md)。
@@ -120,6 +120,9 @@ TCP 探测通过使用定义的端口执行三方开放式 TCP 握手来初始�
 HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路径的 HTTP GET。 这两个探测都支持 HTTP GET 的相对路径。 与 HTTP 探测一样，HTTPS 探测中也添加了传输层安全性（TLS，前称为 SSL）包装器。 如果实例在超时期限内做出响应并返回 HTTP 状态 200，则将运行状况探测标记为运行。  默认情况下，运行状况探测每隔 15 秒尝试检查配置的运行状况探测端口。 最小探测间隔为 5 秒。 所有间隔的总持续时间不能超过 120 秒。
 
 如果探测端口也是服务本身的侦听器，则 HTTP/HTTPS 探测对于实现自己的逻辑以便从负载均衡器轮换中删除实例也很有用。 例如，如果实例的 CPU 利用率超过 90% 并返回非 200 HTTP 状态，则你可以决定删除该实例。 
+
+> [!NOTE] 
+> HTTPS 探测要求使用基于证书的证书，该证书在整个链中的最小签名哈希为 SHA256。
 
 如果使用云服务，并且现有的 Web 角色使用 w3wp.exe，则你还可以实现自动网站监视。 如果网站代码中出现故障，则会向负载均衡器探测返回非 200 状态。
 
@@ -208,7 +211,7 @@ UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果任何�
 
 AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-overview.md)中标识此源 IP 地址，默认允许运行状况探测流量。
 
-除了负载均衡器运行状况探测外，[以下操作也使用此 IP 地址](../virtual-network/what-is-ip-address-168-63-129-16.md)：
+除了负载均衡器运行状况探测，[以下操作还使用此 IP 地址](../virtual-network/what-is-ip-address-168-63-129-16.md)：
 
 - 使 VM 代理能够与平台通信，以表明它处于“就绪”状态
 - 启用与 DNS 虚拟服务器的通信，以便为未定义自定义 DNS 服务器的客户提供筛选的名称解析。  此筛选可确保客户只能解析其部署的主机名。
@@ -224,7 +227,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 对于 UDP 负载平衡，应从后端终结点生成自定义运行状况探测信号，并使用目标为相应侦听器的 TCP、HTTP 或 HTTPS 运行状况探测来反映 UDP 应用程序的运行状况。
 
-对[标准负载均衡器](load-balancer-ha-ports-overview.md)使用 [HA 端口负载均衡规则](load-balancer-standard-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
+对[标准负载均衡器](load-balancer-standard-overview.md)使用 [HA 端口负载均衡规则](load-balancer-ha-ports-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
 
 不要通过接收运行状况探测的实例在 VNet 中的另一个实例上转换或代理某个运行状况探测，因为此配置可能导致方案中出现连锁故障。  考虑以下方案：在负载均衡器资源后端池中部署一组第三方设备，以便为设备提供可伸缩性和冗余；配置运行状况探测来探测由第三方设备代理或转换成设备后面的其他虚拟机的端口。  如果探测用于将请求转换或代理到设备后面的其他虚拟机的同一端口，来自设备后面单个虚拟机的任何探测响应会将设备本身标记为完全停止。 此配置可能会导致整个应用程序方案出现级联故障，这是设备后端终结点的结果。  触发器可能是一种间歇性探测故障，该故障导致负载均衡器将原始目标（设备实例）标记为停止，从而可能禁用整个应用程序方案。 请改为探测设备本身的运行状况。 选择用于确定运行状况信号的探测是网络虚拟设备 (NVA) 方案的重要考虑因素，必须咨询应用程序供应商，以了解哪种运行状况信号适合此类方案。
 

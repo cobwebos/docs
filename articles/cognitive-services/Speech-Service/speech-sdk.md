@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446816"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发启用了语音的软件更为容易。 目前，Sdk 提供对**语音到文本**、**文本到语音**、**语音翻译**、**意向识别**和**机器人框架的直接线路语音通道**的访问。 有关功能和支持的平台的一般概述，请参阅文档[条目页](https://aka.ms/csspeech)。
+使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发启用了语音的软件更为容易。 目前，Sdk 提供对**语音到文本**、**文本到语音**、**语音翻译**、**意向识别**和**机器人框架的直接线路语音通道**的访问。
+
+你可以轻松地从麦克风捕获音频，从流中读取，或使用语音 SDK 从存储访问音频文件。 语音 SDK 支持 WAV/PCM 16 位 16 kHz/8 kHz 的单通道音频以进行语音识别。 使用[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)时，支持其他音频格式。
+
+有关功能和支持的平台的一般概述，请参阅文档[条目页](https://aka.ms/csspeech)。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,14 +35,14 @@ ms.locfileid: "74819122"
 
 对于 Windows，我们支持以下语言：
 
-* C#（UWP 和 .NET）、C++：你可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
+* C#（UWP 和 .NET）、C++：你可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet [cognitiveservices account](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)在 Visual Studio 中安装 SDK。
 
-* Java：可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
+* Java：可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` 引用为一个依赖项。
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> 目前，我们在以下目标体系结构上仅支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9：
+> 目前，我们仅支持以下目标体系结构中的 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9：
 > - 用于开发的C++ x86、X64 和 ARM64
 > - x64 和 ARM64 for Java
 > - x64 for .NET Core 和 Python
@@ -62,16 +66,16 @@ sudo apt-get install libssl1.0.2 libasound2
 * C#：你可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
 * Java：你可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 引用为一个依赖项。
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构：
 
-  |路径|描述|
+  |路径|Description|
   |-|-|
-  |`license.md`|许可|
+  |`license.md`|许可证|
   |`ThirdPartyNotices.md`|第三方声明|
   |`include`|用于 C 和 C++ 的头文件|
   |`lib/x64`|用于与应用程序链接的本机 x64 库|

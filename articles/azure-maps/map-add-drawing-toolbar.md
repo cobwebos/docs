@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6bc754c9a4f333da85e57c5ad9780da8df93e895
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432871"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>将绘图工具工具栏添加到地图
 
@@ -38,7 +38,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="添加绘图工具栏" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图</a>"<a href='https://codepen.io/azuremaps'>@azuremaps</a>工具栏 Azure Maps （）。
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图" 工具栏</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 
@@ -94,11 +94,22 @@ var layers = drawingManager.getLayers();
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="更改绘制呈现样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现样式</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘图呈现样式</a>。
 </iframe>
 
 
 ## <a name="next-steps"></a>后续步骤
+
+了解如何使用 "绘图工具" 模块的其他功能：
+
+> [!div class="nextstepaction"]
+> [获取形状数据](map-get-shape-data.md)
+
+> [!div class="nextstepaction"]
+> [反应绘图事件](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [交互类型和键盘快捷方式](drawing-tools-interactions-keyboard-shortcuts.md)
 
 详细了解本文中使用的类和方法：
 

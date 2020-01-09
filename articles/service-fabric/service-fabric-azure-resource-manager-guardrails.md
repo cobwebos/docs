@@ -1,25 +1,18 @@
 ---
-title: Service Fabric Azure 资源管理器 deployment guardrails |Microsoft Docs
+title: Service Fabric Azure 资源管理器 deployment guardrails
 description: 本文概述通过 Azure 部署 Service Fabric 群集时的常见错误资源管理器以及如何避免这些错误。
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426737"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 部署 Service Fabric 群集时，guardrails 已准备就绪，这将导致 Azure 资源管理器部署在无效群集配置的情况下失败。 以下部分概述了常见群集配置问题以及缓解这些问题所需的步骤。 
@@ -68,7 +61,7 @@ Service Fabric 节点类型的持续性值在 Azure 资源管理器模板的两�
 * 虚拟机规模集持续性与当前 Service Fabric 持久性级别或目标 Service Fabric 节点类型持久性级别匹配 
 
 
-### <a name="mitigation"></a>缓解措施
+### <a name="mitigation"></a>缓解操作
 若要解决持久性不匹配问题，请按以上任何错误消息中所示：
 1. 请在 Azure 资源管理器模板的 "虚拟机规模集扩展" 或 "Service Fabric 节点类型" 部分中更新持久性级别，以确保值匹配。
 2. 用更新的值重新部署 Azure 资源管理器模板。

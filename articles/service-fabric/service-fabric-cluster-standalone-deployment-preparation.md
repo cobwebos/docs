@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric 独立群集部署准备 | Microsoft Docs
+title: 独立群集部署准备
 description: 本文介绍如何准备环境和创建群集配置，以便部署用于处理生产工作负荷的群集。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133401"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610057"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -82,7 +74,7 @@ ms.locfileid: "74133401"
 
 有关此文件中相关部分的详细信息，请参阅 [Windows 独立群集的配置设置](service-fabric-cluster-manifest.md)。
 
-从已下载的包中打开某个 ClusterConfig.json 文件，并修改以下设置：
+从已下载的程序包中打开某个 ClusterConfig.json 文件，并修改以下设置：
 
 | **配置设置** | **说明** |
 | --- | --- |
@@ -105,7 +97,7 @@ ms.locfileid: "74133401"
    * 已启用文件共享 (SMB)
    * 已基于群集配置端口打开所需的端口
    * 已打开 Windows SMB 和远程注册表服务所需的端口：135、137、138、139 和 445
-   * 已将网络彼此互连
+   * 已相互建立网络连接
 3. 所有群集节点计算机均不是域控制器。
 4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
 5. 如果群集计算机无法访问 Internet，请在群集配置中进行以下设置：

@@ -1,27 +1,21 @@
 ---
-title: 使用搜寻书签在 Azure Sentinel 中进行搜寻时跟踪数据 |Microsoft Docs
+title: 在 Azure Sentinel 中使用搜寻书签进行数据调查
 description: 本文介绍如何使用 Azure Sentinel 搜寻书签跟踪数据。
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935267"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563728"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>在通过 Azure Sentinel 进行搜寻期间跟踪数据
 
@@ -124,7 +118,7 @@ Azure Sentinel 中的搜寻书签可帮助你执行此操作，方法是保留�
 查看事件中的书签：导航到**Sentinel** > **威胁管理** > **事件**，并选择带有书签的事件。 选择 "**查看完整详细信息**"，然后选择 "**书签**" 选项卡。
 
 > [!TIP]
-> 作为命令栏上 "**事件操作（预览）** " 选项的替代方法，你可以使用一个或多个书签的上下文菜单（ **...** ）来选择**创建新事件**、**添加到现有事件**以及**从中删除事件**。 
+> 作为命令栏上 "**事件操作（预览）** " 选项的替代方法，你可以使用一个或多个书签的上下文菜单（ **...** ）来选择**创建新事件**、**添加到现有事件**以及**删除事件**的选项。 
 
 ## <a name="view-bookmarked-data-in-logs"></a>查看日志中的带书签的数据
 

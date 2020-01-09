@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158432"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454659"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
 
@@ -19,7 +19,7 @@ ms.locfileid: "74158432"
 
 > [!IMPORTANT]
 > 对于使用 Azure Migrate 设备发现的 Azure VMware Vm，无代理依赖项可视化目前处于预览阶段。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 某些功能可能不受支持或者受限。 此预览版涵盖客户支持，可用于生产工作负荷。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="about-dependency-mapping"></a>关于依赖项映射
@@ -39,7 +39,7 @@ ms.locfileid: "74158432"
     - TCP 连接
     - 具有活动连接的进程的名称
     - 运行上述进程的已安装应用程序的名称
-    - 不能。 每个轮询间隔检测到的连接
+    - 不。 每个轮询间隔检测到的连接
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -61,7 +61,7 @@ ms.locfileid: "74158432"
 
 无代理依赖项可视化支持的操作系统如下所示。
 
-**类型** | **受支持的操作系统**
+类型 | **受支持的操作系统**
 --- | ---
 **Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 （64）
 **Linux** | Red Hat Enterprise Linux 7、6、5 <br/> Ubuntu Linux 14.04、16.04 <br/> Debian 7、8 <br/> Oracle Linux 6、7 <br/> CentOS 5、6、7  
@@ -85,7 +85,7 @@ ms.locfileid: "74158432"
 3. 选择**操作系统**。
 4. 提供帐户的友好名称。
 5. 提供**用户名**和**密码**
-6. 单击“保存”。
+6. 单击“ **保存**”。
 7. 单击 "**保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

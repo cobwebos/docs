@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435324"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
@@ -29,14 +29,14 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 1. 按照[创建 HDInsight 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤操作，了解使用门户创建群集的常用步骤。 请勿完成门户创建过程。
 
-2. 在“群集大小”部分中，使用“每个工作节点的磁盘数”字段来配置磁盘数。
+2. 从 "**配置 & 定价**" 部分中，使用 "__节点数__" 字段来配置磁盘的数量。
 
     > [!NOTE]  
     > 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-    !["群集大小" 部分，其中突出显示了每个工作节点的磁盘](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    !["群集大小" 部分，其中突出显示了每个工作节点的磁盘](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：资源管理器模板
+## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：Resource Manager 模板
 
 若要控制 Kafka 群集中辅助节点使用的磁盘数，请使用模板的以下部分：
 

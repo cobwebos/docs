@@ -2,17 +2,17 @@
 title: 什么是 Azure 专用终结点？
 description: 了解 Azure 专用终结点
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: ccae73b58b7da8e631c081871e17cec221918a76
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228121"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647384"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,10 +22,10 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|属性  |说明 |
+|属性  |Description |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
-|Subnet    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
+|子网    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
 |专用链接资源    |   从可用类型列表中使用资源 ID 或别名连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标 subresource   |      要连接的 subresource。 每个专用链接资源类型都有不同的选项可根据首选项进行选择。    |
 |连接批准方法    |  自动或手动。 根据基于角色的访问控制（RBAC）权限，可以自动批准专用终结点。 如果尝试在没有 RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
@@ -43,7 +43,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 - 可以使用相同的专用链接资源创建多个专用终结点。 对于使用常见 DNS 服务器配置的单个网络，建议的做法是将单个专用终结点用于给定的专用链接资源，以避免在 DNS 解析中出现重复的条目或冲突。 
  
-- 可以在同一虚拟网络中的相同或不同子网中创建多个专用终结点。 可以在订阅中创建的专用终结点的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 可以在同一虚拟网络中的相同或不同子网中创建多个专用终结点。 可以在订阅中创建的专用终结点的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
  
@@ -98,7 +98,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 对于 Azure 服务，请使用下表中所述的建议区域名称：
 
-|专用链接资源类型   |Subresource  |区域名称  |
+|专用链接资源类型   |子资源  |区域名称  |
 |---------|---------|---------|
 |SQL DB/DW （Sql/服务器）    |  Sql Server （sqlServer）        |   privatelink.database.windows.net       |
 |存储帐户（storageAccounts/）    |  Blob （blob、blob_secondary）        |    privatelink.blob.core.windows.net      |
@@ -122,7 +122,7 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解措施  |
+|限制 |Description |缓解操作  |
 |---------|---------|---------|
 |网络安全组（NSG）规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR  | 在源客户端上使用 NSG 规则控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由        |
 |  不支持仅具有专用终结点的对等互连虚拟网络   |   不支持在不使用任何其他工作负荷的情况下连接到对等互连虚拟网络上的专用终结点       | 在对等互连虚拟网络上部署单个 VM，以启用连接 |

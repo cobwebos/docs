@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 诊断和监视 | Microsoft Docs
+title: Azure ServiceFabric 诊断和监视
 description: 本文描述了 Service Fabric Reliable ServiceRemoting 运行时的性能监视功能，例如由其发出的性能计数器。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426697"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。
@@ -28,7 +19,7 @@ Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft
 ## <a name="performance-counters"></a>性能计数器
 Reliable ServiceRemoting 运行时定义以下性能计数器类别：
 
-| 类别 | 描述 |
+| 类别 | Description |
 | --- | --- |
 | Service Fabric 服务 |特定于 Azure Service Fabric Service Remoting 的计数器，例如，处理请求所需的平均时间 |
 | Service Fabric 服务方法 |特定于 Service Fabric Remoting Service 所实现方法的计数器，例如，调用服务方法的频率 |
@@ -66,7 +57,7 @@ MethodName 是与性能计数器实例相关联的服务方法的名称。 方�
 
 ServiceRuntimeMethodId 是由 Fabric 服务运行时生成的供内部使用的 32 位整数的字符串表示形式。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
-*ServiceFabricPartitionID* 是与性能计数器实例关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
+*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
 
 ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式。
 
@@ -83,7 +74,7 @@ ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用�
 
 Reliable Service 运行时发布与执行服务方法相关的下列性能计数器。
 
-| 类别名称 | 计数器名称 | 描述 |
+| 类别名称 | 计数器名称 | Description |
 | --- | --- | --- |
 | Service Fabric 服务方法 |调用/秒 |每秒调用服务方法的次数 |
 | Service Fabric 服务方法 |每次调用的平均毫秒数 |执行服务方法所用的时间（以毫秒为单位） |
@@ -92,11 +83,11 @@ Reliable Service 运行时发布与执行服务方法相关的下列性能计数
 ### <a name="service-request-processing-performance-counters"></a>服务请求处理的性能计数器
 客户端通过服务代理对象调用方法时，会通过网络向远程服务发送请求消息。 该服务处理此请求消息并向客户端返回响应。 Reliable ServiceRemoting 运行时发布以下与服务请求处理相关的性能计数器。
 
-| 类别名称 | 计数器名称 | 描述 |
+| 类别名称 | 计数器名称 | Description |
 | --- | --- | --- |
 | Service Fabric 服务 |未完成的请求数 |正在服务中处理的请求数 |
 | Service Fabric 服务 |每个请求的平均毫秒数 |服务处理请求所用时间（以毫秒为单位） |
-| Service Fabric 服务 |请求反序列化的平均毫秒数 |服务收到服务请求消息时，对此请求消息进行反序列化所用的时间（以毫秒为单位） |
+| Service Fabric 服务 |反序列化请求的平均毫秒数 |服务收到服务请求消息时，对此请求消息进行反序列化所用的时间（以毫秒为单位） |
 | Service Fabric 服务 |序列化响应的平均毫秒数 |将响应发送到客户端之前，在服务中序列化服务响应消息所用的时间（以毫秒为单位） |
 
 ## <a name="next-steps"></a>后续步骤

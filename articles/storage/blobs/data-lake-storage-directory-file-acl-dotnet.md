@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Data Lake Storage Gen2 （预览版）中将 Azure .NET 用于文件 & Acl
+title: Azure Data Lake Storage Gen2 用于文件 & Acl 的 .NET SDK （预览版）
 description: 使用 Azure 存储客户端库来管理已启用分层命名空间（HNS）的存储帐户中的目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7921b42475d92070884a4298f66411813c995452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443773"
 ---
-# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>在 Azure Data Lake Storage Gen2 中使用 & Acl 的 .NET 文件（预览）
+# <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
 本文介绍如何使用 .NET 在已启用分层命名空间（HNS）的存储帐户中创建和管理目录、文件和权限。 
 

@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure 云服务配置和管理常见问题解答 | Microsoft Docs
+title: 配置和管理问题常见问题
+titleSuffix: Azure Cloud Services
 description: 本文列出了一些关于 Microsoft Azure 云服务配置和管理的常见问题解答。
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161765"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660607"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -276,7 +277,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的 IIS 启动脚本。
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>什么是云服务配额限制？
-请参阅[服务特定的限制](../azure-subscription-service-limits.md#subscription-limits)。
+请参阅[服务特定的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
@@ -310,7 +311,7 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|Value|含义|
+|值|含义|
 ------|------
 |0|没有 SNI|
 |第|已启用 SNI|

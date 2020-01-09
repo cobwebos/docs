@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432830"
 ---
 # <a name="get-shape-data"></a>获取形状数据
 
@@ -41,6 +41,14 @@ function getDrawnShapes() {
 
 
 ## <a name="next-steps"></a>后续步骤
+
+了解如何使用 "绘图工具" 模块的其他功能：
+
+> [!div class="nextstepaction"]
+> [反应绘图事件](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [交互类型和键盘快捷方式](drawing-tools-interactions-keyboard-shortcuts.md)
 
 详细了解本文中使用的类和方法：
 

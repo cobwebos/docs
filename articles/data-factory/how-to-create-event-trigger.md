@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 0b1d9fad2992397a3a6768d0f5e7ff26a400a2b3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443921"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -30,7 +30,7 @@ ms.locfileid: "73889326"
 
 
 > [!NOTE]
-> 本文中所介绍的集成依赖于 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)。 请确保订阅已注册事件网格资源提供程序。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md#azure-portal)。
+> 本文中所介绍的集成依赖于 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)。 请确保订阅已注册事件网格资源提供程序。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
@@ -78,13 +78,13 @@ ms.locfileid: "73889326"
 
 下表概述了与基于事件的触发器相关的架构元素：
 
-| **JSON 元素** | **说明** | **类型** | **允许的值** | **必需** |
+| **JSON 元素** | **说明** | 类型 | **允许的值** | **必需** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **scope** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
-| **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |
-| **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `december` 容器下 `records` 文件夹中的 blob 触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
-| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `boxes` 文件夹中名为 `december` 的 blob 的触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
-| **ignoreEmptyBlobs** | 零字节的 blob 是否会触发管道运行。 默认情况下，此值设置为 true。 | 布尔值 | true 或 false | 否 |
+| **作用域** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
+| **events** | 导致此触发器触发的事件的类型。 | 数组    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |
+| **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `records` 容器下 `december` 文件夹中的 blob 触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **ignoreEmptyBlobs** | 零字节的 blob 是否会触发管道运行。 默认情况下，此值设置为 true。 | Boolean | True 或 False | 否 |
 
 ## <a name="examples-of-event-based-triggers"></a>基于事件的触发器的示例
 
@@ -93,15 +93,15 @@ ms.locfileid: "73889326"
 > [!IMPORTANT]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。 对于**blobPathBeginsWith**，数据工厂 UI 会自动在触发器 JSON 中的文件夹和容器名称之间添加 `/blobs/`。
 
-| 属性 | 示例 | 说明 |
+| 属性 | 示例 | Description |
 |---|---|---|
 | **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/subfoldername/` | 此外可以引用一个子文件夹。 |
-| **Blob 路径开头** | `/containername/blobs/foldername/file.txt` | 接收 `file.txt` 容器下的 `foldername` 文件夹中名为 `containername` 的 blob 事件。 |
+| **Blob 路径开头** | `/containername/blobs/foldername/file.txt` | 接收 `containername` 容器下的 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
 | **Blob 路径结尾** | `file.txt` | 接收任何路径中名为 `file.txt` 的 blob 事件。 |
-| **Blob 路径结尾** | `/containername/blobs/file.txt` | 接收容器 `file.txt` 下名为 `containername` 的 blob 事件。 |
-| **Blob 路径结尾** | `foldername/file.txt` | 接收任何容器下 `file.txt` 文件夹中名为 `foldername` 的 blob 事件。 |
+| **Blob 路径结尾** | `/containername/blobs/file.txt` | 接收容器 `containername` 下名为 `file.txt` 的 blob 事件。 |
+| **Blob 路径结尾** | `foldername/file.txt` | 接收任何容器下 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
 
 ## <a name="next-steps"></a>后续步骤
 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。

@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 762cea6dce3e0c6be3f5e977c5f9de806ca0880e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56103ed89d2e7813fd60bc50ecca7271f5421a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516391"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438692"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure 数据共享中支持的数据存储
 
@@ -28,23 +28,23 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 | Azure Blob 存储 |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL 数据库 |公共预览版 | |
-| Azure SQL 数据仓库 |公共预览版 | |
+| Azure SQL Database |公共预览版 | |
+| Azure Synapse Analytics （以前称为 Azure SQL DW） |公共预览版 | |
 | Azure 数据资源管理器 | |[有限预览](https://aka.ms/azuredatasharepreviewsignup) |
 
 ## <a name="data-store-support-matrix"></a>数据存储支持矩阵
 
-在确定数据存储区以接受中的数据时，Azure 数据共享可为数据使用者提供灵活性。 例如，可将 Azure SQL 数据库中共享的数据接收到 Azure Data Lake Store Gen2、Azure SQL 数据库或 Azure SQL 数据仓库。 客户可以在配置接收的数据共享时选择要接收数据的格式。 
+在确定数据存储区以接受中的数据时，Azure 数据共享可为数据使用者提供灵活性。 例如，可以将 Azure SQL 数据库中共享的数据接收到 Azure Data Lake Store Gen2、Azure SQL 数据库或 Azure Synapse Analytics 中。 客户可以在配置接收的数据共享时选择要接收数据的格式。 
 
 下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅[如何配置数据集映射](how-to-configure-mapping.md)。
 
-|  | Azure Blob 存储 | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL 数据库 | Azure SQL 数据仓库 
+|  | Azure Blob 存储 | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL Database | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob 存储 |✓ ||✓|
 | Azure Data Lake Storage Gen1 |✓ | |✓|
 | Azure Data Lake Storage Gen2 |✓ | |✓|
-| Azure SQL 数据库 |✓ | |✓|✓|✓|
-| Azure SQL 数据仓库 |✓ | |✓|✓|✓|
+| Azure SQL Database |✓ | |✓|✓|✓|
+| Azure Synapse Analytics |✓ | |✓|✓|✓|
 
 ## <a name="next-steps"></a>后续步骤
 

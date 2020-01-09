@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22d77de80c7440fc120d2c48f9e73e606388848
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfbff1f95eaad41813ee0741a6b133dccdae181d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078174"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647520"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078174"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -142,13 +142,13 @@ ms.locfileid: "70078174"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始安装之前，请查看这些文档：
 
@@ -193,13 +193,13 @@ ms.locfileid: "70078174"
 
    ![图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046]
 
-   _**图 1：** 定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目_
+   图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目
 
 2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
 
    ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
-   _**图 2：** SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址_
+   图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址
 
 ### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
 
@@ -210,12 +210,12 @@ ms.locfileid: "70078174"
    * **Java 系统**：**SCS** 实例编号 **01**
    * **ABAP+Java 系统**：**ASCS** 实例编号 **00** 和 **SCS** 实例编号 **01**
 
-   若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息, 请参阅[更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-8.9]。
+   若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息，请参阅[更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-8.9]。
 
 下面几个任务未在标准的 SAP 安装文档中做介绍。
 
 > [!NOTE]
-> SAP 安装文档介绍了如何安装第一个 ASCS/SCS 群集节点。
+> SAP 安装文档介绍如何安装第一个 ASCS/SCS 群集节点。
 >
 >
 
@@ -263,7 +263,7 @@ ms.locfileid: "70078174"
 
    ![图 3：群集配置探测端口默认为 0][sap-ha-guide-figure-3048]
 
-   _**图 3：** 群集配置探测端口默认为 0_
+   图 3：群集配置探测端口默认为 0
 
    端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
@@ -338,7 +338,7 @@ ms.locfileid: "70078174"
 
    ![图 4：设置新值后探测群集端口][sap-ha-guide-figure-3049]
 
-   _**图 4：** 设置新值后探测群集端口_
+   图 4：设置新值后探测群集端口
 
 ### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>打开 Windows 防火墙探测端口
 
@@ -366,7 +366,7 @@ ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）
 
 ![图 5：将 SAP ERS 实例的服务类型更改为自动延迟][sap-ha-guide-figure-3050]
 
-_**图 5：** 将 SAP ERS 实例的服务类型更改为自动延迟_
+图 5：将 SAP ERS 实例的服务类型更改为自动延迟
 
 ## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
 
@@ -381,22 +381,22 @@ _**图 5：** 将 SAP ERS 实例的服务类型更改为自动延迟_
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> 测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
+## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
 可以使用故障转移群集管理器和 SIOS DataKeeper 管理和配置工具，轻松测试及监视 SAP ASCS/SCS 实例故障转移与 SIOS 磁盘复制。
 
 ### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS 实例在群集节点 A 上运行
 
 SAP PR1 群集组在群集节点 A（例如在 pr1-ascs-0）上运行。 将属于 SAP PR1 群集组的共享磁盘驱动器 S 分配到群集节点 A。ASCS/SCS 实例也使用磁盘驱动器 S。 
 
-![图 6：故障转移群集管理器：SAP \<SID\>群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
+![图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
 
-_**图 6：** 故障转移群集管理器：SAP \<SID\>群集组在群集节点 A 上运行_
+_图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行_
 
 在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷驱动器 S 复制到群集节点 B 上的目标卷驱动器 S。例如，从 pr1-ascs-0 [10.0.0.40] 复制到 pr1-ascs-1 [10.0.0.41]。
 
 ![图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B][sap-ha-guide-figure-5001]
 
-_**图 7：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B_
+图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B
 
 ### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 到节点 B 的故障转移
 
@@ -417,12 +417,12 @@ _**图 7：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到�
 
    故障转移后，SAP \<SID\> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行。
 
-   ![图 8：在故障转移群集管理器中, SAP \<SID\>群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
+   ![图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
 
-   _**图 8**:在故障转移群集管理器中, SAP \<SID\>群集组在群集节点 B 上运行_
+   _图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行_
 
    共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 pr1-ascs-1 [10.0.0.41] 复制到 pr1-ascs-0 [10.0.0.40]。
 
    ![图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
-   _**图 9：** SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A_
+   图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A

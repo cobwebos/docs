@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122134"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530912"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "74122134"
 
 若要深入了解经典部署模型，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/resource-manager-deployment-model.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -95,7 +95,7 @@ ms.locfileid: "74122134"
 * 中国东部
 * 中国北部
 
-有关中国 Azure 云的详细信息，请参阅[由中国 21Vianet 运营的 AzureChinaCloud for Azure](http://www.windowsazure.cn/)。
+有关中国 Azure 云的详细信息，请参阅[由中国 21Vianet 运营的 AzureChinaCloud for Azure](https://www.windowsazure.cn/)。
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>连接到 Microsoft Azure Germany
 若要连接到 Microsoft Azure Germany，请使用以下命令之一。
@@ -117,16 +117,16 @@ ms.locfileid: "74122134"
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
-| 参数 | 说明 | 默认 |
+| 参数 | Description | 默认 |
 | --- | --- | --- |
 | 名称 |缓存的名称 | |
 | 位置 |缓存的位置 | |
-| ResourceGroupName |要在其中创建缓存的资源组名称 | |
+| ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值为：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值为：1、2、3、4、5、6、7、8、9、10 | |
 | SKU |指定缓存的 SKU。 有效值为：Basic、Standard、Premium |标准 |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
-| EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
+| EnableNonSslPort |指出是否启用非 SSL 端口。 |错误 |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
 | StaticIP |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 | |
 | 子网 |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
@@ -134,20 +134,20 @@ ms.locfileid: "74122134"
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值为：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| 属性 | 说明 | 定价层 |
+| 属性 | Description | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
 | rdb-backup-frequency |[Redis 数据暂留](cache-how-to-premium-persistence.md)的备份频率 |仅限高级版 |
-| maxmemory-reserved |为非缓存进程配置[预留的内存](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) |标准版和高级版 |
+| maxmemory-reserved |为非缓存进程配置[预留的内存](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) |标准和高级 |
 | maxmemory-policy |为缓存配置[逐出策略](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) |所有定价层 |
-| notify-keyspace-events |配置 [keyspace 通知](cache-configure.md#keyspace-notifications-advanced-settings) |标准版和高级版 |
-| hash-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| hash-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| set-max-intset-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| zset-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| zset-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| 数据库 |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准版和高级版 |
+| notify-keyspace-events |配置 [keyspace 通知](cache-configure.md#keyspace-notifications-advanced-settings) |标准和高级 |
+| hash-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准和高级 |
+| hash-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准和高级 |
+| set-max-intset-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准和高级 |
+| zset-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准和高级 |
+| zset-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准和高级 |
+| databases |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准和高级 |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 可以使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 创建新的 Azure Redis 缓存实例。
@@ -239,7 +239,7 @@ ms.locfileid: "74122134"
 
 `ResourceGroupName`、`Name` 和 `Location` 是必需的参数，其余则是可选参数并且有默认值。 运行前面的命令会使用指定的名称、位置和资源组创建标准 SKU Azure Redis 缓存实例，其大小为 1 GB，且禁用了非 SSL 端口。
 
-若要创建高级缓存，请指定大小 P1 (6 GB - 60 GB)、P2 (13 GB - 130 GB)、P3 (26 GB - 260 GB) 或 P4 (53 GB - 530 GB)。 若要启用群集，使用 `ShardCount` 参数指定分片计数。 以下示例创建包含 3 个分片的 P1 高级缓存。 P1 高级缓存的大小为 6 GB。由于我们指定了 3 个分片，因此总大小为 18 GB (3 x 6 GB)。
+若要创建高级缓存，请指定大小 P1 (6 GB - 60 GB)、P2 (13 GB - 130 GB)、P3 (26 GB - 260 GB) 或 P4 (53 GB - 530 GB)。 若要启用群集，使用 `ShardCount` 参数指定分片计数。 以下示例将创建包含 3 个分片的 P1 高级缓存。 P1 高级缓存的大小为 6 GB。由于我们指定了 3 个分片，因此总大小为 18 GB (3 x 6 GB)。
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
@@ -322,7 +322,7 @@ ms.locfileid: "74122134"
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>缩放 Azure Redis 缓存
-修改 `Set-AzRedisCache`、`Size` 或 `Sku` 属性时，可以使用 `ShardCount` 来缩放 Azure Redis 缓存实例。 
+修改 `Size`、`Sku` 或 `ShardCount` 属性时，可以使用 `Set-AzRedisCache` 来缩放 Azure Redis 缓存实例。 
 
 > [!NOTE]
 > 使用 PowerShell 缩放缓存受到的限制和要遵循的准则与在 Azure 门户中缩放缓存相同。 可以扩展到不同定价层，但有以下限制。
@@ -421,7 +421,7 @@ ms.locfileid: "74122134"
 
     Get-AzRedisCache
 
-若要返回特定资源组中所有缓存的相关信息，请结合 `Get-AzRedisCache` 参数运行 `ResourceGroupName`。
+若要返回特定资源组中所有缓存的相关信息，请结合 `ResourceGroupName` 参数运行 `Get-AzRedisCache`。
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
@@ -529,7 +529,7 @@ ms.locfileid: "74122134"
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `Primary` 参数指定 `Secondary` 或 `KeyType`。 以下示例将重新生成缓存的辅助访问密钥。
+若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `KeyType` 参数指定 `Primary` 或 `Secondary`。 以下示例将重新生成缓存的辅助访问密钥。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
@@ -779,5 +779,5 @@ ms.locfileid: "74122134"
 * [使用资源组来管理 Azure 资源](../azure-resource-manager/resource-group-template-deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](https://azure.microsoft.com/blog/)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](https://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
-* [“你好，脚本编写专家！” 博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
+* ["你好，脚本编写专家！"博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实际提示和技巧。
 

@@ -1,22 +1,21 @@
 ---
 title: 使用 Azure 流分析实时检测欺诈行为
 description: 了解如何通过流分析创建实时欺诈行为检测解决方案。 使用事件中心进行实时事件处理。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458790"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
 本教程提供有关如何使用 Azure 流分析的端到端说明。 学习如何： 
 
@@ -28,15 +27,15 @@ ms.locfileid: "68947049"
 
 本教程将使用基于电话呼叫数据的实时欺诈检测的示例。 所演示的技术还适用于其他类型的欺诈检测，如信用卡欺诈或身份盗用。 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>方案:实时进行远程通信和 SIM 欺诈检测
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>方案：实时远程通信和 SIM 欺诈检测
 
-电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测这种类型的欺诈, 公司需要检查传入的电话记录, 并查找特定模式-在本例中, 对于在不同国家/地区的相同时间拨打的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
+电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测这种类型的欺诈，公司需要检查传入的电话记录，并查找特定模式-在本例中，对于在不同国家/地区的相同时间拨打的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
-在开始之前，请确保做好以下准备：
+在开始之前，请确保具有以下各项：
 
 * 一个 Azure 帐户。
 * 呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，可以从 Microsoft 下载中心下载此应用。 将此包解压缩到计算机上的文件夹中。 如果想要查看代码，并在调试程序中运行该应用，可从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取应用源代码。 
@@ -70,7 +69,7 @@ ms.locfileid: "68947049"
 
    ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
+6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
@@ -127,7 +126,7 @@ ms.locfileid: "68947049"
 
    ![TelcoGenerator 配置文件显示事件中心名称和连接字符串](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4. 保存该文件。 
+4. 保存文件。 
 
 ### <a name="start-the-app"></a>启动应用
 1.  打开命令窗口，然后切换到解压缩 TelcoGenerator 应用的文件夹。
@@ -277,7 +276,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 假设要计算每个区域的传入呼叫数。 在流数据中，当要执行聚合函数（如计数）时，需要将流划分为临时单位（因为数据流本身实际上是无限的）。 使用流分析[开窗函数](stream-analytics-window-functions.md)执行此操作。 然后，可以使用该窗口中的数据作为一个单元。
 
-此转换需要一个不重叠的时间窗口序列，每个窗口将具有一组可对其进行分组和聚合的离散数据。 这种类型的窗口称为“翻转窗口”。 在翻转窗口中，可以获得按 `SwitchNum`（它表示发起呼叫的国家/地区）分组的传入呼叫的计数。 
+此转换需要一个不重叠的时间窗口序列，每个窗口将具有一组可对其进行分组和聚合的离散数据。 这种类型的窗口称为“翻转窗口”。 在 "翻转" 窗口中，可以获取按 `SwitchNum`分组的传入调用的计数，该计数表示发起呼叫的国家/地区。 
 
 1. 在代码编辑器中将查询更改为以下内容：
 
@@ -293,7 +292,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
     投影包括 `System.Timestamp`，后者将返回每个窗口结束时的时间戳。 
 
-    若要指定想要使用翻转窗口，请在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
+    若要指定要使用翻转窗口，请在 `GROUP BY` 子句中使用[TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由5秒时间间隔组成，因此，每5秒钟的呼叫都按国家/地区计数。
 
 2. 再次单击“测试”。 在结果中，请注意“WindowEnd”下的时间戳以 5 秒为增量。
 
@@ -303,9 +302,9 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 在此示例中，将欺诈使用情况视为来自同一用户的呼叫，但与另一个 5 秒内的呼叫位于不同的位置。 例如，同一用户不能合法地同时从美国和澳大利亚发起呼叫。 
 
-若要检查这些情况，可以使用流数据的自联接基于 `CallRecTime` 值将流联接到自身。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。
+若要检查这些情况，可以使用流数据的自联接基于 `CallRecTime` 值将流联接到自身。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（国家/地区）不同的呼叫记录。
 
-当对流数据使用联接时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 （如前所述，流数据实际上是无限的。）使用 `DATEDIFF` 函数在联接的 `ON` 子句中指定关系的时间限制。 此示例中联接基于调用数据的 5 秒时间间隔。
+当对流数据使用联接时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 （如前所述，流数据实际上是无限的。）使用 `DATEDIFF` 函数在联接的 `ON` 子句中指定关系的时间范围。 此示例中联接基于调用数据的 5 秒时间间隔。
 
 1. 在代码编辑器中将查询更改为以下内容： 
 
@@ -365,7 +364,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 单击“保存”。 
+5. 单击“ **保存**”。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>启动流分析作业

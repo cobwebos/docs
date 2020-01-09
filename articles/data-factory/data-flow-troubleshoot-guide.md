@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443951"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>排查 Azure 数据工厂数据流问题
 
@@ -92,8 +92,18 @@ ms.locfileid: "74930174"
 
 - **原因**：正在联接的流具有公用列名称
 
-- **解决方法**：在联接后添加 Select transforamtion，并针对输入和输出选择 "删除重复列"。
+- **解决方法**：在联接后添加 Select 转换，并为输入和输出选择 "删除重复列"。
 
+### <a name="error-message-possible-cartesian-product"></a>错误消息：可能的笛卡尔积
+
+- **症状**：联接或查找转换检测到数据流执行时可能出现笛卡尔积
+
+- **原因**：如果未显式定向 ADF 使用交叉联接，数据流可能会失败
+
+- **解决方法**：使用自定义交叉联接将查找或联接转换更改为联接，并在表达式编辑器中输入查找或联接条件。 如果要显式生成笛卡尔积，请在联接之前，在两个独立流中的每个流之间使用派生列转换，以创建要匹配的合成键。 例如，在名为 ```SyntheticKey``` 的每个流的派生列中创建新列，并将其设置为等于 ```1```。 然后，将 ```a.SyntheticKey == b.SyntheticKey``` 用作自定义联接表达式。
+
+> [!NOTE]
+> 请确保在自定义交叉联接的左侧和右侧关系的每一侧至少包含一列。 如果对静态值执行交叉联接，而不是每一侧的列，将导致对整个数据集执行完全扫描，从而导致数据流执行得不到。
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
 

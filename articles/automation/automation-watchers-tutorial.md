@@ -2,24 +2,21 @@
 title: 在 Azure 自动化帐户中创建观察程序任务
 description: 了解如何在 Azure 自动化帐户中创建观察程序任务，以观察在文件夹中创建的新文件。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419759"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>创建 Azure 自动化观察程序任务来跟踪本地计算机上的文件更改
 
 Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件并触发操作。 本教程引导你创建一个观察程序任务来监视何时向目录中添加了新文件。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入观察程序 runbook
@@ -29,7 +26,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 > * 触发观察程序
 > * 检查输出
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本教程需要以下各项：
 
@@ -47,7 +44,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 可以通过[PowerShell 库](https://www.powershellgallery.com)完成此导入过程。
 
 1. 导航到[Watch-NewFile](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)的库页面。
-2. 在 " **Azure 自动化**" 选项卡下, 单击 "**部署到 Azure 自动化**"。
+2. 在 " **Azure 自动化**" 选项卡下，单击 "**部署到 Azure 自动化**"。
 
 还可以使用以下步骤将此 runbook 从门户导入到自动化帐户中。
 
@@ -74,7 +71,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 可以通过[PowerShell 库](https://www.powershellgallery.com)完成此导入过程。
 
 1. 导航到[Process-NewFile](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)的库页面。
-2. 在 " **Azure 自动化**" 选项卡下, 单击 "**部署到 Azure 自动化**"。
+2. 在 " **Azure 自动化**" 选项卡下，单击 "**部署到 Azure 自动化**"。
 
 还可以使用以下步骤将此 runbook 从门户导入到自动化帐户中。
 
@@ -156,7 +153,7 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入观察程序 runbook

@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 开发 Azure Functions
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Functions 扩展来开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975578"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667539"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 开发 Azure Functions
 
@@ -94,10 +94,6 @@ Azure Functions 扩展提供以下好处：
 
 除 HTTP 和 timer 触发器外，绑定在扩展包中实现。 必须为需要的触发器和绑定安装扩展包。 安装绑定扩展的过程取决于项目的语言。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 在终端窗口中运行[dotnet add package](/dotnet/core/tools/dotnet-add-package)命令，以在项目中安装所需的扩展包。 以下命令将安装 Azure 存储扩展，该扩展可实现 Blob、队列和表存储的绑定。
@@ -105,6 +101,10 @@ Azure Functions 扩展提供以下好处：
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此操作的结果取决于项目的语言：
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-在项目中创建一个新文件夹。 文件夹包含新的函数 json 文件和新的 JavaScript 代码文件。
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 新C#的类库（.cs）文件将添加到你的项目中。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+在项目中创建一个新文件夹。 文件夹包含新的函数 json 文件和新的 JavaScript 代码文件。
 
 ---
 
@@ -130,6 +130,24 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 以下示例连接到名为 `outqueue`的存储队列，在该队列中，存储帐户的连接字符串是在 `MyStorageConnection` 应用程序设置中设置的。
 
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+更新函数方法，将以下参数添加到 `Run` 方法定义：
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+此代码要求你添加以下 `using` 语句：
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 向集合中添加一条或多条消息。 当函数完成时，这些消息将发送到队列。
+
+若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
+
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code 使你可以通过使用一组方便的提示向函数 json 文件添加绑定。 若要创建绑定，请右键单击（Ctrl + 单击 macOS）函数文件夹中的**函数 json**文件，然后选择 "**添加绑定**"：
@@ -138,13 +156,13 @@ Visual Studio Code 使你可以通过使用一组方便的提示向函数 json �
 
 下面是用于定义新的存储输出绑定的示例提示：
 
-| Prompt | Value | 描述 |
+| Prompt | 值 | Description |
 | -------- | ----- | ----------- |
 | **选择绑定方向** | `out` | 该绑定是输出绑定。 |
 | **选择方向绑定** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |
 | **用于在代码中标识此绑定的名称** | `msg` | 用于标识代码中引用的绑定参数的名称。 |
 | **要将消息发送到的队列** | `outqueue` | 绑定要写入到的队列的名称。 如果 *queueName* 不存在，首次使用绑定时，它会创建该属性。 |
-| **从 local.setting.json 中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含用 function app 创建的存储帐户的连接字符串。 |
+| **从 "local. json" 中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含用 function app 创建的存储帐户的连接字符串。 |
 
 在此示例中，将以下绑定添加到函数 json 文件中的 `bindings` 数组：
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---javascript-example)引用。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-更新函数方法，将以下参数添加到 `Run` 方法定义：
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-此代码要求你添加以下 `using` 语句：
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 向集合中添加一条或多条消息。 当函数完成时，这些消息将发送到队列。
-
-若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -218,7 +218,7 @@ Visual Studio Code 允许你将函数项目直接发布到 Azure。 在此过程
 
 1. 按照提示操作，提供以下信息：
 
-    | Prompt | Value | 描述 |
+    | Prompt | 值 | Description |
     | ------ | ----- | ----------- |
     | 在 Azure 中选择 function app | 在 Azure 中创建新 Function App | 在下一个提示符下，键入标识新函数应用的全局唯一名称，然后选择 "Enter"。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。 |
     | 选择 OS | Windows | 函数应用在 Windows 上运行。 |
@@ -383,7 +383,7 @@ HTTP 触发器的请求 URL 显示在终端的输出中。 当项目在本地运
 
 Azure Functions 扩展在区域中提供了一个有用的图形界面，用于与 Azure 中的函数应用交互。 命令面板（F1）中也提供了相同的功能。 以下 Azure Functions 命令可用：
 
-|Azure Functions 命令  | 描述  |
+|Azure Functions 命令  | Description  |
 |---------|---------|
 |**添加新设置**  |  在 Azure 中创建新的应用程序设置。 若要了解详细信息，请参阅[发布应用程序设置](#publish-application-settings)。 你可能还需要将[此设置下载到本地设置](#download-settings-from-azure)。 |
 | **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 若要了解详细信息，请参阅[Azure Functions 的持续部署](functions-continuous-deployment.md)。 |

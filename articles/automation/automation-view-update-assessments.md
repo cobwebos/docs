@@ -2,19 +2,15 @@
 title: 查看 Azure 更新管理更新评估
 description: 本文介绍如何查看更新部署的更新评估。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d27df57e9371f16a15d3a18b7722598062377d88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419885"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>查看 Azure 更新管理更新评估
 
@@ -38,7 +34,7 @@ ms.locfileid: "74850510"
 
 ### <a name="windows"></a>Windows
 
-|分类  |描述  |
+|分类  |Description  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -51,7 +47,7 @@ ms.locfileid: "74850510"
 
 ### <a name="linux-2"></a>Linux
 
-|分类  |描述  |
+|分类  |Description  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不重要或不是安全更新的所有其他更新。        |

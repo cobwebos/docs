@@ -4,15 +4,15 @@ description: 更新 Azure 诊断公共配置，以将数据发送到 Application
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450581"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -57,7 +57,7 @@ Application Insights 接收器的示例配置：
     ]
 }
 ```
-- **接收器**的 *name* 属性是用于唯一标识该接收器的字符串值。
+- **接收器***名称*属性是唯一标识接收器的字符串值。
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
     - 如果没有 Application Insights 资源，请参阅[创建新的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )，了解有关创建资源和获取检测键的详细信息。
@@ -66,10 +66,10 @@ Application Insights 接收器的示例配置：
 - **Channels** 元素包含一个或多个 **Channels** 元素。
     - *name* 属性唯一引用该通道。
     - 使用 *loglevel* 属性可以指定通道允许的日志级别。 可用日志级别从最多信息到最少信息的顺序依次为：
-        - Verbose
+        - “详细”
         - 信息
         - 警告
-        - Error
+        - 错误
         - 严重
 
 通道的作用类似于筛选器，可让你选择要发送到目标接收器的特定日志级别。 例如，可以收集详细日志并将其发送到存储，但只将“错误”日志发送到接收器。

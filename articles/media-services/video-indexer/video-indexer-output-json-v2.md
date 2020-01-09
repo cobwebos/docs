@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454635"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>检查 API 生成的视频索引器输出
 
-调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包含如下所示的维度：脚本、OCRs、面部、主题、块等。维度具有时间范围的实例，这些实例显示每个维度在视频中出现的时间。  
+调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包括：脚本、OCRs、面部、主题、块等。每个洞察类型都包含显示见解在视频中出现的时间范围的实例。 
 
 1. 若要检索 JSON 文件，请调用[获取视频索引 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
 1. 如果还对特定项目感兴趣，请调用[获取视频项目下载 URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
@@ -38,7 +38,7 @@ ms.locfileid: "74978298"
 
 ## <a name="root-elements"></a>根元素
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -78,7 +78,7 @@ ms.locfileid: "74978298"
 
 本部分介绍见解的摘要。
 
-|属性 | 描述|
+|Attribute | Description|
 |---|---|
 |name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
@@ -94,11 +94,11 @@ ms.locfileid: "74978298"
 |brands| 可以包含零个或多个品牌。 有关更详细的信息，请参阅 [brands](#brands)。|
 |statistics | 有关更详细的信息，请参阅 [statistics](#statistics)。|
 |情感| 可以包含零个或多个情感。 有关更详细的信息，请参阅 [emotions](#emotions)。|
-|topics|可以包含零个或多个主题。 [topics](#topics) 维度。|
+|topics|可以包含零个或多个主题。 [主题](#topics)见解。|
 
 ## <a name="videos"></a>videos
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
@@ -150,7 +150,7 @@ ms.locfileid: "74978298"
 ```
 ### <a name="insights"></a>insights
 
-见解是一组维度（例如，脚本行、人脸、品牌等），其中的每个维度是唯一元素（例如，face1、face2、face3）的列表，每个元素有自身的元数据及其实例（具有其他可选元数据的时间范围）的列表。
+每个见解（例如，脚本行、面部、品牌等）都包含一个唯一元素（例如，face1、face2、face3）的列表，每个元素都有其自己的元数据和其实例的列表（这是具有其他可选元数据的时间范围）。
 
 人脸可能有 ID、名称、缩略图、其他元数据和其时态实例列表（例如：00:00:05 –00:00:10、00:01:00-00:02:30 和00:41:21 –00:41:49）。每个临时实例都可以有其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
 
@@ -158,20 +158,20 @@ ms.locfileid: "74978298"
 |---|---|
 |sourceLanguage|视频的源语言（采用一种主要语言）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |语言|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
-|脚本|[transcript](#transcript) 维度。|
-|ocr|[OCR](#ocr)维度。|
-|关键字|[keywords](#keywords) 维度。|
+|脚本|[脚本](#transcript)见解。|
+|ocr|[OCR](#ocr)见解。|
+|关键字|[关键字](#keywords)见解。|
 |blocks|可以包含一个或多个[块](#blocks)|
-|人脸|[faces](#faces) 维度。|
-|标签|[labels](#labels) 维度。|
-|截图|[shots](#shots) 维度。|
-|brands|[brands](#brands) 维度。|
-|audioEffects|[audioEffects](#audioEffects) 维度。|
-|情绪|[sentiments](#sentiments) 维度。|
-|visualContentModeration|[visualContentModeration](#visualcontentmoderation) 维度。|
-|textualContentModeration|[textualConentModeration](#textualcontentmoderation) 维度。|
-|情感| [emotions](#emotions) 维度。|
-|topics|[topics](#topics) 维度。|
+|人脸|[面部](#faces)见解。|
+|标签|[标签](#labels)见解。|
+|截图|[照片](#shots)见解。|
+|brands|[品牌](#brands)见解。|
+|audioEffects|[AudioEffects](#audioEffects)见解。|
+|情绪|[情绪](#sentiments)见解。|
+|visualContentModeration|[VisualContentModeration](#visualcontentmoderation)见解。|
+|textualContentModeration|[TextualContentModeration](#textualcontentmoderation)见解。|
+|情感| [情感](#emotions)见解。|
+|topics|[主题](#topics)见解。|
 
 示例：
 
@@ -196,14 +196,14 @@ ms.locfileid: "74978298"
 
 #### <a name="blocks"></a>blocks
 
-属性 | 描述
+Attribute | Description
 ---|---
 id|块的 ID。|
 实例|此块的时间范围列表。|
 
 #### <a name="transcript"></a>脚本
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -241,7 +241,7 @@ id|块的 ID。|
 
 #### <a name="ocr"></a>ocr
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -276,7 +276,7 @@ id|块的 ID。|
 
 #### <a name="keywords"></a>关键字
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -307,7 +307,7 @@ id|块的 ID。|
 
 #### <a name="faces"></a>人脸
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|人脸 ID。|
 |name|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
@@ -352,7 +352,7 @@ id|块的 ID。|
 
 #### <a name="labels"></a>标签
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
@@ -411,7 +411,7 @@ id|块的 ID。|
 
 #### <a name="scenes"></a>scenes
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|场景 ID。|
 |实例|此场景的时间范围列表（场景只能有1个实例）。|
@@ -444,7 +444,7 @@ id|块的 ID。|
 
 #### <a name="shots"></a>截图
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|截图 ID。|
 |keyFrames|快照内的关键帧列表（每个关键帧都有一个 ID 和一个实例时间范围列表）。 每个关键帧实例都有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -494,7 +494,7 @@ id|块的 ID。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|品牌 ID。|
 |name|品牌名称。|
@@ -553,7 +553,7 @@ id|块的 ID。|
 
 #### <a name="statistics"></a>statistics
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |SpeakerWordCount|每个发言人的单词数。|
@@ -563,7 +563,7 @@ id|块的 ID。|
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|音频效果 ID。|
 |type|音频效果类型（例如鼓掌、语音、静音）。|
@@ -592,7 +592,7 @@ id|块的 ID。|
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -631,7 +631,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -667,7 +667,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -677,7 +677,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器根据语音和音频提示识别情感。确定的情感可能是：乐趣、悲伤、愤怒或恐惧。
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|情感 ID。|
 |type|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
@@ -767,7 +767,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级[IPTC](https://iptc.org/standards/media-topics/)分类。 
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |id|主题 ID。|
 |name|主题名称，例如：“Pharmaceuticals”。|

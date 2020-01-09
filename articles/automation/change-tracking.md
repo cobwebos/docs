@@ -2,20 +2,16 @@
 title: 使用 Azure 自动化跟踪更改
 description: 借助更改跟踪解决方案可以确定环境中发生的软件和 Windows 服务更改。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418753"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -95,7 +91,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 2. 在“更改跟踪”页上，选择“Linux 文件”，然后单击“+ 添加”以添加要跟踪的新文件。
 3. 在“添加 Linux 文件以更改跟踪”中，输入要跟踪的文件或目录的信息，然后单击“保存”。
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项名称     | 要跟踪的文件的友好名称。        |
@@ -118,7 +114,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 2. 在“更改跟踪”页上，选择“Windows 文件”，然后单击“+ 添加”以添加要跟踪的新文件。
 3. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件进行跟踪的信息，然后单击“保存”。
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项名称     | 要跟踪的文件的友好名称。        |
@@ -150,7 +146,7 @@ Azure 安全中心添加了在 Azure 更改跟踪上构建的文件完整性监�
 2. 在“更改跟踪”页上，选择“Windows 注册表”，然后单击“+ 添加”以添加要跟踪的新注册表项。
 3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”。
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
 |已启用     | 确定是否应用了设置。        |
 |项名称     | 要跟踪的注册表项的友好名称。        |
@@ -243,14 +239,14 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ## <a name="network-requirements"></a>网络要求
 
-更改跟踪特别需要以下地址。 与这些地址的通信已在端口 443 上完成。
+更改跟踪特别需要以下地址。 与这些地址的通信通过端口 443 完成。
 
 |Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|\* .azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>使用更改跟踪
 
@@ -272,7 +268,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 下表提供了此解决方案收集的更改记录的示例日志搜索：
 
-|Query  |描述  |
+|查询  |Description  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 显示已设置为“自动”，但报告为“已停止”的 Windows 服务的最新库存记录<br>结果仅限于该 SoftwareName 和 Computer 的最新记录      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|显示已删除软件的更改记录|
@@ -301,7 +297,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 就更改跟踪或清单数据来说，虽然针对 Hosts 文件的更改发出警报是一种很好的应用警报的方式，但还有更多适用于警报的情形，其中包括在以下部分定义的情况及其示例。
 
-|Query  |描述  |
+|查询  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|用于跟踪对系统关键文件的更改|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|用于跟踪对关键配置文件的修改|

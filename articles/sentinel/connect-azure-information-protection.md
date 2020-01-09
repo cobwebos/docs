@@ -1,25 +1,21 @@
 ---
-title: 将 Azure 信息保护数据连接到 Azure Sentinel |Microsoft Docs
+title: 将 Azure 信息保护连接到 Azure Sentinel
 description: 了解如何在 Azure Sentinel 中连接 Azure 信息保护数据。
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261820"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563677"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>连接 Azure 信息保护中的数据
 
@@ -29,7 +25,7 @@ ms.locfileid: "71261820"
 
 可以通过配置 Azure 信息保护数据连接器，将[Azure 信息保护](https://azure.microsoft.com/services/information-protection/)中的日志记录信息传输到 azure Sentinel。 Azure 信息保护可帮助你控制和保护敏感数据，无论数据存储在云中还是本地。
 
-如果已配置[Azure 信息保护的集中式报告](https://docs.microsoft.com/azure/information-protection/reports-aip)，以便将此服务中的日志记录信息存储在与当前为 Azure Sentinel 选择的相同的 Log Analytics 工作区中，则可以跳过配置此数据连接器。 Azure 信息保护中的日志记录信息已可用于 Azure Sentinel。
+如果已配置[Azure 信息保护的集中式报告](https://docs.microsoft.com/azure/information-protection/reports-aip)，以便将此服务中的日志记录信息存储在与当前为 Azure Sentinel 选择的相同的 Log Analytics 工作区中，则可以跳过此数据连接器的配置。 Azure 信息保护中的日志记录信息已可用于 Azure Sentinel。
 
 但是，如果 Azure 信息保护中的日志记录信息将与当前为 Azure Sentinel 选择的工作区不同 Log Analytics 工作区，请执行以下操作之一：
 
@@ -39,13 +35,13 @@ ms.locfileid: "71261820"
     
     如果更改了工作区，则 Azure 信息保护的新报表数据现在将存储在用于 Azure Sentinel 的工作区中，而不能将历史数据提供给 Azure Sentinel 使用。 此外，如果为自定义查询、警报或 REST Api 配置了上一个工作区，则必须为 Azure Sentinel 工作区重新配置这些内容，前提是要使用它们进行 Azure 信息保护。 使用 Azure 信息保护的客户端和服务不需要重新配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 适用于你的租户的以下 Azure AD 管理员角色之一： 
     - Azure 信息保护管理员
     - 安全管理员
-    - 符合性管理员
-    - 合规性数据管理员
+    - 法规管理员
+    - 相容性数据管理员
     - 全局管理员
     
     > [!NOTE]
@@ -69,12 +65,12 @@ ms.locfileid: "71261820"
 
 4. 选择工作区后，选择 **"确定"** ，此时连接器**状态**应更改为 "**已连接**"。
 
-5. Azure 信息保护中的报表数据存储在所选工作区中的**InformationProtectionLogs_CL**表中。 
+5. Azure 信息保护中的报表数据存储在所选工作区内的 " **InformationProtectionLogs_CL** " 表中。 
     
     若要为此报表数据使用 Azure Monitor 中的相关架构，请搜索**InformationProtectionEvents**。 有关这些事件函数的信息，请参阅 Azure 信息保护文档中的[事件函数的友好架构参考](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions)部分。
 
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Azure 信息保护连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。

@@ -1,25 +1,15 @@
 ---
-title: 有关 Microsoft Azure Service Fabric 的常见问题 | Microsoft 文档
-description: 下面是有关 Service Fabric 的一些常见问题及其解答：
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 有关 Microsoft Azure Service Fabric 的常见问题
+description: 与 Service Fabric 相关的常见问题，包括功能、用例和常见方案。
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481640"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614632"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -107,7 +97,7 @@ ms.locfileid: "74481640"
 可以。  有关详细信息，请参阅[使用附加的数据磁盘创建群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[虚拟机规模集的 Azure 磁盘加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以在群集节点类型（虚拟机规模集）中使用低优先级 VM？
-否。 不支持低优先级 VM。 
+不。 不支持低优先级 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>在群集中运行防病毒程序时需要排除哪些目录和进程？
 
@@ -135,7 +125,7 @@ ms.locfileid: "74481640"
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>应用程序可如何对 KeyVault 进行身份验证以获取机密？
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
-答： 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
+A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
 B. 对于启用了虚拟机规模集 MSI 的主机，可以为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>应用程序设计

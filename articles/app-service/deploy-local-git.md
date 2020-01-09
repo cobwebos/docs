@@ -1,17 +1,17 @@
 ---
-title: 从本地 Git 存储库部署
+title: 从本地 Git 存储库进行部署
 description: 了解如何实现从本地 Git 部署到 Azure 应用服务。 从本地计算机部署代码的最简单方法之一。
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671768"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680947"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>要 Azure App Service 的本地 Git 部署
 
@@ -97,7 +97,9 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 使用 Azure Pipelines （预览版）为应用启用本地 Git 部署：
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的 Azure App Service 应用页面，然后在左侧菜单中选择 "**部署中心**"。
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"。 
+
+1. 选择 Azure App Service 应用，并选择左侧菜单中的 "**部署中心**"。
    
 1. 在 "**部署中心**" 页上，选择 "**本地 Git**"，然后选择 "**继续**"。 
    

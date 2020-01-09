@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495045"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647299"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -90,7 +90,7 @@ ms.locfileid: "73495045"
 * 数值
 * 分类
 * 字符串
-* 二进制
+* Binary
 
 ### <a name="how-is-your-data-formatted"></a>数据格式是如何设置的？
 
@@ -109,7 +109,7 @@ ms.locfileid: "73495045"
 采用 Azure 机器学习 Studio （经典）环境例如：
 
 * 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../studio/import-data.md#supported-data-formats-and-data-types)部分。
-* 有关分析过程中使用的其他 Azure 服务的限制的信息，请参阅 [Azure 订阅和服务限制、配额及约束](../../azure-subscription-service-limits.md)。
+* 有关分析过程中使用的其他 Azure 服务的限制的信息，请参阅 [Azure 订阅和服务限制、配额及约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>数据质量问题：浏览和预处理
 

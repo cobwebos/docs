@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378205"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "73582401"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>是否可以将群集部署到现有的虚拟网络？
 
-不能。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
+不。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
 
 ## <a name="what-cluster-operations-are-available"></a>哪些群集操作可用？
 
@@ -49,7 +49,7 @@ ms.locfileid: "73582401"
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Docker 注册表是否可在外部使用，因此可以使用 Jenkins 等工具？
 
-Docker 注册表可从 `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` 开始，但不提供强大的存储持久性保证。 你还可以使用[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)。
+`https://docker-registry.apps.<clustername>.<region>.azmosa.io/` 中提供 Docker 注册表，但未提供强大的存储持久性保证。 你还可以使用[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)。
 
 ## <a name="is-cross-namespace-networking-supported"></a>是否支持交叉命名空间网络？
 
@@ -65,25 +65,25 @@ Docker 注册表可从 `https://docker-registry.apps.<clustername>.<region>.azmo
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-不能。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+不。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主节点和基础结构节点在与 Azure Kubernetes 服务（AKS）配合时是否会被抽象掉？
 
-不能。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+不。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是否支持 Azure （OSBA）的开放 Service Broker？
 
 可以。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试对另一个订阅中的虚拟网络进行对等互连，但收到 `Failed to get vnet CIDR` 错误。
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试使用其他订阅中的虚拟网络，但收到 `Failed to get vnet CIDR` 错误。
 
-在具有虚拟网络的订阅中，请确保将 `Microsoft.ContainerService` 提供程序注册 `az provider register -n Microsoft.ContainerService --wait` 
+在具有虚拟网络的订阅中，请确保向注册 `Microsoft.ContainerService` 提供程序 `az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift （ARO）维护过程是什么？
 
 对于 ARO，有三种维护类型：升级、备份和还原 etcd 数据，以及云提供商启动的维护。
 
-+ 升级包括软件升级和标识符。 在启动时，将通过运行 `yum update` 并提供即时缓解来实现 CVE 修正。  并行，将为将来创建群集创建新的映像版本。
++ 升级包括软件升级和标识符。 在启动时，将通过运行 `yum update` 来执行 CVE 修正，并可立即缓解。  并行，将为将来创建群集创建新的映像版本。
 
 + Etcd 数据的备份和管理是一种自动化过程，根据具体的操作，可能需要群集停机。 如果正在从备份还原 etcd 数据库，则会有停机时间。 我们每小时备份一次 etcd，并保留过去6小时的备份。
 
@@ -121,7 +121,7 @@ Syslog、docker 日志、日记和 dmesg 由托管服务进行处理，不会向
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>客户如何在节点级别获取对 CPU/内存等度量值的访问权限，以采取措施来缩放、调试问题，等等。我似乎无法在 ARO 群集上运行 `kubectl top`。
 
-`kubectl top` 在 Red Hat OpenShift 上不可用。 它需要一个后备指标源（Heapster （不推荐使用）或指标-服务器（孵化或 alpha），其中的任何一个都不包含在 OpenShift 监视堆栈中。
+客户可以通过使用命令 `oc adm top nodes` 或使用客户管理员 clusterrole `kubectl top nodes` 来访问节点级别的 CPU/内存指标。  客户还可以使用命令 `oc adm top pods` 或 `kubectl top pods` 访问 `pods` 的 CPU/内存指标
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO 的默认 pod 计划程序配置是什么？
 
@@ -137,7 +137,7 @@ ARO 使用 OpenShift 中随附的默认计划程序。 ARO 中有几种不支持
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>是否有一种方法来管理 pod 位置？
 
-随着即将发生的客户管理更新，客户将能够获取节点和查看标签。  这将提供一种方法来针对规模集中的任何 VM。
+客户能够以客户管理员身份获取节点和查看标签。 这将提供一种方法来针对规模集中的任何 VM。
 
 使用特定标签时必须注意：
 
@@ -147,7 +147,7 @@ ARO 使用 OpenShift 中随附的默认计划程序。 ARO 中有几种不支持
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>ARO 群集中的最大 pod 数是多少？  ARO 中每个节点的最大 pod 数是多少？
 
-有关更多详细信息，请参阅[上游 OpenShift 文档](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits)。 Red Hat OpenShift 3.11 具有 250-pod/node 限制，而[aro 具有20个计算节点限制](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)，因此 cap 群集中支持的最大 pod 数为 250 * 20 = 5000。
+ Azure Red Hat OpenShift 3.11 的每个节点限制为 50-pod， [aro 具有20个计算节点限制](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)，因此 cap 群集中支持的最大 pod 数为 50 * 20 = 1000。
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>可以在专用 VNET 上指定部署的 IP 范围，以避免与其他公司 Vnet 发生一次对等互连的冲突？
 

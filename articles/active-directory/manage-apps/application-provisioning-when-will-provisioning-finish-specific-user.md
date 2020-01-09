@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900410"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681372"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -35,7 +35,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 - 当前正在运行或最后完成的预配周期（初始或增量）的类型。
 - 显示已完成的预配周期百分比的**进度栏**。 百分比反映预配的页的计数。 请注意，每个页面可能包含多个用户或组，因此该百分比并不与预配的用户、组或角色的数目直接相关。
 - 可以使用 "**刷新**" 按钮来更新视图。
-- 预配的**用户**和**组**的数量，以及创建的角色数。 在初始周期期间，用户在创建或更新用户时 **，将按**1 计数，并且在删除用户时，将按1计数。 在增量循环期间，用户更新不会影响**用户**计数;只有在创建或删除用户时，才会更改此数字。
+- 连接器数据存储中的**用户**和**组**的数目。 当将对象添加到预配的作用域时，计数将增加。 如果用户已软删除或硬删除，则计数不会关闭，因为这样不会从连接器数据存储中删除对象。 [重置](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)cd 后，将重新 caculated 第一次同步的计数 
 - "**查看审核日志**" 链接，可打开 Azure AD 预配日志，以获取有关用户预配服务运行的所有操作的详细信息，包括每个用户的预配状态（请参阅下面的[使用预配日志](#use-provisioning-logs-to-check-a-users-provisioning-status)部分）。
 
 设置周期完成后，"**统计信息截止日期**" 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符，特定于租户中的应用。
@@ -102,7 +102,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 - 已分配的组的数量和大小。 同步已分配的组比同步用户花费的时间要长。 已分配的组的数量和大小都会影响性能。 如果应用程序[为组对象同步启用了映射](customize-application-attributes.md#editing-group-attribute-mappings)，则除了用户之外，还会同步组名称和成员身份等组属性。 这些额外的同步比仅同步用户对象需要花费更长的时间。
 
-- 如果性能成为问题，并且你正在尝试预配租户中的大部分用户和组，请使用范围筛选器。 使用范围筛选器，可优化预配服务通过筛选用户（基于特定属性值）从 Azure AD 提取的数据。 有关范围筛选器的详细信息，请参阅[使用范围筛选器进行基于属性的应用程序预配](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
+- 如果性能成为问题，并且你正在尝试预配租户中的大部分用户和组，请使用范围筛选器。 使用范围筛选器，可优化预配服务通过筛选用户（基于特定属性值）从 Azure AD 提取的数据。 有关作用域筛选器的详细信息，请参阅[通过作用域筛选器基于属性预配应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 自动化 SaaS 应用程序用户预配和取消预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931414"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531031"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 中 Log Analytics 工作区中的 Azure 活动日志
 
@@ -47,7 +47,7 @@ ms.locfileid: "74931414"
     ![连接工作区](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>在 Log Analytics 工作区中分析
-将活动日志连接到 Log Analytics 工作区时，会将条目写入工作区中名为**AzureActivity**的表，您可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 此表的结构因[日志条目的类别](activity-logs-overview.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅[Azure 活动日志事件架构](activity-log-schema.md)。
+将活动日志连接到 Log Analytics 工作区时，会将条目写入工作区中名为**AzureActivity**的表，您可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 此表的结构因[日志条目的类别](activity-log-view.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅[Azure 活动日志事件架构](activity-log-schema.md)。
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>活动日志分析监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
@@ -65,7 +65,7 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ![Azure 活动日志仪表板](media/collect-activity-logs/activity-log-dash.png)
 
-| 可视化部件 | 描述 |
+| 可视化部件 | Description |
 | --- | --- |
 | Azure 活动日志条目 | 显示所选日期范围的排名靠前的 Azure 活动日志条目的条形图，并显示前10个活动调用方的列表。 单击该条形图可针对 `AzureActivity` 运行日志搜索。 单击 "调用方" 项可运行日志搜索，返回该项目的所有活动日志条目。 |
 | 按状态分类的活动日志 | 显示所选日期范围的 Azure 活动日志状态的圆环图以及前十种状态记录的列表。 单击该图表以运行 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`的日志查询。 单击某一状态项可运行日志搜索，返回该状态记录的所有活动日志条目。 |

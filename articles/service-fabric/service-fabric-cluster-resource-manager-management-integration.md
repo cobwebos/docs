@@ -1,25 +1,16 @@
 ---
-title: Service Fabric 群集Resource Manager - 管理集成 | Microsoft 文档
+title: 群集资源管理器-管理集成
 description: 概述群集 Resource Manager 与 Service Fabric 管理之间的集成点。
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196493"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614615"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
 Service Fabric 群集资源管理器不会在 Service Fabric 中驱动升级，但会关注升级。 群集 Resource Manager 帮助进行管理的第一种方式是跟踪群集及其中服务的所需状态。 无法将群集放入所需配置时，群集 Resource Manager 会发出运行状况报告。 例如，如果容量不足，则群集资源管理器会发出运行状况警告和错误，指示该问题。 集成的另一个部分与升级的工作方式有关。 在升级期间，群集资源管理器会稍微改变其行为。  
@@ -77,7 +68,7 @@ HealthEvents          :
 2. 当前违反了升级域分发约束。 这表示特定的升级域在此分区中拥有的副本数超出了预期。
 3. 哪些节点包含会引起违规的副本。 在这种情况下，是名为“Node.8”的节点
 4. 此分区中是否正在进行升级（“当前正在升级 -- false”）
-5. 此服务的分发策略：“分发策略 -- 打包”。 这受`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略。 
+5. 此服务的分发策略：“分发策略 -- 打包”。 这由 `RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)控制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略。 
 6. 报告发生时间 -- 2015/8/10 晚上 7:13:02
 
 此类信息丰富了生产环境中触发的警报，可让用户知道某个地方出错了，还可用于检测和暂停错误升级。 在此情况下，我们可以调查 Resource Manager 为何必须将副本打包到升级域。 例如，打包通常是暂时的，因为其他升级域中的节点已关闭。
@@ -114,7 +105,7 @@ HealthEvents          :
 
 在所有约束中，可能觉得：“嘿 – 我认为容错域约束在系统中是最重要的。 为了确保不违反故障域约束，我情愿违反其他约束。”
 
-可为约束配置不同的优先级别。 这些是：
+可为约束配置不同的优先级别。 他们分别是：
 
    - “硬”(0)
    - “软”(1)
@@ -183,7 +174,7 @@ ClusterManifest.xml
 ## <a name="fault-domain-and-upgrade-domain-constraints"></a>容错域和升级域约束
 群集资源管理器要保留在容错域和升级域之间分布的服务。 它会将此作为群集资源管理器引擎内的约束进行建模。 有关其具体用法和特定行为的详细信息，请参阅有关[群集配置](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)的文章。
 
-群集资源管理器可能需要将一些副本打包到升级域，处理升级、故障或其他约束违规。 通常，仅当系统中的多种故障或其他扰乱因素阻止正确放置时，才会打包到故障或升级域。 若要在这些情况下防止打包，可以利用`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 请注意，作为副作用，这可能会影响服务可用性和可靠性，因此请仔细考虑。
+群集资源管理器可能需要将一些副本打包到升级域，处理升级、故障或其他约束违规。 通常，仅当系统中的多种故障或其他扰乱因素阻止正确放置时，才会打包到故障或升级域。 如果要在这些情况下阻止打包，则可以使用 `RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 请注意，作为副作用，这可能会影响服务可用性和可靠性，因此请仔细考虑。
 
 如果已正确配置环境，则即使在升级期间，也会完全遵循所有约束。 关键的一点是，群集资源管理器会自动监视约束。 检测到违规时，它会立即报告并尝试解决问题。
 

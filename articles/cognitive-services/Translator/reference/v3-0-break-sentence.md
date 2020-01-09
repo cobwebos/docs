@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446700"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
 
@@ -35,7 +35,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>api-version</td>
     <td>必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>身份验证标头</td>
     <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
@@ -69,13 +69,13 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>请求正文
 
-请求的正文是一个 JSON 数组。 每个数组元素都是一个 JSON 对象，具有名为 `Text` 的字符串属性。 句子边界是针对 `Text` 属性的值计算的。 具有一个文本段的示例请求正文如下所示：
+请求的正文是一个 JSON 数组。 每个数组元素都是一个包含字符串属性名称为 `Text` 的 JSON 对象。 句子边界是针对 `Text` 属性的值计算的。 具有一个文本段的示例请求正文如下所示：
 
 ```json
 [
@@ -87,7 +87,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 * 数组最多可具有 100 个元素。
 * 数组元素的文本值不能超过 10,000 个字符（包括空格）。
-* 包括空格在内，请求中包含的整个文本不能超过 50,000 个字符。
+* 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
 * 如果指定了 `language` 查询参数，则所有数组元素必须采用同一语言。 否则，将分别向每个数组元素应用语言自动检测。
 
 ## <a name="response-body"></a>响应正文
@@ -104,12 +104,12 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
      
     请注意，当请求了语言自动检测时，`detectedLanguage` 属性仅存在于结果对象中。
 
-JSON 响应示例：
+示例 JSON 响应如下：
 
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -122,7 +122,7 @@ JSON 响应示例：
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -135,7 +135,7 @@ JSON 响应示例：
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -154,15 +154,15 @@ JSON 响应示例：
   </tr>
   <tr>
     <td>429</td>
-    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
+    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 

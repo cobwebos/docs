@@ -1,6 +1,6 @@
 ---
-title: Azure 中 Linux 虚拟机的云初始化支持概述
-description: Microsoft Azure 中的 cloud-init 功能的概述
+title: Azure 中 Linux Vm 的云初始化支持概述
+description: 在 Azure 中预配时配置 VM 的云初始化功能概述。
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458612"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init 对 Azure 中虚拟机的支持
 本文介绍了在 Azure 中设置时，[云初始化](https://cloudinit.readthedocs.io)用于配置虚拟机（VM）或虚拟机规模集的支持。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。  

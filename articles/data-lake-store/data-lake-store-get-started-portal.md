@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438761"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
-> * [Portal](data-lake-store-get-started-portal.md)
+> * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -26,11 +26,11 @@ ms.locfileid: "73904693"
 
 了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅[Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-要阅读本教程，必须具备以下项：
+开始学习本教程之前，必须做好以下准备：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 
@@ -42,7 +42,7 @@ ms.locfileid: "73904693"
 
    * **名称**。 输入 Data Lake Storage Gen1 帐户的唯一名称。
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
-   * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+   * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。
    * **加密设置**。 有三个选项：
 
@@ -56,7 +56,7 @@ ms.locfileid: "73904693"
 
         有关详细信息，请参阅 [Azure Data Lake Storage Gen1 中的数据加密](./data-lake-store-encryption.md)。
 
-4. 单击“**创建**”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
+4. 单击“创建”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
 
@@ -103,9 +103,9 @@ ms.locfileid: "73904693"
 1. 在“数据资源管理器”边栏选项卡中，单击“上传”。
 2. 在“上传文件”边栏选项卡中，导航到要上传的文件，然后单击“添加所选文件”。 也可选择多个要上传的文件。
 
-    ![上传数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上传数据")
+    ![上传数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上载数据")
 
-如果要查找一些示例数据进行上传，可从“Azure Data Lake Git 存储库”获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) 文件夹。
+如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
 
 ## <a name="properties"></a>适用于已存储数据的操作
 
@@ -113,11 +113,11 @@ ms.locfileid: "73904693"
 
 ![数据的属性](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "数据的属性")
 
-## <a name="secure-your-data"></a>保护数据
+## <a name="secure-your-data"></a>保护数据安全
 
 可以通过 Azure Active Directory 和访问控制 (ACL) 来保护 Data Lake Storage Gen1 帐户中存储的数据。 有关如何实现保护的说明，请参阅[保护 Azure Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)。
 
-## <a name="delete-your-account"></a>删除你的帐户
+## <a name="delete-your-account"></a>删除帐户
 
 若要删除 Data Lake Storage Gen1 帐户，单击 Data Lake Storage Gen1 边栏选项卡中的“删除”。 系统会提示输入要删除的帐户的名称，确认该操作。 输入帐户的名称，单击“删除”。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432917"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -27,16 +27,16 @@ ms.locfileid: "74480530"
 
 2. 载入 Azure Maps Web SDK。 可以使用以下两个选项之一执行此操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-    b. 另外，还可以使用 [azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM 程序包将 Azure Maps Web SDK 源代码加载到本地并将其与你的应用承载在一起。 此程序包还包括了 TypeScript 定义。
+    b.保留“数据库类型”设置，即设置为“共享”。 另外，还可以使用 [azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM 程序包将 Azure Maps Web SDK 源代码加载到本地并将其与你的应用承载在一起。 此程序包还包括了 TypeScript 定义。
 
-    > npm install azure-maps-control
+    > **npm 安装 azure-maps**
 
     然后，在该文件的 `<head>` 元素中添加对 Azure Maps 样式表和脚本源的引用：
 
@@ -51,7 +51,7 @@ ms.locfileid: "74480530"
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. 若要以填满整个页面正文的方式呈现地图，请向 `<style>` 元素中添加以下 `<head>` 元素。
+3. 若要以填满整个页面正文的方式呈现地图，请向 `<head>` 元素中添加以下 `<style>` 元素。
 
     ```HTML
     <style>
@@ -74,7 +74,7 @@ ms.locfileid: "74480530"
     </body>
     ```
 
-5. 要初始化地图控件，请在 html 正文中定义新部分并创建脚本。 在创建 `Map` 类的实例时，将映射的 `id` 传入 `<div>` 或 `HTMLElement` （例如 `document.getElementById('myMap')`）作为第一个参数。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 如果需要创建帐户或查找密钥，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。 **language** 选项指定用于地图标签和控件的语言。 有关受支持语言的详细信息，请参阅[支持的语言](supported-languages.md)。 如果使用订阅密钥进行身份验证：
+5. 要初始化地图控件，请在 html 正文中定义新部分并创建脚本。 在创建 `Map` 类的实例时，将映射的 `id` 传入 `<div>` 或 `HTMLElement` （例如 `document.getElementById('myMap')`）作为第一个参数。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 如果需要创建帐户或查找密钥，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 **language** 选项指定用于地图标签和控件的语言。 有关受支持语言的详细信息，请参阅[支持的语言](supported-languages.md)。 如果使用订阅密钥进行身份验证：
 
     ```HTML
     <script type="text/javascript">
@@ -211,6 +211,26 @@ map = new atlas.Map('myMap', {
 
 [此处](supported-languages.md)介绍了支持的语言和区域视图的完整列表。
 
+## <a name="azure-government-cloud-support"></a>Azure 政府版云支持
+
+Azure Maps Web SDK 支持 Azure 政府云。 用于访问 Azure Maps Web SDK 的所有 JavaScript 和 CSS Url 保持不变，但需要执行以下任务来连接到 Azure Maps 平台的 Azure 政府版云版本。
+
+使用交互式地图控件时，请在创建 `Map` 类的实例之前添加以下代码行。 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+验证地图和服务时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
+
+使用 "服务" 模块时，需要在创建 API URL 端点的实例时设置服务的域。 例如，下面的代码创建 `SearchURL` 类的实例，并将该域指向 Azure 政府云。
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+如果直接访问 Azure Maps REST 服务，请将 URL 域更改为 `atlas.azure.us`。 例如，如果使用搜索 API 服务，请将 URL 域从 `https://atlas.microsoft.com/search/` 更改为 `https://atlas.azure.us/search/`。
+
 ## <a name="next-steps"></a>后续步骤
 
 了解如何创建地图并与之进行交互：
@@ -229,7 +249,7 @@ map = new atlas.Map('myMap', {
 > [创建地图](map-create.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
 有关演示如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例列表，请参阅：
 

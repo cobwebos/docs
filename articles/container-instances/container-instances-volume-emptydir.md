@@ -3,16 +3,16 @@ title: 将 emptyDir 卷装载到容器组
 description: 了解如何在 Azure 容器实例中装载 emptyDir 卷以在容器组中的容器之间共享数据
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533234"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552451"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 emptyDir 卷
 
-了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。
+了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。 将*emptyDir*卷用作容器化工作负荷的临时缓存。
 
 > [!NOTE]
 > 当前只有 Linux 容器能装载 *emptyDir* 卷。 尽管我们正在努力将所有功能带入 Windows 容器，但你可以在 "[概述](container-instances-overview.md#linux-and-windows-containers)" 中找到当前的平台差异。
@@ -27,7 +27,7 @@ ms.locfileid: "74533234"
 * 长时间运行任务期间的检查点
 * 存储由挎斗容器检索的数据以及由应用程序容器提供的数据
 
-*emptyDir* 卷中的数据将一直保留到容器崩溃。 但是，并不保证重新启动的容器能够持久保留 *emptyDir* 卷中的数据。
+*emptyDir* 卷中的数据将一直保留到容器崩溃。 但是，并不保证重新启动的容器能够持久保留 *emptyDir* 卷中的数据。 如果停止容器组，则不会保留*emptyDir*卷。
 
 ## <a name="mount-an-emptydir-volume"></a>装载 emptyDir 卷
 

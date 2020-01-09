@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: ca3c72ec35d8cf16671eb84cbee83dbfe1aa966f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443981"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -44,7 +44,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”：
+1. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -54,11 +54,11 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSG1Demo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Storage Gen1、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
    ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -88,7 +88,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
    
       ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. 随即显示新的连接。 选择“**下一步**”。
+   4. 随即显示新的连接。 选择“**下一页**”。
    
    ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +108,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
    1. 为“Data Lake Store 帐户名”选择 Data Lake Storage Gen1 帐户。
    2. 指定“租户”并选择“完成”。
-   3. 选择“**下一步**”。
+   3. 选择“**下一页**”。
    
    > [!IMPORTANT]
    > 在本演练中，使用 Azure 资源的托管标识来对 Data Lake Storage Gen1 帐户进行身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予 MSI 在 Data Lake Storage Gen1 中的适当权限。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671726"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680900"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -21,15 +21,21 @@ ms.locfileid: "74671726"
 
 ## <a name="open-ftp-dashboard"></a>打开 FTP 仪表板
 
-在 [Azure 门户](https://portal.azure.com)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"。
 
-若要打开 FTP 仪表板，请单击“部署中心” > “FTP” > “仪表板”。
+    ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
+2. 选择要部署的 web 应用。
+
+    ![选择应用。](media/app-service-continuous-deployment/select-your-app.png)
+
+3. 选择 "**部署中心** > **FTP** > **仪表板**"。
+
+    ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 
-在 FTP 仪表板中，单击“复制”以复制 FTPS 终结点和应用凭据。
+在 FTP 面板中，选择 "**复制**" 以复制 FTPS 终结点和应用程序凭据。
 
 ![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

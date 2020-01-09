@@ -2,19 +2,15 @@
 title: Azure 中的更新管理解决方案
 description: 本文介绍如何使用 Azure 更新管理解决方案来管理 Windows 和 Linux 计算机的更新。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/03/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420342"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -158,7 +154,7 @@ ms.locfileid: "74806535"
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 受支持 | Description |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -183,7 +179,7 @@ ms.locfileid: "74806535"
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|\* .azure-automation.net|*.azure-automation.us|
 
 对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
 
@@ -217,7 +213,7 @@ ms.locfileid: "74806535"
 
 ### <a name="windows"></a>Windows
 
-|分类  |描述  |
+|分类  |Description  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -230,7 +226,7 @@ ms.locfileid: "74806535"
 
 ### <a name="linux-2"></a>Linux
 
-|分类  |描述  |
+|分类  |Description  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不重要或不是安全更新的所有其他更新。        |

@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟机的多个 IP 地址 - PowerShell | Microsoft Docs
-description: 了解如何使用 PowerShell 将多个 IP 地址分配给虚拟机。 | 资源管理器
+description: 了解如何使用 PowerShell 将多个 IP 地址分配给虚拟机。 |资源管理器
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
-ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876228"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647316"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -39,7 +39,7 @@ ms.locfileid: "67876228"
 
 1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 使用 `Connect-AzAccount` 命令登录帐户。
-3. 将 myResourceGroup  和 westus  替换为所选名称和位置。 创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+3. 将 myResourceGroup 和 westus 替换为所选名称和位置。 创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
    ```powershell
    $RgName   = "MyResourceGroup"
@@ -71,7 +71,7 @@ ms.locfileid: "67876228"
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-5. 创建网络安全组 (NSG) 和规则。 NSG 使用入站和出站规则保护 VM。 在本例中，会为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。
+5. 创建网络安全组 (NSG) 和规则。 NSG 使用入站和出站规则保护 VM。 在本例中，将为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。
 
     ```powershell
     
@@ -95,9 +95,9 @@ ms.locfileid: "67876228"
     -SecurityRules $NSGRule
     ```
 
-6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，则输出返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。 
+6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，输出将返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。 
 
-    在以下命令中，**使用要用的唯一 DNS 名称替换 \<replace-with-your-unique-name>。** 该名称在 Azure 区域内的所有公共 IP 地址中必须唯一。 这是一个可选参数。 如果只想使用公共 IP 地址连接到 VM，则可删除该名称。
+    在下面的命令中，将 \<替换为唯一的- **name >，并使用要使用的唯一 DNS 名称。** 该名称在 Azure 区域内的所有公共 IP 地址中必须唯一。 这是一个可选参数。 如果只想使用公共 IP 地址连接到 VM，则可删除该名称。
 
     ```powershell
     
@@ -119,10 +119,10 @@ ms.locfileid: "67876228"
     -Primary
     ```
 
-    向 NIC 分配多个 IP 配置时，必须将一个配置指定为 Primary  。
+    向 NIC 分配多个 IP 配置时，必须将一个配置指定为 Primary。
 
     > [!NOTE]
-    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
+    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
 
 7. 定义 NIC 的辅助 IP 配置。 可以根据需要添加或删除配置。 每个 IP 配置必须分配有专用 IP 地址。 每个配置可选择性分配有一个公共 IP 地址。
 
@@ -220,7 +220,7 @@ ms.locfileid: "67876228"
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. 在以下命令中，请将 MyVNet  和 MySubnet  更改为 NIC 连接到的 VNet 和子网的名称。 输入以下命令，检索 NIC 连接到的 VNet 和子网对象：
+4. 在以下命令中，请将 MyVNet 和 MySubnet 更改为 NIC 连接到的 VNet 和子网的名称。 输入以下命令，检索 NIC 连接到的 VNet 和子网对象：
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
@@ -239,13 +239,13 @@ ms.locfileid: "67876228"
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    在此输出中，MyVnet  是 NIC 连接到的 VNet，MySubnet  是其连接到的子网。
+    在此输出中，MyVnet 是 NIC 连接到的 VNet，MySubnet 是其连接到的子网。
 
 5. 根据要求完成以下部分之一中的步骤：
 
    **添加专用 IP 地址**
 
-   要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议先通过输入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令来测试该地址，确保它可用。 如果 IP 地址可用，输出会返回 *True*。 如果该地址不可用，则输出返回 *False* 以及可用的地址列表。
+   要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议先通过输入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令来测试该地址，确保它可用。 如果该 IP 地址可用，输出将返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -261,7 +261,7 @@ ms.locfileid: "67876228"
    将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。 根据需要完成以下部分之一中的步骤。
 
    > [!NOTE]
-   > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 若要了解有关限制的详细信息，请阅读 [Azure 限制](../azure-subscription-service-limits.md#networking-limits) 一文。
+   > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
    >
 
    **将公共 IP 地址资源关联到新 IP 配置**
@@ -276,7 +276,7 @@ ms.locfileid: "67876228"
    -AllocationMethod Static
    ```
 
-   若要新建具有静态专用 IP 地址和关联的 myPublicIp3  公共 IP 地址资源的 IP 配置，请输入下面的命令：
+   若要新建具有静态专用 IP 地址和关联的 myPublicIp3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -289,7 +289,7 @@ ms.locfileid: "67876228"
 
    **将公共 IP 地址资源关联到现有 IP 配置**
 
-   公共 IP 地址资源仅可关联到尚未关联公共 IP 地址资源的 IP 配置。 输入以下命令即可确定某个 IP 配置是否具有关联的公共 IP 地址：
+   公共 IP 地址资源只能关联到尚未与任何公共 IP 地址资源关联的 IP 配置。 输入以下命令即可确定某个 IP 配置是否具有关联的公共 IP 地址：
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary

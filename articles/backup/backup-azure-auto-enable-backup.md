@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 策略在 VM 上自动启用备份
+title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure 策略为在给定作用域中创建的所有 Vm 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450119"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure 策略在 VM 上自动启用备份
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
 组织中的备份或合规性管理员的主要职责之一是确保使用适当的保留来备份所有关键业务计算机。
 
@@ -25,6 +25,8 @@ ms.locfileid: "74980122"
 * 指定的保管库和为备份配置的 Vm 可以在不同的资源组下。
 
 * 管理组作用域目前不受支持。
+
+* 内置策略当前在国家云中不可用。
 
 ## <a name="using-the-built-in-policy"></a>使用内置策略
 

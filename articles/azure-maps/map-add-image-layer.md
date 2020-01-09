@@ -1,5 +1,5 @@
 ---
-title: 将图像层添加到 Azure Maps | Microsoft Docs
+title: 向 Azure Maps 添加图像层 |Microsoft Docs
 description: 如何将图像层添加到 Azure Maps Web SDK。
 author: rbrundritt
 ms.author: richbrun
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432867"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
-本文介绍如何将图像叠加到地图上的固定坐标集。 有很多在地图上叠加图像的情景。 以下是经常叠加在地图上的图像类型的几个示例；
+本文介绍如何将图像叠加到地图上固定的坐标集。 下面是一些通常叠加在地图上的图像类型示例：
 
-* 从无人机捕获的图像。
-* 建筑平面图。
-* 历史或其他专门的地图图像。
-* 工作地点蓝图。
-* 天气雷达图像。
+* 从无人机捕获的映像
+* 构建 floorplans
+* 历史或其他专用地图图像
+* 作业站点的蓝图
+* 天气雷达图
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) 是一种在地图上叠加图像的快捷且轻松的方式。 但是，如果图像很大，浏览器可能难以加载它。 在这种情况下，请考虑将图像分解为图块并将其作为 [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 加载到地图中。
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)加载到地图中。
 
 图像层支持以下图像格式：
 
 - JPEG
 - PNG
-- .BMP
+- BMP
 - GIF （无动画）
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-在下面的代码中，在地图上覆盖了[纽瓦克 New 1922 Jersey 的地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是通过以下方式创建的：将 URL 传递到图像并将四个角的坐标作为 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`格式。
+下面的代码在地图上覆盖[1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是通过将 URL 传递到图像来创建的，并且采用格式 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`的四个角的坐标。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,31 +53,31 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-下面是上述功能的完整运行代码示例。
+下面是上述代码的完整运行代码示例。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单图像层' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/eQodRo/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>简单图像层</a>。
+<iframe height='500' scrolling='no' title='简单图像层' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>简单图像层</a>。
 </iframe>
 
 ## <a name="import-a-kml-ground-overlay"></a>导入 KML 地面叠加
 
-此示例演示如何将 KML 地面叠加信息叠加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标和逆时针旋转，而图像层需要图像每个角的坐标。 此示例中的 KML 地面叠加是来自[维基媒体](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)的 Chartres 大教堂。
+下一个示例演示如何将 KML 地面叠加信息覆盖为地图上的图像图层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转，而图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖是 Chartres cathedral，其来源为[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-下面的代码使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)类的静态 `getCoordinatesFromEdges` 函数，通过 KML 地面叠加计算北部、南、东、西和旋转信息中图像的四个角。
+下面的代码使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)类的静态 `getCoordinatesFromEdges` 函数。 它从 "北部"、"南部"、"东部"、"西部" 和 "KML" 地面覆盖信息计算图像的四个角。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='KML 地面叠加作为图像层' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>KML 地面叠加作为图像层</a>。
+<iframe height='500' scrolling='no' title='KML 地面叠加作为图像层' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML 地面叠加作为图像层</a>。
 </iframe>
 
 ## <a name="customize-an-image-layer"></a>自定义图像层
 
-图像层有许多样式选项。 以下工具可用来试用这些选项。
+图像层具有很多样式选项。 下面是一个用于试用的工具。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='图像层选项' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>图像层选项</a>。
+<iframe height='700' scrolling='no' title='图像层选项' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>图像层选项</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

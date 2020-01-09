@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012429"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469692"
 ---
 Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定的客户方案。
 
 ## <a name="disk-comparison"></a>磁盘比较
 
-下表提供了对托管磁盘的 ultra 磁盘、高级固态驱动器（SSD）、标准 SSD 和标准硬盘驱动器（HDD）的比较，有助于你决定要使用的内容。
+下表提供了对托管磁盘的 ultra 磁盘、高级固态硬盘（SSD）、标准 SSD 和标准硬盘驱动器（HDD）的比较，有助于你决定要使用的内容。
 
-|   | 超磁盘   | 高级·SSD   | 标准 SSD   | 标准 HDD   |
+|   | 超级磁盘   | 高级·SSD   | 标准 SSD   | 标准 HDD   |
 |---------|---------|---------|---------|---------|
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
 |方案   |IO 密集型工作负荷，如[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、顶级数据库（例如 SQL、Oracle）和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
-|最大磁盘大小   |65536 gibibyte （GiB）    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|最大吞吐量   |2000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
+|最大磁盘大小   |65,536 GB (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|最大吞吐量   |2,000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
 
-## <a name="ultra-disk"></a>超磁盘
+## <a name="ultra-disk"></a>超级磁盘
 
-Azure ultra 磁盘为 Azure IaaS Vm 提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 超磁盘的其他好处包括能够动态地更改磁盘的性能和工作负荷，而无需重新启动虚拟机（VM）。 超磁盘适用于数据密集型工作负荷，例如 SAP HANA、顶级数据库和事务密集型工作负荷。 超磁盘只能用作数据磁盘。 建议将高级 SSD 用作 OS 磁盘。
+Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低延迟的磁盘存储。 超磁盘的其他好处包括能够动态地更改磁盘的性能和工作负荷，而无需重新启动虚拟机（VM）。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。 超级磁盘只可用作数据磁盘。 建议将高级 SSD 用作 OS 磁盘。
 
 ### <a name="performance"></a>性能
 

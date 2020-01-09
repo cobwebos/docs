@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443727"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -34,14 +34,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-这些文件被压缩为 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。
-
-你可以使用这些命令在 Linux 上下载并解压缩 tar 文件。
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+这些文件被压缩为 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。 若要在 Linux 上下载并解压缩 tar 文件，请参阅 Linux 分发版的文档。
 
 > [!NOTE]
 > 如果要将数据复制到[Azure 表存储服务和从 Azure 表存储](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)服务复制数据，请安装[AzCopy 版本 7.3](https://aka.ms/downloadazcopynet)。
@@ -98,8 +91,8 @@ tar -xf azcopy.tar.gz
 
 - 容器（文件系统）
 - 存储帐户
-- Resource group
-- Subscription
+- 资源组
+- 订阅
 
 若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 

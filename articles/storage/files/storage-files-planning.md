@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463928"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -212,14 +212,19 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 |印度中部  |LRS     |
 |美国中部 *   |LRS     |
 |亚洲东部      |LRS     |
-|美国东部 *        |LRS     |
+|美国东部 *        |LRS、ZRS|
 |美国东部 2 *      |LRS     |
 |法国中部 |LRS、ZRS|
 |法国南部   |LRS     |
-|美国中北部 |LRS     |
-|北欧   |LRS     |
+|日本东部     |LRS     |
+|美国中北部 |LRS   |
+|欧洲北部   |LRS     |
 |印度南部    |LRS     |
+|美国中南部 |LRS     |
 |亚洲东南部 |LRS、ZRS|
+|阿拉伯联合酋长国中部    |LRS     |
+|英国南部   |LRS     |
+|英国西部    |LRS     |
 |美国中西部|LRS     |
 |西欧 *    |LRS、ZRS|
 |美国西部 *        |LRS     |

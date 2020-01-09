@@ -1,54 +1,45 @@
 ---
-title: 跨可用性区域部署的 Azure Service Fabric 群集 |Microsoft Docs
-description: 了解如何跨可用性区域中创建的 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
+title: 跨可用性区域部署群集
+description: 了解如何跨可用性区域创建 Azure Service Fabric 群集。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077450"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609972"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署的 Azure Service Fabric 群集
-在 Azure 中的可用性区域是高可用性产品/服务，它从数据中心故障保护你的应用程序和数据。 可用性区域是一个唯一的物理位置配置了独立电源、 冷却和网络在 Azure 区域内。
+# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
+Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
 
-Service Fabric 支持 s p a n 跨可用性区域通过将已固定的节点类型部署到特定区域的群集。 这将确保你的应用程序的高可用性。 Azure 可用性区域中选择的区域才可用。 有关详细信息，请参阅[Azure 可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。
+Service Fabric 通过部署固定到特定区域的节点类型来支持跨可用性区域的群集。 这将确保应用程序的高可用性。 Azure 可用性区域仅在选择区域中可用。 有关详细信息，请参阅[Azure 可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。
 
-提供了示例模板：[Service Fabric 跨可用性区域模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+示例模板可用： [Service Fabric 跨可用性区域模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>建议的 Azure Service Fabric 群集跨越多个可用性区域的主节点类型的拓扑
-跨可用性区域分布的 Service Fabric 群集，可以确保高可用性群集状态。 若要跨区域跨越的 Service Fabric 群集，必须在支持区域的每个可用性区域中创建主节点类型。 这将在每个主节点类型中均匀地分发种子节点。
+## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>跨可用性区域的 Azure Service Fabric 群集的主节点类型的建议拓扑
+分布在可用性区域上的 Service Fabric 群集可确保群集状态的高可用性。 若要跨区域跨 Service Fabric 群集，必须在该区域支持的每个可用性区域中创建主节点类型。 这会在每个主节点类型之间平均分配种子节点。
 
-主节点类型的建议的拓扑需要如下所述的资源：
+建议用于主节点类型的拓扑需要如下所述的资源：
 
-* 群集可靠性级别设置为白金卡。
-* 标记为主要的三个节点类型。
-    * 每个节点类型应映射到其自己位于不同区域中的虚拟机规模集。
-    * 每个虚拟机规模集应具有至少五个节点 （银级持续性）。
+* 群集可靠性级别设置为 "白金"。
+* 三个标记为主节点的节点类型。
+    * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
+    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
 * 使用标准 SKU 的单个公共 IP 资源。
 * 使用标准 SKU 的单个负载均衡器资源。
-* 引用在其中部署你的虚拟机规模集的子网的 NSG。
+* 用于部署虚拟机规模集的子网所引用的 NSG。
 
 >[!NOTE]
-> 单个放置组属性必须设置为 true，因为 Service Fabric 不支持跨区域的单个虚拟机规模集虚拟机规模集。
+> "虚拟机规模集单位置组" 属性必须设置为 "true"，因为 Service Fabric 不支持跨区域的单个虚拟机规模集。
 
  ![Azure Service Fabric 可用性区域体系结构][sf-architecture]
 
 ## <a name="networking-requirements"></a>网络要求
 ### <a name="public-ip-and-load-balancer-resource"></a>公共 IP 和负载均衡器资源
-若要启用属性上的虚拟机规模集资源、 负载均衡器和引用该虚拟机规模集 IP 资源的区域必须都使用*标准*SKU。 创建负载均衡器或不带 SKU 属性的 IP 资源将创建基本 SKU，不支持可用性区域。 标准 SKU 负载均衡器将阻止从外部的所有流量默认设置。若要允许外部流量，必须将 NSG 部署到子网。
+若要启用虚拟机规模集资源的 "区域" 属性，该虚拟机规模集所引用的负载均衡器和 IP 资源必须都使用*标准*SKU。 如果不使用 SKU 属性创建负载平衡器或 IP 资源，将会创建不支持可用性区域的基本 SKU。 默认情况下，标准 SKU 负载均衡器会阻止从外部的所有流量。若要允许外部流量，必须将 NSG 部署到子网。
 
 ```json
 {
@@ -96,10 +87,10 @@ Service Fabric 支持 s p a n 跨可用性区域通过将已固定的节点类�
 ```
 
 >[!NOTE]
-> 不能执行的公共 IP 和负载均衡器资源的 SKU 就地更改。 如果要从现有的资源具有基本 SKU 迁移，请参阅这篇文章的迁移部分。
+> 不能在公共 IP 和负载均衡器资源上对 SKU 进行就地更改。 如果要从具有基本 SKU 的现有资源进行迁移，请参阅本文的迁移部分。
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>虚拟机规模集 NAT 规则
-负载均衡器入站的 NAT 规则应与从虚拟机规模集的 NAT 池。 每个虚拟机规模集必须具有唯一的入站的 NAT 池。
+负载均衡器入站 NAT 规则应该匹配虚拟机规模集中的 NAT 池。 每个虚拟机规模集都必须具有唯一的入站 NAT 池。
 
 ```json
 {
@@ -145,17 +136,17 @@ Service Fabric 支持 s p a n 跨可用性区域通过将已固定的节点类�
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>标准 SKU 负载均衡器出站规则
-标准负载均衡器和标准公共 IP 引入新功能和不同的行为与使用基本 Sku 相比的出站连接。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust)并[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+与使用基本 Sku 相比，标准负载均衡器和标准公共 IP 向出站连接引入了新功能和不同的行为。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust)和[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
 
 >[!NOTE]
-> 标准模板引用它默认情况下允许所有出站流量的 NSG。 入站的流量仅限于所需的 Service Fabric 管理操作的端口。 可以修改 NSG 规则以满足您的要求。
+> 标准模板引用了默认情况下允许所有出站流量的 NSG。 入站流量仅限于 Service Fabric 管理操作所需的端口。 可对 NSG 规则进行修改以满足你的要求。
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>启用的虚拟机规模集上的区域设置
-若要启用区域，在虚拟机规模集必须在虚拟机规模集资源中包含以下三个值。
+### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>在虚拟机规模集上启用区域
+若要在虚拟机规模集上启用区域，必须在虚拟机规模集资源中包含以下三个值：
 
-* 第一个值是**区域**属性，用于指定虚拟机规模集将部署到的可用性区域。
-* 第二个值是"singlePlacementGroup"属性，它必须设置为 true。
-* 第三个值是在 Service Fabric 虚拟机规模集扩展中的"faultDomainOverride"属性。 此属性的值应包括区域和区域将在其中放置此虚拟机规模集。 示例:"faultDomainOverride":"eastus/az1"所有虚拟机规模都集资源必须放置在同一区域中，因为 Azure Service Fabric 群集不具有跨区域支持。
+* 第一个值是**zone**属性，它指定虚拟机规模集将部署到哪个可用性区域。
+* 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。
+* 第三个值是 Service Fabric 虚拟机规模集扩展中的 "faultDomainOverride" 属性。 此属性的值应包括将在其中放置此虚拟机规模集的区域和区域。 例如： "faultDomainOverride"： "eastus/az1" 所有虚拟机规模集资源必须放置在同一区域中，因为 Azure Service Fabric 群集没有跨区域支持。
 
 ```json
 {
@@ -195,8 +186,8 @@ Service Fabric 支持 s p a n 跨可用性区域通过将已固定的节点类�
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>启用 Service Fabric 群集资源中的多个主节点类型
-若要将一个或多个节点类型设为主要群集资源中，设置为"true"的"isPrimary"属性。 在部署 Service Fabric 群集跨可用性区域时，您应有三个节点类型在不同区域中。
+### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>在 Service Fabric 群集资源中启用多个主节点类型
+若要将一个或多个节点类型设置为群集资源中的主要节点类型，请将 "isPrimary" 属性设置为 "true"。 跨可用性区域部署 Service Fabric 群集时，在不同的区域应具有三种节点类型。
 
 ```json
 {
@@ -254,20 +245,20 @@ Service Fabric 支持 s p a n 跨可用性区域通过将已固定的节点类�
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>迁移到使用基本 SKU 负载均衡器和基本 SKU IP 从群集中使用可用性区域
-若要迁移的群集，已使用负载均衡器和 IP 使用基本 SKU，必须首先创建使用标准 SKU 的全新负载均衡器和 IP 资源。 不能更新这些资源中的位置。
+## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>使用基本 SKU 负载均衡器和基本 SKU IP 从群集迁移到使用可用性区域
+若要迁移将负载均衡器和 IP 与基本 SKU 一起使用的群集，必须先使用标准 SKU 创建全新的负载均衡器和 IP 资源。 不能就地更新这些资源。
 
-应在你想要使用的新跨可用性区域节点类型中引用新的 LB 和 IP。 在以下示例中，三个新的虚拟机规模集资源已添加在区域 1、 2 和 3 中。 这些虚拟机规模设置引用新创建的 LB 和 IP，并被标记为在 Service Fabric 群集资源中的主节点类型。
+新的 LB 和 IP 应在你想要使用的新的跨可用性区域节点类型中进行引用。 在上面的示例中，在区域1、2和3中添加了三个新的虚拟机规模集资源。 这些虚拟机规模集引用新创建的 LB 和 IP，并标记为 Service Fabric 群集资源中的主节点类型。
 
-若要开始，你需要将新的资源添加到现有的资源管理器模板。 这些资源包括：
-* 使用标准 SKU 公共 IP 资源。
-* 使用标准 SKU 负载均衡器资源。
-* 引用在其中部署你的虚拟机规模集的子网的 NSG。
-* 标记为主要的三个节点类型。
-    * 每个节点类型应映射到其自己位于不同区域中的虚拟机规模集。
-    * 每个虚拟机规模集应具有至少五个节点 （银级持续性）。
+若要开始，需要将新资源添加到现有资源管理器模板。 这些资源包括：
+* 使用标准 SKU 的公共 IP 资源。
+* 使用标准 SKU 的负载均衡器资源。
+* 用于部署虚拟机规模集的子网所引用的 NSG。
+* 三个标记为主节点的节点类型。
+    * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
+    * 每个虚拟机规模集应至少具有五个节点（银持续性）。
 
-中可以找到这些资源的示例[示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)。
+可在[示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)中找到这些资源的示例。
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -276,7 +267,7 @@ New-AzureRmResourceGroupDeployment `
     -TemplateParameterFile $Parameters
 ```
 
-一旦资源部署完成后，你可以开始禁用从原始群集主节点类型中的节点。 节点将被禁用，因为系统服务会将迁移到在前面步骤中部署了新的主节点类型。
+资源完成部署后，可以开始从原始群集中禁用主节点类型中的节点。 在禁用节点的情况下，系统服务将迁移到前面步骤中部署的新的主节点类型。
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
@@ -298,7 +289,7 @@ foreach($name in $nodeNames) {
 }
 ```
 
-后都将被禁用节点，将在跨多个区域的主节点类型上运行的系统服务。 然后可以从群集中删除已禁用的节点。 一旦删除节点时，可以删除原始 IP、 负载均衡器和虚拟机规模集资源。
+节点全部禁用后，系统服务将在跨区域的主节点类型上运行。 然后，可以从群集中删除禁用的节点。 删除节点后，可以删除原始 IP、负载均衡器和虚拟机规模集资源。
 
 ```powershell
 foreach($name in $nodeNames){
@@ -318,9 +309,9 @@ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 ```
 
-然后应删除对这些资源从已部署的资源管理器模板的引用。
+然后，应从已部署的资源管理器模板中删除对这些资源的引用。
 
-最后一步将涉及到更新的 DNS 名称和公共 IP。
+最后一个步骤将涉及更新 DNS 名称和公共 IP。
 
 ```powershell
 $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname

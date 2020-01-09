@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443885"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -32,7 +32,7 @@ IT 运营团队负责管理数据中心基础结构、应用程序和数据，�
 
 [Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
-### <a name="azure-monitor"></a>Azure Monitor
+### <a name="azure-monitor"></a>Azure 监视器
 
 [Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。
 
@@ -48,9 +48,9 @@ IT 运营团队负责管理数据中心基础结构、应用程序和数据，�
 
 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 中的 Azure 恢复服务保管库中。
 
-有关详细信息，请参阅 [Azure 备份组件表](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)。
+有关详细信息，请参阅 [Azure 备份组件表](/azure/backup/backup-overview#what-can-i-back-up)。
 
-### <a name="site-recovery"></a>站点恢复
+### <a name="site-recovery"></a>Azure Site Recovery
 
 [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作。 系统恢复正常后可故障回复。 使用 Azure 安全中心执行更智能和更有效的威胁检测。
 
@@ -96,9 +96,9 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 
 安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
-## <a name="azure-monitor"></a>Azure Monitor
+## <a name="azure-monitor"></a>Azure 监视器
 
-云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，你的用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
+云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
 
 [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要增加或减少资源，则可使用 Azure Monitor。
 
@@ -169,7 +169,7 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - Azure 资源管理器模板
 - 资源组
 
-## <a name="devops"></a>DevOps
+## <a name="devops"></a>开发运营
 
 在采用[ Developer Operations (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) 应用程序开发前，团队需要负责收集软件程序的业务要求和编写代码。 然后由一个单独的 QA 团队在独立的开发环境中测试该程序。 如果满足要求，则 QA 团队发布要部署的操作代码。 部署团队进一步划分为小组，例如网络小组和数据库小组。 每次将软件程序投放到独立的团队时，就会增加一些瓶颈。
 

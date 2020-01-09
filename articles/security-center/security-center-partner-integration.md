@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479370"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530946"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
 
 > [!NOTE]
-> 安全解决方案子集已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_solutions)。
+> 安全解决方案子集已于2019年7月31日停用。 有关详细信息和替代服务，请参阅[停用安全中心功能（2019年7月）](security-center-features-retirement-july2019.md#menu_solutions)。
 
 ## <a name="integrated-azure-security-solutions"></a>集成式 Azure 安全解决方案
 可以通过安全中心轻松地在 Azure 中启用集成式安全解决方案。 优势包括：
@@ -47,7 +47,7 @@ ms.locfileid: "74479370"
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理集成式 Azure 安全解决方案和其他数据源
 
-1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
+1. 登录 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 
 2. 在 **Microsoft Azure 菜单**上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
@@ -135,7 +135,7 @@ Azure 安全中心的所有事件都将发布到 Azure Monitor 的 Azure[活动�
 
 通过 Azure Monitor 将监视数据路由到事件中心，可与合作伙伴 SIEM 和监视工具轻松集成。
 
-请参阅以下文章，获取支持的[siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)列表
+请参阅以下文章，获取支持的[siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub)列表
 
 ### <a name="example-for-querying-data"></a>查询数据示例 
 

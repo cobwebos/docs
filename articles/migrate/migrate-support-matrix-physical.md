@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196340"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454621"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>用于物理服务器评估和迁移的支持矩阵
 
@@ -40,8 +40,8 @@ ms.locfileid: "74196340"
 
   **地域** | **元数据存储位置**
   --- | ---
-  Azure 政府 | 美国政府弗吉尼亚州
-  亚太区 | 东亚或东南亚
+  Azure Government | 美国弗吉尼亚州政府
+  亚太 | 东亚或东南亚
   澳大利亚 | 澳大利亚东部或澳大利亚东南部
   巴西 | 巴西南部
   加拿大 | 加拿大中部或加拿大东部
@@ -73,7 +73,7 @@ ms.locfileid: "74196340"
 
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
-| **设备部署**   |  在物理服务器或虚拟机上部署该设备。<br/>  主计算机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
+| **设备部署**   |  可以从门户下载设备安装程序脚本（在压缩文件夹中）。 <br/> 你可以在专用的物理服务器或虚拟机上解压缩文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）以设置设备。<br/>  选择安装设备的计算机必须运行 Windows Server 2016。<br/> 计算机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 | **Azure Migrate 项目**  |  设备可以与单个项目关联。<br/> 可以将任意数量的设备与单个项目相关联。<br/> 你最多可以在一个项目中评估35000台计算机。
 | **发现**              | 单个设备最多可以发现250服务器。
 | **评估组**       | 最多可以在一个组中添加35000台计算机。
@@ -92,7 +92,7 @@ ms.locfileid: "74196340"
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | 登录 Azure 订阅
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 management.azure.com | 为设备到服务通信创建 Azure Active Directory 应用程序。
 dc.services.visualstudio.com | 日志记录和监视
@@ -109,7 +109,7 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 **设备** | **Connection**
 --- | ---
 **本** | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
-**物理服务器** | **Windows：** 端口443、5989上的入站连接从 Windows 服务器拉取配置和性能元数据。 <br/> **Linux：** 端口22（UDP）上的入站连接，用于从 Linux 服务器拉取配置和性能元数据。 |
+**物理服务器** | **Windows：** 端口443、WinRM 端口5985（HTTP）和5986（HTTPS）上的入站连接，用于从 Windows server 拉取配置和性能元数据。 <br/> **Linux：** 端口22（UDP）上的入站连接，用于从 Linux 服务器拉取配置和性能元数据。 |
 
 
 ## <a name="next-steps"></a>后续步骤

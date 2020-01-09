@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 4c02632c44d095a6d1d1c583a1ab201acad63bf9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435250"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
-[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/vs/rtvs/) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS 不适用于[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
+[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS 不适用于[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
 
 RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R 代码调试](https://docs.microsoft.com/visualstudio/rtvs/debugging)等等。
 
@@ -52,7 +52,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 2. 安装 [RTVS 扩展](https://docs.microsoft.com/visualstudio/rtvs/installation)。
 3. 下载[示例 zip 文件](https://github.com/Microsoft/RTVS-docs/archive/master.zip)。
 4. 打开 `examples/Examples.sln` 以在 Visual Studio 中启动解决方案。
-5. 在 `1-Getting Started with R.R` 解决方案文件夹中打开 `A first look at R` 文件。
+5. 在 `A first look at R` 解决方案文件夹中打开 `1-Getting Started with R.R` 文件。
 6. 从文件顶部开始，按 Ctrl+Enter 将每一行发送到 R 交互窗口（一次一行）。 某些行可能需要一些时间，因为它们要安装程序包。
     * 或者，也可以选择 R 文件中的所有行 (Ctrl+A)，然后全部执行 (Ctrl+Enter) 或选择工具栏上的“交互执行”图标。
 

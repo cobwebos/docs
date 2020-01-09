@@ -1,26 +1,20 @@
 ---
-title: 将 Azure 安全中心数据连接到 Azure Sentinel |Microsoft Docs
+title: 将 Azure 安全中心数据连接到 Azure Sentinel
 description: 了解如何将 Azure 安全中心数据连接到 Azure Sentinel。
-services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240222"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563660"
 ---
 # <a name="connect-data-from-azure-security-center"></a>连接 Azure 安全中心的数据
 
@@ -30,7 +24,7 @@ ms.locfileid: "71240222"
 
 可以通过 azure Sentinel 连接[Azure 安全中心](../security-center/security-center-intro.md)的警报，并将其流式传输到 azure Sentinel。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果要从 Azure 安全中心导出警报，你必须是订阅的参与者，该订阅的日志会进行流式处理。
 
@@ -45,7 +39,7 @@ ms.locfileid: "71240222"
 
 1. 在右侧，单击要流式传输到 Azure Sentinel 的每个订阅旁边的 "**连接**"。 请确保将每个订阅升级到 Azure 安全中心标准层，以将警报流式传输到 Azure Sentinel。
 
-1. 你可以选择是否希望 Azure 安全中心的警报自动在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用从连接的安全服务中生成的警报自动创建事件的默认分析规则。 然后，你可以在 "**分析**" 和 "**活动规则**" 下编辑此规则。
+1. 你可以选择是否希望 Azure 安全中心的警报自动在 Azure Sentinel 中自动生成事件。 在“创建事件”下选择“启用”，以便启用默认的分析规则，这样，当连接的安全服务中生成警报时，就会自动创建事件。 然后，可以在“分析”下的“活动规则”中编辑此规则。
 
 3. 单击“连接”。
 
@@ -53,5 +47,5 @@ ms.locfileid: "71240222"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Azure 安全中心连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446876"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>快速入门：创建自定义命令（预览）
 
@@ -24,10 +24,15 @@ ms.locfileid: "74976615"
 
 ## <a name="prerequisites"></a>必备组件
 
-- 语音订阅。 [免费试用语音服务](~/articles/cognitive-services/speech-service/get-started.md)。
+- 语音订阅。 
+
+如果没有语音订阅，可以通过导航到[Speech Studio](https://speech.microsoft.com/)并选择 "**创建语音资源**" 来创建一个。
+
+  > [!div class="mx-imgBorder"]
+  > [![创建项目](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > 在预览期间，订阅密钥仅支持 westus2 区域。
+  > 预览期间，仅支持 westus2 区域。
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>转到 Speech Studio 以获取自定义命令
 
@@ -66,6 +71,20 @@ ms.locfileid: "74976615"
 
 现在，你的视图应为自定义命令应用程序的概述。
 
+## <a name="update-luis-resources-optional"></a>更新 LUIS 资源（可选）
+
+您可以在 "新建项目" 窗口中更新创作资源集，并设置用于在运行时识别输入的预测资源。 
+
+> [!NOTE]
+> 你需要先设置预测资源，然后应用程序请求的预测超出了创作资源提供的1000请求。
+
+> [!div class="mx-imgBorder"]
+> ![设置 LUIS 资源](media/custom-speech-commands/set-luis-resources.png)
+
+1. 通过从左窗格中选择 "**设置**"，然后从中间窗格**LUIS 资源**，导航到 "LUIS 资源" 窗格。
+1. 选择一个预测资源，或选择 "**创建新资源**" 创建一个
+1. 选择“保存”
+
 ## <a name="create-a-new-command"></a>创建新命令
 
 现在，你可以创建一个命令。 让我们使用一个示例，该示例将使用单个查询文本、`turn on the tv`，并使用 `Ok, turning on the TV`的消息进行响应。
@@ -78,10 +97,10 @@ ms.locfileid: "74976615"
 
 命令是一组：
 
-| 组            | 描述                                                                                                                 |
+| 组            | Description                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 例句 | 示例最谈话用户可以说触发此命令                                                                 |
-| parameters       | 完成命令所需的信息                                                                                |
+| 参数       | 完成命令所需的信息                                                                                |
 | 完成规则 | 要执行以执行命令的操作。 例如，要响应用户或与其他 web 服务通信 |
 | 高级规则   | 用于处理更为具体或复杂的情况的其他规则                                                              |
 
@@ -116,11 +135,10 @@ turn on the tv
 > [!div class="mx-imgBorder"]
 > ![创建完成规则](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| 设置    | 建议的值                        | 描述                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| 规则名称  | "ConfirmationResponse"                 | 描述规则用途的名称          |
-| 条件 | None                                   | 确定何时可以运行规则的条件    |
+| 设置    | 建议的值                          | Description                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| 规则名称  | "ConfirmationResponse"                   | 描述规则用途的名称          |
+| 条件 | 无                                     | 确定何时可以运行规则的条件    |
 | 操作    | SpeechResponse "-正常，启用电视" | 规则条件为 true 时要执行的操作 |
 
 ## <a name="try-it-out"></a>试试看

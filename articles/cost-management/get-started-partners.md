@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/15/2019
+ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: ecef301d2745cf7c86f61f0ffa9106c7bfd10623
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 958335892b62c17e7e8bc3129796e2906cff2070
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441034"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
@@ -28,6 +28,7 @@ CSP 合作伙伴使用成本管理来：
 - 查看在成本分析中应用了合作伙伴挣贷款（PEC）的资源成本。
 - 当成本超出预算时，使用编程[预算](tutorial-acm-create-budgets.md)和警报设置通知和自动化。
 - 启用 Azure 资源管理器策略，以提供对成本管理数据的客户访问。 然后，客户可以使用即用即[付费率](https://azure.microsoft.com/pricing/calculator/)查看其订阅的消耗成本数据。
+- 使用即用即付订阅将其成本和使用情况数据导出到存储 blob。
 
 以下示例显示了所有客户的成本。
 显示所有客户的成本的 ![示例](./media/get-started-partners/customer-costs1.png)
@@ -37,11 +38,17 @@ CSP 合作伙伴使用成本管理来：
 
 还可通过 REST Api 使用 Azure 成本管理中提供的所有功能。 使用 Api 自动执行成本管理任务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以在资源的任何级别授予访问权限，将计费帐户或管理组向下授予管理应用的各个资源组。 有关为计费帐户启用和分配对 Azure 成本管理的访问的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 **全局管理员**和**管理代理**角色可以管理计费帐户的成本。
+作为合作伙伴，Azure 成本管理仅提供 Azure 计划中的订阅。
 
-若要查看受支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
+若要在 Azure 门户中启用 Azure 成本管理，你必须已确认客户接受 Microsoft 客户协议（代表客户）并将客户转换为 Azure 计划。 仅可在 Azure 成本管理中使用转换到 Azure 计划的订阅成本。
+
+Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。
+
+有关为计费帐户启用和分配对 Azure 成本管理的访问的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 **全局管理员**和**管理代理**角色可以管理计费帐户的成本。
+
+若要访问订阅范围内的 Azure 成本管理，拥有订阅的 RBAC 访问权限的任何用户都可以按零售（即用即付）费率查看成本。 但是，必须启用客户租户的成本可见性策略。 若要查看受支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理如何使用作用域
@@ -83,10 +90,10 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 合作伙伴可以使用范围来协调发票。 而且，它们使用范围为以下各项设置计费货币中的预算：
 
 - 特定筛选的发票
-- Customer
+- 客户
 - 订阅
 - 资源组
-- Resource
+- 资源
 - Azure 服务
 - 计量
 - ResellerMPNID
@@ -113,13 +120,13 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 
 合作伙伴可以使用以下信息来为其客户查看 Azure 使用情况收费。
 
-在 Azure 门户中，登录到合作伙伴租户，然后单击 "**成本管理 + 计费**"。 选择计费帐户，然后单击 "**客户**"。 客户列表与计费帐户关联。
+在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 选择计费帐户，然后选择 "**客户**"。 客户列表与计费帐户关联。
 
 在 "客户" 列表中，选择要允许其查看成本的客户。
 
 ![选择成本管理中的客户](./media/get-started-partners/customer-list.png)
 
-在 "**设置**" 下，单击 "**策略**"。
+在 "**设置**" 下，选择 "**策略**"。
 
 对于与所选客户的订阅相关联的**Azure 使用**费用，将显示当前成本可见性策略。
 ![策略以允许客户查看即用即付费用](./media/get-started-partners/cost-management-billing-policies.png)
@@ -130,15 +137,15 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以
 
 启用成本可见性策略后，具有订阅使用情况的所有服务都按现用现付费率显示成本。 预订使用情况在实际和摊销成本上显示为零。 采购和权利不关联到特定订阅。 因此，不会在订阅范围中显示购买。
 
-若要查看客户租户的成本，请打开成本管理 + 计费，然后单击 "计费帐户"。 在计费帐户列表中，单击计费帐户。
+若要查看客户租户的成本，请打开成本管理 + 计费，然后选择 "计费帐户"。 在计费帐户列表中，选择计费帐户。
 
 ![选择计费帐户](./media/get-started-partners/select-billing-account.png)
 
-在 "**计费**" 下，单击 " **Azure 订阅**"，然后单击客户。
+在 "**计费**" 下，选择 " **Azure 订阅**"，然后选择一个客户。
 
 ![选择 Azure 订阅客户](./media/get-started-partners/subscriptions-select-customer.png)
 
-单击 "**成本分析**" 并开始查看成本。
+选择 "**成本分析**" 并开始查看成本。
 按即用即付费率的成本提供订阅和资源组 RBAC 范围的成本分析、预算和警报。
 
 ![以客户身份查看成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
@@ -147,7 +154,9 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 ## <a name="analyze-costs-in-cost-analysis"></a>分析成本分析中的成本
 
-合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。 在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
+有权访问合作伙伴租户中的计费范围的合作伙伴可以在特定客户或发票的客户的成本分析中探索和分析开票成本。 在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
+
+在客户租户中有权访问订阅的 RBAC 用户还可以分析客户租户中的订阅的零售成本，保存视图，并将数据导出到 CSV 和 PNG 文件。
 
 您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 下一节将显示特定于合作伙伴的字段。
 
@@ -158,80 +167,80 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 | **字段名称** | **说明** | **合作伙伴中心等效项** |
 | --- | --- | --- |
 | invoiceId | 发票上显示的特定交易记录的发票 ID。 | 显示交易记录的发票号。 |
-| previousInvoiceID | 引用原始发票时有退款（负成本）。 只有退款时才填充。 | 不适用 |
-| billingAccountName | 表示合作伙伴的计费帐户的名称。 它在已载入 Microsoft 客户协议的客户和已进行授权购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订）中，向客户收取费用。 | 不适用 |
+| previousInvoiceID | 引用原始发票时有退款（负成本）。 只有退款时才填充。 | N/A |
+| billingAccountName | 表示合作伙伴的计费帐户的名称。 它在已载入 Microsoft 客户协议的客户和已进行授权购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订）中，向客户收取费用。 | N/A |
 | billingAccountID | 表示合作伙伴的计费帐户的标识符。 | MCAPI 合作伙伴 Commerce 根 ID。 用于请求，但不包括在响应中。|
 | billingProfileID | 计费配置文件的标识符，它在载入到 Microsoft 客户协议的客户和已进行权利购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订. | MCAPI 合作伙伴计费组 ID。 用于请求，但不包括在响应中。 |
-| billingProfileName | 计费配置文件的名称，该配置文件在已载入 Microsoft 客户协议的客户和 CSP 客户（如 SaaS、Azure Marketplace 和）中将成本按单一计费币种分组预订. | 不适用 |
-| invoiceSectionName | 在发票中计费的项目的名称。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
-| invoiceSectionID | 发票中正在进行计费的项目的标识符。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
+| billingProfileName | 计费配置文件的名称，该配置文件在已载入 Microsoft 客户协议的客户和 CSP 客户（如 SaaS、Azure Marketplace 和）中将成本按单一计费币种分组预订. | N/A |
+| invoiceSectionName | 在发票中计费的项目的名称。 不适用于合作伙伴载入的 Microsoft 客户协议。 | N/A |
+| invoiceSectionID | 发票中正在进行计费的项目的标识符。 不适用于合作伙伴载入的 Microsoft 客户协议。 | N/A |
 | **CustomerTenantID** | 客户订阅的 Azure Active Directory 租户的标识符。 | 客户的组织 ID-客户 Azure Active Directory TenantID。 |
 | **CustomerName** | 客户订阅的 Azure Active Directory 租户的名称。 | 客户的组织名称，如合作伙伴中心中所示。 重要的是要使发票与系统信息进行协调。 |
 | **CustomerTenantDomainName** | 客户订阅的 Azure Active Directory 租户的域名。 | 客户 Azure Active Directory 租户域。 |
 | **PartnerTenantID** | 合作伙伴的 Azure Active Directory 租户的标识符。 | 作为合作伙伴 ID 的合作伙伴 Azure Active Directory 租户 ID，采用 GUID 格式。 |
 | **PartnerName** | Azure Active Directory 租户的合作伙伴的名称。 | 合作伙伴名称。 |
 | **ResellerMPNID** | 与订阅关联的分销商的 MPNID。 | 订阅的 MPN 的经销商 ID。 对当前活动不可用。 |
-| costCenter | 与订阅关联的成本中心。 | 不适用 |
-| billingPeriodStartDate | 计费周期开始日期，如发票中所示。 | 不适用 |
-| billingPeriodEndDate | 计费期间结束日期，如发票中所示。 | 不适用 |
-| servicePeriodStartDate | 评估服务使用情况的评估期的开始日期。 Azure 服务的价格是针对评级周期确定的。 | 合作伙伴中心中的 ChargeStartDate。 计费周期开始日期，除非在以前的计费周期内提供以前 uncharged 的潜在使用情况数据的日期。 该时间始终为0:00 的开始时间。 |
-| servicePeriodEndDate | 评估服务使用情况的时间段的结束日期。 Azure 服务的价格取决于分级期限。 | 不适用 |
-| 日期 | 对于 Azure 消耗数据，它会将 "使用日期" 显示为 "分级"。 对于预订实例，它显示购买日期。 对于定期收费和一次收费（如 Marketplace 和支持），它会显示购买日期。 | 不适用 |
+| costCenter | 与订阅关联的成本中心。 | N/A |
+| billingPeriodStartDate | 计费周期开始日期，如发票中所示。 | N/A |
+| billingPeriodEndDate | 计费期间结束日期，如发票中所示。 | N/A |
+| servicePeriodStartDate | 评估服务使用情况的评估期的开始日期。 Azure 服务的价格是针对评级周期确定的。 | 合作伙伴中心中的 ChargeStartDate。 计费周期开始日期，除非在以前的计费周期内提供以前 uncharged 的潜在使用情况数据的日期。 时间始终是一天的开始，即 0:00。 |
+| servicePeriodEndDate | 评估服务使用情况的时间段的结束日期。 Azure 服务的价格取决于分级期限。 | N/A |
+| date | 对于 Azure 消耗数据，它会将 "使用日期" 显示为 "分级"。 对于预订实例，它显示购买日期。 对于定期收费和一次收费（如 Marketplace 和支持），它会显示购买日期。 | N/A |
 | productID | 按消耗或购买将计费的产品标识符。 它是 productID 和 SKuID 的连接键，如合作伙伴中心中所示。 | 产品的 ID。 |
 | product | 按消耗或购买将计费的产品的名称，如发票中所示。 | 目录中的产品名称。 |
-| serviceFamily | 显示购买或收费的产品的服务系列。 例如，存储或计算。 | 不适用 |
-| productOrderID | 订阅所属的资产或 Azure 计划名称的标识符。 例如，Azure 计划。 | 不适用 |
-| productOrderName | 订阅所属的 Azure 计划的名称。 例如，Azure 计划。 | 不适用|
+| serviceFamily | 显示购买或收费的产品的服务系列。 例如，存储或计算。 | N/A |
+| productOrderID | 订阅所属的资产或 Azure 计划名称的标识符。 例如，Azure 计划。 | N/A |
+| productOrderName | 订阅所属的 Azure 计划的名称。 例如，Azure 计划。 | N/A|
 | consumedService | 旧 EA 使用情况详细信息中使用的已使用服务（旧分类）。 | 在合作伙伴中心显示的服务。 例如，"microsoft.operationalinsights"、"microsoft"、"microsoft"。 |
 | meterID | 度量的消耗的计量标识符。 | 已使用计量的 ID。 |
 | meterName | 标识度量消耗的计量的名称。 | 已使用指示器的名称。 |
 | meterCategory | 标识使用的顶级服务。 | 使用的顶级服务。 |
 | meterSubCategory | 定义 Azure 服务的类型或子类别，它们可能会影响速度。 | 可能影响速度的 Azure 服务类型。|
 | meterRegion | 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 | 用于服务的数据中心的区域位置，其中适用并已填充。 |
-| 订阅 ID | Microsoft 为 Azure 订阅生成的唯一标识符。 | 不适用 |
-| subscriptionName | Azure 订阅的名称。 | 不适用 |
-| 术语 | 显示套餐的有效期限。 例如，预订实例显示预订实例的每年12个月。 对于一次性购买或定期购买，术语针对 SaaS、Azure Marketplace 和支持显示一个月。 不适用于 Azure。 | 不适用 |
-| publisherType （firstParty，thirdPartyReseller，thirdPartyAgency） | 将发布服务器标识为第一方、第三方经销商或第三方代理商的出版商类型。 | 不适用 |
-| partNumber | 未使用的保留实例和 Azure Marketplace 服务的部件号。 | 不适用 |
+| 订阅 ID | Microsoft 为 Azure 订阅生成的唯一标识符。 | N/A |
+| subscriptionName | Azure 订阅的名称。 | N/A |
+| 条款 | 显示套餐的有效期限。 例如，预订实例显示预订实例的每年12个月。 对于一次性购买或定期购买，术语针对 SaaS、Azure Marketplace 和支持显示一个月。 不适用于 Azure。 | N/A |
+| publisherType （firstParty，thirdPartyReseller，thirdPartyAgency） | 将发布服务器标识为第一方、第三方经销商或第三方代理商的出版商类型。 | N/A |
+| partNumber | 未使用的保留实例和 Azure Marketplace 服务的部件号。 | N/A |
 | publisherName | 服务发布者的名称，包括 Microsoft 或第三方发布者。 | 产品发布者的名称。|
-| reservationId | 采购预订实例的标识符。 | 不适用 |
-| reservationName | 预订实例的名称。 | 不适用 |
-| reservationOrderId | 预订实例的订单 Id。 | 不适用 |
-| frequency | 预订实例的付款频率。 | 不适用 |
+| reservationId | 采购预订实例的标识符。 | N/A |
+| reservationName | 预订实例的名称。 | N/A |
+| reservationOrderId | 预订实例的订单 Id。 | N/A |
+| 频率 | 预订实例的付款频率。 | N/A |
 | resourceGroup | 用于生命周期资源管理的 Azure 资源组的名称。 | 资源组的名称。 |
 | instanceID （或） ResourceID | 资源实例的标识符。 | 显示为包含完整资源属性的 ResourceURI。 |
 | resourceLocation | 资源位置的名称。 | 资源的位置。 |
-| 位置 | 资源的规范化位置。 | 不适用 |
+| 位置 | 资源的规范化位置。 | N/A |
 | effectivePrice | 服务的有效单价（定价货币）。 产品、服务系列、计量和产品/服务的独特之处。 与计费帐户的价目表中的定价一起使用。 如果有分层定价或包含数量，则会显示消耗的混合价格。 | 进行调整后的单位价格。 |
 | 数量 | 购买或消耗的度量数量。 计费期间使用的计量量。 | 单位数。 确保在协调期间它与计费系统中的信息相匹配。 |
 | unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和10，计。 |
-| pricingCurrency | 定义单位价格的货币。 | Pricelist 中的货币。|
+| pricingCurrency | 定义单位价格的货币。 | 价目表中的货币。|
 | billingCurrency | 定义计费成本的货币。 | 客户的地理区域的货币。 |
 | chargeType | 定义成本在 Azure 成本管理中代表的费用类型，如购买和退款。 | 费用或调整的类型。 对当前活动不可用。 |
-| costinBillingCurrency | 按计费货币表示的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
-| costinPricingCurrency | 与价格关联的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
-| **costinUSD** | 以 USD 为单位的估计 ExtendedCost 或混合成本。 | 不适用 |
-| **paygCostInBillingCurrency** | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 | 不适用 |
-| **paygCostInUSD** | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 | 不适用 |
+| costinBillingCurrency | 按计费货币表示的税收之前的 ExtendedCost 或混合成本。 | N/A |
+| costinPricingCurrency | 与价格关联的税收之前的 ExtendedCost 或混合成本。 | N/A |
+| **costinUSD** | 以 USD 为单位的估计 ExtendedCost 或混合成本。 | N/A |
+| **paygCostInBillingCurrency** | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 | N/A |
+| **paygCostInUSD** | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 | N/A |
 | exchangeRate | 用于从定价货币转换为计费货币的汇率。 | 在合作伙伴中心中称为 PCToBCExchangeRate。 定价货币与计费货币汇率。|
 | exchangeRateDate | 用于从定价货币转换为计费货币的汇率的日期。 | 在合作伙伴中心中称为 PCToBCExchangeRateDat。 定价货币与计费货币汇率日期。|
-| isAzureCreditEligible | 指示成本是否适合由 Azure 额度支付。 | 不适用 |
+| isAzureCreditEligible | 指示成本是否适合由 Azure 额度支付。 | N/A |
 | serviceInfo1 | 旧字段，用于捕获可选的服务特定元数据。 | 内部 Azure 服务元数据。 |
 | serviceInfo2 | 旧字段，用于捕获可选的服务特定元数据。 | 服务信息。 例如，虚拟机的映像类型和 ExpressRoute 的 ISP 名称。|
 | additionalInfo | 服务特定的元数据。 例如，虚拟机的映像类型。 | 其他列中未涵盖的任何其他信息。 服务特定的元数据。 例如，虚拟机的映像类型。|
 | 标记 | 分配给计量器的标记。 使用标记对计费记录进行分组。 例如，可以使用标记按使用测定仪的部门分配费用。 | 客户添加的标记。|
 | **partnerEarnedCreditRate** | 基于合作伙伴管理员链接访问权限的合作伙伴获得的信用额度（PEC）时应用的折扣率。 | 合作伙伴获得的信用额度（PEC）的速率。 例如，0% 或15%。 |
-| **partnerEarnedCreditApplied** | 指示是否已应用合作伙伴获得的信用额度。 | 不适用 |
+| **partnerEarnedCreditApplied** | 指示是否已应用合作伙伴获得的信用额度。 | N/A |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>查看合作伙伴获得的信用（PEC）资源成本
 
 在 Azure 成本管理中，合作伙伴可以使用成本分析来查看收到 PEC 权益的成本。
 
-在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 在 "**成本管理**" 下，单击 "**成本分析**"。
+在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 在 "**成本管理**" 下，选择 "**成本分析**"。
 
 成本分析视图显示合作伙伴的计费帐户的成本。 根据需要为合作伙伴、特定客户或计费配置文件选择**范围**，以对发票进行协调。
 
-在环形图中，单击下拉列表并选择 " **PartnerEarnedCreditApplied** " 以深化到 "PEC 成本"。
+在环形图中，选择下拉列表并选择 " **PartnerEarnedCreditApplied** " 以深化到 "PEC 成本"。
 
 ![示例演示如何查看合作伙伴获得的信用额度](./media/get-started-partners/cost-analysis-pec1.png)
 
@@ -245,6 +254,26 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 还可以使用 "**分组依据**" 选项按**PartnerEarnedCreditApplied**属性进行分组和筛选。 使用这些选项可以检查有和没有 PEC 的成本。
 
 ![按合作伙伴所获得信用额度分组或筛选](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="export-cost-data-to-azure-storage"></a>将成本数据导出到 Azure 存储
+
+具有合作伙伴租户中计费范围访问权限的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 blob。 Blob 必须位于合作伙伴租户中的订阅上，该订阅不是共享服务订阅或客户订阅。 若要启用成本数据导出，我们建议你在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 在 "即用即付" 订阅中托管的 Azure 存储 blob 上创建导出存储帐户。 根据伙伴创建导出的范围，会自动将关联的数据导出到存储帐户，并定期自动导出。
+
+具有对订阅的 RBAC 访问权限的用户还可以将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 blob。
+
+### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作伙伴租户或客户租户中创建导出
+
+在 Azure 门户中，登录到合作伙伴租户或客户租户，并选择 "**成本管理 + 计费**"。 选择相应的作用域（例如，计费帐户），然后选择 "**成本分析**"。 加载页面时，选择 "**导出**"。 选择 "在计划导出下**查看所有导出**"。
+
+接下来，选择 "**添加**" 并键入名称，并选择导出类型。 选择 "**存储**" 选项卡，并输入所需的信息。
+
+在合作伙伴租户中创建导出时，请在 "合作伙伴租户" 中选择 "即用即付" 订阅。 使用该订阅创建 Azure 存储帐户。
+
+对于客户租户中的 RBAC 用户，选择客户租户中的订阅。 使用订阅创建 Azure 存储帐户。
+
+查看内容，然后选择 "**创建**" 来计划导出。
+
+若要验证 "导出" 列表中的数据，请选择存储帐户名称。 在 "存储帐户" 页上，选择 "**容器**"，然后选择容器。 导航到相应的文件夹，然后选择 CSV 文件。 选择 "**下载**" 以获取 CSV 文件并将其打开。 导出的导出数据类似于与 Azure 门户中的使用情况详细信息类似的成本数据。
 
 ## <a name="cost-management-rest-apis"></a>成本管理 REST Api
 

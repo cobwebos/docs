@@ -2,17 +2,17 @@
 title: 什么是 Azure Private Link service？
 description: 了解 Azure 专用链接服务。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912986"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647367"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
@@ -46,7 +46,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 
 专用链接服务指定以下属性： 
 
-|properties |说明  |
+|属性 |说明  |
 |---------|---------|
 |预配状态（provisioningState）  |一个只读属性，其中列出了私有链接服务的当前设置状态。 适用的预配状态为： "删除;因成功正在更新 "。 如果预配状态为 "成功"，则已成功设置专用链接服务。        |
 |别名（别名）     | 别名是服务的全局唯一的只读字符串。 它可帮助你屏蔽服务的客户数据，同时为你的服务创建一个易于共享的名称。 创建专用链接服务时，Azure 将为你的服务生成可与客户共享的别名。 你的客户可以使用此别名请求连接到你的服务。          |
@@ -68,7 +68,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
  
 - 可以从属于不同 Vnet、订阅和/或 Active Directory 租户的多个专用终结点访问单个专用链接服务。 通过连接工作流建立连接。 
  
-- 可以使用不同的前端 IP 配置在同一标准负载均衡器上创建多个专用链接服务。 对于每个标准负载均衡器和每个订阅可以创建的专用链接服务的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 可以使用不同的前端 IP 配置在同一标准负载均衡器上创建多个专用链接服务。 对于每个标准负载均衡器和每个订阅可以创建的专用链接服务的数量有限制。 有关详细信息，请参阅 [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
  
 - 专用链接服务可以有多个链接到的 NAT IP 配置。 选择多个 NAT IP 配置可帮助服务提供程序进行缩放。 目前，服务提供商可以为每个专用链接服务分配多达8个 NAT IP 地址。 对于每个 NAT IP 地址，可以为 TCP 连接分配更多端口，从而扩大规模。将多个 NAT IP 地址添加到专用链接服务后，将无法删除 NAT IP 地址。 这样做是为了确保在删除 NAT IP 地址时活动连接不会受到影响。
 

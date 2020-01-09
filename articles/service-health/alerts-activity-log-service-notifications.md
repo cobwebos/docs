@@ -1,25 +1,21 @@
 ---
 title: 接收有关 Azure 服务通知的活动日志警报
 description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
-ms.translationtype: MT
+ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464017"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
 
 本文演示如何使用 Azure 门户设置活动日志警报，用于通知服务运行状况。  
 
-服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中；鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
+服务运行状况通知存储在[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中，如果活动日志中存储了可能大量的信息，则可以使用单独的用户界面来更轻松地查看和设置有关服务运行状况通知的警报。 
 
 当 Azure 将服务运行状况通知发送到 Azure 订阅时，你可以收到警报。 可以基于以下内容配置警报：
 
@@ -64,7 +60,7 @@ ms.locfileid: "70383163"
     > [!NOTE]
     > 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-1. 选择要针对其发出警报的**事件类型**：“服务问题”、“计划内维护”和“运行状况公告” 
+1. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
 
 1. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 
@@ -76,9 +72,9 @@ ms.locfileid: "70383163"
 
 1. 通过提供接收方来定义接收方的列表：
 
-    a. **名称**：输入接收方的名称、别名或标识符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **名称**：输入接收方的名称、别名或标识符。
 
-    b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
+    b.保留“数据库类型”设置，即设置为“共享”。 **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 
     c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
 
@@ -94,7 +90,7 @@ ms.locfileid: "70383163"
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>使用 Azure 门户通过现有操作组发出警报
 
-1. 执行上一节中的步骤 1 至 6 来创建服务运行状况通知。 
+1. 按照上一部分中的步骤1至6创建服务运行状况通知。 
 
 1. 在“定义操作组”下，单击“选择操作组”按钮。 选择适当的操作组。
 

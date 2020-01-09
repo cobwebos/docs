@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077900"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647503"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -36,8 +36,8 @@ ms.locfileid: "70077900"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,13 +193,13 @@ ms.locfileid: "70077900"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始安装之前，请查看以下文章：
 
@@ -210,7 +210,7 @@ ms.locfileid: "70077900"
 * [Azure Vm 上 SAP NetWeaver 的高可用性][high-availability-guide]
 
 需要以下来自 SAP 的可执行文件和 DLL：
-* SAP 软件预配管理器 (SWPM) 安装工具版本 SPS25 或更高版本。
+* SAP 软件预配管理器（SWPM）安装工具版本 SPS25 或更高版本。
 * SAP 内核7.49 或更高版本
 
 > [!IMPORTANT]
@@ -231,7 +231,7 @@ ms.locfileid: "70077900"
 
 在 SOFS 群集上创建以下卷和文件共享：
 
-* SOFS 群集共享`C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`卷 (CSV) 上的 SAP GLOBALHOST 文件结构
+* SOFS 群集共享卷（CSV）上的 SAP GLOBALHOST 文件 `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` 结构
 
 * SAPMNT 文件共享
 
@@ -290,7 +290,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-创建 SAP ASCS/SCS 群集网络名称 (例如, **pr1-ASCS [10.0.6.7]** ), 如为[群集 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
+创建 SAP ASCS/SCS 群集网络名称（例如， **pr1-ASCS [10.0.6.7]** ），如为[群集 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>在群集中安装 ASCS/SCS 和 ERS 实例
@@ -299,22 +299,22 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品 >**  >  >  DBMS >安装 > 应用程序服务器 ABAP (或 Java) >**高可用性系统** **\<**  > **ASCS/SCS 实例** **第一个群集节点。**  > 
+**\<产品 >**  >  **\<DBMS >**  >  > 的**应用程序服务器 ABAP** （或**Java** **） >** **/SCS 实例** ** > ** **第一个群集节点**。
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
-使用 PowerShell 配置 SAP 群集资源：SAP-SID-IP 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置, 如[本文中][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]所述。
+使用 PowerShell 配置 SAP 群集资源：SAP-SID-IP 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[本文中][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]所述。
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
 在第二个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品 >**  >  >  DBMS >安装 > 应用程序服务器 ABAP (或 Java) >**高可用性系统** **\<**  > **ASCS/SCS 实例** **其他群集节点。**  > 
+**\<产品 >**  >  **\<DBMS >**  >  ** > > 的** **应用程序服务器 ABAP** （或**JAVA**） > **高可用性系统** > **ASCS/SCS 实例** **附加群集节点**。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
-在 SAP ASCS/scs 实例配置文件\<SID >_ASCS/scs\<Nr >_ \<Host > 中更新参数。
+更新 SAP ASCS/SCS 实例配置文件中的参数 \<SID >_ASCS/scs\<Nr >_ \<主机 >。
 
 
 | 参数名称 | 参数值 |
@@ -323,7 +323,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 | enque/encni/set_so_keepalive  | true |
 | service/ha_check_node | **1** |
 
-重新启动 SAP ASCS/SCS 实例。 在`KeepAlive`两个 sap ASCS/scs 群集节点上设置参数时, 请按照说明[在 sap ASCS/scs 实例的群集节点上设置注册表项][high-availability-guide]。 
+重新启动 SAP ASCS/SCS 实例。 在两个 SAP ASCS/SCS 群集节点上设置 `KeepAlive` 参数，请按照说明[在 SAP ASCS/scs 实例的群集节点上设置注册表项][high-availability-guide]。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 

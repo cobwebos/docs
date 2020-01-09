@@ -1,5 +1,5 @@
 ---
-title: 诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
+title: 排查使用 Cosmos DB 的 Azure Functions 触发器时遇到的问题
 description: 使用 Cosmos DB 的 Azure Functions 触发器时，常见问题、解决方法和诊断步骤
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441122"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
 
@@ -78,12 +78,12 @@ Azure 函数失败，并出现错误消息 "源集合" 集合名称 "（在数�
 
 如果目标上缺少某些更改，这可能意味着在收到更改后，在 Azure 函数执行过程中出现一些错误。
 
-在这种情况下，最佳做法是在代码中和可能正在处理更改的循环内添加 `try/catch` 块，以检测特定项子集的任何故障并相应地进行处理（将其发送到另一个存储分析或重试）。 
+在这种情况下，最佳做法是在代码中和可能正在处理更改的循环内添加 `try/catch` 块，以检测特定项子集的任何故障并相应地进行处理（将其发送到另一个存储进行进一步分析或重试）。 
 
 > [!NOTE]
 > 默认情况下，如果在代码执行过程中出现未经处理的异常，则 Cosmos DB 的 Azure Functions 触发器将不会重试一批更改。 这意味着更改未到达目标的原因是因为您无法处理它们。
 
-如果你发现触发器根本未接收到一些更改，最常见的情况是**另一个 Azure 函数正在运行**。 它可以是在 Azure 中部署的另一个 Azure 函数，或在开发人员计算机上本地运行且具有**完全相同的配置**的 azure 函数（相同的监视容器和租赁容器），此 azure 函数正在盗取你需要你的 Azure 功能才能处理。
+如果你发现触发器根本未接收到一些更改，最常见的情况是**另一个 Azure 函数正在运行**。 它可以是在 Azure 中部署的另一个 Azure 函数，或者是在开发人员计算机上以**完全相同的配置**（相同的监视容器和租赁容器）运行的 azure function，此 azure 函数正在盗取你需要 Azure 功能处理的一部分更改。
 
 此外，如果知道有多少 Azure Function App 实例正在运行，就可以验证方案。 如果检查借用容器并统计其中的租约项数，则它们中的 `Owner` 属性的非重复值应该等于 Function App 的实例数。 如果所有者数目超过已知 Azure 函数应用实例的数目，则表示这些额外的所有者正在“窃取”更改。
 

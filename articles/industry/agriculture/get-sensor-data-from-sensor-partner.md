@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435175"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -18,16 +18,16 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
   ![FarmBeats 合作伙伴](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-将设备数据与 Azure FarmBeats 集成可帮助你获取在场中部署到数据中心的 IoT 传感器的基本数据。 数据可通过 FarmBeats 加速器进行可视化。 通过使用 FarmBeats，可将数据用于数据合成和机器学习/人工智能（ML/AI）模型构建。
+将设备数据与 Azure FarmBeats 集成可帮助你获取在场中部署到 datahub 的 IoT 传感器的基本数据。 数据可通过 FarmBeats 加速器进行可视化。 通过使用 FarmBeats，可将数据用于数据合成和机器学习/人工智能（ML/AI）模型构建。
 
 若要启动传感器数据流，请确保以下各项：
 
 -  你已在 Azure Marketplace 中安装 FarmBeats。
 -  您决定要在您的场中安装的传感器和设备。
--  如果计划使用 "土料湿气传感器"，请使用 FarmBeats 土潮湿传感器放置图来获取有关传感器数量的建议，以及确切地放置传感器的位置。 有关详细信息，请参阅[生成映射](generate-maps.md)。
+-  如果计划使用 "土料湿气传感器"，请使用 FarmBeats 土潮湿传感器放置图来获取有关传感器数量的建议，以及确切地放置传感器的位置。 有关详细信息，请参阅[生成映射](generate-maps-in-azure-farmbeats.md)。
 - 你可以在你的服务器场中购买和部署设备合作伙伴的设备或传感器。 请确保可以通过设备合作伙伴的解决方案访问传感器数据。
 
-## <a name="enable-device-integration-with-farmbeats"></a>启用设备与 FarmBeats 的集成 
+## <a name="enable-device-integration-with-farmbeats"></a>启用设备与 FarmBeats 的集成
 
 开始流式处理传感器数据后，可以开始将数据导入到 FarmBeats 系统的过程。 向设备提供商提供以下信息以启用与 FarmBeats 的集成：
 
@@ -155,4 +155,4 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，传感器数据流入 Azure FarmBeats 实例。 现在，了解如何为你的场[生成地图](generate-maps.md#generate-maps)。
+现在，传感器数据流入 Azure FarmBeats 实例。 现在，了解如何为你的场[生成地图](generate-maps-in-azure-farmbeats.md#generate-maps)。

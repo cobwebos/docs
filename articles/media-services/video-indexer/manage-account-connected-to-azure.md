@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892764"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454665"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理已连接到 Azure 的视频索引器帐户
 
@@ -49,6 +49,17 @@ ms.locfileid: "74892764"
 * 已分配的预留单位的数目和类型。
 
 如果帐户需要做出某些调整，“设置”页上会显示与帐户配置相关的错误和警告。 消息中包含链接，单击这些链接会转到 Azure 门户中用于做出更改的确切位置。 有关详细信息，请参阅后面的[错误和警告](#errors-and-warnings)部分。
+
+## <a name="repair-the-connection-to-azure"></a>修复与 Azure 的连接
+
+在 "[视频索引器](https://www.videoindexer.ai/)" 页的 "**更新与 Azure 媒体服务的连接**" 对话框中，系统会要求你提供以下设置的值： 
+
+|设置|Description|
+|---|---|
+|Azure 订阅 ID|可以从 Azure 门户中检索订阅 ID。 单击左侧面板中的“所有服务”，然后搜索“订阅”。 选择“订阅”并从订阅列表中选择所需的 ID。|
+|Azure 媒体服务资源组名称|资源组（你在其中创建了媒体服务帐户）的名称。|
+|应用程序 ID|为此视频索引器帐户创建的 Azure AD 应用程序 ID （具有指定媒体服务帐户的权限）。 <br/><br/>若要获取应用 ID，请导航到 Azure 门户。 在 Media Services 帐户下，选择帐户并**访问 "API 访问**"。 单击 "**通过服务主体 -> Azure AD 应用连接到媒体服务 API** "。 复制相关的参数。|
+|应用程序密钥|与上面指定的媒体服务帐户关联的 Azure AD 应用程序密钥。 <br/><br/>若要获取应用程序密钥，请导航到 Azure 门户。 在 Media Services 帐户下，选择帐户并**访问 "API 访问**"。 单击 "**通过服务主体连接到媒体服务 API** " -> "**管理应用程序** -> **证书" & 机密**。 复制相关的参数。|
 
 ## <a name="auto-scale-reserved-units"></a>自动缩放预留单位
 

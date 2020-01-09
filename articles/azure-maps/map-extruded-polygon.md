@@ -1,6 +1,6 @@
 ---
-title: 将延伸多边形层添加到 Azure Maps |Microsoft Docs
-description: 如何将延伸多边形层添加到 Azure Maps Web SDK。
+title: 将多边形延伸层添加到 Azure Maps |Microsoft Docs
+description: 如何将多边形延伸层添加到 Azure Maps Web SDK。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432839"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>向地图添加延伸多边形层
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>向地图添加多边形延伸层
 
 本文介绍如何使用多边形延伸层在地图上将 `Polygon` 和 `MultiPolygon` 特征几何的面积渲染为延伸形状。 Azure Maps Web SDK 还支持按[扩展 GeoJSON 架构](extend-geojson.md#circle)中的定义创建圆形几何。 在地图上呈现时，这些圆圈将转换为多边形。 如果用阿特拉斯包装，还可以轻松更新所有功能几何[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)类。
 

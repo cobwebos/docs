@@ -1,17 +1,17 @@
 ---
-title: 向自定义 Api 添加身份验证
-description: 通过 Azure 逻辑应用为调用自定义 API 设置身份验证
+title: 添加用于保护对自定义 Api 的调用的身份验证
+description: 如何设置身份验证，以便通过 Azure 逻辑应用保护对自定义 Api 的调用
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793159"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666884"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -197,7 +197,7 @@ ms.locfileid: "74793159"
 }
 ```
 
-| properties | 需要 | 描述 | 
+| 属性 | 需要 | Description | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -248,10 +248,10 @@ ms.locfileid: "74793159"
 } 
 ```
 
-| properties | 需要 | 描述 |
+| 属性 | 需要 | Description |
 | -------- | -------- | ----------- |
 | `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
-| `password` | No | 用于访问客户端证书（PFX 文件）的密码 |
+| `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
 | `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
 ||||
 
@@ -271,7 +271,7 @@ ms.locfileid: "74793159"
 }
 ```
 
-| properties | 需要 | 描述 | 
+| 属性 | 需要 | Description | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 
