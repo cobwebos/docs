@@ -1,32 +1,23 @@
 ---
-title: 在 Azure 中监视 Service Fabric 群集 | Microsoft Docs
+title: 在 Azure 中监视 Service Fabric 群集
 description: 在本教程中，你将学习如何通过查看 Service Fabric 事件、查询 EventStore API、监视 perf 计数器以及查看运行状况报告来监视群集。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376624"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
 在任何云环境中开发、测试和部署工作负荷时，监视和诊断至关重要。 本教程是一个系列的第二部分，介绍如何使用事件、性能计数器和运行状况报告来监视和诊断 Service Fabric 群集。   有关更多信息，请阅读有关[群集监视](service-fabric-diagnostics-overview.md#platform-cluster-monitoring)和[基础结构监视](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)的概述。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件
@@ -45,7 +36,7 @@ ms.locfileid: "68385278"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -484,7 +475,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件

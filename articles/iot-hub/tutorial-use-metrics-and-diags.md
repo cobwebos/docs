@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429102"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -34,7 +34,7 @@ ms.locfileid: "74084361"
 > * 运行该应用，直至警报开始触发。 
 > * 查看指标结果并检查诊断日志。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74084361"
 
 下面是必需步骤。
 
-1. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 
+1. 创建[资源组](../azure-resource-manager/management/overview.md)。 
 
 2. 创建 IoT 中心。
 
@@ -209,7 +209,7 @@ IoT 中心尚未迁移到 [Azure Monitor 中的指标](/azure/azure-monitor/plat
 
     填写字段：
 
-    **名称**：为警报规则提供名称，例如 *telemetry-messages*。
+    **Name**：为警报规则提供名称，例如 *telemetry-messages*。
 
     **说明**：提供警报说明，例如“发送了 1000 个遥测消息时的警报”。  
 
@@ -239,7 +239,7 @@ IoT 中心尚未迁移到 [Azure Monitor 中的指标](/azure/azure-monitor/plat
 
    在“查看经典警报”屏幕上，单击“添加指标警报(经典)”，然后在“添加规则”窗格上填充以下字段。   
 
-   **名称**：为警报规则提供名称，例如 *number-of-messages-used*。
+   **Name**：为警报规则提供名称，例如 *number-of-messages-used*。
 
    **说明**：提供警报说明，例如“接近配额时的警报”。 
 

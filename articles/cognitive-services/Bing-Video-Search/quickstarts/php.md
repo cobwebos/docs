@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448364"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
 
-使用本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
+参考本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
 编写的示例代码在 PHP 5.6 下工作。
 
 有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * PHP 5.6 或更高版本
 
@@ -35,9 +35,9 @@ ms.locfileid: "74378615"
 [必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
 
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
-3. 添加下面提供的代码。
-4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
+2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
+3. 添加以下提供的代码。
+4. 使用对订阅有效的访问密钥替换 `$accessKey` 值。 `$endpoint` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 5. 运行该程序。
 
 ```php

@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382321"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 
@@ -27,12 +27,12 @@ ms.locfileid: "67203250"
 - 对必应 Web 搜索 API 进行简单查询
 - 按排名顺序显示查询结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要跟随本教程进行学习，你需要：
 
 - Visual Studio。 如果没有，请[下载并安装免费的 Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
-- 必应 Web 搜索 API 的订阅密钥。 如果没有，请[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+- 必应 Web 搜索 API 的订阅密钥。 如果没有订阅密钥，可以[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 
 ## <a name="create-a-new-console-app-project"></a>创建新的控制台应用项目
 
@@ -223,9 +223,9 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 `rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
 
-- `pole`：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
-- `mainline`：要显示在主线中的搜索结果。
-- `sidebar`：要显示在边栏中的搜索结果。 如果没有边栏，则在主线下方显示结果。
+- `pole`设置用户帐户 ：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
+- `mainline`设置用户帐户 ：要显示在主线中的搜索结果。
+- `sidebar`设置用户帐户 ：要显示在边栏中的搜索结果。 如果没有边栏，则在主线下方显示结果。
 
 排名响应 JSON 可能包括一个或多个组。
 

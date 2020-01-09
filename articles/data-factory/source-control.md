@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928767"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646891"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 
@@ -70,7 +70,7 @@ Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体
 
 "配置" 窗格显示以下 Azure Repos 代码存储库设置：
 
-| 设置 | 描述 | Value |
+| 设置 | Description | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
@@ -156,6 +156,8 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 - 2\.14.0 以下版本的 GitHub Enterprise 在 Microsoft Edge 浏览器中无法正常运行。
 
 - 与数据工厂视觉创作工具的 GitHub 集成仅适用于数据工厂的公开版本。
+
+- 每个资源类型（如管道和数据集）最多可以从单个 GitHub 分支提取1000个实体。 如果达到此限制，则建议将资源拆分为单独的工厂。
 
 ## <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
 

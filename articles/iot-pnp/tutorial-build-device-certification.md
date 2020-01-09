@@ -3,18 +3,18 @@ title: 生成可供认证的 IoT 即插即用预览版设备 | Microsoft Docs
 description: 本教程向设备开发人员介绍如何生成可供认证的 IoT 即插即用预览版设备。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569641"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550259"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>生成可供认证的 IoT 即插即用预览版设备
 
@@ -28,14 +28,14 @@ ms.locfileid: "73569641"
 - 设备代码是否实现设备信息接口。
 - 功能模型和设备代码可在 IoT Central 正常运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 扩展包
 
-还需要使用在以下教程中创建的 IoT 即插即用设备：[快速入门：使用设备功能模型创建设备](quickstart-create-pnp-device.md)。
+还需要使用在以下教程中创建的 IoT 即插即用设备：[快速入门：使用设备功能模型创建设备](quickstart-create-pnp-device-windows.md)。
 
 ## <a name="store-a-capability-model-and-interfaces"></a>存储功能模型和接口
 
@@ -58,7 +58,7 @@ ms.locfileid: "73569641"
 ```
 
 > [!NOTE]
-> 如果已完成[快速入门：使用设备功能模型创建设备](quickstart-create-pnp-device.md)，则已在模型中包含**设备信息**接口。
+> 如果已完成[快速入门：使用设备功能模型创建设备](quickstart-create-pnp-device-windows.md)，则已在模型中包含**设备信息**接口。
 
 若要在设备模型中包括**设备信息**接口，请将接口 ID 添加到功能模型的 `implements` 属性：
 

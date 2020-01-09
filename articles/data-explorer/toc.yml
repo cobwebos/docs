@@ -32,7 +32,9 @@
       href: ingest-data-overview.md
     - name: 数据可视化概述
       href: viz-overview.md
-- name: 操作指南
+    - name: 安全概述
+      href: security.md
+- name: 操作方法指南
   items:
     - name: 创建群集和数据库
       items:
@@ -126,7 +128,7 @@
               href: power-bi-connector.md
             - name: 导入的查询
               href: power-bi-imported-query.md
-            - name: SQL 查询
+            - name: SQL 查询 (SQL query)
               href: power-bi-sql-query.md
         - name: Excel
           items:
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: 安全
+      items:
+        - name: 管理群集安全性
+          href: manage-cluster-security.md
+        - name: 配置托管标识
+          href: managed-identities.md
+        - name: 配置客户管理的密钥
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure 资源管理器模板
+              href: customer-managed-keys-resource-manager.md
     - name: 管理
       items:
         - name: 群集
@@ -154,8 +168,6 @@
               href: manage-cluster-horizontal-scaling.md
             - name: 管理群集纵向缩放
               href: manage-cluster-vertical-scaling.md
-            - name: 管理群集安全性
-              href: manage-cluster-security.md
             - name: 检查群集运行状况
               href: check-cluster-health.md
         - name: 数据库
@@ -170,7 +182,7 @@
                   href: database-table-policies-csharp.md
                 - name: Python
                   href: database-table-policies-python.md
-        - name: 数据
+        - name: data
           items:
             - name: 删除数据
               href: delete-data.md
@@ -212,7 +224,7 @@
           href: troubleshoot-connect-cluster.md
         - name: 使用数据库和表
           href: troubleshoot-database-table.md
-- name: 引用
+- name: 参考
   items:
     - name: 查询语言
       href: /azure/kusto/query/

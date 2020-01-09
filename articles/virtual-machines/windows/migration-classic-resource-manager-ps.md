@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484378"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647554"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -33,7 +33,7 @@ ms.locfileid: "74484378"
 <br>
 下面是一个流程图，用于确定在迁移过程中需要执行步骤的顺序。
 
-![显示迁移步骤的屏幕截图](media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
  
 
@@ -51,14 +51,14 @@ ms.locfileid: "74484378"
 ## <a name="step-2-install-the-latest-version-of-powershell"></a>步骤2：安装最新版本的 PowerShell
 安装 Azure PowerShell 可以通过两个主要的选项：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
-如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
+如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 <br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>步骤3：确保你是订阅的管理员
 若要执行此迁移，必须在[Azure 门户](https://portal.azure.com)中为订阅添加共同管理员。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 "**中心**" 菜单上，选择 "**订阅**"。 如果看不到该选项，请选择“所有服务”。
 3. 找到相应的订阅条目，然后查看 "我的**角色**" 字段。 对于共同管理员，该值应为_帐户管理员_。
 
@@ -125,7 +125,7 @@ ms.locfileid: "74484378"
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>步骤5：拥有足够的资源管理器 VM 个 vcpu
-请确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机个 vcpu。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)。
+请确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机个 vcpu。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)。
 
 此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
 

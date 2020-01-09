@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383572"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>快速入门：使用适用于 Java 的必应新闻搜索 SDK 搜索新闻
 
 使用本快速入门开始使用适用于 Java 的必应新闻搜索 SDK 来搜索新闻。 虽然必应新闻搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) 上找到此示例的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 使用 Maven、Gradle 或其他依赖项管理系统安装必应新闻搜索 SDK 依赖项。 Maven POM 文件需要以下声明：
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>创建搜索客户端并存储凭据
 
-1. 创建一个名为 `getClient()` 的方法，用以返回一个新的 `NewsSearchAPIImpl` 搜索客户端。 将你的终结点添加为新的 `NewsSearchAPIImpl` 对象的第一个参数，并添加一个新的 `ServiceClientCredentials` 对象来存储凭据。
+1. 创建一个名为 `getClient()` 的方法，用以返回一个新的 `NewsSearchAPIImpl` 搜索客户端。 将你的终结点添加为新的 `NewsSearchAPIImpl` 对象的第一个参数，并添加一个新的 `ServiceClientCredentials` 对象来存储凭据。 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {

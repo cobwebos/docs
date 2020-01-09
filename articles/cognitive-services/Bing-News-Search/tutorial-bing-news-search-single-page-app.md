@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383109"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -53,7 +53,7 @@ ms.locfileid: "68423601"
 ```html
 <form name="bing" onsubmit="return newBingNewsSearch(this)">
 ```
-`onsubmit` 处理程序返回了 `false`，这样可以阻止表单提交到服务器。 JavaScript 代码将执行从表单中收集所需的信息并执行搜索的工作。
+`onsubmit` 处理程序返回 `false`，这会阻止表单提交到服务器。 JavaScript 代码将执行从表单中收集所需的信息并执行搜索的工作。
 
 HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
@@ -61,7 +61,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 为了避免将必应搜索 API 订阅密钥包含在代码中，我们使用浏览器的持久性存储来存储密钥。 在存储密钥之前，系统会提示我们输入用户的密钥。 如果该密钥稍后被 API 拒绝，我们将使已存储的密钥失效，因此系统会再次提示用户输入。
 
-我们定义使用 `localStorage` 对象（并非所有浏览器都支持它）或 cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
+我们定义使用 `localStorage` 对象（并非所有浏览器都支持它）或 cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ``` javascript
 // Cookie names for data we store
@@ -296,7 +296,7 @@ function handleBingResponse() {
         showDiv("sidebar", renderRelatedItems(results.relatedSearches));
 }
 ```
-主要搜索结果在 JSON 响应中返回为顶级 `value` 对象。 我们将这些结果传递给函数 `renderResults()`，该函数会对其进行遍历并调用一个单独的函数以将每一项呈现到 HTML 中。 生成的 HTML 将返回到 `renderSearchResults()`，该 HTML 在其中插入到页面中的 `results` 部门。
+主要搜索结果在 JSON 响应中返回为顶级 `value` 对象。 我们将这些结果传递给函数 `renderResults()`，该函数会对其进行遍历并调用一个单独的函数以将每一项呈现到 HTML 中。 生成的 HTML 将返回到 `renderSearchResults()`，该 HTML 在其中插入到页面中的 `results` 划分。
 
 ```javascript
 function renderResults(items) {
@@ -313,7 +313,7 @@ function renderResults(items) {
     return html.join("\n\n");
 }
 ```
-必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
+必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们分别是：
 
 |关系|说明|
 |-|-|
@@ -344,7 +344,7 @@ searchItemRenderers = {
 |`index`| 结果项集合中的结果项的索引。|
 |`count`| 搜索结果项集合中的项数。|
 
-`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符，等等。 如果呈现器不需要此功能，则不需要接受这两个参数。
+`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符，等等。 呈现器在不需要此功能的情况下，不需接受这两个参数。
 
 `news` 呈现器显示在以下 javascript 摘录中：
 ```javascript
@@ -399,7 +399,7 @@ searchItemRenderers = {
 
 进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头允许响应标头并使其可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
     npm install -g cors-proxy-server
 
@@ -407,7 +407,7 @@ searchItemRenderers = {
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-最后，使用以下命令启动 CORS 代理：
+最后，运行下面的命令，启动 CORS 代理：
 
     cors-proxy-server
 

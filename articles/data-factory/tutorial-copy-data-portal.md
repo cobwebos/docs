@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: a42d796010368ec24cc6cfde8a704c4b7608963d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4c6b96f4b8b3a0a90c136967578bfb56c83b7e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439490"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -35,7 +35,7 @@ ms.locfileid: "74926625"
 > * 按计划触发管道。
 > * 监视管道和活动运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 可将 Blob 存储用作  源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作  接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
@@ -77,7 +77,7 @@ ms.locfileid: "74926625"
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。 
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源”   > “Analytics”   > “数据工厂”  ： 
+2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：    
   
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "74926625"
 
     b. 选择“新建”，并输入资源组的名称。  
          
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。 
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 6. 在“版本”下选择“V2”。  
 7. 在“位置”下选择数据工厂所在的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 8. 选择“创建”  。 
@@ -167,7 +167,7 @@ ms.locfileid: "74926625"
     
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。  在“表”中选择“[dbo].[emp]”。   然后选择“完成”。 
+1. 将自动导航到“设置属性”对话框。  在“表”中选择“[dbo].[emp]”。   然后选择“完成”  。
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。  
 
@@ -250,7 +250,7 @@ ms.locfileid: "74926625"
 1. 验证是否每分钟将两个行（对于每个管道运行）插入 **emp** 表中，直至指定的结束时间。 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何： 
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。

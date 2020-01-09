@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459634"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库的单一数据库中设计关系数据库
 
@@ -35,7 +35,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 > [!NOTE]
 > 本教程使用单一数据库。 你也可以使用弹性池中的共用数据库，或托管实例中的实例数据库。 若要连接到托管实例，请参阅以下托管实例快速入门：[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，请确保已安装：
 
@@ -44,11 +44,11 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-blank-single-database"></a>创建空的单一数据库
 
-创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
+创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
 
 遵循以下步骤创建空白的单一数据库。
 
@@ -132,7 +132,7 @@ SQL 数据库服务在服务器级别创建 IP 防火墙。 此防火墙阻止�
    | **服务器类型** | 数据库引擎 | 此值是必需的。 |
    | **服务器名称** | 完全限定的服务器名称 | 例如，yourserver.database.windows.net  。 |
    | **身份验证** | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | **登录名** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
+   | **登录** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | **密码** | 服务器管理员帐户的密码 | 创建服务器时指定的密码。 |
 
    ![连接到服务器](./media/sql-database-design-first-database/connect.png)
@@ -270,7 +270,7 @@ SQL 数据库服务在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了许多基本数据库任务。 你已了解如何：
+本教程介绍了许多基本数据库任务。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建单一数据库

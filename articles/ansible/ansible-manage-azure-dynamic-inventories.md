@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 管理 Azure 动态库存
 keywords: ansible, azure, devops, bash, cloudshell, 动态库存
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442792"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教程：使用 Ansible 配置 Azure 资源的动态库存
 
@@ -24,7 +24,7 @@ ms.locfileid: "74156173"
 > * 在已标记的虚拟机上安装 Nginx
 > * 配置动态库存，使其包含已配置的 Azure 资源
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "74156173"
 
 ## <a name="create-the-test-vms"></a>创建测试 VM
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 打开 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
@@ -228,7 +228,7 @@ Ansible 提供一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     

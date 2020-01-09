@@ -84,6 +84,8 @@
       items:
         - name: 使用映射数据流转换数据
           href: tutorial-data-flow.md
+        - name: 映射数据流视频教程
+          href: data-flow-tutorials.md
         - name: 使用整理数据流准备数据
           href: wrangling-data-flow-tutorial.md
     - name: 外部转换

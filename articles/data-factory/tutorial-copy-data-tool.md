@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 4e71fc869a08192b756c37e5106568bdd36361bd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439413"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -36,9 +36,9 @@ ms.locfileid: "74926582"
 > * 使用“复制数据”工具创建管道。
 > * 监视管道和活动运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**：使用 Blob 存储作为_源_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
 * **Azure SQL 数据库**：使用 SQL 数据库作为_接收器_数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明。
 
@@ -77,7 +77,7 @@ ms.locfileid: "74926582"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源”   > “Analytics”   > “数据工厂”  ：
+1. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：   
     
     ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
@@ -94,7 +94,7 @@ ms.locfileid: "74926582"
 
     b. 选择“新建”，并输入资源组的名称。 
     
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
 1. 在“版本”下选择“V2”作为版本。  
 1. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
@@ -168,7 +168,7 @@ ms.locfileid: "74926582"
 1. 选择左侧的“创作”选项卡切换到编辑器模式。  可以使用编辑器来更新通过该工具创建的链接服务、数据集和管道。 有关在数据工厂 UI 中编辑这些实体的详细信息，请参阅[本教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何：
+此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

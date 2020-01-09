@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354942"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 
@@ -34,13 +34,13 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 > [!TIP]
 > 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)，包括创建简单数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/) 或更高版本。
 
 ## <a name="create-a-blank-single-database"></a>创建空的单一数据库
 
-创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
+创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
 
 遵循以下步骤创建空白的单一数据库。
 
@@ -114,7 +114,7 @@ SQL 数据库服务在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了基本数据库任务，例如创建数据库和表、连接到数据库、加载数据和运行查询。 你已了解如何：
+本教程介绍了基本数据库任务，例如创建数据库和表、连接到数据库、加载数据和运行查询。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据库

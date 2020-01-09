@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c243839e59038d439e177847df4427d253dbe98
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672052"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561729"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](overview-authentication-authorization.md)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用，但这只是为了举例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](overview-authentication-authorization.md)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用，但这只是为了举例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
 
 本教程使用示例应用来演示如何确保自包含应用的安全性（参见[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)）。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74672052"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -272,7 +272,7 @@ git push frontend master
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   >  \<front-end-app-name>    > “配置”   > “authsettings”  。
+在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   > \<front-end-app-name>    > “配置”   > “authsettings”  。
 
 在“authsettings”  视图中，单击“编辑”  。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
 

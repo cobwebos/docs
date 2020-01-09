@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: 用于物理服务器评估和迁移的支持矩阵
           href: migrate-support-matrix-physical.md
+        - name: Azure Migrate 设备的支持矩阵
+          href: migrate-appliance.md
     - name: Hyper-V 迁移体系结构
       href: hyper-v-migration-architecture.md
     - name: 基于代理的迁移体系结构
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate 设备
-      href: migrate-appliance.md
     - name: Azure Migrate 复制设备
       href: migrate-replication-appliance.md
     - name: 用于评估的最佳做法
@@ -80,6 +80,8 @@
   items:
     - name: 使用以前的版本
       href: migrate-v1.md
+    - name: 创建和管理 Azure Migrate 项目
+      href: create-manage-projects.md
     - name: 部署 VMware 设备
       href: how-to-set-up-appliance-vmware.md
     - name: 部署 HYPER-V 设备
@@ -123,7 +125,13 @@
 - name: 故障排除
   items:
     - name: 排查 Azure Migrate 问题
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: 排查 Azure Migrate 项目问题
+      href: troubleshoot-project.md
+    - name: 排查 Azure Migrate 设备/发现问题
+      href: troubleshoot-appliance-discovery.md
+    - name: 排查评估/依赖项可视化问题
+      href: troubleshoot-assessment.md
 - name: 资源
   items:
     - name: 云采用框架中的迁移

@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: 将应用程序绑定到 Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: 使用 Jenkins 和 Azure CLI 将应用部署到 Azure Spring Cloud
+      href: /jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: 概念
   items:
     - name: 了解 Azure Spring Cloud 配额和限制
@@ -42,7 +44,7 @@
       href: spring-cloud-concept-metrics.md
     - name: 规划灾难恢复
       href: disaster-recovery.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 如何启动、停止和删除 Azure Spring Cloud 应用程序
       href: spring-cloud-howto-start-stop-delete.md
@@ -56,7 +58,7 @@
       href: spring-cloud-howto-cicd.md
     - name: 在 Azure Spring Cloud 中使用永久性存储
       href: spring-cloud-howto-persistent-storage.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI 插件
       href: spring-cloud-cli-reference.md

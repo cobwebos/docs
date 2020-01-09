@@ -21,18 +21,27 @@
       items:
         - name: 使用 Draft
           href: kubernetes-draft.md
-        - name: 使用 Visual Studio Code 和 Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore.md
-          maintainContext: true
-        - name: 使用 Visual Studio 和 Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          maintainContext: true
-        - name: 使用 CLI 和 Azure Dev Spaces
-          href: ../dev-spaces/quickstart-cli.md
-          maintainContext: true
-        - name: 使用 Azure Dev Spaces 进行团队开发
-          href: ../dev-spaces/quickstart-team-development.md
-          maintainContext: true
+        - name: Azure Dev Spaces
+          expanded: true
+          items:
+            - name: 使用 Azure Dev Spaces 进行团队开发
+              href: ../dev-spaces/quickstart-team-development.md
+              maintainContext: true
+            - name: 使用 Visual Studio Code
+              href: ../dev-spaces/quickstart-netcore.md
+              maintainContext: true
+            - name: 使用 Visual Studio
+              href: ../dev-spaces/quickstart-netcore-visualstudio.md
+              maintainContext: true
+            - name: 使用 CLI
+              href: ../dev-spaces/quickstart-cli.md
+              maintainContext: true
+            - name: 将 Azure Dev Spaces 与 Java 配合使用
+              href: ../dev-spaces/quickstart-java.md
+              maintainContext: true
+            - name: 使用 Azure Dev Spaces Node.js
+              href: ../dev-spaces/quickstart-nodejs.md
+              maintainContext: true
 - name: 教程
   items:
     - name: 1 - 为 AKS 准备应用程序
