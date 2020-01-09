@@ -161,6 +161,8 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-monitor-vscode.md
     - name: 使用 IoT Edge 设备作为网关
       items:
         - name: 配置透明网关

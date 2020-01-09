@@ -2,7 +2,6 @@
 documentType: LandingData
 title: SQL 托管实例
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: 托管实例文档 - 教程和 API 参考
   meta.description: Learn how to use a managed instance in Azure SQL Database.
   services: sql-database
@@ -154,7 +153,7 @@ sections:
           - html: '了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">“常规用途”层级</a>中的存储层以及应用<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">针对“常规用途”服务层级的存储性能最佳做法和注意事项</a>。'
           - html: '找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。'
           - html: 查找可以帮助你配置托管实例的更多<a href="sql-database-howto-managed-instance.md">操作指南</a>。
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

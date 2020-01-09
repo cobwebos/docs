@@ -2,7 +2,6 @@
 documentType: LandingData
 title: 适用于容器的 Azure
 metadata:
-  document_id: null
   title: 适用于容器的 Azure - 快速入门、教程和 API 参考
   description: 使用用于容器的快速入门、教程和工具，开始通过 Azure 管理和部署容器应用。
   keywords: 'Azure, 容器, Docker, API, Kubernetes'

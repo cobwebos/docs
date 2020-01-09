@@ -86,7 +86,7 @@
       displayName: studio
       href: concept-designer.md
     - name: 算法备忘单
-      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+      href: /azure/machine-learning/algorithm-cheat-sheet
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md

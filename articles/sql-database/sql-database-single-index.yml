@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure SQL 数据库：单一数据库
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: 文档 - 单一数据库
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database

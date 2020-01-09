@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Kubernetes 服务 (AKS)
 metadata:
-  document_id: null
   title: Azure Kubernetes 服务 (AKS) 文档 - 教程和 API 参考 | Microsoft Docs
   meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -89,7 +88,7 @@ sections:
               href: /learn/modules/build-and-store-container-images/
       - type: paragraph
         text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">更多交互式学习...</a>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

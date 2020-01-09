@@ -2,7 +2,6 @@
 documentType: LandingData
 title: “将 Azure 容器服务与 Kubernetes 配合使用”文档
 metadata:
-  document_id: null
   title: “将 Azure 容器服务与 Kubernetes 配合使用”文档 - 教程和 API 参考 | Microsoft Docs
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -47,7 +46,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

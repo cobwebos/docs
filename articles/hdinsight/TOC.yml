@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: 使用群集存储
-                  items:
-                    - name: 使用 Azure 存储
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: 使用 Azure Data Lake Storage Gen2
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: 使用 Azure Data Lake Storage Gen1
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: 使用群集存储
+          items:
+            - name: 使用 Azure 存储
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: 使用 Azure Data Lake Storage Gen2
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: 使用 Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: 扩展群集
           items:
             - name: 安装 HDInsight 应用
