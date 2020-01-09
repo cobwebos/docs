@@ -50,6 +50,7 @@
 - name: 如何
   items:
     - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: 从 Azure 媒体编码器迁移
@@ -228,7 +229,7 @@
               href: media-services-rest-get-media-processor.md
         - name: 错误代码
           href: media-services-encoding-error-codes.md
-        - name: 已放弃
+        - name: 不推荐使用
           items:
             - name: 静态打包和加密
               href: media-services-static-packaging.md
@@ -442,7 +443,7 @@
           href: media-services-error-codes.md
         - name: 重试逻辑
           href: media-services-retry-logic-in-dotnet-sdk.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: 平滑流式处理 HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区

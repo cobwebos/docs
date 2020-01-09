@@ -54,30 +54,30 @@
           items:
             - name: Azure 门户
               href: ingest-data-event-hub.md
-            - name: Python
-              href: data-connection-event-hub-python.md
             - name: 'C#'
               href: data-connection-event-hub-csharp.md
+            - name: Python
+              href: data-connection-event-hub-python.md
             - name: Azure 资源管理器模板
               href: data-connection-event-hub-resource-manager.md
         - name: 事件网格
           items:
             - name: Azure 门户
               href: ingest-data-event-grid.md
-            - name: Python
-              href: data-connection-event-grid-python.md
             - name: 'C#'
               href: data-connection-event-grid-csharp.md
+            - name: Python
+              href: data-connection-event-grid-python.md
             - name: Azure 资源管理器模板
               href: data-connection-event-grid-resource-manager.md
         - name: IoT 中心
           items:
             - name: Azure 门户
               href: ingest-data-iot-hub.md
-            - name: Python
-              href: data-connection-iot-hub-python.md
             - name: 'C#'
               href: data-connection-iot-hub-csharp.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
             - name: Azure 资源管理器模板
               href: data-connection-iot-hub-resource-manager.md
         - name: 一键式引入
