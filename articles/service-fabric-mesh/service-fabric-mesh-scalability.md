@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric 网格应用的可伸缩性 | Microsoft Docs
+title: Azure Service Fabric 网格应用的可伸缩性
 description: 将应用程序部署到 Service Fabric 网格的优点之一是能够轻松地或通过自动缩放策略轻松地缩放服务。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662998"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459002"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>缩放 Service Fabric 网格应用程序
 
