@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 2328313e15fafb3c0f96fdb77f3023afc1e4774f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383932"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
 
-使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 PHP 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 
+参考本快速入门对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 PHP 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 
 
 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [PHP 5.6.x](https://php.net/downloads.php) 或更高版本
 
@@ -31,12 +31,13 @@ ms.locfileid: "74323589"
 
 ## <a name="search-entities"></a>搜索实体
 
-若要运行此应用程序，请执行以下步骤。
+要运行此应用程序，请执行以下步骤。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+4. 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+5. 运行该程序。
 
 ```php
 <?php

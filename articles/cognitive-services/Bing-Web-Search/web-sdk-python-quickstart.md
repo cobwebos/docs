@@ -10,20 +10,20 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64ef052478bed627c896cd0e0b5301961a8b6f21
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977210"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562861"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>快速入门：使用用于 Python 的必应 Web 搜索 SDK
 
-可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 Python 应用程序中。 本快速入门介绍如何发送请求、接收 JSON 响应以及筛选和分析结果。
+可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 Python 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
 想要马上查看代码？ GitHub 上提供了[适用于 Python 示例的必应 Web 搜索 SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 必应 Web 搜索 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。 建议在本快速入门中使用虚拟环境。
 
 * Python 2.7、3.3、3.4、3.5 或 3.6
@@ -63,6 +63,12 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ```console
 python -m venv mytestenv
+```
+
+激活环境：
+
+```console
+mytestenv\Scripts\activate.bat
 ```
 
 安装必应 Web 搜索 SDK 依赖项：

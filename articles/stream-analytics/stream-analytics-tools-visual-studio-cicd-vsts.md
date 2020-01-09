@@ -1,7 +1,6 @@
 ---
 title: 通过 CI/CD 和 Azure DevOps 部署 Azure 流分析作业
 description: 本文介绍了如何使用 Azure DevOps Services 通过 CI/CD 部署流分析作业。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354439"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业
 本教程介绍了如何使用 Azure 管道为 Azure 流分析作业设置持续集成和部署。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
@@ -27,7 +26,7 @@ ms.locfileid: "72925070"
 > * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始之前，请确保具有以下各项：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -117,7 +116,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
     
     |**设置**  |**建议的值**  |
     |---------|---------|
-    |Subscription  |  选择订阅。   |
+    |订阅  |  选择订阅。   |
     |操作  |  创建或更新资源组   |
     |资源组  |  输入资源组名称。   |
     |模板  | [解决方案路径]\bin\Debug\Deploy\\[项目名称].JobTemplate.json   |

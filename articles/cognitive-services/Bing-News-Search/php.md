@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383077"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
 
@@ -24,7 +24,7 @@ ms.locfileid: "68423705"
 
 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * PHP 5.6 或更高版本
 
@@ -37,9 +37,10 @@ ms.locfileid: "68423705"
 [必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
 
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
-3. 添加下面提供的代码。
+2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
+3. 添加以下提供的代码。
 4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
+5. 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 5. 运行该程序。
 
 ```php

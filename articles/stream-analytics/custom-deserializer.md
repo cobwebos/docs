@@ -1,19 +1,18 @@
 ---
 title: 教程 - 用于 Azure 流分析云作业的自定义 .NET 反序列化程序
 description: 本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443691"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>教程：为 Azure 流分析自定义 .NET 反序列化程序
 
@@ -21,7 +20,7 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
 
 本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为协议缓冲区创建自定义反序列化程序。
@@ -29,7 +28,7 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
 > * 将流分析作业配置为使用自定义反序列化程序。
 > * 在本地运行流分析作业以测试自定义反序列化程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -81,7 +80,7 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
    |-------|---------------|
    |源|Blob 存储|
    |资源|选择当前帐户中的数据源|
-   |Subscription|<你的订阅>|
+   |订阅|<你的订阅>|
    |存储帐户|<你的存储帐户>|
    |容器|<你的存储容器>|
    |事件序列化格式|其他（Protobuf、XML、专有…）|

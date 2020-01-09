@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: 用于使用可认领 VM 的方案
           href: devtest-lab-use-claim-capabilities.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 配置实验室
       items:
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: 缩放实验室
           href: devtest-lab-scale-lab.md
+        - name: 为实验室 VM 启用托管标识
+          href: enable-managed-identities-lab-vms.md
         - name: 管理虚拟机基础映像
           items:
             - name: 配置 Azure 市场映像
@@ -241,7 +243,7 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: 排查项目失败问题
           href: devtest-lab-troubleshoot-artifact-failure.md
-- name: 引用
+- name: 参考
   items:
     - name: CLI
       href: /cli/azure/lab

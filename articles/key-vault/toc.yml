@@ -68,7 +68,7 @@
   items:
     - name: 基本概念
       href: basic-concepts.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全概述
           href: overview-security.md
@@ -100,13 +100,13 @@
           href: create-certificate.md
         - name: 监视和管理证书创建
           href: create-certificate-scenarios.md
-- name: 操作指南
+- name: 操作方法指南
   items:
-    - name: 安全
+    - name: 安全性
       items:
         - name: 建议
           href: security-recommendations.md
-    - name: Authentication
+    - name: Authenticate
       items:
         - name: 使用应用服务托管标识
           href: managed-identity.md
@@ -138,8 +138,10 @@
       items:
         - name: 使用 Spring Boot Starter
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
-- name: 引用
+- name: 参考
   items:
+    - name: Key Vault REST 错误代码
+      href: rest-error-codes.md
     - name: Azure PowerShell
       href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
     - name: Azure CLI

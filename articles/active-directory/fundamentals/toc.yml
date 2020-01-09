@@ -8,16 +8,18 @@
     - name: Azure Active Directory 中的新增功能
       href: whats-new.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 访问门户并创建租户
       href: active-directory-access-create-new-tenant.md
     - name: 查看包含已分配成员的组
       href: active-directory-groups-view-azure-portal.md
 - name: 概念
+  expanded: true
   items:
     - name: 标识安全分数
       href: identity-secure-score.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 启用 MFA
           href: concept-fundamentals-mfa-get-started.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: 用于欧盟的标识数据存储
       href: active-directory-data-storage-eu.md
+    - name: 用于澳大利亚的标识数据存储
+      href: active-directory-data-storage-australia.md
     - name: Microsoft 365 政府版中的新增功能
       href: whats-new-microsoft-365-government.md
     - name: Azure AD 操作参考
@@ -51,7 +55,7 @@
           href: active-directory-ops-guide-govern.md
         - name: 操作
           href: active-directory-ops-guide-ops.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 组织
@@ -97,6 +101,7 @@
         - name: 还原已删除的用户
           href: active-directory-users-restore.md
 - name: 资源
+  expanded: true
   items:
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md

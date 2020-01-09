@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672197"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681155"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -24,11 +24,15 @@ ms.locfileid: "74672197"
 
 在创建应用时可以创建一个空的应用服务计划，也可以创建一个计划。
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**新建** > " **Web 应用**或其他应用服务应用类型。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
 
-   ![在 Azure 门户中创建应用。][createWebApp]
+   ![在 Azure 门户中创建资源。][createResource] 
 
-2. 配置应用服务计划之前，请配置 "**实例详细信息**" 部分。 设置（例如**发布**和**操作系统**）可以更改应用服务计划的可用定价层。 **区域**确定应用服务计划的创建位置。
+1. 选择 "**新建**" > **Web 应用**或其他应用服务应用类型。
+
+   ![在 Azure 门户中创建应用。][createWebApp] 
+
+2. 配置应用服务计划之前，请配置 "**实例详细信息**" 部分。 设置（例如**发布**和**操作系统**）可以更改应用服务计划的可用定价层。 **区域**确定应用服务计划的创建位置。 
    
 3. 在 "**应用服务计划**" 部分中，选择一个现有计划，或选择 **"新建"** 创建一个计划。
 
@@ -48,7 +52,7 @@ ms.locfileid: "74672197"
 > 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，所有使用相同资源组和区域组合创建的计划都会部署到相同的 Web 空间中。 比方说，如果在资源组 A 和区域 B 中创建了计划，则后续在资源组 A 和区域 B 中创建的所有计划都会部署到相同的 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
 > 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到要移动的应用。
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"，并选择要移动的应用。
 
 2. 在左侧菜单中，选择 "**更改应用服务计划**"。
 
@@ -97,3 +101,4 @@ ms.locfileid: "74672197"
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

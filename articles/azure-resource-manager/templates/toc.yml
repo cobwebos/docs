@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: 创建模板 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: 创建模板 - Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: 创建模板 - IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: 教程
   items:
     - name: 初学者
@@ -101,8 +97,9 @@
   items:
     - name: 创建模板
       items:
-        - name: 使用 VS Code
-          href: use-vs-code-to-create-template.md
+        - name: 模板文件结构
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
         - name: parameters
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: 管理组级资源
           href: deploy-to-management-group.md
+    - name: 使用创作工具
+      items:
+        - name: VS Code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: 部署模板
       items:
         - name: 部署 - 门户
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: 参考
   items:
-    - name: 模板文件结构
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: 模板参考
       href: /azure/templates/
     - name: 模板函数

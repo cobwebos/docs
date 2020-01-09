@@ -71,8 +71,12 @@
       href: howto-develop-solution.md
 - name: 参考
   items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: 数字孪生
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+    - name: 数字孪生服务
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+    - name: 数字孪生模型存储库
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
     - name: 生成 REST 安全令牌
       href: howto-generate-sas-token.md
 - name: 相关内容

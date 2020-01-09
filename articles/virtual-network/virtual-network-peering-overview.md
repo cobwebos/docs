@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 59854d7d46f533510bea97a6845554fc0ce83dbb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328344"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646738"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -39,7 +39,7 @@ Azure 支持以下类型的对等互连：
 
 对等虚拟网络之间的网络流量是专用的。 虚拟网络之间的流量仅限于 Microsoft 主干网络。 在虚拟网络之间通信不需公共 Internet、网关或加密。
 
-## <a name="connectivity"></a>连接
+## <a name="connectivity"></a>连接性
 
 对于对等互连虚拟网络，任一虚拟网络中的资源可以直接与对等互连虚拟网络中的资源进行连接。
 
@@ -48,7 +48,7 @@ Azure 支持以下类型的对等互连：
 对等互连虚拟网络中虚拟机之间的流量直接通过 Microsoft 主干基础结构路由，而不通过网关或公共 Internet 路由。
 
 可以在虚拟网络中应用网络安全组，阻止对其他虚拟网络或子网的访问。
-配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果打开对等互连虚拟网络之间的完全连接，则可以应用网络安全组来阻止或拒绝特定访问。 默认选项为 "完全连接"。 若要详细了解网络安全组，请参阅[安全组](security-overview.md)。
+配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果打开对等互连虚拟网络之间的完全连接，则可以应用网络安全组来阻止或拒绝特定访问。 默认选项为 "完全连接"。 若要了解有关网络安全组的详细信息，请参阅[安全组](security-overview.md)。
 
 ## <a name="service-chaining"></a>服务链
 
@@ -91,13 +91,13 @@ Azure 支持以下类型的对等互连：
 * 一个虚拟网络中的资源无法与全局对等互连虚拟网络中的基本内部负载均衡器（ILB）的前端 IP 地址通信。
 * 使用基本负载均衡器的某些服务不能通过全局虚拟网络对等互连。 有关详细信息，请参阅与[全局 VNet 对等互连和负载均衡器相关的约束是什么？](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
-有关详细信息，请参阅[要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解有关支持的对等互连数量的详细信息，请参阅[网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+有关详细信息，请参阅[要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解有关支持的对等互连数量的详细信息，请参阅[网络限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="permissions"></a>权限
 
 若要了解创建虚拟网络对等互连所需的权限，请参阅[权限](virtual-network-manage-peering.md#permissions)。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 使用虚拟网络对等互连连接的入口和出口流量需要支付极少的费用。 有关详细信息，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
 
