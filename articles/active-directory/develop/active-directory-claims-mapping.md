@@ -1,5 +1,5 @@
 ---
-title: 为 Azure AD 租户应用自定义声明
+title: 自定义 Azure AD 租户应用声明（Powershell）
 titleSuffix: Microsoft identity platform
 description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918417"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531065"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "74918417"
 
 有一些可定义如何以及何时在令牌中使用它们的特定声明集。
 
-| 声明集 | 描述 |
+| 声明集 | Description |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
 | 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
@@ -158,12 +158,12 @@ ms.locfileid: "74918417"
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| 角色 (role) |
 | 角色 |
 | scope |
 | scp |
 | sid |
-| signature |
+| 签名 |
 | signin_state |
 | src1 |
 | src2 |
@@ -285,7 +285,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| Source | ID | 描述 |
+| 源 | ID | Description |
 |-----|-----|-----|
 | 用户 | surname | 姓氏 |
 | 用户 | givenname | 名字 |
@@ -359,7 +359,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
-|TransformationMethod|预期输入|预期输出|描述|
+|TransformationMethod|预期输入|预期输出|Description|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
 |ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
@@ -385,7 +385,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|Source|ID|描述|
+|源|ID|Description|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
@@ -411,12 +411,18 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 | TransformationMethod | 限制 |
 | ----- | ----- |
-| ExtractMailPrefix | None |
+| ExtractMailPrefix | 无 |
 | Join | 所联接的后缀必须是资源租户的已验证域。 |
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。  启用了声明映射的应用必须通过将 `appid={client_id}` 追加到[OpenID connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来检查其令牌签名密钥的特殊 URI。  
+自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure Powershell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure Powershell cmdlet 的详细信息，请单击[此处](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到[OpenID connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是应使用的 OpenID Connect 元数据文档的格式： 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>跨租户方案
 

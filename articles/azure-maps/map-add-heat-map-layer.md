@@ -9,23 +9,27 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f7115e7c8b95efd0e3bbc8a788528878c2d1f092
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b0d07f18682bf39558180753de38a9c5ff106ee3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408521"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
-热度地图，也称为点密度地图，是一种数据可视化类型，它们使用一系列颜色来表示数据密度。 它们通常用于在地图上显示数据“热点”，是呈现大型点数据集的好方法。  例如，将地图视图中的数十个点渲染为符号，涵盖大多数地图区域，并导致许多符号彼此重叠，这使得难以充分了解数据。 然而，将相同数据集可视化为热度地图可以很容易地看到点数据最密集的位置以及相对于其他区域的密度。 很多情况都会用到热度地图。 以下是几个示例；
+热度地图也称为点密度图，是一种用于通过颜色范围表示数据密度的数据可视化。 它们通常用于在地图上显示数据 "热点"，这是一种呈现大型点数据集的好方法。 
 
-- 温度数据通常表示为热度地图，因为它提供了两个数据点之间温度的近似值。
-- 将噪声传感器数据绘制成热度地图不仅可以显示传感器所在位置的噪声的强度，而且还可以洞察一段距离内的消散情况。 任何一个站点的噪声水平可能并不高，但是如果来自多个传感器的噪声覆盖区域重叠，那么该重叠区域可能会产生更高的噪声水平，从而显示在热度地图中。
-- 可视化一个 GPS 跟踪，其中包含速度作为加权高度地图，其中每个数据点的强度基于速度，这是一个很好的方法，可查看车辆的加速位置。
+例如，在地图视图中呈现成千上万的点，因为符号涵盖了大部分的地图区域。 这可能会导致许多符号彼此重叠，从而难以充分理解数据。 但是，将此数据集可视化为热度地图，可以轻松地查看点数据是 densest 的位置，而将相对密度显示到其他区域。
+
+可以在许多不同的方案中使用热度地图，其中包括：
+
+- **温度数据**：提供两个数据点之间温度的近似值。
+- **噪音传感器的数据**：不仅显示传感器的噪音强度，而且还可以提供距离内的散发的见解。 任何一个站点的噪音级别可能不是高。 但如果多个传感器的噪音范围区域重叠，则这种重叠区域可能会出现更高的干扰级别，因此在热度地图中会出现这种情况。
+- **GPS 跟踪**：将速度作为加权高度地图，其中每个数据点的强度基于速度。 例如，这提供了一种方法来查看车辆的加速位置。
 
 > [!TIP]
-> 默认情况下，热度地图层将呈现数据源中所有几何图形的坐标。 若要将该层限制为仅呈现点几何特征，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` （如果还需要包含 MultiPoint 功能）。
+> 默认情况下，热度地图层会呈现数据源中所有几何的坐标。 若要将该层限制为仅呈现点几何特征，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']`。 如果还想要包含 MultiPoint 功能，请将层的 `filter` 属性设置为 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`。
 
 <br/>
 
@@ -33,16 +37,16 @@ ms.locfileid: "74484307"
 
 ## <a name="add-a-heat-map-layer"></a>添加热度地图层
 
-若要将点数据源呈现为热度地图，请将数据源传递到 `HeatMapLayer` 类的实例中，并将其添加到地图，如下所示。
+若要将点的数据源呈现为热度地图，请将数据源传递到 `HeatMapLayer` 类的实例中，并将其添加到地图中。
 
-在下面的代码中，每个热度点在所有缩放级别上都有10个像素的半径。 当向地图添加热度地图层时，此示例会将其插入到标签层下方，以创建更好的用户体验，因为标签在热度地图上方清晰可见。 本示例中的数据源自[USGS 地震危险计划](https://earthquake.usgs.gov/)，表示过去30天内发生的重大地震。
+在下面的代码中，每个热度点在所有缩放级别上都有10个像素的半径。 向地图添加热度地图层时，此示例会将其插入到标签层下方，以创建更好的用户体验。 标签在热度地图上方清晰可见。 本示例中的数据源自[USGS 地震危险计划](https://earthquake.usgs.gov/)，表示过去30天内发生的重大地震。
 
 ```javascript
 //Create a data source and add it to the map.
 var datasource = new atlas.source.DataSource();
 map.sources.add(datasource);
 
-//Load a data set of points, in this case earthquake data from the USGS.
+//Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
 //Create a heatmap and add it to the map.
@@ -52,39 +56,49 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 }), 'labels');
 ```
 
-下面是上述功能的完整运行代码示例。
+下面是上述代码的完整运行代码示例。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>简单热度地图层</a>。
+<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
 </iframe>
 
-## <a name="customizing-the-heat-map-layer"></a>自定义热度地图层
+## <a name="customize-the-heat-map-layer"></a>自定义热度地图层
 
-前面的示例通过设置半径和不透明度选项来自定义热度地图。 热度地图层为自定义提供了若干选项；
+前面的示例通过设置半径和不透明度选项来自定义热度地图。 热度地图层提供了用于自定义的几个选项，包括：
 
-* `radius`：定义要在其中呈现每个数据点的像素半径。 半径可以设置为一个固定数字或表达式。 使用表达式时，可以根据缩放级别（显示为表示地图上一致的空间区域，如5英里半径）缩放半径。
-* `color`：指定如何着色热度地图。 颜色渐变通常用于热度地图，可通过 `interpolate` 表达式来实现。 使用用于着色的 `step` 表达式，热度地图会将密度直观地分解为多个范围，更类似于等高线或雷达样式地图。 这些调色板定义了从最小到最大密度值的颜色。 热度地图的颜色值被指定为 `heatmap-density` 值上的表达式。 内插表达式中索引0处的颜色或步骤表达式的默认颜色定义了没有数据并可用于定义背景色的区域的颜色。 很多用户喜欢将此值设置为透明或半透明黑色。 下面是颜色表达式示例；
+* `radius`：定义要在其中呈现每个数据点的像素半径。 可以将 radius 设置为固定数字或表达式。 通过使用表达式，可以根据缩放级别缩放半径，并在地图上表示一致的空间区域（例如，5英里半径）。
+* `color`：指定如何着色热度地图。 颜色渐变是热度地图的一项常见功能，您可以使用 `interpolate` 表达式来实现效果。 你还可以使用 `step` 表达式着色热度地图，将密度直观地分解为类似于等高线或雷达图样式图的范围。 这些调色板定义了从最小到最大密度值的颜色。 
 
-| 内插颜色表达式 | 递阶色表达式 | 
-|--------------------------------|--------------------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“内插”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“线性”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0，“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“紫色”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5，“#fb00fb”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;1，“#00c3ff”<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“递阶”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“海军蓝”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25 "，" 绿色 "<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50、"黄色"、<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75 "red"<br/>\] | 
+  将热度地图的颜色值指定为 `heatmap-density` 值的表达式。 内插表达式中索引0处的颜色或步骤表达式的默认颜色定义了没有数据的区域的颜色。 您可以使用此定义背景色。 通常，此值设置为透明或半透明黑色。 
+   
+  下面是颜色表达式的示例：
+
+  | 内插颜色表达式 | 阶颜色表达式 | 
+  |--------------------------------|--------------------------|
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“内插”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“线性”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0，“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“紫色”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5，“#fb00fb”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;1，“#00c3ff”<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“递阶”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“海军蓝”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25 "，" 绿色 "<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50、"黄色"、<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75 "red"<br/>\] |   
 
 - `opacity`：指定热度地图层的不透明或透明程度。
-- `intensity`：对每个数据点的权重应用乘数以增加热度地图的总体强度，并有助于使数据点权重的小差异变得更容易可视化。
-- `weight`：默认情况下，所有数据点的权重都为1，因此，所有数据点都相等。 权重选项充当乘数，可以设置为数字或表达式。 如果一个数字被设置为权重，比如 2，它就相当于将每个数据点放在地图上两次，从而使密度加倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。 但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 以地震数据为例，每个数据点表示一个地震。 每个地震数据点的重要指标是震级值。 地震时时刻刻都在发生，但大多数震级都很低，甚至感觉不到。 如果在表达式中使用数量级值将权重分配给每个数据点，则可在热度地图中更好地表示地震。
-- 除了基本层选项；最小/最大缩放、可见和筛选，如果要更新数据源，还有一个 `source` 选项；如果数据源是矢量图块源，还有一个 `source-layer` 选项。
+- `intensity`：对每个数据点的权重应用乘数以增加热度地图的总体亮度。 这有助于使数据点权重的细微差异变得更加直观。
+- `weight`：默认情况下，所有数据点的权重都为1，并且具有相同的加权。 权重选项用作乘数，你可以将其设置为数字或表达式。 如果将数字（例如，2）设置为权重，则它相当于将每个数据点置于地图两次，从而使密度翻倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。 
 
-下面是一个工具，可测试不同热度地图层选项。
+  但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点表示地震。 每个地震数据点具有的一个重要指标是一个数量级值。 地震始终发生，但大多数情况下都是很低的，甚至不会感觉。 通过使用表达式中的 "量值" 将权重分配给每个数据点，可以更好地表示热图中地震的重要性。
+- `source` 和 `source-layer`：允许更新数据源。
+
+以下工具用于测试不同的热度地图层选项。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>热度地图层选项</a>。
+<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一致的 zoomable 热度地图
 
-默认情况下，热度地图层中呈现的数据点的半径对于所有缩放级别都具有固定像素半径。 放大地图后，数据聚合在一起，热度地图层看起来不同。 `zoom` 表达式可用于缩放每个缩放级别的半径，使每个数据点都涵盖地图的同一物理区域。 这会使热度地图层的外观更具静态和一致性。 地图的每个缩放级别都具有两倍于与上一个缩放级别垂直和水平的像素。 缩放半径以使每个缩放级别翻倍，将创建一个在所有缩放级别上都保持一致的热度地图。 这可以通过将 `zoom` 与基本 2 `exponential interpolation` 表达式结合使用来完成，如下面的示例中所示。 缩放地图，查看热度地图如何随缩放级别一起缩放。
+默认情况下，热度地图层中呈现的数据点的半径对于所有缩放级别都具有固定像素半径。 缩放地图时，数据聚合在一起，热度地图层看起来不同。 
+
+使用 `zoom` 表达式可缩放每个缩放级别的半径，使每个数据点都涵盖地图的同一物理区域。 这使得热度地图层的外观更具静态和一致性。 地图的每个缩放级别都具有两倍于与上一个缩放级别垂直和水平的像素。 
+
+缩放半径，使每个缩放级别翻倍，从而创建一个在所有缩放级别上都保持一致的热度地图。 为此，请将 `zoom` 与 base 2 `exponential interpolation` 表达式一起使用，如下面的示例中所示。 缩放地图，查看热度地图如何随缩放级别一起缩放。
 
 <br/>
 
@@ -93,13 +107,13 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 </iframe>
 
 > [!TIP]
-> 通过在数据源上启用聚类分析，相邻的点可以作为一个群集点组合在一起。 每个群集点计数可以用作热度地图的权重表达式，并显著减少须呈现的点数。 群集的点计数存储在点功能的 `point_count` 属性中，如下所示。 
+> 在数据源上启用群集功能时，彼此接近的点将作为一个聚集点组合在一起。 可以使用每个分类的点计数作为热度地图的权重表达式，并大大减少需要呈现的点的数量。 群集的点计数存储在点功能的 `point_count` 属性中： 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-> 如果聚类分析半径只有几个像素，那么呈现的视觉效果几乎没有差异。 更大的半径会将更多点组合到每个群集并提高热度地图的性能，但具有的差异将会更明显。
+> 如果聚类分析半径只有几个像素，则呈现中的视觉差别很小。 更大的 radius 将更多的点分组到每个群集中，并提高热度地图的性能。
 
 ## <a name="next-steps"></a>后续步骤
 
