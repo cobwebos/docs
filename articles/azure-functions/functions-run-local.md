@@ -7,7 +7,7 @@ ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
 ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/06/2020
 ms.locfileid: "75667535"

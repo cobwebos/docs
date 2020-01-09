@@ -11,7 +11,7 @@ author: lobrien
 ms.date: 11/06/2019
 ms.openlocfilehash: 2b0343527aa97abfd1b239b4588806e79e0b820d
 ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/03/2020
 ms.locfileid: "75644318"

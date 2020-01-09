@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351342"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -58,7 +58,7 @@ ms.locfileid: "74851768"
 
 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 可以通过两种方法通过 Azure 门户添加策略。 
 
@@ -67,9 +67,9 @@ ms.locfileid: "74851768"
 
 #### <a name="azure-portal-list-view"></a>Azure 门户列表视图
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 选择 "**所有资源**"，然后选择存储帐户。
+2. 在 Azure 门户中，搜索并选择存储帐户。 
 
 3. 在 " **Blob 服务**" 下，选择 "**生命周期管理**" 以查看或更改你的规则。
 
@@ -88,9 +88,9 @@ ms.locfileid: "74851768"
 9. 选择 "**添加**" 以添加新策略。
 
 #### <a name="azure-portal-code-view"></a>Azure 门户代码视图
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 选择 "**所有资源**"，然后选择存储帐户。
+2. 在 Azure 门户中，搜索并选择存储帐户。
 
 3. 在 " **Blob 服务**" 下，选择 "**生命周期管理**" 以查看或更改策略。
 
@@ -128,7 +128,7 @@ ms.locfileid: "74851768"
 
 6. 有关此 JSON 示例的详细信息，请参阅 "[策略](#policy)" 和 "[规则](#rules)" 部分。
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 以下 PowerShell 脚本可用于将策略添加到存储帐户。 必须用资源组名称初始化 `$rgname` 变量。 必须用您的存储帐户名称初始化 `$accountName` 变量。
 
@@ -234,8 +234,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 | 参数名称 | 参数类型 | 说明 | 需要 |
 |----------------|----------------|-------|----------|
-| `name`         | 字符串 |规则名称最多可以包含256个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | 正确 |
-| `enabled`      | 布尔 | 一个可选的布尔值，允许暂时禁用规则。 如果未设置，则默认值为 true。 | 错误 | 
+| `name`         | String |规则名称最多可以包含256个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | 正确 |
+| `enabled`      | Boolean | 一个可选的布尔值，允许暂时禁用规则。 如果未设置，则默认值为 true。 | 错误 | 
 | `type`         | 枚举值 | 当前有效类型为 `Lifecycle`。 | 正确 |
 | `definition`   | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | 正确 |
 
@@ -289,7 +289,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 当前版本支持 `blockBlob`。 | 是 |
-| prefixMatch | 要匹配的前缀字符串数组。 每个规则最多可定义10个前缀。 前缀字符串必须以容器名称开头。 例如，如果要匹配规则 `https://myaccount.blob.core.windows.net/container1/foo/...` 下的所有 blob，则 `container1/foo`prefixMatch。 | 如果未定义 prefixMatch，则规则将应用于存储帐户中的所有 blob。  | No |
+| prefixMatch | 要匹配的前缀字符串数组。 每个规则最多可定义10个前缀。 前缀字符串必须以容器名称开头。 例如，如果要匹配规则 `https://myaccount.blob.core.windows.net/container1/foo/...` 下的所有 blob，则 `container1/foo`prefixMatch。 | 如果未定义 prefixMatch，则规则将应用于存储帐户中的所有 blob。  | 否 |
 
 ### <a name="rule-actions"></a>规则操作
 
@@ -308,7 +308,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 运行条件基于年龄。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作运行条件             | 条件值                          | 描述                             |
+| 操作运行条件             | 条件值                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 blob 操作的条件     |
 | daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的条件 |
@@ -429,7 +429,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **我创建了一个新策略，为什么这些操作不会立即运行？**  
 平台每天运行一次生命周期策略。 配置策略后，第一次运行某些操作可能需要长达24小时。  

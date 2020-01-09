@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426990"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 认知搜索中实现搜索流量分析
 
@@ -167,9 +167,7 @@ ms.locfileid: "74932562"
 
 ## <a name="3---analyze-in-power-bi"></a>3 - 在 Power BI 中进行分析
 
-检测应用并验证应用程序是否已正确连接到 Application Insights 后，可以使用 Azure 认知搜索为 Power BI 桌面创建的预定义模板。 
-
-Azure 认知搜索提供监视[Power BI 内容包](https://app.powerbi.com/getdata/services/azure-search)，以便分析日志数据。 内容包添加预先定义的图表和表，它们可用于分析为搜索流量分析捕获的其他数据。 有关详细信息，请参阅[内容包帮助页](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)。 
+检测应用并验证应用程序已正确连接到 Application Insights 后，下载预定义的报表模板来分析 Power BI desktop 中的数据。 该报表包含可用于分析为搜索流量分析捕获的其他数据的预定义图表和表。 
 
 1. 在 Azure 认知搜索仪表板的左侧导航窗格中的 "**设置**" 下，单击 "**搜索流量分析**"。
 
@@ -179,7 +177,7 @@ Azure 认知搜索提供监视[Power BI 内容包](https://app.powerbi.com/getda
 
 2. 在同一页上，单击 "**下载 Power BI 报表**"。
 
-3. 该报表将在 Power BI Desktop 中打开，并且会提示你连接到 Application Insights。 可以在 Application Insights 资源的 Azure 门户页中找到此信息。
+3. 报表在 Power BI Desktop 中打开，系统会提示您连接到 Application Insights 并提供凭据。 可以在 Application Insights 资源的 Azure 门户页中找到连接信息。 对于 "凭据"，请提供用于门户登录的相同用户名和密码。
 
    ![连接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "连接到 Application Insights")
 
@@ -189,11 +187,8 @@ Azure 认知搜索提供监视[Power BI 内容包](https://app.powerbi.com/getda
 
 指标包括以下各项：
 
-* 单击率 (CTR)：单击特定文档的用户占总搜索次数的比率。
+* 搜索量和最常用的术语-文档对：导致相同文档单击的术语，按单击顺序排序。
 * 无单击的搜索：查询次数最多但未记录任何单击的词
-* 单击次数最多的文档：过去24 小时、7 天和 30 天内单击次数最多的文档，按 ID 显示。
-* 常用术语-文档对：导致同一文档被单击的词，按单击次数排序。
-* 时间 - 单击：自搜索查询以来按时间存储的单击次数
 
 以下屏幕截图显示了用于分析搜索流量的内置报表和图表。
 

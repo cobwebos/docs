@@ -14,7 +14,7 @@ ms.date: 12/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2a2e328c5cf65aa700676a8f6af78cc342f2f51a
 ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/06/2020
 ms.locfileid: "75681440"

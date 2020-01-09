@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5975f334eae543ea0f6ddc182170ae185ac5397a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466869"
 ---
 若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 这些屏幕截图作为示例提供。 请务必替换成自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -22,7 +22,7 @@ ms.locfileid: "74829183"
 >
 >
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  在 "Azure 门户" 菜单或从 "**主页**" 上，选择 "**创建资源**"。 此时会打开一个“新建”页面。
+1. 登录 [Azure 门户](https://portal.azure.com)。  在 "Azure 门户" 菜单或从 "**主页**" 上，选择 "**创建资源**"。 此时会打开一个“新建”页面。
 
 2. 在 **"搜索应用商店"** 中，输入 "*虚拟网络*"，并从结果中选择 "**虚拟网络**"。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74829183"
 5. **名称**：输入虚拟网络的名称。
 6. **地址空间**：输入地址空间。 如果有多个要添加的地址空间，请添加第一个地址空间。 可在创建 VNet 后再添加其他地址空间。
 7. **订阅**：确认列出的订阅是正确的。 可以使用下拉列表更改订阅。
-8. **资源组**：选择现有的资源组，或键入新资源组的名称以创建新的资源组。 如果要创建新组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
+8. **资源组**：选择现有的资源组，或键入新资源组的名称以创建新的资源组。 如果要创建新组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/management/overview.md#resource-groups)。
 9. **位置**：选择 VNet 的位置。 该位置确定要部署到此 VNet 的资源所在的位置。
 10. **子网**：添加子网名称和子网地址范围。 可在创建 VNet 后再添加其他子网。
 11. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，并单击“创建”。
