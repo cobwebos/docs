@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f9861faeaf4ab4049de7404a9e6f8b59a9445fe5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452190"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834427"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
 放置策略是可用于在某些不常见的特定情况下控制服务位置的附加规则。 这些情况的一些示例包括：

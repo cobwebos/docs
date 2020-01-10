@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
-    - name: 强制执行 TLS 1.2
+    - name: TLS 支持
+      href: iot-hub-tls.md
+    - name: TLS 1.0 和 1.1 弃用
       href: tls-1.2-everywhere.md
     - name: 消息扩充概述
       href: iot-hub-message-enrichments-overview.md

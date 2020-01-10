@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901329"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834390"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -29,13 +29,19 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 
 ## <a name="feature-announcements"></a>功能公告
 
-### <a name="december-2019"></a>2019年12月
+### <a name="january-2020"></a>2020 年 1 月
+
++ [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用的是 REST，则可以使用 `api-version=2019-05-06`访问该功能。 对于托管代码，正确的包仍然是[.NET SDK 版本 8.0-预览](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
+
++ 搜索服务终结点上*受限制的 IP 访问和专用终结点（预览）* 现已在**api 版本 = 2019-10-01.txt-预览版**中提供。 您可以使用[创建或更新](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)管理 REST API 中的新**IpRule**和**NetworkRuleSet**属性设置安全终结点。 有关 API 版本和区域可用性的详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+
+### <a name="december-2019"></a>2019 年 12 月
 
 + "[创建应用" （预览版）](search-create-app-portal.md)是门户中的一个新向导，用于生成可下载的 HTML 文件。 该文件附带嵌入的脚本，该脚本可呈现操作 "localhost" 样式的 web 应用，并将其绑定到搜索服务中的索引。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和 typeahead 查询支持。 您可以将 HTML 脱机修改为扩展或自定义工作流或外观。
 
 ### <a name="november-2019---ignite-conference"></a>2019年11月-Ignite 会议
 
-+ 在对扩充管道进行修改时，可以通过[增量索引（预览版）](cognitive-search-incremental-indexing-conceptual.md)来选择要重新处理的步骤。 如果你具有以前分析的图像内容，则增量索引会很有用。 将存储成本高昂分析的输出，然后将其用作附加索引或扩充的基础。
++ [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)将缓存和 statefullness 添加到扩充管道，使你可以处理特定的步骤或阶段，而不会丢失已处理的内容。 以前，对扩充管道进行的任何更改都需要完全重新生成。 对于增量扩充，会保留成本高昂分析的输出，尤其是图像分析。
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->

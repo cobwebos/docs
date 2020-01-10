@@ -12,23 +12,21 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 97f5463ee4348f8e17b8cf571262c361908d7265
-  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+  ms.openlocfilehash: c4209c1f8f7d82e1d78eb84c9ab92bc061ffa47b
+  ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/31/2019
-  ms.locfileid: "75563856"
+  ms.lasthandoff: 01/10/2020
+  ms.locfileid: "75835054"
 landingContent:
 - title: 关于 Azure 安全基准
   linkLists:
   - linkListType: overview
     links:
-    - text: 概述
-      url: overview.md
-    - text: 安全控制简介
+    - text: Azure 安全基准简介
       url: introduction.md
-    - text: 云中责任分担
-      url: ../fundamentals/shared-responsibility.md
+    - text: Azure 安全控制概述
+      url: overview.md
 - title: 安全控制
   linkLists:
   - linkListType: overview
@@ -51,7 +49,7 @@ landingContent:
     links:
     - text: Azure 安全基础知识
       url: ../fundamentals/index.yml
+    - text: 云中责任分担
+      url: ../fundamentals/shared-responsibility.md
     - text: Azure 安全中心
       url: ../../security-center/index.yml
-    - text: Azure Key Vault
-      url: ../../key-vault/index.yml

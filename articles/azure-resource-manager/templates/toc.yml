@@ -44,6 +44,9 @@
         - name: 设置资源部署顺序
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: 使用部署脚本
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: 使用条件
           href: template-tutorial-use-conditions.md
         - name: 集成 Key Vault
@@ -122,6 +125,9 @@
               href: add-resource-extensions.md
         - name: Outputs
           href: template-outputs.md
+        - name: 部署脚本
+          displayName: custom script
+          href: deployment-script-template.md
         - name: 将模板模块化
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

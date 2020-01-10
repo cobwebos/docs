@@ -22,7 +22,7 @@
           href: cluster-administration-cluster-admin-role.md
         - name: 2 - 管理安全上下文约束
           href: cluster-administration-security-context-constraints.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 设置 Azure Red Hat OpenShift 开发环境
@@ -37,7 +37,17 @@
       href: howto-deploy-prometheus.md
     - name: 在 Azure Red Hat OpenShift 群集中管理项目
       href: howto-manage-projects.md
-- name: 引用
+    - name: 监视和日志记录
+      items:
+        - name: 适用于容器的 Azure Monitor（预览版）
+          items:
+            - name: 配置适用于容器的 Azure Monitor
+              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+              maintainContext: true
+            - name: 禁用适用于容器的 Azure Monitor
+              href: ../azure-monitor/insights/container-insights-optout-openshift.md
+              maintainContext: true
+- name: 参考
   items:
     - name: Azure Red Hat OpenShift CLI
       href: /cli/azure/openshift

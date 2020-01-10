@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666029"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780056"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -28,10 +28,12 @@ Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的�
 
 | 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| 不带 ESP 的 HDInsight 3。6 | 是，仅2。3| 是 | No | No | No | No | No |
-| 不带 ESP 的 HDInsight 4。0 | 是 | 是 | No | No | No | No | No |
-| HDInsight 3.6 与 ESP | 是，仅2。3 | 是 | No | No | No | No | No |
-| HDInsight 4.0 与 ESP | 是 | 是 | No | No | No | No | No |
+| 不带 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不带 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| HDInsight 3.6 与 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| HDInsight 4.0 与 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+
+\* HBase 群集只能配置为基于计划的缩放，而不能配置为基于加载的。
 
 ## <a name="how-it-works"></a>如何运作
 
@@ -88,7 +90,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
     ![启用辅助节点基于负载的自动缩放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义群集创建时的初始大小。 辅助角色节点的最小数目应设置为三个或更多。 . 将群集缩放到小于三个节点可能导致其在安全模式下停滞，因为文件复制不足。 有关详细信息，请参阅[进入安全模式停滞]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)状态。
+工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义群集创建时的初始大小。 辅助角色节点的最小数目应设置为三个或更多。 。 将群集缩放到小于三个节点可能导致其在安全模式下停滞，因为文件复制不足。 有关详细信息，请参阅[进入安全模式停滞]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)状态。
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>使用基于计划的自动缩放创建群集
 
@@ -208,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 请参阅上一节，了解如何[启用基于负载的自动缩放](#load-based-autoscaling)以获取所有负载参数的完整说明。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或计划的缩放
 

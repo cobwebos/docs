@@ -1,5 +1,5 @@
 ---
-title: Azure 自动化 Desired State Configuration (DSC) 问题疑难解答
+title: Azure 自动化所需状态配置（DSC）疑难解答
 description: 本文提供有关 Desired State Configuration (DSC) 疑难解答的信息
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951456"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834259"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化所需状态配置（DSC）的问题
 
 本文提供有关 Desired State Configuration (DSC) 问题疑难解答的信息。
 
@@ -270,7 +270,7 @@ One or more errors occurred.
 
 按照以下步骤注册节点。
 
-* Windows-[本地或 Azure/AWS 以外的云中](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)的 windows 计算机。
+* Windows-[本地或 Azure/AWS 以外的云中](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)的 windows 计算机。
 * Linux-[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
 
 ### <a name="agent-has-a-problem"></a>方案：错误消息-"预配失败"

@@ -1,5 +1,5 @@
 ---
-title: 创建基于路由的 Azure VPN 网关：CLI | Microsoft Docs
+title: 创建基于路由的 Azure VPN 网关： CLI
 description: 快速了解如何使用 CLI 创建 VPN 网关
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f0cc1d63f8560399d1d71c8d010c37bd2c5e387
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391100"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778730"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关
 
@@ -145,9 +145,9 @@ az network vnet-gateway show \
 }
 ```
 
-### <a name="view-the-public-ip-address"></a>查看公用 IP 地址
+### <a name="view-the-public-ip-address"></a>查看公共 IP 地址
 
-若要查看分配给网关的公用 IP 地址，请使用以下示例：
+若要查看分配给网关的公共 IP 地址，请使用以下示例：
 
 ```azurecli-interactive
 az network public-ip show \
@@ -155,7 +155,7 @@ az network public-ip show \
   --resource-group TestRG11
 ```
 
-与 **ipAddress** 字段关联的值是 VPN 网关的公用 IP 地址。
+与 **ipAddress** 字段关联的值是 VPN 网关的公共 IP 地址。
 
 示例响应:
 
