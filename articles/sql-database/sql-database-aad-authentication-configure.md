@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901400"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732563"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
@@ -190,7 +190,7 @@ ms.locfileid: "74901400"
 
 用于预配和管理 SQL 托管实例 Azure AD 管理员的 cmdlet：
 
-| Cmdlet 名称 | 描述 |
+| Cmdlet 名称 | Description |
 | --- | --- |
 | [AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |为当前订阅中的 SQL 托管实例预配 Azure AD 管理员。 （必须来自当前订阅）|
 | [AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |删除当前订阅中 SQL 托管实例的 Azure AD 管理员。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 还可以通过调用以下 CLI 命令，为 SQL 托管实例预配 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | Description |
 | --- | --- |
 |[az sql mi ad-管理创建](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 为 SQL 托管实例预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql mi ad-管理员删除](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
@@ -281,7 +281,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用于预配和管理 Azure SQL 数据库和 Azure SQL 数据仓库 Azure AD 管理员的 cmdlet：
 
-| Cmdlet 名称 | 描述 |
+| Cmdlet 名称 | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
@@ -326,7 +326,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | Description |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 为 Azure SQL Server 或 Azure SQL 数据仓库删除 Azure Active Directory 管理员。 |
@@ -345,14 +345,17 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 在所有客户端计算机上，如果应用程序或用户从中使用 Azure AD 标识连接到 Azure SQL 数据库或 Azure SQL 数据仓库，则必须安装以下软件：
 
 - .NET Framework 4.6 或更高版本（在 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 上提供）。
-- 用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADALSQL.DLL*)，提供多个语言版本（x86 和 amd64），可从下载中心中的[用于 Microsoft SQL Server 的 Microsoft Active Directory 身份验证库](https://www.microsoft.com/download/details.aspx?id=48742)下载。
+- SQL Server 的 Azure Active Directory 身份验证库（*ADAL）。DLL*）。 下面是用于安装最新的 SSMS、ODBC 和包含 ADAL OLE DB 驱动程序的下载链接 *。DLL*库。
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [SQL Server OLE DB Driver 18](https://www.microsoft.com/download/details.aspx?id=56730)
 
 可通过执行以下操作满足这些要求：
 
-- 安装 [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 或 [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) 符合 .NET Framework 4.6 要求。
-- SSMS 安装 *ADALSQL.DLL* 的 x86 版本。
-- SSDT 安装 *ADALSQL.DLL* 的 amd64 版本。
-- [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)提供的最新 Visual Studio 符合 .NET Framework 4.6 要求，但并未安装必需的 amd64 版本的 *ADALSQL.DLL*。
+- 安装最新版本的[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)或[SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)满足 .NET Framework 4.6 要求。
+    - SSMS 安装 x86 版本的*ADAL。DLL*。
+    - SSDT 安装 ADAL 的 amd64 版本 *。DLL*。
+    - [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)中的最新 visual studio 符合 .NET Framework 4.6 的要求，但不安装所需的 amd64 版本的*ADAL。DLL*。
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 
@@ -513,9 +516,13 @@ conn.Open();
 > 使用 `-G` 命令 `sqlcmd` 不能与系统标识一起使用，并且需要用户主体登录名。
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>疑难解答 Azure AD 身份验证
+
+有关解决 Azure AD 身份验证问题的指南，请参阅以下博客： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>后续步骤
 

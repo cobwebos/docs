@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311216"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708156"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -42,7 +42,7 @@ ms.locfileid: "72311216"
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell 模块](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 扩展](/azure/javascript/tutorial-vscode-static-website-node-01)
 
@@ -50,7 +50,7 @@ ms.locfileid: "72311216"
 
 用户可以使用网站的公共 URL 查看浏览器中的站点内容。 可以使用 Azure 门户、Azure CLI 或 PowerShell 查找 URL。 使用此表作为指南。
 
-|Tool| 指南 |
+|工具| 指南 |
 |----|----|
 |**Azure 门户** | [使用 Azure 门户查找网站 URL](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [使用 Azure CLI 查找网站 URL](storage-blob-static-website-how-to.md#cli-find-url) |
@@ -60,9 +60,12 @@ ms.locfileid: "72311216"
 
 尽管该代码必须保留在 URL 中，但它仅供内部使用，无需以其他任何方式使用这些代码。
 
-当你启用静态网站宿主时指定的索引文档将在用户打开网站但未指定特定文件时显示（例如： `https://contosoblobaccount.z22.web.core.windows.net`）。  
+当你启用静态网站宿主时指定的索引文档将在用户打开网站但未指定特定文件（例如： `https://contosoblobaccount.z22.web.core.windows.net`）时显示。  
 
 如果服务器返回404错误，并且你在启用网站时未指定错误文档，则会向用户返回默认404页。
+
+> [!NOTE]
+> 静态网站不支持[CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 。
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>设置 web 容器的公共访问级别的影响
 
@@ -74,7 +77,7 @@ ms.locfileid: "72311216"
 
 尽管主静态网站终结点不受影响，但对公共访问级别的更改会影响主 blob 服务终结点。
 
-例如，如果将 **$web**容器的公共访问级别从**私有（无匿名访问）** 更改为**blob （仅限 blob 的匿名读取访问）** ，则对主静态网站终结点的公共访问级别 `https://contosoblobaccount.z22.web.core.windows.net/index.html`不会更改。
+例如，如果你将 **$web**容器的公共访问级别从**私有（无匿名访问）** 更改为**blob （仅限对 blob 进行匿名读取访问）** ，则不会更改对主静态网站终结点的公共访问级别 `https://contosoblobaccount.z22.web.core.windows.net/index.html`。
 
 但是，对主 blob 服务终结点 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公共访问权限会从 private 更改为 public。 现在用户可以使用这两个终结点中的任意一个来打开该文件。
 
@@ -95,7 +98,7 @@ ms.locfileid: "72311216"
 
 若要深入了解如何在 Azure 上托管你的域，请参阅[在 Azure DNS 中托管你的域](../../dns/dns-delegate-domain-azure-dns.md)。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 可以免费启用静态网站托管。 仅对你的站点利用的 blob 存储和运营成本计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 

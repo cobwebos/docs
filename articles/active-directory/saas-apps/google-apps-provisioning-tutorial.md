@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842673"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720272"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -65,24 +64,24 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![选择“安全”。][10]
 
-2. 在“安全”页上，选择“API 参考”。
+1. 在“安全”页上，选择“API 参考”。
 
     ![选择“API 参考”。][15]
 
-3. 选择“启用 API 访问”。
+1. 选择“启用 API 访问”。
 
     ![选择“API 参考”。][16]
 
    > [!IMPORTANT]
    > 对于要预配到 G Suite 的每个用户，Azure AD 中的用户名**必须**绑定到自定义域。 例如，G Suite 不会接受 bob@contoso.onmicrosoft.com 之类的用户名， 但会接受 bob@contoso.com。 可以按照[此处](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)的说明更改现有用户的域。
 
-4.  使用 Azure AD 添加并验证所需的自定义域后，必须使用 G Suite 再次验证它们。 若要验证 G Suite 中的域，请参阅以下步骤：
+1. 使用 Azure AD 添加并验证所需的自定义域后，必须使用 G Suite 再次验证它们。 若要验证 G Suite 中的域，请参阅以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在[G Suite 管理员控制台](https://admin.google.com/)中，选择 "**域**"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在[G Suite 管理员控制台](https://admin.google.com/)中，选择 "**域**"。
 
     ![选择域][20]
 
-    b. 选择“添加域或域别名”。
+    b.保留“数据库类型”设置，即设置为“共享”。 选择“添加域或域别名”。
 
     ![添加新域][21]
 
@@ -92,13 +91,13 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何通过 Google 验证你的域的全面说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
 
-    e. 对要添加到 G Suite 的任何其他域重复上述步骤。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对要添加到 G Suite 的任何其他域重复上述步骤。
 
-5. 接下来，确定要用于在 G Suite 中管理用户设置的管理员帐户。 导航到 "**管理员角色**"。
+1. 接下来，确定要用于在 G Suite 中管理用户设置的管理员帐户。 导航到 "**管理员角色**"。
 
     ![选择 Google Apps][26]
-    
-6. 对于该帐户的**管理员角色**，请编辑该角色的**权限**。 请确保启用该帐户的所有“管理员 API 权限”，使其可用于预配。
+
+1. 对于该帐户的**管理员角色**，请编辑该角色的**权限**。 请确保启用该帐户的所有“管理员 API 权限”，使其可用于预配。
 
     ![选择 Google Apps][27]
 
@@ -110,15 +109,15 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+1. 转到“企业应用程序”，并选择“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
+1. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中输入 " **g suite**"，在结果面板中选择 " **g suite** "，然后单击 "**添加**" 按钮添加该应用程序。
+1. 在搜索框中输入 " **g suite**"，在结果面板中选择 " **g suite** "，然后单击 "**添加**" 按钮添加该应用程序。
 
     ![结果列表中的 G Suite](common/search-new-app.png)
 
@@ -134,76 +133,79 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>若要在 Azure AD 中配置 G Suite 的自动用户预配：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“G Suite”。
+1. 在应用程序列表中，选择“G Suite”。
 
     ![应用程序列表中的 G Suite 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+1. 选择“预配”选项卡。
 
     ![设置选项卡](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+1. 将“预配模式”设置为“自动”。
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分，选择“授权”。 随即会在新的浏览器窗口中打开“Google 授权”对话框。
+1. 在“管理员凭据”部分，选择“授权”。 随即会在新的浏览器窗口中打开“Google 授权”对话框。
 
     ![G Suite 授权](media/google-apps-provisioning-tutorial/authorize.png)
 
-6. 确认你要为你的 G Suite 租户授予 Azure AD 的权限。 选择“接受”。
+1. 确认你要为你的 G Suite 租户授予 Azure AD 的权限。 选择“接受”。
 
     ![确认权限。][28]
 
-7. 在 Azure 门户中，选择“测试连接”以确保 Azure AD 可以连接到你的应用。 如果连接失败，请确保 G Suite 帐户具有团队管理员权限。 然后再次重试“授权”步骤。
+1. 在 Azure 门户中，选择“测试连接”以确保 Azure AD 可以连接到你的应用。 如果连接失败，请确保 G Suite 帐户具有团队管理员权限。 然后再次重试“授权”步骤。
 
-8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+1. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存”。
+1. 单击“ **保存**”。
 
-9. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 G Suite**"。
+1. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 G Suite**"。
 
     ![G Suite 用户映射](media/google-apps-provisioning-tutorial/usermappings.png)
 
-10. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![G Suite 用户属性](media/google-apps-provisioning-tutorial/userattributes.png)
 
-11. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 G Suite**"。
+1. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 G Suite**"。
 
     ![G Suite 组映射](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的组属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 UI 显示 Azure AD 和 G Suite 之间的一组默认属性映射。 可以通过单击 "添加新映射"，选择添加其他属性，例如组织单位。 
+1. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的组属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 UI 显示 Azure AD 和 G Suite 之间的一组默认属性映射。 可以通过单击 "添加新映射"，选择添加其他属性，例如组织单位。
 
     ![G Suite 组属性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-13. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+1. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-14. 若要为 G Suite 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+1. 若要为 G Suite 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-15. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 G Suite 的用户和/或组。
+1. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 G Suite 的用户和/或组。
 
     ![预配范围](common/provisioning-scope.png)
 
-16. 已准备好预配时，单击“保存”。
+1. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了在 G Suite 上 Azure AD 预配服务执行的所有操作。
+
+> [!NOTE]
+> 如果用户已有使用 Azure AD 用户的电子邮件地址的现有个人/使用者帐户，则可能会在执行目录同步之前使用 Google 传输工具解决某个问题。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="common-issues"></a>常见问题
 * 如果用于建立连接的帐户不是 GSuite 中的管理员，则可能会发生授权失败。 确保用于授权访问权限的帐户对用户需要预配的**所有域**都具有管理员权限。 
@@ -211,7 +213,6 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
-
 
 <!--Image references-->
 

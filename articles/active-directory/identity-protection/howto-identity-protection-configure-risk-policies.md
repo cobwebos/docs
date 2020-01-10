@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382172"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75706999"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>如何：配置和启用风险策略
 
@@ -31,7 +31,7 @@ ms.locfileid: "74382172"
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 如果你的组织希望允许用户在检测到风险时自行修正，则用户必须注册自助密码重置和 Azure 多重身份验证。 为了获得最佳体验，我们建议[启用组合的安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)。 允许用户在无需管理员干预的情况下更快速地重新获得工作效率。 在事实后，管理员仍然可以看到这些事件并进行调查。 
 
@@ -43,9 +43,11 @@ Microsoft 建议将 "用户风险策略阈值" 设置为 "**高**"，并将 "登
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。 但是，它不包括策略中的**低**和**中**风险检测，这可能不会阻止攻击者利用已泄露的标识。 选择**较低**的阈值会引入其他用户中断，但会增加安全状况。
 
-## <a name="exclusions"></a>排除项
+## <a name="exclusions"></a>排除在外
 
 所有策略都允许排除用户（如[紧急访问权限或侵入权限管理员帐户](../users-groups-roles/directory-emergency-access.md)）。 组织可能会根据帐户的使用方式确定他们是否需要从特定策略中排除其他帐户。 应定期检查所有排除项，以查看它们是否仍适用。
+
+在某些风险检测中，标识保护使用已配置的受信任[网络位置](../conditional-access/location-condition.md)来减少误报。
 
 ## <a name="enable-policies"></a>启用策略
 

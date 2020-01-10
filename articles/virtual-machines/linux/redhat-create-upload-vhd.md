@@ -3,7 +3,7 @@ title: 创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure 中使用
 description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035160"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732512"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法，请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 本部分假定已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **RHEL 安装说明**
@@ -43,7 +43,7 @@ ms.locfileid: "74035160"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接” 以打开该虚拟机的控制台窗口。
+1. 单击“连接”打开该虚拟机的控制台窗口。
 
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
    
@@ -109,7 +109,7 @@ ms.locfileid: "74035160"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 /etc/waagent.conf 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机是取消预配的，则可能会清空。 在上一步中安装 Azure Linux 代理后，相应地在 /etc/waagent.conf 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -121,7 +121,7 @@ ms.locfileid: "74035160"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -138,7 +138,7 @@ ms.locfileid: "74035160"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接” 以打开该虚拟机的控制台窗口。
+1. 单击“连接”打开该虚拟机的控制台窗口。
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -154,7 +154,7 @@ ms.locfileid: "74035160"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -194,7 +194,7 @@ ms.locfileid: "74035160"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机为取消预配，则它可能会被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -206,7 +206,7 @@ ms.locfileid: "74035160"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -318,7 +318,7 @@ ms.locfileid: "74035160"
 
         # chkconfig waagent on
 
-1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf** 中修改以下参数：
+1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机为取消预配，则它可能会被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf** 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -330,7 +330,7 @@ ms.locfileid: "74035160"
 
         # subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -345,7 +345,7 @@ ms.locfileid: "74035160"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -408,7 +408,7 @@ ms.locfileid: "74035160"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -469,7 +469,7 @@ ms.locfileid: "74035160"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机为取消预配，则它可能会被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -481,7 +481,7 @@ ms.locfileid: "74035160"
 
         # subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -496,7 +496,7 @@ ms.locfileid: "74035160"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -523,7 +523,7 @@ ms.locfileid: "74035160"
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
@@ -600,7 +600,7 @@ ms.locfileid: "74035160"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机为取消预配，则它可能会被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -612,7 +612,7 @@ ms.locfileid: "74035160"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -625,7 +625,7 @@ ms.locfileid: "74035160"
 1. 关闭虚拟机，并将 VMDK 文件转换为 .vhd 文件。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -666,7 +666,7 @@ ms.locfileid: "74035160"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes
 
 1. 通过运行以下命令，确保网络服务会在引导时启动：
 
@@ -700,7 +700,7 @@ ms.locfileid: "74035160"
 
         # dracut -f -v
 
-1. 请确保已安装 SSH 服务器且将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+1. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
         ClientAliveInterval 180
 
@@ -716,7 +716,7 @@ ms.locfileid: "74035160"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，如果虚拟机为取消预配，则它可能会被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -728,7 +728,7 @@ ms.locfileid: "74035160"
 
         # sudo subscription-manager unregister
 
-1. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -741,7 +741,7 @@ ms.locfileid: "74035160"
 1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -883,8 +883,7 @@ ms.locfileid: "74035160"
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT = yes NM_CONTROLLED = yes EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
@@ -897,9 +896,9 @@ ms.locfileid: "74035160"
 
 1. 打开虚拟机设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
 
-    b.  将安装 ISO 附加到 DVD 光驱。
+    b.保留“数据库类型”设置，即设置为“共享”。  将安装 ISO 附加到 DVD 光驱。
 
     c.  将 BIOS 设置为从 CD 启动。
 
@@ -914,7 +913,7 @@ ms.locfileid: "74035160"
 
 在某些情况下，Linux 安装程序可能无法在初始 RAM 磁盘（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非 Linux 检测到它正在 Hyper-V 环境中运行。
 
-使用不同虚拟化系统（即 Virtualbox、Xen 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少 hv_vmbus 和 hv_storvsc 内核模块可在初始 RAM 磁盘上使用。 至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
+当你使用其他虚拟化系统（即 VirtualBox、Xen 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少在初始 RAM 磁盘上提供 hv_vmbus 和 hv_storvsc 内核模块。 至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
 
 要解决此问题，请将 Hyper-V 模块添加到 initramfs 并进行重新生成：
 

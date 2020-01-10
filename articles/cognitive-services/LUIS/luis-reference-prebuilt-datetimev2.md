@@ -1,5 +1,5 @@
 ---
-title: DatetimeV2 预生成实体 - LUIS
+title: DatetimeV2 预生成实体-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
@@ -9,23 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 01/07/2020
 ms.author: diberry
-ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8c29ebd675bb6af66203c13824dacbe9ea2421a2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837370"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732789"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
-**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
+**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
 从[识别器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml)GitHub 存储库管理 DatetimeV2。
 
-## <a name="example-json"></a>示例 JSON 
+## <a name="example-json"></a>示例 JSON
 
 下面显示了下面的查询文本及其部分 JSON 响应。
 
@@ -122,7 +122,7 @@ ms.locfileid: "73837370"
 |resolution|包含一个 `values` 数组，其中包含 1 个、2 个或 4 个[解析值](#values-of-resolution)。|
 |end|时间或日期范围的结束值，格式与 `value` 相同。 仅当 `type` 为 `daterange`、`timerange` 或 `datetimerange` 时才使用|
 
-* * * 
+* * *
 
 ## <a name="subtypes-of-datetimev2"></a>datetimeV2 的子类型
 
@@ -141,35 +141,36 @@ ms.locfileid: "73837370"
   * 日期或日期范围在年份方面存在歧义
   * 日期或日期范围在 A.M. 或 P.M. 方面存在歧义 例如，4 月 3 日 3:00。
 
-`values` 数组的每个元素可以包含以下字段： 
+`values` 数组的每个元素可以包含以下字段：
 
 |属性名称|属性说明|
 |--|--|
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
-|type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
+|mod|术语，用于说明如何使用 `before``after`之类的值。|
+|type|子类型，可以是以下项之一： `datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
 |值|**可选。** Datetime 对象，格式为 yyyy-mm-dd （date），HH： MM： ss （time） yyyy-mm-dd HH： MM： ss （日期时间）。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
 ## <a name="valid-date-values"></a>有效日期值
 
 **datetimeV2** 支持以下范围内的日期：
 
-| Min | Max |
+| Min | 最多 |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
 ## <a name="ambiguous-dates"></a>歧义日期
 
-如果日期可以是过去或未来的日期，则 LUIS 会提供这两个值。 包括年份中的月份和日期的陈述就是一个例子。  
+如果日期可以是过去或未来的日期，则 LUIS 会提供这两个值。 包括年份中的月份和日期的陈述就是一个例子。
 
 例如，给定以下查询文本：
 
 `May 2nd`
 
-* 如果今天的日期是 2017 年 5 月 3 日，则 LUIS 会提供“2017-05-02”和“2018-05-02”作为值。 
+* 如果今天的日期是 2017 年 5 月 3 日，则 LUIS 会提供“2017-05-02”和“2018-05-02”作为值。
 * 如果今天的日期是 2017 年 5 月 1 日，则 LUIS 会提供“2016-05-02”和“2017-05-02”作为值。
 
 以下示例显示了实体“5 月 2 日”的解析。 此解析假设今天的日期是 2017 年 5 月 2 日和 2018 年 5 月 1 日之间的某个日期。
-在 `X` 字段中包含 `timex` 的字段是未在陈述中显式指定的日期的一部分。
+在 `timex` 字段中包含 `X` 的字段是未在陈述中显式指定的日期的一部分。
 
 ## <a name="date-resolution-example"></a>日期解析示例
 
@@ -269,7 +270,7 @@ ms.locfileid: "73837370"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>数字日期的日期范围解析示例
 
@@ -373,7 +374,7 @@ ms.locfileid: "73837370"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>星期日期的日期范围解析示例
 
@@ -474,18 +475,18 @@ ms.locfileid: "73837370"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="ambiguous-time"></a>歧义时间
 如果时间或时间范围歧义，values 数组将包含两个 time 元素。 如果存在歧义的时间，则 values 包含 A.M. 和 P.M. 时间。
 
 ## <a name="time-range-resolution-example"></a>时间范围解析示例
 
-DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
+API V3 中的 DatetimeV2 JSON 响应已更改。 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
 
-自 API V2 以来的更改：
-* `datetimeV2.timex.type` 属性不再返回，因为它在父级别 `datetimev2.type` 返回。 
-* `datetimeV2.value` 属性已重名为 `datetimeV2.timex`。
+API V2 中的更改：
+* 不再返回 `datetimeV2.timex.type` 属性，因为它在父级别返回，`datetimev2.type`。
+* `datetimeV2.value` 属性已重命名为 `datetimeV2.timex`。
 
 下面显示了下面的查询文本及其部分 JSON 响应。
 
@@ -493,7 +494,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 #### <a name="v3-responsetab5-1"></a>[V3 响应](#tab/5-1)
 
-以下 JSON 的 `verbose` 参数设置为 `false`：
+以下 JSON 是将 `verbose` 参数设置为 `false`的：
 
 ```JSON
 
@@ -518,7 +519,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 ```
 #### <a name="v3-verbose-responsetab5-2"></a>[V3 详细响应](#tab/5-2)
 
-以下 JSON 的 `verbose` 参数设置为 `true`：
+以下 JSON 是将 `verbose` 参数设置为 `true`的：
 
 ```json
 
@@ -579,7 +580,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
   ]
 ```
 
-* * * 
+* * *
 
 ## <a name="time-resolution-example"></a>时间解析示例
 
@@ -666,22 +667,22 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 ]
 ```
 
-* * * 
+* * *
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代。
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。 
+1. 打开 LUIS Web 界面的“实体”窗格。
 2. 删除 **datetime** 预生成实体。
 3. 单击“添加预生成实体”
 4. 选择“datetimeV2”并单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
-了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
+了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。
 

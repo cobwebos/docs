@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786412"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732444"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -27,7 +27,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>学习
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -72,9 +72,9 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 | 点播网络研讨会| [利用 Azure AD 管理企业应用程序](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>了解 Azure AD 如何帮助你为企业 SaaS 应用程序实现 SSO，并了解控制访问的最佳做法。 |
 | 视频| [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) <br> [将 Salesforce 与 Azure AD 集成：如何实现用户预配](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | 在线课程| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
-| 帐簿| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
+| 书籍| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
 | 教程| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。 |
-| 常见问题解答| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
+| 常见问题| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 
@@ -138,7 +138,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="plan-a-pilot"></a>规划试点
 
-建议自动用户预配的初始配置在测试环境中包含一小部分用户，然后将其扩展到生产中的所有用户。
+建议自动用户预配的初始配置在测试环境中包含一小部分用户，然后将其扩展到生产中的所有用户。 请参阅运行试验的[最佳实践](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot)。
 
 #### <a name="best-practices-for-a-pilot"></a>试验的最佳实践  
 

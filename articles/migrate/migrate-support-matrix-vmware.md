@@ -1,18 +1,14 @@
 ---
-title: Azure Migrate 中的 VMware 评估和迁移支持
-description: 了解 Azure Migrate 中对 VMware VM 评估/迁移的支持。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure Migrate 中的 VMware 支持
+description: 了解 Azure Migrate 中的 VMware 评估/迁移支持。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 01/02/2020
+ms.openlocfilehash: b4d498b869bafe579e2539a049aae58ac6f26575
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196273"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719437"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -39,8 +35,8 @@ ms.locfileid: "74196273"
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure 政府 | 美国政府弗吉尼亚州
-亚太区 | 东亚或东南亚
+Azure Government | 美国弗吉尼亚州政府
+亚太 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
 加拿大 | 加拿大中部或加拿大东部
@@ -80,11 +76,10 @@ Azure Migrate：服务器评估可以发现应用、角色和功能。 发现您
 
 Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移的 VM。
 
-- 如果计划发现应用程序或以无代理方式可视化依赖项，请创建一个具有只读访问权限的 vCenter Server 帐户，以及为**虚拟机**启用 > **来宾操作**的特权。
-
-  ![vCenter Server 帐户权限](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- 如果未计划执行应用程序发现和无代理依赖项可视化，请为 vCenter Server 设置一个只读帐户。
+**任务** | **所需权限**
+--- | ---
+仅限评估 | vCenter Server 只读帐户。
+[应用发现](how-to-discover-applications.md)或[无代理依赖项可视化](how-to-create-group-machine-dependencies-agentless.md)的评估 | vCenter Server 具有只读访问权限的帐户以及为**虚拟机**启用的特权 > **来宾操作**。
 
 ## <a name="assessment-appliance-requirements"></a>评估-设备要求
 
@@ -109,7 +104,7 @@ Azure Migrate 设备需要连接到 internet。
 **URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户中的 Azure Migrate。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | 登录到 Azure 订阅。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
@@ -123,7 +118,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 **设备** | **Connection**
 --- | ---
-本 | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
+家用电器 | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
 vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下，设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口，则可以在设置发现时修改端口。
 
 ## <a name="assessment-dependency-visualization"></a>评估-依赖项可视化
@@ -136,10 +131,10 @@ vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配�
         - TCP 连接
         - 具有活动连接的进程的名称
         - 运行上述进程的已安装应用程序的名称
-        - 否。 每个轮询间隔检测到的连接
+        - 不。 每个轮询间隔检测到的连接
 - **基于代理的依赖项可视化**：若要使用基于代理的依赖项可视化，需要在要分析的每台本地计算机上下载并安装以下代理。
-    - 需要在每台计算机上安装 Microsoft Monitoring agent （MMA）。 [了解](how-to-create-group-machine-dependencies.md#install-the-mma)有关如何安装 MMA 代理的详细信息。
-    - 需要在每台计算机上安装依赖关系代理。 [了解](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
+    - 在每台计算机上安装 Microsoft Monitoring agent （MMA）。 [了解](how-to-create-group-machine-dependencies.md#install-the-mma)有关如何安装 MMA 代理的详细信息。
+    - 在每台计算机上安装依赖关系代理。 [了解](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
     - 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
 ## <a name="migration---limitations"></a>迁移-限制
@@ -179,15 +174,15 @@ VirtualMachine.SnapshotManagement.* | 允许创建和管理用于复制的 VM �
 **磁盘大小** | 2 TB 操作系统磁盘;对于数据磁盘为 4 TB。
 **磁盘限制** |  每个虚拟机最多60个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
-**共享磁盘群集** | 不受支持。
-**独立磁盘** | 不受支持。
+**共享磁盘群集** | 不支持。
+**独立磁盘** | 不支持。
 **RDM/传递磁盘** | 如果 Vm 具有 RDM 或传递磁盘，则这些磁盘不会复制到 Azure。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 **iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
-**多路径 IO** | 不受支持。
-**存储 vMotion** | 不受支持。 如果 VM 使用 storage vMotion，则复制将不起作用。
-**成组 Nic** | 不受支持。
-**IPv6** | 不受支持。
+**多路径 IO** | 不支持。
+**存储 vMotion** | 不支持。 如果 VM 使用 storage vMotion，则复制将不起作用。
+**成组 Nic** | 不支持。
+**IPv6** | 不支持。
 **目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘（标准 HDD、高级 SSD）。
 **同时复制** | 100 Vm/vCenter Server。 如果有更多的，请按批次100进行迁移。
 
@@ -212,7 +207,7 @@ Azure Migrate 设备需要 internet 连接到 internet。
 **URL** | **详细信息**  
 --- | ---
 *.portal.azure.com | 导航到 Azure 门户中的 Azure Migrate。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | 登录到 Azure 订阅。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
@@ -227,7 +222,7 @@ https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/
 
 **设备** | **Connection**
 --- | ---
-本 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
+家用电器 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
 vCenter 服务器 | 端口443上的入站连接，使设备能够协调复制-创建快照、复制数据、发布快照
 vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
@@ -254,29 +249,29 @@ VCenter Server 的只读帐户。
 
 
 
-**组件** | **要求**
+组件 | 要求
 --- | ---
  | **Vmware 设置**（vmware VM 设备）
 PowerCLI | 如果复制设备在 VMware VM 上运行，则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
 NIC 类型 | VMXNET3 （如果设备是 VMware VM）
  | **硬件设置**
-CPU 核心数 | 8
+CPU 内核数 | 8
 RAM | 16 GB
-磁盘数目 | 三：操作系统磁盘、进程服务器缓存磁盘和保留驱动器。
+磁盘数 | 三：操作系统磁盘、进程服务器缓存磁盘和保留驱动器。
 可用磁盘空间（缓存） | 600 GB
 可用磁盘空间（保留磁盘） | 600 GB
 **软件设置** |
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
 操作系统区域设置 | 美国英语
 TLS | 应启用 TLS 1.2。
-.NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
+.NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置
 **网络设置** |
-IP 地址类型 | Static
+IP 地址类型 | 静态
 端口 | 443（控制通道协调）<br>9443（数据传输）
 NIC 类型 | VMXNET3
 
@@ -294,7 +289,7 @@ https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
 
 
@@ -325,15 +320,15 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **磁盘大小** | 2 TB 操作系统磁盘;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
-**共享磁盘群集** | 不受支持。
-**独立磁盘** | 。
-**传递磁盘** | 。
+**共享磁盘群集** | 不支持。
+**独立磁盘** | 支持。
+**传递磁盘** | 支持。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 **iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
-**多路径 IO** | 不受支持。
-**存储 vMotion** | 是否支持
-**成组 Nic** | 不受支持。
-**IPv6** | 不受支持。
+**多路径 IO** | 不支持。
+**存储 vMotion** | 受支持
+**成组 Nic** | 不支持。
+**IPv6** | 不支持。
 
 
 
@@ -367,22 +362,22 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
-复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 Site Recovery 运行复制先决条件检查时，如果不符合某些要求，检查将会失败。
+复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 当 Site Recovery 为复制运行必备项检查时，如果无法满足某些要求，则检查将失败。
 
-**组件** | **要求** | **详细信息**
+组件 | **要求** | **详细信息**
 --- | --- | ---
 来宾操作系统 | 使用[无代理复制](#agentless-migration-vmware-vm-requirements)为 vmware vm 和[使用基于代理的复制的 vmware vm](#agent-based-migration-vmware-vm-requirements)验证支持的操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 第 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
-共享 VHD | 不受支持。 | 如果不支持，检查会失败。
-FC 磁盘 | 不受支持。 | 如果不支持，检查会失败。
-BitLocker | 不受支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
+共享 VHD | 不支持。 | 如果不支持，检查会失败。
+FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
+BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” **“允许的应用”中针对所有配置文件允许 RDP** > 。<br/> 对于站点到站点 VPN 访问，在**Windows 防火墙**中启用 rdp 和允许 Rdp -> 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，在**Windows 防火墙**中启用 rdp 和允许 Rdp -> 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 

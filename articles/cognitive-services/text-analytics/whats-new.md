@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286459"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732614"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -26,7 +26,7 @@ ms.locfileid: "74286459"
 下一版本的命名实体识别（NER）现在可用于公共预览版，并为在文本中找到的实体提供扩展的检测和分类。 它提供：
 
 * 以下新实体类型的识别：
-    * 电话号码
+    * 手机号码
     * IP 地址
 
 * 用于识别个人信息实体类型的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)（仅限英语）
@@ -35,7 +35,7 @@ ms.locfileid: "74286459"
 实体链接支持英语和西班牙语。 NER 语言支持因实体类型而异。 
 
 > [!div class="nextstepaction"]
-> [了解有关命名实体识别 v3 的详细信息](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
+> [了解有关命名实体识别 v3 的详细信息](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>情绪分析 v3 公共预览版-2019 年10月
 
@@ -47,7 +47,7 @@ ms.locfileid: "74286459"
 它支持英语（`en`）、日语（`ja`）、简体中文（`zh-Hans`）、繁体中文（`zh-Hant`）、法语（`fr`）、意大利语（`it`）、西班牙语（`es`）、荷兰语（`nl`）、葡萄牙语（`pt`）和德语（`de`），并在以下区域中提供： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`和 `West US 2`。 
 
 > [!div class="nextstepaction"]
-> [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
+> [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
 ## <a name="next-steps"></a>后续步骤
 

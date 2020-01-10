@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873244"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732580"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的偏移限制子句
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>备注
   
-  偏移量限制子句和限制计数都是必需的。 如果使用了可选的 `ORDER BY` 子句，则通过跳过有序值来生成结果集。 否则，查询将返回固定的值顺序。 目前，只有单个分区中的查询支持此子句，跨分区查询尚不支持。
+  偏移量限制子句和限制计数都是必需的。 如果使用了可选的 `ORDER BY` 子句，则通过跳过有序值来生成结果集。 否则，查询将返回固定的值顺序。 此子句现在支持单个分区中的查询以及跨分区查询。
 
 ## <a name="examples"></a>示例
 
@@ -50,7 +50,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     OFFSET 1 LIMIT 1
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -69,7 +69,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     OFFSET 1 LIMIT 1
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

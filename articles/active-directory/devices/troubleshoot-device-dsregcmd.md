@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379208"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707938"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
 
@@ -28,10 +28,10 @@ ms.locfileid: "74379208"
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | 设备状态 |
 | ---   | ---   | ---   | ---   |
-| 是 | 否 | 否 | Azure AD 联接 |
-| 否 | 否 | 是 | 已加入域 |
-| 是 | 否 | 是 | 已加入混合广告 |
-| 否 | 是 | 是 | 已联接本地 DRS |
+| YES | 是 | 是 | Azure AD 联接 |
+| 是 | 是 | YES | 加入域 |
+| YES | 是 | YES | 已加入混合广告 |
+| 是 | YES | YES | 已联接本地 DRS |
 
 > [!NOTE]
 > Workplace Join （Azure AD 注册）状态显示在 "用户状态" 部分中
@@ -297,10 +297,22 @@ ms.locfileid: "74379208"
 
 ## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
-本部分将执行系统必备组件检查以预配 NGC 密钥。 
+本部分执行 Windows Hello 企业版（WHFB）的预配的系统必备组件检查。 
 
 > [!NOTE]
-> 如果用户已成功配置了 NGC 凭据，则可能不会在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
+> 如果用户已成功配置 WHFB，则不能在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
+
+- **IsDeviceJoined：** -如果设备已加入到 Azure AD，则设置为 "是"。
+- **IsUserAzureAD：** -如果登录用户存在于 Azure AD 中，则设置为 "是"。
+- **PolicyEnabled：** -如果在设备上启用了 WHFB 策略，则设置为 "是"。
+- **PostLogonEnabled：** -如果 WHFB 注册由平台本机触发，则设置为 "是"。 如果设置为 "否"，则表示 Windows Hello 企业版注册由自定义机制触发
+- **DeviceEligible：** -如果设备满足在 WHFB 中注册所需的硬件要求，则设置为 "是"。
+- **SessionIsNotRemote：** -如果当前用户直接登录到设备而不是远程登录，则设置为 "是"。
+- **CertEnrollment：** -特定于 WHFB 证书信任部署，指示 WHFB 的证书注册机构。 如果 WHFB 组策略策略的源为 ""，则设置为 "注册机构"，如果源是 MDM，则设置为 "移动设备管理"。 否则为 "none"
+- **AdfsRefreshToken：** -特定于 WHFB 证书信任部署。 仅当 CertEnrollment 为 "注册机构" 时才存在。 指示设备是否为用户提供 enterprise PRT。
+- **AdfsRaIsReady：** -特定于 WHFB 证书信任部署。  仅当 CertEnrollment 为 "注册机构" 时才存在。 如果在支持 WHFB 的发现元数据中指示 ADFS 并且登录证书模板可用 *，* 则设置为 "是"。
+- **LogonCertTemplateReady：** -特定于 WHFB 证书信任部署。 仅当 CertEnrollment 为 "注册机构" 时才存在。 如果登录证书模板的状态有效，则设置为 "是"，有助于排查 ADFS RA 问题。
+- **PreReqResult：** -提供所有 WHFB 必备评估的结果。 如果在下次用户登录时 WHFB 注册将作为登录后任务启动，则设置为 "将预配"。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>示例 NGC 先决条件检查输出
 

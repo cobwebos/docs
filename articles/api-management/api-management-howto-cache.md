@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073564"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708349"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
@@ -39,14 +39,14 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 > [!NOTE]
 > 内部缓存在 Azure API 管理的“消耗”层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本教程：
 
 + [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + [导入和发布 API](import-and-publish.md)
 
-## <a name="caching-policies"> </a>添加缓存策略
+## <a name="caching-policies"></a>添加缓存策略
 
 使用此示例中显示的缓存策略时，向 **GetSpeakers** 操作发出的第一个请求返回来自后端服务的响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 采用匹配的参数，对操作的后续调用会返回缓存的响应，直到缓存时间间隔过期。
 
@@ -70,14 +70,14 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 9. 在 **outbound** 元素中添加以下策略：
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 > [!TIP]
 > 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `caching-type` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
 
-## <a name="test-operation"> </a>调用操作和测试缓存
+## <a name="test-operation"></a>调用操作并测试缓存
 若要查看作用的缓存，请从开发人员门户调用操作。
 
 1. 在 Azure 门户中浏览到自己的 APIM 实例。
@@ -88,7 +88,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 6. 按“发送”。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关缓存策略的详细信息, 请参阅[API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
+* 有关缓存策略的详细信息，请参阅[API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 * 有关使用外部 Azure Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 

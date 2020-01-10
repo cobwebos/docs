@@ -4,15 +4,15 @@ description: 此文档讨论了解决 Azure Cosmos DB 的 MongoDB API 中遇到�
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41d667f4e90114052a17c5707989634bbb5fc421
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754966"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719828"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>排查 Azure Cosmos DB 的 MongoDB API 中的常见问题
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 实现常见 NoSQL 数据库的网络协议，其中包括 Mongo
 
 ## <a name="common-errors-and-solutions"></a>常见错误和解决方案
 
-| 错误               | 代码  | 描述  | 解决方案  |
+| 错误               | 代码  | Description  | 解决方案  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用的请求单位总数超过了集合的预配请求单位率，已达到限制。 | 请考虑从 Azure 门户缩放分配给容器或容器集的吞吐量，或重试该操作。 |
 | ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系支持人员。 示例： `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
