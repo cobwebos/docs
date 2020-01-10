@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873295"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732597"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER （Azure Cosmos DB）
  返回在将大写字符数据转换为小写后的字符串表达式。  
-  
+
+低系统函数不使用索引。 如果打算执行频繁的不区分大小写的比较，则系统函数越小，可能会消耗大量 RU。 如果是这种情况，则可以在插入时规范化大小写，而不是使用低系统函数对数据进行比较。 然后，如 SELECT * FROM c 的查询（其中较低（c 名称） = ' bob '）只是 SELECT * FROM c，其中 c.name = ' bob '。
+
 ## <a name="syntax"></a>语法
   
 ```sql
@@ -40,7 +42,7 @@ LOWER(<str_expr>)
 SELECT LOWER("Abc") AS lower
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"lower": "abc"}]  

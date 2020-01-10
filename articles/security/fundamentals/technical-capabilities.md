@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468075"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707197"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，可帮助你保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -161,7 +161,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 ![受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ![Azure 中受保护的资源访问 (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
@@ -171,7 +171,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 - 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
 
-- 传输中：在组件、位置或程序之间传输数据（例如通过网络）时，跨服务总线（从本地到云，反之亦然，包括 ExpressRoute 等混合连接）或在输入/输出过程中传输数据，它被视为是动态的。
+- 传输中：如果在组件、位置或程序之间传输数据（例如跨网络），则跨服务总线（从本地到云，反之亦然，包括 ExpressRoute 等混合连接），或在输入/输出过程中，将其视为是动态的。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
@@ -254,7 +254,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议，在应用程序级别加密数据，以提供额外的保护。
 
-如果通过 Azure 门户与 Azure 存储交互，则所有事务都会通过 HTTPS 发生。 也可以使用基于 HTTPS 的[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
+如果通过 Azure 门户与 Azure 存储交互，则所有事务都将通过 HTTPS 发生。 也可以使用基于 HTTPS 的[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
 
 无法保护传输中数据的组织更容易遭受[中间人攻击](https://technet.microsoft.com/library/gg195821.aspx)、[窃听](https://technet.microsoft.com/library/gg195641.aspx)和会话劫持。 这些攻击可能是获取机密数据访问权限的第一步。
 
@@ -271,9 +271,9 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 - 配置应用程序和服务以支持 Azure RMS
 
-- 创建可反映业务要求的 [自定义模板](https://technet.microsoft.com/library/dn642472.aspx) 。 例如：最高机密数据的模板应在所有最高机密相关的电子邮件中应用。
+- 创建可反映业务要求的[自定义模板](https://technet.microsoft.com/library/dn642472.aspx)。 例如：最高机密数据的模板应在所有最高机密相关的电子邮件中应用。
 
-[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) 和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织无法获取业务见解、监控滥用，以及防止文件被恶意访问。
+[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织将无法获取业务见解、监控滥用，以及防止文件被恶意访问。
 
 > [!Note]
 > 有关 Azure RMS 的详细信息，请阅读 [Getting Started with Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx)（Azure Rights Management 入门）一文。
@@ -340,7 +340,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 ![保护网络（保护）](./media/technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
-如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。 网络安全组 (NSG) 是基本的有状态数据包筛选防火墙，它使你能够基于[五元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
+如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，它使你能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
 
 Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)实现此操作。
 
@@ -350,13 +350,13 @@ Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.m
 
 ## <a name="virtual-machine-security"></a>虚拟机安全
 
-借助 [Azure 虚拟机](../../virtual-machines/index.yml)，可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，可以在几乎所有操作系统上部署任何工作负荷和任何语言。
+借助 [Azure 虚拟机](../../virtual-machines/index.yml)，可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，你可以在几乎所有操作系统上部署任何工作负荷和任何语言。
 
 借助 Azure，可以使用来自 Microsoft、Symantec、Trend Micro 和 Kaspersky 等安全性供应商的[反恶意软件](antimalware.md)，保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
 
-[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
+[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可以损坏你的数据，人为错误可以将 bug 引入你的应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
@@ -392,7 +392,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 [Azure Monitor](../../azure-monitor/index.yml)是适用于混合云的 IT 管理解决方案。 Azure Monitor 日志单独使用或扩展现有的 System Center 部署，为你的基础结构的基于云的管理提供最大的灵活性和控制。
 
-![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure 监视器](./media/technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
 使用 Azure Monitor，你可以管理任何云中的任何实例，包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack，成本低于竞争性解决方案。 Azure Monitor 提供了一种新的方式来管理企业，它是一种最快、最经济高效的方式，可满足新的业务挑战并适应新的工作负载、应用程序和云环境。
 
@@ -448,7 +448,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 ### <a name="storage-analytics"></a>存储分析
 
-[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 指标数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题，提高使用服务的应用程序的性能。
+[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -476,13 +476,13 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 - 在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
 
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)以组的方式处理解决方案中的资源。
+应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)以组的方式处理解决方案中的资源。
 
 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 **使用 Resource Manager 的优势**
 
-Resource Manager 提供多种优势：
+资源管理器提供多种优势：
 
 - 可以以组的形式部署、管理和监视解决方案的所有资源，而不是单独处理这些资源。
 
@@ -513,7 +513,7 @@ Resource Manager 提供多种优势：
 
 - [加密](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [标识和访问管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [身份和访问管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
