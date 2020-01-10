@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078054"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647537"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -39,8 +39,8 @@ ms.locfileid: "70078054"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -203,7 +203,7 @@ ms.locfileid: "70078054"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -226,13 +226,13 @@ ms.locfileid: "70078054"
 | SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
 
 
-**表 1**:ASCS/SCS 群集
+**表 1**：ASCS/SCS 群集
 
 | SAP \<SID> | SAP ASCS/SCS 实例编号 |
 | --- | --- |
-| PR1 | 0 |
+| PR1 | 00 |
 
-**表 2**:SAP ASCS/SCS 实例详细信息
+**表 2**：SAP ASCS/SCS 实例详细信息
 
 
 | 虚拟主机名角色 | 虚拟主机名 | 静态 IP 地址 | 可用性集 |
@@ -243,7 +243,7 @@ ms.locfileid: "70078054"
 | 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
 | SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
 
-**表 3**:横向扩展文件服务器群集
+**表 3**：横向扩展文件服务器群集
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>为 SAP ASCS/SCS 群集、数据库管理系统 (DBMS) 群集和 SAP 应用程序服务器实例部署 VM
@@ -268,12 +268,12 @@ ms.locfileid: "70078054"
 
 * [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
-* 使用 Windows Server 2016 时, 建议配置[Azure 云见证][deploy-cloud-witness]。
+* 使用 Windows Server 2016 时，建议配置[Azure 云见证][deploy-cloud-witness]。
 
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
 
-通过执行以下代码, 你可以手动部署 Microsoft 横向扩展文件服务器群集, 如[Azure 中][ms-blog-s2d-in-azure]的博客存储空间直通所述:  
+通过执行以下代码，你可以手动部署 Microsoft 横向扩展文件服务器群集，如[Azure 中][ms-blog-s2d-in-azure]的博客存储空间直通所述：  
 
 
 ```powershell
@@ -316,15 +316,15 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 > 在横向扩展文件服务器资源管理器模板 UI 中，必须指定 VM 计数。
 >
 
-### <a name="use-managed-disks"></a>使用托管的磁盘
+### <a name="use-managed-disks"></a>使用托管磁盘
 
 [GitHub][arm-sofs-s2d-managed-disks]上提供了用于部署存储空间直通和 Azure 托管磁盘横向扩展文件服务器的 azure 资源管理器模板。
 
 我们建议使用托管磁盘。
 
-![图 1：用于横向扩展文件服务器包含托管磁盘资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
+![图 1：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
 
-_**图 1**:用于横向扩展文件服务器包含托管磁盘资源管理器模板的 UI 屏幕_
+_**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
 在模板中，执行以下操作：
 1. 在“Vm 计数”框中，输入最小计数 **2**。
@@ -338,19 +338,19 @@ _**图 1**:用于横向扩展文件服务器包含托管磁盘资源管理器模
 
 ![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
-_**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
+_**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
 在“存储帐户类型”框中，选择“高级存储”。 其他所有设置与托管磁盘的设置相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>调整群集超时设置
 
-成功安装 Windows 横向扩展文件服务器群集后, 请将故障转移检测的超时阈值调整为 Azure 中的条件。 [优化故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]中记录了要更改的参数。 假设群集 Vm 位于同一子网中, 请将以下参数更改为以下值:
+成功安装 Windows 横向扩展文件服务器群集后，请将故障转移检测的超时阈值调整为 Azure 中的条件。 [优化故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]中记录了要更改的参数。 假设群集 Vm 位于同一子网中，请将以下参数更改为以下值：
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
 - RoutingHistoryLength = 30
 
-这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性, 但在真正的错误情况下或 VM 发生故障时, 它们还提供足够快速的故障转移。
+这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但在真正的错误情况下或 VM 发生故障时，它们还提供足够快速的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 
