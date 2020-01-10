@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/10/2019
-ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/08/2020
+ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438004"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745398"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -37,7 +37,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 其他迁移方案处于预览阶段，需要通过 DMS 预览网站提交提名。 若要查看预览版中的方案的完整列表并注册参加其中一项产品，请参阅[DMS 预览站点](https://aka.ms/dms-preview/)。
 
 **问： Azure 数据库迁移服务支持哪些版本的 SQL Server 作为源？**
-从 SQL Server 迁移时，Azure 数据库迁移服务支持的源 SQL Server 2005 到 SQL Server 2017。
+从 SQL Server 迁移时，Azure 数据库迁移服务支持的源 SQL Server 2005 到 SQL Server 2019。
 
 **问：使用 Azure 数据库迁移服务时，脱机和联机迁移的区别是什么？**
 可以使用 Azure 数据库迁移服务执行脱机和联机迁移。 通过*脱机*迁移，应用程序停机时间会在迁移启动时启动。 在进行*联机*迁移时，停机时间限制为在迁移结束时要缩减的时间。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请进行联机迁移。
@@ -58,14 +58,14 @@ Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNet，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
-* 确保 Azure 虚拟网络（VNet）网络安全组规则不会阻止以下通信端口443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
+* 确保虚拟网络安全组规则不会阻止以下通信端口443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的详细信息，请参阅[筛选网络流量和网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
 有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务[文档](https://docs.microsoft.com/azure/dms/dms-overview)中的相关教程。
 
 **问：如何实现查找 Azure 数据库迁移服务的 IP 地址，以便可以为用于访问源数据库以进行迁移的防火墙规则创建允许列表吗？**
-可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问源数据库进行迁移。 该服务的 IP 地址是动态的，但如果使用 Express Route，则企业网络会专门分配此地址。 标识适当的 IP 地址的最简单方法是在与预配的 Azure 数据库迁移服务资源相同的资源组中查找关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
+可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问源数据库进行迁移。 服务的 IP 地址是动态的，但如果使用的是 ExpressRoute，则该地址由企业网络专用分配。 标识适当的 IP 地址的最简单方法是在与预配的 Azure 数据库迁移服务资源相同的资源组中查找关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
 
 可能还需要在允许列表中包含 SQL Server 侦听的端口源。 默认情况下为端口 1433，但源 SQL Server 可能也配置为侦听其他端口。 在这种情况下，也需要在允许列表中包含这些端口。 可以使用动态管理视图查询来确定 SQL Server 侦听的端口：
 
@@ -85,8 +85,8 @@ Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估
     GO
 ```
 
-**问：如何实现设置 Azure 虚拟网络？**
-有多篇 Microsoft 教程逐步讲解了如何完成设置 Azure VNET 的过程，另外，还可以参阅 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中提到的官方文档。
+**问：如何实现设置 Microsoft Azure 虚拟网络？**
+尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
 
 ## <a name="usage"></a>使用情况
 
@@ -106,7 +106,7 @@ Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估
 ## <a name="troubleshooting-and-optimization"></a>故障排除和优化
 
 **问：我在 DM 中设置了一个迁移项目，连接到我的源数据库时遇到困难。我该怎么办？**
-如果在迁移过程中连接到源数据库系统时遇到问题，请在 VNet 中创建一个虚拟机，并在其中设置 DMS 实例。 在虚拟机中，你应该能够运行连接测试，如使用 UDL 文件测试连接 SQL Server 或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则无法连接到源数据库。 如果连接测试失败，请与网络管理员联系。
+如果在迁移时连接到源数据库系统时遇到问题，请在虚拟网络中创建一个虚拟机，并在其中设置 DMS 实例。 在虚拟机中，你应该能够运行连接测试，如使用 UDL 文件测试连接 SQL Server 或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则无法连接到源数据库。 如果连接测试失败，请与网络管理员联系。
 
 **问：为什么我的 Azure 数据库迁移服务不可用或停止？**
 如果用户显式停止 Azure 数据库迁移服务（DMS），或者服务在24小时内处于非活动状态，则该服务将处于 "已停止" 或 "已暂停" 状态。 在上述每种情况下，服务将不可用并处于已停止状态。  若要恢复活动迁移，请重启该服务。

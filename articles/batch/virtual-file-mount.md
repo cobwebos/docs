@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: a153a8000552100d62807442d466c22cd0964e43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75389836"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770112"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池中装载虚拟文件系统
 
@@ -85,7 +85,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob 文件系统
 
-另一种方法是通过[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)使用 Azure Blob 存储。 装载 blob 文件系统需要为存储帐户 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名（SAS）](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse[问题解答常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员身份**运行该任务。 Blobfuse 会在用户空间装载目录，并在创建池时将其作为根挂载。 在 Linux 中，所有**管理员**任务都是 root。 熔断器[参考页](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了保险丝模块的所有选项。
+另一种方法是通过[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)使用 Azure Blob 存储。 装载 blob 文件系统需要为存储帐户 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名（SAS）](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse[问题解答常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员身份**运行该任务。 Blobfuse 会在用户空间装载目录，并在创建池时将其作为根挂载。 在 Linux 中，所有**管理员**任务都是 root。 熔断器[参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了保险丝模块的所有选项。
 
 除了故障排除指南之外，blobfuse 存储库中的 GitHub 问题也是查看当前 blobfuse 问题和解决方法的有用方法。 有关详细信息，请参阅[blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)。
 

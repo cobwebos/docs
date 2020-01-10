@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f963885f60116bf23087fceb6a92d18e71ac7f24
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457024"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745333"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -35,7 +35,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 * 有关特定于 Azure 数字孪生的日志记录配置，请参阅[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 * 请参阅[Azure Monitor](../azure-monitor/overview.md)概述，了解通过 Azure Monitor 启用了强大的日志设置。
-* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)，以便通过 Azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
+* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)，以便通过 Azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
 
 配置后，你将能够选择所有日志类别和指标，并使用强大的 Azure Monitor log analytics 工作区来支持调试工作。
 
@@ -216,4 +216,4 @@ function process(telemetry, executionContext) {
 
 - 了解如何在 Azure 数字孪生中启用[监视和日志](./how-to-configure-monitoring.md)。
 
-- 有关 Azure 日志记录选项的详细信息，请参阅[Azure 活动日志概述一](../azure-monitor/platform/activity-logs-overview.md)文。
+- 有关 Azure 日志记录选项的详细信息，请参阅[Azure 活动日志概述一](../azure-monitor/platform/platform-logs-overview.md)文。

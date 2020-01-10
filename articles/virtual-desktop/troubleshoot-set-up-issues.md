@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/17/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459484"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749363"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -59,7 +59,7 @@ ms.locfileid: "75459484"
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>正在创建 Windows 虚拟桌面会话主机 Vm
 
-可以通过多种方式创建会话主机 Vm，但 Windows 虚拟桌面团队仅支持与[Azure Marketplace](https://azuremarketplace.microsoft.com/)产品/服务相关的 VM 设置问题。 有关更多详细信息，请参阅[使用 Windows 虚拟桌面的问题-预配主机池 Azure Marketplace 产品/服务](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)。
+可以通过多种方式创建会话主机 Vm，但 Windows 虚拟桌面团队仅支持与[Azure Marketplace](https://azuremarketplace.microsoft.com/)产品/服务相关的 VM 设置问题。 有关详细信息，请参阅[使用 Windows 虚拟桌面的问题-预配主机池 Azure Marketplace 产品/服务](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)。
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>使用 Windows 虚拟桌面的问题–预配主机池 Azure Marketplace 产品/服务
 
@@ -138,8 +138,16 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因2：** 域名未解析。
 
-**修复2：** 如果 Vm 未加入[会话主机 VM 配置](troubleshoot-vm-configuration.md)中的域，请参阅 "域名不能解析" 错误。
+**修复2：** 请参阅[错误：未](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)在[会话主机 VM 配置](troubleshoot-vm-configuration.md)中解析域名。
 
+**原因3：** 虚拟网络（VNET） DNS 配置已设置为**默认值**。
+
+若要解决此问题，请执行以下操作：
+
+1. 打开 Azure 门户，并中转到 "**虚拟网络**" 边栏选项卡。
+2. 找到 VNET，然后选择 " **DNS 服务器**"。
+3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 "**自定义**"。
+4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 "**添加 dns 服务器**" 字段中输入其值来添加它。
 
 ### <a name="error-your-deployment-failedunauthorized"></a>错误：部署失败。 ..\Unauthorized
 
@@ -159,7 +167,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因2：** 与连接发生暂时性错误。
 
-**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)中手动完成 VM 注册。
+**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中手动完成 VM 注册。
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许指定的管理员用户名
 
@@ -347,7 +355,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 **原因：** 指定的 Windows 虚拟桌面租户管理员要求 Azure 多重身份验证（MFA）进行登录。
 
-**修复：** 按照[教程：使用 PowerShell 创建服务主体和角色分配](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)中的步骤，创建服务主体，并为其分配一个适用于 Windows 虚拟桌面租户的角色。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后，重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板，具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
+**修复：** 按照[教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)中的步骤，创建服务主体，并为其分配一个适用于 Windows 虚拟桌面租户的角色。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后，重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板，具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
 
 如果你运行的是 Azure Marketplace 产品/服务，请提供以下参数的值，以正确地向 Windows 虚拟桌面进行身份验证：
 

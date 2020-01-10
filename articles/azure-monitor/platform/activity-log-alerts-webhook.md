@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552753"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748802"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -31,7 +31,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 ## <a name="payload-schema"></a>负载架构
 根据有效负载的 data.context.activityLog.eventSource 字段，POST 操作中包含的 JSON 有效负载会有所不同。
 
-### <a name="common"></a>常见
+### <a name="common"></a>通用
 
 ```json
 {
@@ -88,7 +88,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全性
 
 ```json
 {
@@ -257,7 +257,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-| 元素名称 | 描述 |
+| 元素名称 | Description |
 | --- | --- |
 | status |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
 | 上下文 |事件的上下文。 |
@@ -270,7 +270,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | timestamp |处理请求的 Azure 服务生成事件的时间。 |
 | resourceId |受影响资源的资源 ID。 |
 | resourceGroupName |受影响资源的资源组的名称。 |
-| 属性 |一组包含事件详细信息的 `<Key, Value>` 对（即 `Dictionary<String, String>`）。 |
+| properties |一组包含事件详细信息的 `<Key, Value>` 对（即 `Dictionary<String, String>`）。 |
 | event |包含有关事件的元数据的元素。 |
 | authorization |事件的基于角色的访问控制属性。 这些属性通常包括“action”、“role”和“scope”。 |
 | category |事件的类别。 支持的值包括“Administrative”、“Alert”、“Security”、“ServiceHealth”和“Recommendation”。 |
@@ -283,14 +283,14 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | 级别 |以下值之一：“Critical”、“Error”、“Warning”和“Informational”。 |
 | operationId |通常是在与单个操作对应的事件之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |事件的属性。 |
+| properties |事件的属性。 |
 | status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括 OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503）和 Gateway Timeout（HTTP 状态代码：504）。 |
 
-有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
+有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../../azure-monitor/platform/activity-logs-overview.md)。
+* [了解有关活动日志的更多信息](../../azure-monitor/platform/platform-logs-overview.md)。
 * [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

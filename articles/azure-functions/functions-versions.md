@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 977d0cb445369cbc51ce3b90712d58ce8b6ebdc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433080"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769109"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -72,13 +72,13 @@ Azure Functions 1.x 的实验性语言不能使用新模型，因此在2.x 中�
 
 * 默认情况下，将对消耗计划函数实施 HTTP 并发性限制，每个实例的并发请求数默认为 100。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
 
-* 由于 [.NET Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F# 脚本 (.fsx) 函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
+* 由于[.Net Core 限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对F#脚本（. .fsx）函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
 
 * 事件网格触发器 Webhook 的 URL 格式已更改为 `https://{app}/runtime/webhooks/{triggerName}`。
 
 ## <a name="migrating-from-2x-to-3x"></a>从1.x 迁移到2。x
 
-版本 3.x Azure Functions 与版本2.x 之间高度兼容。  许多应用程序应该能够安全地升级到3.x，无需进行任何代码更改。  在迁移到3.x 时，请确保在更改生产应用的主要版本之前运行大量测试。
+版本 3.x Azure Functions 与版本2.x 高度向后兼容。  许多应用程序应该能够安全地升级到3.x，无需进行任何代码更改。  在迁移到3.x 时，请确保在更改生产应用的主要版本之前运行大量测试。
 
 ### <a name="breaking-changes-between-2x-and-3x"></a>1\.x 和2.x 之间的重大更改
 
@@ -119,7 +119,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio 运行时版本
 
-在 Visual Studio 中，可在创建项目时选择运行时版本。 用于 Visual Studio 的 Azure Functions 工具支持这两个主要运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
+在 Visual Studio 中，可在创建项目时选择运行时版本。 适用于 Visual Studio Azure Functions 工具支持三种主要的运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
 
 ##### <a name="version-1x"></a>版本 1.x
 
@@ -147,10 +147,10 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>在 Visual Studio 中将2.x 应用更新到3。x
 
-您可以通过编辑 `.csproj` 文件并更新上述值，打开面向2.x 的现有函数并转到3.x。  Visual Studio 将基于项目的元数据自动管理运行时版本。  但是，如果从未创建了一个1.x 应用，则在 Visual Studio 中，你的计算机上尚不具有用于1.x 的模板和运行时。  这可能会出现错误，如 "没有与项目中指定的版本相匹配的函数运行时"。  若要提取最新的模板和运行时，请完成创建新函数项目的经验。  转到版本和模板选择屏幕后，请等待 Visual Studio 完成提取最新模板。  最新的 .NET Core 3 模板可用并显示后，您应该能够运行和调试为版本2.x 配置的任何项目。
+您可以通过编辑 `.csproj` 文件并更新上述值，打开面向2.x 的现有函数并转到3.x。  Visual Studio 将基于项目的元数据自动管理运行时版本。  不过，如果你从未创建了一个1.x 应用程序，但你的计算机上尚不具有用于1.x 的模板和运行时，则可能会出现这种情况。  这可能会出现错误，如 "没有与项目中指定的版本相匹配的函数运行时"。  若要提取最新的模板和运行时，请完成创建新函数项目的经验。  转到版本和模板选择屏幕后，请等待 Visual Studio 完成提取最新模板。  最新的 .NET Core 3 模板可用并显示后，您应该能够运行和调试为版本2.x 配置的任何项目。
 
 > [!IMPORTANT]
-> 仅当使用版本16.4 或更高版本时，才能在 Visual Studio 中开发版本1.x 函数。
+> 仅当使用 Visual Studio 版本16.4 或更高版本时，才能在 Visual Studio 中开发版本1.x 函数。
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code 和 Azure Functions Core Tools
 

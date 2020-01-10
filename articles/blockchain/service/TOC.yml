@@ -49,6 +49,8 @@
       href: manage-consortium-powershell.md
     - name: 使用逻辑应用
       href: ethereum-logic-app.md
+    - name: 监视 Azure 区块链服务
+      href: monitor-azure-blockchain-service.md
 - name: 区块链数据管理器
   items:
     - name: 数据管理器概述

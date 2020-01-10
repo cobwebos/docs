@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 1/08/2020
 ms.author: raynew
-ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621108"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754519"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -26,7 +26,7 @@ ms.locfileid: "73621108"
 
 下表汇总了 Azure VM 灾难恢复所涉及的组件。
 
-**组件** | **要求**
+组件 | **要求**
 --- | ---
 **源区域中的 VM** | [受支持源区域](azure-to-azure-support-matrix.md#region-support)中的一个或多个 Azure VM。<br/><br/> VM 可以运行任何[受支持的操作系统](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **源 VM 存储** | 可以管理 Azure VM；它们还可以包含分散在不同存储帐户之间的非托管磁盘。<br/><br/>[了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支持的 Azure 存储。
@@ -44,7 +44,7 @@ ms.locfileid: "73621108"
 --- | ---
 **目标订阅** | 与源订阅相同。
 **目标资源组** | VM 在故障转移后所属的资源组。<br/><br/> 该组可以位于除源区域以外的其他任何 Azure 区域。<br/><br/> Site Recovery 将在目标区域中创建一个带有“asr”后缀的新资源组。<br/><br/>
-**目标 VNet** | 复制的 VM 在故障转移后所处的虚拟网络 (VNet)。 创建源虚拟网络与目标虚拟网络之间的网络映射，反之亦然。<br/><br/> Site Recovery 将创建带有“asr”后缀的新 VNet 和子网。
+**目标 VNet** | 复制的 VM 在故障转移后所处的虚拟网络 (VNet)。 系统会在源虚拟网络和目标虚拟网络之间创建网络映射，反之亦然。<br/><br/> Site Recovery 将创建带有“asr”后缀的新 VNet 和子网。
 **目标存储帐户** |  如果 VM 不使用托管磁盘，则会将数据复制到此存储帐户。<br/><br/> Site Recovery 将在目标区域中创建新的存储帐户，以镜像源存储帐户。
 **副本托管磁盘** | 如果 VM 使用托管磁盘，则会将数据复制到此副本托管磁盘。<br/><br/> Site Recovery 将在存储区域中创建副本托管磁盘用于镜像源。
 **目标可用性集** |  复制的 VM 在故障转移后所处的可用性集。<br/><br/> 对于源位置中某个可用性集内的 VM，Site Recovery 将在目标区域中创建一个带有“asr”后缀的可用性集。 如果存在某个可用性集，则会使用该可用性集，而不会新建。
@@ -63,10 +63,10 @@ ms.locfileid: "73621108"
 
 启用 Azure VM 复制时，Site Recovery 默认会使用下表中汇总的默认设置创建新的复制策略。
 
-**策略设置** | **详细信息** | **默认**
+**策略设置** | **详细信息** | **Default**
 --- | --- | ---
 **恢复点保留期** | 指定 Site Recovery 保留恢复点的时间长短 | 24 小时
-**应用一致性快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每 4 小时
+**应用一致性快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每4小时
 
 ### <a name="managing-replication-policies"></a>管理复制策略
 
@@ -93,7 +93,7 @@ Site Recovery 按如下所述创建快照：
 
 ### <a name="consistency"></a>一致性
 
-下表提供了不同类型的一致性的相关说明。
+下表描述了不同类型的一致性。
 
 ### <a name="crash-consistent"></a>崩溃一致性
 
@@ -123,7 +123,7 @@ Site Recovery 按如下所述创建快照：
 
 ## <a name="connectivity-requirements"></a>连接要求
 
- 复制的 Azure VM 需要出站连接。 Site Recovery 不必与 VM 建立入站连接。 
+ 复制的 Azure VM 需要出站连接。 Site Recovery 不需要与 VM 进行入站连接。 
 
 ### <a name="outbound-connectivity-urls"></a>出站连接 (URL)
 
@@ -131,7 +131,7 @@ Site Recovery 按如下所述创建快照：
 
 | **URL** | **详细信息** |
 | ------- | ----------- |
-| *.blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| \* .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
 | *.servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
@@ -139,23 +139,25 @@ Site Recovery 按如下所述创建快照：
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 若要使用 IP 地址控制 VM 的出站连接，请允许这些地址。
-请注意，可以在[网络白皮书](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)中找到网络连接要求的详细信息 
+请注意，可以在 "[网络" 白皮书](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)中找到网络连接要求的详细信息 
 
 #### <a name="source-region-rules"></a>源区域规则
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<区域名称 >。
+允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<区域名称 >
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的网络安全组 (NSG) 规则。  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许访问对应于目标位置的 [Site Recovery 终结点](https://aka.ms/site-recovery-public-ips)。 
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<区域名称 >
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
 
 #### <a name="target-region-rules"></a>目标区域规则
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于目标区域中存储帐户的范围。 | 储存.\<区域名称 >。
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<区域名称 >
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的 NSG 规则。  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许访问对应于源位置的 [Site Recovery 终结点](https://aka.ms/site-recovery-public-ips)。 
+允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<区域名称 >
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 规则控制访问

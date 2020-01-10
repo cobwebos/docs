@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13 - 管理 VM 安全性
       href: tutorial-azure-security.md
-    - name: 14 - 部署 Jenkins
+    - name: 14a - 通过 Jenkins 生成
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a - 使用 Azure Pipelines 进行部署
+    - name: 14b - 使用 Azure Pipelines 进行部署（经典）
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b - 使用 Azure Pipelines 进行 CI/CD
+    - name: 15 - 将 CI/CD 与 Azure Pipelines 配合使用 (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - 创建 LAMP 堆栈
       href: tutorial-lamp-stack.md

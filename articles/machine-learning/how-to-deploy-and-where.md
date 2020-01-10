@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/17/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 51d5afc365c33fe6d4cb719263bad19341170415
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
-ms.translationtype: HT
+ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689314"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754005"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -164,6 +164,13 @@ ms.locfileid: "75689314"
 你可以使用以下计算目标或计算资源来托管你的 web 服务部署：
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+## <a name="single-versus-multi-model-endpoints"></a>单个和多模型终结点
+Azure ML 支持在单个终结点后部署单个或多个模型。
+
+多模型终结点使用共享容器来承载多个模型。 这有助于降低开销，提高利用率，并使你能够将模块组合到整体中。 在部署脚本中指定的模型将装载并在服务容器的磁盘上提供，你可以按需将其加载到内存中，并基于在评分时间请求的特定模型进行评分。
+
+有关演示如何使用单个容器化终结点后面的多个模型的 E2E 示例，请参阅[此示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
 ## <a name="prepare-to-deploy"></a>准备部署
 
@@ -618,6 +625,9 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 ### <a id="aks"></a>Azure Kubernetes 服务（开发/测试和生产）
 
 请参阅[部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
+
+### <a name="ab-testing-controlled-rollout"></a>A/B 测试（受控推出）
+有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 

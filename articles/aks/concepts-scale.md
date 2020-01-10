@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048194"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768616"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -29,7 +29,9 @@ ms.locfileid: "74048194"
 
 可以手动缩放副本 (Pod) 和节点，以测试应用程序如何响应可用资源和状态的更改。 手动缩放资源还可以定义用于维持固定成本的设定数量的资源，例如节点数。 若要手动缩放，请定义副本或节点计数。 然后，Kubernetes API 计划基于该副本或节点计数创建其他 pod 或排出节点。
 
-若要开始使用手动缩放 Pod 和节点，请参阅[在 AKS 中缩放应用程序][aks-scale]。
+缩小节点时，Kubernetes API 调用相关的 Azure 计算 API，该 API 与群集使用的计算类型相关联。 例如，对于基于 VM 规模构建的群集，会设置用于选择要删除的节点的逻辑，由 VM 规模集 API 决定。 若要详细了解如何选择在缩减时删除节点，请参阅[VMSS 常见问题解答](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
+
+若要开始手动缩放 pod 和节点，请参阅[在 AKS 中缩放应用程序][aks-scale]。
 
 ## <a name="horizontal-pod-autoscaler"></a>水平 Pod 自动缩放程序
 
@@ -39,13 +41,13 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 为给定部署配置水平 Pod 自动缩放程序时，请定义可运行的最小和最大副本数。 还可以定义指标以监视任何缩放决策并以此为依据，例如 CPU 使用情况。
 
-若要开始使用 AKS 中的水平 Pod 自动缩放程序，请参阅[在 AKS 中自动缩放 Pod][aks-hpa]。
+若要开始在 AKS 中自动缩放程序横向 pod，请参阅[AKS 中的自动缩放箱][aks-hpa]。
 
 ### <a name="cooldown-of-scaling-events"></a>缩放事件的冷却时间
 
 由于水平 Pod 自动缩放程序每 30 秒检查一次指标 API，因此在进行另一次检查之前，先前的缩放事件可能尚未成功完成。 此行为可能会导致水平 pod 自动缩放程序更改副本的数量，然后上一个缩放事件才能接收应用程序工作负荷和资源需求进行相应调整。
 
-为最大限度地减少这些争用事件，可以设置冷却时间值或延迟值。 这些值定义水平 Pod 自动缩放程序在执行一个缩放事件之后，触发另一个缩放事件之前必须等待的时间。 此行为允许新的副本计数生效，而指标 API 则反映分布式工作负荷。 默认情况下，纵向扩展事件的延迟为 3 分钟，纵向缩减事件的延迟为 5 分钟
+若要最大程度减少争用事件，请设置 cooldown 或延迟值。 这些值定义水平 Pod 自动缩放程序在执行一个缩放事件之后，触发另一个缩放事件之前必须等待的时间。 此行为允许新的副本计数生效，而指标 API 则反映分布式工作负荷。 默认情况下，纵向扩展事件的延迟为 3 分钟，纵向缩减事件的延迟为 5 分钟
 
 目前，无法从默认值调整这些 cooldown 值。
 
@@ -81,7 +83,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 ![Kubernetes 迸发缩放到 ACI](media/concepts-scale/burst-scaling.png)
 
-使用 ACI，可以快速部署容器实例，而无需额外的基础结构开销。 当与 AKS 连接时，ACI 会成为 AKS 群集的安全逻辑扩展。 [虚拟节点][virtual-nodes-cli]组件（基于[virtual Kubelet][virtual-kubelet]）安装在 AKS 群集中，该群集将 ACI 显示为虚拟 Kubernetes 节点。 然后，Kubernetes 可以计划通过虚拟节点作为 ACI 实例运行的 Pod，而不是直接在 AKS 群集中的 VM 节点上运行的 Pod。 虚拟节点目前在 AKS 中预览。
+使用 ACI，可以快速部署容器实例，而无需额外的基础结构开销。 当与 AKS 连接时，ACI 会成为 AKS 群集的安全逻辑扩展。 [虚拟节点][virtual-nodes-cli]组件（基于[virtual Kubelet][virtual-kubelet]）安装在 AKS 群集中，该群集将 ACI 显示为虚拟 Kubernetes 节点。 然后，Kubernetes 可以计划通过虚拟节点作为 ACI 实例运行的 Pod，而不是直接在 AKS 群集中的 VM 节点上运行的 Pod。 虚拟节点当前在 AKS 中为预览版。
 
 应用程序无需修改即可使用虚拟节点。 集群自动缩放程序在 AKS 集群中部署新节点后，部署可以跨 AKS 和 ACI 进行缩放，且没有延迟。
 
@@ -89,10 +91,10 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始缩放应用程序，请首先按照[使用 Azure CLI 创建 AKS 群集的快速入门][aks-quickstart]进行操作。 然后，可以开始手动或自动缩放 AKS 群集中的应用程序：
+若要开始缩放应用程序，首先请按照快速入门中的步骤，[使用 Azure CLI 创建 AKS 群集][aks-quickstart]。 然后，可以开始手动或自动缩放 AKS 群集中的应用程序：
 
-- 手动缩放 [Pod][aks-manually-scale-pods] 或[节点][aks-manually-scale-nodes]
-- 使用[水平 Pod 自动缩放程序][aks-hpa]
+- 手动缩放[pod][aks-manually-scale-pods]或[节点][aks-manually-scale-nodes]
+- 使用[水平 pod 自动缩放程序][aks-hpa]
 - 使用[群集自动缩放程序][aks-cluster-autoscaler]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：

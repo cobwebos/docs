@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2cde70579e61d1911008f7c8126ad7bda132eac1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
-ms.translationtype: HT
+ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563490"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754107"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -30,7 +30,7 @@ ms.locfileid: "75563490"
 
 ## <a name="benefits-of-knowledge-store"></a>知识存储的优势
 
-知识存储为您提供了结构、上下文和实际内容-从非结构化和半结构化数据文件（如 blob、已经历过分析的图像文件，甚至是结构化数据）的搜集。 在分步[演练](knowledge-store-howto.md)中，你可以看到密集 JSON 文档如何分区到子结构中、重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷。
+知识存储为您提供了结构、上下文和实际内容-从非结构化和半结构化数据文件（如 blob、已经历过分析的图像文件，甚至是结构化数据）的搜集。 在分步[演练](knowledge-store-create-rest.md)中，你可以看到密集 JSON 文档如何分区到子结构中、重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷。
 
 尽管查看 AI 扩充管道可产生的功能非常有用，但知识存储的实际潜能就是能够改变数据的形状。 你可以从基本技能集入手，然后循环访问它以添加越来越多的结构级别，这样就能将它们合并成新结构，可用于除 Azure 认知搜索以外的其他应用。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 73aa4a8a5dad0e2839c6a643f2ab58494d55458a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 8f17a3ffbbee2bc702be1c2c690a1d6c85d792cb
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450651"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751051"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[常见监视数据平台](data-platform.md)。 通过将数据收集到此平台，可以使用 Azure Monitor 中的一组常用工具来一起分析多个资源中的数据。 还可以将监视数据发送到其他位置以支持特定方案，并且某些资源可能会写入到其他位置，然后才能将这些数据收集到日志或指标中。
@@ -67,7 +67,7 @@ Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platfo
 ![Azure 订阅](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure 活动日志 
-[Azure 活动日志](activity-logs-overview.md)包含服务运行状况记录以及对 Azure 订阅中的资源所做的任何配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。
+[Azure 活动日志](platform-logs-overview.md)包含服务运行状况记录以及对 Azure 订阅中的资源所做的任何配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。
 
 | 目标 | Description | 参考 |
 |:---|:---|
@@ -100,7 +100,7 @@ Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platfo
 | 事件中心 | 使用事件中心将指标流式传输到其他位置。 |[将 Azure 监视数据流式传输到事件中心以便外部工具使用](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>资源日志
-[资源日志](resource-logs-overview.md)可让你深入了解 Azure 资源的_内部_操作。  资源日志是自动创建的，但您必须创建诊断设置，以便为每个资源指定收集的目标。
+[资源日志](platform-logs-overview.md)可让你深入了解 Azure 资源的_内部_操作。  资源日志是自动创建的，但您必须创建诊断设置，以便为每个资源指定收集的目标。
 
 资源日志的配置要求和内容因资源类型而异，但并不是所有服务都创建它们。 有关每个服务的详细信息，请参阅[Azure 资源日志支持的服务、架构和类别](diagnostic-logs-schema.md)，并链接到详细的配置过程。 如果该服务未在本文中列出，则该服务当前不会创建资源日志。
 

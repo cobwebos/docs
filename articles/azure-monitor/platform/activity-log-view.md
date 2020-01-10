@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 54a1d3e503ddb8b11109596decde94a2834dbf47
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529960"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749516"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
-[Azure 活动日志](activity-logs-overview.md)可深入了解 Azure 中发生的订阅级别事件。 本文提供了有关查看和检索活动日志事件的不同方法的详细信息。
+[Azure 活动日志](platform-logs-overview.md)可深入了解 Azure 中发生的订阅级别事件。 本文提供了有关查看和检索活动日志事件的不同方法的详细信息。
 
 ## <a name="azure-portal"></a>Azure 门户
 在 Azure 门户的 "**监视**" 菜单中查看所有资源的活动日志。 在该资源的菜单中，从**活动日志**选项查看特定资源的活动日志。

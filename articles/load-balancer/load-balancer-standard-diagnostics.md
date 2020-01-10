@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048725"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772034"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
 Azure 标准负载均衡器公开以下诊断功能：
 
-* **多维度量值和警报**：通过[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)为标准负载均衡器配置提供新的多维诊断功能。 你可以监视、管理标准负载均衡器资源并对其进行故障排除。
+* **多维度量值和警报**：通过对标准负载均衡器配置[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)提供多维诊断功能。 你可以监视、管理标准负载均衡器资源并对其进行故障排除。
 
 * **资源运行状况**： "Azure 门户" 和 "资源运行状况" 页（"监视" 下）中的 "负载均衡器" 页公开标准负载均衡器的资源运行状况部分。 
 
@@ -31,11 +31,11 @@ Azure 标准负载均衡器公开以下诊断功能：
 
 ## <a name = "MultiDimensionalMetrics"></a>多维指标
 
-Azure 负载均衡器通过 Azure 门户中的新 Azure 指标提供新的多维指标，并可帮助你获取负载均衡器资源的实时诊断见解。 
+Azure 负载均衡器通过 Azure 门户中的 Azure 指标提供多维指标，并可帮助你获取负载均衡器资源的实时诊断见解。 
 
 各种标准负载均衡器配置提供以下指标：
 
-| 度量值 | 资源类型 | 说明 | 建议的聚合 |
+| 度量值 | 资源类型 | Description | 建议的聚合 |
 | --- | --- | --- | --- |
 | 数据路径可用性（VIP 可用性）| 公共和内部负载均衡器 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。| 平均值 |
 | 运行状况探测状态（DIP 可用性） | 公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
@@ -142,7 +142,7 @@ VIP 可用性探测会出于原因而失败：
 
 获取字节或数据包计数统计信息：
 1. 选择“字节计数”和/或“数据包计数”作为指标类型，并选择“平均值”作为聚合。 
-2. 执行下列操作之一：
+2. 执行下列任一操作：
    * 在特定的前端 IP、前端端口、后端 IP 或后端端口应用筛选器。
    * 不使用任何筛选器获取负载均衡器资源的总体统计信息。
 
@@ -193,10 +193,10 @@ VIP 可用性探测会出于原因而失败：
  
 下表列出了各种资源运行状况及其说明： 
 
-| 资源运行状况 | 说明 |
+| 资源运行状况 | Description |
 | --- | --- |
 | 可用 | 标准负载均衡器资源正常且可用。 |
-| 不可用 | 标准负载均衡器资源不正常。 选择“Azure Monitor” **“指标”来诊断运行状况。**  > <br>（"*不可用*" 状态也可能表示资源未与标准负载均衡器连接。） |
+| 不可用 | 标准负载均衡器资源不正常。 选择“Azure Monitor” > “指标”来诊断运行状况。<br>（"*不可用*" 状态也可能表示资源未与标准负载均衡器连接。） |
 | 未知 | 尚未更新标准负载均衡器资源的资源运行状况状态。<br>（*未知*状态还可能意味着资源未与标准负载均衡器连接。）  |
 
 ## <a name="next-steps"></a>后续步骤

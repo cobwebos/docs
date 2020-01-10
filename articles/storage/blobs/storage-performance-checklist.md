@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613884"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749236"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能和可伸缩性清单
 
 Microsoft 已开发了许多经验证的做法，用于使用 Blob 存储开发高性能的应用程序。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
-Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅 [Azure 存储的存储帐户可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)和[Blob 存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="checklist"></a>清单
 
@@ -285,5 +285,6 @@ Azure 存储支持块 blob、追加 blob 和页 blob。 在给定的使用方案
 
 ## <a name="next-steps"></a>后续步骤
 
-- [存储帐户的 Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Blob 存储的可伸缩性和性能目标](scalability-targets.md)
+- [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [状态和错误代码](/rest/api/storageservices/Status-and-Error-Codes2)

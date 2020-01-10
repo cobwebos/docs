@@ -1315,6 +1315,8 @@
           href: springerlink-tutorial.md
         - name: Sprinklr
           href: sprinklr-tutorial.md
+        - name: 用于 Oracle E Business Suite EBS、PeopleSoft 和 JDE 的 SSOGEN Azure AD SSO 网关
+          href: ssogen-tutorial.md
         - name: StatusPage
           href: statuspage-tutorial.md
         - name: Stormboard

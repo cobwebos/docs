@@ -5,12 +5,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程，以及如何在 azds. yaml 配置文件中配置这些进程
 keywords: azds，yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280133"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771132"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces 的工作方式和配置方式
 
@@ -191,7 +191,7 @@ configurations:
 
 `prep` 命令生成的 `azds.yaml` 文件应该适用于简单的单一项目开发方案。 如果特定项目的复杂性增加，可能需要在运行 `prep` 命令后更新此文件。 例如，您的项目可能需要根据您的开发或调试需求对您的生成或启动过程进行一些调整。 你的项目中还可能有多个应用程序，这需要多个生成过程或不同的生成内容。
 
-## <a name="run-your-code"></a>运行你的代码
+## <a name="run-your-code"></a>运行代码
 
 若要在 dev 空间中运行代码，请在 `azds.yaml` 文件所在的目录中发出 `up` 命令：
 
@@ -205,7 +205,7 @@ azds up
 1. 为应用程序生成容器。
 1. 将应用程序部署到 dev 空间。
 1. 为应用程序终结点创建一个可公开访问的 DNS 名称（如果已配置）。
-1. 使用*端口转发*，通过 http://localhost提供对应用程序终结点的访问。
+1. 使用*端口转发*，通过 http://localhost 提供对应用程序终结点的访问。
 1. 将 stdout 和 stderr 转发到客户端工具。
 
 
@@ -220,7 +220,7 @@ azds up
 1. 控制器将 Helm 图表中的 *$ （标记）* 占位符替换为唯一的会话 ID，并为服务安装 Helm 图表。 将对唯一会话 ID 的引用添加到 Helm 图表后，可将部署到 AKS 群集中的容器的容器绑定回会话请求和关联的信息。
 1. 在安装 Helm 图表的过程中，Kubernetes webhook 许可服务器会向应用程序的 pod 添加其他容器，以便检测和访问项目的源代码。 添加 devspaces 和 devspaces init 容器以提供 HTTP 跟踪和空间路由。 添加了 devspaces 容器，以便为 pod 提供对 Docker 实例的访问和用于生成应用程序容器的项目源代码。
 1. 启动应用程序的 pod 后，将使用 devspaces 容器和 devspaces 初始化容器来生成应用程序容器。 然后，将启动应用程序容器和 devspaces 容器。
-1. 应用程序容器启动后，客户端功能将使用 Kubernetes*端口转发*功能，通过 http://localhost提供对应用程序的 HTTP 访问。 此端口转发将开发计算机连接到您的开发环境中的服务。
+1. 应用程序容器启动后，客户端功能将使用 Kubernetes*端口转发*功能，通过 http://localhost 提供对应用程序的 HTTP 访问。 此端口转发将开发计算机连接到您的开发环境中的服务。
 1. 如果已启动 pod 中的所有容器，则服务正在运行。 此时，客户端功能开始流式传输 HTTP 跟踪、stdout 和 stderr。 此信息由开发人员的客户端功能显示。
 
 ### <a name="updating-a-running-service"></a>更新正在运行的服务
@@ -267,7 +267,7 @@ azds up
 
 ### <a name="how-routing-works"></a>路由的工作原理
 
-Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concepts-network.md)。 Azure Dev Spaces 还具有一个集中式*ingressmanager*服务，并将其自己的入口控制器部署到 AKS 群集。 *Ingressmanager*服务会监视包含 dev 空间的 AKS 群集，并在群集中扩充 Azure Dev Spaces 入口控制器，其中包含用于路由到应用程序箱的入口对象。 每个 pod 中的 devspaces 容器将 HTTP 流量 `azds-route-as` 的 HTTP 标头添加到基于该 URL 的 dev 空间。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 会获得 `azds-route-as: azureuser`的 HTTP 标头。 Devspaces 容器将不会添加 `azds-route-as` 标头（如果已存在）。
+Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concepts-network.md)。 Azure Dev Spaces 还具有一个集中式*ingressmanager*服务，并将其自己的入口控制器部署到 AKS 群集。 *Ingressmanager*服务会监视包含 dev 空间的 AKS 群集，并在群集中扩充 Azure Dev Spaces 入口控制器，其中包含用于路由到应用程序箱的入口对象。 每个 pod 中的 devspaces 容器将 HTTP 流量 `azds-route-as` 的 HTTP 标头添加到基于该 URL 的 dev 空间。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 会获得 `azds-route-as: azureuser` 的 HTTP 标头。 Devspaces 容器将不会添加 `azds-route-as` 标头（如果已存在）。
 
 当从群集外部向服务发出 HTTP 请求时，请求将发送到入口控制器。 入口控制器根据请求的入口对象和规则将请求直接路由到相应的 pod。 Pod 中的 devspaces 容器接收请求，根据 URL 添加 `azds-route-as` 标头，然后将请求路由到应用程序容器。
 
@@ -440,4 +440,4 @@ ingress:
 
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

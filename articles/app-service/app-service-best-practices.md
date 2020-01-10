@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671493"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768480"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure 应用服务最佳实践
 本文汇总了有关使用 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)的最佳实践。 
@@ -37,7 +37,7 @@ ms.locfileid: "74671493"
 耗尽出站 TCP 连接的一个常见原因是使用的客户端库，未实施为重复使用 TCP 连接，或者使用了较高级别的协议（如 HTTP），因而未使用 Keep-Alive。 请查看应用服务计划中的应用引用的每个库，以确保在代码中配置或访问这些库时，能够有效地重复使用出站连接。 此外，请遵循有关正确执行创建和发布或清理操作的库指导文档，以避免连接泄漏。 在展开此类客户端库调查的过程中，可以通过向外扩展到多个实例来消除影响。
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js 和传出 http 请求
-使用 Node.js 和许多传出 http 请求时，处理 HTTP（保持活动状态）很重要。 可以使用 [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` 包更容易地在代码中实现此功能。
+使用 Node.js 和许多传出 http 请求时，处理 HTTP（保持活动状态）很重要。 你可以使用[agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` 包来使代码更容易。
 
 始终处理 `http` 响应，即使在处理程序中不执行任何操作，也要如此。 如果未正确处理响应，由于没有更多套接字可用，最终应用程序会停止响应。
 
@@ -65,3 +65,13 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="nodejs"></a>将新的 Node.js 应用部署到 Azure 应用服务时
 适用于 Node.js 应用的 Azure 应用服务默认配置旨在符合最常见应用的需求。 如果 Node.js 应用的配置可从个性化调整中受益，并提高性能或优化 CPU /内存/网络资源的资源使用情况，请参阅[有关 Azure 应用服务上节点应用程序的最佳做法和故障排除指南](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)。 本文介绍了可能需要为 Node.js 应用配置的 iisnode 设置，描述了应用可能面临的各种情况或问题，并说明了如何解决这些问题。
 
+
+## <a name="next-steps"></a>后续步骤
+有关最佳实践的详细信息，请访问[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，以了解特定于资源的可操作最佳方案。
+
+- 在[Azure 门户](https://portal.azure.com)中导航到 Web 应用。
+- 在左侧导航栏中单击 "**诊断和解决问题**"，这将打开应用服务诊断。
+- 选择**最佳方案**主页磁贴。
+- 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
+
+你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。

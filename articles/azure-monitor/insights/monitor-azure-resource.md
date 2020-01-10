@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0748047581945d513300d929c2d34d20099bf4d6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529688"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747306"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>利用 Azure Monitor 监视 Azure 资源
 如果你有依赖于 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure 资源生成的监视数据，以及如何使用 Azure Monitor 的功能对此数据进行分析和发出警报。
@@ -57,8 +57,8 @@ Azure 中的资源生成的[日志](../platform/data-platform-logs.md)和[指标
 
 
 - [平台指标](../platform/data-platform-metrics.md)-自动收集的数值，在特定时间自动收集并描述资源的某个方面。 
-- [资源日志](../platform/resource-logs-overview.md)-提供对 Azure 资源（数据平面）中执行的操作的深入了解，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容和结构因 Azure 服务和资源类型而异。
-- [活动日志](../platform/activity-logs-overview.md)-提供对外部（管理平面）订阅中每个 Azure 资源的操作的见解，例如创建新资源或启动虚拟机。 这是有关对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的信息。
+- [资源日志](../platform/platform-logs-overview.md)-提供对 Azure 资源（数据平面）中执行的操作的深入了解，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容和结构因 Azure 服务和资源类型而异。
+- [活动日志](../platform/platform-logs-overview.md)-提供对外部（管理平面）订阅中每个 Azure 资源的操作的见解，例如创建新资源或启动虚拟机。 这是有关对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的信息。
 
 
 ## <a name="configuration-requirements"></a>配置要求
@@ -67,8 +67,8 @@ Azure 中的资源生成的[日志](../platform/data-platform-logs.md)和[指标
 某些监视数据是自动收集的，但您可能需要根据您的要求执行一些配置。 有关每种类型的监视数据的特定信息，请参阅下面的信息。
 
 - [平台指标](../platform/data-platform-metrics.md)-平台指标会自动收集到[Azure Monitor 的指标](../platform/data-platform-metrics.md)中，无需进行任何配置。 创建诊断设置以将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
-- [资源日志](../platform/resource-logs-overview.md)-资源日志由 Azure 资源自动生成，但不收集诊断设置。  创建诊断设置以将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
-- [活动日志](../platform/activity-logs-overview.md)-自动收集活动日志，无需任何配置，可以在 Azure 门户中查看。 创建诊断设置以将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
+- [资源日志](../platform/platform-logs-overview.md)-资源日志由 Azure 资源自动生成，但不收集诊断设置。  创建诊断设置以将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
+- [活动日志](../platform/platform-logs-overview.md)-自动收集活动日志，无需任何配置，可以在 Azure 门户中查看。 创建诊断设置以将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作区
 将数据收集到 Azure Monitor 日志需要 Log Analytics 工作区。 您可以通过创建新的工作区来快速开始监视服务，但在使用从其他服务收集数据的工作区中，可能有一些值。 有关创建工作区和[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)的详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)，以帮助确定最佳的工作区设计以满足你的要求。 如果你在组织中使用现有的工作区，则需要如[管理 Azure Monitor 中的日志数据和工作区的访问](../platform/manage-access.md)中所述的相应权限。 

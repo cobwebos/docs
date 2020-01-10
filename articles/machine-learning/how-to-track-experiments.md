@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a2e328c5cf65aa700676a8f6af78cc342f2f51a
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
-ms.translationtype: HT
+ms.openlocfilehash: 03ea130011b23704731d68e5685e4ea0938e19b5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681440"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771796"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ ms.locfileid: "75681440"
 
 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
 
-下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[设置用于模型定型的计算目标 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)。
+下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[设置用于模型定型的计算目标 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets)。
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 
 

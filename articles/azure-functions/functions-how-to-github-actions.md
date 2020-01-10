@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433165"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769143"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
@@ -46,7 +46,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="download-the-publishing-profile"></a>下载发布配置文件
 
-可以通过转到应用的 "**概述**" 页，然后单击 "**获取发布配置文件**"，下载 functionapp 的发布配置文件。
+可以通过转到应用的 "**概述**" 页，然后单击 "**获取发布配置文件**"，下载 function app 的发布配置文件。
 
    ![下载发布配置文件](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -54,11 +54,14 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-1. 在[GitHub](https://github.com)中，浏览存储库，选择 "**设置**" > **机密** > **添加新机密**。
+1. 在[GitHub](https://github.com)中，浏览到存储库，选择 "**设置**" > **机密**" > **添加新机密**。
 
    ![添加机密](media/functions-how-to-github-actions/add-secret.png)
 
-1. 如果你随后选择 "**添加密钥**"，请将 `AZURE_CREDENTIALS` 用于值 **，并将**复制的命令输出用于**值**。 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为**名称**，并使用文件内容作为**值**。
+1. 添加新的机密。
+
+   * 如果你使用的是使用 Azure CLI 创建的服务主体，请使用 `AZURE_CREDENTIALS` 作为**名称**。 然后，粘贴复制的 JSON 对象输出以获取**值**，并选择 "**添加密钥**"。
+   * 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为**名称**。 然后，使用发布配置文件的文件内容作为**值**，并选择 "**添加密钥**"。
 
 GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 

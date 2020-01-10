@@ -4,12 +4,12 @@ description: 了解 Azure 容器实例中的容器组，它是共享生命周期
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442293"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770265"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -66,7 +66,7 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 ## <a name="networking"></a>联网
 
-容器组可以在该 IP 地址上共享面向外部的 IP 地址和端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 
+容器组可以共享一个面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及一个具有完全限定的域名（FQDN）的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 删除容器组后，将释放容器组的 IP 地址和 FQDN。 
 
 在容器组内，容器实例可以通过任意端口上的 localhost 互相连接，即使这些端口未在组的 IP 地址或容器中对外公开。
 
@@ -74,7 +74,13 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 ## <a name="storage"></a>存储空间
 
-可以指定要在容器组内装载的外部卷。 可以将这些卷映射到组中单个容器内的特定路径。
+可以指定要在容器组内装载的外部卷。 支持的卷包括：
+* [Azure 文件共享][azure-files]
+* [机密][secret]
+* [空目录][empty-directory]
+* [克隆的 git 存储库][volume-gitrepo]
+
+可以将这些卷映射到组中单个容器内的特定路径。 
 
 ## <a name="common-scenarios"></a>常见方案
 
@@ -110,5 +116,8 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

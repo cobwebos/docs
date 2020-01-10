@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 999743fb3eafddb236a039e2f3702065b1a236d6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2d49501b5888368345736047217177142d2e88d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540303"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75764042"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "75540303"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- 已在工作区中注册的机器学习模型。 如果没有已注册的模型，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 已在工作区中注册的机器学习模型。 如果没有已注册的模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
 
@@ -51,9 +51,9 @@ ms.locfileid: "75540303"
     * `model`-设置为已注册的模型。
     * `inference_config`-设置为模型的推理配置。
 
-    有关设置这些变量的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+    有关设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的__CLI__代码段假设你已创建 `inferenceconfig.json` 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 本文中的__CLI__代码段假设你已创建 `inferenceconfig.json` 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 

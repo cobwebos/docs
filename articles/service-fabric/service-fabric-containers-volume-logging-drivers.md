@@ -1,22 +1,21 @@
 ---
-title: Service Fabric Azure 文件卷驱动程序（GA）
+title: 适用于 Service Fabric 的 Azure 文件卷驱动程序
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464790"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750037"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure 文件卷驱动程序
-Azure 文件卷插件，为 Docker 容器提供基于[Azure 文件](/azure/storage/files/storage-files-introduction)的卷的[docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)现已**正式发布（公开发布）** 。
+# <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件卷驱动程序
 
-该 Docker 卷插件可在打包为 Service Fabric 应用程序后部署到 Service Fabric 群集。 该插件用于为部署到群集的其他 Service Fabric 容器应用程序提供基于 Azure 文件的卷。
+Azure 文件卷驱动程序是一个[docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，它为 docker 容器提供基于[Azure 文件](/azure/storage/files/storage-files-introduction)的卷。 它被打包为可部署到 Service Fabric 群集的 Service Fabric 应用程序，以便为群集内的其他 Service Fabric 容器应用程序提供卷。
 
 > [!NOTE]
-> Azure 文件卷插件的版本6.5.661.9590 是 GA （正式发布）版本。 
+> Azure 文件卷插件的版本6.5.661.9590 已发布正式发行版。
 >
 
 ## <a name="prerequisites"></a>必备组件
@@ -55,7 +54,6 @@ Azure 文件卷插件，为 Docker 容器提供基于[Azure 文件](/azure/stora
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>使用 Service Fabric Azure 文件卷驱动程序部署示例应用程序
 

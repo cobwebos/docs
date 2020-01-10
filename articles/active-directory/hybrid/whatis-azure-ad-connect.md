@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c984faf22b8e4cd499a5588f45d7072610f33544
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784460"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767919"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 
 * 用户可以使用单个标识来访问本地应用程序和云服务，例如 Office 365。
 * 单个工具即可提供轻松同步和登录的部署体验。
-* 为方案提供最新功能。 Azure AD Connect 取代了 DirSync 和 Azure AD Sync 等早期版本的标识集成工具。有关详细信息，请参阅 [混合标识目录集成工具比较](plan-hybrid-identity-design-considerations-tools-comparison.md)。
+* 为方案提供最新功能。 Azure AD Connect 替换旧版本的标识集成工具（例如 DirSync 和 Azure AD Sync）。有关详细信息，请参阅[混合标识目录集成工具比较](plan-hybrid-identity-design-considerations-tools-comparison.md)。
 
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health？
 使用 Azure AD 时，用户的工作效率更高，因为可以通过一个通用标识来访问云和本地资源。 确保环境可靠以便用户可以访问这些资源已成为一个难题。  Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构，从而确保此环境的可靠性。 这种方法就像在每个本地标识服务器上安装代理那样简单。
@@ -68,8 +68,8 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
-
-
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 的许可要求
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

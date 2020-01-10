@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463928"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771609"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -24,7 +24,7 @@ ms.locfileid: "75463928"
 
 ![文件结构](./media/storage-files-introduction/files-concepts.png)
 
-* **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户容量的详细信息，请参阅[可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+* **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户容量的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 * 共享：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量。 高级和标准文件共享的总容量为 100 TiB。
 
@@ -205,29 +205,40 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 |地区 |支持的冗余 |
 |-------|---------|
+|澳大利亚中部    |LRS     |
+|澳大利亚中部 2    |LRS     |
 |澳大利亚东部 |LRS     |
 |澳大利亚东南部|LRS |
+|巴西南部    |LRS     |
 |加拿大中部  |LRS     |
 |加拿大东部     |LRS     |
 |印度中部  |LRS     |
-|美国中部 *   |LRS     |
+|美国中部 *   |LRS、ZRS    |
 |亚洲东部      |LRS     |
 |美国东部 *        |LRS、ZRS|
-|美国东部 2 *      |LRS     |
+|美国东部 2 *      |LRS、ZRS     |
 |法国中部 |LRS、ZRS|
 |法国南部   |LRS     |
 |日本东部     |LRS     |
+|日本西部     |LRS     |
+|韩国中部  |LRS     |
+|韩国南部    |LRS     |
 |美国中北部 |LRS   |
 |欧洲北部   |LRS     |
 |印度南部    |LRS     |
 |美国中南部 |LRS     |
 |亚洲东南部 |LRS、ZRS|
+|瑞士北部    |LRS     |
+|瑞士西部    |LRS     |
 |阿拉伯联合酋长国中部    |LRS     |
-|英国南部   |LRS     |
+|阿拉伯联合酋长国北部    |LRS     |
+|英国北部   |LRS、ZRS    |
+|英国南部    |LRS     |
 |英国西部    |LRS     |
 |美国中西部|LRS     |
 |西欧 *    |LRS、ZRS|
-|美国西部 *        |LRS     |
+|印度西部   |LRS     |
+|美国西部        |LRS     |
 |美国西部 2      |LRS、ZRS|
 
 新帐户支持 \*，并非所有现有帐户都完成了升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
@@ -248,7 +259,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 可通过多种简单的选项将数据从现有文件共享（例如本地文件共享）批量传输到 Azure 文件。 几种常用选项包括（非详尽列表）：
 
-* Azure 文件同步：作为 Azure 文件共享（“云终结点”）和 Windows 目录命名空间（“服务器终结点”）之间首个同步的一部分，Azure 文件同步可将现有文件共享中的所有数据复制到 Azure 文件。
+* **[Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** ：作为 azure 文件共享（"云终结点"）和 Windows 目录命名空间（"服务器终结点"）之间首次同步的一部分，Azure 文件同步会将现有文件共享中的所有数据复制到 Azure 文件。
 * [Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
 * [Robocopy](https://technet.microsoft.com/library/cc733145.aspx)：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
 * [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)：AzCopy 是一个命令行实用工具，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。

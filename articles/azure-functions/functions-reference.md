@@ -4,12 +4,12 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974217"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768990"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -40,7 +40,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
-| properties | 值/类型 | 注释 |
+| 属性 | 值/类型 | 注释 |
 | --- | --- | --- |
 | `type` |字符串 |绑定类型。 例如，`queueTrigger` 。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
@@ -102,4 +102,4 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
+* [Azure Functions node.js 开发人员参考](functions-reference-node.md)

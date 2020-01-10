@@ -2,17 +2,17 @@
 title: 收集 & 分析资源日志
 description: 记录和分析 Azure 容器注册表的资源日志事件，例如身份验证、图像推送和图像拉取。
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456430"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748005"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志
 
-本文介绍如何使用[Azure Monitor](../azure-monitor/overview.md)的功能收集 Azure 容器注册表的日志数据。 Azure Monitor 为注册表中的用户驱动的事件收集[资源日志](../azure-monitor/platform/resource-logs-overview.md)（以前称为*诊断日志*）。 收集并使用此数据以满足以下需求：
+本文介绍如何使用[Azure Monitor](../azure-monitor/overview.md)的功能收集 Azure 容器注册表的日志数据。 Azure Monitor 为注册表中的用户驱动的事件收集[资源日志](../azure-monitor/platform/platform-logs-overview.md)（以前称为*诊断日志*）。 收集并使用此数据以满足以下需求：
 
 * 审核注册表身份验证事件以确保安全性和合规性 
 
@@ -22,13 +22,18 @@ ms.locfileid: "74456430"
 
 
 > [!IMPORTANT]
-> 此功能目前处于预览阶段，但有一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览阶段，但有一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="preview-limitations"></a>预览版限制
 
-存储库级事件的日志记录当前不包含 delete 或取消标记事件。 仅记录以下存储库事件：
-* 图像和其他项目的**推送事件**
-* **获取**图像和其他项目的事件
+当前记录了图像和其他项目的以下存储库级别事件：
+
+* **推送事件**
+* **请求事件**
+* **取消标记事件**
+* **删除事件**（包括存储库删除事件）
+
+当前未记录的存储库级事件：清除事件。
 
 ## <a name="registry-resource-logs"></a>注册表资源日志
 
@@ -42,7 +47,7 @@ ms.locfileid: "74456430"
   * 成功或失败状态
   * 开始和结束时间戳
 
-除资源日志以外，Azure 还提供[活动日志](../azure-monitor/platform/activity-logs-overview.md)（azure 管理事件的一个订阅级别记录，例如创建或删除容器注册表）。
+除资源日志以外，Azure 还提供[活动日志](../azure-monitor/platform/platform-logs-overview.md)（azure 管理事件的一个订阅级别记录，例如创建或删除容器注册表）。
 
 ## <a name="enable-collection-of-resource-logs"></a>启用资源日志收集
 

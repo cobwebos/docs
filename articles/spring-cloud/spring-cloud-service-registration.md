@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 72327e116e498ce0f6881a5c585a08e56c8bf8c2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 1a45e744db36be651e770f7b5c7cc6df530f887d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038738"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772051"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>发现和注册春季云服务
 
@@ -20,24 +20,7 @@ ms.locfileid: "72038738"
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>使用春季云服务注册表注册应用程序
 
 在应用程序可以使用春季云服务注册表管理服务注册和发现之前，应用程序的*pom*文件中必须包含几个依赖项。
-
-首先，将快照存储库添加到 pom 的*存储库*部分 *。*
-
-```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-```
-
-## <a name="include-dependencies"></a>包含依赖项
-
-接下来，我们将 netflix 的依赖项添加到 eureka，*并将其*用于*客户* *端，并*将云-
+将 netflix 的依赖项*包含在* *eureka-客户端*和*春季*---------云和
 
 ```xml
     <dependency>
@@ -47,7 +30,7 @@ ms.locfileid: "72038738"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.0</version>
     </dependency>
 ```
 

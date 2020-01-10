@@ -1,28 +1,28 @@
 ---
-title: 在 Azure 自动化中使用 SCCM 集合进行目标更新 - 更新管理
-description: 本文的目标是帮助你使用此解决方案配置 System Center Configuration Manager 以管理 SCCM 托管计算机的更新。
+title: 将 Azure 更新管理与 Configuration Manager 客户端配合使用
+description: 本文旨在帮助你配置 Microsoft Endpoint Configuration Manager 与此解决方案，以便将软件更新部署到 ConfigMgr 客户端。
 services: automation
 ms.subservice: update-management
 ms.date: 03/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: b52db95b6a6ce21a5e5b68342ac123526d11ca62
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417619"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769942"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>将 System Center Configuration Manager 与更新管理集成
+# <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Configuration Manager 客户端将更新部署到更新管理
 
-在软件更新管理 (SUM) 周期中，已经投资购买 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还可以依赖其在管理软件更新方面的优势和成熟度。
+已投资于 Microsoft 端点 Configuration Manager 来管理电脑、服务器和移动设备的客户还依赖于在软件更新管理（SUM）周期中管理软件更新的强度和成熟度。
 
-可以通过在 Configuration Manager 中创建和预暂存软件更新部署来报告和更新托管 Windows 服务器，并使用[更新管理解决方案](automation-update-management.md)获取已完成的更新部署的详细状态。 如果使用 Configuration Manager 提供 Windows 服务器的更新合规性报告而不使用它管理更新部署，则可以继续向 Configuration Manager 进行报告，而使用更新管理解决方案管理安全更新。
+可以通过在 Configuration Manager 中创建和预暂存软件更新部署来报告和更新托管 Windows 服务器，并使用[更新管理解决方案](automation-update-management.md)获取已完成的更新部署的详细状态。 如果将 Configuration Manager 用于更新相容性报告，但不使用 Windows server 管理更新部署，则可以继续向 Configuration Manager 报告，同时使用更新管理解决方案管理安全更新。
 
 ## <a name="prerequisites"></a>必备组件
 
 * 必须将[更新管理解决方案](automation-update-management.md)添加到自动化帐户。
-* 当前由 System Center Configuration Manager 环境管理的 Windows 服务器还需要向也启用了更新管理解决方案的 Log Analytics 工作区进行报告。
-* System Center Configuration Manager 当前分支版本 1606 和更高版本中启用了此功能。 若要将 Configuration Manager 管理中心站点或独立主站点与 Azure Monitor 日志和导入集合集成，请查看[Connect Configuration Manager 到 Azure Monitor 日志](../azure-monitor/platform/collect-sccm.md)。  
+* 当前由 Configuration Manager 环境管理的 Windows 服务器还需要向 Log Analytics 工作区进行报告，该工作区还启用了更新管理解决方案。
+* 此功能在 Configuration Manager 当前分支版本1606及更高版本中启用。 若要将 Configuration Manager 管理中心站点或独立主站点与 Azure Monitor 日志和导入集合集成，请查看[Connect Configuration Manager 到 Azure Monitor 日志](../azure-monitor/platform/collect-sccm.md)。  
 * 如果 Windows 代理不从 Configuration Manager 接收安全更新，则它们必须配置为与 Windows Server Update Services (WSUS) 服务器进行通信或有权访问 Microsoft 更新。   
 
 如何使用现有 Configuration Manager 环境管理 Azure IaaS 中托管的客户端主要取决于已在 Azure 数据中心与基础结构之间建立的连接。 此连接会影响你可能需要对 Configuration Manager 基础结构所做的任何设计更改，还会影响与支持这些必要更改相关的成本。 若要了解在继续操作之前需要评估哪些规划注意事项，请查看 [Azure 上的 Configuration Manager - 常见问题解答](/sccm/core/understand/configuration-manager-on-azure#networking)。

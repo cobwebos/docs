@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 91150251140379c15d4ab3711ded571c9ad2c024
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ace19f17f5d7a5e920808b76258459c0eba62890
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101649"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750542"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
@@ -32,8 +32,6 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基�
 > * 初始化 Oracle ASM 安装
 > * 创建由 ASM 管理的 Oracle DB
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
@@ -211,7 +209,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   如果使用上面提供的回答，fdisk 命令的输出应如下所示：
+   使用上面提供的答案，`fdisk` 命令的输出应如下所示：
 
    ```bash
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -247,7 +245,7 @@ ssh <publicIpAddress>
    Syncing disks.
    ```
 
-4. 针对 `/dev/sdd`、`/dev/sde` 和 `/dev/sdf` 重复上述 fdisk 命令。
+4. 对 `/dev/sdd`、`/dev/sde`和 `/dev/sdf`重复前面的 `fdisk` 命令。
 
 5. 检查磁盘配置：
 
@@ -255,7 +253,7 @@ ssh <publicIpAddress>
    cat /proc/partitions
    ```
 
-   此命令的输出应如下所示：
+   该命令的输出应如下所示：
 
    ```bash
    major minor  #blocks  name
@@ -428,7 +426,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在 "**类别**" 窗格中， > **SSH** > **Auth**中转到 "**连接**"。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 
@@ -512,7 +510,7 @@ ssh <publicIpAddress>
 
    此时会打开 Oracle ASM 配置助手。
 
-2. 在“配置 ASM:磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+2. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
 3. 在“创建磁盘组”对话框中：
 
@@ -524,7 +522,7 @@ ssh <publicIpAddress>
 
    ![“创建磁盘组”对话框屏幕截图](./media/oracle-asm/asm02.png)
 
-4. 在“配置 ASM:磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+4. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
 5. 在“创建磁盘组”对话框中：
 
@@ -539,7 +537,7 @@ ssh <publicIpAddress>
 
 6. 选择“退出”关闭 ASM 配置助手。
 
-   ![“配置 ASM: 磁盘组”对话框的屏幕截图，其中包含“退出”按钮](./media/oracle-asm/asm05.png)
+   ![包含“退出”按钮的“配置 ASM: 磁盘组”对话框屏幕截图](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>创建数据库
 

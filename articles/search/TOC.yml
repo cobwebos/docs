@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: 投影
       href: knowledge-store-projection-overview.md
-    - name: 增量索引
+    - name: 增量扩充
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: 操作方法指南
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: 映射到索引字段
               href: cognitive-search-output-field-mapping.md
-            - name: 处理和提取图像中的信息
+            - name: 提取图像中的信息
               href: cognitive-search-concept-image-scenarios.md
-            - name: 设置增量索引
+            - name: 缓存（增量）扩充
               href: search-howto-incremental-index.md
         - name: 自定义技能
           items:
@@ -330,7 +330,11 @@
     - name: .NET（管理）
       href: /rest/api/searchmanagement
     - name: REST（预览）
-      href: search-api-preview.md
+      items:
+        - name: API 版本 2019-05-06-Preview
+          href: search-api-preview.md
+        - name: ResetSkills API
+          href: preview-api-resetskills.md
     - name: 资源管理器模板
       href: /azure/templates/microsoft.search/searchservices
     - name: OData 语言参考

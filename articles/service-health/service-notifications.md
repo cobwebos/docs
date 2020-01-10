@@ -3,16 +3,16 @@ title: 使用 Azure 门户查看服务运行状况通知
 description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: c8017d23e0f7e3ab7bf48c9d7ba6b930fa80d0da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451421"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748652"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
-服务运行状况通知由 Azure 基础结构发布到[azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)。  通知包含有关订阅下的资源的信息。 由于活动日志中存储的信息可能很大，因此提供了一个单独的用户界面，用于更轻松地查看和设置有关服务运行状况通知的警报。 
+服务运行状况通知由 Azure 基础结构发布到[azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)。  通知包含有关订阅下的资源的信息。 由于活动日志中存储的信息可能很大，因此提供了一个单独的用户界面，用于更轻松地查看和设置有关服务运行状况通知的警报。 
 
 服务运行状况通知可能仅提供信息，也可能提示执行某个操作，具体取决于类别。
 

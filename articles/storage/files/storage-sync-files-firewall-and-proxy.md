@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4f37c54699329f43a5bbdd5c4543ae3a7b2166f5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048831"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750444"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -22,9 +22,9 @@ Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站�
 ## <a name="overview"></a>概述
 Azure 文件同步在 Windows Server、Azure 文件共享和多项其他的 Azure 服务之间充当业务流程服务，用于同步同步组中所述的数据。 需将服务器配置为与以下 Azure 服务通信，确保 Azure 文件同步正常工作：
 
-- Azure 存储空间
+- Azure 存储器
 - Azure 文件同步
-- Azure 资源管理器
+- Azure Resource Manager
 - 身份验证服务
 
 > [!Note]  
@@ -105,7 +105,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果你使用 GRS 存储帐户，则需要启用其他 Url，以允许服务器与 Azure 文件同步的配对区域通信。下表将调用此 "配对区域"。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
-| 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
+| 云  | 地区 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
 | 公共 |澳大利亚东部 | https：\//kailani-aue.one.microsoft.com | 澳大利亚东南部 | https：\//tm-kailani-aue.one.microsoft.com |
 | 公共 |澳大利亚东南部 | https：\//kailani-aus.one.microsoft.com | 澳大利亚东部 | https：\//tm-kailani-aus.one.microsoft.com |
@@ -114,7 +114,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公共 | 加拿大东部 | https：\//kailani-cae.one.microsoft.com | 加拿大中部 | https：\//tm-kailani.cae.one.microsoft.com |
 | 公共 | 印度中部 | https：\//kailani-cin.one.microsoft.com | 印度南部 | https：\//tm-kailani-cin.one.microsoft.com |
 | 公共 | 美国中部 | https：\//kailani-cus.one.microsoft.com | 美国东部 2 | https：\//tm-kailani-cus.one.microsoft.com |
-| 公共 | 东亚 | https：\//kailani11.one.microsoft.com | 东南亚 | https：\//tm-kailani11.one.microsoft.com |
+| 公共 | 亚洲东部 | https：\//kailani11.one.microsoft.com | 亚洲东南部 | https：\//tm-kailani11.one.microsoft.com |
 | 公共 | 美国东部 | https：\//kailani1.one.microsoft.com | 美国西部 | https：\//tm-kailani1.one.microsoft.com |
 | 公共 | 美国东部 2 | https：\//kailani-ess.one.microsoft.com | 美国中部 | https：\//tm-kailani-ess.one.microsoft.com |
 | 公共 | 日本东部 | https：\//japaneast01.afs.azure.net | 日本西部 | https：\//tm-japaneast01.afs.azure.net |
@@ -122,18 +122,18 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公共 | 韩国中部 | https：\//koreacentral01.afs.azure.net/ | 韩国南部 | https：\//tm-koreacentral01.afs.azure.net/ |
 | 公共 | 韩国南部 | https：\//koreasouth01.afs.azure.net/ | 韩国中部 | https：\//tm-koreasouth01.afs.azure.net/ |
 | 公共 | 美国中北部 | https:\//northcentralus01.afs.azure.net | 美国中南部 | https:\//tm-northcentralus01.afs.azure.net |
-| 公共 | 北欧 | https：\//kailani7.one.microsoft.com | 西欧 | https：\//tm-kailani7.one.microsoft.com |
+| 公共 | 欧洲北部 | https：\//kailani7.one.microsoft.com | 欧洲西部 | https：\//tm-kailani7.one.microsoft.com |
 | 公共 | 美国中南部 | https:\//southcentralus01.afs.azure.net | 美国中北部 | https:\//tm-southcentralus01.afs.azure.net |
 | 公共 | 印度南部 | https：\//kailani-sin.one.microsoft.com | 印度中部 | https：\//tm-kailani-sin.one.microsoft.com |
-| 公共 | 东南亚 | https：\//kailani10.one.microsoft.com | 东亚 | https：\//tm-kailani10.one.microsoft.com |
+| 公共 | 亚洲东南部 | https：\//kailani10.one.microsoft.com | 亚洲东部 | https：\//tm-kailani10.one.microsoft.com |
 | 公共 | 英国南部 | https：\//kailani-uks.one.microsoft.com | 英国西部 | https：\//tm-kailani-uks.one.microsoft.com |
 | 公共 | 英国西部 | https：\//kailani-ukw.one.microsoft.com | 英国南部 | https：\//tm-kailani-ukw.one.microsoft.com |
 | 公共 | 美国中西部 | https:\//westcentralus01.afs.azure.net | 美国西部 2 | https：\//tm-westcentralus01.afs.azure.net |
-| 公共 | 西欧 | https：\//kailani6.one.microsoft.com | 北欧 | https：\//tm-kailani6.one.microsoft.com |
+| 公共 | 欧洲西部 | https：\//kailani6.one.microsoft.com | 欧洲北部 | https：\//tm-kailani6.one.microsoft.com |
 | 公共 | 美国西部 | https：\//kailani.one.microsoft.com | 美国东部 | https：\//tm-kailani.one.microsoft.com |
 | 公共 | 美国西部 2 | https：\//westus201.afs.azure.net | 美国中西部 | https：\//tm-westus201.afs.azure.net |
-| Government | 美国亚利桑那州政府 | https：\//usgovarizona01.afs.azure.us | 美国德克萨斯州政府 | https：\//tm-usgovarizona01.afs.azure.us |
-| Government | 美国德克萨斯州政府 | https:\//usgovtexas01.afs.azure.us | 美国亚利桑那州政府 | https:\//tm-usgovtexas01.afs.azure.us |
+| 政府 | US Gov 亚利桑那州 | https：\//usgovarizona01.afs.azure.us | US Gov 德克萨斯州 | https：\//tm-usgovarizona01.afs.azure.us |
+| 政府 | US Gov 德克萨斯州 | https:\//usgovtexas01.afs.azure.us | US Gov 亚利桑那州 | https:\//tm-usgovtexas01.afs.azure.us |
 
 - 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
 
@@ -144,6 +144,15 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 > - https：\//kailani.one.microsoft.com （主终结点：美国西部）
 > - https：\//kailani1.one.microsoft.com （配对的故障转移区域：美国东部）
 > - https：\//tm-kailani.one.microsoft.com （主要区域的发现 URL）
+
+## <a name="test-network-connectivity-to-service-endpoints"></a>测试与服务终结点的网络连接
+将服务器注册到 Azure 文件同步服务后，StorageSyncNetworkConnectivity cmdlet 和 ServerRegistration 可用于测试与特定于此服务器的所有终结点（Url）的通信。 当未完成通信阻止服务器完全使用 Azure 文件同步并且它可用于微调代理和防火墙配置时，此 cmdlet 可帮助进行故障排除。
+
+若要运行网络连接测试，请安装 Azure 文件同步代理版本9.1 或更高版本，并运行以下 PowerShell 命令：
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Test-StorageSyncNetworkConnectivity
+```
 
 ## <a name="summary-and-risk-limitation"></a>摘要和风险限制
 本文档前面部分的列表包含 Azure 文件同步目前用来通信的 URL。 防火墙必须能够允许发往这些域的出站流量。 Microsoft 会不断更新此列表。

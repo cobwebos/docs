@@ -3,12 +3,12 @@ title: 策略分配结构的详细信息
 description: 描述 Azure 策略使用的策略分配定义，用于将策略定义和参数关联到资源进行评估。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5f6b097b82d31926b7b5d3099d1f3f23669e78c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436381"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747197"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -55,7 +55,7 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 
 ## <a name="enforcement-mode"></a>强制模式
 
-**EnforcementMode**属性使客户能够测试现有资源上的策略的结果，而无需在[Azure 活动日志](../../../azure-monitor/platform/activity-logs-overview.md)中启动策略效果或触发条目。 这种情况通常称为 "What If"，并与安全部署做法保持一致。 **enforcementMode**不同于[禁用](./effects.md#disabled)的效果，因为这种效果会阻止资源评估发生。
+**EnforcementMode**属性使客户能够测试现有资源上的策略的结果，而无需在[Azure 活动日志](../../../azure-monitor/platform/platform-logs-overview.md)中启动策略效果或触发条目。 这种情况通常称为 "What If"，并与安全部署做法保持一致。 **enforcementMode**不同于[禁用](./effects.md#disabled)的效果，因为这种效果会阻止资源评估发生。
 
 此属性具有以下值：
 

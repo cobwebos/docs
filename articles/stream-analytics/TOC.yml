@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob 自定义路径模式
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: 优化流分析作业
+      items:
+        - name: 了解和调整流式处理单元
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: 提高查询性能
+          href: stream-analytics-parallelization.md
+        - name: 将输入重新分区
+          href: repartition.md
+        - name: 提高作业的吞吐量
+          href: stream-analytics-scale-jobs.md
     - name: 作业的状态
       href: job-states.md
     - name: 开窗函数
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: 监视作业 - Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: 缩放
-      items:
-        - name: 利用流单元进行缩放
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: 利用并行化进行缩放
-          items:
-            - name: 查询并行性
-              href: stream-analytics-parallelization.md
-            - name: 提高吞吐量
-              href: stream-analytics-scale-jobs.md
-        - name: 利用 ML 函数进行缩放
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: 使用重新分区功能进行缩放
-          href: repartition.md
     - name: 自动化
       items:
         - name: 使用 .NET SDK
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: 使用作业关系图进行调试
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: 利用 ML 函数进行缩放
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: 流分析查询语言
   items:
     - name: 内置函数

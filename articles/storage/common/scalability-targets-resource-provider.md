@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d8fc0e6e2f78d4438672a16674c3e257ca855a92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: e7fb118dbc53b36e01c8188b9013a3f739bf0c59
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486841"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747779"
 ---
 # <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Azure 存储资源提供程序的可伸缩性和性能目标
 
@@ -26,4 +26,4 @@ ms.locfileid: "75486841"
 ## <a name="see-also"></a>另请参阅
 
 - [标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)
-- [高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)
+- [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

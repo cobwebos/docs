@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807402"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747261"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -29,7 +29,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 你可以使用[活动日志警报](../azure-monitor/platform/activity-logs-overview.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 你可以使用[活动日志警报](../azure-monitor/platform/platform-logs-overview.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
 - 通知完成后，将提供一个*自助服务窗口*。 在此窗口中，可以查询受影响的虚拟机，并根据自己的计划需求开始维护。 自助服务时段通常约为35天。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
@@ -69,7 +69,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 - 在两个更新域（UDs）之间需要超过30分钟的 VM 恢复时间。 为了控制更新域之间的时间，一次只能在一个更新域 (UD) 的 VM 上触发维护。
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 
 **问：为什么需要立即重新启动虚拟机？**

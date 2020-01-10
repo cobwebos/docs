@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 中的 Windows 混合 Runbook 辅助角色运行状况更新管理
-description: 了解如何排查支持更新管理的 Windows 上的混合 Runbook 辅助角色的问题。
+title: 诊断 Windows 混合 Runbook 辅助角色-Azure 更新管理
+description: 了解如何对支持更新管理的 Windows 上的 Azure 自动化混合 Runbook 辅助角色进行故障排除和解决问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850119"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769806"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>了解更新管理中的 Windows 混合 Runbook 辅助角色运行状况
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>了解和解决更新管理中的 Windows 混合 Runbook 辅助角色运行状况
 
 可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
 

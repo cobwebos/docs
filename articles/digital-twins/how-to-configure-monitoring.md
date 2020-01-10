@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547087"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745460"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -26,7 +26,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 ## <a name="review-activity-logs"></a>查看活动日志
 
-通过 Azure [活动日志](../azure-monitor/platform/activity-logs-overview.md) 可以快速了解每个 Azure 服务实例的订阅级别事件和操作历史记录。
+通过 Azure [活动日志](../azure-monitor/platform/platform-logs-overview.md) 可以快速了解每个 Azure 服务实例的订阅级别事件和操作历史记录。
 
 订阅级别事件包括：
 
@@ -57,7 +57,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
 ## <a name="enable-customer-diagnostic-logs"></a>启用客户诊断日志
 
-可以为每个 Azure 实例设置 Azure [诊断设置](../azure-monitor/platform/resource-logs-overview.md)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
+可以为每个 Azure 实例设置 Azure [诊断设置](../azure-monitor/platform/platform-logs-overview.md)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
 
 诊断日志记录的示例包括：
 
@@ -127,8 +127,8 @@ Azure 的数字孪生还支持特定于应用程序的日志记录和安全审�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure [活动日志](../azure-monitor/platform/activity-logs-overview.md)。
+- 详细了解 Azure [活动日志](../azure-monitor/platform/platform-logs-overview.md)。
 
-- 通过阅读[诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)深入了解 Azure 诊断设置。
+- 通过阅读[诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)深入了解 Azure 诊断设置。
 
 - 阅读有关[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)的详细信息。

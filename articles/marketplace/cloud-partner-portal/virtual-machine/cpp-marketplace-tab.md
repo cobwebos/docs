@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824464"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762886"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虚拟机“市场”选项卡
 
@@ -32,12 +32,12 @@ ms.locfileid: "73824464"
 | **标题\***                 | 套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。  最大长度为 50 个字符。 |
 | **摘要\***               | 解决方案用途或功能的简短描述。  最大长度为 100 个字符。 |
 | **长摘要\***          | 解决方案的用途或功能。  最大长度为 256 个字符。 |
-| **说明\***           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
+| **Description\***           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
 | **Microsoft CSP 分销商渠道\*** | 现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。 |
 | **市场营销标识符\***  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **预览订阅 Id\*** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 将 URL 添加到文档、发行说明、常见问题解答等内容。 |
-| **建议的类别（最多5个）\*** | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许选择五个链接。  |
+| **建议的类别\*** | 最多选择两（2）个类别，包括主类别和辅助类别（可选）。 为每个主节点和/或辅助类别最多选择两个（2）个子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。 |
 |  |  |
 
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825600"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750930"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>为操作产品/服务创建新的 Dynamics 365
 
@@ -70,7 +70,7 @@ ms.locfileid: "73825600"
 
 #### <a name="type-of-test-drive"></a>测试驱动器的类型
 
-从以下选项中进行选择：
+从下列选项中进行选择：
 
 - **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** ：包含构成解决方案的所有 Azure 资源的部署模板。 适用于此方案的产品只使用 Azure 资源。
 - **[Dynamics 365 For Business central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** ： Microsoft 托管并维护企业中心企业资源规划系统（财务、运营、供应链、CRM 等）的测试驱动器服务（包括预配和部署）。  
@@ -99,11 +99,11 @@ ms.locfileid: "73825600"
 
 ### <a name="category"></a>类别
 
-选择最小值，最多三个类别。 这些内容将用于将你的产品/服务放入相应的 marketplace 搜索区域。 在产品/服务描述中，请务必了解你的产品/服务如何支持这些类别。 
+最多选择两（2）个类别，包括主类别和辅助类别（可选）。 为每个主节点和/或辅助类别最多选择两个（2）个子类别。 如果未选择任何子类别，你的产品/服务仍会在所选类别中被发现。
 
 ### <a name="industry"></a>行业
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+你可以选择在每个行业中最多选择两个行业和两个纵向。 当在搜索筛选器中使用行业和纵向时，以及在店面中应用时，这些类别用于显示您的产品/服务。  如果产品/服务面向特定行业和/或垂直，请确保在产品/服务描述中介绍产品/服务如何支持所选行业或纵向。  否则，如果您的产品/服务不是行业特定的，请不要进行选择并将本部分留空。
 
 ### <a name="app-version"></a>应用版本
 
@@ -140,7 +140,7 @@ ms.locfileid: "73825600"
 
 提供产品/服务的简短说明（最多100个字符）。 这可以用在 marketplace 搜索结果中。
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 
 提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。 
 
@@ -285,9 +285,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间只能设置为整小时数（例如 "2" 小时，"1.5" 无效）。  如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
 
-- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com)。
+- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) 。
 
-- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
+- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
 
 - **角色名称**（必需）：提供自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
 
@@ -337,7 +337,7 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **用户手册**（必需）：深入演练测试驱动器体验。 用户手册应确切地说明您希望客户从遇到该测试驱动器中获得的内容，并为他们可能遇到的任何问题提供参考。 文件必须采用 PDF 格式，并在上传后命名为（最多255个字符）。
 
-- **视频：添加视频**（可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，帮助他们更好地了解测试驱动器，包括如何成功使用产品/服务的功能并了解突出显示其优势的方案。
+- **视频：添加视频**（可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，以帮助他们更好地了解测试驱动器，包括如何成功使用产品/服务的功能并了解突出显示其优势的方案。
   - **名称**（必需）
   - **URL （仅限 YouTube 或 Vimeo）** （必需）
   - **缩略图（533 x 324px）** ：图像文件必须采用 PNG 格式。
@@ -377,4 +377,4 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [更新商业应用商店中的现有产品/服务](./update-existing-offer.md)
+- [在商业市场中更新现有的套餐](./update-existing-offer.md)

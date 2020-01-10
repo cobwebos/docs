@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: c4fe7a696461b617307c2cd87276a91d6a1edaeb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541460"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771626"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -439,4 +439,4 @@ Schedule:
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用适用于 Azure 机器学习的 CLI 扩展](service/reference-azure-machine-learning-cli.md)。
+了解如何[使用适用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。

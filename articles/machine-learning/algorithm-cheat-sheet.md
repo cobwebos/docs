@@ -1,5 +1,5 @@
 ---
-title: 机器学习算法备忘单
+title: 机器学习算法速查表
 titleSuffix: Azure Machine Learning
 description: 可打印机器学习算法备忘单可帮助你为 Azure 机器学习设计器中的预测模型选择正确的算法。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530776"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771506"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
@@ -60,6 +60,6 @@ Azure 机器学习具有大型算法库，来自***分类***、***推荐器系�
 
 * 请参阅[算法和模块参考](algorithm-module-reference/module-reference.md)中的算法和模块列表。
 
-* [教程：在 Azure 机器学习设计器中构建预测模型](service/ui-tutorial-automobile-price-train-score.md)。
+* [教程：在 Azure 机器学习设计器中构建预测模型](tutorial-designer-automobile-price-train-score.md)。
 
 * [了解深度学习和机器学习](concept-deep-learning-vs-machine-learning.md)。

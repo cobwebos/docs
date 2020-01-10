@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615049"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772612"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
@@ -212,11 +212,11 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序执行 IOPS 的方�
 
 #### <a name="references"></a>参考
 
-* [虚拟机磁盘的可伸缩性目标](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [高级页 blob 存储帐户的可伸缩性和性能目标](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 存储帐户的带宽通过存储帐户指标来度量： TotalIngress 和 TotalEgress。 带宽的阈值不同，具体取决于冗余和区域的类型。
 
-* [Blob、队列、表和文件的可伸缩性目标](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [标准存储帐户的可伸缩性和性能目标](../../storage/common/scalability-targets-standard-account.md)
 
 检查 TotalIngress 和 TotalEgress，以了解存储帐户冗余类型和区域的入口和出口限制。
 

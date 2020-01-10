@@ -1,6 +1,6 @@
 ---
-title: 排查更新管理问题
-description: 了解如何解决更新管理的问题。
+title: 排查 Azure 更新管理错误
+description: 了解如何对 Azure 中的更新管理解决方案进行故障排除和解决问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5346f2f11df2282a1cd2592db930f7ff829a2d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416783"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769789"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 4edf17026384ad8a6bfe4ecea847f4a91076634f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646568"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763583"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "75646568"
 > 尽管本文中的代码片段使用 TensorFlow 模型，但你可以将这些信息应用到支持 Gpu 的任何机器学习框架。
 
 > [!NOTE]
-> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](service/how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS，本文介绍特定于 GPU 的部署。
+> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS，本文介绍特定于 GPU 的部署。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -45,7 +45,7 @@ ms.locfileid: "75646568"
 
     * 若要创建并注册用于创建此文档的 Tensorflow 模型，请参阅[如何定型 Tensorflow 模型](how-to-train-tensorflow.md)。
 
-* 大致了解[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+* 大致了解[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="connect-to-your-workspace"></a>连接到你的工作区
 
@@ -94,7 +94,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > 只要存在 AKS 群集，Azure 就会向你收费。 完成后，请务必删除 AKS 群集。
 
-有关将 AKS 与 Azure 机器学习一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](service/how-to-deploy-azure-kubernetes-service.md)。
+有关将 AKS 与 Azure 机器学习一起使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ## <a name="write-the-entry-script"></a>写入条目脚本
 
@@ -135,7 +135,7 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-此文件的名称为 `score.py`。 有关输入脚本的详细信息，请参阅 "[如何部署" 和 "部署位置](service/how-to-deploy-and-where.md)"。
+此文件的名称为 `score.py`。 有关输入脚本的详细信息，请参阅 "[如何部署" 和 "部署位置](how-to-deploy-and-where.md)"。
 
 ## <a name="define-the-conda-environment"></a>定义 conda 环境
 
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 FPGA 上部署模型](service/how-to-deploy-fpga-web-service.md)
+* [在 FPGA 上部署模型](how-to-deploy-fpga-web-service.md)
 * [用 ONNX 部署模型](concept-onnx.md#deploy-onnx-models-in-azure)
 * [定型 Tensorflow DNN 模型](how-to-train-tensorflow.md)

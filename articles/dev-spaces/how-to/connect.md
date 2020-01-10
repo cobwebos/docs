@@ -5,12 +5,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: 了解如何使用 Azure Dev Spaces 将开发计算机连接到 AKS 群集
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482246"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770673"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>将开发计算机连接到 AKS 群集（预览版）
 
@@ -25,7 +25,7 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 * 使用 Azure Dev Spaces 重定向 AKS 群集与开发计算机上运行的代码之间的流量。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -35,7 +35,7 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 
 * 此时不支持 UDP。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli]。
@@ -96,11 +96,11 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 
 Azure Dev Spaces 在建立与 AKS 群集的连接后，将打开一个名为*AZDS*的终端窗口。 此终端窗口包含从 AKS 群集配置的所有环境变量和 DNS 条目。 在此终端窗口中或使用 Visual Studio Code 调试程序运行的任何代码都将连接到 AKS 群集。
 
-![最终](../media/how-to-connect/connect-terminal.png)
+![终端](../media/how-to-connect/connect-terminal.png)
 
 此外，Azure Dev Spaces 会创建一个名为 "*开发共享空间*" 的窗口，并将其全部输出。
 
-![Output](../media/how-to-connect/connect-output.png)
+![输出](../media/how-to-connect/connect-output.png)
 
 Azure Dev Spaces 还有一个显示连接状态的状态栏项目。
 
@@ -234,7 +234,7 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 
 将开发计算机连接到 AKS 群集后，将日志记录输出写入 " *Dev Spaces 连接*" 窗口。
 
-![Output](../media/how-to-connect/connect-output.png)
+![输出](../media/how-to-connect/connect-output.png)
 
 单击 "Azure Dev Spaces" 状态栏，然后选择 "*显示诊断信息*"。 此命令打印日志记录输出中的当前环境变量和 DNS 条目。
 
@@ -254,6 +254,6 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [gh-actions]: github-actions.md
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-quickstart]: ../quickstart-team-development.md
 [vs-code]: https://code.visualstudio.com/download

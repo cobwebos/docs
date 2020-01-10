@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461073"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763158"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -144,7 +144,7 @@ ms.locfileid: "75461073"
 | --- | --- | --- |
 | 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
 | 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
-| 文档包含集合中的对象太多 | 文档中的集合超出了[所有复杂集合限制的最大元素数](search-limits-quotas-capacity.md#index-limits) | 建议将文档中的复杂集合大小减小到低于限制，并避免高存储利用率。
+| 文档包含集合中的对象太多 | 文档中的集合超出了[跨所有复杂集合的最大元素数限制](search-limits-quotas-capacity.md#index-limits)"带有键 `'1000052'` 的文档的集合中 `'4303'` 对象（JSON 数组）。 在整个文档中，最多可以有 `'3000'` 个对象位于集合中。 请从集合中删除对象，然后重新尝试对文档进行索引。 " | 建议将文档中的复杂集合大小减小到低于限制，并避免高存储利用率。
 | 连接到目标索引时出现问题（重试后仍存在），因为该服务处于其他负载下，如查询或索引。 | 未能建立与更新索引的连接。 搜索服务负载过重。 | [向上缩放搜索服务](search-capacity-planning.md)
 | 搜索服务正在为服务更新进行修补，或者正在重新配置拓扑。 | 未能建立与更新索引的连接。 搜索服务当前处于关闭状态，搜索服务正在进行转换。 | 为服务配置至少3个副本，每个[SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)99.9% 的可用性
 | 基础计算/网络资源失败（极少） | 未能建立与更新索引的连接。 发生未知故障。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。

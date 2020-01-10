@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 2adf4ed18069a9504e3eaf7713724e1bf99c5e8e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e8a2a00014d0118301193337cc9bb544e4a07690
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536325"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770809"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -25,7 +25,7 @@ ms.locfileid: "75536325"
 >
 > * [启动、监视和取消定型运行](how-to-manage-runs.md)
 > * [用于定型运行的日志指标](how-to-track-experiments.md)
-> * [跟踪 eexperiments 与 MLflow](service/how-to-use-mlflow.md)
+> * [跟踪 eexperiments 与 MLflow](how-to-use-mlflow.md)
 > * [用 TensorBoard 进行可视化运行](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure 监视器

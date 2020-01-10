@@ -1,7 +1,7 @@
 ---
 title: 基于要在状态配置中使用的 STIG 的配置-Azure 自动化
 description: 了解 Azure 自动化中基于 STIG 的配置的配置。
-keywords: dsc，powershell，配置，安装程序
+keywords: dsc,powershell,配置,安装程序
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 224744bd49add514be165f4955739651fcbf6b61
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6215884a5f11e92d3a6ab61d86c338c30c090ee6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769976"
 ---
 # <a name="configuration-based-on-stig"></a>基于 STIG 的配置
 
@@ -39,10 +39,10 @@ PowerSTIG 通过提供[复合资源](https://github.com/microsoft/powerstig#powe
 生成配置后，可以使用[DSC 配置脚本](/powershell/scripting/dsc/configurations/configurations)来生成 mof 文件，并将[mof 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
 然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
 
-若要试用 PowerSTIG，请访问[PowerShell 库](http://www.powershellgallery.com)并下载解决方案，或者单击 "项目网站" 查看[文档](https://github.com/microsoft/powerstig)。
+若要试用 PowerSTIG，请访问[PowerShell 库](https://www.powershellgallery.com)并下载解决方案，或者单击 "项目网站" 查看[文档](https://github.com/microsoft/powerstig)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
 - [DSC 资源](/powershell/scripting/dsc/resources/resources)
-- [配置本地 Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaconfig)

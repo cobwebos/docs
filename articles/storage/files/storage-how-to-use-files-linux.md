@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209410"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772102"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -34,7 +34,7 @@ ms.locfileid: "74209410"
 uname -r
 ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**确保安装了 utils 包。**  
@@ -80,7 +80,7 @@ uname -r
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
     smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
-    fileHost=$(echo $fileHost | tr -d "/")
+    fileHost=$(echo $smbPath | tr -d "/")
 
     nc -zvw3 $fileHost 445
     ```
@@ -199,7 +199,7 @@ uname -r
 
 从 Linux 内核4.18 开始，作为旧原因被称为 `cifs` 的 SMB 内核模块公开了新的模块参数（通常称为*parm* ），称为 `disable_legacy_dialects`。 尽管在 Linux 内核4.18 中引入，但某些供应商已将此更改向后移植到它们支持的旧内核。 为方便起见，下表详细介绍了常见 Linux 发行版上此模块参数的可用性。
 
-| 分发 | 可以禁用 SMB 1 |
+| 分配 | 可以禁用 SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | 否 |
 | Ubuntu 18.04 | 是 |

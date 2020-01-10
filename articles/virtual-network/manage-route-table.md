@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: 809c0501c95b07f7c39a0885ea30c83507b90d53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.openlocfilehash: c57a1f7a676e5766dc7c022ae44e08750cccaf8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646942"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750599"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
@@ -64,7 +64,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 1. 在列表中选择要查看其详细信息的路由表。 在“设置”下，可以查看路由表中的“路由”，以及与该路由表关联的“子网”。
 1. 若要详细了解常见的 Azure 设置，请参阅以下信息：
 
-    * [活动日志](../azure-monitor/platform/activity-logs-overview.md)<br>
+    * [活动日志](../azure-monitor/platform/platform-logs-overview.md)<br>
     * [访问控制 (IAM)](../role-based-access-control/overview.md)<br>
     * [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
     * [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>

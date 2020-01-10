@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894073"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750941"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
 > [!NOTE]
 > 资源日志以前称为诊断日志。
 
-[Azure Monitor 的资源日志](../../azure-monitor/platform/resource-logs-overview.md)是由 Azure 服务发出的日志，这些日志描述了这些服务或资源的操作。 通过 Azure Monitor 可用的所有资源日志共享一个通用顶级架构，并灵活地为每个服务发出自己事件的唯一属性。
+[Azure Monitor 的资源日志](../../azure-monitor/platform/platform-logs-overview.md)是由 Azure 服务发出的日志，这些日志描述了这些服务或资源的操作。 通过 Azure Monitor 可用的所有资源日志共享一个通用顶级架构，并灵活地为每个服务发出自己事件的唯一属性。
 
 资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 本文介绍资源日志的顶级架构和每个服务的架构链接。
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| 名称 | 必需/可选 | 描述 |
+| 名称 | 必需/可选 | Description |
 |---|---|---|
 | time | 需要 | 事件时间戳 (UTC)。 |
 | resourceId | 需要 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -41,8 +41,8 @@ ms.locfileid: "74894073"
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
 | 标识 | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
-| 位置 | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
-| 属性 | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
+| location | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
+| properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>资源日志的服务特定架构
 资源诊断日志的架构因资源和日志类别而异。 此列表显示了所有可用的资源日志和链接到服务的服务和特定于类别的架构的服务。
@@ -137,9 +137,9 @@ ms.locfileid: "74894073"
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
 |Microsoft.DataFactory/factories|TriggerRuns|触发器运行日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
-|Microsoft.DataLakeAnalytics/accounts|Requests|请求日志|
+|Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|Requests|请求日志|
+|Microsoft.DataLakeStore/accounts|请求|请求日志|
 |DataShare/帐户|共享|共享|
 |DataShare/帐户|ShareSubscriptions|共享订阅|
 |DataShare/帐户|SentShareSnapshots|已发送共享快照|
@@ -152,14 +152,14 @@ ms.locfileid: "74894073"
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL 查询存储运行时统计信息|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL 查询存储等待统计信息|
-|DesktopVirtualization/工作区|检查点|检查点|
+|DesktopVirtualization/工作区|Checkpoint|Checkpoint|
 |DesktopVirtualization/工作区|错误|错误|
 |DesktopVirtualization/工作区|管理|管理|
 |DesktopVirtualization/工作区|源|源|
-|DesktopVirtualization/applicationGroups|检查点|检查点|
+|DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
 |DesktopVirtualization/applicationGroups|错误|错误|
 |DesktopVirtualization/applicationGroups|管理|管理|
-|DesktopVirtualization/hostPools|检查点|检查点|
+|DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
 |DesktopVirtualization/hostPools|错误|错误|
 |DesktopVirtualization/hostPools|管理|管理|
 |DesktopVirtualization/hostPools|连接|连接|
@@ -187,7 +187,7 @@ ms.locfileid: "74894073"
 |Microsoft.DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
 |EnterpriseKnowledgeGraph/服务|AuditEvent|AuditEvent 日志|
 |EnterpriseKnowledgeGraph/服务|DataIssue|DataIssue 日志|
-|EnterpriseKnowledgeGraph/服务|Requests|配置日志|
+|EnterpriseKnowledgeGraph/服务|请求|配置日志|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
@@ -265,10 +265,10 @@ ms.locfileid: "74894073"
 |Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
-|Microsoft.Sql/servers/databases|Errors|Errors|
+|Microsoft.Sql/servers/databases|错误|错误|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
 |Microsoft.Sql/servers/databases|超时|超时|
-|Microsoft.Sql/servers/databases|Blocks|Blocks|
+|Microsoft.Sql/servers/databases|块|块|
 |Microsoft.Sql/servers/databases|死锁数|死锁数|
 |Microsoft.Sql/servers/databases|审核|审核日志|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL 安全审核事件|
@@ -282,7 +282,7 @@ ms.locfileid: "74894073"
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
-|Microsoft.Sql/managedInstances/databases|Errors|Errors|
+|Microsoft.Sql/managedInstances/databases|错误|错误|
 |Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
@@ -313,7 +313,7 @@ ms.locfileid: "74894073"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关资源日志的详细信息](../../azure-monitor/platform/resource-logs-overview.md)
+* [了解有关资源日志的详细信息](../../azure-monitor/platform/platform-logs-overview.md)
 * [将资源资源日志流式传输到**事件中心**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源日志诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)

@@ -3,12 +3,12 @@ title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae10ef2a18ace13d7b86347674c04f972e1ab8d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456896"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749212"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
@@ -38,7 +38,7 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 Azure Lighthouse 和 Azure 委托的资源管理只在管理租户和被管理租户之间提供逻辑链接，而不会以物理方式移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。  在对被管理租户的资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
 
-实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)来满足其透明性要求。 如果企业租户已在管理租户与被管理租户之间建立了关系，则每个租户中的用户可以通过查看记录的活动，来监视和洞察另一租户中的用户所执行的操作。
+实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)来满足其透明性要求。 如果企业租户已在管理租户与被管理租户之间建立了关系，则每个租户中的用户可以通过查看记录的活动，来监视和洞察另一租户中的用户所执行的操作。
 
 ## <a name="onboarding-process-considerations"></a>登记过程注意事项
 

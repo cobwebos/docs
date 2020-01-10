@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c72357b0e60f36082a468063ecf2bca329cd70be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355303"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749657"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -44,7 +44,7 @@ ms.locfileid: "75355303"
 
 ## <a name="audit-log"></a>审核日志
 
-安全中心完成的大部分故障排除首先通过查看失败组件的[审核日志](../azure-monitor/platform/activity-logs-overview.md)记录展开。 通过审核日志，可以确定：
+安全中心完成的大部分故障排除首先通过查看失败组件的[审核日志](../azure-monitor/platform/platform-logs-overview.md)记录展开。 通过审核日志，可以确定：
 
 * 哪些操作已发生
 * 谁启动了该操作

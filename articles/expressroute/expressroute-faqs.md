@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437032"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770979"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -48,6 +48,14 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 可以。 设置 ExpressRoute 线路后，可以同时访问虚拟网络中的服务和其他 Azure 服务。 通过专用对等路径可连接到虚拟网络，通过 Microsoft 对等路径可连接到其他服务。
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Vnet 如何在 ExpressRoute 专用对等互连上播发？
+
+ExpressRoute 网关将播发 Azure VNet 的*地址空间*，不能在子网级别包含/排除。 它总是播发的 VNet 地址空间。 此外，如果使用 VNet 对等互连并且对等互连 VNet 启用了 "使用远程网关"，则还会播发对等互连 VNet 的地址空间。
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>能否筛选来自本地网络的路由？
+
+筛选/包含路由的唯一方法是在本地边缘路由器上。 用户定义的路由可以添加到 VNet 中以影响特定的路由，但这是静态的，而不是 BGP 播发的组成部分。
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>ExpressRoute 是否提供服务级别协议 (SLA)？
 
 有关信息，请参阅 [ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) 页。
@@ -73,7 +81,8 @@ ExpressRoute 支持[三个路由域](expressroute-circuit-peerings.md)，适用�
 * Azure Active Directory
 * [Windows 虚拟桌面](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
-* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。
+* 适用于 IaaS 的 Azure 公共 IP 地址（虚拟机、虚拟网络网关、负载均衡器等）  
+* 还支持大多数其他 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。
 
 **不支持：**
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847586"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762869"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -67,8 +67,8 @@ ms.locfileid: "74847586"
 
 要检查或修改组织的智能锁定值，请按以下步骤操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”。 选择 "**身份验证方法** > **密码保护**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”。 选择 "**安全** > **身份验证方法** > **密码保护**"。
 1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”。 默认值为 10。
 1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）。 默认值为 60 秒（一分钟）。
 

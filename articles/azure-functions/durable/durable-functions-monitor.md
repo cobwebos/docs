@@ -4,16 +4,16 @@ description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9c8edf5e8fb32160280a1ce9bff827c2e3fa14f8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232861"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769585"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
-监视模式是指工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -50,11 +50,11 @@ ms.locfileid: "74232861"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_SendGoodWeatherAlert` 返回 true，则此函数会调用 `E3_GetIsClear`。
+* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -124,7 +124,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 ## <a name="run-the-sample"></a>运行示例
 
-使用示例中包含的 HTTP 触发函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
+使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
 
 ```
 POST https://{host}/orchestrators/E3_Monitor
@@ -174,7 +174,7 @@ POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 > [!NOTE]
-> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。
+> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet 包以运行下面的示例代码。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 

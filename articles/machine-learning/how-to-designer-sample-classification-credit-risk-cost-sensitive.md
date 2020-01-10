@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: bfa50665d427775b8b45d377869787086ca5bf3d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660017"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763396"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器 & 使用 Python 脚本预测信用风险
 
@@ -165,6 +165,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
 - [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 5-分类：预测改动](service/how-to-designer-sample-classification-churn.md)
+- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
 - [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
 - [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

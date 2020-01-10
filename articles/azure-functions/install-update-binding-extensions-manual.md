@@ -3,12 +3,12 @@ title: 手动安装或更新 Azure Functions 绑定扩展
 description: 了解如何为已部署的函数应用安装或更新 Azure Functions 绑定扩展。
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977482"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768854"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>从门户手动安装或更新 Azure Functions 绑定扩展
 
@@ -22,7 +22,7 @@ ms.locfileid: "74977482"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到你的函数应用并选择它。 选择“概述”选项卡，然后选择“停止”。  停止函数应用可解锁文件，以便进行更改。
 
-1. 选择“平台功能”选项卡，然后在“开发工具”下选择“高级工具(Kudu)”。 将在新窗口中打开 Kudu 终结点 (`https://<APP_NAME>.scm.azurewebsites.net/`)。
+1. 选择“平台功能”选项卡，然后在“开发工具”下选择“高级工具(Kudu)”。 将在新窗口中打开 Kudu 终结点（`https://<APP_NAME>.scm.azurewebsites.net/`）。
 
 1. 在 Kudu 窗口中，选择“调试控制台” > “CMD”。  
 

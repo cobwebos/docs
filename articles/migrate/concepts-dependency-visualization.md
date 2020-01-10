@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494506"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772306"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -93,6 +93,6 @@ Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overvi
 
 ## <a name="next-steps"></a>后续步骤
 - [使用计算机依赖项分组计算机](how-to-create-group-machine-dependencies.md)
-- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)。
+- [详细了解有关依赖项可视化的常见问题解答](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
 
 

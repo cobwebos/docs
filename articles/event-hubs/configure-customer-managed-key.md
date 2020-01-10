@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705469"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744823"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>使用 Azure 门户（预览版）配置客户托管的密钥，以便静态加密 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密（Azure SSE）提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
@@ -87,7 +87,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 > 如果从密钥保管库中删除现有加密密钥，并将其替换为事件中心命名空间上的新密钥，因为删除密钥在长达一小时内仍有效（缓存），因此仍可访问旧数据（使用旧密钥加密） 使用新数据，现在只能使用新密钥进行访问。 此行为是在此功能的预览版本中设计的。 
 
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志 
-为启用了 BYOK 的命名空间设置诊断日志，可以在使用客户管理的密钥对命名空间进行加密时，提供有关操作的必需信息。 可以启用这些日志，稍后将其流式传输到事件中心，或通过 log analytics 进行分析或流式传输到存储，以执行自定义的分析。 若要了解有关诊断日志的详细信息，请参阅[Azure 诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)。
+为启用了 BYOK 的命名空间设置诊断日志，可以在使用客户管理的密钥对命名空间进行加密时，提供有关操作的必需信息。 可以启用这些日志，稍后将其流式传输到事件中心，或通过 log analytics 进行分析或流式传输到存储，以执行自定义的分析。 若要了解有关诊断日志的详细信息，请参阅[Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="enable-user-logs"></a>启用用户日志
 按照以下步骤为客户管理的密钥启用日志。
@@ -107,7 +107,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 ## <a name="log-schema"></a>日志架构 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目都具有使用下表中描述的格式的字符串字段。 
 
-| 名称 | 描述 |
+| 名称 | Description |
 | ---- | ----------- | 
 | TaskName | 失败的任务的说明。 |
 | ActivityId | 用于跟踪的内部 ID。 |
@@ -159,14 +159,14 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 
 | 行动 | 错误代码 | 数据的生成状态 |
 | ------ | ---------- | ----------------------- | 
-| 从密钥保管库中删除包装/解包权限 | 403 |    无法访问 |
-| 从授予了 "包装/解包" 权限的 AAD 主体中删除 AAD 角色成员身份 | 403 |  无法访问 |
-| 从密钥保管库中删除加密密钥 | 404 | 无法访问 |
+| 从密钥保管库中删除包装/解包权限 | 403 |    Inaccessible |
+| 从授予了 "包装/解包" 权限的 AAD 主体中删除 AAD 角色成员身份 | 403 |  Inaccessible |
+| 从密钥保管库中删除加密密钥 | 404 | Inaccessible |
 | 删除密钥保管库 | 404 | 无法访问（假定启用软删除，这是必需的设置。） |
-| 更改加密密钥的过期期限，使其已过期 | 403 |   无法访问  |
-| 更改 NBF （而不是之前）以使密钥加密密钥不处于活动状态 | 403 | 无法访问  |
-| 为 key vault 防火墙选择 "**允许 MSFT 服务**" 选项，或阻止对具有加密密钥的密钥保管库进行网络访问 | 403 | 无法访问 |
-| 将密钥保管库移到其他租户 | 404 | 无法访问 |  
+| 更改加密密钥的过期期限，使其已过期 | 403 |   Inaccessible  |
+| 更改 NBF （而不是之前）以使密钥加密密钥不处于活动状态 | 403 | Inaccessible  |
+| 为 key vault 防火墙选择 "**允许 MSFT 服务**" 选项，或阻止对具有加密密钥的密钥保管库进行网络访问 | 403 | Inaccessible |
+| 将密钥保管库移到其他租户 | 404 | Inaccessible |  
 | 间歇性网络问题或 DNS/AAD/MSI 中断 |  | 可使用缓存的数据加密密钥进行访问 |
 
 > [!IMPORTANT]

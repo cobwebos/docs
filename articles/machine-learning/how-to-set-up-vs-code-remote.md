@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: a91035773d4427f0f3c07097eb3e02fc08c5f375
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528753"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771813"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>使用 VS Code 远程在 Azure 机器学习计算实例上交互式调试
 
@@ -23,7 +23,7 @@ ms.locfileid: "75528753"
 > [!NOTE]
 > 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区。
 
-+ [Azure 机器学习计算实例](/azure/machine-learning/service/concept-compute-instance)是一种完全托管的基于云的数据科学家工作站，为 IT 管理员提供管理和企业就绪能力。 
++ [Azure 机器学习计算实例](concept-compute-instance.md)是一种完全托管的基于云的数据科学家工作站，为 IT 管理员提供管理和企业就绪能力。 
 
 
 + [Visual Studio Code 远程](https://code.visualstudio.com/docs/remote/remote-overview)开发使你可以使用容器、远程计算机或适用于 Linux 的 Windows 子系统（WSL）作为功能完备的开发环境。 
@@ -117,4 +117,4 @@ Host azmlci1
 
 现在，你已设置 Visual Studio Code 远程，你可以使用计算实例作为 Visual Studio Code 的远程计算，以便以交互方式调试你的代码。 
 
-[教程：训练首个 ML 模型](/azure/machine-learning/service/tutorial-1st-experiment-sdk-train)介绍如何将计算实例与集成笔记本一起使用。
+[教程：训练首个 ML 模型](tutorial-1st-experiment-sdk-train.md)介绍如何将计算实例与集成笔记本一起使用。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498396"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750786"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure 安全日志记录和审核
 
@@ -38,9 +38,9 @@ Azure 提供多种不同的可配置安全审核和日志记录选项，帮助�
 - 自动执行需要手动干预的操作
 
 Azure 日志划分为以下类型：
-* **控制/管理日志**提供有关 Azure 资源管理器 CREATE、UPDATE 和 DELETE 操作的信息。 有关详细信息，请参阅 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)。
+* **控制/管理日志**提供有关 Azure 资源管理器 CREATE、UPDATE 和 DELETE 操作的信息。 有关详细信息，请参阅 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
-* **数据平面日志**提供有关 Azure 资源使用中所引发事件的信息。 此类日志的示例是虚拟机 (VM) 中的 Windows 事件系统、安全性、应用程序日志以及通过 Azure Monitor 配置的[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)。
+* **数据平面日志**提供有关 Azure 资源使用中所引发事件的信息。 此类日志的示例是虚拟机 (VM) 中的 Windows 事件系统、安全性、应用程序日志以及通过 Azure Monitor 配置的[诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
 * **已处理的事件**提供已以用户名义处理的分析事件/警报的相关信息。 此类日志的示例是 [Azure 安全中心警报](../../security-center/security-center-managing-and-responding-alerts.md)，[Azure 安全中心](../../security-center/security-center-intro.md)已处理和分析了订阅，并提供简明的安全警报。
 
@@ -48,8 +48,8 @@ Azure 日志划分为以下类型：
 
 | 日志类别 | 日志类型 | 使用情况 | 集成 |
 | ------------ | -------- | ------ | ----------- |
-|[活动日志](../../azure-monitor/platform/activity-logs-overview.md)|Azure 资源管理器资源上的控制平面事件|  提供见解，方便用户了解对订阅中的资源执行的操作。|    Rest API、[Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure 资源日志](../../azure-monitor/platform/resource-logs-overview.md)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据|   提供见解，以便深入了解资源本身执行的操作。| Azure Monitor|
+|[活动日志](../../azure-monitor/platform/platform-logs-overview.md)|Azure 资源管理器资源上的控制平面事件|  提供见解，方便用户了解对订阅中的资源执行的操作。|    Rest API、[Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Azure 资源日志](../../azure-monitor/platform/platform-logs-overview.md)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据|   提供见解，以便深入了解资源本身执行的操作。| Azure 监视器|
 |[Azure Active Directory 报告](../../active-directory/reports-monitoring/overview-reports.md)|日志和报告 | 报告有关用户和组管理的用户登录活动和系统活动信息。|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[虚拟机和云服务](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows 事件日志服务和 Linux Syslog|  在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中的 Windows（使用 Windows Azure 诊断 [[WAD](../../monitoring-and-diagnostics/azure-diagnostics.md)] 存储）和 Linux|
 |[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|   REST API 或[客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)|

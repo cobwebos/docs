@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771234"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -61,7 +61,7 @@ Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递�
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
-
+- 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组 GOP 对齐的 Mp4。 根据给定的任何输入内容，该服务会对输入内容执行初始的轻型分析。 它将使用这些结果来确定最理想的层数、相应的比特率，以及用于通过自适应流式处理传递的分辨率设置。 此预设特别适用于低复杂性和中等复杂度的视频，其中的输出文件是低比特率，但仍会为查看器提供良好的体验。 输出将包含带有视频和音频交错的有文件的文件。 有关详细信息，请参阅[开放 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
 - 改善了 Media Encoder Standard 中 sizer 的性能和多线程处理。 在特定情况下，客户应看到 5-40% VOD 编码之间的性能提升。 编码为多个比特率的低复杂性内容会显示最高的性能。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间为可变帧速率（VFR）内容保留常规 GOP 节奏。  这意味着，如果客户提交的混合帧速率内容在 15-30 fps 之间有所不同，示例现在应查看在输出时计算为自适应比特率流式处理的文件。 这将提高在 HLS 或短划线交付时无缝切换跟踪的功能。 
 -  改善了可变帧速率（VFR）源内容的 AV 同步

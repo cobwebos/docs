@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 中处理人�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9346c53ec122b3e6fac124298029c7f8e70bf622
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232827"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769568"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -40,7 +40,7 @@ ms.locfileid: "74232827"
 * E4_SmsPhoneVerification
 * E4_SendSmsChallenge
 
-以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码）
 
@@ -93,7 +93,7 @@ E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播
 
 ## <a name="run-the-sample"></a>运行示例
 
-使用示例中包含的 HTTP 触发函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
+使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -153,7 +153,7 @@ Content-Length: 145
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 > [!NOTE]
-> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。
+> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet 包以运行下面的示例代码。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 

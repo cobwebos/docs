@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186119"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750801"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
 
 [Azure Monitor](../../azure-monitor/overview.md)允许你监视指标和诊断日志，以帮助你了解应用的执行情况。 Azure Monitor 收集的所有数据都适合以下两种基本类型之一：度量值和日志。 可以监视媒体服务诊断日志，并为收集的指标和日志创建警报和通知。 您可以使用[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)对指标数据进行可视化和分析。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
 
-有关详细概述，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/resource-logs-overview.md)。
+有关详细概述，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
 本主题讨论支持的[媒体服务指标](#media-services-metrics)和[媒体服务诊断日志](#media-services-diagnostic-logs)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74186119"
 
 可以监视下列帐户指标。
 
-|指标名称|显示名称|说明|
+|指标名称|显示名称|Description|
 |---|---|---|
 |AssetCount|资产计数|帐户中的资产。|
 |AssetQuota|资产配额|帐户中的资产配额。|
@@ -60,7 +60,7 @@ ms.locfileid: "74186119"
 
 支持以下 Media Services[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)度量值：
 
-|指标名称|显示名称|说明|
+|指标名称|显示名称|Description|
 |---|---|---|
 |请求|请求|提供流式处理终结点提供的 HTTP 请求总数。|
 |流出量|流出量|出口字节总数。 例如，流式处理终结点流式传输的字节数。|
@@ -84,7 +84,7 @@ ms.locfileid: "74186119"
 
 ## <a name="media-services-diagnostic-logs"></a>媒体服务诊断日志
 
-诊断日志提供有关 Azure 资源操作的丰富、频繁的数据。 有关详细信息，请参阅[如何从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/resource-logs-overview.md)。
+诊断日志提供有关 Azure 资源操作的丰富、频繁的数据。 有关详细信息，请参阅[如何从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/platform-logs-overview.md)。
 
 媒体服务支持以下诊断日志：
 
@@ -92,7 +92,7 @@ ms.locfileid: "74186119"
 
 ### <a name="key-delivery"></a>密钥传递
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |密钥传送服务请求|显示密钥传送服务请求信息的日志。 有关详细信息，请参阅[架构](media-services-diagnostic-logs-schema.md)。|
 
@@ -111,7 +111,7 @@ ms.locfileid: "74186119"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/resource-logs-overview.md)
+* [如何从 Azure 资源收集和使用日志数据](../../azure-monitor/platform/platform-logs-overview.md)
 * [使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/platform/alerts-metric.md)
 * [如何监视媒体服务指标](media-services-metrics-howto.md)
 * [如何监视媒体服务诊断日志](media-services-diagnostic-logs-howto.md)

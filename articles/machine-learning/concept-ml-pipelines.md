@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 2b0343527aa97abfd1b239b4588806e79e0b820d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644318"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772595"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -59,9 +59,9 @@ Azure 机器学习管道是完整的机器学习任务的可独立执行的工�
 
 管道设计好以后，通常会有更多围绕着管道的训练循环进行的优化。 重新运行管道时，运行将跳转到需要重新运行的步骤，如更新的训练脚本。 将跳过不需要重新运行的步骤。 相同的分析适用于用于步骤成就的未更改脚本。 如果基础数据未更改，这种重复使用功能可帮助避免运行成本高昂且耗时较高的步骤，如数据引入和转换。
 
-使用 Azure 机器学习，可以对管道中的每个步骤使用各种工具包和框架，如 PyTorch 或 TensorFlow。 Azure 会协调你使用的各种[计算目标](service/concept-azure-machine-learning-architecture.md)，因此你的中间数据可以与下游计算目标共享。
+使用 Azure 机器学习，可以对管道中的每个步骤使用各种工具包和框架，如 PyTorch 或 TensorFlow。 Azure 会协调你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)，因此你的中间数据可以与下游计算目标共享。
 
-你可以直接在 Azure 门户或[工作区登陆页面（预览版）](https://ml.azure.com)中[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)。 在发布管道之后，可以配置 REST 终结点，使你能够从任何平台或堆栈重新运行管道。
+你可以直接在 Azure 门户或[工作区登陆页面（预览版）](https://ml.azure.com)中[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)。 在发布管道之后，可以配置 REST 终结点，使你能够从任何平台或堆栈重新运行管道。
 
 简而言之，机器学习生命周期的所有复杂任务都可以帮助您处理管道。 其他 Azure 管道技术有其自身的优势，例如用于处理数据的[Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)和用于持续集成和部署的[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 。 但如果您的关注点是机器学习，则 Azure 机器学习管道可能是您的工作流需求的最佳选择。 
 
@@ -109,7 +109,7 @@ Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流�
 
 在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)中，管道是在 `azureml.pipeline.core` 模块中定义的 Python 对象。 [管道](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)对象包含一个或多个[PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)对象的有序序列。 `PipelineStep` 类是抽象的，而实际步骤则为子类，如[EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)或[DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py)类保存可在管道间共享的可重复使用的步骤序列。 `Pipeline` 作为 `Experiment`的一部分运行。
 
-Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作区中可用的计算目标相关联。 有关详细信息，请参阅[创建和管理 Azure 门户中的 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)或[Azure 机器学习中的计算目标？](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)。
+Azure ML 管道与 Azure 机器学习工作区关联，管道步骤与该工作区中可用的计算目标相关联。 有关详细信息，请参阅[创建和管理 Azure 门户中的 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)或[Azure 机器学习中的计算目标？](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
 
 在 Azure 机器学习中，计算目标是发生 ML 阶段的环境。 软件环境可以是远程 VM、Azure 机器学习计算、Azure Databricks、Azure Batch 等。 硬件环境也可能会有很大差异，具体取决于 GPU 支持、内存、存储等。 你可以为每个步骤指定计算目标，这使你可以精细控制成本。 你可以使用更多或不太强大的资源来满足你的项目的特定操作、数据量和性能需求。 
 

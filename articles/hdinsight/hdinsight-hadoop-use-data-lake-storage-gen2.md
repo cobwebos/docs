@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/02/2020
-ms.openlocfilehash: b45b27fd2e3dc6cf92d83934d571df25c2ce204f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/03/2020
+ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644981"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767664"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -93,8 +93,10 @@ Data Lake Storage Gen2 作为存储选项，几乎所有 Azure HDInsight 群集�
 
         ![将 Data Lake Storage Gen2 与 HDInsight 配合使用的标识设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
-> [!Note]
-> 若要在存储帐户级别添加辅助 Data Lake Storage Gen2 帐户，只需将之前创建的托管标识分配到要添加的新 Data Lake Storage Gen2 存储帐户。请注意，不支持通过 HDInsight 上的 "其他存储帐户" 边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
+> [!NOTE]
+> * 若要在存储帐户级别添加辅助 Data Lake Storage Gen2 帐户，只需将之前创建的托管标识分配到要添加的新 Data Lake Storage Gen2 存储帐户。 请注意，不支持通过 HDInsight 上的 "其他存储帐户" 边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
+> * 可以在 HDInsight 使用的 Azure 存储帐户上启用 GRS 或 ZRS。 但是，不支持对 GRS 或 ZRS 辅助终结点创建群集。
+
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>通过 Azure CLI Data Lake Storage Gen2 创建群集
 

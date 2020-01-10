@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225388"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754235"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建内部负载均衡器
 
@@ -48,7 +48,7 @@ ms.locfileid: "74225388"
 * 探测配置：虚拟机的运行状况探测。
 * 入站 NAT 规则：直接访问虚拟机时的端口规则。
 
-有关负载均衡器组件的详细信息，请参阅 [Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
+有关负载均衡器组件的详细信息，请参阅[Azure 负载均衡器组件](load-balancer-overview.md#load-balancer-components)。
 
 以下步骤介绍如何配置两个虚拟机之间的负载均衡器。
 
@@ -295,7 +295,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 
 ### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>步骤 1：将负载均衡器对象分配给一个变量
 
-使用 **命令将负载均衡器对象（取自前一示例）分配到**`Get-AzLoadBalancer`$slb 变量：
+使用 `Get-AzLoadBalancer` 命令将负载均衡器对象（取自前一示例）分配到$slb 变量：
 
 ```azurepowershell-interactive
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
@@ -319,7 +319,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="remove-an-existing-load-balancer"></a>删除现有的负载均衡器
 
-使用 **命令删除** **NRP-RG 资源组中的** `Remove-AzLoadBalancer`NRP-LB 负载均衡器：
+使用 `Remove-AzLoadBalancer` 命令删除NRP-RG 资源组中的NRP-LB 负载均衡器：
 
 ```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG

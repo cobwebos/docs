@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611810"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763923"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>将现有模型用于 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "75611810"
 >
 > 有关此处使用的概念和术语的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
 >
-> 有关部署过程的一般信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+> 有关部署过程的一般信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 ### <a name="entry-script"></a>输入脚本
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 ## <a name="define-deployment"></a>定义部署
 
@@ -250,7 +250,7 @@ CLI 从 YAML 文件加载部署配置：
 }
 ```
 
-部署到不同的计算目标（如 Azure 云中的 Azure Kubernetes 服务）与更改部署配置一样简单。 有关详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+部署到不同的计算目标（如 Azure 云中的 Azure Kubernetes 服务）与更改部署配置一样简单。 有关详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 有关详细信息，请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)参考。
 
-有关部署的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+有关部署的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="request-response-consumption"></a>请求-响应消耗
 
@@ -304,5 +304,5 @@ print(response.json())
 
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [部署模型的方式和位置](service/how-to-deploy-and-where.md)
+* [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何为已部署的模型创建客户端](how-to-consume-web-service.md)

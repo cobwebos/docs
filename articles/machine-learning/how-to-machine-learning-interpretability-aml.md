@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 12522de6bec4698f8a5b7a931bbc382f65a74265
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4ef268367d1c4c8808cbda3814c863940bcdc32b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537248"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771898"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>针对本地和远程运行的模型 interpretability
 
@@ -362,7 +362,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    [![可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **模型**窗格
-  1. 如果您按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左窗格中选择**模型**来查看。
+  1. 如果您按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左窗格中选择**模型**来查看。
   1. 选择模型，然后单击 "**解释**" 选项卡，查看 "解释可视化效果" 仪表板。
 
 ## <a name="interpretability-at-inference-time"></a>在推理时间 Interpretability
@@ -427,7 +427,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 1. 按照以下步骤将映像部署到计算目标：
 
-   1. 如果需要，请按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)中的步骤注册原始预测模型。
+   1. 如果需要，请按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册原始预测模型。
 
    1. 创建评分文件。
 

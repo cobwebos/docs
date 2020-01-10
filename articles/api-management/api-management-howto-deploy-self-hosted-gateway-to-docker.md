@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747705"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768497"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>将 Azure API 管理的自承载网关部署到 Docker
 
@@ -26,14 +26,14 @@ ms.locfileid: "73747705"
 > [!NOTE]
 > 自承载网关功能处于预览阶段。 在预览期间，仅在开发人员和高级层提供自承载的网关，无额外费用。 开发人员层限制为单个自行托管的网关部署。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 - 创建 Docker 环境。 [Docker For Desktop](https://www.docker.com/products/docker-desktop)是一种用于开发和评估目的的好方法。 有关 docker 的所有版本、功能以及 Docker 本身的综合文档，请参阅[docker 文档](https://docs.docker.com)。
 - [在 API 管理实例中预配网关资源](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> 自承载的网关打包为基于 Linux 的 Docker 容器。
+> 自承载的网关打包为基于 x86 64 的 Docker 容器。
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>将自承载网关部署到 Docker
 
@@ -48,7 +48,7 @@ ms.locfileid: "73747705"
 ```
     docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
 ```
-8. 执行此命令。 命令指示 Docker 环境运行容器，使用从 Microsoft 容器注册表下载的自承载网关的映像，并将容器的 HTTP （8080）和 HTTPS （8081）端口映射到主机上的端口80和443。
+8. 执行命令。 命令指示 Docker 环境运行容器，使用从 Microsoft 容器注册表下载的自承载网关的映像，并将容器的 HTTP （8080）和 HTTPS （8081）端口映射到主机上的端口80和443。
 9. 运行以下命令以检查网关 pod 是否正在运行：
 ```console
 docker ps

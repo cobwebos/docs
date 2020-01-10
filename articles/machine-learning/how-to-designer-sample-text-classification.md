@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 3116b88cd50fa9f348b418cfc90fe21986944b74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539991"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771421"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器以预测公司类别。
 
@@ -110,9 +110,9 @@ N 语法是给定文本序列中的 n 个字词的连续序列。 大小为1的 
 ## <a name="next-steps"></a>后续步骤
 
 浏览可用于设计器的其他示例：
-- [示例 1-回归：预测汽车的价格](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2-回归：比较汽车价格预测的算法](service/how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3-通过功能选择进行分类：收入预测](service/how-to-designer-sample-classification-predict-income.md)
-- [示例 4-分类：预测信用风险（区分成本）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5-分类：预测改动](service/how-to-designer-sample-classification-churn.md)
-- [示例 6-分类：预测航班延迟](service/how-to-designer-sample-classification-flight-delay.md)
+- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
+- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)

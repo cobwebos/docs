@@ -1,21 +1,21 @@
 ---
-title: 容器组的资源日志
+title: 收集 & 分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533735"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770537"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>用 Azure Monitor 日志记录容器组和实例
 
-Log Analytics 工作区提供了一个集中的位置，用于存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将日志和事件数据发送到 Azure Monitor 日志。
+Log Analytics 工作区提供了一个集中的位置，用于存储和查询仅来自 Azure 资源的日志数据，还提供了其他云中的本地资源和资源。 Azure 容器实例提供内置支持，支持将日志和事件数据发送到 Azure Monitor 日志。
 
-若要将容器组日志和事件数据发送到 Azure Monitor 日志，必须在创建容器组时指定 Log Analytics 工作区 ID 和工作区密钥。 以下部分介绍如何创建启用了日志记录的容器组和查询日志。
+若要将容器组日志和事件数据发送到 Azure Monitor 日志，请在创建容器组时指定现有 Log Analytics 工作区 ID 和工作区密钥。 以下部分介绍如何创建启用日志记录的容器组以及如何查询日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,7 +46,7 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 有了 Log Analytics 工作区 ID 和主密钥以后，即可创建启用日志记录的容器组。
 
-下面的示例演示了两种创建具有单个[fluentd][fluentd]容器的容器组的方法： Azure CLI，以及使用 YAML 模板 Azure CLI。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
+下面的示例演示了两种创建容器组（由单个[fluentd][fluentd]容器组成）的方法： Azure CLI，以及使用 YAML 模板 Azure CLI。 Fluentd 容器将生成多行输出，其默认配置为。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
 
 ### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
@@ -130,7 +130,7 @@ Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能�
 
 查询的基本结构是一个源表（在本文中为 `ContainerInstanceLog_CL` 或 `ContainerEvent_CL`），后跟一系列以竖线字符 (`|`) 分隔的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
-若要查看示例查询结果，请将以下查询粘贴到查询文本框中，然后选择“运行”按钮以执行该查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
+若要查看示例查询结果，请将以下查询粘贴到 "查询" 文本框中，然后选择 "**运行**" 按钮以执行查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
 
 ```query
 ContainerInstanceLog_CL

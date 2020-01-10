@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f6943a95cd327785d4907bb675958be99b902764
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644930"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771251"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>用于 Azure 负载均衡器的多个前端
 
@@ -98,8 +98,28 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 * 前端 1：来宾 OS 中的环回接口，该接口上已配置前端 1 的 IP 地址
 * 前端 2：来宾 OS 中的环回接口，该接口上已配置前端 2 的 IP 地址
 
+对于后端池中的每个 VM，请在 Windows 命令提示符下运行以下命令。
+
+若要获取 VM 上的接口名称列表，请键入以下命令：
+
+    netsh interface show interface 
+
+对于 VM NIC （Azure 托管），请键入以下命令：
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   （将 interfacename 替换为此接口的名称）
+
+对于添加的每个环回接口，重复以下命令：
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   （将 interfacename 替换为此环回接口的名称）
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   （将 interfacename 替换为此环回接口的名称）
+
 > [!IMPORTANT]
 > 环回接口的配置在来宾 OS 中执行。 此配置不是由 Azure 执行或管理。 如果没有此配置，规则将无法正常运行。 运行状况探测定义使用 VM 的 DIP（而不是环回接口）表示 DSR 前端。 因此，服务必须在 DIP 端口上提供探测响应，以反映表示 DSR 前端的环回接口上提供的服务的状态。
+
 
 假设上述方案使用相同的前端配置：
 

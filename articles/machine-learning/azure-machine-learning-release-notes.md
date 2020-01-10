@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffd459980c4750295e1045c3f8c1bb7fc18a25df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689368"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771915"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -228,7 +228,7 @@ SDK 的主要功能包括：
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Azure 机器学习与事件网格的集成 
 
-Azure 机器学习现在是事件网格的资源提供程序，您可以通过 Azure 门户或 Azure CLI 配置机器学习事件。 用户可以创建运行完成、模型注册、模型部署和检测到的数据偏移的事件。 这些事件可以路由到事件网格支持的事件处理程序，以供使用。 有关更多详细信息，请参阅机器学习事件[架构](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning)、[概念](https://docs.microsoft.com/azure/machine-learning/service/concept-event-grid-integration)和[教程](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-event-grid)文章。
+Azure 机器学习现在是事件网格的资源提供程序，您可以通过 Azure 门户或 Azure CLI 配置机器学习事件。 用户可以创建运行完成、模型注册、模型部署和检测到的数据偏移的事件。 这些事件可以路由到事件网格支持的事件处理程序，以供使用。 有关更多详细信息，请参阅机器学习事件[架构](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning)、[概念](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration)和[教程](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid)文章。
 
 ## <a name="2019-10-31"></a>2019-10-31
 
@@ -236,7 +236,7 @@ Azure 机器学习现在是事件网格的资源提供程序，您可以通过 A
 
 + **新功能**
   + 通过[**datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)包添加了数据集监视器，可用于监视时序数据集的数据偏移或其他时间的统计更改。 如果检测到偏移或满足数据的其他条件，则可以触发警报和事件。 有关详细信息，请参阅[文档](https://aka.ms/datadrift)。
-  + 在 Azure 机器学习中公布两个新版本（也称为 SKU）。 在此版本中，现在可以创建基本或企业 Azure 机器学习工作区。 所有现有工作区都将默认为基本版本，你可以随时跳到 Azure 门户或 studio 来升级工作区。 你可以从 "Azure 门户创建" 基本 "或" 企业 "工作区。 有关详细信息，请阅读[我们的文档](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace)。 从 SDK 开始，可以使用工作区对象的 "sku" 属性来确定工作区的版本。
+  + 在 Azure 机器学习中公布两个新版本（也称为 SKU）。 在此版本中，现在可以创建基本或企业 Azure 机器学习工作区。 所有现有工作区都将默认为基本版本，你可以随时跳到 Azure 门户或 studio 来升级工作区。 你可以从 "Azure 门户创建" 基本 "或" 企业 "工作区。 有关详细信息，请阅读[我们的文档](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)。 从 SDK 开始，可以使用工作区对象的 "sku" 属性来确定工作区的版本。
   + 我们还对 Azure 机器学习计算进行了增强-你现在可以在 Azure Monitor 中查看群集的指标（如总体节点数、运行节点数、总核心配额），除了查看诊断日志以便进行调试。 此外，还可以查看群集上当前正在运行或已排队运行的运行，以及群集中各种节点的 Ip 等详细信息。 可以在门户中查看这些项，也可以使用 SDK 或 CLI 中的相应函数来查看这些项。
 
   + **预览功能**
@@ -1031,7 +1031,7 @@ Azure 机器学习现在是事件网格的资源提供程序，您可以通过 A
   + 自动化机器学习的新功能：
     + STL 特征化器 for 预测
     + 为功能扫描启用了 KMeans 群集
-  + AmlCompute 配额批准已变得更快！ 现在，我们已自动在阈值内批准配额请求。 有关配额工作方式的详细信息，请了解[如何管理配额](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)。
+  + AmlCompute 配额批准已变得更快！ 现在，我们已自动在阈值内批准配额请求。 有关配额工作方式的详细信息，请了解[如何管理配额](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)。
 
 + **预览功能**
     + 通过 MLflow 包（[例如笔记本](https://aka.ms/azureml-mlflow-examples)）与[MLflow](https://mlflow.org) 1.0.0 跟踪进行集成。

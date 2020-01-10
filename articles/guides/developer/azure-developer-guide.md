@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436007"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770911"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>获取适用于 Azure 开发人员的入门指南
 
@@ -133,7 +133,7 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
   > **开始使用**：[使用 Azure 门户在几分钟内创建 SQL 数据库](../../sql-database/sql-database-get-started.md)。
 
 
-你可以使用 [Azure 数据工厂](../../data-factory/introduction.md)将现有本地数据移到 Azure。 如果你还没有准备好将数据移到云中，BizTalk 服务中的[混合连接](../../biztalk-services/integration-hybrid-connection-overview.md)可让你将应用服务托管的应用连接到本地资源。 此外，你还可以从本地应用程序连接到 Azure 数据和存储服务。
+你可以使用 [Azure 数据工厂](../../data-factory/introduction.md)将现有本地数据移到 Azure。 如果你尚未准备好将数据移到云中，则[混合连接](../../app-service/app-service-hybrid-connections.md)在 Azure App Service 中，你可以将应用服务托管的应用连接到本地资源。 此外，你还可以从本地应用程序连接到 Azure 数据和存储服务。
 
 #### <a name="docker-support"></a>Docker 支持
 
@@ -147,11 +147,11 @@ Azure 提供了多种方式以便在应用程序中使用容器。
   > 
   > **开始使用**：[在 Azure 中使用 Docker VM 扩展创建 Docker 环境](../../virtual-machines/virtual-machines-linux-dockerextension.md)。
 
-- Azure 容器服务：允许你创建、配置和管理预配置的、以运行容器化应用程序的虚拟机群集。 若要了解有关容器服务的详细信息，请参阅 [Azure 容器服务简介](../../container-service/container-service-intro.md)。
+- **Azure Kubernetes Service**：使你能够创建、配置和管理预配置为运行容器化应用程序的虚拟机的群集。 若要了解有关 Azure Kubernetes 服务的详细信息，请参阅[Azure Kubernetes 服务简介](../../aks/intro-kubernetes.md)。
 
   > **何时使用**：当需要构建提供其他计划和管理工具的生产就绪、可缩放环境，或者当部署 Docker Swarm 群集时使用。
   > 
-  > **开始使用**：[部署容器服务群集](../../container-service/dcos-swarm/container-service-deployment.md)。
+  > **入门**：[部署 Kubernetes 服务群集](../../aks/tutorial-kubernetes-deploy-cluster.md)。
 
 - Docker 计算机：允许使用 docker 计算机命令安装和管理虚拟主机上的 Docker 引擎。
 
@@ -185,7 +185,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
 在 Azure 中启动并运行应用程序后，需要监视性能、监视问题，并了解客户如何使用你的应用程序。 为此，Azure 提供了几个监视选项。
 
--   Visual Studio Application Insights：与 Visual Studio 集成以监视实时 Web 应用的 Azure 托管的可扩展分析服务。 它为你提供所需的数据，以提高应用程序的性能和可用性。 无论你在 Azure 上托管应用程序，这一改进都是如此。
+-   **Application Insights**：与 Visual Studio 集成的 Azure 托管的可扩展分析服务，用于监视实时 web 应用程序。 它为你提供所需的数据，以提高应用程序的性能和可用性。 无论你在 Azure 上托管应用程序，这一改进都是如此。
 
     >**开始使用**：按照 [Application Insights 教程](../../azure-monitor/app/app-insights-overview.md)。
 

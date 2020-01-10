@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406485"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749038"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -133,9 +133,12 @@ ms.locfileid: "75406485"
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>故障异常 v2 （非经典）预警规则
+### <a name="failure-anomalies-alert-rule"></a>失败异常警报规则
 
-此 Azure 资源管理器模板演示如何配置严重级别为2的故障异常 v2 警报规则。 这一新版本的故障异常警报规则是新的 Azure 警报平台的一部分，替换为[经典警报停用过程](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)的一部分而停用的经典版本。
+此 Azure 资源管理器模板演示如何配置严重级别为2的故障异常警报规则。 这一新版本的故障异常警报规则是新的 Azure 警报平台的一部分，替换为[经典警报停用过程](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)的一部分而停用的经典版本。
+
+> [!NOTE]
+> 故障异常是全局服务，因此在全局位置上创建规则位置。
 
 ```json
 {
@@ -166,7 +169,7 @@ ms.locfileid: "75406485"
 ```
 
 > [!NOTE]
-> 此 Azure 资源管理器模板是故障异常 v2 警报规则独有的，不同于本文中所述的其他经典智能检测规则。   
+> 此 Azure 资源管理器模板是故障异常警报规则独有的，不同于本文中所述的其他经典智能检测规则。
 
 ## <a name="smart-detection-rule-names"></a>智能检测规则名称
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: af0c5a42b71829bbfd51d77c047af45c1df6fd4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363636"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750404"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -2324,4 +2324,4 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure Monitor 中的指标](data-platform.md)
 * [针对指标创建警报](alerts-overview.md)
-* [将指标导出到存储、事件中心或 Log Analytics](resource-logs-overview.md)
+* [将指标导出到存储、事件中心或 Log Analytics](platform-logs-overview.md)

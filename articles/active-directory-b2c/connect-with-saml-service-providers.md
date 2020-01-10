@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 30a5058dc47bb9ef22ee3fddb9cc4c2b90271bc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763141"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -273,7 +273,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 输入应用程序的“名称”。 例如， *SAMLApp1*。
-1. 在 "**受支持的帐户类型**" 下，选择**任何组织目录或任何标识提供者中的帐户。**
+1. 在 "**支持的帐户类型**" 下，选择 "**仅限此组织目录中的帐户**"
 1. 在 "**重定向 URI**" 下，选择 " **Web**"，然后输入 `https://localhost`。 稍后会在应用程序注册的清单中修改此值。
 1. 选择 "**将管理员同意授予 openid 并 offline_access 权限**"。
 1. 选择“注册”。
@@ -285,11 +285,11 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 1. 在[Azure 门户](https://portal.azure.com)中，导航到在上一部分中创建的应用程序注册。
 1. 在 "**管理**" 下，选择 "**清单**" 打开清单编辑器。 在以下部分中修改多个属性。
 
-#### <a name="identifieruri"></a>IdentifierUri
+#### <a name="identifieruris"></a>identifierUris
 
-`IdentifierUri` 是一个字符串集合，其中包含唯一标识其 Azure AD B2C 租户内的 Web 应用的用户定义 URI。 标识符 URI 必须来自组织目录中的已验证域。 例如，`https://contoso.onmicrosoft.com/app-name` 。 服务提供商必须在 SAML 请求的 `Issuer` 元素中设置此值。
+`identifierUris` 是一个字符串集合，其中包含唯一标识其 Azure AD B2C 租户内的 Web 应用的用户定义 URI。 服务提供商必须在 SAML 请求的 `Issuer` 元素中设置此值。
 
-#### <a name="samlmetadataurl"></a>SamlMetadataUrl
+#### <a name="samlmetadataurl"></a>samlMetadataUrl
 
 此属性表示服务提供程序的公开可用元数据 URL。 元数据 URL 可以指向已上传到任何可匿名访问的终结点（例如 blob 存储）的元数据文件。
 
@@ -303,7 +303,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
-#### <a name="replyurlwithtype-optional"></a>ReplyUrlWithType （可选）
+#### <a name="replyurlswithtype-optional"></a>replyUrlsWithType （可选）
 
 如果未提供元数据 URI，则可以显式指定回复 URL。 此可选属性表示服务提供程序元数据中的 `AssertionConsumerServiceUrl` （`SingleSignOnService` URL），并且假定 `BindingType` 为 `HTTP POST`。
 

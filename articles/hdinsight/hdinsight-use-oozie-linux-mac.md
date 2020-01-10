@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241684"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744909"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -296,11 +296,11 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
 2. 编辑下面的 xml，如下所示：
 
-    |占位符值| 替换值|
+    |占位符值| 已替换值|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 从步骤1接收的值。|
     |admin| HDInsight 群集的登录名（如果不是 admin）。|
-    |服务器| Azure SQL 数据库服务器名称。|
+    |serverName| Azure SQL 数据库服务器名称。|
     |sqlLogin| Azure SQL 数据库服务器登录名。|
     |sqlPassword| Azure SQL 数据库服务器登录密码。|
 
@@ -394,10 +394,10 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` 部分是要配合 Oozie 命令使用的 URL。
+    `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` 部分是要配合 Oozie 命令使用的 URL。
 
 2. 编辑代码以将 URL 替换为前面收到的 URL。 若要创建 URL 的环境变量，请使用以下命令，这样就不需要为每个命令输入该 URL：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 060b4a8992ab1c48cceb9506b4f556d9098b9be0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452953"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749506"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -115,4 +115,3 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 
 - [规划 Azure 文件部署](storage-files-planning.md)
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-- [其他存储服务的可伸缩性和性能目标](../common/storage-scalability-targets.md)

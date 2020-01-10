@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: d6cc6c787e38cc72a0a3d4340d55c0248918dba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392355"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751643"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -58,20 +58,29 @@ ms.locfileid: "75392355"
 #### <a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
-| 资源 | 默认值/最大限制 |
-| --- | --- |
-| 负载均衡器 | 1,000 | 
-| 每个资源的规则数，基本 | 250 |
-| 每个资源的规则数，标准 | 1,500 | 
-| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300 |
-| 前端 IP 配置，基本 | 200 |
-| 前端 IP 配置，标准 | 600 |
-| 后端池，基本 | 100，单个可用性集 |
-| 后端池，标准 | 1000，单一虚拟网络 |
-| 每个负载均衡器的后端资源，标准<sup>1</sup> | 150 |
-| 高可用性端口，标准版 | 每个内部前端1个 |
+**标准负载均衡器**
+
+| 资源                                | 默认值/最大限制         |
+|-----------------------------------------|-------------------------------|
+| 负载均衡器                          | 1,000                         |
+| 每个资源的规则                      | 1,500                         |
+| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                           |
+| 前端 IP 配置             | 600                           |
+| 后端池大小                          | 1000实例，单一虚拟网络 |
+| 每个负载均衡器的后端资源<sup>1<sup>   | 150                 |
+| 高可用性端口                 | 每个内部前端 1 个      |
 
 <sup>1</sup>最大限制为150个资源，其中包含独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
+
+**基本负载均衡器**
+
+| 资源                                | 默认值/最大限制        |
+|-----------------------------------------|------------------------------|
+| 负载均衡器                          | 1,000                        |
+| 每个资源的规则                      | 250                          |
+| 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                          |
+| 前端 IP 配置             | 200                          |
+| 后端池大小                           | 100实例，单个可用性集 |
 
 #### <a name="virtual-networking-limits-classic"></a>以下限制仅适用于通过每个订阅的**经典**部署模型进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 

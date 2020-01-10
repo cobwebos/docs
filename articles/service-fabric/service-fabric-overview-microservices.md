@@ -2,15 +2,16 @@
 title: Azure 上的微服务简介
 description: 概述为何使用微服务方法构建云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台用于实现此目的。
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466321"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750620"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>为什么使用微服务方法构建应用程序？
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>为什么使用微服务方法生成应用程序
 
 对于软件开发人员而言，将应用程序分解为组件部分并不新鲜。 通常使用分层方法，其中包含后端存储、中间层业务逻辑和前端用户界面（UI）。 过去几*年发生了哪些变化*，开发人员正在为云构建分布式应用程序。
 
@@ -128,7 +129,8 @@ ms.locfileid: "75466321"
 
 运行状况与诊断不同。 运行状况是指微服务报告其当前状态，以便采取适当的措施。 一个很好的例子便是使用升级和部署机制来保持可用性。 尽管服务可能由于进程崩溃或计算机重新启动而无法正常运行，但服务可能仍可正常运行。 最后一件事是通过开始升级，使问题更糟。 最佳方法是先调查，或留出时间让微服务恢复。 微服务中的运行状况事件可以帮助我们制定明智的决策，并且实际上也有助于创建自愈服务。
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>在 Azure 上设计微服务的指南 
+## <a name="guidance-for-designing-microservices-on-azure"></a>在 Azure 上设计微服务的指南
+
 请访问 Azure 体系结构中心，获取有关在[Azure 上设计和构建微服务](https://docs.microsoft.com/azure/architecture/microservices/)的指导。
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric 作为微服务平台
@@ -185,7 +187,6 @@ Service Fabric 允许你重复使用现有代码，并使用新的微服务实�
 也许。 在 Microsoft，随着更多团队开始出于商业原因为云而构建，其中许多团队都认识到了采用类似微服务的方法所带来的好处。 例如，必应使用的是微服务。 微服务方法对于其他团队而言相当新颖。 团队发现需要解决一些疑难问题，但这并非他们的强项。 这就是 Service Fabric 获得用于构建服务的技术的原因。
 
 Service Fabric 的目标是降低构建微服务应用程序的复杂性，使您不必经历太多代价高昂的重新设计工作。 从小规模开始，按需缩放，淘汰旧服务，添加新服务，并随着客户用量的增加而改进。 我们也知道，为了让微服务更易于为大部分开发人员所接受，还有许多其他尚待解决的问题。 容器和执行组件编程模型是该方向上小步骤的示例。 我们肯定会出现更多的革新，使微服务方法更容易。
-
 
 ## <a name="next-steps"></a>后续步骤
 

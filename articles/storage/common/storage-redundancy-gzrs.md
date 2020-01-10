@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534309"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748258"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
 区域冗余存储（GZRS）（预览版）结婚时会[区域冗余存储（ZRS）](storage-redundancy-zrs.md)的高可用性，通过[异地冗余存储（GRS）](storage-redundancy-grs.md)提供的区域中断保护。 将 GZRS 存储帐户中的数据复制到主要区域中的三个[Azure 可用性区域](../../availability-zones/az-overview.md)，并将其复制到辅助地理区域，以防止区域灾难。 每个 Azure 区域与同一地理位置中另一个区域配对。 有关更多详细信息和异常，请参阅[文档](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
-使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的[可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
+使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的可伸缩性目标。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
 
 Microsoft 建议为需要一致性、持续性、高可用性、优秀性能和恢复能力的应用程序使用 GZRS。 对于发生区域性灾难时对辅助区域的 "读取" 访问权限的其他安全，请为你的存储帐户启用 GZRS。
 
@@ -142,16 +142,16 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 1. 选择 "**新建支持请求**"。
 2. 根据帐户信息填写“基本信息”。 在 "**服务**" 部分中，选择 "**存储帐户管理**" 并指定要迁移的帐户。
-3. 选择“**下一步**”。
+3. 选择“**下一页**”。
 4. 在“问题”部分指定以下值：
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
     - **标题**：键入描述性标题，例如 **（RA-） GZRS 帐户迁移**。
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 GZRS。" 要从 \_\_ 区域中的 [LRS，RA-GRS] 迁移到 GZRS。 "
-5. 选择“**下一步**”。
+5. 选择“**下一页**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
-7. 选择**创建**。
+7. 选择“创建”。
 
 支持代表将与你联系以提供帮助。
 
@@ -160,3 +160,4 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 - [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)

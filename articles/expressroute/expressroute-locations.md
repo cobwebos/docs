@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/13/2019
+ms.date: 01/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 479a94f8a49dfdba5090e3372c378dcfc92ccd9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
-ms.translationtype: HT
+ms.openlocfilehash: 2df22b059cbc9a388a3a3d106bb0c1af1082ebec
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561110"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749101"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -103,12 +103,13 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **FarEasTone** |受支持 |受支持 |台北|
 | **GÉANT** |受支持 |受支持 |阿姆斯特丹、法兰克福、马赛 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | 受支持| 受支持 | 金奈、孟买 |
+| **Intelsat** | 受支持 | 受支持 | 华盛顿特区 2 |
 | **[InterCloud](https://www.intercloud.com/)** |受支持 |受支持 |阿姆斯特丹、芝加哥、香港特别行政区、伦敦、纽约、巴黎、硅谷、新加坡、华盛顿特区、瑞士 |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |受支持 |受支持 |芝加哥、达拉斯、硅谷、华盛顿特区 |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |受支持 |受支持 |大坂、东京 |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |受支持 |受支持 |开普敦、约翰内斯堡、伦敦 |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |受支持 |受支持 |阿姆斯特丹，Amsterdam2，哥本哈根，都柏林，法兰克福，伦敦，马赛，巴黎，苏黎世 |
-| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|受支持 |受支持 | 阿姆斯特丹、London2、硅谷、多伦多 |
+| **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|受支持 |受支持 | 阿姆斯特丹、London2、硅谷、多伦多、华盛顿特区 |
 | **Jaguar 网络** |受支持 |受支持 |马赛|
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |受支持 |受支持 |伦敦 |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |受支持 |受支持 |首尔 |
@@ -118,7 +119,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |受支持 |受支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、新港（威尔士）、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |受支持 |受支持 |釜山、首尔 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |受支持 |受支持 |开普敦、约翰内斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |受支持 |受支持 |阿姆斯特丹、亚特兰大、奥克兰、芝加哥、达拉斯、丹佛、Dubai2、都柏林、法兰克福、香港特别行政区、拉斯维加斯、伦敦、London2、洛杉矶、墨尔本、迈阿密、蒙特利尔、纽约、达拉斯、魁北克城、San Antonio、西雅图、硅谷、新加坡、新加坡2悉尼、东京、多伦多、华盛顿特区、苏黎世 |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |受支持 |受支持 |阿姆斯特丹、亚特兰大、奥克兰、芝加哥、达拉斯、丹佛、Dubai2、都柏林、法兰克福、香港特别行政区、拉斯维加斯、伦敦、London2、洛杉矶、墨尔本、迈阿密、蒙特利尔、纽约、Oslo、、魁北克城、San Antonio、西雅图、硅谷、新加坡新加坡2、悉尼、东京、多伦多、华盛顿特区、苏黎世 |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |受支持 |受支持 |伦敦 |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |受支持 |受支持 |达拉斯，洛杉矶，迈阿密，圣保罗，华盛顿特区 |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |受支持 |受支持 |Newport(Wales) |
@@ -143,7 +144,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |受支持 |受支持 |阿姆斯特丹、圣保罗 |
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |受支持 |受支持 |伦敦、London2 |
 | **Telenor** |受支持 |受支持 |阿姆斯特丹、伦敦、Oslo |
-| **[Telia Carrier](https://www.teliacarrier.com/)** | 受支持 | 受支持 |阿姆斯特丹、芝加哥、达拉斯、法兰克福、中国香港特别行政区、伦敦、巴黎、硅谷、斯德哥尔摩、华盛顿特区 |
+| **[Telia Carrier](https://www.teliacarrier.com/)** | 受支持 | 受支持 |阿姆斯特丹，芝加哥，达拉斯，法兰克福，香港特别行政区，伦敦，Oslo，巴黎，硅谷，斯德哥尔摩，华盛顿特区 |
 | **Telmex Uninet**| 受支持 | 受支持 | 达拉斯 |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |受支持 |受支持 |墨尔本、新加坡、悉尼 |
 | **[Telus](https://www.telus.com)** |受支持 |受支持 |蒙特利尔、西雅图、多伦多 |

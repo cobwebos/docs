@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408716"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768820"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure Maps 搜索服务的最佳实践
 
@@ -33,7 +33,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 > 若要查询搜索服务，可以使用[Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用，也可以使用所需的任何 API 开发环境。
 
 
-## <a name="best-practices-for-geocoding"></a>地理编码的最佳做法
+## <a name="best-practices-for-geocoding-address-search"></a>地理编码的最佳做法（地址搜索）
 
 使用 Azure Maps 搜索服务搜索完整或部分地址时，将使用搜索词并返回地址的经度和纬度坐标。 此过程称为地理编码。 在国家/地区中进行地理编码的能力取决于道路数据覆盖范围和地理编码服务的地理编码精度。
 
@@ -58,10 +58,12 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 
 
    **模糊搜索参数**
+   
+   如果你不知道用户输入用于搜索查询，则建议使用 Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 。 该 API 将兴趣点（POI）搜索与地理编码组合到一个规范的*单行搜索*中。 
 
    1. 即使查询参数与所需信息不完全对应，`minFuzzyLevel` 和 `maxFuzzyLevel`帮助也返回相关的匹配项。 大多数搜索查询都默认为 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2`，以获得性能并减少异常结果。 采用搜索词 "restrant" 的示例，当 `maxFuzzyLevel` 设置为2时，它将与 "餐馆" 匹配。 根据请求的需要，可以重写默认的模糊级别。 
 
-   2. 还可以指定要使用 `idxSet` 参数返回的结果类型的确切集合。 出于此目的，你可以提交以逗号分隔的索引列表，项目顺序并不重要。 下面是受支持的索引：
+   2. 你还可以使用 `idxSet` 参数确定要返回的确切结果类型集的优先级。 为此，可以提交以逗号分隔的索引列表;项顺序并不重要。 支持以下索引：
 
        * `Addr` - **地址范围**：对于某些街道，存在从街道的开头和结尾处插值的地址点;这些点表示为地址范围。
        * `Geo` - **地区**：地图上表示土地的管理部门的区域，即国家/地区、州和城市。
@@ -317,7 +319,10 @@ url.QueryEscape(query)
 
 若要改善结果与响应中的信息的相关性，兴趣点（POI）搜索响应包括可进一步用于分析响应的品牌信息。
 
+你还可以提交请求中以逗号分隔的品牌名称列表。 您可以使用此列表，通过使用 `brandSet` 参数将结果限制为特定品牌。 项顺序并不重要。 如果提供了多个品牌，则仅返回属于（至少）一个提供的列表的结果。
+
 接下来，让我们在 Microsoft 校园（Redmond，WA）附近对加油站进行[POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)请求。 如果观察到响应，可以查看每个返回的 POI 的品牌信息。
+
 
 **示例查询：**
 

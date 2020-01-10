@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356250"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772544"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -40,7 +40,7 @@ ms.locfileid: "75356250"
      >[!NOTE]
      >你必须是 Windows 预览体验计划的成员才能访问 Windows 预览体验门户。 若要了解有关 Windows 预览体验计划的详细信息，请查看我们的[Windows 预览体验文档](https://docs.microsoft.com/windows-insider/at-home/)。
 
-2. 向下滚动到 "**选择版本**" 部分，然后选择 " **Windows 10 预览体验版（快速）-内部版本**"。
+2. 向下滚动到 "**选择版本**" 部分，并选择 " **Windows 10 预览体验版（快速）-生成 19035** " 或更高版本。
 
 3. 选择 "**确认**"，然后选择要使用的语言，然后再次选择 "**确认**"。
     

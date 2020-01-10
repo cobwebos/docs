@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8cb328c36a1120e5a30732c36e53d9669fc6a67c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530861"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750387"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
-Azure 中的[平台日志](resource-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到 Azure 存储帐户，以保留用于存档的数据。
+Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到 Azure 存储帐户，以保留用于存档的数据。
 
 ## <a name="prerequisites"></a>必备组件
 如果还没有[Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)，则需要创建一个。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，存储帐户就不必与资源发送日志位于同一订阅中。
@@ -63,7 +63,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx
 
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读有关资源日志的详细信息](resource-logs-overview.md)。
+* [阅读有关资源日志的详细信息](platform-logs-overview.md)。
 * [创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 * [下载 blob 进行分析](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 * [Azure Monitor 存档 Azure Active Directory 日志](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)。

@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 5e840960c66f586882e64a655ddbfa078dae51ef
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/08/2019
+ms.openlocfilehash: eb181cbf6c647c816886f330502a9a46cb956dee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646636"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763277"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -213,7 +213,7 @@ az ml computetarget create amlcompute -n cpu-cluster --max-nodes 4 --vm-size Sta
 若要使用 `dataset.json` 文件注册数据集，请使用以下命令：
 
 ```azurecli-interactive
-az ml dataset register -f dataset.json
+az ml dataset register -f dataset.json --skip-validation
 ```
 
 此命令的输出类似于以下 JSON：
@@ -368,6 +368,9 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
 ```
 
+> [!NOTE]
+> 你可能会收到有关 "检查 LocalWebservice 存在失败" 的警告。 你可以放心地忽略此情况，因为你不需要部署本地 web 服务。
+
 此命令使用之前注册的模型版本1部署名为 `myservice`的新服务。
 
 `inferenceConfig.yml` 文件提供了有关如何执行推断的信息，例如条目脚本（`score.py`）和软件依赖关系。 有关此文件结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md#prepare-to-deploy)。
@@ -413,6 +416,13 @@ REST 终结点可用于向服务发送数据。 有关创建将数据发送到�
 ```azurecli-interactive
 az ml service run -n myservice -d @testdata.json
 ```
+
+> [!TIP]
+> 如果使用 PowerShell，请改用以下命令：
+>
+> ```powershell
+> az ml service run -n myservice -d `@testdata.json
+> ```
 
 命令的响应类似于 `[ 3 ]`。
 

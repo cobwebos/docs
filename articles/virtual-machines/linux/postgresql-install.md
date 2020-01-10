@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035265"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747803"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
 
 在本文中，将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 PostgreSQL。
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>安装 PostgreSQL
 > [!NOTE]
@@ -52,7 +51,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    * SUSE Linux：
      
            # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
-3. 将 PostgreSQL 下载到根目录中，并对包进行解压缩：
+3. 将 PostgreSQL 下载到根目录中，然后对包进行解压缩：
    
         # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
    
@@ -64,7 +63,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果希望生成所有能生成的内容，包括文档（HTML 和手册页）和其他模块 (contrib)，则改为运行以下命令：
+5. 如果要生成可以生成的所有内容，包括文档（HTML 和手册页）和其他模块（`contrib`），请改为运行以下命令：
    
         # gmake install-world
    
@@ -125,7 +124,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    
     应该会收到以下输出：
 
-![图像](./media/postgresql-install/no1.png)
+![image](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>设置 PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -142,7 +141,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
-![图像](./media/postgresql-install/no2.png)
+![image](./media/postgresql-install/no2.png)
 
 更改文件以使其成为可执行文件：
 
@@ -158,7 +157,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 应该会看到以下输出：
 
-![图像](./media/postgresql-install/no3.png)
+![image](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>连接到 Postgres 数据库
 再次切换成 postgres 用户：
@@ -189,11 +188,11 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 如果成功创建了表，应该会看到以下内容：
 
-![图像](./media/postgresql-install/no4.png)
+![image](./media/postgresql-install/no4.png)
 
 还可以使用以下命令检查表结构：
 
-![图像](./media/postgresql-install/no5.png)
+![image](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>向表中添加数据
 首先，将信息插入某一行：
@@ -202,7 +201,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 应该会看到以下输出：
 
-![图像](./media/postgresql-install/no6.png)
+![image](./media/postgresql-install/no6.png)
 
 也可以向表中多添加几个人。 下面是几个选项，也可以自行创建：
 
@@ -219,7 +218,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 输出为：
 
-![图像](./media/postgresql-install/no7.png)
+![image](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>删除表中的数据
 使用以下命令来删除表中的数据：
@@ -228,10 +227,10 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 这会删除“John”行中的所有信息。 输出为：
 
-![图像](./media/postgresql-install/no8.png)
+![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新表中的数据
-使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将参加该活动，因此我们将 RSVP 从“N”更改为“Y”：
+使用以下命令来更新表中的数据。 对于这种情况，Sandy 已确认它们正在参加，因此，我们会将 RSVP 从 "N" 更改为 "Y"：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

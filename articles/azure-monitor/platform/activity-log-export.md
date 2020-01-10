@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529977"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750573"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
 > [!WARNING]
 > 你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](diagnostic-settings-subscription.md)。
 
-[Azure 活动日志](activity-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 除了查看 Azure 门户中的活动日志，或者将其复制到 Log Analytics 工作区（其中可以使用 Azure Monitor 收集的其他数据进行分析），可以创建日志配置文件，将活动日志存档到 Azure 存储帐户，或将其流式传输到 事件中心。
+[Azure 活动日志](platform-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 除了查看 Azure 门户中的活动日志，或者将其复制到 Log Analytics 工作区（其中可以使用 Azure Monitor 收集的其他数据进行分析），可以创建日志配置文件，将活动日志存档到 Azure 存储帐户，或将其流式传输到 事件中心。
 
 ## <a name="archive-activity-log"></a>存档活动日志
 如果要将日志数据保留超过90天（对保留策略具有完全控制），以进行审核、静态分析或备份，将活动日志存档到存储帐户非常有用。 如果只需将事件保留90天或更短的时间，则无需设置到存储帐户的存档，因为活动日志事件保留在 Azure 平台90天内。

@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720024"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754414"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 认知搜索服务 REST api-版本 2019-05-06-预览版
 
@@ -23,13 +23,13 @@ ms.locfileid: "73720024"
 > 预览功能可用于目的为收集反馈的测试和试验，可能随时更改。 强烈建议不要在生产应用程序中使用预览版 API。
 
 
-## <a name="new-in-2019-05-06-preview"></a>2019-05-06-Preview 中的新增功能
+## <a name="new-in-2019-05-06-preview"></a>2019-05-06 中的新增-预览
 
-+ [增量索引](cognitive-search-incremental-indexing-conceptual.md)是一种新的索引模式，用于将状态和缓存添加到技能组合，以便在源数据、索引器和技能组合定义保持不变时重复使用现有输出。 此功能仅适用于根据定义的认知技能组合。
++ [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)将缓存添加到扩充管道，这样，如果目标修改（如对技能组合或其他对象的更新）不更改内容，则可以重复使用现有输出。 缓存仅适用于技能组合生成的丰富文档。
 
-+ [Cosmos DB 索引器](search-howto-index-cosmosdb.md)支持 MongoDB Api、Gremlin api 和 Cassandra API。
++ [Cosmos DB 索引器](search-howto-index-cosmosdb.md)支持 MongoDB api （预览）、Gremlin api （预览）和 Cassandra API （预览）。
 
-+ [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md)可以从 Data Lake Storage Gen2 中为内容和元数据编制索引。
++ [Azure Data Lake Storage Gen2 索引器（预览版）](search-howto-index-azure-data-lake-storage.md)可通过 Data Lake Storage Gen2 为内容和元数据编制索引。
 
 + [文档提取（预览版）](cognitive-search-skill-document-extraction.md)是在编制索引期间使用的一种认知技巧，可用于从技能组合中提取文件的内容。 以前，文档破解仅在技能组合执行之前发生。 添加了这一技能后，还可以在执行技能组合的过程中执行此操作。
 
@@ -37,7 +37,7 @@ ms.locfileid: "73720024"
 
 + [知识存储](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 物理数据结构存在于 Azure Blob 存储和 Azure 表存储中，并在运行具有附加认知技能组合的索引器时创建并填充。 在技能组合定义内指定知识存储本身的定义。 在知识存储定义中，通过确定数据的形状、数据是否存储在表存储或 Blob 存储中，以及是否有多个视图的*投影*元素来控制数据的物理结构。
 
-+ 用于服务端加密的[客户管理的加密密钥](search-security-manage-encryption-keys.md)也是一项全新的预览功能。 如果你是密钥的唯一所有者，则除了应用 Microsoft 管理的内置静态加密以外，还可以应用一个额外的加密层。
++ 用于服务端加密的[客户管理的加密密钥](search-security-manage-encryption-keys.md)也是一项全新的预览功能。 除了由 Microsoft 管理的内置静态加密外，还可以应用其他加密层，其中你是密钥的唯一所有者。
 
 ## <a name="earlier-preview-features"></a>更早的预览功能
 
@@ -45,7 +45,7 @@ ms.locfileid: "73720024"
 
 + [moreLikeThis 查询参数](search-more-like-this.md)查找与特定文档相关的文档。 早期预览版中已有此功能。 
 
-+ [CSV Blob 索引](search-howto-index-csv-blobs.md)每行创建一个文档，而不是每个文本 Blob 创建一个文档。
++ [CSV blob 索引](search-howto-index-csv-blobs.md)为每行创建一个文档，而不是每个文本 blob 创建一个文档。
 
 ## <a name="how-to-call-a-preview-api"></a>如何调用预览版 API
 
@@ -59,7 +59,7 @@ Azure 认知搜索服务在多个版本中可用。 有关详细信息，请参�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看搜索 REST API 参考文档。 如果遇到问题，请通过 [StackOverflow](https://stackoverflow.com/) 向我们寻求帮助，或[联系支持人员](https://azure.microsoft.com/support/community/?product=search)。
+查看搜索 REST API 参考文档。 如果遇到问题，请向我们提供有关[StackOverflow](https://stackoverflow.com/)的帮助或[联系支持人员](https://azure.microsoft.com/support/community/?product=search)。
 
 > [!div class="nextstepaction"]
-> [搜索服务 REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)
+> [搜索服务 REST API 引用](https://docs.microsoft.com/rest/api/searchservice/)

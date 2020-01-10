@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: 使用流分析对数据进行流式处理
           href: sql-database-stream-analytics.md
+        - name: 将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: 概念
       items:
         - name: 单一数据库资源

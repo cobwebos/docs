@@ -4,12 +4,12 @@ description: 跟踪在 Service Fabric、虚拟机、Web 应用和云服务中使
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364435"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751336"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自动缩放疑难解答
  
@@ -97,7 +97,7 @@ Azure Monitor 自动缩放功能可帮助你使用适当数量的资源来处理
 
 ## <a name="autoscale-resource-logs"></a>自动缩放资源日志
 
-与任何其他 Azure 资源相同，自动缩放服务提供[资源日志](resource-logs-overview.md)。 有两种类别的日志。
+与任何其他 Azure 资源相同，自动缩放服务提供[资源日志](platform-logs-overview.md)。 有两种类别的日志。
 
 - **自动缩放评估**-每次执行检查时，自动缩放引擎记录每个单个条件评估的日志条目。  此条目包含有关所观察到的指标值、已评估的规则以及计算是否导致缩放操作的详细信息。
 

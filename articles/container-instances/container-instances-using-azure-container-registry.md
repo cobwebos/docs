@@ -3,15 +3,15 @@ title: 从 Azure 容器注册表部署容器映像
 description: 了解如何使用容器映像在 Azure 容器注册表中部署 Azure 容器实例中的容器。
 services: container-instances
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 823a25f388860fa55962a717b9dfed22f5d9c103
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533285"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770504"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -25,7 +25,9 @@ ms.locfileid: "74533285"
 
 ## <a name="configure-registry-authentication"></a>配置注册表身份验证
 
-在任意生产方案中，应使用[服务主体](../container-registry/container-registry-auth-service-principal.md)提供对 Azure 容器注册表的访问权限。 使用服务主体可以提供对容器映像的[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
+在提供对 "无外设" 服务和应用程序的访问权限的生产方案中，建议使用[服务主体](../container-registry/container-registry-auth-service-principal.md)配置注册表访问。 服务主体允许您为容器映像提供[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
+
+Azure 容器注册表提供其他[身份验证选项](../container-registry/container-registry-authentication.md)。
 
 在以下部分中，将创建一个 Azure 密钥保管库和一个服务主体，并将服务主体的凭据存储在保管库中。 
 
@@ -33,7 +35,9 @@ ms.locfileid: "74533285"
 
 如果 [Azure Key Vault](../key-vault/key-vault-overview.md) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 
-将 `RES_GROUP` 变量更新为要在其中创建 Key Vault 的现有资源组的名称，将 `ACR_NAME` 更新为容器注册表的名称。 在 `AKV_NAME` 中指定新 Key Vault 的名称。 保管库名称必须在 Azure 中唯一、长度必须为 3-24 个字母数字字符、以字母开头、以字母或数字结尾，并且不能包含连续的连字符。
+将 `RES_GROUP` 变量更新为要在其中创建 Key Vault 的现有资源组的名称，将 `ACR_NAME` 更新为容器注册表的名称。 为简洁起见，本文中的命令假设你的注册表、key vault 和容器实例都是在同一资源组中创建的。
+
+ 在 `AKV_NAME` 中指定新 Key Vault 的名称。 保管库名称必须在 Azure 中唯一、长度必须为 3-24 个字母数字字符、以字母开头、以字母或数字结尾，并且不能包含连续的连字符。
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -45,12 +49,12 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>创建服务主体并存储凭据
 
-现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
+现在，创建服务主体，并将其凭据存储在密钥保管库中。
 
 以下命令使用[az ad sp create for-rbac][az-ad-sp-create-for-rbac]来创建服务主体，并使用[az keyvault secret 将][az-keyvault-secret-set]服务主体的**密码**存储在保管库中。
 
 ```azurecli
-# Create service principal, store its password in AKV (the registry *password*)
+# Create service principal, store its password in vault (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
   --name $ACR_NAME-pull-pwd \
@@ -67,7 +71,7 @@ az keyvault secret set \
 接下来，将服务主体的 *appId*（传递给 Azure 容器注册表用于身份验证的**用户名**）存储在保管库中。
 
 ```azurecli
-# Store service principal ID in AKV (the registry *username*)
+# Store service principal ID in vault (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
@@ -116,9 +120,10 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>使用 Azure 资源管理器模板进行部署
 
-通过将 `imageRegistryCredentials` 属性包含到以下容器组义中，可以在 Azure 资源管理器模板中指定 Azure 容器注册表的属性：
+可以通过在容器组定义中包括 `imageRegistryCredentials` 属性，在 Azure 资源管理器模板中指定 Azure 容器注册表的属性。 例如，可以直接指定注册表凭据：
 
 ```JSON
+[...]
 "imageRegistryCredentials": [
   {
     "server": "imageRegistryLoginServer",
@@ -126,7 +131,10 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
     "password": "imageRegistryPassword"
   }
 ]
+[...]
 ```
+
+有关完整的容器组设置，请参阅[资源管理器的模板参考](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)。    
 
 有关在资源管理器模板中引用 Azure Key Vault 机密的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
 

@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 了解如何在 AKS 群集上安装 Azure Dev Spaces，以及如何安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325785"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770622"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>在 AKS 和客户端工具上安装 Azure Dev Spaces
 
@@ -58,7 +58,7 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 * [受支持区域][supported-regions]中[的 AKS 群集][create-aks-portal]。
 
 使用 Azure 门户安装 Azure Dev Spaces：
-1. 登录到 [Azure 门户][az-portal]。
+1. 登录 [Azure 门户][az-portal]。
 1. 导航到 AKS 群集。
 1. 单击 " *Dev Spaces*"。
 1. 将“启用 Dev Spaces”更改为“是”，然后单击“保存”。
@@ -86,7 +86,7 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md
 
 [az-portal]: https://portal.azure.com

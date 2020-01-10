@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
-ms.translationtype: HT
+ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659536"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753908"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -122,6 +122,9 @@ Reset-StorageSyncServer
 <a id="-2147024894"></a>**服务器终结点创建失败，出现以下错误： "MgmtServerJobFailed" （错误代码：-2147024894 或0x80070002）**  
 如果指定的服务器终结点路径无效，则会出现此错误。 验证指定的服务器终结点路径是否为本地附加的 NTFS 卷。 请注意，Azure 文件同步不支持将映射的驱动器作为服务器终结点路径。
 
+<a id="-2134375640"></a>**服务器终结点创建失败，出现以下错误： "MgmtServerJobFailed" （错误代码：-2134375640 或0x80c80328）**  
+如果指定的服务器终结点路径不是 NTFS 卷，则会出现此错误。 验证指定的服务器终结点路径是否为本地附加的 NTFS 卷。 请注意，Azure 文件同步不支持将映射的驱动器作为服务器终结点路径。
+
 <a id="-2134347507"></a>**服务器终结点创建失败，出现以下错误： "MgmtServerJobFailed" （错误代码：-2134347507 或0x80c8710d）**  
 发生此错误的原因是，Azure 文件同步不支持具有压缩的“系统卷信息”文件夹的卷上的服务器终结点。 要解决此问题，请解压缩“系统卷信息”文件夹。 如果“系统卷信息”文件夹是在该卷上唯一压缩的文件夹，请执行以下步骤：
 
@@ -172,6 +175,7 @@ Set-AzStorageSyncServerEndpoint `
 - 如果**GetNextJob 已完成，状态为：-2134347756** ，则服务器无法与 Azure 文件同步服务通信，因为防火墙或代理。 
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
+    - 使用 StorageSyncNetworkConnectivity cmdlet 检查到服务终结点的网络连接。 若要了解详细信息，请参阅[测试到服务终结点的网络连接](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)。
 
 - 如果**GetNextJob 已完成，状态为：-2134347764** ，则服务器无法与 Azure 文件同步服务通信，因为证书已过期或已删除。  
     - 在服务器上运行以下 PowerShell 命令，以重置用于身份验证的证书：

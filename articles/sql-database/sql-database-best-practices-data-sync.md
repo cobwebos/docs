@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821859"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771677"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -217,6 +217,14 @@ SQL 数据同步自动预配的限制如下：
 而是首先从同步组中删除数据库。 然后，部署更改并等待取消预配完成。 取消预配完成后，可以编辑同步组并部署更改。
 
 如果你尝试先删除数据库，然后编辑同步组而不先部署其中一个更改，则一个或另一个操作会失败。 门户界面可能会出现不一致状态。 如果出现此情况，请刷新页面以还原正确的状态。
+
+### <a name="avoid-schema-refresh-timeout"></a>避免架构刷新超时
+
+如果要同步的是复杂的架构，如果同步元数据数据库具有更低的 SKU （例如： basic），则可能会在架构刷新过程中遇到 "操作超时"。 
+
+#### <a name="solution"></a>解决方案
+
+若要缓解此问题，请将同步元数据数据库向上扩展到更高的 SKU，例如 S3。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 SQL 数据同步的详细信息，请参阅：

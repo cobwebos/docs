@@ -9,19 +9,19 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113287"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754327"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索的服务管理
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Portal](search-manage.md)
+> * [门户](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure 认知搜索是一项完全托管的基于云的搜索服务，用于在自定义应用中构建丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
@@ -58,7 +58,7 @@ Azure 认知搜索不会通过门户或编程接口公开单个服务的日志�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果要捕获并保存记录的事件，可以预配 Azure 监视等外部资源。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 
@@ -71,7 +71,7 @@ Azure 认知搜索不会通过门户或编程接口公开单个服务的日志�
 
 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
 
-使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果要从也是异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主副本执行增量索引。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
+使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果要从也是异地冗余的数据源进行索引，请注意，Azure 认知搜索索引器只能执行增量索引（从新的、已修改或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
 如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅[Azure 中的性能和优化认知搜索](search-performance-optimization.md)。
 

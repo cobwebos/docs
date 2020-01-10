@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791880"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754112"
 ---
 # <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -251,5 +251,5 @@ Microsoft.Skills.Util.ShaperSkill
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何使用复杂类型](search-howto-complex-data-types.md)
-+ [知识 store （预览版）](knowledge-store-concept-intro.md)
-+ [如何开始了解知识库](knowledge-store-howto.md)
++ [知识存储（预览版）](knowledge-store-concept-intro.md)
++ [在 REST 中创建知识存储](knowledge-store-create-rest.md)

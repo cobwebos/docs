@@ -7,15 +7,15 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: 4c910fd72805ce8cb1e7baa6b4252d6b2192fe36
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541512"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750978"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>收集具有旧设置的 Azure 活动日志
-[Azure 活动日志](activity-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 最近，你创建了一个日志配置文件，用于将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)，并使用连接器将其收集到[Log Analytics 工作区](activity-log-collect.md)中。 本文介绍方法之间的差异、如何使用现有旧设置，以及如何在准备诊断设置时清除旧设置。
+[Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 最近，你创建了一个日志配置文件，用于将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)，并使用连接器将其收集到[Log Analytics 工作区](activity-log-collect.md)中。 本文介绍方法之间的差异、如何使用现有旧设置，以及如何在准备诊断设置时清除旧设置。
 
 
 ## <a name="differences-between-methods"></a>方法之间的差异

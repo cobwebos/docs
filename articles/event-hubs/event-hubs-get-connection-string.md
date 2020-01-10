@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158930"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770996"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
@@ -38,16 +38,16 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 ## <a name="get-connection-string-from-the-portal"></a>从门户中获取连接字符串
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 在左侧导航菜单中，选择“所有服务”  。 
-3. 选择“分析”部分中的“事件中心”   。 
+2. 在左侧导航菜单中，选择“所有服务”。 
+3. 选择“分析”部分中的“事件中心”。 
 4. 在事件中心列表中，选择事件中心。
-6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”   。
+6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”。
 
     ![共享访问策略菜单项](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. 在策略列表中选择“共享访问策略”  。 默认值命名为：RootManageSharedAccessPolicy  。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
+7. 在策略列表中选择“共享访问策略”。 默认名称为： **RootManageSharedAccessPolicy**。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
 
     ![事件中心共享访问策略](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮   。 
+8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮。 
 
     ![事件中心 - 获取连接字符串](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
@@ -66,6 +66,12 @@ Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummyname
 
 ```azurecli-interactive
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
+```
+
+或者，您可以使用以下内容获取 EventHub 实体的连接字符串：
+
+```azurecli-interactive
+az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
 ```
 
 有关事件中心 Azure CLI 命令的详细信息，请参阅[事件中心的 Azure CLI](/cli/azure/eventhubs)。

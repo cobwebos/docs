@@ -1,27 +1,27 @@
 ---
 title: 在 Azure Functions 中自定义 HTTP 终结点
-description: 了解如何在 Azure Functions 中自定义 HTTP 触发器终结点
+description: 了解如何在中自定义 HTTP 触发器终结点 Azure Functions
 author: mattchenderson
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230698"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769262"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
-本文介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一系列内置 HTTP 触发器和绑定，方便使用各种语言（包括 Node.JS、C# 等等）创建终结点。 在本文中，将自定义一个 HTTP 触发器来处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
+本文介绍 Azure Functions 如何允许你构建高度可缩放的 Api。 Azure Functions 附带了一系列内置 HTTP 触发器和绑定，这使得使用各种语言（包括 node.js、 C#等）创作终结点变得轻松。 在本文中，将自定义 HTTP 触发器以处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-本文的余下内容将使用生成的函数。
+生成的函数将用于本文的其余部分。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -37,7 +37,7 @@ ms.locfileid: "74230698"
 
 1. 使用表中指定的 HTTP 触发器设置。
 
-    | 字段 | 示例值 | 说明 |
+    | 字段 | 示例值 | Description |
     |---|---|---|
     | 允许的 HTTP 方法 | 选定的方法 | 确定可以使用哪些 HTTP 方法来调用此函数 |
     | 选定的 HTTP 方法 | GET | 只允许使用选定的 HTTP 方法来调用此函数 |
@@ -97,7 +97,7 @@ ms.locfileid: "74230698"
     ![创建代理](./media/functions-create-serverless-api/creating-proxy.png)
 1. 使用表中指定的代理设置。 
 
-    | 字段 | 示例值 | 说明 |
+    | 字段 | 示例值 | Description |
     |---|---|---|
     | 名称 | HelloProxy | 仅用于管理的友好名称 |
     | 路由模板 | /api/remotehello | 确定可以使用哪个路由来调用此代理 |
@@ -105,7 +105,7 @@ ms.locfileid: "74230698"
     
 1. 请注意，代理不提供 `/api` 基路径前缀，必须在路由模板中包含此前缀。
 1. `%HELLO_HOST%` 语法将引用前面创建的应用设置。 解析的 URL 将指向原始函数。
-1. 单击“**创建**”。
+1. 单击“创建”。
 1. 可以通过复制代理 URL 或使用偏好的 HTTP 客户端在浏览器中对其进行测试来试验新代理。
     1. 对于匿名函数，请使用：
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
@@ -178,7 +178,7 @@ ms.locfileid: "74230698"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 Azure Functions 中构建和自定义 API。 此外，还介绍了如何将多个 API（包括模拟 API）合并成统一的 API 图面。 可以使用这些方法构建具有不同复杂性的 API，所有这些 API 都可在 Azure Functions 提供的无服务器计算模型上运行。
+本文介绍了如何在 Azure Functions 上构建和自定义 API。 此外，还介绍了如何将多个 API（包括模拟 API）合并成统一的 API 图面。 可以使用这些方法构建具有不同复杂性的 API，所有这些 API 都可在 Azure Functions 提供的无服务器计算模型上运行。
 
 以下参考文档可以帮助进一步开发 API：
 

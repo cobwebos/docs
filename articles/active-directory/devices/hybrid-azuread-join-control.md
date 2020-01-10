@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073613"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768106"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -79,7 +79,7 @@ ms.locfileid: "74073613"
 
 ### <a name="configure-ad-fs-settings"></a>配置 AD FS 设置
 
-如果使用的是 AD FS，则首先需要使用上述说明配置客户端 SCP，但将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的，也可以是 Azure AD。 为 AD FS 配置此配置时，设备对象的源将建立为 Azure AD。
+如果使用 AD FS，则首先需要使用上述说明来配置客户端 SCP，方法是将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的，也可以是 Azure AD。 为 AD FS 配置客户端 SCP 后，设备对象的源将建立为 Azure AD。
 
 > [!NOTE]
 > 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用[AdfsDeviceRegistration cmdlet](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)找到 ADFS 设备注册对象。

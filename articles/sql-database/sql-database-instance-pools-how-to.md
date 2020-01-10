@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810353"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754056"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL 数据库实例池（预览）操作指南
 
@@ -41,7 +41,7 @@ ms.locfileid: "73810353"
 
 可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |说明 |
+|Cmdlet |Description |
 |:---|:---|
 |[新-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | 创建 Azure SQL 数据库实例池。 |
 |[AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | 返回有关 Azure SQL 实例池的信息。 |
@@ -92,11 +92,17 @@ ms.locfileid: "73810353"
 
 - 仅常规用途和 Gen5 在公共预览版中可用。
 - 池名称只能包含小写字母、数字和连字符，并且不能以连字符开头。
-- 若要获取子网 ID，请使用 `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`。
 - 如果要使用 AHB （Azure 混合权益），则它将应用于实例池级别。 可以在创建池时设置许可证类型，也可以在创建后随时对其进行更新。
 
 > [!IMPORTANT]
 > 部署实例池是长时间运行的操作，耗时大约4.5 小时。
+
+获取网络参数：
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 创建实例池：
 
@@ -104,7 +110,7 @@ ms.locfileid: "73810353"
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925806"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750336"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
 Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和本地的完整堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将其用于不同的监视方案，你可能需要将其发送到环境中的其他监视工具。 在大多数情况下，最有效的方法是将监视数据流式处理到外部工具使用[Azure 事件中心](/azure/event-hubs/)。 本文简要介绍了如何将来自不同源的监视数据流式传输到事件中心，并提供详细指南链接。
@@ -49,20 +49,20 @@ Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和�
 
 使用 Azure Monitor 将监视数据路由到事件中心，可以轻松地与外部 SIEM 和监视工具集成。 Azure Monitor 集成的工具示例包括：
 
-| 工具 | 托管在 Azure 中 | 描述 |
+| 工具 | 托管在 Azure 中 | Description |
 |:---|:---| :---|
-|  IBM QRadar | No | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可在[QRADAR DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中了解有关与 Azure 的集成的详细信息。 |
-| Splunk | No | [Splunk 的 Azure Monitor 外接](https://splunkbase.splunk.com/app/3534/)程序是 Splunkbase 中可用的开放源代码项目。 [Splunk 的 Azure Monitor 加载](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)项中提供了文档。<br><br> 如果无法在 Splunk 实例中安装外接程序，如使用代理或在 Splunk 云上运行，则可以使用[Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心中的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
-| SumoLogic | No | [从事件中心的 Azure 审核应用程序收集日志中](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)提供了有关设置 SumoLogic 以使用事件中心数据的说明。 |
-| ArcSight | No | ArcSight Azure 事件中心智能连接器作为[ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
-| Syslog 服务器 | No | 如果要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
-| LogRhythm | No| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm 以从事件中心收集日志的说明。 
+|  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可在[QRADAR DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中了解有关与 Azure 的集成的详细信息。 |
+| Splunk | 否 | [Splunk 的 Azure Monitor 外接](https://splunkbase.splunk.com/app/3534/)程序是 Splunkbase 中可用的开放源代码项目。 [Splunk 的 Azure Monitor 加载](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)项中提供了文档。<br><br> 如果无法在 Splunk 实例中安装外接程序，如使用代理或在 Splunk 云上运行，则可以使用[Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心中的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
+| SumoLogic | 否 | [从事件中心的 Azure 审核应用程序收集日志中](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)提供了有关设置 SumoLogic 以使用事件中心数据的说明。 |
+| ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为[ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
+| Syslog 服务器 | 否 | 如果要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
+| LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm 以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[在 Azure 上运行的 Java 应用的使用 Logz.io 监视和日志记录](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)入门
 
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](../../azure-monitor/platform/archive-activity-log.md)
-* [阅读 Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)
+* [阅读 Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)
 * [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

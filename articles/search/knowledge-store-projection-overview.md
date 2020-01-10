@@ -1,5 +1,5 @@
 ---
-title: 使用知识库中的预测（预览）
+title: 知识存储中的投影（预览）
 titleSuffix: Azure Cognitive Search
 description: 将 AI 扩充索引管道中的已扩充数据保存并形状到一个知识库，以便在除全文搜索以外的其他方案中使用。 知识存储目前以公开预览版提供。
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790002"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754525"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>在 Azure 中使用知识库中的预测认知搜索
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 中的知识存储中的预测认知搜索
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-Azure 认知搜索通过内置认知技能和自定义技能作为索引的一部分，扩充内容。 根据将结构添加到文档，使搜索更有效。 在许多情况下，扩充的文档对于除搜索以外的方案非常有用，例如用于知识挖掘。
+Azure 认知搜索通过内置认知技能和自定义技能作为索引的一部分，扩充内容。 根据创建以前不存在的新信息：从图像中提取信息，检测情绪、关键短语和文本中的实体，只需对其进行命名。 根据还会将结构添加到无差别文本。 所有这些过程都将导致使全文搜索更有效的文档。 在许多情况下，对于除搜索以外的方案（例如用于知识挖掘），已丰富的文档很有用。
 
 "知识库" 是 "[知识存储](knowledge-store-concept-intro.md)" 的一个组件，它是可保存到物理存储中以供知识库挖掘使用的丰富文档的视图。 使用投影，您可以将数据 "投影" 到满足您的需求的形状，同时保留关系，以便 Power BI 的工具可以读取数据而无需额外的精力。
 
@@ -34,7 +34,7 @@ Azure 认知搜索通过内置认知技能和自定义技能作为索引的一�
 
 + **文件**：当需要保存从文档中提取的图像时，文件投影允许您将规范化映像保存到 blob 存储中。
 
-若要查看在上下文中定义的投影，请逐步了解[如何开始使用知识 store](knowledge-store-howto.md)。
+若要查看在上下文中定义的投影，请单步执行[在 REST 中创建知识库](knowledge-store-create-rest.md)。
 
 ## <a name="projection-groups"></a>投影组
 
@@ -114,12 +114,6 @@ Azure 认知搜索通过内置认知技能和自定义技能作为索引的一�
 
 如本示例中所示，关键短语和实体将建模为不同的表，并且将包含返回给每行的父（MainTable）的引用。
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>对象投影
 
 对象投影是扩充树的 JSON 表示形式，可源自任何节点。 在许多情况下，创建表投影的相同**整形**程序技能可用于生成对象投影。 
@@ -143,10 +137,8 @@ The following illustration is a reference to the Case-law exercise in [How to ge
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ The following illustration is a reference to the Case-law exercise in [How to ge
 
 生成对象投影需要几个特定于对象的属性：
 
-+ storageContainer：将在其中保存对象的容器
++ storageContainer：将在其中保存对象的 blob 容器
 + 源：扩充树的节点的路径，该节点是投影的根
-+ key：一个路径，表示要存储的对象的唯一键。 它将用于在容器中创建 blob 的名称。
 
 ## <a name="file-projection"></a>文件投影
 
@@ -219,4 +210,4 @@ The following illustration is a reference to the Case-law exercise in [How to ge
 下一步，使用示例数据和说明创建第一个知识存储。
 
 > [!div class="nextstepaction"]
-> [如何创建知识库](knowledge-store-howto.md)。
+> [在 REST 中创建知识库](knowledge-store-create-rest.md)。

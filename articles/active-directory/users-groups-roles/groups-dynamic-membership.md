@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538797"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768702"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
 在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 动态组成员资格可减少添加和删除用户的管理开销。 本文详细介绍了用于为用户或设备创建动态成员资格规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 
-当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
+当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
 
 - 可以创建设备或用户的动态组，但无法创建同时包含用户和设备的规则。
 - 无法根据设备所有者的属性创建设备组。 设备成员资格规则只能引用设备属性。
@@ -48,9 +48,9 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 > [!NOTE]
 > 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
 
-有关分步说明，请参阅[更新动态组](groups-update-rule.md)。
+有关分步说明，请参阅[创建或更新动态组](groups-create-rule.md)。
 
-![添加动态组的成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
+![添加动态组的成员身份规则](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>单个表达式的规则语法
 
@@ -68,9 +68,9 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- properties
-- 运算符
-- Value
+- 属性
+- 操作员
+- 值
 
 表达式中各部分的顺序对于避免语法错误至关重要。
 
@@ -78,8 +78,8 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- 布尔
-- 字符串
+- Boolean
+- String
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
@@ -135,14 +135,14 @@ user.department -eq "Sales"
 
 下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
 
-| 运算符 | 语法 |
+| 操作员 | 语法 |
 | --- | --- |
 | 不等于 |-ne |
 | 等于 |-eq |
 | 开头不为 |-notStartsWith |
 | 开头为 |-startsWith |
 | 不包含 |-notContains |
-| Contains |-contains |
+| 包含 |-contains |
 | 不匹配 |-notMatch |
 | 匹配 |-match |
 | In | -in |
@@ -372,8 +372,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  设备属性  | 值 | 示例
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | 任意字符串值 |（device. displayName-eq "抢 iPhone"）
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>（Device.deviceostype-包含 "AndroidEnterprise"）<br>（Device.deviceostype-eq "AndroidForWork"）
+ displayName | 任意字符串值 |(device.displayName -eq "Rob iPhone")
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>（Device.deviceostype-包含 "AndroidEnterprise"）<br>(device.deviceOSType -eq "AndroidForWork")
  deviceOSVersion | 任意字符串值 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")

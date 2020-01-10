@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440346"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754457"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -252,6 +252,25 @@ ms.locfileid: "75440346"
 在此示例中，在运行复制的过程中，数据工厂会跟踪接收器 Azure SQL 数据库中的高 DTU 使用率。 这种情况会减缓写入操作的速度。 建议在 Azure SQL 数据库层上增加 Dtu：
 
 ![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="resume-from-last-failed-run"></a>从上次失败的运行恢复
+
+复制活动支持从上一次失败的运行中恢复，当你在基于文件的存储之间按二进制格式复制大量文件，并选择将文件夹/文件层次结构从源复制到接收器，例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2。 它适用于以下基于文件的连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)和[SFTP](connector-sftp.md)。
+
+可以通过以下两种方式利用复制活动恢复：
+
+- **活动级别重试：** 可以设置复制活动的重试次数。 在管道执行过程中，如果此复制活动运行失败，则下一次自动重试将从上一个试用的故障点开始。
+- **从失败的活动重新运行：** 管道执行完成后，还可以在 ADF UI 监视视图中或以编程方式触发从失败的活动中重新运行。 如果失败的活动是复制活动，则该管道将只能从此活动重新运行，但也会从上一个运行的故障点恢复。
+
+    ![复制恢复](media/copy-activity-overview/resume-copy.png)
+
+请注意以下几点：
+
+- 恢复发生在文件级别。 如果复制活动在复制文件时失败，则在下一次运行时，将重新复制此特定文件。
+- 若要使恢复正常工作，请不要在重新运行时更改复制活动设置。
+- 从 Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 和 Google 云存储复制数据时，复制活动可以从任意数量的复制文件恢复。 虽然作为源的其他基于文件的连接器的其余部分，当前复制活动支持从有限数量的文件中恢复，通常是在数十个文件的范围内，并且根据文件路径的长度而变化;在重新运行期间，将重新复制超出此数量的文件。
+
+对于二进制文件复制以外的其他方案，将从开头开始重新运行复制活动。
 
 ## <a name="preserve-metadata-along-with-data"></a>保留元数据以及数据
 

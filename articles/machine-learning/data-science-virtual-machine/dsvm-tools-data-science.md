@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b5c8ce1b30e8038397c68be2672ac947450d438
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615445"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771200"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure 数据科学虚拟机上的机器学习和数据科学工具
 Azure 数据科学虚拟机（Dsvm）提供了一组丰富的工具和库，适用于广泛的语言（如 Python、R 和 Julia）的机器学习。
@@ -23,7 +23,7 @@ Azure 数据科学虚拟机（Dsvm）提供了一组丰富的工具和库，适�
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>适用于 Python 的 Azure 机器学习 SDK
 
-请参阅适用于 Python 的[AZURE 机器学习 SDK](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml)的完整参考。
+请参阅适用于 Python 的[AZURE 机器学习 SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)的完整参考。
 
 |    |           |
 | ------------- | ------------- |

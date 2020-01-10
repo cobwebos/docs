@@ -3,16 +3,16 @@ title: 查看服务提供商活动
 description: 客户可以查看记录的活动，查看服务提供商通过 Azure 委派的资源管理执行的操作。
 ms.date: 12/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6ae5668601e3587b7306ba1652f6b107800fcb3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527818"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749171"
 ---
 # <a name="view-service-provider-activity"></a>查看服务提供商活动
 
-已委派 Azure 委托资源管理订阅的客户可以[查看 Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)数据，查看所执行的所有操作。 这使客户能够全面了解服务提供商通过 Azure 委派的资源管理执行的操作，以及客户自己 Azure Active Directory （Azure AD）租户中的用户完成的操作。
+已委派 Azure 委托资源管理订阅的客户可以[查看 Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)数据，查看所执行的所有操作。 这使客户能够全面了解服务提供商通过 Azure 委派的资源管理执行的操作，以及客户自己 Azure Active Directory （Azure AD）租户中的用户完成的操作。
 
 ## <a name="view-activity-log-data"></a>查看活动日志数据
 

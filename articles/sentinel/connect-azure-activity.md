@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240777"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749968"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>连接 Azure 活动日志中的数据
 
 
 
-只需要单击一次即可将日志从[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)流式传输到 azure Sentinel。 活动日志是一种订阅日志，可用于深入了解 Azure 中发生的订阅级别事件。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 使用活动日志，可以确定针对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取（GET）操作或针对使用经典/"RDFE" 模型的资源的操作。 
+只需要单击一次即可将日志从[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)流式传输到 azure Sentinel。 活动日志是一种订阅日志，可用于深入了解 Azure 中发生的订阅级别事件。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 使用活动日志，可以确定针对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取（GET）操作或针对使用经典/"RDFE" 模型的资源的操作。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 具有全局管理员或安全管理员权限的用户
 
@@ -49,5 +49,5 @@ ms.locfileid: "71240777"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Azure 活动日志连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。

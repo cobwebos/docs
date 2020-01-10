@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 6325af9f577fbee1ab1621acbf10497fab2b78df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
-ms.translationtype: HT
+ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689162"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754224"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "75689162"
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|标准|
 |[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔|✔|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-filelessattackdetect)|✔|✔|✔|标准|
+|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|✔|✔|✔|标准|
 |[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|标准|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|标准|
@@ -66,7 +66,7 @@ ms.locfileid: "75689162"
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|标准|
 |[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-filelessattackdetect)|-|-|-|标准|
+|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|-|-|-|标准|
 |[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|标准|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|标准|

@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: c60cd631e703f929eaae56138a2acd3687121924
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226576"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768871"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
 本文演示如何为 Azure Functions 创建自动测试。 
 
-建议测试所有代码，但是，包装函数的逻辑并在函数外部创建测试可以获得最佳效果。 将逻辑抽象出来可以限制函数的代码行，并让该函数专门负责调用其他类或模块。 但是，本文演示如何针对 HTTP 和计时器触发的函数创建自动测试。
+建议测试所有代码，但是，包装函数的逻辑并在函数外部创建测试可以获得最佳效果。 将逻辑抽象出来可以限制函数的代码行，并让该函数专门负责调用其他类或模块。 不过，本文演示了如何针对 HTTP 和计时器触发的函数创建自动测试。
 
 下面的内容根据不同的语言和环境划分为两个不同的部分。 可以了解：
 
@@ -38,8 +38,8 @@ ms.locfileid: "74226576"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”。 
-5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
-6. [从 *Functions.Test* 应用引用 ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)Functions *应用*。
+5. 使用 NuGet 将来自测试应用程序的引用添加到[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
 
@@ -47,9 +47,9 @@ ms.locfileid: "74226576"
 
 每个函数采用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 的实例来处理消息日志记录。 有些测试不记录消息，或者与日志记录的实现方式无关。 还有一些测试需要评估记录的消息，以确定是否通过了测试。
 
-`ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
+`ListLogger` 类实现 `ILogger` 接口，并在测试期间保存用于计算的消息的内部列表。
 
-**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *NullScope.cs*，然后输入以下代码：
+**右键单击**"*函数*"，然后选择 "**添加 > 类，将**其命名为**NullScope.cs** ，然后输入以下代码：
 
 ```csharp
 using System;
@@ -67,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *ListLogger.cs*，然后输入以下代码：
+接下来，**右键单击**"*函数*"，然后选择 "**添加 > 类**"，将其命名为**ListLogger.cs** ，然后输入以下代码：
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -105,7 +105,7 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：作用域将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
+- **BeginScope**：作用域将上下文添加到日志记录。 在这种情况下，测试只指向 `NullScope` 类上的静态实例，以允许测试正常运行。
 
 - **IsEnabled**：提供默认值 `false`。
 
@@ -113,7 +113,7 @@ namespace Functions.Tests
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *LoggerTypes.cs*，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **LoggerTypes.cs**，然后输入以下代码：
 
 ```csharp
 namespace Functions.Tests
@@ -127,7 +127,7 @@ namespace Functions.Tests
 ```
 此枚举指定测试使用的记录器类型。 
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *TestFactory.cs*，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **TestFactory.cs**，然后输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -198,7 +198,7 @@ namespace Functions.Tests
 
 - **CreateLogger**：根据记录器类型，此方法返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 *FunctionsTests.cs*，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **FunctionsTests.cs**，然后输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -247,7 +247,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**：此测试创建 `ListLogger` 的实例，并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以使用[GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 

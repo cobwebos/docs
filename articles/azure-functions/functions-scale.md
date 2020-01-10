@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409106"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768907"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三种托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)、[高级计划](#premium-plan)和[应用服务计划](#app-service-plan)。
+在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三种托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)、[高级计划](#premium-plan)和[专用（应用服务）计划](#app-service-plan)。
 
 选择的托管计划将决定以下行为：
 
 * 函数应用的缩放方式。
 * 每个函数应用实例可用的资源。
-* 支持高级功能，例如 VNET 连接。
+* 支持高级功能，例如 Azure 虚拟网络连接。
 
-当代码运行时，消耗和高级计划会自动添加计算能力。 当需要处理负载并在代码停止运行时向下缩放时，应用会进行横向扩展。 对于消耗计划，还不必提前为空闲 Vm 付费或预留容量。  
+当代码运行时，消耗和高级计划会自动添加计算能力。 当需要处理负载并在代码停止运行时进行缩放时，应用会进行扩展。 对于消耗计划，还不必提前为空闲 Vm 付费或预留容量。  
 
 高级计划提供了额外的功能，如高级计算实例、使实例始终处于热热和 VNet 连接的能力。
 
@@ -33,7 +33,7 @@ ms.locfileid: "75409106"
 功能支持分为以下两个类别：
 
 * _公开发布（GA）_ ：完全支持并批准生产使用。
-* _预览版_：尚未完全支持并批准生产使用。
+* _预览版_：尚未完全受支持，也不会获得生产用途的批准。
 
 下表显示了在 Windows 或 Linux 上运行时，对三个托管计划的当前支持级别：
 
@@ -78,7 +78,7 @@ ms.locfileid: "75409106"
 * 您的小型执行数量很大，并且在消耗计划中的执行费用较高，但费用较低。
 * 你需要比消耗计划提供的更多的 CPU 或内存选项。
 * 你的代码所需的运行时间超过消耗计划[允许的最长执行时间](#timeout)。
-* 你需要的功能仅适用于高级计划，例如 VNET/VPN 连接。
+* 你需要只能在高级计划（如虚拟网络连接）上使用的功能。
 
 对高级计划运行 JavaScript 函数时，应选择具有较少个 vcpu 的实例。 有关详细信息，请参阅[选择单核高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
 

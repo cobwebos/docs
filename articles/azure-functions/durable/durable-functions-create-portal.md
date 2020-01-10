@@ -4,12 +4,12 @@ description: 了解如何针对门户开发安装 Azure Functions 的 Durable Fu
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231484"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769636"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -17,12 +17,12 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 > [!NOTE]
 > 
-> * 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
+> * 如果要在中C#开发持久性函数，应改为考虑[Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
 > * 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 你可以创建 .NET 或 JavaScript 应用。
+必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -58,7 +58,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+** 。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -68,7 +68,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在搜索字段中键入 `durable`，然后选择“Durable Functions HTTP 初学者”模板。
 
-1. 系统提示时，请选择“安装”以在函数应用中安装 Azure DurableTask 扩展的任何依赖项。 对于给定的函数应用，只需安装该扩展一次。 安装成功后，选择“继续”。
+1. 出现提示时，请选择 "**安装**" 以在 function app 中安装 Azure DurableTask 扩展和任何依赖项。 对于给定的函数应用，只需安装该扩展一次。 安装成功后，选择“继续”。
 
     ![安装绑定扩展](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -76,7 +76,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在函数应用中创建另一函数，这次使用 **Durable Functions 业务流程协调程序**模板。 将新的业务流程函数命名为 `HelloSequence`。
 
-1. 使用 `Hello`Durable Functions 活动**模板创建第三个函数，该函数名为** 。
+1. 使用 **Durable Functions 活动**模板创建第三个函数，该函数名为 `Hello`。
 
 ## <a name="test-the-durable-function-orchestration"></a>测试持久函数业务流程
 

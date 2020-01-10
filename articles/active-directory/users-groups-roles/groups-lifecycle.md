@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 01/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914075"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768668"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -86,11 +86,9 @@ ms.locfileid: "74914075"
     - 设置完成后，选择“保存”来保存设置。
 
 > [!NOTE]
-> 首次设置过期时，超过过期时间间隔的任何组都将设置为35天直到过期，除非自动续订了组或所有者续订了组。
->
-> 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程最多可能需要 24 小时。
->
-> 团队中使用的组的过期通知出现在 "团队所有者" 源中。
+> - 首次设置过期时，超过过期时间间隔的任何组都将设置为35天直到过期，除非自动续订了组或所有者续订了组。
+> - 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程最多可能需要 24 小时。
+> - 团队中使用的组的过期通知出现在 "团队所有者" 源中。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

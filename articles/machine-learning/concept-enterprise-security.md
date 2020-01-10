@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/17/2019
-ms.openlocfilehash: 4b2f9e7f12b468f12fcfbe1b0af5c2918aa6c6ad
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4a8a548e6a073c38dbc1f5600d721a7cdb97f120
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541161"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762818"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -134,7 +134,7 @@ Azure 机器学习将指标和元数据存储在与由 Azure 机器学习管理�
 
 你可以使用 SSL 来保护 Azure 机器学习微服务之间的内部通信，并保护对计分终结点的外部调用。 所有 Azure 存储访问也通过安全通道进行。
 
-有关详细信息，请参阅[通过 Azure 机器学习使用 SSL 来保护 web 服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service)。
+有关详细信息，请参阅[通过 Azure 机器学习使用 SSL 来保护 web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

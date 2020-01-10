@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670087"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750471"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
 
@@ -66,3 +66,12 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 ### <a name="high-cpu-or-memory"></a>高 CPU 或内存
 
 如果你的应用服务计划使用超过90% 的可用 CPU 或内存，则基础虚拟机在处理你的部署时可能会遇到问题。 发生这种情况时，请暂时向上缩放实例计数以执行部署。 完成部署后，可以将实例计数返回到它以前的值。
+
+有关最佳实践的详细信息，请访问[应用服务诊断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，以了解特定于资源的可操作最佳方案。
+
+- 在[Azure 门户](https://portal.azure.com)中导航到 Web 应用。
+- 在左侧导航栏中单击 "**诊断和解决问题**"，这将打开应用服务诊断。
+- 选择**最佳方案**主页磁贴。
+- 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
+
+你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。

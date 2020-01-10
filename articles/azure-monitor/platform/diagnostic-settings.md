@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 034ad7a074f60f1e2e9a0e6190f405972250c95d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529868"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751089"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以在 Azure 中收集平台日志和指标
-Azure 中的[平台日志](resource-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何创建和配置诊断设置，以便将平台日志发送到不同的目标。
+Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文详细介绍了如何创建和配置诊断设置，以便将平台日志发送到不同的目标。
 
 > [!IMPORTANT]
 > 在创建诊断设置以收集活动日志之前，应先禁用任何旧配置。 有关详细信息，请参阅[通过旧设置收集 Azure 活动日志](diagnostic-settings-legacy.md)。
@@ -136,4 +136,4 @@ az monitor diagnostic-settings create  \
 
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读有关 Azure 平台日志的详细信息](resource-logs-overview.md)
+* [阅读有关 Azure 平台日志的详细信息](platform-logs-overview.md)

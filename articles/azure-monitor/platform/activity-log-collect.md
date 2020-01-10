@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531031"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745621"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 中 Log Analytics 工作区中的 Azure 活动日志
 
 > [!WARNING]
 > 你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](diagnostic-settings-subscription.md)。
 
-[Azure 活动日志](activity-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 本文介绍如何将活动日志收集到 Log Analytics 工作区中，以及如何使用 Activity Log Analytics[监视解决方案](../insights/solutions.md)，该解决方案提供用于分析此数据的日志查询和视图。 
+[Azure 活动日志](platform-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 本文介绍如何将活动日志收集到 Log Analytics 工作区中，以及如何使用 Activity Log Analytics[监视解决方案](../insights/solutions.md)，该解决方案提供用于分析此数据的日志查询和视图。 
 
 将活动日志连接到 Log Analytics 工作区具有以下优势：
 
@@ -74,6 +74,6 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[活动日志](activity-logs-overview.md)。
+- 详细了解[活动日志](platform-logs-overview.md)。
 - 详细了解[Azure Monitor 数据平台](data-platform.md)。
 - 使用[日志查询](../log-query/log-query-overview.md)查看活动日志中的详细信息。

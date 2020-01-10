@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391565"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772907"
 ---
 无法从服务器访问 Azure 文件同步服务时，则会发生此错误。 可以执行以下步骤来排查此错误：
 
@@ -31,5 +31,6 @@ ms.locfileid: "72391565"
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-    
-4. 有关网络连接故障排除的其他帮助，请与网络管理员联系。
+4. 使用 StorageSyncNetworkConnectivity cmdlet 检查到服务终结点的网络连接。 若要了解详细信息，请参阅[测试到服务终结点的网络连接](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)。    
+
+5. 有关网络连接故障排除的其他帮助，请与网络管理员联系。

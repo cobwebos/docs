@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: 42a8b53f8d1fee2d657ccaa2d57e72b3edfdd4f3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531048"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747523"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
 ## <a name="overview"></a>概述
-活动日志警报是发生了与警报中指定的条件相匹配的新[活动日志事件](activity-log-schema.md)时激活的警报。 根据在[Azure 活动日志](activity-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此可以使用 Azure 资源管理器模板来创建它们。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
+活动日志警报是发生了与警报中指定的条件相匹配的新[活动日志事件](activity-log-schema.md)时激活的警报。 根据在[Azure 活动日志](platform-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此可以使用 Azure 资源管理器模板来创建它们。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
 
 > [!NOTE]
 > **无法**为活动日志的警报类别中的事件创建警报。

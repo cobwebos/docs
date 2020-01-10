@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 2f5658d6df2b20e5bce0fab2ca1787ede5ab7883
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540225"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763626"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "75540225"
     > * `model`-将要部署的注册模型。
     > * `inference_config`-模型的推理配置。
     >
-    > 有关设置这些变量的详细信息，请参阅[部署模型与 Azure 机器学习](service/how-to-deploy-and-where.md)。
+    > 有关设置这些变量的详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
@@ -53,7 +53,7 @@ ms.locfileid: "75540225"
     >
     > 如果请求数据的格式不能由您的模型使用，则该脚本可以将其转换为可接受的格式。 它还可能在将响应返回给客户端之前对其进行转换。
     >
-    > 默认情况下，在打包功能时，输入将被视为文本。 如果你有兴趣使用输入的原始字节（例如 Blob 触发器），则应使用[AMLRequest 来接受原始数据](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#binary-data)。
+    > 默认情况下，在打包功能时，输入将被视为文本。 如果你有兴趣使用输入的原始字节（例如 Blob 触发器），则应使用[AMLRequest 来接受原始数据](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)。
 
 
 * 运行条目脚本或模型所需的**依赖项**（如帮助程序脚本或 Python/Conda 包）
@@ -79,7 +79,7 @@ ms.locfileid: "75540225"
 
 有关环境的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 > [!IMPORTANT]
 > 部署到函数时，无需创建__部署配置__。
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 若要创建部署到 Azure Functions 的 Docker 映像，请使用所需的[contrib](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)或特定包函数作为你感兴趣的触发器。 下面的代码段演示如何使用模型和推理配置中的 blob 触发器创建新包：
 
 > [!NOTE]
-> 代码段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[部署模型与 Azure 机器学习](service/how-to-deploy-and-where.md)。
+> 代码段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.contrib.functions import package
@@ -238,6 +238,6 @@ print(blob.location)
 
 * 了解如何在[函数](/azure/azure-functions/functions-create-function-linux-custom-image)文档中配置函数应用。
 * 了解有关 Blob 存储的详细信息，请参阅[Azure blob 存储绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)。
-* [将模型部署到 Azure App Service](service/how-to-deploy-app-service.md)。
+* [将模型部署到 Azure App Service](how-to-deploy-app-service.md)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

@@ -9,28 +9,28 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 11/06/2019
+ms.date: 01/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123727"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750658"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 Visual Studio 2019 入门
-Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：
+Visual Studio **2019** SQL SERVER DATA TOOLS （SSDT）是一个工具，可用于执行以下操作：
 
-- 连接、查询和开发 SQL 数据仓库的应用程序 
-- 利用对象资源管理器直观地浏览数据模型中的所有对象，包括表、视图、存储过程等。
-- 为对象生成 T-SQL 数据定义语言 (DDL) 脚本
-- 对 SSDT 数据库项目使用基于状态的方法来开发数据仓库
+- 为 SQL 数据仓库连接、查询和开发应用程序 
+- 利用对象资源管理器以可视化方式浏览数据模型中的所有对象，包括表、视图、存储过程等。
+- 为对象生成 T-sql 数据定义语言（DDL）脚本
+- 使用基于状态的方法和 SSDT 数据库项目来开发数据仓库
 - 将数据库项目与 Azure Repos 的 Git 等源代码管理系统集成
 - 通过自动化服务器（如 Azure DevOps）设置持续集成和部署管道
 
 ## <a name="install-visual-studio-2019"></a>安装 Visual Studio 2019
-请参阅[下载 Visual studio 2019][]下载并安装 visual studio **16.3 及更高**版本。 在安装过程中，选择“数据存储和处理”工作负载。 Visual Studio 2019 不再需要单独安装 SSDT。
+请参阅[下载 Visual studio 2019][]下载并安装 visual studio **16.3 及更高**版本。 在安装过程中，选择数据存储和处理工作负荷。 Visual Studio 2019 中不再需要单独的 SSDT 安装。
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT 中不支持的功能
 
@@ -45,10 +45,11 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 - [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
   - 提交支持票证或[在此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)投票以获取支持的功能。 
 - [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest)函数 
+- 不支持[具有约束的表](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints)。 对于这些表对象，请将生成操作设置为 "无"。
 
 ## <a name="next-steps"></a>后续步骤
 
-安装最新版本的 SSDT 后，便可以[连接][connect]到 SQL 数据仓库。
+现在，你已安装了最新版本的 SSDT，接下来可以[连接][connect]到 SQL 数据仓库。
 
 <!--Anchors-->
 

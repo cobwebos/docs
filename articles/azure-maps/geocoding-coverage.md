@@ -1,23 +1,23 @@
 ---
 title: Azure Maps 中的地理编码覆盖率 |Microsoft Docs
-description: 了解 Azure Maps 中的地理编码覆盖区域
+description: 了解 Microsoft Azure Maps 中的地理编码覆盖率，以及可以使用 Azure Maps geocoder 的区域/国家/地区。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/22/2019
+ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991370"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768803"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
-使用 Azure Maps 搜索位置时，搜索服务会获取搜索词，并返回纬度和经度坐标，该过程称为地理编码。 但是，Maps 并非对所有区域和国家/地区提供相同级别的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。 
+使用 Azure Maps 搜索某个位置时，搜索服务（例如 "[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)"）将获取搜索词并返回纬度和经度坐标。 此过程称为地理编码。 不过，Azure Maps 没有与所有地区和国家/地区相同的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。 
 
 在国家/地区地理编码的能力取决于公路数据覆盖面和地理编码服务的地理编码精度。 以下分类用于在每个国家/地区指定地理编码支持的级别。
 * **地址点** - 可以将地址数据解析为地址包裹中的经度/维度坐标（地产边界）。 有时候称为“屋顶”准确性。 这是可用于地址的最高准确性级别。 
@@ -135,7 +135,7 @@ ms.locfileid: "72991370"
 | 所罗门群岛                                     |                 |                |              |      ✓     |          ✓         |
 | 南千岛群岛                                     |        ✓        |                |              |      ✓     |          ✓         |
 | 斯里兰卡                                           |                 |                |              |      ✓     |          ✓         |
-| 中国台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 泰国                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | 托克劳                                             |                 |                |              |      ✓     |          ✓         |
 | 汤加                                               |                 |                |              |      ✓     |          ✓         |

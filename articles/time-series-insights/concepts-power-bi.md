@@ -8,18 +8,26 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: bdf687437a278a125bcb6196f44dcaccff4cc3f1
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
-ms.translationtype: HT
+ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689394"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770316"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>将时序见解连接到 Power BI  
- 
+
 你是否正在寻找一种解决方案来帮助关联你的时序数据，创建鲜艳的可视化效果，并在你的组织内分享见解？
 
-时序见解现在与[Power BI](https://powerbi.microsoft.com/)无缝集成，为你提供更强大的可视化和仪表板建设功能，可通过流式处理数据，并允许你在组织中共享见解和结果。
+Azure 时序见解现可与[Power BI](https://powerbi.microsoft.com/)无缝集成，为你提供更强大的可视化和仪表板建设功能，并可在你的组织中共享见解和结果。
+
+## <a name="video"></a>视频
+
+详细了解如何将 Azure 时序见解与 Power BI 集成。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
+
+## <a name="summary"></a>摘要
 
    [时序见解中的 ![导出选项](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 

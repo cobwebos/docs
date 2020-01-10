@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/17/2019
+ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fec017f80758dbcf2a155c3535b9a3e028e4bd9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592700"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772255"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -37,11 +37,11 @@ Azure Active Directory (Azure AD) 中的全局管理员不一定对目录中的�
 - 查看组织中的所有 Azure 订阅或管理组
 - 允许自动化应用（例如发票或审计应用）访问所有 Azure 订阅或管理组
 
-## <a name="how-does-elevate-access-work"></a>提升访问权限的工作原理是什么？
+## <a name="how-does-elevated-access-work"></a>提升的访问的工作原理是什么？
 
 Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分配不授予对 Azure 资源的访问权限，Azure 角色分配页不授予对 Azure AD 的访问权限。 但是，Azure AD 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)可为自己分配对目录中所有 Azure 订阅和管理组的访问权限。 如果无权访问 Azure 订阅资源（如虚拟机或存储帐户），并且想使用全局管理员权限来获取这些资源的访问权限，则请使用此功能。
 
-提升访问权限时，将分配到 Azure 中根范围 (`/`) 的[用户访问管理员](built-in-roles.md#user-access-administrator)角色。 这使你可以查看所有资源并在目录中的任何订阅或管理组中分配访问权限。 可以使用 PowerShell 删除用户访问管理员角色分配。
+提升访问权限时，将分配到 Azure 中根范围 (`/`) 的[用户访问管理员](built-in-roles.md#user-access-administrator)角色。 这使你可以查看所有资源并在目录中的任何订阅或管理组中分配访问权限。 可以使用 Azure PowerShell、Azure CLI 或 REST API 删除用户访问管理员角色分配。
 
 完成需在根范围执行的更改后，应删除此提升的访问权限。
 
@@ -49,19 +49,25 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 ## <a name="azure-portal"></a>Azure 门户
 
+### <a name="elevate-access-for-a-global-administrator"></a>为局管理员提升访问权限
+
 请按照这些步骤，使用 Azure 门户为全局管理员提升访问权限。
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com) 或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
-1. 在导航列表中，单击“Azure Active Directory”，然后单击“属性”。
+1. 搜索并选择“Azure Active Directory”。
 
-   ![Azure AD 属性 - 屏幕截图](./media/elevate-access-global-admin/aad-properties.png)
+   ![选择 Azure Active Directory-屏幕截图](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+
+1. 在 "**管理**" 下选择 "**属性**"。
+
+   ![选择 Azure Active Directory 属性的属性-屏幕截图](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
 1. 在“Azure 资源的访问管理”下，将开关设置为“是”。
 
    ![Azure 资源的访问管理 - 屏幕截图](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   将开关设为“是”时，你将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
+   将切换设置为 **"是"** 时，将在根范围（/）的 Azure RBAC 中为你分配 "用户访问管理员" 角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
    将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
 
@@ -74,7 +80,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 注销然后重新登录可以刷新访问权限。
 
-    现在，你应该有权访问目录中的所有订阅和管理组。 你会注意到，系统为你分配了根范围的“用户访问管理员”角色。
+    现在，你应该有权访问目录中的所有订阅和管理组。 查看 "访问控制（IAM）" 窗格时，你会注意到，你已在根范围内分配了 "用户访问管理员" 角色。
 
    ![根范围的订阅角色分配 - 屏幕截图](./media/elevate-access-global-admin/iam-root.png)
 
@@ -82,15 +88,27 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
     有关如何分配角色的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
-1. 完成后，将“Azure 资源的访问管理”切换回到“否”。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
+### <a name="remove-elevated-access"></a>撤消提升的访问权限
+
+若要在根范围（`/`）删除 "用户访问管理员" 角色分配，请执行以下步骤。
+
+1. 以用于提升访问权限的同一用户身份登录。
+
+1. 在导航列表中，单击“Azure Active Directory”，然后单击“属性”。
+
+1. 将**Azure 资源的访问管理**切换回 "**否**"。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
+
+    如果尝试删除 "访问控制（IAM）" 窗格上的 "用户访问管理员" 角色分配，将看到以下消息。 若要删除角色分配，必须设置 "切换回" 设置为 "**否**"，或者使用 Azure PowerShell、Azure CLI 或 REST API。
+
+    ![删除具有根作用域的角色分配](./media/elevate-access-global-admin/iam-root-remove.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-### <a name="list-role-assignment-at-the-root-scope-"></a>列出根范围 (/) 处的角色分配
+### <a name="list-role-assignment-at-root-scope-"></a>列出根范围内的角色分配（/）
 
-若要列出用户在根范围 (`/`) 内的用户访问管理员角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) 命令。
+若要在根范围（`/`）列出用户的用户访问管理员角色分配，请使用[AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)命令。
 
 ```azurepowershell
 Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -98,23 +116,22 @@ Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrat
 ```
 
 ```Example
-RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111
 Scope              : /
 DisplayName        : username
 SignInName         : username@example.com
 RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
-ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
+ObjectId           : 22222222-2222-2222-2222-222222222222
 ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="remove-a-role-assignment-at-the-root-scope-"></a>删除根范围 (/) 处的角色分配
+### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
-若要在根范围 (`/`) 删除用户的用户访问管理员角色分配，请遵循以下步骤。
+若要为自己或根范围内的其他用户（`/`）删除用户访问管理员角色分配，请执行以下步骤。
 
-1. 以能够删除提升访问权限的用户身份登录。 此用户可以是提升访问权限时所用的同一用户，也可以是在根范围拥有提升访问权限的另一个全局管理员。
-
+1. 以能够删除提升访问权限的用户身份登录。 这可以是用于提升访问权限的用户，也可以是在根范围内具有提升访问权限的另一个全局管理员。
 
 1. 使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 命令删除用户访问管理员角色分配。
 
@@ -123,19 +140,59 @@ CanDelegate        : False
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
+## <a name="azure-cli"></a>Azure CLI
+
+### <a name="list-role-assignment-at-root-scope-"></a>列出根范围内的角色分配（/）
+
+若要在根范围（`/`）列出用户的用户访问管理员角色分配，请使用[az role 赋值 list](/cli/azure/role/assignment#az-role-assignment-list)命令。
+
+```azurecli
+az role assignment list --role "User Access Administrator" --scope "/"
+```
+
+```Example
+[
+  {
+    "canDelegate": null,
+    "id": "/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
+    "name": "11111111-1111-1111-1111-111111111111",
+    "principalId": "22222222-2222-2222-2222-222222222222",
+    "principalName": "username@example.com",
+    "principalType": "User",
+    "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+    "roleDefinitionName": "User Access Administrator",
+    "scope": "/",
+    "type": "Microsoft.Authorization/roleAssignments"
+  }
+]
+
+```
+
+### <a name="remove-elevated-access"></a>撤消提升的访问权限
+
+若要为自己或根范围内的其他用户（`/`）删除用户访问管理员角色分配，请执行以下步骤。
+
+1. 以能够删除提升访问权限的用户身份登录。 这可以是用于提升访问权限的用户，也可以是在根范围内具有提升访问权限的另一个全局管理员。
+
+1. 使用[az role 赋值 delete](/cli/azure/role/assignment#az-role-assignment-delete)命令删除 "用户访问管理员" 角色分配。
+
+    ```azurecli
+    az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
+    ```
+
 ## <a name="rest-api"></a>REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>为局管理员提升访问权限
 
 使用以下基本步骤，通过 REST API 为全局管理员提升访问权限。
 
-1. 使用 REST 调用 `elevateAccess`，这将授予你根范围 (`/`) 内的用户访问管理员角色。
+1. 使用 REST 调用 `elevateAccess`，这会授予用户访问权限管理员角色（`/`）。
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. 创建[角色分配](/rest/api/authorization/roleassignments)，以便在任意范围分配任意角色。 以下示例显示用于在根范围 (`/`) 内分配 {roleDefinitionID} 角色的属性：
+1. 创建[角色分配](/rest/api/authorization/roleassignments)，以便在任意范围分配任意角色。 下面的示例演示在根范围（`/`）分配 {roleDefinitionID} 角色的属性：
 
    ```json
    { 
@@ -144,19 +201,19 @@ CanDelegate        : False
        "principalId": "{objectID}",
        "scope": "/"
      },
-     "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
+     "id": "providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
      "type": "Microsoft.Authorization/roleAssignments",
-     "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
+     "name": "11111111-1111-1111-1111-111111111111"
    }
    ```
 
-1. 作为用户访问管理员，还可以在根范围 (`/`) 删除角色分配。
+1. 在用户访问管理员时，还可以删除根作用域（`/`）中的角色分配。
 
 1. 撤销用户访问管理员特权一直到再次需要时。
 
-### <a name="list-role-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的角色分配
+### <a name="list-role-assignments-at-root-scope-"></a>列出根范围内的角色分配（/）
 
-可以在根范围 (`/`) 列出用户的所有角色分配。
+可以在根范围内列出用户的所有角色分配（`/`）。
 
 - 调用 [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope)，其中 `{objectIdOfUser}` 是要检索其角色分配的用户的对象 ID。
 
@@ -164,9 +221,9 @@ CanDelegate        : False
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-### <a name="list-deny-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的拒绝分配
+### <a name="list-deny-assignments-at-root-scope-"></a>列出根作用域（/）的拒绝分配
 
-可以在根范围 (`/`) 列出用户的所有拒绝分配。
+可以在根范围内列出某个用户的所有拒绝分配（`/`）。
 
 - 调用 GET denyAssignments，其中 `{objectIdOfUser}` 是要检索其拒绝分配的用户的对象 ID。
 
@@ -176,7 +233,7 @@ CanDelegate        : False
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
-调用 `elevateAccess` 即为自己创建角色分配，因此若要撤销这些特权，需要删除分配。
+调用 `elevateAccess`时，你会自行创建角色分配，因此，若要撤消这些权限，你需要在根范围（`/`）删除自己的用户访问管理员角色分配
 
 1. 调用 [GET roleDefinitions](/rest/api/authorization/roledefinitions/get)，其中 `roleName` = 用户访问管理员，由此确定用户访问管理员角色的名称 ID。
 
@@ -189,26 +246,26 @@ CanDelegate        : False
       "value": [
         {
           "properties": {
-        "roleName": "User Access Administrator",
-        "type": "BuiltInRole",
-        "description": "Lets you manage user access to Azure resources.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "*/read",
-              "Microsoft.Authorization/*",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "0001-01-01T08:00:00.0000000Z",
-        "updatedOn": "2016-05-31T23:14:04.6964687Z",
-        "createdBy": null,
-        "updatedBy": null
+      "roleName": "User Access Administrator",
+      "type": "BuiltInRole",
+      "description": "Lets you manage user access to Azure resources.",
+      "assignableScopes": [
+        "/"
+      ],
+      "permissions": [
+        {
+          "actions": [
+            "*/read",
+            "Microsoft.Authorization/*",
+            "Microsoft.Support/*"
+          ],
+          "notActions": []
+        }
+      ],
+      "createdOn": "0001-01-01T08:00:00.0000000Z",
+      "updatedOn": "2016-05-31T23:14:04.6964687Z",
+      "createdBy": null,
+      "updatedBy": null
           },
           "id": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
           "type": "Microsoft.Authorization/roleDefinitions",
@@ -221,48 +278,48 @@ CanDelegate        : False
 
     保存 `name` 参数中的 ID，在本例中为 `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`。
 
-2. 还需要列出目录管理员在目录范围的角色分配。 对于执行了提升访问权限调用的目录管理员，列出其 `principalId` 在目录范围内的所有分配。 这将为 objectid 列出目录中的所有分配。
+1. 还需要列出目录管理员在目录范围的角色分配。 对于执行了提升访问权限调用的目录管理员，列出其 `principalId` 在目录范围内的所有分配。 这将为 objectid 列出目录中的所有分配。
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
-    
+        
     >[!NOTE] 
     >目录管理员不应拥有多个分配，如果前面的查询返回过多分配，你也可以只在目录范围级别查询所有分配，然后筛选结果：`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
-        
-   1. 上述调用将返回角色分配列表。 在范围 `"/"` 查找以下角色分配：`roleDefinitionId` 以第 1 步中的角色名称 ID 结尾，并且 `principalId` 与目录管理员的 objectId 一致。 
+            
+1. 上述调用将返回角色分配列表。 在范围 `"/"` 查找以下角色分配：`roleDefinitionId` 以第 1 步中的角色名称 ID 结尾，并且 `principalId` 与目录管理员的 objectId 一致。 
     
-      示例角色分配：
+    示例角色分配：
+    
+    ```json
+    {
+      "value": [
+        {
+          "properties": {
+            "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+            "principalId": "{objectID}",
+            "scope": "/",
+            "createdOn": "2016-08-17T19:21:16.3422480Z",
+            "updatedOn": "2016-08-17T19:21:16.3422480Z",
+            "createdBy": "22222222-2222-2222-2222-222222222222",
+            "updatedBy": "22222222-2222-2222-2222-222222222222"
+          },
+          "id": "/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111",
+          "type": "Microsoft.Authorization/roleAssignments",
+          "name": "11111111-1111-1111-1111-111111111111"
+        }
+      ],
+      "nextLink": null
+    }
+    ```
+    
+    同样，保存 `name` 参数的 ID，在本例中为11111111-1111-1111-1111-111111111111。
 
-       ```json
-       {
-         "value": [
-           {
-             "properties": {
-               "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
-               "principalId": "{objectID}",
-               "scope": "/",
-               "createdOn": "2016-08-17T19:21:16.3422480Z",
-               "updatedOn": "2016-08-17T19:21:16.3422480Z",
-               "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
-               "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
-             },
-             "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
-             "type": "Microsoft.Authorization/roleAssignments",
-             "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
-           }
-         ],
-         "nextLink": null
-       }
-       ```
-        
-      同样，保存 `name` 参数的 ID，在本例中为 e7dd75bc-06f6-4e71-9014-ee96a929d099。
+1. 最后，使用角色分配 ID 删除 `elevateAccess` 添加的分配：
 
-   1. 最后，使用角色分配 ID 删除 `elevateAccess` 添加的分配：
-
-      ```http
-      DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
-      ```
+    ```http
+    DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

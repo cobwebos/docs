@@ -1,6 +1,6 @@
 ---
 title: 从 Google Maps 迁移 |Microsoft Docs
-description: 有关如何从 Google Maps 迁移到 Azure Maps 的教程。
+description: 有关如何从 Google Maps 迁移到 Microsoft Azure Maps 的教程。 指导指导如何切换到 Azure Maps Api 和 Sdk。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ea9afc413a7fb187042c9d832fa1c16802993eed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6709c42b19b18c8cae783a6b4ecc2c0721e1217d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481225"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770299"
 ---
 # <a name="migrate-from-google-maps"></a>从 Google Maps 迁移
 
@@ -22,7 +22,7 @@ ms.locfileid: "75481225"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps 平台概述
 
-Azure Maps 为开发人员提供了所有行业强大的地理空间功能，并将其与定期更新的地图数据一起打包，为 web 和移动应用程序提供地理环境。 Azure Maps 提供了一个适用于地图、搜索、路由、流量、时区、地理位置、地理围栏、映射数据以及空间操作的 Azure 一组适用于 Azure 的 REST Api，从而使开发变得简单、灵活且可跨多个平台。
+Azure Maps 为开发人员提供了所有行业强大的地理空间功能，并将其与定期更新的地图数据一起打包，为 web 和移动应用程序提供地理环境。 Azure Maps 提供了一个适用于地图、搜索、路由、流量、时区、地理位置、地理围栏、地图数据、天气、移动和空间操作的 Azure One API 兼容集，同时提供 Web 和 Android Sdk，使开发变得简单、灵活和跨多个平台移植。
 
 ## <a name="high-level-platform-comparison"></a>高级平台比较
 

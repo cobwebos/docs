@@ -11,15 +11,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: 227ef72b53b7334cffcb485e23c3e4227613b344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/08/2020
+ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437919"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746627"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>通过 PowerShell & Azure 数据库迁移服务将 SQL Server 迁移到 SQL 数据库托管实例
+
 本文介绍如何使用 Microsoft Azure PowerShell 将还原到 SQL Server 2005 或更高版本的本地实例的**Adventureworks2016**数据库迁移到 Azure SQL 数据库托管实例。 可以使用 Microsoft Azure PowerShell 中的 `Az.DataMigration` 模块将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
 
 在本文中，学习如何：
@@ -45,14 +46,14 @@ ms.locfileid: "75437919"
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 * 一个 Azure SQL 数据库托管实例。 可以遵循[创建 AZURE Sql 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的详细信息来创建 Azure sql 数据库托管实例。
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595)3.3 或更高版本。
-* 使用 Azure 资源管理器部署模型创建的 Azure 虚拟网络（VNet），该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)向 azure 数据库迁移服务提供与本地源服务器之间的站点到站点连接。
+* Microsoft Azure 虚拟网络使用 Azure 资源管理器部署模型创建的，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)向 azure 数据库迁移服务提供与本地源服务器的站点到站点连接。
 * 使用数据迁移助手完成了本地数据库和架构迁移的评估，如[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述。
 * 使用 0.7.2 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)从 PowerShell 库下载并安装 `Az.DataMigration` 模块（版本或更高版本）。
 * 若要确保用于连接到源 SQL Server 实例的凭据具有[CONTROL Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)权限。
 * 为了确保用于连接到目标 Azure SQL 数据库托管实例的凭据具有对目标 Azure SQL 数据库托管实例数据库的 CONTROL DATABASE 权限。
 
     > [!IMPORTANT]
-    > 对于联机迁移，必须已经已设置 Azure Active Directory 凭据。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体一](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)文。
+    > 对于联机迁移，你必须已设置 Azure Active Directory 凭据。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体一](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)文。
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 

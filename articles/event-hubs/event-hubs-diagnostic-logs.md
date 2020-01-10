@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260835"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750730"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)** ：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。
-* **[诊断日志](../azure-monitor/platform/resource-logs-overview.md)** ：可以配置诊断日志，从而更全面地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)** ：这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。
+* **[诊断日志](../azure-monitor/platform/platform-logs-overview.md)** ：可以配置诊断日志，以便更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 
@@ -48,13 +48,13 @@ ms.locfileid: "71260835"
 
     ![更改诊断日志的状态](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Monitor 日志。
+5.  设置所需的存档目标;例如，存储帐户、事件中心或 Azure Monitor 日志。
 
 6.  保存新的诊断设置。
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
-有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)。
+有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>诊断日志类别
 
@@ -71,7 +71,7 @@ ms.locfileid: "71260835"
 
 存档日志 JSON 字符串包括下表列出的元素：
 
-姓名 | 描述
+名称 | Description
 ------- | -------
 TaskName | 失败的任务的说明。
 ActivityId | 用于跟踪的内部 ID。
@@ -83,7 +83,7 @@ archiveStep | ArchiveFlushWriter
 startTime | 失败开始时间。
 失败 | 发生失败的次数。
 durationInSeconds | 失败持续时间。
-消息 | 错误消息。
+message | 错误消息。
 category | ArchiveLogs
 
 以下代码是存档日志 JSON 字符串的示例：
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 运行日志 JSON 字符串包括下表列出的元素：
 
-姓名 | 描述
+名称 | Description
 ------- | -------
 ActivityId | 用于跟踪目的的内部 ID。
 EventName | 操作名称。  
@@ -118,7 +118,7 @@ SubscriptionId | 订阅 ID。
 EventTimeString | 操作时间。
 EventProperties | 操作属性。
 状态 | 操作状态。
-Caller | 操作的调用方（Azure 门户或管理客户端）。
+调用方 | 操作的调用方（Azure 门户或管理客户端）。
 category | OperationalLogs
 
 以下代码是运行日志 JSON 字符串的示例：

@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Internet 对等互连文档
+summary: 了解与 Microsoft 之间的 Internet 对等互连。
+metadata:
+  title: Internet 对等互连文档
+  titleSuffix: Azure
+  description: 了解与 Microsoft 之间的对等互连。
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773513"
+landingContent:
+- title: 关于 Internet 对等互连
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Internet 对等互连
+      url: overview.md
+    - text: Internet 对等互连与对等互连服务
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: 对等互连策略
+      url: policy.md
+    - text: 设置与 Microsoft 进行对等互连的先决条件
+      url: prerequisites.md
+    - text: Internet 对等互连常见问题解答
+      url: faqs.md
+- title: 入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用门户将对等 ASN 关联到 Azure 订阅
+      url: howto-subscription-association-portal.md
+- title: Exchange 对等互连
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exchange 对等互连演练
+      url: walkthrough-exchange-all.md
+    - text: 使用门户创建或修改 Exchange 对等互连
+      url: howto-exchange-portal.md
+    - text: 使用门户将旧版 Exchange 对等互连转换为 Azure 资源
+      url: howto-legacy-exchange-portal.md
+- title: 直接对等互连
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 直接对等互连演练
+      url: walkthrough-direct-all.md
+    - text: 使用门户创建或修改直接对等互连
+      url: howto-direct-portal.md
+    - text: 使用门户将旧版直接对等互连转换为 Azure 资源
+      url: howto-legacy-direct-portal.md
+- title: 对等互连服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 对等互连服务常见问题解答
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: 对等互连服务合作伙伴演练
+      url: walkthrough-peering-service-all.md
+    - text: 使用门户在直接对等互连上启用对等互连服务
+      url: howto-peering-service-portal.md

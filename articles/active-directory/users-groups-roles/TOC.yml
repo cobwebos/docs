@@ -31,7 +31,9 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 基于组的许可基础知识
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-- name: 操作指南
+    - name: 使用组管理访问权限
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- name: 操作方法指南
   expanded: true
   items:
     - name: 管理用户
@@ -80,8 +82,6 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理组
       items:
-        - name: 使用组管理访问权限
-          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 搜索组和成员列表（预览版）
           href: groups-members-owners-search.md
         - name: 创建组（Azure 门户）
@@ -122,9 +122,7 @@
           items:
             - name: 创建动态组
               href: groups-create-rule.md
-            - name: 更新成员身份规则
-              href: groups-update-rule.md
-            - name: 动态组规则和语法
+            - name: 动态组规则语法
               href: groups-dynamic-membership.md
             - name: 更改组成员身份类型
               href: groups-change-type.md
@@ -200,7 +198,7 @@
           href: groups-troubleshooting.md
         - name: 排查组许可问题
           href: licensing-groups-resolve-problems.md
-- name: 引用
+- name: 参考
   items:
     - name: 图形 API
       href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747874"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -33,7 +33,7 @@ HDInsight 群集中的节点是使用 Azure 虚拟机实现的。 以下部分�
 
 为确保 Hadoop 服务的高可用性，HDInsight 提供了两个头节点。 这两个头节点同时处于活动状态并在 HDInsight 群集中运行。 某些服务，例如 Apache HDFS 或 Apache Hadoop YARN，在任何给定的时间仅能在其中一个头节点上处于“活动”状态。 HiveServer2 或 Hive MetaStore 等其他服务同时在这两个头节点上处于活动状态。
 
-头节点（以及 HDInsight 中的其他节点）的主机名中包含一个数字值。 例如 `hn0-CLUSTERNAME` 或 `hn4-CLUSTERNAME`。
+若要获取群集中不同节点类型的主机名，请使用[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)。
 
 > [!IMPORTANT]  
 > 请勿将数字值与某个节点是主节点还是辅助节点相关联。 使用数字值是为了为每个节点提供唯一名称。
@@ -46,7 +46,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 [ZooKeeper](https://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
 
-### <a name="worker-nodes"></a>辅助角色节点
+### <a name="worker-nodes"></a>工作器节点
 
 将作业提交到群集时，辅助角色节点执行实际的数据分析。 如果辅助角色节点发生故障，它执行的任务将提交到另一个辅助角色节点。 默认情况下，HDInsight 创建四个辅助角色节点。 可以在群集创建过程中以及之后根据需要更改此数字。
 
@@ -64,7 +64,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 通过公共网关进行访问仅限端口443（HTTPS）、22和23。
 
-|端口 |说明 |
+|Port |Description |
 |---|---|
 |443|用于访问托管在头节点上的 Ambari 和其他 web UI 或 REST Api。|
 |22|用于通过 SSH 访问主头节点或边缘节点。|
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 此命令返回如下所示的值，其中包含与 `oozie` 命令一起使用的内部 URL：
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
@@ -97,7 +97,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 你可以使用以下方法连接到无法通过 internet 直接访问的节点：
 
-|方法 |说明 |
+|方法 |Description |
 |---|---|
 |SSH|使用 SSH 连接到头节点后，可以从头节点使用 SSH 连接到群集中的其他节点。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。|
 |SSH 隧道|如果需要访问在未向 internet 公开的某个节点上托管的 web 服务，则必须使用 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。|
@@ -115,24 +115,24 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 ![Apache Ambari 安装的服务](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
-服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
+服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供了几个预定义警报。
 
-以下警报可以帮助监视群集的可用性：
+以下警报有助于监视群集的可用性：
 
-| 警报名称                               | 说明                                                                                                                                                                                  |
+| 警报名称                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 指标监视器状态                    | 此警报指示监视器状态脚本确定的指标监视器进程状态。                                                                                   |
-| Ambari 代理检测信号                   | 如果服务器与代理之间的通信断开，则会触发此警报。                                                                                                                        |
+| 指标监视器状态                    | 此警报指示指标监视器进程的状态，它由监视器状态脚本确定。                                                                                   |
+| Ambari 代理检测信号                   | 如果服务器与代理失去联系，则会触发此警报。                                                                                                                        |
 | ZooKeeper 服务器进程                 | 如果在网络上无法确定要启动和侦听 ZooKeeper 服务器进程，则会触发此主机级别的警报。                                                               |
 | IOCache 元数据服务器状态           | 如果无法确定 IOCache 元数据服务器是否已启动并响应客户端请求，则会触发此主机级别的警报                                                            |
 | JournalNode Web UI                       | 如果无法访问 JournalNode Web UI，则会触发此主机级别的警报。                                                                                                                 |
-| Spark2 Thrift 服务器                     | 如果无法确定 Custom-spark2-defaults 的 Thrift 服务器，则会触发此主机级别的警报。                                                                                                |
+| Custom-spark2-defaults Thrift 服务器                     | 如果无法确定 Custom-spark2-defaults 的 Thrift 服务器，则会触发此主机级别的警报。                                                                                                |
 | 历史记录服务器进程                   | 如果无法建立在网络上启动和侦听的历史记录服务器进程，则会触发此主机级别的警报。                                                                |
-| 历史记录服务器 Web UI                    | 如果无法访问历史记录服务器 Web UI，则会触发此主机级别的警报。                                                                                                              |
+| History Server Web UI                    | 如果无法访问 History Server Web UI，则会触发此主机级别的警报。                                                                                                              |
 | `ResourceManager` Web UI                   | 如果无法访问 `ResourceManager` Web UI，则会触发此主机级别的警报。                                                                                                             |
-| NodeManager 运行状况摘要               | 如果存在不正常的 NodeManager，则会触发此服务级别的警报                                                                                                                    |
-| App Timeline Web UI                      | 如果无法访问 App Timeline 服务器 Web UI，则会触发此主机级别的警报。                                                                                                         |
-| DataNode 运行状况摘要                  | 如果存在不正常的 DataNode，则会触发此服务级别的警报                                                                                                                       |
+| NodeManager 运行状况摘要               | 如果有不正常的 NodeManagers，则会触发此服务级别警报                                                                                                                    |
+| 应用时间线 Web UI                      | 如果无法访问应用时间线服务器 Web UI，则会触发此主机级别的警报。                                                                                                         |
+| DataNode 运行状况摘要                  | 如果有不正常的 DataNodes，则会触发此服务级别警报                                                                                                                       |
 | NameNode Web UI                          | 如果无法访问 NameNode Web UI，则会触发此主机级别的警报。                                                                                                                    |
 | ZooKeeper 故障转移控制器进程    | 如果在网络上无法确认 ZooKeeper 故障转移控制器进程已启动并正在侦听，则会触发此主机级别的警报。                                                   |
 | Oozie 服务器 Web UI                      | 如果无法访问 Oozie 服务器 Web UI，则会触发此主机级别的警报。                                                                                                                |
@@ -140,20 +140,20 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | Hive 元存储进程                   | 如果在网络上无法确定 Hive 元存储进程的启动和侦听，则会触发此主机级别的警报。                                                                 |
 | HiveServer2 进程                      | 如果无法确定 HiveServer 是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                                        |
 | WebHCat 服务器状态                    | 如果 `templeton` 服务器状态不正常，则会触发此主机级别的警报。                                                                                                            |
-| 可用 ZooKeeper 服务器百分比      | 如果群集中已关闭的 ZooKeeper 服务器数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 ZooKeeper 进程检查的结果。     |
-| Spark2 Livy 服务器                       | 如果无法确定 Livy2 服务器的状态，则会触发此主机级别的警报。                                                                                                        |
-| Spark2 历史记录服务器                    | 如果无法确定 Custom-spark2-defaults 历史记录服务器，则会触发此主机级别的警报。                                                                                               |
+| 可用 ZooKeeper 服务器百分比      | 如果群集中的 down ZooKeeper 服务器数大于配置的严重阈值，则会触发此警报。 它聚合了 ZooKeeper 进程检查的结果。     |
+| Custom-spark2-defaults Livy 服务器                       | 如果无法确定 Livy2 服务器的状态，则会触发此主机级别的警报。                                                                                                        |
+| Custom-spark2-defaults 历史记录服务器                    | 如果无法确定 Custom-spark2-defaults 历史记录服务器，则会触发此主机级别的警报。                                                                                               |
 | 指标收集器进程                | 如果无法确认指标收集器在配置的端口上的秒数等于阈值，则会触发此警报。                                 |
-| 指标收集器 - HBase Master 进程 | 如果度量值收集器的 HBase 主进程无法在网络上被确认为已配置的关键阈值（以秒为单位），则会触发此警报。 |
-| 可用指标监视器百分比       | 如果已配置的警告和严重阈值在网络上没有启动和侦听网络，则会触发此警报。                             |
-| 可用 NodeManager 百分比           | 如果群集中已关闭的 NodeManager 数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 NodeManager 进程检查的结果。        |
-| NodeManager 运行状况                       | 此主机级别的警报检查 NodeManager 组件中提供的节点运行状况属性。                                                                                              |
+| 指标收集器-HBase Master 进程 | 如果度量值收集器的 HBase 主进程无法在网络上被确认为已配置的关键阈值（以秒为单位），则会触发此警报。 |
+| 百分比指标监视器可用       | 如果已配置的警告和严重阈值在网络上没有启动和侦听网络，则会触发此警报。                             |
+| 可用 NodeManagers 百分比           | 如果群集中的 down NodeManagers 数量大于配置的严重阈值，则会触发此警报。 它聚合了 NodeManager 进程检查的结果。        |
+| NodeManager 运行状况                       | 此主机级警报检查 NodeManager 组件提供的节点运行状况属性。                                                                                              |
 | NodeManager Web UI                       | 如果无法访问 NodeManager Web UI，则会触发此主机级别的警报。                                                                                                                 |
-| NameNode 高可用性运行状况        | 如果主动 NameNode 或待机 NameNode 未运行，则会触发此服务级别的警报。                                                                                     |
+| NameNode 高可用性运行状况        | 如果 Active NameNode 或待机 NameNode 未运行，则会触发此服务级别警报。                                                                                     |
 | DataNode 进程                         | 如果无法建立单个 DataNode 进程以在网络上启动和侦听，则会触发此主机级别的警报。                                                         |
 | DataNode Web UI                          | 如果无法访问 DataNode Web UI，则会触发此主机级别的警报。                                                                                                                    |
-| 可用 JournalNode 百分比           | 如果群集中已关闭的 JournalNode 数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 JournalNode 进程检查的结果。        |
-| 可用 DataNode 百分比              | 如果群集中已关闭的 DataNode 数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 DataNode 进程检查的结果。              |
+| 可用 Journalnode 百分比           | 如果群集中的 down Journalnode 数量大于配置的严重阈值，则会触发此警报。 它聚合了 JournalNode 进程检查的结果。        |
+| 可用 DataNodes 百分比              | 如果群集中的 down DataNodes 数量大于配置的严重阈值，则会触发此警报。 它聚合了 DataNode 进程检查的结果。              |
 | Zeppelin 服务器状态                   | 如果无法确定 Zeppelin 服务器是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                                   |
 | HiveServer2 交互进程          | 如果无法确定 HiveServerInteractive 是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                             |
 | LLAP 应用程序                         | 如果无法确定 LLAP 应用程序是否已启动并响应请求，则会触发此警报。                                                                                    |
@@ -194,7 +194,7 @@ curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycl
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycl
 }
 ```
 
-该 URL 告诉我们，服务当前在名为 **hn0-CLUSTERNAME**的头节点上运行。
+URL 告诉我们服务当前正在名为 mycluster 的头节点上运行 **。**
 
 该状态表示，此服务目前正在运行，或“已启动”。
 
@@ -217,7 +217,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 #### <a name="service-components"></a>服务组件
 
-服务可能包含你想要单独检查状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
+服务可能包含想要单独检查其状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
@@ -241,14 +241,14 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 也可以使用 SSH 文件传输协议或安全文件传输协议 (SFTP) 连接到头节点并直接下载日志。
 
-与使用 SSH 客户端一样，在连接到群集时，必须提供 SSH 用户帐户名和群集的 SSH 地址。 例如，`sftp username@mycluster-ssh.azurehdinsight.net`。 在出现提示时，提供帐户密码或使用 `-i` 参数提供公钥。
+与使用 SSH 客户端一样，在连接到群集时，必须提供 SSH 用户帐户名和群集的 SSH 地址。 例如，`sftp username@mycluster-ssh.azurehdinsight.net` 。 在出现提示时，提供帐户密码或使用 `-i` 参数提供公钥。
 
-连接后，会显示 `sftp>` 提示。 在此提示符下，可以更改目录以及上传和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，并下载该目录中的所有文件。
+连接后，会显示 `sftp>` 提示。 在此提示符下，可以更改目录以及上传和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，然后下载该目录中的所有文件。
 
     cd /var/log/hadoop/hdfs
     get *
 
-有关可用命令的列表，请在 `help` 提示符下输入 `sftp>`。
+有关可用命令的列表，请在 `sftp>` 提示符下输入 `help`。
 
 > [!NOTE]  
 > 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](https://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
@@ -256,7 +256,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]  
-> 若要通过 Ambari 访问日志文件，必须使用 SSH 隧道。 个体服务的 Web 接口没有通过 Internet 公开。 有关使用 SSH 隧道的信息，请参阅[使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)文档。
+> 若要通过 Ambari 访问日志文件，必须使用 SSH 隧道。 个体服务的 Web 接口没有通过 Internet 公开。 有关使用 SSH 隧道的信息，请参阅[使用SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)文档。
 
 在 Ambari Web UI 中选择要查看其日志的服务（例如 YARN）。 然后使用“快速链接”选择要查看其日志的头节点。
 
@@ -266,7 +266,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 只能在创建群集期间选择节点大小。 可以在 [HDInsight 定价页](https://azure.microsoft.com/pricing/details/hdinsight/)上找到 HDInsight 可用的不同 VM 大小的列表。
 
-创建群集时，可以指定节点的大小。 以下信息介绍了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell 模块 Az](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 指定大小：
+创建群集时，可以指定节点的大小。 以下信息提供了有关如何使用[Azure 门户](https://portal.azure.com/)、 [Azure PowerShell module Az](/powershell/azureps-cmdlets-docs)和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)指定大小的指南：
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 

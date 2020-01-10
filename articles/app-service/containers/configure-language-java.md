@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5ee07e5b0ac9c73a686a0f8c7d489ecc7ee96425
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422198"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750737"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -238,11 +238,9 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 
 ### <a name="using-the-java-key-store"></a>使用 Java 密钥存储
 
-默认情况下，当容器启动时，[上传到 App Service Linux](../configure-ssl-certificate.md)的任何公用或私有证书都将加载到 Java 密钥存储中。 这意味着，在建立出站 TLS 连接时，已上传的证书将在连接上下文中可用。 上传证书后，需要重新启动应用服务，将其加载到 Java 密钥存储中。
+默认情况下，[上传到应用服务 Linux](../configure-ssl-certificate.md)的任何公用或私有证书将在容器启动时加载到各自的 Java 密钥存储中。 上传证书后，需要重新启动应用服务，将其加载到 Java 密钥存储中。 公共证书将加载到 `$JAVA_HOME/jre/lib/security/cacerts`中的密钥存储，专用证书存储在 `$JAVA_HOME/lib/security/client.jks`中。
 
-可以通过打开指向应用服务的[SSH 连接](app-service-linux-ssh-support.md)并运行命令 `keytool`来交互或调试 Java 密钥工具。 有关命令列表，请参阅[密钥工具文档](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)。 证书以 Java 的默认密钥存储文件位置存储，`$JAVA_HOME/jre/lib/security/cacerts`。
-
-加密 JDBC 连接可能需要其他配置。 请参阅所选 JDBC 驱动程序的文档。
+若要在 Java 密钥存储中用证书来加密 JDBC 连接，则可能需要其他配置。 请参阅所选 JDBC 驱动程序的文档。
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
@@ -250,11 +248,27 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
+#### <a name="initializing-the-java-key-store"></a>正在初始化 Java 密钥存储
 
-可以初始化密钥存储，并手动添加证书。 创建一个应用设置，`SKIP_JAVA_KEYSTORE_LOAD`，其值为 "`1`" 以禁止应用服务自动将证书加载到密钥存储。 通过 Azure 门户上传到应用服务的所有公共证书都存储在 `/var/ssl/certs/`下。 私有证书存储在 `/var/ssl/private/`下。
+若要初始化 `import java.security.KeyStore` 对象，请用密码加载密钥存储文件。 这两个密钥存储的默认密码均为 "changeit"。
 
-有关密钥存储 API 的详细信息，请参阅[官方文档](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)。
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
+
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>手动加载密钥存储
+
+可以手动将证书加载到密钥存储。 创建一个应用设置，`SKIP_JAVA_KEYSTORE_LOAD`，其值为 "`1`" 以禁止应用服务自动将证书加载到密钥存储。 通过 Azure 门户上传到应用服务的所有公共证书都存储在 `/var/ssl/certs/`下。 私有证书存储在 `/var/ssl/private/`下。
+
+可以通过打开指向应用服务的[SSH 连接](app-service-linux-ssh-support.md)并运行命令 `keytool`来交互或调试 Java 密钥工具。 有关命令列表，请参阅[密钥工具文档](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)。 有关密钥存储 API 的详细信息，请参阅[官方文档](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)。
 
 ## <a name="configure-apm-platforms"></a>配置 APM 平台
 
@@ -372,7 +386,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 下面提供了一个示例 xsl 文件。 示例 xsl 文件将新的连接器节点添加到 Tomcat 服务器。

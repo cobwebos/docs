@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671923"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768429"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>将应用服务应用配置为使用 Microsoft 帐户登录
 
@@ -18,11 +18,11 @@ ms.locfileid: "74671923"
 
 本主题说明如何将 Azure 应用服务配置为使用 Microsoft 帐户作为身份验证提供程序。 
 
-## <a name="register-microsoft-account"> </a>使用 Microsoft 帐户注册应用
+## <a name="register-microsoft-account"></a>向 Microsoft 帐户注册你的应用
 
 1. 中转到 Azure 门户中的[**应用注册**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 如果需要，请用 Microsoft 帐户登录。
 1. 选择 "**新建注册**"，然后输入应用程序名称。
-1. 在 "**重定向 uri**" 中，选择 " **Web**"，然后输入 `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`。 将 *\<的应用程序域名 >* 替换为应用的域名。  例如，`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 。 请务必在 URL 中使用 HTTPS 方案。
+1. 在 "**重定向 uri**" 中，选择 " **Web**"，然后输入 `https://<app-domain-name>/.auth/login/microsoftaccount/callback`。 将 *\<的应用程序域名 >* 替换为应用的域名。  例如，`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 。 请务必在 URL 中使用 HTTPS 方案。
 
 1. 选择“注册”。
 1. 复制**应用程序（客户端） ID**。 稍后需要用到此信息。
@@ -30,9 +30,9 @@ ms.locfileid: "74671923"
 1. 复制 "**证书 & 机密**" 页上显示的值。 离开页面后，不会再次显示。
 
     > [!IMPORTANT]
-    > 密码是一个非常重要的安全凭据。 请不要与任何人共享密码或者在客户端应用程序中分发它。
+    > 客户端密码值（密码）是重要的安全凭据。 请不要与任何人共享密码或者在客户端应用程序中分发它。
 
-## <a name="secrets"> </a>向应用服务应用程序添加 Microsoft 帐户信息
+## <a name="secrets"></a>将 Microsoft 帐户信息添加到应用服务应用程序
 
 1. 在[Azure 门户]中转到你的应用程序。
 1. 选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。

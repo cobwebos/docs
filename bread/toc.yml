@@ -108,6 +108,9 @@
     - name: 自动化
       tocHref: /azure/automation/
       topicHref: /azure/automation/
+    - name: Internet 对等互连
+      tocHref: /azure/internet-peering/
+      topicHref: /azure/internet-peering/
     - name: 区块链
       tocHref: /azure/blockchain/
       topicHref: /azure/blockchain/

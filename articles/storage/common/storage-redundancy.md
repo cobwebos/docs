@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: cdddf284028c6fc9749082e1991e5b9dee4acf99
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
-ms.translationtype: HT
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560362"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748173"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -52,7 +52,7 @@ Azure 存储空间定期验证使用循环冗余检查（CRCs）存储的数据�
 有关每个冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 > [!NOTE]
-> Azure 高级磁盘存储当前仅支持本地冗余存储（LRS）。 Azure 高级块 Blob 存储支持某些区域中的本地 redudant 存储（LRS）和区域 redudant 存储（ZRS）。
+> Azure 高级磁盘存储当前仅支持本地冗余存储（LRS）。 Azure 高级块 Blob 存储支持某些区域中的本地冗余存储（LRS）和区域冗余存储（ZRS）。
 
 ## <a name="changing-replication-strategy"></a>更改复制策略
 
@@ -76,7 +76,7 @@ Azure 存储空间定期验证使用循环冗余检查（CRCs）存储的数据�
 - [区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](storage-redundancy-zrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)
 - [区域冗余存储（GZRS），用于实现高可用性和最大持续性（预览版）](storage-redundancy-gzrs.md)
-- [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
+- [标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)
 - [使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP Paper - Azure Storage: A highly available cloud storage service with strong consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）

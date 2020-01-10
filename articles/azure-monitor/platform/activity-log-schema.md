@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: df2594165909c55de2de562c9717299d189a20d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531014"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749461"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-[Azure 活动日志](activity-logs-overview.md)可深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
+[Azure 活动日志](platform-logs-overview.md)可深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
 
 以下示例显示了从门户、PowerShell、CLI 和 REST API 访问活动日志时的架构。 将[活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 本文末尾提供了[资源日志架构](diagnostic-logs-schema.md)的属性映射。
 
@@ -865,6 +865,6 @@ ms.locfileid: "75531014"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](activity-logs-overview.md)
+* [了解有关活动日志的更多信息](platform-logs-overview.md)
 * [创建用于将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心的诊断设置](diagnostic-settings.md)
 

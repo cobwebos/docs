@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442975"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768633"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -95,24 +95,24 @@ kubectl describe node [NODE_NAME]
 |---|---|---|---|---|---|---|---|
 |Kube （millicores）|60|100|140|180|260|420|740|
 
-- **内存**保留内存包含两个值的和
+- **内存**-AKS 使用的内存包含两个值的和。
 
-1. Kubelet 后台程序安装在所有 Kubernetes 代理节点上，用于管理容器创建和终止。 默认情况下，在 AKS 上，此守护程序具有以下逐出规则： memory。可用 < 750Mi，这意味着节点必须始终至少具有 750 Mi allocatable。  当主机低于可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机计算机上的内存并对其进行保护。
+1. Kubelet 后台程序安装在所有 Kubernetes 代理节点上，用于管理容器创建和终止。 默认情况下，在 AKS 上，此守护程序具有以下逐出规则： *memory。可用 < 750Mi*，这意味着节点必须始终至少具有 750 Mi allocatable。  当主机低于可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机计算机上的内存并对其进行保护。 当可用内存超过750Mi 阈值后，这是一种反应操作。
 
-2. 第二个值是为 kubelet 后台程序正常运行而保留的内存（kube）的逐渐速率。
+2. 第二个值是 kubelet 后台程序正常工作的内存保留（kube）的连续速率。
     - 前 4 GB 内存的25%
     - 下 4 GB 内存的20% （最多 8 GB）
     - 下 8 GB 内存的10% （高达 16 GB）
     - 下一个 112 GB 内存的6% （最大为 128 GB）
     - 超过 128 GB 的任何内存的2%
 
-由于这两个已定义的规则使 Kubernetes 和代理节点保持正常运行，因此 allocatable CPU 和内存的数量将会比节点本身提供的数量少。 无法更改上面定义的资源预留。
+上述内存和 CPU 分配规则用于保持代理节点正常运行，某些托管系统箱对群集运行状况至关重要。 如果节点不是 Kubernetes 群集的一部分，则这些分配规则还会使节点报告的内存和 CPU allocatable 更少。 不能更改上述资源预订。
 
-例如，如果某个节点提供 7 GB，则它将报告34% 的内存未 allocatable：
+例如，如果某个节点提供 7 GB，则它将报告34% 的内存未 allocatable 在750Mi 硬逐出阈值的顶部。
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-除了 Kubernetes 的保留，基础节点 OS 还会保留大量的 CPU 和内存资源来维护 OS 函数。
+除了 Kubernetes 本身的保留，基础节点 OS 还保留了大量 CPU 和内存资源来维护 OS 函数。
 
 有关相关的最佳实践，请参阅[AKS 中的基本计划程序功能的最佳实践][operator-best-practices-scheduler]。
 

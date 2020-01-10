@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933648"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770010"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 设备上选择并部署安全代理
 
@@ -48,7 +48,7 @@ ms.locfileid: "70933648"
 | 支持的 Windows 平台？ | 否 | 是 |
 | Windows 先决条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | 支持的 Linux 平台？ | 是、x64 和 x86 | 是，仅 x64 |
-| Linux 先决条件 | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
+| Linux 系统先决条件 | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
 | 磁盘占用量 | 10.5 MB | 90 MB |
 | 内存占用量（平均） | 5.5 MB | 33 MB |
 | 向 IoT 中心进行[身份验证](concept-security-agent-authentication-methods.md) | 是 | 是 |
@@ -59,9 +59,9 @@ ms.locfileid: "70933648"
 
 ## <a name="security-agent-installation-guidelines"></a>安全代理安装指南
 
-对于 **Windows**：Install SecurityAgent 脚本必须从管理员 PowerShell 窗口执行。 
+对于**Windows**： Install SecurityAgent 脚本必须从管理员 PowerShell 窗口执行。 
 
-对于 **Linux**：必须以超级用户身份运行 InstallSecurityAgent.sh。 建议在安装命令前面加上 "sudo"。
+对于**Linux**： InstallSecurityAgent.sh 必须以超级用户身份运行。 建议在安装命令前面加上 "sudo"。
 
 
 ## <a name="choose-an-agent-flavor"></a>选择代理风格 
@@ -84,20 +84,20 @@ ms.locfileid: "70933648"
 两种代理风格都提供了相同的功能集，并支持类似的配置选项。
 有关详细信息，请参阅[安全代理比较](how-to-deploy-agent.md#understand-security-agent-options)。
 
-## <a name="supported-platforms"></a>受支持的平台
+## <a name="supported-platforms"></a>支持的平台
 
 以下列表包含当前支持的所有平台。
 
 |用于 IoT 代理的 Azure 安全中心 |操作系统 |体系结构 |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
-|C|Debian 9 |   x64, x86|
+|C|Ubuntu 18.04 |   x64、ARMv7|
+|C|Debian 9 |   x 64，x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64、ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT 核心版 17763    |x64|
+|C#|Windows 10 IoT Core，版本17763    |x64|
 |
 
 ## <a name="next-steps"></a>后续步骤

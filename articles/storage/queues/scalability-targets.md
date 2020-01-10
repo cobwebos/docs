@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8f9592575da16b146423682d1250c577ab7c282e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486269"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750484"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>队列存储的可伸缩性和性能目标
 
@@ -29,3 +29,4 @@ ms.locfileid: "75486269"
 - [队列存储的性能和可伸缩性清单](storage-performance-checklist.md)
 - [标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)
 - [Azure 存储资源提供程序的可伸缩性目标](../common/scalability-targets-resource-provider.md)
+- [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

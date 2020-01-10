@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371201"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754175"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -97,5 +97,5 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 * [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)
 * [什么是网络安全组？](../../virtual-network/security-overview.md)
-* [Azure 资源管理器中负载均衡器的概述](../../load-balancer/load-balancer-arm.md)
+* [Azure 负载均衡器概述](../../load-balancer/load-balancer-overview.md)
 

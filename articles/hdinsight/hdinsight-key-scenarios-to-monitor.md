@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777530"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770877"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>监视 Azure HDInsight 中的群集性能
 
@@ -27,7 +27,7 @@ ms.locfileid: "74777530"
 
 若要大致了解群集的节点及其加载情况，请登录[Ambari WEB UI](hdinsight-hadoop-manage-ambari.md)，然后选择 "**主机**" 选项卡。主机按其完全限定的域名列出。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | 描述 |
+| 颜色 | Description |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | Orange | 主机上至少有一个辅助组件关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
@@ -72,7 +72,7 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 ## <a name="storage-throttling"></a>存储限制
 
-群集的性能瓶颈可能发生于存储级别。 这种类型的瓶颈最常见的原因是，*阻止*输入/输出（IO）操作，而正在运行的任务发送的 IO 比存储服务可以处理的 io 多。 这种阻止将创建等待处理完当前 IO 后再进行处理的 IO 请求队列。 块的原因是*存储限制*，而不是物理限制，而是由服务级别协议（SLA）对存储服务施加限制。 此限制确保单个客户端或租户无法独占服务。 SLA 限制 Azure 存储的每秒 IO 数 (IOPS)。有关详细信息，请参阅 [Azure 存储可缩放性和性能目标](https://docs.microsoft.com/azure/storage/storage-scalability-targets)。
+群集的性能瓶颈可能发生于存储级别。 这种类型的瓶颈最常见的原因是，*阻止*输入/输出（IO）操作，而正在运行的任务发送的 IO 比存储服务可以处理的 io 多。 这种阻止将创建等待处理完当前 IO 后再进行处理的 IO 请求队列。 块的原因是*存储限制*，而不是物理限制，而是由服务级别协议（SLA）对存储服务施加限制。 此限制确保单个客户端或租户无法独占服务。 SLA 限制 Azure 存储的每秒 Io 数（IOPS）-有关详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../storage/common/scalability-targets-standard-account.md)。
 
 如果你使用的是 Azure 存储空间，请参阅监视[、诊断和排查 Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)的相关信息，了解如何监视与存储相关的问题（包括限制）。
 

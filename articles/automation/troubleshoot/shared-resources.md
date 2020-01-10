@@ -1,6 +1,6 @@
 ---
 title: 解决 Azure 自动化共享资源的错误
-description: 了解如何解决 Azure 自动化共享资源的问题
+description: 了解如何排查和解决支持 runbook 的 Azure 自动化共享资源的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849286"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769857"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>解决共享资源的错误
 

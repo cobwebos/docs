@@ -1,19 +1,19 @@
 ---
 title: 重新生成搜索索引
 titleSuffix: Azure Cognitive Search
-description: 在完全重新生成或部分增量索引中添加新元素、更新现有元素或文档，或删除过时文档以刷新 Azure 认知搜索索引。
+description: 在完全重新生成或部分索引中添加新元素、更新现有元素或文档，或删除过时文档以刷新 Azure 认知搜索索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112964"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754394"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 中重新生成索引认知搜索
 
@@ -25,7 +25,7 @@ ms.locfileid: "74112964"
 
 ## <a name="rebuild-conditions"></a>重新生成条件
 
-| 条件 | 说明 |
+| 条件 | Description |
 |-----------|-------------|
 | 更改字段定义 | 修改字段名称、数据类型或特定的[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)（可搜索、可筛选、可排序、可查找）需要完全重新生成。 |
 | 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
@@ -74,7 +74,7 @@ ms.locfileid: "74112964"
 
    任何针对该索引的查询都会被立即删除。 删除索引是不可逆的，此操作会销毁字段集合和其他构造的物理存储空间。 在删除索引之前，请确保自己清楚删除索引的影响。 
 
-2. 使用服务终结点、API 密钥和[管理密钥](https://docs.microsoft.com/rest/api/searchservice/update-index)构造[更新索引](https://docs.microsoft.com/azure/search/search-security-api-keys)请求。 写入操作需要使用管理密钥。
+2. 使用服务终结点、API 密钥和[管理密钥](https://docs.microsoft.com/azure/search/search-security-api-keys)构造[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)请求。 写入操作需要使用管理密钥。
 
 3. 在请求正文中，提供具有已更改或已修改字段定义的索引架构。 请求正文包含索引架构，以及用于计分概要文件、分析器、建议器和 CORS 选项的构造。 架构要求都记录在[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)中。
 

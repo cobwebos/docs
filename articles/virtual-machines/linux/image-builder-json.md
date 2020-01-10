@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159718"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763073"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览：创建 Azure 映像生成器模板 
 
@@ -28,7 +28,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -51,7 +51,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Location
+## <a name="location"></a>位置
 
 该位置是要在其中创建自定义映像的区域。 对于图像生成器预览，支持以下区域：
 
@@ -66,7 +66,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "location": "<region>",
 ```
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>标记
 
 这些是可为生成的映像指定的键/值对。
 
@@ -138,7 +138,7 @@ Azure 映像生成器仅支持使用已发布的 Red Hat Enterprise Linux 7. x �
 Azure 映像生成器支持以下 Azure Marketplace 映像：
 * Ubuntu 18.04
 * Ubuntu 16.04
-* RHEL 7。6
+* RHEL 7.6
 * CentOS 7。6
 * Windows 2016
 * Windows 2019
@@ -275,7 +275,8 @@ Shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，I
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"
@@ -317,7 +318,7 @@ OS 支持： Windows 和 Linux
 - **类型**– PowerShell。
 - **scriptUri** -PowerShell 脚本文件所在位置的 URI。 
 - **内联**–要运行的内联命令（用逗号分隔）。
-- **valid_exit_codes** –可从 script/inline 命令返回的可选有效代码，这将避免报告脚本/内联命令失败。
+- **valid_exit_codes** –可从 script/inline 命令返回的可选有效代码，这将避免在 script/inline 命令中报告失败。
 
 ### <a name="file-customizer"></a>文件定制器
 
@@ -382,7 +383,7 @@ while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Window
 #### <a name="overriding-the-commands"></a>重写命令
 若要重写命令，请使用 PowerShell 或 Shell 脚本设置程序创建具有确切文件名的命令文件，并将其放在正确的目录中：
 
-* Windows： c:\DeprovisioningScript.ps1
+* Windows: c:\DeprovisioningScript.ps1
 * Linux：/tmp/DeprovisioningScript.sh
 
 映像生成器将读取这些命令，这些命令将写出到 AIB 日志 "自定义日志"。 有关如何收集日志的[疑难解答](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs)，请参阅。

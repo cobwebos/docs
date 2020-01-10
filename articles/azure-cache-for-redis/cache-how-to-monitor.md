@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9e829c7d3756599cc80f35187bd743ce798cecda
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122748"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750057"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
 用于 Redis 的 Azure 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
@@ -53,7 +53,7 @@ ms.locfileid: "74122748"
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>导出缓存指标
-默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
+默认情况下，Azure Monitor 中的缓存指标会[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，之后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
 
 若要配置缓存指标的存储帐户：
 
@@ -62,12 +62,12 @@ ms.locfileid: "74122748"
 3. 选中“存档到存储帐户”。
 4. 选择要在其中存储缓存指标的存储帐户。
 5. 选中“1 分钟”复选框，并指定“保留期（天）”策略。 如果不想应用任何保留期策略也不想永久保留数据，可将“保留期（天）”设置为“0”。
-6. 单击“保存”。
+6. 单击“ **保存**”。
 
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)。
+>除了将缓存指标存档到存储，还可以将[它们流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)。
 >
 >
 
@@ -88,9 +88,9 @@ ms.locfileid: "74122748"
 > 
 > 
 
-| 度量值 | 说明 |
+| 度量值 | Description |
 | --- | --- |
-| 缓存命中数 |在指定的报告间隔期间，成功的键查找次数。 此值映射到 Redis `keyspace_hits`INFO[ 命令输出中的 ](https://redis.io/commands/info)。 |
+| 缓存命中数 |在指定的报告间隔期间，成功的键查找次数。 此值映射到 Redis [INFO](https://redis.io/commands/info) 命令输出中的 `keyspace_hits`。 |
 | 缓存延迟（预览） | 基于缓存的节点间延迟计算缓存的延迟。 该指标以微秒为单位，具有三个维度：“Avg”、“Min”和“Max”，分别表示指定的报告间隔期间缓存的平均延迟、最小延迟和最大延迟。 |
 | 缓存未命中数 |在指定的报告间隔期间，失败的键查找次数。 此值映射到 Redis INFO 命令输出中的 `keyspace_misses`。 缓存未命中并不一定意味着缓存出现了问题。 例如，在使用缓存端编程模式时，应用程序会首先查找缓存中的项。 如果该项不存在（缓存未命中），则将从数据库中检索该项并将其添加到下一次缓存中。 对于缓存端编程模式，缓存未命中是正常行为。 如果缓存未命中数大于预期值，请检查从缓存中填充并读取的应用程序逻辑。 如果由于内存压力而导致项目从缓存中逐出，则可能存在一些缓存未命中的情况，但度量值 `Used Memory` 或 `Evicted Keys` 可以更好的监视内存压力。 |
 | 缓存读取量 |指定报告间隔期间，从缓存中读取的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 **此值对应于该缓存使用的网络带宽。若要为服务器端网络带宽限制设置警报，请使用此 `Cache Read` 计数器创建警报。请参阅[此表](cache-faq.md#cache-performance)，了解各种缓存定价层和大小所遵循的带宽限制。** |
@@ -103,7 +103,7 @@ ms.locfileid: "74122748"
 | 获取数 |指定的报告间隔期间，缓存中的获取操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit` 和 `cmdstat_getrange`，并且等效于报告间隔期间缓存命中和未命中数的总和。 |
 | 每秒操作数 | 指定的报告间隔期间，由缓存服务器处理的每秒命令总数。  此值映射到 Redis INFO 命令中的“instantaneous_ops_per_sec”。 |
 | Redis 服务器负载 |Redis 服务器忙于处理消息并且非空闲等待消息的周期百分比。 如果此计数器达到 100，则意味着 Redis 服务器已达到性能上限并且 CPU 无法更快地工作。 如果看到高 Redis 服务器负载，则会在客户端看到超时异常。 在这种情况下，应该考虑将数据扩大或分区到多个缓存。 |
-| 设置数 |指定的报告间隔期间，对缓存的设置操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange` 和 `cmdstat_setnx`。 |
+| 集 (Sets) |指定的报告间隔期间，对缓存的设置操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange` 和 `cmdstat_setnx`。 |
 | 总密钥数  | 上一个报表时期中，缓存中的最大密钥数。 此值映射到 Redis INFO 命令输出中的 `keyspace`。 由于基本指标系统的限制，对于启用了群集的缓存，“总密钥数”返回报告间隔期间具有最大密钥数的分片的最大密钥数。  |
 | 总操作数 |指定的报告间隔期间，由缓存服务器处理的命令总数。 此值映射到 Redis INFO 命令输出中的 `total_commands_processed`。 注意，当用于 Redis 的 Azure 缓存纯粹用于发布/订阅时，将不存在 `Cache Hits`、`Cache Misses`、`Gets` 或 `Sets` 的度量值，但存在 `Total Operations` 度量值，该度量值反映发布/订阅操作的缓存使用情况。 |
 | 已用内存 |在指定报告间隔期间，缓存中的键/值对所用的缓存内存量（以 MB 为单位）。 此值映射到 Redis INFO 命令输出中的 `used_memory`。 这不包括元数据或碎片。 |
@@ -134,7 +134,7 @@ ms.locfileid: "74122748"
 
 若要查看缓存的活动日志，从“资源菜单”单击“活动日志”。
 
-有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/activity-logs-overview.md)。
+有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 
 

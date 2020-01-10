@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c1f3384b88de7b58457251cf72b2815267cb29
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541694"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772578"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -35,9 +35,9 @@ Azure 机器学习提供以下 MLOps 功能：
 
 使用 Azure 机器学习的 ML 管道将模型定型过程中涉及的所有步骤汇聚在一起。
 
-ML 管道可包含从数据准备到功能提取到超参数优化到模型评估的步骤。 有关详细信息，请参阅[ML 管道](service/concept-ml-pipelines.md)。
+ML 管道可包含从数据准备到功能提取到超参数优化到模型评估的步骤。 有关详细信息，请参阅[ML 管道](concept-ml-pipelines.md)。
 
-如果使用[设计器](service/concept-designer.md)创建 ML 管道，则可以随时单击设计器页右上角的 **"..."** ，然后选择 "**克隆**"。 通过克隆管道，可以在不丢失旧版本的情况下循环访问管道设计。  
+如果使用[设计器](concept-designer.md)创建 ML 管道，则可以随时单击设计器页右上角的 **"..."** ，然后选择 "**克隆**"。 通过克隆管道，可以在不丢失旧版本的情况下循环访问管道设计。  
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>从任何位置注册、打包和部署模型
 

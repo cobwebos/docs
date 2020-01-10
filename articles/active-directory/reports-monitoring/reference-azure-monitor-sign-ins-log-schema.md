@@ -17,16 +17,16 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014316"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748662"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释中的 Azure AD 登录日志架构 Azure Monitor
 
-本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在  *对象的 Properties 属性下提供*`records`。
+本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供。
 
 
 ```json
@@ -143,7 +143,7 @@ ms.locfileid: "74014316"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名称 | 说明 |
+| 字段名 | Description |
 |------------|-------------|
 | 时间 | 日期和时间 (UTC)。 |
 | ResourceId | 此值未映射，可以放心地忽略此字段。  |
@@ -162,7 +162,7 @@ ms.locfileid: "74014316"
 | DurationMs |  此值未映射，可以放心地忽略此字段。 |
 | CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
-| 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
+| 身份标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
 | 级别 | 提供消息的类型。 对于审核，它始终是“信息”。 |
 | 位置 | 提供登录活动的位置。 |
 | 属性 | 列出与登录关联的所有属性。有关详细信息，请参阅[MICROSOFT GRAPH API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 为提高可读性，此架构使用登录资源中的相同属性名。
@@ -170,4 +170,4 @@ ms.locfileid: "74014316"
 ## <a name="next-steps"></a>后续步骤
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
-* [详细了解 Azure 诊断日志](../../azure-monitor/platform/resource-logs-overview.md)
+* [详细了解 Azure 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)

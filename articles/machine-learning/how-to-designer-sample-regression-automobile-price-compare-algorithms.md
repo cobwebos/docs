@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: a4148389992bc100be66175a75b32d61acaf2f46
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659861"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771438"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>定型 & 比较多个回归模型，通过 Azure 机器学习设计器预测车载价格
 
@@ -25,7 +25,7 @@ ms.locfileid: "75659861"
 
 了解如何在不编写代码的情况下使用设计器（预览）生成机器学习管道。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此管道中做出的选择提供基本原理，以便您能够应对自己的机器学习问题。
 
-如果只是开始使用机器学习，请查看此管道的[基本版本](service/how-to-designer-sample-regression-automobile-price-basic.md)。
+如果只是开始使用机器学习，请查看此管道的[基本版本](how-to-designer-sample-regression-automobile-price-basic.md)。
 
 下面是此管道的完成关系图：
 
@@ -92,9 +92,9 @@ ms.locfileid: "75659861"
 
 浏览可用于设计器的其他示例：
 
-- [示例 1-回归：预测汽车的价格](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 3-通过功能选择进行分类：收入预测](service/how-to-designer-sample-classification-predict-income.md)
-- [示例 4-分类：预测信用风险（区分成本）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5-分类：预测改动](service/how-to-designer-sample-classification-churn.md)
-- [示例 6-分类：预测航班延迟](service/how-to-designer-sample-classification-flight-delay.md)
+- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
+- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
 - [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

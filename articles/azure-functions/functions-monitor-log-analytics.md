@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409654"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769092"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 Azure Functions
 
@@ -25,11 +25,11 @@ Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/
 
 ## <a name="setting-up"></a>设置
 
-从 "监视" 部分，选择 "**诊断设置**"，然后单击 "**添加**"。
+从 "**监视**" 部分，选择 "**诊断设置**"，然后单击 "**添加诊断设置**"。
 
 ![添加诊断设置](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-在 "设置" 页中，选择 "**发送到 Log Analytics**"，然后在 "**日志**" 下选择 " **FunctionAppLogs**"，此表包含所需的日志。
+在 "**诊断设置**" 页上，选择 "**发送到 Log Analytics**"，然后选择 Log Analytics 工作区。 在 "**日志**" 下，选择 " **FunctionAppLogs**"，此表包含所需的日志。
 
 ![添加诊断设置](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -72,7 +72,7 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>查询日志
 
-若要查询生成的日志，请在 log analytics 工作区中，单击 "**日志**"。
+若要查询生成的日志，请参阅配置为将函数日志发送到的 Log Analytics 工作区，并单击 "**日志**"。
 
 ![LA 工作区中的查询窗口](media/functions-monitor-log-analytics/querying.png)
 

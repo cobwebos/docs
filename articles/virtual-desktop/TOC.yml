@@ -130,6 +130,10 @@
       href: /rest/api/virtual-desktop/
     - name: 支持的 RDP 文件设置
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: 网络指南
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: 虚拟机大小调整指南
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: 资源
   items:
     - name: 体验评估器

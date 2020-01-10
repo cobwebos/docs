@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409092"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768994"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -100,8 +100,8 @@ Python 函数项目的建议文件夹结构类似于以下示例：
 * *local. json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅[本地. settings](functions-run-local.md#local-settings-file)。
 * *要求 .txt*：包含在发布到 Azure 时系统安装的包的列表。
 * *host json*：包含影响函数应用中所有函数的全局配置选项。 此文件会被发布到 Azure。 在本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅[host。](functions-host-json.md)
-* *funcignore*：（可选）声明不应发布到 Azure 的文件。
-* *.gitignore*：（可选）声明从 git 存储库中排除的文件，如 ""。
+* *. funcignore*：（可选）声明不应发布到 Azure 的文件。
+* *. .gitignore*：（可选）声明从 git 存储库中排除的文件，如 ""。
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-调用函数时，HTTP 请求作为 `req` 传递给函数。 将根据路由 URL 中的_ID_从 Azure Blob 存储中检索一个条目，并在函数体中将其作为 `obj` 提供。  此处指定的存储帐户是在中找到的连接字符串，它是函数应用使用的相同存储帐户。
+调用函数时，HTTP 请求作为 `req` 传递给函数。 将根据路由 URL 中的_ID_从 Azure Blob 存储中检索一个条目，并在函数体中将其作为 `obj` 提供。  此处指定的存储帐户是 AzureWebJobsStorage 应用设置中的连接字符串，该设置与函数应用使用的存储帐户相同。
 
 
 ## <a name="outputs"></a>Outputs
@@ -641,7 +641,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     ...
 ```
 
-Chrome 浏览器使用此方法来协商允许的来源列表。 
+Web 浏览器使用此 HTTP 方法来协商允许的来源列表。 
 
 ## <a name="next-steps"></a>后续步骤
 

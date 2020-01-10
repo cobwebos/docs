@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658298"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770078"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -122,7 +122,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息，请参阅自动[缩放和区域冗余应用程序网关](application-gateway-autoscaling-zone-redundant.md)。
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手动扩展还是缩减会导致停机？
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动缩放是否会导致停机？
 
 不。 实例将跨升级域和容错域分布。
 

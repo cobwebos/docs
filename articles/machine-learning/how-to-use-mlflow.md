@@ -11,19 +11,19 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3af8f0768183c07bd656bbb50893985057e9e861
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6203d78ee8d9c0a9837d03859856c5d0265422ac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536416"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772323"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文演示如何使用 Azure 机器学习启用 MLflow 的跟踪 URI 和日志记录 API （统称为[MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)）。 这样做使您能够：
 
-+ 在[Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces)中跟踪和记录试验指标和项目。 如果已使用 MLflow 跟踪进行试验，工作区将提供一个集中、安全和可缩放的位置来存储定型指标和模型。
++ 在[Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)中跟踪和记录试验指标和项目。 如果已使用 MLflow 跟踪进行试验，工作区将提供一个集中、安全和可缩放的位置来存储定型指标和模型。
 
 + 将 MLflow 试验部署为 Azure 机器学习 web 服务。 通过将部署为 web 服务，可以将 Azure 机器学习监视和数据偏差检测功能应用到生产模型。 
 

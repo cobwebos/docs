@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977686"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750873"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 [Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并为收集的指标和日志创建警报和通知。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
 
-有关详细信息，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/resource-logs-overview.md)。
+有关详细信息，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
 本文介绍 Media Services 诊断日志架构。
 
@@ -38,12 +38,12 @@ ms.locfileid: "74977686"
 
 这些属性特定于密钥传送日志架构。
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |keyId|请求的密钥的 ID。|
 |keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
 |policyName|策略的 Azure 资源管理器名称。|
-|tokenType|令牌类型。|
+|tokenType|标记类型。|
 |statusMessage|状态消息。|
 
 ### <a name="examples"></a>示例
@@ -110,7 +110,7 @@ ms.locfileid: "74977686"
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

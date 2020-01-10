@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: acacb9c10250d43e22b5b5b1d073b18461561512
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406859"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744860"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
 [使用企业安全性套餐 (ESP) 的 HDInsight 群集](hdinsight-domain-joined-introduction.md)可对 Azure Active Directory (Azure AD) 用户使用强身份验证，还可使用基于角色的访问控制 (RBAC) 策略。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果你尚未执行此操作，请[使用企业安全性套餐创建 HDInsight 群集](hdinsight-domain-joined-configure.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "74406859"
 
 以下方法通过 Ambari REST API 使用 POST。 有关详细信息，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
-1. 使用[ssh 命令](hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 通过将 `CLUSTERNAME` 替换为群集的名称来编辑以下命令，然后输入该命令：
+1. 使用[ssh 命令](hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -65,7 +65,7 @@ ms.locfileid: "74406859"
     {
       "resources" : [
         {
-          "href" : "http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
+          "href" : "http://<ACTIVE-HEADNODE-NAME>.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
           "Event" : {
             "id" : 1
           }
@@ -84,7 +84,7 @@ ms.locfileid: "74406859"
 
     ```json
     {
-      "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
+      "href" : "http://<ACTIVE-HEADNODE-NAME>.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
       "Event" : {
         "id" : 1,
         "specs" : [
@@ -146,8 +146,8 @@ ms.locfileid: "74406859"
 新用户（或任何其他域用户）在登录到 Ambari 时，使用完整的 Azure AD 用户名和域凭据。  Ambari 显示用户别名，该别名是用户在 Azure AD 中的显示名称。
 新示例用户的用户名为 `hiveuser3@contoso.com`。 在 Ambari 中，这个新用户显示为 `hiveuser3`，但该用户是作为 `hiveuser3@contoso.com` 登录到 Ambari 的。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [使用 ESP 在 HDInsight 中配置 Apache Hive 策略](hdinsight-domain-joined-run-hive.md)
-* [管理使用 ESP 的 HDInsight 群集](hdinsight-domain-joined-manage.md)
+* [管理 ESP HDInsight 群集](hdinsight-domain-joined-manage.md)
 * [授权用户访问 Apache Ambari](hdinsight-authorize-users-to-ambari.md)

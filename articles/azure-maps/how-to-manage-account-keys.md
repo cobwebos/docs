@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957316"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768837"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
@@ -23,11 +23,11 @@ ms.locfileid: "65957316"
 
 ## <a name="create-a-new-account"></a>创建新帐户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户的左上角，选择“创建资源”  。
+2. 在 Azure 门户的左上角，选择“创建资源”。
 
-3. 搜索并选择“Maps”  。 然后选择“创建”  。
+3. 搜索并选择“Maps”。 然后选择“创建”。
 
 4. 输入新帐户的信息。
 
@@ -35,7 +35,7 @@ ms.locfileid: "65957316"
 
 ## <a name="delete-an-account"></a>删除帐户
 
-可以通过 Azure 门户删除帐户。 导航到帐户概览页并选择“删除”。 
+可以通过 Azure 门户删除帐户。 导航到帐户概览页并选择“删除”。
 
 ![在门户中删除帐户](./media/how-to-manage-account-keys/account-delete-portal.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "65957316"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure Maps 设置身份验证：
+设置 Azure Maps 的身份验证，并了解如何获取 Azure Maps 订阅密钥：
 > [!div class="nextstepaction"]
 > [管理身份验证](how-to-manage-authentication.md)
 

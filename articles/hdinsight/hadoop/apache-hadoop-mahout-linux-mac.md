@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 01/03/2020
+ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044560"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767630"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>使用 Apache Mahout 和 HDInsight （SSH）中的 Apache Hadoop 生成电影建议
 
@@ -25,15 +25,13 @@ Mahout 是用于 Apache Hadoop 的[机器学习](https://en.wikipedia.org/wiki/M
 
 ## <a name="prerequisites"></a>必备组件
 
-* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
-
-* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout 版本控制
 
 若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
-## <a name="recommendations"></a>了解建议
+## <a name="understanding-recommendations"></a>了解建议
 
 由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
 
@@ -43,7 +41,7 @@ Mahout 是用于 Apache Hadoop 的[机器学习](https://en.wikipedia.org/wiki/M
 
 * **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
 
-* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似首选项的其他人喜欢的电影，但是 Joe 还未观看过（喜欢/评价）。 在这种情况下，Mahout 推荐幽灵的威胁、克隆人的进攻和西斯的复仇。
+* **相似性建议**：由于 Joe 喜欢前三个电影，Mahout 会查看具有类似首选项的其他人喜欢的电影，但 Joe 未被监视（赞/评级）。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
 
 ### <a name="understanding-the-data"></a>了解数据
 
@@ -51,7 +49,7 @@ Mahout 是用于 Apache Hadoop 的[机器学习](https://en.wikipedia.org/wiki/M
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 文件在分析期间使用。 `moviedb.txt` 用于在查看结果时提供用户友好的文本信息。
 
-user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` 和 `timestamp` 结构，指示每个用户对电影评级的情况。 下面是数据的示例：
+`user-ratings.txt` 中包含的数据具有 `userID`、`movieID`、`userRating`和 `timestamp`的结构，指示每个用户对电影进行评级的程度。 下面是数据的示例：
 
     196    242    3    881250949
     186    302    3    891717742
@@ -61,11 +59,17 @@ user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` �
 
 ## <a name="run-the-analysis"></a>运行分析
 
-与群集建立 SSH 连接后，使用以下命令运行推荐作业：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 将 CLUSTERNAME 替换为群集名称，然后输入以下命令，以编辑以下命令：
 
-```bash
-mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
-```
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. 使用以下命令来运行推荐作业：
+
+    ```bash
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    ```
 
 > [!NOTE]  
 > 该作业可能需要几分钟才能完成，并可能运行多个 MapReduce 作业。
@@ -80,10 +84,12 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     输出如下所示：
 
-        1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-        2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-        3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-        4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```output
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```
 
     第一列是 `userID`。 “[”和“]”中包含的值为 `movieId`:`recommendationScore`。
 
@@ -174,11 +180,21 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
      此命令的输出类似于以下文本：
 
-       西藏七年 (1997)，评分=5.0   夺宝奇兵 3 之圣战骑兵 (1989)，评分=5.0   大白鲨 (1975)，评分=5.0   理智与情感 (1995)，评分=5.0   独立日(ID4) (1996)，评分=5.0   我最好朋友的婚礼 (1997)，评分=5.0   甜心先生 (1996)，评分=5.0   惊声尖叫 2 (1997)，评分=5.0   杀戮时刻 (1996)，评分=5.0
+        ```output
+        Seven Years in Tibet (1997), score=5.0
+        Indiana Jones and the Last Crusade (1989), score=5.0
+        Jaws (1975), score=5.0
+        Sense and Sensibility (1995), score=5.0
+        Independence Day (ID4) (1996), score=5.0
+        My Best Friend's Wedding (1997), score=5.0
+        Jerry Maguire (1996), score=5.0
+        Scream 2 (1997), score=5.0
+        Time to Kill, A (1996), score=5.0
+        ```
 
 ## <a name="delete-temporary-data"></a>删除临时数据
 
-Mahout 作业不删除在处理作业时创建的临时数据。 在示例作业中指定 `--tempDir` 参数，以将临时文件隔离到特定路径中轻松删除。 若要删除临时文件，请使用以下命令：
+Mahout 作业不会删除在处理作业时创建的临时数据。 在示例作业中指定 `--tempDir` 参数，以将临时文件隔离到特定路径中轻松删除。 若要删除临时文件，请使用以下命令：
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
@@ -189,11 +205,9 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
-
 ## <a name="next-steps"></a>后续步骤
 
-现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
+现在，你已了解如何使用 Mahout，但会发现在 HDInsight 上使用数据的其他方式：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [MapReduce 和 HDInsight 配合使用](hdinsight-use-mapreduce.md)

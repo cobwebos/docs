@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f84eba6b23278391afd2de11d9072c9a378db05
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5b2fa550029c35ca989d6746254298cf1e92992d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646585"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75764569"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ML 管道使用远程计算目标进行计算，并使用与该管道关联的�
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [配置开发环境](service/how-to-configure-environment.md)以安装 Azure 机器学习 sdk，或使用已安装 sdk 的[Azure 机器学习计算实例（预览版）](concept-compute-instance.md) 。
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 sdk，或使用已安装 sdk 的[Azure 机器学习计算实例（预览版）](concept-compute-instance.md) 。
 
 > [!NOTE]
 > 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区。
@@ -132,7 +132,7 @@ iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 't
 
  使用[from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)创建 `FileDataset`。
 
- 若要详细了解如何使用数据集，请参阅[添加 & register dataset](service/how-to-create-register-datasets.md)或[此示例笔记本](https://aka.ms/train-datasets)。
+ 若要详细了解如何使用数据集，请参阅[添加 & register dataset](how-to-create-register-datasets.md)或[此示例笔记本](https://aka.ms/train-datasets)。
 
 ## <a name="set-up-compute-target"></a>设置计算目标
 

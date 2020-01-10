@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384198"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749941"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -322,7 +322,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防
 * **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 * **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
 * **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
-* **自适应优化：** 智能流量分析了解不同时段的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+* **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 * **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 * **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
 * **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件，如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
@@ -395,7 +395,7 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，可以从以下日志中获取信息：
 
-* [活动日志](../../azure-monitor/platform/activity-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
+* [活动日志](../../azure-monitor/platform/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 

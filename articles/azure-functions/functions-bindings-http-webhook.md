@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d1def81a1f5d6b1b3a6d64d2d302ceb9d5f17dfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972364"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769500"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -24,7 +24,7 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 本文中的代码默认为使用 .NET Core 的语法，该语法在函数版本2.x 和更高版本中使用。 有关 1.x 语法的信息，请参阅 [1.x functions 模板](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)。
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 1.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub 存储库中提供了此包的源代码。
 
@@ -515,13 +515,13 @@ public HttpResponseMessage<String> HttpTrigger(
 
 下表解释了在 function.json 文件和 `HttpTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-| 类型 | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | direction | 不适用| 必需 - 必须设置为 `in`。 |
 | name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
-| methods |方法 | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
+| methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | Route | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | webHookType | WebHookType | 仅支持 1.x 版运行时。<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
@@ -825,7 +825,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 可以允许匿名请求，它不需要密钥。 可能还需要使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#trigger---configuration)。
 
 > [!NOTE]
-> 本地运行函数时，将禁用授权，而不考虑指定的身份验证级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 [在容器中本地](functions-create-function-linux-custom-image.md#run-the-image-locally)运行时，仍然需要使用密钥。
+> 在本地运行函数时，无论指定的授权级别设置如何，都会禁用授权。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 [在容器中本地](functions-create-function-linux-custom-image.md#run-the-image-locally)运行时，仍然需要使用密钥。
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
@@ -838,7 +838,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 * 将函数应用部署到 Azure 应用服务环境 (ASE)。 ASE 提供要在其中运行函数的专用托管环境。 ASE 允许配置单个前端网关，可以使用它对所有传入请求进行身份验证。 有关详细信息，请参阅[为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)。
 
-在使用这些函数应用级别的安全方法之一时，应将 HTTP 触发函数身份验证级别设置为 `anonymous`。
+使用这些函数应用级安全方法之一时，应将 HTTP 触发的函数授权级别设置为 `anonymous`。
 
 ### <a name="webhooks"></a>Webhook
 
@@ -878,9 +878,9 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 在 C# 类库中，没有与这些 function.json 属性对应的属性。
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
-| 类型 |必须设置为 `http`。 |
+| type |必须设置为 `http`。 |
 | direction | 必须设置为 `out`。 |
 | name | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
 
@@ -917,12 +917,12 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
-| customHeaders|无|允许您在 HTTP 响应中设置自定义标头。 前面的示例将 `X-Content-Type-Options` 标头添加到响应中，以避免内容类型窃听。 |
+| customHeaders|none|允许您在 HTTP 响应中设置自定义标头。 前面的示例将 `X-Content-Type-Options` 标头添加到响应中，以避免内容类型窃听。 |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|启用时，将为此设置将导致请求处理管道，以定期检查系统性能计数器类似连接/线程/进程/内存/CPU 等，并通过内置的高阈值 (80%)，如果有任何这些计数器请求拒绝与 429“太忙”响应，直至恢复到正常水平的计数器。<br/><sup>\*</sup>消耗计划中的默认值为 `true`。 专用计划中的默认值为 `false`。|
-|hsts|未启用|将 `isEnabled` 设置为 `true`时，将强制执行[.Net Core 的 HTTP 严格传输安全性（HSTS）行为](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如[`HstsOptions` 类](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)属性设置为10天。 `hsts` 支持的属性包括： <table><tr><th>properties</th><th>描述</th></tr><tr><td>excludedHosts</td><td>不添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了严格传输-安全标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义严格传输安全标头的最大期限参数的字符串。</td></tr><tr><td>preload</td><td>指示是否启用了严格传输安全标头的预载参数的布尔值。</td></tr></table>|
-|maxConcurrentRequests|100<sup>\*</sup>|并行执行的 http 函数的最大数目。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，某个 http 函数可能使用了大量系统资源（内存/CPU/插槽），从而在并发性过高时导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为100。 专用计划的默认值为未绑定（`-1`）。|
+|hsts|未启用|将 `isEnabled` 设置为 `true`时，将强制执行[.Net Core 的 HTTP 严格传输安全性（HSTS）行为](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如[`HstsOptions` 类](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)属性设置为10天。 `hsts` 支持的属性包括： <table><tr><th>属性</th><th>Description</th></tr><tr><td>excludedHosts</td><td>不添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了严格传输-安全标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义严格传输安全标头的最大期限参数的字符串。</td></tr><tr><td>preload</td><td>指示是否启用了严格传输安全标头的预载参数的布尔值。</td></tr></table>|
+|maxConcurrentRequests|100<sup>\*</sup>|并行执行的 HTTP 函数的最大数目。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，你可能有一个 HTTP 函数使用大量系统资源（内存/cpu/套接字），因此并发性过高时将导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为100。 专用计划的默认值为未绑定（`-1`）。|
 |maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/>消耗计划<sup>\*</sup>\The 默认值为200。 专用计划的默认值为未绑定（`-1`）。|
 |routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |
 

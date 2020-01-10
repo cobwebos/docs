@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424797"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768142"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -29,8 +29,6 @@ ms.locfileid: "75424797"
 - 客户端应用程序条件
 - 批准的客户端应用程序要求
 
-如果这不是你要查找的信息，请在本文末尾留下评论。
-
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
 使用条件性访问策略，可以控制用户访问[云应用](conditions.md#cloud-apps-and-actions)的方式。 配置条件访问策略时，需要至少选择一个云应用。 
@@ -41,6 +39,7 @@ ms.locfileid: "75424797"
 
 可以将条件性访问策略分配给 Microsoft 的以下云应用：
 
+- Office 365 （预览版）
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL 数据库和数据仓库-[了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -73,6 +72,22 @@ ms.locfileid: "75424797"
 - Skype for Business Online
 - 虚拟专用网络 (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 （预览版）
+
+Office 365 提供基于云的生产力和协作服务，如 Exchange、SharePoint 和 Microsoft 团队。 Office 365 云服务已深度集成，以确保顺利且协作体验。 Office 365 （预览版）应用使你可以一次同时定位这些服务。 我们建议使用新的 Office 365 （预览版）应用程序，而不是以 Office 365 Exchange Online 和 Office 365 SharePoint Online 等单个云应用程序为目标，以避免因策略和服务依赖关系而导致的问题。
+
+Office 365 （预览版）客户端应用程序中包含的关键应用程序：
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office 门户
+- Microsoft Forms
+- Microsoft 电源自动化
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>其他应用程序
 

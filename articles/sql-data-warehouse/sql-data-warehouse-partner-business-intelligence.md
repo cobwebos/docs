@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685628"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772204"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL 数据仓库商业智能合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。  本文重点介绍了支持 Azure SQL 数据仓库的官方商业智能（BI）解决方案的 Microsoft 合作伙伴公司。
 
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
-| 合作伙伴 | 说明 | 网站/产品链接 |
+| 合作伙伴 | Description | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Birst][1] |**Birst**<br>Birst 通过两者虚拟化 BI 实例的网络将整个组织连接到共享的通用分析结构之上|[产品页][birst_website]<br>[Azure 市场][birst_marketplace]<br> |
 | ![ClearStory Data][2] |**ClearStory 数据（连续业务见解）**<br>ClearStory Data 能够快速分析 SQL 数据仓库中存储的不同数据。 ClearStory 的基于 Spark 的集成式平台和分析应用程序可以加速数据访问并协调不同的数据集。 它们可让业务用户进行快速协作探索，以及独自获得见解。 |[产品页][clearstory_website]<br> |
@@ -87,7 +87,7 @@ ms.locfileid: "73685628"
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

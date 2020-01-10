@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595394"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750125"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -47,7 +47,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 ### <a name="features-to-secure-the-azure-platform"></a>用于保护 Azure 平台的功能
 以下功能是你可以查看的功能，可确保以安全的方式管理 Azure 平台。 提供了一些链接，进一步向下钻取 Microsoft 如何解决四个方面的客户信任问题：安全平台、隐私 & 控件、合规性和透明度。
 
-| [安全平台](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [安全平台](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[遵从性](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [安全开发周期](https://www.microsoft.com/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
@@ -80,8 +80,8 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，该服务还会向用户发送电子邮件。 Application Insight 就是这样因其有助于实现保密性、完整性和可用性安全三元素的可用性而成为有价值的安全工具。
 
-### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](../../azure-monitor/platform/activity-logs-overview.md)）和每个单独的 Azure 资源（[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
+### <a name="azure-monitor"></a>Azure 监视器
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](../../azure-monitor/platform/platform-logs-overview.md)）和每个单独的 Azure 资源（[诊断日志](../../azure-monitor/platform/platform-logs-overview.md)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 [Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics/)–除了 Azure 资源之外，还为本地和第三方基于云的基础结构（例如 AWS）提供 IT 管理解决方案。 可以将 Azure Monitor 中的数据直接路由到 Azure Monitor 日志，以便在一个位置查看整个环境的指标和日志。
@@ -179,7 +179,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便会对从另一个域对服务发出的经过正确验证的请求进行评估，以根据指定的规则确定是否允许该请求。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 本部分提供了关于 Azure 网络安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="network-layer-controls"></a>网络层控制
@@ -345,12 +345,12 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 | 免费/常用功能     | 基本功能    |高级 P1 功能 |高级 P2 功能 | Azure Active Directory Join – 仅适用于 Windows 10 的相关功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Directory 对象](../../active-directory/active-directory-whatis.md)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](../../active-directory/active-directory-whatis.md)，[单一登录（SSO）](../../active-directory/active-directory-whatis.md)，[云用户的自助密码更改](../../active-directory/active-directory-whatis.md)，[连接（同步引擎，将本地目录扩展到 Azure Active Directory）](../../active-directory/active-directory-whatis.md)、[安全/使用情况报告](../../active-directory/active-directory-whatis.md)       |   [基于组的访问管理/预配](../../active-directory/active-directory-whatis.md)，[云用户的自助服务密码重置](../../active-directory/active-directory-whatis.md)，[公司品牌（登录页/访问面板自定义）](../../active-directory/active-directory-whatis.md)，[应用程序代理](../../active-directory/active-directory-whatis.md)， [SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助服务组和应用管理/自助应用程序添加件/动态组](../../active-directory/active-directory-whatis.md)，[自助密码重置/更改/解锁，具有本地写回](../../active-directory/active-directory-whatis.md)、[多重身份验证（云和本地（MFA 服务器）））](../../active-directory/active-directory-whatis.md)， [Mim CAL + mim 服务器](../../active-directory/active-directory-whatis.md)， [Cloud App Discovery](../../active-directory/active-directory-whatis.md)，[连接运行状况](../../active-directory/active-directory-whatis.md)，[组帐户的自动密码滚动更新](../../active-directory/active-directory-whatis.md)|    [标识保护](../../active-directory/identity-protection/overview.md)， [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [将设备加入到 Azure AD、桌面 SSO、Microsoft Passport 用于 Azure AD、管理员 BitLocker 恢复](../../active-directory/active-directory-whatis.md)、 [MDM 自动注册、自助 bitlocker 恢复、通过 Azure AD 联接附加到 Windows 10 设备的其他本地管理员](../../active-directory/active-directory-whatis.md)|
+|   [Directory 对象](../../active-directory/active-directory-whatis.md)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](../../active-directory/active-directory-whatis.md)，[单一登录（SSO）](../../active-directory/active-directory-whatis.md)，[云用户的自助密码更改](../../active-directory/active-directory-whatis.md)，[连接（将本地目录扩展到 Azure Active Directory 的同步引擎）](../../active-directory/active-directory-whatis.md)，[安全/使用情况报告](../../active-directory/active-directory-whatis.md)       |   [基于组的访问管理/预配](../../active-directory/active-directory-whatis.md)，[云用户的自助服务密码重置](../../active-directory/active-directory-whatis.md)，[公司品牌（登录页/访问面板自定义）](../../active-directory/active-directory-whatis.md)，[应用程序代理](../../active-directory/active-directory-whatis.md)， [SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助组和应用管理/自助应用程序添加件/动态组](../../active-directory/active-directory-whatis.md)，[通过本地写回进行自助密码重置/更改/解锁](../../active-directory/active-directory-whatis.md)，[多重身份验证（云和本地（MFA 服务器））](../../active-directory/active-directory-whatis.md)， [MIM CAL + MIM 服务器](../../active-directory/active-directory-whatis.md)， [Cloud App Discovery](../../active-directory/active-directory-whatis.md)，[连接运行状况](../../active-directory/active-directory-whatis.md)，[组帐户的自动密码滚动更新](../../active-directory/active-directory-whatis.md)|    [标识保护](../../active-directory/identity-protection/overview.md)， [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [将设备加入到 Azure AD、桌面 SSO、Microsoft Passport 用于 Azure AD、管理员 BitLocker 恢复](../../active-directory/active-directory-whatis.md)、 [MDM 自动注册、自助 bitlocker 恢复、通过 Azure AD 联接附加到 Windows 10 设备的其他本地管理员](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/)是一种安全服务，它使用 Azure Active Directory 异常检测功能来提供合并视图，以提供风险检测和可能影响组织的潜在漏洞标识.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/)是一种安全服务，它使用 Azure Active Directory 异常检测功能来提供合并查看风险检测的视图和可能影响组织标识的潜在漏洞。
 
 - [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)让用户可以将 Active VM 加入一个域，且无需部署域控制器。 用户可使用他们的企业 Active Directory 凭证登录这些 VM，且可以无缝访问资源。
 

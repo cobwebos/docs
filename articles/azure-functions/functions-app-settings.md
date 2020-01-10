@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977261"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769534"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -43,11 +43,11 @@ ms.locfileid: "74977261"
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` 表示禁用针对函数应用根 URL 显示的默认登录页。 默认值为 `false`。
+`true` 表示禁用针对函数应用根 URL 显示的默认登录页。 默认为 `false`。
 
 |密钥|示例值|
 |---|------------|
-|AzureWebJobsDisableHomepage|是|
+|AzureWebJobsDisableHomepage|true|
 
 如果省略此应用设置或将其设置为 `false`，则会显示类似于以下示例的页来响应 URL `<functionappname>.azurewebsites.net`。
 
@@ -55,11 +55,11 @@ ms.locfileid: "74977261"
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` 表示在编译 .NET 代码时使用“发布”模式；`false` 表示使用“调试”模式。 默认值为 `true`。
+`true` 表示在编译 .NET 代码时使用“发布”模式；`false` 表示使用“调试”模式。 默认为 `true`。
 
 |密钥|示例值|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|是|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -108,6 +108,19 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 |密钥|示例值|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functions_v2_compatibility_mode"></a>函数\_V2\_兼容性\_模式
+
+此设置使函数应用能够在版本2.x 运行时上以版本 2. x 兼容模式运行。 仅当将[function app 从版本2.x 升级到运行时的版本](functions-versions.md#migrating-from-2x-to-3x)1.x 时遇到问题时才使用此设置。 
+
+>[!IMPORTANT]
+> 此设置仅作为短期解决方法，当你将应用程序更新为在版本2.x 上正确运行。 只要[支持1.x 运行时](functions-versions.md)，就支持此设置。 如果在不使用此设置的情况下遇到阻止应用在版本2.x 上运行的问题，请[报告你的问题](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
+
+要求[函数\_扩展\_版本](functions-app-settings.md#functions_extension_version)设置为 `~3`。
+
+|密钥|示例值|
+|---|------------|
+|函数\_V2\_兼容性\_模式|true|
 
 ## <a name="functions_worker_process_count"></a>函数\_WORKER\_进程\_计数
 
@@ -176,19 +189,19 @@ _仅限 Windows。_
 
 默认情况下，Functions 代理将使用快捷方式从代理直接将 API 调用发送到同一 Function App 中的函数，而不是创建新的 HTTP 请求。 此设置让你能够禁用该行为。
 
-|密钥|Value|描述|
+|密钥|值|Description|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中的函数的后端 URL 的调用将不再直接发送到该函数，而是定向回 Function App 的 HTTP 前端|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 具有指向 Function App 中的函数的后端 URL 的调用将直接转发到该函数|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地 Function App 中某个函数的后端 URL 的调用将不再直接发送到该函数，并将改回定向回 Function App 的 HTTP 前端。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 使用指向本地 Function App 中某个函数的后端 URL 的调用将直接转发到该函数|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
 此设置控制 %2F 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|密钥|Value|描述|
+|密钥|值|Description|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数会将其解码。 `example.com/api%2ftest` 将成为 `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|包含编码斜杠的路由参数会将其解码。 `example.com/api%2ftest` 将成为 `example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|此选项为默认行为。 所有路由参数在传递时将保持不变|
 
 ### <a name="example"></a>示例
@@ -210,7 +223,7 @@ _仅限 Windows。_
 ```
 |URL 解码|输入|输出|
 |-|-|-|
-|是|myfunction.com/test%2fapi|example.com/test/api
+|true|myfunction.com/test%2fapi|example.com/test/api
 |false|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 

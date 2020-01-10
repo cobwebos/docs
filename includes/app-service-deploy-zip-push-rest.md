@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954058"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769654"
 ---
 ## <a name="rest"></a>使用 REST API 部署 ZIP 文件 
 
@@ -19,7 +19,7 @@ ms.locfileid: "68954058"
 
 ### <a name="with-curl"></a>使用 cURL
 
-以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<username>`、`<password>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
+以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<deployment_user>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
@@ -41,7 +41,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 此请求从已上传的 .zip 文件触发推送部署。 
 
-若要查看当前和之前的部署，请运行以下命令。 再次替换`<deployment-user>`、 `<deployment-password>`和`<app-name>`占位符。
+若要查看当前和之前的部署，请运行以下命令。 同样，请替换 `<deployment-user>`、`<deployment-password>`和 `<app-name>` 占位符。
 
 ```bash
 $username = "<deployment-user>"

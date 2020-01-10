@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 2e62708c98ac86354777cf1bdd93a3deff943b98
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
-ms.translationtype: HT
+ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665343"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747374"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
@@ -89,8 +89,13 @@ ms.locfileid: "75665343"
 7. 在 Azure AD 的 "**企业应用程序**" 中，会看到 " **Azure VPN** " 已列出。
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    
+8. 如果还没有正常运行的“点到站点”环境，请按照说明创建一个。 请参阅[创建点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)，以创建和配置使用本机 Azure 证书身份验证的点到站点 VPN 网关。 
 
-8. 通过运行以下命令在 VPN 网关上启用 Azure AD 身份验证，并确保修改命令以反映自己的环境：
+    > [!IMPORTANT]
+    > OpenVPN 不支持基本 SKU。
+
+9. 通过运行以下命令在 VPN 网关上启用 Azure AD 身份验证，并确保修改命令以反映自己的环境：
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
@@ -98,22 +103,22 @@ ms.locfileid: "75665343"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. 通过运行以下命令创建并下载配置文件。 更改-ResourceGroupName 和-Name 值，使其与你自己的值匹配。
+10. 通过运行以下命令创建并下载配置文件。 更改-ResourceGroupName 和-Name 值，使其与你自己的值匹配。
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-10. 运行这些命令后，会看到如下所示的结果。 将结果 URL 复制到浏览器以下载配置文件 zip 文件。
+11. 运行这些命令后，会看到如下所示的结果。 将结果 URL 复制到浏览器以下载配置文件 zip 文件。
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
 
-11. 提取已下载的 zip 文件。
+12. 提取已下载的 zip 文件。
 
-12. 浏览到解压缩的 "Azurevpn.bgpsettings.asn" 文件夹。
+13. 浏览到解压缩的 "Azurevpn.bgpsettings.asn" 文件夹。
 
-13. 记下 "azurevpnconfig" 文件的位置。 Azurevpnconfig 包含 VPN 连接的设置，可以直接导入 Azure VPN 客户端应用程序。 你还可以将此文件分发给需要通过电子邮件或其他方式进行连接的所有用户。 用户将需要有效的 Azure AD 凭据才能成功连接。
+14. 记下 "azurevpnconfig" 文件的位置。 Azurevpnconfig 包含 VPN 连接的设置，可以直接导入 Azure VPN 客户端应用程序。 你还可以将此文件分发给需要通过电子邮件或其他方式进行连接的所有用户。 用户将需要有效的 Azure AD 凭据才能成功连接。
 
 ## <a name="next-steps"></a>后续步骤
 

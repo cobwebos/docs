@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146846"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768548"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>通过本地数据网关连接到本地数据源
 
-本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 虽然安装的网关在所有这些服务中都是相同的，但 Azure Analysis Services 和逻辑应用都有一些额外的步骤。
+本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器以外，最新版本的网关还适用于 Azure 逻辑应用、Power BI、电源应用和电源自动化。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 虽然安装的网关在所有这些服务中都是相同的，但 Azure Analysis Services 和逻辑应用都有一些额外的步骤。
 
 对于 Azure Analysis Services，第一次使用网关进行设置的过程分为四个部分：
 
@@ -54,7 +54,7 @@ ms.locfileid: "73146846"
 
 下面是网关使用的完全限定的域名。
 
-| 域名 | 出站端口 | 描述 |
+| 域名 | 出站端口 | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |用于下载该安装程序的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |

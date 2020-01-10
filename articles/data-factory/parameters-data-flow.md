@@ -1,21 +1,20 @@
 ---
-title: Azure 数据工厂映射数据流参数
+title: 参数映射数据流
 description: 了解如何从数据工厂管道中参数化映射数据流
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/07/2020
+ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "72387532"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746124"
 ---
-# <a name="mapping-data-flow-parameters"></a>映射数据流参数
-
-
+# <a name="parameterizing-mapping-data-flows"></a>参数映射数据流
 
 在 Azure 数据工厂中映射数据流支持使用参数。 你可以在数据流定义中定义参数，然后可以在整个表达式中使用这些参数。 通过执行数据流活动，可以通过调用管道设置参数值。 有三个选项可用于设置数据流活动表达式中的值：
 
@@ -28,25 +27,33 @@ ms.locfileid: "72387532"
 > [!NOTE]
 > 若要使用管道控制流表达式，数据流参数的类型必须为 string。
 
-## <a name="create-parameters-in-mapping-data-flow"></a>在映射数据流中创建参数
+## <a name="create-parameters-in-a-mapping-data-flow"></a>在映射数据流中创建参数
 
-若要将参数添加到数据流，请单击 "数据流" 画布的空白部分以查看 "常规" 属性。 在 "设置" 窗格中，您将看到一个名为 "参数" 的选项卡。 单击 "新建" 按钮以生成新参数。 对于每个参数，您必须分配一个名称，选择一个类型，并根据需要设置默认值。
+若要将参数添加到数据流，请单击 "数据流" 画布的空白部分以查看 "常规" 属性。 在 "设置" 窗格中，将看到一个名为 "**参数**" 的选项卡。 选择 "**新建**" 生成新参数。 对于每个参数，您必须分配一个名称，选择一个类型，并根据需要设置默认值。
 
 ![创建数据流参数](media/data-flow/create-params.png "创建数据流参数")
 
-可以在任何数据流表达式中使用参数。 参数以 $ 开头并且是不可变的。 您将在 "参数" 选项卡下的 "表达式生成器" 中找到可用参数的列表。
+## <a name="use-parameters-in-a-mapping-data-flow"></a>在映射数据流中使用参数 
+
+可以在任何数据流表达式中引用参数。 参数以 $ 开头并且是不可变的。 你将在 "**参数**" 选项卡下的 "表达式生成器" 中找到可用参数的列表。
 
 ![数据流参数表达式](media/data-flow/parameter-expression.png "数据流参数表达式")
 
-## <a name="use-parameters-in-your-data-flow"></a>在数据流中使用参数
+可以通过选择 "**新建参数**" 并指定 "名称" 和 "类型" 来快速添加其他参数。
 
-* 您可以使用转换表达式中的参数值。 您可以在 "表达式生成器" 的 "参数" 选项卡下找到参数列表。 ![使用数据流参数](media/data-flow/params9.png "Use 数据流参数 ")
+![数据流参数表达式](media/data-flow/new-parameter-expression.png "数据流参数表达式")
 
-* 参数还用于为源和接收器转换设置配置动态值。 单击 "可配置" 字段内部时，将显示 "添加动态上下文" 链接。 单击此处将转到表达式生成器，可在其中使用参数来使用动态值。 ![数据流动态内容](media/data-flow/params6.png "Data flow 动态内容 ")
+### <a name="passing-in-a-column-name-as-a-parameter"></a>作为参数传入列名
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>设置管道中的映射数据流参数
+常见的模式是将列名作为参数值传入。 若要引用与参数关联的列，请使用 `byName()` 函数。 请记住使用强制转换函数（如 `toString()`）将列强制转换为其相应的类型。
 
-创建带参数的数据流后，可以使用 "执行数据流" 活动从管道中执行它。 将活动添加到管道画布后，会在活动的 "参数" 选项卡中显示可用的数据流参数。
+例如，如果想要根据参数 `columnName`映射字符串列，则可以添加一个等于 `toString(byName($columnName))`的派生列转换。
+
+![作为参数传入列名](media/data-flow/parameterize-column-name.png "作为 language 传入列名")
+
+## <a name="assign-parameter-values-from-a-pipeline"></a>从管道分配参数值
+
+创建带参数的数据流后，可以使用 "执行数据流" 活动从管道中执行它。 将活动添加到管道画布后，会在活动的 "**参数**" 选项卡中看到可用的数据流参数。
 
 ![设置数据流参数](media/data-flow/parameter-assign.png "设置数据流参数")
 

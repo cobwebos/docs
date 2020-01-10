@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: b101fd30ddbdbf0f8fdf6e02394cb10b9af5f4b0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
-ms.translationtype: HT
+ms.openlocfilehash: a5ed91cef6e49fcb71c35f2262479be45a018651
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666357"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754302"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Azure 安全中心 Vm 和服务器的威胁检测
 
@@ -41,7 +41,7 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
     但是，通过使用内存分析，可以检测到这种攻击。 通过分析故障转储中的内存，安全中心可以检测到攻击所使用的技术。 例如，攻击可能试图利用软件中的漏洞、访问机密数据以及偷偷在受损的计算机中保持不变。 安全中心执行此操作时，对主机性能的影响最小。
 
-    有关故障转储分析警报的列表，请参阅警报的[引用表](alerts-reference.md#alerts-crashdump)。
+    有关故障转储分析警报的详细信息，请参阅[警报的引用表](alerts-reference.md#alerts-windows)。
 
 * **Fileless 攻击检测** <a name="windows-fileless"></a> -Fileless 攻击定向到终结点很常见。 为了避免检测，fileless 攻击会将恶意有效负载注入内存。 攻击者负载会在遭到入侵的进程中保持不变，并执行各种恶意活动。
 
@@ -49,7 +49,7 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
     它找到了利用、代码注入和恶意负载执行的证据。 Fileless 攻击检测生成详细的安全警报，以加速警报会审、相关和下游响应时间。 此方法补充基于事件的 EDR 解决方案，提供更高的检测范围。
 
-    有关 fileless 攻击检测警报的列表，请参阅警报的[引用表](alerts-reference.md#alerts-filelessattackdetect)。
+    有关 fileless 攻击检测警报的详细信息，请参阅[警报的引用表](alerts-reference.md#alerts-windows)。
 
 > [!NOTE]
 > 可以通过下载[Azure 安全中心操作手册：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)来模拟 Windows 警报。

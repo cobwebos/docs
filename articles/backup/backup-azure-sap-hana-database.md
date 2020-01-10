@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496962"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753964"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -30,11 +30,60 @@ SAP HANA 数据库是需要低恢复点目标（RPO）和长期保留的关键�
 
 ### <a name="set-up-network-connectivity"></a>设置网络连接
 
-对于所有操作，SAP HANA VM 虚拟机需要与 Azure 公共 IP 地址建立连接。 在未建立连接的情况下，VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）无法正常执行。 通过允许访问 Azure 数据中心 IP 范围建立连接：
+对于所有操作，SAP HANA VM 需要连接到 Azure 公共 IP 地址。 VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）在未连接到 Azure 公共 IP 地址的情况下失败。
 
-* 可以下载 Azure 数据中心的 [IP 地址范围](https://www.microsoft.com/download/details.aspx?id=41653)，然后允许访问这些 IP 地址。
-* 如果使用的是网络安全组 (NSG)，则可以使用 AzureCloud [服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)来允许访问所有 Azure 公共 IP 地址。 可以使用 [Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) 修改 NSG 规则。
-* 应将端口 443 添加到允许列表，因为传输是通过 HTTPS 进行的。
+使用以下选项之一建立连接：
+
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>允许 Azure 数据中心 IP 范围
+
+此选项允许下载的文件中的[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组（NSG），请使用 Set-azurenetworksecurityrule cmdlet。 如果安全收件人列表仅包含特定于区域的 Ip，则还需要更新安全收件人列表以启用身份验证 Azure Active Directory （Azure AD）服务标记。
+
+#### <a name="allow-access-using-nsg-tags"></a>允许使用 NSG 标记进行访问
+
+如果使用 NSG 来限制连接，则应使用 AzureBackup service 标记允许对 Azure 备份进行出站访问。 此外，还应允许通过使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)进行身份验证和数据传输。 这可以通过 Azure 门户或通过 PowerShell 来完成。
+
+使用门户创建规则：
+
+  1. 在 "**所有服务**" 中，请参阅 "**网络安全组**" 并选择 "网络安全组"。
+  2. 选择 "**设置**" 下的 "**出站安全规则**"。
+  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如 "[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)" 中所述。 确保选项**Destination**设置为**服务标记**，**目标服务标记**设置为**AzureBackup**。
+  4. 单击 "**添加**" 以保存新创建的出站安全规则。
+
+使用 PowerShell 创建规则：
+
+ 1. 添加 Azure 帐户凭据并更新国家/地区云<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. 选择 NSG 订阅<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. 选择 NSG<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. 为 Azure 备份服务标记添加允许出站规则<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. 为存储服务标记添加允许出站规则<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. Add allow AzureActiveDirectory service 标记的出站规则<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. 保存 NSG<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**允许使用 Azure 防火墙标记进行访问**。 如果使用的是 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
+
+**部署 HTTP 代理服务器来路由流量**。 在 Azure VM 上备份 SAP HANA 数据库时，VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 Backup extension 还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+
+连接选项包括以下优点和缺点：
+
+**选项** | **优点** | **缺点**
+--- | --- | ---
+允许 IP 范围 | 无额外成本 | 管理复杂，因为 IP 地址范围随时间而变化 <br/><br/> 提供对整个 Azure 的访问权限，而不只是 Azure 存储空间
+使用 NSG 服务标记 | 随着范围更改的自动合并，更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可用于 Nsg <br/><br/> 提供对整个服务的访问权限
+使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 Fqdn，因此更易于管理 | 仅可用于 Azure 防火墙
+使用 HTTP 代理 | 允许通过存储 Url 在代理中进行精细控制 <br/><br/> 对 Vm 进行单点 internet 访问 <br/><br/> 不受 Azure IP 地址更改的限制 | 使用代理软件运行 VM 的额外成本
 
 ## <a name="onboard-to-the-public-preview"></a>加入公共预览版
 

@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792980"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771557"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
@@ -25,7 +25,7 @@ ms.locfileid: "74792980"
 
 下面是本方案的用例： 
 
-一个著名的医疗保健组织与我们合作开发一个使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户与 Salesforce 之间发送约会记录。 我们需要对所有患者记录使用 [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 标准。
+一个著名的医疗保健组织与我们合作开发一个使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户与 Salesforce 之间发送约会记录。 我们需要对所有患者记录使用 [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) 标准。
 
 该项目具有两个主要要求：  
 
@@ -90,7 +90,7 @@ ms.locfileid: "74792980"
 ```
 
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
 
@@ -122,7 +122,7 @@ ms.locfileid: "74792980"
 
 以下逻辑应用代码示例演示如何处理日志记录。
 
-#### <a name="log-entry"></a>日志条目
+#### <a name="log-entry"></a>日志项
 
 下面是用于插入日志条目的逻辑应用源代码。
 
@@ -468,7 +468,7 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 
 前面代码示例中的表达式检查“Create_NewPatientRecord”的状态是否为“Failed”。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
 * 可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。

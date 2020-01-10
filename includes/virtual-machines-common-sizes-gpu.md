@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935763"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751599"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
@@ -93,22 +93,34 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-cent
 
 *支持 RDMA
 
-## <a name="ndv2-series-preview"></a>NDv2 系列（预览）
+## <a name="updated-ndv2-series-preview"></a>更新的 NDv2 系列（预览）
 
 高级存储：支持
 
 高级存储缓存：支持
 
-无限宽带：不支持
+不受支持：支持
 
-NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC、AI 和机器学习工作负荷方面的需求。 它由8个 NVIDIA Tesla V100 NVLINK 互连 Gpu 和 40 Intel 强白金8168（Skylake）核心和 672 GiB 系统内存提供支持。 NDv2 实例为利用 Cuda、TensorFlow、Pytorch、Caffe 的 HPC 和 AI 以及其他框架提供卓越的 FP32 和 FP64 性能。
+NDv2 系列虚拟机是 GPU 系列的新补充，旨在满足最苛刻的 GPU 加速 AI、机器学习、模拟和 HPC 工作负荷的需求。 
 
-[注册并在预览期访问这些虚拟机](https://aka.ms/ndv2signup)。
+NDv2 由8个 NVIDIA Tesla V100 NVLINK 连接的 Gpu 提供支持，其中每个 Gpu 都具有 32 GB 的 GPU 内存。 每个 NDv2 VM 还具有40非超线程的 Intel 至强白金8168（Skylake）核心和 672 GiB 的系统内存。 
+
+NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷提供卓越的性能，并提供许多支持 GPU 加速的 AI、ML 和分析工具，如 TensorFlow、Pytorch、Caffe、RAPIDS 和其他协作. 
+
+极其重要的是，NDv2 是为计算密集型向上扩展（每个虚拟机使用8个 Gpu）和向外扩展（跨多个 vm 共同工作）而构建的。 NDv2 系列现在支持100千兆位的工作端网络（类似于 HB-ACCT-WC 系列 HPC VM 中提供的网络），以允许针对并行方案的高性能群集，其中包括针对 AI 和 ML 的分布式培训。 此后端网络支持所有主要的不受支持的协议（包括 NVIDIA 的 NCCL2 库使用的协议），从而允许对 Gpu 进行无缝群集。
+
+> 在 ND40rs_v2 VM 上[启用 "允许](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband)" 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
+
+> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用[第2代 vm](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)和 marketplace 映像。 
+
+> [注册以请求提前访问 NDv2 虚拟机预览版。](https://aka.ms/AzureNDrv2Preview)
+
+> 请注意：具有 16 GB 的每个 GPU 内存的 ND40s_v2 不再可供预览，已被更新的 ND40rs_v2 取代。
 <br>
 
 | 大小 | vCPU | 内存：GiB | 临时存储（SSD）： GiB | GPU | GPU 内存： GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网络带宽 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB （NVLink） | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND 系列
 

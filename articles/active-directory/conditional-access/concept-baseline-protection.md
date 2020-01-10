@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425016"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767562"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基准策略？
 
@@ -25,7 +25,7 @@ ms.locfileid: "75425016"
 管理自定义条件访问策略需要 Azure AD Premium 许可证。
 
 > [!IMPORTANT]
-> 正在弃用基准策略。 有关详细信息，请参阅[Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
+> 不推荐使用基线策略。 有关详细信息，请参阅[Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
 
 ## <a name="baseline-policies"></a>基线策略
 

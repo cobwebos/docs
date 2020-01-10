@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
-ms.translationtype: HT
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667535"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768973"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -26,8 +26,8 @@ ms.locfileid: "75667535"
 > * [注册触发器和绑定扩展。](#register-extensions)
 > * [定义存储和其他连接。](#local-settings-file)
 > * [从触发器和语言特定的模板创建函数。](#create-func)
-> * [在本地运行函数](#start)
-> * [将项目发布到 Azure](#publish)
+> * [在本地运行函数。](#start)
+> * [将项目发布到 Azure。](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools 版本
 
@@ -56,7 +56,7 @@ ms.locfileid: "75667535"
 
 1. 安装 [Node.js]，其中包括 npm。
     - 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
-    - 对于版本2.x 的工具，仅支持节点10和更高版本。
+    - 对于版本1.x 的工具，仅支持 node.js 10 和更高版本。
 
 1. 安装 Core Tools 包：
 
@@ -234,7 +234,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
   选择存储帐户，在 "**设置**" 中选择 "**访问密钥**"，然后复制其中一个**连接字符串**值。
   从 Azure 门户中复制连接字符串 ![](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
+- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在**资源管理器**中，展开订阅，展开 "**存储帐户**"，选择存储帐户，然后复制主连接字符串或辅助连接字符串。
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
@@ -352,7 +352,7 @@ func host start
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需的参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)来启用语言辅助角色调试。 仅限版本 2.x。 |
-| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
+| **`--nodeDebugPort -n`** | 要使用的 node.js 调试器的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
@@ -371,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->在本地运行时，不会对 HTTP 终结点强制执行身份验证。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook.md#authorization-keys)一文。
+>在本地运行时，不会对 HTTP 终结点强制执行授权。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook.md#authorization-keys)一文。
 
 ### <a name="passing-test-data-to-a-function"></a>将测试数据传递给函数
 
@@ -484,7 +484,7 @@ func azure functionapp publish <FunctionAppName>
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
-| **`--build-native-deps`** | 发布 python 函数应用时跳过生成 .wheels 文件夹。 |
+| **`--build-native-deps`** | 发布 Python 函数应用时跳过生成车轮文件夹。 |
 | **`--build`**<br/>**`-b`** | 在部署到 Linux 函数应用时执行生成操作。 接受： `remote` 和 `local`。 |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
