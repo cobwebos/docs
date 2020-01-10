@@ -1,18 +1,14 @@
 ---
 title: Kubernetes 监视 Azure Monitor 容器 |Microsoft Docs
 description: 本文介绍如何使用容器 Azure Monitor 来查看和分析 Kubernetes 群集的性能。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872972"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731010"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>利用容器 Azure Monitor 来监视 Kubernetes 群集性能
 
@@ -24,17 +20,11 @@ ms.locfileid: "74872972"
 
 Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资源组部署的、运行 Linux 和 Windows Server 2019 的所有受监视 Kubernetes 群集的运行状况状态。 它显示在不受解决方案监视的所有环境中发现的群集。 你可以立即了解群集运行状况，并在此处向下钻取到 "节点和控制器性能" 页，或导航以查看群集的性能图表。 对于发现并识别为不受监视的 AKS 群集，可以随时对其启用监视。 
 
-与 Linux 群集相比，使用容器 Azure Monitor 来监视 Windows Server 群集的主要区别如下：
-
-- 内存 RSS 指标不适用于 Windows 节点和容器。
-- 磁盘存储容量信息不适用于 Windows 节点。
-- Windows 容器日志除外，提供实时日志支持。
-- 仅监视 pod 环境，而不监视 Docker 环境。
-- 对于预览版本，最多支持30个 Windows Server 容器。 此限制不适用于 Linux 容器。 
+概述一文[中介绍了](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)使用容器 Azure Monitor 容器监视 Windows Server 群集的主要区别。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。 
+登录 [Azure 门户](https://portal.azure.com)。 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>从 Azure Monitor 获得的多群集视图
 
@@ -127,7 +117,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 在指标资源管理器中，可以查看容器 Azure Monitor 的聚合节点和 pod 利用率指标。 下表总结了详细信息，以帮助你了解如何使用指标图表来可视化容器指标。
 
-|命名空间 | 指标 | 描述 | 
+|命名空间 | 度量值 | Description | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | 整个群集中 CPU 使用率的聚合度量值。 它是 CPU 核心拆分为1000单位（milli = 1000）。 用于确定在多个应用程序可能使用一个内核的容器中内核的使用情况。| 
@@ -199,7 +189,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看 "**节点**" 选项卡时显示的信息。
 
-| 柱形图​​ | 描述 | 
+| 柱形图​​ | Description | 
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -228,7 +218,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看控制器时显示的信息。
 
-| 柱形图​​ | 描述 | 
+| 柱形图​​ | Description | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器在运行完成后的汇总状态，状态为 *"正常"、"* 已*终止*" *、* "*已停止*" 或 "已*暂停*"。 如果容器正在运行，但状态未正确显示，或者代理未获取该状态，且未响应30分钟以上，则状态为 "*未知*"。 下表提供了状态图标的其他详细信息。|
@@ -265,7 +255,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看容器时显示的信息。
 
-| 柱形图​​ | 描述 | 
+| 柱形图​​ | Description | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793306"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732195"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将项目添加到 integration service 环境（ISE）
 
-创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等项目，以便它们可以访问 Azure 虚拟网络中的资源。
+创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等项目，以便它们可以访问 Azure 虚拟网络中的资源。 例如，在创建 ISE 后变为可用的托管 ISE 连接器不会自动显示在逻辑应用设计器中。 在可以使用这些 ISE 连接器之前，必须手动[将这些连接器添加并部署到 ISE](#add-ise-connectors-environment) ，使其显示在逻辑应用设计器中。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -84,17 +84,17 @@ ms.locfileid: "74793306"
 
 ## <a name="add-ise-connectors"></a>添加 ISE 连接器
 
-可以添加可在 ISE 中使用但未部署在 ISE 中的 Microsoft 托管连接器。
+创建 ISE 之后可用的 Microsoft 托管连接器不会自动显示在逻辑应用设计器上的连接器选取器中。 在可以使用这些 ISE 连接器之前，必须手动将这些连接器添加并部署到 ISE，使其显示在逻辑应用设计器中。
 
 1. 在 ISE 菜单上的 "**设置**" 下，选择 "**托管连接器**"。 在工具栏中选择“添加”。
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 如果需要可用的连接器，请选择该连接器，然后选择 "**创建**"。
+1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”。
 
-   此列表仅显示符合条件但未部署在 ISE 中的连接器。 你的 ISE 中已经部署的连接器无法选择。
+   ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![选择合格的连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   仅有资格但尚未部署到 ISE 的 ISE 连接器可供你选择。 你的 ISE 中已经部署的连接器无法选择。
 
 <a name="create-custom-connectors-environment"></a>
 

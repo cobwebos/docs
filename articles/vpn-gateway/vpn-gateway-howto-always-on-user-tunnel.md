@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 099ed3c3c0ac2abe034388849385a45b44b32b34
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: bff2ed48a78bfbae984dea5e5474971817023bc6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145950"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75729315"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>配置 Always On VPN 用户隧道
 
@@ -99,9 +99,10 @@ Always On VPN 连接包括两种类型的隧道：
    ```
 1. 复制以下文本，并将其作为*VPNProfile*保存在与*usercert*相同的文件夹中。 编辑以下文本以匹配你的环境：
 
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<PrefixSize>32</PrefixSize>     <= Subnet mask`
 
    ```
     <VPNProfile>  

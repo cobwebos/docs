@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935051"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732376"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>使用 Azure 流分析优化处理
 
@@ -21,11 +21,11 @@ ms.locfileid: "72935051"
 如果以下情况，可能无法使用[并行](stream-analytics-parallelization.md)化：
 
 * 不控制输入流的分区键。
-* 在以后需要合并的多个分区中的源 "sprays" 输入。 
-
-## <a name="how-to-repartition"></a>如何重新分区
+* 在以后需要合并的多个分区中的源 "sprays" 输入。
 
 当处理未根据自然输入方案分片的流上的数据（如事件中心的**PartitionId** ）时，需要重新分区或重新组织。 重新分区时，可以单独处理每个分片，这允许你以线性方式横向扩展流式处理管道。
+
+## <a name="how-to-repartition"></a>如何重新分区
 
 若要重新分区，请**在查询**中的**PARTITION BY**语句后使用关键字。 下面的示例按**DeviceID**将数据分区为10的分区计数。 使用**DeviceID**进行哈希运算可确定哪个分区应接受哪个子流。 如果输出支持分区写入，则为每个分区流单独刷新数据，其中包含10个分区。
 

@@ -1,18 +1,14 @@
 ---
 title: 为容器 Azure Monitor 创建性能警报 |Microsoft Docs
 description: 本文介绍如何根据 Azure Monitor 为容器创建自定义警报，以了解内存和 CPU 利用率的日志查询。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841619"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730919"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何为容器的 Azure Monitor 中的性能问题设置警报
 
@@ -287,14 +283,15 @@ InsightsMetrics
 >以下为容器资源利用率创建警报规则的过程要求你切换到新的日志警报 API，如[日志警报的交换机 API 首选项](../platform/alerts-log-api-switch.md)中所述。
 >
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 从左侧窗格中选择 "**监视器**"。 在 "**见解**" 下，选择 "**容器**"。
-3. 在 "**监视的群集**" 选项卡上，从列表中选择一个分类。
-4. 在左侧窗格中的 "**监视**" 下，选择 "**日志**" 以打开 Azure Monitor 日志 "页。 使用此页可以编写和执行 Azure Log Analytics 查询。
-5. 在 "**日志**" 页上，选择 " **+ 新建警报规则**"。
-6. 在 "**条件**" 部分中，选择 "**只要自定义日志搜索 \<逻辑未定义 >** 预定义的自定义日志条件"。 **自定义日志搜索**信号类型是自动选择的，因为我们是直接从 "Azure Monitor 日志" 页创建警报规则。  
-7. 将之前提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 "**搜索查询**" 字段中。
-8. 按如下所示配置警报：
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，搜索并选择 " **Log Analytics 工作区**"。
+3. 在 Log Analytics 工作区列表中，选择支持容器 Azure Monitor 的工作区。 
+4. 在左侧窗格中，选择 "**日志**" 以打开 "Azure Monitor 日志" 页。 使用此页可以编写和执行 Azure Log Analytics 查询。
+5. 在 "**日志**" 页上，将前面提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 "**搜索查询**" 字段，然后选择 "**运行**" 以验证结果。 如果不执行此步骤，则不能选择 " **+ 新建警报**" 选项。
+6. 选择 " **+ 新建警报**" 以创建日志警报。
+7. 在 "**条件**" 部分中，选择 "**只要自定义日志搜索 \<逻辑未定义 >** 预定义的自定义日志条件"。 **自定义日志搜索**信号类型是自动选择的，因为我们是直接从 "Azure Monitor 日志" 页创建警报规则。  
+8. 将之前提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 "**搜索查询**" 字段中。
+9. 按如下所示配置警报：
 
     1. 从“基于”下拉列表中选择“指标度量”。 指标度量为查询中每个对象创建一个警报，该警报的值高于指定的阈值。
     1. 对于 "**条件**"，选择 "**大于**"，然后输入**75**作为 CPU 和内存使用率警报的初始基线**阈值**。 对于 "磁盘空间不足" 警报，请输入**90**。 或者输入满足条件的其他值。
@@ -302,11 +299,11 @@ InsightsMetrics
     1. 若要为容器 CPU 或内存使用率配置警报，请在 "**聚合**为" 下选择 "**容器**"。 若要配置群集节点低磁盘警报，请选择 " **ClusterId**"。
     1. 在 "**基于计算**依据" 部分中，将 "**周期**" 值设置为**60 分钟**。 此规则将每5分钟运行一次，并从当前时间返回最近一小时内创建的记录。 将时间段设置为宽窗口帐户，以获得潜在的数据延迟。 它还可确保查询返回数据，以避免警报从不触发的假负。
 
-9. 选择 **"完成"** 以完成警报规则。
-10. 在 "**警报规则名称**" 字段中输入一个名称。 指定提供警报详细信息的**说明**。 然后从提供的选项中选择适当的严重性级别。
-11. 若要立即激活警报规则，请接受 "**创建时启用规则**" 的默认值。
-12. 选择现有**操作组**或创建新组。 此步骤可确保每次触发警报时都执行相同的操作。 根据 IT 或 DevOps 操作团队管理事件的方式进行配置。
-13. 选择 "**创建警报规则**" 以完成警报规则。 该警报会立即开始运行。
+10. 选择 **"完成"** 以完成警报规则。
+11. 在 "**警报规则名称**" 字段中输入一个名称。 指定提供警报详细信息的**说明**。 然后从提供的选项中选择适当的严重性级别。
+12. 若要立即激活警报规则，请接受 "**创建时启用规则**" 的默认值。
+13. 选择现有**操作组**或创建新组。 此步骤可确保每次触发警报时都执行相同的操作。 根据 IT 或 DevOps 操作团队管理事件的方式进行配置。
+14. 选择 "**创建警报规则**" 以完成警报规则。 该警报会立即开始运行。
 
 ## <a name="next-steps"></a>后续步骤
 

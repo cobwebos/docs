@@ -6,17 +6,14 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671467"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728746"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>为应用服务和 Azure Functions 使用 Key Vault 引用
-
-> [!NOTE] 
-> Key Vault 引用目前在 Linux 消耗计划中不可用。
 
 本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/key-vault-overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
 
@@ -41,7 +38,7 @@ ms.locfileid: "74671467"
 Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 `{referenceString}` 将替换为下述选项之一：
 
 > [!div class="mx-tdBreakAll"]
-> | 引用字符串                                                            | 描述                                                                                                                                                                                 |
+> | 引用字符串                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
@@ -190,7 +187,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
 
 1. 在门户中，导航到你的应用。
-2. 选择 "**诊断并解决问题**"。
+2. 选择“诊断和解决问题”。
 3. 选择 "**可用性和性能**"，然后选择 " **Web 应用"。**
 4. 查找**Key Vault 应用程序设置诊断**，并单击 "**详细信息**"。
 
@@ -199,6 +196,6 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 1. 在门户中，导航到你的应用。
 2. 导航到 "**平台功能"。**
-3. 选择 "**诊断并解决问题**"。
+3. 选择“诊断和解决问题”。
 4. 选择 "**可用性和性能**"，然后选择 "**函数应用关闭" 或 "报告错误"。**
 5. 单击 " **Key Vault 应用程序设置**" "诊断"。

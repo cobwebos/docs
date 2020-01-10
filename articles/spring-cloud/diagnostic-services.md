@@ -4,22 +4,35 @@ description: 了解如何分析 Azure 春季云中的诊断数据
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 01/06/2020
 ms.author: jeconnoc
-ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607855"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730036"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
 使用 Azure 春季 Cloud 的诊断功能，可以使用以下任何服务分析日志和指标：
 
-* 使用 Azure Log Analytics，其中数据立即写入，无需先将数据写入存储。
-* 将它们保存到存储帐户进行审核或手动检查。 您可以指定保留时间（天）。
-* 将它们流式传输到事件中心，以供第三方服务或自定义分析解决方案引入。
+* 使用 Azure Log Analytics，其中数据写入到 Azure 存储。 将日志导出到 Log Analytics 时存在延迟。
+* 将日志保存到存储帐户进行审核或手动检查。 您可以指定保留时间（天）。
+* 将日志流式传输到事件中心，以供第三方服务或自定义分析解决方案引入。
+
+选择要监视的日志类别和指标类别。
+
+## <a name="logs"></a>日志
+
+|日志 | Description |
+|----|----|
+| **ApplicationConsole** | 所有客户应用程序的控制台日志。 | 
+| **SystemLogs** | 目前，只有此类别中的 "[春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) " 日志。 |
+
+## <a name="metrics"></a>度量值
+
+有关度量值的完整列表，请参阅[春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 
 若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)。 
 
@@ -38,17 +51,44 @@ ms.locfileid: "73607855"
 > [!NOTE]
 > 发出日志或指标后，或在存储帐户、事件中心或 Log Analytics 中出现日志或指标时，可能会出现长达15分钟的间隔。
 
-## <a name="view-the-logs"></a>查看日志
+## <a name="view-the-logs-and-metrics"></a>查看日志和指标
+有多种方法可以查看日志和指标，如以下标题中所述。
+
+### <a name="use-logs-blade"></a>使用日志边栏选项卡
+
+1. 在 Azure 门户中，请切换到你的 Azure 春季云实例。
+1. 若要打开**日志搜索**窗格，请选择 "**日志**"。
+1. 在 "**日志**搜索" 框中
+   * 若要查看日志，请输入简单查询，例如：
+
+    ```sql
+    AppPlatformLogsforSpring
+    | limit 50
+    ```
+   * 若要查看指标，请输入简单查询，例如：
+
+    ```sql
+    AzureMetrics
+    | limit 50
+    ```
+1. 若要查看搜索结果，请选择 "**运行**"。
 
 ### <a name="use-log-analytics"></a>使用 Log Analytics
 
 1. 在 Azure 门户的左窗格中，选择 " **Log Analytics**"。
 1. 选择添加诊断设置时选择的 "Log Analytics" 工作区。
 1. 若要打开**日志搜索**窗格，请选择 "**日志**"。
-1. 在 "**日志**搜索" 框中，输入简单查询，如下所示：
+1. 在 "**日志**搜索" 框中，
+   * 若要查看日志，请输入简单查询，例如：
 
     ```sql
     AppPlatformLogsforSpring
+    | limit 50
+    ```
+    * 若要查看指标，请输入简单查询，例如：
+
+    ```sql
+    AzureMetrics
     | limit 50
     ```
 
@@ -60,6 +100,8 @@ ms.locfileid: "73607855"
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
+> [!NOTE]  
+> `==` 区分大小写，但 `=~` 不区分大小写。
 
 若要详细了解 Log Analytics 中使用的查询语言，请参阅[Azure Monitor 日志查询](../azure-monitor/log-query/query-language.md)。
 
@@ -87,9 +129,9 @@ ms.locfileid: "73607855"
 
 ## <a name="analyze-the-logs"></a>分析日志
 
-Azure Log Analytics 提供 Kusto，以便可以查询日志以进行分析。 若要快速了解如何使用 Kusto 查询日志，请查看[Log Analytics 教程](../azure-monitor/log-query/get-started-portal.md)。
+Azure Log Analytics 正在使用 Kusto 引擎运行，因此，你可以查询日志以进行分析。 若要快速了解如何使用 Kusto 查询日志，请查看[Log Analytics 教程](../azure-monitor/log-query/get-started-portal.md)。
 
-应用程序日志提供有关应用程序的运行状况、性能等的关键信息。 在下一部分中，可以借助一些简单的查询来了解应用程序的当前状态和过去状态。
+应用程序日志提供有关应用程序的运行状况、性能等的关键信息和详细日志。 在下一部分中，可以借助一些简单的查询来了解应用程序的当前状态和过去状态。
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>显示 Azure 春季云中的应用程序日志
 

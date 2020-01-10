@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 27c83bffe40fd80f87542ee4486ef90e684bd5a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/16/2019
+ms.openlocfilehash: f024659385a92df97b55e88ae217aa9e1e13d860
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931849"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732342"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
-对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用和隔离的环境，使用专用的存储和其他与公共或 "全局" 逻辑应用服务不同的资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。
+对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用的隔离环境，使用专用的存储和其他资源，这些资源独立于公共、"全局"、多租户逻辑应用服务。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 ISE 还提供自己的静态 IP 地址。 这些 IP 地址独立于公共多租户服务中的逻辑应用共享的静态 IP 地址。
 
 当你创建 ISE 时，Azure 会将此 ISE*注入*到 Azure 虚拟网络，然后将逻辑应用服务部署到你的虚拟网络中。 创建逻辑应用或集成帐户时，请选择你的 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。
 
@@ -68,7 +68,10 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 若要确保 ISE 可以访问，并且此 ISE 中的逻辑应用可以在虚拟网络中的子网之间进行通信，请[打开此表中的端口](#network-ports-for-ise)。 如果任何所需的端口不可用，ISE 将无法正常运行。
 
-* 如果你有多个 ISEs，而你的虚拟网络使用[Azure 防火墙](../firewall/overview.md)或[网络虚拟设备](../virtual-network/virtual-networks-overview.md#filter-network-traffic)，则可以[设置一个单一、出站、公共且可预测的 IP 地址](connect-virtual-network-vnet-set-up-single-ip-address.md)，以便与目标系统进行通信。 这样一来，就不必为目标中的每个 ISE 设置额外的防火墙入口。
+* 如果有多个 ISE 实例需要访问具有 IP 限制的其他终结点，请将[Azure 防火墙](../firewall/overview.md)或[网络虚拟设备](../virtual-network/virtual-networks-overview.md#filter-network-traffic)部署到虚拟网络中，并通过该防火墙或网络虚拟设备路由出站流量。 然后，可以[设置单一、出站、公共、静态和可预测的 IP 地址](connect-virtual-network-vnet-set-up-single-ip-address.md)，虚拟网络中的所有 ISE 实例都可以使用该地址与目标系统进行通信。 这样，就无需在每个 ISE 的目标系统上设置其他防火墙。
+
+   > [!NOTE]
+   > 如果你的方案需要限制需要访问的 IP 地址的数量，则可以将此方法用于单个 ISE。 考虑防火墙或虚拟网络设备的额外成本是否适合你的方案。 了解有关[Azure 防火墙定价](https://azure.microsoft.com/pricing/details/azure-firewall/)的详细信息。
 
 * 如果创建了新的 Azure 虚拟网络和子网而没有任何限制，则无需在虚拟网络中设置[网络安全组（nsg）](../virtual-network/security-overview.md#network-security-groups)来控制子网之间的流量。
 
@@ -84,14 +87,14 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 > [!IMPORTANT]
 > 源端口是暂时的，因此请确保将其设置为所有规则 `*`。
-> 对于子网中的内部通信，ISE 要求打开这些子网中的所有端口。
 
-| 用途 | Direction | 目标端口 | 源服务标记 | 目标服务标记 | 说明 |
+| 用途 | 方向 | 目标端口 | 源服务标记 | 目标服务标记 | 说明 |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
+| Intrasubnet 通信 | 入站和出站 | * | - | - | **重要提示**：若要在子网内的组件之间进行通信，请确保打开这些子网中的所有端口。 |
+| Intersubnet 通信 | 入站和出站 | 80、443 | VirtualNetwork | VirtualNetwork | 子网之间的通信 |
 | 从 Azure 逻辑应用通信 | 出站 | 80、443 | VirtualNetwork | Internet | 端口依赖于逻辑应用服务通信时所用的外部服务 |
 | Azure Active Directory | 出站 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
 | Azure 存储依赖项 | 出站 | 80、443 | VirtualNetwork | 存储空间 | |
-| Intersubnet 通信 | 入站和出站 | 80、443 | VirtualNetwork | VirtualNetwork | 子网之间的通信 |
 | 与 Azure 逻辑应用通信 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 调用逻辑应用中存在的任何请求触发器或 webhook 的计算机或服务的 IP 地址。 关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
 | 逻辑应用运行历史记录 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 从中查看逻辑应用的运行历史记录的计算机的 IP 地址。 尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
 | 连接管理 | 出站 | 443 | VirtualNetwork  | 应用服务 | |
@@ -129,16 +132,16 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
-   | 订阅 | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
+   | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
    | **Integration service 环境名称** | 是 | <*environment-name*> | ISE 名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）和句点（`.`）。 |
-   | 位置 | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
+   | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员（无 SLA）** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
    | **额外容量** | 高级： <br>是 <p><p>开发人员版： <br>不适用 | 高级： <br>0到10 <p><p>开发人员版： <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
-   | **访问终结点** | 是 | **内部**或**外部** | 用于 ISE 的访问终结点的类型，用于确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 终结点类型还会影响对逻辑应用运行历史记录中的输入和输出的访问。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
-   | 虚拟网络 | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要提示**：只有在创建 ISE 时*才*可以执行此注入。 |
+   | **访问终结点** | 是 | **内部**或**外部** | 要用于 ISE 的访问终结点的类型。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 <p><p>你的选择还会影响你可以查看和访问逻辑应用运行历史记录中的输入和输出的方式。 有关详细信息，请参阅[ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
+   | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要提示**：只有在创建 ISE 时*才*可以执行此注入。 |
    | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个*空*子网，以便在您的环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 |
    |||||
 
@@ -223,6 +226,9 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 1. 若要开始在 ISE 中创建逻辑应用和其他项目，请参阅[将项目添加到 integration service 环境](../logic-apps/add-artifacts-integration-service-environment-ise.md)。
 
+   > [!IMPORTANT]
+   > 创建 ISE 之后可用的托管 ISE 连接器不会自动显示在逻辑应用设计器上的连接器选取器中。 在可以使用这些 ISE 连接器之前，必须手动[将这些连接器添加到 ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) ，使其显示在逻辑应用设计器中。
+
 <a name="add-capacity"></a>
 
 ## <a name="add-ise-capacity"></a>添加 ISE 容量
@@ -254,6 +260,12 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
      1. 完成后，选择 "**添加**"。
 
 1. 完成自动缩放设置后，请保存所做的更改。
+
+## <a name="delete-ise"></a>删除 ISE
+
+删除不再需要的 ISE 或包含 ISE 的 Azure 资源组之前，请检查是否在包含这些资源的 Azure 资源组或 Azure 虚拟网络上没有策略或锁定，因为这些项可能会阻止删除。
+
+删除 ISE 之后，在尝试删除 Azure 虚拟网络或子网之前，可能需要等待最多9小时。
 
 ## <a name="next-steps"></a>后续步骤
 
