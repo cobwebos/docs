@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647843"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834987"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 
@@ -322,9 +322,10 @@ ms.locfileid: "75647843"
 |TempDB 最大数据大小（GB）|333|
 |存储类型|远程 SSD|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
-|最大数据 IOPS *|23040|
+|最大数据 IOPS *|12,800|
 |最大对数速率（MBps）|30|
 |最大并发工作线程数（请求数）|3600|
+|最大并发登录数|3600|
 |最大并发会话数|30,000|
 |副本数|第|
 |Multi-AZ|N/A|
@@ -448,21 +449,22 @@ ms.locfileid: "75647843"
 
 ### <a name="m-series-compute-generation-preview"></a>M 系列计算生成（预览）
 
-|计算大小|GP_M_128|
+|计算大小|BC_M_128|
 |:--- | --: |
 |计算的代|M 系列|
 |vCore 数|128|
-|内存 (GB)|3767|
+|内存 (GB)|3767.1|
 |列存储支持|是|
-|内存中 OLTP 存储 (GB)|481|
+|内存中 OLTP 存储 (GB)|1768|
 |最大数据大小 (GB)|4096|
 |最大日志大小 (GB)|2048|
 |TempDB 最大数据大小（GB）|4096|
 |存储类型|本地 SSD|
 |IO 延迟（近似）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|
-|最大数据 IOPS *|204800|
-|最大对数速率（MBps）|192|
-|最大并发工作线程数（请求数）|12800|
+|最大数据 IOPS *|160,000|
+|最大对数速率（MBps）|264|
+|最大并发工作线程数（请求数）|12,800|
+|最大并发登录数|12,800|
 |最大并发会话数|30000|
 |副本数|4|
 |Multi-AZ|是|

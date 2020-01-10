@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布将客户载入到 Azure 委派资源管理的托管服务产品。
-ms.date: 12/16/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453534"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834096"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -63,7 +63,7 @@ ms.locfileid: "75453534"
 |**这是专用计划吗？**     | 指示该 SKU 是专用还是公共 SKU。 默认值为“否”（即公共 SKU）。 如果保留此选择，则你的计划将不仅限于特定客户（或特定数量的客户）；发布公用计划后，无法再将其更改为专用计划。 要使此计划仅对特定客户可用，请选择“是”。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（最多 20,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。 有关详细信息，请参阅[专用 SKU 和计划](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)。  |
 
 > [!IMPORTANT]
-> 一旦某个计划作为公共计划发布，则不能将其更改为 "专用"。 若要控制哪些客户可以接受您的产品/服务和委托资源，请使用私有计划。 使用公用计划，您不能将可用性限制为特定客户或甚至是特定数量的客户（不过，如果您选择这样做，您可以完全停止销售计划）。 如果客户接受了产品/服务，则当前没有任何机制可拒绝或删除委派，但你始终可以联系客户并要求他们[删除你的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 一旦某个计划作为公共计划发布，则不能将其更改为 "专用"。 若要控制哪些客户可以接受您的产品/服务和委托资源，请使用私有计划。 使用公用计划，您不能将可用性限制为特定客户或甚至是特定数量的客户（不过，如果您选择这样做，您可以完全停止销售计划）。 仅当你在发布产品/服务时，如果你在将**角色定义**设置为 "[托管服务注册分配](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)" "角色 **"，则**可以在客户接受产品/服务后[删除对委派的访问权限](onboard-customer.md#remove-access-to-a-delegation)。 你还可以联系客户并要求他们[删除你的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 ### <a name="manifest-details"></a>清单详细信息
 
@@ -76,7 +76,10 @@ ms.locfileid: "75453534"
 
 然后，输入租户 ID。 这是与你组织的 Azure Active Directory 租户 ID 关联的 GUID（即你将在其中管理客户资源的租户）。 如果没有此信息，可将鼠标悬停在 Azure 门户右上方的帐户名称上，或者选择“切换目录”来找到它。
 
-最后，将一个或多个授权条目添加到计划中。 授权定义了哪些实体可访问购买计划的客户的资源和订阅，并分配了授予特定访问级别的角色。 有关支持的角色的详细信息，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
+最后，将一个或多个授权条目添加到计划中。 授权定义了哪些实体可访问购买计划的客户的资源和订阅，并分配了授予特定访问级别的角色。
+
+> [!TIP]
+> 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。 有关其他建议，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
 
 对于每个授权，你需要提供以下信息。 然后，可根据需要多次选择“新授权”，以添加更多用户和角色定义。
 
@@ -86,7 +89,7 @@ ms.locfileid: "75453534"
 - 可**分配角色**：只有在此授权的**角色定义**中选择了 "用户访问管理员" 时，才需要执行此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]
-> 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。 有关其他建议，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
+> 若要确保在需要时可以[删除对委派的访问权限](onboard-customer.md#remove-access-to-a-delegation)，请包括将**角色定义**设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的**授权**。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。
 
 完成这些信息后，可以根据需要多次选择“新建计划”以创建其他计划。 完成后，选择“保存”，然后继续填写“市场”部分。
 
@@ -147,7 +150,7 @@ ms.locfileid: "75453534"
 客户添加你的产品/服务后，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注。
 
 > [!IMPORTANT]
-> 委托必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看可委派订阅的所有用户，客户租户中的用户可以在 Azure 门户中选择订阅、打开**访问控制（IAM）** 、[列出所有角色](../../role-based-access-control/role-definitions-list.md#list-all-roles)，然后选择 "**所有者**" 以查看具有该角色的所有用户。
+> 委托必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
 在客户委托订阅（或订阅中的一个或多个资源组）后，将为该订阅注册 Microsoft.ManagedServices资源提供程序，租户中的用户将能够根据产品/服务中的授权访问委托的资源。
 

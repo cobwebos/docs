@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 12f463428e5e11fb11fc117aa9ffa2c606f17e26
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 6140d64d7af6f5ccd4864e4cbc5c313cdae3acaf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667453"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835024"
 ---
-# <a name="overview"></a>概述
+# <a name="overview-of-azure-security-controls"></a>Azure 安全控制概述
 
 Azure 安全基准包含有助于提高 Azure 上应用程序和数据的安全性的建议。   
 
@@ -33,7 +33,7 @@ Azure 安全基准中使用以下控件：
 - 恶意软件防护 
 - 数据恢复 
 - 事件响应 
-- 渗透测试和 Red 团队练习
+- 渗透测试和红队练习
 
 ## <a name="azure-security-benchmark-recommendations"></a>Azure 安全基准建议 
 

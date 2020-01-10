@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435175"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777778"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -41,28 +41,36 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 或者，你可以通过从 Azure Cloud Shell 运行此脚本来生成凭据。 执行以下步骤。
 
-1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器。 Zip 文件内有两个文件。
-2. 登录到 https://portal.azure.com/ 并打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
+1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其解压缩到本地驱动器。 Zip 文件中将有一个文件。
+2. 登录到 https://portal.azure.com/ 并中转到 Azure Active Directory > 应用注册
+
+3. 单击在 FarmBeats 部署过程中创建的应用注册。 它的名称与你的 FarmBeats Datahub 相同。
+
+4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 azure cli （Cloud shell）的访问权限，以执行以下步骤。
+
+5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. 请确保将环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
+6. 请确保将环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
 
     ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. 上载 Cloud Shell 实例的步骤1中的两个文件。
+7. 在 Cloud Shell 实例的步骤1中上传文件。
 
     ![上传工具栏按钮](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. 中转到上载文件的目录。 默认情况下，会将其上传到 "用户名" 下的主目录。
-6. 运行以下脚本：
+8. 中转到上载文件的目录。 默认情况下，文件将上传到用户名下的主目录。
+
+9. 运行以下脚本。 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
 
     ```azurepowershell-interactive 
 
-    ./generateCredentials.ps1   
+    ./generatePartnerCredentials.ps1   
 
     ```
-7. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。 EventHub 连接字符串作为 Swagger 中 API 响应的一部分提供。
+
+10. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用生成的凭据集成设备数据
 

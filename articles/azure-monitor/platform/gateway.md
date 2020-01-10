@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530980"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830133"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>使用 Azure Monitor 中的 Log Analytics 网关连接无 internet 访问的计算机
 
@@ -103,7 +103,7 @@ Log Analytics 网关仅支持传输层安全性（TLS）1.0、1.1 和1.2。  它
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
-从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=54443)或 Azure 门户获取 Log Analytics 网关安装程序文件的最新版本。
+从 Microsoft 下载中心获取最新版本的 Log Analytics 网关安装程序文件（[下载链接](https://go.microsoft.com/fwlink/?linkid=837444)）或 Azure 门户。
 
 若要从 Azure 门户获取 Log Analytics 网关，请执行以下步骤：
 

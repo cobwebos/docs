@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027376"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834185"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
-本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或 "病毒" 注册服务的详细信息，请参阅[什么是 Azure Active Directory 的自助注册？](directory-self-service-signup.md)
+本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，系统会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或 "病毒" 注册服务的详细信息，请参阅[什么是 Azure Active Directory 的自助注册？](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>决定非托管目录的接管方式
 在管理员接管的过程中，可按[向 Azure AD 添加自定义域名](../fundamentals/add-custom-domain.md)中所述，证明所有权。 以下部分更详细地介绍了管理员体验，不过本文只会提供摘要：
@@ -56,7 +56,7 @@ ms.locfileid: "74027376"
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>将域名添加到 Azure AD 中的托管租户
 
-1. 打开[Microsoft 365 管理中心](https://admin.microsoft.com)。
+1. 打开 [MIcrosoft 365 管理中心](https://admin.microsoft.com)。
 2. 选择 "**用户**" 选项卡，并使用不使用自定义域名的用户名（如*user\@fourthcoffeexyz.onmicrosoft.com* ）创建新的用户帐户。 
 3. 请确保新的用户帐户对 Azure AD 租户拥有全局管理员权限。
 4. 在 Microsoft 365 管理中心中打开 "**域**" 选项卡，选择域名，然后选择 "**删除**"。 
@@ -130,40 +130,40 @@ cmdlet | 使用情况
 
 1. 使用凭据连接到 Azure AD，这些凭据曾用于响应自助服务产品：
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. 获取域的列表：
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. 运行 Get-MsolDomainVerificationDns cmdlet 以创建质询：
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    例如：
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
 4. 复制从此命令返回的值（质询）。 例如：
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. 在公共 DNS 命名空间中，创建包含在上一步中复制的值的 DNS txt 记录。 此记录的名称即是父域的名称，因此，如果要使用 Windows Server 中的 DNS 角色创建此资源记录，请将记录名称保留空白，而只在文本框中粘贴该值。
 6. 运行 Confirm-MsolDomain cmdlet 以验证质询：
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
    例如：
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 如果质询成功，将返回到提示符，且不会显示错误。

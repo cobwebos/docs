@@ -48,9 +48,9 @@
                 - name: JavaScript（适用于 Node.js 的 v12 SDK）
                   href: storage-quickstart-blobs-nodejs.md
                 - name: JavaScript（适用于 Node.js 的 v10 SDK）
-                  href: storage-quickstart-blobs-nodejs-v10.md
+                  href: storage-quickstart-blobs-nodejs-legacy.md
                 - name: JavaScript（适用于浏览器的 v10 SDK）
-                  href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+                  href: storage-quickstart-blobs-javascript-client-libraries-legacy.md
             - name: Go
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -424,12 +424,6 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-            - name: 以前的 SDK 版本
-              items:
-                - name: JavaScript (Node.js)（存储 SDK v2）
-                  href: storage-quickstart-blobs-nodejs-legacy.md
-                - name: JavaScript（浏览器）（存储 SDK v2）
-                  href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: 管理 Blob
           items:
             - name: Azure CLI

@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: d5843937233309e1b37f0127d364066a8a747e21
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 59002d0f17fc7213d8db0fad01b1f984542adbd5
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538236"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834807"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -332,5 +332,7 @@ ms.locfileid: "75538236"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何在 Visual Studio Code 外训练 Azure 机器学习的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
-* 有关如何在本地编辑、运行和调试代码的演练，请参阅[Python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
+* 有关如何在 Visual Studio Code 外训练 Azure 机器学习的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)
+* 有关如何在本地编辑、运行和调试代码的演练，请参阅[Python hello world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)
+* 有关自定义 Python 环境的详细信息，请参阅[创建和管理用于培训和部署的环境](how-to-use-environments.md)
+

@@ -10,47 +10,50 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824174"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834291"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。
 
-每个 API 管理服务实例都有一个属性集合，这些键/值对称为命名值，是服务实例的全局值。 没有对集合中的项数施加限制。 命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个命名值可能有以下属性：
+每个 API 管理服务实例都有一个名为 "命名值" 的键/值对集合，这些键/值对是服务实例的全局。 集合中的项数没有施加限制。 命名值可用于管理所有 API 配置和策略的常量字符串值。 每个命名值都可能具有以下特性：
 
-| 属性      | 类型            | 说明                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | 字符串          | 用于在策略中引用命名值。 1 到 256 个字符的字符串。 只允许字母、数字、点和短划线。 |
-| `Value`        | 字符串          | 实际值。 不得为空或只由空格组成。 最多 4096 个字符长。                                     |
-| `Secret`       | 布尔值         | 确定值是否为密钥以及是否应加密。                                                            |
-| `Tags`         | 字符串数组 | 用于筛选命名值列表。 最多 32 个标记。                                                                                    |
+| Attribute      | 类型            | Description                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | 字符串          | 用于在策略中引用命名值。 一个到256个字符的字符串。 只允许使用字母、数字、点和短划线。 |
+| `Value`        | 字符串          | 实际值。 不得为空或仅包含空格。 最大长度为4096个字符。                                        |
+| `Secret`       | boolean         | 确定值是否为密钥以及是否应加密。                                                               |
+| `Tags`         | 字符串数组 | 用于筛选命名值列表。 最多32个标记。                                                                                    |
 
 ![命名值](./media/api-management-howto-properties/named-values.png)
 
-命名值可以包含文本字符串和[策略表达式](/azure/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值 `Credential` 被标记为机密，因此默认情况下未显示其值。
+命名值可以包含文本字符串和[策略表达式](/azure/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 `Credential` 的命名值被标记为机密，因此默认情况下不显示其值。
 
-| 名称       | 值                      | 密钥 | 标记          |
+| 名称       | 值                      | 机密 | 标记          |
 | ---------- | -------------------------- | ------ | ------------- |
-| 值      | 42                         | False  | vital-numbers |
-| 凭据 | ••••••••••••••••••••••     | True   | security      |
-| 表达式 | @(DateTime.Now.ToString()) | False  |               |
+| 值      | 42                         | 错误  | 重要-数字 |
+| 凭据 | ••••••••••••••••••••••     | 正确   | 安全性      |
+| Expression | @(DateTime.Now.ToString()) | 错误  |               |
+
+> [!NOTE]
+> 如本[示例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)所示，可以使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)服务中存储的值，而不是存储在 API 管理服务中的命名值。
 
 ## <a name="to-add-and-edit-a-named-value"></a>添加和编辑命名值
 
 ![添加命名值](./media/api-management-howto-properties/add-property.png)
 
-1. 从“API 管理”下选择“API”。
+1. 在“API 管理”下面选择“API”。
 2. 选择“命名值”。
 3. 按“+添加”。
 
-    “名称”和“值”是必需值。 如果值为机密，请选中 "*这是机密*" 复选框。 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
+    “名称”和“值”是必需值。 如果值为机密，请选中 "_这是机密_" 复选框。 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
 
 4. 单击“创建”。
 
@@ -101,7 +104,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 ![开发人员门户][api-management-send-results]
 
-如果在[API 检查器跟踪](api-management-howto-api-inspector.md)中查看包含两个前面带有命名值的示例策略的调用，则可以看到两个 `set-header` 策略，其中包含已命名的值，以及指定的命名值的策略表达式计算。包含策略表达式。
+如果在[API 检查器跟踪](api-management-howto-api-inspector.md)中查看包含两个前面带有命名值的示例策略的调用，则可以看到两个 `set-header` 策略，其中包含已命名的值，以及包含策略表达式的命名值的策略表达式计算。
 
 ![API 检查器跟踪][api-management-api-inspector-trace]
 
@@ -112,7 +115,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 -   详细了解如何使用策略
     -   [API 管理中的策略](api-management-howto-policies.md)
     -   [策略参考](/azure/api-management/api-management-policies)
-    -   [Policy expressions](/azure/api-management/api-management-policy-expressions)（策略表达式）
+    -   [策略表达式](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

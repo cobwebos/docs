@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644590"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830371"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -84,23 +84,9 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 - 在创建过程中或之后创建脚本。 脚本可通过[脚本操作调用，脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)是一种配置选项，可在 Azure 门户、Hdinsight Windows PowerShell Cmdlet 或 HDINSIGHT .net SDK 中使用。 此配置选项可在 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 中使用。
 
-- 预配群集后 `sudo` 或其他方法。
-  
 - 用于安装生态应用程序的[HDInsight 应用程序平台](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)。
 
-但 Microsoft 支持部门团队仅在以下情况下才会提供支持：
-
-- 加载脚本时发生的问题或错误。 执行自定义脚本过程中出现的任何错误都超出了支持票证的范围。
-
-- 作为群集创建过程的一部分的其他应用程序。 
-
 有关支持的组件的列表，请参阅[HDInsight 提供的 Apache Hadoop 组件和版本有哪些？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
-
-对单个组件的支持也会因群集类型而有所不同。 例如，Spark 在 Kafka 群集上不受支持，反之亦然。
-
-对于群集创建过程以外的应用程序和服务，请与供应商或服务提供商联系以获取支持。 你还可以使用多个社区支持站点。 例如，HDInsight 和[Stack Overflow](https://stackoverflow.com/)的[MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)。 Apache 项目还在 [Apache 网站](https://apache.org/)上提供了项目站点， 例如 [Hadoop](https://hadoop.apache.org/)。 
-
-有关 Azure 支持的详细信息，请参阅[Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>是否可以升级预安装在群集上的单个组件？
 

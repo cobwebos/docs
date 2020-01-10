@@ -1,14 +1,14 @@
 ---
 title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
-ms.date: 12/17/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 16d1b4d9d51c377c4aa09b5e35b02790d8a1b8dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453557"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834128"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -32,9 +32,12 @@ ms.locfileid: "75453557"
 
 - 服务提供商租户的租户 ID（要在其中管理客户的资源）
 - 客户租户的租户 ID（具有由服务提供商管理的资源）
-- 客户租户中由服务提供商管理的每个特定订阅的订阅 ID（或包含将由服务提供商管理的资源组的订阅 ID）
+- 客户租户中将由服务提供商（或包含将由服务提供商管理的资源组）管理的每个特定订阅的订阅 Id。
 
-如果尚没有此信息，可通过以下方式之一进行检索。 请确保并在部署中使用这些确切的值。
+> [!NOTE]
+> 即使只希望在订阅中载入一个或多个资源组，也必须在订阅级别完成部署，因此需要订阅 ID。
+
+如果还没有这些 ID 值，可以通过以下方式之一来检索它们。 请确保并在部署中使用这些确切的值。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -113,9 +116,9 @@ az role definition list --name "<roleName>" | grep name
 |字段  |定义  |
 |---------|---------|
 |**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户。         |
-|**mspOfferDescription**     |产品/服务的简短说明（例如，"Contoso VM 管理产品/服务"）      |
+|**mspOfferDescription**     |产品/服务的简短说明（例如，"Contoso VM 管理产品/服务"）。      |
 |**managedByTenantId**     |租户 ID。          |
-|**authorizations**     |租户中的用户/组/Spn 的**principalId**值，每个值都有一个**principalIdDisplayName** ，可帮助客户了解授权的用途，并映射到内置的**roleDefinitionId**值来指定访问级别。         |
+|**authorizations**     |租户中的用户/组/Spn 的**principalId**值，每个值都有一个**principalIdDisplayName** ，可帮助客户了解授权的目的，并将其映射到内置的**roleDefinitionId**值以指定访问级别。      |
 
 > [!TIP]
 > 请确保**managedByTenantID**、 **principalIdDisplayName**和**roleDefinitionId**条目与 Azure 使用的值相同。 请勿在这些值中使用任何大写字母。
@@ -132,7 +135,7 @@ az role definition list --name "<roleName>" | grep name
 |订阅（使用发布到 Azure 市场的产品/服务时）   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> 此处所述的过程需要对每个要载入的订阅进行单独部署，即使它们在同一客户租户中。 如果要在同一客户租户中的不同订阅内加入多个资源组，则还需要单独的部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
+> 此处所述的过程需要为要载入的每个订阅单独提供订阅级部署，即使你是在同一客户租户中加入订阅。 如果要在同一客户租户中的不同订阅内加入多个资源组，则还需要单独的部署。 但是，可以在一个订阅级别的部署中加入单个订阅中的多个资源组。
 >
 > 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
 
@@ -198,7 +201,7 @@ az role definition list --name "<roleName>" | grep name
 由于这是订阅级部署，因此无法在 Azure 门户中启动。 可以使用 PowerShell 或 Azure CLI 来完成部署，如下所示。
 
 > [!IMPORTANT]
-> 此部署必须由客户的租户中的非来宾帐户完成，该用户拥有订阅的 "载入" （或包含正在载入的资源组）的 "[所有者" 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看可委派订阅的所有用户，客户租户中的用户可以在 Azure 门户中选择订阅、打开**访问控制（IAM）** 、[列出所有角色](../../role-based-access-control/role-definitions-list.md#list-all-roles)，然后选择 "**所有者**" 以查看具有该角色的所有用户。
+> 此订阅级部署必须由客户租户中的非来宾帐户完成，此帐户具有载入订阅的[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)（或包含正在载入的资源组）。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
 ### <a name="powershell"></a>PowerShell
 

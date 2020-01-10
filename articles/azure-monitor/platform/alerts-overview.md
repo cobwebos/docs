@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396520"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830320"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -60,7 +60,7 @@ ms.locfileid: "75396520"
 
 ## <a name="what-you-can-alert-on"></a>可以报警的内容
 
-如[监视数据源](../../azure-monitor/platform/data-sources-reference.md)中所述，你可以针对指标和日志发出警报。 这些检查包括但不限于：
+如[监视数据源](../../azure-monitor/platform/data-sources.md)中所述，你可以针对指标和日志发出警报。 这些检查包括但不限于：
 - 指标值
 - 日志搜索查询
 - 活动日志事件

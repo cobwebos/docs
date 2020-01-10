@@ -2,38 +2,32 @@
 title: 使用 CLI 部署 Azure 专用主机
 description: 使用 Azure CLI 将 Vm 部署到专用主机。
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036398"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834921"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>预览：使用 Azure CLI 将 Vm 部署到专用主机
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 将 Vm 部署到专用主机
  
 
 本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机（vm）。 
 
 请确保已安装 Azure CLI 版本2.0.70 或更高版本，并使用 `az login`登录到 Azure 帐户。 
 
-> [!IMPORTANT]
-> Azure 专用主机目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知预览版限制**
-> - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列： DSv3 和 ESv3。 
+
+## <a name="limitations"></a>限制
+
+- 虚拟机规模集目前在专用主机上不受支持。
+- 初始版本支持以下 VM 系列： DSv3 和 ESv3。 
  
 
 ## <a name="create-resource-group"></a>创建资源组 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>创建主机 
 
-现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
-
+现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  支持以下 SKU 值： DSv3_Type1 和 ESv3_Type1。
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
@@ -250,7 +243,7 @@ az group deployment create \
 ```
 
 
-## <a name="clean-up"></a>清理 
+## <a name="clean-up"></a>清除 
 
 即使部署了虚拟机，也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
 

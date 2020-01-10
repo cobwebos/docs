@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562045"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834052"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 诊断概述
 
@@ -42,9 +42,9 @@ ms.locfileid: "75562045"
 
 选择主题后，可以查看特定于 function app 的诊断报告。 诊断报告使用状态图标来指示应用是否有任何特定问题。 你将看到有关问题的详细描述、建议操作、相关度量和有用文档。自定义的诊断报告是从对函数应用运行的一系列检查生成的。 诊断报告可能是一个有用的工具，可用于在 function app 中查明问题并指导你解决问题。
 
-## <a name="find-the-problem-code"></a>查找问题代码 
+## <a name="find-the-problem-code"></a>查找问题代码
 
-对于基于脚本的函数，可以在**Function App 关闭或报告错误**的情况下使用**函数执行**和**错误**，缩小导致异常或错误的代码行。 此功能可能是一个有用的工具，可用于从特定代码行获取根本原因并解决问题。 此选项不适用于预编译C#和 Java 函数。
+对于基于脚本的函数，可以在**Function App 关闭或报告错误**的情况下使用**函数执行和错误**，缩小导致异常或错误的代码行。 此功能可能是一个有用的工具，可用于从特定代码行获取根本原因并解决问题。 此选项不适用于预编译C#和 Java 函数。
 
 ![有关函数执行错误的诊断报告](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

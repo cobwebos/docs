@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 338575158b91e90112548af5be0dcef68d521852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5beaddc92b3c8bf00f8ea7d121b01b53ee25ee7
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444304"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830456"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 
@@ -145,7 +145,7 @@ Google 云存储链接服务支持以下属性：
 
 | 属性                 | Description                                                  | 需要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为 **AmazonS3ReadSetting**。 | 是                                                         |
+| type                     | `storeSettings` 下的 type 属性必须设置为**AmazonS3ReadSettings**。 | 是                                                         |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                                          |
 | 前缀                   | 在数据集中配置的给定存储桶下的 S3 对象键的前缀，用于筛选源对象。 已选中其键以该前缀开头的对象。 仅当未指定 `wildcardFolderPath` 和 `wildcardFileName` 属性时适用。 |                                                             |
 | wildcardFolderPath       | 数据集中配置的给定存储桶下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                                          |
@@ -177,11 +177,11 @@ Google 云存储链接服务支持以下属性：
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "AmazonS3ReadSetting",
+                    "type": "AmazonS3ReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"

@@ -5,47 +5,46 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9f3a13a097d7cce87aead4ec2d76ce7cbbb1a206
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533152"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778220"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
 本文探讨了 Azure 数据工厂中连接器的常见故障排除方法。
+  
 
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
+## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>错误消息：远程服务器返回了一个错误：（403）禁止访问
+### <a name="error-code--azurebloboperationfailed"></a>错误代码： AzureBlobOperationFailed
 
-- **症状**：复制活动失败，出现以下错误： 
+- **消息**： `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
-    ```
-    Message: The remote server returned an error: (403) Forbidden.. 
-    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
-    ```
+- **原因**： Blob 存储操作遇到问题。
 
-- **原因**：一个可能的原因是你使用的服务主体或托管标识无权访问某些文件夹/文件。
+- **建议**：查看详细信息中的错误。 请参阅 blob 帮助文档： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 如果需要帮助，请联系存储团队。
 
-- **解决方法**：授予需要复制的所有文件夹和子文件夹的相应权限。 请参阅[此文档](connector-azure-data-lake-store.md#linked-service-properties)。
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>错误消息：无法使用服务主体获取访问令牌。 ADAL 错误： service_unavailable
+### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>错误代码： AzureBlobServiceNotReturnExpectedDataLength
 
-- **症状**：复制活动失败，出现以下错误：
+- **消息**： `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
 
-    ```
-    Failed to get access token by using service principal. 
-    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
-    ```
 
-- **原因**：如果 Azure Active Directory 拥有的服务令牌服务器（STS）不可用，例如，太忙而无法处理请求，则返回 HTTP 错误503。 
+### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>错误代码： AzureBlobNotSupportMultipleFilesIntoSingleBlob
 
-- **解决方法**：在几分钟后重新运行复制活动。
+- **消息**： `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
+
+
+### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>错误代码： AzureStorageOperationFailedConcurrentWrite
+
+- **消息**： `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -119,54 +118,81 @@ ms.locfileid: "74533152"
 - **原因**：可以通过两种方式来表示 BSON 中的 UUID-UuidStardard 和 UuidLegacy。 默认情况下，UuidLegacy 用于读取数据。 如果 MongoDB 中的 UUID 数据是 UuidStandard，则会遇到错误。
 
 - **解决方法**：在 MongoDB 连接字符串中，添加选项 "**uuidRepresentation = standard**"。 有关详细信息，请参阅[MongoDB 连接字符串](connector-mongodb.md#linked-service-properties)。
+            
 
-## <a name="sftp"></a>SFTP
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>错误消息：为 "SshPublicKey" 身份验证类型提供的 SFTP 凭据无效
+### <a name="error-code--adlsgen2operationfailed"></a>错误代码： AdlsGen2OperationFailed
 
-- **症状**：你使用 `SshPublicKey` 身份验证，并且遇到以下错误：
+- **消息**： `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **原因**： ADLS Gen2 引发指示操作失败的错误。
+
+- **建议**：检查 ADLS Gen2 引发的详细错误消息。 如果是暂时性故障导致的，请重试。 如果需要进一步的帮助，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
+
+- **原因**：如果错误消息包含 "禁止"，则你使用的服务主体或托管标识可能没有足够的权限访问该 ADLS Gen2。
+
+- **建议**：请参阅帮助文档： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
+
+- **原因**：当错误消息包含 "InternalServerError" 时，ADLS Gen2 将返回错误。
+
+- **建议**：这可能是由于暂时性故障引起的，请重试。 如果问题仍然存在，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
+
+
+### <a name="error-code--adlsgen2invalidurl"></a>错误代码： AdlsGen2InvalidUrl
+
+- **消息**： `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
+
+
+### <a name="error-code--adlsgen2invalidfolderpath"></a>错误代码： AdlsGen2InvalidFolderPath
+
+- **消息**： `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
+
+
+### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>错误代码： AdlsGen2OperationFailedConcurrentWrite
+
+- **消息**： `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+
+### <a name="error-code--adlsgen2timeouterror"></a>错误代码： AdlsGen2TimeoutError
+
+- **消息**： `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+
+
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>错误消息：远程服务器返回了一个错误：（403）禁止访问
+
+- **症状**：复制活动失败，出现以下错误： 
 
     ```
-    Invalid Sftp credential provided for 'SshPublicKey' authentication type
+    Message: The remote server returned an error: (403) Forbidden.. 
+    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **原因**：有3种可能的原因：
+- **原因**：一个可能的原因是你使用的服务主体或托管标识无权访问某些文件夹/文件。
 
-    1. 如果你使用 ADF 创作 UI 创作 SFTP 链接服务，此错误意味着你选择使用的私钥的格式不正确。 您可以使用 SSH 私钥的 PKCS # 8 格式，同时请注意，ADF 仅支持传统 SSH 密钥格式。 更具体地说，PKCS # 8 格式和传统密钥格式的差异在于 PKCS # 8 密钥内容以 " *-----开始加密私钥-----* " 开头，而传统密钥格式则以 " *-----BEGIN RSA PRIVATE key-----* " 开头。
-    2. 如果使用 Azure Key Vault 来存储私钥内容，或使用 programmatical 方法创作 SFTP 链接服务，此错误表示私钥内容不正确，很可能不是 base64 编码的内容。
-    3. 凭据或私钥内容无效。
+- **解决方法**：授予需要复制的所有文件夹和子文件夹的相应权限。 请参阅[此文档](connector-azure-data-lake-store.md#linked-service-properties)。
 
-- **解决方法**： 
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>错误消息：无法使用服务主体获取访问令牌。 ADAL 错误： service_unavailable
 
-    - 出于 #1 的原因，请运行以下命令，将密钥转换为传统密钥格式，然后在 ADF 创作 UI 中使用它。
+- **症状**：复制活动失败，出现以下错误：
 
-        ```
-        # Decrypt the pkcs8 key and convert the format to traditional key format
-        openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+    ```
+    Failed to get access token by using service principal. 
+    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
+    ```
 
-        chmod 600 traditional_format_key_file
+- **原因**：如果 Azure Active Directory 拥有的服务令牌服务器（STS）不可用，例如，太忙而无法处理请求，则返回 HTTP 错误503。 
 
-        # Re-encrypte the key file using passphrase
-        ssh-keygen -f traditional_format_key_file -p
-        ```
+- **解决方法**：在几分钟后重新运行复制活动。
+                  
 
-    - 为了 #2，若要生成此类字符串，客户可以使用以下两种方法：
-    - 使用第三方 base64 转换工具：将整个私钥内容粘贴到[Base64 编码和解码](https://www.base64encode.org/)的工具中，将其编码为 base64 格式字符串，然后将此字符串粘贴到密钥保管库，或使用此值以编程方式创作 SFTP 链接服务。
-    - 使用C#代码：
-
-        ```c#
-        byte[] keyContentBytes = File.ReadAllBytes(privateKeyPath);
-        string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
-        ```
-
-    - 出于 #3 的原因，请使用其他工具来确认密钥文件或密码是否正确，以验证是否可以使用它来正确访问 SFTP 服务器。
-  
-
-## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL 数据仓库 \ Azure SQL Database \ SQL Server
+## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL 数据仓库/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>错误代码： SqlFailedToConnect
 
-- **消息**： `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+- **消息**： `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
 - **原因**：如果错误消息包含 "SqlException"，SQL 数据库将引发错误，指示某些特定操作失败。
 
@@ -183,11 +209,12 @@ ms.locfileid: "74533152"
 
 - **原因**：如果错误消息包含 "SqlException"，SQL 数据库将引发错误，指示某些特定操作失败。
 
-- **建议**：请按照此参考文档中的 SQL 错误代码进行搜索，以了解更多详细信息： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果需要更多帮助，请联系 Azure SQL 支持。
+- **建议**：如果不清楚 SQL 错误，请尝试将数据库更改为最新兼容级别 "150"。 它可能会引发最新版本的 SQL 错误。 请参阅详细信息文档： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat 。
+        若要解决 SQL 问题，请按此参考文档中的 SQL 错误代码进行搜索，以了解更多详细信息： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果需要更多帮助，请联系 Azure SQL 支持。
 
 - **原因**：如果错误消息包含 "PdwManagedToNativeInteropException"，则通常是由于 source 和 sink 列大小不匹配造成的。
 
-- **建议**：请检查源列和接收器列的大小。 如果需要更多帮助，请联系 Azure SQL 支持。
+- **建议**：检查源列和接收器列的大小。 如果需要更多帮助，请联系 Azure SQL 支持。
 
 - **原因**：如果错误消息包含 "InvalidOperationException"，通常是由于输入数据无效导致的。
 
@@ -200,7 +227,7 @@ ms.locfileid: "74533152"
 
 - **原因**：凭据不正确，或登录帐户无法访问 SQL 数据库。
 
-- **建议**：请检查登录帐户是否有足够的权限访问 SQL 数据库。
+- **建议**：检查登录帐户是否有足够的权限访问 SQL 数据库。
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>错误代码： SqlOpenConnectionTimeout
@@ -214,24 +241,24 @@ ms.locfileid: "74533152"
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>错误代码： SqlAutoCreateTableTypeMapFailed
 
-- **消息**： `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+- **消息**： `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
 - **原因**：自动创建表无法满足源要求。
 
-- **建议**：请更新 "映射" 中的列类型，或在目标服务器中手动创建接收器表。
+- **建议**：更新 "映射" 中的列类型，或在目标服务器中手动创建接收器表。
 
 
 ### <a name="error-code--sqldatatypenotsupported"></a>错误代码： SqlDataTypeNotSupported
 
-- **消息**： `A database operation failed. Please check the SQL errors.`
+- **消息**： `A database operation failed. Check the SQL errors.`
 
 - **原因**：如果在 SQL 源上出现问题，并且错误与 SqlDateTime 溢出有关，则数据值超过逻辑类型范围（1/1/1753 12:00:00 AM-12/31/9999 11:59:59 PM）。
 
-- **建议**：请在源 SQL 查询中将类型转换为字符串，或在复制活动列映射中将列类型更改为 "string"。
+- **建议**：将类型强制转换为源 SQL 查询中的字符串，或复制活动列映射中的类型将列类型更改为 "string"。
 
 - **原因**：如果在 SQL 接收器上出现问题，并且错误与 SqlDateTime 溢出相关，则数据值将超出接收器表中允许的范围。
 
-- **建议**：请在接收器表中将相应的列类型更新为 "datetime2" 类型。
+- **建议**：在接收器表中将相应的列类型更新为 "datetime2" 类型。
 
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>错误代码： SqlInvalidDbStoredProcedure
@@ -240,7 +267,7 @@ ms.locfileid: "74533152"
 
 - **原因**：指定的存储过程无效。 这可能是因为存储过程不返回任何数据。
 
-- **建议**：请通过 SQL 工具验证存储过程。 请确保存储过程可以返回数据。
+- **建议**：通过 SQL 工具验证存储过程。 请确保存储过程可以返回数据。
 
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>错误代码： SqlInvalidDbQueryString
@@ -249,7 +276,7 @@ ms.locfileid: "74533152"
 
 - **原因**：指定的 SQL 查询无效。 这可能是因为查询不返回任何数据。
 
-- **建议**：请通过 sql 工具验证 sql 查询。 请确保查询可以返回数据。
+- **建议**：通过 sql 工具验证 sql 查询。 请确保查询可以返回数据。
 
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>错误代码： SqlInvalidColumnName
@@ -258,30 +285,39 @@ ms.locfileid: "74533152"
 
 - **原因**：找不到列。 可能的配置错误。
 
-- **建议**：请验证查询中的列、数据集中的 "structure" 和活动中的 "映射"。
+- **建议**：验证查询中的列、数据集中的 "structure" 和活动中的 "映射"。
+
+
+### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>错误代码： SqlColumnNameMismatchByCaseSensitive
+
+- **消息**： `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
 
 
 ### <a name="error-code--sqlbatchwritetimeout"></a>错误代码： SqlBatchWriteTimeout
 
-- **消息**： `Timeout in SQL write opertaion.`
+- **消息**： `Timeouts in SQL write operation.`
 
 - **原因**： SQL 数据库暂时性失败。
 
-- **建议**：如果问题重现，请联系 Azure SQL 支持。
+- **建议**：请重试。 如果问题重现，请联系 Azure SQL 支持。
 
 
-### <a name="error-code--sqlbatchwriterollbackfailed"></a>错误代码： SqlBatchWriteRollbackFailed
+### <a name="error-code--sqlbatchwritetransactionfailed"></a>错误代码： SqlBatchWriteTransactionFailed
 
-- **消息**： `Timeout in SQL write operation and rollback also fail.`
+- **消息**： `SQL transaction commits failed`
 
-- **原因**： SQL 数据库暂时性失败。
+- **原因**：如果异常详细信息持续通知事务超时，则集成运行时和数据库之间的网络延迟高于默认阈值（30秒）。
 
-- **建议**：请重试以更新连接超时值较大的链接服务连接字符串。
+- **建议**：将 "连接超时" 值等于120或更高版本的 Sql 链接服务连接字符串更新，然后重新运行该活动。
+
+- **原因**：如果异常详细信息间歇性地告诉 sqlconnection 出现损坏，则可能是暂时性的网络故障或 SQL 数据库端问题
+
+- **建议**：请重试活动，并查看 SQL 数据库端指标。
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>错误代码： SqlBulkCopyInvalidColumnLength
 
-- **消息**： `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+- **消息**： `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
 - **原因**： SQL 大容量复制失败，因为从 bcp 客户端收到的列长度无效。
 
@@ -290,11 +326,17 @@ ms.locfileid: "74533152"
 
 ### <a name="error-code--sqlconnectionisclosed"></a>错误代码： SqlConnectionIsClosed
 
-- **消息**： `The connection is closed by SQL database.`
+- **消息**： `The connection is closed by SQL Database.`
 
-- **原因**： sql 数据库在高并发运行和服务器终止连接时关闭 sql 连接。
+- **原因**： sql 数据库连接在高并发运行和服务器终止连接时关闭。
 
-- **建议**：远程服务器关闭 SQL 连接。 请重试。 如果问题重现，请联系 Azure SQL 支持。
+- **建议**：远程服务器已关闭 SQL 连接。 请重试。 如果问题重现，请联系 Azure SQL 支持。
+
+
+### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>错误代码： SqlCreateTableFailedUnsupportedType
+
+- **消息**： `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
+
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>错误消息：从字符串转换为 uniqueidentifier 时转换失败
 
@@ -373,35 +415,257 @@ ms.locfileid: "74533152"
 - **解决方法**：在 SSMS 中运行相同的查询，并检查是否看到相同的结果。 如果出现同一结果，请开具一个 Azure SQL 数据仓库的支持票证并提供你的 SQL DW 服务器和数据库名称，方便我们进一步排查问题。
             
 
-## <a name="azure-blob-storage"></a>Azure Blob 存储
+## <a name="delimited-text-format"></a>带分隔符的文本格式
 
-### <a name="error-code--azurebloboperationfailed"></a>错误代码： AzureBlobOperationFailed
+### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>错误代码： DelimitedTextColumnNameNotAllowNull
 
-- **消息**： `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+- **消息**： `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因**： Blob 存储操作遇到问题。
+- **原因**：在活动中设置 "firstRowAsHeader" 时，将使用第一行作为列名称。 此错误表示第一行包含空值。 例如： "ColumnA，，ColumnB"。
 
-- **建议**：请查看详细信息中的错误。 请参阅 blob 帮助文档： https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 如果需要帮助，请联系存储团队。
+- **建议**：检查第一行，如果有空值，则修复此值。
+
+
+### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>错误代码： DelimitedTextMoreColumnsThanDefined
+
+- **消息**： `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+
+- **原因**：有问题的行的列计数大于第一行的列计数。 这可能是由于数据问题或列分隔符/引号字符设置错误引起的。
+
+- **建议**：请获取错误消息中的行计数，检查行的列并修复数据。
+
+- **原因**：如果所需的列计数在错误消息中为 "1"，则可能是指定了错误的压缩或格式设置，这会导致 ADF 错误地分析文件。
+
+- **建议**：检查格式设置，确保它与源文件匹配。
+
+- **原因**：如果源是文件夹，则可能是指定文件夹下的文件具有不同的架构。
+
+- **建议**：请确保给定文件夹下的文件具有相同的架构。
+
+
+### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>错误代码： DelimitedTextIncorrectRowDelimiter
+
+- **消息**： `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--delimitedtexttoolargecolumncount"></a>错误代码： DelimitedTextTooLargeColumnCount
+
+- **消息**： `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
+
+
+### <a name="error-code--delimitedtextinvalidsettings"></a>错误代码： DelimitedTextInvalidSettings
+
+- **消息**： `%settingIssues;`
 
 
 
-## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+## <a name="dynamics-365common-data-servicedynamics-crm"></a>Dynamics 365/Common Data Service/Dynamics CRM
 
-### <a name="error-code--adlsgen2operationfailed"></a>错误代码： AdlsGen2OperationFailed
+### <a name="error-code--dynamicscreateserviceclienterror"></a>错误代码： DynamicsCreateServiceClientError
 
-- **消息**： `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **消息**： `This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
-- **原因**： ADLS Gen2 引发指示操作失败的错误。
+- **原因**：这是 dynamics server 端的暂时性问题。
 
-- **建议**：请检查 ADLS Gen2 引发的详细错误消息。 如果是暂时性故障导致的，请重试。 如果需要进一步的帮助，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
+- **建议**：重新运行管道。 如果仍然失败，请尝试降低并行度。 如果仍然失败，请联系 dynamics 支持部门。
 
-- **原因**：如果错误消息包含 "禁止"，则你使用的服务主体或托管标识可能没有足够的权限访问该 ADLS Gen2。
 
-- **建议**：请参阅帮助文档： https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
 
-- **原因**：当错误消息包含 "InternalServerError" 时，ADLS Gen2 将返回错误。
+## <a name="json-format"></a>JSON 格式
 
-- **建议**：这可能是由于暂时性故障引起的，请重试。 如果问题仍然存在，请联系 Azure 存储支持，并提供错误消息中的请求 ID。
+### <a name="error-code--jsoninvalidarraypathdefinition"></a>错误代码： JsonInvalidArrayPathDefinition
+
+- **消息**： `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+
+
+### <a name="error-code--jsonemptyjobjectdata"></a>错误代码： JsonEmptyJObjectData
+
+- **消息**： `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--jsonnullvalueinpathdefinition"></a>错误代码： JsonNullValueInPathDefinition
+
+- **消息**： `Null JSONPath detected in JsonPathDefinition.`
+
+
+### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>错误代码： JsonUnsupportedHierarchicalComplexValue
+
+- **消息**： `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
+
+
+### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>错误代码： JsonConflictPartitionDiscoverySchema
+
+- **消息**： `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
+
+
+### <a name="error-code--jsoninvaliddataformat"></a>错误代码： JsonInvalidDataFormat
+
+- **消息**： `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
+
+
+### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>错误代码： JsonInvalidDataMixedArrayAndObject
+
+- **消息**： `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+
+
+
+## <a name="parquet-format"></a>Parquet 格式
+
+### <a name="error-code--parquetjavainvocationexception"></a>错误代码： ParquetJavaInvocationException
+
+- **消息**： `An error occurred when invoking java, message: %javaException;.`
+
+- **原因**：如果错误消息包含 "OutOfMemory"、"java 堆空间" 和 "doubleCapacity"，通常是早期版本的 integration runtime 中的内存管理问题。
+
+- **建议**：如果使用自承载 Integration Runtime 并且版本早于3.20.7159.1，则建议升级到最新版本。
+
+- **原因**：当错误消息包含 "OutOfMemory" 时，集成运行时没有足够的资源来处理文件。
+
+- **建议**：限制集成运行时上的并发运行。 对于自承载 Integration Runtime，增加到内存等于或大于 8 GB 的强大计算机。
+
+- **原因**：如果错误消息包含 "NullPointerReference"，则可能是暂时性错误。
+
+- **建议**：请重试。 如果问题仍然存在，请与支持人员联系。
+
+
+### <a name="error-code--parquetinvalidfile"></a>错误代码： ParquetInvalidFile
+
+- **消息**： `File is not a valid parquet file.`
+
+- **原因**： Parquet 文件问题。
+
+- **建议**：检查输入是否为有效的 parquet 文件。
+
+
+### <a name="error-code--parquetnotsupportedtype"></a>错误代码： ParquetNotSupportedType
+
+- **消息**： `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
+
+- **原因**： Azure 数据工厂不支持 parquet 格式。
+
+- **建议**：仔细检查源数据。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
+
+
+### <a name="error-code--parquetmisseddecimalprecisionscale"></a>错误代码： ParquetMissedDecimalPrecisionScale
+
+- **消息**： `Decimal Precision or Scale information is not found in schema for column: %column;.`
+
+- **原因**：尝试解析数字的精度和小数位数，但不提供此类信息。
+
+- **建议**： "Source" 不会返回正确的精度和小数位数。 检查问题列的精度和小数位数。
+
+
+### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>错误代码： ParquetInvalidDecimalPrecisionScale
+
+- **消息**： `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
+
+- **原因**：架构无效。
+
+- **建议**：检查问题列的精度和小数位数。
+
+
+### <a name="error-code--parquetcolumnnotfound"></a>错误代码： ParquetColumnNotFound
+
+- **消息**： `Column %column; does not exist in Parquet file.`
+
+- **原因**：源架构与接收器架构不匹配。
+
+- **建议**：检查 "activity" 中的 the'mappings "。 请确保源列可以映射到正确的接收器列。
+
+
+### <a name="error-code--parquetinvaliddataformat"></a>错误代码： ParquetInvalidDataFormat
+
+- **消息**： `Incorrect format of %srcValue; for converting to %dstType;.`
+
+- **原因**：无法将数据转换为在映射中指定的类型。源
+
+- **建议**：请在复制活动列映射中仔细检查源数据或指定此列的正确数据类型。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
+
+
+### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>错误代码： ParquetDataCountNotMatchColumnCount
+
+- **消息**： `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
+
+- **原因**：源列计数和接收器列计数不匹配
+
+- **建议**：双检查源列计数与 "映射" 中的接收器列计数相同。
+
+
+### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>错误代码： ParquetDataTypeNotMatchColumnType
+
+- **消息**：数据类型% srcType;与给定的列类型% dstType; 不匹配位于列 "% columnIndex;"。
+
+- **原因**：源中的数据无法转换为接收器中定义的类型化
+
+- **建议**：请在映射中指定正确的类型。
+
+
+### <a name="error-code--parquetbridgeinvaliddata"></a>错误代码： ParquetBridgeInvalidData
+
+- **消息**： `%message;`
+
+- **原因**：数据值超出限制
+
+- **建议**：请重试。 如果问题仍然存在，请联系我们。
+
+
+### <a name="error-code--parquetunsupportedinterpretation"></a>错误代码： ParquetUnsupportedInterpretation
+
+- **消息**： `The given interpretation '%interpretation;' of parquet format is not supported.`
+
+- **原因**：不支持的方案
+
+- **建议**： "ParquetInterpretFor" 不应为 "sparkSql"。
+
+
+### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>错误代码： ParquetUnsupportFileLevelCompressionOption
+
+- **消息**： `File level compression is not supported for Parquet.`
+
+- **原因**：不支持的方案
+
+- **建议**：在负载中删除 "CompressionType"。
+
+
+
+## <a name="general-copy-activity-error"></a>常规复制活动错误
+
+### <a name="error-code--jrenotfound"></a>错误代码： JreNotFound
+
+- **消息**： `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
+
+- **原因**：自承载集成运行时找不到 Java 运行时。 读取特定源时需要 Java 运行时。
+
+- **建议**：检查集成运行时环境，参考文档： https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime
+
+
+### <a name="error-code--wildcardpathsinknotsupported"></a>错误代码： WildcardPathSinkNotSupported
+
+- **消息**： `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
+
+- **原因**：接收器数据集不支持通配符。
+
+- **建议**：检查接收器数据集并修复不带通配符值的路径。
+
+
+### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>错误代码： MappingInvalidPropertyWithEmptyValue
+
+- **消息**： `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+
+
+### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>错误代码： MappingInvalidPropertyWithNamePathAndOrdinal
+
+- **消息**： `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+
+
+### <a name="error-code--mappingduplicatedordinal"></a>错误代码： MappingDuplicatedOrdinal
+
+- **消息**： `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+
+
+### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>错误代码： MappingInvalidOrdinalForSinkColumn
+
+- **消息**： `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
 
 
 ## <a name="next-steps"></a>后续步骤

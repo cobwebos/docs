@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: MT
+ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552808"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834681"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -195,18 +195,18 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="region-availability"></a>适用区域
 
-标准负载均衡器目前已在所有公有云区域推出。
+标准负载均衡器当前在所有 Azure 区域中均可用。
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>SLA 
 
-可以使用标准负载均衡器，其 SLA 为 99.99%。  有关详细信息，请查看[标准负载均衡器 SLA](https://aka.ms/lbsla)。
+可以使用标准负载均衡器，其 SLA 为 99.99%。  有关详细信息，请查看[标准负载均衡器 SLA](https://aka.ms/lbsla)。 
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>价格 
 
-使用标准负载均衡器是收费的。
+使用标准负载均衡器是收费的。 
 
-- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数）
-- 处理的入站和出站数据的数量，与规则无关。 
+- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数） 
+- 处理的入站和出站数据的数量，与规则无关。
 
 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)页。
 
@@ -216,15 +216,15 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
 - 负载均衡器规则不能跨越两个虚拟网络。  前端及其相关的后端实例必须位于相同的虚拟网络中。  
 - 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
-- 由于 VNet 之前的服务和其他平台服务功能的副作用，如果仅使用内部标准负载均衡器，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
+- 只有内部标准负载均衡器的情况下，可以从内部的实例访问没有 VNet 和其他 Microsoft 平台服务的 Web 辅助角色，因为在 VNet 服务和其他平台服务功能方面产生了副作用。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
 - 负载均衡器属于 TCP 或 UDP 产品，用于对这些特定的 IP 协议进行负载均衡和端口转发。  负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。 负载均衡器不会终止、响应 UDP 或 TCP 流的有效负载，也不与之交互。 它不是一个代理。 必须使用负载均衡或入站 NAT 规则（TCP 或 UDP）中所用的同一协议在带内成功验证与前端的连接，并且必须至少有一个虚拟机为客户端生成了响应，这样才能看到前端发出的响应。  未从前端负载均衡器收到带内响应表明没有任何虚拟机能够做出响应。  在虚拟机都不能做出响应的情况下，无法与负载均衡器前端交互。  这一点也适用于出站连接，其中的[端口伪装 SNAT](load-balancer-outbound-connections.md#snat) 仅支持 TCP 和 UDP；其他任何 IP 协议（包括 ICMP）也会失败。  分配实例级公共 IP 地址即可缓解问题。
 - 公共负载均衡器在将虚拟网络中的专用 IP 地址转换为公共 IP 地址时提供[出站连接](load-balancer-outbound-connections.md)，而内部负载均衡器则与此不同，它不会将出站发起连接转换为内部负载均衡器的前端，因为两者都位于专用的 IP 地址空间中。  这可以避免不需要转换的唯一内部 IP 地址空间内发生 SNAT 耗尽。  负面影响是，如果来自后端池中 VM 的出站流尝试流向该 VM 所在池中内部负载均衡器的前端，并映射回到自身，则这两个流的分支不会匹配，并且该流将会失败。  如果该流未映射回到后端池中的同一 VM（在前端中创建了流的 VM），则该流将会成功。   如果流映射回到自身，则出站流显示为源自 VM 并发往前端，并且相应的入站流显示为源自 VM 并发往自身。 从来宾 OS 的角度看，同一流的入站和出站部分在虚拟机内部不匹配。 TCP 堆栈不会将同一流的这两半看作是同一流的组成部分，因为源和目标不匹配。  当流映射到后端池中的任何其他 VM 时，流的两半将会匹配，且 VM 可以成功响应流。  此方案的症状是间歇性的连接超时。 可通过几种常用解决方法来可靠地实现此方案（从后端池发起流，并将其传送到后端池的相应内部负载均衡器前端），包括在内部负载均衡器的后面插入第三方代理，或[使用 DSR 式规则](load-balancer-multivip-overview.md)。  尽管可以使用公共负载均衡器来缓解问题，但最终的方案很容易导致 [SNAT 耗尽](load-balancer-outbound-connections.md#snat)，除非有精心的管理，否则应避免这种做法。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 了解有关[Azure 负载均衡器](load-balancer-overview.md)的详细信息。
 - 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
-- 详细了解[可用性区域](../availability-zones/az-overview.md)。
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
 - 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)。
 - 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
@@ -232,8 +232,4 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
 - 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)。
-- 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
 - 详细了解[网络安全组](../virtual-network/security-overview.md)。
-- 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
-- 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
-- 详细了解[负载均衡器](load-balancer-overview.md)。

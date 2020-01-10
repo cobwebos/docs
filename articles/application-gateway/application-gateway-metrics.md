@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551380"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777812"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -36,7 +36,7 @@ ms.locfileid: "75551380"
 
   处理请求和发送响应所用的平均时间。 这是从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成的时间的平均间隔计算得出的。 需要特别注意的是，这通常包括应用程序网关处理时间、请求和响应数据包通过网络传输的时间，以及后端服务器响应的时间。
   
-如果*客户端 RTT*远远大于*应用程序网关总时间*，则可以推导出客户端观察到的延迟是客户端与应用程序网关之间的网络连接。 如果这两个延迟可比较，则可能是由于以下任一原因导致的高延迟：应用程序网关、应用程序网关和后端应用程序之间的网络或后端应用程序性能。
+按侦听器筛选后，如果*客户端 RTT*比*应用程序网关总时间*多很多，则可以推导出客户端观察到的延迟是客户端和应用程序网关之间的网络连接。 如果这两个延迟可比较，则可能是由于以下任一原因导致的高延迟：应用程序网关、应用程序网关和后端应用程序之间的网络或后端应用程序性能。
 
 - **后端首字节响应时间**
 

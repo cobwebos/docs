@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916496"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777830"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。 用户代理应用程序是公用客户端应用程序的一种形式，其中客户端代码在用户代理（如 web 浏览器）中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
@@ -116,10 +116,10 @@ export type Configuration = {
         * `https://login.microsoftonline.com/common`-用于通过工作和学校帐户或 Microsoft 个人帐户来登录用户。
         * `https://login.microsoftonline.com/organizations/`-用于使用工作和学校帐户登录用户。
         * `https://login.microsoftonline.com/consumers/`-用于仅使用个人 Microsoft 帐户（live）登录用户。
-    * 在 Azure AD B2C 中，它的格式为 `https://<instance>/tfp/<tenant>/<policyName>/`，其中实例是 Azure AD B2C 域，租户是 Azure AD B2C 租户的名称，policyName 是要应用的 B2C 策略的名称。
+    * 在 Azure AD B2C 中，它的格式为 `https://<instance>/tfp/<tenant>/<policyName>/`，其中实例是 Azure AD B2C 域，即 {b2clogin}. .com 是 Azure AD B2C 租户的名称，即 "onmicrosoft"，policyName 是要应用的 B2C 策略的名称，是要应用的 B2C 策略的名称。
 
 
-- **validateAuthority**：可选。  验证令牌的颁发者。 默认值为 `true`。 对于 B2C 应用程序，由于授权值已知并且每个策略可能不同，因此，验证机构验证将不起作用，并且必须设置为 `false`。
+- **validateAuthority**：可选。  验证令牌的颁发者。 默认为 `true`。 对于 B2C 应用程序，由于授权值已知并且每个策略可能不同，因此，验证机构验证将不起作用，并且必须设置为 `false`。
 
 - **redirectUri**：可选。  应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与在门户中注册的重定向 Uri 之一完全匹配。 默认为 `window.location.href`。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689141"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834945"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -66,15 +66,15 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
 |--------|-----------|
 | **帐户故障转移** |尚不支持|
 | **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy （[AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)）。 不支持早期版本的 AzCopy （如 AzCopy）。|
-| **Azure Blob 存储生命周期管理策略** | 支持生命周期管理策略（预览版）。  支持所有访问层。 存档访问层目前处于预览阶段。 尚不支持删除 blob 快照。 <br><br> 当前有一些影响生命周期管理策略和存档访问层的 bug。  在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)注册生命周期管理策略的预览并存档访问层。   |
-| **Azure 内容交付网络 (CDN)** | 尚不支持|
+| **Azure Blob 存储生命周期管理策略** | 支持生命周期管理策略（预览版）。  在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)注册生命周期管理策略的预览并存档访问层。   <br><br>支持所有访问层。 存档访问层目前处于预览阶段。 尚不支持删除 blob 快照。  当前有一些影响生命周期管理策略和存档访问层的 bug。  |
+| **Azure 内容分发网络 (CDN)** | 尚不支持|
 | **Azure 搜索** |支持（预览）|
 | **Azure 存储浏览器** | 特定于版本的支持。 <br><br>仅使用 `1.6.0` 或更高版本的版本。 <br> 当前存在影响版本 `1.11.0` 的存储 bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但作为一种解决方法，我们建议你使用可[免费下载](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)的版本 `1.10.x`。 `1.10.x` 不受存储 bug 的影响。|
 | **Blob 容器 Acl** |尚不支持|
 | **Blobfuse** |尚不支持|
 | **自定义域** |尚不支持|
 | **Azure 门户中的存储资源管理器** | 有限支持。 目前尚不支持 Acl。 |
-| **诊断日志记录** |支持诊断日志（预览）。<br><br>当前不支持在 Azure 门户中启用日志。 下面是如何使用 PowerShell 启用日志的示例。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请确保指定 `Blob` 作为 `-ServiceType` 参数的值，如本示例中所示。 <br><br>目前，Azure 存储资源管理器不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 Sdk。
+| **诊断日志记录** |支持诊断日志（预览）。 <br><br>Azure 存储资源管理器 1.10. x 不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 Sdk。
 | **不可变存储** |尚不支持 <br><br>不可变的存储提供了将数据存储在[蠕虫（写入一次，读取多个）](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态的能力。|
 | **对象级层** |支持冷层和存档层。 存档层处于预览阶段。 目前尚不支持所有其他访问层。 <br><br> 当前有一些影响存档访问层的 bug。  在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)注册存档访问层的预览。|
 | **静态网站** |尚不支持 <br><br>具体而言，是将文件提供给[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)的功能。|

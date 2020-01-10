@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442606"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834338"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -30,9 +30,12 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在按照本文中的步骤操作之前，应将后端服务配置为进行客户端证书身份验证（[若要在 Azure 网站中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
+本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在按照本文中的步骤操作之前，应将后端服务配置为进行客户端证书身份验证（[若要在 Azure App Service 参阅本文中配置证书身份验证][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
 
 ## <a name="step1"></a>上传证书
+
+> [!NOTE]
+> 你可以使用存储在[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)服务中的证书，而不是已上传的证书，如本[示例](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)中所示。
 
 ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 
 1. 在 Azure 门户中导航到 Azure API 管理服务实例。
 2. 从菜单中选择 "**证书**"。
-3. 单击“ **+ 添加**”按钮。  
-    ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. 浏览证书，提供其 ID 和密码。  
+3. 单击“ **+ 添加**”按钮。
+    ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. 浏览证书，提供其 ID 和密码。
 5. 单击“创建”。
 
 > [!NOTE]
@@ -65,14 +68,14 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 
 ## <a name="step2"></a>将 API 配置为使用客户端证书进行网关身份验证
 
-1. 单击左侧“API 管理”菜单中的“API”，然后导航至 API。  
+1. 单击左侧“API 管理”菜单中的“API”，然后导航至 API。
     ![启用客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. 在“设计”选项卡上，单击“后端”部分的铅笔图标。 
-3. 将“网关凭据”更改为“客户端证书”，然后从下拉列表中选择证书。  
+2. 在“设计”选项卡上，单击“后端”部分的铅笔图标。
+3. 将“网关凭据”更改为“客户端证书”，然后从下拉列表中选择证书。
     ![启用客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. 单击“ **保存**”。 
+4. 单击“ **保存**”。
 
 > [!WARNING]
 > 此更改立即生效，调用对该 API 的操作时，会使用证书在后端服务器上进行身份验证。

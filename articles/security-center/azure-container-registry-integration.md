@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552672"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780039"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure 容器注册表与安全中心集成（预览版）
 
 Azure 容器注册表（ACR）是一项托管的专用 Docker 注册表服务，用于在中央注册表中存储和管理 Azure 部署的容器映像。 它基于开源 Docker 注册表2.0。
 
-为了更深入地了解你的注册表和映像漏洞，Azure 安全中心的标准层用户可以启用可选的容器注册表绑定。 使用此功能的成本按映像收费，而不是按扫描收费。 有关详细信息，请参阅[定价](security-center-pricing.md)。 启用捆绑包后，只要将映像推送到注册表，安全中心就会自动扫描注册表中的映像。
+如果你在 Azure 安全中心的标准层上，则可以添加容器注册表包。 此可选功能使你能够更深入地了解注册表中的映像的漏洞。 在订阅级别启用或禁用捆绑包，以涵盖订阅中的所有注册表。 此功能按映像收费，而不是按 "[定价" 页](security-center-pricing.md)上显示的每个扫描。 
 
-> [!NOTE]
-> 仅在启用容器注册表绑定并将映像推送到注册表后，才会对注册表进行安全中心的第一次扫描。
+启用容器注册表绑定，可确保安全中心已准备好扫描推送到注册表中的映像。 扫描处于映像级别：安全中心没有扫描注册表，它正在扫描注册表中存储的映像。 
+
+每当将映像推送到注册表时，安全中心会自动扫描该映像。 若要触发映像扫描，请将其推送到存储库。
+
 
 扫描完成后（通常在大约10分钟后），将在安全中心建议中获得结果，如下所示：
 

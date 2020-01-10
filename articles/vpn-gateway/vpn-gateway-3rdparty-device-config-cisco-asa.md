@@ -1,5 +1,5 @@
 ---
-title: 将 Cisco ASA 设备连接到 Azure VPN 网关的示例配置 | Microsoft Docs
+title: 将 Cisco ASA 设备连接到 Azure VPN 网关的示例配置
 description: 本文提供将 Cisco ASA 设备连接到 Azure VPN 网关的示例配置。
 services: vpn-gateway
 author: yushwang
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648733"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778076"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
 本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
@@ -32,9 +32,9 @@ ms.locfileid: "60648733"
 |                        |                                   |
 
 > [!NOTE]
-> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。 
+> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。 连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
 >
-> 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。  请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
+> 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。 请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
 
 
 ## <a name="vpn-device-requirements"></a>VPN 设备要求
@@ -53,7 +53,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 ### <a name="virtual-network-and-vpn-gateway-information"></a>虚拟网络和 VPN 网关信息
 本部分列出示例的参数。
 
-| **Parameter**                | **ReplTest1**                    |
+| **Parameter**                | **值**                    |
 | ---                          | ---                          |
 | 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure_Gateway_Public_IP      |
@@ -70,7 +70,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE 策略和参数
 下表列出本示例中使用的 IPsec/IKE 算法和参数。 请查阅 VPN 设备规范，验证 VPN 设备型号和固件版本支持的算法。
 
-|  IPsec/IKEv2  | **ReplTest1**                            |
+| IPsec/IKEv2  | **值**                            |
 | ---              | ---                                  |
 | IKEv2 加密 | AES256                               |
 | IKEv2 完整性  | SHA384                               |
@@ -110,14 +110,14 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 * 标识内部/专用和外部/公共网络的路由。
 * 确保所有名称和策略编号在设备上唯一。
 * 确保设备支持加密算法。
-* 将以下“占位符值”替换为你配置的实际值： 
-  - 外部接口名称："outside" 
-  - Azure_Gateway_Public_IP 
-  - OnPrem_Device_Public_IP 
-  - IKE：**Pre_Shared_Key**
-  - 虚拟网络和本地网关名称：**VNetName** 和 **LNGName**
-  - 虚拟网络和本地网络地址前缀 
-  - 正确的网络掩码 
+* 将以下“占位符值”替换为你配置的实际值：
+  - 外部接口名称："outside"
+  - Azure_Gateway_Public_IP
+  - OnPrem_Device_Public_IP
+  - IKE：IKE Pre_Shared_Key
+  - 虚拟网络和本地网络网关名称："VNetName" 和 "LNGName"
+  - 虚拟网络和本地网络地址前缀
+  - 正确的网络掩码
 
 #### <a name="sample-script"></a>示例脚本
 

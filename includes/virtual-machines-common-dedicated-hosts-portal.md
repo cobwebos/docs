@@ -5,24 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73590433"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833940"
 ---
-> [!IMPORTANT]
-> Azure 专用主机目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知预览版限制**
-> - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列： DSv3 和 ESv3。 
+## <a name="limitations"></a>限制
 
+- 虚拟机规模集目前在专用主机上不受支持。
+- 初始版本支持以下 VM 系列： DSv3 和 ESv3。 
 
 ## <a name="create-a-host-group"></a>创建主机组
 
@@ -39,10 +35,10 @@ ms.locfileid: "73590433"
 
 1. 打开 Azure[门户](https://portal.azure.com)。
 1. 选择左上角的 "**创建资源**"。
-1. 搜索 "**主机组**"，然后从结果中选择 "**主机组（预览版）** "。
+1. 搜索 "**主机组**"，然后从结果中选择 "**主机组**"。
 
     ![主机组搜索结果。](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
-1. 在 "**主机组（预览）** " 页中，选择 "**创建**"。
+1. 在 "**主机组**" 页上，选择 "**创建**"。
 1. 选择要使用的订阅，然后选择 "**新建**" 以创建新的资源组。
 1. 键入*myDedicatedHostsRG*作为**名称**，然后选择 **"确定"** 。
 1. 对于 "**主机组名称**"，请键入*myHostGroup*。
@@ -58,17 +54,17 @@ ms.locfileid: "73590433"
 
 ## <a name="create-a-dedicated-host"></a>创建专用主机
 
-现在，在主机组中创建专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
+现在，在主机组中创建专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。 支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
 如果为主机组设置了容错域计数，系统会要求你为主机指定容错域。  
 
 1. 选择左上角的 "**创建资源**"。
-1. 搜索 "**专用主机**"，然后从结果中选择 "**专用主机（预览）** "。
+1. 搜索 "**专用主机**"，然后从结果中选择 "**专用主机**"。
 
     ![主机组搜索结果。](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
-1. 在 "**专用主机（预览）** " 页中，选择 "**创建**"。
+1. 在 "**专用主机**" 页上，选择 "**创建**"。
 1. 选择要使用的订阅。
 1. 选择*myDedicatedHostsRG*作为**资源组**。
 1. 在 "**实例详细信息**" 中，键入*myhost 代表*作为**名称**，然后选择 "*美国东部*" 作为位置。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 661849d2d5c42db70d366e48e4138008bc18b720
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ab68fc6533be5e3241de2e49652251fea5fe2f7d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902114"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780656"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -34,9 +34,12 @@ ms.locfileid: "72902114"
 
 Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序，且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
-请注意，Nvidia 扩展将始终安装 latst 驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
+请注意，Nvidia 扩展将始终安装最新的驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
 
-| OS | 驱动程序 |
-| -------- |------------- |
-| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 | [网格9.1 （431.79）](https://go.microsoft.com/fwlink/?linkid=874181) （.exe） <br/><br/> [网格9.0 （431.02）](https://download.microsoft.com/download/8/C/C/8CC88D54-EB07-44D3-8FA9-B797B173ED04/431.02_grid_win10_server2016_server2019_64bit_international.exe) （.exe）  |
-| Windows Server 2012 R2<br/><br/>Windows Server 2008 R2<br/><br/>Windows 8<br/><br/>Windows 7 | [网格9.1 （431.79）](https://go.microsoft.com/fwlink/?linkid=874184) （.exe）<br/><br/> [网格9.0 （431.02）](https://download.microsoft.com/download/B/D/6/BD6D1C34-E41F-4654-B5AB-F4DA9C08AA64/431.02_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) （.exe）  |
+对于 Windows Server 2019、Windows Server 2016 和 Windows 10 （最多生成1909）：
+- [网格10.0 （441.66）](https://go.microsoft.com/fwlink/?linkid=874181) （.exe）
+- [网格9.0 （431.02）](https://download.microsoft.com/download/8/C/C/8CC88D54-EB07-44D3-8FA9-B797B173ED04/431.02_grid_win10_server2016_server2019_64bit_international.exe) （.exe） 
+
+对于 Windows Server 2012 R2、Windows Server 2008 R2、Windows 8 和 Windows 7： 
+- [网格10.0 （441.66）](https://go.microsoft.com/fwlink/?linkid=874184) （.exe）
+- [网格9.1 （431.79）](https://download.microsoft.com/download/8/6/e/86ef2daa-b31e-43ad-90f2-bd795384b71e/431.79_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) （.exe）  

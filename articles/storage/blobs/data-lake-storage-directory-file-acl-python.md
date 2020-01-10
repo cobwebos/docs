@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: e07bb6aa9d1fe22baaebb7bc7239ce03a728c6b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431806"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835056"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Python 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
@@ -140,6 +140,9 @@ def delete_directory():
 
 通过调用**Get_access_control DataLakeDirectoryClient**方法来获取目录的访问控制列表（ACL），并通过调用**set_access_control DataLakeDirectoryClient**方法来设置 ACL。
 
+> [!NOTE]
+> 如果你的应用程序通过使用 Azure Active Directory （Azure AD）来授予访问权限，请确保已向应用程序用于授权访问的安全主体分配了[存储 Blob 数据所有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅[Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+
 此示例获取并设置名为 `my-directory`的目录的 ACL。 字符串 `rwxr-xrw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 
 ```python
@@ -195,6 +198,9 @@ def upload_file_to_directory():
 ## <a name="manage-file-permissions"></a>管理文件权限
 
 通过调用**Get_access_control DataLakeFileClient**方法来获取文件的访问控制列表（ACL），并通过调用**set_access_control DataLakeFileClient**方法来设置 ACL。
+
+> [!NOTE]
+> 如果你的应用程序通过使用 Azure Active Directory （Azure AD）来授予访问权限，请确保已向应用程序用于授权访问的安全主体分配了[存储 Blob 数据所有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅[Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 此示例获取并设置名为 `my-file.txt`的文件的 ACL。 字符串 `rwxr-xrw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373241"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780073"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>什么是适用于 Azure 虚拟网络的 IPv6？ （预览）
 
@@ -75,7 +75,7 @@ Azure VNET 的 IPv6 是一项基础功能集，可让客户在 Azure 中托管�
 ## <a name="limitations"></a>限制
 Azure 虚拟网络的当前 IPv6 版本有以下限制：
 - 适用于 Azure 虚拟网络（预览版）的 IPv6 适用于所有全球 Azure 区域，但仅适用于全球 Azure-政府云中。
-- Express Route 和 VPN 网关不能用于启用了 IPv6 的 VNET 中，可以直接使用 "UseRemoteGateway" 或对等互连。 
+- ExpressRoute 和 VPN 网关不能用于启用了 IPv6 的 VNET 中，可以直接使用 "UseRemoteGateway"，也可以对等互连。 
 - Azure 平台（AKS 等）不支持容器的 IPv6 通信。  
 
 ## <a name="pricing"></a>价格

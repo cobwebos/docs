@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443860"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835018"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题（FAQ）
 
@@ -105,7 +105,7 @@ ms.locfileid: "75443860"
 
 ## <a name="tune-performance"></a>调整性能
 
-\* * 如何实现优化托管实例的性能吗？ **
+**如何实现优化托管实例的性能吗？**
 
 常规用途托管实例使用远程存储，因为数据和日志文件的大小对于性能很重要。 有关详细信息，请参阅[常规用途托管实例性能的日志文件大小的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
 
@@ -180,8 +180,8 @@ ms.locfileid: "75443860"
 
 ## <a name="dns-refresh"></a>DNS 刷新 
 
-\* * 能否进行 DNS 刷新？ **
-  
+**能否进行 DNS 刷新？**
+
 目前，我们不提供刷新托管实例的 DNS 服务器配置的功能。
 
 最终刷新 DNS 配置：

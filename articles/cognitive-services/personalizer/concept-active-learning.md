@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681861"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834461"
 ---
 # <a name="active-and-inactive-events"></a>活动和非活动事件
 
@@ -25,10 +25,11 @@ ms.locfileid: "73681861"
 
 通常情况下，在以下情况下会发生这些情况：
 
-* 预呈现 UI，用户可能会或可能无法查看。 
-* 您的应用程序正在进行预测性的个性化，其中的排名调用使用很少的实时上下文进行，并且应用程序不能使用该输出。 
+* 预呈现 UI，用户可能会或可能无法查看。
+* 您的应用程序正在进行预测性的个性化，其中的排名调用使用很少的实时上下文进行，并且应用程序不能使用该输出。
 
-在这些情况下，请使用 Personalizer 调用 Rank，请求事件处于_非活动状态_。 Personalizer 不会对此活动带来回报，也不会应用默认奖励。 稍后在业务逻辑中，如果应用程序使用排名调用中的信息，只需_激活_事件。 一旦活动处于活动状态，Personalizer 就需要一个事件回报。 如果对奖励 API 没有显式调用，则 Personalizer 将应用默认奖励。
+在这些情况下，请使用 Personalizer 调用 Rank，请求事件处于_非活动状态_。 Personalizer 不会对此活动带来回报，也不会应用默认奖励。
+稍后在业务逻辑中，如果应用程序使用排名调用中的信息，只需_激活_事件。 一旦活动处于活动状态，Personalizer 就需要一个事件回报。 如果对奖励 API 没有显式调用，则 Personalizer 将应用默认奖励。
 
 ## <a name="inactive-events"></a>非活动事件
 
@@ -42,15 +43,28 @@ ms.locfileid: "73681861"
 
 你可以从 Azure 门户导入和导出学习策略文件。 使用此方法可以保存现有策略，对其进行测试，替换它们，并将它们作为项目存档在源代码控制中，以供将来参考和审核。
 
+了解[如何](how-to-learning-policy.md)导入和导出学习策略。
+
 ### <a name="understand-learning-policy-settings"></a>了解学习策略设置
 
 学习策略中的设置不应更改。 仅在了解其对 Personalizer 的影响时才更改设置。 如果没有此信息，则可能会导致问题，包括使 Personalizer 模型失效。
+
+Personalizer 使用[vowpalwabbit](https://github.com/VowpalWabbit)来定型和评分事件。 请参阅[vowpalwabbit 文档](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments)，了解如何使用 vowpalwabbit 编辑学习设置。 使用正确的命令行参数后，请使用以下格式将命令保存到文件（使用所需的命令替换 arguments 属性值），并上传该文件，以便在 Personalizer 资源的 Azure 门户中的 "**模型和学习设置**" 窗格中导入学习设置。
+
+以下 `.json` 是学习策略的一个示例。
+
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
 ### <a name="compare-learning-policies"></a>比较学习策略
 
 您可以通过执行[脱机评估](concepts-offline-evaluation.md)来比较不同的学习策略如何对 Personalizer 日志中的过去的数据执行。
 
-[上传你自己的学习策略](how-to-offline-evaluation.md)，以将其与当前学习策略进行比较。
+[上传你自己的学习策略](how-to-learning-policy.md)，以将其与当前学习策略进行比较。
 
 ### <a name="optimize-learning-policies"></a>优化学习策略
 

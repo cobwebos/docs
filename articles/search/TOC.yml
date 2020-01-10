@@ -113,6 +113,8 @@
       items:
         - name: 安全概述
           href: search-security-overview.md
+        - name: 创建专用终结点
+          href: service-create-private-endpoint.md
         - name: 服务密钥管理
           href: search-security-api-keys.md
         - name: 基于角色的管理员访问权限

@@ -1,20 +1,20 @@
 ---
 title: Azure Maps 身份验证 | Microsoft Docs
-description: 使用 Azure Maps 服务时进行身份验证。
+description: 使用 Microsoft Azure Maps 服务的 Azure Active Directory （Azure AD）或共享密钥身份验证。 了解如何获取 Azure Maps 订阅密钥。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575656"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834200"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -22,12 +22,14 @@ Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥和
 
 ## <a name="shared-key-authentication"></a>共享密钥身份验证
 
-共享密钥身份验证将 Azure Maps 帐户生成的密钥连同每个请求一起传递到 Azure Maps。  创建 Azure Maps 帐户时，将生成两个密钥。 对于发送到 Azure Maps 服务的每个请求，需要在 URL 中添加订阅密钥作为参数。
+共享密钥身份验证将 Azure Maps 帐户生成的密钥传递到 Azure Maps 的每个请求。 对于每个 Azure Maps 服务请求，需要将*订阅密钥*作为参数添加到 URL。 创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 建议你在使用共享密钥身份验证调用 Azure Maps 时，将主密钥用作订阅密钥。 辅助密钥可用于应用滚动密钥更改等方案。  
+
+有关在 Azure 门户中查看密钥的信息，请参阅[管理身份验证](https://aka.ms/amauthdetails)。
 
 > [!Tip]
 > 我们建议定期重新生成密钥。 你有两个密钥，因此，在重新生成其中的一个密钥时，可以使用另一个密钥来保持连接。 重新生成密钥时，需要将访问该帐户的所有应用程序更新为使用新密钥。
 
-有关如何查看密钥的信息，请参阅[查看身份验证详细信息](https://aka.ms/amauthdetails)。
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>使用 Azure Active Directory 进行身份验证（预览）
 

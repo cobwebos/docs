@@ -1,19 +1,18 @@
 ---
-title: 生成并导出用于点到站点的证书：MakeCert：Azure | Microsoft Docs
+title: Azure VPN 网关：生成 & 导出 P2S 的证书： MakeCert
 description: 使用 MakeCert 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768100"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833977"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 Makecert 为点到站点连接生成并导出证书
 
@@ -47,7 +46,7 @@ ms.locfileid: "60768100"
 
 ### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>导出自签名证书和私钥以将其存储（可选）
 
-可能想要导出自签名根证书并将它存储在安全位置。 如果需要，可以稍后在另一台计算机上安装此自签名证书，并生成更多客户端证书，或导出另一个 .cer 文件。 如果要将自签名根证书导出为 .pfx，请选择该根证书，并使用[导出客户端证书](#clientexport)中所述的步骤导出。
+可能想要导出自签名根证书并将它存储在安全位置。 如果需要，可以稍后在另一台计算机上安装此自签名证书，并生成更多客户端证书，或导出另一个 .cer 文件。 要将自签名根证书导出为 .pfx，请选择该根证书，然后使用[导出客户端证书](#clientexport)中所述的步骤导出。
 
 ## <a name="create-and-install-client-certificates"></a>创建和安装客户端证书
 
@@ -61,8 +60,8 @@ ms.locfileid: "60768100"
  
 1. 在用于创建自签名证书的同一台计算机上，以管理员身份打开命令提示符。
 2. 修改并运行示例，生成客户端证书。
-   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称  。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
-   * 将 P2SChildCert  更改为生成客户端证书所用的名称。
+   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
+   * 将 P2SChildCert 更改为生成客户端证书所用的名称。
 
    如果未经修改就运行以下示例，则个人证书存储中将有一个从根证书 P2SRootCert 生成的客户端证书，名为 P2SChildcert。
 

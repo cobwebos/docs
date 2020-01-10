@@ -1,30 +1,22 @@
 ---
-title: VPN 网关配置和连接疑难解答 | Microsoft Docs
+title: Azure VPN 网关：配置和连接故障排除
 description: 本文有助于将你链接到文章以对 VPN 网关配置、连接进行故障排除并验证吞吐量。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: cherylmc
-ms.openlocfilehash: 263c1010ec6cf5f6140c4dc9323dd9bd149b2368
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727279"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780158"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN 网关疑难解答
 
-VPN 网关连接可能会因多种原因而失败。 本文包含的链接有助于你开始进行疑难解答。 有关完整列表，请参阅本页左侧“疑难解答”下方的目录中包含的文章  。
+VPN 网关连接可能会因多种原因而失败。 本文包含的链接有助于你开始进行疑难解答。 有关完整列表，请参阅本页左侧“疑难解答”下方的目录中包含的文章。
 
 ## <a name="troubleshooting-scenarios-and-solutions"></a>方案和解决方案疑难解答
 

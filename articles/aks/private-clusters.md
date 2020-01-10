@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480081"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830048"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>公共预览版-私有 Azure Kubernetes 服务群集
 
@@ -81,16 +81,16 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 #### <a name="advanced-networking"></a>高级网络  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 其中--enable-private-群集是专用群集的必需标志 
 
@@ -108,6 +108,11 @@ API 服务器终结点没有公共 IP 地址。 因此，用户将需要在虚�
     * 单击专用 DNS 区域 
     * 选择左窗格中的 "虚拟网络" 链接
     * 创建新链接，将 VM 的 VNET 添加到专用 DNS 区域 *（需要几分钟时间才能使 DNS 区域链接变得可用）*
+    * 返回到门户中的 MC_ * 资源组
+    * 在右侧窗格中选择 "虚拟网络"。 虚拟网络名称的格式为 aks-*。
+    * 在左侧窗格中选择 "对等互连"
+    * 单击 "添加"，添加 VM 的虚拟网络并创建对等互连。
+    * 前往具有 VM 的 Vnet，然后单击 "对等互连" 并选择 "AKS" 虚拟网络并创建对等互连。 如果 AKS 虚拟网络上的地址范围与 VM 的虚拟网络冲突，则对等互连将会失败。 有关虚拟网络对等互连的详细信息，请参阅此[文档][virtual-network-peering]。
 * 通过 SSH 连接到 VM
 * 安装 Kubectl 工具并运行 Kubectl 命令
 
@@ -132,3 +137,5 @@ API 服务器终结点没有公共 IP 地址。 因此，用户将需要在虚�
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

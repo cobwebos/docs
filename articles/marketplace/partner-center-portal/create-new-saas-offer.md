@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 0c2441aaf0cffd357f917a8c600f7399b339bfb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689098"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777897"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -167,7 +167,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 ### <a name="category"></a>类别
 
-最少选择一（1），最多可选择三（3）个类别，将产品/服务分组到适当的 marketplace 搜索区域。 在产品/服务说明中，请致电你的产品/服务如何支持这些类别。
+最少选择一（1），最多可选择三（3）个类别，将产品/服务分组到适当的 marketplace 搜索区域。 请在产品/服务描述中了解产品/服务如何支持这些类别。 
 
 ### <a name="industry"></a>行业
 

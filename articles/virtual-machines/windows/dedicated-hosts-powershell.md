@@ -12,39 +12,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033367"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833840"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>预览：使用 Azure PowerShell 将 Vm 部署到专用主机
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 Vm 部署到专用主机
 
 本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机（vm）。 
 
-请确保已安装 Azure PowerShell 版本 2.4.2 sections 或更高版本，并且已使用 `Connect-AzAccount`登录到 Azure 帐户。 若要安装版本 2.4.2 sections，请打开 PowerShell 提示符，然后键入：
+请确保已安装 Azure PowerShell 版本2.8.0 或更高版本，并且已使用 `Connect-AzAccount`登录到 Azure 帐户。 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>限制
 
-需要至少1.6.0 版本的 PowerShellGet 模块才能在 PowerShell 中启用预览模块功能。 最新版本的 PowerShell Core 自动内置此项，但对于较早版本的 PowerShell，你可以运行以下命令以更新到最新版本：
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Azure 专用主机目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知预览版限制**
-> - 虚拟机规模集目前在专用主机上不受支持。
-> - 预览版初始版本支持以下 VM 系列： DSv3 和 ESv3。 
-
-
+- 虚拟机规模集目前在专用主机上不受支持。
+- 支持以下 VM 系列： DSv3 和 ESv3。 
 
 ## <a name="create-a-host-group"></a>创建主机组
 
@@ -186,7 +170,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 即使部署了虚拟机，也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
 

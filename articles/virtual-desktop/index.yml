@@ -5,7 +5,7 @@ metadata:
   title: Windows 虚拟桌面文档 | Microsoft Docs
   description: 适用于 Azure 的 Windows 虚拟桌面是已在云中虚拟化的多用户 Windows 10 企业版体验。
   author: Heidilohr
-  manager: daveba
+  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -33,7 +33,7 @@ sections:
           - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">通过 Azure 市场创建主机池</a>
           - html: <a href="/azure/virtual-desktop/manage-app-groups">管理 Windows 虚拟桌面的应用组</a>
           - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">使用 PowerShell 创建服务主体和角色分配</a>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: unordered

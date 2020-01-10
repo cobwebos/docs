@@ -1,5 +1,5 @@
 ---
-title: 使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
+title: 使用 REST 将文件上传到 Azure 媒体服务 v3 帐户 |Microsoft Docs
 description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389798"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779155"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
 
@@ -26,7 +26,7 @@ ms.locfileid: "70389798"
 
 本文介绍如何使用 REST 上传本地文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本主题中所述的步骤，必须：
 
@@ -63,4 +63,4 @@ ms.locfileid: "70389798"
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：基于 URL 对远程文件进行编码并流式传输视频 - REST](stream-files-tutorial-with-rest.md)
+[教程：根据 URL 编码远程文件并流式传输视频-REST](stream-files-tutorial-with-rest.md)

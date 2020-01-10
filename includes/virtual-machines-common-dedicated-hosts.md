@@ -8,21 +8,25 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390549"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833890"
 ---
-## <a name="benefits"></a>优点 
+## <a name="limitations"></a>限制
+
+- 虚拟机规模集目前在专用主机上不受支持。
+- 支持以下 VM 系列： DSv3 和 ESv3。 
+
+## <a name="benefits"></a>优势 
 
 保留整个主机具有以下优势：
 
 -   物理服务器级别的硬件隔离。 不会在主机上放置任何其他 Vm。 专用主机部署在相同的数据中心内，与其他非独立主机主机共享相同的网络和底层存储基础结构。
 -   控制由 Azure 平台启动的维护事件。 尽管大部分维护事件对虚拟机的影响不大，但在某些情况下，暂停的每秒都会产生影响。 使用专用主机时，可以选择维护时段，以降低对服务的影响。
 -   利用 Azure 混合权益，你可以将自己的 Windows 和 SQL 许可证带到 Azure。 使用混合权益可提供额外的好处。 有关详细信息，请参阅[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
-
 
 
 ## <a name="groups-hosts-and-vms"></a>组、主机和 Vm  
@@ -85,7 +89,7 @@ ms.locfileid: "72390549"
 
 免费试用版和 MSDN 订阅没有 Azure 专用主机的配额。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 无论部署多少个 Vm，都按专用主机对用户收费。 在你的月度语句中，你将看到新的可计费资源类型。 专用主机上的 Vm 仍会显示在你的声明中，但将具有0价格。
 
@@ -103,7 +107,7 @@ SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单�
 
 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
 
-在预览期间，我们将支持以下主机 SKU\types： DSv3_Type1 和 ESv3_Type1
+专用主机支持以下主机 SKU\types： DSv3_Type1 和 ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>主机生命周期
@@ -111,7 +115,7 @@ SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单�
 
 Azure 监视和管理主机的运行状况状态。 查询主机时，将返回以下状态：
 
-| 运行状况状态   | 说明       |
+| 运行状况状态   | Description       |
 |----------|----------------|
 | 主机可用     | 主机没有已知问题。   |
 | 正在调查的主机  | 我们正在寻找的主机遇到一些问题。 这是 Azure 尝试并确定确定的问题的范围和根本原因所需的过渡状态。 主机上运行的虚拟机可能会受到影响。 |

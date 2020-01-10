@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8b29bbce1511b022def522d46c74b99967a76ea3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204518"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834355"
 ---
 # <a name="sql-server-vm-on-an-azure-dedicated-host"></a>在 Azure 专用主机上 SQL Server VM 
 
@@ -28,11 +28,12 @@ ms.locfileid: "71204518"
 ## <a name="overview"></a>概述
 [Azure 专用主机](/azure/virtual-machines/windows/dedicated-hosts)是一项服务，可提供物理服务器，这些服务器可以承载一个或多个虚拟机-专用于一个 Azure 订阅。 专用主机是在 Microsoft 数据中心中使用的、作为资源提供的物理服务器。 你可以在区域、可用性区域和容错域中预配专用主机。 然后，你可以将 Vm 直接置于预配的主机中，这种配置最适合你的需求。
 
+## <a name="limitations"></a>限制
 
-[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
+- 虚拟机规模集目前在专用主机上不受支持。
+- 支持以下 VM 系列： DSv3 和 ESv3。 
 
-
-## <a name="licensing"></a>授权
+## <a name="licensing"></a>许可
 
 将 SQL Server VM 添加到 Azure 专用主机时，可以在两个不同的许可选项之间进行选择。 
 
@@ -53,7 +54,7 @@ ms.locfileid: "71204518"
 
 
 
-## <a name="provisioning"></a>设置  
+## <a name="provisioning"></a>提供  
 将 SQL Server VM 预配到专用主机与其他任何 Azure 虚拟机没有什么不同。 为此，可以使用[Azure PowerShell](../dedicated-hosts-powershell.md)、 [Azure 门户](../dedicated-hosts-portal.md)和[Azure CLI](../../linux/dedicated-hosts-cli.md)。
 
 将现有 SQL Server VM 添加到专用主机的过程需要停机，但不会影响数据，并且不会丢失数据。 尽管如此，所有数据库（包括系统数据库）都应在移动之前进行备份。
@@ -66,7 +67,7 @@ ms.locfileid: "71204518"
 
 ## <a name="faq"></a>常见问题
 
-**问：Azure 混合权益如何在 Azure 专用主机上使用 Windows Server/SQL Server 许可证？**
+**问： Azure 混合权益如何在 Azure 专用主机上使用 Windows Server/SQL Server 许可证？**
 
 答：客户可以使用其现有 Windows Server 的值并 SQL Server 具有软件保障的许可证，也可以通过使用 Azure 混合权益来确定订阅许可证的资格。 Windows Server Datacenter 和 SQL Server Enterprise Edition 客户获取不受限制的虚拟化（在主机上尽可能多地部署 Windows Server 虚拟机，受限于底层服务器的物理容量）并使用 Azure 混合权益。  Azure 专用主机中的所有 Windows Server 和 SQL Server 工作负荷也有资格用于 Windows Server 的扩展安全更新和 SQL Server 2008/R2，无额外收费。 
 

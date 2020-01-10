@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665335"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830201"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -46,11 +46,11 @@ ms.locfileid: "75665335"
 | --- | --- | --- |
 | 备份 | 在线恢复点创建失败 | **错误消息**： Windows Azure 备份代理无法创建所选卷的快照。 <br> **解决方法**：尝试增加副本卷和恢复点卷中的空间。<br> <br> **错误消息**： Windows Azure 备份代理无法连接到 OBEngine 服务 <br> **解决方法**：请验证并确保 OBEngine 存在于计算机上正在运行的服务的列表中。 如果未运行 OBEngine 服务，请使用“net start OBEngine”命令启动 OBEngine 服务。 <br> <br> **错误消息**：未设置此服务器的加密密码。 Please configure an encryption passphrase.（未设置此服务器的加密通行短语。请配置加密通行短语。） <br> **解决方法**：尝试配置加密密码。 如果此方法不起作用，请执行以下步骤： <br> <ol><li>检查是否存在暂存位置。 注册表项 **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config** 中提到的名为 **ScratchLocation** 的位置应该存在。</li><li> 如果暂存位置存在，请尝试使用旧通行短语重新注册。 *配置加密通行短语时，请将其保存在安全的位置。*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>The vault credentials provided are different from the vault the server is registered（提供的保管库凭据不同于服务器所注册到的保管库）
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>必须将原始和外部 DPM 服务器注册到同一保管库
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 还原 | **错误代码**： CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：提供的保管库凭据与服务器注册到的保管库不同 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器不关联到同一恢复服务保管库时，会出现此问题。<br/> <br/>**解决方法**若要解决此问题，请确保原始服务器和备用服务器都注册到同一个保管库。|
+| 还原 | **错误代码**： CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：必须将原始和外部 DPM 服务器注册到同一保管库 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器不关联到同一恢复服务保管库时，会出现此问题。<br/> <br/>**解决方法**若要解决此问题，请确保原始服务器和备用服务器都注册到同一个保管库。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的联机恢复点创建作业失败
 

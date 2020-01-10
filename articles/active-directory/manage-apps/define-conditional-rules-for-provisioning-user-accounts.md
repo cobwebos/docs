@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120115"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778339"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -34,7 +34,7 @@ ms.locfileid: "74120115"
 * **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](assign-user-or-group-access-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
 
     >[!TIP]
-    > 可将预配设置下的“范围”菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。[](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) 使用此选项及基于属性的范围筛选器比使用基于组的分配速度更快。  
+    > 可将预配设置下的[范围](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。 使用此选项及基于属性的范围筛选器比使用基于组的分配速度更快。  
 
 * **从 HCM 应用程序到 Azure AD 和 Active Directory 的入站预配**。 当 [Workday 等 HCM 应用程序](../saas-apps/workday-tutorial.md)是源系统时，范围筛选器是确定应从 HCM 应用程序预配到 Active Directory 或 Azure AD 的用户的主要方法。
 
@@ -65,7 +65,7 @@ ms.locfileid: "74120115"
 在每个 Azure AD 用户预配连接器的属性映射过程中，配置范围筛选器。 以下过程假设已为[受支持的应用程序之一](../saas-apps/tutorial-list.md)设置了自动预配，且要向其添加范围筛选器。
 
 ### <a name="create-a-scoping-filter"></a>创建范围筛选器
-1. 在 [Azure 门户](https://portal.azure.com)中，转到“Azure Active Directory” **“企业应用程序”** “所有应用程序”部分。 >  > 
+1. 在 [Azure 门户](https://portal.azure.com)中，转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”部分。
 
 2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
 
@@ -79,23 +79,24 @@ ms.locfileid: "74120115"
 
 7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句。 支持以下运算符：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **EQUALS**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **EQUALS**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
 
-   b. **NOT EQUALS**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
+   b.保留“数据库类型”设置，即设置为“共享”。 **NOT EQUALS**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
 
    c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
 
-   d. **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d.单击“下一步”。 **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
 
-   e. **IS NULL**。 如果评估的属性为空，则子句返回“true”。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **IS NULL**。 如果评估的属性为空，则子句返回“true”。
 
    f. **IS NOT NULL**。 如果评估的属性不为空，则子句返回“true”。
 
    g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
    h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
-
-8. 选择“添加新的范围子句”。
+ 
+>[!IMPORTANT] 
+> 不支持包含和 IsMemberOf 筛选器。 它们很快会从 UI 中删除。
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
@@ -112,11 +113,11 @@ ms.locfileid: "74120115"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 运算符 | 值 | 说明|
+| 目标属性| 操作员 | 值 | Description|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有 userPrincipal 域 @domain.com 的所有用户将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有 @domain.com 域的 userPrincipal 的所有用户将不在预配范围内|
-|department|对应|销售量|销售部门的所有用户都处于预配范围内|
+|department|EQUALS|销售|销售部门的所有用户都处于预配范围内|
 |workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
 
 ## <a name="related-articles"></a>相关文章

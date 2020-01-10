@@ -1,26 +1,18 @@
 ---
-title: 用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置 | Microsoft Docs
+title: 用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置
 description: 本文提供用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置的概述。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 7d3a32b5f2b2742a36716bac9747f20c47c98858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150183"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778016"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。
@@ -40,7 +32,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 ### <a name="connection-parameters"></a>连接参数
 本部分列出了前几部分中示例中所用的参数。
 
-| **Parameter**                | **ReplTest1**                    |
+| **Parameter**                | **值**                    |
 | ---                          | ---                          |
 | 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure VPN 网关 IP         |
@@ -123,14 +115,14 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 如果 VPN 设备不支持“任意到任意”流量选择器（例如基于路由或基于 VTI 的配置），请创建自定义 IPsec/IKE 策略并配置[“UsePolicyBasedTrafficSelectors”](vpn-gateway-connect-multiple-policybased-rm-ps.md)选项。
 
 > [!IMPORTANT]
-> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项  。
+> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
 
 示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
-* IPsec：AES256、SHA1、PFS24、SA 生存期 7200 秒和 20480000 KB (20 GB)
+* IPsec：AES256、SHA1、PFS24、SA 生存期 7200 秒和 20480000KB (20GB)
 
-该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项  。
+该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -150,7 +142,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* 在创建连接时，必须将“-EnableBGP”选项设置为 $True  ：
+* 在创建连接时，必须将“-EnableBGP”选项设置为 $True：
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True

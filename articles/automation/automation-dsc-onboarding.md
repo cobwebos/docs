@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366373"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834110"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -31,8 +31,7 @@ Azure Automation State Configuration 可用于管理各种不同的计算机：
 
 - Azure 虚拟机
 - Azure 虚拟机（经典）
-- Amazon Web Services (AWS) EC2 实例
-- 位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
+- 本地或 Azure 以外的云中的物理/虚拟 Windows 计算机（包括 AWS EC2 实例）
 - 位于本地、Azure 或 Azure 以外的云中的物理/虚拟 Linux 计算机
 
 此外，如果未准备好从云管理计算机配置，Azure Automation State Configuration 也可用作仅限报告的终结点。
@@ -82,11 +81,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 适用于[Azure 资源管理器模板的所需状态配置扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)中提供了示例。
 若要在模板中查找要用作参数的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 虚拟机
-
-可以轻松地加入 Amazon Web Services 虚拟机，以便通过 Azure Automation State Configuration 使用 AWS DSC Toolkit 进行配置管理。 可在[此处](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)了解更多有关此工具包的信息。
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>本地或 Azure 以外的云中的物理/虚拟 Windows 计算机（包括 AWS EC2 实例）
 
 在本地或其他云环境中运行的 Windows 服务器还可以载入 Azure 自动化状态配置，前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning)：
 

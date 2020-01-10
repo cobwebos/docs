@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/26/2019
 ms.author: cynthn
-ms.openlocfilehash: 7abfa00b01f2e5e32b2486d69f36ac62f844c5ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033838"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833922"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>预览：使用门户将 Vm 部署到专用主机
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 Vm 部署到专用主机
 
 本文介绍如何创建 Azure[专用主机](dedicated-hosts.md)来托管虚拟机（vm）。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "74033838"
 1. 在 Azure 门户的左上角选择“创建资源”。
 1. 在“新建”页的“常用”下，选择“Windows Server 2016 Datacenter”。
 1. 在 "**基本**信息" 选项卡中的 "**项目详细信息**" 下，确保选择了正确的订阅，然后选择 " *myDedicatedHostsRG* " 作为**资源组**。 
-1. 在“实例详细信息”下，对于“虚拟机名称”键入 **myVM**，对于“位置”选择“美国东部”。
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“位置”选择“美国东部”。
 1. 在 "**可用性选项**" 中，选择 "**可用性区域**"，然后从下拉范围中选择*1* 。
 1. 对于 "大小"，请选择 "**更改大小**"。 在可用大小列表中，选择 Esv3 系列中的一个，如**标准 E2s v3**。 您可能需要清除筛选器才能查看所有可用大小。
 1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。

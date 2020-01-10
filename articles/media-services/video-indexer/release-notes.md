@@ -10,16 +10,18 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968718"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832312"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
+
+>通过复制并粘贴以下 URL，获取有关何时通过复制和粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` 到 RSS 源读者。
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -28,6 +30,53 @@ ms.locfileid: "72968718"
 * Bug 修复
 * 已弃用的功能
 
+## <a name="december-2019"></a>2019 年 12 月
+
+### <a name="update-transcript-with-the-new-api"></a>用新 API 更新脚本
+
+使用[更新-视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update)API 更新脚本中的特定部分。
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>从视频索引器门户修复帐户配置
+
+你现在可以更新媒体服务连接配置，以便自助解决以下问题： 
+
+* Azure 媒体服务资源不正确
+* 密码更改
+* 媒体服务资源已在订阅之间移动  
+
+若要修复帐户配置，请在视频索引器门户中导航到 "设置" > 帐户 "选项卡（作为所有者）。
+
+### <a name="configure-the-custom-vision-account"></a>配置自定义远景帐户
+
+使用视频索引器门户在付费帐户上配置自定义视觉帐户（以前，仅 API 支持此帐户）。 为此，请登录到视频索引器门户，选择 "模型自定义" > > 配置的动画字符。 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>场景、截图和关键帧–现在，在一个见解窗格中
+
+场景、截图和关键帧现在会合并为一个见解，以方便消耗和导航。 选择所需的场景时，可以看到它包含的快照和关键帧。 
+
+### <a name="notification-about-a-long-video-name"></a>有关长视频名称的通知
+
+当视频名称长度超过80个字符时，视频索引器将显示上传的描述性错误。
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>流式处理终结点已禁用通知
+
+禁用流式处理终结点时，视频索引器将在播放机页上显示描述性错误。
+
+### <a name="error-handling-improvement"></a>错误处理改进
+
+现在，状态代码409将从[重新索引视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?)并[更新视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?)api 中返回，以防活动处于活动状态，以防止意外重写当前的重新索引更改。
+
+## <a name="november-2019"></a>2019 年 11 月
+ 
+* 朝鲜语自定义语言模型支持
+
+    视频索引器现在支持 API 和门户中的朝鲜语（`ko-KR`）中的自定义语言模型。 
+* 支持语音到文本的新语言（STT）
+
+    视频索引器 Api 现在支持阿拉伯语 Levantine （ar-SY）、英语英国方言（en-GB）和英语澳大利亚方言（zh-cn）中的 STT。
+    
+    对于视频上传，我们已将 zh-chs-HANS 替换为 zh-chs，两者均受支持，但建议使用 zh-chs-CN，更准确。
+    
 ## <a name="october-2019"></a>2019 年 10 月
  
 * 搜索库中的动画字符
@@ -52,7 +101,7 @@ IBC 2019 上公布了多项改进：
     用编辑类型（如近向、中等拍摄、两个拍摄、室内、户外等）标记照片。有关详细信息，请参阅[编辑快照类型检测](scenes-shots-keyframes.md#editorial-shot-type-detection)。
 * 主题推断增强功能-现在涵盖级别2
     
-    主题推断 model 现在支持 IPTC 分类更深入的粒度。 阅读有关 Azure 媒体服务的完整详细信息[新的 AI 支持的创新](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)。
+    主题推断 model 现在支持 IPTC 分类的深度粒度。 阅读有关 Azure 媒体服务的完整详细信息[新的 AI 支持的创新](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)。
 
 ## <a name="august-2019"></a>2019 年 8 月
  
@@ -101,7 +150,7 @@ IBC 2019 上公布了多项改进：
 
 在门户的 "自定义" 页中，客户可以提供 VTT、SRT 和 TTML 文件格式作为语言模型的输入。
 
-## <a name="june-2019"></a>2019 年 7 月
+## <a name="june-2019"></a>2019 年 6 月
 
 ### <a name="video-indexer-deployed-to-japan-east"></a>部署到日本东部的视频索引器
 

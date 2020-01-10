@@ -8,24 +8,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818667"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779096"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
 本部分中的表格提供有关创建具有吸引力的市场套餐的建议。 若要编写和配置市场营销材料，请转到[云合作伙伴门户](https://cloudpartner.azure.com/#insights)。 
 
 ## <a name="storefront-offer-details"></a>店面产品/服务详细信息
+
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[提议名称： [Duration] [产品类型] （例如*Contoso：2周实现*） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
+| 产品/服务名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[提议名称： [Duration] [产品类型] （例如*Contoso：2周实现*） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
 | 产品/服务描述 | 提供明确的产品/服务说明：<br> <ul> <li> 在前几句描述中清晰描述产品/服务的价值主张。 </li> <li> 请牢记，前几句话可能在搜索引擎结果中显示。 </li> <li> 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。 </li> <li> 尽可能多使用行业特定用语或基于优势的措辞。</li> <li> 此外，咨询服务商品必须明确说明你提供的专业服务。 </li></ul> 核心价值主张应包含以下信息：<ul><li>产品说明。</li><li>受益于该产品的用户类型。</li><li>该产品可满足的客户需求或解决的难题。</li></ul> |
 
+本部分中的表格提供有关创建具有吸引力的市场套餐的建议。 若要编写和配置市场营销材料，请转到[云合作伙伴门户](https://cloudpartner.azure.com/#insights)。 
+
 ## <a name="storefront-listing-details"></a>店面列表详细信息
+
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
 | 行业：仅限 AppSource 应用和咨询服务 | 如果套餐可满足行业特定需求，请选择相关行业： <ul><li> 在产品/服务说明中强调行业特定的功能。</li> </ul> **注意**：最大选项数量因产品/服务类型而异，在[云合作伙伴门户](https://cloudpartner.azure.com/#insights)中表示。 |
@@ -43,10 +47,10 @@ Azure Marketplace 和 Microsoft AppSource 是提供不同且独特的客户需�
 | :------------------- | :-------------------|
 | \* 汽车     | \* 汽车 |
 | 农业     | \* 其他-Unsegmented |
-| 分发    | \* 批发 <br> \* 包裹 & 包裹寄送 |
+| 分配    | \* 批发 <br> \* 包裹 & 包裹寄送 |
 | 教育     | \* 高等教育 <br> \* 主要 & 辅助教育/K-12 <br> \* 库 & 博物馆 |
 | 金融服务     | \* 银行 & 资本市场 <br> \* 保险 |
-| Government    | \* 防御 & 情报（称为国家和公共安全） <br> \* 公共安全 & 司法 <br> \* 民用政府 |
+| 政府    | \* 防御 & 情报（称为国家和公共安全） <br> \* 公共安全 & 司法 <br> \* 民用政府 |
 | 医疗保健（用于称为运行状况）   | \* Health Payor <br> \* 运行状况提供程序 <br> \* 药物 |
 | 制造 & 资源（用于称为制造）   | \* 化学 & Agrochemical <br> \* 离散制造 <br> \* 能量 |
 | 零售 & 消费品（用于称为零售）  | \* 消费品 <br> \* 零售商 |
@@ -56,6 +60,18 @@ Azure Marketplace 和 Microsoft AppSource 是提供不同且独特的客户需�
 | \* 招待 & 旅行  | \* 酒店 & 休闲 <br> \* 旅游 & 交通 <br> \* 餐厅 & 食物服务 |
 | \* 其他公共部门行业  | \* 林 & 钓鱼 <br> \* 非营利组织 |
 | \* 房地产  | \* 其他-Unsegmented |
+
+### <a name="industries"></a>行业
+
+行业选择仅适用于发布到 Azure Marketplace 中发布的 AppSource 和咨询服务的产品/服务。 如果产品/服务满足行业特定需求，请在产品/服务描述中调用特定于行业的功能，以选择行业和/或纵向。 最多可选择两（2）个行业和每个行业选择的两（2）个纵向。
+
+### <a name="applicable-products"></a>适用的产品
+
+选择适用于你的应用程序适用的产品，以便产品/服务在 AppSource 中所选的产品下显示。
+
+### <a name="search-keywords"></a>搜索关键字
+
+关键字可帮助客户在搜索时找到你的产品/服务。 标识你的产品/服务的排名靠前的搜索关键字，将它们合并到你的产品/服务摘要和描述以及 "产品/服务列表详细信息" 部分的 "关键字" 部分。
 
 ## <a name="storefront-marketing-details"></a>店面市场营销详细信息
 | 店面设置 | 最佳做法 |

@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537183"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834727"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消定型运行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-用于 Python 和[机器学习 CLI](reference-azure-machine-learning-cli.md)的[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)提供多种方法来监视、组织和管理运行以进行定型和试验。
+用于 Python、[机器学习 CLI](reference-azure-machine-learning-cli.md)和[Azure 机器学习 STUDIO](https://ml.azure.com)的[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)提供多种方法来监视、组织和管理运行以进行定型和试验。
 
 本文显示以下任务的示例：
 
@@ -105,6 +105,16 @@ notebook_run.log(name="message", value="Hello from run!")
 
     有关详细信息，请参阅[az ml run 提交脚本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习 studio
+
+若要开始在设计器中执行管道运行，请使用以下步骤：
+
+1. 设置管道的默认计算目标。
+
+1. 选择管道画布顶部的 "**运行**"。
+
+1. 选择用于对管道运行进行分组的实验。
+
 ## <a name="monitor-the-status-of-a-run"></a>监视运行状态
 
 ### <a name="using-the-sdk"></a>使用 SDK
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     有关详细信息，请参阅[az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)。
 
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习 studio
+
+查看工作室中实验的活动运行数。
+
+1. 导航到 "**试验**" 部分。 
+
+1. 选择一个试验。
+
+    在试验页中，可以看到活动计算目标的数目以及每次运行的持续时间。 
+
+1. 选择特定的运行号。
+
+1. 在 "**日志**" 选项卡中，可以找到管道运行的诊断和错误日志。
+
+
 ## <a name="cancel-or-fail-runs"></a>取消或失败运行
 
 如果你注意到错误，或者运行时间太长而无法完成，则可以取消该运行。
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 有关详细信息，请参阅[az ml 运行 cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)。
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习 studio
+
+若要取消在工作室中运行，请使用以下步骤：
+
+1. 在 "**试验**" 或 "**管道**" 部分中转到正在运行的管道。 
+
+1. 选择要取消的管道运行号。
+
+1. 在工具栏中，选择 "**取消**"
+
 
 ## <a name="create-child-runs"></a>创建子运行
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 有关查询 Azure CLI 结果的详细信息，请参阅[Query Azure CLI 命令 output](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)。
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习 studio
+
+1. 导航到 "**管道**" 部分。
+
+1. 使用 "搜索" 栏可以使用标记、说明、试验名称和提交者名称来筛选管道。
 
 ## <a name="example-notebooks"></a>示例笔记本
 

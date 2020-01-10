@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 365692cccb3f1ed2646272521c84bdc4ef2b2147
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 66c5873749924df2133cb1ba4711b779e0aba24a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538106"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834745"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,7 +262,9 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+有关部署的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
+
+有关自定义 Python 环境的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。 
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>使用带有机器学习 CLI 的映像
 
@@ -294,5 +296,5 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[部署位置和方式](service/how-to-deploy-and-where.md)。
+* 详细了解[部署位置和方式](how-to-deploy-and-where.md)。
 * 了解如何[使用 Azure Pipelines 训练和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)。

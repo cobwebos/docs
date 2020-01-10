@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363347"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834206"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363347"
 
 可以使用[Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
-* 创建工作区，包括设置定价层 
+* 创建工作区，包括设置定价层和容量预留
 * 添加解决方案
 * 创建保存的搜索
 * 创建计算机组
@@ -47,7 +47,19 @@ ms.locfileid: "75363347"
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅要求新工作区的名称和位置（使用其他工作区参数的默认值，如定价层和保留期）。  
+下面的示例使用本地计算机中的模板创建一个工作区。 JSON 模板配置为仅要求新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和容量预留级别。
+
+对于容量预留，可以通过指定 `CapacityReservation` 的 SKU，并为属性 `capacityReservationLevel`指定的值（GB）来定义所选的容量预留容量。 以下列表详细介绍了在配置时支持的值和行为。
+
+- 设置保留限制后，在31天内不能更改为其他 SKU。
+
+- 设置保留值后，只能在31天内增加。
+
+- 只能将 `capacityReservationLevel` 的值设置为100的倍数，最大值为50000。
+
+- 如果增加预留级别，则会重置计时器，并且不能将其更改为自此更新后的31天。  
+
+- 如果修改工作区的任何其他属性，但将保留限制保留到相同级别，则不会重置计时器。 
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -64,6 +76,21 @@ ms.locfileid: "75363347"
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ ms.locfileid: "75363347"
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ ms.locfileid: "75363347"
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ ms.locfileid: "75363347"
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ ms.locfileid: "75363347"
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [
