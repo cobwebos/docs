@@ -2,17 +2,17 @@
 title: Azure 托管磁盘的服务器端加密-Azure CLI
 description: Azure 存储在将数据保存到存储群集之前，通过静态加密来保护数据。 你可以依赖于 Microsoft 托管的密钥来加密托管磁盘，或者可以使用客户管理的密钥来管理使用你自己的密钥进行加密。
 author: roygara
-ms.date: 12/13/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: c71e626d3ebd6b5563c13afe4feef1e6b05ea242
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5a7e9f1248f9a73786fb9c4a6ecb32691400881
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749576"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894929"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -24,7 +24,7 @@ ms.locfileid: "75749576"
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-你可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥（公共预览版）管理加密。 如果选择使用自己的密钥管理加密，则可以指定*客户托管的密钥*，用于加密和解密托管磁盘中的所有数据。 
+你可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，则可以指定*客户托管的密钥*，用于加密和解密托管磁盘中的所有数据。 
 
 以下部分更详细地介绍了密钥管理的每个选项。
 
@@ -32,7 +32,7 @@ ms.locfileid: "75749576"
 
 默认情况下，托管磁盘使用平台托管的加密密钥。 从2017年6月10日起，写入到现有托管磁盘的所有新的托管磁盘、快照、映像和新数据都将通过平台管理的密钥自动进行静态加密。 
 
-## <a name="customer-managed-keys-public-preview"></a>客户管理的密钥（公共预览版）
+## <a name="customer-managed-keys"></a>客户管理的密钥
 
 你可以选择在每个托管磁盘的级别管理加密，以及你自己的密钥。 使用客户托管密钥的托管磁盘的服务器端加密提供与 Azure Key Vault 的集成体验。 您可以将[您的 rsa 密钥](../../key-vault/key-vault-hsm-protected-keys.md)导入 Key Vault 或在 Azure Key Vault 中生成新的 rsa 密钥。 Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式处理加密和解密。 它使用基于[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的数据加密密钥（DEK）对数据进行加密，进而使用密钥进行保护。 必须授予对 Key Vault 中托管磁盘的访问权限，才能使用密钥来加密和解密 DEK。 这允许你完全控制数据和密钥。 你可以随时禁用密钥或撤消对托管磁盘的访问权限。 你还可以使用 Azure Key Vault 监视来审核加密密钥的使用情况，以确保仅托管磁盘或其他受信任的 Azure 服务访问你的密钥。
 
@@ -56,27 +56,31 @@ ms.locfileid: "75749576"
 
 ### <a name="supported-scenarios-and-restrictions"></a>支持的方案和限制
 
-预览期间，仅支持以下方案：
+目前，仅支持以下方案：
 
 - 使用 Azure Marketplace 映像创建虚拟机（VM），并使用客户管理的密钥通过服务器端加密来加密 OS 磁盘。
 - 创建使用服务器端加密和客户管理的密钥加密的自定义映像。
 - 使用自定义映像创建 VM，并使用服务器端加密和客户管理的密钥对 OS 磁盘进行加密。
 - 创建使用服务器端加密和客户管理的密钥加密的数据磁盘。
-- 创建使用服务器端加密和客户管理的密钥加密的快照。
+- （仅限 CLI/PowerShell）创建使用服务器端加密和客户管理的密钥加密的快照。
 - 创建用服务器端加密和客户管理的密钥加密的虚拟机规模集。
 
-预览还具有下列限制：
+目前，我们还具有以下限制：
 
-- **仅在美国西部、加拿大中部北欧提供**。
+- **仅在美国西部、美国中南部、美国东部2、美国东部、美国西部2、加拿大中部和北欧提供。**
 - 使用服务器端加密和客户托管密钥加密的自定义映像创建的磁盘必须使用相同的客户托管密钥进行加密，且必须位于同一订阅中。
 - 从用服务器端加密和客户管理的密钥加密的磁盘创建的快照必须用相同的客户托管密钥进行加密。
 - 使用服务器端加密和客户管理的密钥加密的自定义映像不能用于共享映像库。
-- Key Vault 必须与客户托管的密钥位于同一订阅和区域中。
+- 与客户托管的密钥（Azure 密钥保管库、磁盘加密集、Vm、磁盘和快照）相关的所有资源必须位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
+- 如果使用 Azure 门户创建磁盘加密集，则现在不能使用快照。
 
-### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet
+### <a name="cli"></a>CLI
+#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet
 
-1.  创建 Azure Key Vault 和加密密钥的实例。
+1. 确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
+
+1. 创建 Azure Key Vault 和加密密钥的实例。
 
     创建 Key Vault 实例时，必须启用软删除和清除保护。 软删除可确保 Key Vault 在给定的保留期（默认为90天）内保存已删除的密钥。 清除保护确保在保留期结束之前，无法永久删除已删除的密钥。 由于意外删除，这些设置可防止丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
 
@@ -106,7 +110,10 @@ ms.locfileid: "75749576"
     az disk-encryption-set create -n $diskEncryptionSetName -l $location -g $rgName --source-vault $keyVaultId --key-url $keyVaultKeyUrl
     ```
 
-1.  向 DiskEncryptionSet 资源授予对密钥保管库的访问权限。
+1.  向 DiskEncryptionSet 资源授予对密钥保管库的访问权限。 
+
+    > [!NOTE]
+    > Azure 可能需要几分钟时间才能在 Azure Active Directory 中创建 DiskEncryptionSet 的标识。 如果在运行以下命令时收到 "找不到 Active Directory 对象" 之类的错误，请等待几分钟，然后重试。
 
     ```azurecli
     desIdentity=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [identity.principalId] -o tsv)
@@ -116,7 +123,7 @@ ms.locfileid: "75749576"
     az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
     ```
 
-### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映像创建 VM，使用客户管理的密钥对 OS 和数据磁盘进行加密
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映像创建 VM，使用客户管理的密钥对 OS 和数据磁盘进行加密
 
 ```azurecli
 rgName=yourResourceGroupName
@@ -133,7 +140,7 @@ az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --
 
 ```
 
-### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>使用客户托管密钥的服务器端加密创建加密的空磁盘，并将其附加到 VM
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>使用客户托管密钥的服务器端加密创建加密的空磁盘，并将其附加到 VM
 
 ```azurecli
 vmName=yourVMName
@@ -155,6 +162,11 @@ diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
 
 ```
+
+> [!IMPORTANT]
+> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+
+[!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
 > 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。

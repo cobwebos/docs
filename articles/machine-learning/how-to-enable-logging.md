@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 571962f69c0a9bbdb32e9790b1595af6a618697b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771370"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893987"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,22 +81,6 @@ from azureml.core.compute import ComputeTarget
 compute_target = ComputeTarget.attach(
     workspace=ws, name="example", attach_configuration=config)
 compute.wait_for_completion(show_output=True)
-```
-
-## <a name="logging-during-image-creation"></a>在创建映像期间进行日志记录
-
-在创建映像期间启用日志记录可在生成过程中看到任何错误。 在 `wait_for_deployment()` 函数中设置 `show_output` 参数。
-
-```python
-from azureml.core.webservice import Webservice
-
-service = Webservice.deploy_from_image(deployment_config=your_config,
-                                       image=image,
-                                       name="example-image",
-                                       workspace=ws
-                                       )
-
-service.wait_for_deployment(show_output=True)
 ```
 
 ## <a name="logging-for-deployed-models"></a>对部署的模型进行日志记录

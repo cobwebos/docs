@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b57c13d4a5c671595a3e82ac7858c027456107f2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647622"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894081"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>预览版：用于虚拟机规模集的 Azure 点 Vm 
 
@@ -156,7 +156,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 能否为查找附加的配额？
 
-**答：** 是的，你将能够提交请求，以通过[标准配额请求过程](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)增加对污点 vm 的配额。
+**答：** 是的，你将能够提交请求，以通过[标准配额请求过程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)增加对污点 vm 的配额。
 
 
 **问：** 是否可以将现有规模集转换为污点规模集？

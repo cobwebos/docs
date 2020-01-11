@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793430"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896388"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -29,7 +29,7 @@ ms.locfileid: "74793430"
 
 * 触发器，是一种特殊的操作。 所有逻辑应用都需要触发器作为第一步。
 * ["内置" 或本机操作](../connectors/apis-list.md#built-in)（如 HTTP、对 AZURE FUNCTIONS 和 API 管理的调用等）
-* 调用[托管连接器](../connectors/apis-list.md##managed-connectors)，如 Outlook 365、Dropbox 等
+* 调用[托管连接器](../connectors/apis-list.md#managed-connectors)，如 Outlook 365、Dropbox 等
 * 控制流步骤，如循环、条件语句等
 
 [标准连接器](../connectors/apis-list.md#managed-connectors)按[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费。 通常可用的[企业连接器](../connectors/apis-list.md#managed-connectors)按[企业连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费，而公共预览版企业连接器按[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps)收费。
