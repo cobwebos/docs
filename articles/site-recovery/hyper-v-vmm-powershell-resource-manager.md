@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084911"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867038"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -21,7 +21,7 @@ ms.locfileid: "74084911"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
@@ -194,6 +194,14 @@ ms.locfileid: "74084911"
 3. 为 VM 启用复制。
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> 如果要复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 向上执行以下步骤：
+>
+> 1. 通过更新 VM 属性启用到托管磁盘的故障转移
+> 2. 使用使用 get-asrreplicationprotecteditem cmdlet 获取受保护项的每个磁盘的磁盘 ID
+> 3. 使用新的对象 "system.servicemodel" "2 [System.string，system.string]" cmdlet 创建字典对象，以包含磁盘 ID 到磁盘加密集的映射。 这些磁盘加密集将在目标区域中预先创建。
+> 4. 通过将字典对象传入-DiskIdToDiskEncryptionSetMap 参数，使用使用 get-asrreplicationprotecteditem cmdlet 更新 VM 属性。
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 

@@ -1,25 +1,19 @@
 ---
-title: 排查 Azure 点到站点连接问题 | Microsoft Docs
+title: 排查 Azure 点到站点连接问题
+titleSuffix: Azure VPN Gateway
 description: 了解如何排查点到站点连接问题。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695525"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863642"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -31,7 +25,7 @@ ms.locfileid: "71695525"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**找不到可用于此可扩展身份验证协议的证书。(错误 798)**
+**找不到可用于此可扩展身份验证协议的证书。（错误798）**
 
 ### <a name="cause"></a>原因
 
@@ -57,13 +51,13 @@ ms.locfileid: "71695525"
 > [!NOTE]
 > 导入客户端证书时，请勿选择“启用强私钥保护”选项。
 
-## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>由于远程服务器不响应，因此无法建立计算机与 VPN 服务器之间的网络连接
 
 ### <a name="symptom"></a>症状
 
-尝试在 Windows 上使用 IKEv2 连接到 Azure 虚拟网关时，出现以下错误消息：
+尝试使用 Windows 上的 IKEv2 连接到 Azure 虚拟网络网关时，会收到以下错误消息：
 
-**无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应**
+**由于远程服务器不响应，因此无法建立计算机与 VPN 服务器之间的网络连接**
 
 ### <a name="cause"></a>原因
  
@@ -84,7 +78,7 @@ ms.locfileid: "71695525"
    | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. 设置注册表项值。 在注册表中创建或设置 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD 键设置为1。
+2. 设置注册表项值。 在注册表中创建 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD 项或将其设置为1。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 客户端错误：接收到的消息异常，或格式不正确
 
@@ -92,7 +86,7 @@ ms.locfileid: "71695525"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**收到意外或格式不当的消息。(错误 0x80090326)**
+**接收到的消息异常或格式不正确。（错误0x80090326）**
 
 ### <a name="cause"></a>原因
 
@@ -129,7 +123,7 @@ ms.locfileid: "71695525"
 
 2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：目标 URI 未指定
+## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：未指定目标 URI
 
 ### <a name="symptom"></a>症状
 
@@ -151,7 +145,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**用于更新路由表的自定义脚本失败。(错误 8007026f)**
+**用于更新路由表的自定义脚本失败。（错误8007026f）**
 
 ### <a name="cause"></a>原因
 
@@ -175,7 +169,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 2. 添加“证书”管理单元。
 3. 选择本地计算机的“计算机”帐户。
 4. 右键单击“受信任的根证书颁发机构”节点。 单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。
-5. 重启计算机。 
+5. 重新启动计算机。 
 6. 尝试安装 VPN 客户端。
 
 ## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，数据无效
@@ -184,7 +178,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-无法保存虚拟网络网关 &lt;网关名称&gt; **。证书 &lt;证书 ID&gt; 的数据无效**。
+**未能保存虚拟网络网关，&lt;*网关名称*&gt;。证书 &lt;*证书 ID*&gt; 的数据无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -219,7 +213,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-无法保存虚拟网络网关 &lt;网关名称&gt; **。资源名称 &lt;尝试上传的证书名称 无效&gt;** 。
+**未能保存虚拟网络网关，&lt;*网关名称*&gt;。资源名称 &lt;*你尝试上传&gt; 的证书名称*无效**。
 
 ### <a name="cause"></a>原因
 
@@ -231,7 +225,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试下载 VPN 客户端配置包时，看到以下错误消息：
 
-**无法下载文件。错误详细信息:错误 503。服务器正忙。**
+**下载文件失败。错误详细信息：错误503。服务器正忙。**
  
 ### <a name="solution"></a>解决方案
 
@@ -245,7 +239,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请重新下载并重新部署所有客户端上点到站点的包。
+若要解决此问题，请重新下载并重新部署所有客户端上的点到站点包。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 

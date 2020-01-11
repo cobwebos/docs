@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
-ms.translationtype: HT
+ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777897"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863798"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -374,7 +374,8 @@ Microsoft 提供了标准合同模板。
 
 - **Azure AD 应用 id** （必需）：还需要[应用程序 id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择**应用注册**，然后查找列出的**应用程序 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。 若要查找身份验证密钥，请单击 "**设置**" 并选择 "**密钥**"。 你将需要提供描述和持续时间，然后将提供一个数值。
 
- 请注意，Azure 应用程序 ID 与你的发布者 ID 相关联，因此请确保你的所有产品/服务中都使用相同的应用程序 ID。
+>[!Note]
+>Azure 应用程序 ID 与你的发布者 ID 相关联，因此请确保你的所有产品/服务中都使用相同的应用程序 ID。
 
 ## <a name="plan-overview"></a>计划概述
 

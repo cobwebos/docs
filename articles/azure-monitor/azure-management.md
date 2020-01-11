@@ -1,18 +1,18 @@
 ---
-title: Azure 管理和 Operations Management Suite (OMS) | Microsoft Docs
-description: 概述针对 Azure 应用程序和资源的管理领域，并提供 Azure 管理工具上的内容的链接，这些工具以前以 Operations Management Suite (OMS) 形式捆绑在一起。
+title: Azure 管理
+description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f68838e271e51c37985f55b40b140e279c1df2a4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597354"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862537"
 ---
 # <a name="azure-management---monitoring"></a>Azure 管理 - 监视
 

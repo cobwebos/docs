@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894774"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861772"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -24,7 +24,7 @@ ms.locfileid: "74894774"
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
-1. 若要了解如何创建事件中心，请参阅[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
+1. 若要了解如何创建事件中心，请阅读[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
 1. 在搜索框中，搜索“事件中心”。 在返回的列表中选择“事件中心”。
 1. 选择事件中心。
 1. 创建事件中心时，会创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单上的 "**实体**" 下，创建一个事件中心。  
@@ -61,7 +61,7 @@ ms.locfileid: "74894774"
 
 1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+1. 为 `timeSeriesId` 设置一个值。 若要了解有关**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
 ### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 示例
 
@@ -80,7 +80,7 @@ ms.locfileid: "74894774"
 
 1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
 
-1. 返回到 Azure 门户中的事件中心。 在 "**概述**" 页上，可以看到事件中心收到的新事件。
+1. 返回到 Azure 门户中的事件中心。 在 "**概述**" 页上，将显示事件中心收到的新事件。
 
     [![显示事件中心指标的事件中心概述页](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 
@@ -149,7 +149,7 @@ ms.locfileid: "74894774"
 
 * **输出**：两个事件。 “location”属性复制到每个事件。
 
-    |位置|events.id|events.timestamp|
+    |location|events.id|events.timestamp|
     |--------|---------------|----------------------|
     |WestUs|device1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
@@ -190,7 +190,7 @@ ms.locfileid: "74894774"
 
 * **输出**：两个事件。
 
-    |位置|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压力|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|

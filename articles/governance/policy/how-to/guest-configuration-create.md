@@ -3,12 +3,12 @@ title: 如何创建来宾配置策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux Vm 的 Azure 策略来宾配置策略。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608518"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867338"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -65,7 +65,7 @@ ms.locfileid: "75608518"
 
 #### <a name="configuration-requirements"></a>配置要求
 
-来宾配置使用自定义配置的唯一要求是，要在使用它的任何地方保持一致的配置名称。  这包括内容包的 .zip 文件的名称、存储在内容包内的 mof 文件中的配置名称，以及 ARM 中用作来宾分配名称的配置名称。
+来宾配置使用自定义配置的唯一要求是，在使用它的任何地方，其名称都保持一致。 此名称要求包括内容包的 .zip 文件的名称、存储在内容包内的 MOF 文件中的配置名称，以及在资源管理器模板中用作来宾分配名称的配置名称。
 
 #### <a name="get-targetresource-requirements"></a>Test-targetresource 要求
 
@@ -181,7 +181,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 在 Azure 策略来宾配置中，管理运行时使用的机密的最佳方式是将它们存储在 Azure Key Vault 中。 此设计在自定义 DSC 资源内实现。
 
-1. 首先，在 Azure 中创建用户分配的托管标识。
+1. 在 Azure 中创建用户分配的托管标识。
 
    计算机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤，请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
 
@@ -193,9 +193,9 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 1. 将用户分配的标识分配到计算机。
 
    有关详细步骤，请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
-   大规模，使用 Azure 资源管理器通过 Azure 策略分配此标识。 有关详细步骤，请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
+   使用 Azure 资源管理器大规模通过 Azure 策略分配此标识。 有关详细步骤，请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
 
-1. 最后，在自定义资源中使用上面生成的客户端 ID 通过计算机上提供的令牌访问 Key Vault。
+1. 使用在自定义资源中生成的客户端 ID，使用计算机上提供的令牌访问 Key Vault。
 
    可以将 Key Vault 实例的 `client_id` 和 url 作为[属性](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递到资源，这样就不需要为多个环境更新资源，也不需要更改这些值。
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-对于 Linux 策略，请在配置中包含属性**AttributesYmlContent** ，并相应地覆盖值。 来宾配置代理会自动创建 InSpec 用于存储属性的 YaML 文件。 请参阅以下示例。
+对于 Linux 策略，请在配置中包含属性**AttributesYmlContent** ，并根据需要覆盖值。 来宾配置代理会自动创建 InSpec 用于存储属性的 YAML 文件。 请参阅以下示例。
 
 ```powershell
 Configuration FirewalldEnabled {

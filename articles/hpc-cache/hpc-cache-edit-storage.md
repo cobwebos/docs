@@ -4,16 +4,28 @@ description: 如何编辑 Azure HPC 缓存存储目标
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168517"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867007"
 ---
 # <a name="edit-storage-targets"></a>编辑存储目标
+
+你可以从缓存的 "**存储目标**" 页中删除或修改存储目标。
+
+## <a name="remove-a-storage-target"></a>删除存储目标
+
+若要删除存储目标，请在列表中选择它，然后单击 "**删除**" 按钮。
+
+此操作将删除与此 Azure HPC 缓存系统的存储目标关联，但不会更改后端存储系统。 例如，如果你使用的是 Azure Blob 存储容器，则在从缓存中删除容器及其内容后仍然存在该容器。 可以将容器添加到其他 Azure HPC 缓存，将其重新添加到此缓存，或将其删除 Azure 门户。
+
+存储在缓存中的任何文件更改都将写入到后端存储系统中，然后再删除存储目标。 如果缓存中有大量更改的数据，此过程可能需要一小时或更长时间。
+
+## <a name="update-storage-targets"></a>更新存储目标
 
 可以编辑存储目标以修改其部分属性。 不同类型的存储可编辑不同的属性：
 

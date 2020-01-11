@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/19/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892391"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866897"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 blob 或队列数据
 
@@ -57,8 +57,10 @@ ms.locfileid: "74892391"
     
 自定义角色可支持内置角色提供的相同权限的不同组合。 有关创建自定义 RBAC 角色的详细信息，请参阅[azure 资源的自定义角色](../../role-based-access-control/custom-roles.md)和[了解 azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
-> [!NOTE]
-> 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须分配有 Azure 资源管理器**读取**者角色、**存储队列数据读取器**角色或**存储队列数据参与者**角色。
+不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须分配有 Azure 资源管理器**读取**者角色、**存储队列数据读取器**角色或**存储队列数据参与者**角色。
+
+> [!IMPORTANT]
+> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，必须为用户分配包含 storageAccounts/ **/listkeys/action**的角色。
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>在门户中导航到 blob 或队列
 

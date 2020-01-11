@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749384"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863836"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>可视化 Power BI 中时序见解的数据
 
@@ -51,7 +51,7 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 开始使用：
 
 1. 打开时序见解预览资源管理器并组织你的数据。
-1. 创建满意的视图后，导航到 "**更多操作**" 下拉菜单，并单击 "**连接到 Power BI**"。
+1. 创建满意的视图后，请导航到 "**更多操作**" 下拉菜单，并选择 "**连接到 Power BI**"。
 
     [![时序见解预览资源管理器导出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
@@ -118,7 +118,7 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
     [![创建折线图](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  若要将另一个图表添加到画布，请单击折线图外的画布上的任意位置，并重复此过程。
+1.  若要向画布添加另一个图表，请在折线图外的画布上的任意位置选择，并重复此过程。
 
     [![创建要共享的其他图表](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -138,7 +138,7 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 1. 根据需要修改 JSON 有效负载。
 1. 选择 "**完成**"，然后关闭 " **Power Query 编辑器" 窗口**中 **& 应用**。
 
-应会看到应用了所需的更改。  
+接口现在将反映所需的更改。  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -146,4 +146,4 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
 * 详细了解[Power BI 桌面](https://docs.microsoft.com/power-bi/desktop-query-overview)。
 
-* 请参阅[时序见解 GA 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[时序见解预览资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。
+* 阅读[时序见解 GA 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[时序见解预览资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。

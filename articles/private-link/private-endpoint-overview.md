@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647384"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867687"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -58,6 +58,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> 表（表、table_secondary）<BR> 队列（队列、queue_secondary）<BR> 文件（文件、file_secondary）<BR> Web （web、web_secondary）        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）       |
 |**Azure Cosmos DB** | AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、表|
+|**Azure Database for PostgreSQL-单服务器** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全 
 使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制来验证仅到达指定的专用链接资源的网络连接。 若要访问同一 Azure 服务中的其他资源，需要额外的专用终结点。 
@@ -112,6 +115,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|Gremlin |privatelink.gremlin.cosmos.azure.com|
 |Azure Cosmos DB （AzureCosmosDB/databaseAccounts）|表|privatelink.table.cosmos.azure.com|
+|Azure Database for PostgreSQL-单一服务器（DBforPostgreSQL/服务器）|postgresqlServer|privatelink.postgres.database.azure.com|
+|Azure Database for MySQL （DBforMySQL/服务器）|mysqlServer|privatelink.mysql.database.azure.com|
+|Azure Database for MariaDB （DBforMariaDB/服务器）|mariadbServer|privatelink.mariadb.database.azure.com|
  
 Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解析重定向到建议的域名。 你将能够用专用终结点的专用 IP 地址替代解析。 
  
@@ -136,3 +142,9 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 - [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
 - [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
+- [使用门户创建 Azure Database for PostgreSQL 单个服务器的自己的专用链接](../postgresql/howto-configure-privatelink-portal.md)
+- [使用 CLI 为 Azure Database for PostgreSQL 单一服务器创建自己的专用链接](../postgresql/howto-configure-privatelink-cli.md)
+- [使用门户创建 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-portal.md)
+- [使用 CLI 为 Azure Database for MySQL 创建自己的专用链接](../mysql/howto-configure-privatelink-cli.md)
+- [使用门户创建 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-portal.md)
+- [使用 CLI 为 Azure Database for MariaDB 创建自己的专用链接](../mariadb/howto-configure-privatelink-cli.md)

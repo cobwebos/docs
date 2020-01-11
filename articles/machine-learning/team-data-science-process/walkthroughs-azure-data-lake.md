@@ -3,20 +3,20 @@ title: 在 Azure Data Lake 中使用 U-SQL 进行分析 - Team Data Science Proc
 description: 演练如何在 Azure Data Lake 中使用 U-SQL 进行预测分析的示例。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804698"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864173"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>使用 U-SQL 的 Azure Data Lake 数据科学演练
 
@@ -27,11 +27,11 @@ ms.locfileid: "60804698"
 
 ## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>在 Azure Data Lake 中使用 U-SQL 预测出租车小费
 
-[将 Azure Data Lake 用于数据科学](data-lake-walkthrough.md)演练介绍如何使用 Azure Data Lake 对纽约市出租车数据集执行数据浏览和二进制分类任务，以预测客户是否会支付小费。 
+[用于数据科学](data-lake-walkthrough.md)演练的 Azure Data Lake 演示如何使用 Azure Data Lake 执行数据浏览和二元分类任务。  数据是 NYC 出租车数据集的一个示例。  该任务预测客户是否支付了一条提示。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关构成 Team Data Science Process 的关键组件的讨论，请参阅 [Team Data Science Process 概述](overview.md)。
+有关团队数据科学过程的概述，请参阅[团队数据科学过程概述](overview.md)。
 
-有关可用于构建数据科学项目的 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 
+有关团队数据科学过程生命周期的讨论，请参阅[团队数据科学过程生命周期](lifecycle.md)。 此生命周期概述了项目执行时通常遵循的步骤。 

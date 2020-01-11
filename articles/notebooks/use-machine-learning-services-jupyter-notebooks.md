@@ -3,16 +3,16 @@ title: 使用 Azure Notebooks 预览版中的 Azure 机器学习
 description: Azure 机器学习的示例笔记本概述，可与 Azure Notebooks 预览版一起使用。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 435abca83255221d438d530b63c237c08bb0b672
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646946"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860565"
 ---
 # <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>使用 Azure Notebooks 预览版中的 Azure 机器学习
 
-Azure Notebooks 已预先配置为使用[Azure 机器学习](/azure/machine-learning/service/)所需的环境。 可以轻松地将示例项目复制到 Notebook 帐户，以浏览各种机器学习场景。
+Azure Notebooks 已预先配置为使用[Azure 机器学习](/azure/machine-learning/)所需的环境。 可以轻松地将示例项目复制到 Notebook 帐户，以浏览各种机器学习场景。
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -39,9 +39,9 @@ Azure Notebooks 已预先配置为使用[Azure 机器学习](/azure/machine-lear
 
 Azure 机器学习文档包含各种其他资源，这些资源可指导你使用笔记本中的机器学习：
 
-- [快速入门：使用 Python 开始使用 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [教程 #1：使用 Azure 机器学习训练图像分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [教程 #2：在 Azure 容器实例（ACI）中部署图像分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [教程：在 Azure 机器学习中使用自动化机器学习训练分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [快速入门：使用 Python 开始使用 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#local)
+- [教程 #1：使用 Azure 机器学习训练图像分类模型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+- [教程 #2：在 Azure 容器实例（ACI）中部署图像分类模型](https://docs.microsoft.com/azure/machine-learning/tutorial-deploy-models-with-aml)
+- [教程：在 Azure 机器学习中使用自动化机器学习训练分类模型](https://docs.microsoft.com/azure/machine-learning/tutorial-auto-train-models)
 
 另请参阅[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 一文。

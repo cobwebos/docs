@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20c1f1f9a8b0b0ef105893e44c9daaeae68604db
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a1d32bf7ea296ed2c4ed9351fcefe400c03effa5
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889747"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861432"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>使用从 Azure 时序见解预览环境查询数据C#
 
@@ -24,7 +24,7 @@ ms.locfileid: "74889747"
 
 该示例演示了多个基本的查询 API 使用示例：
 
-1. 准备时，通过 Azure Active Directory API 获取访问令牌。 在每个查询 API 请求的 `Authorization` 标头中传递此令牌。 有关如何设置非交互式应用程序，请参阅[身份验证和授权](time-series-insights-authentication-and-authorization.md)。 此外，请确保正确设置此示例开头定义的所有常量。
+1. 准备时，通过 Azure Active Directory API 获取访问令牌。 在每个查询 API 请求的 `Authorization` 标头中传递此令牌。 若要设置非交互式应用程序，请阅读[身份验证和授权](time-series-insights-authentication-and-authorization.md)。 此外，请确保正确设置此示例开头定义的所有常量。
 1. 已获得该用户有权访问的环境的列表。 将选取一个环境作为感兴趣的环境，并会查询该环境的更多数据。
 1. 以 HTTPS 请求为例，可以为感兴趣的环境请求可用性数据。
 1. 提供来自[Azure AutoRest](https://github.com/Azure/AutoRest)的 SDK 自动生成支持的示例。

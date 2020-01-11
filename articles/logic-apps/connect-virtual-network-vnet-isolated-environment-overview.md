@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527852"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860737"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "75527852"
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-逻辑应用现在可以使用以下任一项直接访问内部或连接到虚拟网络的系统：
+现在，你的逻辑应用可以使用其中的任何项（这些项在逻辑应用所在的同一 ISE 中运行）直接访问内部或连接到虚拟网络的系统：
 
 * 用于该系统的**ISE**标记的连接器
 * **核心**标记的内置触发器或操作，例如 HTTP 触发器或操作
@@ -43,23 +43,21 @@ ms.locfileid: "75527852"
 
 在 Azure 中创建集成服务环境（ISE）时，可以选择要*注入*ISE 的 Azure 虚拟网络。 然后，Azure 会在虚拟网络中注入或部署逻辑应用服务的专用实例。 此操作将创建一个独立环境，可以在专用资源上创建和运行逻辑应用。 创建逻辑应用时，可以选择 ISE 作为应用的位置，这使逻辑应用可直接访问虚拟网络和该网络中的资源。
 
-ISE 中的逻辑应用可提供与全局逻辑应用服务相同的用户体验和类似的功能。 你不仅可以使用相同的内置触发器、内置操作，还可以使用来自全局逻辑应用服务的连接器，但你也可以使用 ISE 特定的连接器。 例如，以下是一些标准连接器，提供在 ISE 中运行的版本：
+ISE 中的逻辑应用提供与公共全局逻辑应用服务相同的用户体验和类似功能。 可以使用全局逻辑应用服务中提供的所有相同内置触发器、操作和托管连接器。 某些托管连接器提供其他 ISE 版本。 不同之处在于它们的运行位置和在 ISE 中工作时显示在逻辑应用设计器中的标签。
 
-* Azure Blob 存储、文件存储和表存储
-* Azure 队列、Azure 服务总线、Azure 事件中心和 IBM MQ
-* FTP 和 SFTP-SSH
-* SQL Server、Azure SQL 数据仓库、Azure Cosmos DB
-* AS2、X12 和 EDIFACT
+![ISE 中具有和不含标签的连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-ISE 和非 ISE 连接器之间的区别在于触发器和操作运行的位置：
+* 内置触发器和操作显示 "**核心**" 标签，并且它们始终在与逻辑应用相同的 ISE 中运行。 显示**ise**标签的托管连接器也与逻辑应用在同一 ISE 中运行。
 
-* 在 ISE 中，内置触发器和操作（如 HTTP）始终在与逻辑应用相同的 ISE 中运行，并显示 "**核心**" 标签。
+  例如，以下是一些提供 ISE 版本的连接器：
 
-  ![选择 "核心" 内置触发器和操作](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Azure Blob 存储、文件存储和表存储
+  * Azure 队列、Azure 服务总线、Azure 事件中心和 IBM MQ
+  * FTP 和 SFTP-SSH
+  * SQL Server、Azure SQL 数据仓库、Azure Cosmos DB
+  * AS2、X12 和 EDIFACT
 
-* 在 ISE 中运行的连接器具有可在全局逻辑应用服务中使用的公开托管版本。 对于提供两个版本的连接器，具有**ISE**标签的连接器始终在与逻辑应用相同的 ISE 中运行。 没有 ISE 标签的连接器运行在全局逻辑应用服务中。
-
-  ![选择 ISE 连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* 不显示任何其他标签的托管连接器始终在公共全局逻辑应用服务中运行，但你仍可以在基于 ISE 的逻辑应用中使用这些连接器。
 
 ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应超时、消息大小和自定义连接器请求提供了更大的限制。 有关详细信息，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md)。
 

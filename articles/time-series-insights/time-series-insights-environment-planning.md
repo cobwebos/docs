@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452867"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863370"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解 GA 环境
 
@@ -32,7 +32,7 @@ ms.locfileid: "75452867"
 
 若要开始使用 Azure 时序见解，最好知道要在一分钟内推送的数据量以及存储数据所需的时间。  
 
-有关时序见解 SKU 的容量和保留期的详细信息，请参阅[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
+有关时序见解 Sku 的容量和保留期的详细信息，请参阅[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
 若要最好地计划长期成功的时序见解环境，请考虑以下属性：
 
@@ -71,7 +71,7 @@ Azure 时序见解有两种模式：
    [![配置保留](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> 若要了解有关如何实施适当的数据保留策略的详细信息，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
+> 若要了解有关如何实现适当的数据保留策略的详细信息，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
 
 ## <a name="ingress-capacity"></a>入口容量
 
@@ -103,7 +103,7 @@ Azure 时序见解有两种模式：
 
 ### <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
 
-有关如何避免限制和延迟的信息，请参阅[缓解限制和延迟](time-series-insights-environment-mitigate-latency.md)。
+有关如何防止限制和延迟的信息，请参阅[缓解延迟和限制](time-series-insights-environment-mitigate-latency.md)。
 
 ## <a name="shape-your-events"></a>塑造事件
 
@@ -119,7 +119,7 @@ Azure 时序见解有两种模式：
 > [!NOTE]
 > 引用数据未联接以追溯方式。 配置并上传后，仅当前和未来的入站数据进行匹配并联接到引用数据集。 如果你计划将大量历史数据发送到时序见解，并且不先上传或创建时序见解中的引用数据，则可能必须重做工作（提示：不太有趣）。  
 
-若要了解有关如何在时序见解中创建、上传和管理引用数据的详细信息，请参阅[参考数据集文档](time-series-insights-add-reference-data-set.md)。
+若要详细了解如何在时序见解中创建、上传和管理引用数据，请阅读我们的[参考数据集文档](time-series-insights-add-reference-data-set.md)。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

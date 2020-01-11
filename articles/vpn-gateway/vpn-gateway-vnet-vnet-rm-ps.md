@@ -1,5 +1,5 @@
 ---
-title: 使用 VNet 到 VNet 连接将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft Docs
+title: 使用 Azure VPN 网关 VNet 到 VNet 连接将 VNet 连接到另一 VNet： PowerShell
 description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385785"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860514"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -32,7 +32,7 @@ ms.locfileid: "68385785"
 
 可通过多种方式来连接 VNet。 以下各节介绍了如何通过不同方式来连接虚拟网络。
 
-### <a name="vnet-to-vnet"></a>虚拟网络到虚拟网络
+### <a name="vnet-to-vnet"></a>VNet 到 VNet
 
 配置一个 VNet 到 VNet 连接即可轻松地连接 VNet。 使用 VNet 到 VNet 连接类型 (VNet2VNet) 将一个虚拟网络连接到另一个虚拟网络类似于创建到本地位置的站点到站点 IPsec 连接。  这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道，二者在通信时使用同样的方式运行。 连接类型的差异在于本地网关的配置方式。 创建 VNet 到 VNet 连接时，看不到本地网关地址空间。 它是自动创建并填充的。 如果更新一个 VNet 的地址空间，另一个 VNet 会自动知道路由到更新的地址空间。 与在 VNet 之间创建站点到站点连接相比，创建 VNet 到 VNet 连接通常速度更快且更容易。
 
@@ -40,7 +40,7 @@ ms.locfileid: "68385785"
 
 如果要进行复杂的网络配置，则与使用 VNet 到 VNet 步骤相比，使用[站点到站点](vpn-gateway-create-site-to-site-rm-powershell.md)步骤来连接 VNet 会更好。 使用站点到站点步骤时，可以手动创建和配置本地网关。 每个 VNet 的本地网关都将其他 VNet 视为本地站点。 这样可以为本地网关指定路由流量所需的其他地址空间。 如果 VNet 的地址空间更改，则需根据更改更新相应的本地网关。 它不自动进行更新。
 
-### <a name="vnet-peering"></a>VNet 对等
+### <a name="vnet-peering"></a>VNet 对等互连
 
 可以考虑使用 VNet 对等互连来连接 VNet。 VNet 对等互连不使用 VPN 网关，并且有不同的约束。 另外，[VNet 对等互连定价](https://azure.microsoft.com/pricing/details/virtual-network)的计算不同于 [VNet 到 VNet VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)的计算。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
@@ -65,11 +65,11 @@ ms.locfileid: "68385785"
 
 就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-* [位于同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
+* [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [位于不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
+* [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -87,13 +87,13 @@ ms.locfileid: "68385785"
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用了以下值：
+示例中使用以下值：
 
 **TestVNet1 的值：**
 
 * VNet 名称：TestVNet1
 * 资源组：TestRG1
-* 位置:East US
+* 位置：美国东部
 * TestVNet1：10.11.0.0/16 和 10.12.0.0/16
 * FrontEnd：10.11.0.0/24
 * BackEnd：10.12.0.0/24
@@ -102,8 +102,8 @@ ms.locfileid: "68385785"
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
 * Connection(1to4)：VNet1toVNet4
-* Connection(1to5)：VNet1 到 VNet5（适用于不同订阅中的 VNet）
-* 连接类型：VNet2VNet
+* Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
+* ConnectionType：VNet2VNet
 
 **TestVNet4 的值：**
 
@@ -113,12 +113,12 @@ ms.locfileid: "68385785"
 * BackEnd：10.42.0.0/24
 * GatewaySubnet：10.42.255.0/27
 * 资源组：TestRG4
-* 位置:美国西部
+* 位置：美国西部
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4 到 VNet1
-* 连接类型：VNet2VNet
+* 连接：VNet4toVNet1
+* ConnectionType：VNet2VNet
 
 
 ### <a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
@@ -166,7 +166,7 @@ ms.locfileid: "68385785"
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 出于此原因, 它不是通过下面的变量分配的。
+4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 出于此原因，它不是通过下面的变量分配的。
 
    下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
 
@@ -302,7 +302,7 @@ ms.locfileid: "68385785"
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>步骤 5 - 创建并配置 TestVNet1
 
-必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分中的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
+必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a>步骤 6 - 验证 IP 地址范围
 
@@ -312,7 +312,7 @@ ms.locfileid: "68385785"
 
 * VNet 名称：TestVNet5
 * 资源组：TestRG5
-* 位置:日本东部
+* 位置：日本东部
 * TestVNet5：10.51.0.0/16 和 10.52.0.0/16
 * FrontEnd：10.51.0.0/24
 * BackEnd：10.52.0.0/24
@@ -325,7 +325,7 @@ ms.locfileid: "68385785"
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>步骤 7 - 创建并配置 TestVNet5
 
-必须在新订阅的上下文中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
+必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
 1. 声明变量。 请务必将值替换为用于配置的值。
 

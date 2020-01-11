@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745460"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863574"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -97,7 +97,7 @@ Azure Monitor 包含功能强大的 log analytics 服务，该服务允许在一
 完整的日志查询通过[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)提供。 设置这些强大的功能：
 
 1. 在 Azure 门户中搜索“Log Analytics”。
-1. 你将看到可用的**Log Analytics 工作区**实例。 选择一个实例，然后选择“日志”进行查询：
+1. 将显示可用的**Log Analytics 工作区**实例。 选择一个实例，然后选择“日志”进行查询：
 
     [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
@@ -109,7 +109,7 @@ Azure Monitor 包含功能强大的 log analytics 服务，该服务允许在一
 
    [![日志管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-有关功能强大的查询操作的详细信息，请参阅[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
+有关功能强大的查询操作的详细信息，请阅读[查询](../azure-monitor/log-query/get-started-queries.md)入门。
 
 > [!NOTE]
 > 首次向**Log Analytics 的工作区**发送事件时，可能会出现5分钟的延迟。
@@ -123,7 +123,7 @@ Azure Monitor 日志还提供了强大的错误和警报通知服务，可通过
 
 ## <a name="other-options"></a>其他选项
 
-Azure 的数字孪生还支持特定于应用程序的日志记录和安全审核。 有关 Azure 数字孪生实例可用的所有 Azure 日志记录选项的完整概述，请参阅 [Azure 日志审核](../security/fundamentals/log-audit.md)一文。
+Azure 的数字孪生还支持特定于应用程序的日志记录和安全审核。 若要全面了解 Azure 数字孪生实例可用的所有 Azure 日志记录选项，请阅读[azure 日志审核](../security/fundamentals/log-audit.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082683"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863904"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -38,7 +38,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 确保已满足以下先决条件：
 
 * 一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
-* Azure PowerShell。 若要深入了解此版本及其安装方法，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
+* Azure PowerShell。 有关此版本及其安装方法的信息，请参阅[install Azure PowerShell](/powershell/azure/install-az-ps)。
 
 此外，本文中提及的特定示例要求满足以下先决条件：
 
@@ -72,12 +72,12 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
     `New-AzResourceGroup -Name $ResourceGroupName -Location $Geo`
 
-2. 若要获取订阅中的资源组列表，请运行 **Get-AzResourceGroup** cmdlet。
+2. 若要获取订阅中资源组的列表，请运行**AzResourceGroup** cmdlet。
 2. 创建如下所示的新的 Azure 恢复服务保管库：
 
         $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    可使用 **Get-AzRecoveryServicesVault** cmdlet 检索现有保管库的列表。
+    可使用**AzRecoveryServicesVault** cmdlet 检索现有保管库的列表。
 
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
@@ -107,7 +107,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 ## <a name="step-5-install-the-provider-and-agent"></a>步骤 5：安装提供程序和代理
 
 1. 从 [Microsoft](https://aka.ms/downloaddra) 下载最新版提供程序的安装程序。
-2. 在 Hyper-V 主机上运行安装程序。
+2. 在 Hyper-v 主机上运行安装程序。
 3. 在安装结束时继续执行注册步骤。
 4. 在系统提示时提供下载的密钥，然后完成 Hyper-V 主机的注册过程。
 5. 验证 Hyper-V 主机是否已注册到站点，如下所示：
@@ -188,7 +188,13 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
         Succeeded
 
-
+> [!NOTE]
+> 如果要复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 向上执行以下步骤：
+>
+> 1. 通过更新 VM 属性启用到托管磁盘的故障转移
+> 2. 使用使用 get-asrreplicationprotecteditem cmdlet 获取受保护项的每个磁盘的磁盘 ID
+> 3. 使用新的对象 "system.servicemodel" "2 [System.string，system.string]" cmdlet 创建字典对象，以包含磁盘 ID 到磁盘加密集的映射。 这些磁盘加密集将在目标区域中预先创建。
+> 4. 通过将字典对象传入-DiskIdToDiskEncryptionSetMap 参数，使用使用 get-asrreplicationprotecteditem cmdlet 更新 VM 属性。
 
 ## <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 1. 按如下所述运行测试故障转移：

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300541"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867434"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -40,12 +40,12 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 * 在适用的 Windows Active Directory （AD）服务器上必须打开正确的端口。  
     所需的端口如下： 
 
-    |     服务           |     端口     |     协议     |
+    |     服务           |     Port     |     协议     |
     |-----------------------|--------------|------------------|
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    不适用       |    回显回复    |
+    |    ICMPv4             |    N/A       |    回显回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -56,8 +56,6 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    NetBIOS 名称       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    安全 LDAP        |    636       |    TCP           |
-    |    安全 LDAP        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
 
 * 目标 Active Directory 域服务的站点拓扑必须遵循最佳做法，尤其是 azure VNet 部署 azure NetApp 文件的位置。  

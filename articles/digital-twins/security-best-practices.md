@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229036"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860939"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure 数字孪生安全最佳做法
 
@@ -29,7 +29,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > [!TIP]
 > 使用[适用于 iot 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)来帮助检测 iot 安全威胁和漏洞。
 
-## <a name="iot-security-best-practices"></a>IoT 安全最佳实践
+## <a name="iot-security-best-practices"></a>IoT 安全性最佳实践
 
 安全地保护 IoT 设备的一些关键做法包括：
 
@@ -46,7 +46,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > [!div class="checklist"]
 > * 加密已保存、已存储或持久性数据。
 > * 要求定期更改或刷新密码或密钥。
-> * 仔细按角色限制访问权限和权限。 请参阅以下[基于角色的访问控制最佳做法](#role-based-access-control-best-practices)部分。
+> * 仔细按角色限制访问权限和权限。 阅读下面的 "[基于角色的访问控制最佳实践](#role-based-access-control-best-practices)" 部分。
 > * 请考虑使用分段网络拓扑，使每个网络上的设备彼此隔离。
 > * 使用功能强大的加密。 需要较长的密码，请使用安全协议和[多重身份验证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。
 
@@ -56,7 +56,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > 阅读 Azure [iot 安全最佳实践](../iot-fundamentals/iot-security-best-practices.md)，开始综合性 iot 安全策略。
 
 > [!NOTE]
-> 有关事件处理和监视的详细信息，请参阅[使用 Azure 数字孪生路由事件和消息](./concepts-events-routing.md)。
+> 有关事件处理和监视的详细信息，请参阅[通过 Azure 数字孪生路由事件和消息](./concepts-events-routing.md)。
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory 最佳做法
 

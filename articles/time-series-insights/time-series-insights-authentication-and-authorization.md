@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460435"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863472"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -87,7 +87,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 使用 Azure Active Directory 应用注册部分中的**应用程序 ID**和**客户端**密钥（应用程序密钥）来代表应用程序获取令牌。
 
-   1. 在C#中，以下代码可以代表应用程序获取令牌。 有关完整示例，请参阅[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
+   1. 在C#中，以下代码可以代表应用程序获取令牌。 有关完整示例，请[ C#使用读取查询数据](time-series-insights-query-data-csharp.md)。
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 若要对[时序见解 REST api](https://docs.microsoft.com/rest/api/time-series-insights/)执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、 C#）在[授权标头](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
 > [!TIP]
-> 请参阅托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，了解如何使用[JAVASCRIPT 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)以编程方式在图表和图形上使用时序见解 api 进行身份验证。
+> 若要了解如何使用[JavaScript 客户端 sdk](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)以编程方式与图表和图形一起使用时序见解 api 进行身份验证，请参阅托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)。
 
 ### <a name="http-headers"></a>HTTP 标头
 
@@ -161,10 +161,10 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关调用 GA 时序见解 API 的示例代码，请参阅[ C#使用查询数据](./time-series-insights-query-data-csharp.md)。
+- 有关调用 GA 时序见解 API 的示例代码，请[ C#使用读取查询数据](./time-series-insights-query-data-csharp.md)。
 
-- 有关预览时序见解 API 代码示例，请参阅[使用C#查询预览数据](./time-series-insights-update-query-data-csharp.md)。
+- 对于预览时序见解 API 代码示例，请[使用C#读取查询预览数据](./time-series-insights-update-query-data-csharp.md)。
 
-- 有关 API 参考信息，请参阅[查询 api 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
+- 有关 API 参考信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
 
 - 了解如何[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。

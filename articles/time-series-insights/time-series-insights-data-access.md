@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328026"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863421"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -25,9 +25,9 @@ ms.locfileid: "74328026"
 > [!TIP]
 > Azure Active Directory 应用注册步骤的读取[身份验证和授权](time-series-insights-authentication-and-authorization.md)。
 
-## <a name="sign-in-to-time-series-insights"></a>登录到 Azure 时序见解
+## <a name="sign-in-to-time-series-insights"></a>登录到时序见解
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。 在搜索结果中选择“时序环境”。
 1. 从列表中选择时序见解环境。
 
@@ -39,7 +39,7 @@ ms.locfileid: "74328026"
 
     [![选择和添加数据访问策略](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. 选择“选择用户”。 搜索用户名称或电子邮件地址，查找要添加的用户。 选择“选择”以确认选择。
+1. 选择“选择用户”。 搜索用户名称或电子邮件地址，查找要添加的用户。 选择 "**选择**" 以确认选择。
 
     [![选择要添加的用户](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
@@ -79,7 +79,7 @@ ms.locfileid: "74328026"
 
     [![查找要显示的确认气泡](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. 选择“选择用户”。 搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 然后单击“选择”以确认选择。
+1. 选择“选择用户”。 搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 然后，**选择**确认选择。
 
     [![选择用户并确认所选内容](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
@@ -113,14 +113,14 @@ ms.locfileid: "74328026"
 
 1. 来宾现在可以使用管理员提供的环境 URL 访问共享环境。 他们可以在其 web 浏览器中输入该 URL 以进行即时访问。
 
-1. 来宾用户将通过选择时序资源管理器右上角的 "配置文件" 图标来查看管理员的租户。
+1. 在时序资源管理器的右上角选择用户的配置文件图标后，管理员的租户将显示给 guest 用户。
 
     [insights.azure.com 上的 ![头像选择](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
     当来宾用户选择管理员的租户后，他们将能够选择共享的时序见解环境。 
     
-    现在，他们拥有了与你在**步骤 5** 中提供的角色相关联的所有功能。
+    它们现在具有与您在**步骤 5**中为其提供的角色关联的所有功能。
 
     [![来宾用户从下拉](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 

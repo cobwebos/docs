@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f75e7112a8fc90c6c49ede7cd0ac726401fc1a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b70604c62ae21f9c433b3cd7d9e59f4ccebb61bd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452689"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861721"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -86,7 +86,7 @@ Azure 时序见解预览版环境为即*用即付*（PAYG）环境。
 
 ## <a name="manage-the-environment"></a>管理环境
 
-可以使用 Azure 门户管理 Azure 时序见解预览版环境。 当你通过 Azure 门户进行管理时，你将看到 PAYG Azure 时序见解预览版环境与普遍可用的 S1 或 S2 环境之间的几个重要区别：
+可以使用 Azure 门户管理 Azure 时序见解预览版环境。 PAYG Azure 时序见解预览版环境与公开上市的 S1 或 S2 环境之间有几个重要区别：你通过 Azure 门户管理环境：
 
 * "Azure 门户预览**概述**" 边栏选项卡具有以下更改：
 

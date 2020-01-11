@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0aed84dc4d78f8e83f568ff3e73d1300aaedbcaa
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456902"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860956"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>连接到 Api 并向其进行身份验证
 
@@ -24,7 +24,7 @@ Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份
 > [!TIP]
 > 按照[教程](tutorial-facilities-setup.md)设置并运行 Azure 数字孪生示例应用。
 
-若要将某个应用程序或服务与 Azure AD 进行集成，开发人员必须先将该应用程序注册到 Azure AD。 有关详细说明和屏幕截图，请参阅[此快速入门](../active-directory/develop/quickstart-register-app.md)。
+若要将某个应用程序或服务与 Azure AD 进行集成，开发人员必须先将该应用程序注册到 Azure AD。 有关详细说明和屏幕截图，请阅读[此快速入门](../active-directory/develop/quickstart-register-app.md)。
 
 Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-app-types.md)：
 
@@ -49,7 +49,7 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 
 1. 然后，使用获取的令牌，以向使用代理流的更下游 API 进行身份验证或调用该 API
 
-有关如何协调代理流的说明，请参阅 [OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) 中的代码示例。
+有关如何安排代理流的说明，请参阅[OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) 中的代码示例。
 
 ## <a name="next-steps"></a>后续步骤
 

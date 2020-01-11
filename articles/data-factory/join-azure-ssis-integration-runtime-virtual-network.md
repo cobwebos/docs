@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497034"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862809"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -30,10 +30,20 @@ ms.locfileid: "75497034"
 
 - 需要连接到在 Azure-SSIS IR 上运行的 SSIS 包中配置了 IP 防火墙规则的数据存储/资源。
 
-利用数据工厂，你可以将 Azure-SSIS IR 加入通过经典部署模型或 Azure 资源管理器部署模型创建的虚拟网络。 
+利用数据工厂，你可以将 Azure-SSIS IR 加入通过经典部署模型或 Azure 资源管理器部署模型创建的虚拟网络。
 
 > [!IMPORTANT]
 > 经典虚拟网络已被弃用，因此请改用 Azure 资源管理器虚拟网络。  如果已使用经典虚拟网络，请尽快切换到 Azure 资源管理器虚拟网络。
+
+[配置 Azure SQL Server Integration Services （SSIS）集成运行时（IR）以加入虚拟网络](tutorial-deploy-ssis-virtual-network.md)教程介绍了通过 Azure 门户的最少步骤。 本文扩展了本教程，并介绍了所有可选任务：
+
+- 如果你使用的是虚拟网络（经典）。
+- 如果为 Azure-SSIS IR 提供了自己的公共 IP 地址。
+- 如果你使用自己的域名系统（DNS）服务器。
+- 如果在子网上使用网络安全组（NSG）。
+- 如果使用 Azure ExpressRoute 或用户定义的路由（UDR）。
+- 如果使用自定义 Azure-SSIS IR。
+- 如果使用 Azure Powershell 预配。
 
 ## <a name="access-to-on-premises-data-stores"></a>访问本地数据存储
 
@@ -319,7 +329,7 @@ Azure-SSIS IR 启动时，将创建这些资源。 当你的 Azure-SSIS IR 停�
 
    ![数据工厂列表](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. 在列表中选择包含 Azure-SSIS IR 的数据工厂。 随后会显示该数据工厂的主页。 选择“创作和部署”磁贴。 单独的选项卡中会显示数据工厂 UI。 
+1. 在列表中选择包含 Azure-SSIS IR 的数据工厂。 随后会显示该数据工厂的主页。 选择 "**创作 & 监视器**" 磁贴。 单独的选项卡中会显示数据工厂 UI。 
 
    ![数据工厂主页](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

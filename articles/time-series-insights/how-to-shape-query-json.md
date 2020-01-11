@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894917"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864343"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>最大化查询性能的形状 JSON 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74894917"
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 考虑如何向时序见解发送事件。 也就是说，您始终可以：
 
@@ -50,7 +50,7 @@ ms.locfileid: "74894917"
 
 ## <a name="example-overview"></a>示例概述
 
-下面两个示例演示了如何发送事件来突出显示前面的建议。 在每个示例中，可以看到建议的应用方式。
+下面两个示例演示了如何发送事件来突出显示前面的建议。 在每个示例中，可以查看建议的应用方式。
 
 这些示例基于多个设备发送度量值或信号的场景。 度量值或信号可以是流动率、引擎石油压力、温度和湿度。 在第一个示例中，所有设备提供了一些度量值。 第二个示例包含多个设备，每个设备发送多个独特的度量。
 

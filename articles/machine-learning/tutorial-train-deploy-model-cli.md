@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: eb181cbf6c647c816886f330502a9a46cb956dee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763277"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867672"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -242,8 +242,14 @@ az ml dataset register -f dataset.json --skip-validation
 }
 ```
 
+
 > [!IMPORTANT]
 > 复制 `id` 条目的值，因为下一部分将用到它。
+
+若要查看用于描述数据集的 JSON 文件的更全面模板，请使用以下命令：
+```azurecli-interactive
+az ml dataset register --show-template
+```
 
 ## <a name="reference-the-dataset"></a>引用数据集
 

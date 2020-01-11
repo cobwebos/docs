@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927727"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867369"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "74927727"
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
 - **REST 连接器**专门支持从 RESTful api 复制数据; 
-- **HTTP 连接器**是通用的，用于从任何 HTTP 终结点检索数据，例如下载文件。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
+- **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -56,19 +56,19 @@ ms.locfileid: "74927727"
 
 REST 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | **Type**属性必须设置为**如果**。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 连接到终结点时是否验证服务器端 SSL 证书。 | No<br /> （默认值为 true） |
+| enableServerCertificateValidation | 连接到终结点时是否验证服务器端 SSL 证书。 | 否<br /> （默认值为 true） |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
-| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |No |
+| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本身份验证
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -101,7 +101,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -138,7 +138,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
 
@@ -170,10 +170,10 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
-| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。 | No |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
 
 如果在数据集中设置 `requestMethod`、`additionalHeaders`、`requestBody` 和 `paginationRules`，则仍支持原样，而建议使用活动源中的新模型。
 
@@ -206,15 +206,15 @@ REST 链接服务支持以下属性：
 
 复制活动源部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | No |
-| additionalHeaders | 附加的 HTTP 请求标头。 | No |
-| requestBody | HTTP 请求的正文。 | No |
-| paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | No |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | No |
-| requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  No |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| requestBody | HTTP 请求的正文。 | 否 |
+| paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
+| requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
 
 >[!NOTE]
 >REST 连接器将忽略 `additionalHeaders`中指定的任何 "Accept" 标头。 由于 REST 连接器仅支持 JSON 中的响应，它会自动生成 `Accept: application/json`的标头。
@@ -308,7 +308,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的键**：
 
-| 密钥 | 描述 |
+| 密钥 | Description |
 |:--- |:--- |
 | AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是**绝对 url，也可以是相对 url**。 |
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 |
@@ -316,7 +316,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的值**：
 
-| Value | 描述 |
+| 值 | Description |
 |:--- |:--- |
 | Headers.*response_header* 或 Headers['response_header'] | “response_header”由用户定义，引用当前 HTTP 响应中的一个标头名称，其值用于发出下一个请求。 |
 | 以“$”（表示响应正文的根）开头的 JSONPath 表达式 | 响应正文应只包含一个 JSON 对象。 JSONPath 表达式应返回单个基元值，该值用于发出下一个请求。 |
@@ -371,6 +371,75 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
     }
 }
 ```
+
+## <a name="use-oauth"></a>使用 OAuth
+本部分介绍如何使用解决方案模板，以使用 OAuth 将数据从 REST 连接器复制到使用 JSON 格式 Azure Data Lake Storage。 
+
+### <a name="about-the-solution-template"></a>关于解决方案模板
+
+该模板包含两个活动：
+- **Web**活动检索持有者令牌，并将其作为授权传递到后续的复制活动。
+- **复制**活动将数据从 REST 复制到 Azure Data Lake Storage。
+
+该模板定义两个参数：
+- **SinkContainer**是将数据复制到 Azure Data Lake Storage 的根文件夹路径。 
+- **SinkDirectory**是根下的目录路径，在该目录中的数据将复制到 Azure Data Lake Storage 中。 
+
+### <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
+
+1. 请**从 REST 或使用 OAuth 的 HTTP**模板中转到该副本。 为源连接创建新连接。 
+    ![创建新连接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    下面是新链接服务（REST）设置的关键步骤：
+    
+     1. 在 "**基本 url**" 下，为自己的源 REST 服务指定 URL 参数。 
+     2. 对于 "**身份验证类型**"，选择 "*匿名*"。
+        ![新的 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. 为目标连接创建新连接。  
+    ![新建 Gen2 连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. 选择“使用此模板”。
+    ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. 你会看到创建的管道，如以下示例中所示： ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. 选择 " **Web**活动"。 在 "**设置**" 中，指定相应的**URL**、**方法**、**标头**和**正文**，以便从要从中复制数据的服务的登录 API 中检索 OAuth 持有者令牌。 模板中的占位符展示 Azure Active Directory （AAD） OAuth 的示例。 注意： AAD 身份验证是 REST 连接器的本机支持，这里只是 OAuth flow 的示例。 
+
+    | 属性 | Description |
+    |:--- |:--- |:--- |
+    | URL |指定要从中检索 OAuth 持有者令牌的 url。 例如，在示例中，它的 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |。 
+    | 方法 | HTTP 方法。 允许的值为**Post**和**Get**。 | 
+    | 标头 | 标头是用户定义的，它引用 HTTP 请求中的标头名称。 | 
+    | Body | HTTP 请求的正文。 | 
+
+    ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. 在 "**复制数据**" 活动中，选择 "*源*" 选项卡，可以看到从上一步检索到的持有者令牌（access_token）将传递到 "在其他标头下作为**授权**复制数据" 活动。 启动管道运行之前，请确认以下属性的设置。
+
+    | 属性 | Description |
+    |:--- |:--- |:--- | 
+    | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 
+    | 其他标头 | 附加的 HTTP 请求标头。| 
+
+   ![复制源身份验证](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. 选择 "**调试**"，输入**参数**，然后选择 "**完成**"。
+   ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. 管道运行成功完成后，会看到类似于以下示例的结果： ![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. 单击 "**操作**" 列中的 WebActivity 的 "输出" 图标，你会看到该服务返回的 access_token。
+
+   ![令牌输出](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. 在 "**操作**" 列中单击 "CopyActivity" 的 "输入" 图标，你会看到 WebActivity 检索到的 access_token 传递到 CopyActivity 进行身份验证。 
+
+    ![令牌输入](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >若要避免以纯文本格式记录令牌，请在 Web 活动中启用 "安全输出"，并在复制活动中启用 "安全输入"。
+
 
 ## <a name="export-json-response-as-is"></a>按原样导出 JSON 响应
 

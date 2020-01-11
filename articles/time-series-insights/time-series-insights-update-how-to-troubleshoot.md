@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452535"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861568"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>诊断和排查预览版环境问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "75452535"
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览资源管理器中未显示数据
 
-在 [Azure 时序见解预览版资源管理器](https://insights.timeseries.azure.com/preview)中未看见数据有多个常见原因。
+数据可能不会出现在[Azure 时序见解预览资源管理器](https://insights.timeseries.azure.com/preview)中的几个常见原因。
 
 - 事件源可能未接收数据。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75452535"
 
 - 事件源数据不是 JSON 格式。
 
-    时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+    时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 json 形状](./how-to-shape-query-json.md)。
 
 - 事件源密钥缺少所需权限。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75452535"
 
 - 在预配时指定的时序 ID 属性不正确、缺失或为 null。
 
-    如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请参阅[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
+    如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请参阅[选择时序 ID 的最佳实践](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：有些数据显示，但有些数据丢失
 
@@ -97,7 +97,7 @@ ms.locfileid: "75452535"
 
 - 你可能在访问时序见解 S1 或 S2 环境。
 
-   时序模型仅在即用即付环境中受支持。 有关如何从时序见解预览浏览器访问 S1 或 S2 环境的详细信息，请参阅[在资源管理器中显示数据](./time-series-insights-update-explorer.md)。
+   时序模型仅在即用即付环境中受支持。 有关如何从时序见解预览资源管理器访问 S1 或 S2 环境的详细信息，请阅读[资源管理器中的可视化数据](./time-series-insights-update-explorer.md)。
 
    [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ ms.locfileid: "75452535"
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>问题：预览资源管理器中的所有实例都缺少父项
 
-如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请参阅[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
+如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 
   [![Unparented 实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

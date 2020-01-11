@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369246"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860242"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>选择 Azure 上的实时分析和流式处理技术
 
@@ -41,10 +41,6 @@ Azure 流分析具有全新的全新体验。 你可以立即利用以下功能�
 * 从事件中心到达的输入到100毫秒的端到端延迟，以便在事件中心（包括从和到事件中心的网络延迟）中输出登陆
 
 ## <a name="when-to-use-other-technologies"></a>何时使用其他技术
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>需要输入或输出到 Kafka
-
-Azure 流分析没有 Apache Kafka 的输入或输出适配器。 如果有登录事件或需要发送到 Kafka 的事件，但不需要运行自己的 Kafka 群集，则可以通过使用事件中心 Kafka API 将事件发送到事件中心来继续使用流分析，而无需更改事件发送方。 如果确实需要运行自己的 Kafka 群集，则可以使用 Spark 结构化流式处理，这在[Azure HDInsight](../hdinsight/storm/apache-storm-overview.md)上[Azure Databricks](../azure-databricks/index.yml)或风暴上完全受支持。
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>要使用 JavaScript 以外的语言编写 Udf、Uda 和自定义反C#
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913486"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867163"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -95,7 +95,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 如果使用 Azure 容器注册表（ACR）作为容器映像存储，则需要向 AKS 群集的服务主体授予权限以读取和提取映像。 目前，建议的配置是使用[az aks create][az-aks-create]或[az aks update][az-aks-update]命令与注册表集成，并为服务主体分配相应的角色。 有关详细步骤，请参阅通过 azure[容器注册表从 Azure Kubernetes 服务进行身份验证][aks-to-acr]。
 
-### <a name="networking"></a>网络
+### <a name="networking"></a>联网
 
 可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 分配下列角色权限集之一：
 
@@ -131,6 +131,8 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集中的代理节点 Vm 中，服务主体凭据存储在文件中 `/etc/kubernetes/azure.json`
 - 当你使用[az aks create][az-aks-create]命令自动生成服务主体时，服务主体凭据将写入用于运行命令的计算机上的文件 `~/.azure/aksServicePrincipal.json`。
+- 如果未在其他 AKS CLI 命令中专门传递服务主体，则使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
+- 还可以选择删除 aksServicePrincipal 文件，AKS 将创建新的服务主体。
 - 如果删除由[az AKS create][az-aks-create]创建的 AKS 群集，则不会删除自动创建的服务主体。
     - 若要删除服务主体，请查询群集*servicePrincipalProfile* ，然后通过[az ad app delete][az-ad-app-delete]删除。 将以下资源组和群集名称替换为你自己的值：
 

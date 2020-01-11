@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834390"
+ms.locfileid: "75863081"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -38,6 +38,8 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 ### <a name="december-2019"></a>2019 年 12 月
 
 + "[创建应用" （预览版）](search-create-app-portal.md)是门户中的一个新向导，用于生成可下载的 HTML 文件。 该文件附带嵌入的脚本，该脚本可呈现操作 "localhost" 样式的 web 应用，并将其绑定到搜索服务中的索引。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和 typeahead 查询支持。 您可以将 HTML 脱机修改为扩展或自定义工作流或外观。
+
++ [创建用于安全连接的专用终结点（预览）](service-create-private-endpoint.md)说明如何设置专用链接，以便安全连接到搜索服务。 此预览功能按要求提供，并使用[Azure 专用链接](../private-link/private-link-overview.md)和[azure 虚拟网络](../virtual-network/virtual-networks-overview.md)作为解决方案的一部分。
 
 ### <a name="november-2019---ignite-conference"></a>2019年11月-Ignite 会议
 

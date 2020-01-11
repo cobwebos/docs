@@ -3,13 +3,14 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 对 VMware Vm 和物理服务器到 Azure 的灾难恢复的支持。
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645933"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864326"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -226,7 +227,7 @@ ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 热存储| 否
 块 Blob | 否
 静态加密（SSE）| 是
-静态加密（CMK）| 否
+静态加密（CMK）| 是（通过 Powershell Az 3.3.0 module）
 高级存储器 | 是
 导入/导出服务 | 否
 适用于 Vnet 的 Azure 存储防火墙 | 可以。<br/> 在目标存储/缓存存储帐户（用于存储复制数据）上配置。

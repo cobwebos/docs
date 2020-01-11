@@ -2,26 +2,26 @@
 title: Team Data Science Process Team 中团队主管的任务
 description: 团队数据科学过程团队的团队主管任务的详细演练
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327251"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864275"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>团队数据科学过程团队的团队主管任务
 
 本文介绍*团队主管*为其数据科学团队完成的任务。 团队主管的目标是建立在[团队数据科学过程](overview.md)（TDSP）上实现标准化的协作式团队环境。 TDSP 旨在帮助改进协作和团队学习。 
 
-TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析解决方案和智能应用程序。 此过程是 Microsoft 和行业的最佳实践和结构的升华，这是成功实现数据科学计划，以帮助公司充分认识其分析计划的好处。 有关数据科学团队在 TDSP 上标准化的人员角色和相关任务的概述，请参阅[团队数据科学过程角色和任务](roles-tasks.md)。
+TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析解决方案和智能应用程序。 此过程从 Microsoft 和行业提取最佳实践和结构。  目标是成功实现数据科学计划，并充分实现分析程序的优势。 有关数据科学团队在 TDSP 上标准化的人员角色和相关任务的概述，请参阅[团队数据科学过程角色和任务](roles-tasks.md)。
 
 团队主管在企业的数据科学单元中管理由多个数据科学家组成的团队。 根据数据科学单元的大小和结构，[组管理员](group-manager-tasks.md)和团队主管可能是同一个人，或者他们可以将其任务委托给代理项。 但是，任务本身不会改变。 
 
@@ -49,7 +49,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
 > [!NOTE] 
 > 本文使用 Azure DevOps 和 DSVM 设置 TDSP 团队环境，因为这是在 Microsoft 实施 TDSP 的方法。 如果你的团队使用其他代码宿主或开发平台，团队主管任务是相同的，但完成这些任务的方法可能不同。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程假定你的[组管理员](group-manager-tasks.md)已设置以下资源和权限：
 
@@ -91,7 +91,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
    
 1. 在 "**创建项目**" 对话框中，在 "**项目名称**" 下输入团队名称，如*MyTeam*，然后选择 "**高级**"。 
    
-1. 在 "**版本控制**" 下，选择 " **Git**"，然后在 "**工作项进程**" 下选择 "**敏捷**"。 然后，选择“创建”。 
+1. 在 "**版本控制**" 下，选择 " **Git**"，然后在 "**工作项进程**" 下选择 "**敏捷**"。 然后选择“创建”。 
    
    ![创建项目](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    

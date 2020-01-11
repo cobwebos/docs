@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304829"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864309"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -98,8 +98,8 @@ ms.locfileid: "74304829"
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
     | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
-    | 作用域 | 留空 |
-    | 状态 | 留空 |
+    | 范围 | 留空 |
+    | 状况 | 留空 |
     | 客户端身份验证 | `Send as Basic Auth header` |
 
 1. 此时，客户端应如下所示：
@@ -130,7 +130,7 @@ ms.locfileid: "74304829"
    > * 对于每个部分，不需要指定这些标头。
    > * 对于整个请求，必须选择 `multipart/mixed` 或其他相应的 **Content-Type**。
 
-1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。 `200` 或 `201` 的状态代码指示请求成功。 你还将看到相应的响应消息。
+1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。 `200` 或 `201` 的状态代码指示请求成功。 相应的响应消息将出现在客户端界面中。
 
 ## <a name="next-steps"></a>后续步骤
 

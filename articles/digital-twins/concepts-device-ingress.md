@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660335"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862469"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
@@ -21,7 +21,7 @@ ms.locfileid: "75660335"
 
 若要开始，请在空间图的根位置创建 Azure IoT 中心资源。 IoT 中心资源允许根空间下的所有设备发送消息。 创建 IoT 中心后，将设备注册到数字孪生实例中的传感器。 这些设备可以通过 [Azure IoT 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 向数字孪生服务发送数据。
 
-有关载入设备的分步指南，请参阅[部署和配置数字孪生的教程](tutorial-facilities-setup.md)。 步骤概览：
+有关如何将设备加入板载的循序渐进指南，请参阅[部署和配置数字孪生教程](tutorial-facilities-setup.md)。 步骤概览：
 
 - 从 [Azure 门户](https://portal.azure.com)部署数字孪生实例。
 - 在图中创建空间。

@@ -3,20 +3,20 @@ title: 使用 Hive 在 Azure HDInsight Hadoop 上执行分析 - Team Data Scienc
 description: Team Data Science Process 的示例，演练如何在 Azure HDInsight Hadoop 上使用 Hive 来执行预测分析。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804669"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864156"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>在 Azure 上使用 Hive 进行 HDInsight Hadoop 数据科学演练 
 
@@ -36,7 +36,7 @@ ms.locfileid: "60804669"
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>在 HDInsight Hadoop 中使用 Hive 来预测广告点击量
 
-[使用 Azure HDInsight Hadoop 群集处理 1-TB 数据集](hive-criteo-walkthrough.md)演练使用公用 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 点击量数据集来预测是否支付了小费以及预期的金额范围。 该方案的实现方式是在 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)中使用 Hive 来存储、探索及特征化工程数据与下游样本数据。 它使用 Azure 机器学习来生成、训练和评分一个用于预测用户是否点击了某个广告的二元分类模型。 演练的最后展示了如何将这些模型之一发布为 Web 服务。
+在[1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)使用公开提供的[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)单击数据集，以预测是否支付了某个刀尖和预期量。 该方案的实现方式是在 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)中使用 Hive 来存储、探索及特征化工程数据与下游样本数据。 它使用 Azure 机器学习来生成、训练和评分一个用于预测用户是否点击了某个广告的二元分类模型。 演练的最后展示了如何将这些模型之一发布为 Web 服务。
 
 
 ## <a name="next-steps"></a>后续步骤

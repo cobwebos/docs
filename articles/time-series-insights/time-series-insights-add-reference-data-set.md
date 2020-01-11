@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460307"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863489"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -72,7 +72,7 @@ ms.locfileid: "75460307"
 
    [![查看引用数据](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. 检查每个列以查看采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号： **#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
+1. 查看每个列以了解所采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号： **#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
 
    [![在列标题上选择数据类型。](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -116,4 +116,4 @@ ms.locfileid: "75460307"
 
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
 
-* 有关完整的 API 参考，请参阅[引用数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 文档。
+* 有关完整的 API 参考，请参阅[引用数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)文档。

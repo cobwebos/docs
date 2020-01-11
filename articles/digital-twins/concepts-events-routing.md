@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660318"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862350"
 ---
 # <a name="routing-iot-events-and-messages"></a>路由 IoT 事件和消息
 
@@ -53,7 +53,7 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 
 > [!IMPORTANT]  
 > 不是所有 EndpointTypes 都支持所有 EventTypes。
-> 请参阅下表了解每个 **EndpointType** 允许的 **EventTypes**。
+> 查看下表，了解每个**EndpointType**允许使用的**EventTypes** 。
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->有关如何创建终结点的详细信息和事件架构的示例，请参阅[出口和终结点](how-to-egress-endpoints.md)。
+>有关如何创建事件架构的终结点和示例的详细信息，请参阅[出口和终结点](how-to-egress-endpoints.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解 Azure 数字孪生预览版的限制，请参阅[公共预览版服务的限制](concepts-service-limits.md)。
+- 若要了解 Azure 数字孪生预览版限制，请阅读[公共预览版服务限制](concepts-service-limits.md)。
 
-- 若要尝试 Azure 数字孪生示例，请参阅[查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)。
+- 若要试用 Azure 数字孪生示例，请参阅[快速入门，查找可用聊天室](quickstart-view-occupancy-dotnet.md)。

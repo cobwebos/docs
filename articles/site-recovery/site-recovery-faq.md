@@ -2,13 +2,14 @@
 title: 有关 Azure Site Recovery 服务的一般问题
 description: 本文讨论有关 Azure Site Recovery 的常见一般问题。
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497540"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863557"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -101,7 +102,8 @@ DR 演练没有单独的费用。 在测试故障转移后创建 VM 后，将会
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>如何在所有本地 Azure Site Recovery 组件上强制实施 TLS 1.2？
+在复制的项上安装的移动代理仅在 TLS 1.2 上与进程服务器通信。 但是，从配置服务器到 Azure 和从进程服务器到 Azure 的通信可能位于 TLS 1.1 或1.0 上。 请按照[指南](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)操作，在所有配置服务器上强制实施 TLS 1.2，并为其设置处理服务器。
 
 
 ## <a name="disaster-recovery"></a>灾难恢复

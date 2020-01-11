@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ba64dcdadc5fa670c4502a7d8d92cb35e3b0cacd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 951c81b2d65fe17f6e79dbdd699051ba43b86c49
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924854"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867377"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -20,21 +20,21 @@ Azure IoT Edge 支持对 IoT Edge 设备进行扩展的脱机操作，并对非 
 
 ## <a name="how-it-works"></a>如何运作
 
-当 IoT Edge 设备进入脱机模式，IoT Edge 中心将扮演三个角色。 首先，它将存储任何向上游发送的消息并保存它们，直到设备重新连接。 其次，它代表 IoT 中心对模块和子设备进行身份验证，以便它们可以继续运行。 第三，它会在子设备之间启用通常通过 IoT 中心的通信。 
+当 IoT Edge 设备进入脱机模式，IoT Edge 中心将扮演三个角色。 首先，它将存储任何向上游发送的消息并保存它们，直到设备重新连接。 其次，它代表 IoT 中心对模块和子设备进行身份验证，以便它们可以继续运行。 第三，它会在子设备之间启用通常通过 IoT 中心的通信。
 
 下面的示例展示了 IoT Edge 方案如何在脱机模式下运行：
 
 1. **配置设备**
 
-   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他 IoT 设备，需要在 IoT 中心声明设备之间的父子关系。 然后，将子设备配置为信任其分配的父设备，并通过父级将设备到云的通信作为网关进行路由。 
+   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他 IoT 设备，需要在 IoT 中心声明设备之间的父子关系。 然后，将子设备配置为信任其分配的父设备，并通过父级将设备到云的通信作为网关进行路由。
 
 2. **与 IoT 中心同步**
 
-   在安装 IoT Edge 运行时后，IoT Edge 设备至少要有一次处于联机状态，以便与 IoT 中心同步。 在此同步中，IoT Edge 设备将获取有关任何分配给它的子设备的详细信息。 IoT Edge 设备还可以安全更新本地缓存以启用脱机操作，并检索本地存储遥测消息的设置。 
+   在安装 IoT Edge 运行时后，IoT Edge 设备至少要有一次处于联机状态，以便与 IoT 中心同步。 在此同步中，IoT Edge 设备将获取有关任何分配给它的子设备的详细信息。 IoT Edge 设备还可以安全更新本地缓存以启用脱机操作，并检索本地存储遥测消息的设置。
 
 3. **脱机**
 
-   从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。 
+   从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。
 
 4. **重新连接和重新同步 IoT 中心**
 
@@ -44,13 +44,11 @@ Azure IoT Edge 支持对 IoT Edge 设备进行扩展的脱机操作，并对非 
 
 ## <a name="restrictions-and-limits"></a>约束和限制
 
-本文中介绍的扩展脱机功能[IoT Edge 版本1.0.7 或更高版本](https://github.com/Azure/azure-iotedge/releases)中可用。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
+本文中介绍的扩展脱机功能[IoT Edge 版本1.0.7 或更高版本](https://github.com/Azure/azure-iotedge/releases)中可用。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。
 
-除了美国东部以外，所有提供 IoT 中心的区域都提供扩展的脱机支持。
+只有非 IoT Edge 设备才能作为子设备添加。
 
-只有非 IoT Edge 设备才能作为子设备添加。 
-
-在初次运行一次性同步之后，IoT Edge 设备及其分配的子设备可能会无限期地脱机工作。但是，消息的存储取决于生存时间（TTL）设置和用于存储消息的可用磁盘空间。 
+在初次运行一次性同步之后，IoT Edge 设备及其分配的子设备可能会无限期地脱机工作。但是，消息的存储取决于生存时间（TTL）设置和用于存储消息的可用磁盘空间。
 
 ## <a name="set-up-parent-and-child-devices"></a>设置父设备和子设备
 
@@ -104,8 +102,9 @@ az iot hub device-identity add-children \
 
 可以将父/子关系视为透明网关，其中，子设备在 IoT 中心具有其自己的标识，但通过其父级通过云进行通信。 为了安全地通信，子设备需要能够验证父设备是否来自受信任的源。 否则，第三方可能会设置恶意设备来模拟父项和拦截通信。 
 
-以下文章中详细介绍了创建此信任关系的一种方法： 
-* [将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)
+以下文章中详细介绍了创建此信任关系的一种方法：
+
+* [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
 * [将下游（子）设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
 
 ## <a name="specify-dns-servers"></a>指定 DNS 服务器 
@@ -144,6 +143,6 @@ az iot hub device-identity add-children \
 
 详细了解如何为父/子设备连接设置透明网关： 
 
-* [将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)
+* [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
 * [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
 * [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746565"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861755"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure 时序见解预览资源管理器
 
@@ -48,7 +48,7 @@ Azure 时序见解预览版浏览器由以下七个元素组成：
 
 ## <a name="1-environment-panel"></a>1. 环境面板
 
-环境面板中显示你有权访问的所有时序见解环境。 此列表包括即用即付（预览版）环境以及 S1/S2 环境（公开上市）。 只需单击要在其中立即使用的时序见解环境。
+环境面板中显示你有权访问的所有时序见解环境。 此列表包括即用即付（预览版）环境以及 S1/S2 环境（公开上市）。 只需选择要在其中立即使用的时序见解环境。
 
 1. 选择所显示环境旁边的下拉箭头。
 
@@ -75,7 +75,7 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 * **时序模型层次结构**：层次结构是数据的系统组织。 层次结构描述时序见解数据中不同实体之间的关系。
 * **时序模型实例**：实例是时间序列本身。 在大多数情况下，它们是**DeviceID**或**AssetID**，这是环境中资产的唯一标识符。
 
-若要详细了解时序模型，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+若要了解有关时序模型的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. 层次结构树和搜索面板
 
@@ -98,7 +98,7 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
   [![良好的布局选项](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
-> 如果看到以下消息，则在所选时间范围内实例没有任何数据。 若要解决此问题，请增加时间跨度或确认实例正在推送数据。
+> 如果出现以下消息，则实例在选定时间范围内没有任何数据。 若要解决此问题，请增加时间跨度或确认实例正在推送数据。
 >
 > ![无数据通知](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
@@ -110,9 +110,9 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 1. **图表类型**：控制哪些数据元素可供可视化。
 
-1. **间隔大小**： "间隔大小" 滑块工具使你能够在同一时间范围内放大和缩小时间间隔。 这能够更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而允许查看数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为所选的数据的最佳视图；平衡分辨率、查询速度和粒度。
+1. **间隔大小**： "间隔大小" 滑块工具使你能够在同一时间范围内放大和缩小时间间隔。 这样，就可以更精确地控制在较小的时间段之间移动，将平滑趋势显示为小到最小的切片，使你可以查看数据的精细、高分辨率剪切。 滑块的默认起点设置为所选的数据的最佳视图；平衡分辨率、查询速度和粒度。
 
-1. **缩放和平移**：单击此控件可缩放和平移图表。
+1. **缩放和平移**：选择此控件可缩放和平移图表。
 
 1. **Y 轴控件**：循环访问可用的 Y 轴视图选项：
 
@@ -122,15 +122,15 @@ Azure 时序见解预览版支持时序模型上的完全创建、读取、更�
 
 1. **标记元素**：当前选定的数据元素及其关联的详细信息。
 
-可以通过在按住鼠标的同时**单击**当前关系图上的数据点，然后将所选区域拖到所选终结点，进一步深化到特定数据切片。 **右键单击**蓝色的选定区域，然后单击 "**缩放**"，如下所示。 您还可以在所选 timespan 中查看和下载遥测事件。
+可以通过在按住鼠标的同时**单击**当前关系图上的数据点，然后将所选区域拖到所选终结点，进一步深化到特定数据切片。 **右键单击**蓝色的选定区域，然后选择 "**缩放**"，如下所示。 您还可以在所选 timespan 中查看和下载遥测事件。
 
   [![预览图表缩放](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-执行**缩放**操作后，会看到所选的数据集。 选择 "格式" 控件以循环浏览时序见解数据的三个 y 轴表示形式。
+执行**缩放**操作后，将显示所选的数据集。 选择 "格式" 控件以循环浏览时序见解数据的三个 y 轴表示形式。
 
   [![预览图 y 轴](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-在这里，可以看到**重叠图表**的示例：
+下面提供了**重叠图表**的示例：
 
   [![重叠图表选项](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -207,7 +207,7 @@ Azure 时序见解预览版支持两个主题：
 
 此部分仅适用于尝试在更新后的 UI 中使用资源管理器的现有 S1/S2 环境。 你可能想要结合使用正式发布的产品和预览。 我们将现有 UI 中的一些功能添加到了更新的资源管理器中，但是你可以在现有时序见解资源管理器中获得 S1/S2 环境的完整 UI 体验。 
 
-你会看到时序见解术语面板，其中定义了环境中的查询，而不是层次结构。 使用它可以根据谓词筛选数据。
+显示时序见解术语面板，而不是层次结构。 术语面板允许您在您的环境中定义查询。 使用它还可以根据谓词筛选数据。
 
   [![其中的查询面板](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,7 +222,7 @@ Azure 时序见解预览版支持两个主题：
 | `IN` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL | 所有操作数应为同一类型或者是 NULL 常数。 |
 | `HAS` | String | 右侧仅允许常量字符串。 不允许空字符串和 NULL。 |
 
-若要了解有关支持的查询操作和数据类型的详细信息，请参阅[时序表达式（TSX）](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+若要了解有关支持的查询操作和数据类型的详细信息，请阅读[时序表达式（TSX）](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 ### <a name="examples-of-where-clauses"></a>Where 子句的示例
 

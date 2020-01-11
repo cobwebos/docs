@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671012"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866981"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>在应用服务上的 Windows 容器中配置 Azure 文件
 
@@ -31,6 +31,15 @@ ms.locfileid: "74671012"
 > Azure 文件是非默认存储并单独计费，不包括在 web 应用中。 由于基础结构的限制，它不支持使用防火墙配置。
 >
 
+## <a name="limitations"></a>限制
+
+- Windows 容器中的 Azure 存储为**预览版**，**不支持** **生产方案**。
+- Windows 容器中的 azure 存储仅支持装载**Azure 文件容器**（读/写）。
+- 目前，Windows 容器中的 Azure 存储**不支持**在 Windows 应用服务计划中引入自己的代码方案。
+- Windows 容器中的 Azure 存储**不支持**使用**存储防火墙**配置，因为存在基础结构限制。
+- 通过 Windows 容器中的 Azure 存储，可以为每个应用指定**最多5个**装入点。
+- Azure 存储单独计费，**不包含**在你的 web 应用中。 了解有关[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)的详细信息。
+
 ## <a name="link-storage-to-your-web-app-preview"></a>将存储链接到 Web 应用（预览版）
 
  若要将 Azure 文件共享装载到应用服务应用中的目录，请使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 存储类型必须为 AzureFiles。
@@ -41,14 +50,13 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 应为要链接到 Azure 文件共享的任何其他目录执行此操作。
 
-## <a name="verify"></a>验证
+## <a name="verify"></a>Verify
 
 将 Azure 文件共享链接到 web 应用后，可以通过运行以下命令来验证此内容：
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

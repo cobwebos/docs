@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792672"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861194"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问权限进行身份验证
 
@@ -42,8 +42,6 @@ ms.locfileid: "74792672"
 
 * [Azure 门户](#azure-portal-system-logic-app)
 * [Azure 资源管理器模板](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -59,7 +57,7 @@ ms.locfileid: "74792672"
 
    ![系统分配的标识的对象 ID](./media/create-managed-service-identity/object-id.png)
 
-   | properties | Value | 描述 |
+   | 属性 | 值 | Description |
    |----------|-------|-------------|
    | **对象 ID** | <*identity-resource-ID*> | 全局唯一标识符（GUID），表示 Azure AD 租户中逻辑应用的系统分配的标识 |
    ||||
@@ -105,7 +103,7 @@ ms.locfileid: "74792672"
 }
 ```
 
-| 属性（JSON） | Value | 描述 |
+| Property (JSON) | 值 | Description |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | 托管标识的服务主体对象的全局唯一标识符（GUID），表示 Azure AD 租户中的逻辑应用。 此 GUID 有时显示为 "对象 ID" 或 `objectID`。 |
 | `tenantId` | <*Azure-AD-tenant-ID*> | 全局唯一标识符（GUID），表示逻辑应用现在是其成员的 Azure AD 租户。 在 Azure AD 租户内，服务主体与逻辑应用实例具有相同名称。 |
@@ -115,7 +113,17 @@ ms.locfileid: "74792672"
 
 ## <a name="give-identity-access-to-resources"></a>授予对资源的标识访问权限
 
-为逻辑应用设置托管标识后，可以为[该标识提供对其他 Azure 资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)。 然后，可以使用该标识进行身份验证。
+使用逻辑应用的系统分配的托管标识进行身份验证之前，请先为该标识提供对你计划使用该标识的 Azure 资源的访问权限。 若要完成此任务，请在目标 Azure 资源上向该标识分配适当的角色。 下面是可以使用的选项：
+
+* [Azure 门户](#azure-portal-assign-access)
+* [Azure Resource Manager 模板](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell （[AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)）-有关详细信息，请参阅[使用 Azure RBAC 和 Azure PowerShell 添加角色分配](../role-based-access-control/role-assignments-powershell.md)。
+* Azure CLI （[az role 分配 create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)）-有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加角色分配](../role-based-access-control/role-assignments-cli.md)。
+* [Azure REST API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>在 Azure 门户中分配访问权限
 
 1. 在[Azure 门户](https://portal.azure.com)中，请访问希望托管标识具有访问权限的 Azure 资源。
 
@@ -165,12 +173,12 @@ ms.locfileid: "74792672"
 
    例如，HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。 通常，HTTP 触发器或操作使用这些属性来指定要访问的资源或实体：
 
-   | properties | 需要 | 描述 |
+   | 属性 | 需要 | Description |
    |----------|----------|-------------|
    | **方法** | 是 | 要运行的操作所使用的 HTTP 方法 |
    | **URI** | 是 | 用于访问目标 Azure 资源或实体的终结点 URL。 URI 语法通常包含 Azure 资源或服务的[资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) 。 |
-   | **标头** | No | 需要包含在传出请求中的任何标头值，例如内容类型。 |
-   | **查询** | No | 需要包含在请求中的任何查询参数，如特定操作的参数或要运行的操作的 API 版本 |
+   | **标头** | 否 | 需要包含在传出请求中的任何标头值，例如内容类型。 |
+   | **查询** | 否 | 需要包含在请求中的任何查询参数，如特定操作的参数或要运行的操作的 API 版本 |
    | **身份验证** | 是 | 用于对目标资源或实体访问进行身份验证的身份验证类型 |
    ||||
 
@@ -181,7 +189,7 @@ ms.locfileid: "74792672"
 
    若要运行[快照 Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)，HTTP 操作将指定以下属性：
 
-   | properties | 需要 | 示例值 | 描述 |
+   | 属性 | 需要 | 示例值 | Description |
    |----------|----------|---------------|-------------|
    | **方法** | 是 | `PUT`| 快照 Blob 操作使用的 HTTP 方法 |
    | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全局（公共）环境中使用此语法的 Azure Blob 存储文件的资源 ID |

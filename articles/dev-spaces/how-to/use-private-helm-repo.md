@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: 在 Azure 开发人员空间中使用专用 Helm 存储库。
 keywords: Docker，Kubernetes，Azure，AKS，Azure 容器服务，容器，Helm
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279924"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867287"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用专用 Helm 存储库
 
@@ -35,6 +35,9 @@ helm repo update
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> `prep` 命令尝试为你的项目生成[Dockerfile 和 Helm 图表](../how-dev-spaces-works.md#prepare-your-code)。 Azure Dev Spaces 使用这些文件生成并运行你的代码，但如果你想要更改生成和运行项目的方式，则可以修改这些文件。
 
 使用你的图表在应用程序的图表目录中创建[yaml][helm-requirements]文件。 例如，如果应用程序名为*app1*，则需要创建*图表/app1/yaml*。
 

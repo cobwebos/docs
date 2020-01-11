@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456989"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863523"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -50,9 +50,9 @@ Swagger 是一种非常便利的工具，可用于帮助执行对 Azure 数字�
 
 可以选择每个列出的对象模型来获取关键属性的更详细摘要：
 
-[![Swagger 模型展开以查看模型的内容](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger 模型展开以读取模型的内容](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-生成的 Swagger 对象模型可方便地用于查看所有可用的 Azure 数字孪生[对象和 API](./concepts-objectmodel-spatialgraph.md)。 开发人员在 Azure 数字孪生上生成解决方案时可以使用此资源。
+生成的 Swagger 对象模型可方便阅读所有可用的 Azure 数字孪生[对象和 api](./concepts-objectmodel-spatialgraph.md)。 开发人员在 Azure 数字孪生上生成解决方案时可以使用此资源。
 
 ## <a name="endpoint-summary"></a>终结点摘要
 
@@ -66,13 +66,13 @@ Swagger 还对编写管理 API 的所有终结点提供了全面概述。
 
 [Swagger UI 中显示 ![Swagger 终结点](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-若要查看更详细的概述，请选择每个资源。
+选择每个资源以显示其其他内容，以获取更详细的概述。
 
 ## <a name="use-swagger-to-test-endpoints"></a>使用 Swagger 测试终结点
 
 Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终结点。
 
-选择特定的终结点后，你会看到**试用**。
+选择特定的终结点后，将显示 "**试用**" 按钮。
 
 [![Swagger 试用 "按钮](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 ## <a name="swagger-response-data"></a>Swagger 响应数据
 
-每个列出的终结点还包括用以验证开发和测试的响应正文数据。 这些示例包括对于成功的 HTTP 请求你希望看到的状态代码和 JSON。
+每个列出的终结点还包括用以验证开发和测试的响应正文数据。 这些示例包括成功的 HTTP 请求的状态代码和 JSON。
 
 [![Swagger JSON 响应示例](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -124,7 +124,7 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
     [![Swagger 重定向模式](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-若要详细了解如何以交互方式测试受 OAuth 2.0 保护的请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
+若要详细了解 OAuth 2.0 保护的交互式测试请求，请阅读[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
 
 ## <a name="next-steps"></a>后续步骤
 

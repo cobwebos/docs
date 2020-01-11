@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111889"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863132"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>在 Azure VM 上配置从 Azure 认知搜索索引器到 SQL Server 的连接
 
@@ -27,7 +27,7 @@ ms.locfileid: "74111889"
 ## <a name="enable-encrypted-connections"></a>启用加密连接
 Azure 认知搜索需要通过公共 internet 连接的所有索引器请求使用加密通道。 本部分列出了实现此目的的步骤。
 
-1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 **Azure 门户**中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”[](https://portal.azure.com/)字段中）。
+1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 [Azure 门户](https://portal.azure.com/)中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”字段中）。
    
    * 对于使用较新的资源管理器模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`
    * 对于创建为**经典** VM 的较旧 VM，FQDN 的格式设置为 `<your-cloud-service-name.cloudapp.net>`。
@@ -47,7 +47,7 @@ Azure 认知搜索需要通过公共 internet 连接的所有索引器请求使�
    
     请确保向 SQL Server 服务帐户授予 SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
     
-4. 重新启动 SQL Server 服务。
+4. 重启 SQL Server 服务。
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>在 VM 中配置 SQL Server 连接
 设置 Azure 认知搜索所需的加密连接后，Azure Vm 上的 SQL Server 有一些其他配置步骤。 如果尚未执行这些步骤，下一步是使用以下文章之一完成配置：
@@ -72,8 +72,12 @@ Azure 认知搜索需要通过公共 internet 连接的所有索引器请求使�
 
 IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则可以轻松应对。 剩余部分提供了有关处理 ACL 中与 IP 地址相关的问题的建议。
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>限制对搜索服务 IP 地址的访问
-我们强烈建议限制对 ACL 中搜索服务 IP 地址的访问，而不是允许 SQL Azure VM 接受任何连接请求。 通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.windows.net`）进行 ping 操作，可轻松找到 IP 地址。
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>限制对 Azure 认知搜索的访问
+我们强烈建议你限制对搜索服务的 IP 地址的访问和 ACL 中 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的 ip 地址范围，而不是使 SQL Azure vm 对所有连接请求开放。
+
+可以通过对搜索服务的 FQDN （例如 `<your-search-service-name>.search.windows.net`）进行 ping 操作来找出 IP 地址。
+
+可以通过使用[可下载的 JSON 文件](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)来找出 Azure 认知搜索服务所在特定区域的 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
 #### <a name="managing-ip-address-fluctuations"></a>管理 IP 地址波动
 如果搜索服务只有一个搜索单位（即一个副本和一个分区），IP 地址会在例程服务重新启动期间发生更改，这会导致搜索服务的 IP 地址的现有 ACL 无效。

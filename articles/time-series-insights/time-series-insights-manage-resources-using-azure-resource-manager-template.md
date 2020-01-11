@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452845"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861840"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -86,7 +86,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
    * 例如，以下参数文件将用于创建环境，以及可从现有事件中心读取事件的事件源。 此外，它会创建两个访问策略，用于授予对环境的“参与者”访问权限。
 
-     ```json
+     ```JSON
      {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
          "contentVersion": "1.0.0.0",
@@ -119,7 +119,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
      }
      ```
   
-    * 有关详细信息，请参阅[参数](../azure-resource-manager/templates/parameter-files.md)一文。
+    * 有关详细信息，请阅读[参数](../azure-resource-manager/templates/parameter-files.md)一文。
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>使用 PowerShell 在本地部署快速入门模板
 
@@ -252,4 +252,4 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 REST API 以编程方式管理时序见解资源 的信息，请参阅[时序见解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。
+- 有关使用 REST Api 以编程方式管理时序见解资源的信息，请参阅[时序见解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。

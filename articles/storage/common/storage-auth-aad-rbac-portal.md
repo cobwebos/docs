@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891943"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867499"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户分配用于访问 blob 和队列数据的 RBAC 角色
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 > [!NOTE]
 > 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
-> 
+>
 > 如果你的存储帐户已启用分层命名空间，则无法将作用域分配给容器或队列。
 
 ### <a name="assign-a-built-in-rbac-role"></a>分配内置 RBAC 角色
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
     ![显示如何分配 RBAC 角色的屏幕截图](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. 单击“保存”。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
+1. 单击“ **保存**”。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
 
     ![显示分配给角色的用户列表的屏幕截图](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
@@ -75,7 +75,6 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 ### <a name="assign-the-reader-role-for-portal-access"></a>为门户网站访问分配 "读取者" 角色
 
 向安全主体分配 Azure 存储的内置或自定义角色时，你将为该安全主体授予对存储帐户中的数据执行操作的权限。 内置**数据读取器**角色为容器或队列中的数据提供读取权限，而内置的**数据参与者**角色提供对容器或队列的读取、写入和删除权限。 权限的作用域限定为指定的资源。  
-
 例如，如果将**存储 Blob 数据参与者**角色分配给名为**sample**容器的容器级别的用户 Mary，则会向 Mary 授予对该容器中的所有 blob 的读取、写入和删除访问权限。
 
 但是，如果 Mary 要查看 Azure 门户中的 blob，则 "**存储 Blob 数据参与者**" 角色本身将不会提供足够的权限，以便在门户中导航到该 blob，以便查看该 blob。 若要在门户中导航并查看此处可见的其他资源，需要其他 Azure AD 权限。
@@ -91,8 +90,10 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 1. 搜索以查找要向其分配角色的安全主体。
 1. 保存角色分配。
 
-> [!NOTE]
-> 只有需要使用 Azure 门户访问 blob 或队列的用户才能分配 "读者" 角色。 
+只有需要使用 Azure 门户访问 blob 或队列的用户才能分配 "**读者**" 角色。
+
+> [!IMPORTANT]
+> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 或队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，必须为用户分配包含 storageAccounts/ **/listkeys/action**的角色。
 
 ## <a name="next-steps"></a>后续步骤
 

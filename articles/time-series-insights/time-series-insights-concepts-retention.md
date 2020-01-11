@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: f479433ef486c12a00f74b220d46f84f5f979e7c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561297"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863455"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留
 
@@ -44,7 +44,7 @@ ms.locfileid: "74561297"
 ## <a name="purge-old-data"></a>清除旧数据
 
 - **清除旧数据**是 Azure 时序见解环境的默认设置。  
-- 如果用户希望在其时序见解环境中始终看到*最新的数据*，则可以**清除旧数据**。
+- 如果用户希望在其时序见解环境中始终具有*最新的数据*，则可以**清除旧数据**。
 - "**清除旧数据**" 设置在达到环境限制（保留时间、大小或计数，第一个为准）后会*清除*数据。 默认情况下，保留时间设置为 30 天。
 - 将首先清除最早的引入数据（"先进先出" 的方法）。
 

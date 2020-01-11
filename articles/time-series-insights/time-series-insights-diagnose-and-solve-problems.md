@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900272"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863404"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "74900272"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A：事件源数据不是 JSON 格式
 
-Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 json 形状](./how-to-shape-query-json.md)。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B：事件源密钥缺少所需的权限
 
@@ -69,7 +69,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 - 更改事件源的保留限制，以帮助删除不想要显示在时序见解中的旧事件。
 - 预配一个更大的环境大小（以单位数计），以提高旧事件的吞吐量。 沿用上面的示例，如果在某一天将同一 S1 环境增大到 5 个单位，则环境在一天内就能赶上进度。 如果每天以稳定状态生成 100 万或更少的事件，则赶上进度后，可将事件容量减少为 1 个单位。
 
-将基于环境 SKU 类型和容量对环境进行强制限制。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超过了实施的限制，则会出现限制和滞后。
+将基于环境 SKU 类型和容量对环境进行强制限制。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超出了强制的限制，则会遇到限制和延迟。
 
 下图显示了一个 SKU 为 S1 且容量为 3 的时序见解环境。 它每天可以引入 300 万个事件。
 
@@ -82,7 +82,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 容量为 3 的 S1 SKU 环境每分钟只能流入 2,100 个事件（每天 100 万个事件 = 每分钟 700 个事件，3 个单位 = 每分钟 2,100 个事件）。 
 
-有关平展逻辑工作原理的深入介绍，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+若要深入了解平展逻辑的工作原理，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>针对过度限制的建议解决方法
 
@@ -109,9 +109,9 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 使用时序见解资源管理器是确保捕获时间戳属性名称并让其正常运行的最简单方法。 在时序见解资源管理器中使用图表，并在输入时间戳属性名称之后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。
 
-第一个列标头应是时间戳属性名称。 在“时间戳”一词旁边，应会看到“($ts)”。
+第一个列标头应是时间戳属性名称。 将显示 "**时间戳**" 旁边的 **（$ts）** 。
 
-不会看到以下值：
+将不显示以下值：
 
 - *（abc）* ：指示时序见解正在将数据值作为字符串读取。
 - *日历图标*：指示时序见解正在将数据值作为*datetime*读取。

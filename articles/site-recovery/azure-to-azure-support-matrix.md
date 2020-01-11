@@ -2,13 +2,14 @@
 title: Azure VM 灾难恢复的支持矩阵与 Azure Site Recovery
 description: 汇总了对 Azure Vm 使用 Azure Site Recovery 对辅助区域进行灾难恢复的支持。
 ms.topic: article
-ms.date: 12/23/2019
-ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551584"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863921"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 区域之间 Azure VM 灾难恢复的支持矩阵
 
@@ -202,7 +203,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘
 存储空间 | 受支持 |
 静态加密 (SSE) | 受支持 | SSE 是存储帐户的默认设置。   
-静态加密（CMK） | 不支持 |   
+静态加密（CMK） | 受支持 | 托管磁盘支持软件和 HSM 密钥    
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 Vm。 不支持使用非托管磁盘的 Vm |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 受支持 |
 热添加 | 受支持 | 使用托管磁盘的 Vm 支持为添加到复制的 Azure VM 的数据磁盘启用复制。

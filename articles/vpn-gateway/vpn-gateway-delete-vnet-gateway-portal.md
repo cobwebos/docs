@@ -1,19 +1,18 @@
 ---
 title: Azure VPN 网关：删除网关：门户
-description: 在资源管理器部署模型中使用 Azure 门户删除虚拟网络网关。
+description: 在 Resource Manager 部署模型中使用 Azure 门户删除虚拟网络网关。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: e8c7a9c7b6d38c5fee4f57f65dd61a71f9723c07
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146341"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863659"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
@@ -38,16 +37,16 @@ ms.locfileid: "74146341"
 
 [!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
-此时，虚拟网络网关已删除。 后续步骤可帮助删除不再使用的任何资源。
+此时，虚拟网络网关已删除。 接下来的步骤将帮助你删除不再使用的任何资源。
 
 ### <a name="to-delete-the-local-network-gateway"></a>删除本地网络网关
 
 1. 在“所有资源”中，找到与每个连接相关联的本地网络网关。
-2. 在本地网关的“概述”边栏选项卡上，单击“删除”。
+2. 在本地网络网关的“概述”边栏选项卡上，单击“删除”。
 
 ### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>删除网关的公共 IP 地址资源
 
-1. 在“所有资源”中，找到已关联到网关的公共 IP 地址资源。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。 
+1. 在“所有资源”中，找到已分配给网关的公共 IP 地址资源。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。 
 2. 在公共 IP 地址的“概述”页上，单击“删除”，并单击“是”进行确认。
 
 ### <a name="to-delete-the-gateway-subnet"></a>删除网关子网
@@ -61,5 +60,5 @@ ms.locfileid: "74146341"
 如果不关心是否要保留资源组中的任何资源，而只是要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 以下步骤仅适用于 Resource Manager 部署模型。
 
 1. 在“所有资源”中，找到该资源组并单击以打开边栏选项卡。
-2. 单击“删除”。 在“删除”边栏选项卡上，查看受影响的资源。 请确保要删除所有这些资源。 否则使用本文开头“删除 VPN 网关”中的步骤。
-3. 如果要继续，请键入要删除的资源组的名称，并单击“删除”。
+2. 单击 **“删除”** 。 在“删除”边栏选项卡上，查看受影响的资源。 请确保要删除所有这些资源。 否则使用本文开头“删除 VPN 网关”中的步骤。
+3. 要继续，请键入要删除的资源组的名称，并单击“删除”。
