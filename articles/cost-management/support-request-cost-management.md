@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 82c9a13c50f9d9786f405032d6339c8323d9cf68
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2ea1d33f6302a04a7844e4504d30bac897599e69
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229898"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887540"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 
@@ -41,7 +41,7 @@ ms.locfileid: "74229898"
 
 如果想要在成本管理中创建计费支持票证，请在“问题类型”下选择“Azure 成本管理”。
 
-若要查看已提交事件的状态，请参阅[所有支持请求](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests)。
+若要查看已提交事件的状态，请参阅[所有支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests)。
 
 如果是没有 Azure 帐户的旧 Cloudyn 用户，则可以在 https://support.microsoft.com/oas/default.aspx?prid=16451 打开支持请求。
 

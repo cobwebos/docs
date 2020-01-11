@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893693"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887626"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>使用 HDInsight 从 YARN 上的 Spark 访问 Azure Cosmos DB Cassandra API
 
@@ -29,9 +29,9 @@ ms.locfileid: "60893693"
 
 * [查看使用 Cassandra API 的代码示例](cassandra-spark-generic.md#next-steps)
 
-* [使用 cqlsh 进行验证（如需要）](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [使用 cqlsh 进行验证（如需要）](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-*  Spark2 中的 Cassandra API 配置 - Cassandra 的 Spark 连接器需要将 Cassandra 连接详细信息作为 Spark 上下文的一部分进行初始化。 启动 Jupyter 笔记本时，Spark 会话和上下文已初始化，因此，不建议停止然后重新初始化 Spark 上下文，除非它是完整的，将每项配置都作为 HDInsight 默认 Jupyter Notebook 启动的一部分进行设置。 解决办法是将 Cassandra 实例详细信息直接添加到 Ambari 中的 Spark2 服务配置。 这是针对每个需要 Spark2 服务重新启动的群集的一次性活动。
+* Spark2 中的 Cassandra API 配置 - Cassandra 的 Spark 连接器需要将 Cassandra 连接详细信息作为 Spark 上下文的一部分进行初始化。 启动 Jupyter 笔记本时，Spark 会话和上下文已初始化，因此，不建议停止然后重新初始化 Spark 上下文，除非它是完整的，将每项配置都作为 HDInsight 默认 Jupyter Notebook 启动的一部分进行设置。 解决办法是将 Cassandra 实例详细信息直接添加到 Ambari 中的 Spark2 服务配置。 这是针对每个需要 Spark2 服务重新启动的群集的一次性活动。
  
   1. 依次转到 Ambari 和 Spark2 服务，然后选择“配置”
 

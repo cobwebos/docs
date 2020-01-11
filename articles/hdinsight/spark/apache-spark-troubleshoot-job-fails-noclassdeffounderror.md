@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 7ccd908c96e68190f09da37a83e0a34a09f5e697
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087137"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894349"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>读取 Apache Kafka 数据的 Apache Spark 流式处理作业与 HDInsight 中的 NoClassDefFoundError 失败
 
@@ -32,7 +32,7 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>原因
 
-此错误的原因可能是，指定`spark-streaming-kafka` jar 文件的版本不同于正在运行的 Kafka 群集的版本。
+此错误的原因可能是，指定 `spark-streaming-kafka` jar 文件的版本不同于正在运行的 Kafka 群集的版本。
 
 例如，如果你运行的是 Kafka 群集版本0.10.1，则以下命令将导致错误：
 
@@ -46,7 +46,7 @@ spark-submit \
 
 ## <a name="resolution"></a>分辨率
 
-使用带有`–packages`选项的 spark-submit 命令，并确保 Spark kafka jar 文件的版本与你正在运行的 kafka 群集的版本相同。
+将 Spark-submit 命令与 `–packages` 选项一起使用，确保 kafka jar 文件的版本与你正在运行的 Kafka 群集的版本相同。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,6 +54,6 @@ spark-submit \
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

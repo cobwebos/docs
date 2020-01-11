@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863421"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894807"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -103,7 +103,7 @@ ms.locfileid: "75863421"
 
     [![来宾选择开始接受的入门](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. 选择 "**开始**" 后，会向来宾用户提供一个与管理员的组织关联的权限框。 在通过选择 "**接受**" 授予权限时，它们将登录。
+1. 选择 "**开始**" 后，会向来宾用户显示一个与管理员的组织关联的 "权限" 框。 在通过选择 "**接受**" 授予权限时，它们将登录。
 
     [![来宾审查权限并接受](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 

@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862809"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892345"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -57,7 +57,7 @@ ms.locfileid: "75862809"
 
 - 如果经典虚拟网络已从 Azure-SSIS IR 的不同位置连接到你的本地网络，则可以创建[Azure 资源管理器虚拟网络](../virtual-network/quick-create-portal.md#create-a-virtual-network)，以便 Azure-SSIS IR 加入。 然后，配置[经典到 Azure 资源管理器虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)连接。 
  
-- 如果 Azure 资源管理器虚拟网络已连接到 Azure-SSIS IR 位于不同位置的本地网络，则可以先创建一个[azure 资源管理器虚拟网络](../virtual-network/quick-create-portal.md##create-a-virtual-network)，以便 Azure-SSIS IR 加入。 然后配置 Azure 资源管理器到 Azure 资源管理器虚拟网络连接。 
+- 如果 Azure 资源管理器虚拟网络已连接到 Azure-SSIS IR 位于不同位置的本地网络，则可以先创建一个[azure 资源管理器虚拟网络](../virtual-network/quick-create-portal.md#create-a-virtual-network)，以便 Azure-SSIS IR 加入。 然后配置 Azure 资源管理器到 Azure 资源管理器虚拟网络连接。 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>在 SQL 数据库中承载 SSIS 目录
 

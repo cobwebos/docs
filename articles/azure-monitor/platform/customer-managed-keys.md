@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/07/2020
-ms.openlocfilehash: 7a3749f61e6e656f750059ee76881a2e3f3b7912
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d6419e86e1a541638a7053654bfcd7945aa41ae7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865033"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891059"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
-本文提供了背景信息和步骤，用于配置 Log Analytics 工作区和 Application Insights 组件的客户管理的密钥（CMK）。 配置完成后，发送到工作区的任何数据都将用 Azure Key Vault 密钥进行加密。
+本文提供了背景信息和步骤，用于为 Log Analytics 工作区和 Application Insights 组件配置客户托管的密钥（CMK）。 配置完成后，发送到工作区的任何数据都将用 Azure Key Vault 密钥进行加密。
 
 建议你在配置之前查看下面的[限制和约束](#Limitations and constraints)。
 

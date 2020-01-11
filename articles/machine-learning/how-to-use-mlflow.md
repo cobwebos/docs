@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6203d78ee8d9c0a9837d03859856c5d0265422ac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 47d4c1de12823eaf0aae5beeff776d50f8f5a6a7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772323"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896371"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -228,17 +228,17 @@ run.get_metrics()
 ws.get_details()
 ```
 
-## <a name="deploy-mlflow-models-as-a-web-service"></a>将 MLflow 模型部署为 web 服务
+<!-- ## Deploy MLflow models as a web service
 
-将 MLflow 试验作为 Azure 机器学习 web 服务进行部署，可以利用 Azure 机器学习模型管理和数据偏差检测功能，并将其应用于生产模型。
+Deploying your MLflow experiments as an Azure Machine Learning web service allows you to leverage the Azure Machine Learning model management and data drift detection capabilities and apply them to your production models.
 
-下图演示了使用 MLflow 部署 API，你可以将现有的 MLflow 模型部署为 Azure 机器学习 web 服务，尽管它们的框架有： PyTorch、Tensorflow、scikit-learn、ONNX 等，并在中管理你的生产模型你的工作区。
+The following diagram demonstrates that with the MLflow deploy API you can deploy your existing MLflow models as an Azure Machine Learning web service, despite their frameworks--PyTorch, Tensorflow, scikit-learn, ONNX, etc., and manage your production models in your workspace.
 
-![mlflow 与 azure 机器学习示意图](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
+![mlflow with azure machine learning diagram](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
-### <a name="log-your-model"></a>记录模型
+### Log your model
 
-部署之前，请确保已保存模型，以便可以引用它及其部署的路径位置。 在训练脚本中，应存在类似于以下[log_model mlflow （）](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码，以将模型保存到指定的输出目录。 
+Before you can deploy, be sure that your model is saved so you can reference it and its path location for deployment. In your training script, there should be code similar to the following [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) method, that saves your model to the specified outputs directory. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -248,11 +248,11 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> 包括 `conda_env` 参数以传递此模型应在其中运行的依赖项和环境的字典表示形式。
+> Include the `conda_env` parameter to pass a dictionary representation of the dependencies and environment this model should be run in.
 
-### <a name="retrieve-model-from-previous-run"></a>检索以前运行的模型
+### Retrieve model from previous run
 
-若要检索运行，您需要运行 ID 以及在其中保存模型的运行历史记录中的路径。 
+To retrieve the run, you need the run ID and the path in run history of where the model was saved. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -265,11 +265,11 @@ runid = runs[0].id
 model_save_path = 'model'
 ```
 
-### <a name="create-docker-image"></a>创建 Docker 映像
+### Create Docker image
 
-`mlflow.azureml.build_image()` 函数以框架感知的方式从保存的模型生成 Docker 映像。 它会自动创建框架特定的推断包装器代码，并为您指定包依赖关系。 指定模型路径、工作区、运行 ID 和其他参数。
+The `mlflow.azureml.build_image()` function builds a Docker image from the saved model in a framework-aware manner. It automatically creates the framework-specific inferencing wrapper code and specifies package dependencies for you. Specify the model path, your workspace, run ID and other parameters.
 
-以下代码使用*运行：/< >/model*作为 scikit-learn 试验的 model_uri 路径生成 docker 映像。
+The following code builds a docker image using *runs:/<run.id>/model* as the model_uri path for a Scikit-learn experiment.
 
 ```python
 import mlflow.azureml
@@ -280,17 +280,17 @@ azure_image, azure_model = mlflow.azureml.build_image(model_uri='runs:/{}/{}'.fo
                                                       image_name='sklearn-image',
                                                       synchronous=True)
 ```
-创建 Docker 映像可能需要几分钟的时间。 
+The creation of the Docker image can take several minutes. 
 
-### <a name="deploy-the-docker-image"></a>部署 Docker 映像 
+### Deploy the Docker image 
 
-创建映像后，使用 Azure 机器学习 SDK 将映像部署为 web 服务。
+After the image is created, use the Azure Machine Learning SDK to deploy the image as a web service.
 
-首先，指定部署配置。 Azure 容器实例（ACI）适用于快速开发测试部署，而 Azure Kubernetes 服务（AKS）适用于可缩放的生产部署。
+First, specify the deployment configuration. Azure Container Instance (ACI) is a suitable choice for a quick dev-test deployment, while Azure Kubernetes Service (AKS) is suitable for scalable production deployments.
 
-#### <a name="deploy-to-aci"></a>部署到 ACI
+#### Deploy to ACI
 
-设置具有[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法的部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后，使用 Azure 机器学习 SDK [deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
+Then, deploy the image by using the Azure Machine Learning SDK [deploy_from_image()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) method. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -313,11 +313,11 @@ webservice = Webservice.deploy_from_image( image=azure_image,
 
 webservice.wait_for_deployment(show_output=True)
 ```
-#### <a name="deploy-to-aks"></a>部署到 AKS
+#### Deploy to AKS
 
-若要部署到 AKS，请先创建 AKS 群集，并选择要部署的 Docker 映像。 在此示例中，从 ACI 部署中引入前面创建的映像。
+To deploy to AKS, first create an AKS cluster and bring over the Docker image you want to deploy. For this example, bring over the previously created image from the ACI deployment.
 
-若要从以前的 ACI 部署获取映像，请使用[image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py)类。 
+To get the image from the previous ACI deployment use the [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) class. 
 
 ```python
 from azureml.core.image import Image
@@ -326,7 +326,7 @@ from azureml.core.image import Image
 myimage = Image(workspace=ws, name='sklearn-image') 
 ```
 
-使用[ComputeTarget （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)方法创建 AKS 群集。 创建新群集可能需要20-25 分钟。
+Create an AKS cluster using the [ComputeTarget.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) method. It may take 20-25 minutes to create a new cluster.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -346,7 +346,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-设置具有[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法的部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-然后，使用 Azure 机器学习 SDK [deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
+Then, deploy the image by using the Azure Machine Learning SDK [deploy_from_image()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) method. 
 
 ```python
 # Webservice creation using single command
@@ -372,27 +372,28 @@ aks_service = Webservice.deploy_from_image( workspace=ws,
 aks_service.wait_for_deployment(show_output=True)
 ```
 
-服务部署可能需要几分钟的时间。
+The service deployment can take several minutes.
 
-## <a name="clean-up-resources"></a>清理资源
+## Clean up resources
 
-如果你不打算在工作区中使用记录的指标和项目，则单独删除它们的功能当前不可用。 而是删除包含存储帐户和工作区的资源组，这样就不会产生任何费用：
+If you don't plan to use the logged metrics and artifacts in your workspace, the ability to delete them individually is currently unavailable. Instead, delete the resource group that contains the storage account and workspace, so you don't incur any charges:
 
-1. 在 Azure 门户中，选择最左侧的“资源组”。
+1. In the Azure portal, select **Resource groups** on the far left.
 
-   ![在 Azure 门户中删除](./media/how-to-use-mlflow/delete-resources.png)
+   ![Delete in the Azure portal](./media/how-to-use-mlflow/delete-resources.png)
 
-1. 从列表中选择已创建的资源组。
+1. From the list, select the resource group you created.
 
-1. 选择“删除资源组”。
+1. Select **Delete resource group**.
 
-1. 输入资源组名称。 然后选择“删除”。
+1. Enter the resource group name. Then select **Delete**.
 
 
-## <a name="example-notebooks"></a>示例笔记本
+## Example notebooks
 
-[MLflow With AZURE ML 笔记本](https://aka.ms/azureml-mlflow-examples)演示并扩展本文中介绍的概念。
+The [MLflow with Azure ML notebooks](https://aka.ms/azureml-mlflow-examples) demonstrate and expand upon concepts presented in this article.
 
-## <a name="next-steps"></a>后续步骤
-* [管理模型](concept-model-management-and-deployment.md)。
-* 监视生产模型的[数据偏移](how-to-monitor-data-drift.md)。
+## Next steps
+* [Manage your models](concept-model-management-and-deployment.md).
+* Monitor your production models for [data drift](how-to-monitor-data-drift.md).
+ -->

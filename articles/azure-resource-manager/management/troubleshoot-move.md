@@ -3,12 +3,12 @@ title: 移动错误疑难解答
 description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 422ecb92e264d7e728282bbe8ee491a642cf013f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478339"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891276"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源迁移到新的资源组或订阅的问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "75478339"
 * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](../../billing/billing-upgrade-azure-subscription.md)。
 * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../../billing/billing-how-to-switch-azure-offer.md)。
 
-如果无法转换订阅，请[创建 Azure 支持请求](../../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
+如果无法转换订阅，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
 
 ## <a name="service-limitations"></a>服务限制
 
@@ -44,7 +44,7 @@ ms.locfileid: "75478339"
 
 如果源或目标资源组包含虚拟网络，则在移动过程中将检查虚拟网络的所有从属资源的状态。 该检查包括直接和间接依赖于虚拟网络的这些资源。 如果其中的任何资源处于失败状态，则会阻止移动。 例如，如果使用虚拟网络的虚拟机出现故障，则会阻止移动。 即使虚拟机不是要移动的资源之一，而且不在移动的资源组中，也会阻止移动。
 
-收到此错误时，你有两个选择。 将资源移到没有虚拟网络的资源组，或者[与支持人员联系](../../azure-supportability/how-to-create-azure-support-request.md)。
+收到此错误时，你有两个选择。 将资源移到没有虚拟网络的资源组，或者[与支持人员联系](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

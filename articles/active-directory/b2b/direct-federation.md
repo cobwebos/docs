@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272739"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888886"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与来宾用户的 AD FS 和第三方提供程序的直接联合（预览）
 |     |
@@ -83,23 +83,23 @@ ms.locfileid: "74272739"
 Azure AD B2B 可以配置为与使用 SAML 协议的标识提供者联合，该标识提供程序具有以下列出的特定要求。 有关在 SAML 标识提供者和 Azure AD 之间设置信任的详细信息，请参阅[将 saml 2.0 标识提供者（IdP）用于单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)。  
 
 > [!NOTE]
-> 请注意，不能在 Azure AD 上 DNS 验证直接联合的目标域。 身份验证 URL 域必须与目标域相匹配，或者必须是允许的标识提供者的域。 有关详细信息，请参阅[限制](#limitations)部分。 
+> 在 Azure AD 上，不能对直接联合的目标域进行 DNS 验证。 身份验证 URL 域必须与目标域相匹配，或者必须是允许的标识提供者的域。 有关详细信息，请参阅[限制](#limitations)部分。 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>必需的 SAML 2.0 属性和声明
 下表显示了必须在第三方标识提供程序中配置的特定属性和声明的要求。 若要设置直接联合身份验证，必须从标识提供者的 SAML 2.0 响应接收以下属性。 可以通过链接到联机 security token service XML 文件或手动输入这些属性来配置这些属性。
 
 来自 IdP 的 SAML 2.0 响应的必需属性：
 
-|属性  |值  |
+|Attribute  |值  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|目标受众     |`urn:federation:MicrosoftOnline`         |
+|受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 IdP 颁发的 SAML 2.0 令牌所需的声明：
 
-|属性  |值  |
+|Attribute  |值  |
 |---------|---------|
 |NameID 格式     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,15 +116,15 @@ Azure AD B2B 可以配置为与使用 WS 送单协议的标识提供者联合，
 
 来自 IdP 的 WS 送送消息中的必需属性：
  
-|属性  |值  |
+|Attribute  |值  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|目标受众     |`urn:federation:MicrosoftOnline`         |
+|受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 颁发的 WS-AT 令牌所需的声明：
 
-|属性  |值  |
+|Attribute  |值  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

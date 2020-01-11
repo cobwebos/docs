@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9361f1ca998d32a998794a7e95220ee5c7ac623
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834769"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896338"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
 了解如何使用 Azure 机器学习在 Azure 容器实例（ACI）和 Azure Kubernetes Service （AKS）上解决或解决常见的 Docker 部署错误。
 
-在 Azure 机器学习中部署模型时，系统将执行多个任务。 部署任务包括：
+在 Azure 机器学习中部署模型时，系统将执行多个任务。
+
+对于模型部署，推荐的和最新的方法是通过使用[环境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)对象作为输入参数的[deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API。 在这种情况下，我们的服务将在部署阶段为你创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
-2. 生成 Docker 映像，包括：
-    1. 从注册表中下载已注册的模型。 
-    2. 使用基于在环境 yaml 文件中指定的依赖项的 Python 环境创建 dockerfile。
-    3. 添加在 dockerfile 中提供的模型文件和评分脚本。
-    4. 使用 dockerfile 生成新的 Docker 映像。
-    5. 向与工作区关联的 Azure 容器注册表注册 Docker 映像。
+2. 定义推理配置：
+    1. 根据你在环境 yaml 文件中指定的依赖项创建[环境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)对象，或使用我们的一个采购环境。
+    2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
 
-    > [!IMPORTANT]
-    > 根据你的代码，将自动创建映像，而不进行输入。
-
-3. 将 Docker 映像部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
-
-4. 在 ACI 或 AKS 中启动一个（或多个）新容器。 
+3. 将模型部署到 Azure 容器实例（ACI）服务或 Azure Kubernetes 服务（AKS）。
 
 请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
@@ -56,11 +50,14 @@ ms.locfileid: "75834769"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-如果你使用的是[webservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) Api 或[webservice. deploy_from_model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) api，则将部署分解成任务非常有用，因为这两个函数都作为单个操作执行上述步骤。 通常，这些 Api 是非常方便的，但通过将它们替换为以下 API 调用，有助于在排除故障时分解这些步骤。
+假设你使用的是新的/推荐[的部署方法](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)，并使用[环境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)对象作为输入参数，则可以将你的代码划分为三个主要步骤：
 
 1. 注册模型。 下面是一些示例代码：
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ ms.locfileid: "75834769"
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. 生成映像。 下面是一些示例代码：
+2. 定义部署的推理配置：
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. 将映像部署为服务。 下面是一些示例代码：
+3. 使用在上一步中创建的推理配置部署模型：
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 将部署过程分解为单独任务后，可以查看部分最常见的错误。
-
-## <a name="image-building-fails"></a>映像生成失败
-
-如果无法生成 Docker 映像，则[wait_for_creation （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-)或[wait_for_deployment （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-)调用失败，并出现一些可以提供一些线索的错误消息。 还可以从图像生成日志中找到错误的更多详细信息。 下面是一些显示如何发现映像生成日志 URI 的代码示例。
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-此映像日志 URI 是指向 Azure blob 存储中存储的日志文件的 SAS URL. 只需复制 URI 并将其粘贴到浏览器窗口，即可下载和查看日志文件。
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
-
-由于 Azure Key Vault 上的访问策略有问题，映像生成也可能会失败。 当你使用 Azure 资源管理器模板多次创建工作区和关联资源（包括 Azure Key Vault）时，可能会出现这种情况。 例如，将模板多次用于与持续集成和部署管道的一部分的相同参数。
-
-大多数通过模板创建的资源操作都是幂等的，但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会断开使用该访问策略的任何现有工作区对 Key Vault 的访问。 这种情况会导致在您尝试创建新映像时出现错误。 下面是可以接收的错误的示例：
-
-__门户__：
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__SDK__：
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__：
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-若要避免此问题，建议采用以下方法之一：
-
-* 不要对相同的参数多次部署模板。 或删除现有资源，然后使用模板重新创建它们。
-* 检查 Key Vault 访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。
-* 检查 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，添加一个参数，该参数允许你禁用 Key Vault 资源的创建（如果已存在）。
 
 ## <a name="debug-locally"></a>本地调试
 
@@ -169,17 +102,17 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 > [!WARNING]
 > 生产方案不支持本地 web 服务部署。
 
-若要在本地部署，请修改代码以使用 `LocalWebservice.deploy_configuration()` 创建部署配置。 然后使用 `Model.deploy()` 部署该服务。 下面的示例将模型（包含在 `model` 变量中）部署为本地 web 服务：
+若要在本地部署，请修改代码以使用 `LocalWebservice.deploy_configuration()` 创建部署配置。 然后使用 `Model.deploy()` 部署该服务。 下面的示例将模型（包含在模型变量中）部署为本地 web 服务：
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -329,13 +262,12 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 有关设置 `autoscale_target_utilization`、`autoscale_max_replicas`和 `autoscale_min_replicas` 的详细信息，请参阅[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)模块参考。
 
-
 ## <a name="advanced-debugging"></a>高级调试
 
 在某些情况下，可能需要以交互方式调试模型部署中包含的 Python 代码。 例如，如果输入脚本失败，原因无法由其他日志记录确定。 通过使用 Visual Studio Code 和针对 Visual Studio 的 Python 工具（PTVSD），你可以附加到在 Docker 容器中运行的代码。
 
 > [!IMPORTANT]
-> 当使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，必须使用[save-containerimage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)类创建映像。 
+> 当使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，必须使用[Model （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)方法创建映像。
 
 本地 web 服务部署需要在你的本地系统上进行工作的 Docker 安装。 有关使用 Docker 的详细信息，请参阅[Docker 文档](https://docs.docker.com/)。
 
@@ -384,13 +316,14 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -406,70 +339,33 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     print("Debugger attached...")
     ```
 
-1. 在调试过程中，你可能需要对映像中的文件进行更改，而不必重新创建。 若要在 Docker 映像中安装文本编辑器（vim），请创建一个名为 `Dockerfile.steps` 的新文本文件，并使用以下内容作为该文件的内容：
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    使用文本编辑器，可以修改 docker 映像中的文件，以测试更改而无需创建新映像。
-
-1. 若要创建使用 `Dockerfile.steps` 文件的映像，请在创建映像时使用 `docker_file` 参数。 下面的示例演示如何执行此操作：
+1. 基于环境定义创建一个映像，并将该映像提取到本地注册表。 在调试过程中，你可能需要对映像中的文件进行更改，而不必重新创建。 若要在 Docker 映像中安装文本编辑器（vim），请使用 `Environment.docker.base_image` 和 `Environment.docker.base_dockerfile` 属性：
 
     > [!NOTE]
     > 此示例假定 `ws` 指向 Azure 机器学习工作区，`model` 是要部署的模型。 `myenv.yml` 文件包含在步骤1中创建的 conda 依赖项。
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-创建映像后，将显示注册表中的映像位置。 位置类似于以下文本：
+    创建和下载映像后，图像路径（包括存储库、名称和标记，在此示例中也是摘要）会显示在类似于以下内容的消息中：
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-在此文本示例中，注册表名称为 "`myregistry`"，并将映像命名为 `myimage`。 映像版本为 `1`。
-
-### <a name="download-the-image"></a>下载映像
-
-1. 打开命令提示符、终端或其他 shell，并使用以下[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)命令向包含 Azure 机器学习工作区的 Azure 订阅进行身份验证：
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. 若要对包含映像的 Azure 容器注册表（ACR）进行身份验证，请使用以下命令。 将 `myregistry` 替换为注册映像时返回的内容：
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. 若要将映像下载到本地 Docker，请使用以下命令。 将 `myimagepath` 替换为注册映像时返回的位置：
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    图像路径应类似于 `myregistry.azurecr.io/myimage:1`。 如果注册表 `myregistry` 为，`myimage` 为映像，`1` 为映像版本。
-
-    > [!TIP]
-    > 上一步中的身份验证不是最后一步。 如果在身份验证命令和 pull 命令之间等待足够长的时间，则会收到身份验证失败。 如果发生这种情况，请重新验证。
-
-    完成下载所用的时间取决于 internet 连接的速度。 在此过程中将显示下载状态。 下载完成后，可以使用 `docker images` 命令验证是否已下载。
-
-1. 若要更轻松地处理图像，请使用以下命令添加标记。 将 `myimagepath` 替换为步骤2中的 "位置" 值。
+1. 若要更轻松地处理图像，请使用以下命令添加标记。 将 `myimagepath` 替换为上一步中的 location 值。
 
     ```bash
     docker tag myimagepath debug:1

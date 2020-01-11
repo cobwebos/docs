@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951813"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887608"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -23,8 +23,8 @@ ms.locfileid: "74951813"
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个容器的最大 ru 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)来增加它 |
-| 每个数据库的最大每个 RUs （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)来增加它 |
+| 每个容器的最大 ru 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
+| 每个数据库的最大每个 RUs （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
 | 最大每（逻辑）分区键 | 10,000 |
 | 每个（逻辑）分区键的所有项的最大存储空间| 10 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
@@ -64,8 +64,8 @@ Cosmos DB 支持通过 Sdk 或门户对每个容器或数据库的吞吐量（ru
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个订阅的最大数据库帐户 | 默认值为50。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)来增加它|
-| 区域故障转移的最大数目 | 默认为1小时。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)来增加它|
+| 每个订阅的最大数据库帐户 | 默认值为50。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
+| 区域故障转移的最大数目 | 默认为1小时。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
 
 > [!NOTE]
 > 区域故障转移仅适用于单个区域写入帐户。 多区域写入帐户不需要或限制写入区域的更改。
@@ -132,7 +132,7 @@ Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](sec
 | --- | --- |
 | 最大主令牌到期时间 | 15 分钟  |
 | 最小资源令牌到期时间 | 10 分钟  |
-| 最大资源令牌到期时间 | 默认情况下为 24 h。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)来增加它|
+| 最大资源令牌到期时间 | 默认情况下为 24 h。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
 | 令牌授权的最大时钟偏差| 15 分钟 |
 
 Cosmos DB 支持在写入过程中执行触发器。 对于每个写入操作，服务最多支持一个预先触发器和一个后期触发器。 

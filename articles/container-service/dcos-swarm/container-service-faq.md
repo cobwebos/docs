@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286473"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887914"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>协调器
+## <a name="orchestrators"></a>业务流程协调程序
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>在 Azure 容器服务上支持哪些容器协调器？ 
 
@@ -64,7 +64,7 @@ Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure �
 可以创建包含 1、3 或 5 个主节点的群集。 最多可以选择 100 个代理节点。
 
 > [!IMPORTANT]
-> 对于更大的群集，根据你为节点选择的 VM 大小，可能需要增加订阅中的内核配额。 若要请求增加配额，可免费建立[联机客户支持请求](../../azure-supportability/how-to-create-azure-support-request.md)。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
+> 对于更大的群集，根据你为节点选择的 VM 大小，可能需要增加订阅中的内核配额。 若要请求增加配额，可免费建立[联机客户支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>创建群集后，如何提高主机数？ 
@@ -112,7 +112,7 @@ ssh userName@masterFQDN –A –p 22 
 
 有关详细信息，请参阅[连接到 Azure 容器服务群集](../../container-service/kubernetes/container-service-connect.md)。
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名称解析在 Windows 上不正常工作。 我该怎么办？
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名称解析在 Windows 上不正常工作。 我应该怎么做？
 
 Windows 上存在一些已知的 DNS 问题，这些问题的修复仍处于活动状态。请确保使用的是最新版本的 acs 引擎和 Windows 版本（安装了[KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588)和[KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ），以便你的环境可以从此获得权益。 否则，请参阅下表了解缓解步骤：
 

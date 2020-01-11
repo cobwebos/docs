@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689119"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888784"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
 
@@ -245,7 +245,7 @@ WamDefaultAuthority: organizations
 失败原因：
 
 - 无法为 DRS 资源自动获取访问令牌。
-   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息：[联合身份验证服务配置](hybrid-azuread-join-manual.md##set-up-issuance-of-claims)
+   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息：[联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **常见错误代码：**
 

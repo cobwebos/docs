@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 12391df7e3b8540b775d8c56b5d5c4e648722faf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900790"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889603"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -375,7 +375,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 3. 访问登录 Azure AD 所需的“不受限”帐户用户名/密码组合。 
 
-4. 通过[提交 Azure 支持请求](../../azure-supportability/how-to-create-azure-support-request.md)从 Microsoft 获取帮助。
+4. 通过[提交 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)从 Microsoft 获取帮助。
 
 5. 查看 [Azure AD 登录报告](../reports-monitoring/overview-reports.md)。 事件发生之后，可能需要一段时间该事件才会出现在报告中。
 

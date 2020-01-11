@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 42e92fa2b088fc04d4aa670e6586fcfe26ff3a70
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7184a6b85e93c41dfe914813301a4b1a0c88f2cd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441701"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887676"
 ---
 # <a name="create-containers-with-large-partition-key"></a>创建具有大分区键的容器
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 使用基于哈希的分区方案来实现数据的水平缩放�
 
 若要创建具有大分区键支持的容器，请参阅。
 
-* [创建分区键大小较大的 Azure Cosmos 容器](manage-with-powershell.md##create-container-big-pk)
+* [创建分区键大小较大的 Azure Cosmos 容器](manage-with-powershell.md#create-container-big-pk)
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>创建大分区键（.Net SDK）
 

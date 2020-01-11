@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658536"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889522"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务（AKS）
 
@@ -87,9 +87,9 @@ az aks create \
 
 ## <a name="ensure-valid-quotas"></a>确保有效配额
 
-由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可能需要请求增加[vCPU 配额](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)。
+由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可能需要请求增加[vCPU 配额](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)。
 
-可能需要请求增加[网络配额](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests)，以确保不会耗尽 ip。 有关其他信息，请参阅[AKS 的网络和 IP 范围](https://docs.microsoft.com/azure/aks/configure-kubenet)。
+可能需要请求增加[网络配额](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)，以确保不会耗尽 ip。 有关其他信息，请参阅[AKS 的网络和 IP 范围](https://docs.microsoft.com/azure/aks/configure-kubenet)。
 
 有关详细信息，请参阅[Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 若要检查当前配额，请在 Azure 门户中，选择 "[订阅" 边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择你的订阅，然后选择 "**使用情况 + 配额**"。
 

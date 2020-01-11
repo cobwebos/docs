@@ -4,12 +4,12 @@ description: 了解 Azure 容器实例中的容器组，它是共享生命周期
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770265"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888050"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -32,7 +32,7 @@ Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定�
 * 包含两个 Azure 文件共享作为卷装载，每个容器本地装载一个共享。
 
 > [!NOTE]
-> 多容器组目前仅支持 Linux 容器。 对于 Windows 容器，Azure 容器实例仅支持单个实例的部署。 尽管我们正在努力将所有功能引入 Windows 容器，但你可以在服务[概述](container-instances-overview.md#linux-and-windows-containers)中找到当前的平台差异。
+> 多容器组目前仅支持 Linux 容器。 对于 Windows 容器，Azure 容器实例仅支持部署一个容器实例。 尽管我们正在努力将所有功能引入 Windows 容器，但你可以在服务[概述](container-instances-overview.md#linux-and-windows-containers)中找到当前的平台差异。
 
 ## <a name="deployment"></a>部署
 
@@ -44,19 +44,19 @@ Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定�
 
 ## <a name="resource-allocation"></a>资源分配
 
-Azure 容器实例通过在组中添加实例的[资源请求][resource-requests]，将 cpu、内存和可选[gpu][gpus] （预览版）等资源分配给多容器组。 取 CPU 资源示例：如果创建包含两个实例的容器组，每个实例请求1个 CPU，则会为该容器组分配2个 cpu。
+Azure 容器实例通过在组中添加实例的[资源请求][resource-requests]，将 cpu、内存和可选[gpu][gpus] （预览版）等资源分配给多容器组。 取 CPU 资源示例：如果创建包含两个容器实例的容器组，每个实例请求1个 CPU，则会为该容器组分配2个 cpu。
 
-### <a name="resource-usage-by-instances"></a>按实例的资源使用情况
+### <a name="resource-usage-by-container-instances"></a>容器实例的资源使用情况
 
-组中的每个容器实例都分配了其资源请求中指定的资源。 但是，如果配置其可选的[资源限制][resource-limits]属性，则组中的实例所使用的最大资源可能会不同。 实例的资源限制必须大于或等于必需的[资源请求][resource-requests]属性。
+组中的每个容器实例都分配了其资源请求中指定的资源。 但是，如果配置其可选的[资源限制][resource-limits]属性，则组中的容器实例使用的最大资源可能会不同。 容器实例的资源限制必须大于或等于必需的[资源请求][resource-requests]属性。
 
-* 如果未指定资源限制，则实例的最大资源使用率与资源请求相同。
+* 如果未指定资源限制，则容器实例的最大资源使用率与资源请求相同。
 
-* 如果为实例指定限制，则实例的最大使用量可能大于请求，直至达到所设置的限制。 同样，组中其他实例的资源使用可能会降低。 可为实例设置的最大资源限制是分配给组的总资源数。
+* 如果指定容器实例的限制，则实例的最大使用量可能大于请求，最大值为设置的限制。 同样，组中其他容器实例的资源使用可能会降低。 可为容器实例设置的最大资源限制是分配给组的总资源数。
     
-例如，在包含两个实例的组中，每个请求1个 CPU，其中一个容器可能运行的工作负荷需要更多的 Cpu 才能运行。
+例如，在具有两个容器实例的组中，每个请求1个 CPU，其中一个容器可能运行的工作负荷需要更多的 Cpu 才能运行。
 
-在这种情况下，可以为实例设置2个 Cpu 的资源限制。 此配置允许容器使用最多满2个 Cpu （如果可用）。
+在这种情况下，你可以为容器实例设置2个 Cpu 的资源限制。 此配置允许容器实例最多使用完整的2个 Cpu （如果可用）。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
@@ -68,9 +68,9 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 容器组可以共享一个面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及一个具有完全限定的域名（FQDN）的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 删除容器组后，将释放容器组的 IP 地址和 FQDN。 
 
-在容器组内，容器实例可以通过任意端口上的 localhost 互相连接，即使这些端口未在组的 IP 地址或容器中对外公开。
+在容器组内，容器实例可以通过任何端口上的本地主机互相连接，即使这些端口未在组的 IP 地址或容器中对外公开。
 
-（可选）将容器组部署到[Azure 虚拟网络][virtual-network]（预览版）中，以允许容器与虚拟网络中的其他资源安全通信。
+（可选）将容器组部署到[Azure 虚拟网络][virtual-network]，以允许容器与虚拟网络中的其他资源安全通信。
 
 ## <a name="storage"></a>存储空间
 

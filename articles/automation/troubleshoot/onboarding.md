@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769891"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889335"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>排查加入更新管理、更改跟踪和清单时出现的错误
 
@@ -156,7 +156,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
   * 从自动化帐户中删除更新部署（计划）
 * 在非工作时间启动/停止 VM
   * 在 "**设置**" > "**锁定**" 下，删除自动化帐户中解决方案组件的所有锁定。
-  * 有关删除在空闲时间启动/停止 VM 解决方案的其他步骤，请参阅[在非工作时间启动/停止 VM 解决方案](../automation-solution-vm-management.md##remove-the-solution)。
+  * 有关删除在空闲时间启动/停止 VM 解决方案的其他步骤，请参阅[在非工作时间启动/停止 VM 解决方案](../automation-solution-vm-management.md#remove-the-solution)。
 
 ## <a name="mma-extension-failures"></a>MMA 扩展失败
 

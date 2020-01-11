@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e1393b02948f2d86329263504d582fe78a474377
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974336"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890255"
 ---
 # <a name="pattern-syntax"></a>模式语法
 
@@ -53,7 +53,7 @@ ms.locfileid: "74974336"
 |嵌套分组查询文本示例|说明|
 |--|--|
 |RedWest-C|与外部分组实体匹配|
-|西雅图|与一个内部分组实体匹配|
+|Seattle|与一个内部分组实体匹配|
 |Cairo|与一个内部分组实体匹配|
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>用可选语法嵌套组的限制
@@ -63,7 +63,7 @@ ms.locfileid: "74974336"
 |允许|示例|
 |--|--|
 |是|( [ ( test1 &#x7c; test2 ) ] &#x7c; test3 )|
-|No|( [ ( [ test1 ] &#x7c; test2 ) ] &#x7c; test3 )|
+|否|( [ ( [ test1 ] &#x7c; test2 ) ] &#x7c; test3 )|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>嵌套带有 or 语法的组的限制
 
@@ -72,7 +72,7 @@ ms.locfileid: "74974336"
 |允许|示例|
 |--|--|
 |是|（test1 &#x7c; test2 &#x7c; （test3 &#x7c; test4））|
-|No|（test1 &#x7c; test2 &#x7c; test3 &#x7c; （test4 &#x7c; test5）） |
+|否|（test1 &#x7c; test2 &#x7c; test3 &#x7c; （test4 &#x7c; test5）） |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>用于向模式模板添加实体的语法
 要向模式模板添加实体，需用花括号将实体名称括起，比如 `Who does {Employee} manage?`。
@@ -142,7 +142,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 详细了解模式：
 
 * [如何添加模式](luis-how-to-model-intent-pattern.md)
-* [如何添加模式。任何实体](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [如何添加模式。任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式概念](luis-concept-patterns.md)
 
 了解如何在 json 响应中返回[情绪](luis-reference-prebuilt-sentiment.md)。

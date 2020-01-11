@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087400"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894168"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="issue-acl-verification-failed"></a>问题：ACL 验证失败
+## <a name="issue-acl-verification-failed"></a>问题： ACL 验证失败
 
 你会收到类似于以下内容的错误消息：
 
@@ -32,7 +32,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ### <a name="resolution"></a>分辨率
 
-1. 检查 SP 是否具有 "x" 权限，以便沿路径进行遍历。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例 dfs 命令：
+1. 检查 SP 是否具有 "x" 权限，以便沿路径进行遍历。 有关详细信息，请参阅 [权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例 dfs 命令：
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -66,7 +66,7 @@ Token Refresh failed - Received invalid http response: 500
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. 从`core-site.xml property`获取一个url`fs.azure.datalake.token.provider.service.urls`。  - 
+1. 获取 `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`的 url 之一。
 
 1. 运行以下卷曲命令以检索 OAuth 令牌。
 
@@ -171,6 +171,6 @@ Invoke-AzureRmResourceAction `
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

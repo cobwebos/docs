@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/03/2020
+ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690823"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894009"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
 
-若要为虚拟网络中的工作区使用 Azure 存储帐户，请执行以下操作：
+若要在虚拟网络中使用工作区的 Azure 存储帐户，请使用以下步骤：
 
 1. 在虚拟网络后创建计算资源（例如机器学习计算实例或群集），或将计算资源附加到工作区（例如，HDInsight 群集、虚拟机或 Azure Kubernetes Service 群集）。 计算资源可用于试验或模型部署。
 
@@ -88,7 +88,8 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 * 密码到 Azure 容器存储库实例
 * 数据存储的连接字符串
 
-若要在虚拟网络后使用 Azure Key Vault Azure 机器学习试验功能，请执行以下操作：
+若要在虚拟网络后使用 Azure Key Vault Azure 机器学习试验功能，请执行以下步骤：
+
 1. 中转到与工作区关联的密钥保管库。
 
    [![与 Azure 机器学习工作区关联的密钥保管库](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -158,11 +159,11 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 ### <a id="limiting-outbound-from-vnet"></a>限制来自虚拟网络的出站连接
 
-如果你不想使用默认的出站规则，并且想要限制虚拟网络的出站访问权限，请执行以下操作：
+如果你不想使用默认的出站规则，并且想要限制虚拟网络的出站访问权限，请执行以下步骤：
 
 - 使用 NSG 规则拒绝出站 internet 连接。
 
-- 限制出站流量：
+- 限制出站流量到以下项：
    - Azure 存储，使用存储的__服务标记__ __Region_Name__ （例如 EastUS）
    - Azure 容器注册表（通过使用__Region_Name AzureContainerRegistry__的__服务标记__）（例如，AzureContainerRegistry. EastUS）
    - Azure 机器学习，使用__AzureMachineLearning__的__服务标记__
@@ -223,7 +224,7 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>在虚拟网络中创建计算群集
 
-若要创建机器学习计算群集，请执行以下操作：
+若要创建机器学习计算群集，请使用以下步骤：
 
 1. 在[Azure 门户](https://portal.azure.com)中，选择 Azure 机器学习工作区。
 
@@ -297,7 +298,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。
 
-若要在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集，请执行以下操作：
+若要在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集，请执行以下步骤：
 
 1. 使用 Azure 门户或 Azure CLI 创建 VM 或 HDInsight 群集，并将群集放置在 Azure 虚拟网络中。 有关详细信息，请参阅以下文章：
     * [为 Linux VM 创建和管理 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
@@ -332,7 +333,7 @@ except ComputeTargetException:
 
 ## <a name="use-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS)
 
-若要将虚拟网络中的 AKS 添加到工作区，请执行以下操作：
+若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
 
 > [!IMPORTANT]
 > 开始以下过程之前，请遵循在[Azure Kubernetes Service （AKS）中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)"操作方法" 中的先决条件，并规划群集的 IP 寻址。
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 创建过程完成后，可以在虚拟网络后面的 AKS 群集上运行推理或模型评分。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-and-where.md)。
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>将专用 Ip 用于 Azure Kubernetes 服务
+
+默认情况下，会将公共 IP 地址分配给 AKS 部署。 在虚拟网络中使用 AKS 时，可以改为使用专用 IP 地址。 只能从虚拟网络或加入网络内部访问专用 IP 地址。
+
+通过将 AKS 配置为使用_内部负载均衡器_来启用专用 IP 地址。 
+
+> [!IMPORTANT]
+> 创建 Azure Kubernetes Service 群集时，无法启用专用 IP。 必须将其启用为对现有群集的更新。
+
+以下代码段演示了如何**创建新的 AKS 群集**，然后将其更新为使用专用 IP/内部负载均衡器：
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure CLI__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+命令引用的 `body.json` 文件的内容类似于以下 JSON 文档：
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> 目前，在现有群集上执行__附加__操作时，不能配置负载均衡器。 必须首先附加群集，然后执行更新操作来更改负载均衡器。
+
+有关在 AKS 中使用内部负载均衡器的详细信息，请参阅[将内部负载均衡器用于 Azure Kubernetes 服务](/azure/aks/internal-lb)。
+
 ## <a name="use-azure-firewall"></a>使用 Azure 防火墙
 
 使用 Azure 防火墙时，必须将网络规则配置为允许与以下地址之间的流量：
@@ -414,4 +491,3 @@ aks_target = ComputeTarget.create(workspace=ws,
 * [设置训练环境](how-to-set-up-training-targets.md)
 * [模型部署位置](how-to-deploy-and-where.md)
 * [使用 SSL 安全地部署模型](how-to-secure-web-service.md)
-

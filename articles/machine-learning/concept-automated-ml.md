@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: c4177e4310be3e03b64c260d88239de71f70c17a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720134"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894885"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -95,7 +95,7 @@ ms.locfileid: "75720134"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
 
-还提供了其他高级预处理和特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。 启用此设置，使用：
+还提供了其他高级预处理和特征化，例如 data guardrails、encoding 和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。 启用此设置，使用：
 
 + Azure 机器学习 studio：在**配置运行**部分中选择 "**查看特征化设置**" [，并执行以下步骤](how-to-create-portal-experiments.md)。
 
@@ -161,7 +161,7 @@ ms.locfileid: "75720134"
 
 * 假日检测和特征化
 * 时序和 DNN 学习者（自动 ARIMA、Prophet、ForecastTCN）
-* 多模型支持通过分组
+* 许多模型都支持通过分组
 * 滚动-原点交叉验证
 * 可配置滞后
 * 滚动窗口聚合功能

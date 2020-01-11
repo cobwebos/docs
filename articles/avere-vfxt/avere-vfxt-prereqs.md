@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 27b0fd1e6a9238e978518e06ab7f0aeeae5501d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414388"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889171"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -43,7 +43,7 @@ ms.locfileid: "75414388"
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT 群集的配额
 
-以下 Azure 组件必须具有足够的配额。 根据需要[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+以下 Azure 组件必须具有足够的配额。 根据需要[请求增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 
 > [!NOTE]
 > 此处列出的虚拟机和 SSD 组件适用于 vFXT 群集本身。 需要为计划用于计算场的 VM 和 SSD 追加配额。  确保为要运行工作流的区域启用了配额。

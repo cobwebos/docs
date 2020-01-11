@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 089064cee68170ab44fc1cc05e630781529b7b60
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931288"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892554"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "74931288"
 > * [版本 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [当前版本](connector-mongodb.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!IMPORTANT]
 >ADF 发布了一款新的 MongoDB 连接器，与这个基于 ODBC 的实现相比，该连接器提供更好的本机 MongoDB 支持，详情请参阅 [MongoDB 连接器](connector-mongodb.md)一文。 这一旧版 MongoDB 连接器仍支持向后兼容，但是对于任何新的工作负载，请使用新连接器。
@@ -55,19 +55,19 @@ ms.locfileid: "74931288"
 
 MongoDB 链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
-| 服务器 |MongoDB 服务器的 IP 地址或主机名。 |是 |
+| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
 | authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
-| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | No |
-| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | No |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值是 False。  | 否 |
+| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值是 False。  | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -98,7 +98,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -129,10 +129,10 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动源部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
-| 查询 |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
+| query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
 
 **示例：**
 
@@ -179,14 +179,14 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 
 | MongoDB 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 二进制 |Byte[] |
-| 布尔 |布尔 |
-| 日期 |日期/时间 |
+| Binary |Byte[] |
+| Boolean |Boolean |
+| Date |日期/时间 |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |字符串 |
-| 字符串 |字符串 |
+| ObjectID |String |
+| String |String |
 | UUID |GUID |
 | 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
@@ -210,15 +210,15 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 | _id | 客户名称 | 发票 | 服务级别 | 评级 |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |银牌服务 |[5,6] |
-| 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |金牌服务 |[1,2] |
+| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |银卡 |[5,6] |
+| 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |金卡 |[1,2] |
 
 该驱动程序会生成多个虚拟表来表示此单个表。 第一个虚拟表是名为“ExampleTable”的基表，如下例所示。 基表包含原始表中的所有数据，但已省略数组中的数据，这些数据会在虚拟表中展开。
 
 | _id | 客户名称 | 服务级别 |
 | --- | --- | --- |
-| 1111 |ABC |银牌服务 |
-| 2222 |XYZ |金牌服务 |
+| 1111 |ABC |银卡 |
+| 2222 |XYZ |金卡 |
 
 下表显示在示例中表示原始数组的虚拟表。 这些表包含以下项：
 
@@ -244,4 +244,4 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | 2222 |第 |2 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

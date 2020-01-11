@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: d994fe1501dedf6a8ea2c3366f6559c7abac0892
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091609"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887200"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master （HMaster）无法在 Azure HDInsight 中启动
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-atomic-renaming-failure"></a>场景：原子重命名失败
+## <a name="scenario-atomic-renaming-failure"></a>方案：原子重命名失败
 
 ### <a name="issue"></a>问题
 
@@ -32,19 +32,19 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
 
 ### <a name="resolution"></a>分辨率
 
-检查调用堆栈，并尝试确定哪个文件夹可能导致问题（例如，它可能是 WAL 文件夹或 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常，这是一个`*-renamePending.json`文件。 （该`*-renamePending.json`文件是用于在 WASB 驱动程序中实现原子重命名操作的日志文件。 由于此实现中的 bug，在发生进程崩溃之类的问题后，这些文件可能会保留。）可以通过 Cloud Explorer 或 HDFS 命令强制删除此文件。
+检查调用堆栈，并尝试确定哪个文件夹可能导致问题（例如，它可能是 WAL 文件夹或 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常，这是一个 `*-renamePending.json` 的文件。 （`*-renamePending.json` 文件是用于在 WASB 驱动程序中实现原子重命名操作的日志文件。 由于此实现中的 bug，在进程崩溃后，可以保留这些文件，依此类推。）在 Cloud Explorer 或使用 HDFS 命令强制删除此文件。
 
-有时，可能还有一个名为的临时文件，如`$$$.$$$`此位置。 必须使用 HDFS `ls` 命令查看此文件，而不能在 Cloud Explorer 中查看。 若要删除此文件，请使用 HDFS 命令 `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`。
+有时，可能还有一个名为的临时文件，如此位置 `$$$.$$$`。 必须使用 HDFS `ls` 命令查看此文件，而不能在 Cloud Explorer 中查看。 若要删除此文件，请使用 HDFS 命令 `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`。
 
 运行这些命令后，HMaster 应会立即启动。
 
 ---
 
-## <a name="scenario-no-server-address-listed"></a>场景：未列出任何服务器地址
+## <a name="scenario-no-server-address-listed"></a>方案：未列出服务器地址
 
 ### <a name="issue"></a>问题
 
-你可能会看到一条消息，指示`hbase: meta`该表未处于联机状态。 运行`hbck`可能会`hbase: meta table replicaId 0 is not found on any region.`报告在 HMaster 日志中，你可能会看到以下消息`No server address listed in hbase: meta for region hbase: backup <region name>`：。  
+你可能会看到一条消息，指示 `hbase: meta` 表不处于联机状态。 运行 `hbck` 可能会在 HMaster 日志中报告 `hbase: meta table replicaId 0 is not found on any region.`，你可能会看到以下消息： `No server address listed in hbase: meta for region hbase: backup <region name>`。  
 
 ### <a name="cause"></a>原因
 
@@ -59,7 +59,7 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
     delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. `hbase: namespace`删除条目。 此条目可能与扫描`hbase: namespace`表时报告的错误相同。
+1. 删除 `hbase: namespace` 条目。 此条目可能与扫描 `hbase: namespace` 表时报告的错误相同。
 
 1. 从 Ambari UI 重启主动 HMaster 以使 HBase 恢复运行状态。
 
@@ -75,7 +75,7 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
 
 ### <a name="issue"></a>问题
 
-HMaster 超时，类似于： `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`。
+HMaster 超时，类似于以下内容： `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`。
 
 ### <a name="cause"></a>原因
 
@@ -83,7 +83,7 @@ HMaster 超时，类似于： `java.io.IOException: Timedout 300000ms waiting fo
 
 ### <a name="resolution"></a>分辨率
 
-1. 从 Apache Ambari UI 中转到**HBase** > **配置。** 在自定义`hbase-site.xml`文件中添加以下设置：
+1. 从 Apache Ambari UI 中转到**HBase** ** > 配置**。 在自定义 `hbase-site.xml` 文件中，添加以下设置：
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -93,7 +93,7 @@ HMaster 超时，类似于： `java.io.IOException: Timedout 300000ms waiting fo
 
 ---
 
-## <a name="scenario-frequent-region-server-restarts"></a>场景：频繁区域服务器重启
+## <a name="scenario-frequent-region-server-restarts"></a>方案：频繁地重启区域服务器
 
 ### <a name="issue"></a>问题
 
@@ -107,15 +107,15 @@ HMaster 超时，类似于： `java.io.IOException: Timedout 300000ms waiting fo
 
 ### <a name="cause"></a>原因
 
-长`regionserver` JVM GC 暂停。 暂停将导致`regionserver`无响应，并且无法在 zk 会话超时 .40s 中向 HMaster 发送检测信号。 HMaster 将认为`regionserver`是死信，将`regionserver`中止并重新启动。
+长 `regionserver` JVM GC 暂停。 暂停将导致 `regionserver` 无响应，并且无法在 zk 会话超时 .40s 中向 HMaster 发送检测信号。 HMaster 会相信 `regionserver` 是死的，将中止 `regionserver` 并重新启动。
 
 ### <a name="resolution"></a>分辨率
 
-更改 Zookeeper `hbase-site`会话超时，不仅要更改设置`zookeeper.session.timeout` ，还需要更改 Zookeeper `zoo.cfg`设置`maxSessionTimeout` 。
+更改 Zookeeper 会话超时，不仅 `zookeeper.session.timeout` `hbase-site` 设置，还需要更改 `zoo.cfg` 设置 `maxSessionTimeout`。
 
 1. 访问 Ambari UI，转到**HBase-> 配置-> 设置**，在 "超时" 部分中，更改 Zookeeper 会话超时值。
 
-1. 访问 Ambari UI，转到**Zookeeper-> 配置-> 自定义** `zoo.cfg`，添加/更改以下设置。 请确保该值与 HBase `zookeeper.session.timeout`相同。
+1. 访问 Ambari UI，转到**Zookeeper-> 配置-> 自定义**`zoo.cfg`，添加/更改以下设置。 请确保该值与 HBase `zookeeper.session.timeout`相同。
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -125,7 +125,7 @@ HMaster 超时，类似于： `java.io.IOException: Timedout 300000ms waiting fo
 
 ---
 
-## <a name="scenario-log-splitting-failure"></a>场景：日志拆分失败
+## <a name="scenario-log-splitting-failure"></a>方案：日志拆分失败
 
 ### <a name="issue"></a>问题
 
@@ -137,7 +137,7 @@ HMasters 无法在 HBase 群集上启动。
 
 ### <a name="resolution"></a>分辨率
 
-设置 rootdir： wasb://@.blob.core.windows.net/hbase并在 Ambari 上重新启动服务。
+设置 rootdir：在 Ambari 上 wasb://@.blob.core.windows.net/hbase 和重启服务。
 
 ---
 
@@ -147,6 +147,6 @@ HMasters 无法在 HBase 群集上启动。
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

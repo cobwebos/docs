@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c05b29dd5909d1371c71bffb9db555c15c5d23ed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764637"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894019"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>通过 Azure 机器学习 studio 创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Variance| 此列的数据超出其平均值的度量值。
 倾斜| 衡量此列的数据与正态分布的不同之处。
 峰度| 对此列的数据与正态分布进行比较的尾量的度量值。
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>高级预处理选项
 
-配置试验时，可以启用 "高级" 设置 `Preprocess`。 这样做意味着会自动执行以下数据预处理和特征化步骤。
+配置试验时，可以启用 "高级" 设置 `Preprocess`。 这样做意味着在预处理过程中，会自动执行以下数据 guardrails 和特征化步骤。
 
 |预处理&nbsp;步骤| Description |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ Variance| 此列的数据超出其平均值的度量值。
 |文本目标编码|对于文本输入，将使用带有词袋的堆积线性模型来生成每个类的概率。|
 |证据的权重（WoE）|计算 WoE 作为分类列与目标列的相关性。 它计算为类与类外概率的比率的对数。 此步骤将为每个类输出一个数值特征列，无需显式归结缺失值和离群值处理。|
 |群集距离|在所有数字列上训练 k 平均值聚类分析模型。  输出 k 个新功能，每个群集一个新的数字功能，其中包含每个样本与每个分类的质心的距离。|
+
+### <a name="data-guardrails"></a>数据 guardrails
+
+自动机器学习提供了数据 guardrails，可帮助您识别数据的潜在问题（例如，缺少值、类不平衡），并帮助采取纠正措施来提高结果。 有很多可用的最佳实践，可以应用这些方案来实现可靠的结果。 
+
+下表描述了当前支持的数据 guardrails，以及用户在提交试验时可能会遇到的关联状态。
+
+Guardrail|状态|&nbsp;触发器的条件&nbsp;
+---|---|---
+&nbsp;插补法缺少&nbsp;值 |**通过** <br> <br> “固定”|    任何输入&nbsp;列中都没有缺失值 <br> <br> 某些列缺少值
+交叉验证|**效率**|如果未提供显式验证集
+高&nbsp;基数&nbsp;功能&nbsp;检测|  **通过** <br> <br>**效率**|   未检测到高基数功能 <br><br> 检测到高基数输入列
+类余额检测 |**通过** <br><br><br>**触发** |类在定型数据中平衡;如果每个类在数据集中具有良好的表示形式，则将数据集视为均衡，如样本的数量和比率 <br> <br> 训练数据中的类不均衡
+时序数据一致性|**通过** <br><br><br><br> “固定” |<br> 已分析选定的 {地平线，延迟，滚动窗口} 个值，但未检测到任何可能的内存不足问题。 <br> <br>已分析选定的 {地平线，延迟，滚动窗口} 值，并且可能会导致实验用尽内存。 已关闭延迟或滚动窗口。
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 

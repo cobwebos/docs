@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: c23bba777a7a29f572764914cfa505d2b668683d
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: f009b438cb0dc227289d65604d89c11fd382b675
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830405"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892967"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Synapse Analytics （以前称为 Azure SQL 数据仓库）中的数据 
 
@@ -772,4 +772,4 @@ SQL 数据仓库[COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/co
 | varchar                               | String, Char[]                 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

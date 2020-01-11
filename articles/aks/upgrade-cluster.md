@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 7113fd7f17fd7695e25489931d7a6cbf35e334ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442817"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889401"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "75442817"
 本文要求运行 Azure CLI 版本2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
-> AKS 群集升级触发 cordon 并排出节点。 如果可用的计算配额较低，升级可能会失败。  有关详细信息，请参阅[增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)。
+> AKS 群集升级触发 cordon 并排出节点。 如果可用的计算配额较低，升级可能会失败。  有关详细信息，请参阅[增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289)。
 > 如果运行自己的群集自动缩放程序部署，请在升级过程中禁用它（可将其扩展为零个副本），因为这样做可能会影响升级过程。 托管自动缩放程序会自动处理这种情况。 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7bd420d08645e22db3ec0e9b1a68188a483378bf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076036"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896039"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性公共 IP 地址前端的标准负载均衡器
 
@@ -26,7 +26,7 @@ ms.locfileid: "74076036"
 
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
  
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "74076036"
 如果选择在本地安装和使用 CLI，请确保已安装了最新的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 并已使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest) 登录到 Azure 帐户。
 
 > [!NOTE]
->  选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
+>  选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-portal/supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -95,7 +95,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>针对端口 80 创建负载均衡器规则
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create)，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -115,7 +115,7 @@ az network lb rule create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 *az network vnet create* 在 myResourceGroup 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 [mySubnet](/cli/azure/network/vnet#az-network-vnet-create) 的子网。
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 在 myResourceGroup 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
 
 
 ```azurecli-interactive
@@ -128,7 +128,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
 
-使用 *az network nsg create* 创建名为 [myNetworkSecurityGroup](/cli/azure/network/nsg#az-network-nsg-create) 的网络安全组，以定义虚拟网络的入站连接。
+使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 创建名为 *myNetworkSecurityGroup* 的网络安全组，以定义虚拟网络的入站连接。
 
 ```azurecli-interactive
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-使用 *az network nsg rule create* 针对端口 80 创建名为 [myNetworkSecurityGroupRule](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 的网络安全组规则。
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 针对端口 80 创建名为 *myNetworkSecurityGroupRule* 的网络安全组规则。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -243,7 +243,7 @@ done
     --output tsv
 ``` 
 
-然后，可将公共 IP 地址输入 Web 浏览器中。 请记住 - 在负载均衡器开始向 VM 分发流量之前，VM 需要几分钟才能准备就绪。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 web 浏览器中。 请记住 - 在负载均衡器开始向 VM 分发流量之前，VM 需要几分钟才能准备就绪。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![运行 Node.js 应用](./media/load-balancer-standard-public-zonal-cli/running-nodejs-app.png)
 

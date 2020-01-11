@@ -6,18 +6,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229252"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891842"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
 本文解答了有关 Azure 春季云的常见问题。 
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="why-azure-spring-cloud"></a>为何要使用 Azure Spring Cloud？
 
@@ -29,7 +29,7 @@ Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analyti
 
 Azure Spring Cloud 在预览期提供一个服务计划。  春季云部署包含16个 vCPU 核心和 32 gb 的内存。  部署中每个微服务实例的上限为4个具有 8 GB 内存的 vCPU 核心。
 
-Resource | 金额
+资源 | 总量
 ------- | -------
 每个 Spring 应用程序的应用实例数 | 20
 每个 Azure Spring Cloud 服务实例的应用实例总数 | 500
@@ -63,7 +63,7 @@ Azure Spring Cloud 提供完整的 SSL 和证书管理。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供反馈和报告问题？
 
-如果在 Azure 春季云中遇到任何问题，请创建[Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 若要提交功能请求或提供反馈，请参阅[Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
+如果在 Azure 春季云中遇到任何问题，请创建[Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能请求或提供反馈，请参阅[Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
 
 ## <a name="development"></a>开发
 
@@ -100,7 +100,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
-否。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
+不。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
@@ -108,7 +108,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-否。
+不。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？
 

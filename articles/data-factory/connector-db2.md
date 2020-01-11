@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 304d0615a12871fb4a9610058bc1be0ad6dff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929550"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892824"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-db2-connector.md)
 > * [当前版本](connector-db2.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -67,17 +67,17 @@ ms.locfileid: "74929550"
 
 DB2 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Db2 | 是 |
-| 服务器 |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
+| server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
 | 数据库 |DB2 数据库的名称。 |是 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | No |
-| certificateCommonName | 使用安全套接字层（SSL）或传输层安全性（TLS）加密时，必须为 "证书公用名" 输入一个值。 | No |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | 否 |
+| certificateCommonName | 使用安全套接字层（SSL）或传输层安全性（TLS）加密时，必须为 "证书公用名" 输入一个值。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -110,11 +110,11 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 为新的工作负荷使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -145,10 +145,10 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **Db2Source** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -191,30 +191,30 @@ DB2 链接服务支持以下属性：
 | DB2 数据库类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | BigInt |Int64 |
-| 二进制 |Byte[] |
+| Binary |Byte[] |
 | Blob |Byte[] |
-| Char |字符串 |
-| Clob |字符串 |
-| 日期 |Datetime |
-| DB2DynArray |字符串 |
-| DbClob |字符串 |
+| Char |String |
+| Clob |String |
+| Date |Datetime |
+| DB2DynArray |String |
+| DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |字符串 |
+| Graphic |String |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |字符串 |
-| LongVarGraphic |字符串 |
+| LongVarChar |String |
+| LongVarGraphic |String |
 | Numeric |Decimal |
 | Real |单一 |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | Timestamp |日期/时间 |
 | VarBinary |Byte[] |
-| VarChar |字符串 |
-| VarGraphic |字符串 |
+| VarChar |String |
+| VarGraphic |String |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
@@ -222,4 +222,4 @@ DB2 链接服务支持以下属性：
 若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

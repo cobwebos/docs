@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: ba8dc3080f3b584ae3a60576e4cc670dc60c28a0
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151810"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894658"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux
 
@@ -107,16 +107,16 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620<strong>nr&lt;&gt;</strong>
+  * 端口 620&lt;nr&gt;
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 32<strong>nr&lt; TCP&gt;</strong>
-  * 36<strong>nr&lt; TCP&gt;</strong>
-  * 39<strong>nr&lt; TCP&gt;</strong>
-  * 81<strong>nr&lt; TCP&gt;</strong>
-  * 5<strong>nr&lt;13 TCP&gt;</strong>
-  * 5<strong>nr&lt;14 TCP&gt;</strong>
-  * 5<strong>nr&lt;16 TCP&gt;</strong>
+  * 32&lt;nr&gt; TCP
+  * 36&lt;nr&gt; TCP
+  * 39&lt;nr&gt; TCP
+  * 81&lt;nr&gt; TCP
+  * 5&lt;nr&gt;13 TCP
+  * 5&lt;nr&gt;14 TCP
+  * 5&lt;nr&gt;16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -125,14 +125,14 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621<strong>nr&lt;&gt;</strong>
+  * 端口 621&lt;nr&gt;
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 32<strong>nr&lt; TCP&gt;</strong>
-  * 33<strong>nr&lt; TCP&gt;</strong>
-  * 5<strong>nr&lt;13 TCP&gt;</strong>
-  * 5<strong>nr&lt;14 TCP&gt;</strong>
-  * 5<strong>nr&lt;16 TCP&gt;</strong>
+  * 32&lt;nr&gt; TCP
+  * 33&lt;nr&gt; TCP
+  * 5&lt;nr&gt;13 TCP
+  * 5&lt;nr&gt;14 TCP
+  * 5&lt;nr&gt;16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
 
@@ -172,6 +172,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 - 所选虚拟网络必须具有子网，并委托给 Azure NetApp 文件。
 - Azure NetApp 文件提供[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：可控制允许的客户端、访问类型（读取 & 写入、只读等）。 
 - Azure NetApp 文件功能尚不能识别区域。 目前，azure NetApp 文件功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域中潜在的延迟影响。 
+- Azure NetApp 文件卷可部署为 NFSv3 或 NFSv 4.1 卷。 SAP 应用程序层（ASCS/ERS、SAP 应用程序服务器）支持这两种协议。 
 
 ## <a name="setting-up-ascs"></a>设置 (A)SCS
 
@@ -255,11 +256,46 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
       1. ASCS ERS 的其他端口
          * 对于端口 32**01**、33**01**、5**01**13、5**01**14、5**01**16 和 TCP （适用于 ASCS ERS），请重复上述步骤。
 
-> [!Note]
-> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+      > [!Note]
+      > 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
-> [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+      > [!IMPORTANT]
+      > 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+
+## <a name="disable-id-mapping-if-using-nfsv41"></a>禁用 ID 映射（如果使用 NFSv 4.1）
+
+本部分中的说明仅适用于使用带有 NFSv 4.1 协议的 Azure NetApp 文件的卷。 在所有 Vm 上执行配置，其中将装载 Azure NetApp 文件 NFSv 4.1 卷。  
+
+1. 验证 NFS 域设置。 请确保将该域配置为默认的 Azure NetApp 文件域，即 **`defaultv4iddomain.com`** ，并且映射设置为 "无**人**"。  
+
+    > [!IMPORTANT]
+    > 请确保在 VM `/etc/idmapd.conf` 上设置 NFS 域，使其与 Azure NetApp 文件上的默认域配置匹配： **`defaultv4iddomain.com`** 。 如果 NFS 客户端（即 VM）上的域配置与 NFS 服务器（即 Azure NetApp 配置）之间存在不匹配的情况，则在 Vm 上装载的 Azure NetApp 卷上的文件权限将显示为 `nobody`。  
+
+    <pre><code>
+    sudo cat /etc/idmapd.conf
+    # Example
+    [General]
+    Domain = <b>defaultv4iddomain.com</b>
+    [Mapping]
+    Nobody-User = <b>nobody</b>
+    Nobody-Group = <b>nobody</b>
+    </code></pre>
+
+4. **[A]** 验证 `nfs4_disable_idmapping`。 它应设置为**Y**。若要创建 `nfs4_disable_idmapping` 所在的目录结构，请执行 mount 命令。 由于已为内核/驱动程序保留访问权限，因此无法在/sys/modules 下手动创建目录。  
+
+    <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
+    mkdir /mnt/tmp
+    mount 192.168.24.5:/sap<b>QAS</b>
+    umount  /mnt/tmp
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
+   有关如何更改 `nfs4_disable_idmapping` 参数的详细信息，请参阅 https://access.redhat.com/solutions/1749883 。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -295,9 +331,12 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    将 Azure NetApp 文件卷暂时装载到其中一个 Vm 上，并创建 SAP 目录（文件路径）。  
 
     ```
-     #mount temporarily the volume
+     # mount temporarily the volume
      sudo mkdir -p /saptmp
+     # If using NFSv3
      sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 192.168.24.5:/sapQAS /saptmp
+     # If using NFSv4.1
+     sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 192.168.24.5:/sapQAS /saptmp
      # create the SAP directories
      sudo cd /saptmp
      sudo mkdir -p sapmntQAS
@@ -361,6 +400,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 1. **[A]** 添加装载条目
 
+   如果使用 NFSv3：
    ```
    sudo vi /etc/fstab
    
@@ -370,8 +410,18 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
+   如果使用 NFSv 4.1：
+   ```
+   sudo vi /etc/fstab
+   
+   # Add the following lines to fstab, save and exit
+    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+    192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   ```
+
    > [!NOTE]
-   > 装载卷时，请确保匹配 Azure NetApp 文件卷的 NFS 协议版本。 在此示例中，Azure NetApp 文件卷创建为 NFSv3 卷。  
+   > 装载卷时，请确保匹配 Azure NetApp 文件卷的 NFS 协议版本。 如果将 Azure NetApp 文件卷创建为 NFSv3 卷，请使用相应的 NFSv3 配置。 如果将 Azure NetApp 文件卷创建为 NFSv 4.1 卷，请按照说明禁用 ID 映射，并确保使用相应的 NFSv 4.1 配置。 在此示例中，Azure NetApp 文件卷创建为 NFSv3 卷。  
 
    装载新共享
 
@@ -410,9 +460,14 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
    ```
    sudo pcs node standby anftstsapcl2
-   
+   # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
      directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     --group g-QAS_ASCS
+   
+   # If using NFSv4.1
+   sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -442,7 +497,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 1. [1] 安装 SAP NetWeaver ASCS  
 
-   在第一个节点上使用映射到 ASCS 的负载均衡器前端配置的 IP 地址的虚拟主机名（例如<b>anftstsapvh</b>、 <b>192.168.14.9</b>和用于的实例编号）在第一个节点上安装 SAP NetWeaver ASCS探测负载均衡器，例如<b>00</b>。
+   在第一个节点上使用映射到 ASCS 的负载均衡器前端配置的 IP 地址的虚拟主机名（例如， <b>anftstsapvh</b>、 <b>192.168.14.9</b>和用于探测负载平衡器的实例编号，如<b>00</b>），将 SAP NetWeaver ASCS 作为 root 用户安装在第一个节点上。
 
    可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。
 
@@ -466,10 +521,16 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    sudo pcs node unstandby anftstsapcl2
    sudo pcs node standby anftstsapcl1
    
+   # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
      directory='/usr/sap/QAS/ERS01' fstype='nfs' \
     --group g-QAS_AERS
-
+   
+   # If using NFSv4.1
+   sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+    --group g-QAS_AERS
+   
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
      ip=192.168.14.10 cidr_netmask=24 \
     --group g-QAS_AERS
@@ -501,7 +562,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 1. [2] 安装 SAP Netweaver ERS  
 
-   在第二个节点上使用映射到 ERS 的负载均衡器前端配置的 IP 地址的虚拟主机名（例如<b>anftstsapers</b>、 <b>192.168.14.10</b>和你用于探测负载均衡器，例如<b>01</b>。
+   在第二个节点上使用映射到 ERS 的负载均衡器前端配置的 IP 地址的虚拟主机名（例如， <b>anftstsapers</b>、 <b>192.168.14.10</b>和用于探测负载均衡器的实例号，例如<b>01</b>），以 root 身份安装 SAP NetWeaver ERS。
 
    可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。
 
@@ -721,13 +782,22 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    ```
 
 1. **[A]** 添加装载条目  
-
+   如果使用 NFSv3：
    ```
    sudo vi /etc/fstab
    
    # Add the following lines to fstab, save and exit
    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
+   ```
+
+   如果使用 NFSv 4.1：
+   ```
+   sudo vi /etc/fstab
+   
+   # Add the following lines to fstab, save and exit
+   192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
    ```
 
    装载新共享
@@ -737,7 +807,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    ```
 
 1. **[P]** 创建并装入 PAS 目录  
-
+   如果使用 NFSv3：
    ```
    sudo mkdir -p /usr/sap/QAS/D02
    sudo chattr +i /usr/sap/QAS/D02
@@ -750,8 +820,21 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    sudo mount -a
    ```
 
-1. **[S]** 创建和装载 .aas 目录  
+   如果使用 NFSv 4.1：
+   ```
+   sudo mkdir -p /usr/sap/QAS/D02
+   sudo chattr +i /usr/sap/QAS/D02
+   
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   
+   # Mount
+   sudo mount -a
+   ```
 
+1. **[S]** 创建和装载 .aas 目录  
+   如果使用 NFSv3：
    ```
    sudo mkdir -p /usr/sap/QAS/D03
    sudo chattr +i /usr/sap/QAS/D03
@@ -764,6 +847,18 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    sudo mount -a
    ```
 
+   如果使用 NFSv 4.1：
+   ```
+   sudo mkdir -p /usr/sap/QAS/D03
+   sudo chattr +i /usr/sap/QAS/D03
+   
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   
+   # Mount
+   sudo mount -a
+   ```
 
 1. [A] 配置交换文件
  
@@ -846,7 +941,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    hdbuserstore SET DEFAULT qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
    ```
 
-## <a name="test-the-cluster-setup"></a>测试群集设置
+## <a name="test-the-cluster-setup"></a>测试群集设
 
 1. 手动迁移 ASCS 实例
 

@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087186"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894313"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 异常
 
 本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>场景：Apache Spark 的 OutOfMemoryError 异常
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>方案： Apache Spark 的 OutOfMemoryError 异常
 
 ### <a name="issue"></a>问题
 
@@ -60,11 +60,11 @@ java.lang.OutOfMemoryError
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据，以及进一步转换中间数据时生成的输出数据，对大小进行估计。 如果初始估计值不足，请略微增加大小，然后循环访问直到内存错误下降。
 
-1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 为此，可查看群集的 YARN UI 的 "群集指标" 部分，了解所**使用的内存**值与使用的**内存总计**和**vcore**的值。
+1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 为此，可以查看群集的 YARN UI 的 "群集指标" 部分，了解所**使用的内存**的值与**内存总量**以及使用的**vcore**与**vcore 总数**。
 
     ![yarn 核心内存视图](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
-1. 将以下 Spark 配置设置为合适的值。 将应用程序要求与群集中的可用资源进行平衡。 这些值不应超过 YARN 查看的可用内存和核心数 90%，并且还应满足 Spark 应用程序的最低内存要求：
+1. 将以下 Spark 配置设置为合适的值。 将应用程序要求与群集中的可用资源进行平衡。 这些值不应超过 YARN 查看的可用内存和核心数90%，并且还应满足 Spark 应用程序的最低内存要求：
 
     ```
     spark.executor.instances (Example: 8 for 8 executor count)
@@ -90,7 +90,7 @@ java.lang.OutOfMemoryError
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>场景：尝试打开 Apache Spark history 服务器时出现 Java 堆空间错误
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>方案：尝试打开 Apache Spark history 服务器时出现 Java 堆空间错误
 
 ### <a name="issue"></a>问题
 
@@ -116,7 +116,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>分辨率
 
-可以通过在 spark 配置中编辑`SPARK_DAEMON_MEMORY`属性并重新启动所有服务来增加 spark 历史记录服务器内存。
+可以通过在 Spark 配置中编辑 `SPARK_DAEMON_MEMORY` 属性并重新启动所有服务，来增加 Spark 历史记录服务器内存。
 
 可以通过选择 Custom-spark2-defaults/Config/Advanced custom-spark2-defaults 节，在 Ambari 浏览器 UI 中执行此操作。
 
@@ -130,7 +130,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>场景：Livy 服务器无法在 Apache Spark 群集上启动
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>方案： Livy Server 未能在 Apache Spark 群集上启动
 
 ### <a name="issue"></a>问题
 
@@ -194,7 +194,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>原因
 
-`java.lang.OutOfMemoryError: unable to create new native thread`突出显示 OS 无法将更多的本机线程分配给 Jvm。 已确认此异常是由于违反每进程线程计数限制导致的。
+`java.lang.OutOfMemoryError: unable to create new native thread` 突出显示，操作系统无法将更多的本机线程分配给 Jvm。 已确认此异常是由于违反每进程线程计数限制导致的。
 
 当 Livy 服务器意外终止时，与 Spark 群集的所有连接也会终止，这意味着所有作业和相关数据都将丢失。 引入 HDP 2.6 会话恢复机制后，Livy 将会话详细信息存储在 Zookeeper 中，以便在 Livy 服务器恢复后恢复。
 
@@ -239,7 +239,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 1. 等待以上命令完成，并使光标返回提示符，然后从 Ambari 重新启动 Livy service，这应该会成功。
 
 > [!NOTE]
-> `DELETE`完成执行后，livy 会话。 Spark 应用完成后，将不会自动删除 Livy 批处理会话（这是设计完成的）。 Livy 会话是由针对 Livy Rest 服务器的 POST 请求创建的实体。 需要`DELETE`调用才能删除该实体。 或者我们应该等待 GC 开始。
+> 在 livy 会话完成执行后 `DELETE`。 Spark 应用完成后，将不会自动删除 Livy 批处理会话（这是设计完成的）。 Livy 会话是由针对 Livy Rest 服务器的 POST 请求创建的实体。 需要 `DELETE` 调用才能删除该实体。 或者我们应该等待 GC 开始。
 
 ---
 
@@ -253,6 +253,6 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

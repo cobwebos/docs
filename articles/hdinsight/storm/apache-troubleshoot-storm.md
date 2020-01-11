@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e2cc9dd81a0bbefa5cf37facb6067bda07117eaf
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903721"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896008"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解处理 [Apache Ambari](https://storm.apache.org/) 中的 [Apache Storm](https://ambari.apache.org/) 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Storm](https://storm.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 
@@ -36,7 +36,7 @@ ms.locfileid: "73903721"
 
 `https://<cluster DNS name>/stormui`
 
-示例：`https://stormcluster.azurehdinsight.net/stormui`
+示例： `https://stormcluster.azurehdinsight.net/stormui`
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>如何将 Storm 事件中心 Spout 检查点信息从一个拓扑传输到另一个拓扑？
 
@@ -46,9 +46,9 @@ ms.locfileid: "73903721"
 
 事件中心 Spout 将偏移检查点数据存储在 ZooKeeper 中的两个根路径下：
 
-- 非事务 Spout 检查点存储在 `/eventhubspout` 中。
+- 非事务性 spout 检查点存储在 `/eventhubspout`中。
 
-- 事务 Spout 检查点数据存储在 `/transactional` 中。
+- 事务性 spout 检查点数据存储在 `/transactional`中。
 
 ### <a name="how-to-restore"></a>如何还原
 
@@ -65,7 +65,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 #### <a name="export-offset-metadata"></a>导出偏移元数据
 
 1. 使用 SSH 在需要从中导出检查点偏移数据的群集上转到 ZooKeeper 群集。
-2. （更新 HDP 版本字符串之后）运行以下命令，将 ZooKeeper 偏移数据导出到 `/stormmetadta/zkdata` HDFS 路径：
+2. 在更新 HDP 版本字符串后运行以下命令，将 ZooKeeper 偏移数据导出到 `/stormmetadta/zkdata` HDFS 路径：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +74,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 #### <a name="import-offset-metadata"></a>导入偏移元数据
 
 1. 使用 SSH 转到需要从中导入检查点偏移数据的群集上的 ZooKeeper 群集。
-2. （更新 HDP 版本字符串之后）运行以下命令，将 ZooKeeper 偏移数据从 HDFS 路径 `/stormmetadata/zkdata` 导入到目标群集上的 ZooKeeper 服务器：
+2. 运行以下命令（更新 HDP 版本字符串之后），将 ZooKeeper 偏移数据从 HDFS 路径 `/stormmetadata/zkdata` 导入到目标群集上的 ZooKeeper 服务器：
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +91,9 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>如何在群集上查找 Storm 二进制文件？
 
-当前 HDP 堆栈的 Storm 二进制文件在 `/usr/hdp/current/storm-client` 中。 在头节点和工作节点上，此位置是相同的。
+当前 HDP 堆栈的风暴二进制文件处于 `/usr/hdp/current/storm-client`。 在头节点和工作节点上，此位置是相同的。
 
-/usr/hdp 中可能包含特定 HDP 版本的多个二进制文件（例如 `/usr/hdp/2.5.0.1233/storm`）。 `/usr/hdp/current/storm-client` 文件夹与群集上运行的最新版本建立了符号链接。
+对于/usr/hdp 下面可能中的特定 HDP 版本（例如 `/usr/hdp/2.5.0.1233/storm`），可能有多个二进制文件。 `/usr/hdp/current/storm-client` 文件夹与群集上运行的最新版本 symlinked。
 
 有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Apache Storm](https://storm.apache.org/)。
 
@@ -104,7 +104,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 * 网关节点
 * 头节点
 * ZooKeeper 节点
-* 辅助角色节点
+* 工作器节点
 
 ### <a name="gateway-nodes"></a>网关节点
 
@@ -124,10 +124,10 @@ HDInsight 附带一个三节点 ZooKeeper 仲裁。 仲裁大小是固定的，�
 
 群集中的 Storm 服务配置为自动使用 ZooKeeper 仲裁。
 
-### <a name="worker-nodes"></a>辅助角色节点
+### <a name="worker-nodes"></a>工作器节点
 
 Storm 工作节点运行以下服务：
-* 监督器
+* Supervisor
 * 用于运行拓扑的辅助角色 Java 虚拟机 (JVM)
 * Ambari 代理
 
@@ -174,7 +174,7 @@ Storm 工作节点运行以下服务：
 
 提交拓扑时，用户可能会收到类似于以下内容的错误消息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
 
-若要解决此问题，用户可能需要提交票证才能重新启动/重新启动节点。 有关详细信息，请参阅 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
+若要解决此问题，用户可能需要提交票证才能重新启动/重新启动节点。 有关详细信息，请参阅[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
 
 ---
 
@@ -182,8 +182,8 @@ Storm 工作节点运行以下服务：
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
+- 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
 - 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+- 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

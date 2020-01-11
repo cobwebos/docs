@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505942"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894846"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "60505942"
 
 本教程提供有关使用以下方式管理设备控制器的分步说明：
 
-* StorSimple 设备管理器服务中设备的“控制器”边栏选项卡。 
+* StorSimple 设备管理器服务中设备的“控制器”边栏选项卡。
 * Windows PowerShell for StorSimple。
 
 我们建议通过 StorSimple 设备管理器服务管理设备控制器。 如果只能使用 Windows PowerShell for StorSimple 执行某个操作，本教程会提供相应的说明。
@@ -47,31 +47,31 @@ ms.locfileid: "60505942"
 
 > [!IMPORTANT]
 > * **千万不要以物理方式拆卸运行中的控制器，否则会导致失去冗余，增大停机时间的风险。**
-> * 以下过程仅适用于 StorSimple 物理设备。 有关如何启动、停止和重启 StorSimple 云设备的信息，请参阅[使用云设备](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance)。
+> * 以下过程仅适用于 StorSimple 物理设备。 有关如何启动、停止和重启 StorSimple 云设备的信息，请参阅[使用云设备](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)。
 
 可以通过 StorSimple 设备管理器服务的 Azure 门户或者用于 StorSimple 的 Windows PowerShell 来重启或关闭单个设备控制器。
 
 若要从 Azure 门户管理设备控制器，请执行以下步骤。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>在 Azure 门户中重启或关闭控制器
-1. 在 StorSimple 设备管理器服务中，转到“设备”。  从设备列表中选择自己的设备。 
+1. 在 StorSimple 设备管理器服务中，转到“设备”。 从设备列表中选择自己的设备。 
 
     ![选择设备](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. 转到“设置”>“控制器”。 
+2. 转到“设置”>“控制器”。
    
     ![检查 StorSimple 设备控制器是否正常](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. 在“控制器”边栏选项卡中，检查设备上的两个控制器的状态是否为“正常”。   选择一个控制器，单击右键，选择“重启”或“关闭”。  
+3. 在“控制器”边栏选项卡中，检查设备上的两个控制器的状态是否为“正常”。 选择一个控制器，单击右键，选择“重启”或“关闭”。
 
     ![选择重启或关闭 StorSimple 设备控制器](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. 此时会创建一个作业来重启或关闭控制器，同时，会显示适用的警告（如果有）。 若要监视重启或关闭状态，请转到“服务”>“活动日志”，根据服务特定的参数进行筛选。  如果控制器已关闭，则需要按下电源按钮将控制器打开。
+4. 此时会创建一个作业来重启或关闭控制器，同时，会显示适用的警告（如果有）。 若要监视重启或关闭状态，请转到“服务”>“活动日志”，根据服务特定的参数进行筛选。 如果控制器已关闭，则需要按下电源按钮将控制器打开。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中重新启动或关闭控制器
 执行以下步骤可以通过 用于 StorSimple 的 Windows PowerShell 关闭或重启 StorSimple 设备上的单个控制器。
 
 1. 通过串行控制台或来自远程计算机的 Telnet 会话访问设备。 若要连接到控制器 0 或控制器 1，请遵循[使用 PuTTY 连接到设备串行控制台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步骤。
-2. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”  。
+2. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。
 3. 在标题消息中，记下连接到的控制器（控制器 0 或控制器 1），以及它是主动控制器还是被动（备用）控制器。
    
    * 若要关闭单个控制器，请在提示符下键入：
@@ -91,7 +91,7 @@ ms.locfileid: "60505942"
 本部分说明如何从远程计算机关闭正在运行的或有故障的 StorSimple 设备。 在关闭两个设备控制器后，设备会关闭。 以物理方式移动设备或者不再使用设备时，才需要执行关闭操作。
 
 > [!IMPORTANT]
-> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。  在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。  只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，会看到相应组件的状态为故障（红色）或降级（黄色）。
+> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。 在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。 只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，会看到相应组件的状态为故障（红色）或降级（黄色）。
 
 
 #### <a name="to-shut-down-a-storsimple-device"></a>关闭 StorSimple 设备
@@ -112,7 +112,7 @@ ms.locfileid: "60505942"
 
 ### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中将设备重置为默认设置
 1. 通过设备的串行控制台访问设备。 检查标题消息，确保已连接到**主动**控制器。
-2. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”  。
+2. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。
 3. 在提示符下，键入以下命令重置整个群集，并删除所有数据、元数据和控制器设置：
    
     `Reset-HcsFactoryDefault`
@@ -148,7 +148,7 @@ ms.locfileid: "60505942"
 
 **问：** 如何判断控制器是否已重新启动或关闭？
 
-**答：** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。  控制器重启和关闭操作也会记录在活动日志中。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
+**答：** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。 控制器重启和关闭操作也会记录在活动日志中。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
 
 **问：** 控制器故障转移是否对 I/O 造成任何影响？
 

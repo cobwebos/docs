@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787176"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888135"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用发送对 HTTP 或 HTTPS 终结点的传出调用
 
@@ -40,7 +40,7 @@ ms.locfileid: "74787176"
 
 此内置触发器对终结点的指定 URL 进行 HTTP 调用并返回响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在 "**选择操作**" 下的 "搜索" 框中，输入 "http" 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP**触发器。
 
@@ -48,7 +48,7 @@ ms.locfileid: "74787176"
 
    此示例将触发器重命名为 "HTTP 触发器"，以使该步骤具有更具描述性的名称。 此外，该示例稍后会添加 HTTP 操作，并且这两个名称必须是唯一的。
 
-1. 提供要包含在对目标终结点的调用中的[HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)的值。 为希望触发器检查目标终结点的频率设置重复周期。
+1. 提供要包含在对目标终结点的调用中的[HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)的值。 为希望触发器检查目标终结点的频率设置重复周期。
 
    如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "74787176"
 
 此内置操作对终结点的指定 URL 进行 HTTP 调用并返回响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
    此示例使用 HTTP 触发器作为第一步。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74787176"
 
    此示例将操作重命名为 "HTTP action"，以使该步骤具有更具描述性的名称。
 
-1. 提供要包含在对目标终结点的调用中的[HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)的值。
+1. 提供要包含在对目标终结点的调用中的[HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)的值。
 
    如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
@@ -138,21 +138,21 @@ ms.locfileid: "74787176"
 
 有关触发器和操作参数的详细信息，请参阅以下部分：
 
-* [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>输出详细信息
 
 下面是有关 HTTP 触发器或操作的输出的详细信息，返回以下信息：
 
-| 属性名称 | Type | 描述 |
+| 属性名称 | 类型 | Description |
 |---------------|------|-------------|
 | headers | 对象 | 请求中的标头 |
 | body | 对象 | JSON 对象 | 具有来自请求的正文内容的对象 |
 | 状态代码 | int | 请求的状态代码 |
 |||
 
-| 状态代码 | 描述 |
+| 状态代码 | Description |
 |-------------|-------------|
 | 200 | 确定 |
 | 202 | 已接受 |

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 58278e241df3d9242c1cb3ad5d6e931c9c4ca701
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150912"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894682"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -40,34 +40,34 @@ ms.locfileid: "74150912"
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda CloudGen 防火墙 |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[配置指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
-| 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |支持 |[配置指南*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
-| Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |支持 |支持 |
+| Check Point |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |受支持 |[配置指南*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
+| Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |受支持 |受支持 |
 | Cisco | CSR | RouteBased： IOS-XE 16.10 | （未测试） | [配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |支持 |支持 |
-| Cisco |Meraki |不适用 |不兼容 |不兼容 |
+| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |受支持 |受支持 |
+| Cisco |Meraki |N/A |不兼容 |不兼容 |
 | Cisco | vEdge （Viptela OS） | 18.4.0 （主动/被动模式）<br><br>19.2 （主动/主动模式） | 不兼容 |  [手动配置（主动/被动）](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud 云中配置（主动/主动）](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 | （未测试） |[配置指南](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
-| Hillstone Networks | 下一代防火墙 (NGFW) | 5.5R7  | （未测试） | [配置指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
+| Hillstone 网络 | 下一代防火墙（NGFW） | 5.5 r7  | （未测试） | [配置指南](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL 系列 |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[配置指南](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |不兼容 |
-| Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |ISG |ScreenOS 6.3 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |SSG |ScreenOS 6.2 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |MX |JunOS 12.x|支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
-| Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |支持 |
-| 打开系统 AG |任务控制安全网关 |不适用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
-| Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |支持 |[配置指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Juniper |SRX |PolicyBased：JunOS 10.2<br>Routebased：JunOS 11.4 |受支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |J 系列 |PolicyBased：JunOS 10.4r9<br>RouteBased：JunOS 11.4 |受支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |ISG |ScreenOS 6.3 |受支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |SSG |ScreenOS 6.2 |受支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |MX |JunOS 12.x|受支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
+| Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |受支持 |
+| 打开系统 AG |任务控制安全网关 |N/A |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
+| Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |受支持 |[配置指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium （开发人员） | VyOS | VyOS 1.2。2 | （未测试） | [配置指南](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Next Generation UTM（NU 系列） | 9.0.1.3 | 不兼容 | [配置指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不兼容 |[配置指南](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG 下一代防火墙 | XG v17 | （未测试） | [配置指南](https://community.sophos.com/kb/127546)<br><br>[配置指南 - 多个 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | （未测试） | [配置指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未测试） | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347)
-| WatchGuard |All |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
-| Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v4.32+ | （未测试） | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br><br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
+| WatchGuard |所有 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v 4.32 + | （未测试） | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br><br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >
@@ -143,7 +143,7 @@ ms.locfileid: "74150912"
 | SA 生存期（时间）            |3,600 秒  |27,000 秒                               |
 | SA 生存期（字节数）           |102,400,000 KB | -                                           |
 | 完全向前保密 (PFS) |否             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
-| 死对等体检测 (DPD)     |不支持  |支持                                    |
+| 死对等体检测 (DPD)     |不支持  |受支持                                    |
 
 
 ### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec 安全关联（IKE 快速模式 SA）产品/服务
@@ -154,7 +154,7 @@ ms.locfileid: "74150912"
 
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |无         |
+| 第 |GCM AES256    |GCM (AES256)      |无         |
 | 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
@@ -165,29 +165,29 @@ ms.locfileid: "74150912"
 
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |无         |
+| 第 |GCM AES256    |GCM (AES256)      |无         |
 | 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
 | 5 |AES128        |SHA1              |无         |
 | 6 |3DES          |SHA256            |无         |
 | 7 |DES           |SHA1              |无         |
-| 8 |AES256        |SHA1              |1            |
+| 8 |AES256        |SHA1              |第            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
-| 11|AES128        |SHA1              |1            |
+| 11|AES128        |SHA1              |第            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
-| 14|3DES          |SHA1              |1            |
+| 14|3DES          |SHA1              |第            |
 | 15|3DES          |SHA1              |2            |
 | 16|3DES          |SHA256            |2            |
-| 17|AES256        |SHA256            |1            |
+| 17|AES256        |SHA256            |第            |
 | 18|AES256        |SHA256            |2            |
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
 | 22|AES128        |SHA256            |无         |
-| 23|AES128        |SHA256            |1            |
+| 23|AES128        |SHA256            |第            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |

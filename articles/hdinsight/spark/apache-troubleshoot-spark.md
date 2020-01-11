@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018401"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894292"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -21,11 +21,11 @@ ms.locfileid: "71018401"
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何在群集上使用 Apache Ambari 配置 Apache Spark 应用程序？
 
-可以优化 Spark 配置值，帮助避免 Apache Spark 应用程序`OutofMemoryError`异常。 以下步骤显示了 Azure HDInsight 中的默认 Spark 配置值：
+可以优化 Spark 配置值，帮助避免 Apache Spark 应用程序 `OutofMemoryError` 异常。 以下步骤显示 Azure HDInsight 中的默认 Spark 配置值：
 
-1. 以群集凭据登录到`https://CLUSTERNAME.azurehdidnsight.net` Ambari。 初始屏幕显示 "概述" 仪表板。 HDInsight 3.6 与4.0 之间略有不同。
+1. 在 `https://CLUSTERNAME.azurehdidnsight.net` 中，用你的群集凭据登录到 Ambari。 初始屏幕显示 "概述" 仪表板。 HDInsight 3.6 与4.0 之间略有不同。
 
-1. 导航到**custom-spark2-defaults** > **配置。**
+1. 导航到**custom-spark2-defaults** > **配置**。
 
     ![选择“配置”选项卡](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "71018401"
 
 1. 将值设置为建议的设置。 建议为此设置使用值 **2048m**。
 
-1. 保存值，并保存配置。 选择**保存**。
+1. 保存值，并保存配置。 选择“保存”。
 
     ![将值更改为 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -111,6 +111,6 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

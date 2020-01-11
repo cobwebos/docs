@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 262afd00428c61d828837fd4692fd4fe110448c8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931807"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893321"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -24,7 +24,7 @@ ms.locfileid: "74931807"
 > * [当前版本](connector-amazon-redshift.md)
 
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -55,15 +55,15 @@ ms.locfileid: "74931807"
 
 Amazon Redshift 链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AmazonRedshift** | 是 |
-| 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
+| server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否，默认值为 5439 |
 | 数据库 |Amazon Redshift 数据库名称。 |是 |
 | username |有权访问数据库的用户的名称。 |是 |
 | password |用户帐户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -97,11 +97,11 @@ Amazon Redshift 链接的服务支持以下属性：
 
 若要从 Amazon Redshift 复制数据，支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **AmazonRedshiftTable** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 为新的工作负荷使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -132,11 +132,11 @@ Amazon Redshift 链接的服务支持以下属性：
 
 要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动源部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AmazonRedshiftSource** | 是 |
-| 查询 |使用自定义查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“tableName”） |
-| redshiftUnloadSettings | 使用 Amazon Redshift UNLOAD 时的属性组。 | No |
+| query |使用自定义查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“tableName”） |
+| redshiftUnloadSettings | 使用 Amazon Redshift UNLOAD 时的属性组。 | 否 |
 | s3LinkedServiceName | 表示通过指定“AmazonS3”类型的链接服务名称，将用作临时存储的 Amazon S3。 | 是（如果使用的是 UNLOAD） |
 | bucketName | 指示 S3 Bucket 以存储临时数据。 如果未提供，数据工厂服务将自动生成它。  | 是（如果使用的是 UNLOAD） |
 
@@ -219,21 +219,21 @@ Amazon Redshift 链接的服务支持以下属性：
 | Amazon Redshift 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |字符串 |
-| CHAR |字符串 |
+| BOOLEAN |String |
+| CHAR |String |
 | DATE |日期/时间 |
 | DECIMAL |Decimal |
-| 双精度 |Double |
+| DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
-| REAL |单一 |
+| real |单一 |
 | SMALLINT |Int16 |
-| TEXT |字符串 |
+| TEXT |String |
 | TIMESTAMP |日期/时间 |
-| VARCHAR |字符串 |
+| VARCHAR |String |
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

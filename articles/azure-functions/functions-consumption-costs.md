@@ -3,12 +3,12 @@ title: 估计 Azure Functions 的消耗计划成本
 description: 了解如何更好地估计在 Azure 中的消耗计划中运行函数应用时可能会产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613052"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890319"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估计消耗计划成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "75613052"
 
 你选择了最能实现函数性能和成本要求的计划。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
-本文仅处理消耗计划，因为此计划会产生可变成本。 
+本文仅处理消耗计划，因为此计划会产生可变成本。 本文将取代[消耗计划成本计费常见问题解答](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)一文。
 
 Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 Durable Functions 时的成本注意事项的详细信息，请参阅[Durable Functions 计费](./durable/durable-functions-billing.md)。
 

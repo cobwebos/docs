@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129318"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888987"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "74129318"
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>从笔记本如何实现访问 Azure Data Lake Storage？ 
 
-执行以下步骤：
+执行以下步骤:
 1. 在 Azure Active Directory (Azure AD) 中预配服务主体并记录其密钥。
 1. 在 Data Lake Storage 中，将所需的权限分配给服务主体。
 1. 若要在 Data Lake Storage 中访问文件，请使用笔记本中的服务主体凭据。
@@ -44,7 +44,7 @@ ms.locfileid: "74129318"
 
 #### <a name="error-message"></a>错误消息
 
-“该订阅未注册为使用命名空间‘Microsoft.Databricks’。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。 （代码：MissingSubscriptionRegistration）”
+“该订阅未注册为使用命名空间‘Microsoft.Databricks’。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found 。 （代码：MissingSubscriptionRegistration）”
 
 #### <a name="solution"></a>解决方案
 
@@ -67,15 +67,15 @@ ms.locfileid: "74129318"
 
 * 如果电子邮件域名在 Azure AD 中被分配给多个目录，也可能会发生此错误。 若要解决此问题，可在包含订阅和 Databricks 工作区的目录中创建新用户。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
 
-    b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
+    b.保留“数据库类型”设置，即设置为“共享”。 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
     
     c. 授予新用户 Databricks 工作区资源的“参与者”角色。
     
-    d. 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
+    d.单击“下一步”。 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
     
-    e. 以此用户的身份启动 Databricks 工作区。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 以此用户的身份启动 Databricks 工作区。
 
 
 ### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>问题：你的帐户 {电子邮件} 未在 Databricks 中注册 
@@ -92,14 +92,14 @@ ms.locfileid: "74129318"
 
 #### <a name="solution"></a>解决方案
 
-Databricks 群集为每个节点使用一个公共 IP 地址。 如果订阅已使用其所有的公共 IP，则应[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”。 在“详细信息”中，请求增加公共 IP 地址配额。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
+Databricks 群集为每个节点使用一个公共 IP 地址。 如果订阅已使用其所有的公共 IP，则应[请求增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”。 在“详细信息”中，请求增加公共 IP 地址配额。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>问题：设置群集时，第二种类型的云提供程序启动失败 (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>错误消息
 
 “云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。
-Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。
+Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found 。
 
 #### <a name="solution"></a>解决方案
 

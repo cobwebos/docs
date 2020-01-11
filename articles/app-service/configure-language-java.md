@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671911"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889357"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Windows Java 应用
 
@@ -315,7 +315,7 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 ### <a name="runtime-support"></a>运行时支持
 
-如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](/azure/azure-supportability/how-to-create-azure-support-request)。
+如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
 ## <a name="next-steps"></a>后续步骤
 

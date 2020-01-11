@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442894"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889452"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "75442894"
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到“超出配额”的错误。 我应该怎么做？ 
 
-需要[请求内核](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+需要[请求内核](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>对 AKS 而言，每个节点设置的最大 Pod 是多少？
 
@@ -78,7 +78,7 @@ ms.locfileid: "75442894"
 当群集由于多种原因进入失败状态时，将发生此错误。 在重试之前的失败操作之前，请执行以下步骤以解决群集失败状态：
 
 1. 在群集超出 `failed` 状态之前，`upgrade` 和 `scale` 操作都不会成功。 常见的根本问题和解决方法包括：
-    * 缩放的**计算（CRP）配额不足**。 若要解决此问题，请先将群集缩放回配额内的稳定目标状态。 然后，执行以下[步骤来请求计算配额增加](../azure-supportability/resource-manager-core-quotas-request.md)，然后再尝试再次增加超出初始配额限制。
+    * 缩放的**计算（CRP）配额不足**。 若要解决此问题，请先将群集缩放回配额内的稳定目标状态。 然后，执行以下[步骤来请求计算配额增加](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然后再尝试再次增加超出初始配额限制。
     * 缩放具有高级网络的群集和**子网（网络）资源不足**。 若要解决此问题，请先将群集缩放回配额内的稳定目标状态。 然后[，执行以下步骤，请求增加资源配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，然后再尝试再次增加超出初始配额限制。
 2. 解决升级失败的根本原因后，群集应处于 "已成功" 状态。 验证成功状态后，重试原始操作。
 

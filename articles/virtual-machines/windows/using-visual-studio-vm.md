@@ -3,7 +3,7 @@ title: 在 Azure 虚拟机上使用 Visual Studio
 description: 在 Azure 虚拟机上使用 Visual Studio。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
-ms.author: phillee
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851394"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895950"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -35,7 +35,7 @@ ms.locfileid: "74851394"
 
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019：最新版本（版本16.4）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本16.4。0    |
+| [Visual Studio 2019：最新版本（版本16.4）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.4.0    |
 | [Visual Studio 2019： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise、Community | 版本 16.0.9    |
 | [Visual Studio 2017：最新版本（版本15.9）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise、Community | 版本 15.9.17   |
 | [Visual Studio 2017： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise、Community | 版本 15.0.27  |

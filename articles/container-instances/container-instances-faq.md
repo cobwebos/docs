@@ -3,13 +3,13 @@ title: 常见问题
 description: 与 Azure 容器实例服务相关的常见问题的解答
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484132"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888016"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题
 
@@ -83,9 +83,9 @@ Azure 容器实例旨在作为无服务器容器点播服务，因此，我们�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>自定义 VNet 中运行的实例可使用哪些功能？
 
-你可以在所选的 Azure 虚拟网络中部署容器组，并将专用 Ip 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 在虚拟网络中部署容器组目前处于预览阶段，此功能的某些方面可能会在正式发布（GA）之前更改。 请参阅[预览版限制](container-instances-vnet.md#preview-limitations)，了解更新的信息。
+你可以在所选的[Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 ip 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 将容器组部署到虚拟网络当前适用于 Azure 区域的一个子集中的生产工作负荷。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 ### <a name="when-does-the-meter-start-running"></a>计量器何时开始运行？
 

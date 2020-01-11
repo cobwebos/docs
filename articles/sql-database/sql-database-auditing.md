@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780192"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896323"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -86,8 +86,11 @@ ms.locfileid: "75780192"
     ![“导航”窗格][3]
 
 5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区，或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >如果客户希望为服务器或数据库级审核事件配置不可变的日志存储，应遵循 [Azure 存储提供的说明] （ https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+  
+  > [!WARNING]
    > 根据引入速率，启用 Log Analytics 审核会产生成本。 请注意，使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)时的关联成本，或考虑将审核日志存储在 Azure 存储帐户中。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)

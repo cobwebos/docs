@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151657"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895977"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "74151657"
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>将 VPN 网关设置为“主动-主动”是否需要额外费用？
 
-不能。 
+不。 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>我的跨界连接选项有哪些？
 
@@ -48,7 +48,7 @@ ms.locfileid: "74151657"
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>站点到站点连接和点到站点连接的区别是什么？
 
-**站点到站点**（IPsec/IKE VPN 隧道）配置是指本地位置与 Azure 之间的配置。 这意味着，可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由和权限的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件设备或软件设备），该设备必须部署在网络边缘。 若要创建此类连接，必须具有面向外部的 IPv4 地址。
+**站点到站点**（IPsec/IKE VPN 隧道）配置是指本地位置与 Azure 之间的配置。 这意味着，可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由和权限的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件设备或软件设备），该设备必须部署在网络边缘。 若要创建此类型的连接，必须有一个面向外部的 IPv4 地址。
 
 **点到站点**（基于 SSTP 的 VPN）配置允许从任何位置的单台计算机连接到虚拟网络中的任何内容。 它使用 Windows 内置的 VPN 客户端。 在进行点到站点配置时，需要安装证书和 VPN 客户端配置包，其中包含的设置允许计算机连接到虚拟网络中的任何虚拟机或角色实例。 此连接适用于需要连接到虚拟网络但该虚拟网络不在本地的情况。 无法访问 VPN 硬件或面向外部的 IPv4 地址（二者是进行站点到站点连接所必需的）时，它也是一个很好的选项。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74151657"
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN 网关是否为虚拟网关？
 
-VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络和本地位置发送加密的流量。 还可使用 VPN 网关在虚拟网络之间发送流量。 在创建 VPN 网关时，可以使用 -GatewayType 值 'Vpn'。 有关详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
+VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络和本地位置发送加密的流量。 还可使用 VPN 网关在虚拟网络间发送流量。 在创建 VPN 网关时，可以使用 -GatewayType 值 'Vpn'。 有关详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
 ### <a name="what-is-a-policy-based-static-routing-gateway"></a>什么是基于策略的（静态路由）网关？
 
@@ -69,7 +69,7 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 基于路由的网关可实施基于路由的 VPN。 基于路由的 VPN 使用 IP 转发或路由表中的“路由”将数据包引导到相应的隧道接口中。 然后，隧道接口会加密或解密出入隧道的数据包。 基于路由的 VPN 的策略或流量选择器配置为任意到任意（或通配符）。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>能否将基于策略的 VPN 网关更新为基于路由的？
-不能。 Azure Vnet 网关类型不能从基于策略更改为基于路由或其他方式。 必须先删除该网关，然后再重新创建，此过程需时约 60 分钟。 不会保留网关的 IP 地址，也不会保留预共享密钥 (PSK)。
+不。 Azure Vnet 网关类型不能从基于策略更改为基于路由或其他方式。 必须先删除该网关，然后再重新创建，此过程需时约 60 分钟。 不会保留网关的 IP 地址，也不会保留预共享密钥 (PSK)。
 1. 删除与要删除的网关相关联的任何连接。
 1. 删除网关：
 1. [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -79,21 +79,21 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
 
-可以。 网关子网包含虚拟网络网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为“GatewaySubnet”才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
+可以。 网关子网包含虚拟网络网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为 'GatewaySubnet' 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
 
-创建网关子网时，需指定子网包含的 IP 地址数。 网关子网中的 IP 地址分配到网关服务。 某些配置相对于其他配置需要将更多 IP 地址分配到网关服务。 需确保网关子网包含足够多的 IP 地址，以便应对将来的业务增长以及可能会添加的新连接配置。 因此，尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 和 /25 等）的网关子网。 查看要创建的配置的要求，并验证所拥有的网关子网是否可满足这些要求。
+创建网关子网时，请指定子网包含的 IP 地址数。 网关子网中的 IP 地址分配到网关服务。 某些配置相对于其他配置需要将更多 IP 地址分配到网关服务。 需确保网关子网包含足够多的 IP 地址，以便应对将来的业务增长以及可能会添加的新连接配置。 因此，尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 和 /25 等）的网关子网。 查看要创建的配置的要求，验证网关子网是否会满足这些要求。
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>是否可以将虚拟机或角色实例部署到网关子网？
 
-不能。
+不。
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>能否先获得 VPN 网关 IP 地址，再创建网关？
 
-不能。 必须先创建网关，才能获得 IP 地址。 如果删除再重新创建 VPN 网关，IP 地址将更改。
+不。 必须先创建网关，才能获得 IP 地址。 如果删除再重新创建 VPN 网关，IP 地址将更改。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>能否为 VPN 网关请求静态公共 IP 地址？
 
-不能。 仅支持动态 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 VPN 网关 IP 地址只在删除或重新创建网关时更改。 VPN 网关公共 IP 地址不会因为重新调整大小、重置或其他 VPN 网关内部维护/升级而更改。 
+不。 仅支持动态 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 VPN 网关 IP 地址只在删除或重新创建网关时更改。 VPN 网关公共 IP 地址不会因为重新调整大小、重置或其他 VPN 网关内部维护/升级而更改。 
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN 隧道如何进行身份验证？
 
@@ -122,7 +122,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 可以。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
-### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>是否可以在 Azure 中设置自己的 VPN 服务器，并使用它连接到本地网络？
+### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
 能。可以在 Azure 中部署自己的 VPN 网关或服务器，可以从 Azure 市场部署，也可以通过创建自己的 VPN 路由器来部署。 需要在虚拟网络中配置用户定义的路由，确保流量在本地网络和虚拟网络子网之间正确路由。
 
@@ -140,7 +140,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>选择 VPN 设备时应考虑什么？
 
-我们在与设备供应商合作的过程中验证了一系列的标准站点到站点 VPN 设备。 可在[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)一文中找到已知兼容的 VPN 设备及其相应的配置说明/示例和设备规范的列表。 设备系列中列为已知兼容设备的所有设备都应适用于虚拟网络。 若要获取配置 VPN 设备的帮助，请参考对应于相应设备系列的设备配置示例或链接。
+我们在与设备供应商合作的过程中验证了一系列的标准站点到站点 VPN 设备。 可在[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)一文中找到已知兼容的 VPN 设备及其相应的配置说明/示例和设备规范的列表。 设备系列中列为已知兼容设备的所有设备都应适用于虚拟网络。 若要获取配置 VPN 设备的帮助，请参考对应于各设备系列的设备配置示例或链接。
 
 ### <a name="where-can-i-find-vpn-device-configuration-settings"></a>在哪里可以找到 VPN 设备配置设置？
 
@@ -227,7 +227,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>如果我的虚拟机位于使用跨界连接的虚拟网络中，从我的 VM 流出的所有流量是否都会经过该连接？
 
-不能。 只有其目标 IP 包含在指定虚拟网络本地网络 IP 地址范围内的流量才会通过虚拟网络网关。 流量有一个目标 IP 位于虚拟网络中，并将保留在虚拟网络中。 其他流量通过负载均衡器发送到公共网络，或者在使用强制隧道的情况下通过 Azure VPN 网关发送。
+不。 只有其目标 IP 包含在指定虚拟网络本地网络 IP 地址范围内的流量才会通过虚拟网络网关。 流量有一个目标 IP 位于虚拟网络中，并将保留在虚拟网络中。 其他流量通过负载均衡器发送到公共网络，或者在使用强制隧道的情况下通过 Azure VPN 网关发送。
 
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>如何排查到 VM 的 RDP 连接的问题
 

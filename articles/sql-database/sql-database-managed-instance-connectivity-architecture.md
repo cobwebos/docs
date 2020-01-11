@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7cb3b4d6b490d09d14046465e0fc58526be5b045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433849"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894820"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中的托管实例的连接体系结构
 
@@ -66,7 +66,7 @@ Microsoft 管理和部署服务在虚拟网络外部运行。 托管实例和 Mi
 
 ![虚拟群集的连接体系结构](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-客户端使用格式 `<mi_name>.<dns_zone>.database.windows.net`的主机名连接到托管实例。 虽然此主机名在公共域名系统（DNS）区域中注册并可公开解析，但它会解析为专用 IP 地址。 创建群集时，会自动生成 `zone-id`。 如果新创建的群集托管辅助托管实例，则它会与主群集共享其区域 ID。 有关详细信息，请参阅[使用自动故障转移组启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)。
+客户端使用格式 `<mi_name>.<dns_zone>.database.windows.net`的主机名连接到托管实例。 虽然此主机名在公共域名系统（DNS）区域中注册并可公开解析，但它会解析为专用 IP 地址。 创建群集时，会自动生成 `zone-id`。 如果新创建的群集托管辅助托管实例，则它会与主群集共享其区域 ID。 有关详细信息，请参阅[使用自动故障转移组启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)。
 
 此专用 IP 地址属于托管实例的内部负载均衡器。 负载均衡器会将流量定向到托管实例的网关。 由于可以在同一群集中运行多个托管实例，因此网关使用托管实例的主机名将流量重定向到正确的 SQL 引擎服务。
 

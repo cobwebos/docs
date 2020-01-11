@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6f0aa8a08b8a502edbd15d3ede157b78a13b8588
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7527cd59ef812c108cc53f84ad19f4d2cff9ec5e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479353"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893563"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 Vm 上安装 AMD GPU 驱动程序
 
@@ -37,7 +37,7 @@ ms.locfileid: "75479353"
 
 1. 通过远程桌面连接到每个 NVv4 系列 VM。
 
-1. 下载、解压缩并安装 Windows 操作系统支持的驱动程序。
+1. 下载并提取驱动程序安装程序文件。 导航到文件夹并运行 "setup.exe"，以安装 Windows 操作系统支持的驱动程序。
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 

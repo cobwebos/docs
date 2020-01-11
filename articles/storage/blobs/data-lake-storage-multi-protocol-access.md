@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769806"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896110"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多协议访问
 
@@ -52,12 +52,12 @@ Data Lake Storage 上的多协议访问使你能够将更多 Blob 存储功能�
 |Blob Sdk |正式发布|
 |[PowerShell （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |正式发布|
 |[CLI （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |正式发布|
+|[通过 Azure 事件网格通知](data-lake-storage-events.md)|正式发布|
 |具有文件系统语义的 Blob Sdk （[.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java)）|预览|
 |[具有文件系统语义的 PowerShell](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|预览|
 |[具有文件系统语义的 CLI](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|预览|
 |[诊断日志](../common/storage-analytics-logging.md)| 预览|
 |[生命周期管理策略](storage-lifecycle-management-concepts.md)| 预览|
-|[通过 Azure 事件网格通知](data-lake-storage-events.md)|预览|
 |[存档访问层](storage-blob-storage-tiers.md)| 预览|
 |[blobfuse](storage-how-to-mount-container-linux.md)|尚不支持|
 |[不可变存储](storage-blob-immutable-storage.md)|尚不支持|

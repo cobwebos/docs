@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: d1def81a1f5d6b1b3a6d64d2d302ceb9d5f17dfb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 40456b2a756d5ae2241b54ff65f675004c22f0a2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769500"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890349"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -682,7 +682,7 @@ public class HttpTriggerJava {
 
 ### <a name="using-route-parameters"></a>使用路由参数
 
-路由参数定义了函数的 `route` 模式适用于每个绑定。 例如，如果某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
+定义函数 `route` 模式的路由参数可用于每个绑定。 例如，如果某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
 
 下面的配置演示如何将 `{id}` 参数传递到绑定的 `rowKey`。
 
@@ -832,7 +832,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
 
-* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)以及[使用客户端标识](#working-with-client-identities)。
+* 打开函数应用的“应用服务身份验证/授权”。 利用应用服务平台，你可以使用 Azure Active Directory （AAD）和几个第三方标识提供者来对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)以及[使用客户端标识](#working-with-client-identities)。
 
 * 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 为传入请求提供了各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
 
@@ -868,7 +868,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
+如果使用 HTTP 触发器的函数未在230秒内完成， [Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 ## <a name="output"></a>输出
 
@@ -923,7 +923,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 |dynamicThrottlesEnabled|true<sup>\*</sup>|启用时，将为此设置将导致请求处理管道，以定期检查系统性能计数器类似连接/线程/进程/内存/CPU 等，并通过内置的高阈值 (80%)，如果有任何这些计数器请求拒绝与 429“太忙”响应，直至恢复到正常水平的计数器。<br/><sup>\*</sup>消耗计划中的默认值为 `true`。 专用计划中的默认值为 `false`。|
 |hsts|未启用|将 `isEnabled` 设置为 `true`时，将强制执行[.Net Core 的 HTTP 严格传输安全性（HSTS）行为](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如[`HstsOptions` 类](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将[`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)属性设置为10天。 `hsts` 支持的属性包括： <table><tr><th>属性</th><th>Description</th></tr><tr><td>excludedHosts</td><td>不添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了严格传输-安全标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义严格传输安全标头的最大期限参数的字符串。</td></tr><tr><td>preload</td><td>指示是否启用了严格传输安全标头的预载参数的布尔值。</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|并行执行的 HTTP 函数的最大数目。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，你可能有一个 HTTP 函数使用大量系统资源（内存/cpu/套接字），因此并发性过高时将导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为100。 专用计划的默认值为未绑定（`-1`）。|
-|maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/>消耗计划<sup>\*</sup>\The 默认值为200。 专用计划的默认值为未绑定（`-1`）。|
+|maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/><sup>\*</sup>消耗计划的默认值为200。 专用计划的默认值为未绑定（`-1`）。|
 |routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |
 
 

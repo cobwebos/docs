@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747261"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895832"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -29,7 +29,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 你可以使用[活动日志警报](../azure-monitor/platform/platform-logs-overview.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 你可以使用[活动日志警报](../service-health/alerts-activity-log-service-notifications.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
 - 通知完成后，将提供一个*自助服务窗口*。 在此窗口中，可以查询受影响的虚拟机，并根据自己的计划需求开始维护。 自助服务时段通常约为35天。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 

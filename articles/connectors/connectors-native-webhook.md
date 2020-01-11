@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787040"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888118"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP webhook 创建和运行自动基于事件的工作流
 
@@ -50,7 +50,7 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 * 已部署的终结点或 API 的 URL，该 URL 支持[逻辑应用中的 webhook](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)订阅和取消订阅模式，或逻辑应用中的 webhook 操作适当的[webhook 操作](../logic-apps/logic-apps-create-api-app.md#webhook-actions)
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 * 要在其中等待目标终结点上的特定事件的逻辑应用。 若要开始使用 HTTP Webhook 触发器，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP Webhook 操作，请使用所需的任何触发器启动逻辑应用。 此示例使用 HTTP 触发器作为第一步。
 
@@ -58,7 +58,7 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 此内置触发器向指定的服务注册一个回调 URL，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，触发器将触发，并立即运行逻辑应用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框中，输入 "http webhook" 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP Webhook**触发器。
 
@@ -86,7 +86,7 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 此内置操作向指定的服务注册回调 URL，暂停逻辑应用的工作流，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，操作会继续运行逻辑应用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
    此示例使用 HTTP Webhook 触发器作为第一步。
 
@@ -100,7 +100,7 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
    此示例将操作重命名为 "HTTP Webhook 操作"，以使该步骤具有更具描述性的名称。
 
-1. 为 HTTP Webhook 操作参数提供值，这些参数类似于要用于订阅和取消订阅调用的[Http webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)，例如：
+1. 为 HTTP Webhook 操作参数提供值，这些参数类似于要用于订阅和取消订阅调用的[Http webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)，例如：
 
    ![输入 HTTP Webhook 操作参数](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,20 +114,20 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器和操作参数的详细信息，请参阅[HTTP Webhook 参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)。
+有关触发器和操作参数的详细信息，请参阅[HTTP Webhook 参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)。
 
 ### <a name="output-details"></a>输出详细信息
 
 下面是有关从 HTTP Webhook 触发器或操作返回的输出的详细信息：
 
-| 属性名称 | Type | 描述 |
+| 属性名称 | 类型 | Description |
 |---------------|------|-------------|
 | headers | 对象 | 请求中的标头 |
 | body | 对象 | JSON 对象 | 具有来自请求的正文内容的对象 |
 | 状态代码 | int | 请求的状态代码 |
 |||
 
-| 状态代码 | 描述 |
+| 状态代码 | Description |
 |-------------|-------------|
 | 200 | 确定 |
 | 202 | 已接受 |

@@ -2,14 +2,14 @@
 title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442264"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887950"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -24,7 +24,7 @@ ms.locfileid: "75442264"
 * 容器通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 与本地资源通信
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 虚拟网络的容器组部署通常仅适用于以下区域中的生产工作负荷：**美国东部、美国中南部和美国西部 2**。 在此功能可用的其他区域中，虚拟网络部署目前处于预览状态，在不久的将来计划有正式的可用性。 需同意[补充使用条款][terms-of-use]才可使用预览版。 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>虚拟网络部署限制
@@ -33,11 +33,7 @@ ms.locfileid: "75442264"
 
 * 若要将容器组部署到某个子网，该子网不能包含其他任何资源类型。 将容器组部署到现有子网之前，请从该子网中删除所有现有资源，或创建新的子网。
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
-* 由于涉及到其他网络资源，将容器组部署到虚拟网络通常是比部署标准容器实例要慢一些。
-
-## <a name="preview-limitations"></a>预览版限制
-
-尽管此功能处于预览阶段，但在将容器组部署到虚拟网络时有以下限制。 
+* 由于涉及到额外的网络资源，将容器组部署到虚拟网络通常比部署标准容器实例慢。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
@@ -46,8 +42,10 @@ ms.locfileid: "75442264"
 ### <a name="unsupported-networking-scenarios"></a>不支持的网络方案 
 
 * **Azure 负载均衡器**-不支持在网络容器组中的容器实例前面放置 Azure 负载均衡器
-* **虚拟网络对等互连**-如果 aci VNet 要对等互连的网络使用公共 IP 空间，VNet 对等互连将不能用于 aci。 要使对等互连工作，对等互连网络需要 RFC1918 专用 IP 空间。 此外，你当前只能将 VNet 附加到另一个 VNet
-* **虚拟网络流量路由**-不能围绕公共 ip 设置客户路由。 可以在部署了 ACI 资源的委托子网的专用 IP 空间内设置路由 
+* **虚拟网络对等互连**
+  * 如果 ACI VNet 要对等互连的网络使用公共 IP 空间，则 VNet 对 ACI 不起作用。 对等互连网络需要 RFC 1918 专用 IP 空间，VNet 对等互连才能工作。 
+  * 只能将 VNet 与另一个 VNet 联系
+* **虚拟网络流量路由**-不能围绕公共 ip 设置自定义路由。 可以在部署了 ACI 资源的委托子网的专用 IP 空间内设置路由 
 * **网络安全组**-应用于委托给 Azure 容器实例的子网的 nsg 中的出站安全规则当前未强制执行 
 * **公共 ip 或 DNS 标签**-部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 internet 公开容器
 * **内部名称解析**-不支持通过内部 Azure DNS 对虚拟网络中的 Azure 资源进行名称解析
@@ -99,7 +97,7 @@ ms.locfileid: "75442264"
 
 将容器组部署到现有虚拟网络：
 
-1. 在现有虚拟网络中创建一个子网，或者在现有子网中清空其他所有资源
+1. 在现有虚拟网络中创建子网，使用现有的已部署容器组的子网，或使用现有的子网清空*所有*其他资源
 1. 使用[az container create][az-container-create]部署容器组，并指定下列其中一项：
    * 虚拟网络名称和子网名称
    * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
@@ -115,7 +113,7 @@ ms.locfileid: "75442264"
 
 首先，部署容器组并指定新虚拟网络和子网的参数。 指定这些参数时，Azure 会创建虚拟网络和子网、将子网委托给 Azure 容器实例，并创建网络配置文件。 创建这些资源后，容器组将部署到子网。
 
-运行以下[az container create][az-container-create]命令，指定新虚拟网络和子网的设置。 你需要提供在[支持](#preview-limitations)虚拟网络中的容器组的区域中创建的资源组的名称。 此命令部署运行小型 node.js web 服务的[helloworld][aci-helloworld]容器，该容器为静态网页提供服务。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
+运行以下[az container create][az-container-create]命令，指定新虚拟网络和子网的设置。 需要提供一个资源组的名称，该资源组在虚拟网络中的容器组部署[可用](#virtual-network-deployment-limitations)的区域中创建。 此命令部署运行小型 node.js web 服务的[helloworld][aci-helloworld]容器，该容器为静态网页提供服务。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
 
 ```azurecli
 az container create \
@@ -180,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>部署到现有虚拟网络 - YAML
 
-还可以使用 YAML 文件将容器组部署到现有虚拟网络。 若要部署到虚拟网络中的子网，请到 YAML 中指定几个附加的属性：
+还可以通过使用 YAML 文件、资源管理器模板或其他编程方法（如使用 Python SDK）将容器组部署到现有虚拟网络。 若要部署到虚拟网络中的子网，请到 YAML 中指定几个附加的属性：
 
 * `ipAddress`：容器组的 IP 地址设置。
   * `ports`：要打开的端口（如果有）。
@@ -225,7 +223,7 @@ properties:
     - protocol: tcp
       port: '80'
   networkProfile:
-    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+    id: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
   osType: Linux
   restartPolicy: Always
 tags: null
@@ -263,9 +261,9 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> 如果尝试删除网络配置文件时收到错误，则允许平台2-3 天自动缓解此问题，然后重试删除操作。 如果在删除网络配置文件时仍出现问题，请[打开支持 reqest。](https://azure.microsoft.com/support/create-ticket/)
+> 如果尝试删除网络配置文件时收到错误，请在2-3 天内使平台自动缓解此问题，然后重试删除操作。 如果在删除网络配置文件时仍出现问题，请[打开支持请求](https://azure.microsoft.com/support/create-ticket/)。
 
-在此功能的初始预览版中，需要额外执行几个命令才能删除前面创建的网络资源。 如果你在本文的前面几个部分中使用示例命令创建了虚拟网络和子网，则可以使用以下脚本来删除这些网络资源。
+此功能当前需要几个附加命令来删除之前创建的网络资源。 如果你在本文的前面几个部分中使用示例命令创建了虚拟网络和子网，则可以使用以下脚本来删除这些网络资源。
 
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用之前建议的 `aci-vnet` 名称，请更新虚拟网络的名称。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
