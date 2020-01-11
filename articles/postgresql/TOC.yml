@@ -98,6 +98,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Azure AD 身份验证
               href: concepts-aad-authentication.md
+            - name: 专用链接
+              href: concepts-data-access-and-security-private-link.md
         - name: 业务连续性
           items:
             - name: 业务连续性简介
@@ -171,7 +173,7 @@
           items:
             - name: 配置选项
               href: concepts-hyperscale-configuration-options.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 单个服务器
       items:
@@ -251,6 +253,12 @@
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
+        - name: 专用链接
+          items:
+            - name: Azure 门户
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
         - name: 重新启动服务器
           items:
             - name: Azure 门户
@@ -281,7 +289,7 @@
           items:
             - name: 排查连接错误
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/postgres

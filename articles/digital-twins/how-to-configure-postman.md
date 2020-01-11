@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8c358b727a436f1951337005883b5d577119fac1
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864309"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895617"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -66,7 +66,7 @@ ms.locfileid: "75864309"
 
     选中“访问令牌”以启用 Manifest.json 中的“oauth2AllowImplicitFlow”设置。
 
-    [![公共客户端配置设置](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![公共客户端配置设置](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
 

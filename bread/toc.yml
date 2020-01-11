@@ -256,8 +256,8 @@
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
     - name: 可支持性
-      tocHref: /azure/azure-supportability/
-      topicHref: /azure/azure-supportability/
+      tocHref: /azure/azure-portal/supportability/
+      topicHref: /azure/azure-portal/supportability/
     - name: 备份
       tocHref: /azure/backup/
       topicHref: /azure/backup/

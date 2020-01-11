@@ -232,7 +232,7 @@
     - name: 企业成本视图已禁用
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: 联系支持人员
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: 示例
   items:
     - name: REST API
