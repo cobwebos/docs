@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663167"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901725"
 ---
 使用污点 Vm，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
@@ -83,7 +83,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 
 **问：** 能否为查找附加的配额？
 
-**答：** 是的，你将能够提交请求，以通过[标准配额请求过程](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)增加对污点 vm 的配额。
+**答：** 是的，你将能够提交请求，以通过[标准配额请求过程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)增加对污点 vm 的配额。
 
 
 **问：** 哪些通道支持污点 Vm？

@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: f583796fc353852ef3898e28fa96524e08cfb4ad
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414545"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901842"
 ---
 当你提交到 Azure 保留 VM 实例时，你可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm，使用情况计量分为两个不同的计量器。 有一个计算计量器，与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息，请参阅[Azure 保留 VM 实例中未包含的软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)。
 
@@ -72,7 +72,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 - **云**预订不适用于德国或中国地区的购买。
 
-- **配额不足**-作用于单个订阅的保留必须在新 RI 的订阅中具有 vCPU 配额。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 你可以[创建报价增加请求](../articles/azure-supportability/resource-manager-core-quotas-request.md)以解决此问题。
+- **配额不足**-作用于单个订阅的保留必须在新 RI 的订阅中具有 vCPU 配额。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 你可以[创建报价增加请求](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)以解决此问题。
 
 - **容量限制**-在极少数情况下，Azure 会限制购买 VM 大小子集的新保留，因为区域中的容量不足。
 
@@ -87,7 +87,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 若要购买实例：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务” > “预订”。
 1. 选择 "**添加**" 购买新的预订，然后单击 "**虚拟机**"。
 1. 输入必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
@@ -95,14 +95,14 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 如果你有 EA 协议，则可以使用 "**添加更多" 选项**快速添加其他实例。 选项不适用于其他订阅类型。
 
 
-| 字段      | 说明|
+| 字段      | Description|
 |------------|--------------|
 |订阅|用于支付预订费用的订阅。 订阅的付款方式将按预订费用收费。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或 Microsoft 客户协议，或者使用即用即付费率的单个订阅（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 将从货币承诺余额中扣除费用（如果可用），或按超额计费。 对于使用即用即付费率的订阅，将对订阅上的信用卡或发票付款方式收取费用。|    
-|作用域       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
+|范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
 |地区    |预订涵盖的 Azure 区域。|    
 |VM 大小     |VM 实例的大小。|
 |优化对象     |默认情况下选择了 VM 实例大小灵活性。 单击 "**高级设置**" 以更改实例大小的灵活性值，以将预订折扣应用于同一[VM 大小组](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)中的其他 vm。 容量优先级可以对部署优先使用数据中心容量。 它可让你在需要时启动 VM 实例，从而提供更多的信心。 仅当预留范围为单个订阅时，容量优先级才可用。 |
-|术语        |一年或三年。|
+|条款        |一年或三年。|
 |数量    |预订中购买的实例数。 数量是可以获得计费折扣的正在运行的 VM 实例数。 例如，如果你在美国东部运行10个 Standard_D2 Vm，则可将数量指定为10，以最大程度地提高所有正在运行的 Vm 的权益。 |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
@@ -136,9 +136,9 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -146,7 +146,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
     - [什么是 Azure 预订？](../articles/billing/billing-save-compute-costs-reservations.md)
     - [管理 Azure 中的预留](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [了解如何应用预留折扣](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [了解预留折扣的应用方式](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [了解采用即用即付费率的订阅的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [了解企业合约的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [预留未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)

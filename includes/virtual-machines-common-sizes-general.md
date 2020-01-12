@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 5d652eb3bad72bded8e85a6ac841aae7a9c82a40
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e66314e06aa87a01dcd2a3ff0a51ae86082173e3
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75663148"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75904452"
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数以及存储吞吐量的相关信息。
 
@@ -29,7 +29,7 @@ ms.locfileid: "75663148"
 
   D 系列用例示例包括企业级应用程序、关系数据库、内存中缓存和分析。
 
-- Dav4 系列和 Dasv4 系列是在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452 处理器的新大小，具有多线程配置的多线程配置，其中最多有 256 gb l3 缓存，这三个三个核心专用于运行其常规用途的客户选项。 Dav4 系列和 Dasv4 具有与 D & Dsv3 系列相同的内存和磁盘配置。
+- Dav4 系列和 Dasv4 系列是在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452 处理器的新大小，具有高达 256 MB l3 缓存，专用于 8 GB 的 l3 缓存到每8个内核，从而提高了用于运行常规用途工作负载的客户选项。 Dav4 系列和 Dasv4 具有与 D & Dsv3 系列相同的内存和磁盘配置。
   
 ## <a name="b-series"></a>B 系列
 

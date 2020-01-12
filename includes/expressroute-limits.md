@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 45d34297bf37a6e46bc57e95ff49def49051e32e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67622084"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901838"
 ---
-| Resource | 默认/最大限制 |
+| 资源 | 默认值/最大限制 |
 | --- | --- |
 | 每个订阅的 ExpressRoute 线路数 |10 |
 | 每个订阅每个区域的 ExpressRoute 线路，Azure 资源管理器 |10 |
@@ -42,4 +42,7 @@ ms.locfileid: "67622084"
 | 40 Gbps * |10 |100 |
 | 100 Gbps * |10 |100 |
 
-**100 Gbps ExpressRoute 直接*
+**100 Gbps ExpressRoute 直接*连接
+
+> [!NOTE]
+> Global Reach 连接数与每个 ExpressRoute 线路的虚拟网络连接数的限制。 例如，一条 10 Gbps 高级线路允许 5 Global Reach 连接，95连接到 ExpressRoute 网关或 95 Global Reach 连接，5次连接到 ExpressRoute 网关或连接到100连接限制的任何其他组合线路。

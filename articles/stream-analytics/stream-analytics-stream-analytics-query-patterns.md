@@ -1,20 +1,21 @@
 ---
 title: Azure 流分析中的常见查询模式
-description: 本文介绍了在 Azure 流分析作业中很有用的多个常见查询模式和设计。
-author: jseb225
-ms.author: jeanb
+description: 本文介绍了几种可在 Azure 流分析作业中发挥作用的常见查询模式和设计。
+services: stream-analytics
+author: rodrigoaatmicrosoft
+ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/16/2019
-ms.openlocfilehash: 61f9e128fa9299a743012e18882fe32591fdd3f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 12/18/2019
+ms.openlocfilehash: 54d1b640a4067cf65fc28501840b4926455ec259
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369943"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903455"
 ---
-# <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
+# <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 
 Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言构造记录在[流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)指南中。 
 
@@ -22,401 +23,517 @@ Azure 流分析中的查询以类似 SQL 的查询语言表示。 这些语言�
 
 本文概述了基于实际方案的多个常见查询模式的解决方案。
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>使用 JSON 和 AVRO 中的复杂数据类型
+## <a name="supported-data-formats"></a>支持的数据格式
 
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。
 
 JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。 有关使用这些复杂数据类型的详细信息，请参阅[分析 JSON 和 AVRO 数据](stream-analytics-parsing-json.md)一文。
 
-## <a name="query-example-convert-data-types"></a>查询示例：转换数据类型
+## <a name="simple-pass-through-query"></a>简单的传递查询
 
-**说明**：定义输入流中的属性类型。 例如，汽车权重作为字符串传入输入流，需要转换为**INT**才能执行**SUM**。
+简单的传递查询可用于将输入流数据复制到输出中。 例如，如果需要将包含实时车辆信息的数据流保存在 SQL 数据库中以进行信件分析，则简单的传递查询会执行该作业。
 
 **输入**：
 
 | 制造商 | 时间 | 重量 |
 | --- | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |"1000" |
-| Honda |2015-01-01T00：00： 02.0000000 Z |"2000" |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |"2000" |
+
+**输出**：
+
+| 制造商 | 时间 | 重量 |
+| --- | --- | --- |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |"2000" |
+
+**查询**：
+
+```SQL
+SELECT
+    *
+INTO Output
+FROM Input
+```
+
+**SELECT** * 查询会投影传入事件的所有字段，并将其发送到输出。 同样，也可以**选择**仅将所需字段用于输入。 在此示例中，如果只*保存车辆和* *时间*，则可以在**SELECT**语句中指定这些字段。
+
+**输入**：
+
+| 制造商 | 时间 | 重量 |
+| --- | --- | --- |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |1000 |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |2000 |
+| Make2 |2015-01-01T00：00： 04.0000000 Z |1500 |
+
+**输出**：
+
+| 制造商 | 时间 |
+| --- | --- |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 04.0000000 Z |
+
+**查询**：
+
+```SQL
+SELECT
+    Make, Time
+INTO Output
+FROM Input
+```
+## <a name="data-aggregation-over-time"></a>随时间推移的数据聚合
+
+若要计算某个时间范围内的信息，可以将数据聚合在一起。 在此示例中，将在过去10分钟内为每个特定汽车发出计算一次计数。
+
+**输入**：
+
+| 制造商 | 时间 | 重量 |
+| --- | --- | --- |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |1000 |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |2000 |
+| Make2 |2015-01-01T00：00： 04.0000000 Z |1500 |
+
+**输出**：
+
+| 制造商 | 计数 |
+| --- | --- |
+| Make1 | 2 |
+| Make2 | 第 |
+
+**查询**：
+
+```SQL
+SELECT
+    Make,
+    COUNT(*) AS Count
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+此聚合*将*汽车分组，并每10秒计算一次。 输出包含经过收费的汽车的*品牌*和*计数*。
+
+TumblingWindow 是一种用于将事件组合在一起的窗口化函数。 聚合可以应用于所有分组事件。 有关详细信息，请参阅[窗口函数](stream-analytics-window-functions.md)。
+
+有关聚合的详细信息，请参阅[聚合函数](/stream-analytics-query/aggregate-functions-azure-stream-analytics)。
+
+## <a name="data-conversion"></a>数据转换
+
+数据可以使用**转换**方法进行实时强制转换。 例如，可以将 car 权重从类型**nvarchar （max）** 转换为类型**bigint** ，并用于数字计算。
+
+**输入**：
+
+| 制造商 | 时间 | 重量 |
+| --- | --- | --- |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |"2000" |
 
 **输出**：
 
 | 制造商 | 重量 |
 | --- | --- |
-| Honda |3000 |
+| Make1 |3000 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        Make,
-        SUM(CAST(Weight AS BIGINT)) AS Weight
-    FROM
-        Input TIMESTAMP BY Time
-    GROUP BY
-        Make,
-        TumblingWindow(second, 10)
+SELECT
+    Make,
+    SUM(CAST(Weight AS BIGINT)) AS Weight
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
 ```
 
-**说明**：在“重量”字段中使用 CAST 语句来指定它的数据类型。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
+使用**CAST**语句指定其数据类型。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>查询示例：使用 LIKE/NOT LIKE 进行模式匹配
+有关[数据转换函数](/stream-analytics-query/conversion-functions-azure-stream-analytics)的详细信息。
 
-**说明**： 检查事件上的字段值是否与特定的模式相匹配。
-例如，检查返回以 A 开头并以 9 结尾的车牌的结果。
+## <a name="string-matching-with-like-and-not-like"></a>采用 LIKE 和 NOT LIKE 的字符串匹配
+
+**Like**和**NOT LIKE**可用于验证字段是否与特定模式匹配。 例如，可以创建一个筛选器，以仅返回以字母 "A" 开头的许可印版，以数字9结尾。
 
 **输入**：
 
-| 制造商 | LicensePlate | 时间 |
+| 制造商 | License_plate | 时间 |
 | --- | --- | --- |
-| Honda |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
-| Nissan |ABC-369 |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00：00： 03.0000000 Z |
 
 **输出**：
 
-| 制造商 | LicensePlate | 时间 |
+| 制造商 | License_plate | 时间 |
 | --- | --- | --- |
-| Toyota |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
-| Nissan |ABC-369 |2015-01-01T00：00： 03.0000000 Z |
+| Make2 |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00：00： 03.0000000 Z |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        *
-    FROM
-        Input TIMESTAMP BY Time
-    WHERE
-        LicensePlate LIKE 'A%9'
+SELECT
+    *
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    License_plate LIKE 'A%9'
 ```
 
-**说明**：使用 LIKE 语句检查 LicensePlate 字段的值。 它应以字母 A 开头，并具有零个或多个字符的任何字符串，然后以数字9结尾。 
+使用**LIKE**语句检查 " **License_plate** " 字段值。 它应以字母 "A" 开头，并具有零个或多个字符的任何字符串，以数字9结尾。
 
-## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>查询示例：指定不同案例/值的逻辑（CASE 语句）
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>指定不同案例/值的逻辑（CASE 语句）
 
-**说明**：根据某些特定条件对字段进行各种计算。 例如，同一制造商的汽车通过数量为 1 时，为这种特殊情况提供一个字符串说明。
+**CASE**语句可以根据特定条件为不同字段提供不同的计算结果。 例如，将通道 "A" 分配给*Make1*的轿车，将通道 "B" 分配给任何其他品牌。
 
 **输入**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 03.0000000 Z |
 
 **输出**：
 
-| CarsPassed | 时间 |
-| --- | --- |
-| 1 辆 Honda |2015-01-01T00：00： 10.0000000 Z |
-| 2 辆 Toyota |2015-01-01T00：00： 10.0000000 Z |
+| 制造商 |Dispatch_to_lane | 时间 |
+| --- | --- | --- |
+| Make1 |的 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |B |2015-01-01T00：00： 02.0000000 Z |
 
 **解决方案**；
 
 ```SQL
-    SELECT
-        CASE
-            WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
-            ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
-        END AS CarsPassed,
-        System.TimeStamp() AS AsaTime
-    FROM
-        Input TIMESTAMP BY Time
-    GROUP BY
-        Make,
-        TumblingWindow(second, 10)
+SELECT
+    Make
+    CASE
+        WHEN Make = "Make1" THEN "A"
+        ELSE "B"
+    END AS Dispatch_to_lane,
+    System.TimeStamp() AS Time
+FROM
+    Input TIMESTAMP BY Time
 ```
 
-说明：CASE 表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。
+**CASE**表达式将表达式与一组简单表达式进行比较以确定其结果。 在此示例中， *Make1*的车辆将被调度到通道 "A"，而其他任何品牌的车辆都将分配给通道 "B"。
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>查询示例：将数据发送到多个输出
+有关详细信息，请参阅[case 表达式](/stream-analytics-query/case-azure-stream-analytics)。
 
-**说明**：从单个作业中将数据发送到多个输出目标。 例如，分析基于阈值的警报数据，并将所有事件保存到 blob 存储。
+## <a name="send-data-to-multiple-outputs"></a>将数据发送到多个输出
+
+可以使用多个**SELECT**语句将数据输出到不同的输出接收器。 例如，**选择**时可以输出基于阈值的警报，而另一个则可将事件输出到 blob 存储。
 
 **输入**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |
-| Honda |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 03.0000000 Z |
 
-**输出 1**：
+**输出 ArchiveOutput**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |
-| Honda |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 03.0000000 Z |
 
-**输出 2**：
+**输出 AlertOutput**：
 
 | 制造商 | 时间 | 计数 |
 | --- | --- | --- |
-| Toyota |2015-01-01T00：00： 10.0000000 Z |3 |
+| Make2 |2015-01-01T00：00： 10.0000000 Z |3 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
+SELECT
+    *
+INTO
+    ArchiveOutput
+FROM
+    Input TIMESTAMP BY Time
+
+SELECT
+    Make,
+    System.TimeStamp() AS Time,
+    COUNT(*) AS [Count]
+INTO
+    AlertOutput
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+HAVING
+    [Count] >= 3
+```
+
+**INTO**子句告知流分析要将数据写入其中的输出。 第一个**选择**定义一个传递查询，该查询接收来自输入的数据并将其发送到名为**ArchiveOutput**的输出。 第二个查询执行一些简单的聚合和筛选，然后将结果发送到名为**AlertOutput**的下游警报系统输出。
+
+请注意，可以使用**WITH**子句来定义多个子查询块。 此选项具有向输入源打开较少的读取器的好处。
+
+**查询**：
+
+```SQL
+WITH ReaderQuery AS (
     SELECT
         *
-    INTO
-        ArchiveOutput
     FROM
         Input TIMESTAMP BY Time
+)
 
-    SELECT
-        Make,
-        System.TimeStamp() AS AsaTime,
-        COUNT(*) AS [Count]
-    INTO
-        AlertOutput
-    FROM
-        Input TIMESTAMP BY Time
-    GROUP BY
-        Make,
-        TumblingWindow(second, 10)
-    HAVING
-        [Count] >= 3
+SELECT * INTO ArchiveOutput FROM ReaderQuery
+
+SELECT 
+    Make,
+    System.TimeStamp() AS Time,
+    COUNT(*) AS [Count] 
+INTO AlertOutput 
+FROM ReaderQuery
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+HAVING [Count] >= 3
 ```
 
-**说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据。 第一个查询是收到的数据传递到名为**ArchiveOutput**的输出。 第二个查询执行一些简单的聚合和筛选，并将结果发送到下游警报系统**AlertOutput**。
+有关详细信息，请参阅[ **WITH**子句](/stream-analytics-query/with-azure-stream-analytics)。
 
-请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句）。 此选项可提供额外权益，即在输入源打开较少的读取器。
+## <a name="count-unique-values"></a>对唯一值进行计数
 
-例如： 
-
-```SQL
-    WITH AllRedCars AS (
-        SELECT
-            *
-        FROM
-            Input TIMESTAMP BY Time
-        WHERE
-            Color = 'red'
-    )
-    SELECT * INTO HondaOutput FROM AllRedCars WHERE Make = 'Honda'
-    SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
-```
-
-## <a name="query-example-count-unique-values"></a>查询示例：对唯一值进行计算
-
-**说明**：计算时间范围内流中显示的唯一字段值数。 例如，在 2 秒的时间范围内，通过收费站的同一制造商的汽车数量是多少？
+**Count**和**DISTINCT**可用于计算在某个时间范围内流中显示的唯一字段值的数目。 可以创建一个查询，以计算在2秒的时间段内通过收费亭*传递的汽车的唯一数目*。
 
 **输入**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |
-| Honda |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 03.0000000 Z |
 
 **输出：**
 
-| CountMake | 时间 |
+| Count_make | 时间 |
 | --- | --- |
 | 2 |2015-01-01T00：00： 02.000 Z |
 | 第 |2015-01-01T00：00： 04.000 Z |
 
-**解决方案：**
+**查询：**
 
 ```SQL
 SELECT
-     COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP() AS AsaTIME
+     COUNT(DISTINCT Make) AS Count_make,
+     System.TIMESTAMP() AS Time
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
 ```
 
+**Count （DISTINCT Make）** 返回时间范围内的 " **Make** " 列中非重复值的计数。
+有关详细信息，请参阅[ **COUNT**聚合函数](/stream-analytics-query/count-azure-stream-analytics)。
 
-**说明：** 
-COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值数目。
+## <a name="calculation-over-past-events"></a>计算过去的事件
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>查询示例：确定某个值是否已更改
-
-**说明**：可通过查看前一个值来确定它与当前的值是否相同。 例如：在收费路段前一辆汽车与当前汽车的制造商是否相同？
+**LAG**函数可用于查看某个时间范围内的过去事件，并将其与当前事件进行比较。 例如，如果当前汽车品牌与通过了收费的最后一辆汽车不同，则可以输出。
 
 **输入**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
 
 **输出**：
 
 | 制造商 | 时间 |
 | --- | --- |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        Make,
-        Time
-    FROM
-        Input TIMESTAMP BY Time
-    WHERE
-        LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
+SELECT
+    Make,
+    Time
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 然后，将它与当前事件的“制造商”字段进行比较，如果二者不同，则输出该事件。
+使用**LAG**可查看一个事件返回到的输入流，检索*make*值并将其与当前事件的 "设置" 值*进行*比较并输出该事件。
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>查询示例：查找时间范围内的第一个事件
+有关详细信息，请参阅[**滞后**](/stream-analytics-query/lag-azure-stream-analytics)时间。
 
-**说明**：查找每 10 分钟时间间隔内的第一辆汽车。
+## <a name="retrieve-the-first-event-in-a-window"></a>检索窗口中的第一个事件
+
+**IsFirst**可用于检索时间范围内的第一个事件。 例如，按每10分钟时间间隔输出第一辆车信息。
 
 **输入**：
 
-| LicensePlate | 制造商 | 时间 |
+| License_plate | 制造商 | 时间 |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00：00： 05.0000000 Z |
-| YZK 5704 |Ford |2015-07-27T00：02： 17.0000000 Z |
-| RMV 8282 |Honda |2015-07-27T00：05： 01.0000000 Z |
-| YHN 6970 |Toyota |2015-07-27T00：06： 00.0000000 Z |
-| VFE 1616 |Toyota |2015-07-27T00：09： 31.0000000 Z |
-| QYF 9358 |Honda |2015-07-27T00：12： 02.0000000 Z |
-| MDR 6128 |BMW |2015-07-27T00：13： 45.0000000 Z |
+| DXE 5291 |Make1 |2015-07-27T00：00： 05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00：02： 17.0000000 Z |
+| RMV 8282 |Make1 |2015-07-27T00：05： 01.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00：06： 00.0000000 Z |
+| VFE 1616 |Make2 |2015-07-27T00：09： 31.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00：12： 02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00：13： 45.0000000 Z |
 
 **输出**：
 
-| LicensePlate | 制造商 | 时间 |
+| License_plate | 制造商 | 时间 |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00：00： 05.0000000 Z |
-| QYF 9358 |Honda |2015-07-27T00：12： 02.0000000 Z |
+| DXE 5291 |Make1 |2015-07-27T00：00： 05.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00：12： 02.0000000 Z |
 
-**解决方案**；
+**查询**：
 
 ```SQL
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) = 1
+```
+
+**IsFirst**还可以对数据进行分区，并按每隔10分钟的时间间隔计算每个*特定汽车的*第一个事件。
+
+**输出**：
+
+| License_plate | 制造商 | 时间 |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00：00： 05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00：02： 17.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00：06： 00.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00：12： 02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00：13： 45.0000000 Z |
+
+**查询**：
+
+```SQL
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
+```
+
+有关详细信息，请参阅[**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)。
+
+## <a name="return-the-last-event-in-a-window"></a>返回窗口中的最后一个事件
+
+当系统实时使用事件时，没有可用于确定事件是否将成为该时间窗口最后一个事件的函数。 若要实现此目的，输入流需要与另一个输入流联接，其中事件的时间是该窗口中所有事件的最长时间。
+
+**输入**：
+
+| License_plate | 制造商 | 时间 |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00：00： 05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00：02： 17.0000000 Z |
+| RMV 8282 |Make1 |2015-07-27T00：05： 01.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00：06： 00.0000000 Z |
+| VFE 1616 |Make2 |2015-07-27T00：09： 31.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00：12： 02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00：13： 45.0000000 Z |
+
+**输出**：
+
+| License_plate | 制造商 | 时间 |
+| --- | --- | --- |
+| VFE 1616 |Make2 |2015-07-27T00：09： 31.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00：13： 45.0000000 Z |
+
+**查询**：
+
+```SQL
+WITH LastInWindow AS
+(
     SELECT 
-        LicensePlate,
-        Make,
-        Time
+        MAX(Time) AS LastEventTime
     FROM 
         Input TIMESTAMP BY Time
-    WHERE 
-        IsFirst(minute, 10) = 1
+    GROUP BY 
+        TumblingWindow(minute, 10)
+)
+
+SELECT 
+    Input.License_plate,
+    Input.Make,
+    Input.Time
+FROM
+    Input TIMESTAMP BY Time 
+    INNER JOIN LastInWindow
+    ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
+    AND Input.Time = LastInWindow.LastEventTime
 ```
 
-现在，让我们更改问题，并在每10分钟时间间隔内查找特定品牌的第一辆车。
+查询的第一步是在10分钟的窗口中查找最大时间戳，这是该窗口的最后一个事件的时间戳。 第二个步骤将第一个查询的结果与原始流联接起来，以查找与每个窗口中的最后一个时间戳相匹配的事件。 
 
-| LicensePlate | 制造商 | 时间 |
-| --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00：00： 05.0000000 Z |
-| YZK 5704 |Ford |2015-07-27T00：02： 17.0000000 Z |
-| YHN 6970 |Toyota |2015-07-27T00：06： 00.0000000 Z |
-| QYF 9358 |Honda |2015-07-27T00：12： 02.0000000 Z |
-| MDR 6128 |BMW |2015-07-27T00：13： 45.0000000 Z |
+**DATEDIFF**是特定于日期的函数，用于比较并返回两个日期时间字段之间的时间差。有关详细信息，请参阅[日期函数](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics)。
 
-**解决方案**；
+有关联接流的详细信息，请参阅[**JOIN**](/stream-analytics-query/join-azure-stream-analytics)。
 
-```SQL
-    SELECT 
-        LicensePlate,
-        Make,
-        Time
-    FROM 
-        Input TIMESTAMP BY Time
-    WHERE 
-        IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
-```
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>查询示例：查找时间范围内的最后一个事件
+## <a name="correlate-events-in-a-stream"></a>关联流中的事件
 
-**说明**：查找每 10 分钟时间间隔内的最后一辆汽车。
+通过使用**LAG**函数查看过去的事件，可以完成同一流中的事件关联。 例如，每次同一次中的两个连续汽车在过去90秒*内完成了*收费时，就可以生成输出。
 
 **输入**：
 
-| LicensePlate | 制造商 | 时间 |
+| 制造商 | License_plate | 时间 |
 | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00：00： 05.0000000 Z |
-| YZK 5704 |Ford |2015-07-27T00：02： 17.0000000 Z |
-| RMV 8282 |Honda |2015-07-27T00：05： 01.0000000 Z |
-| YHN 6970 |Toyota |2015-07-27T00：06： 00.0000000 Z |
-| VFE 1616 |Toyota |2015-07-27T00：09： 31.0000000 Z |
-| QYF 9358 |Honda |2015-07-27T00：12： 02.0000000 Z |
-| MDR 6128 |BMW |2015-07-27T00：13： 45.0000000 Z |
+| Make1 |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
+| Make2 |DEF-987 |2015-01-01T00：00： 03.0000000 Z |
+| Make1 |GHI-345 |2015-01-01T00：00： 04.0000000 Z |
 
 **输出**：
 
-| LicensePlate | 制造商 | 时间 |
-| --- | --- | --- |
-| VFE 1616 |Toyota |2015-07-27T00：09： 31.0000000 Z |
-| MDR 6128 |BMW |2015-07-27T00：13： 45.0000000 Z |
-
-**解决方案**；
-
-```SQL
-    WITH LastInWindow AS
-    (
-        SELECT 
-            MAX(Time) AS LastEventTime
-        FROM 
-            Input TIMESTAMP BY Time
-        GROUP BY 
-            TumblingWindow(minute, 10)
-    )
-    SELECT 
-        Input.LicensePlate,
-        Input.Make,
-        Input.Time
-    FROM
-        Input TIMESTAMP BY Time 
-        INNER JOIN LastInWindow
-        ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
-        AND Input.Time = LastInWindow.LastEventTime
-```
-
-**说明**：查询中包含两个步骤。 第一个步骤是在 10 分钟的时间范围内查找最新的时间戳。 第二个步骤是将第一个查询的结果与原始流联接，查找每个时间范围内与最后一个时间戳相匹配的事件。 
-
-## <a name="query-example-locate-correlated-events-in-a-stream"></a>查询示例：在流中查找相关事件
-
-**说明**：在流中查找相关事件。 例如，两辆同一制造商的汽车是否在 90 秒内先后进入收费路段？
-
-**输入**：
-
-| 制造商 | LicensePlate | 时间 |
-| --- | --- | --- |
-| Honda |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
-| Honda |AAA-999 |2015-01-01T00：00： 02.0000000 Z |
-| Toyota |DEF-987 |2015-01-01T00：00： 03.0000000 Z |
-| Honda |GHI-345 |2015-01-01T00：00： 04.0000000 Z |
-
-**输出**：
-
-| 制造商 | 时间 | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| 制造商 | 时间 | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
-| Honda |2015-01-01T00：00： 02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
+| Make1 |2015-01-01T00：00： 02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00：00： 01.0000000 Z |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        Make,
-        Time,
-        LicensePlate AS CurrentCarLicensePlate,
-        LAG(LicensePlate, 1) OVER (LIMIT DURATION(second, 90)) AS FirstCarLicensePlate,
-        LAG(Time, 1) OVER (LIMIT DURATION(second, 90)) AS FirstCarTime
-    FROM
-        Input TIMESTAMP BY Time
-    WHERE
-        LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
+SELECT
+    Make,
+    Time,
+    License_plate AS Current_car_license_plate,
+    LAG(License_plate, 1) OVER (LIMIT DURATION(second, 90)) AS First_car_license_plate,
+    LAG(Time, 1) OVER (LIMIT DURATION(second, 90)) AS First_car_time
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 将它与当前事件的“制造商”字段进行比较，如果二者相同，则输出该事件。 还可使用 LAG 获取前一辆汽车的数据。
+**LAG**函数可查看一个事件返回到输入流，并检索 " *make* " 值，并将其与当前事件的 "设置" 值*进行*比较。  满足条件后，可以使用**SELECT**语句中的**LAG**来投影上一个事件中的数据。
 
-## <a name="query-example-detect-the-duration-between-events"></a>查询示例：检测事件之间的持续时间
+有关详细信息，请参阅[滞后](/stream-analytics-query/lag-azure-stream-analytics)时间。
 
-**说明**：查找给定事件的持续时间。 例如：给定一个 Web 点击流，确定某项功能花费的时间。
+## <a name="detect-the-duration-between-events"></a>检测事件之间的持续时间
+
+接收到结束事件后，可以通过查看上一个开始事件来计算事件的持续时间。 此查询可用于确定用户在页面或功能上所花费的时间。
 
 **输入**：  
 
@@ -431,76 +548,77 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        [user],
+SELECT
+    [user],
     feature,
     DATEDIFF(
         second,
         LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
         Time) as duration
-    FROM input TIMESTAMP BY Time
-    WHERE
-        Event = 'end'
+FROM input TIMESTAMP BY Time
+WHERE
+    Event = 'end'
 ```
 
-**说明**：使用 LAST 函数检索上次事件类型为“开始”时的时间值。 LAST 函数使用 PARTITION BY [user] 指示结果应按唯一用户计算。 该查询在“开始”和“停止”事件之间有 1 小时的最大时差阈值，但也可按需配置 (LIMIT DURATION(hour, 1)。
+**Last**函数可用于检索特定条件中的最后一个事件。 在此示例中，条件是类型为 Start 的事件，按**分区按**用户和功能对搜索进行分区。 这样一来，搜索开始事件时，将单独处理每个用户和功能。 **限制持续**时间将在结束事件和开始事件之间向后搜索时间限制为1小时。
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>查询示例：检测某个条件的持续时间
-**说明**：查看某个条件的持续时间。
-例如，假设某个 Bug 导致所有车的重量不正确（超出 20000 磅），因此必须计算该 Bug 的持续时间。
+## <a name="detect-the-duration-of-a-condition"></a>检测某个条件的持续时间
+
+对于跨多个事件的条件， **LAG**函数可用于标识该条件的持续时间。 例如，假设某个 Bug 导致所有车的重量不正确（超出 20000 磅），因此必须计算该 Bug 的持续时间。
 
 **输入**：
 
 | 制造商 | 时间 | 重量 |
 | --- | --- | --- |
-| Honda |2015-01-01T00：00： 01.0000000 Z |2000 |
-| Toyota |2015-01-01T00：00： 02.0000000 Z |25000 |
-| Honda |2015-01-01T00：00： 03.0000000 Z |26000 |
-| Toyota |2015-01-01T00：00： 04.0000000 Z |25000 |
-| Honda |2015-01-01T00：00： 05.0000000 Z |26000 |
-| Toyota |2015-01-01T00：00： 06.0000000 Z |25000 |
-| Honda |2015-01-01T00：00： 07.0000000 Z |26000 |
-| Toyota |2015-01-01T00：00： 08.0000000 Z |2000 |
+| Make1 |2015-01-01T00：00： 01.0000000 Z |2000 |
+| Make2 |2015-01-01T00：00： 02.0000000 Z |25000 |
+| Make1 |2015-01-01T00：00： 03.0000000 Z |26000 |
+| Make2 |2015-01-01T00：00： 04.0000000 Z |25000 |
+| Make1 |2015-01-01T00：00： 05.0000000 Z |26000 |
+| Make2 |2015-01-01T00：00： 06.0000000 Z |25000 |
+| Make1 |2015-01-01T00：00： 07.0000000 Z |26000 |
+| Make2 |2015-01-01T00：00： 08.0000000 Z |2000 |
 
 **输出**：
 
-| StartFault | EndFault |
+| Start_fault | End_fault |
 | --- | --- |
 | 2015-01-01T00：00： 02.000 Z |2015-01-01T00：00： 07.000 Z |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    WITH SelectPreviousEvent AS
-    (
-    SELECT
+WITH SelectPreviousEvent AS
+(
+SELECT
     *,
-        LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previousTime,
-        LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previousWeight
-    FROM input TIMESTAMP BY [time]
-    )
+    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
+    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
+FROM input TIMESTAMP BY [time]
+)
 
-    SELECT 
-        LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previousWeight < 20000 ) [StartFault],
-        previousTime [EndFault]
-    FROM SelectPreviousEvent
-    WHERE
-        [weight] < 20000
-        AND previousWeight > 20000
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
+    previous_time [End_fault]
+FROM SelectPreviousEvent
+WHERE
+    [weight] < 20000
+    AND previous_weight > 20000
 ```
+第一个**SELECT**语句将当前权重度量与先前的度量值相关联，并将其与当前度量值组合在一起。 第二个**SELECT**返回到最新事件，其中*previous_weight*小于20000，当前权重小于20000，当前事件的*previous_weight*大于20000。
 
-**说明**：使用 LAG 查看 24 小时内的输入流并查找因重量 < 20000 而持续的 StartFault 和 StopFault 实例。
+End_fault 是上一个事件出错的当前非故障事件，Start_fault 是之前的最后一个非故障事件。
 
-## <a name="query-example-fill-missing-values"></a>查询示例：填充缺失值
+## <a name="periodically-output-values"></a>定期输出值
 
-**说明**：对于值缺失的事件流，以固定的间隔生成事件流。 例如，每间隔 5 秒生成一个事件，报告最新发现的数据点。
+如果发生异常或缺失事件，可以通过更稀疏的数据输入生成常规间隔输出。 例如，每间隔 5 秒生成一个事件，报告最新发现的数据点。
 
 **输入**：
 
-| t | 值 |
+| 时间 | 值 |
 | --- | --- |
 | "2014-01-01T06:01:00" |第 |
 | "2014-01-01T06:01:05" |2 |
@@ -511,7 +629,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输出（前 10 行）** ：
 
-| windowend | lastevent.t | lastevent.value |
+| Window_end | Last_event。阶段 | Last_event。负值 |
 | --- | --- | --- |
 | 2014-01-01T14：01： 00.000 Z |2014-01-01T14：01： 00.000 Z |第 |
 | 2014-01-01T14：01： 05.000 Z |2014-01-01T14：01： 05.000 Z |2 |
@@ -524,109 +642,39 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 | 2014-01-01T14：01： 40.000 Z |2014-01-01T14：01： 35.000 Z |6 |
 | 2014-01-01T14：01： 45.000 Z |2014-01-01T14：01： 35.000 Z |6 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
-    SELECT
-        System.Timestamp() AS windowEnd,
-        TopOne() OVER (ORDER BY t DESC) AS lastEvent
-    FROM
-        input TIMESTAMP BY t
-    GROUP BY HOPPINGWINDOW(second, 300, 5)
+SELECT
+    System.Timestamp() AS Window_end,
+    TopOne() OVER (ORDER BY Time DESC) AS Last_event
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    HOPPINGWINDOW(second, 300, 5)
 ```
 
-**说明**：此查询每隔 5 秒生成一个事件，并输出上次收到的最后一个事件。 [跳跃时段](/stream-analytics-query/hopping-window-azure-stream-analytics)确定查询查找最新事件（在此示例中为300秒）的持续时间。
+此查询每隔 5 秒生成一个事件，并输出上次收到的最后一个事件。 **HOPPINGWINDOW**持续时间确定查询查找最新事件的距离。
 
+有关详细信息，请参阅[跳跃窗口](/stream-analytics-query/hopping-window-azure-stream-analytics)。
 
-## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>查询示例：在同一流中关联两个事件类型
+## <a name="process-events-with-independent-time-substreams"></a>独立时间处理事件（Substreams）
 
-说明：有时需要基于某个特定时间范围内发生的多个事件类型生成警报。 例如，在家用烤箱的 IoT 方案中，必须在风扇温度小于 40 且在过去 3 分钟内最大功率小于 10 时生成警报。
-
-**输入**：
-
-| time | deviceId | sensorName | 值 |
-| --- | --- | --- | --- |
-| "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
-| "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:02:00" | "Oven1" | "temp" |100 |
-| "2018-01-01T16:02:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:03:00" | "Oven1" | "temp" |70 |
-| "2018-01-01T16:03:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:04:00" | "Oven1" | "temp" |50 |
-| "2018-01-01T16:04:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:05:00" | "Oven1" | "temp" |30 |
-| "2018-01-01T16:05:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:06:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:06:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:07:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:07:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:08:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:08:00" | "Oven1" | "power" |8 |
-
-**输出**：
-
-| EventTime | deviceId | temp | alertMessage | maxPowerDuringLast3mins |
-| --- | --- | --- | --- | --- | 
-| "2018-01-01T16:05:00" | "Oven1" |30 | “加热元件短路” |15 |
-| "2018-01-01T16:06:00" | "Oven1" |20 | “加热元件短路” |15 |
-| "2018-01-01T16:07:00" | "Oven1" |20 | “加热元件短路” |15 |
-
-**解决方案**；
-
-```SQL
-WITH max_power_during_last_3_mins AS (
-    SELECT 
-        System.TimeStamp() AS windowTime,
-        deviceId,
-        max(value) as maxPower
-    FROM
-        input TIMESTAMP BY t
-    WHERE 
-        sensorName = 'power' 
-    GROUP BY 
-        deviceId, 
-        SlidingWindow(minute, 3) 
-)
-
-SELECT 
-    t1.t AS eventTime,
-    t1.deviceId, 
-    t1.value AS temp,
-    'Short circuit heating elements' as alertMessage,
-    t2.maxPower AS maxPowerDuringLast3mins
-    
-INTO resultsr
-
-FROM input t1 TIMESTAMP BY t
-JOIN max_power_during_last_3_mins t2
-    ON t1.deviceId = t2.deviceId 
-    AND t1.t = t2.windowTime
-    AND DATEDIFF(minute,t1,t2) between 0 and 3
-    
-WHERE
-    t1.sensorName = 'temp'
-    AND t1.value <= 40
-    AND t2.maxPower > 10
-```
-
-**说明**：第一个查询 `max_power_during_last_3_mins` 使用[滑动窗口](/stream-analytics-query/sliding-window-azure-stream-analytics)查找在过去 3 分钟内每个设备的功率传感器最大值。 将第二个查询联接到第一个查询，以便在与当前事件有关的最近窗口中查找功率值。 然后，假如满足条件，将为设备生成警报。
-
-## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>查询示例：处理与设备时钟偏差无关的事件（子流）
-
-说明由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在以下示例中，TollID 2 的设备时钟在 TollID 1 后5秒，TollID 3 的设备时钟为 TollID 1 后面的十秒。 
+由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。
+例如， *TollID* 2 的设备时钟在*TollID* 1 后5秒， *TollID* 3 的设备时钟为*TollID* 1 后面的十秒。 对于每次收费，计算都可以独立发生，只考虑其自己的时钟数据作为时间戳。
 
 **输入**：
 
 | LicensePlate | 制造商 | 时间 | TollID |
 | --- | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00：00： 01.0000000 Z | 第 |
-| YHN 6970 |Toyota |2015-07-27T00：00： 05.0000000 Z | 第 |
-| QYF 9358 |Honda |2015-07-27T00：00： 01.0000000 Z | 2 |
-| GXF 9462 |BMW |2015-07-27T00：00： 04.0000000 Z | 2 |
-| VFE 1616 |Toyota |2015-07-27T00：00： 10.0000000 Z | 第 |
-| RMV 8282 |Honda |2015-07-27T00：00： 03.0000000 Z | 3 |
-| MDR 6128 |BMW |2015-07-27T00：00： 11.0000000 Z | 2 |
-| YZK 5704 |Ford |2015-07-27T00：00： 07.0000000 Z | 3 |
+| DXE 5291 |Make1 |2015-07-27T00：00： 01.0000000 Z | 第 |
+| YHN 6970 |Make2 |2015-07-27T00：00： 05.0000000 Z | 第 |
+| QYF 9358 |Make1 |2015-07-27T00：00： 01.0000000 Z | 2 |
+| GXF 9462 |Make3 |2015-07-27T00：00： 04.0000000 Z | 2 |
+| VFE 1616 |Make2 |2015-07-27T00：00： 10.0000000 Z | 第 |
+| RMV 8282 |Make1 |2015-07-27T00：00： 03.0000000 Z | 3 |
+| MDR 6128 |Make3 |2015-07-27T00：00： 11.0000000 Z | 2 |
+| YZK 5704 |Make4 |2015-07-27T00：00： 07.0000000 Z | 3 |
 
 **输出**：
 
@@ -639,7 +687,7 @@ WHERE
 | 2 | 第 |
 | 3 | 第 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
 SELECT
@@ -650,11 +698,13 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-说明：[TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 子句分别使用子流来查看每个设备时间线。 每个 TollID 的输出事件都是在计算时生成的，这意味着事件按照每个 TollID 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
+**TIMESTAMP by**子句分别使用 substreams 查看每个设备时间线。 每个*TollID*的 output 事件都是在计算时生成的，这意味着，每个*TollID*的事件按顺序排列，而不是在所有设备都处于同一时钟时重新排序。
 
-## <a name="query-example-remove-duplicate-events-in-a-window"></a>查询示例：在窗口中删除重复事件
+有关详细信息，请参阅[TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)。
 
-**说明**：在给定时间范围内执行操作（如计算事件的平均值）时，应筛选重复的事件。 在下面的示例中，第二个事件是第一个事件的副本。
+## <a name="remove-duplicate-events-in-a-window"></a>删除时间范围内的重复事件
+
+执行某项操作（例如计算给定时间范围内事件的平均值）时，应筛选出重复事件。 在下面的示例中，第二个事件是第一个事件的副本。
 
 **输入**：  
 
@@ -674,20 +724,20 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 | 70 | 第 |
 |45 | 2 |
 
-**解决方案**；
+**查询**：
 
 ```SQL
 With Temp AS (
-    SELECT
-        COUNT(DISTINCT Time) AS CountTime,
-        Value,
-        DeviceId
-    FROM
-        Input TIMESTAMP BY Time
-    GROUP BY
-        Value,
-        DeviceId,
-        SYSTEM.TIMESTAMP()
+SELECT
+    COUNT(DISTINCT Time) AS CountTime,
+    Value,
+    DeviceId
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Value,
+    DeviceId,
+    SYSTEM.TIMESTAMP()
 )
 
 SELECT
@@ -697,16 +747,186 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**说明**： [COUNT （DISTINCT Time）](/stream-analytics-query/count-azure-stream-analytics)返回时间范围内的时间列中非重复值的数目。 然后，你可以使用此步骤的输出按设备计算平均值，只需去掉重复值即可。
+**计数（非重复时间）** 返回时间范围内的时间列中非重复值的数目。 然后，可以使用第一步的输出来计算每个设备的平均值，方法是丢弃重复项。
+
+有关详细信息，请参阅 "[计数（非重复时间）](/stream-analytics-query/count-azure-stream-analytics)"。
+
+## <a name="session-windows"></a>会话窗口
+
+"会话" 窗口是一种窗口，它会持续发生事件发生，并在特定时间内未收到任何事件时或窗口达到其最大持续时间时关闭进行计算。
+在计算用户交互数据时，此窗口特别有用。 当用户开始与系统交互时，将启动一个窗口，并在未观察到更多事件时关闭，这意味着用户已停止交互。
+例如，用户正在与 web 页面交互，其中记录了点击数，会话窗口可用于确定用户与站点交互的时间。
+
+**输入**：
+
+| User_id | 时间 | URL |
+| --- | --- | --- |
+| 0 | 2017-01-26T00：00： 00.0000000 Z | "www.example.com/a.html" |
+| 0 | 2017-01-26T00：00： 20.0000000 Z | "www.example.com/b.html" |
+| 第 | 2017-01-26T00：00： 55.0000000 Z | "www.example.com/c.html" |
+| 0 | 2017-01-26T00：01： 10.0000000 Z | "www.example.com/d.html" |
+| 第 | 2017-01-26T00：01： 15.0000000 Z | "www.example.com/e.html" |
+
+**输出**：
+
+| User_id | StartTime | EndTime | Duration_in_seconds |
+| --- | --- | --- | --- |
+| 0 | 2017-01-26T00：00： 00.0000000 Z | 2017-01-26T00：01： 10.0000000 Z | 70 |
+| 第 | 2017-01-26T00：00： 55.0000000 Z | 2017-01-26T00：01： 15.0000000 Z | 20 |
+
+**查询**：
+
+``` SQL
+SELECT
+    user_id,
+    MIN(time) as StartTime,
+    MAX(time) as EndTime,
+    DATEDIFF(second, MIN(time), MAX(time)) AS duration_in_seconds
+FROM input TIMESTAMP BY time
+GROUP BY
+    user_id,
+    SessionWindow(minute, 1, 60) OVER (PARTITION BY user_id)
+```
+
+**选择**项目与用户交互相关的数据，以及交互的持续时间。 按用户对数据进行分组，并在1分钟内未发生交互时关闭的**SessionWindow** ，最大窗口大小为60分钟。
+
+有关**SessionWindow**的详细信息，请参阅 "[会话" 窗口](/stream-analytics-query/session-window-azure-stream-analytics)。
+
+## <a name="language-extensibility-with-user-defined-function-in-javascript-and-c"></a>JavaScript 和中的用户定义函数的语言扩展性C#
+
+可以用 JavaScript 或C#语言编写的自定义函数扩展 Azure 流分析查询语言。 用户定义的函数（UDF）是自定义/复杂计算，不能使用**SQL**语言轻松表示。 这些 Udf 只能定义一次，并在查询中多次使用。 例如，UDF 可用于将十六进制*nvarchar （max）* 值转换为*bigint*值。
+
+**输入**：
+
+| Device_id | HexValue |
+| --- | --- |
+| 第 | B4 |
+| 2 | 11B |
+| 3 | "121" |
+
+**输出**：
+
+| Device_id | Decimal |
+| --- | --- |
+| 第 | 180 |
+| 2 | 283 |
+| 3 | 289 |
+
+```JavaScript
+function hex2Int(hexValue){
+    return parseInt(hexValue, 16);
+}
+```
+
+```C#
+public static class MyUdfClass {
+    public static long Hex2Int(string hexValue){
+        return int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
+    }
+}
+```
+
+```SQL
+SELECT
+    Device_id,
+    udf.Hex2Int(HexValue) AS Decimal
+From
+    Input
+```
+
+用户定义函数将从每个使用的事件的 HexValue 计算*bigint*值。
+
+有关详细信息，请参阅[JavaScript](/stream-analytics/stream-analytics-javascript-user-defined-functions)和[C#](/stream-analytics/stream-analytics-edge-csharp-udf)。
+
+## <a name="advanced-pattern-matching-with-match_recognize"></a>与 MATCH_RECOGNIZE 的高级模式匹配
+
+**MATCH_RECOGNIZE**是一种高级模式匹配机制，可用于将一系列事件与明确定义的正则表达式模式相匹配。
+例如，如果在 ATM 的操作过程中出现两个连续的警告消息，则会实时监视 ATM，要求管理员需要获得通知。
+
+**输入**：
+
+| ATM_id | Operation_id | Return_Code | 时间 |
+| --- | --- | --- | --- |
+| 第 | "输入 Pin 码" | “Success” | 2017-01-26T00：10： 00.0000000 Z |
+| 2 | "开钱槽" | “Success” | 2017-01-26T00：10： 07.0000000 Z |
+| 2 | "收盘 Money 时隙" | “Success” | 2017-01-26T00：10： 11.0000000 Z |
+| 第 | "正在输入收回量" | “Success” | 2017-01-26T00：10： 08.0000000 Z |
+| 第 | "开钱槽" | 出现 | 2017-01-26T00：10： 14.0000000 Z |
+| 第 | "打印银行余额" | 出现 | 2017-01-26T00：10： 19.0000000 Z |
+
+**输出**：
+
+| ATM_id | First_Warning_Operation_id | Warning_Time |
+| --- | --- | --- |
+| 第 | "开钱槽" | 2017-01-26T00：10： 14.0000000 Z |
+
+```SQL
+SELECT *
+FROM intput TIMESTAMP BY time OVER ATM_id
+MATCH_RECOGNIZE (
+    PARTITON BY ATM_id
+    LIMIT DURATION(minute, 1)
+    MEASURES
+        First(Warning.ATM_id) AS ATM_id,
+        First(Warning.Operation_Id) AS First_Warning_Operation_id,
+        First(Warning.Time) AS Warning_Time
+    AFTER MATCH SKIP TO NEXT ROW
+    PATTERN (Success* Warning{2,})
+    DEFINE
+        Success AS Succes.Return_Code = 'Success',
+        Failure AS Warning.Return_Code <> 'Success'
+) AS patternMatch
+```
+
+此查询匹配至少两个连续的失败事件，并在满足条件时生成警报。
+**PATTERN**定义要在匹配时使用的正则表达式，在本例中，为任意数量的成功操作，后跟至少两个连续失败。
+成功和失败都使用 Return_Code 值定义，满足条件后，将使用*ATM_id*、第一个警告操作和第一个警告时间来投影**度量值**。
+
+有关详细信息，请参阅[MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)。
 
 ## <a name="geofencing-and-geospatial-queries"></a>地理围栏和地理空间查询
-Azure 流分析提供内置的地理空间功能，这些功能可用于实现各种方案，如汽油管理、联系、共享、连接汽车和资产跟踪。 地理空间数据可引入为 GeoJSON 或 WKT 格式，作为事件流或引用数据的一部分。 有关详细信息，请参阅[地理围栏和地理空间聚合方案和 Azure 流分析](geospatial-scenarios.md)一文。
+Azure 流分析提供内置的地理空间功能，这些功能可用于实现各种方案，如汽油管理、联系、共享、连接汽车和资产跟踪。
+地理空间数据可引入为 GeoJSON 或 WKT 格式，作为事件流或引用数据的一部分。
+例如，一家专用于制造计算机的公司，用于打印护照，将其计算机租赁到了政府和 consulates。 这些计算机的位置在很大程度上受到了控制，以避免 misplacing 并可能使用伪造的护照。 每台计算机都适合使用 GPS 跟踪器，该信息会中继回 Azure 流分析作业。
+该制造商要跟踪这些计算机的位置，并在其中一个用户离开授权区域时发出警报，这种方法可以远程禁用、警报机构和检索设备。
 
-## <a name="language-extensibility-through-javascript-and-c"></a>通过 JavaScript 和C#
-可以用 JavaScript 或C#语言编写的自定义函数扩展 Azure Stream Ananlytics query langugae。 有关详细信息，请参阅 foolowing 文章：
-* [Azure 流分析 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
-* [Azure 流分析 JavaScript 用户定义的聚合](stream-analytics-javascript-user-defined-aggregates.md)
-* [为 Azure 流分析边缘作业开发 .NET Standard 用户定义函数](stream-analytics-edge-csharp-udf-methods.md)
+**输入**：
+
+| Equipment_id | Equipment_current_location | 时间 |
+| --- | --- | --- |
+| 第 | "POINT （-122.13288797982818 47.64082002051315）" | 2017-01-26T00：10： 00.0000000 Z |
+| 第 | "POINT （-122.13307252987875 47.64081350934929）" | 2017-01-26T00：11： 00.0000000 Z |
+| 第 | "POINT （-122.13308862313283 47.6406508603241）" | 2017-01-26T00：12： 00.0000000 Z |
+| 第 | "POINT （-122.13341048821462 47.64043760861279）" | 2017-01-26T00：13： 00.0000000 Z |
+
+**引用数据输入**：
+
+| Equipment_id | Equipment_lease_location |
+| --- | --- |
+| 第 | "多边形（（-122.13326028450979 47.6409833866794，-122.13261655434621 47.6409833866794，-122.13261655434621 47.64061471602751，-122.13326028450979 47.64061471602751，-122.13326028450979 47.6409833866794）" |
+
+**输出**：
+
+| Equipment_id | Equipment_alert_location | 时间 |
+| --- | --- | --- |
+| 第 | "POINT （-122.13341048821462 47.64043760861279）" | 2017-01-26T00：13： 00.0000000 Z |
+
+```SQL
+SELECT
+    input.Equipment_id AS Equipment_id,
+    input.Equipment_current_location AS Equipment_current_location,
+    input.Time AS Time
+FROM input TIMESTAMP BY time
+JOIN
+    referenceInput 
+    ON input.Equipment_id = referenceInput.Equipment_id
+    WHERE 
+        ST_WITHIN(input.Equipment_currenct_location, referenceInput.Equipment_lease_location) = 1
+```
+
+此查询使制造商能够自动监视计算机位置，并在计算机离开允许的地域隔离区内时收到警报。 内置地理空间函数允许用户在没有第三方库的情况下使用查询中的 GPS 数据。
+
+有关详细信息，请参阅[地理围栏和地理空间聚合方案和 Azure 流分析](geospatial-scenarios.md)一文。
 
 ## <a name="get-help"></a>获取帮助
 
@@ -718,4 +938,3 @@ Azure 流分析提供内置的地理空间功能，这些功能可用于实现�
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

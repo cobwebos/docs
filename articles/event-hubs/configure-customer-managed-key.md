@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744823"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903289"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>使用 Azure 门户（预览版）配置客户托管的密钥，以便静态加密 Azure 事件中心数据
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密（Azure SSE）提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
-
->[!NOTE]
-> 此功能目前处于预览状态。 建议你不要在生产环境中使用中的。
 
 ## <a name="overview"></a>概述
 Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的密钥（创建自己的密钥– BYOK）来加密静态数据。 此功能使你能够创建、轮换、禁用和撤消对用于静态 Azure 事件中心数据加密的客户托管密钥的访问权限。
@@ -41,7 +38,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 
 1. 导航到事件中心专用层群集。
 1. 选择要在其上启用 BYOK 的命名空间。
-1. 在事件中心命名空间的 "**设置**" 页上，选择 "**加密（预览）** "。 
+1. 在事件中心命名空间的 "**设置**" 页上，选择 "**加密**"。 
 1. 选择**客户托管的密钥加密**，如下图所示。 
 
     ![启用客户托管的密钥](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
         ![从 key vault 中选择密钥](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. 填写密钥的详细信息，并单击 "**选择**"。 这将允许使用客户管理的密钥加密命名空间上的静态数据。 
 
-        > [!NOTE]
-        > 对于预览，只能选择一个密钥。 
 
 ## <a name="rotate-your-encryption-keys"></a>旋转加密密钥
 可以通过使用 Azure 密钥保管库旋转机制，在密钥保管库中轮换密钥。 有关详细信息，请参阅[设置密钥轮替和审核](../key-vault/key-vault-key-rotation-log-monitoring.md)。 激活和到期日期还可以设置为自动执行密钥轮换。 事件中心服务将检测新的密钥版本，并自动开始使用它们。
@@ -82,9 +77,6 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 撤消对加密密钥的访问权限不会清除事件中心的数据。 但是，无法从事件中心命名空间访问数据。 可以通过访问策略或通过删除密钥来撤消加密密钥。 了解有关访问策略的详细信息，以及如何保护密钥保管库免受[对密钥保管库的安全访问](../key-vault/key-vault-secure-your-key-vault.md)。
 
 撤消加密密钥后，已加密命名空间上的事件中心服务将无法操作。 如果启用了对密钥的访问权限，或者还原了删除密钥，事件中心服务将选取密钥，以便可以从加密的事件中心命名空间访问数据。
-
-> [!NOTE]
-> 如果从密钥保管库中删除现有加密密钥，并将其替换为事件中心命名空间上的新密钥，因为删除密钥在长达一小时内仍有效（缓存），因此仍可访问旧数据（使用旧密钥加密） 使用新数据，现在只能使用新密钥进行访问。 此行为是在此功能的预览版本中设计的。 
 
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志 
 为启用了 BYOK 的命名空间设置诊断日志，可以在使用客户管理的密钥对命名空间进行加密时，提供有关操作的必需信息。 可以启用这些日志，稍后将其流式传输到事件中心，或通过 log analytics 进行分析或流式传输到存储，以执行自定义的分析。 若要了解有关诊断日志的详细信息，请参阅[Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
@@ -171,10 +163,6 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 
 > [!IMPORTANT]
 > 若要在使用 BYOK 加密的命名空间上启用异地灾难恢复，辅助命名空间必须在专用群集中，并且必须在该群集上启用系统分配的托管标识。 若要了解详细信息，请参阅[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
-
-> [!NOTE]
-> 如果在事件中心命名空间 Azure Key Vault 上配置了虚拟网络（VNet）服务终结点，则将不支持 BYOK。 
-
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

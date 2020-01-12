@@ -13,19 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: b1219153b2b2a0246110d2d9a7a84d16cc2a25f0
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 95d0e1dfc977d77f7cd9853945dabefee3bb7bbd
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707553"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903407"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
 
-服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于最大程度地降低频繁更新网络安全规则的复杂性。 你可以使用服务标记来定义[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或[Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 
+服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而最大程度地降低频繁更新网络 securitiy 规则的复杂性。 
 
-创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "*源*" 或 "*目标*" 字段中指定服务标记名称（例如， **ApiManagement**），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。
+你可以使用服务标记来定义 [网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 " *源*" 或 " *目标* " 字段中指定服务标记名称（例如， **ApiManagement**），可以允许或拒绝相应服务的流量。 
+
+可以使用服务标记来实现网络隔离，并在访问具有公共终结点的 Azure 服务时，通过常规 Internet 保护 Azure 资源。 创建入站/出站网络安全组规则，拒绝发往/发往**Internet**的流量，允许流量流向或来自特定 Azure 服务的**AzureCloud**或其他[可用服务标记]()。 
 
 ## <a name="available-service-tags"></a>可用服务标记
 下表包含可用于[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)规则的所有服务标记。

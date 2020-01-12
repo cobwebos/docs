@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555673"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903478"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理永久性策略
 
@@ -23,7 +23,7 @@ ms.locfileid: "74555673"
 
 ## <a name="set-retention-policies-and-legal-holds"></a>设置保留策略和合法保留
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。 容器必须位于常规用途 v2 或 Blob 存储帐户中。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74555673"
 
     ![策略类型下面的“标记名称”框](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. 若要清除合法保留，只需删除应用的合法保留标识符标记。
+9. 若要清除合法保留，请删除应用的合法保留标识符标记。
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -73,7 +73,7 @@ Az 模块支持不可变的存储。  若要启用该功能，请执行以下步
 2. 删除以前安装的 Azure PowerShell。
 3. 安装 Azure PowerShell：`Install-Module Az –Repository PSGallery –AllowClobber`。
 
-以下示例 PowerShell 脚本仅供参考。 此脚本创建新的存储帐户和容器。 然后，它演示如何设置和清除法定保留、创建和锁定基于时间的保留策略（也称为不可变策略），并延长保留时间间隔。
+以下示例 PowerShell 脚本仅供参考。 此脚本创建新的存储帐户和容器。 然后向您演示如何设置和清除合法保留、创建和锁定基于时间的保留策略（也称为永久性策略），并延长保留间隔。
 
 首先，创建一个 Azure 存储帐户：
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>启用允许受保护的追加 blob 写入
+
+目前只能通过此特定[门户链接](https://aka.ms/immutableappendblobs)访问基于时间的保留策略的 `allowProtectedAppendWrites` 设置。 
+
+> [!IMPORTANT] 
+>  基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
+> - 美国东部
+> - 美国中南部
+> - 美国西部 2
+>
+> 有关详细信息，请参阅[允许受保护的追加 Blob 写入](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
+
+![允许额外追加写入](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>后续步骤
 

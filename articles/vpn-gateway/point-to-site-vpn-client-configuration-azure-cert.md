@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143795"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902999"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -104,10 +104,10 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
    ![身份验证设置](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
 6. 单击“选择…” 选择要用于身份验证的客户端证书。 这是你在步骤 2 中安装的证书。
 
-   ![证书](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![证书 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. “选择标识”会显示可供选择的证书列表。 选择适当的证书，单击“继续”。
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![标识](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在“本地 ID”字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -121,7 +121,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ### <a name="genlinuxcerts"></a>生成证书
 
-如果尚未生成证书，请执行以下步骤：
+如果尚未生成证书，请使用以下步骤：
 
 [!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
@@ -134,13 +134,13 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
    ```
    sudo apt install network-manager-strongswan
    ```
-2. 选择“设置”，然后选择“网络”。
+2. 选择 "**设置**"，然后选择 "**网络**"。
 
    ![编辑连接](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. 单击 **+** 按钮创建新连接。
+3. 单击 " **+** " 按钮以创建新连接。
 
    ![添加连接](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. 从菜单中选择“IPsec/IKEv2 (strongSwan)”，然后双击。 可以在此步骤中命名连接。
+4. 从菜单中选择 " **IPsec/IKEv2 （strongSwan）** "，然后双击。 可在此步骤中命名连接。
 
    ![选择连接类型](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
 5. 打开下载的客户端配置文件包含的 **Generic** 文件夹中的 **VpnSettings.xml** 文件。 找到名为 **VpnServer** 的标记，并复制以“azuregateway”开头、以“.cloudapp.net”结尾的名称。
@@ -150,7 +150,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 7. 在连接的“客户端”部分，为“身份验证”选择“证书/私钥”。 对于“证书”和“私钥”，请选择前面创建的证书和私钥。 在“选项”中，选择“请求内部 IP 地址”。 然后，单击“添加”。
 
    ![请求内部 IP 地址](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
-8. **打开**连接。
+8. **打开连接。**
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
@@ -160,7 +160,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ### <a name="generate-certificates"></a>生成证书
 
-如果尚未生成证书，请执行以下步骤：
+如果尚未生成证书，请使用以下步骤：
 
 [!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 

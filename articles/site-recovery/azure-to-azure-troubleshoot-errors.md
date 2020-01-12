@@ -1,18 +1,18 @@
 ---
 title: 排查 Azure Site Recovery 中的 Azure VM 复制问题
 description: 解决复制 Azure 虚拟机进行灾难恢复时出现的错误。
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgangal
-ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895012"
+ms.locfileid: "75902555"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -66,7 +66,7 @@ ms.locfileid: "75895012"
 
 按照 Linux 操作系统版本分销商提供的指导，在 VM 上获取最新的受信任根证书和最新的证书吊销列表。
 
-由于 SuSE Linux 使用符号链接（或*符号链接*）来维护证书列表，请遵循以下步骤：
+由于 SUSE Linux 使用符号链接（或*符号链接*）来维护证书列表，请遵循以下步骤：
 
 1. 以根用户身份登录。
 

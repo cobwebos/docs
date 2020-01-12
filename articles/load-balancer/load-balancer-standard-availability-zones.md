@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771472"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903333"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
@@ -209,10 +209,6 @@ SNAT 端口预先分配算法与或没有可用性区域相同。
 区域性可以向区域提供显式保证，并与区域的运行状况明确共享命运。 如果附加资源是同一区域中的区域虚拟机，则创建具有区域性 IP 地址前端或区域性内部负载均衡器前端的负载均衡器规则是理想的做法。  或者，您的应用程序可能需要明确了解资源在哪个区域中的位置，并且您希望在单独的区域中显式了解可用性。  可以选择针对跨区域分布的端到端服务公开多个局域性前端（即，将每个区域的局域性前端用于多个局域性虚拟机规模集）。  如果局域性前端是公共 IP 地址，则可以通过[流量管理器](../traffic-manager/traffic-manager-overview.md)使用多个局域性前端来公开服务。  或者，可以通过第三方监视解决方案使用多个局域性前端来获取每个区域的运行状况和性能见解，并使用区域冗余的前端公开整个服务。 只能使用适应同一区域的局域性前端来为局域性资源提供服务，并避免对局域性资源使用潜在有害的跨区域场景。  仅存在可用性区域的区域中存在区域性资源。
 
 在不了解服务体系结构的情况下，无法遵循任何常规指导来做出更好的选择。  查看[Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/)，以提高应用程序在故障情况下的复原能力。
-
-## <a name="limitations"></a>限制
-
-- 尽管数据平面是完全区域冗余的（除非指定了局域性保证），但控制平面操作不完全是区域冗余的。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[可用性区域](../availability-zones/az-overview.md)

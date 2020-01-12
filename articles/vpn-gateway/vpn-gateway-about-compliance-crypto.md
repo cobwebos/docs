@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666488"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902825"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
 
@@ -34,7 +34,7 @@ Azure VPN 网关的默认策略集在文章：[关于用于站点到站点 Vpn �
 
 ## <a name="cryptographic-requirements"></a>加密要求
 
-对于需要特定加密算法或参数的通信，通常由于符合性或安全性要求，你现在可以将其 Azure VPN 网关配置为使用具有特定加密算法的自定义 IPsec/IKE 策略，并关键优势，而不是 Azure 默认策略集。
+对于需要特定加密算法或参数的通信，通常由于符合性或安全性要求，你现在可以将其 Azure VPN 网关配置为使用具有特定加密算法和密钥强度的自定义 IPsec/IKE 策略，而不是使用 Azure 默认策略集。
 
 例如，Azure VPN 网关的 IKEv2 主模式策略仅使用 Diffie-hellman 组2（1024位），而你可能需要指定要在 IKE 中使用的更强的组，例如组14（2048位）、组24（2048位 MODP 组）或 ECP （椭圆曲线组）256或384位（分别为组19和组20）。 类似的要求也适用于 IPsec 快速模式策略。
 

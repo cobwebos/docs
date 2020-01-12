@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895832"
+ms.locfileid: "75903202"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -29,7 +29,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 你可以使用[活动日志警报](../service-health/alerts-activity-log-service-notifications.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
+- 一个批从向客户发送通知开始。 默认情况下，通知将发送到服务管理员和共同管理员。 你可以使用[活动日志警报](../service-health/alerts-activity-log-service-notifications.md)来添加更多收件人和消息传送选项，如电子邮件、短信和 webhook。  
 - 通知完成后，将提供一个*自助服务窗口*。 在此窗口中，可以查询受影响的虚拟机，并根据自己的计划需求开始维护。 自助服务时段通常约为35天。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
@@ -84,7 +84,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **问：如何收到有关计划内维护的通知？**
 
-**答：** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久以后，电子邮件通知将发送到订阅所有者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
+**答：** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久之后，会向订阅管理员发送电子邮件通知（每个订阅一个电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
 
 **问：在门户、Powershell 或 CLI 中看不到任何计划内维护的指示。怎么了？**
 

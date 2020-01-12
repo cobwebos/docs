@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 14f5998ee1c562b649257f7dce9ffc2f52a66226
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 202bffb03a73acde67f0d4a03b31aa9a6fbf9824
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174931"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901768"
 ---
 ## <a name="deployment-considerations"></a>部署注意事项
 
@@ -25,7 +25,7 @@ ms.locfileid: "71174931"
 
 * 如果需要部署的 N 系列 VM 较多，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 
-* 可能需要提高 Azure 订阅中的核心配额（按区域）以及单独针对 NC、NCv2、NCv3、ND、NDv2、NV 或 NVv2 核心的配额。 若要请求提高配额，可免费[提出在线客户支持请求](../articles/azure-supportability/how-to-create-azure-support-request.md)。 默认限制可能因订阅类别而异。
+* 可能需要提高 Azure 订阅中的核心配额（按区域）以及单独针对 NC、NCv2、NCv3、ND、NDv2、NV 或 NVv2 核心的配额。 若要请求提高配额，可免费[提出在线客户支持请求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 默认限制可能因订阅类别而异。
 
 
 
