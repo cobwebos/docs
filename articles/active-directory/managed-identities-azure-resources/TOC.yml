@@ -20,8 +20,6 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: 访问 Azure 存储
           href: tutorial-vm-windows-access-storage.md
-        - name: 使用访问密钥访问 Azure 存储
-          href: tutorial-windows-vm-access-storage.md
         - name: 访问 Azure SQL
           href: tutorial-windows-vm-access-sql.md
         - name: 访问 Azure Key Vault
