@@ -1,26 +1,17 @@
 ---
-title: 教程 - 清理 Azure Service Fabric 网格资源 | Microsoft Docs
+title: 教程 - 清理 Azure Service Fabric 网格资源
 description: 了解如何删除 Azure Service Fabric 网格资源，避免为不再使用的资源付费。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351878"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教程：删除 Azure 资源
 
@@ -40,7 +31,7 @@ ms.locfileid: "56815784"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -48,7 +39,7 @@ ms.locfileid: "56815784"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing。
+本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing 。
 
 Azure 提供的一项便利是：若创建的资源与特定资源组关联，则删除该资源组即可删除所有关联的资源。 这样，就无需逐个删除。
 
@@ -62,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-或者，可以从[门户](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组。 
+或者，可以从[门户](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组  。 
 
 ## <a name="next-steps"></a>后续步骤
 

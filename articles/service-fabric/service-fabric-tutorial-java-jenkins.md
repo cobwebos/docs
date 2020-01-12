@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中为 Service Fabric 上的 Java 应用配置 Jenkins |Microsoft Docs
+title: 为 Azure 中 Service Fabric 上的 Java 应用配置 Jenkins
 description: 本教程介绍如何设置使用 Jenkins 部署 Java Service Fabric 应用程序的持续集成。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376641"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
@@ -40,7 +31,7 @@ ms.locfileid: "57880580"
 > * [设置监视和诊断应用程序](service-fabric-tutorial-java-elk.md)
 > * 设置 CI/CD
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 通过 [Git 下载页](https://git-scm.com/downloads)在本地计算机上安装 Git。 有关 Git 的详细信息，请参阅 [Git 文档](https://git-scm.com/docs)。
 * 在 [Jenkins](https://jenkins.io/) 方面有实践经验。
@@ -96,7 +87,7 @@ ms.locfileid: "57880580"
 
    b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
-1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
+1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请使用以下步骤：
 
    a. 转到 GitHub 存储库页。 转到“设置”   >   “集成和服务”。
 
@@ -193,7 +184,7 @@ ms.locfileid: "57880580"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在计算机上部署 Service Fabric Jenkins 容器

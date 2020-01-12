@@ -1,26 +1,17 @@
 ---
-title: 教程 - 升级 Azure Service Fabric 网格中运行的应用 | Microsoft Docs
+title: 教程 - 升级 Azure Service Fabric 网格中运行的应用
 description: 本教程介绍如何升级 Azure Service Fabric 网格中运行的应用。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351733"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>教程：升级 Service Fabric 网格中运行的 Service Fabric 应用程序
 
@@ -41,7 +32,7 @@ ms.locfileid: "58337623"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -59,7 +50,7 @@ ms.locfileid: "58337623"
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-在应用程序资源的部署模板中，每项服务都有一个 CPU 属性，该属性可以用来设置请求的 CPU 资源数。 应用程序由多项服务组成，每项服务都具有唯一的 CPU 设置，这些服务可以一起进行部署和管理。 为增加 Web 前端服务的 CPU 资源数，请在部署模板或参数文件中修改 cpue 值。  然后，升级应用程序。
+在应用程序资源的部署模板中，每项服务都有一个 CPU  属性，该属性可以用来设置请求的 CPU 资源数。 应用程序由多项服务组成，每项服务都具有唯一的 CPU  设置，这些服务可以一起进行部署和管理。 为增加 Web 前端服务的 CPU 资源数，请在部署模板或参数文件中修改 cpue 值  。  然后，升级应用程序。
 
 ### <a name="modify-the-deployment-template-parameters"></a>修改部署模板参数
 
@@ -67,7 +58,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 以前，应用程序使用 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件进行部署。
 
-在本地打开 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件并将 frontEndCpu 值设置为 1：
+在本地打开 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件并将 frontEndCpu 值设置为 1  ：
 
 ```json
       "frontEndCpu":{
@@ -77,7 +68,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 保存对参数文件所做的更改。  
 
-frontEndCpu 参数在 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的 parameters 节中声明：
+frontEndCpu 参数在 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的 parameters 节中声明   ：
 
 ```json
 "frontEndCpu": {
@@ -89,7 +80,7 @@ frontEndCpu 参数在 [mesh_rp.windows.json 部署模板](https://github.com/Azu
 }
 ```
 
-WebFrontEnd 服务“codePackages->resources->requests->cpu”属性引用 frontEndCpu 参数：
+WebFrontEnd 服务“codePackages->resources->requests->cpu”属性引用 frontEndCpu 参数   ：
 
 ```json
     "services": [

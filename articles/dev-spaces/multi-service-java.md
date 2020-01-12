@@ -3,14 +3,14 @@ title: 运行多个依赖服务：Java 和 Visual Studio Code
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试多服务 Java 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 3fe19997ab54f02b6a5f029abbdb69d5ea6532f7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438334"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>运行多个依赖服务：将 Java 和 Visual Studio Code 与 Azure Dev Spaces 结合使用
 

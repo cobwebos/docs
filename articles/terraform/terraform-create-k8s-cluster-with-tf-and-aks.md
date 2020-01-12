@@ -3,12 +3,12 @@ title: 教程 - 使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubern
 description: 演示如何使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集的教程
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cea9d93ed418a4f2e90fa3f2dfd3441f4b296316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374958"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教程：使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
 
@@ -21,9 +21,9 @@ ms.locfileid: "74159299"
 > * 使用 Terraform 和 AKS 创建 Kubernetes 群集
 > * 使用 kubectl 工具测试 Kubernetes 群集的可用性
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
@@ -138,7 +138,7 @@ ms.locfileid: "74159299"
             }
         }
 
-        agent_pool_profile {
+        default_node_pool {
             name            = "agentpool"
             count           = var.agent_count
             vm_size         = "Standard_DS1_v2"
@@ -168,7 +168,7 @@ ms.locfileid: "74159299"
 
     使用 `linux_profile` 记录可以配置用于通过 SSH 登录到工作器节点的设置。
 
-    使用 AKS 时，只需支付工作节点的费用。 `agent_pool_profile` 记录配置这些工作器节点的详细信息。 `agent_pool_profile record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 `count` 值。
+    使用 AKS 时，只需支付工作节点的费用。 `default_node_pool` 记录配置这些工作器节点的详细信息。 `default_node_pool record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 `count` 值。
 
 1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 

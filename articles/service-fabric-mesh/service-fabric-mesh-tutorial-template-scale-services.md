@@ -1,26 +1,17 @@
 ---
-title: 教程 - 缩放在 Azure Service Fabric 网格中运行的应用 | Microsoft Docs
+title: 教程 - 缩放 Azure Service Fabric 网格中运行的应用
 description: 本教程介绍如何缩放在 Service Fabric 网格中运行的应用程序中的服务。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351825"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教程：缩放在 Service Fabric 网格中运行的应用程序
 
@@ -41,7 +32,7 @@ ms.locfileid: "58337759"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 

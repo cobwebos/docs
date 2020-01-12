@@ -1,26 +1,17 @@
 ---
-title: 教程 - 删除 Azure Service Fabric 网格中运行的应用 | Microsoft Docs
+title: 教程 - 删除 Azure Service Fabric 网格中运行的应用
 description: 在本教程中，了解如何删除 Service Fabric 网格中运行的应用程序并删除资源。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339663"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351799"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教程：删除应用程序和资源
 
@@ -41,7 +32,7 @@ ms.locfileid: "58339663"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
