@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: 为加密的 VM 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: 为带有已启用 CMK 的磁盘的 VM 启用 Azure 到 Azure 复制
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: 为 S2D VM 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: 为添加的磁盘启用复制

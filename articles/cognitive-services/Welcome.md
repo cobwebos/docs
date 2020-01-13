@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 081951e2e77c7fdd077dc92fe0368423db85f641
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e6f074dd6748f58a86a6ac8166ca0ee858926975
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379787"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -36,10 +36,14 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "语音服务")|语音服务将语音支持功能添加到应用程序。|
+|[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "语音服务")|语音服务将支持语音的功能添加到应用程序。|
 |[说话人识别 API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "说话人识别 API")（预览版）|说话人识别 API 为说话人识别和验证提供算法。|
 |[必应语音](https://docs.microsoft.com/azure/cognitive-services/speech/home "必应语音")（即将停用）|必应语音 API 为你提供了一种在应用程序中创建语音支持功能的简便方法。|
 |[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator 语音")（即将停用）|语音翻译是一项机器翻译服务。|
+
+> [!NOTE]
+> 正在查找 [Azure 认知搜索](https://docs.microsoft.com/azure/search/)？ 尽管它对某些任务使用认知服务，但它是一项支持其他方案的不同搜索技术。
+
 
 ## <a name="language-apis"></a>语言 API
 
@@ -49,7 +53,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|通过 QnA Maker，可以从半结构化内容生成问答服务。|
 |[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文本分析")|文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
 |[文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/ "文本翻译")|文本翻译近乎实时地提供基于机器的文本翻译。|
-|[视频索引器](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "视频索引器")|使用视频索引器从视频中提取见解。|
+
 
 ## <a name="search-apis"></a>搜索 API
 
@@ -84,7 +88,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 ## <a name="upgrade-to-unlock-limits"></a>通过升级来解锁限制
 
-所有 API 都有一个免费试用计划，该计划具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "o产品/服务和定价)。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
+所有 API 都有一个免费试用计划，该计划具有使用量和吞吐量限制。  在 Azure 门户中部署服务时，可以通过使用付费产品/服务和选择适当的定价层选项来增加这些限制。 [详细了解产品/服务和定价](https://azure.microsoft.com/pricing/details/cognitive-services/ "产品/服务和定价")。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
 
 ## <a name="regional-availability"></a>区域可用性
 
@@ -95,6 +99,10 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 ## <a name="supported-cultural-languages"></a>支持的区域性语言
 
  认知服务在服务级别支持各种区域性语言。 可以在[支持的语言列表](language-support.md)中找到每个 API 的语言可用性。
+
+## <a name="securing-resources"></a>保护资源
+
+Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Directory 凭据进行的[身份验证](authentication.md)、有效的资源密钥以及 [Azure 虚拟网络](cognitive-services-virtual-networks.md)。
 
 ## <a name="container-support"></a>容器支持
 
@@ -110,8 +118,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 ## <a name="support"></a>支持
 
-* 有关支持和技术问题，请在 [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-cognitive) 上发帖
-* 有关反馈和功能申请，请转到 [UserVoice](https://cognitive.uservoice.com/)
+认知服务提供多个[支持选项](cognitive-services-support-options.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: 概念
   items:
+    - name: NoSQL 与关系数据库
+      href: relational-nosql.md
     - name: 全球分布
       items:
         - name: 概述
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: 将用户访问权限仅限于数据操作
           href: how-to-restrict-user-data.md
+        - name: 配置客户管理的密钥
+          href: how-to-setup-cmk.md
     - name: 企业就绪情况
       items:
         - name: 从备份还原数据
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: 将数百 TB 的数据迁移到 Azure Cosmos DB
           href: migrate-cosmosdb-data.md
+        - name: 迁移一对多关系数据
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: 批量执行程序库
       items:
         - name: 关于批量执行程序库

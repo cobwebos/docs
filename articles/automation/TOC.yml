@@ -15,6 +15,8 @@
       displayName: certificate renewal
     - name: 配置使用 AWS 进行的身份验证
       href: automation-config-aws-account.md
+    - name: 加密 Azure 自动化中的安全资产
+      href: automation-secure-asset-encryption.md
     - name: 管理基于角色的访问控制
       href: automation-role-based-access-control.md
       displayName: RBAC
@@ -286,7 +288,7 @@
         - name: 排查 State Configuration (DSC) 问题
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
-    - name: 引用
+    - name: 参考
       items:
         - name: 社区解决方案
           items:
@@ -356,7 +358,7 @@
     - name: 从 Orchestrator 迁移
       href: automation-orchestrator-migration.md
       displayName: 'SCORCH, runbooks'
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation

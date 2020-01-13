@@ -2,18 +2,28 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 2fe3104d61b5fe2fbf9624ed2fd4fdb2de5686a2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446222"
 ---
-获取用于对应用程序进行身份验证的密钥和终结点。 在本地计算机上使用 [Azure 门户](../../../cognitive-services-apis-create-account.md)或 [Azure CLI](../../../cognitive-services-apis-create-account-cli.md) 创建用于文本分析的资源。 还可以：
+通过以下选项之一开始使用文本分析 API。
 
-* 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
-* 在 [Azure 门户](https://portal.azure.com/)上查看资源
 
-从试用订阅或资源获取密钥和终结点后，创建两个[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 为密钥创建名为 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 的变量，为终结点创建名为 `TEXT_ANALYTICS_ENDPOINT` 的变量。
+* <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="创建试用文本分析资源" target="_blank">创建试用资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * 无需任何 Azure 订阅。 
+    * 有效期为七天，免费。 注册后，试用密钥和终结点将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上可用。 
+    * 如果你想尝试文本分析 API，但没有 Azure 订阅，那么这是一个很好的选择。
+    
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">创建文本分析资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * 在删除资源前，可通过 Azure 门户使用。
+    * 使用免费定价层试用该服务，稍后升级到用于生产的付费层。
+     
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="为多个服务创建资源" target="_blank">创建多服务资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    * 在删除资源前，可通过 Azure 门户使用。  
+    * 在多个认知服务中对应用程序使用相同的密钥和终结点。
+    

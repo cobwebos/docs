@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: be9331ccd548628bfc27172c4f6e625bdba1632c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158924"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912812"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保护 Azure App Service web 应用和 Api
 
@@ -29,7 +29,7 @@ Azure App Service 是一种完全托管的平台，用于生成和托管 web 应
 
 启用应用服务计划后，安全中心会评估应用服务计划涵盖的资源并根据其发现生成安全建议。 安全中心保护你的应用服务正在其中运行的 VM 实例和管理界面。 此外，它还监视向/从应用服务中运行的应用发送的请求和响应。
 
-安全中心利用云的规模和 Azure 作为云提供商的可见性来监视常见的 web 应用攻击。 安全中心可能会发现对你的应用程序的攻击并识别新兴攻击，即使攻击者处于侦测阶段，扫描还可以识别多个 Azure 托管应用程序的漏洞。 作为 Azure 本机服务，安全中心也处于独一无二的位置，可提供基于主机的安全分析，涵盖此 PaaS 的基础计算节点，使安全中心能够检测到对已被利用的 web 应用程序的攻击。
+安全中心利用云的规模和 Azure 作为云提供商的可见性来监视常见的 web 应用攻击。 安全中心可能会发现对你的应用程序的攻击并识别新兴攻击，即使攻击者处于侦测阶段，扫描还可以识别多个 Azure 托管应用程序的漏洞。 作为 Azure 本机服务，安全中心也处于独一无二的位置，可提供基于主机的安全分析，涵盖此 PaaS 的基础计算节点，使安全中心能够检测到对已被利用的 web 应用程序的攻击。 有关 Azure App Service 安全中心威胁检测警报的详细信息，请参阅[云本机计算的威胁检测](security-center-alerts-compute.md#azure-app-service-)。
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>启用应用服务的监视和保护

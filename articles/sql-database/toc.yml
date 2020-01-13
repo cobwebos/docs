@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: 加载和移动数据
           items:
+            - name: 从 Azure VM 导入或导出
+              href: import-export-from-vm.md
             - name: 从 BACPAC 文件导入数据库
               href: sql-database-import.md
             - name: 将数据库导出到 BACPAC 文件

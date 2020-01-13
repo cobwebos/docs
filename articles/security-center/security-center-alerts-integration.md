@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心内 Azure 安全产品的威胁检测
-description: 本主题介绍 azure 安全中心可为其提供威胁检测的 Azure 安全产品
+title: Azure 安全中心内 Azure 安全产品的威胁检测警报
+description: 本主题介绍 Azure 安全中心可在其中显示威胁警报的 Azure 安全产品
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: memildin
-ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 16cae819b1714c2b410cfa311a3602e0f4ed968a
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665717"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913036"
 ---
-# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Azure WAF 和 Azure DDoS 保护的威胁检测
+# <a name="threat-detection-alerts-from-azure-waf-and-azure-ddos-protection"></a>Azure WAF 和 Azure DDoS 防护中的威胁检测警报
 
-Azure 安全中心可以为以下 Azure 安全产品提供威胁检测，（需要为每个产品提供单独的许可证）：
+Azure 安全中心可以显示和收集以下 Azure 安全产品生成的威胁检测警报，（需要为每个产品提供单独的许可证）：
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS 防护](#azure-ddos)

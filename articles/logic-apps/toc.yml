@@ -39,7 +39,7 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: 访问 Azure 虚拟网络
       href: connect-virtual-network-vnet-isolated-environment-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: 向集成服务环境添加项目
           href: add-artifacts-integration-service-environment-ise.md
+        - name: 为集成服务环境设置客户管理的加盟密钥
+          href: customer-managed-keys-integration-service-environment.md
     - name: 访问本地数据
       items:
         - name: 安装数据网关
@@ -349,7 +351,7 @@
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B 处理
           href: logic-apps-enterprise-integration-b2b.md
-- name: 引用
+- name: 参考
   items:
     - name: 体系结构模式
       items:

@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. 创建主机池以验证服务更新
       href: create-validation-host-pool.md
-    - name: 6. 部署管理工具
-      href: manage-resources-using-ui.md
-    - name: 7. 设置服务警报
+    - name: 6. 设置服务警报
       href: set-up-service-alerts.md
 - name: 操作说明
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: 自定义源
       href: customize-feed-for-virtual-desktop-users.md
+    - name: 部署管理工具
+      items:
+        - name: Azure 资源管理器模板
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: 使用服务诊断
       items:
         - name: 部署诊断工具

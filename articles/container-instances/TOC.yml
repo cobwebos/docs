@@ -51,14 +51,18 @@
       href: container-instances-orchestrator-relationship.md
     - name: 安全注意事项
       href: container-instances-image-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 部署
       items:
-        - name: 在虚拟网络（预览版）中部署
+        - name: 在虚拟网络中部署
           href: container-instances-vnet.md
         - name: 从 Azure 容器注册表部署
           href: container-instances-using-azure-container-registry.md
+        - name: 加密部署数据
+          href: container-instances-encrypt-data.md
+        - name: 在专用主机上部署
+          href: container-instances-dedicated-hosts.md
     - name: 容器方案
       items:
         - name: 为运行一次的任务设置重启策略
@@ -81,7 +85,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: 密钥
+        - name: 机密
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md
@@ -109,7 +113,7 @@
       items:
         - name: 排查常见问题
           href: container-instances-troubleshooting.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/container

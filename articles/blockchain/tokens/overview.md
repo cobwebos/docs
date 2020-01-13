@@ -4,12 +4,12 @@ description: Azure Blockchain Tokens 是用于颁发和管理令牌的平台即�
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387167"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>什么是 Azure 区块链令牌？
 
@@ -40,6 +40,14 @@ Azure Blockchain Tokens 提供 Azure 门户管理和 API 用于在连接的区�
 ## <a name="token-taxonomy-framework"></a>令牌分类框架
 
 Azure Blockchain Tokens 构建在基于标准的令牌分类框架 (TTF) 基础之上。 TTF 是[令牌分类计划](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) 令牌工作组创建的一系列可交付结果。 TTI 工作组为可跨所有主要账本（包括 Ethereum、Quorum、Corda 和 Hyperledger Fabric）应用的令牌及其行为定义业务分类。 该工作组的目标是创建一个框架用于从业务的立场标准化令牌的使用，以力求简化和普及化基于令牌的开发。 让行业在业务级别定义这些令牌及其行为，可以从操控令牌的业务逻辑中分离出令牌的详细实现环节。
+
+## <a name="support-and-feedback"></a>支持和反馈
+
+对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
+
+若要获取 Azure Blockchain Tokens 预览版访问权限，请[联系 Azure Blockchain Tokens 团队](https://aka.ms/PreviewForm)。
+
+若要提供产品反馈或请求新功能，请通过[区块链的 Azure 反馈论坛](https://aka.ms/blockchainuservoice)来为意见发布投票。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -848,6 +848,8 @@
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure 防火墙的服务标记
           href: ./hdinsight-service-tags.md
+        - name: 客户管理的密钥磁盘加密
+          href: ./disk-encryption.md
     - name: 如何
       items:
         - name: 使用 ID 代理进行凭据管理

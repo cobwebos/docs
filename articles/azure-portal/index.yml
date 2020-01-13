@@ -12,12 +12,12 @@ metadata:
   author: mblythe
   ms.author: mblythe
   ms.date: 12/19/2019
-  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
-  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.openlocfilehash: 277326eb6b120c4cc1b456a17c6f58791c66dd16
+  ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75640034"
+  ms.lasthandoff: 01/11/2020
+  ms.locfileid: "75890777"
 landingContent:
 - title: 关于 Azure 门户
   linkLists:
@@ -77,3 +77,11 @@ landingContent:
     links:
     - text: 启用高对比度
       url: azure-portal-change-theme-high-contrast.md
+- title: 创建和管理支持请求
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建 Azure 支持请求
+      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
+    - text: 排查区域或 SKU 订阅问题
+      url: ../azure-portal/supportability/sku-series-unavailable.md

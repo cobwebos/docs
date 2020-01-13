@@ -184,7 +184,7 @@
           items:
             - name: GPU 优化
               href: sizes-gpu.md
-            - name: 安装 GPU 驱动程序
+            - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
             - name: 安装 AMD GPU 驱动程序
               href: n-series-amd-driver-setup.md

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423120"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -58,7 +58,10 @@ ms.locfileid: "74420515"
 
 ## <a name="resource-access"></a>资源访问
 
-注册和加入操作可让用户无缝单一登录 (SSO) 到云资源，并可让管理员将条件访问策略应用到这些资源。 
+将设备注册并加入到 Azure AD，可以让用户能够无缝登录 (SSO) 到云资源。 此过程还使管理员可以基于用于访问资源的设备将条件访问策略应用于资源。 
+
+> [!NOTE]
+> 基于设备的条件访问策略需要已加入混合 Azure AD 的设备或已加入 Azure AD 或已注册到 Azure AD 的合规设备。
 
 已加入 Azure AD 或加入混合 Azure AD 的设备可受益于组织本地资源以及云资源的 SSO。 在[本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理](azuread-join-sso.md)一文中可以找到详细信息。
 
@@ -77,7 +80,7 @@ ms.locfileid: "74420515"
 
 可通过自助方式或者由管理员执行的受控预配流程，将设备加入 Azure AD。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 使用 Azure AD 中的设备标识管理能够：
 

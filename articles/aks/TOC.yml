@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: 创建专用群集
           href: private-clusters.md
+        - name: 为磁盘使用 BYOK
+          href: azure-disk-customer-managed-keys.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor

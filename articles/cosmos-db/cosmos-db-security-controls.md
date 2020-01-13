@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872139"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913078"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 的安全控制
 
@@ -41,24 +41,24 @@ ms.locfileid: "74872139"
 
 | 安全控制 | 是/否 | 说明|
 |---|---|--|
-| Authentication| 是 | 数据库帐户级别为 Yes;在数据平面级别，Cosmos DB 使用资源令牌和密钥访问。 |
+| 身份验证| 是 | 数据库帐户级别为 Yes;在数据平面级别，Cosmos DB 使用资源令牌和密钥访问。 |
 | 授权| 是 | Azure Cosmos 帐户支持主密钥（主密钥和辅助密钥）和资源令牌。 您可以使用主密钥来获取对数据的读/写或只读访问权限。 资源令牌允许对资源（如文档和容器）进行有限的时间访问。 |
 
 ## <a name="data-protection"></a>数据保护
 
 | 安全控制 | 是/否 | 说明 |
 |---|---|--|
-| 服务器端加密： Microsoft 托管密钥 | 是 | 默认情况下，所有 Azure Cosmos 数据库和备份都已加密;请参阅[Azure Cosmos DB 中的数据加密](database-encryption-at-rest.md)。 不支持具有客户托管密钥的服务器端加密。 |
-| 服务器端加密：客户托管的密钥（BYOK） | No |  |
+| 服务器端加密： Microsoft 托管密钥 | 是 | 默认情况下，所有 Azure Cosmos 数据库和备份都已加密;请参阅[Azure Cosmos DB 中的数据加密](database-encryption-at-rest.md)。 |
+| 服务器端加密：客户托管的密钥（BYOK） | 是 | 请参阅[为你的 Azure Cosmos DB 帐户配置客户托管的密钥](how-to-setup-cmk.md)  |
 | 列级加密（Azure 数据服务）| 是 | 仅适用于表 API 高级版。 并非所有 Api 都支持此功能。 请参阅[Azure Cosmos DB 简介：表 API](table-introduction.md)。 |
 | 传输中的加密（如 ExpressRoute 加密、VNet 加密和 VNet-VNet 加密）| 是 | 传输时加密所有 Azure Cosmos DB 数据。 |
-| 加密的 API 调用| 是 | 与 Azure Cosmos DB 的所有连接都支持 HTTPS。 Azure Cosmos DB 还支持 TLS 1.2 连接，但这并不是强制性的。 如果客户在其端上关闭了低级 TLS，则可以确保连接到 Cosmos DB。  |
+| 加密的 API 调用| 是 | 与 Azure Cosmos DB 的所有连接都支持 HTTPS。 Azure Cosmos DB 还支持 TLS 1.2。<br>可以强制服务器端使用最低 TLS 版本。 为此，请联系[cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com])。 |
 
 ## <a name="configuration-management"></a>配置管理
 
 | 安全控制 | Yes/No | 说明|
 |---|---|--|
-| 配置管理支持（配置的版本控制等）| No  | | 
+| 配置管理支持（配置的版本控制等）| 否  | | 
 
 ## <a name="additional-security-controls-for-cosmos-db"></a>Cosmos DB 的其他安全控件
 

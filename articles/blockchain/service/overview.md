@@ -4,12 +4,12 @@ description: Azure 区块链服务概述
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387371"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -19,7 +19,7 @@ Azure 区块链服务是一项完全托管的账本服务，使用户能够在 A
 * 内置联盟管理
 * 使用常用的开发工具开发智能合同
 
-Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用 [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共识机制为 Ethereum [Quorum](https://www.jpmorgan.com/Quorum) 账本提供支持。
+Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用 [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共识机制为 Ethereum [Quorum](https://www.goquorum.com/) 账本提供支持。
 
 这些功能几乎都不需要进行任何管理，并且都是在不另外收费的情况下提供的。 可以专注于应用开发和业务逻辑，而不是分配时间和资源来管理虚拟机和基础结构。 此外，可以继续开发应用程序，使用自己选择的开放源代码工具和平台即可交付解决方案，而无需学习新技能。
 
@@ -67,10 +67,17 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”   。 �
 
 ## <a name="support-and-feedback"></a>支持和反馈
 
-需要帮助或提供反馈？
+对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
 
-* 请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)、[Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)和 [Azure 区块链论坛](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)。
-* 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service) 创建条目。
+若要提供产品反馈或请求新功能，请通过[区块链的 Azure 反馈论坛](https://aka.ms/blockchainuservoice)来为意见发布投票。
+
+### <a name="community-support"></a>社区支持
+
+与 Microsoft 工程师和 Azure 区块链社区专家交流。
+
+* [Azure 区块链 MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>后续步骤
 

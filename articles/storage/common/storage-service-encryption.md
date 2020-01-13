@@ -4,17 +4,17 @@ description: Azure 存储通过在将数据保存到云之前自动对其进行�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/03/2020
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: b74943ce3e3e67855a07fa32f15612bbb2351170
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665435"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913098"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -38,7 +38,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 您可以依赖于 Microsoft 托管的密钥来加密您的存储帐户，也可以通过自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，则有两个选项：
 
-- 你可以使用 Azure Key Vault 指定*客户托管的密钥*，以便在 Blob 存储和 Azure 文件中对数据进行加密和解密。
+- 你可以使用 Azure Key Vault 指定*客户托管的密钥*，以便在 Blob 存储和 Azure 文件中对数据进行加密和解密。<sup>1，2</sup>
 - 可以在 Blob 存储操作上指定*客户提供的密钥*。 对 Blob 存储进行读取或写入请求的客户端可以在请求中包含加密密钥，以精细控制如何对 blob 数据进行加密和解密。
 
 下表比较了 Azure 存储加密的密钥管理选项。
@@ -46,11 +46,14 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 |                                        |    Microsoft 托管的密钥                             |    客户管理的密钥                                                                                                                        |    客户提供的密钥                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支持 Azure 存储服务    |    所有                                                |    Blob 存储，Azure 文件                                                                                                               |    Blob 存储                                                                  |
+|    支持 Azure 存储服务    |    所有                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
 |    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
 |    关键轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
 |    密钥使用情况                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API （Blob 存储）、Azure 存储客户端库    |
 |    密钥访问权限                          |    仅限 Microsoft                                     |    Microsoft，客户                                                                                                                    |    仅限客户                                                                 |
+
+<sup>1</sup>有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅[创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
+<sup>2</sup>有关创建支持使用客户管理的密钥和表存储的帐户的信息，请参阅[创建支持表的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 
 以下部分更详细地介绍了密钥管理的每个选项。
 

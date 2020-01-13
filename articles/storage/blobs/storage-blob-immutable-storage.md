@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903444"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912796"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
@@ -80,7 +80,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 由于此设置是基于时间的保留策略的一部分，因此，在*有效*的保留期内，追加 blob 仍处于不可变状态。 由于新数据可以追加到追加 blob 的初始创建之外，因此确定保持期的方式略有不同。 有效的保留期是追加 blob 的**上次修改时间**和用户指定的保留间隔之间的差异。 同样，在扩展保留间隔后，不可变存储使用用户指定的保留间隔的最新值来计算有效的保持期。
 
-例如，假设用户在启用 `allowProtectedAppendWrites` 的情况下创建基于时间的保留策略，并在保留间隔为90天。 在当前容器中创建了一个追加 blob _logblob1_，新日志将继续添加到接下来的10天的追加 blob;因此， _logblob1_的有效保留期是从现在起的100天（其上次修改/追加的时间）。
+例如，假设用户在启用 `allowProtectedAppendWrites` 的情况下创建基于时间的保留策略，并在保留间隔为90天。 在当前容器中创建了一个追加 blob _logblob1_，新日志将继续添加到接下来的10天的追加 blob;因此， _logblob1_的有效保留期是从今天开始的100天（过去追加 + 90 天的时间）。
 
 基于时间的未锁定保留策略允许在任何时间启用和禁用 `allowProtectedAppendWrites` 设置。 锁定基于时间的保留策略后，不能更改 `allowProtectedAppendWrites` 设置。
 

@@ -1,6 +1,6 @@
 ---
-title: 调用受 Azure AD 保护的 ASP.NET Web API - Microsoft 标识平台
-description: 本快速入门介绍如何从 Windows 桌面 (WPF) 应用程序调用受 Azure Active Directory 保护的 ASP.NET Web API。 WPF 客户端对用户进行身份验证、请求访问令牌并调用 Web API。
+title: 调用受 Microsoft 标识平台保护的 ASP.NET Web API
+description: 本快速入门介绍如何从 Windows 桌面 (WPF) 应用程序调用受 Microsoft 标识平台保护的 ASP.NET Web API。 WPF 客户端对用户进行身份验证、请求访问令牌并调用 Web API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424040"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>快速入门：调用受 Azure AD 保护的 ASP.NET Web API
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入门：调用受 Microsoft 标识平台保护的 ASP.NET Web API
 
-在本快速入门中，请公开 Web API 并对其进行保护，这样只有通过身份验证的用户才可以访问它。 此示例介绍如何公开 ASP.NET Web API，使其可以接受由个人帐户（包括 outlook.com、live.com 和其他帐户）以及来自集成了 Azure Active Directory 的任何公司或组织的工作和学校帐户发出的令牌。
+在本快速入门中，请公开 Web API 并对其进行保护，这样只有通过身份验证的用户才可以访问它。 此示例介绍如何公开 ASP.NET Web API，使其可以接受由个人帐户（包括 outlook.com、live.com 和其他帐户）以及来自集成了 Microsoft 标识平台的任何公司或组织的工作和学校帐户发出的令牌。
 
 此示例还包含 Windows 桌面应用程序 (WPF) 客户端，该客户端演示了如何请求访问令牌以访问 Web API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 运行此示例需要以下项：
 
@@ -76,7 +76,7 @@ ms.locfileid: "74963301"
      -   将“状态”保持为“已启用”
      -  选择“添加范围”
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>配置服务和客户端项目以匹配注册的 Web API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>配置服务项目以匹配注册的 Web API 
 
 1. 在 Visual Studio 中打开解决方案，然后在“TodoListService”项目的根目录下打开“Web.config”文件   。
 1. 将 `ida:ClientId` 参数的值替换为刚在应用程序注册门户中注册的应用程序中的客户端 ID（应用程序 ID）  。
@@ -104,7 +104,7 @@ ms.locfileid: "74963301"
    - 将“支持的帐户类型”更改为“任何组织目录中的帐户”   。
    - 选择“注册”  以创建应用程序。
 1. 在应用的“概览”页中，选择“身份验证”部分  。
-   -    在“重定向 URL” | “建议用于公共客户端(移动、桌面)的重定向 URL”部分中，勾选“urn:ietf:wg:oauth:2.0:oob”
+   - 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，选中 **https://login.microsoftonline.com/common/oauth2/nativeclient**
    - 选择“保存”。 
 1. 选择“API 权限”部分 
    - 单击“添加权限”  按钮，然后

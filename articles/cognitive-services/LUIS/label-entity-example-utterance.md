@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448090"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
 
-在示例言语中标记实体可为 LUIS 提供示例，其中包含实体的示例，以及实体可以在言语中出现的位置的示例。 
+在示例言语中标记实体可为 LUIS 提供示例，其中包含实体的示例，以及实体可以在言语中出现的位置的示例。
 
 ## <a name="labeling-machine-learned-entity"></a>标记机器学习实体
 
-不妨使用此短语：`hi, please I want a cheese pizza in 20 minutes`。 
+不妨使用此短语：`hi, please I want a cheese pizza in 20 minutes`。
 
 1. 选择最左侧的文本，然后选择实体最右侧的文本，接下来选择想要进行标记的实体（在本例中为“完整订单”）。 下图中标记了完成顺序  。
 
     > [!div class="mx-imgBorder"]
     > ![标记完整的机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. 从弹出窗口中选择实体。 标记的完整的比萨订单实体包括所有被标记的单词（从左到右，英语）。 
+1. 从弹出窗口中选择实体。 标记的完整的比萨订单实体包括所有被标记的单词（从左到右，英语）。
 
 ## <a name="review-labeled-text"></a>查看标记的文本
 
-进行标记后，查看示例言语，并确保选定的一段文本中的选定实体带有下划线。 实线指示文本已被标记。 
+进行标记后，查看示例言语，并确保选定的一段文本中的选定实体带有下划线。 实线指示文本已被标记。
 
 > [!div class="mx-imgBorder"]
 > ![标记的完整机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ ms.locfileid: "74383700"
 
 实体调色板提供之前的标记体验的替代方法。 它允许对文本进行画笔处理，使其能够立即使用实体进行标记。
 
-1. 通过选择言语表右上方的荧光笔图标来打开实体调色板。 
+1. 通过选择言语表右上方的荧光笔图标来打开实体调色板。
 
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. 选择实体组件。 此操作采用可视方式指示新的光标。 当你在门户中移动时，光标将跟随鼠标。 
+2. 选择实体组件。 此操作采用可视方式指示新的光标。 当你在门户中移动时，光标将跟随鼠标。
 
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -77,11 +77,20 @@ ms.locfileid: "74383700"
 > [!div class="mx-imgBorder"]
 > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-仅当父组件也进行标记时，才可对子组件进行标记。 
+仅当父组件也进行标记时，才可对子组件进行标记。
+
+## <a name="labeling-entity-roles"></a>标记实体角色
+
+实体角色使用实体调色板进行标记。
+
+1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”  。
+1. 在实体调色板打开后，从实体列表中选择实体。
+1. 转到“实体检查器”  ，选择现有角色或创建新角色。
+1. 在示例言语文本中，使用实体角色标记文本。 
 
 ## <a name="unlabel-entities"></a>取消标记实体
 
-若要取消标记实体，请选择文本下方的实体名称，然后选择“取消标记”  。 如果尝试取消标记的实体具有已标记的子组件，则必须先取消标记子组件。 
+若要取消标记实体，请选择文本下方的实体名称，然后选择“取消标记”  。 如果尝试取消标记的实体具有已标记的子组件，则必须先取消标记子组件。
 
 ## <a name="editing-labels-using-the-entity-palette"></a>使用实体调色板编辑标签
 
@@ -98,7 +107,6 @@ ms.locfileid: "74383700"
 
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>用于匹配文本实体的标签
 

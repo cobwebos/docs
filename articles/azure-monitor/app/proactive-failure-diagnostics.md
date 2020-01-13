@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748985"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912844"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果你的 web 应用遇到失败请求率的异常上升， [Application Insights](../../azure-monitor/app/app-insights-overview.md)会以近乎实时的速度自动向你发出警报。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求，失败的请求通常具有400或更高版本的响应代码。 为了帮助你诊断和诊断问题，警报详细信息中提供了对失败和相关应用程序数据特征的分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -48,13 +48,11 @@ ms.locfileid: "75748985"
 
 在上面的示例中，分析发现大多数失败都是关于特定结果代码、请求名称、服务器 URL 主机和角色实例。 
 
-相比之下，分析已发现客户端操作系统属性分布在多个值上，因此它未列出。
-
 当使用这些调用检测服务时，分析器将查找与已标识群集中的请求关联的异常和依赖项失败，以及与这些请求关联的任何跟踪日志的示例。
 
 生成的分析以警报形式发送给用户，除非已将它配置为不这样做。
 
-与[手动设置的警报](../../azure-monitor/app/alerts.md)类似，你可以检查警报的状态，并在 Application Insights 资源的 "警报" 页中进行配置。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
+与[手动设置的警报](../../azure-monitor/app/alerts.md)类似，你可以检查触发的警报的状态，如果问题已解决，则可以解决此问题。 在 Application Insights 资源的 "警报" 页中配置警报规则。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
 
 ### <a name="alert-logic-details"></a>警报逻辑详细信息
 
@@ -63,6 +61,7 @@ ms.locfileid: "75748985"
 * 对 20 分钟滚动时间窗口中的请求/依赖项的失败百分比进行分析。
 * 将过去 20 分钟的失败百分比与过去 40 分钟和过去 7 天的失败率进行比较，并寻找超过标准偏差 x 倍的重大偏差。
 * 对最小失败百分比使用自适应限制，该限制根据应用的请求/依赖项的数量而变化。
+* 如果不再检测到8-24 小时的问题，则可以通过逻辑来自动解决触发的警报监视器条件。
 
 ## <a name="configure-alerts"></a>配置警报
 
@@ -83,7 +82,7 @@ ms.locfileid: "75748985"
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-请注意，可以禁用智能检测，但不能删除它（或创建另一个）。
+请注意，你可以禁用或删除故障异常警报规则，但不能在同一 Application Insights 资源上创建另一个。
 
 ## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>故障异常警报 webhook 负载示例
 
