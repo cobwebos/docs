@@ -91,6 +91,8 @@
       items:
         - name: 日志数据
           href: platform/data-security.md
+        - name: 客户管理的密钥
+          href: platform/customer-managed-keys.md
         - name: 个人日志数据处理
           href: platform/personal-data-mgmt.md
         - name: 应用程序数据收集、保留和存储

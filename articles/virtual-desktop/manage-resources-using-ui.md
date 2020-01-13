@@ -1,25 +1,22 @@
 ---
-title: 部署管理工具 - Azure
-description: 如何安装用户界面工具管理 Windows 虚拟桌面资源。
+title: 使用 Azure 资源管理器模板部署管理工具 - Azure
+description: 如何使用 Azure 资源管理器模板安装用户界面工具以便管理 Windows 虚拟桌面资源。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: tutorial
-ms.date: 11/09/2019
+ms.topic: conceptual
+ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
-ms.translationtype: HT
+ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384286"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887353"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>教程：部署管理工具
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署管理工具
 
-管理工具提供一个用户界面 (UI) 用于管理 Microsoft 虚拟桌面资源。 本教程介绍如何部署和连接管理工具。
-
->[!NOTE]
->这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
+本文中的说明将告诉你如何使用 Azure 资源管理器模板部署 UI。
 
 ## <a name="important-considerations"></a>重要注意事项
 
@@ -33,18 +30,17 @@ ms.locfileid: "74384286"
 - Mozilla Firefox 52.0 或更高版本
 - Safari 10 或更高版本（仅限 macOS）
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>运行 Azure 资源管理器模板所要做好的准备
+## <a name="what-you-need-to-deploy-the-management-tool"></a>部署管理工具所需满足的条件
 
-在部署 Azure 资源管理器模板之前，需要以 Azure Active Directory 用户的身份部署管理 UI。 此用户必须：
+在部署管理工具之前，需要一个 Azure Active Directory (Azure AD) 用户创建应用注册并部署管理 UI。 此用户必须：
 
 - 已禁用 Azure 多重身份验证 (MFA)
 - 有权在 Azure 订阅中创建资源
-- 有权创建 Azure AD 应用程序 请遵循这些步骤检查该用户是否拥有[所需的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+- 有权创建 Azure AD 应用程序 按照[所需的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
-部署 Azure 资源管理器模板后，建议启动管理 UI 进行验证。 此用户必须：
-- 拥有一个可以查看或编辑你的 Windows 虚拟桌面租户的角色分配
+部署和配置管理工具后，建议你要求用户启动管理 UI，以确保一切正常。 启动管理 UI 的用户必须具有使他们能够查看或编辑 Windows 虚拟桌面租户的角色分配。
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>运行 Azure 资源管理器模板来预配管理 UI
+## <a name="deploy-the-management-tool"></a>部署管理工具
 
 在开始之前，请访问相应 Azure Active Directory (AAD) 的 [Windows 虚拟桌面许可页](https://rdweb.wvd.microsoft.com)，确保服务器和客户端应用已获得许可。
 
@@ -52,26 +48,24 @@ ms.locfileid: "74384286"
 
 1. 转到 [GitHub Azure RDS 模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。
 2. 将模板部署到 Azure。
-    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。  请参阅[有关模板参数的指导](#guidance-for-template-parameters)。
+    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。  
     - 如果在“云解决方案提供商”订阅中部署，请遵照以下说明部署到 Azure：
         1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。  
         2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
         3. 紧接在 <https://portal.azure.com/> 之后、井号 (#) 之前，输入 @ 符号，后接租户域名。 下面格式示例：<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
         4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
         5. 将已复制到文本编辑器的链接粘贴到地址栏中。
-
-### <a name="guidance-for-template-parameters"></a>有关模板参数的指导
-下面说明了如何输入用于配置工具的参数：
-
-- 对于 isServicePrincipal 参数，选择 false   。
-- 对于凭据，输入已禁用多重身份验证的 Azure Active Directory 凭据。 这些凭据将用于登录到 Azure 并创建 Azure AD 应用程序和 Azure Web 应用资源。 若要了解详细信息，请参阅[运行 Azure 资源管理器模板所要做好的准备](#what-you-need-to-run-the-azure-resource-manager-template)。
-- 对于 applicationName，为要在 Azure Active Directory 中注册的应用使用唯一的名称  。 此名称还将用于 Web 应用 URL。 例如，可以使用类似于“Apr3UX”的名称。
+3. 输入参数时，请执行以下操作：
+    - 对于 isServicePrincipal 参数，选择 false   。
+    - 对于凭据，在已禁用多重身份验证的情况下输入 Azure AD 凭据。 这些凭据将用于创建 Azure AD 应用程序和 Azure 资源。 若要了解详细信息，请参阅[部署管理工具所需满足的条件](#what-you-need-to-deploy-the-management-tool)。
+    - 对于 applicationName，为要在 Azure Active Directory 中注册的应用使用唯一的名称  。 此名称还将用于 Web 应用 URL。 例如，可以使用类似于“Apr3UX”的名称。
+4. 提供参数后，接受条款和条件，并选择“购买”  。
 
 ## <a name="provide-consent-for-the-management-tool"></a>为管理工具提供许可
 
 GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一个资源组，其中包含两个应用服务以及一个应用服务计划。
 
-在登录和使用管理工具之前，需要为管理工具关联的新 Azure Active Directory 应用程序提供许可。 提供许可即表示允许管理工具代表已登录到该工具的用户发出 Windows 虚拟桌面管理调用。
+在登录和使用管理工具之前，必须为管理工具关联的新 Azure AD 应用程序提供许可。 提供许可使管理工具可以代表当前已登录到该工具的用户进行 Windows 虚拟桌面管理调用。
 
 ![该屏幕截图显示许可 UI 管理工具时提供的权限。](media/management-ui-delegated-permissions.png)
 
@@ -102,18 +96,15 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 1. 选择具有模板中提供的名称（例如 Apr3UX）的 Azure 应用服务资源，然后导航到与它关联的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用 Windows 虚拟桌面凭据登录。
 3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。 
-4. 选择“默认租户组”时，将在窗口右侧显示一个菜单。 在此菜单上，找到租户组的名称并将其选中。
-
-> [!NOTE]
-> 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。
+4. 选择“默认租户组”时，将在窗口左侧显示一个菜单  。 在此菜单中，找到租户组的名称并将其选中。
+  
+  > [!NOTE]
+  > 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。
 
 ## <a name="report-issues"></a>报告问题
 
-如果在管理工具或其他 Windows 虚拟桌面工具中遇到任何问题，请按照[远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的说明在 GitHub 上报告这些问题。
+如果遇到有关管理工具或其他 Windows 虚拟桌面工具的任何问题，请按照[远程桌面服务的 Azure 资源管理器模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的说明在 GitHub 上报告这些问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何部署和连接管理工具后，接下来可以了解如何使用 Azure 服务运行状况来监视服务问题和获得运行状况方面的建议。
-
-> [!div class="nextstepaction"]
-> [设置服务警报教程](./set-up-service-alerts.md)
+了解如何部署和连接到管理工具后，接下来可以了解如何使用 Azure 服务帮助来监视服务问题和获得运行状况方面的建议。 若要了解详细信息，请参阅[“设置服务警报”教程](./set-up-service-alerts.md)。
