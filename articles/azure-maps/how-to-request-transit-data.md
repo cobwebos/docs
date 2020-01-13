@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Maps 中请求传输数据 |Microsoft Docs
-description: 使用 Azure Maps 移动服务请求公共传输数据。
+title: 请求传输数据 |Microsoft Azure 映射
+description: 在本文中，你将了解如何使用 Microsoft Azure 映射移动服务来请求公共传输数据。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 47952421c50979a014507c81ef5bc3217df7d860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: d9fac909dbb264dea65447a086b78e8a53acefae
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432946"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911419"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求公共传输数据 
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435775"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -51,11 +51,11 @@ Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是�
 
 ## <a name="ingest-file-storage-and-result-storage"></a>提取文件存储和结果存储
 
-源数据文件通常载入 Azure 存储或 Azure Data Lake Storage 中的某个位置。 文件可以是任何格式，但通常是 CSV 等平面文件。 
+源数据文件通常载入 Azure 存储或 Azure Data Lake Storage 中的某个位置。 文件可以是任何格式，但通常是 CSV 等平面文件。
 
-### <a name="azure-storage"></a>Azure 存储 
+### <a name="azure-storage"></a>Azure 存储器
 
-[Azure 存储](https://azure.microsoft.com/services/storage/blobs/)具有[特定的可伸缩性目标](../../storage/common/storage-scalability-targets.md)。  对于大多数分析节点而言，在处理许多较小的文件时，Azure 存储的可伸缩性最佳。  Azure 存储可以保证无论有多少文件或文件有多大（只要在限制范围内），都能提供相同的性能。  这意味着，可以存储 TB 量级的数据，同时获得一致的性能，无论使用的是一部分数据还是全部数据。
+[Azure 存储](https://azure.microsoft.com/services/storage/blobs/)具有特定的可伸缩性目标。 有关详细信息，请参阅[Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)。 对于大多数分析节点而言，在处理许多较小的文件时，Azure 存储的可伸缩性最佳。  Azure 存储可以保证无论有多少文件或文件有多大（只要在限制范围内），都能提供相同的性能。  这意味着，可以存储 TB 量级的数据，同时获得一致的性能，无论使用的是一部分数据还是全部数据。
 
 Azure 存储包含多种不同类型的 Blob。  “追加 Blob”是存储 Web 日志或传感器数据的极佳选项。  
 
@@ -129,7 +129,7 @@ Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收�
 
 Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 
-## <a name="transform"></a>转换
+## <a name="transform"></a>转型
 
 将数据存储到所选的位置后，需要根据特定的使用模式清理、合并或准备这些数据。  Hive、Pig 和 Spark SQL 都是适合用于完成此类任务的极佳选择。  HDInsight 支持所有这些产品。 
 

@@ -1,27 +1,16 @@
 ---
-title: 在 Linux 上使用 C# 创建第一个 Azure Service Fabric 应用 | Microsoft Docs
+title: 使用在 Linux 上创建第一个 Azure Service Fabric 应用C#
 description: 了解如何使用 C# 和 .NET Core 2.0 创建和部署 Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: csharp
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
-ms.service: service-fabric
-ms.devlang: csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/11/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8c34f50e8eb9d9793c146c38aca47691b04049c0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458139"
 ---
-# <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
+# <a name="create-your-first-azure-service-fabric-application"></a>创建首个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
 > * [Java - Linux（预览版）](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# - Linux（预览版）](service-fabric-create-your-first-linux-application-with-csharp.md)
@@ -30,7 +19,7 @@ ms.locfileid: "72167300"
 
 Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 本教程介绍如何在 .NET Core 2.0 中使用 C# 创建适用于 Linux 的应用程序和生成服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始之前，请确保已[设置 Linux 开发环境](service-fabric-get-started-linux.md)。 如果使用的是 Mac OS X，则可以[使用 Vagrant 在虚拟机中设置 Linux 单机环境](service-fabric-get-started-mac.md)。
 
 还需要安装 [Service Fabric CLI](service-fabric-cli.md)
@@ -59,7 +48,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 C# 的 Service Fabric [Yeoman](https://yeoman.io/) 生成器是在上一步安装的，利用它可以轻松地创建第一个服务，以及在以后添加其他服务。 让我们使用 Yeoman 来创建具有单项服务的应用程序。
 
 1. 在终端中键入以下命令以开始生成基架：`yo azuresfcsharp`
-2. 为应用程序命名。
+2. 命名应用程序。
 3. 选择第一个服务的类型并将其命名。 对于本教程，我们会选择“可靠角色服务”。
 
    ![适用于 C# 的 Service Fabric Yeoman 生成器][sf-yeoman]
@@ -108,7 +97,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。
 
-   对于 MAC OS X，你需要通过运行以下附加命令将 myactorsvcTestClient 文件夹复制到容器内的同一位置。
+   对于 MAC OS X，需要通过运行以下附加命令将 myactorsvcTestClient 文件夹复制到容器中的同一位置。
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home
@@ -129,7 +118,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
-2. 运行 `yo azuresfcsharp:AddService`
+2. `yo azuresfcsharp:AddService`运行 
 
 ## <a name="next-steps"></a>后续步骤
 

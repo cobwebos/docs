@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961379"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495874"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报告，以便将 VMware 灾难恢复到 Azure
 
@@ -53,7 +53,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **服务器名称**：为其生成 VM 报告的 VMware vCenter 或 ESXi 主机的名称或 IP 地址。
 
-**所需 RPO**：部署的恢复点目标。 默认情况下，所需网络带宽是根据 RPO 值为 15、30 和 60 分钟计算的。 根据所做的选择，受影响的值会在工作表中更新。 如果生成报告时使用了DesiredRPOinMin 参数，该值会显示在“所需 RPO”结果中。
+**所需 RPO**：部署的恢复点目标。 默认情况下，所需网络带宽是根据 RPO 值为 15、30 和 60 分钟计算的。 根据所做的选择，受影响的值会在工作表中更新。 如果生成报告时使用了 *DesiredRPOinMin* 参数，该值会显示在“所需 RPO”结果中。
 
 ### <a name="profiling-overview"></a>分析概述
 
@@ -92,7 +92,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 对于所有企业型 Site Recovery 部署，建议使用 [ExpressRoute](https://aka.ms/expressroute)。
 
 ### <a name="required-storage-accounts"></a>所需的存储帐户
-下图显示了保护所有兼容 VM 所需的存储帐户（标准和高级）总数。 若要了解适用于每个 VM 的存储帐户，请参阅“VM-存储位置”部分。 如果使用的是部署规划器 v2.5，则此建议仅显示复制所需的标准缓存存储帐户数，因为数据会直接写入到托管磁盘。
+下图显示了保护所有兼容 VM 所需的存储帐户（标准和高级）总数。 若要了解适用于每个 VM 的存储帐户，请参阅“VM-存储位置”部分。 如果使用的是部署规划器2.5，则此建议仅显示复制所需的标准缓存存储帐户数，因为数据直接写入到托管磁盘。
 
 ![Deployment Planner 中的所需存储帐户](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -157,7 +157,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 ## <a name="vm-storage-placement"></a>VM-存储位置
 
 >[!Note]
->部署规划器 v2.5 及更高版本建议将直接复制到托管磁盘的计算机的存储位置。
+>部署规划器 2.5 2.5 之前建议将直接复制到托管磁盘的计算机的存储位置。
 
 ![VM-存储位置](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
@@ -169,7 +169,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **建议的日志帐户名称**：包含建议的前缀后的存储帐户名称。 将尖括号（< 和 >）中的名称替换为自定义输入。
 
-**放置摘要**：按存储类型保护的 vm 所需的磁盘摘要。 它包括 VM 总数、所有磁盘上预配的总大小，以及磁盘总数。
+**放置摘要**：按存储类型保护的 vm 所需的磁盘摘要。 它包括 Vm 的总数、所有磁盘的总预配大小，以及磁盘总数。
 
 **要放置的虚拟机**：列出了为优化性能和使用而应放置在给定存储帐户中的所有 VM。
 
@@ -178,7 +178,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的磁盘 (VMDK)。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名称。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
 
-**VM 兼容性**：值为“是”和“是 **”。** \* “是 **”针对 VM 适用于**高级 SSD\* 的情况[](../virtual-machines/windows/disks-types.md)。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
+**VM 兼容性**：值为“是”和“是**”。 **\* “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15
 * 256 GB 到 512 GB 为 P20。
@@ -186,7 +186,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 * 1025 GB 到 2048 GB 为 P40。
 * 2049 GB 到 4095 GB 为 P50。
 
-例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是 **”。** \* 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
+例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是\*”。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
 **存储类型**：标准或高级。
 
@@ -221,17 +221,14 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 兼容性**：指示给定的 VM 为何无法与 Site Recovery 兼容使用。 会针对 VM 的每个不兼容磁盘说明原因，而根据已发布的[存储限制](https://aka.ms/azure-storage-scalbility-performance)，这些原因不外乎：
 
-* 磁盘大小超出 4095 GB。 Azure 存储目前不支持大于 4095 GB 的数据磁盘大小。
-
-* OS 磁盘大于 2048 GB。 Azure 存储目前不支持大于 2048 GB 的 OS 磁盘大小。
-
+* 数据磁盘大小错误或操作系统磁盘大小错误。 [查看](vmware-physical-azure-support-matrix.md#azure-vm-requirements)支持限制。 
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时会磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
 
 * 源 IOPS 超出了每个磁盘支持的存储 IOPS 限制，即 7500。
 
 * 源 IOPS 超出了每个 VM 支持的存储 IOPS 限制，即 80,000。
 
-* 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 20 MB/秒。
+* 平均数据变动量超出了支持的 Site Recovery 数据更改量限制为 20 MB/s （对于磁盘的平均 i/o 大小）。
 
 * VM 中所有磁盘的峰值数据变动量超出了每个 VM 支持的最大 Site Recovery 峰值数据变动量限制，即 54 MB/秒。
 

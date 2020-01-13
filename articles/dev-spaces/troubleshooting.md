@@ -3,14 +3,14 @@ title: 故障排除
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438111"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -123,7 +123,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 当使用以这些语�
 
 当你尝试使用 Dev 空间运行配置为在[AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行的服务时，将发生此超时。 开发人员空间目前不支持在虚拟节点上构建或调试服务。
 
-如果使用 `azds up` 开关运行 `--verbose`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
+如果使用 `--verbose` 开关运行 `azds up`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 
 ```cmd
 $ azds up --verbose
@@ -265,7 +265,7 @@ Service cannot be started.
 例如，若要停止并禁用*Windows BranchCache*服务，请执行以下操作：
 * 在命令提示符下运行 `services.msc`。
 * 右键单击*BranchCache* ，然后选择 "*属性*"。
-* 单击 "*停止*"。
+* 单击“停止”。
 * 或者，你可以通过将*启动类型*设置为 "*已禁用*" 来禁用它。
 * 单击“确定”。
 
@@ -304,7 +304,7 @@ Service cannot be started.
 
 运行 Visual Studio Code 调试程序时，可能会看到此错误。 默认情况下，VS Code 扩展使用 `src` 作为项目在容器上的工作目录。 如果你已更新了 `Dockerfile` 来指定一个不同的工作目录，则可能会看到此错误。
 
-若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `WORKDIR` 中定义的 `Dockerfile` 相同的目录。 可能还需要更新 `configurations->program` 指令。
+若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `Dockerfile` 中定义的 `WORKDIR` 相同的目录。 可能还需要更新 `configurations->program` 指令。
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>错误： "管道程序 ' azds ' 意外退出，代码为126。"
 
@@ -469,7 +469,7 @@ kubectl -n my-namespace delete pod --all
 
 若要在 AKS 群集上启用 Azure Dev Spaces，而这些群集节点的传出流量受到限制，则必须允许以下 Fqdn：
 
-| FQDN                                    | 端口      | 使用      |
+| FQDN                                    | Port      | 使用      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS:443 | 请求 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP：443 | 请求 helm/tiller 映像|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101476"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747680"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
@@ -27,13 +27,11 @@ ms.locfileid: "70101476"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“az group create”命令创建资源组[](/cli/azure/group)。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -144,13 +142,13 @@ ssh azureuser@<publicIpAddress>
 
 3. 设置 Oracle 变量
 
-在连接之前，需要设置两个环境变量：ORACLE_HOME 和 ORACLE_SID。
+在连接之前，需要设置两个环境变量：*ORACLE_HOME* 和 *ORACLE_SID*。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。使用所选编辑器确认下列语句是否已被添加至 `~/.bashrc` 文件。
+还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。请确认已使用所选编辑器将以下语句添加到 `~/.bashrc` 文件中。
 
 ```bash
 # Add ORACLE_HOME. 

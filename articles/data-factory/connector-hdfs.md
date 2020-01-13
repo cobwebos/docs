@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 606cc1904f6dea7d5829e4a5fe4e259432d7fb18
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929356"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830422"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -55,14 +55,14 @@ ms.locfileid: "74929356"
 
 HDFS 链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hdfs**。 | 是 |
 | url |HDFS 的 URL |是 |
 | authenticationType | 允许的值为：Anonymous或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅[此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
 | userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，指定 `<username>@<domain>.com`。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（对于 Windows 身份验证） |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：使用匿名身份验证**
 
@@ -116,11 +116,11 @@ HDFS 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HDFS 支持以下属性：
 
-| properties   | 描述                                                  | 需要 |
+| 属性   | Description                                                  | 需要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Dataset 中 `location` 下的 type 属性必须设置为**HdfsLocation**。 | 是      |
-| folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | No       |
-| fileName   | 给定 folderPath 下的文件名。 如果要使用通配符筛选文件，请跳过此设置并在活动源设置中指定。 | No       |
+| folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
+| fileName   | 给定 folderPath 下的文件名。 如果要使用通配符筛选文件，请跳过此设置并在活动源设置中指定。 | 否       |
 
 **示例：**
 
@@ -148,54 +148,6 @@ HDFS 链接的服务支持以下属性：
 }
 ```
 
-### <a name="legacy-dataset-model"></a>旧数据集模型
-
->[!NOTE]
->对于向后兼容性，仍支持以下数据集模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
-
-| properties | 描述 | 需要 |
-|:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：FileShare |是 |
-| folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
-| fileName |  指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件夹名内具有通配符或此转义符，请使用 `^` 进行转义。 |No |
-| modifiedDatetimeStart | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，表示没有文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| No |
-| modifiedDatetimeEnd | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，表示没有文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| No |
-| format | 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果需要分析具有特定格式的文件，支持分析以下文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |No |
-
->[!TIP]
->如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。
-
-**示例：**
-
-```json
-{
-    "name": "HDFSDataset",
-    "properties": {
-        "type": "FileShare",
-        "linkedServiceName":{
-            "referenceName": "<HDFS linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "folderPath": "folder/subfolder/",
-            "fileName": "*",
-            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
-            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
-            "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ",",
-                "rowDelimiter": "\n"
-            },
-            "compression": {
-                "type": "GZip",
-                "level": "Optimal"
-            }
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>复制活动属性
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 HDFS 源支持的属性列表。
@@ -206,19 +158,19 @@ HDFS 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HDFS 支持以下属性：
 
-| properties                 | 描述                                                  | 需要                                      |
+| 属性                 | Description                                                  | 需要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为**HdfsReadSetting**。 | 是                                           |
-| recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | No                                            |
-| wildcardFolderPath       | 用于筛选源文件夹的带通配符的文件夹路径。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | No                                            |
+| type                     | `storeSettings` 下的 type 属性必须设置为**HdfsReadSettings**。 | 是                                           |
+| recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
+| wildcardFolderPath       | 用于筛选源文件夹的带通配符的文件夹路径。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
 | wildcardFileName         | 在给定的 folderPath/wildcardFolderPath 下包含通配符的文件名用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 如果未在数据集中指定 `fileName` 则为 Yes |
-| modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | No                                            |
-| modifiedDatetimeEnd      | 同上。                                               | No                                            |
-| distcpSettings | 使用 HDFS DistCp 时的属性组。 | No |
+| modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
+| modifiedDatetimeEnd      | 同上。                                               | 否                                            |
+| distcpSettings | 使用 HDFS DistCp 时的属性组。 | 否 |
 | resourceManagerEndpoint | Yarn 资源管理器终结点 | 是（如果使用 DistCp） |
 | tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，并在复制作业完成后删除。 | 是（如果使用 DistCp） |
-| distcpOptions | 提供给 DistCp 命令的其他选项。 | No |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | No                                            |
+| distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                            |
 
 **示例：**
 
@@ -243,11 +195,11 @@ HDFS 链接的服务支持以下属性：
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "HdfsReadSetting",
+                    "type": "HdfsReadSettings",
                     "recursive": true,
                     "distcpSettings": {
                         "resourceManagerEndpoint": "resourcemanagerendpoint:8088",
@@ -264,36 +216,6 @@ HDFS 链接的服务支持以下属性：
 ]
 ```
 
-#### <a name="legacy-source-model"></a>旧源模型
-
->[!NOTE]
->以下复制源模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
-
-| properties | 描述 | 需要 |
-|:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**HdfsSource** |是 |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认值）、false | No |
-| distcpSettings | 使用 HDFS DistCp 时的属性组。 | No |
-| resourceManagerEndpoint | Yarn 资源管理器终结点 | 是（如果使用 DistCp） |
-| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，并在复制作业完成后删除。 | 是（如果使用 DistCp） |
-| distcpOptions | 提供给 DistCp 命令的其他选项。 | No |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | No |
-
-**示例：使用 DistCp 复制活动中的 HDFS 源**
-
-```json
-"source": {
-    "type": "HdfsSource",
-    "distcpSettings": {
-        "resourceManagerEndpoint": "resourcemanagerendpoint:8088",
-        "tempScriptPath": "/usr/hadoop/tempscript",
-        "distcpOptions": "-m 100"
-    }
-}
-```
-
-通过下一节，深入了解如何使用 DistCp 高效地从 HDFS 复制数据。
-
 ### <a name="folder-and-file-filter-examples"></a>文件夹和文件筛选器示例
 
 本部分介绍使用通配符筛选器生成文件夹路径和文件名的行为。
@@ -301,9 +223,9 @@ HDFS 链接的服务支持以下属性：
 | folderPath | fileName             | recursive | 源文件夹结构和筛选器结果（用**粗体**表示的文件已检索） |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | （为空，使用默认值） | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | （为空，使用默认值） | 是      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | （为空，使用默认值） | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | 是      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ## <a name="use-distcp-to-copy-data-from-hdfs"></a>使用 DistCp 从 HDFS 复制数据
 
@@ -345,16 +267,16 @@ HDFS 链接的服务支持以下属性：
 
 **在自承载集成运行时计算机上：**
 
-1.  运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
+1.  运行 Ksetup 实用工具来配置 Kerberos KDC 服务器和领域。
 
-    由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要将 *REALM.COM* 替换为自己的领域。
+    由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要，将 REALM.COM 替换为各自的领域。
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
     执行这 2 个命令后，**重启**计算机。
 
-2.  使用 **Ksetup** 命令验证配置。 输出应如下所示：
+2.  使用 Ksetup 命令验证配置。 输出应如下所示：
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -370,16 +292,16 @@ HDFS 链接的服务支持以下属性：
 #### <a name="requirements"></a>要求
 
 *   自承载集成运行时计算机必须加入 Windows 域。
-*   需要可更新域控制器的设置的权限。
+*   需要用于更新域控制器设置的权限。
 
 #### <a name="how-to-configure"></a>如何配置
 
 > [!NOTE]
-> 根据需要将下面教程中的 REALM.COM 和 AD.COM 替换为自己的领域和域控制器。
+> 根据需要，将下面教程中的 REALM.COM 和 AD.COM 替换为各自的领域和域控制器。
 
 **在 KDC 服务器上：**
 
-1. 编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
+1. 编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，配置位于 /etc/krb5.conf。
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -425,7 +347,7 @@ HDFS 链接的服务支持以下属性：
 
 **在域控制器上：**
 
-1.  运行以下 **Ksetup** 命令添加一个领域条目：
+1.  运行以下 Ksetup 命令以添加一个领域条目：
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
@@ -462,7 +384,7 @@ HDFS 链接的服务支持以下属性：
 
 **在自承载集成运行时计算机上：**
 
-* 运行以下 **Ksetup** 命令添加一个领域条目。
+* 运行以下 Ksetup 命令以添加一个领域条目。
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
@@ -475,6 +397,80 @@ HDFS 链接的服务支持以下属性：
 
 若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
+## <a name="legacy-models"></a>传统模型
+
+>[!NOTE]
+>对于向后兼容性，仍支持以下模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
+
+### <a name="legacy-dataset-model"></a>旧数据集模型
+
+| 属性 | Description | 需要 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：FileShare |是 |
+| folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
+| fileName |  指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件夹名内具有通配符或此转义符，请使用 `^` 进行转义。 |否 |
+| modifiedDatetimeStart | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，表示没有文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| modifiedDatetimeEnd | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 请注意，当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，表示没有文件属性筛选器将应用于数据集。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| format | 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果需要分析具有特定格式的文件，支持分析以下文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |否 |
+
+>[!TIP]
+>如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。
+
+**示例：**
+
+```json
+{
+    "name": "HDFSDataset",
+    "properties": {
+        "type": "FileShare",
+        "linkedServiceName":{
+            "referenceName": "<HDFS linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "folderPath": "folder/subfolder/",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "rowDelimiter": "\n"
+            },
+            "compression": {
+                "type": "GZip",
+                "level": "Optimal"
+            }
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
+
+| 属性 | Description | 需要 |
+|:--- |:--- |:--- |
+| type | 复制活动源的 type 属性必须设置为：**HdfsSource** |是 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |
+| distcpSettings | 使用 HDFS DistCp 时的属性组。 | 否 |
+| resourceManagerEndpoint | Yarn 资源管理器终结点 | 是（如果使用 DistCp） |
+| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，并在复制作业完成后删除。 | 是（如果使用 DistCp） |
+| distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
+
+**示例：使用 DistCp 复制活动中的 HDFS 源**
+
+```json
+"source": {
+    "type": "HdfsSource",
+    "distcpSettings": {
+        "resourceManagerEndpoint": "resourcemanagerendpoint:8088",
+        "tempScriptPath": "/usr/hadoop/tempscript",
+        "distcpOptions": "-m 100"
+    }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

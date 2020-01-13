@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433815"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829861"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -62,15 +62,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | Azure Active Directory 用户 | “urn:ietf:params:scim:schemas:extension:enterprise:2.0:User” |
 | --- | --- |
 | IsSoftDeleted |活动 |
+|department|urn： ietf： params： scim：架构：扩展： enterprise：2.0： User：部门|
 | displayName |displayName |
+|employeeId|urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： employeeNumber|
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
 | mail |emails[type eq "work"].value |
 | mailNickname |externalId |
-| manager |manager |
+| manager |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |ID |
 | postalCode |addresses[type eq "work"].postalCode |
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
@@ -79,15 +80,16 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | telephone-Number |phoneNumbers[type eq "work"].value |
 | user-PrincipalName |userName |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>表 2：默认组属性映射
 
 | Azure Active Directory 组 | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | members |members |
-| objectId |ID |
+| objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>步骤2：了解 Azure AD SCIM 实现
@@ -1256,7 +1258,7 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 请咨询应用程序提供者，或参阅应用程序提供者文档中的说明，以了解是否符合这些要求。
 
 > [!IMPORTANT]
-> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅[预配周期部分：](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。 [预配周期的初始和增量](how-provisioning-works.md)
+> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅[预配周期部分：预配周期的初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。 [](how-provisioning-works.md)
 
 ### <a name="getting-started"></a>入门
 
