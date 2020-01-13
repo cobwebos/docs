@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639848"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908867"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure 前门服务常见问题
 
@@ -99,7 +99,7 @@ Azure 前门服务是一种全球分布式多租户服务。 因此，前门的�
     > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)以进行任何更改或更新。
 
 -   按前门发送的传入标头 "**X-正向主机**" 的值进行筛选。 标头唯一允许的值应为前门配置中定义的所有前端主机。事实上，在这一特定的后端上，只是想要接受其流量的主机名。
-    - 示例-假设前门配置具有以下前端主机 _`contoso.azurefd.net`_ （A）、 _`www.contoso.com`_ （B）、_ （C）和 _`notifications.contoso.com`_ （D）。 假设您有两个后端 X 和 Y。 
+    - 示例-假设前门配置具有以下前端主机 _`contoso.azurefd.net`_ （A）、 _`www.contoso.com`_ （B）、 _`api.contoso.com`_ （C）和 _`notifications.contoso.com`_ （D）。 假设您有两个后端 X 和 Y。 
     - 后端 X 只应接受来自主机名 A 和 B 的流量。后端 Y 可以接受来自、C 和 D 的流量。
     - 因此，在后端 X 上，只应接受设置了标头 "**X-主机**" 的流量 _`contoso.azurefd.net`_ 或 _`www.contoso.com`_ 。 对于其他所有内容，后端 X 应拒绝流量。
     - 同样，在后端 Y 上，只应接受将标头为 "**X-转发-主机**" 的流量设置为 _`contoso.azurefd.net`_ 、 _`api.contoso.com`_ 或 _`notifications.contoso.com`_ 。 对于其他所有内容，后端 Y 应拒绝流量。

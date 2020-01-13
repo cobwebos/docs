@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 身份验证 | Microsoft Docs
-description: 使用 Microsoft Azure Maps 服务的 Azure Active Directory （Azure AD）或共享密钥身份验证。 了解如何获取 Azure Maps 订阅密钥。
+title: 身份验证方法 |Microsoft Azure 映射
+description: 本文介绍如何使用 Microsoft Azure Maps 服务 Azure Active Directory （Azure AD）或共享密钥身份验证。 了解如何获取 Azure Maps 订阅密钥。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/30/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834200"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911825"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 

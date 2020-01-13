@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459162"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912489"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
 
@@ -30,7 +30,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 可在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)详细了解每个可用的隔离大小。
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>2020年2月15日停用 D15_v2/DS15_v2 隔离
-Azure 专用主机现已正式发布，使你能够在单租户物理服务器上运行你的组织的 Linux 和 Windows 虚拟机。 我们计划将隔离的 Azure Vm 完全替换为 Azure 专用主机。 **2020 年2月15日之后，** Azure vm 的 D15_v2/DS15_v2 可能不再与硬件隔离。
+Azure 专用主机现已正式发布，使你能够在单租户物理服务器上运行你的组织的 Linux 和 Windows 虚拟机。 我们计划将隔离的 Azure Vm 完全替换为 Azure 专用主机。 **2020 年2月15日之后，** D15_v2/DS15_v2 Azure vm 将不再与硬件隔离。
 
 ## <a name="how-does-this-affect-me"></a>这对我有何影响？
 2020年2月15日之后，将不再为你的 D15_v2/DS15_v2 Azure 虚拟机提供隔离保障。 

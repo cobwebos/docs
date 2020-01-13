@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457047"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911899"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -208,15 +208,15 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. （可选）将采样率更改为不同的值，然后观察消息在应用程序属性中包含 `tracestate` 的频率变化。
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>使用用于 VS Code 的 Azure IoT 中心工具包更新
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>使用 Azure IoT 中心更新 VS Code
 
-1. 安装 VS Code，然后从[此处](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)安装最新版本的用于 VS Code 的 Azure IoT 中心工具包。
+1. 安装 VS Code，然后安装最新版本的 Azure IoT 中心，以便从[此处](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)VS Code。
 
 1. 打开 VS Code 并[设置 IoT 中心连接字符串](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)。
 
 1. 展开设备，并找到“分布式跟踪设置(预览版)”。 在该选项的下面，单击子节点对应的“更新分布式跟踪设置(预览版)”。
 
-    ![在 Azure IoT 中心工具包中启用分布式跟踪](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![在 Azure IoT 中心扩展中启用分布式跟踪](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. 在弹出窗口中选择“启用”，然后按 Enter 确认使用 100 作为采样率。
 

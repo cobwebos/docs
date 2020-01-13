@@ -1,7 +1,6 @@
 ---
-title: 在 Azure Maps 中选择地图样式
-titleSuffix: Azure Maps
-description: 了解 Azure Maps 样式的相关功能。
+title: 地图样式功能 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure Map web SDK 中可用的样式相关功能。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e1d3d1b5904eded9f35c5ba628bea6426e7afaf0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531541"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911793"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>在 Azure Maps 中选择地图样式
 

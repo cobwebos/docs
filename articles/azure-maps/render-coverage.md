@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的呈现覆盖区域 | Microsoft Docs
-description: 了解 Azure Maps 中的呈现覆盖区域
+title: 呈现覆盖率 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure 地图呈现范围的区域及其呈现的详细信息级别。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934292"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910673"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps 呈现覆盖区域
 
@@ -195,7 +195,7 @@ Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用其最低�
 | 新加坡                 | ✓ | ✓|
 | 斯里兰卡                 |   | Ø |
 | 阿拉伯叙利亚共和国      |   | Ø |
-| 中国台湾                    | ✓ | ✓ |
+| 台湾                    | ✓ | ✓ |
 | 塔吉克斯坦                |   | Ø |
 | 泰国                  | ✓ | ✓ |
 | 东帝汶               |   | Ø |
@@ -247,7 +247,7 @@ Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用其最低�
 | 阿塞拜疆                | ✓ | Ø |
 | 白俄罗斯                   | Ø | ✓ |
 | 比利时                   | ✓ | ✓ |
-| 波斯尼亚和黑塞哥维亚        | ✓ | ✓ |
+| 波斯尼亚-黑塞哥维亚        | ✓ | ✓ |
 | 保加利亚                  | ✓ | ✓ |
 | 克罗地亚                   | ✓ | ✓ |
 | 塞浦路斯                    | ✓ | ✓ |

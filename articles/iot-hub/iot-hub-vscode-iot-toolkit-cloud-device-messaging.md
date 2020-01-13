@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083258"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912016"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
 
@@ -23,7 +23,7 @@ ms.locfileid: "74083258"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>要学习的知识
+## <a name="what-you-will-learn"></a>学习内容
 
 了解如何使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息，并发送云到设备消息。 设备到云的消息可能是设备收集的，随后要发送到 IoT 中心的传感器数据。 云到设备的消息可能是 IoT 中心发送到设备的，用于闪烁连接到设备的 LED 的命令。
 
@@ -33,15 +33,15 @@ ms.locfileid: "74083258"
 
 * 使用适用于 Visual Studio Code 的 Azure IoT 工具来发送云到设备消息。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 * 一个有效的 Azure 订阅。
 
-* 已订阅中创建一个 Azure IoT 中心。
+* 已在订阅中创建一个 Azure IoT 中心。
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
@@ -56,19 +56,19 @@ ms.locfileid: "74083258"
 5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的**iothubowner**策略连接字符串。
 
 ## <a name="monitor-device-to-cloud-messages"></a>监视设备到云的消息
 
 若要监视设备发送到 IoT 中心的消息，请执行以下步骤：
 
-1. 右键单击设备，然后选择“开始监视内置事件终结点”。
+1. 右键单击你的设备，然后选择 **"开始监视" "内置事件终结点**"。
 
-2. 受监视的消息将显示在“输出” > “Azure IoT 中心工具包”视图中。
+2. 监视的消息将显示在**Azure IoT 中心**视图 > **输出**中。
 
-3. 若要停止监视，请右键单击“输出”视图，然后选择“停止监视内置事件终结点”。
+3. 若要停止监视，请右键单击**输出**视图，然后选择 "**停止监视内置事件终结点**"。
 
-## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
+## <a name="send-cloud-to-device-messages"></a>发送云到设备的消息
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
 
@@ -76,7 +76,7 @@ ms.locfileid: "74083258"
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出” > “Azure IoT 中心工具包”视图中。
+3. 结果将显示在**Azure IoT 中心**视图 > **输出**中。
 
 ## <a name="next-steps"></a>后续步骤
 

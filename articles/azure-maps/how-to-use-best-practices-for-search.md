@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure Maps 搜索服务有效搜索 |Microsoft Docs
-description: 了解如何使用 Azure Maps 搜索服务搜索的最佳实践
+title: 使用 Azure Maps 搜索服务有效地搜索 |Microsoft Azure 映射
+description: 了解如何使用 Microsoft Azure 映射的最佳搜索搜索服务
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768820"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911370"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure Maps 搜索服务的最佳实践
 

@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a7216e697680bcc049d2ceb4caec74adfc1760b0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 74bf0422bbe6c2c1c84365c1e8f9329a01ff9fdd
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897385"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75909044"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet 分析器故障排除
 
@@ -22,6 +22,7 @@ ms.locfileid: "74897385"
 **记分卡部分中的 "未为此记分卡收集足够的度量值"**
 
 请注意：
+- 必须将客户端脚本嵌入到**HTTPS**网站中。 如果脚本在纯文本（**http://** ）或本地（**file://** ）网站中运行，则不会收集度量值。
 - 仅当 Internet 分析器配置文件的客户端脚本已嵌入到接收真实用户流量的应用程序中时，才会收集度量数据。 综合流量（例如，Azure WebApp 性能测试）通常不执行嵌入的 Javascript 代码，因此不会通过该类型的流量生成度量。
 - 时序每小时生成一次，因此需要等待至少一段时间才能显示新的度量数据。
 - 每日生成记分卡（在每天的结束时间，UTC 时间）。

@@ -1,6 +1,6 @@
 ---
-title: 将图块层添加到 Azure Maps | Microsoft Docs
-description: 如何向 Azure Maps Web SDK 添加图块层。
+title: 向地图添加图块层 |Microsoft Azure 映射
+description: 本文介绍如何使用 Microsoft Azure map Web SDK 覆盖地图上的图块层。 图块层允许您在地图上呈现图像。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976460"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911094"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
 本文介绍如何在地图上覆盖图块层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 可在[缩放级别和图块网格](zoom-levels-and-tile-grid.md)文档中找到有关 Azure Maps 图块系统的详细信息。
 
-图块层从服务器的磁贴中加载。 这些图像可以使用图块层能理解的命名约定或动态生成图像的动态服务（像服务器上的任何其他图像一样）进行预呈现和存储。 Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)类支持三个不同的平铺服务命名约定: 
+图块层从服务器的磁贴中加载。 这些图像可以使用图块层能理解的命名约定或动态生成图像的动态服务（像服务器上的任何其他图像一样）进行预呈现和存储。 Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)类支持三个不同的平铺服务命名约定： 
 
 * X、Y、缩放表示法 - 基于缩放级别，x 是列，y 是图块网格中图块的行位置。
 * Quadkey 表示法 - 将 x、y、缩放信息合并到单个字符串值（即图块的唯一标识符）中。
@@ -40,7 +40,7 @@ ms.locfileid: "68976460"
 
 ## <a name="add-a-tile-layer"></a>添加图块层
 
- 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 查看雷达图数据时, 理想情况下, 用户在导航地图时可以清楚地看到城市标签, 这可以通过在`labels`层下方插入图块层来完成。
+ 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 查看雷达图数据时，理想情况下，用户在导航地图时能够清楚地看到城市标签，这可以通过将图块层插入 `labels` 层下方来完成。
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.

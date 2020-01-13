@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的天气服务概念 |Microsoft Docs
-description: 了解 Azure Maps 中的天气服务
+title: 天气服务概念 |Microsoft Azure 映射
+description: 在本文中，你将了解适用于 Microsoft Azure 映射天气服务的概念。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382331"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911031"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
 
@@ -23,11 +23,11 @@ ms.locfileid: "74382331"
 
 某些天气服务 Api 允许用户指定是以公制单位还是以英制单位返回数据。 对于这些 Api，返回的响应还将包括 Unittype.pixel 度量，这是一个可用于单位转换的数值。 请参阅下表以解释这些值。
 
-|Unittype.pixel 度量|说明         |
+|Unittype.pixel 度量|Description         |
 |--------|--------------------|
 |0       |离                |
-|1       |×              |
-|2       |单位               |
+|第       |×              |
+|2       |英里               |
 |3       |毫米          |
 |4       |点数          |
 |5       |进度表               |
@@ -45,8 +45,8 @@ ms.locfileid: "74382331"
 |17      |摄氏温度             |
 |18      |华氏温度          |
 |19      |开氏温度              |
-|20      |表示             |
-|21      |浮点数               |
+|20      |%             |
+|21      |FLOAT               |
 |22      |integer             |
 
 
@@ -54,15 +54,15 @@ ms.locfileid: "74382331"
 
 某些天气服务 Api 在响应中返回图标代码（iconCode），这是一个可用于定义该图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
 
-| 图标编号 |图标| 日期 | 高枕无忧 | 文本 |
+| 图标编号 |图标| 天 | 高枕无忧 | 文本 |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴|
+| 第           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
 | 3           |![](./media/weather-services-concepts/partly-sunny.png)                | 是 |  否    | 部分 Sunny|
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | 是 |  否    | 间歇性云|
 | 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | 是 |  否    | 模糊阳光 |
 | 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | 是 |  否    | 主要是云|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | 是 |  是   | 云 |
+| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | 是 |  是   | 多云 |
 | 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | 是 |  是   | Dreary (Overcast)|
 | 11           |![](./media/weather-services-concepts/fog-i.png)                       | 是 |  是   | 雾化|
 | 12           |![](./media/weather-services-concepts/showers-i.png)                   | 是 |  是   | 淋浴|
@@ -77,7 +77,7 @@ ms.locfileid: "74382331"
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 与 Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | 是 |  是   | 雪花|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  否    | 大多数具有雪的云|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | 交易 |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | Ice |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | 是 |  是   | Sleet|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | 是 |  是   | 冻结 Rain|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | 是 |  是   | Rain 和雪|
@@ -127,7 +127,7 @@ Via[获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles)用户可以
 
 下面显示了带有十六进制颜色代码和 dBZ 值的雷达图磁贴的详细调色板。 dBZ 表示天气雷达图中降水量的强度。 
 
-| **采用**             | **交易**              | **雪花**              | **混**             |
+| **采用**             | **交易**              | **雪花**              | **MIXED**             |
 |----------------------|----------------------|-----------------------|-----------------------|
 | **dBZ** **（彩色）**  | **dBZ** **（彩色）**  | **dBZ** **（彩色）**   | **dBZ** **（彩色）**   |
 | 1.25 （#93C701） | 1.25 （#E6A5C8） | 1.25 （#9EC8F2）  | 1.25 （#C196E6） |

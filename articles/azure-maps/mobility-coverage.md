@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的移动性覆盖 |Microsoft Docs
-description: 了解 Azure Maps 中的移动性覆盖
+title: 移动（传输）范围 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure Maps 中的移动性覆盖
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 658d282260b6c9c427527fdc07bf05a0218fda4a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576997"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910705"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖范围
 
@@ -46,18 +46,18 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 秘鲁 | Cusco，利马 |
 | 波多黎各 | San Juan |
 | 乌拉圭 | 蒙得维的亚，蓬 del Este |
-| 美国 | <p>Albany （NY），Albuquerque （NM），Anchorage （AK），Appleton-Oshkosh-Neenah （WI），Asheville （NC），雅典（华盛顿），亚特兰大（GA），德克萨斯州（德克萨斯州），Bakersfield （CA），巴尔的摩），Bellevue （WA），Berkshire，Birmingham，Bloomington （ID），波士顿（MA），Boulder （CO）布里巴德县县（佛罗里达州）、Buffalo （纽约州）、Butte （MT）、佛得角货货货、中心县（PA）、Urbana-champaign-Urbana-champaign （IL）、Charleston （SC）、Charleston （WV）、Charlotte （NC）、Charlottesville （Chattanooga）、柑橘县（佛罗里达州）、Cleveland （哦）、Coachella 低谷（CA）、科罗拉多弹簧（CO）、哥伦比亚（TN）、俄亥俄州哥伦布（哦）、语料库 Christi （TX）、达拉斯/提（TX）、Dayton （哦）、特拉华、丹佛（CO）、Des Moines （IA）、Detroit （MI）、德卢斯（MN）、El Paso （TX）、Eugene （或）、Fairbanks （AK）、Fargo （ND）、Fayetteville （NC）、Flagstaff （AZ）、Flint （MI） Fort Collins （CO）、Fort 堡（在中）、Fresno （CA）、Gainesville （FL）、总计叉（ND）、总计 Rapids （MI）、绿色托架（WI）、Greensboro （NC）、Greenville （）、Hanford （CA）、Hartford （CT）、Hernando 县（佛罗里达州）、Honolulu （HI）、休斯顿（TX）、Humboldt 县（CA）、亚拉巴马（AL）、印第安纳波利斯（在中）、Ithaca （NY）、Jackson （MS）、Jackson （TN）、杰克逊维尔（MS）、Johnson （TN）、Jonesboro city （）、（AR）、Joplin （MO）、Juneau （AK）、Kalamazoo （MI）、堪萨斯城 City （MO）、Kauai （HI）、Ketchum （ID）、Knoxville （TN）、Lafayette （在中）、兰卡斯特（PA）、Lansing （MI）、内华达州（NV）、Lawrence （KS）、先生县（佛罗里达州）、Lexington （KY）、Lincoln 县（OR）、小摇滚（AR）CA）、路易斯维尔（KY）、Madison （WI），McAllen （TX），Memphis （TN），迈阿密（佛罗里达州），Milwaukee/Waukesha （WI），明尼阿波利斯（MN），Missoula （MT），Modesto （USA），Moline （IL），Monroe 县（PA），Montgomery （MORGANTOWN），WV，纳什维尔），新的 "（CT）"、"新奥尔良（LA）"、"NYC"、Ocala （佛罗里达州）、Okaloosa 县（佛罗里达州）、Oklahoma City （正常）、Omaha （NE）、奥兰多（佛罗里达州）、巴拿马 City （佛罗里达）、Pensacola （佛罗里达州）、Peoria （IL）、Philadelphia （pa）、Phoenix （AZ）、Pittsburgh （pa）、（ME）、Raleigh （NC），Redding （CA）、Reno & Lake Tahoe （NV）、Roanoke 低谷（VA-Lynchburg）、Rochester （NY）、软糖山地国家公园）、流氓低谷（OR）、Roseburg （OR）、Roseville （CA）、（CA）、Sacramento （或）、盐湖城CA）、San Luis Obispo （CA）、加利福尼亚州 Barbara （CA）、北京 Fe （NM）、Sarasota （佛罗里达州）、Savannah （GA）、Seacoast Region （NH）、西雅图-Tacoma-Bellevue （WA）、SF 托架区域（CA）、Sioux City （IA）、Sioux （SD）、Sitka （AK）、Spokane （Springfield）、Springfield （IL）、（质量）、圣 George （未用），圣港（MO），Stockton （CA）、Syracuse-Utica （NY）、佛罗里达（佛罗里达州）、Tampa、Terre （佛罗里达州）、Haute 吧（在中）、Topeka （Tucson）、Tulsa （KS）、遍历城市（MI）、佛蒙特州（AZ）、Victorville （正常）、Volusia、Waco （CA）、县（佛罗里达州）、（TX）、华盛顿（DC）、Waterbury （CT）、Wichita （KS）、Wilmington （NC）、Yakima （WA）、纽约县（PA）、Yuma 县（AZ）</p>|
+| 美国 | <p>Albany （NY）、Albuquerque （NM）、Anchorage （AK），Appleton-Oshkosh-Neenah （WI），Asheville （NC），雅典（华盛顿），亚特兰大（GA），德克萨斯州，Bakersfield （CA），巴尔的摩），Bellevue （WA），Berkshire，Birmingham，Bloomington （ID），波士顿（MA），Boulder （CO）布里巴德县县（佛罗里达州）、Buffalo （纽约州）、Butte （MT）、佛得角货货货、中心县（PA）、Urbana-champaign-Urbana-champaign （IL）、Charleston （SC）、Charleston （WV）、Charlotte （NC）、Charlottesville （Chattanooga）、柑橘县（佛罗里达州）、Cleveland （哦）、Coachella 低谷（CA）、科罗拉多弹簧（CO）、哥伦比亚（TN）、俄亥俄州哥伦布（哦）、语料库 Christi （TX）、达拉斯/提（TX）、Dayton （哦）、特拉华、丹佛（CO）、Des Moines （IA）、Detroit （MI）、德卢斯（MN）、El Paso （TX）、Eugene （或） Fairbanks （AK）、Fargo （ND）、Fayetteville （NC）、Flagstaff （AZ）、Flint （MI） Fort Collins （CO）、Fort 堡（IN）、Fresno （CA）、Gainesville （佛罗里达州）、总计叉（ND）、总计 Rapids （MI）、绿色托架（WI）、Greensboro （NC）、Greenville （SC）、Gunnison （CO）、Hampton 道路（VA）、Hanford （CA）、Hartford （CT）、Hernando 县（佛罗里达州）、Honolulu （HI）、休斯顿（TX）、Humboldt 县（CA）、亚拉巴马州（AL）、印第安纳波利斯（在中）、Ithaca （NY）、Jackson （MS）、Jackson （TN）、杰克逊维尔（JOHNSON）、TN （Jonesboro）、Joplin （MO）、Juneau （AK）、Kalamazoo （MI）、堪萨斯城 City （MO）、Kauai （HI）、Ketchum （ID）、Knoxville （TN）、Lafayette （在中）、兰卡斯特（PA）、Lansing （MI）、内华达州（NV）、Lawrence （KS）、先生县（佛罗里达州）、Lexington （KY）、Lincoln 县（OR）、小摇滚（AR）、洛杉矶（CA）、路易斯维尔（KY）、Madison （WI）、McAllen （TX）、Memphis （TN）、迈阿密（佛罗里达州）、Milwaukee/Waukesha （WI）、明尼阿波利斯（MN）、Missoula （MT）、Modesto （USA）、Moline （IL）、Monroe 县（PA）、Montgomery （Morgantown）、WV （纳什维尔）、TN （印地安黄）、（）、（）、新奥尔良（LA）、NYC、Ocala （佛罗里达州）、Okaloosa 县（佛罗里达州）、Oklahoma 城（正常）、Omaha （NE）、奥兰多（佛罗里达）、巴拿马城（佛罗里达州）、Pensacola （FL）、Peoria （IL）、Philadelphia （PA）、Phoenix （AZ）、Pittsburgh （PA）、下（ME）、奥兰多（OR）、Racine （WI）、Raleigh （NC）、Redding （CA）、Reno & Lake Tahoe （NV）、Roanoke 低谷（VA-Lynchburg）、Rochester （NY）、软糖山地国家公园）、流氓低谷（OR）、Roseburg （OR）、Roseville （CA）、Sacramento （CA）、塞勒姆（OR）、盐 Lake 城（）、San Antonio （TX）、圣地亚哥（CA）、san Luis Obispo （CA）、加利福尼亚州 Barbara （CA）、北京 Fe （NM）、Sarasota （佛罗里达州）、Savannah （GA）、Seacoast Region （NH）、西雅图-Tacoma-Bellevue （WA）、SF 托架区域（CA）、Sioux City （IA）、Sioux （SD）、Sitka （AK）、Spokane （Springfield）、Springfield （IL）、（质量）、圣 George （Stockton）、St. 港（MO）、（CA）、Syracuse-Utica （NY）、佛罗里达（佛罗里达州）、Tampa Terre （在中）、Haute （圣彼得堡）、Topeka （KS）、遍历城市（英里）、Tucson （AZ）、Tulsa （确定）、佛蒙特州、Victorville （CA）、Volusia 县（佛罗里达州）、Waco （TX）、华盛顿州（DC）、Waterbury （）、Wichita （）、Wilmington （）、Yakima （WA）、纽约县（PA）、Yuma 县（AZ）</p>|
 | \+ 美属维尔京群岛 | 美属维尔京群岛 * |
 
 
-## <a name="asia-pacific"></a>亚太区
+## <a name="asia-pacific"></a>亚太
 
 | 国家/地区 |  城市（地铁区域） |
 |--------|---------|
 | 澳大利亚      | <p>阿德莱德，Alice 弹簧，Bowen，布里斯班，Bundaberg QLD，Burnie，Cairns，堪培拉，达尔文，Gladstone，霍巴特，Innisfail，Launceston，Mercer-mackay，磁芯，Maryborough-Hervey Bay，墨尔本，新南威尔士，RockHampton，Queensland，南东，悉尼、Toowoomba、Townsville、维多利亚、Warwick、Yeppoon</p> |
 | 中国 | <p> Changchun，Changsha，Chengdu，重庆，Dalian，Datong，Dongguan，杭州，Jiangyin，Jinan，南京，Nantong，Ningbo，Pingdingshan，Qingdao，Shenyang，Suzhou，Tangshan，Tianjin，Weifang，Wuhan，Wuxi，Yantai，Yixing，Zhuhai，，，，，上海，北京，广州、Shenzhen、Zhengzhou</P>| 
 | 香港特别行政区 | 香港特别行政区 *|
-| 澳门特别行政区 | 澳门特别行政区 *|
+| 澳门特别行政区 | 中国澳门特别行政区 *|
 | 印度 | Ahmedabad，Bengaluru，新德里，孟买，Mysuru|
 | 印度尼西亚 | 万隆、Banyuwangi、巴淡岛、Denpasar、雅加达、Kediri、Malang、Palembang、Semarang、Surabaya、Surakarta、Yogyakarta |
 | 日本 | Shizuoka 县、东京、Wakkanai、Yamanashi 县 |
@@ -95,7 +95,7 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 格鲁吉亚 | 第比利斯 | 
 | 德国 | <p>柏林、Brandenburg、Bremen & Niedersachsen、Cologne、Eisenach、法兰克福、汉堡、Karlsruhe、Mainz、München、Rhein、Neckar、Rhein-Ruhr、Stuttgart、Titisee、Neustadt、Ulm</P> | 
 | 希腊 | <p>雅典、Arta、Amorgos、Chania、Corfu、Chios Kos、Heraklion、Ioannina、Kavala、Kalamata、Komotini、Kos、Larissa、Meganisi、Mykonos、Patra、Rethimno、Rhodes、Santorini、Serres、Syros、Tinos、Thessaloniki、Veria、Volos、Xanthi </P> |
-| 匈牙利 | 布达佩斯、Szeged、Székesfehérvár |
+| 匈牙利 | Budapest, Szeged, Székesfehérvár |
 | 冰岛 | Ísland-冰岛 * | 
 | 爱尔兰 | 爱尔兰 |   
 | 意大利   | <p>Agrigento、Alessandria、Ancona、Bari、Bologna-Bologne、Cagliari、Sardinia、Campobasso、Catania e Messina、Cosenza、Crema、Cremona、Crotone、Cuneo、之前、Florence、Foggia、Genova、Genoa、Iglesias、Spezia、Lecce、Matera、Milano、Milan、Napoli、Naples、、、、、、、、、Padova、Palermo、Parma、Perugia、Pescara、Pisa、Potenza、Roma、Siena、Grosseto、Siracusa、Syracuse、Taranto、Torino、意大利都灵、Trento、Trieste、Udine、留、Venice、 </p> |
@@ -127,7 +127,7 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 国家/地区 |  城市（地铁区域） |
 |---------|---------|
 | 巴林 | 巴林 |
-| 埃及 | 开罗    |
+| 埃及 | Cairo    |
 | 以色列| 以色列  |
 | 肯尼亚 | 内罗毕  | 
 | 马达加斯加岛 | Antananarivo |

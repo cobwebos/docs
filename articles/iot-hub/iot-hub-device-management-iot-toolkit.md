@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953197"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911915"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
 
@@ -43,12 +43,12 @@ ms.locfileid: "73953197"
 
 使用各种管理选项运行适用于 Visual Studio Code 的 Azure IoT 工具。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 * 一个有效的 Azure 订阅。
-* 已订阅中创建一个 Azure IoT 中心。
+* 已在订阅中创建一个 Azure IoT 中心。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
@@ -63,7 +63,7 @@ ms.locfileid: "73953197"
 5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的**iothubowner**策略连接字符串。
 
 ## <a name="direct-methods"></a>直接方法
 
@@ -71,7 +71,7 @@ ms.locfileid: "73953197"
 
 2. 在输入框中输入方法名称和有效负载。
 
-3. 结果将显示在“输出” > “Azure IoT 中心工具包”视图中。
+3. 结果将显示在**Azure IoT 中心**视图 > **输出**中。
 
 ## <a name="read-device-twin"></a>读取设备孪生
 
@@ -87,7 +87,7 @@ ms.locfileid: "73953197"
 
 3. 选择“更新设备孪生”以更新设备孪生。
 
-## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
+## <a name="send-cloud-to-device-messages"></a>发送云到设备的消息
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
  
@@ -95,7 +95,7 @@ ms.locfileid: "73953197"
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出” > “Azure IoT 中心工具包”视图中。
+3. 结果将显示在**Azure IoT 中心**视图 > **输出**中。
 
 ## <a name="next-steps"></a>后续步骤
 

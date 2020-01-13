@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Maps 中管理身份验证 | Microsoft Docs
-description: 可以使用 Azure 门户管理 Azure Maps 中的身份验证。
+title: 管理身份验证 |Microsoft Azure 映射
+description: 您可以使用 Azure 门户在 Microsoft Azure 映射中管理身份验证。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a38c970f3c9fa5b90032f5816f8e541b305531c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432995"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911546"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 

@@ -1,6 +1,6 @@
 ---
-title: 将绘图工具栏添加到 Azure Maps |Microsoft Docs
-description: 如何使用 Azure Maps Web SDK 将绘图工具栏添加到地图
+title: 向地图添加绘图工具栏 |Microsoft Azure 映射
+description: 在本文中，你将学习如何使用 Microsoft Azure map Web SDK 将绘图工具栏添加到地图
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 63848ecf92daecf28f6e0046e87da15355aa35c1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561824"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911671"
 ---
 # <a name="drawing-tool-events"></a>绘图工具事件
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的 web 地图控件入门 |Microsoft Docs
-description: 了解如何使用 Azure Maps map control 客户端 Javascript 库。
+title: Web 地图控件入门 |Microsoft Azure 映射
+description: 了解如何使用 Microsoft Azure map map control 客户端 Javascript 库，将地图和嵌入 Azure Maps 功能呈现到 web 或移动应用程序中。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d50b97ad47f4b09ae4fec363e7d0a2c7f6b841df
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432917"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911358"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 

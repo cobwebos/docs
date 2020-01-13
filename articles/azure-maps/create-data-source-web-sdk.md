@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Maps 中创建数据源 |Microsoft Docs
-description: 如何创建数据源并将其与 Azure Maps Web SDK 一起使用。
+title: 为地图创建数据源 |Microsoft Azure 映射
+description: 在本文中，你将了解如何创建数据源，并使用 Microsoft Azure map Web SDK 将其添加到地图中。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433010"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911720"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 

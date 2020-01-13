@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890181"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911995"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
 
@@ -83,7 +83,7 @@ ms.locfileid: "73890181"
 
    ![提供“延迟截止时间”详细信息](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. 通过从[数百个现成的连接器](../connectors/apis-list.md)中进行选择，来添加要运行的任何其他操作。 
+1. 通过从[数百个随时可用的连接器](../connectors/apis-list.md)中进行选择，添加要运行的任何其他操作。 
 
    例如，可以包含向 URL 发送请求的 HTTP 操作，或包含处理存储队列、服务总线队列或服务总线主题的操作： 
 
@@ -106,7 +106,7 @@ ms.locfileid: "73890181"
 
 例如，使用 Postman 应用时，可以使用类似于此示例的设置创建 POST 请求，然后选择 "**发送**" 发出请求。
 
-| 请求方法 | URL | 正文 | 标头 |
+| 请求方法 | URL | Body | 标头 |
 |----------------|-----|------|---------|
 | **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在 "**源**" 框中，输入要在请求中发送的负载。 <p>**注意**：此设置会自动配置“标头”值。 | **键**：Content-Type <br>**值**：application/json |
 |||||
@@ -127,7 +127,7 @@ ms.locfileid: "73890181"
 
 在逻辑应用中，每个一次性作业均作为单个逻辑应用运行实例执行。 若要取消一次性作业，可以使用逻辑应用 REST API 中的[工作流运行 - 取消](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel)。 发送对触发器的调用时，请提供[工作流运行 ID](#workflow-run-id)。
 
-## <a name="schedule-recurring-jobs"></a>安排重复作业
+## <a name="schedule-recurring-jobs"></a>安排定期作业
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中创建一个空白的逻辑应用。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "73890181"
 
    有关高级计划选项的详细信息，请参阅[在 Azure 逻辑应用中创建和运行重复执行的任务和工作流](../connectors/connectors-native-recurrence.md)。
 
-1. 通过从[数百个现成的连接器](../connectors/apis-list.md)中进行选择，来添加其他操作。 在触发器下，选择 "**下一步**"。 查找并选择所需的操作。
+1. 通过从[数百个随时可用](../connectors/apis-list.md)的中进行选择，添加所需的其他操作。 在触发器下，选择 "**下一步**"。 查找并选择所需的操作。
 
    例如，可以包含向 URL 发送请求的 HTTP 操作，或包含处理存储队列、服务总线队列或服务总线主题的操作： 
 
@@ -191,7 +191,7 @@ ms.locfileid: "73890181"
 
 1. 完成后，选择“完成”。
 
-若要详细了解异常处理，请参阅[处理错误和异常 - RunAfter 属性](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property)。
+若要详细了解异常处理，请参阅[处理错误和异常 - RunAfter 属性](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior)。
 
 ## <a name="faq"></a>常见问题
 

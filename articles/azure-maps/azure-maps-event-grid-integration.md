@@ -1,6 +1,6 @@
 ---
-title: 使用事件网格对 Azure Maps 事件做出响应 | Microsoft Docs
-description: 了解如何使用事件网格对 Azure Maps 事件做出响应。
+title: 使用事件网格响应映射事件 |Microsoft Azure 映射
+description: 本文介绍如何使用事件网格响应 Microsoft Azure 映射事件。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799187"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911812"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件网格对 Azure Maps 事件做出响应 
 
@@ -30,7 +30,7 @@ Azure 事件网格是一种完全托管的事件路由服务，使用发布-订�
 
 事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅方。 Azure Maps 帐户发出以下事件类型： 
 
-| 事件类型 | 描述 |
+| 事件类型 | Description |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 当接收的坐标从给定地理围栏的外部进入内部时引发 |
 | Microsoft.Maps.GeofenceExited | 当接收的坐标从给定地理围栏的内部移到外部时引发 |

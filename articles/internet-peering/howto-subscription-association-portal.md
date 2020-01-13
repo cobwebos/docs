@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775636"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912173"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用门户将对等 ASN 关联到 Azure 订阅
 
@@ -25,6 +25,34 @@ ms.locfileid: "75775636"
 
 ### <a name="sign-in-to-the-portal"></a>登录到门户
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>注册对等互连资源提供程序
+按照以下步骤，在订阅中注册对等互连资源提供程序。 如果未执行此操作，则设置对等互连所需的 Azure 资源将无法访问。
+
+1. 单击门户左上角的 "**订阅**"。 如果看不到该服务，请单击 "**更多服务**" 并搜索它。
+
+    > [!div class="mx-imgBorder"]
+    > ![打开订阅](./media/rp-subscriptions-open.png)
+
+1. 单击要用于对等互连的订阅。
+
+    > [!div class="mx-imgBorder"]
+    > ![启动订阅](./media/rp-subscriptions-launch.png)
+
+1. 打开订阅后，在左侧单击 "**资源提供程序**"。 然后，在右侧窗格中，在 "搜索" 窗口中搜索对*等互连*，或使用滚动条查找 "对**等**互连" 并查看**状态**。 如果状态为 "已***注册***"，请跳过以下步骤并转到 "**创建 PeerAsn**" 部分。 如果状态为 " ***NotRegistered***"，请选择 " **Microsoft** "，并单击 "**注册**"。
+
+    > [!div class="mx-imgBorder"]
+    > ![注册开始](./media/rp-register-start.png)
+
+1. 观察状态更改为 "***注册***"。
+
+    > [!div class="mx-imgBorder"]
+    > 正在进行 ![注册](./media/rp-register-progress.png)
+
+1. 等待分钟或完成注册。 然后，单击 "**刷新**"，并验证状态是否为 "已***注册***"。
+
+    > [!div class="mx-imgBorder"]
+    > ![注册已完成](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>创建 PeerAsn
 可以创建新的 PeerAsn 资源，将自治系统编号（ASN）与 Azure 订阅相关联。 可以通过为需要关联的每个 ASN 创建**PeerAsn** ，将多个 asn 关联到一个订阅。

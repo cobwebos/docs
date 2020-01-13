@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的搜索类别 | Microsoft Docs
-description: 了解 Azure Maps 中的搜索类别
+title: 搜索类别 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure 映射中支持的搜索类别。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727144"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910417"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型
 
@@ -45,7 +45,7 @@ ms.locfileid: "64727144"
 | COLLEGE\_UNIVERSITY | 专科院校/社区学院、学院/大学、学院、大学预科中学、大学 |
 | COMMERCIAL\_BUILDING | 办公大楼、园区总部、商业建筑 |
 | COMMUNITY\_CENTER | 社区中心 |
-| COMPANY | 电子器件、 制造、 计算机数据服务、 公共健康技术、 多元化的金融、 动物防范一些、 航班、 设备租赁费、 服务、 邮件/包/运费交付、 总线行、 家庭设备修复，清理服务，oem，税服务、 石油天然气、 法律服务、 构造、 电信、 传输、 汽车制造、 化学物、 葬礼服务防止假死、 桥隧道操作、 汽车、 机械工程、 服务、 投资顾问广告/市场营销，移动存储、 节省机构、 保险、 计算机软件 pharmaceuticals，以迎合，婚礼服务、 农业技术、 不动产、 出租车、 礼车 shuttle 服务总线章程租赁，挖掘、 发布技术、 电缆电话、 导入/导出分发、 公司、 asylum、 由燃煤提供; mine(s)、 estate(s)、 啤酒厂、 gold mine(s) |
+| COMPANY | 电子设备、制造、计算机数据服务、公共健康技术，多样化金融，动物 e-shelter，航空，设备租赁，服务，邮件/包裹/交通交付，总线线，家庭设备维修，清洁服务，oem，税务服务，石油天然气，法律服务，建设，电信，运输，汽车制造，代理商，funeral 服务防止，桥接器，投资顾问，广告/市场营销，移动存储，节省机构，保险，计算机软件，药品，餐，婚礼服务，农业技术，房地产，出租车，礼车往复服务，客车章程租赁，挖掘，发布技术，有线电话，导入/导出分发，公司，asylum，燃煤地雷，房地产（s），brewery，黄金地雷 |
 | COURTHOUSE | 法院 |
 | CULTURAL\_CENTER | 文化中心 |
 | DENTIST | 牙医 |
@@ -105,12 +105,12 @@ ms.locfileid: "64727144"
 | REPAIR\_FACILITY | 车身维修厂、轮胎服务、维修店、汽车玻璃替换店、一般汽车维修服务、汽车配件销售安装、摩托车修理、卡车维修服务、维修设施 |
 | RESEARCH\_FACILITY | 研究设施 |
 | RESIDENTIAL\_ACCOMMODATION | 老年人社区、连栋房屋建筑群、公寓综合楼/公寓大楼、住宅小区、居民区 |
-| RESTAURANT | 德语，克里奥尔语 Cajun、 荷兰语、 宴会聊天室、 bistro、 以色列、 斯洛伐克语、 牙买加、 素食、 seafood，越南语、 马耳他语、 四川，威尔士语、 中文、 日语、 阿尔及利亚、 Californian，熔，Shandong，好的色拉栏中，Savoy an、 西班牙语、 埃塞俄比亚、 闽南语面圈形，伊朗、 加拿大、 美国、 挪威语、 法语、 Hunan、 Polynesian、 afghan、 有用，亚洲、 瑞士、 erotic、 crêperie，Surinamese、 埃及语、 匈牙利语、 尼泊尔、 各、 热 pot、 关于汉堡包，地中海、 拉丁美洲、 tapas，英国，墨西哥、 广东、 亚洲 （其他）、 自助餐，寿司，蒙古语，国际 mussels、 泰语、 委内瑞拉、 Rumanian、 chicken soup，安装得当的过程、 steak 房子、 意大利语、 朝鲜语、 Cypriot、 波斯尼亚语、 玻利维亚、 多米尼加、 比利时、 突尼斯、 苏格兰，yogurt/汁栏英语、 巴基斯坦货币、 捷克语、 夏威夷、 Maghrib、 藏语、 阿拉伯半岛，中间美国东部、 智利、 上海、 波兰语、 菲律宾语、 Sudanese、 亚美尼亚语、 缅甸语、 葡萄牙语(巴西)、 斯堪的纳维亚、 保加利亚语、 灵魂食物、 哥伦比亚、 犹太、 pizza Sicilian、 有机、 希腊语、 巴斯克，乌拉圭，餐厅，芬兰语、 中非、 科西嘉语、 叙利亚、 加勒比海、 Dongbei、 俄语、 烤制，消失，需要快餐，澳大利亚，爱尔兰，pub 食物，fondue，黎巴嫩、 印度尼西亚语、 丹麦语、 Provençal、 teppanyaki、 印度、 毛里求斯、 西方大陆秘鲁、 柬埔寨、 辅料、 瑞典语、 macrobiotic，ice cream parlor，斯拉夫语、 土耳其语、 阿根廷、 奥地利、 特殊、 葡萄牙语、 卢森堡、 摩洛哥、 三明治，古巴，餐馆 |
+| RESTAURANT | 德国，克里奥尔语-Cajun，荷兰语，banquet 房间，bistro，以色列，斯洛伐克语，牙买加，蔬菜，海鲜，越南语，马耳他语，Sichuan，威尔士语，中文、日语、阿尔及利亚、Californian、合成、Shandong、沙拉 bar、Savoy a、西班牙语、埃塞俄比亚、繁体中文、甜、伊朗、加拿大、美国、挪威语、法语、Hunan、Polynesian、阿富汗、有用、中文、瑞士、erotic、crêperie、Surinamese、墨西哥、匈牙利语、尼泊尔、barbecue、拉美，广东核电集团，亚洲（其他），好多，寿司，蒙古语，国际，mussels，泰语，委内瑞拉，Rumanian，小鸡，soup，计算机，steak 房子，yogurt/汁 bar，意大利语，韩语，Cypriot，波斯尼亚，玻利维亚，多米尼加，比利时，突尼斯，苏格兰，英语，巴基斯坦，捷克语，夏威夷，Maghrib，藏语，阿拉伯，中东，智利，上海，波兰，菲律宾，苏丹，亚美尼亚语，波兰语，乌拉圭、cafeterias、芬兰语、非洲、科西嘉语、叙利亚，加勒比海，Dongbei，俄语，grill，走出，fast 食物，澳大利亚，爱尔兰，pub 食物，fondue，黎巴嫩，印度尼西亚语，丹麦语，Provençal，teppanyaki，印第安，毛里求斯，西方大陆，秘鲁，Cambodian，辅料，瑞典语，macrobiotic，冰淇淋 parlor，斯拉夫语，Argentinean，现，摩洛哥 |
 | RESTAURANT\_AREA | 餐厅区域 |
 | REST\_AREA | 服务区、中途停靠站 |
 | SCENIC\_PANORAMIC\_VIEW | 景点/全景图、观测点 |
 | SCHOOL | 烹饪学校、小学、艺术学校、高中、驾校、语言学校、体校、学前班、高中、中学、职业培训、特殊学校、托儿所、学校、技校、军校、农校 |
-| SHOP | 厂家直销店、安全产品、圣诞节/假日商店、眼镜店、室内花园：照明、彩票店、乐器、美甲沙龙、室内花园：绘画装饰、爱好/休闲时间、报刊烟草店、服装配饰：特产、干洗店、皮革袋、宠物用品、服装配饰：童装、建筑材料、珠宝、钟表、服装配饰：鞋靴修理、室内花园：窗帘/纺织品、电气、办公室IT：电子用品消费、电器、办公室 IT：摄影、CD、DVD、洗衣房、服装配饰：男装、花店、典当行、书店、船用电子设备、食品饮料：菜场、室内花园：地毯、影印、划船配件、手机店、玩具游戏、特色食品、服装配饰：普通、食品饮料：面包房、裁缝店、礼品、卡片、纪念品、动物服务、运动器材和服装、邮票店、电器、用电的、办公室IT：办公设备、摄影店、批发市场、室内花园：家具配件、地方特产、食品饮料：肉店、杂货店、食品饮料：食品店、食品饮料：酒类、药房、家具/家居用品、电器、办公室 IT：电脑用品、CD/视频租赁、医疗用品、农业用品、美容美发、室内花园：花园中心服务、食品饮料：鱼店、美容用品、服装配饰：女装、旅行社、零售店、回收店、室内花园：玻璃窗、五金、房地产中介、玻璃器皿/陶瓷、熟食店、室内花园：厨房浴室、博彩站、理发店、食品饮料：杂货店、食品饮料：绿色食品店、便利店、瓶装酒商店、室内花园：DIY 中心、古董/艺术品、商店、商铺 |
+| SHOP | 出厂插座，安全产品，圣诞节/假日商店，opticians 房子园：照明、彩票店、乐器、钉子 salon、房屋花园：粉刷装修、爱好/免费时间、newsagents tobacconists、服装配件：专业、干燥清除、袋 leatherwear、宠物用品、服装配件：孩子、建筑材料设备、饰品、时钟监视、服装配件： footwear 鞋修理电子设备、电气、office it：&#39;照相机的摄影、&#39;cd、DVD 视频、总服装配件：男人、florists、卒店、书籍商店、海军电子设备、食品饮料：食物市场、房屋菜园：地毯/地面 coverings、影印、划船设备配件、移动电话店、玩具游戏、专业食品、服装配件：常规、食物电气设备，电气，办公 it：办公设备，相片实验室/开发，批发俱乐部，房子园：家具管接头，本地专业，食品饮料： butchers，各种商店，食品饮料：食物商店，家具/家庭家具，电气，办公设施：计算机用品，cd/视频租赁，医疗用品设备，农业用品，美 salon，房子： fishmongers，美妙用品，服装附件：女士，旅行代理，零售出口，回收店，房子园：玻璃窗口，硬件，房地产 agent，glassware/ceramic，delicatessen，房子园： kitchens bathrooms，打赌站，hairdressers barbers，食物： grocers，食物：绿色 grocers，便利性商店，通过瓶店，商店 |
 | SHOPPING\_CENTER | 购物广场、购物中心 |
 | SPORTS\_CENTER | 主题运动、壁球场、健身俱乐部、体育中心 |
 | STADIUM | 网球、足球、棒球、跑道、多用途、赛车运动、板球场、橄榄球场、冰球、田径运动、赛马、篮球、足球、体育场、田径场、跑道 |

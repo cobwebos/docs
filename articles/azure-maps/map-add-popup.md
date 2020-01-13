@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Maps 添加弹出窗口 | Microsoft Docs
-description: 如何将 popup 添加到 Azure Maps Web SDK。
+title: 向地图上的点添加弹出项 |Microsoft Azure 映射
+description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将 popup 添加到某个点。
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cde6c745034d0963bd372e36e6e5a046113c202b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976548"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911151"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -22,7 +22,7 @@ ms.locfileid: "68976548"
 
 ## <a name="understand-the-code"></a>了解代码
 
-下面的代码使用符号层向地图添加一个`name`点`description`功能, 该功能具有和属性。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的实例, 但未将其显示出来。 当鼠标悬停在符号标记上时, 鼠标事件会添加到符号层, 以触发打开和关闭弹出窗口。 当悬停标记符号时, 将用标记的`position`位置更新 popup 的属性, `content`并用`name`一些 HTML 来更新选项, 这些 HTML 用于包装要悬停`description`的点功能的和属性。 然后, 使用其`open`功能在地图上显示弹出窗口。
+下面的代码使用符号层向地图添加一个具有 `name` 和 `description` 属性的点功能。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的实例，但未将其显示出来。 当鼠标悬停在符号标记上时，鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 当悬停标记符号时，将用标记的位置更新 popup 的 `position` 属性，并用一些 HTML 来更新 `content` 选项，这些 HTML 包装 `name` 并 `description` 要悬停的点功能的属性。 然后，使用其 `open` 函数在地图上显示弹出窗口。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重复使用具有多个点的弹出窗口
 
-如果有大量的点, 并且只想要一次显示一个弹出窗口, 最佳方法是创建一个弹出窗口并重复使用它, 而不是为每个点功能创建一个弹出窗口。 通过重复使用弹出式窗口, 应用程序创建的 DOM 元素数量大大降低, 从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
+如果有大量的点，并且只想要一次显示一个弹出窗口，最佳方法是创建一个弹出窗口并重复使用它，而不是为每个点功能创建一个弹出窗口。 通过重复使用弹出式窗口，应用程序创建的 DOM 元素数量大大降低，从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
 
 <br/>
 
@@ -94,12 +94,12 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="customizing-a-popup"></a>自定义弹出项
 
-默认情况下, popup 具有白色背景、底部有一个指针箭头以及右上角的 "关闭" 按钮。 下面的示例使用`fillColor` popup 的选项将背景色更改为黑色。 通过将`shoCloseButton`选项设置为 false 来删除 "关闭" 按钮。 弹出项的 HTML 内容使用从弹出项边缘填充10像素, 文本变为白色, 使其在黑色背景上正常显示。  
+默认情况下，popup 具有白色背景、底部有一个指针箭头以及右上角的 "关闭" 按钮。 下面的示例使用 popup 的 `fillColor` 选项将背景色更改为黑色。 通过将 `shoCloseButton` 选项设置为 false 来删除 "关闭" 按钮。 弹出项的 HTML 内容使用从弹出项边缘填充10像素，文本变为白色，使其在黑色背景上正常显示。  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自定义弹出窗口" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义" 弹出窗口</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
+通过<a href='https://codepen.io'>CodePen</a>上的 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义的弹出窗口</a>。
 </iframe>
 
 ## <a name="popup-events"></a>弹出项事件
@@ -109,7 +109,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="弹出项事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>弹出事件</a>, Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>弹出事件</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

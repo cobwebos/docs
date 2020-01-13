@@ -1,6 +1,6 @@
 ---
-title: 使用服务模块-Azure Maps |Microsoft Docs
-description: 了解如何使用 Azure Maps 服务模块。
+title: 使用 "Azure Maps 服务" 模块 |Microsoft Azure 映射
+description: 在本文中，你将了解如何利用 Azure Maps 服务模块 Microsoft Azure 映射 REST 服务。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408670"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911315"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 

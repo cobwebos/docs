@@ -4,14 +4,15 @@ description: 了解如何为 Azure Cosmos DB 帐户配置客户管理的密钥
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 32266abd5bcf8d7e137095d130ee872cc07edaf0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ROBOTS: noindex, nofollow
+ms.openlocfilehash: 964c3e4e2de43e6bcae353f0b525eb62e6613361
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904076"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911860"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-db-account"></a>为 Azure Cosmos DB 帐户配置客户管理的密钥
 
@@ -30,13 +31,13 @@ ms.locfileid: "75904076"
 
 ### <a name="1-make-sure-the-azure-cosmos-db-resource-provider-is-registered-for-your-azure-subscription"></a>1. 确保为你的 Azure 订阅注册 Azure Cosmos DB 资源提供程序
 
-从 Azure 门户中转到 Azure 订阅，并从左侧菜单中选择 "资源提供程序"：
+从 Azure 门户中转到 Azure 订阅，并从左侧菜单中选择 "**资源提供程序**"：
 
 ![左侧菜单中的 "资源提供程序" 条目](./media/how-to-setup-cmk/portal-rp.png)
 
-搜索 "Microsoft DocumentDB" 资源提供程序。
+搜索**Microsoft DocumentDB**资源提供程序。
 - 如果资源提供程序已标记为已注册，则无需执行任何操作。
-- 如果没有，请选择它并单击 "注册"：
+- 如果没有，请选择它并单击 "**注册**"：
 
     ![注册 Microsoft DocumentDB 资源提供程序](./media/how-to-setup-cmk/portal-rp-register.png)
 
@@ -50,34 +51,34 @@ ms.locfileid: "75904076"
 
 ### <a name="3-add-an-access-policy-to-your-azure-key-vault-instance"></a>3. 将访问策略添加到 Azure Key Vault 实例
 
-在 Azure 门户中，请前往你计划用于托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择 "访问策略"：
+在 Azure 门户中，请前往你计划用于托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择 "**访问策略**"：
 
 ![左侧菜单中的 "访问策略"](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-- 单击 "+ 添加访问策略"
-- 在 "密钥权限" 下拉菜单下，选择 "获取"、"解包密钥" 和 "自动换行"：
+- 选择 " **+ 添加访问策略**"
+- 在 "**密钥权限**" 下拉列表菜单中，选择 "**获取**、**解包**密钥和**环绕关键字**"：
 
     ![选择正确的权限](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-- 在 "选择主体" 下，单击 "未选择"，搜索并选择 "Azure Cosmos DB" 主体，然后单击底部的 "选择" （如果找不到 "Azure Cosmos DB" 主体，你可能需要重新注册 "Microsoft DocumentDB" 资源步骤2中的提供者）：
+- 在 "**选择主体**" 下，选择 "**未**选择"。 然后，搜索并选择**Azure Cosmos DB**主体。 最后，单击底部的 "**选择**" （如果找不到**Azure Cosmos DB**主体，你可能需要在步骤1中重新注册**Microsoft DocumentDB**资源提供程序）：
 
     ![选择 Azure Cosmos DB 主体](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-- 单击 "添加" 以添加新的访问策略
+- 选择 "**添加**" 以添加新的访问策略
 
 ### <a name="4-generate-a-key-in-azure-key-vault"></a>4. 在 Azure Key Vault 中生成密钥
 
-在 Azure 门户中，请执行计划用来托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择 "密钥"：
+在 Azure 门户中，请执行计划用来托管加密密钥的 Azure Key Vault 实例。 然后，从左侧菜单中选择 "**密钥**"：
 
 ![左侧菜单中的 "密钥" 项](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-- 单击 "生成/导入"
-- 提供新密钥的名称，选择 RSA 密钥大小（建议最少为3072以获得最佳安全性），然后单击 "创建"：
+- 选择**生成/导入**
+- 提供新密钥的名称，选择 RSA 密钥大小（建议最少为3072以获得最佳安全性），然后选择 "**创建**"：
 
     ![创建新密钥](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 - 创建密钥后，单击新创建的密钥，并单击其当前版本
-- 复制密钥的 "密钥标识符" （最后一个正斜杠后面的部分除外）：
+- 复制密钥的**密钥标识符**（最后一个正斜杠后的部分除外）：
 
     ![复制密钥的密钥标识符](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -85,15 +86,18 @@ ms.locfileid: "75904076"
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-从 Azure 门户创建新的 Azure Cosmos DB 帐户时，请在 "加密" 步骤中选择 "客户管理的密钥"。 在 "密钥 URI" 字段中，传递从步骤4中复制的 Azure Key Vault 密钥的 URI：
+从 Azure 门户创建新的 Azure Cosmos DB 帐户时，请在**加密**步骤中选择 "**客户管理的密钥**"。 在 "**密钥 URI** " 字段中，传递从步骤4中复制的 Azure Key Vault 密钥的 URI：
 
 ![在 Azure 门户中设置 CMK 参数](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 #### <a name="using-powershell"></a>使用 PowerShell
 
 使用 PowerShell 创建新的 Azure Cosmos DB 帐户时，
-- 在 "PropertyObject" 的 "keyVaultKeyUri" 属性下传递从步骤4中复制的 Azure Key Vault 密钥的 URI
+- 从**PropertyObject**中的**keyVaultKeyUri**属性下的步骤4中传递复制的 Azure Key Vault 密钥的 URI。
 - 请确保使用 "2019-12-12" 作为 API 版本。
+
+> [!IMPORTANT]
+> 必须显式设置 `Location` 参数，才能通过 CMK 成功创建帐户。
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -118,10 +122,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 #### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
 通过 Azure 资源管理器模板创建新的 Azure Cosmos DB 帐户时：
-- 传递 "属性" 对象中 "keyVaultKeyUri" 属性下的步骤4中复制的 Azure Key Vault 密钥的 URI
+- 在**properties**对象的**keyVaultKeyUri**属性下传递从步骤4中复制的 Azure Key Vault 密钥的 URI
 - 请确保使用 "2019-12-12" 作为 API 版本
 
-```
+> [!IMPORTANT]
+> 必须显式设置 `location` 参数，才能通过 CMK 成功创建帐户。
+
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Maps 中向 Android 地图添加图块层Microsoft Docs
-description: 如何使用 Azure Maps Android SDK 向地图添加图块层
+title: 向 Android 地图添加图块层 |Microsoft Azure 映射
+description: 本文介绍如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现图块层。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886606"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911517"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 
@@ -37,9 +37,9 @@ ms.locfileid: "68886606"
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
 * `{subdomain}` - 将添加子域值（如果已指定）的占位符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要完成本文中的过程, 需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>向地图添加图块层
@@ -48,7 +48,7 @@ ms.locfileid: "68886606"
 
 可以按照以下步骤向地图中添加图块层。
 
-1. 编辑**res > 布局 > activity_main** , 使其看起来像下面这样:
+1. 编辑**res > 布局 > activity_main** ，使其看起来像下面这样：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "68886606"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到`MainActivity.java`类的**onCreate ()** 方法。
+2. 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "68886606"
     });
     ```
     
-    上面的代码段首先使用**onReady ()** 回调方法获取 Azure Maps 映射控件实例。 然后, 它创建`TileLayer`一个对象, 并将带格式的**xyz** `tileUrl`磁贴 URL 传递到选项中。 层的不透明度设置为`0.8` , 因为正在使用的磁贴服务中的磁贴为256像素磁贴, 此信息将传递`tileSize`到选项中。 然后, 将图块层传递到地图层管理器中。
+    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将格式化的**xyz**磁贴 URL 传递到 `tileUrl` 选项。 层的不透明度设置为 "`0.8`"，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
 
-    添加上述代码片段后, `MainActivity.java`应如下所示:
+    添加上述代码片段后，`MainActivity.java` 应如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -168,7 +168,7 @@ ms.locfileid: "68886606"
     }
     ```
 
-如果现在运行应用程序, 应在图上看到一条线, 如下所示:
+如果现在运行应用程序，应在图上看到一条线，如下所示：
 
 <center>
 
@@ -176,7 +176,7 @@ ms.locfileid: "68886606"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章, 了解有关如何设置地图样式的详细信息
+请参阅以下文章，了解有关如何设置地图样式的详细信息
 
 > [!div class="nextstepaction"]
 > [更改 Android maps 中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

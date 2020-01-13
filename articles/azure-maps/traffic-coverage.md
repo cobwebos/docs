@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的交通覆盖区域 | Microsoft Docs
-description: 了解 Azure Maps 中的交通覆盖区域
+title: 流量覆盖率 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure Maps 中的流量覆盖率。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958006"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910402"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
@@ -23,7 +23,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="americas"></a>美洲
 
-|国家/地区  |事故  |流向  |
+|国家/地区  |事故  |Flow  |
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
@@ -37,9 +37,9 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |乌拉圭 |✓         |✓         |
 
 
-## <a name="asia-pacific"></a>亚太区
+## <a name="asia-pacific"></a>亚太
 
-|国家/地区   |事故  |流向  |
+|国家/地区   |事故  |Flow  |
 |---------|:---------:|:---------:|
 |澳大利亚     |✓         |✓        |
 |文莱   |✓         |✓        |
@@ -58,7 +58,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="europe"></a>欧洲
 
-|国家/地区   |事故  |流向  |
+|国家/地区   |事故  |Flow  |
 |---------|:---------:|:---------:|
 |安道尔   |✓         |✓         |
 |奥地利     |✓         |✓         |
@@ -116,7 +116,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
-|国家/地区 |事故  |流向  |
+|国家/地区 |事故  |Flow  |
 |---------|:---------:|:---------:|
 |巴林     |✓         |✓         |
 |埃及     |✓         |✓         |

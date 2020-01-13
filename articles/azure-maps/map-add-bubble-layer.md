@@ -1,6 +1,6 @@
 ---
-title: 将气泡层添加到 Azure Maps | Microsoft Docs
-description: 如何将气泡图层添加到 Azure Maps Web SDK。
+title: 向地图添加气泡图层 |Microsoft Azure 映射
+description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将气泡图层添加到地图。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976575"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911284"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
 本文介绍如何将数据源中的点数据呈现为地图上的气泡图层。 气泡层将点呈现为地图上具有固定像素半径的圆。 
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征, 请将`filter`层的属性设置为`['==', ['geometry-type'], 'Point']` , `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`或者如果要包含 MultiPoint 功能, 则设置为。
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` （如果还需要包含 MultiPoint 功能）。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源, 并将其连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 为气泡层提供了一些选项, 可用于以5个像素为单位呈现每个气泡的半径、白颜色、蓝笔划颜色和六个像素的笔划宽度。 
+下面的代码将一个点数组加载到数据源，并将其连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 为气泡层提供了一些选项，可用于以5个像素为单位呈现每个气泡的半径、白颜色、蓝笔划颜色和六个像素的笔划宽度。 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
 
-下面的代码演示如何使用气泡图层呈现地图上的点和符号层, 以呈现标签。 若要隐藏符号层的图标, 请将图标`image`选项的属性设置为。 `'none'`
+下面的代码演示如何使用气泡图层呈现地图上的点和符号层，以呈现标签。 若要隐藏符号层的图标，请将图标选项的 `image` 属性设置为 "`'none'`"。
 
 <br/>
 
@@ -100,4 +100,4 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)

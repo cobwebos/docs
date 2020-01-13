@@ -1,6 +1,6 @@
 ---
-title: Azure Maps 中的天气覆盖范围 |Microsoft Docs
-description: 了解 Azure Maps 中的天气覆盖范围
+title: 天气范围 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure 地图中的天气覆盖面。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407635"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910807"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps 天气范围
 

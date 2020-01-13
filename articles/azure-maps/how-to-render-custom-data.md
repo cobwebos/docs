@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Maps 中呈现光栅地图上的自定义数据 |Microsoft Docs
-description: 在本文中，你将了解如何使用 Azure Maps 静态图像服务在光栅地图上呈现自定义数据。
+title: 在光栅地图上呈现自定义数据 |Microsoft Azure 映射
+description: 在本文中，你将了解如何使用 Microsoft Azure Maps 静态图像服务来呈现光栅地图上的自定义数据。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408902"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911481"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在光栅地图上呈现自定义数据
 

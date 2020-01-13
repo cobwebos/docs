@@ -1,6 +1,6 @@
 ---
-title: Web SDK 支持的浏览器-Azure Maps |Microsoft Docs
-description: 了解 Azure Maps Web SDK 支持的浏览器
+title: Web SDK 支持的浏览器 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure Map Web SDK 支持的浏览器，以及如何检查浏览器是否为受支持的浏览器。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a67a358d45ac61c955c26f495169f7cd8364074
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432786"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910445"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
