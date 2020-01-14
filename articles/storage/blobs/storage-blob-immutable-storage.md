@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912796"
+ms.locfileid: "75921235"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
@@ -76,7 +76,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 追加 blob 由数据块组成，并针对审核和日志记录方案所需的数据追加操作进行了优化。 按照设计，附加 blob 只允许将新的块添加到 blob 的末尾。 无论是不永久性的，都不允许修改或删除追加 blob 中现有块。 若要了解有关追加 blob 的详细信息，请参阅[关于追加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
 
-仅基于时间的保留策略具有 `allowProtectedAppendWrites` 设置，该设置允许将新的块写入追加 blob，同时维持永久性保护和符合性。 如果启用，则允许你直接在受策略保护的容器中创建追加 blob，并使用*AppendBlock* API 继续向现有追加 blob 的末尾添加新数据块。 只能添加新的块，而不能修改或删除任何现有块。 时间保留的永久性保护仍适用，阻止删除追加 blob，直到有效的保留期结束。  
+仅基于时间的保留策略具有 `allowProtectedAppendWrites` 设置，该设置允许将新的块写入追加 blob，同时维持永久性保护和符合性。 如果启用，则允许你直接在受策略保护的容器中创建追加 blob，并使用*AppendBlock* API 继续向现有追加 blob 的末尾添加新数据块。 只能添加新的块，而不能修改或删除任何现有块。 时间保留的永久性保护仍适用，阻止删除追加 blob，直到有效的保留期结束。 如果启用此设置，则不会影响块 blob 或页 blob 的永久性行为。
 
 由于此设置是基于时间的保留策略的一部分，因此，在*有效*的保留期内，追加 blob 仍处于不可变状态。 由于新数据可以追加到追加 blob 的初始创建之外，因此确定保持期的方式略有不同。 有效的保留期是追加 blob 的**上次修改时间**和用户指定的保留间隔之间的差异。 同样，在扩展保留间隔后，不可变存储使用用户指定的保留间隔的最新值来计算有效的保持期。
 
@@ -92,7 +92,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 > - 美国中南部
 > - 美国西部 2
 >
-> 目前，我们强烈建议您不要在除指定之外的任何其他区域启用 `allowProtectedAppendWrites`，因为这可能会导致间歇故障并影响追加 blob 的符合性。 有关如何设置和锁定基于时间的保留策略的详细信息，请参阅[启用允许受保护的追加 blob 写入](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。
+> 目前，我们强烈建议你不要在除指定外的任何其他区域启用 `allowProtectedAppendWrites`，因为这可能会导致间歇性故障，并影响追加 blob 的符合性。 有关如何设置和锁定基于时间的保留策略的详细信息，请参阅[启用允许受保护的追加 blob 写入](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。
 
 ## <a name="legal-holds"></a>法定保留
 

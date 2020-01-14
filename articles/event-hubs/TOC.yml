@@ -40,7 +40,7 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm（仅接收）
           href: event-hubs-storm-getstarted-receive.md
-        - name: .NET framework
+        - name: .NET Framework
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
       items:
@@ -81,7 +81,7 @@
       items:
         - name: 异地灾难恢复和异地复制
           href: event-hubs-geo-dr.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 授权
           items:
@@ -106,7 +106,7 @@
     - name: AMQP 1.0 协议指南
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: 配置客户管理的密钥以加密静态数据（预览版）
+        - name: 配置客户管理的密钥以加密静态数据
           href: configure-customer-managed-key.md
     - name: 故障排除
       items:
@@ -172,7 +172,7 @@
           href: event-hubs-messaging-exceptions.md
         - name: 资源管理器异常
           href: resource-manager-exceptions.md
-- name: 引用
+- name: 参考
   items:
     - name: Java
       items:

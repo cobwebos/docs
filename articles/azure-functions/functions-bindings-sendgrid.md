@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410046"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922352"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -27,9 +27,6 @@ ms.locfileid: "75410046"
 ## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
-
-> [!NOTE]
-> 版本2.x 和更高版本不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 这些版本基于不处理队列管理的[Microsoft.](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,9 +348,9 @@ Python 不支持特性。
 
 | *函数 json*属性 | 属性/批注属性 | Description | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| type || 必须设置为 `sendGrid`。| 否 |
-| direction || 必须设置为 `out`。| 否 |
-| name || 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
+| type |不适用| 必须设置为 `sendGrid`。| 否 |
+| direction |不适用| 必须设置为 `out`。| 否 |
+| name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 否 |
 | to| 到 | 收件人的电子邮件地址。 | 是 |
 | 从| 起价 | 发件人的电子邮件地址。 |  是 |

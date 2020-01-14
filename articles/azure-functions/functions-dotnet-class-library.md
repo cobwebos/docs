@@ -3,12 +3,12 @@ title: Azure Functions C# developer reference（Azure Functions C# 开发人员�
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975476"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921051"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -136,7 +136,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供信息以用于针对[消耗计划的缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 

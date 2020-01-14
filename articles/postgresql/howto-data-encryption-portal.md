@@ -6,21 +6,20 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 51c99ca0788900397c922e31e44f121a7ae9caa6
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: e579866b1df6d32dc2b90a19ac001c381da625a6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904258"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922801"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-using-portal"></a>使用门户 Azure Database for PostgreSQL 单一服务器的数据加密
 
 本文介绍如何设置和管理，以使用 Azure 门户设置 Azure Database for PostgreSQL 单一服务器的数据加密。
 
-## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
+## <a name="prerequisites-for-cli"></a>CLI 先决条件
 
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
-* 必须安装并运行 Azure PowerShell。
 * 创建用于客户托管密钥的 Azure Key Vault 和密钥。
 * Key vault 必须具有以下属性以用作客户托管密钥
     * [软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -46,7 +45,7 @@ ms.locfileid: "75904258"
 
    ![访问策略概述](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. 在 "**权限**" 下，选择 "**获取**"、"**换行**"、"**解包**" 和 "**主体**"，这是 PostgreSQL 服务器的名称。
+2. 在 "**权限**" 下，选择 "**获取**、**包装**、**解包**和**主体**，这是 PostgreSQL 服务器的名称。 如果在现有主体列表中找不到你的服务器主体，你将需要在第一次尝试设置数据加密时进行注册，否则将会失败。  
 
    ![访问策略概述](media/concepts-data-access-and-security-data-encryption/access-policy-warp-unwrap.png)
 
@@ -64,7 +63,7 @@ ms.locfileid: "75904258"
 
 3. 保存设置。
 
-4. 若要确保所有文件（包括临时文件）都是完全加密的，需要重新启动服务器。
+4. 若要确保所有文件（包括**临时文件**）都是完全加密的，**需要** **重新启动**服务器。
 
 ## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>还原或创建已启用数据加密的服务器副本
 
@@ -83,16 +82,18 @@ Azure Database for PostgreSQL 单服务器使用存储在 Key Vault 中的客户
    ![标记服务器不可访问](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
 
-3. 若要修复不可访问状态，需要重新验证还原的服务器上的密钥。
+3. 若要修复不可访问状态，需要重新验证还原的服务器上的密钥。 单击 "**数据加密**" 边栏选项卡，然后单击 "重新**验证密钥**" 按钮。
+
+   > [!NOTE]
+   > 第一次尝试重新验证将会失败，因为需要为新服务器的服务主体授予对密钥保管库的访问权限。 若要生成服务主体，请单击 "重新**验证密钥**"，这将产生错误，但会生成服务主体。 之后，请参阅上述第[2 部分中的](https://docs.microsoft.com/azure/postgresql/howto-data-encryption-portal#setting-the-right-permissions-for-key-operations)步骤。
 
    ![重新验证服务器](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
    你将必须向 Key Vault 授予对新服务器的访问权限。 
 
-4. 重新验证密钥后，服务器将恢复其正常功能。
+4. 注册服务主体后，你将需要再次重新验证密钥，并使服务器恢复其正常功能。
 
    ![正常服务器已还原](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 

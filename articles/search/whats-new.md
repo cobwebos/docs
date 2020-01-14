@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863081"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921016"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -33,7 +33,11 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 
 + [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用的是 REST，则可以使用 `api-version=2019-05-06`访问该功能。 对于托管代码，正确的包仍然是[.NET SDK 版本 8.0-预览](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
 
-+ 搜索服务终结点上*受限制的 IP 访问和专用终结点（预览）* 现已在**api 版本 = 2019-10-01.txt-预览版**中提供。 您可以使用[创建或更新](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)管理 REST API 中的新**IpRule**和**NetworkRuleSet**属性设置安全终结点。 有关 API 版本和区域可用性的详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
++ 可以通过两种机制获得对搜索服务的私有访问权限：
+
+  + 你可以通过使用管理 REST API `api-version=2019-10-01-Preview` 来创建服务，从而限制对特定 IP 地址的访问。 预览 API 在[CREATEORUPDATE api](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)中具有新的**IpRule**和**NetworkRuleSet**属性。 此预览功能在所选区域中可用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+
+  + 当前可通过受限访问预览版提供，你可以预配 Azure 搜索服务，该服务支持来自同一虚拟网络上的客户端的连接的 Azure 专用终结点。 有关详细信息，请参阅[创建安全连接的专用终结点](service-create-private-endpoint.md)。
 
 ### <a name="december-2019"></a>2019 年 12 月
 

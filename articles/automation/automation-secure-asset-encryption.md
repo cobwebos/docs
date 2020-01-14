@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: fa8ea40d827807565e71d1e790c8c52986b85ec8
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.openlocfilehash: e645be5ddd51a4fe7e7610e7f639407d5638f746
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904949"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920934"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Azure 自动化中的安全资产
 
@@ -22,13 +22,13 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 -   使用 Microsoft 托管密钥
 -   使用客户托管的密钥
 
-### <a name="microsoft-managed-keys"></a>Microsoft 托管的密钥
+## <a name="microsoft-managed-keys"></a>Microsoft 托管的密钥
 
 默认情况下，你的 Azure 自动化帐户使用 Microsoft 托管密钥。
 
 每个安全资产均使用为每个自动化帐户生成的唯一密钥（数据加密密钥）进行加密并存储在 Azure 自动化中。 这些密钥本身使用另一个唯一密钥加密并存储在 Azure 自动化中，该密钥是为每个称为帐户加密密钥（AEK）的帐户生成的。 这些帐户加密密钥使用 Microsoft 托管密钥加密并存储在 Azure 自动化中。 
 
-### <a name="customer-managed-keys-with-key-vault-preview"></a>客户管理的密钥与 Key Vault （预览版）
+## <a name="customer-managed-keys-with-key-vault-preview"></a>客户管理的密钥与 Key Vault （预览版）
 
 你可以使用自己的密钥管理 Azure 自动化中的安全资产加密。 在自动化帐户级别指定客户托管的密钥时，该密钥用于保护和控制对自动化帐户的帐户加密密钥的访问权限，而该密钥反过来用于加密和解密所有安全资产。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护安全资产的加密密钥。 
 
@@ -40,12 +40,12 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 
 新的自动化帐户始终使用 Microsoft 托管的密钥进行加密。 创建帐户时，不能启用客户管理的密钥。 客户托管的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，此访问策略向与自动化帐户关联的托管标识授予密钥权限。 托管标识仅在创建存储帐户后可用。
 
-当你通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥来修改用于 Azure 自动化的密钥时，将更改根密钥，但会更改 Azure 中的安全资产，自动化帐户无需重新加密。
+当你通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥来修改用于 Azure 自动化的密钥时，请确保加密帐户加密密钥，但会更改安全资产在 Azure 自动化帐户中，无需重新加密。
 
 以下三个部分介绍为自动化帐户启用客户管理的密钥的机制。 
 
 > [!NOTE] 
-> 若要启用客户管理的密钥，当前需要使用 api 版本 2020-01-13-预览版创建 Azure 自动化 REST Api
+> 若要启用客户管理的密钥，当前需要使用 API 版本 2020-01-13-预览版进行 Azure 自动化 REST API 调用
 
 ### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>在 Azure 自动化中使用客户托管密钥的先决条件
 
@@ -126,7 +126,7 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 ```
 
 > [!NOTE] 
-> TenantId 和 objectId 字段必须与 automation 帐户的托管标识响应的 principalId 和 identity 值一起提供。
+> **Tenantid**和**objectId**字段必须分别与 automation 帐户的托管标识的响应一起提供**principalId 和 identity** **值。**
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>将自动化帐户的配置更改为使用客户托管密钥
 
@@ -179,11 +179,11 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 你可以根据你的符合性策略，在 Azure Key Vault 中轮替客户管理的密钥。 当密钥旋转时，必须将自动化帐户更新为使用新的密钥 URI。 
 
-轮换密钥不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
+轮换密钥不会触发自动化帐户中安全资产的重新加密。 用户无需执行任何其他操作。
 
-## <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
+### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
-若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/)或[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止对存储帐户中所有数据的访问，因为 Azure 存储无法访问加密密钥。
+若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/)或[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止访问自动化帐户中的所有安全资产，因为 Azure 自动化无法访问加密密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

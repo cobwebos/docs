@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442759"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922290"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -120,7 +120,9 @@ ms.locfileid: "75442759"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于1400和更高兼容级别的表格模型，Azure SQL 数据库、Azure SQL 数据仓库、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+对于1400和更高兼容级别的表格模型，使用内存中模式，Azure SQL 数据库、Azure SQL 数据仓库、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+
+OAuth 凭据不支持直接查询模式。
 
 ## <a name="next-steps"></a>后续步骤
 [本地网关](analysis-services-gateway.md)   

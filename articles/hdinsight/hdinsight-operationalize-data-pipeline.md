@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 8217beeda885896adb6ffec2a5dd0670c9622175
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748694"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922665"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -540,13 +540,9 @@ Azure SQL 数据库现已准备就绪。
 
 与工作流一样，协调器的配置也在 `job.properties` 文件中定义，其中具有工作流使用的设置的超集。
 
-```
+```text
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
-<<<<<<< HEAD
-jobTracker=[ACTIVE-HEADNODE-NAME].[UNIQUESTRING].dx.internal.cloudapp.net:8050
-=======
 jobTracker=[ACTIVERESOURCEMANAGER]:8050
->>>>>>> 50a435bd9528fcbaac7bc5ab96745734e63167da
 queueName=default
 oozie.use.system.libpath=true
 appBase=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net/oozie

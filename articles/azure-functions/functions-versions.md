@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769109"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921857"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -70,7 +70,7 @@ Azure Functions 1.x 的实验性语言不能使用新模型，因此在2.x 中�
 
 * 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
 
-* 默认情况下，将对消耗计划函数实施 HTTP 并发性限制，每个实例的并发请求数默认为 100。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
+* 默认情况下，为消耗计划函数实现 HTTP 并发限制，默认为每个实例100个并发请求。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
 
 * 由于[.Net Core 限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对F#脚本（. .fsx）函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
 ms.custom: Azure IoT Hub TLS
-ms.openlocfilehash: 62fdfc4277b44a502206eb37466e6409521186a5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: eb6b04a476ac6100962e1103af37d75b719dd546
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839525"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921247"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT 中心的 TLS 支持
 
@@ -77,6 +77,19 @@ TLS 1.0 和1.1 被视为旧版，并[计划弃用](./tls-1.2-everywhere.md)。 �
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>在 IoT 中心 Sdk 中使用 TLS 1。2
+
+使用以下链接在 IoT 中心客户端 Sdk 中配置 TLS 1.2 和允许的密码。
+
+| 语言 | 支持 TLS 1。2 | 文档 |
+|----------|-------------------|---------------|
+| C        | 是               | [链接](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | 是               | [链接](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | 是               | [链接](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | 是               | [链接](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | 是               | [链接](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT Edge 安装程序中使用 TLS 1。2

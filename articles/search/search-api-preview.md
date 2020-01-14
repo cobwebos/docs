@@ -1,19 +1,19 @@
 ---
 title: REST API 版本 2019-05-06-预览版
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索 service REST API 版本 2019-05-06-Preview 包括试验性功能，如知识 store 和客户管理的加密密钥。
+description: Azure 认知搜索 service REST API 版本 2019-05-06-Preview 包括试验性功能，如用于增量扩充的知识存储和索引器缓存。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754414"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922477"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure 认知搜索服务 REST api-版本 2019-05-06-预览版
 
@@ -36,8 +36,6 @@ ms.locfileid: "75754414"
 + [文本翻译（预览）](cognitive-search-skill-text-translation.md)是在编制索引时使用的一项认知技巧，用于计算文本，对于每个记录，将返回转换为指定目标语言的文本。
 
 + [知识存储](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 物理数据结构存在于 Azure Blob 存储和 Azure 表存储中，并在运行具有附加认知技能组合的索引器时创建并填充。 在技能组合定义内指定知识存储本身的定义。 在知识存储定义中，通过确定数据的形状、数据是否存储在表存储或 Blob 存储中，以及是否有多个视图的*投影*元素来控制数据的物理结构。
-
-+ 用于服务端加密的[客户管理的加密密钥](search-security-manage-encryption-keys.md)也是一项全新的预览功能。 除了由 Microsoft 管理的内置静态加密外，还可以应用其他加密层，其中你是密钥的唯一所有者。
 
 ## <a name="earlier-preview-features"></a>更早的预览功能
 

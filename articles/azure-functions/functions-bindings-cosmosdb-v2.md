@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 2e08c1c0fbd0962adee44af949be280701915a1e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834055"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921116"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -1639,7 +1639,7 @@ public class DocByIdFromRoute {
 
 #### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID (Java)
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数来指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
 
 > [!NOTE]
 > 如果需要只按 ID 进行查询，建议使用 "查找" （如[前面的示例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)），因为它将消耗较少的[请求单位](../cosmos-db/request-units.md)。 点读取操作（GET）比按 ID 查询[更有效](../cosmos-db/optimize-cost-queries.md)。
@@ -1685,7 +1685,7 @@ public class DocByIdFromRouteSqlQuery {
 
 #### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档 (Java)
 
-下面的示例演示了检索多个文档的 Java 函数。 该函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 指定要在 ```description``` 字段中搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
+下面的示例演示了检索多个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 在 ```description``` 字段中指定要搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
 
 ```java
 public class DocsFromRouteSqlQuery {

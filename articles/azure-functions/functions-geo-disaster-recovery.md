@@ -6,23 +6,23 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226976"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920793"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 异地灾难恢复
 
-在整个区域或数据中心遭遇停机的情况下，在不同区域进行计算以实现连续处理就显得至关重要。  本文将介绍一些可以用来部署函数以实现灾难恢复的策略。
+在整个 Azure 区域或数据中心遇到停机时间时，计算在不同区域中继续进行处理是非常重要的。  本文将介绍一些可用于部署功能以实现灾难恢复的策略。
 
 ## <a name="basic-concepts"></a>基本概念
 
-Azure Functions 在特定区域运行。  若要提高可用性，可将相同函数部署到多个区域。  在多个区域中时，可以让函数以“主动/主动”或“主动/被动”模式运行。  
+Azure Functions 在特定区域中运行。  若要获得更高的可用性，可以将相同的函数部署到多个区域。  在多个区域中，可以让函数在主动/*主动*模式或*主动/被动*模式中运行。  
 
-* 主动/主动。 两个区域都主动接收事件（采用重复或循环方式）。 建议将“主动/主动”用于 HTTPS 函数，与 Azure Front Door 组合使用。
-* 主动/被动。 一个区域主动接收事件，另一个区域（次要区域）处于空闲状态。  需要进行故障转移时，次要区域激活，开始接管处理操作。  建议将它用于非 HTTP 功能，例如服务总线和事件中心。
+* 主动/主动。 这两个区域都处于活动状态和正在接收事件（重复或 rotationally）。 建议将 active/active 用于 HTTPS 函数与 Azure 前门结合使用。
+* 主动/被动。 一个区域处于活动状态且正在接收事件，而辅助数据库处于空闲状态。  需要故障转移时，将激活辅助区域并接管处理。  对于非 HTTP 函数（如服务总线和事件中心），建议使用此项。
 
 有关多区域部署的详细信息，请参阅如何[在多个区域中运行应用](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
 
@@ -32,13 +32,13 @@ Azure Functions 在特定区域运行。  若要提高可用性，可将相同�
 
 ![Azure 前门和功能的体系结构](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>用于非 HTTPS 功能的“主动/主动”模式
+## <a name="activeactive-for-non-https-functions"></a>针对非 HTTPS 函数的主动/主动
 
-仍可针对非 HTTPS 功能实现“主动/主动”部署。  但是，需要考虑这两个区域如何互相交互或协调。  如果向两个区域部署了同一函数应用，每个区域都在同一服务总线队列上触发，那么在对该队列执行取消排队操作时，这两个区域属于竞争性使用者。  虽然这意味着每条消息仅由多个实例中的一个进行处理，但也意味着在单个服务总线上仍然存在单点故障。  如果部署两个服务总线队列（一个在主要区域，一个在次要区域），这两个函数应用指向其区域队列，则现在的难点在于，如何在这两个区域之间分发队列消息。  通常情况下，这意味着每个发布者都会尝试将消息发布到两个区域，每条消息都由两个活动的函数应用进行处理。  虽然这样会形成一个“主动/主动”模式，但也会在复制计算以及在何时合并数据或以何种方式合并数据方面制造其他难题。  出于这些原因，建议由非 HTTPS 触发器来使用“主动/主动”模式。
+你仍可以实现非 HTTPS 函数的主动/主动部署。  但是，您需要考虑这两个区域之间的相互交互或相互协调的方式。  如果将相同的函数应用部署到两个区域中，每个区域都触发同一服务总线队列，则它们将充当对队列进行取消排队的竞争使用者。  尽管这意味着每条消息仅由一个实例进行处理，但这也意味着单个服务总线上仍存在单点故障。  如果你部署了两个服务总线队列（一个在主要区域中，一个位于次要区域中），而两个 function app 指向它们的区域队列，则该挑战现在就是如何在这两个区域之间分布队列消息。  通常，这意味着每个发布服务器都会尝试将消息发布到*这两个*区域，并且每个消息都由两个活动函数应用处理。  尽管这会创建一个主动/主动模式，但它会在重复计算以及何时或如何合并数据时产生其他挑战。  由于这些原因，对于非 HTTPS 触发器，建议使用主动/被动模式。
 
-## <a name="activepassive-for-non-https-functions"></a>用于非 HTTPS 功能的“主动/被动”模式
+## <a name="activepassive-for-non-https-functions"></a>非 HTTPS 函数的主动/被动
 
-使用“主动/被动”模式时，每次只有一个函数处理一条消息，但在发生灾难时可以故障转移到次要区域。  Azure Functions 与[Azure 服务总线异地恢复](../service-bus-messaging/service-bus-geo-dr.md)和[azure 事件中心地域恢复](../event-hubs/event-hubs-geo-dr.md)一起工作。
+主动/被动仅提供一种方法来处理每条消息，但提供在发生灾难时故障转移到次要区域的机制。  Azure Functions 与[Azure 服务总线异地恢复](../service-bus-messaging/service-bus-geo-dr.md)和[azure 事件中心地域恢复](../event-hubs/event-hubs-geo-dr.md)一起工作。
 
 使用 Azure 事件中心触发器作为示例，主动/被动模式将涉及以下内容：
 

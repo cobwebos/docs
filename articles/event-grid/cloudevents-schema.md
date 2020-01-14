@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325476"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922748"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
 
@@ -60,7 +60,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 }
 ```
 
-[可在此处](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)查看可用字段、其类型和 CloudEvents v 0.1 中的定义的详细说明。
+[可在此处](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)查看可用字段、其类型和 CloudEvents 1.0 中的定义的详细说明。
 
 在 CloudEvents 架构和事件网格架构中传递的事件的标头值是相同的，但 `content-type` 除外。 对于 CloudEvents 架构，该标头值为 `"content-type":"application/cloudevents+json; charset=utf-8"`。 对于事件网格架构，该标头值为 `"content-type":"application/json; charset=utf-8"`。
 

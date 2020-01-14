@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1949aca26f68f12dfb133da8ef45662294140c25
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794333"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922565"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -39,11 +39,11 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 加密在整个索引管道中进行扩展：从连接、传输和到 Azure 认知搜索中存储的索引数据。
 
-| 安全层 | 描述 |
+| 安全层 | Description |
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索侦听 HTTPS 端口443。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>客户端到服务的所有 Azure 认知搜索交互都是支持 SSL/TLS 1.2 的交互。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密是 Azure 认知搜索内部的，证书和加密密钥由 Microsoft 内部管理，并采用全局应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已在2018年1月24日公布，适用于所有地区的所有服务层，包括免费级别。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥进行加密是一项**预览**功能，该功能不可用于免费服务。 对于付费服务，它仅适用于2019年1月或之后的搜索服务，使用最新的预览版 api 版本（api 版本 = 2019-05-06-01.5.1）。<br><br>Azure 认知搜索索引和同义词映射现在可以在 Azure Key Vault 中通过客户密钥管理密钥进行静态加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代静态的默认加密，而是应用于该功能。<br>启用此功能将提高索引大小并降低查询性能。 基于观察到目前为止，你可以在查询时间中看到增加 30%-60%，但实际性能会因索引定义和查询类型而有所不同。 由于对性能的影响，我们建议您只对真正需要此功能的索引启用此功能。
+| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥加密现已正式发布。<br><br>Azure 认知搜索索引和同义词映射现在可以在 Azure Key Vault 中通过客户密钥管理密钥进行静态加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代静态的默认加密，而是应用于该功能。<br>启用此功能将提高索引大小并降低查询性能。 基于观察到目前为止，你可以在查询时间中看到增加 30%-60%，但实际性能会因索引定义和查询类型而有所不同。 由于对性能的影响，我们建议您只对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 
@@ -91,7 +91,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于标识的访问控制不是预定义的角色和角色分配，它作为*筛选器*实现，该筛选器可以根据标识修整文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | 描述 |
+| 方法 | Description |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
 |[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
@@ -100,7 +100,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 下表总结了 Azure 认知搜索中所允许的操作，以及哪些密钥会解锁特定操作。
 
-| Operation | 权限 |
+| 操作 | 权限 |
 |-----------|-------------------------|
 | 创建服务 | Azure 订阅持有者|
 | 缩放服务 | 管理密钥，资源中的 RBAC 所有者或参与者  |

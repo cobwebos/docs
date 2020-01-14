@@ -3,12 +3,12 @@ title: 建立 Azure 资源运行状况警报-资源管理器模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c14e3c327d83e75b08f3b52b59970557ec87f5b5
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d42dfdc5806fa6340cf4bb7051b53764e98c26e3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912833"
+ms.locfileid: "75922755"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -16,6 +16,8 @@ ms.locfileid: "75912833"
 
 通过 Azure 资源运行状况可得知 Azure 资源的当前及历史运行状况。 Azure 资源运行状况警报会在这些资源的运行状况发生变化时几乎实时地发出通知。 通过以编程方式创建资源运行状况警报，用户可以批量创建警报并对其进行自定义。
 
+> [!NOTE]
+> 资源运行状况警报目前处于预览阶段。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

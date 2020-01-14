@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: 125450394a829667d45479e6e0b7844a0357f009
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750017"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920718"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
 
@@ -214,39 +214,21 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
 2. 打开 nano 编辑器后，使用以下 XML 作为该文件的内容：
 
-<<<<<<< HEAD
    ```bash
-       nameNode=adl://home
-       jobTracker=headnodehost:8050
-       queueName=default
-       examplesRoot=examples
-       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-       oozie.use.system.libpath=true
-       user.name=[domainuser]
-       jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
-       jdbcURL=[jdbcurlvalue]
-       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+   nameNode=adl://home
+   jobTracker=headnodehost:8050
+   queueName=default
+   examplesRoot=examples
+   oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+   hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+   hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+   oozie.use.system.libpath=true
+   user.name=[domainuser]
+   jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
+   jdbcURL=[jdbcurlvalue]
+   hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+   hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-=======
-    ```bash
-    nameNode=adl://home
-    jobTracker=headnodehost:8050
-    queueName=default
-    examplesRoot=examples
-    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-    oozie.use.system.libpath=true
-    user.name=[domainuser]
-    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-    jdbcURL=[jdbcurlvalue]
-    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-    ```
->>>>>>> 0650d78429b6d1b43cddf90fc713eb4050d71eef
 
    - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，请将其更改为 `wasb://home`。 如果使用 Azure Data Lake Storage Gen2，则将其更改为 `abfs://home`。
    - 将 `domainuser` 替换为你的域用户名。  

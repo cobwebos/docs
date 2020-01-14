@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c501dda60b65f78bb82649bed6bca4b031ad8a6b
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913155"
+ms.locfileid: "75921219"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
@@ -75,7 +75,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 你必须配置新的存储帐户，以便在创建存储帐户时为队列和表使用帐户加密密钥。 创建帐户后，不能更改加密密钥的作用域。
 
-存储帐户的类型必须是常规用途 v2，并且必须配置为本地冗余存储（LRS）。 可以通过使用 Azure CLI 或 Azure 资源管理器模板，来创建存储帐户并将其配置为依赖帐户加密密钥。
+存储帐户的类型必须是常规用途 v2。 可以通过使用 Azure CLI 或 Azure 资源管理器模板，来创建存储帐户并将其配置为依赖帐户加密密钥。
 
 > [!NOTE]
 > 只有在创建存储帐户时，才可以选择配置 "队列" 和 "表存储"，以通过帐户加密密钥来加密数据。 Blob 存储和 Azure 文件始终使用帐户加密密钥来加密数据。

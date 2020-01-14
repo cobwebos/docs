@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754292"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922487"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -68,7 +68,7 @@ Azure 认知搜索非常适合以下应用方案：
 |-------------------|----------|
 | 用于原型制作和检查的工具 | 在门户中，可以使用[**导入数据向导**](search-import-data-portal.md)来配置索引器、索引设计器以建立索引，并可以使用[**搜索浏览器**](search-explorer.md)来测试查询并优化评分配置文件。 还可以打开任何索引来查看其架构。 |
 | 监视和诊断 | [启用监视功能](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。|
-| 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 （可选）你可以使用[**客户管理的加密密钥（预览版）** ](search-security-manage-encryption-keys.md)来补充默认加密。 在 Azure Key Vault 中创建和管理的密钥用于在 Azure 认知搜索中加密索引和同义词映射。 |
+| 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥](search-security-manage-encryption-keys.md)来补充默认加密。 在 Azure Key Vault 中创建和管理的密钥用于在 Azure 认知搜索中加密索引和同义词映射。 |
 | 基础架构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确扩展后， [Azure 认知搜索提供99.9% 的 SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为端到端解决方案的**完全托管和可缩放**性，Azure 认知搜索完全不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>如何使用 Azure 认知搜索

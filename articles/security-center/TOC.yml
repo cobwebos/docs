@@ -63,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure 服务层的威胁检测
           href: security-center-alerts-service-layer.md
-        - name: 通过威胁检测进行 Azure WAF 和 Azure DDoS 防护
+        - name: 来自 Azure WAF 和 Azure DDoS 防护的威胁检测警报
           href: security-center-alerts-integration.md
         - name: 云智能警报关联（事件）
           href: security-center-alerts-cloud-smart.md
