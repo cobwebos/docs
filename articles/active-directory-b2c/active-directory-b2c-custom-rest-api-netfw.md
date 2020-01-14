@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bc6a9c8910c25f5fdb403e7f45c5f567f7c1224
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950912"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930660"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -74,7 +74,7 @@ ms.locfileid: "74950912"
     ![在 Visual Studio 中选择 web API 模板](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 1. 确保身份验证设置为“无身份验证”。
-1. 选择“确定”创建该项目。
+1. 选择“确定”以创建项目。
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>步骤 2：准备 REST API 终结点
 
@@ -337,7 +337,9 @@ ms.locfileid: "74950912"
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>步骤 7：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。
+1. 在[Azure 门户](https://portal.azure.com)的门户工具栏中，选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
+
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 
 1. 选择“标识体验框架”。
 
@@ -393,7 +395,7 @@ ms.locfileid: "74950912"
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)供你参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)用于参考。
 
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)下载完整代码。
 

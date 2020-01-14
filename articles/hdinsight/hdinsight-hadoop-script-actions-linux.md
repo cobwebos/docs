@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687728"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931699"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 可在脚本中使用以下帮助器：
 
-| 帮助器用法 | 描述 |
+| 帮助器用法 | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有文件。 |
 | `untar_file TARFILE DESTDIR` |将 tar 文件（使用 `-xf`）解压缩到目标目录。 |
@@ -322,10 +322,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 ## <a name="sampleScripts"></a>自定义脚本示例
 
-Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅以下链接了解更多示例脚本操作。
-
-* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)
-* [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅[在 HDInsight 群集上安装并使用色相](hdinsight-hadoop-hue-linux.md)作为示例脚本操作。
 
 ## <a name="troubleshooting"></a>故障排除
 

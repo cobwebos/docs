@@ -1,19 +1,19 @@
 ---
 title: 共同销售合作伙伴订婚 |Azure Marketplace
 description: 适用于合作伙伴的 Microsoft 共同销售计划可帮助你赢得巨大的客户群，并生成新的销售。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 389e6f512f05c7bd1a6e9963e60afbcf27067fb3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823043"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934673"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 

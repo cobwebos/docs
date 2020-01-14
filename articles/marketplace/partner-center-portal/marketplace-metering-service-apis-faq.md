@@ -1,19 +1,19 @@
 ---
 title: Marketplace 计量服务 Api-常见问题 |Azure Marketplace
 description: 在 Azure Marketplace 中发出 SaaS 产品/服务的使用情况。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825498"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931221"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Azure 市场计量服务 API - 常见问题解答
 

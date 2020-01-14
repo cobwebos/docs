@@ -1,18 +1,18 @@
 ---
 title: 为 VPN 用户启用 MFA： Azure AD 身份验证
 description: 为 VPN 用户启用多重身份验证
-services: vpn-gateway
+services: virtual-wan
 author: anzaman
-ms.service: vpn-gateway
+ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 3700014752233e29d157f1695906babe4fa35c74
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9329ac33a771c829b8d67670bc07d9a353c58ff1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822768"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930594"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>为 VPN 用户启用 Azure 多重身份验证（MFA）
 
@@ -35,7 +35,7 @@ ms.locfileid: "74822768"
 1. 在 "**多重身份验证**" 页上，选择要为其启用 MFA 的用户。
 2. 选择“启用”。
 
-   ![Select](./media/openvpn-azure-ad-mfa/mfa2.jpg)
+   ![选择](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
 ## <a name="enableauth"></a>启用身份验证
 

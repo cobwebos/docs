@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357956"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933963"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 
@@ -77,7 +77,7 @@ Azure 支持的 SQL Server HADR 技术包括：
 
 ## <a name="free-dr-replica-in-azure"></a>在 Azure 中免费恢复副本
 
-如果具有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，则可以使用 Always On 可用性组或故障转移群集实例来实现混合灾难恢复（DR）计划，而无需为被动 DR 实例 SQL Server 带来额外的许可成本。
+如果具有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，则可以使用 SQL Server 实施混合灾难恢复（DR）计划，而无需为被动 DR 实例带来额外的许可费用。
 
 在下图中，安装程序使用在 Azure 虚拟机上运行的 SQL Server 在使用12个核心作为本地 SQL Server 部署的灾难恢复副本的 Azure 虚拟机上运行。 过去，需要为本地和 Azure 虚拟机部署 SQL Server 12 个核心的许可证。 新权益提供了在 Azure 虚拟机上运行的被动副本权益。 现在，只要满足 Azure 虚拟机上被动副本的灾难恢复条件，就只需 SQL Server 在本地运行的许可12核。
 

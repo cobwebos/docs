@@ -1,19 +1,19 @@
 ---
 title: 使用 marketplace 计量服务计量计费 |Azure Marketplace
 description: 此文档是使用灵活计费模型的 Isv 发布 SaaS 产品/服务的指南。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934168"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>使用 marketplace 计量服务的计费计费
 
@@ -71,13 +71,13 @@ ms.locfileid: "73827931"
 
 在产品/服务的所有计划中共享计费维度。  某些属性适用于所有计划中的维度，其他属性则是特定于计划的。
 
-定义维度本身的属性在产品/服务的所有计划中共享。  在发布产品/服务之前，从任何计划的上下文中对这些属性所做的更改将影响所有计划的维度定义。  发布产品/服务后，将无法再编辑这些属性。  这些属性为：
+定义维度本身的属性在产品/服务的所有计划中共享。  在发布产品/服务之前，从任何计划的上下文中对这些属性所做的更改将影响所有计划的维度定义。  发布产品/服务后，将无法再编辑这些属性。  这些属性包括：
 
 * 标识符
 * 名称
-* 度量单位
+* 计量单位
 
-维度的其他属性特定于每个计划，并且可以有不同于计划的值。  在发布计划之前，你可以编辑这些值，只有此计划会受到影响。  发布计划后，这些属性将不再可编辑。  这些属性为：
+维度的其他属性特定于每个计划，并且可以有不同于计划的值。  在发布计划之前，你可以编辑这些值，只有此计划会受到影响。  发布计划后，这些属性将不再可编辑。  这些属性包括：
 
 * 价格/单位
 * 每月客户的已包含数量 
@@ -105,7 +105,7 @@ ms.locfileid: "73827931"
 
 * 标识符
 * 名称
-* 度量单位
+* 计量单位
 
 发布计划后，将无法再更改计划级别的详细信息：
 

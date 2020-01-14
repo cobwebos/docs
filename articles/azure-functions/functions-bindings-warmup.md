@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925183"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933323"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
@@ -30,11 +30,11 @@ ms.locfileid: "74925183"
 
 ## <a name="trigger"></a>触发器
 
-使用预热触发器可以定义一个函数，该函数将在添加到正在运行的应用程序的实例时运行。 你可以使用预热函数在应用开始接收流量之前打开连接、加载依赖项或运行任何其他自定义逻辑。 
+使用预热触发器可以定义一个函数，该函数将在添加到正在运行的应用程序的新实例上运行。 你可以使用预热函数在应用开始接收流量之前打开连接、加载依赖项或运行任何其他自定义逻辑。 
 
 预热触发器用于创建将由应用中的其他函数使用的共享依赖项。 [请参阅此处的共享依赖项的示例](./manage-connections.md#client-code-examples)。
 
-请注意，预热触发器仅在向上扩展操作期间调用，而不是在重新启动或其他非缩放启动期间调用。 您必须确保您的逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现此目的的一个好模式。
+请注意，预热触发器仅在向外扩展操作期间调用，而不是在重新启动或其他非缩放启动过程中调用。 您必须确保您的逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现此目的的一个好模式。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
@@ -243,9 +243,9 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-| 类型 | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | direction | 不适用| 必需 - 必须设置为 `in`。 |
 | name | 不适用| 必需-在函数代码中使用的变量名称。|
 

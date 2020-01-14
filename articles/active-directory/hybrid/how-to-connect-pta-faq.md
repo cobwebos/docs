@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：直通身份验证 - 常见问题解答 | Microsoft Docs
+title: Azure AD Connect：传递身份验证 - 常见问题 | Microsoft Docs
 description: 有关 Azure Active Directory 直通身份验证的常见问题的解答
 services: active-directory
 keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290762"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932394"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -37,18 +37,18 @@ ms.locfileid: "71290762"
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
 
-否。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
+不。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>是否可以在传递身份验证中使用[条件访问](../active-directory-conditional-access-azure-portal.md)？
 
-是。 所有条件访问功能（包括 Azure 多重身份验证）都使用传递身份验证。
+可以。 所有条件访问功能（包括 Azure 多重身份验证）都使用传递身份验证。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>传递身份验证是否支持使用“备用 ID”（而非“userPrincipalName”）作为其用户名？
-在有限范围内，传递身份验证在 Azure AD Connect 中配置时支持替代 ID 作为用户名。 作为先决条件，Azure AD Connect 需要将本地 Active Directory `UserPrincipalName` 属性同步到 Azure AD。 这会使`UserPrincipalName`本地 AD 和 Azure AD 上的相同。 如果要使用另一个属性作为 UPN 从本地 AD 同步到 Azure AD，则必须使用密码哈希同步或 AD FS。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 请参阅特定应用程序的文档支持声明。
+在有限范围内，传递身份验证在 Azure AD Connect 中配置时支持替代 ID 作为用户名。 作为先决条件，Azure AD Connect 需要将本地 Active Directory `UserPrincipalName` 属性同步到 Azure AD。 这使得 `UserPrincipalName` 本地 AD 和 Azure AD 变为相同。 如果要使用另一个属性作为 UPN 从本地 AD 同步到 Azure AD，则必须使用密码哈希同步或 AD FS。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 请参阅特定应用程序的文档支持声明。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-否。 直通身份验证不自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+不。 直通身份验证不自动故障转移到密码哈希同步。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>从密码哈希同步切换到直通身份验证时会发生什么情况？
 
@@ -56,7 +56,7 @@ ms.locfileid: "71290762"
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)连接器？
 
-是。 直通身份验证代理的更名版本（版本 1.5.193.0 或更高版本）支持此配置。
+可以。 直通身份验证代理的更名版本（版本 1.5.193.0 或更高版本）支持此配置。
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>需要哪些版本的 Azure AD Connect 和传递身份验证代理？
 
@@ -66,7 +66,7 @@ ms.locfileid: "71290762"
 
 如果已针对特定的用户配置[密码写回](../authentication/concept-sspr-writeback.md)，则当用户使用直通身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
 
-若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“你的组织不允许你更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在本地 Active Directory 中重置其密码。
+若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“组织不允许更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在本地 Active Directory 中重置其密码。
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>直通身份验证如何防止不受密码搜索攻击？
 
@@ -78,11 +78,11 @@ ms.locfileid: "71290762"
 - 直通身份验证通过端口 80 发出 HTTP 请求，以下载 SSL 证书吊销列表 (CRL)。
 
      >[!NOTE]
-     >最近的更新减少了功能所需的端口数。 如果有旧版 Azure AD Connect 或身份验证代理，也请打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
+     >最近的更新减少了功能所需的端口数。 如果有较旧版 Azure AD Connect 或身份验证代理，也请打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>传递身份验证代理能否通过出站 Web 代理服务器进行通信？
 
-是。 如果在本地环境中启用 Web 代理自动发现 (WPAD)，身份验证代理将自动尝试查找并使用网络中的 Web 代理服务器。
+可以。 如果在本地环境中启用 Web 代理自动发现 (WPAD)，身份验证代理将自动尝试查找并使用网络中的 Web 代理服务器。
 
 如果环境中未设置 WPAD，则可以添加代理信息（如下所示）以允许直通身份验证代理与 Azure AD 通信：
 - 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”。
@@ -121,7 +121,7 @@ ms.locfileid: "71290762"
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>是否能在多林 Active Directory 环境中使用直通身份验证？
 
-是。 如果 Active Directory 林之间存在林信任关系并且正确配置了名称后缀路由，则支持多林环境。
+可以。 如果 Active Directory 林之间存在林信任关系并且正确配置了名称后缀路由，则支持多林环境。
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>直通身份验证是否跨多个身份验证代理提供负载均衡？
 
@@ -160,7 +160,7 @@ ms.locfileid: "71290762"
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>我有最初使用 AD FS 设置的较旧租户。  我们最近迁移到了 PTA，但现在未看到我们的 UPN 更改同步到 Azure AD。  我们的 UPN 更改为何没有同步？
 
-答：在以下情况下，本地 UPN 更改可能不会同步：
+答：在以下情况下，你的本地 UPN 更改可能不会同步：
 
 - 如果 Azure AD 租户是在 2015 年 6 月 15 日之前创建的
 - 你最初将 AD FS 用于身份验证，通过你的 Azure AD 租户进行联合身份验证
@@ -168,7 +168,7 @@ ms.locfileid: "71290762"
 
 这是因为在 2015 年 6 月 15 日之前创建的租户的默认行为是阻止 UPN 更改。  如果需要取消阻止 UPN 更改，则需要运行以下 PowerShell cmdlt：  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 在 2015 年 6 月 15 日之后创建的租户的默认行为是同步 UPN 更改。   
 
@@ -176,12 +176,12 @@ ms.locfileid: "71290762"
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。
-- [快速入门](how-to-connect-pta-quick-start.md)：快速启动并运行 Azure AD 传递身份验证。
+- [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
 - [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
-- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解传递身份验证功能的工作原理。
-- [故障排除](tshoot-connect-pass-through-authentication.md)：了解如何解决传递身份验证功能的常见问题。
+- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解直通身份验证功能的工作原理。
+- [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md)：深入了解有关直通身份验证功能的技术信息。
-- [Azure AD 无缝 SSO](how-to-connect-sso.md)：详细了解此补充功能。
+- [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。
 

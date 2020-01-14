@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644947"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934542"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -254,11 +254,7 @@ HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以�
 * 安装并配置服务或网站。
 * 安装并配置需要在群集中多个节点上更改配置的组件。
 
-脚本操作是 Bash 脚本。 该脚本在群集创建期间运行，用于安装并配置其他组件。 提供了用于安装以下组件的示例脚本：
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-有关开发自己的脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
+脚本操作是 Bash 脚本。 该脚本在群集创建期间运行，用于安装并配置其他组件。 有关开发自己的脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。
 
 ### <a name="jar-files"></a>jar 文件
 

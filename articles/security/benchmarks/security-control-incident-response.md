@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b027a668403f47e9ffb824179ae54b89cded7a0c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fb3560aa2d3fbf48ab63c4da4d3a8d69cb677209
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564226"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934420"
 ---
 # <a name="security-control-incident-response"></a>安全控制：事件响应
 
@@ -65,7 +65,7 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10.4：提供安全事件联系人详细信息并为安全事件配置警报通知 &nbsp;
+## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息并为安全事件配置警报通知
 
 | Azure ID | CIS Id | 职责 |
 |--|--|--|

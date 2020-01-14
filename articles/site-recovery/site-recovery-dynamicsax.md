@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 进行多层 Dynamics AX 部署的灾难恢复 |Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 为 Dynamics AX 设置灾难恢复
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620752"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930189"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -27,7 +27,7 @@ ms.locfileid: "73620752"
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Site Recovery 为 Dynamics AX 应用程序实现灾难恢复需以下先决条件：
 

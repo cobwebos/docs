@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949434"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930511"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -249,9 +249,9 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
-9. 确认已创建了 `B2C_1A_B2cRestClientId` 密钥。
+9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>步骤 3.2：添加 RESTful 服务客户端机密
 
@@ -270,9 +270,9 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
-9. 确认已创建了 `B2C_1A_B2cRestClientSecret` 密钥。
+9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 
 ## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>步骤 4：更改技术配置文件以支持扩展策略中的基本身份验证
 
@@ -303,17 +303,19 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>步骤 5：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。
+1. 在[Azure 门户](https://portal.azure.com)的门户工具栏中，选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
 
-2. 选择“标识体验框架”。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 
-3. 打开“所有策略”。
+1. 选择“标识体验框架”。
 
-4. 选择“上传策略”。
+1. 打开“所有策略”。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+1. 选择“上传策略”。
 
-6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
+1. 选中“覆盖策略(如果存在)”复选框。
+
+1. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>步骤 6：使用“立即运行”测试自定义策略
 
@@ -355,7 +357,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)供你参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)下载完整代码。
 
 ## <a name="next-steps"></a>后续步骤

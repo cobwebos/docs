@@ -1,14 +1,14 @@
 ---
 title: 配置 Prometheus 集成的容器 Azure Monitor |Microsoft Docs
-description: 本文介绍如何配置容器代理的 Azure Monitor，以擦除 Prometheus 与 Azure Kubernetes Service 群集的指标。
+description: 本文介绍如何配置容器代理的 Azure Monitor，以擦除 Prometheus 与 Kubernetes 群集的指标。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403521"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931426"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>将抓取的 Prometheus 度量值配置为用于容器的 Azure Monitor
 
@@ -17,7 +17,46 @@ ms.locfileid: "75403521"
 ![Prometheus 的容器监视体系结构](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->抓取 Prometheus 指标支持的最低代理版本为 ciprod07092019 或更高版本，并且 `KubeMonAgentEvents` 表中用于写入配置和代理错误的代理版本为 ciprod10112019。 有关代理版本和每个版本中包含的内容的其他信息，请参阅[代理发行说明](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)。 若要验证您的代理版本，请从 "**节点**" 选项卡中选择一个节点，然后在 "**代理图像标记**" 属性的 "属性" 窗格中说明值。
+>抓取 Prometheus 指标支持的最低代理版本为 ciprod07092019 或更高版本，并且 `KubeMonAgentEvents` 表中用于写入配置和代理错误的代理版本为 ciprod10112019。 有关代理版本和每个版本中包含的内容的详细信息，请参阅[代理发行说明](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)。 若要验证您的代理版本，请从 "**节点**" 选项卡中选择一个节点，然后在 "**代理图像标记**" 属性的 "属性" 窗格中说明值。
+
+在上托管的 Kubernetes 群集支持抓取的 Prometheus 指标：
+
+- Azure Kubernetes 服务 (AKS)
+- Azure 容器实例
+- Azure Stack 或本地
+- Azure Red Hat OpenShift
+
+>[!NOTE]
+>对于 Azure Red Hat OpenShift，将在*OpenShift-* ConfigMap 命名空间中创建模板文件。 它未配置为主动擦除指标或从代理收集数据。
+>
+
+## <a name="azure-red-hat-openshift-prerequisites"></a>Azure Red Hat OpenShift 必备组件
+
+在开始之前，请确认你是 Azure Red Hat OpenShift 群集的 "客户群集管理员" 角色的成员，以配置容器化代理和 Prometheus 抓取设置。 若要验证你是否为*osa 客户*组的成员，请运行以下命令：
+
+``` bash
+  oc get groups
+```
+
+输出如下所示：
+
+``` bash
+NAME                  USERS
+osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
+```
+
+如果你是*ConfigMap 组的*成员，则可以使用以下命令列出 `container-azm-ms-agentconfig` 的：
+
+``` bash
+oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+输出如下所示：
+
+``` bash
+NAME                           DATA      AGE
+container-azm-ms-agentconfig   4         56m
+```
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus 抓取设置
 
@@ -53,11 +92,22 @@ ConfigMaps 是一个全局列表，只能有一个 ConfigMap 应用于代理。 
 
 ## <a name="configure-and-deploy-configmaps"></a>配置和部署 ConfigMaps
 
-执行以下步骤，配置 ConfigMap 配置文件并将其部署到群集。
+执行以下步骤以配置 Kubernetes 群集的 ConfigMap 配置文件。
 
 1. [下载](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml)模板 ConfigMap yaml 文件并将其另存为容器 azm-agentconfig. yaml。
 
-2. 编辑 ConfigMap yaml 文件，并将自定义设置为擦除 Prometheus 指标。
+   >[!NOTE]
+   >使用 Azure Red Hat OpenShift 时，此步骤不是必需的，因为群集中已存在 ConfigMap 模板。
+
+2. 编辑 ConfigMap yaml 文件，并将自定义设置为擦除 Prometheus 指标。 如果正在编辑 ConfigMap yaml file for Azure Red Hat OpenShift，请首先运行命令 `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` 在文本编辑器中打开该文件。
+
+    >[!NOTE]
+    >必须在*azm agentconfig* ConfigMap 的元数据下添加以下批注 `openshift.io/reconcile-protect: "true"`，以防止对帐。 
+    >```
+    >metadata:
+    >   annotations:
+    >       openshift.io/reconcile-protect: "true"
+    >```
 
     - 若要在群集范围内收集 Kubernetes 服务，请使用以下示例配置 ConfigMap 文件。
 
@@ -121,21 +171,35 @@ ConfigMaps 是一个全局列表，只能有一个 ConfigMap 应用于代理。 
     
           如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将 `monitor_kubernetes_pod` 设置为在 ConfigMap 中 `true`，并添加命名空间筛选器 `monitor_kubernetes_pods_namespaces` 指定要从其擦除的命名空间。 例如： `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
-3. 通过运行以下 kubectl 命令创建 ConfigMap： `kubectl apply -f <configmap_yaml_file.yaml>`。
+3. 对于 Azure Red Hat OpenShift 以外的群集，请运行以下 kubectl 命令： `kubectl apply -f <configmap_yaml_file.yaml>`。
     
     示例：`kubectl apply -f container-azm-ms-agentconfig.yaml`。 
-    
-    在生效之前，配置更改可能需要几分钟才能完成，并且群集中的所有 omsagent 箱都将重新启动。 重新启动是所有 omsagent pod 的滚动重启，而不是同时重新启动。 重新启动完成后，会显示一条类似于以下内容的消息，其中包括 result： `configmap "container-azm-ms-agentconfig" created`。
+
+    对于 Azure Red Hat OpenShift，请保存在编辑器中所做的更改。
+
+在生效之前，配置更改可能需要几分钟才能完成，并且群集中的所有 omsagent 箱都将重新启动。 重新启动是所有 omsagent pod 的滚动重启，而不是同时重新启动。 重新启动完成后，会显示一条类似于以下内容的消息，其中包括 result： `configmap "container-azm-ms-agentconfig" created`。
+
+可以通过运行命令 `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`来查看已更新的 ConfigMap for Azure Red Hat OpenShift。 
 
 ## <a name="applying-updated-configmap"></a>应用更新的 ConfigMap
 
-如果已将 ConfigMap 部署到群集，并且想要使用较新的配置对其进行更新，则可以编辑以前使用的 ConfigMap 文件，然后使用与之前相同的命令进行应用，`kubectl apply -f <configmap_yaml_file.yaml`。
+如果已将 ConfigMap 部署到群集，并且想要使用较新的配置对其进行更新，则可以编辑以前使用的 ConfigMap 文件，然后使用与之前相同的命令进行应用。
+
+对于除 Azure Red Hat OpenShift 以外的 Kubernetes 群集，请运行命令 `kubectl apply -f <configmap_yaml_file.yaml`。 
+
+对于 Azure Red Hat OpenShift 群集，运行命令，`oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` 在默认编辑器中打开该文件以进行修改，然后将其保存。
 
 在生效之前，配置更改可能需要几分钟才能完成，并且群集中的所有 omsagent 箱都将重新启动。 重新启动是所有 omsagent pod 的滚动重启，而不是同时重新启动。 重新启动完成后，会显示一条类似于以下内容的消息，其中包括 result： `configmap "container-azm-ms-agentconfig" updated`。
 
-## <a name="verify-configuration"></a>验证配置 
+## <a name="verify-configuration"></a>验证配置
 
-若要验证是否已成功应用配置，请使用以下命令从代理 pod 查看日志： `kubectl logs omsagent-fdf58 -n=kube-system`。 如果 omsagent pod 出现配置错误，输出将显示类似于以下内容的错误：
+若要验证是否已成功将配置应用到群集，请使用以下命令从代理 pod 查看日志： `kubectl logs omsagent-fdf58 -n=kube-system`。 
+
+>[!NOTE]
+>此命令不适用于 Azure Red Hat OpenShift 群集。
+> 
+
+如果 omsagent pod 出现配置错误，输出将显示类似于以下内容的错误：
 
 ``` 
 ***************Start Config Processing******************** 
@@ -144,17 +208,24 @@ config::unsupported/missing config schema version - 'v21' , using defaults
 
 还可以查看与应用配置更改相关的错误。 以下选项可用于对配置更改和抓取 Prometheus 指标执行额外的故障排除：
 
-- 使用同一个 `kubectl logs` 命令从代理 pod 日志。 
+- 使用同一个 `kubectl logs` 命令从代理 pod 日志 
+    >[!NOTE]
+    >此命令不适用于 Azure Red Hat OpenShift 群集。
+    > 
 
-- 从实时日志。 实时日志显示类似于以下内容的错误：
+- 从实时数据（预览）。 实时数据（预览）日志显示类似于以下内容的错误：
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- Log Analytics 工作区中的**KubeMonAgentEvents**表。 数据每小时发送一次，*并在出现配置错误的情况*中擦除错误和*错误*严重性。 如果没有错误，则表中的条目将包含带有严重性*信息*的数据，而不报告任何错误。 **Tags**属性包含有关在其上发生错误的 pod 和容器 ID 的详细信息，以及最后一个小时内的第一个匹配项和最后一个匹配项。
+- Log Analytics 工作区中的**KubeMonAgentEvents**表。 数据每小时发送一次，*并在出现配置错误的情况*中擦除错误和*错误*严重性。 如果没有错误，则表中的条目将包含带有严重性*信息*的数据，而不报告任何错误。 **Tags**属性包含有关在其上发生错误的 pod 和容器 ID 的详细信息，以及最后一个小时内的第一个匹配项、最后一个匹配项和计数。
 
-错误会阻止 omsagent 分析文件，从而导致重新启动并使用默认配置。 更正 ConfigMap 中的错误后，请通过运行以下命令，保存 yaml 文件并应用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml`。
+- 对于 Azure Red Hat OpenShift，请通过搜索**ContainerLog**表来检查 omsagent 日志，以验证是否已启用 OpenShift 日志记录收集。
+
+错误会阻止 omsagent 分析文件，从而导致重新启动并使用默认配置。 更正了除 Azure Red Hat OpenShift 之外的群集上的 ConfigMap 中的错误后，请通过运行以下命令来保存 yaml 文件并应用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml`。 
+
+对于 Azure Red Hat OpenShift，请通过运行以下命令来编辑和保存更新的 ConfigMaps： `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`。
 
 ## <a name="query-prometheus-metrics-data"></a>查询 Prometheus 指标数据
 

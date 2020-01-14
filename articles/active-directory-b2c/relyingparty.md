@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063809"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932030"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ ms.locfileid: "71063809"
 
 可选 RelyingParty 元素包含下列元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | 信赖方应用的默认用户旅程。 |
 | UserJourneyBehaviors | 0:1 | 用户旅程行为的范围。 |
@@ -102,7 +102,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 DefaultUserJourney 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md) |
 
@@ -110,7 +110,7 @@ DefaultUserJourney 元素包含以下属性：
 
 UserJourneyBehaviors 元素包含下列元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | 用户旅程单一登录 (SSO) 会话行为的范围。 |
 | SessionExpiryType |0:1 | 会话的身份验证行为。 可能的值：`Rolling` 或 `Absolute`。 `Rolling` 值（默认值）表示用户保持登录状态，只要用户在应用程序中保持持续活动状态。 `Absolute` 值指示在应用程序会话生命周期指定的时间段后将强制用户重新进行身份验证。 |
@@ -122,7 +122,7 @@ UserJourneyBehaviors 元素包含下列元素：
 
 SingleSignOn 元素包含在以下属性中：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值指示已取消行为。 例如，在单一登录会话的情况下，不会为用户维护会话，并且始终提示用户选择标识提供者。 `TrustFramework` 值指示该行为适用于信任框架中的所有策略。 例如，不会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
 | KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](active-directory-b2c-reference-kmsi-custom.md)。 |
@@ -131,7 +131,7 @@ SingleSignOn 元素包含在以下属性中：
 
 JourneyInsights 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -152,15 +152,15 @@ JourneyInsights 元素包含以下属性：
 
 ContentDefinitionParameters 元素包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 一个字符串，包含追加到内容定义负载 URI 查询字符串的键值对。 |
 
 ContentDefinitionParameters 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
-| Name | 是 | 键值对的名称。 |
+| 名称 | 是 | 键值对的名称。 |
 
 有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](active-directory-b2c-ui-customization-custom-dynamic.md)
 
@@ -168,38 +168,38 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
-| Id | 是 | 值必须是 `PolicyProfile`。 |
+| ID | 是 | 值必须是 `PolicyProfile`。 |
 
 **TechnicalProfile** 包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
-| 显示名称 | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的名称。 |
-| 描述 | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的说明。 |
-| Protocol | 1:1 | 用于联合的协议。 |
+| DisplayName | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的名称。 |
+| Description | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的说明。 |
+| 协议 | 1:1 | 用于联合的协议。 |
 | 元数据 | 0:1 | 一个键/值对项集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
 | OutputClaims | 0:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
 | SubjectNamingInfo | 0:1 | 在令牌中使用的使用者名称。 |
 
 Protocol 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 OutputClaims 元素包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 信赖方订阅的策略中受支持列表的预期声明类型的名称。 此声明可作为技术配置文件输出。 |
 
 OutputClaim 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -208,12 +208,12 @@ OutputClaim 元素包含以下属性：
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 使用 SubjectNameingInfo 元素，可以控制令牌使用者的值：
-- **JWT 令牌** - `sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
+- **JWT 令牌**-`sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](session-behavior.md)。
 - SAML 令牌 - 标识使用者元素的 `<Subject><NameID>` 元素。
 
 SubjectNamingInfo 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
 
@@ -246,5 +246,3 @@ JWT 令牌包括带用户 objectId 的 `sub` 声明：
   ...
 }
 ```
-
-

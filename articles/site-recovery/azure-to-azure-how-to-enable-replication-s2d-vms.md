@@ -2,18 +2,18 @@
 title: 使用 Azure Site Recovery 复制运行存储空间直通的 Azure Vm
 description: 本文介绍如何使用 Azure Site Recovery 复制运行存储空间直通的 Azure Vm。
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.author: carmonm
+ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954464"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929844"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure Vm 复制到另一个区域
 
@@ -23,7 +23,7 @@ ms.locfileid: "73954464"
 >存储空间直通群集仅支持故障一致恢复点。
 >
 
-## <a name="introduction"></a>介绍 
+## <a name="introduction"></a>简介 
 [存储空间直通 (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)。  Microsoft Azure 中的来宾群集是由 IaaS VM 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它非常适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器等）方案。
 
 ## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>使用存储空间直通的 Azure 虚拟机的灾难恢复
@@ -83,7 +83,7 @@ ms.locfileid: "73954464"
 3.  选择“测试故障转移”。
 4.  若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5.  当辅助环境启动时，执行验证。
-6.  完成验证后，选择“清理测试故障转移”可清理测试故障转移环境。
+6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 

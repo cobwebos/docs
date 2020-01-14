@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814855"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934133"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
 如果在本常见问题解答中找不到你的问题的解答，请检查[其他支持选项](support.md)。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 问：基线模型和自定义语音转文本模型之间有什么区别？
 
@@ -77,9 +77,9 @@ ms.locfileid: "74814855"
 
 答：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
 
-**问：如何对双通道音频收费？**
+**问：对于双通道音频，如何收费？**
 
-**答**：如果单独提交每个通道（每个通道位于其自己的文件中），将按文件的持续时间向你收费。 如果您提交一个文件，其中每个通道都多路复用，则会向您收取单个文件的持续时间。
+**答**：如果单独提交每个通道（每个通道位于其自己的文件中），则会根据每个文件的持续时间向你收费。 如果您提交一个文件，其中每个通道都多路复用，则会向您收取单个文件的持续时间。 有关定价的详细信息，请参阅[Azure 认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。

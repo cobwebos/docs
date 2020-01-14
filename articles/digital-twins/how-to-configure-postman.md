@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 8c358b727a436f1951337005883b5d577119fac1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/10/2020
+ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895617"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933437"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -131,6 +131,12 @@ ms.locfileid: "75895617"
    > * 对于整个请求，必须选择 `multipart/mixed` 或其他相应的 **Content-Type**。
 
 1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。 `200` 或 `201` 的状态代码指示请求成功。 相应的响应消息将出现在客户端界面中。
+
+1. 通过调用 API 终结点来验证 HTTP POST 请求数据： 
+
+   ```URL
+   YOUR_MANAGEMENT_API_URL/spaces/blobs?includes=description
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

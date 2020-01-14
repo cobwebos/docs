@@ -1,19 +1,19 @@
 ---
 title: SaaS 产品创建清单-适用于 Azure 的商业 Marketplace
 description: 可在 SaaS 产品创建过程中提供的详细信息。 -适用于 Azure 的商业 Marketplace
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824627"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930298"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS 产品/服务创建清单
 
@@ -21,7 +21,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 
 下面说明了需要提供或指定的项。 某些区域是可选的或提供了默认值，可根据需要进行更改。 你不必按此处列出的顺序处理这些部分。
 
-| **Item**    | **用途**  |
+| **项**    | **用途**  |
 | :---------- | :-------------------|
 | [**新的产品/服务模式**](#new-offer-modal) | 收集提供的标识信息。  |
 | [产品/服务设置页面](#offer-setup-page) | 允许你选择使用主要功能，并选择如何通过 Microsoft 出售你的产品/服务。  |
@@ -56,7 +56,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 | 你希望潜在客户如何与产品/服务列表进行交互？ （调用操作）  | 如果不通过 Microsoft 进行销售，则是必需的。 默认值：免费试用，选项： "立即获取"，"免费试用版"，"与我联系"。 |
 | 试用 URL  | 如果选择了 "免费试用"，则此选项为客户应与产品/服务列表交互的方式。 |
 | 提供 URL  | 如果选择了 "立即获取"，则选择此选项，因为客户应与产品/服务列表交互 |
-| 声道  | 可选。 默认值：未选择加入 CSP （经销商）通道。  |
+| 频道  | 可选。 默认值：未选择加入 CSP （经销商）通道。  |
 | 体验版 | 可选。 默认值：未启用任何测试驱动器。  |
 | 体验版类型 | 如果启用了测试驱动器，则是必需的。 默认值：未选择任何。 选项： Azure 资源管理器，Dynamics 365 for Business Central，Dynamics 365 for Customer Engagement，Dynamics 365 for Operations，逻辑应用，Power BI。  |
 | 潜在客户管理-连接到 CRM 系统 | 如果是通过 Microsoft 进行销售，或者如果列出 "与我联系"，则是必需的。 默认值：未连接 CRM 系统。 CRM 选项： Azure 表、Azure blob、Dynamics CRM online、HTTPs 终结点、Marketo、Salesforce  |
@@ -81,7 +81,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 | :---------------- | :-----------| 
 | 名称  | 必需，最多50个字符。 |
 | 摘要  | 必需，最多100个字符。 | 
-| 说明  | 必需，最多3000个字符。 |
+| Description  | 必需，最多3000个字符。 |
 | 入门说明  | 必需，最多3000个字符。 |
 | 入门说明  | 必需，最多3000个字符。 |
 | 搜索关键字  | 可选，推荐，最多3个关键字。 |
@@ -95,7 +95,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 | 联系人（CSP 计划、工程、支持）  | 要求的工程和支持联系信息（姓名、电子邮件和电话号码）;CSP 计划可选，但建议联系。 |
 | 支持 URL  | 必需。 |
 
-## <a name="preview-page"></a>预览页面
+## <a name="preview-page"></a>“预览”页
 
 在 "预览" 页上，你可以指定有权访问你的产品/服务预览版的受众，以验证该产品/服务在投入使用之前是否满足所有要求。 
 
@@ -151,7 +151,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 
 | **字段名称**    | **说明**   | 
 | :---------------- | :-----------| 
-| 说明  | 必需。 |
+| Description  | 必需。 |
 | 用户手册名称 + 文件  | 必需，最大1文档必须是 PDF 格式。 |
 | 视频名称，URL + 缩略图  | 可选，推荐。 缩略图必须是 JPGP 或 PNG 格式的 533 x 324。 视频必须托管在 YouTube 或 Vimeo 中。 |
 
@@ -163,4 +163,4 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建新的 SaaS 产品/服务](./create-new-saas-offer.md)
+- [创建新的 SaaS 套餐](./create-new-saas-offer.md)

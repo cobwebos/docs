@@ -2,18 +2,18 @@
 title: 在 Azure Marketplace 中更新现有 VM 产品/服务
 description: 介绍如何更新 Azure 市场中的现有 VM 套餐。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823989"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934248"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure 市场中的现有 VM 套餐
 
@@ -61,7 +61,7 @@ ms.locfileid: "73823989"
 
 5.  提供新的 VM 映像**磁盘版本**。 此磁盘版本需遵循[语义版本](https://semver.org/)格式。 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。 确认提供的新版本高于以往的所有版本；否则，重新发布后，新版本将不会在门户或 Azure 市场中显示。
 
-6.  对于“OS VHD URL”，请输入为操作系统 VHD 创建的**共享访问签名 (SAS) URI**。[](./cpp-get-sas-uri.md) 
+6.  对于“OS VHD URL”，请输入为操作系统 VHD 创建的[共享访问签名 (SAS) URI](./cpp-get-sas-uri.md)。 
 
     > [!WARNING] 
     > 无法在不同的 SKU 版本之间更改数据磁盘计数。 如果先前版本配置了数据磁盘，则此新版本也必须有相同数量的数据磁盘。
@@ -112,7 +112,7 @@ ms.locfileid: "73823989"
 
 2.  在“所有套餐”下，找到要更新的套餐。
 
-3.  转到“市场”选项卡，然后遵照**将虚拟机发布到 Azure 市场**一文中的说明更改元数据。[](./cpp-publish-offer.md)
+3.  转到“市场”选项卡，然后遵照[将虚拟机发布到 Azure 市场](./cpp-publish-offer.md)一文中的说明更改元数据。
 
 4.  单击“发布”，启动发布更改的工作流。
 
@@ -129,7 +129,7 @@ ms.locfileid: "73823989"
 
 4.  如果在 1x1 GUI 中设置了定价，可以直接在该 UI 中更改价格。 如果通过导入/导出电子表格设置了定价，则只能通过导入/导出功能降低价格。
 
-3.  单击“保存”。
+3.  单击“ **保存**”。
 
 4.  单击“发布”，启动发布更改的工作流。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 95c1834e997caae13e650df5b588df898a1e361d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564174"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930062"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
 
@@ -193,7 +193,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。
 
-例如，如何控制 Windows 环境中的 PowerShell 脚本执行： https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+例如，如何控制 Windows 环境中的 PowerShell 脚本执行：
+
+https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：对高风险应用程序进行物理或逻辑分离
 

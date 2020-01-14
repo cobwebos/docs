@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564148"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934328"
 ---
 # <a name="security-control-network-security"></a>安全控制：网络安全
 
@@ -29,7 +29,9 @@ ms.locfileid: "75564148"
 
 或者，如果你有特定用例，则可以通过实现 Azure 防火墙来满足要求。
 
-有关专用链接的一般信息： https://docs.microsoft.com/azure/private-link/private-link-overview
+有关专用链接的一般信息：
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 如何创建虚拟网络：
 
@@ -97,11 +99,11 @@ https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-了解 Azure 安全中心自适应网络强化
+了解 Azure 安全中心自适应网络强化：
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-了解 Azure 安全中心实时网络访问控制
+了解 Azure 安全中心实时网络访问控制：
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 将 NSG 流日志记录到存储帐户中，以生成流记录。 如果需要调查异常活动，请启用网络观察程序数据包捕获。
 
-如何启用 NSG 流日志： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+如何启用 NSG 流日志：
 
-如何启用网络观察程序： https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+如何启用网络观察程序：
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统（IDS/IPS）
 
@@ -137,11 +143,17 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 为受信任的证书启用 HTTPS/SSL 的 web 应用程序部署 Azure 应用程序网关。
 
-如何部署应用程序网关： https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+如何部署应用程序网关：
 
-如何将应用程序网关配置为使用 HTTPS： https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-了解第7层与 Azure web 应用程序网关的负载平衡： https://docs.microsoft.com/azure/application-gateway/overview
+如何将应用程序网关配置为使用 HTTPS：
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+通过 Azure web 应用程序网关了解第7层负载平衡：
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：降低网络安全规则的复杂性和管理开销
 
@@ -149,9 +161,11 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 |--|--|--|
 | 1.8 | 1.5 | 客户 |
 
-使用虚拟网络服务标记 &nbsp;来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。
+使用虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。
 
-了解和使用服务标记： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+了解并使用服务标记：
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -161,7 +175,7 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 通过 Azure 策略定义和实现网络资源的标准安全配置。
 
-你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、RBAC 控件和策略）来简化大规模的 Azure 部署。 可以将蓝图应用到新的订阅和环境，并通过版本控制来微调控制和管理。
+你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、RBAC 控件和策略）来简化大规模的 Azure 部署。 可以将蓝图应用到新的订阅，并通过版本控制来微调控制和管理。
 
 如何配置和管理 Azure 策略：
 

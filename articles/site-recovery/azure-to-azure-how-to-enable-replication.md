@@ -2,29 +2,29 @@
 title: 在 Azure Site Recovery 中配置 Azure VM 复制 | Microsoft Docs
 description: 本文介绍如何使用 Site Recovery 配置从一个 Azure 区域到另一个区域的 Azure VM 复制。
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2018
-ms.author: asgang
-ms.openlocfilehash: 7559bfd3d97f7b430b92578473501b519eb0a07f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: carmonm
+ms.openlocfilehash: 4dbac05ddf747ccaf483e547a2070505487a3706
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934558"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929861"
 ---
-# <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
+# <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure Vm 复制到另一个 Azure 区域
 
 
 本文介绍如何启用从一个 Azure 区域到另一个区域的 Azure VM 复制。
 
 ## <a name="before-you-start"></a>开始之前
 
-本文假设你已根据 [Azure 到 Azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)中所述进行了 Site Recovery 部署准备。
+本文假设已根据[azure 到 azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)中所述，准备好 Site Recovery 部署。
 
-必备组件应已到位，并且你应该已创建恢复服务保管库。
+先决条件应该已准备就绪，并且你应该已经创建了恢复服务保管库。
 
 
 ## <a name="enable-replication"></a>启用复制
@@ -33,10 +33,10 @@ ms.locfileid: "68934558"
 
 1. 在保管库中，单击“+复制”。
 2. 指定以下字段：
-   - **源**：VM 的起始点，在本例中为 Azure。
-   - **源位置**：要在其中保护 VM 的 Azure 区域。 在本演示中，源位置为“东亚”
+   - **源**：VM 的起始点，在本例中为 **Azure**。
+   - **源位置**：要在其中保护 Vm 的 Azure 区域。 在本演示中，源位置为“东亚”
    - **部署模型**：源计算机的 Azure 部署模型。
-   - **源订阅**：源 VM 所属的订阅。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
+   - **源订阅**：源 vm 所属的订阅。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
    - **资源组**：源虚拟机所属的资源组。 所选资源组下的所有 VM 都会在下一步中列出，以供保护。
 
      ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
@@ -49,15 +49,15 @@ ms.locfileid: "68934558"
    - **目标位置**：要在其中复制源虚拟机数据的位置。 根据所选的计算机位置，Site Recovery 会提供合适目标区域的列表。 我们建议将目标位置与恢复服务保管库位置保持相同。
    - **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅将与源订阅相同。
    - **目标资源组**：所有复制虚拟机所属的资源组。
-       - 默认情况下，Site Recovery 会在目标位置中创建一个名称带“asr”后缀的新资源组。
-       - 如果 Site recovery 创建的资源组已存在，则会重复使用。
-       - 可以自定义资源组设置。
-       - 目标资源组的位置可以是除托管源 VM 区域以外的任何 Azure 区域。
-   - **目标虚拟网络**：默认情况下，Site Recovery 会在目标位置中创建一个名称带“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](site-recovery-network-mapping-azure-to-azure.md)网络映射。
-   - **目标存储帐户（源 VM 不使用托管磁盘）** ：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
-   - **副本托管磁盘（源 VM 使用托管磁盘）** ：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
-   - **缓存存储帐户**：Site Recovery 需要源区域中称为缓存存储的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
-   - **目标可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个名称带“asr”后缀（针对源区域中属于可用性集的 VM）的新可用性集。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
+       - 默认情况下 Site Recovery 在目标区域中创建一个名称中包含 "asr" 后缀的新资源组。
+       - 如果 Site Recovery 创建的资源组已存在，则会重复使用。
+       - 你可以自定义资源组设置。
+       - 目标资源组的位置可以是任何 Azure 区域（源 Vm 所托管的区域除外）。
+   - **目标虚拟网络**：默认情况下，Site Recovery 在目标区域中创建一个名称中包含 "asr" 后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](site-recovery-network-mapping-azure-to-azure.md)网络映射。
+   - **目标存储帐户（源 vm 不使用托管磁盘）** ：默认情况下，Site Recovery 创建模拟源 vm 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
+   - **副本托管磁盘（源 VM 使用托管磁盘）** ： Site Recovery 在目标区域中创建新的副本托管磁盘，以将源 vm 的托管磁盘与源 vm 的托管磁盘的存储类型（标准或高级）进行镜像。
+   - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。 此存储帐户应为 Standard。
+   - **目标可用性集**：默认情况下，Site Recovery 使用名称中的 "asr" 后缀在目标区域中创建新的可用性集，对于作为源区域中可用性集的一部分的 vm。 如果 Site Recovery 创建的可用性集已存在，则会重复使用。
    - **目标可用性区域**：默认情况下，Site Recovery 会在目标区域中分配与源区域相同的区域编号，前提是目标区域支持可用性区域。
 
      如果目标区域不支持可用性区域，则会将目标 VM 默认配置为单一实例。 如果需要，可以单击“自定义”，以便在目标区域中将此类 VM 配置为可用性集的一部分。
@@ -66,29 +66,29 @@ ms.locfileid: "68934558"
      >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集或可用性区域。 若要更改可用性类型，需要先禁用复制，然后再启用复制。
      >
     
-   - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下, Azure Site Recovery 会创建一个新的复制策略, 其中默认设置为 "24 小时", 对于 "应用一致性快照频率" 为 "4 小时"。
+   - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 会创建一个新的复制策略，其中默认设置为 "24 小时"，对于 "应用一致性快照频率" 为 "4 小时"。
 
      ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ### <a name="enable-replication-for-added-disks"></a>为添加的磁盘启用复制
 
-将磁盘添加到支持复制的 Azure VM 时，会发生以下情况：
--   VM 的复制运行状况会显示一条警告，并且会通过备注告知你需要对一个或多个磁盘进行保护。
--   如果为添加的磁盘启用保护，此警告会在初始复制磁盘后消失。
--   如果选择不为磁盘启用复制，则可选择关闭此警告。
+如果将磁盘添加到启用了复制的 Azure VM，则会发生以下情况：
+-   VM 的复制运行状况显示一条警告，说明通知你有一个或多个磁盘可用于保护。
+-   如果为添加的磁盘启用保护，则在初始复制磁盘后，将会出现警告。
+-   如果选择不启用磁盘复制，则可以选择关闭该警告。
 
     
-    ![添加的新磁盘](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
+    ![已添加新磁盘](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 若要为添加的磁盘启用复制，请执行以下操作：
 
-1.  在保管库 >“复制的项”中，单击已向其添加磁盘的 VM。
-2.  单击“磁盘”，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”状态）。
-3.  在“磁盘详细信息”中，单击“启用复制”。
+1.  在保管库中 > "**复制的项**"，单击要向其添加磁盘的 VM。
+2.  单击 "**磁盘**"，然后选择要为其启用复制的数据磁盘（这些磁盘的状态为 "**不受保护**"）。
+3.  在 "**磁盘详细信息**" 中，单击 "**启用复制**"。
 
     ![为添加的磁盘启用复制](./media/azure-to-azure-how-to-enable-replication/enabled-added.png)
 
-在启用复制作业运行且初始复制完成后，将删除针对磁盘问题的复制运行状况警告。
+运行 "启用复制" 作业并完成初始复制后，将删除磁盘问题的复制运行状况警告。
 
 
   
@@ -106,14 +106,14 @@ ms.locfileid: "68934558"
 
         ![启用复制](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. 单击“自定义:”以修改默认设置。
-4. 在“多 VM 一致性”中，选择要一起复制的 VM。
+4. 在 "**多 VM 一致性**" 中，选择要一起复制的 vm。
     - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。
-    - 启用多 VM 一致性会影响工作负荷的性能（因为它是 CPU 密集型的）。 仅当计算机运行相同的工作负荷并且你需要在多个计算机之间保持一致时，才应启用此功能。
-    - 例如，如果应用程序有 2 个 SQL Server 虚拟机和 2 个 Web 服务器，则只应将 SQL Server VM 添加到复制组。
-    - 在一个复制组中最多可以选择包含 16 个 VM。
+    - 启用多 VM 一致性可能会影响工作负荷性能（因为它消耗大量 CPU）。 仅当计算机运行相同的工作负荷并且需要跨多台计算机的一致性时，才应启用此功能。
+    - 例如，如果应用程序具有2个 SQL Server 虚拟机和两个 web 服务器，则只应将 SQL Server Vm 添加到复制组。
+    - 最多可选择复制组中有16个 Vm。
     - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。
-    - 确保防火墙设备没有阻止 VM 之间通过端口 20004 进行的内部通信。
-    - 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
+    - 确保没有防火墙设备阻止 Vm 之间通过端口20004进行的内部通信。
+    - 如果希望 Linux Vm 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口20004上的出站流量。
 ![启用复制](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
     
 5. 单击“创建目标资源” > “启用复制”。

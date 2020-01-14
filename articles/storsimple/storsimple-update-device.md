@@ -3,7 +3,7 @@ title: 更新 StorSimple 设备 | Microsoft Docs
 description: 介绍如何使用 StorSimple 更新功能来安装常规更新和维护模式更新和修补程序。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: v-sharos
-ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409901"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933423"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 > [!NOTE]
-> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 与移动相关的任何问题，请参阅[常见问题：移至 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
 
 ## <a name="overview"></a>概述
 通过 StorSimple 更新功能，可以轻松地让 StorSimple 设备保持最新。 根据更新类型，可以通过 Azure 经典门户或 Windows PowerShell 接口将更新应用于设备。 本教程介绍了更新类型及其安装方式。
@@ -49,7 +49,7 @@ ms.locfileid: "61409901"
 * 也可以通过 Windows PowerShell for StorSimple 安装常规更新。 关详细信息，请参阅[通过 Windows PowerShell for StorSimple 安装常规更新](#install-regular-updates-via-windows-powershell-for-storsimple)。
 
 ### <a name="maintenance-mode-updates"></a>维护模式更新
-维护模式更新是干扰更新，例如磁盘固件升级。 这些更新要求将设备置于维护模式下。 有关详细信息，请参阅[步骤 2:进入维护模式](#step2)。 不能使用 Azure 经典门户安装维护模式更新。 而必须使用 Windows PowerShell for StorSimple。 
+维护模式更新是干扰更新，例如磁盘固件升级。 这些更新要求将设备置于维护模式下。 有关详细信息，请参阅[步骤 2：进入维护模式](#step2)。 不能使用 Azure 经典门户安装维护模式更新。 而必须使用 Windows PowerShell for StorSimple。 
 
 有关如何安装维护模式更新的详细信息，请参阅[通过 Windows PowerShell for StorSimple 安装维护模式更新](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "61409901"
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>通过 Windows PowerShell for StorSimple 安装维护模式更新
 使用 Windows PowerShell for StorSimple 对 StorSimple 设备应用维护模式更新。 在此模式下，所有的 I/O 请求都已暂停。 非易失性随机存取内存 (NVRAM) 或群集服务之类的服务也会停止。 在用户进入或退出此模式时，两个控制器都会重新启动。 退出此模式时，所有服务将继续运行并且应该可以正常运行。 （这可能需要几分钟的时间。）
 
-如果需要应用维护模式更新，将通过 Azure 经典门户收到警报，通知有必须安装的更新。 此警报包括有关使用 Windows PowerShell for StorSimple 安装更新的说明。 更新设备后，请使用相同的过程将设备更改为常规模式。 有关分步说明，请参阅[步骤 4:退出维护模式](#step4)。
+如果需要应用维护模式更新，将通过 Azure 经典门户收到警报，通知有必须安装的更新。 此警报包括有关使用 Windows PowerShell for StorSimple 安装更新的说明。 更新设备后，请使用相同的过程将设备更改为常规模式。 有关分步说明的信息，请参阅[步骤 4：退出维护模式](#step4)。
 
 > [!IMPORTANT]
 > * 进入维护模式前，请在 Azure 经典门户中检查“**维护**”页上的“**硬件状态**”，以便验证两个设备控制器是否运行正常。 如果控制器未正常运行，请联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请转到“联系 Microsoft 支持部门”。 
@@ -121,5 +121,5 @@ ms.locfileid: "61409901"
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)。
-* 详细了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
+* 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
 

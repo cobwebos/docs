@@ -13,17 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666199"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931991"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
 
 >[!NOTE] 
+>此内容已由[Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)取代。 Azure 建议新的 IPv6 部署使用适用于 Azure 虚拟网络的新 IPv6 功能。
+
+>[!NOTE]
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
 
 基本 SKU 面向 Internet 的负载均衡器可与 IPv6 地址一起部署。 除了 IPv4 连接以外，这还可以实现以下功能：

@@ -1,20 +1,20 @@
 ---
 title: 在商业应用商店中付费 |Azure Marketplace
 description: 了解如何在商业市场中接收收入支付。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: a87c74c2c344670d2d305e472245c56946d658ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933606"
 ---
-# <a name="getting-paid"></a>获取付款
+# <a name="getting-paid"></a>收取付款
 下面是有关接收你的产品/服务、外接程序和广告收益的重要信息。
 
 > [!IMPORTANT]

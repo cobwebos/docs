@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 卷组 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元创建和管理卷组。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699713"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931493"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.locfileid: "64699713"
 
 ![卷组节点](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
-图 1：**StorSimple Snapshot Manager 卷组节点** 
+**图 1：StorSimple Snapshot Manager 卷组节点** 
 
 本教程介绍如何使用 StorSimple Snapshot Manager 执行以下操作：
 
@@ -48,15 +48,15 @@ ms.locfileid: "64699713"
 ## <a name="view-volume-groups"></a>查看卷组
 如果单击“**卷组**”节点，“**结果**”窗格会显示有关每个卷组的以下信息，具体取决于所选择的列。 （“**结果**”窗格中的列是可以配置的。 右键单击“**卷**”节点，选择“**查看**”，并选择“**添加/删除列**”。）
 
-| 结果列 | 描述 |
+| 结果列 | Description |
 |:--- |:--- |
-| Name |“**名称**”列包含卷组的名称。 |
+| 名称 |“**名称**”列包含卷组的名称。 |
 | 应用程序 |“**应用程序**”列显示在 Windows 主机上当前已安装且正在运行的 VSS 编写器的数目。 |
-| 选定 |“**选定**”列显示卷组中包含的卷数。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
-| 已导入 |“**已导入**”列显示已导入卷数。 设置为“True”  时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
+| 选中 |“**选定**”列显示卷组中包含的卷数。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
+| 已导入 |“**已导入**”列显示已导入卷数。 设置为“True”时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 
 > [!NOTE]
-> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”  选项卡上。
+> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”选项卡上。
 > 
 > 
 
@@ -77,12 +77,12 @@ ms.locfileid: "64699713"
    1. 在“**名称**”框中，为新卷组键入一个唯一的名称。
    2. 在“**应用程序**”框中，选择与添加到卷组的卷相关联的应用程序。
       
-       “**应用程序**”框仅列出使用 StorSimple 卷且已为其启用 VSS 编写器的应用程序。 仅当编写器可以识别的所有卷都是 StorSimple 卷时，才启用 VSS 编写器。 如果“应用程序”框为空，则表明没有安装任何使用 Azure StorSimple 卷且具有支持的 VSS 编写器的应用程序。 （目前，Azure StorSimple 支持 Microsoft Exchange 和 SQL Server。）有关 VSS 编写器的详细信息，请参阅[与 Windows 卷影复制服务的集成](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
+       “**应用程序**”框仅列出使用 StorSimple 卷且已为其启用 VSS 编写器的应用程序。 仅当编写器可以识别的所有卷都是 StorSimple 卷时，才启用 VSS 编写器。 如果“应用程序”框为空，则表明没有安装任何使用 Azure StorSimple 卷且具有支持的 VSS 编写器的应用程序。 （目前，Azure StorSimple 支持 Microsoft Exchange 和 SQL Server。）有关 VSS 编写器的详细信息，请参阅[与 Windows 卷影复制服务集成](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
       
        如果选择一个应用程序，则会自动选择与之关联的所有卷。 反之，如果选择与特定应用程序相关联的卷，则会在“**应用程序**”框中自动选择该应用程序。 
    3. 在“**卷**”框中，选择要添加到卷组的 StorSimple 卷。 
       
-      * 可以添加具有单个或多个分区的卷。 （多分区卷可以是动态磁盘或具有多个分区的基本磁盘。）包含多个分区的卷被视为单一单元。 因此，如果仅将其中一个分区添加到卷组，所有其他分区同时也会自动被添加到该卷组。 将一个多分区卷添加到某个卷组后，该多分区卷会继续被视为单一单元。
+      * 可以添加具有单个或多个分区的卷。 （多个分区卷可以是动态磁盘，也可以是具有多个分区的基本磁盘。）包含多个分区的卷被视为单个单元。 因此，如果仅将其中一个分区添加到卷组，所有其他分区同时也会自动被添加到该卷组。 将一个多分区卷添加到某个卷组后，该多分区卷会继续被视为单一单元。
       * 可以通过不向其分配任何卷创建空卷组。 
       * 不要在同一卷组中混合群集共享卷 (CSV) 和非 CSV。 StorSimple Snapshot Manager 不支持在同一快照中混合 CSV 卷和非 CSV 卷。
 4. 单击“**确定**”以保存卷组。
@@ -108,7 +108,7 @@ ms.locfileid: "64699713"
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
 2. 在“**作用域**”窗格中，展开“**卷组**”节点，右键单击卷组名称，并单击“**编辑**”。
 3. 此时将显示“创建卷组”对话框。 可以更改“**名称**”、“**应用程序**”和“**卷**”条目。
-4. 单击“确定”  保存更改。
+4. 单击 **“确定”** 保存所做的更改。
 
 ## <a name="delete-a-volume-group"></a>删除卷组
 使用以下过程删除卷组。 

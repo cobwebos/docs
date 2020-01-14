@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863098"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931124"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure 认知搜索中的常见索引器问题疑难解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "75863098"
 >
 > 可以通过对搜索服务的完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来找出搜索服务的 IP 地址。
 >
-> 可以通过使用[可下载的 JSON 文件](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)来找出 Azure 认知搜索服务所在特定区域的 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
+> 可以通过使用[可下载的 JSON 文件](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)来找出 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
 ### <a name="configure-firewall-rules"></a>配置防火墙规则
 

@@ -2,19 +2,19 @@
 title: Azure 应用程序“托管应用程序”产品/服务发布指南
 description: 本文介绍在市场中发布托管应用程序的要求
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: v-qiwe
-ms.openlocfilehash: bdb2a54748c734d7b44dfa0b1f106d37e817f80e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 764212ac148b336b07d29c29a72314c5d889d47c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822934"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934651"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
 

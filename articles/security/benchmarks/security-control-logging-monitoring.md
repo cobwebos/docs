@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1354bd2895a8fe6e8aa1f12cd92295c77ca2d4b2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564161"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930032"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
 
@@ -79,9 +79,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 如果计算资源由 Microsoft 拥有，则 Microsoft 负责监视它。 如果计算资源属于你的组织，你需要负责监视它。 可以使用 Azure 安全中心监视操作系统。 安全中心从操作系统收集的数据包括操作系统类型和版本、OS （Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还会收集故障转储文件。
 
-如何通过 Azure Monitor 收集 Azure 虚拟机内部主机日志： https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+如何 Azure Monitor 收集 Azure 虚拟机内部主机日志：
 
-了解 Azure 安全中心数据收集： https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
+https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+
+了解 Azure 安全中心数据收集：
+
+https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
 ## <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留
 
@@ -91,7 +95,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 在 Azure Monitor 中，根据组织的符合性法规设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期/存档存储。
 
-如何为 Log Analytics 工作区设置日志保持参数： https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+如何为 Log Analytics 工作区设置日志保持参数：
+
+https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 ## <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 

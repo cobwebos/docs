@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 用户界面 | Microsoft Docs
 description: 介绍 StorSimple Snapshot Manager 用户界面，并说明如何使用它来管理备份作业和备份目录。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
+ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 46225e5a332e035e4d1cc256e71c4b5d8686fd47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845063"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933978"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 用户界面管理备份作业和备份目录
 
@@ -67,10 +67,10 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**文件**”菜单上显示的项目。
 
-| 菜单项 | 描述 |
+| 菜单项 | Description |
 |:--- |:--- |
-| 新建 |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
-| 打开 |单击“**打开**”可打开现有的控制台。 |
+| 新 |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
+| 开放 |单击“**打开**”可打开现有的控制台。 |
 | 保存 |单击“**保存**”可保存当前控制台。 |
 | 另存为 |单击“**另存为**”可创建当前控制台的重命名新实例。 使用“**另存为**”选项可自定义并保存视图以供将来检索。 例如，可以创建指向特定服务器的 StorSimple Snapshot Manager 管理单元。 |
 | 添加/删除管理单元 |单击“**添加/删除管理单元**”可以添加或删除管理单元并对“**作用域**”窗格中的节点进行排列。 有关详细信息，请转到[在 MMC 3.0 中添加、删除和组织管理单元和扩展](https://technet.microsoft.com/library/cc722035.aspx)。 |
@@ -107,18 +107,18 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 > 
 > 
 
-| 操作 | 导航 | 描述 |
+| 行动 | 导航 | Description |
 |:--- |:--- |:--- |
-| 身份验证 |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**验证**”可输入为设备配置的密码。 |
+| Authenticate |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**验证**”可输入为设备配置的密码。 |
 | 克隆 |依次展开“**备份目录**”、“**云快照**”，单击带日期的备份，并在“**结果**”窗格中选择卷。 |单击“**克隆**”可创建云快照的副本并将其存储在指定的位置。 |
 | 配置设备 |右键单击“**设备**”节点。 |单击“**配置设备**”可配置一个或多个连接到 Windows 主机的设备。 |
 | 创建备份策略 |执行下列操作之一：<ul><li>右键单击“**备份策略**”。</li><li>单击或展开“**卷组**”，并右键单击卷组。</li><li>单击或展开“**备份目录**”，并右键单击卷组。</li></ul> |单击“**创建备份策略**”可配置卷组的计划备份。 |
 | 创建卷组 |执行下列操作之一：<ul><li>单击“**卷**”节点，并在“**结果**”窗格中右键单击卷。</li><li>右键单击“**卷组**”节点。</li></ul> |单击“**创建卷组**”可以将卷分配给卷组。 |
-| DELETE |单击节点或结果（此项显示在许多“**操作**”菜单和“**操作**”窗格中。） |单击“**删除**”可删除所选的节点或结果。 出现确认对话框时，请确认或取消删除操作。 |
+| 删除 |单击节点或结果（此项显示在许多“**操作**”菜单和“**操作**”窗格中。） |单击“**删除**”可删除所选的节点或结果。 出现确认对话框时，请确认或取消删除操作。 |
 | 详细信息 |单击“**设备**”节点，并在“**结果**”窗格中右键单击设备。 |单击“**详细信息**”可查看设备的配置详细信息。 |
-| Edit |单击“**备份策略**”，并在“**结果**”窗格中右键单击策略。 |单击“**编辑**”可更改卷组的备份计划。 |
+| 编辑 |单击“**备份策略**”，并在“**结果**”窗格中右键单击策略。 |单击“**编辑**”可更改卷组的备份计划。 |
 | 导出列表 |单击任意节点或结果（此项显示在所有的“**操作**”菜单和“**操作**”窗格中。） |单击“**导出列表**”可以将列表保存在逗号分隔值 (CSV) 文件中。 然后可以将此文件导入到电子表格应用程序中进行分析。 |
-| Help |单击任意节点或结果。 （此项显示在所有的“**操作**”菜单和“**操作**”窗格中。） |单击“**帮助**”可在单独的浏览器窗口中打开联机帮助。 |
+| 帮助 |单击任意节点或结果。 （此项显示在所有的“**操作**”菜单和“**操作**”窗格中。） |单击“**帮助**”可在单独的浏览器窗口中打开联机帮助。 |
 | 从此处新建窗口 |单击任意节点或结果（此项显示在所有的“**操作**”菜单和“**操作**”窗格中。） |单击“**从此处新建窗口**”可打开一个新的 StorSimple Snapshot Manager 窗口。 |
 | 刷新 |单击任意节点或结果（此项显示在所有的“**操作**”菜单和“**操作**”窗格中。） |单击“**刷新**”可更新当前显示的 StorSimple Snapshot Manager 窗口。 |
 | 刷新设备 |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**刷新设备**”可以将特定的连接设备与 StorSimple Snapshot Manager 同步。 |
@@ -126,7 +126,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 | 重新扫描卷 |右键单击“**卷**”节点。 |单击“**重新扫描卷**”可更新“**结果**”窗格中显示的卷列表。 |
 | 还原 |展开“**备份目录**”，展开卷组，再展开“**本地快照**”或“**云快照**”，然后右键单击备份。 |单击“**还原**”可将当前卷组数据替换为所选备份中的数据。 |
 | 执行备份 |执行下列操作之一：<ul><li>展开“**卷组**”，并右键单击卷组。</li><li>展开“**备份目录**”，并右键单击卷组。</li></ul> |单击“**执行备份**”可立即开始备份作业。 |
-| 切换导入显示 |右键单击“**作用域**”窗格中的顶级节点（示例中的 **StorSimple Snapshot Manager** 节点）。 |单击“切换导入显示”  可显示或隐藏从 StorSimple Device Manager 服务仪表板导入的卷组和关联的备份。 |
+| 切换导入显示 |右键单击“**作用域**”窗格中的顶级节点（示例中的 **StorSimple Snapshot Manager** 节点）。 |单击“切换导入显示”可显示或隐藏从 StorSimple Device Manager 服务仪表板导入的卷组和关联的备份。 |
 
 ### <a name="view-menu"></a>“视图”菜单
 使用“**视图**”菜单可创建“**结果**”窗格内容的自定义视图。 “**视图**”菜单包含“**添加/删除列**”和“**自定义**”选项。
@@ -139,7 +139,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**视图**”菜单上显示的项目。
 
-| Menu item | 描述 |
+| 菜单项 | Description |
 |:--- |:--- |
 | 添加/删除列 |单击“**添加/删除列**”可在“**结果**”窗格中添加或删除列。 |
 | 自定义 |单击“**自定义**”可显示或隐藏 StorSimple Snapshot Manager 控制台窗口中的项。 |
@@ -155,7 +155,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**收藏夹**”菜单上显示的项目。
 
-| Menu item | 描述 |
+| 菜单项 | Description |
 |:--- |:--- |
 | 添加到收藏夹 |单击“**添加到收藏夹**”可将当前视图添加到收藏夹列表。 |
 | 整理收藏夹 |单击“**整理收藏夹**”可整理收藏夹文件夹的内容。 |
@@ -173,10 +173,10 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“窗口”菜单上显示的项目。
 
-| Menu item | 描述 |
+| 菜单项 | Description |
 |:--- |:--- |
 | 新建窗口 |单击“**新建窗口**”可打开新的控制台窗口（除现有窗口之外）。 |
-| 级联 |单击“**级联**”可以级联方式显示打开的控制台窗口。 |
+| Cascade |单击“**级联**”可以级联方式显示打开的控制台窗口。 |
 | 横向平铺 |单击“**横向平铺**”可以磁贴（或网格）方式显示打开的控制台窗口。 |
 | 排列图标 |如果有多个控制台窗口打开并分散在桌面上，请将它们最小化，并单击“**排列图标**”让它们横向排列在屏幕底部。 |
 
@@ -190,7 +190,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“帮助”菜单上显示的项目。
 
-| Menu item | 描述 |
+| 菜单项 | Description |
 |:--- |:--- |
 | 有关 StorSimple Snapshot Manager 的帮助 |单击“**有关 StorSimple Snapshot Manager 的帮助**”可在一个单独的窗口中打开 StorSimple Snapshot Manager 帮助。 |
 | 帮助主题 |单击“**帮助主题**”可在一个单独的窗口中打开 MMC 联机帮助。 |
@@ -204,7 +204,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 ### <a name="icon-descriptions"></a>图标说明
 下表介绍了工具栏上显示的图标。 
 
-| 图标 | 描述 |
+| 图标 | Description |
 |:--- |:--- |
 | ![向左键](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |单击向左键图标可返回上一页。 |
 | ![向右键](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |单击向右键可转到下一页（如果箭头为灰色，则操作不可用）。 |
@@ -290,7 +290,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 * 若要查看本地快照列表，请单击“**作用域**”窗格中的“**本地快照**”。 快照列表以及每个快照的相关信息都显示在“**结果**”窗格中。
 
 ### <a name="cloud-snapshots-node"></a>云快照节点
-“**云快照**”节点列出特定卷组的云快照。 该节点位于“**作用域**”窗格中的“**备份目录**”节点下。 云快照是存储在云中的卷数据的时间点副本。 云快照与在不同的场外存储系统上复制的快照等效。 在灾难恢复方案中，云快照特别有用。
+“**云快照**”节点列出特定卷组的云快照。 该节点位于“**作用域**”窗格中的“**备份目录**”节点下。 云快照是存储在云中的卷数据的时间点副本。 云快照等效于在不同的异地存储系统上复制的快照。 在灾难恢复方案中，云快照特别有用。
 
 * 若要展开此节点，请单击“**云快照**”旁边的箭头图标。
 * 若要查看可用操作的菜单，请右键单击“**云快照**”节点或展开视图中显示的任何节点。
@@ -337,7 +337,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 ### <a name="keyboard-navigation-keys"></a>键盘导航键
 下表介绍了可用于导航 StorSimple Snapshot Manager 用户界面的键。 
 
-| 导航键 | 操作 |
+| 导航键 | 行动 |
 |:--- |:--- |
 | 下箭头键 |使用向下键可垂直移动到菜单或窗格中的下一项。 |
 | Enter |按 Enter 键可完成某项操作，并继续执行下一步。 例如，可以按下 Enter 来选择“**下一步**”、“**确定**”或“**创建**”，并转到向导的下一步。 |
@@ -360,7 +360,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 |  |O |可打开“**管理工具**”页。 | |
 |  |S |保存 StorSimple Snapshot Manager 控制台。 | |
 |  |A |可打开“**另存为**”页。 | |
-|  |M |可打开“**添加/删除管理单元**”页。 | |
+|  |百万次 |可打开“**添加/删除管理单元**”页。 | |
 |  |P |可打开“**选项**”页。 | |
 |  |H |可打开联机帮助。 | |
 | ALT+A |可打开“**操作**”菜单。 |I |可打开和关闭导入显示选项。 |
@@ -368,16 +368,16 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 |  |F |可更新 StorSimple Snapshot Manager 控制台。 | |
 |  |L |可打开“**导出列表**”页。 | |
 |  |H |可打开联机帮助。 | |
-| ALT+V |可打开“**视图**”菜单。 |A |可打开“**添加/删除列**”页。 |
+| Alt+V |可打开“**视图**”菜单。 |A |可打开“**添加/删除列**”页。 |
 |  |U |可打开“**自定义视图**”页。 | |
 | ALT+O |可打开“**收藏夹**”菜单。 |A |可打开“**添加到收藏夹**”页。 |
 |  |O |可打开“**整理收藏夹**”页。 | |
 | ALT+W |可打开“**窗口**”菜单。 |N |可打开另一个 StorSimple Snapshot Manager 窗口。 |
 |  |C |可显示以级联方式打开的所有控制台窗口。 | |
-|  |T |可显示以网格方式打开的所有控制台窗口。 | |
+|  |万亿项 |可显示以网格方式打开的所有控制台窗口。 | |
 |  |I |可将图标横向排列在屏幕底部。 | |
 | ALT+H |可打开“**帮助**”菜单。 |H |可打开联机帮助。 |
-|  |T |可打开 Microsoft TechNet 技术中心网页。 | |
+|  |万亿项 |可打开 Microsoft TechNet 技术中心网页。 | |
 |  |A |可打开“**关于 Microsoft 管理控制台**”页。 | |
 
 ### <a name="scope-pane-shortcut-keys"></a>作用域窗格的快捷键

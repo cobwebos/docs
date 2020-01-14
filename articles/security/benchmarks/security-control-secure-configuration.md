@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 08458777d8a8c5c74ac20a63245135ffaf0a5c04
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564109"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934297"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
 
@@ -27,7 +27,9 @@ ms.locfileid: "75564109"
 
 使用 Azure 策略或 Azure 安全中心来维护所有 Azure 资源的安全配置。
 
-如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何配置和管理 Azure 策略：
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
@@ -85,7 +87,7 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | 客户 |
 
-如果使用自定义 Azure 策略定义，请使用 Azure Azure DevOps 或 Azure Repos 来安全地存储和管理你的代码。
+如果使用自定义 Azure 策略定义，请使用 Azure DevOps 或 Azure Repos 来安全地存储和管理你的代码。
 
 如何在 Azure DevOps 中存储代码：
 
@@ -171,11 +173,17 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 将托管服务标识与 Azure Key Vault 结合使用，为你的云应用程序简化和安全密钥管理。
 
-如何与 Azure 托管标识集成： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+如何与 Azure 托管标识集成：
 
-如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何使用托管标识提供 Key Vault 身份验证： https://docs.microsoft.com/azure/key-vault/managed-identity
+如何创建 Key Vault：
+
+https://docs.microsoft.com/azure/key-vault/quick-create-portal
+
+如何使用托管标识提供 Key Vault 身份验证：
+
+https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全、自动管理标识
 
@@ -185,7 +193,9 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识，你可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Key Vault，而无需在代码中包含任何凭据。
 
-如何配置托管标识： https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+如何配置托管标识：
+
+https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据公开
 
@@ -195,7 +205,9 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 实现凭据扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。 
 
-如何设置凭据扫描器： https://secdevtools.azurewebsites.net/helpcredscan.html
+如何设置凭据扫描器：
+
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>后续步骤
 

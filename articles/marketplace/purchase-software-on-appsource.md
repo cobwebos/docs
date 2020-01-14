@@ -1,19 +1,19 @@
 ---
 title: 如何在 AppSource 上购买软件 |Azure Marketplace
 description: 在 AppSource 上购买软件的步骤Azure Marketplace。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827735"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933500"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>如何购买 Microsoft AppSource 上的软件
 
@@ -41,7 +41,7 @@ Microsoft [AppSource](https://appsource.microsoft.com/)现在允许客户订阅�
     > [!Note]
     > AppSource 提供了选择的应用，包括免费、试用和付费订阅。 本文介绍如何通过 AppSource 购买付费订阅。
 
-1. 选择 "**立即获取**"。
+1. 选择“立即获取”。
 1. 选择计划：
 
     1. 设置座位数量

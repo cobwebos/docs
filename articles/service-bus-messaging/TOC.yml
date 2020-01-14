@@ -93,7 +93,7 @@
       href: service-bus-outages-disasters.md
     - name: 限制
       href: service-bus-throttling.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 身份验证和授权
           href: service-bus-authentication-and-authorization.md
@@ -112,7 +112,7 @@
                   href: authenticate-application.md
         - name: 内置安全控件
           href: service-bus-messaging-security-controls.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建命名空间
       href: service-bus-create-namespace-portal.md
@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 安全
       items:
-        - name: 配置客户管理的密钥以进行静态加密（预览版）
+        - name: 配置客户管理的密钥以进行静态加密
           href: configure-customer-managed-key.md
     - name: 故障排除
       items:
@@ -213,7 +213,7 @@
           href: service-bus-messaging-exceptions.md
         - name: 资源管理器异常
           href: service-bus-resource-manager-exceptions.md
-- name: 引用
+- name: 参考
   items:
     - name: .NET
       items:

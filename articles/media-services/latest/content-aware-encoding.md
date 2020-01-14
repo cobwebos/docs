@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692753"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933482"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>内容感知编码的实验预设
 
@@ -29,7 +29,9 @@ ms.locfileid: "75692753"
 
 在早期版本2017中，Microsoft 发布了[自适应流式处理](autogen-bitrate-ladder.md)预设，以解决源视频的质量和分辨率发生变化的问题。 我们的客户有不同的内容组合，某些位置为1080p，其他的是 而且，并非所有源内容都是从胶片或电视工作室获得高质量的 mezzanines。 自适应流式处理预设通过确保比特率阶梯从不超过输入夹层的分辨率或平均比特率来解决这些问题。
 
-试验性内容识别编码预设通过合并自定义逻辑来扩展该机制，使编码器能够查找给定解析的最佳比特率值，但不需要进行大量的计算分析。 最终结果是，此新预设产生比自适应流式处理预设低比特率更高的输出，但质量更高。 请参阅以下示例图形，其中显示了使用[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)和[VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)之类的质量指标进行比较。 源是通过连接电影和电视节目中的高复杂性照片的简短剪辑来创建的，目的是为了强调编码器。 按照定义，此预设会生成与内容不同的结果-这也意味着对于某些内容，可能不会显著降低比特率或质量提高。
+新的内容识别编码预设通过合并自定义逻辑来扩展该机制，使编码器能够查找给定解析的最佳比特率值，但不需要进行大量的计算分析。 此预设生成一组 GOP 对齐的 Mp4。 根据给定的任何输入内容，该服务会对输入内容执行初始的轻型分析，并使用这些结果来确定最理想的层数，并为自适应流式处理提供适当的比特率和分辨率设置。 此预设对于低和中复杂度视频特别有效，其中输出文件的比特率低于自适应流式处理预设，但仍会为查看者提供良好的体验。 输出将包含带有视频和音频交错的有文件文件
+
+请参阅以下示例图形，其中显示了使用[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)和[VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)之类的质量指标进行比较。 源是通过连接电影和电视节目中的高复杂性照片的简短剪辑来创建的，目的是为了强调编码器。 按照定义，此预设会生成与内容不同的结果-这也意味着对于某些内容，可能不会显著降低比特率或质量提高。
 
 ![使用 PSNR 的速率失真（RD）曲线](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ ms.locfileid: "75692753"
 
 **图2：使用 VMAF 度量值为高复杂性源的速率失真（RD）曲线**
 
-目前预先优化了高复杂性、高质量源视频（电影、电视节目）的预设。 正在进行工作以适应低复杂性内容（例如，PowerPoint 演示文稿）以及质量较差的视频。 此预设还使用与自适应流式处理预设相同的一组分辨率。 Microsoft 正在致力于根据内容选择最少的一组解决方案。 下面是其他类别的源内容的结果，编码器能够确定输入的质量质量较差（由于低比特率，很多压缩项目）。 请注意，在实验性预设情况下，编码器确定只生成一个输出层–低比特率，以便大多数客户端能够在不使用停止的情况下播放流。
+下面是另一个类别的源内容的结果，编码器能够确定输入的质量质量较差（由于低比特率，很多压缩项目）。 请注意，使用内容感知预设时，编码器决定仅生成一个输出层–低比特率，以便大多数客户端能够在不停止的情况下播放流。
 
 ![使用 PSNR 的 RD 曲线](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> 此处使用前缀 "实验性" 来表明底层算法仍在发展中。 随着时间的推移，可能会随时间变化而用来生成比特率 ladders，并将其作为一种可靠的算法进行聚合，并适应各种输入条件。 使用此预设的编码作业仍将根据输出分钟数计费，并且可从我们的流式处理终结点（如短划线和 HLS）传递输出资产。
+> 底层算法需要进一步改进。 随着时间的推移，可能会随时间变化，用于生成比特率 ladders，目的是提供一种可靠的算法，并适应各种输入条件。 使用此预设的编码作业仍将根据输出分钟数计费，并且可从我们的流式处理终结点（如短划线和 HLS）传递输出资产。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解优化视频的这一新选项，我们会邀请你试用。你可以使用本文末尾的链接向我们发送反馈，也可以直接在 <amsved@microsoft.com>与我们联系。
+现在，你已了解优化视频的这一新选项，我们会邀请你试用。你可以使用本文末尾的链接向我们发送反馈。

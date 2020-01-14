@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 432b8855ffb9542a1e052c8c97b52bcddeb5c824
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508101"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934739"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "67508101"
 
 **先决条件**
 
-在开始阅读本文前，必须具有：
+在开始阅读本文前，你必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -108,9 +108,6 @@ namespace HDInsightManagement
 
 运行此程序时，会出现提示。  若不想看到提示，请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md)。
 
-## <a name="create-clusters"></a>创建群集
-
-请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>列出群集
 
@@ -137,16 +134,16 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 ## <a name="scale-clusters"></a>缩放群集
 
-使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。
+使用群集缩放功能可更改 Azure HDInsight 中运行的群集使用的工作节点数，而无需重新创建群集。
 
 > [!NOTE]  
-> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页面。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#showClusters)。
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#showClusters)。
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
 * Apache Hadoop
   
-    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 也可在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
+    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
   
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
 * Apache HBase
@@ -162,7 +159,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 * Apache Storm
   
-    可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，缩放操作成功完成后，需要重新平衡拓扑。
+    可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
   
     可以使用两种方法来完成重新平衡操作：
   
@@ -185,7 +182,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-以下代码片段显示如何以同步或异步方式调整群集的大小：
+以下代码片段会显示如何以同步或异步方式调整群集的大小：
 
 ```csharp
 _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
@@ -273,7 +270,7 @@ foreach (var key in results.Configuration.Keys)
 
 * [HDInsight .NET SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
-* [管理 HDInsight 使用命令行界面][hdinsight-admin-cli]
+* [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [Azure HDInsight 入门][hdinsight-get-started]

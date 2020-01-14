@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 备份策略 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元创建和管理控制计划备份的备份策略。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687281"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933362"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>使用 StorSimple Snapshot Manager 创建和管理备份策略
 ## <a name="overview"></a>概述
-备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （可以保留最多 64 张快照。）有关备份策略的详细信息，请参阅 [StorSimple 8000 系列：混合云解决方案](storsimple-overview.md)中的[备份类型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)。
+备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （最多可以保留64个快照。）有关备份策略的详细信息，请参阅 StorSimple 8000 系列中的[备份类型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) [：混合云解决方案](storsimple-overview.md)。
 
-本教程介绍如何执行以下操作：
+本教程介绍了如何完成以下操作：
 
 * 创建备份策略
 * 编辑备份策略
@@ -58,7 +58,7 @@ ms.locfileid: "64687281"
    2. 在“**设置**”下，选择“**一次**”、“**每日**”、“**每周**”或“**每月**”。
    3. 在“**开始**”文本框中，单击日历图标并选择开始日期。
    4. 在“**高级设置**”下，可以设置可选的重复计划和结束日期。
-   5. 单击“确定”。 
+   5. 单击“确定”。
 
 创建备份策略后，以下信息会显示在“**结果**”窗格中：
 
@@ -67,7 +67,7 @@ ms.locfileid: "64687281"
 * **卷组** – 与策略关联的卷组。
 * **保留** – 保留的快照数目；最大值为 64。
 * **创建日期** – 创建此策略的日期。
-* **启用**– 该策略当前是否生效：**True**指示它是有效;**False**指示它不起作用。
+* **已启用** – 该策略当前是否生效：**True** 表示已生效，**False** 表示未生效。
 
 ## <a name="edit-a-backup-policy"></a>编辑备份策略
 使用以下过程编辑现有的备份策略。

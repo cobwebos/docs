@@ -1,19 +1,19 @@
 ---
 title: 为商业应用商店中的 Azure 应用服务提供处理评审反馈
 description: 如何在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划使用 Microsoft 合作伙伴中心上的商业 Marketplace 门户来处理查看或销售 Azure 应用的查看反馈。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 7406a6e35929e3df5d342affbcb4b740efa0cab8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281215"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933644"
 ---
 # <a name="handling-review-feedback"></a>处理评审反馈
 

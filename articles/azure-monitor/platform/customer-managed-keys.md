@@ -6,29 +6,29 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/07/2020
-ms.openlocfilehash: d6419e86e1a541638a7053654bfcd7945aa41ae7
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/11/2020
+ms.openlocfilehash: 04bda5b016234f96d4bef7796799f2526296dd26
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891059"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932760"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
-本文提供了背景信息和步骤，用于为 Log Analytics 工作区和 Application Insights 组件配置客户托管的密钥（CMK）。 配置完成后，发送到工作区的任何数据都将用 Azure Key Vault 密钥进行加密。
+本文提供了背景信息和步骤，用于为 Log Analytics 工作区和 Application Insights 组件配置客户托管的密钥（CMK）。 配置后，发送到你的工作区或组件的任何数据都将用 Azure Key Vault 密钥进行加密。
 
 建议你在配置之前查看下面的[限制和约束](#Limitations and constraints)。
 
 ## <a name="disclaimers"></a>免责声明
 
-- Azure Monitor CMK 是一项早期访问功能，已为注册订阅启用
+- Azure Monitor CMK 是一项早期访问功能，并且已对已注册的订阅启用。
 
 - 本文中所述的 CMK 部署以生产质量形式提供，并受支持，尽管这是一项早期的访问功能。
 
-- CMK 功能是在专用的数据存储群集上提供的，它是一个 Azure 数据资源管理器（ADX）群集，适用于每天发送1TB 的客户。 
+- CMK 功能是在专用的数据存储群集上传递的，它是一个 Azure 数据资源管理器（ADX）群集，适用于每天发送1TB 的客户。 
 
-- CMK 定价模型目前不可用，本文未介绍它。 在日历年（CY）2020的第二季度，需要专用的数据存储区群集定价模型，并将其应用于任何现有的 CMK 部署。
+- CMK 定价模型目前不可用，本文未介绍它。 在日历年（CY）2020的第二季度，专用 ADX 群集的定价模型将应用于任何现有的 CMK 部署。
 
 - 本文介绍 Log Analytics 工作区的 CMK 配置。 本文章还支持 CMK for Application Insights 组件，但附录中列出了不同之处。
 
@@ -46,11 +46,17 @@ Azure Monitor 的数据存储区确保在 Azure 存储中存储时使用 Azure �
 Azure Monitor 存储访问 Key Vault 进行包装和解包操作的频率介于6到60秒之间。 Azure Monitor 存储  
 始终在一小时内遵从关键权限更改。
 
+在过去14天内引入的数据也保存在热缓存（SSD 支持的）中，以实现高效的查询引擎操作。 无论 CMK 配置如何，都将使用 Microsoft 密钥对此数据进行加密，但我们正努力在2020初期使用 CMK 对其进行加密。
+
 ## <a name="how-cmk-works-in-azure-monitor"></a>CMK 在 Azure Monitor 中的工作原理
 
-Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访问权限。 系统分配的托管标识只能与单个 Azure 资源关联。 群集级别支持 Azure Monitor 的数据存储（ADX 群集）标识，这表示 CMK 功能在专用的 ADX 群集上传递。 为了支持多个工作区上的 CMK，新的 Log Analytics 资源（*群集*）作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 此概念符合系统分配的标识约束，并在 ADX 群集与 Log Analytics*群集*资源之间维护标识 *，* 而所有关联的工作区的数据都受 Key Vault 密钥保护。 是 ADX 群集存储使用与*群集*资源关联的托管\'标识，通过 Azure Active Directory 进行身份验证和访问 Azure Key Vault。
+Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访问权限。 系统分配的托管标识只能与单个 Azure 资源关联。 群集级别支持 Azure Monitor 数据存储（ADX 群集）的标识，这表示 CMK 功能在专用 ADX 群集上提供。 为了支持多个工作区上的 CMK，新的 Log Analytics 资源（*群集*）作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 此概念符合系统分配的标识约束，并在 ADX 群集与 Log Analytics*群集*资源之间维护标识 *，* 而所有关联的工作区的数据都受 Key Vault 密钥保护。 是 ADX 群集存储使用与*群集*资源关联的托管\'标识，通过 Azure Active Directory 进行身份验证和访问 Azure Key Vault。
 
-![CMK 概述](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK 概述](media/customer-managed-keys/cmk-overview.png)
+1.  客户的 Key Vault。
+2.  客户的 Log Analytics 群集资源具有 Key Vault 权限的托管标识–在数据存储（ADX 群集）级别支持标识。
+3.  Azure Monitor 专用 ADX 群集。
+4.  与 CMK 加密的群集资源关联的客户工作区。
 
 ## <a name="encryption-keys-management"></a>加密密钥管理
 
@@ -62,7 +68,7 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 
 下列规则适用：
 
-- ADX 存储帐户为每个存储帐户生成唯一的加密密钥，该密钥称为 AEK
+- ADX 存储帐户为每个存储帐户生成唯一的加密密钥，该密钥称为 AEK。
 
 - AEK 用于派生 Dek，后者是用于对写入磁盘的每个数据块进行加密的密钥。
 
@@ -82,7 +88,7 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 2. 创建 Azure Key Vault 和存储密钥
 3. 创建*群集*资源
 4. 授予 Key Vault 的权限
-5. Azure Monitor 的数据存储（ADX）预配
+5. Azure Monitor 数据存储（ADX 群集）预配
 6. Log Analytics 工作区关联
 
 当前 UI 中不支持此过程，并且通过 REST API 执行设置过程。
@@ -94,8 +100,8 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 
 ```rst
 GET
-https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2015-11-01-preview]
-  authorization: Bearer eyJ0eXAiO....
+https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+Authorization: Bearer eyJ0eXAiO....
 ```
 
 其中， *eyJ0eXAiO*表示完整的授权令牌。 
@@ -124,25 +130,25 @@ CMK 功能是一项早期的访问功能。 你计划创建*群集*资源的订�
 
 必须将 Azure Key Vault 配置为可恢复，以保护你的密钥和对你的 Azure Monitor 数据的访问。
 
-[启用恢复选项](https://docs.microsoft.com/azure/key-vault/key-vault-best-practices#turn-on-recovery-options)：
+这些设置可通过 CLI 和 PowerSell 获得：
 - 必须打开[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- 应打开清除保护，以防止即使在软删除后强行删除密钥/保管库
+- 应打开[清除保护](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)，以防止即使在软删除后强行删除密钥/保管库
 
 ### <a name="create-cluster-resource"></a>创建*群集*资源
 
-此资源用作 Key Vault 与工作区之间的中间标识连接。 只有收到订阅处于白名单状态的确认后，才能在工作区所在的区域创建 Log Analytics*群集*资源。
+此资源用作 Key Vault 与工作区之间的中间标识连接。 只有收到订阅处于白名单状态的确认后，才能在工作区所在的区域创建 Log Analytics*群集*资源。 Application Insights 和 Log Analytics 需要单独的群集资源。 群集资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "Applicationinsights.config" 来定义。 不能更改群集资源类型。
 
 **创建**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "region-name",
+  "location": "<region-name>",
    "properties": {
-      "clusterType": "LogAnalytics"
+      "clusterType": "LogAnalytics"   //Should be "ApplicationInsights" for Application Insights CMK
     },
    "identity": {
       "type": "systemAssigned"
@@ -152,40 +158,47 @@ Content-type: application/json
 
 **响应**
 
-在创建时将标识分配给*群集*。
+在创建时将标识分配给*群集*资源。
 
 ```json
 {
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id" //A GUID that was generated by the managed identity service
+    "principalId": "principle-id"    //A GUID that was generated by the managed identity service
   },
   "properties": {
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster
+    "clusterId": "cluster-id"    //A GUID that Log Analytics generates for the cluster
   },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
 }
 
 ```
+> [!IMPORTANT]
+> 复制并保留 "cluster id"，因为在后续步骤中需要用到它。
 
 如果出于任何原因（例如，使用不同的名称创建）删除*群集*资源，请使用以下 API 调用：
 
-```
+```rst
 DELETE
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
 ### <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
-更新 Key Vault，并使用 "获取"、"自动换行" 和 "解包密钥" 权限向*群集*资源 ID 或*群集*资源名称添加访问策略。 这些权限将传播到 underlaying Azure Monitor 存储。
+更新 Key Vault 并为群集资源添加访问策略。 然后，将 Key Vault 的权限传播到 underlaying Azure Monitor 存储以用于数据加密。
+在 Azure 门户中打开你的 Key Vault，然后单击 "访问策略"，然后单击 "+ 添加访问策略"，使用以下设置创建新策略：
 
-![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
+- 密钥权限：选择 "获取"、"环绕键" 和 "解包密钥" 权限。
+
+- 选择主体：在上一步的响应中输入群集 id，即 "clusterId" 值。
+
+![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 需要使用*Get*权限来验证 Key Vault 是否已配置为可恢复，以保护你的密钥和对你的 Azure Monitor 数据的访问。
 
@@ -193,7 +206,9 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>更新具有密钥标识符详细信息的群集资源
 
-创建新的密钥版本时，需要使用 Azure Key Vault 密钥标识符详细信息更新群集资源，以允许 Azure Monitor 存储使用新版本。 若要获取密钥标识符，请在 Azure Key Vault 中选择密钥的当前版本：
+当你创建新的密钥版本时，此过程也适用。
+
+使用 Azure Key Vault 密钥标识符详细信息更新群集资源，以允许 Azure Monitor 存储使用新的密钥版本。 在 Azure Key Vault 中选择密钥的当前版本，以获取密钥标识符详细信息：
 
 ![授予 Key Vault 权限](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -201,20 +216,20 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 **Update**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": { //Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+       "KeyVaultProperties": {     //Key Vault key identifier details taken from Key identifier URI
+            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+            KeyName: "<key-name>",
+            KeyVersion: "<current-version>"
             },
    },
-   "location":"region-name",
+   "location":"<region-name>",
    "identity": { 
         "type": "systemAssigned" 
         }
@@ -232,18 +247,18 @@ Content-type: application/json
   },
   "properties": {
        "KeyVaultProperties": {     // Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+            KeyVaultUri: "https://key-vault-name.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
             },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
   },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name" //Example: Switzerland North
+  "location": "region-name"    //Example: Switzerland North
 }
 ```
 
@@ -253,18 +268,12 @@ Content-type: application/json
 
 1. 确认完成后的步骤
 
-2. 响应中的*群集*资源 ID 如下所示：
-
-```
-"id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name"
-```
-
-使用 Get API 调用可随时检索*群集*资源 ID。
+2. 群集资源 API 响应。 可以通过使用 Get API 调用随时检索它。
 
 **读取*群集*资源 ID**
 
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -277,10 +286,10 @@ Authorization: Bearer <token>
     "principalId": "principal-Id"
   },
   "properties": {
-       "KeyVaultProperties": { // Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+       "KeyVaultProperties": {    // Key Vault key identifier
+            KeyVaultUri: "https://key-vault-name.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
             },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
@@ -298,31 +307,31 @@ Authorization: Bearer <token>
 > [!NOTE]
 > 仅在通过 Microsoft 通道从产品组收到确认**Azure Monitor 的数据存储（ADX 群集）预配**的情况下，**才**应执行此步骤。 如果在此**设置**之前将工作区和引入数据关联起来，则数据将被删除，并且将无法恢复。
 
-**将工作区关联到*群集*资源**
+**使用[工作区-创建或更新](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)API 将工作区与*群集*资源关联**
 
-```json
-PUT https://management.azure.com.resources.windows-int.net/Customer.svc/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name} 
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2015-11-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
     "source": "Azure",
-    "customerId": {workspace-id}, //Available in Azure portal under Log Analytics workspace Overview section
+    "customerId": "<workspace-id>",    //Available in Azure portal under Log Analytics workspace Overview section
     "features": {
-      "clusterDefinitionId": "cluster-id" //The id of the Cluster resource
+      "clusterDefinitionId": "<cluster-id>"    //It's the "clusterId" value provided in the respond from the previous step 
     }
   },
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
-  "name": "workspace-name",
+  "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>",
+  "name": "<workspace-name>",
   "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "location": "<region-name>"
 }
 ```
 
 **响应**
 
-```
+```json
 {
   "properties": {
     "source": "Azure",
@@ -339,12 +348,11 @@ Content-type: application/json
       "dataIngestionStatus": "RespectQuota"
     }
   },
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
   "name": "workspace-name",
   "type": "Microsoft.OperationalInsights/workspaces",
   "location": "region-name"
 }
-
 ```
 
 关联后，发送到你的工作区的数据将存储在你的托管密钥中进行加密。
@@ -380,6 +388,8 @@ Azure Monitor 存储将始终在一小时内对关键权限的更改进行处理
   - 已启用[软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
   - "不清除" 已打开，可以防止在软删除后强行删除密钥/保管库
 
+- Application Insights 和 Log Analytics 需要单独的*群集*资源。 *群集*资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "applicationinsights.config" 来定义。 不能更改*群集*资源类型。
+
 - 当前不支持*群集*资源移动到另一个资源组或订阅。
 
 - 如果*群集*资源在不同的租户中，则工作区与*群集*资源的关联将会失败。
@@ -403,62 +413,66 @@ Azure Monitor 存储将始终在一小时内对关键权限的更改进行处理
 
 - 如果尝试删除与工作区关联的*群集*资源，则删除操作将失败。
 
-- 获取资源组的所有群集：
+- 获取资源组的所有*群集*资源：
 
-    ```
-    GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
-    ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
     
-    *响应*
+**响应**
 
-    ```json
+```json
+{
+  "value": [
     {
-      "value": [
-        {
-          "identity": {
-            "type": "SystemAssigned",
-            "tenantId": "tenant-id",
-            "principalId": "principal-Id"
-          },
-          "properties": {
-             "KeyVaultProperties": { // Key Vault key identifier
-                KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-                KeyName: {key-name},
-                KeyVersion: {current-version}
-                },
-            "provisioningState": "Succeeded",
-            "clusterType": "LogAnalytics", 
-            "clusterId": "cluster-id"
-          },
-          "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
-          "name": "cluster-name",
-          "type": "Microsoft.OperationalInsights/clusters",
-          "location": "region-name"
-        }
-      ]
+      "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "tenant-id",
+        "principalId": "principal-Id"
+      },
+      "properties": {
+         "KeyVaultProperties": {    // Key Vault key identifier
+            KeyVaultUri: "https://{key-vault-name}.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
+            },
+        "provisioningState": "Succeeded",
+        "clusterType": "LogAnalytics", 
+        "clusterId": "cluster-id"
+      },
+      "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
+      "name": "cluster-name",
+      "type": "Microsoft.OperationalInsights/clusters",
+      "location": "region-name"
     }
-    ```
+  ]
+}
+```
 
-- 获取订阅的所有群集
+- 获取订阅的所有*群集*资源
 
-    ```
-    GET https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
-    ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
     
-    *响应*
+**响应**
     
-    与来自 "资源组的所有群集" 的响应相同，但位于订阅范围内。
+与 "资源组的*群集*资源" 相同的响应，但在订阅范围内。
     
-- 删除*群集*资源：
+- 删除*群集*资源-需要先删除所有关联的工作区，然后才能删除*群集*资源：
 
-> 你需要先删除所有关联的工作区，然后才能删除*群集*资源：
->
-> DELETE https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
->
+  ```rst
+  DELETE
+  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
 
-响应
+**响应**
 
 200 正常
+
 
 ## <a name="appendix"></a>附录
 
@@ -468,7 +482,7 @@ Log Analytics 和 Application Insights 使用相同的数据存储平台和查�
 2020. 此更改会使你的应用程序深入了解 Log Analytics 工作区，并在你的工作区上配置 CMK 时进行查询、见解和其他改进，同时还适用于你的 Application Insights 数据。
 
 > [!NOTE]
-> 如果在 CY 2020 第二季度之前无需在应用程序上部署 CMK，则建议等待合并完成，因为合并将中断此类部署，你将需要在你的工作区之后。
+> 如果你不需要为应用程序的见解数据部署 CMK，则建议等待合并完成，因为合并将中断此类部署，并且你需要在迁移到日志后重新配置 CMK分析工作区。 每日最小 1 TB 适用于群集级别，直到第二 Application Insights 季度合并完成，Log Analytics 需要单独的群集。
 
 ## <a name="application-insights-cmk-configuration"></a>Application Insights CMK 配置
 
@@ -484,15 +498,15 @@ Application Insights CMK 的配置与本文中所述的过程完全相同，包�
 
 此资源用作 Key Vault 与组件之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在组件所在的区域创建 Log Analytics 群集资源。 群集资源的类型在创建时通过将*clusterType*属性设置为*LogAnalytics*或*applicationinsights.config*定义。 它应为 Application Insights CMK 的*applicationinsights.config* 。 配置后无法更改*clusterType*设置。
 
-创建：
+**创建**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "region-name",
+  "location": "<region-name>",
   "properties": {
       "clusterType":"ApplicationInsights"
   },
@@ -502,9 +516,9 @@ Content-type: application/json
 }
 ```
 
-响应：
+**响应**
 
-在创建时将标识分配给群集。
+在创建时将标识分配给*群集*资源。
 
 ```json
 
@@ -512,12 +526,12 @@ Content-type: application/json
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id" //A GUID that was generated by the managed identity service
+    "principalId": "principle-id"    //A GUID that was generated by the managed identity service
   },
   "properties": {
     "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights", //The value is ‘ApplicationInsights’ for Application Insights CMK
-    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster
+    "clusterType": "ApplicationInsights",    //The value is ‘ApplicationInsights’ for Application Insights CMK
+    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster - copy it since you need it for Key Vault and components association 
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
   "name": "cluster-name",
@@ -526,23 +540,23 @@ Content-type: application/json
 }
 ```
 
-### <a name="associate-a-component-to-a-cluster-resource"></a>将组件关联到群集资源
+### <a name="associate-a-component-to-a-cluster-resource"></a>将组件关联到*群集*资源
 
-```json
+```rst
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Insights/components/{component-name}?api-version=2015-05-01
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
-    "clusterDefinitionId": "cluster-id" //The id of the cluster resource
+    "clusterDefinitionId": "cluster-id" //It's the "clusterId" value provided in the respond from the previous step
   },
   "location": "region-name",
   "kind": "component-type",
 }
 ```
 
-响应
+**响应**
 
 ```json
 {
@@ -553,7 +567,7 @@ Content-type: application/json
   "tags": "",
   "kind": "",
   "properties": {
-    "clusterDefinitionId": "cluster-id" //The id of the cluster resource
+    "clusterDefinitionId": "cluster-id" //The Cluster resource ID that is associated to this component
     "ApplicationId": "",
     "AppId": "",
     "Application_Type": "",

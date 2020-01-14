@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866960"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930011"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
-本指南说明如何将 Azure 存储附加到 Linux 上的应用服务。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
-
-
-> [!IMPORTANT]
-> Linux 应用服务中的 Azure 存储是一项**预览**功能。 **生产方案不支持**此功能。
+> [!NOTE]
+> 本文适用于 Linux 容器。 若要部署到自定义 Windows 容器，请参阅[在应用服务上的 Windows 容器中配置 Azure 文件](../configure-connect-to-azure-storage.md)。 Linux 应用服务中的 Azure 存储是一项**预览**功能。 **生产方案不支持**此功能。
 >
+
+本指南说明如何将 Azure 存储附加到 Linux 上的应用服务。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
 ## <a name="prerequisites"></a>必备组件
 

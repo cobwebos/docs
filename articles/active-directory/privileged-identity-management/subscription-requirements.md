@@ -13,45 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895113"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932322"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>要使用的许可证要求 Privileged Identity Management
 
 若要使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，目录必须具有有效的许可证。 此外，必须将许可证分配给管理员和相关用户。 本文介绍使用 Privileged Identity Management 的许可要求。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="valid-licenses"></a>有效的许可证
 
-若要使用 Privileged Identity Management，你的目录必须具有以下付费或试用许可证之一：
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-- Azure AD Premium P2
-- 企业移动性 + 安全性 (EMS) E5
-- Microsoft 365 M5
+## <a name="how-many-licenses-must-you-have"></a>必须拥有多少个许可证？
 
-有关详细信息，请参阅[什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)。
+确保你的目录的 Azure AD Premium P2 许可证至少与将执行以下任务的员工一样多：
 
-## <a name="which-users-must-have-licenses"></a>哪些用户必须有许可证？
-
-与 Privileged Identity Management 交互或接收权益的每个管理员或用户都必须具有许可证。 示例包括：
-
-- 其 Azure AD 角色由 PIM 管理的管理员
-- 其 Azure 资源角色由 PIM 管理的管理员
-- 已分配到“特权角色管理员”角色的管理员
 - 分配有资格使用 PIM 管理 Azure AD 角色的用户
-- 能够在 PIM 中批准/拒绝请求的用户
+- 用户能够在 PIM 中批准或拒绝激活请求
 - 已通过实时或直接（基于时间）分配方法分配到 Azure 资源角色的用户  
 - 已分配到访问评审的用户
 - 执行访问评审的用户
 
-有关如何将许可证分配给用户的信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
+以下任务**不**需要 Azure AD Premium P2 许可证：
+
+- 使用全局管理员或特权角色管理员角色（设置 PIM、配置策略、接收警报和设置访问评审）的用户不需要许可证。
+
+有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
+
+## <a name="example-license-scenarios"></a>示例许可证方案
+
+下面是一些示例许可方案，可帮助您确定您必须拥有的许可证数量。
+
+| 方案 | 计算 | 许可证数量 |
+| --- | --- | --- |
+| Woodgrove Bank 包含用于不同部门的10个管理员和用于配置和管理 PIM 的2个全局管理员。 它们使五个管理员有资格。 | 适用于符合条件的管理员的五个许可证 | 5 |
+| 图形设计研究所有25个管理员，其中14个通过 PIM 管理。 角色激活需要批准，组织中有三个可批准激活的用户。 | 14个适用于合格角色的许可证 + 三个审批者 | 17 |
+| Contoso 有50个管理员，其中42通过 PIM 进行管理。 角色激活需要批准，组织中有5个不同的用户可批准激活。 Contoso 还按月审查分配给管理员角色和审阅者的用户，这是其六个用户的经理，而不是由 PIM 管理的管理员角色。 | 适用于符合条件的角色的42许可证 + 五个审批者 + 六个审阅者 | 53 |
 
 ## <a name="what-happens-when-a-license-expires"></a>许可证过期时会发生什么情况？
 

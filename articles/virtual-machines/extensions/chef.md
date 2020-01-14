@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073189"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933607"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
 Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 Chef VM 扩展是一个用于在虚拟机上启用 Chef 的扩展。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -36,7 +36,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示了 Chef VM 扩展的架构。 此扩展至少需要 Chef 服务器 URL、验证客户端名称以及 Chef 服务器的验证密钥，可以从安装 `knife.rb`Chef Automate[ 或独立的 ](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate)Chef 服务器[时下载的 starter-kit.zip 中的 ](https://downloads.chef.io/chef-server) 文件中找到这些值。 因为验证密钥被视为敏感数据，因此应当将其配置在 **protectedSettings** 元素下，这意味着它只能在目标虚拟机上解密。
+以下 JSON 显示了 Chef VM 扩展的架构。 此扩展至少需要 Chef 服务器 URL、验证客户端名称以及 Chef 服务器的验证密钥，可以从安装 [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) 或独立的 [Chef 服务器](https://downloads.chef.io/chef-server)时下载的 starter-kit.zip 中的 `knife.rb` 文件中找到这些值。 因为验证密钥被视为敏感数据，因此应当将其配置在 **protectedSettings** 元素下，这意味着它只能在目标虚拟机上解密。
 
 ```json
 {
@@ -152,6 +152,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 可以在 [Chef VM 扩展自述文件](https://github.com/chef-partners/azure-chef-extension)中找到更多故障排除信息。
 
+> [!NOTE]
+> 对于直接与 Chef 相关的任何其他内容，请联系[Chef 支持](https://www.chef.io/support/)。
+
 ## <a name="next-steps"></a>后续步骤
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

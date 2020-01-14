@@ -1,19 +1,19 @@
 ---
 title: 在商业应用商店中创建新的 Azure 应用产品/服务
 description: 如何在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划使用 Microsoft 合作伙伴中心上的商业应用商店门户创建新的 Azure 应用服务。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281267"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930708"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -94,7 +94,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 我们建议将以下工具添加到开发环境：
 
-* [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -183,7 +183,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 你在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预填充了你在创建产品/服务时为 "**产品/服务别名**" 输入的文本，但你可以更改此值。 此名称可能是商标字（并且你可以包括商标或版权符号）。 名称不能超过50个字符，并且不能包含任何表情符号。
 
-### <a name="summary"></a>Summary
+### <a name="summary"></a>摘要
 
 提供产品/服务的简短说明（最多100个字符），可以在 marketplace 搜索结果中使用。
 
@@ -191,7 +191,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 提供产品/服务的更长说明（最多256个字符）。 此说明可用于 marketplace 搜索结果中。
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 
 提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。 
 
@@ -323,11 +323,11 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 根据你在创建计划时为其分配的名称预先填充。  此名称将显示在 marketplace 中显示的 "软件计划" 的标题中。  最多可包含100个字符。
 
-### <a name="summary"></a>Summary
+### <a name="summary"></a>摘要
 
 提供软件计划的简短摘要。  最多可包含100个字符。
 
-### <a name="description"></a>说明
+### <a name="description"></a>Description
 
 此说明是一个机会，用于说明此软件计划的独特之处，以及与你的产品/服务中的其他软件计划的不同之处。 最多可包含2000个字符。
 
@@ -362,7 +362,7 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 请始终在发布前查看每个市场的价格。 保存更改后，可以通过使用 "导出价格（.xlsx）" 链接来查看定价。
 
-### <a name="pricing"></a>定价
+### <a name="pricing"></a>价格
 
 提供此计划的每月价格。  此价格是此解决方案部署的资源所产生的任何 Azure 基础结构或即用即付软件成本的补充。
 
@@ -461,7 +461,7 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 将[Azure 策略](https://docs.microsoft.com/azure/governance/policy/overview)应用到托管应用程序，以指定所部署解决方案的符合性要求。  有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/index)。  最多可以配置五个策略，每个策略选项只有一个实例。  某些策略需要其他参数。  审核策略需选择标准 SKU。  策略名称限制为50个字符。
 
-## <a name="co-sell"></a>共同销售
+## <a name="co-sell"></a>联合销售
 
 在发布产品/服务时，提供有关 "做好" 选项卡的信息是完全可选的。 需要实现合作销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息来了解有关您的解决方案的详细信息。 不会直接向客户提供此功能。
 
@@ -501,7 +501,7 @@ Azure 应用程序原本使用 Azure 资源管理器测试驱动器类型。  �
 
 - **用户手册**（必需）：深入演练测试驱动器体验。 用户手册应确切地说明您希望客户从遇到该测试驱动器中获得的内容，并为他们可能遇到的任何问题提供参考。 文件必须采用 PDF 格式，并在上传后命名为（最多255个字符）。
 
-- **视频：添加视频**（可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，帮助他们更好地了解测试驱动器，包括如何成功使用产品/服务的功能并了解突出显示其优势的方案。
+- **视频：添加视频**（可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，以帮助他们更好地了解测试驱动器，包括如何成功使用产品/服务的功能并了解突出显示其优势的方案。
   - **名称**（必需）
   - **URL （仅限 YouTube 或 Vimeo）** （必需）
   - **缩略图（533 x 324 px）** ：图像文件必须采用 PNG 格式。

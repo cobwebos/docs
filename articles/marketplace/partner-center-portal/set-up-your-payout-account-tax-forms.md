@@ -3,18 +3,18 @@ Description: 若要从商业性 marketplace 中的产品/服务销售中获得�
 title: 设置你的帐户和税窗体 |Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 73ee800a837e7cd201025c93c7e88ad46f7fe256
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6ef9711d6047a75ca5058f12e95d72a79628e30
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980213"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934155"
 ---
-# <a name="set-up-your-payout-account-and-tax-forms"></a>设置你的付款帐户和税单
+# <a name="set-up-your-payout-account-and-tax-forms"></a>设置付款帐户和纳税表单
 
 若要从商业应用商店中的产品/服务销售中获得资金，你需要设置你的帐户，并在[合作伙伴中心](https://partner.microsoft.com/dashboard)填写所需的税务表。
 

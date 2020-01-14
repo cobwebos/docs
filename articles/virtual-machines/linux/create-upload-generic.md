@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: 02e49bf5b85da441353f72823c27048bb8e92d83
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750187"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934002"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 
@@ -96,7 +96,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
     size=$(qemu-img info -f raw --output json "$rawdisk" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-    rounded_size=$((($size/$MB + 1)*$MB))
+    rounded_size=$(((($size+$MB-1)/$MB)*$MB))
     
     echo "Rounded Size = $rounded_size"
     ```

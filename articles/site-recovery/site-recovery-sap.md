@@ -1,18 +1,18 @@
 ---
 title: 设置 SAP NetWeaver 灾难恢复与 Azure Site Recovery
 description: 本文介绍如何使用 Azure Site Recovery 为 SAP NetWeaver 应用程序部署设置灾难恢复。
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.author: carmonm
+ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533849"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934449"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
@@ -22,12 +22,12 @@ ms.locfileid: "74533849"
 * 将组件复制到 Azure，以便**保护在本地运行的 SAP NetWeaver 和非 NetWeaver 生产应用程序**。
 * 将组件复制到其他 Azure 数据中心，以便**保护在 Azure 中运行的 SAP NetWeaver 和非 NetWeaver 生产应用程序**。
 * 使用 Site Recovery 将 SAP 部署迁移到 Azure，从而**简化云迁移**。
-* 通过创建一个按需生产克隆来测试 SAP 应用程序，**简化 SAP 项目的升级、测试和原型制作**。
+* 通过按需创建生产克隆来测试 SAP 应用程序，**简化 SAP 项目的升级、测试和原型制作**。
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SAP NetWeaver 应用程序部署。 本文讨论如何按照一些最佳做法，使用 Site Recovery 将 Azure 上的三层 SAP NetWeaver 部署复制到其他 Azure 数据中心，从而对其进行保护。 此外，介绍支持的方案和配置，以及如何执行测试故障转移（灾难恢复演练）和实际故障转移。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SAP NetWeaver 应用程序部署。 本文讨论如何按照一些最佳做法，使用 Site Recovery 将 Azure 上的三层 SAP NetWeaver 部署复制到其他 Azure 数据中心，从而对其进行保护。 本文介绍了支持的方案和配置，以及如何执行测试故障转移（灾难恢复演练）和实际故障转移。
 
 ## <a name="prerequisites"></a>必备组件
-在开始之前，请确保知道如何执行以下任务：
+开始之前，请确保自己知道如何执行以下任务：
 
 * [将虚拟机复制到 Azure](azure-to-azure-walkthrough-enable-replication.md)
 * [设计恢复网络](site-recovery-azure-to-azure-networking-guidance.md)
@@ -150,7 +150,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 3.  选择“测试故障转移”。
 4.  若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5.  当辅助环境启动时，执行验证。
-6.  完成验证后，选择“清理测试故障转移”可清理测试故障转移环境。
+6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 

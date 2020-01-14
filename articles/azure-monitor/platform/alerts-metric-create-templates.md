@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397339"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932884"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建度量警报
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 较新的指标警报支持根据多维指标发出警报，且支持多个标准。 您可以使用以下模板根据维度指标创建更高级的指标警报规则，并指定多个条件。
 
-请注意，当警报规则包含多个条件时，维度的使用限制为每个条件内的每个维度的一个值。
+在包含多个条件的警报规则中使用维度时，请注意以下约束：
+- 对于每个条件，只能在每个维度中选择一个值。
+- 不能使用 "\*" 作为维度值。
+- 如果在不同标准中配置的度量值支持相同的维度，则必须以相同方式为所有这些指标（在相关标准中）显式设置配置的维度值。
+    - 在下面的示例中，由于 "**事务**" 和 " **SuccessE2ELatency** " 指标都具有 " **api 名称**" 维度，并且*criterion1*为 " **api 名称**" 维度指定了 *"GetBlob"* 值，因此*criterion2*还必须为 " **api 名称**" 维度设置 *"GetBlob"* 值。
+
 
 为进行本次演练，请将下面的 json 保存为 advancedstaticmetricalert.json。
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> 如果警报规则包含多个条件，则每个条件中维度的使用限制为每个维度一个值。
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>用于监视多个维度的静态指标警报模板
 

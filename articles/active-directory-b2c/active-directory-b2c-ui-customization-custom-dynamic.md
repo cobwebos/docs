@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950232"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931209"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -40,7 +40,7 @@ ms.locfileid: "74950232"
 
 `ContentDefinitions` 节包含一系列 `ContentDefinition` XML 元素。 `ContentDefinition` 元素的 ID 属性指定与内容定义相关的页面类型。 也就是说，该元素定义了要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了 IEF 引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 默认 HTML5 模板| 描述 |
+| 内容定义 ID | 默认 HTML5 模板| Description |
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选择页面**。 此页面列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
@@ -81,7 +81,7 @@ ms.locfileid: "74950232"
 
     ![选择“Web 应用程序”模板](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. 选择“确定”创建该项目。
+6. 选择“确定”以创建项目。
 
 ## <a name="step-2-create-mvc-view"></a>步骤 2：创建 MVC 视图
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>步骤 2.1：下载 B2C 内置 HTML5 模板
@@ -180,7 +180,7 @@ ms.locfileid: "74950232"
 3. 在“CORS”窗口中的“允许的来源”框内，执行以下操作之一：
 
     * 输入要允许的一个或多个 JavaScript 调用来源 URL。 需要在输入的 URL 中使用全小写字母。
-    * 输入星号 (*) 表示接受所有来源域。
+    * 输入星号 ( * ) 表示接受所有来源域。
 
 4. 选择“保存”。
 
@@ -217,17 +217,19 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
     ![突出显示了 Loaduri 来元素的示例 XML 代码段](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>步骤 6：将策略上传到租户
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
+1. 在[Azure 门户](https://portal.azure.com)的门户工具栏中，选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
 
-2. 选择“标识体验框架”。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 
-3. 选择“所有策略”。
+1. 选择“标识体验框架”。
 
-4. 选择“上传策略”。
+1. 选择“所有策略”。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+1. 选择“上传策略”。
 
-6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
+1. 选中“覆盖策略(如果存在)”复选框。
+
+1. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>步骤 7：使用“立即运行”测试自定义策略
 1. 选择“Azure AD B2C 设置”，然后选择“标识体验框架”。
@@ -322,9 +324,9 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 如果在登录页面上选择“立即注册”链接，浏览器会显示默认背景，而不是定义的背景。 之所以出现此行为，是因为前面仅更改了注册或登录页面。 若要更改剩余的 Self-Assert 内容定义，请执行以下操作：
 1. 返回“步骤 2”，执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载 *selfasserted* 文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 下载 *selfasserted* 文件。
 
-    b. 复制文件内容。
+    b.保留“数据库类型”设置，即设置为“共享”。 复制文件内容。
 
     c. 创建新视图 *selfasserted*。
 
@@ -332,9 +334,9 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 返回“步骤 4”，执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
 
-    b. 将 `LoadUri` 属性设置为 *selfasserted* URI。
+    b.保留“数据库类型”设置，即设置为“共享”。 将 `LoadUri` 属性设置为 *selfasserted* URI。
 
 3. 返回“步骤 8.2”，更改代码以接受查询字符串参数，但这次请使用 *selfasserted* 函数。
 
@@ -343,9 +345,5 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 5. 运行策略测试，然后选择“立即注册”查看结果。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)供你参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)下载完整代码。
-
-
-
-

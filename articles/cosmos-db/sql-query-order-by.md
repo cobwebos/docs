@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444792"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929585"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    ORDER BY 子句要求索引策略包含要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称进行排序，而不支持对计算属性进行排序。 Azure Cosmos DB 支持多个排序依据属性。 若要运行包含多个排序依据属性的查询，您应该对要排序的字段定义一个[组合索引](index-policy.md#composite-indexes)。
    
 > [!Note] 
-> 使用 .NET SDK 3.4.0 或更高版本时，如果对某些文档而言，要进行排序的属性可能是不确定的，则需要对这些属性显式创建索引。 默认索引策略将不允许检索未定义 sort 属性的文档。
+> 如果对某些文档进行排序所依据的属性可能是未定义的，并且您想要在 ORDER BY 查询中检索这些属性，则必须在这些属性上显式创建索引。 默认索引策略不允许检索未定义 sort 属性的文档。
 
 ## <a name="examples"></a>示例
 

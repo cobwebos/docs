@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931429"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930731"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模式
 
@@ -91,7 +91,7 @@ Azure Active Directory B2C （Azure AD B2C）的使用费用按 Azure 订阅计�
 
 ### <a name="create-the-link"></a>创建链接
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含要使用的 Azure 订阅的目录（*而不*是包含 Azure AD B2C 租户的目录）。
 1. 选择 "**创建资源**"，在 "**搜索 Marketplace"** 字段中输入 `Active Directory B2C`，然后选择 " **Azure Active Directory B2C**"。
 1. 选择“创建”
@@ -99,7 +99,7 @@ Azure Active Directory B2C （Azure AD B2C）的使用费用按 Azure 订阅计�
 1. 从下拉列表中选择**Azure AD B2C 租户**。 只显示你是其全局管理员并且尚未链接到订阅的租户。 " **Azure AD B2C 资源名称**" 字段中填充了所选 Azure AD B2C 租户的域名。
 1. 选择你是其管理员的活动 Azure**订阅**。
 1. 在 "**资源组**" 下，选择 "**新建**"，然后指定**资源组位置**。 此处的资源组设置不会影响 Azure AD B2C 租户位置、性能或计费状态。
-1. 选择**创建**。
+1. 选择“创建”。
     ![Azure 门户中的 Azure AD B2C 资源创建页面](./media/active-directory-b2c-how-to-enable-billing/portal-01-create-b2c-resource-page.png)
 
 为 Azure AD B2C 租户完成这些步骤后，你的 Azure 订阅会根据你的 Azure Direct 或企业协议详细信息进行计费（如果适用）。
@@ -134,7 +134,7 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 如果源订阅和目标订阅存在于同一 Azure Active Directory 租户中，则可以将 Azure AD B2C 租户转移到另一个订阅。
 
-若要了解如何将 Azure AD B2C 租户之类的 Azure 资源移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+若要了解如何将 Azure AD B2C 租户之类的 Azure 资源移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 开始移动之前，请务必阅读整篇文章，以充分了解此类移动的限制和要求。 除了移动资源的说明外，它还包含重要信息，如预移动清单和如何验证移动操作。
 

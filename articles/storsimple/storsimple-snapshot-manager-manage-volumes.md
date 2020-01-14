@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 和卷 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查看和管理卷以及配置备份。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
-ms.author: v-sharos
-ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61077436"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931632"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
 ## <a name="overview"></a>概述
@@ -49,7 +49,7 @@ ms.locfileid: "61077436"
 
 #### <a name="to-mount-volumes"></a>装载卷
 1. 在主计算机上，启动 Microsoft iSCSI 发起程序。
-2. 提供其中一个接口 IP 地址作为目标门户或发现 IP 地址，并连接到设备。 连接设备之后，卷即可供 Windows 系统访问。 有关使用 Microsoft iSCSI 发起程序的详细信息，请转到[安装和配置 Microsoft iSCSI 发起程序][1] 中的“连接到 iSCSI 目标设备”部分。
+2. 提供其中一个接口 IP 地址作为目标门户或发现 IP 地址，并连接到设备。 连接设备之后，卷即可供 Windows 系统访问。 有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft Iscsi 发起程序][1]中的 "连接到 iSCSI 目标设备" 部分。
 3. 使用以下任意选项启动磁盘管理：
    
    * 在“**运行**”框中键入 Diskmgmt.msc。
@@ -91,9 +91,9 @@ ms.locfileid: "61077436"
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 结果列 | 描述 |
+   | 结果列 | Description |
    |:--- |:--- |
-   |  Name |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
+   |  名称 |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
    |  设备卷名称 |“**设备卷名称**”列包含选定的卷所属的设备卷的名称。 这是在 Azure 门户中针对特定卷定义的卷名称。 |
    |  访问路径 |“**访问路径**”列显示该卷的访问路径。 这是在主计算机上可以访问该卷的驱动器号或装入点。 |
@@ -102,7 +102,7 @@ ms.locfileid: "61077436"
 使用以下过程从 StorSimple Snapshot Manager 中删除卷。
 
 > [!NOTE]
-> 如果该卷是任何卷组的一部分，则无法将其删除。 （该删除选项不适用于作为某个卷组成员的卷。）必须删除整个卷组才能删除该卷。
+> 如果该卷是任何卷组的一部分，则无法将其删除。 （"删除" 选项不可用于作为卷组的成员的卷。）必须删除整个卷组才能删除该卷。
 
 #### <a name="to-delete-a-volume"></a>删除卷
 1. 单击桌面图标启动 StorSimple Snapshot Manager。

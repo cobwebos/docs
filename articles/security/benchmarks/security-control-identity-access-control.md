@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9081f74aee7ff503c7fe29cef6ca76e6d6b46a4f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564265"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934431"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全控制：标识和访问控制
 
@@ -63,9 +63,11 @@ Azure AD 没有默认密码的概念。 其他需要密码的 Azure 资源会强
 
 只要有可能，请使用 Azure Active Directory SSO，而不是为每个服务配置单独的单独凭据。 使用 Azure 安全中心的标识和访问管理建议。
 
-了解 Azure AD 的 SSO： https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+了解 Azure AD 的 SSO：
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证。
+https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
 | Azure ID | CIS Id | 职责 |
 |--|--|--|
@@ -89,9 +91,13 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 使用配置了 MFA 的 Paw （特权访问工作站）来登录和配置 Azure 资源。
 
-了解特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特权访问工作站：
 
-如何在 Azure 中启用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+
+如何在 Azure 中启用 MFA：
+
+https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：来自管理帐户的可疑活动的日志和警报
@@ -130,19 +136,25 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 使用 Azure Active Directory （AAD）作为中央身份验证和授权系统。 AAD 通过对静态数据和传输中的数据使用强加密来保护数据。 AAD 还 salts、哈希，并安全地存储用户凭据。
 
-如何创建和配置 AAD 实例： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+如何创建和配置 AAD 实例：
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期查看和协调用户访问权限
 
 | Azure ID | CIS Id | 职责 |
 |--|--|--|
-| 3.1 | 16.9、16.10 | 客户 |
+| 3.10 | 16.9、16.10 | 客户 |
 
 Azure AD 提供了有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 
 
-Azure AD 报告 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD 报告：
 
-如何使用 Azure 标识访问评审： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+如何使用 Azure 标识访问评审：
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视器尝试访问停用的帐户
 

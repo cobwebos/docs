@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: ad520c7e6503f28de0bd5538662c223575a078fa
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3216248943ccc0dba788816cdba38732f9e43e14
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692727"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930762"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习的环境？
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,6 +44,7 @@ ms.locfileid: "75692727"
 * 使用特选环境或通过定义自己的依赖项定义新 `Environment` 对象
 * 使用工作区中现有的 `Environment` 对象。 这允许与依赖项进行一致性和可再现性
 * 从现有的 Anaconda 环境定义导入。
+* 使用 Azure 机器学习 CLI
 
 有关特定代码示例，请参阅操作[方法](how-to-use-environments.md#create-an-environment)。 还可以通过工作区轻松管理环境，并提供以下功能：
 

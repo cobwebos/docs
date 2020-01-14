@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/03/2020
-ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/13/2020
+ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894009"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934391"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
    - Azure 存储，使用存储的__服务标记__ __Region_Name__ （例如 EastUS）
    - Azure 容器注册表（通过使用__Region_Name AzureContainerRegistry__的__服务标记__）（例如，AzureContainerRegistry. EastUS）
    - Azure 机器学习，使用__AzureMachineLearning__的__服务标记__
-   - 对于计算实例，Azure 云，使用__AzureCloud. Region_Name__的__服务标记__（例如，AzureCloud. NorthCentralUS）
+   - 对于计算实例，Azure Cloud，使用__AzureResourceManager__ __服务标记__
 
 下图显示了 Azure 门户中的 NSG 规则配置：
 

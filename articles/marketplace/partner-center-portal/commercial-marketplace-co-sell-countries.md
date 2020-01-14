@@ -1,19 +1,19 @@
 ---
 title: 共同销售国家/地区代码 |Azure Marketplace
 description: 在产品/服务的共同销售页面上提供联系人信息时，请使用这两个字母的国家/地区代码。
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812929"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934340"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同销售国家/地区代码
 
@@ -43,7 +43,7 @@ ms.locfileid: "73812929"
 | 澳大利亚                           | AU        |
 | 奥地利                             | AT        |
 | 阿塞拜疆                          | AZ        |
-| 巴哈马                             | BS        |
+| 巴哈马群岛                             | BS        |
 | 巴林                             | BH        |
 | 孟加拉                          | BD        |
 | 巴巴多斯                            | BB        |
@@ -51,7 +51,7 @@ ms.locfileid: "73812929"
 | 比利时                             | BE        |
 | 伯利兹                              | BZ        |
 | 贝宁                               | BJ        |
-| 百慕大群岛                             | BM.EXE        |
+| 百慕大群岛                             | BM        |
 | 不丹                              | BT        |
 | 玻利维亚                             | BO        |
 | 博内尔                             | BQ        |
@@ -59,7 +59,7 @@ ms.locfileid: "73812929"
 | 博茨瓦纳                            | BW        |
 | 布韦岛                       | BV        |
 | 巴西                              | BR        |
-| 英属印度洋领地      | 排        |
+| 英属印度洋领地      | IO        |
 | 英属维尔京群岛              | VG        |
 | 文莱                              | BN        |
 | 保加利亚                            | BG        |
@@ -78,7 +78,7 @@ ms.locfileid: "73812929"
 | 圣诞岛                    | CX        |
 | 科科斯群岛             | CC        |
 | 哥伦比亚                            | CO        |
-| 科摩罗联盟                             | 千米        |
+| 科摩罗联盟                             | KM        |
 | 刚果                               | CG        |
 | 刚果（民主共和国）                         | CD        |
 | 库克群岛                        | CK        |
@@ -86,7 +86,7 @@ ms.locfileid: "73812929"
 | 科特迪瓦                       | CI        |
 | 克罗地亚                             | HR        |
 | 古巴                                | CU        |
-| 库拉索岛                             | °        |
+| 库拉索岛                             | CW        |
 | 塞浦路斯                              | CY        |
 | 丹麦                             | DK        |
 | 吉布提                            | DJ        |
@@ -96,7 +96,7 @@ ms.locfileid: "73812929"
 | 埃及                               | EG        |
 | 萨尔瓦多                         | SV        |
 | 赤道几内亚                   | GQ        |
-| 厄立特里亚                             | L        |
+| 厄立特里亚                             | ER        |
 | 爱沙尼亚                             | EE        |
 | eSwatini                            | SZ        |
 | 埃塞俄比亚                            | ET        |
@@ -108,9 +108,9 @@ ms.locfileid: "73812929"
 | 法属波利尼西亚                    | PF        |
 | 法属南部领地         | TF        |
 | 加蓬                               | GA        |
-| 冈比亚                              | 通用        |
+| 冈比亚                              | GM        |
 | 格鲁吉亚                             | GE        |
-| 德国                             | DE        |
+| 德国                             | 德国        |
 | 加纳                               | GH        |
 | 直布罗陀                           | GI        |
 | 希腊                              | GR        |
@@ -134,7 +134,7 @@ ms.locfileid: "73812929"
 | 伊朗                                | IR        |
 | 伊拉克                                | IQ        |
 | 爱尔兰                             | IE        |
-| 马恩岛                         | 通信        |
+| 马恩岛                         | IM        |
 | 以色列                              | IL        |
 | 意大利                               | IT        |
 | 牙买加                             | JM        |
@@ -147,7 +147,7 @@ ms.locfileid: "73812929"
 | 韩国（南部）                       | KR        |
 | 科威特                              | KW        |
 | 吉尔吉斯斯坦                          | KG        |
-| 老挝                                | LA        |
+| 老挝                                | 拉丁美洲        |
 | 拉脱维亚                              | LV        |
 | 黎巴嫩                             | LB        |
 | 莱索托                             | LS        |
@@ -167,7 +167,7 @@ ms.locfileid: "73812929"
 | 马提尼克岛                          | MQ        |
 | 毛利塔尼亚                          | MR        |
 | 毛里求斯                           | MU        |
-| 马约特岛                             | CA-YT        |
+| 马约特岛                             | YT        |
 | 墨西哥                              | MX        |
 | 密克罗尼西亚                          | FM        |
 | 摩尔多瓦                             | MD        |
@@ -190,15 +190,15 @@ ms.locfileid: "73812929"
 | 纽埃                                | NU        |
 | 诺福克岛                      | NF        |
 | 朝鲜民主主义人民共和国                         | KP        |
-| 北马里亚纳群岛            | MP        |
+| 北马里亚纳群岛            | 管理包        |
 | 北马其顿                     | MK        |
-| 挪威                              | 否        |
+| 挪威                              | 是        |
 | 阿曼                                | OM        |
 | 巴基斯坦                            | PK        |
 | 帕劳群岛                               | PW        |
 | 巴勒斯坦民族权力机构               | PS        |
 | 巴拿马                              | PA        |
-| 巴布亚新几内亚                    | 页码        |
+| 巴布亚新几内亚                    | PG        |
 | 巴拉圭                            | PY        |
 | 秘鲁                                | PE        |
 | 菲律宾                         | PH        |
@@ -213,12 +213,12 @@ ms.locfileid: "73812929"
 | 卢旺达                              | RW        |
 | 圣巴泰勒米                    | BL        |
 | 圣基茨和尼维斯               | KN        |
-| 圣卢西亚                         | LC-FC        |
+| 圣卢西亚                         | LC        |
 | 圣马丁岛                        | MF        |
 | 圣皮埃尔和密克隆群岛           | 下午        |
 | 圣文森特和格林纳丁斯    | VC        |
 | 萨摩亚                               | WS        |
-| 圣马力诺                          | 这些        |
+| 圣马力诺                          | SM        |
 | 圣多美和普林西比               | 一        |
 | 沙特阿拉伯                        | SA        |
 | 塞内加尔                             | SN        |
@@ -254,7 +254,7 @@ ms.locfileid: "73812929"
 | 特立尼达和多巴哥                 | TT        |
 | 突尼斯                             | TN        |
 | 土耳其                              | TR        |
-| 土库曼斯坦                        | 费        |
+| 土库曼斯坦                        | TM        |
 | 特克斯和凯科斯群岛            | TC        |
 | 图瓦卢                              | 电视        |
 | 乌干达                              | UG        |
@@ -263,7 +263,7 @@ ms.locfileid: "73812929"
 | 英国                      | GB        |
 | 美国                       | 美国        |
 | 乌拉圭                             | UY        |
-| 美属外岛               | 联        |
+| 美属外岛               | UM        |
 | 美属维尔京群岛                 | VI        |
 | 乌兹别克斯坦                          | UZ        |
 | 瓦努阿图                             | VU        |

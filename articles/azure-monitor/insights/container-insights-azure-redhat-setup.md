@@ -1,14 +1,14 @@
 ---
 title: 配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集 |Microsoft Docs
-description: 本文介绍如何配置容器 Azure Monitor，以监视托管在 Azure Red Hat OpenShift 上的 Kubernetes 群集。
+description: 本文介绍如何使用 Azure Red Hat OpenShift 上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405572"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930363"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 
@@ -27,10 +27,8 @@ ms.locfileid: "75405572"
 
 容器 Azure Monitor 支持按[概述](container-insights-overview.md)一文中所述监视 Azure Red Hat OpenShift，但以下功能除外：
 
-- 实时数据
-- Prometheus 指标抓取
+- 实时数据（预览）
 - [收集](container-insights-update-metrics.md)群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
-- 运行状况功能
 
 ## <a name="prerequisites"></a>必备组件
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 355640a900411ccedffa587824694343067817be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 5a2acb3a6bd7401de2a5b934f539adbb63c3f129
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536312"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930384"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,6 +262,65 @@ az extension remove -n azure-cli-ml
     ```
 
     有关详细信息，请参阅[az ml 环境下载](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)。
+
+### <a name="environment-configuration-schema"></a>环境配置架构
+
+如果使用 `az ml environment scaffold` 命令，它将生成一个模板 `azureml_environment.json` 文件，可以修改该模板并将其用于使用 CLI 创建自定义环境配置。 顶层对象松映射到 Python SDK 中的[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)类。 
+
+```json
+{
+    "name": "testenv",
+    "version": null,
+    "environmentVariables": {
+        "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+    },
+    "python": {
+        "userManagedDependencies": false,
+        "interpreterPath": "python",
+        "condaDependenciesFile": null,
+        "baseCondaEnvironment": null
+    },
+    "docker": {
+        "enabled": false,
+        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "baseDockerfile": null,
+        "sharedVolumes": true,
+        "shmSize": "2g",
+        "arguments": [],
+        "baseImageRegistry": {
+            "address": null,
+            "username": null,
+            "password": null
+        }
+    },
+    "spark": {
+        "repositories": [],
+        "packages": [],
+        "precachePackages": true
+    },
+    "databricks": {
+        "mavenLibraries": [],
+        "pypiLibraries": [],
+        "rcranLibraries": [],
+        "jarLibraries": [],
+        "eggLibraries": []
+    },
+    "inferencingStackVersion": null
+}
+```
+
+下表详细说明了 JSON 文件中的每个顶级字段、类型和说明。 如果对象类型已链接到 Python SDK 中的类，则在 Python 类中的每个 JSON 字段与公共变量名称之间存在松1:1 匹配。 在某些情况下，字段可能会映射到构造函数参数，而不是类变量。 例如，"`environmentVariables`" 字段映射到[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)类中的 `environment_variables` 变量。
+
+| JSON 字段 | 类型 | Description |
+|---|---|---|
+| `name` | `string` | 环境的名称。 不要以**Microsoft**或**AzureML**开头。 |
+| `version` | `string` | 环境的版本。 |
+| `environmentVariables` | `{string: string}` | 环境变量名称和值的哈希映射。 |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | 定义要在目标计算资源上使用的 Python 环境和解释器的对象。 |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | 定义用于自定义构建于环境规范的 Docker 映像的设置。 |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | 节配置 Spark 设置。 仅当 framework 设置为 PySpark 时才使用它。 |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | 配置 Databricks 库依赖项。 |
+| `inferencingStackVersion` | `string` | 指定添加到映像的推断堆栈版本。 若要避免添加推断堆栈，请将此字段 `null`。 有效值： "最新"。 |
 
 ## <a name="ml-pipeline-management"></a>ML 管道管理
 
