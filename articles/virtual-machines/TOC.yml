@@ -7,7 +7,17 @@
 - name: VM 扩展文档
   href: ./extensions/overview.md
 - name: 工作负荷
-  href: ./workloads/workloads.md
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: 高性能计算
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: 大型机重新托管
+      href: /mainframe-rehosting/overview.md
 - name: 经典部署
   items:
     - name: 使用经典部署的 Linux VM

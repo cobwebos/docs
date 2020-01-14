@@ -73,8 +73,6 @@
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: 使用 REST API 创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: 使用 .NET 创建群集
-              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
             - name: 群集创建错误
               href: ./create-cluster-error-dictionary.md
               title: null
@@ -102,8 +100,6 @@
               href: hdinsight-hadoop-script-actions-linux.md
             - name: 添加 Apache Hive 库
               href: hdinsight-hadoop-add-hive-libraries.md
-            - name: 使用 Apache Giraph
-              href: hdinsight-hadoop-giraph-install-linux.md
             - name: 使用 Hue
               href: hdinsight-hadoop-hue-linux.md
             - name: 构建 HDInsight 应用程序
@@ -330,8 +326,6 @@
                   href: ./spark/apache-spark-machine-learning-mllib-ipython.md
                 - name: 分析网站日志
                   href: ./spark/apache-spark-custom-library-website-log-analysis.md
-                - name: 使用 Caffe 深入学习
-                  href: ./spark/apache-spark-deep-learning-caffe.md
                 - name: 与 Microsoft 认知工具包配合使用
                   href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
                 - name: 创建 Apache Spark 机器学习管道
