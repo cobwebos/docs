@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422727"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932548"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组和应用程序的访问评审
 
@@ -34,7 +34,7 @@ ms.locfileid: "75422727"
 - Azure AD Premium P2
 - 全局管理员、用户管理员、安全管理员或安全读者
 
-有关详细信息，请参阅[哪些用户必须拥有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
+有关详细信息，请参阅[许可证要求](access-reviews-overview.md#license-requirements)。
 
 ## <a name="view-an-access-review"></a>查看访问评审
 

@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bf2f9503ae704110786a1e73aec3da18c17e4ea
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422468"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932429"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -37,7 +37,7 @@ ms.locfileid: "75422468"
 
 - Azure AD Premium P2
 
-有关详细信息，请参阅[哪些用户必须拥有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
+有关详细信息，请查看[许可证要求](access-reviews-overview.md#license-requirements)。
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>创建和执行来宾的访问评审
 

@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422674"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932622"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建组和应用程序的访问评审
 
@@ -33,7 +33,7 @@ ms.locfileid: "75422674"
 - Azure AD Premium P2
 - 全局管理员或用户管理员
 
-有关详细信息，请参阅[哪些用户必须拥有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
+有关详细信息，请参阅[许可证要求](access-reviews-overview.md#license-requirements)。
 
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 

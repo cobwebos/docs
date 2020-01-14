@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: f763ad9afd2238ebe63bf878882011eb3745df5c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 08b21ccd7f7958f00546583f680ecb8cde4a20c8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517106"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932617"
 ---
 # <a name="policy-settings-for-web-application-firewall-on-azure-front-door"></a>Azure 前门上的 Web 应用程序防火墙的策略设置
 
@@ -26,7 +26,7 @@ ms.locfileid: "73517106"
 
 ## <a name="waf-mode"></a>WAF 模式
 
-可以将 WAF 策略配置为在以下两种模式下运行：
+WAF 策略可配置为在以下两种模式下运行：
 
 - **检测模式**在检测模式下运行时，WAF 不会执行任何其他操作，而不是监视请求，并将请求及其匹配的 WAF 规则记录到 WAF 日志。 为前门启用日志记录诊断（使用门户时，可通过转到 Azure 门户中的 "**诊断**" 部分来实现）。
 
