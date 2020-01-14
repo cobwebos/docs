@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770333"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932977"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770333"
 > Azure AD 日志的集合被 Azure Monitor 定价。  有关详细信息，请参阅[Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 >
 > 使用 Azure Sentinel Office 365 解决方案：
-> 1. 使用此连接器会影响工作区的定价。 有关详细信息，请参阅[Azure Sentinel 定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
+> 1. 使用 Azure 中的 Office 365 连接器会影响工作区的定价。 有关详细信息，请参阅[Azure Sentinel 定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
 > 2. 如果已在使用 Azure Monitor Office 365 解决方案，则必须先使用[以下 "卸载" 部分](#uninstall)中的脚本将其卸载。
 > 3. 在工作区中[启用 Azure Sentinel 解决方案](../../sentinel/quickstart-onboard.md)。
 > 4. 请在 Azure Sentinel 中转到 "**数据连接器**" 页，并启用**Office 365**连接器。

@@ -3,16 +3,16 @@ Description: 若要了解有关价格选择、付款含义和税收责任的税�
 title: 税务详细信息 |Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 7a358e2c284fa42bb09e8d4f93909e1310712967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980239"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933562"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>商业 marketplace 发布者的税务详细信息
 
@@ -231,7 +231,7 @@ ms.locfileid: "74980239"
 | 斯威士兰                        | 所选择的价格就是最终售价并且包含所有适用的税款。                                                                   | 价格减去商店费用                 | 发布者          |
 | 瑞典                           | 所选择的价格就是最终售价并且包含所有适用的税款。 在付款之前，将从价格中扣除税款。              | 价格减去25%，减去商店费用 | Microsoft          |
 | 瑞士                      | 所选择的价格就是最终售价并且包含所有适用的税款。 在付款之前，将从价格中扣除税款。              | 价格减去8%，减去商店费用  | Microsoft          |
-| 中国台湾                           | 所选择的价格就是最终售价并且包含所有适用的税款。 在付款之前，将从价格中扣除税款。              | 价格减去5%，减去商店费用  | Microsoft          |
+| 台湾                           | 所选择的价格就是最终售价并且包含所有适用的税款。 在付款之前，将从价格中扣除税款。              | 价格减去5%，减去商店费用  | Microsoft          |
 | 塔吉克斯坦                       | 所选择的价格就是最终售价并且包含所有适用的税款。                                                                   | 价格减去商店费用                 | 发布者          |
 | 坦桑尼亚                         | 所选择的价格就是最终售价并且包含所有适用的税款。                                                                   | 价格减去商店费用                 | 发布者          |
 | 泰国                         | 所选择的价格就是最终售价并且包含所有适用的税款。                                                                   | 价格减去商店费用                 | 发布者          |

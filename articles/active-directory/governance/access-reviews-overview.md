@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422787"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932647"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -97,27 +97,34 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>哪些用户必须有许可证？
+### <a name="how-many-licenses-must-you-have"></a>必须拥有多少个许可证？
 
-与访问评审交互的每个用户都必须具有付费 Azure AD Premium P2 许可证。 示例包括：
+确保你的目录的 Azure AD Premium P2 许可证至少与将执行以下任务的员工一样多：
 
-- 创建访问评审的管理员
+- 被分配为审阅者的成员和来宾用户
+- 执行自我审查的成员和来宾用户
 - 执行访问评审的组所有者
-- 分配为审阅者的用户
-- 执行自我审查的用户
+- 执行访问评审的应用程序所有者
 
-还可以要求来宾用户评审自己的访问权限。 对于你为自己组织的用户之一分配的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD 企业到企业（B2B）来邀请最多五名来宾用户的外部用户额度。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅[AZURE AD B2B 协作许可指南](../b2b/licensing-guidance.md)。
+以下任务**不**需要 Azure AD Premium P2 许可证：
 
-下面是一些示例方案，可帮助您确定您必须拥有的许可证数量。
+- 具有全局管理员或用户管理员角色的用户不需要任何许可证，这些用户可设置访问评审、配置设置或应用评审的决策。
 
-| 方案 | 计算 | 所需许可证数 |
+对于你为自己组织的用户之一分配的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD 企业到企业（B2B）来邀请最多五名来宾用户的外部用户额度。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅[AZURE AD B2B 协作许可指南](../b2b/licensing-guidance.md)。
+
+有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
+
+### <a name="example-license-scenarios"></a>示例许可证方案
+
+下面是一些示例许可方案，可帮助您确定您必须拥有的许可证数量。
+
+| 方案 | 计算 | 许可证数量 |
 | --- | --- | --- |
-| 管理员创建具有500用户的组 A 的访问评审。 分配3个组所有者作为审阅者。 | 1个许可证，适用于每个组所有者作为审阅者的管理员和3个许可证。 | 4 |
-| 管理员创建具有500用户的组 A 的访问评审。 使其成为自我审查。 | 1个许可证，适用于每个用户的管理员 + 500 许可证。 | 501 |
-| 管理员将创建组 B 的访问评审，其中包含5个用户和25个来宾用户。 使其成为自我审查。 | 1个许可证，适用于每个用户的管理员 + 5 个许可证。<br/>（来宾用户享有所需的1:5 比） | 6 |
-| 管理员可使用5个用户和108个来宾用户创建组 C 的访问评审。 使其成为自我审查。 | 1个许可证，适用于每个用户的管理员 + 5 个许可证，其中每个用户都具有所需的1:5 比，涵盖所有108来宾用户。<br/>1 + 5 = 6 个许可证，其中包含5个\*6 = 30 个来宾用户。 对于剩余的（108-5\*6） = 78 guest 用户，需要 78/5 = 16 个附加许可证。 因此，总共需要 6 + 16 = 22 个许可证。 | 22 |
-
-有关如何将许可证分配给用户的信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
+| 管理员将创建组 A 的访问评审，其中包含75个用户和1个组所有者，并将该组所有者指定为审阅者。 | 1组所有者作为审阅者的许可证 | 第 |
+| 管理员将创建组 B 的访问评审，其中包含500用户和3组所有者，并将3个组所有者分配为审阅者。 | 每个组所有者作为审阅者的3个许可证 | 3 |
+| 管理员将创建组 B 的访问评审，其中包含500个用户。 使其成为自我审查。 | 每个用户作为自助审阅者的500许可证 | 500 |
+| 管理员将创建组 C 的访问评审，其中包含50成员用户和25个来宾用户。 使其成为自我审查。 | 将每个用户的许可证作为自助审阅者。50<br/>（来宾用户享有所需的1:5 比） | 50 |
+| 管理员将创建组 D 的访问评审，其中包含6个成员用户和108个来宾用户。 使其成为自我审查。 | 6个许可证，其中每个用户都作为自审阅者 + 16 个附加许可证，以满足所需的1:5 比率的所有108来宾用户。 6个许可证，其中包含6个\*5 = 30 个来宾用户。 对于剩余的（108-6\*5） = 78 guest 用户，需要 78/5 = 16 个附加许可证。 因此，总共需要 6 + 16 = 22 个许可证。 | 22 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949851"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930645"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -67,7 +67,7 @@ ms.locfileid: "74949851"
 
     ![在 Azure 门户中的 "创建密钥" 页上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. 选择**创建**。
+7. 选择“创建”。
 
 8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。
 
@@ -100,17 +100,19 @@ ms.locfileid: "74949851"
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>步骤 4：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
+1. 在[Azure 门户](https://portal.azure.com)的门户工具栏中，选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
 
-2. 选择“标识体验框架”。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 
-3. 选择“所有策略”。
+1. 选择“标识体验框架”。
 
-4. 选择“上传策略”。
+1. 选择“所有策略”。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+1. 选择“上传策略”。
 
-6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
+1. 选中“覆盖策略(如果存在)”复选框。
+
+1. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>步骤 5：使用“立即运行”测试自定义策略
 1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。
@@ -299,5 +301,5 @@ if (IsValidClientCertificate() == false)
 如果需要对此步骤进行故障排除，请参阅[使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)供你参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。

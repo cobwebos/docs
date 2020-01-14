@@ -1,18 +1,18 @@
 ---
 title: 对 Azure Site Recovery 代理问题进行故障排除 | Microsoft Docs
 description: 提供有关 Azure Site Recovery 代理故障的症状、原因和解决方法的信息。
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: carmonm
+ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280665"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930132"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>对 Azure Site Recovery 代理问题进行故障排除
 
@@ -62,8 +62,8 @@ ms.locfileid: "61280665"
 VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮助获取最新版本。 此外，还有助于与服务重新开始通信。
 
 1. 确定“Windows Azure 来宾代理服务”是否在 VM 服务中运行 (services.msc)。 尝试重启“Windows Azure 来宾代理服务”。    
-2. 如果服务中未显示 Windows Azure 来宾代理服务，请在“控制面板”中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务  。
-4. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载  。
+2. 如果服务中未显示 Windows Azure 来宾代理服务，请在“控制面板”中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务。
+4. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载。
 5. 下载并安装[最新版本的代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
 6. 检查服务中是否显示了 Windows Azure 来宾代理服务。
 7. 重启保护作业。
@@ -78,7 +78,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
 
    > [!NOTE]
-   > 我们强烈建议  只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
+   > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
 
 2. 运行以下命令，确保 Azure 代理可在 VM 上运行：`ps -e`
 
@@ -102,10 +102,10 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 卸载扩展：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，找到备份失败的 VM。
-2. 选择“设置”。 
-3. 选择“扩展”。 
-4. 选择“Site Recovery 扩展”  。
-5. 选择“卸载”。 
+2. 选择“设置”。
+3. 选择“扩展”。
+4. 选择“Site Recovery 扩展”。
+5. 选择“卸载”。
 
 对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，然后运行保护。 
 

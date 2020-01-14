@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager MMC 菜单操作 | Microsoft Docs
 description: 介绍了如何使用 StorSimple Snapshot Manager 中的标准 Microsoft 管理控制台 (MMC) 菜单操作。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715279"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931467"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "64715279"
 * 从此处新建窗口 
 * 刷新 
 * 导出列表 
-* Help 
+* 帮助 
 
 这些操作是 Microsoft 管理控制台 (MMC) 的组成部分，而非特定于 StorSimple Snapshot Manager。 本教程介绍了这些操作，并阐述了如何在 StorSimple Snapshot Manager 中使用其中的每一个操作。
 
@@ -91,7 +91,7 @@ ms.locfileid: "64715279"
       
       ![将列表导出为逗号分隔值文件](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Help
+## <a name="help"></a>帮助
 可以使用“**帮助**”菜单查看针对 StorSimple Snapshot Manager 和 MMC 的可用联机帮助。
 
 #### <a name="to-view-available-online-help"></a>查看可用的联机帮助

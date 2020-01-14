@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: e2d0227f7481f75c1b0a4e3fe9d0fa3134a7261c
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 732f4b460a3a97f84dd79a37715aff972e8482ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778594"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934532"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>设置 VPN 网关上诊断日志事件的警报
 
@@ -56,6 +56,10 @@ Azure 中提供了以下日志：
 6. 填写详细信息，并确保选择了 "**发送到 Log Analytics** " 和 " **TunnelDiagnosticLog** "。 选择在步骤3中创建的 "Log Analytics" 工作区。
 
    ![选中的复选框](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "选择")
+   
+> [!NOTE]
+> 最初显示数据可能需要几个小时。
+>
 
 7. 请参阅虚拟网络网关资源的 "概述"，并从 "**监视**" 选项卡中选择**警报**。然后创建新的警报规则，或编辑现有的警报规则。
 

@@ -1,18 +1,18 @@
 ---
 title: 商业应用商店付出汇总 |Azure Marketplace
 description: "\"费用摘要\" 显示了你在产品/服务中获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。"
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427144"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931814"
 ---
 # <a name="payout-reporting"></a>付款报告
 
@@ -74,11 +74,11 @@ ms.locfileid: "75427144"
 |期限结束（月）   | 8月30日，2019 | | |
 |计费日期 | 9月1日，2019 | | |
 |客户付款日期 | 9月1日，2019 | | |
-|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
+|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
 |费用收集期开始 | 9月1日，2019 | | |
 |费用收集期结束（最大值，30 天） | 9月30日，2019 | | |
-|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
-|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
+|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
+|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
@@ -93,7 +93,7 @@ ms.locfileid: "75427144"
 |费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
 |客户付款日期 | 2019年12月30日 | | |
 |支出计算 | 2020年1月15日 | | |
-|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
+|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
 
 ## <a name="transaction-history-download-export"></a>事务历史记录下载导出
 
