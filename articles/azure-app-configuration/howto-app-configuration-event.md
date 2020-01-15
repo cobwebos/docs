@@ -1,5 +1,6 @@
 ---
-title: 有关设置 Azure 应用程序配置以将事件发送到 Web 终结点的教程 | Microsoft Docs
+title: 教程：使用 Azure 应用程序配置将事件发送到 Web 终结点
+titleSuffix: Azure App Configuration
 description: 本教程介绍如何设置 Azure 应用程序配置事件订阅，以将键-值修改事件发送到 Web 终结点。
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,18 +14,18 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433688"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
 
 本快速入门介绍如何设置 Azure 应用程序配置事件订阅，以将键-值修改事件发送到 Web 终结点。 Azure 应用程序配置用户可以订阅每当键-值发生修改时发出的事件。 这些事件可以触发 Webhook、Azure Functions、Azure 存储队列，或 Azure 事件网格支持的任何其他事件处理程序。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。 可以选择使用 Azure Cloud Shell。
 
@@ -38,7 +39,7 @@ ms.locfileid: "74185181"
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 
 
 以下示例在 *westus* 位置创建名为 `<resource_group_name>` 的资源组。  将 `<resource_group_name>` 替换为资源组的唯一名称。
 

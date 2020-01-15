@@ -1,34 +1,34 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Convene 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Convene 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 PressPage 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 PressPage 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 2540ac46-1aea-496b-a8c5-575a2690f7db
+ms.assetid: ff2b5087-2768-4273-b831-aaffbc08189d
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ac3f22549e29d9bd1c9a18464ffa18ab4ef6063
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 65a1bcad1d77030a029c623abea48f12741f2352
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560454"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75532740"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-convene"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Convene 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-presspage"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PressPage 集成
 
-在本教程中，你将了解如何集成 Convene 与 Azure Active Directory (Azure AD)。 将 Convene 与 Azure AD 集成后，你可以：
+在本教程中，你将了解如何集成 PressPage 与 Azure Active Directory (Azure AD)。 将 PressPage 与 Azure AD 集成后，你可以：
 
-* 在 Azure AD 中控制谁有权访问 Convene。
-* 让用户使用其 Azure AD 帐户自动登录到 Convene。
+* 在 Azure AD 中控制谁有权访问 PressPage。
+* 让用户使用其 Azure AD 帐户自动登录到 PressPage。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -38,7 +38,7 @@ ms.locfileid: "75560454"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Convene 单一登录 (SSO) 的订阅。
+* 已启用 PressPage 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -46,67 +46,57 @@ ms.locfileid: "75560454"
 
 
 
-* Convene 支持 SP 和 IDP 发起的 SSO 
-* Convene 支持“恰时”用户预配 
+* PressPage 支持 SP 和 IDP 发起的 SSO 
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-convene-from-the-gallery"></a>从库中添加 Convene
+## <a name="adding-presspage-from-the-gallery"></a>从库中添加 PressPage
 
-若要配置 Convene 与 Azure AD 的集成，需要将库中的 Convene 添加到托管的 SaaS 应用列表。
+要配置 PressPage 与 Azure AD 的集成，需要从库中将 PressPage 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 Convene   。
-1. 在结果面板中选择 Convene，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 PressPage   。
+1. 在结果面板中选择 PressPage，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-convene"></a>配置并测试 Convene 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-presspage"></a>配置并测试 PressPage 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 Convene 的 Azure AD SSO  。 要使 SSO 正常工作，需要在 Azure AD 用户与 Convene 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 PressPage 的 Azure AD SSO  。 要使 SSO 正常工作，需要在 Azure AD 用户与 PressPage 相关用户之间建立链接关系。
 
-要配置和测试 Convene 的 Azure AD SSO，请完成以下构建基块：
+要配置并测试 PressPage 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Convene SSO](#configure-convene-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Convene 测试用户](#create-convene-test-user)** - 在 Convene 中创建 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[配置 PressPage SSO](#configure-presspage-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 PressPage 测试用户](#create-presspage-test-user)** - 在 PressPage 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Convene 应用程序集成页面上，找到“管理”部分，选择“单一登录”    。
+1. 在 [Azure 门户](https://portal.azure.com/)的 PressPage 应用程序集成页面上，找到“管理”部分，选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
-
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://portal.convene.me.uk/saml/acs/<UID>` 
+1. 在“基本  **SAML** 配置”部分，应用程序已预配置为采用“ **IDP**”发起模式，并且已在 Azure 中预先填充了所需的 URL。   用户需要单击“ **保存**”按钮来保存配置。 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://portal.convene.me.uk/login` 
-
-    > [!NOTE] 
-    > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Convene 客户端支持团队](mailto:support@convene.me.uk)，获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
-1. Convene 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Convene 应用程序要求将 nameidentifier 与 user.mail 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****   ****  ****  。
-
-    ![image](common/edit-attribute.png)
+    在“登录 URL”文本框中，键入 URL：`https://manager.presspage.com` 
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Convene”部分，根据要求复制相应的 URL  。
+1. 在“设置 PressPage”部分，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,10 +114,10 @@ ms.locfileid: "75560454"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，你将通过授予 B.Simon 访问 Convene 的权限，允许其使用 Azure 单一登录。
+在本部分中，你将通过授予 B.Simon 访问 PressPage 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Convene”  。
+1. 在应用程序列表中，选择 PressPage  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
@@ -140,22 +130,19 @@ ms.locfileid: "75560454"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-convene-sso"></a>配置 Convene SSO
+## <a name="configure-presspage-sso"></a>配置 PressPage SSO
 
-若要在 **Convene** 端配置单一登录，需要将下载的**证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Convene 支持团队](mailto:support@convene.me.uk)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在 PressPage 端配置单一登录，需要将下载的“证书 (Base64)”以及从 Azure 门户复制的相应 URL 发送给 [PressPage 支持团队](mailto:support@presspage.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-### <a name="create-convene-test-user"></a>创建 Convene 测试用户
+### <a name="create-presspage-test-user"></a>创建 PressPage 测试用户
 
-在本部分，我们会在 Convene 中创建一个名为 Britta Simon 的用户。 Convene 支持实时用户预配，并且默认启用。 此部分不存在任何操作项。 如果 Convene 中不存在用户，则会在身份验证后创建一个新用户。
-
->[!Note]
->如果需要手动创建用户，请联系 [ 支持团队](mailto:support@convene.me.uk)。
+在本部分中，你将在 PressPage 中创建名为 B.Simon 的用户。 与  [PressPage 支持团队](mailto:support@presspage.com)合作，以在 PressPage 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Convene 磁贴时，应会自动登录到为其设置了 SSO 的 Convene。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 PressPage 磁贴时，应当会自动登录到设置了 SSO 的 PressPage。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -165,5 +152,5 @@ ms.locfileid: "75560454"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [尝试 Convene 与 Azure AD 集成](https://aad.portal.azure.com/)
+- [尝试 PressPage 与 Azure AD 集成](https://aad.portal.azure.com/)
 

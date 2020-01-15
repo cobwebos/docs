@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703719"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549442"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -22,7 +22,7 @@ ms.locfileid: "74703719"
 
 本教程介绍如何为 Azure AD DS 托管域配置 LDAPS。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建用于 Azure AD DS 的数字证书
@@ -32,7 +32,7 @@ ms.locfileid: "74703719"
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -63,7 +63,7 @@ ms.locfileid: "74703719"
 
 * **受信任的颁发者** - 证书必须由使用安全 LDAP 连接到托管域的计算机所信任的颁发机构颁发。 此颁发机构可以是公共 CA 或受计算机信任的企业 CA。
 * **生存期** - 证书必须至少在接下来的 3 到 6 个月内保持有效。 证书过期后，安全 LDAP 不再可以访问托管域。
-* **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为 *aadds.contoso.com*，则证书的使用者名称必须是**aadds.contoso.com*。
+* **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为 aadds.contoso.com，则证书的使用者名称必须是 *.aadds.contoso.com。  
     * 证书的 DNS 名称或使用者备用名称必须是通配符证书，以确保安全 LDAP 在 Azure AD 域服务中正常工作。 域控制器使用随机名称；可以删除或添加域控制器来确保服务保持可用。
 * **密钥用途** - 必须将证书配置用于数字签名和密钥加密。  
 * **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
@@ -216,12 +216,12 @@ Thumbprint                                Subject
     | 源                            | IP 地址 |
     | 源 IP 地址/CIDR 范围 | 环境的有效 IP 地址或范围 |
     | 源端口范围                | *            |
-    | 目标                       | 任意          |
+    | 目标                       | Any          |
     | 目标端口范围           | 636          |
     | 协议                          | TCP          |
-    | 操作                            | 允许        |
+    | 操作                            | Allow        |
     | 优先度                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | 名称                              | AllowLDAPS   |
 
 1. 准备就绪后，选择“添加”以保存并应用该规则。 
 
@@ -277,7 +277,7 @@ Thumbprint                                Subject
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建用于 Azure AD DS 的数字证书
