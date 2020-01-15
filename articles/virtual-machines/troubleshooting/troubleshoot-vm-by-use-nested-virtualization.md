@@ -13,24 +13,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185526"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942185"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
 本文介绍如何在 Microsoft Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（救援 VM）上装载问题 VM 的磁盘来进行故障排除。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要装载问题 VM，救援 VM 必须满足以下先决条件：
 
 -   救援 VM 必须与问题 VM 位于同一位置。
-
--   救援 VM 必须与问题 VM 位于同一资源组中。
 
 -   救援 VM 与问题 VM 必须使用相同类型的存储帐户（标准或高级）。
 
@@ -48,13 +46,13 @@ ms.locfileid: "74185526"
 
 2.  创建救援 VM 后，通过远程桌面连接到救援 VM。
 
-3.  在服务器管理器中，选择“管理” **“添加角色和功能”**  > 。
+3.  在服务器管理器中，选择“管理” > “添加角色和功能”。
 
 4.  在“安装类型”部分，选择“基于角色或基于功能的安装”。
 
 5.  在“选择目标服务器”部分中，请确保已选择“救援 VM”。
 
-6.  选择“HYPER-V 角色” **“添加功能”**  > 。
+6.  选择“HYPER-V 角色” > “添加功能”。
 
 7.  选择“功能”部分上的“下一步”。
 
@@ -80,7 +78,7 @@ ms.locfileid: "74185526"
 
 4.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
 
-5.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” **“虚拟机”** “下一步” >  > 。
+5.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” > “虚拟机” > “下一步”。
 
 6.  键入 VM 的名称，然后选择“下一步”。
 

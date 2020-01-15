@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 37b49b3fbe91d199b13f548e8aaf72a6a2f0f848
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f0dd7160ae41ac004564ea21300945e135d31689
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895292"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945542"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -34,7 +34,7 @@ Azure HDInsight 是 Azure 上的开源分析企业客户中最受欢迎的服务
 ### <a name="tls-12-enforcement"></a>强制执行 TLS 1.2
 传输层安全性 (TLS) 和安全套接字层 (SSL) 是提供计算机网络通信安全的加密协议。 详细了解[TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 HDInsight 在公共 HTTPs 终结点上使用 TLS 1.2，但仍支持使用 TLS 1.1 来实现向后兼容性。 
 
-在此版本中，客户可以选择使用 tls 1.2 enformence 通过 TLS 1.2 进行所有连接。 新的属性**minSupportedTlsVersion**是通过 Azure 资源管理器模板引入的，用于群集创建。 如果未设置该属性，则群集仍支持1.0、1.1 和1.2，与当前的行为相同。 客户可以将此属性的值设置为 "1.2"，这意味着群集仅支持 TLS 1.2 和更高版本。 
+在此版本中，客户可以仅针对通过公共群集终结点进行的所有连接选择使用 TLS 1.2。 为支持这种情况，会引入新的属性**minSupportedTlsVersion** ，并可在创建群集期间指定。 如果未设置该属性，则群集仍支持 TLS 1.0、1.1 和1.2，这与今天的行为相同。 客户可以将此属性的值设置为 "1.2"，这意味着群集仅支持 TLS 1.2 和更高版本。 
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>自带密钥进行磁盘加密
 通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 默认情况下，这些磁盘上的数据是由 Microsoft 管理的密钥加密的。 从此版本开始，你可以创建自己的密钥（BYOK）进行磁盘加密，并使用 Azure Key Vault 来管理它。 BYOK 加密是在群集创建过程中进行的一步配置，无需额外付费。 只需使用 Azure Key Vault 将 HDInsight 注册为托管标识，并在创建群集时添加加密密钥。 

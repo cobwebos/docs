@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e05557b0391a1d698dad000aa9df54424588afe0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892254"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941481"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -124,7 +124,7 @@ ms.locfileid: "74892254"
 
 #### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
-在 Visual Studio 中，安装 Azure 存储空间客户端库。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”。 在控制台窗口中键入以下命令，从适用于 .NET 的 Azure 存储客户端库安装所需的包：
+在 Visual Studio 中，安装 Azure 存储空间客户端库。 在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”。 在控制台窗口中键入以下命令，从适用于 .NET 的 Azure 存储客户端库安装所需的包：
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
@@ -280,7 +280,7 @@ CloudBlockBlob blob = new CloudBlockBlob(
 
 ### <a name="enable-implicit-grant-flow"></a>启用隐式授权流
 
-若要运行该示例，可能需要为应用注册配置隐式授权流。 执行以下步骤：
+若要运行该示例，可能需要为应用注册配置隐式授权流。 执行以下步骤:
 
 1. 在 Azure 门户中导航到你的应用注册。
 1. 在 "管理" 部分中，选择**身份验证**设置。

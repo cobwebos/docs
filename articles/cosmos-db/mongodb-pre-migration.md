@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: ef3d56b4ec7e4dbe5f6f4097fdd5d8d125b074dc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 73ac1a6ffd5fc2b2d52f169e1e0332044638f9f7
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932295"
+ms.locfileid: "75942080"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>用于将数据从 MongoDB 迁移到 Azure Cosmos DB 的适用于 MongoDB 的 API 的预迁移步骤
 
@@ -24,15 +24,19 @@ ms.locfileid: "75932295"
 4. [为数据选择最佳分区键](#partitioning)
 5. [了解可以对数据设置的索引策略](#indexing)
 
-如果已完成上述迁移的先决条件，则可以[使用 Azure 数据库迁移服务将 mongodb 数据迁移到 Azure Cosmos DB 的适用于 MongoDB 的 API](../dms/tutorial-mongodb-cosmos-db.md)。 此外，如果尚未创建帐户，可以浏览任何[快速入门](create-mongodb-dotnet.md)。
+如果已完成上述迁移的先决条件，则可以[使用 Azure 数据库迁移服务将 mongodb 数据迁移到 Azure Cosmos DB 的适用于 MongoDB 的 API](../dms/tutorial-mongodb-cosmos-db.md)。 此外，如果尚未创建帐户，则可以浏览显示创建帐户所要执行的步骤的任何[快速入门教程](create-mongodb-dotnet.md)。
 
-## <a id="considerations"></a>使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时的主要注意事项
+## <a id="considerations"></a>使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时的注意事项
 
 下面是有关 Azure Cosmos DB 的适用于 MongoDB 的 API 的特定特征：
+
 - **容量模型**： Azure Cosmos DB 上的数据库容量基于基于吞吐量的模型。 此模型基于[每秒请求单位](request-units.md)数，这是一个单位，表示每秒可对集合执行的数据库操作数。 此容量可在[数据库或集合级别](set-throughput.md)分配，并且可以在分配模型上或使用[AutoPilot 模型](provision-throughput-autopilot.md)进行设置。
-- **请求单位**：在 Azure Cosmos DB 中，每个数据库操作都具有关联的请求单位（ru）成本。 执行时，将从给定秒的可用请求单位级别中减去这一点。 如果请求所需的 ru 数比当前分配的多个，两个选项增加了 ru 的数量，或等待下一秒开始，然后重试该操作。
+
+- **请求单位**：在 Azure Cosmos DB 中，每个数据库操作都具有关联的请求单位（ru）成本。 执行时，将从给定秒的可用请求单位级别中减去这一点。 如果请求所需的 RU 数比当前分配的 RU/秒多，则有两个选项可解决此问题：增加 ru 的数量，或等待下一个秒开始，然后重试该操作。
+
 - **弹性容量**：给定集合或数据库的容量随时可以更改。 这使数据库能够弹性适应工作负荷的吞吐量要求。
-- **自动分片**： Azure Cosmos DB 提供只需要分片（或分区）键的自动分区系统。 [自动分区机制](partition-data.md)跨所有 Azure Cosmos DB api 共享，并且它允许无缝的数据和贯穿横向分布的整个缩放。
+
+- **自动分片**： Azure Cosmos DB 提供自动分区系统，该系统只需要分片（或分区键）。 [自动分区机制](partition-data.md)在所有 Azure Cosmos DB api 之间共享，并且它允许无缝的数据和贯穿横向分布的整个缩放。
 
 ## <a id="options"></a>适用于 MongoDB Azure Cosmos DB API 的迁移选项
 
@@ -54,7 +58,9 @@ ms.locfileid: "75932295"
 
 下面是影响所需的 ru 数的主要因素：
 - **文档大小**：当项/文档的大小增加时，读取或写入项/文档所用的 ru 数也将增加。
+
 - **文档属性计数**：创建或更新文档所用的 ru 数与其属性的数量、复杂性和长度相关。 可以通过[限制索引属性的数量](mongodb-indexing.md)来减少写入操作的请求单位消耗。
+
 - **查询模式**：查询的复杂性会影响查询使用的请求单位数。 
 
 了解查询成本的最佳方式是使用 Azure Cosmos DB 中的示例数据，并使用 "`getLastRequestStastistics`" 命令[从 MongoDB Shell 运行示例查询](connect-mongodb-account.md)，以获取请求费用，这将输出使用的 ru 数：

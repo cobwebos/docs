@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: a023092c675c8a99285abfdf81c29a5163c3fadd
-  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+  ms.openlocfilehash: ebe88aea9b84e640ccc4cecb495d2beedae2893e
+  ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73681647"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75934113"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:
@@ -142,6 +142,8 @@ landingContent:
       url: how-to-provision-container-throughput.md
     - text: 获取请求单位费用
       url: find-request-unit-charge.md
+    - text: 使用 Azure Functions 计时器缩放
+      url: scale-on-schedule.md
 - title: 使用 SQL API 构建应用
   linkLists:
   - linkListType: quickstart

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378239"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "73582387"
 > * [缩放 Azure Red Hat OpenShift 群集](tutorial-scale-cluster.md)
 > * [删除 Azure Red Hat OpenShift 群集](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!IMPORTANT]
 > 本教程需要 Azure CLI 2.0.65 版。
@@ -71,7 +71,7 @@ CLUSTER_NAME=<cluster name in lowercase>
 LOCATION=<location>
 ```
 
-将 `APPID` 设置为在[创建 Azure AD 应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)的步骤 5 中保存的值。  
+将 `APPID` 设置为在[创建 Azure AD 应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)的步骤 5 中保存的值。
 
 ```bash
 APPID=<app ID value>
@@ -83,13 +83,13 @@ APPID=<app ID value>
 GROUPID=<group ID value>
 ```
 
-将 `SECRET` 设置为在[创建客户端密码](howto-aad-app-configuration.md#create-a-client-secret)的步骤 8 中保存的值。  
+将 `SECRET` 设置为在[创建客户端密码](howto-aad-app-configuration.md#create-a-client-secret)的步骤 8 中保存的值。
 
 ```bash
 SECRET=<secret value>
 ```
 
-将 `TENANT` 设置为在[创建新租户](howto-create-tenant.md#create-a-new-azure-ad-tenant)的步骤 7 中保存的租户 ID 值。  
+将 `TENANT` 设置为在[创建新租户](howto-create-tenant.md#create-a-new-azure-ad-tenant)的步骤 7 中保存的租户 ID 值。
 
 ```bash
 TENANT=<tenant ID>
@@ -105,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 如果不需要通过对等互连将所创建的群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
 
-如果与默认订阅之外的网络对等互连，则在该订阅中，还需要注册提供程序 Microsoft.ContainerService。 为此，请在该订阅中运行以下命令。 否则，如果对等互连的 VNET 位于同一订阅中，则可以跳过注册步骤。 
+如果与默认订阅之外的网络对等互连，则在该订阅中，还需要注册提供程序 Microsoft.ContainerService。 为此，请在该订阅中运行以下命令。 否则，如果对等互连的 VNET 位于同一订阅中，则可以跳过注册步骤。
 
 `az provider register -n Microsoft.ContainerService --wait`
 
@@ -121,6 +121,22 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 例如： `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
 
+### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>可选：将群集连接到 Azure 监视
+
+首先，获取**现有** log-analytics 工作区的标识符。 该标识符采用以下格式：
+
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}` 列中的一个值匹配。
+
+如果不知道 log-analytics 工作区名称或现有 log-analytics 工作区所属的资源组，请转到 [Log-Analytics 工作区](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)并单击你的 log-analytics 工作区。 此时会出现 log-analytics工作区页，其中列出了工作区的名称及其所属的资源组。
+
+_若要创建 log-analytics 工作区，请参阅[创建 log-analytics 工作区](../azure-monitor/learn/quick-create-workspace-cli.md)_
+
+在 BASH shell 中使用以下 CLI 命令定义一个 WORKSPACE_ID 变量：
+
+```bash
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
+```
+
 ### <a name="create-the-cluster"></a>创建群集
 
 现在已准备好创建群集。 以下命令将在指定的 Azure AD 租户中创建群集、指定要用作安全主体的 Azure AD 应用对象和机密，以及包含对群集具有管理访问权限的成员的安全组。
@@ -128,20 +144,29 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 > [!IMPORTANT]
 > 在创建群集之前，请确保已正确添加 Azure AD 应用的适当权限，如[此处所说明](howto-aad-app-configuration.md#add-api-permissions)
 
-如果**没有**将群集对等互连到虚拟网络，请使用以下命令：
+如果**没有**将群集对等互连到虚拟网络，或者**不**想要 Azure 监视，请使用以下命令：
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 如果**要**将群集对等互连到虚拟网络，请使用添加 `--vnet-peer` 标记的以下命令：
- 
+
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
+如果**要**对群集使用 Azure 监视，请使用可添加 `--workspace-id` 标记的以下命令：
+
+```bash
+az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+```
+
 > [!NOTE]
 > 如果有错误指出主机名不可用，原因可能是群集名称不唯一。 尝试删除原始应用注册，并使用不同的群集名称重新执行[创建新应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)中的步骤（省略创建新用户和安全组的步骤）。
+
+
+
 
 `az openshift create` 将在几分钟后完成。
 

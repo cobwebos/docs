@@ -869,6 +869,9 @@
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: 使用 Azure Functions 计时器缩放
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: 使用容器和项
       items:
         - name: 使用 Cosmos DB 数据

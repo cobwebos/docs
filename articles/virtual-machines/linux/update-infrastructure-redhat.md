@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: b19ccad5254418092446aaf781d49fa7edf0e4f4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 34a2742c752259fec5859af1681da2429276ea41
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034310"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941868"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -32,7 +32,7 @@ ms.locfileid: "74034310"
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
 
 * Azure RHUI 是支持在 Azure 中创建的所有 RHEL PAYG Vm 的更新基础结构。 这不会阻止你向订阅管理器或附属或其他更新源注册 PAYG RHEL Vm，但使用 PAYG VM 执行此操作将导致间接双重计费。 有关详细信息，请参阅以下要点。
-* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果你始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑注册使用[RHEL BYOS 映像](https://aka.ms/rhel-byos)。
+* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果你始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑注册使用[RHEL BYOS 映像](../workloads/redhat/byos.md)。
 
 * Azure 中的 RHEL SAP PAYG 映像（RHEL for SAP、RHEL for SAP HANA 以及 RHEL for SAP Business Application）已根据 SAP 认证需要，连接到保留在特定 RHEL 次要版本上的专用 RHUI 通道。
 
@@ -186,7 +186,7 @@ sudo yum makecache
 
 1. 检查 Azure RHUI 终结点的 VM 配置：
 
-    1. 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `rhui-[1-3].microsoft.com` 部分的 `baseurl` 是否包含对 `[rhui-microsoft-azure-rhel*]` 的引用。 如果是，则使用的是新 Azure RHUI。
+    1. 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `[rhui-microsoft-azure-rhel*]` 部分的 `baseurl` 是否包含对 `rhui-[1-3].microsoft.com` 的引用。 如果是，则使用的是新 Azure RHUI。
 
     1. 如果它指向 `mirrorlist.*cds[1-4].cloudapp.net` 模式的位置，则需要更新配置。 你使用的是旧 VM 快照，需要将其更新为指向新的 Azure RHUI。
 

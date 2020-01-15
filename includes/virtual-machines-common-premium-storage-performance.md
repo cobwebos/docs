@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564673"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942733"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -126,7 +126,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 | **IO 大小** |IO 大小越小，产生的 IOPS 越高。 |IO 大小越大，产生的吞吐量越大。 | &nbsp;|
 | **VM 大小** |使用所提供的 IOPS 超出应用程序要求的 VM 大小。 |使用 VM 大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的 VM 大小。 |
 | **磁盘大小** |使用所提供的 IOPS 超出应用程序要求的磁盘大小。 |使用磁盘大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的磁盘大小。 |
-| **VM 和磁盘规模限制** |所选 VM 大小的 IOPS 限制应大于已连接的高级存储磁盘所要求的总 IOPS。 |所选 VM 大小的吞吐量限制应大于已连接的高级存储磁盘所要求的总吞吐量。 |所选 VM 大小的规模限制必须大于已连接高级存储磁盘的总规模限制。 |
+| **VM 和磁盘规模限制** |所选 VM 大小的 IOPS 限制应大于附加到它的存储磁盘驱动的总 IOPS。 |所选 VM 大小的吞吐量限制应大于已连接的高级存储磁盘所要求的总吞吐量。 |所选 VM 大小的规模限制必须大于已连接高级存储磁盘的总规模限制。 |
 | **磁盘缓存** |在需要进行大量读取操作的高级存储磁盘上启用 ReadOnly 缓存，以便提高读取 IOPS。 | &nbsp; |在需要进行大量读取操作的高级存储磁盘上启用 ReadOnly 缓存，以便尽量降低读取延迟。 |
 | **磁盘条带化** |使用多个磁盘并将其条带化，在组合后获得更高的 IOPS 和吞吐量限制。 每个 VM 的组合限制应高于所连接的高级磁盘的组合限制。 | &nbsp; | &nbsp; |
 | **条带大小** |较小的条带大小适用于随机小型 IO 模式，见于 OLTP 应用程序。 例如，使用 64 KB SQL Server OLTP 应用程序的条带大小。 |较大的条带大小适用于顺序大型 IO 模式，见于数据仓库应用程序。 例如，对于 SQL Server 数据仓库应用程序，请使用 256 KB 条带大小。 | &nbsp; |

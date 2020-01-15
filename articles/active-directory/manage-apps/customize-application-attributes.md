@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997048"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940912"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -71,8 +71,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 - **源属性** - 来自源系统的用户属性（例如 Azure Active Directory）。
 - **目标属性** – 目标系统中的用户属性（例如 ServiceNow）。
+- **默认值（可选）** -如果源属性为 null，则将传递给目标系统的值。 只有在创建用户时才会设置此值。 更新现有用户时，不会设置 "默认值 when null"。 例如，如果你想要使用特定职务（当它在源系统中为 null 时）来预配目标系统中的所有现有用户，则可以使用以下[表达式](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)： Switch （IsPresent （[jobTitle]）、"DefaultValue"、"True"、[jobTitle]）。 请确保将 "默认值" 替换为源系统中的 null 值时要设置的值。 
 - **使用此属性匹配对象**–是否应使用此映射唯一标识源系统和目标系统之间的用户。 它通常在 Azure AD 中的 userPrincipalName 或 mail 属性上设置，该属性通常映射到目标应用程序中的用户名字段。
-- **匹配优先顺序** – 可设置多个匹配属性。 如果有多个，则按此字段定义的顺序对它们进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+- 匹配优先级 – 可设置多个匹配属性。 如果有多个，则按此字段定义的顺序对它们进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**
   - **始终**–在用户的创建和更新操作中应用此映射。
   - **仅在创建过程中**-仅在用户创建操作时应用此映射。

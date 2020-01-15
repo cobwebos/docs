@@ -1,7 +1,7 @@
 ---
 title: 创建租户模型（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
-description: 自动生成一个租户模型（包含 Office 365 数据的自定义语音），该模型利用 Office 365 数据，可带来针对组织特定术语的最佳语音识别体验，并且安全合规。
+description: 自动生成一个安全且合规的租户模型（包含 Office 365 数据的自定义语音），该模型使用 Office 365 数据，可带来针对组织特定术语的最佳语音识别体验。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,95 +10,101 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446801"
 ---
-# <a name="create-a-tenant-model-preview"></a>创建租户模型（预览版）
+# <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 
-租户模型（包含 Office 365 数据的自定义语音）是 Office 365 企业客户可选择加入的一种服务，它根据组织的 Office 365 数据自动生成自定义语音识别模型。 创建的模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
+租户模型（包含 Office 365 数据的自定义语音）是 Office 365 企业客户可选择加入的一种服务，它根据组织的 Office 365 数据自动生成自定义语音识别模型。 此模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
 
 > [!IMPORTANT]
-> 如果组织注册了租户模型，语音服务可能会访问组织的语言模型，该模型是通过组织中任何人都可查看的 Office 365 公共组电子邮件和文档生成的。 组织的 Office 365 管理员可以使用 Office 365 管理门户在组织范围内启用/禁用语言模型。
+> 如果组织使用租户模型服务进行了注册，语音服务可能会访问组织的语言模型。 该模型是通过组织中任何人都可查看的 Office 365 公共组电子邮件和文档生成的。 组织的 Office 365 管理员可以通过 Office 365 管理门户在组织范围内启用/禁用语言模型。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 注册，以在 Microsoft 365 管理中心使用租户模型
+> * 通过 Microsoft 365 管理中心注册租户模型
 > * 获取语音订阅密钥
 > * 创建租户模型
 > * 部署租户模型
 > * 配合使用租户模型和语音 SDK
 
-## <a name="enroll-using-the-microsoft-365-admin-center"></a>使用 Microsoft 365 管理中心注册
+## <a name="enroll-in-the-tenant-model-service"></a>注册租户模型服务
 
-部署租户模型之前，首先需要使用 Microsoft 365 管理中心进行注册。 此任务只能由 Microsoft 365 管理员完成。
+部署租户模型之前，需注册租户模型服务。 注册在 Microsoft 365 管理中心完成，只能由你的 Microsoft 365 管理员执行。
 
-1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com )。
-2. 在左侧面板中，选择“设置”，然后选择“应用”   。
+1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com)。
 
-   ![租户模型注册](media/tenant-language-model/tenant-language-model-enrollment.png)
+1. 在左窗格中，依次选择“设置”、“应用”、“Azure 语音服务”。   
 
-3. 找到并选择“Azure 语音服务”  。
+   ![“服务和加载项”窗格](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-   ![租户模型注册 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+1. 选中“允许组织范围内的语言模型”复选框，然后选择“保存更改”。   
 
-4. 单击复选框并保存。
+   ![“Azure 语音服务”窗格](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-如果需要关闭租户模型，请导航回到此屏幕，取消选中复选框，然后保存。
+若要关闭租户模型实例，请执行以下操作：
+1. 重复前面的步骤 1 和 2。
+1. 清除“允许组织范围内的语言模型”复选框，然后选择“保存更改”。  
 
 ## <a name="get-a-speech-subscription-key"></a>获取语音订阅密钥
 
 要配合使用租户模型和语音 SDK，需要语音资源及其关联的订阅密钥。
 
-1. 登录到 [Azure 门户](https://aka.ms/azureportal)。
-2. 选择“创建资源”。 
-3. 在搜索栏中，输入：“语音”  。
-4. 选择“语音”，然后单击“创建”   。
-5. 按照屏幕上的说明创建资源。 请确保：
+1. 登录 [Azure 门户](https://aka.ms/azureportal)。
+1. 选择“创建资源”。 
+1. 在“搜索”框中，键入“语音”   。
+1. 在结果列表中，选择“语音”，然后选择“创建”。  
+1. 按照屏幕上的说明创建资源。 请确保：
    * “位置”设置为“eastus”或“westus”    。
    * “定价层”设置为“S0”   。
-6. 单击“创建”。 
-7. 几分钟后，资源创建完毕。 资源的“概述”部分提供了订阅密钥  。
+1. 选择“创建”  。
 
-## <a name="create-a-model"></a>创建模型
+   几分钟后，资源创建完毕。 资源的“概述”部分提供了订阅密钥  。
 
-在管理员为组织启用租户模型后，可以基于 Office365 数据创建语言模型。
+## <a name="create-a-language-model"></a>创建语言模型
+
+在管理员为组织启用租户模型后，可以基于 Office 365 数据创建语言模型。
 
 1. 登录 [Speech Studio](https://speech.microsoft.com/)。
-2. 在右上角找到并单击齿轮图标（“设置”），然后选择“租户模型设置”  。
+1. 在右上角选择“设置”（齿轮图标），然后选择“租户模型设置”。  
 
-   ![“设置”菜单](media/tenant-language-model/tenant-language-settings.png)
+   ![“租户模型设置”链接](media/tenant-language-model/tenant-language-settings.png)
 
-3. 此时，会看到一条消息，告知是否有资格创建租户模型。
+   Speech Studio 会显示一条消息，告知你是否有权创建租户模型。
+
    > [!NOTE]
-   > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱 (CLB)、客户密钥 (CK) 或 Office 365 政府版客户，此功能不可用。 要确定是客户密码箱还是客户密钥客户，请参照以下说明操作：
+   > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱、客户密钥或 Office 365 政府版客户，此功能不可用。 若要确定自己是客户密码箱客户还是客户密钥客户，请参阅：
    > * [客户密码箱](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [客户密钥](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
 
-4. 接下来，选择“选择加入”  。 当租户模型准备就绪时，将收到一封包含说明的电子邮件。
+1. 选择“选择加入”  。 
 
-## <a name="deploy-your-model"></a>部署模型
+   当租户模型准备就绪时，你会收到一封确认电子邮件，其中包含更多说明。
 
-租户模型准备就绪后，请按照以下步骤部署模型：
+## <a name="deploy-your-tenant-model"></a>部署租户模型
 
-1. 单击收到的确认电子邮件中的“查看模型”按钮，或者登录 [Speech Studio](https://speech.microsoft.com/)  。
-2. 在右上角找到并单击齿轮图标（“设置”），然后选择“租户模型设置”  。
+租户模型实例准备就绪后，请执行以下操作来部署它：
 
-   ![“设置”菜单](media/tenant-language-model/tenant-language-settings.png)
+1. 在确认电子邮件中，选择“查看模型”按钮。  或者，登录 [Speech Studio](https://speech.microsoft.com/)。
+1. 在右上角选择“设置”（齿轮图标），然后选择“租户模型设置”。  
 
-3. 单击“部署”。 
-4. 部署模型后，状态将更改为“已部署”  。
+   ![“租户模型设置”链接](media/tenant-language-model/tenant-language-settings.png)
 
-## <a name="use-your-model-with-the-speech-sdk"></a>配合使用模型和语音 SDK
+1. 选择“部署”。 
 
-部署模型后，配合使用模型和语音 SDK。 在本部分中，将使用提供的示例代码通过 Azure AD 身份验证来调用语音服务。
+   部署模型后，状态会更改为“已部署”  。
 
-我们来看一下用于调用 C# 中的语音 SDK 的代码。 在本例中，将使用租户模型执行语音识别。 本指南默认平台已设置。 如需获取有关设置的帮助，请参阅[快速入门：识别语音，C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)。
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>配合使用租户模型和语音 SDK
+
+部署模型后，配合使用模型和语音 SDK。 在本部分中，我们使用示例代码通过 Azure Active Directory (Azure AD) 身份验证来调用语音服务。
+
+我们来看一下用于调用 C# 中的语音 SDK 的代码。 在本例中，我们使用租户模型执行语音识别。 本指南默认平台已设置。 如果需要设置帮助，请参阅[快速入门：识别语音，C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)。
 
 将以下代码复制到项目中：
 
@@ -117,7 +123,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json.Linq;
 
-    // Note: ServiceApplicationId is a fixed value.  No need to change.
+    // ServiceApplicationId is a fixed value. No need to change it.
 
     public class TenantLMSample
     {
@@ -281,18 +287,21 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-接下来，需要在命令行下重新生成并运行项目。 在运行该命令之前，需要更新一些参数。
+接下来，需要在命令行下重新生成并运行项目。 在运行该命令之前，请通过以下操作更新一些参数：
 
 1. 将 `<Username>` 和 `<Password>` 替换为有效租户用户的值。
-2. 将 `<Subscription-Key>` 替换为语音资源的订阅密钥。 可在 [Azure 门户](https://aka.ms/azureportal)中的语音资源的“概述”部分获取此值  。
-3. 将 `<Endpoint-Uri>` 替换为以下终结点。 请确保将 `{your-region}` 替换为创建语音资源的区域。 支持以下区域：`westus`、`westus2`和 `eastus`。 可在[Azure 门户](https://aka.ms/azureportal)中的语音资源的“概述”部分获取区域信息  。
+1. 将 `<Subscription-Key>` 替换为语音资源的订阅密钥。 可在 [Azure 门户](https://aka.ms/azureportal)中的语音资源的“概述”部分获取此值  。
+1. 将 `<Endpoint-Uri>` 替换为以下终结点。 请确保将 `{your region}` 替换为创建语音资源的区域。 支持以下区域：`westus`、`westus2`和 `eastus`。 可在[Azure 门户](https://aka.ms/azureportal)中的语音资源的“概览”部分获取区域信息  。
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. 运行以下命令：
+1. 运行以下命令：
+
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
+
+在本教程中，你已了解如何使用 Office 365 数据创建自定义语音识别模型、如何部署它，以及如何将其与语音 SDK 一起使用。
 
 ## <a name="next-steps"></a>后续步骤
 

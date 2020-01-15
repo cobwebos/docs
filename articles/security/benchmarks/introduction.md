@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934229"
+ms.locfileid: "75945334"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure 安全基准简介
 
@@ -27,7 +27,7 @@ Azure 安全基准包括一系列可用于帮助保护在 Azure 中使用的大�
 
 Azure 安全基准文档指定安全控制和服务建议。
 
-- **安全控制**： Azure 安全基准建议按安全控制进行分类。 安全控件表示不可知的高级供应商安全要求，例如网络安全和数据保护。 每个安全控件都有一组安全建议和说明，可帮助你 implment 这些建议。 
+- **安全控制**： Azure 安全基准建议按安全控制进行分类。 安全控件表示不可知的高级供应商安全要求，例如网络安全和数据保护。 每个安全控件都有一组安全建议和说明，可帮助你实施这些建议。 
 - **服务建议**：在可用时，针对 azure 服务的基准建议将包含专为该服务定制的 Azure 安全基准建议。 
 
 术语 "控件"、"基准" 和 "基准" 通常在 Azure 安全基准文档中使用，并且必须了解 Azure 如何使用这些术语。 

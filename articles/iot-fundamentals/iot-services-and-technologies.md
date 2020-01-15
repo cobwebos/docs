@@ -1,113 +1,93 @@
 ---
 title: Azure 物联网 (IoT) 技术和解决方案
-description: 提供适用于生成 Azure IoT 解决方案的 PaaS/SaaS 技术和解决方案的集合。
+description: 介绍可以用来构建 Azure IoT 解决方案的技术和服务的集合。
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457163"
 ---
-# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>物联网 (IoT) 技术和解决方案：PaaS 和 SaaS
+# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用于创建 IoT 解决方案的 Azure 技术和服务
 
-Microsoft 构建的项目组合支持所有客户的需求，让所有人都能够获得数字化转型带来的好处。 Azure IoT 产品组合概述了可用的 PaaS/SaaS 技术和解决方案。 它提供两种适用于生成你自己的解决方案的途径：
+Azure IoT 技术和服务提供的选项可以用来创建范围广泛的各种 IoT 解决方案，支持组织进行数字转型。 例如，你能够：
 
-- 平台即服务 (PaaS)：使用下述任何服务生成应用程序。
-    - [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/)，是企业级预配置解决方案的集合，可用于加速自定义 IoT 解决方案的开发；或者 
-    - [Azure 数字孪生](https://azure.microsoft.com/services/digital-twins/)服务，用于对物理环境建模，以便使用空间智能图和特定于域的对象模型创建上下文感知的 IoT 解决方案。
+- 使用 [Azure IoT Central](https://apps.azureiotcentral.com)（一种托管的 IoT 应用程序平台）来构建并部署安全的企业级 IoT 解决方案。 IoT Central 提供一组特定于行业的应用程序模板（例如零售和医疗保健），用于加速解决方案开发过程。
+- 扩展 Azure IoT [解决方案加速器](https://www.azureiotsolutions.com)的开源代码库，以便实现常见的 IoT 方案，例如远程监视或预测性维护。
+- 使用 Azure IoT 平台服务（例如 [Azure IoT 中心](../iot-hub/about-iot-hub.md)和 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)），以便从头开始构建自定义 IoT 解决方案。
 
-- 软件即服务 (SaaS)：通过 [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) 这种新的 SaaS 解决方案进行快速入门，以便开发 IoT 应用程序，不需接触复杂的 IoT 解决方案。 如果因组织缺少相关的资源而无法生成你自己的 IoT 解决方案，则可使用 Azure IoT Central 这种无代码的 IoT 解决方案，在数分钟内创建设备模型、仪表板和规则。
+![Azure IoT 技术、服务和解决方案](./media/iot-services-and-technologies/iot-technologies-services.png)
 
-![Azure IoT 技术和解决方案](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
+## <a name="azure-iot-central"></a>Azure IoT Central
 
-## <a name="solutions"></a>解决方案
+[IoT Central 应用程序平台](https://apps.azureiotcentral.com)可减轻开发、管理和维护企业级 IoT 解决方案的负担和成本。 IoT Central 的可自定义 Web UI 用于监视设备条件、创建规则并在其整个生命周期中管理数百万个设备及其数据。 可以通过 IoT Central 中的 API 图面以编程方式进行访问，以便配置 IoT 解决方案并与之交互。
 
-通过解决方案加速器和 SaaS 产品/服务进行快速入门。 从预配置的解决方案中进行选择，以便通过常见的 IoT 方案（例如远程监视、预测性维护、连接工厂）创建可完全自定义的解决方案。 也可使用 Azure IoT Central 这种可完全托管的端到端解决方案，在不需云解决方案专业知识的情况下打造出强大的 IoT 方案。
+Azure IoT Central 是完全托管的应用程序平台，可以用来创建自定义 IoT 解决方案。 IoT Central 使用应用程序模板来创建解决方案。 模块可以用于通用解决方案，还可以用于特定的行业（例如能源、医疗保健、政府以及零售）。 IoT Central 应用程序模板可以用来在数分钟内部署 IoT Central 应用程序，然后使用主题、仪表板和视图对其进行自定义。
 
-### <a name="azure-iot-solution-accelerators-paas"></a>Azure IoT 解决方案加速器 (PaaS)
+从 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com)中选择用于快速连接到解决方案的设备。 使用 IoT Central Web UI 监视并管理设备，使之始终正常运行并处于连接状态。 使用连接器和 API 将 IoT Central 应用程序与其他业务应用程序集成。
 
-Azure IoT 解决方案加速器是可自定义 PaaS 解决方案，可以对 IoT 解决方案进行高级控制。 如果你的企业所实现的 IoT 是针对连接操作的，或者所实施的特定自定义要求是针对连接产品的，则可使用 Azure IoT 解决方案加速器，因为它提供你所需要的控制。 
+作为完全托管的应用程序平台，IoT Central 具有简单且可预测的定价模型。
 
-公司（例如设备或设备模型数量多的组织以及寻求连接工厂解决方案的制造商）可以充分利用 IoT 解决方案加速器。 IoT 解决方案加速器创建可以根据复杂需求进行高度自定义的解决方案，并提供： 
+## <a name="azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器
 
-- 预生成的解决方案
-    - 远程监视
-    - 连接工厂
-    - 预见性维护
-    - 设备模拟
-- 快速部署的功能
-- 缩短价值实现时间的功能
-- 进行终极控制的解决方案 
- 
-### <a name="azure-iot-central-saas"></a>Azure IoT Central (SaaS)
+[Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)是一组可自定义的企业级解决方案。 可以按原样部署这些解决方案，也可以使用开源 Java 或 .NET 源代码开发自定义 IoT 解决方案。
 
-Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有多少 IoT 经验的情况下快速入门。 如果你的企业更多的是追求速度而不是自定义，则 SaaS 模型可能是最适合你的 IoT 实现需求的。 
+Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 解决方案加速器包含预生成的用于常见 IoT 方案的解决方案，可以在数分钟内将其部署到 Azure 订阅。 这些方案包括：
 
-设备模型较少、可预测方案较多且 IoT/IT 功能受限的组织现在可以通过 SaaS 方法来利用 IoT。 以前缺少时间、资金和专业技术来开发连接产品的企业现在可以通过 Azure IoT Central 来快速启动产品开发。 Microsoft 是行业先锋，其提供的成熟的 SaaS 解决方案可以满足常见的 IoT 实现需求。 
+  - 远程监视
+  - 连接工厂
+  - 预见性维护
+  - 设备模拟
 
-- 完全托管的 IoT SaaS
-- 不需云解决方案开发专业技术
-- 可以按需配置
-- 适合直截了当的 IoT 需求
+所有解决方案加速器的开源代码库都在 GitHub 上提供。 下载代码即可根据具体的 IoT 要求来自定义解决方案加速器。
 
-### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>比较 Azure IoT 解决方案加速器和 Azure IoT Central
+解决方案加速器使用 Azure 服务，例如，必须在 Azure 订阅中管理的 Azure IoT 中心和 Azure 存储。
 
-若要实现典型的 [IoT 解决方案体系结构](/azure/iot-fundamentals/iot-introduction)，可使用 Azure IoT 提供的几个选项（[Azure IoT 解决方案加速器](/azure/iot-suite)和 [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)），每个选项适用于不同组合的客户需求。
+## <a name="custom-solutions"></a>自定义解决方案
 
-[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)是核心的 Azure PaaS，可供 Azure IoT Central 和 Azure IoT 解决方案加速器使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
+若要从头构建 IoT 解决方案，或扩展使用 IoT Central 或解决方案加速器创建的解决方案，请使用一项或多项下述 Azure IoT 技术和服务：
+
+### <a name="devices"></a>设备
+
+使用 [Azure IoT 初学者套件](https://catalog.azureiotsolutions.com/kits)之一开发 IoT 设备，或者从 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com)选择要使用的设备。 使用开源[设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 实现嵌入代码。 设备 SDK 支持多种操作系统，例如 Linux、Windows 和实时操作系统。 有用于多种编程语言（例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)）的 SDK。
+
+可以使用 [IoT 即插即用预览版](../iot-pnp/overview-iot-plug-and-play.md)服务进一步简化为设备创建嵌入代码的方式。 IoT 即插即用使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  使用设备功能模型生成嵌入设备代码并配置基于云的解决方案，例如 IoT Central 应用程序。
+
+可以通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将 IoT 工作负荷的部件从 Azure 云服务卸载到你的设备。 IoT Edge 可以降低解决方案中的延迟、减少设备与云的数据交换量，以及启用脱机方案。 可以管理 IoT Central 和某些解决方案加速器中的 IoT Edge 设备。
+
+[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) 是一个安全的高级应用程序平台，具有针对互连设备的内置通信和安全功能。 它包括一个安全的微控制器单元、一个自定义的基于 linux 的操作系统和一项基于云的安全服务（提供连续的可续订安全性）。
+
+### <a name="cloud-connectivity"></a>云连接
+
+[Azure IoT 中心](../iot-hub/about-iot-hub.md)服务可在数百万个 IoT 设备和一个基于云的解决方案之间实现安全可靠的双向通信。 [Azure IoT 中心设备预配服务](../iot-dps/about-iot-dps.md)是用于 IoT 中心的帮助程序服务。 可以通过此服务将设备以零接触的方式实时预配到适当的 IoT 中心，不需要人为干预。 有了这些功能，客户就可以通过安全且可缩放的方式预配数百万台设备。
+
+IoT 中心是解决方案加速器的核心组件，可以用来克服 IoT 实现难题，例如：
 
 * 大容量设备连接和管理。
 * 大容量遥测引入。
 * 设备的命令和控制。
 * 设备安全措施实施。
 
-选择 Azure IoT 产品是规划 IoT 解决方案的重要一环。 IoT 中心是单项 Azure 服务，其本身不提供端到端 IoT 解决方案。 任何 IoT 解决方案都可以从 IoT 中心入手，不需使用 Azure IoT 解决方案加速器或 Azure IoT Central 即可使用它。 Azure IoT 解决方案加速器和 Azure IoT Central 都使用 IoT 中心以及其他 Azure 服务。 下表汇总了 Azure IoT 解决方案加速器和 Azure IoT Central 之间的主要差异，有助于根据要求进行正确的选择：
+### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>弥合物理世界和数字世界之间的差距
 
-|                        | Azure IoT 解决方案加速器 | Azure IoT Central |
-| ---------------------- | --------- | ----------- |
-| 主要用途 | 加速开发需要最大灵活性的自定义 IoT 解决方案。 | 缩短不需深层服务自定义的直观 IoT 解决方案的面市时间。 |
-| 访问基础 PaaS 服务          | 有权访问基础 Azure 服务，根据需要对其进行管理或替换。 | SaaS。 完全托管的解决方案，基础服务不公开。 |
-| 灵活性            | 高。 微服务的代码是开源的，可以任意修改。 此外还可以自定义部署基础结构。| 中。 可以根据内置的基于浏览器的用户体验来自定义解决方案模型和 UI 的各个方面。 基础结构不可自定义，因为未公开各种不同的组件。|
-| 技能级别                 | 中-高。 需要 Java 或 .NET 技能才能自定义解决方案后端。 需要 JavaScript 技能才能自定义可视化效果。 | 低。 需要建模技能才能自定义解决方案。 不需编码技能。 |
-| 入门体验 | 解决方案加速器可实现常见的 IoT 方案。 可以在数分钟内部署。 | 应用程序模板和设备模板提供预建的模型。 可以在数分钟内部署。 |
-| 定价                | 可以通过微调服务来控制成本。 | 简单且可预测的定价结构。 |
+[Azure 数字孪生](../digital-twins/about-digital-twins.md)是一种 IoT 服务，用于为物理环境建模。 它使用的空间智能图可以对人员、空间和设备之间的关系建模。 通过跨数字和物理世界关联数据，可以创建上下文感知的解决方案。
 
-使用哪种产品来生成 IoT 解决方案最终取决于：
-
-* 业务需求
-* 要生成的解决方案的类型。
-* 组织生成解决方案并对其进行长期维护所需的技能组合
-
-## <a name="technologies-paas"></a>技术 (PaaS)
-
-跨 Azure 平台的平台即服务 (PaaS) 技术提供最广泛的 IoT 平台服务组合，可以用来轻松地创建、自定义和控制 IoT 解决方案的各个方面。 与数十亿 IoT 设备建立双向通信，并对 IoT 设备进行大规模管理。 然后将 IoT 设备数据与其他平台服务（例如 Azure Cosmos DB 和 Azure 时序见解）集成，增强跨整个解决方案获取见解的功能。 
-
-### <a name="device-support"></a>设备支持
-
-可以利用 [Azure IoT 初学者套件](https://catalog.azureiotsolutions.com/kits)或者从[设备目录](https://catalog.azureiotsolutions.com/)的数百个 IoT 认证设备中进行选择，充满自信地开始你的 IoT 项目。 所有设备都与平台无关，并通过相关测试，可无缝连接到 IoT 中心。
-使用开源[设备 SDK](/azure/iot-hub/iot-hub-devguide-sdks) 将所有设备连接到 Azure IoT。 SDK 支持多种操作系统（例如 Linux、Windows 和实时操作系统）和多种编程语言（例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)）。
-
-### <a name="iot"></a>IoT 
-[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)是一项完全托管的服务，可在数百万个 IoT 设备和一个解决方案后端之间实现安全可靠的双向通信。 Azure IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触恰时预配至合适的 IoT 中心，方便客户采用安全且可缩放的方式预配数百万台设备。
-
-### <a name="edge"></a>Microsoft Edge
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 是一种 IoT 服务。 此服务供想要在设备上 （即“边缘设备上”）分析数据的客户使用。 将部分工作负荷移到边缘设备可以降低延迟，并且可以选择使用脱机方案。
-
-### <a name="spatial-intelligence"></a>空间智能
-[Azure 数字孪生](https://azure.microsoft.com/services/digital-twins/)是一种 IoT 服务，用于创建物理环境的模型。 它提供的空间智能图可以对人员、空间和设备之间的关系建模。 通过跨数字和物理世界关联数据，可以创建上下文感知的解决方案。  
+Iot Central 使用数字孪生将现实世界中的设备和数据与用户用来监视和管理这些连接设备的数字模型同步。
 
 ### <a name="data-and-analytics"></a>数据和分析
-充分利用 IoT 解决方案中的一系列 Azure 数据和分析 PaaS 产品/服务，包括使用 Azure 机器学习将云智能引入边缘设备、使用 Azure Data Lake 以经济高效的方式存储 IoT 设备数据，以及使用 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)可视化 IoT 设备的海量数据。
 
-### <a name="visualization-and-integration"></a>可视化和集成
-Microsoft Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务集合，通过行业领先的承诺确保数据的安全和隐私。 详细了解 [Microsoft Azure](https://azure.microsoft.com/)。
+IoT 设备通常生成大量时序数据，例如从传感器读取的温度数据。 [Azure 时序见解](../time-series-insights/time-series-insights-overview.md)可以连接到某个 IoT 中心，从设备读取遥测流，存储该数据，然后我们就可以查询它并将它可视化。
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 [IoT 中心文档的“入门”部分](/azure/iot-hub/iot-hub-get-started)，轻松快速地体验 IoT 功能。 或者，为了获得更深入的实践经验，请尝试使用 [IoT Edge 教程](/azure/iot-edge/tutorial-simulate-device-windows)之一。
+如需实践体验，请尝试以下快速入门之一：
+
+- [创建 Azure IoT Central 应用程序](../iot-central/core/quick-deploy-iot-central.md)
+- [将遥测数据从设备发送到 IoT 中心](../iot-hub/quickstart-send-telemetry-cli.md)
+- [尝试基于云的远程监视解决方案](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

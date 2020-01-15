@@ -1,33 +1,33 @@
 ---
-title: 教程 - 如何将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序
+title: 教程 - 将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序
 description: 本教程介绍如何将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 662d36f8a25f2f0a21d800b7b1a25e94b13908a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461495"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>教程：将 Azure 服务绑定到 Azure Spring Cloud 应用程序：用于 Redis 的 Azure 缓存
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序 
 
-可以通过 Azure Spring Cloud 将所选 Azure 服务自动绑定到应用程序，而不必手动配置 Spring Boot 应用程序。 本文演示如何将应用程序绑定到 Azure Redis 缓存。
+可以通过 Azure Spring Cloud 将所选 Azure 服务自动绑定到应用程序，而不必手动配置 Spring Boot 应用程序。 本文介绍如何将应用程序绑定到 Azure Redis 缓存。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 部署的 Azure Spring Cloud 实例
 * Azure Redis 缓存服务实例
 * 用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-如果没有已部署的 Azure Spring Cloud 实例，请按照此[快速入门](spring-cloud-quickstart-launch-app-portal.md)中的步骤部署第一个 Spring Cloud 应用。
+如果没有已部署的 Azure Spring Cloud 实例，请按照[有关如何部署 Azure Spring Cloud 应用的快速入门](spring-cloud-quickstart-launch-app-portal.md)中的步骤操作。
 
 ## <a name="bind-azure-cache-for-redis"></a>绑定 Azure Redis 缓存
 
-1. 在项目的 `pom.xml` 中添加以下依赖项
+1. 在项目的 pom.xml 文件中，添加以下依赖项：
 
     ```xml
     <dependency>
@@ -35,13 +35,15 @@ ms.locfileid: "74708784"
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. 删除 `application.properties` 文件中的 `spring.redis.*` 属性（如果有）
+1. 从 `application.properties` 文件中删除任何 `spring.redis.*` 属性
 
 1. 使用 `az spring-cloud app update` 更新当前部署，或者使用 `az spring-cloud app deployment create` 创建新的部署。
 
-1. 转到 Azure 门户中的 Azure Spring Cloud 服务页面。 找到“应用程序仪表板”  ，选择要绑定到 Azure Redis 缓存的应用程序。  这是在上一步更新或部署的应用程序。 接下来选择“`Service binding`”，然后选择“`Create service binding`”按钮。 填充窗体，确保选择 `Azure Cache for Redis` 作为“绑定类型”，  并选择 Redis 服务器和“主密钥”选项。 
+1. 转到 Azure 门户中的 Azure Spring Cloud 服务页面。 转到“应用程序仪表板”  ，选择要绑定到 Azure Cache for Redis 的应用程序。 此应用程序是在上一步更新或部署的应用程序。
 
-1. 重启应用，此绑定现在应该生效。
+1. 选择“服务绑定”，然后选择“创建服务绑定”   。 填充窗体，确保选择“绑定类型”值“Azure Cache for Redis”、你的 Azure Cache for Redis 服务器，  以及“主密钥”选项。  
+
+1. 重新启动应用。 绑定现在应该生效。
 
 1. 若要确保服务绑定正确，请选择绑定名称并验证其详细信息。 `property` 字段应如下所示：
     ```
@@ -53,7 +55,7 @@ ms.locfileid: "74708784"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Redis 缓存。  若要详细了解如何将服务绑定到应用程序，请继续学习将应用程序绑定到 MySQL DB 的教程。
+本教程介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cache for Redis。 若要详细了解如何将服务绑定到应用程序，请继续学习介绍如何将应用程序绑定到 Azure Database for MySQL 实例的教程。
 
 > [!div class="nextstepaction"]
-> [了解如何将 Azure MySql 服务绑定到 Azure Spring Cloud 服务](spring-cloud-tutorial-bind-mysql.md)。
+> [了解如何绑定到 Azure Database for MySQL 实例](spring-cloud-tutorial-bind-mysql.md)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459508"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教程：在 Windows 虚拟桌面中创建租户
 
@@ -25,7 +25,9 @@ ms.locfileid: "73466561"
 > * 将 TenantCreator 应用程序角色分配到 Azure Active Directory 租户中的用户。
 > * 创建 Windows 虚拟桌面租户。
 
-需要做好以下准备才能设置 Windows 虚拟桌面租户：
+## <a name="what-you-need-to-set-up-a-tenant"></a>设置租户需要什么技术
+
+在开始设置 Windows 虚拟桌面租户之前，请确保具备以下条件：
 
 * Windows 虚拟桌面用户的 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 租户 ID。
 * Azure Active Directory 租户中的全局管理员帐户。
@@ -33,6 +35,8 @@ ms.locfileid: "73466561"
    * 管理员帐户必须源自 Azure Active Directory 租户，你将在该租户中尝试创建 Windows 虚拟桌面租户。 此过程不支持 Azure Active Directory B2B（来宾）帐户。
    * 管理员帐户必须是工作或学校帐户。
 * Azure 订阅。
+
+必须准备好租户 ID、全局管理员帐户和 Azure 订阅，以便本教程中所述的过程能够正常工作。
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>向 Windows 虚拟桌面授予权限
 
@@ -135,6 +139,12 @@ New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+最好为另一个用户分配管理访问权限，以应对自己被锁定在帐户外或者在休假时需要有人充当你缺勤时的租户管理员的情况。 若要为另一个用户分配管理员访问权限，请运行以下 cmdlet，并将 `<TenantName>` 和 `<Upn>` 替换为你的租户名称和这第二个用户的 UPN。
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>后续步骤

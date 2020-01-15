@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895337"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945457"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>使用读取访问异地冗余存储设计高度可用的应用程序
 
@@ -99,7 +99,7 @@ ms.locfileid: "74895337"
 
 ## <a name="handling-retries"></a>处理重试操作
 
-Azure 存储客户端库可帮助你确定可重试的错误。 例如，可能会重试404错误（找不到资源），因为重试不可能导致成功。 另一方面，由于出现服务器错误而无法重试500错误，这可能只是暂时性问题。 有关详细信息，请参阅 .NET 存储客户端库中的[打开 ExponentialRetry 类的源代码](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)。 （查找 ShouldRetry 方法。）
+Azure 存储客户端库可帮助你确定可重试的错误。 例如，404错误（找不到资源）将不会重试，因为重试不可能导致成功。 另一方面，可以重试500错误，因为这是服务器错误，而且问题可能只是暂时性问题。 有关详细信息，请参阅 .NET 存储客户端库中的[打开 ExponentialRetry 类的源代码](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs)。 （查找 ShouldRetry 方法。）
 
 ### <a name="read-requests"></a>阅读请求
 

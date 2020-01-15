@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327859"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941505"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -56,47 +56,64 @@ AzCopy 使用[URL API 中的 Put 块](https://docs.microsoft.com/rest/api/storag
 > [!TIP]
 > 本节中的示例将路径参数括在单引号（' '）中。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
+ 这些示例还适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法（`blob.core.windows.net`）。 
+
 ### <a name="copy-an-object"></a>复制对象
+
+对具有分层命名空间的帐户使用相同的 URL 语法（`blob.core.windows.net`）。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > 本文中的示例使用 AWS S3 存储桶的路径样式 Url （例如： `http://s3.amazonaws.com/<bucket-name>`）。 
 >
 > 还可以使用虚拟托管样式的 Url （例如： `http://bucket.s3.amazonaws.com`）。 
 >
-> 若要了解有关存储桶的虚拟托管的详细信息，请参阅 [Bucket 的虚拟主机]] （ https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
+> 若要了解有关存储桶的虚拟托管的详细信息，请参阅 [Bucket 的虚拟主机]] （ https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
 
 ### <a name="copy-a-directory"></a>复制目录
+
+对具有分层命名空间的帐户使用相同的 URL 语法（`blob.core.windows.net`）。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>复制 bucket
+
+对具有分层命名空间的帐户使用相同的 URL 语法（`blob.core.windows.net`）。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>复制所有区域中的所有存储桶
+
+对具有分层命名空间的帐户使用相同的 URL 语法（`blob.core.windows.net`）。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>复制特定 S3 区域中的所有存储桶
+
+对具有分层命名空间的帐户使用相同的 URL 语法（`blob.core.windows.net`）。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>处理对象命名规则中的差异
 
@@ -112,7 +129,7 @@ AWS S3 和 Azure 允许对象键的名称中的字符集不同。 可在[此处]
 
 作为 AzCopy `copy` 命令的一部分，你可以为可选的 `s2s-invalid-metadata-handle` 标志提供一个值，该值指定你希望如何处理文件的元数据包含不兼容密钥名称的文件。 下表描述了每个标志值。
 
-| 标志值 | 说明  |
+| 标志值 | Description  |
 |--------|-----------|
 | **ExcludeIfInvalid** | （默认选项）传输的对象中不包括元数据。 AzCopy 记录警告。 |
 | **FailIfInvalid** | 不复制对象。 AzCopy 记录错误，并在传输摘要中出现失败计数中包含此错误。  |

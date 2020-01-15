@@ -1,18 +1,16 @@
 ---
 title: 有关 Azure VM 灾难恢复的常见问题 Azure Site Recovery
-description: 本文解答了有关使用 Azure Site Recovery 的 Azure Vm 与另一个 Azure 区域的灾难恢复的常见问题
-author: carmonmills
+description: 本文解答了有关使用 Azure Site Recovery 的 Azure VM 灾难恢复的常见问题。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: carmonm
-ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929906"
+ms.locfileid: "75941900"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题解答： Azure 到 Azure 灾难恢复
 
@@ -45,7 +43,7 @@ Site Recovery 团队与 Azure 容量管理团队合作，计划充足的基础�
 是的，Site Recovery 支持启用了 Azure 磁盘加密（ADE）的 Vm 的灾难恢复。 启用复制时，所有所需的磁盘加密密钥和机密都将从源区域复制到用户上下文中的目标区域。 如果你没有相应的权限，则可以将随时可用的脚本传递给安全管理员，以复制密钥和机密。
 
 - Site Recovery 支持运行 Windows 的 Azure Vm 的 ADE。
-- Site recovery 支持 ADE 版本0.1，其中架构使用 Azure Active Directory （AAD），版本1.1，无 AAD。 [了解详细信息](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- Site Recovery 支持 ADE 版本0.1，使用的架构使用 Azure Active Directory （AAD），版本1.1，无 AAD。 [了解详细信息](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
 - ADE 版本1.1，必须将 Windows Vm 用于托管磁盘。
 - [详细了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何为加密的 vm 启用复制。
 

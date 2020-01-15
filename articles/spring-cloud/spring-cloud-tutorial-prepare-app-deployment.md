@@ -6,35 +6,35 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6e35430713a3dbc8317944fed1180432a2083676
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461602"
 ---
-# <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>教程：准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
-本快速入门介绍如何准备一个现有的 Java Spring Cloud 应用程序，以便将其部署到 Azure Spring Cloud。  在配置正确的情况下，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Spring Cloud 应用程序。 
+本快速入门介绍如何准备一个现有的 Java Spring Cloud 应用程序，以便将其部署到 Azure Spring Cloud。 在配置正确的情况下，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Java Spring Cloud 应用程序。
 
 ## <a name="java-runtime-version"></a>Java 运行时版本
 
 只有 Spring/Java 应用程序能够在 Azure Spring Cloud 中运行。
 
-Java 8 和 Java 11 均受支持。 托管环境包含用于 Azure 的最新 Azul Zulu OpenJDK。 请参阅[此文](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)，详细了解用于 Azure 的 Azul Zulu OpenJDK。 
+Azure Spring Cloud 支持 Java 8 和 Java 11。 托管环境包含用于 Azure 的最新版 Azul Zulu OpenJDK。 若要详细了解用于 Azure 的 Azul Zulu OpenJDK，请参阅[安装 JDK](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot 和 Spring Cloud 版本
 
-仅 Spring Boot 应用在 Azure Spring Cloud 中受支持。 Spring Boot 2.0 和 2.1 均受支持。 支持的 Spring Boot 和 Spring Cloud 组合在下表中列出。
+Azure Spring Cloud 仅支持 Spring Boot 应用。 它支持 Spring Boot 的 2.0 和 2.1 版。 下表列出了支持的 Spring Boot 和 Spring Cloud 组合：
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
-2.0.x | Finchley.RELEASE
-2.1.x | Greenwich.RELEASE
+2.0 | Finchley.RELEASE
+2.1 | Greenwich.RELEASE
 
-验证 `pom.xml` 文件是否有基于版本的 Spring Boot 和 Spring Cloud 依赖项。
+验证 pom.xml 文件是否有正确的基于 Spring Boot 版本的 Spring Boot 和 Spring Cloud 依赖项。
 
-### <a name="version-20"></a>版本 2.0：
+### <a name="dependencies-for-spring-boot-version-20"></a>Spring Boot 版本 2.0 的依赖项
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -58,7 +58,7 @@ Spring Boot 版本 | Spring Cloud 版本
     </dependencyManagement>
 ```
 
-### <a name="version-21"></a>版本 2.1：
+### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 版本 2.1 的依赖项
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -84,18 +84,19 @@ Spring Boot 版本 | Spring Cloud 版本
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 客户端依赖项
 
-Azure Spring Cloud 为你托管和管理 Spring Cloud 组件，例如 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 在依赖项中包括 Azure Spring Cloud 的客户端库，以便与 Azure Spring Cloud 服务实例通信。
+Azure Spring Cloud 为你托管和管理 Spring Cloud 组件。 此类组件包括 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 在依赖项中包括 Azure Spring Cloud 客户端库，以便与 Azure Spring Cloud 服务实例通信。
 
-下表列出了 Spring Boot/Spring Cloud 应用的正确版本。
+下表列出了正确的 Azure Spring Cloud 版本，针对使用 Spring Boot 和 Spring Cloud 的应用。
 
 Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 ---|---|---
-2.0.x | Finchley.RELEASE | 2.0.x
-2.1.x | Greenwich.RELEASE | 2.1.x
+2.0 | Finchley.RELEASE | 2.0
+2.1 | Greenwich.RELEASE | 2.1
 
-在 `pom.xml` 中包括以下代码片段之一。  选择其版本与你自己的版本匹配的代码片段。
+将以下依赖项之一包括到 pom.xml 文件中。 选择其 Azure Spring Cloud 版本与你自己的匹配的依赖项。
 
-### <a name="version-20x"></a>版本 2.0.x：
+### <a name="dependency-for-azure-spring-cloud-version-20"></a>Azure Spring Cloud 版本 2.0 的依赖项
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -104,7 +105,8 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
-### <a name="version-21x"></a>版本 2.1.x：
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud 版本 2.1 的依赖项
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -115,13 +117,11 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 
 ## <a name="other-required-dependencies"></a>其他必需的依赖项
 
-若要启用 Azure Spring Cloud 的内置功能，应用程序必须包含以下依赖项： 这样可以确保应用程序通过每个组件正确地自行配置。  
+若要启用 Azure Spring Cloud 的内置功能，应用程序必须包含以下依赖项： 这样包含可以确保应用程序通过每个组件正确地自行配置。  
 
-### <a name="service-registry"></a>服务注册表
+### <a name="service-registry-dependency"></a>服务注册表依赖项
 
-若要使用托管的 Azure 服务注册表服务，请在 `POM.xml` 中包括 `spring-cloud-starter-netflix-eureka-client`，如下所示。
-
-服务注册表服务器的终结点会自动注入为应用的环境变量。 应用程序将可以自行注册到服务注册表服务器并发现其他依赖性微服务。
+若要使用托管的 Azure 服务注册表服务，请在 pom.xml 文件中包括 `spring-cloud-starter-netflix-eureka-client` 依赖项，如下所示：
 
 ```xml
     <dependency>
@@ -130,9 +130,11 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
     </dependency>
 ```
 
-### <a name="distributed-configuration"></a>分布式配置
+服务注册表服务器的终结点自动作为应用的环境变量注入。 然后，应用程序可自行注册到服务注册表服务器，并发现其他依赖性微服务。
 
-若要启用分布式配置，请在 `pom.xml` 的依赖项部分包括 `spring-cloud-config-client`。
+### <a name="distributed-configuration-dependency"></a>分布式配置依赖项
+
+若要启用分布式配置，请在 pom.xml 文件的 dependencies 节中包括以下 `spring-cloud-config-client` 依赖项：
 
 ```xml
 <dependency>
@@ -142,11 +144,11 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 ```
 
 > [!WARNING]
-> 请勿在启动配置中指定 `spring.cloud.config.enabled=false`，因为它会导致应用程序无法与配置服务器配合使用。
+> 请勿在启动配置中指定 `spring.cloud.config.enabled=false`。 否则，应用程序将再也不能与配置服务器配合使用。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics-dependency"></a>指标依赖项
 
-在 pom.xml 的依赖项部分包括 `spring-boot-starter-actuator`。 指标会定期从 JMX 终结点拉取，并可通过 Azure 门户可视化。
+在 pom.xml 文件的 dependencies 节中包括 `spring-boot-starter-actuator` 依赖项，如下所示：
 
 ```xml
 <dependency>
@@ -155,9 +157,11 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
-### <a name="distributed-tracing"></a>分布式跟踪
+ 指标会定期从 JMX 终结点拉取。 可以通过 Azure 门户将指标可视化。
 
-在 pom.xml 的依赖项部分包括 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin`，如下所示。 例外，需要让 Azure App Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要详细了解如何通过 Azure Spring Cloud 来启用 App Insights，请参阅[此文](spring-cloud-tutorial-distributed-tracing.md)
+### <a name="distributed-tracing-dependency"></a>分布式跟踪依赖项
+
+在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 依赖项：
 
 ```xml
 <dependency>
@@ -170,11 +174,13 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
+ 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 阅读[有关分布式跟踪的教程](spring-cloud-tutorial-distributed-tracing.md)，了解如何将 Application Insights 与 Azure Spring Cloud 配合使用。
+
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。  若要了解如何启用配置服务器，请继续阅读下一教程。
+本教程介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请继续阅读下一教程。
 
 > [!div class="nextstepaction"]
-> [了解如何设置配置服务器](spring-cloud-tutorial-config-server.md)。
+> [了解如何设置配置服务器实例](spring-cloud-tutorial-config-server.md)
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)。

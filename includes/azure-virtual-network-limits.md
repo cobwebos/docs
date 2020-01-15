@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 97ee10e0b286f1b007f2e807351301f2037d1754
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751643"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942777"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -65,12 +65,11 @@ ms.locfileid: "75751643"
 | 负载均衡器                          | 1,000                         |
 | 每个资源的规则                      | 1,500                         |
 | 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                           |
-| 前端 IP 配置             | 600                           |
-| 后端池大小                          | 1000实例，单一虚拟网络 |
-| 每个负载均衡器的后端资源<sup>1<sup>   | 150                 |
-| 高可用性端口                 | 每个内部前端 1 个      |
+| 前端 IP 配置              | 600                           |
+| 后端池大小                       | 1000 IP 配置，单一虚拟网络 |
+| 高可用性端口                 | 每个内部前端 1 个       |
+| 每个负载均衡器的出站规则         | 20                            |
 
-<sup>1</sup>最大限制为150个资源，其中包含独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
 
 **基本负载均衡器**
 
@@ -79,8 +78,9 @@ ms.locfileid: "75751643"
 | 负载均衡器                          | 1,000                        |
 | 每个资源的规则                      | 250                          |
 | 每个 NIC 的规则（跨 NIC 上的所有 Ip） | 300                          |
-| 前端 IP 配置             | 200                          |
-| 后端池大小                           | 100实例，单个可用性集 |
+| 前端 IP 配置              | 200                          |
+| 后端池大小                       | 300 IP 配置，单个可用性集 |
+| 每个负载均衡器的可用性集     | 150                          |
 
 #### <a name="virtual-networking-limits-classic"></a>以下限制仅适用于通过每个订阅的**经典**部署模型进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 

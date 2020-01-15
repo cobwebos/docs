@@ -3,12 +3,12 @@ title: YAML 参考-ACR 任务
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445698"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945741"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -79,7 +79,7 @@ az configure --defaults acr=myregistry
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，则默认为最新版本。 | 否 | 无 |
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务上指定了属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤上指定 `timeout` 属性，则它将覆盖任务提供的属性。 | 是 | 600（10 分钟） |
-| `workingDirectory` | 字符串 | 是 | 运行时容器的工作目录。 如果在任务上指定了属性，则会设置所有步骤的默认 `workingDirectory` 属性。 如果是在步骤中指定的，它将重写任务提供的属性。 | 是 | `$HOME` |
+| `workingDirectory` | 字符串 | 是 | 运行时容器的工作目录。 如果在任务上指定了属性，则会设置所有步骤的默认 `workingDirectory` 属性。 如果是在步骤中指定的，它将重写任务提供的属性。 | 是 | `/workspace` |
 | `env` | [字符串, 字符串, ...] | 是 |  `key=value` 格式的字符串数组，用于定义任务的环境变量。 如果在任务上指定了属性，则会设置所有步骤的默认 `env` 属性。 如果是在步骤中指定的，它将重写从任务继承的任何环境变量。 | 无 |
 | `secrets` | [secret，secret，...] | 是 | [机密](#secret)对象的数组。 | 无 |
 | `networks` | [network，network，...] | 是 | [网络](#network)对象的数组。 | 无 |
@@ -379,7 +379,7 @@ steps:
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
 | `user` | 字符串 | 是 | 容器的用户名或 UID | 无 |
-| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
+| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>示例：任务步骤属性
 

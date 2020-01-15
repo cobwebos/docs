@@ -9,16 +9,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928616"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945618"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure 混合权益
 
-在基于 vCore 的购买模型的预配计算层中，你可以使用[Azure 混合权益 SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)来交换现有许可证，以获得 SQL 数据库的折扣率。 此 Azure 权益使你可以通过使用本地 SQL Server 许可证和软件保障节省多达30% 的 Azure SQL 数据库。 
+在基于 vCore 的购买模型的预配计算层中，你可以使用[Azure 混合权益 SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)来交换现有许可证，以获得 SQL 数据库的折扣率。 此 Azure 权益使你可以通过使用本地 SQL Server 具有软件保障的许可证，在 Azure SQL 数据库上节省高达30% 甚至更高。 请使用之前提到的链接来使用 Azure 混合权益计算器以获取正确的值。 
 
 > [!NOTE]
 > 更改为 Azure 混合权益不需要停机。

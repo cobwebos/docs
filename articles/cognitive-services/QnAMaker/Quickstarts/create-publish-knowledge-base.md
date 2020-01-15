@@ -1,21 +1,21 @@
 ---
 title: 快速入门：创建、训练和发布知识库 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 此示例中的 QnA Maker 知识库根据一个简单的 FAQ 网页创建，该网页解答有关 BitLocker 密钥恢复的问题。
+description: 本快速入门介绍如何根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 此示例中的 QnA Maker 知识库根据一个简单的 FAQ 网页创建，该网页解答有关 BitLocker 密钥恢复的问题。
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: bc64196969b23f0aad77ff4d4495e4bb3e569c32
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447603"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -36,21 +36,22 @@ ms.locfileid: "73888242"
 
 1. 在 QnA Maker 门户上，选择“创建知识库”。 
 
-1. 在“创建”页上，选择“创建 QnA 服务”。   此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。 
+1. 在“创建”页上，选择“创建 QnA 服务”。   此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。
 
-1. 在 QnA Maker 门户中，从下拉列表选择 QnA Maker 服务。 如果已创建新的 QnA Maker 服务，请确保刷新页面。
+1. 在 Azure 门户中创建此资源。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+1. 返回到 QnA Maker 门户，在门户中刷新网页，以继续创建知识库。
 
    ![选择 QnA Maker 服务知识库的屏幕截图](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
 1. 将知识库命名为“我的示例 QnA KB”。 
 
-1. 将示例 Word 文档添加为 URL： 
+1. 将示例 Word 文档添加为 URL：
 
     `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
 
 1. 选择 `+ Add URL`。
 
-1. 将专业聊天  添加到你的 KB。 
+1. 将专业聊天  添加到你的 KB。
 
 1. 选择“创建知识库”  。
 
@@ -60,8 +61,8 @@ ms.locfileid: "73888242"
 
 ## <a name="add-a-new-question-and-answer-set"></a>添加新的问答集
 
-1. 在 QnA Maker 门户中的“编辑”页上，选择“添加 QnA 对”。  
-1. 添加以下问题： 
+1. 在 QnA Maker 门户的“编辑”页上，从上下文工具栏中选择“+ 添加 QnA 对”。  
+1. 添加以下问题：
 
     `How many Azure services are used by a knowledge base?`
 
@@ -71,9 +72,9 @@ ms.locfileid: "73888242"
 
     ![ 添加文本格式的问题和 markdown 格式的答案。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    markdown 符号 `*` 用于项目符号点。 `\n` 用于新行。  
+    markdown 符号 `*` 用于项目符号点。 `\n` 用于新行。
 
-    “编辑”页显示 markdown。  稍后使用“测试”面板时，会看到 markdown 显示正确。  
+    “编辑”页显示 markdown。  稍后使用“测试”面板时，会看到 markdown 显示正确。 
 
 ## <a name="save-and-train"></a>保存并训练
 
@@ -81,10 +82,10 @@ ms.locfileid: "73888242"
 
 ## <a name="test-the-knowledge-base"></a>测试知识库
 
-1. 在 QnA Maker 门户的右上角，选择“测试”以测试所做的更改是否已生效。  
-1. 在文本框中输入示例用户查询。 
+1. 在 QnA Maker 门户的右上角，选择“测试”以测试所做的更改是否已生效。 
+1. 在文本框中输入示例用户查询。
 
-    `How many Azure services are used by a knowledge base?`  
+    `How many Azure services are used by a knowledge base?`
 
     ![ 在文本框中输入示例用户查询。 ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
 
@@ -106,10 +107,10 @@ ms.locfileid: "73888242"
 
 ## <a name="create-a-bot"></a>创建机器人
 
-发布后，可以从“发布”  页创建机器人： 
+发布后，可以从“发布”  页创建机器人：
 
-* 可以快速创建多个机器人，它们全部可以指向不同区域中的同一个知识库，或者指向单个机器人的定价计划。 
-* 如果只想为知识库创建一个机器人，请使用“在 Azure 门户中查看所有机器人”链接查看当前机器人的列表。  
+* 可以快速创建多个机器人，它们全部可以指向不同区域中的同一个知识库，或者指向单个机器人的定价计划。
+* 如果只想为知识库创建一个机器人，请使用“在 Azure 门户中查看所有机器人”链接查看当前机器人的列表。 
 
 对知识库进行更改并重新发布时，不需要对机器人采取进一步的操作。 机器人已配置为使用该知识库，并会处理将来对该知识库所做的所有更改。 每当发布某个知识库时，连接到该知识库的所有机器人都会自动更新。
 
@@ -117,26 +118,38 @@ ms.locfileid: "73888242"
 
     ![创建机器人的屏幕截图](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. 此时会打开 Azure 门户的新浏览器标签页，其中显示了 Azure 机器人服务的创建页。 配置 Azure 机器人服务。 
-    
-    * 创建机器人时，请不要更改 Azure 门户中的以下设置。 这些值是为现有的知识库预先填充的： 
-        * QnA 身份验证密钥
-        * 应用服务计划和位置
-    * 机器人和 QnA Maker 可以共享 Web 应用服务计划，但不能共享 Web 应用。 这意味着，机器人的**应用名称**必须不同于 QnA Maker 服务的应用名称。 
+1. 此时会打开 Azure 门户的新浏览器标签页，其中显示了 Azure 机器人服务的创建页。 配置 Azure 机器人服务。 机器人和 QnA Maker 可以共享 Web 应用服务计划，但不能共享 Web 应用。 这意味着，机器人的**应用名称**必须不同于 QnA Maker 服务的应用名称。
 
-1. 创建机器人后，打开“机器人服务”资源。  
+    * **建议做法**
+        * 更改机器人句柄 - 如果它不独一无二。
+        * 选择 SDK 语言。 创建机器人后，可以将代码下载到本地开发环境，然后继续开发过程。
+    * **禁止做法**
+        * 创建机器人时，更改 Azure 门户中的以下设置。 这些值是为现有的知识库预先填充的：
+           * QnA 身份验证密钥
+           * 应用服务计划和位置
+
+
+1. 创建机器人后，打开“机器人服务”资源。 
 1. 在“机器人管理”  下，选择“通过网上聊天执行测试”  。
 1. 出现聊天提示“键入你的消息”时，输入： 
 
     `Azure services?`
 
-    聊天机器人使用知识库中的一个答案进行响应。 
+    聊天机器人使用知识库中的一个答案进行响应。
 
     ![将用户查询输入测试性 Web 聊天中。](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
 
+## <a name="what-did-you-accomplish"></a>你完成了哪些操作？
+
+你创建了一个新的知识库、将一个公共 URL 添加到了知识库，添加了自己的 QnA 集，以及训练、测试和发布了知识库。
+
+在发布知识库之后，你创建了一个机器人，并测试了该机器人。
+
+这只需几分钟即可完成，无需编写任何代码并清理内容。
+
 ## <a name="clean-up-resources"></a>清理资源
 
-清理 Azure 门户中的 QnA Maker 和 Bot Framework 资源。 
+清理 Azure 门户中的 QnA Maker 和 Bot Framework 资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -144,9 +157,8 @@ ms.locfileid: "73888242"
 
 * [答案中的 Markdown 格式](../concepts/data-sources-supported.md)
 * [测试 Markdown](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [数据源](../Concepts/data-sources-supported.md)。 
+* QnA Maker [数据源](../Concepts/data-sources-supported.md)。
 * [机器人资源配置设置](../tutorials/create-qna-bot.md)。
 
 > [!div class="nextstepaction"]
 > [添加带有元数据的问题](add-question-metadata-portal.md)
-

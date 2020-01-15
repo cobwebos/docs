@@ -1,5 +1,5 @@
 ---
-title: 工作负荷管理
+title: 工作负载管理
 description: 在 Azure SQL 数据仓库中实施工作负荷管理的指南。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692357"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940577"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -42,7 +42,7 @@ ms.locfileid: "73692357"
 
 SQL 数据仓库中的工作负荷管理包括三个高级概念：[工作负荷分类](sql-data-warehouse-workload-classification.md)、[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  这些功能使你可以更好地控制工作负荷使用系统资源的方式。
 
-工作负荷分类是将请求分配到工作负荷组并设置重要性级别的概念。  从历史上看，这种分配是通过使用[sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class)的角色成员身份来完成的。  现在可以通过[CREATE 工作负荷 CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)完成此操作。  分类功能提供了更丰富的选项，如标签、会话和对请求进行分类的时间。
+工作负荷分类是将请求分配到工作负荷组并设置重要性级别的概念。  过去，此分配通过使用[sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class)的角色成员身份完成。  现在可以通过[CREATE 工作负荷 CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)完成此操作。  分类功能提供了更丰富的选项，如标签、会话和对请求进行分类的时间。
 
 工作负荷重要性影响请求获取资源访问权限的顺序。  在繁忙的系统上，具有较高重要性的请求首先具有对资源的访问权限。  重要性还可以确保按顺序访问锁定。 
 
@@ -54,3 +54,4 @@ SQL 数据仓库中的工作负荷管理包括三个高级概念：[工作负荷
 - 有关工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
 - 有关工作负荷隔离的详细信息，请参阅[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  
 - 有关工作负荷重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)。  
+- 有关工作负荷管理监视的详细信息，请参阅[工作负荷管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  

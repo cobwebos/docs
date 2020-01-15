@@ -3,14 +3,14 @@ title: Azure 中的更新管理解决方案
 description: 本文介绍如何使用 Azure 更新管理解决方案来管理 Windows 和 Linux 计算机的更新。
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420342"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945125"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -237,7 +237,9 @@ ms.locfileid: "75420342"
 sudo yum -q --security check-update
 ```
 
-目前，没有支持的方法可在 CentOS 上启用本机分类数据可用性。 目前，仅向可能已自行启用此功能的客户提供最大程度的支持。
+目前，没有支持的方法可在 CentOS 上启用本机分类数据可用性。 目前，仅向可能已自行启用此功能的客户提供最大程度的支持。 
+
+若要在 Red Hat Enterprise 版本6上对更新进行分类，需要安装 yum 插件。 在 Red Hat Enterprise Linux 7 上，该插件已经是 yum 本身的一部分，无需安装任何内容。 有关详细信息，请参阅以下 Red Hat[知识库文章](https://access.redhat.com/solutions/10021)。
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
 
@@ -251,7 +253,7 @@ sudo yum -q --security check-update
 
 ## <a name="patch-linux-machines"></a>修补 Linux 计算机
 
-下列部分说明了 Linux 修补的潜在问题。
+以下部分介绍修补 Linux 发行版的潜在问题。
 
 ### <a name="unexpected-os-level-upgrades"></a>意外的 OS 级别升级
 

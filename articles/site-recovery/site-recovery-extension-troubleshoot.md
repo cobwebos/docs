@@ -1,20 +1,18 @@
 ---
-title: 对 Azure Site Recovery 代理问题进行故障排除 | Microsoft Docs
-description: 提供有关 Azure Site Recovery 代理故障的症状、原因和解决方法的信息。
-author: carmonmills
+title: 排查 Azure Site Recovery 的灾难恢复的 Azure VM 扩展故障
+description: 排查与 Azure Site Recovery 的灾难恢复的 Azure VM 扩展相关的问题。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930132"
+ms.locfileid: "75941538"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>对 Azure Site Recovery 代理问题进行故障排除
+# <a name="troubleshoot-azure-vm-extension-issues"></a>排查 Azure VM 扩展问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展相关的 Azure Site Recovery 错误。
 
@@ -30,7 +28,7 @@ ms.locfileid: "75930132"
 **原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3：[Site Recovery 扩展未能更新或加载](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-错误消息：“之前的站点恢复扩展操作花费的时间比预期更多。”<br>
+错误消息： "上一个 Site Recovery 扩展操作花费的时间比预期更多。"<br>
 错误代码：“150066”<br>
 
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

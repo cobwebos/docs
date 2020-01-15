@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178013"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944755"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -64,7 +64,7 @@ ms.locfileid: "73178013"
     
     下表介绍了所使用的参数：
 
-    |选项  |描述  |
+    |选项  |Description  |
     |---------|---------|
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
@@ -72,7 +72,7 @@ ms.locfileid: "73178013"
     |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 `manage-bde -protectors -get D:` 的输出      |
     |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\` 。         |
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
-    |/blobtype     |此选项指定要将数据导入到的 blob 类型。 对于块 blob，这是 `BlockBlob` 的，对于页 blob，它是 `PagaBlob`的。         |
+    |/blobtype     |此选项指定要将数据导入到的 blob 类型。 对于块 blob，这是 `BlockBlob` 的，对于页 blob，它是 `PageBlob`的。         |
     |/skipwrite:     |此选项指定没有需要复制的新数据并且要准备磁盘上的现有数据。          |
     |/enablecontentmd5:     |启用此选项后，可确保在每个 blob 上计算 MD5 并将其设置为 `Content-md5` 属性。 仅当你想要在将数据上传到 Azure 后使用 `Content-md5` 字段时，才使用此选项。 <br> 此选项不会影响数据完整性检查（默认情况下会发生此情况）。 此设置会增加将数据上载到云所需的时间。          |
 7. 为需要寄送的每个磁盘重复前面的步骤。 每次运行该命令行时，都会使用所提供的名称创建一个日志文件。
@@ -115,7 +115,7 @@ ms.locfileid: "73178013"
 4. 在“回寄信息”中：
 
    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系，以了解有关你计划使用的运营商的信息 `adbops@microsoft.com`。
-   - 输入为该承运人创建的有效承运人帐号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
+   - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。 
         
        > [!TIP] 

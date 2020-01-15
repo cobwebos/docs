@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b74943ce3e3e67855a07fa32f15612bbb2351170
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913098"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942194"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -67,7 +67,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 当你在存储帐户级别指定客户托管密钥时，该密钥用于保护和控制访问存储帐户的根加密密钥，而该密钥反过来用于加密和解密所有 blob 和文件数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
 
-必须使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
+必须使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。 存储帐户和密钥保管库必须位于同一区域和相同的 Azure Active Directory （Azure AD）租户中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
 此图显示了 Azure 存储如何使用 Azure Active Directory 和 Azure Key Vault 来使用客户管理的密钥发出请求：
 
@@ -96,15 +96,13 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 - [将客户托管的密钥配置 Key Vault 用于从 Azure CLI 进行 Azure 存储加密](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
-> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 在 Azure 门户中配置客户管理的密钥时，会自动将托管标识分配给你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移动到另一个目录，则不会将与存储帐户关联的托管标识传输到新租户，因此客户托管的密钥可能不再工作。 有关详细信息，请参阅在常见问题中**传输 Azure AD 目录之间的订阅**[和 Azure 资源的托管标识的已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。  
+> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure AD。 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，会自动将托管标识分配给你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移动到另一个目录，则不会将与存储帐户关联的托管标识传输到新租户，因此客户托管的密钥可能不再工作。 有关详细信息，请参阅在常见问题中**传输 Azure AD 目录之间的订阅**[和 Azure 资源的托管标识的已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户托管的密钥存储在 Azure Key Vault
 
 若要在存储帐户上启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用**软删除**和不**清除**密钥保管库中的属性。
 
 Azure 存储加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 密钥**。
-
-密钥保管库必须位于与存储帐户相同的订阅中。 Azure 存储使用 Azure 资源的托管标识向密钥保管库进行身份验证，以便进行加密和解密操作。 托管标识当前不支持跨目录方案。
 
 ### <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 

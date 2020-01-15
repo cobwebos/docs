@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614932"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940811"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -251,6 +251,7 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 | 数据库复制 | 你还不能使用数据库副本在 Azure SQL 超大规模中创建新数据库。 |
 | TDE/AKV 集成 | 对于 Azure SQL 数据库超大规模，尚不支持使用 Azure Key Vault （通常称为 "自带密钥" 或 BYOK）的透明数据库加密，但是，完全支持具有服务托管密钥的 TDE。 |
 |智能数据库功能 | 除了 "强制计划" 选项外，所有其他自动优化选项在超大规模中尚不受支持：选项可能看起来已启用，但不会有任何建议或操作。 |
+|查询性能见解 | 超大规模数据库当前不支持查询性能见解。 |
 | 收缩数据库 | 超大规模数据库当前不支持 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
 | 数据库完整性检查 | 超大规模数据库当前不支持 DBCC CHECKDB。 有关 Azure SQL 数据库中的数据完整性管理的详细信息，请参阅[AZURE Sql 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。 |
 

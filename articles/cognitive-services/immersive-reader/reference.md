@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903114"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945281"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式读者 SDK 参考指南
 
 沉浸式读者 SDK 是一个 JavaScript 库，可用于将沉浸式读者集成到 web 应用程序中。
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
 SDK 公开函数：
 
@@ -39,16 +39,16 @@ SDK 公开函数：
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>参数
 
-| 名称 | 类型 | 说明 |
+| 名称 | 类型 | Description |
 | ---- | ---- |------------ |
-| `token` | 字符串 | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
-| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
+| `token` | 字符串 | Azure AD 身份验证令牌。 |
+| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 |
 | `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
-| `options` | [](#options)选项 | 用于配置沉浸式读者的某些行为的选项。 可选。 |
+| `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 
 返回一个 `Promise<HTMLDivElement>`，该解析加载沉浸式阅读器的时间。 `Promise` 解析为一个 `div` 元素，该元素的子元素是包含沉浸式读者页的 `iframe` 元素。
 
@@ -78,9 +78,9 @@ close(): void;
 renderButtons(options?: RenderButtonsOptions): void;
 ```
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>参数
 
-| 名称 | 类型 | 说明 |
+| 名称 | 类型 | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | 用于配置 renderButtons 函数的某些行为的选项。 可选。 |
 
@@ -109,22 +109,30 @@ renderButtons(options?: RenderButtonsOptions): void;
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>CookiePolicy 枚举
+
+用于设置沉浸式读者 cookie 使用情况的策略的枚举。 请参阅[选项](#options)。
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>支持的 MIME 类型
 
-| MIME 类型 | 说明 |
+| MIME 类型 | Description |
 | --------- | ----------- |
 | text/plain | 纯文本。 |
 | text/html | HTML 内容。 [了解详细信息](#html-support)|
-| application/mathml+xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/mathml+xml | 数学标记语言（MathML）。 [了解详细信息](./how-to/display-math.md)。
 | application/vnd.apple.mpegurl. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml | Microsoft Word .docx 格式的文档。
 
 ### <a name="html-support"></a>HTML 支持
 | HTML | 支持的内容 |
 | --------- | ----------- |
 | 字体样式 | 粗体、斜体、下划线、代码、删除线、上标、下标 |
-| 无序列表 | 光盘、圆形、方形 |
+| 未排序列表 | 光盘、圆形、方形 |
 | 排序列表 | Decimal，大写字母，小写字母，上罗马，小写罗马字 |
-| 中超 | 即将支持 |
+| 超链接 | 即将推出 |
 
 不支持的标记将呈现为同等的。 当前不支持映像和表。
 
@@ -142,6 +150,7 @@ renderButtons(options?: RenderButtonsOptions): void;
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -168,12 +177,12 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="error-codes"></a>错误代码
 
-| 代码 | 说明 |
+| 代码 | Description |
 | ---- | ----------- |
 | BadArgument | 提供的参数无效，有关详细信息，请参阅 `message`。 |
 | 超时 | 沉浸式读取器无法在指定的超时内加载。 |
 | TokenExpired | 提供的令牌已过期。 |
-| 受到 | 超出了调用速率限制。 |
+| 已中止 | 超出了调用速率限制。 |
 
 ## <a name="launching-the-immersive-reader"></a>启动沉浸式阅读器
 
@@ -187,10 +196,10 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 `immersive-
 
 使用以下属性来配置按钮的外观。
 
-| 属性 | 说明 |
+| Attribute | Description |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
-| `data-locale` | 设置区域设置。 例如 `en-US` 或 `fr-FR`。 默认为英语 `en`。 |
+| `data-locale` | 设置区域设置。 例如，`en-US` 或 `fr-FR`。 默认为英语 `en`。 |
 | `data-icon-px-size` | 设置图标的大小（以像素为单位）。 默认值为20px。 |
 
 ## <a name="browser-support"></a>浏览器支持

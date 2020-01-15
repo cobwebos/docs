@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177748"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361649"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -36,7 +36,7 @@ ms.locfileid: "72177748"
 
 - 提供完整的证书管理：为你处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
 
-本教程介绍如何执行以下操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > - 在自定义域上启用 HTTPS 协议。
 > - 使用 CDN 托管的证书 
@@ -44,13 +44,13 @@ ms.locfileid: "72177748"
 > - 验证域
 > - 在自定义域上禁用 HTTPS 协议。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 在完成本教程中的步骤之前，必须先创建一个 CDN 配置文件，一个至少一个 CDN 终结点。 有关详细信息，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-此外，还必须在 CDN 终结点上关联一个 Azure CDN 自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md) 
+此外，还必须在 CDN 终结点上关联一个 Azure CDN 自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)。
 
 > [!IMPORTANT]
 > CDN 托管的证书不可用于根域或顶点域。 如果 Azure CDN 自定义域是根域或顶点域，则必须使用“自带证书”功能。 
@@ -68,27 +68,29 @@ ms.locfileid: "72177748"
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Microsoft 的 Azure CDN 标准版”、“Akamai 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件     。
+1. 请参阅 [Azure 门户](https://portal.azure.com)，查找 Azure CDN 托管的证书。 搜索并选择“CDN 配置文件”。  
 
-2. 在 CDN 终结点列表中，选择包含自定义域的终结点。
+2. 选择“Microsoft 的 Azure CDN 标准版”、“Akamai 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件     。
+
+3. 在 CDN 终结点列表中，选择包含自定义域的终结点。
 
     ![终结点列表](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     此时会显示“终结点”页。 
 
-3. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
+4. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
     ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     此时将显示“自定义域”页。 
 
-4. 在证书管理类型下，选择“CDN 托管”  。
+5. 在证书管理类型下，选择“CDN 托管”  。
 
-5. 选择“打开”，启用 HTTPS  。
+6. 选择“打开”，启用 HTTPS  。
 
     ![自定义域 HTTPS 状态](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. 继续[验证域](#validate-the-domain)。
+7. 继续[验证域](#validate-the-domain)。
 
 
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[选项 2：使用自己的证书启用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
@@ -126,7 +128,7 @@ ms.locfileid: "72177748"
 
     ![创建新的访问策略](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. 在“选择主体”  中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”。 
+2. 在“选择主体”  中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”  。
 
     ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
@@ -204,7 +206,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选，请将 verification@digicert.com 添加到允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
+应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选器，请将 verification@digicert.com 添加到其允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
     
 ![域验证电子邮件](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件    。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“CDN 配置文件”。  
 
-2. 在终结点的列表中，单击包含自定义域的终结点。
+2. 选择“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件    。
 
-3. 单击要禁用 HTTPS 的自定义域。
+3. 在终结点的列表中，选取包含自定义域的终结点。
+
+4. 选择要禁用 HTTPS 的自定义域。
 
     ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. 单击“禁用”**上**禁用 HTTPS，然后单击“应用”  。
+5. 选择“禁用”  以禁用 HTTPS，然后选择“应用”  。
 
     ![“自定义 HTTPS”对话框](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -320,7 +324,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > - 在自定义域上启用 HTTPS 协议。

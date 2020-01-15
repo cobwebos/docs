@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中使用 PowerShell 调整 Windows VM 的大小
-description: 使用 Azure Powershell 调整在 Resource Manager 部署模型中创建的 Windows 虚拟机的大小。
+title: 调整 Azure 中 Windows VM 的大小
+description: 更改用于 Azure 虚拟机的 VM 大小。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073369"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941721"
 ---
-# <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小
+# <a name="resize-a-windows-vm"></a>调整 Windows VM 大小
 
-本文介绍如何使用 Azure Powershell 将虚拟机切换到不同的[虚拟机大小](sizes.md)。
+本文介绍如何将 VM 移动到不同的[vm 大小](sizes.md)。
 
-完成创建虚拟机 (VM) 后，可以通过更改 VM 大小来扩大或缩小 VM。 在某些情况下，必须先解除分配 VM。 如果新大小在当前托管 VM 的硬件群集上不可用，则可能会出现这种情况。
+完成创建虚拟机 (VM) 后，可以通过更改 VM 大小来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果新大小在当前托管 VM 的硬件群集上不可用，则可能会出现这种情况。
 
 如果虚拟机使用高级存储，请确保选择 **s** 版本的大小以获得高级存储支持。 例如，选择 Standard_E4**s**_v3，而不是 Standard_E4_v3。
 
- 
+## <a name="use-the-portal"></a>使用门户
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>调整不在可用性集中的 Windows VM 的大小
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 打开虚拟机的页面。
+1. 在左侧菜单中，选择 "**大小**"。
+1. 从可用大小列表中选择新的大小，然后选择 "**调整**大小"。
+
+
+如果虚拟机当前正在运行，更改其大小将导致重新启动虚拟机。 停止虚拟机可能会显示其他大小。
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>使用 PowerShell 调整不在可用性集中的 VM 的大小
 
 设置一些变量。 将值替换为自己的信息。
 
@@ -54,7 +62,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-如果未列出所需大小，运行以下命令即可解除分配虚拟机、重设其大小，并重新启动虚拟机。 将 **\<newVMsize>** 替换为所需大小。
+如果未列出所需大小，运行以下命令即可解除分配虚拟机、重设其大小，并重新启动虚拟机。 将 **\<newVMsize >** 替换为所需的大小。
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
@@ -69,9 +77,9 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>调整可用性集中的 Windows VM 的大小
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>使用 PowerShell 调整可用性集中 VM 的大小
 
-如果可用性集中 VM 的新大小在当前托管 VM 的硬件群集上不可用，则需要解除分配可用性集中的所有 VM 以调整 VM 大小。 已调整一个 VM 的大小后，可能还需要更新可用性集中其他 VM 的大小。 若要调整可用性集中 VM 的大小，请执行以下步骤。
+如果可用性集中 VM 的新大小在当前托管 VM 的硬件群集上不可用，则需要解除分配可用性集中的所有 VM 来调整 VM 大小。 完成调整一个 VM 的大小后，可能还需要更新可用性集中其他 VM 的大小。 若要调整可用性集中 VM 的大小，请执行以下步骤。
 
 ```powershell
 $resourceGroup = "myResourceGroup"
@@ -84,7 +92,7 @@ $vmName = "myVM"
 Get-AzVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
 ```
 
-如果列出了所需大小，请运行以下命令来调整 VM 的大小。 如果未列出所需大小，请转到下一部分。
+如果列出了所需大小，运行以下命令即可调整 VM 大小。 如果未列出所需大小，请转到下一部分。
    
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName 
@@ -106,7 +114,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-调整可用性集中 VM 的大小并重新启动 VM。
+调整可用性集中 VM 的大小并重新启动。
    
 ```powershell
 $newSize = "<newVmSize>"

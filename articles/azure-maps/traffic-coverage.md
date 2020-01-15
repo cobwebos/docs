@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9e9a3d13eeb0c8704e2faac1037d51e5bd322dc4
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910402"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945117"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
@@ -46,6 +46,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |香港特别行政区     |✓         |✓         |
 |印度   |✓         |✓         |
 |印度尼西亚     |✓         |✓         |
+|哈萨克斯坦    |✓         |✓         |
 |澳门特别行政区     |✓         |✓         |
 |马来西亚     |✓         |✓         |
 |新西兰     |✓         |✓         |

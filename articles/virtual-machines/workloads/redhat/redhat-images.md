@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486321"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941444"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -154,5 +154,5 @@ Microsoft 和 Red Hat 会在以下情况下更新映像：新的次要版本发�
 ## <a name="next-steps"></a>后续步骤
 * 查看[Azure 中 RHEL 映像](./redhat-imagelist.md)的完整列表。
 * 从[此处](https://aka.ms/rhui-update)了解有关 Azure Red Hat 更新基础结构的详细信息。
-* 了解有关[RHEL BYOS 产品/服务](./redhat-byos.md)的详细信息。
+* 了解有关[RHEL BYOS 产品/服务](./byos.md)的详细信息。
 * 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。

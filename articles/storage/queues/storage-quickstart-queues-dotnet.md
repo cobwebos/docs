@@ -1,282 +1,338 @@
 ---
-title: 快速入门：使用 .NET 在 Azure 存储中创建队列
-description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
+title: 快速入门：Azure 队列存储库 v12 - .NET
+description: 了解如何使用 Azure 队列 .NET v12 库创建队列并向队列添加消息。 接下来，介绍如何在队列中读取和删除消息。 另外还介绍如何删除队列。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: d3706f8585c2644a31bf1f418f5425e0fa58d2a0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 71a714124cecfc4f985d448371042c8aff092a11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463852"
 ---
-# <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>快速入门：使用 .NET 在 Azure 存储中创建队列
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure 队列存储客户端库 v12
 
-本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。 
+适用于 .NET 的 Azure 队列存储客户端库 v12 入门。 Azure 队列存储是一项可存储大量消息供以后检索和处理的服务。 请按照以下步骤安装包并试用基本任务的示例代码。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列](storage-quickstart-queues-dotnet-legacy.md)。
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+使用适用于 .NET 的 Azure 队列存储客户端库 v12 完成以下操作：
 
-接下来，请下载并安装适用于操作系统的 .NET Core 2.0。 如果运行的是 Windows，可以安装 Visual Studio 并根据偏好使用 .NET Framework。 也可选择安装一个可以在操作系统中使用的编辑器。
+* 创建队列
+* 向队列添加消息
+* 查看队列中的消息
+* 更新队列中的消息
+* 从队列接收消息
+* 删除队列中的消息
+* 删除队列
 
-### <a name="windows"></a>Windows
+[API 参考文档](/dotnet/api/azure.storage.queues) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
-- 安装 [.NET Core for Windows](https://www.microsoft.com/net/download/windows) 或 [.NET Framework](https://www.microsoft.com/net/download/windows)（Visual Studio for Windows 已随附）
-- 安装 [Visual Studio for Windows](https://www.visualstudio.com/)。 如果使用的是 .NET Core，则可以根据需要安装 Visual Studio。  
+## <a name="prerequisites"></a>必备条件
 
-有关在 .NET Core 与 .NET Framework 之间做出选择的信息，请参阅[为服务器应用选择 .NET Core 或 .NET Framework](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)。
+* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+* Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
 
-### <a name="linux"></a>Linux
+## <a name="setting-up"></a>设置
 
-- 安装[用于 Linux 的 .NET Core](https://www.microsoft.com/net/download/linux)
-- （可选）安装 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)
+本部分逐步指导如何准备一个项目，使其与适用于 .NET 的 Azure 队列存储客户端库 v12 配合使用。
 
-### <a name="macos"></a>macOS
+### <a name="create-the-project"></a>创建项目
 
-- 安装[用于 macOS 的 .NET Core](https://www.microsoft.com/net/download/macos)。
-- （可选）安装[用于 Mac 的 Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/)
+创建名为 QueuesQuickstartV12 的 .NET Core 应用程序  。
 
-## <a name="download-the-sample-application"></a>下载示例应用程序
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 QueuesQuickstartV12 的新控制台应用  。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
-本快速入门中使用的示例应用程序是基本的控制台应用程序。 可以浏览 [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) 上的示例应用程序。
+   ```console
+   dotnet new console -n QueuesQuickstartV12
+   ```
 
-使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 
+1. 切换到新创建的 QueuesQuickstartV12 目录  。
 
-```bash
-git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
+   ```console
+   cd QueuesQuickstartV12
+   ```
+
+### <a name="install-the-package"></a>安装包
+
+仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 队列存储客户端库。
+
+```console
+dotnet add package Azure.Storage.Queues
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。  
+### <a name="set-up-the-app-framework"></a>设置应用框架
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+从项目目录中执行以下操作：
 
-## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
+1. 在编辑器中打开 Program.cs  文件
+1. 删除 `Console.WriteLine("Hello World!");` 语句
+1. 添加 `using` 指令
+1. 更新 `Main` 方法声明以[支持异步代码](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main)
 
-若要运行应用程序，必须为存储帐户提供连接字符串。 此示例应用程序从环境变量中读取连接字符串，并使用它对 Azure 存储请求进行授权。
 
-复制连接字符串以后，请将其写入运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开控制台窗口，并遵照适用于操作系统的说明。 将 `<yourconnectionstring>` 替换为实际的连接字符串：
 
-### <a name="windows"></a>Windows
-
-```cmd
-setx storageconnectionstring "<yourconnectionstring>"
-```
-
-添加环境变量后，可能需要重启任何正在运行的、需要读取环境变量的程序（包括控制台窗口）。 例如，如果使用 Visual Studio 作为编辑器，请在运行示例之前重启 Visual Studio。 
-
-### <a name="linux"></a>Linux
-
-```bash
-export storageconnectionstring=<yourconnectionstring>
-```
-
-添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
-
-### <a name="macos"></a>macOS
-
-编辑 .bash_profile，然后添加环境变量：
-
-```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
-```
-
-添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。
-
-## <a name="run-the-sample"></a>运行示例
-
-该示例应用程序创建一个队列并在其中添加消息。 该应用程序首先扫视消息但不会将其从队列中删除，然后检索该消息并将其从队列中删除。
-
-### <a name="windows"></a>Windows
-
-如果使用 Visual Studio 作为编辑器，可以按 **F5** 运行应用程序。 
-
-否则，请导航到应用程序目录，并使用 `dotnet run` 命令运行应用程序。
-
-```
-dotnet run
-```
-
-### <a name="linux"></a>Linux
-
-导航到应用程序目录，使用 `dotnet run` 命令运行应用程序。
-
-```
-dotnet run
-```
-
-### <a name="macos"></a>macOS
-
-导航到应用程序目录，使用 `dotnet run` 命令运行应用程序。
-
-```
-dotnet run
-```
-
-示例应用程序的输出类似于以下示例：
-
-```
-Azure Queues - .NET Quickstart sample
-
-Created queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-
-Added message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' to queue 'quickstartqueues-3136fe9a-fa52-4b19-a447-8999a847da52'
-Message insertion time: 2/7/2019 4:30:46 AM +00:00
-Message expiration time: 2/14/2019 4:30:46 AM +00:00
-
-Contents of peeked message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7': Hello, World
-
-Message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7' becomes visible again at 2/7/2019 4:31:16 AM +00:00
-
-Processed and deleted message 'aa8fa95f-07ea-4df7-bf86-82b3f7debfb7'
-
-Press any key to delete the sample queue.
-```
-
-## <a name="understand-the-sample-code"></a>了解示例代码
-
-接下来介绍示例代码，探讨其工作方式。
-
-### <a name="try-parsing-the-connection-string"></a>尝试分析连接字符串
-
-该示例首先检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 对象。 该示例使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法检查连接字符串是否有效。 如果 **TryParse** 成功，它会初始化 *storageAccount* 变量并返回 **true**。
+代码如下：
 
 ```csharp
-// Retrieve the connection string for use with the application. The storage connection string is stored
-// in an environment variable called storageconnectionstring, on the machine where the application is running.
-// If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+using Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Queues.Models;
+using System;
+using System.Threading.Tasks;
 
-// Check whether the connection string can be parsed.
-if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+namespace QueuesQuickstartV12
 {
-    // If the connection string is valid, proceed with calls to Azure Queues here.
-    ...    
-}
-else
-{
-    Console.WriteLine(
-        "A connection string has not been defined in the system environment variables. " +
-        "Add an environment variable named 'storageconnectionstring' with your storage " +
-        "connection string as a value.");
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+        }
+    }
 }
 ```
 
-### <a name="create-the-queue"></a>创建队列
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-首先，该示例创建一个队列并在其中添加消息。 
+## <a name="object-model"></a>对象模型
+
+Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供了三种类型的资源：
+
+* 存储帐户
+* 存储帐户中的队列
+* 队列中的消息
+
+以下图示显示了这些资源之间的关系。
+
+![队列存储体系结构的图示](./media/storage-queues-introduction/queue1.png)
+
+使用以下 .NET 类与这些资源进行交互：
+
+* [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient)：可以通过 `QueueServiceClient` 管理存储帐户中的所有队列。
+* [QueueClient](/dotnet/api/azure.storage.queues.queueclient)：可以通过 `QueueClient` 类管理和操作单个队列及其消息。
+* [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)：`QueueMessage` 类表示在队列上调用 [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) 时返回的单个对象。
+
+## <a name="code-examples"></a>代码示例
+
+这些示例代码片段演示如何使用适用于 .NET 的 Azure 队列存储客户端库执行以下操作：
+
+* [获取连接字符串](#get-the-connection-string)
+* [创建队列](#create-a-queue)
+* [向队列添加消息](#add-messages-to-a-queue)
+* [查看队列中的消息](#peek-at-messages-in-a-queue)
+* [更新队列中的消息](#update-a-message-in-a-queue)
+* [从队列接收消息](#receive-messages-from-a-queue)
+* [删除队列中的消息](#delete-messages-from-a-queue)
+* [删除队列](#delete-a-queue)
+
+### <a name="get-the-connection-string"></a>获取连接字符串
+
+以下代码检索存储帐户的连接字符串。 连接字符串存储在[配置存储连接字符串](#configure-your-storage-connection-string)部分创建的环境变量中。
+
+在 `Main` 方法内添加此代码：
 
 ```csharp
-// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name 
-// is unique in your storage account. 
-queue = cloudQueueClient.GetQueueReference("quickstartqueues-" + Guid.NewGuid().ToString());
-await queue.CreateAsync();
+Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
 
-Console.WriteLine("Created queue '{0}'", queue.Name);
-Console.WriteLine();
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable called
+// AZURE_STORAGE_CONNECTION_STRING on the machine running the application.
+// If the environment variable is created after the application is launched
+// in a console or with Visual Studio, the shell or application needs to be
+// closed and reloaded to take the environment variable into account.
+string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="add-a-message"></a>添加消息
+### <a name="create-a-queue"></a>创建队列
 
-接下来，该示例将消息添加到队列的后部。 
+确定新队列的名称。 以下代码将 GUID 值追加到队列名称，确保其独一无二。
 
-消息必须采用可包含在 XML 请求中的 UTF-8 编码格式，大小不能超过 64 KB。 如果消息包含二进制数据，则我们建议对消息进行 Base64 编码。
+> [!IMPORTANT]
+> 队列名称只能包含小写字母、数字和连字符，且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 若要详细了解如何命名队列，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
 
-消息的最大生存时间默认设置为 7 天。 可以为消息生存时间指定任何正数。
+
+创建 [QueueClient](/dotnet/api/azure.storage.queues.queueclient) 类的实例。 然后，调用 [CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) 方法在存储帐户中创建队列。
+
+将此代码添加到 `Main` 方法的末尾：
 
 ```csharp
-// Create a message and add it to the queue. Set expiration time to 14 days.
-CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-await queue.AddMessageAsync(message, new TimeSpan(14,0,0,0), null, null, null);
-Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
-Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
-Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
-Console.WriteLine();
+// Create a unique name for the queue
+string queueName = "quickstartqueues-" + Guid.NewGuid().ToString();
+
+Console.WriteLine($"Creating queue: {queueName}");
+
+// Instantiate a QueueClient which will be
+// used to create and manipulate the queue
+QueueClient queueClient = new QueueClient(connectionString, queueName);
+
+// Create the queue
+await queueClient.CreateAsync();
 ```
 
-若要添加未过期的消息，请在对 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的调用中使用 `Timespan.FromSeconds(-1)`。
+### <a name="add-messages-to-a-queue"></a>向队列添加消息
+
+以下代码片段通过调用 [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) 方法，以异步方式将消息添加到队列。 它还保存从 `SendMessageAsync` 调用返回的 [SendReceipt](/dotnet/api/azure.storage.queues.models.sendreceipt)。 收据用于在稍后的程序中更新消息。
+
+将此代码添加到 `Main` 方法的末尾：
 
 ```csharp
-await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+Console.WriteLine("\nAdding messages to the queue...");
+
+// Send several messages to the queue
+await queueClient.SendMessageAsync("First message");
+await queueClient.SendMessageAsync("Second message");
+
+// Save the receipt so we can update this message later
+SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 ```
 
-### <a name="peek-a-message-from-the-queue"></a>扫视队列中的消息
+### <a name="peek-at-messages-in-a-queue"></a>查看队列中的消息
 
-该示例演示如何扫视队列中的消息。 扫视消息时，可以读取该消息的内容。 但是，该消息仍对其他客户端可见，使其他客户端随后可以检索并处理该消息。
+通过调用 [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) 方法，查看队列中的消息。 `PeekMessagesAsync` 方法从队列前面检索一条或多条消息，但不更改消息的可见性。
+
+将此代码添加到 `Main` 方法的末尾：
 
 ```csharp
-// Peek at the message at the front of the queue. Peeking does not alter the message's 
-// visibility, so that another client can still retrieve and process it. 
-CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
+Console.WriteLine("\nPeek at the messages in the queue...");
 
-// Display the ID and contents of the peeked message.
-Console.WriteLine("Contents of peeked message '{0}': {1}", peekedMessage.Id, peekedMessage.AsString);
-Console.WriteLine();
+// Peek at messages in the queue
+PeekedMessage[] peekedMessages = await queueClient.PeekMessagesAsync(maxMessages: 10);
+
+foreach (PeekedMessage peekedMessage in peekedMessages)
+{
+    // Display the message
+    Console.WriteLine($"Message: {peekedMessage.MessageText}");
+}
 ```
 
-### <a name="dequeue-a-message"></a>取消消息排队
+### <a name="update-a-message-in-a-queue"></a>更新队列中的消息
 
-该示例还演示了如何取消消息的排队。 取消消息的排队时，会从队列的前部检索该消息，并使该消息暂时对其他客户端不可见。 默认情况下，消息将持续 30 秒不可见。 在此期间，代码可以处理该消息。 若要完成取消消息排队，请在处理后立即删除该消息，使其他客户端不会将同一条消息取消排队。
-
-如果代码由于硬件或软件故障而无法处理消息，则不可见持续时间过后，该消息将再次可见。 其他客户端可以检索同一消息并重试。
+通过调用 [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) 方法来更新消息的内容。 `UpdateMessageAsync` 方法可以更改消息的可见性超时和内容。 消息内容必须是最大为 64 KB 的 UTF-8 编码的字符串。 除了该消息的新内容，还会传入代码中之前保存的 `SendReceipt` 中的值。 `SendReceipt` 值标识要更新的消息。
 
 ```csharp
-// Retrieve the message at the front of the queue. The message becomes invisible for 
-// a specified interval, during which the client attempts to process it.
-CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
+Console.WriteLine("\nUpdating the third message in the queue...");
 
-// Display the time at which the message will become visible again if it is not deleted.
-Console.WriteLine("Message '{0}' becomes visible again at {1}", retrievedMessage.Id, retrievedMessage.NextVisibleTime);
-Console.WriteLine();
-
-//Process and delete the message within the period of invisibility.
-await queue.DeleteMessageAsync(retrievedMessage);
-Console.WriteLine("Processed and deleted message '{0}'", retrievedMessage.Id);
-Console.WriteLine();
+// Update a message using the saved receipt from sending the message
+await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Third message has been updated");
 ```
 
-### <a name="clean-up-resources"></a>清理资源
+### <a name="receive-messages-from-a-queue"></a>从队列接收消息
 
-该示例通过删除队列来清理它所创建的资源。 删除队列也会删除该队列中包含的所有消息。
+通过调用 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 方法，下载以前添加的消息。
+
+将此代码添加到 `Main` 方法的末尾：
 
 ```csharp
-Console.WriteLine("Press any key to delete the sample queue.");
+Console.WriteLine("\nReceiving messages from the queue...");
+
+// Get messages from the queue
+QueueMessage[] messages = await queueClient.ReceiveMessagesAsync(maxMessages: 10);
+```
+
+### <a name="delete-messages-from-a-queue"></a>删除队列中的消息
+
+在处理完消息后，将消息从队列中删除。 在这种情况下，处理只是在控制台上显示消息。
+
+在处理和删除消息之前，应用会调用 `Console.ReadLine` 以暂停并等待用户输入。 在 [Azure 门户](https://portal.azure.com)中验证是否已正确创建资源，然后再删除它们。 未显式删除的任何消息最终都会在队列中再次变为可见，给用户另一个处理它们的机会。
+
+将此代码添加到 `Main` 方法的末尾：
+
+```csharp
+Console.WriteLine("\nPress Enter key to 'process' messages and delete them from the queue...");
 Console.ReadLine();
-Console.WriteLine("Deleting the queue and any messages it contains...");
-Console.WriteLine();
-if (queue != null)
+
+// Process and delete messages from the queue
+foreach (QueueMessage message in messages)
 {
-    await queue.DeleteIfExistsAsync();
+    // "Process" the message
+    Console.WriteLine($"Message: {message.MessageText}");
+
+    // Let the service know we're finished with
+    // the message and it can be safely deleted.
+    await queueClient.DeleteMessageAsync(message.MessageId, message.PopReceipt);
 }
 ```
 
-## <a name="resources-for-developing-net-applications-with-queues"></a>用于开发包含队列的 .NET 应用程序的资源
+### <a name="delete-a-queue"></a>删除队列
 
-请参阅以下附加资源，了解如何开发包含 Azure 队列的 .NET 应用程序：
+以下代码使用 [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) 方法来删除队列，以便清除该应用所创建的资源。
 
-### <a name="binaries-and-source-code"></a>二进制文件和源代码
+将此代码添加到 `Main` 方法的末尾：
 
-- 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)的 NuGet 包
-    - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [队列](https://www.nuget.org/packages/Azure.Storage.Queues/)
-- 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
+```csharp
+Console.WriteLine("\nPress Enter key to delete the queue...");
+Console.ReadLine();
 
-### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
+// Clean up
+Console.WriteLine($"Deleting queue: {queueClient.Name}");
+await queueClient.DeleteAsync();
 
-- 参阅 [.NET API 参考](https://docs.microsoft.com/dotnet/api/overview/azure/storage)，详细了解 .NET 客户端库。
-- 浏览使用 .NET 客户端库编写的[队列存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)。
+Console.WriteLine("Done");
+```
+
+## <a name="run-the-code"></a>运行代码
+
+此应用创建三条消息并将其添加到 Azure 队列。 此代码列出队列中的消息，并在最终删除队列之前检索并删除这些消息。
+
+在控制台窗口中，导航到应用程序目录，然后生成并运行应用程序。
+
+```console
+dotnet build
+```
+
+```console
+dotnet run
+```
+
+应用的输出类似于以下示例：
+
+```output
+Azure Queue storage v12 - .NET quickstart sample
+
+Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+
+Adding messages to the queue...
+
+Peek at the messages in the queue...
+Message: First message
+Message: Second message
+Message: Third message
+
+Updating the third message in the queue...
+
+Receiving messages from the queue...
+
+Press Enter key to 'process' messages and delete them from the queue...
+
+Message: First message
+Message: Second message
+Message: Third message has been updated
+
+Press Enter key to delete the queue...
+
+Deleting queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
+Done
+```
+
+当应用在接收消息之前暂停时，请在 [Azure 门户](https://portal.azure.com)中检查存储帐户。 验证消息是否在队列中。
+
+按 **Enter** 键接收和删除消息。 出现提示时，请再次按 **Enter** 键，以删除队列并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何将消息添加到队列、扫视队列中的消息、取消消息排队，以及使用 .NET 处理消息。 
+在本快速入门中，你学习了如何使用异步 .NET 代码创建队列并向其添加消息。 然后，你学习了如何扫视、检索和删除消息。 最后，你学习了如何删除消息队列。
+
+有关教程、示例、快速入门和其他文档，请访问：
 
 > [!div class="nextstepaction"]
-> [在使用 Azure 队列存储的应用程序之间进行通信](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [面向 .NET 和 .NET Core 开发人员的 Azure](https://docs.microsoft.com/dotnet/azure/)
 
-- 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/)（.NET 10 分钟入门）。
+* 若要了解详细信息，请参阅[适用于 .NET 的 Azure 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)。
+* 若要查看更多 Azure 队列存储示例应用，请继续学习 [Azure 队列存储 v12 .NET 客户端库示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)。
+* 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/)（.NET 10 分钟入门）。

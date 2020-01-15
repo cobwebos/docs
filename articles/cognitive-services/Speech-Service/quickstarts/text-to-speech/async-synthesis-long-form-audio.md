@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1558b2eb12b1d4745cdfeab41fc2d1bd829b3d9c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816690"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944680"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门： Python 中长格式音频的异步合成（预览版）
 
-在本快速入门中，你将使用长音频 API 将文本异步转换为语音，并从服务提供的 URI 检索音频输出。 此 REST API 非常适合于需要将超过10000个字符或50段的文本文件转换为合成语音的内容提供商。 有关详细信息，请参阅[长音频 API](../../long-audio-api.md)。
+在本快速入门中，你将使用长音频 API 将文本异步转换为语音，并从服务提供的 URI 检索音频输出。 此 REST API 非常适合于需要从大于5000字符的文本合成音频的内容提供商（或长度超过10分钟）。 有关详细信息，请参阅[长音频 API](../../long-audio-api.md)。
 
 > [!NOTE]
 > 用于长格式音频的异步合成只能与[自定义神经语音](../../how-to-custom-voice.md#custom-neural-voices)一起使用。
@@ -50,13 +50,13 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> 如果尚未使用这些模块，则需在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests urllib3`。
+> 如果尚未使用这些模块，则需要在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests urllib3`。
 
 这些模块用于分析参数、构造 HTTP 请求，以及调用文本到语音转换长音频 REST API。
 
 ## <a name="get-a-list-of-supported-voices"></a>获取支持的语音的列表
 
-此代码将获取可用于转换文本到语音转换的可用声音的列表。 添加此代码 `voice_synthesis_client.py`：
+此代码将获取可用于转换文本到语音转换的可用声音的列表。 将代码添加到 `voice_synthesis_client.py`：
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,13 +80,18 @@ if args.voices:
 
 ### <a name="test-your-code"></a>测试代码
 
-让我们测试到目前为止所做的工作。 运行此命令，将 `<your_key>` 替换为语音订阅密钥，并将其与创建语音资源的区域 `<region>` （例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+让我们测试到目前为止所做的工作。 需要在下面的请求中更新几项内容：
+
+* 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+* 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+
+运行以下命令：
 
 ```console
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-应会看到如下所示的输出：
+你将看到如下所示的输出：
 
 ```console
 There are xx voices available:
@@ -95,14 +100,16 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+## <a name="prepare-input-files"></a>准备输入文件
+
+准备输入文本文件。 它可以是纯文本或 SSML 文本。 有关输入文件要求，请参阅如何为[合成准备内容](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)。
+
 ## <a name="convert-text-to-speech"></a>将文本转换为语音
 
-下一步是准备输入文本文件。 它可以是纯文本或 SSML，但不得超过10000个字符或50个段落。 有关要求的完整列表，请参阅[长音频 API](../../long-audio-api.md)。
-
-准备好文本文件之后。 下一步是将用于语音合成的代码添加到项目。 将以下代码添加到 `voice_synthesis_client.py`：
+准备好输入文本文件后，将此用于语音合成的代码添加到 `voice_synthesis_client.py`：
 
 > [!NOTE]
-> 默认情况下，音频输出设置为 riff-16khz-16 位。 有关支持的音频输出的详细信息，请参阅[长音频 API](../../long-audio-api.md#audio-output-formats)。
+> "concatenateResult" 是一个可选参数。 如果未设置此参数，则将按段落生成音频输出。 还可以通过设置参数将音频连接到1个输出。 默认情况下，音频输出设置为 riff-16khz-16 位。 有关支持的音频输出的详细信息，请参阅[音频输出格式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)。
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -123,7 +130,7 @@ def submitSynthesis():
         files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
-        location = response.headers['Operation-Location']
+        location = response.headers['Location']
         id = location.split("/")[-1]
         print("Submit synthesis request successful")
         return id
@@ -165,13 +172,13 @@ if args.submit:
 
 ### <a name="test-your-code"></a>测试代码
 
-让我们尝试使用输入文件作为源来发出合成文本请求。 需要在下面的请求中更新几项内容：
+让我们使用输入文件作为源来发出合成文本请求。 需要在下面的请求中更新几项内容：
 
 * 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
 * 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
-* 将 `<input>` 替换为要从文本到语音转换的文本文件的路径。
+* 将 `<input>` 替换为已准备好进行文本到语音处理的文本文件的路径。
 * 将 `<locale>` 替换为所需的输出区域设置。 有关详细信息，请参阅[语言支持](../../language-support.md#neural-voices)。
-* 将 `<voice_guid>` 替换为音频输出的所需声音。 使用返回的其中一个语音[获取支持的声音列表](#get-a-list-of-supported-voices)，或使用[语言支持](../../language-support.md#neural-voices)中提供的神经声音列表。
+* 将 `<voice_guid>` 替换为所需的输出声音。 使用返回的其中一个语音[获取支持的语音列表](#get-a-list-of-supported-voices)。
 
 用以下命令将文本转换为语音：
 
@@ -180,9 +187,11 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 ```
 
 > [!NOTE]
-> "concatenateResult" 是一个可选参数，如果未提供此参数，则输出将以多个波形文件的形式提供，每个文件对应一行。
+> 如果有多个输入文件，则需要提交多个请求。 存在一些需要注意的限制。 
+> * 每个 Azure 订阅帐户都允许客户端每秒向服务器提交多达**5**次请求。 如果超出限制，客户端将收到429错误代码（请求过多）。 请减少每秒请求数
+> * 允许服务器运行并为每个 Azure 订阅帐户最多创建**120**请求。 如果超过此限制，则服务器将返回429错误代码（请求过多）。 请等待，并避免提交新请求，直到完成一些请求
 
-应会看到如下所示的输出：
+你将看到如下所示的输出：
 
 ```console
 Submit synthesis request successful
@@ -200,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-提供的结果包含服务生成的输入文本和音频输出文件。 这些将作为 zip 下载。
+结果包含服务生成的输入文本和音频输出文件。 可以在 zip 中下载这些文件。
 
 ## <a name="remove-previous-requests"></a>删除以前的请求
 
-每个订阅的请求数限制为2000。 因此，有时需要删除以前提交的请求，然后才能生成新的请求。 如果不删除现有请求，当超过2000时，会收到错误。
+服务器将为每个 Azure 订阅帐户最多保留**20000**请求。 如果请求量超过此限制，请在创建新请求之前删除以前的请求。 如果不删除现有请求，会收到错误通知。
 
-将以下代码添加到 `voice_synthesis_client.py`：
+将代码添加到 `voice_synthesis_client.py`：
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -239,13 +248,18 @@ if args.delete:
 
 ### <a name="test-your-code"></a>测试代码
 
-运行此命令，将 `<your_key>` 替换为语音订阅密钥，并将其与创建语音资源的区域 `<region>` （例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+现在，让我们看看你之前提交的请求。 在继续之前，需要更新此请求中的几个事项：
+
+* 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+* 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+
+运行以下命令：
 
 ```console
-python voice_synthesis_client.py – syntheses -key <your_key> -region <Region>
+python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-这将返回你请求的 syntheses 的列表。 应会看到如下所示的输出：
+这将返回你所做的合成请求的列表。 你会看到如下所示的输出：
 
 ```console
 There are <number> synthesis requests submitted:
@@ -254,16 +268,22 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-现在，让我们使用其中一些值删除/删除以前提交的请求。 运行此命令，将 `<your_key>` 替换为语音订阅密钥，并将其与创建语音资源的区域 `<region>` （例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。 `<synthesis_id>` 应是上一请求中返回的值之一。
+现在，让我们删除以前提交的请求。 需要更新以下代码中的一些事项：
+
+* 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+* 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
+* 将 `<synthesis_id>` 替换为在上一请求中返回的值。
 
 > [!NOTE]
 > 不能删除或删除状态为 "正在运行"/"正在等待" 的请求。
 
+运行以下命令：
+
 ```console
-python voice_synthesis_client.py – delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
+python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-应会看到如下所示的输出：
+你会看到如下所示的输出：
 
 ```console
 delete voice synthesis xxx
@@ -272,7 +292,7 @@ delete successful
 
 ## <a name="get-the-full-client"></a>获取完整客户端
 
-可从[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)下载完整的 `voice_synthesis_client.py`。
+已完成的 `voice_synthesis_client.py` 可从[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)下载。
 
 ## <a name="next-steps"></a>后续步骤
 

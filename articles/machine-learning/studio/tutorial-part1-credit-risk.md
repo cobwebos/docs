@@ -1,7 +1,7 @@
 ---
 title: 教程 1：预测信用风险
 titleSuffix: ML Studio (classic) - Azure
-description: 本详细教程介绍如何创建预测分析解决方案，用于在经典版 Azure 机器学习工作室中进行信用风险评估。 本教程是由三个部分构成的系列教程的第一部分。  其中演示了如何创建工作区、上传数据和创建试验。
+description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第一部分。  其中演示了如何创建工作区、上传数据和创建试验。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432247"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "73838857"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用经典版 Azure 机器学习工作室和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典版）和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -38,7 +38,7 @@ ms.locfileid: "73838857"
 
 然后，可以使用此试验[训练第 2 部分中的模型](tutorial-part2-credit-risk-train.md)，并[在第 3 部分部署这些模型](tutorial-part3-credit-risk-deploy.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程默认用户此前至少使用过机器学习工作室（经典版）一次，且对机器学习概念有一些了解。 但不假设用户精通其中任一领域。
 
@@ -95,7 +95,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 ### <a name="convert-the-dataset-format"></a>转换数据集格式
 
-原始数据集使用空格分隔的格式。 经典版机器学习工作室使用逗号分隔值 (CSV) 文件效果更好，所以将通过把空格替换为逗号来转换数据集。  
+原始数据集使用空格分隔的格式。 机器学习工作室（经典版）使用逗号分隔值 (CSV) 文件效果更好，所以我们通过将空格替换为逗号来转换数据集。  
 
 转换此数据的方法有很多。 一种方法是使用以下 Windows PowerShell 命令：   
 
@@ -109,7 +109,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>将数据集上传到机器学习工作室（经典版）
 
-数据转换为 CSV 格式后，需要将其上传到经典版机器学习工作室。 
+数据转换为 CSV 格式后，需要将其上传到机器学习工作室（经典版）。 
 
 1. 打开机器学习工作室（经典版）主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
@@ -131,7 +131,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 9. 如果需要，可添加描述。
 
-10. 单击“确定”  复选标记。  
+10. 单击**确定**复选标记。  
 
     ![上传数据集](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
@@ -145,7 +145,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 ## <a name="create-an-experiment"></a>创建试验
 
-本教程的下一步是在经典版机器学习工作室中创建一个使用所上传数据集的试验。  
+本教程的下一步是在机器学习工作室（经典版）中创建一个使用我们上传的数据集的试验。  
 
 1. 在工作室（经典版）中，单击窗口底部的“+新建”  。
 1. 选择“实验”  ，并选择“空白实验”。 
@@ -173,7 +173,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 可以查看前 100 行数据和整个数据集的一些统计信息：单击数据集的输出端口（底部的小圆圈），然后选择“可视化”  。  
 
-因为数据文件没有列标题，所以经典版工作室提供了通用标题（Col1、Col2 等  ）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
+因为数据文件没有列标题，所以工作室（经典版）提供了通用标题（Col1、Col2 等  ）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
 
 可以使用[编辑元数据][edit-metadata]模块来添加列标题。
 

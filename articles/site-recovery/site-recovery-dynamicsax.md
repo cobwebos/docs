@@ -1,18 +1,16 @@
 ---
-title: 使用 Azure Site Recovery 进行多层 Dynamics AX 部署的灾难恢复 |Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 为 Dynamics AX 设置灾难恢复
-author: carmonmills
+title: Dynamics AX 与 Azure Site Recovery 的灾难恢复
+description: 了解如何设置 Azure Site Recovery 的 Dynamics AX 的灾难恢复
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930189"
+ms.locfileid: "75941592"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -39,7 +37,7 @@ ms.locfileid: "75930189"
 
 ## <a name="site-recovery-support"></a>Site Recovery 支持
 
-为创作本文，我们在 Windows Server 2012 R2 Enterprise 上装载了 Dynamics AX 2012 R3，并使用了 VMware 虚拟机。 由于 Site Recovery 复制不区分应用程序，因此预计此处提供的建议也适用于后续方案。
+为创作本文，我们在 Windows Server 2012 R2 Enterprise 上装载了 Dynamics AX 2012 R3，并使用了 VMware 虚拟机。 由于 Site Recovery 复制是应用程序不可知的，因此我们预计此处提供的建议适用于以下方案。
 
 ### <a name="source-and-target"></a>源和目标
 

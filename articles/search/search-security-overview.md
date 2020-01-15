@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4788dc700324637d69ffbcb4308df3a323b9590c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934077"
+ms.locfileid: "75945689"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -43,7 +43,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索侦听 HTTPS 端口443。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>客户端到服务的所有 Azure 认知搜索交互都是支持 SSL/TLS 1.2 的交互。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密是 Azure 认知搜索内部的，证书和加密密钥由 Microsoft 内部管理，并采用全局应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已在2018年1月24日公布，适用于所有地区的所有服务层，包括免费级别。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥进行加密现可用于在2019年1月1日或之后创建的搜索服务。<br><br>Azure 认知搜索索引和同义词映射现在可以在 Azure Key Vault 中通过客户密钥管理密钥进行静态加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代静态的默认加密，而是应用于该功能。<br><br>启用此功能将提高索引大小并降低查询性能。 基于观察到目前为止，你可以在查询时间中看到增加 30%-60%，但实际性能会因索引定义和查询类型而有所不同。 由于对性能的影响，我们建议您只对真正需要此功能的索引启用此功能。
+| 静态加密 <br>客户管理的密钥 | 使用客户托管密钥进行加密现可用于在2019年1月1日或之后创建的搜索服务。 它在免费（共享）服务中不受支持。<br><br>Azure 认知搜索索引和同义词映射现在可以在 Azure Key Vault 中通过客户密钥管理密钥进行静态加密。 若要了解详细信息，请参阅[管理 Azure 认知搜索中的加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代静态的默认加密，而是应用于该功能。<br><br>启用此功能将提高索引大小并降低查询性能。 基于观察到目前为止，你可以在查询时间中看到增加 30%-60%，但实际性能会因索引定义和查询类型而有所不同。 由于对性能的影响，我们建议您只对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 

@@ -3,12 +3,12 @@ title: 用于生成、测试 & 修补程序映像的多步骤任务
 description: 多步骤任务简介，Azure 容器注册表中的 ACR 任务的一项功能，可提供基于任务的工作流，用于在云中构建、测试和修补容器映像。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456166"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945669"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 
@@ -26,7 +26,7 @@ ms.locfileid: "74456166"
 1. 如果测试通过，则生成 Helm 图表存档包
 1. 使用新的 Helm 图表存档包执行 `helm upgrade`
 
-所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价的信息，请参阅 **Azure 容器注册表定价**中的“容器生成”部分[][pricing]。
+所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价的信息，请参阅[Azure 容器注册表定价][pricing]中的**容器构建**部分。
 
 
 ## <a name="common-task-scenarios"></a>常见任务方案
@@ -50,33 +50,33 @@ ACR 任务中的多步骤任务定义为 YAML 文件中的一系列步骤。 每
 以下代码片段演示如何组合使用这些任务步骤类型。 多步骤任务使用类似于以下内容的 YAML 文件可以像从 Dockerfile 构建单个映像并推送到注册表一样简单：
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 或更复杂，例如以下虚构的多步骤定义，其中包括用于生成、测试 helm 包和 helm 部署的步骤（未显示容器注册表和 Helm 存储库配置）：
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
 有关多个方案，请参阅多步骤任务 YAML 文件和 Dockerfile 的[任务示例](container-registry-tasks-samples.md)。
@@ -85,7 +85,7 @@ steps:
 
 任务既支持手动执行（称作“快速运行”），也支持在提交 Git 或更新基础映像时的自动执行。
 
-若要运行某个任务，请先在 YAML 文件中定义该任务的步骤，然后执行 Azure CLI 命令 [az acr run][az-acr-run]。
+若要运行任务，首先在 YAML 文件中定义任务的步骤，然后执行 Azure CLI 命令[az acr run][az-acr-run]。
 
 以下示例 Azure CLI 命令使用示例任务 YAML 文件运行一个任务。 其任务的步骤生成映像，然后推送该映像。 在运行该命令之前，请使用自己的 Azure 容器注册表名称更新 `\<acrName\>`。
 

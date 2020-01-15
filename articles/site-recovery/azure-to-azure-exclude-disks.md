@@ -1,18 +1,16 @@
 ---
 title: 从具有 Azure Site Recovery 和 Azure PowerShell 的复制中排除 Azure VM 磁盘
 description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 时排除 Azure 虚拟机的磁盘。
-author: carmonmills
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/18/2019
-ms.author: carmonm
-ms.openlocfilehash: ead46368db68cf11facfe437b3ea0ef77171d548
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 222e8f014741f5d672dd50df68228efdb6c24bf3
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929812"
+ms.locfileid: "75942285"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>从 Azure Vm 的 PowerShell 复制中排除磁盘
 

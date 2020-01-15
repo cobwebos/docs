@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922339"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942141"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -97,6 +97,7 @@ ms.locfileid: "75922339"
 |**从存储帐户提取的异常数据量**|表示与此存储容器上的最近活动相比，已提取异常大量的数据。 可能的原因是，攻击者从容纳 blob 存储的容器中提取了大量数据。|渗透|
 |**存储帐户中的异常删除**|指示存储帐户中发生了一个或多个意外的删除操作，与此帐户上的最近活动相比。 可能的原因是攻击者已从存储帐户中删除数据。|渗透|
 |**将 .cspkg 的异常上传到存储帐户**|表示 Azure 云服务包（.cspkg 文件）已以异常方式上传到存储帐户，与此帐户上的最近活动相比。 可能的原因是攻击者已准备好将恶意代码从存储帐户部署到 Azure 云服务。|LateralMovement/执行|
+|**将 .exe 的异常上传到存储帐户**|表示与此帐户上的最近活动相比，.exe 文件已以异常方式上传到存储帐户。 可能的原因是攻击者已将恶意可执行文件上传到存储帐户，或者合法用户已上传可执行文件。|LateralMovement/执行|
 |**存储帐户中访问权限的异常更改**|指示此存储容器的访问权限已以异常方式更改。 可能的原因是攻击者已更改容器权限以降低其安全状况或获取持久性。|持久性|
 |**存储帐户中的异常访问检查**|表示与此帐户上的最近活动相比，对存储帐户的访问权限的检查方式与此相同。 一个可能的原因是攻击者为将来的攻击执行了侦测。|集合|
 |**存储帐户中的异常数据浏览**|表示与此帐户上的最近活动相比，存储帐户中的 blob 或容器已以异常方式进行枚举。 一个可能的原因是攻击者为将来的攻击执行了侦测。|集合|

@@ -1,18 +1,16 @@
 ---
 title: 设置 SAP NetWeaver 灾难恢复与 Azure Site Recovery
-description: 本文介绍如何使用 Azure Site Recovery 为 SAP NetWeaver 应用程序部署设置灾难恢复。
-author: carmonmills
+description: 了解如何通过 Azure Site Recovery 设置 SAP NetWeaver 的灾难恢复。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934449"
+ms.locfileid: "75940669"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
@@ -62,28 +60,28 @@ ms.locfileid: "75934449"
 对于灾难恢复 (DR)，必须能够故障转移到次要区域。 每个层使用不同的策略提供灾难恢复 (DR) 保护。
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>运行 SAP Web 调度程序池的 VM 
-Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负载均衡器。 为了实现 Web 调度程序组件的高可用性，在轮循机制配置中使用了 Azure 负载均衡器来实施并行 Web 调度程序设置，以便在均衡器池中的可用 Web 调度程序之间分配 HTTP(S) 流量。 这将会使用 Azure Site Recovery(ASR) 进行复制，并且自动化脚本将用于在灾难恢复区域上配置负载均衡器。 
+Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负载均衡器。 为了实现 Web 调度程序组件的高可用性，在轮循机制配置中使用了 Azure 负载均衡器来实施并行 Web 调度程序设置，以便在均衡器池中的可用 Web 调度程序之间分配 HTTP(S) 流量。 这将使用 Site Recovery 进行复制，并将使用自动化脚本来配置灾难恢复区域中的负载均衡器。 
 
 #### <a name="vms-running-application-servers-pool"></a>运行应用程序服务器池的 VM
-若要管理 ABAP 应用程序服务器的登录组，需使用 SMLG 事务。 该事务使用 Central Services 的消息服务器中的负载均衡功能，在 SAPGUI 的 SAP 应用程序服务器池之间分配工作负荷，以及分配 RFC 流量。 这将会使用 Azure Site Recovery 进行复制 
+若要管理 ABAP 应用程序服务器的登录组，需使用 SMLG 事务。 该事务使用 Central Services 的消息服务器中的负载均衡功能，在 SAPGUI 的 SAP 应用程序服务器池之间分配工作负荷，以及分配 RFC 流量。 这将使用 Site Recovery 进行复制。
 
 #### <a name="vms-running-sap-central-services-cluster"></a>运行 SAP Central Services 群集的 VM
 此参考体系结构在应用层中的 VM 上运行 Central Services。 如果将 Central Services 部署到单个 VM（高可用性不是一项要求时，通常采用这种部署方式），则它可能会成为潜在的单一故障点 (SPOF)。<br>
 
 若要实现高可用性解决方案，可以使用共享磁盘群集或文件共享群集。若要为共享磁盘群集配置 VM，请使用 Windows Server 故障转移群集。 建议将云见证用作仲裁见证。 
  > [!NOTE]
- > Azure Site Recovery 不会复制云见证，因此建议将云见证部署在灾难恢复区域中。
+ > Site Recovery 不会复制云见证服务器，因此建议在灾难恢复区域中部署云见证。
 
 为了支持故障转移群集环境，[SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) 会通过复制群集节点拥有的独立磁盘来执行群集共享卷功能。 Azure 原生并不支持共享磁盘，因此需要 SIOS 提供的解决方案。 
 
 处理群集的另一种方法是实现文件共享群集。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) 最近修改了 Central Services 部署模式，以允许通过 UNC 路径访问 /sapmnt 全局目录。 但是，我们仍然建议确保 /sapmnt UNC 共享具有高可用性。 这可在 Central Services 实例上实现：将 Windows Server 故障转移群集与 Windows Server 2016 中的横向扩展文件服务器 (SOFS) 和存储空间直通 (S2D) 功能配合使用。 
  > [!NOTE]
- > 目前 Azure Site Recovery 仅支持使用 Datakeeper 的存储空间直通和被动节点对虚拟机进行故障一致性点复制
+ > 目前 Site Recovery 仅支持使用 Datakeeper 的存储空间直通和被动节点对虚拟机进行故障一致性点复制
 
 
 ## <a name="disaster-recovery-considerations"></a>灾难恢复注意事项
 
-可以使用 Azure Site Recovery 跨 Azure 区域安排整个 SAP 部署的故障转移。
+你可以使用 Site Recovery 来协调跨 Azure 区域的完整 SAP 部署的故障转移。
 下面是设置灾难恢复的步骤 
 
 1. 复制虚拟机 
@@ -133,7 +131,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让应用程序正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目，以及更改绑定和连接。
 
 
-可以单击下面的“部署到 Azure”按钮，将最常用的 Azure Site Recovery 脚本部署到自动化帐户。 使用任何已发布的脚本时，请确保遵循脚本中的指导。
+可以通过单击下面的 "部署到 Azure" 按钮，将最常使用的 Site Recovery 脚本部署到自动化帐户。 使用任何已发布的脚本时，请确保遵循脚本中的指导。
 
 [![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
@@ -164,5 +162,5 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解如何使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案，请参阅可下载的白皮书 [SAP NetWeaver：使用 Azure Site Recovery 构建灾难恢复解决方案](https://aka.ms/asr_sap)。 本白皮书介绍了针对各种 SAP 体系结构的建议，列出了 Azure 上的 SAP 所支持的应用程序和 VM 类型，并介绍了用于灾难恢复解决方案的测试计划选项。
+* 若要了解有关使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案的详细信息，请参阅可下载的白皮书[SAP NetWeaver：使用 Site Recovery 构建灾难恢复解决方案](https://aka.ms/asr_sap)。 本白皮书介绍了针对各种 SAP 体系结构的建议，列出了 Azure 上的 SAP 所支持的应用程序和 VM 类型，并介绍了用于灾难恢复解决方案的测试计划选项。
 * 详细了解如何使用 Site Recovery [复制其他工作负荷](site-recovery-workload.md)。

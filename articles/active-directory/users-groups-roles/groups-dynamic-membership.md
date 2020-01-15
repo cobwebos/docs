@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768702"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940995"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -321,7 +321,12 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 "所有用户" 规则是使用单表达式构造的，使用-ne 运算符和 null 值。 此规则将 B2B 来宾用户以及成员用户添加到该组。
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+如果你希望组排除来宾用户并且只包括你的租户的成员，则可以使用以下语法：
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>创建 "所有设备" 规则
@@ -331,7 +336,7 @@ user.objectid -ne null
 "所有设备" 规则使用单个表达式构造，使用-ne 运算符和 null 值：
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性

@@ -8,22 +8,26 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cfa8db0d00f351f5ab2bda96744305ca83cccb19
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922459"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945825"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>创建用于连接到 Azure 认知搜索的专用终结点（预览）
 
-Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。 专用终结点使用来自[虚拟网络地址空间](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)的 IP 地址来搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 有关支持专用链接的其他 PaaS 服务的列表，请查看产品文档中的 "[可用性" 部分](../private-link/private-link-overview.md#availability)。
+本文介绍如何使用门户创建无法通过公共 IP 地址访问的新 Azure 认知搜索 service 实例。 接下来，配置同一虚拟网络中的 Azure 虚拟机，并使用它通过专用终结点访问搜索服务。
 
 > [!Important]
-> Azure 认知搜索的专用终结点支持作为有限访问预览版提供，当前不适用于生产。 如果要访问预览，请填写并提交[访问请求表单](https://aka.ms/SearchPrivateLinkRequestAccess)。 窗体请求有关你、你的公司和一般应用程序体系结构的信息。 查看请求后，将收到一封包含其他说明的确认电子邮件。
+> 针对 Azure 认知搜索的专用终结点支持[作为受限](https://aka.ms/SearchPrivateLinkRequestAccess)访问预览版提供。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 >
-> 授予对预览版的访问权限后，便可以使用 Azure 门户和 REST API 版本[2019-10-06-preview](search-api-preview.md)来配置服务的专用终结点。
+> 授予对预览版的访问权限后，便可以使用 Azure 门户或[管理 REST API 版本 2019-10-06-preview](https://docs.microsoft.com/rest/api/searchmanagement/)来配置服务的专用终结点。
 >   
+
+## <a name="why-use-private-endpoint-for-secure-access"></a>为什么使用专用终结点进行安全访问？
+
+Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。 专用终结点使用来自[虚拟网络地址空间](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)的 IP 地址来搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 有关支持专用链接的其他 PaaS 服务的列表，请查看产品文档中的 "[可用性" 部分](../private-link/private-link-overview.md#availability)。
 
 搜索服务的专用终结点可让你：
 
@@ -36,16 +40,18 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 > * 仅可用于**基本**层上的搜索服务。 
 > * 可在美国西部2、美国中部、美国东部、美国中南部、澳大利亚东部和澳大利亚东南部地区获得。
 > * 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全考虑，出于安全原因，对索引数据和服务中的各种组件（如索引、索引器和技能组合定义）的门户访问是受限的。
-> * 如果服务终结点是专用的，则必须使用搜索 API 将文档上传到索引。
+> * 如果服务终结点是专用的，则必须使用[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)将文档上传到索引。
 > * 你必须使用以下链接来查看 Azure 门户中的专用终结点支持选项： https://portal.azure.com/?feature.enablePrivateEndpoints=true
 
-在本文中，你将了解如何使用门户创建新的 Azure 认知搜索服务实例，该实例不能通过公共 IP 地址访问，配置同一虚拟网络中的 Azure 虚拟机，并使用它通过专用访问搜索服务终结点.
 
 
-## <a name="create-a-vm"></a>创建 VM
+## <a name="request-access"></a>请求访问权限 
+
+单击 "[请求访问权限](https://aka.ms/SearchPrivateLinkRequestAccess)" 注册此预览功能。 此窗体请求有关您、您的公司和常规网络拓扑的信息。 查看请求后，将收到一封包含其他说明的确认电子邮件。
+
+## <a name="create-the-virtual-network"></a>创建虚拟网络
+
 在本部分中，你将创建一个虚拟网络和子网来托管将用于访问搜索服务的专用终结点的 VM。
-
-### <a name="create-the-virtual-network"></a>创建虚拟网络
 
 1. 从 "Azure 门户主页" 选项卡中，选择 "**创建资源** > **网络** > **虚拟网络**"。
 
@@ -65,7 +71,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 1. 将其余的设置保留默认值，然后选择“创建”。
 
 
-## <a name="create-your-search-service-with-a-private-endpoint"></a>使用私有终结点创建搜索服务
+## <a name="create-a-search-service-with-a-private-endpoint"></a>使用专用终结点创建搜索服务
 
 在本部分中，将创建一个具有专用终结点的新 Azure 认知搜索服务。 
 
@@ -119,9 +125,9 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 从左侧内容菜单中选择 "**密钥**"。
 
-1. 复制用于稍后的**主管理密钥**。
+1. 连接到服务时，请复制**主管理密钥**。
 
-### <a name="create-a-virtual-machine"></a>创建虚拟机
+## <a name="create-a-virtual-machine"></a>创建虚拟机
 
 1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **计算** > **虚拟机**"。
 
@@ -170,9 +176,9 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 1. 看到“验证通过”消息时，选择“创建”。 
 
 
-## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
+## <a name="connect-to-the-vm"></a>连接到 VM
 
-从 Internet 连接到 VM *myVm*，如下所示：
+下载并连接到 VM *myVm* ，如下所示：
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
@@ -196,9 +202,11 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
 
-## <a name="access-the-search-service-privately-from-the-vm"></a>从 VM 私下访问搜索服务
+## <a name="test-connections"></a>测试连接
 
 在本部分中，你将验证对搜索服务的专用网络访问，并使用专用终结点将其私下连接到。
+
+回忆一下，与搜索服务的所有交互都需要[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此预览版不支持门户和 .NET SDK。
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
 
@@ -213,14 +221,14 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     Address:  10.0.0.5
     Aliases:  [search service name].search.windows.net
     ```
-1. 按照此 VM 的以下[快速入门](search-get-started-postman.md)，使用 REST API 在 Postman 中的服务中创建新的搜索索引。  使用在上一步骤中复制的密钥对服务进行身份验证。
 
-1. 在本地工作站上的 Postman 中尝试多个相同的请求。
+1. 在 VM 中，连接到搜索服务并创建索引。 可以按照本[快速入门](search-get-started-postman.md)教程使用 REST API 在 Postman 中的服务中创建新的搜索索引。 若要从 Postman 设置请求，需要搜索服务终结点（https：//[search service name]）和在上一步中复制的管理 api 密钥。
 
-1. 如果能够从 VM 完成快速入门，但收到错误消息，指出远程服务器不存在于本地工作站上，则表明已成功配置搜索服务的专用终结点。
+1. 从 VM 完成快速入门是确认服务是否完全正常运行。
 
 1. 关闭与 *myVM*的远程桌面连接。 
 
+1. 若要验证你的服务在公共终结点上是否不可访问，请在本地工作站上打开 Postman，并尝试快速入门中的前几个任务。 如果收到一条错误消息，指出远程服务器不存在，则表明已成功配置了搜索服务的专用终结点。
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、搜索服务和 VM 后，请删除资源组及其包含的所有资源：

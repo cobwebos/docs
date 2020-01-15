@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447885"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
 在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。
 
 角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -51,7 +49,11 @@ ms.locfileid: "74894612"
 
 ## <a name="create-a-new-app"></a>创建新应用
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. 使用 URL [https://preview.luis.ai](https://preview.luis.ai) 登录到预览版 LUIS 门户。
+
+1. 选择“创建新应用”，输入名称 `HumanResources`，保留默认的区域性“英语”。   将说明保留为空。
+
+1. 选择“完成”  。
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>创建在城市之间移动员工的意向
 
@@ -61,7 +63,8 @@ ms.locfileid: "74894612"
 
 1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。 
 
-    ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. 将示例陈述添加到意向。
 
@@ -77,7 +80,8 @@ ms.locfileid: "74894612"
     |将 Steve Standish 从圣地亚哥调至贝尔维尤 |
     |将 Tanner Thompson 从堪萨斯城派往芝加哥|
 
-    [![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 的屏幕截图，在 MoveEmployee 意向中有新言语](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>添加预生成实体 geographyV2
 
@@ -87,16 +91,30 @@ ms.locfileid: "74894612"
 
 1. 选择“添加预生成实体”，然后在搜索栏中选择 `geo` 来筛选预生成实体。 
 
-    ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. 选中该复选框，然后选择“完成”。 
 1. 在“实体”列表中，选择“geographyV2”打开新实体。  
 1. 添加两个角色：`Origin` 和 `Destination`。
 
-    ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. 在左侧导航栏中选择“意向”，然后选择“MoveEmployeeToCity”意向。   请注意，城市名称标有预生成实体 **geographyV2**。
-1. 在列表的第一个言语中，选择来源位置。 此时会显示一个下拉菜单。 在列表中选择“geographyV2”，然后在弹出的菜单中选择“来源”。  
-1. 使用上一步骤中所述的方法来标记所有言语中位置的所有角色。
+    > [!div class="mx-imgBorder"]
+    > ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. 在左侧导航栏中选择“意向”，然后选择“MoveEmployeeToCity”意向。   请注意，城市名称标有预生成实体 **geographyV2**。
+1. 在上下文工具栏中，选择“实体调色板”  。
+
+    > [!div class="mx-imgBorder"]
+    > ![从内容工具栏选择实体调色板](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. 选择预生成的实体 **geographyV2**，然后选择“实体检查器”。 
+1. 在**实体检查器**中，选择一个角色：**目标**。 这会更改鼠标光标。 使用光标在所有属于目标位置的言语中标记文本。
+
+    > [!div class="mx-imgBorder"]
+    > ![选择实体调色板中的角色](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. 返回到**实体检查器**，将角色更改为**源**。 使用光标在所有属于源位置的言语中标记文本。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向
 

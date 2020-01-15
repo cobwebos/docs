@@ -1,21 +1,18 @@
 ---
-title: 排查 Azure Site Recovery 的 Azrue Vm 正在进行的复制
-description: 排查复制 Azure 虚拟机进行灾难恢复时出现的错误和问题
-services: site-recovery
-author: carmonmills
+title: 排查 Azure Site Recovery 的 Azure Vm 复制问题
+description: 排查 Azure Site Recovery 的 Azure VM 灾难恢复中的复制问题
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: carmonm
-ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930742"
+ms.locfileid: "75941566"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>排查 Azure 到 Azure VM 复制中持续出现的问题
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
 本文介绍了在不同区域之间复制和恢复 Azure 虚拟机时在 Azure Site Recovery 中经常出现的问题。 另外还介绍了如何排查这些问题。 有关受支持的配置的详细信息，请参阅[复制 Azure VM 支持矩阵](site-recovery-support-matrix-azure-to-azure.md)。
 
@@ -67,7 +64,7 @@ Azure Site Recovery 根据磁盘类型实施数据更改率限制。 若要判�
     - 导航到受影响的复制计算机的 "磁盘" 边栏选项卡，并复制副本磁盘名称
     - 导航到此副本托管磁盘
     - 你可能会在概述边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此标语并取消导出。 如果看不到横幅，请忽略此步骤。
-    - 一旦将 SAS URL 吊销，请在托管磁盘中转到 "配置" 边栏选项卡，增加大小，以便 ASR 支持在源磁盘上观察到的变动率
+    - 一旦将 SAS URL 吊销，请在托管磁盘中转到 "配置" 边栏选项卡，增加大小，以便 Site Recovery 支持在源磁盘上观察到的变动率
 
 ## <a name="Network-connectivity-problem"></a>网络连接问题
 
@@ -113,12 +110,12 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装-错误2147221164 
 
-*如何修复*：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它会安装 VSS 提供程序，使其执行应用一致性快照操作。 此 VSS 提供程序安装为服务。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败，并出现错误 id 0x80040154 "类未注册"。 </br>
+*如何修复*：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它会安装 VSS 提供程序，使其执行应用一致性快照操作。 此 VSS 提供程序安装为服务。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败，并出现错误 ID 0x80040154 "类未注册"。 </br>
 请参阅[VSS 编写器安装疑难解答一文](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用-错误2147943458
 
-**如何修复**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它会安装 VSS 提供程序，使其执行应用一致性快照操作。 此 VSS 提供程序安装为服务。 如果 VSS 提供程序服务处于禁用状态，则应用程序一致性快照创建将失败，并出现错误 id "指定的服务已禁用且无法启动（0x80070422）"。 </br>
+**如何修复**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它会安装 VSS 提供程序，使其执行应用一致性快照操作。 此 VSS 提供程序安装为服务。 如果 VSS 提供程序服务处于禁用状态，则应用程序一致性快照创建将失败，并出现错误 ID "指定的服务已禁用且无法启动（0x80070422）"。 </br>
 
 - 如果禁用了 VSS，
     - 验证 VSS 提供程序服务的启动类型是否设置为 "**自动**"。
