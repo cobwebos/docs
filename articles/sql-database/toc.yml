@@ -77,7 +77,7 @@
               href: sql-database-control-access.md
             - name: 登录名和用户
               href: sql-database-manage-logins.md
-        - name: Authentication
+        - name: 身份验证
           href: sql-database-aad-authentication.md
           items:
             - name: 配置 Azure AD 身份验证
@@ -630,8 +630,6 @@
           href: sql-database-advisor-portal.md
         - name: 创建警报
           href: sql-database-insights-alerts-portal.md
-        - name: 排查连接问题
-          href: sql-database-troubleshoot-common-connection-issues.md
         - name: 管理文件空间
           href: sql-database-file-space-management.md
         - name: 使用资源运行状况排查连接问题

@@ -21,7 +21,7 @@
         - name: 条件性访问
           tocHref: /azure/active-directory/conditional-access/
           topicHref: /azure/active-directory/conditional-access/
-        - name: Authentication
+        - name: 身份验证
           tocHref: /azure/active-directory/authentication/
           topicHref: /azure/active-directory/authentication/
         - name: 开发
@@ -255,9 +255,6 @@
     - name: Azure Stack 用户
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: 可支持性
-      tocHref: /azure/azure-portal/supportability/
-      topicHref: /azure/azure-portal/supportability/
     - name: 备份
       tocHref: /azure/backup/
       topicHref: /azure/backup/
