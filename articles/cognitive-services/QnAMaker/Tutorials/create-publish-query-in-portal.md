@@ -1,7 +1,7 @@
 ---
 title: 教程：在 QnA Maker 中创建、发布和回答问题
 titleSuffix: Azure Cognitive Services
-description: 通过基于 Web 的公共 FAQ 创建包含问答的新知识库。 保存、训练和发布知识库。 发布知识库后，使用 cURL 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。
+description: 本教程说明如何使用基于公共 Web 的常见问题解答中的问题和解答来创建新知识库。 保存、训练和发布知识库。 发布知识库后，使用 cURL 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447388"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>教程：在 QnA Maker 门户中创建知识库
 
 通过基于 Web 的公共 FAQ 创建包含问答的新知识库。 保存、训练和发布知识库。 发布知识库后，使用 cURL 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。 
 
-本教程介绍如何执行下列操作： 
+在本教程中，你将了解如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 在 QnA Maker 门户中创建知识库。
@@ -35,7 +35,7 @@ ms.locfileid: "72327961"
 > [!NOTE]
 > [“Azure-Samples/cognitive-services-qnamaker-csharp”GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)中提供本教程的编程版本和完整的解决方案  。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程需要现有的 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 
 

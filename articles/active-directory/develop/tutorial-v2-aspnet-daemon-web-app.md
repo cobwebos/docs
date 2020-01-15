@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423396"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>生成使用 Microsoft 标识平台终结点的多租户守护程序
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
 在本教程中，你将了解如何使用 Microsoft 标识平台在长时间运行的非交互式过程中访问 Microsoft 企业客户的数据。 示例守护程序使用 [OAuth2 客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)获取访问令牌。 然后，该守护程序使用该令牌调用 [Microsoft Graph](https://graph.microsoft.io) 并访问组织数据。
+
+> [!div class="checklist"]
+> * 将守护程序应用与 Microsoft 标识平台集成
+> * 由管理员直接向应用授予应用程序权限
+> * 获取用于调用 Microsoft Graph API 的访问令牌
+> * 调用 Microsoft Graph API。
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 该应用是作为 ASP.NET MVC 应用程序生成的。 它使用 OWIN OpenID Connect 中间件将用户登录。  
 
@@ -42,7 +50,7 @@ ms.locfileid: "74997014"
 
 有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要运行本快速入门中的示例，你将需要：
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 或[下载 zip 文件格式的示例](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip)。
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>将示例应用程序注册到 Azure AD 租户
+## <a name="register-your-application"></a>注册应用程序
 
-本示例包含一个项目。 若要注册该项目，可以：
+本示例包含一个项目。 若要向 Azure AD 租户注册应用程序，可以：
 
-- 遵循[将示例注册到 Azure Active Directory 租户](#register-the-sample-application-with-your-azure-ad-tenant)和[将示例配置为使用 Azure AD 租户](#choose-the-azure-ad-tenant)中的步骤。
+- 遵循[将示例注册到 Azure Active Directory 租户](#register-your-application)和[将示例配置为使用 Azure AD 租户](#choose-the-azure-ad-tenant)中的步骤。
 - 使用可执行以下操作的 PowerShell 脚本：
   - 自动创建 Azure AD 应用程序和相关对象（密码、权限、依赖项）。 
   - 修改 Visual Studio 项目的配置文件。
@@ -171,7 +179,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ## <a name="re-create-the-sample-app"></a>重新创建示例应用
 
-1. 在 Visual Studio 中，创建新的 **Visual C#** **ASP.NET Web 应用程序 (.NET Framework)** 项目。 
+1. 在 Visual Studio 中，创建新的 **Visual C#** **ASP.NET Web 应用程序(.NET Framework)** 项目。 
 1. 在下一屏幕中选择“MVC”项目模板。  另外，请为 **Web API** 添加文件夹和核心引用，因为稍后要添加 Web API 控制器。 将项目的所选身份验证模式保留为默认设置：“无身份验证”。 
 1. 在“解决方案资源管理器”窗口中选择该项目，然后按 **F4** 键。  
 1. 在项目属性中，将“已启用 SSL”设置为“True”。   记下“SSL URL”中的信息。  在 Azure 门户中配置此应用程序的注册时需要用到这些信息。
@@ -208,7 +216,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>创建 dotnet-web-daemon-v2 并将其发布到 Azure 网站
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，选择“创建资源”  。
 1. 选择“Web” > “Web 应用”，然后为网站命名。   例如，将它命名为 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 选择“订阅”、“资源组”和“应用服务计划和位置”的信息。    为“OS”选择“Windows”，为“发布”选择“代码”。    
@@ -237,7 +245,10 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 1. 保存配置。
 1. 在“身份验证” > “重定向 URI”菜单的值列表中添加相同的 URL。   如果有多个重定向 URL，请确保每个重定向 URL 都有一个使用应用服务的 URI 的新条目。
 
-## <a name="community-help-and-support"></a>社区帮助和支持
+## <a name="clean-up-resources"></a>清理资源
+如果不再需要，请删除[注册应用程序](#register-your-application) 步骤中创建的应用对象。  若要删除应用程序，请按照[删除你或你的组织编写的应用程序](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)中的说明进行操作。
+
+## <a name="get-help"></a>获取帮助
 
 使用 [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) 获取社区的支持。
 先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同的问题。

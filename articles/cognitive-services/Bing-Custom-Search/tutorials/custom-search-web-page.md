@@ -1,7 +1,7 @@
 ---
 title: 教程：创建自定义搜索网页 - 必应自定义搜索
 titleSuffix: Azure Cognitive Services
-description: 了解如何配置必应自定义搜索实例并将其集成到网页中。
+description: 通过本教程了解如何配置必应自定义搜索实例并将其集成到网页中。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448792"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -32,7 +32,7 @@ ms.locfileid: "74977193"
 > - 添加固定条目
 > - 将自定义搜索集成到网页中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
 - 如果尚未安装 Visual Studio 2017 或更高版本，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。

@@ -1,21 +1,21 @@
 ---
 title: 教程：使用 Visual Studio 中连接服务连接到文本分析服务
 titleSuffix: Azure Cognitive Services
-description: 本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。
+description: 了解如何对文本分析服务使用 Visual Studio 连接服务功能。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446146"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中连接服务连接到文本分析服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "73837190"
 
 本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。 安装了认知服务扩展的 Visual Studio 2019 或更高版本中均提供此功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2019（装有“Web 开发”工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -51,7 +51,7 @@ ms.locfileid: "73837190"
 
    ![资源组和定价层字段的屏幕截图](media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
 
-   请单击链接，查看定价层的详细信息。
+   有关定价层的详细信息，请访问链接。
 
 1. 选择“添加”以添加对连接服务的支持  。
    Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志  。 输出应如下所示：

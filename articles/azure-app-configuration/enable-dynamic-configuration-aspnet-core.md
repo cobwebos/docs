@@ -1,5 +1,6 @@
 ---
-title: 关于在 ASP.NET Core 应用中使用 Azure 应用配置动态配置的教程 | Microsoft Docs
+title: 教程：在 ASP.NET Core 中使用应用程序配置动态配置
+titleSuffix: Azure App Configuration
 description: 本教程介绍如何动态更新 ASP.NET Core 应用的配置数据
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433714"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -33,13 +34,13 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置应用程序，使其能够更新配置以响应应用程序配置存储区中的更改。
 > * 在应用程序的控制器中注入最新配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -195,7 +196,7 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 
     ![本地启动应用快速入门](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. 登录到 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
+4. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
 5. 选择“配置资源管理器”  并更新以下键的值：
 

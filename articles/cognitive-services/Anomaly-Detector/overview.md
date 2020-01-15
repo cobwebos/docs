@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448971"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -41,7 +41,7 @@ ms.locfileid: "74012056"
 查看此[交互式演示](https://aka.ms/adDemo)以了解异常检测器的工作原理。
 若要运行演示，需要创建一个异常检测器资源，并获取 API 密钥和终结点。
 
-## <a name="notebook"></a>Notebook
+## <a name="notebook"></a>笔记本
 
 若要了解如何调用异常检测器API，请试用此 [Azure Notebook](https://aka.ms/adNotebook)。 这个 Web 托管的 Jupyter Notebook 演示如何发送 API 请求和直观显示结果。
 
@@ -72,8 +72,12 @@ ms.locfileid: "74012056"
 
 ## <a name="algorithms"></a>算法
 
-* 有关算法揭秘，请参阅技术博客 [Azure 异常检测器 API 简介](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)和 [Azure 异常检测器中的 SR-CNN 算法概述](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)。
-* 有关 Microsoft 开发的尖端 SR-CNN 算法，请参阅此文 [Microsoft 的时序异常检测服务](https://arxiv.org/abs/1906.03821)（KDD 2019 接受）。
+* 有关所使用的算法的信息，请参阅以下技术博客：
+    * [Azure 异常检测器 API 简介](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Azure 异常检测器中的 SR-CNN 算法概述](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+可以阅读论文 [Microsoft 的时序异常检测服务](https://arxiv.org/abs/1906.03821)（KDD 2019 接受），详细了解 Microsoft 开发的 SR-CNN 算法。
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 

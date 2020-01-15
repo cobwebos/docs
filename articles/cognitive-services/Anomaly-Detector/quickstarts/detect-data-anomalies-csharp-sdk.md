@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用适用于 .NET 的异常检测器客户端库检测时序数据中的异常
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
+description: 本快速入门介绍如何使用异常检测器 API 以批处理形式或在流式处理数据时检测数据系列中的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448921"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入门：适用于 .NET 的异常检测器客户端库
 
@@ -28,7 +28,7 @@ ms.locfileid: "74483066"
 
 [库参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本
@@ -92,7 +92,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 
 这些代码片段展示如何使用适用于 .NET 的异常检测器客户端库执行以下操作：
 
-* [验证客户端](#authenticate-the-client)
+* [对客户端进行身份验证](#authenticate-the-client)
 * [从文件加载时序数据集](#load-time-series-data-from-a-file)
 * [在整个数据集中检测异常](#detect-anomalies-in-the-entire-data-set) 
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)

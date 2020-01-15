@@ -1,26 +1,17 @@
 ---
-title: 快速入门 - 将 Web 应用部署到 Azure Service Fabric 网格 | Microsoft Docs
+title: 快速入门 - 将 Web 应用部署到 Azure Service Fabric 网格
 description: 本快速入门介绍如何使用 Visual Studio 创建 ASP.NET Core 网站并将其发布到 Azure Service Fabric 网格。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459065"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入门：创建 Web 应用并将其部署到 Azure Service Fabric 网格
 
@@ -34,23 +25,23 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ## <a name="create-a-service-fabric-mesh-project"></a>创建 Service Fabric 网格项目
 
-打开 Visual Studio，并选择“文件” > “新建” > “项目...”
+打开 Visual Studio，并选择“文件” > “新建” > “项目...”   
 
-在“新建项目”对话框顶部的“搜索”框中键入 `mesh`。 选择“Service Fabric 网格应用程序”模板。 （如果未看到该模板，请确保已根据[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所述安装了网格 SDK 和 VS 工具预览版。） 
+在“新建项目”对话框顶部的“搜索”框中键入 `mesh`。   选择“Service Fabric 网格应用程序”模板  。 （如果未看到该模板，请确保已根据[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所述安装了网格 SDK 和 VS Tools 预览版。） 
 
-在“名称”框中键入 ServiceFabricMesh1，并在“位置”框中，将文件夹路径设置为要将项目文件存储到的位置。
+在“名称”框中键入 ServiceFabricMesh1，并在“位置”框中，将文件夹路径设置为要将项目文件存储到的位置    。
 
-确保已选中“创建解决方案的目录”，然后单击“确定”创建 Service Fabric 网格项目。
+确保已选中“创建解决方案的目录”，然后单击“确定”创建 Service Fabric 网格项目。  
 
 ![Visual Studio - 新建 Service Fabric 网格项目 - 对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>创建服务
 
-单击“确定”后，会出现“新建 Service Fabric 服务”对话框。 选择“ASP.NET Core”项目类型，确保“容器 OS”设置为“Windows”，然后单击“确定”以创建 ASP.NET Core 项目。 
+单击“确定”后，会出现“新建 Service Fabric 服务”对话框   。 选择“ASP.NET Core”项目类型，确保“容器 OS”设置为“Windows”，然后单击“确定”以创建 ASP.NET Core 项目     。 
 
 ![Visual Studio - 新建 Service Fabric 网格项目 - 对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
-随后会出现“新建 ASP.NET Core Web 应用”对话框。 选择“Web 应用”，然后单击“确定”。
+随后会出现“新建 ASP.NET Core Web 应用”对话框  。 选择“Web 应用”，然后单击“确定”   。
 
 ![Visual Studio - 新建 ASP.NET Core 应用程序](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
 
@@ -58,35 +49,35 @@ Visual Studio 创建 Service Fabric 网格应用程序项目和 ASP.NET Core 项
 
 ## <a name="build-and-publish-to-your-local-cluster"></a>生成并发布到本地群集
 
-加载项目时，会自动生成一个 Docker 映像并将其发布到本地群集。 此过程可能需要一段时间才能完成。 如果需要，可在“输出”窗口下拉列表中选择“Service Fabric 工具”项，以便在“输出”窗口中监视 Service Fabric 工具的进度。 你可以在部署 Docker 映像时继续工作。
+加载项目时，会自动生成一个 Docker 映像并将其发布到本地群集。 此过程可能需要一段时间才能完成。 如果需要，可在“输出”窗口下拉列表中选择“Service Fabric 工具”项，以便在“输出”窗口中监视 Service Fabric 工具的进度    。 你可以在部署 Docker 映像时继续工作。
 
-创建项目后，单击 F5，在本地调试服务。 完成本地部署并且 Visual Studio 运行项目后，浏览器窗口将打开示例网页。
+创建项目后，单击 F5，在本地调试服务  。 完成本地部署并且 Visual Studio 运行项目后，浏览器窗口将打开示例网页。
 
-浏览完已部署的服务后，在 Visual Studio 中按 Shift+F5 停止调试项目。
+浏览完已部署的服务后，在 Visual Studio 中按 Shift+F5 停止调试项目  。
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“Service Fabric 网格项目”，然后选择“发布...”
+若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“Service Fabric 网格项目”，然后选择“发布...”  
 
 ![Visual Studio - 右键单击 Service Fabric 网格项目](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-right-click-publish.png)
 
-随后看到“发布 Service Fabric 应用程序”对话框。
+随后看到“发布 Service Fabric 应用程序”对话框  。
 
 ![Visual Studio - Service Fabric 网格 - 发布对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-选择自己的 Azure 帐户和订阅。 选择“位置”。 本文使用“美国东部”。
+选择自己的 Azure 帐户和订阅。 选择“位置”  。 本文使用“美国东部”  。
 
-在“资源组”下，选择“\<创建新资源组...>”。 此时会显示“创建资源组”对话框。 设置“资源组名称”和“位置”。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）。  单击“创建”以创建资源组，并返回发布对话框。
+在“资源组”下，选择“\<创建新资源组...>”   。 此时会显示“创建资源组”对话框  。 设置“资源组名称”和“位置”   。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）   。  单击“创建”以创建资源组，并返回发布对话框  。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称。 指定“位置”（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框。
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”    。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定“位置”（本教程使用“美国东部”）   。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框    。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
-在发布对话框中，单击“发布”按钮将 Service Fabric 网格应用程序部署到 Azure。
+在发布对话框中，单击“发布”按钮将 Service Fabric 网格应用程序部署到 Azure  。
 
-首次发布到 Azure 时，会将 Docker 映像推送到 Azure 容器注册表 (ACR)，此过程需要一段时间，具体时间取决于映像的大小。 后续发布同一项目会更快。 可通过在 Visual Studio 的“输出”窗口下来列表中选择“Service Fabric 工具”来监视部署的进度。 完成部署后，“Service Fabric 工具”输出将以 URL 的形式显示应用程序的 IP 地址和端口。
+首次发布到 Azure 时，会将 Docker 映像推送到 Azure 容器注册表 (ACR)，此过程需要一段时间，具体时间取决于映像的大小。 后续发布同一项目会更快。 可通过在 Visual Studio 的“输出”窗口下来列表中选择“Service Fabric 工具”来监视部署的进度   。 完成部署后，“Service Fabric 工具”输出将以 URL 的形式显示应用程序的 IP 地址和端口  。
 
 ```
 Packaging Application...

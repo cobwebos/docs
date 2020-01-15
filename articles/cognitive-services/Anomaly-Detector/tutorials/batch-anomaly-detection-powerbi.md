@@ -1,21 +1,21 @@
 ---
-title: 使用批量检测和 Power BI 将异常可视化
+title: 教程：使用批量检测和 Power BI 将异常可视化
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 和 Power BI 将时序数据中的异常可视化。
+description: 了解如何使用异常检测器 API 和 Power BI 将整个时序数据中的异常可视化。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448856"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -28,7 +28,7 @@ ms.locfileid: "71840869"
 > * 将 Power BI Desktop 与异常检测器 API 集成，以便进行批量异常检测
 > * 将在数据中发现的异常可视化，其中包括预期的和看到的值，以及异常检测边界。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 免费提供的 [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)。
 * 一个 Excel 文件 (.xlsx)，其中包含时序数据点。 可在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到本快速入门的示例数据

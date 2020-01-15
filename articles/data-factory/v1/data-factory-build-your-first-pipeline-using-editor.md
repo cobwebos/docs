@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439012"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.locfileid: "73683025"
 > 
 > 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 阅读[教程概述](data-factory-build-your-first-pipeline.md)，并按“先决条件”部分的步骤操作。
 
 本文不提供数据工厂服务的概念性概述。 有关该服务的详细信息，请阅读 [Azure 数据工厂简介](data-factory-introduction.md)。  
@@ -52,7 +52,7 @@ ms.locfileid: "73683025"
 
 若要创建数据工厂，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择“新建”   >   “数据 + 分析” >   “数据工厂”。
 
@@ -110,7 +110,7 @@ ms.locfileid: "73683025"
 
    ![存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中了解如何查看、复制和重新生成存储访问密钥。
+1. 将**帐户名称**替换为存储帐户的名称。 将**帐户密钥**替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 1. 选择命令栏上的“部署”  ，部署链接服务。
 
@@ -147,7 +147,7 @@ ms.locfileid: "73683025"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    |:--- |:--- |
    | clusterSize |指定 HDInsight 群集的大小。 |
    | timeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -208,7 +208,7 @@ ms.locfileid: "73683025"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 嵌套位置 | 说明 |
+   | properties | 嵌套位置 | 说明 |
    |:--- |:--- |:--- |
    | type | properties |type 属性设置为 **AzureBlob**，因为数据位于 Blob 存储中。 |
    | linkedServiceName | format |表示前面创建的 AzureStorageLinkedService。 |
@@ -421,7 +421,7 @@ ms.locfileid: "73683025"
 
     ![“活动窗口”列表](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程通过在 HDInsight Hadoop 群集上运行 Hive 脚本，创建了一个数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下操作：  
 
 * 创建数据工厂。

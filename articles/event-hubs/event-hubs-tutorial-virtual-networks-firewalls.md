@@ -1,20 +1,20 @@
 ---
-title: 教程 - 在事件中心启用虚拟网络集成和防火墙 | Microsoft Docs
+title: Azure 事件中心 - 启用虚拟网络集成和防火墙
 description: 本教程介绍如何将事件中心与虚拟网络和防火墙集成，以启用安全访问。
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437124"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>教程：在事件中心命名空间中启用虚拟网络集成和防火墙
 
@@ -47,7 +47,7 @@ ms.locfileid: "67605858"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 我们将利用现有的事件中心命名空间，因此请确保有可用的事件中心命名空间。 如果没有，请参阅[此教程](./event-hubs-create.md)
 

@@ -1,5 +1,6 @@
 ---
-title: 在 Azure API 管理中将 Azure Function App 作为 API 导入 | Microsoft Docs
+title: 在 API 管理中将 Azure Function App 作为 API 导入
+titleSuffix: Azure API Management
 description: 本教程演示如何将 Azure Function App 作为 API 导入 Azure API 管理中。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442585"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -34,7 +35,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 * 确保订阅中有 Azure Functions 应用。 有关详细信息，请参阅[创建 Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。 它必须包含 Functions 并将 HTTP 触发器和授权级别设置设为“匿名”或“函数”。  

@@ -3,15 +3,15 @@ title: 在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 No
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: 在 Azure 中使用容器、微服务和 Node.js 快速进行 Kubernetes 开发
+description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Node.js 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8f3ffb6a539937b6d4a03b8fdc808c033c371697
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1b2101c5e7a59105b2c1da876e9a66294ce3a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438187"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>快速入门：在 Kubernetes 上使用 Visual Studio Code 和 Node.js 进行调试和循环访问 - Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 - [.NET Core 和 Visual Studio Code](quickstart-netcore.md)
 - [.NET Core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 - [已安装 Visual Studio Code](https://code.visualstudio.com/download)。
@@ -104,7 +104,7 @@ git clone https://github.com/Azure/dev-spaces
 > [!Note]
 > 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。  另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录。
 
-可以通过打开公共 URL 来查看正在运行的服务。
+可以通过打开公共 URL 来查看服务是否正在运行。
 
 依次单击“调试”、“停止调试”以停止调试器。  
 

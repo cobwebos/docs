@@ -8,24 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448073"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天机器人）后，就需要将应用部署到预测终结点。
 
 本快速入门介绍如何部署应用程序。 此外还介绍如何创建预测终结点资源、如何将资源分配给应用、如何训练应用以及如何发布应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 获取 [Azure 订阅](https://azure.microsoft.com/free)。
 * 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
@@ -41,9 +39,9 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
    |设置|值|目的|
    |--|--|--|
-   |Name|`my-luis-resource`|Azure 资源的名称。 将资源分配给 LUIS 门户中的应用时需要此名称。|
-   |Subscription|订阅|选择与你的帐户关联的其中某个订阅。|
-   |Resource group|`my-resource-group`|为所有认知服务资源创建新资源组。 完成资源后，可以删除资源组以清理订阅。 |
+   |名称|`my-luis-resource`|Azure 资源的名称。 将资源分配给 LUIS 门户中的应用时需要此名称。|
+   |订阅|订阅|选择与你的帐户关联的其中某个订阅。|
+   |资源组|`my-resource-group`|为所有认知服务资源创建新资源组。 完成资源后，可以删除资源组以清理订阅。 |
    |创作位置|**美国西部**|用于创作的 Azure 区域。|
    |创作定价层|**F0**|用于创作的默认定价层。|
    |运行时位置|**美国西部**|用于预测终结点查询的 Azure 区域。|
@@ -61,7 +59,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 每次为 LUIS 创建新资源时，都需要将资源分配给 LUIS 应用。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
 
-1. 登录 [LUIS 门户](https://preview.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
+1. 登录到[预览版 LUIS 门户](https://preview.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
 
 1. 在右上角菜单中选择“管理”  ，然后选择“Azure 资源”  。
 

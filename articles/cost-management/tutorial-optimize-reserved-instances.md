@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中使用 Cloudyn 优化预留实例成本 | Microsoft Docs
+title: 教程 - 使用 Cloudyn 优化预留实例成本 - Azure
 description: 本教程介绍如何优化 Azure 和 Amazon Web Services (AWS) 的预订实例成本。
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444571"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -38,7 +38,7 @@ ms.locfileid: "74229859"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须具有 Azure 帐户。
 - 必须有 Cloudyn 的试用注册版或付费订阅版。

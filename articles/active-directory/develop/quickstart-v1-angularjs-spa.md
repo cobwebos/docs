@@ -1,5 +1,5 @@
 ---
-title: 生成用于登录和注销的 Azure AD AngularJS 单页应用 | Microsoft Docs
+title: 生成用于登录/注销的 Azure AD AngularJS 单页应用 | Microsoft Docs
 description: 了解如何生成一个 AngularJS 单页应用，该应用集成 Azure AD 以进行登录和注销，并使用 OAuth 调用受 Azure AD 保护的 API。
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424099"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>快速入门：生成使用 Azure Active Directory 登录和注销的 AngularJS 单页应用
 
@@ -48,7 +48,7 @@ ms.locfileid: "74963522"
 2. 安装 ADAL 并配置单页面应用。
 3. 使用 ADAL 帮助保护单页面应用中的页面。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始前，请完成这些先决条件：
 
@@ -59,7 +59,7 @@ ms.locfileid: "74963522"
 
 若要使应对用户进行身份验证并获取令牌，首先需要在 Azure AD 租户中注册该应用：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 如果登录到多个目录，可能需要确保正在查看正确目录。 若要执行此操作，在顶部栏上，单击你的帐户。 在“目录”  列表下选择要注册应用程序的 Azure AD 租户。
 1. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。  
 1. 单击“应用注册”，然后选择“新建注册”   。
@@ -136,7 +136,7 @@ Adal.js 与 AngularJS 路由和 HTTP 提供程序集成，以便可以帮助保�
     ...
     ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 现在，已获得一个安全的单页面应用，它可以让用户登录，并可向其后端 API 发出受持有者令牌保护的请求。 用户单击 **TodoList** 链接时，adal.js 会根据需要自动重定向到 Azure AD 以进行登录。 此外，adal.js 会自动将访问令牌附加到已发送至应用后端的任何 Ajax 请求。
 

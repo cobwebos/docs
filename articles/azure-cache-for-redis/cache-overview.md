@@ -1,18 +1,18 @@
 ---
 title: 什么是 Azure Redis 缓存？
-description: 了解什么是 Azure Redis 缓存及其常用方式。
+description: 了解什么是 Azure Cache for Redis 及其常见用途，包括缓存端、内容缓存、用户会话缓存、作业和消息队列以及分布式事务。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/26/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 03/26/2018
+ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433417"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Redis 缓存说明
 
@@ -41,8 +41,8 @@ Azure Redis 缓存在下述层中提供：
 | 层 | 说明 |
 |---|---|
 基本 | 单节点缓存。 此层支持多种内存大小 (250 MB - 53 GB)。 此层适用于开发/测试和非关键型工作负荷。 基本层没有服务级别协议 (SLA) |
-| 标准 | 在 Microsoft 托管的双节点（主/辅）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
-| 高级 | 高级层是面向企业的层。 高级层缓存支持更多的功能，吞吐量更高，延迟更低。 高级层中的缓存部署在更强大的硬件上，其性能优于基本层或标准层。 这种优势意味着，在缓存大小相同的情况下，高级层的吞吐量大于标准层。 |
+| Standard | 在 Microsoft 托管的双节点（主/辅）配置中提供复制的缓存，并提供高可用性 SLA (99.9%) |
+| Premium | 高级层是面向企业的层。 高级层缓存支持更多的功能，吞吐量更高，延迟更低。 高级层中的缓存部署在更强大的硬件上，其性能优于基本层或标准层。 这种优势意味着，在缓存大小相同的情况下，高级层的吞吐量大于标准层。 |
 
 > [!TIP]
 > 有关高级缓存大小、吞吐量和带宽的详细信息，请参阅 [Azure Redis 缓存常见问题解答](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
@@ -54,7 +54,7 @@ Azure Redis 缓存在下述层中提供：
 
 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)页对每个层进行了详细比较。 下表介绍了每个层支持的部分功能：
 
-| 功能说明 | 高级 | 标准 | 基本 |
+| 功能说明 | Premium | Standard | 基本 |
 | ------------------- | :-----: | :------: | :---: |
 | [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Redis 数据持久性](cache-how-to-premium-persistence.md) |✔|-|-|

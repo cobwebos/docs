@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "69891968"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -157,7 +157,7 @@ ms.locfileid: "69891968"
 
     ![重定向 URL](./media/workday-tutorial/IC7829581.png "重定向 URL")
 
-    a. 单机“添加行”  。
+    a. 单击“添加行”  。
 
     b. 在“登录重定向 URL”、“超时重定向 URL”和“移动重定向 URL”文本框中，粘贴从 Azure 门户的“设置 Workday”部分中复制的“登录 URL”      。
 
@@ -167,7 +167,7 @@ ms.locfileid: "69891968"
 
    > [!NOTE]
    > “环境”属性的值与租户 URL 的值绑定：  
-   > 如果 Workday 租户 URL 的域名以 impl 开头（例如：*https:\//impl.workday.com/\<tenant\>/login-saml2.flex*），则“环境”属性必须设置为“实现”  。  
+   > -如果 Workday 租户 URL 的域名以 impl 开头（例如： https://www.myworkday.com/"tenant"/login-saml2.htmld  ），则“环境”  属性必须设置为“实现”。  
    > 如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值  。
 
 4. 在“SAML 设置”  部分中执行以下步骤：
@@ -233,11 +233,11 @@ ms.locfileid: "69891968"
 
     c. 对于**身份验证请求签名方法**，请选择 **SHA256**。
 
-    ![身份验证请求签名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "身份验证请求签名方法") 
+    ![身份验证请求签名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "身份验证请求签名方法")
 
     d. 单击“确定”。 
 
-    ![正常](./media/workday-tutorial/IC782933.png "OK")
+    ![确定](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
     > 请确保正确设置单一登录。 如果使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n

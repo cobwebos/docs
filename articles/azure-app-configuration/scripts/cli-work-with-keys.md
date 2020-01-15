@@ -1,5 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 处理 Azure 应用配置存储区中的密钥值 | Microsoft Docs
+title: Azure CLI 脚本示例 - 在应用配置存储区中使用密钥值
+titleSuffix: Azure App Configuration
 description: 提供有关如何处理 Azure 应用配置存储区中的密钥值的信息
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433579"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>处理 Azure 应用配置存储区中的密钥值
 
@@ -86,7 +87,7 @@ az appconfig kv list --name $appConfigName
 
 此脚本使用以下命令对应用程序配置存储区中的密钥值执行操作。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az appconfig kv set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | 创建或更新密钥值。 |
 | [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | 列出应用程序配置存储区中的密钥值。 |

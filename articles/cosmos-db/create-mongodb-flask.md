@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Python SDK 构建 Flask Web 应用
+title: 使用 Azure Cosmos DB 的 API for MongoDB 构建 Python Flask Web 应用
 description: 演示了一个 Python Flask 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445490"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Python 应用
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 本快速入门指南使用以下 [Flask 示例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)并演示如何借助 [Azure Cosmos DB 模拟器](local-emulator.md)和 Azure Cosmos DB 的用于 MongoDB 的 API 构建简单的待办事项 Flask 应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 下载 [Azure Cosmos DB 模拟器](local-emulator.md)。 当前只有 Windows 支持模拟器。 此示例演示如何借助 Azure 中的生产密钥使用示例，此操作可在任何平台上完成。
 
@@ -90,7 +90,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     todos = db.todo #Select the collection
     ```
 
-* 创建应用程序
+* 创建应用
 
     ```Python
     app = Flask(__name__)
@@ -118,7 +118,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 若要针对实时 Cosmos 帐户测试代码，请转到 Azure 门户创建一个帐户，并获取连接字符串信息。 然后将其复制到此应用中。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”  ，然后单击“读写密钥”  。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)上的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”  ，然后单击“读写密钥”  。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
 
 2. 在根目录中打开 app.py 文件  。
 
@@ -128,7 +128,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 5. 最后从门户复制“密码”值，并在 app.py 文件中将其设为“密码”的值    。
 
-你现在已使用与 Cosmos DB 进行通信所需的所有信息更新了应用。 此时，即可像以前一样运行它。
+现在，你已在应用中更新了全部所需信息，它可以与 Cosmos DB 进行通信。 此时，即可像以前一样运行它。
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 

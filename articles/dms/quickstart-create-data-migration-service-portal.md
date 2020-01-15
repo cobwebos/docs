@@ -1,6 +1,7 @@
 ---
-title: 快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例 | Microsoft Docs
-description: 使用 Azure 门户创建 Azure 数据库迁移服务的实例
+title: 快速入门：使用 Azure 门户创建实例
+titleSuffix: Azure Database Migration Service
+description: 使用 Azure 门户创建 Azure 数据库迁移服务的实例。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 11/05/2019
-ms.openlocfilehash: 6427de61ebf30a5e4a62070becd1cc1f750f6c1b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437734"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -72,7 +73,7 @@ ms.locfileid: "73571604"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该**资源组**的名称，然后选择“删除资源组”。  此操作会删除资源组本身及其包含的所有资产。
+可以通过删除 [Azure 资源组](../azure-resource-manager/management/overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该**资源组**的名称，然后选择“删除资源组”。  此操作会删除资源组本身及其包含的所有资产。
 
 ## <a name="next-steps"></a>后续步骤
 

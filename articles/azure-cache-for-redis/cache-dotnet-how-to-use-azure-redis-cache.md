@@ -1,25 +1,25 @@
 ---
-title: 快速入门：了解如何将 Azure Cache for Redis 与 .NET 应用配合使用
+title: 快速入门：通过 .NET 应用使用 Azure Cache for Redis
 description: 本快速入门介绍如何从 .NET 应用访问 Azure Redis 缓存
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2738805043b701d9e116d962f88225a6c6ae3e9b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 05/18/2018
+ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433528"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
 
 在本快速入门中，会将 Azure Redis 缓存合并到 .NET Framework 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。 你专门在 .NET 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C# 代码配合使用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -69,7 +69,7 @@ Install-Package StackExchange.Redis
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-在 Visual Studio 中打开 *App.config* 文件并对其进行更新，使之包括引用 *CacheSecrets.config* 文件的 `appSettings` `file` 属性。
+在 Visual Studio 中，打开 App.config  文件并将其更新为包含引用 CacheSecrets.config  文件的 `appSettings` `file` 属性。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

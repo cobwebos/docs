@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 394ca0c244db751645eb56f50e7023fcee229876
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 02c8bf24d4ddb6408160da7a4c517d6c8c82de5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450906"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
 本教程介绍如何使用虚拟 WAN 通过 IPsec/IKE (IKEv2) 或 OpenVPN VPN 连接与 Azure 中的资源建立连接。 此类连接要求在客户端计算机上配置一个客户端。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 WAN
@@ -51,7 +51,7 @@ ms.locfileid: "74807453"
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
 2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
-3. 在“创建 WAN”  页的“基本”  选项卡上，填写以下字段：
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
 
@@ -135,7 +135,7 @@ P2S 配置定义连接远程客户端的参数。
 2. 下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“用户 VPN 配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
 3. 解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
 4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解[如何导出证书以获取已编码的公钥](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)。
-5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
+5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解[如何提取私钥](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients#windows)。
 6. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
 7. 将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
 8. 右键单击系统托盘中的 OpenVPN 图标，然后单击“连接”。

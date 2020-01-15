@@ -3,15 +3,15 @@ title: 在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 Ja
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: 在 Azure 中使用容器、微服务和 Java 快速进行 Kubernetes 开发
+description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Java 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Java, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8050e7793146456894ce86ab89e1563c6282b8df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438272"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>快速入门：在 Kubernetes 上使用 Visual Studio Code 和 Java 进行调试和循环访问 - Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 - [.NET Core 和 Visual Studio Code](quickstart-netcore.md)
 - [.NET Core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
 - [已安装 Visual Studio Code](https://code.visualstudio.com/download)。
@@ -117,7 +117,7 @@ git clone https://github.com/Azure/dev-spaces
 
 若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“启动 Java 程序(AZDS)”  。 例如：
 
-1. 如果应用程序仍在运行，请单击“调试”  ，然后单击“停止调试”  来停止该应用程序。
+1. 如果应用程序仍在运行，请依次单击“调试”  和“停止调试”  来停止该应用程序。
 1. 将 [`src/main/java/com/ms/sample/webfrontend/Application.java`中的第 19 行](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)更新为：
     
     ```java

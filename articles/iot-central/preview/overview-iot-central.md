@@ -3,18 +3,18 @@ title: 什么是 Azure IoT Central | Microsoft Docs
 description: Azure IoT Central 是一个 IoT 应用程序平台，可简化 IoT 解决方案的创建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 本文概述了 Azure IoT Central 的功能。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434856"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central（预览版功能）是什么？
 
@@ -41,15 +41,11 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 > [!Note]
 > 这些已知问题仅适用于 IoT Central 预览版应用程序。
 
-- 规则并不支持所有操作（仅限电子邮件）。
-- 对于复杂的类型 - 规则、分析和设备组不受支持。
 - 连续数据导出不支持 Avro 格式（不兼容）。
-- 模拟设备不支持所有复杂类型。
 - 目前不支持 GeoJSON。
 - 目前不支持地图图块。
 - 作业不支持复杂类型。
 - 不支持数组架构类型。
-- 不支持应用程序模板导出和应用程序复制。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
 - 仅在美国和欧洲地区提供。
 - 必须在同一文件中以内联方式定义设备功能模型的所有接口。
@@ -149,7 +145,7 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 
 现在，你已大致了解了 IoT Central，下面是建议的后续步骤：
 
-- 了解 [IoT Central 与 Azure IoT 解决方案加速器](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)之间的区别。
+- 了解可用的[用于创建 IoT 解决方案的 Azure 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
 - 通过[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)开始使用此解决方案。
 - 详细了解 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)

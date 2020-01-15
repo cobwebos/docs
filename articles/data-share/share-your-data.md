@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438736"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
@@ -25,7 +25,7 @@ ms.locfileid: "73499333"
 > * 为 Data Share 启用同步计划。 
 > * 将接收人添加到 Data Share。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 收件人的 Azure 登录电子邮件地址（使用其电子邮件别名将无效）。
@@ -47,13 +47,15 @@ ms.locfileid: "73499333"
     create user <share_acct_name> from external provider;     
     exec sp_addrolemember db_owner, <share_acct_name>; 
 ```                   
-请注意，<share_acc_name>  是数据共享帐户的名称。 如果尚未创建数据共享帐户，则可以稍后返回到该先决条件。  
+请注意，<share_acc_name> 是 Data Share 帐户的名称  。 如果尚未创建 Data Share 帐户，则可以稍后返回到该先决条件。  
 
-* 客户端 IP SQL Server 防火墙访问：可以通过以下步骤完成此操作：1. 导航到“防火墙和虚拟网络”  1。 单击“启动”  切换以允许访问 Azure 服务。 
+* [具有 `db_owner` 访问权限的 Azure SQL 数据库用户](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)，可以浏览和选择要共享的表和/或视图。 
+
+* 客户端 IP SQL Server 防火墙访问：可以通过以下步骤完成此操作：1. 导航到防火墙和虚拟网络 1  。 单击“打开”切换按钮以允许访问 Azure 服务  。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-data-share-account"></a>创建 Data Share 帐户
 
@@ -69,9 +71,9 @@ ms.locfileid: "73499333"
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | Name | *datashareacount* | 指定 Data Share 帐户的名称。 |
-    | Subscription | 订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
-    | Resource group | *test-resource-group* | 使用现有资源组或创建新资源组。 |
+    | 名称 | *datashareacount* | 指定 Data Share 帐户的名称。 |
+    | 订阅 | 订阅 | 选择要用于 Data Share 帐户的 Azure 订阅。|
+    | 资源组 | *test-resource-group* | 使用现有资源组或创建新资源组。 |
     | 位置 | 美国东部 2  | 选择 Data Share 帐户的区域。
     | | |
 
@@ -99,7 +101,7 @@ ms.locfileid: "73499333"
 
     ![数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 
+1. 选择要添加的数据集类型。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 

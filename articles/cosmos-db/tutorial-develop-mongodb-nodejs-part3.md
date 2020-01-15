@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 UI（第 3 部分）
 description: 本教程系列的第 3 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444744"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
 
@@ -33,12 +32,12 @@ ms.locfileid: "54158697"
 
 > [!VIDEO https://www.youtube.com/embed/MnxHuqcJVoM]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始教程的此部分之前，请确保已完成教程[第 2 部分](tutorial-develop-mongodb-nodejs-part2.md)的步骤。
 
 > [!TIP]
-> 本教程介绍分步生成应用程序的步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
+> 本教程介绍生成应用程序的各个步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
 
 ## <a name="build-the-ui"></a>生成 UI
 
@@ -56,16 +55,16 @@ ms.locfileid: "54158697"
 
     请看看已创建和更新的文件。 
 
-3. 在 Visual Studio Code 的“资源管理器”窗格中，导航到新的 src\app 文件夹并打开在应用文件夹内生成的新 **heroes.component.ts** 文件。 此 TypeScript 组件文件是上一命令创建的。
+3. 在 Visual Studio Code 的“资源管理器”窗格中，导航到  新的 src\app  文件夹并打开在应用文件夹内生成的新 **heroes.component.ts** 文件。 此 TypeScript 组件文件是上一命令创建的。
 
     > [!TIP]
-    > 如果应用文件夹没有显示在 Visual Studio Code 中，请在 Mac 中输入 CMD + SHIFT P 或在 Windows 中输入 Ctrl + Shift + P 以打开命令面板，然后键入“Reload Window”以获取系统更改。
+    > 如果应用文件夹没有显示在 Visual Studio Code 中，请在 Mac 中输入 CMD + SHIFT P 或在 Windows 中输入 Ctrl + Shift + P 以打开命令面板，然后键入“Reload Window”  以获取系统更改。
 
-4. 在同一文件夹中打开 app.module.ts 文件。请注意，该文件在第 5 行向声明添加了 `HeroesComponent`，并在第 10 行对其进行了导入操作。
+4. 在同一文件夹中打开  app.module.ts 文件。请注意，该文件在第 5 行向声明添加了 `HeroesComponent`，并在第 10 行对其进行了导入操作。
 
     ![打开 app-module.ts 文件](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
 
-5. 返回到 heroes.component.html 文件，将此代码复制到其中。 `<div>` 是整个页面的容器。 容器内有一个需创建的 hero 的列表。创建这些组件后，在 UI 中单击其中一个组件即可将其选定进行编辑或删除操作。 然后就会在 HTML 中显示某种样式，可以据此判断选择了哪个组件。 此外还有编辑区域，用于添加新的 hero 或编辑现有的 hero。 
+5. 返回到 heroes.component.html  文件，将此代码复制到其中。 `<div>` 是整个页面的容器。 容器内有一个需创建的 hero 的列表。创建这些组件后，在 UI 中单击其中一个组件即可将其选定进行编辑或删除操作。 然后就会在 HTML 中显示某种样式，可以据此判断选择了哪个组件。 此外还有编辑区域，用于添加新的 hero 或编辑现有的 hero。 
 
     ```html
     <div>
@@ -104,7 +103,7 @@ ms.locfileid: "54158697"
     </div>
     ```
 
-7. 准备好 HTML 之后，需将其添加到 heroes.component.ts 文件，然后才能与模板交互。 以下代码将模板添加到组件文件中。 已添加了一个构造函数，该函数用于获取某些 hero 并初始化 hero 服务组件，以便获取所有数据。 此代码还添加了所有必需的方法，用于在 UI 中处理事件。 可以复制以下代码，覆盖 heroes.component.ts 中的现有代码。 应在 Hero 和 HeroService 区域中发现错误，因为相应的组件尚未导入，将在下一部分中解决这些错误。 
+7. 准备好 HTML 之后，需将其添加到  heroes.component.ts 文件，然后才能与模板交互。 以下代码将模板添加到组件文件中。 已添加了一个构造函数，该函数用于获取某些 hero 并初始化 hero 服务组件，以便获取所有数据。 此代码还添加了所有必需的方法，用于在 UI 中处理事件。 可以复制以下代码，覆盖  heroes.component.ts 中的现有代码。 应在 Hero 和 HeroService 区域中发现错误，因为相应的组件尚未导入，将在下一部分中解决这些错误。 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -172,7 +171,7 @@ ms.locfileid: "54158697"
     }
     ```
 
-8. 在资源管理器中打开 app/app.module.ts 文件，更新“import”节以添加 `FormsModule` 的导入。 import 节现在应如下所示：
+8. 在资源管理器  中打开  app/app.module.ts 文件，更新“import”节以添加 `FormsModule` 的导入。 import 节现在应如下所示：
 
     ```
     imports: [
@@ -191,9 +190,9 @@ ms.locfileid: "54158697"
 
 ## <a name="use-css-to-set-the-look-and-feel"></a>使用 CSS 设置外观
 
-1. 在“资源管理器”窗格中，打开 src/styles.scss 文件。
+1. 在“资源管理器”窗格中，打开  src/styles.scss 文件。
 
-2. 将以下代码复制到 styles.scss 文件中，替换文件的现有内容。
+2. 将以下代码复制到  styles.scss 文件中，替换文件的现有内容。
 
     ```css
     /* You can add global styles to this file, and also import other style files */
@@ -352,9 +351,9 @@ ms.locfileid: "54158697"
 
 ## <a name="display-the-component"></a>显示组件
 
-有了组件以后，如何让其显示在平面上？ 请修改 app.component.ts 中的默认组件。
+有了组件以后，如何让其显示在平面上？ 请修改  app.component.ts 中的默认组件。
 
-1. 在“资源管理器”窗格中，打开 **/app/app.component.ts**，将标题更改为 Heroes，然后将已创建组件的名称置于 heroes.components.ts (app-heroes) 中，以便引用该新组件。 文件的内容现在应如下所示： 
+1. 在“资源管理器”窗格中，打开 **/app/app.component.ts**，将标题更改为 Heroes，然后将已创建组件的名称置于  heroes.components.ts (app-heroes) 中，以便引用该新组件。 文件的内容现在应如下所示： 
 
     ```ts
     import { Component } from '@angular/core';
@@ -375,13 +374,13 @@ ms.locfileid: "54158697"
 
     ```
 
-2. heroes.components.ts 中有其他需要引用的组件（类似于 Hero 组件），因此还需创建此类组件。 在 Angular CLI 命令提示符中，使用以下命令创建一个 hero 模型和一个名为 hero.ts 的文件，其中，g=generate（生成），cl=class（类），hero=类名。
+2.  heroes.components.ts 中有其他需要引用的组件（类似于 Hero 组件），因此还需创建此类组件。 在 Angular CLI 命令提示符中，使用以下命令创建一个 hero 模型和一个名为  hero.ts 的文件，其中，g=generate（生成），cl=class（类），hero=类名。
 
     ```bash
     ng g cl hero
     ```
 
-3. 在“资源管理器”窗格中，打开 src\app\hero.ts。 在 hero.ts 中，将文件的内容替换为以下代码，以便添加带 ID、name 和 saying 的 Hero 类。
+3. 在“资源管理器”窗格中，打开  src\app\hero.ts。 在  hero.ts 中，将文件的内容替换为以下代码，以便添加带 ID、name 和 saying 的 Hero 类。
 
     ```ts
       export class Hero {
@@ -391,13 +390,13 @@ ms.locfileid: "54158697"
     }
     ```
 
-4. 返回到 heroes.components.ts。请注意，`selectedHero: Hero;` 行（第 10 行）的 `Hero` 下方有一条红线。 
+4. 返回到  heroes.components.ts。请注意，`selectedHero: Hero;` 行（第 10 行）的 `Hero` 下方有一条红线。 
 
 5. 左键单击 `Hero` 一词，Visual Studio 会在代码块左侧显示一个灯泡图标。 
 
     ![Visual Studio Code 中的灯泡](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-6. 单击灯泡，然后单击“从 ‘/app/hero’ 导入 Hero”。 或“从 "./hero" 导入 Hero”。 （此消息因设置而异）
+6. 单击灯泡，然后单击“从 ‘/app/hero’ 导入 Hero”  。 或“从 "./hero" 导入 Hero”。  （此消息因设置而异）
 
     此时会在第 2 行出现新的代码行。 如果第 2 行引用 /app/hero，请对其进行修改，使之引用本地文件夹中的 hero 文件 (./hero)。 第 2 行应如下所示：
 
@@ -409,13 +408,13 @@ ms.locfileid: "54158697"
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 在 Angular CLI 命令提示符中输入以下命令，以便在 app.module.ts 中创建 hero 服务，其中，g=generate（生成），s=service（服务），hero=服务名称，-m=置于 app.module 中。
+1. 在 Angular CLI 命令提示符中输入以下命令，以便在  app.module.ts 中创建 hero 服务，其中，g=generate（生成），s=service（服务），hero=服务名称，-m=置于 app.module 中。
 
     ```bash
     ng g s hero -m app.module
     ```
 
-2. 在 Visual Studio Code 中返回到 heroes.components.ts。 请注意，`constructor(private heroService: HeroService) {}` 行（第 13 行）的 `HeroService` 下方有一条红线。 单击 `HeroService`，此时会在代码块左侧出现灯泡。 单击该灯泡，然后单击“从 "./hero.service" 导入 HeroService” 或“从 ‘/app/hero.service’ 导入 HeroService”。
+2. 在 Visual Studio Code 中返回到  heroes.components.ts。 请注意，`constructor(private heroService: HeroService) {}` 行（第 13 行）的 `HeroService` 下方有一条红线。 单击 `HeroService`，此时会在代码块左侧出现灯泡。 单击该灯泡，然后单击“从 "./hero.service" 导入 HeroService”  或“从 ‘/app/hero.service’ 导入 HeroService”。 
 
     单击灯泡会在第 2 行中插入新的代码行。 如果第 2 行引用 /app/hero.service 文件夹，请对其进行修改，使之引用本地文件夹中的 hero 文件 (./hero.service)。 第 2 行应如下所示：
     
@@ -423,7 +422,7 @@ ms.locfileid: "54158697"
     import { HeroService } from "./hero.service"
     ```
 
-3. 在 Visual Studio Code 中打开 hero.service.ts，将以下代码复制到其中，替换文件的内容。
+3. 在 Visual Studio Code 中打开  hero.service.ts，将以下代码复制到其中，替换文件的内容。
 
     ```ts
     import { Injectable } from '@angular/core';
@@ -457,7 +456,7 @@ ms.locfileid: "54158697"
 
     此代码使用 Angular 提供的最新版 HttpClient，这是你需要提供的一个模块，因此我们接下来会进行相应的操作。
 
-4. 在 Visual Studio Code 中打开 app.module.ts 并更新 import 节，使之包括 HttpClientModule，从而导入 HttpClientModule。
+4. 在 Visual Studio Code 中打开  app.module.ts 并更新 import 节，使之包括 HttpClientModule，从而导入 HttpClientModule。
 
     ```ts
     imports: [
@@ -467,7 +466,7 @@ ms.locfileid: "54158697"
     ],
     ```
 
-5. 在 app.module.ts 中，从 import 列表添加 HttpClientModule import 语句。
+5. 在  app.module.ts 中，从 import 列表添加 HttpClientModule import 语句。
 
     ```ts
     import { HttpClientModule } from '@angular/common/http';
@@ -483,13 +482,13 @@ ms.locfileid: "54158697"
     ng b
     ``` 
 
-    如果存在问题，Terminal 窗口会显示要修改的文件的相关信息。 生成操作完成后，新文件会进入 dist 文件夹中。 可以根据需要查看 dist 文件夹中的新文件。
+    如果存在问题，Terminal 窗口会显示要修改的文件的相关信息。 生成操作完成后，新文件会进入 dist  文件夹中。 可以根据需要查看  dist 文件夹中的新文件。
 
     现在运行该应用。
 
-2. 在 Visual Studio Code 中，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
+2. 在 Visual Studio Code 中，单击左侧的“调试”按钮  ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然后单击“开始调试”按钮  ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
 
-3. 现在请打开 Internet 浏览器，导航到 localhost:3000，然后就会看到该应用在本地运行。
+3. 现在请打开 Internet 浏览器，导航到  localhost:3000，然后就会看到该应用在本地运行。
 
      ![在本地运行的 Hero 应用程序](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 

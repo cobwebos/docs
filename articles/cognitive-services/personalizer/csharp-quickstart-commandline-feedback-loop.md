@@ -1,7 +1,7 @@
 ---
-title: 快速入门：适用于 .NET 的个性化体验创建服务客户端库 | Microsoft Docs
+title: 快速入门：适用于 .NET 的个性化体验创建服务客户端库
 titleSuffix: Azure Cognitive Services
-description: 通过一个学习循环开始使用适用于 .NET 的个性化体验创建服务客户端库。
+description: 本快速入门介绍如何通过学习循环开始使用用于 .NET 的个性化体验创建服务客户端库。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927835"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446389"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>快速入门：适用于 .NET 的个性化体验创建服务客户端库
 
@@ -28,7 +28,7 @@ ms.locfileid: "74927835"
 
 [参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
@@ -45,7 +45,7 @@ ms.locfileid: "74927835"
 
 ## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
-使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
+使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 你还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
@@ -174,7 +174,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 为了完成排名请求，程序将要求用户指定偏好，以创建内容选项的 `currentContent`。 该过程可以创建要从排名中排除的内容，显示为 `excludeActions`。 排名请求需要 actions、currentContext、excludeActions 以及唯一的排名事件 ID（GUID 形式）才能接收排名的响应。 
 
-本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能不是一个简单的过程。  
+本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能是一件非常重要的事情。  
 
 [!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=rank)]
 
@@ -213,4 +213,3 @@ dotnet run
 * [什么是个性化体验创建服务？](what-is-personalizer.md)
 * [可在哪种场合下使用个性化体验创建服务？](where-can-you-use-personalizer.md)
 * [故障排除](troubleshooting.md)
-

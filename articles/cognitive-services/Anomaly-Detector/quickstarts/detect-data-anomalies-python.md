@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用异常检测器 REST API 和 Python 以批的形式检测异常
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
+description: 参考本快速入门使用异常检测器 API 以批处理形式或在流式处理数据时检测数据系列中的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: e24436cef11cc07571adb55bca63add5bda783c4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7cef1c8c1b05c859f9435b06c3096bb983965656
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448871"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 
@@ -28,7 +28,7 @@ ms.locfileid: "74483404"
 
  虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py) 上找到本快速入门的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Python 2.x 或 3.x](https://www.python.org/downloads/)
 - 异常检测器密钥和终结点
@@ -76,7 +76,7 @@ ms.locfileid: "74483404"
 
 2. 针对结果调用 `json.dumps()` 以设置其格式，然后将结果输出到控制台。
 
-3. 如果响应包含 `code` 字段，则输出错误代码和错误消息。
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。
 
 4. 否则，请查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含一个布尔值，该值与给定的数据点是否为异常相关。 循环访问该列表，并输出任何 `True` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 

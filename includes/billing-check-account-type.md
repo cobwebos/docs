@@ -4,16 +4,14 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: 42589d6843923f84b51488057941a638515cf45d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef2b428eded71de23cae86bca8e29eced78af683
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449270"
 ---
-检查协议类型以确定计费帐户的类型
- 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
  
 2. 在“成本管理 + 计费”  中进行搜索。
  
@@ -23,9 +21,9 @@ ms.locfileid: "74223839"
  
     ![显示“属性”页中的 Microsoft 客户协议的屏幕截图](./media/billing-check-account-type/billing-mca-property.png)
     
-    “属性”页上的“计费帐户类型”  确定帐户类型。 它可以是 Microsoft 联机服务计划、企业协议、Microsoft 客户协议或 Microsoft 合作伙伴协议。 若要了解有关计费帐户类型的详细信息，请参阅[在 Azure 门户中查看计费帐户](../articles/billing/billing-view-all-accounts.md)。  
+    “属性”页上的“类型”  确定帐户类型。 它可以是 Microsoft 联机服务计划、企业协议、Microsoft 客户协议或 Microsoft 合作伙伴协议。 若要了解有关计费帐户类型的详细信息，请参阅[在 Azure 门户中查看计费帐户](../articles/billing/billing-view-all-accounts.md)。  
  
-4. 如果有权访问多个计费范围，请从左侧选择“计费帐户”或“所有计费范围”   。 检查“计费帐户类型”  列中的类型。
+4. 如果有权访问多个计费范围，请检查“计费帐户类型”列中的类型  。
  
     ![显示“计费帐户列表”页中的 Microsoft 客户协议的屏幕截图](./media/billing-check-account-type/billing-account-type-in-the-list.png)
  

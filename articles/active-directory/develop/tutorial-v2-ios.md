@@ -1,6 +1,6 @@
 ---
-title: iOS 和 macOS 入门 - Microsoft 标识平台 | Azure
-description: iOS 和 macOS (Swift) 应用程序如何使用 Microsoft 标识平台调用需要访问令牌的 API
+title: 用于 iOS 和 macOS 的 MSAL 教程 - Microsoft 标识平台 | Azure
+description: 了解 iOS 和 macOS (Swift) 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423404"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
@@ -45,7 +45,7 @@ ms.locfileid: "74964662"
 
 本教程适用于 iOS 和 macOS 应用。 请注意，这两个平台之间的某些步骤有所不同。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - XCode 版本 10.x 或更高版本是在本指南中构建应用所必需的。 可以从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL")下载 XCode。
 - Microsoft 身份验证库 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 可使用依赖项管理器或手动添加库。 以下说明演示了如何操作。

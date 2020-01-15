@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: e0e6ffc45d55dc76abdbdf839958479b2ac5d40b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c44f1b39ae700fbd11b7c0866e7150d1edec8c4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439517"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 
@@ -47,7 +47,7 @@ ms.locfileid: "74926702"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
 * **Azure SQL 数据库**。 此数据库包含源数据。 
 * **Azure SQL 数据仓库**。 此数据仓库包含从 SQL 数据库复制的数据。 
@@ -72,7 +72,7 @@ ms.locfileid: "74926702"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中，选择“创建资源”>“分析”>“数据工厂”：    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. 在左侧菜单中，选择“创建资源”>“Analytics”>“数据工厂”：    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. 在“新建数据工厂”页中，输入 ADFTutorialBulkCopyDF 作为**名称**。   
  
@@ -85,9 +85,9 @@ ms.locfileid: "74926702"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 选择“V2”  作为“版本”  。
-1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 单击“创建”。 
 1. 创建完成后，会显示“数据工厂”页。 
    
@@ -122,7 +122,7 @@ ms.locfileid: "74926702"
 
     f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。 
   
-    g. 单击“继续”。 
+    g. 单击 **“继续”** 。
 
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>创建接收器 Azure SQL 数据仓库链接服务
@@ -143,7 +143,7 @@ ms.locfileid: "74926702"
      
     f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。 
      
-    g. 单击“继续”。 
+    g. 单击 **“继续”** 。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>创建过渡 Azure 存储链接服务
 本教程使用 Azure Blob 存储作为临时过渡区域，以利用 PolyBase 来实现更好的复制性能。
@@ -156,7 +156,7 @@ ms.locfileid: "74926702"
     
     b. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。 
     
-    c. 单击“继续”。 
+    c. 单击 **“继续”** 。
 
 
 ## <a name="create-datasets"></a>创建数据集
@@ -283,8 +283,8 @@ ms.locfileid: "74926702"
 1. 切换到“设置”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDatabaseDataset** 作为**源数据集**。 
-    1. 对于“使用查询”，请选择“查询”。   
-    1. 对于“查询”，请输入以下 SQL 查询。 
+    1. 为“使用查询”选择“查询”。   
+    1. 为“查询”输入以下 SQL 查询。 
 
         ```sql
         SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SalesLT' and TABLE_NAME <> 'ProductModel'

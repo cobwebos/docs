@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446672"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 
 本快速入门演示如何将图像上传到必应视觉搜索 API 以及如何查看该 API 返回的见解。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * [Json.NET 框架](https://www.newtonsoft.com/json)，以 NuGet 程序包的形式提供。
@@ -41,7 +41,7 @@ ms.locfileid: "74383637"
     using System.Collections.Generic;
     ```
 
-2. 为订阅密钥、终结点以及要上传的图像的路径添加变量：
+2. 为订阅密钥、终结点以及要上传的图像的路径添加变量。 `uriBase` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点：
 
     ```csharp
         const string accessKey = "<my_subscription_key>";

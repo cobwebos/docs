@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438177"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>使用 .NET Core 和 Visual Studio 通过 Azure Dev Spaces 进行团队开发
 
@@ -76,7 +76,7 @@ ms.locfileid: "74325538"
 >
 > 查看[有关使用 Azure DevOps 设置 CI/CD 的指南](how-to/setup-cicd.md)，以创建类似于下图的工作流。
 >
-> ![示例 CI/CD 示意图](media/common/ci-cd-complex.png)
+> ![示例 CI/CD 图](media/common/ci-cd-complex.png)
 
 打开公共 URL 并导航到 Web 应用的任何用户将调用编写的代码路径，该代码路径会使用默认的 _dev_ 空间从前到后运行这两个服务。 现在，假设你要继续开发 *mywebapi* - 如何能够完成开发，同时又不干扰使用开发空间的其他开发人员？ 为此，请设置自己的空间。
 
@@ -129,7 +129,7 @@ ms.locfileid: "74325538"
 创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。  Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。 
 
 ### <a name="well-done"></a>干得不错！
-你已完成入门指南！ 你已了解如何：
+你已完成入门指南！ 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
@@ -140,7 +140,7 @@ ms.locfileid: "74325538"
 
 现在，已探索了 Azure Dev Spaces，请[与团队成员共享你的开发空间](how-to/share-dev-spaces.md)，并帮助他们了解一起协作是多么容易。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 若要完全删除群集中的某个 Azure Dev Spaces 实例，包括所有设备空间以及其中正在运行的服务，请使用 `az aks remove-dev-spaces` 命令。 请记住，此操作是不可逆的。 可以再次在群集上添加 Azure Dev Spaces 支持，但这就像重新开始一样。 旧服务和空间不会还原。
 
 下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。

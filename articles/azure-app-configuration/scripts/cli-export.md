@@ -1,5 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 从 Azure 应用配置存储区导出 | Microsoft Docs
+title: Azure CLI 脚本示例 - 从 Azure 应用配置存储区导出
+titleSuffix: Azure App Configuration
 description: 提供用于从 Azure 应用配置存储区导出的信息和示例脚本
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 28066fcea50180189cff7f9af790908c52a4a261
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433602"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>从 Azure 应用配置存储区导出
 
@@ -50,7 +51,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 此脚本使用以下命令从应用程序配置存储区导出。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | 从应用程序配置存储区资源导出。 |
 

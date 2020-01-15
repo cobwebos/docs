@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 在 Azu
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433195"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入门：在 Azure 中创建 HTTP 触发的 Python 函数
 
@@ -19,7 +19,7 @@ ms.locfileid: "74227187"
 
 本文还提供了[基于 Visual Studio 代码的版本](/azure/python/tutorial-vs-code-serverless-python-01)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前，必须：
 
@@ -144,10 +144,10 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 在 Azure 中创建函数应用后，可以使用 [func azure functionapp publish](functions-run-local.md#project-file-deployment) Core Tools 命令将项目代码部署到 Azure。 在此示例中，使用应用名称替代 `<APP_NAME>`。
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-`--build remote` 选项通过推荐的部署包中的文件在 Azure 中远程生成 Python 项目。 
+你的 Python 项目是通过部署包中的文件在 Azure 中远程构建的。 
 
 将会看到类似于以下消息的输出。 在这里，为了可读性，这些输出已经被截断：
 

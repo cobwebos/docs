@@ -1,7 +1,7 @@
 ---
 title: 教程：使用 Azure Databricks 针对流数据进行异常情况检测
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 和 Azure Databricks 来监视数据中的异常。
+description: 了解如何使用异常检测器 API 和 Azure Databricks 来监视数据中的异常。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 75c2c8bf8b3baee1f9f89282840622e1e29d2a18
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71837776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448895"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -47,13 +47,13 @@ ms.locfileid: "71837776"
 > [!Note]
 > 本教程不能使用异常检测器 API 的免费试用版密钥来完成。 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Azure 事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中心。
 
 - 用于访问事件中心命名空间的[连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)。 该连接字符串应采用类似于
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`。 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 列中的一个值匹配。 
 
 - 事件中心的共享访问策略名称和策略密钥。
 
@@ -70,11 +70,11 @@ ms.locfileid: "71837776"
 3. 在“Azure Databricks 服务”  下提供以下值，创建 Databricks 工作区：
 
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
-    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../../azure-resource-manager/resource-group-overview.md)。 |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../../azure-resource-manager/management/overview.md)。 |
     |**位置**     | 选择“美国东部 2”或任何其他可用区域之一。  有关区域可用性，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
     |**定价层**     |  选择“标准”或“高级”。   请勿选择“试用版”  。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
@@ -153,7 +153,7 @@ ms.locfileid: "71837776"
 
 本教程介绍如何使用 [Azure 认知服务异常检测器 API](../overview.md) 以近实时的方式对推文流运行异常检测。 在使用这些 API 之前，必须在 Azure 上创建异常检测器资源，并检索使用异常检测器 API 所需的访问密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“+ 创建资源”。 
 
@@ -165,11 +165,11 @@ ms.locfileid: "71837776"
 
     |值 |说明  |
     |---------|---------|
-    |Name     | 异常检测器资源的名称。        |
-    |Subscription     | 将要与资源关联的 Azure 订阅。        |
+    |名称     | 异常检测器资源的名称。        |
+    |订阅     | 将要与资源关联的 Azure 订阅。        |
     |位置     | Azure 位置。        |
     |定价层     | 服务定价层。 有关异常检测器定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)。        |
-    |Resource group     | 指定是要创建新的资源组还是选择现有的资源组。        |
+    |资源组     | 指定是要创建新的资源组还是选择现有的资源组。        |
 
 
      选择“创建”  。

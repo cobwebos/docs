@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的 MongoDB API 创建 Angular 应用 - 使用 Mongoose 连接到 Cosmos DB
-titleSuffix: Azure Cosmos DB
+title: 使用 Mongoose 将 Angular 应用连接到 Azure Cosmos DB 的 API for MongoDB
 description: 本教程介绍如何使用 Angular 和 Express 管理 Cosmos DB 中存储的数据，借以生成 Node.js 应用程序。 在本部分中，你使用 Mongoose 连接到 Azure Cosmos DB。
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444711"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 的 MongoDB API 创建 Angular 应用 - 使用 Mongoose 连接到 Cosmos DB
 
@@ -34,7 +33,7 @@ ms.locfileid: "69616426"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 开始教程的本部分之前，请完成[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)中的步骤。
 

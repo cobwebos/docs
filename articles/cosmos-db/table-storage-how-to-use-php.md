@@ -1,5 +1,5 @@
 ---
-title: 如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
+title: 通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 author: wmengmsft
 ms.author: wmeng
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1dbf5b02c99c8baca7c0b4f918cb392ddaf37c96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444768"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -62,7 +62,7 @@ ms.locfileid: "58111491"
 ## <a name="add-required-references"></a>添加所需引用
 若要使用存储表服务或 Azure Cosmos DB API，必须：
 
-* 使用 [require_once][require_once]语句引用 autoloader 文件，并
+* 使用 [require_once][require_once] 语句引用 autoloader 文件，并
 * 引用所使用的所有类。
 
 以下示例展示了如何添加 autoloader 文件并引用 **TableRestProxy** 类。
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>创建表
-利用 **TableRestProxy** 对象，可以使用 **createTable** 方法创建表。 创建表时，可以设置表服务超时。 （有关表服务超时的详细信息，请参阅[为表服务操作超时的设置][table-service-timeouts]。）
+利用 **TableRestProxy** 对象，可以使用 **createTable** 方法创建表。 创建表时，可以设置表服务超时。 （有关表服务超时的详细信息，请参阅[为表服务操作设置超时][table-service-timeouts]。）
 
 ```php
 require_once 'vendor\autoload.php';
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有实体
-使用筛选器来构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name*”。 下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
+使用筛选器构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name*”。 下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>检索分区中的一部分实体
-可以使用上一示例中使用的同一模式来检索分区中的部分实体。 检索的实体子集由所使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于 `DueDate` 的所有实体。
+可以使用上一示例中使用的同一模式来检索分区中的部分实体。 检索的实体子集由所使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定 `Location` 和早于指定日期的 `DueDate` 的所有实体。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -314,7 +314,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>检索一部分实体属性
-查询可检索一部分实体属性。 此方法称为投影，可减少带宽并提高查询性能，尤其适用于大型实体。 若要指定要检索的属性，请将该属性的名称传递到 **Query->addSelectField** 方法。 可以多次调用此方法来添加更多属性。 执行 **TableRestProxy->queryEntities** 后，返回的实体将仅具有选定的属性。 （若要返回一部分表实体，请使用上述查询中所示的筛选器。）
+查询可检索一部分实体属性。 此方法称为投影  ，可减少带宽并提高查询性能，尤其适用于大型实体。 若要指定要检索的属性，请将该属性的名称传递到 **Query->addSelectField** 方法。 可以多次调用此方法来添加更多属性。 执行 **TableRestProxy->queryEntities** 后，返回的实体将仅具有选定的属性。 （若要返回一部分表实体，请使用上述查询中所示的筛选器。）
 
 ```php
 require_once 'vendor/autoload.php';

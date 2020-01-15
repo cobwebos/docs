@@ -1,7 +1,7 @@
 ---
 title: 教程：审核终结点话语 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 通过验证或更正 LUIS 不确定的、通过 LUIS HTTP 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
+description: 在本教程中，通过验证或更正通过 LUIS HTTP 终结点收到的 LUIS 不确定的话语来改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895678"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447817"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 本教程介绍如何通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的言语来改进应用预测。 在日常的计划性 LUIS 维护过程中，应该评审终结点言语。
@@ -25,11 +25,9 @@ ms.locfileid: "74895678"
 
 * 特定于应用。
 * 旨在改进应用的预测准确性。
-* 应该定期进行评审。
+* 应该定期进行审核。
 
 可以通过审核终结点表述来验证或纠正表述的已预测意向。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -46,7 +44,7 @@ ms.locfileid: "74895678"
 
 使用以下步骤导入应用。
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
 
 1. 在 [LUIS 预览版门户](https://preview.luis-ai)上，将该 .json 文件导入到新应用中。
 
@@ -84,7 +82,7 @@ ms.locfileid: "74895678"
 
     要审核的话语只有一个池，不管经常编辑哪个版本的话语，也不管在终结点上发布哪个版本的应用。
 
-## <a name="review-endpoint-utterances"></a>评审终结点话语
+## <a name="review-endpoint-utterances"></a>查看终结点话语
 
 评审终结点言语，使意向经过适当的调整。 尽管在所有版本中只需评审单个言语池，但适当调整意向的过程只会将示例言语添加到当前的活动模型。 
 

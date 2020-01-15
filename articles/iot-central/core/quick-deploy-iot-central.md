@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: ba131002df64f972aa921a0f002a6d26c58f21ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cb9968d3bcc30fe8e0f0023bcf7101cde5e4a196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453915"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
@@ -36,13 +36,11 @@ ms.locfileid: "74280620"
 
 1. Azure IoT Central 会根据所选应用程序模板自动建议应用程序名称。 可以接受此名称或输入自己的友好应用程序名称，例如 **Contoso IoT**。 Azure IoT Central 还会根据应用程序名称为你生成唯一的 URL。 如果你愿意，可以自由地将此 URL 前缀更改为更令人难忘的内容。
 
-1. 选择不使用预览功能的应用程序模板。 应用程序模板可能包含入门所需的预定义项目（例如设备模板和仪表板）。
+1. 选择不使用预览功能的“旧应用程序”  模板。
 
     | 应用程序模板 | 说明 |
     | -------------------- | ----------- |
-    | 示例 Contoso       | 创建一个应用程序，其中包含已为冷藏食品贩卖机创建的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |
-    | 示例 Devkit       | 创建一个应用程序，其中的设备模板可以用来连接 MXChip 或 Raspberry Pi 设备。 如果你是在这其中任一设备上进行试验的设备开发人员，请使用此模板。 |
-    | 自定义应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
+    | 旧应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
 
 1. 选择付款计划：
    - 7 天免费试用版应用程序可免费使用 7 天，之后便过期  。 它们可以在到期之前随时转换为“即用即付”。  若要创建试用版应用程序，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧  。

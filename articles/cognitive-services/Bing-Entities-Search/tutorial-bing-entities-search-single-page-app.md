@@ -1,21 +1,21 @@
 ---
 title: 教程：必应实体搜索单页 Web 应用
 titleSuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
+description: 本教程介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423988"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448593"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
@@ -49,7 +49,7 @@ ms.locfileid: "68423988"
 > * 处理必应客户端 ID 和 API 订阅密钥
 > * 处理可能出现的任何错误
 
-教程页是完全独立的；它不使用任何外部框架、样式表，甚至也不使用外部图像文件， 而只使用获得广泛支持的 JavaScript 语言功能，适用于所有主要 Web 浏览器的最新版本。
+教程页是完全独立的；它不使用任何外部框架、样式表，甚至也不使用外部图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
 在本教程中，我们只讨论源代码的选定部分。 完整的源代码[在单独页上](tutorial-bing-entities-search-single-page-app-source.md)提供。 请将此代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
@@ -77,7 +77,7 @@ HTML 包含搜索表单，用户可以在其中输入查询并选择搜索选项
 
 搜索分两个阶段执行。 首先，如果用户输入了位置限制，则会通过必应地图查询将其转换为坐标。 该查询的回调然后会启动必应实体搜索查询。
 
-HTML 还包含划分（HTML `<div>` 标记），可以在其中显示搜索结果。
+HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 ## <a name="managing-subscription-keys"></a>管理订阅密钥
 
@@ -86,7 +86,7 @@ HTML 还包含划分（HTML `<div>` 标记），可以在其中显示搜索结�
 
 为了避免必须将必应搜索和必应地图 API 订阅密钥包含在代码中这种情形，请使用浏览器的持久性存储来存储它们。 如果任何一种密钥尚未存储，我们会提示你进行存储，以备后用。 如果该密钥随后被 API 拒绝，我们会使已存储的密钥失效，并会在用户下次进行搜索时要求其提供密钥。
 
-我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
+我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```javascript
 // cookie names for data we store
@@ -376,7 +376,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功  不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> 成功的 HTTP 请求不  一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -445,7 +445,7 @@ searchItemRenderers = {
 
 | | |
 |-|-|
-|`item`|包含项目属性（例如其 URL 和说明）的 JavaScript 对象。|
+|`item`|包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`|结果项集合中的结果项的索引。|
 |`count`|搜索结果项集合中的项数。|
 
@@ -507,7 +507,7 @@ searchItemRenderers = {
 > [!div class="checklist"]
 > * 生成 HTML `<img>` 标记以显示图像缩略图（如果有）。 
 > * 生成链接到图像所在页面的 HTML `<a>` 标记。
-> * 生成可显示有关图像及其所在站点的信息的说明。
+> * 可生成显示有关图像及所在站点的信息的说明。
 > * 使用显示提示（如果有）整合实体的分类。
 > * 包括一个必应搜索链接，用于获取有关实体的详细信息。
 > * 显示数据源要求的任何许可或归属信息。
@@ -522,14 +522,14 @@ searchItemRenderers = {
 
 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同客户端 ID 可确保被允许看到某个功能的用户可以始终看到该功能。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本与网页的域相同，因此 `X-MSEdge-ClientID` 标头可供 JavaScript 使用。
+浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
-> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则就必须将必应搜索 API 密钥包含在网页中，这样查看源代码的任何人都可以获得它。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
+> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
     npm install -g cors-proxy-server
 
@@ -537,7 +537,7 @@ searchItemRenderers = {
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-最后，使用以下命令启动 CORS 代理：
+最后，运行下面的命令，启动 CORS 代理：
 
     cors-proxy-server
 

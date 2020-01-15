@@ -1,5 +1,5 @@
 ---
-title: 教程：使用异步 Java SDK 生成 Java 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户
+title: 教程：使用 Azure Cosmos DB 异步 Java SDK 构建 Java 应用以管理 SQL API 帐户中的数据
 description: 本教程介绍如何通过异步 Java 应用程序在 Azure Cosmos DB 中使用 SQL API 帐户来存储和访问数据。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 972328ec5052f5089994efbb940ff00c889ae78f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444891"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>教程：使用异步 Java SDK 生成 Java 应用，以便管理存储在 SQL API 帐户中的数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "73720865"
 > * 创建 JSON 文档
 > * 查询集合
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 请确保具有以下资源：
 

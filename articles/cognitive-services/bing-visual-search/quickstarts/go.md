@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: d1612db9b0c0f6a5ec85734d5a26ed0e25cb8c07
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446643"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>快速入门：使用必应视觉搜索 REST API 和 Go 获取图像见解
 
 本快速入门使用 Go 编程语言调用必应视觉搜索 API 并显示结果。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 安装 [Go 二进制文件](https://golang.org/dl/)。
 * go-spew 代码深度美化器用于显示结果。 可以使用 `$ go get -u https://github.com/davecgh/go-spew` 命令安装 go-spew。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>项目和库
 
 在 IDE 或编辑器中创建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `encoding/json` 来处理结果的 JSON 文本。 `go-spew` 库用于分析 JSON 结果。
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ import (
 
 `BingAnswer` 结构用于设置 JSON 响应中返回的数据的格式。此类数据分为多个层次并很复杂。 以下实现涵盖了部分基础知识：
 
-```
+```go
 type BingAnswer struct {
     Type         string `json:"_type"`
     Instrumentation struct {
@@ -109,9 +109,9 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Main 函数和变量  
 
-以下代码声明 main 函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 `batchNumber` 是 POST 数据的前导和尾随边界所需的 GUID。 `fileName` 变量标识 POST 的图像文件。 以下部分介绍代码的详细信息：
+以下代码声明 main 函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 `batchNumber` 是 POST 数据的前导和尾随边界所需的 GUID。 `fileName` 变量标识 POST 的图像文件。 `endpoint` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点：
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.se
     endpoint := "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch"
@@ -161,7 +161,7 @@ func main() {
 
 对视觉搜索终结点的 POST 请求要求使用前导和尾随边界来封闭 POST 数据。 前导边界包括批号、内容类型标识符 `Content-Disposition: form-data; name="image"; filename=`，以及要 POST 的图像的文件名。 尾随边界就是批号。 这些函数不包括在 `main` 块中：
 
-```
+```go
 func BuildFormDataStart(batNum string, fileName string) string{
 
     startBoundary := "--batch_" + batNum + "\r\n"
@@ -180,7 +180,7 @@ func BuildFormDataEnd(batNum string) string{
 
 此代码段创建包含图像数据的 POST 请求：
 
-```
+```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
     file, err := os.Open(fileName)
     if err != nil {
@@ -209,7 +209,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 以下代码发送请求并读取结果：
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -228,7 +228,7 @@ resp, err := client.Do(req)
 
 `Unmarshall` 函数从视觉搜索 API 返回的 JSON 文本提取信息。 `go-spew` 代码美化器显示结果：
 
-```
+```go
     // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(resbody, &ans)
@@ -251,7 +251,7 @@ resp, err := client.Do(req)
 
 结果标识与 POST 正文中包含的图像类似的图像。 有用的字段为 `WebSearchUrl` 和 `Name`：
 
-```
+```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
      (struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) {
       WebSearchUrl: (string) (len=129) "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&id=B9E6621161769D578A9E4DD9FD742128DE65225A&simid=608046863828453626",

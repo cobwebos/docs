@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
-description: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
+title: CLI 示例：使用内部和外部 NSG 创建两个 VM
+description: 使用 Azure CLI 创建两个带有内部和外部 NSG 的 VM，以保护网络流量。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458392"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>使用 NSG 保护虚拟机之间的网络流量
 
 此脚本创建两个虚拟机，并保护这两个虚拟机的传入流量。 一个虚拟机可在 Internet 上访问，其网络安全组 (NSG) 配置为允许端口 22 和端口 80 上的流量。 第二个虚拟机无法在 Internet 上访问，其 NSG 配置为仅允许来自第一个虚拟机的流量。
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |

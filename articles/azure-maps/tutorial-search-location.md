@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432750"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
-本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行下列操作：
+本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Maps 帐户
@@ -30,7 +30,7 @@ ms.locfileid: "74109509"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 <a id="createaccount"></a>
 
@@ -55,13 +55,15 @@ ms.locfileid: "74109509"
 
 ## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
 
-成功创建 Maps 帐户后，检索查询 Maps API 的密钥。
+成功创建 Maps 帐户后，检索查询 Maps API 的密钥。 建议在调用 Azure Maps 服务时使用帐户的主密钥作为订阅密钥。
 
 1. 在门户中打开 Maps 帐户。
 2. 在设置部分中，选择“身份验证”  。
 3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
 
 ![在门户中获取主密钥](./media/tutorial-search-location/get-key.png)
+
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a id="createmap"></a>
 
@@ -275,7 +277,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过 Azure Maps 创建帐户

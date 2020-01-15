@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448834"
 ---
 # <a name="what-is-bing-autosuggest"></a>什么是必应自动建议？
 
@@ -49,6 +49,9 @@ ms.locfileid: "74072874"
 
 使自己熟悉[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 参考文档。 此参考文档包含可以用来请求建议查询词的终结点、标头和查询参数的列表，以及响应对象的定义。
 
-了解如何使用[必应 Web 搜索 API](../bing-web-search/search-the-web.md) 搜索网页。
+请访问[必应搜索 API 中心页](../bing-web-search/search-the-web.md)，浏览其他可用的 API。
+
+
+了解如何使用[必应 Web 搜索 API](../bing-web-search/search-the-web.md) 搜索 Web，并浏览其他[必应搜索 API](../bing-web-search/index.yml)。
 
 确保阅读[必应使用和显示要求](./useanddisplayrequirements.md)，以免违反关于搜索结果使用要求的任何规则。

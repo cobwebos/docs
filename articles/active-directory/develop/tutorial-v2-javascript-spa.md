@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台 JavaScript 单页应用程序指南 | Azure
+title: JavaScript 单页应用教程 - Microsoft 标识平台 | Azure
 description: JavaScript SPA 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 995210e720040448927b2aaac2c2eb590e3de981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423379"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -58,7 +58,7 @@ ms.locfileid: "74919386"
 
 ## <a name="set-up-your-web-server-or-project"></a>设置 Web 服务器或项目
 
-> 想要改为下载此示例的项目？ 执行下列操作之一：
+> 想要改为下载此示例的项目？ 执行下列任一操作：
 > 
 > - 若要使用本地 Web 服务器（如 Node.js）运行项目，请[下载项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 >
@@ -66,7 +66,7 @@ ms.locfileid: "74919386"
 >
 > 若要在执行代码示例之前对其进行配置，请跳到[配置步骤](#register-your-application)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 若要运行本教程，需要将本地 Web 服务器（如 [Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core) 或 IIS Express）与 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 集成。
 
@@ -326,7 +326,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 如果帐户提供访问多个租户的权限，请在右上方选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。

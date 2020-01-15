@@ -1,6 +1,6 @@
 ---
-title: 教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
-description: 在本教程中，了解如何使用 CQL Copy 命令和 Spark 将数据从 Apache Cassandra 复制到 Azure Cosmos DB 中的 Cassandra API 帐户。
+title: 将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户 - 教程
+description: 本教程介绍如何使用 CQL Copy 命令和 Spark 将数据从 Apache Cassandra 复制到 Azure Cosmos DB 中的 Cassandra API 帐户
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: cc312a707f5ab74967b9d3bc050fec7bfcad9dbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c754740369da6d0a8084b9b60ef178fb28e32f1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445673"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
 
@@ -84,7 +84,7 @@ ms.locfileid: "58851069"
 
    * 登录到 [Azure 门户](https://portal.azure.com)，导航到你的 Azure Cosmos 帐户。
 
-   * 打开“连接字符串”窗格，其中包含从 cqlsh 连接到 Cassandra API 帐户所需的所有信息。
+   * 打开“连接字符串”  窗格，其中包含从 cqlsh 连接到 Cassandra API 帐户所需的所有信息。
 
 2. 使用门户中的连接信息登录到 cqlsh。
 
@@ -106,7 +106,7 @@ ms.locfileid: "58851069"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448770"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>教程：在网页上获取搜索建议
 
@@ -27,9 +27,9 @@ ms.locfileid: "74072846"
 > - 对必应自动推荐 API 进行简单查询
 > - 显示查询结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-要继续学习本教程，需要必应自动推荐 API 的订阅密钥。 如果没有，请[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
+要继续学习本教程，需要必应自动推荐 API 的订阅密钥。 如果没有订阅密钥，可以[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
 
 ## <a name="create-a-new-web-page"></a>创建新的网页
 
@@ -66,7 +66,7 @@ ms.locfileid: "74072846"
 
 ## <a name="getsubscriptionkey-function"></a>getSubscriptionKey 函数
 
-getSubscriptionKey 函数返回必应自动推荐 API 密钥。 该函数从本地存储（即 cookie）中检索密钥，或在需要时提示用户。
+getSubscriptionKey 函数返回必应自动推荐 API 密钥。 该函数从本地存储（即 cookie）中检索密钥，或在需要时提示用户提供。
 
 开始编写 getSubscriptionKey 函数并声明 cookie 名称，如下所示。
 
@@ -76,7 +76,7 @@ getSubscriptionKey = function() {
     var COOKIE = "bing-autosuggest-api-key";   // name used to store API key in key/value storage
 ```
 
-findCookie 帮助程序函数返回指定 cookie 的值，如果未找到该 cookie，将返回空字符串。
+findCookie 帮助程序函数返回指定 cookie 的值，如未找到该 cookie，将返回空字符串。
 
 ```html
     function findCookie(name) {
@@ -106,7 +106,7 @@ getSubscriptionKeyCookie 帮助程序函数提示用户输入必应自动推荐 
     }
 ```
 
-getSubscriptionKeyLocalStorage 帮助程序函数首先尝试通过查找适当的 cookie 检索必应自动推荐 API 密钥。 如果未找到 cookie，则提示用户输入密钥值。 然后返回密钥值。
+getSubscriptionKeyLocalStorage 帮助程序函数首先尝试通过查找适当的 cookie 检索必应自动推荐 API 密钥。 如未找到 cookie，则提示用户输入密钥值。 然后返回密钥值。
 
 ```html
     function getSubscriptionKeyLocalStorage() {
@@ -118,7 +118,7 @@ getSubscriptionKeyLocalStorage 帮助程序函数首先尝试通过查找适当�
     }
 ```
 
-getSubscriptionKey 帮助程序函数采用参数 invalidate  。 如果 invalidate  为 true  ，则 getSubscriptionKey 删除包含必应自动推荐 API 密钥的 cookie。 如果 invalidate  为 false  ，则 getSubscriptionKey 返回必应自动推荐 API 密钥的值。
+getSubscriptionKey 帮助程序函数采用一个参数 invalidate  。 如果 invalidate  为 true  ，则 getSubscriptionKey 删除包含必应自动推荐 API 密钥的 cookie。 如果 invalidate  为 false  ，则 getSubscriptionKey 返回必应自动推荐 API 密钥的值。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -184,7 +184,7 @@ function renderErrorMessage(message, code) {
 function bingAutosuggest(query, key) {
 ```
 
-指定必应自动推荐 API 终结点，并声明 XMLHttpRequest 对象，我们将使用该对象将请求发送到终结点。
+指定必应自动建议 API 终结点，并声明 XMLHttpRequest 对象，我们将使用该对象发送请求。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";
@@ -266,7 +266,7 @@ function bingAutosuggest(query, key) {
 </form>
 ```
 
-添加用于显示结果的 HTML div  标记。 之前定义的 JavaScript 指此 div 标记  。
+添加用于显示结果的 HTML div 标记  。 之前定义的 JavaScript 指此 div 标记  。
 
 ```html
 <h2>Results</h2>

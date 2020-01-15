@@ -1,7 +1,7 @@
 ---
-title: 快速入门：适用于 Node.js 的个性化体验创建服务客户端库 | Microsoft Docs
+title: 快速入门：适用于 Node.js 的个性化体验创建服务客户端库
 titleSuffix: Azure Cognitive Services
-description: 通过一个学习循环开始使用适用于 Node.js 的个性化体验创建服务客户端库。
+description: 本快速入门介绍如何通过学习循环开始使用用于 Node.js 的个性化体验创建服务客户端库。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446375"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的个性化体验创建服务客户端库
 
@@ -28,7 +28,7 @@ ms.locfileid: "73494468"
 
 [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org) 和 NPM。
@@ -47,7 +47,7 @@ ms.locfileid: "73494468"
 
 ## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 你还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
@@ -163,7 +163,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 为了完成排名请求，程序会询问用户的首选项以创建内容选项。 该过程可以创建要从排名中排除的内容，显示为 `excludeActions`。 排名请求需要 [actions](concepts-features.md#actions-represent-a-list-of-options)、currentContext、excludeActions 以及唯一的排名事件 ID（作为 GUID）才能接收排名的响应。 
 
-本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能不是一个简单的过程。  
+本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能是一件非常重要的事情。  
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 

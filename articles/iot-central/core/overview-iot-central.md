@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434975"
 ---
 <!---
 Purpose of an Overview article: 
@@ -99,7 +99,7 @@ Azure IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应
 
 现在，你已大致了解了 Azure IoT Central，下面是建议的后续步骤：
 
-- 了解 [Azure IoT Central 与 Azure IoT 解决方案加速器](overview-iot-options.md)之间的区别。
+- 了解可用的[用于创建 IoT 解决方案的 Azure 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
 - 通过[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)开始使用此解决方案。
 - 请按顺序学习以下教程，它们展示了：

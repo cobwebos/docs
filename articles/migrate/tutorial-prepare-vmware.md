@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454555"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "74196240"
 [Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
 
-本教程是介绍如何评估和迁移 VMware VM 的教程系列中的第一篇文章。 本教程介绍如何执行下列操作：
+本教程是介绍如何评估和迁移 VMware VM 的教程系列中的第一篇文章。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 准备 Azure 以便使用 Azure Migrate。
@@ -124,7 +124,7 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 
 1. [验证](migrate-support-matrix-vmware.md#assessment-appliance-requirements)设备要求和限制。
 2. 如果使用的是基于 URL 的防火墙代理，请[查看](migrate-support-matrix-vmware.md#assessment-url-access-requirements)设备将需要访问的 Azure URL。 确保代理解析在查找 URL 时收到的任何 CNAME 记录。
-3. 查看设备在发现和评估期间要收集的[性能数据](migrate-appliance.md#collected-performance-data-vmware)] 和[元数据](migrate-appliance.md#collected-metadata-vmware)。
+3. 查看设备在发现和评估期间收集的[性能数据](migrate-appliance.md#collected-performance-data-vmware)和[元数据](migrate-appliance.md#collected-metadata-vmware)。
 4. [注意](migrate-support-matrix-vmware.md#assessment-port-requirements)设备访问的端口。
 5. 在 vCenter Server 上，请确保帐户有权使用 OVA 文件创建 VM。 使用 OVA 文件将 Azure Migrate 设备部署为 VMware VM。
 

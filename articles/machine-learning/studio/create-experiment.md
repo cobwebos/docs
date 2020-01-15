@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427721"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入门：在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验
 
@@ -45,7 +45,7 @@ ms.locfileid: "73839951"
 ## <a name="get-the-data"></a>获取数据
 
 若要进行机器学习，首先需要获取数据。
-可以使用经典版机器学习工作室随附的多个示例数据集，也可以从多种数据源导入数据。 本示例将使用工作区中包含的示例数据集“汽车价格数据(原始)”  。
+可以使用工作室（经典）随附的多个示例数据集，也可以从多种源导入数据。 本示例将使用工作区中包含的示例数据集“汽车价格数据(原始)”  。
 此数据集包含各辆汽车的条目，包括制造商、车型、技术规格、价格等方面的信息。
 
 > [!TIP]

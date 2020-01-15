@@ -3,14 +3,14 @@ title: 使用 .NET Core 和 Visual Studio Code 进行团队开发
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 30d132b78279e9ae1ca190c0037c962a7cbd8e6f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e864d67e0126edf9138ff0d811331829bc758030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438147"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>通过 Azure Dev Spaces 使用 .NET Core 和 Visual Studio Code 进行团队开发
 
@@ -53,7 +53,7 @@ ms.locfileid: "74325508"
 
 1. 克隆 [Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)：`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. 签出远程分支 *azds_updates*：`git checkout -b azds_updates origin/azds_updates`
-1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“\<无\>”。 
+1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“\<无\>”  。
 1. 导航到 _mywebapi_ 目录并执行 `azds up -d`
 1. 导航到 _webfrontend_ 目录并执行 `azds up -d`
 1. 执行 `azds list-uris` 以查看 _webfrontend_ 的公共终结点
@@ -63,7 +63,7 @@ ms.locfileid: "74325508"
 >
 > 查看[有关使用 Azure DevOps 设置 CI/CD 的指南](how-to/setup-cicd.md)，以创建类似于下图的工作流。
 >
-> ![示例 CI/CD 示意图](media/common/ci-cd-complex.png)
+> ![示例 CI/CD 图](media/common/ci-cd-complex.png)
 
 此时基线应会运行。 运行 `azds list-up --all` 命令，将会看到如下所示的输出：
 
@@ -147,7 +147,7 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。  Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。 
 
 ### <a name="well-done"></a>干得不错！
-你已完成入门指南！ 你已了解如何：
+你已完成入门指南！ 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
@@ -158,7 +158,7 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 
 现在已探索了Azure Dev Spaces，请[与团队成员共享开发空间](how-to/share-dev-spaces.md)并开始协作。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 若要完全删除群集中的某个 Azure Dev Spaces 实例，包括所有设备空间以及其中正在运行的服务，请使用 `az aks remove-dev-spaces` 命令。 请记住，此操作是不可逆的。 可以再次在群集上添加 Azure Dev Spaces 支持，但这就像重新开始一样。 旧服务和空间不会还原。
 
 下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。

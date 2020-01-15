@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432808"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -32,7 +32,7 @@ ms.locfileid: "74107056"
 > * 模拟车内 IoT 设备。
     
 
-## <a name="use-case"></a>使用案例
+## <a name="use-case"></a>用例
 
 我们将举例演示一个场景：汽车租赁公司打算监视并记录其租赁汽车的事件。 汽车租赁公司通常面向特定的地理区域出租其汽车，出租时需要跟踪汽车的行程。 涉及到汽车离开指定地理区域的任何事件都需要记录，以便能够正确处理政策、费用和其他业务方面的问题。
 
@@ -77,7 +77,7 @@ ms.locfileid: "74107056"
   ![地理围栏路线](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -104,7 +104,8 @@ ms.locfileid: "74107056"
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取帐户的主要订阅密钥。
+若要基于 Azure Maps 空间分析实现业务逻辑，需要在创建的资源组中创建一个 Azure Maps 帐户。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+
 
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
@@ -157,7 +158,7 @@ IoT 中心是云中的一个托管服务，充当中央消息中心，用于在 
 
 1. 在 Postman 应用中，单击“新建”|“新建”，然后选择“请求”。 输入“上传地域隔离区数据”的请求名称，选择用于保存该请求的集合或文件夹，然后单击“保存”。
 
-    ![使用 Postman 上传地域隔离区](./media/tutorial-iot-hub-maps/postman-new.png)
+    ![使用 Postman 上传地理围栏](./media/tutorial-iot-hub-maps/postman-new.png)
 
 2. 在生成器选项卡上选择 POST HTTP 方法，并输入以下 URL 发出 POST 请求。
 
@@ -167,7 +168,7 @@ IoT 中心是云中的一个托管服务，充当中央消息中心，用于在 
     
     URL 路径中 `dataFormat` 参数对应的“geojson”值表示正在上传的数据的格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 主订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

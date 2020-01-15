@@ -1,5 +1,5 @@
 ---
-title: 教程：将实时事件中的数据异常可视化 - Azure 事件中心
+title: Azure 事件中心 - 将实时事件中的数据异常可视化
 description: 教程：将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437149"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -22,7 +22,7 @@ ms.locfileid: "74307352"
 
 本教程将模拟此示例。 我们将运行一个可以创建信用卡交易并将其发送到事件中心的应用程序。 再使用 Azure 流分析实时读取数据流，将无效交易与无效交易区分开来，然后使用 Power BI 直观识别标记为无效的交易。
 
-本教程介绍如何执行以下操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 创建事件中心
@@ -32,7 +32,7 @@ ms.locfileid: "74307352"
 
 需要一个 Azure 订阅才能完成此教程。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "74307352"
 
 以下部分介绍如何执行上述步骤。 遵照适用于 CLI 或 PowerShell 的说明执行以下步骤： 
 
-1. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 
+1. 创建[资源组](../azure-resource-manager/management/overview.md)。 
 
 2. 创建事件中心命名空间。 
 
@@ -217,7 +217,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![显示如何将输入流添加到流分析作业的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. 单击“保存”。 
+5. 单击“ **保存**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
@@ -229,7 +229,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **数据集名称**：使用 **contosoehdataset**。 此字段是要在 Power BI 中使用的数据集的名称。 
 
-   **表名**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
+   **表名称**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
 
    在剩余字段中使用默认值。
 
@@ -239,7 +239,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 4. 在剩余字段中使用默认值。
 
-5. 单击“保存”。 
+5. 单击“ **保存**”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
@@ -268,7 +268,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 单击“保存”。 
+4. 单击“ **保存**”。
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>测试流分析作业的查询 
 
@@ -373,7 +373,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 创建事件中心

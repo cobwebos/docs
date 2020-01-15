@@ -3,17 +3,17 @@ title: 在 Kubernetes 上进行调试和循环访问：Visual Studio 和 .NET Co
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: bfa798027a3905eff29bf1ce11251ce900bd7267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438250"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 - [Node.js 和 Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core 和 Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
 - 已安装包含“Azure 开发”工作负荷的 Windows 版 Visual Studio 2019。 还可以使用安装了“Web 开发”工作负荷和 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) 的 Windows 版 Visual Studio 2017。 如果尚未安装 Visual Studio，请在[此处](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)下载。
@@ -55,7 +55,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 ## <a name="create-a-new-aspnet-web-app"></a>创建新的 ASP.NET Web 应用
 
 1. 打开 Visual Studio。
-1. 创建新项目。
+1. 创建一个新的项目。
 1. 选择“ASP.NET Core Web 应用程序”，然后单击“下一步”   。
 1. 为项目“webfrontend”命名并单击“创建”   。
 1. 出现提示时，请为模板选择“Web 应用程序(模型-视图-控制器)”。 

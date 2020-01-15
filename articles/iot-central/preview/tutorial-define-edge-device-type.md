@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434869"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中定义新的 Azure IoT Edge 设备类型（预览功能）
 
@@ -47,7 +47,7 @@ Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的�
 * 允许与其他设备功能模型建立关系。
 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建新的 Azure IoT Edge 设备设备模板。
@@ -57,7 +57,7 @@ Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的�
 > * 向下游设备模板添加关系。
 > * 发布设备模板。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)。
 
@@ -303,7 +303,7 @@ IoT Edge 根据架构验证部署清单文件。 如果验证成功，请选择�
 
 ### <a name="add-customizations"></a>添加自定义项
 
-使用自定义项来修改接口，或者将 IoT Central 特定的功能添加到不需要对设备功能模型进行版本控制的功能中。 当功能模型处于草稿或已发布状态时，可以自定义字段。 只能自定义不会破坏接口兼容性的字段。 例如，可以：
+使用自定义项来修改接口，或者将 IoT Central 特定的功能添加到不需要对设备功能模型进行版本控制的功能中。 当功能模型处于草稿或已发布状态时，可以自定义字段。 只能自定义不会破坏接口兼容性的字段。 例如，你能够：
 
 - 自定义功能的显示名称和单位。
 - 添加在图表上显示值时要使用的默认颜色。
@@ -387,7 +387,7 @@ IoT Edge 根据架构验证部署清单文件。 如果验证成功，请选择�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 * 创建新的边缘作为叶设备模板。
 * 从上传的部署清单中生成模块。
@@ -400,4 +400,4 @@ IoT Edge 根据架构验证部署清单文件。 如果验证成功，请选择�
 在 Azure IoT Central 应用程序中创建设备模板后，接下来可以执行此操作：
 
 > [!div class="nextstepaction"]
-> [连接设备](./tutorial-connect-pnp-device.md)
+> [连接边缘设备](./tutorial-add-edge-as-leaf-device.md)

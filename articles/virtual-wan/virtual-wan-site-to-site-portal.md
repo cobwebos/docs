@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e17205af1ede845ea77b04f6f2b4c6babf3bc450
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10b9dba2f54a2d20b0cb405285772f8c3d74b3a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450837"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -55,7 +55,7 @@ ms.locfileid: "74482147"
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
 2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
-3. 在“创建 WAN”  页的“基本”  选项卡上，填写以下字段：
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![虚拟 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "74482147"
    * **名称** - 键入要用于称呼 WAN 的名称。
    * **类型：** 基本或标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
 4. 填写完字段后，单击“审阅 + 创建”  。
-5. 验证通过后，选择“创建”  以创建虚拟 WAN。
+5. 验证通过后，选择“创建”以创建虚拟 WAN  。
 
 ## <a name="hub"></a>创建中心
 
@@ -75,7 +75,7 @@ ms.locfileid: "74482147"
 
 ## <a name="site"></a>创建站点
 
-现在，你可以创建与物理位置对应的站点。 创建任意数目的与物理位置对应的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可以创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴（插入链接）CPE 设备，请咨询这些设备以了解其对 Azure 的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接（此处是从 Azure 到 CPE 合作伙伴的自动化指南链接）。
+现在，你可以创建与物理位置对应的站点。 创建任意数目的与物理位置对应的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可以创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴（插入链接）CPE 设备，请咨询这些设备以了解其对 Azure 的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接。 有关详细信息，请参阅[从 Azure 到 CPE 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：创建应用 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 使用预生成的域 `HomeAutomation` 创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
+description: 本快速入门演示如何创建使用预生成域 `HomeAutomation` 打开和关闭灯光和设备的 LUIS 应用。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448100"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 在本快速入门中，请使用预生成的域 `HomeAutomation` 来创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
-
-## <a name="prerequisites"></a>先决条件
-
-本文需要一个在 [https://www.luis.ai](https://www.luis.ai) 的 LUIS 门户中创建的免费 LUIS 帐户。 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>创建新应用
-可在“我的应用”中创建和管理应用程序  。 
+可在“我的应用”中创建和管理应用程序  。
 
 1. 在 LUIS 门户的“我的应用”列表中，选择“+ 创建”  。
 
     ![在 LUIS 门户的“我的应用”列表中，选择“+ 创建”。](./media/create-app-in-portal.png)
 
-1. 在对话框中，将应用程序命名为 `Home Automation`，然后选择“完成”  。 LUIS 创建应用程序。 说明是可选的，不会用于创作或预测。 创建 LUIS 应用时，预测资源也是可选的。 将应用发布到生产环境时，应该分配一个预测资源，使应用能够处理多个请求。  
+1. 在对话框中，将应用程序命名为 `Home Automation`，然后选择“完成”  。 LUIS 创建应用程序。 说明是可选的，不会用于创作或预测。 创建 LUIS 应用时，预测资源也是可选的。 将应用发布到生产环境时，应该分配一个预测资源，使应用能够处理多个请求。
 
     ![在对话框中，将应用程序命名为“家庭自动化”](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >创建应用程序后将无法更改区域性。 
+    >创建应用程序后将无法更改区域性。
 
 ## <a name="add-prebuilt-domain"></a>添加预生成域
 
@@ -61,7 +55,7 @@ ms.locfileid: "73613705"
 ![HomeAutomation 意向列表的屏幕截图](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意向列表的屏幕截图")
 
 > [!NOTE]
->  “无”是由所有 LUIS 应用提供的意向。 可以使用它来处理与应用提供的功能无法对应的话语。 
+>  “无”是由所有 LUIS 应用提供的意向。 可以使用它来处理与应用提供的功能无法对应的话语。
 
 选择 **HomeAutomation.TurnOff** 意向。 可以看到，此意向包含一系列使用实体标记的话语。
 
@@ -72,7 +66,7 @@ ms.locfileid: "73613705"
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>测试应用
-训练完应用以后，即可测试它。 选择“测试”。  在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。 
+训练完应用以后，即可测试它。 选择“测试”。  在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Turn off the lights
 
 ![包含检查信息的测试面板的屏幕截图](media/luis-quickstart-new-app/test.png)
 
-再次选择“测试”  ，折叠测试窗格。 
+再次选择“测试”  ，折叠测试窗格。
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Turn off the lights
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>查询 V3 API 预测终结点
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. 对于查询字符串，在浏览器地址栏中确保以下名称和值栏在 URL 中。 如果它们不在查询字符串中，请添加它们：
 
@@ -201,7 +195,7 @@ Turn off the lights
     ```
 
     详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
-    
+
 
 ## <a name="clean-up-resources"></a>清理资源
 

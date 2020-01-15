@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 860b2f20b4ffda0a1a588ed5d5893ad2c0521a43
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438879"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.locfileid: "73682834"
 >  
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集构建用于转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -103,7 +103,7 @@ ms.locfileid: "73682834"
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../../storage/common/storage-account-manage.md#access-keys)（查看、复制和重新生成存储访问密钥）。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 ```JSON
 {
@@ -177,7 +177,7 @@ ms.locfileid: "73682834"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
 | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -220,11 +220,11 @@ ms.locfileid: "73682834"
 ```
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-| tableName | 指定一个表  ，以便将数据复制到其中。 | 
+| tableName | 指定一个**表**，以便将数据复制到其中。 | 
 | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
 
 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
@@ -519,11 +519,11 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 对于每个切片，源文件中有两行数据已复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程使用 REST API 创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 下面是本教程中执行的高级步骤：  
 
 1. 创建了 Azure **数据工厂**。
-2. 创建了 **链接服务**：
+2. 创建 **链接服务**：
    1. 一个 Azure 存储链接服务，用于链接保存输入数据的 Azure 存储帐户。     
    2. 一个 Azure SQL 链接服务，用于链接保存输出数据的 Azure SQL 数据库。 
 3. 创建了 **数据集**，用于描述管道的输入和输出数据。

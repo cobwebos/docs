@@ -1,5 +1,5 @@
 ---
-title: 教程：使用流分析处理 Apache Kafka 事件 - Azure 事件中心
+title: Azure 事件中心 - 处理 Apache Kafka 事件
 description: 教程：本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
 services: event-hubs
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437248"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -30,7 +30,7 @@ ms.locfileid: "73720615"
 使用事件中心公开的 Kafka 终结点时，无需更改协议客户端或运行自己的群集。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。 及更高版本。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，请确保符合以下先决条件：
 
@@ -176,7 +176,7 @@ ms.locfileid: "73720615"
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
 1. 选择左侧菜单上的“概览”  。 
-2. 选择“启动”。  
+2. 选择“开始”  。 
 
     ![“开始”菜单](./media/event-hubs-kafka-stream-analytics/start-menu.png)
 1. 在“启动作业”  页上选择“启动”  。 

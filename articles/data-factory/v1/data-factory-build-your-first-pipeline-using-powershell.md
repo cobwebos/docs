@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 0209b004ba54417a26cd41716687d328ec1431cf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438994"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
 >
@@ -41,7 +41,7 @@ ms.locfileid: "73682982"
 > 
 > 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -117,7 +117,7 @@ ms.locfileid: "73682982"
         }
     }
     ```
-    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
 3. 可以使用 **New-AzDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzDataFactory** cmdlet 的输出分配给 **$df** 变量。
 
@@ -158,7 +158,7 @@ ms.locfileid: "73682982"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    |:--- |:--- |
    | clusterSize |指定 HDInsight 群集的大小。 |
    | timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -212,7 +212,7 @@ ms.locfileid: "73682982"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    |:--- |:--- |
    | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
    | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -398,7 +398,7 @@ ms.locfileid: "73682982"
 >
 >
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：
 
 1. 创建了 Azure **数据工厂**。

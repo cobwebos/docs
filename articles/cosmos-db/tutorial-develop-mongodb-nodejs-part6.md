@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 将 CRUD 函数添加到 Angular 应用
 description: 本教程系列的第 6 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441107"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
@@ -28,7 +27,7 @@ ms.locfileid: "54040551"
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始教程的此部分之前，请确保已完成教程[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)的步骤。
 
@@ -37,15 +36,15 @@ ms.locfileid: "54040551"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>向 hero 服务添加 Post 函数
 
-1. 在 Visual Studio Code 中按“拆分编辑器”按钮 ![Visual Studio 中的“拆分编辑器”按钮](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，并排打开 routes.js 和 hero.service.js。
+1. 在 Visual Studio Code 中按“拆分编辑器”按钮 ![Visual Studio 中的“拆分编辑器”按钮](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，并排打开  routes.js 和  hero.service.js。 
 
-    可以看到，routes.js 第 7 行调用的是 hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
+    可以看到，routes.js 第 7 行调用的是  hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
 
     ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
     
     首先，请对 hero 服务进行编码。 
 
-2. 将以下代码复制到 hero.service.js 中 `module.exports` 函数之前 `getHeroes` 函数之后的位置。 此代码：  
+2. 将以下代码复制到  hero.service.js 中 `module.exports` 函数之前 `getHeroes` 函数之后的位置。 此代码：  
    * 使用 hero 模型发布新的 hero。
    * 查看响应，了解是否存在错误，然后返回状态值 500。
 
@@ -68,7 +67,7 @@ ms.locfileid: "54040551"
    }
    ```
 
-3. 在 hero.service.js 中更新 `module.exports`，使之包括新的 `postHero` 函数。 
+3. 在  hero.service.js 中更新 `module.exports`，使之包括新的 `postHero` 函数。 
 
     ```javascript
     module.exports = {
@@ -77,7 +76,7 @@ ms.locfileid: "54040551"
     };
     ```
 
-4. 在 routes.js 中的 `get` 路由器之后为 `post` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给 hero.service.js 文件。
+4. 在  routes.js 中的 `get` 路由器之后为 `post` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给  hero.service.js 文件。
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -85,13 +84,13 @@ ms.locfileid: "54040551"
     });
     ```
 
-5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮  ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮  ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
 6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 [http://localhost:3000](http://localhost:3000)，观察通过网络进行的调用。
 
     ![Chrome 中的“网络”选项卡，显示网络活动](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. 通过选择“添加新 Hero”按钮添加新的 hero。 输入“999”作为 ID，“Fred”作为 name，“Hello”作为 saying，然后选择“保存”。 此时会在“网络”选项卡中看到为新的 hero 发送了 POST 请求。 
+7. 通过选择“添加新 Hero”按钮添加新的 hero。  输入“999”作为 ID，“Fred”作为 name，“Hello”作为 saying，然后选择“保存”。  此时会在“网络”选项卡中看到为新的 hero 发送了 POST 请求。 
 
     ![Chrome 中的“网络”选项卡，显示 Get 和 Post 函数的网络活动](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -99,7 +98,7 @@ ms.locfileid: "54040551"
 
 ## <a name="add-the-put-and-delete-functions"></a>添加 Put 和 Delete 函数
 
-1. 在 routes.js 中的 post 路由器后添加 `put` 和 `delete` 路由器。
+1. 在  routes.js 中的 post 路由器后添加 `put` 和 `delete` 路由器。
 
     ```javascript
     router.put('/hero/:uid', (req, res) => {
@@ -111,7 +110,7 @@ ms.locfileid: "54040551"
     });
     ```
 
-2. 将以下代码复制到 hero.service.js 中 `checkServerError` 函数之后的位置。 此代码：
+2. 将以下代码复制到  hero.service.js 中 `checkServerError` 函数之后的位置。 此代码：
    * 创建 `put` 和 `delete` 函数
    * 查看是否已找到 hero
    * 进行错误处理 
@@ -159,7 +158,7 @@ ms.locfileid: "54040551"
    }
    ```
 
-3. 在 hero.service.js 中导出新模块：
+3. 在  hero.service.js 中导出新模块：
 
    ```javascript
     module.exports = {
@@ -170,11 +169,11 @@ ms.locfileid: "54040551"
     };
     ```
 
-4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮 ![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮  ![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
 
-5. 刷新 Internet 浏览器中的页面，选择“添加新 Hero”按钮。 添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 选择“保存”按钮保存新 hero。
+5. 刷新 Internet 浏览器中的页面，选择“添加新 Hero”按钮。  添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 选择“保存”按钮保存新 hero。 
 
-6. 现在请选择 Starlord hero，将 saying 从“Hi”更改为“Bye”，然后选择“保存”按钮。 
+6. 现在请选择  Starlord hero，将 saying 从“Hi”更改为“Bye”，然后选择“保存”按钮。  
 
     现在可以在“网络”选项卡中选择 ID 来显示有效负载了。 可以在有效负载中看到，saying 现在已设置为“Bye”。
 

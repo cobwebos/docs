@@ -1,7 +1,7 @@
 ---
 title: 教程：复合实体教程 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
+description: 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447952"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -28,8 +28,6 @@ ms.locfileid: "74893173"
 * 彼此相关。
 * 使用各种实体类型。
 * 需要由客户端应用作为一个信息单元进行分组和处理。
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -46,9 +44,10 @@ ms.locfileid: "74893173"
 
 ## <a name="import-example-app"></a>导入示例应用
 
-1.  从列表实体教程中下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json)。
+1.  从列表实体教程中下载并保存[应用 JSON 文件](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true)。
 
-2. 将 JSON 导入到新应用中。
+2. 使用 [LUIS 门户](https://www.luis.ai)将 JSON 导入到新应用。
 
 3. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 

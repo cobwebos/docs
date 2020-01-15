@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 49b3b5890fe38f6c635e7ba420a1adf5d778de0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438976"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
@@ -56,7 +56,7 @@ ms.locfileid: "74703939"
 4. 创建名为 **DataFactoryUsingVS** 的数据工厂。 部署数据工厂和所有数据工厂实体（链接服务、表和管道）。
 5. 发布后，请使用 Azure 门户边栏选项卡以及监视和管理应用来监视管道。 
   
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -92,7 +92,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，并单击“新建项”。         
 2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，并单击“添加”。   
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 保存 **AzureStorageLinkedService1.json** 文件。
 
@@ -119,7 +119,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | 说明
+    properties | 说明
     -------- | ----------- 
     clusterSize | 指定 HDInsight Hadoop 群集的大小。
     timeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。
@@ -168,7 +168,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | 说明 |
+    properties | 说明 |
     -------- | ----------- |
     type |type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。
     linkedServiceName | 表示前面创建的 AzureStorageLinkedService1。
@@ -288,7 +288,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，并单击“现有项”。      
 2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，并单击“添加”。  已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
 
-在下一步骤中发布解决方案时，**partitionweblogs.hql** 文件会上传到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
+在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上传到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
@@ -545,7 +545,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
 不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：  
 
 1. 创建了 Azure **数据工厂**。

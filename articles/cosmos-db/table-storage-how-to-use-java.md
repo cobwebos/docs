@@ -1,5 +1,5 @@
 ---
-title: 如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
+title: 通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 6b8b2d2d035183861f367c9425ec54d1c9babf34
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e5f9d3fbd7fcf12271329ec324b38b03b4dcd7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444828"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -51,7 +51,7 @@ import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
 ## <a name="add-an-azure-storage-connection-string"></a>添加 Azure 存储连接字符串
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的主访问密钥。 
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName  和 AccountKey  值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的主访问密钥。 
 
 此示例演示如何声明一个静态字段以保存连接字符串：
 
@@ -96,7 +96,7 @@ StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_accoun
 利用 **CloudTableClient** 对象，可以获得表和实体的引用对象。 以下代码可创建 **CloudTableClient** 对象并使用它创建新的 **CloudTable** 对象，用于表示名为“people”的表。 
 
 > [!NOTE]
-> 还可以通过其他方式创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount。
+> 还可以通过其他方式创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount   。
 >
 
 ```java
@@ -595,7 +595,7 @@ catch (Exception e)
 * [Java 中 Azure 表服务入门](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * [用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]
-* [Azure 存储客户端 SDK 参考][Azure 存储客户端 SDK 参考]
+* [Azure 存储客户端 SDK 参考][Azure Storage Client SDK Reference]
 * [Azure 存储 REST API][Azure Storage REST API]
 * [Azure 存储团队博客][Azure Storage Team Blog]
 

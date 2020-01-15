@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: b62868a2306d1a86fb337f505e02966a83567c76
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8e72a5100da312ac477ca8b25bd3005a77aee2cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429025"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -144,7 +144,7 @@ Windows 上的 Azure Kinect DK 仅支持 **Intel**、**Texas Instruments (TI)** 
 
 当电脑上安装了多个主控制器时，USB 主控制器的话题就会变得更复杂。 如果混合使用主控制器，用户可能会遇到问题，有些端口可以正常工作，而其他一些端口则根本无法工作。 根据端口在机箱上的布线方式，在使用 Azure Kinect 时，你可能会发现所有（机箱）正面端口都出现问题
 
-**Windows**：若要找出现有的主控制器，请打开设备管理器
+**Windows：** 若要找出现有的主控制器，请打开设备管理器
 
 1. “查看”->“依类型排序设备” 
 2. 在连接 Azure Kinect 后，连接“相机”->“Azure Kinect 4K 相机”
@@ -160,7 +160,7 @@ Windows 上的 Azure Kinect DK 仅支持 **Intel**、**Texas Instruments (TI)** 
 
 ## <a name="using-body-tracking-sdk-with-unreal"></a>将人体跟踪 SDK 与 Unreal 配合使用
 
-若要将人体跟踪 SDK 与 Unreal 配合使用，请确保已将 `<SDK Installation Path>\tools` 添加到环境变量路径，并将 `dnn_model_2_0.onnx` 和 `cudnn64_7.dll` 复制到 `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64`。
+若要将人体跟踪 SDK 与 Unreal 配合使用，请确保已将 `<SDK Installation Path>\tools` 添加到环境变量 `PATH`，并已将 `dnn_model_2_0.onnx` 和 `cudnn64_7.dll` 复制到 `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64`。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 示例 | Microsoft 文档
-description: Azure CLI 示例
+title: Azure CLI 示例
+description: 一个表，其中包含指向使用 Azure CLI 生成的示例 bash 脚本的链接，例如创建和管理规模集。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ea397616c7909283128118f66fc36218ff36d53
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 540941bd2d54c5d3c8d26186e700727e8d75f501
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459358"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>用于虚拟机规模集的 Azure CLI 示例
 
