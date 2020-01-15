@@ -244,7 +244,7 @@
     - name: 概念
       items:
         - name: PowerShell DSC
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: 快速入门
       items:
         - name: 入门
@@ -315,7 +315,7 @@
     - name: PowerShell 模块
       items:
         - name: 模块
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: 在 Azure 自动化中使用 Az 模块
           href: az-modules.md
         - name: 更新 Azure PowerShell 模块

@@ -9,26 +9,32 @@
   items:
     - name: '使用 C#'
       href: Quickstart.md
+    - name: 使用 Node.js
+      href: quickstart-nodejs.md
     - name: 使用 Swift (iOS)
       href: ios-quickstart.md
 - name: 教程
   items:
-    - name: 启动沉浸式阅读器 (Node.js)
-      href: tutorial-nodejs.md
     - name: 启动沉浸式阅读器 (Python)
       href: tutorial-python.md
-    - name: 图片到沉浸式阅读器 (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: 操作说明
   items:
-    - name: Azure Active Directory 身份验证
-      href: azure-active-directory-authentication.md
-- name: 引用
+    - name: 创建沉浸式阅读器资源
+      href: how-to-create-immersive-reader.md
+    - name: 设置 Cookie 策略
+      href: how-to/set-cookie-policy.md
+    - name: 显示数学内容
+      href: how-to/display-math.md
+    - name: 启动沉浸式阅读器以显示 HTML 内容
+      href: how-to-launch-with-html.md
+    - name: 自定义沉浸式阅读器按钮
+      href: how-to-customize-launch-button.md
+    - name: 缓存身份验证令牌
+      href: how-to-cache-token.md
+- name: 参考
   items:
     - name: SDK 参考
       href: reference.md
-    - name: iOS SDK 参考
-      href: ios-reference.md
 - name: 资源
   items:
     - name: Azure 路线图

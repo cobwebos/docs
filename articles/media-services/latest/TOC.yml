@@ -77,7 +77,7 @@
         - name: 自动生成自适应比特率阶梯
           href: autogen-bitrate-ladder.md
         - name: 内容感知型编码
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: 分析内容（视频索引器）
       items:
         - name: 概述
@@ -178,7 +178,7 @@
     - name: 从 v2 到 v3 的迁移指南
       href: migrate-from-v2-to-v3.md
       displayName: naming
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 入门
       items:
@@ -294,7 +294,7 @@
           href: cli-publish-asset.md
         - name: 表示描述性音频
           href: signal-descriptive-audio-howto.md
-- name: 引用
+- name: 参考
   items:
     - name: OpenAPI 规范 (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'

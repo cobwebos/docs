@@ -204,7 +204,7 @@
         - name: 克隆应用
           href: app-service-web-app-cloning.md
         - name: 移动资源
-          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: 还原已删除的应用服务
           href: app-service-undelete.md
     - name: 运行后台任务
