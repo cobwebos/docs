@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 使用 CLI 将托管磁盘的快照复制（移动）到同一订阅或不同订阅
+title: 将托管磁盘的快照复制到订阅 - CLI 示例
 description: Azure CLI 脚本示例 - 使用 CLI 将托管磁盘的快照复制（移动）到同一订阅或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 5c83ce8d65be01156d50061d7f0a8287ddbfa1eb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ddcf585af86a265410f9c2d424c85acf5abbc8fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039986"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375910"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
 
@@ -43,7 +43,7 @@ ms.locfileid: "74039986"
 
 此脚本使用以下命令并使用源快照的 Id 在目标订阅中创建新快照。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | 使用快照的名称和资源组属性获取快照的所有属性。 Id 属性用于将快照复制到其他订阅。  |
 | [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot) | 通过使用父快照的 Id 和名称在其他订阅中创建快照来复制快照。  |

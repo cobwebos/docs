@@ -5,18 +5,18 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422153"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>将自定义 Linux 容器部署到 Azure 应用服务
 
 Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并支持特定语言，例如 .NET、PHP、Node.js 等。 还可使用自定义 Docker 映像，于尚未在 Azure 中定义的应用程序堆栈中运行 Web 应用。 本快速入门介绍如何将[Azure 容器注册表](/azure/container-registry) (ACR) 中的映像部署到应用服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 [Azure 帐户](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
@@ -26,7 +26,7 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 
 ## <a name="create-an-image"></a>创建映像
 
-若要完成本快速入门，需要在 [Azure 容器注册表](/azure/container-registry)中存储合适的 Web 应用映像。 遵循[快速入门：使用 Azure 门户创建专用容器注册表](/azure/container-registry/container-registry-get-started-portal)中的说明进行操作，但使用 `mcr.microsoft.com/azuredocs/go` 映像而不是 `hello-world` 映像。
+若要完成本快速入门，需要在 [Azure 容器注册表](/azure/container-registry)中存储合适的 Web 应用映像。 遵循[快速入门：使用 Azure 门户创建专用容器注册表](/azure/container-registry/container-registry-get-started-portal)中的说明进行操作，但使用 `mcr.microsoft.com/azuredocs/go` 映像而不是 `hello-world` 映像。 若要参考，可[在 Azure 示例存储库中找到示例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
 
 > [!IMPORTANT]
 > 请确保在创建容器注册表时将“管理员用户”  选项设为“启用”  。 也可以在 Azure 门户中从注册表页的“访问密钥”  部分进行设置。 应用服务访问需要此设置。

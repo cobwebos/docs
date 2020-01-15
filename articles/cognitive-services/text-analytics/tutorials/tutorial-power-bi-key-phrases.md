@@ -1,21 +1,21 @@
 ---
 title: 教程：将 Power BI 与文本分析认知服务集成
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本分析从存储在 Power BI 中的文本提取关键短语。
+description: 了解如何使用文本分析 API 从存储在 Power BI 中的文本提取关键短语。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378528"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -30,7 +30,7 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 > * 使用文本分析关键短语 API 从客户反馈中提取最重要的短语
 > * 从客户反馈创建词云
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [免费下载](https://powerbi.microsoft.com/get-started/)。
@@ -168,7 +168,7 @@ in  keyphrases
 > [!div class="mx-imgBorder"]
 > ![[将身份验证设置为匿名]](../media/tutorials/power-bi/access-web-content.png)
 
-如果在选择匿名访问后仍看到“编辑凭据”横幅，则可能是因为忘记将文本分析访问密钥粘贴到 `KeyPhrases` [自定义函数](#CreateCustomFunction)的代码中。
+如果在选择匿名访问后仍看到“编辑凭据”横幅，则可能是忘记将文本分析访问密钥粘贴到 `KeyPhrases` [自定义函数](#CreateCustomFunction)的代码中。
 
 接下来可能会出现一个横幅，要求你提供有关数据源隐私的信息。 
 

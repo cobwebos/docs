@@ -1,7 +1,7 @@
 ---
 title: 快速入门：适用于 Java 的内容审查器客户端库
 titleSuffix: Azure Cognitive Services
-description: 了解如何从 Azure 认知服务内容审查器的适用于 Java 的客户端库开始操作。
+description: 本快速入门介绍如何开始使用适用于 Java 的 Azure 认知服务内容审查器客户端库。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381930"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>快速入门：适用于 Java 的内容审查器客户端库
 
@@ -27,7 +27,7 @@ ms.locfileid: "73744439"
 
 [参考文档](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [项目 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [示例](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版的 [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
@@ -37,7 +37,7 @@ ms.locfileid: "73744439"
 
 ### <a name="create-a-content-moderator-azure-resource"></a>创建内容审查器 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建内容审查器的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建内容审查器的资源。 你还可以：
 
 * 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，[Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上会提供此密钥。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
@@ -95,7 +95,7 @@ mkdir -p src/main/java
 
 以下类将处理内容审查器 Java SDK 的某些主要功能。
 
-|Name|说明|
+|名称|说明|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|所有内容审查器功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|此类提供用于分析成人内容、个人信息或人脸的功能。|

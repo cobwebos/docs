@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372085"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "68699014"
 > * 运行应用程序
 > * 验证连接数
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须先完成上一存储教程：[将大量随机数据并行上传到 Azure 存储][previous-tutorial]。
 
@@ -98,7 +98,7 @@ dotnet run
 应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器  。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) 方法将它们下载到本地计算机。
 下表显示了每个 blob 下载完成后为其定义的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions)。
 
-|属性|值|说明|
+|properties|值|说明|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。 |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| 该属性确定是否计算和存储 MD5 哈希。   |

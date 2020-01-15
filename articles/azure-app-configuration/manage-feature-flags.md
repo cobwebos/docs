@@ -1,5 +1,6 @@
 ---
-title: 有关使用 Azure 应用程序配置管理功能标志的教程 | Microsoft Docs
+title: 教程：使用 Azure 应用配置管理功能标志
+titleSuffix: Azure App Configuration
 description: 本教程介绍如何使用 Azure 应用程序配置将功能标志与应用程序分开管理。
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,18 +15,18 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b7fbf9add67a45c0db89fc11cee5c10bc537ab63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 620cd6e1712a89e13bf876310c0d3248c4a4d1e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414008"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>教程：在 Azure 应用程序配置中管理功能标志
 
 可将所有功能标志存储在 Azure 应用程序配置中，并从一个位置对其进行管理。 应用程序配置提供一个名为“功能管理器”的门户 UI 专为功能标志而设计。  应用程序配置还原生支持 .NET Core 功能标志数据架构。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在应用程序配置中定义和管理功能标志。

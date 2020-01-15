@@ -18,16 +18,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350295"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
-默认情况下，Azure 会在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 本教程介绍如何执行以下操作：
+默认情况下，Azure 会在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建路由表
@@ -44,7 +44,7 @@ ms.locfileid: "73164004"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -54,11 +54,11 @@ ms.locfileid: "73164004"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myRouteTablePublic*。 |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“新建”，输入 *myResourceGroup*，然后选择“确定”   。 |
+    | 名称 | 输入 *myRouteTablePublic*。 |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“新建”，输入 *myResourceGroup*，然后选择“确定”   。 |
     | 位置 | 保留默认值“美国东部”。 
-    | BGP 路由传播 | 保留默认值“已启用”。  |
+    | 虚拟网络网关路由传播 | 保留默认值“已启用”。  |
 
 1. 选择“创建”  。
 
@@ -95,15 +95,15 @@ ms.locfileid: "73164004"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 myVirtualNetwork  。 |
+    | 名称 | 输入 myVirtualNetwork  。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“选择现有项” > “myResourceGroup”。  |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“选择现有项” > “myResourceGroup”。  |
     | 位置 | 保留默认值“美国东部”。  |
     | 子网 - 名称 | 输入“公共”。  |
     | 子网 - 地址范围 | 输入 *10.0.0.0/24*。 |
 
-1. 将剩余的字段保留默认值，然后选择“创建”  。
+1. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
 
 ### <a name="add-subnets-to-the-virtual-network"></a>将子网添加到虚拟网络
 
@@ -119,7 +119,7 @@ ms.locfileid: "73164004"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入“专用”。  |
+    | 名称 | 输入“专用”。  |
     | 地址空间 | 输入 *10.0.1.0/24*。 |
 
 1. 将剩余的字段保留默认设置，然后选择“确定”。 
@@ -128,7 +128,7 @@ ms.locfileid: "73164004"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入“外围网络”。  |
+    | 名称 | 输入“外围网络”。  |
     | 地址空间 | 输入 *10.0.2.0/24*。 |
 
 1. 与上次一样，将剩余的字段保留默认值，然后选择“确定”。 
@@ -154,8 +154,8 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。  |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVmNva*。 |
     | 区域 | 选择“美国东部”  。 |
@@ -171,13 +171,13 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 保留默认值“否”  。 |
 
-1. 选择“下一步:  磁盘”。
+1. **选择“下一步:磁盘”** 。
 
 1. 在“创建虚拟机 - 磁盘”中，选择符合需求的设置。 
 
-1. 选择“下一步:  网络”。
+1. **选择“下一步:** 网络”。
 
-1. 在“创建虚拟机 - 网络”中选择以下信息： 
+1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -185,7 +185,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
     | 子网 | 选择“外围网络(10.0.2.0/24)”。  |
     | 公共 IP | 选择“无”。  不需要公共 IP 地址。 VM 不会通过 Internet 进行连接。|
 
-1. 将剩余的字段保留默认值，然后选择“下一步:  管理”。
+1. 将剩余的字段保留默认值，然后选择“下一步:**管理”** 。
 
 1. 在“创建虚拟机 - 管理”中，为“诊断存储帐户”选择“新建”    。
 
@@ -193,7 +193,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *mynvastorageaccount*。 |
+    | 名称 | 输入 *mynvastorageaccount*。 |
     | 帐户类型 | 保留默认值“存储(常规用途 v1)”  。 |
     | 性能 | 保留默认值“标准”  。 |
     | 复制 | 保留默认值“本地冗余存储(LRS)”  。
@@ -383,7 +383,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
 
 1. 当在搜索结果中看到“myResourceGroup”时，将其选中。 
 
-1. 选择“删除资源组”。 
+1. 选择“删除资源组”  。
 
 1. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 

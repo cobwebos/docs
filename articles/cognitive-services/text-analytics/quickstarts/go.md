@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378750"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -24,7 +24,7 @@ ms.locfileid: "74286522"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -37,9 +37,9 @@ ms.locfileid: "74286522"
 
 语言检测 API 使用[检测语言方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问环境变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
+1. 将文本分析 API 密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build detect.go`。
@@ -60,17 +60,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
-
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     const uriPath = "/text/analytics/v2.1/languages"
 
     var uri = endpoint + uriPath
@@ -178,9 +170,9 @@ func main() {
 
 情绪分析 API 使用 [Sentiment 方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问环境变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build sentiment.go`。
@@ -201,16 +193,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
     const uriPath = "/text/analytics/v2.1/sentiment"
 
@@ -294,9 +278,9 @@ func main() {
 
 关键短语提取 API 使用[关键短语方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问环境变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 在安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build key-phrases.go`。
@@ -317,16 +301,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
@@ -430,7 +406,6 @@ func main() {
 
 实体 API 使用[实体方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 [实体](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)从文本中提取字词，如“United States”，然后提供此词语的类型和/或维基百科的链接。 “United States”的类型为 `location`，而在维基百科上的链接为 `https://en.wikipedia.org/wiki/United_States`。  以下示例识别英文文档的实体。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问环境变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
 1. 使用“.go”扩展名保存文件。
@@ -453,16 +428,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/entities"
 

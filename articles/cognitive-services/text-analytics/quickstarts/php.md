@@ -1,21 +1,21 @@
 ---
 title: 快速入门：使用 PHP 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 3b95109ea3389cc8ee7e748e06265870d5f903a4
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378579"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 PHP 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -24,7 +24,7 @@ ms.locfileid: "74284768"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -34,9 +34,9 @@ ms.locfileid: "74284768"
 
 语言检测 API 使用[检测语言方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问这些变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 运行该程序。
 
 ```php
@@ -47,18 +47,8 @@ ms.locfileid: "74284768"
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/languages';
 
@@ -151,9 +141,10 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 情绪分析 API 使用 [Sentiment 方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问这些变量的编辑器、IDE 或 shell。
+
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 运行该程序。
 
 ```php
@@ -163,19 +154,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/sentiment';
 
@@ -247,10 +227,9 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="extract-key-phrases"></a>提取关键短语
 
 关键短语提取 API 使用[关键短语方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
-
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问这些变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 运行该程序。
 
 ```php
@@ -260,19 +239,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/keyPhrases';
 
@@ -359,9 +327,9 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 实体 API 使用[实体方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
 
-1. 为资源的 Azure 终结点和订阅密钥创建环境变量 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` 和 `TEXT_ANALYTICS_ENDPOINT`。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问这些变量的编辑器、IDE 或 shell。
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
 1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。 
 1. 运行该程序。
 
 ```php
@@ -371,19 +339,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/entities';
 

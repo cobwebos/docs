@@ -1,19 +1,19 @@
 ---
-title: Azure CLI 脚本示例 - 获取 Azure Cache for Redis 的主机名、端口和密钥
-description: Azure CLI 脚本示例 - 获取 Azure Redis 缓存的主机名、端口和密钥
+title: 获取主机名、端口和密钥 - Azure Cache for Redis - Azure CLI
+description: 此 Azure CLI 代码示例演示如何获取 Azure Cache for Redis 实例的主机名、端口和密钥。
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 604ec6de3b95a4bc289176d54d9c7b0a6c42eae6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411305"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>获取 Azure Redis 缓存的主机名、端口和密钥
 
@@ -30,7 +30,7 @@ ms.locfileid: "74122514"
 
 此脚本使用以下命令检索 Azure Redis 缓存实例的主机名、密钥和端口。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az redis show](https://docs.microsoft.com/cli/azure/redis) | 检索 Azure Redis 缓存实例的详细信息。 |
 | [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | 检索 Azure Redis 缓存实例的访问密钥。 |

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure 模板创建 Linux 虚拟机规模集 | Microsoft Docs
+title: 快速入门 - 使用 Azure 模板创建 Linux 虚拟机规模集
 description: 了解如何使用 Azure 资源管理器模板来部署示例应用和配置自动缩放规则，以便快速创建 Linux 虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 34cc269bc9355fa6744c7d31fff7e986baf1e049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351110"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>快速入门：使用 Azure 模板创建 Linux 虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure 资源管理器模板创建虚拟机规模集并部署一个示例应用程序。
@@ -40,10 +40,10 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 
 若要使用模板创建规模集，请定义相应的资源。 虚拟机规模集资源类型的核心部件包括：
 
-| 属性                     | 属性说明                                  | 示例模板值                    |
+| properties                     | 属性说明                                  | 示例模板值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
-| 名称                         | 规模集名称                                       | myScaleSet                                |
+| name                         | 规模集名称                                       | myScaleSet                                |
 | location                     | 要创建规模集的位置                     | 美国东部                                   |
 | sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
 | sku.capacity                 | 一开始需要创建的 VM 实例数           | 2                                         |
@@ -153,7 +153,7 @@ az group deployment create \
 
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要规模集的运行方式，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip list](/cli/azure/network/public-ip) 命令获取负载均衡器的公共 IP 地址，如下所示：
+若要查看正在运行的规模集，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip list](/cli/azure/network/public-ip) 命令获取负载均衡器的公共 IP 地址，如下所示：
 
 ```azurecli-interactive
 az network public-ip list \

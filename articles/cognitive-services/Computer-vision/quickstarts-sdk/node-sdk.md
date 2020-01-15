@@ -1,6 +1,6 @@
 ---
-title: 快速入门：适用于 Node.js 的计算机视觉客户端库 | Microsoft Docs
-description: 适用于 Node.js 的计算机视觉客户端库入门。
+title: 快速入门：适用于 Node.js 的计算机视觉客户端库
+description: 通过本快速入门开始使用适用于 Node.js 的计算机视觉客户端库
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05bc30fb8401597695848290a3d4f6c0d10ce836
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382236"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的计算机视觉客户端库
 
@@ -27,7 +27,7 @@ ms.locfileid: "74972653"
 
 [参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [包 (npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [示例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org/)
@@ -36,7 +36,7 @@ ms.locfileid: "74972653"
 
 ### <a name="create-a-computer-vision-azure-resource"></a>创建计算机视觉 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建计算机视觉的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建计算机视觉的资源。 你还可以：
 
 * 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，[Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上会提供此密钥。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。

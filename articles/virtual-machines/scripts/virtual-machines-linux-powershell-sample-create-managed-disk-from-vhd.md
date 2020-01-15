@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 基于 VHD 文件在同一或不同订阅中的存储帐户中创建托管磁盘
+title: 在存储帐户中基于 VHD 文件创建托管磁盘 - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 基于 VHD 文件在同一或不同订阅中的存储帐户中创建托管磁盘
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 941fd7e4fc883317b6968e87fc52048523b396d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dc26faacf3a6d087633ea89a4d65a12c4f5c2837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031487"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463744"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>使用 PowerShell 基于 VHD 文件在同一或不同订阅中的存储帐户中创建托管磁盘
 
@@ -39,7 +39,7 @@ ms.locfileid: "74031487"
 
 此脚本使用以下命令基于某个 VHD 在不同订阅中创建托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | 创建用于创建磁盘的磁盘配置。 它包括存储父 VHD 的存储帐户的存储类型、位置和资源 ID，以及父 VHD 的 VHD URI。 |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用作为参数传递的磁盘配置、磁盘名称和资源组名称创建磁盘。 |

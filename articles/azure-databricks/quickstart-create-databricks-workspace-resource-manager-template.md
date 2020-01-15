@@ -10,24 +10,24 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 2fbe1e91204df7901b4ac3ccfdcd323304b2ce3c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c485a21f974e3ed9c8882e7a900d1632b33a1ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410662"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
 在本快速入门中，将使用 Azure 资源管理器模板创建一个具有 Apache Spark 群集的 Azure Databricks 工作区。 你在群集上运行作业，并使用自定义图表根据人口统计数据生成免费/付费使用的实时报告。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。 
+登录 [Azure 门户](https://portal.azure.com)。 
 
 > [!Note]
 > 不能使用 Azure 免费试用订阅完成本教程  。
@@ -47,10 +47,10 @@ ms.locfileid: "74706171"
 
    提供以下值：
 
-   |属性  |说明  |
+   |properties  |说明  |
    |---------|---------|
    |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
-   |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
+   |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/management/overview.md)。 |
    |**位置**     | 选择“美国东部 2”。  有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
    |**工作区名称**     | 提供 Databricks 工作区的名称        |
    |**定价层**     |  选择“标准”或“高级”。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
@@ -123,7 +123,7 @@ ms.locfileid: "74706171"
 
           spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-     有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
+     有关如何检索存储帐户访问密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。
 
    > [!NOTE]
    > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)。
@@ -178,7 +178,7 @@ ms.locfileid: "74706171"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。  针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标。
+完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”  。 针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标。
 
 ![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "停止 Databricks 群集")
 

@@ -1,5 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 删除 Azure 应用配置存储区 | Microsoft Docs
+title: Azure CLI 脚本示例 - 删除 Azure 应用配置存储区
+titleSuffix: Azure App Configuration
 description: Azure CLI 脚本示例 - 删除 Azure 应用配置存储区
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d5a80288fcd5b0216a9bf3ca322203f672f381d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413380"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>删除 Azure 应用配置存储区
 
@@ -50,7 +51,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 此脚本使用以下命令删除应用程序配置存储区。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | 删除应用程序配置存储区资源。 |
 

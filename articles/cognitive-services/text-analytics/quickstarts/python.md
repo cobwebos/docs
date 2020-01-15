@@ -1,21 +1,21 @@
 ---
 title: 快速入门：使用 Python 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 15f0cf7725dec99884497be79b63c21ef16f88b1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 7f2a4ff98345aa43dd6a99eafd60ff2d05ee1bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378545"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Python REST API 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -24,7 +24,7 @@ ms.locfileid: "74284972"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Python 3.x](https://python.org)
 
@@ -41,7 +41,7 @@ ms.locfileid: "74284972"
 
 ## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
-在最喜爱的编辑器或 IDE 中创建一个新的 Python 应用程序。 将以下导入内容添加到文件中。
+在你喜欢使用的编辑器或 IDE 中创建一个新的 Python 应用程序。 将以下导入内容添加到文件中。
 
 ```python
 import requests
@@ -49,20 +49,13 @@ import requests
 from pprint import pprint
 ```
 
-为资源的 Azure 终结点和订阅密钥创建变量。 从环境变量 TEXT_ANALYTICS_SUBSCRIPTION_KEY 和 TEXT_ANALYTICS_ENDPOINT 获取这些值。 如果在开始编辑应用程序后创建了这些环境变量，则需要关闭并重新打开用于访问这些变量的编辑器、IDE 或 shell。
+为资源的 Azure 终结点和订阅密钥创建变量。
     
 ```python
 import os
 
-key_var_name = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY'
-if not key_var_name in os.environ:
-    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
-subscription_key = os.environ[key_var_name]
-
-endpoint_var_name = 'TEXT_ANALYTICS_ENDPOINT'
-if not endpoint_var_name in os.environ:
-    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
-endpoint = os.environ[endpoint_var_name]
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 ```
 
 以下部分介绍如何调用每项 API 功能。

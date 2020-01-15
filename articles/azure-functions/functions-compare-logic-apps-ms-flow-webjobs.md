@@ -1,19 +1,20 @@
 ---
-title: 什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？ - Azure
+title: Azure 中的集成和自动化平台选项
 description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Microsoft Flow、逻辑应用、Functions 和 WebJobs。
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409835"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
+# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中选择合适的集成和自动化服务
 
-本文比较了以下 Microsoft 云 
+本文比较了以下 Microsoft 云服务：
+
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -40,7 +41,7 @@ Microsoft Flow 构建在逻辑应用的基础之上。 它们有相同的工作�
 | 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
 | 应用程序生命周期管理 (ALM) |在非生产环境中进行设计和测试，并在准备就绪后投放到生产 |Azure DevOps：[Azure 资源管理器](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源代码管理、测试、支持、自动化和可管理性 |
 | 管理员体验 |管理 Microsoft Flow 环境和数据丢失防护 (DLP) 策略，跟踪许可：[Microsoft Flow 管理中心](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录：[Azure 门户](https://portal.azure.com) |
-| 安全 |Office 365 安全与合规审核日志、DLP、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| 安全性 |Office 365 安全与合规审核日志、DLP、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比较 Azure Functions 和 Azure 逻辑应用
 
@@ -82,14 +83,14 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 |[按使用付费定价](functions-scale.md#consumption-plan)|✔||
 |[集成逻辑应用](functions-twitter-email.md)|✔||
 | 触发事件 |[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)<br>[Azure 事件网格](functions-bindings-event-grid.md)|[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[文件系统](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| 支持的语言  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
+| 支持的语言  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |包管理器|NPM 和 NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs（不带 WebJobs SDK）支持 C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python 等。 该列表并不详尽。 WebJob 可以运行任何程序或脚本，只要该程序或脚本可以在应用服务沙盒中运行。
 
 <sup>2</sup> WebJobs（不带 WebJobs SDK）支持 NPM 和 NuGet。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 与 Azure 应用服务 WebJobs 相比，Azure Functions 可以进一步提高开发人员的工作效率。 它还提供更多的编程语言、开发环境、Azure 服务集成和价格选项。 大多数情况下，它是最佳选择。
 

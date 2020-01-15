@@ -1,24 +1,24 @@
 ---
-title: 有关通过 Azure Cache for Redis 创建使用缓存端模式的 Web 应用的教程
-description: 了解如何通过用于 Redis 的 Azure 缓存创建使用缓存端模式的 Web 应用
+title: 教程：创建 Web 应用（缓存端）- Azure Cache for Redis
+description: 了解如何通过 Azure Cache for Redis 创建使用缓存端模式的 Web 应用。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411944"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
 在本教程中，我们将更新在[用于 Redis 的 Azure 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)中创建的 *ContosoTeamStats* ASP.NET Web 应用，以包括将[缓存端模式](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)与用于 Redis 的 Azure 缓存配合使用的排行榜。 该示例应用程序显示数据库中的团队统计信息列表，并演示如何通过不同的方法使用用于 Redis 的 Azure 缓存在缓存中存储和检索数据，以提高性能。 完成本教程后，将有一个运行的 Web 应用，该应用可以对数据库执行读写操作，已通过用于 Redis 的 Azure 缓存进行优化，并且托管在 Azure 中。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用用于 Redis 的 Azure 缓存来存储和检索数据，以提高数据吞吐量并降低数据库负载。
@@ -28,7 +28,7 @@ ms.locfileid: "74121510"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须满意以下先决条件：
 

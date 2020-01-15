@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f816091e3e8682069a950ff6f6eb839e285bb2f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c29a06496bb1303849250f049e4e7444a5a5ddf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423358"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -106,9 +106,9 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
    - 选择“注册”  以创建应用程序。
 1. 在应用的页面列表中，选择“身份验证”。 
    1. 在“重定向 URI”  部分的重定向 URI 列表中：
-   1. 在“类型”  列中选择“公共客户端(移动和桌面)”  。
-   1. 在“重定向 URI”列中输入  `urn:ietf:wg:oauth:2.0:oob`
-1. 选择“保存”。 
+   1. 在“类型”  列中选择“公共客户端/本机(移动和桌面)”  。
+   1. 在“重定向 URI”列中输入  `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. 选择“注册”  。
 1. 转到 Visual Studio，打开 App.xaml.cs  文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
 
     ```csharp
@@ -311,7 +311,7 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
-在此示例应用程序中，请使用 `GetHttpContentWithToken` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求，然后将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌。 此示例中的资源是 Microsoft Graph API me 终结点，可显示用户个人资料信息  。
+在此示例应用程序中，请使用 `GetHttpContentWithToken` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求，然后将内容返回给调用方。 此方法在 HTTP 授权标头中添加获取的令牌。 此示例中的资源是 Microsoft Graph API *me* 终结点，用于显示用户的个人资料信息。
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>添加注销用户的方法
@@ -348,7 +348,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 
 `SignOutButton_Click` 方法删除 MSAL 用户缓存中的用户，这样可有效地告知 MSAL 忘记当前用户，使将来获取令牌的请求只能在交互模式下取得成功。
 
-此示例中的应用程序支持单个用户，但 MSAL 也支持同时注册多个帐户的情况。 例如，用户可在电子邮件应用程序中使用多个帐户。
+虽然此示例中的应用程序支持单个用户，但 MSAL 也支持多个帐户可能同时登录的情况。 用户在其中具有多个帐户的电子邮件应用程序就是一个示例。
 <!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>显示基本令牌信息

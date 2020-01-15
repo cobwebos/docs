@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0cafc439a24c10c4c5a678219a0e0dce84476ff
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423340"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -55,7 +55,7 @@ ms.locfileid: "71290857"
 本指南创建的应用程序显示用来查询图形 API 的按钮和用来注销的按钮。它还显示包含调用结果的文本框。
 
 > [!NOTE]
-> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "a应用程序注册")步骤，在运行代码示例前对其进行配置。
+> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "应用程序注册步骤")步骤，在运行代码示例前对其进行配置。
 
 ### <a name="create-your-application"></a>创建应用程序
 
@@ -344,7 +344,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 
 现在需注册应用程序：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“Azure Active Directory” > “应用注册”。  
 1. 选择“新注册”。  输入一个会显示给应用用户的有意义的应用程序名称，例如 *UWP-App-calling-MSGraph*。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox)”，然后选择“注册”以继续操作。   
@@ -353,7 +353,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 为应用程序配置身份验证：
 
 1. 回到 [Azure 门户](https://portal.azure.com)中，在“管理”下选择“身份验证”。  
-1. 在“重定向 URI”列表中，选择“公共客户端(移动和桌面)”作为“类型”，输入 `urn:ietf:wg:oauth:2.0:oob` 作为“重定向 URI”。    
+1. 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，选中 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
 1. 选择“保存”。 
 
 为应用程序配置 API 权限：
@@ -400,7 +400,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 
 “令牌信息”框中还会显示通过 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获得的令牌的相关基本信息： 
 
-|属性  |格式  |说明 |
+|properties  |格式  |说明 |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |用于标识用户的用户名。|
 |`Token Expires` |`DateTime` |令牌的过期时间。 MSAL 根据需要通过续订令牌来延长到期日期。|

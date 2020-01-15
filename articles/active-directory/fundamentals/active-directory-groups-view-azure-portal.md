@@ -1,5 +1,5 @@
 ---
-title: 快速入门：查看组和成员 - Azure Active Directory | Microsoft Docs
+title: 快速入门 - 查看组和成员 - Azure AD
 description: 介绍如何搜索和查看组织的组及其分配的成员。
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423012"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -29,7 +29,7 @@ ms.locfileid: "68942883"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始之前，需要：
 
 - 创建一个 Azure Active Directory 租户。 有关详细信息，请参阅[访问 Azure Active Directory 门户并创建新租户](active-directory-access-create-new-tenant.md)。
@@ -40,7 +40,7 @@ ms.locfileid: "68942883"
 ## <a name="create-a-new-group"></a>创建一个新组 
 创建名为“MDM 策略 - 西部”的新组。  有关创建组的详细信息，请参阅[如何创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
-1. 依次选择“Azure Active Directory”、“组”、“新建组”。   
+1. 依次选择“Azure Active Directory”、“组”、“新建组”    。
 
 2. 填写“组”页： 
     
@@ -61,7 +61,7 @@ ms.locfileid: "68942883"
 
     - **名称：** 键入 Alain Charon  。
 
-    - **用户名：** 键入 alain\@contoso.com  。
+    - **用户名:** 键入 alain\@contoso.com  。
 
 3. 复制“密码”框中提供的自动生成的密码，然后选择“创建”。  
 
@@ -72,7 +72,7 @@ ms.locfileid: "68942883"
 
 2. 在“组 - 所有组”页中，搜索并选择“MDM 策略 - 西部”组。  
 
-3. 在“MDM 策略 - 西部概述”页中，从“管理”区域选择“成员”。   
+3. 在“MDM 策略 - 西部概述”页中，从“管理”区域选择“成员”    。
 
 4. 选择“添加成员”，然后搜索并选择“Alain Charon”。  
 

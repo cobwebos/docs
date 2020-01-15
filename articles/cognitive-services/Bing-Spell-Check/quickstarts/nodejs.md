@@ -1,27 +1,27 @@
 ---
 title: 快速入门：使用 REST API 和 Node.js 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
-description: 开始使用必应拼写检查 REST API 检查拼写和语法。
+description: 通过本快速入门开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382842"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
 
 根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 这个简单的 Node 应用程序将向 API 发送请求并返回无法识别的单词列表，后跟建议的更正。 虽然此应用程序是使用 Node.js 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) 上提供了此应用程序的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Node.js 6](https://nodejs.org/en/download/) or later.
 
@@ -30,7 +30,7 @@ ms.locfileid: "74378809"
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 脚本文件。 设置严格性，并且需要 `https`。 然后为 API 终结点主机、路径和订阅密钥创建变量。
+1. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 脚本文件。 设置严格性，并且需要 `https`。 然后为 API 终结点主机、路径和订阅密钥创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```javascript
     'use strict';
@@ -96,6 +96,18 @@ let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
+
+
+## <a name="run-the-application"></a>运行应用程序
+
+生成并运行项目。
+
+如果使用命令行，则使用以下命令生成并运行应用程序。
+
+```bash
+node <FILE_NAME>.js
+```
+
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107096"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407838"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
-本教程将引导你完成使用 Azure Maps 设置地域隔离区的基本步骤。 本教程中所述的方案可帮助工地管理员监视潜在危险的设备越过指定的施工区域。 工地使用昂贵的设备，并需要遵守相关法规。 这些设备通常必须保留在工地范围以内，在未经许可的情况下不可离开工地。
+本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 本教程中所述的方案可帮助工地管理员监视潜在危险的设备越过指定的施工区域。 工地使用昂贵的设备，并需要遵守相关法规。 这些设备通常必须保留在工地范围以内，在未经许可的情况下不可离开工地。
 
 我们将使用 Azure Maps 数据上传 API 来存储一个地域隔离区，并使用 Azure Maps 地域隔离区 API 来检查设备相对于地域隔离区的位置。 我们将使用 Azure 事件网格来流式传输地域隔离区结果，并根据地域隔离区结果设置通知。
 若要详细了解事件网格，请参阅 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview)。
@@ -32,11 +32,11 @@ ms.locfileid: "74107096"
 > *   使用 Azure Maps 地域隔离区服务 API 跟踪施工资产是否在工地范围内。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要完成本教程中的步骤，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取适用于你的帐户的主订阅密钥。
+若要完成本教程中的步骤，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 ## <a name="upload-geofences"></a>上传地域隔离区
 
@@ -46,7 +46,7 @@ ms.locfileid: "74107096"
 
 1. 打开 Postman 应用，单击“新建”>“新建”并选择“请求”。 输入“上传地域隔离区数据”的请求名称，选择用于保存该请求的集合或文件夹，然后单击“保存”。
 
-    ![使用 Postman 上传地域隔离区](./media/tutorial-geofence/postman-new.png)
+    ![使用 Postman 上传地理围栏](./media/tutorial-geofence/postman-new.png)
 
 2. 在生成器选项卡上选择 POST HTTP 方法，并输入以下 URL 发出 POST 请求。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74107096"
     
     URL 路径中的 GEOJSON 参数表示正在上传的数据的数据格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 主订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-geofence/postman-key-vals.png)
 

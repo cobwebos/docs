@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 运行 Batch 作业 | Microsoft Docs
-description: Azure CLI 脚本示例 - 使用 Batch 运行作业
+title: Azure CLI 脚本示例 - 运行批处理作业
+description: 此脚本将创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 12/12/2019
 ms.author: lahugh
-ms.openlocfilehash: a5e81393014dd70ae83f66e2a1d41f4de3c14205
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3fff556f91558f30389ac3548d699e3788719d59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389989"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI 示例：使用 Azure Batch 运行作业和任务
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |

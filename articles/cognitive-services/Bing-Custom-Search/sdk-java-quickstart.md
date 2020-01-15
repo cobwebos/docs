@@ -1,6 +1,6 @@
 ---
-title: 快速入门：适用于 Java 的必应自定义搜索客户端库 | Microsoft Docs
-description: 从必应自定义搜索实例请求搜索结果，开始使用适用于 Java 的必应自定义搜索客户端库。
+title: 快速入门：适用于 Java 的必应自定义搜索客户端库
+description: 在本快速入门中，通过从必应自定义搜索实例请求搜索结果，开始使用适用于 Java 的必应自定义搜索客户端库。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384547"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>快速入门：适用于 Java 的必应自定义搜索客户端库
 
@@ -26,7 +26,7 @@ ms.locfileid: "74976054"
 
 [参考文档](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * 最新版 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
@@ -37,7 +37,7 @@ ms.locfileid: "74976054"
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>创建必应自定义搜索 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建用于必应自定义搜索的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建用于必应自定义搜索的资源。 你还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。

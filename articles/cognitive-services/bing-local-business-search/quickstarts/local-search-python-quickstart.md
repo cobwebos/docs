@@ -1,7 +1,7 @@
 ---
 title: 快速入门 - 使用 Python 将查询发送到 API - 必应当地企业搜索
 titleSuffix: Azure Cognitive Services
-description: 使用本文开始在 Python 中使用必应当地企业搜索 API。
+description: 使用本快速入门开始在 Python 中使用必应当地企业搜索 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379737"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>快速入门：使用 Python 将查询发送到必应当地企业搜索 API
 
@@ -23,7 +23,7 @@ ms.locfileid: "74664924"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Python](https://www.python.org/) 2.x 或 3.x
  

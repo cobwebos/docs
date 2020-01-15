@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure Application Insights 进行监视
-description: 提供有关快速安装 Node.js Web 应用以使用 Application Insights 进行监视的说明
+title: 快速入门 - 使用 Azure Monitor Application Insights 监视 Node.js
+description: 提供有关快速安装 Node.js Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398783"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "72894944"
 
 使用 Azure Application Insights，可轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 使用 0.20 版 SDK 发行版及更高版本，可以监视常见的第三方包，包括 MongoDB、MySQL 和 Redis。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本快速入门教程需要：
 
@@ -33,7 +33,7 @@ ms.locfileid: "72894944"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -51,7 +51,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | Node.js 应用程序 | 所监视的应用的类型 |
+   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 选择“创建”  。
@@ -129,6 +129,9 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 ## <a name="clean-up-resources"></a>清理资源
 
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
+
+> [!NOTE]
+> 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，属于该组的所有底层资源都将被删除。
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“myResourceGroup”  。
 2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。

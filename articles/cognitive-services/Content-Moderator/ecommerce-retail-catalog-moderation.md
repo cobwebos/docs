@@ -1,7 +1,7 @@
 ---
 title: 教程：审查电子商务产品图像 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 设置一个应用程序，以通过指定的标签分析和分类产品图像（使用 Azure 计算机视觉和自定义视觉）。 标记令人反感的图像以作进一步的评审（使用 Azure 内容审查器）。
+description: 本教程说明如何设置应用程序以使用指定的标签（使用 Azure 计算机视觉和自定义视觉）对产品图像进行分析和分类。 标记令人反感的图像以作进一步的评审（使用 Azure 内容审查器）。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936037"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382151"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -34,7 +34,7 @@ GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftConten
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 内容审查器的订阅密钥。 遵照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器服务并获取密钥。
 - 计算机视觉订阅密钥（遵照上面相同的说明获取）。

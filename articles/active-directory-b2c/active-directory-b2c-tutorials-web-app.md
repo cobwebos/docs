@@ -11,18 +11,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367597"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
 本教程介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 在 ASP.NET Web 应用程序中进行用户登录和注册。 应用程序可以使用 Azure AD B2C 通过开放式标准协议对社交帐户、企业帐户和 Azure Active Directory 帐户进行身份验证。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure AD B2C 中更新此应用程序
@@ -31,7 +31,7 @@ ms.locfileid: "74950187"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。
 * 安装带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
@@ -46,7 +46,7 @@ ms.locfileid: "74950187"
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 1. 选择“应用程序”，然后选择“webapp1”应用程序。  
@@ -56,7 +56,7 @@ ms.locfileid: "74950187"
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
 1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序    。
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 1. 在 **TaskWebApp** 项目中打开 **Web.config** 文件。
     1. 使用你创建的 Azure AD B2C 租户的名称更新 `ida:Tenant` 和 `ida:AadInstance` 的值。 例如，将 `fabrikamb2c` 替换为 `contoso`。
     1. 将 `ida:ClientId` 的值替换为所记录的应用程序 ID。
-    1. 将 `ida:ClientSecret` 的值替换为所记录的密钥。 在将客户端密码添加到 Web.config 之前，必须对其进行 XML 编码。
+    1. 将 `ida:ClientSecret` 的值替换为所记录的密钥。 如果客户端密码包含任何预定义的 XML 实体，例如小于 (`<`)、大于 (`>`)、与号 (`&`) 或双引号 (`"`)，则在将客户端密码添加到 Web.config 之前，必须通过对客户端密码进行 XML 编码来转义这些字符。
     1. 将 `ida:SignUpSignInPolicyId` 的值替换为 `b2c_1_signupsignin1`。
     1. 将 `ida:EditProfilePolicyId` 的值替换为 `b2c_1_profileediting1`。
     1. 将 `ida:ResetPasswordPolicyId` 的值替换为 `b2c_1_passwordreset1`。
@@ -120,7 +120,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure AD B2C 中更新此应用程序

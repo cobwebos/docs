@@ -1,7 +1,7 @@
 ---
-title: 快速入门：适用于 Python 的个性化体验创建服务客户端库 | Microsoft Docs
+title: 快速入门：适用于 Python 的个性化体验创建服务客户端库
 titleSuffix: Azure Cognitive Services
-description: 通过一个学习循环开始使用适用于 Python 的个性化体验创建服务客户端库。
+description: 本快速入门介绍如何通过学习循环开始使用用于 Python 的个性化体验创建服务客户端库。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378936"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>快速入门：适用于 Python 的个性化体验创建服务客户端库
 
@@ -28,7 +28,7 @@ ms.locfileid: "73494427"
 
 [包 (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
@@ -47,7 +47,7 @@ ms.locfileid: "73494427"
 
 ## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://portal.azure.com/)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 有关更多详细信息，请参阅[如何使用 Azure 门户创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://portal.azure.com/)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 有关更多详细信息，请参阅[如何使用 Azure 门户创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 你还可以：
 
 * 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
@@ -148,7 +148,7 @@ pip install azure-cognitiveservices-personalizer
 
 为了完成排名请求，程序将要求用户指定偏好，以创建内容选项的 `currentContent`。 该过程可以创建要从排名中排除的内容，显示为 `excludeActions`。 排名请求需要 actions、currentContext、excludeActions 以及唯一的排名事件 ID（GUID 形式）才能接收排名的响应。 
 
-本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能不是一个简单的过程。  
+本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能是一件非常重要的事情。  
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=rank)]
 

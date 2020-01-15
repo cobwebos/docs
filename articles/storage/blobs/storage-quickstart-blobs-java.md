@@ -7,19 +7,19 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 477f13f58d9b630519faa79424f22cb1bb34918c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351265"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure Blob 存储客户端库 v12
 
 适用于 Java 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 > [!NOTE]
-> 若要开始使用以前的 SDK 版本，请参阅[快速入门：适用于 Java 的 Azure Blob 存储客户端库](storage-quickstart-blobs-java-legacy.md)。
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 Java 的 Azure Blob 存储客户端库](storage-quickstart-blobs-java-legacy.md)。
 
 使用适用于 Java 的 Azure Blob 存储客户端库 v12 完成以下操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "74770435"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本
 * [Apache Maven](https://maven.apache.org/download.cgi)
@@ -48,13 +48,13 @@ ms.locfileid: "74770435"
 
 创建名为 blob-quickstart-v12 的 Java 应用程序  。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用  。 在单个行上键入以下“mvn”命令，创建简单的“Hello World!  ” Java 项目。 为了便于阅读，这里以多行显示该命令。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用  。 键入以下“mvn”命令，创建简单的“Hello World!”  Java 项目。
 
    ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart
-                          -DartifactId=blob-quickstart-v12
-                          -DarchetypeArtifactId=maven-archetype-quickstart
-                          -DarchetypeVersion=1.4
+   mvn archetype:generate -DgroupId=com.blobs.quickstart \
+                          -DartifactId=blob-quickstart-v12 \
+                          -DarchetypeArtifactId=maven-archetype-quickstart \
+                          -DarchetypeVersion=1.4 \
                           -DinteractiveMode=false
    ```
 
@@ -148,11 +148,11 @@ public class App
 }
 ```
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>对象模型
 
-Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义（如文本或二进制数据）的数据。 Blob 存储提供了三种类型的资源：
+Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
 * 存储帐户
 * 存储帐户中的容器
@@ -192,11 +192,11 @@ System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable
 // is created after the application is launched in a console or with
 // Visual Studio, the shell or application needs to be closed and reloaded
 // to take the environment variable into account.
-String connectStr = System.getenv("CONNECT_STR");
+String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
 ### <a name="create-a-container"></a>创建容器
@@ -308,7 +308,7 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>运行代码
 
-此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对旧文件和新文件进行比较。
+此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
 导航到包含 pom.xml 文件的目录，并使用以下 `mvn` 命令编译该项目  。
 

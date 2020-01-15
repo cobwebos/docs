@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355909"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -37,7 +37,7 @@ ms.locfileid: "74829040"
 
 ### <a name="azure-backup-support"></a>Azure 备份支持
 
-若要防范区域灾难，可以使用 [Azure 备份](../articles/backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行简单的 VM 还原。 Azure 备份支持备份和还原托管磁盘。 [详细了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
+若要防范区域灾难，可以使用 [Azure 备份](../articles/backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行简单的 VM 还原。 目前，Azure 备份支持高达 4 TB (TiB) 的磁盘大小。  Azure 备份支持备份和还原托管磁盘。 [详细了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
@@ -126,5 +126,7 @@ Azure 使用优先的网络通道进行磁盘流量传输，优先于其他低�
 请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)一文，了解优化 VM + 磁盘配置以实现所需性能的最佳做法
 
 ## <a name="next-steps"></a>后续步骤
+
+如果你想要详细介绍托管磁盘的视频，请查看：[使用托管磁盘提高 Azure VM 复原能力](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)。
 
 在有关磁盘类型的文章中，详细了解 Azure 提供的各个磁盘类型、哪个类型符合自己的需求，并了解其性能目标。

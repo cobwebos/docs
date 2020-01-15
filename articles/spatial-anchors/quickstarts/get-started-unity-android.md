@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 213cf9b64f2c43274192c22efa2fa5a7dfbce5e5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6fbf0e4cbfc44692292c33fc46d9ea0eccec89d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370200"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity Android 应用
 
-本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 Unity Android 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity 生成的 ARCore Android 应用，该应用可以保存和重新调用空间定位点。
+本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 Unity Android 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity生成的 ARCore Android 应用，该应用可以保存和重新调用空间定位点。
 
 将了解如何执行以下操作：
 
@@ -30,13 +30,13 @@ ms.locfileid: "74277063"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，请确保具备以下项：
 
 - 具有 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a> 的 Windows 或 macOS 计算机，其中包括 Android Build Support 和 Android SDK & NDK Tools 模块。
-  - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
-  - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
+  - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+  - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后，运行 `brew install git` 和 `brew install git-lfs`。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
   - 你的计算机可能需要其他设备驱动程序才能与 Android 设备通信。 有关其他信息和说明，请参阅[此处](https://developer.android.com/studio/run/device.html)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74277063"
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-通过选择“文件” -> “保存”以保存场景   。
+选择“文件” -> “保存”，从而保存场景   。
 
 ## <a name="export-the-android-studio-project"></a>导出 Android Studio 项目
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 基于快照创建托管磁盘
+title: 从快照创建托管磁盘 - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 基于快照创建托管磁盘
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: da6c9d376c432580d8d0765f5c3288fcdfe0abff
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e6652f8ab8e1134d7f348eaa7c8fc20f1a41a46f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368544"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>使用 PowerShell 基于快照创建托管磁盘
 
@@ -38,7 +38,7 @@ ms.locfileid: "74037175"
 
 此脚本使用以下命令基于快照创建托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | 获取快照属性。  |
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | 创建用于创建磁盘的磁盘配置。 它包括父快照的资源 Id、与父快照的位置相同的位置，以及存储类型。  |

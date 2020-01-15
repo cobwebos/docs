@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure AD 权利管理中创建第一个访问包 - Azure Active Directory
+title: 教程 - 创建访问包 - Azure AD 权利管理
 description: 有关如何在 Azure Active Directory 权利管理中创建第一个访问包的分步教程。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422655"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
@@ -31,7 +31,7 @@ ms.locfileid: "73174875"
 
 ![方案概述](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建包含组（用作资源）的访问包
@@ -42,7 +42,7 @@ ms.locfileid: "73174875"
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Azure AD 权利管理，必须具有以下某个许可证：
 
@@ -65,7 +65,7 @@ ms.locfileid: "73174875"
 
 1. 创建或配置以下两个用户。 可以使用这些名称或其他名称。 **Admin1** 可以当前用来登录的用户。
 
-    | Name | 目录角色 |
+    | 名称 | 目录角色 |
     | --- | --- |
     | **Admin1** | 全局管理员<br/>-或-<br/>用户管理员 |
     | **Requestor1** | 用户 |

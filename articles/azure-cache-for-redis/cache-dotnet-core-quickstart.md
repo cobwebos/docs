@@ -1,25 +1,25 @@
 ---
-title: 快速入门：了解如何将 Azure Cache for Redis 与 .NET Core 应用配合使用
+title: 快速入门：将 Azure Cache for Redis 与 .NET Core 应用配合使用
 description: 在本快速入门中，了解如何在 .NET Core 应用中访问 Azure Redis 缓存
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413055"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>快速入门：将 Azure Redis 缓存与 .NET Core 应用配合使用
 
 在本快速入门中，会将 Azure Redis 缓存合并到 .NET Core 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。 你专门在 .NET Core 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C# 代码配合使用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -107,7 +107,7 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="configure-the-cache-client"></a>配置缓存客户端
 
-在本部分中，你将配置控制台应用程序来将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
+在本部分，请配置控制台应用程序，以便将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
 
 在命令窗口中，在 *Redistest* 项目目录中执行以下命令：
 

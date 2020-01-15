@@ -1,21 +1,20 @@
 ---
 title: 快速入门：适用于 Java 的计算机视觉客户端库
-titleSuffix: Azure Cognitive Services
-description: 适用于 Java 的计算机视觉客户端库入门。
+description: 在本快速入门中，开始使用适用于 Java 的计算机视觉客户端库。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9c73d28952a165f07711d1aace665bbe742f0124
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: e909e5c6a429d85befd49e6b67e59a46ef8ef30b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382219"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>快速入门：适用于 Java 的计算机视觉客户端库
 
@@ -28,7 +27,7 @@ ms.locfileid: "71718473"
 
 [参考文档](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [项目 (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [示例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -38,7 +37,7 @@ ms.locfileid: "71718473"
 
 ### <a name="create-a-computer-vision-azure-resource"></a>创建计算机视觉 Azure 资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建计算机视觉的资源。 还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 创建计算机视觉的资源。 你还可以：
 
 * 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#decision)。 注册之后，[Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上会提供此密钥。  
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
@@ -104,7 +103,7 @@ dependencies {
 
 以下类和接口将处理人脸计算机视觉 Java SDK 的某些主要功能。
 
-|Name|说明|
+|名称|说明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | 所有计算机视觉功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
 |[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| 此类来自客户端对象，它直接处理所有图像操作，例如图像分析、文本检测和缩略图生成。|
@@ -162,13 +161,13 @@ dependencies {
 
 ### <a name="get-image-description"></a>获取图像说明
 
-下面的代码获取为图像生成的描述文字列表。 有关更多详细信息，请参阅[描述图像](../concept-describing-images.md)。
+下面的代码获取为图像生成的描述文字列表。 有关详细信息，请参阅[描述图像](../concept-describing-images.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
 
 ### <a name="get-image-category"></a>获取图像类别
 
-下面的代码获取所检测到的图像类别。 有关更多详细信息，请参阅[对图像进行分类](../concept-categorizing-images.md)。
+下面的代码获取所检测到的图像类别。 有关详细信息，请参阅[对图像进行分类](../concept-categorizing-images.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
 
@@ -180,25 +179,25 @@ dependencies {
 
 ### <a name="detect-faces"></a>检测人脸
 
-下面的代码返回图像中检测到的人脸及其矩形坐标，以及选择面属性。 有关更多详细信息，请参阅[人脸检测](../concept-detecting-faces.md)。
+下面的代码返回图像中检测到的人脸及其矩形坐标，并选择人脸属性。 有关详细信息，请参阅[人脸检测](../concept-detecting-faces.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
 ### <a name="detect-adult-racy-or-gory-content"></a>检测成人、色情或血腥内容
 
-以下代码输出图像中检测到的成人内容。 有关更多详细信息，请参阅[成人、色情或血腥内容](../concept-detecting-adult-content.md)。
+以下代码输出图像中检测到的成人内容。 有关详细信息，请参阅[成人、色情或血腥内容](../concept-detecting-adult-content.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 
 ### <a name="get-image-color-scheme"></a>获取图像配色方案
 
-以下代码输出图像中检测到的颜色属性，如主色和主题色。 有关更多详细信息，请参阅[配色方案](../concept-detecting-color-schemes.md)。
+以下代码输出图像中检测到的颜色属性，如主色和主题色。 有关详细信息，请参阅[配色方案](../concept-detecting-color-schemes.md)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
 
 ### <a name="get-domain-specific-content"></a>获取特定于域的内容
 
-计算机视觉可以使用专用模型对图像进行进一步分析。 有关更多详细信息，请参阅[特定于域的内容](../concept-detecting-domain-content.md)。 
+计算机视觉可以使用专用模型对图像进行进一步分析。 有关详细信息，请参阅[特定于域的内容](../concept-detecting-domain-content.md)。 
 
 以下代码分析了图像中检测到的名人的相关数据。
 

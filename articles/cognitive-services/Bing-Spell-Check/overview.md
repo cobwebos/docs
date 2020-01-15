@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 996db9690d19cc40c3963922d4edb3b59469752b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382993"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>什么是必应拼写检查 API？
 
@@ -44,3 +44,5 @@ ms.locfileid: "68514801"
 首先，请试用必应拼写检查搜索 API [互动演示](https://azure.microsoft.com/services/cognitive-services/spell-check/)，了解如何快速检查各种文本。
 
 做好调用 API 的准备后，请创建一个[认知服务 API 帐户](../../cognitive-services/cognitive-services-apis-create-account.md)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+
+还可以访问[必应搜索 API 中心页](../bing-web-search/search-the-web.md)，浏览其他可用的 API。

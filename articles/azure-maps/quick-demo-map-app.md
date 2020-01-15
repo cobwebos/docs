@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408421"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
@@ -26,24 +26,38 @@ ms.locfileid: "73903183"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com)。
 
-## <a name="create-an-account-and-get-your-key"></a>创建一个帐户并获取密钥
+<a id="createaccount"></a>
 
-1. 在 [Azure 门户](https://portal.azure.com)的左上角，选择“创建资源”。 
-2. 在“在市场中搜索”框中，输入“Maps”   。
-3. 从“结果”中，选择“Maps”   。 选择地图下面显示的“创建”按钮。 
-4. 在“创建 Azure Maps 帐户”页上，输入以下值  ：
-   - 新帐户的名称。 
-   - 要用于此帐户的订阅。 
-   - 此帐户的资源组  。 可以选择“新建”或“使用现有”选项，以便新建资源组或使用现有资源组。  
-   - 选择所选的定价层  。
-   - 阅读**许可**和**隐私声明**。 选择接受条款的复选框。
-   - 最后，选择“创建”  按钮。
+## <a name="create-an-account-with-azure-maps"></a>通过 Azure Maps 创建帐户
 
-     ![在门户中创建 Azure Maps 帐户](./media/quick-demo-map-app/create-account.png)
+使用以下步骤创建新的 Maps 帐户：
 
-5. 帐户成功创建后，将其打开，查找帐户菜单的设置部分。 选择“身份验证”，以查看 Azure Maps 帐户的主密钥和辅助密钥  。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。 
+1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。 
+2. 在“在市场中搜索”框中，键入“Maps”   。
+3. 从“结果”中，选择“Maps”   。 单击地图下面显示的“创建”按钮。 
+4. 在“创建 Maps 帐户”页上，输入以下值  ：
+    * 要用于此帐户的订阅。 
+    * 此帐户的资源组名称。  可以选择新建或使用现有的资源组。  
+    * 新帐户的名称。 
+    * 此帐户的定价层  。
+    * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
+    * 单击“创建”  按钮。
+
+![在门户中创建 Maps 帐户](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
+
+成功创建 Maps 帐户后，检索查询 Maps API 的密钥。 建议在调用 Azure Maps 服务时使用帐户的主密钥作为订阅密钥。
+
+1. 在门户中打开 Maps 帐户。
+2. 在设置部分中，选择“身份验证”  。
+3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
+
+![在门户中获取主密钥](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>下载应用程序
 

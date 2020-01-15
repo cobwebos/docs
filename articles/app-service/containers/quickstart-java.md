@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 76521464127780d266ba58eab7306b8fe2930c2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872734"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422214"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872734"
 
 > [!NOTE]
 >
-> 也可使用 IntelliJ 和 Eclipse 等常见 IDE 执行相同的操作。 请查看 [Azure Toolkit for IntelliJ 快速入门](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入门](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)中的类似文档。
+> 也可使用 IntelliJ、Eclipse 和 VS Code 等常见 IDE 执行相同的操作。 请在 [Azure Toolkit for IntelliJ 快速入门](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)、[Azure Toolkit for Eclipse 快速入门](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) 或 [VS Code 快速入门](https://code.visualstudio.com/docs/java/java-webapp)查看类似文档。
 >
 ![在 Azure 应用服务中运行的示例应用](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -91,7 +91,7 @@ Confirm (Y/N)? : Y
 
 再次导航到 `pom.xml` 以查看插件配置是否已更新。如果需要，可以直接在 pom 文件中修改应用服务的其他配置，下面列出了一些常见配置：
 
- 属性 | 必选 | 说明 | 版本
+ properties | 必选 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+

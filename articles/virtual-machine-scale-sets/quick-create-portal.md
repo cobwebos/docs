@@ -1,7 +1,7 @@
 ---
-title: 快速入门 - 在 Azure 门户中创建虚拟机规模集 | Microsoft Docs
-description: 了解如何在 Azure 门户中快速创建虚拟机规模集
-services: virtual-machine-scale-sets
+title: 快速入门 - 在 Azure 门户中创建虚拟机规模集
+description: 通过了解如何在 Azure 门户中快速创建虚拟机规模集来开始部署。
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351142"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -40,9 +40,9 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 
     | 设置                 | 值   |
     | ---| ---|
-    | Subscription  | 选择订阅。    |    
-    | Resource group | 选择“新建”并在文本框中键入 myVMSSResourceGroup   。|
-    | Name           | *myLoadBalancer*         |
+    | 订阅  | 选择订阅。    |    
+    | 资源组 | 选择“新建”并在文本框中键入 myVMSSResourceGroup   。|
+    | 名称           | *myLoadBalancer*         |
     | 区域         | 选择“美国东部”  。       |
     | 类型          | 选择“公共”。        |
     | SKU           | 选择“标准”  。       |

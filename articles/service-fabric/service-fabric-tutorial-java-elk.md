@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中使用 ELK 监视 Service Fabric 中的应用 |Microsoft Docs
+title: 在 Azure 中使用 ELK 监视 Service Fabric 中的应用
 description: 本教程介绍如何设置 ELK 并监视 Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376646"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
 
@@ -40,7 +31,7 @@ ms.locfileid: "58312999"
 > * 设置应用程序的监视和诊断
 > * [设置 CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -63,7 +54,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 1. 在 Azure 中创建由 [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) 认证的 ELK。 在本教程中，创建此服务器时不需要遵循任何特定的规范。
 
-2. 在 Azure 门户中转到自己的资源，然后转到“支持 + 故障排除”部分下的“启动诊断”选项卡。 接下来，单击“串行日志”选项卡。
+2. 在 Azure 门户中转到自己的资源，然后转到“支持 + 故障排除”部分下的“启动诊断”选项卡。   接下来，单击“串行日志”选项卡。 
 
     ![启动诊断](./media/service-fabric-tutorial-java-elk/bootdiagnostics.png)
 3. 在日志中搜索访问 Kibana 实例所需的密码。 搜索命令如以下代码片段所示：
@@ -149,13 +140,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. 通过 **http:\//SERVER-IP** 访问 Kibana 仪表板，并输入 Kibana 的用户名和密码。 如果在 Azure 中使用了 ELK 映像，则默认用户名为“user”，密码是在“启动诊断”中获取的密码。
+8. 通过 **http:\//SERVER-IP** 访问 Kibana 仪表板，并输入 Kibana 的用户名和密码。 如果在 Azure 中使用了 ELK 映像，则默认用户名为“user”，密码是在“启动诊断”中获取的密码。 
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中启动并运行 ELK 服务器

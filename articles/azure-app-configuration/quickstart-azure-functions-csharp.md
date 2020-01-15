@@ -2,30 +2,23 @@
 title: 将 Azure 应用配置与 Azure Functions 结合使用的快速入门 | Microsoft Docs
 description: 将 Azure 应用程序配置与 Azure Functions 集合使用的快速入门。
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413763"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
 在本快速入门中，你会将 Azure 应用程序配置服务合并到 Azure Functions 应用中，以集中存储和管理与代码分离的所有应用程序设置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
@@ -61,7 +54,7 @@ ms.locfileid: "74187210"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. 添加 `static` 属性 `Configuration` 以创建 `IConfiguration` 的单一实例。 然后通过调用 `AddAzureAppConfiguration()` 添加 `static` 构造函数以连接到应用程序配置。 应用程序启动时即会加载配置。 同一配置实例稍后将用于所有 Functions 调用。
+3. 添加名为 `Configuration` 的 `static` 属性以创建 `IConfiguration` 的单一实例。 然后通过调用 `AddAzureAppConfiguration()` 添加 `static` 构造函数以连接到应用程序配置。 应用程序启动时即会加载配置。 同一配置实例稍后将用于所有 Functions 调用。
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -92,19 +85,21 @@ ms.locfileid: "74187210"
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     如果使用 Windows PowerShell，请运行以下命令：
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     如果使用 macOS 或 Linux，则请运行以下命令：
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
+2. 按 F5 测试函数。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
 
 3. 从 Azure Functions 运行时输出复制函数的 URL。
 

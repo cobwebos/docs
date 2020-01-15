@@ -1,5 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 导入 Azure 应用程序配置存储区 | Microsoft Docs
+title: Azure CLI 脚本示例 - 导入到应用配置存储区
+titleSuffix: Azure App Configuration
 description: 提供用于导入 Azure 应用配置存储区的信息和示例脚本
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6399039a68279a5b734fb3d7cb5bfad60e2c35e1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 28c04859f23b3a560166aa62ac903e1204fc5d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413288"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>导入 Azure 应用配置存储区
 
@@ -50,7 +51,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 此脚本使用以下命令导入应用程序配置存储区。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | 导入应用程序配置存储区资源。 |
 

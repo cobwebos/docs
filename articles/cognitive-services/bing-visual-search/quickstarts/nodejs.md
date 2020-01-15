@@ -8,37 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: ecfe341fa050e693f919f35c29c8120c687c88f8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379702"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>快速入门：使用必应视觉搜索 REST API 和 Node.js 获取图像见解
 
 使用本快速入门首次调用必应视觉搜索 API 并查看搜索结果。 此简单 JavaScript 应用程序会将一个图像上传到该 API，并显示返回的相关信息。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-上传本地图像时，表单数据必须包含 `Content-Disposition` 标头。 必须将其 `name` 参数设置为“image”，并且可以将 `filename` 参数设置为任何字符串。 表单内容包括图像的二进制数据。 可以上传的最大图像大小为 1 MB。
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Node.js](https://nodejs.org/en/download/)
 * JavaScript 请求模块。 可以使用 `npm install request` 命令安装该模块。
 * 表单数据模块。 可以使用 `npm install form-data` 命令安装该模块。 
 
-[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>初始化应用程序
 
@@ -50,7 +39,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. 为 API 终结点、订阅密钥和图像路径创建变量：
+2. 为 API 终结点、订阅密钥和图像路径创建变量。 `baseUri` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点：
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -67,6 +56,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     ```
 
 ## <a name="construct-and-send-the-search-request"></a>构造并发送搜索请求
+
+上传本地图像时，表单数据必须包含 `Content-Disposition` 标头。 必须将其 `name` 参数设置为“image”，并且可以将 `filename` 参数设置为任何字符串。 表单内容包括图像的二进制数据。 可以上传的最大图像大小为 1 MB。
+
+```
+--boundary_1234-abcd
+Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+
+--boundary_1234-abcd--
+```
 
 1. 使用 `FormData()` 创建新的 **FormData** 对象，并使用 `fs.createReadStream()` 将图像路径追加​​到该对象后面：
     

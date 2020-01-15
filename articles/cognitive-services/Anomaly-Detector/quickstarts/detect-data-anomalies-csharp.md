@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 能够以批或流数据的形式检测数据系列的异常。
+description: 参考本快速入门使用异常检测器 API 以批处理形式或在流式处理时检测数据系列中的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 76308e2167cbedae9572f1fb5037dfb394ce4b17
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5fb8bb424af47eb7793d38f24b6334677c6a5ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385303"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常 
 
@@ -28,7 +28,7 @@ ms.locfileid: "74483413"
 
  虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到本快速入门的源代码。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)、
 - 异常检测器密钥和终结点

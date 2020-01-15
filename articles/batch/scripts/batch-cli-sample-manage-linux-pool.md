@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - Batch 中的 Linux 池 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中创建和管理 Linux 池
+title: Azure CLI 脚本示例 - Batch 中的 Linux 池
+description: 此脚本演示了 Azure CLI 中一些可用于在 Azure Batch 中创建和管理 Linux 计算节点池的命令。
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: a0e78ec35ff001b6a4ee59794a002cb3a74e90cb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 33f66da1911bdefee298f3de949937bbc52d8fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390218"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Linux 池
 
-这些脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Linux 计算节点池的命令。
+此脚本演示了 Azure CLI 中一些可用于在 Azure Batch 中创建和管理 Linux 计算节点池的命令。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |

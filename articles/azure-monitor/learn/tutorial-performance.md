@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398620"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -26,7 +26,7 @@ Azure Application Insights 从应用程序收集遥测，以帮助分析操作�
 > * 使用查询语言分析页面视图的详细信息
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -72,7 +72,7 @@ Application Insights 收集应用程序中不同操作的性能详细信息。 �
 
     ![性能提示](media/tutorial-performance/6-perf-tip.png)
 
-8.  如需进一步分析，可单击“下载跟踪”，将跟踪信息下载到 Visual Studio  。
+8.   如需进一步分析，可单击“下载跟踪”以下载跟踪  。 可以使用 [PerfView](https://github.com/Microsoft/perfview#perfview-overview) 查看此数据。
 
 ## <a name="use-logs-data-for-server"></a>使用服务器的日志数据
  日志提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 可以用它对请求和性能数据进行深度分析。
@@ -98,7 +98,7 @@ Application Insights 不仅可以识别要优化的服务器进程，还可以�
 ## <a name="use-logs-data-for-client"></a>使用客户端的日志数据
 与针对服务器性能收集的数据一样，Application Insights 允许使用日志深度分析所有客户端数据。
 
-1. 返回到浏览器摘要，单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)  “在日志中查看(分析)”
+1. 返回到浏览器摘要，单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)  “在日志(Analytics)中查看”
 
 2. 日志随即打开，包含对面板中每个视图的查询。 第一个查询显示不同页面视图随时间推移的持续时间。
 

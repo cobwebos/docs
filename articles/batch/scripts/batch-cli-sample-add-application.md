@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 在 Batch 中添加应用程序 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中添加应用程序
+title: Azure CLI 脚本示例 - 在 Batch 中添加应用程序
+description: 此示例脚本演示如何添加要与 Azure Batch 池或任务配合使用的应用程序。
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9c580fa7ed4834ca516d373b3c7bb47f4cfd1b38
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390468"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI 示例：向 Azure Batch 帐户添加应用程序
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 此脚本使用以下命令。
 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 基于快照创建托管磁盘
+title: 基于快照创建托管磁盘 - CLI 示例
 description: Azure CLI 脚本示例 - 基于快照创建托管磁盘
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 5060dc81196acec65001910751498fbd8513936e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2d415a12ceaf2cda0172d806d5a621b1297a74be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375842"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>使用 CLI 基于快照创建托管磁盘
 
@@ -39,7 +39,7 @@ ms.locfileid: "74039980"
 
 此脚本使用以下命令基于快照创建托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | 使用快照的名称和资源组属性获取快照的所有属性。 使用 ID 属性创建托管磁盘。  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | 使用托管快照的快照 ID 创建托管磁盘 |

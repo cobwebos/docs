@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408044"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
-本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 本教程介绍如何执行下列操作：
+本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 在本教程中，你将了解如何执行以下操作：
     
 > [!div class="checklist"]
 > * 使用 Azure Map 控件 API 创建新网页。
@@ -33,22 +33,20 @@ ms.locfileid: "74107084"
 
 跳转到[现场店铺定位器示例](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)或[源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本教程中的步骤，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取帐户的主订阅密钥。
+若要完成本教程中的步骤，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="design"></a>设计
 
 在跳转到代码之前，最好是从某个设计开始。 店铺定位器可以十分简单，也可以非常复杂，具体视需求而定。 在本教程中，我们将创建一个简单的店铺定位器。 在整个过程中，我们会提供一些提示，以帮助你根据需要扩展某些功能。 我们将为一家名为 Contoso Coffee 的虚构公司创建店铺定位器。 下图显示了本教程中要生成的店铺定位器的常规布局框图：
 
-<br/>
 <center>
 
 ![Contoso Coffee 咖啡店位置的店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 为了最大程度地利用此店铺定位器，我们包含了一种响应式布局，当用户的屏幕宽度小于 700 像素时，该布局可以调整。 在移动设备等的小型屏幕上，响应式布局可让我们轻松使用店铺定位器。 下面是小屏幕布局的框图：  
 
-<br/>
 <center>
 
 ![移动设备上的 Contoso Coffee 店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
@@ -73,7 +71,6 @@ ms.locfileid: "74107084"
 
 在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
-<br/>
 <center>
 
 ![Excel 工作簿中店铺定位器数据的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -95,14 +92,12 @@ ms.locfileid: "74107084"
 
 若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。  在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。   将文件命名为 *ContosoCoffee.txt*。 
 
-<br/>
 <center>
 
 ![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 如果在记事本中打开该文本文件，其外观如下图所示：
 
-<br/>
 <center>
 
 ![演示制表符分隔数据集的 Notepad 文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ ms.locfileid: "74107084"
 
 若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件：*index.html*、*index.css* 和 *index.js*。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
 
-<br/>
 <center>
 
 ![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -930,21 +924,18 @@ ms.locfileid: "74107084"
 
 当用户首次选择“我的位置”按钮时，浏览器将显示安全警告，并请求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。 
 
-<br/>
 <center>
 
 ![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口，其中显示了该位置的信息。
 
-<br/>
 <center>
 
 ![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 如果将浏览器窗口宽度调整为小于 700 像素或者在移动设备上打开该应用程序，则布局将会更改，更适合小屏幕。 
 
-<br/>
 <center>
 
 ![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>

@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights 快速入门 | Microsoft docs
-description: 提供有关快速安装 ASP.NET Core Web 应用以使用 Application Insights 进行监视的说明
+title: 快速入门 ASP.NET Core - Azure Monitor Application Insights
+description: 提供有关快速安装 ASP.NET Core Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399018"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "72900573"
 
 本快速入门介绍如何将 Application Insights SDK 添加到现有 ASP.NET Core Web 应用程序。 若要了解如何在没有 Visual Studio 的情况下配置 Application Insights，请查看此[文章](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本快速入门教程需要：
 
@@ -37,7 +37,7 @@ ms.locfileid: "72900573"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -53,10 +53,12 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
+   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 单击“创建”。 
+
+
 
 ## <a name="configure-app-insights-sdk"></a>配置 App Insights SDK
 
@@ -106,6 +108,9 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="clean-up-resources"></a>清理资源
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
+
+> [!NOTE]
+> 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，属于该组的所有底层资源都将被删除。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
 2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。

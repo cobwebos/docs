@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Azure Redis 缓存
-description: Azure CLI 脚本示例 - 创建 Azure Redis 缓存
+title: 创建 Azure Cache for Redis - Azure CLI
+description: 此 Azure CLI 代码示例演示如何使用命令 az redis create 创建 Azure Cache for Redis 实例。
 author: yegu-ms
 tags: azure-service-management
 ms.service: cache
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: e0ca7131a4ea9a512ac31231754f86d218c35025
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411321"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 
@@ -31,7 +31,7 @@ ms.locfileid: "74121308"
 
 此脚本使用以下命令创建资源组和 Azure Redis 缓存。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az redis create](https://docs.microsoft.com/cli/azure/redis) | 创建 Azure Redis 缓存实例。 |

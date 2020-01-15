@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410445"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -37,7 +37,7 @@ Azure Databricks 包括配套的开源 Apache Spark 群集技术和功能。 Azu
 
 * **流式处理**：针对分析与交互式应用程序的实时数据处理和分析。 与 HDFS、Flume 和 Kafka 集成。
 
-* **MLib**：由常见学习算法和实用工具（包括分类、回归、群集、协作筛选、维数约简以及底层优化基元）组成的机器学习库。
+* **MLlib**：由常见学习算法和实用工具（包括分类、回归、群集、协作筛选、维数约简以及底层优化基元）组成的机器学习库。
 
 * **GraphX**：针对从认知分析到数据浏览的广泛范围显示图形和执行图形计算。
 

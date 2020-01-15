@@ -1,26 +1,16 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 Linux 容器应用 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上创建 Linux 容器应用
 description: 在此快速入门中，将使用你的应用程序生成 Docker 映像、将映像推送到容器注册表，然后将容器部署到 Service Fabric 群集。
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372680"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
 
@@ -30,7 +20,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ![Voting 应用网页][quickstartpic]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本快速入门教程需要：
 

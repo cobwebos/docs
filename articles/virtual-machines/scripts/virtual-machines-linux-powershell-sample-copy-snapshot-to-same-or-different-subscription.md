@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（移动）到同一或不同订阅
-description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（移动）到同一或不同订阅
+title: 将托管磁盘的快照复制到订阅 - PowerShell 示例
+description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（或移动）到同一或不同订阅
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 7a99dcbe52f8efd00180726070cd269a151d57d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 65a3e39206864f10c41e79ba6b3e7a89da99dc6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463776"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 将托管磁盘的快照复制到同一订阅或不同订阅
 
@@ -43,7 +43,7 @@ ms.locfileid: "74040216"
 
 此脚本使用以下命令并使用源快照的 Id 在目标订阅中创建新快照。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | 创建用于创建快照的快照配置。 它包括父快照的资源 Id 以及与父快照相同的位置。  |
 | [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用作为参数传递的快照配置、快照名称和资源组名称创建快照。 |

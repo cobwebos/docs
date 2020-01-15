@@ -6,18 +6,21 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422168"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
+> [!NOTE]
+> 多容器处于预览状态。
+
 在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本教程介绍如何使用 WordPress 和 MySQL 创建多容器应用。 你将在 Cloud Shell 中完成本教程，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 命令行工具（2.0.32 或更高版本）在本地运行这些命令。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 转换 Docker Compose 配置以使用用于容器的 Web 应用
@@ -29,7 +32,7 @@ ms.locfileid: "74687461"
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要具有使用 [Docker Compose](https://docs.docker.com/compose/) 的经验。
 
@@ -508,7 +511,7 @@ WordPress 将连接到 Redis 服务器。 同一页面上会显示连接**状态
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 转换 Docker Compose 配置以使用用于容器的 Web 应用
 > * 将多容器应用部署到 Azure

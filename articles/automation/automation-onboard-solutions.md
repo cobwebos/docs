@@ -2,19 +2,15 @@
 title: 将更新和更改跟踪解决方案加入 Azure 自动化
 description: 了解如何将更新和更改跟踪解决方案加入 Azure 自动化。
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421845"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>将更新和更改跟踪解决方案加入 Azure 自动化
 
@@ -27,7 +23,7 @@ ms.locfileid: "72372819"
 > * 导入载入 Runbook
 > * 启动 Runbook
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程需要以下各项：
 
@@ -37,9 +33,9 @@ ms.locfileid: "72372819"
 
 ## <a name="onboard-an-azure-vm"></a>载入 Azure VM
 
-可以通过多种方式来载入计算机，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)、[通过自动化帐户](automation-onboard-solutions-from-automation-account.md)或通过 Runbook 载入解决方案。 本教程详细介绍了如何通过 Runbook 启用更新管理。 若要大规模载入 Azure 虚拟机，须使用更改跟踪或更新管理解决方案载入现有 VM。 在此步骤中，使用更新管理和更改跟踪载入虚拟机。
+载入计算机的方式有多种，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)、[通过自动化帐户](automation-onboard-solutions-from-automation-account.md)或通过 runbook 载入解决方案。 本教程详细介绍了如何通过 Runbook 启用更新管理。 若要大规模载入 Azure 虚拟机，须使用更改跟踪或更新管理解决方案载入现有 VM。 在此步骤中，使用更新管理和更改跟踪载入虚拟机。
 
-### <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
+### <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和库存
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
@@ -140,7 +136,7 @@ ms.locfileid: "72372819"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 手动加入 Azure 虚拟机。

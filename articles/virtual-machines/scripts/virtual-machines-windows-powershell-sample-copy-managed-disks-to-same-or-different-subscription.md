@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - 将托管磁盘复制（移动）到同一或不同订阅
-description: Azure PowerShell 脚本示例 - 将托管磁盘复制（移动）到同一或不同订阅
+title: 将托管磁盘复制到订阅 - PowerShell 示例
+description: Azure PowerShell 脚本示例 - 将托管磁盘复制或移动到同一或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: e494770d182a74320237c447e9afc7f7d2665499
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8d0f14c0223667773af4e723acaf503460290194
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368906"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 将托管磁盘复制到同一订阅或不同订阅
 
@@ -40,7 +40,7 @@ ms.locfileid: "74039837"
 
 此脚本使用以下命令并使用源托管磁盘的 Id 在目标订阅中创建新托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | 创建用于创建磁盘的磁盘配置。 它包括父磁盘的资源 Id 以及与父磁盘的位置相同的位置。  |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用作为参数传递的磁盘配置、磁盘名称和资源组名称创建磁盘。 |
