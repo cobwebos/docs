@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集 | Microsoft Docs
+title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177985"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551703"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -28,7 +17,7 @@ ms.locfileid: "73177985"
 
 本教程介绍一个生产方案。 要创建小型群集以供测试，请参阅[创建测试群集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 PowerShell 在 Azure 中创建 VNET
@@ -53,7 +42,7 @@ ms.locfileid: "73177985"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -112,6 +101,7 @@ ms.locfileid: "73177985"
 
 * ClientConnectionEndpoint (TCP)：19000
 * HttpGatewayEndpoint (HTTP/TCP)：19080
+* SMB：445
 * Internodecommunication：1025、1026、1027
 * 临时端口范围：49152 到 65534（至少需要 256 个端口）。
 * 应用程序使用的端口：80 和 443
@@ -158,7 +148,7 @@ ms.locfileid: "73177985"
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
 |clusterName|mysfcluster123| 群集的名称。 仅可包含字母和数字。 长度可介于 3 到 23 个字符之间。|
-|位置|southcentralus| 群集的位置。 |
+|location|southcentralus| 群集的位置。 |
 |certificateThumbprint|| <p>如果创建自签名证书或提供证书文件，则值应为空。</p><p>若要使用之前上传到密钥保管库的现有证书，请填写证书 SHA1 指纹值。 例如“6190390162C988701DB5676EB81083EA608DCCF3”。</p> |
 |certificateUrlValue|| <p>如果创建自签名证书或提供证书文件，则值应为空。 </p><p>若要使用之前上传到 Key Vault 的现有证书，请填写证书 URL。 例如，“https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”。</p>|
 |sourceVaultValue||<p>如果创建自签名证书或提供证书文件，则值应为空。</p><p>若要使用之前上传到 Key Vault 的现有证书，请填写源保管库值。 例如“/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”。</p>|
@@ -177,7 +167,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)。
 
-为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)到计算机。
+为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/Azure-Samples/service-fabric-aad-helpers)到计算机。
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>创建 Azure AD 应用程序并为用户分配角色
 创建两个 Azure AD 应用程序来控制对群集的访问权限：一个 Web 应用程序和一个本机应用程序。 创建用于表示群集的应用程序后，请将用户分配到 [Service Fabric 支持的角色](service-fabric-cluster-security-roles.md)：只读和管理员。

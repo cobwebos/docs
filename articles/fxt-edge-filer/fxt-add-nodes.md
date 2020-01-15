@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure FXT Edge Filer 群集配置 - 添加节点
+title: 教程：将节点添加到 Azure FXT Edge Filer 群集
 description: 如何添加节点到 Azure FXT Edge Filer 缓存存储
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254920"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551941"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>教程：添加群集节点 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>教程：将群集节点添加到 Azure FXT Edge Filer 群集
 
 仅使用一个节点创建新的 Azure FXT Edge Filer 群集。 在进行其他配置之前，应至少再添加两个节点并启用高可用性。 
 

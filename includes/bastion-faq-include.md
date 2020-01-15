@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467578"
 ---
 ### <a name="regions"></a>面向哪些区域提供？
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875455"
 ### <a name="publicip"></a>我是否需要在虚拟机上有一个公共 IP？
 
 不需要在使用 Azure Bastion 服务连接到的 Azure 虚拟机上有一个公共 IP。 Bastion 服务会通过虚拟网络中的虚拟机的专用 IP 打开到虚拟机的 RDP/SSH 会话/连接。
+
+### <a name="is-ipv6-supported"></a>是否支持 IPv6？
+
+目前不支持 IPv6。 Azure Bastion 仅支持 IPv4。
 
 ### <a name="rdpssh"></a>是否需要 RDP 或 SSH 客户端？
 

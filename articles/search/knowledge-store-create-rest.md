@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/30/2019
+ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720081"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563218"
 ---
 # <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>使用 REST 创建 Azure 认知搜索知识存储
 
@@ -26,35 +26,36 @@ Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出�
 
 创建知识存储后，可以了解如何使用[存储资源管理器](knowledge-store-view-storage-explorer.md)或 [Power BI](knowledge-store-connect-power-bi.md) 来访问该知识存储。
 
-## <a name="create-services"></a>创建服务
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-创建以下服务：
+> [!TIP]
+> 针对本文，建议阅读 [Postman 桌面应用](https://www.getpostman.com/)。 此外，本文中的[源代码](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)包含涵盖所有请求的 Postman 集合。 
 
-- 创建 [Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅中[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
+## <a name="create-services-and-load-data"></a>创建服务并加载数据
 
-- [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)用于存储示例数据和知识存储。 存储帐户必须使用与 Azure 认知搜索服务相同的位置（例如“美国西部”）。 “帐户类型”的值必须是“StorageV2 (常规用途 V2)”（默认值）或“Storage (常规用途 V1)”。   
+本快速入门使用 Azure 认知搜索、Azure Blob 存储和用于 AI 的 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。 
 
-- 建议：获取 [Postman 桌面应用](https://www.getpostman.com/)，以便将请求发送到 Azure 认知搜索。 可将 REST API 与任何能够处理 HTTP 请求和响应的工具配合使用。 Postman 非常适合用于探索 REST API。 本文将使用 Postman。 此外，本文中的[源代码](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)包含 Postman 请求集合。 
+由于工作负荷很小，因此，在从 Azure 认知搜索调用认知服务时，认知服务在幕后会抽调一部分算力来免费处理事务（每天最多 20 个）。 只要你使用我们提供的示例数据，就可以跳过创建或附加认知服务资源的过程。
 
-## <a name="store-the-data"></a>存储数据
+1. [下载 HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 此数据是保存在某个 CSV 文件中的酒店评论数据（源自 Kaggle.com），其中包含客户对一家酒店的 19 条反馈。 
 
-将酒店评论 CSV 文件载入 Azure Blob 存储，使之可由 Azure 认知搜索索引器访问，并可通过 AI 扩充管道进行馈送。
+1. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
 
-### <a name="create-a-blob-container-by-using-the-data"></a>使用数据创建 Blob 容器
+   选择“StorageV2 (常规用途 V2)”帐户类型  。
 
-1. 下载已保存到 CSV 文件中的[酒店评论数据](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) (HotelReviews_Free.csv)。 此数据来源于 Kaggle.com，包含客户对酒店的反馈。
-1. 登录到 [Azure 门户](https://portal.azure.com)，转到你的 Azure 存储帐户。
-1. 创建一个 [Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 若要创建容器，请在存储帐户的左侧菜单中选择“Blob”，然后选择“容器”。  
-1. 输入 **hotel-reviews** 作为新容器的**名称**。
-1. 对于“公共访问级别”，请选择任何值。  我们使用了默认值。
-1. 选择“确定”创建 Blob 容器。 
-1. 打开新的 **hotels-review** 容器，选择“上传”，然后选择在第一个步骤中下载的 HotelReviews-Free.csv 文件。 
+1. 打开 Blob 服务页并创建一个名为 hotel-reviews 的容器  。
+
+1. 单击“上载” 。 
 
     ![上传数据](media/knowledge-store-create-portal/upload-command-bar.png "上传酒店评论")
 
-1. 选择“上传”，将该 CSV 文件导入 Azure Blob 存储。  随后会显示新容器：
+1. 选择在第一个步骤中下载的 **HotelReviews-Free.csv** 文件。
 
-    ![创建 blob 容器](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "创建 blob 容器")
+    ![创建 Azure Blob 容器](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "创建 Azure Blob 容器")
+
+1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。  获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+
+1. 仍然是在门户中，切换至 Azure 认知搜索。 [新建服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本练习中使用免费服务。
 
 ## <a name="configure-postman"></a>配置 Postman
 
@@ -72,7 +73,7 @@ Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出�
 
 在“变量”选项卡上，可以添加 Postman 每次在遇到双大括号中的值时要替换成的值。  例如，Postman 会将符号 `{{admin-key}}` 替换成为 `admin-key` 设置的当前值。 Postman 将在 URL、标头和请求正文等内容中进行这种替换。 
 
-若要获取 `admin-key` 的值，请转到 Azure 认知搜索服务并选择“密钥”选项卡。  将 `search-service-name` 和 `storage-account-name` 更改为在[创建服务](#create-services)中选择的值。 使用存储帐户的“访问密钥”选项卡中的值设置 `storage-connection-string`。  其他值可保留默认设置。
+若要获取 `admin-key` 的值，请转到 Azure 认知搜索服务并选择“密钥”选项卡。  将 `search-service-name` 和 `storage-account-name` 更改为在[创建服务](#create-services-and-load-data)中选择的值。 使用存储帐户的“访问密钥”选项卡中的值设置 `storage-connection-string`。  其他值可保留默认设置。
 
 ![Postman 应用变量选项卡](media/knowledge-store-create-rest/postman-variables-window.png "Postman 的变量窗口")
 
@@ -152,7 +153,7 @@ Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出�
 
 ## <a name="create-the-datasource"></a>创建数据源
 
-接下来，将 Azure 认知搜索连接到在[存储数据](#store-the-data)中存储的酒店数据。 若要创建数据源，请向 `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` 发送 POST 请求。 必须根据前面所述设置 `api-key` 和 `Content-Type` 标头。 
+接下来，将 Azure 认知搜索连接到 Blob 存储中存储的酒店数据。 若要创建数据源，请向 `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` 发送 POST 请求。 必须根据前面所述设置 `api-key` 和 `Content-Type` 标头。 
 
 在 Postman 中，转到“创建数据源”请求，然后转到“正文”窗格。   应会看到以下代码：
 

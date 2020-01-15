@@ -1,31 +1,23 @@
 ---
-title: 了解如何使用 Azure 应用配置的快速入门 | Microsoft Docs
+title: 了解如何使用 Azure 应用配置的快速入门
 description: 将 Azure 应用配置与 Java Spring 应用结合使用的快速入门。
-services: azure-app-configuration
-documentationcenter: ''
 author: yidon
-manager: jeffya
-editor: ''
-ms.assetid: ''
-ms.service: azure-app-configuration
-ms.devlang: java
-ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: quickstart
+ms.date: 12/17/2019
+ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184940"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495202"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
 在本快速入门中，会将 Azure 应用程序配置合并到 Java Spring 应用程序中，以集中存储和管理与代码分离的应用程序设置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 受支持的 [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk)，版本为 8。
@@ -121,7 +113,7 @@ ms.locfileid: "74184940"
 
 6. 在应用的资源目录下创建名为 `bootstrap.properties` 的新文件，并将以下行添加到该文件中。 使用应用程序配置存储区的相应属性替换示例值。
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
@@ -129,13 +121,13 @@ ms.locfileid: "74184940"
 
 1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序，例如：
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
 2. 应用程序运行以后，请使用 curl 测试该应用程序，例如  ：
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
     可看到在应用程序配置存储区中输入的消息。

@@ -1,26 +1,17 @@
 ---
-title: 教程 - 将应用部署到 Azure Service Fabric 网格 | Microsoft Docs
+title: 教程 - 将应用部署到 Azure Service Fabric 网格
 description: 本教程介绍如何使用模板将应用程序部署到 Service Fabric 网格。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306954"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494937"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -43,7 +34,7 @@ ms.locfileid: "66306954"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -264,7 +255,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -347,12 +338,12 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 
 |参数|值|
 |---|---|
-|位置|要将应用程序部署到的区域。  例如，“eastus”。|
+|location|要将应用程序部署到的区域。  例如，“eastus”。|
 |registryPassword|之前在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的密码。 模板中的此参数是安全字符串，不会显示在部署状态或 `az mesh service show` 命令中。|
 |registryUserName|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的用户名。|
 |registryServer|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的注册表服务器名称。|
-|frontEndImage|前端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`。|
-|serviceImage|后端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`。|
+|frontEndImage|前端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 。|
+|serviceImage|后端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 。|
 
 若要部署应用程序，请运行以下内容：
 
@@ -384,7 +375,7 @@ az mesh deployment create --resource-group myResourceGroup --template-file c:\te
 
 ## <a name="open-the-application"></a>打开应用程序
 
-在应用程序成功部署后，获取服务终结点的公用 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
+在应用程序成功部署后，获取服务终结点的公共 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
 
 ```azurecli
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway

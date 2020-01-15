@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中部署具有持续集成功能和 Azure Pipelines 的 Service Fabric 应用 | Microsoft Docs
+title: 使用 CI 和 Azure Pipelines 部署应用
 description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838957"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614133"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -42,7 +31,7 @@ ms.locfileid: "73838957"
 > * 使用 Azure Pipelines 配置 CI/CD
 > * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -182,7 +171,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理

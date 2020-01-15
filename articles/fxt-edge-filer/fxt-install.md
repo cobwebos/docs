@@ -1,18 +1,17 @@
 ---
-title: 有关安装 Azure FXT Edge Filer 物理设备的教程 | Microsoft Docs
+title: 教程：安装 Azure FXT Edge Filer 物理设备
 description: 如何为 Microsoft Azure FXT Edge Filer 混合存储缓存的物理设备组件拆除包装、将其装入机架和为其布线连接
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256050"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551023"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>教程：安装 Azure FXT Edge Filer 
 

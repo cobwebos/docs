@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ca4a36f824c2287e49a202ada2254d4f8a94c562
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3cbf0fa4a32145add0a5475f22ea0d936584c9bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465190"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity iOS 应用
 
-本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 Unity iOS 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity 生成的 ARKit iOS 应用，该应用可以保存和重新调用空间定位点。
+本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 Unity iOS 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity生成的 ARKit iOS 应用，该应用可以保存和重新调用空间定位点。
 
 将了解如何执行以下操作：
 
@@ -30,12 +30,12 @@ ms.locfileid: "74277028"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，请确保具备以下项：
 
 - 配备最新版 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>、<a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a>，且安装了 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
-- 通过 HomeBrew 安装的 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
+- 通过 HomeBrew 安装的 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后，运行 `brew install git` 和 `brew install git-lfs`。
 - 支持开发人员的 <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 兼容</a> iOS 设备。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "74277028"
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-通过选择“文件” -> “保存”以保存场景   。
+选择“文件” -> “保存”，从而保存场景   。
 
 ## <a name="export-the-xcode-project"></a>导出 XCode 项目
 

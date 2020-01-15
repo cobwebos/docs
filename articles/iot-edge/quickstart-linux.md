@@ -4,21 +4,21 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6163a7f9b7c3aa1b37b263433c4dea7f0c3bcf5e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2a5a5bc91e4d83975d05d63dbab4b621734a0ac5
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457662"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494708"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
-在本快速入门中通过将容器化代码部署到虚拟 IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建安装了所有必备组件的测试计算机，并在完成后将其删除。 
+在本快速入门中通过将容器化代码部署到虚拟 IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建安装了所有必备组件的测试计算机，并在完成后将其删除。
 
 此快速入门介绍如何：
 
@@ -43,7 +43,7 @@ ms.locfileid: "74457662"
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 云资源：
 
@@ -64,7 +64,7 @@ IoT Edge 设备：
 
    可能需要几分钟才能创建并启动新的虚拟机。
 
-   创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后将使用此公用 IP 地址连接到虚拟机。
+   创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后将使用此公共 IP 地址连接到虚拟机。
 
 * 如果希望在自己的设备上运行 Azure IoT Edge 运行时，请遵循[在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明。
 
@@ -76,10 +76,10 @@ IoT Edge 设备：
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。
 
-以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心   。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
+以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心   。 将 `{hub_name}` 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 如果出现一条错误，指示 IoT 中心名称不可用，则表明他人已使用具有该名称的中心。 请尝试一个新名称。
@@ -124,7 +124,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>在 IoT Edge 设备上设置连接字符串
 
-如果使用的是先决条件中所述的 Azure IoT Edge on Ubuntu 虚拟机，则表示设备已安装 IoT Edge 运行时。 只需使用上一节中检索的设备连接字符串来配置设备即可。 可以在不连接虚拟机的情况下进行远程配置。 运行以下命令，将 {device_connection_string} 替换为自己的字符串  。
+如果使用的是先决条件中所述的 Azure IoT Edge on Ubuntu 虚拟机，则表示设备已安装 IoT Edge 运行时。 只需使用上一节中检索的设备连接字符串来配置设备即可。 可以在不连接虚拟机的情况下进行远程配置。 运行以下命令，将 `{device_connection_string}` 替换为自己的字符串。
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
@@ -134,7 +134,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 ### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
 
-此快速入门中的其余命令都在 Azure IoT Edge 上完成，以便查看设备发生的情况。 如果使用的是虚拟机，请立即使用创建命令输出的公共 IP 地址连接到该虚拟机。 也可在 Azure 门户中虚拟机的概述页面上找到公共 IP 地址。 使用以下命令连接到虚拟机。 如果所用用户名与先决条件中建议的用户名不同，请替换 {azureuser}  。 将 **{publicIpAddress}** 替换为你的计算机的地址。
+此快速入门中的其余命令都在 Azure IoT Edge 上完成，以便查看设备发生的情况。 如果使用的是虚拟机，请立即使用创建命令输出的公共 IP 地址连接到该虚拟机。 也可在 Azure 门户中虚拟机的概述页面上找到公共 IP 地址。 使用以下命令连接到虚拟机。 如果所用用户名与先决条件中建议的用户名不同，请替换 `{azureuser}`。 将 `{publicIpAddress}` 替换为你的计算机地址。
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}
@@ -143,7 +143,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 验证是否已在 IoT Edge 设备上成功安装并配置运行时。
 
 >[!TIP]
->需要提升权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。
+>需要提升权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 `sudo`。
 
 1. 查看 IoT Edge 安全守护程序是否正作为系统服务运行。
 
@@ -217,10 +217,9 @@ az group delete --name IoTEdgeResources
 
 ## <a name="next-steps"></a>后续步骤
 
-
 在本快速入门中，你创建了一个 IoT Edge 设备并使用 Azure IoT Edge 云接口将代码部署到该设备上。 现在，你有了一个可以生成其环境的原始数据的测试设备。
 
-下一步是设置本地开发环境，使你可以开始创建运行业务逻辑的 IoT Edge 模块。 
+下一步是设置本地开发环境，使你可以开始创建运行业务逻辑的 IoT Edge 模块。
 
 > [!div class="nextstepaction"]
 > [开始为 Linux 设备开发 IoT Edge 模块](tutorial-develop-for-linux.md)

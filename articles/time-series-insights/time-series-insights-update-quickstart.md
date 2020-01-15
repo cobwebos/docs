@@ -1,6 +1,6 @@
 ---
 title: 快速入门：浏览预览版演示环境 - Azure 时序见解 | Microsoft Docs
-description: 通过示例快速入门了解 Azure 时序见解预览版演示环境。
+description: 浏览 Azure 时序见解预览版演示环境的主要功能。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014758"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497450"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>快速入门：浏览 Azure 时序见解预览版演示环境
 
@@ -43,33 +43,33 @@ ms.locfileid: "74014758"
    1. 将视图范围更改为“1/1/17 20:00:00.00 to 3/10/17 20:00:00.00 (UTC)”  。
    1. 若要选择传感器，请选择“Contoso 发电厂 1” > “W7” > “发电机系统” > “GeneratorSpeed”。     然后，查看显示的值。
 
-      [![Contoso 发电厂 1 中的 W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![Contoso 发电厂 1 中的 W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. 最近，Contoso 公司发现风力涡轮机 W7 起火  。 起火原因的观点各不相同。 在时序见解中，我们可以看到火警传感器在起火期间激活。
 
    1. 将视图范围更改为“3/9/17 20:00:00.00 to 3/10/17 20:00:00.00 (UTC)”  。
    1. 选择“安全系统” > “FireAlert”。  
 
-      [![Contoso 公司发现风力涡轮机 W7 起火](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![Contoso 公司发现风力涡轮机 W7 起火](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. 检查在起火前后还发生了什么事件。 油压和活动警告数在起火之前的那一刻达到高峰。
 
    1. 添加“螺距系统” > “HydraulicOilPressure”。  
    1. 选择和“螺距系统” > “ActiveWarning”。  
 
-      [![检查同一时间的其他事件](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![检查同一时间的其他事件](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. 油压和活动警告传感器在起火之前的那一刻达到高峰。 展开显示的时序，以查看导致起火的其他很明显的迹象。 这两个传感器都不断地波动了一段时间， 这表示一直存在令人担忧的模式。
 
     * 将视图范围更改为“2/24/17 20:00:00.00 to 3/10/17 20:00:00.00 (UTC)”  。
 
-      [![油压和活动警告传感器也达到了高峰](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![油压和活动警告传感器也达到了高峰](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. 检查两年的历史数据后发现，出现这种传感器波动情况时也曾经发生过一次起火事件。
 
     * 将视图范围更改为“1/1/16 至 12/31/17”（所有数据）。 
 
-      [![查看历史模式](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![查看历史模式](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 使用时序见解和传感器遥测数据，我们发现历史数据中隐藏着长期的趋势。 使用这些新的见解，我们可以：
 
@@ -84,7 +84,7 @@ ms.locfileid: "74014758"
     1. 将视图范围更改为“6/1/17 20:00:00.00 to 7/1/17 20:00:00.00 (UTC)”  。
     1. 选择“Contoso 发电厂 1” > “W6” > “安全系统” > “VoltageActuatorSwitchWarning”。    
 
-       [![更改视图范围并选择 W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![更改视图范围并选择 W6](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. 警告指示发电机的电压出现问题。 在当前时间间隔内，发电机的总体功率输出在正常参数范围内。 增大间隔后，我们发现了另一种模式。 即存在明显的衰减。
 
@@ -92,20 +92,20 @@ ms.locfileid: "74014758"
     1. 选择“发电机系统” > “ActivePower”。  
     1. 将时间间隔更改为“3 天”。 
 
-       [![将时间间隔更改为 3天](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![将时间间隔更改为 3天](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. 扩大时间范围后，我们可以确定问题是已停止还是在持续。
 
     * 将时间跨度扩大为 60 天。
 
-      [![将时间跨度扩大为 60 天](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![将时间跨度扩大为 60 天](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. 可以添加其他传感器数据点来提供更好的上下文。 查看的传感器越多，对问题的认识就更全面。 让我们放一个标记，以便查看实际值。 
 
     1. 选择“发电机系统”，然后选择三个传感器：  **GridVoltagePhase1**、**GridVoltagePhase2** 和 **GridVoltagePhase3**。
     1. 在可见区域的最后一个数据点放一个标记。
 
-       [![放置标记](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![放置标记](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     两个电压传感器的工作状态相当，且都处在正常参数范围内。 似乎 **GridVoltagePhase3** 传感器是问题所在。
 
@@ -113,7 +113,7 @@ ms.locfileid: "74014758"
 
     * 更改显示内容，以将所有“发电机系统”传感器按同一图表比例叠加显示。 
 
-      [![更改显示内容以包含所有信息](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![更改显示内容以包含所有信息](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>清理资源
 

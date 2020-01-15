@@ -1,20 +1,22 @@
 ---
-title: 将本地 Jupyter 笔记本迁移到 Azure Notebooks
-description: 将 Jupyter 笔记本从本地计算机或 Web URL 快速传输到 Azure Notebooks，然后将其共享以进行协作。
+title: 将本地 Jupyter 笔记本迁移到 Azure Notebooks 预览版
+description: 将 Jupyter 笔记本从本地计算机或 Web URL 快速传输到 Azure Notebooks 预览版，然后将其共享以进行协作。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 3b7d5aab05923fb4356e0d45aaf21a77076a870a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277467"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647044"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>快速入门：迁移本地 Jupyter 笔记本
+# <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>快速入门：将本地 Jupyter 笔记本迁移到 Azure Notebooks 预览版
 
 只有你才能访问在自己的计算机本地创建的 Jupyter 笔记本。 可以通过各种方式共享你的文件，但收件人在本地有他们自己的笔记本副本，你很难将他们可能做出的任何更改合并到一起。 还可以将笔记本存储在共享的联机存储库（如 GitHub）中，但这样做仍然需要每个协作者都有其自己的本地 Jupyter 安装，并且具有与你相同的配置。
 
 通过将本地或基于存储库的笔记本迁移到 Azure Notebooks，可以将它们存储在云中，可以从中立即与协作者们共享。 这些协作者只需要一个浏览器就可以查看和运行笔记本，如果他们[登录](quickstart-sign-in-azure-notebooks.md) Azure Notebooks，也可以进行更改。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 此快速入门演示了从本地计算机或其他可访问的文件 URL 迁移笔记本的过程。 若要从 GitHub 存储库迁移笔记本，请参阅[快速入门：克隆笔记本](quickstart-clone-jupyter-notebook.md)。
 
@@ -28,7 +30,7 @@ ms.locfileid: "74277467"
 
 1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +    ：
 
-    ![“我的项目”页上的“新项目”命令](media/quickstarts/new-project-command.png)
+    ![“我的项目”页面上的“新建项目”命令](media/quickstarts/new-project-command.png)
 
 1. 在出现的“创建新项目”  弹出窗口中，在“项目名称”  和“项目 ID”  字段中输入迁移笔记本的适当值，清除“公共项目”  和“创建 README.md”  的选项，然后选择“创建”  。
 
@@ -52,7 +54,7 @@ ms.locfileid: "74277467"
 
 1. 若要共享上传的笔记本链接，右键单击该项目中的文件并选择“复制链接”  （键盘快捷方式：y），然后将该链接粘贴到相应的消息中。 或者，可以使用项目页上的“共享”  控件来共享整个项目。
 
-1. 若要编辑笔记本以外的文件，右键单击该项目中的文件并选择“编辑文件”  （键盘快捷方式：i）。 默认操作“运行”  （键盘快捷方式：r）仅显示文件内容且不允许编辑。
+1. 若要编辑笔记本以外的文件，请右键单击该项目中的文件并选择“编辑文件”  （键盘快捷方式：i）。 默认操作“运行”  （键盘快捷方式：r）仅显示文件内容且不允许编辑。
 
 ## <a name="next-steps"></a>后续步骤
 

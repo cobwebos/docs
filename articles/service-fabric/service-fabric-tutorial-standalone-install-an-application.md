@@ -1,26 +1,17 @@
 ---
-title: 教程：在独立 Service Fabric 群集上安装应用程序 - Azure Service Fabric | Microsoft Docs
+title: 在独立群集上安装应用
 description: 本教程介绍如何将应用程序安装到独立 Service Fabric 群集中。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384992"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613952"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教程：在 Service Fabric 独立群集上部署应用程序
 
@@ -34,7 +25,7 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
 > * 下载示例应用
 > * 部署到群集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 

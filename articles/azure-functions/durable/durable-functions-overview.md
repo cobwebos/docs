@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706118"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561620"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -36,7 +36,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [监视](#monitoring)
+* [Monitoring](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
@@ -48,7 +48,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 
 可按以下示例所示使用 Durable Functions 来实现函数链模式。
 
-在此示例中，值 `F1`、`F2`、`F3` 和 `F4` 是函数应用中其他函数的名称。 可以使用常规命令性编码构造实现控制流。 代码从上到下执行。 代码可能涉及现有语言控制流语义，如条件语句和循环语句。 可以在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
+在此示例中，值 `F1`、`F2``F3` 和 `F4` 是同一函数应用中其他函数的名称。 可以使用常规命令性编码构造实现控制流。 代码从上到下执行。 代码可能涉及现有语言控制流语义，如条件语句和循环语句。 可以在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ module.exports = df.orchestrator(function*(context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-也可以通过另一个函数使用持久业务流程客户端引发事件：
+也可以在同一函数应用中，使用另一个函数的持久业务流程客户端引发事件：
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

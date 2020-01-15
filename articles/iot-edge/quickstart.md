@@ -4,21 +4,21 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 11/06/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6d84c2eed6e68987af3ce932785068191405b942
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452563"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552366"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
-在本快速入门中通过将容器化代码部署到虚拟 IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建测试计算机，安装必备组件，并在完成后将其删除。 
+在本快速入门中通过将容器化代码部署到虚拟 IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建测试计算机，安装必备组件，并在完成后将其删除。
 
 此快速入门介绍如何：
 
@@ -35,7 +35,7 @@ ms.locfileid: "74452563"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-请使用 Azure CLI 完成本快速入门中的多个步骤。Azure IoT 有一个可以启用其他功能的扩展。
+你将使用 Azure CLI 完成本快速入门中的许多步骤。 Azure IoT 具有启用附加功能的扩展。
 
 将 Azure IoT 扩展添加到 Cloud Shell 实例。
 
@@ -43,19 +43,19 @@ ms.locfileid: "74452563"
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 云资源：
 
 * 一个资源组，用于管理在本快速入门中使用的所有资源。
 
    ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus2
+   az group create --name IoTEdgeResources --location westus2 
    ```
 
 IoT Edge 设备：
 
-* 充当 IoT Edge 设备的 Windows 虚拟机。 可使用以下命令创建此虚拟机，并将 {password} 替换为安全密码  ：
+* 充当 IoT Edge 设备的 Windows 虚拟机。 你可通过使用以下命令并将 `{password}` 替换为安全密码来创建此虚拟机：
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -68,7 +68,6 @@ IoT Edge 设备：
   1. 在“RDP”选项卡上，选择“下载 RDP 文件”   。
 
   使用远程桌面连接打开此文件，以通过用 `az vm create` 指定的管理员姓名和密码连接到 Windows 虚拟机。
-
 
 > [!NOTE]
 > 为简单起见，本快速入门使用 Windows 桌面虚拟机。 要了解哪些 Windows 操作系统针对生产环境公开发布，请参阅 [Azure IoT Edge 支持的系统](support.md)。
@@ -83,10 +82,10 @@ IoT Edge 设备：
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。
 
-以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心   。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
+以下代码将在资源组 `IoTEdgeResources` 中创建免费的 F1 中心  。 将 `{hub_name}` 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 如果出现一条错误，指示 IoT 中心名称不可用，则表明他人已使用具有该名称的中心。 请尝试一个新名称。
@@ -155,7 +154,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. 计算机可能会自动重新启动。 如果 Deploy-IoTEdge 命令提示你重启，请重启。 
+4. 计算机可能会自动重新启动。 如果 Deploy-IoTEdge 命令提示你重启，请重启。
 
 5. 再次以管理员身份运行 PowerShell。
 
@@ -186,9 +185,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 3. 查看在 IoT Edge 设备上运行的所有模块。 由于此服务是第一次运行，因此只会看到 **edgeAgent** 模块在运行。 edgeAgent 模块会默认运行，用于安装并启动部署到设备的任何其他模块。
 
-   ```powershell
-   iotedge list
-   ```
+    ```powershell
+    iotedge list
+    ```
 
    ![查看设备上的一个模块](./media/quickstart/iotedge-list-1.png)
 

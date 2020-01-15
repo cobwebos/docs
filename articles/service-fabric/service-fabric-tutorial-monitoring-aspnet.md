@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务 |Microsoft Docs
+title: 监视和诊断 ASP.NET Core 服务
 description: 在本教程中，你会学习如何为 Azure Service Fabric ASP.NET Core 应用程序设置监视和诊断。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1f18aef12978b3df1ba1fd654ea4a0e9548a4b46
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228080"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614037"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -41,7 +32,7 @@ ms.locfileid: "68228080"
 > * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * 设置应用程序的监视和诊断
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -266,7 +257,7 @@ public async Task<IActionResult> Delete(string name)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 为应用程序配置 Application Insights
 > * 收集响应遥测数据，跟踪服务之间基于 HTTP 的通信

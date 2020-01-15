@@ -1,18 +1,20 @@
 ---
-title: 创建具有自定义环境的 Azure Notebooks 项目
-description: 在配置了一组特定的已安装包和启动脚本的 Azure Notebooks 中创建新项目。
+title: 创建具有自定义环境的 Azure Notebooks 预览版项目
+description: 在配置了一组特定的已安装包和启动脚本的 Azure Notebooks 预览版中创建新项目。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647061"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>快速入门：在自定义环境下创建项目
+# <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建具有自定义环境的项目
 
 Azure Notebooks 中的项目由一系列文件（例如笔记本、数据文件、文档、图像等）以及一个可以使用特定设置命令配置的环境组成。 通过使用项目定义环境，将项目克隆到自己的 Azure Notebooks 帐户中的任何人都可以获得重新创建必要环境所需的所有信息。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-project"></a>创建一个项目
 
@@ -28,10 +30,10 @@ Azure Notebooks 中的项目由一系列文件（例如笔记本、数据文件�
 
 1. 在出现的“创建新项目”弹出窗口中，输入或设置以下详细信息，然后选择“创建”   ：
 
-    - **项目名称**：具有自定义环境的项目
+    - 项目名称  ：具有自定义环境的项目
     - **项目 ID**：project-custom-environment
-    - **公共项目**：（已清除）
-    - **创建 README.md**：（已清除）
+    - 公共项目  ：（已清除）
+    - 创建 README.md  ：（已清除）
 
 1. 几分钟后，Azure Notebooks 导航到新项目。 通过选择“+ 新建”下拉列表（可能仅显示为 **+** ）并选择“笔记本”，向该项目添加笔记本   。
 

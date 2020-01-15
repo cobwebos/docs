@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定的 Android 应用程序发送通知 | Microsoft Docs
+title: 使用 Azure 通知中心向特定的 Android 应用程序发送通知
 description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385891"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531133"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定的 Android 应用程序用户推送通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "72385891"
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南文章[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备](notification-hubs-android-push-notification-google-gcm-get-started.md)中创建的通知中心。
+本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南文章[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备](notification-hubs-android-push-notification-google-gcm-get-started.md)中创建的 Android 应用程序。
 
 在本教程中，我们将执行以下步骤：
 
@@ -40,7 +40,7 @@ ms.locfileid: "72385891"
 > * 更新 Android 应用程序。
 > * 测试应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始本教程之前完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备](notification-hubs-android-push-notification-google-gcm-get-started.md)。
 

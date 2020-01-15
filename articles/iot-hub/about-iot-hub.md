@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950466"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647401"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -111,7 +111,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 
 每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
 
-* [Azure 订阅服务限制](../azure-subscription-service-limits.md)
+* [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)（IoT 中心限制和你）
 
@@ -120,3 +120,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 若要尝试端对端的 IoT 解决方案，请参阅 IoT 中心快速入门：
 
 * [快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)
+
+若要详细了解如何通过 Azure IoT 构建和部署 IoT 解决方案，请访问：
+
+* [基础知识：Azure IoT 技术和解决方案](../iot-fundamentals/iot-services-and-technologies.md)。

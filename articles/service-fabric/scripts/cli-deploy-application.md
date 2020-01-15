@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 04/16/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 7417eaecddad60c940bf01535b8fb24b8cbef80c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ff40dc62b4dcd622156a78518bbdcb6b9b430644
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034771"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526594"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
+# <a name="deploy-an-application-to-a-service-fabric-cluster-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 将应用程序部署到 Service Fabric 群集
 
 此示例脚本将应用程序包复制到群集映像存储，在群集中注册应用程序类型，并从应用程序类型创建应用程序实例。 此时还将创建任何默认服务。
 

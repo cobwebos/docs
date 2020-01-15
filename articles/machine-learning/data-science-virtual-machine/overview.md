@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802195"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611962"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine？
 
 Data Science Virtual Machine (DSVM) 是专为开展数据科学构建的 Azure 云平台上的自定义 VM 映像。 它预装并预配了许多热门数据科学工具，可为高级分析快速生成智能应用程序。 
 
 DSVM 在以下环境中可用：
++ **Windows Server 2019（预览版）**
++ **Ubuntu 18.04 LTS（预览版）**
 + Windows Server 2016
 + Ubuntu 16.04 LTS 和 CentOS 7.4
+
 
 > [!NOTE]
 > 用于深度学习的所有 VM 工具都已装入到 Data Science Virtual Machine 中。 
@@ -63,7 +66,7 @@ Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU
 
 还可以将 Ubuntu、CentOS 或 Windows 2016 版的 DSVM 部署到非基于 GPU 的 Azure 虚拟机。 在这种情况下，所有深度学习框架都将回退到 CPU 模式。
  
-[详细了解可用的深度学习和 AI 框架](dsvm-deep-learning-ai-frameworks.md)。
+[详细了解可用的深度学习和 AI 框架](dsvm-tools-deep-learning-frameworks.md)。
 
 <a name="included"></a>
 
@@ -75,7 +78,7 @@ Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU
 
 通过以下文章，了解详细信息：
 
-+ Windows:
++ Windows：
   + [设置 Windows DSVM](provision-vm.md)
   + [可以在 Windows DSVM 上执行的十项操作](vm-do-ten-things.md)
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168572"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647150"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -36,7 +36,7 @@ ms.locfileid: "74168572"
 
 在“缓存”  页上，必须设置缓存的容量。 此处设置的值确定缓存可以容纳多少数据，以及为客户端请求提供服务的速度。
 
-在公共预览期过后，容量也会影响缓存的成本。
+容量还会影响缓存的成本。
 
 通过设置以下两个值选择容量：
 

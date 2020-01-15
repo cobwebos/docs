@@ -1,26 +1,17 @@
 ---
-title: 教程 - 调试在本地开发群集中运行的 Azure Service Fabric 网格 Web 应用 | Microsoft Docs
+title: 调试本地运行的 Azure Service Fabric 网格 Web 应用
 description: 本教程介绍如何调试本地群集上运行的 Azure Service Fabric 网格应用程序。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805114"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494959"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教程：调试在本地开发群集中运行的 Service Fabric 网格应用程序
 
@@ -42,7 +33,7 @@ ms.locfileid: "56805114"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -62,7 +53,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ## <a name="build-and-debug-on-your-local-cluster"></a>在本地群集上生成和调试
 
-加载项目时，会自动生成一个 Docker 映像并将其部署到本地群集。 此过程可能需要一段时间。 若要在 Visual Studio 的“输出”窗格中监视进度，请将“输出”窗格中的“显示以下来源的输出:”下拉列表值设置为“Service Fabric 工具”。
+加载项目时，会自动生成一个 Docker 映像并将其部署到本地群集。 此过程可能需要一段时间。 若要在 Visual Studio 的“输出”窗格中监视进度，请将“输出”窗格中的“显示以下来源的输出:”下拉列表值设置为“Service Fabric 工具”。   
 
 按 **F5** 在本地编译并运行服务。 在本地运行和调试项目后，Visual Studio 将会：
 
@@ -81,10 +72,10 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 目前存在导致调用 `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` 无法连接到服务的问题。 只要主机 IP 地址发生变化，就会发生这种情况。 若要解决此问题：
 
 1. 从本地群集中删除应用（在 Visual Studio 中**生成** > **清理解决方案**）。
-2. 从 Service Fabric 本地群集管理器中，选择“停止本地群集”，然后选择“启动本地群集”。
+2. 从 Service Fabric 本地群集管理器中，选择“停止本地群集”  ，然后选择“启动本地群集”  。
 3. 重新部署应用（在 Visual Studio 中为 **F5**）。
 
-如果收到“未运行任何 Service Fabric 本地群集”错误，请确保 Service Fabric 本地群集管理器 (LCM) 正在运行，然后右键单击任务栏中的 LCM 图标，并单击“启动本地群集”。 启动本地群集后，返回 Visual Studio 并按 **F5**。
+如果收到“未运行任何 Service Fabric 本地群集”错误，请确保 Service Fabric 本地群集管理器 (LCM) 正在运行，然后右键单击任务栏中的 LCM 图标，并单击“启动本地群集”。   启动本地群集后，返回 Visual Studio 并按 **F5**。
 
 如果启动应用时收到 **404** 错误，可能表示 **service.yaml** 中的环境变量不正确。 请确保根据[创建环境变量](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)中的说明正确设置 `ApiHostPort` 和 `ToDoServiceName`。
 
@@ -93,8 +84,8 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
 在 Visual Studio 中调试 Service Fabric 网格应用程序时，使用的是本地 Service Fabric 开发群集。 若要查看如何从后端服务检索待办事项，请调试到 OnGet() 方法中。
-1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **OnGet** 方法（第 17 行）中设置一个断点。
-2. 在“ToDoService”项目中打开“TodoController.cs”，在 **Get** 方法（第 15 行）中设置一个断点。
+1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **OnGet** 方法（第 17 行）中设置一个断点。    
+2. 在“ToDoService”项目中打开“TodoController.cs”，在 **Get** 方法（第 15 行）中设置一个断点。  
 3. 返回浏览器并刷新页面。 命中 Web 前端 `OnGet()` 方法中的断点。 可以检查 `backendUrl` 变量，以查看 **service.yaml** 文件中定义的环境变量如何合并到用于联系后端服务的 URL 中。
 4. 逐步执行 (F10) `client.GetAsync(backendUrl).GetAwaiter().GetResult())` 调用，直到命中控制器的 `Get()` 断点。 在此方法中，可以查看如何从内存中列表检索待办事项列表。
 5. 完成后，按 **Shift+F5** 停止在 Visual Studio 中调试项目。

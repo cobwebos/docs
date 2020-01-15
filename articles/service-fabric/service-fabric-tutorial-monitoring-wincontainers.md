@@ -1,32 +1,22 @@
 ---
-title: 在 Azure 中监视和诊断 Service Fabric 上的 Windows 容器 |Microsoft Docs
+title: 监视和诊断 Windows 容器
 description: 本教程介绍如何配置 Azure Monitor 日志，以便监视和诊断 Azure Service Fabric 上的 Windows 容器。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933915"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614054"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教程：使用 Azure Monitor 日志监视 Service Fabric 上的 Windows 容器
 
 这是教程的第三部分，将详细介绍如何设置 Azure Monitor 日志，以监视 Service Fabric 上安排的 Windows 容器。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为 Service Fabric 群集配置 Azure Monitor 日志
@@ -35,7 +25,7 @@ ms.locfileid: "72933915"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -227,13 +217,13 @@ ms.locfileid: "72933915"
 
 几分钟后刷新  容器监视解决方案，应开始看到计算机性能数据  出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
 
-*注意：请确保已正确设置时间筛选器，以便于使用这些指标。*
+注意：*请确保已正确设置时间筛选器，以便于使用这些指标。*
 
 ![性能计数器 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为 Service Fabric 群集配置 Azure Monitor 日志

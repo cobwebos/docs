@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109607"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613680"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -35,13 +35,15 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 > * 基于驾驶时间查找并直观显示最近的电动车充电站的路线。
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要完成本教程，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 
 
-若要在 S1 定价层中创建 Azure Maps 帐户订阅，请按照[管理 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明操作。 
+若要在 S1 定价层中创建 Azure Maps 帐户订阅，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 S1 定价层的 Azure Maps 帐户订阅。 
 
-若要获取帐户的主要订阅密钥，请按照[创建帐户及获取密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)中的说明进行操作。
+若要获取帐户的主要订阅密钥，请遵循[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的说明。
+
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 ## <a name="create-an-azure-notebook"></a>创建 Azure Notebook
 
@@ -111,7 +113,7 @@ from IPython.display import Image, display
 若要确定电动车可抵达范围的边界，请运行以下单元中的脚本：
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ display(Image(staticMapImage))
 * [发布路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [获取路线方向](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)。
+有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
 
 若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。

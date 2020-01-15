@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建容器映像 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上创建容器映像
 description: 本教程介绍如何创建多容器 Service Fabric 应用程序的容器映像。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, 容器, 微服务, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465430"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -41,7 +31,7 @@ ms.locfileid: "68385226"
 > * [使用容器生成和运行 Service Fabric 应用程序](service-fabric-tutorial-package-containers.md)
 > * [如何在 Service Fabric 中处理故障转移和缩放](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。
 * 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -102,7 +92,7 @@ az account set --subscription <subscription_id>
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 **az group create** 命令创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组   。
+使用“az group create”命令创建资源组  。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组   。
 
 ```bash
 az group create --name <myResourceGroup> --location westus

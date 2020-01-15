@@ -1,5 +1,5 @@
 ---
-title: Azure 快速入门 - 在 Windows VM 上创建和使用 Azure 文件存储共享 | Microsoft Docs
+title: 在 Windows VM 上创建和使用 Azure 文件共享
 description: 在此快速入门中，在 Azure 门户中设置 Azure 文件存储共享，并将其连接到 Windows 虚拟机。 连接到文件共享，将文件上传到文件共享。 然后拍摄文件共享的快照、修改文件共享中的文件并还原文件共享的前一个快照。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463911"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
 
@@ -22,7 +22,7 @@ ms.locfileid: "74305829"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -85,7 +85,7 @@ ms.locfileid: "74305829"
 
    ![从门户连接到 Azure VM](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. 在“连接到虚拟机”页中保留默认选项，以使用 **IP 地址**通过**端口号** *3389* 进行连接，然后选择“下载 RDP 文件”。  
+1. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口号 3389 进行连接，然后选择“下载 RDP 文件”      。
 1. 打开下载的 RDP 文件，然后在出现提示时选择“连接”  。
 1. 在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 以 *localhost\username* 格式键入用户名，其中，&lt;username&gt; 是为虚拟机创建的 VM 管理员用户名。 输入针对虚拟机创建的密码，然后选择“确定”。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "74305829"
 
    ![“映射网络驱动器”对话框的屏幕截图](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
-1. 选择“完成”。 
+1. 选择“完成”  。
 1. 在“Windows 安全性”对话框中： 
 
    - 从记事本中复制前面带有 AZURE\ 的存储帐户名，并将其作为用户名粘贴到“Windows 安全性”对话框中。  如果已按本快速入门中的建议命名，请复制 *AZURE\qsstorageacct*。

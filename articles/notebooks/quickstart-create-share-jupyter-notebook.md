@@ -1,18 +1,24 @@
 ---
-title: 在 Azure 上创建并共享 Jupyter Notebook
-description: 在 Azure Notebooks 上快速创建并运行 Jupyter Notebook，然后与他人共享该笔记本。
+title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
+description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277503"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647078"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>快速入门：创建和共享笔记本
+# <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+本快速入门介绍如何在 Azure Notebooks 上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+## <a name="create-a-new-project-and-notebook"></a>创建新项目和笔记本
+
+1. 转到 [Azure Notebooks 站点 (https://notebooks.azure.com)](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 
 1. 在公用个人资料页面中，选择页面顶部的“我的项目”  ：
 

@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406587"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563286"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
@@ -28,13 +28,14 @@ ms.locfileid: "74406587"
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>示例 Power BI 模板 - 仅限 Azure 门户
 
-如果[使用 Azure 门户创建了知识存储](knowledge-store-create-portal.md)，则可以使用 [Azure 认知搜索 Power BI 模板示例](https://github.com/Azure-Samples/cognitive-search-templates)来查看和体验 Power BI 可视化效果。 也可以执行“导入数据”向导中的步骤时下载此模板。 
+创建[使用 Azure 门户的知识存储](knowledge-store-create-portal.md)时，可以选择在“导入数据”  向导的第二页下载 [Power BI 模板](https://github.com/Azure-Samples/cognitive-search-templates)。 此模板包含多种适用于基于文本的内容的可视化效果，如 WordCloud 和网络导航器。 
 
-示例模板会自动执行本文余下部分所述的设置步骤。 但是，如果知识存储是使用 REST API 创建的，请跳过该模板，并参考本文的余下部分将知识存储连接到 Power BI。 从[使用 Power BI 进行连接](#connect-with-power-bi)开始。
-
-示例模板包含多个可视化效果，例如 WordCloud 和 Network Navigator。 模板中的某些可视化效果（例如“位置”地图和实体图形查看器）不会显示[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)中创建的示例知识存储的数据。 这是因为，这些可视化效果只使用了“导入数据”向导中提供的一部分 AI 扩充内容。 
+在“添加认知技能”页面单击“获取 Power BI 模板”，从其公共 GitHub 位置检索并下载模板   。 向导会修改模板，以适应数据形状，如在向导中指定的知识存储投影中所捕获的一样。 因此，每次运行该向导时，下载的模板会有所不同（假设数据输入和技能选择不同）。
 
 ![示例 Azure 认知搜索 Power BI 模板](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "示例 Power BI 模板")
+
+> [!NOTE]
+> 尽管该模板是在向导运行到中途时下载的，但必须等到 Azure 表存储中实际创建了知识存储后，才能使用它。
 
 ## <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
@@ -48,7 +49,11 @@ ms.locfileid: "74406587"
 
 1. 如果有提示，请输入存储帐户密钥。
 
-1. 选择“hotelReviewsSsDocument”、“hotelReviewsSsKeyPhrases”和“hotelReviewsSsPages”表。    这些表是酒店评论示例数据的 Azure 表投影，其中包含创建知识存储时选择的 AI 扩充。
+1. 选择包含前面演练创建的酒店审核数据的表。 
+
+   + 对于门户演练，表名为 hotelReviewsSsDocument  、hotelReviewsSsEntities  、hotelReviewsSsKeyPhrases  和 hotelReviewsSsPages  。 
+   
+   + 对于 REST 演练，表名为 hotelReviewsDocument  、hotelReviewsPages  、hotelReviewsKeyPhrases  和 hotelReviewsSentiment  。
 
 1. 单击“加载”。 
 
@@ -57,7 +62,6 @@ ms.locfileid: "74406587"
    ![打开 Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "打开 Power Query")
 
 1. 选择“hotelReviewsSsDocument”，然后删除“PartitionKey”、“RowKey”和“Timestamp”列。     
-
    ![编辑表](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "编辑表")
 
 1. 单击表右上方带有反向箭头的图标，以展开“内容”。  显示列的列表后，选择所有列，并取消选择以“metadata”开头的列。 单击“确定”显示所选列。 
@@ -83,6 +87,8 @@ ms.locfileid: "74406587"
 
 1. 双击每个关系，确保“交叉筛选方向”设置为“双向”。    这样，在应用筛选器时，视觉对象将会刷新。
 
+1. 单击左侧导航窗格上的“报表”磁贴，以通过可视化浏览数据。 对于文本字段，表和卡是有用的可视化效果。 可以从三个表中的每个表中选择字段，以填充表或卡。 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -100,7 +106,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
@@ -114,8 +120,3 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 > [!div class="nextstepaction"]
 > [使用存储资源管理器查看](knowledge-store-view-storage-explorer.md)
-
-若要了解如何使用 REST API 和 Postman 创建知识存储，请参阅以下文章。  
-
-> [!div class="nextstepaction"]
-> [在 REST 中创建知识存储](knowledge-store-howto.md)

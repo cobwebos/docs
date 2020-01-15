@@ -4,12 +4,12 @@ description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533550"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552315"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -21,13 +21,19 @@ ms.locfileid: "74533550"
 
 与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
 
-## <a name="public-ip-connectivity-and-dns-name"></a>公共 IP 连接和 DNS 名称
+## <a name="container-access"></a>容器访问
 
-使用 Azure 容器实例可以通过公共 IP 地址和完全限定的域名 (FQDN) 直接向 Internet 公开容器。 创建容器实例时，可以指定自定义的 DNS 名称标签，以便应用程序可在 *customlabel*.*azureregion*.azurecontainer.io 上访问。
+使用 Azure 容器实例可以通过公共 IP 地址和完全限定的域名 (FQDN) 直接向 Internet 公开容器组。 创建容器实例时，可以指定自定义的 DNS 名称标签，以便应用程序可在 *customlabel*.*azureregion*.azurecontainer.io 上访问。
+
+通过提供交互式 shell，Azure 容器实例还可以在正在运行的容器中执行命令，以帮助进行应用程序开发和故障排除。 访问通过 HTTPS 进行，并使用 TLS 来保护客户端连接。
+
+> [!IMPORTANT]
+> 从 2020 年 1 月 13 日开始，Azure 容器实例将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
 
 ## <a name="hypervisor-level-security"></a>虚拟机监控程序级别的安全性
 
 从历史上看，容器提供了应用程序依赖项隔离和资源调控功能，但不能认为其功能已强大到可以进行恶意的多租户使用。 Azure 容器实例保证容器中的应用程序像在 VM 中一样保持隔离状态。
+
 
 ## <a name="custom-sizes"></a>自定义大小
 
@@ -35,9 +41,9 @@ ms.locfileid: "74533550"
 
 对于计算密集型作业（如机器学习），Azure 容器实例可以安排 Linux 容器使用 NVIDIA Tesla [GPU 资源](container-instances-gpu.md)（预览版）。
 
-## <a name="persistent-storage"></a>持久性存储
+## <a name="persistent-storage"></a>持久存储
 
-为了通过 Azure 容器实例来检索和持久保存状态，我们提供直接[装载 Azure 文件共享](container-instances-mounting-azure-files-volume.md)的功能。
+为了通过 Azure 容器实例来检索和持久保存状态，我们提供由 Azure 存储支持的直接[装载 Azure 文件共享](container-instances-mounting-azure-files-volume.md)功能。
 
 ## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
 

@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中故障转移和缩放 Service Fabric 上的容器应用 | Microsoft Docs
+title: 故障转移和缩放容器应用
 description: 本教程介绍如何在 Azure Service Fabric 容器应用程序中处理故障转移。  还了解如何缩放群集中运行的容器和服务。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, 容器, 微服务, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a13ce98eeebf60a6b61ee9aff01107c61fa94641
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385105"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614088"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
 
@@ -31,7 +21,7 @@ ms.locfileid: "68385105"
 > * 了解 Service Fabric 群集中的容器故障转移
 > * 缩放应用程序中的 Web 前端容器
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [第 2 部分](service-fabric-tutorial-package-containers.md)中的应用程序在活动的 Service Fabric 群集中运行。
 

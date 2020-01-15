@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467144"
 ---
 ## <a name="what-is-table-storage"></a>什么是表存储
 Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 表存储的常见用途包括：
@@ -31,7 +31,7 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
   Azure Cosmos DB 表 API 帐户使用此格式：`http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   可以直接使用此地址和 OData 协议来访问 Azure 表。 有关详细信息，请参阅 [OData.org][OData.org]。
-* **帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md) 。 
+* **帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述][../articles/storage/common/storage-account-overview.md]。
 
     对 Azure Cosmos DB 进行的所有访问都要通过表 API 帐户完成。 有关创建表 API 帐户的详细信息，请参阅[创建表 API 帐户](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)。
 * **Table**：表是实体的集合。 表不对实体强制实施架构，这意味着单个表可以包含具有不同属性集的实体。  

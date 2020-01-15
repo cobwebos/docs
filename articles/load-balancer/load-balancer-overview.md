@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926263"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660200"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 

@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/30/2019
+ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533956"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563441"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
 
@@ -22,9 +22,9 @@ ms.locfileid: "74533956"
 
 知识存储是 Azure 认知搜索的一项功能，它可以保存认知技能管道的输出，以进行后续分析或下游处理。 
 
-管道接受图像和非结构化文本作为原始内容，通过认知服务（例如图像和自然语言处理）应用 AI，并创建扩充内容（新的结构和信息）作为输出。 管道创建的物理项目之一是[知识存储](knowledge-store-concept-intro.md)，可通过工具访问该知识存储以分析和浏览内容。
+管道接受非结构化文本和图像作为原始内容，通过认知服务（例如 OCR、图像分析和自然语言处理）应用 AI，并提取信息和输出新结构和信息。 管道创建的物理项目之一是[知识存储](knowledge-store-concept-intro.md)，可通过工具访问该知识存储以分析和浏览内容。
 
-在本快速入门中，你将合并 Azure 云中的服务和数据以创建知识存储。 一切准备就绪后，可在门户中运行“导入数据”向导，以将这些数据提取到一起。  最终结果是可以在门户（[存储资源管理器](knowledge-store-view-storage-explorer.md)）中查看的原始内容和 AI 生成的内容。
+在本快速入门中，你将合并 Azure 云中的服务和数据以创建知识存储。 一切准备就绪后，可在门户中运行“导入数据”向导，以将这些数据提取到一起。  最终结果是可以在门户（[存储资源管理器](knowledge-store-view-storage-explorer.md)）中查看的原始文本内容和 AI 生成的内容。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,15 +38,11 @@ ms.locfileid: "74533956"
 
 1. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，或在当前订阅下[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 你将使用 Azure 存储来保存要导入的原始内容，并使用知识存储（最终结果）。
 
-   此帐户有两项要求：
+   选择“StorageV2 (常规用途 V2)”帐户类型  。
 
-   + 选择 Azure 认知搜索所在的同一区域。 
-   
-   + 选择 StorageV2（常规用途 V2）帐户类型。 
+1. 打开 Blob 服务页并创建一个名为 hotel-reviews 的容器  。
 
-1. 打开 Blob 服务页并创建一个容器。  
-
-1. 单击“上传” 。 
+1. 单击“上载” 。 
 
     ![上传数据](media/knowledge-store-create-portal/upload-command-bar.png "上传酒店评论")
 
@@ -54,9 +50,9 @@ ms.locfileid: "74533956"
 
     ![创建 Azure Blob 容器](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "创建 Azure Blob 容器")
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
+1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。  获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. [创建 Azure 认知搜索服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
+1. 仍然在门户中，切换到 Azure 认知搜索。 [新建服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 现在可以在“导入数据”向导中转到下一步。
 
@@ -71,17 +67,18 @@ ms.locfileid: "74533956"
 1. 在“连接到数据”中，选择“Azure Blob 存储”，再选择创建的帐户和容器   。 
 1. 对于“名称”，请输入 `hotel-reviews-ds`。 
 1. 对于“分析模式”，请选择“分隔文本”，然后选中“第一行包含标头”复选框。    确保“分隔符”是逗号 (,)。 
-1. 输入在上一步骤中保存的存储服务**连接字符串**。
-1. 对于“容器名称”，请输入 `hotel-reviews`。 
-1. 单击“下一步:  添加 AI 扩充(可选)”。
+1. 在“连接字符串”中，粘贴从 Azure 存储的“访问密钥”页面复制的连接字符串   。
+1. 在“容器”中，输入保存数据的 blob 容器的名称  。
 
-      ![创建数据源对象](media/knowledge-store-create-portal/hotel-reviews-ds.png "创建数据源对象")
+    页面应类似于以下屏幕截图。
+
+    ![创建数据源对象](media/knowledge-store-create-portal/hotel-reviews-ds.png "创建数据源对象")
 
 1. 继续转到下一页。
 
 ### <a name="step-2-add-cognitive-skills"></a>步骤 2：添加认知技能
 
-在此向导步骤中，你将创建一个包含认知技能扩充的技能集。 本示例中使用的技能将提取关键短语并检测语言和情绪。 在后续步骤中，这些扩充内容将以 Azure 表的形式“投影”到知识存储。
+在此向导步骤中，你将创建一个包含认知技能扩充的技能集。 源数据由多种语言的客户评论构成。 与此数据集相关的技能包括关键短语提取、情绪检测和文本翻译。 在后续步骤中，这些扩充内容将以 Azure 表的形式“投影”到知识存储。
 
 1. 展开“附加认知服务”。  默认已选择“免费(受限扩充)”。  之所以可以使用此资源，是因为 HotelReviews-Free.csv 中的记录数为 19 个，并且此免费资源每天最多允许 20 个事务。
 1. 展开“添加认知技能”。 
@@ -90,7 +87,7 @@ ms.locfileid: "74533956"
 1. 对于“扩充粒度级别”，请选择“页面(5000 个字符区块)”。  
 1. 选择以下认知技能：
     + **提取关键短语**
-    + **检测语言**
+    + **翻译文本**
     + **检测情绪**
 
       ![创建技能集](media/knowledge-store-create-portal/hotel-reviews-ss.png "创建技能集")
@@ -104,6 +101,8 @@ ms.locfileid: "74533956"
 
     ![配置知识存储](media/knowledge-store-create-portal/hotel-reviews-ks.png "配置知识存储")
 
+1. 或者，下载 Power BI 模板。 从向导中访问模板时，会更改本地 .pbit 文件以反映数据的形状。
+
 1. 继续转到下一页。
 
 ### <a name="step-3-configure-the-index"></a>步骤 3：配置索引
@@ -111,10 +110,7 @@ ms.locfileid: "74533956"
 在此向导步骤中，你将为可选的全文搜索查询配置索引。 向导将对数据源进行采样，以推断字段和数据类型。 你只需为所需的行为选择属性。 例如，“可检索”属性将允许搜索服务返回一个字段值，而“可搜索”属性将对字段启用全文搜索。  
 
 1. 对于“索引名称”，请输入 `hotel-reviews-idx`。 
-1. 对于属性，请做出以下选择：
-    + 为所有字段选择“可检索”。 
-    + 为以下字段选择“可筛选”和“可分面”：   “情绪”、“语言”和“关键短语”   
-    + 为以下字段选择“可搜索”：“城市”、“名称”、“reviews_text”、“语言”和“关键短语”      
+1. 对于属性，请接受默认选项：“可检索”和“可搜索”（对于管道正在创建的新字段）   。
 
     索引应与下图类似： 由于该列表很长，图像中未显示所有字段。
 

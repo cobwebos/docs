@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure 门户在 Azure 容器注册表中�
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c5e6de0fdb7d0e46fa9be28483fd894289baf1a3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455220"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611230"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用容器注册表
 
@@ -43,7 +43,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到 ACR 实例。 在操作系统中打开命令外壳，然后在 Azure CLI 中使用 [az acr login][az-acr-login] 命令。
+在推送和拉取容器映像之前，必须登录到 ACR 实例。 在操作系统中打开命令外壳，然后在 Azure CLI 中使用 [az acr login][az-acr-login] 命令。（仅指定容器名称。 请不要包含 'azurecr.io'）
 
 ```azurecli
 az acr login --name <acrName>

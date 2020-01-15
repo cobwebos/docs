@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467102"
 ---
 | |
 |--|
-|如果屏幕上显示的内容与本文所述不符，则意味着管理员尚未启用新的“我的应用”（预览版）体验。  若要使用旧体验，必须根据[“我的应用”门户](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview)部分的说明和信息操作。|
-| |
+|如果管理员已为组织开启“My Apps”预览版新体验，你现在可以看到“My Apps”页面顶部有一个横幅显示“已推出更新后的 My Apps体验”    。 如果选择“试用”，会立即跳转到新的 URL (myapplications.microsoft.com) 和已更新的体验  。 此后，每次返回到“My Apps”页面时，你将自动进入新体验  。<br><br>要停止使用新体验，可以在“My Apps”新页面顶部的“退出新体验”横幅中选择“是”    。 你会立即返回到旧 URL (myapps.microsoft.com) 和旧体验。 此后，每次返回到“My Apps”页面时，你将自动进入旧体验  。|
+|

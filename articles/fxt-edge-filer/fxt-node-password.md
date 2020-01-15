@@ -1,17 +1,17 @@
 ---
-title: 初始化硬件 - Microsoft Azure FXT Edge Filer
+title: 教程：初始化硬件 - Azure FXT Edge Filer
 description: 如何在 Azure FXT Edge Filer 节点上设置初始密码
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256013"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550885"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>教程：设置硬件密码
 
@@ -23,7 +23,7 @@ ms.locfileid: "72256013"
 
 本教程介绍如何连接到硬件节点和设置密码。 
 
-在本教程中，将了解如何： 
+在本教程中，您将学习如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 将键盘和监视器连接到节点，然后打开节点电源
@@ -34,7 +34,7 @@ ms.locfileid: "72256013"
 
 完成本教程大约需要 15 分钟。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始本教程之前，请完成以下步骤： 
 

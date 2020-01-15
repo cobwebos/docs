@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0085db3f38fb8af014434f36893182e1682b05a7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972108"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561841"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -33,7 +32,7 @@ ms.locfileid: "74972108"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,7 +44,8 @@ ms.locfileid: "74972108"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Slack 支持 SP 发起的 SSO 
-* Slack 支持[**自动**用户预配和取消预配](slack-provisioning-tutorial.md)（推荐）
+* Slack 支持实时用户预配 
+* Slack 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial) 
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -68,10 +68,10 @@ ms.locfileid: "74972108"
 若要配置和测试 Slack 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Slack SSO](#configure-slack-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Slack 测试用户](#create-slack-test-user)** - 在 Slack 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    * **[创建 Slack 测试用户](#create-slack-test-user)** - 在 Slack 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -86,12 +86,23 @@ ms.locfileid: "74972108"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your Slack company>.slack.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com` 
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://slack.com` 
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+
+1. Slack 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/edit-attribute.png)
+
+1. 除了上述属性，Slack 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。 如果用户没有电子邮件地址，请将 emailaddress 映射到 user.userprincipalname   。
+
+    | 名称 | 源属性 |
+    | -----|---------|
+    | emailaddress | user.userprincipalname |
+    | | |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -135,7 +146,7 @@ ms.locfileid: "74972108"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Slack 公司站点。
 
-2. 导航到左侧的 Slack 公司名称，在我们的示例中已设置为 **Microsoft Azure AD**，然后转到**团队设置**，如以下屏幕截图所示。
+2. 导航到“Microsoft Azure AD”  ，并转到“团队设置”  。
 
      ![在应用端配置单一登录](./media/slack-tutorial/tutorial_slack_001.png)
 

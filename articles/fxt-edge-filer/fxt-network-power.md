@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Flier 网络连接和电源
+title: 教程：将电缆连接到 Azure FXT Edge Filer
 description: 如何连接 Microsoft Azure FXT Edge Flier 硬件的网络端口和电源
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254853"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550938"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>教程：为 Azure FXT Edge Filer 节点建立网络连接并提供电源
 
@@ -25,7 +25,7 @@ ms.locfileid: "72254853"
 > * 如何通过电缆管理臂（CMA）布线
 > * 如何将电源连接到机架设备并打开电源
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始本教程之前，应在标准设备机架中安装 Azure FXT Edge Filer。 CMA 应安装在文件管理器节点上。 
 

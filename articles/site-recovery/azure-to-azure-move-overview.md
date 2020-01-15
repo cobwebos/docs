@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091939"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498045"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
@@ -81,7 +81,7 @@ ms.locfileid: "74091939"
 
      ![跨层的单一实例 VM 部署](media/move-vm-overview/single-zone.png)
 
-* **每个层中跨可用性集部署的 VM**：使用 Azure Site Recovery 为 VM 启用复制时，可将可用性集中的 VM 配置到独立的可用性区域。 完成移动操作后，可用性 SLA 将达到 99.9%。
+* **每个层中跨可用性集部署的 VM**：使用 Azure Site Recovery 为 VM 启用复制时，可将可用性集中的 VM 配置到独立的可用性区域。 完成移动操作后，可用性 SLA 将达到 99.99%。
 
      ![跨可用性集和可用性区域的 VM 部署](media/move-vm-overview/aset-azone.png)
 

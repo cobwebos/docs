@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c366beb80eda7087f1f74fffbcfbf8b143676f32
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ee8b32634c92b873e82f540f04b53429de93d808
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995892"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611078"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -32,7 +32,7 @@ ms.locfileid: "74995892"
 |         | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
 |         | [对话听录](conversation-transcription-service.md) | 启用实时语音识别、说话人识别和分割聚类。 它非常适合用于听录能够区分说话人的面对面会谈场景。 | 是 | 否 |
 |         | [创建自定义语音模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
-| [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml) 将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](text-to-speech.md#core-features) 将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 |         | [创建自定义语音](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 | [语音助手](voice-assistants.md) | 语音助手 | 语音助手使用语音服务为开发人员助力，使他们可为其应用程序和体验创建自然的、类似于人类的对话界面。 语音助手服务在设备和助手实现之间提供快速且可靠的交互。该实现使用 Bot Framework 的 Direct Line 语音通道或集成的自定义命令（预览版）服务来完成任务。 | [是](voice-assistants.md) | 否 |
@@ -41,12 +41,14 @@ ms.locfileid: "74995892"
 
 了解语音服务的新增功能。
 
+- 2019 年 11 月
+  - 添加了两种新的说话风格，支持 `en-US-JessaNeural` 的 [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) 和 [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles)。
 - 2019 年 9 月
   - 发布了语音 SDK 1.7.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 - 2019 年 8 月
   - **新教程**：[使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
   - 添加了一种新的说话风格 [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)，用于 `en-US-JessaNeural` 语音。
-- 2019 年 7 月
+- 2019 年 6 月
   - 发布了语音 SDK 1.6.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 - 2019 年 5 月 - [会话听录](conversation-transcription-service.md)、[呼叫中心听录](call-center-transcription.md)和[语音助手](voice-assistants.md)的文档现已提供。
 - 2019 年 5 月

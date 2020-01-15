@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用程序证书添加到群集 | Microsoft Docs
+title: 将应用程序证书添加到 Powershell 中的群集
 description: Azure PowerShell 脚本示例 - 将应用程序证书添加到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1ef48f5dd7fabd724dee2c2910e44f47979258b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 069ad55136101c0b57c9faee95578f816b5efef4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547476"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614870"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
 
@@ -95,7 +95,7 @@ Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMS
 
 此脚本使用以下命令：表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | 创建表示证书的内存中策略 |
 | [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| 将策略部署到 Key Vault |

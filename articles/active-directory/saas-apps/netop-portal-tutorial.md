@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893254"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netop Portal 的集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "74893254"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -84,7 +84,7 @@ ms.locfileid: "74893254"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，应用程序已预配置为采用“IDP”发起的模式，并且已在 Azure 中预先填充了所需的 URL。 ****   ****   用户需要单击“ **保存**”按钮来保存配置。 
+1. 在基本 SAML 配置部分，应用程序在 IDP 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL   。 用户需要单击“保存”  按钮来保存配置。
 
 1. Netop Portal 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -146,7 +146,7 @@ ms.locfileid: "74893254"
 
 ### <a name="create-netop-portal-test-user"></a>创建 Netop Portal 测试用户
 
-在本部分中，将在 Netop Portal 中创建一个名为 Britta Simon 的用户。 与  [Netop Portal 支持团队](mailto:casemanager@netop.com)协作，在 Netop Portal 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Netop Portal 中创建一个名为 Britta Simon 的用户。 与 [Netop Portal 支持团队](mailto:casemanager@netop.com)协作，在 Netop Portal 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

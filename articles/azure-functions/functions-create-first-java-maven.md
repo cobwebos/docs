@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230742"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562028"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven 创建函数并将其发布到 Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "74230742"
 > You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
 -->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Java 开发函数，必须安装以下软件：
 
@@ -76,13 +76,16 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。 �
 | **package** | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 本快速入门中的示例使用 `com.fabrikam.functions`。 |
 | **appName** | 全局唯一名称，用于标识 Azure 中的新函数应用。 请使用默认值，即 _artifactId_ 追加一个随机数字。 请记下该值，稍后需要它。 |
 | **appRegion** | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 默认为 `westus`。 请运行以下 [Azure CLI] 命令，获取所有区域的列表：<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | 要在其中创建函数应用的新[资源组](../azure-resource-manager/resource-group-overview.md)的名称。 请使用 `myResourceGroup`（由本快速入门中的示例使用）。 资源组必须对 Azure 订阅来说独一无二。|
+| **resourceGroup** | 要在其中创建函数应用的新[资源组](../azure-resource-manager/management/overview.md)的名称。 请使用 `myResourceGroup`（由本快速入门中的示例使用）。 资源组必须对 Azure 订阅来说独一无二。|
 
 键入 `Y` 或按 Enter 进行确认。
 
 Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
 
 在文本编辑器中打开 *src/main/java* 路径中的新 Function.java 文件，查看生成的代码。 该代码是一个 [HTTP 触发的](functions-bindings-http-webhook.md)函数，用于回显请求的正文。 
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 在本地运行时，不需要[功能键](functions-bindings-http-webhook.md#authorization-keys)。 在终端中使用 `Ctrl+C` 停止函数代码。
 
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
 首先部署函数应用时，会在 Azure 中创建函数应用和相关资源。 在部署之前，必须使用 [az login](/cli/azure/authenticate-azure-cli) Azure CLI 命令登录到 Azure 订阅。 
@@ -146,6 +152,9 @@ mvn azure-functions:deploy
 此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
 
 部署完成后，会显示可用于访问函数应用终结点的 URL。 由于我们发布的 HTTP 触发器使用 `authLevel = AuthorizationLevel.FUNCTION`，因此你需要获取函数密钥，以便通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>获取 HTTP 触发器 URL
 
@@ -176,6 +185,9 @@ curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/
 ```Output
 Hello AzureFunctions!
 ```
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>后续步骤
 

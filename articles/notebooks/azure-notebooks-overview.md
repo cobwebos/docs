@@ -1,22 +1,24 @@
 ---
-title: Azure Notebooks 概述
-description: 使用免费的 Azure Notebooks 服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
+title: Azure Notebooks 预览版概述
+description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: b3dfa6cec962809fad1a03f5100c55315ff6a9ad
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277678"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646324"
 ---
-# <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
 
 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本  （jupyter.org 提供的图片）：
 
 [![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>一站式体验
 

@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
+title: 使用 Azure API 管理向 OpenAPI 公开函数
 description: 创建一个 OpenAPI 定义，使其他应用和服务可以在 Azure 中调用函数。
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226824"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562007"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
 
@@ -18,7 +18,7 @@ ms.locfileid: "74226824"
 
 本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后使用 [Azure API 管理](../api-management/api-management-key-concepts.md)为该函数应用创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个函数
@@ -39,7 +39,7 @@ ms.locfileid: "74226824"
 * 预计进行涡轮机修复的时间，以小时为单位。
 * 涡轮机的容量，以千瓦为单位。 
 
-然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。 在 [Azure 门户](https://portal.azure.com)中创建 HTTP 触发的函数。
+然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。 要在 [Azure 门户](https://portal.azure.com)中创建 HTTP 触发的函数，请执行以下步骤：
 
 1. 展开 Function App，选择“Functions”旁边的 + 按钮   。 选择“门户中”   >   “继续”。
 
@@ -139,7 +139,7 @@ ms.locfileid: "74226824"
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | 全局唯一名称 | 根据函数应用的名称生成一个名称。 |
     | **订阅** | 订阅 | 在其下创建此新资源的订阅。 |  
-    |  [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 与函数应用相同的资源，系统会为你设置。 |
+    |  [资源组](../azure-resource-manager/management/overview.md) |  myResourceGroup | 与函数应用相同的资源，系统会为你设置。 |
     | **位置** | 美国西部 | 选择“美国西部”位置。 |
     |  组织名称 | Contoso | 在开发人员门户中使用的组织名称，也用于电子邮件通知。 |
     | **管理员电子邮件** | 你的电子邮件 | 从 API 管理接收了系统通知的电子邮件。 |

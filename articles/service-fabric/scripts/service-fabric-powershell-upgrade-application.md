@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - 升级 Service Fabric 应用程序 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 升级 Service Fabric 应用程序。
+title: 在 Powershell 中升级 Service Fabric 应用程序
+description: Azure PowerShell 脚本示例 - 使用 Powershell 升级和监控 Azure Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 45186f497371b533451ff374e68b38f9a7eebe51
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035495"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614734"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>升级 Service Fabric 应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "69035495"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | 获取 Service Fabric 群集中的所有应用程序或特定应用程序。  |
 | [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | 获取 Service Fabric 应用程序的升级状态。 |

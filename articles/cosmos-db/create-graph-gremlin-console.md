@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 教程：在 Apache TinkerPops Gremlin 控制台中创建、查询和遍历
+title: 使用 TinkerPop Gremlin 控制台通过 Azure Cosmos DB Gremlin API 进行查询：教程
 description: 有关使用 Azure Cosmos DB Gremlin API 创建顶点、边缘和查询的 Azure Cosmos DB 快速入门教程。
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815970"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665182"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
 
@@ -33,13 +33,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 可以从 [Apache TinkerPop 站点](https://tinkerpop.apache.org/downloads.html)下载它。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要使用 Azure 订阅为本快速入门教程创建 Azure Cosmos DB 帐户。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-还需要安装 [Gremlin 控制台](https://tinkerpop.apache.org/)。 使用 3.2.5 或更高版本。 （若要在 Windows 上使用 Gremlin 控制台，需安装 [Java 运行时](https://www.oracle.com/technetwork/java/javase/overview/index.html)。）
+还需要安装 [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html)。 推荐的版本为 v3.4.3 或更早版本  。 （若要在 Windows 上使用 Gremlin 控制台，需安装 [Java 运行时](https://www.oracle.com/technetwork/java/javase/overview/index.html)）。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -53,7 +53,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 1. 在启动 Gremlin 控制台之前，请在 `apache-tinkerpop-gremlin-console-3.2.5/conf` 目录中创建或修改 remote-secure.yaml 配置文件。
 2. 根据下表中的定义，填写 *host*、*port*、*username*、*password*、*connectionPool* 和 *serializer* 配置：
 
-    设置|建议的值|Description
+    设置|建议的值|说明
     ---|---|---
     hosts|[*account-name*.**gremlin**.cosmos.azure.com]|请参阅下面的屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”  值，方括号中已删除尾部的 :443/。 注意：请确保使用 Gremlin 值，并且**不是**以 [*account-name*.documents.azure.com] 结尾的 URI，这可能会在稍后尝试执行 Gremlin 查询时导致“主机未及时响应”异常。 
     port|443|设置为 443。

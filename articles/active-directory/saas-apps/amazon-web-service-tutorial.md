@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fea3bca40d8a5783448e68ea89c3b238a0104d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074032"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689772"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -54,7 +54,7 @@ ms.locfileid: "74074032"
 > [!Note]
 > 请确保仅使用库应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -74,10 +74,10 @@ ms.locfileid: "74074032"
 
 要配置 Amazon Web Services (AWS) 与 Azure AD 的集成，需要从库将 Amazon Web Services (AWS) 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 使用工作帐户、学校帐户或者个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
+1. 在 Azure Active Directory 概述菜单中，选择“企业应用程序” > “所有应用程序”   。
+1. 选择“新建应用程序”以添加应用程序  。
 1. 在“从库中添加”部分的搜索框中  ，键入 **Amazon Web Services (AWS)** 。
 1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
@@ -123,7 +123,8 @@ ms.locfileid: "74074032"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
+1. 在 Azure Active Directory 概述菜单中，选择“用户” > “所有用户”   。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B.Simon`。  
@@ -135,7 +136,8 @@ ms.locfileid: "74074032"
 
 在本部分中，将通过向 B.Simon 授予对 Amazon Web Services (AWS) 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
+1. 在 Azure Active Directory 概述菜单中，选择“企业应用程序” > “所有应用程序”   。
 1. 在应用程序列表中，选择“Amazon Web Services (AWS)”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
@@ -310,7 +312,7 @@ ms.locfileid: "74074032"
 
     b. 在 Azure AD 用户预配部分输入这些凭据，以便从 AWS 控制台提取角色。
 
-    c. 选择“关闭”。 
+    c. 选择“关闭”  。
 
 ### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>如何在 Amazon Web Services (AWS) 中配置角色预配
 

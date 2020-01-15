@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07391633436931a8f7cc46c430387f5877d10674
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106702"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613629"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
 
-本教程将介绍如何使用 Azure Maps 帐户和路线服务，以查找按行驶模式划分优先级的兴趣点路线。 地图上显示了两条路线，一条针对汽车，另一条针对可能有路线限制（因为高度、重量或者危险货物）的卡车。 本教程介绍如何执行下列操作：
+本教程将介绍如何使用 Azure Maps 帐户和路线服务，以查找按行驶模式划分优先级的兴趣点路线。 地图上显示了两条路线，一条针对汽车，另一条针对可能有路线限制（因为高度、重量或者危险货物）的卡车。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Map Control API 创建新网页
@@ -26,9 +26,8 @@ ms.locfileid: "74106702"
 > * 创建声明出行模式的路线查询
 > * 在地图上显示多条路线
 
-## <a name="prerequisites"></a>先决条件
-
-在继续操作之前，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取适用于你的帐户的主订阅密钥。
+## <a name="prerequisites"></a>必备条件
+在继续操作之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取适用于你的帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>创建新地图
 
@@ -275,7 +274,7 @@ ms.locfileid: "74106702"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Map Control API 创建新网页

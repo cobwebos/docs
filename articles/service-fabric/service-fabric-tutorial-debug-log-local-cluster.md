@@ -1,26 +1,17 @@
 ---
-title: 调试本地 Service Fabric 群集上的 Java 应用 |Microsoft Docs
+title: 调试本地 Service Fabric 群集上的 Java 应用
 description: 本教程介绍如何调试本地群集上运行的 Service Fabric Java 应用程序并获取其日志。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465388"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>教程：调试本地 Service Fabric 群集上部署的 Java 应用程序
 
@@ -41,7 +32,7 @@ ms.locfileid: "57444253"
 > * 将日志重定向到可配置的位置
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -59,11 +50,11 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 ## <a name="debug-java-application-using-eclipse"></a>使用 Eclipse 调试 Java 应用程序
 
-1. 在计算机上打开 Eclipse IDE，单击“文件”->“导入...”。
+1. 在计算机上打开 Eclipse IDE，单击“文件”->“导入...”。 
 
-2. 在弹出窗口中，选择“常规”->“将现有项目导入工作区”选项并按“下一步”。
+2. 在弹出窗口中，选择“常规”->“将现有项目导入工作区”选项并按“下一步”。 
 
-3. 在“导入项目”窗口中，选择“选择根目录”选项并选取“Voting”目录。 如果已学完了系列教程 1，则“Voting”目录出现在“Eclipse-workspace”目录中。
+3. 在“导入项目”窗口中，选择“选择根目录”选项并选取“Voting”目录。   如果已学完了系列教程 1，则“Voting”目录出现在“Eclipse-workspace”目录中。  
 
 4. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 Java 进程。 在本教程中，使用了无状态前端：*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*。在此示例中调试时，设置端口 8001。
 
@@ -73,7 +64,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 5. 通过将要调试的服务的实例计数或副本计数设置为 1 来更新应用程序清单。 此设置可避免用于调试的端口出现冲突。 例如，对于无状态服务，设置 ``InstanceCount="1"``；对于有状态服务，将目标和最小副本集大小设置为 1，如下所示：``TargetReplicaSetSize="1" MinReplicaSetSize="1"``。
 
-6. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序”，按“新建”按钮，设置以下属性，然后单击“应用”。
+6. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序”，按“新建”按钮，设置以下属性，然后单击“应用”。   
 
     ```
     Name: Voting
@@ -85,11 +76,11 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 7. 在 *Voting/VotingWeb/src/statelessservice/HttpCommunicationListener.java* 文件的第 109 行中插入一个断点。
 
-8. 在包资源管理器中右键单击“投票”项目，然后单击“Service Fabric”->“发布应用程序...”。
+8. 在包资源管理器中右键单击“投票”项目，然后单击“Service Fabric”->“发布应用程序...”。  
 
-9. 在“发布应用程序”窗口上的下拉列表中，选择“Local.json”并单击“发布”。
+9. 在“发布应用程序”窗口的下拉列表中，选择“Local.json”并单击“发布”。   
 
-10. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序”，单击创建的“投票”配置，然后单击“调试”。
+10. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序”，单击创建的“投票”配置，然后单击“调试”。   
 
 11. 转到 Web 浏览器并访问 **localhost:8080**。 这将自动命中断点，Eclipse 将进入**调试透视图**。
 

@@ -9,18 +9,18 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 041efc62b32e8d8c0c477d9d5715882fd7899cd9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701946"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665210"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
 使用 Visual Studio 开发 C# 代码并将其部署到运行 Azure IoT Edge 的 Windows 设备。 
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 本教程介绍如何执行下列操作：    
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 在本教程中，你将了解如何执行以下操作：    
 
 > [!div class="checklist"]
 > * 使用 Visual Studio 创建基于 C# SDK 的 IoT Edge 模块。
@@ -43,7 +43,7 @@ ms.locfileid: "74701946"
 | **Windows AMD64 开发** | ![在 VS Code 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) | ![在 Visual Studio 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 调试** |   | ![在 Visual Studio 中调试 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)来设置开发环境。 完成该教程后，应已准备好以下必备组件： 
 
@@ -92,29 +92,30 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 1. 在 Visual Studio 解决方案资源管理器中打开 **deployment.template.json** 文件。 
 
-2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
-
-3. 使用凭据更新该属性，遵循以下格式： 
+2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 它应该会根据你在创建项目时提供的信息自动填写注册表地址，而用户名和密码字段应包含变量名称。 例如： 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. 保存 deployment.template.json 文件。 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将边缘的消息转发到 IoT 中心之前对其进行处理。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。 
+5. Save your changes to the .env file.
 
-1. 在 Visual Studio 中打开“CSharpModule” > “Program.cs”。  
+### Update the module with custom code
 
-2. 在 **CSharpModule** 命名空间的顶部，为稍后要使用的类型添加三个 **using** 语句：
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+
+1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+
+2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -297,7 +298,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   可能会出现一条安全警告，其中建议使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
+   可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
 
 2. 在 Visual Studio 解决方案资源管理器中，右键单击要生成的项目名称。 默认名称为 **AzureIotEdgeApp1**；由于生成的是 Windows 模块，因此扩展名应是 **Windows.Amd64**。 
 
@@ -309,7 +310,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 使用 Visual Studio Cloud Explorer 和 Azure IoT Edge Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-请确保 IoT Edge 设备已启动并正在运行。 
+确保 IoT Edge 设备已启动并运行。 
 
 1. 在 Visual Studio Cloud Explorer 中，展开资源以查看 IoT 设备列表。 
 

@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Filer 群集创建
+title: 教程：创建 Azure FXT Edge Filer 缓存群集
 description: 如何使用 Azure FXT Edge Filer 创建混合存储缓存群集
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256084"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551261"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教程：创建 Azure FXT Edge Filer 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "72256084"
 
 此过程需要 15 到 45 分钟，具体取决于识别 IP 地址和网络资源所需要的工作量。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始本教程前，请完成以下先决条件：
 

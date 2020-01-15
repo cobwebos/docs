@@ -6,40 +6,34 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 951191422e80ef6224cd140beed782de31cb3822
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.date: 12/31/2019
+ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677848"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612081"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 
-启动并运行 Ubuntu Data Science Virtual Machine。
+启动并运行 Ubuntu 18.04 Data Science Virtual Machine。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要创建 Windows Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
+要创建 Ubuntu 18.04 Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
 请注意，Azure 免费帐户不支持启用 GPU 的虚拟机 SKU。
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>创建适用于 Linux 的数据科学虚拟机
 
-以下步骤用于创建适用于 Linux 的数据科学虚拟机的实例：
+以下步骤用于创建 Data Science Virtual Machine Ubuntu 18.04 的实例：
 
 1. 转到 [Azure 门户](https://portal.azure.com) 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。
-1. 通过键入“data Science virtual machine”并选择“Data Science Virtual Machine for Linux (Ubuntu)”来查找虚拟机列表。
-    
-    ![Ubuntu VM 列表](./media/dsvm-ubuntu-intro/search-ubuntu.png)
+1. 查找虚拟机列表，方法是：键入“data Science virtual machine”并选择“Data Science Virtual Machine - Ubuntu 18.04 预览版。”
 
 1. 在随后的窗口中，选择“创建”  。
 
-   [![](media/dsvm-ubuntu-intro/create-linux.png "用于创建 Ubuntu 虚拟机的按钮")](media/dsvm-ubuntu-intro/create-linux-expanded.png#lightbox)
-
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    
-   ![Ubuntu 虚拟机所对应的“基本信息”选项卡](./media/dsvm-ubuntu-intro/review-create-ubuntu.png)
-
 1. 输入以下信息以配置向导的每个步骤：
 
     1. **基本信息**：
@@ -49,7 +43,7 @@ ms.locfileid: "71677848"
        * **虚拟机名称**：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
        * **区域**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
        * **映像**：保留默认值。
-       * **大小**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **Size**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **身份验证类型**：为了更快地设置，请选择“密码”。 
          
          > [!NOTE]

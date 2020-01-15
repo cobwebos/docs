@@ -2,39 +2,36 @@
 title: 将 Azure 应用配置与 ASP.NET Core 结合使用的快速入门| Microsoft Docs
 description: 将 Azure 应用配置与 ASP.NET Core 应用结合使用的快速入门
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 10/11/2019
-ms.author: yegu
-ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/04/2020
+ms.author: jeconnoc
+ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185092"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690203"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
-在本快速入门中，会将 Azure 应用程序配置合并到 ASP.NET Core 应用中，以集中存储和管理与代码分离的应用程序设置。 ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，生成基于键值的单个配置对象。 这些数据源称为配置提供程序  。 由于应用程序配置的 .NET Core 客户端作为此类提供程序实现，因此服务就像是另一个数据源。
+在本快速入门中，将使用 Azure 应用程序配置来集中存储和管理 ASP.NET Core 应用程序的应用程序设置。 ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，生成基于键值的单个配置对象。 这些数据源称为配置提供程序  。 由于应用程序配置的 .NET Core 客户端作为配置提供程序实现，因此服务就像是另一个数据源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
+
+>[!TIP]
+> Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的命令行指令。  它预安装了常用的 Azure 工具，其中包括 .NET Core SDK。 如果你已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，请[阅读我们的文档](../cloud-shell/overview.md)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
@@ -47,24 +44,29 @@ ms.locfileid: "74185092"
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
-使用 [.NET Core命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 ASP.NET Core MVC Web 应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。
+使用 [.NET Core 命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 ASP.NET Core MVC Web 应用项目。 [Azure Cloud Shell](https://shell.azure.com) 提供了这些工具。  它们还可在 Windows、macOS 和 Linux 平台上使用。
 
 1. 为项目新建一个文件夹。 在此快速入门中，将其命名为 TestAppConfig  。
 
-2. 在新文件夹中，运行以下命令，创建新的 ASP.NET Core MVC Web 应用项目：
+1. 在新文件夹中，运行以下命令，创建新的 ASP.NET Core MVC Web 应用项目：
 
-    ```CLI
-        dotnet new mvc --no-https
-    ```
+```dotnetcli
+dotnet new mvc --no-https
+```
 
 ## <a name="add-secret-manager"></a>添加机密管理器
 
 若要使用机密管理器，请将 `UserSecretsId` 元素添加到 .csproj  文件。
 
-- 打开 *.csproj* 文件。 添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。 保存文件。
+打开 *.csproj* 文件。 添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。 保存文件。
 
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
+> [!IMPORTANT]
+> `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
+
+#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -76,8 +78,22 @@ ms.locfileid: "74185092"
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     </ItemGroup>
 
-    </Project>
-    ```
+</Project>
+```
+
+#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
+---
 
 机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。 有关机密管理器的详细信息，请参阅[在 ASP.NET Core 开发中安全存储应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)
 
@@ -85,43 +101,43 @@ ms.locfileid: "74185092"
 
 1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
-    ```CLI
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
     ```
-2. 运行以下命令，还原项目包：
+1. 运行以下命令，还原项目包：
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
-3. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器  。
+1. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器  。
 
     此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的值替换为应用程序配置存储区的连接字符串。
 
     必须在 .csproj 文件所在的同一目录中执行此命令  。
 
-    ```CLI
-        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```dotnetcli
+    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
     ```
 
     > [!IMPORTANT]
     > 有些 shell 会截断连接字符串，除非将连接字符串括在引号中。 确保 `dotnet user-secrets` 命令的输出显示整个连接字符串。 如果未显示，请重新运行该命令，并将连接字符串括在引号中。
 
-    机密管理器仅用于本地测试 web 应用程序。 例如，将应用部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)后，可以使用应用服务中的“连接字符串”应用程序设置，而无需使用机密管理器来存储连接字符串。 
+    机密管理器仅用于本地测试 web 应用程序。 例如，将应用部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)后，可以使用应用服务中的“连接字符串”应用程序设置，而无需使用机密管理器来存储连接字符串  。
 
-    此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。
+    使用配置 API 访问此机密。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。
 
-4. 打开 *Program.cs*，并添加对 .NET Core 应用程序配置提供程序的引用。
+1. 打开 *Program.cs*，并添加对 .NET Core 应用程序配置提供程序的引用。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. 通过调用 `config.AddAzureAppConfiguration()` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。
+1. 通过调用 `config.AddAzureAppConfiguration()` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。
     
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>更新 .NET Core 2.x 的 `CreateWebHostBuilder`
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -134,8 +150,8 @@ ms.locfileid: "74185092"
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>更新 .NET Core 3.x 的 `CreateHostBuilder`
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -147,8 +163,9 @@ ms.locfileid: "74185092"
         })
         .UseStartup<Startup>());
     ```
+    ---
 
-6. 在“视图”>“主页”目录中打开 *Index.cshtml*，并将其内容替换以下代码：
+1. 导航到 <app root>/Views/Home，然后打开 Index.cshtml   。 将其内容替换为以下代码：
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -167,7 +184,7 @@ ms.locfileid: "74185092"
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. 在“视图”>“共享”目录中打开 *_Layout.cshtml*，并将其内容替换以下代码：
+1. 导航到 <app root>，然后打开 _Layout.cshtml   。 将其内容替换为以下代码：
 
     ```HTML
     <!DOCTYPE html>
@@ -196,19 +213,25 @@ ms.locfileid: "74185092"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
+1. 若要使用 .NET Core CLI 生成应用，请导航到应用程序的根目录，然后在命令 shell 中运行以下命令：
 
-    ```CLI
-       dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
-2. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
+1. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
-3. 启动浏览器窗口并转到 `http://localhost:5000`，即本地托管的 Web 应用的默认 URL。
+1. 如果要在本地计算机上操作，请使用浏览器导航到 `http://localhost:5000`。 这是在本地托管的 Web 应用的默认 URL。  
+
+如果要在 Azure Cloud Shell 中操作，请依次选择“Web 预览”按钮和“配置”   。  
+
+![找到“Web 预览”按钮](./media/quickstarts/cloud-shell-web-preview.png)
+
+系统提示配置预览端口时，请输入“5000”，然后选择“打开并浏览”  。  网页将显示“数据来自 Azure 应用程序配置”。
 
 ## <a name="clean-up-resources"></a>清理资源
 

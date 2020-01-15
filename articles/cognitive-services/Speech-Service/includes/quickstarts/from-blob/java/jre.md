@@ -7,23 +7,23 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d4a436540460240ebd97c39d3406b2886586a6df
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467346"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [将源文件上传到 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
@@ -57,7 +57,7 @@ ms.locfileid: "74829108"
 
 ## <a name="create-and-configure-an-http-client"></a>创建和配置 Http 客户端
 首先，我们需要具有正确的基本 URL 和身份验证集的 Http 客户端。
-将此代码插入 `Main` [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+将此代码插入 `Main`[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
 ## <a name="generate-a-transcription-request"></a>生成听录请求
 接下来，我们将生成听录请求。 将此代码添加到 `Main`[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]

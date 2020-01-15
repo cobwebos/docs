@@ -1,19 +1,19 @@
 ---
-title: 调整 Microsoft Azure FXT Edge Filer 群集的网络设置
+title: 教程：在 Azure FXT Edge Filer 群集中配置网络
 description: 如何在创建 Azure FXT Edge Filer 群集后自定义网络设置
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254891"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551057"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>教程：配置群集的网络设置 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>教程：配置群集的网络设置
 
 在使用新创建的 Azure FXT Edge Filer 群集之前，应检查并自定义工作流的多个网络设置。 
 

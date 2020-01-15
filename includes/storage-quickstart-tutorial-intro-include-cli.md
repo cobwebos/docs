@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 4ad977dc8cbaa85360092dbfd391a3c3b88f67bb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e479f2376668a2fc3824e733996c94cfab04c9ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467907"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -61,4 +61,4 @@ export AZURE_STORAGE_ACCOUNT="<account-name>"
 export AZURE_STORAGE_KEY="<account-key>"
 ```
 
-有关如何使用 Azure 门户检索帐户访问密钥的详细信息，请参阅[在 Azure 门户中管理存储帐户设置](../articles/storage/common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#access-keys)中的“访问密钥”  。
+有关如何使用 Azure 门户检索帐户访问密钥的详细信息，请参阅[管理存储帐户访问密钥](../articles/storage/common/storage-account-keys-manage.md)。

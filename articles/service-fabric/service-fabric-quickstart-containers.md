@@ -1,26 +1,16 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 Windows 容器应用 |Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上创建 Windows 容器应用
 description: 在本快速入门中，请在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466262"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 
@@ -40,7 +30,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 Azure 订阅（可以创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)）。
 * 一台运行以下软件的开发计算机：
@@ -156,7 +146,7 @@ Thumbprint                                Subject
 
  此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 只要群集处于运行状态，就会产生费用。 请考虑[删除群集](service-fabric-cluster-delete.md)。
 

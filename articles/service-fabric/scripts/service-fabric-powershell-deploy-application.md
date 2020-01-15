@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用程序部署到群集 | Microsoft Docs
+title: 将应用程序部署到 Powershell 中的群集
 description: Azure PowerShell 脚本示例 - 将应用程序部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: d03eec5101f932caff43bf876a41219e3f1fa75d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 207f2a4e8173aa1e5009435665532973045d9198
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035554"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610295"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
 
@@ -39,7 +39,7 @@ ms.locfileid: "69035554"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 |[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| 与 Service Fabric 群集建立连接。 |
 |[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | 将应用程序包复制到群集映像存储。  |

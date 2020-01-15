@@ -8,17 +8,17 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706957"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612864"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
 > [!NOTE]
-> 有一个教程系列介绍如何在 IoT Edge 上使用 Azure 虚拟机，本文是其中的一篇。 如果你是直接转到本文的，建议你从该系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
+> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们会将一个运行 Linux 的 Azure 虚拟机配置为充当透明网关的 Azure IoT Edge 设备。 借助透明网关配置，设备在不知道网关存在的情况下就能通过网关连接到 Azure IoT 中心。 同时，与 IoT 中心内的设备交互的用户也察觉不到中间网关设备。 最后，我们通过向网关添加 IoT Edge 模块，使用透明网关向我们的系统添加边缘分析功能。
 
@@ -28,7 +28,7 @@ ms.locfileid: "74706957"
 
 充当网关的设备必须能够安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 要详细了解 IoT Edge 设备如何使用证书，请查看 [Azure IoT Edge 证书使用详细信息](iot-edge-certs.md)。
 
-在此部分中，我们要使用到时会生成和运行的 Docker 映像来创建自签名证书。 我们选择用 Docker 映像来完成此步骤的原因是，它显著减少了在 Windows 开发计算机上创建证书所需的步骤数。 要详细了解如何在不使用容器的情况下生成证书，请参阅[在 Windows 中生成证书](how-to-create-transparent-gateway.md#generate-certificates-with-windows)。 [在 Linux 中生成证书](how-to-create-transparent-gateway.md#generate-certificates-with-linux)提供了一组说明，我们按照它们使用 Docker 映像实现了自动化。
+在此部分中，我们要使用到时会生成和运行的 Docker 映像来创建自签名证书。 我们选择用 Docker 映像来完成此步骤的原因是，它显著减少了在 Windows 开发计算机上创建证书所需的步骤数。 请参阅[创建演示证书以测试 IoT Edge 设备功能](how-to-create-test-certificates.md)，了解通过 Docker 映像实现自动化的操作。
 
 1. 登录到开发虚拟机。
 

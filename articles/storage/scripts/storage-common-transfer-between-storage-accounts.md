@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用 Windows 版 AzCopy 跨存储帐户迁移 blob | Microsoft Docs
-description: 使用 AzCopy，将一个 Azure 存储帐户的 blob 内容复制到另一个。
+title: 使用 Windows 版 AzCopy 跨存储账户迁移 Blobs
+description: Azure PowerShell 脚本示例 - 使用 AzCopy，将一个 Azure 存储帐户的 blob 内容复制到另一个。
 services: storage
 documentationcenter: na
 author: normesta
@@ -12,12 +12,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: normesta
-ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 559b8b2875b789034ae07901f668f241505073b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465061"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>使用 Windows 版 AzCopy 跨存储帐户迁移 blob
 
@@ -65,7 +65,7 @@ AzCopyPath: C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\AzCopy.exe
 
 本脚本使用以下命令将数据从一个存储帐户复制到另一个。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | 返回与此存储帐户关联的容器。 |
 | [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | 创建 Azure 存储上下文。 |

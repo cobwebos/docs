@@ -3,24 +3,24 @@ title: 从 Azure IoT 解决方案与 IoT 即插即用预览版设备交互 | Mic
 description: 本教程向解决方案开发人员介绍如何使用服务 SDK 来与 IoT 即插即用设备交互。
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977584"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531337"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>连接到 IoT 即插即用预览版设备并与之交互
 
 本操作指南介绍如何使用 Node 服务 SDK 中的示例，其中演示了 IoT 解决方案如何与 IoT 即插即用预览版设备交互。
 
-如果你尚未完成[将 IoT 即插即用设备连接到解决方案](quickstart-connect-pnp-device-solution.md)快速入门，请先完成该教程。 本快速入门介绍如何下载和安装 SDK，以及运行一些示例。
+如果你尚未完成[将 IoT 即插即用设备连接到解决方案](quickstart-connect-pnp-device-solution-node.md)快速入门，请先完成该教程。 本快速入门介绍如何下载和安装 SDK，以及运行一些示例。
 
 在运行服务示例之前，请打开新的终端，转到克隆的存储库的根文件夹，导航到 **digitaltwins/quickstarts/service** 文件夹，然后运行以下命令安装依赖项：
 
@@ -82,7 +82,7 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 
 ### <a name="creating-digital-twin-routes"></a>创建数字孪生路由
 
-解决方案可以接收数字孪生更改事件的通知。 若要订阅这些通知，请使用 [IoT 中心路由功能](../iot-hub/iot-hub-devguide-endpoints.md)将通知发送到某个终结点，例如 Blob 存储、事件中心或服务总线队列。
+解决方案可以接收数字孪生更改事件的通知。 要订阅这些通知，请使用 [IoT 中心路由功能](../iot-hub/iot-hub-devguide-endpoints.md)将通知发送到某个终结点，例如 blob 存储、事件中心或服务总线队列。
 
 若要创建数字孪生路由：
 

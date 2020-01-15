@@ -1,20 +1,22 @@
 ---
-title: 使用 Azure Notebooks 从 GitHub 克隆 Jupyter 笔记本
+title: 使用 Azure Notebooks 预览版从 GitHub 克隆 Jupyter 笔记本
 description: 快速克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure Notebooks 帐户中运行它。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 500bd3f85409bb2f5e7b73be0478694695cc9c00
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277527"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647095"
 ---
-# <a name="quickstart-clone-a-notebook"></a>快速入门：克隆笔记本
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中克隆笔记本
 
 许多数据科学家和开发人员将其笔记本存储在 [GitHub 存储库](https://github.com)中，该存储库是一项免费的服务，可以针对许多不同的项目类型提供存储和版本控制。 GitHub 通常用来在 Jupyter 笔记本（在本地运行）上进行协作。 在这种情况下，每位协作者都保留该存储库的本地副本，通过该副本运行笔记本。
 
 克隆时，则改在 Azure Notebooks 帐户中创建 GitHub 笔记本的副本。 此克隆独立于其原始存储库；更改仅存储在 Azure Notebooks 帐户中，不影响原始存储库。 由于你的克隆位于云中，因此可以将项目与其他协作者共享，这些协作者不需进行本地复制，甚至不需在其计算机上安装 Jupyter。 也可在着手自己的项目时或需要获取数据文件时克隆笔记本。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>克隆 Azure 认知服务笔记本
 
@@ -32,7 +34,7 @@ ms.locfileid: "74277527"
 
    - **GitHub 存储库**：Microsoft/cognitive-services-notebooks（此名称在 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) 上克隆适用于 Azure 认知服务的 Jupyter 笔记本）。
    - **以递归方式克隆**：（已清除）
-   - **项目名称**：认知服务克隆
+   - 项目名称  ：认知服务克隆
    - **项目 ID**：cognitive-services-clone
    - **公共**：（已清除）
 

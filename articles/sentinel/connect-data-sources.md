@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496383"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610601"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -43,7 +43,8 @@ ms.locfileid: "73496383"
 
 Azure Sentinel 支持以下数据连接方法：
 
-- **Microsoft 服务**：<br> Microsoft 服务原生是互连的。利用 Azure 基础服务的现成集成，只需单击几点鼠标就能连接以下解决方案：
+- **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
+    - [Amazon Web Services - CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Azure AD 审核日志和登录](connect-azure-active-directory.md)
     - [Azure 活动](connect-azure-activity.md)
@@ -93,7 +94,7 @@ Azure Sentinel 支持以下数据连接方法：
 ## <a name="map-data-types-with-azure-sentinel-connection-options"></a>使用 Azure Sentinel 连接选项映射数据类型
 
 
-| **数据类型** | **如何连接** | **数据连接器？** | **注释** |
+| **Data type** | **如何连接** | **数据连接器？** | **注释** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [连接 AWS](connect-aws.md) | V | |
 | AzureActivity | [连接 Azure 活动](connect-azure-activity.md)和[活动日志概述](../azure-monitor/platform/activity-logs-overview.md)| V | |

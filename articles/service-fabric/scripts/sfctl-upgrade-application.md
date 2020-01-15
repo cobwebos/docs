@@ -1,5 +1,5 @@
 ---
-title: Service Fabric CLI 脚本示例 - 更新群集上的应用程序
+title: 更新 sfctl 中群集上的应用程序
 description: Service Fabric CLI 脚本示例 - 使用新版本更新应用程序。 此示例还使用新位升级已部署的应用程序。
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: e925f4f7b4a3da2d298413feccc94ea742e47f6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034709"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614717"
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
+# <a name="update-an-application-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 更新应用程序
 
 此示例脚本会上传现有应用程序的新版本，然后使用新位升级已部署的应用程序。
 

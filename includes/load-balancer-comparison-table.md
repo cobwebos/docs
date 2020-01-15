@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 8b08e0ced0c7094890a80c37452c7f1b001fe511
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d694a7030f96ef8e652d76cfb6036674aaa71249
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888695"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660201"
 ---
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "73888695"
 | 可用性区域 | 用于入站和出站流量的区域冗余和区域性前端。 出站流映射未出现区域故障。 跨区域负载均衡。 | 不可用 |
 | 诊断 | Azure Monitor。 多维指标，包括字节和数据包计数器。 运行状况探测状态。 连接尝试 (TCP SYN)。 出站连接运行状况（SNAT 成功和失败的流）。 可用的数据平面度量。 | 只适用于公共负载均衡器的 Azure Log Analytics。 SNAT 耗尽警报。 后端池运行状况计数。 |
 | HA 端口 | Internal 负载均衡器（内部负载均衡器） | 不可用 |
-| 默认保护 | 公共 IP、公共负载均衡器终结点和内部负载均衡器终结点会阻止入站流，除非入站流已获得某个网络安全组的允许。 | 默认处于打开状态。 可选的网络安全组。 |
+| 默认保护 | 公共 IP、公共负载均衡器终结点和内部负载均衡器终结点会阻止入站流，除非入站流已获得某个网络安全组的允许。 请注意，仍允许从 VNET 到内部负载均衡器的内部流量。 | 默认处于打开状态。 可选的网络安全组。 |
 | [出站连接](../articles/load-balancer/load-balancer-outbound-connections.md) | 可以使用[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)显式定义基于池的出站 NAT。 可以在每个负载均衡规则选择退出时使用多个前端。必须显式创建出站方案，虚拟机、可用性集、虚拟机规模集才能使用出站连接  。 虚拟网络服务终结点无需定义出站连接便可访问，且不会计入已处理的数据。 任何公共 IP 地址（包括不可用作虚拟网络服务终结点的 Azure PaaS 服务）都必须通过出站连接才能访问，且计入已处理的数据。 如果只有一个内部负载均衡器为虚拟机、可用性集或虚拟机规模集提供服务，则经由默认 SNAT 的出站连接不可用。 请改用[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)。 出站 SNAT 编程取决于入站负载均衡规则的传输协议。 | 单个前端，存在多个前端时随机选择。 如果只有内部负载均衡器为虚拟机、可用性集或虚拟机规模集提供服务，则使用默认 SNAT。 |
 | [出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | 使用公共 IP 地址或公共 IP 前缀（或者两者均使用）的声明性出站 NAT 配置。 可配置的出站空闲超时（4-120 分钟）。 自定义 SNAT 端口分配 | 不可用 |
 | [在空闲时重置 TCP](../articles/load-balancer/load-balancer-tcp-reset.md) | 对任何规则启用空闲超时时重置 TCP (TCP RST) | 不可用 |

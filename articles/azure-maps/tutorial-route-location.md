@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106620"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613595"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 查找前往兴趣点的路线
 
-本教程介绍如何使用 Azure Maps 帐户和路线服务 SDK 来查找前往兴趣点的路线。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Maps 帐户和路线服务 SDK 来查找前往兴趣点的路线。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Map Control API 创建新网页
 > * 设置地址坐标
 > * 在路线服务中查询兴趣点的方向
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-在继续操作之前，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取适用于你的帐户的主订阅密钥。
+在继续操作之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取适用于你的帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a id="getcoordinates"></a>
 
@@ -83,7 +83,7 @@ ms.locfileid: "74106620"
 
     请注意，HTML 标头包含 Azure 地图控件库托管的 CSS 和 JavaScript 资源文件。 请注意页面正文中的 `onload` 事件。当页面正文加载时，此事件会调用 `GetMap` 函数。 此函数会包含用于访问 Azure Maps API 的内联 JavaScript 代码。 
 
-3. 将以下 JavaScript 代码添加到 `GetMap` 函数。 将字符串 `<Your Azure Maps Key>` 替换为从 Maps 帐户复制的主要密钥。
+3. 将以下 JavaScript 代码添加到 `GetMap` 函数。 将字符串 `<Your Azure Maps Key>` 替换为从 Maps 帐户复制的主密钥。
 
     ```JavaScript
    //Instantiate a map object
@@ -211,7 +211,7 @@ ms.locfileid: "74106620"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Map Control API 创建新网页

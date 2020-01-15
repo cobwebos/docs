@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979573"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613561"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -31,12 +31,15 @@ ms.locfileid: "74979573"
 > * 在图中绘制预报数据。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，首先需要：
 
-1. 按照[管理 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明，在 S0 定价层中创建一个 Azure Maps 帐户订阅。
-2. 按照[获取帐户的主密钥](./tutorial-search-location.md#getkey)中的说明，获取帐户的主要订阅密钥。
+1. 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明，在 S0 定价层中创建一个 Azure Maps 帐户订阅。
+2. 要获取帐户的主要订阅密钥，请遵循[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的说明。
+
+
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 若要熟悉 Azure Notebooks 并了解如何开始使用它，请参考[创建 Azure 笔记本](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)中的说明。
 
@@ -68,7 +71,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-下图可视化了自当前日期算起的未来 15 天风速变化（左图）和风向变化（右图）的预报数据。
+下图可视化了自请求数据当天算起的未来 15 天风速变化（左图）和风向变化（右图）的预报数据。
 
 <center>
 
@@ -190,6 +193,6 @@ windsPlot.set_ylabel("Wind direction")
 * [每日预报](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [呈现器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)。
+有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
 
 若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。

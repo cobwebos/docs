@@ -11,50 +11,50 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670547"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528345"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什么是机器学习工作室（经典版）？
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Microsoft Azure 机器学习工作室（经典版）是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。  机器学习工作室经典版将模型发布为便于自定义应用或 BI 工具（如 Excel）使用的 Web 服务。
+Microsoft Azure 机器学习工作室（经典版）是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 Azure 机器学习工作室（经典版）将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
 
 机器学习工作室（经典版）中融合了数据科学、预测分析、云资源和数据。
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>机器学习工作室（经典版）交互式工作区
 若要开发预测分析模型，通常使用一个或多个源中的数据，然后通过各种数据操作和统计函数对该数据进行转换和分析，生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断趋于一致，直到已训练的有效模型令人满意。
 
-Azure 机器学习工作室经典版提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将数据集和分析模块拖放到交互式画布，将它们连接在一起构成试验，然后在机器学习工作室（经典版）中运行。 若要在模型设计上迭代，则需要编辑试验，可根据需要保存一个副本，并重新运行该试验。 准备就绪后，可以将 ***训练实验*** 转换为 ***预测试验***，然后将其发布为 ***Web 服务”发布***，以便其他人可以访问模型。
+Azure 机器学习工作室（经典版）提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将数据集和分析模块拖放到交互式画布，将它们连接在一起构成试验，然后在机器学习工作室（经典版）中运行。 若要在模型设计上迭代，则需要编辑试验，可根据需要保存一个副本，并重新运行该试验。 准备就绪后，可以将 ***训练实验*** 转换为 ***预测试验***，然后将其发布为 ***Web 服务”发布***，以便其他人可以访问模型。
 
 不需要编程，只需以可视方式连接数据集和模块即可构建预测分析模型。
 
-![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Azure 机器学习工作室（经典版）示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>机器学习工作室（经典版）与 Azure 机器学习有什么区别？
 
-[Azure 机器学习](../service/overview-what-is-azure-ml.md)提供 SDK 和 Azure 机器学习设计器（预览版），可以快速准备数据，以及对机器学习模型进行训练和部署  。 此设计器提供与工作室（经典版）类似的拖放体验。 但是，不像工作室（经典版）的专用计算平台，此设计器使用你自己的计算资源，并且已完全集成到 Azure 机器学习中。
+[Azure 机器学习](../overview-what-is-azure-ml.md)提供 SDK 和 Azure 机器学习设计器（预览版），可以快速准备数据，以及对机器学习模型进行训练和部署  。 此设计器提供与工作室（经典版）类似的拖放体验。 但是，不像工作室（经典版）的专用计算平台，此设计器使用你自己的计算资源，并且已完全集成到 Azure 机器学习中。
 
 下面是一个快速比较：
 
 || 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
-| 拖放界面 | 是 | 是 - [Azure 机器学习设计器（预览版）](../service/concept-designer.md) |
+| 拖放界面 | 是 | 是 - [Azure 机器学习设计器（预览版）](../concept-designer.md) |
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
 | 拖放界面的模块 | 很多 | 常用[模块](../algorithm-module-reference/module-reference.md)的初始集|
-|训练计算目标| 专用计算目标，仅限 CPU 支持| 支持 Azure 机器学习计算（GPU 或 CPU）和笔记本 VM。<br/>（[SDK 中支持的其他计算](../service/concept-compute-target.md#train)）|
-|推断计算目标| 专用 Web 服务格式，不可自定义 |  Azure Kubernetes 服务和 AML 计算 <br/>（[SDK 中支持的其他计算](../service/how-to-deploy-and-where.md)） |
-| ML 管道 | 不支持 | 支持[管道](../service/concept-ml-pipelines.md) |
+|训练计算目标| 专用计算目标，仅限 CPU 支持| 支持 Azure 机器学习计算（GPU 或 CPU）和笔记本 VM。<br/>（[SDK 中支持的其他计算](../concept-compute-target.md#train)）|
+|推断计算目标| 专用 Web 服务格式，不可自定义 |  Azure Kubernetes 服务和 AML 计算 <br/>（[SDK 中支持的其他计算](../how-to-deploy-and-where.md)） |
+| ML 管道 | 不支持 | 支持[管道](../concept-ml-pipelines.md) |
 | MLOps | 基本模型管理和部署 | 可配置的部署 - 模型和管道版本控制和跟踪 |
-| 模型格式 | 专用格式，仅限工作室 | 标准格式取决于训练作业类型 |
-|自动化模型训练和超参数优化 | 否 | 尚未在设计器中 <br/> （[在 SDK 和工作区登陆页中受支持](../service/concept-automated-ml.md)） | 
+| 模型格式 | 专用格式，仅限工作室（经典版） | 标准格式取决于训练作业类型 |
+|自动化模型训练和超参数优化 | 否 | 尚未在设计器中 <br/> （[在 SDK 和工作区登陆页中受支持](../concept-automated-ml.md)） | 
 
-尝试使用[教程：使用设计器预测汽车价格](../service/tutorial-designer-automobile-price-train-score.md)
+尝试使用[教程：使用设计器预测汽车价格](../tutorial-designer-automobile-price-train-score.md)
 
 > [!NOTE]
 > 在工作室（经典版）中创建的模型不能通过 Azure 机器学习来部署或管理。 但是，在设计器中创建和部署的模型可以通过 Azure 机器学习工作区进行管理。
@@ -93,7 +93,7 @@ Azure 机器学习工作室经典版提供交互式的可视工作区，可在�
 有关机器学习工作室（经典版）随附的示例数据集列表，请参阅 [Use the sample data sets in Azure Machine Learning Studio](use-sample-datasets.md)（使用 Azure 机器学习工作室（经典版）中的示例数据集）。
 
 ### <a name="modules"></a>模块
-模块是可对数据执行的算法。  机器学习工作室的经典版有许多模块，包括数据引入函数、训练、评分和验证过程。 下面是随附模块的一些例子：
+模块是可对数据执行的算法。 Azure 机器学习工作室（经典版）有许多模块，包括数据引入函数、训练、评分和验证过程。 下面是随附模块的一些例子：
 
 * [转换为 ARFF][convert-to-arff] - 将 .NET 序列化数据集转换为属性关系文件格式 (ARFF)。
 * [计算基本统计信息][elementary-statistics] - 计算基本统计信息，例如平均值、标准偏差等。

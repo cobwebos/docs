@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499368"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660794"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -77,7 +77,7 @@ Azure 数据共享目前提供基于快照的共享和就地共享（在有限�
 
 可以通过 Azure 或 REST API 使用上面列出的所有关键功能。 若要更详细地了解如何通过 REST API 使用 Azure Data Share，请查看我们的参考文档。 
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 Azure Data Share 利用 Azure 提供的基础安全措施来保护静态数据和传输中的数据。 将会对静态数据加密，通过基础数据存储提供支持。 也会对传输中的数据加密。 此外还会对静态的和传输中的数据共享元数据加密。 
 

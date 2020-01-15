@@ -1,29 +1,28 @@
 ---
-title: 在 Azure Site Recovery 中设置 Hyper-V VM 的故障转移和故障回复
-description: 了解如何在灾难恢复到 Azure 期间使用 Azure Site Recovery 服务对 Hyper-V VM 进行故障转移和故障回复。
+title: 在 Azure Site Recovery 中设置 Hyper-V VM 到 Azure 的故障转移
+description: 了解如何使用 Azure Site Recovery 将 Hyper-V VM 故障转移到 Azure。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082654"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498169"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>对复制到 Azure 的 Hyper-V VM 进行故障转移和故障回复
+# <a name="fail-over-hyper-v-vms-to-azure"></a>将 Hyper-V VM 故障转移到 Azure
 
-本教程介绍如何将 Hyper-V VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 将 Hyper-V VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 验证 Hyper-V VM 属性以检查是否符合 Azure 要求
-> * 运行到 Azure 的故障转移
-> * 从 Azure 故障回复到本地
-> * 反向复制本地 VM，使之开始再次复制到 Azure
+> * 验证 Hyper-V VM 属性以检查是否符合 Azure 要求。
+> * 将特定 VM 故障转移到 Azure。
+
 
 本教程为系列教程中的第五个教程。 它假设你已完成前面教程中的任务。    
 
@@ -32,8 +31,9 @@ ms.locfileid: "74082654"
 3. 为 [Hyper-V VM](tutorial-hyper-v-to-azure.md) 或为[托管在 System Center VMM 云中的 Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) 设置灾难恢复
 4. [运行灾难恢复演练](tutorial-dr-drill-azure.md)
 
-## <a name="prepare-for-failover-and-failback"></a>准备故障转移和故障回复
+[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中对多个 VM 进行故障转移，请查看[本文](site-recovery-failover.md)。
 
+## <a name="prepare-for-failover"></a>准备故障转移 
 确保 VM 上无快照，并且本地 VM 在故障回复期间已关闭。 这有助于确保复制期间的数据一致性。 在故障回复期间不要打开本地 VM。 
 
 故障转移和故障回复具有三个阶段：
@@ -56,7 +56,7 @@ ms.locfileid: "74082654"
 
 1. 在“磁盘”  中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
 
-## <a name="failover-to-azure"></a>故障转移到 Azure
+## <a name="fail-over-to-azure"></a>故障转移到 Azure
 
 1. 在“设置” > “复制的项”中，单击“VM”>“故障转移”    。
 2. 在“故障转移”中，选择“最新”恢复点   。 
@@ -66,15 +66,18 @@ ms.locfileid: "74082654"
 > [!WARNING]
 > **不会取消正在进行的故障转移**：如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
-## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>将 Azure VM 故障回复到本地并反向复制本地 VM
+## <a name="connect-to-failed-over-vm"></a>连接到故障转移的 VM
 
-故障回复操作基本上是从 Azure 故障转移到本地站点，在反向复制中它会开始将 VM 从本地站点复制到 Azure。
+1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，请[验证是否符合要求](failover-failback-overview.md#connect-to-azure-after-failover)。
+2. 故障转移后，请转到该 VM，并通过与它建立[连接](../virtual-machines/windows/connect-logon.md)来进行验证。
+3. 若要在故障转移后使用不同的恢复点，请使用“更改恢复点”。  在下一步骤中提交故障转移后，此选项不再可用。
+4. 验证后，选择“提交”以确认故障转移后的 VM 恢复点  。
+5. 提交后，系统会删除其他所有可用的恢复点。 完成此步骤，就完成了故障转移。
 
-1. 在“设置” > “复制的项”中，单击“VM”>“计划内故障转移”    。
-2. 在“确认计划故障转移”中，验证故障转移方向（从 Azure），并选择源和目标位置  。
-3. 选择“在故障转移前同步数据(仅同步增量更改)”  。 此选项可最大程度减小 VM 停机时间，因为它在不关闭 VM 的情况下进行同步操作。
-4. 启动故障转移。 可以在“**作业**”选项卡上跟踪故障转移进度。
-5. 请在完成初始数据同步且准备好关闭 Azure VM 后，单击“作业”> 计划故障转移作业名称 >“完成故障转移”   。 这会关闭 Azure VM，将最新更改传输到本地，并启动本地 VM。
-6. 登录到本地 VM，检查它是否按预期方式可用。
-7. 本地 VM 当前处于“提交挂起”状态。  单击“提交”。  这会删除 Azure VM 及其磁盘，并准备要进行反向复制的本地 VM。
-若要开始将本地 VM 复制到 Azure，请启用“反向复制”  。 这会触发复制自关闭 Azure VM 以来发生的增量更改。  
+>[!TIP]
+> 如果故障转移后遇到任何连接问题，请遵循[故障排除指南](site-recovery-failover-to-azure-troubleshoot.md)予以解决。
+
+
+## <a name="next-steps"></a>后续步骤
+
+故障转移后，重新保护 Azure VM，以便它们可以从 Azure 复制到本地。 重新保护 VM 并将其复制到本地站点后，如果已做好准备，请从 Azure 故障回复。

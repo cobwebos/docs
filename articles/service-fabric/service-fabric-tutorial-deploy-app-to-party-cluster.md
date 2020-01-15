@@ -1,32 +1,23 @@
 ---
-title: 将 Service Fabric 应用程序部署到 Azure 中的群集 | Microsoft Docs
-description: 了解如何将应用程序从 Visual Studio 部署到群集。
-services: service-fabric
-documentationcenter: .net
+title: 将 Service Fabric 应用部署到 Azure 中的群集
+description: 了解如何从 Visual Studio 将现有应用程序部署到新创建的 Azure Service Fabric 群集。
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213196"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646001"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
 本教程是一个系列中的第二部分。 它介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的新群集。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建群集。
 > * 使用 Visual Studio 将应用程序部署到远程群集。
@@ -39,7 +30,7 @@ ms.locfileid: "74213196"
 > * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
 > * [设置应用程序的监视和诊断](service-fabric-tutorial-monitoring-aspnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -112,7 +103,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 选择“发布”  。
 
-应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 例如 `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
+应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 示例为 `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
 
 ![Service Fabric 投票示例](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 

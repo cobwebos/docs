@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 832c0e6080b82f3c38beaf051669fbdacd37081c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74100706"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692521"
 ---
 >[!NOTE]
 >本部分提供有关 [Azure AD 应用注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明。
@@ -46,7 +46,7 @@ ms.locfileid: "74100706"
 
 1. 打开用于应用注册的“API 权限”窗格  。 选择“+ 添加权限”按钮  。 在“请求 API 权限”  窗格中，选择“我的组织使用的 API”  选项卡，然后搜索以下任意一项：
     
-    1. `Azure Digital Twins`。 选择 **Azure 数字孪生** API。
+    1. `Azure Digital Twins` 列中的一个值匹配。 选择 **Azure 数字孪生** API。
 
         [![搜索“API”或“Azure 数字孪生”](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -59,7 +59,7 @@ ms.locfileid: "74100706"
     > * 测试租户和客户帐户应搜索 `Azure Digital Twins`。
     > * 其他 Microsoft 帐户应搜索 `Azure Smart Spaces Service`。
 
-1. 所选的 API 在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”   。 选择“读取”下拉选项  ，然后选中“Read.Write”复选框  。 选择“添加权限”按钮  。
+1. 选择后，任一 API 会在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”   。 选择“读取”下拉选项  ，然后选中“Read.Write”复选框  。 选择“添加权限”按钮  。
 
     [![添加 API 权限](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 

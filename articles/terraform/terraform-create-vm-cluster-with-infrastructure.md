@@ -3,12 +3,12 @@ title: 教程 - 使用 Terraform 和 HCL 创建 Azure VM 群集
 description: 使用 Terraform 和 HCL 在 Azure 中创建具有负载均衡器的 Linux 虚拟机群集
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159273"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665356"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>教程：使用 Terraform 和 HCL 创建 Azure VM 群集
 
@@ -208,7 +208,7 @@ ms.locfileid: "74159273"
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ ms.locfileid: "74159273"
 - 名为 `terraform.tfvars` 的文件
 - 使用以下模式命名的文件：`*.auto.tfvars`
 
-但是，变量文件不需要遵循上述两个约定中的任何一个。 在这种情况下，请用 `-var-file` 参数指定变量文件名。 以下示例对此进行了说明：
+但是，变量文件不需要遵循上述两个约定中的任何一个。 在此情况下，请使用 `-var-file` 参数指定变量文件名，其中变量文件名不带扩展名。 以下示例对此进行了说明：
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraform 确定在配置文件中指定状态所需的操作。
