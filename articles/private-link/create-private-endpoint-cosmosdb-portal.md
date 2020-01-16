@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430304"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028574"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户
 
@@ -141,7 +141,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. 在 *myVM*的远程桌面中，安装[Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
+1. 在*myVM*的远程桌面中，安装[Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
 
 1. 选择右键单击 " **Cosmos DB 帐户（预览）** "。
 
@@ -159,22 +159,22 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. （可选）向*mycosmosaccount*添加新项。
 
-1. 关闭与 *myVM*的远程桌面连接。
+1. 关闭与*myVM*的远程桌面连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 使用完专用终结点、Azure Cosmos 帐户和 VM 后，请删除资源组及其包含的所有资源： 
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。 **  
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”。
 
 1. 选择“删除资源组”。
 
-1. 输入 " *myResourceGroup*  **" 以键入资源组名称**，然后选择 "**删除**"。
+1. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何在虚拟网络上创建 VM、Azure Cosmos 帐户和专用终结点。 你从 internet 连接到 VM，并使用专用链接安全地传达给 Azure Cosmos 帐户。
 
-* 若要了解有关专用终结点的详细信息，请参阅 [什么是 Azure 专用终结点？](private-endpoint-overview.md)。
+* 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 
 * 若要详细了解使用与 Azure Cosmos DB 时专用终结点的限制，请参阅[Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md)文章。

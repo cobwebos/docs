@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457695"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968296"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>开始借助 .NET 使用 Azure 队列存储
 
@@ -37,7 +37,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 * [适用于 .NET 的 Azure 存储公用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 * [适用于 .NET 的 Azure 存储队列客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* 一个 [Azure 存储帐户](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* 一个 [Azure 存储帐户](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

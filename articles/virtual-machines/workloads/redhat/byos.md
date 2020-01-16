@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: e9cbd98afd5f9ed5561cba2236d85da331db7895
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944699"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980140"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 Red Hat Enterprise Linux （RHEL）映像可通过即用即付（PAYG）或自带订阅（Red Hat 黄金图）模型在 Azure 中使用。 本文档概述了 Azure 中的 Red Hat 黄金映像。
@@ -189,5 +189,6 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付（PAYG）或自�
 ## <a name="next-steps"></a>后续步骤
 * [Red Hat 云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)中提供了云访问的分步指南和程序详细信息。
 * 了解有关[Azure Red Hat 更新基础结构](./redhat-rhui.md)的详细信息。
-* 若要详细了解 Azure 中的 Red Hat 映像，请转到此[文档页面](./redhat-images.md)。
+* 若要了解有关 Azure 中所有 Red Hat 映像的详细信息，请参阅[文档页](./redhat-images.md)。
 * 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
+* 有关 RHEL 黄金映像的其他文档，可参阅[Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。

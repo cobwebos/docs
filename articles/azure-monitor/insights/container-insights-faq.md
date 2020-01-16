@@ -3,12 +3,12 @@ title: 用于容器的 Azure Monitor 常见问题解答 | Microsoft Docs
 description: 用于容器的 Azure Monitor 是用于监视 Azure 中的 AKS群集和容器实例的运行状况的解决方案。 本文将解答一些常见问题。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0d2be8b573dbbf047f4a27ae9ac9f611b76dc51
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405069"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977763"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>用于容器的 Azure Monitor 常见问题解答
 
@@ -73,7 +73,7 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
  
 ## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何实现解决*缺少订阅注册*错误？
 
-如果收到错误 "为 microsoft.operationsmanagement" 中**缺少订阅注册**，可以通过在其中定义了工作区的订阅中注册资源提供程序**为 microsoft.operationsmanagement**来解决此错误。 可以在[此处](../../azure-resource-manager/resource-manager-register-provider-errors.md)找到介绍如何执行此操作的文档。
+如果收到错误 "为 microsoft.operationsmanagement" 中**缺少订阅注册**，可以通过在其中定义了工作区的订阅中注册资源提供程序**为 microsoft.operationsmanagement**来解决此错误。 可以在[此处](../../azure-resource-manager/templates/error-register-resource-provider.md)找到介绍如何执行此操作的文档。
 
 ## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>支持 RBAC 的 AKS 群集是否支持？
 

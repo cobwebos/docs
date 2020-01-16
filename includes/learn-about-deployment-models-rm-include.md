@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: cef2eb2cde2a26239b774729fa72b4f3ba367df7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0f9535e915ef940e097b7ab6f74848e59635327b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67172761"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978828"
 ---
 > [!NOTE]
-> Azure 提供了可以用来创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../articles/azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了资源管理器部署模型的使用。 对于新部署，建议使用资源管理器部署模型而非经典部署模型。
+> Azure 具有两种不同的部署模型，可用于创建和处理资源： [Azure 资源管理器和经典](../articles/azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用资源管理器部署模型。 建议为新部署（而不是经典部署模型）部署模型资源管理器。

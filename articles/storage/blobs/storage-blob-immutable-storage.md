@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921235"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981842"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
@@ -156,7 +156,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **如果尝试删除具有基于时间的保留策略或法律持有的容器的存储帐户，会发生什么情况？**
 
-如果至少有一个容器具有合法保留集或**锁定**的基于时间的策略，则存储帐户删除将失败。 具有未锁定的基于时间的策略的容器无法防止删除存储帐户。 在删除存储帐户之前，必须删除所有合法保留并删除所有**锁定**的容器。 有关删除容器的信息，请查看上一个问题。 你还可以使用[Azure 资源管理器锁定](../../azure-resource-manager/resource-group-lock-resources.md)为你的存储帐户应用进一步的删除保护。
+如果至少有一个容器具有合法保留集或**锁定**的基于时间的策略，则存储帐户删除将失败。 具有未锁定的基于时间的策略的容器无法防止删除存储帐户。 在删除存储帐户之前，必须删除所有合法保留并删除所有**锁定**的容器。 有关删除容器的信息，请查看上一个问题。 你还可以使用[Azure 资源管理器锁定](../../azure-resource-manager/management/lock-resources.md)为你的存储帐户应用进一步的删除保护。
 
 **如果 blob 处于不可变状态，是否可以跨不同的 blob 层（热、冷、存档）移动数据？**
 
@@ -179,4 +179,4 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 - [为 Blob 存储设置和管理永久性策略](storage-blob-immutability-policies-manage.md)
 - [将规则设置为自动将 blob 数据分层并删除生命周期管理](storage-lifecycle-management-concepts.md)
 - [Azure 存储 Blob 的软删除](../blobs/storage-blob-soft-delete.md)
-- [用 Azure 资源管理器锁定保护订阅、资源组和资源](../../azure-resource-manager/resource-group-lock-resources.md)。
+- [用 Azure 资源管理器锁定保护订阅、资源组和资源](../../azure-resource-manager/management/lock-resources.md)。

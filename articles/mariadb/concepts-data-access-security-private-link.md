@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898165"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982389"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>Azure Database for MariaDB 的专用链接（预览）
 
@@ -28,7 +28,7 @@ Azure Database for MariaDB 中的数据（例如，数据库管理员）可以�
 
 假设有一个在连接到 Azure Database for MariaDB 实例的 Azure VM 内运行 MariaDB 工作台的用户的方案。 此 MariaDB 实例位于 "美国西部" 数据中心。 下面的示例演示如何使用网络访问控制在 Azure Database for MariaDB 上使用公共终结点限制访问。
 
-* 通过将 "允许 Azure 服务" 设置为 "关闭"，禁用通过公共终结点 Azure Database for MariaDB 的所有 Azure 服务流量。 请确保不允许 IP 地址或范围通过[防火墙规则](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules)或[虚拟网络服务终结点](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet)访问服务器。
+* 通过将 "允许 Azure 服务" 设置为 "关闭"，禁用通过公共终结点 Azure Database for MariaDB 的所有 Azure 服务流量。 请确保不允许 IP 地址或范围通过[防火墙规则](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules)或[虚拟网络服务终结点](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)访问服务器。
 
 * 仅允许使用 VM 的专用 IP 地址将流量传输到 Azure Database for MariaDB。 有关详细信息，请参阅有关[服务终结点](concepts-data-access-security-vnet.md)和 [VNet 防火墙规则](howto-manage-vnet-portal.md)的文章。
 

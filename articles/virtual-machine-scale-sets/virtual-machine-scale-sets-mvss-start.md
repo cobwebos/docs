@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459373"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980195"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程介绍如何创建基本规模集模板，以及如何修改此模板以满足各种方案。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
@@ -75,7 +75,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ## <a name="specify-location"></a>指定位置
-若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/resource-group-template-functions.md)。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
+若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/templates/template-functions.md)。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
 
 ```json
        "location": "[resourceGroup().location]",

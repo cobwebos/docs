@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705003"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975212"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -84,11 +84,11 @@ ms.locfileid: "74705003"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以创建 WINDOWS Server VM 并将其加入到 Azure AD DS 托管域：
 
-    | 设置                   | Value |
+    | 设置                   | 值 |
     |---------------------------|-------|
-    | Subscription              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
-    | Resource group            | 选择 VM 的资源组。 |
-    | Location                  | 选择 VM 的位置。 |
+    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | 资源组            | 选择 VM 的资源组。 |
+    | 位置                  | 选择 VM 的位置。 |
     | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
     | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
     | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如*myvm*。 |
@@ -117,11 +117,11 @@ ms.locfileid: "74705003"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以将 VM 加入到 Azure AD DS 托管域：
 
-    | 设置                   | Value |
+    | 设置                   | 值 |
     |---------------------------|-------|
-    | Subscription              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
-    | Resource group            | 选择包含现有 VM 的资源组。 |
-    | Location                  | 选择现有 VM 的位置。 |
+    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | 资源组            | 选择包含现有 VM 的资源组。 |
+    | 位置                  | 选择现有 VM 的位置。 |
     | VM 列表                   | 输入要加入到 Azure AD DS 托管域的现有 VM 的逗号分隔列表，例如*myVM1、myVM2*。 |
     | 域加入用户名     | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
     | 域加入用户密码 | 在上一个设置中指定的用户帐户的密码。 |
@@ -143,6 +143,6 @@ ms.locfileid: "74705003"
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
-[template-overview]: ../azure-resource-manager/template-deployment-overview.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
+[template-overview]: ../azure-resource-manager/templates/overview.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md

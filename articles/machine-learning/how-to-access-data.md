@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: ylxiong
-author: YLXiong1125
+ms.author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 12/10/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac6ef6341013ca13d5a9f27be8897365c1c2155d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f8bad8be3c02228fee9dded729e22c5a406da178
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540940"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76025038"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,12 +43,42 @@ ms.locfileid: "75540940"
         
    ws = Workspace.from_config()
    ```
+<a name="matrix"></a>
+
+## <a name="supported-data-storage-service-types"></a>支持的数据存储服务类型
+
+数据存储目前支持将连接信息存储到下表中列出的存储服务。
+
+| 存储&nbsp;类型 | 身份验证&nbsp;类型 | [Azure&nbsp;计算机&nbsp;学习工作室](https://ml.azure.com/) | [Azure&nbsp;计算机&nbsp;了解&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;计算机&nbsp;学习 CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;计算机&nbsp;学习&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
+---|---|---|---|---|---
+[Azure&nbsp;Blob&nbsp;存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓
+[Azure&nbsp;文件&nbsp;共享]((https://docs.microsoft.com/azure/storage/files/storage-files-introduction))| 帐户密钥 <br> SAS 令牌 | ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data Lake&nbsp;存储代&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| 服务主体| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data Lake&nbsp;存储代&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| 服务主体| ✓ | ✓ | ✓ |✓
+Azure&nbsp;SQL&nbsp;数据库| SQL 身份验证 <br>服务主体| ✓ | ✓ | ✓ |✓
+Azure&nbsp;PostgreSQL | SQL 身份验证| ✓ | ✓ | ✓ |✓
+用于&nbsp;MySQL 的 Azure&nbsp;数据库&nbsp; | SQL 身份验证|  | ✓ | ✓ |✓
+Databricks&nbsp;文件&nbsp;系统| 无身份验证 | | ✓ | ✓ |✓ 
+
+\* 仅支持本地计算目标方案
+
+### <a name="storage-guidance"></a>存储指导原则
+
+建议为 Azure blob 容器创建数据存储。  
+标准存储和高级存储都适用于 blob。 尽管高级存储开销较高，但其速度越快，吞吐量也可能会提高定型运行的速度，特别是在您针对大型数据集进行训练时。 有关存储帐户的成本的信息，请参阅[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)。
+
+创建工作区时，会自动将 Azure blob 容器和 Azure 文件共享注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 它们存储在附加到工作区的存储帐户中预配的 blob 容器和文件共享的连接信息。 `workspaceblobstore` 容器设置为默认数据存储。
 
 <a name="access"></a>
 
 ## <a name="create-and-register-datastores"></a>创建和注册数据存储
 
-将 Azure 存储解决方案注册为数据存储时，会自动在特定的工作区中创建该数据存储。 可以使用 Python SDK 或 Azure 机器学习 studio 创建数据存储并将其注册到工作区。
+将 Azure 存储解决方案注册为数据存储时，会自动创建数据存储并将其注册到特定的工作区。 可以使用 Python SDK 或 Azure 机器学习 studio 创建数据存储并将其注册到工作区。
+
+>[!IMPORTANT]
+> 作为当前数据存储创建和注册过程的一部分，Azure 机器学习验证用户提供的主体（用户名、服务主体或 SAS 令牌）是否有权访问基础存储服务。 
+<br>
+但是，对于 Azure Data Lake Storage 第1代和第2数据存储，在调用[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py)或[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)之类的数据访问方法时，会进行此验证。 
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -62,7 +92,7 @@ ms.locfileid: "75540940"
 > [!IMPORTANT]
 > 如果你的存储帐户位于虚拟网络中，则仅支持创建 Azure blob 数据存储。 若要向你的工作区授予对你的存储帐户的访问权限，请将参数 `grant_workspace_access` 设置为 `True`。
 
-以下示例演示如何将 Azure blob 容器、Azure 文件共享和 Azure SQL 数据注册为数据存储。
+以下示例演示如何将 Azure blob 容器、Azure 文件共享和 Azure Data Lake Storage 第2代作为数据存储进行注册。 对于其他存储服务，请参阅[`register_azure_*` 方法的参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)。
 
 #### <a name="blob-container"></a>Blob 容器
 
@@ -96,56 +126,37 @@ account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage 
 account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
-                                                 datastore_name=file_datastore_name, 
-                                                 file_share_name=file_share_name, 
-                                                 account_name=account_name,
-                                                 account_key=account_key)
+                                                     datastore_name=file_datastore_name, 
+                                                     file_share_name=file_share_name, 
+                                                     account_name=account_name,
+                                                     account_key=account_key)
 ```
 
-#### <a name="sql-data"></a>SQL 数据
+#### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 第2代
 
-对于 Azure SQL 数据存储，请使用[register_azure_sql_database （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-sql-database-workspace--datastore-name--server-name--database-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--endpoint-none--overwrite-false--username-none--password-none-)来注册使用 SQL 身份验证或服务主体权限连接到 Azure SQL 数据库的凭据数据存储。 
+对于 Azure Data Lake Storage 第2代（ADLS 第2代）数据存储，请使用[register_azure_data_lake_gen2 （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-)来注册使用服务主体权限连接到 Azure DataLake Gen 2 存储的凭据数据存储。 详细了解[ADLS 第2代的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
-通过 SQL 身份验证进行注册：
-
-```python
-sql_datastore_name="azsqlsdksql"
-server_name=os.getenv("SQL_SERVERNAME", "<my-server-name>") # Name of the Azure SQL server
-database_name=os.getenv("SQL_DATBASENAME", "<my-database-name>") # Name of the Azure SQL database
-username=os.getenv("SQL_USER_NAME", "<my-sql-user-name>") # Username of the database user to access the database
-password=os.getenv("SQL_USER_PASSWORD", "<my-sql-user-password>") # Password of the database user to access the database
-
-sql_datastore = Datastore.register_azure_sql_database(workspace=ws,
-                                                  datastore_name=sql_datastore_name,
-                                                  server_name=server_name,
-                                                  database_name=database_name,
-                                                  username=username,
-                                                  password=password)
-
-```
-
-若要通过服务主体进行注册：
+以下代码创建 `adlsgen2_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储通过使用所提供的服务主体凭据来访问 `account_name` 存储帐户的文件系统 `test`。
 
 ```python 
-sql_datastore_name="azsqlsdksp"
-server_name=os.getenv("SQL_SERVERNAME", "<my-server-name>") # Name of the SQL server
-database_name=os.getenv("SQL_DATBASENAME", "<my-database-name>") # Name of the SQL database
-client_id=os.getenv("SQL_CLIENTNAME", "<my-client-id>") # Client ID of the service principal with permissions to access the database
-client_secret=os.getenv("SQL_CLIENTSECRET", "<my-client-secret>") # Secret of the service principal
-tenant_id=os.getenv("SQL_TENANTID", "<my-tenant-id>") # Tenant ID of the service principal
+adlsgen2_datastore_name = 'adlsgen2datastore'
 
-sql_datastore = Datastore.register_azure_sql_database(workspace=ws,
-                                                      datastore_name=sql_datastore_name,
-                                                      server_name=server_name,
-                                                      database_name=database_name,
-                                                      client_id=client_id,
-                                                      client_secret=client_secret,
-                                                      tenant_id=tenant_id)
+subscription_id=os.getenv("ADL_SUBSCRIPTION", "<my_subscription_id>") # subscription id of ADLS account
+resource_group=os.getenv("ADL_RESOURCE_GROUP", "<my_resource_group>") # resource group of ADLS account
+
+account_name=os.getenv("ADLSGEN2_ACCOUNTNAME", "<my_account_name>") # ADLS Gen2 account name
+tenant_id=os.getenv("ADLSGEN2_TENANT", "<my_tenant_id>") # tenant id of service principal
+client_id=os.getenv("ADLSGEN2_CLIENTID", "<my_client_id>") # client id of service principal
+client_secret=os.getenv("ADLSGEN2_CLIENT_SECRET", "<my_client_secret>") # the secret of service principal
+
+adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
+                                                             datastore_name=adlsgen2_datastore_name,
+                                                             account_name=account_name, # ADLS Gen2 account name
+                                                             filesystem='test', # ADLS Gen2 filesystem
+                                                             tenant_id=tenant_id, # tenant id of service principal
+                                                             client_id=client_id, # client id of service principal
+                                                             client_secret=client_secret) # the secret of service principal
 ```
-
-#### <a name="storage-guidance"></a>存储指导原则
-
-建议使用 Azure blob 容器。 标准存储和高级存储都适用于 blob。 尽管高级存储开销较高，但其速度越快，吞吐量也可能会提高定型运行的速度，特别是在您针对大型数据集进行训练时。 有关存储帐户的成本的信息，请参阅[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)。
 
 ### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室 
 
@@ -181,8 +192,6 @@ datastores = ws.datastores
 for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
-
-创建工作区时，会自动将 Azure blob 容器和 Azure 文件共享注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 它们存储在附加到工作区的存储帐户中预配的 blob 容器和文件共享的连接信息。 `workspaceblobstore` 容器设置为默认数据存储。
 
 若要获取工作区的默认数据存储，请使用以下行：
 
@@ -230,100 +239,10 @@ datastore.download(target_path='your target path',
 `target_path` 参数是要将数据下载到其中的本地目录的位置。 若要在文件共享（或 blob 容器）中指定要下载到的文件夹路径，请提供 `prefix` 的路径。 如果 `None``prefix`，则将下载文件共享（或 blob 容器）的所有内容。
 
 <a name="train"></a>
+
 ## <a name="access-your-data-during-training"></a>在定型过程中访问数据
 
-> [!IMPORTANT]
-> 现在，我们建议使用[Azure 机器学习数据集](how-to-create-register-datasets.md)在训练中访问数据。 数据集提供了将表格数据加载到 pandas 或 Spark 数据帧的函数。 数据集还可以从 Azure Blob 存储、Azure 文件、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 下载或装载任何格式的文件。 [详细了解如何对数据集进行训练](how-to-train-with-datasets.md)。
-
-下表列出了一些方法，这些方法告诉计算目标如何在运行期间使用数据存储： 
-
-道路|方法|Description|
-----|-----|--------
-装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| 用于在计算目标上装载数据存储。 装载数据存储后，你的计算目标可访问你的数据存储的所有文件。
-下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|使用将数据存储的内容下载到 `path_on_compute`指定的位置。 <br><br> 此下载在运行之前发生。
-上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从 `path_on_compute` 指定的位置上传到数据存储。 <br><br> 此上传在运行之后发生。
-
-若要引用数据存储中的特定文件夹或文件并使其在计算目标上可用，请使用数据存储[`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-)方法：
-
-```Python
-# To mount the full contents in your storage to the compute target
-datastore.as_mount()
-
-# To download the contents of only the `./bar` directory in your storage to the compute target
-datastore.path('./bar').as_download()
-```
-> [!NOTE]
-> 任何指定 `datastore` 或 `datastore.path` 对象都解析为 `"$AZUREML_DATAREFERENCE_XXXX"`格式的环境变量名称。 此名称的值表示计算目标上的装载/下载路径。 计算目标上的数据存储路径可能与训练脚本的执行路径不相同。
-
-### <a name="examples"></a>示例 
-
-建议使用[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类在训练过程中访问数据。 
-
-`script_params` 变量是包含 `entry_script`参数的字典。 使用它传入数据存储，并说明数据在计算目标上如何可用。 从[端到端教程](tutorial-train-models-with-aml.md)了解更多详细信息。
-
-```Python
-from azureml.train.estimator import Estimator
-
-# Notice that '/' is in front, which indicates the absolute path
-script_params = {
-    '--data_dir': datastore.path('/bar').as_mount()
-}
-
-est = Estimator(source_directory='your code directory',
-                entry_script='train.py',
-                script_params=script_params,
-                compute_target=compute_target
-                )
-```
-
-你还可以将数据存储列表传入到 `Estimator` 构造函数的 `inputs` 参数，以便在数据存储中装载或复制数据。 此代码示例：
-* 在运行 `train.py` 训练脚本之前，将 `datastore1` 中的所有内容下载到计算目标。
-* 在运行 `train.py` 之前，将 `datastore2` 中的 `'./foo'` 文件夹下载到计算目标。
-* 运行脚本后，将 `'./bar.pkl'` 文件从计算目标上传到 `datastore3`。
-
-```Python
-est = Estimator(source_directory='your code directory',
-                compute_target=compute_target,
-                entry_script='train.py',
-                inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
-```
-如果希望使用 `RunConfig` 对象进行定型，则需要设置[`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)对象。 
-
-下面的代码演示如何使用估算管道中的 `DataReference` 对象。 有关完整示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)。
-
-```Python
-from azureml.core import Datastore
-from azureml.data.data_reference import DataReference
-from azureml.pipeline.core import PipelineData
-
-def_blob_store = Datastore(ws, "workspaceblobstore")
-
-input_data = DataReference(
-       datastore=def_blob_store,
-       data_reference_name="input_data",
-       path_on_datastore="20newsgroups/20news.pkl")
-
-output = PipelineData("output", datastore=def_blob_store)
-```
-<a name="matrix"></a>
-
-### <a name="compute-and-datastore-matrix"></a>计算和数据存储矩阵
-
-数据存储目前支持将连接信息存储到下表中列出的存储服务。 此矩阵显示了不同计算目标和数据存储方案的可用数据访问功能。 [详细了解 Azure 机器学习的计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。
-
-|计算|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
-|--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
-| 本地|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|N/A         |N/A                                                                         |
-| Azure 机器学习计算 |[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、[机器学习管道](concept-ml-pipelines.md)|[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、[机器学习管道](concept-ml-pipelines.md)|N/A         |N/A                                                                         |
-| 虚拟机               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
-| Azure HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
-| 数据传输                  |[机器学习管道](concept-ml-pipelines.md)                                               |N/A                                           |[机器学习管道](concept-ml-pipelines.md)            |[机器学习管道](concept-ml-pipelines.md)                                                                            |
-| Azure Databricks                     |[机器学习管道](concept-ml-pipelines.md)                                              |N/A                                           |[机器学习管道](concept-ml-pipelines.md)             |N/A                                                                         |
-| Azure 批处理                    |[机器学习管道](concept-ml-pipelines.md)                                               |N/A                                           |N/A         |N/A                                                                         |
-| Azure Data Lake Analytics       |N/A                                           |N/A                                           |[机器学习管道](concept-ml-pipelines.md)             |N/A                                                                         |
-
-> [!NOTE]
-> 在某些情况下，使用 `as_download()` 而不是 `as_mount()`，可以更快地运行大量数据进程。 你可以验证此 experimentally。
+若要与数据存储中的数据进行交互，或将数据打包到可用于机器学习任务（例如培训）的可耗用对象，请[创建一个 Azure 机器学习数据集](how-to-create-register-datasets.md)。 数据集提供了将表格数据加载到 pandas 或 Spark 数据帧的函数。 数据集还可以从 Azure Blob 存储、Azure 文件、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 下载或装载任何格式的文件。 [详细了解如何对数据集进行训练](how-to-train-with-datasets.md)。
 
 ### <a name="accessing-source-code-during-training"></a>在定型期间访问源代码
 
@@ -349,13 +268,15 @@ Azure 机器学习提供多种方法来使用模型进行评分。 其中一些�
 如果 SDK 无法提供对数据存储的访问权限，则可以通过使用相关的 Azure SDK 访问数据来创建自定义代码。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)是一个客户端库，可用于访问 blob 或文件中存储的数据。
 
 <a name="move"></a>
+
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>将数据移到支持的 Azure 存储解决方案
 
-Azure 机器学习支持访问 Azure Blob 存储、Azure 文件、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 中的数据。 如果使用不受支持的存储，建议使用 Azure 数据工厂将数据移动到支持的 Azure 存储解决方案。 将数据移动到支持的存储可以帮助你在机器学习试验期间节省数据传出成本。 
+Azure 机器学习支持访问 Azure Blob 存储、Azure 文件、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 中的数据。 如果正在使用不受支持的存储，建议使用[Azure 数据工厂和这些步骤]((https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool))将数据移动到支持的 azure 存储解决方案。 将数据移动到支持的存储可以帮助你在机器学习试验期间节省数据传出成本。 
 
-Azure 数据工厂提供高效且复原的数据传输，其中包含80个以上的预生成连接器，无需额外付费。 这些连接器包括 Azure 数据服务、本地数据源、Amazon S3 和 Redshift 以及 Google BigQuery。 [按照分步指南操作，使用 Azure 数据工厂移动数据](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
+Azure 数据工厂提供高效且复原的数据传输，其中包含80个以上的预生成连接器，无需额外付费。 这些连接器包括 Azure 数据服务、本地数据源、Amazon S3 和 Redshift 以及 Google BigQuery。
 
 ## <a name="next-steps"></a>后续步骤
 
+* [创建 Azure 机器学习数据集](how-to-create-register-datasets.md)
 * [定型模型](how-to-train-ml-models.md)
 * [部署模型](how-to-deploy-and-where.md)

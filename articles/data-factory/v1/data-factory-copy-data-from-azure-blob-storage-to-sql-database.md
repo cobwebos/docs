@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929750"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979727"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "74929750"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。
 
 此教程介绍如何创建包含管道的数据工厂，以将数据从 Blob 存储复制到 SQL 数据库。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74929750"
 开始本教程之前，必须具有以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](https://azure.microsoft.com/pricing/free-trial/)一文。
-* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
 * **Azure SQL 数据库**。 在本教程中，将 Azure SQL 数据库用作**目标**数据存储。 如果没有可在本教程中使用的 Azure SQL 数据库，请参阅[如何创建和配置 Azure SQL 数据库](../../sql-database/sql-database-get-started.md)进行创建。
 * **SQL Server 2012/2014 或 Visual Studio 2013**。 可使用 SQL Server Management Studio 或 Visual Studio 创建示例数据库和查看数据库中的结果数据。  
 
@@ -107,7 +107,7 @@ ms.locfileid: "74929750"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **如果计算机上已安装 SQL Server 2012/2014：** 请遵循[使用 SQL Server Management Studio 管理 Azure SQL 数据库](../../sql-database/sql-database-manage-azure-ssms.md)一文中的说明连接到 Azure SQL Server，并运行 SQL 脚本。 
+    **如果计算机上已安装 SQL Server 2012/2014：** 请遵循[使用 SQL Server Management Studio 管理 Azure SQL 数据库](../../sql-database/sql-database-manage-azure-ssms.md)一文中的说明连接到 Azure SQL Server，并运行 SQL 脚本。
 
     如果不允许客户端访问 Azure SQL Server，则需要将 Azure SQL Server 的防火墙配置为允许从计算机（IP 地址）访问。 请参阅 [此文](../../sql-database/sql-database-configure-firewall-settings.md) 中的步骤，为 Azure SQL Server 配置防火墙。
 
@@ -123,5 +123,5 @@ ms.locfileid: "74929750"
 
 > [!NOTE]
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
-> 
-> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
+>
+> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。

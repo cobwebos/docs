@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 8d2dccc1543512ead4b0ff6475ace20045bb1b8c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762767"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979710"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -194,5 +194,5 @@ RunType 维度的有效值为：
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](service/monitor-azure-machine-learning.md)。
+- 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 - 有关监视 Azure 资源的详细信息，请参阅[监视 azure 资源的 Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resource) 。

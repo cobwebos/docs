@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 3f9a04d767ffeb5112e2b06ed319a3c28f3b7f57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406513"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977822"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -20,7 +20,7 @@ ms.locfileid: "75406513"
 
 本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)、设置[警报](../../azure-monitor/app/alerts.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
 
-创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/manage-resources-powershell.md) 的 JSON 模板。 基本过程是：下载现有资源的 JSON 定义;参数化某些值，如名称;然后，在每次要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
+创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/management/manage-resources-powershell.md) 的 JSON 模板。 基本过程是：下载现有资源的 JSON 定义;参数化某些值，如名称;然后，在每次要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
 ## <a name="one-time-setup"></a>一次性设置
 如果之前尚未将 PowerShell 与 Azure 订阅结合使用：
@@ -394,7 +394,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>参数化模板
-现在需要将特定名称更换为参数。 若要[参数化模板](../../azure-resource-manager/templates/template-syntax.md)，则使用[一组帮助程序函数](../../azure-resource-manager/resource-group-template-functions.md)编写表达式。 
+现在需要将特定名称更换为参数。 若要[参数化模板](../../azure-resource-manager/templates/template-syntax.md)，则使用[一组帮助程序函数](../../azure-resource-manager/templates/template-functions.md)编写表达式。 
 
 不能仅参数化字符串的一部分，因此使用 `concat()` 生成字符串。
 

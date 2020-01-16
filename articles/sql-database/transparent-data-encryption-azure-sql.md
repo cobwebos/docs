@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381dfb4fca7476d5805bff92d58ecbbf49679346
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979974"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -79,7 +79,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 在数据库级别启用和禁用透明数据加密。 若要在数据库中启用透明数据加密，请转到 [Azure 门户](https://portal.azure.com)，并使用 Azure 管理员或参与者帐户登录。 在用户数据库下找到透明数据加密设置。 默认会使用服务托管的透明数据加密。 将为包含数据库的服务器自动生成透明数据加密证书。 对于 Azure SQL 托管实例，使用 T-SQL 在数据库上启用和禁用透明数据加密。
 
-![服务托管的透明数据加密](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
+![服务托管的透明数据加密](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)
 
 在服务器级别设置透明数据加密主密钥（也称为透明数据加密保护器）。 要使用带“创建自己的密钥”支持的透明数据加密，以及使用 Key Vault 中的密钥来保护数据库，请打开服务器下的透明数据加密设置。
 

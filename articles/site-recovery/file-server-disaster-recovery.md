@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708123"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980288"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -45,7 +45,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
     * 如果 VM 包含不受 Site Recovery 支持的配置，可以使用此方法。 经常在文件服务器环境中使用的共享群集磁盘就是这样一个例子。 DFSR 也很适合在变动率中等的低带宽环境中工作。 还需要考虑到一直保持运行某个 Azure VM 所产生的附加成本。 
 
-* **使用 Azure 文件同步服务复制文件**：如果打算使用云，或者已在使用 Azure VM，则可以使用 Azure 文件同步。Azure 文件同步可同步云中完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) 协议进行访问。 然后，Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 
+* **使用 Azure 文件同步来复制文件**：如果打算使用云或已使用 Azure VM，则可以使用 Azure 文件同步。Azure 文件同步提供对云中完全托管的文件共享的同步，这些共享可通过行业标准的[服务器消息块](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（SMB）协议进行访问。 然后，Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 
 
 下图可帮助你决定要对文件服务器环境使用哪种策略。
 
@@ -56,7 +56,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 |环境  |建议  |考虑的要点 |
 |---------|---------|---------|
-|带有或不带 DFSR 的文件服务器环境|   [使用 Site Recovery 进行复制](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery 不支持共享磁盘群集或网络附加存储 (NAS)。 如果环境使用上述任何配置，请相应地使用其他任何方法。 <br> Site Recovery 不支持 SMB 3.0。 仅当已在文件原始位置更新了对文件所做的更改时，复制的 VM 才会合并更改。<br>  Site Recovery 提供近同步的数据复制过程, 因此, 在发生非计划的故障转移方案时, 可能会丢失数据, 并可能会导致 USN 不匹配问题。
+|带有或不带 DFSR 的文件服务器环境|   [使用 Site Recovery 进行复制](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery 不支持共享磁盘群集或网络附加存储 (NAS)。 如果环境使用上述任何配置，请相应地使用其他任何方法。 <br> Site Recovery 不支持 SMB 3.0。 仅当已在文件原始位置更新了对文件所做的更改时，复制的 VM 才会合并更改。<br>  Site Recovery 提供近同步的数据复制过程，因此，在发生非计划的故障转移方案时，可能会丢失数据，并可能会导致 USN 不匹配问题。
 |带有 DFSR 的文件服务器环境     |  [将 DFSR 扩展到 Azure IaaS 虚拟机](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR 可在带宽严重不足的环境中正常工作。 此方法要求一直保持运行某个 Azure VM。 需要在规划中考虑该 VM 的成本。         |
 |Azure IaaS VM     |     文件同步    |     如果在灾难恢复场景中使用文件同步，则在故障转移期间，需要采取手动操作来确保可在客户端计算机上以透明方式访问文件共享。 文件同步要求在客户端计算机上开放端口 445。     |
 
@@ -64,7 +64,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 ### <a name="site-recovery-support"></a>Site Recovery 支持
 由于 Site Recovery 复制不区分应用程序，因此这些建议应该也适用于以下场景。
 
-| Source    |到辅助站点    |到 Azure
+| 源    |到辅助站点    |到 Azure
 |---------|---------|---------|
 |Azure| -|是|
 |Hyper-V|   是 |是
@@ -132,7 +132,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 2. 扩展本地 Active Directory。
 3. 在 Azure 虚拟网络中[创建并预配文件服务器 VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
 确保将虚拟机添加到已与本地环境建立交叉连接的同一个 Azure 虚拟网络。 
-4. 在 Windows Server 上安装并[配置 DFSR](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx)。
+4. 在 Windows Server 上安装并[配置 DFSR](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877)。
 5. [实现 DFS 命名空间](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces)。
 6. 实现 DFS 命名空间后，可以通过更新 DFS 命名空间文件夹目标，将共享文件夹从生产环境故障转移到灾难恢复站点。 通过 Active Directory 复制这些 DFS 命名空间更改后，用户会以透明方式连接到相应的文件夹目标。
 

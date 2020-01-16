@@ -5,12 +5,12 @@ author: amberb
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: c6972aad49cebb7c714b86e636b95e1130b001c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485216"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981223"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以编程方式创建 Azure 订阅（预览）
 
@@ -33,7 +33,7 @@ ms.locfileid: "75485216"
 
 ### <a name="find-accounts-you-have-access-to"></a>查找有访问权限的帐户
 
-将你添加到与帐户所有者关联的注册帐户后，Azure 将使用帐户到注册关系来确定在何处计费订阅费用。 帐户下创建的所有订阅都将按帐户所在的 EA 注册计费。 若要创建订阅，必须传入拥有订阅所需的合约帐户和用户主体的相关值。 
+将你添加到与帐户所有者关联的注册帐户后，Azure 将使用帐户到注册关系来确定在何处计费订阅费用。 帐户下创建的所有订阅都将按帐户所在的 EA 注册计费。 若要创建订阅，必须传入拥有订阅所需的合约帐户和用户主体的相关值。
 
 若要运行以下命令，必须登录到帐户所有者的主目录（默认在该目录中创建订阅）。
 
@@ -95,7 +95,7 @@ ObjectId                               | PrincipalName
 
 使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令列出有访问权限的所有注册帐户。
 
-```azurecli-interactive 
+```azurecli-interactive
 az billing enrollment-account list
 ```
 
@@ -172,7 +172,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | 是       | String | 注册帐户的对象 ID，在该帐户下创建订阅并对其计费。 此值为从 `Get-AzEnrollmentAccount` 获取的 GUID。 |
 | `OwnerObjectId`      | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
 | `OwnerSignInName`    | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `OwnerObjectId`。|
-| `OwnerApplicationId` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `OwnerObjectId`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。| 
+| `OwnerApplicationId` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `OwnerObjectId`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 要查看所有参数的完整列表，请参阅 [New-AzSubscription](/powershell/module/az.subscription)。
 
@@ -182,7 +182,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 运行下面的[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)命令，将 `<enrollmentAccountObjectId>` 替换为你在第一步中复制的 `name` （```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 若要指定所有者，请了解[如何获取用户对象 id](grant-access-to-create-subscription.md#userObjectId)。
 
-```azurecli-interactive 
+```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
@@ -193,7 +193,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | 是       | String | 注册帐户的对象 ID，在该帐户下创建订阅并对其计费。 此值为从 `az billing enrollment-account list` 获取的 GUID。 |
 | `owner-object-id`      | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
 | `owner-upn`    | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `owner-object-id`。|
-| `owner-spn` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `owner-object-id`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。| 
+| `owner-spn` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `owner-object-id`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 要查看所有参数的完整列表，请参阅 [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)。
 
@@ -211,11 +211,11 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ### <a name="prerequisites"></a>必备组件
 
-对于某个发票部分，必须有 "所有者"、"参与者" 或 "Azure 订阅创建者" 角色，或者在帐单配置文件中拥有 "所有者" 或 "参与者" 角色或计费帐户才能创建订阅。 有关详细信息，请参阅[订阅计费角色和任务](../../billing/billing-understand-mca-roles.md#subscription-billing-roles-and-tasks)。
+对于某个发票部分，必须有 "所有者"、"参与者" 或 "Azure 订阅创建者" 角色，或者在帐单配置文件中拥有 "所有者" 或 "参与者" 角色或计费帐户才能创建订阅。 有关详细信息，请参阅[订阅计费角色和任务](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
 下面显示的示例使用 REST Api。 目前，PowerShell 和 Azure CLI 不受支持。
 
-### <a name="find-billing-accounts-that-you-have-access-to"></a>查找你有权访问的计费帐户 
+### <a name="find-billing-accounts-that-you-have-access-to"></a>查找你有权访问的计费帐户
 
 发出下面的请求来列出所有计费帐户。
 
@@ -304,14 +304,14 @@ API 响应列出了您有权在其上创建订阅的所有发票部分及其计�
         "invoiceSectionId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX"
   }]
 }
-    
+
 ```
 
 使用 `invoiceSectionDisplayName` 属性来标识要为其创建订阅的发票部分。 复制 "`invoiceSectionId`" `billingProfileId` 和 "发票" 部分的 `skuId` 之一。 例如，如果要创建 `Development` invoice 节 `Microsoft Azure plan` 类型的订阅，则应复制 `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX`、`/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` 和 `0001`。 将这些值粘贴到某个位置，以便在下一步中使用它们。
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>为发票部分创建订阅
 
-下面的示例创建一个名为*开发*发票部分*Microsoft Azure Plan*类型的名为*Dev 团队订阅*的订阅。 订阅将按*Contoso 财务的*计费配置文件计费，并显示在其发票的*开发*部分。 
+下面的示例创建一个名为*开发*发票部分*Microsoft Azure Plan*类型的名为*Dev 团队订阅*的订阅。 订阅将按*Contoso 财务的*计费配置文件计费，并显示在其发票的*开发*部分。
 
 发出以下请求，将 `<invoiceSectionId>` 替换为从第二步中复制的 `invoiceSectionId` （```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```）。 你需要传递从 API 的请求参数中的第二步复制的 `billingProfileId` 和 `skuId`。 若要指定所有者，请了解[如何获取用户对象 id](grant-access-to-create-subscription.md#userObjectId)。
 
@@ -356,7 +356,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 下面显示的示例使用 REST Api。 目前，PowerShell 和 Azure CLI 不受支持。
 
-### <a name="find-the-billing-accounts-that-you-have-access-to"></a>查找你有权访问的计费帐户 
+### <a name="find-the-billing-accounts-that-you-have-access-to"></a>查找你有权访问的计费帐户
 
 发出以下请求来列出你有权访问的所有计费帐户。
 
@@ -404,7 +404,7 @@ GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api
 
 ### <a name="find-customers-that-have-azure-plans"></a>查找具有 Azure 计划的客户
 
-发出以下请求，将 `<billingAccountName>` 替换为从第一步中复制的 `name` （```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```），以列出计费帐户中可为其创建 Azure 订阅的所有客户。 
+发出以下请求，将 `<billingAccountName>` 替换为从第一步中复制的 `name` （```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```），以列出计费帐户中可为其创建 Azure 订阅的所有客户。
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
@@ -435,14 +435,14 @@ API 响应列出了具有 Azure 计划的计费帐户中的客户。 你可以�
       "type": "Microsoft.Billing/billingAccounts/customers"
     }]
 }
-    
+
 ```
 
 使用 `displayName` 属性来确定要为其创建订阅的客户。 复制客户的 `id`。 例如，如果想要为 `Fabrikam toys`创建订阅，可以复制 `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。 将此值粘贴到某个位置，以便在后续步骤中使用它。
 
 ### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>间接提供程序可选：获取客户的分销商
 
-如果你是 CSP 两层模型中的间接提供程序，则可以在创建客户的订阅时指定经销商。 
+如果你是 CSP 两层模型中的间接提供程序，则可以在创建客户的订阅时指定经销商。
 
 发出以下请求，将 `<customerId>` 替换为从第二步中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）以列出可供客户使用的所有分销商。
 
@@ -489,7 +489,7 @@ API 响应列出了客户的分销商：
 
 下面的示例为*Fabrikam 玩具*创建名为*Dev 团队订阅*的订阅，并将*Wingtip*经销商关联到该订阅。 万亿项
 
-发出以下请求，将 `<customerId>` 替换为从第二步中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 传递从 API 的请求参数中的第二步复制的可选*resellerId* 。 
+发出以下请求，将 `<customerId>` 替换为从第二步中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 传递从 API 的请求参数中的第二步复制的可选*resellerId* 。
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

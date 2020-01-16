@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981176"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -45,7 +45,7 @@ ms.locfileid: "74792909"
 
 每个 URL 都包含此表中所述的 `sp`、`sv`和 `sig` 查询参数：
 
-| 查询参数 | 描述 |
+| 查询参数 | Description |
 |-----------------|-------------|
 | `sp` | 指定允许的 HTTP 方法使用的权限。 |
 | `sv` | 指定用于生成签名的 SAS 版本。 |
@@ -106,7 +106,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”。
 
 1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围。
 
@@ -174,7 +174,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)：允许读取、启用和禁用逻辑应用，但不能对其进行编辑或更新。
 
-要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)。 此功能可以防止其他人更改或删除生产资源。
+要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)。 此功能可以防止其他人更改或删除生产资源。
 
 <a name="secure-run-history"></a>
 
@@ -206,7 +206,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”。
 
 1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 
 
@@ -356,7 +356,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ## <a name="access-to-parameter-inputs"></a>访问参数输入
 
-如果在不同的环境中进行部署，请考虑在工作流定义中参数化根据这些环境而变化的值。 这样一来，你就可以通过使用[Azure 资源管理器模板](../azure-resource-manager/template-deployment-overview.md)来部署逻辑应用、通过定义受保护的参数来保护敏感数据，[并通过使用](../azure-resource-manager/template-parameters.md)[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)将该数据作为单独的输入传递，来避免使用硬编码数据。
+如果在不同的环境中进行部署，请考虑在工作流定义中参数化根据这些环境而变化的值。 这样一来，你就可以通过使用[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)来部署逻辑应用、通过定义受保护的参数来保护敏感数据，[并通过使用](../azure-resource-manager/templates/template-parameters.md)[参数文件](../azure-resource-manager/templates/parameter-files.md)将该数据作为单独的输入传递，来避免使用硬编码数据。
 
 例如，如果使用[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)对 HTTP 操作进行身份验证，则可以定义接受用于身份验证的客户端 ID 和客户端密钥的参数并确保它们的安全。 若要在逻辑应用中定义这些参数，请使用逻辑应用的工作流定义中的 `parameters` 部分，并为部署资源管理器模板。 若要隐藏编辑逻辑应用或查看运行历史记录时不希望显示的参数值，请使用 `securestring` 或 `secureobject` 类型定义参数，并在必要时使用编码。 具有此类型的参数不会随资源定义一起返回，且在部署后查看资源时不可访问。 若要在运行时访问这些参数值，请使用工作流定义中的 `@parameters('<parameter-name>')` 表达式。 此表达式仅在运行时进行计算，由[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)进行描述。
 
@@ -368,11 +368,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 * [工作流定义中的安全参数](#secure-parameters-workflow)
 * [使用混淆隐藏运行历史记录中的数据](#obfuscate)
 
-如果[使用资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以通过使用 `securestring` 和 `secureobject` 类型定义在部署时计算的受保护[模板参数](../azure-resource-manager/template-parameters.md)。 若要定义模板参数，请使用模板的顶层 `parameters` 部分，该部分是独立的，不同于工作流定义的 `parameters` 部分。 若要提供模板参数的值，请使用单独的[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)。
+如果[使用资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以通过使用 `securestring` 和 `secureobject` 类型定义在部署时计算的受保护[模板参数](../azure-resource-manager/templates/template-parameters.md)。 若要定义模板参数，请使用模板的顶层 `parameters` 部分，该部分是独立的，不同于工作流定义的 `parameters` 部分。 若要提供模板参数的值，请使用单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)。
 
 例如，如果使用机密，你可以定义和使用安全的模板参数，以便在部署时从[Azure Key Vault](../key-vault/key-vault-overview.md)检索这些机密。 然后，你可以在参数文件中引用密钥保管库和机密。 有关详细信息，请参阅以下主题：
 
-* [使用 Azure Key Vault 在部署时传递敏感值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [使用 Azure Key Vault 在部署时传递敏感值](../azure-resource-manager/templates/key-vault-parameter.md)
 * 本主题后面的[Azure 资源管理器模板中的安全参数](#secure-parameters-deployment-template)
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的安全参数
 
-逻辑应用的[资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)包含多个 `parameters` 部分。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义安全参数。 然后，你可以将这些值存储在[Azure Key Vault](../key-vault/key-vault-overview.md)中，并使用[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)来引用密钥保管库和机密。 然后，模板会在部署时检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+逻辑应用的[资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)包含多个 `parameters` 部分。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义安全参数。 然后，你可以将这些值存储在[Azure Key Vault](../key-vault/key-vault-overview.md)中，并使用[参数文件](../azure-resource-manager/templates/parameter-files.md)来引用密钥保管库和机密。 然后，模板会在部署时检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/templates/key-vault-parameter.md)。
 
 下面是有关这些 `parameters` 部分的详细信息：
 
-* 在模板的顶层，`parameters` 部分定义模板在*部署*时使用的值的参数。 例如，这些值可能包含特定部署环境的连接字符串。 然后，可以将这些值存储在单独的[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)中，这会使更改这些值变得更容易。
+* 在模板的顶层，`parameters` 部分定义模板在*部署*时使用的值的参数。 例如，这些值可能包含特定部署环境的连接字符串。 然后，可以将这些值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，这会使更改这些值变得更容易。
 
 * 在逻辑应用的资源定义中，但在工作流定义外，`parameters` 节指定工作流定义的参数的值。 在本部分中，可以使用引用模板参数的模板表达式来分配这些值。 这些表达式是在部署时计算的。
 
@@ -437,7 +437,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 此示例模板具有使用 `securestring` 类型的多个安全参数定义：
 
-| 参数名称 | 描述 |
+| 参数名称 | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | 一个模板参数，它接受随后传递到工作流定义的 `basicAuthPasswordParam` 参数的密码 |
 | `TemplateUsernameParam` | 一个模板参数，该参数接受用户名，然后将其传递给工作流定义的 `basicAuthUserNameParam` 参数 |
@@ -604,7 +604,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站调用或访问这些终结点的请求的触发器或操作，你可以从不同的身份验证类型范围中进行选择。 若要确保保护逻辑应用处理的任何敏感信息，请使用受保护的参数，并根据需要对数据进行编码。 有关使用和保护参数的详细信息，请参阅[访问参数输入](#secure-action-parameters)。
 
-| 身份验证类型 | 支持者 |
+| 身份验证类型 | 支持的语句 |
 |---------------------|--------------|
 | [基本](#basic-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
 | [客户端证书](#client-certificate-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
@@ -622,7 +622,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果 "[基本](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)" 选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | Value | 描述 |
+| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -653,7 +653,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | Value | 描述 |
+| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
 | **Pfx** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以通过执行以下步骤来使用 PowerShell： <p>1. 将证书内容保存到变量： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 通过使用 `ToBase64String()` 函数来转换证书内容，并将该内容保存到文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -692,17 +692,17 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | Value | 描述 |
+| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 要使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
-| **组织** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
+| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| 租户 | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
-| **凭据类型** | `credentialType` | 是 | 证书 <br>或 <br>密钥 | 客户端用于请求授权的凭据类型。 此属性和值不会出现在逻辑应用的基础定义中，而是确定为所选凭据类型显示的属性。 |
+| **凭据类型** | `credentialType` | 是 | 证书 <br>或 <br>机密 | 客户端用于请求授权的凭据类型。 此属性和值不会出现在逻辑应用的基础定义中，而是确定为所选凭据类型显示的属性。 |
 | **机密** | `secret` | 是，但仅适用于 "机密" 凭据类型 | <*客户端-机密*> | 用于请求授权的客户端密码 |
 | **Pfx** | `pfx` | 是，但仅用于 "证书" 凭据类型 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **密码** | `password` | 是，但仅用于 "证书" 凭据类型 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码 |
-| **无权** | `authority` | No | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 <p>**注意**：若要使此属性在设计器中可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**授权**"。 |
+| **无权** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 <p>**注意**：若要使此属性在设计器中可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**授权**"。 |
 |||||
 
 使用[受保护的参数](#secure-action-parameters)处理和保护敏感信息（例如，在[用于自动部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中）时，可以在运行时使用表达式来访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ActiveDirectoryOAuth`，将凭据类型指定为 `Secret`，并使用[parameters （）函数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)获取参数值：
@@ -746,9 +746,9 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中，指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | Value | 描述 |
+| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | 原材料 | 要使用的身份验证类型 |
+| **身份验证** | `type` | 是 | Raw | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-标头值*> | 要用于身份验证的授权标头值 |
 ||||||
 
@@ -781,7 +781,7 @@ Authorization: OAuth realm="Photos",
 
 3. 在要使用托管标识的触发器或操作中，指定以下属性值：
 
-   | 属性（设计器） | 属性（JSON） | 需要 | Value | 描述 |
+   | 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管的标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **受众** | `audience` | 是 | <*目标资源 ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使得用于身份验证的访问令牌对所有存储帐户都有效。 但是，你还可以为特定的存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：此属性可能会在某些触发器或操作中隐藏。 若要使此属性可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**受众**"。 <p><p>**重要提示**：请确保此目标资源 ID 与 Azure AD 预期的值完全匹配，其中包括所有必需的尾随斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部斜杠。 不过，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 Id，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |

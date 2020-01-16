@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449804"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982702"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 来构建和部署 HPC 解决方案
 
@@ -192,7 +192,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于构建、部署、
 
 最后，我们有一个类似于 orchestrator 的模板。 此模板负责部署功能模板。
 
-你还可以在单独的文章中了解有关[创建链接的 Azure 资源管理器模板](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)的详细信息。
+你还可以在单独的文章中了解有关[创建链接的 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md)的详细信息。
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines 还用于部署应用程序和底层基础结构。 [版本管�
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>部署应用程序和底层基础结构
 
-部署基础结构涉及多个步骤。 由于我们使用了[链接模板](../azure-resource-manager/resource-group-linked-templates.md)，因此需要从公共终结点（HTTP 或 HTTPS）访问这些模板。 这可能是 GitHub 上的存储库、Azure Blob 存储帐户或其他存储位置。 上传的模板项目可以保持安全，因为它们可以保存在专用模式下，但使用某种形式的共享访问签名（SAS）令牌进行访问。 以下示例演示了如何使用 Azure 存储 blob 中的模板部署基础结构。
+部署基础结构涉及多个步骤。 由于我们使用了[链接模板](../azure-resource-manager/templates/linked-templates.md)，因此需要从公共终结点（HTTP 或 HTTPS）访问这些模板。 这可能是 GitHub 上的存储库、Azure Blob 存储帐户或其他存储位置。 上传的模板项目可以保持安全，因为它们可以保存在专用模式下，但使用某种形式的共享访问签名（SAS）令牌进行访问。 以下示例演示了如何使用 Azure 存储 blob 中的模板部署基础结构。
 
 1. 创建**新的发布定义**，并选择一个空定义。 接下来，我们需要将新创建的环境重命名为与管道相关的内容。
 

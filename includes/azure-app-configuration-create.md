@@ -1,25 +1,23 @@
 ---
-title: include 文件
-description: include 文件
-services: azure-app-configuration
 author: yegu
+ms.author: yegu
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 12/03/2019
-ms.author: yegu
-ms.custom: include file
-ms.openlocfilehash: ccd2a0ded1cd915dc52dea1449d75136bbef18fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ceeeb5ee155624e050f36e733a464c2cb21db88c
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413403"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750290"
 ---
 1. 若要创建新应用程序配置存储区，请登录 [Azure 门户](https://portal.azure.com)。 在主页的左上角，选择“创建资源”  。 在“搜索市场”框中，输入“应用程序配置”并选择 Enter   。
 
-    ![搜索应用配置](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-new.png)
+    ![搜索应用配置](media/azure-app-configuration-create/azure-portal-search.png)
 
 1. 在搜索结果中选择“应用程序配置”，然后选择“创建”   。
+
+    ![选择“创建”](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
 1. 在“应用程序配置” > “创建”窗格中，输入以下设置   ：
 
@@ -30,7 +28,7 @@ ms.locfileid: "75413403"
     | **资源组** | AppConfigTestResources  | 为应用程序配置存储区资源选择或创建资源组。 此组可用于组织多个资源，删除该资源组可以同时删除这些资源。 有关详细信息，请参阅[使用资源组管理 Azure 资源](/azure/azure-resource-manager/resource-group-overview)。 |
     | **位置** | 美国中部  | 使用“位置”指定在其中托管应用配置存储区的地理位置  。 为获得最佳性能，请在应用程序的其他组件所在的同一区域创建资源。 |
 
-    ![创建应用程序配置存储区资源](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-create.png)
+    ![创建应用程序配置存储区资源](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
 1. 选择“创建”  。 部署可能需要几分钟。
 

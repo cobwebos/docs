@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402045"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969697"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402045"
 
 ## <a name="what-is-a-management-solution"></a>管理解决方案是什么？
 
-管理解决方案包含可协同工作以实现特定管理方案的 Azure 资源。  并且可以作为[资源管理模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)来实现。此类模板包含说明，详述了在安装解决方案时如何安装和配置模板中包含的资源。
+管理解决方案包含可协同工作以实现特定管理方案的 Azure 资源。  并且可以作为[资源管理模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)来实现。此类模板包含说明，详述了在安装解决方案时如何安装和配置模板中包含的资源。
 
 基本策略是通过在 Azure 环境中生成各个组件来启动管理解决方案。  功能正常以后，即可将其打包到[管理解决方案文件]( solutions-solution-file.md)中。 
 
@@ -64,7 +64,7 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 
 
 ## <a name="test-your-solution"></a>测试解决方案
-开发解决方案时，需将其安装在工作区并进行测试。  为此，可以使用任何可用方法来[测试和安装 Resource Manager 模板](../../azure-resource-manager/resource-group-template-deploy.md)。
+开发解决方案时，需将其安装在工作区并进行测试。  为此，可以使用任何可用方法来[测试和安装 Resource Manager 模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="publish-your-solution"></a>发布解决方案
 完成解决方案并进行测试以后，即可通过以下某种方式将其提供给客户。

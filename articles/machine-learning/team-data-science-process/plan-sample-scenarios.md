@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de02e94014fa2a28e364c4f85bcb31a1a4827b8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495057"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981117"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -29,7 +29,7 @@ ms.locfileid: "73495057"
 > **对于所有以下情况，需要：**
 > <br/>
 > 
-> * [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)
+> * [创建存储帐户](../../storage/common/storage-account-create.md)
 >   <br/>
 > * [创建 Azure 机器学习工作区](../studio/create-workspace.md)
 > 
@@ -109,26 +109,26 @@ ms.locfileid: "73495057"
 1. 将数据上传到 Azure 存储容器。
 1. （可选）预处理并清理数据。
    
-   a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
        blobs.
    
-   b.  如果需要，可将数据转换为已清除的表格格式。
+   b.保留“数据库类型”设置，即设置为“共享”。  如果需要，可将数据转换为已清除的表格格式。
    
    c.  将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
 1. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
    
-   a.  登录到 SQL Server VM。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  登录到 SQL Server VM。
    
-   b.  如果数据尚未保存，请从 Azure 下载数据文件夹
+   b.保留“数据库类型”设置，即设置为“共享”。  如果数据尚未保存，请从 Azure 下载数据文件夹
    
        storage container to local-VM folder.
    
    c.  运行 SQL Server Management Studio。
    
-   d.  创建数据库和目标表。
+   d.单击“下一步”。  创建数据库和目标表。
    
-   e.  使用某个大容量导入方法加载数据。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。  使用某个大容量导入方法加载数据。
    
    f.  如果需要表联接，可创建索引以加快联接。
    
@@ -156,15 +156,15 @@ ms.locfileid: "73495057"
 1. 将转储文件上传到 Azure 存储容器。
 1. 将数据加载到在 Azure 虚拟机上运行的 SQL Server 数据库。
    
-   a.  登录到 SQL Server VM。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  登录到 SQL Server VM。
    
-   b.  从 Azure 存储容器将数据文件下载到本地 VM 文件夹。
+   b.保留“数据库类型”设置，即设置为“共享”。  从 Azure 存储容器将数据文件下载到本地 VM 文件夹。
    
    c.  运行 SQL Server Management Studio。
    
-   d.  创建数据库和目标表。
+   d.单击“下一步”。  创建数据库和目标表。
    
-   e.  使用某个大容量导入方法加载数据。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。  使用某个大容量导入方法加载数据。
    
    f.  如果需要表联接，可创建索引以加快联接。
    
@@ -186,9 +186,9 @@ ms.locfileid: "73495057"
 
 1. 在源位置分离数据库。 有关详细信息，请参阅[分离数据库](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)。
 1. 在 Windows Explorer 或“Windows 命令提示”窗口中，将分离的一个或多个数据库文件和日志文件复制到 Azure 中 SQL Server VM 上的目标位置。
-1. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅[附加数据库](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
+1. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅 [Attach a Database](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
 
-[使用分离和附加移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[通过分离和附加来移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
 ## <a name="largedbtohive"></a>场景 \#7：本地文件中针对 Azure HDInsight Hadoop 群集中 Hive 数据库的大数据
 ![本地目标 Hive 中的大数据][9]
@@ -198,23 +198,23 @@ ms.locfileid: "73495057"
 1. 创建 Azure HDInsight Hadoop 群集。
 1. （可选）预处理并清理数据。
    
-   a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
        blobs.
    
-   b.  如果需要，可将数据转换为已清除的表格格式。
+   b.保留“数据库类型”设置，即设置为“共享”。  如果需要，可将数据转换为已清除的表格格式。
    
    c.  将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
 1. 将数据上传到步骤 2 中选择的 Hadoop 群集的默认容器。
 1. 将数据加载到 Azure HDInsight Hadoop 群集中的 Hive 数据库。
    
-   a.  登录到 Hadoop 群集的头节点
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  登录到 Hadoop 群集的头节点
    
-   b.  打开 Hadoop 命令行。
+   b.保留“数据库类型”设置，即设置为“共享”。  打开 Hadoop 命令行。
    
    c.  按照 Hadoop 命令行中的命令 `cd %hive_home%\bin` 输入 Hive 根目录。
    
-   d.  运行 Hive 查询以创建数据库和表，并将数据从 Blob 存储加载到 Hive 表。
+   d.单击“下一步”。  运行 Hive 查询以创建数据库和表，并将数据从 Blob 存储加载到 Hive 表。
    
    > [!NOTE]
    > 如果数据太大，用户可以使用分区创建 Hive 表。 然后，用户可以使用头节点上 Hadoop 命令行中的 `for` 循环，将数据加载到由分区进行分区的 Hive 表中。
@@ -222,13 +222,13 @@ ms.locfileid: "73495057"
    > 
 1. 浏览数据，并根据需要在 Hadoop 命令行中创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
    
-   a.  登录到 Hadoop 群集的头节点
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  登录到 Hadoop 群集的头节点
    
-   b.  打开 Hadoop 命令行。
+   b.保留“数据库类型”设置，即设置为“共享”。  打开 Hadoop 命令行。
    
    c.  按照 Hadoop 命令行中的命令 `cd %hive_home%\bin` 输入 Hive 根目录。
    
-   d.  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
+   d.单击“下一步”。  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
 1. 如果需要和/或想要，对数据进行采样以满足 Azure 机器学习工作室。
 1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
 1. 使用[导入数据][import-data]模块直接从 `Hive Queries` 读取数据。 如果需要直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据，请粘贴必要的查询。

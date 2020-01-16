@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084641"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970210"
 ---
-# <a name="introduction-to-azure-storage"></a>Azure 存储简介
+# <a name="introduction-to-azure-storage"></a>Azure 存储器简介
 
 Azure 存储是 Microsoft 提供的适用于现代数据存储场景的云存储解决方案。 Azure 存储为数据对象提供可大规模缩放的对象存储，为云提供文件系统服务，并且提供用于可靠消息传送的消息传送存储以及 NoSQL 存储。 Azure 存储：
 
 - **持久且具有高可用性。** 冗余可确保数据在发生短暂的硬件故障时是安全的。 还可以选择在各个数据中心或地理区域之间复制数据，从而在发生本地灾难或自然灾害时提供额外的保护。 以此方式复制的数据在发生意外中断时将保持高可用性。
 - **安全。** 该服务将对写入到 Azure 存储的所有数据进行加密。 Azure 存储可以精细地控制谁可以访问你的数据。
-- **可缩放。** Azure 存储设计为可大规模缩放以满足当今的应用程序在数据存储和性能方面的需求。 
+- **可缩放。** Azure 存储设计为可大规模缩放以满足当今的应用程序在数据存储和性能方面的需求。
 - **托管的。** Microsoft Azure 为你处理硬件维护、更新和关键问题。
-- **易访问。** 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Azure 存储中的数据。 Microsoft 以各种语言（包括 NET、Java、Node.js、Python、PHP、Ruby、Go 和其他语言）提供了适用于 Azure 存储的客户端库以及成熟的 REST API。 Azure 存储支持通过 Azure PowerShell 或 Azure CLI 运行脚本。 而且，Azure 门户和 Azure 存储资源管理器提供了用于处理数据的简单可视化解决方案。  
+- **易访问。** 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Azure 存储中的数据。 Microsoft 针对各种语言（包括 .NET、Java、node.js、Python、PHP、Ruby、中转和其他语言）提供了适用于 Azure 存储的客户端库，以及成熟的 REST API。 Azure 存储支持通过 Azure PowerShell 或 Azure CLI 运行脚本。 而且，Azure 门户和 Azure 存储资源管理器提供了用于处理数据的简单可视化解决方案。  
 
 ## <a name="azure-storage-services"></a>Azure 存储服务
 
@@ -31,14 +31,14 @@ Azure 存储包括以下数据服务：
 
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
-- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。 
+- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。
 - [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
 
-对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-account-create.md)。
 
 ## <a name="blob-storage"></a>Blob 存储
 
-Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据，例如文本或二进制数据。 
+Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据，例如文本或二进制数据。
 
 Blob 存储最适合用于：
 
@@ -74,7 +74,7 @@ Azure 文件不同于公司文件共享的一点是，可以在全球任何地�
 
 Azure 队列服务用于存储和检索消息。 队列消息最大可以为 64 KB，一个队列可以包含数百万条消息。 队列通常用于存储需要异步处理的消息的列表。
 
-例如，假设你需要客户能够上传图片，并且你需要创建每个图片的缩略图。 可以让客户在上传图片时等待你创建缩略图， 也可以使用队列。 当客户完成上传操作后，向队列写入一条消息。 然后通过 Azure Function 从队列检索该消息并创建缩略图。 此处理过程的每一部分都可以单独进行缩放，让你可以根据使用情况进行调整，加强控制。
+例如，假设你需要客户能够上传图片，并且你需要创建每个图片的缩略图。 可以让客户在上传图片时等待你创建缩略图， 也可以使用队列。 当客户完成其上传时，向队列写入一条消息。 然后通过 Azure Function 从队列检索该消息并创建缩略图。 此处理过程的每一部分都可以单独进行缩放，让你可以根据使用情况进行调整，加强控制。
 
 有关 Azure 队列的详细信息，请参阅[队列简介](../queues/storage-queues-introduction.md)。
 
@@ -88,7 +88,7 @@ Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表�
 
 Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中的物理磁盘，但它是虚拟化的。 Azure 托管磁盘作为页 blob 存储，后者是 Azure 中的随机 IO 存储对象。 我们之所以将托管磁盘称为“托管”是因为，它是对页 blob、blob 容器和 Azure 存储帐户的抽象。 对于托管磁盘，你所要做的就是预配磁盘，而 Azure 负责其余的工作。
 
-有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
+有关托管磁盘的详细信息，请参阅[Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 
@@ -96,29 +96,29 @@ Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中�
 
 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-## <a name="securing-access-to-storage-accounts"></a>确保对存储帐户进行安全访问
+## <a name="securing-access-to-storage-accounts"></a>保护对存储帐户的访问
 
-对 Azure 存储的每个请求必须获得授权。 Azure 存储支持以下授权方法：
+必须对 Azure 存储的每个请求进行授权。 Azure 存储支持以下授权方法：
 
-- **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 使用 Azure AD 为 Blob 和队列服务进行身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](storage-auth-aad.md)。
+- **Blob 和队列数据的 Azure Active Directory （Azure AD）集成。** 通过基于角色的访问控制（RBAC），Azure 存储支持对 Blob 和队列服务 Azure AD 进行身份验证和授权。 建议使用 Azure AD 授权请求，以实现高级安全和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](storage-auth-aad.md)。
 - **针对 Azure 文件的 SMB Azure AD 授权（预览版）。** Azure 文件通过 SMB （服务器消息块） Azure Active Directory 域服务支持基于标识的授权。 已加入域的 Windows 虚拟机（Vm）可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅[Azure 文件的通过 SMB Azure Active Directory 授权概述（预览版）](../files/storage-files-active-directory-overview.md)。
-- **通过共享密钥进行授权。** Azure 存储 Blob、队列和表服务以及 Azure 文件存储支持使用共享密钥进行授权。使用共享密钥授权的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
-- **使用共享访问签名 (SAS) 进行授权。** 共享访问签名 (SAS) 是一个字符串，其中包含的安全令牌可以追加到存储资源的 URI。 安全令牌封装了各种约束，例如权限、访问时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
-- **对容器和 Blob 的匿名访问。** 容器及其 Blob 也许可以公开使用。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
+- **授权共享密钥。** Azure 存储 Blob、队列和表服务以及 Azure 文件支持使用共享密钥进行授权。使用共享密钥授权的客户端会将标头传递给使用存储帐户访问密钥进行签名的每个请求。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
+- **使用共享访问签名（SAS）的授权。** 共享访问签名（SAS）是一个字符串，其中包含可附加到存储资源的 URI 的安全令牌。 安全令牌封装了约束，例如权限和访问时间间隔。 有关详细信息，请参阅[使用共享访问签名（SAS）](storage-sas-overview.md)。
+- **匿名访问容器和 blob。** 容器及其 blob 可以公开使用。 指定容器或 blob 为公用时，任何人都可以匿名读取;无需进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
-有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
+有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](../blobs/security-recommendations.md)。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
-Azure 存储加密可保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 Azure 存储先自动加密所有数据，再将数据保存到存储帐户，然后在检索之前解密数据。 加密、解密和密钥管理过程对于用户而言是完全透明的。 客户也可选择使用 Azure Key Vault 管理自己的密钥。 有关详细信息，请参阅[静态数据的 Azure 存储加密](storage-service-encryption.md)。
+Azure 存储加密可以保护数据，并满足组织的安全性和符合性承诺。 Azure 存储在保存到存储帐户之前会自动对所有数据进行加密，并在检索之前对其进行解密。 加密、解密和密钥管理过程对用户完全透明。 客户还可以选择使用 Azure Key Vault 来管理自己的密钥。 有关详细信息，请参阅[静态数据的 Azure 存储加密](storage-service-encryption.md)。
 
 ### <a name="client-side-encryption"></a>客户端加密
 
-Azure 存储客户端库提供的方法用于加密客户端库的数据，然后通过网络发送数据并解密响应。 通过客户端加密加密的数据也通过 Azure 存储进行静态加密。 有关客户端加密的详细信息，请参阅 [Azure 存储的使用 .NET 的客户端加密](storage-client-side-encryption.md)。
+Azure 存储客户端库提供了一些方法，用于在通过网络发送数据和解密响应之前，从客户端库对数据进行加密。 通过客户端加密进行加密的数据也由 Azure 存储加密。 有关客户端加密的详细信息，请参阅[适用于 Azure 存储的 .Net 客户端加密](storage-client-side-encryption.md)。
 
-## <a name="redundancy"></a>冗余
+## <a name="redundancy"></a>冗余性
 
 为了确保数据的持久性，Azure 存储会复制多个数据副本。 设置存储帐户时，可选择冗余选项。
 
@@ -130,7 +130,7 @@ Azure 存储客户端库提供的方法用于加密客户端库的数据，然�
 
 有多个选项用于将数据移入或移出 Azure 存储。 选择哪个选项取决于数据集的大小和网络带宽。 有关详细信息，请参阅[选择 Azure 数据传输解决方案](storage-choose-data-transfer-solution.md)。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 有关 Azure 存储定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -143,11 +143,11 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 - [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [适用于 .NET 的 Azure 存储客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [适用于 Java/Android 的 Azure 存储客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
-- [适用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
-- [适用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)
-- [适用于 Ruby 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ruby)
-- [适用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-cpp)
+- [用于 node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
+- [用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)
+- [用于 Ruby 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ruby)
+- [适用于的 Azure 存储客户端库C++](https://github.com/Azure/azure-storage-cpp)
 
 ### <a name="azure-storage-management-api-and-library-references"></a>Azure 存储管理 API 和库参考
 
@@ -171,4 +171,4 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要启动并运行 Azure 存储，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+若要启动并运行 Azure 存储，请参阅[创建存储帐户](storage-account-create.md)。

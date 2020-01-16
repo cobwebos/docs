@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530997"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977556"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用资源管理器模板在 Azure 中创建诊断设置
-Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定要将 azure 资源收集的[平台日志](platform-logs-overview.md)及其依赖的 azure 平台发送到的位置。 本文提供了有关使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)创建和配置诊断设置以将平台日志收集到不同目标的详细信息和示例。 
+Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定要将 azure 资源收集的[平台日志](platform-logs-overview.md)及其依赖的 azure 平台发送到的位置。 本文提供了有关使用[Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)创建和配置诊断设置以将平台日志收集到不同目标的详细信息和示例。
 
 > [!NOTE]
 > 由于无法使用 PowerShell 或 CLI （如其他 Azure 资源的诊断设置）为 Azure 活动日志[创建诊断设置](diagnostic-settings.md)，因此，请使用本文中的信息为活动日志创建一个资源管理器模板，并使用 POWERSHELL 或 CLI 部署模板。
 
 ## <a name="deployment-methods"></a>部署方法
-你可以使用任何有效的方法（包括 PowerShell 和 CLI）部署资源管理器模板。 活动日志的诊断设置必须使用适用于 PowerShell 的 `az deployment create` 或 PowerShell 的 `New-AzDeployment` 部署到订阅。 资源日志的诊断设置必须使用适用于 PowerShell 的 `az group deployment create` 或 PowerShell 的 `New-AzResourceGroupDeployment` 部署到资源组。 
+你可以使用任何有效的方法（包括 PowerShell 和 CLI）部署资源管理器模板。 活动日志的诊断设置必须使用适用于 PowerShell 的 `az deployment create` 或 PowerShell 的 `New-AzDeployment` 部署到订阅。 资源日志的诊断设置必须使用适用于 PowerShell 的 `az group deployment create` 或 PowerShell 的 `New-AzResourceGroupDeployment` 部署到资源组。
 
-有关详细信息，请参阅[部署包含资源管理器模板的资源和 Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)并[部署具有资源管理器模板的资源和 Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) 。 
+有关详细信息，请参阅[部署包含资源管理器模板的资源和 Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)并[部署具有资源管理器模板的资源和 Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) 。 
 
 
 
@@ -33,7 +33,7 @@ Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定要将 azure 资
 ## <a name="resource-logs"></a>资源日志
 对于资源日志，将类型 `<resource namespace>/providers/diagnosticSettings` 的资源添加到模板。 "属性" 部分遵循[诊断设置-创建或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)中所述的格式。 在 "`logs`" 部分中为要收集的资源提供每个有效类别的 `category`。 添加 `metrics` 属性，以便在[资源支持度量值](metrics-supported.md)时将资源度量收集到相同的目标。
 
-下面是一个模板，可将特定资源的资源日志类别收集到 Log Analytics 工作区、存储帐户和事件中心。 
+下面是一个模板，可将特定资源的资源日志类别收集到 Log Analytics 工作区、存储帐户和事件中心。
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定要将 azure 资
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

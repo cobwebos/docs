@@ -3,12 +3,12 @@ title: 配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集 |M
 description: 本文介绍如何使用 Azure Red Hat OpenShift 上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930363"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979776"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 
@@ -21,7 +21,7 @@ ms.locfileid: "75930363"
 可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
 
 - 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集
-- 对于使用 Azure 资源管理器模板的新群集 
+- 对于使用 Azure 资源管理器模板的新群集
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "75930363"
 
 此方法包含两个 JSON 模板。 一个模板指定用于部署启用监视的群集的配置，另一个模板包含配置为指定以下项的参数值：
 
-- Azure Red Hat OpenShift 群集资源 ID。 
+- Azure Red Hat OpenShift 群集资源 ID。
 
 - 部署群集的资源组。
 
@@ -60,15 +60,15 @@ ms.locfileid: "75930363"
 
 - 代理池配置文件中的计算节点数。
 
-- 代理池配置文件中的基础结构节点数。 
+- 代理池配置文件中的基础结构节点数。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 
-- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
+- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 使用 Azure PowerShell 或 CLI 启用监视之前，必须先创建 Log Analytics 工作区。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
 
@@ -76,20 +76,20 @@ ms.locfileid: "75930363"
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
-2. 登录 Azure 
+2. 登录 Azure
 
     ```azurecli
     az login    
     ```
-    
+
     如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
- 
-3. 为群集创建资源组（如果尚未创建）。 有关在 Azure 上支持 OpenShift 的 Azure 区域的列表，请参阅[支持的区域](../../openshift/supported-resources.md#azure-regions)。 
+
+3. 为群集创建资源组（如果尚未创建）。 有关在 Azure 上支持 OpenShift 的 Azure 区域的列表，请参阅[支持的区域](../../openshift/supported-resources.md#azure-regions)。
 
     ```azurecli
-    az group create -g <clusterResourceGroup> -l <location> 
+    az group create -g <clusterResourceGroup> -l <location>
     ```
 
 4. 编辑 JSON 参数文件**newClusterWithMonitoringParam**并更新以下值：
@@ -98,19 +98,19 @@ ms.locfileid: "75930363"
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*
-    - *aadClientSecret* 
-    - *aadCustomerAdminGroupId* 
+    - *aadClientSecret*
+    - *aadCustomerAdminGroupId*
     - *workspaceResourceId*
     - *masterNodeCount*
     - *computeNodeCount*
     - *infraNodeCount*
 
-5. 以下步骤使用 Azure CLI 在启用了监视的情况下部署群集。 
+5. 以下步骤使用 Azure CLI 在启用了监视的情况下部署群集。
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
- 
+
     输出如下所示：
 
     ```azurecli
@@ -122,30 +122,30 @@ ms.locfileid: "75930363"
 执行以下步骤以启用对 Azure 中部署的 Azure Red Hat OpenShift 群集的监视。 可以从 Azure 门户或使用所提供的模板来实现此目的。
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
- 
+
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在 "Azure 门户" 菜单或从 "主页" 中，选择 " **Azure Monitor**"。 在“见解”部分，选择“容器”。 
+2. 在 "Azure 门户" 菜单或从 "主页" 中，选择 " **Azure Monitor**"。 在“见解”部分，选择“容器”。
 
 3. 在“监视 - 容器”页上，选择“非监视群集”。
 
 4. 在非监视群集列表中，找到列表中的群集，然后单击 "**启用**"。 您可以通过在列**分类类型**下查找值**ARO**来识别列表中的结果。
 
 5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区。  
-    此列表 preselects 在订阅中部署群集的默认工作区和位置。 
+    此列表 preselects 在订阅中部署群集的默认工作区和位置。
 
     ![为非监视群集启用监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 请确保在部署 RedHat OpenShift 群集的同一订阅中创建工作区。 
- 
-启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 请确保在部署 RedHat OpenShift 群集的同一订阅中创建工作区。
+
+启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
 ### <a name="enable-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用
 
 此方法包含两个 JSON 模板。 一个模板指定用于启用监视的配置，另一个模板包含参数值，通过配置这些参数值可指定：
 
-- Azure RedHat OpenShift 群集资源 ID。 
+- Azure RedHat OpenShift 群集资源 ID。
 
 - 部署群集的资源组。
 
@@ -153,11 +153,11 @@ ms.locfileid: "75930363"
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 
-- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
+- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 使用 Azure PowerShell 或 CLI 启用监视之前，必须先创建 Log Analytics 工作区。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
 
@@ -165,9 +165,9 @@ ms.locfileid: "75930363"
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
-2. 登录 Azure 
+2. 登录 Azure
 
     ```azurecli
     az login    
@@ -184,15 +184,15 @@ ms.locfileid: "75930363"
 4. 运行以下命令以确定群集位置和资源 ID：
 
     ```azurecli
-    az openshift show -g <clusterResourceGroup> -n <clusterName> 
+    az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. 编辑 JSON 参数文件**existingClusterParam**并更新值*araResourceId*和*araResoruceLocation*。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
+5. 编辑 JSON 参数文件**existingClusterParam**并更新值*araResourceId*和*araResoruceLocation*。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。
 
-6. 若要 Azure CLI 部署，请运行以下命令： 
+6. 若要 Azure CLI 部署，请运行以下命令：
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
     输出如下所示：

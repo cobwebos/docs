@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978603"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 安全中心内管理用户数据
 本文提供了有关如何在 Azure 安全中心内管理用户数据的信息。 管理用户数据包括访问、删除或导出数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以在该工具中访问客户数据。 若要了解有关帐户管理员角色的详细信息，请参阅[Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)，详细了解读者、所有者和参与者角色。 请参阅[Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
+分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以在该工具中访问客户数据。 若要了解有关帐户管理员角色的详细信息，请参阅[Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)，详细了解读者、所有者和参与者角色。 请参阅[Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)。
 
 ## <a name="searching-for-and-identifying-personal-data"></a>搜索并标识个人数据
 安全中心用户可以通过 Azure 门户查看其个人数据。 安全中心仅存储安全联系人详细信息，例如电子邮件地址和电话号码。 有关详细信息，请参阅[在 Azure 安全中心提供安全联系人详细信息](security-center-provide-security-contact-details.md)。

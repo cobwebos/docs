@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397274"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977593"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -27,7 +27,7 @@ ms.locfileid: "75397274"
 基本步骤如下所述：
 
 1. 创建一个描述如何创建警报的 JSON 文件作为模板。
-2. [使用任意部署方法部署模板](../../azure-resource-manager/resource-group-template-deploy.md)。
+2. [使用任意部署方法部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 下面我们先单独针对警报，然后针对创建其他资源期间的警报，说明如何创建资源管理器模板。
 

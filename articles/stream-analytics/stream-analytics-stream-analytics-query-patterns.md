@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 54d1b640a4067cf65fc28501840b4926455ec259
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903455"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982317"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 
@@ -836,7 +836,7 @@ From
 
 用户定义函数将从每个使用的事件的 HexValue 计算*bigint*值。
 
-有关详细信息，请参阅[JavaScript](/stream-analytics/stream-analytics-javascript-user-defined-functions)和[C#](/stream-analytics/stream-analytics-edge-csharp-udf)。
+有关详细信息，请参阅[JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions)和[C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf)。
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>与 MATCH_RECOGNIZE 的高级模式匹配
 

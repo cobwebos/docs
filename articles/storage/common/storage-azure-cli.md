@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460454"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978529"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -23,7 +23,7 @@ ms.locfileid: "75460454"
 
 本指南介绍如何使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) 执行多个使用 Azure 存储帐户中的资源的任务。 在使用本指南之前，我们建议下载并安装或者升级到最新版 CLI。
 
-指南中的示例假定在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
+指南中的示例假定在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "75460454"
 
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果用户没有 Azure 订阅，可以[创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **存储帐户**：请参阅[关于 Azure 存储帐户](storage-create-storage-account.md)中的[创建存储帐户](storage-quickstart-create-account.md)。
+* **存储帐户**：请参阅[关于 Azure 存储帐户](storage-account-overview.md)中的[创建存储帐户](storage-account-create.md)。
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
@@ -335,7 +335,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>复制文件      
 可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 例如，要将文件复制到不同共享中的目录，请执行以下操作：        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 可以通过提供 `--snapshot` 参数和共享快照时间戳使用 `az storage share delete` 命令来删除共享快照：
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 示例输出
@@ -535,7 +535,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 ```
 
 ## <a name="next-steps"></a>后续步骤
-下面是一些用于详细了解如何使用 Azure CLI 的附加资源。 
+下面是一些用于详细了解如何使用 Azure CLI 的附加资源。
 
 * [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI 命令参考](/cli/azure)

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540329"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968544"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "75540329"
     > * `model`-将要部署的注册模型。
     > * `inference_config`-模型的推理配置。
     >
-    > 有关设置这些变量的详细信息，请参阅[部署模型与 Azure 机器学习](service/how-to-deploy-and-where.md)。
+    > 有关设置这些变量的详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
@@ -67,7 +67,7 @@ ms.locfileid: "75540329"
     >
     > 可能适用于你的方案的另一种方法是[批处理预测](how-to-run-batch-predictions.md)，这在评分时提供对数据存储的访问。
 
-    有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+    有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 * 运行条目脚本或模型所需的**依赖项**（如帮助程序脚本或 Python/Conda 包）
 
@@ -93,7 +93,7 @@ ms.locfileid: "75540329"
 
 有关环境的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](service/how-to-deploy-and-where.md)。
+有关推理配置的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
 > [!IMPORTANT]
 > 部署到 Azure App Service 时，无需创建__部署配置__。
@@ -103,7 +103,7 @@ ms.locfileid: "75540329"
 若要创建部署到 Azure App Service 的 Docker 映像，请使用[模型类](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)。 下面的代码段演示如何从模型和推理配置生成新的图像：
 
 > [!NOTE]
-> 代码段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[部署模型与 Azure 机器学习](service/how-to-deploy-and-where.md)。
+> 代码段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ print(package.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>将映像部署为 web 应用
 
-1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<acrinstance>` 替换为之前从 `package.location`返回的第 e 个值： 
+1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<acrinstance>` 替换为之前从 `package.location`返回的第 e 个值：
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ print(package.location)
     此命令返回类似于下面的 JSON 文档的信息：
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

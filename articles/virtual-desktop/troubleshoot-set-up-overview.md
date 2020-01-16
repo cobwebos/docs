@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce1af278d67f96873ed611db8dc05938205638dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459572"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980243"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、反馈和支持
 
@@ -27,7 +27,7 @@ ms.locfileid: "75459572"
 使用下表来确定和解决使用远程桌面客户端设置租户环境时可能遇到的问题。 设置租户后，可以使用新的[诊断服务](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service)来识别常见方案的问题。
 
 >[!NOTE]
-> 我们有一个技术社区论坛，你可以访问它来讨论产品团队和活动社区成员的问题。 请访问[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)， 
+> 我们有一个技术社区论坛，你可以访问它来讨论产品团队和活动社区成员的问题。 请访问[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，
 
 | **问题**                                                            | **建议的解决方案**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
@@ -54,6 +54,6 @@ ms.locfileid: "75459572"
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
 - 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
-- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)。
-- 若要了解有关在部署期间确定错误的操作，请参阅[查看部署操作](../azure-resource-manager/resource-manager-deployment-operations.md)。
+- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解有关在部署期间确定错误的操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

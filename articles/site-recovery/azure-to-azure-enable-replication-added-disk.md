@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942304"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973796"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>为添加到 Azure VM 的磁盘启用复制
 
@@ -31,9 +31,9 @@ ms.locfileid: "75942304"
 
 ## <a name="before-you-start"></a>开始之前
 
-本文假设你已为要向其添加磁盘的 VM 设置了灾难恢复。 如果尚未执行此操作，请遵循[azure 到 azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)。 
+本文假设你已为要向其添加磁盘的 VM 设置了灾难恢复。 如果尚未执行此操作，请遵循[azure 到 azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)。
 
-## <a name="enable-replication-for-an-added-disk"></a>为添加的磁盘启用复制 
+## <a name="enable-replication-for-an-added-disk"></a>为添加的磁盘启用复制
 
 若要为添加的磁盘启用复制，请执行以下操作：
 

@@ -4,12 +4,12 @@ description: Azure 区块链服务数据访问和安全概念
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455708"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982231"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure 区块链服务安全
 
@@ -21,9 +21,9 @@ Azure 区块链服务资源隔离于专用虚拟网络中。 每个事务和验�
 
 ![VNET 关系图](./media/data-security/vnet.png)
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
-用户数据存储在 Azure 存储中。 用户数据以动态和静态加密，以保证安全性和保密性。 有关详细信息，请参阅[Azure 存储安全指南](../../storage/common/storage-security-guide.md)。
+用户数据存储在 Azure 存储中。 用户数据以动态和静态加密，以保证安全性和保密性。 有关详细信息，请参阅[Azure 存储安全指南](../../storage/blobs/security-recommendations.md)。
 
 ## <a name="authentication"></a>身份验证
 

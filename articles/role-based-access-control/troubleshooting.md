@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707784"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980991"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -41,13 +41,13 @@ ms.locfileid: "74707784"
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>在租户之间移动订阅时恢复 RBAC
 
-- 如果需要有关如何将订阅转移到不同 Azure AD 租户的步骤，请参阅[将 Azure 订阅的所有权转让给其他帐户](../billing/billing-subscription-transfer.md)。
+- 如果需要有关如何将订阅转移到不同 Azure AD 租户的步骤，请参阅[将 Azure 订阅的所有权转让给其他帐户](../cost-management-billing/manage/billing-subscription-transfer.md)。
 - 如果将订阅转让给其他 Azure AD 租户，所有角色分配都将从源 Azure AD 租户中永久删除，而不会迁移到目标 Azure AD 租户。 必须在目标租户中重新创建角色分配。 还必须为 Azure 资源手动重新创建托管标识。 有关详细信息，请参阅[托管标识的常见问题解答和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
 - 如果你是 Azure AD 全局管理员，并且在租户之间移动订阅后你无法访问它，请使用**Azure 资源的访问管理**切换来暂时[提升你的访问](elevate-access-global-admin.md)权限，以获取对订阅的访问权限。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>服务管理员或共同管理员出现问题
 
-- 如果你遇到服务管理员或共同管理员的问题，请参阅[添加或更改 azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)和[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](rbac-and-directory-admin-roles.md)。
+- 如果你遇到服务管理员或共同管理员的问题，请参阅[添加或更改 azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)和[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](rbac-and-directory-admin-roles.md)。
 
 ## <a name="access-denied-or-permission-errors"></a>拒绝访问或权限错误
 
@@ -56,7 +56,7 @@ ms.locfileid: "74707784"
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>具有未知安全主体的角色分配
 
-如果向安全主体（用户、组、服务主体或托管标识）分配角色，然后在不删除角色分配的情况下删除安全主体，则角色分配的安全主体类型将列为 "**未知**"。 以下屏幕截图显示了 Azure 门户中的示例。 安全主体名称列出为 "**已删除标识**" 并且**标识已不存在**。 
+如果向安全主体（用户、组、服务主体或托管标识）分配角色，然后在不删除角色分配的情况下删除安全主体，则角色分配的安全主体类型将列为 "**未知**"。 下面的屏幕截图展示了 Azure 门户中的一个示例。 安全主体名称列出为 "**已删除标识**" 并且**标识已不存在**。 
 
 ![Web 应用程序资源组](./media/troubleshooting/unknown-security-principal.png)
 

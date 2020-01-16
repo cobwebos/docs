@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0549427cfc99703af9f13280cf7377106423367b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303820"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982004"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
 有关介绍如何处理大型数据集的演练，请参阅 [Team Data Science Process - 使用 Azure HDInsight Hadoop 群集处理 1 TB 数据集](hive-criteo-walkthrough.md)。
@@ -71,12 +71,12 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 可以通过三个步骤为使用 HDInsight 群集的高级分析设置 Azure 环境：
 
-1. [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据也驻留在此处。
+1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据也驻留在此处。
 2. [为高级分析过程和技术自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。 此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 HDInsight Hadoop 群集。 自定义 HDInsight 群集时需牢记两个重要步骤。
    
    * 创建 HDInsight 群集时，请记住将其与步骤 1 中创建的存储帐户相链接。 此存储帐户访问在该群集中处理的数据。
-   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”  选项卡，并选择“启用远程”  。 此步骤指定用于远程登录的用户凭据。
-3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
+   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”选项卡，并选择“启用远程”。 此步骤指定用于远程登录的用户凭据。
+3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：使用此工作区构建机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
 ## <a name="getdata"></a>从公共源获取数据
 > [!NOTE]
@@ -88,11 +88,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
-1. 从命令提示符窗口中，运行以下 AzCopy 命令，将 *\<path_to_data_folder >* 所需目标：
+1. 在命令提示符窗口中，运行以下 AzCopy 命令，将 *\<path_to_data_folder >* 替换为所需目标：
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹称为 *\<路径\_到\_unzipped_data\_文件\>* 在下文中。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹被称为 *\<路径\_，\_unzipped_data\_文件*。
 
 ## <a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
@@ -102,10 +102,10 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
-* ***\<path_to_data_folder >*** 包含解压缩的数据文件在计算机上的目录 （与路径）。  
-* ***\<Hadoop 群集的存储帐户名称 >*** 与你的 HDInsight 群集关联的存储帐户。
-* ***\<Hadoop 群集的默认容器 >*** 群集使用的默认容器。 注意，默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
-* ***\<存储帐户密钥 >*** 群集使用的存储帐户密钥。
+* ***\<path_to_data_folder >*** 计算机上包含解压缩数据文件的目录（和路径）。  
+* ***\<Hadoop 群集的存储帐户名称 >*** 与 HDInsight 群集关联的存储帐户。
+* ***Hadoop 群集\<默认容器 >*** 群集使用的默认容器。 注意，默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
+* ***\<存储帐户密钥 >*** 群集使用的存储帐户的密钥。
 
 在命令提示符或 Windows PowerShell 窗口中，运行以下两个 AzCopy 命令。
 
@@ -286,7 +286,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 * 根据小费金额生成二元和多元分类标签。
 * 通过计算直接行程距离生成特性。
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>浏览：查看行程表中的前 10 条记录
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索：查看“行程”表中的前 10 条记录
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -306,7 +306,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>浏览：查看 12 个分区中每个分区的记录数
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索：查看 12 个分区中每个分区的记录数
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -435,7 +435,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 查询结果将写入本地文件 **C:\temp\queryoutput.tsv**。
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>浏览：通过检查无效的经度或纬度记录，评估数据质量
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索：通过检查无效的经度或纬度记录，评估数据质量
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -459,7 +459,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 此命令中包含的 *-S* 参数阻止状态屏幕打印输出 Hive Map/Reduce 作业。 这非常有用，因为它使 Hive 查询输出的屏幕打印更加易读。
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>浏览：行程小费的二元类分布
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索：行程小费的二元类分布
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -485,7 +485,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>浏览：多类设置中的类分布
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索：多类设置中的类分布
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -508,7 +508,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>浏览：计算两个经纬位置之间的直接距离
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索：计算两个经纬位置之间的直接距离
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -563,7 +563,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 > 
 > 
 
-将此数据驻留在 Azure Blob 中的一个主要优点是，我们可以使用[导入数据][import-data]模块在机器学习中探索数据。
+将此数据驻留在 Azure blob 中的一个主要优点是，我们可以使用 "[导入数据][import-data]" 模块来浏览机器学习中的数据。
 
 ## <a name="#downsample"></a>在机器学习中对数据进行下采样和构建模型
 > [!NOTE]
@@ -571,12 +571,12 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 > 
 > 
 
-在探索数据分析阶段之后，便可以开始在机器学习中对数据进行下采样，以便构建模型。 本部分演示如何使用 Hive 查询对数据进行下采样。 然后，机器学习将通过[导入数据][import-data]模块访问该数据。
+在探索数据分析阶段之后，便可以开始在机器学习中对数据进行下采样，以便构建模型。 本部分演示如何使用 Hive 查询对数据进行下采样。 然后机器学习从 "[导入数据][import-data]" 模块访问该数据。
 
 ### <a name="down-sampling-the-data"></a>对数据进行下采样
 此过程包含两个步骤。 首先，在存在于所有记录中的三个键上将 **nyctaxidb.trip** 和 **nyctaxidb.fare** 表相联接，这三个键是：**medallion**、**hack\_license** 和 **pickup\_datetime**。 然后，生成一个二元分类标签 **tipped** 和一个多类分类标签 **tip\_class**。
 
-为了能够直接从机器学习中的[导入数据][import-data]模块使用已经过下采样的数据，应将上述查询的结果存储到内部 Hive 表中。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
+为了能够从机器学习中的 "[导入数据][import-data]" 模块中直接使用向下采样的数据，应将上述查询的结果存储到内部 Hive 表中。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
 
 查询直接应用标准 Hive 函数，以从 **pickup\_datetime** 字段生成以下内容：
 - 一天的某一小时
@@ -714,27 +714,27 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-创建内部表 **nyctaxidb.nyctaxi_downsampled_dataset** 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表。 此外，可将此数据集用于构建机器学习模型。  
+现在，我们有了一个内部表 nyctaxidb，可以使用机器学习中的 "[导入数据][import-data]" 模块访问该**nyctaxi_downsampled_dataset。** 此外，可将此数据集用于构建机器学习模型。  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>使用机器学习中的“导入数据”模块访问已经过下采样的数据
-若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，需有权访问机器学习工作区。 此外，还需有权访问群集凭据及其关联的存储帐户。
+若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，需要访问机器学习工作区。 此外，还需有权访问群集凭据及其关联的存储帐户。
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net  。
+**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net。
 
-**Hadoop 用户帐户名**：为群集选择的用户名（不是远程访问用户名）。
+**Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
 **Hadoop 用户帐户密码**：为群集选择的密码（不是远程访问密码）。
 
-**输出数据的位置**：选择“Azure”。
+输出数据的位置：为此选项选择 Azure。
 
-**Azure 存储帐户名称**：与群集关联的默认存储帐户的名称。
+Azure 存储帐户名称：与群集关联的默认存储帐户的名称。
 
-**Azure 容器名称**：群集的默认容器名称，通常与群集名称相同。 对于名为 **abc123** 的群集，默认容器名称为 abc123。
+Azure 容器名称：这是群集的默认容器名称，通常与群集名称相同。 对于名为 **abc123** 的群集，默认容器名称为 abc123。
 
 > [!IMPORTANT]
-> 我们希望使用机器学习中的[导入数据][import-data]模块查询的任何表都必须是内部表。
+> 要使用机器学习中的 "[导入数据][import-data]" 模块查询的任何表都必须是内部表。
 > 
 > 
 
@@ -761,13 +761,13 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 双类逻辑回归
 
-  a. 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用 "[选择数据集中的列][select-columns]" 模块将删除这些列。
 
   下图显示预测给定行程是否支付小费的试验。
 
   ![示意图：预测是否支付小费试验](./media/hive-walkthrough/QGxRz5A.png)
 
-  b. 对于此实验，我们的目标标签分布大约是 1:1。
+  b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们的目标标签分布大约是 1:1。
 
    下图显示该二元分类问题的小费类标签的分布情况。
 
@@ -781,7 +781,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 多类逻辑回归
 
-  a. 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
 
   下图显示预测小费可能归属的 bin 的试验。 bin 为：类 0：小费 = $0，类 1：小费 > $0 且 <= $5，类 2：小费 > $5 且 <= $10，类 3：小费 > $10 且 <= $20，类 4：小费 > $20。
 
@@ -791,23 +791,23 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   ![测试类分布图表](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下所示：
+  b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下所示：
 
   ![混淆矩阵](./media/hive-walkthrough/cxFmErM.png)
 
   注意，虽然此模型对于普遍类的预测准确性很高，但对于较少情况的类，其并未做好“学习”工作。
 
-- **回归任务**：预测为行程支付的小费金额。
+- **回归任务**：预测为行程支付的小费数量。
 
   **使用的学习器：** 提升决策树
 
-  a. 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
 
   下图显示预测支付的小费金额的试验。
 
   ![示意图：预测小费金额的试验](./media/hive-walkthrough/11TZWgV.png)
 
-  b. 对于回归问题，我们将通过查看预测中的平方误差和决定系数，测量预测准确性：
+  b.保留“数据库类型”设置，即设置为“共享”。 对于回归问题，我们将通过查看预测中的平方误差和决定系数，测量预测准确性：
 
   ![预测统计信息的屏幕截图](./media/hive-walkthrough/Jat9mrz.png)
 

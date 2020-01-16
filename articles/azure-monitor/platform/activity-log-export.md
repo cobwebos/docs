@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750573"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969665"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
 > [!WARNING]
-> 你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](diagnostic-settings-subscription.md)。
+> 你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](diagnostic-settings-legacy.md)。
 
 [Azure 活动日志](platform-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 除了查看 Azure 门户中的活动日志，或者将其复制到 Log Analytics 工作区（其中可以使用 Azure Monitor 收集的其他数据进行分析），可以创建日志配置文件，将活动日志存档到 Azure 存储帐户，或将其流式传输到 事件中心。
 
@@ -28,12 +28,12 @@ ms.locfileid: "75750573"
 ## <a name="stream-activity-log-to-event-hub"></a>将活动日志流式传输到事件中心
 [Azure 事件中心](/azure/event-hubs/)是一种数据流式处理平台和事件引入服务，每秒可接收和处理数百万事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。 可以通过两种方式将流式传输功能用于活动日志：
 * **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和 Log Analytics 解决方案。
-* **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。 
+* **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。
 
 ## <a name="prerequisites"></a>必备组件
 
 ### <a name="storage-account"></a>存储帐户
-如果要存档活动日志，则需要[创建一个存储帐户](../../storage/common/storage-quickstart-create-account.md)（如果尚未安装）。 不应使用存储在其中的其他非监视数据的现有存储帐户，以便您可以更好地控制对监视数据的访问。 不过，如果还将日志和指标存档到存储帐户，则可以选择使用同一个存储帐户将所有监视数据都保存在一个中央位置。
+如果要存档活动日志，则需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未安装）。 不应使用存储在其中的其他非监视数据的现有存储帐户，以便您可以更好地控制对监视数据的访问。 不过，如果还将日志和指标存档到存储帐户，则可以选择使用同一个存储帐户将所有监视数据都保存在一个中央位置。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发出日志的的订阅中。
 > [!NOTE]
@@ -65,7 +65,7 @@ ms.locfileid: "75750573"
 
 
 > [!IMPORTANT]
-> 如果未注册 Microsoft Insights 资源提供程序，则在创建日志配置文件时可能会收到错误。 若要注册此提供程序，请参阅[Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)。
+> 如果未注册 Microsoft Insights 资源提供程序，则在创建日志配置文件时可能会收到错误。 若要注册此提供程序，请参阅[Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>使用 Azure 门户创建日志配置文件
@@ -77,7 +77,7 @@ ms.locfileid: "75750573"
     ![门户中的“导出”按钮](media/activity-log-export/portal-export.png)
 
 3. 在出现的边栏选项卡中，指定以下内容：
-   * 包含要导出的事件的区域。 你应选择 "所有区域"，以确保不会错过关键事件，因为活动日志是一个全局（非区域）日志，因此大多数事件都没有关联的区域。 
+   * 包含要导出的事件的区域。 你应选择 "所有区域"，以确保不会错过关键事件，因为活动日志是一个全局（非区域）日志，因此大多数事件都没有关联的区域。
    * 如果要写入存储帐户，请执行以下操作：
        * 要将事件保存到的存储帐户。
        * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
@@ -167,5 +167,5 @@ ms.locfileid: "75750573"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关活动日志的更多信息](../../azure-resource-manager/resource-group-audit.md)
+* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
 * [将活动日志收集到 Azure Monitor 日志中](activity-log-collect.md)

@@ -4,15 +4,15 @@ description: 介绍如何使用 Azure Analysis Services REST API 对模型数据
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573401"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029876"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
@@ -30,7 +30,7 @@ ms.locfileid: "73573401"
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，假设某个模型名为 AdventureWorks，位于美国西部 Azure 区域中名为 myserver 的服务器上。 此服务器名称为：
+例如，在名为 "`myserver`" 的服务器上，请考虑名为 AdventureWorks 的模型，该服务器位于美国西部 Azure 区域。 此服务器名称为：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -93,26 +93,37 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>参数
 
 不需要指定参数。 将应用默认值。
 
-| 名称             | 类型  | 说明  |默认  |
+| 名称             | 类型  | Description  |默认  |
 |------------------|-------|--------------|---------|
 | `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
-| `RetryCount`     | int   | 指示操作在失败之前要重试的次数。      |     0    |
-| `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
+| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
+| `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
+| `Objects`        | 数组 | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。
 
 > [!NOTE]
 > 在撰写本文时，批大小为 MaxParallelism 值，但可以更改此值。
 
+### <a name="status-values"></a>状态值
+
+|状态值  |Description  |
+|---------|---------|
+|`notStarted`    |   操作尚未开始。      |
+|`inProgress`     |   操作正在进行。      |
+|`timedOut`     |    操作因用户指定的超时而超时。     |
+|`cancelled`     |   用户或系统取消了操作。      |
+|`failed`     |   操作失败。      |
+|`succeeded`      |   操作成功。      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则会在状态中返回 **inProgress**。
+若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则在状态中返回 `inProgress`。
 
 ```
 {
@@ -208,7 +219,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 1.  在代码示例中，找到 **string authority = …** ，将 **common** 替换为组织的租户 ID。
 2.  注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
-3.  运行示例。
+3.  运行该示例。
 
 
 ## <a name="see-also"></a>另请参阅

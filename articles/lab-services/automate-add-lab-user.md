@@ -1,6 +1,6 @@
 ---
-title: 自动执行在 Azure 开发测试实验室中添加实验室用户 |Microsoft Docs
-description: 了解如何自动向 Azure 开发测试实验室中的实验室添加实验室用户。
+title: 在 Azure 开发测试实验室中自动添加实验室用户 |Microsoft Docs
+description: 了解如何在 Azure 开发测试实验室中自动向实验室添加实验室用户。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522964"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980055"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动向 Azure 开发测试实验室中的实验室添加实验室用户
-Azure 开发测试实验室，可通过使用 Azure 门户快速创建自助服务的开发测试环境。 但是，如果有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，可以创建实验室、 实验室 Vm、 自定义映像、 公式和以自动方式添加用户。 本文专门重点介绍将用户添加到开发测试实验室实例。
+Azure 开发测试实验室允许使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 利用[Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，你可以创建实验室、实验室 vm、自定义映像、公式，并以自动方式添加用户。 本文专门介绍如何将用户添加到开发测试实验室实例中。
 
-若要将用户添加到实验室，你将用户添加到**开发测试实验室用户**实验室的角色。 本文介绍如何自动将用户添加到实验室中使用以下方法之一：
+若要将用户添加到实验室，请将用户添加到实验室的**开发测试实验室用户**角色。 本文说明如何使用以下方法之一自动将用户添加到实验室：
 
 - Azure 资源管理器模板
 - Azure PowerShell cmdlet 
 - Azure CLI。
 
 ## <a name="use-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
-下面的示例 Resource Manager 模板指定要添加到用户**开发测试实验室用户**实验室的角色。 
+下面的示例资源管理器模板指定要添加到实验室的**开发测试实验室用户**角色的用户。 
 
 ```json
 {
@@ -85,16 +85,16 @@ Azure 开发测试实验室，可通过使用 Azure 门户快速创建自助服�
 
 ```
 
-如果您将创建实验室在同一模板中的角色分配，请记住添加角色分配资源和实验室之间的依赖项。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖项](../azure-resource-manager/resource-group-define-dependencies.md)一文。
+如果要在创建实验室的同一模板中分配角色，请记住在角色分配资源和实验室之间添加依赖关系。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖项](../azure-resource-manager/templates/define-resource-dependency.md)。
 
 ### <a name="role-assignment-resource-information"></a>角色分配资源信息
-角色分配资源需要指定的类型和名称。
+角色分配资源需要指定类型和名称。
 
-第一件事要注意是资源的类型不是`Microsoft.Authorization/roleAssignments`因为它将资源组。  相反，资源类型遵循模式`{provider-namespace}/{resource-type}/providers/roleAssignments`。 在这种情况下，资源类型将`Microsoft.DevTestLab/labs/providers/roleAssignments`。
+首先要注意的是，资源的类型并不是 `Microsoft.Authorization/roleAssignments` 资源组。  而资源类型则遵循模式 `{provider-namespace}/{resource-type}/providers/roleAssignments`。 在这种情况下，将 `Microsoft.DevTestLab/labs/providers/roleAssignments`资源类型。
 
-角色分配名称本身需要是全局唯一的。  分配的名称使用模式`{labName}/Microsoft.Authorization/{newGuid}`。 `newGuid`模板的参数值。 它可确保该角色分配名称唯一。 没有用于创建 Guid 模板函数，需要使用任何 GUID 生成器工具自己生成的 GUID。  
+角色分配名称本身需要是全局唯一的。  分配的名称使用模式 `{labName}/Microsoft.Authorization/{newGuid}`。 `newGuid` 是模板的参数值。 它可确保角色分配名称是唯一的。 由于没有用于创建 Guid 的模板功能，因此需要使用任何 GUID 生成器工具自行生成 GUID。  
 
-在模板中，通过定义角色分配的名称`fullDevTestLabUserRoleName`变量。 从模板的具体行是：
+在模板中，角色分配的名称由 `fullDevTestLabUserRoleName` 变量定义。 模板中的确切行是：
 
 ```json
 "fullDevTestLabUserRoleName": "[concat(parameters('labName'), '/Microsoft.Authorization/', parameters('roleAssignmentGuid'))]"
@@ -102,47 +102,47 @@ Azure 开发测试实验室，可通过使用 Azure 门户快速创建自助服�
 
 
 ### <a name="role-assignment-resource-properties"></a>角色分配资源属性
-角色分配本身定义三个属性。 它需要`roleDefinitionId`， `principalId`，和`scope`。
+角色分配本身定义了三个属性。 它需要 `roleDefinitionId`、`principalId`和 `scope`。
 
 ### <a name="role-definition"></a>角色定义
-角色定义 ID 是现有的角色定义的字符串标识符。 ID 是在窗体中的角色`/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`。 
+角色定义 ID 是现有角色定义的字符串标识符。 角色 ID 的格式 `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`。 
 
-获取的订阅 ID 使用`subscription().subscriptionId`模板函数。  
+使用 `subscription().subscriptionId` 模板函数获取订阅 ID。  
 
-您需要先获取的角色定义`DevTest Labs User`内置角色。 若要获取的 GUID[开发测试实验室用户](../role-based-access-control/built-in-roles.md#devtest-labs-user)角色，可以使用[角色分配 REST API](/rest/api/authorization/roleassignments)或[Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) cmdlet。
+需要获取 `DevTest Labs User` 内置角色的角色定义。 若要获取[开发测试实验室用户](../role-based-access-control/built-in-roles.md#devtest-labs-user)角色的 GUID，可以使用 REST API 或[AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) cmdlet 的[角色分配](/rest/api/authorization/roleassignments)。
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ```
 
-在 variables 节中定义和名为的角色 ID `devTestLabUserRoleId`。 在模板中，角色 ID 设置为：111111111-0000-0000-11111111111111111. 
+角色 ID 在 variables 节和命名 `devTestLabUserRoleId`中定义。 在模板中，角色 ID 设置为：111111111-0000-0000-11111111111111111。 
 
 ```json
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
 ### <a name="principal-id"></a>主体 ID
-主体 ID 为 Active Directory 用户、 组或你想要将作为实验室用户添加到实验室的服务主体的对象 ID。 该模板使用`ObjectId`作为参数。
+主体 ID 是要作为实验室用户添加到实验室的 Active Directory 用户、组或服务主体的对象 ID。 模板使用 `ObjectId` 作为参数。
 
-可以通过获取 ObjectId [Get-azurermaduser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0)，[Get-azurermadgroup，或[Get-azurermadserviceprincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell cmdlet。 这些 cmdlet 返回单个或具有 ID 属性，这是所需的对象 ID 的 Active Directory 对象的列表。 下面的示例演示如何在公司中获取单个用户的对象 ID。
+可以通过使用[get-azurermaduser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0)、[Get-azurermadgroup 或[new-azurermadserviceprincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell cmdlet 来获取 ObjectId。 这些 cmdlet 返回 Active Directory 对象的单个或列表，这些对象具有 ID 属性，该属性是所需的对象 ID。 下面的示例演示如何获取公司中单个用户的对象 ID。
 
 ```powershell
 $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 ```
 
-此外可以使用包含的 Azure Active Directory PowerShell cmdlet [Get-msoluser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)， [Get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)，并[Get-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)。
+你还可以使用包含[set-msoluser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、 [get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)和[new-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)的 Azure Active Directory PowerShell cmdlet。
 
 ### <a name="scope"></a>范围
-作用域指定的资源或资源组应为其应用角色分配。 对于资源，范围是在窗体中： `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 该模板使用`subscription().subscriptionId`函数来填充`subscription-id`一部分并`resourceGroup().name`模板函数，以填充`resource-group-name`一部分。 使用这些函数意味着要向其分配角色实验室必须存在于当前订阅和对其进行模板部署的同一资源组。 最后一个部分， `resource-name`，是在实验室的名称。 通过在此示例中的模板参数接收此值。 
+作用域指定应应用角色分配的资源或资源组。 对于资源，范围格式为： `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 该模板使用 `subscription().subscriptionId` 函数填充 `subscription-id` 部分，并使用 `resourceGroup().name` 模板函数填充 `resource-group-name` 部分。 使用这些函数意味着你要向其分配角色的实验室必须存在于当前订阅中，以及模板部署所属的同一资源组。 最后一部分 `resource-name`是实验室的名称。 此值通过此示例中的模板参数接收。 
 
-在模板中的角色作用域： 
+模板中的角色作用域： 
 
 ```json
 "roleScope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.DevTestLab/labs/', parameters('labName'))]"
 ```
 
 ### <a name="deploying-the-template"></a>部署模板
-首先，创建参数文件 (例如： azuredeploy.parameters.json) 的资源管理器模板中传递参数的值。 
+首先，创建一个参数文件（例如： azuredeploy.json），该文件传递资源管理器模板中参数的值。 
 
 ```json
 {
@@ -162,37 +162,37 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 }
 ```
 
-然后，使用[New-azurermresourcegroupdeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell cmdlet 部署资源管理器模板。 以下示例命令将个人、 组或服务主体分配到实验室的开发测试实验室用户角色。
+然后，使用[New-azurermresourcegroupdeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell cmdlet 部署资源管理器模板。 下面的示例命令将用户、组或服务主体分配给实验室的开发测试实验室用户角色。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-请务必注意，需要是唯一的组部署名称和角色分配 GUID。 如果你尝试部署的资源分配与非唯一的 GUID，则你将获得`RoleAssignmentUpdateNotPermitted`错误。
+需要特别注意的是，组部署名称和角色分配 GUID 需要是唯一的。 如果尝试使用非唯一 GUID 部署资源分配，则会出现 `RoleAssignmentUpdateNotPermitted` 错误。
 
-如果你打算多次使用模板将多个 Active Directory 对象添加到实验室的开发测试实验室用户角色，请考虑在 PowerShell 命令中使用动态对象。 下面的示例使用[New-guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) cmdlet 来动态指定资源组部署名称和角色分配 GUID。
+如果计划多次使用该模板将多个 Active Directory 对象添加到实验室的开发测试实验室用户角色，请考虑使用 PowerShell 命令中的动态对象。 以下示例使用新的[Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) cmdlet 动态指定资源组部署名称和角色分配 Guid。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-如简介中所述，创建一个新的 Azure 角色分配，以将用户添加到**开发测试实验室用户**实验室的角色。 在 PowerShell 中，则执行操作来使用[New-azurermroleassignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet。 此 cmdlet 具有许多可选参数，使灵活。 `ObjectId`， `SigninName`，或`ServicePrincipalName`可以指定为其授予权限的对象。  
+如简介中所述，创建新的 Azure 角色分配，以便将用户添加到实验室的**开发测试实验室用户**角色。 在 PowerShell 中，可以使用[new-azurermroleassignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet 来执行此操作。 此 cmdlet 具有多个可选参数，以提供灵活性。 可以将 `ObjectId`、`SigninName`或 `ServicePrincipalName` 指定为向其授予权限的对象。  
 
-下面是一个示例 Azure PowerShell 命令，将用户添加到指定的实验室中的开发测试实验室用户角色。
+下面是将用户添加到指定实验室中开发测试实验室用户角色的 Azure PowerShell 命令示例。
 
 ```powershell
 New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinitionName 'DevTest Labs User' -ResourceName '<Lab Name>' -ResourceGroupName '<Resource Group Name>' -ResourceType 'Microsoft.DevTestLab/labs'
 ```
 
-若要指定授予可的组合来指定正在向其权限的资源`ResourceName`， `ResourceType`，`ResourceGroup`或通过`scope`参数。 使用参数的任何组合，提供足够的信息到 cmdlet，以唯一标识 Active Directory 对象 （用户、 组或服务主体）、 作用域 （资源组或资源） 和角色定义。
+若要指定要向其授予权限的资源，可以通过 `ResourceName`、`ResourceType`、`ResourceGroup` 或 `scope` 参数的组合来指定。 无论使用哪种参数组合，都可以为 cmdlet 提供足够的信息来唯一标识 Active Directory 对象（用户、组或服务主体）、作用域（资源组或资源）以及角色定义。
 
-## <a name="use-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI)
-在 Azure CLI 中，添加到实验室的实验室用户可通过使用`az role assignment create`命令。 Azure CLI cmdlet 的详细信息，请参阅[访问管理对 Azure 资源使用 RBAC 和 Azure CLI](../role-based-access-control/role-assignments-cli.md)。
+## <a name="use-azure-command-line-interface-cli"></a>使用 Azure 命令行接口（CLI）
+在 Azure CLI 中，使用 `az role assignment create` 命令向实验室添加实验室用户。 有关 Azure CLI cmdlet 的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md)。
 
-可以通过指定其授予访问权限的对象`objectId`， `signInName`，`spn`参数。 可以通过标识该对象被授予访问权限的实验室`scope`url 或多种`resource-name`， `resource-type`，和`resource-group`参数。
+被授予访问权限的对象可以由 `objectId`、`signInName``spn` 参数指定。 要向其授予访问权限的实验室，可以通过 `scope` url 或 `resource-name`、`resource-type`和 `resource-group` 参数的组合来识别。
 
-以下 Azure CLI 示例演示如何为指定的实验室添加到开发测试实验室用户角色的人员。  
+以下 Azure CLI 示例演示了如何将人员添加到指定实验室的开发测试实验室用户角色。  
 
 ```azurecli
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
@@ -201,7 +201,7 @@ az role assignment create --roleName "DevTest Labs User" --signInName <email@com
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [创建和使用开发测试实验室使用 Azure CLI 管理虚拟机](devtest-lab-vmcli.md)
-- [使用开发测试实验室使用 Azure PowerShell 创建虚拟机](devtest-lab-vm-powershell.md)
-- [使用命令行工具来启动和停止 Azure 开发测试实验室虚拟机](use-command-line-start-stop-virtual-machines.md)
+- [使用 Azure CLI 在开发测试实验室中创建和管理虚拟机](devtest-lab-vmcli.md)
+- [使用 Azure PowerShell 创建包含开发测试实验室的虚拟机](devtest-lab-vm-powershell.md)
+- [使用命令行工具启动和停止 Azure 开发测试实验室虚拟机](use-command-line-start-stop-virtual-machines.md)
 

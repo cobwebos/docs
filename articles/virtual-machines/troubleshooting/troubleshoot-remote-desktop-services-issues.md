@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168960"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981786"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
 本文介绍如何排查连接到 Azure 虚拟机 (VM) 时远程桌面服务 (TermService) 不启动或无法启动的问题。
 
 > [!NOTE]  
-> Azure 具有两种不同的部署模型可用来创建和处理资源：[Azure 资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
+> Azure 提供两种不同的部署模型用于创建和处理资源：[Azure 资源管理器模型和经典模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -36,16 +36,16 @@ ms.locfileid: "72168960"
 
 - 在使用事件查看器远程查看 VM 中的事件日志时， 你发现远程桌面服务 (TermService) 未启动或无法启动。 下面是日志示例：
 
-    **日志名称**：    系统 </br>
-    **源**：      服务控制管理器 </br>
-    **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
-    **事件 ID**：    7022</br>
-    **任务类别**：无</br>
-    **级别**：       Error</br>
-    **关键字**：    经典</br>
-    **用户**：        不可用</br>
+    **日志名称**: 系统 </br>
+    **源**: 服务控制管理器 </br>
+    **日期**: 12/16/2017 11:19:36 AM</br>
+    **事件 ID**: 7022</br>
+    **任务类别**: 无</br>
+    **级别**: 错误</br>
+    **关键字**: 经典</br>
+    **用户**: 不适用</br>
     **计算机**: vm.contoso.com</br>
-    **说明**：远程桌面服务服务在启动时挂起。 
+    **说明**: 远程桌面服务服务在启动时挂起。 
 
     也可以使用串行访问控制台功能运行以下查询来查找这些错误： 
 
@@ -57,7 +57,7 @@ ms.locfileid: "72168960"
 
 - TermService 服务设置为“已禁用”。 
 - TermService 服务崩溃或未响应。 
-- 错误的配置导致 TermService 不启动。
+- 由于配置不正确，TermService 没有启动。
 
 ## <a name="solution"></a>解决方案
 
@@ -96,7 +96,7 @@ ms.locfileid: "72168960"
    ```
 8. 如果该服务无法启动，请根据收到的错误遵循相应的解决方法：
 
-    |  Error |  建议 |
+    |  错误 |  建议 |
     |---|---|
     |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |  
@@ -145,7 +145,7 @@ ms.locfileid: "72168960"
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
-    2. 使用串行控制台可将文件复制到新驱动器。 例如， `copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
+    2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
 6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
@@ -205,7 +205,7 @@ ms.locfileid: "72168960"
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
-3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
+3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 假设分配给附加 OS 磁盘的驱动器号为**F**。将其替换为 VM 中的相应值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
