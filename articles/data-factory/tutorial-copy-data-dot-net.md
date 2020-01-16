@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439441"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977318"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 
@@ -38,7 +38,7 @@ ms.locfileid: "75439441"
 
 ## <a name="prerequisites"></a>必备条件
 
-* *Azure 存储帐户*。 可将 Blob 存储用作*源*数据存储。 如果没有 Azure 存储帐户，请参阅[创建常规用途的存储帐户](../storage/common/storage-quickstart-create-account.md)。
+* *Azure 存储帐户*。 可将 Blob 存储用作*源*数据存储。 如果没有 Azure 存储帐户，请参阅[创建常规用途的存储帐户](../storage/common/storage-account-create.md)。
 * *Azure SQL 数据库*。 将数据库用作*接收器*数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-single-database-get-started.md)。
 * *Visual Studio*。 本文中的演练使用 Visual Studio 2019。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* 。
@@ -84,7 +84,7 @@ ms.locfileid: "75439441"
     1. 转到 [Azure 门户](https://portal.azure.com)以管理 SQL Server。 搜索并选择“SQL Server”  。
 
     2. 选择服务器。
-    
+
     3. 在 SQL Server 菜单的“安全性”标题下，选择“防火墙和虚拟网络”。  
 
     4. 在“防火墙和虚拟网络”页的“允许 Azure 服务和资源访问此服务器”下，选择“启用”。   
@@ -154,7 +154,7 @@ ms.locfileid: "75439441"
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>创建数据集
 
-在本部分中创建两个数据集：一个用于源，另一个用于接收器。 
+在本部分中创建两个数据集：一个用于源，另一个用于接收器。
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>为源 Azure Blob 创建数据集
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 向 `Main` 方法中添加用于创建 *Azure SQL 数据库数据集*的以下代码。 有关支持的属性和信息，请参阅 [Azure SQL 数据库数据集属性](connector-azure-sql-database.md#dataset-properties)。
 
-在 Azure SQL 数据库中定义表示接收器数据的数据集。 此数据集引用在上一步创建的 Azure SQL 数据库链接服务。 它还指定用于保存所复制数据的 SQL 表。 
+在 Azure SQL 数据库中定义表示接收器数据的数据集。 此数据集引用在上一步创建的 Azure SQL 数据库链接服务。 它还指定用于保存所复制数据的 SQL 表。
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>后续步骤
 
-此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作： 
+此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。
@@ -574,7 +574,7 @@ Press any key to exit...
 > * 启动管道运行。
 > * 监视管道和活动运行。
 
-若要了解如何将数据从本地复制到云，请转到以下教程： 
+若要了解如何将数据从本地复制到云，请转到以下教程：
 
 > [!div class="nextstepaction"]
 >[将数据从本地复制到云](tutorial-hybrid-copy-powershell.md)
