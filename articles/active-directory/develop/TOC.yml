@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows 桌面 .NET
               href: tutorial-v2-windows-desktop.md
+            - name: 在 Android 应用中使用共享设备模式
+              href: tutorial-v2-shared-device-mode.md
         - name: 守护程序应用
           items:
             - name: ASP.NET 守护程序 Web 应用
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: 移动平台特定的配置
                   items:
+                    - name: 适用于 Android 设备的共享设备模式
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Android 上的系统浏览器
@@ -378,7 +382,7 @@
           items:
             - name: 概述
               href: authentication-national-cloud.md
-            - name: Authentication
+            - name: 身份验证
               href: msal-national-cloud.md
         - name: 自动用户预配 (SCIM)
           items:
@@ -388,7 +392,7 @@
               href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: 操作方法指南
       items:
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 配置角色声明
               href: active-directory-enterprise-app-role-management.md
@@ -580,7 +584,7 @@
               href: native-app.md
             - name: 守护程序或服务器应用程序
               href: service-to-service.md
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 身份验证基础知识
               href: v1-authentication-scenarios.md
@@ -641,7 +645,7 @@
           href: authentication-national-cloud.md
     - name: 操作方法指南
       items:
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 配置单一登录
               displayName: SSO

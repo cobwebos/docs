@@ -54,22 +54,28 @@
   items:
     - name: 支持矩阵
       items:
-        - name: Azure Migrate 的支持矩阵
+        - name: 常规支持
           href: migrate-support-matrix.md
-        - name: 用于 VMware 评估和迁移的支持矩阵
+        - name: VMware 评估支持
           href: migrate-support-matrix-vmware.md
-        - name: 用于 Hyper-V 评估和迁移的支持矩阵
+        - name: VMware 迁移支持
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V 评估支持
           href: migrate-support-matrix-hyper-v.md
-        - name: 用于物理服务器评估和迁移的支持矩阵
+        - name: Hyper-V 迁移支持
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: 物理服务器评估支持
           href: migrate-support-matrix-physical.md
-        - name: Azure Migrate 设备的支持矩阵
+        - name: 物理服务器迁移支持
+          href: migrate-support-matrix-physical-migration.md
+        - name: Azure Migrate 设备要求
           href: migrate-appliance.md
+        - name: 复制设备要求
+          href: migrate-replication-appliance.md
     - name: Hyper-V 迁移体系结构
       href: hyper-v-migration-architecture.md
     - name: 基于代理的迁移体系结构
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate 复制设备
-      href: migrate-replication-appliance.md
     - name: 用于评估的最佳做法
       href: best-practices-assessment.md
     - name: “评估”概述
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: 删除 Azure Migrate 项目
       href: how-to-delete-project.md
-- name: 大规模评估和迁移
-  items:
-    - name: 评估大量 VMware VM
-      href: scale-vmware-assessment.md
-    - name: 评估大量 Hyper-V VM
-      href: scale-hyper-v-assessment.md
-    - name: 自动执行大量 VM 的迁移
-      href: how-to-migrate-at-scale.md
-    - name: 迁移示例（Contoso 系列）
-      href: contoso-migration-overview.md
+    - name: 大规模评估和迁移
+      items:
+        - name: 评估大量 VMware VM
+          href: scale-vmware-assessment.md
+        - name: 评估大量 Hyper-V VM
+          href: scale-hyper-v-assessment.md
+        - name: 自动执行大量 VM 的迁移
+          href: how-to-migrate-at-scale.md
+        - name: 迁移示例（Contoso 系列）
+          href: contoso-migration-overview.md
 - name: 故障排除
   items:
     - name: 排查 Azure Migrate 问题

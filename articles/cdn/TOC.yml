@@ -40,13 +40,13 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 支持
       href: cdn-http2.md
-    - name: 检索 Verizon POP 列表
+    - name: 检索 POP IP
       href: cdn-pop-list-api.md
     - name: 从标准 Verizon 迁移到高级 Verizon
       href: cdn-migrate.md
     - name: DDOS 保护
       href: cdn-ddos.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 优化内容
       href: cdn-optimization-overview.md
@@ -134,7 +134,7 @@
           href: cdn-troubleshoot-compression.md
         - name: 允许的证书颁发机构
           href: cdn-troubleshoot-allowed-ca.md
-- name: 引用
+- name: 参考
   items:
     - name: 标准规则引擎参考
       href: cdn-standard-rules-engine-reference.md

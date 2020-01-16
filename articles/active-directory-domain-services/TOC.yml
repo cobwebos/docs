@@ -29,6 +29,8 @@
   items:
     - name: 使用 Azure PowerShell 创建托管域
       href: powershell-create-instance.md
+    - name: 使用模板创建托管域
+      href: template-create-instance.md
 - name: 概念
   items:
     - name: 管理基础知识

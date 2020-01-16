@@ -1,0 +1,150 @@
+### YamlMime:Hub
+title: Azure 成本管理 + 计费文档
+summary: Azure 成本管理和计费帮助你了解 Azure 计费、管理帐户和订阅、监视并控制 Azure 支出，以及优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
+metadata:
+  ms.service: cost-management-billing
+  description: Azure 成本管理和计费帮助你了解 Azure 计费、管理帐户和订阅、监视并控制 Azure 支出，以及优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
+  ms.topic: hub-page
+  author: bandersmsft
+  ms.author: banders
+  manager: dougeby
+  ms.date: 12/17/2019
+  ms.openlocfilehash: 83e05501b256848f5fd7d4f42723a64b3fc3b1fb
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983352"
+highlightedContent:
+  items:
+  - title: 什么是“成本管理 + 计费”？
+    itemType: overview
+    url: cost-management-billing-overview.md
+  - title: 分析成本和创建预算
+    itemType: learn
+    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/
+  - title: 成本管理最佳做法
+    itemType: concept
+    url: ./costs/cost-mgt-best-practices.md
+conceptualContent:
+  items:
+  - title: Azure 计费入门
+    links:
+    - url: ./understand/review-individual-bill.md
+      itemType: tutorial
+      text: 查看个人帐单
+    - url: ./understand/review-customer-agreement-bill.md
+      itemType: tutorial
+      text: 查看客户协议帐单
+    - url: ./understand/review-partner-agreement-bill.md
+      itemType: tutorial
+      text: 查看合作伙伴协议帐单
+    - url: ./understand/review-enterprise-agreement-bill.md
+      itemType: tutorial
+      text: 查看企业协议帐单
+    footerLink:
+      text: 查看详细信息
+      url: ./understand/index.yml
+  - title: 免费帐户
+    links:
+    - url: ./manage/create-free-services.md
+      itemType: concept
+      text: 创建免费服务
+    - url: ./manage/avoid-charges-free-account.md
+      itemType: concept
+      text: 避免产生费用
+    - url: ./manage/check-free-service-usage.md
+      itemType: concept
+      text: 查看使用情况
+    - url: ./manage/upgrade-azure-subscription.md
+      itemType: concept
+      text: 升级订阅
+  - title: 管理 Azure 成本和使用情况
+    links:
+    - url: ./costs/quick-acm-cost-analysis.md
+      itemType: quickstart
+      text: 开始分析成本
+    - url: ./costs/tutorial-acm-create-budgets.md
+      itemType: tutorial
+      text: 创建并管理预算
+    - url: ./costs/tutorial-export-acm-data.md
+      itemType: tutorial
+      text: 导出成本和使用情况数据
+    - url: ./costs/tutorial-acm-opt-recommendations.md
+      itemType: tutorial
+      text: 根据节省成本的建议采取措施
+    - url: ./costs/cost-analysis-common-uses.md
+      itemType: how-to-guide
+      text: 将成本分析用于常见任务
+    footerLink:
+      text: 查看详细信息
+      url: ./costs/index.yml
+  - title: 管理 Azure 帐户和订阅
+    links:
+    - url: ./manage/manage-billing-access.md
+      itemType: how-to-guide
+      text: 授予对计费信息的访问权限
+    - url: ./manage/change-azure-account-profile.md
+      itemType: how-to-guide
+      text: 编辑个人资料
+    - url: ./manage/resolve-past-due-balance.md
+      itemType: how-to-guide
+      text: 处理逾期未付余额
+    - url: ./manage/subscription-disabled.md
+      itemType: how-to-guide
+      text: 重新激活订阅
+    - url: ./manage/billing-subscription-transfer.md
+      itemType: how-to-guide
+      text: 转让所有权
+    - url: ./manage/cancel-azure-subscription.md
+      itemType: how-to-guide
+      text: 取消订阅
+    - url: ./manage/change-credit-card.md
+      itemType: how-to-guide
+      text: 更改信用卡
+    - url: ./manage/add-change-subscription-administrator.md
+      itemType: how-to-guide
+      text: 更改管理员
+    - url: ./manage/create-subscription.md
+      itemType: how-to-guide
+      text: 创建其他订阅
+    footerLink:
+      text: 查看详细信息
+      url: ./manage/index.yml
+  - title: 通过 Azure 预留来节省资金
+    links:
+    - url: ./reservations/save-compute-costs-reservations.md
+      itemType: concept
+      text: 什么是 Azure 预留？
+    - url: ./reservations/manage-reserved-vm-instance.md
+      itemType: how-to-guide
+      text: 管理 Azure 预留项
+    - url: ./reservations/monthly-payments-reservations.md
+      itemType: how-to-guide
+      text: 通过按月支付购买预留项
+    - url: ./reservations/reservation-renew.md
+      itemType: how-to-guide
+      text: 续订预留
+    - url: ./reservations/exchange-and-refund-azure-reservations.md
+      itemType: how-to-guide
+      text: 预留交换和退款
+    footerLink:
+      text: 查看详细信息
+      url: ./reservations/index.yml
+  - title: 参与
+    links:
+    - url: https://feedback.azure.com/forums/906772-cost-management
+      itemType: how-to-guide
+      text: 请求成本管理服务功能
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Azure 成本管理技术社区
+    - url: https://feedback.azure.com/forums/170030-signup-and-billing
+      itemType: how-to-guide
+      text: 请求计费服务功能
+    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
+      itemType: how-to-guide
+      text: Azure 计费技术社区
+    - url: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureCostManagement&filter=alltypes&sort=relevancedesc&searchTerm=Azure%20Cost%20Management
+      itemType: how-to-guide
+      text: 在论坛上询问成本管理和计费问题

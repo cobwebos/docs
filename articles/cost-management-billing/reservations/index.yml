@@ -1,0 +1,96 @@
+### YamlMime:Landing
+title: 通过 Azure 预留来节省资金
+summary: 了解 Azure 预留如何帮助你通过为虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure Cosmos DB 吞吐量和其他 Azure 资源的一年或三年计划预付费来节省资金。 
+metadata:
+  title: 通过 Azure 预留来节省资金
+  description: 了解 Azure 预留如何帮助你通过为虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure Cosmos DB 吞吐量和其他 Azure 资源的一年或三年计划预付费来节省资金。 
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 4a215795df7d96f0516d4ecca691843994342f46
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983420"
+landingContent:
+- title: 购买预留
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 Azure 预留？
+      url: save-compute-costs-reservations.md
+    - text: 预留交换和退款
+      url: exchange-and-refund-azure-reservations.md
+    - text: 通过按月支付购买预留项
+      url: monthly-payments-reservations.md
+  - linkListType: how-to-guide
+    links:
+    - text: 续订预留
+      url: reservation-renew.md
+    - text: SQL 数据仓库
+      url: prepay-sql-data-warehouse-charges.md
+    - text: 虚拟机
+      url: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: Azure 存储
+      url: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: Cosmos DB
+      url: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: SQL 数据库
+      url: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: Azure 数据资源管理器
+      url: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+    - text: Azure Databricks
+      url: prepay-databricks-reserved-capacity.md
+    - text: 应用服务
+      url: prepay-app-service-isolated-stamp.md
+    - text: Azure 软件计划
+      url: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
+- title: 了解如何应用折扣
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 虚拟机预留实例
+      url: ../manage/understand-vm-reservation-charges.md
+    - text: Azure 存储预留容量
+      url: understand-storage-charges.md
+    - text: Cosmos DB 保留容量
+      url: understand-cosmosdb-reservation-charges.md
+    - text: SQL 数据库预留容量
+      url: understand-reservation-charges.md
+    - text: SQL 数据仓库
+      url: reservation-discount-azure-sql-dw.md
+    - text: Azure 数据资源管理器
+      url: understand-azure-data-explorer-reservation-charges.md
+    - text: Azure Databricks
+      url: reservation-discount-databricks.md
+    - text: 应用服务
+      url: reservation-discount-app-service-isolated-stamp.md
+    - text: Azure 软件费用
+      url: understand-suse-reservation-charges.md
+- title: 如何将折扣应用于 Azure 数据库
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Database for MySQL
+      url: understand-reservation-charges-mysql.md
+    - text: Azure Database for PostgreSQL
+      url: understand-reservation-charges-postgresql.md
+    - text: Azure Database for MariaDB
+      url: understand-reservation-charges-mariadb.md
+- title: 管理预留
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理预留
+      url: manage-reserved-vm-instance.md
+    - text: 查看预留
+      url: view-reservations.md
+  - linkListType: reference
+    links:
+    - text: 预留 API
+      url: reservation-apis.md

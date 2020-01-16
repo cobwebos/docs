@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: 管理 Azure 成本和使用情况
+summary: Azure 成本管理是一种成本管理解决方案，可帮助监视和控制 Azure 支出并优化资源使用。 通过我们的快速入门和教程，了解如何分析成本，创建和管理预算，导出数据，以及查看和采纳建议。
+metadata:
+  title: Azure 成本管理 + 计费
+  description: Azure 成本管理是一种成本管理解决方案，可帮助监视和控制 Azure 支出并优化资源使用。 通过我们的快速入门和教程，了解如何分析成本，创建和管理预算，导出数据，以及查看和采纳建议。
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983216"
+landingContent:
+- title: 了解成本管理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是成本管理和计费？
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 成本管理最佳做法
+      url: cost-mgt-best-practices.md
+    - text: 了解成本管理数据
+      url: understand-cost-mgt-data.md
+    - text: 了解并使用范围
+      url: understand-work-scopes.md
+- title: 分析和管理 Azure 成本
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 开始分析成本
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: 创建并管理预算
+      url: tutorial-acm-create-budgets.md
+    - text: 导出成本和使用情况数据
+      url: tutorial-export-acm-data.md
+    - text: 根据建议采取措施
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: 向数据分配访问权限
+      url: assign-access-acm-data.md
+    - text: 将成本分析用于常见任务
+      url: cost-analysis-common-uses.md
+    - text: 使用成本警报
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: 面向合作伙伴的成本管理
+      url: get-started-partners.md
+    - text: 使用 Power BI Desktop 进行连接
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: 分析和管理 AWS 成本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 设置和配置 AWS 集成
+      url: aws-integration-set-up-configure.md
+    - text: 管理 AWS 成本和使用情况
+      url: aws-integration-manage.md
+- title: 成本管理 API
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 从 EA 迁移到 MCA API
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Azure 成本管理 REST API
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Azure 使用情况 REST API
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: 资源管理器模板
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: 成本管理 REST API 示例
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

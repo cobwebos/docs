@@ -1,0 +1,76 @@
+- name: Azure 预留文档
+  href: index.yml
+  items:
+    - name: 概述
+      expanded: true
+      items:
+        - name: 什么是 Azure 预留项？
+          href: save-compute-costs-reservations.md
+    - name: 操作方法指南
+      items:
+        - name: 购买 SQL 数据仓库预留
+          href: prepay-sql-data-warehouse-charges.md
+        - name: 购买虚拟机预留
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 购买 Azure 存储预留
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: 购买 Cosmos DB 预留
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: 购买 SQL 数据库预留
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: 购买 Azure 数据资源管理器预留
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: 购买 Azure Databricks 预留
+          href: prepay-databricks-reserved-capacity.md
+        - name: 购买应用服务预留
+          href: prepay-app-service-isolated-stamp.md
+        - name: 购买 Azure 软件计划预留
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: 通过按月支付购买预留项
+          href: monthly-payments-reservations.md
+        - name: 续订预留
+          href: reservation-renew.md
+        - name: 对预留执行交换和退款操作
+          href: exchange-and-refund-azure-reservations.md
+        - name: 管理预留
+          href: manage-reserved-vm-instance.md
+        - name: 查看预留
+          href: view-reservations.md
+    - name: 概念
+      items:
+        - name: 虚拟机预留实例折扣
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Azure 存储预留容量折扣
+          href: understand-storage-charges.md
+        - name: Cosmos DB 预留容量折扣
+          href: understand-cosmosdb-reservation-charges.md
+        - name: SQL 数据库预留容量折扣
+          href: understand-reservation-charges.md
+        - name: SQL 数据仓库折扣
+          href: reservation-discount-azure-sql-dw.md
+        - name: Azure 数据资源管理器折扣
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Azure Databricks 折扣
+          href: reservation-discount-databricks.md
+        - name: Azure Database for MySQL 折扣
+          href: understand-reservation-charges-mysql.md
+        - name: Azure Database for PostgreSQL 折扣
+          href: understand-reservation-charges-postgresql.md
+        - name: Red Hat Linux Enterprise 折扣
+          href: understand-rhel-reservation-charges.md
+        - name: Azure Database for MariaDB 折扣
+          href: understand-reservation-charges-mariadb.md
+        - name: 应用服务折扣
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Azure 软件计划折扣
+          href: understand-suse-reservation-charges.md
+        - name: 不包含 Windows 和 SQL 成本
+          href: reserved-instance-windows-software-costs.md
+        - name: 单个订阅的使用情况数据
+          href: understand-reserved-instance-usage.md
+        - name: 企业客户的使用情况数据
+          href: understand-reserved-instance-usage-ea.md
+    - name: 参考
+      items:
+        - name: Azure 预留 API
+          href: reservation-apis.md

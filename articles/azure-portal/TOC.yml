@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: 提高网络限制
               href: supportability/networking-quota-requests.md
+    - name: 排查 Azure 门户问题
+      items:
         - name: 排查区域或 SKU 订阅问题
           href: supportability/sku-series-unavailable.md
+        - name: 捕获浏览器跟踪以进行故障排除
+          href: capture-browser-trace.md
 - name: 参考
   items:
     - name: 键盘快捷方式

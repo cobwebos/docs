@@ -1,0 +1,53 @@
+- name: Azure 计费文档入门
+  href: index.yml
+  items:
+    - name: 教程
+      items:
+        - name: 查看个人帐户帐单
+          href: review-individual-bill.md
+        - name: 查看 Microsoft 客户协议帐单
+          href: review-customer-agreement-bill.md
+        - name: 查看 Microsoft 合作伙伴协议帐单
+          href: review-partner-agreement-bill.md
+    - name: 概念
+      items:
+        - name: 个人订阅使用情况术语
+          href: understand-usage.md
+        - name: 个人订阅发票术语
+          href: understand-invoice.md
+        - name: Microsoft 客户协议使用情况术语
+          href: mca-understand-your-usage.md
+        - name: Microsoft 客户协议发票术语
+          href: mca-understand-your-invoice.md
+        - name: Microsoft 客户协议价目表术语
+          href: ../manage/mca-understand-pricesheet.md
+        - name: Microsoft 客户协议的计费帐户
+          href: mca-overview.md
+        - name: Microsoft 合作伙伴协议发票术语
+          href: mpa-invoice-terms.md
+        - name: Microsoft 合作伙伴协议的计费帐户
+          href: mpa-overview.md
+    - name: 操作方法指南
+      items:
+        - name: 防止意外成本
+          href: ../manage/getting-started.md
+        - name: 查看和下载 Azure 发票
+          href: download-azure-invoice.md
+        - name: 查看和下载 Azure 使用情况与费用
+          href: download-azure-daily-usage.md
+        - name: 下载发票和每日使用情况数据
+          href: ../manage/download-azure-invoice-daily-usage-date.md
+        - name: 查看和下载税单
+          href: mca-download-tax-document.md
+        - name: 查看外部 Azure 服务费用
+          href: understand-azure-marketplace-charges.md
+        - name: 支付帐单
+          href: pay-bill.md
+        - name: 查看和下载组织的定价
+          href: ../manage/ea-pricing.md
+        - name: 跟踪 Microsoft 客户协议的额度余额
+          href: ../manage/mca-check-azure-credits-balance.md
+        - name: 计算定价
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: 了解支出限制
+          href: ../manage/spending-limit.md

@@ -85,6 +85,8 @@
   items:
     - name: 全文搜索
       href: search-lucene-query-architecture.md
+    - name: 索引器
+      href: search-indexer-overview.md
     - name: AI 扩充
       href: cognitive-search-concept-intro.md
     - name: 技能集
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: 为关系数据建模
           href: index-sql-relational-data.md
-    - name: 为任何数据编制索引
+    - name: 导入（编制索引）
       items:
         - name: 数据导入概述
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: 使用搜索资源管理器（门户）
           href: search-explorer.md
-        - name: 简化的查询语法
-          href: query-simple-syntax.md
-        - name: 完整 Lucene 查询语法
-          href: query-lucene-syntax.md
-        - name: moreLikeThis 查询参数
-          href: search-more-like-this.md
+        - name: 特殊字符和部分词
+          href: search-query-partial-matching.md
+        - name: 语法参考
+          items:
+            - name: 简化的查询语法
+              href: query-simple-syntax.md
+            - name: 完整 Lucene 查询语法
+              href: query-lucene-syntax.md
+            - name: moreLikeThis（预览版）
+              href: search-more-like-this.md
     - name: 应用筛选器
       items:
         - name: 筛选器概述

@@ -1,0 +1,149 @@
+- name: 计费帐户和订阅文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是成本管理和计费？
+      href: ../cost-management-billing-overview.md
+- name: 操作方法指南
+  expanded: true
+  items:
+    - name: 免费帐户
+      items:
+        - name: 创建免费服务
+          href: create-free-services.md
+        - name: 避免产生费用
+          href: avoid-charges-free-account.md
+        - name: 查看使用情况
+          href: check-free-service-usage.md
+        - name: 升级免费帐户
+          href: upgrade-azure-subscription.md
+    - name: 管理帐户
+      items:
+        - name: 帐户管理员任务
+          href: account-admin-tasks.md
+        - name: 升级 Azure 帐户
+          href: upgrade-azure-subscription.md
+        - name: 编辑个人资料
+          href: change-azure-account-profile.md
+        - name: 处理逾期未付余额
+          href: resolve-past-due-balance.md
+        - name: 授予对计费信息的访问权限
+          href: manage-billing-access.md
+        - name: Azure 中的 Microsoft 客户协议角色
+          href: understand-mca-roles.md
+        - name: 链接合作伙伴 ID
+          href: link-partner-id.md
+    - name: 管理帐户
+      items:
+        - name: 查看计费帐户
+          href: view-all-accounts.md
+        - name: 按发票科目管理成本
+          href: mca-section-invoice.md
+        - name: 设置 Microsoft 客户协议计费帐户
+          href: mca-setup-account.md
+        - name: 使用 Office 365 帐户注册
+          href: office-365-account-for-azure-subscription.md
+        - name: 使用 Azure 帐户注册 Office 365
+          href: azure-account-for-office-365-subscription.md
+        - name: 使用强客户身份验证支付费用
+          href: open-banking-strong-customer-authentication.md
+    - name: 管理订阅
+      items:
+        - name: 订阅状态
+          href: subscription-states.md
+        - name: 重新激活订阅
+          href: subscription-disabled.md
+        - name: 重新激活 Azure 学生订阅
+          href: azurestudents-subscription-disabled.md
+        - name: 转让所有权
+          href: billing-subscription-transfer.md
+        - name: 请求 Microsoft 客户协议所有权
+          href: mca-request-billing-ownership.md
+        - name: 请求 Microsoft 合作伙伴协议所有权
+          href: mpa-request-ownership.md
+    - name: 管理订阅
+      items:
+        - name: 取消订阅
+          href: cancel-azure-subscription.md
+        - name: 更改信用卡
+          href: change-credit-card.md
+        - name: 更改管理员
+          href: add-change-subscription-administrator.md
+        - name: 切换订阅套餐
+          href: switch-azure-offer.md
+        - name: 按发票付款
+          href: pay-by-invoice.md
+        - name: 创建其他订阅
+          href: create-subscription.md
+        - name: 导出订阅信息
+          href: export-subscriptions.md
+    - name: 管理企业协议订阅
+      items:
+        - name: 在 Azure EA 门户中开始
+          href: ea-portal-get-started.md
+        - name: 了解 EA 帐单
+          href: ../understand/review-enterprise-agreement-bill.md
+        - name: Azure 中的 EA 角色
+          href: understand-ea-roles.md
+        - name: Azure EA 门户管理
+          href: ea-portal-administration.md
+        - name: Microsoft 客户协议中的 EA 任务
+          href: mca-enterprise-operations.md
+        - name: Azure EA 协议和修正合同
+          href: ea-portal-agreements.md
+        - name: Enterprise 注册发票
+          href: ea-portal-enrollment-invoices.md
+        - name: Azure Enterprise REST API
+          href: ea-portal-rest-apis.md
+        - name: Azure EA 虚拟机预留实例
+          href: ea-portal-vm-reservations.md
+        - name: 排查 Azure EA 门户访问问题
+          href: ea-portal-troubleshoot.md
+        - name: Microsoft 客户协议中的 EA 任务
+          href: mca-enterprise-operations.md
+- name: 故障排除
+  items:
+    - name: 找不到任何订阅
+      href: no-subscriptions-found.md
+    - name: 支付问题
+      href: billing-troubleshoot-azure-payment-issues.md
+    - name: 银行卡被拒绝
+      href: troubleshoot-declined-card.md
+    - name: 注册问题
+      href: troubleshoot-azure-sign-up.md
+    - name: 订阅登录问题
+      href: troubleshoot-sign-in-issue.md
+    - name: 企业成本视图已禁用
+      href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: 联系支持人员
+      href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
+- name: 示例
+  items:
+    - name: 发票 API 代码示例
+      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+    - name: 使用情况 API 代码示例
+      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+    - name: RateCard API 代码示例
+      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+- name: 参考
+  items:
+    - name: 计费自动化方案
+      href: cost-management-automation-scenarios.md
+    - name: 使用 Azure 预算管理成本
+      href: cost-management-budget-scenario.md
+    - name: Azure 计费 API 概述
+      href: usage-rate-card-overview.md
+    - name: Azure 计费 REST API
+      href: 'https://docs.microsoft.com/rest/api/billing'
+    - name: Azure 使用情况 API 概述
+      href: consumption-api-overview.md
+    - name: Azure 使用情况 REST API
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: RateCard REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+    - name: 使用情况 REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+    - name: Enterprise Reporting 概述
+      href: enterprise-api.md
+    - name: Enterprise Reporting REST API
+      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'

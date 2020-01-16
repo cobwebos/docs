@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: 使用 Azure 计费管理帐户和订阅
+summary: 了解 Azure 计费方式以及如何管理帐户和订阅。
+metadata:
+  title: 使用 Azure 计费管理帐户和订阅
+  description: 了解 Azure 计费方式以及如何管理帐户和订阅。
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 61158d44399891f0f6293f53a11f227506fbddbe
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983318"
+landingContent:
+- title: 管理帐户
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 中的 Microsoft 客户协议角色
+      url: understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: 编辑个人资料
+      url: change-azure-account-profile.md
+    - text: 处理逾期未付余额
+      url: resolve-past-due-balance.md
+    - text: 授予对计费信息的访问权限
+      url: manage-billing-access.md
+    - text: 查看计费帐户
+      url: view-all-accounts.md
+    - text: 按发票科目管理成本
+      url: mca-section-invoice.md
+- title: 管理订阅
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 重新激活订阅
+      url: subscription-disabled.md
+    - text: 转让个人订阅的所有权
+      url: billing-subscription-transfer.md
+    - text: 转让 Microsoft 客户协议的所有权
+      url: mca-request-billing-ownership.md
+    - text: 转让 Microsoft 合作伙伴协议的所有权
+      url: mpa-request-ownership.md
+    - text: 取消订阅
+      url: cancel-azure-subscription.md
+    - text: 更改信用卡
+      url: change-credit-card.md
+    - text: 更改管理员
+      url: add-change-subscription-administrator.md
+    - text: 按发票付款
+      url: pay-by-invoice.md
+    - text: 创建其他 Azure 订阅
+      url: create-subscription.md
+- title: 管理免费帐户
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建免费服务
+      url: create-free-services.md
+    - text: 避免产生费用
+      url: avoid-charges-free-account.md
+    - text: 查看使用情况
+      url: check-free-service-usage.md
+    - text: 升级帐户
+      url: upgrade-azure-subscription.md
+- title: 企业协议管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 中的 EA 角色
+      url: understand-ea-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure EA 门户中开始
+      url: ea-portal-get-started.md
+    - text: Azure EA 门户管理
+      url: ea-portal-administration.md
+    - text: 排查 Azure EA 门户访问问题
+      url: ea-portal-troubleshoot.md
+  - linkListType: reference
+    links:
+    - text: Azure Enterprise REST API
+      url: ea-portal-rest-apis.md
