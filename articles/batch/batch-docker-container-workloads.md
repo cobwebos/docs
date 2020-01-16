@@ -2,20 +2,20 @@
 title: 容器工作负载 - Azure Batch | Microsoft Docs
 description: 了解如何在 Azure Batch 上从容器映像中运行应用程序。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029718"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "71090755"
 
 使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **SDK 版本**：Batch SDK 支持到以下版本为止的容器映像：
     * Batch REST API 版本 2017-09-01.6.0
@@ -38,7 +38,7 @@ ms.locfileid: "71090755"
 
 * **帐户**：在 Azure 订阅中，需要创建 Batch 帐户和 Azure 存储帐户（后者为可选）。
 
-* **受支持的 VM 映像**：容器仅在使用来自映像的虚拟机配置创建的池中受支持，有关详细信息，请参阅下一节“受支持的虚拟机映像”。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。 
+* **支持的 VM 映像**：容器仅在使用来自映像的虚拟机配置创建的池中受支持。有关详细信息，请参阅下一节：“受支持的虚拟机映像”。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。 
 
 ### <a name="limitations"></a>限制
 
@@ -227,7 +227,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 若要在启用了容器的池上运行容器任务，请指定特定于容器的设置。 设置包括要使用的映像、注册表和容器运行选项。
 
-* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意， `--rm`容器选项不需要其他`--runtime`选项，因为它是按批处理进行处理的。 
+* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意，`--rm` 容器选项不需要额外的 `--runtime` 选项，因为它由批处理来处理。 
 
 * 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 

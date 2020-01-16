@@ -1,17 +1,14 @@
 ---
 title: 为 Hyper-v 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534487"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029089"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -82,7 +79,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到 [Azure URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)。
+确保设备 VM 可以连接到 [Azure URL](migrate-appliance.md#url-access)。
 
 ## <a name="configure-the-appliance"></a>配置设备
 
@@ -136,7 +133,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 
 1. 在“用户名”和“密码”中，指定设备用来发现 VM 的帐户凭据。 指定凭据的易记名称，然后单击“保存详细信息”。
 2. 单击“添加主机”，然后指定 Hyper-V 主机/群集详细信息。
-3. 单击“验证”。 验证后，将显示每个主机/群集上可发现的 VM 数。
+3. 单击 **“验证”** 。 验证后，将显示每个主机/群集上可发现的 VM 数。
     - 如果主机验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
     - 若要删除主机或群集，请选择“删除”。
     - 无法删除群集中的特定主机。 只能删除整个群集。

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 275eb545b431085627658eb5d8ac0a065d0cb00e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867013"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968662"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -92,7 +92,7 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/secure-template-with-sas-token.md)。
+有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
 
@@ -107,7 +107,7 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../azure-resource-manager/secure-template-with-sas-token.md)。
+有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -124,7 +124,7 @@ az group deployment create \
 若要避免此问题，建议采用以下方法之一：
 
 * 不要对相同的参数多次部署模板。 或删除现有资源，然后使用模板重新创建它们。
-  
+
 * 检查 Key Vault 访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 若要查看访问策略，请使用以下 Azure CLI 命令：
 
     ```azurecli-interactive
@@ -165,7 +165,7 @@ az group deployment create \
           }
         },
         ```
-    
+
     * 从工作区的 `dependsOn` 部分**删除**`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 还可**更改**工作区的 "`properties`" 部分中的 `keyVault` 条目，以引用 `keyVaultId` 参数：
 
         ```json
@@ -193,7 +193,7 @@ az group deployment create \
           }
         }
         ```
-      
+
     完成这些更改后，你可以在运行模板时指定现有 Key Vault 资源的 ID。 然后，模板会通过将工作区的 `keyVault` 属性设置为其 ID 来重新使用 Key Vault。
 
     若要获取 Key Vault 的 ID，可以引用原始模板运行的输出或使用 Azure CLI。 以下命令是使用 Azure CLI 获取 Key Vault 资源 ID 的示例：
@@ -210,5 +210,5 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/resource-group-template-deploy-rest.md)。
-* [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+* [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)。
+* [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。

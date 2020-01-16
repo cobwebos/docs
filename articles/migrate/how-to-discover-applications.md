@@ -1,17 +1,14 @@
 ---
-title: 使用 Azure Migrate Server 评估发现本地服务器上安装的应用、角色和功能
-description: 介绍如何使用 Azure Migrate Server 评估发现本地服务器上的应用、角色和功能。
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: 在本地服务器上发现应用、角色和功能，并提供 Azure Migrate
+description: 了解如何通过 Azure Migrate Server 评估发现本地服务器上的应用、角色和功能。
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278481"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029072"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
@@ -30,14 +27,14 @@ ms.locfileid: "74278481"
 1. 查看应用程序级别发现的[支持限制](migrate-support-matrix-vmware.md#application-discovery)。
 2. 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
 3. 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
-4. 查看[vmware 要求](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements)，了解如何通过 Azure Migrate 设备发现和评估 vmware vm。
-4. 检查部署 Azure Migrate 设备的[要求](migrate-support-matrix-vmware.md#assessment-appliance-requirements)。
+4. 查看[vmware 要求](migrate-support-matrix-vmware.md#vmware-requirements)，了解如何通过 Azure Migrate 设备发现和评估 vmware vm。
+4. 检查部署 Azure Migrate 设备的[要求](migrate-appliance.md)。
 
 ## <a name="prepare-for-app-discovery"></a>准备应用发现
 
-1. [准备进行设备部署](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware)。 准备工作包括验证设备设置，以及设置设备将用于访问 vCenter Server 的帐户。
+1. [准备进行设备部署](tutorial-prepare-vmware.md)。 准备工作包括验证设备设置，以及设置设备将用于访问 vCenter Server 的帐户。
 2. 请确保具有管理员权限的用户帐户（每个用于 Windows 和 Linux 服务器）以及要在其上发现应用、角色和功能的计算机的管理员权限。
-3. [部署 VMware 设备](how-to-set-up-appliance-vmware.md)以启动发现。 若要部署设备，请下载 .OVA 模板并将其导入 VMware，以将设备创建为 VMware VM。 配置设备，然后将其注册到 Azure Migrate。
+3. [部署 Azure Migrate 设备](how-to-set-up-appliance-vmware.md)以启动发现。 若要部署设备，请下载 .OVA 模板并将其导入 VMware，以将设备创建为 VMware VM。 配置设备，然后将其注册到 Azure Migrate。
 2. 部署设备时，若要启动连续发现，请指定以下各项：
     - 要连接到的 vCenter Server 的名称。
     - 为设备创建的用于连接 vCenter Server 的凭据。

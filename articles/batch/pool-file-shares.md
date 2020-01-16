@@ -3,7 +3,7 @@ title: Azure Batch 池的 Azure 文件共享 | Microsoft Docs
 description: 如何在 Azure Batch 中从 Linux 或 Windows 池中的计算节点装载 Azure 文件共享。
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: ''
-ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d84fdd4635a7a9227e29fe3cd8c43a1fc4cbeb5b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093968"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029454"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
 
@@ -50,8 +50,8 @@ Batch 原生支持通过 API 使用 Azure 存储 Blob 来读取和写入数据�
 
 例如，包含 `net use` 命令，以将文件共享装载为每个任务命令行的一部分。 若要装载文件共享，需要以下凭据：
 
-* **用户名**：AZURE\\\<存储帐户名称\>，例如，AZURE\\mystorageaccountname
-* **密码**：\<StorageAccountKeyWhichEnds in = = >, 例如*XXXXXXXXXXXXXXXXXXXXX = =*
+* **用户名**：AZURE\\\<存储帐户名称\>，例如 AZURE\\*mystorageaccountname*
+* **密码**： \<StorageAccountKeyWhichEnds in = = >，例如*XXXXXXXXXXXXXXXXXXXXX = =*
 
 以下命令在存储帐户 *mystorageaccountname* 中将文件共享 *myfileshare* 装载为 *S:* 驱动器：
 
@@ -128,7 +128,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 然后，运行 `mount` 命令并提供以下凭据来装载文件共享：
 
 * **用户名**：\<存储帐户名称\>，例如 *mystorageaccountname*
-* **密码**：\<StorageAccountKeyWhichEnds in = = >, 例如*XXXXXXXXXXXXXXXXXXXXX = =*
+* **密码**： \<StorageAccountKeyWhichEnds in = = >，例如*XXXXXXXXXXXXXXXXXXXXX = =*
 
 以下命令在存储帐户 *mystorageaccountname* 中的 */mnt/MyAzureFileShare* 装载文件共享 *myfileshare*： 
 

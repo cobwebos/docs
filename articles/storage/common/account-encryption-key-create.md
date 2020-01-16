@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921219"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028449"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
@@ -149,7 +149,7 @@ az storage account create \
 
 ## <a name="verify-the-account-encryption-key"></a>验证帐户加密密钥
 
-若要验证新存储帐户是否正在使用帐户加密密钥，请调用 Azure CLI [az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令返回存储帐户属性及其值的列表。 查找 `keyType` 属性，并验证其是否设置为 `Account`。
+若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 Azure CLI [az storage account](/cli/azure/storage/account#az-storage-account-show)命令。 此命令返回一组存储帐户属性及其值。 在 "加密" 属性中查找每个服务的 "`keyType`" 字段，并验证其是否设置为 "`Account`"。
 
 ```azurecli
 az storage account show /

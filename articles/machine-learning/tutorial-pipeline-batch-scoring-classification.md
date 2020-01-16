@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f7446bc4a7f827fe1c65a0ce8df8ce6a5627624c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532780"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763345"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -139,7 +139,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。  远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
 
-运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)。
+运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
 
 
 ```python

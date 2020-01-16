@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420806"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030158"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -33,7 +33,7 @@ ms.locfileid: "75420806"
 > [!NOTE]
 > 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 虚拟机仍然可以跨不同的云服务并行处理。 如果每个云服务的 Vm 超过20个，我们建议使用父 runbook **ScheduledStartStop_Parent**创建多个计划，并为每个计划指定20个 vm。 在计划属性中，在**VMList**参数中指定作为以逗号分隔的列表、VM 名称。 否则，如果此解决方案的自动化作业的运行时间超过3小时，则会根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时卸载或停止此解决方案。
 >
-> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables) 变量修改为 False。
+> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables) 变量修改为 False。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

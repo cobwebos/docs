@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 38459e76cc8f9df8bfb7c15750e138cfd55c453c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913124"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028460"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -54,29 +54,24 @@ ms.locfileid: "75913124"
 
 若要撤消对客户管理的密钥的访问权限，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)和[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止对存储帐户中所有数据的访问，因为 Azure 存储无法访问加密密钥。
 
-### <a name="supported-scenarios-and-restrictions"></a>支持的方案和限制
+### <a name="supported-regions"></a>支持的区域
 
-目前，仅支持以下方案：
+目前仅支持以下区域：
 
-- 使用 Azure Marketplace 映像创建虚拟机（VM），并使用客户管理的密钥通过服务器端加密来加密 OS 磁盘。
-- 创建使用服务器端加密和客户管理的密钥加密的自定义映像。
-- 使用自定义映像创建 VM，并使用服务器端加密和客户管理的密钥对 OS 磁盘进行加密。
-- 创建使用服务器端加密和客户管理的密钥加密的数据磁盘。
-- （仅限 CLI/PowerShell）创建使用服务器端加密和客户管理的密钥加密的快照。
-- 创建用服务器端加密和客户管理的密钥加密的虚拟机规模集。
-- 支持大小为2080的["软" RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)。
+- 作为 "美国东部"、"美国西部 2" 和 "美国中南部" 区域提供。
+- 可在美国西部、美国东部2、加拿大中部和北欧地区以公共预览版的形式提供。
 
-目前，我们还具有以下限制：
+### <a name="restrictions"></a>限制
 
-- 作为 "美国东部"、"美国西部 2" 和 "美国中南部" 正式提供的产品/服务提供。
-- 可在美国西部、美国东部2、加拿大中部和北欧以公共预览版的形式提供。
+目前，客户托管的密钥具有以下限制：
+
+- 仅支持大小为2080的["soft" 和 "hard" RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，无其他密钥或大小。
 - 使用服务器端加密和客户托管密钥加密的自定义映像创建的磁盘必须使用相同的客户托管密钥进行加密，且必须位于同一订阅中。
 - 从用服务器端加密和客户管理的密钥加密的磁盘创建的快照必须用相同的客户托管密钥进行加密。
 - 使用服务器端加密和客户管理的密钥加密的自定义映像不能用于共享映像库。
 - 与客户托管的密钥（Azure 密钥保管库、磁盘加密集、Vm、磁盘和快照）相关的所有资源必须位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
 - 如果使用 Azure 门户创建磁盘加密集，则目前无法使用快照。
-- 仅支持大小为2080的["soft" 和 "hard" RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，无其他密钥或大小。
 
 ### <a name="powershell"></a>PowerShell
 

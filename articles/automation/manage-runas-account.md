@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418059"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028261"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -20,19 +20,19 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 有两种类型的运行方式帐户：
 
-* **Azure 运行方式帐户**-此帐户用于管理[资源管理器部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
+* **Azure 运行方式帐户**-此帐户用于管理[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)资源。
   * 将创建使用自签名证书的 Azure AD 应用程序，在 Azure AD 中为此应用程序创建服务主体帐户，并在当前订阅中为此帐户分配“参与者”角色。 可将此项设置更改为“所有者”或其他任何角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
   * 在指定的自动化帐户中创建名为 *AzureRunAsCertificate* 的自动化证书资产。 该证书资产保存 Azure AD 应用程序使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureRunAsConnection* 的自动化连接资产。 该连接资产保存 applicationId、tenantId、subscriptionId 和证书指纹。
 
-* **Azure 经典运行方式帐户**-此帐户用于管理[经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)资源。
+* **Azure 经典运行方式帐户**-此帐户用于管理[经典部署模型](../azure-resource-manager/management/deployment-models.md)资源。
   * 在订阅中创建管理证书
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
   * 必须是订阅的共同管理员才能创建或续订
 
   > [!NOTE]
-  > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
+  > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。
 
   > [!NOTE]
   > 默认情况下，运行方式帐户的服务主体不具有读取 Azure Active Directory 的权限。 如果要添加读取或管理 Azure Active directory 的权限，则需要在 " **API 权限**" 下将该权限授予服务主体。 若要了解详细信息，请参阅[添加访问 Web api 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。

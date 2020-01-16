@@ -3,12 +3,12 @@ title: 教程 - 在 Azure 存储中存储 Terraform 状态
 description: 在 Azure 存储中存储 Terraform 状态的简介。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: d1b622a372be48bf044b512f3c964a5720fc3c5b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159337"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708418"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>教程：在 Azure 存储中存储 Terraform 状态
 
@@ -84,6 +84,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 ```hcl
 terraform {
   backend "azurerm" {
+    resource_group_name   = "tstate"
     storage_account_name  = "tstate09762"
     container_name        = "tstate"
     key                   = "terraform.tfstate"

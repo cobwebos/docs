@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429102"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746201"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>启用诊断日志 
 
-创建新的 IoT 中心时，会默认禁用[诊断日志](../azure-monitor/platform/resource-logs-overview.md)。 在此部分，请为中心启用诊断日志。
+创建新的 IoT 中心时，会默认禁用[诊断日志](../azure-monitor/platform/platform-logs-overview.md)。 在此部分，请为中心启用诊断日志。
 
 1. 首先，如果还没有进入门户的中心，请单击“资源组”，然后单击资源组  Contoso-Resources。 从所显示的资源列表中选择中心。 
 

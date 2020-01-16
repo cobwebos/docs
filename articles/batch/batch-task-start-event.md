@@ -2,7 +2,7 @@
 title: Azure Batch 任务开始事件 | Microsoft Docs
 description: 批处理任务开始事件参考。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,17 +10,17 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: ffad1696bc2c85a1a150ac87d90c2fb9c34e1519
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029625"
 ---
 # <a name="task-start-event"></a>任务开始事件
 
- 当任务已计划由计划程序在计算节点上启动时，会发出此事件。 请注意，如果重试任务或对其进行重新排队，此事件会再次发出，但重试计数和系统任务版本将相应更新。
+ 当任务已计划由计划程序在计算节点上启动时，会发出此事件。 请注意，如果重试任务或对其进行重新排队，此事件将再次发出，但重试计数和系统任务版本将相应更新。
 
 
  以下示例显示任务开始事件的正文。
@@ -67,7 +67,7 @@ ms.locfileid: "70258547"
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|type|说明|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|任务所需的计算节点数。|
 
@@ -75,7 +75,7 @@ ms.locfileid: "70258547"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
+|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 ###  <a name="executionInfo"></a> executionInfo
 

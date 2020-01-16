@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eeaf44b9abe5c8f0343325454f599d282be6c743
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769840"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966689"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -67,13 +67,13 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 请查看以下可能问题解决方案列表或要检查的地方：
 
 1. 即使自动化帐户位于不同的资源组中，它们在 Azure 区域中也需要是唯一的。 检查目标区域中的现有自动化帐户。
-2. 现有策略阻止部署启动/停止 VM 解决方案所需的资源。 转到 Azure 门户中的策略分配，并检查是否有禁止部署此资源的策略分配。 若要了解详细信息，请参阅 [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)。
+2. 现有策略阻止部署启动/停止 VM 解决方案所需的资源。 转到 Azure 门户中的策略分配，并检查是否有禁止部署此资源的策略分配。 若要了解详细信息，请参阅 [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)。
 3. 若要部署启动/停止 VM 解决方案，订阅需要注册到以下 Azure 资源命名空间：
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   若要详细了解注册提供程序时出现的错误，请参阅[解决资源提供程序注册错误](../../azure-resource-manager/resource-manager-register-provider-errors.md)。
+   若要详细了解注册提供程序时出现的错误，请参阅[解决资源提供程序注册错误](../../azure-resource-manager/templates/error-register-resource-provider.md)。
 4. 如果 Log Analytics 工作区中存在锁定，请转到 Azure 门户中的工作区并删除对资源的任何锁定。
 5. 如果上述解决方法不能解决问题，请按照[更新解决方案](../automation-solution-vm-management.md#update-the-solution)中的说明来重新部署启动/停止解决方案。
 

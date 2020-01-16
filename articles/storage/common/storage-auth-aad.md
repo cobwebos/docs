@@ -10,12 +10,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460504"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965818"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 blob 和队列的访问权限
 
@@ -83,7 +83,7 @@ Azure 门户指示导航到容器或队列时使用的是哪个授权方案。 �
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>从 PowerShell 或 Azure CLI 进行数据访问
 
-Azure CLI 和 PowerShell 支持通过 Azure AD 凭据进行登录。 登录后，你的会话将在这些凭据下运行。 若要了解详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](storage-auth-aad-script.md)。
+Azure CLI 和 PowerShell 支持通过 Azure AD 凭据进行登录。 登录后，你的会话将在这些凭据下运行。 若要了解详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](authorize-active-directory-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
