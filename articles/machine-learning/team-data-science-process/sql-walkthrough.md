@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669380"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976330"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
 
 ## <a name="dataset"></a>NYC 出租车行程数据集介绍
-NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖 2013 年的所有行程，并每月在以下两个数据集中提供：
+NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
    
@@ -60,13 +60,13 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 正如你从[规划环境](plan-your-environment.md)指南中看到的那样，在 Azure 中使用 NYC 出租车行程数据集时，有几个选项可以使用：
 
 * 使用 Azure blob 中的数据，并在 Azure 机器学习中模型化
-* 将数据加载到 SQL Server 数据库，并在 Azure 机器学习中模型化
+* 将数据加载到 SQL Server 数据库，然后在 Azure 机器学习中模型化
 
 在本教程中，我们将展示将数据并行批量导入 SQL Server、数据浏览、功能设计以及使用 SQL Server Management Studio 和 IPython Notebook 向下采样。 [示例脚本](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)和 [IPython notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 在 GitHub 中共享。 使用 Azure blob 中数据的示例 IPython notebook 也可以在同一位置取得。
 
 要设置 Azure 数据科学环境：
 
-1. [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)
+1. [创建存储帐户](../../storage/common/storage-account-create.md)
 2. [创建 Azure 机器学习工作区](../studio/create-workspace.md)
 3. [预配数据科研虚拟机](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)，提供 SQL Server 和 IPython Notebook 服务器。
    
@@ -102,7 +102,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 2. 使用 Windows 身份验证进行连接。
    
     ![SSMS 连接][12]
-3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts\_ 文件夹中名为** change**auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的“ **! 执行**”来运此该脚本。
+3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts** 文件夹中名为 **change\_auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的“ **! 执行**”来运此该脚本。
    
     ![执行脚本][13]
 4. 验证和/或更改 SQL Server 默认数据库和日志文件夹，以确保新创建的数据库将存储在数据磁盘中。 系统将使用数据和日志磁盘，预配置针对数据存储加载进行优化的 SQL Server VM 映像。 如果 VM 不包含数据磁盘，并且在 VM 安装过程中添加了新的虚拟硬盘，则需按照如下步骤更改默认文件夹：
@@ -126,18 +126,18 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
    
    * **bcp\_parallel\_generic.ps1** 是将数据并行批量导入到表的通用脚本。 修改此脚本以设置此脚本的注释行中指示的输入和目标变量。
    * **bcp\_parallel\_nyctaxi.ps1** 是通用脚本的预配置版本，可用于为 NYC 出租车行程数据同时加载这两个表。  
-8. 右键单击 **bcp\_parallel\_nyctaxi.ps1** 脚本名称，并单击“**编辑**”可在 PowerShell 中将其打开。 查看预设的变量，并根据所选的数据库名称、输入数据文件夹、目标日志文件夹和到示例格式文件 **nyctaxi_trip.xml** 和 **nyctaxi\_fare.xml**（在“**示例脚本**”文件夹中提供）的路径进行修改。
+8. 右键单击 **bcp\_parallel\_nyctaxi.ps1** 脚本名称，然后单击“**编辑**”可在 PowerShell 中将其打开。 查看预设的变量，并根据所选的数据库名称、输入数据文件夹、目标日志文件夹和到示例格式文件 **nyctaxi_trip.xml** 和 **nyctaxi\_fare.xml**（在“**示例脚本**”文件夹中提供）的路径进行修改。
    
     ![批量导入数据][16]
    
     也可以选择身份验证模式，默认值为 Windows 身份验证。 单击工具栏中的绿色箭头运行。 该脚本将启动 24 个并行批量导入操作，每个分区表对应 12 个操作。 也可以通过打开上述步骤中设置的 SQL Server 默认数据文件夹，监测数据导入进度。
 9. PowerShell 脚本将报告起始和结束时间。 所有批量导入完成时，将报告结束时间。 检查目标日志文件夹，以验证批量导入成功，即未报告目标日志文件夹存在任何错误。
-10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于这些表是根据 **pickup\_datetime** 字段进行分区的，因此，分区方案将为在 **WHERE\_ 子句中包括** pickup**datetime** 条件的查询带来好处。
+10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于这些表是根据 **pickup\_datetime** 字段进行分区的，因此，分区方案将为在 **WHERE** 子句中包括 **pickup\_datetime** 条件的查询带来好处。
 11. 在 **SQL Server Management Studio** 中，探索提供的示例脚本 **sample\_queries.sql**。 要运行任意示例查询，请突出显示查询行，并单击工具栏中的“ **! 执行**”。
 12. NYC 出租车行程数据加载到两个独立的表中。 若要改进联接操作，强烈建议为表建立索引。 示例脚本 **create\_partitioned\_index.sql** 会在复合联接键 **medallion、hack\_license 和 pickup\_datetime** 上创建分区索引。
 
 ## <a name="dbexplore"></a>SQL Server 中的数据浏览和功能设计
-在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本\_”文件夹中提供了名为** sample**queries.sql** 的示例脚本。 如果数据库名称不同于默认值：**TaxiNYC**，请修改此脚本以更改数据库名称。
+在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本**”文件夹中提供了名为 **sample\_queries.sql** 的示例脚本。 如果数据库名称不同于默认值：**TaxiNYC**，请修改此脚本以更改数据库名称。
 
 在本练习中，我们将：
 
@@ -201,7 +201,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
-此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是标签类的分布，会在以后用于多类分类建模。
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -376,7 +376,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 ![Plot #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>二次采样 SQL 中的数据
-在[Azure 机器学习 Studio](https://studio.azureml.net)中准备用于模型生成的数据时，可以决定在 "**导入数据" 模块中直接使用 SQL 查询**，或者将工程和抽样数据保留在新表中，该表可在[导入中使用。数据][import-data]模块，其中包含一个简单的**SELECT * FROM < 你的\_新\_表\_名称 >** 。
+在[Azure 机器学习 Studio](https://studio.azureml.net)中准备用于模型生成的数据时，可以决定在 "**导入数据" 模块中直接使用 SQL 查询**，也可以在 "[导入数据][import-data]" 模块中使用简单的**SELECT * FROM <\_新的\_表\_名称 >** 中使用。
 
 在本部分中，我们将创建新表以保存抽样和工程数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
 
@@ -405,7 +405,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询进行数据浏览
-在本部分中，我们将使用之前创建的新表中保存的 1% 抽样数据来浏览数据分布。 请注意，如 **SQL Server 中的数据浏览和特征工程**部分所示，可使用原始表或使用 **TABLESAMPLE\_ 执行类似浏览，以限制浏览示例，或通过使用** pickup[datetime](#dbexplore) 分区，将结果限制为给定时间段。
+在本部分中，我们将使用之前创建的新表中保存的 1% 抽样数据来浏览数据分布。 请注意，如 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分所示，可使用原始表或使用 **TABLESAMPLE** 执行类似浏览，以限制浏览示例，或通过使用 **pickup\_datetime** 分区，将结果限制为给定时间段。
 
 #### <a name="exploration-daily-distribution-of-trips"></a>浏览：每日行程分布
     query = '''

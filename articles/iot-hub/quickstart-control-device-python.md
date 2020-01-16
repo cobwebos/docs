@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 01/09/2020
+ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892645"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864380"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 
@@ -29,15 +29,11 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 
 * 后端应用程序，可在模拟设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
 
-> [!IMPORTANT]
-> 在本文中，后端应用程序使用 Python V1 服务客户端，设备应用程序使用 Python V2 设备客户端。 V1 服务客户端位于 Azure IoT Python SDK GitHub 存储库的 [v1-deprecated 分支](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)中。 V1 服务客户端 *azure-iothub-service-client* 的 Pip 包具有严格的特定于平台的要求 -- 包括开发计算机上安装的 Python 版本。 **先决条件**部分注明了这些要求。
->
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
@@ -47,13 +43,7 @@ az extension add --name azure-cli-iot-ext
 
 如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip 下载示例 Python 项目并提取 ZIP 存档。
 
-**对于 Windows**，必须满足以下先决条件才能安装 V1 IoT 中心服务客户端 Pip 包：
-
-* 确保已安装 [Python 版本 **3.6.x**](https://www.python.org/downloads/)。
-
-* 确保已安装 [Microsoft Visual C++ Redistributable for Visual Studio](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)。
-
-**对于非 Windows 平台**，请参阅 V1 SDK 文档中的 [Python Pip 包分发表](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table)。 确保已在开发计算机上安装了为平台指定的 Python 3.x 版本并满足任何相关要求。 安装 Python 3.x 而不是 2.7 可在 V2 设备客户端（本快速入门也使用此客户端）中启用异步操作。
+已在开发计算机上安装 [Python 版本 3.7 或更高版本](https://www.python.org/downloads/)。 有关支持的其他 Python 版本，请参阅 SDK 文档中的 [Azure IoT 设备功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -132,7 +122,7 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![运行模拟设备](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
@@ -147,7 +137,7 @@ az extension add --name azure-cli-iot-ext
 1. 在本地终端窗口中，运行以下命令，为模拟设备应用程序安装所需的库：
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. 在本地终端窗口中，运行以下命令，以便运行终端应用程序：
@@ -158,15 +148,11 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了应用程序对设备进行直接方法调用并接收确认后的输出：
 
-    ![运行后端应用程序](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![运行后端应用程序](./media/quickstart-control-device-python/backend-application.png)
 
     运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
-    ![模拟客户端的变化](./media/quickstart-control-device-python/SimulatedDevice-2.png)
-
-    > [!NOTE]
-    > 如果在导入 *iothub_service_client* 时出现错误，请确保已安装在[先决条件](#prerequisites)中为平台指定的相同 Python 版本和任何其他相关项目。 如果在验证先决条件之后仍出现错误，可能需要为平台生成服务客户端。 若要了解如何为平台生成 SDK，请参阅 V1 SDK 文档中的 [devbox 安装说明](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)。
-    >
+    ![模拟客户端的变化](./media/quickstart-control-device-python/simulated-device-2.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

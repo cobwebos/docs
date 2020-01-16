@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1426ad250e18d0132e116162a374120dda2e1200
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965163"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044132"
 ---
-# <a name="web-api-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的 web API-移动到生产环境
+# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>用于调用 web Api 的 web API：移至生产环境
 
 获取用于调用 web Api 的令牌后，可以将应用移动到生产环境。
 
@@ -30,8 +30,8 @@ ms.locfileid: "74965163"
 
 ## <a name="learn-more"></a>了解更多
 
-现在，你已了解如何从你自己的 web API 中调用 web Api 的基础知识，你可能会对本教程感兴趣，其中介绍了用于构建调用 web Api 的受保护 web API 的代码。
+现在，你已了解如何从你自己的 web API 中调用 web Api 的基础知识，你可能对以下教程感兴趣，其中描述了用于生成可调用 web Api 的受保护 web API 的代码。
 
-| 示例 | 平台 | 描述 |
+| 示例 | 平台 | Description |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 Web API，Desktop （WPF） | 使用 Microsoft 标识平台（v2.0）从 WPF 应用程序调用 Microsoft Graph ASP.NET Core 2.2 Web API |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 Web API，Desktop （WPF） | ASP.NET Core 2.2 Web API 调用 Microsoft Graph，你可以使用 Microsoft 标识平台（v2.0）从 WPF 应用程序调用它。 |

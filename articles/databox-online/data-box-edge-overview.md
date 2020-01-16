@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585375"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863625"
 ---
 # <a name="what-is-azure-stack-edge"></a>什么是 Azure Stack Edge？ 
 
@@ -27,7 +27,7 @@ Azure Stack Edge 是一种硬件即服务解决方案。 Microsoft 为客户提�
 
 下面介绍各种方案，其中 Azure Stack Edge 可用于加快边缘的机器学习 (ML) 推理并对数据进行预处理，然后再将该数据发送到 Azure。
 
-- **使用 Azure 机器学习进行推理** - 借助 Azure Stack Edge，可以运行 ML 模型以获得可在数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
+- **使用 Azure 机器学习进行推理** - 借助 Azure Stack Edge，可以运行 ML 模型以获得可在数据发送到云之前执行的快速结果。 可以选择传输完整的数据集以继续重新训练并改进 ML 模型。 有关如何在 Azure Stack Edge 设备上使用 Azure ML 硬件加速模型的详细信息，请参阅[在 Azure Stack Edge 上部署 Azure ML 硬件加速模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)。
 
 - **预处理数据** - 转换数据，然后将数据发送到 Azure，以创建更具操作的数据集。 使用预处理可以： 
 

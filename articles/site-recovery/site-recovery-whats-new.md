@@ -1,18 +1,14 @@
 ---
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新。
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351465"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024827"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -28,14 +24,26 @@ ms.locfileid: "75351465"
 
 **Update** |  **统一安装** | **配置服务器 .ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [汇总42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [汇总41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [汇总40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [汇总39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
-[汇总38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+
         
 
 [了解](service-updates-how-to.md)有关更新安装和支持的详细信息。
+
+## <a name="updates-january-2020"></a>更新（2020年1月）
+
+### <a name="update-rollup-43"></a>更新汇总43
+
+[更新汇总 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery)提供了以下更新。
+
+**Update** | **详细信息**
+--- | ---
+**提供程序和代理** | 更新 Site Recovery 代理和提供程序（在汇总中详细说明）
+**问题修复/改进** | 许多修补程序和改进功能（如汇总中所述）
 
 
 ## <a name="updates-november-2019"></a>更新（2019年11月）

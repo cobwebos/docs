@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975799"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982688"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
@@ -30,7 +30,7 @@ ms.locfileid: "74975799"
 
 |Feature  |说明  |
 |---------|---------|
-|[利用神经机器翻译技术](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  利用自定义翻译提供的神经机器翻译 (NMT) 来改进翻译。       |
+|[利用神经机器翻译技术](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  利用自定义翻译提供的神经机器翻译 (NMT) 来改进翻译。       |
 |[生成了解业务术语的系统](what-are-parallel-documents.md)     |  使用并行文档自定义并生成翻译系统，该系统了解在你自己的业务和行业中使用的术语。       |
 |[使用字典来生成模型](what-is-dictionary.md)     |   如果没有训练数据集，可以只使用字典数据训练一个模型。       |
 |[与他人协作](how-to-manage-settings.md#share-your-workspace)     |   将工作与他人共享，与团队协作。     |
@@ -38,7 +38,7 @@ ms.locfileid: "74975799"
 
 ## <a name="get-better-translations"></a>获取更好的翻译
 
-Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)。 NMT 的翻译质量相对于行业标准的[统计机器翻译 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) 技术有很大的进步。 由于 NMT 在翻译之前能够更好地理解完整句子的上下文，因此其提供的翻译质量更高、更类似于人类且更流畅。 [自定义翻译](https://portal.customtranslator.azure.ai)为自定义模型提供 NMT，因此翻译质量更好。
+Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)。 NMT 的翻译质量相对于行业标准的[统计机器翻译 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) 技术有很大的进步。 由于 NMT 在翻译之前能够更好地理解完整句子的上下文，因此其提供的翻译质量更高、更类似于人类且更流畅。 [自定义翻译](https://portal.customtranslator.azure.ai)为自定义模型提供 NMT，因此翻译质量更好。
 
 可以使用以前翻译的文档生成一个翻译系统。 这些文档包括特定于领域的术语和样式，比标准翻译系统更好。 用户可以上传 ALIGN、PDF、LCL、HTML、HTM、XLF、TMX、XLIFF、TXT、DOCX 和 XLSX 文档。
 

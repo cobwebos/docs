@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 7e463e1cdd340f852af46e39cca0dd9bfce7b8da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4eeeb538bcd39eed40a92dd45e7ba7bed25558e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978405"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>排查 Azure 导入/导出工具问题
 在遇到问题时，Microsoft Azure 导入/导出工具会返回错误消息。 本主题列出用户可能会遇到的一些常见问题。  
-  
+
 ## <a name="a-copy-session-fails-what-i-should-do"></a>复制会话失败该怎么办？  
  如果复制会话失败，可以采用两种做法：  
-  
+
  如果该错误可以通过重试来解决，例如，网络共享短期处于脱机状态，而现在已重新联机，则可以恢复复制会话。 如果该错误不可以通过重试来解决，例如，在命令行参数中指定了错误的源文件目录，则需要中止复制会话。 有关恢复和中止复制会话的详细信息，请参阅[为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)。  
-  
+
 ## <a name="i-cant-resume-or-abort-a-copy-session"></a>无法恢复或中止复制会话。  
  如果该复制会话是驱动器的第一个复制会话，错误消息应会指出：“无法恢复或中止第一个复制会话”。 在此情况下，可以删除旧日记文件，并重新运行该命令。  
-  
+
  如果复制会话不是驱动器的第一个复制会话，则始终可以恢复或中止该会话。  
-  
+
 ## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>在丢失日记文件的情况下是否仍可创建作业？  
  驱动器的日记文件包含将数据复制到此驱动器时记录的完整信息，向驱动器添加更多文件以及创建导入作业时需要该日记文件。 如果丢失日记文件，需要为驱动器重做所有复制会话。  
-  
+
 ## <a name="next-steps"></a>后续步骤
- 
+
 * [设置 Azure 导入/导出工具](../storage-import-export-tool-setup-v1.md)   
 * [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [使用复制日志文件查看作业状态](../storage-import-export-tool-reviewing-job-status-v1.md)   

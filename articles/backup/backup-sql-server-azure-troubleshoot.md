@@ -3,12 +3,12 @@ title: SQL Server 数据库备份的疑难解答
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659247"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978771"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "75659247"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>Master 数据库不允许进行差异备份和日志备份。</li></ul>有关更多详细信息，请参阅[SQL Server 恢复模式](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果简单恢复模式中的数据库的日志备份失败，请尝试下列选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用[SQL Server 文档](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为完整或大容量日志记录。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果它是 master 数据库并且已配置了差异备份或日志备份，请使用以下步骤之一：<ul><li>使用门户将 master 数据库的备份策略计划更改为 "完整"。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
-| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 查看有关并发运行的[备份和还原限制的博客文章](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)。| [使用 SQL Server Management Studio （SSMS）来监视备份作业](manage-monitor-sql-database-backup.md)。 冲突操作失败后，请重新启动操作。|
+| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 查看有关并发运行的[备份和还原限制的博客文章](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio （SSMS）来监视备份作业](manage-monitor-sql-database-backup.md)。 冲突操作失败后，请重新启动操作。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 

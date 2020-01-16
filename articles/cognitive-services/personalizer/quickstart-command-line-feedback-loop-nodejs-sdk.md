@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bec68cbb88a9acacbc1a9a081ce3d8612b709d18
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446375"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860225"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的个性化体验创建服务客户端库
 
@@ -26,7 +26,7 @@ ms.locfileid: "75446375"
  * 为一系列个性化操作排名。
  * 报告奖励评分（指示最高排名操作是否成功）。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "75446375"
 
 Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 你还可以：
 
-* 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。  
+* 免费获取在 7 天内有效的[试用版密钥](https://azure.microsoft.com/try/cognitive-services)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。
 * 在 [Azure 门户](https://portal.azure.com/)上查看资源。
 
 从试用订阅或资源获取密钥后，创建两个[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)：
@@ -62,13 +62,13 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 
 ## <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-运行 `npm init -y` 命令以创建 `package.json` 文件。 
+运行 `npm init -y` 命令以创建 `package.json` 文件。
 
 ```console
 npm init -y
@@ -100,11 +100,11 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 个性化体验创建服务客户端是一个 PersonalizerClient 对象，它使用包含密钥的 Microsoft.Rest.ServiceClientCredentials 向 Azure 进行身份验证。
 
-若要请求内容排名，请创建一个 RankRequest，然后将其传递给 client.Rank 方法。 Rank 方法返回包含排名内容的 RankResponse。 
+若要请求内容排名，请创建一个 RankRequest，然后将其传递给 client.Rank 方法。 Rank 方法返回包含排名内容的 RankResponse。
 
-若要向个性化体验创建服务发送奖励，请创建一个 RewardRequest，然后将其传递给 client.Reward 方法。 
+若要向个性化体验创建服务发送奖励，请创建一个 RewardRequest，然后将其传递给 client.Reward 方法。
 
-在本快速入门中，可以很容易地确定奖励。 在生产系统中，确定哪些因素会影响[奖励评分](concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 这应是个性化体验创建服务体系结构中的主要设计决策之一。 
+在本快速入门中，可以很容易地确定奖励。 在生产系统中，确定哪些因素会影响[奖励评分](concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 这应是个性化体验创建服务体系结构中的主要设计决策之一。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -116,7 +116,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-在首选编辑器或 IDE 中创建名为 `sample.js` 的新 Node.js 应用程序。 
+在首选编辑器或 IDE 中创建名为 `sample.js` 的新 Node.js 应用程序。
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
@@ -146,7 +146,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="create-the-learning-loop"></a>创建学习循环
 
-个性化体验创建服务学习循环是一个[排名](#request-a-rank)和[奖励](#send-a-reward)调用周期。 在本快速入门中，用于个性化内容的每个排名调用都后接一个奖励调用，该奖励调用让个性化体验创建服务知道服务对内容排名的适用程度。 
+个性化体验创建服务学习循环是一个[排名](#request-a-rank)和[奖励](#send-a-reward)调用周期。 在本快速入门中，用于个性化内容的每个排名调用都后接一个奖励调用，该奖励调用让个性化体验创建服务知道服务对内容排名的适用程度。
 
 以下循环代码循环调用以下循环：在命令行询问用户的首选项，将该信息发送给个性化体验创建服务以进行排名，向客户显示排名的选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励，指出服务对所选内容排名的适用程度。
 
@@ -161,9 +161,9 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="request-a-rank"></a>请求排名
 
-为了完成排名请求，程序会询问用户的首选项以创建内容选项。 该过程可以创建要从排名中排除的内容，显示为 `excludeActions`。 排名请求需要 [actions](concepts-features.md#actions-represent-a-list-of-options)、currentContext、excludeActions 以及唯一的排名事件 ID（作为 GUID）才能接收排名的响应。 
+为了完成排名请求，程序会询问用户的首选项以创建内容选项。 该过程可以创建要从排名中排除的内容，显示为 `excludeActions`。 排名请求需要 [actions](concepts-features.md#actions-represent-a-list-of-options)、currentContext、excludeActions 以及唯一的排名事件 ID（作为 GUID）才能接收排名的响应。
 
-本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能是一件非常重要的事情。  
+本快速入门使用简单的日期时间和用户食品偏好上下文特征。 在生产系统中，确定和[评估](concept-feature-evaluation.md)[操作与特征](concepts-features.md)可能是一件非常重要的事情。
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 
@@ -171,7 +171,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 为了完成奖励请求，程序将从命令行获取用户的选择，为每种选择分配一个数值，然后将唯一排名事件 ID 和该数值发送到奖励方法。
 
-本快速入门分配一个简单的数字（0 或 1）作为奖励。 在生产系统中，确定何时向[奖励](concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。 
+本快速入门分配一个简单的数字（0 或 1）作为奖励。 在生产系统中，确定何时向[奖励](concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

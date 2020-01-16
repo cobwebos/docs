@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658013"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045166"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本
 
@@ -43,6 +43,8 @@ Log Analytics 的默认定价是基于数据量引入的即**用即付**模型�
   
 除了即用即付模型外，Log Analytics 还提供了**容量预留**层，使你可以将其保存为与即用即付价格相比最多25%。 产能预留价格使你可以购买起价 100 GB/天的保留。 将按现用现付费率对超出预订级别的任何使用量进行计费。 容量预留层具有31天承诺期。 在承诺期内，您可以更改为更高级的容量预留层（这将重新启动31天承诺期间），但您不能移回即用即付或更低的容量预留层，直到完. 
 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)Log Analytics 即用即付和产能预留定价。 
+
+在所有定价层中，数据量是在准备存储数据时从数据的字符串表示形式计算得出的。 事件大小的计算中不包括[所有数据类型共有](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)的几个属性，包括 `_ResourceId`、`_ItemId`、`_IsBillable` 和 `_BilledSize`。
 
 另请注意，某些解决方案（例如[Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)和[azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)）有自己的定价模型。 
 
@@ -164,6 +166,9 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 > [!NOTE]
 > 除了在2017年6月19日之前安装了 Azure 安全中心的工作区之外，每日上限不会停止从 Azure 安全中心收集数据。 
+
+> [!NOTE]
+> 应用每日上限所固有的延迟可能意味着上限不会应用到指定的每日上限级别。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 

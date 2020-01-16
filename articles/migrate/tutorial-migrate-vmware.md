@@ -1,18 +1,15 @@
 ---
 title: 通过无代理 Azure Migrate 服务器迁移功能迁移 VMware VM
 description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁移。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196417"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028696"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -20,7 +17,7 @@ ms.locfileid: "74196417"
 
 [Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第三篇文章。 本教程介绍如何执行下列操作：
+本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第三篇文章。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 准备要迁移的 VM。
@@ -44,7 +41,7 @@ ms.locfileid: "74196417"
 - [了解](server-migrate-overview.md)无代理迁移的工作原理，并[比较迁移方法](server-migrate-overview.md#compare-migration-methods)。
 - 若要使用基于代理的方法，请[阅读此文](tutorial-migrate-vmware-agent.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -92,7 +89,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备。 该设备执
 
 Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure。
 
-- 对于某些操作系统，Azure Migrate 可自动做出这些更改。 [了解详细信息](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
+- 对于某些操作系统，Azure Migrate 可自动做出这些更改。 [了解详细信息](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
 - 如果要迁移的 VM 不使用其中的某种操作系统，请遵照说明准备 VM。
 - 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。
 - 为本地 VM 启用复制后，对这些 VM 做出的配置更改将复制到 Azure。 为了确保复制这些更改，要迁移到的恢复点必须晚于在本地进行配置更改的时间。
@@ -103,7 +100,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 **Action** | **详细信息** | **说明**
 --- | --- | ---
 确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 将 SAN 策略配置为“全部联机”。 | 1.使用管理员帐户登录到 VM，然后打开命令窗口。<br/> 2.键入 **diskpart** 运行 Diskpart 实用工具。<br/> 3.键入 **SAN POLICY=OnlineAll**<br/> 4.键入 Exit 退出 Diskpart，然后关闭命令提示符。
-为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)启用控制台。
+为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)启用此功能。
 安装 Hyper-V 来宾集成 | 如果要迁移的计算机运行 Windows Server 2003，请在 VM 操作系统上安装 Hyper-V 来宾 Integration Services。 | [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
 远程桌面 | 在 VM 上启用远程桌面，并在所有网络配置文件中检查 Windows 防火墙是否未阻止远程桌面访问。 | [了解详细信息](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
 
@@ -161,7 +158,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
     ![目标设置](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)。
+8. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表将包含建议的大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。  
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 

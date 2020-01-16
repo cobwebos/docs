@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784830"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045308"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -29,7 +29,7 @@ ms.locfileid: "72784830"
 因此，流量管理器不提供供客户端连接的终结点或 IP 地址。 如果想要为服务使用静态 IP 地址，必须在服务而不是流量管理器中配置该地址。
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>可以使用流量管理器路由什么类型的流量？
-如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md#internalloadbalancer)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/concepts-limitations.md#internalloadbalancer)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持 "粘滞" 会话？
 
@@ -384,7 +384,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 |传入的查询请求|    终结点类型|  提供的响应|
 |--|--|--|
-|任意 |  A/AAAA/CNAME |  目标终结点| 
+|ANY |  A/AAAA/CNAME |  目标终结点| 
 |A |    A/CNAME | 目标终结点|
 |A |    AAAA |  无数据 |
 |AAAA | AAAA/CNAME |  目标终结点|
@@ -397,7 +397,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 |传入的查询请求|    终结点类型 | 提供的响应|
 |--|--|--|
-|任意 |  混合 A 和 AAAA | 目标终结点|
+|ANY |  混合 A 和 AAAA | 目标终结点|
 |A |    混合 A 和 AAAA | 仅 A 类型的目标终结点|
 |AAAA   |混合 A 和 AAAA|     仅 AAAA 类型的目标终结点|
 |CNAME |    混合 A 和 AAAA | 无数据 |

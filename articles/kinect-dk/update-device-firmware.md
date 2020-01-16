@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新, 恢复
-ms.openlocfilehash: 306d9528058c6148e9b594eb489b90765479ca60
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931695"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771590"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件
 
@@ -57,15 +57,15 @@ Azure Kinect DK 不会自动更新固件。 可以使用 [Azure Kinect 固件工
 
     ```console
        >AzureKinectFirmwareTool.exe -q
-        == Azure Kinect DK Firmware Tool ==
-        Device Serial Number: 000036590812
-        Current Firmware Versions:
-        RGB camera firmware:      1.5.92
-        Depth camera firmware:    1.5.66
-        Depth config file:        6109.7
-        Audio firmware:           1.5.14
-        Build Config:             Production
-        Certificate Type:         Microsoft
+ == Azure Kinect DK Firmware Tool ==
+Device Serial Number: 000805192412
+Current Firmware Versions:
+  RGB camera firmware:      1.6.102
+  Depth camera firmware:    1.6.75
+  Depth config file:        6109.7
+  Audio firmware:           1.6.14
+  Build Config:             Production
+  Certificate Type:         Microsoft
     ```
 
 3. 如果看到上面的输出，则表示固件已更新。

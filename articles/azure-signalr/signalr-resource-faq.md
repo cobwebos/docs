@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450219"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891249"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "75450219"
 可能的原因包括：
 - 没有任何应用程序服务器连接到 SignalR 服务。 检查应用程序服务器日志，以查看可能的连接错误。 在使用多个应用程序服务器的高可用性设置中，这种情况非常罕见。
 - SignalR 服务实例存在连接问题。 此问题是暂时性的，可自动恢复。
-如果此问题持续一个小时以上，请[在 GitHub 上提出问题](https://github.com/Azure/azure-signalr/issues/new)，或者[在 Azure 中创建支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
+如果此问题持续一个小时以上，请[在 GitHub 上提出问题](https://github.com/Azure/azure-signalr/issues/new)，或者[在 Azure 中创建支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>如果存在多个应用程序服务器，客户端消息是发送到所有服务器，还是只发送到其中的一个服务器？
 

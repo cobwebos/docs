@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: f2fda893ad84aaf9d11d26d761f5395c7f5650d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a85ec565077ac229cd24bb7b9cf753015aa56ebf
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666366"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024854"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Azure 安全中心内云本机计算的威胁检测
 
@@ -36,7 +36,7 @@ ms.locfileid: "75666366"
 
 通过使用 Azure 作为云提供商的可见性，安全中心将分析应用服务内部日志，以确定多个目标的攻击方法。 例如，方法包含广泛的扫描和分布式攻击。 这种类型的攻击通常来自一小部分 Ip，并显示对多个主机上的类似终结点进行爬网的模式。 攻击会搜索易受攻击的页面或插件，不能从单个主机的角度来识别。
 
-安全中心还可以访问基础沙箱和 Vm。 与内存取证一起，基础结构可以从一种新的攻击传播到客户计算机中的威胁，从而讲述这一案例。 因此，即使在 web 应用被利用后部署了安全中心，它也能够检测到正在进行的攻击。
+如果运行的是基于 Windows 的应用服务计划，安全中心还可以访问基础沙箱和 Vm。 除了上面提到的日志数据，基础结构可以从一种新的攻击传播到客户计算机中的危害，并使其受益。 因此，即使在 web 应用被利用后部署了安全中心，它也能够检测到正在进行的攻击。
 
 有关 Azure App Service 警报的列表，请参阅警报的[引用表](alerts-reference.md#alerts-azureappserv)。
 
@@ -64,3 +64,7 @@ ms.locfileid: "75666366"
     有关 AKS 群集级别警报的列表，请参阅警报的[引用表](alerts-reference.md#alerts-akscluster)。
 
 另外，我们的安全研究人员的全球安全研究人员不断监视威胁的发展。 它们在发现时添加容器特定的警报和漏洞。
+
+## <a name="next-steps"></a>后续步骤
+
+* 有关应用服务计划的详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。

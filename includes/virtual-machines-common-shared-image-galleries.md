@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663077"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020830"
 ---
 共享映像库是一种服务，可帮助你围绕托管映像构建结构和组织。 共享图像库提供：
 
@@ -65,7 +65,7 @@ ms.locfileid: "75663077"
 * Eula-可用于指向特定于映像定义的最终用户许可协议。
 * 隐私声明和发行说明-在 Azure 存储中存储发行说明和隐私声明，并提供一个 URI 用于作为映像定义的一部分来访问这些声明。
 * 寿命结束-将寿命结束时间附加到映像定义，以便能够使用自动化来删除旧的映像定义。
-* 标记-可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/resource-group-using-tags.md)
+* 标记-可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)
 * 最小和最大 vCPU 和内存建议-如果映像有 vCPU 和内存建议，可以将该信息附加到映像定义。
 * 不允许的磁盘类型-可提供有关 VM 存储空间需求的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到 "禁止" 列表。
 

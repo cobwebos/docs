@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795780"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021071"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -21,16 +21,16 @@ ms.locfileid: "74795780"
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域20个<sup>1</sup> 。 | 联系支持人员。 |
 | Azure 点 VM 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的总内核数 |每个区域20个<sup>1</sup> 。 | 联系支持人员。 |
 | VM 每个系列，如 Dv2 和 F，每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的核心数 |每个区域20个<sup>1</sup> 。 | 联系支持人员。 |
-| 每个订阅的[共同](../articles/billing-add-change-azure-subscription-administrator.md) |不受限制。 |不受限制。 |
-| 每个订阅在每个区域中的[存储帐户数](../articles/storage/common/storage-quickstart-create-account.md) |250 |250 |
-| 每个订阅的[资源组](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
+| 每个订阅的[共同](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) |不受限制。 |不受限制。 |
+| 每个订阅在每个区域中的[存储帐户数](../articles/storage/common/storage-account-create.md) |250 |250 |
+| 每个订阅的[资源组](../articles/azure-resource-manager/management/overview.md) |980 |980 |
 | 每个订阅的[可用性集](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域2000。 |每个区域2000。 |
 | Azure 资源管理器 API 请求大小 |4194304字节。 |4194304字节。 |
 | 每个订阅的标记<sup>2</sup> |不受限制。 |不受限制。 |
 | 每个订阅的唯一标记计算<sup>2</sup> | 10,000 | 10,000 |
-| 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |不适用<sup>3</sup> |不适用<sup>3</sup> |
-| 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |不适用<sup>3</sup> |不适用<sup>3</sup> |
-| 每个位置[的订阅级别部署](../articles/azure-resource-manager/deploy-to-subscription.md) | 800<sup>4</sup> | 800 |
+| 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |N/A<sup>3</sup> |N/A<sup>3</sup> |
+| 每个位置[的订阅级别部署](../articles/azure-resource-manager/templates/deploy-to-subscription.md) | 800<sup>4</sup> | 800 |
 
 <sup>1</sup>默认限制根据产品类别类型（例如免费试用版和即用即付，以及按序列（如 Dv2、F 和 G）而有所不同。例如，企业协议订阅的默认值为350。
 

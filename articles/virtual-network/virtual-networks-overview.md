@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638266"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894594"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -79,7 +79,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 
-可部署的 Azure 资源数存在一定的限制。 大多数 Azure 网络限制设置在最大值。 但是，你可以根据 [VNet 限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)中的指定，[提高某些网络限制](../azure-supportability/networking-quota-requests.md)。 
+可部署的 Azure 资源数存在一定的限制。 大多数 Azure 网络限制设置在最大值。 但是，你可以根据 [VNet 限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)中的指定，[提高某些网络限制](../azure-portal/supportability/networking-quota-requests.md)。 
 
 ## <a name="pricing"></a>定价
 

@@ -1,18 +1,18 @@
 ---
 title: 查看和管理服务提供商
 description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
-ms.date: 11/15/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463813"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046121"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 
-客户可以使用 **Azure 门户**中的“服务提供商”页面查看有关服务提供商和服务提供商产品/服务的信息，通过 [Azure 委派资源管理](https://portal.azure.com)委派特定资源，以及购买其他服务提供商的产品/服务[](../concepts/azure-delegated-resource-management.md)。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
+客户可以使用 [Azure 门户](https://portal.azure.com)中的“服务提供商”页面查看有关服务提供商和服务提供商产品/服务的信息，通过 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)委派特定资源，以及购买其他服务提供商的产品/服务。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
 
 要访问 Azure 门户中的“服务提供者”页面，客户可以选择“所有服务”，然后搜索“服务提供商”并选择它。 他们还可以通过在 Azure 门户顶部附近的搜索框中输入“服务提供商”进行查找。
 
@@ -60,6 +60,9 @@ ms.locfileid: "74463813"
 委派表示为客户委派的资源授予服务提供者权限的角色分配。 若要查看此信息，请选择“服务提供程序”页面左侧的“委派”。
 
 可通过页面顶部的筛选器对委派信息进行排序和分组，或者按特定的客户、产品/服务或关键字进行筛选。
+
+> [!NOTE]
+> 当查看 Azure 门户或通过 Api[中的委托作用域的角色分配信息](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)时，客户不会看到这些角色分配，也不会看到已授予这些角色的服务提供商租户中的任何用户。
 
 ## <a name="next-steps"></a>后续步骤
 

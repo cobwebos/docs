@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763626"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024905"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,27 +156,35 @@ print(blob.location)
     > [!IMPORTANT]
     > Azure 机器学习使用 Linux 创建的映像，因此必须使用 `--is-linux` 参数。
 
-1. 若要创建 function app，请使用以下命令。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagename>` 替换为之前返回的 `package.location` 中的值：
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > 此时，已创建 function app。 但是，由于尚未向包含映像的 Azure 容器注册表提供 blob 触发器或凭据的连接字符串，因此该函数应用处于非活动状态。 在后续步骤中，你将为容器注册表提供连接字符串和身份验证信息。 
-
-1. 创建要用作触发器的存储帐户，并获取它的连接字符串。
+1. 创建用于 web 作业存储的存储帐户，并获取它的连接字符串。 将 `<webjobStorage>` 替换为要使用的名称。
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. 若要创建 function app，请使用以下命令。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagename>` 替换为之前返回的 `package.location` 中的值。 将 Replace `<webjobStorage>` 替换为上一步中存储帐户的名称：
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > 此时，已创建 function app。 但是，由于尚未向包含映像的 Azure 容器注册表提供 blob 触发器或凭据的连接字符串，因此该函数应用处于非活动状态。 在后续步骤中，你将为容器注册表提供连接字符串和身份验证信息。 
+
+1. 创建用于 blob 触发器存储的存储帐户，并获取它的连接字符串。 将 `<triggerStorage>` 替换为要使用的名称。
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     记录此连接字符串以提供给函数应用。 稍后我们将使用它来询问 `<triggerConnectionString>`
 
-1. 在存储帐户中创建用于输入和输出的容器。 
+1. 在存储帐户中创建用于输入和输出的容器。 将 `<triggerConnectionString>` 替换为之前返回的连接字符串：
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. 你将需要使用以下命令检索与创建的容器关联的标记：
+1. 若要将触发器连接字符串与 function app 关联，请使用以下命令。 将 `<app-name>` 替换为 function app 的名称。 将 `<triggerConnectionString>` 替换为之前返回的连接字符串：
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. 你将需要使用以下命令检索与创建的容器关联的标记。 将 `<username>` 替换为之前从容器注册表中返回的用户名：
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    显示的最近标记将在下面 `imagetag`。
+    保存返回的值，将在下一步中将其用作 `imagetag`。
 
 1. 若要向函数应用提供访问容器注册表所需的凭据，请使用以下命令。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
 
