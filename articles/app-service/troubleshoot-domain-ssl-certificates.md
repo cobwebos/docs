@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688340"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966981"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -88,7 +88,7 @@ ms.locfileid: "74688340"
 
     **解决方法**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请遵循以下步骤：
 
-    1. 登录到 [Azure 门户](https://portal.azure.com)。
+    1. 登录 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。
     3. 选择“证书配置” > “步骤 2: 验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
@@ -190,7 +190,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 可以强制同步证书：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。
 2. 选择 " **Rekey 和同步**"，然后选择 "**同步**"。同步需要一些时间才能完成。 
 3. 完成同步后，会看到以下通知：“已成功使用最新的证书更新了所有资源”。
 
@@ -266,7 +266,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **购买我的网站后，是否需要为我的网站配置我的自定义域？**
 
@@ -318,6 +318,6 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可以将包含自定义域的 web 应用移到另一个订阅或从应用服务环境 v1 迁移到 V2？**
 
-是的，你可以跨订阅移动 web 应用。 按照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导进行操作。 移动 web 应用时有一些限制。 有关详细信息，请参阅[移动应用服务资源的限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+是的，你可以跨订阅移动 web 应用。 按照[如何在 Azure 中移动资源](../azure-resource-manager/management/move-resource-group-and-subscription.md)中的指导进行操作。 移动 web 应用时有一些限制。 有关详细信息，请参阅[移动应用服务资源的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 移动 web 应用后，自定义域中的域的主机名绑定应保持不变。 配置主机名绑定不需要执行其他步骤。

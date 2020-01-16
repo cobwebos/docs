@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460615"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975694"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
 Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为 Azure 存储数据提供唯一的命名空间，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 Azure 存储帐户中的数据是持久的、高度可用的、安全且高度可缩放的。
 
-若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-account-create.md)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 
@@ -72,7 +72,7 @@ BlockBlobStorage 帐户目前不支持对 "热"、"冷" 或 "存档" 访问层�
 
 ### <a name="filestorage-accounts"></a>FileStorage 帐户
 
-FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。 
+FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
 
 FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
 
@@ -150,15 +150,15 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 - **共享访问签名：** 如果不使用 Azure AD 授权，请使用共享访问签名委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，用于在 URL 中封装对 Azure 存储访问请求进行授权时所需的全部信息。 可以在共享访问签名中指定存储资源、授予的权限，以及权限的有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
 
 > [!NOTE]
-> 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 
+> 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。
 >
 > Microsoft 建议尽可能使用 Azure 存储 blob 的 Azure AD 授权和队列应用程序。
 
 ## <a name="copying-data-into-a-storage-account"></a>将数据复制到存储帐户
 
-Microsoft 提供了用于从本地存储设备或第三方云存储提供程序导入数据的实用工具和库。 使用哪种解决方案取决于要传输的数据量。 
+Microsoft 提供了用于从本地存储设备或第三方云存储提供程序导入数据的实用工具和库。 使用哪种解决方案取决于要传输的数据量。
 
-从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户时，会自动迁移数据。 Microsoft 建议使用这种路径来升级帐户。 但是，如果决定将数据从常规用途 v1 帐户移到 Blob 存储帐户，则可以使用下面所述的工具和库手动迁移数据。 
+从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户时，会自动迁移数据。 Microsoft 建议使用这种路径来升级帐户。 但是，如果决定将数据从常规用途 v1 帐户移到 Blob 存储帐户，则可以使用下面所述的工具和库手动迁移数据。
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建存储帐户](storage-quickstart-create-account.md)
+- [创建存储帐户](storage-account-create.md)
 - [创建块 Blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)

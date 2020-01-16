@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456360"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978660"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure 机器学习设计器的算法 & 模块引用
 
@@ -50,4 +50,4 @@ ms.locfileid: "75456360"
 
 ## <a name="error-messages"></a>错误消息
 
-了解在 Azure 机器学习设计器中可能会遇到的[错误消息和异常代码](machine-learning-module-error-codes.md)。
+了解在 Azure 机器学习设计器中可能会遇到的[错误消息和异常代码](designer-error-codes.md)。

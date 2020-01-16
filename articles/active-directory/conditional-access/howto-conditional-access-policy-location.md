@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977992"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件性访问：按位置阻止访问
 
@@ -30,7 +30,7 @@ ms.locfileid: "75424875"
 1. 为你的位置命名。
 1. 如果你知道构成该位置或**国家/地区**的特定于外部的可访问 IPv4 地址范围，请选择 " **IP 范围**"。
    1. 提供**IP 范围**或为指定的位置选择**国家/地区**。
-      * 如果选择了 "国家/地区"，则可以选择包含未知区域。
+      * 如果选择 "国家/地区"，则可以选择包含未知区域。
 1. 选择“保存”
 
 有关条件访问中的位置条件的详细信息，请参阅文章中[的位置条件 Azure Active Directory 条件访问中的位置条件](location-condition.md)
