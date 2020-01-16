@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839434"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981211"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -57,7 +57,7 @@ ms.locfileid: "75839434"
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell 版本2.7.0、2.8.0 或 3.0.0**。 不需要这些版本来部署模板。 但在本地测试部署脚本需要这些版本。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps.md)。 可以使用预配置的 Docker 映像。  请参阅[配置开发环境](#configure-development-environment)。
+- **Azure PowerShell 版本2.7.0、2.8.0 或 3.0.0**。 不需要这些版本来部署模板。 但在本地测试部署脚本需要这些版本。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 可以使用预配置的 Docker 映像。  请参阅[配置开发环境](#configure-development-environment)。
 
 ## <a name="resource-schema"></a>资源架构
 
@@ -233,7 +233,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="clean-up-deployment-script-resources"></a>清理部署脚本资源
 
-部署脚本将创建一个存储帐户和一个用于执行部署脚本并存储调试信息的容器实例。 这两个资源是在预配资源所在的资源组中创建的，并且在脚本过期时将由脚本服务删除。 您可以控制这些资源的生命周期。  在删除之前，将对这两个资源进行计费。 有关价格信息，请参阅[容器实例定价](/pricing/details/container-instances/)和[Azure 存储定价](/pricing/details/storage/)。
+部署脚本将创建一个存储帐户和一个用于执行部署脚本并存储调试信息的容器实例。 这两个资源是在预配资源所在的资源组中创建的，并且在脚本过期时将由脚本服务删除。 您可以控制这些资源的生命周期。  在删除之前，将对这两个资源进行计费。 有关价格信息，请参阅[容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/)和[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 这些资源的生命周期由模板中的以下属性控制：
 

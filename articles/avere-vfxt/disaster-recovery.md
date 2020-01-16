@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414223"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966652"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>适用于 Azure 的 Avere vFXT 的灾难恢复指南
 
@@ -60,7 +60,7 @@ Azure 群集的每个 Avere vFXT 必须位于单个可用性区域中，但你�
 在 Azure Blob 存储中保护数据的最佳实践包括：
 
 * 将关键数据经常复制到另一区域中的另一个存储帐户（通常由灾难恢复计划确定）。
-* 控制对所有目标系统上的数据的访问，以防止意外删除或损坏。 请考虑在数据存储中使用[资源锁](../azure-resource-manager/resource-group-lock-resources.md)。
+* 控制对所有目标系统上的数据的访问，以防止意外删除或损坏。 请考虑在数据存储中使用[资源锁](../azure-resource-manager/management/lock-resources.md)。
 * 为 Blob 核心文件 Avere 启用 Azure[云快照](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>)功能的 "vFXT"。
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>将 Avere vFXT core 文件服务器数据备份到备份帐户

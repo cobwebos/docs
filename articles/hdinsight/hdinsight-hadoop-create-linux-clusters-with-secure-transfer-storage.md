@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947633"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979124"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Apache Hadoop 群集
 
@@ -24,14 +24,14 @@ ms.locfileid: "74947633"
 在开始本文之前，必须具备：
 
 * Azure 订阅：若要创建一个月免费试用帐户，请浏览到[azure.microsoft.com/free](https://azure.microsoft.com/free)。
-* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 如果在创建群集后启用安全存储传输，则需要本文中未涉及的其他步骤。
+* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-account-create.md)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 如果在创建群集后启用安全存储传输，则需要本文中未涉及的其他步骤。
 * 存储帐户上的 Blob 容器。
 
 ## <a name="create-cluster"></a>创建群集
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-本部分介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建 Hadoop 群集。 该模板位于 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) 中。 本文不需要资源管理器模板体验。 有关其他群集创建方法并了解本文使用的属性，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+本部分介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)在 HDInsight 中创建 Hadoop 群集。 该模板位于 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) 中。 本文不需要资源管理器模板体验。 有关其他群集创建方法并了解本文使用的属性，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 1. 单击以下映像以登录到 Azure，并在 Azure 门户中打开 Resource Manager 模板。
 

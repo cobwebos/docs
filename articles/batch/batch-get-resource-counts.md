@@ -2,29 +2,29 @@
 title: 针对任务和节点进行状态计数 - Azure Batch | Microsoft Docs
 description: 对 Azure Batch 任务和计算节点的状态进行计数，以便管理和监视 Batch 解决方案。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5e90045b7863968e8c61c3cbc382434bc8be415a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323544"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029705"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
-若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch  任务和  计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
+若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch任务和计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
 
-* [获取任务计数][rest_get_task_counts]获取作业中活动任务、正在运行的任务和已完成任务的聚合计数, 以及成功或失败的任务数。 
+* [获取任务计数][rest_get_task_counts]获取作业中活动任务、正在运行的任务和已完成任务的聚合计数，以及成功或失败的任务数。 
 
   通过对每种状态的任务计数，可以更轻松地为用户展现作业进度，或检测可能影响作业的意外延迟或故障。 “获取任务计数”功能在 Batch Service API 版本 2017-06-01.5.1 以及相关的 SDK 和工具中提供。
 
-* [列表池节点计数][rest_get_node_counts]获取处于各种状态的每个池中的专用和低优先级计算节点数: 创建、空闲、脱机、被抢占、重新启动、重置、启动, 等等。 
+* [列表池节点计数][rest_get_node_counts]获取处于各种状态的每个池中的专用和低优先级计算节点数：创建、空闲、脱机、被抢占、重新启动、重置、启动，等等。 
 
   通过对每种状态的节点计数，你就可以确定是否有足够的计算资源来运行作业，并确定池可能存在的问题。 “列出池节点计数”功能在 Batch Service API 版本 2018-03-01.6.1 以及相关的 SDK 和工具中提供。
 
@@ -35,9 +35,9 @@ ms.locfileid: "68323544"
 “获取任务计数”操作按以下状态进行任务计数：
 
 - **活动** - 任务已排队且能够运行，但目前没有分配到计算节点。 如果任务所[依赖的父任务](batch-task-dependencies.md)尚未完成，则该任务也处于`active`状态。 
-- **正在运行** - 任务已分配到计算节点但尚未完成。 当任务`running`的状态`preparing`为或时, 会将其`running`计为或, 如[获取有关任务][rest_get_task]操作的信息中所示。
+- **正在运行** - 任务已分配到计算节点但尚未完成。 当任务的状态为 `preparing` 或 `running`时，该任务将被视为 `running`，如[获取有关任务][rest_get_task]操作的信息中所示。
 - **已完成** - 任务不再有资格运行，因为已成功完成，或者虽未成功完成但已达到其重试次数限制。 
-- **已成功** - 执行结果为`success`的任务。 Batch 通过检查`TaskExecutionResult` [executionInfo][rest_get_exec_info]属性的属性, 确定任务是否已成功或失败。
+- **已成功** - 执行结果为`success`的任务。 Batch 通过检查[executionInfo][rest_get_exec_info]属性的 `TaskExecutionResult` 属性，确定任务是否已成功或失败。
 - **已失败** - 执行结果为`failure`的任务。
 
 下方的 .NET 代码示例演示如何按状态检索任务计数： 
@@ -71,7 +71,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 - **正在重置映像** - 操作系统正在节点上重新安装。
 - **正在运行** - 节点正在运行一个或多个任务（不是启动任务）。
 - **正在启动** - Batch 服务正在节点上启动。 
-- **StartTaskFailed** -[启动任务][rest_start_task]失败和用尽所有重试的节点, 并在其`waitForSuccess`上设置启动任务。 此节点不可用于运行任务。
+- **StartTaskFailed** -[启动任务][rest_start_task]失败并已用完所有重试的节点，以及在其上为启动任务设置的 `waitForSuccess`。 此节点不可用于运行任务。
 - **未知** - 节点失去与 Batch 服务的联系，其状态未知。
 - **不可使用** - 节点因错误而不能用于执行任务。
 - **等待启动任务** - 节点上的启动任务已开始运行，但是设置了 `waitForSuccess`，启动任务尚未完成。

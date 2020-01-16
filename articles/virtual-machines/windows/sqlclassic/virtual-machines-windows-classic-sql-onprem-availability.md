@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173546"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978052"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>将本地 AlwaysOn 可用性组扩展到 Azure
 AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性。 在发生故障时，可以使用这些副本来故障转移数据库。 此外，它们还可用于卸载读取工作负荷或备份任务。
@@ -33,7 +33,7 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
 * 本地网络和 Azure 虚拟网络之间的连接。 有关创建此虚拟网络的详细信息，请参阅[使用 Azure 门户（经典）创建站点到站点连接](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)。
 
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 ## <a name="add-azure-replica-wizard"></a>添加 Azure 副本向导
 本部分演示如何使用“添加 Azure 副本向导”来扩展 AlwaysOn 可用性组解决方案，使其包括 Azure 副本。
@@ -47,7 +47,7 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. 需要连接到所有现有辅助副本。 可以单击每个副本旁的“连接...”， 也可以单击屏幕底部的“全部连接…” 。 身份验证之后，单击“下一步”转到下一屏幕。
-5. 在 "**指定副本**" 页上，在顶部列出了多个选项卡：**副本**、**终结点**、**备份首选项**和**侦听器**。 从“副本”选项卡单击“添加 Azure 副本...” 以启动“添加 Azure 副本向导”。
+5. 在“指定副本”页上，顶部列出了多个选项卡：“副本”、“终结点”、“备份首选项”和“侦听器”。 从“副本”选项卡单击“添加 Azure 副本...” 以启动“添加 Azure 副本向导”。
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 6. 如果以前已安装 Azure 管理证书，请从本地 Windows 证书存储中选择现有的 Azure 管理证书。 如果以前使用过 Azure 订阅的 ID，请选择或输入该 ID。 可以单击“下载”以下载并安装 Azure 管理证书，使用 Azure 帐户下载订阅列表。
@@ -55,7 +55,7 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. 使用用于创建托管副本的 Azure 虚拟机 (VM) 的值，填充页面上的每个字段。
    
-   | 设置 | 描述 |
+   | 设置 | Description |
    | --- | --- |
    | **图像** |选择操作系统和 SQL Server 的所需组合 |
    | **VM 大小** |选择最适合业务需求的 VM 大小 |

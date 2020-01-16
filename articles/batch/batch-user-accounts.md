@@ -2,7 +2,7 @@
 title: 在用户帐户下运行任务 - Azure Batch | Microsoft Docs
 description: 配置用于在 Azure Batch 中运行任务的用户帐户
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: ''
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/18/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74194973"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029604"
 ---
 > [!NOTE] 
-> 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。 
+> 出于安全原因，本文中所述的用户帐户不同于用于远程桌面协议（RDP）或安全外壳（SSH）的用户帐户。 
 >
 > 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
@@ -159,7 +159,7 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 还可以使用命名用户帐户来运行可在外部资源（例如文件共享）上设置权限的任务。 使用命名用户帐户可以控制用户标识，并使用该用户标识来设置权限。  
 
-命名用户帐户可在 Linux 节点之间启用无密码 SSH。 可以在需要运行多实例任务的 Linux 节点中使用命名用户帐户。 池中的每个节点可以在整个池中定义的用户帐户下运行任务。 有关多实例任务的详细信息，请参阅[使用多实例任务运行 MPI 应用程序\-。
+命名用户帐户可在 Linux 节点之间启用无密码 SSH。 可以在需要运行多实例任务的 Linux 节点中使用命名用户帐户。 池中的每个节点可以在整个池中定义的用户帐户下运行任务。 有关多实例任务的详细信息，请参阅[使用多实例任务运行 MPI 应用程序](batch-mpi.md)。
 
 ### <a name="create-named-user-accounts"></a>创建命名用户帐户
 

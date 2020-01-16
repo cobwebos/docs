@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942185"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028429"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
@@ -26,11 +26,7 @@ ms.locfileid: "75942185"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要装载问题 VM，救援 VM 必须满足以下先决条件：
-
--   救援 VM 必须与问题 VM 位于同一位置。
-
--   救援 VM 与问题 VM 必须使用相同类型的存储帐户（标准或高级）。
+若要装载问题 VM，修复 VM 必须使用与问题 VM 相同的存储帐户类型（标准或高级）。
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>步骤 1：创建救援 VM 并安装 Hyper-V 角色
 

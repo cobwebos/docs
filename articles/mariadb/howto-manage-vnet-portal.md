@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 66e7c2160317d71ced7517e1ec19014c1475c915
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 082fede57814fa7649309b672c2eea0d0f14b3f6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764093"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965871"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 服务终结点和 VNet 规则
 
@@ -48,16 +48,16 @@ ms.locfileid: "74764093"
    VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。 确保两个订阅都注册了**Microsoft .sql**资源提供程序。 有关详细信息，请参阅[资源管理器-注册][resource-manager-portal]
 
    > [!IMPORTANT]
-   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 虚拟网络服务终结点：[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for MariaDB、PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 **Microsoft.Sql** 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL、Azure Database for MariaDB 和子网上的 Azure Database for MySQL 服务器。
+   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 虚拟网络服务终结点：[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for MariaDB、PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL、Azure Database for MariaDB 和子网上的 Azure Database for MySQL 服务器。
    > 
 
 5. 启用后，单击“确定”即可看到 VNet 服务终结点与 VNet 规则一起启用。
 
-   ![启用了 VNet 服务终结点并创建了 VNet 规则](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![VNet 服务终结点已启用，且 VNet 规则已创建](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[在 Azure Database for MariaDB 上配置 SSL](howto-configure-ssl.md)
 - 类似地，你可以编写脚本，以[使用 Azure CLI 为 Azure Database for MariaDB 启用 VNet 服务终结点并创建 VNET 规则](howto-manage-vnet-cli.md)。
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 630eeb8ec5582f2dc968a10e7cf1b5750683cf66
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969595"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍 Azure Monitor 监视的各种应用程序和服务。 
@@ -177,7 +177,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |:---|:---|
 | [Azure 自动化](/azure/automation/) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
 | [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/) | 对文档和电子邮件进行分类和（可选）保护。 请参阅[Azure 信息保护的集中报告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
-| [Azure 安全中心](/azure/security-center/) | 收集和分析安全事件并执行威胁分析。 请参阅[Azure 安全中心中的数据收集](/security-center/security-center-enable-data-collection.md) |
+| [Azure 安全中心](/azure/security-center/) | 收集和分析安全事件并执行威胁分析。 请参阅[Azure 安全中心中的数据收集](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云跟踪。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。 |
 | [密钥保管库分析](insights/azure-key-vault.md) | 分析 Azure Key Vault AuditEvent 日志。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[在 Intune 中将日志数据发送到存储、事件中心或 log analytics （预览版）](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |

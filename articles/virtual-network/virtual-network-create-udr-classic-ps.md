@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ffeb8e1347d75af2be59763faf0b512c0b329221
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186357"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975348"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>使用 PowerShell 控制路由和使用虚拟设备（经典）
 
@@ -33,7 +33,7 @@ ms.locfileid: "74186357"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure 资源管理器部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure 资源管理器部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/management/deployment-models.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

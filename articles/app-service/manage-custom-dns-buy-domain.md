@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672382"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967299"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -20,10 +20,10 @@ ms.locfileid: "74672382"
 
 ## <a name="prerequisites"></a>必备组件
 
-完成本教程需要：
+完成本教程：
 
 * [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
-* [移除订阅中的支出限制](../billing/billing-spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
+* [移除订阅中的支出限制](../cost-management-billing/manage/spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
 
 ## <a name="prepare-the-app"></a>准备应用
 
@@ -106,7 +106,7 @@ ms.locfileid: "74672382"
 
 接下来，选择域的所需选项。 参阅下表中的说明：
 
-| 设置 | 建议的值 | 描述 |
+| 设置 | 建议的值 | Description |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
 | 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |

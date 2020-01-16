@@ -3,30 +3,26 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c3ac39759cc096bb27535877084e14f4ed50cea9
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719573"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028828"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
-本文介绍 Azure Migrate 设备。 当你使用 Azure Migrate 评估和迁移工具来发现、评估和迁移应用、基础结构和工作负载以 Microsoft Azure 时，你可以部署设备。 
-
-[Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与私有云/公有云 VM 的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
-
-
+本文介绍 Azure Migrate 设备。 使用[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具来发现和评估要迁移到 Microsoft Azure 的应用、基础结构和工作负载时，可以部署设备。 将 VMware Vm 迁移到 Azure 时，还可以使用 Azure Migrate：使用[无代理迁移](server-migrate-overview.md)的[服务器评估](migrate-services-overview.md#azure-migrate-server-migration-tool)将 VMware vm 迁移到 Azure。
 
 ## <a name="appliance-overview"></a>设备概述
 
-Azure Migrate 设备类型和用法如下所示。
+在以下方案中使用 Azure Migrate 设备。
 
 **方案** | **工具** | **用于** 
---- | --- 
-VMware VM | Azure Migrate：服务器评估;Azure Migrate：服务器迁移 | 发现 VMware Vm<br/><br/> 发现应用和依赖项<br/><br/> 收集计算机元数据和性能元数据以进行评估。<br/><br/> 复制 VMware Vm 和无代理迁移。
+--- | --- | ---
+VMware VM | Azure Migrate：服务器评估<br/><br/> Azure Migrate：服务器迁移 | 发现 VMware Vm<br/><br/> 发现计算机应用和依赖项<br/><br/> 收集计算机元数据和性能元数据以进行评估。<br/><br/> 复制 VMware Vm 和无代理迁移。
 Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收集计算机元数据和性能元数据以进行评估。
-物理机 |  Azure Migrate：评估工具 |  发现物理服务器<br/><br/> 收集计算机元数据和性能元数据以进行评估。
+物理机 |  Azure Migrate：服务器评估 |  发现物理服务器<br/><br/> 收集计算机元数据和性能元数据以进行评估。
 
 ## <a name="appliance---vmware"></a>设备-VMware 
 
@@ -36,12 +32,14 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载链接** | https://aka.ms/migrate/appliance/vmware 
 **下载大小** | 11.2 GB
 **许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 设备可以连接到单个 vCenter Server。
 **硬件** | VCenter 上的资源，用于分配含 32 GB RAM 8 个 vcpu 的 VM、大约 80 GB 的磁盘存储和外部虚拟交换机。 
 **哈希值** | MD5： c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256：4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter 服务器/主机** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行5.5、6.0、6.5 或 6.7 vCenter Server。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
 **发现** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到单个 vCenter Server。
 **设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/> DRA：协调 VM 复制，并协调计算机/Azure 之间的通信。<br/> 网关：将复制的数据发送到 Azure。<br/> 自动更新服务：更新组件（每24小时运行一次）。
+**VDDK （无代理迁移）** | 如果在 Azure Migrate 服务器迁移的情况下运行无代理迁移，则必须在设备 VM 上安装 VMware vSphere VDDK。
 
 
 ## <a name="appliance---hyper-v"></a>设备-Hyper-v
@@ -52,12 +50,13 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载链接** | https://aka.ms/migrate/appliance/hyperv 
 **下载大小** | 10 GB
 **许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**设备部署**   |  将设备部署为 Hyper-v VM。<br/> Azure Migrate 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> Hyper-v 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 **硬件** | Hyper-v 主机上的资源，用于分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。
 **哈希值** | MD5：29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256：37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V 主机** | 正在运行 Windows Server 2012 R2 或更高版本。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
 **发现** | 设备最多可在 vCenter Server 上发现 5000 VMware Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。
-**设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）
+**设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
 
 
 ## <a name="appliance---physical"></a>设备-物理
@@ -67,13 +66,15 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载格式** | 压缩文件夹（包含 PowerShell 安装程序脚本）
 **下载链接** | [下载链接](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下载大小** | 59.7 MB
-**硬件** | 运行设备的计算机需要 16 GB 的 RAM，8个 vcpu，大约 80 GB 的存储空间。
+**硬件** | 专用物理计算机或 VM。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/><br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 **哈希值** | MD5：96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256： f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
-**软件** | 设备计算机应运行 Windows Server 2016。 服务器应该是专用的物理服务器或 VM。
-**Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
+**软件** | 设备计算机应运行 Windows Server 2016。 
+**设备部署**   |  设备安装程序脚本是从门户下载的（在压缩文件夹中）。 <br/> 解压文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）。
 **发现** | 一个设备最多可以发现250个物理服务器。
 **设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
-**访问/端口** | 在配置了设备后，在 TCP 端口3389上进行入站连接，以允许与设备建立远程桌面连接。<br/><br/> 端口44368上的入站连接，可使用以下 URL 远程访问设备管理应用： "https：//< 设备-ip 或名称 >：44368。<br/><br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
+**端口访问** | 在配置了设备后，在 TCP 端口3389上进行入站连接，以允许与设备建立远程桌面连接。<br/><br/> 端口44368上的入站连接，可使用以下 URL 远程访问设备管理应用： "https：//< 设备-ip 或名称 >：44368。<br/><br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
+
+
 
 ## <a name="url-access"></a>URL 访问
 
@@ -90,11 +91,13 @@ Azure Migrate 设备需要连接到 internet。
 management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
-aka.ms/* | 允许访问称为 "链接"。
+aka.ms/* | 允许访问称为 "链接"。 用于 Azure Migrate 设备更新。
 download.microsoft.com/download | 允许从 Microsoft 下载下载。
-*.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-\* .blob.core.windows.net | 将数据上传到存储帐户。
+*.servicebus.windows.net | 用于 VMware 无代理迁移。<br/><br/> 设备与 Azure Migrate 服务之间的通信。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 用于 VMware 无代理迁移。<br/><br/> 连接到 Azure Migrate 服务 Url。
+\* .blob.core.windows.net |  用于 VMware 无代理迁移。<br/><br/>将数据上传到存储。
+
+
 
 
 ## <a name="collected-data---vmware"></a>收集的数据-VMware

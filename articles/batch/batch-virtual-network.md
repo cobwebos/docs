@@ -2,19 +2,19 @@
 title: 在虚拟网络中预配池 - Azure Batch | Microsoft Docs
 description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节点可以安全地与网络（例如文件服务器）中的其他 VM 通信。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 06b861f306718068366653685ebe4daf8d5dcfa6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577581"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026264"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -24,9 +24,9 @@ ms.locfileid: "73577581"
 
 Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例如，来运行多实例任务。 这些设置不需要单独的 VNet。 但是，默认情况下，节点不能与属于 Batch 池的一部分的虚拟机（例如，许可证服务器或文件服务器）进行通信。 若要允许池计算节点安全地与其他虚拟机或本地网络进行通信，可以在 Azure VNet 的子网中预配该池。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **身份验证**。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
+* “身份验证”。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
 
 * **一个 Azure VNet**。 参阅以下部分，了解 VNet 要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。  
   * 若要创建基于 Azure 资源管理器的 VNet，请参阅[创建虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 推荐将基于资源管理器的 VNet 用于新部署，它是采用虚拟机配置的池支持的唯一选项。
@@ -56,7 +56,7 @@ Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例�
 
 若要确保 Azure Batch 池计算节点可以在启用了强制隧道的 VNet 中工作，必须为该子网添加以下[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md)：
 
-* Batch 服务需要与池计算节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加用户定义的路由。 若要了解如何获取 Batch 服务的 IP 地址列表，请参阅[本地的服务标记](../virtual-network/service-tags-overview.md)
+* Batch 服务需要与池计算节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加用户定义的路由。 若要了解如何获取 Batch 服务的 IP 地址列表，请参阅[本地中的服务标记](../virtual-network/service-tags-overview.md)
 
 * 确保经由本地网络设备发送到 Azure 存储（具体而言是采用 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 格式的 URL）的出站流量没有被阻止。
 

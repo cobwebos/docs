@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357560"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028873"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点将专用连接到存储帐户
 Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。
@@ -127,11 +127,11 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     |位置|选择“WestCentralUS”。|
-    |名称|输入 *myPrivateEndpoint*。  |
+    |名称|输入“myPrivateEndpoint”。  |
     |存储子资源|保留默认**Blob**。 |
     | **网络** |  |
-    | 虚拟网络  | 从资源组*myResourceGroup*中选择 " *MyVirtualNetwork* "。 |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 虚拟网络  | 从资源组*myResourceGroup*中选择 " *MyVirtualNetwork* "。 |
+    | 子网 | 选择*mySubnet*。 |
     | **专用 DNS 集成**|  |
     | 与专用 DNS 区域集成  | 保留默认值 **"是"** 。 |
     | 专用 DNS 区域  | 保留默认值 " **privatelink.blob.core.windows.net**"。 |
@@ -172,8 +172,8 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 在本部分中，将使用专用终结点将专用连接到存储帐户。
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
-2. 输入 `nslookup mystorageaccount.blob.core.windows.net` 你将收到类似于下面的消息：
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
+2. 输入 `nslookup mystorageaccount.blob.core.windows.net` 你将收到类似于下面的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 10. 选择“连接”。
 11. 从 mystorageaccount 浏览 Blob 容器 
 12. 同时创建文件夹，并/或将文件上传到*mystorageaccount*。 
-13. 关闭与 *myVM*的远程桌面连接。 
+13. 关闭与*myVM*的远程桌面连接。 
 
 用于访问存储帐户的其他选项：
 - Microsoft Azure 存储资源管理器是 Microsoft 提供的独立免费应用程序，可用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。 您可以安装应用程序以私下浏览存储帐户内容。 
@@ -202,9 +202,9 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、存储帐户和 VM 后，请删除资源组及其包含的所有资源： 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。 **   
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”。 
 2. 选择“删除资源组”。 
-3. 输入 " *myResourceGroup*  **" 以键入资源组名称**，然后选择 "**删除**"。 
+3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
-本快速入门介绍了如何在虚拟网络和存储帐户以及专用终结点上创建 VM。 你从 internet 连接到一个 VM，并使用专用链接安全地传达给存储帐户。 若要了解有关专用终结点的详细信息，请参阅 [什么是 Azure 专用终结点？](private-endpoint-overview.md)。
+本快速入门介绍了如何在虚拟网络和存储帐户以及专用终结点上创建 VM。 你从 internet 连接到一个 VM，并使用专用链接安全地传达给存储帐户。 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。

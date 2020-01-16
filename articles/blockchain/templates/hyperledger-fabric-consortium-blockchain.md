@@ -4,16 +4,19 @@ description: 如何在 Azure 上部署和配置 Hyperledger Fabric 联合会网�
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325134"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029162"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric 联盟网络
 
 可以使用 Hyperledger Fabric 联盟解决方案模板在 Azure 上部署和配置 Hyperledger Fabric 联盟网络。
+
+> [!IMPORTANT]
+> [Azure 上的 Hyperledger Fabric](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric)模板将不推荐使用。 改为[在 Azure Kubernetes 服务上使用 Hyperledger 构造](hyperledger-fabric-consortium-azure-kubernetes-service.md)。  
 
 阅读本文后，可以：
 
@@ -64,13 +67,13 @@ ms.locfileid: "74325134"
 
 模板部署将引导你配置多节点 [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) 网络。 部署流程分为四个步骤：基本、联合会网络设置、构造配置和可选组件。
 
-### <a name="basics"></a>Basics
+### <a name="basics"></a>基础
 
 在“基本信息”中，指定适用于任何部署的标准参数的值。 例如，订阅、资源组和基本的虚拟机属性。
 
-![Basics](./media/hyperledger-fabric-consortium-blockchain/basics.png)
+![基础](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名 | Description | 允许的值 |
 |---|---|---|
 **资源前缀** | 在部署过程中预配的资源的名称前缀 |6 个字符或更少 |
 **用户名** | 为此成员部署的每个虚拟机的管理员用户名 |1 - 64 个字符 |
@@ -89,7 +92,7 @@ ms.locfileid: "74325134"
 
 ![联盟网络设置](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名 | Description | 允许的值 |
 |---|---|---|
 **网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值。 |新建网络 <br/> 加入现有网络 |
 **HLF CA 密码** |用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含下列字符类型中的三项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
@@ -104,7 +107,7 @@ ms.locfileid: "74325134"
 
 ![Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名 | Description | 允许的值 |
 |---|---|---|
 **缩放类型** |以下两种部署类型之一：具有多个容器的单个虚拟机或横向扩展模型中的多个虚拟机。|单 VM 或多 VM |
 **VM 磁盘类型** |支持每个已部署的节点的存储类型。 <br/> 若要详细了解可用的磁盘类型，请访问[选择磁盘类型](../../virtual-machines/windows/disks-types.md)。|标准 SSD <br/> 高级·SSD |
@@ -113,7 +116,7 @@ ms.locfileid: "74325134"
 
 ![有关多 VM 部署的 Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名 | Description | 允许的值 |
 |---|---|---|
 **排序节点数** |将事务排序（整理）为块的节点数。 <br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
 **排序节点虚拟机大小** |用于网络中排序节点的虚拟机大小|标准 Bs、<br />标准 Ds、<br />标准 FS |
@@ -133,7 +136,7 @@ ms.locfileid: "74325134"
 
 在“摘要”边栏选项卡中，查看指定的输入并运行基本的部署前验证。
 
-![Summary](./media/hyperledger-fabric-consortium-blockchain/summary.png)
+![摘要](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
 查看法律和隐私条款，然后选择“购买”进行部署。 部署时间可能从几分钟到数十分钟不等，具体取决于正在预配的 VM 数量。
 

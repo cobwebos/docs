@@ -2,7 +2,7 @@
 title: Azure Batch 池创建事件 | Microsoft Docs
 description: 批处理池创建事件参考。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,19 +10,19 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 3f7b20cb915e0a969c6a400c07a094943f7f3a1b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: b804d828d276c39febf7fdd9347bce04a062676a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258446"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026749"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
  池创建后，会发出此事件。 日志内容将公开有关池的常规信息。 请注意，如果池的目标大小大于 0 个计算节点，则池调整大小启动事件会在此事件之后立即发生。
 
- 下面的示例显示了使用`CloudServiceConfiguration`属性创建的池的池创建事件的正文。
+ 下面的示例显示了使用 `CloudServiceConfiguration` 属性创建的池的池创建事件的正文。
 
 ```
 {
@@ -62,11 +62,11 @@ ms.locfileid: "70258446"
 |`id`|String|池的 ID。|
 |`displayName`|String|池的显示名称。|
 |`vmSize`|String|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机市场中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) 或[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
-|`imageType`|String|映像的部署方法。 支持的值`virtualMachineConfiguration`为或`cloudServiceConfiguration`|
+|`imageType`|String|映像的部署方法。 支持的值为 `virtualMachineConfiguration` 或 `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|复杂类型|池的云服务配置。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|复杂类型|池的虚拟机配置。|
 |[`networkConfiguration`](#bk_netconf)|复杂类型|池的网络配置。|
-|`resizeTimeout`|Time|为针对池的上一次调整大小操作指定的将计算节点分配到池的超时。  （创建池时的初始大小计为一次调整大小。）|
+|`resizeTimeout`|时间|为针对池的上一次调整大小操作指定的将计算节点分配到池的超时。  （创建池时的初始大小计为一次调整大小。）|
 |`targetDedicatedNodes`|Int32|为池请求的专用计算节点数。|
 |`targetLowPriorityNodes`|Int32|池请求的低优先级计算节点数。|
 |`enableAutoScale`|Bool|指定池大小是否随时间自动调整。|

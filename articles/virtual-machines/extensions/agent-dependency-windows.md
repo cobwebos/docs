@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 858aba2a45a6b8cf133e6f94bac45e721535ab25
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073270"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980153"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
 
@@ -82,7 +82,7 @@ ms.locfileid: "74073270"
 
 可以通过 Azure 资源管理器模板部署 Azure VM 扩展。 可以使用 Azure 资源管理器模板上一部分中详细介绍的 JSON 架构，在 Azure 资源管理器模板部署期间运行 Azure VM 依赖关系代理扩展。
 
-虚拟机扩展的 JSON 可以嵌套在虚拟机资源内。 也可以将其放置在资源管理器 JSON 模板的根级别或顶层。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/child-resource-name-type.md)。
+虚拟机扩展的 JSON 可以嵌套在虚拟机资源内。 也可以将其放置在资源管理器 JSON 模板的根级别或顶层。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
 下面的示例假定依赖关系代理扩展嵌套在虚拟机资源内。 在嵌套扩展资源时，将 JSON 放置在虚拟机的 `"resources": []` 对象中。
 

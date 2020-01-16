@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457389"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968270"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -185,7 +185,7 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 -   如果知道通过写入要扩展的最终文件大小，并且软件在文件的未写入结尾包含零时未出现兼容性问题，请提前设置文件大小，而不是让每次写入都成为扩展写入。
 -   使用正确的复制方法：
     -   使用 [AZCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 在两个文件共享之间传输任何内容。
-    -   在本地计算机上的文件共享之间使用 [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)。
+    -   在本地计算机上的文件共享之间使用 [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 或 Windows Server 2012 R2 的注意事项
 

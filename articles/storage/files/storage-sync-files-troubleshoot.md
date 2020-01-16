@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753908"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027780"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -182,8 +182,6 @@ Set-AzStorageSyncServerEndpoint `
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>服务器终结点的运行状态为“无活动”，已注册服务器边栏选项卡上的服务器状态为“脱机”  
 
 服务器终结点运行状态为“无活动”的意味着服务器终结点在过去两小时内未记录同步活动。
@@ -393,6 +391,22 @@ PerItemErrorCount: 1006.
 3. [确保 Azure 文件同步有权访问存储帐户。](#troubleshoot-rbac)
 4. [验证存储帐户上的防火墙和虚拟网络设置是否已正确配置（如果已启用）](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
+<a id="-2134351804"></a>**由于请求无权执行此操作，同步失败。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT（十进制）** | -2134351804 |
+| **错误字符串** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **所需的补救措施** | 是 |
+
+发生此错误的原因是 Azure 文件同步代理无权访问 Azure 文件共享。 可以执行以下步骤来排查此错误：
+
+1. [验证存储帐户是否存在。](#troubleshoot-storage-account)
+2. [确保 Azure 文件共享存在。](#troubleshoot-azure-file-share)
+3. [验证存储帐户上的防火墙和虚拟网络设置是否已正确配置（如果已启用）](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [确保 Azure 文件同步有权访问存储帐户。](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**无法解析所用的存储帐户名。**  
 
 | | |
@@ -495,7 +509,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **所需的补救措施** | 是 |
 
-当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../billing/billing-subscription-become-disable.md)。
+当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../cost-management-billing/manage/subscription-disabled.md)。
 
 <a id="-2134364052"></a>**为存储帐户配置了防火墙或虚拟网络。**  
 

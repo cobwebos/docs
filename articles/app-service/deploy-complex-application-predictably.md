@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422133"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967380"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -252,10 +252,10 @@ ms.locfileid: "75422133"
 ## <a name="more-resources"></a>更多资源
 * [Azure 资源管理器模板语言](../azure-resource-manager/templates/template-syntax.md)
 * [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
-* [Azure 资源管理器模板功能](../azure-resource-manager/resource-group-template-functions.md)
-* [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
+* [Azure 资源管理器模板功能](../azure-resource-manager/templates/template-functions.md)
+* [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure 中的资源组部署故障排除](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>后续步骤
 

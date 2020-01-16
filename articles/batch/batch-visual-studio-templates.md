@@ -3,7 +3,7 @@ title: 使用 Visual Studio 模板生成解决方案 - Azure Batch | Microsoft D
 description: 了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a8cbc630be684371d8dc7917870d581c9a072db5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094337"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029584"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -51,17 +51,17 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 
 ![显示客户端代码与 Batch 服务交互的示意图][diagram01]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用 Batch 模板，需要满足以下条件：
 
 * 安装有 Visual Studio 2015 的一台计算机。 Batch 模板当前仅支持 Visual Studio 2015。
-* Batch 模板, 可从[Visual Studio 库][vs_gallery]以 visual studio 扩展的形式提供。 有两种方式可获取模板：
+* Batch 模板，可从[Visual Studio 库][vs_gallery]以 visual studio 扩展的形式提供。 有两种方式可获取模板：
   
-  * 使用 Visual Studio 中的 "**扩展和更新**" 对话框安装模板 (有关详细信息, 请参阅[查找和使用 visual studio 扩展][vs_find_use_ext])。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
+  * 使用 Visual Studio 中的 "**扩展和更新**" 对话框安装模板（有关详细信息，请参阅[查找和使用 visual studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
     
     * 随附作业拆分器的 Azure Batch 作业管理器
     * Azure Batch 任务处理器
-  * 从 Visual Studio 的联机库下载模板：[Microsoft Azure Batch 项目模板][vs_gallery_templates]
+  * 从 Visual Studio 的联机库下载模板： [Microsoft Azure Batch 项目模板][vs_gallery_templates]
 * 如果打算使用[应用程序包](batch-application-packages.md)功能将作业管理器和任务处理器部署到 Batch 计算节点，需要将存储帐户链接到 Batch 帐户。
 
 ## <a name="preparation"></a>准备工作
@@ -89,7 +89,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 1. 在 Visual Studio 中打开现有解决方案。
 2. 在解决方案资源管理器中，右键单击解决方案，并单击“添加” > “新建项目”。
 3. 在“Visual C#”下单击“云”，并单击“随附作业拆分器的 Azure Batch 作业管理器”。
-4. 键入用于描述应用程序并将此项目标识为作业管理器的名称（例如“LitwareJobManager”）。
+4. 键入用于描述应用程序的名称，并将此项目标识为作业管理器（例如 "LitwareJobManager"）。
 5. 若要创建项目，请单击“确定”。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
 
@@ -97,7 +97,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 使用作业管理器模板创建项目时，它生成三组代码文件：
 
 * 主程序文件 (Program.cs)。 此文件包含程序入口点和顶层异常处理。 一般情况下，不需要修改此文件。
-* 框架目录。 此目录包含的文件负责处理作业管理器程序执行的样板工作，例如解压缩参数、在 Batch 作业中添加任务等。一般情况下，不需要修改这些文件。
+* 框架目录。 此文件包含负责作业管理器程序执行的 "样本" 工作的文件-将参数解包、将任务添加到批处理作业等。通常不需要修改这些文件。
 * 作业拆分器文件 (JobSplitter.cs)。 此处可供存放用于将作业拆分为多个任务的应用程序特定逻辑。
 
 当然，可以根据作业拆分逻辑的复杂性，视需要添加其他文件来支持作业拆分器代码。
@@ -122,8 +122,8 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 
 **标准 .NET 命令行项目文件**
 
-* `App.config`：标准 .NET 应用程序配置文件。
-* `Packages.config`：标准 NuGet 包依赖项文件。
+* `App.config`：标准的 .NET 应用程序配置文件。
+* `Packages.config`：标准的 NuGet 包依赖项文件。
 * `Program.cs`：包含程序入口点和顶层异常处理。
 
 ### <a name="implementing-the-job-splitter"></a>实现作业拆分器
@@ -156,7 +156,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 如果要修改模板的其他部分, 请确保熟悉批处理的工作方式, 并尝试使用几个[批处理代码示例][github_samples]。
+> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 如果要修改模板的其他部分，请确保熟悉批处理的工作方式，并尝试使用几个[批处理代码示例][github_samples]。
 > 
 > 
 
@@ -190,10 +190,10 @@ Split() 实现具有以下项的访问权限：
 
 使用作业管理器模板实现的作业管理器任务返回三个可能的退出代码：
 
-| 代码 | 描述 |
+| 代码 | Description |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
-| 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
+| 第 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
 | 2 |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
 
 在作业管理器任务失败的情况下，某些任务可能仍在错误发生之前就已添加到服务中。 这些任务将正常运行。 请参阅上面的“作业拆分器失败”，获取有关此代码路径的介绍。
@@ -258,7 +258,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 1. 在 Visual Studio 中打开现有解决方案。
 2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”，并单击“新建项目”。
 3. 在“Visual C#”下单击“云”，并单击“Azure Batch 任务处理器”。
-4. 键入用于描述应用程序并将此项目标识为任务处理器的名称（例如“LitwareTaskProcessor”）。
+4. 键入用于描述应用程序的名称，并将此项目标识为任务处理器（例如 "LitwareTaskProcessor"）。
 5. 若要创建项目，请单击“确定”。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
 
@@ -266,7 +266,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 使用任务处理器模板创建项目时，它生成三组代码文件：
 
 * 主程序文件 (Program.cs)。 此文件包含程序入口点和顶层异常处理。 一般情况下，不需要修改此文件。
-* 框架目录。 此目录包含的文件负责处理作业管理器程序执行的样板工作，例如解压缩参数、在 Batch 作业中添加任务等。一般情况下，不需要修改这些文件。
+* 框架目录。 此文件包含负责作业管理器程序执行的 "样本" 工作的文件-将参数解包、将任务添加到批处理作业等。通常不需要修改这些文件。
 * 任务处理器文件 (TaskProcessor.cs)。 此文件可供存放用于执行任务的应用程序特定逻辑（通常是通过向外调用现有的可执行文件）。 预处理和和后处理代码（例如下载额外数据或上传结果文件）也存放在此。
 
 当然，可以根据作业拆分逻辑的复杂性，视需要添加其他文件来支持任务处理器代码。
@@ -296,8 +296,8 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **标准 .NET 命令行项目文件**
 
-* `App.config`：标准 .NET 应用程序配置文件。
-* `Packages.config`：标准 NuGet 包依赖项文件。
+* `App.config`：标准的 .NET 应用程序配置文件。
+* `Packages.config`：标准的 NuGet 包依赖项文件。
 * `Program.cs`：包含程序入口点和顶层异常处理。
 
 ## <a name="implementing-the-task-processor"></a>实现任务处理器
@@ -368,10 +368,10 @@ Run() 实现具有以下项的访问权限：
 
 使用任务处理器模板实现的任务处理器任务返回三个可能的退出代码：
 
-| 代码 | 描述 |
+| 代码 | Description |
 | --- | --- |
 | [ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
-| 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
+| 第 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
 | 2 |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
 
 > [!NOTE]
@@ -409,7 +409,7 @@ job.CommonEnvironmentSettings = new [] {
 * Batch 帐户 URL
 * Batch 帐户密钥
 
-Batch 服务提供一个简单的机制, 用于通过使用`EnvironmentSettings` [microsoft.azure.batch.jobmanagertask][net_jobmanagertask]中的属性将环境设置传递到作业管理器任务。
+Batch 服务提供一个简单的机制，用于通过使用[microsoft.azure.batch.jobmanagertask][net_jobmanagertask]中的 `EnvironmentSettings` 属性将环境设置传递到作业管理器任务。
 
 例如，若要获取 Batch 帐户的 `BatchClient` 实例，可以环境变量的形式从客户端代码传递 Batch 帐户的 URL 和共享密钥凭据。 同样，若要访问链接到 Batch 帐户的存储帐户，可使用环境变量的形式传递存储帐户名和存储帐户密钥。
 

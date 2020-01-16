@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1799acdc7a6969d88936705006d67a6ea832fd81
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300273"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029952"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -21,23 +21,23 @@ ms.locfileid: "72300273"
 
 导入/导出服务仅支持将 Azure 文件导入到 Azure 存储。 不支持导出 Azure 文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在创建导入作业来将数据传输到 Azure 文件之前，请仔细查看并完成以下先决条件列表。 必须：
 
 - 拥有可以用于导入/导出服务的活动 Azure 订阅。
-- 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-quickstart-create-account.md)。
-- 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。 
+- 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
+- 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
-- 在 Windows 系统上[下载 WAImportExport 版本 2](https://aka.ms/waiev2)。 解压缩到默认文件夹 `waimportexport`。 例如， `C:\WaImportExport` 。
-- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 `adbops@microsoft.com` Azure Data Box 运营团队。  
+- 在 Windows 系统上[下载 WAImportExport 版本 2](https://aka.ms/waiev2)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport` 。
+- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 `adbops@microsoft.com`Azure Data Box 运营团队。  
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
     - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
     - 如果没有承运商帐户，请转到：
-        - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或 
+        - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或
         - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
- 
+
 
 
 ## <a name="step-1-prepare-the-drives"></a>步骤 1：准备驱动器
@@ -50,28 +50,28 @@ ms.locfileid: "72300273"
 2. 在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
 3. 修改工具所在的根文件夹中的 *dataset.csv* 文件。 根据是要导入文件还是文件夹还是同时导入两者，在 *dataset.csv* 文件中添加类似于以下示例的条目。  
 
-   - **导入文件**：在以下示例中，要复制的数据位于 C: 驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 *MyAzureFileshare1* 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
+   - **导入文件**：在下面的示例中，要复制的数据驻留在 F：驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 *MyAzureFileshare1* 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-    
+
        ```
    - **导入文件夹**：*MyFolder2* 下的所有文件和文件夹将以递归方式复制到该文件共享。 文件夹结构保持不变。
 
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
-     可以在同一文件中创建与导入的文件夹或文件对应的多个条目。 
+     可以在同一文件中创建与导入的文件夹或文件对应的多个条目。
 
        ```
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
      详细了解如何[准备数据集 CSV 文件](storage-import-export-tool-preparing-hard-drives-import.md)。
-    
+
 
 4. 修改工具所在的根文件夹中的 *driveset.csv* 文件。 在 *driveset.csv* 文件中添加类似于以下示例的条目。 此驱动器集文件包含磁盘列表和对应的驱动器号，因此，工具可以正确地选取要准备的磁盘列表。
 
@@ -83,7 +83,7 @@ ms.locfileid: "72300273"
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
-    
+
    - **对于已加密的磁盘**：请指定 *AlreadyEncrypted* 并提供 BitLocker 密钥。
 
        ```
@@ -91,7 +91,7 @@ ms.locfileid: "72300273"
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     可以在同一文件中创建与多个驱动器对应的多个条目。 详细了解如何[准备驱动器集 CSV 文件](storage-import-export-tool-preparing-hard-drives-import.md)。 
+     可以在同一文件中创建与多个驱动器对应的多个条目。 详细了解如何[准备驱动器集 CSV 文件](storage-import-export-tool-preparing-hard-drives-import.md)。
 
 5. 使用 `PrepImport` 选项将数据复制到磁盘驱动器并做好准备。 为了使第一个复制会话通过新的复制会话复制目录和/或文件，请运行以下命令：
 
@@ -100,11 +100,11 @@ ms.locfileid: "72300273"
        ```
 
    下面显示了一个导入示例。
-  
+
        ```
        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
        ```
- 
+
 6. 每次运行该命令行时，都会使用通过 `/j:` 参数提供名称创建一个日志文件。 你准备的每个驱动器都有一个在创建导入作业时必须上传的日志文件。 不会处理没有日志文件的驱动器。
 
     > [!IMPORTANT]
@@ -112,11 +112,11 @@ ms.locfileid: "72300273"
 
 有关更多示例，请转到[日志文件示例](#samples-for-journal-files)。
 
-## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业 
+## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 
 在 Azure 门户中执行以下步骤来创建导入作业。
 1. 登录到 https://portal.azure.com/ 。
-2. 转到“所有服务”>“存储”>“导入/导出作业”。 
+2. 转到“所有服务”>“存储”>“导入/导出作业”。
 
     ![转到“导入/导出”](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
@@ -129,32 +129,32 @@ ms.locfileid: "72300273"
     - 选择“导入到 Azure”。
     - 输入导入作业的描述性名称。 在作业进行过程中以及作业完成后，可以使用此名称来跟踪作业。
         -  此名称只能包含小写字母、数字、连字符和下划线。
-        -  此名称必须以字母开头，并且不得包含空格。 
+        -  此名称必须以字母开头，并且不得包含空格。
     - 选择一个订阅。
-    - 选一个择资源组。 
+    - 选一个择资源组。
 
         ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. 在“作业详细信息”中：
-    
-    - 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。 
-    - 选择要将数据导入到的存储帐户。 
+
+    - 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。
+    - 选择要将数据导入到的存储帐户。
     - 放置位置会根据选定存储帐户所属的区域自动进行填充。
-   
+
        ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
 4. 在“回寄信息”中：
 
-    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系，并 `adbops@microsoft.com`，并提供有关计划使用的承运人的信息。
-    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
+    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系，以了解有关你计划使用的运营商的信息 `adbops@microsoft.com`。
+    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
-        > [!TIP] 
+        > [!TIP]
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
        ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-   
+
 5. 在“摘要”中：
 
     - 提供用来将磁盘寄回 Azure 的 Azure 数据中心送货地址。 请确保寄送标签上标明了作业名称和完整地址。
@@ -162,7 +162,7 @@ ms.locfileid: "72300273"
 
         ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>步骤 3：将驱动器寄送到 Azure 数据中心 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>步骤 3：将驱动器寄送到 Azure 数据中心
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -170,13 +170,13 @@ ms.locfileid: "72300273"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证 Azure 中的数据上传
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 
 ## <a name="samples-for-journal-files"></a>日志文件示例
 
-若要**添加更多驱动器**，请创建一个新的驱动器集文件并运行以下命令。 
+若要**添加更多驱动器**，请创建一个新的驱动器集文件并运行以下命令。
 
 如果后续复制会话中的磁盘驱动器与 *InitialDriveset .csv* 文件中指定的不同，请指定一个新的驱动器集 *.csv* 文件并将其提供为参数 `AdditionalDriveSet` 的值。 使用**同一日记文件**的名称并提供**新的会话 ID**。 AdditionalDriveset CSV 文件的格式与 InitialDriveSet 的格式相同。
 
@@ -209,5 +209,3 @@ ms.locfileid: "72300273"
 
 * [查看作业和驱动器状态](storage-import-export-view-drive-status.md)
 * [查看导入/导出要求](storage-import-export-requirements.md)
-
-

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756877"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977541"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的定价模型 
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 中的定价模型在所有 API 中都是一致的。 有关详�
 
 Azure Cosmos DB 免费为开发人员提供多个选项。 这些选项包括：
 
-* **Azure 免费帐户**： azure 提供一个[免费层](https://azure.microsoft.com/free/)，可为你提供 $200 （在 Azure 信用额度中的前30天）和有限数量的免费服务（12个月）。 有关详细信息，请参阅 [Azure 免费帐户](../billing/billing-avoid-charges-free-account.md)。 Azure Cosmos DB 是 Azure 免费帐户的一部分。 特别对于 Azure Cosmos DB，该免费帐户提供 5 GB 的存储空间和 400 RU 的全年预配吞吐量。 
+* **Azure 免费帐户**： azure 提供一个[免费层](https://azure.microsoft.com/free/)，可为你提供 $200 （在 Azure 信用额度中的前30天）和有限数量的免费服务（12个月）。 有关详细信息，请参阅 [Azure 免费帐户](../cost-management-billing/manage/avoid-charges-free-account.md)。 Azure Cosmos DB 是 Azure 免费帐户的一部分。 特别对于 Azure Cosmos DB，该免费帐户提供 5 GB 的存储和 400 RU 的全年预配吞吐量。 
 
 * **免费试用 Azure Cosmos DB**： Azure Cosmos DB 使用免费帐户的试用 Azure Cosmos DB 提供限时的体验。 可以通过使用快速入门和教程创建 Azure Cosmos DB 帐户、创建数据库和集合，以及运行示例应用程序。 可以运行示例应用程序，而无需订阅 Azure 帐户或使用信用卡。 [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 提供一个月的 Azure Cosmos DB 服务，并且可以任意次数更新帐户。
 
@@ -60,7 +60,7 @@ Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md)有助于通过预
 可在以下文章中了解更多关于优化 Azure Cosmos DB 资源成本的信息：
 
 * 了解[开发和测试优化](optimize-dev-test.md)
-* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)

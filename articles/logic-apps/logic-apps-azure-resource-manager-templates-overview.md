@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428808"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972683"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板自动部署 Azure 逻辑应用
 
 准备好自动创建和部署逻辑应用时，可以将逻辑应用的基础工作流定义扩展到[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)。 此模板定义了用于预配和部署逻辑应用的基础结构、资源、参数和其他信息。 通过为不同于部署的值（也称为*参数*化）定义参数，你可以根据不同的部署需求重复且一致地部署逻辑应用。
 
-例如，如果部署到开发、测试和生产环境，则可能对每个环境使用不同的连接字符串。 可以声明接受不同连接字符串的模板参数，然后将这些字符串存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，就可以更改这些值，而无需更新和重新部署模板。 对于具有敏感参数值或必须进行保护的参数值（例如密码和机密）的情况，可以将这些值存储在[Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)中，并让参数文件检索这些值。 但是，在这些情况下，你将重新部署以检索当前值。
+例如，如果部署到开发、测试和生产环境，则可能对每个环境使用不同的连接字符串。 可以声明接受不同连接字符串的模板参数，然后将这些字符串存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，就可以更改这些值，而无需更新和重新部署模板。 对于具有敏感参数值或必须进行保护的参数值（例如密码和机密）的情况，可以将这些值存储在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中，并让参数文件检索这些值。 但是，在这些情况下，你将重新部署以检索当前值。
 
 本概述介绍了包含逻辑应用工作流定义的资源管理器模板中的属性。 模板和工作流定义都使用 JSON 语法，但是存在一些差异，因为工作流定义也遵循[工作流定义语言架构](../logic-apps/logic-apps-workflow-definition-language.md)。 例如，模板表达式和工作流定义表达式在[引用参数](#parameter-references)的方式与它们可以接受的值之间有所不同。
 
@@ -31,8 +31,8 @@ ms.locfileid: "75428808"
 有关资源管理器模板的详细信息，请参阅以下主题：
 
 * [Azure 资源管理器模板结构和语法](../azure-resource-manager/templates/template-syntax.md)
-* [Azure 资源管理器模板最佳做法](../azure-resource-manager/template-best-practices.md)
-* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates-cloud-consistency.md)
+* [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/template-best-practices.md)
+* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 有关示例逻辑应用模板，请参阅以下示例：
 
@@ -149,7 +149,7 @@ ms.locfileid: "75428808"
 
 * [模板参数的安全建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [安全模板参数](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 其他模板对象通常引用模板参数，以便它们可以使用通过模板参数传递的值，例如：
 
@@ -173,7 +173,7 @@ ms.locfileid: "75428808"
 
   * [安全模板参数](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * 若要区分工作流定义参数名称中的模板参数名称，可以使用描述性模板参数名称，例如： `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ ms.locfileid: "75428808"
 * 逻辑应用模板文件名： **<*逻辑-应用名称*> json**
 * 参数文件名： **<*逻辑--name***
 
-下面是参数文件中的结构，其中包括一个用于将[安全参数值与 Azure Key Vault 传递](../azure-resource-manager/resource-manager-keyvault-parameter.md)的密钥保管库参考：
+下面是参数文件中的结构，其中包括一个用于将[安全参数值与 Azure Key Vault 传递](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库参考：
 
 ```json
 {
@@ -409,7 +409,7 @@ ms.locfileid: "75428808"
 
 对于在运行时处理敏感信息、密码、访问密钥或机密的工作流定义参数，请声明或编辑参数以使用 `securestring` 或 `secureobject` 参数类型。 可以在工作流定义中的整个和内引用此参数。 在模板的顶级，声明一个具有相同类型的参数，以便在部署时处理此信息。
 
-若要设置工作流定义参数的值，请使用工作流定义*之外*但仍在逻辑应用资源定义*中*的 `parameters` 对象来引用模板参数。 最后，若要在部署时将值传递给模板参数，请将该值存储在[Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)中，并在部署过程中模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。
+若要设置工作流定义参数的值，请使用工作流定义*之外*但仍在逻辑应用资源定义*中*的 `parameters` 对象来引用模板参数。 最后，若要在部署时将值传递给模板参数，请将该值存储在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中，并在部署过程中模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。
 
 此示例模板演示如何通过在必要时定义受保护的参数来完成这些任务，以便可以将其值存储在 Azure Key Vault 中：
 
@@ -558,7 +558,7 @@ ms.locfileid: "75428808"
 
   * [工作流定义中参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [通过 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 有关工作流定义参数的详细信息，请参阅[参数-工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md#parameters)。
 
@@ -652,7 +652,7 @@ ms.locfileid: "75428808"
 
 * 在工作流定义*之外*，但仍在逻辑应用的资源定义*中*，另一个 `parameters` 对象通过引用相应的模板参数来设置要在运行时为 `$connections` 参数使用的值。 这些值使用模板表达式来引用资源，这些资源安全地将连接的元数据存储在逻辑应用中。
 
-  例如，元数据可以包含连接字符串和访问令牌，你可以将其存储在[Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)中。 若要将这些值传递给模板参数，请在部署时在模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。 有关引用参数之间的差异的详细信息，请参阅本主题后面的对[参数的引用](#parameter-references)。
+  例如，元数据可以包含连接字符串和访问令牌，你可以将其存储在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要将这些值传递给模板参数，请在部署时在模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。 有关引用参数之间的差异的详细信息，请参阅本主题后面的对[参数的引用](#parameter-references)。
 
   通过 Azure 门户或 Visual Studio 在代码视图中打开逻辑应用的工作流定义时，`$connections` 对象会出现在工作流定义之外但处于同一级别。 在手动更新工作流定义时，代码视图中的这种排序使这些参数更易于引用：
 
@@ -744,7 +744,7 @@ ms.locfileid: "75428808"
 
 ### <a name="secure-connection-parameters"></a>安全连接参数
 
-对于处理敏感信息、密码、访问密钥或机密的连接参数，连接的资源定义包括以名称-值对格式指定这些值的 `parameterValues` 对象。 若要隐藏此信息，可以使用 `securestring` 或 `secureobject` 参数类型声明或编辑这些值的模板参数。 然后，你可以将该信息存储在[Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)中。 若要将这些值传递给模板参数，请在部署时在模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。
+对于处理敏感信息、密码、访问密钥或机密的连接参数，连接的资源定义包括以名称-值对格式指定这些值的 `parameterValues` 对象。 若要隐藏此信息，可以使用 `securestring` 或 `secureobject` 参数类型声明或编辑这些值的模板参数。 然后，你可以将该信息存储在[Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)中。 若要将这些值传递给模板参数，请在部署时在模板使用的[参数文件](#template-parameter-files)中引用该密钥保管库。
 
 下面是一个示例，提供 Azure Blob 存储连接的帐户名称和访问密钥：
 
@@ -1011,7 +1011,7 @@ ms.locfileid: "75428808"
 
 ## <a name="references-to-parameters"></a>对参数的引用
 
-若要引用模板参数，可以将模板表达式用于在部署时计算的[模板函数](../azure-resource-manager/resource-group-template-functions.md)。 模板表达式使用方括号（ **[]** ）：
+若要引用模板参数，可以将模板表达式用于在部署时计算的[模板函数](../azure-resource-manager/templates/template-functions.md)。 模板表达式使用方括号（ **[]** ）：
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

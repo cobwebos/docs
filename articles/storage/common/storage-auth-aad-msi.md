@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c0b07cc001f65ff369f87954779634b8b49ba4ec
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892045"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965766"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源的托管标识授予对 blob 和队列数据的访问权限
 
@@ -89,11 +89,11 @@ az ad sp create-for-rbac \
 > [!IMPORTANT]
 > RBAC 角色分配可能需要几分钟才能传播。
 
-#### <a name="set-environment-variables"></a>设置环境变量。
+#### <a name="set-environment-variables"></a>设置环境变量
 
 Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
 
-|环境变量|Value
+|环境变量|值
 |-|-
 |`AZURE_CLIENT_ID`|服务主体的应用 ID
 |`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID
@@ -164,4 +164,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
 - [将 Azure AD 用于存储应用程序](storage-auth-aad-app.md)。
-- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](storage-auth-aad-script.md)。
+- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](authorize-active-directory-powershell.md)。

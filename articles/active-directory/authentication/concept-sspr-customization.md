@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848589"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979459"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -43,9 +43,9 @@ ms.locfileid: "74848589"
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
-1. 如果已分配“密码管理员”角色，则会通知充当此角色的管理员。
-2. 如果未分配密码管理员，则会通知充当“用户管理员”角色的管理员。
-3. 如果上述两个角色都未分配，则会通知“全局管理员”。
+1. 如果分配了**支持人员管理员**角色或**密码管理员**角色，则会通知具有这些角色的管理员。
+1. 如果未分配任何支持人员管理员或密码管理员，则会通知具有 "**用户管理员**" 角色的管理员。
+1. 如果以前的角色都未分配，则会通知**全局管理员**。
 
 在所有情况下，最多会向 100 个收件人发送通知。
 
@@ -90,11 +90,11 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)

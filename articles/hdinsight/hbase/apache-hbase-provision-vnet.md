@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552298"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972796"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "75552298"
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>在虚拟网络中创建 Apache HBase 群集
 
-在本部分中，通过 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)在 Azure 虚拟网络中使用从属 Azure 存储帐户创建基于 Linux 的 Apache HBase 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用模板在 HDInsight 中创建 Apache Hadoop 群集的详细信息，请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+在本部分中，通过 [Azure 资源管理器模板](../../azure-resource-manager/templates/deploy-powershell.md)在 Azure 虚拟网络中使用从属 Azure 存储帐户创建基于 Linux 的 Apache HBase 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用模板在 HDInsight 中创建 Apache Hadoop 群集的详细信息，请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]  
 > 某些属性已在模板中硬编码。 例如：

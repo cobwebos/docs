@@ -3,16 +3,16 @@ title: 渲染应用程序 - Azure Batch
 description: 预安装的 Batch 渲染应用程序
 services: batch
 ms.service: batch
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30a365b36645dfe79f35b4bb889c0a06535a4c73
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 367f7655c32c30f11b37c86c098d76e146fec69c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212726"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026568"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "71212726"
 
 某些应用程序仅支持 Windows，但大多数应用程序在 Windows 和 Linux 上都受支持。
 
-## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 上的应用程序（渲染图像）
+## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 呈现图像上的应用程序
 
 以下列表适用于 CentOS 7.6，版本1.1.6 呈现图像。
 
@@ -37,7 +37,7 @@ ms.locfileid: "71212726"
 * Blender (2.68)
 * Blender （2.8）
 
-## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新的 Windows Server 2016 上的应用程序（渲染图像）
+## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新 Windows Server 2016 呈现图像上的应用程序
 
 以下列表适用于 Windows Server 2016，版本1.3.8 呈现图像。
 
@@ -64,11 +64,11 @@ ms.locfileid: "71212726"
 * AZ 10
 
 > [!IMPORTANT]
-> 若要在[Azure Batch 扩展模板](https://github.com/Azure/batch-extension-templates)之外运行具有 Maya 的 V-Ray， `vrayses.exe`请在运行该呈现之前开始。 若要在模板之外启动 vrayses，可以使用以下命令`%MAYA_2017%\vray\bin\vrayses.exe"`。
+> 若要在[Azure Batch 扩展模板](https://github.com/Azure/batch-extension-templates)之外运行具有 Maya 的 ""，请在运行呈现器之前开始 `vrayses.exe`。 若要在模板之外启动 vrayses，可以使用以下命令 `%MAYA_2017%\vray\bin\vrayses.exe"`。
 >
 > 有关示例，请参阅 GitHub 上的[Maya 和上端 Ray 模板](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json)的启动任务。
 
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>以前的 Windows Server 2016 上的应用程序（渲染图像）
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>以前的 Windows Server 2016 呈现图像上的应用程序
 
 以下列表适用于 Windows Server 2016，版本1.3.7 呈现图像。
 
@@ -80,14 +80,14 @@ ms.locfileid: "71212726"
 * Autodesk Arnold for Maya 2018（Arnold 版本 5.2.0.1）MtoA-3.1.0.1-2018
 * Autodesk Arnold 3ds Max 2018 （Arnold 版本5.0.2.4）（版本1.2.926）
 * Autodesk Arnold 3ds Max 2019 （Arnold 版本5.0.2.4）（版本1.2.926）
-* Chaos Group V-Ray for Maya 2018（版本 3.52.03）
-* Chaos Group V-Ray for 3ds Max 2018（版本 3.60.02）
-* Chaos Group V-Ray for Maya 2019（版本 3.52.03）
-* Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）
+* Maya 2018 （版本3.52.03）的混乱组 V-Ray
+* 3ds Max 2018 （版本3.60.02）的混乱组 V-射线
+* Maya 2019 （版本3.52.03）的混乱组 V-Ray
+* 3ds Max 2019 （版本4.10.01）的混乱组 V-射线
 * Blender (2.79)
 
 > [!NOTE]
-> Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）引入了对 V-ray 的中断性变更。 若要使用以前版本（版本 3.60.02），请使用 Windows Server 2016 版本 1.3.2（渲染节点）。
+> 3ds Max 2019 （版本4.10.01）的混乱组 V-将重大更改引入了对双光线的重大更改。 若要使用以前的版本（版本3.60.02），请使用 Windows Server 2016，版本1.3.2 呈现节点。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,18 +1,18 @@
 ---
 title: 最佳做法-Azure Batch
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用的技巧。
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535660"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026147"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳实践
 
@@ -67,7 +67,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 
 在第一次分配或后续调整大小的过程中，可能会发生池分配失败。 这可能是由于区域中的临时容量消耗或批处理依赖的其他 Azure 服务中的故障造成的。 核心配额并不是一个保证，而是限制。
 
-### <a name="unplanned-downtime"></a>计划外停机
+### <a name="unplanned-downtime"></a>计划外故障时间
 
 在 Azure 中，批处理池可能会遇到停机事件。 在为批处理规划和开发方案或工作流时，必须记住这一点。
 
@@ -109,7 +109,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 - **在集合中提交大量任务。**  
     可以单独或按集合提交任务。 在对任务进行大容量提交时，每次在 100[集合](https://docs.microsoft.com/rest/api/batchservice/task/addcollection)中提交任务，以减少开销和提交时间。
 
-### <a name="task-execution"></a>任务执行
+### <a name="task-execution"></a>执行任务
 
 - **选择每个节点的最大任务数**  
     Batch 支持节点上的需要超额订阅任务（运行的任务比节点具有多个内核的多个任务）。 你需要确保任务 "适合" 到池中的节点。 例如，如果你试图计划八个任务，每个任务都消耗25% 的 CPU 使用率，则你可能会遇到性能下降的 `maxTasksPerNode = 8`情况。
@@ -147,7 +147,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 - **如果存在问题，则收集批处理代理日志**  
     如果你注意到某个节点的行为涉及到节点上运行的任务，则建议在解除相关节点的分配之前收集批处理代理日志。 可以使用 "上载批处理服务日志" API 收集批处理代理日志。 这些日志可提供给 Microsoft 的支持票证的一部分，并可帮助解决问题和解决问题。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 ### <a name="security-isolation"></a>安全隔离
 

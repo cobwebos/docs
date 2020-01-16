@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832199"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028508"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存简介
 
@@ -56,14 +56,16 @@ ms.locfileid: "75832199"
 
 虽然增量扩充旨在检测并响应不需要干预的更改，但有一些参数可用于重写默认行为：
 
-+ 挂起缓存
++ 设置新文档的优先级
 + 绕过技能组合检查
 + 绕过数据源检查
 + 强制技能组合评估
 
-### <a name="suspend-caching"></a>挂起缓存
+### <a name="prioritize-new-documents"></a>设置新文档的优先级
 
-可以通过将缓存中的 `enableReprocessing` 属性设置为 `false` 来暂停增量扩充，以后可以通过将此属性设置为 `true` 来恢复增量扩充并促成最终一致性。 如果你的优先事务是为新文档编制索引而不是确保文档数据集的一致性，则这种控制度特别有用。
+设置 `enableReprocessing` 属性，以控制对缓存中已表示的传入文档进行处理。 如果 `true` （默认值），则重新运行索引器时，将重新处理缓存中已有的文档，前提是你的技能更新会影响该文档。 
+
+当 `false`时，不会重新处理现有文档，从而对现有内容的新的传入内容进行排序。 只应将 `enableReprocessing` 设置为暂时 `false`。 若要确保语料库之间的一致性，应在大多数时间 `true` `enableReprocessing`，确保所有文档（包括新的和现有的）都按照当前技能组合定义有效。
 
 ### <a name="bypass-skillset-evaluation"></a>绕过技能组合评估
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>强制技能组合评估
 
-缓存的目的是为了避免不必要的处理，但假设您已更改了索引器未检测到的技能或技能组合（例如，对自定义技能组合之类的外部组件进行更改）。 
+缓存的目的是为了避免不必要的处理，但假设您对索引器未检测到的技能进行了更改（例如，在外部代码中更改了某些内容，如自定义技能）。
 
-在这种情况下，您可以使用[重置技能](preview-api-resetskills.md)API 来强制重新处理特定技能，包括依赖于该技能的输出的任何下游技能。 此 API 接受 POST 请求，其中包含应失效并重新运行的技能列表。 重置技能后，运行索引器以执行操作。
+在这种情况下，您可以使用[重置技能](preview-api-resetskills.md)来强制执行特定技能的重新处理，包括依赖于该技能的输出的任何下游技能。 此 API 接受 POST 请求，其中包含应失效并标记为要重新处理的技能列表。 重置技能后，运行索引器以调用管道。
 
 ## <a name="change-detection"></a>更改检测
 
@@ -158,7 +160,7 @@ REST `api-version=2019-05-06-Preview` 为增量扩充提供 Api，并将其添�
 
 ### <a name="datasources"></a>Datasources
 
-+ 某些索引器通过查询检索数据。 对于检索数据的查询，[更新数据源](https://docs.microsoft.com/rest/api/searchservice/update-datasource)支持 `ignoreResetRequirement`上的新参数，在更新操作不应使缓存失效时，应将其设置为 `true`。
++ 某些索引器通过查询检索数据。 对于检索数据的查询，[更新数据源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支持 `ignoreResetRequirement`上的新参数，在更新操作不应使缓存失效时，应将其设置为 `true`。
 
 使用 `ignoreResetRequirement` 谨慎，因为这可能会导致无法轻易检测到的数据不一致。
 

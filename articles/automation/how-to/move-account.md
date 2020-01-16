@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849575"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969830"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>将你的 Azure 自动化帐户移到另一个订阅
 
-Azure 使你能够将某些资源移动到新的资源组或订阅。 可以通过 Azure 门户、PowerShell、Azure CLI 或 REST API 移动资源。 若要了解有关此过程的详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/resource-group-move-resources.md)。
+Azure 使你能够将某些资源移动到新的资源组或订阅。 可以通过 Azure 门户、PowerShell、Azure CLI 或 REST API 移动资源。 若要了解有关此过程的详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 Azure 自动化帐户是可移动的资源之一。 在本文中，你将了解将自动化帐户移动到其他资源或订阅的步骤。
 
@@ -147,4 +147,4 @@ Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_V
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何在 Azure 中移动资源，请参阅[在 azure 中移动资源](../../azure-resource-manager/move-support-resources.md)。
+若要详细了解如何在 Azure 中移动资源，请参阅[在 azure 中移动资源](../../azure-resource-manager/management/move-support-resources.md)。

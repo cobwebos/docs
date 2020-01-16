@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425373"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979928"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -126,7 +126,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 1. 创建安全审核事件的目标资源。
 
-    * **Azure 存储** - [使用 Azure PowerShell 创建存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Azure 存储** - [使用 Azure PowerShell 创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell)
     * **Azure 事件中心** - [使用 Azure PowerShell 创建事件中心](../event-hubs/event-hubs-quickstart-powershell.md)。 你可能还需要使用[AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) cmdlet 来创建授权规则，该规则向事件中心*命名空间*授予 Azure AD DS 权限。 授权规则必须包括 "**管理**"、"**侦听**" 和 "**发送**" 权限。
 
         > [!IMPORTANT]

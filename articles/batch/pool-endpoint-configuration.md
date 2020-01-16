@@ -2,18 +2,18 @@
 title: 在 Azure Batch 池中配置节点终结点 | Microsoft Docs
 description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322472"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029465"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 
@@ -22,7 +22,7 @@ ms.locfileid: "68322472"
 在环境中，可能需要限制或禁用这些默认的外部访问设置。 使用 Batch API 设置 [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) 属性，可以修改这些设置。 
 
 ## <a name="about-the-pool-endpoint-configuration"></a>关于池终结点配置
-终结点配置由一个或多个前端端口的[网络地址转换 (NAT) 池](/rest/api/batchservice/pool/add#inboundnatpool)构成。 （请不要将 NAT 池与计算节点的 Batch 池相混淆。）将每个 NAT 池设置为覆盖此池的计算节点上的默认连接设置。 
+终结点配置由一个或多个前端端口的[网络地址转换 (NAT) 池](/rest/api/batchservice/pool/add#inboundnatpool)构成。 （请勿将 NAT 池与计算节点的 Batch 池混淆。）设置每个 NAT 池以替代池计算节点上的默认连接设置。 
 
 每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[服务标记](../virtual-network/security-overview.md#service-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
 
@@ -31,7 +31,7 @@ ms.locfileid: "68322472"
 * 配置 NAT 池时，可以配置多个 NSG 规则。 将按优先顺序检查规则。 一旦应用某个规则，不再检查其他规则的匹配情况。
 
 
-## <a name="example-deny-all-rdp-traffic"></a>例如：拒绝所有 RDP 流量
+## <a name="example-deny-all-rdp-traffic"></a>示例：拒绝所有 RDP 流量
 
 以下 C# 代码片段演示如何在 Windows 池中的计算节点上配置 RDP 终结点，用于拒绝所有网络流量。 该终结点使用 *60000 - 60099* 范围内的端口的前端池。 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>例如：拒绝来自 Internet 的所有 SSH 流量
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>示例：拒绝来自 Internet 的所有 SSH 流量
 
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，用于拒绝所有 Internet 流量。 该终结点使用 *4000 - 4100* 范围内的端口的前端池。 
 
@@ -74,7 +74,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>例如：允许来自特定 IP 地址的 RDP 流量
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>示例：允许来自特定 IP 地址的 RDP 流量
 
 以下 C# 代码片段演示如何在 Windows 池中的计算节点上配置 RDP 终结点，以便仅允许来自 IP 地址 *198.51.100.7* 的 RDP 访问。 第二条 NSG 规则拒绝与该 IP 地址不匹配的流量。
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>例如：允许来自特定子网的 SSH 流量
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>示例：允许来自特定子网的 SSH 流量
 
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，以便仅允许来自子网 *192.168.1.0/24* 的访问。 第二条 NSG 规则拒绝与该子网不匹配的流量。
 

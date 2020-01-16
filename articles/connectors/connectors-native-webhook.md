@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888118"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030080"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP webhook 创建和运行自动基于事件的工作流
 
@@ -36,7 +36,16 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 例如，Office 365 Outlook connector 的 "[**发送审批电子邮件**](connectors-create-api-office365-outlook.md)" 操作是遵循此模式的 webhook 操作示例。 可以通过使用 webhook 操作将此模式扩展到任何服务。
 
 > [!NOTE]
-> 逻辑应用在接收回 HTTP webhook 触发器或操作的回调时强制执行传输层安全性（TLS）1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。
+> 逻辑应用在接收回 HTTP webhook 触发器或操作的回调时强制执行传输层安全性（TLS）1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。 对于传入调用，以下是受支持的密码套件：
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 有关详细信息，请参阅以下主题：
 

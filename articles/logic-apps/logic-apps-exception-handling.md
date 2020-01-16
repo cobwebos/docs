@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912045"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965938"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -249,7 +249,7 @@ ms.locfileid: "75912045"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>评估具有作用域的操作及其结果
 
-与在使用 `runAfter` 属性执行单独操作后运行步骤类似，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。 
+与在使用 `runAfter` 属性执行单独操作后运行步骤类似，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
 若要检查作用域的状态，可以使用与用于检查逻辑应用的运行状态相同的条件，如 `Succeeded`、`Failed`等。
 
@@ -267,7 +267,7 @@ ms.locfileid: "75912045"
 
 [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)函数提供有关作用域中所有操作的结果的上下文。 `result()` 函数接受一个参数（作用域的名称），并返回一个数组，该数组包含该范围内的所有操作结果。 这些操作对象包含与 `actions()` 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 Id 和输出。 若要为作用域内任何失败的操作发送上下文，可以轻松地将 `@result()` 表达式与 `runAfter` 属性配对。
 
-若要为具有 `Failed` 结果的作用域中的每个操作运行操作，并将结果数组筛选为失败的操作，可以将 `@result()` 表达式与[**筛选数组**](../connectors/connectors-native-query.md)操作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 您可以使用筛选的结果数组，并使用 `For_each` 循环对每个失败执行操作。
+若要为具有 `Failed` 结果的作用域中的每个操作运行操作，并将结果数组筛选为失败的操作，可以将 `@result()` 表达式与[**筛选数组**](logic-apps-perform-data-operations.md#filter-array-action)操作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 您可以使用筛选的结果数组，并使用 `For_each` 循环对每个失败执行操作。
 
 以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
 

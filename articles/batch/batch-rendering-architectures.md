@@ -5,16 +5,16 @@ services: batch
 ms.service: batch
 author: davefellows
 manager: gwallace
-ms.author: lahugh
+ms.author: jushiman
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a04f59983aca4b7db1a58ab4e8b8a2da47a52783
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026308"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 渲染的参考体系结构
 
@@ -28,7 +28,7 @@ ms.locfileid: "68323111"
 
 * **网络** - 本地：Azure ExpressRoute 或 VPN。 Azure：Azure VNet。
 
-* **存储** - 输入和输出文件：使用 Azure VM 的 NFS 或 CFS，通过 Azure 文件同步或 RSync 与本地存储同步。 也可使用以下命令：使用 NFS 从本地 NAS 设备输入或输出文件的 Avere vFXT。
+* **存储** - 输入和输出文件：使用 Azure VM 的 NFS 或 CFS，通过 Azure 文件同步或 RSync 与本地存储同步。 或者： Avere vFXT 使用 NFS 输入或输出本地 NAS 设备中的文件。
 
   ![云迸发 - 与 NFS 或 CFS 的混合](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 

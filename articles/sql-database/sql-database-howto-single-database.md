@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811221"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027717"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用单一数据库
 
@@ -42,7 +42,7 @@ ms.locfileid: "73811221"
 - [启用自动优化的电子邮件通知](sql-database-automatic-tuning-email-notifications.md)以获取有关优化建议的信息。
 - [应用性能建议](sql-database-advisor-portal.md)并优化数据库。
 - [创建警报](sql-database-insights-alerts-portal.md)以从 Azure SQL 数据库获取通知。
-- [排查连接问题](sql-database-troubleshoot-common-connection-issues.md)：如果发现应用程序与数据库之间存在某些连接问题。 还可以[使用“资源运行状况”来排查连接问题](sql-database-resource-health.md)。
+- [排查连接问题](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)：如果发现应用程序与数据库之间存在某些连接问题。 还可以[使用“资源运行状况”来排查连接问题](sql-database-resource-health.md)。
 - [管理文件空间](sql-database-file-space-management.md)来监视数据库中的存储使用情况。
 
 ## <a name="query-distributed-data"></a>查询分布式数据

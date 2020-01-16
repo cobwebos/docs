@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 如果资源不符合，则可能有很多原因。 了解如何查明导致不符合的原因。
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873125"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972826"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -190,7 +190,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>更改历史记录（预览版）
 
-作为新**公共预览版**的一部分，最后14天的更改历史记录适用于支持[完整模式删除](../../../azure-resource-manager/complete-mode-deletion.md)的所有 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改资源管理器属性时，将触发更改检测。
+作为新**公共预览版**的一部分，最后14天的更改历史记录适用于支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的所有 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改资源管理器属性时，将触发更改检测。
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
 

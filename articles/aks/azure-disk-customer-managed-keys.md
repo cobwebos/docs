@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 96e7c401578ca8311bfe0e6b5477a9d8cab1a24e
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 1359f645c634f401f139fe1cd559f23aa4126c22
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912729"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029968"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>将自己的密钥（BYOK）与 azure Kubernetes 服务（AKS）中的 Azure 磁盘结合在一起
 
 Azure 存储加密静态存储帐户中的所有数据。 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了进一步控制加密密钥，你可以提供[客户管理的密钥][customer-managed-keys]，用于对 AKS 群集的 OS 和数据磁盘进行加密。
 
 > [!NOTE]
-> 支持 Linux 和基于 Windows 的 AKS 群集。
+> BYOK Linux 和基于 Windows 的 AKS 群集在支持 Azure 托管磁盘服务器端加密的[azure 区域][supported-regions]中提供。
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 本文假设你要创建*新的 AKS 群集*。  还需要使用或创建用于存储加密密钥的 Azure Key Vault 的实例。
+* 本文假设你要创建*新的 AKS 群集*。
 
 * 使用 Key Vault 对托管磁盘进行加密时，必须为*Azure Key Vault*启用软删除和清除保护。
 
@@ -47,16 +47,18 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-azure-key-vault-instance-to-store-your-keys"></a>创建 Azure Key Vault 实例以存储密钥
+## <a name="create-an-azure-key-vault-instance"></a>创建 Azure Key Vault 实例
 
-你可以选择使用 Azure 门户来[配置客户管理的密钥，Azure Key Vault][byok-azure-portal]
+使用 Azure Key Vault 实例存储密钥。  你可以选择使用 Azure 门户来[配置客户管理的密钥，Azure Key Vault][byok-azure-portal]
 
-创建新的*资源组*，然后创建新的*Key Vault*实例，并启用软删除和清除保护。
+创建新的*资源组*，然后创建新的*Key Vault*实例，并启用软删除和清除保护。  确保为每个命令使用同一区域和资源组名称。
 
 ```azurecli-interactive
 # Optionally retrieve Azure region short names for use on upcoming commands
 az account list-locations
+```
 
+```azurecli-interactive
 # Create new resource group in a supported Azure region
 az group create -l myAzureRegionName -n myResourceGroup
 
@@ -66,7 +68,7 @@ az keyvault create -n myKeyVaultName -g myResourceGroup -l myAzureRegionName  --
 
 ## <a name="create-an-instance-of-a-diskencryptionset"></a>创建 DiskEncryptionSet 的实例
 
-需要一个存储在 Azure Key Vault 中的*密钥*才能完成以下步骤。  请在创建的 Key Vault 中存储现有密钥，或[生成密钥][key-vault-generate]
+将*myKeyVaultName*替换为你的密钥保管库的名称。  还需要一个存储在 Azure Key Vault 中的*密钥*才能完成以下步骤。  在前面的步骤中创建的 Key Vault 中存储现有密钥，或[生成新密钥][key-vault-generate]，并将下面的*myKeyName*替换为你的密钥的名称。
     
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -79,7 +81,7 @@ keyVaultKeyUrl=$(az keyvault key show --vault-name myKeyVaultName  --name myKeyN
 az disk-encryption-set create -n myDiskEncryptionSetName  -l myAzureRegionName  -g myResourceGroup --source-vault $keyVaultId --key-url $keyVaultKeyUrl 
 ```
 
-## <a name="grant-the-diskencryptionset-resource-access-to-the-key-vault"></a>向 DiskEncryptionSet 资源授予对密钥保管库的访问权限
+## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>授予 DiskEncryptionSet 对 key vault 的访问权限
 
 使用在前面的步骤中创建的 DiskEncryptionSet 和资源组，并授予对 Azure Key Vault 的 DiskEncryptionSet 资源访问权限。
 
@@ -94,52 +96,85 @@ az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIden
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
-## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk-with-a-customer-manged-key"></a>创建新的 AKS 群集，并使用托管密钥对 OS 磁盘进行加密
+## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>创建新的 AKS 群集并加密 OS 磁盘
 
-创建新的资源组和 AKS 群集，并使用密钥对 OS 磁盘进行加密。 只有1.17 版的 kubernetes 支持客户托管密钥
+创建**新的资源组**和 AKS 群集，并使用密钥对 OS 磁盘进行加密。 只有1.17 版的 kubernetes 支持客户管理的密钥。 
+
+> [!IMPORTANT]
+> 确保为 AKS 群集创建新的资源组
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
 diskEncryptionSetId=$(az resource show -n diskEncryptionSetName -g myResourceGroup --resource-type "Microsoft.Compute/diskEncryptionSets" --query [id] -o tsv)
 
 # Create a resource group for the AKS cluster
-az group create -n myResourceGroup-l myAzureRegionName
+az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
 ```
 
-向上面创建的群集添加新节点池时，在创建过程中提供的客户托管密钥用于对 OS 磁盘进行加密
+将新节点池添加到上面创建的群集中时，在创建过程中提供的客户托管密钥用于对 OS 磁盘进行加密。
 
-## <a name="encrypt-your-aks-cluster-data-disk-with-a-customer-managed-key"></a>使用客户管理的密钥加密 AKS 群集数据磁盘
+## <a name="encrypt-your-aks-cluster-data-disk"></a>加密 AKS 群集数据磁盘
 
-还可以用自己的密钥加密 AKS 数据磁盘。  将 myResourceGroup 和 myDiskEncryptionSetName 替换为实际值，并应用 yaml。
+还可以用自己的密钥加密 AKS 数据磁盘。
 
-确保具有正确的 AKS 凭据。 服务主体将需要具有对 diskencryptionset 所在的资源组的参与者访问权限。 否则，你将收到一条错误消息，建议服务主体没有权限。
+> [!IMPORTANT]
+> 确保具有正确的 AKS 凭据。 服务主体将需要具有对部署 diskencryptionset 的资源组的参与者访问权限。 否则，你将收到一条错误消息，建议服务主体没有权限。
 
-创建一个名为**byok**的文件，其中包含以下信息。  将 myResourceGroup 和 myDiskEncrptionSetName 替换为你的值。
+```azurecli-interactive
+# Retrieve your Azure Subscription Id from id property as shown below
+az account list
+```
+
+```
+someuser@Azure:~$ az account list
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "666e66d8-1e43-4136-be25-f25bb5de5893",
+    "isDefault": true,
+    "name": "MyAzureSubscription",
+    "state": "Enabled",
+    "tenantId": "3ebbdf90-2069-4529-a1ab-7bdcb24df7cd",
+    "user": {
+      "cloudShellID": true,
+      "name": "someuser@azure.com",
+      "type": "user"
+    }
+  }
+]
+```
+
+创建一个名为**byok**的文件，其中包含以下信息。  将 myAzureSubscriptionId、myResourceGroup 和 myDiskEncrptionSetName 替换为你的值，并应用 yaml。  请确保使用部署 DiskEncryptionSet 的资源组。  如果使用 Azure Cloud Shell，则可使用 vi 或 nano 来创建此文件，就像在虚拟或物理系统上工作一样：
 
 ```
 kind: StorageClass
-apiVersion: storage.k8s.io/v1
+apiVersion: storage.k8s.io/v1  
 metadata:
   name: hdd
 provisioner: kubernetes.io/azure-disk
 parameters:
   skuname: Standard_LRS
   kind: managed
-  diskEncryptionSetID: "/subscriptions/{subs-id}/resourceGroups/{myResourceGroup}/providers/Microsoft.Compute/diskEncryptionSets/{myDiskEncryptionSetName}"
+  diskEncryptionSetID: "/subscriptions/{myAzureSubscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.Compute/diskEncryptionSets/{myDiskEncryptionSetName}"
 ```
 接下来，在 AKS 群集中运行此部署：
 ```azurecli-interactive
+# Get credentials
+az aks get-credentials --name myAksCluster --resource-group myResourceGroup --output table
+
+# Update cluster
 kubectl apply -f byok-azure-disk.yaml
 ```
 
 ## <a name="limitations"></a>限制
 
+* BYOK 目前仅在特定[Azure 区域][supported-regions]的 GA 和预览版中提供
 * Kubernetes 版本1.17 及更高版本支持 OS 磁盘加密   
 * 仅适用于支持 BYOK 的区域
-* 这仅适用于新的 AKS 群集，无法升级现有群集
+* 当前仅针对新的 AKS 群集进行加密，当前无法升级现有群集
 * 使用虚拟机规模集的 AKS 群集是必需的，不支持虚拟机可用性集
 
 
@@ -154,5 +189,6 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: /azure/aks/operator-best-practices-cluster-security
 [byok-azure-portal]: /azure/storage/common/storage-encryption-keys-portal
-[customer-managed-keys]: /azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview
+[customer-managed-keys]: /azure/virtual-machines/windows/disk-encryption#customer-managed-keys
 [key-vault-generate]: /azure/key-vault/key-vault-manage-with-cli2
+[supported-regions]: /azure/virtual-machines/windows/disk-encryption#supported-scenarios-and-restrictions

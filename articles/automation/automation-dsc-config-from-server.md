@@ -1,7 +1,7 @@
 ---
 title: 从现有服务器创建配置-Azure 自动化
 description: 了解如何在 Azure 自动化的现有服务器中创建配置。
-keywords: dsc，powershell，配置，安装程序
+keywords: dsc,powershell,配置,安装程序
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35f967e946854c3ca097db379015a7ee0bbe2f3d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231691"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030126"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
 
@@ -39,7 +39,7 @@ ms.locfileid: "74231691"
 使用该解决方案的结果是生成要用于 SharePointDSC 配置脚本的[配置数据](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
 
 生成数据文件后，可以将其与[DSC 配置脚本](/powershell/scripting/dsc/overview/overview)一起使用，以生成 mof 文件并[将 mof 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
+然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
 
 若要试用 ReverseDSC，请访问[PowerShell 库](https://www.powershellgallery.com/packages/ReverseDSC/)并下载解决方案，或者单击 "项目网站" 查看[文档](https://github.com/Microsoft/sharepointDSC.reverse)。
 
@@ -47,4 +47,4 @@ ms.locfileid: "74231691"
 
 - [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
 - [DSC 资源](/powershell/scripting/dsc/resources/resources)
-- [配置本地 Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaconfig)

@@ -3,7 +3,7 @@ title: PowerShell 入门 - Azure Batch | Microsoft Docs
 description: 快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 48b728d0e5b710f3adaa576f012bdbd19effc20a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323080"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026595"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "68323080"
 
 本文基于 Az Batch 模块 1.0.0 中的 cmdlet。 建议经常更新 Azure PowerShell 模块以利用服务更新和增强功能。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 * [下载并配置 Azure PowerShell 模块](/powershell/azure/overview)。 若要安装特定的 Azure Batch 模块，例如预发行模块，请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "68323080"
 
 ### <a name="create-a-batch-account"></a>创建批处理帐户
 
-**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。  例如：
+**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
@@ -125,7 +125,7 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ### <a name="create-a-batch-pool"></a>创建 Batch 池
 
-创建或更新 Batch 池时，为计算节点上的操作系统选择云服务配置或虚拟机配置（请参阅 [Batch 功能概述](batch-api-basics.md#pool)）。 如果指定云服务配置，系统会使用一个 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)为计算节点创建映像。 如果指定虚拟机配置, 则可以指定[Azure 虚拟机 Marketplace][vm_marketplace]中列出的某个受支持的 Linux 或 Windows VM 映像, 或提供已准备好的自定义映像。
+创建或更新 Batch 池时，为计算节点上的操作系统选择云服务配置或虚拟机配置（请参阅 [Batch 功能概述](batch-api-basics.md#pool)）。 如果指定云服务配置，系统会使用一个 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)为计算节点创建映像。 如果指定虚拟机配置，则可以指定[Azure 虚拟机 Marketplace][vm_marketplace]中列出的某个受支持的 Linux 或 Windows VM 映像，或提供已准备好的自定义映像。
 
 运行 **New-AzBatchPool**时，传递 PSCloudServiceConfiguration 或 PSVirtualMachineConfiguration 对象中的操作系统设置。 例如，以下代码片段可以在虚拟机配置中创建包含 Standard_A1 大小计算节点的 Batch 池，这些节点包含 Ubuntu Server 18.04-LTS 映像。 在这里，**VirtualMachineConfiguration** 参数指定 *$configuration* 变量作为 PSVirtualMachineConfiguration 对象。 **BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
 
@@ -242,7 +242,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 ```
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
+> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，会发生“冲突”错误。
 
 ### <a name="deploy-an-application-package"></a>部署应用程序包
 

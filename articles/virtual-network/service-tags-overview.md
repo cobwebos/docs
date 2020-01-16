@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: d0d7d9a4dd39428468d05ddf7297a424832d1020
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921198"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975376"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
@@ -27,7 +27,7 @@ ms.locfileid: "75921198"
 
 你可以使用服务标记来定义 [网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 " *源*" 或 " *目标* " 字段中指定服务标记名称（例如， **ApiManagement**），可以允许或拒绝相应服务的流量。 
 
-可以使用服务标记来实现网络隔离，并在访问具有公共终结点的 Azure 服务时，通过常规 Internet 保护 Azure 资源。 创建入站/出站网络安全组规则，拒绝发往/发往**Internet**的流量，允许流量流向或来自特定 Azure 服务的**AzureCloud**或其他[可用服务标记]()。 
+可以使用服务标记来实现网络隔离，并在访问具有公共终结点的 Azure 服务时，通过常规 Internet 保护 Azure 资源。 创建入站/出站网络安全组规则，拒绝发往/发往**Internet**的流量，允许流量流向或来自特定 Azure 服务的**AzureCloud**或其他[可用服务标记](#available-service-tags)。 
 
 ## <a name="available-service-tags"></a>可用服务标记
 下表包含可用于[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)规则的所有服务标记。

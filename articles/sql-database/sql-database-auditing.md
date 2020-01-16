@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: aeca4499a41adf37ba78452f1cf76047dd8c6592
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931934"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028527"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -246,6 +246,14 @@ ms.locfileid: "75931934"
 - 使用 AAD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
 
 - Azure SQL Database 审核针对可用性 & 性能进行了优化。 在非常高的活动中，Azure SQL 数据库允许操作继续执行，并且可能不会记录某些审核的事件。
+
+- 若要在存储帐户中配置不可变审核，请参阅[允许受保护的追加 blob 写入](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)。 请注意，审核容器名称为**sqldbauditlogs**。
+
+> [!IMPORTANT] 
+>  基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
+> - 美国东部
+> - 美国中南部
+> - 美国西部 2
 
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL Server 和数据库审核

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e58b3f651a7a8f65d3450cf4b069d4e3f252d928
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100270"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982285"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务（经典）
 > [!div class="op_single_selector"]
@@ -32,18 +32,18 @@ ms.locfileid: "70100270"
 Azure 虚拟机上运行的 SQL Server IaaS 代理扩展 (SQLIaaSAgent) 可以自动执行管理任务。 本主题概述了该扩展支持的服务以及有关安装、状态及删除的说明。
 
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[适用于 SQL Server VM Resource Manager 的 SQL Server 代理扩展](../sql/virtual-machines-windows-sql-server-agent-extension.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[适用于 SQL Server VM Resource Manager 的 SQL Server 代理扩展](../sql/virtual-machines-windows-sql-server-agent-extension.md)。
 
 ## <a name="supported-services"></a>支持的服务
 SQL Server IaaS 代理扩展支持以下管理任务：
 
-| 管理功能 | 描述 |
+| 管理功能 | Description |
 | --- | --- |
 | **SQL 自动备份** |对 VM 中的 SQL Server 默认实例自动执行所有数据库的备份计划。 有关详细信息，请参阅[在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份](../classic/sql-automated-backup.md)。 |
 | **SQL 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息，请参阅[在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补](../classic/sql-automated-patching.md)。 |
 | **Azure 密钥保管库集成** |可在 SQL Server VM 上自动安装和配置 Azure Key Vault。 有关详细信息，请参阅[在 Azure VM（经典）上配置 SQL Server 的 Azure 密钥保管库集成](../classic/ps-sql-keyvault.md)。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在 VM 上使用 SQL Server IaaS 代理扩展的要求：
 
 ### <a name="operating-system"></a>操作系统：

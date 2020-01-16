@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 6500020d9d1c7c735206efe8ebb08fd908eee10d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bca77db3452aecb31852c4c50e7754c7777fc458
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403247"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971263"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -100,7 +100,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 ![“DNS 安全性”边栏选项卡](./media/dns-analytics/dns-security-blade.png)
 
-单击列表中的客户端 IP 时，将打开日志搜索，显示相应查询的查找详细信息。 在以下示例中，DNS Analytics 检测到与 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot) 的通信已完成：
+单击列表中的客户端 IP 时，将打开日志搜索，显示相应查询的查找详细信息。 在以下示例中，DNS Analytics 检测到与 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621) 的通信已完成：
 
 ![显示 ircbot 的日志搜索结果](./media/dns-analytics/ircbot.png)
 

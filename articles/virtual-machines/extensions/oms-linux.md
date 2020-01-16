@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure Monitor 虚拟机扩展
+title: 适用于 Linux 的虚拟机扩展 Azure Monitor
 description: 使用虚拟机扩展在 Linux 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: akjosh
-ms.openlocfilehash: a021c76eb973eba11e1dc1ee89f3d7f829a53f70
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e0214208212cd4526b64ccd762a7fc00d06853a6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073058"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969968"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 虚拟机扩展
+# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>适用于 Linux 的虚拟机扩展 Azure Monitor
 
 ## <a name="overview"></a>概述
 
-Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Azure Monitor 虚拟机扩展支持的平台、配置和部署选项。
+Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux Azure Monitor 虚拟机扩展的支持平台、配置和部署选项。
 
 >[!NOTE]
 >从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
-有关支持的 Linux 发行版的详细信息，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)一文。
+有关受支持的 Linux 发行版的详细信息，请参阅[Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)文章。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
-下表提供每次发布的 Azure Monitor VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
+下表提供了 Azure Monitor VM 扩展的版本和每个版本 Log Analytics 代理捆绑包的映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
 
 | Azure Monitor Linux VM 扩展版本 | Log Analytics 代理捆绑包版本 | 
 |--------------------------------|--------------------------|
@@ -71,7 +71,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -115,9 +115,9 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure Monitor 日志）的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机（例如载入 Azure Monitor 日志）时，模板是理想选择。 可以在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到包含 LOG ANALYTICS 代理 VM 扩展的示例资源管理器模板。 
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/child-resource-name-type.md)。 
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定 VM 扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -210,10 +210,10 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI 包安装失败 | 
 | 20 | SCX 包安装失败 |
 | 51 | VM 的操作系统不支持此扩展 | |
-| 55 | 无法连接到 Azure Monitor 服务或缺少所需的包或 dpkg 包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
+| 55 | 无法连接到 Azure Monitor 服务或缺少所需的包，或已锁定 dpkg 包管理器| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
 
 有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

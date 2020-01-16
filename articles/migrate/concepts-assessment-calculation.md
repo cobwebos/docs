@@ -3,12 +3,12 @@ title: Azure Migrate 中的评估
 description: 了解 Azure Migrate 中的评估。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720236"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029114"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>关于 Azure Migrate 中的评估
 
@@ -23,7 +23,7 @@ ms.locfileid: "75720236"
 
 1. [Azure Migrate 设备](migrate-appliance.md)将收集实时示例点：
 
-    - **Vmware vm*：对于 vmware vm，Azure Migrate 设备在每隔20秒的时间间隔收集一个实时示例点。
+    - **Vmware vm**：对于 vmware vm，Azure Migrate 设备将按每隔20秒的时间间隔收集实时采样点。
     - **Hyper-v vm**：对于 hyper-v vm，将每隔30秒的时间间隔收集实时示例点。
     - **物理服务器**：对于物理服务器，将每隔五分钟收集一次实时示例点。 
     
@@ -58,7 +58,7 @@ ms.locfileid: "75720236"
 
 1. [Azure Migrate 设备](migrate-appliance.md)将收集实时示例点：
 
-    - **Vmware vm*：对于 vmware vm，Azure Migrate 设备在每隔20秒的时间间隔收集一个实时示例点。
+    - **Vmware vm**：对于 vmware vm，Azure Migrate 设备将按每隔20秒的时间间隔收集实时采样点。
     - **Hyper-v vm**：对于 hyper-v vm，将每隔30秒的时间间隔收集实时示例点。
     - **物理服务器**：对于物理服务器，将每隔五分钟收集一次实时示例点。 
     
@@ -73,25 +73,24 @@ ms.locfileid: "75720236"
 5. 此值与舒适系数相乘，可获取每个指标（CPU 使用率、内存使用率、磁盘 IOPS （读取和写入）、磁盘吞吐量（读取和写入）和网络吞吐量（传入和传出）的有效性能利用率数据。设备收集。
 ## <a name="whats-in-an-assessment"></a>评估内容有哪些？
 
-下面是 Azure Migrate 中的评估中包含的内容：服务器评估
+Azure Migrate：服务器评估中的评估包含以下内容。
 
 **属性** | **详细信息**
 --- | ---
-**目标位置** | 要迁移到的位置。<br/><br/>服务器评估目前支持以下 Azure 区域：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、东亚、美国东部、东2、德国中部、德国东北部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、印度、英国南部、英国西部、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国中北部、西欧、印度西部、美国西部和西部2.
-**目标存储磁盘：按原样调整大小** | 要用于 Azure 中的存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为管理的高级托管的标准 SSD 或标准 HDD。<br/><br/> 
-**目标存储磁盘：基于性能的大小调整** | 将目标存储磁盘的类型指定为 "自动"、"高级托管"、"标准 HDD 管理" 或 "标准 SSD 托管"。<br/><br/> **自动**：磁盘建议基于磁盘的性能数据（每秒输入/输出操作数（IOPS）和吞吐量）。 <br/><br/>**高级/标准**：评估建议选定存储类型中的磁盘 SKU。<br/><br/> 如果要实现99.9% 的单实例 VM SLA，请考虑使用高级托管磁盘。 这可确保将评估中的所有磁盘建议为高级托管磁盘。<br/><br/> Azure Migrate 仅支持使用托管磁盘进行迁移评估。
+**目标位置** | 要迁移到的位置。服务器评估目前支持以下目标 Azure 区域：<br/><br/> 澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、东亚、美国东部、东2、德国中部、德国东北部、日本东部、日本西部、韩国中部、韩国南部、北部美国中部、北欧、美国中南部、东南亚、印度南部、英国南部、英国西部、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国西部、西欧、印度西部、美国西部和西2。
+*目标存储磁盘（按大小调整）* * | 要用于 Azure 中的存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为管理的高级托管的标准 SSD 或标准 HDD。
+**目标存储磁盘（基于性能的大小调整）** | 将目标存储磁盘的类型指定为 "自动"、"高级托管"、"标准 HDD 管理" 或 "标准 SSD 托管"。<br/><br/> **自动**：磁盘建议基于磁盘的性能数据（每秒输入/输出操作数（IOPS）和吞吐量）。<br/><br/>**高级/标准**：评估建议选定存储类型中的磁盘 SKU。<br/><br/> 如果要实现99.9% 的单实例 VM SLA，请考虑使用高级托管磁盘。 这可确保将评估中的所有磁盘建议为高级托管磁盘。<br/><br/> Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 **预订实例（RIs）** | 指定 Azure 中的[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，以便评估中的成本估计会考虑到 RI 折扣。<br/><br/> 目前仅支持 Azure Migrate 的即用即付产品/服务的 RIs。
 **调整大小标准** | 用于在 Azure 中正确调整 VM 的大小。<br/><br/> 使用按原样调整大小或基于性能的大小调整。
 **性能历史记录** | 用于基于性能的大小调整。 指定评估性能数据时使用的持续时间。
 **百分位使用率** | 用于基于性能的大小调整。 指定要用于正确调整大小的性能样本的百分比值。 
 **VM 系列** | 指定要用于调整大小的 Azure VM 系列。 例如，如果你没有需要在 Azure 中使用 A 系列 Vm 的生产环境，则可以从列表或系列中排除 A 系列。
-**舒适因子** | 评估过程中使用的缓冲区。 应用于 Vm 的计算机使用率数据（CPU、内存、磁盘和网络）之上。 
-它用于解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用中增大。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 由于 2.0 x 的舒适因素，结果是一个四核 VM。
-**产品/服务**|显示您注册的[Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 服务器评估会相应地评估成本。
-**货币**|帐户的计费货币。
-**折扣（%）** |列出你在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
-**VM 运行时间**|如果 Azure Vm 每周7天，每天24小时运行一次，则可以指定它们将运行的持续时间（每月和每月的小时数）。 将相应地处理成本估算。<br/><br/> 默认值为“每月 31 天和每天 24 小时”。
-**Azure 混合权益**|指定您是否具有软件保障并且有资格使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置为 "是" （默认设置），则考虑 Windows Vm 的非 Windows Azure 价格。
+**舒适因子** | 评估过程中使用的缓冲区。 应用于 Vm 的计算机使用率数据（CPU、内存、磁盘和网络）之上。 它用于解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用中增大。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 由于 2.0 x 的舒适因素，结果是一个四核 VM。
+**产品** | 显示您注册的[Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 服务器评估会相应地评估成本。
+**货币** | 帐户的计费货币。
+**折扣 (%)** | 列出你在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
+**VM 运行时间** | 如果 Azure Vm 每周7天，每天24小时运行一次，则可以指定它们将运行的持续时间（每月和每月的小时数）。 将相应地处理成本估算。<br/><br/> 默认值为“每月 31 天和每天 24 小时”。
+**Azure 混合权益** | 指定您是否具有软件保障并且有资格使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置为 "是" （默认设置），则考虑 Windows Vm 的非 Windows Azure 价格。
 
 查看有关通过服务器评估创建评估的[最佳实践](best-practices-assessment.md)。
 

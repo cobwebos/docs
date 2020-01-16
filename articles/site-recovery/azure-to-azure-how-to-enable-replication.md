@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942314"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973692"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure Vm 复制到另一个 Azure 区域
 
@@ -62,7 +62,7 @@ ms.locfileid: "75942314"
      >[!NOTE]
      >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集或可用性区域。 若要更改可用性类型，需要先禁用复制，然后再启用复制。
      >
-    
+
    - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 会创建一个新的复制策略，其中默认设置为 "24 小时"，对于 "应用一致性快照频率" 为 "4 小时"。
 
      ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ ms.locfileid: "75942314"
 -   如果为添加的磁盘启用保护，则在初始复制磁盘后，将会出现警告。
 -   如果选择不启用磁盘复制，则可以选择关闭该警告。
 
-    
+
     ![已添加新磁盘](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 若要为添加的磁盘启用复制，请执行以下操作：
@@ -88,7 +88,7 @@ ms.locfileid: "75942314"
 运行 "启用复制" 作业并完成初始复制后，将删除磁盘问题的复制运行状况警告。
 
 
-  
+
 ## <a name="customize-target-resources"></a>自定义目标资源
 
 可以修改 Site Recovery 使用的默认目标设置。
@@ -112,7 +112,7 @@ ms.locfileid: "75942314"
     - 确保没有防火墙设备阻止 Vm 之间通过端口20004进行的内部通信。
     - 如果希望 Linux Vm 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口20004上的出站流量。
 ![启用复制](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. 单击“创建目标资源” > “启用复制”。
 6. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况
 

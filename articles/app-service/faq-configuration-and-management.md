@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672501"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967138"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -23,7 +23,7 @@ ms.locfileid: "74672501"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果要移动应用服务资源，则是否有我应该注意的限制？
 
-如果你计划将应用服务资源移动到新的资源组或订阅，则需要注意几个限制。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+如果你计划将应用服务资源移动到新的资源组或订阅，则需要注意几个限制。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何为 Web 应用使用自定义域名？
 
@@ -49,11 +49,11 @@ ms.locfileid: "74672501"
 
 当前，Azure Application Insights 不支持移动操作。 如果原始资源组包括 Application Insights 资源，则无法移动该资源。 如果在尝试移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
 
-有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>我可以在何处找到指导清单并详细了解资源移动操作？
 
-[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)演示如何将资源移到新订阅，或移到同一个订阅中的新资源组。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
+[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)演示如何将资源移到新订阅，或移到同一个订阅中的新资源组。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>如何为 Web 应用设置服务器时区？
 

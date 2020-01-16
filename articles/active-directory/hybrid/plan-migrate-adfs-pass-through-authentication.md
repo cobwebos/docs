@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：从联合迁移到 PTA 进行 Azure AD
+title: Azure AD Connect：从联合迁移到 PTA 的 Azure AD
 description: 本文提供有关将混合标识环境从联合身份验证转移到直通身份验证的信息。
 services: active-directory
 author: billmath
@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779921"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028565"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
 本文介绍如何将组织域从 Active Directory 联合身份验证服务 (AD FS) 迁移到直通身份验证。
 
-可以[下载此文](https://aka.ms/ADFSTOPTADPDownload)。
+> [!NOTE]
+> 更改身份验证方法需要规划、测试和可能的停机时间。 [过渡推出](how-to-connect-staged-rollout.md)提供一种替代方法，使用传递身份验证进行测试，并逐步从联合迁移到云身份验证。
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>迁移到直通身份验证的先决条件
 
@@ -36,13 +37,13 @@ ms.locfileid: "68779921"
 > [!IMPORTANT]
 > 过时的文档、工具和博客中可能指出，将域从联合标识转换为托管标识时，必须执行用户转换。 现在不再需要转换用户。 Microsoft 正在努力更新文档和工具以反映这项变化。
 
-若要更新 Azure AD Connect，请完成 [Azure AD Connect：升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)中的步骤。
+若要更新 Azure AD Connect，请完成 Azure AD Connect 中的步骤[：升级到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)。
 
 ### <a name="plan-authentication-agent-number-and-placement"></a>规划身份验证代理数目和位置
 
 直通身份验证要求在 Azure AD Connect 服务器和运行 Windows Server 的本地计算机上部署轻型代理。 为减少延迟，请将代理安装在尽量靠近 Active Directory 域控制器的位置。
 
-对于大多数客户而言，两个或三个身份验证代理足以提供高可用性和所需的容量。 为一个租户注册的代理不能超过 12 个。 第一个代理始终安装在 Azure AD Connect 服务器本身上。 若要了解代理限制和代理部署选项，请参阅 [Azure AD 直通身份验证：当前限制](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations)。
+对于大多数客户而言，两个或三个身份验证代理足以提供高可用性和所需的容量。 为一个租户注册的代理不能超过 12 个。 第一个代理始终安装在 Azure AD Connect 服务器本身上。 若要了解代理限制和代理部署选项，请参阅[Azure AD 传递身份验证：当前限制](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations)。
 
 ### <a name="plan-the-migration-method"></a>规划迁移方法
 
@@ -77,8 +78,8 @@ ms.locfileid: "68779921"
    ![“其他任务”页上的“查看当前配置”选项屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. 在“查看解决方案”页上，滚动到“Active Directory 联合身份验证服务(AD FS)”。<br />
 
-   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。 有关此过程的详细信息, 请参阅部分**选项 A:** 使用 Azure AD Connect 配置直通身份验证”部分。
-   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关该过程的详细信息，请参阅“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。
+   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。 有关此过程的详细信息，请参阅部分**选项 A：使用 Azure AD Connect 配置传递身份验证**。
+   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关此过程的详细信息，请参阅 "**选项 B：通过使用 Azure AD Connect 和 PowerShell 从 Federation 切换到直通身份验证**" 部分。
 
 ### <a name="document-current-federation-settings"></a>阐述当前联合身份验证设置
 
@@ -88,7 +89,7 @@ ms.locfileid: "68779921"
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
 ```
 
-例如：
+示例：
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
@@ -124,7 +125,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 从联合标识转换为托管标识之前，请仔细检查目前如何将 AD FS 用于 Azure AD、Office 365 和其他应用程序（信赖方信任）。 具体而言，请考虑下表中所述的场景：
 
-| If | Then |
+| 如果 | 则 |
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
@@ -142,13 +143,13 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 将域转换为直通身份验证后，**InsideCorporateNetwork** 声明不再可用。 可以使用 [Azure AD 中的命名位置](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)来取代此功能。
 
-配置命名位置后, 必须更新所有已配置为包括或排除网络**所有受信任位置**的条件访问策略, 或者更新**MFA 受信任的 ip**值, 以反映新的命名位置。
+配置命名位置后，必须更新所有已配置为包括或排除网络**所有受信任位置**的条件访问策略，或者更新**MFA 受信任的 ip**值，以反映新的命名位置。
 
-有关条件访问中的**位置**条件的详细信息, 请参阅[Active Directory 条件访问位置](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)。
+有关条件访问中的**位置**条件的详细信息，请参阅[Active Directory 条件访问位置](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)。
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
-将设备加入到 Azure AD 时, 可以创建条件性访问规则, 强制设备满足安全和合规性的访问标准。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
+将设备加入到 Azure AD 时，可以创建条件性访问规则，强制设备满足安全和合规性的访问标准。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
 
 为了确保在将域转换为直通身份验证之后，混合加入仍适用于任何已加入域的设备，对于 Windows 10 客户端，必须使用 Azure AD Connect 将 Active Directory 计算机帐户同步到 Azure AD。
 
@@ -156,7 +157,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 有关详细信息，请参阅[配置已加入混合 Azure AD 的设备](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)。
 
-#### <a name="branding"></a>品牌打造
+#### <a name="branding"></a>品牌
 
 如果你的组织已[自定义 AD FS 登录页](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以使显示的内容与组织更相关，请考虑[在 Azure AD 登录页中使用类似的自定义项](https://docs.microsoft.com/azure/active-directory/customize-branding)。
 
@@ -218,7 +219,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 * 准备无缝 SSO。
 * 更改直通身份验证登录方法并启用无缝 SSO。
 
-### <a name="step-1-prepare-for-seamless-sso"></a>步骤 1：准备无缝 SSO
+### <a name="step-1-prepare-for-seamless-sso"></a>步骤1：为无缝 SSO 做好准备
 
 要让设备使用无缝 SSO，必须使用 Active Directory 中的组策略将一个 Azure AD URL 添加到用户的 Intranet 区域设置。
 
@@ -229,11 +230,11 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 > [!IMPORTANT]
 > 进行此项更改不会修改用户登录到 Azure AD 的方式。 但是，必须在继续之前将此配置应用到所有设备。 在尚未收到此配置的设备上登录的用户只需输入用户名和密码即可登录到 Azure AD。
 
-### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>步骤 2：更改直通身份验证登录方法并启用无缝 SSO
+### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>步骤2：将登录方法更改为直通身份验证并启用无缝 SSO
 
 可通过两个选项更改直通身份验证登录方法并启用无缝 SSO。
 
-#### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 配置直通身份验证
+#### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 配置传递身份验证
 
 如果最初使用 Azure AD Connect 配置了 AD FS 环境，请使用此方法。 如果最初不是使用 Azure AD Connect 配置了 AD FS 环境，则不能使用此方法。
 
@@ -288,9 +289,9 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 跳到[测试和后续步骤](#testing-and-next-steps)。
 
 > [!IMPORTANT]
-> 跳过“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证”部分。 如果已选择使用“选项 A”将登录方法更改为直通身份验证并启用无缝 SSO，则“选项 B”部分中的步骤不适用。 
+> 跳过部分**选项 B：使用 Azure AD Connect 和 PowerShell 从联合切换到直通身份验证**。 如果已选择使用“选项 A”将登录方法更改为直通身份验证并启用无缝 SSO，则“选项 B”部分中的步骤不适用。 
 
-#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到直通身份验证
+#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>选项 B：使用 Azure AD Connect 和 PowerShell 从联合切换到直通身份验证
 
 如果联合域最初不是使用 Azure AD Connect 配置的，请使用此选项。
 
@@ -415,7 +416,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 
 如果未将 AD FS 用于其他目的（即，其他信赖方信任），则现在可以安全解除 AD FS。
 
-### <a name="rollback"></a>回退
+### <a name="rollback"></a>回滚
 
 如果发现了不可快速解决的重大问题，可以选择将解决方案回滚到联合身份验证。
 
