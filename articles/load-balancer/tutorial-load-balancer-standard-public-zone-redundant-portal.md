@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214816"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732310"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -54,9 +54,9 @@ ms.locfileid: "74214816"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription               | 选择订阅。    |    
-    | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupLBAZ   。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLBAZ   。|
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
@@ -215,6 +215,7 @@ ms.locfileid: "74214816"
     - *myBackendPool* - 后端池的名称。
     - *myHealthProbe* - 运行状况探测的名称。
 4. 单击“确定”。 
+    
     
     ![添加负载均衡规则](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

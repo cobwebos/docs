@@ -3,7 +3,7 @@ title: 在虚拟机计算节点上运行 Linux - Azure Batch | Microsoft 文档
 description: 了解如何处理 Azure Batch 中 Linux 虚拟机池上的并行计算工作负荷。
 services: batch
 documentationcenter: python
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350105"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027072"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
-可以使用 Azure Batch 在 Linux 和 Windows 虚拟机上运行并行计算工作负荷。 本文详细介绍如何使用 [Batch Python][py_batch_package] 和 [Batch .NET][api_net] 客户端库在 Batch 服务中创建 Linux 计算节点池。
+可以使用 Azure Batch 在 Linux 和 Windows 虚拟机上运行并行计算工作负荷。 本文详细介绍如何使用[Batch Python][py_batch_package]和[batch .net][api_net]客户端库在 Batch 服务中创建 Linux 计算节点池。
 
 > [!NOTE]
 > 在 2017 年 7 月 5 日以后创建的所有 Batch 池都支持应用程序包。 在 2016 年 3 月 10 日和 2017 年 7 月 5 日期间创建的 Batch 池也支持应用程序包，但前提是该池是使用云服务配置创建的。 在 2016 年 3 月 10 日以前创建的 Batch 池不支持应用程序包。 若要详细了解如何使用应用程序包将应用程序部署到 Batch 节点，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
@@ -39,16 +39,16 @@ ms.locfileid: "71350105"
 
 ### <a name="virtual-machine-image-reference"></a>虚拟机映像引用
 
-Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供虚拟机配置中的计算节点。 可以指定 [Azure 市场][vm_marketplace]中的一个映像，或者提供一个准备好的自定义映像。 有关自定义映像的详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。
+Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供虚拟机配置中的计算节点。 可以指定[Azure Marketplace][vm_marketplace]中的映像，或提供已准备好的自定义映像。 有关自定义映像的详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。
 
 配置虚拟机映像引用时，需指定虚拟机映像的属性。 创建虚拟机映像引用时，需提供以下属性：
 
 | **映像引用属性** | **示例** |
 | --- | --- |
-| Publisher |规范 |
-| 产品/服务 |UbuntuServer |
+| 发布者 |Canonical |
+| 产品 |UbuntuServer |
 | SKU |14.04.4-LTS |
-| Version |latest |
+| 版本 |最新 |
 
 > [!TIP]
 > 可以在 [Navigate and select Linux virtual machine images in Azure with CLI or PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 CLI 或 PowerShell 在 Azure 中导航和选择 Linux 虚拟机映像）中详细了解这些属性，以及如何列出市场映像。 请注意，目前并非所有市场映像都与 Batch 兼容。 有关详细信息，请参阅[节点代理 SKU](#node-agent-sku)。
@@ -67,10 +67,10 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：批处理 Python
-以下代码片段演示了如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档可在“阅读文档”上的 [azure.batch package][py_batch_docs] 包处找到。
+## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
+以下代码片段演示了如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档，请参阅 azure 上的[azure batch 包][py_batch_docs]。
 
-此代码片段显式创建 [ImageReference][py_imagereference]，并指定它的每个属性（publisher、offer、SKU、version）。 但在生产代码中，建议使用[list_node_agent_skus][py_list_skus]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
+此代码片段显式创建[ImageReference][py_imagereference] ，并指定其每个属性（发布者、产品/服务、SKU 和版本）。 但在生产代码中，我们建议使用[list_node_agent_skus][py_list_skus]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-如前文所述，建议使用[list_node_agent_skus][py_list_skus]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
+如前所述，我们建议你使用[list_node_agent_skus][py_list_skus]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
 
 ```python
 # Get the list of node agents from the Batch service
@@ -146,10 +146,10 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id=ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：批处理 .NET
-以下代码片段示范如何使用 [Batch .NET][nuget_batch_net] 客户端库创建 Ubuntu Server 计算节点池。 可以在 docs.microsoft.com 上找到 [Batch .NET 参考文档][api_net]。
+## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：Batch .NET
+下面的代码片段演示了如何使用[Batch .net][nuget_batch_net]客户端库创建 Ubuntu Server 计算节点池的示例。 可以在 docs.microsoft.com 上找到[Batch .net 参考文档][api_net]。
 
-以下代码片段使用 [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] 方法从当前支持的市场映像和节点代理 SKU 组合列表中进行选择。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
+下面的代码段使用[PoolOperations][net_pool_ops]。要从当前支持的 Marketplace 映像和节点代理 SKU 组合列表中选择的[ListNodeAgentSkus][net_list_skus]方法。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
 
 ```csharp
 // Pool settings
@@ -197,7 +197,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-尽管上述代码片段使用 [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] 方法动态列出了支持的映像和节点代理 SKU 组合并从中做出选择（建议的做法），但也可以显式配置 [ImageReference][net_imagereference]：
+尽管前面的代码段使用[PoolOperations][net_pool_ops]。[ListNodeAgentSkus][net_list_skus]方法若要动态列出并从支持的映像和节点代理 SKU 组合中进行选择（建议使用），还可以显式配置[ImageReference][net_imagereference] ：
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -217,33 +217,33 @@ ImageReference imageReference = new ImageReference(
 
 | **发布者** | **产品** | **映像 SKU** | **版本** | **节点代理 SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| 或批处理 | rendering-centos73 | 呈现 | latest | batch.node.centos 7 |
-| 或批处理 | rendering-windows2016 | 呈现 | latest | batch.node.windows amd64 |
-| 规范 | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
-| 规范 | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
-| Credativ | Debian | 9 | latest | batch.node.debian 9 |
-| Credativ | Debian | 8 | latest | batch.node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | latest | batch.node.centos 7 |
-| microsoft-ads | standard-data-science-vm | standard-data-science-vm | latest | batch.node.windows amd64 |
-| microsoft-azure-batch | centos-container | 7-4 | latest | batch.node.centos 7 |
-| microsoft-azure-batch | centos-container-rdma | 7-4 | latest | batch.node.centos 7 |
-| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | latest | batch.node.ubuntu 16.04 |
-| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | latest | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-with-Containers | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | latest | batch.node.windows amd64 |
-| OpenLogic | CentOS | 7.4 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.4 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.3 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | latest | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.4 | latest | batch.node.centos 7 |
-| SUSE | SLES-HPC | 12-SP2 | latest | batch.node.opensuse 42.1 |
+| batch | rendering-centos73 | 呈现 | 最新 | batch.node.centos 7 |
+| batch | rendering-windows2016 | 呈现 | 最新 | batch.node.windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | 最新 | batch.node.ubuntu 16.04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Credativ | Debian | 9 | 最新 | batch.node.debian 9 |
+| Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | 最新 | batch.node.centos 7 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | 最新 | batch.node.windows amd64 |
+| microsoft-azure-batch | centos-container | 7-4 | 最新 | batch.node.centos 7 |
+| microsoft-azure-batch | centos-container-rdma | 7-4 | 最新 | batch.node.centos 7 |
+| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | 最新 | batch.node.ubuntu 16.04 |
+| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | 最新 | batch.node.ubuntu 16.04 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-with-Containers | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | 最新 | batch.node.windows amd64 |
+| OpenLogic | CentOS | 7.4 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.4 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.3 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | 最新 | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.4 | 最新 | batch.node.centos 7 |
+| SUSE | SLES-HPC | 12-SP2 | 最新 | batch.node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>使用 SSH 连接到 Linux 节点
 在开发期间或进行故障排除时，可能会发现需要登录到池中的节点。 不同于 Windows 计算节点，无法使用远程桌面协议 (RDP) 连接到 Linux 节点。 相反，Batch 服务在每个节点上启用 SSH 访问以建立远程连接。
@@ -317,16 +317,16 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-在节点上创建用户时不需要指定密码，而可以指定 SSH 公钥。 在 Python SDK 中，请在 [ComputeNodeUser][py_computenodeuser] 上使用 **ssh_public_key** 参数。 在 .NET 中，请使用 [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] 属性。
+在节点上创建用户时不需要指定密码，而可以指定 SSH 公钥。 在 Python SDK 中，使用[ComputeNodeUser][py_computenodeuser]上的**ssh_public_key**参数。 在 .NET 中，使用[ComputeNodeUser][net_computenodeuser]。[SshPublicKey][net_ssh_key]属性。
 
-## <a name="pricing"></a>定价
-Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身是免费提供的，这意味着，只需支付 Batch 解决方案使用的计算资源费用。 如果选择“云服务配置”，则要根据[云服务定价][cloud_services_pricing]结构付费。 如果选择“虚拟机配置”，则要根据[虚拟机定价][vm_pricing]结构收费。 
+## <a name="pricing"></a>价格
+Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身是免费提供的，这意味着，只需支付 Batch 解决方案使用的计算资源费用。 选择 "**云服务配置**" 时，会根据[云服务定价][cloud_services_pricing]结构收费。 选择 "**虚拟机配置**" 时，将根据[虚拟机定价][vm_pricing]结构收费。 
 
 如果使用[应用程序包](batch-application-packages.md)将应用程序部署到 Batch 节点，系统还会对应用程序包使用的 Azure 存储资源收费。 通常，Azure 存储的成本是最低的。 
 
 ## <a name="next-steps"></a>后续步骤
 
-GitHub 上 [azure-batch-samples][github_samples] 存储库中的 [Python 代码示例][github_samples_py]包含演示如何执行常见 Batch 操作（例如创建池、作业和任务）的多个脚本。 Python 示例随附的 [README][github_py_readme] 文件包含有关如何安装所需包的详细信息。
+GitHub 上的[azure 批处理][github_samples]存储库中的[Python 代码示例][github_samples_py]包含用于展示如何执行常见批处理操作（例如池、作业和任务创建）的脚本。 Python 示例随附的[自述文件][github_py_readme]提供了有关如何安装所需包的详细信息。
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

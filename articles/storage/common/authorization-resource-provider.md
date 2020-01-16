@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613867"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972352"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 存储资源提供程序访问管理资源
 
@@ -72,7 +72,7 @@ Azure 还支持定义用于访问管理资源的自定义 RBAC 角色。 有关�
 
 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 当你创建新的存储帐户时，Microsoft 建议使用 Azure 资源管理器部署模型。 如果可能，Microsoft 还建议你重新创建具有资源管理器模型的现有经典存储帐户。 尽管可以使用经典部署模型创建存储帐户，但经典模型比较不灵活，最终将不推荐使用。
 
-有关 Azure 部署模型的详细信息，请参阅[资源管理器部署和经典部署](../../azure-resource-manager/resource-manager-deployment-model.md)。
+有关 Azure 部署模型的详细信息，请参阅[资源管理器部署和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

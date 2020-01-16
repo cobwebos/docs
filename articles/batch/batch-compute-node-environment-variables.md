@@ -2,7 +2,7 @@
 title: 任务运行时环境变量-Azure Batch |Microsoft Docs
 description: Azure Batch Analytics 的任务运行时环境可变指南和参考。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: lahugh
-ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: jushiman
+ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177148"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027183"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 运行时环境变量
 
@@ -44,15 +44,15 @@ ms.locfileid: "73177148"
 
 ## <a name="environment-variables"></a>环境变量
 
-| 变量名称                     | 描述                                                              | 可用性 | 示例 |
+| 变量名称                     | Description                                                              | 可用性 | 示例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | 任务所属的 Batch 帐户名。                  | 所有任务。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch 帐户的 URL。 | 所有任务。 | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果在池上安装了应用程序 "FOO" 版本 "1"，则环境变量为 AZ_BATCH_APP_PACKAGE_FOO_1。 AZ_BATCH_APP_PACKAGE_FOO_1 指向下载包的位置（文件夹）。 使用默认版本的应用程序包时，请使用不带版本号的 AZ_BATCH_APP_PACKAGE 环境变量。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果在池上安装了应用程序 "FOO" 版本 "1"，则 AZ_BATCH_APP_PACKAGE_FOO_1 环境变量。 AZ_BATCH_APP_PACKAGE_FOO_1 指向下载包的位置（文件夹）。 使用默认版本的应用程序包时，请使用不带版本号的 AZ_BATCH_APP_PACKAGE 环境变量。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | 一种身份验证令牌，用于授予对一组有限的 Batch 服务操作的访问权限。 仅当[添加任务](/rest/api/batchservice/task/add#request-body)时设置 [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) 时，才会显示此环境变量。 令牌值在 Batch API 中用作凭据以创建 Batch 客户端，例如在 [BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) 中。 | 所有任务。 | OAuth2 访问令牌 |
 | AZ_BATCH_CERTIFICATES_DIR       | [任务工作目录][files_dirs]中的一个目录，在该目录中为 Linux 计算节点存储证书。 此环境变量不适用于 Windows 计算节点。                                                  | 所有任务。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | 以 `nodeIP,nodeIP`格式分配给[多实例任务][multi_instance]的节点的列表。 | 多实例主要和子任务。 | `10.0.0.4,10.0.0.5` |
-| AZ_BATCH_IS_CURRENT_NODE_MASTER | 指定当前节点是否为[多实例任务][multi_instance]的主节点。 可能的值为 `true` 和 `false`。| 多实例主要和子任务。 | `true` |
+| AZ_BATCH_IS_CURRENT_NODE_MASTER | 指定当前节点是否为[多实例任务][multi_instance]的主节点。 可能值为 `true` 和 `false`。| 多实例主要和子任务。 | `true` |
 | AZ_BATCH_JOB_ID                 | 任务所属的作业的 ID。 | 除启动任务以外的所有任务。 | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | 节点上的作业准备[任务目录][files_dirs]的完整路径。 | 除启动任务和作业准备任务之外的所有任务。 仅当使用作业准备任务来配置作业时才适用。 | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | 节点上的作业准备[任务工作目录][files_dirs]的完整路径。 | 除启动任务和作业准备任务之外的所有任务。 仅当使用作业准备任务来配置作业时才适用。 | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |

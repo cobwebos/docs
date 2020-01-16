@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453416"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979421"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建和管理 B2B 企业集成的集成帐户
 
@@ -77,7 +77,7 @@ ms.locfileid: "75453416"
 
 ## <a name="link-to-logic-app"></a>链接到逻辑应用
 
-若要使逻辑应用能够访问包含 B2B 项目的集成帐户，必须先将集成帐户链接到逻辑应用。 逻辑应用和集成帐户必须存在于同一区域中。 若要完成此任务，可以使用 Azure 门户。 如果使用 Visual Studio，并且逻辑应用位于[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)中，则可以[使用 Visual Studio 将逻辑应用链接到集成帐户](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account)。
+若要使逻辑应用能够访问包含 B2B 项目的集成帐户，必须先将集成帐户链接到逻辑应用。 逻辑应用和集成帐户必须存在于同一区域中。 若要完成此任务，可以使用 Azure 门户。 如果使用 Visual Studio，并且逻辑应用位于[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中，则可以[使用 Visual Studio 将逻辑应用链接到集成帐户](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account)。
 
 1. 在 Azure 门户中，查找并打开逻辑应用。
 

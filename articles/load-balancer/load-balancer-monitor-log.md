@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428849"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965923"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>用于公共基本负载均衡器的 Azure Monitor 日志
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)，该概述通过 Azure Monitor 中的多维指标公开遥测数据。
 
 可以在 Azure 中使用不同类型的日志对基本负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可以将日志流式传输到事件中心或 Log Analytics 工作区。 所有日志都可从 Azure blob 存储提取，并在不同的工具（如 Excel 和 Power BI）中查看。  可从下表了解有关各种类型日志的详细信息。
@@ -32,7 +32,7 @@ ms.locfileid: "75428849"
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Azure Monitor 日志当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> Azure Monitor 日志当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -57,7 +57,7 @@ ms.locfileid: "75428849"
     1. 选中 "**存档到存储帐户**" 旁边的复选框。
     2. 选择 "**配置**" 以打开 "**选择存储帐户**" 窗格。
     3. 在下拉框中，选择在其中创建了你的存储帐户的**订阅**。
-    4. 在下拉框中的 "**存储帐户**" 下选择存储帐户的名称。 
+    4. 在下拉框中的 "**存储帐户**" 下选择存储帐户的名称。
     5. 选择“确定”。
 
     ### <a name="stream-to-an-event-hub"></a>流式传输到事件中心
@@ -160,7 +160,7 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *DipDown
 
 可以使用任何以下方法查看和分析审核日志数据：
 
-* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行接口（CLI）、Azure REST API 或 Azure 门户检索审核日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行接口（CLI）、Azure REST API 或 Azure 门户检索审核日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
 * **Power BI：** 如果还没有 [Power BI](https:// .microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 审核日志内容包](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)，可以借助预配置的仪表板分析数据，也可以自定义视图来满足自己的要求。
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>查看和分析运行状况探测和事件日志

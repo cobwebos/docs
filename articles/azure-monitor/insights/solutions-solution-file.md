@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401588"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977697"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
 > 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。  
 
-Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../../azure-resource-manager/templates/template-syntax.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
+Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../../azure-resource-manager/templates/template-syntax.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
 
 
 ## <a name="tools"></a>工具
 
 可使用任何文本编辑器处理解决方案文件，但我们建议利用 Visual Studio 或 Visual Studio Code 提供的功能，如以下文章中所述。
 
-- [通过 Visual Studio 创建和部署 Azure 资源组](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [在 Visual Studio Code 中使用 Azure 资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [通过 Visual Studio 创建和部署 Azure 资源组](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [在 Visual Studio Code 中使用 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
@@ -200,7 +200,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-解决方案资源必须具有针对解决方案中所有其他资源的[依赖](../../azure-resource-manager/resource-group-define-dependencies.md)，因为它们在解决方案创建之前必须已经存在。  通过在 **dependsOn** 元素中添加每个资源的项实现此目的。
+解决方案资源必须具有针对解决方案中所有其他资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)，因为它们在解决方案创建之前必须已经存在。  通过在 **dependsOn** 元素中添加每个资源的项实现此目的。
 
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。

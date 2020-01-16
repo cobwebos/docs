@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b9a5e388ce6749023cff223de2376d1360ca7574
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895685"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973476"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -224,7 +224,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
     > [!TIP]
     > 若要为另一个 Azure AD 租户的 VNet 中的子网添加规则，请使用 "/subscriptions/\<订阅 ID" 形式的完全限定子网 ID\>/resourceGroups/\<resourceGroup 名称\>/providers/Microsoft.Network/virtualNetworks/\<vNet 名称\>/subnets/\<"子网-名称\>"。
-    > 
+    >
     > 可以使用**订阅**参数检索属于另一个 Azure AD 租户的 VNet 的子网 ID。
 
 1. 为虚拟网络和子网删除网络规则。
@@ -391,7 +391,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | 在构建容器映像时，ACR 任务可以访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 允许通过 ADF 运行时访问存储帐户。 |
 | Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
-| Azure 机器学习 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure 机器学习 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 |
 | Azure SQL 数据仓库       | Microsoft.Sql                          | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Synapse/工作区          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
@@ -471,4 +471,4 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 在[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)中了解有关 Azure 网络服务终结点的详细信息。
 
-在 [Azure 存储安全指南](storage-security-guide.md)中深入了解 Azure 存储安全。
+在 [Azure 存储安全指南](../blobs/security-recommendations.md)中深入了解 Azure 存储安全。

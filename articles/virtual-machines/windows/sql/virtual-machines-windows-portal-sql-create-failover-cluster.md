@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792177"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965437"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -47,7 +47,7 @@ ms.locfileid: "74792177"
 
 存储空间直通支持两种类型的体系结构：聚合和超聚合。 本文档中所述的体系结构为超聚合。 超融合基础设施将存储放置在承载群集应用程序的相同服务器上。 在此体系结构中，存储位于每个 SQL Server FCI 节点上。
 
-## <a name="licensing-and-pricing"></a>许可与定价
+## <a name="licensing-and-pricing"></a>许可和定价
 
 在 Azure 虚拟机上，你可以使用即用即付（PAYG）或自带许可证（BYOL） VM 映像 SQL Server 许可证。 你选择的映像类型将影响你的收费方式。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74792177"
 还应大致了解这些技术：
 
 - [使用 Windows Server 2016 中的存储空间直通的超聚合解决方案](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Azure 资源组](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure 资源组](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)。 若要从完全扩展模式更改为轻型，请删除相应 Vm 的**Sql 虚拟机**资源，然后在轻型模式下向 sql VM 资源提供程序注册这些虚拟机资源。 使用 Azure 门户删除**SQL 虚拟机**资源时，请**清除正确虚拟机旁边的复选框**。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
@@ -110,7 +110,7 @@ ms.locfileid: "74792177"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。
    1. 选择 "**可用性集**"。
-   1. 选择**创建**。
+   1. 选择“创建”。
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -236,14 +236,14 @@ ms.locfileid: "74792177"
 
 1. 在 "**服务器管理器**" 下，选择 "**工具**"，然后选择 "**故障转移群集管理器**"。
 1. 在 "**故障转移群集管理器**" 下，选择 "**操作**"，然后选择 "**验证配置**"。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在 "**选择服务器或群集**" 下，输入这两个虚拟机的名称。
-1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择“**下一步**”。
+1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择“**下一页**”。
 1. 在 "**测试选择**" 下，选择 "**存储**" 以外的所有测试，如下所示：
 
    ![选择群集验证测试](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. **确认**下，选择 "**下一步**"。
 
 "验证配置向导" 将运行验证测试。
@@ -367,7 +367,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 1. 为负载均衡器配置以下属性：
 
@@ -391,7 +391,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 "**后端池**"，然后选择 "**添加**"。
 
-1. 将后端池与包含 VM 的可用性集相关联。
+1. 将该后端池与包含 VM 的可用性集进行关联。
 
 1. 在 "**目标网络 IP 配置**" 下，选择 "**虚拟机**" 并选择将作为群集节点加入的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。
 
