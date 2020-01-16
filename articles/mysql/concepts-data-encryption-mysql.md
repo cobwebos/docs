@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 12e9ab9066449e8928d937d9c3f9f7f1522b6c60
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 7c54b3010b42d56ffa9b701b76c7aef51095404c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028644"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-customer-managed-key"></a>通过客户托管的密钥 Azure Database for MySQL 数据加密
 
@@ -37,11 +37,11 @@ Azure Database for MySQL 的数据加密具有以下优势：
 
 ## <a name="terminology-and-description"></a>术语和说明
 
-数据加密密钥 (DEK) – 对称 AES256 密钥，用于加密数据分区或块。 使用不同的密钥加密每个数据块可以增加加密分析攻击的难度。 资源提供程序或应用程序实例需要 DEK 访问权限才能加密和解密特定的块。 将 DEK 替换为新密钥时，必须使用新密钥重新加密其关联块中的数据。
+**数据加密密钥（DEK）** –用于对分区或数据块进行加密的对称 AES256 密钥。 使用不同的密钥加密每个数据块可以增加加密分析攻击的难度。 资源提供程序或应用程序实例需要 DEK 访问权限才能加密和解密特定的块。 将 DEK 替换为新密钥时，必须使用新密钥重新加密其关联块中的数据。
 
 **密钥加密密钥（KEK）** -用于对数据加密密钥进行加密的加密密钥。 使用绝不会离开 Key Vault 的密钥加密密钥，允许加密和控制数据加密密钥。 具有 KEK 访问权限的实体可能不同于需要 DEK 的实体。 由于解密 DEK 需要 KEK，因此 KEK 实际上构成了一个单点机制：删除 KEK 即可删除 DEK。
 
-使用密钥加密密钥加密的数据加密密钥单独进行存储，只有有权访问密钥加密密钥的实体才能解密这些数据加密密钥。 有关详细信息，请参阅[静态加密中的安全性](../security/fundamentals/encryption-atrest.md)。
+使用密钥加密密钥加密的数据加密密钥（DEK）是单独存储的，只有有权访问密钥加密密钥的实体才能解密这些数据加密密钥。 有关详细信息，请参阅[静态加密中的安全性](../security/fundamentals/encryption-atrest.md)。
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>使用客户管理的密钥进行数据加密的方式
 
@@ -50,8 +50,8 @@ Azure Database for MySQL 的数据加密具有以下优势：
 为了使 MySQL 服务器能够使用存储在 AKV 中的客户托管密钥来加密 DEK，Key Vault 管理员需要使用其唯一标识向服务器授予以下访问权限：
 
 * **获取**-用于检索 Key Vault 中的密钥的公共部分和属性
-* **wrapKey** -能够保护（加密） DEK
-* **unwrapKey** -能够取消对 DEK 的保护（解密）
+* **wrapKey** -能够加密 DEK
+* **unwrapKey** -能够解密 DEK
 
 Key Vault 管理员还可以对[Key Vault 审核事件启用日志记录](../azure-monitor/insights/azure-key-vault.md)，以便以后可以对其进行审核。
 
