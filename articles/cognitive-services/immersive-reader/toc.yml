@@ -17,6 +17,8 @@
   items:
     - name: 启动沉浸式阅读器 (Python)
       href: tutorial-python.md
+    - name: 使用多个沉浸式阅读器资源
+      href: tutorial-multiple-resources.md
 - name: 操作说明
   items:
     - name: 创建沉浸式阅读器资源

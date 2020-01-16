@@ -27,6 +27,8 @@
           href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp 文件的性能基准测试建议
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: 有关 SMB 性能的常见问题解答
+          href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南

@@ -54,6 +54,8 @@
       href: spring-cloud-service-registration.md
     - name: 分析应用程序日志和指标
       href: diagnostic-services.md
+    - name: 用于提供即时可用性的 Azure Spring Cloud 日志流式处理
+      href: spring-cloud-howto-log-streaming.md
     - name: 在 Azure Spring Cloud 中自动运行 CI/CD 管道
       href: spring-cloud-howto-cicd.md
     - name: 在 Azure Spring Cloud 中使用永久性存储

@@ -139,8 +139,8 @@
               href: configure-linked-sign-on.md
         - name: 分配用户和管理对应用的访问权限
           items:
-            - name: 配置用户同意
-              href: configure-user-consent.md
+            - name: 管理并评估许可请求
+              href: manage-consent-requests.md
             - name: 授予租户范围的管理员许可
               href: grant-admin-consent.md
             - name: 配置管理员同意工作流（预览版）

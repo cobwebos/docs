@@ -12,12 +12,12 @@ metadata:
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: d71f5f673a3008f13f7bb762fc48a687c0cf0ddb
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 964950c80ea0f3d4c014f5c98563193917bf4eef
+  ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73889248"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76122026"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
@@ -51,18 +51,14 @@ landingContent:
       url: how-to-settings.md
   - linkListType: quickstart
     links:
-    - text: 使用 .Net
-      url: csharp-quickstart-commandline-feedback-loop.md
-    - text: 使用 Python
-      url: python-quickstart-commandline-feedback-loop.md
-    - text: Node.js
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: 使用 SDK
+      url: sdk-learning-loop.md
 - title: 使用个性化体验创建服务进行开发
   linkLists:
   - linkListType: get-started
     links:
-    - text: 利用 .Net 开发个性化体验创建服务循环
-      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: 利用 .NET 开发个性化体验创建服务循环
+      url: sdk-learning-loop.md?pivots=programming-language-csharp
     - text: NuGet 包
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet 参考文档
@@ -70,18 +66,18 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 利用 Node.js 开发个性化体验创建服务循环
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      url: sdk-learning-loop.md?pivots=programming-language-nodejs
     - text: NPM 包
       url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
   - linkListType: get-started
     links:
     - text: 利用 Python 开发个性化体验创建服务循环
-      url: python-quickstart-commandline-feedback-loop.md
+      url: sdk-learning-loop.md?pivots=programming-language-python
     - text: Pypi 包
       url: https://pypi.org/project/azure-cognitiveservices-personalizer/
   - linkListType: get-started
     links:
-    - text: 代码示例
+    - text: 示例代码
       url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
     - text: REST API
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank

@@ -71,7 +71,7 @@
       href: concept-workspace.md
     - name: 环境
       href: concept-environments.md
-    - name: data
+    - name: 数据
       href: concept-data.md
     - name: 模型定型
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
@@ -310,15 +310,9 @@
         - name: 实时使用
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: 运行批量预测
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: 设计器批量预测
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: 调试批量预测并排查其问题
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: 监视模型
       items:
         - name: 收集和评估模型数据
@@ -343,6 +337,12 @@
         - name: 设计器：使用已发布的管道进行保留
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: 使用并行运行步骤
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: 对并行运行步骤进行调试和故障排除
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md

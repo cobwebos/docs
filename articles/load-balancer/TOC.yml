@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 组件和限制
+      href: concepts-limitations.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
