@@ -2,18 +2,17 @@
 title: 使用 Storm 从事件中心处理事件 - Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 HDInsight 工具，通过 Visual Studio 中创建的 C# Storm 拓扑处理来自 Azure 事件中心的数据。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800055"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981641"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -26,19 +25,11 @@ ms.locfileid: "72800055"
 
 本文档中的步骤使用 SCP.NET，后者是一个 NuGet 包，方便用户创建适用于 Storm on HDInsight 的 C# 拓扑和组件。
 
-> [!IMPORTANT]  
-> 虽然本文档中的步骤依赖于带 Visual Studio 的 Windows 开发环境，但是也可将编译的项目提交到使用 Linux 的 Storm on HDInsight 群集。 仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑。
-
 HDInsight 3.4 及更高版本使用 Mono 运行 C# 拓扑。 本文档中使用的示例适用于 HDInsight 3.6。 如果你计划为 HDInsight 创建自己的 .NET 解决方案，请查看 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
 
 ### <a name="cluster-versioning"></a>群集版本控制
 
 用于项目的 Microsoft.SCP.Net.SDK NuGet 包必须与安装在 HDInsight 上的 Storm 的主要版本匹配。 HDInsight 版本 3.5 和 3.6 使用 Storm 1.x，因此必须对这些群集使用 SCP.NET 版本 1.0.x.x。
-
-> [!IMPORTANT]  
-> 本文档中的示例需要 HDInsight 3.5 或 3.6 群集。
->
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 
 
 C# 拓扑还必须针对 .NET 4.5 运行。
 
@@ -109,9 +100,6 @@ topologyBuilder.SetJavaBolt(
 
 * HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
-    > [!WARNING]  
-    > 本文档中使用的示例需要 Storm on HDInsight 3.5 或 3.6 版。 由于重大类名更改，此示例不适用于旧版 HDInsight。 如需适用于旧式群集的示例版本，请参阅 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases)。
-
 * [Azure 事件中心](../../event-hubs/event-hubs-create.md)。
 
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
@@ -133,7 +121,7 @@ topologyBuilder.SetJavaBolt(
 
 事件中心是此示例的数据源。 使用[事件中心入门](../../event-hubs/event-hubs-create.md)的“创建事件中心”部分中的信息。
 
-1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”。 选择“+ 添加”添加以下策略：
+1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”。 选择 " **+ 添加**" 创建以下策略：
 
    | 名称 | 权限 |
    | --- | --- |
@@ -146,13 +134,13 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="configure-the-eventhubwriter"></a>配置 EventHubWriter
 
-1. 如果尚未安装最新版本的用于 Visual Studio 的 HDInsight 工具，请参阅[开始使用用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
+1. 如果尚未安装最新版本的 HDInsight tools for Visual Studio，请参阅[开始使用 hdinsight tools For Visual studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
 2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
 
-3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
+3. 打开**EventHubExample**。 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | 密钥 | Value |
+   | 密钥 | 值 |
    | --- | --- |
    | EventHubPolicyName |写入器（如果对具有“发送”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |写入者策略的密钥。 |
@@ -168,7 +156,7 @@ topologyBuilder.SetJavaBolt(
 
 2. 打开 **EventHubReader** 的 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | 密钥 | Value |
+   | 密钥 | 值 |
    | --- | --- |
    | EventHubPolicyName |读取器（如果对具有“侦听”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |读取者策略的密钥。 |
@@ -204,9 +192,11 @@ topologyBuilder.SetJavaBolt(
 
 9. 在“执行器”部分，选择“端口”列中的链接之一。 这会显示由组件记录的信息。 记录的信息类似于以下文本：
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>停止拓扑
 
@@ -220,7 +210,7 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="next-steps"></a>后续步骤
 
-本文档已介绍如何使用 C# 拓扑中的 Java 事件中心 Spout 和 Bolt 处理 Azure 事件中心内的数据。 若要了解有关创建 C# 拓扑的详细信息，请参阅以下主题：
+在本文档中，已了解如何使用C#拓扑中的 Java 事件中心 spout 和螺栓来处理 Azure 事件中心的数据。 若要了解有关创建 C# 拓扑的详细信息，请参阅以下主题：
 
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
 * [SCP 编程指南](apache-storm-scp-programming-guide.md)

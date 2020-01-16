@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707197"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970654"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，可帮助你保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -499,7 +499,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 - 可以通过查看一组共享相同标记的资源的成本来理清组织的帐单。
 
 > [!Note]
-> Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/resource-manager-deployment-model.md)。
+> Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

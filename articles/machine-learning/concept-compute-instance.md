@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541863"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974108"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -54,7 +54,7 @@ Azure 机器学习计算实例，可以在工作区中以完全集成的笔记�
 |Intel MPI 库||
 |Azure CLI ||
 |Azure 机器学习示例 ||
-|Azure 机器学习 EDAT 引擎 ||            
+|Azure 机器学习 EDAT 引擎 ||
 |Docker||
 |Nginx||
 |NCCL 2。0 ||
@@ -76,11 +76,26 @@ Azure 机器学习计算实例，可以在工作区中以完全集成的笔记�
 |其他 PyPI 包|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 包|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度学习包|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX 包|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX 包|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure 机器学习 Python & R SDK 示例||
+
+Python 包都安装在**python 3.6 AzureML**环境中。  
 
 计算实例通常用作开发环境。  它们还可用作定型和推断的计算目标，以进行开发和测试。  对于大型任务，具有多节点缩放功能的[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
+### <a name="installing-packages"></a>安装包
+
+可以直接在 Jupyter 笔记本或 Rstudio 中安装包：
+
+* RStudio 使用右下方的 "**包**" 选项卡，或左上角的 "**控制台**" 选项卡。  
+* Python：添加安装代码并在 Jupyter 笔记本单元中执行。
+
+也可以通过以下任一方式访问终端窗口：
+
+* RStudio：选择左上方的 "**终端**" 选项卡。
+* Jupyter Lab：在 "启动器" 选项卡中的 "**其他**" 标题下选择 "**终端**" 磁贴。
+* Jupyter：在 "文件" 选项卡中，选择右上方的 "**新建 > 终端**"。
+* 通过 SSH 连接到计算机。  然后，在**python 3.6 AzureML**环境中安装 python 包。  在**r**环境中安装 r 包。
 
 ## <a name="accessing-files"></a>访问文件
 

@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: c067a5a603c1adcafe6827b3118ecff20ae23238
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972852"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -76,7 +76,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 大多数情况下，建议将“mode”设置为`all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 有关支持标记的资源的列表，请参阅[Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 有关支持标记的资源的列表，请参阅[Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />资源提供程序模式（预览）
 
@@ -552,7 +552,7 @@ Azure 策略支持以下类型的影响：
 
 ### <a name="policy-functions"></a>策略函数
 
-除了下面的函数和用户定义的函数外，还可以在策略规则中使用所有[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)：
+除了下面的函数和用户定义的函数外，还可以在策略规则中使用所有[资源管理器模板函数](../../../azure-resource-manager/templates/template-functions.md)：
 
 - copyIndex()
 - deployment()

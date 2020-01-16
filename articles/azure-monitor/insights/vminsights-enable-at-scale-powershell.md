@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400753"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977679"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor （预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400753"
 
 本文介绍如何通过使用 Azure PowerShell 或 Azure 资源管理器模板为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor （预览版）。 在此过程结束时，你将成功开始监视所有虚拟机，并了解是否有任何性能或可用性问题。
 
-## <a name="set-up-a-log-analytics-workspace"></a>设置 Log Analytics 工作区 
+## <a name="set-up-a-log-analytics-workspace"></a>设置 Log Analytics 工作区
 
 如果没有 Log Analytics 工作区，则需要创建一个。 在继续执行配置步骤之前，请查看[先决条件](vminsights-enable-overview.md#log-analytics)部分中建议的方法。 然后，可以使用 Azure 资源管理器模板方法完成用于 VM 的 Azure Monitor 的部署。
 
@@ -35,8 +35,8 @@ ms.locfileid: "75400753"
 此方法包含一个 JSON 模板，其中指定了用于在 Log Analytics 工作区中启用解决方案组件的配置。
 
 如果不知道如何使用模板部署资源，请参阅：
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
-* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
+* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "75400753"
 1. 捕获 *WorkspaceName*、*ResourceGroupName* 和 *WorkspaceLocation* 的值。 *WorkspaceName* 的值为 Log Analytics 工作区的名称。 *WorkspaceLocation* 的值是在其中定义工作区的区域。
 
 1. 已做好部署此模板的准备。
- 
+
     * 请在包含模板的文件夹中使用以下 PowerShell 命令：
 
         ```powershell
@@ -105,7 +105,7 @@ ms.locfileid: "75400753"
         ```
 
     * 使用 Azure CLI 运行以下命令：
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ ms.locfileid: "75400753"
 >模板需要部署在与要在其上导入的资源相同的资源组中。
 
 如果不知道如何使用模板部署资源，请参阅：
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
-* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
+* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="download-templates"></a>下载模板
 
-Azure 资源管理器模板在存档文件（.zip）中提供，你可以从 GitHub 存储库[下载](https://aka.ms/VmInsightsARMTemplates)该文件。 文件的内容包括表示每个部署方案的文件夹，以及模板和参数文件。 在运行之前，请修改参数文件并指定所需的值。 请勿修改模板文件，除非你需要对其进行自定义以满足你的特定要求。 修改参数文件后，可以使用本文后面所述的以下方法对其进行部署。 
+Azure 资源管理器模板在存档文件（.zip）中提供，你可以从 GitHub 存储库[下载](https://aka.ms/VmInsightsARMTemplates)该文件。 文件的内容包括表示每个部署方案的文件夹，以及模板和参数文件。 在运行之前，请修改参数文件并指定所需的值。 请勿修改模板文件，除非你需要对其进行自定义以满足你的特定要求。 修改参数文件后，可以使用本文后面所述的以下方法对其进行部署。
 
 下载文件包含用于不同方案的以下模板：
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 若要为多个 Vm 或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 PowerShell 脚本[Install-VMInsights](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 Azure PowerShell 库中提供了该功能。 此脚本循环访问：
 
 - 订阅中的每个虚拟机和虚拟机规模集。
-- *ResourceGroup*指定的作用域内资源组。 
+- *ResourceGroup*指定的作用域内资源组。
 - 按*名称*指定的单个 VM 或虚拟机规模集。
 
 对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果安装了 VM 扩展，该脚本会尝试重新安装它。 如果未安装 VM 扩展，该脚本将安装 Log Analytics 和依赖关系代理 VM 扩展。
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>后续步骤
 
 为虚拟机启用监视后，可以使用用于 VM 的 Azure Monitor 分析此信息。
- 
-- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 
 
-- 若要确定虚拟机的性能瓶颈和总体利用率，请参阅[查看 AZURE Vm 性能](vminsights-performance.md)。 
+- 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+
+- 若要确定虚拟机的性能瓶颈和总体利用率，请参阅[查看 AZURE Vm 性能](vminsights-performance.md)。

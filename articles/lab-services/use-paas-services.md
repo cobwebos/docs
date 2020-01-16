@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621372"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976246"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台即服务（PaaS）服务
 PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实验室中的环境通过 Git 存储库中的预配置 Azure 资源管理器模板来支持。 环境可以同时包含 PaaS 和 IaaS 资源。 它们允许你创建可包含 Azure 资源（例如虚拟机、数据库、虚拟网络和 Web 应用）的复杂系统，这些资源可自定义以协同工作。 这些模板允许使用源代码管理一致地部署和改善环境。 
@@ -53,11 +53,11 @@ PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实�
 将[环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)一文介绍了如何修改资源管理器模板以使用 `$(LabSubnetId)` 令牌。 创建环境后，会将 `$(LabSubnetId)` 标记替换为在**虚拟机创建选项中使用**的第一个子网标记设置为**true**。 它使我们的环境可以使用以前创建的网络。 如果要在作为过渡和生产的测试环境中使用相同资源管理器模板，请在资源管理器模板参数中使用 `$(LabSubnetId)` 作为默认值。 
 
 #### <a name="environment-storage-account"></a>环境存储帐户
-开发测试实验室支持使用[嵌套资源管理器模板](../azure-resource-manager/resource-group-linked-templates.md)。 [[部署用于测试环境的嵌套 Azure 资源管理器模板](deploy-nested-template-environments.md)一文介绍了如何使用 `_artifactsLocation` 和 `_artifactsLocationSasToken` 标记在主模板的嵌套文件夹中创建资源管理器模板的 URI。 有关这两个令牌的详细信息，请参阅 Azure 资源管理器的**部署项目**部分[-最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
+开发测试实验室支持使用[嵌套资源管理器模板](../azure-resource-manager/templates/linked-templates.md)。 [[部署用于测试环境的嵌套 Azure 资源管理器模板](deploy-nested-template-environments.md)一文介绍了如何使用 `_artifactsLocation` 和 `_artifactsLocationSasToken` 标记在主模板的嵌套文件夹中创建资源管理器模板的 URI。 有关这两个令牌的详细信息，请参阅 Azure 资源管理器的**部署项目**部分[-最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
 
 ## <a name="user-experience"></a>用户体验
 
-## <a name="developer"></a>开发人员
+## <a name="developer"></a>Developer
 开发人员使用相同的工作流创建 VM 来创建特定环境。 它们选择环境与计算机映像，并输入模板所需的必要信息。 拥有环境的每个开发人员都可以部署更改和改进的内部循环调试。 使用最新模板随时可以创建环境。  利用此功能，可以销毁并重新创建环境，以帮助减少因手动创建系统或从错误测试中恢复而导致的停机时间。  
 
 ### <a name="testing"></a>测试

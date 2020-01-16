@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436367"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972814"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -367,7 +367,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope**（可选）
   - 允许的值为 Subscription和 ResourceGroup。
-  - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
+  - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/templates/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
   - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
   - 默认值是 ResourceGroup。
 - **Deployment** [必选]

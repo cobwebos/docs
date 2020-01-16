@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815396"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972626"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -40,6 +40,7 @@ ms.locfileid: "74815396"
 - `videoURL` 参数中提供的 URL 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
 - 对于单个文件，视频索引器的最大持续时间限制为4小时。
+- 每分钟最多可以上传60个电影。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -61,7 +62,7 @@ ms.locfileid: "74815396"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|描述|
+        |名称|Description|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
@@ -69,7 +70,7 @@ ms.locfileid: "74815396"
 - 在视频中标识的人：
   - 属性
     
-      |名称|描述|
+      |名称|Description|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
@@ -311,9 +312,9 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|描述|
+|状态代码|ErrorType（在响应正文中）|Description|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
+|409|VIDEO_INDEXING_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|
 
 ## <a name="next-steps"></a>后续步骤

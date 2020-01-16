@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a2afad33aea7fa2a21135dca0995ad862a2258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1528bffc613d2e8ab2c0150095d90791b649198a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848657"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979501"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -30,9 +30,9 @@ ms.locfileid: "74848657"
 
 下表描述了多重身份验证的各个版本之间的差异：
 
-| 版本 | 描述 |
+| 版本 | Description |
 | --- | --- |
-| 免费选项 | 利用 Azure AD 的免费权益的客户可以使用[安全默认值](../conditional-access/concept-conditional-access-security-defaults.md)在其环境中启用多重身份验证。 |
+| 免费选项 | 利用 Azure AD 的免费权益的客户可以使用[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)在其环境中启用多重身份验证。 |
 | 针对 Office 365 的多重身份验证 | 此版本是从 Office 365 或 Microsoft 365 门户管理的。 管理员可以[使用双重验证来保护 Office 365 资源](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)。 此版本是 Office 365 订阅的一部分。 |
 | 面向 Azure AD 管理员的多重身份验证 | Azure AD 租户中被分配了 Azure AD 全局管理员角色的用户可以免费启用双重验证。 |
 | Azure 多重身份验证 | Azure 多重身份验证（通常称为“完整”版本）提供了最丰富的功能集。 它通过 [Azure 门户](https://portal.azure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证是[Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)和[Microsoft 365 商业版](https://www.microsoft.com/microsoft-365/business)的一项功能。 |
@@ -48,7 +48,7 @@ ms.locfileid: "74848657"
 > 此比较表讨论了每个版本的多重身份验证的部分功能。 如果拥有完整的 Azure 多重身份验证服务，某些功能可能不可用，具体取决于是否在云中使用 [MFA 或本地 MFA](concept-mfa-whichversion.md)。
 >
 
-| Feature | 针对 Office 365 的多重身份验证 | 面向 Azure AD 管理员的多重身份验证 | Azure 多重身份验证 | 安全默认值 | 
+| 功能 | 针对 Office 365 的多重身份验证 | 面向 Azure AD 管理员的多重身份验证 | Azure 多重身份验证 | 安全默认值 |
 | --- |:---:|:---:|:---:|:---:|
 | 使用 MFA 保护 Azure AD 管理员帐户 |● |●（仅适用于 Azure AD 全局管理员帐户） |● |● |
 | 将移动应用用作第二个因素 |● |● |● |● |

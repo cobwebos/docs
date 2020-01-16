@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304782"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971194"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -27,9 +27,9 @@ ms.locfileid: "74304782"
 
 本文中所述的过程仅适用于 Azure 云服务上的性能计数器。 它不适用于其他自定义指标。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 你必须是 Azure 订阅的[服务管理员或共同管理员](~/articles/billing/billing-add-change-azure-subscription-administrator.md)。 
+- 你必须是 Azure 订阅的[服务管理员或共同管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 

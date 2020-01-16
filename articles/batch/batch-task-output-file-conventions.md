@@ -3,7 +3,7 @@ title: 使用适用于 .NET 的文件约定库将作业和任务输出保存到 
 description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出保存到 Azure 存储，并在 Azure 门户中查看保存的输出。
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302672"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026214"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-持久保存任务数据的一种方法是使用[适用于 .NET 的 Azure Batch 文件约定库][nuget_package]。 文件约定库简化了在 Azure 存储中存储和检索任务输出数据的过程。 可以在任务代码和客户端代码中使用文件约定库 &mdash; 在任务代码中用于保存文件，在客户端代码中用于列出和检索文件。 任务代码还可以使用该库来检索上游任务的输出（例如，在[任务依赖项](batch-task-dependencies.md)方案中）。
+保存任务数据的一种方法是使用[适用于 .net 的 Azure Batch 文件约定库][nuget_package]。 文件约定库简化了在 Azure 存储中存储和检索任务输出数据的过程。 可以在任务代码和客户端代码中使用文件约定库 &mdash; 在任务代码中用于保存文件，在客户端代码中用于列出和检索文件。 任务代码还可以使用该库来检索上游任务的输出（例如，在[任务依赖项](batch-task-dependencies.md)方案中）。
 
 若要使用文件约定库检索输出文件，可以查找给定作业或任务的文件：按 ID 和用途列出这些文件即可。 不需要知道文件的名称或位置。 例如，可以使用文件约定库列出给定任务的所有中间文件，或获取给定作业的预览文件。
 
@@ -42,7 +42,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 - 作业中的客户端应用程序或其他任务需要根据 ID 或用途定位并下载任务输出文件。
 - 想要在 Azure 门户中查看任务输出。
 
-如果你的情形不同于上面列出的情形，则可能需要考虑其他方式。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
+如果你的情况与上面不同，可能需要考虑不同的方法。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>什么是 Batch 文件约定标准？
 
@@ -56,7 +56,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 若要使用文件约定库将输出数据保存到 Azure 存储，必须先将 Azure 存储帐户链接到 Batch 帐户。 如果尚未这样做，请使用 [Azure 门户](https://portal.azure.com)将存储帐户链接到 Batch 帐户：
 
-1. 导航到 Azure 门户中的 Batch 帐户。
+1. 导航到 Azure 门户中的批处理帐户。
 1. 在“设置”下面，选择“存储帐户”。
 1. 如果目前没有任何存储帐户与 Batch 帐户关联，请单击“存储帐户(无)”。
 1. 从订阅列表中选择一个存储帐户。 为获得最佳性能，请使用运行任务的 Batch 帐户所在的区域中的 Azure 存储帐户。
@@ -72,7 +72,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 ### <a name="create-storage-container"></a>创建存储容器
 
-若要将任务输出持久保存到 Azure 存储，请先通过调用 [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] 来创建容器。 此扩展方法采用 [CloudStorageAccount][net_cloudstorageaccount] 对象作为参数。 它会创建根据文件约定标准命名的容器，以便通过 Azure 门户和本文稍后介绍的检索方法发现其内容。
+若要将任务输出持久保存到 Azure 存储，请先通过调用[CloudJob][net_cloudjob]创建一个容器。[Prepareoutputstorageasync 来][net_prepareoutputasync]。 此扩展方法使用[CloudStorageAccount][net_cloudstorageaccount]对象作为参数。 它会创建根据文件约定标准命名的容器，以便通过 Azure 门户和本文稍后介绍的检索方法发现其内容。
 
 我们通常将创建容器的代码放在客户端应用程序中 &mdash; 即创建池、作业和任务的应用程序。
 
@@ -91,9 +91,9 @@ await job.PrepareOutputStorageAsync(linkedStorageAccount);
 
 ### <a name="store-task-outputs"></a>存储任务输出
 
-在 Azure 存储中准备一个容器后，即可通过任务使用文件约定库中找到的 [TaskOutputStorage][net_taskoutputstorage] 类将输出保存到该容器。
+在 Azure 存储中准备一个容器后，任务可以使用文件约定库中的[TaskOutputStorage][net_taskoutputstorage]类将输出保存到容器。
 
-在任务代码中，请先创建一个 [TaskOutputStorage][net_taskoutputstorage] 对象，然后，当任务完成其工作时，会调用 [TaskOutputStorage][net_taskoutputstorage].[SaveAsync][net_saveasync] 方法将其输出保存到 Azure 存储。
+在任务代码中，首先创建一个[TaskOutputStorage][net_taskoutputstorage]对象，然后当任务完成其工作时，请调用[TaskOutputStorage][net_taskoutputstorage]。[SaveAsync][net_saveasync]方法将其输出保存到 Azure 存储。
 
 ```csharp
 CloudStorageAccount linkedStorageAccount = new CloudStorageAccount(myCredentials);
@@ -114,13 +114,13 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 以后在 Batch 中查询给定任务的已保存输出时，可以使用这些输出类型来指定要列出哪种类型的输出。 换而言之，列出某个任务的输出时，可以根据某种输出类型来筛选列表。 例如，“列出任务 *109* 的预览输出。” 本文稍后的“检索输出”部分中会详细介绍如何列出和检索输出。
 
 > [!TIP]
-> 输出种类还决定了特定文件在 Azure 门户中的显示位置：TaskOutput 类别的文件显示在“任务输出文件”下，TaskLog 文件显示在“任务日志”下。
+> 输出类型还会确定特定的文件将显示在 Azure 门户中的哪个位置：*TaskOutput* 类别的文件显示在“任务输出文件”下面，*TaskLog* 文件显示在“任务日志”下面。
 
 ### <a name="store-job-outputs"></a>存储作业输出
 
 除了存储任务输出以外，还可以存储与整个作业关联的输出。 例如，在电影渲染作业的合并任务中，可以将完全渲染的电影保存为作业输出。 作业完成后，客户端应用程序可以列出并检索该作业的输出，而不需要查询各个任务。
 
-通过调用 [JobOutputStorage][net_joboutputstorage].[SaveAsync][net_joboutputstorage_saveasync] 方法存储作业输出，并指定 [JobOutputKind][net_joboutputkind] 和文件名：
+通过调用[JobOutputStorage][net_joboutputstorage]存储作业输出。[SaveAsync][net_joboutputstorage_saveasync]方法，并指定[JobOutputKind][net_joboutputkind]和 filename：
 
 ```csharp
 CloudJob job = new JobOutputStorage(acct, jobId);
@@ -130,11 +130,11 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobOutput, "mymovie.mp4");
 await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4");
 ```
 
-与用于任务输出的 TaskOutputKind 类型一样，可以使用 [JobOutputKind][net_joboutputkind] 类型对作业的持久保存文件分类。 以后可以使用此参数查询（列出）特定的输出类型。 **JobOutputKind** 类型包括输出和预览类别，并支持创建自定义类别。
+与任务输出的**TaskOutputKind**类型一样，可以使用[JobOutputKind][net_joboutputkind]类型对作业的持久文件进行分类。 以后可以使用此参数查询（列出）特定的输出类型。 **JobOutputKind** 类型包括输出和预览类别，并支持创建自定义类别。
 
 ### <a name="store-task-logs"></a>存储任务日志
 
-除了在任务或作业完成时将文件保存到持久性存储以外，可能还需要保存执行某个任务期间更新的文件 &mdash; 例如，日志文件或 `stdout.txt` 和 `stderr.txt`。 为此，Azure Batch 文件约定库提供了 [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] 方法。 使用 [SaveTrackedAsync][net_savetrackedasync]，可以跟踪对节点上的文件所做的更新（按照指定的间隔），并将这些更新持久保存到 Azure 存储。
+除了在任务或作业完成时将文件保存到持久性存储以外，可能还需要保存执行某个任务期间更新的文件 &mdash; 例如，日志文件或 `stdout.txt` 和 `stderr.txt`。 为此，Azure Batch 文件约定库提供了[TaskOutputStorage][net_taskoutputstorage]。[SaveTrackedAsync][net_savetrackedasync]方法。 使用[SaveTrackedAsync][net_savetrackedasync]，可以跟踪对节点上的文件的更新（按指定的时间间隔），并将这些更新保存到 Azure 存储。
 
 在以下代码片段中, 我们将在执行任务期间, 每隔15秒使用 [SaveTrackedAsync][net_savetrackedasync] 更新 Azure 存储中的`stdout.txt`:
 
@@ -161,7 +161,7 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-带有注释的部分 `Code to process data and produce output file(s)` 是任务通常会执行的代码的占位符。 例如，代码可能会从 Azure 存储下载数据，并对其执行转换或计算。 此代码片段的重要部分演示了如何在 `using` 块中包装此类代码，以定期使用 [SaveTrackedAsync][net_savetrackedasync] 更新文件。
+带有注释的部分 `Code to process data and produce output file(s)` 是任务通常会执行的代码的占位符。 例如，代码可能会从 Azure 存储下载数据，并对其执行转换或计算。 此代码片段的重要部分演示了如何在 `using` 块中包装此类代码，以定期使用[SaveTrackedAsync][net_savetrackedasync]更新文件。
 
 节点代理是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 此 `using` 块的末尾必须有 `Task.Delay` 调用，确保节点代理有时间将标准输出的内容刷新到节点上的 stdout.txt 文件。 若没有此延迟，可能会遗漏最后几秒的输出。 并非所有文件都需要此延迟。
 
@@ -197,7 +197,7 @@ Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/
 若要在门户中显示输出文件，必须满足以下要求：
 
 1. 将 Azure 存储帐户链接到 Batch 帐户。
-1. 保存输出时遵循存储容器和文件的预定义命名约定。 可在文件约定库的[自述文件][github_file_conventions_readme]中找到这些约定的定义。 如果使用 [Azure Batch 文件约定][nuget_package]库来持久保存输出，则按文件约定标准来持久保存文件。
+1. 保存输出时遵循存储容器和文件的预定义命名约定。 可以在文件约定库的[自述][github_file_conventions_readme]文件中找到这些约定的定义。 如果使用[Azure Batch 文件约定][nuget_package]库来保存输出，则将根据文件约定标准保存文件。
 
 若要在 Azure 门户中查看任务输出文件和日志，请导航到要查看其输出的任务，然后单击“保存的输出文件”或“保存的日志”。 下图显示了 ID 为“007”的任务的“保存的输出文件”：
 
@@ -218,9 +218,9 @@ Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>获取适用于 .NET 的 Batch 文件约定库
 
-[NuGet][nuget_package] 上提供适用于 .NET 的 Batch 文件约定库。 该库使用新方法扩展 [CloudJob][net_cloudjob] 和 [CloudTask][net_cloudtask] 类。 另请参阅文件约定库的[参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files)。
+[NuGet][nuget_package]上提供了适用于 .Net 的批处理文件约定库。 库通过新方法扩展了[CloudJob][net_cloudjob]和[CloudTask][net_cloudtask]类。 另请参阅文件约定库的[参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files)。
 
-GitHub 上的用于 .NET 的 Microsoft Azure SDK 存储库中提供了文件约定库的[源代码][github_file_conventions]。 
+用于 .NET 的 Microsoft Azure SDK 存储库中的 GitHub 上提供了文件约定库的[源代码][github_file_conventions]。 
 
 ### <a name="explore-other-approaches-for-persisting-output-data"></a>探索保存输出数据的其他方法
 

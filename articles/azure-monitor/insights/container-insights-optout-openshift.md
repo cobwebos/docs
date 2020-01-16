@@ -3,12 +3,12 @@ title: 如何停止监视 Azure Red Hat OpenShift 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: e726d2d8254598869f1c6305421c674c870e3d31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97ca333f724dc4914dabda2912c4512a40520253
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404290"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977773"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>如何停止监视包含 Azure Monitor 容器的 Azure Red Hat OpenShift 群集
 
@@ -16,13 +16,13 @@ ms.locfileid: "75404290"
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，它指定要停止监视的配置，另一个包含配置为指定群集所部署到的 OpenShift 群集资源 ID 和 Azure 区域的参数值。 
+下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，它指定要停止监视的配置，另一个包含配置为指定群集所部署到的 OpenShift 群集资源 ID 和 Azure 区域的参数值。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
-* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
+* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="create-template"></a>创建模板
 
@@ -90,7 +90,7 @@ ms.locfileid: "75404290"
 
 5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹。
 
-6. 已做好部署此模板的准备。 
+6. 已做好部署此模板的准备。
 
 ### <a name="remove-the-solution-using-azure-cli"></a>使用 Azure CLI 删除解决方案
 
@@ -98,7 +98,7 @@ ms.locfileid: "75404290"
 
 ```azurecli
 az login   
-az account set --subscription "Subscription Name" 
+az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。
