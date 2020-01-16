@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703941"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979905"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题： Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -92,7 +92,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果删除了与 Azure AD DS 托管域关联的 Azure 订阅，则必须重新创建 Azure 订阅并 Azure AD DS 托管域。
 
-1. [创建 Azure 订阅](../billing/billing-create-subscription.md)。
+1. [创建 Azure 订阅](../cost-management-billing/manage/create-subscription.md)。
 1. 从现有的 Azure AD 目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。
 1. [创建 AZURE AD DS 托管域的替换](tutorial-create-instance.md)。
 

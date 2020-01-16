@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704548"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979516"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 
@@ -56,7 +56,7 @@ Azure 使用基于角色的访问控制（RBAC）来限制对资源的访问。 
 以下两个选项解决了不匹配的目录错误：
 
 * 从现有的 Azure AD 目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。 在与要使用的虚拟网络相同的 Azure AD 目录中[创建替换 AZURE AD DS 托管域](tutorial-create-instance.md)。 准备就绪后，将之前加入到已删除域的所有计算机加入到重新创建的托管域。
-* 将包含虚拟网络的[Azure 订阅移](../billing/billing-subscription-transfer.md)到与 Azure AD DS 托管域相同的 Azure AD 目录中。
+* 将包含虚拟网络的[Azure 订阅移](../cost-management-billing/manage/billing-subscription-transfer.md)到与 Azure AD DS 托管域相同的 Azure AD 目录中。
 
 ## <a name="next-steps"></a>后续步骤
 

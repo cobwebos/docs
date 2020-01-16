@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442593"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045584"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "75442593"
 可以通过两种方式生成开发人员门户：
 
 - **托管版本**-通过编辑和自定义门户，该门户内置于 API 管理实例，并可通过 URL `<your-api-management-instance-name>.developer.azure-api.net`进行访问。 请参阅[此文档一文](api-management-howto-developer-portal-customize.md)，了解如何访问和自定义托管门户。
-- **自承载版本**-通过在 API 管理实例之外部署和自我托管你的门户。 此方法允许您编辑门户的基本代码并扩展提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库，其中包含门户的源代码][1]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
+- **自承载版本**-通过在 API 管理实例之外部署和自我托管你的门户。 此方法允许您编辑门户的基本代码并扩展提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库中的门户源代码][1]和[实现小组件教程][4]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
@@ -101,6 +101,10 @@ ms.locfileid: "75442593"
 旧的开发人员和发布者门户现在是*旧*功能，它们仅接收安全更新。 新功能仅在新版开发人员门户中实现。
 
 旧门户的弃用将单独发布。 如果你有疑问、问题或意见，请[在专用 GitHub 问题中](https://github.com/Azure/api-management-developer-portal/issues/121)提出。
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户中不支持我需要的功能
+
+使用自承载版本并[实现你自己的小组件][4]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>如何自动部署门户？
 
@@ -216,6 +220,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 - [访问和自定义托管开发人员门户](api-management-howto-developer-portal-customize.md)
 - [设置门户的自承载版本][2]
+- [实现自己的小组件][4]
 
 浏览其他资源：
 
@@ -225,3 +230,4 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

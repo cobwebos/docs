@@ -1,14 +1,14 @@
 ---
 title: 查看服务提供商活动
 description: 客户可以查看记录的活动，查看服务提供商通过 Azure 委派的资源管理执行的操作。
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749171"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046113"
 ---
 # <a name="view-service-provider-activity"></a>查看服务提供商活动
 
@@ -24,6 +24,9 @@ ms.locfileid: "75749171"
 在活动日志中，你将看到操作的名称及其状态，以及执行该操作的日期和时间。 "**按启动的事件**" 列显示哪个用户执行了该操作，无论该操作是由服务提供商的租户中的用户通过 Azure 委派的资源管理还是客户自己的租户中的用户。 请注意，将显示用户的名称，而不是该用户分配给该订阅的租户或角色。
 
 记录的活动在过去90天的 Azure 门户中可用。 若要了解如何存储超过90天的此数据，请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](../../azure-monitor/platform/activity-log-collect.md)
+
+> [!NOTE]
+> 服务提供商提供的用户出现在活动日志中，但这些用户及其角色分配不会显示在**访问控制（IAM）** 中或通过 api 检索角色分配信息。
 
 ## <a name="set-alerts-for-critical-operations"></a>为关键操作设置警报
 

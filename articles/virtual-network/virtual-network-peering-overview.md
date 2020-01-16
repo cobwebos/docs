@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646738"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980107"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -34,7 +34,7 @@ Azure 支持以下类型的对等互连：
 * 一个虚拟网络中的资源与另一个虚拟网络中的资源进行通信的能力。
 * 跨 Azure 订阅、Azure Active Directory 租户、部署模型和 Azure 区域之间的虚拟网络之间传输数据的功能。
 * 通过 Azure 资源管理器对等互连虚拟网络的功能。
-* 能够将通过资源管理器创建的虚拟网络对等互连到通过经典部署模型创建的虚拟网络。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+* 能够将通过资源管理器创建的虚拟网络对等互连到通过经典部署模型创建的虚拟网络。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 * 在创建对等互连之时或之后，虚拟网络中的资源不会出现停机的现象。
 
 对等虚拟网络之间的网络流量是专用的。 虚拟网络之间的流量仅限于 Microsoft 主干网络。 在虚拟网络之间通信不需公共 Internet、网关或加密。

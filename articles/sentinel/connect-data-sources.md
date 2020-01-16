@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610601"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976107"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -97,7 +97,7 @@ Azure Sentinel 支持以下数据连接方法：
 | **Data type** | **如何连接** | **数据连接器？** | **注释** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [连接 AWS](connect-aws.md) | V | |
-| AzureActivity | [连接 Azure 活动](connect-azure-activity.md)和[活动日志概述](../azure-monitor/platform/activity-logs-overview.md)| V | |
+| AzureActivity | [连接 Azure 活动](connect-azure-activity.md)和[活动日志概述](../azure-monitor/platform/platform-logs-overview.md)| V | |
 | AuditLogs | [连接 Azure AD](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [连接 Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure 诊断](../firewall/tutorial-diagnostics.md) | V | |
@@ -105,7 +105,7 @@ Azure Sentinel 支持以下数据连接方法：
 | AzureNetworkAnalytics_CL  | [流量分析架构](../network-watcher/traffic-analytics.md) [流量分析](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [连接 CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [连接 Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [连接 Windows 安全事件](connect-windows-security-events.md)  | V | 有关不安全协议工作簿的信息，请参阅[不安全协议工作簿设置](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| SecurityEvents | [连接 Windows 安全事件](connect-windows-security-events.md)  | V | 有关不安全协议工作簿的信息，请参阅[不安全协议工作簿设置](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
 | Syslog | [连接 Syslog](connect-syslog.md) | V | |
 | Microsoft Web 应用程序防火墙 (WAF) - (AzureDiagnostics) |[连接 Microsoft Web 应用程序防火墙](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [连接 Symantec](connect-symantec.md) | V | |

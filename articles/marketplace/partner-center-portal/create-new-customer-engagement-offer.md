@@ -1,19 +1,19 @@
 ---
 title: 在商业应用商店中，为客户参与 & PowerApps 产品/服务创建新的 Dynamics 365
 description: 如何创建新的 Dynamics 365 for Customer Engagement & PowerApps 产品/服务在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划（在 Microsoft 合作伙伴中心使用商用 Marketplace 门户）进行列出或销售。
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: 354bd8520977ee7533f7902255a7c8ecbab11e19
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 01/13/2020
+ms.openlocfilehash: 9a2237c0cea5fcc67e093709a0b42193b7326d1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779988"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045989"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建新的 Dynamics 365 & PowerApps 产品/服务
 
@@ -24,7 +24,7 @@ ms.locfileid: "75779988"
 ![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
 >[!Note]
-> 发布产品/服务后，将仅在系统中更新对合作伙伴中心提供的产品/服务，并在重新发布后存储。 进行更改后，请确保提交产品/服务进行发布。
+> 发布产品/服务后，将仅在系统中更新对合作伙伴中心提供的产品/服务，并在重新发布后存储。 请确保在进行更改后提交产品/服务进行发布。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
@@ -32,7 +32,7 @@ ms.locfileid: "75779988"
 
 ### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
-- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板（如果适用）的 URL 地址中，客户将可以看到此 ID。 产品 ID 必须是小写字母数字字符（包括连字符和下划线，但不能包含空格）。 这限制为50个字符，并且在你选择 "**创建**" 后将无法更改。  例如，如果您在此处输入了 "*测试/服务-1* "，则 "产品/服务 URL" 将 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板（如果适用）的 URL 地址中，客户将可以看到此 ID。 产品 ID 必须是小写字母数字字符（包括连字符和下划线，但不能包含空格）。 ID 限制为50个字符，并且在你选择 "**创建**" 后将无法更改。 例如，如果您在此处输入了 "*测试/服务-1* "，则 "产品/服务 URL" 将 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 
 - **产品/服务别名**：用于引用合作伙伴中心内的产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于将向客户显示的产品/服务名称和其他值。 选择 "**创建**" 后，不能更改此值。
 
@@ -88,17 +88,17 @@ ms.locfileid: "75779988"
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-有关详细信息，请参阅[线索管理概述](./commercial-marketplace-get-customer-leads.md)。
+有关详细信息，请参阅[潜在客户管理概述](./commercial-marketplace-get-customer-leads.md)。
 
 请记住在转到下一节之前**保存**。
 
 ## <a name="properties"></a>属性
 
-使用 "**属性**" 页，可以定义用于对 marketplace、应用版本以及支持产品/服务的法律合同进行分组的类别和行业。 完成此页后，选择 "**保存**"。 
+使用 "**属性**" 页，可以定义用于对 marketplace、应用版本以及支持产品/服务的法律合同进行分组的类别和行业。 完成此页后，选择 "**保存**"。
 
 ### <a name="category"></a>类别
 
-选择最小值，最多三个类别。 这些内容将用于将你的产品/服务放入相应的 marketplace 搜索区域。 在产品/服务描述中，请务必了解你的产品/服务如何支持这些类别。 
+选择最小值，最多三个类别。 此**类别**用于将产品/服务放入相应的 marketplace 搜索区域。 在产品/服务描述中，请务必了解你的产品/服务如何支持这些类别。
 
 ### <a name="industry"></a>行业
 
@@ -110,13 +110,13 @@ ms.locfileid: "75779988"
 
 ### <a name="app-version"></a>应用版本
 
-输入产品的版本号。 客户将在产品/服务的详细信息页上列出此版本。 如果只是由于市场营销/描述性更改而更新版本号，请选中 "**仅市场营销更改**" 框。 这允许产品/服务跳过认证和预配阶段。
+输入产品的版本号。 客户将在产品/服务的详细信息页上列出此版本。 如果只是由于市场营销/描述性更改而更新版本号，请选中 "**仅市场营销更改**" 框。 此选项允许产品/服务跳过认证和预配阶段。
 
 ### <a name="standard-contract"></a>标准协定
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 提供了标准合同模板，以帮助促进 marketplace 中的事务。 
+为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 提供了标准合同模板，以帮助促进 marketplace 中的事务。
 
-您可以选择在标准合同下提供您的软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。 
+您可以选择在标准合同下提供您的软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。
 
 可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178
 
@@ -128,7 +128,7 @@ ms.locfileid: "75779988"
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-产品/服务列表页显示你的产品/服务将列出的语言。 请注意，目前只有**英语（美国）** 是可用的选项。
+产品/服务列表页显示你的产品/服务将列出的语言。 目前，只有**英语（美国）** 是可用的选项。
 
 需要为每种语言/市场定义 marketplace 详细信息（产品/服务名称、说明、图像等）。 选择语言/市场名称以提供此信息。
 
@@ -141,22 +141,56 @@ ms.locfileid: "75779988"
 
 ### <a name="short-description"></a>简短说明
 
-提供产品/服务的简短说明（最多100个字符）。 这可以用在 marketplace 搜索结果中。
+提供产品/服务的简短说明（最多100个字符）。 此说明可用于 marketplace 搜索结果中。
+
+
+
+
+
+
+
+
+
+
 
 ### <a name="description"></a>Description
 
-提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。 
+提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。
 
 编写说明的一些提示：  
 
-- 在前几句描述中清晰描述产品/服务的价值主张。 在价值主张中包括以下内容：
+- 在前几句描述中清晰描述产品/服务的价值主张。 在价值主张中包含以下信息：
   - 该产品的说明
   - 从产品中受益的用户类型
   - 产品地址的客户需求或难点
 - 请牢记，前几句话可能在搜索引擎结果中显示。  
 - 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。  
-- 尽可能多使用行业特定用语或基于优势的措辞。 
+- 尽可能多使用行业特定用语或基于优势的措辞。
 - 请考虑使用 HTML 标记来设置说明格式，并使其更具吸引力。
+
+若要使您的产品/服务说明更具吸引力，请使用富文本编辑器来设置说明格式。
+
+![使用富文本编辑器](./media/text-editor2.png)
+
+使用以下说明来使用富文本编辑器：
+
+- 若要更改内容的格式，请突出显示要设置格式的文本并选择文本样式，如下所示：
+
+     ![使用富文本编辑器更改文本格式](./media/text-editor3.png)
+
+- 若要向文本添加项目符号列表或编号列表，请使用以下选项：
+
+     ![使用富文本编辑器添加列表](./media/text-editor4.png)
+
+- 若要在文本中添加或删除缩进，请使用以下选项：
+
+     ![使用富文本编辑器缩进](./media/text-editor5.png)
+
+
+
+
+
+
 
 ### <a name="search-keywords"></a>搜索关键字
 
@@ -218,16 +252,14 @@ ms.locfileid: "75779988"
 
 ### <a name="markets"></a>市场
 
-此部分使你可以指定提供产品/服务的市场。 为此，请选择 "**编辑市场"。** 这将显示**市场选择**弹出窗口。
+此部分使你可以指定提供产品/服务的市场。 为此，请选择 "**编辑市场**"，这将显示**市场选择**弹出窗口。
 
 默认情况下，未选择市场，但你必须至少选择一个市场才能发布产品/服务。 单击 "**全选**" 以使你的产品/服务可在每个市场中使用，或者选择想要添加的特定市场。 完成后，请选择 "**保存**"。
 
-请注意，此处的选择仅适用于新的购置;如果某个人在某个市场中已经有了您的应用程序，后来又删除了该市场，则该市场上已有该产品/服务的人员可以继续使用该产品/服务，但该市场上的新客户都无法获得您的产品/服务。
+此处的选择仅适用于新的收购;如果有人在某个市场上已经有了您的应用程序，后来又删除了该市场，则该市场上已有该产品/服务的人员可以继续使用该产品/服务，但该市场上的新客户将无法获得您的产品/服务。
 
 > [!IMPORTANT]
-> 你需要负责满足任何本地法律要求，即使这些要求未在此处或合作伙伴中心列出。
-
-请记住，即使选择了所有市场，本地法律和限制或其他因素也可能会阻止某些国家和地区列出某些产品/服务。
+> 你需要负责满足任何本地法律要求，即使这些要求未在此处或合作伙伴中心列出。 即使选择了所有市场，本地法律和限制或其他因素也可能会阻止某些国家和地区列出某些产品/服务。
 
 ### <a name="preview-audience"></a>预览受众
 
@@ -245,7 +277,7 @@ ms.locfileid: "75779988"
 
 ### <a name="requires-s2s-outbound-and-crm-secure-store-access"></a>需要 S2S 出站和 CRM 安全存储区访问
 
-选中此框可启用 CRM 安全存储或服务器到服务器（S2S）出站访问的配置。 请注意，在认证阶段，此功能需要从 Dynamics 365 团队专门考虑。 Microsoft 将与你取得联系，以完成附加的步骤来支持此功能。
+选中此框可启用 CRM 安全存储或服务器到服务器（S2S）出站访问的配置。 此功能要求在认证阶段需要特别注意 Dynamics 365 团队。 Microsoft 将与你取得联系，以完成附加的步骤来支持此功能。
 
 ### <a name="application-configuration-url"></a>应用程序配置 URL
 
@@ -290,7 +322,7 @@ ms.locfileid: "75779988"
 
 - **测试驱动器 Azure 资源管理器模板**：上传包含 Azure 资源管理器模板的 .zip。  若要详细了解如何创建 Azure 资源管理器模板，请参阅快速入门文章[使用 Azure 门户创建和部署 azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
-- "**测试驱动器持续时间**（必需）"：输入测试驱动器将保持活动状态的时间长度（以小时为单位）。 此时间段结束后，体验版会自动终止。 此持续时间只能设置为整小时数（例如 "2" 小时，"1.5" 无效）。
+- "**测试驱动器持续时间**（必需）"：输入测试驱动器将保持活动状态的时间长度（以小时为单位）。 此时间段结束后，体验版会自动终止。 此持续时间只能设置为整小时数（例如，"2" 小时;"1.5" 无效。
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 的技术配置测试驱动器
 
@@ -298,13 +330,13 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **最大并发测试驱动器**数（必需）：设置一次可以使用您的测试驱动器的最大客户数。 在测试驱动器处于活动状态时，每个并发用户将使用 Dynamics 365 许可证，因此你将需要确保有足够的可用许可证来支持最大限制集。 建议的值为 3-5。
 
-- **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间只能设置为整小时数（例如 "2" 小时，"1.5" 无效）。  如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
+- **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间只能设置为整小时数（例如，"2" 小时;"1.5" 无效。 如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
 
 - **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) 。
 
 - **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
 
-- **角色名称**（必需）：提供自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
+- **角色名称**（必需）：提供自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 此安全角色名称将在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>逻辑应用的技术配置测试驱动器
 
@@ -328,9 +360,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ### <a name="deployment-subscription-details"></a>部署订阅详细信息
 
-若要代表你部署测试驱动器，请创建并提供一个单独的唯一 Azure 订阅。 （对于 Power BI 测试驱动器不是必需的）。
+若要代表你部署测试驱动器，请创建并提供单独的唯一 Azure 订阅（Power BI 测试驱动器不需要）。
 
-- **Azure 订阅 id** （azure 资源管理器和逻辑应用需要）：输入订阅 id 可授予对 azure 帐户服务的访问权限，以供资源使用情况报告和计费。 如果还没有 Azure 订阅，请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-5ab6-6789-1h234g764ghty"）。
+- **Azure 订阅 id** （azure 资源管理器和逻辑应用需要）：输入订阅 id 可授予对 azure 帐户服务的访问权限，以供资源使用情况报告和计费。 如果还没有 Azure 订阅，请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-1234-5ab6-6789-1h234g764ghty"）。
 
 - **Azure AD 租户 id** （必需）：输入 AZURE ACTIVE DIRECTORY （AD）[租户 id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用域名 URL 查找你组织的租户 ID，网址为： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 
@@ -338,11 +370,11 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **Azure AD 应用 id** （必需）：输入 AZURE ACTIVE DIRECTORY （AD）[应用程序 id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找列出的**应用程序 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
 
-- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择左侧菜单中的 " **Azure Active Directory** " 选项卡，选择 "**应用注册**"，然后选择你的测试驱动器应用。 接下来，选择 "**证书和密码**"，选择 "**新建客户端密码**"，输入描述，选择 "**永不** **过期**"，然后选择 "**添加**"。 请确保复制值。 （在执行此操作之前，请勿导航离开页面，否则将无法访问此值。）
+- **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择左侧菜单中的 " **Azure Active Directory** " 选项卡，选择 "**应用注册**"，然后选择你的测试驱动器应用。 接下来，选择 "**证书和密码**"，选择 "**新建客户端密码**"，输入描述，选择 "**永不** **过期**"，然后选择 "**添加**"。 请确保复制值。 请在复制值之前不要离开页面，否则将无法访问值。）
 
 ### <a name="test-drive-marketplace-listings"></a>测试驱动器 marketplace 列表
 
-"**测试驱动器**" 选项卡下的**Marketplace 列表**选项显示了可用的测试驱动器的语言。 请注意，当前只有**英语（美国）** 是可用的位置。 选择语言名称以输入描述测试驱动器体验的信息。
+"**测试驱动器**" 选项卡下的**Marketplace 列表**选项显示了可用的测试驱动器的语言。 目前，只有**英语（美国）** 是可用的位置。 选择语言名称以输入描述测试驱动器体验的信息。
 
 - **说明**（必需）：描述您的测试驱动器、要演示的内容、要浏览的功能，以及帮助用户确定是否获取您的产品/服务的相关信息。 最多可在此字段中输入3000个字符的文本。 
 
@@ -361,22 +393,22 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 ### <a name="key-usage-scenario"></a>密钥使用方案
 
-必须上传一个 .pdf 文件，其中列出了产品/服务（.pdf 格式）中列出的产品/服务的关键使用方案。 我们在为 marketplace 批准产品/服务之前，验证团队可能会验证这里列出的所有方案。
+需要上载一个 .pdf 文件，其中列出了产品/服务（.pdf 格式）中列出的产品/服务的关键使用方案。 我们在为 marketplace 批准产品/服务之前，验证团队可能会验证这里列出的所有方案。
 
 ## <a name="publish"></a>发布
 
 ### <a name="submit-offer-to-preview"></a>将产品/服务提交到预览版
 
-完成产品/服务的所有必需部分后，请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页。 
+完成产品/服务的所有必需部分后，请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页面。
 
-如果这是你首次发布此产品/服务，则可以：
+如果你是首次发布此产品/服务，则可以：
 
 - 请参阅产品/服务的每个部分的完成状态。
-    - *未开始*-表示该部分尚未接触，需要完成。
-    - *不完整*-表示部分包含需要修复的错误或需要提供更多信息。 请返回到部分并对其进行更新。
+    - "*未开始*"-表示部分尚未被触摸并且应已完成。
+    - *不完整*-表示部分包含需要修复的错误或需要提供更多信息。 返回到部分并对其进行更新。
     - *Complete* -表示该部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
 - 在 "**认证说明**" 部分中，向认证团队提供测试说明，以确保正确测试应用程序，以及任何有助于了解应用程序的补充说明。
-- 通过选择 "**提交**" 提交产品/服务进行发布。 我们将向你发送一封电子邮件，告知你该产品/服务的预览版本何时可供你查看和批准。 你必须返回到合作伙伴中心，并选择 "产品 **/** 服务"，以便将你的产品/服务发布到公共（或专用用户）。
+- 通过选择 "**提交**" 提交产品/服务进行发布。 我们将向你发送一封电子邮件，告知你该产品/服务的预览版本何时可供你查看和批准。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务" 以发布到公共（如果是专用受众）。
 
 ## <a name="next-steps"></a>后续步骤
 

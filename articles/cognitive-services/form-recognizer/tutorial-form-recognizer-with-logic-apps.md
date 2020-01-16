@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446474"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981266"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>教程：使用表单识别器和 Azure 逻辑应用分析发票
 
@@ -52,7 +52,7 @@ ms.locfileid: "75446474"
 
 使用此容器上传训练模型所需的示例数据。
 
-1. 按照[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)中的说明创建存储帐户。 使用“formrecostorage”作为存储帐户名  。
+1. 按照[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)中的说明创建存储帐户。 使用“formrecostorage”作为存储帐户名  。
 1. 按照[创建 Azure blob 容器](../../storage/blobs/storage-quickstart-blobs-portal.md)中的说明在 Azure 存储帐户中创建容器。 使用“formrecocontainer”作为容器名称  。 请确保将公共访问级别设置为“容器(对容器和 Blob 进行匿名读取访问)”  。
 
     > [!div class="mx-imgBorder"]

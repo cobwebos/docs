@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707106"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980850"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -46,7 +46,7 @@ Key Vault 是在所有 Azure AD 租户中预先注册的 Microsoft 应用程序�
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -54,7 +54,7 @@ Key Vault 是在所有 Azure AD 租户中预先注册的 Microsoft 应用程序�
 
 - [安装 Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.6.0)。
 - [创建密钥保管库](quick-create-powershell.md)
-- [创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)。 存储帐户名称只能使用小写字母和数字。 名称长度必须介于3到24个字符之间。
+- [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell)。 存储帐户名称只能使用小写字母和数字。 名称长度必须介于3到24个字符之间。
       
 
 ## <a name="manage-storage-account-keys"></a>管理存储帐户密钥

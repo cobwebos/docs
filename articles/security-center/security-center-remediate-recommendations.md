@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5217c4c7b68c487d7285ec03700266ad2768606d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571524"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981913"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure 安全中心的补救建议
 
-建议提供有关如何更好地保护资源的建议。 按照建议中提供的补救步骤来实施建议。 
+建议提供有关如何更好地保护资源的建议。 按照建议中提供的补救步骤来实施建议。
 
 ## 修正步骤<a name="remediation-steps"></a>
 
@@ -30,7 +30,7 @@ ms.locfileid: "73571524"
 
 1. 在列表中，单击 "建议"。
 
-1. 按照“修正步骤”部分中的说明进行操作。 每个建议都有其自己的一组指令。 以下屏幕截图显示了用于将应用程序配置为仅允许通过 HTTPS 的流量的补救步骤。
+1. 按照**更正步骤**部分中的说明进行操作。 每个建议都有其自己的一组指令。 以下屏幕截图显示了用于将应用程序配置为仅允许通过 HTTPS 的流量的补救步骤。
 
     ![建议详细信息](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
 
@@ -46,12 +46,12 @@ ms.locfileid: "73571524"
 
     [![选择 "快速修复"！](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. 从 "不**正常资源**" 选项卡中，选择要对其实施建议的资源，然后单击 "**修正**"。 
+1. 从 "不**正常资源**" 选项卡中，选择要对其实施建议的资源，然后单击 "**修正**"。
 
     > [!NOTE]
     > 某些列出的资源可能已禁用，因为你没有适当的权限来修改它们。
 
-1. 在确认框中，阅读修正详细信息和影响。 
+1. 在确认框中，阅读修正详细信息和影响。
 
     ![快速修复](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "73571524"
 
 ## 活动日志中的快速修复修补日志记录<a name="activity-log"></a>
 
-更正操作使用模板部署或 REST 修补程序 API 调用对资源应用配置。 这些操作记录在[Azure 活动日志](../azure-resource-manager/resource-group-audit.md)中。
+更正操作使用模板部署或 REST 修补程序 API 调用对资源应用配置。 这些操作记录在[Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)中。
 
 
 ## <a name="recommendations-with-quick-fix-remediation"></a>有关快速修复修补的建议
@@ -76,11 +76,11 @@ ms.locfileid: "73571524"
 |---|---|
 |应启用 SQL server 审核|此操作将在这些服务器及其数据库上启用 SQL 审核。 <br>**注意**： <ul><li>对于所选 SQL server 的每个区域，将创建用于保存审核日志的存储帐户，并由该区域中的所有服务器共享。</li><li>若要确保适当的审核，请不要删除或重命名资源组或存储帐户。</li></ul>|
 |应在 SQL 托管实例上启用高级数据安全性|此操作将在选定的 SQL 托管实例上启用 SQL 高级数据安全性（ADS）。 <br>**注意**： <ul><li>对于所选 SQL 托管实例的每个区域和资源组，该区域中的所有实例都将创建并共享用于保存扫描结果的存储帐户。</li><li> 每个 SQL 托管实例的广告收费为 $15。</li></ul>|
-|应在 SQL 托管实例上启用漏洞评估|此操作将对选定的 SQL 托管实例启用 SQL 漏洞评估。 <br>**注意**：<ul><li>SQL 漏洞评估是 SQL 高级数据安全（ADS）包的一部分。 如果尚未启用广告，将在托管实例上自动启用。</li><li>对于所选 SQL 托管实例的每个区域和资源组，该区域中的所有实例都将创建并共享用于存储扫描结果的存储帐户。</li><li>每个 SQL server 的广告收费为 $15。</li></ul>||
+|应对 SQL 托管实例启用漏洞评估|此操作将对选定的 SQL 托管实例启用 SQL 漏洞评估。 <br>**注意**：<ul><li>SQL 漏洞评估是 SQL 高级数据安全（ADS）包的一部分。 如果尚未启用广告，将在托管实例上自动启用。</li><li>对于所选 SQL 托管实例的每个区域和资源组，该区域中的所有实例都将创建并共享用于存储扫描结果的存储帐户。</li><li>每个 SQL server 的广告收费为 $15。</li></ul>||
 |应在 SQL server 上启用高级数据安全性|此操作将在所选服务器及其数据库上启用高级数据安全性（ADS）。 <br>**注意**：<ul><li>对于所选 SQL server 的每个区域和资源组，该区域中的所有服务器都将创建并共享用于存储扫描结果的存储帐户。 <</li><li>每个 SQL server 的广告收费为 $15。</li></ul>||
 |应在 SQL server 上启用漏洞评估|此操作将对所选服务器及其数据库启用 SQL 漏洞评估。 <br>**注意**：<ul><li>SQL 漏洞评估是 SQL 高级数据安全（ADS）包的一部分。 如果尚未启用广告，将在 SQL server 上自动启用。</li><li>对于所选 SQL server 的每个区域和资源组，该区域中的所有实例都将创建并共享用于存储扫描结果的存储帐户。</li><li>每个 SQL server 的广告收费为 $15。</li></ul>||
-|应在 SQL 数据库上启用透明数据加密|此操作对所选数据库启用 SQL Database 透明数据加密（TDE）。 <br>**注意**：默认情况下，将使用服务托管的 TDE 密钥。 
-|应该启用安全传输到存储帐户|此操作会将你的存储帐户安全更新为仅允许安全连接请求。 （HTTPS）。 <br>**注意**：<ul><li>使用 HTTP 的任何请求都将被拒绝。</li><li>使用 Azure 文件服务时，如果不加密，则连接将失败，包括使用 SMB 2.1 的方案、不加密的 SMB 3.0 以及 Linux SMB 客户端的某些种类。 了解详细信息。</li></ul>|
+|应在 SQL 数据库上启用透明数据加密|此操作对所选数据库启用 SQL Database 透明数据加密（TDE）。 <br>**注意**：默认情况下，将使用服务托管的 TDE 密钥。
+|应该启用安全传输到存储帐户|此操作会将你的存储帐户安全更新为仅允许安全连接请求。 （HTTPS）。 <br>**注意**：<ul><li>使用 HTTP 的任何请求都将被拒绝。</li><li>使用 Azure 文件服务时，如果不加密，则连接将失败，包括使用 SMB 2.1 的方案、不加密的 SMB 3.0 以及 Linux SMB 客户端的某些种类。 了解更多。</li></ul>|
 |只能通过 HTTPS 访问 Web 应用程序|此操作会将所选资源的所有流量从 HTTP 重定向到 HTTPS。 <br>**注意**：<ul><li>没有 SSL 证书的 HTTPS 终结点将在浏览器中显示 "隐私错误"。 因此，拥有自定义域的用户需要验证其是否已设置 SSL 证书。</li><li>请确保数据包和 web 应用程序防火墙保护应用服务，允许 HTTPS 会话转发。</li></ul>|
 |应该只能通过 HTTPS 访问函数应用|此操作会将所选资源的所有流量从 HTTP 重定向到 HTTPS。 <br>**注意**：<ul><li>没有 SSL 证书的 HTTPS 终结点将在浏览器中显示 "隐私错误"。 因此，拥有自定义域的用户需要验证其是否已设置 SSL 证书。</li><li>请确保数据包和 web 应用程序防火墙保护应用服务，允许 HTTPS 会话转发。</li></ul>|
 |只能通过 HTTPS 访问 API 应用|此操作会将所选资源的所有流量从 HTTP 重定向到 HTTPS。 <br>**注意**：<ul><li>没有 SSL 证书的 HTTPS 终结点将在浏览器中显示 "隐私错误"。 因此，拥有自定义域的用户需要验证其是否已设置 SSL 证书。</li><li>请确保数据包和 web 应用程序防火墙保护应用服务，允许 HTTPS 会话转发。</li></ul>|

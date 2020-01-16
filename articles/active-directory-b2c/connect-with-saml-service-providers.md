@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763141"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043527"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -177,7 +178,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. 在 `<RelyingParty>` 元素之前添加以下 XML 代码段。 此 XML 将覆盖_signuporsignin.xml_用户旅程的业务流程步骤7。 如果通过添加或删除业务流程步骤来自定义用户旅程，请确保数字（在 `order` 元素中）与用户旅程中为令牌颁发者步骤指定的值对齐。
+1. 在 `<RelyingParty>` 元素之前添加以下 XML 代码段。 此 XML 将覆盖_signuporsignin.xml_用户旅程的业务流程步骤7。 如果是从初学者包中的不同文件夹启动的，或通过添加或删除业务流程步骤自定义用户旅程，请确保数字（在 `order` 元素中）与 "令牌颁发者" 步骤的 "用户旅程" 中指定的值相匹配（例如，在其他 starter pack 文件夹中，它的步骤号为4，用于 `LocalAccounts`，6 `SocialAccounts` 用于 `SocialAndLocalAccountsWithMfa`）。
 
     ```XML
     <UserJourneys>

@@ -3,7 +3,7 @@ title: 在 Azure 门户中创建帐户 - Azure Batch | Microsoft Docs
 description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -12,18 +12,18 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4eb6b0c64fc40dec48dc9103c67e8e4a0730d7e2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095717"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029803"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
-了解如何在 [Azure 门户][azure_portal]中创建 Azure Batch 帐户，以及如何选择适合计算方案的帐户属性。 了解在何处查找重要的帐户属性，例如访问密钥和帐户 URL。
+了解如何在[Azure 门户][azure_portal]中创建 Azure Batch 帐户，以及如何选择适合计算方案的帐户属性。 了解在何处查找重要的帐户属性，例如访问密钥和帐户 URL。
 
 有关批处理帐户和方案的背景，请参阅[功能概述](batch-api-basics.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "70095717"
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. 登录到 [Azure 门户][azure_portal]。
+1. 登录 [Azure 门户][azure_portal]。
 
 1. 选择“创建资源” > “计算” > “Batch 服务”。
 
@@ -41,19 +41,19 @@ ms.locfileid: "70095717"
 
     ![创建批处理帐户][account_portal]
 
-    a. **订阅**：要在其中创建 Batch 帐户的订阅。 如果只有一个订阅，则默认选择此项。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
-    b. **资源组**：为新 Batch 帐户选择现有的资源组，或选择创建一个新组。
+    b.保留“数据库类型”设置，即设置为“共享”。 **资源组**：为新批处理帐户选择现有的资源组，或选择创建一个新组。
 
-    c. **帐户名**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    c. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
-    d. **位置**：要在其中创建 Batch 帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
+    d.单击“下一步”。 **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
-    e. **存储帐户**：与 Batch 帐户关联的可选 Azure 存储帐户。 为获得最佳性能，建议使用常规用途 v2 存储帐户。 有关 Batch 中的所有存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中选择现有存储帐户，或者创建一个新帐户。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**：与批处理帐户关联的可选 Azure 存储帐户。 为获得最佳性能，建议使用常规用途 v2 存储帐户。 有关 Batch 中的所有存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中选择现有存储帐户，或者创建一个新帐户。
 
       ![创建存储帐户][storage_account]
 
-    f. **池分配模式**：在“高级”设置选项卡中，可将池分配模式指定为“Batch 服务”或“用户订阅”。 对于大多数情况，请接受默认值“Batch 服务”。
+    f. **池分配模式**：在 "**高级**设置" 选项卡中，你可以将池分配模式指定为**Batch 服务**或**用户订阅**。 在大多数情况下，接受默认**批处理服务**。
 
       ![Batch 池分配模式][pool_allocation]
 
@@ -83,7 +83,7 @@ ms.locfileid: "70095717"
 
 在用户订阅模式下创建第一个 Batch 帐户时，需将订阅注册到 Batch 中。 （如果已执行过此操作，请跳至下一部分。）
 
-1. 登录到 [Azure 门户][azure_portal]。
+1. 登录 [Azure 门户][azure_portal]。
 
 1. 选择“所有服务” > “订阅”，然后选择要用于 Batch 帐户的订阅。
 
@@ -104,17 +104,17 @@ ms.locfileid: "70095717"
 
     ![添加批处理权限][add_permission]
 
-### <a name="create-a-key-vault"></a>创建密钥保管库
+### <a name="create-a-key-vault"></a>创建 key vault
 
 在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://azure.microsoft.com/regions/services/)批处理的区域，也是订阅所支持的区域。
 
-1. 在 [Azure 门户][azure_portal]中，选择“新建” > “安全性” > “密钥保管库”。
+1. 在[Azure 门户][azure_portal]中，选择 "**新建** > **安全** > **Key Vault**"。
 
 1. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。 让其余设置保留默认值，然后选择“创建”。
 
-在用户订阅模式下创建 Batch 帐户时, 请使用密钥保管库的资源组。 指定**用户订阅**作为池分配模式, 选择密钥保管库, 并选中 "向密钥保管库授予 Azure Batch 访问权限" 框。 
+在用户订阅模式下创建 Batch 帐户时，请使用密钥保管库的资源组。 指定**用户订阅**作为池分配模式，选择密钥保管库，并选中 "向密钥保管库授予 Azure Batch 访问权限" 框。 
 
-如果希望手动授予对密钥保管库的访问权限, 请访问密钥保管库的 "**访问策略**" 部分, 并选择 "**添加访问策略**", 然后搜索**Microsoft Azure Batch**。 选择后, 你将需要使用下拉菜单配置**机密权限**。 必须至少为 Azure Batch 提供**Get**、 **List**、 **Set**和**Delete**权限。
+如果希望手动授予对密钥保管库的访问权限，请访问密钥保管库的 "**访问策略**" 部分，并选择 "**添加访问策略**"，然后搜索**Microsoft Azure Batch**。 选择后，你将需要使用下拉菜单配置**机密权限**。 必须至少为 Azure Batch 提供**Get**、 **List**、 **Set**和**Delete**权限。
 
 ![Azure Batch 的机密权限](./media/batch-account-create-portal/secret-permissions.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "70095717"
 
 默认情况下，不在用户订阅 Batch 帐户上设置核心配额。 核心配额必须手动设置，因为标准 Batch 核心配额不适用于用户订阅模式下的帐户。
 
-1. 在 [Azure 门户][azure_portal]中选择用户订阅模式 Batch 帐户，以便显示其设置和属性。
+1. 在[Azure 门户][azure_portal]中，选择用户订阅模式批处理帐户以显示其设置和属性。
 
 1. 在左侧菜单中选择“配额”，以便查看和配置与 Batch 帐户相关联的核心配额。
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582084"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982161"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>使用多个缓存进行区域故障转移恢复
 
@@ -37,7 +37,7 @@ ms.locfileid: "73582084"
    1. 供缓存客户端使用的装载命令
 
    > [!NOTE]
-   > 可以通过[azure 资源管理器模板](../azure-resource-manager/template-deployment-overview.md)以编程方式或通过直接访问其 API 来创建 Azure HPC 缓存。 有关详细信息，请联系 Azure HPC 缓存团队。
+   > 可以通过[azure 资源管理器模板](../azure-resource-manager/templates/overview.md)以编程方式或通过直接访问其 API 来创建 Azure HPC 缓存。 有关详细信息，请联系 Azure HPC 缓存团队。
 
 ## <a name="failover-example"></a>故障转移示例
 
@@ -55,7 +55,7 @@ ms.locfileid: "73582084"
 
 所有客户端都需要装载新的缓存，即使客户端不受区域服务中断的影响。 新缓存有不同于旧缓存的装入地址。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 《 Azure 应用程序体系结构指南》中提供了有关如何[在区域范围的服务中断](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>)后进行恢复的详细信息。
 <!-- this should be an internal link instead of a URL but I can't find the tree  -->

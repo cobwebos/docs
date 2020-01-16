@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818892"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028390"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
 本文介绍如何将组织域从 Active Directory 联合身份验证服务 (AD FS) 迁移到密码哈希同步。
 
-可以[下载此文](https://aka.ms/ADFSTOPHSDPDownload)。
+> [!NOTE]
+> 更改身份验证方法需要规划、测试和可能的停机时间。 [过渡推出](how-to-connect-staged-rollout.md)提供一种替代方法，用于通过密码哈希同步来测试和逐步从联合迁移到云身份验证。
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>迁移到密码哈希同步的先决条件
 
@@ -135,7 +136,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 从联合标识转换为托管标识之前，请仔细检查目前如何将 AD FS 用于 Azure AD、Office 365 和其他应用程序（信赖方信任）。 具体而言，请考虑下表中所述的场景：
 
-| 如果 | 那么 |
+| 如果 | 则 |
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
@@ -313,7 +314,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    > [!IMPORTANT]
    > 此时，所有联合域将更改为托管身份验证。 密码哈希同步是新的身份验证方法。
 
-7. 在 Azure AD 门户中，选择“Azure Active Directory” **“Azure AD Connect”。**  > 
+7. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。
 8. 验证以下设置：
    * “联合身份验证”设置为“已禁用”。
    * “无缝单一登录”设置为“已启用”。
@@ -382,7 +383,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. 在 Azure AD 门户中，选择“Azure Active Directory” **“Azure AD Connect”。**  > 
+3. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。
 4. 运行以下命令，验证是否已将该域转换为托管域：
 
    ``` PowerShell
@@ -437,7 +438,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如果未将 AD FS 用于其他目的（即，其他信赖方信任），则现在可以安全解除 AD FS。
 
-### <a name="rollback"></a>回退
+### <a name="rollback"></a>回滚
 
 如果发现了不可快速解决的重大问题，可以选择将解决方案回滚到联合身份验证。
 

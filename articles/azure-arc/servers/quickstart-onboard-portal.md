@@ -6,22 +6,22 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: bobbytreed
 ms.author: robreed
-keywords: azure 自动化, DSC, powershell, desired state configuration, 更新管理, 更改跟踪, 库存, runbook, python, 图形, 混合, 加入
+keywords: azure 自动化、DSC、powershell、所需状态配置、更新管理、更改跟踪、库存、runbook、python、图形、混合、载入
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26c79db956b2703bf037fc6f7790d4ee13874410
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668679"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834249"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>快速入门：使用用于服务器的 Azure Arc 将计算机连接到 Azure - 门户
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在[用于服务器的 Azure Arc 概述](overview.md)中查看受支持的客户端和所需的网络配置。
 
@@ -58,7 +58,7 @@ ms.locfileid: "73668679"
 
 ![成功加入](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要从用于服务器的 Azure Arc 断开连接计算机，需要执行两个步骤。
 

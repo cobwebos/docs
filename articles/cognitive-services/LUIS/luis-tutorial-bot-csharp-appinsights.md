@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 036ecbbbd2ea562f3e809691a1b3af62578893f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9c47685253e2a70c7b5e947debaac6f5f3264b2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498975"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888288"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>教程：将 LUIS 结果从以 C# 编写的机器人添加到 Application Insights
 
@@ -24,13 +24,13 @@ ms.locfileid: "73498975"
 
 [!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Application Insights 中捕获机器人和语言理解数据
 > * 查询 Application Insights 中的语言理解数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 Azure 机器人服务机器人，在创建时已启用 Application Insights。
 * 从上一机器人 **[教程](luis-csharp-tutorial-bf-v4.md)** 中下载的机器人代码。 
@@ -162,7 +162,7 @@ ms.locfileid: "73498975"
 1. 在 Visual Studio 中构建并运行机器人。 
 1. 启动机器人模拟器并打开机器人。 此[步骤](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
 
-1. 提问机器人一个问题。 此[步骤](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
+1. 提问机器人一个问题。 此[步骤](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)在上一教程中提供。
 
 ## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
 
@@ -186,7 +186,7 @@ Application Insights 支持使用 [Kusto](https://docs.microsoft.com/azure/azure
     | extend utterance = tostring(customDimensions.LUIS_query)
     ```
 
-1. 运行该查询。 此处显示新列“首要意向”、“评分”和“陈述”。 选择“首要意向”列进行排序。
+1. 运行查询。 此处显示新列“首要意向”、“评分”和“陈述”。 选择“首要意向”列进行排序。
 
 详细了解 [Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 

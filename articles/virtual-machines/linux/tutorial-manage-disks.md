@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dc987fa1a3476b81b198726350d56333b53c795f
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034386"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780294"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -47,7 +47,7 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 
-若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 虚拟机的大小决定可附加到 VM 的数据磁盘数。 对于每个 VM vCPU，都可以附加四个数据磁盘。
+若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 虚拟机的大小决定可附加到 VM 的数据磁盘数。
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 
@@ -78,7 +78,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="attach-disk-at-vm-creation"></a>在 VM 创建时附加磁盘
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus

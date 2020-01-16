@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786989"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030141"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用
 
@@ -23,7 +23,16 @@ ms.locfileid: "74786989"
 * 接收来自另一个逻辑应用的 HTTPS 调用并对其作出响应。
 
 > [!NOTE]
-> 对于传入呼叫，请求触发器*仅*支持传输层安全性（TLS）1.2。 传出呼叫继续支持 TLS 1.0、1.1 和1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。
+> 对于传入呼叫，请求触发器*仅*支持传输层安全性（TLS）1.2。 传出呼叫继续支持 TLS 1.0、1.1 和1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。 对于传入调用，以下是受支持的密码套件：
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -37,7 +46,7 @@ ms.locfileid: "74786989"
 
 此内置触发器创建可*仅*接收传入 https 请求的手动可调用 https 终结点。 发生此事件时，触发器触发并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure 逻辑应用中通过 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
 1. 逻辑应用设计器打开后，在 "搜索" 框中输入 "http 请求" 作为筛选器。 从 "触发器" 列表中，选择 "**收到 HTTP 请求时**" 触发器，这是逻辑应用工作流中的第一步。
 
@@ -47,10 +56,10 @@ ms.locfileid: "74786989"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 需要 | 描述 |
+   | 属性名称 | JSON 属性名称 | 需要 | Description |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用并用于调用逻辑应用后生成的终结点 URL |
-   | **请求正文 JSON 架构** | `schema` | No | 描述传入请求正文中的属性和值的 JSON 架构 |
+   | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
    |||||
 
 1. 在 "**请求正文 JSON 架构**" 框中，选择性地输入描述传入请求中的正文的 JSON 架构，例如：
@@ -146,10 +155,10 @@ ms.locfileid: "74786989"
 
 1. 若要指定其他属性，请打开 "**添加新参数**" 列表，然后选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 需要 | 描述 |
+   | 属性名称 | JSON 属性名称 | 需要 | Description |
    |---------------|--------------------|----------|-------------|
-   | **方法** | `method` | No | 传入请求必须用于调用逻辑应用的方法 |
-   | **相对路径** | `relativePath` | No | 逻辑应用的终结点 URL 可以接受的参数的相对路径 |
+   | **方法** | `method` | 否 | 传入请求必须用于调用逻辑应用的方法 |
+   | **相对路径** | `relativePath` | 否 | 逻辑应用的终结点 URL 可以接受的参数的相对路径 |
    |||||
 
    此示例将添加**方法**属性：
@@ -178,7 +187,7 @@ ms.locfileid: "74786989"
 
 下面详细介绍了 Request 触发器的输出：
 
-| JSON 属性名称 | 数据类型 | 描述 |
+| JSON 属性名称 | 数据类型 | Description |
 |--------------------|-----------|-------------|
 | `headers` | 对象 | 描述请求中的标头的 JSON 对象 |
 | `body` | 对象 | 一个 JSON 对象，用于描述请求中的正文内容 |
@@ -220,11 +229,11 @@ ms.locfileid: "74786989"
 
    下面是有关可以在响应操作中设置的属性的详细信息。 
 
-   | 属性名称 | JSON 属性名称 | 需要 | 描述 |
+   | 属性名称 | JSON 属性名称 | 需要 | Description |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
-   | **标头** | `headers` | No | 一个 JSON 对象，描述要包括在响应中的一个或多个标头 |
-   | **正文** | `body` | No | 响应正文 |
+   | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包括在响应中的一个或多个标头 |
+   | **正文** | `body` | 否 | 响应正文 |
    |||||
 
 1. 若要指定其他属性（例如响应正文的 JSON 架构），请打开 "**添加新参数**" 列表，然后选择要添加的参数。

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931907"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982196"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -29,15 +29,15 @@ ms.locfileid: "74931907"
 必须在本地计算机上安装数据管理网关，以便将数据移入/移出本地数据存储。 可在与数据存储相同的计算机上安装网关，也可在不同的计算机上安装网关，只要网关能连接数据存储即可。
 
 > [!IMPORTANT]
-> 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 
+> 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
 以下演练介绍如何创建一个包含管道的数据工厂，该管道可将数据从本地 **SQL Server** 数据库移动到 Azure blob 存储。 在演练过程中，需要在计算机上安装并配置数据管理网关。
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>演练：将本地数据复制到云
-本演练将执行以下步骤： 
+本演练将执行以下步骤：
 
 1. 创建数据工厂。
-2. 创建数据管理网关。 
+2. 创建数据管理网关。
 3. 创建用于源和接收器数据存储的链接服务。
 4. 创建表示输入和输出数据的数据集。
 5. 创建包含复制活动的管道，用于移动数据。
@@ -46,8 +46,8 @@ ms.locfileid: "74931907"
 开始本演练之前，必须具备以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](https://azure.microsoft.com/pricing/free-trial/)一文。
-* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
-* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。 
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
+* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤使用 Azure 门户创建名为 **ADFTutorialOnPremDF** 的 Azure 数据工厂实例。
@@ -61,7 +61,7 @@ ms.locfileid: "74931907"
     ![添加到开始板](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Azure 数据工厂的名称必须是全局唯一的。 如果收到错误：**数据工厂名称“ADFTutorialOnPremDF”不可用**，请更改该数据工厂名称（例如改为“yournameADFTutorialOnPremDF”），并尝试再次创建。 执行本教程中的剩余步骤时，请使用此名称取代 ADFTutorialOnPremDF。
+   > Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“ADFTutorialOnPremDF”不可用**，请更改该数据工厂名称（例如改为“yournameADFTutorialOnPremDF”），并尝试再次创建。 执行本教程中的剩余步骤时，请使用此名称取代 ADFTutorialOnPremDF。
    >
    > 数据工厂的名称将来可能会注册为 DNS，因此将公开可见。
    >
@@ -117,7 +117,7 @@ ms.locfileid: "74931907"
 5. 等待几分钟，或一直等待直到看到以下通知消息：
 
     ![网关安装成功](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以便访问此实用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
+6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
 
     ![网关配置管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. 确认可以看到 `adftutorialgateway is connected to the cloud service` 消息。 底部状态栏显示带有**绿色复选标记**的“已连接到云服务”。
@@ -237,7 +237,7 @@ ms.locfileid: "74931907"
         }
     }     
     ```     
-   注意以下几点：
+   请注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
    * **tableName** 设置为 **emp**。
@@ -272,7 +272,7 @@ ms.locfileid: "74931907"
         }
      }
     ```   
-   注意以下几点：
+   请注意以下几点：
 
    * **type** 设置为 **AzureBlob**。
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**（已在步骤 2 中创建此链接服务）。
@@ -354,7 +354,7 @@ ms.locfileid: "74931907"
    >
    >
 
-   注意以下几点：
+   请注意以下几点：
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。

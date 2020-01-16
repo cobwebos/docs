@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462195"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981024"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
 
@@ -361,7 +361,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
-- [在订阅级别创建资源组和资源](../azure-resource-manager/deploy-to-subscription.md)
+- [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 801a6fc0602882d1af49c06bafcfd51942e6da2e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828360"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965655"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -57,7 +57,7 @@ ms.locfileid: "71828360"
 
 1. 在“项目详细信息”部分选择你的 Azure 订阅，然后选择“新建”以创建新的资源组。   键入 _SQLVM-RG_ 作为名称。
 
-   ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+   ![订阅](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
 1. 在“实例详细信息”下： 
     1. 键入 _SQLVM_ 作为**虚拟机名称**。 
@@ -128,7 +128,7 @@ ms.locfileid: "71828360"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/manage-resource-groups-portal.md)。
+如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

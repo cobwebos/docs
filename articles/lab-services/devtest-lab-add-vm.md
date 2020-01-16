@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162253"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976494"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -27,7 +27,7 @@ ms.locfileid: "70162253"
 本文还演示了如何在实验室中管理 VM 的项目。
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM 的步骤
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”，然后在“DEVOPS”部分中选择“开发测试实验室”。 如果在“DEVOPS”部分中选择了“开发测试实验室”旁边的 *（星号）， 此操作会将“开发测试实验室”添加到左侧导航菜单中，以便你下次可以轻松访问它。 然后，可以在左侧导航菜单中选择“开发测试实验室”。
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -39,7 +39,7 @@ ms.locfileid: "70162253"
 1. 在“虚拟机”页面的“基本设置”选项卡上，执行以下操作：
     1. 在“虚拟机名称”文本框中，输入 VM 的名称。 该文本框会使用唯一的自动生成名称进行预填充。 该名称对应于电子邮件地址中的用户名，后接一个唯一的 3 位数字。 此功能可节省每次创建计算机时考虑计算机名称和键入该名称的时间。 如果愿意，可以用自己选择的名称替代此自动填充的字段。 若要替代 VM 的自动填充名称，请在“虚拟机名称”文本框中输入名称。
     2. 输入在虚拟机上被授予了管理员权限的**用户名**。 使用唯一的自动生成名称预先填充计算机的“用户名”。 该名称对应于电子邮件地址中的用户名。 此功能可节省每次创建新计算机时确定用户名的时间。 同样，如果愿意，可以用自己选择的用户名替代此自动填充的字段。 若要替代用户名的自动填充值，请在“用户名”文本框中输入值。 此用户在虚拟机上被授予了管理员权限。
-    3. 如果要在实验室中创建第一个 VM，请输入用户的密码。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”。 默认密码保存在名为**VmPassword** 的密钥保管库中。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码。
+    3. 如果要在实验室中创建第一个 VM，请输入用户的密码。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”。 默认密码保存在名为“VmPassword”的密钥保管库中。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码。
 
         ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "70162253"
 
 若要了解如何创建项目，请参阅文章[了解如何创建自己的项目以用于开发测试实验室](devtest-lab-artifact-author.md)。
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中，选择要处理的 VM 所在的实验室。
 1. 选择“我的虚拟机”。
@@ -91,7 +91,7 @@ ms.locfileid: "70162253"
 1. 在“应用项目”窗格顶部，选择指示已添加到 VM 的项目数的链接。
 
     ![添加到 VM 的项目数](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. 在“已选项目”窗格上，将项目拖放为所需的顺序。 **注意：** 如果在拖动项目时遇到问题，请确保是从项目的左侧拖动。
+1. 在“已选项目”窗格上，将项目拖放为所需的顺序。 **注意：** 如果在拖动项目时遇到麻烦，请确保是从项目的左侧拖动。
 1. 完成后选择“确定”。
 
 ## <a name="view-or-modify-an-artifact"></a>查看或修改项目
@@ -107,7 +107,7 @@ ms.locfileid: "70162253"
 ## <a name="save-azure-resource-manager-template"></a>保存 Azure 资源管理器模板
 Azure 资源管理器模板提供一种声明性方式来定义可重复部署。
 下列步骤说明如何为正在创建的 VM保存 Azure 资源管理器模板。
-保存后，可以通过 Azure PowerShell 使用 Azure 资源管理器[部署新的 VM](../azure-resource-manager/template-deployment-overview.md)。
+保存后，可以通过 Azure PowerShell 使用 Azure 资源管理器[部署新的 VM](../azure-resource-manager/templates/overview.md)。
 
 1. 在“虚拟机”窗格上，选择“查看 Azure 资源管理器模板”。
 2. 在“查看 Azure 资源管理器模板”窗格上选择模板文本。

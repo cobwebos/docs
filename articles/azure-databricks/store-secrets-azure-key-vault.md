@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849269"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889052"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>教程：使用 Azure Key Vault 从 Azure Databricks 访问 Azure Blob 存储
 
 本教程介绍如何使用 Key Vault 中存储的机密从 Azure Databricks 访问 Azure Blob 存储。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建存储帐户和 Blob 容器
@@ -26,17 +26,17 @@ ms.locfileid: "74849269"
 > * 创建 Azure Databricks 工作区并添加机密范围
 > * 从 Azure Databricks 访问 Blob 容器
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 > [!Note]
 > 不能使用 Azure 免费试用订阅完成本教程  。
-> 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”  。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”  定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
+> 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”  。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”  定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
 
 ## <a name="create-a-storage-account-and-blob-container"></a>创建存储帐户和 Blob 容器
 
@@ -74,7 +74,7 @@ ms.locfileid: "74849269"
 
 3. 在“创建 Key Vault”页上输入以下信息，并将剩余字段保留默认值： 
 
-   |属性|说明|
+   |properties|说明|
    |--------|-----------|
    |名称|Key Vault 的唯一名称。|
    |订阅|选择订阅。|
@@ -91,7 +91,7 @@ ms.locfileid: "74849269"
 
 5. 在“创建机密”页上提供以下信息，并将剩余字段保留默认值： 
 
-   |属性|值|
+   |properties|值|
    |--------|-----------|
    |上传选项|手动|
    |名称|存储帐户密钥的易记名称。|
@@ -111,7 +111,7 @@ ms.locfileid: "74849269"
 
 2. 在“Azure Databricks 服务”下提供以下值，以创建 Databricks 工作区。 
 
-   |属性  |说明  |
+   |properties  |说明  |
    |---------|---------|
    |工作区名称     | 提供 Databricks 工作区的名称        |
    |订阅     | 从下拉列表中选择自己的 Azure 订阅。        |

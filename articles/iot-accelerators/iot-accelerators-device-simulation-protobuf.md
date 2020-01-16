@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447975"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982147"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -41,7 +41,7 @@ ms.locfileid: "61447975"
 * Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * [已部署到 Azure 订阅的 Cosmos DB 数据库](../cosmos-db/create-sql-api-dotnet.md#create-account)，该数据库使用 SQL API，并配置为[非常一致性](../cosmos-db/manage-account.md)。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
-* [已部署到 Azure 订阅的 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。 需要该存储帐户的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
+* [已部署到 Azure 订阅的 Azure 存储帐户](../storage/common/storage-account-create.md)。 需要该存储帐户的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 
 ## <a name="prepare-your-development-environment"></a>准备开发环境
 
@@ -61,22 +61,22 @@ ms.locfileid: "61447975"
 
 ### <a name="run-the-storage-adapter-microservice"></a>运行存储适配器微服务
 
-在 Visual Studio Code 中打开 **remote-monitoring-services-dotnet-master\storage-adapter** 文件夹。 单击任意“还原”按钮，修复未解决的依赖项  。
+在 Visual Studio Code 中打开 **remote-monitoring-services-dotnet-master\storage-adapter** 文件夹。 单击任意“还原”按钮，修复未解决的依赖项。
 
 打开 **.vscode/launch.json** 文件，并将 Cosmos DB 连接字符串分配到 **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** 环境变量。
 
 > [!NOTE]
 > 在计算机本地运行微服务时，它仍然需要 Azure 中的 Cosmos DB 实例才能正常运行。
 
-若要在本地运行存储适配器微服务，请单击“调试”\>“开始调试”  。
+若要在本地运行存储适配器微服务，请单击“调试”\>“开始调试”。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：<http://127.0.0.1:9022/v1/status>  。 导航到此地址时，状态应显示为“正常:活动且正常”。
+Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：<http://127.0.0.1:9022/v1/status>。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
 ## <a name="define-your-device-model"></a>定义设备模型
 
-在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹  。 单击任意“还原”按钮，修复任何未解决的依赖项  。
+在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
 在本操作指南中，我们将为资产跟踪器创建新的设备模型：
 
@@ -217,9 +217,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 </None>
 ```
 
-若要在本地运行微服务，请单击“调试”\>“开始调试”  。
+若要在本地运行微服务，请单击“调试”\>“开始调试”。
 
-Visual Studio Code 中的“终端”  窗口显示正在运行的微服务的输出。
+Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出。
 
 在完成后续步骤时，让设备模拟微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -227,7 +227,7 @@ Visual Studio Code 中的“终端”  窗口显示正在运行的微服务的�
 
 在本部分中，使用 Azure CLI 设置事件监视器，以查看从连接到 IoT 中心的设备发送的遥测。
 
-以下脚本假定 IoT 中心的名称为 device-simulation-test  。
+以下脚本假定 IoT 中心的名称为 device-simulation-test。
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -247,27 +247,27 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 在本地计算机上打开 Postman。
 
-1. 单击“文件”\>“导入”  。 然后单击“选择文件”  。
+1. 单击“文件”\>“导入”。 然后单击“选择文件”。
 
-1. 选择“Azure IoT 设备模拟解决方案 accelerator.postman\_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman\_environment”，然后单击“打开”    。
+1. 选择“Azure IoT 设备模拟解决方案 accelerator.postman\_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman\_environment”，然后单击“打开”。
 
-1. 展开“Azure IoT 设备模拟解决方案加速器”以查看可发送的请求  。
+1. 展开“Azure IoT 设备模拟解决方案加速器”以查看可发送的请求。
 
-1. 单击“无环境”，然后选择“Azure IoT 设备模拟解决方案加速器”   。
+1. 单击“无环境”，然后选择“Azure IoT 设备模拟解决方案加速器”。
 
 现在，已在 Postman 工作区中加载可用于与设备模拟微服务进行交互的集合和环境。
 
 要配置和运行模拟，请执行以下操作：
 
-1. 在 Postman 集合中，选择“创建资产跟踪器模拟”并单击“发送”   。 此请求将创建模拟的资产跟踪器设备类型的四个实例。
+1. 在 Postman 集合中，选择“创建资产跟踪器模拟”并单击“发送”。 此请求将创建模拟的资产跟踪器设备类型的四个实例。
 
 1. Azure CLI 窗口中的事件监视器输出会显示来自模拟设备的遥测数据。
 
-要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”   。
+要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”。
 
 ### <a name="clean-up-resources"></a>清理资源
 
-可在相应的 Visual Studio Code 实例中停止这两个本地运行的微服务（“调试”\>“停止调试”）  。
+可在相应的 Visual Studio Code 实例中停止这两个本地运行的微服务（“调试”\>“停止调试”）。
 
 如果不再需要 IoT 中心和 Cosmos DB 实例，请从 Azure 订阅中将其删除，以避免产生任何不必要的费用。
 

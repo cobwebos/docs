@@ -3,12 +3,12 @@ title: 锁定图像
 description: 为容器映像或存储库设置属性，使其在 Azure 容器注册表中无法删除或覆盖。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442220"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972937"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
 
@@ -17,7 +17,7 @@ ms.locfileid: "75442220"
 本文要求在 Azure Cloud Shell 或本地运行 Azure CLI （建议使用版本2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 本文不适用于锁定整个注册表，例如，使用 Azure 门户中的**设置 > 锁定**，或在 Azure CLI 中 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，例如添加或删除复制或删除注册表本身。 [锁定资源以防止意外更改](../azure-resource-manager/resource-group-lock-resources.md)的详细信息。
+> 本文不适用于锁定整个注册表，例如，使用 Azure 门户中的**设置 > 锁定**，或在 Azure CLI 中 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，例如添加或删除复制或删除注册表本身。 [锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)的详细信息。
 
 ## <a name="scenarios"></a>方案
 

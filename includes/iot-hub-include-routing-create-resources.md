@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808849"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021230"
 ---
 ## <a name="create-base-resources"></a>创建基础资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "72808849"
 
 下面是将在以下部分中执行的步骤摘要： 
 
-1. 创建[资源组](../articles/azure-resource-manager/resource-group-overview.md)。
+1. 创建[资源组](../articles/azure-resource-manager/management/overview.md)。
 
 2. 在 S1 层级中创建 IoT 中心。 将使用者组添加到 IoT 中心。 检索数据时，Azure 流分析使用使用者组。
 

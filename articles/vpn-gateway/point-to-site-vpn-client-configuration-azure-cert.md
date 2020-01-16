@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902999"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045775"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -99,9 +99,14 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 4. 从 **Generic** 文件夹中的 **VpnSettings.xml** 文件复制 **VpnServer** 标记值。 将该值粘贴到配置文件的“服务器地址”和“远程 ID”字段中。
 
    ![服务器信息](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. 单击“身份验证设置”，选择“证书”。 
+5. 单击“身份验证设置”，选择“证书”。 对于**Catalina**，单击 "**无**"，然后单击 "**证书**"
 
    ![身份验证设置](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * 对于 Catalina，选择 "**无**"，然后选择 "**证书**"。 **选择**正确的证书：
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. 单击“选择…” 选择要用于身份验证的客户端证书。 这是你在步骤 2 中安装的证书。
 
    ![证书 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

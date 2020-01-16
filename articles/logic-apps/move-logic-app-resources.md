@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965892"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源移到其他 Azure 订阅、资源组或区域
 
@@ -33,7 +33,7 @@ ms.locfileid: "75456540"
 
 ## <a name="move-resources-between-subscriptions"></a>在订阅之间移动资源
 
-若要将某个资源（例如逻辑应用或集成帐户）移动到另一个 Azure 订阅，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 这些步骤涵盖了 Azure 门户，可在资源的区域保持相同时使用。 有关其他步骤和常规准备，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+若要将某个资源（例如逻辑应用或集成帐户）移动到另一个 Azure 订阅，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 这些步骤涵盖了 Azure 门户，可在资源的区域保持相同时使用。 有关其他步骤和常规准备，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 1. 在[Azure 门户](https://portal.azure.com)中，找到并选择要移动的逻辑应用资源。
 
@@ -51,7 +51,7 @@ ms.locfileid: "75456540"
 
 ## <a name="move-resources-between-resource-groups"></a>在资源组之间移动资源
 
-若要将某个资源（例如逻辑应用或集成帐户）移动到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 这些步骤涵盖了 Azure 门户，可在资源的区域保持相同时使用。 有关其他步骤和常规准备，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+若要将某个资源（例如逻辑应用或集成帐户）移动到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 这些步骤涵盖了 Azure 门户，可在资源的区域保持相同时使用。 有关其他步骤和常规准备，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 在实际在组之间移动资源之前，你可以测试是否可以成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)。
 
@@ -106,4 +106,4 @@ Azure 逻辑应用中的自定义连接器对具有相同 Azure 订阅和相同 
 
 ## <a name="next-steps"></a>后续步骤
 
-[将 Azure 资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)
+[将 Azure 资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)

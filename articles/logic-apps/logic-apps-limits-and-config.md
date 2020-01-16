@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: fe38e74d30f7eb4f0c025f14268f7d6ac7b7d88a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428675"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979074"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -62,13 +62,13 @@ ms.locfileid: "75428675"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。 在门户的搜索框中，查找并选择 "**逻辑应用**"。
 
-1. 选择然后在逻辑应用设计器中打开逻辑应用。 
+1. 选择然后在逻辑应用设计器中打开逻辑应用。
 
 1. 在逻辑应用的菜单中，选择 "**工作流设置**"。
 
 1. 在 "**运行时选项**" 下的 "**运行历史记录保留天数**" 列表中，选择 "**自定义**"。
 
-1. 输入或拖动滑块以获取所需的天数。 
+1. 输入或拖动滑块以获取所需的天数。
 
    > [!NOTE]
    > 对于多租户 Azure 中的逻辑应用，90天的默认限制与最大限制相同。 只能减小此值。
@@ -84,7 +84,7 @@ ms.locfileid: "75428675"
 | ---- | ----- | ----- |
 | 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：并发启用后，[解除批处理数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制将减少到100项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
-| Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](../connectors/connectors-native-query.md)筛选更大数组。 |
+| Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](logic-apps-perform-data-operations.md#filter-array-action)筛选更大数组。 |
 | Foreach 并发 | 20 是并发控制关闭时的默认限制。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制是可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
 | SplitOn 项 | * 100000，无需触发器并发 <p><p>* 100 with 触发器并发 | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**注意**：并发启用后，SplitOn 限制将减少到100项。 |
 | Until 迭代 | 5,000 | |
@@ -122,7 +122,8 @@ ms.locfileid: "75428675"
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 > [!NOTE]
-> 由于此 SKU 没有任何服务级别协议（SLA）或扩展功能，[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
+> 由于此 SKU 没有任何服务级别协议（SLA）或扩展功能，[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。
+> 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
 
 <a name="gateway-limits"></a>
 
@@ -209,7 +210,8 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 ### <a name="artifact-limits-per-integration-account"></a>每个集成帐户的项目限制
 
-下面是每个集成帐户层项目数的限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
+下面是每个集成帐户层项目数的限制。
+有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
 
 > [!NOTE]
 > 仅将免费层用于探索方案，而不是生产方案。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
@@ -261,9 +263,12 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 
 ## <a name="disabling-or-deleting-logic-apps"></a>禁用或删除逻辑应用
 
-禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续，直到它们完成，这可能需要一些时间才能完成。
+禁用逻辑应用后，任何新运行都不会实例化。
+所有正在进行的和挂起的运行将继续，直到它们完成，这可能需要一些时间才能完成。
 
-删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
+删除逻辑应用后，任何新运行都不会实例化。
+所有正在进行和挂起的运行都将取消。
+如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
 <a name="configuration"></a>
 
@@ -276,7 +281,7 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 
 * 若要支持逻辑应用直接通过[http](../connectors/connectors-native-http.md)、 [http + SWAGGER](../connectors/connectors-native-http-swagger.md)和其他 http 请求进行的调用，请根据逻辑应用所处的区域，使用逻辑应用服务所用的*所有*[入站](#inbound)*和*[出站](#outbound)IP 地址设置防火墙。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。
 
-* 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。 
+* 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。
 
 * 若要为在 integration service 环境（ISE）中运行的逻辑应用启用通信，请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)。
 

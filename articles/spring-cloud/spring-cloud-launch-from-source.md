@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f9d7fa5df1f7568aa357abf8b5864344d768cf75
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895451"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891768"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>快速入门：从源代码启动 Spring Cloud 应用程序
 
@@ -28,10 +28,10 @@ ms.locfileid: "74895451"
 > * 部署每个微服务
 > * 为应用程序分配公共终结点
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 >[!Note]
-> Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
+> Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
 在开始之前，请确保 Azure 订阅已安装所需的依赖项：
 
@@ -54,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>使用 Azure CLI 预配服务实例
 
-登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 白名单的有效订阅
+登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 允许列表的有效订阅
 
 ```Azure CLI
 az login
@@ -76,6 +76,9 @@ az account set --subscription
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>创建 Spring Cloud 应用程序
 
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > 如果部署是使用 kpack 从源生成的，则 kpack 日志将仅显示最新部署。
 
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
 1. 打开“应用程序仪表板”页。 
 2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。 
 3. 选择“分配域”，将一个公共终结点分配到网关。  这可能需要花费几分钟时间。 
 4. 在浏览器中输入分配的公共 IP 以查看正在运行的应用程序。
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>后续步骤
 

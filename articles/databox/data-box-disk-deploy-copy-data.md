@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231377"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895970"
 ---
 ::: zone target="docs"
 
@@ -35,18 +35,18 @@ ms.locfileid: "70231377"
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box 磁盘
 > * 验证数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 - 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
-- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
+- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
 - 查看 [Azure 对象大小限制中的托管磁盘限制](data-box-disk-limits.md#azure-object-size-limits)。
 
@@ -238,7 +238,7 @@ ms.locfileid: "70231377"
  
 7. 打开命令提示符窗口。 
 
-8. 运行 `DataBoxDiskSplitCopy.exe`。 Type
+8. 运行 `DataBoxDiskSplitCopy.exe`。 类型
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 

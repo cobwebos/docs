@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/15/2020
 ms.custom: include file
-ms.openlocfilehash: e22ca39536e8e5d216d786c9d3c473f13431859f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 893beb0800af0eece4d69e727e427c3e92b79121
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307246"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044911"
 ---
 基于角色的访问控制是一种继承驱动的安全策略，用于管理访问权限、权限和角色。 子代角色从父角色继承权限。 也可以在不从父角色继承的情况下分配权限。 还可以指定权限以根据需要自定义角色。
 
@@ -26,7 +26,7 @@ ms.locfileid: "74307246"
 * 合适的角色，且仅限于执行其作业。
 
 >[!IMPORTANT]
-> 始终遵循最小特权原则。
+> 请始终遵循最低权限原则。
 
 需要遵循的其他两个重要的基于角色的访问控制做法：
 

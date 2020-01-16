@@ -1,23 +1,22 @@
 ---
 title: 快速入门：从麦克风中识别语音，C# (.NET) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: c4aee9604df98fbf5fbd18f527c4d40cff044bb9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f3b0df9f663866c916a45c85767d49b8701152cd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818835"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927827"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -65,7 +64,7 @@ ms.locfileid: "74818835"
 
 在 using 语句中的 `RecognizeOnceAsync()` 下方，添加以下代码：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
-## <a name="check-your-code"></a>检查代码
+## <a name="check-your-code"></a>查看代码
 
 此时，代码应如下所示：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
 
@@ -74,7 +73,7 @@ ms.locfileid: "74818835"
 现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

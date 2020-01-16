@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981715"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server Vm 的定价指南
 
@@ -54,11 +54,11 @@ ms.locfileid: "74038875"
 
 若拥有非轻型生产工作负荷，请使用以下 SQL Server 版本之一：
 
-| SQL Server 版本 | 工作负载 |
+| SQL Server 发行版 | 工作负载 |
 |-----|-----|
-| Web | 小型网站 |
+| Web 版 | 小型网站 |
 | 标准 | 中小型工作负荷 |
-| Enterprise | 大型或任务关键型工作负荷|
+| Enterprise 版 | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。
 
@@ -111,9 +111,9 @@ ms.locfileid: "74038875"
 
 若要对 SQL Server VM 使用 BYOL，必须拥有 SQL Server Standard 或 Enterprise 的许可证以及[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，这是通过某些批量许可计划的必需选项，而对其他计划而言为可选购买项。 根据协议类型以及 SQL Server 的数量和/或对其的承诺，批量许可计划提供的定价级别各不相同。 但一般而言，针对连续生产工作负荷自带许可证具有以下优点：
 
-| BYOL 权益 | 说明 |
+| BYOL 权益 | Description |
 |-----|-----|
-| 节省费用 | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)可节省高达 55% 的成本。 有关详细信息，请参阅[切换授权模型](virtual-machines-windows-sql-ahb.md) |
+| 节省费用 | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)提供高达55% 的节省量。 有关详细信息，请参阅[切换授权模型](virtual-machines-windows-sql-ahb.md) |
 | 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
 若要使用上述某个自带许可证映像创建 SQL Server 2017 Azure VM，请参阅前缀为“{BYOL}”的 VM：
@@ -151,7 +151,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ### <a name="shut-down-your-vm-when-possible"></a>在可能的情况下关闭 VM
 
-若要使用任何不连续运行的工作负荷，请考虑在非活动期间关闭虚拟机。 仅为所用的部分付费。
+若要使用任何不连续运行的工作负荷，请考虑在非活动期间关闭虚拟机。 仅为所用部分付费。
 
 例如，如果只在 Azure VM 上试用 SQL Server，就不会希望因使其意外运行数周而滋生费用。 一种解决方案是使用[自动关闭功能](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 
@@ -166,7 +166,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../billing/billing-getting-started.md)。 有关最新的虚拟机定价（包括 SQL Server），请参阅适用于 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的 Azure VM Azure 定价页。
+有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的虚拟机定价（包括 SQL Server），请参阅适用于 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的 Azure VM Azure 定价页。
 
 有关 Azure 虚拟机上运行的 SQL Server 概述，请参阅以下文章：
 

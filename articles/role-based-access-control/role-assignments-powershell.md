@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707849"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981062"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配
 
@@ -56,7 +56,7 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>应用程序
 
 若要获取 Azure AD 服务主体（应用程序使用的标识）的对象 ID，可以使用[AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 对于服务主体，请使用对象 ID，而**不**是应用程序 id。
 
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-下面的示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给*医药*资源组作用域上的*alain\@example.com*用户。 若要获取唯一角色 ID，可以使用[AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)或查看[Azure 资源的内置角色](built-in-roles.md)。
+下面的示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给*医药*资源组作用域上的*alain\@example.com*用户。 若要获取唯一的角色 ID，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -232,4 +232,4 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 - [使用 Azure RBAC 和 Azure PowerShell 列出角色分配](role-assignments-list-powershell.md)
 - [教程：使用 RBAC 和 Azure PowerShell 向组授予对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
 - [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
-- [使用 Azure PowerShell 管理资源](../azure-resource-manager/manage-resources-powershell.md)
+- [使用 Azure PowerShell 管理资源](../azure-resource-manager/management/manage-resources-powershell.md)

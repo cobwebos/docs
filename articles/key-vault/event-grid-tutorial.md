@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133333"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981596"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "74133333"
 
 本指南描述如何通过事件网格接收 Key Vault 通知，以及如何通过 Azure 自动化对状态更改做出响应。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure 订阅中的 Key Vault。 可以按照[使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](quick-create-cli.md)中的步骤来快速创建新的 Key Vault。
@@ -184,7 +184,7 @@ write-Error "No input data found."
 
 ### <a name="you-cant-create-an-event-subscription"></a>无法创建事件订阅
 
-在 Azure 订阅资源提供程序中重新注册事件网格和 Key Vault 提供程序。 请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
+在 Azure 订阅资源提供程序中重新注册事件网格和 Key Vault 提供程序。 请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -192,7 +192,7 @@ write-Error "No input data found."
 
 如果已使用基于轮询的系统来搜索 Key Vault 中机密的状态更改，则使用此通知功能开始。 还可以将 runbook 中的测试脚本替换为代码，以编程方式在机密即将过期时进行续订。
 
-了解更多：
+了解详细信息：
 
 
 - 概述：[通过 Azure 事件网格监视 Key Vault（预览版）](event-grid-overview.md)

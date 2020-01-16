@@ -1,21 +1,20 @@
 ---
 title: 快速入门：从音频文件中识别语音，C# - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: 139c490c354b92fd76ca578ef70e9a4c11774031
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.topic: include
+ms.date: 01/14/2020
+ms.author: dapine
+ms.openlocfilehash: b5fafa5bdaabc165ca4e2e20a59a9cb296011aca
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819192"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037877"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 C# 示例](https://aka.ms/speech/github-csharp)

@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 ASE/SQL 工作负荷蓝图示例
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546751"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922573"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 
@@ -111,35 +111,35 @@ ms.locfileid: "74546751"
 
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|Log Analytics 资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-workload-log-rg` 相连接可使资源组名称保持唯一。|
-|Log Analytics 资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|Log Analytics 资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-workload-log-rg` 相连接可使资源组名称保持唯一。|
+|Log Analytics 资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Log Analytics 模板|资源管理器模板|服务层|设置 Log Analytics 工作区的层。 默认值为 _PerNode_。|
 |Log Analytics 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Log Analytics 模板|资源管理器模板|位置|用于创建 Log Analytics 工作区的区域。 默认值为“美国西部 2”。 |
-|网络资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-workload-net-rg` 相连接可使资源组名称保持唯一。|
-|网络资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|网络资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-workload-net-rg` 相连接可使资源组名称保持唯一。|
+|网络资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |网络安全组模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |虚拟网络和路由表模板|资源管理器模板|Azure 防火墙专用 IP|配置 [Azure 防火墙](../../../../firewall/overview.md)的专用 IP。 应是“ISO 27001:  共享服务”项目参数“Azure 防火墙子网地址前缀”中定义的 CIDR 表示法的一部分。  默认值为 _10.0.4.4_。|
 |虚拟网络和路由表模板|资源管理器模板|共享服务订阅 ID|用于启用工作负荷与共享服务之间的 VNET 对等互连的值。|
 |虚拟网络和路由表模板|资源管理器模板|虚拟网络地址前缀|虚拟网络的 CIDR 表示法。 默认值为 _10.1.0.0/16_。|
 |虚拟网络和路由表模板|资源管理器模板|默认子网地址前缀|虚拟网络默认子网的 CIDR 表示法。 默认值为 _10.1.0.0/16_。|
 |虚拟网络和路由表模板|资源管理器模板|ADDS IP 地址|第一个 ADDS VM 的 IP 地址。 此值用作自定义 VNET DNS。|
-|密钥保管库资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-workload-kv-rg` 相连接可使资源组名称保持唯一。|
-|密钥保管库资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|密钥保管库资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-workload-kv-rg` 相连接可使资源组名称保持唯一。|
+|密钥保管库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Key Vault 模板|资源管理器模板|AAD 对象 ID|需要访问 Key Vault 实例的帐户的 AAD 对象标识符。 无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。  使用“名称”框筛选帐户名，并选择该帐户。  在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。  |
 |Key Vault 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Key Vault 模板|资源管理器模板|Key Vault SKU|指定创建的 Key Vault 的 SKU。 默认值为“高级”。 |
 |Key Vault 模板|资源管理器模板|Azure SQL Server 管理员用户名|用于访问 Azure SQL Server 的用户名。 必须与 **Azure SQL 数据库模板**中的相同属性值相匹配。 默认值为 _sql-admin-user_。|
-|Azure SQL 数据库资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-workload-azsql-rg` 相连接可使资源组名称保持唯一。|
-|Azure SQL 数据库资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|Azure SQL 数据库资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-workload-azsql-rg` 相连接可使资源组名称保持唯一。|
+|Azure SQL 数据库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员用户名|Azure SQL 服务器的用户名。 必须与 **Key Vault 模板**中的相同属性值相匹配。 默认值为 _sql-admin-user_。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv"，并将 `{subscriptionId}` 替换为你的订阅 ID，将 `{orgName}` 替换为“组织名称”蓝图参数。 |
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 机密名称)|SQL Server 管理员的用户名。必须与 **Key Vault 模板**中的“Azure SQL Server 管理员用户名”属性值相匹配。 |
 |Azure SQL 数据库模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Azure SQL 数据库模板|资源管理器模板|AAD 管理员对象 ID|分配为 Active Directory 管理员的用户的 AAD 对象 ID。无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。  使用“名称”框筛选帐户名，并选择该帐户。  在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。  |
 |Azure SQL 数据库模板|资源管理器模板|AAD 管理员登录名|目前，无法将 Microsoft 帐户（如 live.com 或 outlook.com）设置为管理员。只能将你组织中的用户和安全组设置为管理员。无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。  使用“名称”框筛选帐户名，并选择该帐户。  在“用户配置文件”页上，复制“用户名”。  |
-|应用服务环境资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-workload-ase-rg` 相连接可使资源组名称保持唯一。|
-|应用服务环境资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|应用服务环境资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-workload-ase-rg` 相连接可使资源组名称保持唯一。|
+|应用服务环境资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |应用服务环境模板|资源管理器模板|域名|示例创建的 Active Directory 的名称。 默认值为 _contoso.com_。|
 |应用服务环境模板|资源管理器模板|ASE 位置|应用服务环境位置。 默认值为“美国西部 2”。 |
 |应用服务环境模板|资源管理器模板|应用程序网关日志保留期(天)|日志保留期（以天为单位）。 默认值为 _365_。|

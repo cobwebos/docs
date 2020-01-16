@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446094"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044284"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -25,7 +25,7 @@ ms.locfileid: "75446094"
 
 可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
-## <a name="limits"></a>限制
+## <a name="limitations"></a>限制
 
 * FTP 连接器仅支持显式 FTP over SSL （FTPS），并且不兼容隐式 FTPS。
 
@@ -36,6 +36,8 @@ ms.locfileid: "75446094"
   * 使用返回文件属性的 FTP 触发器，如**添加或修改文件时（仅属性）** 。
 
   * 使用 FTP 的 "**获取文件内容**" 操作执行触发器，该操作读取完整的文件并隐式使用分块。
+
+* 如果你有本地 FTP 服务器，请考虑创建[集成服务环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)或使用[Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)，这两者都允许你在不使用本地数据网关的情况下访问本地数据源。
 
 ## <a name="how-ftp-triggers-work"></a>FTP 触发器的工作方式
 

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895993"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045207"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -142,6 +142,16 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
   
 **更改现有托管实例的硬件生成**
 
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+
+从 "托管实例" 页上，选择 "设置" 部分下的 "**定价层**" 链接
+
+![更改托管实例硬件](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+在 "**定价层**" 页上，你将能够按前面的步骤所述更改硬件生成。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 使用以下 PowerShell 脚本：
 
 ```powershell-interactive
@@ -176,7 +186,9 @@ $properties = New-Object System.Object
 Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
 ```
 
-请确保输入托管实例的订阅 id、名称和资源组。
+请确保输入托管实例的订阅 ID、名称和资源组。
+
+---
 
 ### <a name="hardware-availability"></a>硬件可用性
 
@@ -213,9 +225,9 @@ M 系列在以下区域提供：美国东部、北欧、西欧、美国西部2�
 
 在**详细信息**页上，提供以下内容：
 
-5. 在 "**问题详细信息**" 部分中，选择 "**提供详细信息**" 链接。 
-6. 对于**SQL 数据库配额类型**，请选择**M 系列**。
-7. 对于 "**区域**"，选择区域以启用 M 系列。
+1. 在 "**问题详细信息**" 部分中，选择 "**提供详细信息**" 链接。 
+2. 对于**SQL 数据库配额类型**，请选择**M 系列**。
+3. 对于 "**区域**"，选择区域以启用 M 系列。
     对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
 
 批准的支持请求通常在5个工作日内完成。

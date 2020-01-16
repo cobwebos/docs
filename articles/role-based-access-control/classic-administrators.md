@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554223"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979341"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
 
@@ -62,7 +62,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="differences-for-guest-users"></a>来宾用户的差异
 
-与具有共同管理员角色的成员用户相比，已分配有共同管理员角色的来宾用户可能会看到一些不同之处。 请考虑以下方案：
+与具有共同管理员角色的成员用户相比，已分配有共同管理员角色的来宾用户可能会看到一些不同之处。 请考虑下列方案：
 
 - 具有 Azure AD 帐户（工作或学校帐户）的用户 A 是 Azure 订阅的服务管理员。
 - 用户 B 是 Microsoft 帐户。
@@ -89,7 +89,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 1. 勾选要删除的共同管理员。
 
-1. 单击“删除”。
+1. 单击 **“删除”** 。
 
 1. 在出现的消息框中单击“是”。
 
@@ -109,7 +109,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
-1. 单击“属性”。
+1. 单击 **“属性”** 。
 
     ![显示帐户管理员的屏幕截图](./media/classic-administrators/account-admin.png)
 
@@ -143,8 +143,8 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 | 帐户管理员帐户 | 是否可以将服务管理员更改为其他 Microsoft 帐户？ | 是否可以将服务管理员更改为同一目录中的 Azure AD 帐户？ | 是否可以将服务管理员更改为其他目录中的 Azure AD 帐户？ |
 | --- | --- | --- | --- |
-| Microsoft 帐户 | 是 | No | No |
-| Azure AD 帐户 | 是 | 是 | No |
+| Microsoft 帐户 | 是 | 否 | 否 |
+| Azure AD 帐户 | 是 | 是 | 否 |
 
 如果帐户管理员是 Azure AD 帐户，则可以将服务管理员更改为同一目录中的 Azure AD 帐户，但不能更改为其他目录。 例如，abby@contoso.com 可以将服务管理员更改为 bob@contoso.com，但无法将服务管理员更改为 john@notcontoso.com，除非 john@notcontoso.com 在 contoso.com 目录中存在。
 
@@ -152,15 +152,15 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ## <a name="view-the-account-administrator"></a>查看帐户管理员
 
-帐户管理员是最初注册 Azure 订阅的用户，充当订阅的账单所有者。 若要更改订阅的账户管理员，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)。
+帐户管理员是最初注册 Azure 订阅的用户，充当订阅的账单所有者。 若要更改订阅的账户管理员，请参阅[将 Azure 订阅所有权转让给其他帐户](../cost-management-billing/manage/billing-subscription-transfer.md)。
 
 遵循以下步骤查看帐户管理员：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
-1. 单击“属性”。
+1. 单击 **“属性”** 。
 
     订阅的帐户管理员会显示在“帐户管理员”框中。
 
@@ -170,4 +170,4 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 * [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)
-* [添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)
+* [添加或更改 Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750125"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045866"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -69,7 +69,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 此外，检测到特定事件时，可以将安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-可以使用 [Azure 资源管理器](../../azure-resource-manager/resource-manager-deployment-model.md)以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure 资源管理器模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
+可以使用 [Azure 资源管理器](../../azure-resource-manager/management/deployment-models.md)以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure 资源管理器模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 基于 Azure 资源管理器模板的部署因其标准的安全控制设置，有助于提高 Azure 中部署的解决方案的安全性，并且还可以集成到基于标准化模板的部署中。 这样可以降低手动部署期间可能发生的安全配置错误风险。
 
@@ -142,16 +142,16 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/common/storage-security-guide.md)模型访问存储帐户的存储密钥的情况。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/blobs/security-recommendations.md)模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
--   [传输级别加密](../../storage/common/storage-security-guide.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级别加密](../../storage/blobs/security-recommendations.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--   [线路加密](../../storage/common/storage-security-guide.md)，例如 [Azure 文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)的 [SMB 3.0 加密](../../storage/common/storage-security-guide.md)。
+-   [线路加密](../../storage/blobs/security-recommendations.md)，例如 [Azure 文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)的 [SMB 3.0 加密](../../storage/blobs/security-recommendations.md)。
 
 -   客户端加密，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
@@ -266,9 +266,9 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md) 可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。 可以将 Azure 负载均衡器配置为：
 
--   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](../../load-balancer/load-balancer-overview.md#publicloadbalancer)。
+-   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](../../load-balancer/concepts-limitations.md#publicloadbalancer)。
 
--   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/load-balancer-overview.md#internalloadbalancer)。
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/concepts-limitations.md#internalloadbalancer)。
 
 - 将外部流量转发到特定的虚拟机
 

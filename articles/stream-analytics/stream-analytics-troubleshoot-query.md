@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354260"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980274"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
 本文介绍开发流分析查询的常见问题以及如何进行故障排除。
 
-## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出 
+## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出
 1.  通过本地测试检查错误：
     - 在“查询”选项卡上，选择“测试”。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 的流分析工具[直接针对实时输入测试查询](stream-analytics-live-data-local-testing.md)。
@@ -32,10 +32,10 @@ ms.locfileid: "75354260"
     - 使用窗口函数时，请等待整个窗口持续时间完成，以查看查询中的输出。
     - 事件的时间戳要先于作业开始时间，因此事件会被删除。
 
-4.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)”。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
+4.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)”。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。
 
 5. 使用审核和诊断日志进行调试：
-    - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)，并进行筛选以识别和调试错误。
+    - 使用[审核日志](../azure-resource-manager/management/view-activity-logs.md)，并进行筛选以识别和调试错误。
     - 使用[作业诊断日志](stream-analytics-job-diagnostic-logs.md)识别和调试错误。
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>作业消耗过多的流单元
@@ -52,7 +52,7 @@ ms.locfileid: "75354260"
 请注意，虽然作业正在运行，但在输出中未生成任何事件。 在如下所示的“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致删除所有事件。
 
 ![流分析监视磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 在此情况下，可添加几个额外的 SELECT INTO 语句，用于“记录”中间 JOIN 结果，以及从输入中读取的数据。
 
 此示例中添加了两个新的“临时输出”。 可任意选择你喜欢的接收器。 此处使用 Azure 存储作为示例：

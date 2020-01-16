@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63a77a4f715402951ba8af70755196d52e3b742d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e52f88136517339139bebd17dea929ac02201e3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492401"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982027"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>设置在团队数据科学过程中使用的数据科学环境
 团队数据科学过程使用各种数据科学环境来完成数据的存储、处理和分析。 它们包括 Azure Blob 存储、几种类型的 Azure 虚拟机、HDInsight (Hadoop) 群集和 Azure 机器学习工作区。 关于要使用的环境类型的决策具体取决于要建模的数据类型和数量以及云中数据的目标目的地。 
@@ -26,7 +26,7 @@ ms.locfileid: "73492401"
 
 以下文章介绍如何设置团队数据科学过程使用的各种数据科学环境。
 
-* [Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
+* [Azure 存储帐户](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop) 群集](customize-hadoop-cluster.md)
 * [Azure 机器学习 Studio （经典）工作区](../studio/create-workspace.md)
 

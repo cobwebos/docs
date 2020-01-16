@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945709"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045617"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -196,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 若要从 SDK 创建包含 Azure 开放数据集的数据集，请确保已安装 `pip install azureml-opendatasets`的包。 每个离散数据集均由其在 SDK 中的类来表示，某些类可作为 `TabularDataset`、`FileDataset`或这两者。 有关类的完整列表，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)。
 
-大多数类从继承并返回 `TabularDataset`的实例。 这些类的示例包括 `PublicHolidays`、`BostonSafety`和 `UsPopulationZip`。 若要从这些类型的类创建 `TabularDataset`，请使用不带参数的构造函数。 在注册从打开的数据集创建的数据集时，不会立即下载数据，但会在以后请求时（例如在训练期间）访问数据（例如，在训练过程中）。 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-您可以检索某些类作为 `TabularDataset` 或 `FileDataset`，这允许您直接操作和/或下载文件。 其他类只能通过使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数获取数据集。 下面的代码示例演示了这些类型的类的几个示例：
+您可以检索某些类作为 `TabularDataset` 或 `FileDataset`，这允许您直接操作和/或下载文件。 其他类只能通过使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数**之一来获取数据集**。 下面的代码示例演示了这些类类型的一些示例。
 
 ```python
 from azureml.opendatasets import MNIST
@@ -219,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+在注册从打开的数据集创建的数据集时，不会立即下载数据，但会在以后请求时（例如在训练期间）访问数据（例如，在训练过程中）。
 
 ### <a name="use-the-ui"></a>使用 UI
 

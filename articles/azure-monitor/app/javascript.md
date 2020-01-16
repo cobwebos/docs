@@ -1,18 +1,18 @@
 ---
-title: 适用于 JavaScript Web 应用的 Azure Application Insights | Microsoft Docs
-description: 获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
+title: 适用于 JavaScript web 应用的 Azure 应用程序 Insights
+description: 获取页面视图和会话计数、web 客户端数据、单页面应用程序（SPA）和跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706594"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045831"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -97,11 +97,11 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的名称都可以默认为 false。 除 `instrumentationKey`之外，所有字段都是可选的。
 
-| 名称 | 默认 | 描述 |
+| 名称 | 默认 | Description |
 |------|---------|-------------|
 | instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | Null | 可选帐户 ID （如果你的应用将用户分组到帐户中）。 无空格、逗号、分号、等于或竖线 |
-| sessionRenewalMs | 1800000 | 如果用户处于非活动状态的时间长度（以毫秒为单位），则会记录会话。 默认值为30分钟 |
+| sessionRenewalMs | 1800000 | 如果用户处于非活动状态的时间长度（以毫秒为单位），则会记录会话。 默认值为 30 分钟 |
 | sessionExpirationMs | 86400000 | 如果会话持续时间超过此时间，则会记录会话。 默认值为24小时 |
 | maxBatchSizeInBytes | 10000 | 遥测批处理的最大大小。 如果批超过此限制，则会立即发送此限制，并启动新的批处理 |
 | maxBatchInterval | 15000 | 发送前批处理遥测的时间（毫秒） |
@@ -114,26 +114,26 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为100，表示发送所有事件。 如果希望为大型应用程序保留数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则在 pageview 上，将跟踪以前检测的页面的视图时间并将其作为遥测发送，并为当前 pageview 启动新的计时器。 默认值为 false。 |
 | disableAjaxTracking | false | 如果为 true，则 Ajax 调用是不 autocollected 的。 默认值为 false。 |
-| disableFetchTracking | 是 | 如果为 true，则不 autocollected 提取请求。 默认值为 true |
+| disableFetchTracking | true | 如果为 true，则不 autocollected 提取请求。 默认值为 true |
 | overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且不向 trackPageView 提供自定义持续时间，则使用导航计时 API 计算页面视图性能。 默认值为 false。 |
 | maxAjaxCallsPerView | 500 | 默认 500-控制每个页面视图将监视的 Ajax 调用数。 设置为-1 可监视页面上所有（无限制） Ajax 调用。 |
-| disableDataLossAnalysis | 是 | 如果为 false，则将在启动时检查尚未发送的项目的内部遥测发件人缓冲区。 |
+| disableDataLossAnalysis | true | 如果为 false，则将在启动时检查尚未发送的项目的内部遥测发件人缓冲区。 |
 | disableCorrelationHeaders | false | 如果为 false，SDK 会将两个标头（"请求 Id" 和 "请求上下文"）添加到所有依赖项请求，以将它们与服务器端上的对应请求关联起来。 默认值为 false。 |
 | correlationHeaderExcludedDomains |  | 禁用特定域的相关标头 |
 | correlationHeaderDomains |  | 为特定域启用相关标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则在 onBeforeUnload 事件触发器时，不会调用 flush 方法 |
-| enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则将所有未发送的遥测数据存储在会话存储中。 在页面加载时还原缓冲区 |
+| enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则将所有未发送的遥测数据存储在会话存储中。 在页面加载时还原缓冲区 |
 | isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 将不会存储或读取 cookie 中的任何数据。|
 | cookieDomain | Null | 自定义 cookie 域。 如果要跨子域共享 Application Insights cookie，这会很有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则重试（206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和0（仅在检测到的情况下为脱机） |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 将不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
-| isBeaconApiDisabled | 是 | 如果为 false，SDK 将使用[信标 API](https://www.w3.org/TR/beacon)发送所有遥测数据 |
+| isBeaconApiDisabled | true | 如果为 false，SDK 将使用[信标 API](https://www.w3.org/TR/beacon)发送所有遥测数据 |
 | onunloadDisableBeacon | false | 默认值为 false。 当选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon)发送所有剩余的遥测数据 |
 | sdkExtension | Null | 设置 sdk 扩展名称。 仅允许使用字母字符。 此扩展名称作为前缀添加到 "sdkVersion" 标记（例如，"ext_javascript： 2.0.0"）。 默认值为 null。 |
 | isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)请求。 |
 | appId | Null | AppId 用于在客户端与服务器端请求之间进行的 AJAX 依赖项之间的相关性。 启用信标 API 后，不能自动使用，但可以在配置中手动设置。 默认值为 null |
 | enableCorsCorrelation | false | 如果为 true，SDK 会将两个标头（"请求 Id" 和 "请求上下文"）添加到所有 CORS 请求，以将传出 AJAX 依赖项与服务器端上的对应请求关联起来。 默认值为 false |
-| namePrefix | 尚未 | 一个可选值，将用作 localStorage 和 cookie 名称的名称后缀。
+| namePrefix | 未定义 | 一个可选值，将用作 localStorage 和 cookie 名称的名称后缀。
 | enableAutoRouteTracking | false | 在单页面应用程序（SPA）中自动跟踪路由更改。 如果为 true，则每个路由更改会将新的 Pageview 发送到 Application Insights。 哈希路由更改（`example.com/foo#bar`）也记录为新的页面视图。
 | enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX & 提取请求标头，默认值为 false。
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX & 提取请求的响应标头，默认值为 false。
@@ -257,7 +257,7 @@ SDK V2 版本中的重大更改：
 
 Application Insights JavaScript SDK 是开放源代码，用于查看源代码或参与项目，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。
 
-## <a name="next"></a>后续步骤
+## <a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)
 * [自定义事件和指标](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)

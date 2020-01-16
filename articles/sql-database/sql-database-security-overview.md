@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997320"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978574"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -46,7 +46,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 > [!IMPORTANT]
 > 管理 Azure 中的数据库和数据库服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 身份验证是证明用户所声明身份的过程。 Azure SQL 数据库支持两种类型的身份验证：
 
@@ -73,7 +73,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 ### <a name="row-level-security"></a>行级别安全性
 
-行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性还可用于实现基于标签的自定义安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
+行级别安全性使客户可以基于执行查询的用户的特性（例如，组成员身份或执行上下文）来控制对数据库表进行的访问。 行级别安全性还可用于实现基于标签的自定义安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -104,7 +104,7 @@ SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/31
 例如，使用 ADO.NET 驱动程序时，可以通过**Encrypt = True**和**TrustServerCertificate = False**完成此操作。 如果是从 Azure 门户中获取连接字符串，则它将具有正确的设置。
 
 > [!IMPORTANT]
-> 请注意，某些非 Microsoft 驱动程序在默认情况下可能不使用 TLS，或者依赖于较旧版本的 TLS （< 1.2）才能正常运行。 在这种情况下 SQL Server 仍允许您连接到您的数据库。 但是，我们建议你评估允许此类驱动程序和应用程序连接到 SQL 数据库的安全风险，尤其是在存储敏感数据的情况下。 
+> 请注意，某些非 Microsoft 驱动程序在默认情况下可能不使用 TLS，或者依赖于较旧版本的 TLS （< 1.2）才能正常运行。 在这种情况下 SQL Server 仍允许您连接到您的数据库。 但是，我们建议你评估允许此类驱动程序和应用程序连接到 SQL 数据库的安全风险，尤其是在存储敏感数据的情况下。
 >
 > 有关 TLS 和连接的详细信息，请参阅[tls 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
@@ -138,7 +138,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ### <a name="data-discovery--classification"></a>数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
 
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。

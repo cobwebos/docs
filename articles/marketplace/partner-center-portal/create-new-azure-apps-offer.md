@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930708"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046043"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -48,7 +48,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 * 名为[createUiDefinition](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)的 Azure 应用程序创建体验的用户界面定义。  在用户界面中，可以指定让使用者能够提供参数值的元素。
 
-所有新的 Azure 应用程序产品/服务必须包括[Azure 合作伙伴客户使用归属 GUID](??)。
+所有新的 Azure 应用程序产品/服务必须包括[Azure 合作伙伴客户使用归属 GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)。
 
 ### <a name="before-you-begin"></a>开始之前
 

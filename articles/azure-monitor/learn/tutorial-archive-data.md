@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893342"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979813"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
 
-Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和指标数据。 在数据超过保留期之后，你可能需要执行此操作，在不可搜索的低成本存储空间中保留某时间段内监视数据的历史记录。 
+Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和指标数据。 在数据超过保留期之后，你可能需要执行此操作，在不可搜索的低成本存储空间中保留某时间段内监视数据的历史记录。
 
-- Azure Monitor 平台指标可保留 93 天。 
-- 资源诊断日志仅在路由到 Log Analytics 时才显示，这些日志在 Log Analytics 中具有至少 30 天的可配置保留期。 
+- Azure Monitor 平台指标可保留 93 天。
+- 资源诊断日志仅在路由到 Log Analytics 时才显示，这些日志在 Log Analytics 中具有至少 30 天的可配置保留期。
 - 活动日志条目可存储 90 天。  
 
 本教程逐步介绍如何配置 Azure 环境以将数据存档到存储帐户。
@@ -38,15 +38,15 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-首先，需要设置要存档监视数据的存储帐户。 为此，请[按照此处的步骤操作](../../storage/common/storage-quickstart-create-account.md)。
+首先，需要设置要存档监视数据的存储帐户。 为此，请[按照此处的步骤操作](../../storage/common/storage-account-create.md)。
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>将订阅日志路由到存储帐户
 
-现可开始设置 Azure 环境，以便将监视数据路由到存储帐户。 首先配置要路由到存储帐户的订阅级数据（包含在 Azure 活动日志中）。 [**Azure 活动日志**](../../azure-monitor/platform/activity-logs-overview.md)提供 Azure 中的订阅级事件的历史记录。 可在 Azure 门户中浏览该日志来确定由谁在何时创建、更新或删除了哪些资源    。
+现可开始设置 Azure 环境，以便将监视数据路由到存储帐户。 首先配置要路由到存储帐户的订阅级数据（包含在 Azure 活动日志中）。 [**Azure 活动日志**](../../azure-monitor/platform/platform-logs-overview.md)提供 Azure 中的订阅级事件的历史记录。 可在 Azure 门户中浏览该日志来确定由谁在何时创建、更新或删除了哪些资源    。
 
 1. 单击左侧导航列表中的“监视器”按钮，然后单击“活动日志”   。
 
@@ -144,9 +144,9 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>查看存储帐户中的监视数据
 
 > [!WARNING]
-> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 如果已执行前述步骤，则数据已开始流向存储帐户。
 
@@ -199,4 +199,3 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 > [!div class="nextstepaction"]
 > [Log Analytics 入门](../../azure-monitor/log-query/log-query-overview.md)
-

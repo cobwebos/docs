@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799027"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980551"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教程：批量管理连接的设备
 
@@ -39,13 +39,13 @@ If this is going to be a tutorial - we need to split this include into two so th
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 -->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要遵循本教程，需在 Azure 订阅中部署远程监视解决方案加速器的实例。
 
 如果尚未部署远程监视解决方案加速器，应完成[部署基于云的远程监视解决方案](quickstart-remote-monitoring-deploy.md)教程。
 
-需要使用一个 Azure 存储帐户来托管固件文件。 可以使用现有的存储帐户，也可以在订阅中[创建新的存储帐户](../storage/common/storage-quickstart-create-account.md)。
+需要使用一个 Azure 存储帐户来托管固件文件。 可以使用现有的存储帐户，也可以在订阅中[创建新的存储帐户](../storage/common/storage-account-create.md)。
 
 本教程使用 [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 设备作为示例设备。
 
@@ -65,19 +65,19 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 若要在浏览器中查看远程监视解决方案仪表板，请首先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)。 可能会要求使用 Azure 订阅凭据登录。
 
-然后，单击你在[快速入门](quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”。
+然后，单击你在[快速入门](quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”  。
 
 ## <a name="create-a-device-group"></a>创建设备组
 
 若要自动更新设备组的固件，必须确保设备是远程监视解决方案中某个设备组的成员：
 
-1. 在“设备”页上，选择已连接到解决方案加速器的所有 **IoT DevKit** 设备。 然后单击“作业”。
+1. 在“设备”页上，选择已连接到解决方案加速器的  所有 **IoT DevKit** 设备。 然后单击“作业”  。
 
-1. 在“作业”面板中，选择“标记”，将作业名称设置为 **AddDevKitTag**，然后添加名为 **IsDevKitDevice** 且值为 **Y** 的文本标记。然后单击“应用”。
+1. 在“作业”面板中，选择“标记”，将作业名称设置为 **AddDevKitTag**，然后添加名为 **IsDevKitDevice** 且值为 **Y** 的文本标记。   然后单击“应用”。 
 
-1. 现在，可以使用标记值创建设备组。 在“设备”页上，单击“管理设备组”。
+1. 现在，可以使用标记值创建设备组。 在“设备”页上，单击“管理设备组”。  
 
-1. 创建在条件中使用标记名称 **IsDevKitDevice** 和值 **Y** 的文本筛选器。 将设备组另存为“IoT DevKit 设备”。
+1. 创建在条件中使用标记名称 **IsDevKitDevice** 和值 **Y** 的文本筛选器。 将设备组另存为“IoT DevKit 设备”。 
 
 稍后在本教程中，请使用此设备组来应用可更新所有成员的固件的设备配置。
 
@@ -89,9 +89,9 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. 确保 IoT DevKit 未连接到计算机。 启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 按 **F1** 打开命令面板，键入并选择“IoT Workbench: 示例”。 然后选择“IoT DevKit”作为开发板。
+1. 按 **F1** 打开命令面板，键入并选择“IoT Workbench:  示例”。 然后选择“IoT DevKit”作为开发板。 
 
-1. 找到 **Firmware OTA**，单击“打开示例”。 此时会打开一个新的 VS Code 窗口，并显示 **firmware_ota** 项目文件夹：
+1. 找到 **Firmware OTA**，单击“打开示例”。  此时会打开一个新的 VS Code 窗口，并显示 **firmware_ota** 项目文件夹：
 
     ![IoT Workbench，请选择 Firmware OTA 示例](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-firmware-example.png)
 
@@ -103,7 +103,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![更改固件版本](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. 打开命令面板，然后键入并选择“IoT Workbench: 设备”。 然后选择“设备编译”，对代码进行编译：
+1. 打开命令面板，然后键入并选择“IoT Workbench:  设备”。 然后选择“设备编译”，对代码进行编译： 
 
     ![设备编译](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>生成 CRC 值并计算固件文件大小
 
-1. 打开命令面板，然后键入并选择“IoT Workbench: 设备”。 然后选择“生成 CRC”：
+1. 打开命令面板，然后键入并选择“IoT Workbench:  设备”。 然后选择“生成 CRC”： 
 
     ![生成 CRC](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -123,11 +123,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 使用 Azure 存储帐户在云中托管新的固件文件。
 
-1. 导航到 Azure 门户中的存储帐户。 在“服务”部分选择“Blob”。 创建名为“firmware”的公共容器，用于存储固件文件：
+1. 导航到 Azure 门户中的存储帐户。 在“服务”部分选择“Blob”。  创建名为“firmware”的公共容器，用于存储固件文件： 
 
     ![创建文件夹](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
 
-1. 若要将固件文件上传到容器，请选择“firmware”容器，然后单击“上传”。
+1. 若要将固件文件上传到容器，请选择“firmware”容器，然后单击“上传”  。 
 
 1. 选择 **FirmwareOTA.ino.bin**。 已在上一部分记下此文件的完整路径。
 
@@ -139,19 +139,19 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![版本 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. 打开命令面板，然后键入并选择“IoT Workbench: 设备”。 然后，选择“设备上传”：
+1. 打开命令面板，然后键入并选择“IoT Workbench:  设备”。 然后，选择“设备上传”  ：
 
     ![设备上传](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. VS Code 会验证代码并将其上传到 IoT DevKit 设备。
 
-1. 当上传完成后，IoT DevKit 设备会重启。 当重启完成后，IoT DevKit 的屏幕会显示“FW 版本: 1.0.0”，并显示它在检查是否有新固件：
+1. 当上传完成后，IoT DevKit 设备会重启。 当重启完成后，IoT DevKit 的屏幕会显示“FW 版本:  1.0.0”，并显示它在检查是否有新固件：
 
     ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>创建设备配置
 
-设备配置指定设备的所需状态。 通常情况下，开发人员会在 Azure 门户的“IoT 设备配置”页上[创建配置](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)。 设备配置是一个 JSON 文档，可指定设备的所需状态和一系列指标。
+设备配置指定设备的所需状态。 通常情况下，开发人员会在 Azure 门户的“IoT 设备配置”页上[创建配置](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)。  设备配置是一个 JSON 文档，可指定设备的所需状态和一系列指标。
 
 在本地计算机上将以下配置另存为名为 **firmware-update.json** 的文件。 将 `YOURSTRORAGEACCOUNTNAME`、`YOURCHECKSUM` 和 `YOURPACKAGESIZE` 占位符替换为以前记下的值。
 
@@ -206,11 +206,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 在本部分，请在远程监视解决方案加速器中以包的形式导入设备配置。 通常情况下，操作员会完成此任务。
 
-1. 在远程监视 Web UI 中，导航到“包”页并单击“+ 新建包”：
+1. 在远程监视 Web UI 中，导航到“包”页并单击“+ 新建包”：  
 
     ![新建包](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. 在“新建包”面板中，选择“设备配置”作为包类型，选择“固件”作为配置类型。 在本地计算机上单击“浏览”，找到 **firmware-update.json** 文件，然后单击“上传”：
+1. 在“新建包”面板中，选择“设备配置”作为包类型，选择“固件”作为配置类型。    在本地计算机上单击“浏览”，找到 **firmware-update.json** 文件，然后单击“上传”：  
 
     ![上传包](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -220,11 +220,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 在此部分，请创建并执行一个部署，以便将设备配置应用到 IoT DevKit 设备。
 
-1. 在远程监视 Web UI 中，导航到“部署”页并单击“+ 新建部署”：
+1. 在远程监视 Web UI 中，导航到“部署”页并单击“+ 新建部署”：  
 
     ![新部署](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentpage.png)
 
-1. 在“新建部署”面板中，使用以下设置创建部署：
+1. 在“新建部署”面板中，使用以下设置创建部署： 
 
     |选项|值|
     |---|---|
@@ -237,12 +237,12 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![创建部署](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    单击“应用”。 可以在显示以下指标的“部署”页中看到新的部署：
+    单击“应用”  。 可以在显示以下指标的“部署”页中看到新的部署： 
 
-    * “目标”显示设备组中的设备数。
-    * “已应用”显示更新了配置内容的设备数。
-    * “成功”显示部署中报告成功的设备数。
-    * “失败”显示部署中报告失败的设备数。
+    * “目标”显示设备组中的设备数。 
+    * “已应用”显示更新了配置内容的设备数。 
+    * “成功”显示部署中报告成功的设备数。 
+    * “失败”显示部署中报告失败的设备数。 
 
 ## <a name="monitor-the-deployment"></a>监视部署
 
@@ -250,7 +250,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
-下载最多可能需要数分钟的时间，具体取决于网络速度。 等固件下载完以后，设备会验证文件大小和 CRC 值。 如果验证成功，MXChip 上的屏幕会显示“通过”。
+下载最多可能需要数分钟的时间，具体取决于网络速度。 等固件下载完以后，设备会验证文件大小和 CRC 值。 如果验证成功，MXChip 上的屏幕会显示“通过”。 
 
 ![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
@@ -266,7 +266,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
-在“部署”页上单击某个部署，查看设备更新时的状态。 可以看到设备组中每个设备的状态，以及所定义的自定义指标。
+在“部署”页上单击某个部署，查看设备更新时的状态。  可以看到设备组中每个设备的状态，以及所定义的自定义指标。
 
 ![部署详细信息](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 

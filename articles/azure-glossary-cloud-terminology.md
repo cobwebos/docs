@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659553"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978761"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -31,7 +31,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="account"></a>account
 用于访问和管理 Azure 订阅的帐户。 它通常被称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户，或 Office 365 用户名和密码。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
-请参阅[使用 Office 365 帐户注册 Azure 订阅](billing/billing-use-existing-office-365-account-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+请参阅[使用 Office 365 帐户注册 Azure 订阅](cost-management-billing/manage/office-365-account-for-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 应用
 又叫[应用服务应用](#app-service-app)。
@@ -96,11 +96,11 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="resource"></a>resource
 属于 Azure 解决方案的一部分的项。 每个 Azure 服务可让你部署不同类型的资源，例如数据库或虚拟机。   
-请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/management/overview.md)
 
 ## <a name="resource-group"></a>资源组
 Resource Manager 中的容器，用于保存应用程序的相关资源。 资源组可以包含应用程序的所有资源，也可以只包含逻辑分组在一起的资源。 可以根据对组织有利的原则，决定如何将资源分配到资源组。  
-请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/management/overview.md)
 
 ## <a name="arm-template"></a>资源管理器模板
 一个 JSON 文件，它以声明方式定义一个或多个 Azure 资源，并定义所部署资源之间的依赖关系。 使用模板能够以一致方式反复部署资源。  
@@ -108,7 +108,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="resource-provider"></a>资源提供程序
 一种服务，提供可以通过 Resource Manager 进行部署和管理的资源。 每个资源提供程序提供用于处理所部署资源的操作。 可以通过 Azure 门户、Azure PowerShell 和多个编程 SDK 来访问资源提供程序。  
-请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/management/overview.md)
 
 ## <a name="role"></a>角色 (role)
 用于控制可分配给用户、组和服务的访问权限的方式。 角色能够对 Azure 资源执行创建、管理和读取等操作。  

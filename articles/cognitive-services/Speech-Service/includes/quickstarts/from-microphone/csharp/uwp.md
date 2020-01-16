@@ -1,23 +1,22 @@
 ---
 title: 快速入门：从麦克风中识别语音，C# (UWP) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e6934e908111773cef3f7ddcfc2a971d8e1706bf
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818868"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927975"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -31,11 +30,11 @@ ms.locfileid: "74818868"
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
-第一步是确保项目在 Visual Studio 中打开。
+第一步是确保在 Visual Studio 中打开项目。
 
-## <a name="start-with-some-boilerplate-code"></a>从一些样板代码开始
+## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
-让我们添加一些代码作为项目的主干。
+添加一些代码作为项目的框架。
 
 1. 在“解决方案资源管理器”  中打开 `MainPage.xaml`。
 
@@ -54,7 +53,7 @@ ms.locfileid: "74818868"
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
-> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/)[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
 
@@ -69,7 +68,7 @@ ms.locfileid: "74818868"
 
 ## <a name="display-the-recognition-results-or-errors"></a>显示识别结果（或错误）
 
-如果语音服务返回了识别结果，则需执行一些操作。 我们会简单地将结果输出到状态面板。
+语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到状态面板。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=68-93)]
 

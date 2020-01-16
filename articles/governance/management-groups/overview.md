@@ -4,12 +4,12 @@ description: 了解管理组、其权限的工作方式以及如何使用它们�
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 72e37c3ef96f8068d9d9958910a6d75bbebd37fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436488"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750255"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -183,7 +183,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 ## <a name="audit-management-groups-using-activity-logs"></a>使用活动日志审核管理组
 
-[Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)支持管理组。 可以搜索到与其他 Azure 资源相同的中心位置中的管理组发生的所有事件。  例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
+[Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)支持管理组。 可以搜索到与其他 Azure 资源相同的中心位置中的管理组发生的所有事件。  例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
 ![将活动日志与管理组配合使用](media/al-mg.png)
 

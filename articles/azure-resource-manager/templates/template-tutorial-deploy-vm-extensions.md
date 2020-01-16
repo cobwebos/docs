@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f53583b0f542be62071a44b98f881dda9274b9d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5379bf3c0a5127e5114ac819bd3e0e2ad12e8d69
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471212"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045253"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板部署虚拟机扩展
 
@@ -76,8 +76,8 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ```json
 {
-    "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2018-06-01",
     "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
     "location": "[parameters('location')]",
     "dependsOn": [

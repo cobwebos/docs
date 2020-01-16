@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231514"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769689"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -22,7 +22,7 @@ ms.locfileid: "74231514"
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -34,7 +34,7 @@ ms.locfileid: "74231514"
 
 ## <a name="create-a-function-app-project"></a>创建函数应用项目
 
-Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为一个逻辑单元，以用于管理、部署和共享资源。
+Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
 1. 在 Visual Studio 中，从“文件”  菜单中选择“新建”   > “项目”  。
 
@@ -48,7 +48,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![Visual Studio 中的“新建 Azure Functions 应用程序”对话框](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | 设置      | 建议的值  | Description                      |
+    | 设置      | 建议的值  | 说明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **版本** | Azure Functions 2.0 <br />(.NET Core) | 创建一个函数项目，并让其使用 Azure Functions 的版本 2.0 运行时（支持 .NET Core）。 Azure Functions 1.0 支持 .NET Framework。 有关详细信息，请参阅[如何指向 Azure Functions 运行时版本](../functions-versions.md)。   |
     | **模板** | 空 | 创建一个空的函数应用。 |

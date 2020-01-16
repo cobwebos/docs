@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961414"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970502"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在“Azure 政府”区域和“公用”区域之间移动 Azure VM 
 
@@ -20,7 +20,7 @@ ms.locfileid: "73961414"
 
 除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 来管理以另一个区域为目的地的 Azure VM 移动。       
 
-本教程介绍如何使用 Azure Site Recovery 在“Azure 政府”区域和“公用”区域之间移动 Azure VM。 该方法同样可扩展用于在不属相同地理群集的区域对之间移动 VM。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 在“Azure 政府”区域和“公用”区域之间移动 Azure VM。 该方法同样可扩展用于在不属相同地理群集的区域对之间移动 VM。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证先决条件
@@ -65,7 +65,7 @@ ms.locfileid: "73961414"
 
 ### <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
-设置 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。
+设置 [Azure 存储帐户](../storage/common/storage-account-create.md)。
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
 - 存储帐户必须位于与恢复服务保管库相同的区域。

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 2abbf06fee8189bc6ca678e546c8e88504409a51
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660386"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770282"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -33,9 +33,11 @@ ms.locfileid: "75660386"
 
 你将使用 Docker 引擎来运行示例标记工具。 请按以下步骤设置 Docker 容器。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 1. 首先，在主计算机上安装 Docker。 主计算机可以是本地计算机（[Windows](https://docs.docker.com/docker-for-windows/)、[MacOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/)）。 或者，可以使用 Azure 中的 Docker 托管服务，例如 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/index)、[Azure 容器实例](https://docs.microsoft.com/azure/container-instances/index)或[部署到 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 Kubernetes 群集。 主计算机必须满足以下硬件要求：
+
     | 容器 | 最小值 | 建议|
     |:--|:--|:--|
-    |示例标记工具|2 核心，4 GB 内存|4 核心，8 GB 内存
+    |示例标记工具|2 核心，4 GB 内存|4 核心，8 GB 内存|
+    
 1. 接下来，需要 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 如果尚未安装，请将其安装到计算机上。
 1. 然后，在命令提示符处输入以下命令。 `<username>` 和 `<password>` 的值位于电子邮件“欢迎使用表单识别器”中。
     ```
@@ -49,7 +51,8 @@ ms.locfileid: "75660386"
     ```
     docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
     ```
-    此命令将使示例标记工具可通过 web 浏览器提供。 转到[http://localhost:3000](http://localhost:3000)。
+
+   此命令将使示例标记工具可通过 web 浏览器提供。 转到[http://localhost:3000](http://localhost:3000)。
 
 > [!NOTE]
 > 还可以使用表单识别器 REST API 来标记文档和训练模型。 若要使用 REST API 进行训练和分析，请参阅[使用 REST API 和 Python 通过标签进行训练](./python-labeled-data.md)。

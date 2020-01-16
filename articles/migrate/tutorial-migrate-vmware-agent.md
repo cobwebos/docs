@@ -1,19 +1,15 @@
 ---
 title: 使用基于代理的 Azure Migrate 服务器迁移功能迁移 VMware VM
 description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM 迁移。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196300"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028956"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -22,7 +18,7 @@ ms.locfileid: "74196300"
 [Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 设置源环境，并为基于代理的迁移部署 Azure Migrate 复制设备。
 > * 为迁移设置目标环境。
@@ -61,7 +57,7 @@ ms.locfileid: "74196300"
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -177,9 +173,9 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 > [!NOTE]
 > 使用 Azure Migrate 服务器迁移进行基于代理的迁移依赖于 Azure Site Recovery 服务的功能。 某些要求可能提供了 Site Recovery 文档的链接。
 
-1. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) VMware 服务器要求。
-2. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)要迁移的 VM 的支持要求。
-3. 验证 VM 设置。 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](migrate-support-matrix-vmware.md#azure-vm-requirements)。
+1. [验证](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware 服务器要求。
+2. [验证](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms)要迁移的 VM 的支持要求。
+3. 验证 VM 设置。 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
 
 
 
@@ -209,7 +205,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
     --- | ---
     亚洲 | 东南亚
     欧洲 | 欧洲北部或欧洲西部
-    美国 | 美国东部或美国中西部
+    United States | 美国东部或美国中西部
 
     为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。 可为实际迁移选择任一目标区域。
 4. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。   
@@ -336,7 +332,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
     - 如果你不想要应用 Azure 混合权益，请选择“否”。  然后单击“下一步”  。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。  然后单击“下一步”  。
 
-12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)。
+12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms)。
 
     - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表将包含建议的大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。  
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 

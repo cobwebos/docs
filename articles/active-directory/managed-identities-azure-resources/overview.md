@@ -15,18 +15,18 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a6c4363d6124a7cec075003f7b54a2825c3f489a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561897"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977973"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-生成云应用程序时需要应对的常见挑战是，如何管理代码中用于云服务身份验证的凭据。 保护这些凭据是一项重要任务。 理想情况下，这些凭据永远不会出现在开发者工作站上，也不会被签入源代码管理系统中。 虽然 Azure Key Vault 可用于安全存储凭据、机密以及其他密钥，但代码需要通过 Key Vault 的身份验证才能检索它们。 
+生成云应用程序时需要应对的常见挑战是，如何管理代码中用于云服务身份验证的凭据。 保护这些凭据是一项重要任务。 理想情况下，这些凭据永远不会出现在开发者工作站上，也不会被签入源代码管理系统中。 虽然 Azure Key Vault 可用于安全存储凭据、机密以及其他密钥，但代码需要通过 Key Vault 的身份验证才能检索它们。
 
 Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解决此问题。 此功能为 Azure 服务提供了 Azure AD 中的自动托管标识。 可以使用此标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
 
@@ -50,20 +50,20 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 - **系统分配托管标识**直接在 Azure 服务实例上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建实例的标识。 创建标识后，系统会将凭据预配到实例。 系统分配标识的生命周期直接绑定到启用它的 Azure 服务实例。 如果实例遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
 - **用户分配托管标识**是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。 用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。
 
-在内部，托管标识是特殊类型的服务主体，它们已锁定，只能与 Azure 资源配合使用。 删除托管标识时，相应的服务主体也会自动删除。 
+在内部，托管标识是特殊类型的服务主体，它们已锁定，只能与 Azure 资源配合使用。 删除托管标识时，相应的服务主体也会自动删除。
 
-代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。 
+代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。
 
 下图演示了托管服务标识如何与 Azure 虚拟机 (VM) 协同工作：
 
 ![托管服务标识和 Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
 
-|  属性    | 系统分配的托管标识 | 用户分配的托管标识 |
+|  properties    | 系统分配的托管标识 | 用户分配的托管标识 |
 |------|----------------------------------|--------------------------------|
 | 创建 |  作为 Azure 资源（例如 Azure 虚拟机或 Azure 应用服务）的一部分创建 | 作为独立 Azure 资源创建 |
 | 生命周期 | 与用于创建托管标识的 Azure 资源共享生命周期。 <br/> 删除父资源时，也会删除托管标识。 | 独立生命周期。 <br/> 必须显式删除。 |
 | 在 Azure 资源之间共享 | 无法共享。 <br/> 只能与单个 Azure 资源相关联。 | 可以共享 <br/> 用户分配的同一个托管标识可以关联到多个 Azure 资源。 |
-| 常见用例 | 包含在单个 Azure 资源中的工作负荷 <br/> 需要独立标识的工作负荷。 <br/> 例如，在单个虚拟机上运行的应用程序 | 在多个资源上运行的并可以共享单个标识的工作负荷。 <br/> 需要在预配流程中预先对安全资源授权的工作负荷。 <br/> 其资源经常回收，但权限应保持一致的工作负荷。 <br/> 例如，其中的多个虚拟机需要访问同一资源的工作负荷 | 
+| 常见用例 | 包含在单个 Azure 资源中的工作负荷 <br/> 需要独立标识的工作负荷。 <br/> 例如，在单个虚拟机上运行的应用程序 | 在多个资源上运行的并可以共享单个标识的工作负荷。 <br/> 需要在预配流程中预先对安全资源授权的工作负荷。 <br/> 其资源经常回收，但权限应保持一致的工作负荷。 <br/> 例如，其中的多个虚拟机需要访问同一资源的工作负荷 |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>系统分配托管标识如何与 Azure VM 协同工作
 
@@ -116,7 +116,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 * [访问 Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [访问 Azure 资源管理器](tutorial-windows-vm-access-arm.md)
 * [访问 Azure SQL](tutorial-windows-vm-access-sql.md)
-* [使用访问密钥访问 Azure 存储](tutorial-windows-vm-access-storage.md)
+* [使用访问密钥访问 Azure 存储](tutorial-vm-windows-access-storage.md)
 * [使用共享访问签名访问 Azure 存储](tutorial-windows-vm-access-storage-sas.md)
 * [使用 Azure Key Vault 访问非 Azure AD 资源](tutorial-windows-vm-access-nonaad.md)
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940669"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982365"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
@@ -68,13 +68,13 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 #### <a name="vms-running-sap-central-services-cluster"></a>运行 SAP Central Services 群集的 VM
 此参考体系结构在应用层中的 VM 上运行 Central Services。 如果将 Central Services 部署到单个 VM（高可用性不是一项要求时，通常采用这种部署方式），则它可能会成为潜在的单一故障点 (SPOF)。<br>
 
-若要实现高可用性解决方案，可以使用共享磁盘群集或文件共享群集。若要为共享磁盘群集配置 VM，请使用 Windows Server 故障转移群集。 建议将云见证用作仲裁见证。 
+若要实现高可用性解决方案，可以使用共享磁盘群集或文件共享群集。若要为共享磁盘群集配置 VM，请使用 Windows Server 故障转移群集。 建议将云见证用作仲裁见证。
  > [!NOTE]
  > Site Recovery 不会复制云见证服务器，因此建议在灾难恢复区域中部署云见证。
 
-为了支持故障转移群集环境，[SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) 会通过复制群集节点拥有的独立磁盘来执行群集共享卷功能。 Azure 原生并不支持共享磁盘，因此需要 SIOS 提供的解决方案。 
+为了支持故障转移群集环境，[SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) 会通过复制群集节点拥有的独立磁盘来执行群集共享卷功能。 Azure 原生并不支持共享磁盘，因此需要 SIOS 提供的解决方案。
 
-处理群集的另一种方法是实现文件共享群集。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) 最近修改了 Central Services 部署模式，以允许通过 UNC 路径访问 /sapmnt 全局目录。 但是，我们仍然建议确保 /sapmnt UNC 共享具有高可用性。 这可在 Central Services 实例上实现：将 Windows Server 故障转移群集与 Windows Server 2016 中的横向扩展文件服务器 (SOFS) 和存储空间直通 (S2D) 功能配合使用。 
+处理群集的另一种方法是实现文件共享群集。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) 最近修改了 Central Services 部署模式，以允许通过 UNC 路径访问 /sapmnt 全局目录。 但是，我们仍然建议确保 /sapmnt UNC 共享具有高可用性。 这可在 Central Services 实例上实现：将 Windows Server 故障转移群集与 Windows Server 2016 中的横向扩展文件服务器 (SOFS) 和存储空间直通 (S2D) 功能配合使用。
  > [!NOTE]
  > 目前 Site Recovery 仅支持使用 Datakeeper 的存储空间直通和被动节点对虚拟机进行故障一致性点复制
 
@@ -84,14 +84,14 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 你可以使用 Site Recovery 来协调跨 Azure 区域的完整 SAP 部署的故障转移。
 下面是设置灾难恢复的步骤 
 
-1. 复制虚拟机 
+1. 复制虚拟机
 2. 设计恢复网络
 3.  复制域控制器
-4.  复制数据库层 
-5.  执行测试故障转移 
-6.  执行故障转移 
+4.  复制数据库层
+5.  执行测试故障转移
+6.  执行故障转移
 
-下面是此示例中使用的每个层的灾难恢复建议。 
+下面是此示例中使用的每个层的灾难恢复建议。
 
  **SAP 层** | **建议**
  --- | ---

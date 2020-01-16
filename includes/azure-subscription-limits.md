@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 5b2ab103c2384b53f384c45945b387585fdbb4b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f49d91a2dffbd02067efd82b88963b5cb6eaa8b4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224446"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021004"
 ---
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的个 vcpu<sup>1</sup> |20 |10,000 |
-| 每个订阅的[协同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |200 |200 |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 vCPU 数量 <sup>1</sup> |20 |10,000 |
+| 每个订阅的[共同](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) |200 |200 |
 | 每个订阅的[存储帐户数](../articles/storage/common/storage-create-storage-account.md)<sup>2</sup> |100 |100 |
 | 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |20 |200 |
 | 每个订阅的[本地网络数](/previous-versions/azure/reference/jj157100(v=azure.100)) |10 |500 |

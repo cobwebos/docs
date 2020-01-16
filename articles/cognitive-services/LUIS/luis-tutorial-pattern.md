@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: d52b2485436f0a9075dcc3f505806e46094340a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381692"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979767"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教程：添加常见的模式模板言语格式以改进预测
 
@@ -578,4 +578,4 @@ Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为�
 
 
 > [!div class="nextstepaction"]
-> [了解如何结合使用角色和模式](luis-tutorial-pattern-roles.md)
+> [了解如何结合使用角色和模式](luis-tutorial-pattern.md)

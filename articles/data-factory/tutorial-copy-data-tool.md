@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977339"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -39,7 +39,7 @@ ms.locfileid: "75439413"
 ## <a name="prerequisites"></a>必备条件
 
 * **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：使用 Blob 存储作为_源_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
+* **Azure 存储帐户**：使用 Blob 存储作为_源_数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 * **Azure SQL 数据库**：使用 SQL 数据库作为_接收器_数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
@@ -78,18 +78,18 @@ ms.locfileid: "75439413"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：   
-    
+
     ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
 
     数据工厂的名称必须全局唯一。  可能会收到以下错误消息：
-    
+
     ![新的数据工厂错误消息](./media/doc-common-process/name-not-available-error.png)
 
     如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 1. 选择要在其中创建新数据工厂的 Azure **订阅**。
 1. 对于“资源组”，请执行以下步骤之一： 
-    
+
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
     b. 选择“新建”，并输入资源组的名称。 
@@ -101,7 +101,7 @@ ms.locfileid: "75439413"
 1. 选择“创建”  。
 
 1. 创建完以后，会显示“数据工厂”  主页。
-    
+
     ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
 1. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。 
 
@@ -125,7 +125,7 @@ ms.locfileid: "75439413"
     ![选择源链接服务](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. 在“选择输入文件或文件夹”页中完成以下步骤： 
-    
+
     a. 单击“浏览”  导航到 **adfv2tutorial/input** 文件夹，选择 **inputEmp.txt** 文件，然后单击“选择”。 
 
     b. 单击“下一步”转到下一步骤。 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428776"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969122"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -52,7 +52,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 可以在 [Azure 存储容器](../storage/common/storage-introduction.md)中以 Blob 形式保存传入电子邮件和附件。
 
-1. 在创建存储容器之前，请先在 Azure 门户中的“基本信息”选项卡上使用以下设置[创建一个存储帐户](../storage/common/storage-quickstart-create-account.md)： 
+1. 在创建存储容器之前，请先在 Azure 门户中的“基本信息”选项卡上使用以下设置[创建一个存储帐户](../storage/common/storage-account-create.md)： 
 
    | 设置 | 值 | 说明 |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![创建的函数应用](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   若要创建函数应用，也可以使用 [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) 或 [PowerShell 和资源管理器模板](../azure-resource-manager/resource-group-template-deploy.md)。
+   若要创建函数应用，也可以使用 [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) 或 [PowerShell 和资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)。
 
 1. 在“函数应用”列表中展开函数（如果尚未展开）  。 在你的函数应用下，选择“函数”  。 在函数工具栏上选择“新建函数”。 
 
@@ -282,7 +282,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
       | 间隔  | 1 | 在两次检查之间需等待的时间间隔数 |
       | **频率** | Minute | 两次检查的间隔的时间单位 |
       ||||
-  
+
    1. 在“添加新参数”列表中，选择“主题筛选器”。  
 
    1. 操作中显示“主题筛选器”框之后，请按以下列表中所示指定主题： 
@@ -377,7 +377,8 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 接下来，定义需要针对 **If true** 分支执行的操作。 若要保存电子邮件及其附件，请从电子邮件正文中删除 HTML，然后在电子邮件和附件的存储容器中创建 Blob。
 
 > [!NOTE]
-> 当电子邮件没有附件时，逻辑应用不需针对 **If false** 分支执行任何操作。 完成本教程后，可以针对 **If false** 分支添加需要执行的适当操作，作为附加练习。
+> 当电子邮件没有附件时，逻辑应用不需针对 **If false** 分支执行任何操作。
+> 完成本教程后，可以针对 **If false** 分支添加需要执行的适当操作，作为附加练习。
 
 ## <a name="call-removehtmlfunction"></a>调用 RemoveHTMLFunction
 
@@ -605,7 +606,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    ||||
 
    > [!NOTE]
-   > 如果选择了一个包含数组的字段，例如“内容”字段（包含附件的数组），设计器会围绕引用该字段的操作自动添加“For each”循环。  这样一来，逻辑应用就可以对每个数组项执行该操作。 若要删除该循环，请删除数组的字段，将引用操作移至循环外部，选择循环的标题栏中的省略号 (…)，然后选择“删除”   。
+   > 如果选择了一个包含数组的字段，例如“内容”字段（包含附件的数组），设计器会围绕引用该字段的操作自动添加“For each”循环。 
+   > 这样一来，逻辑应用就可以对每个数组项执行该操作。
+   > 若要删除该循环，请删除数组的字段，将引用操作移至循环外部，选择循环的标题栏中的省略号 (…)，然后选择“删除”   。
 
 1. 保存逻辑应用。
 

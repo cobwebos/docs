@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理服务器
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280553"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028986"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate：服务器评估服务器评估”评估 VMware VM
 
@@ -20,7 +16,7 @@ ms.locfileid: "74280553"
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
-本教程是演示如何评估物理服务器以及将其迁移到 Azure 的教程系列中的第二篇文章。 本教程介绍如何执行下列操作：
+本教程是演示如何评估物理服务器以及将其迁移到 Azure 的教程系列中的第二篇文章。 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 设置一个 Azure Migrate 项目。
 > * 设置本地运行的 Azure Migrate 设备，用于评估物理服务器。
@@ -34,7 +30,7 @@ ms.locfileid: "74280553"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [完成](tutorial-prepare-physical.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
@@ -141,7 +137,7 @@ ms.locfileid: "74280553"
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备可以连接到 [Azure URL](migrate-support-matrix-physical.md#assessment-appliance-url-access)。
+确保设备可以连接到 [Azure URL](migrate-appliance.md#url-access)。
 
 
 ### <a name="configure-the-appliance"></a>配置设备
@@ -180,7 +176,7 @@ ms.locfileid: "74280553"
 2. 指定“操作系统”、凭据的友好名称、“用户名”和“密码”，然后单击“添加”     。
 你可以为 Windows 和 Linux 服务器分别添加一组凭据。
 4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器  。
-3. 单击“验证”。  验证后，将显示可发现的服务器列表。
+3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
     - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。  解决问题并再次验证。
     - 若要删除服务器，请选择 >“删除”  。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。 

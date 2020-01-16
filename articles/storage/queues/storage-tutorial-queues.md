@@ -8,23 +8,23 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721144"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968199"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
 
 Azure 队列存储实现基于云的队列以在分布式应用程序的组件之间实现通信。 每个队列维护一个可由发送方组件添加的、由接收方组件处理的消息列表。 使用队列时，应用程序可根据需求立即缩放。 本文介绍有关使用 Azure 存储队列的基本步骤。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
 > - 创建 Azure 存储帐户
-> - 创建应用程序
+> - 创建应用
 > - 支持异步代码的支持
 > - 创建队列
 > - 将消息插入队列
@@ -33,7 +33,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 > - 检查命令行参数
 > - 生成并运行应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 获取跨平台 [Visual Studio Code](https://code.visualstudio.com/download) 编辑器的免费副本。
 - 下载并安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
@@ -41,9 +41,9 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-首先创建 Azure 存储帐户。 有关创建存储帐户的分步指南，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)快速入门。
+首先创建 Azure 存储帐户。 有关创建存储帐户的分步指南，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)快速入门。
 
-## <a name="create-the-app"></a>创建应用程序
+## <a name="create-the-app"></a>创建应用
 
 创建名为 **QueueApp** 的 .NET Core 应用程序。 为方便起见，此应用将通过队列发送和接收消息。
 
@@ -505,7 +505,7 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 1. 创建队列
 2. 在队列中添加和删除消息

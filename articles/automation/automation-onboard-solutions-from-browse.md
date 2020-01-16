@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421860"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979473"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -41,7 +41,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="resource-group-limit"></a> 载入限制
 
-你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)。 资源管理器部署，不会与更新部署混淆，每个部署只能有5个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。 此限制仅适用于同时加入，而不适用于自动化解决方案可以管理的资源组数。
+你可以用于载入的资源组的数量受限于[资源管理器部署限制](../azure-resource-manager/templates/cross-resource-group-deployment.md)。 资源管理器部署，不会与更新部署混淆，每个部署只能有5个资源组。 为确保载入的完整性，这些资源组中有 2 个保留用来配置 Log Analytics 工作区、自动化帐户和相关资源。 剩下的 3 个资源组供你选择用于部署。 此限制仅适用于同时加入，而不适用于自动化解决方案可以管理的资源组数。
 
 你还可以使用用于载入的 runbook，有关详细信息，请参阅[Azure 自动化的内置更新和更改跟踪解决方案](automation-onboard-solutions.md)。
 

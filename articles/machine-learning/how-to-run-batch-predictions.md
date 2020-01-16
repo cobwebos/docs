@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 47fa0d97f21c5e3734cb1104c7d0ab72c14d9679
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ee594bf4e17a06c8333f0836a17e75cc99a2dde3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532270"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771847"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ def_data_store = ws.get_default_datastore()
 
 你还可以在自定义推理脚本中引用其他数据集。 例如，你可以使用它来访问脚本中的标签，以便使用 `Dataset.register` 和 `Dataset.get_by_name` 来标记映像。
 
-有关 Azure 机器学习数据集的详细信息，请参阅[创建和访问数据集（预览版）](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)。
+有关 Azure 机器学习数据集的详细信息，请参阅[创建和访问数据集（预览版）](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
 
 `PipelineData` 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
 

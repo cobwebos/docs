@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: b8cbf69aa0788b3b8e0130396f192cb5bc045f3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448887"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770435"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的异常检测器客户端库
 
@@ -67,7 +67,7 @@ npm init
 安装 `ms-rest-azure` 和 `azure-cognitiveservices-anomalydetector` NPM 包。 此快速入门中也使用了 csv-parse 库：
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 应用的 `package.json` 文件将使用依赖项进行更新。

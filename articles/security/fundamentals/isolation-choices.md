@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979280"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
@@ -190,7 +190,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
 ### <a name="ip-level-storage-isolation"></a>IP 级别存储隔离
-可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围，只有 IP 地址在定义范围内的客户端才可以连接到 [Azure 存储](../../storage/common/storage-security-guide.md)。
+可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围，只有 IP 地址在定义范围内的客户端才可以连接到 [Azure 存储](../../storage/blobs/security-recommendations.md)。
 
 可通过网络机制防止未经授权的用户访问 IP 存储数据，该机制用于分配到 IP 存储的专用流量或专用流量隧道。
 
@@ -203,18 +203,18 @@ Azure 提供了以下加密类型来保护数据：
 #### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
 
--   [传输级别加密](../../storage/common/storage-security-guide.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级别加密](../../storage/blobs/security-recommendations.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--   [线路加密](../../storage/common/storage-security-guide.md)，例如 Azure 文件共享的 SMB 3.0 加密。
+-   [线路加密](../../storage/blobs/security-recommendations.md)，例如 Azure 文件共享的 SMB 3.0 加密。
 
--   [客户端加密](../../storage/common/storage-security-guide.md)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+-   [客户端加密](../../storage/blobs/security-recommendations.md)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 #### <a name="encryption-at-rest"></a>静态加密
 对许多组织而言，[静态数据加密](isolation-choices.md)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
--   [存储服务加密](../../storage/common/storage-security-guide.md)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
+-   [存储服务加密](../../storage/blobs/security-recommendations.md)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
--   [客户端加密](../../storage/common/storage-security-guide.md)也提供静态加密功能。
+-   [客户端加密](../../storage/blobs/security-recommendations.md)也提供静态加密功能。
 
 -   [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 

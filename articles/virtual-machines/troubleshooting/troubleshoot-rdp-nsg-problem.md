@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162595"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981806"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因为没有在 NSG 中启用 RDP 端口而无法远程连接到 VM
 
@@ -25,7 +25,7 @@ ms.locfileid: "71162595"
 
 
 > [!NOTE] 
-> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 对于新部署，建议你使用资源管理器部署模型而非经典部署模型。 
+> Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 对于新部署，建议你使用资源管理器部署模型而非经典部署模型。 
 
 ## <a name="symptom"></a>症状
 
@@ -45,9 +45,9 @@ ms.locfileid: "71162595"
     **名称**：Port_3389 </br>
     **端口（目标）** ：3389 </br>
     **协议**：TCP </br>
-    **源**：任意 </br>
-    **目标**：任意 </br>
-    **操作**：Allow </br>
+    **源**：任何 </br>
+    **目标**：任何 </br>
+    **操作**：允许 </br>
 
 如果你指定了源 IP 地址，则此设置仅允许来自特定 IP 地址或 IP 地址范围的流量连接到 VM。 请确保你用来启动 RDP 会话的计算机在该范围内。
 

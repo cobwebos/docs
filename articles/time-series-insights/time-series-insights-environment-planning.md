@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863370"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046189"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解 GA 环境
 
@@ -24,7 +24,7 @@ ms.locfileid: "75863370"
 
 ## <a name="video"></a>视频
 
-**观看此视频，了解有关 Azure 时序见解中的数据保留的详细信息，以及如何对其进行规划**：<br /><br />
+**观看此视频，了解有关 Azure 时序见解中的数据保留的详细信息，以及如何对其进行规划**：<br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -53,7 +53,7 @@ ms.locfileid: "75863370"
 Azure 时序见解有两种模式：
 
 * 一种模式优化了最新的数据。 它强制实施一个策略，以**清除旧数据**，使其与实例一起使用最新的数据。 此模式默认为启用状态。 
-* 其他数据将优化数据，使其保持低于配置的保留限制。 如果将新数据选作**超出存储限制的行为**，**暂停入口**会阻止引入新数据。 
+* 其他数据将优化数据，使其保持低于配置的保留限制。 如果将新数据选作**超出存储限制的行为**，**暂停入口**会阻止引入新数据。
 
 可以在 Azure 门户中环境配置页上的两种模式之间进行调整和切换。
 

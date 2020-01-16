@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863798"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045551"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -167,7 +167,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 ### <a name="category"></a>类别
 
-最少选择一（1），最多可选择三（3）个类别，将产品/服务分组到适当的 marketplace 搜索区域。 请在产品/服务描述中了解产品/服务如何支持这些类别。 
+最少选择一（1），最多可选择三（3）个类别，将产品/服务分组到适当的 marketplace 搜索区域。 请在产品/服务描述中了解产品/服务如何支持这些类别。
 
 ### <a name="industry"></a>行业
 
@@ -175,7 +175,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 ### <a name="app-version"></a>应用版本
 
-这是一个可选字段，用于在 AppSource marketplace 中标识产品的版本号。
+此字段是可选的，在 AppSource marketplace 中用于标识产品的版本号。
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 的标准协定
 
@@ -204,12 +204,12 @@ Microsoft 提供了标准合同模板。
 >[!NOTE]
 > 这两种类型的改正堆栈彼此之上。 以自定义修正为目标的客户也会在购买过程中获得标准合同的通用修正。
 
-**适用于 Microsoft 商用 Marketplace 标准合同的通用修正条款**：在此框中输入通用修订条款。 可以为每个产品/服务提供单个通用修订。 您可以在此框中输入不限数量的字符。 在发现和购买流程期间，会向 AppSource、Azure Marketplace 和/或 Azure 门户中的客户显示这些客户。
+**适用于 Microsoft 商用 Marketplace 标准合同的通用修正条款**：在此框中输入通用修订条款。 可以为每个产品/服务提供单个通用修订。 您可以在此框中输入不限数量的字符。 在发现和购买流程期间，会向 AppSource、Azure Marketplace 和/或 Azure 门户中的客户显示这些条款。
 
 **适用于 Microsoft 商用 Marketplace 标准合同的自定义修订条款**：从选择 "**添加自定义修订条款**" 开始。 最多可为每个产品提供10个自定义修订条款。
 
 - **自**定义修订条款：在自定义修订条款框中输入自定义修订条款。 您可以在此框中输入不限数量的字符。 只有你为这些自定义术语指定的租户 Id 的客户才会在 Azure 门户的产品/服务购买流程中提供自定义修订条款。  
-- **租户 id** （必需）：每个自定义修订最多可针对20个租户 id。 如果添加自定义修正，则必须至少提供一个租户 ID。 租户 ID 用于标识 Azure 中的客户。 可以通过导航到 portal.azure.com > Azure Active Directory > 属性来向客户提供此 ID。 目录 ID 值是租户 ID （例如50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用其域名 URL 查找你的客户的租户 ID，"[我的 Microsoft Azure 和 Office 365 租户 id 是什么？"](https://www.whatismytenantid.com)。
+- **租户 id** （必需）：每个自定义修订最多可针对20个租户 id。 如果添加自定义修正，则必须至少提供一个租户 ID。 租户 ID 用于标识 Azure 中的客户。 可以通过导航到 portal.azure.com > Azure Active Directory > 属性来向客户提供此 ID。 目录 ID 值是租户 ID （例如，50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用其域名 URL 查找你的客户的租户 ID，"[我的 Microsoft Azure 和 Office 365 租户 id 是什么？"](https://www.whatismytenantid.com)。
 - **描述**（可选）：根据需要提供适用于租户 ID 的友好描述，以帮助你确定要使用修正的客户。
 
 #### <a name="terms-and-conditions"></a>条款和条件
@@ -231,7 +231,7 @@ Microsoft 提供了标准合同模板。
 
 提供要在 marketplace 中显示的详细信息，包括产品/服务和市场营销资产的说明。
 
-- **名称**（必需）：此处定义的名称将显示为你选择的 marketplace 中的产品/服务列表的标题。 该名称根据你以前的**新产品/服务**条目预填充。  这可能是商标字的。  这不能包含表情符号（除非它们是商标和版权符号），并且必须限制为50个字符。
+- **名称**（必需）：此处定义的名称将显示为你选择的 marketplace 中的产品/服务列表的标题。 该名称根据你以前的**新产品/服务**条目预填充。 名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且必须限制为50个字符。
 - **摘要**（必需）：提供产品/服务的简短说明，用于应用商店列表搜索结果。 最多可在此字段中输入100个字符的文本。
 - **说明**（必需）：提供产品/服务的说明，以便在 marketplace 列表概述中显示。 考虑包括价值主张、关键优势、任何类别或行业关联、应用内购买机会、任何所需的披露，以及用于了解详细信息的链接。
 最多可在此字段中输入3000个字符的文本。 有关更多提示，请参阅文章[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
@@ -240,7 +240,7 @@ Microsoft 提供了标准合同模板。
 
 #### <a name="description"></a>**说明**
 
-这是必填字段。 要包括在说明中的项：
+此字段是必需的。 要包括在**说明**中的项：
 
 * 在前几句描述中清晰描述产品/服务的价值主张。  
 * 请牢记，前几句话可能在搜索引擎结果中显示。  
@@ -253,76 +253,28 @@ Microsoft 提供了标准合同模板。
 * 受益于该产品的用户类型。
 * 产品的客户需求或困难。
 
-若要使您的产品/服务描述更具吸引力，可以使用 HTML 标记来设置说明格式。
+若要使您的产品/服务**说明**更具吸引力，请使用富文本编辑器来设置说明格式。
 
-1. 若要创建段落，请在文本 begging 添加 `<p>`，并在末尾添加 `</p>`。
+![使用富文本编辑器](./media/text-editor2.png)
 
-    **示例**：
+使用以下说明来使用富文本编辑器：
 
-    `<p>` 这是我的第一个段落。 `</p>` <br>
-    `<p>` 这是我的第二个段落。 `</p>` <br>
+- 若要更改内容的格式，请突出显示要设置格式的文本并选择文本样式，如下所示：
 
-    上述内容如下所示：
+     ![使用富文本编辑器更改文本格式](./media/text-editor3.png)
 
-    <p> 这是我的第一个段落。 </p>
-    <p> 这是我的第二个段落。 </p>
+- 若要向文本添加项目符号列表或编号列表，请使用以下选项：
 
-1. 如果要添加项目的项目**符号列表**，请将文本放在下面 `<li>` 标记中。 可以在 `<ul>` 和 `</ul>` 标记中复制和粘贴更多项目符号项（`<li>` 和 `</li>` 标记之间的项）。 请确保添加 `<ul></ul>`。
+     ![使用富文本编辑器添加列表](./media/text-editor4.png)
 
-    **示例**：
+- 若要在文本中添加或删除缩进，请使用以下选项：
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    上述内容如下所示：
-    <ul> 
-        <li>在此添加文本</li>
-        <li> 在此添加文本 </li>
-        <li> 在此添加文本 </li>
-    </ul> 
-
-1. 若要为**粗体**内容，请在要加粗的文本开头添加 `<b>`，并将 `</b>` 添加到要以粗体显示的文本末尾。
-
-    **示例**： `<b>` 免费试用版 `</b>`
-    
-    上述内容将导致在店面中的产品/服务说明中，"免费试用" 字样为粗体。
-
-    **免费试用版**
-
-1. 若要在内容之间添加**换行符**，请将 `<br>` 添加到要在新行上开始的内容之前。 如果要保留一个空格并确保内容从新行开始，请在内容前添加 `<br><br>`。
-
-    **示例**：
-
-    这是文本行。 `<br>` 这是将在新行中开始的文本行。 `<br><br>` 这是一条将在下方开始两行的行。
-
-    上述内容如下所示：
-
-    这是文本行。 <br> 这是将在新行中开始的文本行。 <br><br> 这是一条将在下方开始两行的行。
-
-1. 如果要**增加文本大小**，请首先选择文本的大小。 使用以下示例。 选择文本大小后，将相应的 `<H*></H*>` 标记添加到文本的开头和结尾。
-
-    **示例**：
-
-    `<h1>`为标题 1`</h1>` <br>
-    `<h2>`为标题 2`</h2>` <br>
-    `<h3>`为标题 3`</h3>` <br>
-    `<h4>`为标题 4`</h4>` <br>
-    `<h5>`为标题 5`</h5>` <br>
-    `<h6>`标题 6`</h6>` 
-
-    上述内容如下所示：
-
-    ![示例标题](./media/heading.png)
+     ![使用富文本编辑器缩进](./media/text-editor5.png)
 
 #### <a name="links"></a>链接
 
 - **隐私策略**（必需）：指向你的组织的隐私策略的链接。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略
-- **CSP 计划营销材料**（可选）：如果你选择将你的产品/服务扩展到[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划，则必须提供营销材料的链接。 CSP 通过使 CSP 合作伙伴捆绑、营销和转售你的产品/服务，将你的产品/服务扩展到更广泛的合格客户。 这些分销商需要访问产品/服务的营销材料。 有关详细信息，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+- **CSP 计划营销材料**（可选）：如果你选择将你的产品/服务扩展到[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划，请提供营销材料的链接。 CSP 通过使 CSP 合作伙伴捆绑、营销和转售你的产品/服务，将你的产品/服务扩展到更广泛的合格客户。 这些分销商需要访问产品/服务的营销材料。 有关详细信息，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 - **有用的链接**（可选）：通过提供**标题**和**URL**来列出你的应用或相关服务的可选补充联机文档。 单击 " **+ 添加 URL**"，添加其他有用的链接。
 
 #### <a name="contact-information"></a>联系人信息
@@ -353,7 +305,7 @@ Microsoft 提供了标准合同模板。
 使用 "**预览**" 选项卡，可以在将产品/服务发布到更广泛的 marketplace 受众之前，定义用于发布产品/服务的受限**预览版**。
 
 > [!IMPORTANT]
-> 在预览版中检查产品/服务后，你必须选择 "**开始**"，然后将产品/服务发布到 marketplace 公共受众。
+> 在预览版中检查您的产品/服务后 **，选择 "上线"** 以便您的产品/服务可以实时发布到 marketplace 公共受众。
 
 - **定义预览受众：添加单个 AAD/MSA 帐户每行的电子邮件和可选描述。**
 
@@ -370,7 +322,7 @@ Microsoft 提供了标准合同模板。
 
 - **连接 webhook** （必需）：对于 Microsoft 需要代表客户发送给你的所有异步事件（例如： SaaS 订阅无效），我们要求你提供连接 webhook。 如果尚未准备好 webhook 系统，最简单的配置是创建一个 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如，https：\//prod-1westus.logic.azure.com:443/work）。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
-- **Azure AD 租户 ID** （必需）：在 Azure 门户内部，我们要求你[创建 Azure Active Directory （AD）应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请跳到 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 租户 ID** （必需）：在 Azure 门户内部，我们要求你[创建 Azure Active Directory （AD）应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请在 Azure Active Directory 中选择 "**属性**"，然后查找列出的**目录 ID**号（例如，50c464d3-4930-494c-963c-1e951d15360e）。
 
 - **Azure AD 应用 id** （必需）：还需要[应用程序 id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择**应用注册**，然后查找列出的**应用程序 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。 若要查找身份验证密钥，请单击 "**设置**" 并选择 "**密钥**"。 你将需要提供描述和持续时间，然后将提供一个数值。
 
@@ -390,8 +342,8 @@ Microsoft 提供了标准合同模板。
 
 **创建新计划**（对于选择通过 Microsoft 进行销售的用户，至少需要一个计划）
 
-- **计划 ID：** 为此产品/服务中的每个计划创建唯一的计划 ID。 此 ID 将对产品 URL 中的客户可见，Azure 资源管理器模板（如果适用）。 仅使用小写字母、字母数字字符、短划线或下划线。 此计划 ID 最多允许50个字符。 请注意，在选择 "创建" 后，不能修改该 ID。
-- **计划名称：** 客户在确定要在产品/服务中选择的计划时，将看到此名称。 为此产品/服务中的每个计划创建一个唯一的产品/服务名称。 计划名称用于区分可能属于同一产品/服务的软件计划（例如 产品/服务名称： Windows Server;计划： Windows Server 2016、Windows Server 2019）。
+- **计划 ID：** 为此产品/服务中的每个计划创建唯一的计划 ID。 此 ID 将对产品 URL 中的客户可见，Azure 资源管理器模板（如果适用）。 仅使用小写字母、字母数字字符、短划线或下划线。 此计划 ID 最多允许50个字符。 选择 "创建" 后，不能修改该 ID。
+- **计划名称：** 客户在确定要在产品/服务中选择的计划时，将看到此名称。 为此产品/服务中的每个计划创建一个唯一的产品/服务名称。 计划名称用于区分可能属于同一产品/服务（例如，产品/服务名称： Windows Server; 计划： Windows Server 2016，Windows Server 2019）的软件计划。
 
 ### <a name="plan-listing"></a>计划列表
 
@@ -424,7 +376,7 @@ Microsoft 提供了标准合同模板。
 >[!Note]
 >使用免费试用版发布事务产品/服务后，将无法为该计划禁用该产品/服务。 请确保首次发布时此设置正确，以避免重新创建该计划。
 
-若要获取有关当前参与免费试用的客户订阅的信息，请使用 `isFreeTrial`的新 API 属性，该属性将被标记为 true 或 false。 有关详细信息，请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) 。
+若要获取有关当前参与免费试用的客户订阅的信息，请使用 `isFreeTrial`的新 API 属性，该属性将被标记为 true 或 false。 有关详细信息，请参阅[SaaS 获取订阅 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)。
 
 >[!Note]
 >利用 marketplace 计量服务的计划不支持免费试用版。

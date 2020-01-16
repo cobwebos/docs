@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792401"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979380"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用架构验证 XML
 
@@ -31,7 +31,7 @@ ms.locfileid: "74792401"
   若要将该架构添加到集成帐户，可以从集成帐户链接到存储帐户。 
   若要完成此任务，需要提供以下各项： 
 
-  * [Azure 存储帐户](../storage/common/storage-account-overview.md)，将在其中为架构创建 Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-quickstart-create-account.md)。 
+  * [Azure 存储帐户](../storage/common/storage-account-overview.md)，将在其中为架构创建 Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-account-create.md)。 
 
   * 用于存储架构的 Blob 容器。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 
   稍后将架构添加到集成帐户时，需要容器的内容 URI。

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466790"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045041"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何将自定义技能添加到 Azure 认知搜索扩充管道
 
@@ -25,7 +25,7 @@ Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可从[
 
 ## <a name="web-api-custom-skill-interface"></a>Web API 自定义技能接口
 
-如果未在 30 秒的期限内返回响应，自定义 WebAPI 技能终结点将默认超时。 索引管道是同步的，如果未在该期限内收到响应，索引会生成超时错误。  通过设置超时参数，最多可以将超时配置为 230 秒：
+如果未在 30 秒的期限内返回响应，自定义 WebAPI 技能终结点将默认超时。 索引管道是同步的，如果未在该期限内收到响应，索引会生成超时错误。  通过设置 timeout 参数，可以将超时配置为最长230秒：
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
@@ -122,7 +122,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 
 ## <a name="consuming-custom-skills-from-skillset"></a>从技能组合中使用自定义技能
 
-创建 Web API 扩充器时，可将 HTTP 标头和参数描述为请求的一部分。 下面的代码片段显示了如何将请求参数和 HTTP 标头描述为技能组合定义的一部分。
+创建 Web API 扩充器时，可将 HTTP 标头和参数描述为请求的一部分。 下面的代码片段演示了如何将请求参数和*可选*的 HTTP 标头描述为技能组合定义的一部分。 HTTP 标头并不是必需的，但是它们允许你向技能添加其他配置功能，以及从技能组合定义中进行设置。
 
 ```json
 {

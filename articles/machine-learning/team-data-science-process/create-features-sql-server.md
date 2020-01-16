@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602932"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982061"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。
@@ -24,14 +24,14 @@ ms.locfileid: "65602932"
 此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 > [!NOTE]
-> 有关实际的示例，可以参阅 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/) [使用 IPython Notebook 和 SQL Server 处理 NYC 数据](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)获取端到端的演练。
+> 有关实际的示例，可以参阅 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/)[使用 IPython Notebook 和 SQL Server 处理 NYC 数据](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)获取端到端的演练。
 > 
 > 
 
 ## <a name="prerequisites"></a>必备组件
 本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
 * 在 SQL Server 中存储的数据。 如果尚未存储，请参阅[将数据移到 Azure 机器学习的 Azure SQL 数据库](move-sql-azure.md)以便获取有关如何移动数据的说明。
 
 ## <a name="sql-featuregen"></a>使用 SQL 生成特征
@@ -68,7 +68,7 @@ ms.locfileid: "65602932"
 * 符号指示我们在地球上的北部还是南部、东部还是西部。
 * 非零百位数指示使用的是经度，而不是纬度。
 * 十位数提供约 1000 公里的位置。 它提供处于哪个大陆或大洋的有用信息。
-* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它指示大致，哪一个大州或国家/地区中我们是。
+* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它表示我们所处的状态或国家/地区。
 * 第一个小数位值达 11.1 km：可将相邻的大城市区分开。
 * 第二位小数值达 1.1 km：可将村庄分开。
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。

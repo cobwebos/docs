@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure 文件存储文件共享
 description: 在本教程中，了解如何使用 Azure 门户配置恢复服务保管库并备份 Azure 文件共享。
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171870"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921649"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>在 Azure 门户中备份 Azure 文件共享
 
@@ -20,7 +20,7 @@ ms.locfileid: "74171870"
 > * 将恢复服务保管库配置为备份 Azure 文件
 > * 运行按需备份作业，以创建还原点
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在备份 Azure 文件共享之前，请确保其类型为[支持的存储帐户类型](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)。 验证这个之后，即可对文件共享进行保护。
 
@@ -28,7 +28,6 @@ ms.locfileid: "74171870"
 
 Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
 
-* 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
 * 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
 * 每天的计划备份数上限为 1。
 * 每天的按需备份数上限为 4。

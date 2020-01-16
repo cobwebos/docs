@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5f05c6d82a00e78a4237019128db541eb63f20ba
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012241"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966802"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 创建 Azure 应用程序网关（经典）的自定义探测
 
@@ -21,10 +21,10 @@ ms.locfileid: "74012241"
 > * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
-在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面，或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
+在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "74012241"
 
 ### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>创建使用自定义探测的应用程序网关资源
 
-要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费会在后面已成功启动网关时开始。
+要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换成自己的值。 此时不会开始计收网关的费用。 计费会在后面已成功启动网关时开始。
 
 以下示例使用名为“testvnet1”的虚拟网络和名为“subnet-1”的子网创建应用程序网关。
 
@@ -131,7 +131,7 @@ Get-AzureApplicationGateway AppGwTest
 
 编辑配置项的括号之间的值。 使用扩展名 .xml 保存文件。
 
-以下示例演示如何使用配置文件设置应用程序网关负载均衡公共端口 80 上的 HTTP 流量，然后使用自定义探测将网络流量发送到两个 IP 地址之间的后端端口 80。
+以下示例演示如何使用配置文件设置应用程序网关负载均衡公共端口 80 上的 HTTP 流量，然后使用自定义探测将网络流量发送到 2 个 IP 地址之间的后端端口 80。
 
 > [!IMPORTANT]
 > 协议项 Http 或 Https 区分大小写。
@@ -140,14 +140,14 @@ Get-AzureApplicationGateway AppGwTest
 
 配置参数为：
 
-|参数|说明|
+|参数|Description|
 |---|---|
 |**名称** |自定义探测的引用名称。 |
-| **协议** | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
-| **Host** 和 **Path** | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http:\//contoso.com/，则可以为“http:\//contoso.com/path/custompath.htm”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。|
-| **时间间隔** | 配置探测检查间隔（以秒为单位）。|
+| 协议 | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
+| Host 和 Path | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果你有一个网站 http：\//contoso.com/，则可将自定义探测配置为 "http：\//contoso.com/path/custompath.htm"，以便探测检查获得成功的 HTTP 响应。|
+| 间隔 | 配置探测检查间隔，以秒为单位。|
 | **超时** | 定义 HTTP 响应检查的探测超时。|
-| **UnhealthyThreshold** | 将后端实例标记为不正常所需的失败 HTTP 响应数目。|
+| UnhealthyThreshold | 将后端实例标记为不正常所需的失败 HTTP 响应数目。|
 
 \<BackendHttpSettings\> 配置中会引用探测名称，以分配使用自定义探测设置的后端池。
 

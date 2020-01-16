@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 66c5873749924df2133cb1ba4711b779e0aba24a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834745"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044890"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -234,13 +234,12 @@ myenv.inferencing_stack_version = "latest"  # This will install the inference sp
 # Define the packages needed by the model and scripts
 from azureml.core.conda_dependencies import CondaDependencies
 conda_dep = CondaDependencies()
-# Unless you are using your own custom inference stack,
 # you must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-请注意，除非您还在使用您自己的自定义推理堆栈，否则必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml-默认值。 此包包含将模型托管为 web 服务所需的功能。
+必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml-默认值。 此包包含将模型托管为 web 服务所需的功能。 还必须在环境中将 inferencing_stack_version 属性设置为 "最新"，这将安装 web 服务所需的特定 apt 包。 
 
 定义环境后，将其与[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)对象一起使用，以定义模型和 web 服务将在其中运行的推理环境。
 

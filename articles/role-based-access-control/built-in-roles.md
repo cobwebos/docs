@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851377"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979325"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "74851377"
 
 
 > [!div class="mx-tableFixed"]
-> | 内置角色 | 描述 | ID |
+> | 内置角色 | Description | ID |
 > | --- | --- | --- |
 > | [所有者](#owner) | 允许管理所有功能，包括对资源的访问权限。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [参与者](#contributor) | 允许你管理所有内容，但不授予对资源的访问权限。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -165,7 +165,7 @@ ms.locfileid: "74851377"
 > | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 
 
-## <a name="owner"></a>所有者
+## <a name="owner"></a>“所有者”
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1522,7 +1522,7 @@ ms.locfileid: "74851377"
 > | Microsoft.BigAnalytics/accounts/TakeOwnership/action |  |
 > | Microsoft.BigAnalytics/accounts/Write |  |
 > | Microsoft.DataLakeAnalytics/accounts/Delete | 删除 DataLakeAnalytics 帐户。 |
-> | Microsoft.DataLakeAnalytics/accounts/TakeOwnership/action | 授权取消由其他用户提交的作业。 |
+> | Microsoft.DataLakeAnalytics/accounts/TakeOwnership/action | 授予取消由其他用户提交的作业的权限。 |
 > | Microsoft.DataLakeAnalytics/accounts/Write | 创建或更新 DataLakeAnalytics 帐户。 |
 > | Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts/Write | 获取或更新 DataLakeAnalytics 帐户的链接 DataLakeStore 帐户。 |
 > | Microsoft.DataLakeAnalytics/accounts/dataLakeStoreAccounts/Delete | 从 DataLakeAnalytics 帐户取消链接 DataLakeStore 帐户。 |
@@ -3153,6 +3153,6 @@ ms.locfileid: "74851377"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将资源提供程序与服务匹配](../azure-resource-manager/azure-services-resource-providers.md)
+- [将资源提供程序与服务匹配](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure 资源的自定义角色](custom-roles.md)
 - [Azure 安全中心中的权限](../security-center/security-center-permissions.md)

@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423621"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044120"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>用于调用 web Api 的 web API-获取应用的令牌
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>用于调用 web Api 的 web API：获取应用的令牌
 
 生成客户端应用程序对象后，使用该对象获取可用于调用 web API 的令牌。
 
 ## <a name="code-in-the-controller"></a>控制器中的代码
 
-下面是一个代码示例，该示例将在 API 控制器的操作中调用，调用下游 API （名为 todolist）。
+下面是在 API 控制器的操作中调用的代码示例。 它调用名为*todolist*的下游 API。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` 类似于在[WEB api （用于调用 Web api-应用配置）](scenario-web-api-call-api-app-configuration.md)中看到的内容。 `BuildConfidentialClient()` 使用只包含一个帐户的信息的缓存来实例化 `IConfidentialClientApplication`。 帐户由 `GetAccountIdentifier` 方法提供。
+`BuildConfidentialClient()` 类似于用于[调用 Web api 的 WEB api 中的方案：应用配置](scenario-web-api-call-api-app-configuration.md)。 `BuildConfidentialClient()` 使用只包含一个帐户的信息的缓存来实例化 `IConfidentialClientApplication`。 帐户由 `GetAccountIdentifier` 方法提供。
 
-`GetAccountIdentifier` 方法使用与 web API 收到其 JWT 的用户标识关联的声明：
+`GetAccountIdentifier` 方法使用与用户的标识关联的声明，web API 将为该用户接收 JSON Web 令牌（JWT）：
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -73,4 +73,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 web API](scenario-web-api-call-api-call-api.md)
+> [用于调用 web Api 的 web API：调用 API](scenario-web-api-call-api-call-api.md)
