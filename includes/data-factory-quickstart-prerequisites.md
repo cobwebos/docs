@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 26793c91c85ba4cc33a07358ab8ff318becb325f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490699"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020855"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="azure-subscription"></a>Azure 订阅
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -28,7 +28,7 @@ ms.locfileid: "73490699"
 - 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
 - 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
 
-有关如何将用户添加到角色的示例说明，请参阅[添加角色](../articles/billing/billing-add-change-azure-subscription-administrator.md)一文。
+有关如何将用户添加到角色的示例说明，请参阅[添加角色](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 
 有关详细信息，请参阅以下文章：
 
@@ -36,7 +36,7 @@ ms.locfileid: "73490699"
 - [Azure 数据工厂的角色和权限](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)创建一个。 
+在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-account-create.md)创建一个。 
 
 #### <a name="get-the-storage-account-name"></a>获取存储帐户名称
 在本快速入门中，将需要 Azure 存储帐户的名称。 以下过程提供的步骤用于获取存储帐户的名称： 

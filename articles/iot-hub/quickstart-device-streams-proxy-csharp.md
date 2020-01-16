@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084347"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045971"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -47,7 +47,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
@@ -122,7 +122,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-在此部分，请建立一个端到端的流，通过隧道来传输 SSH 流量。
+在本部分中，你将建立一个端到端的流，通过隧道来传输 SSH 流量。
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
@@ -152,7 +152,7 @@ dotnet run {DeviceConnectionString} localhost 22
 
 ### <a name="run-the-service-local-proxy-application"></a>运行服务本地代理应用程序
 
-在另一个本地终端窗口中，导航到解压缩项目文件夹中的 `device-streams-proxy/service`。 请保留以下信息：
+在另一个本地终端窗口中，导航到解压缩项目文件夹中的 `iot-hub/quickstarts/device-streams-proxy/service`。 请保留以下信息：
 
 | 参数名称 | 参数值 |
 |----------------|-----------------|

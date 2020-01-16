@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 689889588aba4da888a7d66f5e1d45dfde71d520
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769688"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021053"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。
 
@@ -38,9 +38,9 @@ ms.locfileid: "75769688"
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | 全局唯一名称 | 用于唯一标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 |
     | **订阅** | 选择自己的订阅 | 要使用的 Azure 订阅。 |
-    |  [资源组](../articles/azure-resource-manager/resource-group-overview.md) | myResourceGroup |  要在其中创建 Function App 的资源组的名称。 选择“新建”  创建新的资源组。|
+    |  [资源组](../articles/azure-resource-manager/management/overview.md) | myResourceGroup |  要在其中创建 Function App 的资源组的名称。 选择“新建”  创建新的资源组。|
     | **[托管计划](../articles/azure-functions/functions-scale.md)** | 消耗计划 | 选择“新建”  创建无服务器计划后，确保在“大小”  下选择“消耗量”  。 此外，选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)中的**位置**。 在“消耗量”之外的计划中运行时，必须管理[函数应用的缩放](../articles/azure-functions/functions-scale.md)。   |
-    | **[Azure 存储](../articles/storage/common/storage-quickstart-create-account.md)** | 常规用途存储帐户 | Functions 运行时需要 Azure 存储帐户。 选择“新建”以创建常规用途存储帐户。  也可使用符合[存储帐户要求](../articles/azure-functions/functions-scale.md#storage-account-requirements)的现有帐户。  |
+    | **[Azure 存储](../articles/storage/common/storage-account-create.md)** | 常规用途存储帐户 | Functions 运行时需要 Azure 存储帐户。 选择“新建”以创建常规用途存储帐户。  也可使用符合[存储帐户要求](../articles/azure-functions/functions-scale.md#storage-account-requirements)的现有帐户。  |
 
 5. 选择“创建”  以使用这些设置在 Azure 中创建函数应用和相关资源，并部署函数项目代码。 
 

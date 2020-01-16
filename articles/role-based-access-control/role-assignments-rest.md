@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707835"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981034"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 添加或删除角色分配
 
@@ -57,22 +57,22 @@ ms.locfileid: "74707835"
 
 1. 在 URI 内，将“{scope}”替换为角色分配的范围。
 
-    | 范围 | Type |
+    | 范围 | 类型 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | Subscription |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
 
 1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
 
 1. 在请求正文中，将 *{scope}* 替换为角色分配的作用域。
 
-    | 范围 | Type |
+    | 范围 | 类型 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | Subscription |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
 
 1. 将“{roleDefinitionId}”替换为角色定义标识符。
@@ -93,11 +93,11 @@ ms.locfileid: "74707835"
 
 1. 在 URI 内，将“{scope}”替换为删除角色分配的范围。
 
-    | 范围 | Type |
+    | 范围 | 类型 |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | Subscription |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
 
 1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
@@ -105,6 +105,6 @@ ms.locfileid: "74707835"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure RBAC 和 REST API 列出角色分配](role-assignments-list-rest.md)
-- [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API 参考](/rest/api/azure/)
 - [使用 REST API 为 Azure 资源创建自定义角色](custom-roles-rest.md)

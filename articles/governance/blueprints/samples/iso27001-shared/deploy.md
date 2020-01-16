@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 共享服务蓝图示例
 description: ISO 27001 共享服务蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a9dabc99469321445006e449757a10fbc51aba87
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546708"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920695"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共享服务蓝图示例
 
@@ -111,13 +111,13 @@ ms.locfileid: "74546708"
 |允许的存储帐户 SKU|策略分配|允许的存储 SKU|允许的诊断日志存储帐户 SKU 列表。 默认值为 _["Standard_LRS"]_ 。|
 |允许的虚拟机 SKU|策略分配|允许部署的虚拟机 SKU 列表。 默认值为 _["Standard_DS1_v2", "Standard_DS2_v2"]_ 。|
 |ISO 27001 的蓝图计划|策略分配|用于审核诊断日志的资源类型|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
-|Log Analytics 资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-sharedsvsc-log-rg` 相连接可使资源组名称保持唯一。|
-|Log Analytics 资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|Log Analytics 资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvsc-log-rg` 相连接可使资源组名称保持唯一。|
+|Log Analytics 资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Log Analytics 模板|资源管理器模板|服务层|设置 Log Analytics 工作区的层。 默认值为 _PerNode_。|
 |Log Analytics 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Log Analytics 模板|资源管理器模板|位置|用于创建 Log Analytics 工作区的区域。 默认值为“美国西部 2”。 |
-|网络资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-sharedsvcs-net-rg` 相连接可使资源组名称保持唯一。|
-|网络资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|网络资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvcs-net-rg` 相连接可使资源组名称保持唯一。|
+|网络资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Azure 防火墙模板|资源管理器模板|Azure 防火墙专用 IP|配置 [Azure 防火墙](../../../../firewall/overview.md)的专用 IP。 此值也用作共享服务子网中的默认路由表。 应是“Azure 防火墙子网地址前缀”中定义的 CIDR 表示法的一部分。  默认值为 _10.0.4.4_。|
 |Azure 防火墙模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |网络安全组模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
@@ -128,8 +128,8 @@ ms.locfileid: "74546708"
 |虚拟网络和路由表模板|资源管理器模板|应用程序网关子网地址前缀|应用程序网关子网的 CIDR 表示法。 默认值为 _10.0.2.0/24_。|
 |虚拟网络和路由表模板|资源管理器模板|虚拟网络网关子网地址前缀|虚拟网络网关子网的 CIDR 表示法。 默认值为 _10.0.3.0/24_。|
 |虚拟网络和路由表模板|资源管理器模板|Azure 防火墙子网地址前缀|[Azure 防火墙](../../../../firewall/overview.md)子网的 CIDR 表示法。 应包含“Azure 防火墙专用 IP”参数。 |
-|密钥保管库资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-sharedsvcs-kv-rg` 相连接可使资源组名称保持唯一。|
-|密钥保管库资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|密钥保管库资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvcs-kv-rg` 相连接可使资源组名称保持唯一。|
+|密钥保管库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Key Vault 模板|资源管理器模板|Jumpbox 管理员用户名|Jumpbox 的用户名。 必须与 **Jumpbox 模板**中的相同属性值相匹配。 默认值为 _jb-admin-user_。|
 |Key Vault 模板|资源管理器模板|Jumpbox 管理员 SSH 密钥或密码|Jumpbox 上的帐户的密钥或密码。 必须与 **Jumpbox 模板**中的相同属性值相匹配。 无默认值，且不能留空。|
 |Key Vault 模板|资源管理器模板|域管理员用户名|用于访问 Active Directory VM 以及将其他 VM 加入域的用户名。 必须与 **Active Directory 域服务模板**中的“域管理员用户”属性值相匹配。  默认值为 _domain-admin-user_。|
@@ -137,14 +137,14 @@ ms.locfileid: "74546708"
 |Key Vault 模板|资源管理器模板|AAD 对象 ID|需要访问 Key Vault 实例的帐户的 AAD 对象标识符。 无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。  使用“名称”框筛选帐户名，并选择该帐户。  在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。    |
 |Key Vault 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Key Vault 模板|资源管理器模板|Key Vault SKU|指定创建的 Key Vault 的 SKU。 默认值为“高级”。 |
-|Jumpbox 资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-sharedsvcs-jb-rg` 相连接可使资源组名称保持唯一。|
-|Jumpbox 资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|Jumpbox 资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvcs-jb-rg` 相连接可使资源组名称保持唯一。|
+|Jumpbox 资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Jumpbox 模板|资源管理器模板|Jumpbox 管理员用户名|用于访问 Jumpbox VM 的用户名。 必须与 **Key Vault 模板**中的相同属性值相匹配。 默认值为 _jb-admin-user_。|
 |Jumpbox 模板|资源管理器模板|Jumpbox 管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv"，并将 `{subscriptionId}` 替换为你的订阅 ID，将 `{orgName}` 替换为“组织名称”蓝图参数。 |
 |Jumpbox 模板|资源管理器模板|Jumpbox 管理员密码(Key Vault 机密名称)|Jumpbox 管理员的用户名。必须与 **Key Vault 模板**中的“Jumpbox 管理员用户名”属性值相匹配。 |
 |Jumpbox 模板|资源管理器模板|Jumpbox 操作系统|确定 Jumpbox VM 的操作系统。 默认值为 _Windows_。|
-|Active Directory 域服务资源组|Resource group|Name|**已锁定** - 将**组织名称**与 `-sharedsvcs-adds-rg` 相连接可使资源组名称保持唯一。|
-|Active Directory 域服务资源组|Resource group|位置|**已锁定** - 使用蓝图参数。|
+|Active Directory 域服务资源组|资源组|名称|**已锁定** - 将**组织名称**与 `-sharedsvcs-adds-rg` 相连接可使资源组名称保持唯一。|
+|Active Directory 域服务资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Active Directory 域服务模板|资源管理器模板|域管理员用户名|ADDS Jumpbox 的用户名。 必须与 **Key Vault 模板**中的相同属性值相匹配。 默认值为 _adds-admin-user_。|
 |Active Directory 域服务模板|资源管理器模板|域管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv"，并将 `{subscriptionId}` 替换为你的订阅 ID，将 `{orgName}` 替换为“组织名称”蓝图参数。 |
 |Active Directory 域服务模板|资源管理器模板|域管理员密码(Key Vault 机密名称)|域管理员的用户名。必须与 **Key Vault 模板**中的“域管理员用户名”属性值相匹配。 |

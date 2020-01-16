@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932884"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969429"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建度量警报
 
@@ -29,7 +29,7 @@ ms.locfileid: "75932884"
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
 3. 有关 `metricName` 参数，请参阅[Azure Monitor 支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用指标。
-4. 使用[任意部署方法](../../azure-resource-manager/resource-group-template-deploy.md)部署模板。
+4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
 
@@ -378,6 +378,13 @@ az group deployment create \
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ az group deployment create \
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ az group deployment create \
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ az group deployment create \
 - 对于每个条件，只能在每个维度中选择一个值。
 - 不能使用 "\*" 作为维度值。
 - 如果在不同标准中配置的度量值支持相同的维度，则必须以相同方式为所有这些指标（在相关标准中）显式设置配置的维度值。
-    - 在下面的示例中，由于 "**事务**" 和 " **SuccessE2ELatency** " 指标都具有 " **api 名称**" 维度，并且*criterion1*为 " **api 名称**" 维度指定了 *"GetBlob"* 值，因此*criterion2*还必须为 " **api 名称**" 维度设置 *"GetBlob"* 值。
+    - 在下面的示例中，由于**事务**和**SuccessE2ELatency**度量值都具有**ApiName**维度，并且*criterion1*为**ApiName**维度指定 *"GetBlob"* 值，因此*criterion2*还必须为**GetBlob**维度设置 *"ApiName"* 值。
 
 
 为进行本次演练，请将下面的 json 保存为 advancedstaticmetricalert.json。

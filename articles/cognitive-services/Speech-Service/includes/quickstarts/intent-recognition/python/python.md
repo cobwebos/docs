@@ -10,19 +10,19 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 22a40cac59c36e9e0b6b7ef534639748428ae62e
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660446"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773040"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
-* 如果这是你的第一个 Python 项目，请使用本指南<a href="../quickstarts/create-project.md" target="_blank">创建空示例项目</a>。
-* <a href="../quickstarts/setup-platform.md" target="_blank">安装用于开发环境的语音 SDK</a>。
+* 如果这是你的第一个 Python 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">创建空示例项目</a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">安装用于开发环境的语音 SDK</a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 

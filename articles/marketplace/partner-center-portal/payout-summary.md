@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931814"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979699"
 ---
 # <a name="payout-reporting"></a>付款报告
 
@@ -52,7 +52,7 @@ ms.locfileid: "75931814"
 | 事务未准备好进行支出 | 正在进行计费 | 下一次估计付款：支出状态为 "未处理" 状态。  |
 | 支出状态 |  | 尚未 <br> 收益有资格支付。 它在激励计划的收视指南中定义的冷却周期处于此状态。 <br> <br> 到来 <br> 支付订单-在处理付款之前生成的待定内部审查。 <br> <br> 发送时间: <br> 已将付款发送到银行。 |
 
-## <a name="customer-types"></a>客户类型 
+## <a name="customer-types"></a>客户类型
 
 ### <a name="enterprise-agreement"></a>企业协议
 
@@ -66,7 +66,7 @@ ms.locfileid: "75931814"
 
 例如，如果客户是使用信用卡购买的。
 
-## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关 
+## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关
 
 |Description    |    Date  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
@@ -74,11 +74,11 @@ ms.locfileid: "75931814"
 |期限结束（月）   | 8月30日，2019 | | |
 |计费日期 | 9月1日，2019 | | |
 |客户付款日期 | 9月1日，2019 | | |
-|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
+|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
 |费用收集期开始 | 9月1日，2019 | | |
 |费用收集期结束（最大值，30 天） | 9月30日，2019 | | |
-|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
-|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
+|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
+|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
@@ -93,37 +93,37 @@ ms.locfileid: "75931814"
 |费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
 |客户付款日期 | 2019年12月30日 | | |
 |支出计算 | 2020年1月15日 | | |
-|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
+|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
 
 ## <a name="transaction-history-download-export"></a>事务历史记录下载导出
 
-此选项提供了在交易历史记录页中看到的每个收益行项的下载、收入类型、日期、关联的交易金额、客户、产品和其他适用于激励计划的事务详细信息。 
+此选项提供了在交易历史记录页中看到的每个收益行项的下载、收入类型、日期、关联的交易金额、客户、产品和其他适用于激励计划的事务详细信息。
 
-| 列名称     | Description    | 
+| 列名称     | Description    |
 |-------------|-------------------------------|
 | earningId                      | 每个收益的唯一标识符                                                                                                       |
-| participantId                  | 计划下合作伙伴收益的主要标识                                                                            | 
-| participantIdType              | 应用商店计划和 Azure Marketplace 的激励计划和卖方的主要计划 ID                                          | 
-| participantName                | 收益伙伴的名称                                                                                                              | 
+| participantId                  | 计划下合作伙伴收益的主要标识                                                                            |
+| participantIdType              | 应用商店计划和 Azure Marketplace 的激励计划和卖方的主要计划 ID                                          |
+| participantName                | 收益伙伴的名称                                                                                                              |
 | partnerCountryCode             | 收益合作伙伴所在国家/地区                                                                                                  |
-| programName                    | 激励/存储程序名称                                                                                                             | 
-| transactionId                  | 事务的唯一标识符                                                                                                    | 
-| transactionCurrency            | 原始客户交易发生的币种（不是合作伙伴位置货币）                                     | 
-| transactionDate                | 交易日期。 适用于多个事务贡献给一个收益的程序                                           | 
-| transactionExchangeRate        | 用于显示对应交易金额的汇率                                                                 | 
-| transactionAmount              | 基于所生成收益的原始交易币种的交易金额                                              | 
-| transactionAmountUSD           | 交易金额（美元）                                                                                                                | 
-| 断裂                          | 指示收入的业务规则                                                                                                  | 
-| earningRate                    | 应用于交易金额以生成收入的激励率                                                                      | 
-| quantity                       | 根据程序而异。 指示交易计划的计费数量                                                            | 
+| programName                    | 激励/存储程序名称                                                                                                             |
+| transactionId                  | 事务的唯一标识符                                                                                                    |
+| transactionCurrency            | 原始客户交易发生的币种（不是合作伙伴位置货币）                                     |
+| transactionDate                | 交易日期。 适用于多个事务贡献给一个收益的程序                                           |
+| transactionExchangeRate        | 用于显示对应交易金额的汇率                                                                 |
+| transactionAmount              | 基于所生成收益的原始交易币种的交易金额                                              |
+| transactionAmountUSD           | 交易金额（美元）                                                                                                                |
+| 断裂                          | 指示收入的业务规则                                                                                                  |
+| earningRate                    | 应用于交易金额以生成收入的激励率                                                                      |
+| quantity                       | 根据程序而异。 指示交易计划的计费数量                                                            |
 | quantityType                   | 指示数量的类型，例如：计费数量、MAU                                                                                     |
-| earningType                    | 指示是费用、回扣、市场活动、销售等。                                                                                          | 
+| earningType                    | 指示是费用、回扣、市场活动、销售等。                                                                                          |
 | earningAmount                  | 按原始交易币种的收入金额                                                                                      |
 | earningAmountUSD               | 收入金额（美元）                                                                                                                    |
 | earningDate                    | 收益日期                                                                                                                      |
 | calculationDate                | 在系统中计算收入的日期                                                                                            |
 | earningExchangeRate            | 用于显示相应 USD 金额的汇率                                                                                  |
-| exchangeRateDate               | 用于计算 EarningAmount USD 的汇率日期                                                                                   | 
+| exchangeRateDate               | 用于计算 EarningAmount USD 的汇率日期                                                                                   |
 | paymentAmountWOTax             | 仅为 "已发送" 付款支付的金额（不含税）                                                                 |
 | paymentCurrency                | 支付给伙伴在付款配置文件中选择的货币。 仅显示已发送的付款                                                   |
 | paymentExchangeRate            | 用于使用 ExchangeRateDate 计算 paymentAmountWOTax 的汇率                                            |

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 46f8e59713896cd94b96de62d982072119c32513
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 700dd305cf5365a604a5613bd5b48dbd2ac8f840
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050175"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021062"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 选择“创建资源”，然后在“搜索市场”字段中输入“IoT 中心”。   
 
@@ -27,7 +27,7 @@ ms.locfileid: "70050175"
 
    - **订阅**：选择要用于中心的订阅。
 
-   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/manage-resource-groups-portal.md)。
+   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
    - **区域**：选择你希望中心所在的区域。 选择支持 IoT 中心设备流预览版的区域：“美国中部”或“美国中部 EUAP”。  
 

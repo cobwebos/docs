@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211001"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980527"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -88,7 +88,7 @@ SOA 记录集在每个区域（名称 =“\@”）的顶点处自动创建，并
 
 用户可以修改 SOA 记录的所有属性，但“主机”属性除外，此属性预配置为引用 Azure DNS 所提供的主名称服务器名。
 
-当对区域中的记录进行更改时，SOA 记录中的区域序列号不会自动更新。 如果需要，可以通过编辑 SOA 记录手动进行更新。
+更改区域中的记录时，SOA 记录中的区域序列号不会自动更新。 如果需要，可以通过编辑 SOA 记录手动进行更新。
 
 ### <a name="spf-records"></a>SPF 记录
 
@@ -115,7 +115,7 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ### <a name="tags"></a>标记
 
-标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
+标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
 Azure DNS 支持使用 DNS 区域资源上的 Azure 资源管理器标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
 
@@ -133,10 +133,10 @@ Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag �
 
 Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给出了它们的行为：
 
-| Header | 行为 |
+| 标头 | 行为 |
 | --- | --- |
 | 无 |PUT 始终成功（没有 Etag 检查） |
-| If-match \<etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
+| If-match \<etag > |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
 | If-match * |只有当资源存在时，PUT 才会成功 |
 | If-none-match * |只有当资源不存在时，PUT 才会成功 |
 

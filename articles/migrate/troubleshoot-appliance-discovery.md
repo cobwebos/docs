@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1dbbe04818e75e41944a1c0fe54f53849cf71983
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725853"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980821"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -75,7 +75,7 @@ ms.locfileid: "75725853"
 
 - 如果用于注册设备的 Azure 帐户没有足够的权限，则会出现错误 60052 "该设备可能未成功注册到 Azure Migrate 项目"。
     - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
-    - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)所需的 Azure 角色和权限。
+    - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
 - 如果注册失败，因为找不到用于注册设备的 Azure Migrate 项目，所以如果注册失败，则会出现 "设备可能未成功注册到 Azure Migrate 项目" 错误60039。
     - 在 Azure 门户中，检查该项目是否存在于资源组中。
     - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool)创建新项目。
@@ -86,7 +86,7 @@ ms.locfileid: "75725853"
 - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
 - 请确保该帐户具有对错误消息中指定的密钥保管库的访问权限，然后重试该操作。
 - 如果问题持续出现，请联系 Microsoft 支持。
-- [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)所需的 Azure 角色和权限。
+- [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>错误60028：无法启动发现
 
@@ -101,7 +101,7 @@ ms.locfileid: "75725853"
 - 确保启动发现的用户帐户与用于注册设备的用户帐户相同。
 - 为发现操作失败的用户帐户提供 Azure Active Directory 应用程序访问权限。
 - 删除先前为 Azure Migrate 项目创建的资源组。 创建另一个资源组以重新开始。
-- [了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)有关 Azure Active Directory 应用程序权限的详细信息。
+- [了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)有关 Azure Active Directory 应用程序权限的详细信息。
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>错误50004：无法连接到主机或群集

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647894"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982107"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>适用于企业的 Azure 开发测试实验室参考体系结构
 本文提供了参考体系结构，可帮助你根据企业中的 Azure 开发测试实验室部署解决方案。 其中包括以下内容：
@@ -56,7 +56,7 @@ ms.locfileid: "75647894"
 - 每个资源组的资源数每个资源**类型**：每个资源组的资源默认限制为[800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)。  当你使用 "*所有 vm" 访问相同的资源组*配置时，用户可以更快地达到此订阅限制，尤其是在 vm 有多个额外磁盘的情况下。
 - **存储帐户**：开发测试实验室中的实验室带有存储帐户。 每个[订阅每个区域的存储帐户数](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)的 Azure 配额为250。 同一区域中的开发测试实验室的最大数目也是250。
 - **角色分配**：角色分配是指如何向用户或主体授予资源（所有者、资源、权限级别）的访问权限。 在 Azure 中，[每个订阅的角色分配数限制为 2000](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits)。 默认情况下，开发测试实验室服务为每个 VM 创建一个资源组。 所有者授予了对资源组的开发测试实验室 VM 和*读取*者权限的*所有者*权限。 这样，你创建的每个新 VM 将使用两个角色分配，以及向用户授予对实验室的权限时使用的分配。
-- **API 读取/写入**：可通过多种方式自动执行 Azure 和开发测试实验室，包括 REST Api、PowerShell、Azure CLI 和 Azure SDK。 通过自动化，你可能会遇到 API 请求的另一个限制：每个订阅最多允许[12000 个读取请求，每小时1200个写入请求](../azure-resource-manager/resource-manager-request-limits.md)。 当你自动化开发测试实验室时，请注意此限制。
+- **API 读取/写入**：可通过多种方式自动执行 Azure 和开发测试实验室，包括 REST Api、PowerShell、Azure CLI 和 Azure SDK。 通过自动化，你可能会遇到 API 请求的另一个限制：每个订阅最多允许[12000 个读取请求，每小时1200个写入请求](../azure-resource-manager/management/request-limits-and-throttling.md)。 当你自动化开发测试实验室时，请注意此限制。
 
 ## <a name="manageability-considerations"></a>可管理性注意事项
 开发测试实验室提供了一个很好的管理用户界面来使用单个实验室。 但在企业中，您可能有多个 Azure 订阅和许多实验室。 将更改统一到所有实验室需要脚本编写/自动化。 下面是开发测试实验室部署的一些示例和最佳管理实践：

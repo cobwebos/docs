@@ -4,14 +4,14 @@ description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.custom: seo-python-october2019
-experimental: false
-experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+experimental: true
+experiment_id: 01a9132f-eaab-4c
+ms.openlocfilehash: aaf1f5cb6a11e0a5358d6c8a59581b46e57a3274
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687471"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045913"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -19,7 +19,7 @@ ms.locfileid: "74687471"
 
 如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/python/tutorial-deploy-app-service-on-linux-01)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a>（也支持 Python 3.6）
@@ -52,7 +52,7 @@ cd python-docs-hello-world
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-FLASK_APP=application.py
+export FLASK_APP=application.py
 flask run
 ```
 
@@ -80,7 +80,7 @@ flask run
 
 打开 Web 浏览器并转到 `http://localhost:5000/` 处的示例应用。 应用显示“Hello World!”消息  。
 
-![在本地运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
+![在本地运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
 在终端窗口中，按 Ctrl+C 退出 Web 服务器   。
 
@@ -98,7 +98,7 @@ az login
 
 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令将在应用服务上创建 Web 应用并部署代码。
 
-在包含示例代码的 python-docs-hello-world 文件夹中，运行以下 `az webapp up` 命令  。 将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）  。 同时将 `<location-name>` 替换为 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia 等 Azure 区域       。 （可运行 [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。）
+在包含示例代码的 python-docs-hello-world 文件夹中，运行以下 `az webapp up` 命令  。 将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）  。 同时将 `<location-name>` 替换为 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia 等 Azure 区域       。 （可运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。）
 
 
 ```terminal
@@ -197,7 +197,7 @@ az webapp log tail --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。 搜索并选择“应用服务”  。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。 搜索并选择“应用服务”。 
 
 ![在 Azure 门户中导航到应用服务](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

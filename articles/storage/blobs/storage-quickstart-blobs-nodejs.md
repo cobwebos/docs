@@ -7,19 +7,19 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465112"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970258"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v12
 
 适用于 JavaScript 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 > [!NOTE]
-> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库](storage-quickstart-blobs-nodejs-v10.md)。
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库](storage-quickstart-blobs-nodejs-legacy.md)。
 
 使用适用于 JavaScript 的 Azure Blob 存储客户端库 v12 完成以下操作：
 

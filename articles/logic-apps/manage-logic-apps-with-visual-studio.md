@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456586"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982541"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -90,13 +90,13 @@ ms.locfileid: "75456586"
 
    ![从 Azure 门户打开部署的逻辑应用](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   逻辑应用在逻辑应用设计器中打开后，可以在设计器的底部选择 "**代码视图**"，以便查看基础逻辑应用定义结构。 若要为逻辑应用创建部署模板，请了解如何为该逻辑应用[下载 Azure 资源管理器模板](#download-logic-app)。 详细了解[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)。
+   逻辑应用在逻辑应用设计器中打开后，可以在设计器的底部选择 "**代码视图**"，以便查看基础逻辑应用定义结构。 若要为逻辑应用创建部署模板，请了解如何为该逻辑应用[下载 Azure 资源管理器模板](#download-logic-app)。 详细了解[资源管理器模板](../azure-resource-manager/templates/overview.md)。
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>从 Azure 下载
 
-可以从 [Azure 门户](https://portal.azure.com)下载逻辑应用，并将其保存为 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
+可以从 [Azure 门户](https://portal.azure.com)下载逻辑应用，并将其保存为 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在[资源管理器模板](../azure-resource-manager/templates/overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
 
 1. 在 Visual Studio 中，打开 Cloud Explorer。 找到并选择要从 Azure 下载的逻辑应用。
 
@@ -113,13 +113,13 @@ ms.locfileid: "75456586"
 
 1. 当系统提示输入位置时，请浏览到该位置，并在资源管理器模板中以 JSON (.json) 文件格式保存逻辑应用的定义。
 
-   逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)添加到 Visual Studio 解决方案。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+   逻辑应用定义显示在资源管理器模板中的 `resources` 子节内。 现在，可以使用 Visual Studio 来编辑逻辑应用定义和资源管理器模板。 还可以将模板作为[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)添加到 Visual Studio 解决方案。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
 <a name="link-integration-account"></a>
 
 ## <a name="link-to-integration-account"></a>链接到集成帐户
 
-若要为企业到企业（B2B）企业集成方案构建逻辑应用，可将逻辑应用链接到与逻辑应用位于同一区域中的以前创建的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 集成帐户包含 B2B 项目，例如贸易合作伙伴、协议、架构和地图，并使逻辑应用使用 B2B 连接器进行 XML 验证和平面文件编码或解码。 尽管可以[使用 Azure 门户创建此链接](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)，但在满足[先决条件](#requirements)后，也可以使用 Visual Studio，并且逻辑应用作为 JSON （json）文件存在于[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)中。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)。
+若要为企业到企业（B2B）企业集成方案构建逻辑应用，可将逻辑应用链接到与逻辑应用位于同一区域中的以前创建的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 集成帐户包含 B2B 项目，例如贸易合作伙伴、协议、架构和地图，并使逻辑应用使用 B2B 连接器进行 XML 验证和平面文件编码或解码。 尽管可以[使用 Azure 门户创建此链接](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)，但在满足[先决条件](#requirements)后，也可以使用 Visual Studio，并且逻辑应用作为 JSON （json）文件存在于[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中。 了解[Visual Studio 中逻辑应用的 Azure 资源组项目](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)。
 
 1. 在 Visual Studio 中，打开包含逻辑应用的 Azure 资源组项目。
 
@@ -149,7 +149,7 @@ ms.locfileid: "75456586"
 
 ## <a name="change-deployment-location"></a>更改部署位置
 
-在 Visual Studio 中，如果逻辑应用作为 JSON （json）文件存在于你用于自动部署的[Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)中，则会将该逻辑应用设置为位置类型和特定位置。 此位置是 Azure 区域或现有[integration service 环境（ISE）](connect-virtual-network-vnet-isolated-environment.md)。
+在 Visual Studio 中，如果逻辑应用作为 JSON （json）文件存在于你用于自动部署的[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中，则会将该逻辑应用设置为位置类型和特定位置。 此位置是 Azure 区域或现有[integration service 环境（ISE）](connect-virtual-network-vnet-isolated-environment.md)。
 
 若要更改逻辑应用的位置类型或位置，必须使用逻辑应用设计器从解决方案资源管理器中打开逻辑应用的工作流定义（json）文件。 不能使用 Cloud Explorer 更改这些属性。
 

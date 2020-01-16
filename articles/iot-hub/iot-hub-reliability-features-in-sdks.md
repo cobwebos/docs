@@ -7,12 +7,12 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 8774129b3a1d3c9a1095e7a7c478dd94086b5867
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 1ca7219824a00a5af0bed7d42da75fc06ce2010d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954495"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045076"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 
@@ -34,7 +34,7 @@ ms.locfileid: "73954495"
 
 * [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-* [Python SDK](https://github.com/Azure/azure-iot-sdk-python)（尚未实现可靠性）
+* [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) （尚未实现可靠性）
 
 ## <a name="designing-for-resiliency"></a>复原设计
 
@@ -79,19 +79,19 @@ SDK 提供三种重试策略：
 
 * **带抖动的指数回退**：此默认重试策略往往在开始时激进，并随时间推移减缓，直到达到最大延迟。 该设计基于 [Azure 体系结构中心的重试指南](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)。 
 
-* **自定义重试**：对于某些 SDK 语言，可以设计更适合你的方案的自定义重试策略，然后将其注入 RetryPolicy。 C SDK 中不提供自定义重试。
+* **自定义重试**：对于某些 SDK 语言，可以设计更适合你的方案的自定义重试策略，然后将其注入 RetryPolicy。 自定义重试在 C SDK 上不可用，并且 Python SDK 当前不支持此功能。 Python SDK 会按需重新连接。
 
 * **不重试**：可以将重试策略设置为“不重试”，这将禁用重试逻辑。 SDK 假设连接已建立，尝试进行一次连接并发送一次消息。 此策略通常用于有带宽或成本顾虑的方案。 如果选择此选项，则未能发送的消息将丢失且无法恢复。
 
 ### <a name="retry-policy-apis"></a>重试策略 API
 
-   | SDK 中 IsInRole 中的声明 | SetRetryPolicy 方法 | 策略实现 | 实施指南 |
+   | SDK | SetRetryPolicy 方法 | 策略实现 | 实施指南 |
    |-----|----------------------|--|--|
    |  C/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **默认**：[IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**自定义：** 使用可用的 [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**不重试：** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/iOS 实现](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
    | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **默认**：[ExponentialBackoffWithJitter 类](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**自定义：** 实现 [RetryPolicy 接口](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)<BR>**不重试：** [NoRetry 类](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java 实现](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
    | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **默认**：[ExponentialBackoff 类](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**自定义：** 实现 [IRetryPolicy 接口](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)<BR>**不重试：** [NoRetry 类](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C# 实现](https://github.com/Azure/azure-iot-sdk-csharp) | |
    | 节点| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **默认**：[ExponentialBackoffWithJitter 类](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**自定义：** 实现 [RetryPolicy 接口](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest)<BR>**不重试：** [NoRetry 类](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Node 实现](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
-   | Python| 即将支持 | 即将支持 | 即将支持
+   | Python| 目前不支持 | 目前不支持 | 目前不支持 |
 
 以下代码示例说明此流程：
 

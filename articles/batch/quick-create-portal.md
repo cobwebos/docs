@@ -2,19 +2,19 @@
 title: Azure 快速入门 - 运行 Batch 作业 - 门户
 description: 快速了解如何使用 Azure 门户运行 Batch 作业。
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094128"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029409"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 

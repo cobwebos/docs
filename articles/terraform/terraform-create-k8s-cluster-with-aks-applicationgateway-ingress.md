@@ -3,12 +3,12 @@ title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控�
 description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159088"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867405"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 
@@ -25,9 +25,9 @@ ms.locfileid: "74159088"
 > * 使用 Terraform 和 AKS 创建 Kubernetes 群集。
 > * 使用 kubectl 工具测试 Kubernetes 群集的可用性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
@@ -261,7 +261,7 @@ ms.locfileid: "74159088"
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -719,16 +719,16 @@ kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/maste
 
     下面描述了这些值：
 
-    - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
-    - `appgw.subscriptionId`：应用程序网关的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
-    - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 
-    - `appgw.name`：应用程序网关的名称。 示例：`applicationgateway1`。
-    - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
-    - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。 将此变量注释掉，或将其设置为空字符串，会导致流入量控制器观察所有可访问的命名空间。
-    - `armAuth.type`：`aadPodIdentity` 或 `servicePrincipal` 值。
-    - `armAuth.identityResourceID`：托管标识的资源 ID。
-    - `armAuth.identityClientId`：标识的客户端 ID。
-    - `armAuth.secretJSON`：仅当选择了服务主体机密类型时（`armAuth.type` 设置为 `servicePrincipal`）才需要指定该值。
+    - `verbosityLevel`设置用户帐户 ：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
+    - `appgw.subscriptionId`设置用户帐户 ：应用程序网关的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
+    - `appgw.resourceGroup`设置用户帐户 ：在其中创建了应用程序网关的 Azure 资源组的名称。 
+    - `appgw.name`设置用户帐户 ：应用程序网关的名称。 示例：`applicationgateway1`。
+    - `appgw.shared`设置用户帐户 ：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
+    - `kubernetes.watchNamespace`设置用户帐户 ：指定 AGIC 应监视的命名空间。 命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。 将此变量注释掉，或将其设置为空字符串，会导致流入量控制器观察所有可访问的命名空间。
+    - `armAuth.type`设置用户帐户 ：`aadPodIdentity` 或 `servicePrincipal` 值。
+    - `armAuth.identityResourceID`设置用户帐户 ：托管标识的资源 ID。
+    - `armAuth.identityClientId`设置用户帐户 ：标识的客户端 ID。
+    - `armAuth.secretJSON`设置用户帐户 ：仅当选择了服务主体机密类型时（`armAuth.type` 设置为 `servicePrincipal`）才需要指定该值。
 
     重要说明：
     - `identityResourceID` 值是在 Terraform 脚本中创建的，可以运行 `echo "$(terraform output identity_client_id)"` 来找到它。

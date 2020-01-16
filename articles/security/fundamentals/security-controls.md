@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ae75df89ef5ab45dd241b38f904b6645e3978aa
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 570cc8457e69b7056b2865af9c1feb5d62a395eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910200"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981456"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure 服务的 "内置安全控件" 文章的索引
 
@@ -25,7 +25,7 @@ ms.locfileid: "70910200"
 
 - [API 管理](../../api-management/api-management-security-controls.md)
 - [Azure 应用服务](../../app-service/app-service-security-controls.md)
-- [Azure 资源管理器](../../azure-resource-manager/azure-resource-manager-security-controls.md)
+- [Azure 资源管理器](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
 - [Azure 备份](../../backup/backup-security-controls.md)
 - [Azure Cosmos DB](../../cosmos-db/cosmos-db-security-controls.md)
 - [Azure 事件中心](../../event-hubs/event-hubs-security-controls.md)

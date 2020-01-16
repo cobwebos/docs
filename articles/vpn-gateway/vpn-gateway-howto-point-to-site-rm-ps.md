@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863785"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045085"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接： PowerShell
 
@@ -32,13 +32,15 @@ ms.locfileid: "75863785"
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-本文中的大多数步骤都可以使用 Cloud Shell。 但是，若要上传根证书公钥，必须本地使用 PowerShell 或 Azure 门户。
+>[!NOTE]
+> 本文中的大多数步骤都可以使用 Azure Cloud Shell。 但是，若要上传根证书公钥，必须本地使用 PowerShell 或 Azure 门户。
+>
 
 ### <a name="example"></a>示例值
 
@@ -170,7 +172,9 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 验证 VPN 网关是否已创建完毕。 创建完以后，即可为委托给 Azure 的根证书上传 .cer 文件（其中包含公钥信息）。 上传 .cer 文件后，Azure 可以使用该文件对已安装客户端证书（根据可信根证书生成）的客户端进行身份验证。 可在以后根据需要上传更多的可信根证书文件（最多 20 个）。
 
-无法使用 Azure Cloud Shell 上传此信息。 或者可以在计算机上本地使用 PowerShell，即 [Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
+>[!NOTE]
+> 不能使用 Azure Cloud Shell 上传 .cer 文件。 您可以在您的计算机上本地使用 PowerShell，也可以使用[Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
+>
 
 1. 为证书名称声明变量，将值替换为自己的值。
 
@@ -185,7 +189,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. 将公钥信息上传到 Azure。 上传证书信息以后，Azure 就会将该证书视为受信任的根证书。
+3. 将公钥信息上传到 Azure。 上传证书信息以后，Azure 就会将该证书视为受信任的根证书。 上传时，请确保在计算机上本地运行 PowerShell，或者可以使用[Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 无法使用 Azure Cloud Shell 上传。
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

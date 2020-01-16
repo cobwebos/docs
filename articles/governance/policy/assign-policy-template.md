@@ -3,12 +3,12 @@ title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b9b0024e5c15c78c6777b8657839791484d66b5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436471"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980511"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -56,7 +56,7 @@ ms.locfileid: "75436471"
 - 若要查找更多示例模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)。
 - 若要查看模板参考，请转到 [Azure 模板参考](/azure/templates/microsoft.authorization/allversions)。
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/management/overview.md)。
-- 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/deploy-to-subscription.md)。
+- 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/templates/deploy-to-subscription.md)。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 
