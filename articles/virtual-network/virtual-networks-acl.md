@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5e410dc4e7f47223430497825dc2a26e41c6af67
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647758"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979553"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>什么是终结点访问控制列表？
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
 
 终结点访问控制列表 (ACL) 是可用于 Azure 部署的安全增强。 利用 ACL，可以选择允许还是拒绝虚拟机终结点的流量。 此数据包筛选功能额外提供了一层安全性。 只能为终结点指定网络 ACL， 无法为虚拟网络或虚拟网络中包含的特定子网指定 ACL。 建议尽可能使用网络安全组 (NSG)，而不要使用 ACL。 使用 NSG 时，终结点访问控制列表将被替换并不再强制执行。 若要了解有关 NSG 的详细信息，请参阅[网络安全组概述](security-overview.md)
 

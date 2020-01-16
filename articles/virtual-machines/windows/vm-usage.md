@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353722"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982262"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
-通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../../billing/billing-understand-your-bill.md)。
+通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../../cost-management-billing/understand/review-individual-bill.md)。
 
 ## <a name="download-your-usage-details"></a>下载使用情况详细信息
-首先，[下载使用情况详细信息](../../billing/billing-download-azure-invoice-daily-usage-date.md)。 下表提供了通过 Azure 资源管理器部署的虚拟机的定义和使用情况示例值。 本文档不包含通过经典模型部署的 VM 的详细信息。
+首先，[下载使用情况详细信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 下表提供了通过 Azure 资源管理器部署的虚拟机的定义和使用情况示例值。 本文档不包含通过经典模型部署的 VM 的详细信息。
 
 
 | 字段             | 含义                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 示例值                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR 代表计算小时数，表示底层基础结构成本的使用情况�
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>如何知道高级软件是否计费？
 请务必访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)，寻找最符合自己需求的 VM 映像。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>在使用的服务中，Microsoft.ClassicCompute 和 Microsoft.Compute 有何区别？
-Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源。 如果通过资源管理器进行部署，则会在使用的服务中填充 Microsoft.Compute。 详细了解 [Azure 部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。
+Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源。 如果通过资源管理器进行部署，则会在使用的服务中填充 Microsoft.Compute。 详细了解 [Azure 部署模型](../../azure-resource-manager/management/deployment-models.md)。
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>为什么虚拟机使用情况的 InstanceID 字段为空白？
 如果通过经典部署模型进行部署，则 InstanceID 字符串不可用。
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>为什么 VM 的标记没有流向使用情况详细信息？
@@ -143,5 +143,5 @@ Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源
 支持高级存储的 VM 与不支持高级存储的 VM 采用相同的费率计费。 仅存储成本不同。 请参阅[存储定价页](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解使用情况详细信息，请参阅[了解 Microsoft Azure 帐单](../../billing/billing-understand-your-bill.md)
+若要详细了解使用情况详细信息，请参阅[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)
 

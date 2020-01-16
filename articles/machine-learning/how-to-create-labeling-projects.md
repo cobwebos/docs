@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 019c75e67534198494d7591602bd5f9023704a1d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533100"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765063"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -49,7 +49,7 @@ ms.locfileid: "75533100"
 
 标记项目是通过 Azure 机器学习管理的。 可以使用“标记项目”页来管理项目和人员。  一个项目分配有一个或多个团队，一个团队分配有一个或多个人员。
 
-如果数据已在 Azure Blob 存储中，在创建标记项目之前，应以数据存储的形式提供这些数据。 有关详细信息，请参阅[创建和注册数据存储](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)。
+如果数据已在 Azure Blob 存储中，在创建标记项目之前，应以数据存储的形式提供这些数据。 有关详细信息，请参阅[创建和注册数据存储](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)。
 
 若要创建项目，请选择“添加项目”。  为项目指定适当的名称，然后选择“标记任务类型”。 
 

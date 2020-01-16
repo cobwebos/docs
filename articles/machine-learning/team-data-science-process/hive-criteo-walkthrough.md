@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eca19b3774ad285cb143ffc2b6c53360bec85fa4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492346"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968736"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
@@ -44,7 +44,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
 
-**定义：** *点击率 (CTR)：* 是数据中的点击次数所占的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
+**定义：** *点击链接速率（CTR）：* 这是在数据中单击的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
 
 ## <a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
@@ -60,7 +60,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
 
-1. [创建存储帐户](../../storage/common/storage-quickstart-create-account.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
+1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
 2. [为 Data Science 自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
 
    * 必须在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
@@ -116,9 +116,9 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
 以下代码创建一个数据库“criteo”，并生成 4 个表：
 
-* 一个用于生成在第*00 天至第*20 天构建的计数的表\_\_，
-* 一个用于在第*21 天构建的定型数据集的表*\_，以及
-* 两个分别用于在第*22 天和第*23 天构建的测试数据集的表\_\_。
+* 一个用于生成在第\_00 天至第\_20 天构建的计数的表，
+* 一个用于在第\_21 天构建的定型数据集的表，以及
+* 两个分别用于在第\_22 天和第\_23 天构建的测试数据集的表。
 
 因为其中某一天是节假日，所以我们将测试数据集分为两类不同的表。 目标是确定模型是否可以检测节假日和非节假日之间的点击率差异。
 
@@ -544,7 +544,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 对于试验，请选择默认值。 请注意，默认值通常有意义，并且是获得性能的快速基线的有效方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
 
-#### <a name="train-the-model"></a>训练模型
+#### <a name="train-the-model"></a>定型模型
 对于训练，只需调用“训练模型”模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
 
 ![“定型模型”模块](./media/hive-criteo-walkthrough/2bZDZTy.png)

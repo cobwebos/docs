@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934638"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976082"
 ---
-# <a name="commercial-marketplace-billing"></a>商业市场计费 
+# <a name="commercial-marketplace-billing"></a>商业市场计费
 
 本文介绍适用于商业应用商店的商业相关主题：
 
-- [Marketplace 发布选项](#marketplace-publishing-options) 
+- [Marketplace 发布选项](#marketplace-publishing-options)
 - [事务常规概述](#transact-general-overview)
 - [Transact-sql 计费模型](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>市场发布选项 
+## <a name="marketplace-publishing-options"></a>市场发布选项
 
 商业市场为发布者提供了若干发布选项。
 
@@ -36,9 +36,9 @@ ms.locfileid: "75934638"
 
 ## <a name="transact-general-overview"></a>交易一般概述
 
-使用 "事务发布" 选项时，Microsoft 允许销售第三方软件，并将某些产品/服务类型部署到客户的 Azure 订阅。 在选择计费模型和产品/服务类型时，发布者必须考虑基础结构费用的计费以及发布者自己的软件许可费用。 
+使用 "事务发布" 选项时，Microsoft 允许销售第三方软件，并将某些产品/服务类型部署到客户的 Azure 订阅。 在选择计费模型和产品/服务类型时，发布者必须考虑基础结构费用的计费以及发布者自己的软件许可费用。
 
-以下产品/服务类型当前支持 "事务发布" 选项：虚拟机、Azure 应用程序和 SaaS 应用程序。 
+以下产品/服务类型当前支持 "事务发布" 选项：虚拟机、Azure 应用程序和 SaaS 应用程序。
 
 ![Azure Marketplace 中的事务](./media/transact-amp.png)
 

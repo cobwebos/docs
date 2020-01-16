@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932705"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979018"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>预览：用维护控制和 Azure PowerShell 控制更新
 
@@ -36,7 +36,7 @@ ms.locfileid: "74932705"
 ## <a name="limitations"></a>限制
 
 - Vm 必须位于[专用主机](./linux/dedicated-hosts.md)上，或使用[独立的 VM 大小](./linux/isolation.md)创建。
-- 35天后，会自动应用更新，并且不会考虑可用性约束。
+- 35天后，将自动应用更新。
 - 用户必须具有**资源所有者**访问权限。
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>专用主机
+### <a name="dedicated-host"></a>专用主机
 
 若要将配置应用到专用主机，还需要包含 `-ResourceType hosts`、`-ResourceParentName` 与主机组的名称一起使用，并 `-ResourceParentType hostGroups`。 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>检查挂起的更新
 
-使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果 VM 不同于你登录的 Azure 订阅）。 
+使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果 VM 不同于你登录的 Azure 订阅）。
+
+如果没有更新，则该命令将返回一条错误消息： `Resource not found...StatusCode: 404`。
 
 ### <a name="isolated-vm"></a>独立 VM
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>检查更新状态
+使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)检查更新状态。 下面显示的命令使用 `-ApplyUpdateName` 参数 `default` 显示最新更新的状态。 可以替换更新的名称（由[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令返回）以获取特定更新的状态。
+
+如果没有要显示的更新，该命令将返回一条错误消息： `Resource not found...StatusCode: 404`。
+
+### <a name="isolated-vm"></a>独立 VM
+
+检查特定虚拟机的更新。
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>专用主机
+
+检查专用主机的更新。
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>删除维护配置

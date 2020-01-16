@@ -8,16 +8,16 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933153"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970277"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem 驱动程序 (ABFS)：专用于 Hadoop 的 Azure 存储驱动程序
 
-要访问 Azure Data Lake Storage Gen2 中的数据，一种主要方式是通过 [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)。 Data Lake Storage Gen2 允许 Azure Blob 存储的用户访问新驱动程序、Azure Blob 文件系统驱动程序或 `ABFS`。 ABFS 是 Apache Hadoop 的一部分，Hadoop 的许多商业分发均带有此程序。 借助此驱动程序，许多应用程序和框架无需显式引用 Data Lake Storage Gen2 的任何代码，即可访问 Azure Blob 存储中的数据。 
+要访问 Azure Data Lake Storage Gen2 中的数据，一种主要方式是通过 [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)。 Data Lake Storage Gen2 允许 Azure Blob 存储的用户访问新驱动程序、Azure Blob 文件系统驱动程序或 `ABFS`。 ABFS 是 Apache Hadoop 的一部分，Hadoop 的许多商业分发均带有此程序。 借助此驱动程序，许多应用程序和框架无需显式引用 Data Lake Storage Gen2 的任何代码，即可访问 Azure Blob 存储中的数据。
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前的功能：Windows Azure 存储 Blob 驱动程序
 
@@ -36,21 +36,21 @@ Windows Azure 存储 Blob 驱动程序或 [WASB 驱动程序](https://hadoop.apa
 可按上述 URI 格式使用标准 Hadoop 工具和框架引用这些资源：
 
 ```bash
-hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
-hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
+hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data
+hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
 ABFS 驱动程序在内部将 URI 中指定的资源转换为文件和目录，并使用这些引用调用 Azure Data Lake Storage REST API。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
-ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序可以安全地访问支持 Data Lake Storage Gen2 的帐户中包含的资源。 [Azure 存储安全指南](../common/storage-security-guide.md)中提供了可用身份验证方案的完整详细信息。 它们具有以下特点：
+ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序可以安全地访问支持 Data Lake Storage Gen2 的帐户中包含的资源。 [Azure 存储安全指南](security-recommendations.md)中提供了可用身份验证方案的完整详细信息。 它们分别是：
 
 - **共享密钥：** 这允许用户访问帐户中的所有资源。 密钥被加密并存储在 Hadoop 配置中。
 
 - **Azure Active Directory OAuth 持有者令牌：** 驱动程序使用最终用户或所配置的某个服务主体的标识获取和刷新 Azure AD 持有者令牌。 使用此身份验证模型时，所有访问都是使用与所提供的令牌关联的标识以调用为单位进行授权的，并且依据所分配的 POSIX 访问控制列表 (ACL) 进行评估。
 
-   > [!NOTE] 
+   > [!NOTE]
    > Azure Data Lake Storage Gen2 仅支持 Azure AD v2.0 终结点。
 
 ### <a name="configuration"></a>配置

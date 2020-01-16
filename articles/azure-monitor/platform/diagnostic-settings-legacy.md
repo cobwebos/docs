@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750978"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977571"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>收集具有旧设置的 Azure 活动日志
 [Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 最近，你创建了一个日志配置文件，用于将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)，并使用连接器将其收集到[Log Analytics 工作区](activity-log-collect.md)中。 本文介绍方法之间的差异、如何使用现有旧设置，以及如何在准备诊断设置时清除旧设置。
@@ -28,7 +28,7 @@ ms.locfileid: "75750978"
 - 筛选集合以仅收集特定类别的日志。
 - 收集所有活动日志类别。 某些类别不是使用旧方法收集的。
 - 日志引入延迟更快。 前一种方法的延迟大约为15分钟，诊断设置仅添加大约1分钟的时间。
-  
+
 ### <a name="considerations"></a>注意事项
 在启用此功能之前，请考虑使用诊断设置的活动日志收集的以下详细信息。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75750978"
 - ActivityStatus
 - ActivitySubstatus
 - OperationName
-- ResourceProvider 
+- ResourceProvider
 
 添加了以下属性：
 
@@ -57,10 +57,10 @@ ms.locfileid: "75750978"
 
 1. 从 Azure 门户的 " **Azure Monitor** " 菜单中，选择 "**活动日志**"。
 3. 单击“诊断设置”。
-   
+
    ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. 单击紫色横幅了解旧体验。 
+
+4. 单击紫色横幅了解旧体验。
 
     ![旧体验](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "75750978"
 ### <a name="disable-log-profile"></a>禁用日志配置文件
 
 1. 使用使用[旧设置](#work-with-legacy-settings)中所述的过程打开旧设置。
-2. 禁用任何当前集合到存储或事件中心。 
+2. 禁用任何当前集合到存储或事件中心。
 
 
 
@@ -93,5 +93,5 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关活动日志的更多信息](../../azure-resource-manager/resource-group-audit.md)
+* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
 * [了解有关诊断设置的详细信息](diagnostic-settings.md)

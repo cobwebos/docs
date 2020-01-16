@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901842"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020846"
 ---
-当你提交到 Azure 保留 VM 实例时，你可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm，使用情况计量分为两个不同的计量器。 有一个计算计量器，与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息，请参阅[Azure 保留 VM 实例中未包含的软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)。
+当你提交到 Azure 保留 VM 实例时，你可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm，使用情况计量分为两个不同的计量器。 有一个计算计量器，与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息，请参阅[Azure 保留 VM 实例中未包含的软件成本](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>在购买前确定正确的 VM 大小
 
@@ -78,7 +78,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 ## <a name="buy-a-reserved-vm-instance"></a>购买虚拟机预留实例
 
-可以在[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买保留 VM 实例。 通过[提前付款或按月付款](../articles/billing/billing-monthly-payments-reservations.md)的方式为预留付款。
+可以在[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买保留 VM 实例。 通过[提前付款或按月付款](../articles/cost-management-billing/reservations/monthly-payments-reservations.md)的方式为预留付款。
 这些要求适用于购买保留 VM 实例：
 
 - 对于至少一个 EA 订阅或具有即用即付费率的订阅，必须是所有者角色。
@@ -111,7 +111,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 对于获得预留折扣的使用量，使用数据的有效价格为零。 你可以看到哪个 VM 实例收到每个预订的预订折扣。
 
-有关如何在使用情况数据中显示预订折扣的详细信息，请参阅[了解企业注册的 Azure 保留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)（如果你是 EA 客户）。 如果有单独的订阅，请参阅[了解即用即付订阅的 Azure 保留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)。
+有关如何在使用情况数据中显示预订折扣的详细信息，请参阅[了解企业注册的 Azure 保留使用情况](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)（如果你是 EA 客户）。 如果有单独的订阅，请参阅[了解即用即付订阅的 Azure 保留使用情况](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 ## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
 
@@ -134,7 +134,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
 
@@ -142,12 +142,12 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何管理预留，请参阅[管理 Azure 预留](../articles/billing/billing-manage-reserved-vm-instance.md)。
+- 若要了解如何管理预留，请参阅[管理 Azure 预留](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
-    - [什么是 Azure 预订？](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [管理 Azure 中的预留](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [了解预留折扣的应用方式](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [了解采用即用即付费率的订阅的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [了解企业合约的预留使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [预留未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [什么是 Azure 预订？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [管理 Azure 中的预留](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [了解预留折扣的应用方式](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [了解采用即用即付费率的订阅的预留使用情况](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [了解企业合约的预留使用情况](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [预留未包含的 Windows 软件成本](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](https://docs.microsoft.com/partner-center/azure-reservations)

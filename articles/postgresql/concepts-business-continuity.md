@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763872"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981916"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器的业务连续性概述
 
 本概述介绍了 Azure Database for PostgreSQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来保证业务连续性的功能
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
 
 Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动备份和允许用户启动异地还原的功能。 每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 了解这些选项后，便可从中进行选择，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在破坏性事件发生后完全恢复前的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从破坏性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
 
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 使用[Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)来帮助防止意外删除服务器。
+> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 使用[Azure 资源锁](../azure-resource-manager/management/lock-resources.md)来帮助防止意外删除服务器。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 
@@ -43,7 +43,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 
 一个选项是等待数据中心中断结束时，服务器重新联机。 这适用于可以承受服务器脱机一段时间的应用程序，例如开发环境。 当某个数据中心发生服务中断时，您不知道中断可能会持续多长时间，因此此选项仅在您不需要服务器的情况下才可正常工作。
 
-## <a name="geo-restore"></a>异地还原
+## <a name="geo-restore"></a>地域恢复
 
 异地还原功能使用异地冗余备份来还原服务器。 备份托管在服务器的[配对区域](../best-practices-availability-paired-regions.md)中。 可以从这些备份还原到任何其他区域。 异地还原使用备份中的数据创建新的服务器。 从[备份和还原概念一文](concepts-backup.md)中详细了解异地还原。
 

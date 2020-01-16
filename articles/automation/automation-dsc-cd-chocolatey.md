@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366424"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966736"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -40,7 +40,7 @@ Azure Automation State Configuration 扩展了此自动化功能，包含 PowerS
 DSC 资源是具有特定功能的代码模块，例如管理网络、Active Directory 或 SQL Server。 Chocolatey DSC 资源知道如何访问 NuGet 服务器（以及其他组件）、下载包、安装包，等等。 [PowerShell 库](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有许多其他 DSC 资源。
 这些模块已安装到 Azure Automation State Configuration 拉取服务器（由你安装）以供配置使用。
 
-Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 这篇[文章](../azure-resource-manager/resource-manager-deployment-model.md)比较资源管理器部署模型（声明性）和 Azure 服务管理（ASM 或经典）部署模型（命令性），并讨论核心资源提供程序、计算、存储和网络。
+Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 这篇[文章](../azure-resource-manager/management/deployment-models.md)比较资源管理器部署模型（声明性）和 Azure 服务管理（ASM 或经典）部署模型（命令性），并讨论核心资源提供程序、计算、存储和网络。
 
 资源管理器模板的一项主要功能是在预配时将 VM 扩展安装到 VM 中。 VM 扩展模块具有特定功能，例如运行自定义脚本、安装防病毒软件或运行 DSC 配置脚本。 有许多其他类型的 VM 扩展。
 

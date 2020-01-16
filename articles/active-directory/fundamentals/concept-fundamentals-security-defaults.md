@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422841"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978892"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -28,7 +28,10 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 ![使用切换启用安全默认设置的 Azure 门户屏幕截图](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-将在你的租户中启用以下安全配置。 
+> [!TIP]
+> 如果租户是在 2019 22 日年10月或之后创建的，则可能是你遇到了新的默认的安全默认行为，且已在租户中启用安全默认设置。 为了保护所有用户的工作，安全默认值将推出到所有新创建的租户。
+
+有关可用安全默认设置的详细信息，请参阅 Alex Weinert 的博客文章[介绍安全默认](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)值。
 
 ## <a name="unified-multi-factor-authentication-registration"></a>统一的多重身份验证注册
 

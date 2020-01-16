@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779733"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980872"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
 本文档包含要求准则，以及审查者在审查列入 Azure 市场中的新套餐和服务时所遵循的查检表。
 
-所有套餐必须符合下面所述的[所有列表要求](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements)。 对于特定的列表类型，提供了额外的要求和查检表，包括：附有[试用版](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)、[SaaS 应用](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements)、[容器](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)和[咨询服务](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)的套餐。
+所有套餐必须符合下面所述的[所有列表要求](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements)。 对于特定的列表类型，提供了额外的要求和查检表，包括：附有[试用版](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)、[SaaS 应用](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements)、[容器](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)和[咨询服务](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements)的套餐。
 
 
 ## <a name="all-listing-requirements"></a>所有列表要求

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364792"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969519"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -197,7 +197,7 @@ ms.locfileid: "75364792"
   ]
 }
 ```
-之前的示例 JSON 可以保存为（例如，sampleActivityLogAlert），并可使用[Azure 资源管理器在 Azure 门户中](../../azure-resource-manager/resource-group-template-deploy-portal.md)进行部署。
+之前的示例 JSON 可以保存为（例如，sampleActivityLogAlert），并可使用[Azure 资源管理器在 Azure 门户中](../../azure-resource-manager/templates/deploy-portal.md)进行部署。
 
 > [!NOTE]
 > 新的活动日志警报规则最长可能需要5分钟才会生效。

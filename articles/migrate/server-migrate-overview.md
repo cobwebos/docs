@@ -1,17 +1,14 @@
 ---
 title: 使用 Azure Migrate Server 迁移选择 VMware 迁移选项 |Microsoft Docs
 description: 概述使用 Azure Migrate Server 迁移将 VMware Vm 迁移到 Azure 的选项
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974659"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028710"
 ---
 # <a name="select-a-vmware-migration-option"></a>选择 VMware 迁移选项
 
@@ -25,12 +22,12 @@ ms.locfileid: "74974659"
 
 ## <a name="compare-migration-methods"></a>比较迁移方法
 
-使用这些选定的比较有助于确定要使用哪种方法。 你还可以查看[无代理](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements)迁移和[基于代理](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)的迁移的完全支持要求。
+使用这些选定的比较有助于确定要使用哪种方法。 你还可以查看[无代理](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)迁移和[基于代理](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers)的迁移的完全支持要求。
 
 **设置** | **款** | **基于代理**
 --- | --- | ---
 **Azure 权限** | 你需要创建 Azure Migrate 项目的权限，并注册在部署 Azure Migrate 设备时创建 Azure AD 应用。 | 需要对 Azure 订阅具有参与者权限。 
-**同时复制** | 最多可同时从 vCenter Server 复制100个 Vm。<br/> 如果迁移的 Vm 超过50个，请创建多个批处理 Vm。<br/> 一次复制更多会影响性能。 | NA
+**同时复制** | 最多可同时从 vCenter Server 复制100个 Vm。<br/> 如果迁移的 Vm 超过50个，请创建多个批处理 Vm。<br/> 一次复制更多会影响性能。 | 不可用
 **设备部署** | [Azure Migrate 设备](migrate-appliance.md)部署在本地。 | [Azure Migrate 复制设备](migrate-replication-appliance.md)部署在本地。
 **Site Recovery 兼容性** | 兼容. | 如果已使用 Site Recovery 为计算机设置复制，则无法使用 Azure Migrate Server 迁移进行复制。
 **目标磁盘** | 托管磁盘 | 托管磁盘

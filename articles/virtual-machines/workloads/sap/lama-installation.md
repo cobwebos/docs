@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430105"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978059"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -69,18 +69,25 @@ ms.locfileid: "72430105"
 * 如果登录到托管主机，请确保未卸载文件系统  
   如果登录到 Linux 虚拟机，并将工作目录更改为装入点中的某个目录（例如/usr/sap/AH1/ASCS00/exe），则无法卸载该卷，并且重定位或 unprepare 失败。
 
+* 请确保在 SUSE SLES Linux 虚拟机上禁用 CLOUD_NETCONFIG_MANAGE。 有关更多详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>为 SAP LaMa 设置 Azure 连接器
 
-从 SAP LaMa 3.0 SP05 开始随附了 Azure 连接器。 我们建议始终为 SAP LaMa 3.0 安装最新的支持包和修补程序。 Azure 连接器使用服务主体对 Microsoft Azure 授权。 遵循以下步骤为 SAP Landscape Management (LaMa) 创建服务主体。
+从 SAP LaMa 3.0 SP05 开始随附了 Azure 连接器。 我们建议始终为 SAP LaMa 3.0 安装最新的支持包和修补程序。
+
+Azure 连接器使用 Azure 资源管理器 API 来管理 Azure 资源。 SAP LaMa 可以使用服务主体或托管标识对此 API 进行身份验证。 如果在 Azure VM 上运行 SAP LaMa，我们建议使用托管标识，如[使用托管标识访问 AZURE API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章中所述。 如果要使用服务主体，请遵循[使用服务主体访问 AZURE API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)一章中的步骤。
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>使用服务主体获取对 Azure API 的访问权限
+
+Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵循以下步骤为 SAP Landscape Management (LaMa) 创建服务主体。
 
 1. 转到 https://portal.azure.com
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
-1. 单击“添加”
-1. 输入名称，选择 "应用程序类型" "Web 应用/API"，输入登录 URL （例如 http：\//localhost），然后单击 "创建"
-1. 不会使用登录 URL，可为它输入任何有效的 URL
-1. 选择新应用，并在“设置”选项卡中单击“密钥”
-1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
+1. 单击 "新建注册"
+1. 输入名称，然后单击 "注册"
+1. 选择新应用，并在 "设置" 选项卡中单击 "证书" & 机密 "
+1. 创建新的客户端密码，输入新密钥的说明，选择机密应 exire 的时间，并单击 "保存"
 1. 记下值。 此值用作服务主体的密码
 1. 记下应用程序 ID。 此值用作服务主体的用户名
 
@@ -93,20 +100,43 @@ ms.locfileid: "72430105"
 1. 单击“添加角色分配”
 1. 选择“参与者”角色
 1. 输入前面创建的应用程序名称
-1. 点击“保存”(Save)
+1. 单击“保存”。
 1. 针对要在 SAP LaMa 中使用的所有资源组重复步骤 3 到 8
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用托管标识获取对 Azure API 的访问权限
+
+为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配的标识的 Azure VM 上运行。 有关托管标识的详细信息，请参阅[azure 资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md)并[使用 Azure 门户为 VM 上的 azure 资源配置托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
+
+默认情况下，托管标识没有访问 Azure 资源的权限。 需要授予其访问权限。
+
+1. 转到 https://portal.azure.com
+1. 打开“资源组”边栏选项卡
+1. 选择要使用的资源组
+1. 选择“访问控制(IAM)”
+1. 单击 "添加-> 添加角色分配
+1. 选择“参与者”角色
+1. 选择 "虚拟机" 作为 "分配访问权限"
+1. 选择运行 SAP LaMa 实例的虚拟机
+1. 单击“保存”。
+1. 对于要在 SAP LaMa 中使用的所有资源组，请重复上述步骤。
+
+在 SAP LaMa Azure 连接器配置中，选择 "使用托管标识" 启用托管标识。 如果要使用系统分配的标识，请确保将 "用户名" 字段留空。 如果要使用用户分配的标识，请在 "用户名" 字段中输入用户分配的标识 Id。
+
+### <a name="create-a-new-connector-in-sap-lama"></a>在 SAP LaMa 中创建新的连接器
 
 打开 SAP LaMa 网站并导航到“基础结构”。 转到“云管理器”选项卡并单击“添加”。 选择“Microsoft Azure 云适配器”并单击“下一步”。 输入以下信息：
 
 * 标签：选择连接器实例的名称
-* 用户名：服务主体应用程序 ID
-* 密码：服务主体密钥/密码
+* 用户名：服务主体应用程序 ID 或用户分配的虚拟机标识。 有关详细信息，请参阅 [使用系统或用户分配的标识]
+* Password：服务主体密钥/密码。 如果使用系统或用户分配的标识，则可以将此字段留空。
 * URL：保留默认值 https://management.azure.com/
 * 监视间隔(秒)：应至少为 300
+* 使用托管标识： SAP LaMa 可以使用系统或用户分配的标识对 Azure API 进行身份验证。 请参阅本指南中的 "[使用托管标识访问 AZURE API"](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章。
 * 订阅 ID：Azure 订阅 ID
 * Azure Active Directory 租户 ID：Active Directory 租户的 ID
 * 代理主机：如果 SAP LaMa 需要使用代理连接到 Internet，则为代理的主机名
 * 代理端口：代理的 TCP 端口
+* 更改存储类型以节约成本：如果 Azure 适配器应更改托管磁盘的存储类型，以便在未使用磁盘时节省成本，请启用此设置。 对于在 SAP 实例配置中引用的数据磁盘，在实例 unprepare 期间，适配器会将磁盘类型更改为标准存储，并在实例准备期间恢复为原始存储类型。 如果停止 SAP LaMa 中的虚拟机，适配器会将所有附加磁盘的存储类型（包括 OS 磁盘）更改为标准存储。 如果在 SAP LaMa 中启动虚拟机，适配器会将存储类型更改回原始存储类型。
 
 单击“测试配置”以验证输入。 在网站底部应会看到
 

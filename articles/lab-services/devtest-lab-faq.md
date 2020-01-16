@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644913"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981483"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -46,13 +46,13 @@ Twitter 句柄： [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 如果你的问题未在此处列出，请告知我们，以便我们可以帮助你找到答案。
 
-- 在本常见问题解答的末尾发布问题。 
+- 在本常见问题解答的末尾发布问题。
 - 若希望更多人看到问题，可以将问题发布在 [Azure 开发测试实验室 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)上。 与 Azure 开发测试实验室团队和其他社区成员进行讨论。
 - 要提出功能请求，请将请求和想法提交到 [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs)（Azure 开发测试实验室用户之声）。
 
 ### <a name="what-is-a-microsoft-account"></a>什么是 Microsoft 帐户？
 Microsoft 帐户可用于通过 Microsoft 设备和服务执行的几乎所有操作。 它是一个电子邮件地址和密码，用于登录到 Skype、Outlook.com、OneDrive、Windows phone、Azure 和 Xbox Live。 单一帐户意味着文件、照片、联系人和设置可跟随用户移动到任何设备。
- 
+
 > [!NOTE]
 > 用于称为 Windows Live ID 的 Microsoft 帐户。
 
@@ -145,18 +145,18 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 ## <a name="lab-configuration"></a>实验室配置
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>如何从资源管理器模板模板创建实验室？
-我们提供了[实验室 Azure 资源管理器模板的 GitHub 存储库](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)，可按原样部署，也可对其进行修改，为实验室创建自定义模板。 每个模板都有一个链接，可将实验室部署在自己的 Azure 订阅中。 或者，可自定义模板，并[使用 PowerShell 或 Azure CLI 进行部署](../azure-resource-manager/resource-group-template-deploy.md)。
+我们提供了[实验室 Azure 资源管理器模板的 GitHub 存储库](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)，可按原样部署，也可对其进行修改，为实验室创建自定义模板。 每个模板都有一个链接，可将实验室部署在自己的 Azure 订阅中。 或者，可自定义模板，并[使用 PowerShell 或 Azure CLI 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>能否在公共资源组中创建所有虚拟机，而不是将每台计算机置于其自己的资源组中？ 
-是的，作为实验室所有者，你可以允许实验室为你分配资源组，或者在你指定的公共资源组中创建所有虚拟机。 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>能否在公共资源组中创建所有虚拟机，而不是将每台计算机置于其自己的资源组中？
+是的，作为实验室所有者，你可以允许实验室为你分配资源组，或者在你指定的公共资源组中创建所有虚拟机。
 
 单独的资源组方案：
 -   开发测试实验室为你启动的每个公共/专用 IP 虚拟机创建新的资源组
 -   开发测试实验室为属于相同大小的共享 IP 计算机创建资源组。
 
 常见资源组方案：
--   所有虚拟机都将在你指定的公共资源组中启动。 了解实验室的更多[资源组分配](https://aka.ms/RGControl)。 
+-   所有虚拟机都将在你指定的公共资源组中启动。 了解实验室的更多[资源组分配](https://aka.ms/RGControl)。
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>如何在整个开发测试实验室环境中保留命名约定？
 你可能需要将当前企业命名约定扩展到 Azure 运营，并在整个开发测试实验室环境中保持这种命名约定的一致性。 部署开发测试实验室时，我们建议使用特定的起始策略。 通过中心脚本和 JSON 模板部署这些策略，以实施一致性。 可以通过在订阅级别应用的 Azure 策略来实施命名策略。 有关 Azure Policy 的 JSON 示例，请参阅 [Azure Policy 示例](../governance/policy/samples/index.md)。
@@ -196,7 +196,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可通过两种方式同时从同一模板创建多个 VM：
 
 - 可以使用 [Azure DevOps 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
-- 你可以在创建 VM 时[生成资源管理器模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)，并[从 Windows PowerShell 部署资源管理器模板](../azure-resource-manager/resource-group-template-deploy.md)。
+- 你可以在创建 VM 时[生成资源管理器模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)，并[从 Windows PowerShell 部署资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)。
 - 你还可以指定要在虚拟机创建过程中创建的多个虚拟机实例。 若要了解有关创建虚拟机的多个实例的详细信息，请参阅[创建实验室虚拟机](devtest-lab-add-vm.md)中的文档。
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>如何将现有 Azure VM 移到开发测试实验室？
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>环境 
+## <a name="environments"></a>环境
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>如何在开发测试实验室环境中使用资源管理器模板？
 使用开发测试实验室一文中的[环境功能](devtest-lab-test-env.md)中所述的步骤，将资源管理器模板部署到开发测试实验室环境。 从根本上说，将资源管理器模板签入 Git 存储库（Azure Repos 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。 如果你使用开发测试实验室来托管开发计算机，则这种情况可能会很有用，但如果你要构建过渡环境（代表生产），这可能会很有用。
@@ -264,7 +264,7 @@ foreach($labVM in $labVMs)
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>如何设置一个易于重复的过程以便将我的自定义组织映像导入开发测试实验室环境？
 观看[有关映像工厂模式的视频](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
 
-有关创建映像工厂的详细信息，请参阅[在 Azure 开发测试实验室中创建自定义映像工厂](image-factory-create.md)。 
+有关创建映像工厂的详细信息，请参阅[在 Azure 开发测试实验室中创建自定义映像工厂](image-factory-create.md)。
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>自定义映像与公式之间的区别是什么？
 自定义映像是托管映像。 而公式是可使用其他设置配置，并在随后保存和重现的映像。 要使用同一不可变的基本映像快速创建多个环境，最好使用自定义映像。 要使用最新位（作为虚拟网络或子网的一部分，或作为特定大小的 VM）重现 VM 的配置，选择公式可能会更好。 有关更深入的说明，请参阅[比较自定义映像和 DevTest 实验室中的公式](devtest-lab-comparing-vm-base-image-types.md)。
@@ -343,19 +343,19 @@ foreach($labVM in $labVMs)
 - [在现有开发测试实验室中从 Azure DevOps Services 部署新 VM](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [使用Azure DevOps Services 发布管理对开发测试实验室进行持续部署](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-对于其他持续集成 (CI)/持续交付 (CD) 工具链，可通过使用 [Azure PowerShell cmdlet](../azure-resource-manager/resource-group-template-deploy.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 部署 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)来实现相同的方案。 还可使用[用于开发测试实验室的 REST API](https://aka.ms/dtlrestapis) 与工具链进行集成。
+对于其他持续集成 (CI)/持续交付 (CD) 工具链，可通过使用 [Azure PowerShell cmdlet](../azure-resource-manager/templates/deploy-powershell.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 部署 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)来实现相同的方案。 还可使用[用于开发测试实验室的 REST API](https://aka.ms/dtlrestapis) 与工具链进行集成。
 
 ## <a name="networking"></a>联网
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
-如果 Vm 需要与现有基础结构进行交互，请考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要最大程度地减少 Vnet/子网的数量，以便不会对分配给订阅使用的 IP 地址空间进行分段。 
+如果 Vm 需要与现有基础结构进行交互，请考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要最大程度地减少 Vnet/子网的数量，以便不会对分配给订阅使用的 IP 地址空间进行分段。
 
-请考虑在此处使用 VNet 对等互连模式（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）。 此方法跨订阅启用 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 
+请考虑在此处使用 VNet 对等互连模式（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）。 此方法跨订阅启用 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
 
 每个订阅的虚拟网络数有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>何时应使用共享 IP 与公用 IP 与专用 IP？
- 
+
 如果使用站点到站点 VPN 或快速路由，则考虑使用专用 IP，以便你的计算机可通过内部网络访问，并且无法通过公共 Internet 访问。
 
 > [!NOTE]
@@ -383,15 +383,15 @@ foreach($labVM in $labVMs)
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>从 PowerShell 预配 VM 时，为什么会收到“找不到父资源”错误？
 若一个资源是另一个资源的父资源，则该父资源必须存在才可创建子资源。 如果父资源不存在，您将看到一条**ParentResourceNotFound**消息。 如果未指定与父资源的依赖关系，子资源可能会在父资源之前部署。
 
-VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 PowerShell 部署 VM 时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)。
+VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 PowerShell 部署 VM 时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](../azure-resource-manager/templates/common-deployment-errors.md)。
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
 活动日志中会捕获 VM 部署错误。 你可以在实验室 VM 页面上的 "资源" 菜单上的 "**审核日志**" 或 "**虚拟机诊断**" 下找到实验室 vm 活动日志（从 "我的虚拟机" 列表中选择 VM 后，会显示此页）。
 
-有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>为什么在尝试创建实验室时出现 "资源类型的位置不可用" 错误？
-尝试创建实验室时，可能会看到类似于下面的错误消息： 
+尝试创建实验室时，可能会看到类似于下面的错误消息：
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 若要解决此错误，可以执行以下步骤之一：
 
 #### <a name="option-1"></a>选项 1
-请在 Azure 区域中的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/)" 页上查看资源类型的可用性。 如果资源类型在某个区域中不可用，则开发测试实验室不支持在该区域创建实验室。 创建实验室时，请选择其他区域。 
+请在 Azure 区域中的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/)" 页上查看资源类型的可用性。 如果资源类型在某个区域中不可用，则开发测试实验室不支持在该区域创建实验室。 创建实验室时，请选择其他区域。
 
 #### <a name="option-2"></a>选项 2
-如果资源类型在你的区域中可用，请检查它是否已注册到你的订阅。 如本文所示，可在订阅所有者级别完成[此](../azure-resource-manager/resource-manager-supported-services.md)操作。 
-
-
+如果资源类型在你的区域中可用，请检查它是否已注册到你的订阅。 如本文所示，可在订阅所有者级别完成[此](../azure-resource-manager/management/resource-providers-and-types.md)操作。

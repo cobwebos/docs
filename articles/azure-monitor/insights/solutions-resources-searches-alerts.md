@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401766"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977726"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401766"
 > [!NOTE]
 > 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。
 
-[管理解决方案](solutions.md)通常会将 Log Analytics 中[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)包括在内，以便分析解决方案收集的数据。 它们可能还会定义[警报](../../azure-monitor/platform/alerts-overview.md)，从而向用户发出通知或针对严重问题自动采取行动。 本文介绍如何在[资源管理模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](solutions-creating.md)。
+[管理解决方案](solutions.md)通常会将 Log Analytics 中[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)包括在内，以便分析解决方案收集的数据。 它们可能还会定义[警报](../../azure-monitor/platform/alerts-overview.md)，从而向用户发出通知或针对严重问题自动采取行动。 本文介绍如何在[资源管理模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](solutions-creating.md)。
 
 > [!NOTE]
 > 本文中的示例使用管理解决方案所需或通用的参数和变量，[在 Azure 中设计和构建管理解决方案](solutions-creating.md)中对它们进行了介绍

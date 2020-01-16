@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155471"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965611"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>排查在 Azure 中重新启动现有 Windows VM 或调整其大小时遇到的部署问题
 尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
@@ -28,7 +28,7 @@ ms.locfileid: "71155471"
 ## <a name="collect-activity-logs"></a>收集活动日志
 若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关过程的详细信息：
 
-[查看部署操作](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
 [通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
 

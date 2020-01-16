@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082493"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027794"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>排查 SQL 数据库的暂时性连接错误
 
 本文介绍如何防止、排查、诊断和减少客户端应用程序在与 Azure SQL 数据库交互时发生的连接错误和暂时性错误。 了解如何配置重试逻辑、生成连接字符串以及调整其他连接设置。
 
@@ -77,8 +77,8 @@ ms.locfileid: "74082493"
 
 以下文档提供了有关重试逻辑的代码示例：
 
-- [使用 ADO.NET 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [使用 PHP 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [使用 ADO.NET 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [使用 PHP 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -131,10 +131,10 @@ ms.locfileid: "74082493"
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-为 [SqlConnection](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 对象生成**连接字符串**时，请在以下参数之间协调值：
+为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
+- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为10秒。 范围为 1 到 60。
 - **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
@@ -145,7 +145,7 @@ ms.locfileid: "74082493"
 
 ## <a name="connection-vs-command"></a>连接与命令
 
-**ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦你的程序（例如，将控制权返还给你的程序）。 在以下情况下可能会进行重试：
+**ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦程序（例如，将控制权返还给程序）。 在以下情况下可能会进行重试：
 
 - mySqlConnection.Open 方法调用
 - mySqlConnection.Execute 方法调用
@@ -188,7 +188,7 @@ ms.locfileid: "74082493"
 例如，当客户端程序托管在 Windows 计算机上时，则可以使用主机上的 Windows 防火墙打开端口 1433。
 
 1. 打开控制面板。
-2. 选择“所有控制面板项” **“Windows 防火墙”** “高级设置” > “出站规则” **“操作”** “新建规则”。 >  >  >  > 
+2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。
 
 如果客户端程序托管在 Azure 虚拟机 (VM) 上，请阅读[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
@@ -267,7 +267,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 客户端可以通过记录其所遇到的所有错误来帮助你进行诊断。 可将日志条目与 SQL 数据库本身内部记录的错误数据相关联。
 
-Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731.aspx)
+Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记录。 有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731.aspx)。
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -275,7 +275,7 @@ Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记
 
 下面是查询错误日志和其他信息的一些 Transact-SQL SELECT 语句。
 
-| 日志查询 | 说明 |
+| 日志查询 | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
@@ -368,7 +368,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
   - 收集有助于调试和跟踪的上下文信息，以及用于满足审核和一般日志记录要求的上下文信息。
 - 日志记录块可以从日志目标抽象化日志记录功能，使应用程序代码保持一致，无论目标日志记录存储的位置和类型为何。
 
-有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)
+有关详细信息，请参阅：[5 - 与写入日志一样简单：使用日志记录应用程序块](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)。
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关其他常见 SQL 数据库连接问题的故障排除信息，请参阅[排查 Azure SQL 数据库的连接问题](sql-database-troubleshoot-common-connection-issues.md)。
 - [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
 - [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [*重试*是 Apache 2.0 授权的通用重试库，它以 Python](https://pypi.python.org/pypi/retrying) 编写，可以简化向几乎任何程序添加重试行为的任务。

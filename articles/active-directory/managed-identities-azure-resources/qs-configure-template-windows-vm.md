@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 820ed0c3de49105bb0365213e5179c474652e5f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429962"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972150"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
+Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。
 
 本文将介绍如何在 Azure VM 上使用 Azure 资源管理器部署模板来执行以下 Azure 资源的托管标识操作：
 
@@ -44,7 +44,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
    - 使用 Visual Studio [Azure 资源组项目](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)同时创建和部署模板。  
 
-无论选择哪种方法，在初始部署和重新部署期间，模板语法都是相同的。 在新的或现有 VM 上启用系统或用户分配的托管标识所采用的方式是相同的。 此外，默认情况下，Azure 资源管理器还会对部署执行[增量更新](../../azure-resource-manager/deployment-modes.md)。
+无论选择哪种方法，在初始部署和重新部署期间，模板语法都是相同的。 在新的或现有 VM 上启用系统或用户分配的托管标识所采用的方式是相同的。 此外，默认情况下，Azure 资源管理器还会对部署执行[增量更新](../../azure-resource-manager/templates/deployment-modes.md)。
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
@@ -59,7 +59,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 2. 若要启用系统分配的托管标识，请将模板加载到编辑器中，在 `resources` 节中找到所关注的 `Microsoft.Compute/virtualMachines` 资源，并在与 `"type": "Microsoft.Compute/virtualMachines"` 属性相同的级别添加 `"identity"` 属性。 使用以下语法：
 
    ```JSON
-   "identity": { 
+   "identity": {
        "type": "SystemAssigned"
    },
    ```
@@ -80,7 +80,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
                 "type": "SystemAssigned",
                 },
             },
-        
+
             //The following appears only if you provisioned the optional VM extension (to be deprecated)
             {
             "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -110,9 +110,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](/azure/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
- 
+
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
-   
+
    在 `parameters` 部分下添加以下代码：
 
     ```JSON
@@ -156,15 +156,15 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachines` 资源。 如果 VM 只有系统分配的托管标识，则可以将标识类型更改为 `None` 来禁用它。  
-   
+
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**
 
    如果 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及 `userAssignedIdentities` 字典值。
 
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**
-   
+
    如果 `apiVersion` 为 `2017-12-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及用户分配的托管标识的 `identityIds` 数组。  
-   
+
 以下示例演示如何从没有用户分配的托管标识的 VM 删除系统分配的托管标识：
 
  ```JSON
@@ -173,7 +173,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
      "type": "Microsoft.Compute/virtualMachines",
      "name": "[parameters('vmName')]",
      "location": "[resourceGroup().location]",
-     "identity": { 
+     "identity": {
          "type": "None"
      }
  }
@@ -210,11 +210,11 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
         }
     }
    ```
-   
+
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
-    
+
    如果 `apiVersion` 为 `2017-12-01`，则用户分配的托管标识存储在 `identityIds` 数组中，并且 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在模板的 `variables` 节中定义的某个变量中。
-    
+
    ```JSON
    {
        "apiVersion": "2017-12-01",
@@ -229,9 +229,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
        }
    }
    ```
-       
+
 3. 完成后，以下各节应当会添加到模板的 `resource` 节，该节应当呈现如下：
-   
+
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**    
 
    ```JSON
@@ -271,7 +271,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     ]   
    ```
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
-   
+
    ```JSON
    "resources": [
         {
@@ -287,7 +287,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
                 ]
             }
         },
-                 
+
         //The following appears only if you provisioned the optional VM extension (to be deprecated)                   
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -317,33 +317,33 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
 
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachines` 资源。 如果 VM 只有用户分配的托管标识，则可以通过将标识类型更改为 `None` 来禁用它。
- 
+
    以下示例演示如何从没有系统分配的托管标识的 VM 中删除所有用户分配的托管标识：
-   
+
    ```json
     {
       "apiVersion": "2018-06-01",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
-      "identity": { 
+      "identity": {
           "type": "None"
           },
     }
    ```
-   
+
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**
-    
+
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `useraAssignedIdentities` 字典中删除。
 
    如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
- 
+
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `identityIds` 数组中删除。
 
    如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
-   
+
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 资源概述的托管标识](overview.md)。

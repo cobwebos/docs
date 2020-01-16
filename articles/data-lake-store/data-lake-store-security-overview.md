@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195224"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974573"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Storage Gen1 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Storage Gen1 的安全功能，包括：
 
-* Authentication
+* 身份验证
 * 授权
 * 网络隔离
 * 数据保护
@@ -54,7 +54,7 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
 | 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
-| 所有者 |All |All |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
+| “所有者” |所有 |所有 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
 | 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
@@ -66,7 +66,7 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 
 我们建议使用[安全组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)为多个用户定义 ACL。 将用户添加到安全组，然后将文件的 ACL 或文件夹分配给该安全组。 分配的权限最多允许 28 个条目，因此提供分配的权限时，此操作十分有用。 有关如何使用 Azure Active Directory 安全组更好地保护 Data Lake Storage Gen1 中存储的数据的详细信息，请参阅[将用户或安全组作为 ACL 分配给 Data Lake Storage Gen1 文件系统](data-lake-store-secure-data.md#filepermissions)。
 
-![列出访问权限](./media/data-lake-store-security-overview/adl.acl.2.png "List access permissions")
+![列出访问权限](./media/data-lake-store-security-overview/adl.acl.2.png "列出访问权限")
 
 ## <a name="network-isolation"></a>网络隔离
 使用 Data Lake Storage Gen1 有助于控制对网络级别的数据存储的访问。 可以为受信任客户端建立防火墙，定义 IP 地址范围。 使用 IP 地址范围时，只有拥有定义范围内的 IP 地址的客户端才能连接到 Data Lake Storage Gen1。
@@ -93,14 +93,14 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 为帐户管理审核轨迹，、查看和选择要记录的列。 还可以将活动日志导出到 Azure 存储。
 
-![活动日志](./media/data-lake-store-security-overview/activity-logs.png "Activity log")
+![活动日志](./media/data-lake-store-security-overview/activity-logs.png "活动日志")
 
-若要深入了解如何使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+若要深入了解如何使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
 
 ### <a name="diagnostics-logs"></a>诊断日志
-可以启用数据访问审核以及在 Azure 门户中诊断日志记录并将日志发送到 Azure Blob 存储帐户，事件中心或 Azure Monitor 日志。
+可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure Monitor 日志。
 
-![诊断日志](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnostics logs")
+![诊断日志](./media/data-lake-store-security-overview/diagnostic-logs.png "诊断日志")
 
 有关如何使用 Data Lake Storage Gen1 的诊断日志的详细信息，请参阅[访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
@@ -113,4 +113,3 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978394"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
@@ -35,7 +35,7 @@ Azure 存储数据移动库是一个跨平台的开源库，旨在高性能上�
 ## <a name="prerequisites"></a>必备组件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- 一个 [Azure 存储帐户](storage-quickstart-create-account.md)
+- 一个 [Azure 存储帐户](storage-account-create.md)
 
 ## <a name="setup"></a>设置
 
@@ -189,7 +189,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync` 方法使用此信息执行上传。
+此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync`  方法使用此信息执行上传。
 
 点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
 

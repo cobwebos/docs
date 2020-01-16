@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942420"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029940"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics –工作负荷管理门户监视（预览版）
 本文介绍如何监视[工作负荷组](sql-data-warehouse-workload-isolation.md#workload-groups)资源使用情况和查询活动。 有关如何配置 Azure 指标资源管理器的详细信息，请参阅[azure 入门指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)文章。  有关如何监视系统资源使用情况的详细信息，请参阅 Azure SQL 数据仓库监视文档中的[资源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-以下图表配置如下：度量值1：有效的*最小资源百分比*（avg 聚合，`blue line`）指标2：*按系统百分比分配的工作负荷组分配*（avg 聚合，`purple line`）筛选器： [工作负荷组] = `wgPriority`
-![underutilized-wg](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) 图表显示了25% 的工作负荷隔离，平均平均使用10%。  在这种情况下，可以将 `MIN_PERCENTAGE_RESOURCE` 参数值降低到10到15之间，并允许系统中的其他工作负荷使用这些资源。
+以下图表配置如下：<br>
+指标1：*有效的最小资源百分比*（Avg 聚合、`blue line`）<br>
+指标2：*按系统百分比分配工作负荷组*（Avg 聚合、`purple line`）<br>
+筛选器： [工作负荷组] = `wgPriority`<br>
+![underutilized-wg 中](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) 图表显示，具有25% 的工作负荷隔离，平均平均使用10%。  在这种情况下，可以将 `MIN_PERCENTAGE_RESOURCE` 参数值降低到10到15之间，并允许系统中的其他工作负荷使用这些资源。
 
 ### <a name="workload-group-bottleneck"></a>工作负荷组瓶颈
 请考虑以下工作负荷组和分类器配置，其中创建了一个名为 `wgDataAnalyst` 的工作负荷组，并使用 `wcDataAnalyst` 的工作负荷分类器将*DataAnalyst* `membername` 映射到该工作负荷组。  "`wgDataAnalyst` 工作负荷组" 为其配置了6% 的工作负荷隔离（`MIN_PERCENTAGE_RESOURCE` = 6），资源限制为9% （`CAP_PERCENTAGE_RESOURCE` = 9）。  *DataAnalyst*提交的每个查询都提供系统资源的3% （`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3）。
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-以下图表配置如下：度量值1：*有效上限资源百分比*（平均聚合，`blue line`）指标2：*按最大资源百分比*（Avg 聚合，`purple line`）指标3：*工作负荷组排队查询*（Sum 聚合，）指标3：工作负荷组排队查询（Sum 聚合，`turquoise line`）筛选器的工作负荷组分配： [工作负荷组] = `wgDataAnalyst`
-![necked-wg](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) *资源百分比度量值*）。  如*工作负荷组排队查询指标*所示，有一种稳定的查询队列。  在这种情况下，将 `CAP_PERCENTAGE_RESOURCE` 增大到大于9% 的值将允许同时执行更多查询。  增加 `CAP_PERCENTAGE_RESOURCE` 假设有足够的可用资源，并且其他工作负荷组未隔离资源。  通过检查 "*有效 cap 资源百分比" 指标*来验证上限。  如果需要更大的吞吐量，还应考虑将 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 增加到大于3的值。  增加 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能导致查询的运行速度更快。
+以下图表配置如下：<br>
+指标1：*有效上限资源百分比*（平均聚合，`blue line`）<br>
+指标2：*按最大资源百分比分配工作负荷组*（Avg 聚合，`purple line`）<br>
+指标3：*工作负荷组排队查询*（Sum 聚合，`turquoise line`）<br>
+筛选器： [工作负荷组] = `wgDataAnalyst`<br>
+![necked-wg](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) 图表显示，在资源上有9% 的上限，工作负荷组使用了90% 以上（*通过资源的最大百分比度量*值进行分配）。  如*工作负荷组排队查询指标*所示，有一种稳定的查询队列。  在这种情况下，将 `CAP_PERCENTAGE_RESOURCE` 增大到大于9% 的值将允许同时执行更多查询。  增加 `CAP_PERCENTAGE_RESOURCE` 假设有足够的可用资源，并且其他工作负荷组未隔离资源。  通过检查 "*有效 cap 资源百分比" 指标*来验证上限。  如果需要更大的吞吐量，还应考虑将 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 增加到大于3的值。  增加 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能导致查询的运行速度更快。
 
 ## <a name="next-steps"></a>后续步骤
 [快速入门：使用 T-sql 配置工作负荷隔离](quickstart-configure-workload-isolation-tsql.md)<br>

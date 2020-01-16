@@ -10,22 +10,22 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086474"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965631"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 
-虚拟机进入非可启动状态的原因可能有很多。 若要解决使用资源管理器部署模型创建的虚拟机存在的问题，可以使用下面的调试功能：对 Azure 虚拟机的控制台输出和屏幕截图支持。 
+虚拟机进入非可启动状态的原因可能有很多。 若要解决使用资源管理器部署模型创建的虚拟机的问题，可以使用以下调试功能：控制台输出和屏幕截图支持 Azure 虚拟机。 
 
 对于 Linux 虚拟机，可以在门户中查看控制台日志的输出。 对于 Windows 和 Linux 虚拟机，Azure 允许你通过虚拟机监控程序查看 VM 的屏幕截图。 所有区域中的 Azure 虚拟机都支持这两项功能。 请注意，屏幕截图和输出可能需要长达 10 分钟的时间才能显示在存储帐户中。
 
 可以选择“启动诊断”选项以查看日志和屏幕截图。
 
-![资源管理器](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>常见的启动错误
 
@@ -79,7 +79,7 @@ ms.locfileid: "71086474"
 }
 ```
 
-有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在现有的虚拟机上启用启动诊断 
 

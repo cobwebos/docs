@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd42a6ffa6ea46d49df673cde617c70ce7425d91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460373"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980780"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>启用 Azure 文件的通过 SMB Azure Active Directory 域服务身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "75460373"
 
 在 Azure 文件的 SMB 上启用 Azure AD DS 身份验证之前，请验证是否正确配置了 Azure AD 和 Azure 存储环境。 建议你逐步完成[先决条件](#prerequisites)，确保你已完成所有必需的步骤。
 
-接下来，按照以下步骤授予使用 Azure AD 凭据访问 Azure 文件资源的权限： 
+接下来，按照以下步骤授予使用 Azure AD 凭据访问 Azure 文件资源的权限：
 
 1. 启用针对存储帐户的 SMB Azure AD DS 身份验证，以便向关联的 Azure AD DS 部署注册存储帐户。
 2. 将共享的访问权限分配给 Azure AD 标识（用户、组或服务主体）。
@@ -62,7 +62,7 @@ ms.locfileid: "75460373"
 
 4.  **选择或创建 Azure 文件共享。**
 
-    选择与 Azure AD 租户相同订阅关联的新的或现有文件共享。 有关创建新的文件共享的信息，请参阅[在 Azure 文件中创建文件共享](storage-how-to-create-file-share.md)。 
+    选择与 Azure AD 租户相同订阅关联的新的或现有文件共享。 有关创建新的文件共享的信息，请参阅[在 Azure 文件中创建文件共享](storage-how-to-create-file-share.md)。
     为了获得最佳性能，建议将文件共享与计划从中访问共享的 VM 位于同一区域。
 
 5.  **通过使用存储帐户密钥装载 Azure 文件共享来验证 Azure 文件连接。**
@@ -79,14 +79,14 @@ ms.locfileid: "75460373"
 
 若要通过[Azure 门户](https://portal.azure.com)启用 SMB Azure AD DS 身份验证，请执行以下步骤：
 
-1. 在 Azure 门户中，请前往现有的存储帐户，或者[创建一个存储帐户](../common/storage-quickstart-create-account.md)。
+1. 在 Azure 门户中，请前往现有的存储帐户，或者[创建一个存储帐户](../common/storage-account-create.md)。
 2. 在“设置”部分选择“配置”。
 3. 从 " **Azure 文件身份验证的基于标识的目录服务**" 下拉列表中选择 " **Azure Active Directory 域服务（Azure AD DS）** "。
 
 下图显示了如何为存储帐户启用通过 SMB 进行的 Azure AD DS 身份验证。
 
 ![在 Azure 门户中通过 SMB 启用 Azure AD 身份验证](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
-  
+
 ### <a name="powershell"></a>PowerShell  
 
 若要启用 Azure PowerShell 的 SMB Azure AD DS 身份验证，请安装最新的 Az 模块（2.4 或更高版本）或 Az 模块（1.5 或更高版本）。 有关安装 PowerShell 的详细信息，请参阅[在 Windows 上通过 PowerShellGet 安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
@@ -172,8 +172,8 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 ```
 
 #### <a name="cli"></a>CLI
-  
-以下 CLI 2.0 命令显示了如何基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 rbac 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
+
+以下 CLI 2.0 命令显示了如何基于登录名将 RBAC 角色分配到 Azure AD 标识。 有关 Azure CLI 分配 RBAC 角色的详细信息，请参阅[使用 rbac 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
 
 在运行以下示例脚本之前，请记得将占位符值（包括括号）替换为自己的值。
 
@@ -182,10 +182,10 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>通过 SMB 配置 NTFS 权限 
+## <a name="configure-ntfs-permissions-over-smb"></a>通过 SMB 配置 NTFS 权限
 使用 RBAC 分配共享级别权限后，必须在根目录、目录或文件级别分配正确的 NTFS 权限。 将共享级权限视为用于确定用户是否可以访问共享的高级身份确认程序。 NTFS 权限的作用更精细，以确定用户可以在目录或文件级别执行哪些操作。
 
-Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并使用 Windows 文件资源管理器或运行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
+Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并使用 Windows 文件资源管理器或运行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。
 
 若要使用超级用户权限配置 NTFS，必须使用已加入域的 VM 中的存储帐户密钥装载共享。 按照下一部分中的说明从命令提示符装载 Azure 文件共享，并相应地配置 NTFS 权限。
 
@@ -229,7 +229,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 ## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>从加入域的 VM 装载文件共享
 
-以下过程将验证 Azure AD 凭据是否设置正确，以及是否可以从已加入域的 VM 访问 Azure 文件共享： 
+以下过程将验证 Azure AD 凭据是否设置正确，以及是否可以从已加入域的 VM 访问 Azure 文件共享：
 
 使用已向其授予权限的 Azure AD 标识登录到 VM，如下图所示。
 

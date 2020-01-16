@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771864"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968482"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure 机器学习中的模型 interpretability
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Interpretability 类通过多个 SDK 包提供。 了解如何[为 Azure 机器�
 * **模拟说明**：模拟说明是基于定型[全局代理项模型](https://christophm.github.io/interpretable-ml-book/global.html)来模拟黑盒模型的理念。 全局代理项模型是一种固有的可解释模型，经过训练，可尽可能准确地估计黑色框模型的预测。 数据科研人员可以解释代理项模型，以绘制关于黑色框模型的结论。 您可以使用以下可解释模型之一作为代理模型： LightGBM （LGBMExplainableModel）、线性回归（LinearExplainableModel）、随机梯度下降 explainable 模型（SGDExplainableModel）和决策树（DecisionTreeExplainableModel).
 
 
-* **排列特征重要性说明**：排列特征重要性是一种技术，用于说明由[Breiman 的随机林纸](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf)（请参阅第10部分）激发的分类和回归模型。 从较高层次来看，它的工作方式是对整个数据集随机混排一项功能，并计算出相关性能指标的变化程度。 变化越大，特征就越重要。
+* **排列特征重要性说明**：排列特征重要性是一种技术，用于说明由[Breiman 的随机林纸](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)（请参阅第10部分）激发的分类和回归模型。 从较高层次来看，它的工作方式是对整个数据集随机混排一项功能，并计算出相关性能指标的变化程度。 变化越大，特征就越重要。
 
 * **酸橙色说明**（`contrib`）：基于[酸橙色](https://github.com/marcotcr/lime)，酸橙色说明使用先进的本地可解释模式说明（酸橙色）算法来创建本地代理项模型。 与全局代理项模型不同，酸橙色侧重于定型本地代理项模型来解释各个预测。
 * **中文文本说明**（`contrib`）：汉语文本说明使用分层网络，从给定的黑色框文本模型的文本数据获取模型说明。 它在给定的黑盒模型的预测输出上定型了汉语代理模型。 在整个文本语料库中进行全局定型后，它会为特定文档添加一个微调步骤，以便提高说明的准确性。 汉语使用双向 RNN，其中包含两个注意层，用于句子和单词。 DNN 在黑盒模型上定型并对特定文档进行微调后，用户就可以从 "注意" 层中提取单词 "importances"。 对于文本数据来说，中文的显示效果比酸橙色或 SHAP 更精确，但对于培训时间而言，其开销更大。 已进行了改进，使用户能够使用手套 word 嵌入初始化网络以缩短定型时间。 通过在远程 Azure GPU VM 上运行汉语，可以显著提高训练时间。 ["文档分类的分层注意事项网络" （"阳 et al，2016）"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)中介绍了汉语的实现。

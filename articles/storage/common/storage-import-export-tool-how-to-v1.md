@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975673"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>使用 Azure 导入/导出工具（经典部署模型）
 
@@ -25,10 +25,10 @@ ms.locfileid: "74973928"
 
 - 安装和设置导入/导出工具。
 - 为作业准备硬盘驱动器，以便将数据从驱动器导入 Azure Blob 存储。
-- 使用复制日志文件查看作业状态。 
-- 修复导入作业。 
-- 修复导出作业。 
-- 排查在使用 Azure 导入/导出工具的过程中遇到的问题。 
+- 使用复制日志文件查看作业状态。
+- 修复导入作业。
+- 修复导出作业。
+- 排查在使用 Azure 导入/导出工具的过程中遇到的问题。
 
 ## <a name="next-steps"></a>后续步骤
 

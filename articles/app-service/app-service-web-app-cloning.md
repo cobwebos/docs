@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671434"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967207"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 
@@ -129,5 +129,5 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure 资源管理器的支持](../traffic-manager/traffic-manager-powershell-arm.md)
 * [应用服务环境简介](environment/intro.md)
-* [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/manage-resources-powershell.md)
+* [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)
 
