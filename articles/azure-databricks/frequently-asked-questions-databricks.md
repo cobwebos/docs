@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888987"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971503"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -107,7 +107,7 @@ Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订�
 1. 依次选择“订阅”、正在使用的订阅，然后单击“资源提供程序”。 
 1. 在资源提供程序列表中，针对“Microsoft.Compute”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
-有关详细说明，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
+有关详细说明，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>问题：Azure Databricks 需要只有管理员可以授予的访问组织中资源的权限。
 

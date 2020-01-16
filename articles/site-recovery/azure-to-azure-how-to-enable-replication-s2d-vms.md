@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942209"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973668"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure Vm 复制到另一个区域
 
@@ -30,7 +30,7 @@ ms.locfileid: "75942209"
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Windows 故障转移群集中有两个 Azure 虚拟机，每个虚拟机都有两个或多个数据磁盘。
 - S2D 同步数据磁盘上的数据，并以存储池的形式提供同步的存储。
 - 存储池作为群集共享卷 (CSV) 提供给故障转移群集。
@@ -51,7 +51,7 @@ ms.locfileid: "75942209"
 
    ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. 转到已复制的项，可以看到两个虚拟机的状态。 
+2. 转到已复制的项，可以看到两个虚拟机的状态。
 3. 两个虚拟机均受到保护，并显示为属于多 VM 一致性组。
 
    ![storagespacesdirect 保护](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353239"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973917"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -47,11 +47,11 @@ ms.locfileid: "75353239"
 
 在开始实施此查检表之前，请确保在阅读此查检表时不会受到攻击。 首先需要保护自己的特权帐户。
 
-获得特权帐户控制权的攻击者可以执行巨大的破坏，因此先行保护这些帐户至关重要。 使用[Azure AD 安全默认值](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)或[条件性访问](../../active-directory/conditional-access/plan-conditional-access.md)，为组织中的所有管理员启用和要求[Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)（MFA）。 如果尚未实施 MFA，请立即实施！ 因为 MFA 非常重要。
+获得特权帐户控制权的攻击者可以执行巨大的破坏，因此先行保护这些帐户至关重要。 使用[Azure AD 安全默认值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)或[条件性访问](../../active-directory/conditional-access/plan-conditional-access.md)，为组织中的所有管理员启用和要求[Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)（MFA）。 如果尚未实施 MFA，请立即实施！ 因为 MFA 非常重要。
 
 准备好了吗？ 让我们开始阅读查检表。
 
-## <a name="step-1---strengthen-your-credentials"></a>步骤 1 - 增强凭据 
+## <a name="step-1---strengthen-your-credentials"></a>步骤 1 - 增强凭据
 
 大多数企业安全漏洞的起源在于某个帐户受到某种手段的攻击。这些手段多种多样，例如密码喷洒 (password spray)、破解重放或网络钓鱼。 请观看以下视频（45 分钟）来详细了解这些攻击：
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ ms.locfileid: "75353239"
 
 根据密码被猜出、钓鱼、被恶意软件盗窃或重复使用的频率，必须使用某种形式的强凭据来保护密码 – 详细了解 [Azure 多重身份验证](../../active-directory/authentication/multi-factor-authentication.md)。
 
-若要轻松启用基本的标识安全级别，可以使用一键式启用和[Azure AD 安全默认设置](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)。 默认情况下，安全默认为租户中的所有用户强制实施 Azure MFA，并阻止来自租户范围内的传统协议的登录。
+若要轻松启用基本的标识安全级别，可以使用一键式启用和[Azure AD 安全默认设置](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。 默认情况下，安全默认为租户中的所有用户强制实施 Azure MFA，并阻止来自租户范围内的传统协议的登录。
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>开始禁止使用经常受到攻击的密码，摒弃传统的复杂性规则和过期规则。
 
@@ -86,7 +86,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 详细了解[密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的工作原理。
 
 > [!NOTE]
-> 如果启用密码哈希同步并且使用 Azure AD 域服务，则 Kerberos (AES 256) 哈希和可选的 NTLM（RC4，不加盐）哈希也将加密并同步到 Azure AD。 
+> 如果启用密码哈希同步并且使用 Azure AD 域服务，则 Kerberos (AES 256) 哈希和可选的 NTLM（RC4，不加盐）哈希也将加密并同步到 Azure AD。
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>实施 AD FS Extranet 智能锁定
 
@@ -106,7 +106,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 1. [如果使用 AD FS，则阻止传统身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)。
 2. [将 SharePoint Online 和 Exchange Online 设置为使用新式身份验证](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)。
-3. 如果有 Azure AD Premium，请使用[条件性访问策略](../../active-directory/conditional-access/conditions.md)来阻止旧身份验证，否则请使用[Azure AD 安全默认值](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)。
+3. 如果有 Azure AD Premium，请使用[条件性访问策略](../../active-directory/conditional-access/conditions.md)来阻止旧身份验证，否则请使用[Azure AD 安全默认值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
 
 ### <a name="block-invalid-authentication-entry-points"></a>阻止无效的身份验证入口点
 
@@ -123,7 +123,7 @@ Microsoft 建议[禁用未来的用户同意操作](https://docs.microsoft.com/a
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>实施 Azure AD Privileged Identity Management
 
-“假设违规”的另一个影响是，需要尽量减少受到攻击的帐户以特权角色运行的可能性。 
+“假设违规”的另一个影响是，需要尽量减少受到攻击的帐户以特权角色运行的可能性。
 
 [Azure AD Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) 有助于尽量减少帐户特权，因为它可以帮助：
 
@@ -172,13 +172,13 @@ Microsoft Azure 服务和功能提供可配置的安全审核和日志记录选�
 
 Azure AD 标识保护提供两份应该每日监视的重要报告：
 1. 风险登录报告显示应该调查的用户登录活动，合法所有者不可以执行这种登录。
-2. 风险用户报告显示可能已泄密的用户帐户，例如，检测到已泄漏的凭据，或者用户从不同的位置登录，导致不可能的行程事件。 
+2. 风险用户报告显示可能已泄密的用户帐户，例如，检测到已泄漏的凭据，或者用户从不同的位置登录，导致不可能的行程事件。
 
 ![已标记为存在风险的用户](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>审核应用和许可的权限
 
-用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应查看并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户提供的权限，或者禁止用户在默认情况下授予许可。 
+用户可以被欺骗地定位到被入侵的网站或应用程序，这些应用程序将获得对其个人资料信息和用户数据（如电子邮件）的访问权限。 恶意行动者可以使用获得的许可权限来加密用户的邮箱内容，并勒索邮箱数据的赎金。 [管理员应查看并审核](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)用户提供的权限，或者禁止用户在默认情况下授予许可。
 
 除了审核用户提供的权限之外，它还有助于尝试并专门[查找有风险或不需要的 OAuth 应用程序](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)，这是高级环境可用的一项功能。
 

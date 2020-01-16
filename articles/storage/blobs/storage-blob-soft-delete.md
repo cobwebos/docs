@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972727"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 
@@ -68,11 +68,11 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 > [!NOTE]  
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
 
-如果删除容器或帐户或者覆盖 blob 元数据和 blob 属性，软删除皆不会保存数据。 若要防止存储帐户被错误删除，可以使用 Azure 资源管理器配置锁定。 有关详细信息，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)。
+如果删除容器或帐户或者覆盖 blob 元数据和 blob 属性，软删除皆不会保存数据。 若要防止存储帐户被错误删除，可以使用 Azure 资源管理器配置锁定。 有关详细信息，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 下表详述了启用软删除后的预期行为：
 
-| REST API 操作 | 资源类型 | 描述 | 行为更改 |
+| REST API 操作 | 资源类型 | Description | 行为更改 |
 |--------------------|---------------|-------------|--------------------|
 | [删除](/rest/api/storagerp/StorageAccounts/Delete) | 帐户 | 删除存储帐户，包括它包含的所有容器和 blob。                           | 无更改。 已删除帐户中的容器和 blob 不可恢复。 |
 | [删除容器](/rest/api/storageservices/delete-container) | 容器 | 删除容器，包括它包含的所有 blob。 | 无更改。 已删除容器中的 blob 不可恢复。 |
@@ -150,7 +150,7 @@ Copy a snapshot over the base blob:
 
 以下步骤说明了如何开始执行软删除。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户为存储帐户上的 blob 启用软删除：
 
@@ -190,7 +190,7 @@ Copy a snapshot over the base blob:
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -307,7 +307,7 @@ blockBlob.StartCopy(copySource);
 
 如果某个应用程序或其他存储帐户用户意外修改或删除了数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致存储容量收费，并在列出 blob 时增加延迟。 你可以通过将经常覆盖的数据存储在禁用软删除的单独存储帐户中来降低这种额外的成本和延迟。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 ### <a name="for-which-storage-services-can-i-use-soft-delete"></a>对于哪些存储服务，可以使用软删除？
 
@@ -335,7 +335,7 @@ blockBlob.StartCopy(copySource);
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果在启用软删除的情况下删除整个帐户或容器，是否将保存所有关联的 blob？
 
-不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 有关防止意外删除存储帐户的详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)。
+不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 有关防止意外删除存储帐户的详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>能否查看已删除数据的容量度量值？
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a13a0a54e9ded48cc5848843f4c329b2dea90f65
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058356"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975218"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>如何使用 PowerShell（经典）设置静态内部专用 IP
-大多数情况下，不需要指定虚拟机的静态内部 IP 地址。 虚拟网络中的 VM 自动从指定的范围接收内部 IP 地址。 但在某些情况下，需要为特定 VM 指定静态 IP 地址。 例如，在 VM 需要运行 DNS 或将要成为域控制器的情况下。 静态内部 IP 地址会始终与 VM 关联在一起，即使经历“停止/取消预配”状态变化。 
+大多数情况下，不需要指定虚拟机的静态内部 IP 地址。 虚拟网络中的 VM 会自动从指定的范围接收内部 IP 地址。 但在某些情况下，需要为特定 VM 指定静态 IP 地址。 例如，在 VM 需要运行 DNS 或将要成为域控制器的情况下。 静态内部 IP 地址会始终与 VM 关联在一起，即使经历“停止/取消预配”状态变化。 
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用[Resource Manager 部署模型](virtual-networks-static-private-ip-arm-ps.md)。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/management/deployment-models.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用[Resource Manager 部署模型](virtual-networks-static-private-ip-arm-ps.md)。
 > 
 > 
 > ## <a name="install-the-azure-powershell-service-management-module"></a>安装 Azure PowerShell 服务管理模块
@@ -51,7 +51,7 @@ ms.locfileid: "71058356"
 > 
 
 ## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>如何在创建 VM 时指定静态内部 IP
-下面的 PowerShell 脚本将创建名为 *TestService* 的全新云服务，然后从 Azure 中检索映像，接着在新的云服务中使用检索到的映像创建名为 *TestVM* 的 VM，对该 VM 进行设置，使之位于名为 *Subnet-1* 的子网中，最后再将 *10.0.0.7* 设置为 VM 的静态内部 IP：
+下面的 PowerShell 脚本将创建名为 *TestService* 的全新云服务，然后从 Azure 中检索映像，接着在新的云服务中使用检索的映像创建名为 *TestVM* 的 VM，对该 VM 进行设置，使之位于名为 *Subnet-1* 的子网中，最后再将 *10.0.0.7* 设置为 VM 的静态内部 IP：
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -62,7 +62,7 @@ ms.locfileid: "71058356"
     | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
 ## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>如何检索 VM 的静态内部 IP 信息
-如果要查看使用上述脚本创建的 VM 的静态内部 IP 信息，请运行以下 PowerShell 命令，并观察 *IpAddress*的值：
+要查看使用上述脚本创建的 VM 的静态内部 IP 信息，请运行以下 PowerShell 命令，并观察 *IpAddress* 的值：
 
     Get-AzureVM -Name TestVM -ServiceName TestService
 

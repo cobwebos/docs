@@ -3,7 +3,7 @@ title: Azure 批处理 CLI 入门 | Microsoft 文档
 description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd4a93b9829d69d9d0262428d23d2156d732c006
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6d625e092618d1190c3dcdf9997b1ce35211d75
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027289"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -52,7 +52,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 
 ## <a name="log-in-and-authenticate"></a>登录并进行身份验证
 
-若要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
+要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
 
 1. **登录到 Azure。** 登录到 Azure 即可访问 Azure 资源管理器命令，包括 [Batch Management 服务](batch-management-dotnet.md)命令。  
 2. **登录到 Batch 帐户。** 登录到 Batch 帐户即可访问 Batch 服务命令。   
@@ -87,7 +87,7 @@ az login
 
     将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
     
-    如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据将你登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
+    如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
 
     Azure AD 的优势是提供基于角色的访问控制 (RBAC)。 使用 RBAC 时，用户的访问权限取决于分配给他们的角色，而不是是否拥有帐户密钥。 可以管理 RBAC 角色而不是帐户密钥，让 Azure AD 负责访问权限和身份验证。  
 
@@ -129,7 +129,7 @@ az batch pool create my_batch_pool.json
 
 尽管只使用命令行选项即可创建大多数 Batch 资源，但某些功能需要指定 JSON 格式的包含资源详细信息的文件。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
 
-若要查看创建资源所需的 JSON 语法, 请参阅[批处理 REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如, 若要查看用于创建池的 JSON 语法, 请参阅[将池添加到帐户][rest_add_pool]。
+若要查看创建资源所需的 JSON 语法，请参阅[批处理 REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[将池添加到帐户][rest_add_pool]。
 
 如需用于指定 JSON 文件的示例脚本，请参阅[使用 Batch 运行作业和任务](./scripts/batch-cli-sample-run-job.md)。
 
@@ -151,7 +151,7 @@ az batch task list --job-id job001
 
 下表介绍 Batch 服务支持的 OData 子句：
 
-| 子句 | 描述 |
+| 子句 | Description |
 |---|---|
 | `--select-clause [select-clause]` | 返回每个实体的属性子集。 |
 | `--filter-clause [filter-clause]` | 仅返回与指定的 OData 表达式匹配的实体。 |

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748258"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973363"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -51,7 +51,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 > [!IMPORTANT]
 > 异步复制涉及到将数据写入主要区域和将数据复制到次要区域之间的延迟时间。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 
-创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-account-create.md)。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>使用 GZRS 实现高可用性
 

@@ -2,7 +2,7 @@
 title: 将计算密集型 Azure Vm 与 Batch 配合使用
 description: 如何利用 Azure Batch 池中的 HPC 和 GPU 虚拟机大小。 了解 OS 依赖关系，并查看几个方案示例。
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: lahugh
-ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390492"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026795"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
