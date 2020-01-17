@@ -1,48 +1,50 @@
 ---
 title: 适用于 Azure HDInsight 中 Storm 的 SCP.NET 编程指南
 description: 了解如何通过 SCP.NET 创建可在 Azure HDInsight 中运行的 Storm 中使用的基于 .NET 的 Storm 拓扑。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/16/2016
-ms.openlocfilehash: b7bb26cd35daf67a3337907aded18e3302b19d81
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 01/13/2020
+ms.openlocfilehash: f462fd88acf04fc8dced3db739a555c371c184ab
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813877"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154476"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Storm 的 SCP 编程指南
 
-SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
+SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在[Apache Storm](https://storm.incubator.apache.org/)的基础上构建，由 OSS 社区设计的流处理系统。 风暴由 Nathan Marz 设计，并由 Twitter 公开。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。
 
-SCP 项目不仅已移植到 Windows 的 Storm 中，还为 Windows 生态系统增加了扩展和自定义。 扩展包括 .NET 开发人员经验和库，自定义包括基于 Windows 的部署。 
+SCP 项目不仅已移植到 Windows 的 Storm 中，还为 Windows 生态系统增加了扩展和自定义。 扩展包括 .NET 开发人员经验和库，自定义包括基于 Windows 的部署。
 
-我们无需派生 OSS 项目便可实现扩展和自定义，而且我们还可以利用在 Storm 上构建的派生生态系统。
+扩展和自定义是以这样一种方式实现的：我们无需分叉 OSS 项目，并且我们可以利用在风暴上构建的派生生态系统。
 
 ## <a name="processing-model"></a>处理模型
+
 SCP 中的数据以连续的元组流形式建模。 一般情况下，元组首先流入某些队列，然后由 Storm 拓扑内托管的业务逻辑对其进行挑拣和转换，最后将输出以元组形式通过管道传送到其他 SCP 系统或者提交到存储（如分布式文件系统）或数据库（如 SQL Server）。
 
 ![馈送待处理数据的队列（在数据存储中馈送数据）示意图](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总。
+在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器等中。 具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总。
 
-SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
+SCP 支持最大努力、至少一次和一次数据处理。 在分布式流处理应用程序中，在数据处理过程中可能会发生各种错误，例如网络中断、计算机故障、用户代码错误等等。 “至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 "至少一次" 处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在这种情况下，只需进行一次处理，就可以确保即使在数据被多次重播和处理时，结果也是正确的。
 
-通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/螺栓都是 .NET/Java 进程对，其中用户逻辑作为插件在 .NET 进程中运行。
+通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在幕后利用 Java 虚拟机（JVM）和风暴。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/螺栓都是 .NET/Java 进程对，其中用户逻辑作为插件在 .NET 进程中运行。
 
 若要在 SCP 上开发数据处理应用程序，需要执行以下几个步骤：
 
 * 设计并实施 Spout，以从队列中提取数据。
 * 设计并实施 Bolt 以处理输入数据，以及将数据保存到外部存储（如数据库）中。
-* 设计拓扑，提交并运行拓扑。 拓扑定义顶点以及顶点之间的数据流。 SCP 会采用拓扑规范并将拓扑部署在 Storm 群集上，在 Storm 群集中，每个顶点在一个逻辑节点上运行。 Storm 任务计划程序会处理故障转移和缩放。
+* 设计拓扑，提交并运行拓扑。 拓扑定义顶点以及顶点之间的数据流。 SCP 会采用拓扑规范并将拓扑部署在 Storm 群集上，在 Storm 群集中，每个顶点在一个逻辑节点上运行。 风暴任务计划程序会处理故障转移和缩放。
 
 本文档使用一些简单示例来介绍如何使用 SCP 开发数据处理应用程序。
 
 ## <a name="scp-plugin-interface"></a>SCP 插件接口
+
 SCP 插件（或应用程序）是独立的 EXE，可以在开发阶段在 Visual Studio 中运行，也可以在生产环境中部署后插入到 Storm 管道中。 编写 SCP 插件就像编写任何其他标准的 Windows 控制台应用程序一样。 SCP.NET 平台声明用于 Spout/Bolt 的接口，用户插件代码应实施这些接口。 这种设计的主要目的是使用户可以专注于自己的业务逻辑，其他事情则由 SCP.NET 平台处理。
 
 用户插件代码应实施以下其中一个接口，具体取决于拓扑是事务性还是非事务性，以及组件是 Spout 还是 Bolt。
@@ -53,6 +55,7 @@ SCP 插件（或应用程序）是独立的 EXE，可以在开发阶段在 Visua
 * ISCPBatchBolt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
+
 ISCPPlugin 是各种插件的公共接口。 目前，该接口是一个虚拟接口。
 
     public interface ISCPPlugin 
@@ -60,6 +63,7 @@ ISCPPlugin 是各种插件的公共接口。 目前，该接口是一个虚拟�
     }
 
 ### <a name="iscpspout"></a>ISCPSpout
+
 ISCPSpout 是适用于非事务性 Spout 的接口。
 
      public interface ISCPSpout : ISCPPlugin                    
@@ -69,17 +73,18 @@ ISCPSpout 是适用于非事务性 Spout 的接口。
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-调用 `NextTuple()` 时，C\# 用户代码会发送一个或多个元组。 如果没有要发送的数据，此方法应返回而不发送任何信息。 请注意，如果 C\# 进程的单一线程出现紧凑循环，将会调用 `NextTuple()`、`Ack()` 和 `Fail()`。 如果没有要发送的元组，最好短暂地将 NextTuple 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
+调用 `NextTuple()` 时， C#用户代码可以发出一个或多个元组。 如果没有要发出的内容，则此方法应返回而不发出任何内容。 应注意的是，`NextTuple()`、`Ack()`和 `Fail()` 都是在C#进程中的单个线程中的紧凑循环中调用的。 如果没有要发出的元组，则短暂地会在短时间内 NextTuple 休眠（例如10毫秒），以免浪费太多 CPU。
 
-仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId` 用于识别已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
+仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId` 用于标识已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
-如果非事务性拓扑不支持确认功能，则可以将 `Ack()` 和 `Fail()` 保留为空函数。
+如果非事务性拓扑不支持确认，则 `Ack()` 和 `Fail()` 可以保留为空函数。
 
-这些函数中的 `parms` 输入参数是空字典，保留供以后使用。
+这些函数中的 `parms` 输入参数是空字典，保留供将来使用。
 
 ### <a name="iscpbolt"></a>ISCPBolt
+
 ISCPBolt 是适用于非事务性 Bolt 的接口。
 
     public interface ISCPBolt : ISCPPlugin 
@@ -90,6 +95,7 @@ ISCPBolt 是适用于非事务性 Bolt 的接口。
 有新的元组可用时，会调用 `Execute()` 函数来处理该元组。
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
+
 ISCPTxSpout 是适用于事务性 Spout 的接口。
 
     public interface ISCPTxSpout : ISCPPlugin
@@ -99,15 +105,16 @@ ISCPTxSpout 是适用于事务性 Spout 的接口。
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-与非事务性接口一样，如果 C\# 进程的单一线程出现紧凑循环，将会调用 `NextTx()`、`Ack()` 和 `Fail()`。 如果没有要发送的数据，最好短暂地将 `NextTx` 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
+与非事务性 counter 部分一样，`NextTx()`、`Ack()`和 `Fail()` 都是在C#进程中的单个线程中严格的循环中调用的。 如果没有要发出的数据，则短暂地会将 `NextTx` 睡眠时间缩短一段时间（10毫秒），以免浪费太多 CPU。
 
 调用 `NextTx()` 可启动新的事务；输出参数 `seqId` 用于识别事务，该参数也用于 `Ack()` 和 `Fail()` 中。 在 `NextTx()` 中，用户可以将数据发送到 Java 端。 然后，数据会被存储在 ZooKeeper 中，以支持重用。 ZooKeeper 的容量有限，因此，用户应该只发送元数据，而不应该发送事务性 Spout 中的批量数据。
 
-如果事务失败，Storm 会自动重新处理失败的事务，因此，一般情况下不应调用 `Fail()`。 但是，如果 SCP 可以检查事务性 Spout 发送的元数据，当元数据无效时，SCP 可以调用 `Fail()`。
+如果某个事务失败，则风暴会自动重播该事务，因此在正常情况下不应调用 `Fail()`。 但是，如果 SCP 可以检查事务性 Spout 发送的元数据，当元数据无效时，SCP 可以调用 `Fail()`。
 
-这些函数中的 `parms` 输入参数是空字典，保留供以后使用。
+这些函数中的 `parms` 输入参数是空字典，保留供将来使用。
 
 ### <a name="iscpbatchbolt"></a>ISCPBatchBolt
+
 ISCPBatchBolt 是适用于事务性 Bolt 的接口。
 
     public interface ISCPBatchBolt : ISCPPlugin           
@@ -116,17 +123,20 @@ ISCPBatchBolt 是适用于事务性 Bolt 的接口。
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-有新的元组到达 bolt 时，会调用 `Execute()`。 事务结束时，会调用 `FinishBatch()`。 保留 `parms` 输入参数供以后使用。
+当有新的元组到达螺栓时，将调用 `Execute()`。 事务结束时，会调用 `FinishBatch()`。 保留 `parms` 输入参数供以后使用。
 
-对于事务性拓扑，有一个重要概念 - `StormTxAttempt`。 它有两个字段：`TxId` 和 `AttemptId`。 `TxId` 用于识别特定事务，对于给定的事务，如果事务失败，可能会多次尝试对事务进行重新处理。 SCP.NET 新建一个 ISCPBatchBolt 对象来处理每个 `StormTxAttempt`，就像 Storm 在 Java 中所做的一样。 这种设计的目的是支持并行事务处理。 用户应记住，事务处理尝试结束后，应销毁相应的 ISCPBatchBolt 对象并回收所产生的垃圾。
+对于事务性拓扑，有一个重要的概念– `StormTxAttempt`。 它有两个字段：`TxId` 和 `AttemptId`。 `TxId` 用于识别特定事务，对于给定的事务，如果事务失败，可能会多次尝试对事务进行重新处理。 SCP.NET 新建一个 ISCPBatchBolt 对象来处理每个 `StormTxAttempt`，就像 Storm 在 Java 中所做的一样。 这种设计的目的是支持并行事务处理。 用户应记住，事务处理尝试结束后，应销毁相应的 ISCPBatchBolt 对象并回收所产生的垃圾。
 
 ## <a name="object-model"></a>对象模型
-SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 这些对象是 **Context**、**StateStore** 和 **SCPRuntime**。 本节余下部分会讨论这些对象。
+
+SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 它们是**Context**、 **StateStore**和**SCPRuntime**。 本部分的其余部分将讨论这些内容。
 
 ### <a name="context"></a>上下文
-上下文为应用程序提供运行环境。 每个 ISCPPlugin 实例 (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) 都有相应的上下文实例。 上下文提供的功能可分为两部分：(1) 静态部分，可用于整个 C\# 进程；(2) 动态部分，仅可用于特定上下文实例。
+
+上下文为应用程序提供运行环境。 每个 ISCPPlugin 实例 (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) 都有相应的上下文实例。 上下文提供的功能可分为两部分：（1）静态部分，可用于整个C#进程，（2）动态部分，仅可用于特定上下文实例。
 
 ### <a name="static-part"></a>静态部分
+
     public static ILogger Logger = null;
     public static SCPPluginType pluginType;                      
     public static Config Config { get; set; }                    
@@ -134,7 +144,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
 
 `Logger` 用于日志记录。
 
-`pluginType` 用于指明 C\# 进程的插件类型。 如果 C\# 进程在本地测试模式下运行（没有 Java），则插件类型是 `SCP_NET_LOCAL`。
+`pluginType` 用于指示C#进程的插件类型。 如果C#进程在本地测试模式下运行（没有 Java），则插件类型为 `SCP_NET_LOCAL`。
 
     public enum SCPPluginType 
     {
@@ -145,7 +155,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config` 用于从 Java 端获取配置参数。 C\# 插件初始化时，会从 Java 端传递这些参数。 `Config` 参数分为两部分：`stormConf` 和 `pluginConf`。
+`Config` 用于从 Java 端获取配置参数。 C# 插件初始化时，会从 Java 端传递这些参数。 `Config` 参数分为两部分：`stormConf` 和 `pluginConf`。
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
@@ -164,7 +174,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext` 用于获取拓扑上下文，对于具有多种并行执行能力的组件最有用。 下面是一个示例：
+提供 `TopologyContext` 以获取拓扑上下文，对于具有多个并行的组件，它最有用。 下面是一个示例：
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -181,6 +191,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
     }
 
 ### <a name="dynamic-part"></a>动态部分
+
 以下接口与某个上下文实例相关。 上下文实例由 SCP.NET 平台创建，会被传递到用户代码：
 
     // Declare the Output and Input Stream Schemas
@@ -205,6 +216,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
     public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>StateStore
+
 `StateStore` 提供元数据服务、单调序列生成和无等待协调。 可以在 `StateStore` 中构建高级分布式并发抽象，包括分布式锁、分布式队列、屏障和事务服务。
 
 SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper.apache.org/) 中保留某些信息，尤其是适用于事务性拓扑的信息。 这样做时，如果事务性 Spout 崩溃并重新启动，它可以从 ZooKeeper 检索必要信息并重新开始数据传输。
@@ -293,34 +305,36 @@ SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper
 对于 `Commit()` 方法，如果 simpleMode 设置为 true，此方法会删除 ZooKeeper 中相应的 ZNode。 否则，会删除当前 ZNode 并在 COMMITTED\_PATH 中添加新节点。
 
 ### <a name="scpruntime"></a>SCPRuntime
+
 SCPRuntime 提供以下两种方法：
 
     public static void Initialize();
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()` 用于初始化 SCP 运行时环境。 在此方法中，C\# 进程会连接到 Java 端，并会获取配置参数和拓扑上下文。
+`Initialize()` 用于初始化 SCP 运行时环境。 在此方法中， C#进程会连接到 Java 端，并会获取配置参数和拓扑上下文。
 
-`LaunchPlugin()` 用于启动消息处理循环。 在此循环中，C\# 插件接收来自 Java 端的消息（包括元组和控制信号），然后处理接收到的消息，也许还会调用用户代码提供的接口方法。 `LaunchPlugin()` 方法的输入参数是委托参数，可返回实施 ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt 接口的对象。
+`LaunchPlugin()` 用于启动消息处理循环。 在此循环中， C#该插件接收来自 Java 端的消息（包括元组和控制信号），然后处理消息，也许还会调用用户代码提供的接口方法。 `LaunchPlugin()` 方法的输入参数是委托参数，可返回实施 ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt 接口的对象。
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
-对于 ISCPBatchBolt，可从 `parms` 获取 `StormTxAttempt`，并利用它来判断某项操作是否是重复尝试。 对尝试重播的检查通常在 Commit Bolt 中完成，并在 `HelloWorldTx` 示例中进行演示。
+对于 ISCPBatchBolt，可从 `parms`获取 `StormTxAttempt`，并使用它来判断是否正在重试。 重播尝试检查通常在提交螺栓上完成，并在 `HelloWorldTx` 示例中进行了演示。
 
 一般来说，SCP 插件可在以下两种模式下运行：
 
-1. 本地测试模式：在此模式下的开发阶段中，SCP 插件（C\# 用户代码）在 Visual Studio 中运行。 `LocalContext` 可用于此模式，其提供方法对发送到本地文件的元组进行序列化并将这些元组重新读取到内存。
-   
+1. 本地测试模式：在此模式下，SCP 插件（ C#用户代码）在开发阶段在 Visual Studio 中运行。 `LocalContext` 可用于此模式，其提供方法对发送到本地文件的元组进行序列化并将这些元组重新读取到内存。
+
         public interface ILocalContext
         {
             List\<SCPTuple\> RecvFromMsgQueue();
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
+
 2. 常规模式：在此模式下，SCP 插件由 Storm Java 进程启动。
-   
+
     下面是一个 SCP 插件启动示例：
-   
+
         namespace Scp.App.HelloWorld
         {
         public class Generator : ISCPSpout
@@ -346,40 +360,41 @@ SCPRuntime 提供以下两种方法：
         }
 
 ## <a name="topology-specification-language"></a>拓扑规范语言
-SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于 Storm 的 Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) 并通过 SCP 进行扩展。
+
+SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓扑。 它基于风暴的 Clojure DSL （<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>），并由 SCP 扩展。
 
 拓扑规范可通过 ***runspec*** 命令直接提交到 Storm 群集进行执行。
 
 SCP.NET 添加了以下函数来定义事务性拓扑：
 
-| **新函数** | **Parameters** | **说明** |
+| 新函数 | 参数 | Description |
 | --- | --- | --- |
-| **tx-topolopy** |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 定义图来定义事务性拓扑&nbsp; |
-| **scp-tx-spout** |exec-name<br />args<br />fields |定义事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段 |
-| **scp-tx-batch-bolt** |exec-name<br />args<br />fields |定义事务性批处理 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />Fields 是用于 Bolt 的输出字段。 |
-| **scp-tx-commit-bolt** |exec-name<br />args<br />fields |定义事务性 Committer Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段 |
-| **nontx-topolopy** |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 来定义非事务性拓扑&nbsp; |
-| **scp-spout** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
-| **scp-bolt** |exec-name<br />args<br />fields<br />参数 |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| tx-topolopy |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 定义图来定义事务性拓扑&nbsp; |
+| scp-tx-spout |exec-name<br />args<br />fields |定义事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段 |
+| scp-tx-螺栓 |exec-name<br />args<br />fields |定义事务性批处理 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />Fields 是用于 Bolt 的输出字段。 |
+| scp-tx-提交-螺栓 |exec-name<br />args<br />fields |定义事务性 Committer Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段 |
+| nontx-topolopy |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 来定义非事务性拓扑&nbsp; |
+| scp-spout |exec-name<br />args<br />fields<br />parameters |定义非事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
+| scp-螺栓 |exec-name<br />args<br />fields<br />parameters |定义非事务性 Bolt。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Bolt 的输出字段<br /><br />parameters 为可选，可使用它指定某些参数，例如“nontransactional.ack.enabled”。 |
 
 SCP.NET 定义了以下关键字：
 
-| **关键字** | **说明** |
+| Keywords | Description |
 | --- | --- |
-| **:name** |定义拓扑名称 |
-| **:topology** |使用上述函数和内置函数定义拓扑。 |
-| **:p** |定义每个 Spout 或 Bolt 的并行提示。 |
-| **:config** |定义配置参数或更新现有的配置参数 |
-| **:schema** |定义流架构。 |
+| ：名称 |定义拓扑名称 |
+| ：拓扑 |使用上述函数和内置函数定义拓扑。 |
+| :p |定义每个 Spout 或 Bolt 的并行提示。 |
+| ： config |定义配置参数或更新现有的配置参数 |
+| ：架构 |定义流架构。 |
 
 常用参数：
 
-| **Parameter** | **说明** |
+| 参数 | Description |
 | --- | --- |
-| **"plugin.name"** |C# 插件的 exe 文件名 |
-| **"plugin.args"** |plugin args |
-| **"output.schema"** |输出架构 |
-| **"nontransactional.ack.enabled"** |非事务性拓扑是否已启用确认功能 |
+| "plugin.name" |C# 插件的 exe 文件名 |
+| "插件" |plugin args |
+| "output. schema" |输出架构 |
+| "已启用" |非事务性拓扑是否已启用确认功能 |
 
 runspec 命令会与位元一起部署，其用法如下：
 
@@ -387,13 +402,15 @@ runspec 命令会与位元一起部署，其用法如下：
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
     ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-resource-dir 参数是可选参数，在想要启动 C\# 应用程序时，需要指定此参数，此目录将包含应用程序、依赖项和配置。
+***Resource-dir***参数是可选的，需要在要插入C#应用程序时指定，并且此目录包含应用程序、依赖关系和配置。
 
-***classpath*** 参数也是可选参数。 当规范文件包含 Java Spout 或 Bolt 时，此参数用于指定 Java classpath。
+***classpath*** 参数也是可选参数。 如果规范文件包含 Java Spout 或螺栓，则用于指定 Java 类路径。
 
 ## <a name="miscellaneous-features"></a>其他功能
+
 ### <a name="input-and-output-schema-declaration"></a>输入和输出架构声明
-用户可以在 C\# 进程中发送元组；平台需要将元组序列化为 byte[]，传输到 Java 端；而 Storm 会将此元组传输到目标。 与此同时，在下游组件中，C\# 进程会接收从 Java 端返回的元组，并将其转换为平台使用的原始类型 - 所有这些操作都在平台的后台进行。
+
+用户可以在进程中C#发出元组，平台需要将元组序列化为 byte []，将元组传输到 Java 端，风暴会将此元组传输到目标。 同时，在下游组件C#中，进程将从 java 端接收元组，并将其按平台转换为原始类型，所有这些操作都将被平台隐藏。
 
 为了支持序列化和反序列化，用户代码需要声明输入和输出的架构。
 
@@ -418,20 +435,22 @@ resource-dir 参数是可选参数，在想要启动 C\# 应用程序时，需�
 开发者必须确保发送的元组符合为该流定义的架构，否则，系统会引发运行时异常。
 
 ### <a name="multi-stream-support"></a>多流支持
+
 SCP 支持用户代码同时向多个不同数据流发送元组或同时接收来自多个不同数据流的元组。 这种支持在上下文对象中体现为，Emit 方法采用可选的 stream ID 参数。
 
-在 SCP.NET 上下文对象中添加了两种方法， 这些方法用于发送一个或多个元组以指定 StreamId。 StreamId 是字符串，必须在 C\# 和拓扑定义规范中保持一致。
+在 SCP.NET 上下文对象中添加了两种方法， 它们用于发出元组或元组以指定 StreamId。 StreamId 是字符串，必须在 C# 和拓扑定义规范中保持一致。
 
-        /* Emit tuple to the specific stream. */
-        public abstract void Emit(string streamId, List<object> values);
+    /* Emit tuple to the specific stream. */
+    public abstract void Emit(string streamId, List<object> values);
 
-        /* for non-transactional Spout only */
-        public abstract void Emit(string streamId, List<object> values, long seqId);
+    /* for non-transactional Spout only */
+    public abstract void Emit(string streamId, List<object> values, long seqId);
 
 向不存在的数据流发送元组会导致运行时异常。
 
 ### <a name="fields-grouping"></a>字段分组
-Storm 中内置的字段分组在 SCP.NET 中无法正常使用。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，如果两个 byte[] 对象共享相同的内容但地址不相同，分组会不正确。
+
+SCP.NET 中的内置字段分组不能正常工作。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，对于共享相同内容但地址不相同的双字节对象，分组将会出错。
 
 SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的内容来进行分组。 在 **SPEC** 文件中，语法如下所示：
 
@@ -442,7 +461,6 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
         …
     )
 
-
 其中：
 
 1. "scp-field-group" 表示“SCP 实现的自定义字段分组”。
@@ -450,9 +468,11 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 3. [0,1] 表示从 0 开始的字段 ID 的哈希集。
 
 ### <a name="hybrid-topology"></a>混合拓扑
-本机 Storm 是用 Java 编写的。 SCP.NET 增强了它，使 c\#开发人员能够编写 c\#代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
+
+本机 Storm 是用 Java 编写的。 SCP.NET 增强了它，使C#开发人员能够编写C#代码来处理其业务逻辑。 但它还支持混合拓扑，这种拓扑不仅C#包含 spout/螺栓，还包含 Java Spout/螺栓。
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>在规范文件中指定 Java Spout/Bolt
+
 在规范文件中，“scp-spout”和“scp-bolt”也可用于指定 Java Spout 和 Bolt；下面是一个示例：
 
     (spout-spec 
@@ -462,21 +482,23 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 其中，`microsoft.scp.example.HybridTopology.Generator` 是 Java Spout 类的名称。
 
 ### <a name="specify-java-classpath-in-runspec-command"></a>在 runSpec 命令中指定 Java Classpath
+
 如果想要提交包含 Java Spout 或 Bolt 的拓扑，则首先需要编译 Java Spout 或 Bolt 并获取 Jar 文件。 然后，应在提交拓扑时指定包含 Jar 文件的 Java Classpath。 下面是一个示例：
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 
 其中，**examples\\HybridTopology\\java\\target\\** 是包含 Java Spout/Bolt Jar 文件的文件夹。
 
-### <a name="serialization-and-deserialization-between-java-and-c"></a>Java 和 C\# 之间的序列化和反序列化
-SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互，必须在 Java 端与 C\# 端之间执行序列化/反序列化，如下图中所示。
+### <a name="serialization-and-deserialization-between-java-and-c"></a>Java 与之间的序列化和反序列化C#
+
+SCP 组件包括 Java 端和C#端。 若要与本机 Java Spout/螺栓交互，必须在 Java 端和C#端之间执行序列化/反序列化，如下图中所示。
 
 ![Java 组件示意图，发送到 SCP 组件，发送到 Java 组件](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
-1. **Java 端的序列化和 C\# 端的反序列化**
-   
-   最初，默认情况下是在 Java 端进行序列化并在 C\# 端进行反序列化。 可以在规范文件中指定 Java 端的序列化方法：
-   
+1. Java 端的序列化和C#端反序列化
+
+   最初，默认情况下是在 Java 端进行序列化并在 C# 端进行反序列化。 可以在规范文件中指定 Java 端的序列化方法：
+
        (scp-bolt
            {
                "plugin.name" "HybridTopology.exe"
@@ -484,65 +506,68 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
                "output.schema" {}
                "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
            })
-   
-   应在 C\# 用户代码中指定 C\# 端的反序列化方法：
-   
+
+   应在 C# 用户代码中指定 C# 端的反序列化方法：
+
        Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
        inputSchema.Add("default", new List<Type>() { typeof(Person) });
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
-   
-   如果数据类型不是太复杂，这种默认实现方法应该能够应对大多数情况。 对于某些情况，由于用户数据类型太复杂，或者由于我们的默认实现性能不符合用户要求，用户可能会进行自定义实施。
-   
+
+   如果数据类型不是太复杂，这种默认实现应会处理大部分情况。 对于某些情况，由于用户数据类型太复杂，或者由于我们的默认实现的性能不符合用户的要求，用户可以插入自己的实现。
+
    Java 端的序列化接口如下定义：
-   
+
        public interface ICustomizedInteropJavaSerializer {
            public void prepare(String[] args);
            public List<ByteBuffer> serialize(List<Object> objectList);
        }
-   
-   C\# 端的反序列化接口如下定义：
-   
+
+   C# 端的反序列化接口如下定义：
+
    公共接口 ICustomizedInteropCSharpDeserializer
-   
+
        public interface ICustomizedInteropCSharpDeserializer
        {
            List<Object> Deserialize(List<byte[]> dataList, List<Type> targetTypes);
        }
-2. **C\# 端的序列化和 Java 端的反序列化**
-   
-   应在 C\# 用户代码中指定 C\# 端的序列化方法：
-   
+2. Java 端C#的并行和反序列化中的序列化
+
+   应在C#用户代码C#中指定端的序列化方法：
+
        this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
-   
+
    应在 SPEC 文件中指定 Java 端的反序列化方法：
-   
-     (scp-spout
-   
+
+    ```
+    (scp-spout
        {
          "plugin.name" "HybridTopology.exe"
          "plugin.args" ["generator"]
          "output.schema" {"default" ["person"]}
          "customized.java.deserializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" "microsoft.scp.example.HybridTopology.Person"]
-       })
-   
+       }
+    )
+    ```
+
    其中，"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" 是反序列化程序的名称，"microsoft.scp.example.HybridTopology.Person" 是数据要反序列化成的目标类。
-   
-   用户也可以外挂自己的 C\# 序列化程序和 Java 反序列化程序的实现。 此代码是 C\# 序列化程序的接口：
-   
+
+   用户还可以插入自己的序列化程序C#和 Java 反序列化程序的实现。 此代码是C#序列化程序的接口：
+
        public interface ICustomizedInteropCSharpSerializer
        {
            List<byte[]> Serialize(List<object> dataList);
        }
-   
+
    此代码是 Java 反列化程序的接口：
-   
+
        public interface ICustomizedInteropJavaDeserializer {
            public void prepare(String[] targetClassNames);
            public List<Object> Deserialize(List<ByteBuffer> dataList);
        }
 
 ## <a name="scp-host-mode"></a>SCP 主机模式
+
 在此模式下，用户可以将代码编译为 DLL，以及使用 SCP 提供的 SCPHost.exe 来提交拓扑。 规范文件下方代码所示：
 
     (scp-spout
@@ -561,10 +586,12 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 在主机模式下，用户代码被编译为 DLL，并由 SCP 平台调用。 因此，SCP 平台可以全面控制整个处理逻辑。 因此，我们建议客户在 SCP 主机模式下提交拓扑，因此这样做可以简化开发过程，获得更大的灵活性，以及对于以后版本的更好向后兼容性。
 
 ## <a name="scp-programming-examples"></a>SCP 编程示例
-### <a name="helloworld"></a>HelloWorld
-**HelloWorld**是一个简单的示例，演示了 SCP.NET 的感受。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt。 Bolt "counter" 使用字典记录每个字词出现的次数。
 
-在本示例中，有两个规范文件：**HelloWorld.spec** 和 **HelloWorld\_EnableAck.spec**。 在 C\# 代码中，可以通过从 Java 端获取 pluginConf 来确定是否已启用确认功能。
+### <a name="helloworld"></a>HelloWorld
+
+**HelloWorld**是一个简单的示例，演示了 SCP.NET 的感受。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 螺栓 * * 拆分器会将句子拆分为单词，并将这些单词发出到**计数器**。 Bolt "counter" 使用字典记录每个字词出现的次数。
+
+在本示例中，有两个规范文件：**HelloWorld.spec** 和 **HelloWorld\_EnableAck.spec**。 在 C# 代码中，可以通过从 Java 端获取 pluginConf 来确定是否已启用确认功能。
 
     /* demo how to get pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
@@ -573,7 +600,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-在 Spout 中，如果启用了确认功能，会使用字典将未确认的元组存储在缓存中。 如果调用了 Fail()，则会重新处理失败的元组：
+在 spout 中，如果已启用 ack，则字典用于缓存尚未确认的元组。 如果调用了 Fail()，则会重新处理失败的元组：
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {
@@ -594,11 +621,12 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
+
+**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预先创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
 
 在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt。 count-sum Bolt 对总计数进行汇总。
 
-为了获得 **exactly once** 语义，提交 Bolt **count-sum** 需要判断事务是否是重复处理的事务。 在本示例中，它具有静态成员变量：
+若要**仅实现一次**语义，则 commit 螺栓**count-sum**需要判断它是否是重播事务。 在本示例中，它具有静态成员变量：
 
     public static long lastCommittedTxId = -1; 
 
@@ -618,7 +646,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
         }
     }
 
-如果调用 `FinishBatch()`，在不是重复处理的事务的情况下，会更新 `lastCommittedTxId`。
+调用 `FinishBatch()` 时，如果不是重播事务，则将更新 `lastCommittedTxId`。
 
     public void FinishBatch(Dictionary<string, Object> parms)
     {
@@ -634,14 +662,16 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
         … …
     }
 
-
 ### <a name="hybridtopology"></a>HybridTopology
-此拓扑包含一个 Java Spout 和一个 C\# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat。
+
+此拓扑包含一个 Java Spout 和一个 C# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat。
 
 ### <a name="scphostdemo"></a>SCPHostDemo
+
 本质上，本示例与 HelloWorld 相同。 唯一不同之处是，在本示例中，用户代码被编译为 DLL，而且使用 SCPHost.exe 提交拓扑。 有关更详细说明，请参阅“SCP 主机模式”部分。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关使用 SCP 创建的 Apache Storm 拓扑示例，请参阅以下文档：
 
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)

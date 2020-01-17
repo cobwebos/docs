@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777778"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122213"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -46,7 +46,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 3. 单击在 FarmBeats 部署过程中创建的应用注册。 它的名称与你的 FarmBeats Datahub 相同。
 
-4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 azure cli （Cloud shell）的访问权限，以执行以下步骤。
+4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
 
 5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 

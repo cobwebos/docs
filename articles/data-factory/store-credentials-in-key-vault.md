@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928722"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122604"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -27,12 +27,12 @@ ms.locfileid: "74928722"
 
 此功能依赖于数据工厂托管的标识。 了解它如何从[用于数据工厂的托管标识](data-factory-service-identity.md)进行工作，并确保你的数据工厂具有关联的。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 若要引用 Azure Key Vault 中存储的凭据，需要：
 
-1. 通过复制与工厂一起生成的 "托管标识应用程序 ID" 的值**检索数据工厂托管的标识**。 如果使用 ADF 创作 UI，则托管标识应用程序 ID 将显示在 "Azure Key Vault 链接服务创建" 窗口上;你还可以从 Azure 门户中检索它，请参阅[检索数据工厂托管标识](data-factory-service-identity.md#retrieve-managed-identity)。
-2. **向托管标识授予对 Azure Key Vault 的访问权限。** 在密钥保管库中-> 访问策略-> "添加" "> 搜索此托管标识应用程序 ID"，以便在 "机密权限" 下拉列表中授予**Get**权限。 它允许此指定的工厂访问密钥保管库中的机密。
+1. 通过复制与工厂一起生成的 "托管标识对象 ID" 的值**检索数据工厂托管的标识**。 如果使用 ADF 创作 UI，则托管标识对象 ID 将显示在 "Azure Key Vault 链接服务创建" 窗口上;你还可以从 Azure 门户中检索它，请参阅[检索数据工厂托管标识](data-factory-service-identity.md#retrieve-managed-identity)。
+2. **向托管标识授予对 Azure Key Vault 的访问权限。** 在密钥保管库中-> 访问策略-> "添加新-> 搜索此托管标识，以在密钥权限下拉列表中授予**Get**权限。 它允许此指定的工厂访问密钥保管库中的机密。
 3. **创建指向 Azure Key Vault 的链接服务**。 请参阅 [Azure Key Vault 链接服务](#azure-key-vault-linked-service)。
 4. **创建数据存储链接服务，该服务中引用密钥保管库中存储的相应机密**。 请参阅[引用密钥保管库中存储的机密](#reference-secret-stored-in-key-vault)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "74928722"
 
 Azure Key Vault 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureKeyVault**。 | 是 |
 | baseUrl | 指定 Azure Key Vault URL。 | 是 |
@@ -73,11 +73,11 @@ Azure Key Vault 链接服务支持以下属性：
 
 在引用密钥保管库机密的链接服务中配置字段时，支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 字段的 type 属性必须设置为：**AzureKeyVaultSecret**。 | 是 |
 | secretName | Azure Key Vault 中的机密名称。 | 是 |
-| secretVersion | Azure Key Vault 中的机密版本。<br/>如果未指定，将始终使用最新版本的机密。<br/>如果指定，然后它遵循给定的版本。| No |
+| secretVersion | Azure Key Vault 中的机密版本。<br/>如果未指定，将始终使用最新版本的机密。<br/>如果指定，然后它遵循给定的版本。| 否 |
 | store | 指用于存储凭据的 Azure Key Vault 链接服务。 | 是 |
 
 **使用创作 UI：**
@@ -115,4 +115,4 @@ Azure Key Vault 链接服务支持以下属性：
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

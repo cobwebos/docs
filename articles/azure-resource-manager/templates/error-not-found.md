@@ -3,12 +3,12 @@ title: 找不到资源错误
 description: 介绍如何在使用 Azure 资源管理器模板进行部署时找不到资源时解决错误。
 ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.openlocfilehash: 832dc15f81c0fd815072b9e95920a4388a94cb0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477754"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152419"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
 
@@ -41,8 +41,8 @@ group {resource group name} was not found.
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -76,8 +76,8 @@ group {resource group name} was not found.
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 

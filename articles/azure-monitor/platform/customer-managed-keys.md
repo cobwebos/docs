@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971090"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120258"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
@@ -378,8 +378,6 @@ Azure Monitor 存储始终会在一小时内对关键权限进行更改，通常
 
 - CMK 加密适用于 CMK 配置后的新引入数据。 在 CMK 配置之前引入的数据，并通过 Microsoft 密钥进行加密。 你可以无缝地在配置前后查询数据。
 
-- CMK 功能是区域--Azure Key Vault、*群集*资源和关联的工作区必须位于同一区域中，但可以位于不同的订阅中。
-
 - 一旦将工作区与*群集*资源关联，就不能将其与*群集*资源解除关联，因为使用密钥对数据进行了加密，并且在 Azure Key Vault 中没有 KEK 可访问。
 
 - 必须将 Azure Key Vault 配置为可恢复。 默认情况下，这些属性不会启用，应该使用 CLI 和 PowerShell 进行配置：
@@ -391,9 +389,9 @@ Azure Monitor 存储始终会在一小时内对关键权限进行更改，通常
 
 - 当前不支持*群集*资源移动到另一个资源组或订阅。
 
-- 如果*群集*资源在不同的租户中，则工作区与*群集*资源的关联将会失败。
+- Azure Key Vault、*群集*资源和相关联的工作区必须位于同一区域和同一 Azure Active Directory （Azure AD）租户中，但它们可以位于不同的订阅中。
 
--   如果与*群集*资源关联的工作区与其他*群集*资源关联，则工作区关联将失败
+- 如果与*群集*资源关联的工作区与其他*群集*资源关联，则工作区关联将失败
 
 ## <a name="troubleshooting-and-management"></a>故障排除和管理
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

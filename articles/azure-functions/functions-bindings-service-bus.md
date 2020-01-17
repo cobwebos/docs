@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ca19aefdd213331214938b2af6c9a77501333fb0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922380"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121210"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -206,9 +206,9 @@ module.exports = function(context, myQueueItem) {
 
 ### <a name="trigger---python-example"></a>触发器 - Python 示例
 
-下面的示例演示如何通过触发器读取一条或多个队列消息。
+下面的示例演示如何通过触发器读取服务总线队列消息。
 
-在类型设置为 `serviceBusTrigger`的*函数 json*中定义了一种*类型*为的绑定。
+在*函数*中定义了服务总线绑定，其中*type*设置为 `serviceBusTrigger`。
 
 ```json
 {
@@ -274,7 +274,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  可以设置 `Connection` 属性来指定要使用的服务总线帐户，如以下示例中所示：
+  可以设置 `Connection` 属性，以指定包含要使用的服务总线连接字符串的应用设置的名称，如以下示例中所示：
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -322,12 +322,13 @@ def main(msg: func.ServiceBusMessage):
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本2.x 及更高版本中，此属性不可用，因为存储 SDK 的最新版本不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本2.x 及更高版本中，此属性不可用，因为 Service Bus SDK 的最新版本不支持管理操作。|
+|**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到[识别会话](../service-bus-messaging/message-sessions.md)的队列或订阅，则 `true`。 否则 `false` 默认值。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -340,7 +341,7 @@ def main(msg: func.ServiceBusMessage):
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
 * `BrokeredMessage`-通过[GetBody\<t > （）](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法为你提供反序列化的消息。
 
-这些参数适用于 Azure Functions 版本 1.x;对于2.x 和更高版本，请使用[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)而不是 `BrokeredMessage`。
+这些参数类型适用于 Azure Functions 版本 1.x;对于2.x 和更高版本，请使用[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)而不是 `BrokeredMessage`。
 
 在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
 
@@ -369,7 +370,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`ReplyTo`|`string`|对队列地址的回复。|
 |`SequenceNumber`|`Int64`|服务总线分配给消息的唯一编号。|
 |`To`|`string`|发送到地址。|
-|`Label`|`string`|应用程序特定标签。|
+|`Label`|`string`|应用程序特定的标签。|
 |`CorrelationId`|`string`|相关 ID。|
 
 > [!NOTE]
@@ -510,7 +511,7 @@ public String pushToQueue(
  }
 ```
 
- 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入服务总线队列的函数参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
+ 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入服务总线队列的函数参数使用 `@ServiceBusQueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
 
 Java 函数还可以写入到服务总线主题。 下面的示例使用 `@ServiceBusTopicOutput` 批注说明输出绑定的配置。 
 
@@ -583,9 +584,9 @@ module.exports = function (context, myTimer) {
 
 ### <a name="output---python-example"></a>输出 - Python 示例
 
-下面的示例演示如何写出到 Python 中的停止队列队列。
+以下示例演示如何写出到 Python 中的服务总线队列。
 
-ServiceBue 绑定定义是在*函数*类型中定义的，其中*type*设置为 `serviceBus`。
+在*函数*类型中定义了服务总线绑定定义，其中*type*设置为 `serviceBus`。
 
 ```json
 {
@@ -646,7 +647,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-可以设置 `Connection` 属性来指定要使用的服务总线帐户，如以下示例中所示：
+可以设置 `Connection` 属性，以指定包含要使用的服务总线连接字符串的应用设置的名称，如以下示例中所示：
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -659,7 +660,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
-可以使用 `ServiceBusAccount` 特性在类、方法或参数级别指定要使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
+您可以使用 `ServiceBusAccount` 特性来指定要在类、方法或参数级别使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -669,11 +670,11 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
-|**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
+|**topicName**|**TopicName**|主题名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本2.x 及更高版本中，此属性不可用，因为存储 SDK 的最新版本不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本2.x 及更高版本中，此属性不可用，因为 Service Bus SDK 的最新版本不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -726,6 +727,12 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
             }
         }
     }
@@ -735,10 +742,8 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |属性  |默认 | Description |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
+|autoComplete|true|触发器应立即将消息标记为完成（自动完成），还是等待函数成功退出才能调用完成。|
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
-|prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
-
 
 ## <a name="next-steps"></a>后续步骤
 

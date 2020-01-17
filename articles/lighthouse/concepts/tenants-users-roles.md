@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 方案中的租户、角色和用户
 description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453570"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156329"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、角色和用户
 
@@ -29,6 +29,9 @@ Azure 委派资源管理目前支持所有[内置角色](../../role-based-access
 - 不支持[所有者](../../role-based-access-control/built-in-roles.md#owner)角色。
 - 不支持具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色。
 - 支持[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)内置角色，但仅限用于[向客户租户中的托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)。 此角色通常会授予的其他权限不适用。 如果定义具有此角色的用户，则还必须指定该用户可以分配给托管标识的内置角色。
+
+> [!NOTE]
+> 将适用的新内置角色添加到 Azure 后，可以在[使用 azure 资源管理器模板加入客户](../how-to/onboard-customer.md)时分配该角色。 [发布托管服务产品/服务](../how-to/publish-managed-services-offers.md)时，在新添加的角色云合作伙伴门户中，可能会有延迟。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定义用户和角色的最佳做法
 

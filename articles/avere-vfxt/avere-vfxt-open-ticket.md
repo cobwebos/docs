@@ -4,18 +4,18 @@ description: 创建有关 Avere vFXT for Azure 的支持票证的说明
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 27f32a922a1b063096b0ccf28a01a78d442e0271
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889285"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153289"
 ---
 # <a name="get-help-with-your-system"></a>获得有关系统的帮助
 
-如果需要有关 Avere vFXT for Azure 的帮助，可以通过以下各种方式获得支持：
+有关 Avere vFXT for Azure 系统的帮助，请参阅以下内容获取支持的方法：
 
 * **Avere vFXT 问题** - 使用 Azure 门户为 Avere vFXT 创建支持票证，[如下](#open-a-support-ticket-for-your-avere-vfxt)所述。
 * **配额** - 如果遇到配额相关问题，可[请求增加配额 ](#request-a-quota-increase)
@@ -27,27 +27,33 @@ ms.locfileid: "75889285"
 
 按照以下步骤操作，确保已使用群集中的资源标记支持票证。 标记票证有助于我们将其路由到正确的支持资源。
 
-1. 从 [https://portal.azure.com](https://portal.azure.com)，选择“资源组”。
-
-   ![圈出“资源组”的 Azure 门户左侧菜单的屏幕截图](media/avere-vfxt-ticket-rg.png)
-
-1. 浏览到包含存在问题的 vFXT 群集的资源组，然后单击其中一个 Avere 虚拟机。
+1. 从 [https://portal.azure.com](https://portal.azure.com)，选择“资源组”。 浏览到包含出现此问题的 vFXT 群集的资源组，然后单击其中一个 Avere 群集虚拟机。
 
     ![圈出特定 VM 的 Azure 门户资源组“概述”面板的屏幕截图](media/avere-vfxt-ticket-vm.png)
 
 1. 在 VM 页面中，向下滚动到左侧面板的底部，然后单击“新建支持请求”。
 
-    ![上一屏幕截图中 VM 的 Azure 门户 VM 页面的屏幕截图。 左侧菜单已滚动到底部，并圈出了“新建支持请求”。](media/avere-vfxt-ticket-request.png)
+    ![上一屏幕截图中 VM 的 Azure 门户 VM 页面的屏幕截图。 左侧菜单滚动到底部，"新支持请求" 被圆圈。](media/avere-vfxt-ticket-request.png)
 
-1. 在支持请求的第 1 页上，单击“所有服务”，然后在“存储”下进行查看，以选择“Avere vFXT”。
+1. 在支持请求的第一页上，选择 "问题类型"，并确保选择了正确的订阅。
 
-    ![Azure 门户中新建支持请求屏幕（标头为“基本信息”，“服务”项周围标有圆圈）的屏幕截图。 已选择“所有服务”按钮，下拉菜单字段的值为“Avere vFXT”](media/avere-vfxt-ticket-service.png)
+   在 "**服务**" 下，单击 "**所有服务**"，然后在 "**存储**" 下面选择**Avere vFXT**。
 
-1. 在第 2 页上，选择与问题最匹配的问题类型和类别。 添加简短标题和说明，说明中需包含问题出现的时间。
+   添加简短摘要，并选择问题类型。
 
-   ![标头为“问题”的新建支持请求屏幕（其中包含许多需要填写的字段）的屏幕截图](media/avere-vfxt-ticket-problem.png)
+    ![Azure 门户中的 "新支持请求" 屏幕的屏幕截图。 "基本信息" 选项卡处于选中状态。 屏幕项包括问题类型、订阅、服务、摘要和问题类型。](media/ticket-basics.png)
 
-1. 在第 3 页上，填写联系人信息，然后单击“创建”。 确认信息和票证号码将发送到你的电子邮件地址，支持人员成员将与你取得联系。
+   单击“下一步”以继续。
+
+1. 支持窗体的第二页包含根据摘要说明来解决问题的建议。 如果仍需要创建支持票证，请单击底部的 "**下一步**" 按钮。
+
+   ![选中 "解决方案" 选项卡的 "新建支持请求" 屏幕屏幕截图。 中间的文本字段的标题为 "推荐的解决方案"，并说明了可能的补救措施。](media/ticket-solutions.png)
+
+1. 在第三页中提供详细信息，其中包括有关群集的信息、问题发生的时间、严重性以及与你联系的方式。 填写信息，并单击底部的 "**下一步**" 按钮。
+
+   ![选择了 "详细信息" 选项卡的 "新建支持请求" 屏幕屏幕截图。 信息字段被组织到类别的 "问题详细信息"、"支持方法" 和 "联系信息" 中。](media/ticket-details.png)
+
+1. 查看最后一页上的信息，然后单击 "**创建**"。 确认信息和票证号码将发送到你的电子邮件地址，支持人员成员将与你取得联系。
 
 ## <a name="request-a-quota-increase"></a>请求增加配额
 

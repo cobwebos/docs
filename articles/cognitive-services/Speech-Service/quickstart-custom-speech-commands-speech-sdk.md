@@ -3,19 +3,19 @@ title: 快速入门：使用语音 SDK 连接到自定义命令应用-语音服�
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将使用自定义命令创建一个语音 SDK 客户端应用程序。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381097"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156771"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "75381097"
 
 1. 打开[之前创建的自定义命令应用程序](./quickstart-custom-speech-commands-create-new.md)并选择 "**发布**"
 
-   > [!div class="mx-imgBorder"] 
+   > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 复制发布通知中的应用 ID 供以后使用

@@ -3,12 +3,12 @@ title: 模板中的用户定义函数
 description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义的函数。
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: e2e68c6f6b9fc9eb40d282d87572ce1e805a11a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58b9ba7b162736329cf775e2be5a47bfcae0a4ca
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483799"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122468"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数
 
@@ -50,14 +50,14 @@ ms.locfileid: "75483799"
 "resources": [
   {
     "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
-    "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2016-01-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "South Central US",
+    "tags": {},
     "sku": {
       "name": "Standard_LRS"
     },
     "kind": "Storage",
-    "location": "South Central US",
-    "tags": {},
     "properties": {}
   }
 ]

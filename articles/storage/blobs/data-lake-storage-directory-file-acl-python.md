@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835056"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119527"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Python 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
@@ -64,7 +64,7 @@ except Exception as e:
  
 - 将 `storage_account_name` 占位符值替换为存储帐户的名称。
 
-- 将 `storage-account-key` 占位符值替换为你的存储帐户访问密钥。
+- 将 `storage_account_key` 占位符值替换为你的存储帐户访问密钥。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 

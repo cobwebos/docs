@@ -1,18 +1,18 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982486"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157077"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
-创建或分配蓝图时可能会出现问题。 本文描述可能会发生的各种错误及其解决方法。
+创建、分配或删除蓝图时可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
 
 ## <a name="finding-error-details"></a>查找错误详细信息
 
@@ -60,6 +60,22 @@ ms.locfileid: "75982486"
 #### <a name="resolution"></a>分辨率
 
 若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
+
+## <a name="delete-errors"></a>删除错误
+
+### <a name="assign-delete-timeout"></a>方案：分配删除超时
+
+#### <a name="issue"></a>问题
+
+无法完成蓝图分配的删除。
+
+#### <a name="cause"></a>原因
+
+删除时，蓝图分配可能会停滞为非终止状态。 如果蓝图分配创建的资源仍处于挂起状态，或者不会将状态代码返回到 Azure 蓝图，则会导致此状态。
+
+#### <a name="resolution"></a>分辨率
+
+在_6 小时_超时后，非终端状态的蓝图分配自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 

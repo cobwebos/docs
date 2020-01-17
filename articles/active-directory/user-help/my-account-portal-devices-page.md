@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233213"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156210"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>从 "设备" 页管理连接到你的工作或学校帐户的设备
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>从 "设备" 页管理连接的设备
 
-从 "**我的帐户**" 门户的 "**设备**" 页中，你可以：
+"**我的帐户**" 门户的 "**设备**" 页可帮助你管理连接到你的工作或学校帐户的设备。 从 "**设备**" 页中，你可以：
 
 - 查看工作或学校帐户连接设备。
 
 - 禁用不再拥有、丢失或被盗的任何设备。
 
+>[!Important]
+>本文适用于尝试更新连接到工作或学校帐户的设备信息的用户。 如果你是为你的员工和其他用途查找有关设备管理的信息的管理员，请参阅[设备标识文档](https://docs.microsoft.com/azure/active-directory/devices/index)。
+
 ## <a name="view-your-connected-devices"></a>查看连接的设备
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到你的工作或学校帐户，然后中转到**我的帐户**（ https://myprofile.microsoft.com/) 页面。
 
 2. 从左侧导航窗格选择“设备”，或从“设备”块选择“管理设备”链接。
 
@@ -73,3 +76,13 @@ ms.locfileid: "74233213"
 - 查看[登录活动](my-account-portal-sign-ins-page.md)。
 
 - 查看组织如何[使用与隐私相关的数据](my-account-portal-privacy-page.md)。
+
+## <a name="related-office-content"></a>相关 Office 内容
+
+- [登录以管理 Office 产品](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [转到 Office“我的帐户”页面](https://portal.office.com/account/#home)
+
+- [转到 Office“我的安装”页面](https://portal.office.com/account/#installs)
+
+- [转到 Office“订阅”页面](https://portal.office.com/account/#subscriptions)

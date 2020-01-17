@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772578"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122332"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -90,7 +90,7 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 web 服务并与 IoT Edge 进行交互所需的资产。
 
 #### <a name="batch-scoring"></a>批处理评分
-通过 ML 管道支持批处理评分。 有关详细信息，请参阅[大数据上的批处理预测](how-to-run-batch-predictions.md)。
+通过 ML 管道支持批处理评分。 有关详细信息，请参阅[大数据上的批处理预测](how-to-use-parallel-run-step.md)。
 
 #### <a name="real-time-web-services"></a>实时 web 服务
 

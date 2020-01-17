@@ -3,14 +3,14 @@ title: 通过 Webhook 启动 Azure 自动化 Runbook
 description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418972"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155819"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
@@ -126,7 +126,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 ## <a name="renew-webhook"></a>续订 Webhook
 
-Webhook 在创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
+创建 webhook 后，其有效时间为10年。 该时间段过后，webhook 会自动过期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
 
 若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源” ****下的“Webhook”**** 。 单击要延期的 Webhook，此操作将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
 

@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布将客户载入到 Azure 委派资源管理的托管服务产品。
-ms.date: 01/09/2020
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834096"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155241"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -86,6 +86,8 @@ ms.locfileid: "75834096"
 - **Azure AD 对象 ID**：用户、用户组或应用程序的 Azure AD 标识符，将向客户的资源授予特定权限（如角色定义所述）。
 - **Azure AD 对象显示名称**：一个友好名称，可帮助客户了解此授权的用途。 在委派资源时，客户将看到此名称。
 - **角色定义**：从列表中选择一个可用 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[Azure 委托资源管理](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)的[内置角色](../../role-based-access-control/built-in-roles.md)和角色支持。
+  > [!NOTE]
+  > 将适用的新内置角色添加到 Azure 时，它们将在此处可用，但可能会出现一些延迟后出现。
 - 可**分配角色**：只有在此授权的**角色定义**中选择了 "用户访问管理员" 时，才需要执行此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]

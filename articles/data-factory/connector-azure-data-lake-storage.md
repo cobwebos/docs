@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: 7845e381c5a8851683edf6b955d40070bd4e0c30
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893211"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122264"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Data Lake Storage Gen2 中的数据
 
@@ -162,7 +162,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 若要将托管标识用于 Azure 资源身份验证，请执行以下步骤。
 
-1. 通过复制与工厂一起生成的**服务标识应用程序 ID**的值，[检索数据工厂托管的标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 通过复制与工厂一起生成的**托管标识对象 ID**的值，[检索数据工厂托管的标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 向托管标识授予适当的权限。 请参阅[文件和目录中的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)Data Lake Storage Gen2 中权限的工作方式示例。
 

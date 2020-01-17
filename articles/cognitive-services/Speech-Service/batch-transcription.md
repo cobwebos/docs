@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921477"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122094"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批处理脚本
 
@@ -28,7 +28,7 @@ ms.locfileid: "75921477"
 - 下载脚本结果
 - 从服务中删除脚本信息
 
-详细的 API 以[Swagger 文档](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)形式提供，位于 `Custom Speech transcriptions`的标题下。
+详细的 API 以 [Swagger 文档](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)形式提供，标题为 `Custom Speech transcriptions`。
 
 最大程度地计划批处理脚本作业。 当前，在作业更改为 "正在运行" 状态时，不会进行估计。 在正常系统负载下，应该在几分钟内发生。 进入 "正在运行" 状态后，处理实际脚本的速度要快于音频实时。
 
@@ -88,18 +88,13 @@ Batch 听录 API 支持以下格式：
 使用以下可选属性来配置脚本：
 
 | 参数 | Description |
-|-----------|------------|
-|`ProfanityFilterMode`|指定如何处理识别结果中的猥亵
-||**`Masked`** 默认值。 将猥亵替换为星号<br>`None`-禁用猥亵语言筛选<br>`Removed`-从结果中删除所有猥亵<br>`Tags`-添加猥亵语言标记
-|`PunctuationMode`|指定在识别结果中处理标点符号
-||`Automatic`-服务插入标点<br>`Dictated` 口述的（口述）标点符号<br>**`DictatedAndAutomatic`** 默认值。 听写和自动标点<br>`None`-禁用标点
-|`AddWordLevelTimestamps`|指定是否应将 word 级别的时间戳添加到输出
-||`True`-启用 word 级别的时间戳<br>**`False`** 默认值。 禁用 word 级别的时间戳
-|`AddSentiment`|指定是否将情绪分析添加到查询文本
-||`True`-启用每个查询文本的情绪<br>**`False`** 默认值。 禁用情绪
-|`AddDiarization`|指定是否执行 diarization 分析。如果 `true`，则输入应为单声道通道音频，最多包含两个声音。 需要将 `AddWordLevelTimestamps` 设置为 `true`
-||`True`-启用 diarization<br>**`False`** 默认值。 禁用 diarization
-|`TranscriptionResultsContainerUrl`|可选 SAS 令牌到 Azure 中的可写容器。 结果将存储在此容器中
+|-----------|-------------|
+| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。 |
+| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（表示使用显式标点）、`Automatic`（允许解码器处理标点）或 `DictatedAndAutomatic`（表示使用专用标点符号或自动使用标点）。 |
+| `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
+| `AddSentiment` | 指定应将情绪添加到查询文本中。 接受的值为 `true`，这将启用每个查询文本的情绪和 `false` （默认值）以禁用它。 |
+| `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道，该输入应为包含两个声音的 mono 通道。 接受的值为 `true`，这将启用 diarization 和 `false` （默认值）以禁用它。 它还要求将 `AddWordLevelTimestamps` 设置为 true。|
+|`TranscriptionResultsContainerUrl`|可选 SAS 令牌到 Azure 中的可写容器。 结果将存储在此容器中。
 
 ### <a name="storage"></a>存储空间
 

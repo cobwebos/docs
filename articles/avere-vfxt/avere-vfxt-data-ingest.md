@@ -4,20 +4,20 @@ description: 如何将数据添加到用于 Avere vFXT for Azure 的新存储卷
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480588"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153712"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入
 
-创建新的 vFXT 群集后，第一项任务可能是将数据移到其新存储卷。 但是，如果你移动数据的常用方法从一台客户端发出简单的复制命令，则复制性能可能会变慢。 单线程复制并不是很适合用于将数据复制到 Avere vFXT 群集的后端存储。
+创建新的 vFXT 群集后，第一项任务可能是将数据移到 Azure 中的新存储卷上。 但是，如果你移动数据的常用方法从一台客户端发出简单的复制命令，则复制性能可能会变慢。 单线程复制并不是将数据复制到 Avere vFXT 群集的后端存储的好方法。
 
-由于 Avere vFXT 群集是一个可缩放的多客户端缓存，复制数据的最快、最有效方法是使用多个客户端。 此方法可将文件和对象的引入并行化。
+由于 Azure 群集的 Avere vFXT 是可伸缩的多客户端缓存，因此向其复制数据的最快且最有效的方法是使用多个客户端。 此方法可将文件和对象的引入并行化。
 
 ![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每台客户端计算机引出了三个指向 Avere vFXT 的箭头。 Avere vFXT 引出了多个指向 Blob 存储的箭头。](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,12 +44,12 @@ GitHub 上提供了一个资源管理器模板，用于通过本文中所述的�
 
 ## <a name="strategic-planning"></a>策略规划
 
-在制定并行复制数据的策略时，应该知道如何在文件大小、文件计数和目录深度方面做出取舍。
+设计并行复制数据的策略时，应了解文件大小、文件数和目录深度的折衷。
 
 * 如果文件较小，应该关注的指标是每秒文件数。
 * 如果文件较大（10MiBi 或更大），则应该关注的指标是每秒字节数。
 
-每个复制进程都有相关的吞吐率和文件传输速率，可以通过计量复制命令的时长和分解文件大小与文件计数来测量这些参数。 有关如何测量速率超出了本文档的范畴，但必须了解要处理的是小型还是大型文件。
+每个复制进程都有相关的吞吐率和文件传输速率，可以通过计量复制命令的时长和分解文件大小与文件计数来测量这些参数。 说明如何衡量速度超出了本文档的讨论范围，但要了解是否需要处理小文件或大型文件，这一点很重要。
 
 ## <a name="manual-copy-example"></a>手动复制示例
 
@@ -246,7 +246,7 @@ for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-你将获得 *N* 个生成的文件，包含 *命令输出中获取的四级目录的路径名称的每个（共*N`find` 个）客户端各有一个生成的文件。
+你将获得 *N* 个生成的文件，包含 `find` 命令输出中获取的四级目录的路径名称的每个（共 *N* 个）客户端各有一个生成的文件。
 
 使用每个文件生成复制命令：
 
@@ -278,7 +278,7 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 
 ## <a name="use-the-msrsync-utility"></a>使用 msrsync 实用工具
 
-也可以使用 ``msrsync`` 工具将数据移到 Avere 群集的后端核心文件管理器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具：<https://github.com/jbd/msrsync>。
+``msrsync`` 工具也可用于将数据移到 Avere 群集的后端核心文件服务器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具：<https://github.com/jbd/msrsync>。
 
 ``msrsync`` 将源目录分解成独立的“桶”，然后针对每个桶运行单个 ``rsync`` 进程。
 

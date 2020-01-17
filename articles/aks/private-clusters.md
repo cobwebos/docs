@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045592"
+ms.locfileid: "76154335"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
 
@@ -131,7 +131,7 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
 
 ## <a name="limitations"></a>限制 
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集、Azure 专用终结点和虚拟网络服务终结点，这些终结点当前在同一虚拟网络中不受支持。
-* 不支持专用群集中的虚拟节点将专用于专用 Cisco 应用程序的基础结构（Cisco ACI）实例集中到专用的 Azure 虚拟网络中。
+* 不支持专用群集中的虚拟节点将专用 azure 容器实例（ACI）旋转到专用的 Azure 虚拟网络中。
 * 不支持现成的 Azure DevOps 与专用群集集成。
 * 对于需要使 Azure 容器注册表能与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
 * 当前不支持 Azure Dev Spaces。

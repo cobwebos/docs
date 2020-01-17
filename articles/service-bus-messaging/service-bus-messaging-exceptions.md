@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ad0eb602d9e7b907e23ebf7b91ed86650c1e807
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: eebbef25f2cd4539a5092f271c3944c24503f287
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790480"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156805"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供了 Service Bus .NET Framework Api 生成的一些 .NET 异常，还提供了解决问题的其他提示。 
@@ -121,10 +121,10 @@ ConnectionsQuotaExceeded for namespace xxx.
     ```shell
     telnet sbwagn2.servicebus.windows.net 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 使其运行大约1分钟，以了解连接是否部分被阻止。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 此命令将尝试通过服务每隔1秒建立25个不同的 TCP 连接，然后可以检查多少成功/失败，还可以查看 TCP 连接延迟。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
 
     ```shell
-    psping.exe -t -q ehedhdev.servicebus.windows.net:9354 -nobanner     
+    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
     ```
     如果使用的是其他工具，如 `tnc`、`ping`等，则可以使用等效的命令。 
 - 如果前面的步骤不能帮助并对其进行分析或联系[Microsoft 支持部门](https://support.microsoft.com/)，请获取网络跟踪。

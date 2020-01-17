@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心中的安全评分 | Microsoft Docs
-description: " 使用 Azure 安全中心中的安全评分确定安全建议的优先级。 "
+description: " 使用 Azure 安全中心中的安全分数确定安全建议的优先级。 "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,17 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 0a39fd1870ae803f2cf694e01c67d125fc96cac9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200974"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156652"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分
 
+> [!NOTE]
+> 预览中提供了增强的安全评分。 增强的安全分数最终将取代现有的安全分数，但在这段时间内，它们会并行运行以简化转换。
+>
+> 有关增强安全分数权益的详细信息，请参阅[此处](secure-score-security-controls.md)。
+>
+> 若要参与预览，请打开 Azure 门户，启动 "Azure 安全中心"，然后选择 "安全分数"。 在这里，你将在页面顶部看到一个横幅，提供新的安全评分体验。 或者单击[此处](https://aka.ms/ascnewscore)。
 
-在有很多服务提供安全权益的情况下，通常很难知道首先要采取哪些措施来保护并强化工作负荷。 Azure 安全评分评审你的安全建议并确定其优先级，以便你知道要首先执行哪些建议。 这可帮助你找到最严重的安全漏洞，因此你可以确定调查优先级。 安全评分是一个可帮助你评估工作负荷安全状况的工具。
+在有很多服务提供安全权益的情况下，通常很难知道首先要采取哪些措施来保护并强化工作负荷。 Azure 安全评分评审你的安全建议并确定其优先级，以便你知道要首先执行哪些建议。 这可帮助你找到最严重的安全漏洞，因此你可以确定调查优先级。 安全功能分数是一款帮助评估工作负载安全状况的工具。
 
 ## <a name="secure-score-calculation"></a>安全评分的计算
 
@@ -34,13 +40,12 @@ Azure 安全中心会不断检查活动建议并根据它们计算安全评分�
 
 **整体安全评分**是所有建议评分的累计评分。 可以查看订阅或管理组的整体安全评分，具体取决于所选择的内容。 分数将根据所选订阅和这些订阅上的活动建议而有所不同。
 
- 
 若要检查哪些建议对安全评分影响最大，可以在安全中心仪表板中查看最具影响力的前三个建议，或者可以使用“安全分数影响”列对建议列表边栏选项卡中的建议进行排序。
-
 
 若要查看整体安全评分：
 
 1. 在 Azure 安全中心仪表板中，单击“安全中心”，然后单击“安全功能分数”。
+
 2. 可以在顶部看见安全功能分数突出显示：
    - 总体安全功能分数表示每个策略、每个所选订阅的分数
    - 按类别的安全功能分数显示哪些资源需要最多的关注

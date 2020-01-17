@@ -10,17 +10,65 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: raiye
-ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779580"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122128"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 对于在中引入的特定[系列][family-explain]，更新始终会继续进行。
+
+## <a name="january-2020-guest-os"></a>2020年1月来宾 OS
+
+>[!NOTE]
+>目前，我们正在将 1 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 1 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+| 产品目录 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows 安全性  | 2.94 | 2020年1月14日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2.94 | 2020年1月14日 |
+|  Rel 20-01  |  [4534314]  |  Windows 安全性  | 2.94 | 2020年1月14日 |
+|  Rel 20-01  |  [4532958]  |  Windows 安全性  | 3.81 | 2020年1月14日 |
+|  Rel 20-01  |  [4532963]  |  Windows 安全性  | 3.81 | 2020年1月14日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3.81 | 2020年1月14日 |
+|  Rel 20-01  |  [4534288]  |  Windows 安全性  | 3.81 | 2020年1月14日 |
+|  Rel 20-01  |  [4532961]  |  Windows 安全性  | 4.74 | 2020年1月14日 |
+|  Rel 20-01  |  [4532962]  |  Windows 安全性  | 4.74 | 2020年1月14日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4.74 | 2020年1月14日 |
+|  Rel 20-01  |  [4534309]  |  Windows 安全性  | 4.74 | 2020年1月14日 |
+|  Rel 20-01  |  [4494175]  |  微码 v3  | 5.39 | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4534271]  |  LCU  | 5.39 | 2020年1月14日 |
+|  Rel 20-01  |  [4494174]  |  微码 v4  | 6.15 | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4532947]  |  Windows 安全性  | 6.15 | 2020年1月14日 |
+|  Rel 20-01  |  [4534273]  |  LCU  | 6.15 | 2020年1月14日 |
+|  Rel 20-01  |  [4530734]  |  非安全性  | 2.94 | 12月10日，2019 |
+|  Rel 20-01  |  [4530691]  |  非安全性   | 3.81 | 12月10日，2019 |
+|  Rel 20-01  |  [4530702]  |  非安全性  | 4.74 | 12月10日，2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+
 
 ## <a name="december-2019-guest-os"></a>2019年12月来宾 OS
 

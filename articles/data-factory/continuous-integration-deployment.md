@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977524"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156958"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -330,7 +330,7 @@ else {
 * 你使用自动 CI/CD，并且想要在资源管理器部署过程中更改某些属性，但默认情况下不会对属性进行参数化。
 * 由于默认资源管理器模板超过允许的最大参数（256），因此您的工厂非常大。
 
-在这些情况下，若要重写默认参数化模板，请在存储库的根文件夹中创建一个名为 "arm-模板-参数-json" 的文件。 必须使用正确的文件名。 数据工厂从 Azure 数据工厂门户中当前所处的任何分支读取此文件，而不仅仅是从协作分支读取此文件。 您可以通过在用户界面中选择 "**导出 ARM 模板**"，从私有分支创建或编辑该文件。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
+在这些情况下，若要重写默认参数化模板，请在指定为数据工厂 git 集成的根文件夹的文件夹中创建一个名为 "arm-模板-参数-json" 的文件。 必须使用正确的文件名。 数据工厂从 Azure 数据工厂门户中当前所处的任何分支读取此文件，而不仅仅是从协作分支读取此文件。 您可以通过在用户界面中选择 "**导出 ARM 模板**"，从私有分支创建或编辑该文件。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
 

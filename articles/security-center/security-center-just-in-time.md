@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974152"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156754"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -48,9 +48,8 @@ ms.locfileid: "75974152"
 
 | 使用户能够： | 要设置的权限|
 | --- | --- |
-| 为 VM 配置或编辑 JIT 策略 | *将这些操作分配给角色：*  <ul><li>与 VM 关联的订阅或资源组的作用域：<br/> ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` </li><li> 在订阅、资源组或 VM 的作用域： <br/>```Microsoft.Compute/virtualMachines/write```</li></ul> | 
-| ||
-|请求 JIT 对 VM 的访问权限 | *将这些操作分配给用户：*  <ul><li>与 VM 关联的订阅或资源组的作用域：<br/>  ```Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action``` </li><li>  在订阅、资源组或 VM 的作用域：<br/> ```Microsoft.Compute/virtualMachines/read``` </li></ul>|
+| 为 VM 配置或编辑 JIT 策略 | *将这些操作分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在订阅或资源组或 VM 的作用域中： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+|请求 JIT 对 VM 的访问权限 | *将这些操作分配给用户：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
 ## <a name="configure-jit-on-a-vm"></a>在 VM 上配置 JIT

@@ -4,14 +4,14 @@ description: 使用 Avere vFXT for Azure 配置 DNS 服务器以进行轮询负�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416043"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153779"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 群集 DNS 配置
 

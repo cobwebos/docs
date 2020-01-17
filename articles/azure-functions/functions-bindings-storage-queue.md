@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769449"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121227"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -249,7 +249,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  可以设置 `Connection` 属性来指定要使用的存储帐户，如以下示例中所示：
+  可以设置 `Connection` 属性以指定包含要使用的存储帐户连接字符串的应用设置，如以下示例中所示：
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ def main(msg: func.QueueMessage):
 
 如果尝试绑定到 `CloudQueueMessage` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-在 JavaScript 中，可以使用 `context.bindings.<name>` 访问队列项有效负载。 如果有效负载为 JSON，则会将它反序列化为对象。
+在 JavaScript 中，可以使用 `context.bindings.<name>` 访问队列项有效负载。 如果有效负载为 JSON，则会将它反序列化为对象。 此有效负载也作为第二个参数传递给函数。
 
 ## <a name="trigger---message-metadata"></a>触发器 - 消息元数据
 
@@ -320,7 +320,7 @@ def main(msg: func.QueueMessage):
 
 |属性|类型|Description|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
+|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串，则 `QueueTrigger` 与*函数 json*中 `name` 属性命名的变量具有相同的值。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
 |`ExpirationTime`|`DateTimeOffset`|消息过期的时间。|
 |`Id`|`string`|队列消息 ID。|
@@ -411,7 +411,7 @@ function.json 文件如下所示：
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ function.json 文件如下所示：
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>输出 - Java 示例
 
- 以下示例显示了一个 Java 函数，该函数在 HTTP 请求触发时创建队列消息。
+ 下面的示例演示一个 Java 函数，该函数在 HTTP 请求触发时创建队列消息。
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

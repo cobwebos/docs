@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231873"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156227"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>通过 "我的帐户" 门户更改工作或学校帐户密码
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>从 "更改密码" 页更改工作或学校帐户密码
 
-在**我的帐户**门户的 "**更改密码**" 页中，你可以更新你的工作或学校帐户密码。 仅当你知道现有密码且你未锁定帐户时，此操作才有效。
+"**我的帐户**" 门户的 "**更改密码**" 页可帮助你更新工作或学校帐户的现有密码，前提是你记住了密码，但未锁定你的帐户。 如果你忘记了密码，或者你的帐户已被锁定，或者你的组织没有密码，则可以使用安全信息和移动设备重置密码。
 
-如果你忘记了密码，或者你的帐户已被锁定，或者你从未获得公司支持团队提供的密码，则可以使用安全信息和移动设备重置密码。 有关详细信息，请参阅[重置工作或学校帐户密码](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)。
+>[!Important]
+>本文适用于尝试更新现有工作或学校帐户的已知密码的用户。 如果用户试图进入个人帐户（如用于 Xbox、Hotmail 或 Outlook.com 的用户），请在[无法登录 Microsoft 帐户文章时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)尝试中的建议。 如果你是一名管理员，尝试查找有关如何为你的员工或其他用户测试自助密码重置的详细信息，请参阅[自助密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)。
 
->[!Note]
->如果你正在尝试返回个人帐户（如 Xbox、hotmail.com 或 outlook.com），请在[无法登录 Microsoft 帐户文章时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)，尝试中的建议。
+## <a name="update-a-password-from-the-change-password-page"></a>从 "更改密码" 页更新密码
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>从 "我的帐户" 门户更改密码
-
-1. 使用现有密码登录到你的工作或学校帐户，然后前往 https://myprofile.microsoft.com/ 页面。
+1. 使用现有密码登录到你的工作或学校帐户，然后再中转到**我的帐户**（ https://myprofile.microsoft.com/) 页面。
 
 2. 从左侧导航窗格中选择 "**密码**"，或从**密码**块中选择 "**更改密码**" 链接。
 

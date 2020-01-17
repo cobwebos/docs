@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848385"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155140"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "74848385"
 
 在开始部署 Azure 多重身份验证之前，需要考虑必备项。
 
-| 场景 | 先决条件 |
+| 方案 | 先决条件 |
 | --- | --- |
 | 具有新式身份验证的**仅限云**的标识环境 | **无其他先决条件任务** |
 | **混合**标识方案 | 部署[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ，并且用户标识与 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
@@ -85,18 +85,18 @@ Azure Active Directory Identity Protection 检测到的某些风险检测是实�
 ### <a name="configuring-a-named-location"></a>配置命名位置
 
 1. 打开 Azure 门户中的**Azure Active Directory**
-2. 单击 "**条件访问**"
-3. 单击 "**命名位置**"
-4. 单击 "**新建位置**"
+2. 选择**安全**
+3. 在 "**管理**" 下，选择**命名位置**
+4. 选择**新位置**
 5. 在 "**名称**" 字段中，提供有意义的名称
-6. 选择是使用 IP 范围还是国家/地区来定义位置
-   1. 如果使用 IP 范围
-      1. 决定是否将位置标记为受信任。 从受信任的位置登录可降低用户的登录风险。 如果你知道输入的 IP 范围已在组织中建立并可靠，则仅将此位置标记为受信任。
+6. 选择是使用*IP 范围*还是*国家/地区*来定义位置
+   1. 如果使用*IP 范围*
+      1. 决定是否将*标记为受信任的位置*。 从受信任的位置登录可降低用户的登录风险。 如果你知道输入的 IP 范围已在组织中建立并可靠，则仅将此位置标记为受信任。
       2. 指定 IP 范围
-   2. 如果使用国家/地区
+   2. 如果使用*国家/地区*
       1. 展开下拉菜单，然后选择要为此命名位置定义的国家或地区。
-      2. 决定是否包含未知区域。 未知区域是无法映射到国家/地区的 IP 地址。
-7. 单击“创建”
+      2. 决定是否*包含未知区域*。 未知区域是无法映射到国家/地区的 IP 地址。
+7. 选择“创建”
 
 ## <a name="plan-authentication-methods"></a>规划身份验证方法
 
@@ -221,7 +221,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ### <a name="create-conditional-access-policy"></a>创建条件访问策略
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”。
+1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
 1. 选择“新策略”。
    ![创建条件性访问策略，以便在试点组中为 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. 为策略提供一个有意义的名称。
@@ -277,7 +277,7 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 选择在未注册 MFA 的用户尝试进行身份验证时所发生的情况。 使用注册表路径中的注册表设置 `REQUIRE_USER_MATCH` `HKLM\Software\Microsoft\AzureMFA` 控制功能行为。 此设置包含一个配置选项。
 
-| 密钥 | Value | 默认 |
+| 密钥 | 值 | 默认 |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE/FALSE | 未设置（相当于 TRUE） |
 
@@ -347,7 +347,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报告 | Location | 描述 |
+| 报告 | 位置 | Description |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562185"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154816"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
@@ -24,12 +24,17 @@ ms.locfileid: "68562185"
 
 本文介绍它的工作原理。
 
-## <a name="how-it-works"></a>工作原理 
+## <a name="prerequisites"></a>必备组件
+
+ 如果 Azure AD 联接的计算机未连接到组织的网络，则需要 VPN 或其他网络基础结构。 本地 SSO 要求与本地 AD DS 域控制器进行线路通信。
+
+## <a name="how-it-works"></a>如何运作 
 
 因为你只需记住一个用户名和密码，因此 SSO 简化了资源访问，并提高了环境的安全性。 使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果环境具有一个 Azure AD 和一个本地 AD，建议将 SSO 体验的范围扩展到本地业务线 (LOB) 应用、文件共享和打印机。  
 
 已加入 Azure AD 的设备不了解你的本地 AD 环境，因为它们未加入其中。 但是，可以使用 Azure AD Connect 向这些设备提供本地 AD 的其他信息。
-同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地域信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
+
+同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地用户信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
 
 1. Azure AD 将用户所属本地域的名称发送回设备。 
 1. 本地安全机构 (LSA) 服务在该设备允许进行 Kerberos 身份验证。
@@ -44,7 +49,7 @@ ms.locfileid: "68562185"
 
 Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 
-## <a name="what-you-get"></a>用户所得
+## <a name="what-you-get"></a>你获得的权益
 
 通过 SSO，在已加入 Azure AD 的设备上，可以： 
 
@@ -53,7 +58,7 @@ Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的�
 
 如果想要管理 Windows 设备的本地 AD，请安装[适用于 Windows 10 的远程服务器管理工具](https://www.microsoft.com/download/details.aspx?id=45520)。
 
-可以使用：
+可用工具如下：
 
 - Active Directory 用户和计算机 (ADUC) 管理单元管理所有 AD 对象。 但是，需要手动指定要连接到的域。
 - DHCP 管理单元用于管理已加入 AD 的 DHCP 服务器。 但是，可能需要指定 DHCP 服务器名称或地址。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965240"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119799"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6-PowerShell （预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "72965240"
 - 虚拟网络和子网的 IPv6 地址空间
 - 同时使用 IPv4 和 IPV6 前端配置的标准负载均衡器
 - 具有 IPv4 + IPv6 配置的 Nic 的 Vm
-- IPv 公共 IP，因此负载均衡器具有面向 Internet 的 IPv6 连接
+- IPv6 公共 IP，因此负载均衡器具有面向 Internet 的 IPv6 连接
 
 > [!Important]
 > Azure 虚拟网络的 IPv6 支持当前提供公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。

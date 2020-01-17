@@ -3,18 +3,18 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器来备份 VMware vCenter/ESXi 服务器上运行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173360"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152861"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
 本文介绍如何使用 Azure 备份服务器将 VMware ESXi 主机/vCenter 服务器上运行的 VMware VM 备份到 Azure。
 
-本文介绍以下操作：
+本文介绍如何执行以下操作：
 
 - 设置一个安全通道，使 Azure 备份服务器能够通过 HTTPS 来与 VMware 服务器通信。
 - 设置一个可供 Azure 备份服务器用来访问 VMware 服务器的 VMware 帐户。
@@ -24,7 +24,7 @@ ms.locfileid: "74173360"
 
 ## <a name="before-you-start"></a>开始之前
 
-- 验证运行的 vCenter/ESXi 版本是否支持备份 - 6.5、6.0 和 5.5。
+- 验证是否正在运行支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
@@ -33,10 +33,10 @@ ms.locfileid: "74173360"
 
 ### <a name="before-you-begin"></a>开始之前
 
-- 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
-- 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
+- 如果不想使用 HTTPS，则可以[为所有 VMware 服务器禁用 https 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
+- 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接不安全，将显示以下各项。
 - 必须了解 Azure 备份服务器处理备份的方式。
-  - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 必须确保为 VMware VM 数据的本地备份提供足够的存储空间。
+  - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 务必确保有足够的存储空间来存储 VMware VM 数据的本地备份。
   - 然后，Azure 备份服务器会从本地磁盘存储备份到 Azure。
   - 获取测算所需存储空间量的[帮助](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)。 该信息适用于 DPM，但也适用于 Azure 备份服务器。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74173360"
 
 4. 以 .zip 扩展名将该文件保存在 Azure 备份服务器计算机上。
 
-5. 右键单击“download.zip”并选择“全部解压缩”。 > ** .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
+5. 右键单击“download.zip”并选择“全部解压缩”。 .zip 文件的内容将解压缩到 **certs** 文件夹，其中包含：
    - 根证书文件的扩展名以类似 .0 和 .1 的编号顺序开头。
    - CRL 文件的扩展名以类似 .r0 或 .r1 的序列开头。 CRL 文件与证书关联。
 
@@ -70,7 +70,7 @@ ms.locfileid: "74173360"
 
 7. 将根证书的扩展名更改为 .crt，并确认。 文件图标将更改为表示根证书的图标。
 
-8. 右键单击根证书，然后在弹出菜单中选择“安装证书”。
+8. 在弹出菜单中右键单击根证书，并选择“安装证书”。
 
 9. 在“证书导入向导”中，选择“本地计算机”作为证书的目标，然后单击“下一步”。 如果系统询问是否要允许对计算机所做的更改，请确认。
 
@@ -92,13 +92,15 @@ ms.locfileid: "74173360"
 
 ### <a name="disable-https-certificate-validation"></a>禁用 HTTPS 证书验证
 
-如果你在组织中创建了安全边界并且不想要在 VMware 服务器与 Azure 备份服务器计算机之间使用 HTTPS 协议，请按如下所述禁用 HTTPS：
+如果你的组织内有安全边界，并且不希望在 VMware 服务器与 Azure 备份服务器计算机之间使用 HTTPS 协议，请按如下所示禁用 HTTPS：
 
 1. 将以下文本复制并粘贴到 .txt 文件中。
 
-       ```text
-      Windows 注册表编辑器版本 5.00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = dword：00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. 使用文件名 **DisableSecureAuthentication.reg** 将该文件保存在 Azure 备份服务器计算机上。
 
@@ -113,11 +115,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在“管理” **“角色”中，单击“添加角色”图标（加号）。**  > 
+3. 在“管理” > “角色”中，单击“添加角色”图标（加号）。
 
     ![添加角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. 在“创建角色” **“角色名称”中，输入** BackupAdminRole > 。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
+4. 在“创建角色” > “角色名称”中，输入 *BackupAdminRole*。 角色名称可以是所需的任何内容，但它应该能够帮助识别该角色。
 
 5. 选择下表中汇总的特权，然后单击“确定”。  新角色随即显示在“角色”窗格中的列表内。
    - 单击父标签旁的图标展开父级，并查看子级特权。
@@ -128,26 +130,41 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ### <a name="role-permissions"></a>角色权限
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **VCenter 6.5 及更高版本的用户帐户的特权**        | **VCenter 6.0 用户帐户的特权**               | **VCenter 5.5 用户帐户的特权** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| 数据存储. 浏览数据存储                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
+| 数据存储。低级别文件操作                          | Global. 管理自定义属性                           | Datastore.AllocateSpace                     |
+| 数据存储群集。配置 datatstore 群集             | Global. 设置自定义属性                               | VirtualMachine.Config.ChangeTracking        |
+| Global. Disable 方法                                       | 承载本地操作。创建虚拟机              | VirtualMachine.State.RemoveSnapshot         |
+| Global. Enable 方法                                        | 网络。 分配网络                                   | VirtualMachine.State.CreateSnapshot         |
+| Global. 许可证                                              | 资源. 将虚拟机分配到资源池         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Global.asa 事件                                             | 虚拟机。配置。添加新磁盘                | VirtualMachine.Interact.PowerOff            |
+| Global. 管理自定义属性                              | 虚拟机。配置高级                    | VirtualMachine.Inventory.Create             |
+| Global. 设置自定义属性                                  | 虚拟机。配置磁盘更改跟踪        | VirtualMachine.Config.AddNewDisk            |
+| Network. 分配网络                                       | 虚拟机。配置。主机 USB 设备             | VirtualMachine.Config.HostUSBDevice         |
+| 资源. 将虚拟机分配到资源池            | 虚拟机。配置。查询无主文件         | VirtualMachine.Config.AdvancedConfig        |
+| 虚拟机。配置。添加新磁盘                   | 虚拟机。交换文件放置          | VirtualMachine.Config.SwapPlacement         |
+| 虚拟机。配置高级                       | 虚拟机。交互。关闭电源                     | Global.ManageCustomFields                   |
+| 虚拟机。配置磁盘更改跟踪           | 虚拟机。清单. 新建                     |                                             |
+| 虚拟机。配置. 磁盘租约                     | 虚拟机。预配。允许磁盘访问            |                                             |
+| 虚拟机。配置扩展虚拟磁盘            | 虚拟机。配备. 允许只读磁盘访问 |                                             |
+| 虚拟机。来宾操作修改来宾操作 | 虚拟机。快照管理。创建快照       |                                             |
+| 虚拟机。来宾操作程序执行 | 虚拟机。快照管理。删除快照       |                                             |
+| 虚拟机。来宾操作查询     |                                                           |                                             |
+| 虚拟机。交换.设备连接              |                                                           |                                             |
+| 虚拟机。交换.通过 VIX API 进行来宾操作系统管理 |                                                           |                                             |
+| 虚拟机。清点。注册                          |                                                           |                                             |
+| 虚拟机。清单。删除                            |                                                           |                                             |
+| 虚拟机。预配。允许磁盘访问              |                                                           |                                             |
+| 虚拟机。预配。允许只读磁盘访问    |                                                           |                                             |
+| 虚拟机。正在预配。允许虚拟机下载 |                                                           |                                             |
+| 虚拟机。快照管理。 创建快照        |                                                           |                                             |
+| 虚拟机。快照管理。删除快照         |                                                           |                                             |
+| 虚拟机。快照管理。还原到快照      |                                                           |                                             |
+| vApp 添加虚拟机                                     |                                                           |                                             |
+| vApp 分配资源池                                    |                                                           |                                             |
+| vApp                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>创建 VMware 帐户
 
@@ -155,7 +172,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![用户和组选项](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
-    此时会显示“vCenter 用户和组”面板。
+    将显示 " **VCenter 用户和组**" 面板。
 
 2. 在“vCenter 用户和组”面板中，选择“用户”选项卡，然后单击“添加用户”图标（加号）。
 
@@ -173,11 +190,11 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![选择用户或组](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. 在“选择用户/组”中，选择“BackupAdmin” **“添加”。**  >  在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 单击“确定”，将选定的用户添加到“添加权限”对话框中。
+6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。 在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 单击“确定”，将选定的用户添加到“添加权限”对话框中。
 
     ![添加 BackupAdmin 用户](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-7. 在“分配的角色”的下拉列表中，选择“BackupAdminRole” **“确定”。**  > 
+7. 在“分配的角色”的下拉列表中，选择“BackupAdminRole” > “确定”。
 
     ![向角色分配用户](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
@@ -189,7 +206,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![Azure 备份服务器图标](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 备份服务器控制台中，单击“管理” **“生产服务器”** “管理 VMware”。 >   > 
+2. 在 Azure 备份服务器控制台中，单击“管理” >  “生产服务器” > “管理 VMware”。
 
     ![Azure 备份服务器控制台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -209,15 +226,15 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 将 vCenter 服务器添加到 Azure 备份服务器。
 
-1. 在 Azure 备份服务器控制台中，单击“管理” **“生产服务器”** “添加”。 >  > 
+1. 在 Azure 备份服务器控制台中，单击“管理” > “生产服务器” > “添加”。
 
     ![打开生产服务器添加向导](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在“生产服务器添加向导” **“选择生产服务器类型”页中，选择“VMware 服务器”，然后单击“下一步”。**  > 
+2. 在“生产服务器添加向导” > “选择生产服务器类型”页中，选择“VMware 服务器”，然后单击“下一步”。
 
     ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. 在“选择计算机”>“服务器名称/IP 地址”中，指定 VMware 服务器的 FQDN 或 IP 地址。 如果所有 ESXi 服务器由同一个 vCenter 管理，请指定 vCenter 名称。 否则请添加 ESXi 主机。
+3. 在 "**选择计算机**  **服务器名称/ip 地址**" 中，指定 VMware 服务器的 FQDN 或 IP 地址。 如果所有 ESXi 服务器由同一个 vCenter 管理，请指定 vCenter 名称。 否则请添加 ESXi 主机。
 
     ![指定 VMware 服务器](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
@@ -324,31 +341,31 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 若要备份 vSphere 6.7，请执行以下操作：
 
 - 在 DPM 服务器上启用 TLS 1.2
-  >[!Note]
-  >VMWare 6.7 及更高版本已启用 TLS 作为通信协议。
+
+>[!NOTE]
+>VMWare 6.7 之前已启用 TLS 作为通信协议。
 
 - 按如下所示设置注册表项：
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>后续步骤
 

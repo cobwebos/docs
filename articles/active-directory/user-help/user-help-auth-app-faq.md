@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045283"
+ms.locfileid: "76155853"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题（Faq）
 
@@ -52,6 +52,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 | 什么是应用锁定功能，它如何帮助我更加安全？ | 若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 从 Microsoft Authenticator 应用的“设置”屏幕开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。 此功能提供额外的保护，你对 Microsoft Authenticator 应用中的通知进行批准的方式不会改变。<br><br>**注意**<br>由于设备注册可能发生在 Microsoft Authenticator 应用以外的其他位置，例如在公司门户应用或 Android 帐户设置中，因此不能保证应用锁定会阻止用户访问 Microsoft验证器应用。 |
 | 为什么会收到关于帐户活动的通知？ | 为了帮助你更好地掌握 Microsoft 个人帐户状况的最新信息，我们会向你的 Microsoft Authenticator 应用发送活动通知。 这些通知会在发生更改后立即显示，帮助提高安全性。 我们之前通过电子邮件或短信发送这些通知，现在将其扩展为包括应用。 有关这些活动通知的详细信息，请参阅[存在异常帐户登录时会发生什么](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)。 若要更改接收通知的位置，请登录到你的帐户的 "[你可以通过非关键帐户警报与你联系](https://account.live.com/SecurityNotifications/Update)" 页。 |
 | 使用 iOS 附带的默认邮件应用登录到我的工作或学校帐户时，会提示 Microsoft Authenticator 应用获取我的安全验证信息。 输入该信息并返回邮件应用后，出现错误。 我该怎么办？ | 出现这种情况很可能是因为登录和邮件应用程序发生在两个不同的应用程序中，这会导致初始后台登录过程停止工作并发生故障。 若要尝试解决此问题，我们建议你在登录到邮件应用程序时选择屏幕右下角的**Safari**图标。 通过移动到 Safari，整个登录过程都在单个应用程序中进行，使你能够成功登录到应用程序。 |
+| 我的一次性密码（OTP）代码不起作用。 我应该怎么做？ | 请确保设备上的日期和时间正确，并且已自动同步。 如果日期和时间错误或不同步，则代码将不起作用。 |
 
 ## <a name="next-steps"></a>后续步骤
 

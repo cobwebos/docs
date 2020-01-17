@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889452"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120955"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -45,7 +45,7 @@ ms.locfileid: "75889452"
 可能有多种原因导致 Pod 停滞在该模式。 可能通过以下方式查看：
 
 * 使用 `kubectl describe pod <pod-name>` 查看 Pod 本身。
-* 使用 `kubectl log <pod-name>` 查看日志。
+* 使用 `kubectl logs <pod-name>` 查看日志。
 
 有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 

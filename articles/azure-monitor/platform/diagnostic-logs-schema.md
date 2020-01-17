@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750941"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120139"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -86,6 +86,9 @@ ms.locfileid: "75750941"
 | 虚拟网络网关 | 架构不可用。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
+
+某些类别只能支持特定类型的资源。 这是某种形式的所有可用的列表。  例如，对于所有类型的数据库，都不能使用 "Microsoft .Sql/服务器/数据库" 类别。 有关详细信息，请参阅[有关 SQL 数据库诊断日志记录的信息](../../sql-database/sql-database-metrics-diag-logging.md)。 
+
 |资源类型|类别|类别显示名称|
 |---|---|---|
 |DomainServices/|SystemSecurity|SystemSecurity|

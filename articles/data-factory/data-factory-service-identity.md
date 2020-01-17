@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928447"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121771"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -155,17 +155,19 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>使用 Azure 门户检索托管标识
 
-可以从 Azure 门户 > 数据工厂 > 属性中找到托管标识信息：
+可以从 Azure 门户 > 数据工厂 > 的属性中找到托管标识信息。
 
 - 托管标识对象 ID
 - 托管标识租户
-- **托管标识应用程序 ID** > 复制此值
+- 托管标识应用程序 ID
 
-![检索托管标识](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+当你创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等）时，托管标识信息也会显示。
+
+授予权限时，请使用对象 ID 或数据工厂名称（作为托管标识名称）来查找此标识。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 检索托管标识
 
-当你获取特定数据工厂时，将返回托管标识主体 ID 和租户 ID，如下所示：
+当你获取特定数据工厂时，将返回托管标识主体 ID 和租户 ID，如下所示。 使用**PrincipalId**授予访问权限：
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-复制主体 ID，然后结合主体 ID 作为参数运行以下 Azure Active Directory 命令，获取用于授予访问权限的 **ApplicationId**：
+你可以通过以下方式获取应用程序 ID：复制以上主体 ID，然后在下面 Azure Active Directory 带有 principal ID 作为参数的命令下运行。
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

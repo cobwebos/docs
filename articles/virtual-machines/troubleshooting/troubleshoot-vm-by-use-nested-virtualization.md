@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中的嵌套虚拟化排查问题 Azure VM | Microsoft 文档
+title: 使用 Azure 中的嵌套虚拟化对故障的 Azure VM 进行故障排除 |Microsoft Docs
 description: 如何使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028429"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119612"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化对故障的 Azure VM 进行故障排除
 
-本文介绍如何在 Microsoft Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（救援 VM）上装载问题 VM 的磁盘来进行故障排除。
+本文介绍如何在 Microsoft Azure 中创建嵌套虚拟化环境，以便可以将故障 VM 的磁盘装载到 Hyper-v 主机（修复 VM）上，以便进行故障排除。
 
 ## <a name="prerequisites"></a>必备组件
 
-若要装载问题 VM，修复 VM 必须使用与问题 VM 相同的存储帐户类型（标准或高级）。
+为了装载错误的 VM，修复 VM 必须使用与故障 VM 相同的存储帐户类型（标准或高级）。
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>步骤 1：创建救援 VM 并安装 Hyper-V 角色
 
@@ -36,9 +36,9 @@ ms.locfileid: "76028429"
 
     -  大小：任何支持嵌套虚拟化的 V3 系列至少具有双核。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
 
-    -  与问题 VM 相同的位置、存储帐户和资源组。
+    -  与故障 VM 相同的位置、存储帐户和资源组。
 
-    -  选择与问题 VM 相同的存储类型（标准或高级）。
+    -  选择与故障 VM 相同的存储类型（标准或高级）。
 
 2.  创建救援 VM 后，通过远程桌面连接到救援 VM。
 
@@ -64,13 +64,13 @@ ms.locfileid: "76028429"
 
 13. 允许服务器安装 Hyper-V 角色。 这需要几分钟的时间，服务器将自动重新启动。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在救援 VM 的 Hyper-V 服务器上创建问题 VM
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>步骤2：在修复 VM 的 Hyper-v 服务器上创建故障 VM
 
 1.  为发生问题的 VM 的 OS 磁盘[创建快照磁盘](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk)，然后将该快照磁盘附加到 recuse VM。
 
 2.  远程桌面到 "修复 VM"。
 
-3.  打开磁盘管理 (diskmgmt.msc)。 请确保将问题 VM 的磁盘设置为“离线”。
+3.  打开磁盘管理 (diskmgmt.msc)。 确保故障 VM 的磁盘设置为 "**脱机**"。
 
 4.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
 
@@ -96,7 +96,7 @@ ms.locfileid: "76028429"
 
     ![有关添加新硬盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. 在“物理硬盘”中，选择已附加到 Azure VM 的问题 VM 的磁盘。 如果没有看到任何列出的磁盘，请使用磁盘管理检查是否将磁盘设置为离线。
+14. 在 "**物理硬盘**" 中，选择已附加到 Azure vm 的故障 VM 的磁盘。 如果没有看到任何列出的磁盘，请使用磁盘管理检查是否将磁盘设置为离线。
 
     ![有关安装磁盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -107,7 +107,7 @@ ms.locfileid: "76028429"
 
 17. 现在你可以将此 VM 作为本地 VM 进行操作。 你可以按照所需的任何故障排除步骤操作。
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>步骤3：替换问题 VM 使用的 OS 磁盘
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>步骤3：替换错误 VM 使用的 OS 磁盘
 
 1.  重新在线获得 VM 后，关闭 Hyper-V 管理器中的 VM。
 

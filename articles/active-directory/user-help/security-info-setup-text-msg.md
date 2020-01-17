@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6e8e8b20fc9b8e19b2f7c5f9c1b9e926580c9dbb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278918"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156057"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>设置文本消息作为验证方法
 
-可以按照以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
+可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
+>如果看不到电话选项，你的组织可能不允许你使用此选项进行验证。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>从“安全信息”页设置文本消息
 
@@ -39,17 +39,17 @@ ms.locfileid: "74278918"
 
 ### <a name="to-set-up-text-messages"></a>若要设置短信
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
-    ![“添加方法”框，已选中“电话”](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![添加方法框，选中电话](media/security-info/securityinfo-myprofile-addphonetext.png)
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”。
 
@@ -74,7 +74,7 @@ ms.locfileid: "74278918"
 
 ### <a name="to-delete-text-messaging"></a>删除短信
 
-1. 在“安全信息”页面上，选择“电话”选项旁边的“删除”链接。
+1. 在“安全信息”页上，选择“电话”选项旁边的“删除”链接。
 
     ![从安全信息中删除电话和短信方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
@@ -84,17 +84,17 @@ ms.locfileid: "74278918"
 
 如果要在使用双因素验证或密码重置请求登录到工作或学校帐户时使用文本消息作为默认方法，则可以从 "**安全信息**" 页设置。
 
-### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
+### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 短信 (**your_phone_number *)”，然后选择“确认”*** 。
+2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。
 
-    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 短信 (**your_phone_number *)”*** 。
+    用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 
@@ -115,6 +115,6 @@ ms.locfileid: "74278918"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

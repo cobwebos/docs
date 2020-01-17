@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/15/2020
 ms.author: qiohu
-ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+zone_pivot_groups: programming-languages-set-seven
+ms.openlocfilehash: bc438c3e606fefc10e9ffbb64c79f7167d9af062
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110179"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122043"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音到文本的自动语言检测
 
@@ -24,7 +25,7 @@ ms.locfileid: "74110179"
 在本文中，你将了解如何使用 `AutoDetectSourceLanguageConfig` 来构造 `SpeechRecognizer` 对象并检索检测到的语言。
 
 > [!IMPORTANT]
-> 此功能仅适用于适用于的语音 SDK C++和适用于 Java 的语音 sdk。
+> 此功能仅适用于适用于的语音 SDK C# C++和 Java。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>通过语音 SDK 进行自动语言检测
 
@@ -35,6 +36,22 @@ ms.locfileid: "74110179"
 
 以下代码片段演示如何在应用中使用自动语言检测：
 
+::: zone pivot="programming-language-csharp"
+
+```csharp
+var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "de-DE" });
+using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig))
+{
+    var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
+    var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+    var detectedLanguage = autoDetectSourceLanguageResult.Language;
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
 ```C++
 auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
@@ -42,6 +59,10 @@ speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
 auto autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
@@ -58,11 +79,28 @@ audioConfig.close();
 result.close();
 ```
 
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>使用自定义模型进行自动语言检测
 
 除了使用语音服务模型进行语言检测以外，还可以指定用于增强识别的自定义模型。 如果未提供自定义模型，该服务将使用默认语言模型。
 
 下面的代码段演示了如何在对语音服务的调用中指定自定义模型。 如果 `en-US`检测到的语言，则使用默认模型。 如果 `fr-FR`检测到的语言，则使用自定义模型的终结点：
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+var sourceLanguageConfigs = new SourceLanguageConfig[]
+{
+    SourceLanguageConfig.FromLanguage("en-US"),
+    SourceLanguageConfig.FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR")
+};
+var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(sourceLanguageConfigs);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
 
 ```C++
 std::vector<std::shared_ptr<SourceLanguageConfig>> sourceLanguageConfigs;
@@ -71,12 +109,18 @@ sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("fr-FR", "The
 auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(sourceLanguageConfigs);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
 ```Java
 List sourceLanguageConfigs = new ArrayList<SourceLanguageConfig>();
 sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("en-US"));
 sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
 AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(sourceLanguageConfigs);
 ```
+
+::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 

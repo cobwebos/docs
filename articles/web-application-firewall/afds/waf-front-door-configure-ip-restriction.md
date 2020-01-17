@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 6b5793408545c2a61a30b5d89bc41d35460ed3eb
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186682"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119459"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure 前门服务的 Web 应用程序防火墙配置 IP 限制规则
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 Web 应用程序防火墙（WAF）中为 Azure 前门服务配置 IP 限制规则。
@@ -24,11 +24,11 @@ ms.locfileid: "74186682"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 配置 WAF 策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 在开始配置 IP 限制策略之前，请设置 CLI 环境并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-the-azure-cli-environment"></a>设置 Azure CLI 环境
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
+1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
  2. 如果在 Bash 本地使用 CLI，请使用 `az login`登录到 Azure。
 
 #### <a name="create-an-azure-front-door-service-profile"></a>创建 Azure 前门服务配置文件
@@ -101,7 +101,7 @@ az network front-door waf-policy rule match-condition add\
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 配置 WAF 策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 在开始配置 IP 限制策略之前，请设置 PowerShell 环境，并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
@@ -140,10 +140,10 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
      
 ### <a name="create-a-custom-ip-allow-rule"></a>创建自定义 IP 允许规则
 
-使用[AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject)命令定义操作并设置优先级。 在下面的示例中，将阻止不是来自客户端 Ip 且与列表匹配的请求。
+使用[AzFrontDoorWafCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject)命令定义操作并设置优先级。 在下面的示例中，将阻止不是来自客户端 Ip 且与列表匹配的请求。
 
 ```powershell
-$IPAllowRule = New-AzFrontDoorCustomRuleObject `
+$IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 -Name "IPAllowRule" `
 -RuleType MatchRule `
 -MatchCondition $IPMatchCondition `

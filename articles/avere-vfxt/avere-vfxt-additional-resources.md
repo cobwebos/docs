@@ -4,14 +4,14 @@ description: 指向有关 Avere vFXT for Azure 的其他信息的链接
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416335"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153762"
 ---
 # <a name="additional-documentation"></a>其他文档
 
@@ -25,7 +25,7 @@ ms.locfileid: "75416335"
   * [自定义支持和监视设置](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>)介绍如何自定义支持上传设置并启用远程监视。
   * [配置 VServers 和全局命名空间](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>)具有创建面向客户端的命名空间的信息。
   * [为 Avere 群集配置 DNS](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) 介绍如何配置轮询 DNS。
-  * [添加后端存储](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>)说明了如何添加核心文件管理器。
+  * [添加后端存储](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>)文档如何添加核心文件程序。
 
 * [群集配置指南](<https://azure.github.io/Avere/#operations>)是 Avere 群集的设置和选项的完整参考。 vFXT 群集使用这些选项的子集，但大多数相同的配置页面都适用。
 
@@ -33,4 +33,4 @@ ms.locfileid: "75416335"
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT 的创建和管理文档
 
-GitHub 上提供了使用 vfxt.py（云群集的创建和管理实用工具）的完整指南：[使用 vfxt.py 管理云群集](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)。
+GitHub 上提供了使用 vfxt.py （一种基于脚本的云群集创建和管理实用工具）的完整指南：[使用 vfxt.py 的云群集管理](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)。

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771915"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122366"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -1488,7 +1488,7 @@ Azure 机器学习现已正式发布。
 + ML 管道
   + 全新的和更新的笔记本，适用于管道、批量范围确定和样式传输示例的入门： https://aka.ms/aml-pipeline-notebooks
   + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)
-  + 了解如何[使用管道运行批量预测](how-to-run-batch-predictions.md)
+  + 了解如何[使用管道运行批量预测](how-to-use-parallel-run-step.md)
 + Azure 机器学习计算目标
   + [示例笔记本](https://aka.ms/aml-notebooks)现已更新，可以使用新的托管计算。
   + [了解此计算](how-to-set-up-training-targets.md#amlcompute)

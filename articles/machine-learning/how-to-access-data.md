@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8bad8be3c02228fee9dded729e22c5a406da178
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ae04bf5268bb9973098735183842f7393e9d679b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76025038"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121754"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -261,7 +261,7 @@ Azure 机器学习提供多种方法来使用模型进行评分。 其中一些�
 
 | 方法 | 数据存储访问 | Description |
 | ----- | :-----: | ----- |
-| [批处理预测](how-to-run-batch-predictions.md) | ✔ | 异步对大量数据进行预测。 |
+| [批处理预测](how-to-use-parallel-run-step.md) | ✔ | 异步对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 web 服务。 |
 | [Azure IoT Edge 模块](how-to-deploy-and-where.md) | &nbsp; | 将模型部署到 IoT Edge 设备。 |
 

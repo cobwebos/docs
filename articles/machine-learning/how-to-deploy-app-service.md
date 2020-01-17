@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2a3e1f1997857ab9812fe87d5ec68b71e280e6ce
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968544"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122536"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure App Service （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "75968544"
     > [!IMPORTANT]
     > Azure 机器学习 SDK 不为 web 服务提供访问数据存储或数据集的方法。 如果需要部署的模型来访问在部署外部存储的数据，例如在 Azure 存储帐户中，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
     >
-    > 可能适用于你的方案的另一种方法是[批处理预测](how-to-run-batch-predictions.md)，这在评分时提供对数据存储的访问。
+    > 可能适用于你的方案的另一种方法是[批处理预测](how-to-use-parallel-run-step.md)，这在评分时提供对数据存储的访问。
 
     有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "75968544"
 这些实体封装为__推理配置__。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure App Service 的推理配置时，必须使用[环境](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)对象。 请注意，如果要定义自定义环境，则必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml 默认值。 此包包含将模型托管为 web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure App Service 的推理配置时，必须使用[环境](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)对象。 请注意，如果要定义自定义环境，则必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml 默认值。 此包包含将模型托管为 Web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment

@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484748"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152385"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -26,16 +26,16 @@ ms.locfileid: "75484748"
 
 如果在[模板中部署到多个资源组](cross-resource-group-deployment.md)，则部署操作中指定的资源组中的资源可以被删除。 辅助资源组中的资源不会被删除。
 
-资源类型处理完整模式删除的方式有一些差异。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
+资源类型处理完整模式删除的方式有一些差异。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。
 
-例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域，但不包括 CNAME 记录，则不会删除 CNAME。 
+例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域，但不包括 CNAME 记录，则不会删除 CNAME。
 
 有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](complete-mode-deletion.md)。
 
 如果资源组已[锁定](../management/lock-resources.md)，则完成模式不会删除资源。
 
 > [!NOTE]
-> 仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](linked-templates.md)，必须使用增量模式。 
+> 仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](linked-templates.md)，必须使用增量模式。
 >
 > [订阅级别部署](deploy-to-subscription.md)不支持完成模式。
 >
@@ -105,9 +105,9 @@ az group deployment create \
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

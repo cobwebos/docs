@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c120c9092d9cf0e4029cadea1b412a73e858fa75
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278970"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156135"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>将电话号码设置为验证方法
 
-可以按照以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
+可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -30,7 +30,20 @@ ms.locfileid: "74278970"
 > [!Note]
 > 安全信息不支持使用电话分机。 即使添加正确的“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 >
-> 如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
+> 如果看不到电话选项，你的组织可能不允许你使用此选项进行验证。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>安全验证与密码重置身份验证
+
+安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+
+| 方法 | 用于 |
+| ------ | -------- |
+| Authenticator 应用 | 双重验证和密码重置身份验证。 |
+| 短信 | 双重验证和密码重置身份验证。 |
+| 电话呼叫 | 双重验证和密码重置身份验证。 |
+| 安全密钥 | 双重验证和密码重置身份验证。 |
+| 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+| 安全提问 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>从“安全信息”页面设置电话呼叫
 
@@ -41,17 +54,17 @@ ms.locfileid: "74278970"
 
 ### <a name="to-set-up-phone-calls"></a>设置电话呼叫的步骤
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
-    ![“添加方法”框，已选中“电话”](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![添加方法框，选中电话](media/security-info/securityinfo-myprofile-addphonetext.png)
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“呼叫我”，然后选择“下一步”。
 
@@ -74,7 +87,7 @@ ms.locfileid: "74278970"
 
 ### <a name="to-delete-phone-calls"></a>删除电话呼叫的步骤
 
-1. 在“安全信息”页面上，选择“电话”选项旁边的“删除”链接。
+1. 在“安全信息”页上，选择“电话”选项旁边的“删除”链接。
 
     ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
@@ -84,17 +97,17 @@ ms.locfileid: "74278970"
 
 如果你在使用双重验证登录工作或学校帐户时希望电话呼叫成为默认使用的方法，或者希望电话呼叫成为默认用于密码重置请求的方法，则可以从“安全信息”页面对其进行设置。
 
-### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
+### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 呼叫 ( ***your_phone_number)”，然后选择“确认”*** 。
+2. 从可用方法的下拉列表中选择“电话 - 呼叫 ( *_your_phone_number_* )”，然后选择“确认”。
 
-    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 呼叫 ( ***your_phone_number)”*** 。
+    用于登录的默认方法更改为“电话 - 呼叫 ( *_your_phone_number_* )”。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 
@@ -115,6 +128,6 @@ ms.locfileid: "74278970"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

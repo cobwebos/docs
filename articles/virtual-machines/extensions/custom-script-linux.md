@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: dcc9e63eba605e87a14ba4f09c61a00e9629bd23
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 22346501444694675d92d9a37497f9304c76e13d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941216"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156550"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -210,7 +210,7 @@ CustomScript 使用以下算法来执行脚本。
 
 ####  <a name="property-managedidentity"></a>属性：对 microsoft.managedidentity
 
-CustomScript （版本2.1.2 向前）支持基于[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的 RBAC，用于从 "fileUris" 设置中提供的 url 下载文件。 它允许 CustomScript 访问 Azure 存储专用 blob/容器，而用户无需传递机密（如 SAS 令牌或存储帐户密钥）。
+CustomScript （版本2.1 以上版本）支持用于从 "fileUris" 设置中提供的 Url 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 blob 或容器，而用户无需传递机密（如 SAS 令牌或存储帐户密钥）。
 
 若要使用此功能，用户必须将[系统分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)的或[用户分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity)的标识添加到要在其中运行 CUSTOMSCRIPT 的 VM 或 VMSS，并向[托管标识授予对 Azure 存储容器或 blob 的访问权限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 

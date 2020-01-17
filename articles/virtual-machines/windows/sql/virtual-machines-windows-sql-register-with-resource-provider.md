@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690781"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122434"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -419,11 +419,11 @@ SQL VM 资源提供程序仅支持：
 
 **是否可以在安装 SQL Server 之前向 SQL VM 资源提供程序注册 VM？**
 
-不。 VM 应该至少有一个 SQL Server 实例，才能成功注册到 SQL VM 资源提供程序。 如果 VM 上没有 SQL Server 实例，则新的 SqlVirtualMachine 资源将处于 "失败" 状态。
+不。 VM 应该至少有一个 SQL Server （数据库引擎）实例才能成功注册到 SQL VM 资源提供程序。 如果 VM 上没有 SQL Server 实例，则新的 SqlVirtualMachine 资源将处于 "失败" 状态。
 
 **如果有多个 SQL Server 实例，能否使用 SQL VM 资源提供程序注册 VM？**
 
-可以。 SQL VM 资源提供程序将只注册一个 SQL Server 实例。 SQL VM 资源提供程序将在多个实例的情况下注册默认 SQL Server 实例。 如果没有默认实例，则仅支持在轻型模式下进行注册。 若要从轻型升级到完全可管理性模式，应存在默认 SQL Server 实例，或者 VM 应只有一个命名 SQL Server 实例。
+可以。 SQL VM 资源提供程序将只注册一个 SQL Server （数据库引擎）实例。 SQL VM 资源提供程序将在多个实例的情况下注册默认 SQL Server 实例。 如果没有默认实例，则仅支持在轻型模式下进行注册。 若要从轻型升级到完全可管理性模式，应存在默认 SQL Server 实例，或者 VM 应只有一个命名 SQL Server 实例。
 
 **是否可以向 SQL VM 资源提供程序注册 SQL Server 故障转移群集实例？**
 

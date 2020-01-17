@@ -3,19 +3,19 @@ title: 快速入门：使用参数创建自定义命令（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将向自定义命令应用程序添加参数。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380995"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156686"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>快速入门：使用参数创建自定义命令（预览）
 

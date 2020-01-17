@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 5efde68469df1780214fee98cf2be44775acdc35
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/15/2020
+ms.openlocfilehash: a09d9ebe0defc970e1c3b9e74a25f23fe94e6634
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772670"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157094"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -35,10 +35,12 @@ ms.locfileid: "74772670"
 如果该请求的 IP 地址位于任何数据库级或服务器级防火墙规则中指定的范围外，则连接请求失败。
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for MariaDB 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”窗格将“允许访问 Azure 服务”选项设为“启用”并点击“保存”。 如果不允许连接尝试，则请求将不会到达 Azure Database for MariaDB 服务器。
+建议你找到任何应用程序或服务的传出 IP 地址，并显式允许访问这些单个 IP 地址或范围。 例如，你可以查找 Azure App Service 的传出 IP 地址，或使用绑定到虚拟机或其他资源的公共 IP （请参阅下面的信息，了解有关通过服务终结点与虚拟机的专用 IP 进行连接的信息）。 
+
+如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以通过在 "**连接安全**" 窗格中将 "**允许访问 Azure 服务**" 选项设置为 **"打开**" 来 Azure 门户启用此设置，然后点击 "**保存**"。 在 Azure CLI 中，具有等于0.0.0.0 的起始和结束地址的防火墙规则设置将执行等效操作。 如果不允许连接尝试，则请求将不会到达 Azure Database for MariaDB 服务器。
 
 > [!IMPORTANT]
-> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> "**允许访问 azure 服务**" 选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
 > 
 
 ![在门户中配置“允许访问 Azure 服务”](./media/concepts-firewall-rules/allow-azure-services.png)
@@ -62,7 +64,7 @@ ms.locfileid: "74772670"
 
    * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for MariaDB 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 
-   * 改为获取客户端计算机的静态 IP 地址，然后将该 IP 地址作为防火墙规则添加。
+   * 改为获取客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
 
 * **服务器的 IP 似乎是公共的：** 与 Azure Database for MariaDB 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
 

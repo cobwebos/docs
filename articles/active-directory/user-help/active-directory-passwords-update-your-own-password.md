@@ -9,23 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8b46dbc0cc3c61396acdc7d21517c13d4650bf3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160787"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156278"
 ---
-# <a name="reset-your-work-or-school-password"></a>重置工作或学校密码
+# <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
-如果忘记了密码、从来没有从公司支持人员处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置密码。
+如果忘记了工作或学校密码、从来没有从组织处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置工作或学校密码。 你的管理员必须打开此功能才能设置你的信息并重置你自己的密码。
 
->[!NOTE]
->如果知道密码而只是想对其进行更改，可以转到本文中的[更改密码](#how-to-change-your-password)步骤。<br><br>
->若要取回个人帐户（例如 Xbox、hotmail.com 或 outlook.com），请尝试[当无法登录到你的 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的建议。
+如果你知道密码，但想要对其进行更改，请参阅本文的[更改密码步骤](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password)部分。
+
+>[!Important]
+>本文适用于尝试使用重置忘记或未知的工作或学校帐户密码的用户。 如果你是一名管理员，想要了解有关如何为你的员工或其他用户启用自助服务密码重置的信息，请参阅[部署 Azure AD 自助服务密码重置和其他文章](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)。
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>如何重置或解锁工作或学校帐户的密码
 
@@ -58,7 +59,7 @@ ms.locfileid: "73160787"
     1. 选择“向备用电子邮件发送电子邮件”，然后选择“电子邮件”。
 
     2. 将电子邮件中的验证码键入到框中，然后选择“下一步”。
-    
+
     3. 键入并确认新密码，然后选择“完成”。
 
 - **使用短信重置密码。** 向之前在安全信息中设置的电话号码发送短信。 如果管理员已启用安全信息体验，可以在[设置安全信息以使用短信消息（预览版）](security-info-setup-text-msg.md)一文中找到有关设置短信消息的详细信息。 如果尚未使用安全信息，可以在[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中找到有关设置短信消息的详细信息。
@@ -100,7 +101,7 @@ ms.locfileid: "73160787"
   3. 键入并确认新密码，然后选择“完成”。
 
   4. 收到指示密码已重置的消息后，可以使用新密码登录到帐户。
-        
+
      如果仍无法访问帐户，应联系组织管理员，寻求进一步的帮助。
 
 重置密码后，你可能会收到一封来自“Microsoft 代表\<组织>”之类帐户的确认电子邮件。 如果收到类似电子邮件，但最近未重置密码，必须立即联系组织管理员。
@@ -155,7 +156,7 @@ ms.locfileid: "73160787"
 
 以下是一些常见的错误案例及其解决方法：
 
-|问题|描述|解决方案|
+|问题|Description|解决方案|
 | --- | --- | --- |
 |尝试更改我的密码时收到错误。 |你的密码包含单词、短语或模式，这些使你的密码容易被猜出。| 请使用更强的密码重试。|
 |在输入我的用户 ID 后，我转到一个页面，该页面指示“请联系你的管理员”。|Microsoft 确定你的用户帐户密码由你的管理员在本地环境中管理。 因此，你无法使用“无法访问帐户”链接重置你的密码。 |请联系管理员获取进一步的帮助。|
@@ -163,10 +164,7 @@ ms.locfileid: "73160787"
 |在输入我的用户 ID 后，我收到一个错误，指示“我们无法验证你的帐户”。|登录过程无法验证帐户信息。|可能看到此消息的原因有两个。<br><br>1. 管理员为你的组织启用了密码重置，但你尚未注册使用该服务。 若要注册以便进行密码重置，请根据你的验证方法参阅以下某篇文章：[设置安全信息以使用验证器应用（预览版）](security-info-setup-auth-app.md)、[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)、[设置安全信息以使用短信消息（预览版）](security-info-setup-text-msg.md)、[设置安全信息以使用电子邮件（预览版）](security-info-setup-email.md)或[设置安全信息以使用安全性问题（预览版）](security-info-setup-questions.md)。<br><br>2. 你的管理员未为你的组织启用密码重置。 在此情况下，必须选择“联系管理员”链接以向管理员发送电子邮件，请求重置密码。|
 
 ## <a name="next-steps"></a>后续步骤
+
 - 在[安全信息（预览版）概述](user-help-security-info-overview.md)一文中了解安全信息。
 
-- 在[双重验证概述](user-help-two-step-verification-overview.md)一文中了解双重验证。 
-
-- 如果丢失或忘记密码，请从[密码重置门户](https://passwordreset.microsoftonline.com/)重置密码
-
-- 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。
+- 如果尝试返回到 Xbox、hotmail.com 或 outlook.com 等个人帐户，请在[无法登录 Microsoft 帐户文章时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)尝试中的建议。

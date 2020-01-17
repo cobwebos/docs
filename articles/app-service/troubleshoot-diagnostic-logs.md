@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684255"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121352"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -23,11 +23,11 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 >
 
-|Type|平台|Location|描述|
+|类型|平台|位置|Description|
 |-|-|-|-|
 | 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 blob | 记录由应用程序代码生成的消息。 这些消息可以由你选择的 web 框架或你的应用程序代码使用你的语言的标准日志模式直接生成。 为每条消息分配以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择要进行日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 blob| 采用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息都包括 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
-| 详细错误日志记录 | Windows | 应用服务文件系统 | 已发送到客户端浏览器的 *.htm*错误页的副本。 出于安全原因，不应将详细的错误页发送到生产中的客户端，但应用服务可以在每次出现包含 HTTP 代码400或更高版本的应用程序错误时保存错误页。 页面可能包含可帮助确定服务器返回错误代码的原因的信息。 |
+| 详细的错误消息| Windows | 应用服务文件系统 | 已发送到客户端浏览器的 *.htm*错误页的副本。 出于安全原因，不应将详细的错误页发送到生产中的客户端，但应用服务可以在每次出现包含 HTTP 代码400或更高版本的应用程序错误时保存错误页。 页面可能包含可帮助确定服务器返回错误代码的原因的信息。 |
 | 失败请求跟踪 | Windows | 应用服务文件系统 | 有关失败请求的详细跟踪信息，包括用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 为每个失败的请求生成一个文件夹，其中包含 XML 日志文件，以及用于查看日志文件的 XSL 样式表。 |
 | 部署日志记录 | Windows、Linux | 应用服务文件系统 | 将内容发布到应用时的日志。 部署日志记录自动发生，并且没有可配置的部署日志记录设置。 它可帮助你确定部署失败的原因。 例如，如果使用[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)，则可以使用部署日志记录来确定该脚本失败的原因。 |
 
@@ -59,7 +59,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 | 级别 | 包含的类别 |
 |-|-|
-|**已禁用** | None |
+|**已禁用** | 无 |
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|
@@ -163,7 +163,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于 Windows 应用，ZIP 文件包含应用服务文件系统中*D:\Home\LogFiles*目录的内容。 其结构如下：
 
-| 日志类型 | 目录 | 描述 |
+| 日志类型 | 目录 | Description |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所使用的日志提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 文件和一个 XSL 文件。 您可以在浏览器中查看格式化的 XML 文件。 |
@@ -182,7 +182,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux （Docker）支持 | 描述 |
+| 日志类型 | Windows 支持 | Linux （Docker）支持 | Description |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
@@ -191,7 +191,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceFileAuditLogs | TBA | TBA | 通过 FTP 和 Kudu 进行的文件更改 |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | 应用程序日志 |
 
-## <a name="nextsteps"></a>后续步骤
+## <a name="nextsteps"></a> 后续步骤
 * [查询日志与 Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [如何监视 Azure 应用服务](web-sites-monitor.md)
 * [在 Visual Studio 中对 Azure 应用服务进行故障排除](troubleshoot-dotnet-visual-studio.md)

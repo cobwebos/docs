@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 478a7ae8d6938ee4d4ef5c30c8126c3e95f35305
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921116"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121278"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -255,9 +255,9 @@ JavaScript 代码如下所示：
 
 |function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|type || 必须设置为 `cosmosDBTrigger`。 |
-|direction || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|name || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|name | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -1737,9 +1737,9 @@ public class DocsFromRouteSqlQuery {
 
 |function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|type     || 必须设置为 `cosmosDB`。        |
-|direction     || 必须设置为 `in`。         |
-|name     || 表示函数中的文档的绑定参数的名称。  |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
+|direction     | 不适用 | 必须设置为 `in`。         |
+|name     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -2366,9 +2366,9 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 |function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|type     || 必须设置为 `cosmosDB`。        |
-|direction     || 必须设置为 `out`。         |
-|name     || 表示函数中的文档的绑定参数的名称。  |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
+|direction     | 不适用 | 必须设置为 `out`。         |
+|name     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |

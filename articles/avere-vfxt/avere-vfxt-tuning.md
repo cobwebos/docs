@@ -4,30 +4,22 @@ description: 用于优化 Avere vFXT for Azure 性能的自定义设置概述
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414335"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152928"
 ---
 # <a name="cluster-tuning"></a>群集优化
 
 大多数 vFXT 群集都可以受益于自定义的性能设置。 这些设置有助于群集最充分地利用特定的工作流、数据集和工具。
 
-这项自定义操作应在支持代表的配合下完成，因为它通常涉及到配置 Avere 控制面板中未提供的功能。
+此自定义应通过支持代表提供帮助，因为它可能涉及到配置 Avere 控制面板中没有的功能。
 
-本部分将介绍一些可以完成的自定义优化。
-
-<!-- 
-[ xxx keep or not? \/ research this xxx ]
-
-> [!TIP]
-> The VDBench utility can be helpful in generating I/O workloads to test a vFXT cluster. Read [Measuring vFXT Performance](vdbench.md) to learn more.
-
--->
+本部分介绍一些可完成的自定义优化。
 
 ## <a name="general-optimizations"></a>常规优化
 
@@ -42,19 +34,21 @@ ms.locfileid: "75414335"
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>云 NAS 或云网关优化
 
-若要在云 NAS 或网关方案（其中的 vFXT 群集会提供云容器的 NAS 式访问）中的 vFXT 群集与云存储之间利用更高的数据速度，支持代表可以建议更改如下所述的设置，以便更主动地将数据从缓存推送到存储卷：
+在云 NAS 或网关方案中，vFXT 群集提供对云容器的 NAS 样式访问。 若要在 vFXT 群集和云存储之间利用更高的数据速度，你的代表可能会建议将设置更改为更主动地将数据从缓存推送到存储卷。 例如：
 
 * 增加群集与存储容器之间的 TCP 连接数
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>云爆发或混合 WAN 优化
 
-在云爆发方案或混合存储 WAN 优化方案（其中的 vFXT 群集会在云与本地硬件存储之间提供集成），以下更改可能有所帮助：
+在云暴冲方案或混合存储广域网优化方案中，vFXT 群集提供云和本地硬件存储之间的集成。 这些更改可能会有所帮助：
 
 * 增加群集与核心文件管理器之间允许的 TCP 连接数
 * 为远程核心文件管理器启用 WAN 优化设置（此设置可用于远程本地文件管理器或不同 Azure 区域中的核心云文件管理器。）
-* 增大 TCP 套接字缓冲区大小（取决于工作负荷和性能需求）
-* 启用“始终转发”设置，以减少冗余缓存的文件（取决于工作负荷和性能需求）
+* 增大 TCP 套接字缓冲区大小<sup>*</sup>
+* 启用 "始终转发" 设置以减少冗余缓存文件<sup>*</sup>
+
+<sup>*</sup>根据工作负荷和性能需求的不同，这些调整可能不适用于所有系统。
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>帮助优化 Avere vFXT for Azure
 
-使用[获取系统帮助](avere-vfxt-open-ticket.md)中所述的过程来联系支持人员，以获取这些优化工作的帮助。
+若要与支持人员联系以了解这些优化，请使用在[系统中获取帮助](avere-vfxt-open-ticket.md)中所述的过程。

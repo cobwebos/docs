@@ -3,12 +3,12 @@ title: 通过 PowerShell 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 6857d7d41cb05fd168d451ed3a955107acb4ec93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c31cde9d3023c49a03f4a7a6c434c16405c88bea
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477897"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121924"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="test-template-deployments"></a>测试模板部署
 
-若要测试模板和参数值而不实际部署任何资源，请使用 [Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment)。 
+若要测试模板和参数值而不实际部署任何资源，请使用[AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment)。 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `

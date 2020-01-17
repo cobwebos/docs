@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848419"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155207"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
 
@@ -44,7 +44,7 @@ ms.locfileid: "74848419"
 7. 选择“身份验证方法引用”作为传入声明类型。
 8. 选择“传递所有声明值”。
     ![添加转换声明规则向导](./media/howto-mfa-adfs/configurewizard.png)
-9. 单击“**完成**”。 关闭 AD FS 管理控制台。
+9. 单击“完成”。 关闭 AD FS 管理控制台。
 
 ## <a name="trusted-ips-for-federated-users"></a>联合用户的受信任 IP
 
@@ -67,7 +67,7 @@ ms.locfileid: "74848419"
 6. 在“声明规则名称”旁边的框中，为规则指定名称。 例如：InsideCorpNet。
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”。
    ![在公司网络声明中添加](./media/howto-mfa-adfs/trustedip4.png)
-8. 单击“**完成**”。
+8. 单击“完成”。
 9. 在“颁发转换规则”上，单击 **添加规则**。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，并单击“下一步”。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”。
@@ -76,7 +76,7 @@ ms.locfileid: "74848419"
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![创建自定义声明，使用户保持登录](./media/howto-mfa-adfs/trustedip5.png)
-13. 单击“**完成**”。
+13. 单击“完成”。
 14. 单击“应用”。
 15. 单击“确定”。
 16. 关闭“AD FS 管理”。
@@ -85,8 +85,8 @@ ms.locfileid: "74848419"
 
 创建声明后，可以开始配置受信任的 IP。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择**Azure Active Directory** > 的**条件访问** > **命名位置**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 选择**Azure Active Directory** > **安全** > " > **命名位置**的**条件性访问**"。
 3. 在 "**条件访问-命名位置**" 边栏选项卡中，选择 "**配置 MFA 受信任的 ip** "
 
    ![Azure AD 条件访问命名位置配置 MFA 受信任的 Ip](./media/howto-mfa-adfs/trustedip6.png)

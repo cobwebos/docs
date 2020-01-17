@@ -4,14 +4,14 @@ description: 允许不具备订阅所有者权限的用户部署适用于 Azure 
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415060"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153269"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授权非所有者部署 Avere vFXT
 
@@ -72,7 +72,7 @@ ms.locfileid: "75415060"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-完成此过程后，分配了此角色的任何用户均对订阅有下列权限：
+完成此过程后，该角色向任何用户分配了订阅的以下权限：
 
 * 创建和配置网络基础结构
 * 创建群集控制器

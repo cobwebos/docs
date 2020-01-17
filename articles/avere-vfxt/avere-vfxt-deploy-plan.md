@@ -4,20 +4,25 @@ description: 介绍部署 Avere vFXT for Azure 之前的规划工作
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d4fc2a6b7def4b7c55faa37fbed756fbb830ff73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415438"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153627"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
 本文介绍了如何为 Azure 群集规划新的 Avere vFXT，并根据需要调整其大小。
 
-在访问 Azure 市场或创建任何 VM 之前，请考虑群集如何与 Azure 中的其他元素交互。 规划好要将群集资源定位在专用网络和子网中的哪个位置，并确定后端存储的位置。 确保创建的群集节点足够强大，可以支持自己的工作流。
+在转到 Azure Marketplace 或创建任何 Vm 之前，请考虑以下详细信息：
+
+* 群集将如何与其他 Azure 资源交互？
+* 群集元素应该位于专用网络和子网中的哪个位置？
+* 将使用哪种类型的后端存储以及群集如何访问它？
+* 群集节点需要支持哪些功能？
 
 继续阅读，了解详细信息。
 
@@ -41,12 +46,14 @@ ms.locfileid: "75415438"
 
 ![显示一个子网中的群集控制器和群集 VM 的示意图。 子网边界的周围是 VNet 边界。 VNet 中的六边形表示存储服务终结点；它连接到 VNet 外部的 Blob 存储，如虚线箭头所示。](media/avere-vfxt-components-option.png)
 
-规划 Avere vFXT 系统的网络基础结构时，请遵循以下准则：
+规划 Avere vFXT 群集的网络基础结构时，请遵循以下准则：
 
-* 为 Azure 部署的每个 Avere vFXT 创建新订阅，并管理此订阅中的所有组件。 优势包括：
+* 为 Azure 部署的每个 Avere vFXT 创建一个新订阅。 管理此订阅中的所有组件。
+
+  为每个部署使用新订阅的优点包括：
   * 更简单的成本跟踪 - 在一个订阅中查看和审核由资源、基础结构和计算循环产生的所有成本。
   * 更轻松的清理 - 完成项目后，可以删除整个订阅。
-  * 方便地分区资源配额-通过将 Avere vFXT 客户端和群集隔离在单个订阅中，可保护其他关键工作负荷免受可能的资源限制。 这可以避免在为高性能计算工作流带来大量客户端时出现冲突。
+  * 方便的资源配额分区-将 Avere vFXT 客户端和群集隔离在单个订阅中，以防止其他关键工作负荷的可能资源限制。 当为高性能计算工作流提供大量的客户端时，这种隔离会阻止冲突。
 
 * 将客户端计算系统定位在靠近 vFXT 群集的位置。 后端存储可以位于较远的位置。  
 
@@ -54,9 +61,9 @@ ms.locfileid: "75415438"
 
   * 在同一虚拟网络中
   * 在同一资源组中
-  * 在同一存储帐户中
+  * 使用相同的存储帐户
   
-  在大多数情况下，自动群集创建模板会处理这种情况。
+  在大多数情况下，群集创建模板将处理此配置。
 
 * 群集必须位于其自己的子网中，以避免与客户端或其他计算资源发生 IP 地址冲突。
 
@@ -69,7 +76,7 @@ ms.locfileid: "75415438"
   | 资源组 | 是，如果为空 | 必须为空|
   | 存储帐户 | 如果在创建群集后连接现有 Blob 容器，则为 **"是"** <br/>  如果在群集创建过程中创建新的 Blob 容器，则为**否** | 现有 Blob 容器必须为空 <br/> &nbsp; |
   | 虚拟网络 | 是 | 如果创建新的 Azure Blob 容器，则必须包含存储服务终结点 |
-  | 子网 | 是 |   |
+  | 子网 | 是 | 不能包含其他资源 |
 
 ## <a name="ip-address-requirements"></a>IP 地址要求
 
@@ -79,7 +86,7 @@ Avere vFXT 群集使用以下 IP 地址：
 
 * 一个群集管理 IP 地址。 此地址可以根据需要在群集中的节点之间移动，以使其始终可用。 使用此地址连接到 Avere 控制面板配置工具。
 * 对于每个群集节点：
-  * 至少有一个面向客户端的 IP 地址。 （所有面向客户端的地址由群集的 *vserver* 管理，此工具可根据需要在节点之间移动这些地址。）
+  * 至少有一个面向客户端的 IP 地址。 （所有面向客户端的地址由群集的*vserver*管理，可根据需要在节点间移动 IP 地址。）
   * 一个用于群集通信的 IP 地址
   * 一个实例 IP 地址（分配给 VM）
 
@@ -102,9 +109,7 @@ Avere vFXT 群集使用以下 IP 地址：
 
 每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 每个节点 4 TB 是 Standard_E32s_v3 节点的建议缓存大小。
 
-有关这些 Vm 的其他信息，请阅读 Microsoft Azure 文档：
-
-* [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+有关这些 Vm 的其他信息，请阅读 Microsoft Azure 文档：[内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>帐户配额
 
@@ -112,11 +117,11 @@ Avere vFXT 群集使用以下 IP 地址：
 
 ## <a name="back-end-data-storage"></a>后端数据存储
 
-后端存储系统会将文件提供给群集的缓存，还会接收来自缓存的已更改数据。 决定你的工作集是要长期存储在新的 Blob 容器中、现有云中还是硬件存储系统中。 这些后端存储系统称为*核心文件*系统。
+后端存储系统会将文件提供给群集的缓存，还会接收来自缓存的已更改数据。 确定你的工作集是在新的 Blob 容器中还是在现有存储系统（云或硬件）中存储长期。 这些后端存储系统称为*核心文件*系统。
 
 ### <a name="hardware-core-filers"></a>硬件核心文件
 
-创建群集后，将硬件存储系统添加到 vFXT 群集。 你可以使用任何现有的本地硬件系统（包括本地系统），只要存储系统可以从群集的子网访问。
+创建群集后，将硬件存储系统添加到 vFXT 群集。 您可以使用各种常用的硬件系统（包括本地系统），只要存储系统可以从群集的子网访问。
 
 有关如何将现有存储系统添加到 Avere vFXT 群集的详细说明，请阅读[配置存储](avere-vfxt-add-storage.md)。
 
@@ -142,7 +147,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公共 I
   > [!TIP]
   > 如果在群集控制器上设置公共 IP 地址，则可以使用它作为跳转主机。 有关详细信息，请阅读[群集控制器用作跳转主机](#cluster-controller-as-jump-host)。
 
-* 虚拟专用网络 (VPN) - 配置到专用网络的点到站点或站点到站点 VPN。
+* 虚拟专用网络（VPN）-在 Azure 和企业网络中的专用网络之间配置点到站点或站点到站点 VPN。
 
 * Azure ExpressRoute - 通过任一 ExpressRoute 合作伙伴配置专用连接。
 
@@ -156,20 +161,20 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公共 I
 
 创建群集时，可以选择是否在群集控制器上创建公共 IP 地址。
 
-* 如果创建新的**虚拟网络**或新的**子网**，则会为群集控制器分配**公共 IP 地址**。
+* 如果创建新的**虚拟网络**或新的**子网**，则会为群集控制器分配**公共**IP 地址。
 * 如果选择现有虚拟网络和子网，则群集控制器将只有**专用**IP 地址。
 
 ## <a name="vm-access-roles"></a>VM 访问角色
 
 Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml)（RBAC）来授权群集 vm 执行特定任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够向其他群集节点分配或重新分配 IP 地址。
 
-Azure 虚拟机的 Avere vFXT 使用了两个内置的 Azure 角色：
+Avere vFXT 虚拟机使用了两个内置的 Azure 角色：
 
 * 群集控制器使用内置角色[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)。
-* 群集节点使用内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)
+* 群集节点使用内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)。
 
 如果需要自定义 Avere vFXT 组件的访问角色，则必须定义自己的角色，然后在创建 Vm 时将其分配给 Vm。 不能使用 Azure Marketplace 中的部署模板。 如通过[系统获取帮助](avere-vfxt-open-ticket.md)中所述，在 Azure 门户中打开票证，以咨询 Microsoft 客户服务和支持部门。
 
 ## <a name="next-step-understand-the-deployment-process"></a>后续步骤：了解部署过程
 
-[部署概述](avere-vfxt-deploy-overview.md)提供了为 Azure 系统创建 Avere vFXT 所需步骤的大图视图，并使其准备好提供数据。
+[部署概述](avere-vfxt-deploy-overview.md)提供创建 Avere VFXT for Azure 系统所需的步骤的大图，并使其准备好提供数据。

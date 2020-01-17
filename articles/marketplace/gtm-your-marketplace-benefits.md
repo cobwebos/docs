@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: evansma
-ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933919"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121805"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
@@ -86,7 +86,7 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 
 ### <a name="publisher-agreement"></a>发布者协议
 
-本页面上所述的所有活动都包含在[marketplace 发布者协议](https://docs.microsoft.com/legal/marketplace/terms)中，并遵循商业权益计划附录。
+本页面上所述的所有活动都包含在[marketplace 发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中，并遵循商业权益计划附录。
 
 ### <a name="cancellation-policy"></a>取消政策
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979280"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121941"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
@@ -179,7 +179,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 ### <a name="logical-isolation-between-compute-and-storage"></a>计算和存储之间的逻辑隔离
 作为其基本设计的一部分，Microsoft Azure 将基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。
 
-因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 [这](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)意味着，创建虚拟磁盘后，不会针对整体容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
+因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 这意味着，当创建虚拟磁盘时，不会为其整个容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
 ### <a name="isolation-using-storage-access-control"></a>使用存储访问控制的隔离
 **Azure 存储中的访问控制**具有简单的访问控制模型。 每个 Azure 订阅都可以创建一个或多个存储帐户。 每个存储帐户都具有一个密钥，用于控制对该存储帐户中所有数据的访问权限。
 
@@ -320,14 +320,6 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 ## <a name="next-steps"></a>后续步骤
 
-- [适用于 Microsoft Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- 了解[Windows Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 这包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址的允许列表连接到特定终结点。
 
-这包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址的允许列表连接到特定终结点。
-
-- [计算隔离](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。
-
-- [存储隔离](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure 将客户基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。 因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 所有请求都是基于客户的选择通过 HTTP 或 HTTPS 运行的。
+- 了解[Azure 中的虚拟机隔离](../../virtual-machines/windows/isolation.md)。 Azure 计算提供隔离于特定硬件类型并专用于单个客户的虚拟机大小。

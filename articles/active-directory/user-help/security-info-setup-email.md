@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bbdd7f209b2ce22225628416a07524c62f1484
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279026"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156159"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>将电子邮件地址设置为验证方法
 
 可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
-设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)、[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>如果看不到电子邮件选项，则可能是你的组织不允许你将此选项用于密码重置方法。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
+
+## <a name="security-vs-password-reset-verification"></a>安全与密码重置验证
+
+安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+
+| 方法 | 用于 |
+| ------ | -------- |
+| Authenticator 应用 | 双重验证和密码重置身份验证。 |
+| 短信 | 双重验证和密码重置身份验证。 |
+| 电话呼叫 | 双重验证和密码重置身份验证。 |
+| 安全密钥 | 双重验证和密码重置身份验证。 |
+| 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+| 安全提问 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>在安全信息页面设置电子邮件地址
 
@@ -36,19 +50,19 @@ ms.locfileid: "74279026"
 
 ### <a name="to-set-up-your-email-address"></a>设置电子邮件地址
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”。
 
     ![“添加方法”框，已选中“电子邮件”](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. 在“电子邮件”页，键入电子邮件地址（例如 **）并选择“下一步”** alain@gmail.com。
+4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步”。
 
     ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-emailaddress.png)
 
@@ -95,6 +109,6 @@ ms.locfileid: "74279026"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

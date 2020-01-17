@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 9001a7837e6106df4e052277168388064e65e7ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: f245254c85cbf9223ab5dda60799c6b7ce72f11c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893309"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120207"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
 
@@ -270,7 +270,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 有关 Azure 存储身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/common/storage-auth-aad.md)。 若要使用 Azure 资源的托管标识身份验证，请执行以下步骤：
 
-1. 通过复制与工厂一起生成的 "服务标识应用程序 ID" 的值，[检索数据工厂托管的标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 通过复制与工厂一起生成的 "**托管标识对象 ID** " 的值，来[检索数据工厂托管的标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 授予托管标识在 Azure Blob 存储中的适当权限。 如需了解角色的更多详情，请参阅[使用 RBAC 管理对 Azure 存储数据的访问权限](../storage/common/storage-auth-aad-rbac.md)。
 

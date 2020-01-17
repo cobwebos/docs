@@ -4,14 +4,14 @@ description: 如何为 Avere vFXT for Azure 添加后端存储系统
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416490"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153983"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -32,7 +32,7 @@ ms.locfileid: "75416490"
 
 ## <a name="create-a-core-filer"></a>创建核心文件管理器
 
-“核心文件管理器”是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件的详细信息，请参阅[Avere 群集设置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)。
+"核心文件服务器" 是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件的详细信息，请参阅[Avere 群集设置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)。
 
 要添加核心文件管理器，请选择以下两种主要类型的核心文件管理器之一：
 
@@ -69,7 +69,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Azure Blob 存储云核心文件服务器
 
-要将 Azure Blob 存储用作 vFXT 群集的后端存储，需要将一个空容器添加为核心文件管理器。
+若要使用 Azure Blob 存储作为 vFXT 群集的后端存储，需要将一个空容器添加为核心文件服务器。
 
 将 Blob 存储添加到群集需要执行以下任务：
 

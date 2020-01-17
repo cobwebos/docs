@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561144"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119969"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -48,6 +48,9 @@ ms.locfileid: "75561144"
 
 - Windows Server 2019 Datacenter
 - Windows 10 1809 及更高版本
+
+> [!IMPORTANT]
+> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的**同一**目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 
 
 下面是目前（此功能的预览期间）受支持的 Azure 区域：
 

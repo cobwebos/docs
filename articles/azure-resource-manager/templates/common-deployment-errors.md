@@ -4,12 +4,12 @@ description: 说明如何解决使用 Azure 资源管理器将资源部署到 Az
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 37c2e8d64da633dc85c46a4f6bf6152785a170da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58519056bd59f449fe26aa2fee3620f3ed28cc31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478053"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154510"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -201,19 +201,19 @@ az group deployment operation list \
 
 ```json
 {
-    "apiVersion": "2016-09-01",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-            "uri": "{template-uri}",
-            "contentVersion": "1.0.0.0"
-        },
-        "debugSetting": {
-           "detailLevel": "requestContent, responseContent"
-        }
+  "type": "Microsoft.Resources/deployments",
+  "apiVersion": "2016-09-01",
+  "name": "nestedTemplate",
+  "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+      "uri": "{template-uri}",
+      "contentVersion": "1.0.0.0"
+    },
+    "debugSetting": {
+       "detailLevel": "requestContent, responseContent"
     }
+  }
 }
 ```
 
@@ -226,26 +226,25 @@ az group deployment operation list \
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageName": {
-        "type": "string"
-    },
-    "storageResourceGroup": {
-        "type": "string"
-    }
+  "storageName": {
+    "type": "string"
+  },
+  "storageResourceGroup": {
+    "type": "string"
+  }
   },
   "variables": {},
   "resources": [],
   "outputs": {
-    "exampleOutput": {
-        "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
-        "type" : "object"
-    }
+  "exampleOutput": {
+    "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
+    "type" : "object"
+  }
   }
 }
 ```
 
 或者，假设您收到的部署错误与错误设置依赖关系无关。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 如果确定已正确定义该资源，请添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。
-
 
 ## <a name="next-steps"></a>后续步骤
 

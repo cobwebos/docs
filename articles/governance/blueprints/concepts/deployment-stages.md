@@ -3,12 +3,12 @@ title: 蓝图部署的阶段
 description: 了解 Azure 蓝图服务在创建蓝图分配时所经历的与安全和项目相关的步骤。
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463552"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156618"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>蓝图部署的阶段
 

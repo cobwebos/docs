@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6fb6153c2dc5794fce0e74d1981e98ad1f37fc1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279009"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156091"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>将安全问题设置为验证方法
 
 可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
-设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)、[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>如果看不到 "安全问题" 选项，则您的组织可能不允许您将此选项用于密码重置方法。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>安全验证与密码重置身份验证
+
+安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+
+| 方法 | 用于 |
+| ------ | -------- |
+| Authenticator 应用 | 双重验证和密码重置身份验证。 |
+| 短信 | 双重验证和密码重置身份验证。 |
+| 电话呼叫 | 双重验证和密码重置身份验证。 |
+| 安全密钥 | 双重验证和密码重置身份验证。 |
+| 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+| 安全提问 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
 
 ## <a name="set-up-your-security-questions-from-the-security-info-page"></a>在“安全信息”页上设置安全性问题
 
@@ -42,13 +56,13 @@ ms.locfileid: "74279009"
 
 ### <a name="to-set-up-your-security-questions"></a>设置安全性问题
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“安全性问题”，然后选择“添加”。
 
@@ -94,6 +108,6 @@ ms.locfileid: "74279009"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

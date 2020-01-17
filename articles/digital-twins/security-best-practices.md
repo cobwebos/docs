@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860939"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122553"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure 数字孪生安全最佳做法
 
@@ -40,6 +40,7 @@ Azure 数字孪生还使用 Azure IoT 中存在的其他安全功能，包括 Az
 > * 限制 I/O 和设备带宽，以提高性能。 通过阻止拒绝服务攻击，速率限制可增强安全性。
 > * 使设备固件、操作系统和软件保持最新。
 > * 定期审核并查看设备、软件、网络和网关安全最佳做法，因为它们会不断改进和发展。
+> * 使用受信任的经过认证的安全系统、软件和设备。 例如，查看适用于 Azure 云[的符合性产品/服务](https://azure.microsoft.com/overview/trusted-cloud/compliance/)。
 
 安全地保护 IoT 空间的一些关键做法包括：
 
@@ -67,8 +68,8 @@ Azure 数字孪生使用[Azure Active Directory](https://docs.microsoft.com/azur
 > * 使用由受信任的[证书颁发机构](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)颁发的证书（而非应用机密）进行身份验证。
 > * 为令牌限制 OAuth 2.0 的访问范围。
 > * 验证令牌有效的时间长度以及它是否依然有效。
-> * 设置令牌保持有效的适当时间长度。
-> * 刷新过期的令牌。
+> * 设置令牌保持有效的适当时间长度。 刷新过期的令牌。
+> * [根据基于角色的访问控制最佳实践](#role-based-access-control-best-practices)，删除未使用的**重定向 uri**和权限。
 
 ## <a name="role-based-access-control-best-practices"></a>基于角色的访问控制最佳做法
 

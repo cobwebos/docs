@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278950"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156074"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>将安全密钥设置为验证方法
 
@@ -25,8 +25,21 @@ ms.locfileid: "74278950"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
+>[!Note]
+> 如果看不到 "安全密钥" 选项，则可能你的组织不允许你使用此选项进行验证。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
+
+## <a name="security-verification-versus-password-reset-authentication"></a>安全验证与密码重置身份验证
+
+安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+
+| 方法 | 用于 |
+| ------ | -------- |
+| Authenticator 应用 | 双重验证和密码重置身份验证。 |
+| 短信 | 双重验证和密码重置身份验证。 |
+| 电话呼叫 | 双重验证和密码重置身份验证。 |
+| 安全密钥 | 双重验证和密码重置身份验证。 |
+| 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+| 安全提问 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
 
 ## <a name="what-is-a-security-key"></a>什么是安全密钥？
 
@@ -80,7 +93,7 @@ ms.locfileid: "74278950"
 
     你将返回到 "**设置新登录方法**" 框。
 
-7. 选择“下一步”。
+7. 选择“**下一页**”。
 
 8. 返回到 "**安全信息**" 页，为新的安全密钥键入稍后将识别的名称，然后选择 "**下一步**"。
 
@@ -154,6 +167,6 @@ ms.locfileid: "74278950"
 
 - 有关[与 Microsoft 兼容的安全密钥](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)的详细信息。
 
-- 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

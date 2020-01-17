@@ -3,19 +3,19 @@ title: 快速入门：创建自定义命令（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何创建和测试托管自定义命令应用程序。
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446876"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155581"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>快速入门：创建自定义命令（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "75446876"
 
 ## <a name="prerequisites"></a>必备组件
 
-- 语音订阅。 
+- 语音订阅。
 
 如果没有语音订阅，可以通过导航到[Speech Studio](https://speech.microsoft.com/)并选择 "**创建语音资源**" 来创建一个。
 
@@ -73,7 +73,7 @@ ms.locfileid: "75446876"
 
 ## <a name="update-luis-resources-optional"></a>更新 LUIS 资源（可选）
 
-您可以在 "新建项目" 窗口中更新创作资源集，并设置用于在运行时识别输入的预测资源。 
+您可以在 "新建项目" 窗口中更新创作资源集，并设置用于在运行时识别输入的预测资源。
 
 > [!NOTE]
 > 你需要先设置预测资源，然后应用程序请求的预测超出了创作资源提供的1000请求。

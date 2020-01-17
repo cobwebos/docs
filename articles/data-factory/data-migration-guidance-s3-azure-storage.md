@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927476"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122638"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -47,7 +47,7 @@ ADF 提供的无服务器体系结构允许不同级别的并行度，这允许�
 
 在单个复制活动运行中，ADF 具有内置的重试机制，因此它可以处理数据存储或基础网络中特定级别的暂时性故障。 
 
-执行从 S3 到 Blob 以及从 S3 到 ADLS Gen2 的二进制复制时，ADF 会自动执行检查点操作。  如果复制活动运行失败或超时，则在后续重试时（请确保重试计数 > 1），副本将从上一个故障点继续，而不是从开始处恢复。 
+执行从 S3 到 Blob 以及从 S3 到 ADLS Gen2 的二进制复制时，ADF 会自动执行检查点操作。  如果复制活动运行失败或超时，则在后续重试时，副本将从上一个失败点恢复，而不是从开头开始恢复。 
 
 ## <a name="network-security"></a>网络安全 
 
@@ -86,7 +86,7 @@ ADF 提供的无服务器体系结构允许不同级别的并行度，这允许�
 
 ### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移 
 
-建议在迁移超过 10 TB 的数据时使用数据分区。  若要对数据进行分区，请利用 "前缀" 设置按名称筛选 Amazon S3 中的文件夹和文件，然后每个 ADF 复制作业可以一次复制一个分区。  可以并发运行多个 ADF 复制作业，以获得更好的吞吐量。 
+建议在迁移超过 100 TB 的数据时使用数据分区。  若要对数据进行分区，请利用 "前缀" 设置按名称筛选 Amazon S3 中的文件夹和文件，然后每个 ADF 复制作业可以一次复制一个分区。  可以并发运行多个 ADF 复制作业，以获得更好的吞吐量。 
 
 如果任何复制作业由于网络或数据存储暂时性问题而失败，则可以重新运行失败的复制作业，重新加载 AWS S3 中的特定分区。  加载其他分区的所有其他复制作业都不会受到影响。 
 

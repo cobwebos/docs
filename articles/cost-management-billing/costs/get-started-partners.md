@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988404"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157131"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
@@ -213,7 +213,7 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 | 位置 | 资源的规范化位置。 | N/A |
 | effectivePrice | 服务的有效单价（定价货币）。 产品、服务系列、计量和产品/服务的独特之处。 与计费帐户的价目表中的定价一起使用。 如果有分层定价或包含数量，则会显示消耗的混合价格。 | 进行调整后的单位价格。 |
 | 数量 | 购买或消耗的度量数量。 计费期间使用的计量量。 | 单位数。 确保在协调期间它与计费系统中的信息相匹配。 |
-| unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和10，计。 |
+| unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和10000秒。 |
 | pricingCurrency | 定义单位价格的货币。 | 价目表中的货币。|
 | billingCurrency | 定义计费成本的货币。 | 客户的地理区域的货币。 |
 | chargeType | 定义成本在 Azure 成本管理中代表的费用类型，如购买和退款。 | 费用或调整的类型。 对当前活动不可用。 |
@@ -257,7 +257,7 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 ## <a name="export-cost-data-to-azure-storage"></a>将成本数据导出到 Azure 存储
 
-具有合作伙伴租户中计费范围访问权限的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 blob。 Blob 必须位于合作伙伴租户中的订阅上，该订阅不是共享服务订阅或客户订阅。 若要启用成本数据导出，我们建议你在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 在 "即用即付" 订阅中托管的 Azure 存储 blob 上创建导出存储帐户。 根据伙伴创建导出的范围，会自动将关联的数据导出到存储帐户，并定期自动导出。
+具有合作伙伴租户中计费范围访问权限的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 blob。 Blob 必须位于合作伙伴租户中的订阅上，该订阅不是共享服务订阅或客户订阅。 若要启用成本数据导出，我们建议你在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 在 "即用即付" 订阅中托管的 Azure 存储 blob 上创建导出存储帐户。 根据伙伴创建导出的范围，会定期自动将关联的数据导出到存储帐户。
 
 具有对订阅的 RBAC 访问权限的用户还可以将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 blob。
 
@@ -265,7 +265,11 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 在 Azure 门户中，登录到合作伙伴租户或客户租户，并选择 "**成本管理 + 计费**"。 选择相应的作用域（例如，计费帐户），然后选择 "**成本分析**"。 加载页面时，选择 "**导出**"。 选择 "在计划导出下**查看所有导出**"。
 
+![选择 "导出" 和 "查看所有导出"](./media/get-started-partners/export01.png)
+
 接下来，选择 "**添加**" 并键入名称，并选择导出类型。 选择 "**存储**" 选项卡，并输入所需的信息。
+
+![添加新导出并选择存储选项卡](./media/get-started-partners/export02.png)
 
 在合作伙伴租户中创建导出时，请在 "合作伙伴租户" 中选择 "即用即付" 订阅。 使用该订阅创建 Azure 存储帐户。
 
@@ -274,6 +278,8 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 查看内容，然后选择 "**创建**" 来计划导出。
 
 若要验证 "导出" 列表中的数据，请选择存储帐户名称。 在 "存储帐户" 页上，选择 "**容器**"，然后选择容器。 导航到相应的文件夹，然后选择 CSV 文件。 选择 "**下载**" 以获取 CSV 文件并将其打开。 导出的导出数据类似于与 Azure 门户中的使用情况详细信息类似的成本数据。
+
+![导出数据的示例](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>成本管理 REST Api
 

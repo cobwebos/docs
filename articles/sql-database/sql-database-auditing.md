@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028527"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122689"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -249,11 +249,11 @@ ms.locfileid: "76028527"
 
 - 若要在存储帐户中配置不可变审核，请参阅[允许受保护的追加 blob 写入](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)。 请注意，审核容器名称为**sqldbauditlogs**。
 
-> [!IMPORTANT] 
->  基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
-> - 美国东部
-> - 美国中南部
-> - 美国西部 2
+    > [!IMPORTANT]
+    > 基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
+    > - 美国东部
+    > - 美国中南部
+    > - 美国西部 2
 
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL Server 和数据库审核

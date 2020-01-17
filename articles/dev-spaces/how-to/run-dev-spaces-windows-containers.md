@@ -1,20 +1,20 @@
 ---
 title: 与 Windows 容器交互
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: 了解如何使用 Windows 容器在现有群集上运行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Windows 容器
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867296"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156992"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 与 Windows 容器交互
 
-可以在新的和现有的 Kubernetes 命名空间上启用 Azure Dev Spaces。 Azure Dev Spaces 将运行并检测在 Linux 容器上运行的服务。 这些服务还可以与在同一命名空间中的 Windows 容器上运行的应用程序进行交互。 本文介绍如何使用 Dev 空间在包含现有 Windows 容器的命名空间中运行服务。
+可以在新的和现有的 Kubernetes 命名空间上启用 Azure Dev Spaces。 Azure Dev Spaces 将运行并检测在 Linux 容器上运行的服务。 这些服务还可以与在同一命名空间中的 Windows 容器上运行的应用程序进行交互。 本文介绍如何使用 Dev 空间在包含现有 Windows 容器的命名空间中运行服务。 此时，无法通过 Azure Dev Spaces 调试或附加到 Windows 容器。
 
 ## <a name="set-up-your-cluster"></a>设置群集
 
@@ -36,8 +36,9 @@ kubectl get nodes
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 将[破坏][using-taints]应用于 Windows 节点。 Windows 节点上的破坏阻止在 Windows 节点上运行从计划 Linux 容器的开发空间。 以下命令示例命令将破坏应用到前面示例中的*aksnpwin987654* Windows 节点。
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-示例应用程序使用[Helm 2][helm-installed]在群集上运行 Windows 服务。 在群集上安装 Helm，并向其授予正确的权限：
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-导航到 `charts` 目录，并运行 Windows 服务：
+示例应用程序使用[Helm][helm-installed]在群集上运行 Windows 服务。 导航到 `charts` 目录，并使用 Helm 运行 Windows 服务：
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 上述命令使用 Helm 在*dev*命名空间中运行你的 Windows 服务。 如果没有名为*dev*的命名空间，则会创建它。
@@ -122,16 +115,15 @@ spec:
 使用 `helm list` 列出你的 Windows 服务的部署：
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-在上面的示例中，部署的名称为*gilded-jackal*。 使用 `helm upgrade`的新配置更新 Windows 服务：
+在上面的示例中，部署的名称为*windows 服务*。 使用 `helm upgrade`的新配置更新 Windows 服务：
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 由于你更新了 `deployment.yaml`，因此开发人员空间不会尝试并检测你的服务。
@@ -182,7 +174,7 @@ Service 'webfrontend' port 80 (http) is available via port forwarding at http://
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109952"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121703"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转换到文本的源语言
 
@@ -26,23 +26,28 @@ ms.locfileid: "74109952"
 
 ## <a name="how-to-specify-source-language-in-c"></a>如何在中指定源语言C#
 
-第一步是创建 `SpeechConfig`：
+在此示例中，使用 `SpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-接下来，指定 `SpeechRecognitionLanguage`的音频源语言：
+在此示例中，使用 `SourceLanguageConfig`提供源语言。 然后，将 `sourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-如果要使用自定义模型进行识别，则可以使用 `EndpointId`指定终结点：
+在此示例中，使用 `SourceLanguageConfig`提供源语言和自定义终结点。 然后，将 `sourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> `SpeechRecognitionLanguage` 和 `EndpointId` set 方法在中的 `SpeechConfig` 类中C#已弃用。 不建议使用这些方法，因此在构造 `SpeechRecognizer`时不应使用这些方法。
 
 ::: zone-end
 

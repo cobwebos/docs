@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: ''
-ms.openlocfilehash: 938d93b1df077914323c7b5f4ee1d42276aeff04
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c102e7ffde7faab5d864c1d9acaafe141664ebf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434909"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119544"
 ---
 # <a name="stay-connected-with-azure-iot-central-preview-features"></a>与 Azure IoT Central 保持连接（预览功能）
 
@@ -21,7 +21,7 @@ ms.locfileid: "75434909"
 
 本文概述了 Azure IoT Central 如何帮助保持设备连接和正常运行。
 
-使用任何旨在大规模操作的 IoT 解决方案，设备管理的结构化方法非常重要。 只需将设备 "连接" 到 "已连接"，您需要一种方法来使设备保持连接状态，并使其在您的解决方案发展、发展和老化时保持正常运行。 Azure IoT Central 提供所需的功能，以确保 IoT 解决方案中的设备在整个应用程序生命周期中都关心。
+使用任何旨在大规模操作的 IoT 解决方案，设备管理的结构化方法非常重要。 仅将设备 "连接" 到云是不够的，你需要使用一种方法来使设备保持连接状态，并使其在你的解决方案发展、发展和老化时保持正常运行。 Azure IoT Central 提供所需的功能，以确保 IoT 解决方案中的设备在整个应用程序生命周期中都关心。
 
 ## <a name="dashboards"></a>仪表板 
 内置[仪表板](howto-manage-devices.md#import-devices)提供了一个可自定义的外围应用，用于监视设备运行状况和遥测数据。 从[应用程序模板](howto-use-app-templates.md)预构建的仪表板开始，或者创建自己的仪表板，以满足应用程序的需求。 可以与应用程序中的所有用户共享仪表板，或将其保留为私有。

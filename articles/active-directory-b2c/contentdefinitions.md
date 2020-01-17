@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064340"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119646"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,7 +37,7 @@ ms.locfileid: "71064340"
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
@@ -61,13 +61,13 @@ ms.locfileid: "71064340"
 
 **ContentDefinition** 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
-| Id | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
+| ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
 
 **ContentDefinition** 元素包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
 | RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
@@ -79,7 +79,7 @@ ms.locfileid: "71064340"
 
 **DataUri** 元素用于指定页面标识符。 Azure AD B2C 使用页面标识符来加载和启动 UI 元素与客户端 JavaScript。 值的格式为 `urn:com:microsoft:aad:b2c:elements:page-name:version`。  下表列出了可以使用的页面标识符。
 
-| ReplTest1 |   描述 |
+| 值 |   Description |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 遇到异常或错误时显示错误页面。 |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | 列出可供用户在登录期间选择的标识提供者。 |
@@ -93,13 +93,13 @@ ms.locfileid: "71064340"
 
 **LocalizedResourcesReferences** 元素包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 内容定义的本地化资源引用列表。 |
 
 **LocalizedResourcesReferences** 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
@@ -141,7 +141,7 @@ ms.locfileid: "71064340"
 
 **ContentDefinition** 元素的 ID 属性指定与内容定义相关的页面类型。 该元素定义要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了标识体验框架识别的内容定义 ID 集及其相关的页面类型。 可以使用任意 ID 创建自己的内容定义。
 
-| id | 默认模板 | 描述 |
+| ID | 默认模板 | Description |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面** - 遇到异常或错误时显示错误页面。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选项页面** - 列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

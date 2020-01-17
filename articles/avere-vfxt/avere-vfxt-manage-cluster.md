@@ -4,20 +4,22 @@ description: 如何管理 Avere 群集 - 添加或删除节点、重启、停止
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d963c951d2202b3f60f0dd93c440b36fabf6478d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415305"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153473"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
-创建群集后，可能需要添加群集节点或是停止或重启群集。 项目完成后，需了解如何永久停止和删除群集。
+在 Avere vFXT for Azure 群集的生命周期中的某个时间点，可能需要添加群集节点，或启动或重新启动群集。 项目完成后，需要知道如何停止群集并将其永久删除。
 
-根据群集管理任务，可能需使用 Avere 控制面板、vfxt.py 命令行群集创建脚本或 Azure 门户来执行此操作。
+本文介绍如何添加或删除群集节点以及其他基本群集操作。 如果需要更改群集设置或监视其工作，请使用[Avere 控制面板](avere-vfxt-cluster-gui.md)。
+
+根据管理任务，你可能需要使用以下三种不同的工具之一： Avere 控制面板、vfxt.py 命令行群集管理脚本和 Azure 门户。
 
 此表概述了可用于每项任务的工具。
 
@@ -38,7 +40,7 @@ ms.locfileid: "75415305"
 
 关闭或停止任何 Azure VM 时，将停止产生计算费用，但仍必须为其存储付费。 如果关闭了 vFXT 节点或整个 vFXT 群集且不打算再重启，则应使用 Azure 门户删除相关 VM。
 
-在 Azure 门户中，已停止的节点（可重启）在 Azure 门户中显示为“已停止”状态；已删除的节点显示为“已停止（已取消分配）”状态，且不再产生计算或存储费用。
+在 Azure 门户中，*已停止*的节点（可以重新启动）显示 Azure 门户中**停止**的状态。 *删除*的节点显示状态 "**已停止" （"已解除分配"）** ，不再产生计算或存储费用。
 
 在删除 VM 之前，通过使用 Avere 控制面板或 vfxt.py 选项来停止或关闭群集，确保所有更改的数据都已从缓存写入后端存储。
 
@@ -50,7 +52,7 @@ Avere 控制面板可用于执行以下任务：
 * 从群集删除节点
 * 停止或重启整个群集
 
-Avere 控制面板优先考虑数据完整性，因此在尝试进行可能造成损坏的操作前，会将已更改的数据写入后端存储。 这使得它比 Avere 门户更加安全。
+Avere 控制面板会排定数据完整性的优先级，因此在可能破坏性操作之前，它会尝试将任何已更改的数据写入后端存储。 这使得它比 Azure 门户更安全。
 
 从 Web 浏览器访问 Avere 控件面板。 如需帮助，请遵循[访问 vFXT 群集](avere-vfxt-cluster-gui.md)中的说明。
 
@@ -69,7 +71,7 @@ FXT 节点设置页面有用于管理单独的节点的控件。
 
 “系统维护”设置页面有重启群集服务、重启群集或安全地关闭群集的命令。 请参阅[管理 > 系统维护](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>)（位于 Avere 群集设置指南中），了解详细信息。
 
-关闭群集时，它会先向“仪表板”选项卡发送状态消息。 片刻后，Avere 控制面板会话将停止响应，这意味着群集已关闭。
+当群集开始关闭时，它会将状态消息发布到 "**仪表板**" 选项卡。几分钟后，消息将停止并最终 Avere 控制面板会话停止响应，这意味着群集已关闭。
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>使用 vfxt.py 管理群集
 
@@ -83,7 +85,7 @@ vfxt.py 脚本可用于执行以下群集管理任务：
 * 停止或启动群集  
 * 销毁群集
 
-与 Avere 控制面板一样，vfxt.py 操作试图在关闭或销毁群集或节点前确保将已更改的数据永久存储在后端存储上。 这使得它比 Avere 门户更加安全。
+与 Avere 控制面板一样，vfxt.py 操作试图在关闭或销毁群集或节点前确保将已更改的数据永久存储在后端存储上。 这使得它比 Azure 门户更安全。
 
 GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
@@ -95,7 +97,7 @@ GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集
 
 提供以下值：
 
-* 群集资源组名称，以及网络和存储资源的资源组名称（与群集资源组名称不一致时）
+* 群集的资源组名称，以及网络和存储资源（如果它们与群集不在同一资源组中）
 * 群集位置
 * 群集网络和子网
 * 群集节点访问角色（使用内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)）
@@ -139,7 +141,7 @@ vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-如果不想写入群集缓存中更改的数据，则可使用选项 ``--quick-destroy``。
+如果不想保存群集缓存中的已更改数据，则可以使用选项 ``--quick-destroy``。
 
 请参阅 [vfxt.py 用法指南](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)，了解其他信息。
 
@@ -195,7 +197,7 @@ Azure 门户可用于执行以下群集管理任务：
 * 与群集节点关联的数据磁盘
 * 网络接口和与群集组件关联的公共 IP
 * 虚拟网络
-* 存储帐户（仅当它们不包含重要数据时）
+* 存储容器和存储帐户（**仅**在不包含重要数据时）
 * 可用性集
 
 ![Azure 门户“所有资源”列表，其中显示了为测试群集创建的资源](media/avere-vfxt-all-resources-list.png)

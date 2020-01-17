@@ -3,12 +3,12 @@ title: 支持 Azure Migrate 的物理服务器评估
 description: 了解支持 Azure Migrate 的物理服务器评估。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028774"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154782"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -58,6 +58,19 @@ Azure Migrate 使用[Azure Migrate 设备](migrate-appliance.md)进行发现和�
 **本** | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ``` https://<appliance-ip-or-name>:44368 ```<br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
 **物理服务器** | **Windows：** 端口443、WinRM 端口5985（HTTP）和5986（HTTPS）上的入站连接，用于从 Windows server 拉取配置和性能元数据。 <br/> **Linux：** 端口22（UDP）上的入站连接，用于从 Linux 服务器拉取配置和性能元数据。 |
 
+## <a name="agent-based-dependency-visualization"></a>基于代理的依赖项可视化
+
+[依赖关系可视化](concepts-dependency-visualization.md)可帮助你可视化要评估和迁移的计算机之间的依赖关系。 对于基于代理的可视化效果，下表总结了要求和限制。
+
+
+要求 | **详细信息**
+--- | ---
+**部署** | 在部署依赖项可视化之前，应准备好一个 Azure Migrate 项目，并将 Azure Migrate： Server 评估工具添加到项目。 将 Azure Migrate 设备设置为发现本地计算机后，部署依赖关系可视化。<br/><br/> 依赖关系可视化在 Azure 政府版中不可用。
+**服务地图** | 基于代理的依赖项可视化使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案。<br/><br/> 若要部署，请将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。
+**Log Analytics 工作区** | 工作区必须与 Azure Migrate 项目位于同一订阅中。<br/><br/> Azure Migrate 支持位于美国东部、东南亚和西欧区域的工作区。<br/><br/>  工作区必须位于[支持服务映射](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)的区域中。<br/><br/> 添加 Azure Migrate 项目后，不能修改该工作区的工作区。
+**费用** | 服务映射解决方案不会在前180天（从 Log Analytics 工作区与 Azure Migrate 项目关联的那一天）产生任何费用。<br/><br/> 在 180 天之后，将收取标准 Log Analytics 费用。<br/><br/> 使用关联 Log Analytics 工作区中服务映射以外的任何解决方案将产生标准 Log Analytics 费用。<br/><br/> 如果删除 Azure Migrate 项目，则工作区不会随之一起删除。 删除项目后，服务映射不可用，将按 Log Analytics 工作区的付费层对每个节点进行收费。
+**代理** | 基于代理的依赖项可视化需要在要分析的每台计算机上安装两个代理。<br/><br/> - [Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依赖关系代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+**Internet 连接** | 如果计算机未连接到 internet，则需要在其上安装 Log Analytics 网关。
 
 ## <a name="next-steps"></a>后续步骤
 

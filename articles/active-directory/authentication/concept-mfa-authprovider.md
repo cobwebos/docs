@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ac23bbb0465be2f15e0a35bb4fd7c331e83988
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848708"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155123"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
@@ -48,11 +48,11 @@ ms.locfileid: "74848708"
 > [!CAUTION]
 > 删除身份验证提供程序时，不会出现任何确认。 选择 "**删除**" 是永久性过程。
 
-可在**Azure 门户** > **Azure Active Directory** > **MFA** > **提供程序**中找到身份验证提供程序。 单击列出的提供程序，查看与该提供程序关联的详细信息和配置。
+身份验证提供程序可在**Azure 门户** > **Azure Active Directory** > **Security** > **MFA** > **提供程序**中找到。 单击列出的提供程序，查看与该提供程序关联的详细信息和配置。
 
 在删除身份验证提供程序之前，请记下在提供程序中配置的任何自定义设置。 确定需要从提供商迁移到常规 MFA 设置的设置，并完成这些设置的迁移。 
 
-链接到提供程序的 Azure MFA 服务器需要使用**Azure 门户** > **Azure Active Directory** > **MFA** > **服务器设置**中生成的凭据重新激活。 在重新激活之前，必须从你的环境中的 Azure MFA 服务器上的 `\Program Files\Multi-Factor Authentication Server\Data\` 目录中删除以下文件：
+链接到提供程序的 Azure MFA 服务器需要使用**Azure 门户** > **Azure Active Directory** > **Security** > **MFA** > **服务器设置**中生成的凭据重新激活。 在重新激活之前，必须从你的环境中的 Azure MFA 服务器上的 `\Program Files\Multi-Factor Authentication Server\Data\` 目录中删除以下文件：
 
 - caCert
 - cert
@@ -64,7 +64,7 @@ ms.locfileid: "74848708"
 
 ![从 Azure 门户删除身份验证提供程序](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-确认所有设置都已迁移后，你可以浏览到**Azure 门户** > **Azure Active Directory** > **MFA** > **提供程序**，然后选择 "省略号 **...** " 并选择 "**删除**"。
+在确认已迁移所有设置后，你可以浏览到**Azure 门户** > **Azure Active Directory** > **Security** > **MFA** > **提供程序**，然后选择 "省略号 **...** " 并选择 "**删除**"。
 
 > [!WARNING]
 > 删除身份验证提供程序将删除与该提供程序关联的任何报表信息。 你可能需要在删除提供程序之前保存活动报告。

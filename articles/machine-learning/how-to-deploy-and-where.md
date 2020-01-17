@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754005"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156907"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75754005"
 
 - 模型。 如果没有训练的模型，则可以使用[本教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 PYTHON 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 PYTHON 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或[Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 ## <a name="connect-to-your-workspace"></a>连接到你的工作区
 
@@ -59,7 +59,7 @@ ms.locfileid: "75754005"
 
 + **使用 VS Code**
 
-   使用 VS Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 VS Code 扩展文档中的 "[部署和管理模型](how-to-vscode-tools.md#deploy-and-manage-models)"。
+   使用 VS Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 VS Code 扩展文档中的 "[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)"。
 
 ## <a id="registermodel"></a>注册模型
 
@@ -115,7 +115,7 @@ ms.locfileid: "75754005"
 
 + **使用 VS Code**
 
-  使用任何模型文件或文件夹，通过使用[VS Code](how-to-vscode-tools.md#deploy-and-manage-models)扩展插件来注册模型。
+  使用任何模型文件或文件夹，通过使用[VS Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)扩展插件来注册模型。
 
 ### <a name="register-a-model-from-a-local-file"></a>从本地文件注册模型
 
@@ -185,7 +185,7 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
     >
     > * Azure 机器学习 SDK 不为 web 服务或 IoT Edge 部署提供访问数据存储或数据集的方法。 如果部署的模型需要访问在部署外部存储的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
     >
-    >   可能适用于你的方案的一种替代方法是[批处理预测](how-to-run-batch-predictions.md)，它在评分期间提供对数据存储区的访问。
+    >   可能适用于你的方案的一种替代方法是[批处理预测](how-to-use-parallel-run-step.md)，它在评分期间提供对数据存储区的访问。
 
 * **依赖项**，如入口脚本或模型所需的帮助程序脚本或 Python/Conda 包。
 

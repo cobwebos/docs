@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: baf3d0e0e40cb9089ac91c51dd40c079232a973b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989756"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121091"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
 使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure 资源管理器公开的 API 系列。  
@@ -42,13 +42,13 @@ ms.locfileid: "75989756"
 * **每小时或每日聚合** - 调用方可以指定 Azure 使用状况数据是以每小时存储桶为单位，还是以每日存储桶为单位。 默认值为每日聚合。
 * **实例元数据（包括资源标记）** - 获取实例级详细信息，例如完全限定的资源 URI (/subscriptions/{subscription-id}/..)，以及资源组信息和资源标记。 对于交叉费用等用例，此元数据可帮助你明确以编程方式按标记分配使用状况。
 * **资源元数据** - 资源详细信息（如测定仪名称、测定仪类别、测定仪子类别、计价单位和区域）让调用方更好地了解消耗量。 此外，我们还将致力于跨 Azure 门户、Azure 使用状况 CSV、EA 计费 CSV 和其他面向公众体验的情况下保持资源元数据术语的一致性，从而让你能够在不同体验间关联数据。
-* **不同产品类型的用量** - 提供产品类型的用量数据，例如即用即付、MSDN、货币承诺、货币信用额和 EA（[CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription) 除外）。
+* **不同产品类型的用量** - 提供产品类型的用量数据，例如即用即付、MSDN、货币承诺、货币信用额和 EA（[CSP](https://docs.microsoft.com/partner-center) 除外）。
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure 资源价目表 API（预览）
 使用 [Azure 资源 RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) 获取可用 Azure 资源的列表，以及每个资源的估计定价信息。 该 API 包括：
 
 * **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azure/overview) 配置访问策略，指定哪些用户或应用程序有权访问 RateCard 数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
-* **支持即用即付、MSDN、货币承诺和货币信用额产品（不支持 EA 和 [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card)）** - 此 API 提供 Azure 产品级费率信息。  此 API 的调用方必须传入产品/服务信息，才能获取资源详细信息和费率。 由于 EA 产品按注册自定义费率，因此我们暂时无法提供 EA 费率。
+* **支持即用即付、MSDN、货币承诺和货币信用额产品（不支持 EA 和 [CSP](https://docs.microsoft.com/partner-center)）** - 此 API 提供 Azure 产品级费率信息。  此 API 的调用方必须传入产品/服务信息，才能获取资源详细信息和费率。 由于 EA 产品按注册自定义费率，因此我们暂时无法提供 EA 费率。
 
 ## <a name="scenarios"></a>方案
 使用状况和价目表 API 组合可以实现下面一些方案：

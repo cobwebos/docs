@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: 3d8a1b965724c0fcb9f07b382ed446d41fe23dac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 12/27/2019
+ms.openlocfilehash: b2fb165dfdcc97116b60075a5c3071171fa46cd7
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772561"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157196"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -91,7 +91,7 @@ ms.locfileid: "75772561"
 * 使用 " [Azure 门户](how-to-manage-workspace.md)" 单击界面，逐步完成每个步骤。
 * 使用用于[python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace)从 Python 脚本或木星笔记本动态创建工作区
 * 需要使用企业安全标准自动执行或自定义创建时，请使用[Azure 资源管理器模板](how-to-create-workspace-template.md)或[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) 。
-* 如果使用 Visual Studio Code，请使用[VS Code 扩展](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)。
+* 如果使用 Visual Studio Code，请使用[VS Code 扩展](tutorial-setup-vscode-extension.md)。
 
 ## <a name="upgrade"></a>升级到 Enterprise edition
 

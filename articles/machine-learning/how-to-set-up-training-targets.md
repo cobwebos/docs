@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771830"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156346"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Azure 机器学习在不同的计算目标之间具有不同的支持。 典型�
 
 ## <a name="whats-an-estimator"></a>估计器是什么？
 
-为了便于使用常见框架进行模型训练，Azure 机器学习 Python SDK 提供了一个替代级别更高的抽象方法，即估计器类。  此类使你能够轻松地构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本（如 scikit-learn）。 建议使用估计器进行定型，因为它会自动 contructs 嵌入对象（如环境或 RunConfiguration 对象）。 如果希望更好地控制如何创建这些对象并 specfify 要为 experiement 运行安装哪些包，请按照[以下步骤](#amlcompute)使用 Azure 机器学习计算上的 RunConfiguration 对象提交训练试验。
+为了便于使用常见框架进行模型训练，Azure 机器学习 Python SDK 提供了一个替代级别更高的抽象方法，即估计器类。  此类使你能够轻松地构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本（如 scikit-learn）。 建议使用估计器进行定型，因为它会自动构造环境或 RunConfiguration 对象等嵌入对象。 如果希望更好地控制如何创建这些对象，并指定要为试验运行安装哪些包，请按照[以下步骤](#amlcompute)使用 Azure 机器学习计算上的 RunConfiguration 对象提交训练试验。
 
 对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
@@ -364,7 +364,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ## <a name="set-up-with-vs-code"></a>设置 VS Code
 
-你可以使用 Azure 机器学习的[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)来访问、创建和管理与工作区关联的计算目标。
+你可以使用 Azure 机器学习的[VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets)来访问、创建和管理与工作区关联的计算目标。
 
 ## <a id="submit"></a>使用 Azure 机器学习 SDK 提交培训运行
 
@@ -414,7 +414,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
-* 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
+* 通过[VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)提交试验。
 
 有关详细信息，请参阅[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)和[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)文档。
 

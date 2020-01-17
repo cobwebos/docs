@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 9dad936e2e6cc7a9b0cdde78a9557a51d3074e71
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930878"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122349"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -227,7 +227,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 ## <a name="monitoring"></a>监视
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 你可以使用 Azure Monitor 度量值来查看和监视 Azure 机器学习工作区的指标。 在[Azure 门户](https://portal.azure.com)中，选择工作区，然后选择 "**度量值**"：
 
@@ -335,7 +335,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 web 服务的机器学习模型](how-to-consume-web-service.md)
-* [如何运行批量预测](how-to-run-batch-predictions.md)
+* [如何运行批量预测](how-to-use-parallel-run-step.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
