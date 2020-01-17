@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
+    - name: 安全中心中的安全功能分数
+      href: security-center-secure-score.md
+    - name: 增强的安全功能分数
+      href: secure-score-security-controls.md
     - name: 权限
       href: security-center-permissions.md
     - name: 数据安全
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: 操作方法指南
   items:
-    - name: 提高安全分数
-      href: security-center-secure-score.md
     - name: 升级到高级安全
       href: security-center-onboarding.md
     - name: 扫描 VM 中的漏洞

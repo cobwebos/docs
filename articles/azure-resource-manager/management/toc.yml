@@ -8,6 +8,8 @@
   items:
     - name: 订阅和服务限制
       href: azure-subscription-service-limits.md
+    - name: 资源名称规则
+      href: resource-name-rules.md
     - name: 资源管理器部署和经典部署
       href: deployment-models.md
     - name: Azure 的常见安全属性

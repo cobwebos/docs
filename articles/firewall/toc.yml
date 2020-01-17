@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: 服务标记
       href: service-tags.md
+    - name: 符合性认证
+      href: compliance-certifications.md
 - name: 操作方法指南
   items:
     - name: 使用 Azure PowerShell 进行部署

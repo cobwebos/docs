@@ -525,6 +525,9 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: 区域
       href: regions.md
+    - name: 主权云
+      href: sovereign-clouds.md
+      displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
     - name: 定价和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 合规性

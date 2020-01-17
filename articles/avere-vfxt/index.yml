@@ -8,7 +8,7 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/09/2019
+  ms.date: 12/19/2019
   ms.author: rohogue
 abstract:
   description: 'Avere vFXT for Azure 为数据密集型的高性能计算 (HPC) 任务提供了基于云的缓存层。 通过将文件缓存到接近计算节点的位置，Avere vFXT 提高了读取速度，即使在处于峰值负载的情况下也可让工作顺利进行。 Avere vFXT 最适合用于具有 1,000 到 40,000 个客户端核心的系统。 <p>Avere vFXT 与现有的数据存储协作，让文件靠近基于 Azure 的计算资源。 活动文件仍会在你的数据中心内长期存储。'
