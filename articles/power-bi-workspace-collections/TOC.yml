@@ -1,44 +1,11 @@
 - name: 概述
-  items:
-    - name: 什么是 Power BI 工作区集合？
-      href: what-are-power-bi-workspace-collections.md
-    - name: Power BI 工作区集合中的新增功能
-      href: whats-new.md
 - name: 入门
-  items:
-    - name: Power BI 工作区集合入门
-      href: get-started.md
-    - name: 示例入门
-      href: get-started-sample.md
-    - name: 常见问题解答
-      href: faq.md
 - name: 如何
   items:
     - name: 规划和设计
-      items:
-        - name: 常见方案
-          href: scenarios.md
     - name: 管理
-      items:
-        - name: 连接到数据源
-          href: connect-datasource.md
-        - name: 嵌入 Power BI 报表
-          href: embed-report.md
-        - name: 与报表交互
-          href: interact-with-reports.md
-        - name: 从数据集创建新报表
-          href: create-report-from-dataset.md
-        - name: 保存报表
-          href: save-reports.md
-        - name: 在查看和编辑之间切换
-          href: toggle-mode.md
     - name: 安全
-      items:
-        - name: 身份验证和授权
-          href: app-token-flow.md
-        - name: 将行级别安全性用于 Power BI 工作区集合
-          href: row-level-security.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'

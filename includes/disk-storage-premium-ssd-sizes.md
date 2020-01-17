@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c88cba57ed987074c0dde3c8b251f54393667740
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 370cdc18ae5d7680d2ce38b42bdc436367ce3700
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75002655"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159417"
 ---
 | 高级 SSD 大小 | P1* | P2* | P3* | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
@@ -24,6 +24,5 @@ ms.locfileid: "75002655"
 | 每个磁盘的最大突发吞吐量** | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 | 170 MiB/秒 |
 | 最大突发持续时间** | 30 分钟  | 30 分钟  | 30 分钟  | 30 分钟  | 30 分钟  | 30 分钟  | 30 分钟  | 30 分钟  |
 
-\*表示目前处于预览状态的磁盘大小，有关区域可用性信息，请参阅[新磁盘大小：托管和非托管](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged)。
-
+\*表示目前处于预览状态的磁盘大小，有关区域可用性信息，请参阅[新磁盘大小：托管和非托管](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged)。  
 \*\*表示目前处于预览状态的功能，有关详细信息，请参阅[磁盘突发](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability)。
