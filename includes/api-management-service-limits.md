@@ -1,17 +1,22 @@
 ---
-ms.openlocfilehash: ee44cd4ee5ec6fedfec46cbbb68b0c30118a4b9f
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+title: include 文件
+description: include 文件
+services: api-management
+author: vladvino
+ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
+ms.service: api-management
+ms.topic: include
+ms.date: 01/10/2020
+ms.author: vlvinogr
+ms.custom: include file
+ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904478"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159459"
 ---
----
-
-标题：包含文件说明：包括文件服务： api 管理作者： vladvino
-
-assetid： 1b813833-39c8-46be-8666-fd0960cfbf04 ms. service： api 管理毫秒。主题：包括 ms. 日期：01/10/2020 毫秒。 author： vlvinogr ms-chap：包含文件
----| 资源 | 限制 |
+| 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
 | 最大缩放单位数 | 每个区域 10 个<sup>1</sup> |
 | 缓存大小 | 每单位5个 GiB<sup>2</sup> |

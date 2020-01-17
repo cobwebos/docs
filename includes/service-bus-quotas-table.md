@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ab17d86251be6a0ef2452b258acf8d055b4605db
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561528"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76158843"
 ---
 下表列出了特定于 Azure 服务总线消息传送的配额信息。 有关服务总线的定价和其他配额的信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-| 配额名称 | 范围 | 说明 | Value |
+| 配额名称 | 范围 | 说明 | 值 |
 | --- | --- | --- | --- |
 | 每个 Azure 订阅的基本或标准命名空间的最大数目 |命名空间 |其他基本或标准命名空间的后续请求会被 Azure 门户拒绝。 |100|
 | 每个 Azure 订阅的高级命名空间的最大数量 |命名空间 |其他高级命名空间的后续请求会被门户拒绝。 |100 |
@@ -32,7 +32,7 @@ ms.locfileid: "74561528"
 | 消息[会话 ID](/dotnet/api/microsoft.azure.servicebus.message.sessionid)的最大大小 | 实体 |- | 128 |
 | 队列、主题或订阅实体的消息大小 |实体 |将拒绝超过这些配额的传入消息，并且调用代码将收到异常。 |最大消息大小：[标准级别](../articles/service-bus-messaging/service-bus-premium-messaging.md)为 256 KB，对于[高级层](../articles/service-bus-messaging/service-bus-premium-messaging.md)，为 1 MB。 <br /><br />由于系统开销，此限制小于这些值。<br /><br />最大标头大小： 64 KB。<br /><br />属性包中的最大标头属性数： **byte/int。** 个。<br /><br />属性包中属性的最大大小：没有明确的限制。 受最大标头大小限制。 |
 | 队列、主题或订阅实体的消息属性大小 |实体 | 生成异常**SerializationException** 。 |每个属性的最大消息属性大小为32000。 所有属性的累计大小不能超过64000。 此限制适用于[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的整个标头，其中包含用户属性和系统属性，例如[SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)、 [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)和[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)。 |
-| 每个主题的订阅数 |实体 |系统将拒绝后续的为主题创建更多订阅的请求。 因此，如果是通过门户配置的，会显示错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |"基本" 或 "标准" 级别的每个主题2000。 |
+| 每个主题的订阅数 |实体 |系统将拒绝后续的为主题创建更多订阅的请求。 因此，如果是通过门户配置的，会显示错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |标准级别为每个主题2000。 |
 | 每个主题的 SQL 筛选器数 |实体 |将拒绝后续的在主题中创建附加筛选器的请求，且调用代码会收到异常。 |2,000 |
 | 每个主题的相关性筛选器数 |实体 |将拒绝后续的在主题中创建附加筛选器的请求，且调用代码会收到异常。 |100,000 |
 | SQL 筛选器或操作的大小 |命名空间 |将拒绝后续的创建附加筛选器请求，且调用代码会收到异常。 |筛选条件字符串的最大长度：1024（1 K）。<br /><br />规则操作字符串的最大长度：1024（1 K）。<br /><br />每个规则操作的最大表达式数：32。 |
