@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 基于 VHD 文件创建 Azure 开发测试实验室自定义映像 | Microsoft 文档
+title: 使用 Azure PowerShell 从 VHD 文件创建自定义映像
 description: 使用 PowerShell 基于 VHD 文件在 Azure 开发测试实验室中自动创建自定义映像
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: b43dc668af74f532838dad3baf1d6e11d51ac69d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: cd144659dd8a8e981e267be998c9c783b7482840
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964079"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169573"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 基于 VHD 文件创建自定义映像
 
@@ -35,7 +35,7 @@ ms.locfileid: "68964079"
 
 以下步骤引导完成使用 PowerShell 基于 VHD 文件创建自定义映像：
 
-1. 在 PowerShell 提示符下, 使用对**AzAccount** cmdlet 的以下调用登录到 Azure 帐户。
+1. 在 PowerShell 提示符下，使用对**AzAccount** cmdlet 的以下调用登录到 Azure 帐户。
 
     ```powershell
     Connect-AzAccount
@@ -106,7 +106,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
-- [自定义映像或公式吗？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [自定义映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: fa2e7af51ff681da0bfdac928cc08bf75126a3b8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156414"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263993"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure 春季云应用日志
 Azure 春季 Cloud 在 Azure CLI 中启用日志流式处理，以获取实时应用程序控制台日志以进行故障排除。 还可以[通过诊断设置分析日志和指标](./diagnostic-services.md)。
@@ -47,16 +47,29 @@ az spring-cloud app log tail -n auth-service
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>具有多个实例的应用的结尾日志
-如果名为 `auth-service`的应用存在多个实例，则可以使用 `-i/--instance` 选项查看实例日志。 例如，可以通过指定应用名称和实例名称来流式传输一个应用的实例的日志：
+如果名为 `auth-service`的应用存在多个实例，则可以使用 `-i/--instance` 选项查看实例日志。 
+
+首先，可以通过以下命令获取应用程序实例的名称。
+
+```
+az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
+```
+具有结果：
+
+```
+Name                                         Status    DiscoveryStatus
+-------------------------------------------  --------  -----------------
+auth-service-default-12-75cc4577fc-pw7hb  Running   UP
+auth-service-default-12-75cc4577fc-8nt4m  Running   UP
+auth-service-default-12-75cc4577fc-n25mh  Running   UP
+``` 
+然后，可以使用选项 `-i/--instance` 选项来流式传输应用程序实例的日志：
 
 ```
 az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
-还可以从 Azure 门户获取应用实例。 
-1. 导航到资源组，并选择 Azure 春季云实例。
-1. 从 Azure 春季 Cloud 实例概述的左侧导航窗格中选择 "**应用**"。
-1. 选择应用，然后单击左侧导航窗格中的 "**应用实例**"。 
-1. 将显示应用程序实例。
+
+还可以从 Azure 门户获取应用实例的详细信息。  选择 Azure 春季云服务左侧导航窗格中的 "**应用**" 后，选择 "**应用实例**"。
 
 ### <a name="continuously-stream-new-logs"></a>连续流式传输新日志
 默认情况下，`az spring-cloud ap log tail` 仅打印流式传输到应用控制台的现有日志，然后退出。 如果要流式传输新日志，请添加-f （--跟随）：  

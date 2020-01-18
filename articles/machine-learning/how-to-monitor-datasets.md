@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 524a831c63e2a034766b874cc45bb039e3185b50
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536871"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264757"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集上的数据偏移（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -315,6 +315,7 @@ monitor = monitor.enable_schedule()
 * 200功能的限制，除非未指定功能列表（使用了所有功能）。
 * 计算大小必须足够大才能处理数据。 
 * 确保你的数据集在给定的监视器运行的开始和结束日期内具有数据。
+* 数据集监视器仅适用于包含50行或更多行的数据集。 
 
 数据集中的列或功能根据下表中的条件分类为分类或数值。 如果该功能不满足这些条件，则为 string 类型的列 > 100 个唯一值，则会从数据偏移算法中删除该功能，但仍会对其进行分析。 
 

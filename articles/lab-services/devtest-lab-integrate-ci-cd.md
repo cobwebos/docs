@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道 | Microsoft Docs
+title: 将 Azure 开发测试实验室集成到 Azure Pipelines
 description: 了解如何将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224471"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170395"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>将 Azure 开发测试实验室集成到 Azure Pipelines CI/CD 管道
 
@@ -35,7 +35,7 @@ ms.locfileid: "71224471"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 注册或登录到你的[Azure DevOps](https://dev.azure.com)组织，并在组织中[创建一个项目](/vsts/organizations/projects/create-project)。 
   
@@ -106,7 +106,7 @@ ms.locfileid: "71224471"
 
 创建新的发布管道：
 
-1. 在 Azure DevOps 项目页上 **，从左侧导航栏中选择**"**管道** > "。
+1. 在 Azure DevOps 项目页上，从左侧导航栏中选择 "**管道**" > **发布**"。
 1. 选择“新建管道”。
 1. 在 "**选择模板**" 下，向下滚动并选择 "**空作业**"，然后选择 "**应用**"。
 
@@ -120,17 +120,17 @@ ms.locfileid: "71224471"
    
 1. 对于每个变量，选择 "**添加**"，然后输入名称和值：
    
-   |姓名|ReplTest1|
+   |名称|值|
    |---|---|
    |*vmName*|在资源管理器模板中分配的 VM 名称|
    |*userName*|用于访问 VM 的用户名|
-   |*password*|用户名的密码。 选择锁定图标以隐藏并保护密码。
+   |password|用户名的密码。 选择锁定图标以隐藏并保护密码。
 
 ### <a name="create-a-devtest-labs-vm"></a>创建开发测试实验室 VM
 
 下一步是创建黄金映像 VM 以用于将来的部署。 使用*Azure 开发测试实验室创建 vm*任务在 Azure 开发测试实验室实例中创建 vm。
 
-1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**， **+** 然后选择 "**代理作业**" 旁边的加号。 
+1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**，然后选择 "**代理作业**" 旁边的加号 **+** 。 
    
 1. 在 "**添加任务**" 下，选择 " **Azure 开发测试实验室创建 VM**"，并选择 "**添加**"。 
    
@@ -138,27 +138,27 @@ ms.locfileid: "71224471"
 
 1. 在右窗格中填充表单，如下所示：
    
-   |字段|ReplTest1|
+   |字段|值|
    |---|---|
    |**Azure RM 订阅**|在下拉列表中选择 "**可用 Azure 服务连接**" 或 "**可用 azure 订阅**中的服务连接" 或 "订阅"，并根据需要选择 "**授权**"。<br /><br />**注意：** 有关创建更受限制的权限连接到 Azure 订阅的信息，请参阅[azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。|
    |**实验室名称**|选择将在其中创建实验室 VM 的现有实验室的名称。|
    |**模板名称**|输入保存到源代码存储库中的模板文件的完整路径和名称。 你可以使用内置属性来简化路径，例如：<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**模板参数**|输入前面定义的变量的参数：<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
-   |**输出变量** > **实验室 VM ID**|输入创建的实验室 VM ID 的变量。 如果使用默认的**labVMId**，则可以在后续任务中将变量引用为 *$ （labVMId）* 。<br /><br />你可以创建默认名称以外的名称，但请记住在后续任务中使用正确的名称。 可以采用以下形式编写实验室 VM ID：<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
+   | > **实验室 VM ID**的**输出变量**|输入创建的实验室 VM ID 的变量。 如果使用默认的**labVMId**，则可以在后续任务中将变量引用为 *$ （labVMId）* 。<br /><br />你可以创建默认名称以外的名称，但请记住在后续任务中使用正确的名称。 可以采用以下形式编写实验室 VM ID：<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
 ### <a name="collect-the-details-of-the-devtest-labs-vm"></a>收集开发测试实验室 VM 的详细信息
 
 执行之前创建的脚本，收集开发测试实验室 VM 的详细信息。 
 
-1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**， **+** 然后选择 "**代理作业**" 旁边的加号。 
+1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**，然后选择 "**代理作业**" 旁边的加号 **+** 。 
    
 1. 在 "**添加任务**" 下，选择**Azure PowerShell**，然后选择 "**添加**"。 
    
-1. 选择**Azure PowerShell 脚本：左**窗格中的 FilePath。 
+1. 在左窗格中选择**Azure PowerShell 脚本： FilePath** 。 
    
 1. 在右窗格中填充表单，如下所示：
    
-   |字段|ReplTest1|
+   |字段|值|
    |---|---|
    |**Azure 连接类型**|选择 " **Azure 资源管理器**"。|
    |**Azure 订阅**|选择服务连接或订阅。| 
@@ -172,19 +172,19 @@ ms.locfileid: "71224471"
 
 下一个任务是在 Azure 开发测试实验室实例中创建新部署的 VM 的映像。 然后，在需要执行开发任务或运行某些测试时，即可随时使用该映像按需创建 VM 的副本。 
 
-1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**， **+** 然后选择 "**代理作业**" 旁边的加号。 
+1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**，然后选择 "**代理作业**" 旁边的加号 **+** 。 
    
 1. 在 "**添加任务**" 下，选择 " **Azure 开发测试实验室创建自定义映像**"，并选择 "**添加**"。 
    
 1. 对任务进行如下配置：
    
-   |字段|ReplTest1|
+   |字段|值|
    |---|---|
    |**Azure RM 订阅**|选择服务连接或订阅。|
    |**实验室名称**|选择将在其中创建映像的现有实验室的名称。|
    |**自定义映像名称**|输入自定义映像的名称。|
-   |**描述**可有可无|输入说明，以便以后可以轻松地选择正确的映像。|
-   |**源实验室 vm** > **源实验室 vm ID**|如果更改了 LabVMId 变量的默认名称，请在此处输入。 默认值为 $(labVMId)。|
+   |**说明**（可选）|输入说明，以便以后可以轻松地选择正确的映像。|
+   |源**实验室 vm** > **源实验室 vm ID**|如果更改了 LabVMId 变量的默认名称，请在此处输入。 默认值为 $(labVMId)。|
    |**输出变量** > **自定义映像 ID**|如果需要，可以编辑变量的默认名称。|
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>将应用部署到开发测试实验室 VM （可选）
@@ -197,7 +197,7 @@ ms.locfileid: "71224471"
 
 最后一项任务是删除在 Azure 开发测试实验室实例中部署的 VM。 在部署的 VM 上执行所需开发任务或运行所需测试后，通常要删除该 VM。 
 
-1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**， **+** 然后选择 "**代理作业**" 旁边的加号。 
+1. 在 "发布管道**管道**" 选项卡上，选择**阶段 1**中的超链接文本以**查看阶段任务**，然后选择 "**代理作业**" 旁边的加号 **+** 。 
    
 1. 在 "**添加任务**" 下，选择 " **Azure 开发测试实验室删除 VM**"，并选择 "**添加**"。 
    

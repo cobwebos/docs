@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：从 Azure 实验室服务中的 VHD 文件创建自定义映像 |Microsoft Docs
+title: PowerShell-在 Azure 实验室服务中从 VHD 文件创建自定义映像
 description: 此 PowerShell 脚本从 Azure 实验室服务中的 VHD 文件创建自定义映像。
 services: lab-services
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2d0cc4012adf2c17b2f7a2e769f2d666b158a8c8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38383462a665ced1ccb6c6a2f062fab0492eee9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160566"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169980"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>使用 PowerShell 从 Azure 实验室服务中的 VHD 文件创建自定义映像
 
@@ -28,7 +28,7 @@ ms.locfileid: "66160566"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
-* 实验室  。 此脚本要求拥有现有的实验室。 
+* 实验室。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
 

@@ -1,6 +1,6 @@
 ---
-title: 路由和标记表达式
-description: 本主题介绍 Azure 通知中心的路由和标记表达式。
+title: Azure 通知中心的路由和标记表达式
+description: 了解如何为 Azure 通知中心路由和标记表达式。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 236e222da9e9a64d4b93002d28c94fa6fe469c08
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 254517cc1d9cc042387b63147b2a3fd9bdeece5e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971963"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263772"
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
 
@@ -37,7 +37,7 @@ ms.locfileid: "74971963"
 2. **标记**：包含指定标记的所有注册将收到通知。
 3. **标记表达式**：其标记集匹配指定表达式的所有注册将收到通知。
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>标记
 
 标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签：
 

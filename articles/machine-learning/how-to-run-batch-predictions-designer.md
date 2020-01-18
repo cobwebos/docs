@@ -5,106 +5,142 @@ description: 了解如何使用设计器训练模型并设置批量预测管道�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 7a4801e46477165232e7f03184152b6c277c05b6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532050"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167293"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本操作方法指南中，你将学习如何使用设计器训练模型并设置批量预测管道和 Web 服务。 通过批量预测可以对大型数据集上已训练的模型进行连续且按需评分，选择性地将其配置为可从任何 HTTP 库触发的 Web 服务。 
+本文介绍如何使用设计器创建批处理预测管道。 批处理预测使你可以使用可从任何 HTTP 库触发的 web 服务连续评分大数据集。
 
-有关使用 SDK 设置批量评分服务的说明，请参阅随附的[操作方法](how-to-run-batch-predictions.md)。
-
-在本操作指南中，你将学习如何执行以下任务：
+本操作指南介绍了如何执行以下任务：
 
 > [!div class="checklist"]
-> * 在管道中创建基本 ML 试验
-> * 创建参数化批量推理管道
-> * 手动或从 REST 终结点管理和运行管道
+> * 创建并发布批处理推理管道
+> * 使用管道终结点
+> * 管理终结点版本
 
-## <a name="prerequisites"></a>必备条件
+若要了解如何使用 SDK 设置批处理计分服务，请参阅随附的操作[方法](how-to-run-batch-predictions.md)。
 
-1. 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+## <a name="prerequisites"></a>必备组件
 
-1. 创建[工作区](tutorial-1st-experiment-sdk-setup.md)。
-
-1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
-
-本操作方法假定在设计器中生成简单管道的基本知识。 有关设计器的引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
-
-## <a name="create-a-pipeline"></a>创建管道
-
-若要创建批量推理管道，首先需要机器学习试验。 若要创建一个，请导航到工作区中的“设计器”  选项卡，然后通过选择“易用的预建模块”  选项来创建新的管道。
-
-![设计器主页](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-下面是用于演示目的的简单机器学习模型。 数据是从 Azure 开放数据集糖尿病数据创建的已注册数据集。 若要从 Azure 开放数据集注册数据集，请参阅[操作方法部分](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)。 数据拆分为训练集和验证集，提升决策树已训练且已评分。 必须至少运行一次管道，才能创建推断管道。 单击“运行”  按钮以运行管道。
-
-![创建简单试验](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+本操作说明假定你已经有了一个训练管道。 有关设计器的指导介绍，请完成[部分设计器教程](tutorial-designer-automobile-price-train-score.md)。 
 
 ## <a name="create-a-batch-inference-pipeline"></a>创建批量推理管道
 
-现在已经运行了管道，“运行”和“发布”旁边有一个新选项，名为“创建推理管道”    。 单击下拉列表并选择“批量推理管道”  。
+训练管道至少必须运行一次才能创建推断管道。
 
-![创建批量推理管道](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. 请在工作区中转到 "**设计器**" 选项卡。
 
-结果为默认批量推理管道。 这包括用于原始管道试验设置的节点、用于对原始数据进行评分的节点，以及用于根据原始管道对原始数据进行评分的节点。
+1. 选择定型管道，定型模型要用于进行预测。
 
-![默认批量推理管道](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. **运行**管道。
 
-可以添加其他节点来更改批量推断过程的行为。 在此示例中，添加一个节点，用于在评分之前从输入数据中随机采样。 创建“分区和示例”  节点并将其放置在原始数据和评分节点之间。 接下来，单击“分区和示例”  节点以获取对设置和参数的访问权限。
+    ![运行管道](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![新建节点](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+现在训练管道已运行，可以创建批处理推理管道。
 
-“采样率”参数控制随机采样占原始数据集的百分比  。 这是一个对频繁调整非常有用的参数，因此可将其用作管道参数。 管道参数可在运行时更改，并且可在从 REST 终结点重新运行管道时在有效负载对象中指定。 
+1. 在 "**运行**" 旁边，选择新的 dropdown **Create 推理管道**。
 
-若要将此字段用作管道参数，请单击该字段上方的省略号，然后单击“添加到管道参数”  。 
+1. 选择 "**批处理推理管道**"。
 
-![示例设置](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![创建批量推理管道](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+结果为默认批量推理管道。 
 
-接下来，为参数提供一个名称和默认值。 该名称将用于标识参数，并在 REST 调用中指定。
+### <a name="add-a-pipeline-parameter"></a>添加管道参数
 
-![管道参数](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+若要创建对新数据的预测，可以手动连接此管道草稿视图中的不同数据集，也可以创建数据集的参数。 参数使你可以在运行时更改 batch 推断进程的行为。
 
-## <a name="deploy-batch-inferencing-pipeline"></a>部署批量推断管道
+在本部分中，将创建一个数据集参数，以便指定要对其进行预测的不同数据集。
 
-现在可开始部署管道了。 单击“部署”  按钮，这将打开用于设置终结点的接口。 单击下拉列表并选择“新 PipelineEndpoint”  。
+1. 选择数据集模块。
 
-![管道部署](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. 画布右侧将显示一个窗格。 在窗格底部，选择 "**设置为管道参数**"。
+   
+    输入参数的名称，或接受默认值。
 
-为终结点提供一个名称和可选说明。 接近底部，你将看到使用默认值 0.8 配置的 `sample-rate` 参数。 准备就绪后，单击“部署”  。
+## <a name="publish-your-batch-inferencing-pipeline"></a>发布 batch 推断管道
 
-![设置终结点](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+现在，你已准备好部署推断管道。 这会部署管道，使其可供其他人使用。
 
-## <a name="manage-endpoints"></a>管理终结点 
+1. 选择“发布”按钮。
 
-部署完成后，请转到“终结点”  选项卡，然后单击刚刚创建的终结点的名称。
+1. 在出现的对话框中，展开 " **PipelineEndpoint**" 下拉箭头，然后选择 "**新建 PipelineEndpoint**"。
 
-![终结点链接](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. 提供终结点名称和可选说明。
 
-此屏幕显示特定终结点下的所有已发布管道。 单击推断管道。
+    在对话框底部附近，可以看到使用培训期间使用的数据集 ID 的默认值配置的参数。
 
-![推理管道](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. 选择“发布”。
 
-“管道详细信息”页显示管道的详细运行历史记录和连接字符串信息。 单击“运行”  按钮以创建管道的手动运行。
+![发布管道](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![管道详细信息](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-在运行设置中，可以提供运行的说明，并更改任何管道参数的值。 这次，按照 0.9 的采样率重新运行推断管道。 单击“运行”  以运行管道。
+## <a name="consume-an-endpoint"></a>使用终结点
 
-![管道运行](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+现在，你已有一个带有 dataset 参数的已发布管道。 管道将使用在定型管道中创建的训练模型来评分作为参数提供的数据集。
 
- “使用”选项卡包含用于重新运行管道的 REST 终结点。 若要进行 rest 调用，需要 OAuth 2.0 持有者类型身份验证标头。 请参阅以下[教程部分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)，以详细了解如何设置工作区的身份验证并进行参数化 REST 调用。
+### <a name="submit-a-pipeline-run"></a>提交管道运行 
+
+在本部分中，您将设置手动管道运行，并将管道参数更改为对新数据进行评分。 
+
+1. 部署完成后，请切换到 "**终结点**" 部分。
+
+1. 选择**管道终结点**。
+
+1. 选择已创建的终结点的名称。
+
+![终结点链接](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. 选择 "**已发布管道**"。
+
+    此屏幕显示此终结点下发布的所有已发布管道。
+
+1. 选择已发布的管道。
+
+    "管道详细信息" 页显示了管道的详细运行历史记录和连接字符串信息。 
+    
+1. 选择 "**运行**"，创建管道的手动运行。
+
+    ![管道详细信息](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. 更改参数以使用不同的数据集。
+    
+1. 选择 "**运行**" 以运行管道。
+
+### <a name="use-the-rest-endpoint"></a>使用 REST 终结点
+
+可以在 "**终结点**" 部分找到有关如何使用管道终结点和已发布管道的信息。
+
+你可以在 "运行概述" 面板中找到管道终结点的 REST 终结点。 通过调用终结点，你将使用其默认的已发布管道。
+
+还可以在 "**已发布管道**" 页中使用已发布的管道。 选择已发布的管道，并查找它的 REST 终结点。 
+
+![Rest 终结点详细信息](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+若要进行 REST 调用，你将需要 OAuth 2.0 持有者类型身份验证标头。 请参阅以下[教程部分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)，以详细了解如何设置工作区的身份验证并进行参数化 REST 调用。
+
+## <a name="versioning-endpoints"></a>版本控制终结点
+
+设计器将一个版本分配给发布到终结点的每个后续管道。 可以指定要作为 REST 调用中的参数执行的管道版本。 如果未指定版本号，设计器将使用默认管道。
+
+在发布管道时，可以选择将其设为该终结点的新默认管道。
+
+![设置默认管道](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+你还可以在终结点的 "**已发布管道**" 选项卡中设置新的默认管道。
+
+![设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>后续步骤
 

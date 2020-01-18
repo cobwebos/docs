@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859538"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263500"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -42,7 +42,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 3. 单击边栏选项卡顶部的“添加”。 
 4. 选择“本地应用程序”。 
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
-   - **内部 URL**：此应用程序具有的内部 URL 本身应为 QlikSense URL。 例如，**https&#58;//demo.qlikemm.com:4244** 
+   - **外部 URL**：此应用程序具有的内部 URL 本身应为 QlikSense URL。 例如，**https&#58;//demo.qlikemm.com:4244** 
    - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项） 
 1. 选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。 
 2. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
@@ -52,17 +52,16 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 ### <a name="application-2"></a>应用程序 2： 
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
-**步骤 5**：内部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
-**步骤 10：** 请勿设置 SSO，并禁用“单一登录”
+**步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 对于 HTTPS，默认值为4244，对于 2018 年4月之前，QlikSense 版本为**4248** 。 2018年4月之后的默认 QlikSense 版本为**443** ，适用于 HTTP 的 HTTPS 和**80** 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>**步骤 10：** 请勿设置 SSO，并使 **“单一登录”处于禁用状态**
  
  
-## <a name="testing"></a>正在测试 
+## <a name="testing"></a>测试 
 现在已准备好测试应用程序。 访问应用程序 1 中用来发布 QlikSense 的外部 URL，并以分配到两个应用程序的用户身份登录。  
 
 ## <a name="additional-references"></a>其他参考
-有关使用应用程序代理发布的 Qlik Sense 的详细信息，请参阅以下 Qlik 社区文章： 
-- [Azure AD 与 Qlik Sense 中使用 Kerberos 约束委派的集成 Windows 身份验证](https://community.qlik.com/docs/DOC-20183)
-- [Azure AD 应用程序代理与 Qlik Sense 集成](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
+有关将 Qlik sense 感知与应用程序代理发布的详细信息，请参阅以下文章： 
+- [使用 Qlik sense 感知的 Kerberos 约束委派 Azure AD 集成 Windows 身份验证](https://community.qlik.com/docs/DOC-20183)
+- [与 Azure AD 应用程序代理的 qlik sense 感知集成](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>后续步骤
 

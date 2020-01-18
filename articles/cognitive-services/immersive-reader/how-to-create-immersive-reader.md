@@ -1,5 +1,5 @@
 ---
-title: 创建沉浸式读者资源
+title: 创建沉浸式阅读器资源
 titleSuffix: Azure Cognitive Services
 description: 本文将介绍如何使用自定义子域创建新的沉浸式读者资源，然后在 Azure 租户中配置 Azure AD。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946085"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170166"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>创建沉浸式读者资源并配置 Azure Active Directory 身份验证
 
@@ -153,7 +153,7 @@ ms.locfileid: "75946085"
     | SubscriptionName |要用于沉浸式读者资源的 Azure 订阅的名称。 若要创建资源，您必须拥有订阅。 |
     | ResourceName |  必须为字母数字，并且可能包含 "-"，但前提是 "-" 不是第一个或最后一个字符。 长度不能超过63个字符。|
     | ResourceSubdomain |沉浸式读者资源需要自定义子域。 在调用沉浸式读卡器服务启动读取器时，SDK 将使用子域。 子域必须是全局唯一的。 子域必须为字母数字，并且可能包含 "-"，但前提是 "-" 不是第一个或最后一个字符。 长度不能超过63个字符。 如果该资源已存在，则此参数是可选的。 |
-    | ResourceSKU |选项： `S0` 或 `S1`。 请访问我们的[认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，了解有关每个可用 SKU 的详细信息。 如果该资源已存在，则此参数是可选的。 |
+    | ResourceSKU |选项： `S0`。 请访问我们的[认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，了解有关每个可用 SKU 的详细信息。 如果该资源已存在，则此参数是可选的。 |
     | ResourceLocation |选项： `eastus`、`eastus2`、`southcentralus`、`westus`、`westus2`、`australiaeast`、`southeastasia`、`centralindia`、`japaneast`、`northeurope`、`uksouth`、`westeurope`。 如果该资源已存在，则此参数是可选的。 |
     | ResourceGroupName |资源是在订阅中的资源组中创建的。 提供现有资源组的名称。 如果资源组不存在，则将创建一个具有此名称的新资源组。 |
     | ResourceGroupLocation |如果资源组不存在，则需要提供要在其中创建组的位置。 若要查找位置列表，请运行 `az account list-locations`。 使用返回的结果的 "*名称*" 属性（不含空格）。 如果资源组已存在，则此参数是可选的。 |

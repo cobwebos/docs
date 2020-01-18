@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 01/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772629"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264775"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>为 Azure 开发测试实验室中的实验室管理自动关闭策略
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>为 Azure 开发测试实验室中的实验室和计算虚拟机配置自动关闭
+
+本文介绍如何为开发测试实验室中的实验室 Vm 和计算 Vm 配置自动关闭设置。 
+
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>为实验室 Vm 配置自动关闭（开发测试实验室）
 借助 Azure 开发测试实验室，可通过管理每个实验室的策略（设置）来控制成本并尽量减少实验中的浪费。 本文介绍如何为实验室帐户配置自动关闭策略，并为实验室帐户中的实验室配置自动关闭设置。 若要了解如何设置每个实验室策略，请参阅[在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)。  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>设置实验室的自动关闭策略
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>设置实验室的自动关闭策略
 实验室所有者可针对实验室中的所有 VM 配置关机计划。 这样可以节省成本，因为未使用（空闲）的计算机不会运行。 可以集中针对所有实验室 VM 实施关机策略，省得实验室用户付出精力针对每个计算机设置计划。 使用此功能可以针对实验室计划设置策略，一开始不为实验室用户提供任何控制权，逐渐为他们提供完全控制权。 实验室所有者可通过以下步骤配置此策略：
 
 1. 在实验室的主页上，选择“配置和策略”。
@@ -33,7 +37,7 @@ ms.locfileid: "75772629"
 
     ![自动关闭策略选项](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>配置自动关闭设置
+### <a name="configure-auto-shutdown-settings"></a>配置自动关闭设置
 通过允许你指定此实验室的 Vm 关闭的时间，自动关闭策略有助于最大程度地减少实验室浪费。
 
 若要查看（和更改）实验室策略，请按以下步骤操作：
@@ -72,7 +76,7 @@ ms.locfileid: "75772629"
 
 ![自动关闭策略选项-3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="notifications"></a>通知
+### <a name="notifications"></a>通知
 在实验室所有者设置自动关闭后，将在自动关闭触发之前30分钟将通知发送给实验室用户，前提是其任何 Vm 会受到影响。 使用此选项，实验室用户可以在关机前保存其工作。 此通知还会为每个 VM 提供以下操作的链接：
 
 - 暂时跳过自动关闭
@@ -82,7 +86,7 @@ ms.locfileid: "75772629"
 
 建议你使用 web 挂钩，因为它们广泛受各种应用（例如，时差、Azure 逻辑应用等）的支持。并允许你实现自己的发送通知的方式。 例如，本文介绍如何使用 Azure 逻辑应用从电子邮件中获取自动关闭通知。 首先，让我们快速完成在实验室中启用自动关闭通知的基本步骤。   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>创建一个逻辑应用，用于接收电子邮件通知
+### <a name="create-a-logic-app-that-receives-email-notifications"></a>创建一个逻辑应用，用于接收电子邮件通知
 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)提供了许多现成的连接器，使你可以轻松地将服务与其他客户端（如 Office 365 和 twitter）相集成。 在高级别上，为电子邮件通知设置逻辑应用的步骤可以分为四个阶段： 
 
 - 创建逻辑应用。 
@@ -185,5 +189,16 @@ ms.locfileid: "75772629"
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
+## <a name="configure-autoshutdown-for-compute-vms"></a>为计算 Vm 配置自动关闭
+
+1. 在 "**虚拟机**" 页上，选择左侧菜单上的 "**自动关闭**"。 
+2. 在 "**自动关闭**" 页上，选择 **"打开**" 以启用此策略，并选择 "**关闭**" 以禁用它。
+3. 如果启用此策略，请指定应关闭 VM 的**时间** **（和时区**）。
+4. 指定 **"是"** 或 "**否**"，以在指定的自动关闭时间之前30分钟发送通知。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置。 用户会收到通知，其中提供了延迟关闭的选项。 有关详细信息，请参阅 "[通知](#notifications)" 部分。 
+9. 选择“保存”。
+
+    ![为计算 VM 配置自动关闭](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
 ## <a name="next-steps"></a>后续步骤
 若要了解如何设置所有策略，请参阅[在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)。
+

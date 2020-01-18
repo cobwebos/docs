@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 开发测试实验室中将环境集成到 Azure Pipelines |Microsoft Docs
+title: 在 Azure 开发测试实验室中将环境集成到 Azure Pipelines
 description: 了解如何将 Azure 开发测试实验室环境集成到 Azure DevOps 持续集成（CI）和持续交付（CD）管道。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163926"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169427"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到 Azure DevOps CI/CD 管道
-你可以使用 Azure DevOps Services （以前称为 Visual Studio Team Services）中安装的 Azure 开发测试实验室任务扩展，轻松地将持续集成（CI）/持续交付（CD）生成和发布管道与 Azure 集成开发测试实验室。 这些扩展使你可以更轻松地快速部署特定测试任务的[环境](devtest-lab-test-env.md)，并在测试完成后将其删除。 
+你可以使用 Azure DevOps Services （以前称为 Visual Studio Team Services）中安装的 Azure 开发测试实验室任务扩展，轻松地将持续集成（CI）/持续交付（CD）生成和发布管道与 Azure 开发测试实验室集成。 这些扩展使你可以更轻松地快速部署特定测试任务的[环境](devtest-lab-test-env.md)，并在测试完成后将其删除。 
 
 本文介绍如何在一个完整的管道中创建和部署环境，并删除环境。 通常会在自己的自定义生成-测试-部署管道中单独执行每个任务。 本文中使用的扩展是这些[create/DELETE DTL VM 任务](devtest-lab-integrate-ci-cd-vsts.md)的补充：
 

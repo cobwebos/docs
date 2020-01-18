@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 26056e9b52ea319856505db837c67dc68b2f4aa6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157281"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260441"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Azure 事件中心故障排除指南
 本文提供事件中心 .NET Framework Api 生成的一些 .NET 异常，还提供了解决问题的其他提示。 
@@ -103,25 +103,42 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接、证书或超时问题
 以下步骤可帮助你排除 *. servicebus.windows.net 下所有服务的连接/证书/超时问题。 
 
-- 浏览到或[wget](https://www.gnu.org/software/wget/) `https://sbwagn2.servicebus.windows.net/`。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
-- 运行以下命令，检查防火墙上是否有任何端口被阻止。 还会使用其他端口，具体取决于所使用的库。 例如：443、5672、9354。
+- 浏览到或[wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
+- 运行以下命令，检查防火墙上是否有任何端口被阻止。 使用的端口为443（HTTPS）、5671（AMQP）和9093（Kafka）。 还会使用其他端口，具体取决于所使用的库。 下面是用于检查5671端口是否被阻止的示例命令。
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
     在 Linux 上：
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 此命令将尝试通过服务每隔1秒建立25个不同的 TCP 连接，然后可以检查多少成功/失败，还可以查看 TCP 连接延迟。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+    
+    成功消息的示例：
+    
+    ```xml
+    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+    ```
+    
+    失败错误消息的示例：
+
+    ```json
+    <Error>
+        <Code>400</Code>
+        <Detail>
+            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+        </Detail>
+    </Error>
+    ```
+- 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 此命令将尝试通过服务每隔1秒建立25个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
 
     ```shell
-    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
     ```
     如果使用的是其他工具，如 `tnc`、`ping`等，则可以使用等效的命令。 
-- 如果前面的步骤不能帮助并对其进行分析或联系[Microsoft 支持部门](https://support.microsoft.com/)，请获取网络跟踪。 
+- 如果前面的步骤不能帮助并使用[Wireshark](https://www.wireshark.org/)等工具对其进行分析，请获取网络跟踪。 如果需要，请联系[Microsoft 支持部门](https://support.microsoft.com/)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 通知中心 - 企业推送架构
-description: 有关在企业环境中使用 Azure 通知中心的指南
+title: 通知中心企业推送架构
+description: 了解如何在企业环境中使用 Azure 通知中心
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5b65fe6acb1fdf7ba79b106c876527c9b6736c5f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211903"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264027"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
@@ -51,29 +51,29 @@ ms.locfileid: "71211903"
 1. 移动 应用程序
    * 接收并显示通知
 
-### <a name="benefits"></a>优点
+### <a name="benefits"></a>优势
 
 1. 接收方（通过通知中心的移动应用/服务）和发送方（后端系统）之间的这种解耦使得只需要最小的更改即可集成其他后端系统。
 1. 这还使得采用多个移动应用的方案能够从一个或多个后端系统接收事件。  
 
-## <a name="sample"></a>样本
+## <a name="sample"></a>示例
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
 2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
 
-    a. 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
 
-    b. 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
+    b.保留“数据库类型”设置，即设置为“共享”。 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
 
     ```csharp
     static void Main(string[] args)
@@ -106,7 +106,7 @@ ms.locfileid: "71211903"
     }
     ```
 
-    d. `SendMessage` 用于将消息发送到此服务总线主题。 出于本示例的目的，此代码只定期向此主题发送一组随机消息。 通常会有在事件发生时发送消息的后端系统。
+    d.单击“下一步”。 `SendMessage` 用于将消息发送到此服务总线主题。 出于本示例的目的，此代码只定期向此主题发送一组随机消息。 通常会有在事件发生时发送消息的后端系统。
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -140,9 +140,9 @@ ms.locfileid: "71211903"
     ```
 2. **ReceiveAndSendNotification**
 
-    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
 
-    b. 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
+    b.保留“数据库类型”设置，即设置为“共享”。 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
 
     ```csharp
     static void Main(string[] args)
@@ -174,7 +174,7 @@ ms.locfileid: "71211903"
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` 用于使用其订阅从主题中读取消息，如果读取成功，则会制作要使用 Azure 通知中心发送到移动应用程序的通知（在示例方案中为 Windows 本机 toast 通知）。
+    d.单击“下一步”。 `ReceiveMessageAndSendNotification` 用于使用其订阅从主题中读取消息，如果读取成功，则会制作要使用 Azure 通知中心发送到移动应用程序的通知（在示例方案中为 Windows 本机 toast 通知）。
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -226,7 +226,7 @@ ms.locfileid: "71211903"
     }
     ```
 
-    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
 
     ![][2]
 
@@ -240,9 +240,9 @@ ms.locfileid: "71211903"
 
 3. **EnterprisePushMobileApp**
 
-    a. 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
 
-    b. 确保应用程序已启用接收 toast 通知。
+    b.保留“数据库类型”设置，即设置为“共享”。 确保应用程序已启用接收 toast 通知。
 
     c. 确保在应用启动时（替换 `HubName` 和 `DefaultListenSharedAccessSignature` 值后）调用以下通知中心注册代码：
 

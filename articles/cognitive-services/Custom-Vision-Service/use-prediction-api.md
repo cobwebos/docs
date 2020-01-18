@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966951"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169950"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
 
@@ -109,9 +109,9 @@ ms.locfileid: "70966951"
     ```
 
 1. 更改以下信息：
-   * `namespace`将字段设置为项目的名称。
-   * 将占位符`<Your prediction key>`替换为前面检索到的键值。
-   * 将占位符`<Your prediction URL>`替换为前面检索到的 URL。
+   * 将 `namespace` 字段设置为项目的名称。
+   * 将占位符 `<Your prediction key>` 替换为前面检索到的键值。
+   * 将占位符 `<Your prediction URL>` 替换为前面检索到的 URL。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -135,7 +135,7 @@ ms.locfileid: "70966951"
 在本指南中，您学习了如何使用C# SDK 以编程方式将图像提交到自定义图像分类器/检测程序并接收响应。 接下来，了解如何使用C#完成端到端方案，或使用其他语言 SDK 开始使用。
 
 * [快速入门： .NET SDK](csharp-tutorial.md)
-* [快速入门：Python SDK](python-tutorial.md)
-* [快速入门：Java SDK](java-tutorial.md)
-* [快速入门：Node SDK](node-tutorial.md)
-* [快速入门：Go SDK](go-tutorial.md)
+* [快速入门： Python SDK](python-tutorial.md)
+* [快速入门： Java SDK](java-tutorial.md)
+* [快速入门： Node SDK](node-tutorial.md)
+* [快速入门：中转 SDK](go-tutorial.md)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889015"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263113"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>快速入门：在自己的虚拟网络中创建 Azure Databricks 工作区
 
@@ -41,17 +41,24 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
 
     |设置|建议的值|Description|
     |-------|---------------|-----------|
-    |名称|databricks-quickstart|选择虚拟网络的名称。|
-    |地址空间|10.1.0.0/16|以 CIDR 表示法表示的虚拟网络地址范围。 CIDR 范围必须介于/16 和/24 之间|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择 "**新建**"，然后输入帐户的新资源组名称。|
-    |位置|\<选择离用户最近的区域\>|选择可以在其中托管虚拟网络的地理位置。 使用最靠近用户的位置。|
+    |名称|databricks-quickstart|选择虚拟网络的名称。|
+    |地区|\<选择离用户最近的区域\>|选择可以在其中托管虚拟网络的地理位置。 使用最靠近用户的位置。|
+
+    ![Azure 门户上的虚拟网络基础知识](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. 选择 "**下一步： IP 地址 >** ，并应用以下设置。 然后选择 "**查看 + 创建**"。
+    
+    |设置|建议的值|Description|
+    |-------|---------------|-----------|
+    |IPv4 地址空间|10.2.0.0/16|以 CIDR 表示法表示的虚拟网络地址范围。 CIDR 范围必须介于/16 和/24 之间|
     |子网名称|default|为虚拟网络中的默认子网选择名称。|
-    |子网地址范围|10.1.0.0/24|以 CIDR 表示法表示的子网地址范围， 它必须包含在虚拟网络的地址空间中。 无法编辑正在使用的子网的地址范围。|
+    |子网地址范围|10.2.0.0/24|以 CIDR 表示法表示的子网地址范围， 它必须包含在虚拟网络的地址空间中。 无法编辑正在使用的子网的地址范围。|
 
-    ![在 Azure 门户上创建虚拟网络](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![设置 Azure 门户上的虚拟网络的 IP 配置](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. 部署完成后，导航到虚拟网络，然后在 "**设置**" 下选择 "**地址空间**"。 在显示 "*添加更多地址范围*" 的框中，插入 `10.179.0.0/16`，然后选择 "**保存**"。
+4. 在 "**查看**" 和 "创建" 选项卡上，选择 "**创建**" 以部署虚拟网络。 部署完成后，导航到虚拟网络，然后在 "**设置**" 下选择 "**地址空间**"。 在显示 "*添加更多地址范围*" 的框中，插入 `10.179.0.0/16`，然后选择 "**保存**"。
 
     ![Azure 虚拟网络地址空间](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
@@ -70,6 +77,13 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
     |资源组|databricks-quickstart|选择用于虚拟网络的同一资源组。|
     |位置|\<选择离用户最近的区域\>|选择与虚拟网络相同的位置。|
     |定价层|选择 "标准" 或 "高级"。|有关定价层的详细信息，请参阅[Databricks 定价页](https://azure.microsoft.com/pricing/details/databricks/)。|
+
+    ![创建 Azure Databricks 工作区基础知识](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. 在 "**基本**信息" 页上输入完设置后，选择 "**下一步：网络 >** 并应用以下设置：
+
+    |设置|建议的值|Description|
+    |-------|---------------|-----------|
     |在虚拟网络（VNet）中部署 Azure Databricks 工作区|是|此设置允许你在虚拟网络中部署 Azure Databricks 工作区。|
     |虚拟网络|databricks-quickstart|选择在上一部分中创建的虚拟网络。|
     |公共子网名称|public-subnet|使用默认的公共子网名称。|
@@ -77,7 +91,7 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
     |专用子网名称|private-subnet|使用默认的专用子网名称。|
     |专用子网 CIDR 范围|10.179.0.0/18|使用 CIDR 范围，最高可包含/26。|
 
-    ![在 Azure 门户上创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![将 VNet 信息添加到 Azure 门户上的 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. 部署完成后，导航到 Azure Databricks 资源。 请注意，虚拟网络对等互连处于禁用状态。 另请注意 "概述" 页中的资源组和托管资源组。 
 

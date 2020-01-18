@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/29/2019
+ms.date: 01/16/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cb0f3d054f9afd0c606f80fd6fc5d553eff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 29418e0000f917f7184a230c04b93adeae44efef
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916309"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261188"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL 在身份验证请求中传递自定义状态
+
 由 OAuth 2.0 定义的*状态*参数包含在身份验证请求中，并且也在令牌响应中返回，以防止跨站点请求伪造攻击。 默认情况下，适用于 JavaScript 的 Microsoft 身份验证库（MSAL）在身份验证请求中传递随机生成的唯一*状态*参数值。
 
 State 参数还可用于在重定向前对应用状态的信息进行编码。 可以在应用中传递用户的状态，例如，作为此参数的输入，例如它们所在的页面或视图。 MSAL 库允许将自定义状态作为状态参数传递到 `Request` 对象中：
@@ -40,8 +41,16 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
+
+> [!Note]
+> 如果要跳过缓存的令牌并转到服务器，请将布尔 `forceRefresh` 传入到用于发出登录/令牌请求的 AuthenticationParameters 对象。
+> 由于对应用程序性能的影响，默认情况下不应使用 `forceRefresh`。
+> 依靠缓存可为用户提供更好的体验。
+> 跳过缓存只应在知道当前缓存的数据没有最新信息的情况下使用。
+> 例如，管理工具将角色添加到需要使用更新角色获取新令牌的用户。
 
 例如：
 

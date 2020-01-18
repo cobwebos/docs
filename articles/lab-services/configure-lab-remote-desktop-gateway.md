@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 开发测试实验室中将实验室配置为使用远程桌面网关 |Microsoft Docs
+title: 在 Azure 开发测试实验室中配置实验室以使用远程桌面网关
 description: 了解如何使用远程桌面网关在 Azure 开发测试实验室中配置实验室，以确保安全访问实验室 Vm，而无需公开 RDP 端口。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162631"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170285"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>将 Azure 开发测试实验室中的实验室配置为使用远程桌面网关
 在 Azure 开发测试实验室中，可以为实验室配置远程桌面网关，以确保无需公开 RDP 端口即可安全访问实验室虚拟机（Vm）。 实验室为实验室用户提供了一个中心位置，用于查看并连接到他们有权访问的所有虚拟机。 "**虚拟机**" 页上的 "**连接**" 按钮创建计算机特定的 RDP 文件，您可以打开该文件以连接到计算机。 可以通过将实验室连接到远程桌面网关，进一步自定义和保护 RDP 连接。 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 使用以下步骤将实验室配置为使用令牌身份验证：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中，选择**实验室**。
 1. 在实验室页面上，选择 "**配置和策略**"。

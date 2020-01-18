@@ -1,5 +1,5 @@
 ---
-title: 如何从 Azure 开发测试实验室中删除和导出个人数据 | Microsoft Docs
+title: 如何从 Azure 开发测试实验室删除和导出个人数据
 description: 了解如何从 Azure 开发测试实验室服务中删除和导出个人数据，以帮助履行一般数据保护条例 (GDPR) 中规定的义务。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371170"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169684"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
 本文提供从 Azure 开发测试实验室服务中删除和导出个人数据的步骤。 
@@ -55,7 +55,7 @@ ms.locfileid: "68371170"
 例如，如果你删除了 VM 或电子邮件地址，则删除该资源后，开发测试实验室服务会将此数据匿名化 30 天。 删除后保留 30 天的策略旨在确保向实验室管理员提供准确的每月成本预测。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>如何请求导出个人数据？
-你可以使用 Azure 门户或 PowerShell 导出个人和实验室使用情况数据。 数据将导出为两个不同的 CSV 文件:
+你可以使用 Azure 门户或 PowerShell 导出个人和实验室使用情况数据。 数据将导出为两个不同的 CSV 文件：
 
 - **磁盘 .csv** -包含有关不同 vm 正在使用的磁盘的信息
 - **virtualmachines** -包含有关实验室中的 vm 的信息。
@@ -144,7 +144,7 @@ else
 }
 ```
 
-上述示例中的关键组件是:
+上述示例中的关键组件是：
 
 - AzureRmResourceAction 命令。
    
@@ -152,33 +152,33 @@ else
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
 - 两个操作参数
-    - **blobStorageAbsoluteSasUri** -具有共享访问签名 (SAS) 令牌的存储帐户 URI。 在 PowerShell 脚本中, 可以传递此值, 而不是存储密钥。
-    - **usageStartDate** -要提取数据的开始日期, 结束日期是执行操作的当前日期。 粒度为日级别, 因此即使添加了时间信息, 它也会被忽略。
+    - **blobStorageAbsoluteSasUri** -具有共享访问签名（SAS）令牌的存储帐户 URI。 在 PowerShell 脚本中，可以传递此值，而不是存储密钥。
+    - **usageStartDate** -要提取数据的开始日期，结束日期是执行操作的当前日期。 粒度为日级别，因此即使添加了时间信息，它也会被忽略。
 
 ### <a name="exported-data---a-closer-look"></a>导出的数据-详细了解
-现在, 让我们详细了解导出的数据。 如前所述, 数据成功导出后, 将有两个 CSV 文件。 
+现在，让我们详细了解导出的数据。 如前所述，数据成功导出后，将有两个 CSV 文件。 
 
-**Virtualmachines**包含下列数据列:
+**Virtualmachines**包含下列数据列：
 
-| 列名 | 描述 |
+| 列名称 | Description |
 | ----------- | ----------- | 
 | SubscriptionId | 实验室所在的订阅标识符。 |
 | LabUId | 实验室的唯一 GUID 标识符。 |
 | LabName | 实验室的名称。 |
 | LabResourceId | 完全限定的实验室资源 ID。 |
 | ResourceGroupName | 包含 VM 的资源组的名称 | 
-| resourceId | VM 的完全限定的资源 ID。 |
+| ResourceId | VM 的完全限定的资源 ID。 |
 | ResourceUId | VM 的 GUID |
-| 名称 | 虚拟机名称。 |
+| 名称 | “虚拟机名称”。 |
 | CreatedTime | VM 的创建日期时间。 |
-| DeletedDate | VM 的删除日期时间。 如果此为空, 则尚未执行删除操作。 |
-| ResourceOwner | VM 的所有者。 如果该值为空, 则它可以是可认领 VM, 也可以由服务主体创建。 |
+| DeletedDate | VM 的删除日期时间。 如果此为空，则尚未执行删除操作。 |
+| ResourceOwner | VM 的所有者。 如果该值为空，则它可以是可认领 VM，也可以由服务主体创建。 |
 | PricingTier | VM 的定价层 |
-| ResourceStatus | VM 的可用性状态。 处于活动状态, 如果已删除 VM, 则为; 如果仍存在, 则为非活动状态。 |
+| ResourceStatus | VM 的可用性状态。 处于活动状态，如果已删除 VM，则为; 如果仍存在，则为非活动状态。 |
 | ComputeResourceId | 完全限定的虚拟机计算资源标识符。 |
-| 可认领 | 如果 VM 是可认领 VM, 则设置为 true | 
-| EnvironmentId | 在其中创建虚拟机的环境资源标识符。 如果未将 VM 创建为环境资源的一部分, 则为空。 |
-| ExpirationDate | VM 的到期日期。 如果尚未设置过期日期, 则将其设置为空。
+| 可认领 | 如果 VM 是可认领 VM，则设置为 true | 
+| EnvironmentId | 在其中创建虚拟机的环境资源标识符。 如果未将 VM 创建为环境资源的一部分，则为空。 |
+| ExpirationDate | VM 的到期日期。 如果尚未设置过期日期，则将其设置为空。
 | GalleryImageReferenceVersion |  VM 基本映像的版本。 |
 | GalleryImageReferenceOffer | VM 基本映像的产品/服务。 |
 | GalleryImageReferencePublisher | VM 基本映像的发布者。 |
@@ -186,34 +186,34 @@ else
 | GalleryImageReferenceOsType | VM 基本映像的 OS 类型 |
 | CustomImageId | VM 基本自定义映像的完全限定 ID。 |
 
-下面列出了在 node.js**中包含**的数据列:
+下面**列出了在 node.js 中包含**的数据列：
 
-| 列名 | 描述 | 
+| 列名称 | Description | 
 | ----------- | ----------- | 
 | SubscriptionId | 包含实验室的订阅的 ID |
 | LabUId | 实验室的 GUID |
 | LabName | 实验室的名称 | 
 | LabResourceId | 实验室的完全限定的资源 ID | 
 | ResourceGroupName | 包含实验室的资源组的名称 | 
-| resourceId | VM 的完全限定的资源 ID。 |
+| ResourceId | VM 的完全限定的资源 ID。 |
 | ResourceUId | VM 的 GUID |
  |名称 | 附加的磁盘的名称 |
 | CreatedTime |数据磁盘的创建日期和时间。 |
 | DeletedDate | 数据磁盘的删除日期和时间。 |
-| ResourceStatus | 资源的状态。 如果资源存在, 则为 "活动"。 非活动 (删除时)。 |
+| ResourceStatus | 资源的状态。 如果资源存在，则为 "活动"。 非活动（删除时）。 |
 | DiskBlobName | 数据磁盘的 Blob 名称。 |
 | DiskSizeGB | 数据磁盘的大小。 |
-| DiskType | 数据磁盘的类型。 对于标准, 1 表示高级。 |
+| DiskType | 数据磁盘的类型。 对于标准，1表示高级。 |
 | LeasedByVmId | 数据磁盘附加到的 VM 的资源 ID。 |
 
 
 > [!NOTE]
-> 如果要处理多个实验室并想要获取整体信息, 两个关键列是**LabUID**和**ResourceUId**, 它们是订阅之间的唯一 id。
+> 如果要处理多个实验室并想要获取整体信息，两个关键列是**LabUID**和**ResourceUId**，它们是订阅之间的唯一 id。
 
-导出的数据可以使用工具 (如 SQL Server、Power BI 等) 进行操作和可视化。当你想要将实验室的使用情况报告给你的管理团队时, 此功能特别有用。
+导出的数据可以使用工具（如 SQL Server、Power BI 等）进行操作和可视化。当你想要将实验室的使用情况报告给你的管理团队时，此功能特别有用。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
 - [设置实验室的策略](devtest-lab-get-started-with-lab-policies.md)
-- [常见问题](devtest-lab-faq.md)
+- [常见问题解答](devtest-lab-faq.md)

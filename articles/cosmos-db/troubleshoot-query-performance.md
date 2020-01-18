@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: c004031ec40bedcf83d77d08a34ce1d0e28fecd8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157010"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264265"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 排查查询问题
 
@@ -39,13 +39,11 @@ ms.locfileid: "76157010"
 
 #### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>检索的文档计数明显大于输出文档计数
 
-- [确保索引策略包括必要的路径](#ensure-that-the-indexing-policy-includes-necessary-paths)
+- [在索引策略中包含必要的路径](#include-necessary-paths-in-the-indexing-policy)
 
 - [了解哪些系统函数使用索引](#understand-which-system-functions-utilize-the-index)
 
-- [使用筛选器和 ORDER BY 子句优化查询](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
-
-- [优化使用 DISTINCT 的查询](#optimize-queries-that-use-distinct)
+- [使用筛选器和 ORDER BY 子句的查询](#queries-with-both-a-filter-and-an-order-by-clause)
 
 - [使用子查询优化联接表达式](#optimize-join-expressions-by-using-a-subquery)
 
@@ -55,23 +53,23 @@ ms.locfileid: "76157010"
 
 - [避免跨分区查询](#avoid-cross-partition-queries)
 
-- [优化对多个属性具有筛选器的查询](#optimize-queries-that-have-a-filter-on-multiple-properties)
+- [多个属性的筛选器](#filters-on-multiple-properties)
 
-- [使用筛选器和 ORDER BY 子句优化查询](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
+- [使用筛选器和 ORDER BY 子句的查询](#queries-with-both-a-filter-and-an-order-by-clause)
 
 <br>
 
 ### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>查询的 RU 费用是可接受的，但延迟仍然太高
 
-- [改善您的应用程序与 Azure Cosmos DB](#improving-proximity-between-your-app-and-azure-cosmos-db)
+- [提高邻近性](#improve-proximity)
 
-- [增加预配的吞吐量](#increasing-provisioned-throughput)
+- [增加预配的吞吐量](#increase-provisioned-throughput)
 
-- [增加 MaxConcurrency](#increasing-maxconcurrency)
+- [增加 MaxConcurrency](#increase-maxconcurrency)
 
-- [增加 MaxBufferedItemCount](#increasing-maxbuffereditemcount)
+- [增加 MaxBufferedItemCount](#increase-maxbuffereditemcount)
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-significantly-exceeds-output-document-count"></a>针对检索到的文档计数明显超过输出文档计数的查询的优化：
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>检索到的文档计数超出输出文档计数的查询
 
  检索的文档数是查询加载所需的文档数。 输出文档计数是查询结果所需的文档数。 如果检索的文档计数明显高于输出文档计数，则表明查询中至少有一个部分无法利用索引，需要执行扫描。
 
@@ -113,7 +111,7 @@ Client Side Metrics
 
 检索的文档计数（60951）明显大于输出文档计数（7），因此此查询需要执行扫描。 在这种情况下，系统函数[UPPER （）](sql-query-upper.md)不使用索引。
 
-## <a name="ensure-that-the-indexing-policy-includes-necessary-paths"></a>确保索引策略包括必要的路径
+## <a name="include-necessary-paths-in-the-indexing-policy"></a>在索引策略中包含必要的路径
 
 索引策略应涵盖 `WHERE` 子句、`ORDER BY` 子句、`JOIN`和大多数系统函数中包含的所有属性。 索引策略中指定的路径应与 JSON 文档中的属性匹配（区分大小写）。
 
@@ -191,7 +189,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 
 尽管系统函数不使用索引，查询的其他部分仍可能利用索引。
 
-## <a name="optimize-queries-with-both-a-filter-and-an-order-by-clause"></a>使用筛选器和 ORDER BY 子句优化查询
+## <a name="queries-with-both-a-filter-and-an-order-by-clause"></a>使用筛选器和 ORDER BY 子句的查询
 
 虽然带有筛选器的查询和 `ORDER BY` 子句通常使用范围索引，但如果它们可以从复合索引提供，则它们将更有效。 除了修改索引策略之外，还应将组合索引中的所有属性添加到 `ORDER BY` 子句。 此查询修改将确保它利用复合索引。  可以通过在[营养](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)数据集上运行查询来观察影响。
 
@@ -261,33 +259,6 @@ ORDER BY c.foodGroup, c._ts ASC
 
 **Ru 费用：** 8.86 RU
 
-## <a name="optimize-queries-that-use-distinct"></a>优化使用 DISTINCT 的查询
-
-如果重复的结果是连续的，则查找 `DISTINCT` 的结果集会更有效。 将 `ORDER BY` 子句添加到查询和组合索引将确保重复的结果是连续的。 如果需要 `ORDER BY` 多个属性，请添加一个组合索引。 可以通过在[营养](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)数据集上运行查询来观察影响。
-
-### <a name="original"></a>原始
-
-查询：
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c
-```
-
-**Ru 费用：** 32.39 RU
-
-### <a name="optimized"></a>优化
-
-更新的查询：
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c 
-ORDER BY c.foodGroup
-```
-
-**Ru 费用：** 3.38 RU
-
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>使用子查询优化联接表达式
 多值子查询可以优化 `JOIN` 表达式，方法是：在每个 select-多个表达式后推送谓词，而不是在 `WHERE` 子句中的所有交叉联接后推送。
 
@@ -323,7 +294,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 假设标记数组中只有一个项与筛选器匹配，并且 nutrients 和 servings 数组都有五项。 然后，`JOIN` 表达式将扩展到 1 x 1 x 5 x 5 = 25 项，而不是第一个查询中的1000项。
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-is-approximately-equal-to-output-document-count"></a>针对检索到的文档计数约等于输出文档计数的查询的优化：
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>检索到的文档计数等于输出文档计数的查询
 
 如果检索的文档数约等于输出文档计数，则意味着查询不必扫描很多不必要的文档。 对于许多查询，如使用 TOP 关键字的查询，检索到的文档计数可能会超出输出文档数1。 这不会导致问题。
 
@@ -359,7 +330,7 @@ SELECT * FROM c
 WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
 ```
 
-## <a name="optimize-queries-that-have-a-filter-on-multiple-properties"></a>优化对多个属性具有筛选器的查询
+## <a name="filters-on-multiple-properties"></a>多个属性的筛选器
 
 虽然在多个属性上使用筛选器的查询通常使用范围索引，但如果它们可以从复合索引提供，则它们将更有效。 对于少量的数据，这种优化不会产生很大的影响。 但对于大量数据，它可能很有用。 对于每个复合索引，最多只能优化一个非相等筛选器。 如果你的查询具有多个非相等筛选器，你应选取其中一个将使用该组合索引的筛选器。 余数将继续使用范围索引。 非相等筛选器必须在复合索引中最后定义。 [了解有关复合索引的详细信息](index-policy.md#composite-indexes)
 
@@ -402,23 +373,23 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 }
 ```
 
-## <a name="common-optimizations-that-reduce-query-latency-no-impact-on-ru-charge"></a>减少查询延迟的常见优化（不会对 RU 费用产生影响）：
+## <a name="optimizations-that-reduce-query-latency"></a>减少查询延迟的优化：
 
 在许多情况下，RU 费用可能是可接受的，但查询延迟仍然太高。 以下部分概述了降低查询延迟的技巧。 如果在同一数据集上多次运行相同的查询，每次都将具有相同的 RU 费用。 但是，查询的延迟可能会因查询执行而异。
 
-## <a name="improving-proximity-between-your-app-and-azure-cosmos-db"></a>改善您的应用程序与 Azure Cosmos DB
+## <a name="improve-proximity"></a>提高邻近性
 
 从 Azure Cosmos DB 帐户之外的其他区域中运行的查询将具有比在同一区域中运行的延迟更高的延迟。 例如，如果您在台式计算机上运行代码，则应预计延迟为数十或几百（或更多）毫秒，大于在 Azure Cosmos DB 的同一 Azure 区域中的虚拟机。 [在 Azure Cosmos DB 中全局分发数据](distribute-data-globally.md)是很简单的方法，以确保你的数据更接近于你的应用程序。
 
-## <a name="increasing-provisioned-throughput"></a>增加预配的吞吐量
+## <a name="increase-provisioned-throughput"></a>增加预配的吞吐量
 
 在 Azure Cosmos DB 中，预配的吞吐量以请求单位（RU）度量。 假设你有一个使用 5 RU 吞吐量的查询。 例如，如果你预配 1000 RU，则每秒可以运行查询200次。 如果尝试在没有足够的吞吐量的情况下运行查询，Azure Cosmos DB 将返回 HTTP 429 错误。 任何当前核心（SQL） API sdk 将在等待一小段时间后自动重试该查询。 限制请求需要更长时间，因此增加预配的吞吐量可以提高查询延迟。 可以在 Azure 门户的 "指标" 边栏选项卡中查看[请求限制请求总数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 
-## <a name="increasing-maxconcurrency"></a>增加 MaxConcurrency
+## <a name="increase-maxconcurrency"></a>增加 MaxConcurrency
 
 并行查询的工作方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，将 MaxConcurrency 调整到分区数最可能实现最高性能的查询，前提是所有其他系统条件保持不变。 如果不知道分区数，可以将 MaxConcurrency （或旧版 sdk 版本中的 MaxDegreesOfParallelism）设置为较高的数值，系统会选择最小值（分区数、用户提供的输入）作为最大并行度。
 
-## <a name="increasing-maxbuffereditemcount"></a>增加 MaxBufferedItemCount
+## <a name="increase-maxbuffereditemcount"></a>增加 MaxBufferedItemCount
 
 查询旨在预提取结果，而客户端正在处理当前批结果。 预提取帮助改进查询中的的总体延迟。 设置 MaxBufferedItemCount 将限制预提取结果的数量。 通过将此值设置为预期返回的结果数（或较高的数值），查询可以从预提取获得最大的收益。 如果将此值设置为-1，则系统可以自动确定要缓冲的项目数。
 

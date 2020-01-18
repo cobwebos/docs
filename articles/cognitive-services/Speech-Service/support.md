@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928642"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169530"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -58,17 +58,6 @@ Azure 客户可在 Azure 门户中创建和管理支持请求。
 * [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [适用于美国政府的 Azure 门户](https://portal.azure.us)
 
-## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
-
-Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
-
-如果通过搜索找不到问题的答案，请将新问题提交给 Stack Overflow，方法是使用[\[microsoft 认知\]\[语音\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)的标记。
-
-> [!TIP]
-> Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  
-> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)（如何正确提问？）
-> * [如何创建最小、完整且可验证的示例](https://stackoverflow.com/help/mcve)
-
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
 示例通常发布为开放源代码。 若有疑问和问题，请在相应的 GitHub 存储库中创建问题。 你也可以提交拉取请求。 下面的列表包含了示例存储库的链接：
@@ -108,6 +97,16 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
  - 如果针对特定服务交互报告错误，则报告所报告事件的 SessionId 和 time （包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
  - 任何其他附加信息
 
+## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
+
+Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
+
+如果通过搜索找不到问题的答案，请将新问题提交给 Stack Overflow，方法是使用[\[microsoft 认知\]\[语音\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)的标记。
+
+> [!TIP]
+> Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  
+> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)（如何正确提问？）
+> * [如何创建最小、完整且可验证的示例](https://stackoverflow.com/help/mcve)
 
 ## <a name="uservoice-forum"></a>UserVoice 论坛
 

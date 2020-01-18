@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029855"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167386"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
 
@@ -64,7 +64,7 @@ ms.locfileid: "76029855"
 ### <a name="windows-down-level-devices"></a>Windows 下层设备
 
 - Windows 8.1
-- Windows 7。 有关 Windows 7 的支持信息，请参阅对[windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。
+- Windows 7 支持于2020年1月14日结束。 有关详细信息，请参阅对[Windows 7 的支持已结束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2。 有关 Windows Server 2008 和 2008 R2 的支持信息，请参阅[准备 Windows server 2008 支持结束](https://www.microsoft.com/cloud-platform/windows-server-2008)。

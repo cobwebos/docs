@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263364"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -125,10 +125,10 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
 | AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate` （推荐）值指示 REST API 使用客户端证书身份验证来限制访问。 只有具有适当证书的服务（例如 Azure AD B2C）才能访问 API。 `Bearer` 值指示 REST API 使用客户端 OAuth2 持有者令牌限制访问。 |
-| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 |
+| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个调用的 HTTP 谓词如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
 | ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明的名称。 |
-| DebugMode | 否 | 在调试模式下运行技术配置文件。 在调试模式下，REST API 可以返回更多信息。 请参阅“返回错误消息”部分。 |
+| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值： `true`或 `false` （默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回的错误消息](#returning-error-message)部分。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -215,7 +215,7 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 ## <a name="returning-error-message"></a>返回错误消息
 
-REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 发生错误时，REST API 应返回包含以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
+REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回带有以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
 
 | Attribute | 需要 | Description |
 | --------- | -------- | ----------- |

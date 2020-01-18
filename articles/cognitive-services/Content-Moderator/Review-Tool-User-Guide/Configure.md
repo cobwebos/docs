@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757428"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169595"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "72757428"
 
 ## <a name="manage-team-and-subteams"></a>管理团队和子团队
 
-利用 "**团队**" 选项卡，你可以管理你的团队和子团队 &mdash;groups 用户，这些用户可以在启动某些[人审查](../review-api.md#reviews)时收到通知。 你只能有一个团队（在使用审阅工具注册时创建），但你可以创建多个子组。 团队管理员可以邀请成员、设置其权限，并将其分配给不同的子组。
+利用 "**团队**" 选项卡，你可以管理你的团队和子组，&mdash;用户组，这些用户可以在启动某些[人审查](../review-api.md#reviews)时收到通知。 你只能有一个团队（在使用审阅工具注册时创建），但你可以创建多个子组。 团队管理员可以邀请成员、设置其权限，并将其分配给不同的子组。
 
 ![查看工具团队设置](images/settings-2-team.png)
 
@@ -64,9 +64,9 @@ ms.locfileid: "72757428"
 
 ![切换子团队](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>标记
 
-"**标记**" 选项卡可用于定义自定义审核标记，以及 &mdash;**isadult** （**a**）和**isracy** （**r**）的两个默认审核标记。 当创建自定义标记时，它将在默认标记旁边的审阅中可用。 可以通过切换其可见性设置来更改中显示的标记。
+"**标记**" 选项卡可用于定义自定义审核标记，以及&mdash;**isadult** （**a**）和**isracy** （**r**）的两个默认审核标记。 当创建自定义标记时，它将在默认标记旁边的审阅中可用。 可以通过切换其可见性设置来更改中显示的标记。
 
 !["标记" 视图，包括 "显示" 复选框](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ ms.locfileid: "72757428"
 
 利用 "**连接器**" 选项卡，你可以管理连接器，这是特定于服务的插件，可以采用不同的方式处理内容[工作流](../review-api.md#workflows)的内容。
 
-创建工作流时的默认连接器是内容审查器连接器，它可以将内容标记为**成人**或**猥亵**，查找猥亵，等等。 不过，你可以使用这里列出的其他连接器，只要你拥有各自服务的凭据（例如，要使用人脸 API 连接器，你将需要获取[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)订阅密钥）。
+创建工作流时的默认连接器是内容审查器连接器，它可以将内容标记为**成人**或**猥亵**，查找猥亵，等等。 不过，你可以使用这里列出的其他连接器，只要你拥有各自服务的凭据（例如，要使用人脸连接器，你将需要获取人[脸](https://docs.microsoft.com/azure/cognitive-services/face/overview)订阅密钥）。
 
 [查看工具](./human-in-the-loop.md)包括以下连接器：
 
-- 情感 API
-- 面部 API
+- 情感
+- 人脸
 - PhotoDNA 云服务
-- 文本分析 API
+- 文本分析
 
 ### <a name="add-a-connector"></a>添加连接器
 
@@ -132,7 +132,7 @@ ms.locfileid: "72757428"
 
 ### <a name="use-your-azure-account-with-the-review-apis"></a>将你的 Azure 帐户用于查看 Api
 
-若要将你的 Azure 密钥与审查 Api 一起使用，你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源，然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值，并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**允许列表资源 ID** " 字段中。
+若要将你的 Azure 密钥与审查 Api 一起使用，你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源，然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值，并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**白名单资源 ID** " 字段中。
 
 ![Azure 门户中的内容审查器资源 ID](images/credentials-azure-portal-resourceid.PNG)
 

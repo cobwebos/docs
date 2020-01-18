@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969595"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263415"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍 Azure Monitor 监视的各种应用程序和服务。 
@@ -53,7 +53,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 - 日志-服务支持诊断设置，可收集平台日志和指标来 Azure Monitor 日志。
 - 见解-提供服务的自定义监视体验的服务可提供见解。
 
-| 服务 | 度量值 | 日志 | 见解 | 说明 |
+| 服务 | 指标 | 日志 | 见解 | 说明 |
 |:---|:---|:---|:---|:---|
 |Active Directory | 否 | 是 | [是](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | 否 | 否 | 否 |  |
@@ -153,7 +153,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |SQL 数据仓库 | 是 | 是 | 否 |  |
 |SQL Database | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
-|Stack | 否 | 否 | 否 |  |
+|堆栈 | 否 | 否 | 否 |  |
 |存储空间 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |存储缓存 | 否 | 否 | 否 |  |
 |存储同步服务 | 否 | 否 | 否 |  |
@@ -181,7 +181,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 | [Azure Sentinel](/azure/sentinel/) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云跟踪。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。 |
 | [密钥保管库分析](insights/azure-key-vault.md) | 分析 Azure Key Vault AuditEvent 日志。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[在 Intune 中将日志数据发送到存储、事件中心或 log analytics （预览版）](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
-| 网络  | [DNS Analytics](insights/dns-analytics.md)收集、分析和关联 Windows dns 分析和审核日志以及来自 dns 服务器的其他相关数据。<br>[网络性能监视器](insights/network-performance-monitor.md)-监视服务和应用程序终结点的网络连接和性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)-分析 Azure 应用程序网关上的日志和指标。<br>[流量分析](/azure/network-watcher/traffic-analytics)分析网络观察程序网络安全组（NSG）流日志，以便深入了解 Azure 云中的流量流。 |
+| 网络  | [网络性能监视器](insights/network-performance-monitor.md)-监视服务和应用程序终结点的网络连接和性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)-分析 Azure 应用程序网关上的日志和指标。<br>[流量分析](/azure/network-watcher/traffic-analytics)分析网络观察程序网络安全组（NSG）流日志，以便深入了解 Azure 云中的流量流。 |
 | [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 更新的版本，通过 Azure Sentinel 提供改进的加入。 |
 | [SQL Analytics](insights/azure-sql.md) | 跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪 Surface Hub 设备的运行状况和使用情况。 |
@@ -200,6 +200,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 | [Active Directory 评估](insights/ad-assessment.md) | 评估 Active Directory 环境的风险和运行状况。 |
 | [Active Directory 复制状态](insights/ad-replication-status.md) | 定期监视 Active Directory 环境中的任何复制失败。 |
 | [活动 log analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 使用预定义的日志查询和视图分析活动日志项。 |
+| [DNS Analytics （预览）](insights/dns-analytics.md) | 收集、分析和关联 Windows DNS 分析和审核日志以及来自 DNS 服务器的其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析你的 Cloud Foundry 系统运行状况和性能指标。 |
 | [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
 | [按需评估](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 评估和优化本地、混合和云 Microsoft 技术环境的可用性、安全性和性能。 |

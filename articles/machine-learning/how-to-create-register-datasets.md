@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045617"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260848"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -49,7 +49,7 @@ ms.locfileid: "76045617"
 
 有两种数据集类型，具体取决于用户在定型中使用它们的方式：
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 Pandas 或 Spark 数据帧。 可从 .csv、tsv、parquet 文件和 SQL 查询结果创建 `TabularDataset` 对象。 有关完整列表，请参阅[TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)通过分析提供的文件或文件列表，以表格格式表示数据。 这使你能够将数据具体化为 Pandas 或 Spark 数据帧。 可从 .csv、tsv、parquet、jsonl 文件和 SQL 查询结果创建 `TabularDataset` 对象。 有关完整列表，请参阅[TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)类引用数据存储或公用 url 中的单个或多个文件。 通过此方法，您可以将文件作为 FileDataset 对象下载或装载到您的计算中。 文件可以采用任何格式，这可以实现更广泛的机器学习方案，包括深度学习。
 
@@ -74,7 +74,7 @@ ms.locfileid: "76045617"
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
-可以通过 SDK 或 Azure 机器学习 Studio 创建 TabularDatasets。 您可以从数据中的列或存储数据的路径模式指定时间戳，以启用时序特征。 此规范允许按时间轻松有效地筛选。
+可以通过 SDK 或 Azure 机器学习 studio 创建 TabularDatasets。 
 
 使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)方法可读取 .csv 或 tsv 格式的文件，以及创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
 
@@ -109,7 +109,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|已保留|Pclass|名称|性别|年龄|SibSp|Parch|工作单|车费|客舱|着手
+| |PassengerId|已保留|Pclass|名称|性别|年龄|SibSp|Parch|票证|车费|客舱|着手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|第|错误|3|Braund，Owen Harris|男|22.0|第|0|A/5 21171|7.2500||S
 第|2|正确|第|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|第|0|电脑17599|71.2833|C85|C
@@ -186,7 +186,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 ```
 
 > [!Note]
-> 通过 Azure 机器学习 Studio 创建的数据集自动注册到工作区。
+> 通过 Azure 机器学习 studio 创建的数据集自动注册到工作区。
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>用 Azure 开放数据集创建数据集
 
@@ -244,7 +244,6 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'new titanic training data',
                                  create_new_version = True)
 ```
-
 
 ## <a name="access-datasets-in-your-script"></a>访问脚本中的数据集
 

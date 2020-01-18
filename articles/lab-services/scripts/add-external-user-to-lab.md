@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：向 Azure 开发测试实验室的实验室添加外部用户 |Microsoft Docs
+title: PowerShell-将外部用户添加到 Azure 开发测试实验室中的实验室
 description: 此 PowerShell 脚本将外部用户添加到 Azure 开发测试实验室中的实验室。
 services: lab-services
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 042fa1e24ebadfb00a2d55cc97d742f198cb5662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da5cc4a3809b1867e8aa2c3b21e88c2f30ae3d4d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160606"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169682"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将外部用户添加到 Azure 开发测试实验室中的实验室
 
@@ -28,7 +28,7 @@ ms.locfileid: "66160606"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>必备组件
-* 实验室  。 此脚本要求拥有现有的实验室。 
+* 实验室。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
 

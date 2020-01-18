@@ -1,5 +1,5 @@
 ---
-title: 如何结合使用通知中心与 Java
+title: 如何将 Azure 通知中心与 Java 配合使用
 description: 了解如何从 Java 后端使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213206"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263857"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 
@@ -41,7 +41,7 @@ SDK 目前支持以下内容：
 * 常规发送
 * 计划发送
 * 通过 Java NIO 的异步操作
-* 支持的平台：APNS (iOS)、FCM (Android)、WNS（Windows 应用商店应用）、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、百度（没有 Google 服务的 Android）
+* 支持的平台： APNS （iOS）、FCM （Android）、WNS （Windows 应用商店应用）、MPNS （Windows Phone）、ADM （Amazon Kindle 激发）、百度（不包含 Google 服务的 Android）
 
 ## <a name="sdk-usage"></a>SDK 用法
 
@@ -374,21 +374,21 @@ SDK 目前支持以下内容：
 
 ## <a name="next-steps"></a>后续步骤
 
-本主题介绍了如何为通知中心创建简单的 Java REST 客户端。 从这里可以：
+本主题介绍了如何为通知中心创建简单的 Java REST 客户端。 可以从此页执行下列操作：
 
 * 下载完整的 [Java SDK]，其中包含完整的 SDK 代码。
 * 播放示例：
   * [通知中心入门]
   * [发送突发新闻]
   * [发送本地化的突发新闻]
-  * [发送通知到经身份验证的用户]
-  * [发送跨平台通知到经身份验证的用户]
+  * [将通知发送到经身份验证的用户]
+  * [将跨平台通知发送到经身份验证的用户]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [发送突发新闻]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [发送本地化的突发新闻]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-[发送通知到经身份验证的用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[发送跨平台通知到经身份验证的用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[将通知发送到经身份验证的用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[将跨平台通知发送到经身份验证的用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Maven]: https://maven.apache.org/

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972626"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169370"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -25,9 +25,12 @@ ms.locfileid: "75972626"
 * 作为请求正文中的字节数组发送视频文件。
 * 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅在付费帐户中支持）来使用现有的 Azure 媒体服务资产。
 
-本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
+视频上传完毕后，视频索引器（可选）会对视频进行编码（如文章中所述）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
-视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+本文介绍如何通过以下选项上传和索引视频：
+
+* [视频索引器网站](#website) 
+* [视频索引器 Api](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>上传注意事项和限制
  
@@ -40,6 +43,10 @@ ms.locfileid: "75972626"
 - `videoURL` 参数中提供的 URL 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
 - 对于单个文件，视频索引器的最大持续时间限制为4小时。
+- URL 需要可访问（例如，公共 URL）。 
+
+    如果它是专用 URL，则需要在请求中提供访问令牌。
+- URL 必须指向有效的媒体文件，而不是指向网页，如指向 `www.youtube.com` 页面的链接。
 - 每分钟最多可以上传60个电影。
 
 > [!Tip]
@@ -47,15 +54,39 @@ ms.locfileid: "75972626"
 >
 > 如果必须使用较旧的 .NET framework，请在进行 REST API 调用之前在代码中添加一行：  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="configurations-and-params"></a>配置和参数
+## <a name="supported-file-formats-for-video-indexer"></a>视频索引器支持的文件格式
+
+有关可用于视频索引器的文件格式的列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
+
+## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用视频索引器网站上传视频并为视频编制索引
+
+> [!NOTE]
+> 视频的名称长度不得超过 80 个字符。
+
+1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
+2. 若要上传视频，请按“上传”按钮或链接。
+
+    ![上载](./media/video-indexer-get-started/video-indexer-upload.png)
+
+    视频上传以后，视频索引器就会开始对视频进行索引编制和分析。
+
+    ![已上传](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+
+    当视频索引器分析完以后，你会获得一个通知，其中包含视频链接以及对视频中找到的内容的简短说明。 例如：人物、主题、OCR。
+
+## <a name="a-idapisupload-and-index-with-api"></a>通过 API <a id="apis"/>上传和索引
+
+使用上[传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API，根据 URL 上传和索引视频。 下面的代码示例包含注释掉的代码，该代码演示如何上传字节数组。 
+
+### <a name="configurations-and-params"></a>配置和参数
 
 本部分介绍某些可选参数以及何时需设置它们。
 
-### <a name="externalid"></a>externalID 
+#### <a name="externalid"></a>externalID 
 
 此参数用于指定与视频关联的 ID。 此 ID 可以应用到外部“视频内容管理”(VCM) 系统集成。 位于视频索引器门户中的视频可以使用指定的外部 ID 进行搜索。
 
-### <a name="callbackurl"></a>callbackUrl
+#### <a name="callbackurl"></a>callbackUrl
 
 一个 URL，用于通知客户（使用 POST 请求）以下事件：
 
@@ -79,12 +110,12 @@ ms.locfileid: "75972626"
         
     - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-#### <a name="notes"></a>说明
+##### <a name="notes"></a>说明
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。
 
-### <a name="indexingpreset"></a>indexingPreset
+#### <a name="indexingpreset"></a>indexingPreset
 
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
 
@@ -95,13 +126,13 @@ ms.locfileid: "75972626"
 
 价格取决于所选索引编制选项。  
 
-### <a name="priority"></a>priority
+#### <a name="priority"></a>priority
 
 视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效：**Low**（低）、**Normal**（正常，默认值）、**High**（高）。
 
 仅付费帐户支持 **Priority** 参数。
 
-### <a name="streamingpreset"></a>streamingPreset
+#### <a name="streamingpreset"></a>streamingPreset
 
 视频上传以后，视频索引器会选择性地对视频进行编码。 接下来会对视频进行索引编制和分析。 当视频索引器分析完以后，你会获得一个包含视频 ID 的通知。  
 
@@ -111,17 +142,17 @@ ms.locfileid: "75972626"
 
 如果只需对视频进行索引，但不需对其进行编码，请将 `streamingPreset` 设置为 `NoStreaming`。
 
-### <a name="videourl"></a>videoUrl
+#### <a name="videourl"></a>videoUrl
 
 要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。 
 
 如果未指定 `videoUrl`，则视频索引器希望你将文件作为多部分/表单正文内容传递。
 
-## <a name="code-sample"></a>代码示例
+### <a name="code-sample"></a>代码示例
 
 以下 C# 代码片段演示了如何将所有的视频索引器 API 结合使用。
 
-### <a name="instructions-for-running-this-code-sample"></a>有关运行此代码示例的说明
+#### <a name="instructions-for-running-this-code-sample"></a>有关运行此代码示例的说明
 
 将此代码复制到开发平台后，需要提供两个参数： API 管理身份验证密钥和视频 URL。
 
@@ -308,7 +339,8 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
-## <a name="common-errors"></a>常见错误
+
+### <a name="common-errors"></a>常见错误
 
 上传操作可能会返回下表中列出的状态代码。
 

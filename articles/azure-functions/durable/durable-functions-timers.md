@@ -4,12 +4,12 @@ description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 463d5e6c253643c82935c82c7dee5996c8e44b5f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706105"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261477"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions 中的计时器 (Azure Functions)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74706105"
 
 下面的示例演示了如何使用持久计时器来延迟执行。 该示例每天发布一次帐单通知10天。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -48,7 +48,7 @@ public static async Task Run(
 > [!NOTE]
 > 上面C#的示例针对 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -63,6 +63,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
 > 请避免在业务流程协调程序函数中出现无限循环。 有关如何安全有效地实现无限循环方案的信息，请参阅[永久业务流程](durable-functions-eternal-orchestrations.md)。
 
@@ -70,7 +72,7 @@ module.exports = df.orchestrator(function*(context) {
 
 此示例演示了如何使用持久计时器来实现超时。
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,7 +106,7 @@ public static async Task<bool> Run(
 > [!NOTE]
 > 上面C#的示例针对 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -130,8 +132,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
-> 如果代码不等待完成，请使用 `CancellationTokenSource` 取消持久计时器（.NET）或在返回的 `TimerTask` （JavaScript）上调用 `cancel()`。 在完成或取消所有未完成的任务之前，持久性任务框架不会将业务流程的状态更改为 "已完成"。
+> 如果代码不等待完成，请使用 `CancellationTokenSource` （.NET）或在返回的 `TimerTask` （JavaScript）上调用 `cancel()` 以取消持久计时器。 在完成或取消所有未完成的任务之前，持久性任务框架不会将业务流程的状态更改为 "已完成"。
 
 此取消机制不会终止正在进行的活动函数或子业务流程的执行。 它只是允许业务流程协调程序函数忽略结果并继续运行。 如果函数应用使用消耗计划，则仍将对被放弃的活动函数使用的任何时间和内存进行计费。 默认情况下，在消耗计划中运行的函数有五分钟的超时。 如果超出了此限制，则会回收 Azure Functions 主机以停止所有执行并防止出现费用失控的情况。 [函数超时是可配置的](../functions-host-json.md#functiontimeout)。
 

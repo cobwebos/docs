@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533702"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169087"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务支持和帮助选项
 
@@ -73,7 +73,7 @@ ms.locfileid: "74533702"
 | 内容审查器             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | 自定义视觉                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | 人脸                          | https://cognitive.uservoice.com/forums/430315-face |
-| 表单                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Form                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | 引人入胜                     | https://feedback.azure.com/forums/34192--general-feedback |
 | 语言理解 (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | 个性化体验创建服务                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -91,8 +91,8 @@ ms.locfileid: "74533702"
 
 发布说明在推出新版本后会更新。 注释包含有关新功能、改进和 bug 修复的信息。
 
- - [自定义视觉服务](custom-vision-service/release-notes.md)
- - [人脸 API](face/releasenotes.md)
+ - [自定义视觉](custom-vision-service/release-notes.md)
+ - [人脸](face/releasenotes.md)
  - [语言理解 (LUIS)](luis/whats-new.md)
  - [语音服务](speech-service/releasenotes.md)
  - [语音服务 SDK](speech-service/devices-sdk-release-notes.md)

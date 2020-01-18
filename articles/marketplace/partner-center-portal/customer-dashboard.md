@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480562"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264010"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>商业 Marketplace 分析中的客户仪表板
 
@@ -72,7 +72,7 @@ ms.locfileid: "75480562"
 
 **按订单/使用情况**图表的客户有三个选项卡： "订单"、"已规范化使用情况" 和 "原始使用情况"。 **排名靠前的客户**在 x 轴上显示，其顺序取决于其订单数。 Y 轴显示客户的订单计数。 辅助 y 轴（直线图）显示订单总数的累计百分比。 您可以通过将鼠标悬停在折线图上来显示详细信息。
 
-例如，请参阅下图以了解标准化用法：最多30% 的客户在累积了87% 的标准化使用量。 客户的30% 的客户只需 1.57 M 小时的使用量。
+例如，请参阅下图以了解标准化用法：最多30% 的客户在累积了87% 的标准化使用量。 30% 的客户只需1570000小时的使用量。
 
 ### <a name="customers-by-skus"></a>按 Sku 的客户
 

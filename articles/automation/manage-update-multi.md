@@ -3,14 +3,14 @@ title: 管理多个 Azure 虚拟机的更新
 description: 本文介绍如何管理 Azure 和非 Azure 虚拟机的更新。
 services: automation
 ms.subservice: update-management
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417830"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168051"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -147,6 +147,13 @@ ms.locfileid: "75417830"
   - 更新
 
 - **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)。
+
+> [!NOTE]
+> 请务必注意，排除项会替代包含项。 例如，如果定义 `*` 的排除规则，全部排除后将不会安装任何修补程序或包。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含包且已排除相关包，将不会安装此包。
+
+> [!NOTE]
+> 你不能指定已取代的更新以包含在更新部署中。
+>
 
 - **计划设置**：可以接受默认的日期和时间，即当前时间后 30 分钟。 也可以指定其他时间。
 

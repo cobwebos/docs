@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 在开发测试实验室中创建和管理虚拟机 | Microsoft Docs
+title: 通过 Azure CLI 在开发测试实验室中创建和管理虚拟机
 description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 创建和管理虚拟机
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773106"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167049"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门介绍如何在实验室中创建、启动、连接、更新和清理开发计算机。 
@@ -30,7 +30,7 @@ ms.locfileid: "70773106"
 * [安装 Azure CLI](/cli/azure/install-azure-cli)。 若要开始，请运行 az login，创建与 Azure 的连接。 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>创建并验证虚拟机 
-执行开发测试 Labs 相关命令之前，请使用`az account set`命令设置相应的 Azure 上下文：
+执行开发测试 Labs 相关命令之前，请使用 `az account set` 命令设置相应的 Azure 上下文：
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
@@ -61,7 +61,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 还可以通过将**图像类型**参数设置为**公式**来创建基于公式的虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用**vnet 名称**和**子网**参数。 有关详细信息，请参阅[az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
 
 ## <a name="verify-that-the-vm-is-available"></a>验证 VM 是否可用。
-`az lab vm show`使用命令验证 VM 是否可用，然后再开始连接。 
+使用 `az lab vm show` 命令来验证 VM 是否可用，然后再开始连接。 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -81,7 +81,7 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-连接到 VM：[SSH](../virtual-machines/linux/mac-create-ssh-keys.md)或[远程桌面](../virtual-machines/windows/connect-logon.md)。
+连接到 VM：[SSH](../virtual-machines/linux/mac-create-ssh-keys.md) 或[远程桌面](../virtual-machines/windows/connect-logon.md)。
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 若要列出实验室中 VM 的可用项目，请运行以下命令。
 
-**Cloud Shell-PowerShell**：注意 $expand 中的 $ 之前（\`即 "$expand）使用反撇号（）：
+**Cloud Shell-PowerShell**：注意在 $expand 中的 $ 之前（即 "$expand）使用了反撇号（\`）：
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell-Bash**：请注意，在命令中的\\$ 前面使用斜杠（）字符。 
+**Cloud Shell-Bash**：请注意，在命令中的 $ 前面使用斜杠（\\）字符。 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
@@ -163,4 +163,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下内容：[Azure 开发测试实验室 Azure CLI 文档](/cli/azure/lab?view=azure-cli-latest)。 
+请参阅以下内容： [Azure 开发测试实验室 Azure CLI 文档](/cli/azure/lab?view=azure-cli-latest)。 

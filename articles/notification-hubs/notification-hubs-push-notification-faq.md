@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心：常见问题解答 (FAQ) | Microsoft Docs
-description: 关于设计/实现有关通知中心的解决方案的常见问题
+title: Azure 通知中心常见问题（Faq） |Microsoft Docs
+description: 有关在 Azure 通知中心中设计和实现解决方案的常见问题解答。
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,16 +17,16 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066878"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263823"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>通知中心的资源结构是怎样的？
 
@@ -79,7 +79,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
 
-如果需要支持超过 1000 万个注册设备，则必须将设备分布到多个中心。
+如果需要支持超过10000000个注册的设备，则必须在多个中心对设备进行分区。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以发送多少推送通知？
 
@@ -153,7 +153,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 
 若要发送敏感有效负载，我们建议使用安全推送模式。 发送方将带有消息标识符的 ping 通知传递到设备，其中不包含敏感有效负载。 当设备上的应用收到该有效负载后，可直接调用安全 API 来提取消息详细信息。 有关如何实现此模式的指导，请转到[通知中心安全推送教程]页。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>为灾难恢复提供哪种支持？
 
@@ -193,9 +193,9 @@ Azure 通知中心提供多项可用于故障排除的功能，尤其是针对�
 
 Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
-还可以通过编程方式访问指标。 有关详细信息，请参阅以下文章：
+您还可以通过编程方式访问度量值。 有关详细信息，请参阅以下文章：
 
-- [使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供[此示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示的证书。 
+- [通过 .Net 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供证书，如[本示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示。 
 - [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 

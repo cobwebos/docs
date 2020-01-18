@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402599"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168181"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -27,7 +27,7 @@ ms.locfileid: "75402599"
 * 安装在 Windows 计算机或 Linux 服务器上的依赖关系代理。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 地图功能之间的差异，请参阅以下[常见问题解答](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)。
+>如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 地图功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms-preview)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -321,7 +321,7 @@ Linux：
 
 ### <a name="connections"></a>连接
 
-连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  在侦听套接字上执行 *accept* 命令后生成的 TCP 连接是入站连接，针对给定的 IP 和端口执行 *connect* 命令后建立的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  由于侦听套接字上的接受导致的 TCP 连接是入站的，而通过连接到给定的 IP 和端口创建的连接是出站的。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 
@@ -346,7 +346,7 @@ Linux：
 | `LinksFailed` |在报告时间范围内失败的物理网络连接数 此信息目前仅适用于出站连接。 |
 | `LinksLive` |在报告时间范围结束时打开的物理网络连接数|
 
-#### <a name="metrics"></a>度量值
+#### <a name="metrics"></a>指标
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 

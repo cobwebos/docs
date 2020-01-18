@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 资源管理器模板与 PowerShell 配合使用，自动创建或修改实验室 | Microsoft Docs
+title: 使用 Azure 资源管理器模板创建或修改实验室
 description: 了解如何将 Azure 资源管理器模板与 PowerShell 配合使用，以在开发测试实验室中自动创建或修改实验室
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622451"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170309"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 Azure 资源管理器模板和 PowerShell 自动创建或修改实验室
 

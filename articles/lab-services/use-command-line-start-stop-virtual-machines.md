@@ -1,5 +1,5 @@
 ---
-title: 使用命令行工具启动和停止 Vm Azure 开发测试实验室 |Microsoft Docs
+title: 使用命令行工具启动和停止 Vm Azure 开发测试实验室
 description: 了解如何使用命令行工具在 Azure 开发测试实验室中启动和停止虚拟机。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8e00de295a7f41bf0ff768c4f948a667bc188616
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd643559a09d5c75aad9be5f35c653994c8488cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456943"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169251"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>使用命令行工具启动和停止 Azure 开发测试实验室虚拟机
 本文介绍如何使用 Azure PowerShell 或 Azure CLI 在 Azure 开发测试实验室中的实验室中启动或停止虚拟机。 你可以创建 PowerShell/CLI 脚本来自动执行这些操作。 

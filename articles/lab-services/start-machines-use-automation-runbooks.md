@@ -1,5 +1,5 @@
 ---
-title: 启动机在 Azure 开发测试实验室中使用自动化 runbook |Microsoft Docs
+title: 使用 Azure 开发测试实验室中的自动化 runbook 启动计算机
 description: 了解如何使用 Azure 自动化 runbook 在 Azure 开发测试实验室中的实验室中启动虚拟机。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,29 +10,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083612"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166313"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自动化 runbook 的实验室中顺序启动虚拟机
-[Autostart](devtest-lab-set-lab-policy.md#set-autostart)开发测试实验室的功能可用于配置 Vm 以在指定时间自动启动。 但是，此功能不支持计算机按特定顺序启动。 有几种方案，这种自动化会非常有用。  一个方案是实验室中 Jumpbox VM 需要在何处进行先启动之前的其他 Vm，, 因为 Jumpbox 用作其他 vm 的 vm 的访问点。  本文介绍如何设置 Azure 自动化帐户与 PowerShell runbook 执行脚本。 该脚本使用标记在 Vm 上在实验室中以便您可以控制启动顺序，而无需更改该脚本。
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自动化 runbook 按顺序启动实验室中的虚拟机
+使用开发测试实验室的[自动](devtest-lab-set-lab-policy.md#set-autostart)启动功能，可以将 vm 配置为在指定时间自动启动。 但是，此功能不支持按特定顺序启动计算机。 在某些情况下，这种类型的自动化会很有用。  一种方案是，实验室中的 Jumpbox VM 首先需要在其他 Vm 之前启动，因为 Jumpbox 用作其他 Vm 的访问点。  本文介绍如何设置 Azure 自动化帐户，其中包含用于执行脚本的 PowerShell runbook。 此脚本使用实验室中的 Vm 上的标记来控制启动顺序，而无需更改脚本。
 
 ## <a name="setup"></a>设置
-在此示例中，在实验室中的 Vm 需要具有该标记**StartupOrder**添加具有适当的值 (0,1,2，等等。)。 指定不需要为-1 开始的任何计算机。
+在此示例中，实验室中的 Vm 需要使用适当的值（0、1、2等）添加标记**StartupOrder** 。 指定任何不需要作为-1 启动的计算机。
 
 ## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
-创建 Azure 自动化帐户中的以下说明[这篇文章](../automation/automation-create-standalone-account.md)。 选择**运行方式帐户**选项创建帐户时。 创建自动化帐户后，打开**模块**页，然后选择**更新 Azure 模块**菜单栏上。 默认模块是几个版本旧，而无需更新脚本可能无法运行。
+按照[本文](../automation/automation-create-standalone-account.md)中的说明创建 Azure 自动化帐户。 创建帐户时，请选择 "**运行方式帐户**" 选项。 创建自动化帐户后，打开 "**模块**" 页，并在菜单栏上选择 "**更新 Azure 模块**"。 默认模块是多个旧版本，无需更新脚本即可工作。
 
 ## <a name="add-a-runbook"></a>添加 runbook
-现在，若要将 runbook 添加到自动化帐户中，选择**Runbook**在左侧菜单中。 选择**添加 runbook**菜单中，并按照说明上[创建 PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md)。
+现在，若要将 runbook 添加到自动化帐户，请在左侧菜单中选择 " **runbook** "。 在菜单上选择 "**添加 runbook** "，并按照说明[创建 PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md)。
 
 ## <a name="powershell-script"></a>PowerShell 脚本
-以下脚本将订阅名称，实验室名称作为参数。 脚本的流程是在实验室中获取所有 Vm，然后解析出标记信息创建的 VM 名称和其启动顺序的列表。 该脚本演示了按顺序对 Vm 并启动 Vm。 如果某一订单号中有多个 Vm，它们会启动以异步方式使用 PowerShell 作业。 对于没有标记，设置启动值，为最后一个 (10)，这些 Vm 它们将启动最后一个，默认情况下。  如果实验室不会想要会自动启动的 VM，将标记值设置为 11，它将被忽略。
+以下脚本采用订阅名称，将实验室名称作为参数。 脚本的流是获取实验室中的所有 Vm，然后分析出标记信息，以创建 VM 名称及其启动顺序列表。 该脚本会按顺序遍历 Vm，并启动 Vm。 如果有多个 Vm 的特定订单号，它们将使用 PowerShell 作业异步启动。 对于没有标记的 Vm，请将 "启动值" 设置为最后一个（10），默认情况下，它们将启动。  如果实验室不希望 VM 自动安装，请将标记值设置为11，它将被忽略。
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>创建计划
-有每日、 执行此脚本[创建一个计划](../automation/shared-resources/schedules.md#creating-a-schedule)自动化帐户中。 创建计划后，[将其链接到 runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)。 
+若要每天执行此脚本，请在自动化帐户中[创建一个计划](../automation/shared-resources/schedules.md#creating-a-schedule)。 创建计划后，请将[其链接到 runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)。 
 
-在大规模情况下有多个订阅使用多个实验室，在文件中以不同的实验室存储参数信息并将文件传递给脚本而不是单个参数。 该脚本需要修改，但核心执行将相同。 在此示例使用 Azure 自动化来执行 PowerShell 脚本，在其他选项，如在生成/发布管道中使用的任务。
+在有多个具有多个实验室的订阅的大规模情况下，将参数信息存储在不同实验室的文件中，并将该文件传递给脚本，而不是单独的参数。 脚本需要修改，但核心执行将是相同的。 虽然此示例使用 Azure 自动化来执行 PowerShell 脚本，但还有其他一些选项，如在生成/发布管道中使用任务。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解有关 Azure 自动化的详细信息：[Azure 自动化简介](../automation/automation-intro.md)。
+请参阅以下文章，了解有关 Azure 自动化的详细信息： [Azure 自动化简介](../automation/automation-intro.md)。

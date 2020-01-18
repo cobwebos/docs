@@ -4,19 +4,21 @@ description: 如果 Azure 中的 Analysis Services 服务器要连接到本地�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768548"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263432"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>通过本地数据网关连接到本地数据源
 
-本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器以外，最新版本的网关还适用于 Azure 逻辑应用、Power BI、电源应用和电源自动化。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 虽然安装的网关在所有这些服务中都是相同的，但 Azure Analysis Services 和逻辑应用都有一些额外的步骤。
+本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器以外，最新版本的网关还适用于 Azure 逻辑应用、Power BI、电源应用和电源自动化。 虽然安装的网关在所有这些服务中都是相同的，但 Azure Analysis Services 和逻辑应用都有一些额外的步骤。
+
+此处提供的信息特定于 Azure Analysis Services 如何与本地数据网关配合使用。 若要详细了解网关以及它如何与其他服务一起使用，请参阅[什么是本地数据网关？](/data-integration/gateway/service-gateway-onprem)。
 
 对于 Azure Analysis Services，第一次使用网关进行设置的过程分为四个部分：
 
@@ -24,9 +26,11 @@ ms.locfileid: "75768548"
 
 - **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以注册在任何区域中，但我们建议处于与 Analysis Services 服务器位于同一区域。 
 
-- 在 Azure 中创建网关资源 - 在这一步中，在你的 Azure 订阅中创建网关资源。
+- **在 azure 中创建网关资源**-在此步骤中，将在 azure 中创建网关资源。
 
-- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
+- **将服务器连接到网关资源**-一旦你有网关资源，你就可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域。
+
+
 
 ## <a name="how-it-works"></a>工作原理
 在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后为你的 Azure 订阅创建本地数据网关资源。 然后，Azure Analysis Services 服务器将连接到 Azure 网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 

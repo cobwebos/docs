@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 1cde28bff48bc239e22fe47a882e3218bd2d938b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a05bfcf5da2dc9336d04668b09b82038b00caf9d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278563"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168753"
 ---
 # <a name="developer-resources-for-language-understanding"></a>语言理解的开发人员资源
 
-开发人员可以使用 REST Api 和 Sdk 进行语言理解。 
+开发人员可以使用 REST Api 和 Sdk 进行语言理解。
 
 ## <a name="azure-resource-management"></a>Azure 资源管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "74278563"
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>语言理解创作和预测请求
 
-可以从需要创建的 Azure 资源访问语言理解服务。 有两个资源：创作和预测终结点资源。 这两个资源都允许您控制 LUIS 资源。 
+可以从需要创建的 Azure 资源访问语言理解服务。 有两个资源：创作和预测终结点资源。 这两个资源都允许您控制 LUIS 资源。
 
 了解[V3 预测终结点](luis-migration-api-v3.md)。
 
@@ -48,28 +48,28 @@ ms.locfileid: "74278563"
 
 ### <a name="language-based-sdks"></a>基于语言的 Sdk
 
-|语言 |参考文档|package|示例|快速入门|
+|语言 |参考文档|程序包|示例|快速入门|
 |--|--|--|--|--|
-|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[创建和管理应用](sdk-csharp-quickstart-authoring-app.md)<br>[查询预测终结点](sdk-csharp-quickstart-query-prediction-endpoint.md)|
+|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[创建和管理应用](sdk-authoring.md?pivots=programming-language-csharp)<br>[查询预测终结点](sdk-query-prediction-endpoint.md)|
 |Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[创作和预测](luis-get-started-get-intent-from-rest.md)
 |Node.js|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
-|Python|[创作和预测](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[创作](sdk-python-quickstart-authoring-app.md)<br>[使用 REST 进行预测](luis-get-started-get-intent-from-rest.md)
+|Python|[创作和预测](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[创作](sdk-authoring.md?pivots=programming-language-python)<br>[使用 REST 进行预测](luis-get-started-get-intent-from-rest.md)
 
 
 ### <a name="containers"></a>容器
 
-语言理解（LUIS）提供一个[容器](luis-container-howto.md)，用于提供应用程序的本地版本和包含版本。 
+语言理解（LUIS）提供一个[容器](luis-container-howto.md)，用于提供应用程序的本地版本和包含版本。
 
 ### <a name="export-and-import-formats"></a>导出和导入格式
 
-语言理解提供了以 JSON 格式、`.LU` （[LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)）格式以及语言理解容器的压缩包来管理应用及其模型的功能。 
+语言理解提供了以 JSON 格式、`.LU` （[LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)）格式以及语言理解容器的压缩包来管理应用及其模型的功能。
 
-导入和导出这些格式可从 Api 和 LUIS 门户中获取。 门户提供了导入和导出作为应用列表和版本列表的一部分。 
+导入和导出这些格式可从 Api 和 LUIS 门户中获取。 门户提供了导入和导出作为应用列表和版本列表的一部分。
 
 ## <a name="other-tools-and-sdks"></a>其他工具和 Sdk
 
-机器人框架作为使用[Azure 机器人服务](https://dev.botframework.com/)的各种语言和服务提供的[SDK](https://github.com/Microsoft/botframework) 。 
+机器人框架作为使用[Azure 机器人服务](https://dev.botframework.com/)的各种语言和服务提供的[SDK](https://github.com/Microsoft/botframework) 。
 
 机器人框架提供[多种工具](https://github.com/microsoft/botbuilder-tools)来帮助语言理解，其中包括：
 

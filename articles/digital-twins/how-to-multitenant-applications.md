@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/17/2020
+ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383325"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264927"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure 数字孪生启用多租户应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "74383325"
 
 - 开发人员拥有包含 Azure Active Directory 租户的 Azure 订阅。
 - 开发人员将 Azure 数字孪生实例部署到其 Azure 订阅中。 Azure Active Directory 在开发人员的 Azure Active Directory 租户中自动创建了一个服务主体。
-- 随后，开发人员的 Azure Active Directory 租户中的用户可通过 Azure 数字孪生服务**获取 OAuth 2.0 令牌**[](./security-authenticating-apis.md)。
+- 随后，开发人员的 Azure Active Directory 租户中的用户可通过 Azure 数字孪生服务[获取 OAuth 2.0 令牌](./security-authenticating-apis.md)。
 - 现在，开发人员创建了一个可以与 Azure 数字孪生管理 API 直接集成的移动应用。
 - 开发人员允许客户使用该移动应用程序。
 - 客户必须获得授权才能使用 开发人员应用程序中的 Azure 数字孪生管理 API。
@@ -50,11 +50,11 @@ ms.locfileid: "74383325"
 - 如果 CUSTOMER 尚不具有包含 Azure Active Directory 租户的 Azure 订阅，则：
 
   - CUSTOMER 的 Azure Active Directory 租户管理员必须获取[即用即付 Azure 订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。
-  - 然后 CUSTOMER 的 Azure Active Directory 租户管理员必须**将其租户与新订阅进行链接**[](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)。
+  - 然后 CUSTOMER 的 Azure Active Directory 租户管理员必须[将其租户与新订阅进行链接](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)。
 
 - 在 [Azure 门户](https://portal.azure.com)中，CUSTOMER 的 Azure Active Directory 租户管理员执行以下步骤：
 
-  1. 在顶部 Azure 搜索字段中搜索**订阅**。 选择“订阅”。
+  1. 在顶部 Azure 搜索字段中搜索**订阅**。 选择 **订阅**。
   1. 选择一个订阅，该订阅需具有要在开发人员的应用程序中使用的 Azure Active Directory 租户。
 
      [![Azure Active Directory 订阅](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895745"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260101"
 ---
 # <a name="configure-rules-preview-features"></a>配置规则（预览功能）
 
@@ -33,7 +33,7 @@ IoT Central 中的规则充当可自定义的响应工具，该工具会在来�
 
 条件是规则的触发条件。 目前，当你向规则添加多个条件时，它们将以逻辑方式和组合在一起。 换句话说，必须满足所有条件，规则才能评估为 true。  
 
-在下面的屏幕截图中，当温度大于90且湿度小于10时，将检查条件。 当这两个语句都为 true 时，规则的计算结果为 true，并触发操作。
+在下面的屏幕截图中，当温度大于 70&deg; F，湿度小于10时，将检查条件。 当这两个语句都为 true 时，规则的计算结果为 true，并触发操作。
 
 ![条件](media/howto-configure-rules/conditions.png)
 

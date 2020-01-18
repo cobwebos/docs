@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849422"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167988"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -28,7 +28,7 @@ ms.locfileid: "74849422"
 
 由于自动化变量是持久的，因此即使 runbook 或 DSC 配置失败，它们也可用。 此行为允许将值设置为一个 runbook，然后由另一个 runbook 使用，或由同一 runbook 或 DSC 配置在下次运行时使用。
 
-创建变量时，可以指定将其加密存储。 加密变量安全地存储在 Azure 自动化中，无法从作为 Azure PowerShell 模块一部分提供的[get-azurermautomationvariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索其值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。 如果要将加密的变量更改为非加密的，则必须删除并重新创建该变量，使其不会被加密。
+创建变量时，可以指定将其加密存储。 加密变量安全地存储在 Azure 自动化中，无法从作为 Azure PowerShell 模块一部分提供的[get-azurermautomationvariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索其值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。 如果要将加密的变量更改为非加密的，则必须删除并重新创建该变量，使其不加密。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
@@ -41,17 +41,17 @@ ms.locfileid: "74849422"
 
 以下列出自动化中的可用变量类型：
 
-* 字符串
+* String
 * Integer
 * 日期/时间
-* 布尔
+* Boolean
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 它们作为[AzureRM 模块](/powershell/azure/overview)的一部分提供，可在自动化 RUNBOOK 和 DSC 配置中使用。
 
-| Cmdlet | 描述 |
+| Cmdlet | Description |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|检索现有变量的值。|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|创建新变量并设置变量值。|
@@ -62,7 +62,7 @@ ms.locfileid: "74849422"
 
 下表中的活动用于在 runbook 和 DSC 配置中访问变量。 Get-azurermautomationvariable 和 Get-automationvariable cmdlet 之间的区别在本文开头的阐述。
 
-| 活动 | 描述 |
+| 活动 | Description |
 |:---|:---|
 |Get-AutomationVariable|检索现有变量的值。|
 |Set-AutomationVariable|设置现有变量的值。|
@@ -72,7 +72,7 @@ ms.locfileid: "74849422"
 
 下表中的函数用于在 Python2 Runbook 中访问和检索变量。
 
-|Python2 函数|描述|
+|Python2 函数|Description|
 |:---|:---|
 |automationassets.get_automation_variable|检索现有变量的值。 |
 |automationassets.set_automation_variable|设置现有变量的值。 |

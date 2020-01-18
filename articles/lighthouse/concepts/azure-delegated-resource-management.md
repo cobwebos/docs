@@ -1,14 +1,14 @@
 ---
 title: Azure 委派资源管理
 description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
-ms.date: 07/11/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453628"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263908"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
@@ -38,6 +38,9 @@ Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 借�
    - [发布 Azure 市场托管服务产品](../how-to/publish-managed-services-offers.md)（专用或公用），客户将接受这些产品
    - 为一个或多个特定订阅或资源组[将 Azure 资源管理器模板部署到客户的租户](../how-to/onboard-customer.md)
 3. 载入客户之后，授权用户可根据你定义的访问权限登录到你的服务提供商租户，并在给定的客户范围内执行管理任务。
+
+> [!NOTE]
+> 不支持在不同的云之间委派两个租户之间的订阅。
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure 委派资源管理支持
 

@@ -4,8 +4,6 @@
   items:
     - name: 什么是负载均衡器？
       href: load-balancer-overview.md
-    - name: 什么是标准负载均衡器？
-      href: load-balancer-standard-overview.md
 - name: 快速入门
   items:
     - name: 创建标准负载均衡器

@@ -4,12 +4,13 @@ description: 了解如何生成用于部署函数应用的 Azure 资源管理器
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978791"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262429"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -139,7 +140,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 用于内部队列的函数运行时的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 运行时的版本                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | 要用于此应用中的函数的语言堆栈                                   | `dotnet`、`node`、`java` 或 `python` |
+| FUNCTIONS_WORKER_RUNTIME     | 要用于此应用中的函数的语言堆栈                                   | `dotnet`、`node`、`java`、`python` 或 `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | 仅在使用 `node` 语言堆栈时需要，指定要使用的版本              | `10.14.1`                             |
 
 这些属性是在 `siteConfig` 属性的 `appSettings` 集合中指定的：
@@ -462,7 +463,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 Linux 应用还应在 `siteConfig`下包含 `linuxFxVersion` 属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
 
-| Stack            | 示例值                                         |
+| 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

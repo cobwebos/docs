@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 开发测试实验室中使用平台即服务（PaaS）服务 |Microsoft Docs
+title: 在 Azure 开发测试实验室中使用平台即服务（PaaS）服务
 description: 了解如何在 Azure 开发测试实验室中使用平台即服务（Pass）服务。
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976246"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169194"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台即服务（PaaS）服务
 PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实验室中的环境通过 Git 存储库中的预配置 Azure 资源管理器模板来支持。 环境可以同时包含 PaaS 和 IaaS 资源。 它们允许你创建可包含 Azure 资源（例如虚拟机、数据库、虚拟网络和 Web 应用）的复杂系统，这些资源可自定义以协同工作。 这些模板允许使用源代码管理一致地部署和改善环境。 

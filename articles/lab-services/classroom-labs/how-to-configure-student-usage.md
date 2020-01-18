@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 实验室服务的教室实验室中配置使用设置 | Microsoft Docs
+title: 在 Azure 实验室服务的教室实验室中配置使用设置
 description: 了解如何配置实验室的用户数，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584149"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169209"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -27,7 +27,7 @@ ms.locfileid: "73584149"
 ## <a name="add-users-to-the-lab"></a>将用户添加到实验室
 
 1. 选择左侧菜单上的“用户”。 默认情况下，“限制访问”选项处于启用状态。 当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。 
-2. 在工具栏上选择 "**添加用户**"，然后选择 "**通过电子邮件地址添加**"。 
+2. 选择工具栏中的“添加用户”，然后选择“通过电子邮件地址添加”。 
 
     ![“添加用户”按钮](../media/how-to-configure-student-usage/add-users-button.png)
 1. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
@@ -38,7 +38,7 @@ ms.locfileid: "73584149"
     ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
 
     > [!NOTE]
-    > 注册到实验室后，会看到列表中的用户的名称。 列表中显示的名称是通过在 Azure Active Directory 中使用用户的名字和姓氏来构造的。 
+    > 将用户注册到实验室后，列表中会显示其姓名。 列表中显示的名称是通过在 Azure Active Directory 中使用用户的名字和姓氏来构造的。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
 还可通过上传包含用户电子邮件地址的 CSV 文件来添加用户。
@@ -60,19 +60,19 @@ ms.locfileid: "73584149"
 ## <a name="send-invitations-to-users"></a>向用户发送邀请
 若要向学生发送注册链接，请使用以下方法之一。 第一种方法显示了如何使用注册链接和可选消息向学生发送电子邮件。 第二种方法向您演示如何获取注册链接，你可以根据需要以任何方式与他人共享。 
 
-如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 默认情况下启用此选项。 
+如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 默认情况下该选项处于启用状态。 
 
 ### <a name="invite-all-users"></a>邀请所有用户
-1. 如果你不在页面上，请切换到 "**用户**" 视图，然后在工具栏上选择 "**全部邀请**"。 
+1. 切换到“用户”视图（如果尚未转到该页），然后在工具栏上选择“全部邀请”。 
 
     ![选择学生](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-1. 在 "**通过电子邮件发送邀请**" 页上，输入可选消息，然后选择 "**发送**"。 电子邮件自动包含注册链接。 可以**通过选择 "..."（省略号）** ，然后在 "**注册" 链接**。 
+1. 在“通过电子邮件发送邀请”页上，输入可选的消息，然后选择“发送”。 电子邮件自动包含注册链接。 若要获取此注册链接，可以选择工具栏上的“... (省略号)”，然后选择“注册链接”。 
 
     ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
-4. "**用户**" 列表中会显示 "**邀请**" 的状态。 在 **\<日期 > 上**，状态应更改为 "**发送**" 和 "发送"。 
+4. 可以在“用户”列表中查看**邀请**状态。 在 **\<日期 > 上**，状态应更改为 "**发送**" 和 "发送"。 
 
-    若要详细了解如何将学生添加到类并管理实验室的使用情况，请参阅[如何配置学生使用情况](how-to-configure-student-usage.md)。
+    若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
 
 ### <a name="invite-selected-users"></a>邀请所选用户
 
@@ -120,12 +120,12 @@ ms.locfileid: "73584149"
     ![每个用户的配额-之后](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
-    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划时间之外的时间。 
+    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>为特定用户设置附加配额
 可以指定用户的额外配额。 除了之前部分中的所有用户所设置的通用配额外，此配额也是如此。 例如，如果您（作为指导员）将所有用户的配额设置为10小时，并为特定用户设置5小时的额外配额，则该用户将获得15（10 + 5）小时的配额。 如果稍后将常见配额更改为，例如15，则用户将获得20（15 + 5）小时的配额。 请记住，此整体配额在计划时间之外。 学生在计划时间内使用实验室 VM 的时间不计为此配额。 
 
-为此，请执行以下步骤：
+为此，请执行下列步骤：
 
 1. 从 "**用户**" 页上的用户列表中选择一个用户（student）。
 2. 然后，从工具栏中选择 "**调整配额**"。 

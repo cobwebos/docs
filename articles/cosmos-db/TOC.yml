@@ -851,8 +851,6 @@
         - name: 管理一致性级别
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: 实现自定义同步
-          href: how-to-custom-synchronization.md
         - name: 配置冲突解决策略
           href: how-to-manage-conflicts.md
     - name: 预配的吞吐量

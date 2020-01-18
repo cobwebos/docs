@@ -1,5 +1,5 @@
 ---
-title: 安装和运行容器-人脸 API
+title: 安装并运行容器-面部
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何下载、安装和运行本演练教程中的容器。
 services: cognitive-services
@@ -11,24 +11,24 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327040"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165982"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装并运行人脸容器（预览）
 
 Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检测图像中的人脸。 它还标识属性，其中包括 noses 和眼睛、性别、年龄和其他计算机预测的面部功能等人脸特征点。 除了检测以外，人还可以使用置信度分数来检查同一图像或不同图像中的两人脸是否相同。 人脸还可以对照数据库比较人脸，以查看看起来是否有相似或相同的人脸。 它还可以使用共享的视觉特征将相似的人为组。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-使用人脸 API 容器之前，必须满足以下先决条件。
+必须满足以下先决条件，然后才能使用人脸服务容器。
 
-|必需|目的|
+|需要|用途|
 |--|--|
 |Docker 引擎| Docker 引擎必须安装在[主计算机](#the-host-computer)上。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 你需要基本了解 Docker 概念，如注册表、存储库、容器和容器映像。 还需要了解基本 `docker` 命令。| 
@@ -46,11 +46,11 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
-下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
+下表介绍了为每个面部服务容器分配的最低和推荐的 CPU 内核数和内存。
 
-| 容器 | 最小值 | 建议 | 每秒事务数<br>（最小值、最大值）|
+| 容器 | 最小值 | 推荐 | 事务数/秒<br>（最小值、最大值）|
 |-----------|---------|-------------|--|
-|人脸 | 单核，2-GB 内存 | 单核，4-GB 内存 |10, 20|
+|人脸 | 单核，2 GB 内存 | 1核，4 GB 内存 |10, 20|
 
 * 每个核心都必须至少为 2.6 GHz 或更快。
 * 每秒事务数（TPS）。
@@ -59,7 +59,7 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 ## <a name="get-the-container-image-with-docker-pull"></a>获取容器映像与 docker pull
 
-人脸 API 的容器映像可用。 
+面部服务的容器映像可用。 
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -77,14 +77,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 当容器位于[主计算机](#the-host-computer)上以后，请通过以下过程使用容器。
 
-1. [运行](#run-the-container-with-docker-run)具有所需计费设置的容器。 提供 [ 命令的多个](./face-resource-container-config.md#example-docker-run-commands)示例`docker run`。 
+1. [运行](#run-the-container-with-docker-run)具有所需计费设置的容器。 提供 `docker run` 命令的多个[示例](./face-resource-container-config.md#example-docker-run-commands)。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
 
 ## <a name="run-the-container-with-docker-run"></a>运行包含 docker 的容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 [ 和 ](#gathering-required-parameters) 值的详细信息，请参阅`{ENDPOINT_URI}`收集所需的参数`{API_KEY}`。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-[ 命令的](face-resource-container-config.md#example-docker-run-commands)示例`docker run`可用。
+`docker run` 命令的[示例](face-resource-container-config.md#example-docker-run-commands)可用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -101,7 +101,7 @@ ApiKey={API_KEY}
 * 公开 TCP 端口5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。 
 
-提供 [ 命令的多个](./face-resource-container-config.md#example-docker-run-commands)示例`docker run`。 
+提供 `docker run` 命令的多个[示例](./face-resource-container-config.md#example-docker-run-commands)。 
 
 > [!IMPORTANT]
 > 若要运行容器，则必须指定 `Eula`、`Billing`和 `ApiKey` 选项，否则容器将无法启动。 有关详细信息，请参阅[计费](#billing)。
@@ -132,7 +132,7 @@ ApiKey={API_KEY}
 
 ## <a name="billing"></a>计费
 
-人脸 API 容器使用 Azure 帐户上的人脸 API 资源将计费信息发送到 Azure。 
+人脸服务容器使用 Azure 帐户中的人脸资源将计费信息发送到 Azure。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -142,13 +142,13 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>摘要
 
-本文介绍了如何下载、安装和运行人脸 API 容器的概念和工作流。 综上所述：
+本文介绍了如何下载、安装和运行面部服务容器的概念和工作流。 综上所述：
 
 * 从 Azure 容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
-* 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用人脸 API 容器中的操作。
+* 你可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用人脸服务容器中的操作。
 * 实例化容器时，必须指定计费信息。
 
 > [!IMPORTANT]

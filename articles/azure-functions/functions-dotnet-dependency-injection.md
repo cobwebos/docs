@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769194"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260077"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET 中使用依赖关系注入 Azure Functions
 
@@ -153,12 +153,22 @@ Azure Functions 应用提供与[ASP.NET 依赖关系注入](https://docs.microso
 
 可以从 `IConfiguration` 实例将值提取到自定义类型中。 如果将应用设置值复制到自定义类型，则通过使这些值 injectable，可以轻松地测试你的服务。 读入配置实例的设置必须是简单的键/值对。
 
-请考虑下面的类，该类包含一个名为与应用程序设置一致的属性。
+请考虑下面的类，该类包含一个名为与应用程序设置一致的属性：
 
 ```csharp
 public class MyOptions
 {
     public string MyCustomSetting { get; set; }
+}
+```
+
+还可以按如下所示构造自定义设置的 `local.settings.json` 文件：
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "MyOptions:MyCustomSetting": "Foobar"
+  }
 }
 ```
 
@@ -168,7 +178,7 @@ public class MyOptions
 builder.Services.AddOptions<MyOptions>()
                 .Configure<IConfiguration>((settings, configuration) =>
                                            {
-                                                configuration.Bind(settings);
+                                                configuration.GetSection("MyOptions").Bind(settings);
                                            });
 ```
 

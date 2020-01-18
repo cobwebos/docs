@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心中 APNS 的基于令牌的 (HTTP/2) 身份验证 | Microsoft Docs
-description: 本主题介绍如何将新的令牌身份验证用于 APNS
+title: Azure 通知中心内 APNS 的基于令牌的（HTTP/2）身份验证 |Microsoft Docs
+description: 了解如何使用 APNS 的新令牌身份验证。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111939"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263806"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
+# <a name="token-based-http2-authentication-for-apns"></a>针对 APNS 的基于令牌的（HTTP/2）身份验证
 
 ## <a name="overview"></a>概述
 

@@ -1,6 +1,6 @@
 ---
-title: 通知中心安全性
-description: 本主题介绍 Azure 通知中心的安全性。
+title: 通知中心安全模型
+description: 了解 Azure 通知中心的安全模型。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273622"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263755"
 ---
 # <a name="notification-hubs-security"></a>通知中心安全性
 
@@ -42,21 +42,21 @@ ms.locfileid: "71273622"
 
 应用不应在 Windows 应用商店客户端应用中嵌入密钥值;而是让客户端应用程序在启动时从应用程序后端检索它。
 
-具有**侦听**访问权限的密钥允许客户端应用注册任何标记。 如果应用必须将特定标记的注册限制到特定的客户端（例如，当标记表示用户 ID 时），则应用后端必须执行注册。 有关详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。 请注意，采用这种方式时，客户端应用将无权直接访问通知中心。
+具有**侦听**访问权限的密钥允许客户端应用程序注册任何标记。 如果应用必须将特定标记的注册限制到特定的客户端（例如，当标记表示用户 Id 时），则应用后端必须执行注册。 有关详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。 请注意，采用这种方式时，客户端应用将无权直接访问通知中心。
 
 ## <a name="security-claims"></a>安全声明
 
-与其他实体类似，可以针对以下三种安全声明执行通知中心操作：**侦听**、**发送**和**管理**。
+与其他实体类似，允许通知中心操作三个安全声明：**侦听**、**发送**和**管理**。
 
-| 声明   | 描述                                          | 允许的操作 |
+| 声明   | Description                                          | 允许的操作 |
 | ------- | ---------------------------------------------------- | ------------------ |
 | 侦听  | 创建/更新、读取和删除单一注册。 | 创建/更新注册<br><br>读取注册<br><br>读取句柄的所有注册<br><br>删除注册 |
-| 发送    | 向通知中心发送消息                | 发送邮件 |
+| 发送    | 向通知中心发送消息                | 发送消息 |
 | 管理  | 通知中心的 CRUD（包括更新 PNS 凭据和安全密钥），以及基于标记读取注册。 |创建/更新/读取/删除中心<br><br>按标记读取注册 |
 
 通知中心接受通过直接在中心配置的共享密钥生成的 SAS 令牌。
 
-不能向多个命名空间发送通知。 命名空间是通知中心的逻辑容器，不涉及发送通知。
+不能将通知发送到多个命名空间。 命名空间是通知中心的逻辑容器，不涉及发送通知。
 
 将命名空间级别的访问策略（凭据）用于命名空间级操作;例如：列出中心、创建或删除中心等。只有中心级别的访问策略可以发送通知。
 

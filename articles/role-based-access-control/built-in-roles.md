@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979325"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264248"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -48,6 +48,8 @@ ms.locfileid: "75979325"
 > | [API 管理服务参与者](#api-management-service-contributor) | 可以管理服务和 API | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [API 管理服务操作员角色](#api-management-service-operator-role) | 可以管理服务，但不可管理 API | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | [API 管理服务读者角色](#api-management-service-reader-role) | 对服务和 API 的只读访问权限 | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [应用配置数据所有者](#app-configuration-data-owner) | 允许对应用配置数据拥有完全访问权限。 | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [应用配置数据读取器](#app-configuration-data-reader) | 允许对应用配置数据进行读取访问。 | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色中未包括这些权限。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [自动化作业操作员](#automation-job-operator) | 使用自动化 Runbook 创建和管理作业。 | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ ms.locfileid: "75979325"
 > | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Avere 参与者](#avere-contributor) | 可以创建和管理 Avere vFXT 群集。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere 运算符](#avere-operator) | 由 Avere vFXT 群集用来管理群集 | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Azure 连接的计算机载入](#azure-connected-machine-onboarding) | 可以载入 Azure 连接的计算机。 | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Azure 连接的计算机资源管理员](#azure-connected-machine-resource-administrator) | 可以读取、写入、删除和重新载入 Azure 连接的计算机。 | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许对 Azure 事件中心资源进行完全访问。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure 事件中心数据发送者](#azure-event-hubs-data-sender) | 允许发送对 Azure 事件中心资源的访问权限。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ ms.locfileid: "75979325"
 > | **NotDataActions** |  |
 > | *无* |  |
 
+## <a name="app-configuration-data-owner"></a>应用配置数据所有者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许对应用配置数据拥有完全访问权限。 |
+> | **Id** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **操作** |  |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | AppConfiguration/configurationStores/*/read |  |
+> | AppConfiguration/configurationStores/*/write |  |
+> | AppConfiguration/configurationStores/*/delete |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="app-configuration-data-reader"></a>应用配置数据读取器
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许对应用配置数据进行读取访问。 |
+> | **Id** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **操作** |  |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | AppConfiguration/configurationStores/*/read |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
 ## <a name="application-insights-component-contributor"></a>Application Insights 组件参与者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ ms.locfileid: "75979325"
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 返回删除 blob 的结果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 blob 或 blob 列表 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 返回写入 blob 的结果 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Azure 连接的计算机载入
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以载入 Azure 连接的计算机。 |
+> | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **操作** |  |
+> | HybridCompute/计算机/读取 | 读取任何 Azure Arc 计算机 |
+> | HybridCompute/计算机/写入 | 编写 Azure Arc 计算机 |
+> | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | 获取来宾配置分配。 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Azure 连接的计算机资源管理员
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以读取、写入、删除和重新载入 Azure 连接的计算机。 |
+> | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **操作** |  |
+> | HybridCompute/计算机/读取 | 读取任何 Azure Arc 计算机 |
+> | HybridCompute/计算机/写入 | 编写 Azure Arc 计算机 |
+> | HybridCompute/计算机/删除 | 删除 Azure Arc 计算机 |
+> | HybridCompute/计算机/重新连接/操作 | 重新连接 Azure Arc 计算机 |
+> | HybridCompute/*/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -821,7 +893,6 @@ ms.locfileid: "75979325"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | 创建和管理与备份管理相关的元数据 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | 创建和管理备份策略 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
@@ -886,7 +957,6 @@ ms.locfileid: "75979325"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
@@ -952,7 +1022,6 @@ ms.locfileid: "75979325"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |

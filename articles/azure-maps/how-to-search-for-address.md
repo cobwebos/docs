@@ -3,23 +3,23 @@ title: 使用搜索服务的 Azure Maps 搜索位置 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure Map 搜索服务搜索位置。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 59d58b9ecb42a7329df6c91e0a646c557d78a415
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911460"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264180"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
-Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点、兴趣点、商家列表和其他地理信息。 该服务将纬度/经度分配到特定的地址、十字路口、地理特征或兴趣点 (POI)。 在诸如路线和交通流之类的其他 Maps 服务中，可将搜索返回的纬度和经度值用作参数。
+Maps 搜索服务是一组面向开发人员的 RESTful Api。 该服务可以搜索地址、地点、兴趣点、业务列表和其他地理信息。 以下每个都有纬度和经度值：特定地址、叉号、地理特征或兴趣点（POI）。 您可以使用查询中返回的纬度和经度值作为其他地图服务中的参数。 例如，返回值可以是路由服务或流量流服务的参数。 
 
-在本文中，你将学习如何：
+我们来了解，如何：
 
 * 使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜索地址
 * 搜索地址以及属性和坐标
@@ -28,13 +28,13 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 ## <a name="prerequisites"></a>必备组件
 
-若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
+若要对映射服务 Api 进行任何调用，需要一个 Maps 帐户和一个密钥。 若要为 Azure Maps 创建帐户，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明进行操作。 如果在获取主密钥时需要帮助，请按照[获取](quick-demo-map-app.md#get-the-primary-key-for-your-account)主密钥中的步骤操作。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
 
 ## <a name="using-fuzzy-search"></a>使用模糊搜索
 
-搜索服务的默认 API 是[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)，在不知道用户为搜索查询输入哪些内容时，此 API 很有用。 该 API 将 POI 搜索和地理编码组合成规范的“单行搜索”。 例如，该 API 可以处理任何地址或 POI 令牌组合的输入。 还可以使用完全受坐标和半径约束的上下文位置 （纬度/经度对）为该 API 加权，或者在不使用任何地理偏置定位点的情况下，以更泛的方式执行该 API。
+搜索服务的默认 API 是[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 当你在搜索查询中不确定用户输入格式时，此服务非常有用。 该 API 将 POI 搜索和地理编码组合成规范的“单行搜索”。 例如，该 API 可以处理任何地址或 POI 令牌组合的输入。 此外，它还可以通过上下文位置（/lon。 （纬度/经度对）为该 API 加权，或者在不使用任何地理偏置定位点的情况下，以更泛的方式执行该 API。
 
 大多数搜索查询默认指定 `maxFuzzyLevel=1`，以提高性能并减少不正常的结果。 可以根据需要，通过传入查询参数 `maxFuzzyLevel=2` 或 `3`，按请求重写此默认值。
 
@@ -52,7 +52,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     | 请求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | 授权 | 无身份验证 |
 
-    URL 路径中的 **json** 属性确定响应格式。 为方便使用和阅读，整篇文章都会使用 json。 可以在 [Maps 功能 API 参考](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)的 **Get 模糊搜索**定义中找到可用的响应格式。
+    URL 路径中的 **json** 属性确定响应格式。 本文使用 json 以方便使用和提高可读性。 可以在 [Maps 功能 API 参考](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)的 **Get 模糊搜索**定义中找到可用的响应格式。
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
 
@@ -66,9 +66,9 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 4. 单击“发送”并查看响应正文。
 
-    “pizza”模糊查询字符串返回了 10 条[兴趣点结果](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI)，其类别属于“pizza”和“restaurant”。 每条结果返回了相应位置的街道地址、纬度/经度值、视口和入口点。
+    "比萨饼" 的不明确查询字符串在 "比萨饼" 和 "餐馆" 类别中返回10个[兴趣点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse)（POI）。 每个结果都返回街道地址、纬度和经度值、查看端口和位置入口点。
   
-    此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 你可以使用**countrySet**参数来仅指定你的应用程序需要覆盖的国家/地区，因为默认行为是搜索整个世界，这可能会返回不必要的结果。
+    此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 你可以使用**countrySet**参数来仅指定你的应用程序需要覆盖的国家/地区。 默认行为是搜索整个世界，可能会返回不必要的结果。
 
 5. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -91,7 +91,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 ## <a name="search-for-address-properties-and-coordinates"></a>搜索地址属性和坐标
 
-可将整个或部分街道地址传递给搜索地址 API，并接收包含详细地址属性（例如市政当局或分部，以及以纬度和经度表示的位置值）的响应。
+可以将完整或部分街道地址传递到搜索地址 API。 你仍会收到包含详细地址属性的响应。 详细的地址属性是高度和经度、市政府或细分中的位置值等值。
 
 1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“地址搜索”。
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。
@@ -165,7 +165,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | 数字 | true |
 
-    如果连同请求一起发送了 [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
+    如果[number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) query 参数与请求一起发送，则响应可能包含街道的一侧（左侧或右侧）以及该数字的偏移位置。
   
 6. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -173,7 +173,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | returnSpeedLimit | true |
   
-    如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回发布的速度限制。
+    设置[returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数后，响应将返回已发布的速度限制。
 
 7. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -189,7 +189,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | roadUse | true |
 
-    可以使用 [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
+    可以使用[roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数将反向地理编码查询限制为特定类型的道路。
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址十字路口搜索搜索十字路口
 

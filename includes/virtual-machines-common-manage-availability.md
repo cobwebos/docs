@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469809"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268290"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -69,9 +69,15 @@ Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 通过�
 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
-> 托管可用性集的容错域的数目因区域而异 - 每个区域两到三个。 下表显示了每个区域的数目
+> 托管可用性集的容错域的数目因区域而异 - 每个区域两到三个。 可以通过运行以下脚本，查看每个区域的容错域。
 
-[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.Name -eq 'Aligned'}
+```
+
+```azurecli-interactive 
+az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
+```
 
 > 注意：在某些情况下，可能会发生同一 AvailabilitySet 的2个 Vm 共享相同的 FaultDomain。 可以通过转到 AvailabilitySet 并检查 "容错域" 列来确认这一点。
 > 部署 Vm 时，可能会出现以下序列：

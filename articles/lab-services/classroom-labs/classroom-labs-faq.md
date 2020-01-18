@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3bc58e9545f38508a9e08e9ae1aa9cf8713cc520
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646855"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264740"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -26,12 +26,12 @@ ms.locfileid: "73646855"
 ## <a name="quotas"></a>配额
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>每个用户的配额或每周的配额，还是每周的实验室持续时间？ 
-为实验室设置的配额是针对实验室的整个持续时间的每个学生。 而且， [vm 的计划运行时间](how-to-create-schedules.md)不会计为分配给用户的配额。 配额是指学生在 VM 上花费的计划时间之外的时间。  有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md#set-quotas-for-users)。
+为实验室设置的配额是针对实验室的整个持续时间的每个学生。 而且， [vm 的计划运行时间](how-to-create-schedules.md)不会计为分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。  有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md#set-quotas-for-users)。
 
 ## <a name="schedules"></a>计划
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>设置计划后，实验室中的所有 Vm 是否自动启动？ 
-不能。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
+不。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
 
 ## <a name="lab-accounts"></a>实验室帐户
 
@@ -46,6 +46,11 @@ ms.locfileid: "73646855"
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我应在组织的防火墙设置上打开哪些公共 IP 地址范围，以便通过 RDP/SSH 连接到实验室虚拟机？
 请参阅[AZURE IP 范围和服务标记—公有云](https://www.microsoft.com/download/details.aspx?id=56519)，它为 Azure 中的数据中心提供公共 IP 地址范围。 可以打开实验室帐户所在区域的 IP 地址。
+
+## <a name="users"></a>用户
+
+### <a name="how-many-users-can-be-in-a-classroom-lab"></a>教室实验室中可以有多少用户？
+最多可以向一个教室实验室添加400个用户。 
 
 ## <a name="blog-post"></a>博客文章
 订阅[Azure 实验室服务博客](https://azure.microsoft.com/blog/tag/azure-lab-services/)。

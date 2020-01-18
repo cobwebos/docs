@@ -33,7 +33,7 @@
         - name: 负载均衡器
           items:
             - name: 什么是负载均衡器？
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: 负载均衡器标准版和可用性区域
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: 创建区域冗余的公共标准负载均衡器

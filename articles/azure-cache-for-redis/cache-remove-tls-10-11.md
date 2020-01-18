@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708050"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260146"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除 TLS 1.0 和1.1，使其与用于 Redis 的 Azure 缓存一起使用
 
@@ -19,8 +19,8 @@ ms.locfileid: "75708050"
 
 作为此项工作的一部分，我们将对 Redis 的 Azure 缓存进行以下更改：
 
-* 从2020年1月13日开始，我们将为新创建的缓存实例将默认的最低 TLS 版本配置为1.2。  此时不会更新现有的缓存实例。  如果需要，你可以将[最低 TLS 版本更改](cache-configure.md#access-ports)为1.0 或1.1，以便向后兼容。  此更改可以通过 Azure 门户或其他管理 Api 来完成。
-* 从2020年3月31日开始，我们将停止支持 TLS 版本1.0 和1.1。 完成此更改后，应用程序将需要使用 TLS 1.2 或更高版本与缓存通信。
+* **阶段1：** 对于新创建的缓存实例，我们将默认的最低 TLS 版本配置为1.2。  此时不会更新现有的缓存实例。  如果需要，你可以将[最低 TLS 版本更改](cache-configure.md#access-ports)为1.0 或1.1，以便向后兼容。  此更改可以通过 Azure 门户或其他管理 Api 来完成。
+* **阶段2：** 我们将停止支持 TLS 版本1.0 和1.1。 完成此更改后，应用程序将需要使用 TLS 1.2 或更高版本与缓存通信。
 
 另外，作为此更改的一部分，我们将删除对较旧的、不安全的加密套件的支持。  如果缓存配置为最低 TLS 版本1.2，则受支持的加密套件将受到以下限制。
 
@@ -28,6 +28,15 @@ ms.locfileid: "75708050"
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 本文提供了有关如何检测这些早期 TLS 版本的依赖项并将其从应用程序中删除的一般指导。
+
+这些更改生效的日期如下：
+
+| 云               | 阶段1开始日期 | 阶段2开始日期 |
+|---------------------|--------------------|--------------------|
+| Azure （全局）      |  2020年1月13日  | 2020年3月31日     |
+| Azure Government    |  2020年3月13日    | 5月11日，2020       |
+| Azure Germany       |  2020年3月13日    | 5月11日，2020       |
+| Azure 中国         |  2020年3月13日    | 5月11日，2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已兼容
 

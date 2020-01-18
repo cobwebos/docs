@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529603"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166789"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
@@ -27,7 +27,7 @@ ms.locfileid: "75529603"
 > 注册数据集后，可以在设计器界面**中 -> "** 我的**数据**集" 类别中找到它。 此模块是为 Studio （经典）用户保留的，以获得熟悉的体验。 
 >
 
-首先，选择要从中进行读取的源，并完成其他设置。 **导入数据**模块支持从以下源读取数据：
+**导入数据**模块支持从以下源读取数据：
 
 - 通过 HTTP 的 URL
 - 通过[**数据存储**](../how-to-access-data.md)的 Azure 云存储）

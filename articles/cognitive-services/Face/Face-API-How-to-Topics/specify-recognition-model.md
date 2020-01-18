@@ -1,7 +1,7 @@
 ---
-title: 如何指定识别模型-人脸 API
+title: 如何指定识别模型-人脸
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何选择要用于 Azure 人脸 API 应用程序的识别模式。
+description: 本文介绍如何选择要用于 Azure 面部应用程序的识别模式。
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771013"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166464"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
-本指南演示如何使用 Azure 人脸 API 为人脸检测、标识和相似性搜索指定人脸识别模型。
+本指南演示如何使用 Azure 人脸服务为人脸检测、标识和相似性搜索指定人脸识别模型。
 
-人脸 API 使用机器学习模型在图像中的人脸上执行操作。 我们会根据客户反馈和研究的进步，继续改进模型的准确性，并将这些改进作为模型更新提供。 开发人员可以选择指定要使用的面部识别模型的哪个版本;他们可以选择最适合用例的模型。
+人脸服务使用机器学习模型对图像中的人脸执行操作。 我们会根据客户反馈和研究的进步，继续改进模型的准确性，并将这些改进作为模型更新提供。 开发人员可以选择指定要使用的面部识别模型的哪个版本;他们可以选择最适合用例的模型。
 
 如果你是新用户，建议使用最新的模型。 继续阅读以了解如何在不同的面部操作中指定它，同时避免模型冲突。 如果你是高级用户并且不确定是否应切换到最新模型，请跳到 "[评估不同模型](#evaluate-different-models)" 部分以评估新模型，并使用当前数据集比较结果。
 
@@ -38,7 +38,7 @@ ms.locfileid: "74771013"
 
 当提取面部功能时，将使用该识别模型，以便您可以在执行检测操作时指定模型版本。
 
-使用人[脸检测]API 时，请使用 `recognitionModel` 参数分配模型版本。 可用值为：
+使用人[脸检测]API 时，请使用 `recognitionModel` 参数分配模型版本。 可用值有：
 
 * `recognition_01`
 * `recognition_02`
@@ -57,9 +57,9 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>用指定模型标识面部
 
-人脸 API 可以提取图像中的人脸数据，并将其与**Person**对象关联（例如，通过[添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用），多个**person**对象可以一起存储在**person group**中。 然后，可以将一个新的人脸与**person group** （带有人[脸标识]呼叫）进行比较，并识别该组内的匹配人员。
+人脸服务可以提取图像中的人脸数据，并将其与**Person**对象关联（例如，通过添加人[脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用），多个**person**对象可以一起存储在**person group**中。 然后，可以将一个新的人脸与**person group** （带有人[脸标识]呼叫）进行比较，并识别该组内的匹配人员。
 
-**Person group**应有一个唯一的标识模型用于所有**人**，并且可以在创建组时使用 `recognitionModel` 参数指定此模式（[PersonGroup - 创建]或[LargePersonGroup - 创建]）。 如果未指定此参数，则使用原始 `recognition_01` 模型。 组将始终使用创建它时所用的识别模型，并在将其添加到此模型时，新的人脸将与此模型关联;创建组后无法更改此。 若要查看配置了**person group**的模型，请使用[person group-Get] API，并将_returnRecognitionModel_参数设置为**true**。
+**PersonGroup** 中的所有 **Person** 应有一个唯一的识别模型，在创建该组使用 [PersonGroup - 创建] 或 [LargePersonGroup - 创建] 时，可以使用 `recognitionModel` 参数指定此模型。 如果未指定此参数，则使用原始 `recognition_01` 模型。 组将始终使用创建它时所用的识别模型，并在将其添加到此模型时，新的人脸将与此模型关联;创建组后无法更改此。 若要查看配置了**person group**的模型，请使用[PersonGroup - Get] API，并将_returnRecognitionModel_参数设置为**true**。
 
 请参阅下面的 .NET 客户端库代码示例。
 
@@ -91,7 +91,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 ## <a name="verify-faces-with-specified-model"></a>验证具有指定模型的面部
 
-人[脸验证]API 检查两个面部是否属于同一个人。 验证 API 中没有关于识别模型的更改，但您只能比较在同一模型中检测到的人脸。 因此，两面都需要使用 `recognition_01` 或 `recognition_02`来检测。
+[Face - Verify] API 会检查两张人脸是否属于同一个人。 验证 API 中没有关于识别模型的更改，但您只能比较在同一模型中检测到的人脸。 因此，两面都需要使用 `recognition_01` 或 `recognition_02`来检测。
 
 ## <a name="evaluate-different-models"></a>评估不同的模型
 
@@ -113,9 +113,9 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 [脸检测]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [面部查找类似]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
 [脸标识]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
-[脸验证]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
+[Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
 [PersonGroup - 创建]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
-[Person group-Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
+[PersonGroup - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
 [PersonGroup Person - Add Face]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b
 [PersonGroup - 训练]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249
 [LargePersonGroup - 创建]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d

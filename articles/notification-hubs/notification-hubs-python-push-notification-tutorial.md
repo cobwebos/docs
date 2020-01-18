@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db5174ed6f008be0fed1fdf3c2c83d33277c3b4e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213076"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263789"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -32,13 +32,13 @@ ms.locfileid: "71213076"
 > [!NOTE]
 > 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。 该示例是使用 Python 3.4 创建的。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 以 Python 构建 REST 客户端以获取通知中心功能。
 - 使用 Python 接口发送通知到通知中心 REST API。
 - 获取 HTTP REST 请求/响应的转储以进行调试/培训。
 
-可按照所选定移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
+可以按照所选定的移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
 
 > [!NOTE]
 > 该示例仅限于发送通知，并不执行任何注册管理操作。
@@ -75,7 +75,7 @@ hub.send_windows_notification(wns_payload)
 
 ### <a name="parse-the-connection-string"></a>解析连接字符串
 
-下面是实现客户端的主类，其构造函数解析连接字符串：
+下面是实现客户端的主类，其构造函数将解析连接字符串：
 
 ```python
 class NotificationHub:
@@ -447,7 +447,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何为通知中心创建 Python REST 客户端。 从这里可以：
+本文介绍了如何为通知中心创建 Python REST 客户端。 可以从此页执行下列操作：
 
 - 下载完整的 [Python REST 包装器示例]，其中包含本文中的所有代码。
 - 在[突发新闻教程]中继续学习通知中心标记功能

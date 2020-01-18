@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790093"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167347"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -132,7 +132,7 @@ Azure Database for MySQL 提供 Azure Monitor 中的**复制滞后时间（秒�
 
 ### <a name="deleted-master-and-standalone-servers"></a>删除的主服务器和独立服务器
 
-删除主服务器后，将对所有只读副本停止复制。 这些副本服务器将成为独立服务器。 将删除主服务器本身。
+删除主服务器后，将对所有只读副本停止复制。 这些副本将自动成为独立的服务器，并且可以接受读写。 将删除主服务器本身。
 
 ### <a name="user-accounts"></a>用户帐户
 
