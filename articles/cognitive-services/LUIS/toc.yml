@@ -21,16 +21,12 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: 使用浏览器
       href: luis-get-started-get-intent-from-browser.md
-    - name: 使用 .NET SDK
+    - name: 使用 SDK
       items:
-        - name: 创建和管理应用
-          href: sdk-csharp-quickstart-authoring-app.md
+        - name: 创作应用
+          href: sdk-authoring.md
         - name: 查询预测终结点
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
-    - name: 使用 Python SDK
-      items:
-        - name: 创建和管理应用
-          href: sdk-python-quickstart-authoring-app.md
+          href: sdk-query-prediction-endpoint.md
     - name: 使用 REST API
       items:
         - name: 获取意向

@@ -6,6 +6,8 @@
       href: overview.md
     - name: 术语更改
       href: terminology.md
+    - name: 常见问题解答
+      href: faq.md
 - name: 快速入门
   items:
     - name: 监视 Azure 资源
@@ -76,7 +78,7 @@
           href: platform/data-platform.md
         - name: 数据位置
           href: platform/data-locations.md
-        - name: 度量值
+        - name: 指标
           href: platform/data-platform-metrics.md
         - name: 日志
           href: platform/data-platform-logs.md
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-    - name: 常见问题解答
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: 操作方法指南
   items:
     - name: 管理 Azure Monitor
@@ -162,6 +156,8 @@
       items:
         - name: Application Insights 概述
           href: app/app-insights-overview.md
+        - name: 常见问题解答
+          href: app/troubleshoot-faq.md
         - name: 基于代码的监视
           items:
             - name: ASP.NET Core
@@ -170,7 +166,7 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: 非 Http 应用/后台应用
+            - name: 非 HTTP 应用/后台应用
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
             - name: .NET 控制台
@@ -312,7 +308,7 @@
         - name: 实时指标流
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: 度量值
+        - name: 指标
           items:
             - name: 基于日志的和预聚合的指标
               href: app/pre-aggregated-metrics-log-metrics.md
@@ -535,6 +531,8 @@
           items:
             - name: 代理概述
               href: platform/agents-overview.md
+            - name: 常见问题解答
+              href: 'faq.md#agents'
             - name: Azure 诊断扩展
               items:
                 - name: 概述
@@ -633,7 +631,7 @@
             - name: 正式版常见问题解答
               href: insights/vminsights-ga-release-faq.md
             - name: 常见问题解答
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: 启用监视
               items:
                 - name: 启用监视概述
@@ -679,7 +677,7 @@
             - name: 概述
               href: insights/container-insights-overview.md
             - name: 常见问题解答
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: 启用监视
               items:
                 - name: 启用监视概述
@@ -795,7 +793,7 @@
           href: platform/create-pipeline-datacollector-api.md
     - name: 分析数据
       items:
-        - name: 度量值
+        - name: 指标
           items:
             - name: 指标资源管理器入门
               href: platform/metrics-getting-started.md
@@ -1159,7 +1157,7 @@
               href: app/data-model-context.md
             - name: 与 Azure Functions 集成
               href: app/azure-functions-supported-features.md
-    - name: 度量值
+    - name: 指标
       items:
         - name: 支持的指标
           href: platform/metrics-supported.md

@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: 条件访问策略组件
       href: concept-conditional-access-policies.md
+    - name: 云应用和操作
+      href: concept-conditional-access-cloud-apps.md
     - name: 条件
       href: conditions.md
     - name: 位置条件
@@ -35,7 +37,7 @@
       href: policy-migration.md
     - name: 基线保护策略
       href: concept-baseline-protection.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 计划条件访问部署
@@ -82,7 +84,7 @@
       items:
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
-- name: 引用
+- name: 参考
   items:
     - name: 技术参考
       href: technical-reference.md

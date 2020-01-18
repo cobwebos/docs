@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: 管理连接到 Azure 的帐户
       href: manage-account-connected-to-azure.md
-    - name: 使用 API 上传和索引视频
+    - name: 上传视频并为其编制索引
       href: upload-index-videos.md
     - name: 检查视频索引器输出
       href: video-indexer-output-json-v2.md
@@ -85,7 +85,7 @@
               href: customize-language-model-with-website.md
             - name: 使用视频索引器 API
               href: customize-language-model-with-api.md
-- name: 引用
+- name: 参考
   items:
     - name: 视频索引器 API
       href: 'https://api-portal.videoindexer.ai/'

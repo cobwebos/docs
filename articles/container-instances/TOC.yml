@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: 在专用主机上部署
           href: container-instances-dedicated-hosts.md
+        - name: 使用逻辑应用连接器
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: 容器方案
       items:
         - name: 为运行一次的任务设置重启策略

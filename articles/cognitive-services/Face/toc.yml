@@ -1,9 +1,9 @@
-- name: 人脸 API 文档
+- name: 人脸文档
   href: index.yml
 - name: 概述
   expanded: true
   items:
-    - name: 什么是人脸 API？
+    - name: 什么是人脸服务？
       href: Overview.md
 - name: 快速入门
   items:
@@ -77,7 +77,7 @@
           href: face-resource-container-config.md
         - name: 使用容器实例
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: 使用人脸 API 连接服务
+    - name: 使用“人脸连接服务”
       href: vs-face-connected-service.md
 - name: 参考
   items:
@@ -101,7 +101,7 @@
   items:
     - name: 示例
       items:
-        - name: 人脸 API 示例
+        - name: 人脸示例
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: 定价和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
