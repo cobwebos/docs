@@ -1352,9 +1352,9 @@ ms.locfileid: "76264893"
 > | DataAction | Cognitiveservices account/accounts/CustomVision/用户/状态/写入 | 更新用户状态 |
 > | DataAction | Cognitiveservices account/accounts/CustomVision/用户/层/写入 | *NotDefined* |
 > | DataAction | Cognitiveservices account/accounts/CustomVision/用户/读取 | *NotDefined* |
-> | DataAction | Cognitiveservices account/accounts/CustomVision/删除 | 删除具有特定功能的白名单用户 |
-> | DataAction | Cognitiveservices account/accounts/CustomVision/已读 | 获取具有特定功能的白名单用户的列表 |
-> | DataAction | Cognitiveservices account/accounts/CustomVision/write/write | 使用特定功能在白名单中更新或创建用户 |
+> | DataAction | Cognitiveservices account/accounts/CustomVision/删除 | 删除具有特定功能的允许列表用户 |
+> | DataAction | Cognitiveservices account/accounts/CustomVision/已读 | 获取具有特定功能的允许列表用户的列表 |
+> | DataAction | Cognitiveservices account/accounts/CustomVision/write/write | 使用特定功能在允许列表中更新或创建用户 |
 > | 行动 | Microsoft.CognitiveServices/accounts/delete | 删除 API 帐户 |
 > | DataAction | Cognitiveservices account/accounts/EntitySearch/搜索/操作 | 获取给定查询的实体和位置结果。 |
 > | DataAction | Cognitiveservices account/accounts/面部/检测/操作 | 检测图像中的人脸、返回人脸矩形，还可以选择使用 faceIds、特征点和特性。 |

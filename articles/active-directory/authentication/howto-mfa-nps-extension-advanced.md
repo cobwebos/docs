@@ -51,7 +51,7 @@ ms.locfileid: "74848351"
 > [!NOTE]
 > 此注册表项不是由安装程序默认创建的，并且在重新启动该服务时，AuthZOptCh 日志中会出现错误。 可能会忽略日志中的此错误，但如果创建了此注册表项并在不需要时保留为空，则不会返回错误消息。
 
-当请求来自 `IP_WHITELIST`中存在的 IP 地址时，将跳过双重验证。 IP 列表与 RADIUS 请求的*包含 ratnasipaddress*属性中提供的 ip 地址进行比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 白名单被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当请求来自 `IP_WHITELIST`中存在的 IP 地址时，将跳过双重验证。 IP 列表与 RADIUS 请求的*包含 ratnasipaddress*属性中提供的 ip 地址进行比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

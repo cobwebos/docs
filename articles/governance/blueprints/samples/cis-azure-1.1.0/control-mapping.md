@@ -118,7 +118,7 @@ ms.locfileid: "74707428"
 
 - 应在虚拟机上应用实时网络访问控制
 
-## <a name="213-ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>2.13 确保 ASC 默认策略设置“监视自适应应用程序白名单”不是处于“已禁用”状态
+## <a name="213-ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>2.13 确保 ASC 默认策略设置“监视自适应应用程序允许列表”不是处于“已禁用”状态
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用自适应应用程序控制。
 
