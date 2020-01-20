@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: 管理调查用户数据
           href: security-center-investigation-user-data.md
-        - name: 逻辑应用演练手册
-          href: security-center-playbooks.md
         - name: 规划和操作
           href: security-center-planning-and-operations-guide.md
 - name: 参考
