@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: 配置成本管理
           href: devtest-lab-configure-cost-management.md
-        - name: 发送自动关闭通知
-          href: devtest-lab-auto-shutdown.md
         - name: 为实验室虚拟机设置自动启动
           href: devtest-lab-auto-startup-vm.md
         - name: 缩放实验室
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: 重新部署 VM
           href: devtest-lab-redeploy-vm.md
-        - name: 配置 VM 的自动关闭
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: 配置计算和实验室 VM 的自动关闭
+          href: devtest-lab-auto-shutdown.md
         - name: 创建和管理可认领 VM
           href: devtest-lab-add-claimable-vm.md
         - name: 配置机密
