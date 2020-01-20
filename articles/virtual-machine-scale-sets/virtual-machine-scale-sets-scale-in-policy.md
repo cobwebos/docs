@@ -1,22 +1,20 @@
 ---
-title: 使用 Azure 虚拟机规模集的自定义扩展策略 |Microsoft Docs
+title: 使用 Azure 虚拟机规模集的自定义扩展策略
 description: 了解如何在 Azure 虚拟机规模集（使用自动缩放配置来管理实例计数）中使用自定义的扩展策略
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453155"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271765"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>预览：使用 Azure 虚拟机规模集的自定义扩展策略
 
@@ -133,7 +131,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 1. 防止缩小
 2. 防止规模集操作
 
-受保护的虚拟机不会通过缩小操作而删除，无论应用的是扩展策略是什么。 例如，如果 VM_0 （规模集中最早的 VM）受到了缩小的保护，并且规模集启用了 "OldestVM" 扩展策略，则不会将 VM_0 视为在中进行缩放，即使它是规模集中最早的 VM 也是如此。 
+受保护的虚拟机不会通过缩小操作而删除，无论应用的是扩展策略是什么。 例如，如果 VM_0 （规模集中最早的 VM）受到了扩展保护，并且规模集启用了 "OldestVM" 扩展策略，则不会将 VM_0 视为在中进行缩放，即使它是规模集中最早的 VM 也是如此。 
 
 无论规模集上启用了扩展策略，用户都可以随时手动删除受保护的虚拟机。 
 
@@ -150,7 +148,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 | 缩小              | ***3***、4、5、10      | 6，9，11               | 1、7、8                | 即使区域3具有最早的 VM，也请选择 "区域 1"。 从区域1中删除 VM3，因为它是该区域中最旧的 VM。                  |
 | 缩小              | 4、5、10               | 6，9，11               | ***1***、7、8          | 区域已平衡。 删除区域3中的 VM1，因为它是规模集中最早的 VM。                                               |
 | 缩小              | ***4***、5、10         | 6，9，11               | 7, 8                   | 选择区域1和区域2。 删除区域1中的 VM4，因为它是跨两个区域的最旧 VM。                              |
-| 缩小              | 5、10                  | ***6***，9，11         | 7, 8                   | 即使区域1具有最早的 VM，也请选择 "区域 2"。 删除区域1中的 VM6，因为它是该区域中最旧的 VM。                    |
+| 缩小              | 5, 10                  | ***6***，9，11         | 7, 8                   | 即使区域1具有最早的 VM，也请选择 "区域 2"。 删除区域1中的 VM6，因为它是该区域中最旧的 VM。                    |
 | 缩小              | ***5***、10            | 9，11                  | 7, 8                   | 区域已平衡。 删除区域1中的 VM5，因为它是规模集中最早的 VM。                                                |
 
 对于非区域虚拟机规模集，策略将选择要删除的规模集内最早的 VM。 将跳过任何 "受保护的" VM 进行删除。
@@ -162,9 +160,9 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 | 初始               | 3、4、5、10            | 2，6，9，11            | 1、7、8                |                                                                                                                                  |
 | 缩小              | 3、4、5、10            | 2，6，9， ***11***      | 1、7、8                | 选择区域1和2。 从区域2中删除 VM11，因为它是跨两个区域的最新 VM。                                |
 | 缩小              | 3、4、5、 ***10***      | 2、6、9                | 1、7、8                | 选择 "区域 1"，因为它具有比其他两个区域更多的 Vm。 从区域1中删除 VM10，因为它是该区域中的最新 VM。          |
-| 缩小              | 3、4、5                | 2、6、 ***9***          | 1、7、8                | 区域已平衡。 删除区域2中的 PG2，因为它是规模集中最新的 VM。                                                |
-| 缩小              | 3、4、5                | 2、6                   | 1、7、 ***8***          | 选择区域1和区域3。 删除区域3中的 VM8，因为它是该区域中的最新 VM。                                      |
-| 缩小              | 3、4、 ***5***          | 2、6                   | 1、7                   | 即使区域3具有最新的 VM，也请选择 "区域 1"。 删除区域1中的 VM5，因为它是该区域中的最新 VM。                    |
+| 缩小              | 3, 4, 5                | 2、6、 ***9***          | 1、7、8                | 区域已平衡。 删除区域2中的 PG2，因为它是规模集中最新的 VM。                                                |
+| 缩小              | 3, 4, 5                | 2、6                   | 1、7、 ***8***          | 选择区域1和区域3。 删除区域3中的 VM8，因为它是该区域中的最新 VM。                                      |
+| 缩小              | 3、4、 ***5***          | 2、6                   | 1, 7                   | 即使区域3具有最新的 VM，也请选择 "区域 1"。 删除区域1中的 VM5，因为它是该区域中的最新 VM。                    |
 | 缩小              | 3、4                   | 2、6                   | 1、 ***7***             | 区域已平衡。 删除区域3中的 VM7，因为它是规模集中最新的 VM。                                                |
 
 对于非区域虚拟机规模集，策略选择要删除的规模集内的最新 VM。 将跳过任何 "受保护的" VM 进行删除。 

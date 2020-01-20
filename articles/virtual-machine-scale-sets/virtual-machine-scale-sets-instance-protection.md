@@ -1,61 +1,53 @@
 ---
-title: 实例保护的 Azure 虚拟机规模集实例 |Microsoft Docs
-description: 了解如何保护 Azure 虚拟机规模集实例从向内缩放和规模集的操作。
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Azure 虚拟机规模集实例的实例保护
+description: 了解如何通过扩展和规模集操作来保护 Azure 虚拟机规模集实例。
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416547"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275793"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>实例保护的 Azure 虚拟机规模集实例 （预览版）
-Azure 虚拟机规模集启用更好的灵活性，实现通过工作负荷[自动缩放](virtual-machine-scale-sets-autoscale-overview.md)，因此您的基础结构向外扩展时，可以配置，以及何时其规模，在。 规模集还使您能够集中管理、 配置和更新通过不同的 Vm 大量[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)设置。 可以在规模集模型上配置更新和新的配置会自动应用到每个规模集实例如果已设置为自动或滚动升级策略。
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虚拟机规模集实例的实例保护（预览版）
+Azure 虚拟机规模集通过[自动缩放](virtual-machine-scale-sets-autoscale-overview.md)为工作负荷提供更好的弹性，因此，你可以配置你的基础结构何时向外扩展以及何时扩展。 规模集还允许通过不同的[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)设置集中管理、配置和更新大量 vm。 如果已将升级策略设置为 "自动" 或 "滚动"，则可以在规模集模型上配置更新，并将新配置自动应用于每个规模集实例。
 
-如你的应用程序处理流量，但可以在想要缩放的其余部分以不同方式处理的特定实例的情况下将实例设置。 例如，某些实例规模集无法执行长时间运行的操作，而不希望这些实例以进行缩放-在操作完成之前。 您可能还专用规模集中执行规模集的其他成员比其他或不同任务的几个实例。 需要不使用规模集中的其他实例修改这些特殊 Vm。 实例保护提供了启用这些和其他应用程序方案的其他控件。
+当你的应用程序处理流量时，可能会出现以下情况：你需要将特定实例视为不同于规模集实例的其余部分。 例如，规模集中的某些实例可能正在执行长时间运行的操作，并且你不希望在操作完成之前对这些实例进行扩展。 您还可以在规模集中专门使用几个实例来执行其他任务或不同于规模集的其他成员。 需要将这些 "特殊" Vm 替换为规模集中的其他实例。 实例保护提供了其他控件来实现应用程序的这些方案和其他方案。
 
-本文介绍如何将应用和使用规模集实例使用不同的实例保护功能。
+本文介绍如何将不同的实例保护功能应用于规模集实例并使用这些功能。
 
 > [!NOTE]
->实例保护目前处于公共预览状态。 没有参加过程需要使用如下所述的公共预览版功能。 实例保护预览版仅支持 api 版本 2019年-03-01 和使用托管的磁盘的规模集上。
+>实例保护当前为公共预览版。 使用下述公共预览功能无需使用选择过程。 实例保护预览版仅支持 API 版本2019-03-01 和使用托管磁盘的规模集。
 
-## <a name="types-of-instance-protection"></a>类型的实例保护
-规模集提供两种类型的实例保护功能：
+## <a name="types-of-instance-protection"></a>实例保护类型
+规模集提供了两种类型的实例保护功能：
 
--   **保护免受缩小**
-    - 通过启用**protectFromScaleIn**刻度上的属性将实例设置
-    - 可防止实例启动的自动缩放缩小
-    - 用户启动的实例操作 （包括实例删除） 是**未被阻止**
-    - 在规模集上启动的操作 （升级、 重置映像、 解除分配，等等） 是**未被阻止**
+-   **防止缩小**
+    - 通过规模集实例的**protectFromScaleIn**属性启用
+    - 保护启动的自动缩放实例
+    - 用户启动的实例操作（包括实例删除）**未被阻止**
+    - **不会阻止**在规模集上启动的操作（升级、重置映像、释放等）
 
--   **保护从规模集操作**
-    - 通过启用**protectFromScaleSetActions**刻度上的属性将实例设置
-    - 可防止实例启动的自动缩放缩小
-    - 实例可防止在规模集上启动的操作 （如升级时，重置映像、 解除分配，等等。）
-    - 用户启动的实例操作 （包括实例删除） 是**未被阻止**
-    - 完整的规模集的删除**未被阻止**
+-   **防止规模集操作**
+    - 通过规模集实例的**protectFromScaleSetActions**属性启用
+    - 保护启动的自动缩放实例
+    - 针对规模集上启动的操作（如升级、重置映像、释放等）保护实例
+    - 用户启动的实例操作（包括实例删除）**未被阻止**
+    - **不会阻止**删除整个规模集
 
-## <a name="protect-from-scale-in"></a>保护免受缩小
-实例保护可应用到规模集实例后创建的实例。 保护应用和仅在修改[的实例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)而不是在[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)。
+## <a name="protect-from-scale-in"></a>防止缩小
+实例保护可以在创建实例后应用于规模集实例。 仅对[实例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)而不是[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)应用和修改保护。
 
-有多种方法可以在下面的示例中所述的规模集实例应用保护，缩小。
+可以通过多种方法在规模集实例上应用扩展保护，如以下示例中所述。
 
 ### <a name="rest-api"></a>REST API
 
-下面的示例将规模中保护应用于规模集中实例。
+下面的示例向规模集中的实例应用 "缩小保护"。
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -73,13 +65,13 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->使用 API 版本 2019年-03-01 及更高版本才支持实例保护
+>仅 API 版本2019-03-01 及更高版本支持实例保护
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[更新 AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 将缩小保护应用到规模集实例。
+使用[AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 将向规模集实例应用扩展保护。
 
-下面的示例将规模中保护应用于规模集实例 id 0 中的实例。
+下面的示例对规模集内实例 ID 为0的实例应用了缩小保护。
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -91,9 +83,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-使用[az vmss 更新](/cli/azure/vmss#az-vmss-update)若要将规模中保护应用到规模集实例。
+使用[az vmss update](/cli/azure/vmss#az-vmss-update)将向规模集实例应用扩展保护。
 
-下面的示例将规模中保护应用于规模集实例 id 0 中的实例。
+下面的示例对规模集内实例 ID 为0的实例应用了缩小保护。
 
 ```azurecli-interactive
 az vmss update \  
@@ -103,16 +95,16 @@ az vmss update \
   --protect-from-scale-in true
 ```
 
-## <a name="protect-from-scale-set-actions"></a>保护从规模集操作
-实例保护可应用到规模集实例后创建的实例。 保护应用和仅在修改[的实例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)而不是在[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)。
+## <a name="protect-from-scale-set-actions"></a>防止规模集操作
+实例保护可以在创建实例后应用于规模集实例。 仅对[实例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)而不是[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)应用和修改保护。
 
-保护实例从规模集操作还可防止实例启动的自动缩放缩小。
+通过规模集操作保护实例，还可以防止实例自动缩放启动的缩放。
 
-有多种方式将应用缩放的操作保护上设置规模集实例下面的示例中所述。
+在规模集实例上应用规模集操作保护有多种方法，如以下示例中所述。
 
 ### <a name="rest-api"></a>REST API
 
-下面的示例应用到规模集中实例的规模集操作的保护。
+下面的示例将对规模集操作的保护应用于规模集中的实例。
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vMScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -131,14 +123,14 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->使用 API 版本 2019年-03-01 及更高版本，仅支持实例保护。</br>
-保护实例从规模集操作还可防止实例启动的自动缩放缩小。 不能指定"protectFromScaleIn": false 时设置"protectFromScaleSetActions": true
+>仅 API 版本2019-03-01 及更高版本支持实例保护。</br>
+通过规模集操作保护实例，还可以防止实例自动缩放启动的缩放。 设置 "protectFromScaleSetActions" 时，不能指定 "protectFromScaleIn"： false
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[更新 AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 将应用保护扩展到在规模集实例设置的操作。
+使用[AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet 将规模集操作的保护应用于规模集实例。
 
-下面的示例应用中具有实例 ID 0 的规模集实例从规模集操作的保护。
+下面的示例将对规模集操作的保护应用于规模集中实例 ID 为0的实例。
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -151,9 +143,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-使用[az vmss 更新](/cli/azure/vmss#az-vmss-update)应用到规模集实例从规模集操作的保护。
+使用[az vmss update](/cli/azure/vmss#az-vmss-update)将对规模集操作的保护应用于规模集实例。
 
-下面的示例应用中具有实例 ID 0 的规模集实例从规模集操作的保护。
+下面的示例将对规模集操作的保护应用于规模集中实例 ID 为0的实例。
 
 ```azurecli-interactive
 az vmss update \  
@@ -165,16 +157,16 @@ az vmss update \
 ```
 
 ## <a name="troubleshoot"></a>故障排除
-### <a name="no-protectionpolicy-on-scale-set-model"></a>在规模集模型没有 protectionPolicy
-实例保护时才适用规模集实例上而不是在规模集模型。
+### <a name="no-protectionpolicy-on-scale-set-model"></a>规模集模型上没有 protectionPolicy
+实例保护仅适用于规模集实例，而不适用于规模集模型。
 
-### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>在规模集实例模型没有 protectionPolicy
-默认情况下保护策略不是应用于实例时创建它。
+### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>规模集实例模型上没有 protectionPolicy
+默认情况下，当创建实例时，保护策略不会应用于该实例。
 
-您可以应用到规模集实例后，会创建实例的实例保护。
+创建实例后，可以将实例保护应用于规模集实例。
 
-### <a name="not-able-to-apply-instance-protection"></a>不能将实例保护应用
-使用 API 版本 2019年-03-01 及更高版本，仅支持实例保护。 检查所使用的 API 版本并根据需要更新。 您可能还需要更新到最新版本的 PowerShell 或 CLI。
+### <a name="not-able-to-apply-instance-protection"></a>无法应用实例保护
+仅 API 版本2019-03-01 及更高版本支持实例保护。 检查正在使用的 API 版本，并根据需要进行更新。 你可能还需要将 PowerShell 或 CLI 更新到最新版本。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何在虚拟机规模集上[部署应用程序](virtual-machine-scale-sets-deploy-app.md)。

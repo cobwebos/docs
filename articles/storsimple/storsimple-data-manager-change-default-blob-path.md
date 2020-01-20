@@ -1,25 +1,17 @@
 ---
-title: 更改默认的 blob 路径 | Microsoft Docs
+title: 更改默认的 blob 路径
 description: 了解如何设置 Azure 函数以重命名 blob 文件路径
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723570"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270629"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -35,26 +27,26 @@ ms.locfileid: "60723570"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 
-2. 单击“+ 创建资源”  。 在“搜索”  框中，输入“Function App”  ，并按 Enter  。 在显示的应用列表中，选中并单击“Function App”  。
+2. 单击“+ 创建资源”。 在“搜索”框中，输入“Function App”，并按 Enter。 在显示的应用列表中，选中并单击“Function App”。
 
     ![在搜索框中输入“Function App”](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. 单击**创建**。
+3. 单击“创建”。
 
     ![“Function App”窗口“创建”按钮](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
-4. 在“Function App”  配置边栏选项卡中，执行以下步骤：
+4. 在“Function App”配置边栏选项卡中，执行以下步骤：
 
-    1. 提供一个唯一的应用名称  。
-    2. 从下拉列表中，选择“订阅”  。 此订阅应与和 StorSimple 数据管理器服务关联的订阅相同。
-    3. 选择“新建”  资源组。
-    4. 在“托管计划”  下拉列表中，选择“使用计划”  。
+    1. 提供一个唯一的应用名称。
+    2. 从下拉列表中，选择“订阅”。 此订阅应与和 StorSimple 数据管理器服务关联的订阅相同。
+    3. 选择“新建”资源组。
+    4. 在“托管计划”下拉列表中，选择“使用计划”。
     5. 指定函数运行的位置。 需要选择 StorSimple 数据管理器服务以及与作业定义相关联的存储帐户所在区域。
     6. 选择一个现有存储帐户，或创建一个新的存储帐户。 函数在内部使用一个存储帐户。
 
         ![输入新的 Function App 配置数据](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. 单击**创建**。 随即创建函数应用。
+    7. 单击“创建”。 随即创建函数应用。
      
         ![创建的 Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -62,17 +54,17 @@ ms.locfileid: "60723570"
 
     ![单击“+ 新建函数”](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
-6. 对于语言，选择“C#”  。 在模板磁贴数组的“QueueTrigger-CSharp”磁贴中，选择“C#”   。
+6. 对于语言，选择“C#”。 在模板磁贴数组的“QueueTrigger-CSharp”磁贴中，选择“C#”。
 
-7. 在“队列触发器”  中：
+7. 在“队列触发器”中：
 
-    1. 输入函数的名称  。
-    2. 在“队列名称”  框中，输入数据转换作业定义名称。
-    3. 在“存储帐户连接”下，单击“新建”   。 从存储帐户列表中，选择与你的作业定义关联的帐户。 记下连接名称（已突出显示）。 稍后在 Azure 函数中需要该名称。
+    1. 输入函数的名称。
+    2. 在“队列名称”框中，输入数据转换作业定义名称。
+    3. 在“存储帐户连接”下，单击“新建”。 从存储帐户列表中，选择与你的作业定义关联的帐户。 记下连接名称（已突出显示）。 稍后在 Azure 函数中需要该名称。
 
         ![创建新的 C# 函数](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. 单击**创建**。 随即创建函数  。
+    4. 单击“创建”。 随即创建函数。
 
      
 10. 在“函数”窗口中，运行 _.csx_ 文件。
@@ -183,25 +175,25 @@ ms.locfileid: "60723570"
 
         ```
 
-    2. 将第 11 行中的 STORAGE_CONNECTIONNAME  替换为存储帐户连接（参考步骤 7c）。
+    2. 将第 11 行中的 STORAGE_CONNECTIONNAME 替换为存储帐户连接（参考步骤 7c）。
 
         ![复制存储连接名称](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. “保存”  函数。
+    3. “保存”函数。
 
         ![保存函数](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
 12. 若要完成函数，请通过执行以下步骤来添加一个或多个文件：
 
-    1. 单击“查看文件”  。
+    1. 单击“查看文件”。
 
        ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
-    2. 单击“+ 添加”。 
+    2. 单击“+ 添加”。
         
         ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. 输入“project.json”  ，并按 Enter  。 在 **project.json** 文件中，粘贴以下代码：
+    3. 输入“project.json”，并按 Enter。 在 **project.json** 文件中，粘贴以下代码：
 
         ```
         {

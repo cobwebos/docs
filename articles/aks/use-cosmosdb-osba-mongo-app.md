@@ -1,21 +1,19 @@
 ---
 title: 将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
 description: 本文介绍如何使用用于 Azure 的 Open Service Broker (OSBA) 将现有的 Java 和 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 集成。
-services: azure-dev-spaces
 author: zr-msft
-manager: jeconnoc
 ms.service: azure-dev-spaces
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
-ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61028404"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277702"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
 
@@ -129,7 +127,7 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-如果在“状态”下看到“就绪”，则表明数据库已准备就绪。  
+如果在“状态”下看到“就绪”，则表明数据库已准备就绪。
 
 数据库完成预配以后，需将其元数据绑定到 [Kubernetes 机密](https://kubernetes.io/docs/concepts/configuration/secret/)。 在将该数据绑定到机密以后，其他应用程序就可以访问该数据。 若要将数据库的元数据绑定到某个机密，请使用 `svcat bind` 命令：
 
@@ -189,7 +187,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>在 AKS 群集上运行应用程序
 
-可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure 开发人员空间可帮助您生成项目，如 Dockerfile 和 Helm 图表，以及部署和运行在 AKS 中的应用程序。
+可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure Dev Spaces 可帮助你生成项目（如 Dockerfile 和 Helm 图），并在 AKS 中部署和运行应用程序。
 
 若要在 AKS 群集中启用 Azure Dev Spaces，请执行以下操作：
 

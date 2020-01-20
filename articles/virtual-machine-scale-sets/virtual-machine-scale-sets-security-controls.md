@@ -1,20 +1,17 @@
 ---
 title: Azure 虚拟机规模集的安全控制
 description: 用于评估 Azure 虚拟机规模集的安全控制清单
-services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6aee9edaf3c594a2e7083416726da8e57bbf5c6b
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 51ddd4f3775ae8e41c0d0bdd4ed8a3a2a59b7db4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529136"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271781"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的安全控制
 
@@ -37,13 +34,13 @@ ms.locfileid: "72529136"
 |---|---|--|
 | Azure 监视支持（Log analytics、App insights 等）| 是 | 请参阅[在 azure 中监视和更新 Linux 虚拟机](/azure/virtual-machines/linux/tutorial-monitoring)和[在 azure 中监视和更新 Windows 虚拟机](/azure/virtual-machines/windows/tutorial-monitoring)。 |
 | 控制和管理平面日志记录和审核| 是 |  |
-| 数据平面日志记录和审核 | No |  |
+| 数据平面日志记录和审核 | 否 |  |
 
 ## <a name="identity"></a>身份标识
 
 | 安全控制 | Yes/No | 说明|
 |---|---|--|
-| Authentication| 是 |  |
+| 身份验证| 是 |  |
 | 授权| 是 |  |
 
 ## <a name="data-protection"></a>数据保护

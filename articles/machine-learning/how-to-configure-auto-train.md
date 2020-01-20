@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5be8668f9a2761bf1aa9809749fa44f21d622dde
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045800"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277988"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -415,7 +415,7 @@ best_run, fitted_model = automl_run.get_output()
 |自定义|定义|
 |--|--|
 |列用途更新|重写指定列的功能类型。|
-|转换器参数更新 |更新指定转换器的参数。 目前支持 Imputer 和 HashOneHotEncoder。|
+|转换器参数更新 |更新指定转换器的参数。 目前支持 Imputer （平均值、最频繁 & 中值）和 HashOneHotEncoder。|
 |删除列 |要从特征化中删除的列。|
 |块转换器| 阻止用于特征化进程的转换器。|
 

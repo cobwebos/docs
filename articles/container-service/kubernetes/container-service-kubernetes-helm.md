@@ -1,20 +1,18 @@
 ---
 title: （已弃用）在 Azure Kubernetes 中使用 Helm 部署容器
 description: 使用 Helm 打包工具在 Azure 容器服务中的 Kubernetes 群集上部署容器
-services: container-service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712240"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271081"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>（已弃用）使用 Helm 在 Kubernetes 群集上部署容器
 
@@ -145,7 +143,7 @@ sudo mysql –h v1-mariadb
 ```
  
  
-现在，可以使用标准 SQL 命令创建数据库、表等。例如：`Create DATABASE testdb1;` 将创建一个空数据库。 
+你现在可以使用标准 SQL 命令来创建数据库、表等。例如，`Create DATABASE testdb1;` 创建一个空数据库。 
  
  
  

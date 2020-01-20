@@ -1,25 +1,17 @@
 ---
-title: 使用 Azure 资源管理器脚本管理 StorSimple 设备 | Microsoft Docs
+title: 使用 Azure 资源管理器脚本管理 StorSimple 设备
 description: 了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726411"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276649"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -33,7 +25,7 @@ ms.locfileid: "60726411"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>基于 Azure 资源管理器 SDK 的示例脚本表
 
-| Azure 资源管理器脚本                    | 描述                                                                                                                                                                                                       |
+| Azure 资源管理器脚本                    | Description                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | 此脚本可用于授权 StorSimple 设备更改服务数据加密密钥。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | 此脚本可用于创建 8010 或 8020 StorSimple 云设备。 然后，可以使用 StorSimple 数据管理器服务配置和注册云设备。                                                       |
@@ -77,7 +69,7 @@ ms.locfileid: "60726411"
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe  的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe  文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
+2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
 
     也可以运行下面的命令，将此脚本下载并存储到先前创建的同一个文件夹中。
     
