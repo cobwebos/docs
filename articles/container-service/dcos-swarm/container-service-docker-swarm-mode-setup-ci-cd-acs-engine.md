@@ -1,20 +1,18 @@
 ---
 title: （已弃用）使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
 description: 使用 Docker Swarm 模式的 Azure 容器服务引擎、Azure 容器注册表和 Azure DevOps 持续交付多容器 .NET Core 应用程序
-services: container-service
 author: diegomrtnzg
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598553"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277913"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -27,7 +25,6 @@ ms.locfileid: "68598553"
 * Azure 容器注册表
 * Azure DevOps
 
-本文基于 [GitHub](https://github.com/jcorioland/MyShop/tree/docker-linux) 中提供的使用 ASP.NET Core 开发的一个简单应用程序。 该应用程序由四个不同的服务组成：三个 Web API 和一个 Web 前端：
 
 ![MyShop 示例应用程序](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/myshop-application.png)
 
@@ -46,7 +43,7 @@ ms.locfileid: "68598553"
 7. 群集上的 Docker Swarm 模式提取最新的映像版本 
 8. 使用 Docker 堆栈部署应用程序的新版本 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始本教程之前，需要完成以下任务：
 
@@ -108,7 +105,7 @@ ms.locfileid: "68598553"
 
     ![Azure DevOps - 新建空的生成管道](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 然后，单击“变量”选项卡，并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
+4. 然后单击“变量”选项卡并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
 
     ![Azure DevOps - 生成变量配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
@@ -251,6 +248,6 @@ ms.locfileid: "68598553"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关与 Azure DevOps 的 CI/CD 的详细信息, 请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。
+* 有关与 Azure DevOps 的 CI/CD 的详细信息，请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。
 * 有关 ACS 引擎的详细信息，请参阅[ACS 引擎 GitHub 存储库](https://github.com/Azure/acs-engine)。
 * 有关 Docker Swarm 模式的详细信息，请参阅[Docker Swarm 模式概述](https://docs.docker.com/engine/swarm/)。

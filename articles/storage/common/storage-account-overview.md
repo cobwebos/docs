@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975694"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274533"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -64,17 +64,15 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帐户
 
-BlockBlobStorage 帐户是用于将非结构化对象数据作为块 blob 存储的专用存储帐户。 还可以使用 BlockBlobStorage 帐户创建高级块 blob。 这种类型的存储帐户支持块 blob 和追加 blob，而不支持页 blob、表或队列。
+在 "高级" 性能层中，BlockBlobStorage 帐户是用于将非结构化对象数据作为块 blob 或追加 blob 存储的专用存储帐户。 与常规用途 v2 和 BlobStorage 帐户相比，BlockBlobStorage 帐户提供低、一致性延迟和更高的事务速率。
 
-与常规用途 v2 和 BlobStorage 帐户相比，BlockBlobStorage 帐户提供低、一致性延迟和更高的事务速率。
-
-BlockBlobStorage 帐户目前不支持对 "热"、"冷" 或 "存档" 访问层进行分层。
+BlockBlobStorage 帐户目前不支持对 "热"、"冷" 或 "存档" 访问层进行分层。 此类型的存储帐户不支持页 blob、表或队列。
 
 ### <a name="filestorage-accounts"></a>FileStorage 帐户
 
 FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
 
-FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 帐户提供了独特的性能特征，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -85,12 +83,20 @@ FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 �
 
 ## <a name="performance-tiers"></a>性能层
 
+根据所创建的存储帐户的类型，可以在 "标准" 和 "高级" 性能层之间进行选择。
+
+### <a name="general-purpose-storage-accounts"></a>通用存储帐户
+
 可为以下任一性能层配置常规用途存储帐户：
 
 - 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。 有关标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](scalability-targets-standard-account.md)。
-- 仅用于存储非托管虚拟机磁盘的高级性能层。 Microsoft 建议将托管磁盘与 Azure 虚拟机配合使用，而不是使用非托管磁盘。 有关高级性能层的可伸缩性目标的详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
+- 用于存储非托管虚拟机磁盘的高级性能层。 Microsoft 建议将托管磁盘与 Azure 虚拟机配合使用，而不是使用非托管磁盘。 有关高级性能层的可伸缩性目标的详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage 存储帐户
 
 BlockBlobStorage 存储帐户提供用于存储块 blob 和追加 blob 的高级性能层。 有关详细信息，请参阅[高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)。
+
+### <a name="filestorage-storage-accounts"></a>FileStorage 存储帐户
 
 FileStorage 存储帐户为 Azure 文件共享提供高级性能层。 有关详细信息，请参阅[Azure 文件可伸缩性和性能目标](../files/storage-files-scale-targets.md)。
 
@@ -102,7 +108,7 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 - **热**访问层。 此层经过优化，可用于频繁访问存储帐户中的对象。 访问热层中的数据是最具成本效益的，而存储成本则更高。 默认情况下，新存储帐户在热层中创建。
 - **冷**访问层。 此层经过优化，可存储不常访问且至少在30天内存储的大量数据。 将数据存储在酷层中更为经济高效，但访问数据比访问热层中的数据可能更昂贵。
-- **存档**层。 此级别仅适用于单个块 blob。 存档层针对的数据进行了优化，这些数据可容忍几个小时的检索延迟，并将在至少180天内保留在存档层中。 存档层是存储数据的最具成本效益的选项。 但是，访问这些数据比访问热层或冷层中的数据更昂贵。
+- **存档**层。 此级别仅适用于单个块 blob 和追加 blob。 存档层针对的数据进行了优化，这些数据可容忍几个小时的检索延迟，并将在至少180天内保留在存档层中。 存档层是存储数据的最具成本效益的选项。 但是，访问这些数据比访问热层或冷层中的数据更昂贵。
 
 如果数据的使用模式发生了变化，则可以随时在这些访问层之间进行切换。 有关访问层的详细信息，请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](../blobs/storage-blob-storage-tiers.md)。
 

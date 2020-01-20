@@ -1,26 +1,19 @@
 ---
-title: StorSimple 8000 系列 Update 3 发行说明 | Microsoft Docs
+title: StorSimple 8000 系列 Update 3 发行说明
 description: 介绍 StorSimple 8000 系列 Update 3 的新功能、问题和解决方法。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d18feba4ded3dfccb8f774112a7dc8d42b12f1d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530959"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275331"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
 
@@ -48,29 +41,29 @@ Update 3 中以下重大改进和 Bug 修复。
 ## <a name="issues-fixed-in-update-3"></a>在 Update 3 中修复的问题
 下表提供在 Update 3 中已修复问题的摘要。    
 
-| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 第 |主机端数据迁移 |在早期版本中，在主机端数据迁移期间，StorSimple 云工具会进入脱机状态。 在此版本中已修复了此问题。 |否 |是 |
 | 2 |本地固定卷 |在以前的版本中，本地固定卷存在与 I/O 失败、卷转换失败和数据路径失败相关的问题。 在此版本中已找到这些问题的根本原因并进行了修复。 |是 |否 |
 | 3 |监视 |有多个与报告单位和监视以及设备仪表板图表相关的问题，其中针对本地固定卷显示了不正确的信息。 在此版本中已修复这些问题。 |是 |否 |
 | 4 |大量写入 I/O |使用 StorSimple 时处理涉及大量写入操作的工作负荷时，用户会遇到工作集被分层到云中罕见错误。 在此版本中已修复这一 bug。 |是 |是 |
-| 5 |备份 |在某些极少数情况下，在早期版本的软件中，用户执行远程克隆备份时，会遇到云错误，进而使操作出错。在此版本中，已修复此问题并且操作可成功完成。 |是 |是 |
+| 5 |备份 |在某些极少数情况下，在以前版本的软件中，当用户备份远程克隆时，它们将会出现云错误，操作将会出现错误。在此版本中，此问题已修复，并且操作已成功完成。 |是 |是 |
 | 6 |备份策略 |在某些极少数情况下，在早期版本的软件中，存在与删除备份策略相关的错误。 在此版本中已修复了此问题。 |是 |是 |
 
 ## <a name="known-issues-in-update-3"></a>Update 3 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 第 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
-| 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
+| 2 |错误的控制器 ID |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要任何用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
 | 3 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 | |是 |是 |
 | 4 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 从单个不活动的设备故障转移到多个设备，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 | |是 |否 |
 | 5 |安装 |安装 StorSimple Adapter for SharePoint 期间，需要提供设备 IP 才能成功完成安装。 | |是 |否 |
-| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转至[配置设备的 Web 代理](storsimple-8000-configure-web-proxy.md)。 |是 |否 |
+| 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |使用括号包装该 cmdlet，如下所示： **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示： **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |
@@ -83,7 +76,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 19 |本地固定卷 |如果取消还原作业，或者如果恢复失败，且发生控制器故障转移，“**作业**”页上会显示其他还原作业。 |如果还原作业仅具有本地固定卷或混合了本地固定卷与分层卷，则可能发生此问题。 如果还原作业仅包含分层卷，不会发生此问题。 无需用户干预。 |是 |否 |
 | 20 |本地固定卷 |如果尝试将分层卷（通过更新 1.2 或更早版本创建和克隆）转换为本地固定卷，并且设备空间不足或云服务中断，则克隆会受损。 |仅通过更新 2.1 前的软件创建和克隆的卷会发生该问题。 这种情况应该很少见。 | | |
 | 21 |卷转换 |卷转换正在进行时（分层到本地固定，反之亦然），请勿更新连接到此卷上的 ACR。 更新 ACR 可能导致数据损坏。 |如果需要，请在卷转换之前更新 ACR，不要在转换进行时执行任何进一步的 ACR 更新。 | | |
-| 22 |更新 |应用 Update 3 时，Azure 经典门户的“维护”  页会显示以下与 Update 2 相关的消息 -“StorSimple 8000 系列 Update 2 包括适用于 Microsoft 的功能，当我们检测到潜在问题时，Microsoft 会主动收集设备的日志信息”。 该消息可能会产生误导，因为它指示设备会被更新到 Update 2。 设备成功更新到 Update 3 后，此消息将消失。 |未来版本中将解决此行为。 |是 |否 |
+| 22 |更新 |应用 Update 3 时，Azure 经典门户的“维护”页会显示以下与 Update 2 相关的消息 -“StorSimple 8000 系列 Update 2 包括适用于 Microsoft 的功能，当我们检测到潜在问题时，Microsoft 会主动收集设备的日志信息”。 该消息可能会产生误导，因为它指示设备会被更新到 Update 2。 设备成功更新到 Update 3 后，此消息将消失。 |未来版本中将解决此行为。 |是 |否 |
 
 ## <a name="controller-and-firmware-updates-in-update-3"></a>Update 3 中的控制器和固件更新
 此版本包含 LSI 驱动程序和固件更新。 有关如何安装 LSI 驱动程序和固件更新的详细信息，请参阅在 StorSimple 设备上[安装 Update 3](storsimple-install-update-3.md)。

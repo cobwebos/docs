@@ -3,16 +3,16 @@ title: 为虚拟机规模集启用 Azure 磁盘加密
 description: 本文介绍如何为虚拟机规模集启用 Microsoft Azure 磁盘加密
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177778"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278977"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密
 
@@ -23,7 +23,7 @@ Azure 磁盘加密还可以应用于 Windows 和 Linux 虚拟机规模集，在�
 - Windows 规模集的 OS 和数据卷。
 - Linux 规模集中的数据量。 目前，Linux 规模集不支持 OS 磁盘加密。
 
-只需几分钟即可了解用于虚拟机规模集的 Azure 磁盘加密基础知识，只需几分钟即可使用[Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)，或者[使用 Azure PowerShell 对虚拟机规模集进行加密](disk-encryption-powershell.md)。指南.
+只需几分钟即可了解用于虚拟机规模集的 Azure 磁盘加密基础知识，只需几分钟即可使用[Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)或[使用 Azure PowerShell 教程对虚拟机规模集进行加密](disk-encryption-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

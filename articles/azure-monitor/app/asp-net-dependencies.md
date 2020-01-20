@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 7b23da81143a4ae66d9f25cd953c4a3952f27455
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678372"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277685"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure 应用程序 Insights 中的依赖关系跟踪 
 
-*依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)度量依赖项调用的持续时间（不管是失败还是失败）以及附加信息（如依赖项的名称等）。 你可以调查特定的依赖项调用，并将它们与请求和异常相关联。
+*依赖项*是应用程序调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)度量依赖项调用的持续时间（不管是失败还是失败）以及附加信息（如依赖项的名称等）。 你可以调查特定的依赖项调用，并将它们与请求和异常相关联。
 
 ## <a name="automatically-tracked-dependencies"></a>自动跟踪的依赖项
 
-适用于 .NET 和 .NET Core Application Insights Sdk 附带 `DependencyTrackingTelemetryModule`，这是一个自动收集依赖项的遥测模块。 根据链接的官方文档配置[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)应用程序时，将自动启用此依赖关系集合。 `DependencyTrackingTelemetryModule` 以[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)nuget 包的形式提供，并且在使用任何一个 nuget 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore` 时，会自动将其关闭。
+适用于 .NET 和 .NET Core Application Insights Sdk 附带 `DependencyTrackingTelemetryModule`，这是一个自动收集依赖项的遥测模块。 根据链接的官方文档配置[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)应用程序时，将自动启用此依赖关系集合。`DependencyTrackingTelemetryModule` 以[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)nuget 包的形式提供，并且在使用任何一个 nuget 包 `Microsoft.ApplicationInsights.Web` 或 `Microsoft.ApplicationInsights.AspNetCore`时，会自动将其关闭。
 
  `DependencyTrackingTelemetryModule` 当前自动跟踪以下依赖项：
 
@@ -28,7 +28,7 @@ ms.locfileid: "72678372"
 |---------------|-------|
 |Http/Https | 本地或远程 http/https 调用 |
 |WCF 调用| 仅当使用基于 Http 的绑定时才自动跟踪。|
-|SQL | 用 `SqlClient` 进行的调用。 请参阅[此](#advanced-sql-tracking-to-get-full-sql-query)了解捕获 SQL 查询。  |
+|SQL | 用 `SqlClient`进行的调用。 请参阅[此](#advanced-sql-tracking-to-get-full-sql-query)了解捕获 SQL 查询。  |
 |[Azure 存储（Blob、表、队列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | 通过 Azure 存储客户端发出的调用。 |
 |[EventHub 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 版本1.1.0 和更高版本。 |
 |[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 版本3.0.0 和更高版本。 |
@@ -38,7 +38,7 @@ ms.locfileid: "72678372"
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在控制台应用程序中设置自动依赖项跟踪
 
-若要自动跟踪 .NET/.NET Core 控制台应用中的依赖项，请 `Microsoft.ApplicationInsights.DependencyCollector` 中安装 Nuget 包，并按如下所示初始化 `DependencyTrackingTelemetryModule`：
+若要自动跟踪 .NET/.NET Core 控制台应用中的依赖项，请 `Microsoft.ApplicationInsights.DependencyCollector`中安装 Nuget 包，并按如下所示初始化 `DependencyTrackingTelemetryModule`：
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -90,7 +90,7 @@ ms.locfileid: "72678372"
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>用于获取完整的 SQL 查询的高级 SQL 跟踪
 
-对于 SQL 调用，始终收集服务器和数据库的名称并将其存储为所收集 `DependencyTelemetry` 的名称。 还有一个名为 "data" 的字段，它可以包含完整的 SQL 查询文本。
+对于 SQL 调用，始终收集服务器和数据库的名称并将其存储为所收集 `DependencyTelemetry`的名称。 还有一个名为 "data" 的字段，它可以包含完整的 SQL 查询文本。
 
 对于 ASP.NET Core 应用程序，获取完整的 SQL 查询无需执行其他步骤。
 

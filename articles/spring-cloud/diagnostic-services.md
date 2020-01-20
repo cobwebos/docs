@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 春季云中分析日志和指标 |Microsoft Docs
 description: 了解如何分析 Azure 春季云中的诊断数据
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.author: brendm
+ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75730036"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279161"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -30,7 +30,7 @@ ms.locfileid: "75730036"
 | **ApplicationConsole** | 所有客户应用程序的控制台日志。 | 
 | **SystemLogs** | 目前，只有此类别中的 "[春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) " 日志。 |
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 有关度量值的完整列表，请参阅[春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 

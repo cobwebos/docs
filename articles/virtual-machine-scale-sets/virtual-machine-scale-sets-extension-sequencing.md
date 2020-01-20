@@ -1,26 +1,18 @@
 ---
-title: 结合使用扩展排序和 Azure 虚拟机规模集 | Microsoft Docs
+title: 使用 Azure 虚拟机规模集的扩展序列化
 description: 了解如何在虚拟机规模集上部署多个扩展时对扩展预配进行排序。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620166"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278050"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
 Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功能。 生产部署通常结合使用为 VM 实例配置的多个扩展来实现所需效果。
@@ -249,7 +241,7 @@ az vmss extension set \
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>无法添加有依赖项的扩展？
 1. 请确保 provisionAfterExtensions 中指定的扩展已在规模集模型中定义。
-2. 请确保未引入循环依赖。 例如，禁止使用以下顺序：扩展 A -> 扩展 B -> 扩展 C -> 扩展 A
+2. 请确保未引入循环依赖。 例如，不允许使用以下序列： ExtensionA-> ExtensionB-> ExtensionC-> ExtensionA
 3. 请确保所依赖的任何扩展在扩展“属性”下有“设置”属性。 例如，如果需要在扩展 A 之后预配扩展 B，扩展 A 必须在扩展 A“属性”下有“设置”字段。 如果扩展不强制要求任何必需设置，可以指定空的“设置”属性。
 
 ### <a name="not-able-to-remove-extensions"></a>无法删除扩展？

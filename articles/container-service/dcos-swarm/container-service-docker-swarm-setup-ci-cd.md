@@ -1,20 +1,18 @@
 ---
 title: （已弃用）使用 Azure 容器服务和 Swarm 的 CI/CD
 description: 使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Azure DevOps 持续交付多容器 .NET Core 应用程序
-services: container-service
 author: jcorioland
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598537"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277910"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -22,7 +20,6 @@ ms.locfileid: "68598537"
 
 开发适用于云环境的新型应用程序时，最大的挑战之一是持续交付这些应用程序。 本文介绍如何使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Azure Pipelines 管理，实现完整的持续集成与持续部署 (CI/CD) 管道。
 
-本文基于 [GitHub](https://github.com/jcorioland/MyShop/tree/acs-docs) 中提供的使用 ASP.NET Core 开发的一个简单应用程序。 该应用程序由四个不同的服务组成：三个 Web API 和一个 Web 前端：
 
 ![MyShop 示例应用程序](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
@@ -41,7 +38,7 @@ ms.locfileid: "68598537"
 1. 群集上的 Docker Swarm 提取最新的映像版本 
 1. 使用 Docker Compose 部署应用程序的新版本 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 在开始本教程之前，需要完成以下任务：
 
@@ -162,11 +159,11 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 1. 为每个映像（共五个）配置生成和推送步骤后，请在生成工作流中另外添加两个步骤。
 
-    a. 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 一个命令行任务，该任务使用 bash 脚本将 docker-compose.yml. docker-compose.override.yml 文件中的*BuildNumber*实例替换为当前生成 Id。有关详细信息，请参阅下面的屏幕。
 
     ![Azure DevOps Services - 更新 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
+    b.保留“数据库类型”设置，即设置为“共享”。 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
 
     ![Azure DevOps Services - 发布 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
@@ -225,4 +222,4 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关与 Azure DevOps Services 的 CI/CD 的详细信息, 请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。
+* 有关与 Azure DevOps Services 的 CI/CD 的详细信息，请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。

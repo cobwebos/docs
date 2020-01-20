@@ -3,12 +3,12 @@ title: 如何创建来宾配置策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux Vm 的 Azure 策略来宾配置策略。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867338"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278458"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -176,42 +176,6 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 已完成的包必须存储在被管理的虚拟机可访问的位置。 示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包成为公共包，可以在 URL 中包含[SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 你还可以实现专用网络中的计算机的[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，尽管此配置仅适用于访问包，而不会与服务通信。
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>使用来宾配置包中的机密
-
-在 Azure 策略来宾配置中，管理运行时使用的机密的最佳方式是将它们存储在 Azure Key Vault 中。 此设计在自定义 DSC 资源内实现。
-
-1. 在 Azure 中创建用户分配的托管标识。
-
-   计算机使用该标识来访问存储在 Key Vault 中的机密。 有关详细步骤，请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
-
-1. 创建 Key Vault 实例。
-
-   有关详细步骤，请参阅[设置和检索机密-PowerShell](../../../key-vault/quick-create-powershell.md)。
-   向实例分配权限，以向用户分配的标识授予对存储在 Key Vault 中的机密的访问权限。 有关详细步骤，请参阅[设置和检索机密-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
-
-1. 将用户分配的标识分配到计算机。
-
-   有关详细步骤，请参阅[使用 PowerShell 在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
-   使用 Azure 资源管理器大规模通过 Azure 策略分配此标识。 有关详细步骤，请参阅[使用模板在 AZURE VM 上配置 azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
-
-1. 使用在自定义资源中生成的客户端 ID，使用计算机上提供的令牌访问 Key Vault。
-
-   可以将 Key Vault 实例的 `client_id` 和 url 作为[属性](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递到资源，这样就不需要为多个环境更新资源，也不需要更改这些值。
-
-下面的代码示例可在自定义资源中使用，以使用用户分配的标识从 Key Vault 检索机密。 从请求返回到 Key Vault 的值为纯文本。 最佳做法是将其存储在 credential 对象中。
-
-```azurepowershell-interactive
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.net/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.net" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>测试来宾配置包
 

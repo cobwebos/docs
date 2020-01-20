@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157213"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277003"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -128,7 +128,7 @@ ms.locfileid: "76157213"
 |**已发现代码注入**|代码注入是将可执行模块插入到正在运行的进程或线程中。 恶意软件使用此方法来访问数据，同时成功地隐藏自身以防止找到和删除。<br>此警报指示故障转储中存在注入模块。 为了区分恶意和非恶意注入的模块，安全中心会检查注入的模块是否符合可疑行为的配置文件。|-|
 |**检测到可疑的代码段**|指示已使用非标准方法（如反射注入和进程替换所）分配了代码段。 该警报提供代码段的其他特征，这些特征已经过处理，可为所报告代码段的功能和行为提供上下文。|-|
 |**已发现外壳代码**|Shellcode 是在恶意软件利用软件漏洞之后运行的有效负载。<br>此警报指示故障转储分析检测到可执行代码，该代码展示了恶意有效负载通常会执行的行为。 尽管非恶意软件也可以执行此行为，但它不是一般的软件开发实践。|-|
-|**检测到的 Fileless 攻击方法**|指定进程的内存包含 fileless 攻击工具包： Meterpreter。 Fileless 攻击工具包通常不会在文件系统上存在，这使得传统的防病毒软件难以检测。|DefenseEvasion/执行|
+|**检测到的 Fileless 攻击方法**|指定进程的内存包含 fileless 攻击工具包： [工具包名称]。 Fileless 攻击工具包通常不会在文件系统上存在，这使得传统的防病毒软件难以检测。|DefenseEvasion/执行|
 ||<a name="alerts-linux"></a><h3>Linux 计算机</h3> [更多详细信息和说明](security-center-alerts-iaas.md#linux-)||
 |**以异常方式访问 SSH 授权密钥文件的进程**|已在类似于已知恶意软件活动的方法中访问了 SSH 授权密钥文件。 此访问可能表明攻击者正尝试获取计算机的持久访问权限。|-|
 |**检测到的永久性尝试**|主机数据分析检测到已安装了单用户模式的启动脚本。<br>由于在此模式下运行时，很少需要合法的进程，这可能表明攻击者已向每个运行级别添加了恶意进程以保证持久性。 |持久性|

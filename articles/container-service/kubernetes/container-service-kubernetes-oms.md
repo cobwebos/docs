@@ -1,20 +1,18 @@
 ---
 title: （已弃用）监视 Azure Kubernetes 群集 - 操作管理
 description: 使用 Log Analytics 在 Azure 容器服务中监视 Kubernetes 群集
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711758"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271074"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
 
@@ -62,7 +60,7 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>使用 Log Analytics 监视容器
 
-Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
+Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，可帮助您查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -72,7 +70,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 ### <a name="obtain-your-workspace-id-and-key"></a>获取工作区 ID 和密钥
 为了使 Log Analytics 代理与服务进行通信，需要为其配置工作区 ID 和工作区密钥。 若要获取工作区 ID 和密钥，需要在 <https://mms.microsoft.com> 创建帐户。
-请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”  边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”  下，依次单击“连接源”  、“Linux 服务器”  ，将发现所需的信息，如下所示。
+请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”下，依次单击“连接源”、“Linux 服务器”，将发现所需的信息，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 

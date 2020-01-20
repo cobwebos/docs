@@ -1,26 +1,24 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
 description: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-services: container-service
 author: lenadroid
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928999"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274649"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
 [Apache Spark][apache-spark]是一种用于大规模数据处理的快速引擎。 从[Spark 2.3.0 版本][spark-latest-release]开始，Apache Spark 支持与 Kubernetes 群集进行本机集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 为了完成本文中的步骤，需要具备以下各项。
 
@@ -294,7 +292,7 @@ Pi is roughly 3.152155760778804
 
 在上述示例中，Spark jar 文件已上传到 Azure 存储。 另一种做法是将 jar 文件打包成自定义生成的 Docker 映像。
 
-为此，请在 `dockerfile` 目录中查找 Spark 映像的 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`。 在 `ADD` 与 `jar` 声明之间的某个位置为 Spark 作业 `WORKDIR` 添加 `ENTRYPOINT` 语句。
+为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 在 `WORKDIR` 与 `ENTRYPOINT` 声明之间的某个位置为 Spark 作业 `jar` 添加 `ADD` 语句。
 
 将 jar 路径更新为 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 文件在开发系统上的位置。 也可以使用自己的自定义 jar 文件。
 

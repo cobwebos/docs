@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863506"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276940"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -246,7 +246,7 @@ function process(telemetry, executionContext) {
 
 ## <a name="send-telemetry-to-be-processed"></a>发送要处理的遥测数据
 
-空间智能图中定义的传感器发送遥测。 反过来，遥测会触发已上传的用户定义函数的执行。 数据处理器将选取遥测数据。 然后为调用用户定义函数创建执行计划。
+空间智能图中定义的传感器发送遥测。 反过来，遥测会触发已上传的用户定义函数的执行。 数据处理器将选取遥测数据。 然后，为用户定义函数的调用创建执行计划。
 
 1. 为生成读数的传感器检索匹配程序。
 1. 根据成功进行计算的匹配程序，检索相关联的用户定义函数。

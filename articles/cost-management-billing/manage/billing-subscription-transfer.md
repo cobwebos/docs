@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f43f7424cddae8659301be0ddc4842412a62952
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993539"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270860"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -86,7 +86,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>转移企业协议 (EA) 订阅的计费所有权
 
-企业管理员可以在注册中的帐户之间转移订阅所有权。 有关详细信息，请参阅[在 EA 门户中转移帐户所有权](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)。
+企业管理员可以在注册中的帐户之间转移订阅所有权。 有关详细信息，请参阅更改 EA 门户中的[帐户所有者](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)。
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>接受计费所有权后的步骤
 

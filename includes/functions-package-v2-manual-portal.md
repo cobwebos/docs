@@ -1,20 +1,18 @@
 ---
 title: include 文件
 description: include 文件
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/04/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 04b5b8621cdd74addaa481a24efee22746c96240
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b0887831d9c263a9cd0516360cfc29139a9890cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925630"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279549"
 ---
 下表说明了如何在每个开发环境中添加对此绑定的支持。
 

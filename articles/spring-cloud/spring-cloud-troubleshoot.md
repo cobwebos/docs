@@ -1,17 +1,17 @@
 ---
 title: Azure Spring Cloud 故障排除指南 | Microsoft Docs
 description: Azure Spring Cloud 的故障排除指南
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: af3b0b6113833dfd36be8b604b6b3d3e7b33fe5f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.author: brendm
+ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151142"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277583"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure 春季云问题
 
@@ -158,7 +158,7 @@ Azure 春季云服务实例的名称将用于请求 `azureapps.io`下的子域�
 > [!WARNING]
 > 此过程使用测试终结点公开环境变量。  如果测试终结点可以公开访问，或者你已将域名分配给应用程序，请勿继续操作。
 
-1. 转到 `https://<your application test endpoint>/actuator/health`。  
+1. 转到  `https://<your application test endpoint>/actuator/health` 。  
     - 类似于 `{"status":"UP"}` 的响应表明终结点已启用。
     - 如果响应为负数，请在*POM*文件中包含以下依赖项：
 

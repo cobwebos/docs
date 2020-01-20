@@ -1,21 +1,18 @@
 ---
 title: 详细了解 Azure 中虚拟机规模集的业务流程模式
 description: 详细了解 Azure 中虚拟机规模集的业务流程模式。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: gwallace
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: vashan
-ms.openlocfilehash: 063b3210877c06edf7eeddab37c50ed84033098a
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73065907"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279063"
 ---
 # <a name="orchestration-mode-preview"></a>业务流程模式（预览）
 
@@ -42,7 +39,7 @@ ms.locfileid: "73065907"
 
 |                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM 配置模型      | None                                       | 需要 |
+| VM 配置模型      | 无                                       | 需要 |
 | 向规模集添加新 VM  | 创建 VM 时，Vm 会显式添加到规模集。 | Vm 基于 VM 配置模型、实例计数和自动缩放规则进行隐式创建并添加到规模集 | |
 | 删除 VM                   | 要单独删除 Vm，如果规模集包含任何 Vm，则不会将其删除。 | 可单独删除 Vm，删除规模集将删除所有 VM 实例。  |
 | 附加/分离 Vm           | 不支持                              | 不支持 |
@@ -55,7 +52,7 @@ ms.locfileid: "73065907"
 | 模型更新               | 不支持                              | 受支持 |
 | 实例控件            | 完全 VM 控件。 Vm 具有完全限定的 URI，支持全套 Azure VM 管理功能（如 Azure 策略、Azure 备份和 Azure Site Recovery） | Vm 是规模集的依赖资源。 仅可通过规模集访问实例以进行管理。 |
 | 实例模型              | VirtualMachines/模型定义。 | VirtualMachineScaleSets/VirtualMachines 模型定义。 |
-| Capacity                    | 可以创建空规模集;最多可将200个 Vm 添加到规模集 | 可以使用实例计数 0-1000 定义规模集 |
+| 容量                    | 可以创建空规模集;最多可将200个 Vm 添加到规模集 | 可以使用实例计数 0-1000 定义规模集 |
 | 移动                        | 受支持                                  | 受支持 |
 | 单个放置组 = = false | 不支持                          | 受支持 |
 

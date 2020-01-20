@@ -1,26 +1,18 @@
 ---
-title: Azure 虚拟机规模集的自动 OS 映像升级 | Microsoft Docs
+title: Azure 虚拟机规模集的自动 OS 映像升级
 description: 了解如何自动升级规模集中 VM 实例上的 OS 映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240927"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278165"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -56,10 +48,10 @@ ms.locfileid: "72240927"
 
 目前支持以下 SKU（我们会定期添加更多的 SKU）：
 
-| 发布服务器               | OS 产品/服务      |  Sku               |
+| 发布者               | OS 产品/服务      |  Sku               |
 |-------------------------|---------------|--------------------|
-| 规范               | UbuntuServer  | 16.04-LTS          |
-| 规范               | UbuntuServer  | 18.04-LTS          |
+| Canonical               | UbuntuServer  | 16.04-LTS          |
+| Canonical               | UbuntuServer  | 18.04-LTS          |
 | Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
@@ -78,7 +70,7 @@ ms.locfileid: "72240927"
 - 对非 Service Fabric 规模集使用应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
 - 使用计算 API 版本2018-10-01 或更高版本。
 - 确保规模集模型中指定的外部资源可用且已更新。 示例包括，VM 扩展属性中用于引导有效负载的 SAS URI、存储帐户中的有效负载、对模型中的机密的引用，等等。
-- 对于使用 Windows 虚拟机的规模集，从计算 API 版本2019-03-01 开始，规模集模型中的*virtualMachineProfile*属性必须设置为*false*定义. 以上属性启用 VM 内升级，其中 "Windows 更新" 应用操作系统修补程序，而无需替换操作系统磁盘。 在规模集上启用自动 OS 映像升级后，不需要通过 "Windows 更新" 进行其他更新。
+- 对于使用 Windows 虚拟机的规模集，从计算 API 版本2019-03-01 开始，在规模集模型定义中， *virtualMachineProfile*属性必须设置为*false* 。 以上属性启用 VM 内升级，其中 "Windows 更新" 应用操作系统修补程序，而无需替换操作系统磁盘。 在规模集上启用自动 OS 映像升级后，不需要通过 "Windows 更新" 进行其他更新。
 
 ### <a name="service-fabric-requirements"></a>Service Fabric 要求
 

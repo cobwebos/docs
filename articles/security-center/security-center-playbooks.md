@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201739"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275501"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure 安全中心安全攻略（预览版）
 本文档介绍如何使用 Azure 安全中心安全攻略来响应安全相关问题。
+
+> [!NOTE]
+> 安全操作手册功能已重命名为工作流自动化。 请检查[工作流自动化（预览）](https://docs.microsoft.com/azure/security-center/workflow-automation)页以获取更新的内容信息。 这是可供先前预览此内容并逐渐删除的客户使用的临时存档内容。 预览版中的任何功能均由[用于 Microsoft Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)来指导
 
 ## <a name="what-is-security-playbook-in-security-center"></a>安全中心安全攻略是什么？
 安全攻略是可以在安全中心执行的过程的集合，其执行前提是已从所选警报触发特定的攻略。 可以通过安全攻略自动完成和协调对安全中心检测到的特定安全警报的响应。 安全中心安全攻略基于 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。这意味着，你可以使用逻辑应用模板中安全类别下提供的模板，可以根据需要修改它们，还可以创建新的攻略，只需使用 [Azure 逻辑应用工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app)，以及将安全中心用作触发器即可。
@@ -35,7 +38,7 @@ ms.locfileid: "71201739"
 1.  打开“安全中心”仪表板。
 2.  在左窗格中的“自动化和业务流程”部分单击“攻略(预览版)”。
 
-    ![逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig17.png)
+    ![逻辑应用程序](./media/security-center-playbooks/security-center-playbooks-fig17.png)
 
 3. 在“安全中心 - 攻略(预览版)”页中，单击“添加”按钮。
 
@@ -73,7 +76,7 @@ ms.locfileid: "71201739"
 
 5. 在“攻略”页面选择要运行的攻略，然后单击“运行”按钮。 若要在触发之前查看攻略，可以单击该攻略，然后设计器就会打开。
 
-    ![Playbook](./media/security-center-playbooks/security-center-playbooks-fig13.png)
+    ![攻略](./media/security-center-playbooks/security-center-playbooks-fig13.png)
 
 ### <a name="history"></a>历史记录
 
@@ -95,7 +98,7 @@ ms.locfileid: "71201739"
 > 若要详细了解如何使用 Azure 逻辑应用创建自己的攻略，请阅读[创建第一个逻辑应用工作流以自动化云应用与云服务之间的流程](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app)。
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 本文档介绍了如何使用 Azure 安全中心的攻略。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。

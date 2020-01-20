@@ -1,40 +1,38 @@
 ---
-title: 支持 Azure Red Hat OpenShift 的资源 |Microsoft Docs
+title: Azure Red Hat OpenShift 支持的资源
 description: 了解 Microsoft Azure Red Hat OpenShift 支持哪些 Azure 区域和虚拟机大小。
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306221"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274903"
 ---
-# <a name="azure-red-hat-openshift-resources"></a>Red Hat OpenShift 的 azure 资源
+# <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift 资源
 
-本主题列出了 Azure 区域和 Microsoft Azure Red Hat OpenShift 服务支持的虚拟机大小。
+本主题列出了 Microsoft Azure Red Hat OpenShift 服务支持的 Azure 区域和虚拟机大小。
 
 ## <a name="azure-regions"></a>Azure 区域
 
-请参阅[区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)对于可在其中部署 Azure Red Hat OpenShift 的区域的当前列表群集。
+若要部署 Azure Red Hat OpenShift 群集，请参阅[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 
-下面是可以指定 Azure Red Hat OpenShift 群集中的计算节点的支持的虚拟机大小。
+下面是可以在 Azure Red Hat OpenShift 群集中为计算节点指定的受支持的虚拟机大小。
 
 > [!Important]
-> 每个 VM 都有不同数量的可附加的驱动器。 这可能不是立即清除为内存或 CPU 大小。
-> 并非所有 VM 大小都可在所有区域中使用。 即使该 API 支持你指定的大小，可能会遇到错误，如果大小在你指定的区域中不可用。
-> 请参阅[每个区域大小的受支持 VM 的当前列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)有关详细信息。
+> 每个 VM 都有不同数目的驱动器可附加。 这可能并不像内存或 CPU 大小那样直接清楚。
+> 并非所有 VM 大小都可在所有区域中使用。 即使 API 支持指定的大小，如果在指定的区域中没有大小，则可能会出现错误。
+> 有关详细信息，请参阅[每个区域支持的 VM 大小的当前列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 ## <a name="compute-node-sizes"></a>计算节点大小
 
-Azure Red Hat OpenShift REST API 支持以下的计算节点大小：
+Azure Red Hat OpenShift REST API 支持以下计算节点大小：
 
 |大小|vCPU|RAM|
 |-|-|-|
@@ -54,7 +52,7 @@ Azure Red Hat OpenShift REST API 支持以下的计算节点大小：
 
 ## <a name="master-node-sizes"></a>主节点大小
 
-以下母版 / Azure Red Hat OpenShift REST API 支持基础结构节点大小：
+Azure Red Hat OpenShift REST API 支持以下主/基础结构节点大小：
 
 |大小|vCPU|RAM|
 |-|-|-|
@@ -65,4 +63,4 @@ Azure Red Hat OpenShift REST API 支持以下的计算节点大小：
 
 ## <a name="next-steps"></a>后续步骤
 
-请尝试[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程。
+尝试[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程。

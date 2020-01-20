@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030062"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277021"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板附加数据库
 
-本部分介绍如何创建一个使用者群集，并使用[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)将数据库附加到该群集。 如果已经有一个群集，请从下面的资源列表中删除 `Microsoft.Kusto/clusters` 资源。
+本部分介绍如何使用[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)将数据库附加到现有的群集。 
 
 ```json
 {
@@ -138,7 +138,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 |**设置**  |**说明**  |
 |---------|---------|
-|从动群集名称     |  从动群集的名称。 如果群集名称存在，请从 ARM 模板的资源列表中删除 `Microsoft.Kusto/clusters` 资源。 否则，将创建一个新群集。     |
+|从动群集名称     |  从动群集的名称。  |
 |附加的数据库配置名称    |    附加的数据库配置对象的名称。 该名称在群集级别必须是唯一的。     |
 |数据库名称     |      要遵循的数据库的名称。 如果要跟踪领导的所有数据库，请使用 "*"。   |
 |领导群集资源 ID    |   领导者群集的资源 ID。      |

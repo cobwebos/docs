@@ -1,25 +1,18 @@
 ---
-title: 安装 Microsoft Azure StorSimple 8100 设备 | Microsoft 文档
+title: 安装 Microsoft Azure StorSimple 8100 设备
 description: 介绍如何在部署和配置软件之前打开 StorSimple 8100 设备的包装并进行机架安装和布线。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963578"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277085"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
 
@@ -34,7 +27,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 ### <a name="prepare-to-unpack-your-device"></a>准备打开设备的包装
 打开设备包装之前，请查看以下信息。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
 
 1. 若要手动装卸机箱，请确保有两名人员分担机箱重量。 配置完整的机箱重达 32 kg（70 磅）。
 2. 将箱子放在平坦的水平表面上。
@@ -49,9 +42,9 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **存储设备解包后的视图**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |包装箱 |
+   |   第 |包装箱 |
    |   2 |底部泡沫 |
    |   3 |设备 |
    |   4 |顶部泡沫 |
@@ -90,7 +83,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 2. 确认要布置的安装位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 3. 确保要安装设备的机架上有一个 2U 插槽。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
 
 若要手动安装设备，请确保有两名人员分担设备重量。 配置完整的机箱重达 32 kg（70 磅）。
 
@@ -111,9 +104,9 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
     **在机箱侧面安装内部导轨**
    
-    标签 | 描述
+    标签 | Description
     ----- | -----------
-    1     | M 3x4 圆头螺丝
+    第     | M 3x4 圆头螺丝
     2     | 底架滑轨
 
 2. 将外部左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
@@ -125,9 +118,9 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **将外部导轨组件固定到机架上**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |旋紧螺丝 |
+   |   第 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
    |   3 |左侧导轨前端定位销 |
    |   4 |旋紧螺丝 |
@@ -151,16 +144,16 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |机箱紧固螺丝 |
+   |   第 |机箱紧固螺丝 |
 
 下一步是进行设备的电源、网络和串行访问布线。
 
 ## <a name="cable-your-storsimple-8100-device"></a>进行 StorSimple 8100 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8100 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。
@@ -191,7 +184,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **显示数据端口的设备背面**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
@@ -202,7 +195,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
     **设备网络布线**
 
-   |Label | 描述 |
+   |标签 | Description |
    |----- | ----------- |
    | A    | 具有 Internet 访问的 LAN |
    | B    | 控制器 0 |
@@ -239,11 +232,11 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 2. 确定设备底板上的活动控制器。 闪烁的蓝色 LED 指示控制器处于活动状态。
 3. 使用提供的串行电缆（必要时可使用笔记本电脑的 USB 串口转换器），并将控制台或计算机（使用终端模拟连接到设备）连接到活动控制器的串行端口。
 4. 在计算机上安装 USB 串口驱动程序（随设备一起提供）。
-5. 布置串行连接，如下所示：115200波特, 8 个数据位, 1 个停止位, 无奇偶校验, 并将流控制设置为 None。
+5. 将串行连接设置如下：115,200 波特、8 个数据位、1 个停止位、无奇偶校验、流控制设置为 None。
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]
-> 无人**照看管理**:如果设备安装在远程数据中心或具有有限访问权限的计算机房中, 请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果出现网络中断或意外故障，这可实现带外远程控制和支持操作。
+> **无人值守管理**：当设备安装在远程数据中心或有限访问的计算机机房中时，请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果出现网络中断或意外故障，这可实现带外远程控制和支持操作。
 > 
 > 
 

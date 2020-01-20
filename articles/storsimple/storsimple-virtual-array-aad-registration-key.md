@@ -1,25 +1,17 @@
 ---
-title: 适用于 StorSimple 虚拟阵列的新身份验证 | Microsoft Docs
+title: StorSimple 虚拟阵列的新身份验证
 description: 说明如何将基于 AAD 的身份验证用于服务、生成新注册密钥以及执行设备的手动注册。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517141"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273807"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>将新身份验证用于 StorSimple
 
@@ -49,7 +41,7 @@ AAD 身份验证在运行 Update 1 或更高版本的 StorSimple 虚拟阵列（
 | URL 模式                         | 云 | 组件/功能         |
 |------------------------------------|-------|---------------------------------|
 | `https://login.windows.net`        | Azure Public |AAD 身份验证服务      |
-| `https://login.microsoftonline.us` | 美国政府 |AAD 身份验证服务      |
+| `https://login.microsoftonline.us` | US Government |AAD 身份验证服务      |
 
 有关适用于 StorSimple 虚拟阵列的 URL 模式的完整列表，请转到[防火墙规则的 URL 模式](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules)。
 
@@ -61,9 +53,9 @@ AAD 身份验证在运行 Update 1 或更高版本的 StorSimple 虚拟阵列（
 
 | 如果设备在运行  | 执行以下操作                                    |
 |----------------------------|--------------------------------------------------------------|
-| Update 1.0 或更高版本，且处于脱机状态。 <br> 会看到一个警报，指出 URL 不在允许列表中。| 1.修改防火墙规则，使之包含身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。 <br> 2.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br> 3.执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> 4.使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
-| Update 1.0 或更高版本，且设备处于联机状态。| 无需任何操作。                                       |
-| Update 0.6 或更低版本，且设备处于脱机状态。 | 1.[通过目录服务器下载 Update 1.0](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>2.[通过本地 Web UI 应用 Update 1.0](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。<br>3.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br>4.执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br>5.使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 1.0 或更高版本，且处于脱机状态。 <br> 会看到一个警报，指出 URL 不在允许列表中。| 1. 修改防火墙规则以包括身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。 <br> 2.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br> 3. 执行步骤1-5 以[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> 4. 使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 1.0 或更高版本，且设备处于联机状态。| 无需执行任何操作。                                       |
+| Update 0.6 或更低版本，且设备处于脱机状态。 | 1.[通过目录服务器下载更新 1.0](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>2.[通过本地 WEB UI 应用更新 1.0](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。<br>3.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br>4. 执行步骤1-5 以[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br>5. 使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
 | Update 0.6 或更低版本，且设备处于联机状态 | 修改防火墙规则，使之包含身份验证 URL。<br> 通过 Azure 门户安装 Update 1.0。 |
 
 ## <a name="aad-based-registration-keys"></a>基于 AAD 的注册密钥
@@ -80,7 +72,7 @@ AAD 身份验证在运行 Update 1 或更高版本的 StorSimple 虚拟阵列（
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>生成 AAD 服务注册密钥的步骤
 
-1. 在“StorSimple 设备管理器”中，转到“管理” **&gt;** “密钥”。
+1. 在**StorSimple 设备管理器**中，请参阅**管理 &gt;** **密钥**。
     
     ![转到“密钥”](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 

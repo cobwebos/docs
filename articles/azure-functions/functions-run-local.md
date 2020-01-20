@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768973"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277967"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ ms.locfileid: "75768973"
 
 + **版本**1.X：支持 Azure Functions 运行时的版本1.x。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
-+ [**版本 2.x/版本**](#v2)x：支持[Azure Functions 运行时的版本2.x 或](functions-versions.md)3.x。 这些版本支持[Windows](#windows-npm)、 [macOS](#brew)和[Linux](#linux) ，并使用特定于平台的包管理器或 npm 进行安装。
++ [**版本 2.x/版本**](#v2)x：支持[Azure Functions 运行时的版本2.x 或](functions-versions.md)3.x。 这些版本支持[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、 [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)和[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) ，并使用特定于平台的包管理器或 npm 进行安装。
 
 除非另有说明，否则本文中的示例适用于版本2.x。
 
@@ -45,12 +45,12 @@ ms.locfileid: "75768973"
 
 ### <a name="v2"></a>版本1.x 和2。x
 
-版本 2.x/版本的工具使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括[Windows](#windows-npm)、 [macOS](#brew)和[Linux](#linux)）都支持此版本。 
+版本 2.x/版本的工具使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、 [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)和[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
 
 > [!IMPORTANT]
 > 您可以通过使用[扩展捆绑]来绕过安装 .NET Core SDK 的要求。
 
-#### <a name="windows-npm"></a>Windows
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "75768973"
 
 1. 如果不打算使用[扩展捆绑]，请安装[.NET Core 2.X SDK for Windows](https://www.microsoft.com/net/download/windows)。
 
-#### <a name="brew"></a>带 Homebrew 的 MacOS
+# <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
@@ -100,7 +100,7 @@ ms.locfileid: "75768973"
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-#### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
@@ -122,7 +122,7 @@ ms.locfileid: "75768973"
    若要为 Debian 设置 APT 源列表，请运行以下命令：
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
 1. 检查 `/etc/apt/sources.list.d/dotnetdev.list` 文件中列出的相应 Linux 版本字符串之一：
@@ -149,6 +149,8 @@ ms.locfileid: "75768973"
     ```
 
 1. 如果不打算使用[扩展捆绑]，请安装[适用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
+
+---
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
@@ -292,9 +294,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 | 参数     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
-| **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项，或选择与辅助角色运行时匹配的语言。 |
-| **`--name -n`** | 函数名称。 |
-| **`--template -t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
+| **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项，或选择与辅助角色运行时匹配的语言。 |
+| **`--name`** , **`-n`** | 函数名称。 |
+| **`--template`** , **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
 
 例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
 
@@ -352,12 +354,12 @@ func host start
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需的参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)来启用语言辅助角色调试。 仅限版本 2.x。 |
-| **`--nodeDebugPort -n`** | 要使用的 node.js 调试器的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
+| **`--nodeDebugPort`** , **`-n`** | 要使用的 node.js 调试器的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
-| **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
+| **`--port`** , **`-p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
-| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
-| **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
+| **`--script-root`** , **`--prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
+| **`--timeout`** , **`-t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
@@ -437,10 +439,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 | 选项     | Description                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | 内联内容。 |
-| **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
-| **`--timeout -t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
-| **`--file -f`** | 要用作内容的文件名。|
+| **`--content`** , **`-c`** | 内联内容。 |
+| **`--debug`** , **`-d`** | 运行函数前，将调试程序附加到主机进程。|
+| **`--timeout`** , **`-t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
+| **`--file`** , **`-f`** | 要用作内容的文件名。|
 | **`--no-interactive`** | 不提示输入。 适用于自动化方案。|
 
 例如，若要调用 HTTP 触发的函数并传递内容正文，请运行以下命令：
@@ -480,12 +482,12 @@ func azure functionapp publish <FunctionAppName>
 
 | 选项     | Description                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
+| **`--publish-settings-only`** , **`-o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 发布 Python 函数应用时跳过生成车轮文件夹。 |
-| **`--build`**<br/>**`-b`** | 在部署到 Linux 函数应用时执行生成操作。 接受： `remote` 和 `local`。 |
+| **`--build`** , **`-b`** | 在部署到 Linux 函数应用时执行生成操作。 接受： `remote` 和 `local`。 |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |

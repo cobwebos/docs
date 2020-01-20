@@ -7,25 +7,25 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173800"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277428"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>使用诊断日志监视 Azure 数据资源管理器引入操作（预览版）
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后，将数据引入（加载）到数据库中的表，以便可以对其运行查询。 [Azure Monitor 诊断日志](/azure/azure-monitor/platform/diagnostic-logs-overview)提供有关 Azure 资源操作的数据。 Azure 数据资源管理器使用诊断日志获取引入成功和失败的信息。 可以将操作日志导出到 Azure 存储、事件中心或 Log Analytics 来监视引入状态。 可以将 Azure 存储和 Azure 事件中心的日志路由到 Azure 数据资源管理器群集中的表，以进行进一步分析。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，可实时分析从应用程序、网站和 IoT 设备等流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后，将数据引入（加载）到数据库中的表，以便可以对其运行查询。 [Azure Monitor 诊断日志](/azure/azure-monitor/platform/diagnostic-logs-overview)提供有关 Azure 资源操作的数据。 Azure 数据资源管理器使用诊断日志获取引入成功和失败的信息。 可以将操作日志导出到 Azure 存储、事件中心或 Log Analytics 来监视引入状态。 可以将 Azure 存储和 Azure 事件中心的日志路由到 Azure 数据资源管理器群集中的表，以进行进一步分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果没有 Azure 订阅，请创建一个免费的[azure 帐户](https://azure.microsoft.com/free/)。
 * 创建[群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>设置 Azure 数据资源管理器群集的诊断日志
 
@@ -52,7 +52,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     1. 选择诊断设置的 "**名称**"。
     1. 选择一个或多个目标：存储帐户、事件中心或 Log Analytics。
     1. 选择要收集的日志： `SucceededIngestion` 或 `FailedIngestion`。
-    1. 选择要收集的[指标](using-metrics.md)（可选）。   
+    1. 选择要收集的[指标](using-metrics.md#supported-azure-data-explorer-metrics)（可选）。  
     1. 选择 "**保存**" 以保存新的诊断日志设置和指标。
     1. 在 Azure 门户中创建**新的支持请求**以请求激活诊断日志。
 
@@ -66,7 +66,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 日志 JSON 字符串包括下表中列出的元素：
 
-|名称               |说明
+|名称               |Description
 |---                |---
 |time               |报表时间
 |resourceId         |Azure 资源管理器资源 ID
@@ -100,15 +100,15 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 ```
 **成功操作诊断日志的属性**
 
-|名称               |说明
+|名称               |Description
 |---                |---
 |succeededOn        |摄取完成时间
 |operationId        |Azure 数据资源管理器摄取操作 ID
-|database           |目标数据库的名称
+|数据库           |目标数据库的名称
 |表              |目标表的名称
-|IngestionSourceId  |引入数据源的 ID
-|IngestionSourcePath|引入数据源或 blob URI 的路径
-|RootActivityId     |活动 ID
+|ingestionSourceId  |引入数据源的 ID
+|ingestionSourcePath|引入数据源或 blob URI 的路径
+|rootActivityId     |活动 ID
 
 #### <a name="failed-ingestion-operation-log"></a>引入操作日志失败
 
@@ -141,23 +141,23 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 **失败的操作诊断日志的属性**
 
-|名称               |说明
+|名称               |Description
 |---                |---
-|FailedOn           |摄取完成时间
+|failedOn           |摄取完成时间
 |operationId        |Azure 数据资源管理器摄取操作 ID
-|database           |目标数据库的名称
+|数据库           |目标数据库的名称
 |表              |目标表的名称
-|IngestionSourceId  |引入数据源的 ID
-|IngestionSourcePath|引入数据源或 blob URI 的路径
-|RootActivityId     |活动 ID
+|ingestionSourceId  |引入数据源的 ID
+|ingestionSourcePath|引入数据源或 blob URI 的路径
+|rootActivityId     |活动 ID
 |详细信息            |失败和错误消息的详细说明
 |errorCode          |错误代码 
-|FailureStatus      |`Permanent` 或 `Transient`。 暂时性故障的重试可能会成功。
-|OriginatesFromUpdatePolicy|如果故障源自更新策略，则为 True
-|ShouldRetry        |如果重试成功，则为 True
+|failureStatus      |`Permanent` 或 `Transient`。 暂时性故障的重试可能会成功。
+|originatesFromUpdatePolicy|如果故障源自更新策略，则为 True
+|shouldRetry        |如果重试成功，则为 True
 
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：在 Azure 数据资源管理器中引入和查询监视数据](ingest-data-no-code.md)
-* [使用度量值监视群集运行状况](using-metrics.md)
+* [使用指标监视群集运行状况](using-metrics.md)
 

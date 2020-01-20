@@ -1,20 +1,18 @@
 ---
 title: （已弃用）使用 Marathon REST API 管理 Azure DC/OS 群集
 description: 使用 Marathon REST API 将容器部署到 Azure 容器服务 DC/OS 群集。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 73fa9c4433a2af780798f0439c0a119bc32a678f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3492f35d54dd3ee61ab8d29a3af06e4998bbd477
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916687"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277785"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>（已弃用）通过 Marathon REST API 管理 DC/OS 容器
 
@@ -30,7 +28,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 * [连接到 Azure 容器服务群集](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>访问 DC/OS API
-在连接到 Azure 容器服务群集后，您可以通过 http 访问 DC/OS 和相关的 REST Api:\//localhost:local 的端口。 本文档中的示例假定在端口 80 上实现隧道连接。 例如，Uri 上访问 Marathon 终结点从 http: \/ /localhost/marathon/v2 /。 
+连接到 Azure 容器服务群集后，可以通过 http：\//localhost：本地端口访问 DC/OS 和相关的 REST Api。 本文档中的示例假定在端口 80 上实现隧道连接。 例如，可在以 http：\//localhost/marathon/v2/. 开头的 Uri 上访问 Marathon 终结点。 
 
 有关 [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) 和 [Chronos API](https://mesos.github.io/chronos/docs/api.html) 的详细信息，请参阅 Mesosphere 文档；有关 [Mesos 计划程序 API](https://mesos.apache.org/documentation/latest/scheduler-http-api/) 的详细信息，请参阅 Apache 文档。
 
@@ -123,7 +121,7 @@ Nginx 服务器的输出与下面类似：
 从隧道连接运行以下命令来扩大应用程序。
 
 > [!NOTE]
-> URI 为 http: \/ /localhost/marathon/v2/应用/跟要缩放的应用程序的 ID。 如果使用的 Nginx 示例，则提供在这里，则 URI 将为 http:\//localhost/marathon/v2/apps/nginx。
+> URI 为 http：\//localhost/marathon/v2/apps/后跟要缩放的应用程序的 ID。 如果使用此处提供的 Nginx 示例，则 URI 将为 http：\//localhost/marathon/v2/apps/nginx。
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +178,7 @@ Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentTy
 运行以下命令来扩大应用程序：
 
 > [!NOTE]
-> URI 为 http: \/ /localhost/marathon/v2/应用/跟要缩放的应用程序的 ID。 如果你在此处使用提供的 Nginx 示例，则 URI 将为 http:\//localhost/marathon/v2/apps/nginx。
+> URI 为 http：\//localhost/marathon/v2/apps/后跟要缩放的应用程序的 ID。 如果使用此处提供的 Nginx 示例，则 URI 将为 http：\//localhost/marathon/v2/apps/nginx。
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

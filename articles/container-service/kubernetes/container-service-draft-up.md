@@ -1,20 +1,18 @@
 ---
 title: （已弃用）将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用
 description: 创建 ACS Kubernetes 群集和 Azure 容器注册表，使用 Draft 在 Azure 中创建首个应用程序。
-services: container-service
 author: squillace
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712664"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271134"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -31,7 +29,7 @@ ms.locfileid: "60712664"
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 可以轻松[创建新的 Azure 容器注册表](../../container-registry/container-registry-get-started-azure-cli.md)，步骤如下：
 
-1. 创建 Azure 资源组来管理 ACR 注册表和 ACS 中的 Kubernetes 群集。
+1. 创建 Azure 资源组来管理你的 ACR 注册表和 ACS 中的 Kubernetes 群集。
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -204,7 +202,7 @@ kubernetes                    10.0.0.1       <none>          443/TCP            
 
 ### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>将入口 IP 映射到自定义子域
 
-Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个图表获得一个生成的名称，该名称由 **Draft** 用作所控制的根_部署域_之上的_子域_。 （此示例中，我们使用 `squillace.io` 作为部署域。）若要启用这一子域行为，必须在部署域的 DNS 条目中为 `'*.draft'` 创建一个 A 记录，使每个生成的子域都路由到 Kubernetes 群集的入口控制器。 
+Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个图表获得一个生成的名称，该名称由 **Draft** 用作所控制的根_部署域_之上的_子域_。 （在此示例中，我们使用 `squillace.io` 作为部署域。）若要启用此子域行为，必须在部署域的 DNS 条目中为 `'*.draft'` 创建 A 记录，以便每个生成的子域都路由到 Kubernetes 群集的入口控制器。 
 
 域提供商有其自己的方法来分配 DNS 服务器；若要[将域的名称服务器委托给 Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)，请执行以下步骤：
 
@@ -286,7 +284,7 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel  域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
+现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel 域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
 
 
 

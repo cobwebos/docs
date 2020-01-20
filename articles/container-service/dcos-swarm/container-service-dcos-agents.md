@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务的 DC/OS 代理池
 description: 公共和专用代理池如何使用 Azure 容器服务的 DC/OS 群集
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478440"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278378"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>（已弃用）Azure 容器服务的 DC/OS 代理池
 
@@ -40,7 +38,7 @@ Azure 容器服务中的 DC/OS 群集包含两个池（公共池和专用池）�
 专用池和公共池均为 Azure 虚拟机规模集。 可以在部署后调整这些池的大小。
 
 ## <a name="use-agent-pools"></a>使用代理池
-默认情况下，**Marathon** 将所有新的应用程序部署到“专用”  代理节点。 必须在应用程序创建过程中，将应用程序显式部署到“公共”  节点。 选择“可选”  选项卡，并输入 **slave_public**作为“已接受的资源角色”  值。 此过程记录在[此处](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)和 [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) 文档中。
+默认情况下，**Marathon** 将所有新的应用程序部署到“专用”代理节点。 必须在应用程序创建过程中，将应用程序显式部署到“公共”节点。 选择“可选”选项卡，并输入 **slave_public**作为“已接受的资源角色”值。 此过程记录在[此处](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)和 [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) 文档中。
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读有关[管理 DC/OS 容器](container-service-mesos-marathon-ui.md)的详细信息。

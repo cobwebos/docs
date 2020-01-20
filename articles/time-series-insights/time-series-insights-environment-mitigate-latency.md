@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b301bc6c1674cad26288556957ba6214df74f18d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863387"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278669"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -30,7 +30,7 @@ ms.locfileid: "75863387"
 - 添加包含超出所分配入口速率（时序见解需要追赶）的旧数据的事件源。
 - 将较多事件源添加到一个环境中，导致其他事件出现激增（可能超过环境容量）。
 - 将大量历史事件推送到一个事件源，导致延迟（时序见解需要追赶）。
-- 将引用数据和遥测结合，导致事件大小较大。  从限制的角度看，数据包大小为 32 KB 的入口数据包视为 32 个事件，每个事件大小为 1 KB。 允许的最大事件大小为 32 KB；大于 32 KB 的数据包会被截断。
+- 将引用数据和遥测结合，导致事件大小较大。 从限制的角度看，数据包大小为 32 KB 的入口数据包视为 32 个事件，每个事件大小为 1 KB。 允许的最大事件大小为 32 KB；大于 32 KB 的数据包会被截断。
 
 ## <a name="video"></a>视频
 
@@ -40,13 +40,13 @@ ms.locfileid: "75863387"
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>使用警报监视延迟和限制
 
-警报有助于诊断并缓解环境导致的延迟问题。
+警报可帮助你诊断和解决环境中出现的延迟问题。
 
 1. 在 Azure 门户中，选择时序见解环境。 然后选择 "**警报**"。
 
    [![在时序见解环境中添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. 随后将显示 "**创建规则**" 面板。 在 "**条件**" 下选择 "**添加**"。
+1. 选择“+ 新建警报规则”。 随后将显示 "**创建规则**" 面板。 在 "**条件**" 下选择 "**添加**"。
 
    [![添加警报窗格](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

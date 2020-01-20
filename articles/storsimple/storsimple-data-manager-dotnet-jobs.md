@@ -1,27 +1,19 @@
 ---
-title: 使用 .NET SDK 运行 Microsoft Azure StorSimple Data Manager 作业 | Microsoft 文档
+title: 使用 .NET SDK Microsoft Azure StorSimple 数据管理器作业
 description: 了解如何使用 .NET SDK 启动 StorSimple Data Manager 作业
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632260"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270725"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用.NET SDK 启动数据转换
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 启动数据转换
 
 ## <a name="overview"></a>概述
 
@@ -70,24 +62,24 @@ ms.locfileid: "60632260"
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
     1. 启动 **Visual Studio 2012/2013/2015**。
-    1. 选择“文件”>“新建”>“项目”  。
+    1. 选择“文件”>“新建”>“项目”。
 
         ![创建项目 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”  。
-    3. 对于**名称**，输入“DataTransformationApp”  。
+    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”。
+    3. 对于**名称**，输入“DataTransformationApp”。
     4. 对于**位置**，选择 **C:\DataTransformation**。
-    6. 单击“确定”以创建该项目  。
+    6. 单击“确定”以创建该项目 。
 
         ![创建项目 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
 4. 现在，将 [dlls 文件夹](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)中存在的所有 dll 添加为已创建的项目中的**引用**。 若要添加 dll 文件，请执行以下操作：
 
-   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”  。
-   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”  ，并右键单击“添加引用”  。
+   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
+   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，并右键单击“添加引用”。
     
        ![添加 dll 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”  ，然后单击“确定”  。
+   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”，然后单击“确定”。
 
        ![添加 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 

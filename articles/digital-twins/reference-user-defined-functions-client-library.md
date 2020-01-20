@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383246"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276815"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
 
@@ -30,7 +30,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 空间标识符 |
 
@@ -40,7 +40,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 传感器标识符 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | 设备标识符 |
 
@@ -60,7 +60,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
@@ -71,7 +71,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | 空间标识符 |
 | *valueName* | `string` | 空间属性名称 |
@@ -82,7 +82,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType* | `string` | 传感器数据类型 |
@@ -93,7 +93,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *valueName* | `string` | 空间属性名称 |
@@ -104,7 +104,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -114,7 +114,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -124,7 +124,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -134,7 +134,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | 设备标识符 |
 
@@ -144,7 +144,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | 空间标识符 |
 
@@ -154,7 +154,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -164,7 +164,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | 设备标识符 |
 
@@ -174,7 +174,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -184,7 +184,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *propertyName* | `string` | 空间属性名称 |
@@ -195,7 +195,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *propertyName* | `string` | 传感器属性名称 |
@@ -206,7 +206,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | 设备标识符 |
 | *propertyName* | `string` | 设备属性名称 |
@@ -217,7 +217,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
@@ -229,7 +229,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
@@ -241,9 +241,9 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | 要记录的消息 |
+| message | `string` | 要记录的消息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -251,7 +251,7 @@ ms.locfileid: "74383246"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | 图形对象标识符。 例如，空格、传感器和设备 ID。|
 | *topologyObjectType*  | `string` | 例如，空格、传感器和设备。|
@@ -261,7 +261,7 @@ ms.locfileid: "74383246"
 
 下面介绍从客户端参考帮助器方法返回的响应模型。
 
-### <a name="space"></a>空格
+### <a name="space"></a>航天
 
 ```JSON
 {
@@ -292,7 +292,7 @@ ms.locfileid: "74383246"
 
 此函数将返回当前空间的扩展属性及其值。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -300,7 +300,7 @@ ms.locfileid: "74383246"
 
 此函数将返回当前空间的值。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -308,7 +308,7 @@ ms.locfileid: "74383246"
 
 此函数将返回当前空间的历史值。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -316,7 +316,7 @@ ms.locfileid: "74383246"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -352,7 +352,7 @@ ms.locfileid: "74383246"
 
 此函数返回当前设备的扩展属性及其值。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -360,7 +360,7 @@ ms.locfileid: "74383246"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -400,7 +400,7 @@ ms.locfileid: "74383246"
 
 此函数返回当前传感器的扩展属性及其值。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -416,7 +416,7 @@ ms.locfileid: "74383246"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | 说明  |
+| 参数  | 类型                | Description  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 

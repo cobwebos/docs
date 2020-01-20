@@ -1,25 +1,18 @@
 ---
-title: 安装 Microsoft Azure StorSimple 8600 设备 | Microsoft 文档
+title: 安装 Microsoft Azure StorSimple 8600 设备
 description: 介绍如何在部署和配置软件之前打开 StorSimple 8600 设备的包装并进行机架安装和布线。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965273"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277113"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 
@@ -34,7 +27,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 ### <a name="prepare-to-unpack-your-device"></a>准备打开设备的包装
 打开设备包装之前，请查看以下信息。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
 
 1. 若要手动装卸机箱，请确保有两名人员分担设备重量。 配置完整的机箱重达 32 kg（70 磅）。
 2. 将箱子放在平坦的水平表面上。
@@ -49,9 +42,9 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **存储设备解包后的视图**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |包装箱 |
+   |   第 |包装箱 |
    |   2 |SAS 电缆（位于配件和电缆槽中） |
    |   3 |底部泡沫 |
    |   4 |设备 |
@@ -92,7 +85,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 2. 确认要布置的安装位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 3. 确保要安装机箱的机架上有 1 个 4U (2 X 2U) 插槽。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
 
  若要手动安装设备，请确保有两名人员分担设备重量。 配置完整的机箱重达 32 kg（70 磅）。
 
@@ -113,9 +106,9 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **在机箱侧面安装导轨**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |  1 |M 3x4 圆头螺丝 |
+   |  第 |M 3x4 圆头螺丝 |
    |  2 |底架滑轨 |
 2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
@@ -126,9 +119,9 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **将导轨组件固定到机架上**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |旋紧螺丝 |
+   |   第 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
    |   3 |左前侧导轨固定销 |
    |   4 |旋紧螺丝 |
@@ -152,9 +145,9 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
-   |   1 |机箱紧固螺丝 |
+   |   第 |机箱紧固螺丝 |
 
 ### <a name="mounting-the-primary-enclosure-in-the-rack"></a>将主机箱安装到机架上
 EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
@@ -171,7 +164,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ## <a name="cable-your-storsimple-8600-device"></a>进行 StorSimple 8600 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8600 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）
@@ -187,7 +180,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ### <a name="sas-and-power-cabling"></a>SAS 和电源布线
 此设备配有 1 个主机箱和 1 个 EBOD 机箱。 需要将这两个单元连接到一起，才可获得串行 SCSI (SAS) 连接和电源。
 
-首次布置此设备时，要先执行 SAS 布线步骤，再完成电源布线步骤。
+第一次设置此设备时，首先执行 SAS 布线步骤，然后完成电源布线步骤。
 
 [!INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
@@ -205,7 +198,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    
     **设备背面显示数据端口**
    
-   | Label | 描述 |
+   | 标签 | Description |
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
@@ -216,7 +209,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 **设备网络布线**
 
-| Label | 描述 |
+| 标签 | Description |
 | --- | --- |
 | A |具有 Internet 访问的 LAN |
 | B |控制器 0 |
@@ -263,7 +256,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]
-> **无人照看管理:** 如果设备安装在远程数据中心或具有有限访问权限的计算机房中, 请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果发生网络中断或意外故障，这可实现带外远程控制和支持操作。
+> **无人值守管理**：当设备安装在远程数据中心或有限访问的计算机机房中时，请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果发生网络中断或意外故障，这可实现带外远程控制和支持操作。
 > 
 > 
 

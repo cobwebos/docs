@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f0b7b1225d78c7626c5be3e68c3dcd2dd557aa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158151"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278026"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增强的安全评分（预览） 
 
-本文介绍了增强的安全评分（目前以预览版提供）、随附的安全控制措施及其带来的优势。
+本文介绍了增强的安全评分（目前以预览版提供）、随附的安全控制措施及其带来的优势。 还介绍了如何计算分数。
 
 ## <a name="introduction-to-secure-score"></a>安全分数简介
 
@@ -32,11 +32,11 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 
 *增强*的安全评分（目前为预览版）是以**攻击为中心的受攻击面**，有三个好处：
 
-- 安全控制-安全建议现在分组为逻辑集，可以更好地反映容易受到攻击的攻击面。 有关详细信息，请参阅下面[的如何计算安全分数](secure-score-security-controls.md#how-the-secure-score-is-calculated)。
+- **安全控制**-安全建议现在分组为逻辑集，可以更好地反映容易受到攻击的攻击面。 有关详细信息，请参阅下面[的如何计算安全分数](secure-score-security-controls.md#how-the-secure-score-is-calculated)。
 
-- 整体分数更好地反映了在建议级别奖励的总体观点。 利用这种增强功能，您的分数仅在修正控件内单个资源的*所有*建议时才会提高。 这意味着，分数仅在资源的安全性提高时才会提高。 
+- **整体分数更好地反映**了在建议级别奖励的总体观点。 利用这种增强功能，您的分数仅在修正控件内单个资源的*所有*建议时才会提高。 这意味着，分数仅在资源的安全性提高时才会提高。 
 
-- 单个攻击面的安全状态更直观-通过显示 "每个安全控制的分数"，"安全分数" 页将成为你可以详细了解组织如何保证每个攻击面的安全的位置。
+- **单个攻击面的安全状态更直观**-通过显示 "每个安全控制的分数"，"安全分数" 页将成为你可以详细了解组织如何保证每个攻击面的安全的位置。
 
 增强安全分数显示为百分比，如以下屏幕截图所示：
 
@@ -63,7 +63,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 
 [![安全控件 "应用系统更新"](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-上面屏幕截图中的安全控件 "应用系统更新" 的值显示了 "2% （1点）"。 这意味着，如果修正此控制中的所有建议，分数将增加2% （在本例中为1）。 为简单起见，建议列表的 "潜在增加" 列中的值舍入到整数。 工具提示将显示精确值：
+在上面的屏幕截图中，安全控制 "应用系统更新" 的可能性显示了 "2% （1点）"。 这意味着，如果修正此控制中的所有建议，分数将增加2% （在本例中为一个点）。 为简单起见，建议列表的 "潜在增加" 列中的值舍入到整数。 工具提示将显示精确值：
 
 * **潜在增加**-控件内可供您使用的剩余点。 若要将这些点数添加到安全分数，请修正控件的所有建议。 在上面的示例中，为控件显示的一个点实际上为0.96 点。
 * **当前分数**-此控件的当前分数。 每个控件都提供总体分数。 在此示例中，控件的分数为5.04。 

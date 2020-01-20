@@ -1,26 +1,19 @@
 ---
-title: 在 VMware 中预配 StorSimple 虚拟阵列 | Microsoft 文档
+title: 在 VMware 中预配 StorSimple 虚拟阵列
 description: 此教程为 StorSimple 虚拟阵列部署系列的第二个教程，介绍如何在 VMware 中预配虚拟设备。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516823"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272096"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -40,7 +33,7 @@ ms.locfileid: "68516823"
 在开始之前，请确保：
 
 * 已完成[为 StorSimple 虚拟阵列准备门户](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步骤。
-* 已从 Azure 门户下载 VMware 的虚拟设备映像。 有关更多信息，请参阅**步骤 3：下载虚拟设备映像**（在 [为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中）。
+* 已从 Azure 门户下载 VMware 的虚拟设备映像。 有关详细信息，请参阅[为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中的**步骤 3：下载虚拟设备映像**。
 
 ### <a name="for-the-storsimple-virtual-device"></a>对于 StorSimple 虚拟设备
 在部署虚拟设备之前，请确保：
@@ -65,7 +58,7 @@ ms.locfileid: "68516823"
 2. 预配虚拟机监控程序中的虚拟设备。
 3. 启动虚拟设备并获取 IP 地址。
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>步骤 1：确保主机设备满足最小虚拟设备要求
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>步骤 1：确保主机系统满足最小虚拟设备要求
 若要创建虚拟设备，需满足以下条件：
 
 * 有权访问运行 VMware ESXi Server 5.0、5.5、6.0 或 6.5 的主机系统。
@@ -102,7 +95,7 @@ ms.locfileid: "68516823"
 7. 此时会显示“数据存储浏览器”窗口。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. 在工具栏中，单击 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击 **“确定”** 。
+8. 在工具栏中，单击 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击“确定”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. 新文件夹会显示在“数据存储浏览器”的左窗格中。
@@ -114,7 +107,7 @@ ms.locfileid: "68516823"
 11. 浏览并指向已下载的 VMDK 文件。 有两个文件。 选择要上传的文件。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image12m.png)
-12. 单击“打开”。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
+12. 单击 **“打开”** 。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
 13. 上传完成后，可以在数据存储的已创建文件夹中看到该文件。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image14.png)
@@ -131,7 +124,7 @@ ms.locfileid: "68516823"
 17. 在“存储”页上，选择要用于预配 VM 的数据存储。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. 在“虚拟机版本”页上，选择“虚拟机版本:8”。
+18. 在“虚拟机版本”页上，选择“虚拟机版本: 8”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。
@@ -158,7 +151,7 @@ ms.locfileid: "68516823"
 26. 在“高级选项”页上，接受默认值，并单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击“继续”。
+27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击 **“继续”** 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
 28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击“添加”。
@@ -176,13 +169,13 @@ ms.locfileid: "68516823"
 32. 在“高级选项”页上，接受默认值。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在“准备完成”页上，查看磁盘选项。 单击 **“完成”** 。
+33. 在“准备完成”页上，查看磁盘选项。 单击“完成”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击 **“完成”** 。
+34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。
+35. 在右窗格中选择虚拟机后，导航到 "**摘要**" 选项卡。查看虚拟机的设置。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -198,7 +191,7 @@ ms.locfileid: "68516823"
 1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+2. 完成设置任务需要几分钟时间。 设备运行后，导航到 "**控制台**" 选项卡。发送 Ctrl + Alt + Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
@@ -238,7 +231,7 @@ ms.locfileid: "68516823"
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请在[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中参阅最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[步骤 1：确保主机系统满足最小虚拟设备要求](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)中的最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

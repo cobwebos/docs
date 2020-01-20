@@ -1,20 +1,18 @@
 ---
 title: （已弃用）使用 Marathon UI 管理 Azure DC/OS 群集
 description: 使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61468146"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277804"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>（已弃用）通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 
@@ -36,26 +34,26 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 >
 
 ## <a name="explore-the-dcos-ui"></a>探索 DC/OS UI
-使用安全外壳 (SSH) 隧道[建立](../container-service-connect.md)，浏览到 http: \/ /localhost /。 这会加载 DC/OS Web UI 并显示有关群集的信息，如使用的资源、活动代理和正在运行的服务。
+[建立](../container-service-connect.md)安全外壳（SSH）隧道后，浏览到 http：\//localhost/。 这会加载 DC/OS Web UI 并显示有关群集的信息，如使用的资源、活动代理和正在运行的服务。
 
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>探索 Marathon UI
-若要查看 Marathon UI，请浏览到 http: \/ /localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
+若要查看 Marathon UI，请浏览到 http：\//localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
 ## <a name="deploy-a-docker-formatted-container"></a>部署 Docker 格式容器
-要使用 Marathon 部署新容器，请单击“创建应用程序”，并在窗体选项卡中输入以下信息： 
+要使用 Marathon 部署新容器，请单击“创建应用程序”，并在窗体选项卡中输入以下信息：
 
 | 字段 | 值 |
 | --- | --- |
 | ID |nginx |
 | 内存 | 32 |
-| Image |nginx |
+| 图像 |nginx |
 | 网络 |桥接 |
 | 主机端口 |80 |
-| Protocol |TCP |
+| 协议 |TCP |
 
 ![新应用程序 UI - 常规](./media/container-service-mesos-marathon-ui/dcos4.png)
 
@@ -63,7 +61,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![新应用程序 UI - 端口和服务发现](./media/container-service-mesos-marathon-ui/dcos6.png)
 
-如果想以静态方式将容器端口映射到代理端口，则需要使用 JSON 模式。 为此，请使用切换功能将“新建应用程序”向导切换到“JSON 模式”  。 然后在应用程序定义的 `portMappings` 节下输入以下设置。 此示例将容器的端口 80 绑定到 DC/OS 代理的端口 80。 进行更改后，可切换向导退出 JSON 模式。
+如果想以静态方式将容器端口映射到代理端口，则需要使用 JSON 模式。 为此，请使用切换功能将“新建应用程序”向导切换到“JSON 模式”。 然后在应用程序定义的 `portMappings` 节下输入以下设置。 此示例将容器的端口 80 绑定到 DC/OS 代理的端口 80。 进行更改后，可切换向导退出 JSON 模式。
 
 ```none
 "hostPort": 80,
@@ -71,25 +69,25 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![新应用程序 UI - 端口 80 示例](./media/container-service-mesos-marathon-ui/dcos13.png)
 
-如果想要启用运行状况检查，请在“运行状况检查”选项卡中设置路径。 
+如果想要启用运行状况检查，请在“运行状况检查”选项卡中设置路径。
 
 ![新应用程序 UI - 运行状况检查](./media/container-service-mesos-marathon-ui/dcos_healthcheck.png)
 
-使用专用和公用代理组部署 DC/OS 群集。 为使群集能从 Internet 访问应用程序，需将应用程序部署到公用代理。 为此，请选择“新建应用程序”向导上的“可选”选项卡，并输入 **slave_public** 作为“已接受资源角色”。  
+使用专用和公用代理组部署 DC/OS 群集。 为使群集能从 Internet 访问应用程序，需将应用程序部署到公用代理。 为此，请选择“新建应用程序”向导上的“可选”选项卡，并输入 **slave_public** 作为“已接受资源角色”。
 
-然后单击“创建应用程序”  。
+然后单击“创建应用程序”。
 
 ![新应用程序 UI - 公用代理设置](./media/container-service-mesos-marathon-ui/dcos14.png)
 
-返回 Marathon 主页，会看到容器的部署状态。 最初会显示“正在部署”状态。  成功部署后，状态将更改为“正在运行”。 
+返回 Marathon 主页，会看到容器的部署状态。 最初会显示“正在部署”状态。 成功部署后，状态将更改为“正在运行”。
 
 ![Marathon 主页 UI - 容器部署状态](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-当你切换回 DC/OS web UI (http:\//localhost/)，将看到在 DC/OS 群集上正在运行的任务 （在这种情况下，为 Docker 格式的容器）。
+切换回 DC/OS web UI （http：\//localhost/）时，你会看到一个任务（在本例中为 Docker 格式的容器）在 DC/OS 群集上运行。
 
 ![DC/OS Web UI - 任务在群集上运行](./media/container-service-mesos-marathon-ui/dcos8.png)
 
-若要查看运行任务的群集节点，请单击“节点”选项卡。 
+若要查看运行任务的群集节点，请单击“节点”选项卡。
 
 ![DC/OS Web UI - 任务群集节点](./media/container-service-mesos-marathon-ui/dcos9.png)
 
@@ -106,7 +104,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 ## <a name="next-steps"></a>后续步骤
 * [使用 DC/OS 和 Marathon API](container-service-mesos-marathon-rest.md)
 
-* 深入了解 Azure 容器服务和 Mesos
+* 深入研究 Azure 容器服务和 Mesos
 
     > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
     > 

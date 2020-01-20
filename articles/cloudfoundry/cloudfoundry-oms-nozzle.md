@@ -3,21 +3,20 @@ title: 部署用于 Cloud Foundry 监视的 Azure Log Analytics 喷嘴
 description: 有关为 Azure Log Analytics 部署 Cloud Foundry Loggregator Nozzle 的分步指南。 使用 Nozzle 监视 Cloud Foundry 的运行状况和性能指标。
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286643"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277356"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -29,7 +28,7 @@ Log Analytics 喷嘴（喷嘴）是一个 Cloud Foundry （CF）组件，它将�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在部署 Nozzle 之前，必须先完成以下步骤。
 
@@ -68,7 +67,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
    * **位置**：输入位置。
    * **定价层**：选择“确定”完成设置。
 
-有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
+有关详细信息，请参阅[Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的监测模板创建 Log Analytics 工作区：
 
@@ -131,7 +130,7 @@ git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>设置环境变量。
+#### <a name="set-environment-variables"></a>设置环境变量
 
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
@@ -184,7 +183,7 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 导入 OMS 视图
 
-在 OMS 门户中，浏览到“视图设计器” **“导入”** “浏览”，选择一个 omsview 文件。 >  >  例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
 
 可以通过“视图设计器”自定义这些视图或新建视图。
 
@@ -194,7 +193,7 @@ cf apps
 
 可以[创建警报](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，并视需要自定义查询和阈值。 下面是建议的警报：
 
-| 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
+| 搜索查询                                                                  | 基于以下项生成警报 | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 结果数 < 1   | **bbs.Domain.cf-apps** 指示 cf-apps 域是否为最新。 也就是说，来自 Cloud Controller 的 CF 应用程序请求会同步到 bbs.LRPsDesired（Diego 需要的 AI），以供执行。 没有收到数据则表示在指定时间范围内，cf-apps 域不是最新的。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 结果数 > 0   | 对于 Diego 单元，0 表示正常，1 表示不正常。 设置在指定时间范围内检测到多个不正常的 Diego 单元时发出的警报。 |
@@ -205,7 +204,7 @@ cf apps
 | Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当喷嘴接收到来自 loggregator 的使用者警报缓慢时，它会将**slowConsumerAlert**向 valuemetric 发送到 Azure Monitor 日志。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 结果数 > 0   | 如果丢失的事件增量数达到阈值，表示 Nozzle 存在问题，无法正常运行。 |
 
-## <a name="scale"></a>缩放
+## <a name="scale"></a>调整规模
 
 可以缩放 Nozzle 和 Loggregator。
 

@@ -1,26 +1,18 @@
 ---
-title: Azure 虚拟机规模集实例的终止通知 |Microsoft Docs
+title: Azure 虚拟机规模集实例的终止通知
 description: 了解如何为 Azure 虚拟机规模集实例启用终止通知
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705923"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271754"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虚拟机规模集实例的终止通知（预览）
 规模集实例可以选择接收实例终止通知，并将预定义的延迟超时设置为终止操作。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 预览解决方案会将另一个事件（终止–）添加到 Scheduled Events 列表中，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
@@ -152,7 +144,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 
 你还可以参阅使用[PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample)和[Python](../virtual-machines/linux/scheduled-events.md#python-sample)查询和响应事件的示例脚本。
 
-## <a name="tips-and-best-practices"></a>提示和最佳做法
+## <a name="tips-and-best-practices"></a>提示和最佳实践
 -   仅在 "删除" 操作上终止通知–如果规模集已启用*scheduledEventsProfile* ，则所有删除操作（手动删除或自动缩放启动的扩展）将生成终止事件。 其他操作（例如重新启动、重置映像、重新部署和停止/解除分配）不会生成终止事件。 不能为低优先级 Vm 启用终止通知。
 -   无强制等待超时–您可以在收到事件之后、事件的*NotBefore*时间到期之前随时开始终止操作。
 -   在超时时间强制删除–预览不提供在生成事件后扩展超时值的任何功能。 超时到期后，将处理挂起的终止事件，并删除 VM。

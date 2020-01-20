@@ -1,20 +1,18 @@
 ---
-title: 设置 Azure Red Hat OpenShift 开发环境 |Microsoft Docs
+title: 设置 Azure Red Hat OpenShift 开发环境
 description: 下面是使用 Microsoft Azure Red Hat OpenShift 的先决条件。
-services: openshift
 keywords: red hat openshift 安装程序设置
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581600"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276088"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
 
@@ -100,7 +98,7 @@ az --version
 
 Azure Red Hat OpenShift 服务需要一个关联的 Azure Active Directory （Azure AD）租户，它代表你的组织及其与 Microsoft 之间的关系。 你的 Azure AD 租户使你能够注册、构建和管理应用，并使用其他 Azure 服务。
 
-如果没有 Azure AD 用作 Azure Red Hat OpenShift 群集的租户，或者想要创建用于测试的租户，请按照为[Azure Red Hat OpenShift 群集创建 Azure AD 租户](howto-create-tenant.md)中的说明，然后再继续本指南.
+如果没有 Azure AD 用作 Azure Red Hat OpenShift 群集的租户，或者想要创建用于测试的租户，请按照为[Azure Red Hat OpenShift 群集创建 Azure AD 租户](howto-create-tenant.md)中的说明，然后再继续本指南。
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>创建 Azure AD 用户、安全组和应用程序对象
 

@@ -1,17 +1,17 @@
 ---
 title: 了解 Azure Spring Cloud 的指标
 description: 了解如何在 Azure 春季云中查看指标
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 682cc8383db5704b28b9f4d6b8c22c4bbfc3f1ab
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.author: brendm
+ms.openlocfilehash: e6517f1a7374b3960c3b749e63a90fe9eb21e7b0
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528192"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277940"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>了解 Azure 春季云的指标
 
