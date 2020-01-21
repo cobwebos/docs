@@ -1,5 +1,5 @@
 ---
-title: 查找文本分析资源终结点和密钥
+title: 查找文本分析资源终结点和密钥 - v3 客户端库
 titleSuffix: Azure Cognitive Services
 description: 了解如何创建认知服务文本分析资源。
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: d432e2c9ccf0563e18d7f3958a030dd7ce32f4d0
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158977"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281121"
 ---
 > [!IMPORTANT]
 > 转到已创建的资源以查找密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。

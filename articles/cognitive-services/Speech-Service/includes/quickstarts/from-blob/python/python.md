@@ -1,32 +1,25 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音，C# - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942815"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [将源文件上传到 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md)
 > * [创建空示例项目](../../../../quickstarts/create-project.md)
+> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [将源文件上传到 Azure blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>下载并安装 API 客户端库
 
@@ -43,7 +36,8 @@ ms.locfileid: "75467931"
 1. 使用 pip：`pip install path/to/package/python-client` 在 Python 环境中安装提取的 python-client 模块。
 1. 已安装的名为 `swagger_client` 的包。 可以使用命令 `python -c "import swagger_client"` 来检查安装是否正常工作。
 
-> **注意：** 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
+> [!NOTE]
+> 由于 `swagger_client`Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
 > 这些错误可以通过从已安装的包中删除文件 中包含以下内容的行
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 添加一些代码作为项目的框架。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-（需要将 `YourSubscriptionKey`、`YourServiceRegion` 和 `YourFileUrl` 的值替换成自己的值。）
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>创建和配置 Http 客户端
 首先，我们需要具有正确的基本 URL 和身份验证集的 Http 客户端。
