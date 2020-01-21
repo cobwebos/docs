@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717843"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940761"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python"></a>快速入门：事件中心捕获演练：Python
 
 捕获是 Azure 事件中心的一项功能。 可使用捕获功能自动将事件中心内的流数据传送到所选的 Azure Blob 存储帐户。 使用此功能，可以轻松地对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心捕获功能。 有关事件中心捕获功能的详细信息，请参阅[通过 Azure 事件中心捕获事件][Overview of Event Hubs Capture]。
 
 本演练使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 演示捕获功能。 *sender.py* 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心使用捕获功能将此数据分批写入到 Blob 存储。 *capturereader.py* 应用读取这些 Blob，为每个设备创建一个追加文件，并在每个设备上将数据写入 *.csv* 文件。
+
+> [!IMPORTANT]
+> 本快速入门使用 Azure 事件中心 Python SDK 版本 1。 如果你不熟悉 Azure 事件中心，请使用 Python SDK 版本 5。 有关使用 Python SDK 版本 5 的快速入门，请参阅[此文](get-started-capture-python-v2.md)。 如果需要将现有代码从版本 1 迁移到版本 5，请参阅[迁移指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
 
 本演练中的操作： 
 
@@ -36,7 +39,7 @@ ms.locfileid: "73717843"
 > * 使用 Python 脚本将数据发送到事件中心。
 > * 使用另一个 Python 脚本通过事件中心捕获功能读取并处理文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Python 3.4 或更高版本，其中已安装并更新 `pip`。
   
@@ -54,7 +57,7 @@ ms.locfileid: "73717843"
 
 创建用于捕获的存储帐户和容器。 
 
-1. 登录到 [Azure 门户][Azure portal]。
+1. 登录 [Azure 门户][Azure portal]。
 2. 在左侧导航栏中选择“存储帐户”，然后在“存储帐户”屏幕上选择“添加”。   
 3. 在存储帐户创建屏幕上选择订阅和资源组，然后为存储帐户指定名称。 对于其他选项，可以保留默认值。 选择“查看 + 创建”，检查设置，然后选择“创建”。   
    

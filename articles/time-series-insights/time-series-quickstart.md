@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 01/06/2020
-ms.openlocfilehash: 21e9884ab4559b510b13691ac5cafccb753622d6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a905054b1b2a04fa2b7865d2c1065ccee37cffc0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690805"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860424"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
 
@@ -74,7 +74,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化效果服�
 
    [![添加术语](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. 将“筛选器系列”框留空以查看选中的所有搜索术语，或在“筛选器系列”框中输入筛选器术语以进行简单的系列筛选   。
+1. 将“筛选系列”框留空以显示选中的所有搜索词，或在“筛选系列”框中输入筛选词以进行即兴的系列筛选   。
 
    [![筛选器系列](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
 

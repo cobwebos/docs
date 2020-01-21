@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670738"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768448"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -29,7 +29,7 @@ ms.locfileid: "74670738"
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传公用证书 | 公用证书不用于保护自定义域，但可以将其加载到代码中（如果需要它们来访问远程资源）。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 按照本操作方法指南操作：
 
@@ -113,8 +113,8 @@ ms.locfileid: "74670738"
 |-|-|
 | 名称 | 应用服务证书证书的友好名称。 |
 | 裸域主机名 | 在此处指定根域。 颁发的证书可同时保护根域和 `www` 子域  。 在颁发的证书中，“公用名”字段包含根域，“使用者可选名称”字段包含 `www` 域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
-| 订阅 | 托管 Web 应用的数据中心。 |
-| 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
+| 订阅 | 将包含证书的订阅。 |
+| 资源组 | 将包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
 | 法律条款 | 单击以确认你同意法律条款。 证书是从 GoDaddy 获取的。 |
 
@@ -128,7 +128,7 @@ ms.locfileid: "74670738"
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
 
-在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库   。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
+在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库   。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 在应用服务应用所在的订阅和资源组中创建新 Key Vault。
 
 | 设置 | 说明 |
 |-|-|
@@ -139,7 +139,7 @@ ms.locfileid: "74670738"
 | 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/key-vault-group-permissions-for-apps.md)的步骤进行操作。 |
 | 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/key-vault-network-security.md)的步骤进行操作。 |
 
-选择保管库后，关闭“Key Vault 存储库”页面  。 “存储”选项应显示绿色选中标记，表示成功  。 保持页面处于打开状态，执行下一步骤。
+选择保管库后，关闭“Key Vault 存储库”页面  。 “步骤1:  存储”选项应显示绿色复选标记表示成功。 保持页面处于打开状态，执行下一步骤。
 
 ### <a name="verify-domain-ownership"></a>验证域所有权
 
@@ -183,7 +183,7 @@ ms.locfileid: "74670738"
 
 在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入 Key Vault 证书”    。
 
-![将 Key Vault 证书导入到应用服务中](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![将 Key Vault 证书导入到应用服务中](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 使用下表来帮助选择证书。
 

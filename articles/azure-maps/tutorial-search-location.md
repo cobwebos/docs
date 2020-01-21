@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Maps 搜索
-description: 教程：使用 Azure Maps 搜索附近兴趣点
+title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
+description: 本教程介绍如何使用 Microsoft Azure Maps 在地图上搜索附近位置（兴趣点）。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432750"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910827"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -49,7 +49,7 @@ ms.locfileid: "75432750"
     * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
 
-![在门户中创建 Maps 帐户](./media/tutorial-search-location/create-account.png)
+![在 Azure 门户中创建 Azure Maps 帐户](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ ms.locfileid: "75432750"
 2. 在设置部分中，选择“身份验证”  。
 3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
 
-![在门户中获取主密钥](./media/tutorial-search-location/get-key.png)
+![在 Azure 门户中获取主密钥](./media/tutorial-search-location/get-key.png)
 
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 

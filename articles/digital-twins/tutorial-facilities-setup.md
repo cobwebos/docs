@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383026"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895432"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
 
@@ -36,7 +36,7 @@ ms.locfileid: "74383026"
 
 这些教程使用和修改[介绍如何查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)所使用的示例，目的是更详细且更深入地探讨相关概念。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 帐户，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74383026"
 
 * 可以通过预配示例 **occupancy-quickstart** 配置和预配[空间智能图](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)。 该图是你的物理空间以及其中的资源的数字化图像。 它使用[对象模型](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)来定义智能大楼的对象。 如需数字孪生对象和 REST API 的完整列表，请访问[此 REST API 文档](https://docs.westcentralus.azuresmartspaces.net/management/swagger)或者为[你的实例](#deploy-digital-twins)创建的管理 API URL。
 
-   若要通过示例来了解它与数字孪生实例的通信方式，可以从 **src\actions** 文件夹开始。 该文件夹中的文件实现的命令是将要在这些教程中使用的命令：
+   若要通过浏览示例以了解它与数字孪生实例的通信方式，可以从 **src\actions** 文件夹开始。 该文件夹中的文件实现的命令是将要在这些教程中使用的命令：
     - **provisionSample.cs** 文件说明如何预配空间图。
     - **getSpaces.cs** 文件获取已预配空间的相关信息。
     - **getAvailableAndFreshSpaces.cs** 文件获取名为“用户定义函数”的自定义函数的结果。
@@ -97,12 +97,12 @@ ms.locfileid: "74383026"
     dotnet restore
     ```
 
-1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) 文件。 更新以下值：
+1. 在 Visual Studio Code 中打开 **occupancy-quickstart** 项目中的 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) 文件。 请更新以下值：
    * **ClientId**：输入 Azure AD 应用注册的应用程序 ID。 已在[设置应用权限](#grant-permissions-to-your-app)的部分记下此 ID。
    * **租户**：输入 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)的目录 ID。 也已在[设置应用权限](#grant-permissions-to-your-app)的部分记下此 ID。
    * **BaseUrl**：输入数字孪生实例的 URL。 若要获取此 URL，请将其中的占位符替换为适用于你的实例的值：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 也可通过修改[部署部分](#deploy-digital-twins)的管理 API URL 来获取此 URL。 将 **swagger/** 替换为 **api/v1.0/** 。
 
-1. 查看数字孪生功能的列表，这些功能可以通过示例来探索。 运行以下命令：
+1. 查看可通过示例探索的数字孪生功能列表。 运行以下命令：
 
     ```cmd/sh
     dotnet run
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 此函数使用同一文件夹中的 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)。 打开此文件，注意办公大楼的层次结构：地点  、楼层  、区域  和房间  。 任何一个这样的物理空间都可能包含设备和传感器。   每个条目都有预定义的 `type`&mdash;例如楼层和房间。
@@ -150,7 +149,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 - **devices**：空间可能包含 `devices`，这是物理或虚拟实体，用于管理大量传感器。 例如，设备可能是用户的手机、Raspberry Pi 传感器 Pod 或网关。 在示例的虚构大楼中，注意名为“专注室”的房间包含一个 **Raspberry Pi 3 A1** 设备。  每个设备节点均由已硬编码到示例中的唯一 `hardwareId` 进行标识。 若要针对实际生产来配置此示例，请将这些项替换为你设置中的值。  
 
-- **sensors**：一个设备可能包含多个 `sensors`， 用于检测和记录物理变化，例如温度、移动和电池剩余电量的变化。 每个传感器节点都通过此处硬编码的 `hardwareId` 进行唯一标识。 对于实际的应用程序，请将这些项替换为设置中传感器的唯一标识符。 provisionSample.yaml 文件有两个传感器，用于记录移动和二氧化碳情况。   请添加另一传感器来记录温度，方法是将以下行添加到二氧化碳传感器对应的行下面。  请注意，这些都是在 provisionSample.yaml 中作为注释掉的行提供的。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。 
+- **sensors**：一个设备可能包含多个 `sensors`， 用于检测和记录物理变化，例如温度、移动和电池剩余电量的变化。 每个传感器节点都通过此处硬编码的 `hardwareId` 进行唯一标识。 对于实际的应用程序，请将这些项替换为设置中传感器的唯一标识符。 provisionSample.yaml 文件有两个传感器，用于记录移动和二氧化碳情况。   请添加另一传感器来记录温度，方法是将以下行添加到二氧化碳传感器对应的行下面。  这些行作为注释行在 provisionSample.yaml 中提供。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。 
 
     ```yaml
             - dataType: Temperature

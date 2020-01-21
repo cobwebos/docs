@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Maps 查找多条路线
-description: 教程：使用 Azure Maps 查找不同出行模式的路线
+title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
+description: 本教程介绍如何使用 Microsoft Azure Maps 查找不同出行模式的路线。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613629"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910849"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
 
@@ -117,7 +117,7 @@ ms.locfileid: "75613629"
 
 2. 保存“MapTruckRoute.html”文件并刷新浏览器中的页  。 如果与地图交互并放大“洛杉矶”地图，应会看到街道和当前交通数据。
 
-   ![查看交通地图](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![在地图上查看交通信息](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

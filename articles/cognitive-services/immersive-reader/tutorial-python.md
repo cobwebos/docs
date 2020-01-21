@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326439"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945229"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>教程：使用 Python 示例项目启动沉浸式阅读器
 
-在[概述](./overview.md)中，你了解了沉浸式阅读器是什么以及它如何实施经过验证的技术以提高语言学习者、新兴读者和有学习差异的学生的阅读理解能力。 本教程介绍如何创建启动沉浸式阅读器的 Python Web 应用程序。 本教程介绍如何执行下列操作：
+在[概述](./overview.md)中，你了解了沉浸式阅读器是什么以及它如何实施经过验证的技术以提高语言学习者、新兴读者和有学习差异的学生的阅读理解能力。 本教程介绍如何创建启动沉浸式阅读器的 Python Web 应用程序。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用示例项目创建包含 Pip、Flask、Jinja 和 virtualenv 的 Python Web 应用
@@ -28,9 +28,9 @@ ms.locfileid: "71326439"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 为 Azure Active Directory (Azure AD) 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./azure-active-directory-authentication.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
+* 为 Azure Active Directory 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./how-to-create-immersive-reader.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 * [Git](https://git-scm.com/)
 * [沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) 和 [pip](https://docs.python.org/3/installing/index.html)。 从 Python 3.4 开始，Python 二进制安装程序默认随附 pip。
@@ -40,20 +40,9 @@ ms.locfileid: "71326439"
 * [requests 模块](https://pypi.org/project/requests/2.7.0/)
 * IDE 如 [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>获取 Azure AD 身份验证令牌
+## <a name="configure-authentication-credentials"></a>配置身份验证凭据
 
-编写后端 API 以检索 Azure AD 身份验证令牌。
-
-此部分需要上述 Azure AD 身份验证配置先决条件步骤中的一些值。 请回头参考保存的该会话的文本文件。
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-获得这些值后，创建一个名为“.env”  的新文件，并将以下代码粘贴到其中，提供上面的自定义属性值。 将示例应用中的 _.env_ 文件替换为新建的文件。
+创建一个名为 _.env_ 的新文件，并将以下代码粘贴到其中，提供在创建沉浸式阅读器资源时给出的值。
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}

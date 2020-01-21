@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230927"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863257"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "74230927"
 
 ![查看日志中的消息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -65,9 +65,9 @@ ms.locfileid: "74230927"
     | ------------ | ---------------- | ------------------------------------------ |
     | **名称** | 默认 | 使用模板建议的默认函数名称。|
     | **Azure Cosmos DB 帐户连接** | 新设置 | 选择“新建”  ，选择你的**订阅**、你之前创建的**数据库帐户**，然后选择“选择”。  这将为帐户连接创建应用程序设置。 此设置由数据库连接的绑定使用。 |
-    | 集合名称  | Items | 要监视的集合的名称。 |
-    | **创建租赁集合（如果不存在）** | 已选中 | 集合不存在，因此创建集合。 |
-    | **数据库名称** | 任务 | 数据库的名称和要监视的集合。 |
+    | **容器名称** | Items | 要监视的容器的名称。 |
+    | **创建租用容器（如果不存在）** | 已选中 | 该容器尚不存在，因此创建它。 |
+    | **数据库名称** | 任务 | 具有要监视的容器的数据库的名称。 |
 
 1. 单击“创建”  创建你的 Azure Cosmos DB 触发函数。 创建函数后，将显示基于模板的函数代码。  
 
@@ -75,9 +75,9 @@ ms.locfileid: "74230927"
 
     此函数模板将文档的数量和第一个文档 ID 写入到日志中。
 
-接下来，连接到 Azure Cosmos DB 帐户并在 `Tasks` 数据库中创建 `Items` 集合。
+接下来，连接到 Azure Cosmos DB 帐户并在 `Tasks` 数据库中创建 `Items` 容器。
 
-## <a name="create-the-items-collection"></a>创建项集合
+## <a name="create-the-items-container"></a>创建 Items 容器
 
 1. 在浏览器的新选项卡中打开 [Azure 门户](https://portal.azure.com)的第二个实例。
 
@@ -87,33 +87,32 @@ ms.locfileid: "74230927"
 
 1. 选择你的 Azure Cosmos DB 帐户，然后选择“数据资源管理器”  。 
 
-1. 在“集合”  中，选择“taskDatabase”  并选择“新集合”  。
+1. 在 **SQL API** 下，选择“Tasks”  数据库，然后选择“新建容器”  。
 
-    ![创建集合](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![创建容器](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. 在“添加集合”  中，使用图像下的表中所示的设置。 
+1. 在“添加容器”  中，使用图像下的表中所示的设置。 
 
-    ![定义 taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![定义 Tasks 容器](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | 设置|建议的值|说明 |
     | ---|---|--- |
     | **数据库 ID** | 任务 |新数据库的名称。 它必须匹配函数绑定中定义的名称。 |
-    | **集合 ID** | Items | 新集合的名称。 它必须匹配函数绑定中定义的名称。  |
-    | **存储容量** | 固定 (10 GB)|使用默认值。 此值是数据库的存储容量。 |
-    | **吞吐量** |400 RU| 使用默认值。 如果想要减少延迟，以后可以增加吞吐量。 |
-    | **[分区键](../cosmos-db/partition-data.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能集合而言很重要。 | 
+    | **容器 ID** | Items | 新容器的名称。 它必须匹配函数绑定中定义的名称。  |
+    | **[分区键](../cosmos-db/partition-data.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能容器而言很重要。 | 
+    | **吞吐量** |400 RU| 使用默认值。 如果想要减少延迟，以后可以增加吞吐量。 |    
 
-1. 单击“确定”  创建项集合。 创建该集合可能需要一点时间。
+1. 单击“确定”  以创建 Items 容器。 创建该容器可能需要很短的时间。
 
-函数绑定中指定的集合存在后，可以通过将文档添加到此新集合来测试函数。
+函数绑定中指定的容器存在后，可以通过向此新容器添加项来测试函数。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 展开数据资源管理器中的新“taskCollection”  集合，选择“文档”  ，然后选择“新建文档”  。
+1. 在数据资源管理器中展开新的 **Items** 容器，选择“项”  ，然后选择“新建项”  。
 
-    ![在 taskCollection 创建文档](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![在 Items 容器中创建项](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. 将新文档的内容替换为以下内容，然后选择“保存”  。
+1. 将新项的内容替换为以下内容，然后选择“保存”  。
 
         {
             "id": "task1",

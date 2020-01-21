@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034571"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778407"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -176,15 +176,17 @@ ms.locfileid: "74034571"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你通过使用 Jenkins 进行生成并使用 Azure DevOps Services 进行发布，自动将一个应用部署到 Azure。 你已了解如何：
+在本教程中，你通过使用 Jenkins 进行生成并使用 Azure DevOps Services 进行发布，自动将一个应用部署到 Azure。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Jenkins 中生成应用。
 > * 为 Azure DevOps Services 集成配置 Jenkins。
 > * 为 Azure 虚拟机创建部署组。
-> * 创建配置 VM 并部署应用的发布管道。
+> * 创建配置 VM 并部署应用的 Azure Pipelines。
 
-若要了解如何部署 LAMP（Linux、Apache、MySQL 和 PHP）堆栈，请继续学习下一个教程。
+若要了解如何将 Azure Pipelines 用于生成和发布步骤，请参阅[此文](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)。
+
+若要了解如何编写基于 YAML 的 CI/CD 管道并将其部署到 VM，请参阅下一篇教程。
 
 > [!div class="nextstepaction"]
-> [部署 LAMP 堆栈](tutorial-lamp-stack.md)
+> [使用 Azure Pipelines 进行 CI/CD](tutorial-build-deploy-azure-pipelines.md)

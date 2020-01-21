@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649054"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903268"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649054"
 
 可以创建和发布适用于组织中成员的 Azure [托管应用程序](overview.md)。 例如，IT 部门可发布符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
-若要发布服务目录的托管应用程序，必须执行以下操作：
+若要将托管应用程序发布到 Azure 服务目录，则必须执行以下操作：
 
 * 创建一个模板，定义要与托管应用程序一起部署的资源。
 * 部署托管应用程序时，请定义门户的用户界面元素。
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>自带符合托管应用程序定义的存储
+可以选择将托管应用程序定义存储在创建过程中提供的存储帐户中，以便根据自己的法规需求对其位置和访问权限进行完全管理。
+
+> [!NOTE]
+> 仅在 ARM 模板或托管应用程序定义的 REST API 部署中支持自带存储。
+
+### <a name="select-your-storage-account"></a>选择存储帐户
+必须[创建存储帐户](../../storage/common/storage-account-create.md)才能包含可与服务目录配合使用的托管应用程序定义。
+
+复制存储帐户的资源 ID。 稍后在部署定义时将使用它。
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>在存储帐户中设置“设备资源提供程序”的角色分配
+在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”  角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
+
+1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
+1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
+1. 在“添加角色分配”窗口中，选择“参与者”角色   。 
+1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
+1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。  
+1. 保存角色分配。
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>使用 ARM 模板部署托管应用程序定义 
+
+使用以下 ARM 模板将打包的托管应用程序部署为服务目录中的新托管应用程序定义，其定义文件在你自己的存储帐户中进行存储和维护：
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+我们已将名为 **storageAccountId** 的新属性添加到 applicationDefintion 的属性中，并提供要在其中存储定义的存储帐户 ID 作为其值：
+
+可以验证是否已将应用程序定义文件保存在标题为 **applicationdefinitions** 的容器的已提供的存储帐户中。
+
+> [!NOTE]
+> 为了增加安全性，可以创建一个托管应用程序定义，并将其存储在[启用了加密的 Azure 存储帐户 Blob](../../storage/common/storage-service-encryption.md) 中。 通过存储帐户的加密选项来加密定义内容。 只有有权访问文件的用户才能查看服务目录中的定义。
 
 ### <a name="make-sure-users-can-see-your-definition"></a>请确保用户可以看到你的定义
 

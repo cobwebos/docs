@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561486"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754588"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，因而有利于灾难恢复策略。
 
-本教程介绍如何为 Azure VM 设置灾难恢复：将 VM 从一个 Azure 区域复制到另一个区域。 本教程介绍如何执行下列操作：
+本教程介绍如何为 Azure VM 设置灾难恢复：将 VM 从一个 Azure 区域复制到另一个区域。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建恢复服务保管库
@@ -30,7 +30,7 @@ ms.locfileid: "74561486"
 > [!NOTE]
 > 本文说明了如何使用最简单的设置来部署灾难恢复。 若要了解自定义的设置，请查看[“操作方法”部分](azure-to-azure-how-to-enable-replication.md)的文章。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -77,15 +77,18 @@ ms.locfileid: "74561486"
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
-如果想要使用 IP 地址而不是 URL 来控制出站连接，请允许将这些地址用于基于 IP 的防火墙、代理或 NSG 规则。
+如果使用的是 NSG，请创建基于服务标记的 NSG 规则，以访问 Azure 存储、Azure Active Directory、Site Recovery 服务和 Site Recovery 监视。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
+
+如果想要使用 IP 地址而不是 NSG 规则来控制出站连接，请允许将这些地址用于基于 IP 的防火墙、代理或 NSG 规则。
+
+>[!NOTE]
+>建议始终为 NSG 规则配置服务标记以进行出站访问。
 
   - [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)
   - [德国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=54770)
   - [中国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery 服务终结点 IP 地址](https://aka.ms/site-recovery-public-ips)
-
-如果你正在使用 NSG，则可以为源区域创建存储服务标记 NSG 规则。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
 
 ## <a name="verify-azure-vm-certificates"></a>验证 Azure VM 证书
 

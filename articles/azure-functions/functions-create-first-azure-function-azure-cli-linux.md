@@ -4,12 +4,12 @@ description: 了解如何使用命令行工具、Azure Functions Core Tools 和 
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 972feedf880ed55210c8422094d5b26a85b31d5e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964134"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769398"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>快速入门：使用命令行工具创建第一个在 Linux 上托管的函数
 
@@ -19,7 +19,7 @@ Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环�
 
 支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。 本文展示了如何使用 JavaScript 或 C# 创建函数。 若要了解如何创建 Python 函数，请参阅[使用 Core Tools 和 Azure CLI 创建第一个 Python 函数](functions-create-first-function-python.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 运行此示例之前，必须做好以下准备：
 
@@ -47,7 +47,7 @@ Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环�
 
 ## <a name="create-a-linux-function-app-in-azure"></a>在 Azure 中创建 Linux 函数应用
 
-必须使用函数应用在 Linux 上托管函数的执行。 此函数应用提供一个无服务器环境，用于执行函数代码。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建在 Linux 上运行的函数应用。
+必须使用函数应用在 Linux 上托管函数的执行。 此函数应用提供一个无服务器环境，用于执行函数代码。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建在 Linux 上运行的函数应用。
 
 在以下命令中，请在 `<app_name>` 占位符处使用唯一的函数应用名称，在 `<storage_name>` 处使用存储帐户名称。 `<app_name>` 也是函数应用的默认 DNS 域。 此名称在 Azure 的所有应用中必须独一无二。 还应该通过 `dotnet` (C#)、`node` (JavaScript/TypeScript) 或 `python` 为函数应用设置 `<language>` 运行时。
 

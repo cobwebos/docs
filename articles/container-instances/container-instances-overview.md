@@ -4,12 +4,12 @@ description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552315"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888027"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -54,7 +54,7 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 * 每个容器组多个容器
 * 卷装载（[Azure 文件存储](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[机密](container-instances-volume-secret.md)）
 * Azure Monitor 的[资源使用情况指标](container-instances-monitor.md)
-* [虚拟网络部署](container-instances-vnet.md)（预览版）
+* [虚拟网络部署](container-instances-vnet.md)
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
 对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
@@ -66,12 +66,9 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 
 Azure 容器实例支持对共享主机、本地网络、存储和生命周期的[多容器组](container-instances-container-groups.md)进行计划。 这样即可将主要应用程序容器与其他配角容器（例如日志记录分支）结合使用。
 
-## <a name="virtual-network-deployment-preview"></a>虚拟网络部署（预览版）
+## <a name="virtual-network-deployment"></a>虚拟网络部署
 
-目前以预览版提供，Azure 容器实例的此功能允许[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
-
-> [!IMPORTANT]
-> Azure 容器实例的某些功能处于预览状态，并且某些[限制适用](container-instances-vnet.md#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，这些功能的某些方面可能会有所更改。
+Azure 容器实例的此功能目前可用于一部分 Azure 区域中的生产工作负荷，它支持[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
 
 ## <a name="next-steps"></a>后续步骤
 

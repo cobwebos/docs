@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226607"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768956"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -22,7 +22,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
 ![逻辑应用设计器中应用的前两个步骤的示意图](media/functions-twitter-email/00-logic-app-overview.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建认知服务 API 资源。
@@ -32,7 +32,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 > * 将逻辑应用连接到函数。
 > * 根据函数的响应发送电子邮件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 有效的 [Twitter](https://twitter.com/) 帐户。 
 + [Outlook.com](https://outlook.com/) 帐户（用于发送通知）。
@@ -43,7 +43,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
 Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析 API 可检测受监视的推文观点。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 在 Azure 门户的左上角单击“创建资源”。 
 
@@ -129,7 +129,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用   
 
-1. 在 Azure 门户中，单击左上角的“新建”按钮。 
+1. 在 Azure 门户中，单击位于 Azure 门户左上角的“创建资源”  按钮。
 
 2. 单击“Web”   >   “逻辑应用”。
  
@@ -165,7 +165,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     | ----------------- | ------------ | ------------- |
     | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务 API 中的事务配额。 |
     | 间隔  | 15 | 每两次处理 Twitter 请求所用的时间，采用频率单位。 |
-    | **频率** | 分钟 | 用于轮询 Twitter 的频率单位。  |
+    | **频率** | Minute | 用于轮询 Twitter 的频率单位。  |
 
 3.  单击“保存”连接到 Twitter 帐户。  
 
@@ -283,7 +283,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建认知服务 API 资源。

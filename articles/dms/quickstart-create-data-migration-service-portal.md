@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437734"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750103"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -55,11 +55,11 @@ ms.locfileid: "75437734"
     - 选择要在其中创建实例的 Azure **订阅**。
     - 选择现有的**资源组**，或创建一个新组。
     - 选择距离源或目标服务器最近的“位置”  。
-    - 选择现有的虚拟网络 (VNET) 或创建一个。 
+    - 选择一个现有的虚拟网络或创建一个。 
 
-        VNet 为 Azure 数据库迁移服务提供对源数据库和目标环境的访问权限。
+        虚拟网络为 Azure 数据库迁移服务提供了对源数据库和目标环境的访问权限。
 
-        有关如何在 Azure 门户中创建 VNet 的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/vnet)一文。
+        有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/vnet)一文。
 
     - 对于“定价层”  选择“基本: 1 vCore”。
 

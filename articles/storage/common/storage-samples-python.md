@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351155"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747991"
 ---
 # <a name="azure-storage-samples-using-python"></a>使用 Python 的 Azure 存储示例
 
 下表概述了示例存储库和每个示例中涉及的方案。 单击链接可查看 GitHub 中相应的示例代码。
 
-## <a name="blob-samples"></a>Blob 示例
+> [!NOTE]
+> 这些示例使用 Azure 存储 Python v2.1 库。 有关 v12 代码，请参阅 GitHub 存储库中的[示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)。
+
+## <a name="blob-samples-v21"></a>Blob 示例 (v2.1)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -39,7 +42,7 @@ ms.locfileid: "71351155"
 | 服务属性 | [Python 中的 Azure Blob 服务入门](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | 快照 Blob | [Python 中的 Azure Blob 服务入门](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>文件示例
+## <a name="file-samples-v21"></a>文件示例 (v2.1)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ ms.locfileid: "71351155"
 | 列出共享 | [Python 中的 Azure 文件服务入门](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | 共享属性/元数据/统计信息 | [Python 中的 Azure 文件服务入门](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>队列示例
+## <a name="queue-samples-v21"></a>队列示例 (v2.1)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -66,7 +69,7 @@ ms.locfileid: "71351155"
 | 队列服务属性 | [Python 中的 Azure 队列服务入门](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | 更新消息 | [Python 中的 Azure 队列服务入门](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>表示例
+## <a name="table-samples-v21"></a>表示例 (v2.1)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|

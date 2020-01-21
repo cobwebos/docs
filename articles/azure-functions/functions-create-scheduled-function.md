@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227174"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769279"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "74227174"
 
 ![在 Azure 门户中创建 Function App](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -51,9 +51,9 @@ ms.locfileid: "74227174"
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
     | **名称** | 默认 | 定义计时器触发的函数的名称。 |
-    | **计划** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#ncrontab-expressions)，计划函数每分钟运行一次。 |
+    | **“计划”** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#ncrontab-expressions)，计划函数每分钟运行一次。 |
 
-4. 单击“创建”。  将使用所选语言创建一个每分钟运行一次的函数。
+4. 单击“创建”。  此时将使用所选语言创建一个每分钟运行一次的函数。
 
 5. 通过查看写入到日志的跟踪信息来验证执行情况。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74227174"
 
 ![Azure 门户中的函数更新计时器计划。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-现在已获得一个每小时运行一次的函数。 
+现在已获得一个每小时运行一次的函数。
 
 ## <a name="clean-up-resources"></a>清理资源
 

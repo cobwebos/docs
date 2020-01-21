@@ -5,12 +5,12 @@ ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 222e4a98974a1af40ff860cfc4fdb246d9c97bca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230837"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769381"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>快速入门：使用 Azure CLI 通过命令行创建第一个函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "74230837"
 
 可以使用 Mac、Windows 或 Linux 计算机执行以下步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 运行此示例之前，必须做好以下准备：
 
@@ -46,7 +46,7 @@ ms.locfileid: "74230837"
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Function App。 
+必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Function App。
 
 在以下命令中，请将 `<APP_NAME>` 占位符替换成唯一函数应用名称，将 `<STORAGE_NAME>` 替换为存储帐户名。 `<APP_NAME>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 你还应该通过 `dotnet` (C#) 或 `node` (JavaScript) 为函数应用设置 `<language>` 运行时。
 

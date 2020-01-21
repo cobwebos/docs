@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: c0413e4b9b0995c6712d30bbc22550d0ae10183b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562181"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863234"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
 
@@ -95,7 +95,7 @@ Azure 数字孪生使用 Azure IoT 中心来连接 IoT 设备和传感器，使�
 
 [![Azure 数字孪生是构建于 Azure IoT 中心之上的服务](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-有关 IoT 的详细信息，请参阅 [Azure IoT 技术和解决方案](../iot-fundamentals/iot-services-and-technologies.md)。
+有关 IoT 的详细信息，请阅读 [Azure IoT 技术和解决方案](../iot-fundamentals/iot-services-and-technologies.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

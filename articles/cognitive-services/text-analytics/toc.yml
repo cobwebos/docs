@@ -14,8 +14,10 @@
   items:
     - name: 客户端库
       items:
-        - name: 使用客户端库分析文本
+        - name: 使用 v3.0-preview 分析文本
           href: quickstarts/text-analytics-sdk.md
+        - name: 使用 v2 分析文本
+          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: 使用 Java
@@ -42,7 +44,7 @@
     - name: 使用 Flask 翻译文本、分析情绪以及合成语音
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 调用文本分析 API
       href: How-tos/text-analytics-how-to-call-api.md
@@ -56,7 +58,7 @@
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: 使用容器
       items:
-        - name: 安装并运行容器
+        - name: 安装和运行容器
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: 配置容器
           href: text-analytics-resource-container-config.md
@@ -66,7 +68,7 @@
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: 使用文本分析连接服务
       href: vs-text-connected-service.md
-- name: 引用
+- name: 参考
   items:
     - name: CLI 参考
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'

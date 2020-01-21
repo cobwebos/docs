@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Notebooks 规划电动车路线 (Python)
-description: 教程：使用 Azure Maps 路线 API 和 Azure Notebooks 规划电动车路线。
+title: 教程：使用 Azure Notebooks (Python) 规划电动车路线 | Microsoft Azure Maps
+description: 使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613680"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910907"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 

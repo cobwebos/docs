@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550259"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867421"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>生成可供认证的 IoT 即插即用预览版设备
 
@@ -35,7 +35,7 @@ ms.locfileid: "75550259"
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 扩展包
 
-还需要使用在以下教程中创建的 IoT 即插即用设备：[快速入门：使用设备功能模型创建设备](quickstart-create-pnp-device-windows.md)。
+还需要完成[使用设备功能模型创建设备](quickstart-create-pnp-device-windows.md) Windows 快速入门。 此快速入门介绍如何使用 Vcpkg 设置开发环境并创建一个示例项目。
 
 ## <a name="store-a-capability-model-and-interfaces"></a>存储功能模型和接口
 
@@ -107,20 +107,53 @@ ms.locfileid: "75550259"
 
 1. 选择用于生成设备代码存根的 DCM 文件。
 
-1. 输入项目名称，即设备应用程序的名称。
+1. 输入项目名称，例如 **sample_device**。 这是设备应用程序的名称。
 
 1. 选择“ANSI C”作为语言。 
 
 1. 选择“通过 DPS (设备预配服务)对称密钥”作为连接方法。 
 
-1. 选择“Windows 上的 CMake 项目”  或“Linux 上的 CMake 项目”  作为项目模板，具体取决于设备的操作系统。
+1. 选择“Windows 上的 CMake 项目”作为项目模板  。
+
+1. 选择“通过 Vcpkg”作为包括设备 SDK 的方式  。
 
 1. VS Code 将打开一个新窗口，其中包含生成的设备代码存根文件。
 
-1. 生成代码后，输入 DPS 凭据（**DPS ID 范围**、**DPS 对称密钥**、**设备 Id**）作为应用程序的参数。 若要从证书门户获取凭据，请参阅[连接并测试 IoT 即插即用设备](tutorial-certification-test.md#connect-and-discover-interfaces)。
+## <a name="build-and-run-the-code"></a>生成并运行代码
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+使用 Vcpkg 包生成设备代码存根。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
+
+1. 在 `sample_device` 文件夹中创建 `cmake` 子目录，并导航到该文件夹：
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. 运行以下命令，构建生成的代码存根（将占位符替换为 Vcpkg 存储库的目录）：
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > 如果使用 Visual Studio 2017 或 2015，则需要根据所使用的生成工具指定 CMake 生成器：
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > 如果 cmake 找不到 C++ 编译器，则在运行以上命令时会出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)下运行此命令。
+
+1. 生成成功完成后，输入 DPS 凭据（**DPS ID 范围**、**DPS 对称密钥**、**设备 ID**）作为应用程序的参数。 若要从证书门户获取凭据，请参阅[连接并测试 IoT 即插即用设备](tutorial-certification-test.md#connect-and-discover-interfaces)。
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>实现标准接口

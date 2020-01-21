@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670390"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834319"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
-本文介绍 [Azure 应用服务](app-service-linux-intro.md)如何运行 Ruby 应用，以及如何按需自定义应用服务的行为。 必须连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Ruby 应用。
+本文介绍 [Azure 应用服务](app-service-linux-intro.md)如何运行 Ruby 应用，以及如何按需自定义应用服务的行为。 Ruby 应用必须与所有必需的 [gem](https://rubygems.org/gems) 一起部署。
 
 对于在应用服务中使用内置 Linux 容器的 Ruby 开发人员，本指南为其提供了关键概念和说明。 若从未使用过 Azure 应用服务，则首先应按照 [Ruby 快速入门](quickstart-ruby.md)以及[将 Ruby 与 PostgreSQL 配合使用教程](tutorial-ruby-postgres-app.md)进行操作。
 
@@ -82,7 +82,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="precompile-assets"></a>预编译资产
 
-默认情况下，后期部署步骤不会预编译资产。 要启用资产预编译，请将 `ASSETS_PRECOMPILE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `true`。 然后在后期部署步骤结束时运行命令 `bundle exec rake --trace assets:precompile`。 例如：
+默认情况下，后期部署步骤不会预编译资产。 要启用资产预编译，请将 `ASSETS_PRECOMPILE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设为 `true`。 然后在后期部署步骤结束时运行命令 `bundle exec rake --trace assets:precompile`。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -119,13 +119,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="run-in-non-production-mode"></a>在非生产模式下运行
 
-默认情况下，Rails 服务器在生产模式下运行。 例如，要在开发模式下运行，请将 `RAILS_ENV` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `development`。
+默认情况下，Rails 服务器在生产模式下运行。 例如，要在开发模式下运行，请将 `RAILS_ENV` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设为 `development`。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-但是，仅此设置会导致 Rails 服务器在开发模式下启动，该模式仅接受 localhost 请求，并且在容器外部无法访问。 要接受远程客户端请求，请将 `APP_COMMAND_LINE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `rails server -b 0.0.0.0`。 此应用设置使你可在 Ruby 容器中运行自定义命令。 例如：
+但是，仅此设置会导致 Rails 服务器在开发模式下启动，该模式仅接受 localhost 请求，并且在容器外部无法访问。 要接受远程客户端请求，请将 `APP_COMMAND_LINE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设为 `rails server -b 0.0.0.0`。 此应用设置使你可在 Ruby 容器中运行自定义命令。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -133,7 +133,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secret_key_base-manually"></a> 手动设置 secret_key_base
 
-要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用想要的值设置 `SECRET_KEY_BASE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 例如：
+要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用所需的值设置 `SECRET_KEY_BASE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

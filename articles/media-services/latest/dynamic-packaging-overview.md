@@ -1,5 +1,5 @@
 ---
-title: 媒体服务中的动态打包
+title: Azure 媒体服务 v3 中的动态打包
 titleSuffix: Azure Media Services
 description: 本文概述了 Azure 媒体服务中的动态打包。
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977754"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779597"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>媒体服务中的动态打包
+# <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
 Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。
 

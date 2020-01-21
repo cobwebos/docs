@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454555"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028909"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -104,8 +104,9 @@ ms.locfileid: "75454555"
 
 ### <a name="verify-vmware-settings"></a>验证 VMware 设置
 
-1. [查看](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) VMware 服务器评估的要求。
-2. [确保](migrate-support-matrix-vmware.md#assessment-port-requirements)在 vCenter 服务器上打开所需端口。
+1. [查看](migrate-support-matrix-vmware.md#vmware-requirements) VMware 服务器评估的要求。
+2. [确保](migrate-support-matrix-vmware.md#port-access)在 vCenter 服务器上打开所需端口。
+3. 在 vCenter Server 上，请确保帐户有权使用 OVA 文件创建 VM。 使用 OVA 文件将 Azure Migrate 设备部署为 VMware VM。
 
 
 ### <a name="set-up-an-account-for-assessment"></a>设置评估帐户
@@ -120,15 +121,12 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 
 ### <a name="verify-appliance-settings-for-assessment"></a>验证用于评估的设备设置
 
-在部署设备之前，请查看设备要求。
+在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
-1. [验证](migrate-support-matrix-vmware.md#assessment-appliance-requirements)设备要求和限制。
-2. 如果使用的是基于 URL 的防火墙代理，请[查看](migrate-support-matrix-vmware.md#assessment-url-access-requirements)设备将需要访问的 Azure URL。 确保代理解析在查找 URL 时收到的任何 CNAME 记录。
-3. 查看设备在发现和评估期间收集的[性能数据](migrate-appliance.md#collected-performance-data-vmware)和[元数据](migrate-appliance.md#collected-metadata-vmware)。
-4. [注意](migrate-support-matrix-vmware.md#assessment-port-requirements)设备访问的端口。
-5. 在 vCenter Server 上，请确保帐户有权使用 OVA 文件创建 VM。 使用 OVA 文件将 Azure Migrate 设备部署为 VMware VM。
-
-如果使用基于 URL 的防火墙代理，请允许访问所需的 [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements)。
+1. [验证](migrate-appliance.md#appliance---vmware) VMware VM 的设备要求。
+2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。 如果使用的是基于 URL 的防火墙或代理，请确保它允许访问所需的 URL。
+3. [查看](migrate-appliance.md#collected-data---vmware)设备在发现和评估期间要收集的数据。
+4. [注意](migrate-support-matrix-vmware.md#port-access)设备的端口访问要求。
 
 
 
@@ -137,23 +135,22 @@ Azure Migrate 需访问 vCenter Server 来发现用于评估和无代理迁移�
 
 查看无代理迁移 VMware VM 的要求。
 
-1. [查看](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) VMware 服务器要求。
-2. 设置具有[所需权限](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions)的帐户，以便 Azure Migrate 可以使用Azure Migrate 服务器迁移访问 vCenter Server 以进行无代理迁移。
-3. [查看](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)需要使用无代理迁移来迁移到 Azure 的 VMware VM 的要求。
-4. [查看](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements)使用 Azure Migrate 设备进行无代理迁移的要求。
-5. 注意 Azure Migrate 设备进行无代理迁移所需的 [URL 访问权限](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements)和[端口访问权限](migrate-support-matrix-vmware.md#agentless-migration-port-requirements)。
+1. [查看](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) VMware 服务器要求，以及 Azure Migrate 访问 vCenter Server 以使用 Azure Migrate 服务器迁移进行无代理迁移所需的[权限](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)。
+2. [查看](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)需要使用无代理迁移来迁移到 Azure 的 VMware VM 的要求。
+4. [查看](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance)使用 Azure Migrate 设备进行无代理迁移的要求。
+5. 注意，无代理迁移需要[访问 URL](migrate-appliance.md#url-access) 和[访问端口](migrate-support-matrix-vmware-migration.md#agentless-ports)。
 
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>准备基于代理的 VMware 迁移
 
 查看对 VMware VM 进行[基于代理的迁移](server-migrate-overview.md)的要求。
 
-1. [查看](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) VMware 服务器要求。
-2. 设置具有[所需权限](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions)的帐户。 以便 Azure Migrate 可以使用 Azure Migrate 服务器迁移访问 vCenter Server 以进行基于代理的迁移。
-3. [查看](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)需要使用基于代理的迁移来迁移到 Azure 的 VMware VM 的要求，包括在要迁移的每个 VM 上安装移动服务。
-4. 注意 [URL 访问](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)。
-5. 查看 Azure Migrate 组件进行基于代理的访问所需的[端口访问权限](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements)。
-
+1. [查看](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware 服务器要求，以及 Azure Migrate 访问 vCenter Server 以使用 Azure Migrate 服务器迁移进行基于代理的迁移所需的权限。
+2. [查看](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms)需要使用基于代理的迁移来迁移到 Azure 的 VMware VM 的要求，包括在要迁移的每个 VM 上安装移动服务。
+3. 基于代理的迁移使用复制设备：
+    - [查看](migrate-replication-appliance.md#appliance-requirements)复制设备的部署要求，以及用于在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
+    - 查看复制设备的 [URL](migrate-replication-appliance.md#url-access) 和[端口](migrate-replication-appliance.md#port-access)访问要求。
+    
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍以下操作：

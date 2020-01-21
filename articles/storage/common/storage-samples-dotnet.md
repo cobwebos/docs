@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 043a21aec5753dd16f558ad29d2300ada7a35d72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431793"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748135"
 ---
 # <a name="azure-storage-samples-using-net"></a>使用 .NET 的 Azure 存储示例
 
@@ -21,7 +21,7 @@ ms.locfileid: "75431793"
 > [!NOTE]
 > 这些示例使用 Azure 存储 .NET v11 库。 有关 v12 代码，请参阅 GitHub 存储库中的[示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)。
 
-## <a name="blob-samples"></a>Blob 示例
+## <a name="blob-samples-v11"></a>Blob 示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -42,7 +42,7 @@ ms.locfileid: "75431793"
 | 服务属性 | [Blob 入门](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | 快照 Blob | [使用增量快照备份 Azure 虚拟机磁盘](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
 
-## <a name="file-samples"></a>文件示例
+## <a name="file-samples-v11"></a>文件示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -56,7 +56,7 @@ ms.locfileid: "75431793"
 | 列出共享 | [Azure 存储 .NET 文件存储示例](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 | 共享属性/元数据/统计信息 | [Azure 存储 .NET 文件存储示例](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 
-## <a name="queue-samples"></a>队列示例
+## <a name="queue-samples-v11"></a>队列示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -69,7 +69,7 @@ ms.locfileid: "75431793"
 | 队列服务属性 | [Getting Started with Azure Queue Service in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs)（.NET 中 Azure 队列服务入门） |
 | 更新消息 | [Getting Started with Azure Queue Service in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs)（.NET 中 Azure 队列服务入门） |
 
-## <a name="table-samples"></a>表示例
+## <a name="table-samples-v11"></a>表示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|

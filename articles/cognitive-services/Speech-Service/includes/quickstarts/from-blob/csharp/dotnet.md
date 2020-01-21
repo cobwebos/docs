@@ -1,32 +1,25 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音，C# - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468538"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942787"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [将源文件上传到 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
+> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [将源文件上传到 Azure blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -35,7 +28,7 @@ ms.locfileid: "75468538"
 1. 启动 Visual Studio 2019。
 2. 加载项目并打开 `Program.cs`。
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>添加对 NewtonSoftJSon 的引用
+## <a name="add-a-reference-to-newtonsoftjson"></a>添加对 Newtonsoft.Json 的引用
 
 1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。  
 
@@ -45,7 +38,7 @@ ms.locfileid: "75468538"
 
 1. 在搜索框中键入“Newtonsoft.Json”并选择“输入”   。
 
-1. 在搜索结果中选择“Newtonsoft.Json”包，然后选择“安装”以安装最新稳定版本   。
+1. 从搜索结果中选择 [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) 包，然后选择“安装”以安装最新稳定版本  。
 
 1. 接受所有协议和许可证，开始安装。
 
@@ -56,7 +49,9 @@ ms.locfileid: "75468538"
 添加一些代码作为项目的框架。
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-（需要将 `YourSubscriptionKey`、`YourServiceRegion` 和 `YourFileUrl` 的值替换成自己的值。）
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON 包装器
 
 由于 REST API 采用 JSON 格式的请求并且也返回 JSON 结果，因此我们可以仅使用字符串与之进行交互，但不建议这样做。

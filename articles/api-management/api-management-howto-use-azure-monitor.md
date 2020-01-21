@@ -13,18 +13,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707202"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028366"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
 通过 Azure Monitor，可直观显示、查询、路由和存档来自 Azure 资源的指标或日志并对其执行操作。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看活动日志
@@ -36,10 +36,10 @@ ms.locfileid: "74707202"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "74707202"
 
 API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面汇总了一些可用指标：
 
-* 容量（预览版）：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
+* 容量：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
 * 网关请求总数：期间内的 API 请求数。 
 * 成功的网关请求数：接收成功的 HTTP 响应代码（包括 304、307 以及任何小于 301 的代码，例如 200）的 API 请求数。
 * 失败的网关请求数：接收错误的 HTTP 响应代码（包括 400 以及任何大于 500 的代码）的 API 请求数。
@@ -192,7 +192,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
 | httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
-| properties | 对象 | 当前请求的属性 |
+| properties | 对象 (object) | 当前请求的属性 |
 | method | 字符串 | 传入请求的 HTTP 方法 |
 | url | 字符串 | 传入请求的 URL |
 | clientProtocol | 字符串 | 传入请求的 HTTP 协议版本 |
@@ -213,7 +213,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | userId | 字符串 | 当前请求的用户实体标识符 | 
 | apimSubscriptionId | 字符串 | 当前请求的订阅实体标识符 | 
 | backendId | 字符串 | 当前请求的后端实体标识符 | 
-| lastError | 对象 | 上一个请求处理错误 | 
+| lastError | 对象 (object) | 上一个请求处理错误 | 
 | elapsed | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
 | source | 字符串 | 导致错误的策略或内部处理程序的名称 | 
 | scope | 字符串 | 导致错误的策略所在策略文档的范围 | 
@@ -223,7 +223,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看活动日志

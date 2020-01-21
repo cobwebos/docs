@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 20802cf9f9934a85e00bce41b6bbe21a6ff95579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151254"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772289"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建并加密虚拟机
 
@@ -21,7 +21,7 @@ ms.locfileid: "74151254"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -49,7 +49,7 @@ ms.locfileid: "74151254"
     ![磁盘和加密选择](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. 在加密屏幕的“要加密的磁盘”下，选择“OS 和数据磁盘”。  
-1. 在“加密设置”下，选择“选择密钥保管库和用于加密的密钥”。  
+1. 在“加密设置”下，选择“选择密钥保管库和用于加密的密钥”   。
 1. 在“从 Azure Key Vault 选择密钥”屏幕上选择“新建”   。
 
     ![磁盘和加密选择](../media/disk-encryption/portal-qs-keyvault-create.png)

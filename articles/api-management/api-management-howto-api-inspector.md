@@ -13,28 +13,28 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b646c64b0ec45a11f99350ff5bd81a89418b2ecd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072512"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768515"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>使用请求跟踪调试 API
 
 本教程介绍如何检查请求处理，以帮助对 API 进行调试和故障排除。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 跟踪调用
 
 ![API 检查器](media/api-management-howto-api-inspector/api-inspector001.PNG)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 ## <a name="trace-a-call"></a>跟踪调用
@@ -47,8 +47,10 @@ ms.locfileid: "70072512"
 4. 选择“GetSpeakers”操作。 
 5. 请确保包含名为 **Ocp-Apim-Trace**、值设置为 **true** 的 HTTP 标头。
 
-    > [!NOTE]
-    > 如果 Ocp-Apim-Subscription-Key 未自动填充，可以通过转到开发人员门户并在配置文件页面上公开密钥来检索它。
+   > [!NOTE]
+   > * 如果 Ocp-Apim-Subscription-Key 未自动填充，可以通过转到开发人员门户并在配置文件页面上公开密钥来检索它。
+   > * 若若要在使用 Ocp-Apim-Trace HTTP 标头时获取跟踪，必须启用订阅密钥的“允许跟踪”  设置。 若要配置“允许跟踪”  设置，请在左侧菜单中的“API 管理”  下，选择“订阅”  。
+   >   ![允许在“API 管理订阅”窗格上进行跟踪](media/api-management-howto-api-inspector/allowtracing.png)
 
 6. 单击“发送”发出 API 调用。  
 7. 等待调用完成。 
@@ -65,7 +67,7 @@ ms.locfileid: "70072512"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 跟踪调用

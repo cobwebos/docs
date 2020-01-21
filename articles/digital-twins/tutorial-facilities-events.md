@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790340"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933716"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -24,13 +24,13 @@ ms.locfileid: "74790340"
 
 本教程介绍如何将这些通知与 Azure 逻辑应用集成，以便在此类房间可用时发送电子邮件。 办公室主任可以根据此信息帮助员工预订工作效率最高的会议室。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将事件与 Azure 事件网格集成。
 > * 使用逻辑应用发出事件通知。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定你已[配置](tutorial-facilities-setup.md)和[预配](tutorial-facilities-udf.md) Azure 数字孪生设置。 在继续操作之前，请确保已具备以下条件：
 
@@ -51,7 +51,7 @@ ms.locfileid: "74790340"
 
 [事件网格主题](../event-grid/concepts.md#topics)提供一个界面，用于路由用户定义的函数生成的事件。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格中，选择“创建资源”  。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "74790340"
 
 1. 选择“访问密钥”，  将**密钥 1** 和**密钥 2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
 
-    [![事件网格密钥](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [![事件网格密钥](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>为事件网格主题创建终结点
 
@@ -114,7 +114,7 @@ ms.locfileid: "74790340"
 
 1. 为逻辑应用资源输入一个**名称**，然后选择你的**订阅**、**资源组**和**位置**。 选择“创建”  。
 
-    [![创建逻辑应用资源](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![创建逻辑应用资源](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. 在逻辑应用资源部署后将其打开，然后打开“逻辑应用设计器”窗格。  
 
@@ -172,7 +172,7 @@ ms.locfileid: "74790340"
 
    c. 在第二个“选择值”文本框中输入“`UdfCustom`”。 
 
-   [![所选条件](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [![所选条件](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. 在 **If true** 窗口中，执行以下操作：
 
@@ -182,9 +182,9 @@ ms.locfileid: "74790340"
 
    c. 在“收件人”框中，输入用于接收通知的电子邮件 ID。  在“主题”中  输入文本“有关空间中空气质量差的数字孪生通知”，  然后从**分析 JSON** 的“动态内容”列表中选择“TopologyObjectId”。  
 
-   d. 在同一窗口中的“正文”  下，输入与此类似的文本：**检测到房间内空气质量差，需要调整温度**。 请根据需要使用“动态内容”列表中的元素进行详细阐述。 
+   d. 在同一窗口中的“正文”  下，输入类似以下内容的文本：**检测到房间内空气质量差，需要调整温度**。 请根据需要使用“动态内容”列表中的元素进行详细阐述。 
 
-   [![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. 选择“逻辑应用设计器”窗格顶部的“保存”按钮   。
 

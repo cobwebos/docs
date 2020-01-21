@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530160"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861806"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
 
@@ -39,7 +39,7 @@ ms.locfileid: "75530160"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 必须至少具有 Azure 订阅的参与者角色  。 有关详细信息，请参阅[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
+* 必须至少具有 Azure 订阅的参与者角色  。 有关详细信息，请阅读[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="create-a-device-simulation"></a>创建设备模拟
 
@@ -62,7 +62,7 @@ ms.locfileid: "75530160"
 
    [![预配设备模拟解决方案。](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. 预配完成后，你将看到两个更新，显示部署状态已从“正在预配”  变为“就绪”  。 
+1. 预配完成后，将显示两个通知，宣布部署状态已从“正在预配”  变为“就绪”  。 
 
    >[!IMPORTANT]
    > 还不要转到解决方案加速器！ 请让此网页保持打开状态，因为稍后需要返回此处。
@@ -92,7 +92,7 @@ ms.locfileid: "75530160"
     | **资源组** | 为 Azure 时序见解预览版环境资源选择现有的资源组或创建新的资源组。 资源组是 Azure 资源的容器。 最佳做法是使用与设备模拟器创建的其他 IoT 资源相同的资源组。 |
     | **位置** | 为 Azure 时序见解预览版环境选择数据中心区域。 为了避免额外的延迟，最好是在设备模拟器创建的 IoT 中心所在的区域中创建 Azure 时序见解预览版环境。 |
     | **层** |  选择“PAYG”（即用即付）。   这是 Azure 时序见解预览版产品的 SKU。 |
-    | **属性名称** | 输入一个用于唯一标识时序实例的值。 以后不能更改在“属性 ID”框中输入的值  。 在本教程中，请输入 ***iothub-connection-device-id***。若要详细了解时序 ID，请参阅[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 |
+    | **属性名称** | 输入一个用于唯一标识时序实例的值。 以后不能更改在“属性 ID”框中输入的值  。 在本教程中，请输入 ***iothub-connection-device-id***。若要详细了解时序 ID，请阅读[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 |
     | **存储帐户名称** | 为新存储帐户输入全局唯一名称。|
     |**启用 Warm 存储**|选择“是”  启用 Warm 存储。 可以稍后返回并启用此设置。 |
     |**日志保留期（以天为单位）**|选择默认选项 7 天。 |
@@ -125,7 +125,7 @@ ms.locfileid: "75530160"
 
     [![包含“创建”按钮的“查看 + 创建”页。](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
-    可以看到部署状态：
+    你可以查看部署的状态：
 
     [![指出部署已完成的通知。](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
@@ -169,7 +169,7 @@ ms.locfileid: "75530160"
 
     选择“开始模拟”  。
 
-    在设备模拟仪表板中，会看到“活动设备数”和“总消息数”   。
+    在设备模拟仪表板中，将显示“活动设备数”和“总消息数”   。
 
     [![Azure IoT 模拟仪表板。](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -181,9 +181,9 @@ ms.locfileid: "75530160"
 
     [![时序见解预览版资源管理器 URL。](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. 在时序见解资源管理器中，会看到横跨屏幕顶部的一个栏。 这是可用性选取器。 确保至少选择了两个 2m，并在需要时通过选中选取器控点并将其向左和向右拖动来扩展期限。
+1. 在时序见解资源管理器中，将显示横跨屏幕顶部的一个栏。 这是可用性选取器。 确保至少选择了两个 2m，并在需要时通过选中选取器控点并将其向左和向右拖动来扩展期限。
 
-1. 你将可以在左侧看到“时序实例”  。
+1. **时序实例**将显示在左侧。
 
     [![无父级实例的列表。](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -205,7 +205,7 @@ ms.locfileid: "75530160"
 
 ## <a name="define-and-apply-a-model"></a>定义并应用模型
 
-在本部分，你将应用一个模型来构造数据。 若要完成该模型，需要定义类型、层次结构和实例。 若要详细了解数据建模，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+在本部分，你将应用一个模型来构造数据。 若要完成该模型，需要定义类型、层次结构和实例。 若要详细了解数据建模，请阅读[时序模型](./time-series-insights-update-tsm.md)。
 
 1. 在资源管理器中，选择“模型”  选项卡：
 
@@ -254,7 +254,7 @@ ms.locfileid: "75530160"
 
     选择“应用”。 
 
-1. 选择“保存”。  应会看到创建的三个变量。
+1. 选择“保存”。  此时将创建并显示三个变量。
 
     [![添加类型后，可在“模型”视图中查看它。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459932"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028895"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -124,8 +124,8 @@ ms.locfileid: "75459932"
     
 7. 选择“确定”  。 
 8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
-9. 当看到 验证通过的 消息时，选择“创建”  。 
-10. 看到“验证通过”消息时选择“创建”。 
+9. 当看到“验证通过”消息时，选择“创建”  。 
+10. 当看到“验证通过”消息时，选择“创建”。 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
@@ -162,7 +162,7 @@ ms.locfileid: "75459932"
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。  |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 子网 | 选择“mySubnet”  。 |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。  |
     |专用 DNS 区域 |选择“(New)privatelink.database.windows.net”  |
@@ -199,9 +199,9 @@ ms.locfileid: "75459932"
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
-2. 输入  `nslookup myserver.database.windows.net`。 
+2. 输入 `nslookup myserver.database.windows.net`。 
 
     将收到类似于下面的消息：
     ```azurepowershell
@@ -227,11 +227,11 @@ ms.locfileid: "75459932"
 1. 选择“连接”  。
 2. 浏览左侧菜单中的数据库。
 3. （可选）创建或查询 mydatabase 中的信息。
-4. 关闭与  *myVm* 建立的远程桌面连接。 
+4. 关闭与 *myVm* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 用完专用终结点、SQL 服务器和 VM 之后，请删除资源组及其包含的所有资源： 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。   **   
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。 
 2. 选择“删除资源组”  。 
 3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”   。
 

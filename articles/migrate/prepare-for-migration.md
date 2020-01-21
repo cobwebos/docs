@@ -1,19 +1,15 @@
 ---
 title: 准备好要通过 Azure Migrate 进行迁移的计算机
 description: 了解如何准备好要通过 Azure Migrate 进行迁移的本地计算机。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974778"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028747"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -44,9 +40,9 @@ ms.locfileid: "74974778"
 
 ## <a name="check-whats-supported"></a>检查支持的操作
 
-- 对于 VMware VM，Azure Migrate 服务器迁移支持[无代理或基于代理的迁移](server-migrate-overview.md)。 验证[无代理](migrate-support-matrix-vmware.md#migration---limitations)和[基于代理](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)的迁移的 VMware VM 要求/支持。
-- 验证 Hyper-V VM 的[迁移要求和支持](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)。
-- 验证本地物理机或其他虚拟化服务器的[迁移要求和支持](migrate-support-matrix-physical.md)。 
+- 对于 VMware VM，Azure Migrate 服务器迁移支持[无代理或基于代理的迁移](server-migrate-overview.md)。 验证 VMware VM [迁移要求和支持](migrate-support-matrix-vmware-migration.md)。
+- 验证 Hyper-V 的[迁移要求和支持](migrate-support-matrix-hyper-v-migration.md)。
+- 验证本地物理机或其他虚拟化服务器的[迁移要求和支持](migrate-support-matrix-physical-migration.md)。 
 
 
 
@@ -55,10 +51,11 @@ ms.locfileid: "74974778"
 
 在迁移期间，计算机可能需要访问 Internet。
 
-- 检查在[无代理](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements)或[基于代理](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)的迁移期间 VMware VM 需要访问的 URL。
-- 检查在迁移期间 Hyper-V 主机需要访问的 URL。 Hyper-V VM 不需要访问 Internet。
-- [检查](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)在迁移期间物理机或其他虚拟化服务器需要访问的 URL。
-- 在 VMware VM/物理服务器的基于代理的迁移过程中，计算机上运行的移动服务需要访问 Azure Migrate 组件。 为了进行复制管理，计算机上运行的服务需要与 HTTPS 443 入站端口上的本地 Azure Migrate 复制设备通信。 计算机通过 HTTPS 9443 入站端口将复制数据发送到 Azure Migrate 进程服务器。 可以修改此端口。
+- 查看 Azure Migrate 设备在无代理迁移期间需要访问的 [URL](migrate-appliance.md#url-access)。 [查看端口访问](migrate-support-matrix-vmware-migration.md#agentless-ports)要求。
+- 查看复制设备在基于 VMware VM 代理的迁移过程中使用的 [URL](migrate-replication-appliance.md#url-access) 和 [ports] (migrate-replication-appliance.md#port-access)。 
+- [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)迁移期间 Hyper-V 主机需要访问的 URL 和端口。 
+- 查看复制设备在物理服务器迁移期间使用的 [URL](migrate-replication-appliance.md#url-access) 和 [ports] (migrate-replication-appliance.md#port-access)。
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>验证迁移之前需要做出的更改
@@ -105,7 +102,7 @@ ms.locfileid: "74974778"
 
 ## <a name="check-azure-vm-requirements"></a>检查 Azure VM 要求
 
-复制到 Azure 的本地计算机必须在操作系统和体系结构、磁盘、网络设置与 VM 命名方面符合 Azure VM 要求。 在迁移之前验证 [VMware VM/物理服务器](migrate-support-matrix-vmware.md#azure-vm-requirements)和 [Hyper-V VM](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) 的要求。
+复制到 Azure 的本地计算机必须在操作系统和体系结构、磁盘、网络设置与 VM 命名方面符合 Azure VM 要求。 在迁移之前验证 [VMware VM/物理服务器](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)和 [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) 的要求。
 
 
 ## <a name="prepare-to-connect-after-migration"></a>准备在迁移后进行连接

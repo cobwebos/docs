@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Maps 查找路线
-description: 教程：使用 Azure Maps 查找前往兴趣点的路线
+title: 教程：查找到某个位置的路线 | Microsoft Azure Maps
+description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划服务在地图上呈现到某个位置（兴趣点）的路线。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613595"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910835"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 查找前往兴趣点的路线
 
@@ -168,7 +168,7 @@ ms.locfileid: "75613595"
 
 3. 保存“MapRoute.html”文件并刷新浏览器  。 现在，地图的中心为西雅图，可以看到标记起点的蓝色图钉和标记终点的圆形蓝色图钉。
 
-   ![查看标记了起点和终点的地图](media/tutorial-route-location/map-pins.png)
+   ![在地图上查看路线的起点和终点](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

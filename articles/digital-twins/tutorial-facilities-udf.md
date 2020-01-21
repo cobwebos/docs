@@ -8,19 +8,19 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383223"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895370"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>教程：使用 Azure 数字孪生预览版预配大楼并监视工作条件
 
 本教程演示如何使用 Azure 数字孪生预览版来监视空间是否达到理想的温度条件和舒适度。 [配置示例大楼](tutorial-facilities-setup.md)以后，即可根据本教程中的步骤预配大楼并针对传感器数据运行自定义函数。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 定义要监视的条件。
@@ -28,7 +28,7 @@ ms.locfileid: "74383223"
 > * 模拟传感器数据。
 > * 获取用户定义函数的结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定你已[完成 Azure 数字孪生设置](tutorial-facilities-setup.md)。 在继续操作之前，请确保已具备以下条件：
 
@@ -38,7 +38,7 @@ ms.locfileid: "74383223"
 - 在用于生成和运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。 
 - [Visual Studio Code](https://code.visualstudio.com/)，用于探索示例代码。 
 
-> [!TIP]
+>[!TIP]
 > 如果要预配新实例，请使用唯一的数字孪生实例名称。
 
 ## <a name="define-conditions-to-monitor"></a>定义要监视的条件
@@ -74,7 +74,7 @@ ms.locfileid: "74383223"
 
    请修改 JavaScript 文件，以便监视温度和其他条件。 另请添加以下代码行，查找符合以下情况的条件：在房间中检测不到移动，二氧化碳水平低于 1,000 ppm，且温度低于 78 华氏度。
 
-   > [!NOTE]
+   >[!NOTE]
    > 此节修改 *src\actions\userDefinedFunctions\availability.js* 文件，因此你可以详细了解如何编写用户定义的函数。 但是，可以选择在设置中直接使用 [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) 文件。 该文件包含本教程所需的所有更改。 如果改用此文件，请确保使用对 [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 中的 **script** 键来说正确的文件名。
 
     a. 在文件顶部 `// Add your sensor type here` 注释下方，添加下述适用于温度的行：
@@ -178,7 +178,7 @@ ms.locfileid: "74383223"
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > 为了防止对数字孪生管理 API 进行未经授权的访问，**occupancy-quickstart** 应用程序要求使用 Azure 帐户凭据登录。 它会将凭据保存短暂的时间，因此不需要每次运行它时都登录。 第一次运行此程序时，以及在此之后保存的凭据过期时，应用程序会将你定向到一个登录页并提供一个可在该页上输入的特定于会话的代码。 请根据提示通过 Azure 帐户登录。
 
 1. 帐户进行身份验证以后，应用程序就会开始根据 provisionSample.yaml  中的配置创建一个示例空间图。 等待预配完成。 将需要几分钟时间。 此后，请观察命令窗口中的消息，注意空间图是如何创建的。 注意应用程序如何在根节点或 `Venue` 处创建 IoT 中心。
@@ -187,7 +187,7 @@ ms.locfileid: "74383223"
 
     [![预配示例](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > 如果在预配过程中出现类似于“由于线程退出或应用程序请求，I/O 操作已中止”的错误消息，请尝试再次运行该命令。 如果 HTTP 客户端因网络问题而超时，则可能出现这种情况。
 
 ## <a name="simulate-sensor-data"></a>模拟传感器数据
@@ -229,12 +229,12 @@ ms.locfileid: "74383223"
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > 由于模拟示例不直接与数字孪生实例通信，因此不需要你进行身份验证。
 
 ## <a name="get-results-of-the-user-defined-function"></a>获取用户定义函数的结果
 
-每次实例收到设备和传感器数据时，用户定义的函数就会运行。 此部分查询 Azure 数字孪生实例，以便获取用户定义函数的结果。 可以以近实时的方式查看何时房间可用、空气清新且温度合适。 
+每次实例收到设备和传感器数据时，用户定义的函数就会运行。 此部分查询 Azure 数字孪生实例，以便获取用户定义函数的结果。 当有房间可用（即空气清新且温度合适）时，你会近乎实时地收到通知。 
 
 1. 打开用于预配示例的命令窗口或新的命令窗口，再次转到示例的 **occupancy-quickstart\src** 文件夹。
 
@@ -246,7 +246,7 @@ ms.locfileid: "74383223"
 
 输出窗口会显示用户定义的函数如何运行，以及如何截获来自设备模拟的事件。 
 
-   [![UDF 的输出](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![UDF 的输出](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 如果满足受监视的条件，用户定义的函数会将空间的值设置为我们[此前](#create-a-user-defined-function)看到的的相关消息。 该消息由 `GetAvailableAndFreshSpaces` 函数输出到控制台。
 
@@ -256,7 +256,7 @@ ms.locfileid: "74383223"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、  数字孪生资源组、“删除”。 
 
-    > [!TIP]
+    >[!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
 
 2. 可以根据需要删除工作计算机上的示例应用程序。

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 在 Azu
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433195"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769330"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入门：在 Azure 中创建 HTTP 触发的 Python 函数
 
@@ -122,7 +122,7 @@ Http Functions:
 
 ## <a name="create-a-function-app-in-azure"></a>在 Azure 中创建一个函数应用
 
-函数应用提供了用于执行函数代码的环境。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
+函数应用提供了用于执行函数代码的环境。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
 运行以下命令。 将 `<APP_NAME>` 替换为唯一函数应用名称。 将 `<STORAGE_NAME>` 替换为存储帐户名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 此名称在 Azure 的所有应用中必须独一无二。
 

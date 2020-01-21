@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/11/2019
+ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d15223dfe6d9ce710f2a3d402a49203ef169132e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225193"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771455"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -34,16 +34,16 @@ ms.locfileid: "74225193"
 
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
-在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公共 IP 地址。 
+在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共标准负载均衡器或内部标准负载均衡器。 标准负载均衡器仅支持标准公共 IP 地址，不支持基本公共 IP 地址。 创建公共标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”  ）的新标准公共 IP 地址。 
 
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”    。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription               | 选择订阅。    |    
-    | Resource group         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
@@ -75,7 +75,7 @@ ms.locfileid: "74225193"
     
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myHealthProbe*。 |
+    | 名称 | 输入 *myHealthProbe*。 |
     | 协议 | 选择“HTTP”。  |
     | 端口 | 输入 *80*。|
     | 时间间隔 | 输入 *15* 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
@@ -92,7 +92,7 @@ ms.locfileid: "74225193"
     
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myHTTPRule*。 |
+    | 名称 | 输入 *myHTTPRule*。 |
     | 协议 | 选择“TCP”  。 |
     | 端口 | 输入 *80*。|
     | 后端端口 | 输入 *80*。 |
@@ -112,10 +112,10 @@ ms.locfileid: "74225193"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myVNet*。 |
+    | 名称 | 输入 *myVNet*。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
-    | Subscription | 选择订阅。|
-    | Resource group | 选择现有资源 - *myResourceGroupSLB*。 |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择现有资源 - *myResourceGroupSLB*。 |
     | 位置 | 选择“西欧”  。|
     | 子网 - 名称 | 输入 *myBackendSubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
@@ -133,7 +133,7 @@ ms.locfileid: "74225193"
    - 在“实例详细信息” > “可用性选项”中，选择“可用性区域”。    
    - 在“实例详细信息” > “可用性区域”中，选择“1”。   
    - 管理员帐户 > 输入用户名、密码和确认密码信息     。
-   - 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+   - 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。
   
 1. 在“网络”选项卡中，确保选中以下项  ：
    - **虚拟网络**：*myVnet*
@@ -154,7 +154,7 @@ ms.locfileid: "74225193"
 
     | 设置 | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name |  *myVM2* |*myVM3*|
+    | 名称 |  *myVM2* |*myVM3*|
     | 可用性区域 | 2 |3|
     |公共 IP| **标准** SKU|**标准** SKU|
     | 公共 IP - 可用性区域| **区域冗余** |**区域冗余**|

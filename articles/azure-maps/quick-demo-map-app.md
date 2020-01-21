@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure Maps 执行交互式地图搜索
-description: Azure 快速入门 - 使用 Azure Maps 创建演示版交互式地图搜索
+title: 快速入门：使用 Azure Maps 执行交互式地图搜索 | Microsoft Azure Maps
+description: 了解如何使用 Microsoft Azure Maps Web SDK 创建用于交互式地图搜索的演示 Web 应用程序。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408421"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910682"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
@@ -57,7 +57,7 @@ ms.locfileid: "75408421"
 2. 在设置部分中，选择“身份验证”  。
 3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
 
-![在门户中获取主密钥](./media/quick-demo-map-app/get-key.png)
+![在 Azure 门户中获取主密钥 Azure Maps 密钥](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>下载应用程序
 
@@ -73,7 +73,7 @@ ms.locfileid: "75408421"
 4. 尝试交互式搜索体验。 在演示版 Web 应用程序左上角的搜索框中，搜索“餐厅”  。
 5. 将鼠标移到搜索框下面显示的地址/位置列表上。 可以看到，地图上的相应图钉会弹出有关该位置的信息。 为保护私营企业的隐私，地图中显示的名称和地址都是虚构的。
 
-    ![交互式搜索 Web 应用程序](./media/quick-demo-map-app/interactive-search.png)
+    ![交互式地图搜索 Web 应用程序](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

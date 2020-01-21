@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: f8bd768dc7c01310874cd484f59869fbafcf3fe7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074196"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940943"
 ---
 # <a name="api-management-policy-samples"></a>API 管理策略示例
 
@@ -33,6 +33,7 @@ ms.locfileid: "70074196"
 | [基于 JWT 声明授权访问权限](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | 演示如何基于 JWT 声明授予对 API 中特定 HTTP 方法的访问权限。                                                                                                                                       |
 | [使用外部授权者授权请求](./policies/authorize-request-using-external-authorizer.md)                                                   | 演示如何使用外部授权者保护 API 访问。                                                                                                                                                               |
 | [使用 Google OAuth 令牌授予访问权限](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | 演示如何使用 Google 作为 OAuth 令牌提供程序授予对终结点的访问权限。                                                                                                                                    |
+| [使用应用程序网关时筛选 IP 地址](./policies/filter-ip-addresses-when-using-appgw.md) | 说明通过应用程序网关访问 API 管理实例时如何通过策略进行 IP 筛选
 | [生成共享访问签名并将请求转发到 Azure 存储](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | 演示如何使用表达式生成[共享访问签名](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1)并使用 rewrite-uri 策略将请求转发到 Azure 存储。 |
 | [从 AAD 获取 OAuth2 访问令牌并将其转发到后端](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | 提供一个示例用于演示如何使用 OAuth2 在网关与后端之间授权。 该示例演示如何从 AAD 获取访问令牌并将其转发到后端。                                                    |
 | [使用发送请求策略从 SAP 网关获取 X-CSRF 令牌](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | 演示如何实现许多 API 所用的 X-CSRF 模式。 此示例特定于 SAP 网关。                                                                                                                           |

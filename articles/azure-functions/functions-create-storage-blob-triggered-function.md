@@ -5,12 +5,12 @@ ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: be8d7abc6d7bb583516ca75f316edd18965ac395
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65717e4373f64ae38a324fd19624f049dba9dfb1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227149"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769296"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "74227149"
 
 ![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 下载并安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
 + Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -45,7 +45,7 @@ ms.locfileid: "74227149"
 
 1. 在搜索字段中，键入 `blob`，然后选择“Blob 触发器”  模板。
 
-1. 如果系统提示，请选择“安装”  以在函数应用中安装 Azure 存储扩展的任何依赖项。 安装成功后，选择“继续”  。
+1. 如果系统提示，请选择“安装”  以在函数应用中安装 Azure 存储扩展以及任何依赖项。 安装成功后，选择“继续”  。
 
     ![安装绑定扩展](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
 

@@ -1,153 +1,174 @@
 ---
 title: 使用 Azure IoT Central 生成零售解决方案 | Microsoft Docs
-description: 了解如何使用应用程序模板通过 Azure IoT Central 生成联接的物流、数字分发中心、店内分析环境监视、结帐和智能库存管理零售解决方案。
-author: KishorIoT
-ms.author: nandab
-ms.date: 10/22/2019
+description: 了解如何使用 Azure IoT Central 应用程序模板构建联接的物流、数字分发中心、店内分析环境监视、结帐、智能库存管理以及零售解决方案。
+author: avneet723
+ms.author: avneets
+ms.date: 01/10/2020
 ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890705"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895852"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Azure IoT Central 是面向解决方案构建者的物联网 (IoT) 应用平台，它简化了构建和管理可缩放应用程序的问题。 在本文中，我们将重点介绍 IoT Central 中的几个特定于零售的应用程序模板。 解决方案构建者可以利用已发布的模板构建 IoT 解决方案，来优化供应链，改进客户的店内体验，更高效地跟踪库存。
+Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维护企业级 IoT 解决方案相关联的负担和成本。 选择使用 Azure IoT Central 进行构建可将时间、金钱和精力集中于使用 IoT 数据转换业务，而不仅仅是维护和更新复杂且不断发展的 IoT 基础结构。
+
+本文介绍了几个特定于零售的 IoT Central 应用程序模板。 作为解决方案构建者，你可以利用已发布的模板构建 IoT 解决方案，来优化供应链，改进客户的店内体验，更高效地跟踪库存。
 
 > [!div class="mx-imgBorder"]
 > ![Azure IoT 零售概述](./media/overview-iot-central-retail/retail-app-templates.png)
 
+以下各部分介绍了这些应用程序模板的功能：
 
-## <a name="what-is-connected-logistics-solution"></a>什么是联接的物流解决方案？
-在 2020 年，全球物流支出预计将达到 10.6 万亿美元，是最高的行业 GDP。 货运是物流总支出的主体 (70%)。 货运提供商面临激烈的竞争压力和严峻的限制。 第三方提供商正在面临时间期限不断缩减以及补偿费用不断上涨的挑战。 地理政治、极端气候事件以及犯罪活动带来的风险进一步加剧了物流业的压力。 
+## <a name="connected-logistics"></a>互联物流
 
-借助 IoT 传感器，可以通过 GPS 跨多模转换（空气、水和地面）收集和监视环境状况（温度、湿度、坡度、冲击、光线）和货物位置。 从传感器、设备、天气和事件收集的数据可以与基于云的商业智能系统集成。 联接的物流解决方案有以下优势：
-* 通过实时跟踪进行货物转运 
-* 通过实时环境状况监视和冷链保持货运完整性
-* 安全性，避免货物被盗、丢失或损坏
-* 地理围栏、路线优化、船队管理。 车辆分析
-* 出发和抵达预测 
+在 2020 年，全球物流支出预计将达到 10.6 万亿美元。 货物运输占这项开支的大部分，货运提供商面临激烈的竞争压力和严峻的限制。
 
-### <a name="out-of-box-experience"></a>全新体验
-合作伙伴可以利用模板开发端到端联接物流解决方案和上述优势。 这个已发布的模板以 IoT Central 中设备的设备连接、配置和管理为中心。 
+你可以使用物联网传感器来收集和监测环境状况，例如温度、湿度、倾斜、冲击、光照和装运位置。 你可以将从物联网传感器和设备收集的遥测数据与其他数据源（例如基于云的商业智能系统中的天气和交通信息）结合使用。
+
+联接的物流解决方案有以下优势：
+
+* 具有实时跟踪功能的发运监视。 
+* 通过实时环境状况监视保持货运完整性。
+* 安全性，避免货物被盗、丢失或损坏。
+* 地理围栏、路线优化、船队管理以及车辆分析。
+* 预测功能，可预测货物的出发和到达情况。
+
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
 > [!div class="mx-imgBorder"]
-> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+> ![互联物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
 
 > [!div class="mx-imgBorder"]
-> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+> ![互联物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
 
-请注意，上面的仪表板是示例体验，可以完全自定义此应用程序，以符合所需的用例。
+若要了解详细信息，请参阅[部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics-pnp.md)教程。
 
-请从[端到端教程](./tutorial-iot-central-connected-logistics-pnp.md)入手，它将逐步说明如何利用联接的物流解决方案模板构建解决方案。
+## <a name="digital-distribution-center"></a>数字分发中心
 
+随着越来越多的制造商和零售商进入世界各地，它们的供应链也不断扩展且越来越复杂。 消费者现在希望有大量的产品可供选择，并且希望在购买后的 1-2 天内即可到货。 分发中心必须适应这些趋势，并克服当前导致效率低下的问题。 
 
+如今，依赖人工意味着分拣和打包占据分发中心成本的 55%-65%。 人工分拣和打包通常也比自动化系统慢，快速波动的人员需求使得运输量需求更加难以满足。 这种季节性的波动导致员工流动率高，并且出错概率会大增且代价高昂。
 
-## <a name="what-is-digital-distribution-center-solution"></a>什么是数字分发中心解决方案？
-随着越来越多的制造商和零售商进入世界各地，它们的供应链也已扩展到前所未有的复杂程度。 分发中心正在成为主要挑战。 分发中心/仓库正在面临电子商务带来的压力和冲击。 消费者现在希望有大量的产品可供选择，并且希望在购买后的 1-2 天内即可到货。 分发中心必须适应这些趋势，并克服当前导致效率低下的问题。 
+通过启用数字反馈循环，基于 IoT 支持的摄像头的解决方案可以提供转换优势。 分发中心的数据有助于生成可操作见解，而后者反过来会促进生成更优质的数据。
 
-如今，过度依赖人工意味着分拣和打包占据分发中心成本的 55%-65%。 弊端在于，一方面人工会降低分发中心的效率，另一方面剧烈波动的员工需求（节假日员工需求上涨 10 倍）加剧了满足货运量的难度。 这种季节性波动会导致高流动性和高出错率，并且高成本返工需求也随之增加。
-通过启用数字反馈循环，基于 IoT 支持的摄像头的解决方案可以提供转换优势。 分发中心的数据流入会生成可操作见解，它们反之会生成更优质的数据。
+数字分发中心的优势包括：
 
-好处有： 
-* 当货物抵达并通过输送系统转移时，摄像头进行监视
-* 发现有问题的货物，并将它们送至维修之处
-* 高效地追踪订单
-* 降低成本，提高效率，最大程度提高效用
+* 当货物抵达并通过输送系统转移时，摄像头进行监视。
+* 自动识别有问题的货物。
+* 高效的订单跟踪。
+* 降低了成本，提高了工作效率并优化了利用率。
 
-### <a name="out-of-box-experience"></a>全新体验
-合作伙伴可以利用此应用程序模板构建数字分发中心，来获取可操作见解以及上述好处。 这个已发布的模板以 IoT Central 中的摄像头和边缘设备的设备连接、配置和管理为中心。 
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
 > [!div class="mx-imgBorder"]
 > ![数字分发中心仪表板](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
 
-请注意，上面的仪表板是示例体验，可以完全自定义此应用程序，以符合所需的用例。
+若要了解详细信息，请参阅[部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center-pnp.md)教程。
 
-请从[端到端教程](./tutorial-iot-central-digital-distribution-center-pnp.md)入手，它将逐步说明如何利用数字分发中心模板构建解决方案。
+## <a name="in-store-analytics---condition-monitoring"></a>店内分析 - 环境监视
 
+对许多零售商来说，其店内的环境状况是他们与竞争对手的一个关键区别。 为客户着想，零售商希望在他们的店内保持舒适的环境。  
 
+作为解决方案构建者，你可以使用 IoT Central 的店内分析 - 环境监视应用程序模板来构建端到端解决方案。 借助此应用程序模板，你可以使用各种传感器设备进行数字连接，并监视零售商店环境。 这些传感器设备生成遥测数据，你可以将其转换为业务见解，帮助零售商降低运营成本，为其客户创造良好的体验。
 
-## <a name="what-is-in-store-analytics-condition-monitoring"></a>什么是店内分析环境监视？
-在如今的竞争环境下，零售商正在寻求新方法，来为客户提供独特或特殊产品/服务，以驱动其实体商店的流量。 许多零售商都认为店内的环境状况是区别于竞争者的重要工具。 零售商希望确保他们可以一直维持商店内的愉悦环境，为客户提供舒适的体验。  
+使用此应用程序模板，可以：
 
-IoT Central 内的店内分析环境监视应用程序模板为解决方案构建者提供了生成端到端解决方案的画布。 借助应用程序模板，他们可以使用各种传感器设备进行数字连接，并监视零售商店环境。 这些传感器设备捕获有意义的信号，这些信号可以转换为业务见解，使零售商可以降低运营成本，并生成客户喜欢的体验。
+* 将各种 IoT 传感器连接到 IoT Central 应用程序实例。
+* 监视并管理传感器网络以及环境中的网关设备的运行状况。
+* 创建关于店内环境状况的自定义规则，以针对商店管理人员触发警报。
+* 将店内的环境状况转换为见解，供零售店团队用来改进客户体验。
+* 将聚合的见解导出到现有的或新的业务应用程序，为零售员工提供有用及时的信息。
 
-可以使用应用程序模板实现以下目的：
+应用程序模板附带了一组设备模板，并使用一组模拟设备来填充该仪表板。 
 
-*  将各种 IoT 传感器无缝连接到 IoT Central 应用程序实例。
-*  监视并管理传感器网络以及环境中的网关设备的运行状况。
-*  创建关于店内环境状况的自定义规则，以触发相应的警报。
-*  将店内的环境状况转换为见解，供零售店团队使用。
-* 将聚合的见解导出到为零售员工成员提供支持的现有或新的业务应用程序。
-
-### <a name="out-of-box-experience"></a>全新体验
-应用程序模板附带一套设备模板以及全新的操作者体验。 它使用一组模拟设备来填充仪表板元素。 使用[店内分析环境监视](https://aka.ms/conditiontemplate)应用模板部署 IoT Central 应用程序后，将登陆到默认的应用程序仪表板，如下所示。 
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
 > [!div class="mx-imgBorder"]
 > ![店内分析环境监视](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
 
-请注意，上面的仪表板是示例体验，可以完全自定义此应用程序，以符合所需的用例。 
+若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app-pnp.md)教程。
 
-请从[端到端教程](./tutorial-in-store-analytics-create-app-pnp.md)入手，它将逐步说明如何利用店内分析环境监视模板构建解决方案。
+## <a name="in-store-analytics---checkout"></a>店内分析 - 结帐
 
+对许多零售商来说，其店内的结帐体验是他们与竞争对手的一个关键区别。 零售商希望在其店内提供顺畅的结帐体验，以促进客户回头购买。  
 
+作为解决方案构建者，你可以使用 IoT Central 的店内分析 - 结帐应用程序模板来构建解决方案，用以将关于商店结帐区域的见解提供给零售员工。 例如，传感器可以针对每个结帐通道提供有关队列长度和平均等待时间的信息。
 
-## <a name="what-is-in-store-analytics-checkout"></a>什么是店内分析结帐？
-在日益激烈的环境下，要提供超出客户预期并使客户重新惠顾的店内体验，这是现代零售商时常面临的一种不断增长的压力。 尽管一些零售商已开始部署技术来满足此需求，但结帐体验是广为忽略的一个方面。
+使用此应用程序模板，可以：
 
-解决方案构建者可以使用 IoT Central 的店内分析结帐应用程序模板生成为零售员工提供关于商店结帐区的有意义见解的体验。 它使用一组模拟设备来确定零售店内各个结帐通道的占用状态。 可以使用传感器捕捉各个结帐通道的人数以及平均等待时间。
-
-此模板可提供实现以下目的的基准 IoT 解决方案，从而帮助解决方案构建者加快其进入市场计划： 
-
-* 将各种 IoT 传感器无缝连接到 IoT Central 应用程序实例。
+* 将各种 IoT 传感器连接到 IoT Central 应用程序实例。
 * 监视并管理传感器网络以及环境中的网关设备的运行状况。
-* 创建关于店内结帐状况的自定义规则，以触发相应的警报。
-* 将店内的结帐状况转换为见解，供零售店团队使用。
-* 将聚合的见解导出到为零售员工成员提供支持的现有或新的业务应用程序。
+* 创建关于店内结帐状况的自定义规则，以针对零售员工触发警报。
+* 将店内的结帐状况转换为见解，供零售店团队用来改进客户体验。
+* 将聚合的见解导出到现有的或新的业务应用程序，为零售员工提供有用及时的信息。
 
-### <a name="out-of-box-experience"></a>全新体验
-应用程序模板附带一套设备模板以及全新的操作者体验。 它使用一组模拟设备来填充仪表板元素。 使用[店内分析结帐](https://aka.ms/checkouttemplate)应用模板部署 IoT Central 应用程序后，将登陆到默认的应用程序仪表板，如下所示。 
+应用程序模板附带了一组设备模板，并使用一组模拟设备将通道占用数据填充到该仪表板。 
+
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
 > [!div class="mx-imgBorder"]
 > ![店内分析结帐](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
 
-请注意，上面的仪表板是示例体验，可以完全自定义此应用程序，以符合所需的用例。 
+若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app-pnp.md)教程。
 
+## <a name="smart-inventory-management"></a>智能库存管理
 
-请从[端到端教程](./tutorial-in-store-analytics-create-app-pnp.md)入手，它将逐步说明如何利用店内分析结帐模板构建解决方案。
+库存是零售商持有的存货。 库存管理对于确保适当产品在适当时间处于适当位置至关重要。 零售商必须在储存过多库存产生的成本与没有足够库存来满足需求产生的成本之间进行权衡。
 
+由射频识别 (RFID) 标签、信标和摄像头生成的物联网数据提供了改进库存管理流程的机会。 你可以将从物联网传感器和设备收集的遥测数据与其他数据源（例如基于云的商业智能系统中的天气和交通信息）结合使用。
 
-## <a name="what-is-smart-inventory-management-solution"></a>什么是智能库存管理解决方案？
-“库存”是零售商持有的存货。 每个零售商都需要库存，来应对供应和物流生产周期。 库存可以说是每个零售商都需要购买的最有价值的资源。 在当今的全渠道环境下，库存管理是确保适当产品在适当时间处于适当位置的关键要求。 库存存储过多或过少可能会损害零售商的业务。 缺少库存管理功能导致每年零售商会损失 8%-10% 的收入。
+智能库存管理的好处有：
 
-由射频标识 (RFID)、信标和摄像头支持的 IoT 数据为成比例解决此重大挑战提供了机遇。 IoT 信号固有的连接性和实时分析已成为零售商库存困境的规则颠覆者。  从传感器、设备、天气和事件收集的数据可以与基于云的商业智能系统集成。  
-智能库存管理的好处有： 
-* 保护组织免遭缺货困境，确保所需的客户服务级别。 
-* 近乎实时地提供对库存准确性的深入分析和见解
-* 确定可满足客户订单需求的相应库存量
+* 降低了商品缺货的风险，并确保达到预期的客户服务水平。 
+* 近乎实时地提供对库存准确性的深入分析和见解。
+* 提供了工具来帮助确定满足客户订单需求所需保持的合适库存量。
 
-### <a name="out-of-box-experience"></a>全新体验
-合作伙伴可以使用模板开发端到端的智能库存管理解决方案和上述好处。 此已发布的模板以 IoT Central 中的 RFID 和低耗电蓝牙 (BLE) 阅读器的设备连接、配置和管理为中心。 
+此应用程序模板侧重于设备连接，以及 RFID 和蓝牙低功耗 (BLE) 读取器设备的配置和管理。
+
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
 > [!div class="mx-imgBorder"]
 > ![智能库存管理仪表板](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
 
-请注意，上面的仪表板是示例体验，可以完全自定义此应用程序，以符合所需的用例。 
+若要了解详细信息，请参阅[部署和演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)教程。
 
-请从[端到端教程](./tutorial-iot-central-smart-inventory-management-pnp.md)入手，它将逐步说明如何利用智能库存管理模板构建解决方案。
+## <a name="micro-fulfillment-center"></a>微履行中心
 
+在竞争日益激烈的零售业格局中，零售商不断面临压力来缩小需求与履行之间的差距。 为了满足日益增长的消费需求，出现了一种新的趋势，即在最终客户及其访问的商店附近建立库存。
+
+利用 IoT Central 微履行中心应用程序模板，解决方案构建者可以监视和管理其完全自动化履行中心的所有方面。 该模板包含一组模拟状况监视传感器和机器人载体，用以加快解决方案的开发过程。 这些传感器设备捕获有意义的信号，这些信号可以转换为业务见解，使零售商可以降低运营成本，并营造客户喜欢的体验。
+
+使用此应用程序模板，可以： 
+
+- 将各种 IoT 传感器（例如机器人和状况监视传感器）无缝连接到 IoT Central 应用程序实例。
+- 监视并管理传感器网络以及环境中的网关设备的运行状况。
+- 创建关于履行中心内环境状况的自定义规则，以触发相应的警报。
+- 将履行中心内的环境状况转换为见解，供零售仓库团队使用。
+- 将聚合的见解导出到现有的或新的业务应用程序，为零售员工成员提供支持。
+
+以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
+
+> [!div class="mx-imgBorder"]
+> ![微履行中心](./media/overview-iot-central-retail/MFC-Dashboard.png)
+
+若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)教程。
 
 ## <a name="next-steps"></a>后续步骤
+
 开始生成零售解决方案：
-* 请从[端到端教程](./tutorial-in-store-analytics-create-app-pnp.md)入手，它将逐步说明如何利用店内分析应用程序模板构建解决方案。
-* 了解如何部署[联接的物流解决方案模板](./tutorial-iot-central-connected-logistics-pnp.md)
-* 了解如何部署[数字分发中心模板](./tutorial-iot-central-digital-distribution-center-pnp.md)
-* 了解如何部署[智能库存管理模板](./tutorial-iot-central-smart-inventory-management-pnp.md)
-* 请参阅 [IoT Central 概述](../preview/overview-iot-central.md)，详细了解 IoT Central
+
+* 请从[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app-pnp.md)入手，它分步介绍了如何利用某个店内分析应用程序模板来构建解决方案。
+* [部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics-pnp.md)。
+* [部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center-pnp.md)。
+* [部署并演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)。
+* [部署并演练微履行中心应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)。
+* 若要详细了解 IoT Central，请参阅 [IoT Central 概述](../preview/overview-iot-central.md)。

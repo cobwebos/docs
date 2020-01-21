@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196402"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028666"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "74196402"
 
 [Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
-本教程是介绍如何使用 Azure Migrate 评估物理服务器的教程系列中的第一篇文章。 本教程介绍如何执行下列操作：
+本教程是介绍如何使用 Azure Migrate 评估物理服务器的教程系列中的第一篇文章。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 准备 Azure。 设置要与 Azure Migrate 配合使用的 Azure 帐户和资源的权限。
@@ -95,26 +95,35 @@ ms.locfileid: "74196402"
 
 ### <a name="verify-physical-server-settings"></a>验证物理服务器设置
 
-1. 验证服务器评估的[物理服务器要求](migrate-support-matrix-physical.md#assessment-physical-server-requirements)。
-2. 确保物理服务器上已打开[所需的端口](migrate-support-matrix-physical.md#assessment-port-requirements)。
+1. 验证服务器评估的[物理服务器要求](migrate-support-matrix-physical.md#physical-server-requirements)。
+2. 确保物理服务器上已打开[所需的端口](migrate-support-matrix-physical.md#port-access)。
 
 
 ### <a name="verify-appliance-settings"></a>验证设备设置
 
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
-1. [验证](migrate-support-matrix-physical.md#assessment-appliance-requirements)设备要求。
-2. [查看](migrate-support-matrix-physical.md#assessment-appliance-url-access)设备需要访问的 Azure URL。
-3. 查看设备在发现和评估期间要收集的数据。
-4. [注意](migrate-support-matrix-physical.md#assessment-port-requirements)设备的端口访问要求。
+1. [验证](migrate-appliance.md#appliance---physical)物理服务器的设备要求。
+2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。
+3. [查看](migrate-appliance.md#collected-data---vmware)设备在发现和评估期间要收集的数据。
+4. [请注意](migrate-support-matrix-physical.md#port-access)端口访问要求进行物理服务器评估。
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>设置物理服务器发现的帐户
 
 Azure Migrate 需要拥有发现本地服务器的权限。
 
-- **Windows**：在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到以下组：       - 远程管理用户       - 性能监视器用户       - 性能日志用户
+- **Windows：** 在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到以下组：       - 远程管理用户       - 性能监视器用户       - 性能日志用户
 - **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。
+
+## <a name="prepare-for-physical-server-migration"></a>为物理服务器迁移做准备
+
+查看物理服务器迁移的要求。
+
+- [查看](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器迁移要求。
+- “Azure Migrate:服务器迁移使用复制服务器进行物理服务器迁移：
+    - [查看](migrate-replication-appliance.md#appliance-requirements)复制设备的部署要求，以及用于在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
+    - 查看复制设备的 [URL](migrate-replication-appliance.md#url-access) 和 [port] (migrate-replication-appliance.md#port-access) 访问要求。
 
 
 ## <a name="next-steps"></a>后续步骤

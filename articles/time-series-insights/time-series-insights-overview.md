@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452835"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861789"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
@@ -67,7 +67,7 @@ Azure 时序见解会捕获每一个新事件并将其存储为一行，所做�
 
 ## <a name="capabilities"></a>功能
 
-- **快速入门**：Azure 时序见解不需前期数据准备，因此你可以在 IoT 中心或事件中心快速连接到数百万事件。 连接以后，即可可视化传感器数据并与之交互，快速验证 IoT 解决方案。 无需编写代码即可与数据交互，也无需学习新的语言。 时序见解既为高级用户提供精细的自定义文本查询图面，又提供点击浏览体验。
+- **快速入门**：Azure 时序见解不需前期数据准备，因此你可以在 IoT 中心或事件中心快速连接到数百万事件。 连接以后，即可可视化传感器数据并与之交互，快速验证 IoT 解决方案。 无需编写代码即可与数据交互，也无需学习新的语言。 时序见解既为高级用户提供精细的自由文本查询图面，又提供点击浏览体验。
 
 - **近乎实时的见解**：时序见解每天可以引入数百万个传感器事件，只有一分钟的延迟。 可以通过时序见解深入分析传感器数据。 可以通过它来发现趋势和异常情况，进行根本原因分析并避免成本高昂的停机。 在实时数据和历史数据之间进行交叉关联，帮助你发现数据中隐藏的趋势。
 
@@ -82,7 +82,7 @@ Azure 时序见解会捕获每一个新事件并将其存储为一行，所做�
 1. 在 Azure 门户中预配时序见解环境。
 1. 连接到 IoT 中心或事件中心等事件源。
 1. 上传参考数据。 这不是一项附加服务。
-1. 使用时序见解资源管理器，几分钟内就可以看到你的数据。
+1. 使用时序见解资源管理器在几分钟内查看并显示数据。
 
 ## <a name="explorer"></a>资源管理器
 

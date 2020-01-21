@@ -7,14 +7,14 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4fa9e6038f4007246552610f537825f9def92a8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720546"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939955"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>快速入门：使用 Python 向/从事件中心发送/接收事件
 
@@ -22,10 +22,14 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 本快速入门介绍如何创建用于向/从事件中心发送/接收事件的 Python 应用程序。 
 
+> [!IMPORTANT]
+> 本快速入门使用 Azure 事件中心 Python SDK 版本 1。 如果你不熟悉 Azure 事件中心，请使用 Python SDK 版本 5。 有关使用 Python SDK 版本 5 的快速入门，请参阅[此文](get-started-python-send-v2.md)。 若要将现有代码从版本 1 迁移到版本 5，请参阅[迁移指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
+
+
 > [!NOTE]
 > 如果你不想要学习本快速入门，可以从 GitHub 下载并运行[示例应用](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)。 请将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为你的事件中心值。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，需要具备以下先决条件：
 

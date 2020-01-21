@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b447a0328de210caeb23a1beb91c532853c180bc
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550411"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867491"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>快速入门：使用设备功能模型创建 IoT 即插即用预览设备 (Windows)
 
@@ -85,7 +85,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 在本快速入门中，你将使用现有的示例设备功能模型和关联的接口。
 
-1. 在本地驱动器上创建 `pnp_app` 目录。 使用此文件夹来存储设备模型文件和设备代码存根。
+1. 在本地驱动器中创建 `pnp_app` 文件夹。 使用此文件夹来存储设备模型文件和设备代码存根。
 
 1. 下载[设备功能模型和接口示例文件](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)和[接口示例](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)，并将文件保存到 `pnp_app` 文件夹中。
 
@@ -109,7 +109,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 选择用于生成设备代码存根的 SampleDevice.capabilitymodel.json 文件  。
 
-1. 输入项目名称 sample_device  。 这将是设备应用程序的名称。
+1. 输入项目名称 sample_device  。 这是设备应用程序的名称。
 
 1. 选择“ANSI C”作为语言。 
 
@@ -124,7 +124,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="build-and-run-the-code"></a>生成并运行代码
 
-使用设备 SDK 源代码来生成生成的设备代码存根。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
+使用 Vcpkg 包生成设备代码存根。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
 
 1. 在 `sample_device` 文件夹中创建 `cmake` 子目录，并导航到该文件夹：
 

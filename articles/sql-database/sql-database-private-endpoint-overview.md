@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821289"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045641"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL 数据库和数据仓库的专用链接（预览版）
 
@@ -57,7 +57,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 ### <a name="approval-process"></a>审批过程
 网络管理员创建专用终结点 (PE) 后，SQL 管理员可以管理与 SQL 数据库建立的专用终结点连接 (PEC)。
 
-1. 在 Azure 门户中导航到 SQL Server 资源。
+1. 按照下面的屏幕截图中所示的步骤，导航到 Azure 门户中的 SQL 服务器资源
 
     - (1) 在左窗格中选择“专用终结点连接”
     - (2) 显示所有专用终结点连接 (PEC) 的列表
@@ -146,8 +146,10 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 检查连接
+> [!NOTE]
+>在客户端的连接字符串中使用服务器的**完全限定的域名(FQDN)** 。 直接登录到 IP 地址的任何尝试都将因设计失败。
 
-最后一步是[使用 SSMS 连接到 SQL 数据库](sql-database-connect-query-ssms.md)。 使用 SSMS 连接到 SQL 数据库后，请运行以下查询，验证是否正在从 Azure VM 的专用 IP 地址进行连接：
+请按照此处的步骤使用 [SSMS 连接到 SQL 数据库](sql-database-connect-query-ssms.md)。 使用 SSMS 连接到 SQL 数据库后，请运行以下查询，验证是否正在从 Azure VM 的专用 IP 地址进行连接：
 
 ````
 select client_net_address from sys.dm_exec_connections 

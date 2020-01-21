@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707746"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912260"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教程：生成模拟设备数据
 
@@ -123,7 +123,7 @@ DeviceHarness 项目是一个以 C# 编写的 .NET Core 项目，包含四个类
 
 1. 可以通过右键单击任何设备并选择“开始监视内置事件终结点”，查看发送到中心的消息  。 这些消息将显示在 Visual Studio Code 的输出窗格中。
 
-1. 单击“Azure IoT 中心工具包”输出窗格，并选择“停止监视内置事件终结点”，可停止监视   。
+1. 单击“Azure IoT 中心”输出窗格，并选择“停止监视内置事件终结点”，可停止监视   。
 
 1. 等待应用程序运行完成，这需要几分钟时间。
 

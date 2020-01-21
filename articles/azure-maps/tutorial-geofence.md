@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Maps 创建地域隔离区
-description: 教程：使用 Azure Maps 设置地域隔离区。
+title: 教程：在地图上创建地理围栏并跟踪设备 | Microsoft Azure Maps
+description: 本教程介绍如何使用 Microsoft Azure Maps 空间服务设置地理围栏并跟踪相对于地理围栏的设备。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407838"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910944"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -58,7 +58,7 @@ ms.locfileid: "75407838"
 
 3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 密钥。
    
-    ![Postman 中的键值对参数](./media/tutorial-geofence/postman-key-vals.png)
+    ![Postman 中用于上传数据的参数（地理围栏）](./media/tutorial-geofence/postman-key-vals.png)
 
 4. 单击“正文”，选择原始输入格式，然后从下拉列表中选择“JSON”作为输入格式  。 提供以下 JSON 作为要上传的数据：
 
@@ -177,7 +177,7 @@ ms.locfileid: "75407838"
 
 1. 在 Azure 门户中创建逻辑应用
 
-   ![创建逻辑应用](./media/tutorial-geofence/logic-app.png)
+   ![创建 Azure 逻辑应用以处理地理围栏事件](./media/tutorial-geofence/logic-app.png)
 
 2. 选择 HTTP 请求触发器，然后在 Outlook 连接器中选择“发送电子邮件”作为操作
   
@@ -185,7 +185,7 @@ ms.locfileid: "75407838"
 
 3. 保存该逻辑应用以生成 HTTP URL 终结点并复制 HTTP URL。
 
-   ![逻辑应用终结点](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![生成逻辑应用终结点](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>创建 Azure Maps 事件订阅
@@ -196,15 +196,15 @@ Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com
 
 1. 通过[此门户链接](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/)导航到 Azure Maps 帐户，然后选择“事件”选项卡。
 
-   ![Azure Maps 事件](./media/tutorial-geofence/events-tab.png)
+   ![导航到 Azure Maps 帐户事件](./media/tutorial-geofence/events-tab.png)
 
 2. 若要创建事件订阅，请从“事件”页中选择“事件订阅”。
 
-   ![Azure Maps 事件订阅](./media/tutorial-geofence/create-event-subscription.png)
+   ![创建 Azure Maps 事件订阅](./media/tutorial-geofence/create-event-subscription.png)
 
 3. 为事件订阅命名，并订阅“进入”事件类型。 现在，选择“Web Hook”作为“终结点类型”，并将逻辑应用 HTTP URL 终结点复制到“终结点”中
 
-   ![事件订阅](./media/tutorial-geofence/events-subscription.png)
+   ![Azure Maps 事件订阅详细信息](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>使用地域隔离区 API
@@ -214,7 +214,7 @@ Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com
 > [!Note]
 > 上述方案和行为基于相同的**设备 ID**，因此，它反映了下图所示的五个不同位置。
 
-![地域隔离区图](./media/tutorial-geofence/geofence.png)
+![Azure Maps 中的地理围栏图](./media/tutorial-geofence/geofence.png)
 
 在 Postman 应用中，在上面创建的同一集合中打开一个新的选项卡。 在生成器选项卡上选择 GET HTTP 方法：
 

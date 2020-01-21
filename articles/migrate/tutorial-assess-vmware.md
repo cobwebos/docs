@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453282"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028738"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估来评估 VMware VM
 
@@ -41,11 +41,11 @@ ms.locfileid: "75453282"
 
 - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-vmware.md#prepare-azure)。
 - [准备 VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) 以进行评估：
-   - 验证 VMware 设置。
-   - 设置使用 OVA 模板创建 VMware VM 所需的权限。
-   - 设置用于 VM 发现的帐户。 
-   - 使所需端口可用。
-   - 了解访问 Azure 所需的 URL。
+   - [验证](migrate-support-matrix-vmware.md#vmware-requirements) VMware 设置。
+   - 在 VMware 中设置使用 OVA 模板创建 VMware VM 所需的权限。
+   - 设置[用于 VM 发现的帐户](migrate-support-matrix-vmware.md#vmware-requirements)。 
+   - 使[所需端口](migrate-support-matrix-vmware.md#port-access)可用。
+   - 了解访问 Azure [所需的 URL](migrate-replication-appliance.md#url-access)。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
 
@@ -130,7 +130,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到 [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements)。
+确保设备 VM 可以连接到 [Azure URL](migrate-appliance.md#url-access)。
 
 ### <a name="configure-the-appliance"></a>配置设备
 
@@ -172,7 +172,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 在“指定 vCenter Server 详细信息”中，指定 vCenter Server 实例的名称 (FQDN) 或 IP 地址。  可以保留默认端口，或指定 vCenter Server 侦听的自定义端口。
 1. 在“用户名”和“密码”中，指定设备用来发现 vCenter 服务器实例上的 VM 的 vCenter Server 帐户凭据   。 
 
-   请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)。 可以通过限制对 vCenter 帐户的访问，来[限定发现范围](tutorial-assess-vmware.md#set-the-scope-of-discovery)。
+   请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#vmware-requirements)。 可以通过限制对 vCenter 帐户的访问，来[限定发现范围](tutorial-assess-vmware.md#set-the-scope-of-discovery)。
 1. 选择“验证连接”，确保设备可以连接到 vCenter Server。 
 
 ### <a name="specify-vm-credentials"></a>指定 VM 凭据

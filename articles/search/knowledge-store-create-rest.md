@@ -8,19 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563218"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754083"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>使用 REST 创建 Azure 认知搜索知识存储
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出供后续分析或进行其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 认知搜索为其编制索引，应用 Azure 认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
+知识存储包含 Azure 认知搜索扩充管道的输出，用于后续分析或其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 认知搜索为其编制索引，应用认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
 
 在本文中，你将使用 REST API 接口基于一系列酒店评论引入、编制索引和应用 AI 扩充。 酒店评论已导入到 Azure Blob 存储中。 结果已作为知识存储保存在 Azure 表存储中。
 
@@ -55,7 +55,7 @@ Azure 认知搜索中的知识存储功能可以保留 AI 扩充管道的输出�
 
 1. 对此资源的操作即将完成，但在退出这些页面之前，请使用左侧导航窗格中的链接打开“访问密钥”页。  获取用于从 Blob 存储检索数据的连接字符串。 连接字符串类似于以下示例：`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. 仍然是在门户中，切换至 Azure 认知搜索。 [新建服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本练习中使用免费服务。
+1. 仍然在门户中，切换到 Azure 认知搜索。 [新建服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本练习中使用免费服务。
 
 ## <a name="configure-postman"></a>配置 Postman
 

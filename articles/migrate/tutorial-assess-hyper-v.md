@@ -1,29 +1,25 @@
 ---
 title: 使用 Azure Migrate 评估要迁移到 Azure 的 Hyper-V VM | Microsoft Docs
 description: 介绍如何使用 Azure Migrate 评估要迁移到 Azure 的本地 Hyper-V VM。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158384"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029023"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
-本文介绍如何使用“Azure Migrate:服务器评估”工具评估本地 Hyper-V VM。
+本文介绍如何使用“Azure Migrate:服务器评估”工具评估本地 VMware VM。
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
 
 
-本教程是演示如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第二篇文章。 本教程介绍如何执行下列操作：
+本教程是演示如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第二篇文章。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置一个 Azure Migrate 项目。
@@ -38,12 +34,13 @@ ms.locfileid: "74158384"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [完成](tutorial-prepare-hyper-v.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
     - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-hyper-v.md#prepare-azure)。
-    - [准备](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment)要评估的 Hyper-V 群集、主机和 VM。
+    - [准备](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)要评估的 Hyper-V 群集、主机和 VM。
+    - [准备部署](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)用于 Hyper-V VM 发现和评估的 Azure Migrate 设备。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
 
@@ -66,8 +63,8 @@ ms.locfileid: "74158384"
     --- | ---
     亚洲  | 东南亚
     欧洲 | 欧洲北部或欧洲西部
-    英国 |  英国南部或英国西部
-    美国 | 美国东部、美国西部 2 或美国中西部
+    United Kingdom |  英国南部或英国西部
+    United States | 美国东部、美国西部 2 或美国中西部
 
     - 项目区域仅用于存储从本地 VM 中收集的元数据。
     - 迁移 VM 时，可以选择其他 Azure 目标区域。 迁移目标支持所有 Azure 区域。
@@ -88,7 +85,7 @@ ms.locfileid: "74158384"
 
 Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
-- 此设备执行 VM 发现，并将 VM 元数据和性能数据发送到“Azure Migrate:服务器评估”。
+- 此设备执行 VM 发现，并将 VM 元数据和性能数据发送到“Azure Migrate:两种类型的评估。
 - 若要设置该设备，请执行以下操作：
     - 从 Azure 门户下载压缩的 Hyper-V VHD。
     - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
@@ -148,7 +145,7 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到 [Azure URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)。
+确保设备 VM 可以连接到 [Azure URL](migrate-appliance.md#url-access)。
 
 ### <a name="configure-the-appliance"></a>配置设备
 
@@ -156,7 +153,7 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
 1. 在“Hyper-V 管理器”>“虚拟机”中，右键单击该 VM 并选择“连接”。  
 2. 提供设备的语言、时区和密码。
-3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:44368**。
+3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上单击应用快捷方式打开该应用。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作： 
@@ -184,7 +181,7 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 
 如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 这需要以下条件：
 
-- 允许每个主机充当设备的代理。 在上一个教程中，当你准备要评估和迁移的 Hyper-V 时，应该已执行此操作。 应该已[手动](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)或通过[运行 Hyper-V 先决条件配置脚本](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script)为主机设置了 CredSSP。
+- 允许每个主机充当设备的代理。 如果你按照教程顺序操作，则在上一教程准备 Hyper-V 进行评估和迁移时执行了此操作。 应该[手动](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)或通过[运行执行此操作的脚本](tutorial-prepare-hyper-v.md#prepare-with-a-script)为主机设置 CredSSP。
 - 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
 
 在设备上启用，如下所示：
@@ -214,7 +211,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 1. 在“用户名”和“密码”中，指定设备用来发现 VM 的帐户凭据。   指定凭据的易记名称，然后单击“保存详细信息”。 
 2. 单击“添加主机”，然后指定 Hyper-V 主机/群集详细信息。 
-3. 单击“验证”。  验证后，将显示每个主机/群集上可发现的 VM 数。
+3. 单击 **“验证”** 。 验证后，将显示每个主机/群集上可发现的 VM 数。
     - 如果主机验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。  解决问题并再次验证。
     - 若要删除主机或群集，请选择“删除”。 
     - 无法删除群集中的特定主机。 只能删除整个群集。

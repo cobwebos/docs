@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/09/2019
+ms.date: 01/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503de723894388a198abbb687221cb1403a6fa84
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 29cf5eebfb485837ee9656909323688384a4b890
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104431"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "71104431"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -97,15 +97,15 @@ ms.locfileid: "71104431"
 
 6. 除了上述属性外，Cisco Webex 应用程序还需要另外几个属性在 SAML 响应中传回。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -153,26 +153,34 @@ ms.locfileid: "71104431"
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-cisco-webex"></a>配置 Cisco Webex
 
-1. 使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
+1. 若要在 Cisco Webex 中自动执行配置，需要通过单击“安装扩展”，安装“我的应用安全登录浏览器扩展”   。
 
-2. 选择“设置”，在“身份验证”部分下单击“修改”。   
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Cisco Webex”，此时会将你定向到 Cisco Webex 应用程序  。 在此处提供管理员凭据以登录到 Cisco Webex。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-8。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 如果要手动设置 Cisco Webex，请使用完整管理员凭据登录到 [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/)。
+
+4. 选择“设置”，在“身份验证”部分下单击“修改”。   
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
-3. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
+5. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
 
-4. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
+6. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
 
     ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
-5. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
+7. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
 
-6. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。  启用单一登录”，并单击“下一步”。 
+8. 返回到 **Cisco Cloud Collaboration Management** 浏览器标签页。如果测试成功，则选择“此测试成功。  启用单一登录”，并单击“下一步”。 
 
 ### <a name="create-cisco-webex-test-user"></a>创建 Cisco Webex 测试用户
 

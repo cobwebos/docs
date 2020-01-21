@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Maps 创建商店定位器
-description: 教程：使用 Azure Maps 创建店铺定位器。
+title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
+description: 本教程将介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408044"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910954"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -43,13 +43,13 @@ ms.locfileid: "75408044"
 
 <center>
 
-![Contoso Coffee 咖啡店位置的店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee 店铺位置的店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 为了最大程度地利用此店铺定位器，我们包含了一种响应式布局，当用户的屏幕宽度小于 700 像素时，该布局可以调整。 在移动设备等的小型屏幕上，响应式布局可让我们轻松使用店铺定位器。 下面是小屏幕布局的框图：  
 
 <center>
 
-![移动设备上的 Contoso Coffee 店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 框图中显示了一个相当简洁的应用程序。 该应用程序提供一个搜索框、附近店铺的列表、包含一些标记（符号）的地图，以及当用户选择某个标记时显示其他信息的弹出窗口。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
 

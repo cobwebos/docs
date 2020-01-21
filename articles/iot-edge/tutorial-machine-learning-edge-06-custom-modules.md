@@ -8,17 +8,17 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701845"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772357"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
 > [!NOTE]
-> 有一个教程系列介绍如何在 IoT Edge 上使用 Azure 虚拟机，本文是其中的一篇。 如果你是直接转到本文的，建议你从该系列中的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
+> 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
 在本文中，我们要创建三个 IoT Edge 模块来从叶设备中接收消息，通过机器学习模型运行数据，然后将见解转发到 IoT 中心。
 
@@ -45,7 +45,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 
   * 输出：
     * 分类器：向“amlInput”发送消息 
-    * writeAvro：发送“avroModuleInput”消息 
+    * writeAvro：向“avroModuleInput”发送消息 
     * toIotHub：将消息发送到 $upstream，后者再将消息传递到连接的 IoT 中心 
 
 下图显示了整个解决方案的模块、输入、输出和 IoT Edge 中心路由：
@@ -825,7 +825,7 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 
 本文中，我们在 Visual Studio Code 中创建了一个 IoT Edge 解决方案，它具有 3 个模块、1 个分类器、1 个路由器和 1 个文件编写器/上载程序。 我们设置了路由来允许模块在边缘设备上彼此通信，修改了边缘设备的配置，还上传了 Dockerfile 来安装依赖项并将绑定装载添加到模块的容器中。 接下来，我们上传了 IoT 中心的配置来根据类型路由消息并处理文件上传操作。 一切就绪后，我们将模块部署到 IoT Edge设备，同时确保了模块正确运行。
 
-可在以下页面上找到详细信息：
+在以下页面上可以找到更多信息：
 
 * [了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)
 * [IoT 中心消息路由查询语法](../iot-hub/iot-hub-devguide-routing-query-syntax.md)

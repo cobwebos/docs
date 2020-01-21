@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532470"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982441"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
         并发| 已执行并行迭代的最大次数和每次迭代使用的最大内核数| 最大并发迭代次数：&nbsp;&nbsp;5<br> 最大内核数/迭代：&nbsp;&nbsp;&nbsp;无
         
-        选择“确定”  。
+        选择“保存”。 
 
-1. 选择“创建”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并显示“运行状态”  。
+1. 选择“完成”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并显示“运行状态”  。
 
 >[!IMPORTANT]
 > 准备试验运行时，准备需要 **10-15 分钟**。

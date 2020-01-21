@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790334"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933876"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生中的事件
 
@@ -24,13 +24,13 @@ ms.locfileid: "74790334"
 
 本教程介绍如何将这些通知和来自 Azure 数字孪生设置的数据与 Azure 时序见解集成。 然后，你可以将某段时间的传感器值可视化， 查找各种趋势，例如，哪个房间使用频率最高、一天中最忙的时间是什么时间。 也可检测异常，例如，哪些房间让人感觉又闷又热，或者大楼中某个区域发送的温度值是否始终很高，表明空调故障。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 事件中心对数据进行流式传输。
 > * 使用时序见解进行分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定你已[配置](tutorial-facilities-setup.md)和[预配](tutorial-facilities-udf.md) Azure 数字孪生设置。 在继续操作之前，请确保已具备以下条件：
 
@@ -48,22 +48,22 @@ ms.locfileid: "74790334"
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格中，选择“创建资源”  。
 
 1. 搜索并选择“事件中心”  。 选择“创建”  。
 
-    [![创建事件中心命名空间](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![创建事件中心命名空间](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
 1. 为事件中心命名空间输入一个“名称”  。 选择“标准”  作为**定价层**，然后选择你的**订阅**、用于数字孪生实例的**资源组**，以及**位置**。 选择“创建”  。
 
 1. 在事件中心命名空间部署中，选择“概述”  窗格，然后选择“转到资源”  。
 
-    [![部署后的事件中心命名空间](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![部署后的事件中心命名空间](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
 
 1. 在事件中心命名空间的“概览”窗格中，选择顶部的“事件中心”按钮   。
-    [![“事件中心”按钮](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+    [![“事件中心”按钮](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
 
 1. 为事件中心输入一个“名称”，然后选择“创建”   。
 
@@ -143,23 +143,23 @@ ms.locfileid: "74790334"
 
 1. 为时序见解实例输入一个**名称**，然后选择你的**订阅**。 选择用于数字孪生实例的“资源组”  ，然后选择“位置”。  在完成时选择“下一步:  事件源”按钮或“事件源”  选项卡。
 
-    [![用于创建时序见解实例的选择](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [![用于创建时序见解实例的选择](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 
 1. 在“事件源”  选项卡中，输入一个**名称**，选择“事件中心”  作为“源类型”  ，并确保正确选择其他值以引用所创建的事件中心。 选择 **ManageSend** 作为“事件中心访问策略名称”，  ，然后选择在上一部分创建的使用者组，作为“事件中心使用者组”。  选择“查看 + 创建”  。
 
-    [![用于创建事件源的选择](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [![用于创建事件源的选择](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
 
 1. 在“查看 + 创建”  窗格中，查看所输入的信息，然后选择“创建”  。
 
-1. 在部署窗格中，选择刚刚创建的“时序见解”资源。 它将打开时序见解环境的“概述”  窗格。
+1. 在部署窗格中，选择已创建的“时序见解”资源。 它将打开时序见解环境的“概述”  窗格。
 
 1. 选择顶部的“转到环境”  按钮。 如果出现数据访问警告，则请打开时序见解实例的“数据访问策略”窗格，选择“添加”，选择“参与者”作为角色，然后选择适当的用户。   
 
 1. “转到环境”按钮会打开[时序见解资源管理器](../time-series-insights/time-series-insights-explorer.md)。  如果它不显示任何事件，请模拟设备事件，方法是：浏览到数字孪生示例的 **device-connectivity** 项目，然后运行 `dotnet run`。
 
-1. 生成一些模拟的事件以后，请返回到时序见解资源管理器，选择顶部的刷新按钮。 此时会看到系统针对模拟的传感器数据生成分析图表。 
+1. 生成一些模拟的事件以后，请返回到时序见解资源管理器，选择顶部的刷新按钮。 此时将显示针对模拟传感器数据创建的分析图表。 
 
-    [![时序见解资源管理器中的图表](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [![时序见解资源管理器中的图表](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
 
 1. 然后，可以在时序见解资源管理器中针对来自房间、传感器和其他资源的不同事件和数据生成图表和热度地图。 在左侧使用“度量值”和“拆分方式”下拉框创建自己的可视化效果。   
 

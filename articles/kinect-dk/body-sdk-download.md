@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: de2910408d817b5f0eb21d3af4b0f4473182253b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c4e831aebf7e5b8e1eed2682ae4c531f210445c6
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928863"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708925"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -51,7 +51,7 @@ ms.locfileid: "74928863"
 如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.5”。 你将要在此路径中查找文章中参考的示例。
+> 正文跟踪示例位于 Azure-Kinect-Samples 存储库的 [body-tracking-samples](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples) 文件夹中。 你将在此处的文章中找到参考的示例。
 
 ## <a name="change-log"></a>更改日志
 

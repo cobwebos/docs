@@ -2,19 +2,19 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: 0f8d0c0b1f65cdbb9ae456d134696f6564078080
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d2ea2304ff86378e71f96847c00d96d849c185d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468778"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76038135"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
+> * [创建 Azure 语音资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
 
@@ -30,8 +30,7 @@ ms.locfileid: "75468778"
 
 1. 将 `Main.java` 中的所有代码替换为以下代码片段：
 
-   ```Java
-
+   ```java
    package speechsdk.quickstart;
 
    import java.util.concurrent.Future;
@@ -72,22 +71,26 @@ ms.locfileid: "75468778"
                SpeechRecognitionResult result = task.get();
                assert(result != null);
 
-               if (result.getReason() == ResultReason.RecognizedSpeech) {
-                   System.out.println("We recognized: " + result.getText());
-                   exitCode = 0;
-               }
-               else if (result.getReason() == ResultReason.NoMatch) {
-                   System.out.println("NOMATCH: Speech could not be recognized.");
-               }
-               else if (result.getReason() == ResultReason.Canceled) {
-                   CancellationDetails cancellation = CancellationDetails.fromResult(result);
-                   System.out.println("CANCELED: Reason=" + cancellation.getReason());
-
-                   if (cancellation.getReason() == CancellationReason.Error) {
-                       System.out.println("CANCELED: ErrorCode=" + cancellation.getErrorCode());
-                       System.out.println("CANCELED: ErrorDetails=" + cancellation.getErrorDetails());
-                       System.out.println("CANCELED: Did you update the subscription info?");
-                   }
+               switch (result.getReason()) {
+                   case ResultReason.RecognizedSpeech: {
+                           System.out.println("We recognized: " + result.getText());
+                           exitCode = 0;
+                       }
+                       break;
+                   case ResultReason.NoMatch:
+                       System.out.println("NOMATCH: Speech could not be recognized.");
+                       break;
+                   case ResultReason.Canceled: {
+                           CancellationDetails cancellation = CancellationDetails.fromResult(result);
+                           System.out.println("CANCELED: Reason=" + cancellation.getReason());
+        
+                           if (cancellation.getReason() == CancellationReason.Error) {
+                               System.out.println("CANCELED: ErrorCode=" + cancellation.getErrorCode());
+                               System.out.println("CANCELED: ErrorDetails=" + cancellation.getErrorDetails());
+                               System.out.println("CANCELED: Did you update the subscription info?");
+                           }
+                       }
+                       break;
                }
 
                reco.close();

@@ -8,14 +8,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ded2c83bc648e509c8cf00236cdf453b9c61af53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720571"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940727"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>快速入门：使用 Node.js 向/从 Azure 事件中心发送/接收事件
 
@@ -23,10 +23,13 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 本教程介绍如何创建用于向/从事件中心发送/接收事件的 Node.js 应用程序。
 
+> [!IMPORTANT]
+> 本快速入门使用 Azure 事件中心 Java Script SDK 版本 2。 如果你不熟悉 Azure 事件中心，请使用 Java Script SDK 版本 5。 有关使用 Java Script SDK 版本 5 的快速入门，请参阅[此文](get-started-node-send-v2.md)。 如果需要将现有代码从版本 2 迁移到版本 5，请参阅[迁移指南](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)。
+
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -37,10 +40,10 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 
 ### <a name="install-npm-package"></a>安装 npm 包
-若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令。
+若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令。
 
 ```shell
-npm install @azure/event-hubs
+npm install @azure/event-hubs@2
 ```
 
 若要安装[事件处理器主机的 npm 包](https://www.npmjs.com/package/@azure/event-processor-host)，请运行以下命令
@@ -57,7 +60,7 @@ npm install @azure/event-processor-host
 2. 创建名为 `send.js` 的文件，并在其中粘贴以下代码。 按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs");
+    const { EventHubClient } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -95,7 +98,7 @@ npm install @azure/event-processor-host
 1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
 2. 创建名为 `receive.js` 的文件，并在其中粘贴以下代码。
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs");
+    const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

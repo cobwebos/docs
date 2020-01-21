@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0158a7df96f4c83763c5b2324ccc2bfcb5a72b5d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159155"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "73159155"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 HackerOne 的集成，需要以下项目：
 
@@ -107,12 +107,9 @@ ms.locfileid: "73159155"
 
     ![HackerOne 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://hackerone.com/<company name>/authentication` 
+    a. 在“登录 URL”  文本框中，输入以下内容：`https://hackerone.com/users/saml/auth`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata` 
-
-    > [!NOTE]
-    > 此登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [HackerOne 客户端支持团队](mailto:support@hackerone.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    b. 在“标识符(实体 ID)”  文本框中，输入以下内容：`hackerone.com`
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 

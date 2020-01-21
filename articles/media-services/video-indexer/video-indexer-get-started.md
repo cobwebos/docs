@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839558"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941558"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
@@ -32,6 +32,12 @@ ms.locfileid: "73839558"
 > [!NOTE]
 > 视频的名称长度不得超过 80 个字符。
 
+### <a name="supported-file-formats-for-video-indexer"></a>视频索引器支持的文件格式
+
+有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
+
+### <a name="upload-a-video"></a>上传视频
+
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
 2. 若要上传视频，请按“上传”按钮或链接。 
 
@@ -45,7 +51,9 @@ ms.locfileid: "73839558"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以使用[视频索引器](video-indexer-view-edit.md)网站或[视频索引器开发人员门户](video-indexer-use-apis.md)来查看视频见解。 
+有关更多详细信息，请参阅[上传视频并为其编制索引](upload-index-videos.md)。
+
+上传视频并为其编制索引后，可以开始使用[视频索引器](video-indexer-view-edit.md)网站或[视频索引器开发人员门户](video-indexer-use-apis.md)查看视频见解。 
 
 ## <a name="see-also"></a>另请参阅
 

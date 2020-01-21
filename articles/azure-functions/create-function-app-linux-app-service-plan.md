@@ -3,12 +3,12 @@ title: 通过 Azure 门户在 Linux 上创建函数应用
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7689b24a4f9bf17d495917bbf4078d6e5fe4fcff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410505"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971449"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure 应用服务计划中创建 Linux 上的函数应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "75410505"
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 在本文中，我们将在创建函数应用时创建应用服务计划。
+必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 在本文中，我们将在创建函数应用时创建应用服务计划。
 
 1. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算” > “函数应用”。   
 
@@ -44,7 +44,7 @@ ms.locfileid: "75410505"
     |  [托管计划](functions-scale.md) | 应用服务计划 | 定义如何将资源分配给 Function App 的托管计划。 在应用服务计划中运行时，可以控制[函数应用的缩放](functions-scale.md)。  |
     | **应用服务计划/位置** | 创建计划 | 选择“新建”并提供**应用服务计划**的名称。  在与你靠近或者与函数要访问的其他服务靠近的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 选择所需的 **[定价层](https://azure.microsoft.com/pricing/details/app-service/linux/)** 。 <br/>不能在同一个应用服务计划中同时运行 Linux 和 Windows 函数应用。 |
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 |
-    | **[存储](../storage/common/storage-quickstart-create-account.md)** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可使用现有帐户，但该帐户必须符合[存储帐户要求](functions-scale.md#storage-account-requirements)。 |
+    | **[存储](../storage/common/storage-account-create.md)** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可使用现有帐户，但该帐户必须符合[存储帐户要求](functions-scale.md#storage-account-requirements)。 |
     | **[Application Insights](functions-monitoring.md)** | 已启用 | 默认会启用 Application Insights。 我们建议立即启用 Application Insights 集成，并选择靠近应用服务计划位置的某个托管位置。 如果希望在以后执行此操作，请参阅[监视 Azure Functions](functions-monitoring.md)。  |
 
 3. 选择“创建”  以预配和部署函数应用。

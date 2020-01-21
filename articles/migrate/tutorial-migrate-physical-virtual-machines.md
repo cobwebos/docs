@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028806"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
 
@@ -29,7 +29,7 @@ ms.locfileid: "73907107"
 [Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与云 VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 准备 Azure 以使用 Azure Migrate 服务器迁移工具进行迁移。
 > * 检查要迁移的计算机的要求，并准备 Azure Migrate 复制设备的计算机，用于发现计算机并将其迁移到 Azure。
@@ -46,7 +46,7 @@ ms.locfileid: "73907107"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -123,9 +123,8 @@ ms.locfileid: "73907107"
 > [!NOTE]
 > 使用 Azure Migrate 服务器迁移进行基于代理的迁移依赖于 Azure Site Recovery 服务的功能。 某些要求可能提供了 Site Recovery 文档的链接。
 
-1. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)服务器要求。
-2. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)要迁移的 VM 的支持要求。
-3. 验证 VM 设置。 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](migrate-support-matrix-vmware.md#azure-vm-requirements)。
+1. [验证](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器要求。
+2. 验证 VM 设置。 复制到 Azure 的本地计算机必须符合 [Azure VM 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>为复制设备准备计算机
@@ -135,7 +134,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 - **配置服务器**：配置服务器在本地和 Azure 之间协调通信并管理数据复制。
 - **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 
 
-在开始之前，需要准备一台用于托管复制设备的 Windows Server 2016 计算机。 该计算机应符合[这些要求](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements)。 该设备不应安装在要保护的源计算机上。
+在开始之前，需要准备一台用于托管复制设备的 Windows Server 2016 计算机。 该计算机应符合[这些要求](migrate-replication-appliance.md)。 该设备不应安装在要保护的源计算机上。
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具
@@ -161,7 +160,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
     --- | ---
     亚洲 | 东南亚
     欧洲 | 欧洲北部或欧洲西部
-    美国 | 美国东部或美国中西部
+    United States | 美国东部或美国中西部
 
     为项目指定的地理位置仅用于存储从本地 VM 中收集的元数据。 可为实际迁移选择任一目标区域。
 8. 在“选择评估工具”中，选择“暂时跳过添加评估工具” > “下一步”。   
@@ -288,7 +287,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 
     ![目标设置](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware.md#azure-vm-requirements)。
+12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：默认情况下，Azure Migrate 服务器迁移会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。  
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 

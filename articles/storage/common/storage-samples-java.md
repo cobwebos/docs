@@ -7,18 +7,21 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349963"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748045"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
 
 下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 GitHub 中相应的示例代码。
 
-## <a name="blob-samples"></a>Blob 示例
+> [!NOTE]
+> 这些示例使用 Azure 存储 Java v11 库。 有关 v12 代码，请参阅 GitHub 存储库中的[示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)。
+
+## <a name="blob-samples-v11"></a>Blob 示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -39,7 +42,7 @@ ms.locfileid: "71349963"
 | 服务属性 | [Java 中 Azure Blob 服务入门](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | 快照 Blob | [Java 中 Azure Blob 服务入门](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>文件示例
+## <a name="file-samples-v11"></a>文件示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -53,7 +56,7 @@ ms.locfileid: "71349963"
 | 列出共享 | [Java 中 Azure 文件服务入门](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | 共享属性/元数据/统计信息 | [Java 中 Azure 文件服务入门](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>队列示例
+## <a name="queue-samples-v11"></a>队列示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -66,7 +69,7 @@ ms.locfileid: "71349963"
 | 队列服务属性 | [Java 中 Azure 队列服务入门](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | 更新消息 | [Java 中 Azure 队列服务入门](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>表示例
+## <a name="table-samples-v11"></a>表示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|

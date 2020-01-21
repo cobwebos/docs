@@ -1,19 +1,15 @@
 ---
 title: 使用 Azure Migrate 准备 Hyper-V VM 以进行评估/迁移
 description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 78e8a42c4f1e101f8d083c8d58bb452aadfa3a87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454566"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028922"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
@@ -25,7 +21,8 @@ ms.locfileid: "75454566"
 
 > [!div class="checklist"]
 > * 准备 Azure。 设置要与 Azure Migrate 配合使用的 Azure 帐户和资源的权限。
-> * 准备本地 Hyper-V 主机和 VM 以进行服务器评估。
+> * 准备本地 Hyper-V 主机和 VM 以进行服务器评估。 可以使用配置脚本准备，也可以手动准备。
+> * 准备部署 Azure Migrate 设备。 该设备用于发现和评估本地 VM。
 > * 准备本地 Hyper-V 主机和 VM 以进行服务器迁移。
 
 
@@ -43,7 +40,7 @@ ms.locfileid: "75454566"
 需要为 Azure Migrate 部署设置权限。
 
 - 你的 Azure 帐户需要有权创建 Azure Migrate 项目。
-- 你的帐户需要有权注册 Azure Migrate 设备。 该设备用于 Hyper-V 发现和迁移。 在设备注册过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用用于唯一标识设备：
+- 你的帐户需要有权注册 Azure Migrate 设备。 该设备用于发现和评估要迁移的 Hyper-V VM。 在设备注册过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用用于唯一标识设备：
     - 第一个应用将与 Azure Migrate 服务终结点通信。
     - 第二个应用访问注册期间创建的 Azure Key Vault，以存储 Azure AD 应用信息和设备配置设置。
 
@@ -92,26 +89,21 @@ ms.locfileid: "75454566"
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
-## <a name="prepare-for-hyper-v-assessment"></a>准备 Hyper-V 评估
+## <a name="prepare-hyper-v-for-assessment"></a>准备 Hyper-V 以进行评估
 
-若要为 Hyper-V 评估做好准备，请执行以下操作：
+可以手动或使用配置脚本为 VM 评估准备 Hyper-V。 下面是需要使用脚本或[手动](#prepare-hyper-v-manually)准备的内容。
 
-1. 验证 Hyper-V 主机设置。
-2. 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
-3. 如果 VM 磁盘位于远程 SMB 存储中，则需要委托凭据。
-    - 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
-    - 允许每台主机充当设备的代理，如下所述。
-    - 稍后在设置设备时，将在设备上启用委托。
-4. 查看设备要求，以及设备所需的 URL/端口访问权限。
-5. 设置供设备用来发现 VM 的帐户。
-6. 在要发现和评估的每个 VM 上，启用 Hyper-V Integration Services。
+- [验证](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Hyper-V 主机设置，并确保在 Hyper-V 主机上打开了[所需的端口](migrate-support-matrix-hyper-v.md#port-access)。
+- 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
+- 如果 VM 磁盘位于远程 SMB 共享上，则委派凭据。
+- 在 Hyper-V 主机上设置供设备用来发现 VM 的帐户。
+- 在要发现和评估的每个 VM 上，启用 Hyper-V Integration Services。
 
 
-可使用以下过程手动配置这些设置。 或者，可以运行 Hyper-V 先决条件配置脚本。
 
-### <a name="hyper-v-prerequisites-configuration-script"></a>Hyper-V 先决条件配置脚本
+## <a name="prepare-with-a-script"></a>使用脚本准备
 
-该脚本将验证 Hyper-V 主机，并配置发现和评估 Hyper-V VM 所需的设置。 下面是它的作用：
+此脚本执行以下任务：
 
 - 检查你是否在受支持的 PowerShell 版本中运行该脚本。
 - 验证你（运行脚本的用户）是否对 Hyper-V 主机拥有管理特权。
@@ -144,7 +136,7 @@ ms.locfileid: "75454566"
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
-#### <a name="hashtag-values"></a>井号标签值
+### <a name="hashtag-values"></a>井号标签值
 
 哈希值为:
 
@@ -153,10 +145,34 @@ ms.locfileid: "75454566"
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
+
+## <a name="prepare-hyper-v-manually"></a>手动准备 Hyper-V
+
+按照本部分中的过程手动准备 Hyper-V，而不是使用脚本。
+
+### <a name="verify-powershell-version"></a>验证 PowerShell 版本
+
+确保在 Hyper-V 主机上安装了 PowerShell 4.0 或更高版本。
+
+
+
+### <a name="set-up-an-account-for-vm-discovery"></a>设置用于 VM 发现的帐户
+
+Azure Migrate 需要拥有发现本地 VM 的权限。
+
+- 在 Hyper-V 主机/群集上设置拥有管理员权限的域或本地用户帐户。
+
+    - 对于要包含在发现中的所有主机和群集，都需要设置一个帐户。
+    - 该帐户可以是本地帐户或域帐户。 我们建议为该帐户分配 Hyper-V 主机或群集的管理员权限。
+    - 或者，如果你不想要分配管理员权限，则需要分配以下权限：
+        - 远程管理用户
+        - Hyper-V 管理员
+        - 性能监视器用户
+
 ### <a name="verify-hyper-v-host-settings"></a>验证 Hyper-V 主机设置
 
-1. 验证服务器评估的 [Hyper-V 主机要求](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements)。
-2. 确保 Hyper-V 主机上已打开[所需的端口](migrate-support-matrix-hyper-v.md#assessment-port-requirements)。
+1. 验证服务器评估的 [Hyper-V 主机要求](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements)。
+2. 确保 Hyper-V 主机上已打开[所需的端口](migrate-support-matrix-hyper-v.md#port-access)。
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>在主机上启用 PowerShell 远程处理
 
@@ -168,6 +184,12 @@ ms.locfileid: "75454566"
     ```
     Enable-PSRemoting -force
     ```
+### <a name="enable-integration-services-on-vms"></a>在 VM 上启用 Integration Services
+
+应在每个 VM 上启用 Integration Services，使 Azure Migrate 能够捕获 VM 上的操作系统信息。
+
+在要发现和评估的每个 VM 上，启用 [Hyper-V Integration Services](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+
 
 ### <a name="enable-credssp-on-hosts"></a>在主机上启用 CredSSP
 
@@ -188,40 +210,21 @@ ms.locfileid: "75454566"
 设置设备时，[在设备上启用 CredSSP](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds) 即可完成 CredSSP 的设置。 本教程系列的下一篇文章对此做了介绍。
 
 
-### <a name="verify-appliance-settings"></a>验证设备设置
+## <a name="prepare-for-appliance-deployment"></a>准备进行设备部署
 
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
-1. [验证](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements)设备要求。
-2. [查看](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)设备需要访问的 Azure URL。
+1. [验证](migrate-appliance.md#appliance---hyper-v)设备要求。
+2. [查看](migrate-appliance.md#url-access)设备需要访问的 Azure URL。
 3. 查看设备在发现和评估期间要收集的数据。
-4. [注意](migrate-support-matrix-hyper-v.md#assessment-port-requirements)设备的端口访问要求。
+4. [注意](migrate-appliance.md#collected-data---hyper-v)设备的端口访问要求。
 
-
-### <a name="set-up-an-account-for-vm-discovery"></a>设置用于 VM 发现的帐户
-
-Azure Migrate 需要拥有发现本地 VM 的权限。
-
-- 在 Hyper-V 主机/群集上设置拥有管理员权限的域或本地用户帐户。
-
-    - 对于要包含在发现中的所有主机和群集，都需要设置一个帐户。
-    - 该帐户可以是本地帐户或域帐户。 我们建议为该帐户分配 Hyper-V 主机或群集的管理员权限。
-    - 或者，如果你不想要分配管理员权限，则需要分配以下权限：
-        - 远程管理用户
-        - Hyper-V 管理员
-        - 性能监视器用户
-
-### <a name="enable-integration-services-on-vms"></a>在 VM 上启用 Integration Services
-
-应在每个 VM 上启用 Integration Services，使 Azure Migrate 能够捕获 VM 上的操作系统信息。
-
-在要发现和评估的每个 VM 上，启用 [Hyper-V Integration Services](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
 
 ## <a name="prepare-for-hyper-v-migration"></a>准备 Hyper-V 迁移
 
-1. [查看](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Hyper-V 主机迁移要求。
-2. [查看](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)要迁移到 Azure 的 Hyper-V VM 要求。
-3. [注意](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access)在迁移 VM 期间 Hyper-V 主机和群集需要访问的 Azure URL。
+1. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V 主机迁移要求，以及迁移 VM 时 Hyper-V 主机和群集需要访问的 Azure URL。
+2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移到 Azure 的 Hyper-V VM 要求。
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -230,8 +233,9 @@ Azure Migrate 需要拥有发现本地 VM 的权限。
 > [!div class="checklist"]
 > * 设置 Azure 帐户权限。
 > * 准备要评估和迁移的 Hyper-V 主机与 VM。
+> * 准备了 Azure Migrate 设备部署。
 
-继续学习下一篇教程以创建 Azure Migrate 项目，并评估要迁移到 Azure 的 Hyper-V Vm
+继续阅读下一篇教程，以创建 Azure Migrate 项目、部署设备，并发现和评估要迁移到 Azure 的 Hyper-V VM。
 
 > [!div class="nextstepaction"]
 > [评估 Hyper-V VM](./tutorial-assess-hyper-v.md)

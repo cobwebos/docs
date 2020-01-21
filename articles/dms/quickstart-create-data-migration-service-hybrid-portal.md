@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 12/17/2019
-ms.openlocfilehash: c93ff5d97826ee618716cc15361a439a5429d696
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437738"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708285"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入门：使用 Azure 门户和 Azure 数据库迁移服务创建混合模式实例
 
@@ -172,7 +172,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
 ## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>使用 PowerShell 设置 Azure 数据库迁移服务混合辅助角色
 
-除了通过 Azure 门户安装 Azure 数据库迁移服务混合辅助角色外，我们还提供了一个 PowerShell 脚本，在混合模式中创建 Azure 数据库迁移服务的新实例后即可将其用于自动执行辅助角色安装步骤。 脚本：
+除了通过 Azure 门户安装 Azure 数据库迁移服务混合辅助角色外，我们还提供了一个 [PowerShell 脚本](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip)，在混合模式下创建 Azure 数据库迁移服务的新实例后即可使用该脚本自动执行辅助角色安装步骤。 脚本：
 
 1. 创建新的 AdApp。
 2. 下载安装程序。

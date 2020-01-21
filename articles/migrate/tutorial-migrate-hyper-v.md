@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
 description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: be5d519269739f09b4a4264292f578b1d7051d26
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196313"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028965"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
-本文介绍如何使用 Azure Migrate 服务器迁移工具以无代理方法将本地 Hyper-V VM 迁移到 Azure。
+本文介绍如何使用 Azure Migrate 通过无代理迁移将本地 Hyper-V VM 迁移到 Azure：服务器迁移工具。
 
 [Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与私有云/公有云 VM 的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 Hyper-V 以及将其迁移到 Azure 的教程系列中的第三篇文章。 本教程介绍如何执行下列操作：
+本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 Hyper-V 以及将其迁移到 Azure 的教程系列中的第三篇文章。 在本教程中，你将了解如何执行以下操作：
 
 
 > [!div class="checklist"]
@@ -35,7 +31,7 @@ ms.locfileid: "74196313"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -43,12 +39,12 @@ ms.locfileid: "74196313"
 2. 完成本教程系列的[第一篇教程](tutorial-prepare-hyper-v.md)来设置 Azure 和 Hyper-V，以便能够完成迁移。 在第一篇教程中，你已：
     - [准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure)，以便能够完成迁移。
     - [准备本地环境](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)，以便能够完成迁移。
-3. 在将 Hyper-V VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 为此，请完成本教程系列的[第二篇教程](tutorial-assess-hyper-v.md)。 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
+3. 我们建议你尝试使用 Azure Migrate 评估 Hyper-V VM：服务器评估在迁移到 Azure 之前进行。 为此，请完成本教程系列的[第二篇教程](tutorial-assess-hyper-v.md)。 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
 4. 确保为 Azure 帐户分配“虚拟机参与者”角色，以便你有权执行以下操作：
 
     - 在所选资源组中创建 VM。
     - 在所选虚拟网络中创建 VM。
-    - 写入 Azure 托管磁盘。   
+    - 写入 Azure 托管磁盘。
 5. [设置 Azure 网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 迁移到 Azure 时，创建的 Azure VM 将加入到设置迁移时指定的 Azure 网络。
 
 
@@ -56,7 +52,7 @@ ms.locfileid: "74196313"
 
 如果你未遵循第二篇教程评估 Hyper-V VM，则需要[遵循这些说明](how-to-add-tool-first-time.md)设置一个 Azure Migrate 项目，并将 Azure Migrate 服务器迁移工具添加到该项目。
 
-如果你已遵循第二篇教程并已设置了一个 Azure Migrate 项目，请按如下所述添加 Azure Migrate 服务器迁移工具：
+如果已按照第二篇教程进行操作并已有一个 Azure Migrate 项目，请按如下所述添加 Azure Migrate:服务器迁移工具：
 
 1. 在 Azure Migrate 项目中，单击“概述”。  
 2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。  
@@ -74,17 +70,17 @@ ms.locfileid: "74196313"
 Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 
 - 该设备执行 VM 发现，并将 VM 元数据和性能数据发送到 Azure Migrate 服务器迁移。
-- Azure Migrate 服务器评估工具也使用该设备。
+- Azure Migrate:服务器评估工具还使用该设备将 Hyper-V VM 迁移到 Azure。
 
 设置设备：
-- 如果你遵循第二篇教程评估了 Hyper-V VM，则已在该教程中设置了该设备。
+- 如果已按照第二个教程来评估 Hyper-V VM，则你已在该教程中设置了设备，不需要再次进行设置。
 - 如果你未遵循该教程，则现在需要设置该设备。 为此，请执行以下操作： 
 
     - 从 Azure 门户下载压缩的 Hyper-V VHD。
     - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。 
     - 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
 
-    遵照[此文](how-to-set-up-appliance-hyper-v.md)中的说明设置设备。
+    按照[此文](how-to-set-up-appliance-hyper-v.md)中的详细说明设置设备。
 
 ## <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
 
@@ -126,7 +122,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
     - 将代理名称指定为 **http://ip-address** 或 **http://FQDN** 。 不支持 HTTPS 代理服务器。
    
 
-6. 确保提供程序可以访问[所需的 URL](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access)。
+6. 确保提供程序可以访问[所需的 URL](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)。
 7. 注册主机后，在“注册”中单击“完成”。  
 
 ## <a name="replicate-hyper-v-vms"></a>复制 Hyper-V VM
@@ -150,7 +146,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
     ![选择 VM](./media/tutorial-migrate-hyper-v/select-vms.png)
 
 5. 在“目标设置”中，选择要迁移到的目标区域、订阅，以及迁移之后 Azure VM 所在的资源组。 
-7. 在“复制存储帐户”中，选择 Azure 中的用于存储复制数据的 Azure 存储帐户。 
+7. 在“复制存储帐户”  中，选择将在 Azure 中存储复制数据的 Azure 存储帐户。
 8. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。 
 9. 在“Azure 混合权益”中： 
 
@@ -159,7 +155,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 
     ![目标设置](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)。
+10. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表将包含建议的大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。  
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 
@@ -178,14 +174,14 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 > [!NOTE]
 > 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。   开始复制后无法更改设置。
 
-### <a name="provisioning-for-the-first-time"></a>首次预配
+## <a name="provisioning-for-the-first-time"></a>首次预配
 
-如果这是你要在 Azure Migrate 项目中复制的第一个 VM，Azure Migrate 服务器迁移会在项目所在的同一资源组中自动预配这些资源。
+如果这是你要在 Azure Migrate 项目中复制的第一个 VM，则 Azure Migrate:服务器迁移会自动在该项目所在的资源组中预配这些资源。
 
-- **服务总线**：Azure Migrate 服务器迁移使用服务总线将复制业务流程消息发送到设备。
-- **网关存储帐户**：服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
+- **服务总线**：“Azure Migrate:服务器迁移使用服务总线将复制业务流程消息发送到设备。
+- **网关存储帐户**：“Azure Migrate:服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 请[检查这些权限](tutorial-prepare-vmware.md#assign-role-assignment-permissions)。   
+- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 已针对 Hyper-V VM 评估和迁移[准备了 Azure](tutorial-prepare-hyper-v.md#prepare-azure)。 
 
 
 ## <a name="track-and-monitor"></a>跟踪和监视
@@ -208,7 +204,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 增量复制开始后，在运行到 Azure 的完整迁移之前，可以针对 VM 运行测试迁移。 我们强烈建议在迁移之前，针对每台计算机至少执行此操作一次。
 
 - 运行测试迁移可以检查迁移是否按预期进行，而不会影响本地计算机，它们仍可保持正常运行并继续复制。 
-- 测试迁移通过使用复制的数据创建一个 Azure VM 来模拟迁移（通常是迁移到 Azure 订阅中的非生产 VNet）。
+- 测试迁移通过使用复制的数据创建一个 Azure VM 来模拟迁移（通常是迁移到 Azure 订阅中的非生产 Azure VNet）。
 - 可以使用复制的测试 Azure VM 来验证迁移、执行应用测试，并解决完整迁移之前出现的任何问题。
 
 按如下所述执行测试迁移：
@@ -222,7 +218,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 
     ![测试迁移](./media/tutorial-migrate-hyper-v/test-migrate.png)
 
-3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure VNet。  建议使用非生产 VNet。
+3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure 虚拟网络。  建议使用非生产虚拟网络。
 4. “测试迁移”作业随即启动。  在门户通知中监视该作业。
 5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。  计算机名称带有 **-Test** 后缀。
 6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。  

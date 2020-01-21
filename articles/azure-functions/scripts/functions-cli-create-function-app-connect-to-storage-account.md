@@ -4,12 +4,12 @@ description: Azure CLI 脚本示例 - 创建用于连接到 Azure 存储的 Azur
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 9c2a70066e673bfa164a58884891f29e220c7bd6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532834"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922670"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>创建具有命名存储帐户连接的函数应用 
 
@@ -33,7 +33,7 @@ ms.locfileid: "74532834"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 使用相关位置创建资源组。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |

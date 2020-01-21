@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: 67e404675d6a4917b6e26c0c5dd5e067a3408652
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: edd4c09bb8cf724e293f1f947eab81f0f9f7a7c8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446213"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832212"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
@@ -69,7 +69,7 @@ ms.locfileid: "75446213"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Power BI 进行文本分析](../tutorials/tutorial-power-bi-key-phrases.md)
+> [探索解决方案](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 
 * [文本分析概述](../overview.md)

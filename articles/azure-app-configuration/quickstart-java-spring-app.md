@@ -1,17 +1,21 @@
 ---
 title: 了解如何使用 Azure 应用配置的快速入门
 description: 将 Azure 应用配置与 Java Spring 应用结合使用的快速入门。
-author: yidon
-ms.author: yidon
+services: azure-app-configuration
+documentationcenter: ''
+author: lisaguthrie
+manager: maiye
+editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
-ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495202"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750277"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -46,7 +50,7 @@ ms.locfileid: "75495202"
    * 使用 **Java** 生成一个 **Maven** 项目。
    * 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
    * 指定应用程序的“组”和“项目”名称。  
-   * 添加 **Web** 依赖项。
+   * 添加 **Spring Web** 依赖项。
 
 3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
 
@@ -60,13 +64,17 @@ ms.locfileid: "75495202"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -84,6 +92,11 @@ ms.locfileid: "75495202"
 4. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -102,11 +115,13 @@ ms.locfileid: "75495202"
 5. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
@@ -125,11 +140,13 @@ ms.locfileid: "75495202"
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. 应用程序运行以后，请使用 curl 测试该应用程序，例如  ：
 
       ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     可看到在应用程序配置存储区中输入的消息。
 
 ## <a name="clean-up-resources"></a>清理资源

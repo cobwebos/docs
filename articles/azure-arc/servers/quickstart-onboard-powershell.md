@@ -10,18 +10,18 @@ keywords: azure 自动化、DSC、powershell、所需状态配置、更新管理
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951439"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834083"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>快速入门：使用用于服务器的 Azure Arc 将计算机连接到 Azure - PowerShell
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在[用于服务器的 Azure Arc 概述](overview.md)中查看受支持的客户端和所需的网络配置。
 
@@ -35,6 +35,9 @@ ms.locfileid: "74951439"
 ### <a name="steps-to-create-the-service-principal"></a>创建服务主体的步骤
 
 在本示例中，我们将使用 [Azure PowerShell](/powershell/azure/install-az-ps) 创建服务主体名称 (SPN)。 或者，可以按照此任务的[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)下列出的步骤进行操作。
+
+> [!NOTE]
+> 创建服务主体时，你必须是你希望用于加入的订阅的所有者或用户访问管理员。 如果你没有足够的权限创建角色分配，则可能会创建服务主体，但它将无法加入计算机。
 
 `Azure Connected Machine Onboarding` 角色仅包含载入所需的权限。 可以定义 SPN 的权限以允许其范围覆盖资源组或订阅。
 
@@ -142,7 +145,7 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ azcmagent connect \
 * `tenant-id`：租户 GUID。 通过选择“Azure Active directory 域服务” -> “属性” -> “Directory ID”，可以在 Azure 门户中找到它    。
 * `subscription-id`：要在其中连接计算机的 Azure 中订阅的 GUID。
 * `resource-group`：要连接到计算机的资源组。
-* `location`：请参阅 [Azure 区域和位置](https://azure.microsoft.com/global-infrastructure/regions/)。 此位置可以与资源组的位置相同或不同。 对于公开预览版，该服务在美国西部 2 和西欧受支持   。
+* `location`：请参阅 [Azure 区域和位置](https://azure.microsoft.com/global-infrastructure/regions/)。 此位置可以与资源组的位置相同或不同。 对于公共预览版，该服务在 **WestUS2**、**东南亚**和**西欧**受支持。
 * `resource-name`：（可选）用于本地计算机的 Azure 资源表示  。 如果未指定此值，将使用计算机主机名。
 
 有关详细信息，请参阅 [Azcmagent 参考](azcmagent-reference.md)中的“azcmagent”工具。
@@ -172,7 +175,7 @@ azcmagent connect \
 
 成功完成后，计算机将连接到 Azure。 可以通过访问 [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal) 来查看 Azure 门户中的计算机。
 
-![成功载入](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
+![成功加入](./media/quickstart-onboard/arc-for-servers-successful-onboard.png)
 
 ### <a name="proxy-server-configuration"></a>代理服务器配置
 
@@ -200,7 +203,7 @@ Restart-Service -Name himds
 > [!NOTE]
 > 公开预览版不支持经过身份验证的代理。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要从用于服务器的 Azure Arc 断开连接计算机，需要执行两个步骤。
 

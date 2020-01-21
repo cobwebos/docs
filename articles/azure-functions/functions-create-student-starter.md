@@ -1,21 +1,21 @@
 ---
 title: 使用面向学生的 Azure 入门版创建函数
 description: 了解如何在面向学生的 Azure 入门版订阅中创建 Azure 函数
-Customer intent: As a student, I want to be able to create a HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
+Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409885"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921133"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用面向学生的 Azure 入门版创建函数
 
-在本教程中，我们将在面向学生的 Azure 入门版订阅中创建一个 hello world HTTP 函数。 此外，我们还将演练 Azure Functions 在此类订阅中的功能。
+在本教程中，我们将在面向学生的 Azure 入门版订阅中创建一个“hello world”HTTP 函数。 此外，我们还将演练 Azure Functions 在此类订阅中的功能。
 
 借助面向学生的 Microsoft Azure 入门版，可以免费体验在云中进行开发所需的 Azure 产品。  [在此处详细了解此产品/服务。](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用 Function App 托管函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
+必须使用 Function App 托管函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
-1. 选择 Azure 门户左上角的“新建”按钮，然后选择“计算” > “Function App”。   
+1. 选择 Azure 门户左上角的“创建资源”按钮。  然后选择“计算”   >   “函数应用”。
 
     ![在 Azure 门户中创建函数应用](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -116,7 +116,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
     * 支持所有输入和所有输出绑定！ [在此处查看完整列表。](functions-triggers-bindings.md)
 * 支持的语言： 
     * C# (.NET Core 2)
-    * Javascript（Node.js 8 和 10）
+    * JavaScript（Node.js 8 和 Node.js 10）
     * F# (.NET Core 2)
     * [在此处查看更高级计划中支持的语言](supported-languages.md)
 * Windows 是唯一受支持的操作系统。

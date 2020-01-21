@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791029"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754586"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -113,11 +113,11 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 | 文档破解 | 在索引编制期间从非文本源提取或创建文本内容的过程。 光学字符识别 (OCR) 就是一个例子，但它通常是指索引器从应用程序文件中提取内容时使用的核心索引器功能。 提供源文件位置的数据源，以及提供字段映射的索引器定义都是文档破解中的两个关键因素。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 造型 | 将文本片段整合到较大的结构，或反之，将较大的文本区块分解成易于管理的大小，以进一步执行下游处理。 | 请参阅[整型程序技能](cognitive-search-skill-shaper.md)、[文本合并技能](cognitive-search-skill-textmerger.md)、[文本拆分技能](cognitive-search-skill-textsplit.md) |
 | 扩充文档 | 在处理过程中生成的临时内部结构，其最终输出反映在搜索索引中。 技能集决定执行哪些扩充。 字段映射确定要将哪些数据元素添加到索引。 （可选）可以使用存储资源管理器、Power BI 等工具或连接到 Azure Blob 存储的任何其他工具创建知识存储，以保留和浏览丰富的文档。 | 请参阅[知识存储（预览版）](knowledge-store-concept-intro.md) |
-| 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对 AI 扩充，索引器会调用技能组，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 通过附加的配置，可以重复使用现有的处理，并仅执行已更改的步骤和技能。 | 请参阅[索引器](search-indexer-overview.md)和[增量索引（预览版）](cognitive-search-incremental-indexing-conceptual.md)。 |
+| 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对 AI 扩充，索引器会调用技能组，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 通过其他配置，可以重复使用现有的已处理内容，并仅执行那些已更改的步骤和技能。 | 请参阅[索引器](search-indexer-overview.md)和[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)。 |
 | 数据源  | 由索引器用来连接 Azure 中受支持类型的外部数据源的对象。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 索引 | Azure 认知搜索中的持久化搜索索引，通过一个定义字段结构和用法的索引架构生成。 | 请参阅[创建基本索引](search-what-is-an-index.md) | 
 | 知识存储 | 一个存储帐户，其中的扩充文档可以在搜索索引的基础上整型和投影 | 请参阅[知识存储简介](knowledge-store-concept-intro.md) | 
-| 索引器缓存 | 存储帐户技能输出由索引器缓存。 索引器可以利用缓存，尽量降低编辑技能集时反复处理大量文档的成本。 | 请参阅[增量索引](cognitive-search-incremental-indexing-conceptual.md) | 
+| 缓存 | 包含由扩充管道创建的缓存输出的存储帐户。 启用缓存将保留不受技能集或扩充管道其他组件更改影响的现有输出。 | 请参阅[增量扩充](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -129,7 +129,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 + [快速入门（门户）](cognitive-search-quickstart-blob.md)
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)
-+ 示例：[创建 AI 扩充的自定义技能 (C#)](cognitive-search-create-custom-skill-example.md)
++ [示例：创建 AI 扩充的自定义技能 (C#)](cognitive-search-create-custom-skill-example.md)
 
 我们建议将免费服务用于学习目的，但是，免费事务的数量限制为每天 20 个文档。 若要在一天内同时运行快速入门和教程，请使用较小的文件集（10 个文档），这样就可以同时进行这两个练习，也可以删除在快速入门或教程中使用的索引器，将计数器重置为零。
 
@@ -174,4 +174,4 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 + [快速入门：在门户演练中试用 AI 扩充](cognitive-search-quickstart-blob.md)
 + [教程：了解 AI 扩充 API](cognitive-search-tutorial-blob.md)
 + [知识存储（预览版）](knowledge-store-concept-intro.md)
-+ [知识存储演练](knowledge-store-howto.md)
++ [在 REST 中创建知识存储](knowledge-store-create-rest.md)
