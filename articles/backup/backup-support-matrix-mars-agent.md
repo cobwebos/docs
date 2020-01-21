@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文总结了备份运行 Microsoft Azure 恢复服务（MARS）代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893971"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281268"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -44,7 +44,7 @@ Azure 备份使用 MARS 代理将数据从本地计算机和 Azure Vm 备份到 
 **缓存** | **详细信息**
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据的总大小的5% 到10%。
-Location | 缓存文件夹必须在要备份的计算机上本地存储，并且必须处于联机状态。 缓存文件夹不应位于网络共享、可移动介质或脱机卷上。
+位置 | 缓存文件夹必须在要备份的计算机上本地存储，并且必须处于联机状态。 缓存文件夹不应位于网络共享、可移动介质或脱机卷上。
 Folder | 缓存文件夹不应在删除了重复数据的卷上，也不能在压缩的文件夹（即稀疏文件或具有重新分析点的文件夹）中进行加密。
 位置更改 | 可以通过停止备份引擎（`net stop bengine`）并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器具有足够的空间。）然后，在**HKLM\SOFTWARE\Microsoft\Windows Azure Backup** （**Config/ScratchLocation**和**Config/CloudBackupProvider/ScratchLocation**）下将两个注册表项更新到新位置，然后重新启动引擎。
 
@@ -71,7 +71,7 @@ MARS 代理需要以下 URL 的访问权限：
 
 **功能** | **详细信息**
 --- | ---
-带宽控制 | 。 在 MARS 代理中，使用 "**更改属性**" 来调整带宽。
+带宽控制 | 支持。 在 MARS 代理中，使用 "**更改属性**" 来调整带宽。
 网络限制 | 不适用于运行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的备份计算机。
 
 ## <a name="support-for-direct-backups"></a>直接备份支持
@@ -88,21 +88,23 @@ MARS 代理需要以下 URL 的访问权限：
 
 **操作系统** | **文件/文件夹** | **系统状态** | **软件/模块要求**
 --- | --- | --- | ---
-Windows 10（Enterprise、Pro、Home） | 是 | No |  检查软件/模块要求的相应服务器版本
-Windows 8.1（Enterprise、Pro）| 是 |No | 检查软件/模块要求的相应服务器版本
-Windows 8（Enterprise、Pro） | 是 | No | 检查软件/模块要求的相应服务器版本
-Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是 | No | 检查软件/模块要求的相应服务器版本
+Windows 10（Enterprise、Pro、Home） | 是 | 否 |  检查软件/模块要求的相应服务器版本
+Windows 8.1（Enterprise、Pro）| 是 |否 | 检查软件/模块要求的相应服务器版本
+Windows 8（Enterprise、Pro） | 是 | 否 | 检查软件/模块要求的相应服务器版本
+Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是 | 否 | 检查软件/模块要求的相应服务器版本
 Windows Server 2016（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012 R2（Standard、Datacenter、Foundation、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012（Standard、Datacenter、Foundation） | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE）
 Windows Server 2008 R2（Standard、Enterprise、Datacenter、Foundation） | 是 | 是 | -.NET 3.5，.Net 4。5 <br> -Windows PowerShell <br> 兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE）
-Windows Server 2008 SP2（Standard、Datacenter、Foundation） | 是 | No | -.NET 3.5，.Net 4。5 <br> -Windows PowerShell <br> 兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE） <br> -Virtual Server 2005 base + KB KB948515
-Windows Storage Server 2016/2012 R2/2012 （标准版、工作组版） | 是 | No | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
+Windows Server 2008 SP2（Standard、Datacenter、Foundation） | 是 | 否 | -.NET 3.5，.Net 4。5 <br> -Windows PowerShell <br> 兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE） <br> -Virtual Server 2005 base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 （标准版、工作组版） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
 ## <a name="backup-limits"></a>备份限制
+
+### <a name="size-limits"></a>大小限制
 
 Azure 备份限制了可以备份的文件或文件夹数据源的大小。 从单个卷备份的项不能超过此表中汇总的大小：
 
@@ -114,14 +116,18 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 或更高版本| 54,400 GB
 Windows 7| 1,700 GB
 
+### <a name="other-limitations"></a>其他限制
+
+- MARS 不支持对单个保管库的多台计算机进行保护。
+
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
 类型 | **支持**
 --- | ---
-加密| 。
-已压缩 | 。
-稀疏 | 。
-压缩和稀疏 |。
+已加密| 支持。
+Compressed | 支持。
+稀疏 | 支持。
+压缩和稀疏 |支持。
 硬链接| 不支持。 跳过.
 重分析点| 不支持。 跳过.
 加密和稀疏 |不支持。 跳过.

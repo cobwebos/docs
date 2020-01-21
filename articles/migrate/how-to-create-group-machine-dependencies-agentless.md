@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454659"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280809"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
 
-本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项映射。 此功能目前以预览版提供，可使用 Azure Migrate 设备发现的 VMware 计算机。 
+本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项映射。 
 
 > [!IMPORTANT]
 > 对于使用 Azure Migrate 设备发现的 Azure VMware Vm，无代理依赖项可视化目前处于预览阶段。
@@ -54,17 +54,8 @@ ms.locfileid: "75454659"
 - 无代理依赖项分析目前仅适用于 VMware 计算机。
 - 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
 - 请确保已在 Azure Migrate 中发现 VMware 计算机;为此，可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
-- 请确保 VMware Vm 支持无代理依赖项可视化，如下表中所示。
+- 查看设置无代理依赖项可视化[的要求](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
 
-
-### <a name="supported-operating-systems"></a>支持的操作系统
-
-无代理依赖项可视化支持的操作系统如下所示。
-
-类型 | **受支持的操作系统**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 （64）
-**Linux** | Red Hat Enterprise Linux 7、6、5 <br/> Ubuntu Linux 14.04、16.04 <br/> Debian 7、8 <br/> Oracle Linux 6、7 <br/> CentOS 5、6、7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>创建用于发现的用户帐户

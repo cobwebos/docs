@@ -3,12 +3,12 @@ title: 在本地服务器上发现应用、角色和功能，并提供 Azure Mig
 description: 了解如何通过 Azure Migrate Server 评估发现本地服务器上的应用、角色和功能。
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029072"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280758"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
@@ -17,18 +17,18 @@ ms.locfileid: "76029072"
 发现应用的清单，以及在本地计算机上运行的角色/功能，可帮助您识别和计划针对您的工作负荷定制的 Azure 迁移路径。
 
 > [!NOTE]
-> 目前仅 VMware Vm 支持应用程序发现，仅限发现。 我们尚未提供基于应用的评估。  现在，服务器评估当前评估计算机级别的本地 VMware Vm、Hyper-v Vm 和物理服务器，以便进行直接迁移。
+> 目前仅 VMware Vm 支持应用程序发现，仅限发现。 我们尚未提供基于应用的评估。 针对本地 VMware Vm、Hyper-v Vm 和物理服务器的基于计算机的评估。
 
 使用 Azure Migrate 的应用程序发现：服务器评估是无代理的。 不需要在计算机和 Vm 上安装任何内容。 服务器评估使用 Azure Migrate 设备，同时使用计算机来宾凭据执行发现。 设备使用 VMware Api 远程访问 VMware 计算机。
 
 
 ## <a name="before-you-start"></a>开始之前
 
-1. 查看应用程序级别发现的[支持限制](migrate-support-matrix-vmware.md#application-discovery)。
-2. 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-3. 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
+1. 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
+2. 请确保已将 Azure Migrate： Server 评估工具[添加](how-to-assess.md)到项目。
 4. 查看[vmware 要求](migrate-support-matrix-vmware.md#vmware-requirements)，了解如何通过 Azure Migrate 设备发现和评估 vmware vm。
-4. 检查部署 Azure Migrate 设备的[要求](migrate-appliance.md)。
+5. 检查部署 Azure Migrate 设备的[要求](migrate-appliance.md)。
+6. 验证应用程序发现的[支持和要求](/migrate-support-matrix-vmware.md#application-discovery)。
 
 ## <a name="prepare-for-app-discovery"></a>准备应用发现
 

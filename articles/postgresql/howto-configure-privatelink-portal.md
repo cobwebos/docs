@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: dca271e745976f7797d3e911c2f1f6232fe5400d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7a796408267fda08d765425a3c529895a251782
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897723"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281098"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
 
@@ -163,7 +163,7 @@ ms.locfileid: "75897723"
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择 *（新） privatelink* |
+    |专用 DNS 区域 |选择 *（新的） privatelink* |
     |||
 
 1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
@@ -201,14 +201,14 @@ ms.locfileid: "75897723"
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
 
-2. 输入  `nslookup mydemopostgresserver.database.azure.com`。 
+2. 输入  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`。 
 
     将收到类似于下面的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemopostgresserver.postgres.privatelink.database.azure.com
+    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
@@ -218,7 +218,7 @@ ms.locfileid: "75897723"
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.postgres.privatelink.database.azure.com* |
+    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
     |Password |Enter a password provided during the PostgreSQL server creation. |
     |SSL|Select **Required**.|

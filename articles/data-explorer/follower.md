@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277021"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281336"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
 
@@ -383,6 +383,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 * 必须在同一区域中进行并行和领导群集。
 * 不能在要遵循的数据库上使用[流式引入](/azure/data-explorer/ingest-data-streaming)。
+* 使用[客户托管密钥](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)的数据加密在领导和使用者群集上不受支持。 
 * 分离数据库之前，无法删除附加到其他群集的数据库。
 * 分离群集之前，无法删除已附加到其他群集的群集。
 * 不能停止已连接的使用者或领导者数据库的群集。 

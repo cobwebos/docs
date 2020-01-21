@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020933"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280589"
 ---
 Azure 数据资源管理器加密静态存储帐户中的所有数据。 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了进一步控制加密密钥，你可以提供客户管理的密钥用于数据加密。 客户管理的密钥必须存储在[Azure Key Vault](/azure/key-vault/key-vault-overview)中。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault API 来生成密钥。 Azure 数据资源管理器群集和密钥保管库必须位于同一区域，但它们可以位于不同的订阅中。 有关客户托管密钥的详细说明，请参阅[Azure Key Vault 的客户托管密钥](/azure/storage/common/storage-service-encryption)。 本文介绍如何配置客户管理的密钥。
 
-> [!Note]
-> 若要配置 Azure 数据资源管理器的客户托管密钥，必须[在密钥保管库上设置两个属性](/azure/key-vault/key-vault-ovw-soft-delete)：**软删除**和不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用[PowerShell](/azure/key-vault/key-vault-soft-delete-powershell)或[Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)。 仅支持 RSA 密钥和密钥大小2048。
+若要配置 Azure 数据资源管理器的客户托管密钥，必须[在密钥保管库上设置两个属性](/azure/key-vault/key-vault-ovw-soft-delete)：**软删除**和不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用[PowerShell](/azure/key-vault/key-vault-soft-delete-powershell)或[Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)。 仅支持 RSA 密钥和密钥大小2048。
+
+> [!NOTE]
+> 在[前导群集和](/azure/data-explorer/follower)使用者群集上，不支持使用客户托管密钥的数据加密。 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>为群集分配标识
 

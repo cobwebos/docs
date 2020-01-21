@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: ea029e62ac1273d9796e52edc3f7a46868964d2a
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520755"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281285"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -85,7 +85,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 文章    
 * [利用 Azure 安全中心进行事件响应](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [依据安全攻略自动进行响应](https://docs.microsoft.com/azure/security-center/security-center-playbooks)
+* [通过工作流自动化自动完成响应](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
@@ -113,9 +113,9 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [Azure 安全中心常见问题 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)
 * [标识安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
-* [网络安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
+* [网络安全最佳实践](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
-* [合规性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
+* [遵从性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
 * [Log analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>社区资源

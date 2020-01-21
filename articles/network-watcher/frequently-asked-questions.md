@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 0eea6700b8b248a87666071ee02572d356110cd0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830167"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280775"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
@@ -71,9 +71,9 @@ ms.locfileid: "75830167"
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG 流日志有什么作用？
 可以通过[网络安全组（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)合并和管理 Azure 网络资源。 NSG Flow 日志使你可以记录有关通过 Nsg 的所有流量的5元组流信息。 将原始流日志写入 Azure 存储帐户，以便可以根据需要进一步处理、分析、查询或导出这些日志。
 
-### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall-or-through-a-service-endpoints"></a>如何实现使用防火墙或服务终结点的存储帐户上的 NSG 流日志？
+### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall"></a>如何实现使用防火墙的存储帐户上的 NSG 流日志？
 
-若要将存储帐户用于防火墙或通过服务终结点，你必须允许受信任的 Microsoft 服务访问你的存储帐户：
+若要将存储帐户用于防火墙，你必须为受信任的 Microsoft 服务提供例外，以便访问你的存储帐户：
 
 * 在 [NSG 流日志概览页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找到 NSG 即可找到存储帐户的名称
 * 在门户的全局搜索框中键入存储帐户的名称，导航到存储帐户
@@ -82,6 +82,11 @@ ms.locfileid: "75830167"
 * 如果已选中，则不需进行更改。  
 
 可以在数分钟后检查存储日志，应该会看到时间戳已更新，或者会看到新的 JSON 文件已创建。
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>如何实现将 NSG Flow 日志与服务终结点一起用于存储？
+
+请参阅[教程启用服务终结点](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。 
+
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流日志版本 1 & 2 之间有何区别？
 流日志版本2引入了*流状态*& 存储有关传输的字节和数据包的信息。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)。

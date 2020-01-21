@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462456"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280996"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于信息技术（IT）专业人员、IT 架构师、信息安全分析师和云管理员，计划使用 Azure 安全中心。
@@ -239,7 +239,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 
 也可从此页开始[调查](https://docs.microsoft.com/azure/security-center/security-center-investigation)，以便更好地了解攻击的时间线、攻击是如何发生的、哪些系统可能受损、使用了哪些凭据，并查看整个攻击链的图形表示方式。
 
-确定受损系统以后，即可运行此前创建的安全[攻略](https://docs.microsoft.com/azure/security-center/security-center-playbooks)。 安全攻略是可以在安全中心执行的过程的集合，其执行前提是已从所选警报触发特定的攻略。
+确定受损系统后，可以运行之前创建的[工作流自动化](workflow-automation.md)。 这些是可在警报触发后从安全中心执行的过程的集合。
 
 在[如何利用 Azure 安全中心 & Microsoft Operations Management Suite 事件响应](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)视频中，你可以看到一些演示，它们可帮助你了解如何在这些阶段中使用安全中心。
 

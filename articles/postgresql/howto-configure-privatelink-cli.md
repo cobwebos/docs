@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f2e6f16f3def5d510cf8f7309ed67eb22d0e970a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897736"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281302"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
 
@@ -101,9 +101,9 @@ az network private-endpoint create \
 为 PostgreSQL server 域创建专用 DNS 区域，并使用虚拟网络创建关联链接。 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
-   --name  "privatelink.database.azure.com" 
+   --name  "privatelink.postgres.database.azure.com" 
 az network private-dns link vnet create --resource-group myResourceGroup \ 
-   --zone-name  "privatelink.database.azure.com"\ 
+   --zone-name  "privatelink.postgres.database.azure.com"\ 
    --name MyDNSLink \ 
    --virtual-network myVirtualNetwork \ 
    --registration-enabled false 
@@ -117,8 +117,8 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
  
 #Create DNS records 
-az network private-dns record-set a create --name myserver --zone-name privatelink.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a create --name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup  
+az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
@@ -150,14 +150,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
 
-2. 输入  `nslookup mydemopostgresserver.postgres.privatelink.database.azure.com`。 
+2. 输入  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`。 
 
     将收到类似于下面的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemopostgresserver.postgres.privatelink.database.azure.com
+    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
@@ -167,7 +167,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.postgres.privatelink.database.azure.com* |
+    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
     |Password |Enter a password provided during the PostgreSQL server creation. |
     |SSL|Select **Required**.|

@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cb73acc227d110cbfe5f5bbd37c69e08e7628eee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275175"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281064"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -484,18 +484,18 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
   
   下面显示了生成的默认 `ApplicationInsights.config` 文件。 在 ASP.NET Core 中，将在代码中启用相同的默认行为。 使用[此页前面部分中的示例](#configuring-adaptive-sampling-for-aspnet-core-applications)来更改此默认行为。
 
-```xml
-<TelemetryProcessors>
-    <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
-        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-        <ExcludedTypes>Event</ExcludedTypes>
-    </Add>
-    <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
-        <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-        <IncludedTypes>Event</IncludedTypes>
-    </Add>
-</TelemetryProcessors>
-```
+    ```xml
+    <TelemetryProcessors>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+            <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+            <ExcludedTypes>Event</ExcludedTypes>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+            <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+            <IncludedTypes>Event</IncludedTypes>
+        </Add>
+    </TelemetryProcessors>
+    ```
 
 *遥测是否可以进行多次采样？*
 
@@ -533,18 +533,18 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 * 实现此目的的最佳方式是编写一个自定义[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，该自定义的会将要保留的遥测项的 `SamplingPercentage` 设置为100，如下所示。 由于可以保证初始值设定项在遥测处理器（包括采样）之前运行，因此这可确保所有采样方法都将忽略任何采样注意事项中的此项。
 
-```csharp
-public class MyTelemetryInitializer : ITelemetryInitializer
-{
-    public void Initialize(ITelemetry telemetry)
+    ```csharp
+    public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        if(somecondition)
+        public void Initialize(ITelemetry telemetry)
         {
-            ((ISupportSampling)telemetry).SamplingPercentage = 100;
+            if(somecondition)
+            {
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
+            }
         }
     }
-}
-```
+    ```
 
 ## <a name="older-sdk-versions"></a>旧版 SDK 版本
 

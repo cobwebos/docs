@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973476"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281217"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -381,7 +381,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure HDInsight          | Microsoft.HDInsight        | 设置新 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure 导入导出      | Microsoft.ImportExport     | 使用导入/导出服务，可以将数据导入到 Azure，并从 Azure 中导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
 | Azure 监视器            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure 联网         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
+| Azure 联网         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure 站点恢复      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，启用复制来实现 Azure IaaS 虚拟机灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 "**允许受信任的 Microsoft 服务 ...** " 设置还允许以下服务的特定实例访问存储帐户，前提是将[RBAC 角色显式分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问作用域对应于分配给托管标识的 RBAC 角色。
