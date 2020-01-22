@@ -88,6 +88,8 @@
       href: templates-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
+    - name: 完整模式删除
+      href: complete-mode-deletion.md
     - name: 部署管理器
       items:
         - name: 概述
@@ -237,12 +239,6 @@
           href: template-functions-resource.md
         - name: 字符串函数
           href: template-functions-string.md
-    - name: 资源功能
-      items:
-        - name: 完整模式删除
-          href: complete-mode-deletion.md
-        - name: 扩展资源类型
-          href: extension-resource-types.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

@@ -1040,8 +1040,6 @@
         - name: Azure 流分析
           href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
           maintainContext: true
-        - name: 逻辑应用和服务总线
-          href: change-feed-hl7-fhir-logic-apps.md
         - name: Azure 事件中心和 Azure 存储
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
