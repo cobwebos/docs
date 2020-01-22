@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: 保护 SQL Server 数据库
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure 文件共享
+    - name: Azure 文件共享备份
       items:
-        - name: 备份 Azure 文件共享
-          href: backup-azure-files.md
+        - name: 通过 Azure 门户
+          items:
+            - name: 备份 Azure 文件共享
+              href: backup-afs.md
+            - name: 还原 Azure 文件共享
+              href: restore-afs.md
+            - name: 管理 Azure 文件共享备份
+              href: manage-afs-backup.md
+        - name: 使用 Azure CLI
+          items:
+            - name: 使用 CLI 备份 Azure 文件共享
+              href: backup-afs-cli.md
+            - name: 使用 CLI 还原 Azure 文件共享
+              href: restore-afs-cli.md
+            - name: 使用 CLI 管理 Azure 文件共享备份
+              href: manage-afs-backup-cli.md
+        - name: 使用 PowerShell
+          items:
+            - name: 使用 PowerShell 备份和还原 Azure 文件共享
+              href: backup-azure-afs-automation.md
     - name: 备份 Azure VM
       items:
         - name: 关于 Azure VM 备份
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Azure 门户中的 Windows Server
           href: backup-client-automation.md
-        - name: Azure 门户中的 Azure 文件共享
-          href: backup-azure-afs-automation.md
         - name: Azure VM 备份中的 SQL
           href: backup-azure-sql-automation.md
     - name: 使用 Azure 备份 REST API

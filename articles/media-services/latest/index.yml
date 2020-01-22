@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure 媒体服务 v3 文档
+title: 了解 Azure 媒体服务 v3 基于云的平台
 summary: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 metadata:
   title: Azure 媒体服务 v3 文档
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 10/07/2019
-  ms.openlocfilehash: b55677aba5f99d4960d51d3a717175d47db026e2
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 70eab66c3bd2d8536e415c9ac7c62161f3710c0c
+  ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72244223"
+  ms.lasthandoff: 01/22/2020
+  ms.locfileid: "76314668"
 landingContent:
 - title: 关于媒体服务
   linkLists:

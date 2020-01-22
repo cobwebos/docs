@@ -63,6 +63,8 @@
       href: concept-point-time-snapshot.md
     - name: 特色管理
       href: concept-feature-management.md
+    - name: 使用 GitHub Actions 进行同步
+      href: concept-github-action.md
     - name: 事件处理
       href: concept-app-configuration-event.md
     - name: 高可用性

@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: 算法备忘单
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: 如何选择算法
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
