@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974508"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315025"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -85,7 +85,7 @@ ms.locfileid: "75974508"
 
    可以使用[azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 Azure Monitor 中的度量值是在特定时间描述系统某些方面的数值。 度量值每分钟收集一次，可用于报警，因为它们可以频繁采样。 使用相对简单的逻辑可以快速触发警报。
 
@@ -103,17 +103,19 @@ Azure Monitor 中的度量值是在特定时间描述系统某些方面的数值
 
     单位：字节
 
-- **防火墙运行状况状态**-指示防火墙的运行状况。
+- **防火墙运行状况状态**-根据 SNAT 端口可用性指出防火墙的运行状况。
 
     单位：百分比
 
    此指标有两个维度：
-  - **状态**：可能的值是*正常*、已*降级*、不*正常*。
-  - **原因**：指示防火墙的相应状态的原因。 例如，如果防火墙状态为降级或不正常，则它可以指示*SNAT 端口*。
+  - 状态：可能的值是*正常*、已*降级*、不*正常*。
+  - 原因：指示防火墙的相应状态的原因。 
 
+     如果使用 SNAT 端口 > 95%，它们将被视为已用尽，并且运行状况为50%，状态 = "已**降级**"，原因 =**SNAT 端口**。 防火墙保持处理流量，并且现有连接不受影响。 但是，可能不会间歇地建立新连接。
 
+     如果使用 SNAT 端口 < 95%，则防火墙被视为正常，运行状况显示为100%。
 
-
+     如果未报告 SNAT 端口使用情况，则运行状况显示为0%。 
 
 - **SNAT 端口使用率**-防火墙使用的 snat 端口数的百分比。
 

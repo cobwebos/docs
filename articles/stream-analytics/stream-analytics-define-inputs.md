@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646840"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314787"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -55,6 +55,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 | **事件中心名称** | 要用作输入的事件中心的名称。 |
 | **事件中心策略名称** | 提供对事件中心的访问权限的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 此选项会自动进行填充，除非已选择手动提供事件中心设置的选项。|
 | **事件中心使用者组**（推荐） | 强烈建议对每个流分析作业使用不同的使用者组。 此字符串标识的使用者组用于从事件中心引入数据。 如果未指定任何使用者组，流分析作业将使用 $Default 使用者组。  |
+| **分区键** | 如果按属性对输入进行分区，则可以添加此属性的名称。 分区键是可选的，并且用于提高查询的性能（如果它在此属性中包含 PARTITION BY 或 GROUP BY 子句）。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV、Avro 或[其他（Protobuf，XML，专有 ...）](custom-deserializer.md)）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
 | **编码** | 目前只支持 UTF-8 这种编码格式。 |
 | **事件压缩类型** | 用于读取传入数据流的压缩类型，例如 None（默认）、GZip 或 Deflate。 |
@@ -104,6 +105,7 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 | **共享访问策略名称** | 提供对 IoT 中心的访问权限的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | **共享访问策略密钥** | 用于授予对 IoT 中心的访问权限的共享访问密钥。  此选项会自动进行填充，除非已选择手动提供 IoT 中心设置的选项。 |
 | **使用者组** | 强烈建议对每个流分析作业使用不同的使用者组。 用于从 IoT 中心引入数据的使用者组。 流分析使用 $Default 所有者组，除非指定了其他组。  |
+| **分区键** | 如果按属性对输入进行分区，则可以添加此属性的名称。 分区键是可选的，并且用于提高查询的性能（如果它在此属性中包含 PARTITION BY 或 GROUP BY 子句）。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV、Avro 或[其他（Protobuf，XML，专有 ...）](custom-deserializer.md)）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
 | **编码** | 目前只支持 UTF-8 这种编码格式。 |
 | **事件压缩类型** | 用于读取传入数据流的压缩类型，例如 None（默认）、GZip 或 Deflate。 |
@@ -157,6 +159,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 | **路径模式**（可选） | 用于定位指定容器中的 blob 的文件路径。 如果要从容器的根目录中读取 blob，请不要设置路径模式。 在路径中，可以指定以下 3 个变量的一个或多个实例：`{date}`、`{time}` 或 `{partition}`<br/><br/>示例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>示例 2：`cluster1/logs/{date}`<br/><br/>`*` 字符不是路径前缀允许使用的值。 仅允许使用有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字符</a>。 不要包含容器名称或文件名。 |
 | **日期格式**（可选） | 如果在路径中使用日期变量，则为组织文件的日期格式。 示例： `YYYY/MM/DD` |
 | **时间格式**（可选） |  如果在路径中使用时间变量，则为组织文件的时间格式。 目前唯一支持的值是 `HH`，表示小时。 |
+| **分区键** | 如果按属性对输入进行分区，则可以添加此属性的名称。 分区键是可选的，并且用于提高查询的性能（如果它在此属性中包含 PARTITION BY 或 GROUP BY 子句）。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV、Avro 或[其他（Protobuf，XML，专有 ...）](custom-deserializer.md)）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
 | **编码** | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | **压缩** | 用于读取传入数据流的压缩类型，例如 None（默认）、GZip 或 Deflate。 |

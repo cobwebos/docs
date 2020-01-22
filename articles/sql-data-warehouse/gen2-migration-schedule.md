@@ -9,21 +9,21 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693034"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314770"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 
-Microsoft 正在帮助降低运行数据仓库的入门级成本。  能够处理高要求查询的较低计算层级现在适用于 Azure SQL 数据仓库。 请阅读完整的公告：[针对 Gen2 的较低计算层级支持](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)。 新套餐在下表所示区域提供。 对于支持的区域，现有的 Gen1 数据仓库可以通过以下任一方式升级到 Gen2：
+Microsoft 正在帮助降低运行数据仓库的入门级成本。  对于 Azure SQL 数据仓库，可用于处理要求很强的查询的计算层现在可用。 阅读完整公告[更少的 Gen2 支持](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)。 下表中所述的区域提供了新产品/服务。 对于支持的区域，现有的 Gen1 数据仓库可以通过以下任一方式升级到 Gen2：
 
 - **自动升级过程：** 如果服务在某个区域中可用，则自动升级不会立即启动。  当自动升级在特定区域启动时，将在你选择的维护计划期间进行单独的 DW 升级。
-- [**自我升级到 Gen2：** ](#self-upgrade-to-gen2)你可以通过执行自我升级到 Gen2 来控制升级的时间。 如果你的区域尚不受支持，可以从某个还原点直接还原到受支持区域中的 Gen2 实例。
+- [**自我升级到 Gen2：** ](#self-upgrade-to-gen2)你可以通过执行自我升级到 Gen2 来控制升级的时间。 如果你的区域尚不受支持，你可以从还原点直接还原到受支持区域中的 Gen2 实例。
 
 ## <a name="automated-schedule-and-region-availability-table"></a>自动计划和区域可用性表
 
@@ -33,47 +33,18 @@ Microsoft 正在帮助降低运行数据仓库的入门级成本。  能够处�
 
 | **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
-| 澳大利亚东部 |可用 |完成 |
-| 澳大利亚东南部 |可用 |完成 |
-| 巴西南部 |可用 |完成 |
-| 加拿大中部 |可用 |完成 |
 | 加拿大东部 |2020年6月1日 |2020年7月1日 |
-| 美国中部 |可用 |完成 |
 | 中国东部 |\* |\* |
-| 中国东部 2 |可用 |完成 |
 | 中国北部 |\* |\* |
-| 中国北部 2 |可用 |完成 |
-| 东亚 |可用 |完成 |
-| 美国东部 |可用 |完成 |
-| 美国东部 2 |可用 |完成 |
-| 法国中部 |可用 |正在进行 |
 | 德国中部 |\* |\* |
-| 德国中西部 |2019年9月1日|2019年10月1日 |
-| 印度中部 |可用 |完成 |
-| 印度南部 |可用 |完成 |
-| 印度西部 |2019年7月1日 |正在进行 |
-| 日本东部 |可用 |完成 |
-| 日本西部 |可用 |完成 |
-| 韩国中部 |可用 |完成 |
-| 韩国南部 |可用 |完成 |
-| 美国中北部 |可用 |完成 |
-| 北欧 |可用 |完成 |
-| 南非北部 |2019年7月12日 |完成 |
-| 美国中南部 |可用 |完成 |
-| 东南亚 |可用 |完成 |
-| 阿拉伯联合酋长国北部 |2019年7月20日 |完成 |
-| 英国南部 |可用 |正在进行 |
-| 英国西部 |可用 |正在进行 |
-| 美国中西部 |2019年11月1日 |2019年12月1日|
-| 欧洲西部 |可用 |完成 |
-| 美国西部 |可用 |完成 |
-| 美国西部 2 |可用 |完成 |
+| 德国中西部 |可用 |5月1日，2020 |
+| 印度西部 |可用 |5月1日，2020  |
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 
-我们会根据上面的可用性图表，为你的 Gen1 实例安排自动升级。 为了避免数据仓库可用性发生任何意外中断，将在维护计划期间安排自动升级。 在正自动升级到 Gen2 的区域，将禁用新建 Gen1 实例的功能。 自动升级完成后，将弃用 Gen1。 有关计划的详细信息，请参阅[查看维护计划](viewing-maintenance-schedule.md)
+根据上述可用性图表，我们将为 Gen1 实例计划自动升级。 为了避免数据仓库可用性发生任何意外中断，将在维护计划期间安排自动升级。 在自动升级到 Gen2 的区域中，将禁用创建新的 Gen1 实例的功能。 完成自动升级后，将弃用 Gen1。 有关计划的详细信息，请参阅[查看维护计划](viewing-maintenance-schedule.md)
 
-重启数据仓库时，升级过程会导致连接性短暂下降（大约 5 分钟）。  重启数据仓库后，它将完全可用。 但是，升级过程继续在后台升级数据文件时，可能会出现性能下降的情况。 性能下降的总时间将根据数据文件的大小而有所不同。
+在重新启动数据仓库时，升级过程将涉及简短的连接（大约5分钟）。  重启数据仓库后，它将完全可用。 但是，在升级过程中，升级过程将继续在后台升级数据文件，因此可能会遇到性能下降。 性能下降的总时间将根据数据文件的大小而有所不同。
 
 还可以通过在重启后使用更大的 SLO 和资源类在所有主列存储表上运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来加快数据文件升级过程。
 
@@ -82,11 +53,11 @@ Microsoft 正在帮助降低运行数据仓库的入门级成本。  能够处�
 
 ## <a name="self-upgrade-to-gen2"></a>自行升级至 Gen2
 
-可以选择自行升级，方法是在现有 Gen1 数据仓库上执行以下步骤。 如果选择自行升级，则必须在自动升级过程开始之前在所在区域完成它。 这样做可确保避免任何导致冲突的自动升级风险。
+可以通过在现有 Gen1 数据仓库中执行以下步骤来选择自行升级。 如果选择自行升级，则必须先完成此操作，然后才能在你的区域中开始自动升级过程。 这样做可确保你避免自动升级导致冲突的任何风险。
 
 进行自行升级时有两种选择。  你可以就地升级当前数据仓库，也可以将 Gen1 数据仓库还原为 Gen2 实例。
 
-- [就地升级](upgrade-to-latest-generation.md) - 此选项会将现有的 Gen1 数据仓库升级到 Gen2。 重启数据仓库时，升级过程会导致连接性短暂下降（大约 5 分钟）。  重启数据仓库后，它将完全可用。 如果在升级过程中遇到问题，请打开[支持请求](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)并引用 "Gen2 upgrade" 作为可能的原因。
+- [就地升级](upgrade-to-latest-generation.md) - 此选项会将现有的 Gen1 数据仓库升级到 Gen2。 在重新启动数据仓库时，升级过程将涉及简短的连接（大约5分钟）。  重启数据仓库后，它将完全可用。 如果在升级过程中遇到问题，请打开[支持请求](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)并引用 "Gen2 upgrade" 作为可能的原因。
 - [从还原点升级](sql-data-warehouse-restore.md) - 在当前 Gen1 数据仓库中创建用户定义的还原点，然后直接还原到 Gen2 实例。 现有的 Gen1 数据仓库将保持现状。 恢复完成后，Gen2 数据仓库将完全可用。  在已还原的 Gen2 实例上运行所有测试和验证过程后，可以删除原始 Gen1 实例。
 
    - 步骤1：在 Azure 门户中，[创建用户定义的还原点](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)。

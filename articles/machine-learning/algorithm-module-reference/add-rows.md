@@ -9,24 +9,24 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a16dc0bfc3fae8852c46435f6407c56149e1b14e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39bbf3b3a38926d696233c2d77bae83ccfc85206
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493950"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314549"
 ---
 # <a name="add-rows-module"></a>添加行模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块连接两个数据集。 在串联中，将第二个数据集的行添加到第一个数据集的末尾。  
   
-串联行在以下方案中很有用：  
+在如下所述的情况下，行串联非常有用：  
   
-+ 您已生成一系列评估统计信息，并且您希望将它们合并到一个表中以方便报告。  
++ 你已生成一系列评估统计数据，并想要将它们合并到一个表中以方便报告。  
   
-+ 你使用了不同的数据集，并且想要合并这些数据集以创建最终的数据集。  
++ 你一直在处理不同的数据集，并想要合并这些数据集以创建最终的数据集。  
 
 ## <a name="how-to-use-add-rows"></a>如何使用添加行  
 

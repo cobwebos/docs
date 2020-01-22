@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d6140e97383fb07e65c87f74a555046f918ac41
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465968"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314855"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块可以创建逻辑回归模型，该模型可用于预测多个值。
 
@@ -42,13 +42,13 @@ Azure 机器学习还提供了[双类逻辑回归](./two-class-logistic-regressi
 
     + **参数范围**：如果你不确定最佳参数，并想要使用参数扫描，请使用此选项。
 
-3. **优化容差**：指定优化器收敛的阈值。 如果迭代间的改进小于阈值，则算法将停止并返回当前模型。
+3. **优化容差**：指定优化器收敛的阈值。 如果迭代间的改进低于阈值，则算法将会停止并将返回当前模型。
 
-4. **L1 正则化权重**， **L2 正则化权重**：为正则化参数 L1 和 L2 键入要使用的值。 对于这两个值，建议使用非零值。
+4. **L1 正则化权重**， **L2 正则化权重**：为正则化参数 L1 和 L2 键入要使用的值。 对于上述两者，建议使用非零值。
 
     正则化是一种防止使用极端系数值的处罚模型的过度拟合的方法。 正则化的工作原理是将与系数值相关联的处罚添加到假设的错误。 具有极端系数值的准确模型会因处罚更多的数据，但具有更保守值的更不准确的模型将因处罚更少。
 
-     L1 和 L2 正则化具有不同的效果，并使用。 L1 可应用于稀疏模型，这在处理多维数据时非常有用。 与此相反，L2 正则化更适用于非稀疏数据。  此算法支持 L1 和 L2 正则化值的线性组合：也就是说，如果 `x = L1` 和 `y = L2``ax + by = c` 定义正则化术语的线性跨度。
+     L1 正则化和 L2 正则化具有不同的作用和用法。 L1 正则化可以应用于稀疏模型，在处理高维数据时，这很有用。 与此相反，L2 正则化更适用于非稀疏数据。  此算法支持 L1 和 L2 正则化值的线性组合：也就是说，如果 `x = L1` 和 `y = L2``ax + by = c` 定义正则化术语的线性跨度。
 
      为逻辑回归模型（如[弹性网络正则化](https://wikipedia.org/wiki/Elastic_net_regularization)）设计了 L1 和 L2 术语的不同线性组合。
 
@@ -60,9 +60,6 @@ Azure 机器学习还提供了[双类逻辑回归](./two-class-logistic-regressi
 
 9. 运行管道。
 
-## <a name="results"></a>结果
-
-训练完成后，您可以查看模型参数的摘要，以及从培训中学习的功能权重，右键单击 "[训练模型](./train-model.md)" 模块的输出，然后选择 "**可视化**"。
 
 
 ## <a name="next-steps"></a>后续步骤

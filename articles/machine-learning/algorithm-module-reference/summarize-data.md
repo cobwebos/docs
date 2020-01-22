@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428458"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313735"
 ---
 # <a name="summarize-data"></a>汇总数据
 
-本文介绍 Azure 机器学习设计器（预览）的模块。
+本文介绍 Azure 机器学习设计器的模块。
 
 使用 "汇总数据" 模块可创建一组标准统计度量值，这些度量值用于描述输入表中的每一列。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75428458"
 
 1. 不需要其他参数。 默认情况下，该模块将分析作为输入提供的所有列，根据列中的值的类型，输出一组相关的统计信息，如 "[结果](#results)" 一节中所述。
 
-1. 运行管道，或右键单击模块并选择 "**运行所选项**"。
+1. 运行管道。
 
 ## <a name="results"></a>结果
 

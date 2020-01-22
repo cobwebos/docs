@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206557"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314702"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私有云网站使用 VMware 范围托管虚拟桌面基础结构
 
@@ -47,7 +47,7 @@ CloudSimple 解决方案要求你执行以下操作：
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>估计桌面环境大小
 
 * 验证你确定的配置是否处于 VMware 运营限制内。
-* 估计灾难恢复站点所需的资源，以保护本地环境。
+* 估计所有桌面和水平管理组件所需的资源。
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>为环境创建私有云
 
@@ -65,7 +65,7 @@ CloudSimple 解决方案要求你执行以下操作：
 
 ![私有云中的范围部署](media/horizon-private-cloud.png)
 
-以下各节概括说明了如何设置与图中描述的部署类似的部署。 在开始之前，请确认你具有以下各项：
+以下各节概括说明了如何设置与图中描述的部署类似的部署。 在开始之前，请验证您具有以下各项：
 
 * 使用 CloudSimple 门户创建的私有云，具有足够的容量来运行桌面池。
 * 在本地环境和私有云环境之间提供足够的带宽，以支持桌面的网络流量。

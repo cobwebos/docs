@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3d79438797f47dfcc178640af60f5207b4f7650
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466031"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314634"
 ---
 # <a name="multiclass-neural-network-module"></a>多类神经网络模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
-使用此模块可创建一个神经网络模型，该模型可用于预测具有多个值的目标。 
+使用此模块可创建一个用于预测包含多个值的目标的神经网络模型。 
 
 例如，这种类型的神经网络可用于复杂的计算机视觉任务，如数字或字母识别、文档分类和模式识别。
 
@@ -55,9 +55,9 @@ ms.locfileid: "73466031"
         - 一个隐藏层
         - 输出层完全连接到隐藏层。
         - 隐藏层完全连接到输入层。
-        - 输入层中的节点数取决于定型数据中的功能数。
+        - 输入层中节点的训练数据中的特征数确定。
         - 用户可以设置隐藏层中的节点数。 默认值为 100。
-        - 输出层中的节点数取决于类的数目。
+        - 输出层中的节点数取决于的类的数目。
   
    
 
@@ -86,10 +86,7 @@ ms.locfileid: "73466031"
 
 训练完成后：
 
-- 若要查看模型参数的摘要，以及从定型中获知的功能权重和神经网络的其他参数，请右键单击[定型模型](./train-model.md)的输出，然后选择 "**可视化**"。  
-
-- 若要保存训练的模型的快照，请右键单击**训练的模型**输出，并选择 "**另存为定型模型**"。 此模型在连续运行相同管道时不会更新。
-
+- 若要保存训练模型的快照，请选择 "**定型模型**" 模块右侧面板中的 "**输出**" 选项卡。 选择 "**注册数据集**" 图标，将该模型保存为可重复使用的模块。
 
 ## <a name="next-steps"></a>后续步骤
 

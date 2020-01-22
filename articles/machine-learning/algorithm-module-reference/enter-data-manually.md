@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 509b82596ce4819152fcd8d0bc202df186a20095
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497935"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314838"
 ---
 # <a name="enter-data-manually-module"></a>手动输入数据模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块通过键入值来创建小型数据集。 数据集可以有多个列。
   
@@ -28,7 +28,7 @@ ms.locfileid: "73497935"
   
 - 创建标签的简短列表
   
-- 键入要插入数据集中的列名的列表
+- 键入要插入到数据集中的列名的列表
 
 ## <a name="enter-data-manually"></a>手动输入数据 
   
@@ -86,8 +86,8 @@ ms.locfileid: "73497935"
   
         |Col1|Col2|Col3|Col4|标签|  
         |-|-|-|-|-|  
-        |0.00016|0.004|0.999961|0.00784|1|  
-        |0|0.004|0.999955|0.008615|1|  
+        |0.00016|0.004|0.999961|0.00784|第|  
+        |0|0.004|0.999955|0.008615|第|  
   
 4.  在每一行后按 ENTER 以开始新行。  
   
@@ -97,9 +97,9 @@ ms.locfileid: "73497935"
   
      如果创建缺少值的行，则可以在以后随时对其进行筛选。  
   
-5.  右键单击模块并选择 "**运行选定**项" 以分析数据，并将其作为数据集加载到工作区中。  
+5.  将输出端口连接到其他模块，并运行管道。  
   
-     若要查看数据集，请单击输出端口并选择 "**可视化**"。  
+     若要查看数据集，请右键单击模块并选择 "**可视化**"。  
 ## <a name="next-steps"></a>后续步骤
 
 查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214562"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314498"
 ---
 # <a name="module-assign-data-to-clusters"></a>模块：向群集分配数据
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用 "*将数据分配到群集*" 模块。 该模块通过使用*K 平均值聚类分析*算法训练的聚类分析模型来生成预测。
+本文介绍如何使用 Azure 机器学习设计器中的 "*将数据分配给群集*" 模块。 该模块通过使用*K 平均值聚类分析*算法训练的聚类分析模型来生成预测。
 
 "将数据分配到群集" 模块将返回一个数据集，其中包含每个新数据点的可能分配。 
 
@@ -47,5 +47,5 @@ ms.locfileid: "74214562"
   
 ### <a name="results"></a>结果
 
-+  若要查看数据集中的值，请右键单击该模块，选择 "**结果数据集**"，然后选择 "**可视化**"。
++  若要查看数据集中的值，请右键单击该模块，然后选择 "**可视化**"。 或者选择该模块并切换到右侧面板中的 "**输出**" 选项卡，单击**端口输出**中的 "直方图" 图标以直观显示结果。
 

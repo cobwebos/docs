@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529549"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314685"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -34,7 +34,7 @@ ms.locfileid: "72529549"
 
 HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接从 internet 进行访问。 使用公共网关可以通过 Internet 访问以下端口（在所有 HDInsight 群集类型中很常见）。
 
-| 服务 | Port | 协议 | 描述 |
+| 服务 | Port | 协议 | Description |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
 | sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
@@ -47,14 +47,15 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 以下各项适用于特定的群集类型：
 
-| 服务 | Port | 协议 | 群集类型 | 描述 |
+| 服务 | Port | 协议 | 群集类型 | Description |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Kafka Rest 代理 |443 |HTTPS |Kafka |Kafka REST API。 请参阅[使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集进行交互](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 在 Internet 上公开的所有服务都必须经过身份验证：
 
@@ -84,7 +85,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="hdfs-ports"></a>HDFS 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |头节点 |30070 |HTTPS |用于查看状态的 Web UI |
 | NameNode 元数据服务 |头节点 |8020 |IPC |文件系统元数据 |
@@ -95,7 +96,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="yarn-ports"></a>YARN 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | Resource Manager Web UI |头节点 |8088 |HTTP |Resource Manager 的 Web UI |
 | Resource Manager Web UI |头节点 |8090 |HTTPS |Resource Manager 的 Web UI |
@@ -109,20 +110,20 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="hive-ports"></a>Hive 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |头节点 |10001 |Thrift |用于连接到 Hive 的服务 (Thrift/JDBC) |
 | Hive 元存储 |头节点 |9083 |Thrift |用于连接到 Hive 元数据的服务 (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | WebHCat 服务器 |头节点 |30111 |HTTP |位于 HCatalog 和其他 Hadoop 服务顶层的 Web API |
 
 ### <a name="mapreduce-ports"></a>MapReduce 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | JobHistory |头节点 |19888 |HTTP |MapReduce JobHistory Web UI |
 | JobHistory |头节点 |10020 |&nbsp; |MapReduce JobHistory 服务器 |
@@ -130,21 +131,21 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="oozie"></a>Oozie
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | Oozie 服务器 |头节点 |11000 |HTTP |Oozie 服务的 URL |
 | Oozie 服务器 |头节点 |11001 |HTTP |Oozie 管理端口 |
 
 ### <a name="ambari-metrics"></a>Ambari 指标
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | TimeLine（应用程序历史记录） |头节点 |6188 |HTTP |TimeLine 服务 Web UI |
 | TimeLine（应用程序历史记录） |头节点 |30200 |RPC |TimeLine 服务 Web UI |
 
 ### <a name="hbase-ports"></a>HBase 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | HMaster |头节点 |16000 |&nbsp; |&nbsp; |
 | HMaster 信息 Web UI |头节点 |16010 |HTTP |HBase 主控 Web UI 的端口 |
@@ -153,14 +154,15 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 ### <a name="kafka-ports"></a>Kafka 端口
 
-| 服务 | 节点数 | Port | 协议 | 描述 |
+| 服务 | 节点数 | Port | 协议 | Description |
 | --- | --- | --- | --- | --- |
 | 代理 |工作器节点 |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
 | &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
+| REST 代理 | Kafka 管理节点 |9400 |HTTPS |[Kafka REST 规范](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark 端口
 
-| 服务 | 节点数 | Port | 协议 | URL 路径 | 描述 |
+| 服务 | 节点数 | Port | 协议 | URL 路径 | Description |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 服务器 |头节点 |10002 |Thrift | &nbsp; | 用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |

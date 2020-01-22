@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152250"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314719"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -167,6 +167,11 @@ ms.locfileid: "76152250"
 在所有这些情况下，请参考索引器[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以确保正确生成索引架构，并设置相应的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息将包括有助于跟踪不匹配源的详细信息。
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>错误：无法使用集成的更改跟踪策略，因为表具有复合主键
+
+这适用于 SQL 表，通常在该键定义为组合键时，或在表定义唯一聚集索引（如 SQL 索引，而不是 Azure 搜索索引）时发生。 主要原因是在[唯一聚集索引](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情况下，将键属性修改为组合主键。 在这种情况下，请确保您的 SQL 表不具有唯一的聚集索引，或者您将键字段映射到一个字段，该字段保证不包含重复值。
+
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>错误：无法在索引器最大运行时间内处理文档
 
