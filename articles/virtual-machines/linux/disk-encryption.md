@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4508d4b36e17db801a3ac172c434cf2e2136e141
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027821"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289350"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -189,3 +189,6 @@ az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId
 
 - [探索 Azure 资源管理器模板，以便通过客户托管的密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)
+- [复制已启用客户托管密钥的计算机](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
+- [通过 PowerShell 设置将 VMware Vm 灾难恢复到 Azure](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [使用 PowerShell 和 Azure 资源管理器为 Hyper-v Vm 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

@@ -3,14 +3,14 @@ title: Azure 中的更新管理解决方案
 description: 本文介绍如何使用 Azure 更新管理解决方案来管理 Windows 和 Linux 计算机的更新。
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945125"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310095"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -71,8 +71,9 @@ ms.locfileid: "75945125"
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 （RTM 和 SP1 Standard）||
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要 `yum` 返回 CentOS 在其 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅[Linux 上的更新分类](#linux-2)。          |
+|Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 （RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统执行评估，不支持修补，因为 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。 |
+|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要 `yum` 返回 CentOS 在其 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅[Linux 上的更新分类](automation-view-update-assessments.md#linux-2)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
@@ -190,56 +191,6 @@ ms.locfileid: "75945125"
 建议在定义异常时使用列出的地址。 对于 IP 地址，你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，它会反映当前部署的范围和任何即将对 IP 范围进行的更改。
 
 按照[连接无 internet 访问的计算机](../azure-monitor/platform/gateway.md)中的说明配置无法访问 internet 的计算机。
-
-## <a name="view-update-assessments"></a>查看更新评估
-
-在自动化帐户中，选择“更新管理”来查看计算机的状态。
-
-此视图提供有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 在 "**符合性**" 列中，可以看到上次评估计算机的时间。 在 "**更新代理准备情况**" 列中，可以检查更新代理的运行状况。 如果出现问题，请选择链接以中转到疑难解答文档，该文档可帮助你解决问题。
-
-若要运行返回有关计算机、更新或部署的信息的日志搜索，请在列表中选择相应的项。 此时将打开“日志搜索”窗格，其中显示了针对所选项的查询。
-
-![更新管理默认视图](media/automation-update-management/update-management-view.png)
-
-## <a name="view-missing-updates"></a>查看缺少的更新
-
-选择“缺少的更新”可查看计算机中缺少的更新列表。 每个更新都会列出，并且可供选择。 将显示有关需要更新的计算机数和操作系统的信息，以及指向更多信息的链接。 “日志搜索”窗格显示有关更新的更多详细信息。
-
-![缺少更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
-
-## <a name="update-classifications"></a>更新分类
-
-下表列出了更新管理中的更新分类，以及每个分类的定义。
-
-### <a name="windows"></a>Windows
-
-|分类  |Description  |
-|---------|---------|
-|关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
-|安全更新     | 产品特定、安全相关问题的更新。        |
-|更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
-|功能包     | 在产品版本以外发布的新产品功能。        |
-|服务包     | 应用于应用程序的一组累积修补程序。        |
-|定义更新     | 对病毒或其他定义文件的更新。        |
-|工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
-|更新     | 对当前已安装的应用程序或文件的更新。        |
-
-### <a name="linux-2"></a>Linux
-
-|分类  |Description  |
-|---------|---------|
-|关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
-|其他更新     | 本质上不重要或不是安全更新的所有其他更新。        |
-
-对于 Linux，更新管理可以区分云中的关键更新和安全更新，同时显示评估数据，因为云中的数据扩充。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他分发不同，CentOS 没有 RTM 版本中提供的此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
-
-```bash
-sudo yum -q --security check-update
-```
-
-目前，没有支持的方法可在 CentOS 上启用本机分类数据可用性。 目前，仅向可能已自行启用此功能的客户提供最大程度的支持。 
-
-若要在 Red Hat Enterprise 版本6上对更新进行分类，需要安装 yum 插件。 在 Red Hat Enterprise Linux 7 上，该插件已经是 yum 本身的一部分，无需安装任何内容。 有关详细信息，请参阅以下 Red Hat[知识库文章](https://access.redhat.com/solutions/10021)。
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
 

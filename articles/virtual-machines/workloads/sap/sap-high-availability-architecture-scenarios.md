@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638198"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291475"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
 
@@ -294,7 +294,7 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 使用可用性区域时需要注意一些事项。 注意事项列表如下：
 
 - 不能在可用性区域中部署 Azure 可用性集。 需要选择可用性区域或可用性集作为 VM 的部署框架。
-- 不能使用[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)基于 Windows 故障转移群集服务或 Linux Pacemaker 创建故障转移群集解决方案。 需要使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- 不能使用[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows 故障转移群集服务或 Linux Pacemaker 创建故障转移群集解决方案。 需要使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
 - Azure 可用性区域不能保证一个区域中的不同局部区域之间保持特定的距离
 - 不同 Azure 区域中不同 Azure 可用性区域之间的网络延迟可能根据 Azure 区域的不同而异。 有时，客户可以合理运行部署在不同局部区域中的 SAP 应用层，因为从业务流程影响度来看，从一个局部区域到活动 DBMS VM 的网络延迟仍可接受。 但在某些客户场景中，一个局部区域中的活动 DBMS VM 与另一个局部区域中的 VM 上的 SAP 应用程序实例之间的延迟可能过高，不能被 SAP 业务流程所接受。 因此，如果延迟过高，则部署体系结构需要与应用程序的主动/主动体系结构或者与主动/被动体系结构不同。
 - 部署到 Azure 可用性区域时必须使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/) 

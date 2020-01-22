@@ -1,6 +1,6 @@
 ---
 title: 算法和模块参考
-description: 了解 Azure 机器学习设计器中提供的模块（预览）
+description: 了解 Azure 机器学习设计器中提供的模块
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c265c2386b31fd02a5aa635c343be5d3cb227722
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978660"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312169"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure 机器学习设计器的算法 & 模块引用
 
-此参考内容在 Azure 机器学习设计器（预览版）中提供的每个机器学习算法和模块上都提供了技术背景。
+此参考内容在 Azure 机器学习设计器中提供的每个机器学习算法和模块上都提供了技术背景。
 
 每个模块表示一组可以独立运行的代码，并根据所需的输入执行机器学习任务。 模块可能包含特定的算法，或者可能执行在机器学习中非常重要的任务，如替换缺少的值或进行统计分析。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457383"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291152"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>将大容量数据迁移到 Azure 文件同步
 可以通过两种方式将大容量数据迁移到 Azure 文件同步：
@@ -79,7 +79,7 @@ Azure 文件同步确保文件和文件夹 Acl 与实时服务器同步，即使
 现在，可以清理临时共享来节省成本：
 
 1. 在 "**服务器终结点属性**" 边栏选项卡上，当状态为 "**已完成**" 时，选择 "**禁用脱机数据传输**"
-2. 请考虑删除暂存共享以节省成本。 暂存共享可能不包含文件和文件夹 Acl，因此它并不是非常有用。 对于备份时点，请创建[同步 Azure 文件共享](storage-snapshots-files.md)的实际快照。 可以[设置 Azure 备份，按计划拍摄快照]( ../../backup/backup-azure-files.md)。
+2. 请考虑删除暂存共享以节省成本。 暂存共享可能不包含文件和文件夹 Acl，因此它并不是非常有用。 对于备份时点，请创建[同步 Azure 文件共享](storage-snapshots-files.md)的实际快照。 可以[设置 Azure 备份，按计划拍摄快照]( ../../backup/backup-afs.md)。
 
 仅当状态为 "**已完成**" 或由于配置错误而要取消时，才禁用脱机数据传输模式。 如果在部署过程中禁用该模式，则即使过渡共享仍可用，文件也会开始从服务器上传。
 

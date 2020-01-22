@@ -7,14 +7,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725736"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289469"
 ---
-# <a name="troubleshoot-assessmentdependency-visualization"></a>评估/依赖关系可视化疑难解答
+# <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
 本文将帮助你解决与[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)有关的评估和依赖项可视化问题。
 
@@ -92,6 +92,7 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 - 如果 Vm 在评估期间关闭，则会发生这种情况。 当 VM 关闭时，它无法收集 VM 的性能数据。
 - 如果仅缺少内存计数器，而你要尝试评估 Hyper-v Vm，请检查是否已在这些 Vm 上启用动态内存。 Hyper-v Vm 仅有一个已知问题，在这种情况下，Azure Migrate 设备无法为未启用动态内存的 Vm 收集内存使用率数据。
 - 如果缺少任何性能计数器，Azure Migrate 服务器评估将回退到分配的内核和内存，并建议相应的 VM 大小。
+- 如果所有性能计数器都丢失，请确保满足评估的端口访问要求。 详细了解[VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)、 [hyper-v](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)和[物理](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access)服务器评估的端口访问要求。
 
 ## <a name="is-the-operating-system-license-included"></a>是否包含操作系统许可证？
 

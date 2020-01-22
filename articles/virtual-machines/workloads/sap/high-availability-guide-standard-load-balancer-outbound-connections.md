@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045377"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293804"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接
 
@@ -35,7 +35,7 @@ ms.locfileid: "73045377"
 
 标准 Azure 负载均衡器与基本负载均衡器相比具有一些优势。 例如，它跨 Azure 可用性区域工作，它具有更好的监视和日志记录功能，可更轻松地进行故障排除，减少延迟。 "HA 端口" 功能涵盖所有端口，也就是说，不再需要列出所有单个端口。  
 
-Azure 负载均衡器的基本 SKU 和标准 SKU 之间存在一些重要的差异。 其中之一是处理到公共终结点的出站流量。 有关完整的基本和标准 SKU 负载均衡器比较，请参阅[负载均衡器 SKU 比较](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)。  
+Azure 负载均衡器的基本 SKU 和标准 SKU 之间存在一些重要的差异。 其中之一是处理到公共终结点的出站流量。 有关完整的基本和标准 SKU 负载均衡器比较，请参阅[负载均衡器 SKU 比较](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。  
  
 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）的后端池（无公共 IP 地址）标准 Azure 负载均衡器中，则没有到公共终结点的出站连接，除非完成了其他配置。  
 
@@ -71,7 +71,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Internet 的出站连接的其他外部 Azure 标准负载均衡器
 
-若要实现到公共终结点的出站连接，而不允许从公共端点到 VM 的入站连接，一种选择是创建具有公共 IP 地址的第二个负载均衡器，将 Vm 添加到第二个负载均衡器的后端池，并定义仅[出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。  
+若要实现到公共终结点的出站连接，而不允许从公共端点到 VM 的入站连接，一种选择是创建具有公共 IP 地址的第二个负载均衡器，将 Vm 添加到第二个负载均衡器的后端池，并仅定义[出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。  
 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)控制可从 VM 出站调用访问的公共终结点。  
 有关详细信息，请参阅文档[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)中的方案2。  
 此配置如下所示：  
@@ -165,7 +165,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
    防火墙规则如下所示： ![与 Azure 防火墙建立出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. 创建从 Vm 子网到**MyAzureFirewall**专用 IP 的用户定义路由。
-   1. 在路由表中，单击 "路由"。 选择 "添加"。 
+   1. 在路由表中，单击 "路由"。 选择“添加”。 
    1. 路由名称： ToMyAzureFirewall，地址前缀： **0.0.0.0/0**。 下一跃点类型：选择 "虚拟设备"。 下一个跃点地址：输入配置的防火墙的专用 IP 地址： **11.97.1.4**。  
    1. 保存
 

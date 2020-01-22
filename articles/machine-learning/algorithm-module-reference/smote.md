@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428437"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311404"
 ---
 # <a name="smote"></a>SMOTE
 
-本文介绍如何使用 Azure 机器学习设计器（预览版）中的 SMOTE 模块，增加用于机器学习的数据集中常见事例的数量。 SMOTE 是一种更好的方法来增加不只是复制现有事例的罕见事例的数量。  
+本文介绍如何使用 Azure 机器学习设计器中的 SMOTE 模块增加用于机器学习的数据集中常见事例的数量。 SMOTE 是一种更好的方法来增加不只是复制现有事例的罕见事例的数量。  
 
 将 SMOTE 模块连接到*不均衡*的数据集。 数据集可能不均衡的原因有很多。 例如，要作为目标的类别在总体中可能很少，或者数据可能难于收集。 通常，当要分析的*类*是常见时，可以使用 SMOTE。 
   

@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771438"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311041"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>定型 & 比较多个回归模型，通过 Azure 机器学习设计器预测车载价格
 
-**设计器（预览）示例2**
+**设计器示例2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-了解如何在不编写代码的情况下使用设计器（预览）生成机器学习管道。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此管道中做出的选择提供基本原理，以便您能够应对自己的机器学习问题。
+了解如何在不编写代码的情况下使用设计器生成机器学习管道。 本示例训练和比较多个回归模型，以根据其技术特征预测汽车的价格。 我们将为在此管道中做出的选择提供基本原理，以便您能够应对自己的机器学习问题。
 
 如果只是开始使用机器学习，请查看此管道的[基本版本](how-to-designer-sample-regression-automobile-price-basic.md)。
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541993"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290319"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>将 Linux 计算机连接到 Azure Monitor
 
@@ -74,9 +74,10 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供程序。 仅当检测到 Docker �
 
 适用于 Linux 的 Log Analytics 代理在自解压和可安装的 shell 脚本捆绑包中提供。 此捆绑包包含用于各个代理组件的 Debian 和 RPM 程序包，可以直接安装该捆绑包，也可以通过提取它来检索单个程序包。 为 x64 提供一个捆绑，为 x86 体系结构提供一个捆绑包。 
 
-对于 Azure Vm，建议使用适用于 Linux 的[azure LOG ANALYTICS VM 扩展](../../virtual-machines/extensions/oms-linux.md)在这些 vm 上安装代理。 
+> [!NOTE]
+> 对于 Azure Vm，建议使用适用于 Linux 的[azure LOG ANALYTICS VM 扩展](../../virtual-machines/extensions/oms-linux.md)在这些 vm 上安装代理。 
 
-1. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux VM 或物理计算机。
+1. 使用 scp/sftp 将相应的捆绑包（x64 或 x86）[下载](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide)并传输到 Linux VM 或物理计算机。
 
 2. 使用 `--install` 参数安装捆绑包。 若要在安装过程中载入 Log Analytics 工作区，请提供前面复制的 `-w <WorkspaceID>` 和 `-s <workspaceKey>` 参数。
 
@@ -133,7 +134,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    当代理服务器要求进行身份验证时，以下命令包括 `-p` proxy 参数和示例语法：
+    当代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -145,7 +146,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    当代理服务器要求进行身份验证时，以下命令包括 `-p` proxy 参数和示例语法：
+    当代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732012"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292956"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：在 Azure Kubernetes Service （AKS）上进行开发，草稿
 
 草稿是一种开源工具，有助于在 Kubernetes 群集中打包和运行应用程序容器。 使用草稿，可以在代码发生更改时快速将应用程序重新部署到 Kubernetes，而无需将所做的更改提交到版本控制。 有关草稿的详细信息，请参阅[GitHub 上的草稿文档][draft-documentation]。
 
-本文介绍如何使用草稿包并在 AKS 上运行应用程序。
+本文介绍如何使用草稿打包并在 AKS 上运行应用程序。
 
 
 ## <a name="prerequisites"></a>必备组件
@@ -172,7 +172,7 @@ draft config set registry mydraftacr.azurecr.io
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门使用[草稿 GitHub 存储库中的示例 java 应用程序][example-java]。 从 GitHub 克隆应用程序并导航到 `draft/examples/example-java/` 目录。
+本快速入门使用[草稿 GitHub 存储库中的示例 Java 应用程序][example-java]。 从 GitHub 克隆应用程序并导航到 `draft/examples/example-java/` 目录。
 
 ```console
 git clone https://github.com/Azure/draft
@@ -235,7 +235,7 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-使用 `localhost` url 在浏览器中导航到应用程序，以查看示例应用程序。 在上面的示例中，url 是 `http://localhost:49804`的。 使用 `Ctrl+c`停止连接。
+使用 `localhost` URL 在浏览器中导航到应用程序，以查看示例应用程序。 在上面的示例中，URL 是 `http://localhost:49804`的。 使用 `Ctrl+c`停止连接。
 
 ## <a name="access-the-application-on-the-internet"></a>在 Internet 上访问应用程序
 

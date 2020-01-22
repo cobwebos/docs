@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36aa220b49b8b71c79e4fe6f63afedee6db76a68
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423873"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293328"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>桌面应用程序调用 web Api-调用 web API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>用于调用 web Api 的桌面应用：调用 web API
 
 现在，你已有了一个令牌，可以调用受保护的 web API。
 
-## <a name="calling-a-web-api"></a>调用 Web API
+## <a name="call-a-web-api"></a>调用 Web API
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -66,9 +66,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中调用 web API
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中调用 web API
 
-用于获取令牌的方法将返回 `MSALResult` 的对象。 `MSALResult` 公开可用于调用 web API 的 `accessToken` 属性。 访问受保护的 Web API 之前，应将访问令牌添加到 HTTP 授权标头中。
+用于获取令牌的方法将返回 `MSALResult` 的对象。 `MSALResult` 公开可用于调用 web API 的 `accessToken` 属性。 在调用以访问受保护的 web API 之前，请将访问令牌添加到 HTTP 授权标头。
 
 Objective-C：
 
@@ -96,9 +96,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>调用多个 Api-增量许可和条件访问
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>调用多个 Api：增量许可和条件访问
 
-如果需要为同一个用户调用多个 Api，则在获取第一个 API 的令牌后，只需调用 `AcquireTokenSilent`，就会在大多数情况下，在大多数情况下，自动获取其他 Api 的令牌。
+若要为同一用户调用多个 Api，请在获取第一个 API 的令牌后，调用 `AcquireTokenSilent`。 在大多数情况中，你将自动获得其他 Api 的令牌。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -108,9 +108,9 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-需要交互的情况如下：
+以下情况需要交互：
 
-- 用户同意第一个 API，但现在需要同意更多作用域（增量许可）
+- 用户同意第一个 API，但现在需要同意更多范围。 这种同意称为增量许可。
 - 第一个 API 不需要多重身份验证，而是下一个 API。
 
 ```csharp

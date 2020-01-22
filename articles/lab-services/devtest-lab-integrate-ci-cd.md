@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170395"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293209"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>将 Azure 开发测试实验室集成到 Azure Pipelines CI/CD 管道
 
@@ -140,7 +140,7 @@ ms.locfileid: "76170395"
    
    |字段|值|
    |---|---|
-   |**Azure RM 订阅**|在下拉列表中选择 "**可用 Azure 服务连接**" 或 "**可用 azure 订阅**中的服务连接" 或 "订阅"，并根据需要选择 "**授权**"。<br /><br />**注意：** 有关创建更受限制的权限连接到 Azure 订阅的信息，请参阅[azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。|
+   |**Azure RM 订阅**|在下拉列表中选择 "**可用 Azure 服务连接**" 或 "**可用 azure 订阅**中的服务连接" 或 "订阅"，并根据需要选择 "**授权**"。<br /><br />**注意：** 有关创建更受限制的权限连接到 Azure 订阅的信息，请参阅[azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)。|
    |**实验室名称**|选择将在其中创建实验室 VM 的现有实验室的名称。|
    |**模板名称**|输入保存到源代码存储库中的模板文件的完整路径和名称。 你可以使用内置属性来简化路径，例如：<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**模板参数**|输入前面定义的变量的参数：<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|

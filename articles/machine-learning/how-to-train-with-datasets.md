@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982457"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311336"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure 机器学习中的数据集定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ df = dataset.to_pandas_dataframe()
 
 * 脚本的脚本目录。 此目录中的所有文件都上传到群集节点以便执行。
 * 训练脚本， *train_titanic py*。
-* 用于定型的输入数据集，`titanic`。
+* 用于定型的输入数据集，`titanic`。 `as_named_input()` 是必需的，以便在训练脚本中可以通过指定的名称引用输入数据集。 
 * 试验的计算目标。
 * 试验的环境定义。
 
@@ -126,7 +126,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>配置估计器
 
-你还可以通过 `script_params` 将数据集传递给估计器，而不是 `inputs` 通过参数传递数据集，并通过参数获取定型脚本中的数据路径（装入点）。 这样，你就可以访问数据并使用现有训练脚本。
+除了通过估计器中的 `inputs` 参数传递数据集外，还可以通过 `script_params` 传递数据集，并通过参数获取定型脚本中的数据路径（装入点）。 这样，你就可以使定型脚本独立于 azureml-sdk。 换句话说，你将可以在任何云平台上使用相同的培训脚本进行本地调试和远程培训。
 
 [Spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估计器对象用于提交 scikit-learn 学习试验的运行。 详细了解[spark-sklearn 估计器](how-to-train-scikit-learn.md)的培训。
 

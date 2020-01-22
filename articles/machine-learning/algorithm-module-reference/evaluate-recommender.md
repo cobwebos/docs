@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428541"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312254"
 ---
 # <a name="evaluate-recommender"></a>评估推荐器
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用 "评估推荐器" 模块。 目标是衡量建议模型做出的预测的准确性。 使用此模块可以评估不同类型的建议：  
+本文介绍如何使用 Azure 机器学习设计器中的 "评估推荐器" 模块。 目标是衡量建议模型做出的预测的准确性。 使用此模块可以评估不同类型的建议：  
   
 -   为用户和项目预测的评级    
 -   为用户推荐的项  
@@ -52,7 +52,7 @@ ms.locfileid: "75428541"
 - 用户可能为项目提供的用户、项目和分级
 - 建议用户和项目的列表 
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 模型的性能指标是基于输入类型生成的。 以下各节将详细介绍。
 

@@ -3,18 +3,18 @@ title: Azure 门户概述 | Microsoft Docs
 description: 使用 Azure 快速启动中心指导体验开始使用 Azure。 了解如何设置、迁移和创新。
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: fee28313d5b3d5e9b8eed73bed92020508b36e3e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 624be4cca4fd274fdc5d2b2c374b87b3e0974888
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640119"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310510"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure 快速入门中心入门
 

@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 421f1f733e64daaa4d87ce3c5af5126a48a8ffa5
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170883"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314022"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览）
+# <a name="import-your-data-into-azure-machine-learning-designer"></a>将数据导入 Azure 机器学习设计器
 
 本文介绍如何在设计器中导入自己的数据，以创建自定义解决方案。 可以通过两种方式将数据导入到设计器中： 
 

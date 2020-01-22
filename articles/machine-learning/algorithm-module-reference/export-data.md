@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7f8d3bb6452ee3260e5a89feb37c374418fc6943
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529586"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312152"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块可将管道中的结果、中间数据和工作数据保存到 Azure 机器学习以外的云存储目标。 
 

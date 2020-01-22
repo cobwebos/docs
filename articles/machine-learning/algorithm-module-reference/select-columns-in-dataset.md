@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497658"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311846"
 ---
 # <a name="select-columns-in-dataset-module"></a>选择数据集中的列模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块可选择要在下游操作中使用的列的子集。 该模块不会从物理上删除源数据集中的列;相反，它会创建列的一个子集，这与数据库*视图*或*投影*非常类似。
 

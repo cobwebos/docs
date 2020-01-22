@@ -4,15 +4,15 @@ description: 如果 Azure 中的 Analysis Services 服务器要连接到本地�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263432"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310146"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>通过本地数据网关连接到本地数据源
 
@@ -24,11 +24,11 @@ ms.locfileid: "76263432"
 
 - 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
-- **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以注册在任何区域中，但我们建议处于与 Analysis Services 服务器位于同一区域。 
+- **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 你的网关资源可以在任何区域中注册，但建议它位于与 Analysis Services 服务器相同的区域中。 
 
 - **在 azure 中创建网关资源**-在此步骤中，将在 azure 中创建网关资源。
 
-- **将服务器连接到网关资源**-一旦你有网关资源，你就可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域。
+- **将服务器连接到网关资源**-一旦你有网关资源，你就可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们在同一区域中。
 
 
 
@@ -54,7 +54,7 @@ ms.locfileid: "76263432"
 
 网关会创建与 Azure 服务总线之间的出站连接。 它在以下出站端口上进行通信：TCP 443（默认值）、5671、5672、9350 到 9354。  网关不需要入站端口。
 
-可能需要在防火墙中包含数据区域的 IP 地址。 可以下载 [Microsoft Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。 该列表每周都会进行更新。 Azure 数据中心 IP 列表中列出的 IP 地址使用的是 CIDR 表示法。 若要了解详细信息，请参阅 [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)（无类别域际路由）。
+可能需要在防火墙中包含数据区域的 IP 地址。 可以下载 [Microsoft Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=56519)。 该列表每周都会进行更新。 Azure 数据中心 IP 列表中列出的 IP 地址使用的是 CIDR 表示法。 若要了解详细信息，请参阅 [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)（无类别域际路由）。
 
 下面是网关使用的完全限定的域名。
 

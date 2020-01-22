@@ -3,7 +3,7 @@ title: 通过使用 RBAC 共享 Azure 门户仪表板 | Microsoft 文档
 description: 本文介绍如何通过使用基于角色的访问控制在 Azure 门户中共享仪表板。
 services: azure-portal
 documentationcenter: ''
-author: mblythe
+author: mgblythe
 manager: mtillman
 editor: tysonn
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mblythe
-ms.openlocfilehash: da983a6a3c86be87f1a24b67252a40adac2fa59d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ce94a35ebcbf5d8cf3d176f05ac75ea5da5d8d99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75641378"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310741"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 

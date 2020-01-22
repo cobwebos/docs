@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771421"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311030"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器以预测公司类别。
 
-**设计器（预览）示例7**
+**设计器示例7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-此示例演示如何使用文本分析模块在 Azure 机器学习设计器（预览版）中构建文本分类管道。
+此示例演示如何使用文本分析模块在 Azure 机器学习设计器中生成文本分类管道。
 
 文本分类的目标是将一些文本分配给一个或多个预定义的类或类别。 文本片段可以是文档、新闻文章、搜索查询、电子邮件、推文、支持票证、客户反馈、用户产品评论等。文本分类应用程序包括将报纸文章和资讯内容分类到主题，将网页组织成层次结构类别，筛选垃圾邮件，情绪分析，根据搜索查询预测用户意向，路由支持票证和分析客户反馈。 
 

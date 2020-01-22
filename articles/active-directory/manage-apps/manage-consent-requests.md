@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122985"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290693"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理对应用程序的同意并评估同意请求
 
@@ -42,7 +42,7 @@ Microsoft[建议](https://docs.microsoft.com/azure/security/fundamentals/steps-s
 
 3. 如果你的组织具有适当的许可证：
 
-    * [在 Microsoft Cloud App Security 中使用其他 OAuth 应用程序审核功能](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth)。
+    * [在 Microsoft Cloud App Security 中使用其他 OAuth 应用程序审核功能](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)。
     * 使用[Azure Monitor 工作簿来监视权限和同意](../reports-monitoring/howto-use-azure-monitor-workbooks.md)相关的活动。 *同意见解*工作簿提供按失败同意请求数显示的应用视图。 这对于确定管理员查看并决定是否向他们授予管理员许可的优先级设置很有用。
 
 ### <a name="additional-considerations-for-reducing-friction"></a>减少摩擦的其他注意事项

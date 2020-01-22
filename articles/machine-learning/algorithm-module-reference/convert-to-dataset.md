@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428577"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314396"
 ---
 # <a name="convert-to-dataset"></a>转换为数据集
 
-本文介绍如何使用 Azure 机器学习设计器（预览版）中的 "转换为数据集" 模块将管道的任何数据转换为设计器的内部格式。
+本文介绍如何使用 Azure 机器学习设计器中的 "转换为数据集" 模块将管道的任何数据转换为设计器的内部格式。
   
 大多数情况下不需要转换。 在对数据执行任何操作时，Azure 机器学习将数据隐式转换为其本机数据集格式。 
 
@@ -51,11 +51,11 @@ ms.locfileid: "75428577"
     请注意， **ReplaceValues**操作仅适用于完全匹配项。 例如，这些字符串不会受到影响： `obs.`，`obsolete`。  
  
   
-5.  运行管道，或右键单击 "转换为数据集" 模块，然后选择 "**运行选定**项"。  
+5.  运行管道。  
 
 ## <a name="results"></a>结果
 
-+  若要使用新名称保存生成的数据集，请右键单击 "转换为数据集" 的输出，然后选择 "**另存为数据集**"。  
++  若要使用新名称保存生成的数据集，请在模块的右面板中的 "**输出**" 选项卡下，选择图标 "**注册数据集**"。  
   
 ## <a name="technical-notes"></a>技术说明  
 

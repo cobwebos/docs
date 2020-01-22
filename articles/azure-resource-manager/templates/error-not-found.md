@@ -1,14 +1,14 @@
 ---
 title: 找不到资源错误
-description: 介绍如何在使用 Azure 资源管理器模板进行部署时找不到资源时解决错误。
+description: 介绍当使用 Azure 资源管理器模板进行部署时找不到资源时，如何解决错误。
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152419"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310656"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
 
@@ -87,4 +87,16 @@ group {resource group name} was not found.
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>解决方案 4-从资源获取托管标识
+
+如果要部署隐式创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)的资源，则必须等到该资源部署完成后，才能检索托管标识的值。 如果将托管标识名称传递到[reference](template-functions-resource.md#reference)函数，资源管理器会在部署资源和标识之前尝试解析引用。 而应传递应用该标识的资源的名称。 此方法确保在资源管理器解析 reference 函数之前部署资源和托管标识。
+
+在 reference 函数中，使用 `Full` 获取包括托管标识在内的所有属性。
+
+例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

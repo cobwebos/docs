@@ -1,5 +1,5 @@
 ---
-title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft 文档
+title: 多 DRM 内容保护系统-Azure 媒体服务 v3
 description: 本文提供了有关如何使用 Azure 媒体服务设计多 DRM 内容保护系统的详细说明。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: efc070491ca1ea84dc8ef095a2144df9d0bf1bcb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896174"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311897"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -352,6 +352,6 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [常见问题](frequently-asked-questions.md)
+* [常见问题解答](frequently-asked-questions.md)
 * [内容保护概述](content-protection-overview.md)
 * [使用 DRM 保护内容](protect-with-drm.md)

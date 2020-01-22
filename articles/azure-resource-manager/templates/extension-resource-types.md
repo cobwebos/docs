@@ -2,13 +2,13 @@
 title: 扩展资源类型
 description: 列出了用于扩展其他资源类型功能的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: af60bd648e41532cca364272fb0ded01c0c18239
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/20/2020
+ms.openlocfilehash: 47a98bca4912a1c59c8b2d9bad458769c6bf4ebf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484670"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293260"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>扩展其他资源功能的资源类型
 
@@ -23,12 +23,14 @@ ms.locfileid: "75484670"
 - AlertsManagement/alertsSummary
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/denyAssignments
+- Microsoft. Authorization/findOrphanRoleAssignments
 - Microsoft. 授权/锁
 - Microsoft. 授权/权限
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft.Authorization/roleAssignments
+- Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
 - Microsoft. 计费/billingPeriods
 - Microsoft. 计费/billingPermissions
@@ -82,6 +84,7 @@ ms.locfileid: "75484670"
 - microsoft insights/automatedExportSettings
 - microsoft insights/基线
 - microsoft insights/calculatebaseline
+- microsoft insights/dataCollectionRuleAssociations
 - microsoft insights/diagnosticSettings
 - microsoft insights/diagnosticSettingsCategories
 - microsoft insights/eventtypes
@@ -94,6 +97,8 @@ ms.locfileid: "75484670"
 - microsoft insights/metricbaselines
 - microsoft insights/指标
 - microsoft insights/myWorkbooks
+- microsoft insights/拓扑
+- microsoft insights/事务
 - microsoft insights/vmInsightsOnboardingStatuses
 - KubernetesConfiguration/sourceControlConfigurations
 - ApplyUpdates/维护/维护
@@ -109,6 +114,7 @@ ms.locfileid: "75484670"
 - PolicyInsights/policyTrackedResources
 - PolicyInsights/修正
 - Microsoft.recoveryservices/backupProtectedItems
+- Microsoft.recoveryservices/replicationEligibilityResults  
 - ResourceHealth/availabilityStatuses
 - ResourceHealth/childAvailabilityStatuses
 - ResourceHealth/childResources

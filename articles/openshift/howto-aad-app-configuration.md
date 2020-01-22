@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270559"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288943"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory Azure Red Hat OpenShift 集成
 
@@ -90,8 +90,8 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 ## <a name="add-api-permissions"></a>添加 API 权限
 
 1. 在 "**管理**" 部分单击 " **API 权限**"。
-2. 单击 "**添加权限**"，然后选择**Azure Active Directory 关系图**，然后**委派权限**
-3. 在下面的列表中展开 "**用户**"，并确保已启用 "**用户读取**"。
+2. 单击 "**添加权限**"，然后选择 " **Azure Active Directory 关系图**，然后**委派权限**"。 
+3. 在下面的列表中展开 "**用户**"，并启用 "**用户读取**" 权限。 如果在默认情况下启用了**User. read** ，请确保它是**Azure Active Directory Graph**权限**用户。读取**，*而不*是**Microsoft Graph**权限**用户。** 请参阅。
 4. 向上滚动并选择 "**应用程序权限**"。
 5. 在下面的列表中展开 "**目录**"，然后启用**ReadAll。**
 6. 单击 "**添加权限**" 以接受更改。

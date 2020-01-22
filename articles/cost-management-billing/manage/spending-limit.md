@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: ddb906aeb8d1c2b0d1f0c97fc12bd389da431646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989938"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314111"
 ---
 # <a name="azure-spending-limit"></a>Azure 支出限制
 
@@ -34,20 +34,21 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
 如果注册获取 Azure 免费帐户并达到支出限制，可以升级到[即用即付](upgrade-azure-subscription.md)定价，以取消支出限制并自动重新启用订阅。
 
-<a id="remove"></a>
-
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>在 Azure 门户中消除支出限制
+
+<a id="remove"></a>
 
 只要 Azure 订阅关联了有效的付款方法，即可随时移除支出限制。 对于具有多个月额度的订阅类型（例如 Visual Studio Enterprise 和 Visual Studio Professional），还可以在下个计费周期开始时启用支出限制。
 
 若要移除支出限制，请按照以下步骤操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择一个订阅。 如果达到订阅的支出限制，则会禁用订阅。
-1. 选择页面顶部的“消除支出限制”。
-1. 选择适合你的选项。
-
-![选择删除支出限制的选项](./media/spending-limit/remove-spending-limit01.png)
+1. 导航到 "**订阅**"。
+1. 选择订阅。 例如， *Visual Studio Enterprise*。
+1. 在页面顶部，选择 "**管理**"。 你会被重定向到 https://account.azure.com/ 。 在页面右侧，选择 "**删除支出限制**"。  
+  显示删除支出限制的 ![示例](./media/spending-limit/account-azure-com-spending-limit.png)
+1. 你将重定向回 Azure 门户。 选择适合自己的选项，然后选择一种付款方式。 选择“完成”。  
+  ![选择一个选项以删除支出限制](./media/spending-limit/remove-spending-limit.png)
 
 | 选项 | 作用 |
 | --- | --- |
@@ -67,7 +68,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 对于包含多个月额度的订阅类型来说，仅当已无限期移除支出限制时，此功能才可用。 可以使用此功能，在下次计费期开始时自动打开支出限制。
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
-1. 单击黄色横幅更改支出限制选项。
+1. 选择黄色横幅以更改支出限制选项。
 1. 选择“在下一计费周期的\<计费周期的开始日期\>启用支出限制”
 
 ## <a name="custom-spending-limit"></a>自定义支出限制

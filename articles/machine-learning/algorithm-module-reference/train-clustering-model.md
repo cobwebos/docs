@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232579"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313937"
 ---
 # <a name="train-clustering-model"></a>训练聚类模型
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块可以定型聚类分析模型。
 
@@ -49,10 +49,7 @@ ms.locfileid: "74232579"
 
 完成训练后：
 
-
-+  若要查看数据集中的值，请右键单击该模块，选择 "**结果数据集**"，然后单击 "**可视化**"。
-
-+ 若要保存训练的模型以供以后重复使用，请右键单击该模块，选择 "**定型模型**"，然后单击 "**另存为定型模型**"。
++ 若要保存训练模型的快照，请选择 "**定型模型**" 模块右侧面板中的 "**输出**" 选项卡。 选择 "**注册数据集**" 图标，将该模型保存为可重复使用的模块。
 
 + 若要从模型中生成评分，请使用 "[将数据分配给群集](assign-data-to-clusters.md)"。
 

@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763538"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311099"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>生成分类器 & 使用功能选择通过 Azure 机器学习设计器预测收入
 
-**设计器（预览）示例3**
+**设计器示例3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-了解如何在不编写代码的情况下使用设计器（预览）生成机器学习分类器。 本示例训练一个**双类提升决策树**，以预测成人人口收益（> = 50K 或 < = 50K）。
+了解如何使用设计器在不编写代码的情况下生成机器学习分类器。 本示例训练一个**双类提升决策树**，以预测成人人口收益（> = 50K 或 < = 50K）。
 
 因为问题回答 "哪一个？" 这称为分类问题。 但是，您可以应用相同的基本过程来解决任何类型的机器学习问题-回归、分类、群集等。
 

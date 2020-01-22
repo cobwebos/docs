@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167945"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310180"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -50,7 +50,7 @@ ms.locfileid: "76167945"
 
 ### <a name="synchronization-mode"></a>同步模式
 
-默认情况下，查询副本完全是解除冻结的，而不是增量。 解除冻结分阶段发生。 它们是一次分离并附加两个（假设至少有三个副本），以确保在任何给定时间，至少有一个副本保持联机状态。 在某些情况下，在此过程中，客户端可能需要重新连接到其中一个联机副本。 通过使用**ReplicaSyncMode**设置，你现在可以指定并行进行查询副本同步。 并行同步具有以下优势： 
+默认情况下，查询副本完全是解除冻结的，而不是增量。 解除冻结分阶段发生。 它们是一次分离并附加两个（假设至少有三个副本），以确保在任何给定时间，至少有一个副本保持联机状态。 在某些情况下，在此过程中，客户端可能需要重新连接到其中一个联机副本。 通过使用 "（预览版） **ReplicaSyncMode** " 设置，你现在可以指定并行进行查询副本同步。 并行同步具有以下优势： 
 
 - 大大减少了同步时间。 
 - 在同步过程中，跨副本数据的可能性更大。 

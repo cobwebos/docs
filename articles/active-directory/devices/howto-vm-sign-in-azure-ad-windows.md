@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119969"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293447"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -63,10 +63,10 @@ ms.locfileid: "76119969"
 
 若要为 Azure 中的 Windows Vm 启用 Azure AD 身份验证，需要确保 Vm 网络配置允许通过 TCP 端口443对以下终结点进行出站访问：
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://pas.windows.net
+- https：\//enterpriseregistration.windows.net
+- https:\//login.microsoftonline.com
+- https：\//device.login.microsoftonline.com
+- https：\//pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中启用 Windows VM 的 Azure AD 登录
 
@@ -239,24 +239,24 @@ az role assignment create \
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | 更正有关 Azure VM 的信息 |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | 与 Azure 订阅关联的有效租户 ID |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | 更正有关 Azure VM 的信息 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | 与 Azure 订阅关联的有效租户 ID |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
 
    > [!NOTE]
    > 使用[http://calebb.net/](http://calebb.net/)之类的工具可以对访问令牌进行解码。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。
 
 1. 请确保使用命令行从 VM 访问所需的终结点：
    
-   - 卷 https://login.microsoftonline.com/ -D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
+   - 卷 https：\//login.microsoftonline.com/-D –
+   - 卷 https：\//login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。
 
-   - 卷 https://enterpriseregistration.windows.net/
-   - 卷 https://device.login.microsoftonline.com/
-   - 卷 https://pas.windows.net/
+   - 卷 https：\//enterpriseregistration.windows.net/
+   - 卷 https：\//device.login.microsoftonline.com/
+   - 卷 https：\//pas.windows.net/
 
 1. 可以通过运行 `dsregcmd /status`查看设备状态。 目标是将设备状态显示为 `AzureAdJoined : YES`。
 
@@ -283,15 +283,15 @@ az role assignment create \
 
 1. 使用命令行验证是否可以从 VM 访问所需的终结点：
 
-   - 卷 https://login.microsoftonline.com/ -D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
+   - 卷 https：\//login.microsoftonline.com/-D –
+   - 卷 https：\//login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。 如果需要查找租户 ID，你可以将鼠标悬停在帐户名称上以获取目录/租户 ID，或在 Azure 门户中选择 Azure Active Directory > 属性 > 目录 ID。
 
-   - 卷 https://enterpriseregistration.windows.net/
-   - 卷 https://device.login.microsoftonline.com/
-   - 卷 https://pas.windows.net/
+   - 卷 https：\//enterpriseregistration.windows.net/
+   - 卷 https：\//device.login.microsoftonline.com/
+   - 卷 https：\//pas.windows.net/
 
 1. 如果任何命令失败，并出现 "无法解析主机 `<URL>`"，请尝试运行以下命令来确定 VM 正在使用的 DNS 服务器。
    

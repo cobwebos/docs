@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 可用的云和区域 | Microsoft Docs
+title: Azure 媒体服务 v3 可用的云和区域
 description: 本文讨论 Azure 媒体服务 v3 可用的 Azure 云和区域。
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409290"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310555"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -24,7 +24,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| Feature|全球 Azure 区域 | Azure Government|Azure 德国|Azure 中国世纪互联|
+| 功能|全球 Azure 区域 | Azure Government|Azure Germany|Azure 中国世纪互联|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
@@ -35,7 +35,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
-[在其中部署 Azure 媒体服务服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[部署 Azure 媒体服务服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>区域代码名 
 
@@ -68,32 +68,32 @@ az account list-locations
 
 |终结点 ||
 | --- | --- | 
-| Azure 资源管理器 |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
+| Azure Resource Manager |  `https://management.azure.com/` |
+| 身份验证 | `https://login.microsoftonline.com/` | 
 | 令牌受众 | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |终结点||
 | --- | --- | 
-| Azure 资源管理器 |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
+| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
+| 身份验证 | `https://login.microsoftonline.us/` | 
 | 令牌受众 | `https://management.core.usgovcloudapi.net/` |
 
-### <a name="azure-germany"></a>Azure 德国
+### <a name="azure-germany"></a>Azure Germany
 
 | 终结点 ||
 | --- | --- |  
-| Azure 资源管理器 | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| Azure Resource Manager | `https://management.cloudapi.de/` |
+| 身份验证 | `https://login.microsoftonline.de/` |
 | 令牌受众 | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
 |终结点||
 | --- | --- | 
-| Azure 资源管理器 | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
+| 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>另请参阅

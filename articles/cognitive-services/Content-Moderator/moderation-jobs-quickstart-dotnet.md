@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bdc9e8cbea77b504cfdc2c3b1c83c74ea4ab8ed1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935982"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294331"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业（.NET）
 
@@ -124,7 +124,7 @@ public static class Clients
 向 Program.cs 中的 Program 类添加以下常数和静态字段。
 
 > [!NOTE]
-> 将 TeamName 常数设置为创建内容审查器订阅时使用的名称。 从[内容审查器网站](https://westus.contentmoderator.cognitive.microsoft.com/)检索 TeamName。
+> 将 TeamName 常数设置为创建内容审查器订阅时使用的名称。 您从内容审查器网站中检索 TeamName。
 > 登录后，从“设置”（齿轮）菜单中选择“凭据”。
 >
 > 团队名称是“API”部分中的“ID”字段值。
@@ -250,7 +250,7 @@ Then, press any key to continue.
 
 按“下一步”按钮，以提交结果。
 
-![人工审查器的图像审查](images/ocr-sample-image.PNG)
+![供人工审查方审阅的图像](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>查看日志文件中的示例输出
 
@@ -292,7 +292,7 @@ Get review details.
 
 ## <a name="your-callback-url-if-provided-receives-this-response"></a>回叫 URL（若有）接收此响应
 
-可以看到类似于以下示例的响应：
+可以看到如下示例响应：
 
 > [!NOTE]
 > 在回调响应中，字符串 ContentId 和 WorkflowId 反应之前使用的值。

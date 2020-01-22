@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 12/03/2019
-ms.openlocfilehash: d491a67a44a2cb01e4968c4d31d20dee4b75a60a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980278"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311659"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览版）
+# <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
-本文介绍 Azure 机器学习设计器（预览版）中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
+本文介绍 Azure 机器学习设计器中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
 
 可以通过两种方法获取设计器中的错误消息的完整文本：  
 
@@ -356,14 +356,14 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 
 <!---   The module requires a specific data type. For example, ratings provided to [Train Matchbox Recommender](train-matchbox-recommender.md) can be either numeric or categorical, but cannot be floating point numbers.  -->
 
--   数据的格式不正确。  
+-   数据的格式有错。  
   
 -   导入的数据包含无效字符、错误值或超出范围值。  
 -   此列为空或包含的缺失值太多。  
 
  若要确定要求和数据的可能方式，请查看将使用数据集作为输入的模块的帮助主题。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
 
 |异常消息|
 |------------------------|

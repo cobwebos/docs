@@ -3,16 +3,16 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892560"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293991"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
-本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 还可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
+本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 若要快速浏览本文的各个部分，请使用右侧“本文内容”下的链接。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74892560"
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>是否可以更改将文件共享备份到的保管库？
 
-可以。 但是，需要先在连接的保管库中[停止保护](backup-azure-files.md#stop-protecting-an-azure-file-share)，[注销](troubleshoot-azure-files.md#configuring-backup)此存储帐户，然后在另一保管库中对其进行保护。
+可以。 但是，你需要从已连接的保管库中[停止对文件共享的保护](manage-afs-backup.md#stop-protection-on-a-file-share)，[取消注册](troubleshoot-azure-files.md#configuring-backup)此存储帐户，然后从其他保管库中对其进行保护。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>可以在哪些地理区域备份 Azure 文件共享？
 

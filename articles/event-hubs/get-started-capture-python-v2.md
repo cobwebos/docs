@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942407"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293532"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>在 Azure 存储中捕获事件中心数据，并使用 Python 进行读取 
 可以使用配置事件中心，以便在 Azure 存储或 Azure Data Lake Storage 中捕获发送到事件中心的数据。 本文介绍如何使用写入 Python 代码将事件发送到事件中心，并从 Azure blob 存储读取捕获的数据。 有关此功能的详细信息，请参阅[事件中心捕获功能概述](event-hubs-capture-overview.md)。
@@ -42,9 +42,9 @@ ms.locfileid: "75942407"
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - [在命名空间中创建事件中心命名空间和事件中心](event-hubs-create.md)。 记下事件中心命名空间的名称、事件中心的名称和命名空间的主访问密钥。 按照 "[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)" 一文中的说明获取访问密钥。 默认密钥名称为： **RootManageSharedAccessKey**。 本教程不需要连接字符串。 只需主密钥。 
 - 按照以下步骤创建**Azure 存储帐户**和**blob 容器**：
-    1. [创建 Azure 存储帐户](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)。
-    2. [在存储中创建 blob 容器](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 
-    3. [获取存储帐户的连接字符串](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)。
+    2. [在存储中创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 
+    3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)。
 
         记下**连接字符串**和**容器名称**。 稍后将在代码中使用它们。 
 - 按照以下说明启用事件中心的**捕获**功能：[使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)。 选择你在上一步中创建的存储帐户和 blob 容器。 你还可以在创建事件中心时启用该功能。 

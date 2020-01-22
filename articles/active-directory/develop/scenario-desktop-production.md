@@ -17,34 +17,34 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a07a28837abf2fb6df3dd0583309ec1f3d278a58
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423811"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293481"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的桌面应用-迁移到生产
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 web Api 的桌面应用：移动到生产环境
 
-本文提供了有关将用于调用 web Api 的桌面应用程序迁移到生产环境的详细信息。
+本文介绍如何将用于调用 web Api 的桌面应用移动到生产环境。
 
-## <a name="handling-errors-in-desktop-applications"></a>处理桌面应用程序中的错误
+## <a name="handle-errors-in-desktop-applications"></a>处理桌面应用程序中的错误
 
-在不同的流中，你已了解如何处理无提示流的错误（如代码段中所示）。 您还发现需要交互的情况（增量许可和条件访问）。
+在不同的流中，你已了解如何处理无提示流的错误，如代码段中所示。 你还发现存在需要交互的情况，如增量许可和条件访问。
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>如何让用户获得多个资源的前期许可
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前获取几个资源的许可
 
 > [!NOTE]
-> 为 Microsoft 标识平台（而不是 Azure Active Directory （Azure AD） B2C）获取几个资源的同意。 Azure AD B2C 仅支持管理员许可，而不支持用户同意。
+> 多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory （Azure AD） B2C。 Azure AD B2C 仅支持管理员许可，而不支持用户同意。
 
-Microsoft 标识平台（v2.0）终结点不允许同时为多个资源获取令牌。 因此，`scopes` 参数只能包含单个资源的作用域。 可以通过使用 `extraScopesToConsent` 参数，确保用户预先同意多个资源。
+你不能使用 Microsoft 标识平台（v2.0）终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的作用域。 可以通过使用 `extraScopesToConsent` 参数，确保用户预先同意多个资源。
 
-例如，如果有两个资源，每个资源有两个作用域：
+例如，你可能有两个资源，每个资源有两个作用域：
 
-- `https://mytenant.onmicrosoft.com/customerapi`-具有2个范围 `customer.read` 和 `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`-具有2个范围 `vendor.read` 和 `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` 范围 `customer.read` 和 `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` 范围 `vendor.read` 和 `vendor.write`
 
-应使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
+在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
 
 对于实例：
 
@@ -99,17 +99,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-此调用会获得第一个 web API 的访问令牌。
+此调用会获取第一个 web API 的访问令牌。
 
-需要调用第二个 web API 时，可以调用 `AcquireTokenSilent` API：
+如果需要调用第二个 web API，请调用 `AcquireTokenSilent` API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>每次运行应用时，Microsoft 个人帐户都需要 reconsenting
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要 reconsent
 
-对于 Microsoft 个人帐户用户，针对每个本机客户端（桌面/移动应用）调用的 reprompting 许可是预期的行为。 本机客户端标识本质上是不安全的（与使用 Microsoft 标识平台交换机密以证明其身份的机密客户端应用程序相反）。 Microsoft 标识平台通过在每次授权应用程序时提示用户同意，为消费者服务选择缓解此安全。
+对于 Microsoft 个人帐户用户，针对每个本机客户端（桌面或移动应用）的同意调用的 reprompting 是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
 
 ## <a name="next-steps"></a>后续步骤
 

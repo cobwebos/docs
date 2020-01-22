@@ -3,13 +3,13 @@ title: 监视 Azure 区块链服务（ABS）
 description: 通过 Azure Monitor 监视 Azure 区块链服务
 ms.date: 01/08/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 8c2dc6afeaa00e4c7455940cbdf5a7acd6e17394
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.reviewer: v-umha
+ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780400"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293243"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>通过 Azure Monitor 监视 Azure 区块链服务  
 
@@ -120,7 +120,7 @@ BlockchainProxyLog
 
 
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 下表列出了为 Azure 区块链服务收集的平台指标。 所有指标都存储在命名空间**Azure 区块链 Service**标准指标中。
 

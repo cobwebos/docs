@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763396"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311081"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器 & 使用 Python 脚本预测信用风险
 
-**设计器（预览）示例4**
+**设计器示例4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-本文介绍如何使用设计器（预览）生成复杂的机器学习管道。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
+本文介绍如何使用设计器构建复杂的机器学习管道。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
 
 此示例训练一个分类器，以使用信用历史记录、年龄和信用卡号等信用额度预测信用风险。 不过，你可以应用本文中的概念，以解决你自己的机器学习问题。
 

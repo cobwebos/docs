@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 9e0bae722430662ddbe252e82c5108eb820ce352
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660084"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311104"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>使用提升决策树预测 Azure 机器学习设计器的变动
 
-**设计器（预览）示例5**
+**设计器示例5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-了解如何在不编写代码的情况下使用设计器（预览）生成复杂的机器学习管道。
+了解如何在不编写代码的情况下使用设计器生成复杂的机器学习管道。
 
 此管道培训 2**个双类提升决策树**分类器，用于预测客户关系管理（CRM）系统的常见任务-客户流失。 数据值和标签跨多个数据源进行拆分，并打乱编码为匿名的客户信息，但我们仍可以使用该设计器组合数据集，并使用这些模糊值来训练模型。
 

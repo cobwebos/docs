@@ -3,12 +3,12 @@ title: 常见问题-Azure Migrate 中的发现、评估和依赖项分析
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0b7bb425bff1d26c2a0d6feeaf70be826eab2b9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564044"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292359"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>有关发现、评估和依赖关系分析的常见问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "75564044"
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>可以使用一个设备发现多少个 Vm？
 
-使用单个设备，最多可以发现10000个 VMware Vm 和最多5000个 Hyper-v Vm。 如果你在本地环境中有更多计算机，请阅读有关扩展[hyper-v](scale-hyper-v-assessment.md)和[VMware](scale-vmware-assessment.md)评估的信息。
+你最多可以发现10000个 VMware Vm，最多可以使用一个设备，最多可以发现5000个 Hyper-v Vm 和最多250台服务器。 如果你在本地环境中有更多计算机，请阅读有关扩展[hyper-v](scale-hyper-v-assessment.md)、 [VMware](scale-vmware-assessment.md)和[物理](scale-physical-assessment.md)评估的信息。
 
 
 

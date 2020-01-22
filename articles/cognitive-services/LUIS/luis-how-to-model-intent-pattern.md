@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448058"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311710"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
 LUIS 应用收到终结点最谈话后，请使用[模式](luis-concept-patterns.md)来改善最谈话的预测准确性，这种模式以字序和 word 选项显示模式。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)来指示的位置：[实体](luis-concept-entity-types.md)、实体[角色](luis-concept-roles.md)和可选文本。
@@ -42,7 +42,7 @@ LUIS 应用收到终结点最谈话后，请使用[模式](luis-concept-patterns
     > [!div class="mx-imgBorder"]
     > 在意向详细信息页上，![用于确认示例查询文本作为模板模式的屏幕截图。](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. 如果需要编辑模板（例如，选择 "文本" （可选）和 "`[]` （方形）"），则需要将此编辑窗体设置为 "**模式**" 页。
+1. 如果需要编辑模板（例如，选择 "文本" （可选）和 "`[]` （方形）"），则需要从 "**模式**" 页进行此编辑。
 
 1. 在导航栏中，选择 "**训练**" 以新模式训练应用。
 

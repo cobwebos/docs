@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541824"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312424"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览）？ 
+# <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure 机器学习设计器使您能够以可视方式连接交互式画布上的[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 若要了解如何开始设计设计器，请参阅[教程：利用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>从可视界面移到设计器
 
-视觉对象界面（预览）已更新，现在 Azure 机器学习设计器（预览）。 设计器已重建使用基于管道的后端，该后端与 Azure 机器学习的其他功能完全集成。 
+视觉对象接口（预览版）已更新，现在 Azure 机器学习设计器中。 设计器已重建使用基于管道的后端，该后端与 Azure 机器学习的其他功能完全集成。 
 
 由于这些更新的原因，视觉对象界面的一些概念和术语已更改或重命名。 有关最重要的概念更改，请参阅下表。 
 

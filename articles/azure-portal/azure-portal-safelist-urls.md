@@ -3,18 +3,18 @@ title: Azure 门户 Url 的安全安全 |Microsoft Docs
 description: 将这些 Url 添加到代理服务器旁路，以与 Azure 门户及其服务进行通信
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4f4badbd923b10cf2cd66f7df9742a6bc657a01c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637535"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310556"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
 

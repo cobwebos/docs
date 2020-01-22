@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: f5fcac938c965c0ff02f578ddd2605660b184f9f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263687"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293889"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -183,6 +183,7 @@ Azure 国内云彼此独立，并来自全局商业 Azure。 一个 Azure 云的
   * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)
+  * [Teraco](https://www.teraco.co.za/platform-teraco/africa-cloud-exchange/)
   
 * 让连接提供商将网络扩展到选择的对等互连位置。
   * 确保连接提供商以高可用性方式扩展连接，以防出现单点故障。

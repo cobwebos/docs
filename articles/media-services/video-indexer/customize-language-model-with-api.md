@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7517c8a8745569635a9570c02c851854eebeb96
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799586"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289486"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>使用视频索引器 API 自定义语言模型
 
@@ -27,40 +27,10 @@ ms.locfileid: "65799586"
 
 ## <a name="create-a-language-model"></a>创建语言模型
 
-以下命令在指定的帐户中创建新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
+[创建语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?)API 将在指定的帐户中创建一个新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
 
 > [!NOTE]
 > 仍必须使用模型的已启用文件来训练该模型，以学习其文件的内容。 下一部分提供了有关训练语言的指导。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 POST 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}&modelName={modelName}&language={language}"
-
---data-ascii "{body}" 
-```
-
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|字符串|是|帐户的全局唯一标识符|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|modelName|字符串|是|语言模型的名称|
-|language|字符串|是|语言模型的语言。 <br/>必须以“语言标记-区域”BCP-47 格式（例如“en-US”）为 **language** 参数指定语言。 支持的语言包括英语 (en-US)、德语 (de-DE)、西班牙语 (es-SP)、阿拉伯语 (ar-EG)、法语 (fr-FR)、印地语 (hi-HI)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、俄语 (ru-RU) 和中文 (zh-CN)。  |
-
-### <a name="request-body"></a>请求正文
 
 若要上传要添加到语言模型的文件，必须使用表单数据在正文中上传文件，此外，必须为上述所需参数提供值。 可通过两种方式实现此目的： 
 
@@ -100,39 +70,10 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 ## <a name="train-a-language-model"></a>训练语言模型
 
-以下命令使用已在语言模型中上传并启用的文件中的内容，在指定的帐户中训练一个自定义的语言模型。 
+[训练语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)API 使用上传到并在语言模型中启用的文件中的内容训练指定帐户中的自定义语言模型。 
 
 > [!NOTE]
 > 必须先创建语言模型并上传其文件。 可以在创建语言模型时或者通过更新语言模型来上传文件。 
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 PUT 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
 
 ### <a name="response"></a>响应
 
@@ -164,40 +105,12 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 }
 ```
 
-然后，应在[将视频上传到索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)时，对 **linguisticModelId** 参数使用语言模型的 **id** 值，并在[重建编制视频的索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)时，对 **languageModelId** 参数使用该值。
+在将视频重新[索引为索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)时，应使用**linguisticModelId**参数的语言模型的返回 Id 值并为**languageModelId**参数使用返回的**id** [值。](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
 
+ 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
-以下命令从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 DELETE 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+[删除语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)API 将从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。
 
 ### <a name="response"></a>响应
 
@@ -205,46 +118,16 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 ## <a name="update-a-language-model"></a>更新语言模型
 
-以下命令在指定的帐户中更新自定义语言个人模型。
+[更新语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)API 会更新指定帐户中的自定义语言用户模型。
 
 > [!NOTE]
 > 必须事先创建一个语言模型。 可以使用此调用来启用或禁用模型下的所有文件、更新语言模型的名称，以及上传要添加到语言模型的文件。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 PUT 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}[&modelName][&enable]
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}?modelName={string}&enable={string}"
-
---data-ascii "{body}" 
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|modelName|字符串|否|可为模型指定的新名称|
-|enable|boolean|否|选择此模型下的所有文件是已启用 (true) 还是已禁用 (false)|
-
-### <a name="request-body"></a>请求正文
 
 若要上传要添加到语言模型的文件，必须使用表单数据在正文中上传文件，此外，必须为上述所需参数提供值。 可通过两种方式实现此目的： 
 
 1. 密钥是文件名，值是 txt 文件
 2. 密钥是文件名，值是 txt 文件的 URL
+
 
 ### <a name="response"></a>响应
 
@@ -275,43 +158,12 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
     ]
 }
 ```
-可以使用此处返回的文件 **id** 来下载文件的内容。
+
+使用响应中返回的文件的**id**下载文件的内容。
 
 ## <a name="update-a-file-from-a-language-model"></a>更新语言模型中的文件
 
-以下命令用于更新指定帐户中某个自定义语言模型内的某个文件的名称和 **enable** 状态。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 PUT 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}[&fileName][&enable]
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|fileName|字符串|否|将文件名更新后的名称|
-|enable|boolean|否|在语言模型中更新此文件的已启用 (true) 或已禁用 (false) 状态|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+使用[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)可以更新指定帐户的自定义语言模型中的文件的名称和**启用**状态。
 
 ### <a name="response"></a>响应
 
@@ -326,39 +178,11 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-可以使用此处返回的文件 **id** 来下载文件的内容。
+使用在响应中返回的文件的**id**下载文件的内容。
 
 ## <a name="get-a-specific-language-model"></a>获取特定的语言模型
 
-以下命令返回有关指定帐户指定语言模型的信息，例如语言以及语言模型中的文件。 
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 GET 请求。
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get)。
-
-### <a name="request-parameters-and-request-body"></a>请求参数和请求正文
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 返回指定帐户中指定语言模型的信息，如语言和语言模型中的文件。 
 
 ### <a name="response"></a>响应
 
@@ -390,39 +214,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 }
 ```
 
-可以使用此处返回的文件 **id** 来下载文件的内容。
+使用在响应中返回的文件的**id**下载文件的内容。
 
 ## <a name="get-all-the-language-models"></a>获取所有语言模型
 
-以下命令在列表中返回指定帐户中的所有自定义语言模型。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 GET 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+"[获取所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API" 返回列表中指定帐户的所有自定义语言模型。
 
 ### <a name="response"></a>响应
 
@@ -466,36 +262,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 ## <a name="delete-a-file-from-a-language-model"></a>从语言模型中删除文件
 
-以下命令从指定帐户中的指定语言模型删除指定的文件。 
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 DELETE 请求。
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+[删除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)API 将从指定帐户中的指定语言模型删除指定的文件。 
 
 ### <a name="response"></a>响应
 
@@ -503,36 +270,7 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>获取有关语言模型中的文件的元数据
 
-此命令返回帐户中所选语言模型内的指定文件的内容及其相关元数据。
-
-### <a name="request-url"></a>请求 URL
-
-这是一个 GET 请求。
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+文件 API 的[get 元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)从你的帐户中所选的语言模型返回指定文件上的内容和元数据。
 
 ### <a name="response"></a>响应
 
@@ -554,34 +292,7 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 ## <a name="download-a-file-from-a-language-model"></a>从语言模型下载文件
 
-以下命令从指定帐户中的指定语言模型下载包含指定文件内容的文本文件。 此文本文件应与最初上传的文本文件的内容相匹配。
-
-### <a name="request-url"></a>请求 URL
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
-```
-
-下面是 Curl 中的请求。
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
-```
- 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)。
-
-### <a name="request-parameters"></a>请求参数 
-
-|**名称**|类型 |**必需**|**说明**|
-|---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文 
-
-此调用不需要更多的请求正文。
+"[下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)API" 下载一个文本文件，其中包含指定帐户中指定语言模型的指定文件的内容。 此文本文件应与最初上传的文本文件的内容相匹配。
 
 ### <a name="response"></a>响应
 

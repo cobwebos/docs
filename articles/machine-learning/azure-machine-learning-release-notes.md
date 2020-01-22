@@ -8,20 +8,35 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122366"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293192"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-designer-generally-available-ga"></a>Azure 机器学习设计器已公开发布（GA）
+
+设计器现已正式发布。
+
++ **新功能**
+    + 添加了 `Regenerate Output` 模块选项来强制设计器忽略缓存的结果。
+    + 向管道运行详细信息添加了新视图：
+        + 管道列表视图。
+        + 浏览器日志视图。
+    + 已将标签添加到模块输入和输出端口。
+    + 已在 "[终结点" 选项卡](how-to-run-batch-predictions-designer.md#versioning-endpoints)中添加 `Set as Default` 管道选项。
+    + 添加了键盘快捷方式和屏幕阅读器[辅助功能](designer-accessibility.md)。
 
 ## <a name="2020-01-06"></a>2020-01-06
 

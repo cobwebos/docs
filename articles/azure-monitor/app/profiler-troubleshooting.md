@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432390"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310852"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -47,6 +47,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 * 如果要查看的数据的期限超过了好几周，请尝试限制时间筛选器并重试。 七天后将删除跟踪。
 * 确保代理或防火墙未阻止对 https://gateway.azureserviceprofiler.net 的访问。
+* 在免费或共享的应用服务计划中不支持探查器。 如果正在使用这些计划之一，请尝试扩展到一个基本计划，然后探查器应该开始工作。
 
 ### <a id="double-counting"></a>并行线程的重复计算
 

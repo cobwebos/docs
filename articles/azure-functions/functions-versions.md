@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921857"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290370"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -143,7 +143,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 ```
 
 > [!NOTE]
-> Azure Functions 1.x 和 .NET 至少需要 `Microsoft.Sdk.NET.Functions` 扩展 `3.0.0`。
+> Azure Functions 1.x 和 .NET 至少需要 `Microsoft.NET.Sdk.Functions` 扩展 `3.0.0`。
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>在 Visual Studio 中将2.x 应用更新到3。x
 

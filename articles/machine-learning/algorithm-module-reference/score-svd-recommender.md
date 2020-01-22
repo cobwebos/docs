@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456338"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314345"
 ---
 # <a name="score-svd-recommender"></a>为 SVD 推荐器评分
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用评分 SVD 推荐器模块。 使用此模块可以通过基于单值分解（SVD）算法的定型建议模型创建预测。
+本文介绍如何在 Azure 机器学习设计器中使用评分 SVD 推荐器模块。 使用此模块可以通过基于单值分解（SVD）算法的定型建议模型创建预测。
 
 SVD 推荐器可以生成两种不同类型的预测：
 

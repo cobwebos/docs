@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: dce4fee57a6d712534ba265cc932e10e66fc9899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232638"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312271"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
-本文介绍如何使用 "**执行 r 脚本**" 模块在 Azure 机器学习设计器（预览）管道中运行 R 代码。
+本文介绍如何使用 "**执行 r 脚本**" 模块在 Azure 机器学习设计器管道中运行 R 代码。
 
 使用 R，你可以执行现有模块当前不支持的任务，例如： 
 - 创建自定义数据转换
@@ -256,11 +256,11 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| package      | 版本    | 
+| 程序包      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| precise-backports    | 1.1.4      | 
-| 基座         | 3.5.1      | 
+| backports    | 1.1.4      | 
+| base         | 3.5.1      | 
 | base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
 | bindr        | 0.1.1      | 
@@ -269,7 +269,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | 启动         | 1.3-22     | 
 | broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| 字        | 6.0-84     | 
+| caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | class        | 7.3-15     | 
@@ -278,8 +278,8 @@ azureml_main <- function(dataframe1, dataframe2){
 | cluster      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
-| 编译程序     | 3.5.1      | 
-| 起来       | 1.3.4      | 
+| compiler     | 3.5.1      | 
+| crayon       | 1.3.4      | 
 | curl         | 3.3        | 
 | data.table   | 1.12.2     | 
 | datasets     | 3.5.1      | 
@@ -292,21 +292,21 @@ azureml_main <- function(dataframe1, dataframe2){
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| 国外      | 0.8-71     | 
+| 外      | 0.8-71     | 
 | fs           | 1.3.1      | 
 | gdata        | 2.18.0     | 
-| 属     | 0.0.2      | 
+| Generics — 泛型     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0-18     | 
-| 粘贴         | 1.3.1      | 
+| glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| 图形图像     | 3.5.1      | 
+| graphics     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| 格         | 3.5.1      | 
+| “业务流程参数” 网格         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| 尚未        | 2.1.0      | 
+| haven        | 2.1.0      | 
 | highr        | 0.8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
@@ -316,14 +316,14 @@ azureml_main <- function(dataframe1, dataframe2){
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
 | knitr        | 1.23       | 
-| 加     | 0.3        | 
-| 点阵      | 0.20-38    | 
+| labeling     | 0.3        | 
+| lattice      | 0.20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| markdown     | 1          | 
-| 成批         | 7.3-51.4   | 
+| markdown     | 第          | 
+| MASS         | 7.3-51.4   | 
 | 矩阵       | 1.2-17     | 
 | 方法      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
@@ -335,8 +335,8 @@ azureml_main <- function(dataframe1, dataframe2){
 | nnet         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
 | openssl      | 1.4        | 
-| 并行     | 3.5.1      | 
-| 支柱       | 1.4.1      | 
+| parallel     | 3.5.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
@@ -366,8 +366,8 @@ azureml_main <- function(dataframe1, dataframe2){
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| 可扩展       | 1.0.0      | 
-| 选择      | 0.4-1      | 
+| 刻度       | 1.0.0      | 
+| selectr      | 0.4-1      | 
 | 空间      | 7.3-11     | 
 | 样条      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
@@ -375,7 +375,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
-| 至关重要     | 2.44-1.1   | 
+| survival     | 2.44-1.1   | 
 | sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
@@ -391,7 +391,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| 须      | 0.3-2      | 
+| whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
 | xfun         | 0.8        | 
 | xml2         | 1.2.0      | 

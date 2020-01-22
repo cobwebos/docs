@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980821"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289520"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -41,11 +41,11 @@ ms.locfileid: "75980821"
 - 如果代理需要，请确保提供身份验证凭据。
 - 如果使用基于 URL 的防火墙代理控制出站连接，请将这些 Url 添加到允许列表中：
 
-    - [用于 VMware 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-    - [Hyper-v 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-    - [用于 VMware 无代理迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-    - [基于 VMware 代理的迁移的 URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-    - [Hyper-v 迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+    - [用于 VMware 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-v 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
+    - [用于 VMware 无代理迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [基于 VMware 代理的迁移的 URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Hyper-v 迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
 
 - 如果使用截取代理连接到 internet，请使用[以下步骤](https://docs.microsoft.com/azure/migrate/concepts-collector)将代理证书导入到设备 VM。
 

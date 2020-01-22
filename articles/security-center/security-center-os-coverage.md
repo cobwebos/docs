@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894625"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294246"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -49,6 +49,10 @@ ms.locfileid: "75894625"
 |Windows Server 2008 R2|✔|✔|
 
 若要详细了解上面列出的 Windows 操作系统所支持的功能，请参阅[虚拟机/服务器支持的功能](security-center-services.md#vm-server-features)。
+
+### Windows 操作系统<a name="os-windows (non-server)"></a>
+
+Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的虚拟机。
 
 ### Linux 操作系统<a name="os-linux"></a>
 

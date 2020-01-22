@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f9815dac9e61eec51230911094f35a33a64e541c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166789"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311506"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块将数据从现有的云数据服务加载到机器学习管道。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "76166789"
 
 导入完成后，单击输出数据集，并选择 "**可视化**" 以查看是否已成功导入数据。
 
-如果要保存数据以供重复使用，而不是在每次运行管道时导入新的数据集，请右键单击输出并选择 "**另存为数据集**"。 选择数据集的名称。 保存的数据集在保存时保留数据，当重新运行管道时，即使管道中的数据集发生更改，也不会更新数据。 这可以方便地获取数据的快照。
+如果要保存数据以供重复使用，而不是在每次运行管道时导入新的数据集，请在模块的右面板中的 "**输出**" 选项卡下选择 "**注册数据集**" 图标。 选择数据集的名称。 保存的数据集保留保存时的数据，重新运行管道时不会更新数据集，即使管道中的数据集发生更改。 这可用于获取数据的快照。
 
 导入数据后，可能需要对建模和分析进行一些额外的准备工作：
 

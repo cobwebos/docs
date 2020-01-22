@@ -14,27 +14,27 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917193"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291578"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
 本文介绍 Microsoft 身份验证库（MSAL）提供的不同身份验证流。  这些流可用于各种不同的应用程序方案。
 
-| Flow | 描述 | 使用位置|  
+| Flow | Description | 适用范围|  
 | ---- | ----------- | ------- | 
 | [交互式](#interactive) | 通过交互进程获取标记，该进程通过浏览器或弹出窗口提示用户提供凭据。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md) |
 | [隐式授权](#implicit-grant) | 允许应用获取令牌，而无需执行后端服务器凭据交换。 这允许应用在客户端 JavaScript 代码中登录用户、维护会话并获取其他 web Api 的令牌。| [单页应用程序（SPA）](scenario-spa-overview.md) |
 | [授权代码](#authorization-code) | 用于在设备上安装的应用程序中访问受保护的资源（如 web Api）。 这使你可以向移动应用和桌面应用添加登录和 API 访问权限。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md)、 [web 应用](scenario-web-app-call-api-overview.md) | 
 | [代表](#on-behalf-of) | 应用程序调用服务或 web API，而后者又需要调用另一个服务或 web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
 | [客户端凭据](#client-credentials) | 允许使用应用程序的标识访问 web 承载的资源。 通常用于必须在后台运行的服务器到服务器交互，而不会立即与用户交互。 | [守护程序应用](scenario-daemon-overview.md) |
-| [设备代码](#device-code) | 允许用户登录到受输入约束的设备，例如智能电视、IoT 设备或打印机。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [设备代码](#device-code) | 允许用户登录到受输入约束的设备，例如智能电视、IoT 设备或打印机。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Windows 集成身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许域或 Azure Active Directory （Azure AD）的已加入计算机上的应用程序以无提示方式获取令牌（无需用户的 UI 交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [用户名/密码](scenario-desktop-acquire-token.md#username--password) | 允许应用程序通过直接处理其密码来登录用户。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username--password) |
+| [用户名/密码](scenario-desktop-acquire-token.md#username-and-password) | 允许应用程序通过直接处理其密码来登录用户。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
  

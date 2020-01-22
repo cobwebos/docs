@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819145"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293617"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -45,6 +45,14 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 
 [使用 Azure 数据工厂模板从数据库批量复制到 azure 数据资源管理器](data-factory-template.md)是预定义的 Azure 数据工厂管道。 此模板用于创建每个数据库或每个表的多个管道，以便加快数据复制。 
 
+### <a name="mapping-data-flows"></a>映射数据流 
+
+[Azure 数据工厂映射数据流](/azure/data-factory/concepts-data-flow-overview)是直观设计的数据转换，使数据工程师无需编写代码即可开发图形数据转换逻辑。 若要创建数据流并将数据引入 Azure 数据资源管理器，请使用以下方法：
+
+1. 创建[映射](/azure/data-factory/data-flow-create)数据流。
+1. [将数据导出到 Azure Blob](/azure/data-factory/data-flow-sink)。 
+1. 定义[事件网格](/azure/data-explorer/ingest-data-event-grid)或[ADF 复制活动](/azure/data-explorer/data-factory-load-data)，将数据引入 Azure 数据资源管理器。
+
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>复制数据时，选择 "复制" 和 "Azure 数据资源管理器" 命令活动 
 
 本部分将帮助你为数据复制需求选择正确的活动。
@@ -63,7 +71,7 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 |---|---|---|
 | **流说明** | ADF 在 Kusto 上执行查询，处理结果，并将其发送到目标数据存储。 <br>（**ADX > ADF > 接收器数据存储**） | ADF 将 `.export` control 命令发送到 Azure 数据资源管理器，后者执行命令，并将数据直接发送到目标数据存储。 <br>（**ADX > 接收器数据存储**） |
 | **支持的目标数据存储** | 各种[受支持的数据存储](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2，Azure Blob，SQL 数据库 |
-| **性能** | 集中 | <ul><li>分布式（默认值），从多个节点同时导出数据</li><li>更快且更具成本效益。</li></ul> |
+| **“性能”** | 集中 | <ul><li>分布式（默认值），从多个节点同时导出数据</li><li>更快且更具成本效益。</li></ul> |
 | **服务器限制** | 可以扩展/禁用[查询限制](/azure/kusto/concepts/querylimits)。 默认情况下，ADF 查询包含： <ul><li>500000记录的大小限制或 64 MB。</li><li>时间限制为10分钟。</li><li>`noTruncation` 设置为 false。</li></ul> | 默认情况下，扩展或禁用查询限制： <ul><li>禁用大小限制。</li><li>服务器超时延长到1小时。</li><li>`MaxMemoryConsumptionPerIterator` 和 `MaxMemoryConsumptionPerQueryPerNode` 扩展到 max （5 GB，TotalPhysicalMemory/2）。</li></ul>
 
 > [!TIP]
@@ -79,7 +87,7 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 |---|---|---|---|
 | **流说明** | ADF 从源数据存储中获取数据，将其转换为表格格式，并执行所需的架构映射更改。 然后，ADF 将数据上传到 Azure blob，将其拆分为块区，然后下载 blob 以将它们引入到 ADX 表中。 <br> （**源数据存储 > ADF > Azure blob > ADX**） | 这些命令可以执行查询或 `.show` 命令，并将查询的结果引入表中（**ADX > ADX**）。 | 此命令通过 "提取" 一个或多个云存储项目中的数据，将数据引入表中。 |
 | **支持的源数据存储** |  [各种选项](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS 第2代、Azure Blob、SQL （使用 sql_request 插件）、Cosmos （使用 cosmosdb_sql_request 插件）以及提供 HTTP 或 Python Api 的任何其他数据存储。 | Filesystem，Azure Blob 存储，ADLS 第1代，ADLS 第2代 |
-| **性能** | Ingestions 已排队和管理，可通过提供负载均衡、重试和错误处理来确保小型 Ingestions 并确保高可用性。 | <ul><li>这些命令不能用于大容量数据导入。</li><li>按预期和更便宜的方式工作。 但对于生产方案以及流量速率和数据量大时，请使用复制活动。</li></ul> |
+| **“性能”** | Ingestions 已排队和管理，可通过提供负载均衡、重试和错误处理来确保小型 Ingestions 并确保高可用性。 | <ul><li>这些命令不能用于大容量数据导入。</li><li>按预期和更便宜的方式工作。 但对于生产方案以及流量速率和数据量大时，请使用复制活动。</li></ul> |
 | **服务器限制** | <ul><li>无大小限制。</li><li>最大超时限制：每个引入 blob 1 小时。 |<ul><li>查询部分只有大小限制，可通过指定 `noTruncation=true`来跳过该部分。</li><li>最大超时限制：1小时。</li></ul> | <ul><li>无大小限制。</li><li>最大超时限制：1小时。</li></ul>|
 
 > [!TIP]
@@ -90,10 +98,10 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 
 下表列出了与 Azure 数据工厂集成的各个步骤所需的权限。
 
-| 步骤 | Operation | 最低权限级别 | 说明 |
+| 步骤 | 操作 | 最低权限级别 | 说明 |
 |---|---|---|---|
 | **创建链接服务** | 数据库导航 | *数据库查看器* <br>使用 ADF 的登录用户应该获得读取数据库元数据的权限。 | 用户可以手动提供数据库名称。 |
-| | “测试连接” | *数据库监视器*或*表引入器* <br>应授予服务主体 `.show` 命令或表级别引入执行数据库级别的权限。 | <ul><li>TestConnection 验证与群集的连接，而不是与数据库的连接。 即使数据库不存在，也可能会成功。</li><li>表管理员权限不足。</li></ul>|
+| | 测试连接 | *数据库监视器*或*表引入器* <br>应授予服务主体 `.show` 命令或表级别引入执行数据库级别的权限。 | <ul><li>TestConnection 验证与群集的连接，而不是与数据库的连接。 即使数据库不存在，也可能会成功。</li><li>表管理员权限不足。</li></ul>|
 | **创建数据集** | 表导航 | *数据库监视器* <br>使用 ADF 登录的用户必须有权执行数据库级别 `.show` 命令。 | 用户可以手动提供表名称。|
 | **创建数据集**或**复制活动** | 预览数据 | *数据库查看器* <br>必须授权服务主体读取数据库元数据。 | | 
 |   | 导入架构 | *数据库查看器* <br>必须授权服务主体读取数据库元数据。 | 当 ADX 是表格到表格副本的源时，ADF 会自动导入架构，即使用户没有显式导入架构也是如此。 |

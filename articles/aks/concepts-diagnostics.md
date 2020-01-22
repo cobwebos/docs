@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513908"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291373"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes 服务（AKS）诊断概述
 
@@ -24,7 +24,7 @@ ms.locfileid: "73513908"
 
 - 在[Azure 门户](https://portal.azure.com)中导航到 Kubernetes 群集。
 - 在左侧导航栏中单击 "**诊断和解决问题**"，这将打开 AKS 诊断。
-- 使用 "主页" 磁贴中的关键字来选择最能描述群集问题的类别，或在搜索栏中键入最能描述你的问题的关键字，例如_群集节点问题_。
+- 通过使用 "主页" 磁贴中的关键字，选择最能描述群集问题的类别，或在搜索栏中键入最能描述你的问题的关键字，例如_群集节点问题_。
 
 ![主页](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
@@ -76,7 +76,7 @@ CRUD 操作检查可能导致群集中出现问题的任何 CRUD 操作。
 
 - 节点授权失败
 - 401错误
-- 403错误
+- 403 错误
 
 ## <a name="next-steps"></a>后续步骤
 

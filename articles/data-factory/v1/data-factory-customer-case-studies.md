@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b0318cf293428f0d2ce125b190b0b8625c9df97
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 393a44201b0d4f1078a098a129cd628d727bdb02
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682686"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290625"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。
@@ -24,23 +24,8 @@ ms.locfileid: "73682686"
 ## <a name="milliman"></a>Milliman
 [顶级保险公司改变保险行业](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
-## <a name="rockwell-automation"></a>罗克韦尔自动化
+## <a name="rockwell-automation"></a>Rockwell Automation
 [Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)（工业自动化公司利用大数据解决方案节省 90% 的成本）
-
-## <a name="ziosk"></a>Ziosk
-[您想要将哪种游戏用于该快餐？Ziosk 可能已知道。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
-
-## <a name="alaska-airlines"></a>阿拉斯加航空公司
-[使用平板电脑，云服务提供更有趣的机上娱乐](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
-
-## <a name="tacoma-public-schools"></a>塔科马公立学校
-[使用云分析预测学生辍学风险，提高毕业率](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
-
-## <a name="real-madrid-fc"></a>皇家马德里足球俱乐部
-[皇家马德里足球俱乐部借助 Microsoft 云拉近体育场与全球 4.5 亿粉丝之间的距离](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
-
-## <a name="pier-1-imports"></a>Pier 1 Imports
-[通过云机器学习与客户更好地建立连接](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
 ## <a name="microsoft-studio"></a>Microsoft Studio
 [通过每天分析数千亿个游戏事件提供史诗般的 Xbox 体验故事](https://customers.microsoft.com/en-us/story/xboxunlimited)

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122349"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312407"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -176,12 +176,12 @@ Azure 容器实例不支持磁盘加密。 如果需要磁盘加密，建议改[
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
-你可以随时使用客户管理的密钥加密已部署的 Azure Kubernetes 服务资源。 有关详细信息，请参阅[https://aka.ms/aks/byok](https://aka.ms/aks/byok)。 
+你可以随时使用客户管理的密钥加密已部署的 Azure Kubernetes 服务资源。 有关详细信息，请参阅[携带 Azure Kubernetes 服务的密钥](../aks/azure-disk-customer-managed-keys.md)。 
 
 此过程允许你加密 Kubernetes 群集中已部署的虚拟机的数据和 OS 磁盘。
 
 > [!IMPORTANT]
-> 此过程仅适用于 AKS K8s 版本1.16 或更高版本。 Azure 机器学习增加了1.16 年1月 13 2020 日对 AKS 的支持。
+> 此过程仅适用于 AKS K8s 版本1.17 或更高版本。 Azure 机器学习增加了1.17 年1月 13 2020 日对 AKS 的支持。
 
 #### <a name="machine-learning-compute"></a>机器学习计算
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 94cf30d2d3650212707cf92db83236882fe5e49f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169351"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314192"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南
 
@@ -129,8 +129,8 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 
 * 前端配置
   * NW1 10.3.1.15 的 IP 地址
-  * NW1 10.3.1.17 的 IP 地址
-  * NW1 10.3.1.19 的 IP 地址
+  * NW2 10.3.1.17 的 IP 地址
+  * NW3 10.3.1.19 的 IP 地址
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口

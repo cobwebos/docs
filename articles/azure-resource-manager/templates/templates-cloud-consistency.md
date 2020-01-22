@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155649"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290642"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -55,7 +55,7 @@ Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以�
 
 1. 本地克隆存储库后，使用 PowerShell 连接到目标的 Azure 资源管理器。
 
-1. 导入 psm1 模块并执行 Test-AzureRmureRmTemplateFunctions cmdlet：
+1. 导入 psm1 模块并执行 Test-AzureRmTemplateFunctions cmdlet：
 
    ```powershell
    # Import the module

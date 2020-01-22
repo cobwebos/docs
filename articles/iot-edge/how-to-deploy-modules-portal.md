@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a3280e11d40a361c5a3305d71e58661b37b8bd1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563422"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290710"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -38,7 +38,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 1. 在左侧窗格中，从菜单中选择 " **IoT Edge** "。
 1. 在设备列表中单击目标设备的 ID。
-1. 在顶栏上，选择 "**设置模块**"。
+1. 在上方栏中，选择“设置模块”。
 1. 在页面的 "**容器注册表设置**" 部分中，提供用于访问任何包含模块映像的私有容器注册表的凭据。
 1. 在该页的 " **IoT Edge 模块**" 部分中，选择 "**添加**"。
 1. 从下拉菜单中查看模块类型：
@@ -53,7 +53,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="specify-routes"></a>指定路由
 
-在 "**路由**" 选项卡上，可以定义在模块和 IoT 中心之间传递消息的方式。 使用名称/值对构造消息。 默认情况下，路由称为**route** ，并定义为 **FROM/messages/* to $upstream * *，这意味着任何模块输出的所有消息都将发送到 IoT 中心。  
+在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 消息由名称/值对构造。 默认情况下，路由称为**route** ，并定义为**从/messages/\* 到 $upstream**中，这意味着任何模块输出的所有消息都将发送到 IoT 中心。  
 
 添加或更新包含[声明路由](module-composition.md#declare-routes)中的信息的路由，然后选择 "**下一步：查看 + 创建**" 以继续执行向导的下一步骤。
 
@@ -92,7 +92,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 1. 在 Azure 门户中，导航到 IoT 中心。
 1. 在左窗格中的 "**自动设备管理**" 下，选择**IoT Edge**。
 1. 选择要接收部署的 IoT Edge 设备。
-1. 在顶栏上，选择 "**设置模块**"。
+1. 在上方栏中，选择“设置模块”。
 1. 在 " **IoT Edge 模块**" 部分中，单击 "**添加**"，然后从下拉菜单中选择 " **Marketplace 模块**"。
 
 ![在 IoT 中心添加模块](./media/how-to-deploy-modules-portal/iothub-add-module.png)

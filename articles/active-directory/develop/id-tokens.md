@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167451"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294178"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -85,6 +85,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`unique_name` | String | 提供了一个用户可读值，用于标识令牌使用者。 此值在任何给定时间点都是唯一的，但随着电子邮件和其他标识符的重复使用，此值可能会重新出现在其他帐户上，因此应仅用于显示目的。 仅在 v1.0 `id_tokens` 中颁发。 |
 |`uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
+
+
+> [!NOTE]
+> V1 和 v2 id_token 与上述示例中所示的信息量有差异。 该版本实质上指定了从其颁发的 Azure AD 平台终结点。 [Azure AD 的 Oauth 实现](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)已发展多年。 目前，我们有两个不同的 oAuth 终结点用于 AzureAD 应用程序。 您可以使用归类为 v2 的任何新终结点，也可以使用称为 v1 的新终结点。 这两个终结点的 Oauth 终结点是不同的。 V2 终结点是一个新的终结点，我们尝试迁移 v1 终结点的所有功能，并建议新开发人员使用 V2 终结点。 
+> - V1： Azure Active Directory 终结点： `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2： Microsoft 标识平台终结点： `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>验证 id_token
 

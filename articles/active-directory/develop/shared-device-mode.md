@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: babbaf75b91dfb870ba5001d23f62c5461a28218
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030297"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291254"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -39,7 +39,7 @@ Firstline 工作人员（例如零售协会、航班员工和现场服务工作�
 若要创建共享设备模式应用，开发人员和云设备管理员可以一起工作：
 
 - 开发人员编写单帐户应用（共享设备模式下不支持多帐户应用），将 `"shared_device_mode_supported": true` 添加到应用的配置，并编写代码来处理共享设备注销等任务。
-- 设备管理员通过安装验证器应用，并使用验证器应用将设备设置为共享模式，来准备要共享的设备。 只有处于[云设备管理员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator)角色中的用户才能使用[验证器应用](https://www.microsoft.com/account/authenticator)将设备置于共享模式。 你可以通过以下方式在 Azure 门户中配置组织角色的成员身份： **Azure Active Directory** > **角色和管理员** > **云设备管理员**。
+- 设备管理员通过安装验证器应用，并使用验证器应用将设备设置为共享模式，来准备要共享的设备。 只有处于[云设备管理员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator)角色中的用户才能使用[验证器应用](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)将设备置于共享模式。 你可以通过以下方式在 Azure 门户中配置组织角色的成员身份： **Azure Active Directory** > **角色和管理员** > **云设备管理员**。
 
  本文重点介绍开发人员应考虑的事项。
 

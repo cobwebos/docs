@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心 .NET Framework API 概述 | Microsoft 文档
-description: 汇总了一些重要的事件中心 .NET Framework 客户端 API。
+description: 本文概要介绍了一些关键的事件中心，.NET Framework 客户端 Api （管理和运行时）。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f56882d2d73c85434c6f81972a06e5ea9ccdff99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822046"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312611"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述
 
@@ -26,7 +26,7 @@ ms.locfileid: "60822046"
 
 若要执行以下管理操作，必须对事件中心命名空间具有**管理**权限：
 
-### <a name="create"></a>创建
+### <a name="create"></a>Create
 
 ```csharp
 // Create the event hub
@@ -48,7 +48,7 @@ ehd.Authorization.Add(new SharedAccessAuthorizationRule(ruleName, ruleKey, new A
 await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
-### <a name="delete"></a>DELETE
+### <a name="delete"></a>删除
 
 ```csharp
 await namespaceManager.DeleteEventHubAsync("event hub name");

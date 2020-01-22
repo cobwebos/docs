@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750404"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310775"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -1299,7 +1299,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |模型部署已启动|模型部署已启动|计数|总计|在此工作区中启动的模型部署数|方案|
 |模型部署成功|模型部署成功|计数|总计|此工作区中成功的模型部署数|方案|
 |模型部署失败|模型部署失败|计数|总计|此工作区中失败的模型部署数|方案，StatusCode|
-|节点总数|节点总数|计数|平均值|节点总数。 此总数包括一些活动节点、空闲节点、不可用的节点、Premepted 节点和节点|方案，ClusterName|
+|节点总数|节点总数|计数|平均值|节点总数。 此总数包括某些活动节点、空闲节点、不可用的节点、已抢占的节点、保留节点|方案，ClusterName|
 |活动节点|活动节点|计数|平均值|Acitve 节点数。 这些节点是当前正在运行作业的节点。|方案，ClusterName|
 |空闲节点|空闲节点|计数|平均值|空闲节点数。 空闲节点是指未运行任何作业的节点，但可以接受新作业（如果可用）。|方案，ClusterName|
 |不可用节点|不可用节点|计数|平均值|无法使用的节点数。 由于某些无法解析的问题，无法使用的节点不起作用。 Azure 将回收这些节点。|方案，ClusterName|

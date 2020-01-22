@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896035"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291509"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -53,7 +53,7 @@ ms.locfileid: "75896035"
         - [SAP 网站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)上列出了 SAP HANA 支持的 Azure Vm 和[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
         - [SAP 产品可用性矩阵](https://support.sap.com/en/)。
         - 其他特定于 SAP 的产品的 SAP 说明。     
-    - 建议为 SAP 生产系统严格执行三层设计。 我们不建议将 ASCS 和 app 服务器合并到一个虚拟机上。 在 Azure 上的 Windows 来宾操作系统上支持使用 SAP 中心服务的多 SID 群集配置。 但 Azure 上 Linux 操作系统上的 SAP 中心服务不支持此配置。 可以在以下文章中找到 Windows 来宾操作系统方案的文档：
+    - 建议为 SAP 生产系统严格执行三层设计。 我们不建议将 ASCS 和/或 DBMS 和/或应用程序服务器合并到一个虚拟机上。 在 Azure 上的 Windows 来宾操作系统上支持使用 SAP 中心服务的多 SID 群集配置。 但 Azure 上 Linux 操作系统上的 SAP 中心服务不支持此配置。 可以在以下文章中找到 Windows 来宾操作系统方案的文档：
         - [使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - 高可用性和灾难恢复体系结构。
@@ -135,7 +135,7 @@ ms.locfileid: "75896035"
         - 如果对于 SAP 中心服务和 DBMS 不需要高可用性，则可以将这些 Vm 部署到与 SAP 应用程序层相同的可用性集。
         - 如果使用被动复制来保护 SAP 中心服务和 DBMS 层的高可用性，请将 SAP 中心服务的两个节点放在一个单独的可用性集中，将两个 DBMS 节点置于另一个可用性集中。
         - 如果将部署到 Azure 可用性区域，则无法使用可用性集。 但你确实需要确保将主动和被动中心服务节点部署到两个不同的可用性区域中。 使用在其之间具有最低延迟的可用性区域。
-          请记住，你需要使用[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)来确定跨可用性区域为 DBMS 和 SAP 中心服务层建立 Windows 或 Pacemaker 故障转移群集的使用案例。 不能将[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)用于区域性部署。
+          请记住，你需要使用[Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)来确定跨可用性区域为 DBMS 和 SAP 中心服务层建立 Windows 或 Pacemaker 故障转移群集的使用案例。 不能将[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)用于区域性部署。
    5. 超时设置。
         - 检查 SAP NetWeaver 开发人员跟踪的 SAP 实例，以确保排队服务器与 SAP 工作进程之间不存在连接中断。 可以通过设置以下两个注册表参数来避免这些连接中断：
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000。 有关详细信息，请参阅[KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))。

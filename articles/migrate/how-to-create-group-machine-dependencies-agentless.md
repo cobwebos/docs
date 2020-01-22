@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280809"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288944"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
 
@@ -87,10 +87,10 @@ ms.locfileid: "76280809"
 
 1. 在**Azure Migrate：服务器评估**中，单击 "**发现的服务器**"。
 2. 单击 "**依赖关系分析**" 图标。
-3. 单击 "**启动依赖项发现**"。
-3. 在 "**启动依赖项发现**" 页中，选择发现相关计算机的设备。
+3. 单击 "**添加服务器**"。
+3. 在 "**添加服务器**" 页中，选择发现相关计算机的设备。
 4. 从 "计算机" 列表中选择计算机。
-5. 单击 "**启动依赖项发现**"。
+5. 单击 "**添加服务器**"。
 
     ![启动依赖项发现](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ ms.locfileid: "76280809"
 
 1. 在**Azure Migrate：服务器评估**中，单击 "**发现的服务器**"。
 2. 单击 "**依赖关系分析**" 图标。
-3. 单击 "**停止依赖项发现**"。
-3. 在 "**停止依赖关系发现**" 页中，选择要在其上发现要停止依赖关系发现的 vm 的**设备**。
+3. 单击 "**删除服务器**"。
+3. 在 "**删除服务器**" 页中，选择要在其上发现要停止依赖关系发现的 vm 的**设备**。
 4. 从 "计算机" 列表中选择计算机。
-5. 单击 "**停止依赖项发现**"
+5. 单击 "**删除服务器**"。
 
 
 ## <a name="next-steps"></a>后续步骤

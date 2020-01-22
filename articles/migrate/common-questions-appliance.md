@@ -3,12 +3,12 @@ title: Azure Migrate 设备的常见问题
 description: 获取有关 Azure Migrate 设备的常见问题解答
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029129"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292326"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -83,9 +83,9 @@ Azure Migrate 设备收集的数据存储在创建迁移项目时选择的 Azure
 
 不。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，需要部署多个设备。
 
-### <a name="how-many-vms-can-i-discover-with-an-appliance"></a>可以使用一个设备发现多少个 Vm？
+### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>可以通过设备发现多少 Vm 或服务器？
 
-使用单个设备，最多可以发现10000个 VMware Vm 和最多5000个 Hyper-v Vm。 如果你在本地环境中有更多计算机，请阅读有关扩展[hyper-v](scale-hyper-v-assessment.md)和[VMware](scale-vmware-assessment.md)评估的信息。
+你最多可以发现10000个 VMware Vm，最多可以使用一个设备，最多可以发现5000个 Hyper-v Vm 和最多250台服务器。 如果你在本地环境中有更多计算机，请阅读有关扩展[hyper-v](scale-hyper-v-assessment.md)、 [VMware](scale-vmware-assessment.md)和[物理](scale-physical-assessment.md)评估的信息。
 
 ## <a name="can-i-delete-an-appliance"></a>能否删除设备？
 

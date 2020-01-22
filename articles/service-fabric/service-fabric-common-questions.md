@@ -4,12 +4,12 @@ description: 与 Service Fabric 相关的常见问题，包括功能、用例和
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614632"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293515"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -183,4 +183,4 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳实践](service-fabric-best-practices-overview.md)ice 构造概念] （overview.md）和[最佳实践](service-fabric-best-practices-overview.md)
+了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)

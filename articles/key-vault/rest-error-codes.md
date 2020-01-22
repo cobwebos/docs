@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982096"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293379"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  
@@ -54,7 +54,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>令牌缺少关联的正确资源。 
 
-从 Azure OAUTH 终结点请求访问令牌时，名为 "resource" 的参数是必需的。 值对令牌提供程序很重要，因为它将令牌的范围限定为其预期用途。 \* 用于访问 Key Vault 的*所有*令牌的资源均 <https:\//vault.keyvault.net> （无尾随斜杠）。
+从 Azure OAUTH 终结点请求访问令牌时，名为 "resource" 的参数是必需的。 值对令牌提供程序很重要，因为它将令牌的范围限定为其预期用途。 用于访问 Key Vault 的**所有**令牌的资源是*https：\//vault.keyvault.net* （无尾随斜杠）。
 
 ### <a name="the-token-is-expired"></a>令牌已过期
 

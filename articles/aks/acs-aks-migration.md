@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889522"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290387"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务（AKS）
 
@@ -45,7 +45,7 @@ ms.locfileid: "75889522"
 > * 确保有效配额
 > * 高可用性和业务连续性
 > * 无状态应用程序的注意事项
-> * 有状态 "应用程序的注意事项
+> * 有状态应用程序的注意事项
 > * 部署群集配置
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>具有标准负载均衡器和虚拟机规模集的 AKS
@@ -111,7 +111,7 @@ az aks create \
 
 无状态应用程序的迁移最直截了当。 将资源定义（YAML 或 Helm）应用到新群集，确保一切按预期运行，然后重定向流量以激活新群集。
 
-### <a name="considers-for-stateful-applications"></a>考虑有状态的应用程序
+### <a name="considerations-for-stateful-applications"></a>有状态应用程序的注意事项
 
 仔细规划有状态应用程序的迁移，以避免数据丢失或意外停机。
 
@@ -161,7 +161,7 @@ az aks create \
 
 ### <a name="deployment-of-your-cluster-configuration"></a>部署群集配置
 
-建议使用现有的持续集成（CI）和持续交付（CD）管道将已知良好的配置部署到 AKS。 你可以使用 Azure Pipelines 来[构建和部署应用程序，AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
+建议使用现有的持续集成（CI）和持续交付（CD）管道将已知良好的配置部署到 AKS。 你可以使用 Azure Pipelines 来[生成应用程序并将其部署到 AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
 
 如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用于 AKS。 可以使用 `kubectl` 导出对象。
 
@@ -177,5 +177,5 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 > * 确保有效配额
 > * 高可用性和业务连续性
 > * 无状态应用程序的注意事项
-> * 有状态 "应用程序的注意事项
+> * 有状态应用程序的注意事项
 > * 部署群集配置

@@ -1,5 +1,5 @@
 ---
-title: Python:对 Azure Data Lake Storage Gen1 执行的文件系统操作 | Microsoft Docs
+title: Python：对 Azure Data Lake Storage Gen1 执行的文件系统操作 | Microsoft Docs
 description: 了解如何使用 Python SDK 处理 Data Lake Storage Gen1 文件系统。
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f2ee982e2c1e1c363a391779721f848b8ae6afd5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17b53c508f0c4c5ba8fa257fcdc692cdaa45d470
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088892"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294212"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 在 Azure Data Lake Storage Gen1 上执行文件系统操作
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "71088892"
 
 本文介绍了如何使用 Python SDK 在 Azure Data Lake Storage Gen1 上执行文件系统操作。 若要了解如何使用 Python 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 Python 在 Data Lake Storage Gen1 上执行帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -39,7 +39,7 @@ ms.locfileid: "71088892"
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
 * `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [azure-mgmt-datalake-store 模块参考](/python/api/azure-mgmt-datalake-store/)。
-* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store file-system 模块参考](https://azure-datalake-store.readthedocs.io/en/latest/)。
+* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store file-system 模块参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)。
 
 使用以下命令安装这些模块。
 
@@ -125,7 +125,7 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>后续步骤
 * [使用 Python 在 Data Lake Storage Gen1 上执行帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [Azure Data Lake Storage Gen1 Python（文件系统）参考](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Azure Data Lake Storage Gen1 Python（文件系统）参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)

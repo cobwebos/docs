@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979750"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289146"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
 Azure Monitor 日志中的数据以[一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序中](../log-query/logs-structure.md)，每个记录都具有一组具有唯一属性的特定数据类型。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 > [!NOTE]
-> 某些标准 propertis 不会显示在 Log Analytics 中的架构视图或 intellisense 中，除非在输出中显式指定属性，否则它们不会显示在查询结果中。
+> 一些标准属性将不会在 Log Analytics 中的架构视图或 intellisense 中显示，并且它们不会显示在查询结果中，除非在输出中显式指定了属性。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和时间戳
 **TimeGenerated** （Log Analytics 工作区）和**时间戳**（Application Insights 应用程序）属性包含数据源创建记录的日期和时间。 有关更多详细信息，请参阅[Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。

@@ -9,20 +9,20 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 0c1a4f33da7e1f39951d641ed1d563c46fb664ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c07ae779334c97b28803d77d2ce4a1b5b7962b48
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232651"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314413"
 ---
 # <a name="create-python-model"></a>创建 Python 模型
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 了解如何使用 "**创建 Python 模型**" 模块通过 Python 脚本创建未经训练的模型。 可以在 Azure 机器学习设计器环境中包含在 Python 包中的任何学习器的基础上进行建模。 
 
-创建模型后，可以使用[定型模型](train-model.md)对数据集上的模型进行定型，就像 Azure 机器学习中的任何其他学习器一样。 训练的模型可以传递给[评分模型](score-model.md)，使用该模型进行预测。 然后，就可以保存训练后的模型，并且可以将评分工作流发布为 web 服务。
+创建模型后，可以使用[定型模型](train-model.md)对数据集上的模型进行定型，就像 Azure 机器学习中的任何其他学习器一样。 训练的模型可以传递给[评分模型](score-model.md)，使用该模型进行预测。 随后，可以保存训练的模型，评分工作流可以作为 Web 服务发布。
 
 > [!WARNING]
 > 目前不能将 Python 模型的评分结果传递给[评估模型](evaluate-model.md)。 如果需要评估模型，可以编写自定义 Python 脚本，并使用 "[执行 Python 脚本](execute-python-script.md)" 模块运行该脚本。  

@@ -17,20 +17,20 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabc96ef669f0c0c61a7bca4a16828294cf404df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 878f942bf36fef999b90274b81eaa7735afa73e5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423845"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293345"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>用于调用 web Api 的桌面应用-应用注册
+# <a name="desktop-app-that-calls-web-apis-app-registration"></a>用于调用 web Api 的桌面应用：应用注册
 
 本文介绍桌面应用程序的应用注册细节。
 
-## <a name="supported-accounts-types"></a>支持的帐户类型
+## <a name="supported-account-types"></a>支持的帐户类型
 
-桌面应用程序中支持的帐户类型取决于您想要突出的体验。 由于这种关系，受支持的帐户类型取决于要使用的流。
+桌面应用程序中支持的帐户类型取决于您想要亮起的体验。 由于这种关系，受支持的帐户类型取决于要使用的流。
 
 ### <a name="audience-for-interactive-token-acquisition"></a>交互式令牌获取的受众
 
@@ -38,30 +38,30 @@ ms.locfileid: "75423845"
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>桌面应用程序的无提示流的受众
 
-- 若要使用集成的 Windows 身份验证或用户名/密码，你的应用程序需要在你自己的租户（LOB 开发人员）或 Azure Active directory 组织（ISV 方案）中登录用户。 Microsoft 个人帐户不支持这些身份验证流。
+- 若要使用集成的 Windows 身份验证或用户名和密码，你的应用程序需要在你自己的租户中登录用户，例如，如果你是业务线（LOB）开发人员。 或者，在 Azure Active Directory 组织中，如果你的应用程序是 ISV 方案，则需要在你自己的租户中登录用户。 Microsoft 个人帐户不支持这些身份验证流。
 - 如果要使用设备代码流，则无法使用其 Microsoft 个人帐户登录用户。
-- 如果你使用社交标识传递 B2C 机构和策略的用户登录，则只能使用交互式用户名和用户名密码身份验证。
+- 如果使用传递企业到企业（B2C）机构和策略的社交标识登录用户，则只能使用交互式用户名和用户名密码身份验证。
 
 ## <a name="redirect-uris"></a>重定向 URI
 
-要在桌面应用程序中使用的重定向 Uri 将取决于你想要使用的流。
+要在桌面应用程序中使用的重定向 Uri 取决于要使用的流。
 
-- 如果使用的是**交互式身份验证**或**设备代码流**，则需要使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 可以通过单击应用程序的 "**身份验证**" 部分中相应的 URL 来完成此配置。
+- 如果使用交互式身份验证或设备代码流，请使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 若要实现此配置，请在应用程序的 "**身份验证**" 部分中选择相应的 URL。
   
   > [!IMPORTANT]
-  > 如今，在 Windows 上运行的桌面应用程序中，MSAL.NET 默认使用另一个重定向 URI （`urn:ietf:wg:oauth:2.0:oob`）。 将来我们将需要更改此默认设置，因此，我们建议使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > 目前，在 Windows 上运行的桌面应用程序中，MSAL.NET 默认使用另一个重定向 URI （`urn:ietf:wg:oauth:2.0:oob`）。 将来，我们需要更改此默认设置，因此，我们建议使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
 
-- 如果要为 macOS 生成本机目标 C 或 Swift 应用程序，则需要根据应用程序的捆绑标识符，使用以下格式注册 redirectUri： **msauth >：//auth** （使用应用程序的捆绑包标识符替换 < > < id）（& c）
-- 如果你的应用程序仅使用集成 Windows 身份验证或用户名/密码，则不需要为你的应用程序注册重定向 URI。 这些流执行到 Microsoft 标识平台 v2.0 终结点的往返过程，并且不会对任何特定的 URI 调用你的应用程序。
-- 若要将设备代码流、集成的 Windows 身份验证和用户名/密码与没有重定向 Uri 的机密客户端应用程序流区分开来（守护程序应用程序中使用的客户端凭据流），需要将应用程序表达为公用客户端应用程序。 若要实现此配置，请参阅应用程序的 "**身份验证**" 部分。 然后，在 "**高级设置**" 子节的 "**默认客户端类型**" 段落中，选择 **"是**"，将**应用程序视为公共客户端**。
+- 如果生成适用于 macOS 的本机目标 C 或 Swift 应用，请根据应用程序的捆绑包标识符注册重定向 URI，格式如下 <：//auth. >：：替换为应用程序的捆绑标识符 > <。
+- 如果应用只使用集成 Windows 身份验证或用户名和密码，则不需要为应用程序注册重定向 URI。 这些流执行到 Microsoft 标识平台 v2.0 终结点的往返过程。 不会对任何特定的 URI 调用应用程序。
+- 若要将设备代码流、集成的 Windows 身份验证和不具有重定向 Uri 的机密客户端应用程序流中的用户名和密码区分开来（守护程序应用程序中使用的客户端凭据流），需要表达应用程序是公用客户端应用程序。 若要实现此配置，请参阅应用程序的 "**身份验证**" 部分。 在 "**高级设置**" 子节的 "**默认客户端类型**" 段落中，选择 **"是"** ，将**应用程序视为公共客户端**。
 
   ![允许公用客户端](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API 权限
 
-桌面应用程序为已登录用户调用 Api。 它们需要请求委托的权限。 但是，它们不能请求仅在[后台应用程序](scenario-daemon-overview.md)中处理的应用程序权限。
+桌面应用程序为已登录用户调用 Api。 它们需要请求委托的权限。 它们不能请求仅在[后台程序应用](scenario-daemon-overview.md)程序中处理的应用程序权限。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [桌面应用-应用配置](scenario-desktop-app-configuration.md)
+> [桌面应用：应用配置](scenario-desktop-app-configuration.md)

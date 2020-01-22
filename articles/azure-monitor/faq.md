@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170857"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290336"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题
 
@@ -94,7 +94,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种源收集日志数据的容器。 您可以为所有监视数据使用单个 Log Analytics 工作区，也可以有多个工作区的要求。 请参阅[设计 Azure Monitor 日志部署](platform/design-logs-deployment.md)。
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>是否可以将现有 Log Analytics 工作区移动到另一个 Azure 订阅？
-你可以在资源组或订阅之间移动工作区，但不能在不同的区域之间移动。 请参阅[将 Log Analytics 工作区移动到不同的订阅或资源组](/platform/move-workspace.md)。
+你可以在资源组或订阅之间移动工作区，但不能在不同的区域之间移动。 请参阅[将 Log Analytics 工作区移动到不同的订阅或资源组](platform/move-workspace.md)。
 
 
 ## <a name="alerts"></a>警报
@@ -345,7 +345,7 @@ WireData
 ### <a name="what-are-the-user-and-session-counts"></a>什么是用户和会话计数？
 
 * JavaScript SDK 在 Web 客户端上设置了用于识别返回用户的用户 cookie，以及用于对活动进行分组的会话 cookie。
-* 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/)。
+* 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的调用。
 
@@ -455,7 +455,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 #### <a name="proxy-passthrough"></a>代理传递
 
 可以通过配置计算机级别或应用程序级别代理来实现代理通过。
-有关详细信息，请参阅[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings)上的 dotnet 文章。
+有关详细信息，请参阅[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)上的 dotnet 文章。
  
  Web.config 示例：
  ```xml

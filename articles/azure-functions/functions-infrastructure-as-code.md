@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262429"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292937"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -129,6 +129,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -138,7 +139,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 | 设置名称                 | Description                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | 用于内部队列的函数运行时的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
+| AzureWebJobsStorage          | 函数运行时用于内部队列的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 运行时的版本                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | 要用于此应用中的函数的语言堆栈                                   | `dotnet`、`node`、`java`、`python` 或 `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | 仅在使用 `node` 语言堆栈时需要，指定要使用的版本              | `10.14.1`                             |
@@ -174,7 +175,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-on-consumption-plan"></a>按消耗计划部署
 
-代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 无需为空闲 Vm 付费，也不必预先预留容量。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
+当代码正在运行时，消耗计划会自动分配计算能力，根据需要扩展以处理负载，然后在代码未运行时进行缩放。 无需为空闲 Vm 付费，也不必预先预留容量。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
 
 有关 Azure 资源管理器模板示例，请参阅[基于消耗计划的函数应用]。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993994"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290132"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -90,11 +90,11 @@ PublisherType | 所有 | 发布者类型（值： **Azure**、 **AWS**、 **Mark
 数量 | 所有 | 购买或消耗的单位数。
 预订 ID | EA、MCA | 购买的预留实例的唯一标识符。
 ReservationName | EA、MCA | 购买的预留实例的名称。
-ResourceGroup | 所有 | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。
+ResourceGroup | 所有 | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。 并非所有费用都来自部署到资源组的资源。 没有资源组的费用将显示为 null/空、**其他**或**不适用**。
 ResourceId<sup>1</sup> | 所有 | [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/resources)资源的唯一标识符。
 ResourceLocation | 所有 | 资源运行时所在的数据中心位置。 参见“位置”。
-ResourceName | EA、PAYG | 资源的名称。
-ResourceType | MCA | 资源实例的类型。
+ResourceName | EA、PAYG | 资源的名称。 并非所有费用都来自已部署的资源。 不具有资源类型的费用将显示为 null/空、**其他**或**不适用**。
+ResourceType | MCA | 资源实例的类型。 并非所有费用都来自已部署的资源。 不具有资源类型的费用将显示为 null/空、**其他**或**不适用**。
 ServiceFamily | MCA | 服务所属的服务系列。
 ServiceInfo1 | 所有 | 服务特定的元数据。
 ServiceInfo2 | 所有 | 旧字段，具有可选的特定于服务的元数据。

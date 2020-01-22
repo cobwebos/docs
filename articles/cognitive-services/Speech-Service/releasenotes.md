@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277868"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293583"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277868"
 
 - 多设备对话：将多个设备连接到相同的语音或基于文本的对话，并选择性地转换在它们之间发送的消息。 请参阅[本文](multi-device-conversation.md)中的详细信息。 
 - 已为 aar 包添加关键字识别支持，并为 x86 和 x64 风格添加了支持。 
-- 目标-C： `SendMessage` 和 `SetMessageProperty` 方法添加到 `Connection` 对象。 请参阅[此处](https://docs.microsoft.com/objectivec/cognitive-services/speech/)的文档。
+- 目标-C： `SendMessage` 和 `SetMessageProperty` 方法添加到 `Connection` 对象。 请参阅[此处](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)的文档。
 - TTS C++ api 现在支持 `std::wstring` 作为合成文本输入，无需将 wstring 转换为字符串，然后再将其传递给 SDK。 详见[此处](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)。 
 - C#：[语言 id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp)和[源语言配置](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp)现在可用。
 - JavaScript：向 `Connection` 对象添加了一项功能，该功能可通过自定义消息作为回调 `receivedServiceMessage`从语音服务传递。

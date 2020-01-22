@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260441"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309772"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Azure 事件中心故障排除指南
 本文提供事件中心 .NET Framework Api 生成的一些 .NET 异常，还提供了解决问题的其他提示。 
@@ -104,18 +104,7 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 以下步骤可帮助你排除 *. servicebus.windows.net 下所有服务的连接/证书/超时问题。 
 
 - 浏览到或[wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
-- 运行以下命令，检查防火墙上是否有任何端口被阻止。 使用的端口为443（HTTPS）、5671（AMQP）和9093（Kafka）。 还会使用其他端口，具体取决于所使用的库。 下面是用于检查5671端口是否被阻止的示例命令。
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    在 Linux 上：
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-    
     成功消息的示例：
     
     ```xml
@@ -131,6 +120,17 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
             Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
         </Detail>
     </Error>
+    ```
+- 运行以下命令，检查防火墙上是否有任何端口被阻止。 使用的端口为443（HTTPS）、5671（AMQP）和9093（Kafka）。 还会使用其他端口，具体取决于所使用的库。 下面是用于检查5671端口是否被阻止的示例命令。
+
+    ```powershell
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
+    ```
+
+    在 Linux 上：
+
+    ```shell
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
 - 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 此命令将尝试通过服务每隔1秒建立25个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
 

@@ -3,12 +3,12 @@ title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 36fbc4813cdc9849b77e8309c97a2d42511a31d0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: c57f625e7f44dc5de6a801ec93bad5433e9a9a66
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829538"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294280"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -31,6 +31,18 @@ ms.locfileid: "75829538"
 将 Azure VM 备份到备份服务器  | 将文件/文件夹/卷、系统状态/裸机文件和应用数据备份到 System Center DPM 或 Microsoft Azure 备份服务器 (MABS)。<br/><br/> 然后，DPM/MABS 将备份到备份保管库。 | 在 VM 上安装 DPM/MABS 保护代理。 在 DPM/MABS 上安装 MARS 代理。| 还原文件/文件夹/卷；系统状态/裸机文件；应用数据。
 
 详细了解如何[使用备份服务器](backup-architecture.md#architecture-back-up-to-dpmmabs)进行备份以及[支持要求](backup-support-matrix-mabs-dpm.md)。
+
+>[!NOTE]
+> Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
+>
+>如今，Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，你可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这为备份和还原需求提供高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘数据，在还原操作过程中，您还可以使用该数据的一个子集从给定的恢复点还原。 这适用于从快照和保管库还原。
+>
+> 此解决方案在以下情况下特别有用：
+>  
+>1. 你的关键数据只需在一个磁盘中备份，并且你不想备份其他附加到 VM 的磁盘。 这可最大程度地减少备份存储成本。  
+>2. VM 数据的一部分有其他备份解决方案。 例如，使用不同的工作负荷备份解决方案来备份数据库或数据，并希望使用 Azure VM 级别备份来实现磁盘和数据的其余部分，以利用可用的最佳功能构建高效且可靠的系统。
+>
+>若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
 
 ## <a name="supported-backup-actions"></a>支持的备份操作
 

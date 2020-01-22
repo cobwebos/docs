@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453110"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291951"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>生成包含计算服务的移动后端组件
 每个移动应用程序都需要一个后端负责数据存储、业务逻辑和安全性。 管理基础结构以托管和执行后端代码要求你调整、预配和缩放多个服务器。 还必须管理操作系统更新和所涉及的硬件并应用安全修补程序。 然后，需要监视所有这些基础结构组件的性能、可用性和容错能力。 
@@ -36,7 +36,7 @@ ms.locfileid: "75453110"
 - 事件驱动的和可缩放的，你可以使用触发器和绑定来定义何时调用函数以及它所连接的数据。
 - 引入你自己的依赖项，因为函数支持 NuGet 和 NPM，因此你可以使用常用的库。
 - 集成安全性，使你可以通过 OAuth 提供程序（如 Azure Active Directory、Facebook、Google、Twitter 和 Microsoft 帐户）保护 HTTP 触发的函数。
-- 简化了与不同[Azure 服务](/azure/azure-functions/functions-overview#integrations)和软件即服务（SaaS）产品的集成。
+- 简化了与不同[Azure 服务](/azure/azure-functions/functions-overview)和软件即服务（SaaS）产品的集成。
 - 灵活的开发，使你可以直接在 Azure 门户中编写函数代码，或者通过 GitHub、Azure DevOps Services 和其他受支持的开发工具设置持续集成和部署代码。
 - 函数运行时是开放源代码，在[GitHub](https://github.com/azure/azure-webjobs-sdk-script)上可用。
 - 增强的开发体验：通过使用集成工具和内置 DevOps 功能进行监视，可以在本地进行编码、测试和调试。

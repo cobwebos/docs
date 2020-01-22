@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616782"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313734"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>执行 Azure Cosmos DB 缩放和性能测试
 
@@ -89,7 +89,7 @@ ms.locfileid: "69616782"
     Press any key to exit...
 
 
-**步骤 4（如有必要）：** 工具报告的吞吐量（RU/秒）应该等于或大于为某个集合或一组集合预配的吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，请在其他客户端计算机上启动多个应用实例。 如需此步骤的帮助，请向 askcosmosdb@microsoft.com 发送电子邮件，或通过 [Azure 门户](https://portal.azure.com)开具支持票证。
+**步骤 4（如有必要）：** 工具报告的吞吐量（RU/秒）应该等于或大于为某个集合或一组集合预配的吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，请在其他客户端计算机上启动多个应用实例。 如果需要此步骤的帮助，请使用[Azure 门户](https://portal.azure.com)中的支持票证。
 
 应用处于运行状态后，可以尝试不同的[编制索引策略](index-policy.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 也可以查看源代码，并在自己的测试套件或生产应用程序中实施类似的配置。
 

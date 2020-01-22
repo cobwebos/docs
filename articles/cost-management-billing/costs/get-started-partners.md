@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278553"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293906"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
@@ -120,7 +120,7 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。
 
 合作伙伴可以使用以下信息来为其客户查看 Azure 使用情况收费。
 
-在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 选择计费帐户，然后选择 "**客户**"。 客户列表与计费帐户关联。
+在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 选择相关的 Microsoft 合作伙伴协议计费帐户，然后选择 "**客户**"。 客户列表与计费帐户关联。
 
 在 "客户" 列表中，选择要允许其查看成本的客户。
 
@@ -137,7 +137,7 @@ Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。
 
 启用成本可见性策略后，具有订阅使用情况的所有服务都按现用现付费率显示成本。 预订使用情况在实际和摊销成本上显示为零。 采购和权利不关联到特定订阅。 因此，不会在订阅范围中显示购买。
 
-若要查看客户租户的成本，请打开成本管理 + 计费，然后选择 "计费帐户"。 在计费帐户列表中，选择计费帐户。
+若要查看客户租户的成本，请打开**成本管理 + 计费**，并选择相关的 Microsoft 合作伙伴协议计费帐户。
 
 ![选择计费帐户](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 �
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作伙伴租户或客户租户中创建导出
 
-在 Azure 门户中，登录到合作伙伴租户或客户租户，并选择 "**成本管理 + 计费**"。 选择相应的作用域（例如，计费帐户），然后选择 "**成本分析**"。 加载页面时，选择 "**导出**"。 选择 "在计划导出下**查看所有导出**"。
+在 Azure 门户中，登录到合作伙伴租户或客户租户，并选择 "**成本管理 + 计费**"。 选择相应的作用域（例如，Microsoft 合作伙伴协议计费帐户），然后选择 "**成本分析**"。 加载页面时，选择 "**导出**"。 选择 "在计划导出下**查看所有导出**"。
 
 ![选择 "导出" 和 "查看所有导出"](./media/get-started-partners/export01.png)
 

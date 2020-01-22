@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: fdcaaa981246e86e5b87b4af3c9a6e8c597ced25
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553301"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288976"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议-参考指南
 
@@ -27,11 +27,10 @@ ms.locfileid: "75553301"
 
 安全分数以您已缓解的安全中心建议的数量为基础。 若要确定首先要解决的建议的优先级，请考虑每个建议的严重性。
 
-## <a name="azure-security-center-recommendations"></a>Azure 安全中心建议
+## <a name="recs-network"></a>网络建议
 
-||相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
-||<a name="recs-network"></a><h3>网络建议-关于网络拓扑和面向 internet 的终结点|
 |**应在虚拟机上应用实时网络访问控制**|应用实时（JIT）虚拟机（VM）访问控制以永久锁定对所选端口的访问权限，并使授权用户仅在有限的时间内通过 JIT 打开这些端口。<br>（相关策略：应在虚拟机上应用实时网络访问控制）|高|N|虚拟机|
 |**应启用子网级别的网络安全组**|启用网络安全组来控制子网中部署的资源的网络访问。<br>（相关策略：子网应与网络安全组关联）|高/中|N|子网|
 |**虚拟机应与网络安全组相关联**|启用网络安全组以控制虚拟机的网络访问。<br>（相关策略：虚拟机应与网络安全组关联）|高/中|N|虚拟机|
@@ -44,7 +43,25 @@ ms.locfileid: "75553301"
 |**只能通过 HTTPS 访问 Web 应用程序**|为 web 应用程序启用 "仅 HTTPS" 访问权限。 使用 HTTPS 可确保服务器/服务进行身份验证，并保护传输中的数据免受网络层窃听攻击。<br>（相关策略：只能通过 HTTPS 访问 Web 应用程序）|中型|**是**|Web 应用程序|
 |**只能通过 HTTPS 访问 Function App**|为 function app 启用 "仅 HTTPS" 访问权限。 使用 HTTPS 可确保服务器/服务进行身份验证，并保护传输中的数据免受网络层窃听攻击。<br>（相关策略：只能通过 HTTPS 访问 Function App）|中型|**是**|函数应用|
 |**应该启用安全传输到存储帐户**|启用到存储帐户的安全传输。 安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 使用 HTTPS 可确保服务器与服务之间的身份验证，并保护数据免遭网络层攻击（如中间人、窃听和会话劫持）的传输。<br>（相关策略：应启用安全传输到存储帐户）|高|**是**|存储帐户|
-||<a name="recs-computeapp"></a><h3>计算和应用建议|
+||||||
+
+
+## <a name="recs-containers"></a>容器建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
+|**应使用基于角色的访问控制来限制对 Kubernetes Service 群集（预览版）的访问**|若要提供用户可以执行的操作的详细筛选，请使用基于角色的访问控制（RBAC）管理 Kubernetes Service 群集中的权限，并配置相关的授权策略。 有关详细信息，请参阅[Azure 基于角色的访问控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>（相关策略： [预览版]：基于角色的访问控制（RBAC）应在 Kubernetes Services 上使用）|中型|N|计算资源（容器）|
+|**Kubernetes 服务应升级到最新的 Kubernetes 版本（预览）**|将 Azure Kubernetes Service 群集升级到最新的 Kubernetes 版本，以便从最新的漏洞修补程序中获益。 有关特定 Kubernetes 漏洞的详细信息，请参阅[Kubernetes 标识符](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>（相关策略： [预览版]： Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本）|高|N|计算资源（容器）|
+|**应通过删除不必要的应用程序特权来定义 Pod 安全策略，以减少攻击向量（预览）**|通过删除不必要的应用程序特权，定义 Pod 安全策略来减少攻击向量。 建议配置 pod 安全策略，以便盒只能访问允许访问的资源。<br>（相关策略： [预览版]： Pod 安全策略应在 Kubernetes Services 上定义）|中型|N|计算资源（容器）|
+|**只有仅授权特定的 IP 范围（预览版），才能访问 Kubernetes 服务管理 API**|仅向特定范围内的 IP 地址授予 API 访问权限，以限制对 Kubernetes 服务管理 API 的访问。 建议配置授权的 IP 范围，以便只有来自允许的网络的应用程序可以访问该群集。<br>（相关策略： [预览版]：应在 Kubernetes Services 上定义授权 IP 范围）|高|N|计算资源（容器）|
+|**应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供支持）（预览版）**|容器映像漏洞评估扫描注册表中每个推送的容器映像的安全漏洞，并显示每个映像的详细发现。 解决这些漏洞可以极大地改善您的容器的安全状况，并防范攻击。<br>（无相关策略）|高|N|计算资源（容器）|
+||||||
+
+
+## <a name="recs-appservice"></a>应用服务建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
 |**只能通过 HTTPS 访问 Web 应用程序**|仅限通过 HTTPS 访问 Web 应用程序。<br>（相关策略：）|中型|N|应用服务|
 |**只能通过 HTTPS 访问 Function App**|仅限通过 HTTPS 访问函数应用。<br>（相关策略：）|中型|N|应用服务|
 |**API 应用只能通过 HTTPS 访问**|仅通过 HTTPS 限制 API 应用的访问权限。<br>（相关策略：）|中型|N|应用服务|
@@ -55,18 +72,19 @@ ms.locfileid: "75553301"
 |**CORS 不应允许每个资源访问你的 Function App**|仅允许所需的域与函数应用程序交互。 跨源资源共享 (CORS) 不应允许所有域都能访问你的函数应用程序。<br>（相关策略： CORS 不应允许每个资源访问 Function App）|低|**是**|应用服务|
 |**CORS 不应允许每个资源访问 API 应用**|仅允许所需域与 API 应用程序交互。 跨源资源共享（CORS）不应允许所有域访问 API 应用程序。<br>（相关策略： CORS 不应允许每个资源访问 API 应用）|低|**是**|应用服务|
 |**应在应用服务中启用诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应在应用服务中启用诊断日志）</span>|低|N|应用服务|
+||||||
+
+
+## <a name="recs-computeapp"></a>计算和应用建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
 |**应启用 Azure 流分析中的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Azure 流分析中的诊断日志）|低|**是**|计算资源（流分析）|
 |**应启用 Batch 帐户中的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Batch 帐户中的诊断日志）|低|**是**|计算资源 (Batch)|
 |**应启用事件中心的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用事件中心的诊断日志）|低|**是**|计算资源（事件中心）|
 |**逻辑应用中的诊断日志应该已启用**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用逻辑应用中的诊断日志）|低|**是**|计算资源（逻辑应用）|
 |**应启用搜索服务中的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用搜索服务中的诊断日志）|低|**是**|计算资源（搜索）|
 |**应启用 Service Bus 中的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Service Bus 中的诊断日志）|低|**是**|计算资源（服务总线）|
-|**应启用虚拟机规模集中的诊断日志**|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。<br>（相关策略：应启用虚拟机规模集中的诊断日志）|低|N|虚拟机规模集|
-|**应使用基于角色的访问控制来限制对 Kubernetes Service 群集（预览版）的访问**|若要提供用户可以执行的操作的详细筛选，请使用基于角色的访问控制（RBAC）管理 Kubernetes Service 群集中的权限，并配置相关的授权策略。 有关详细信息，请参阅[Azure 基于角色的访问控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>（相关策略： [预览版]：基于角色的访问控制（RBAC）应在 Kubernetes Services 上使用）|中型|N|计算资源（容器）|
-|**Kubernetes 服务应升级到最新的 Kubernetes 版本（预览）**|将 Azure Kubernetes Service 群集升级到最新的 Kubernetes 版本，以便从最新的漏洞修补程序中获益。 有关特定 Kubernetes 漏洞的详细信息，请参阅[Kubernetes 标识符](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>（相关策略： [预览版]： Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本）|高|N|计算资源（容器）|
-|**应通过删除不必要的应用程序特权来定义 Pod 安全策略，以减少攻击向量（预览）**|通过删除不必要的应用程序特权，定义 Pod 安全策略来减少攻击向量。 建议配置 pod 安全策略，以便盒只能访问允许访问的资源。<br>（相关策略： [预览版]： Pod 安全策略应在 Kubernetes Services 上定义）|中型|N|计算资源（容器）|
-|**只有仅授权特定的 IP 范围（预览版），才能访问 Kubernetes 服务管理 API**|仅向特定范围内的 IP 地址授予 API 访问权限，以限制对 Kubernetes 服务管理 API 的访问。 建议配置授权的 IP 范围，以便只有来自允许的网络的应用程序可以访问该群集。<br>（相关策略： [预览版]：应在 Kubernetes Services 上定义授权 IP 范围）|高|N|计算资源（容器）|
-|**应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供支持）（预览版）**|容器映像漏洞评估扫描注册表中每个推送的容器映像的安全漏洞，并显示每个映像的详细发现。 解决这些漏洞可以极大地改善您的容器的安全状况，并防范攻击。<br>（无相关策略）|高|N|计算资源（容器）|
 |**Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证**|在 Service Fabric 中仅通过 Azure Active Directory 执行客户端身份验证。<br>（相关策略： Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证）|高|N|计算资源 (Service Fabric)|
 |**Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign**|Service Fabric 提供三个级别的保护（无、签名和 EncryptAndSign），用于使用主要群集证书进行节点到节点通信。 请设置保护级别，确保节点到节点的所有消息经过加密和数字签名。<br>（相关策略：应设置 Service Fabric 中 EncryptAndSign 的 ClusterProtectionLevel 属性）|高|N|计算资源 (Service Fabric)|
 |**应从服务总线命名空间中删除除 RootManageSharedAccessKey 以外的所有授权规则**|服务总线客户端不应使用提供对命名空间中所有队列和主题的访问的命名空间级访问策略。 若要符合最低特权安全模型，应在实体级别针对队列和主题创建访问策略，以便仅提供对特定实体的访问。<br>（相关策略：应从服务总线命名空间中删除除 RootManageSharedAccessKey 以外的所有授权规则）|低|N|计算资源（服务总线）|
@@ -78,7 +96,6 @@ ms.locfileid: "75553301"
 |**在计算机上安装 endpoint protection 解决方案**|在 Windows 和 Linux 计算机上安装 endpoint protection 解决方案，以防止其受到威胁和漏洞的威胁。<br>（无相关策略）|中型|N|计算机|
 |**在虚拟机上安装 endpoint protection 解决方案**|在虚拟机上安装终结点保护解决方案，以保护其免受威胁和漏洞的侵害。<br>（无相关策略）|中型|N|计算机|
 |**应为你的云服务角色更新 OS 版本**|将云服务角色的操作系统(OS)版本更新为适用于 OS 系列的最新版本。<br>（无相关策略）|高|N|计算机|
-|**应安装虚拟机规模集的系统更新**|安装缺少的系统安全更新和关键更新，保护 Windows 和 Linux 虚拟机规模集。<br>（相关策略：应安装虚拟机规模集上的系统更新）|高|N|虚拟机规模集|
 |**应在计算机上安装系统更新**|安装缺少的系统安全和关键更新，以保护 Windows 和 Linux 虚拟机与计算机<br>（相关策略：应在计算机上安装系统更新）|高|N|计算机|
 |**应重启计算机以应用系统更新**|重启计算机以应用系统更新并保护计算机免受漏洞攻击。<br>（无相关策略）|中型|N|计算机|
 |**自动化帐户变量应加密**|存储敏感数据时，请启用自动化帐户变量资产加密。<br>（相关策略：应在自动化帐户变量上启用加密）|高|N|计算资源（自动化帐户）|
@@ -88,11 +105,26 @@ ms.locfileid: "75553301"
 |**漏洞评估解决方案应修正的漏洞**|会持续评估为其部署了漏洞评估第三方解决方案的虚拟机的应用程序和 OS 漏洞。 只要发现此类漏洞，就会在建议中提供详细信息。<br>（相关策略：漏洞评估解决方案应修正的漏洞）|高|N|计算机|
 |**应修正计算机上安全配置中的漏洞**|修复计算机上安全配置的漏洞，以保护其免受攻击。<br>（相关策略：应修正计算机上安全配置中的漏洞）|低|N|计算机|
 |**应修正容器安全配置中的漏洞**|修复安装了 Docker 的计算机上安全配置中的漏洞，使它们免受攻击。<br>（相关策略：应修正容器安全配置中的漏洞）|高|N|计算机|
-|**应修正虚拟机规模集上安全配置中的漏洞**|修复虚拟机规模集上安全配置中的漏洞，使其免受攻击。 <br>（相关策略：应修正虚拟机规模集上安全配置中的漏洞）|高|N|虚拟机规模集|
 |**应在你的计算机上解决 Endpoint protection 运行状况问题**|若要实现全面的安全中心保护，请遵照故障排除指南中的说明，解决计算机上的监视代理问题。<br>（无相关策略）|中型|N|计算机|
+||||||
+
+
+## <a name="recs-vmscalesets"></a>虚拟机规模集建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
+|**应启用虚拟机规模集中的诊断日志**|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。<br>（相关策略：应启用虚拟机规模集中的诊断日志）|低|N|虚拟机规模集|
+|**应安装虚拟机规模集的系统更新**|安装缺少的系统安全更新和关键更新，保护 Windows 和 Linux 虚拟机规模集。<br>（相关策略：应安装虚拟机规模集上的系统更新）|高|N|虚拟机规模集|
+|**应修正虚拟机规模集上安全配置中的漏洞**|修复虚拟机规模集上安全配置中的漏洞，使其免受攻击。 <br>（相关策略：应修正虚拟机规模集上安全配置中的漏洞）|高|N|虚拟机规模集|
 |**应在虚拟机规模集上修正 Endpoint protection 运行状况故障**|修复虚拟机规模集上的 Endpoint Protection 运行状况故障，使其免受威胁和漏洞的侵害。<br>（无相关策略）|低|N|虚拟机规模集|
 |**Endpoint protection 解决方案应安装在虚拟机规模集上**|在虚拟机规模集上安装 Endpoint Protection 解决方案，使其免受威胁和漏洞的侵害。<br>（相关策略： Endpoint protection 解决方案应安装在虚拟机规模集上）|高|N|虚拟机规模集|
-||<a name="recs-datastorage"></a><h3>数据和存储建议|
+||||||
+
+
+## <a name="recs-datastorage"></a>数据和存储建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
 |**应为 SQL server 设置 Azure Active Directory 管理员**|预配 SQL Server 的 Azure AD 管理员以启用 Azure AD 身份验证。 使用 Azure AD 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。<br>（相关策略：为 SQL server 的 Azure Active Directory 管理员审核预配|高|N|SQL|
 |**应启用 SQL server 审核**|为 Azure SQL 服务器启用审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）<br>（相关策略：应在 SQL Server 上的高级数据安全设置上启用审核）|低|**是**|SQL|
 |**应该启用安全传输到存储帐户**|安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 HTTPS 可确保服务器与服务之间的身份验证，并防止数据在传输过程中受到网络层攻击，如中间人、窃听和会话劫持。<br>（相关策略：应启用安全传输到存储帐户）|高|N|存储帐户|
@@ -104,7 +136,13 @@ ms.locfileid: "75553301"
 |**应修正 SQL 数据库上的漏洞**|SQL 漏洞评估会扫描数据库中的安全漏洞，并公开最佳实践的任何偏差，如配置错误、权限过多以及未受保护的敏感数据。 解决发现的漏洞可以极大地改善数据库安全态势。<br>（相关策略：应修正 SQL 数据库上的漏洞）|高|N|SQL|
 |**应限制对具有防火墙和虚拟网络配置的存储帐户的访问权限**|在存储帐户防火墙设置中审核无限制的网络访问权限。 应该配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以授予对来自特定 Azure 虚拟网络或公共 Internet IP 地址范围的流量的访问权限。<br>（相关策略：审核对存储帐户的不受限制的网络访问）|低|N|存储帐户|
 |**应将存储帐户迁移到新的 Azure 资源管理器资源**|使用新的 Azure 资源管理器存储帐户来提供安全增强功能，例如：更强的访问控制（RBAC）、更好的审核、基于资源管理器的部署和监管、访问托管标识、访问密钥保管库以获得机密，和对标记和资源组的基于 Azure AD 的身份验证和支持，以便更轻松地进行安全性管理。<br>（相关策略：应将存储帐户迁移到新的 Azure 资源管理器资源）|低|N|存储帐户|
-||<a name="recs-identity"></a><h3>身份验证和访问建议|
+||||||
+
+
+## <a name="recs-identity"></a>身份验证和访问建议
+
+|建议|相关策略 & 说明|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|----|----|----|----|----|
 |**应在对订阅拥有读取权限的帐户上启用 MFA**|为具有读取特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅拥有读取权限的帐户上启用 MFA）|高|N|订阅|
 |**应在对订阅具有写入权限的帐户上启用 MFA**|为具有写入特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅具有写入权限的帐户上启用 MFA）|高|N|订阅|
 |**应在订阅上拥有所有者权限的帐户上启用 MFA**|为具有所有者权限的所有订阅帐户启用多重身份验证（MFA），以防止帐户或资源被破坏。<br>（相关策略：应在对订阅拥有所有者权限的帐户上启用 MFA）|高|N|订阅|

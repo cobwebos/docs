@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 2c8224edbe95c8185e390c2ce48cbb4263f97586
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497942"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312185"
 ---
 # <a name="edit-metadata-module"></a>编辑元数据模块
 
-本文介绍 Azure 机器学习设计器（预览版）中包含的模块。
+本文介绍 Azure 机器学习设计器中包含的模块。
 
 使用 "编辑数据" 模块来更改与数据集中的列关联的元数据。 数据集的值和数据类型将在使用编辑元数据模块之后更改。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73497942"
   
 1. 如果要更改 Azure 机器学习使用模型中的数据的方式，请使用 "**字段**" 选项。
 
-    + **功能**：使用此选项可将列标记为只对功能列执行操作的模块中的功能。 默认情况下，所有列都最初被视为功能。  
+    + **功能**：使用此选项可将列标记为只对功能列执行操作的模块中的功能。 默认情况下，所有列最初被都视为特征。  
   
     + **标签**：使用此选项标记标签，也称为可预测属性或目标变量。 许多模块要求数据集中只存在一个标签列。
 

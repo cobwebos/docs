@@ -3,12 +3,12 @@ title: 通过 VM 设置备份 Azure VM
 description: 本文介绍如何使用 Azure 备份服务备份单一 Azure VM 或多个 Azure Vm。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bd75bdfb3fe9939c576fe289f6be38ebe875e020
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391435"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294059"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -77,6 +77,18 @@ ms.locfileid: "75391435"
 ## <a name="back-up-from-the-recovery-services-vault"></a>从恢复服务保管库备份
 
 按照本文中的说明为 Azure VM 启用备份，方法是：设置一个 Azure 备份恢复服务保管库，然后在保管库中启用备份。
+
+>[!NOTE]
+> Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
+>
+>如今，Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，你可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这为备份和还原需求提供高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘数据，在还原操作过程中，您还可以使用该数据的一个子集从给定的恢复点还原。 这适用于从快照和保管库还原。
+>
+> 此解决方案在以下情况下特别有用：
+>  
+>1. 你的关键数据只需在一个磁盘中备份，并且你不想备份其他附加到 VM 的磁盘。 这可最大程度地减少备份存储成本。  
+>2. VM 数据的一部分有其他备份解决方案。 例如，使用不同的工作负荷备份解决方案来备份数据库或数据，并希望使用 Azure VM 级别备份来实现磁盘和数据的其余部分，以利用可用的最佳功能构建高效且可靠的系统。
+>
+>若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 为 VMware 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm。
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029059"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291934"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -87,7 +87,7 @@ VMware VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来�
         - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
-    - **时间同步**：时间已验证。 设备上的时间应与 internet 时间同步，以使发现正常工作。
+    - **时间同步**：时间已验证。 设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
     - **安装更新**： Azure Migrate 检查是否安装了最新的设备更新。
     - **安装 VDDK**： Azure Migrate 检查是否安装了 VMWare VSphere 虚拟磁盘开发工具包（VDDK）。
         - Azure 迁移使用 VDDK 在迁移到 Azure 的过程中复制计算机。
@@ -115,7 +115,7 @@ VMware VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来�
 3. 单击“验证连接”，确保设备可以连接到 vCenter Server。
 
 ### <a name="specify-vm-credentials"></a>指定 VM 凭据
-为发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供可访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)所需的访问特权。
+为发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供可访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)所需的访问特权。
 
 > [!NOTE]
 > 此输入是可选的，但需要此输入才能发现应用程序和可视化无代理依赖关系。

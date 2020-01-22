@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497279"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293158"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -59,7 +59,7 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 - 如果已指定 **wmfVersion** 属性，除非该 WMF 版本与 VM 的 OS 不兼容，否则将安装该版本。
 - 如果未指定 **wmfVersion** 属性，则安装 WMF 的最新适用版本。
 
-安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof 文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
+安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 后， **configurationFunction**中定义的配置函数将运行以生成一个 mof （[托管对象格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
 
 ### <a name="default-configuration-script"></a>默认配置脚本
 

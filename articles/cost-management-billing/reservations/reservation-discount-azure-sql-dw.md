@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 0671843b09cd90123b856b94db2618bac617dd5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995775"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313920"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>预留折扣如何应用于 Azure SQL 数据仓库
 
@@ -31,9 +31,9 @@ SQL 数据仓库保留容量折扣按小时应用于正在运行的仓库。 如
 
 以下示例演示了如何根据部署应用 SQL 数据仓库保留容量折扣。
 
-- **示例 1**：购买5个单位的 100 cDWU 保留容量。 运行 DW1500c SQL 数据仓库实例一小时。 在这种情况下，将针对 15 个单位的 100 cDWU 使用量发出用量。 预留折扣适用于所使用的 5 个单位。 对于所使用的其余 10 个单位的 100 cDWU 使用量，将按即用即付费率向你收费。
+- **示例 1**：购买5个单位的 100 cDWU 保留容量。 运行 DW1500c SQL 数据仓库实例一小时。 在这种情况下，将针对 15 个单位的 100 cDWU 使用量发出用量。 预留折扣适用于所使用的 5 个单位。 对于所使用的其余 10 个单位的 100 cDWU 使用量，将按即用即付费率向你收费。 换句话说，多个预订可以进行部分覆盖。
 
-- **示例 2**：购买5个单位的 100 cDWU 保留容量。 运行两个 DW100c SQL 数据仓库实例一小时。 在这种情况下，对于 1 个单位的 100 cDWU 使用量将发出两个使用事件。 这两个使用事件都将获得保留容量折扣。 剩余的 3 个单位的 100 cDWU 保留容量将浪费，并且无法结转以供将来使用。
+- **示例 2**：购买5个单位的 100 cDWU 保留容量。 运行两个 DW100c SQL 数据仓库实例一小时。 在这种情况下，对于 1 个单位的 100 cDWU 使用量将发出两个使用事件。 这两个使用事件都将获得保留容量折扣。 剩余的 3 个单位的 100 cDWU 保留容量将浪费，并且无法结转以供将来使用。 换句话说，单个预订可以与多个 SQL 数据仓库实例匹配。
 
 - **示例 3**：购买1个单元的 100 cDWU 预留容量。 运行两个 DW100c SQL 数据仓库实例。 每个实例运行 30 分钟。 在这种情况下，这两个使用事件都将获得保留容量折扣。 按照即用即付费率不收取使用费。
 

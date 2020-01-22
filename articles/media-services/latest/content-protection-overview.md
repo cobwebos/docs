@@ -1,5 +1,5 @@
 ---
-title: 通过媒体服务动态加密来保护你的内容
+title: 通过媒体服务 v3 动态加密来保护你的内容
 titleSuffix: Azure Media Services
 description: 了解 Azure 媒体服务中的动态加密、流式处理协议和加密类型的内容保护。
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977771"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313798"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>通过媒体服务动态加密来保护你的内容
 
@@ -247,13 +247,13 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 有关使用自定义许可证/密钥获取 Url 的 REST 示例，请参阅[流式处理策略-创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)。
 
 > [!NOTE]
-> Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+> Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="troubleshoot"></a>故障排除
 
 如果收到 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` 错误，请确保指定适当的流策略。
 
-如果收到以 `_NOT_SPECIFIED_IN_URL`结尾的错误，请确保在 URL 中指定加密格式。 例如 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
+如果收到以 `_NOT_SPECIFIED_IN_URL`结尾的错误，请确保在 URL 中指定加密格式。 示例为 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
@@ -265,5 +265,5 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [使用 DRM 提供保护](protect-with-drm.md)
 * [使用访问控制设计多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 * [存储端加密](storage-account-concept.md#storage-side-encryption)
-* [常见问题](frequently-asked-questions.md)
+* [常见问题解答](frequently-asked-questions.md)
 * [JSON Web 令牌处理程序](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
