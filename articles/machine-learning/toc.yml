@@ -191,6 +191,9 @@
         - name: 标记图像
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: 创建带标签的数据集
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: 训练模型
       items:
         - name: 使用设计器

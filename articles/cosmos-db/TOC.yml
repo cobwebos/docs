@@ -12,6 +12,9 @@
       items:
         - name: Azure 门户
           href: create-cosmosdb-resources-portal.md
+        - name: Azure 资源管理器模板
+          displayName: ARM
+          href: quick-create-template.md
         - name: .NET 应用 - V4 SDK
           href: create-sql-api-dotnet-v4.md
         - name: .NET 应用 - V3 SDK
