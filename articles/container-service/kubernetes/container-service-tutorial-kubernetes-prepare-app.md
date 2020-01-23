@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 准备应用
 description: Azure 容器服务教程 - 准备应用
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995394"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275429"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>（已弃用）创建要与 Azure 容器服务一起使用的容器映像
 

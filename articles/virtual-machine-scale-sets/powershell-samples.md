@@ -1,27 +1,19 @@
 ---
 title: Azure PowerShell 示例
 description: 一个表，其中包含指向使用 Azure PowerShell 生成的示例 bash 脚本的链接，例如创建和管理规模集。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a0a5939d1b64d93d4dbcc40b2639e3f3ac1a33be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad4008b0cdd4d655902a1423bdd8f01d1a2af8f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369127"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273717"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure PowerShell 示例。
 

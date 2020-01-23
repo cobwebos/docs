@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2da2214cd5fab378368a363e6f18e02626b9d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373104"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292835"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Figma 集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "72373104"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -87,12 +87,12 @@ ms.locfileid: "72373104"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/consume`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)（配置 Azure Active Directory SAML SSO 进程）文章中步骤 11 获取 `TENANT ID`。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory)（配置 Azure Active Directory SAML SSO 进程）文章中步骤 11 获取 `TENANT ID`。
 
 1. Figma 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -100,7 +100,7 @@ ms.locfileid: "72373104"
 
 1. 除了上述属性，Figma 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |
@@ -146,7 +146,7 @@ ms.locfileid: "72373104"
 
 ## <a name="configure-figma-sso"></a>配置 Figma SSO
 
-若要在 Figma 端配置单一登录，需要遵循 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)（配置 Azure Active Directory SAML SSO 进程）文章进行操作。
+若要在 Figma 端配置单一登录，需要遵循 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory)（配置 Azure Active Directory SAML SSO 进程）文章进行操作。
 
 ### <a name="create-figma-test-user"></a>创建 Figma 测试用户
 

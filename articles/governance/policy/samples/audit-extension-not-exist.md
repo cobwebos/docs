@@ -3,12 +3,12 @@ title: 示例 - 如果扩展不存在，则进行审核
 description: 如果参数中定义的扩展未部署到虚拟机，此示例策略定义会进行审核。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0b81a5f7b59d236cd8edb30cf0cb4f59ed9a7eab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cbabe0ec0149a3e9d3996ee38ebf083d98acc091
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463396"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293770"
 ---
 # <a name="sample---audit-if-extension-does-not-exist"></a>示例 - 如果扩展不存在，则进行审核
 
@@ -26,7 +26,7 @@ ms.locfileid: "74463396"
 
 [![将策略示例部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Faudit-vm-extension%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+## <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'audit-vm-extension' --display-name 'Audit if extension does not exist' --description 'This policy audits if a required extension doesn't exist.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'audit-vm-extension' --display-name 'Audit if extension does not exist' --description 'This policy audits if a required extension does not exist.' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/audit-vm-extension/azurepolicy.parameters.json' --mode All
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-vm-extension"
 ```

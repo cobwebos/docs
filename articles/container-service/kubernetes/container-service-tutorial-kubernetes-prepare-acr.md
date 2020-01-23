@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 准备 ACR
 description: Azure 容器服务教程 - 准备 ACR
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657393"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274136"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>（已弃用）部署和使用 Azure 容器注册表
 
@@ -42,13 +40,13 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 在此示例中，在 `westeurope` 区域中创建了名为 `myResourceGroup` 的资源组。
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 在此示例中，在 `westeurope` 区域中创建了名为 `myResourceGroup` 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-使用 [az acr create](/cli/azure/acr#az-acr-create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。
+使用 [az acr create](/cli/azure/acr#az-acr-create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一  。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic

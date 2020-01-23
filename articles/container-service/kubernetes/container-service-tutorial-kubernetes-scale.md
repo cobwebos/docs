@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 缩放应用程序
 description: Azure 容器服务教程 - 缩放应用程序
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993073"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274176"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>（已弃用）缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
@@ -120,7 +118,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 如果在前面的教程中使用默认命令创建了 Kubernetes 群集，则它具有三个代理节点。 如果计划群集上具有更多或更少的容器工作负荷，则可以手动调整代理数。 使用 [az acs scale](/cli/azure/acs#az-acs-scale) 命令，并使用 `--new-agent-count` 参数指定代理数。
 
-下面的示例将名为 myK8sCluster 的 Kubernetes 群集中的代理节点数增加到 4 个。 该命令需要几分钟时间完成。
+下面的示例将名为 myK8sCluster  的 Kubernetes 群集中的代理节点数增加到 4 个。 该命令需要几分钟时间完成。
 
 ```azurecli-interactive
 az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-count 4

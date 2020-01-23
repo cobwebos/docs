@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 部署群集
 description: Azure 容器服务教程 - 部署群集
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662051"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275438"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>（已弃用）在 Azure 容器服务中部署 Kubernetes 群集
 
@@ -96,7 +94,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 > [!div class="checklist"]
 > * 部署 Kubernetes ACS 群集
-> * 安装 Kubernetes CLI (kubectl)
+> * 安装了 Kubernetes CLI (kubectl)
 > * 配置了 kubectl
 
 继续学习下一个教程，了解如何在群集上运行应用程序。

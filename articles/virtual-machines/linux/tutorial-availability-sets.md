@@ -12,21 +12,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cd0366a0029ccc4816308e280ac93b7c724bb82a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034624"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277265"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和部署高度可用的虚拟机
 
 本教程介绍如何使用称作“可用性集”的功能提高 Azure 上虚拟机解决方案的可用性和可靠性。 可用性集可确保在 Azure 上部署的 VM 能够跨多个隔离的硬件群集分布。 这样，就可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 受到影响，整体解决方案仍可使用和操作。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建可用性集
@@ -37,22 +37,12 @@ ms.locfileid: "74034624"
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-## <a name="high-availability-in-azure-overview"></a>Azure 中的高可用性概述
-可以通过多种不同的方式创建 Azure 中的高可用性。 有两个选项是“可用性集”和“可用性区域”。 通过使用可用性集，你的 VM 将受到保护，从而免受数据中心内可能发生的故障的影响。 这包括硬件故障和 Azure 软件故障。 通过使用可用性区域，你的 VM 将放置在物理上独立、没有共享资源的基础设施上，因此将受到保护，不受整个数据中心故障的影响。
-
-当你想要在 Azure 中部署基于 VM 的可靠解决方案时，请使用可用性集或可用性区域。
-
-### <a name="availability-set-overview"></a>可用性集概述
+## <a name="overview"></a>概述
 
 可用性集是一种逻辑分组功能，在 Azure 中使用它可以确保将 VM 资源部署在 Azure 数据中心后，这些资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果出现硬件或 Azure 软件故障，只有一部分 VM 会受到影响，整体应用程序仍会保持运行，可供客户使用。 如果想要构建可靠的云解决方案，可用性集是一项关键功能。
 
 假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，以及两个托管数据库的后端 VM。 在 Azure 中，若想在部署 VM 之前先定义两个可用性集：一个可用性集用于“Web”层级，另一个可用性集用于“数据库”层级。 创建新的 VM 时，可在 az vm create 命令中指定可用性集作为参数，Azure 会自动确保在可用性集中创建的 VM 在多个物理硬件资源之间保持独立。 如果运行某个 Web 服务器或数据库服务器的物理硬件有问题，可以确信 Web 服务器和数据库 VM 的其他实例会保持运行状态，因为它们位于不同的硬件上。
 
-### <a name="availability-zone-overview"></a>可用性区域概述
-
-可用性区域是一个高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 借助可用性区域，Azure 提供业界最佳的 99.99% VM 正常运行时间 SLA。
-
-与可用性集类似，假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，以及两个托管数据库的后端 VM。 与可用性集类似，你将希望在两个单独的可用性区域中部署 VM：一个可用性区域用于“Web”层，另一个可用性区域用于“数据库”层。 当你创建新的 VM 并将可用性区域指定为 az vm create 命令的参数时，Azure 会自动确保你创建的 VM 隔离在完全不同的可用性区域中。 如果运行某个 Web 服务器或数据库服务器 VM 的整个数据中心出现问题，你就会知道 Web 服务器和数据库 VM 的其他实例仍在运行，因为它们在完全独立的数据中心中运行。
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
@@ -113,7 +103,7 @@ az vm availability-set list-sizes \
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建可用性集

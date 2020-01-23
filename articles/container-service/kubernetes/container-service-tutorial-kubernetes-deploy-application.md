@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 部署应用程序
 description: Azure 容器服务教程 - 部署应用程序
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998778"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275487"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>（已弃用）在 Kubernetes 中运行应用程序
 
@@ -58,7 +56,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yml
 ```
 
-将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47 行。
+将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47  行。
 
 ```yaml
 containers:
@@ -95,7 +93,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-`azure-vote-front` 服务的 EXTERNAL-IP 一开始显示为 `pending`。 当 EXTERNAL-IP 地址从 `pending` 变成 `IP address` 后，立即运行 `CTRL-C` 停止 kubectl 监视进程。
+`azure-vote-front` 服务的  EXTERNAL-IP 一开始显示为 `pending`。 当 EXTERNAL-IP 地址从 `pending` 变成 `IP address` 后，立即运行 `CTRL-C` 停止 kubectl 监视进程。
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE

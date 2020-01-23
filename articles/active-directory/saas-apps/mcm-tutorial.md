@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed3e5c543f96876d9b6078f1bd47839a0a0396a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227500"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "74227500"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 MCM 的集成，需要具有以下项：
 
@@ -110,7 +110,7 @@ ms.locfileid: "74227500"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://myaba.co.uk/<companyname>` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [MCM 客户端支持团队](https://mcmtechnology.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [MCM 客户端支持团队](https://mcmtechnology.com/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -128,7 +128,7 @@ ms.locfileid: "74227500"
 
 ### <a name="configure-mcm-single-sign-on"></a>配置 MCM 单一登录
 
-若要在 MCM  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [MCM 支持团队](https://mcmtechnology.com/support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 MCM  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [MCM 支持团队](https://mcmtechnology.com/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -183,7 +183,7 @@ ms.locfileid: "74227500"
 
 ### <a name="create-mcm-test-user"></a>创建 MCM 测试用户
 
-在本部分中，会在 MCM 中创建一个名为 Britta Simon 的用户。 请与  [MCM 支持团队](https://mcmtechnology.com/support/)协作，将用户添加到 MCM 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 MCM 中创建一个名为 Britta Simon 的用户。 请与  [MCM 支持团队](https://mcmtechnology.com/support)协作，将用户添加到 MCM 平台中。 使用单一登录前，必须先创建并激活用户。
 
 >[!NOTE]
 >可以使用 MCM 提供的任何其他 MCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

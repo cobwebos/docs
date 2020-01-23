@@ -2,7 +2,6 @@
 title: 教程 - 使用 Azure Pipelines 将 CI/CD 设置到 Azure VM
 description: 本教程介绍如何使用基于 YAML 的 Azure 管道将 Node.js 应用的持续集成 (CI) 和持续部署 (CD) 设置到 Azure VM。
 author: ushan
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: 0318b73dfb8fed05432dd25b5784e1c890815c53
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8fda8e3079084ad917ad5a7fcfc4f80a622e2d82
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778509"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277241"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
 

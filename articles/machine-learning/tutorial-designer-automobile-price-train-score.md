@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 9184929099b43def0f690f51d5e76532a0310448
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532870"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314974"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 本教程分为两部分，介绍如何使用 Azure 机器学习设计器来开发和部署预测分析解决方案，以预测任何汽车的价格。 
