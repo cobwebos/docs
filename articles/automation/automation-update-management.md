@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310095"
+ms.locfileid: "76513314"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -100,7 +100,7 @@ ms.locfileid: "76310095"
 
 必须配置 Windows 代理以与 WSUS 服务器进行通信，或者必须有权访问 Microsoft 更新。
 
-可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果要载入 Azure VM，则会自动安装代理。
+可以将更新管理与 Configuration Manager 结合使用。 若要了解有关集成方案的详细信息，请参阅将[Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果要载入 Azure VM，则会自动安装代理。
 
 默认情况下，从 Azure Marketplace 部署的 Windows Vm 设置为接收来自 Windows 更新服务的自动更新。 添加此解决方案或将 Windows Vm 添加到工作区时，此行为不会发生更改。 如果不主动通过此解决方案管理更新，则会应用默认行为（即自动应用更新）。
 
@@ -192,15 +192,65 @@ ms.locfileid: "76310095"
 
 按照[连接无 internet 访问的计算机](../azure-monitor/platform/gateway.md)中的说明配置无法访问 internet 的计算机。
 
-## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
+## <a name="view-update-assessments"></a>查看更新评估
 
-已经投资购买了 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还依赖 Configuration Manager 的优势和成熟度来帮助他们管理软件更新。 Configuration Manager 是其软件更新管理 (SUM) 周期的一部分。
+在自动化帐户中，选择“更新管理”来查看计算机的状态。
 
-若要了解如何将管理解决方案与 System Center Configuration Manager 集成，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md)。
+此视图提供有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 在 "**符合性**" 列中，可以看到上次评估计算机的时间。 在 "**更新代理准备情况**" 列中，可以检查更新代理的运行状况。 如果出现问题，请选择链接以中转到疑难解答文档，该文档可帮助你解决问题。
+
+若要运行返回有关计算机、更新或部署的信息的日志搜索，请在列表中选择相应的项。 此时将打开“日志搜索”窗格，其中显示了针对所选项的查询。
+
+![更新管理默认视图](media/automation-update-management/update-management-view.png)
+
+## <a name="view-missing-updates"></a>查看缺少的更新
+
+选择“缺少的更新”可查看计算机中缺少的更新列表。 每个更新都会列出，并且可供选择。 将显示有关需要更新的计算机数和操作系统的信息，以及指向更多信息的链接。 “日志搜索”窗格显示有关更新的更多详细信息。
+
+![缺少更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+
+## <a name="update-classifications"></a>更新分类
+
+下表列出了更新管理中的更新分类，以及每个分类的定义。
+
+### <a name="windows"></a>Windows
+
+|分类  |Description  |
+|---------|---------|
+|关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
+|安全更新     | 产品特定、安全相关问题的更新。        |
+|更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
+|功能包     | 在产品版本以外发布的新产品功能。        |
+|服务包     | 应用于应用程序的一组累积修补程序。        |
+|定义更新     | 对病毒或其他定义文件的更新。        |
+|工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
+|更新     | 对当前已安装的应用程序或文件的更新。        |
+
+### <a name="linux-2"></a>Linux
+
+|分类  |Description  |
+|---------|---------|
+|关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
+|其他更新     | 本质上不重要或不是安全更新的所有其他更新。        |
+
+对于 Linux，更新管理可以区分云中的关键更新和安全更新，同时显示评估数据，因为云中的数据扩充。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他分发不同，CentOS 没有 RTM 版本中提供的此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
+
+```bash
+sudo yum -q --security check-update
+```
+
+目前，没有支持的方法可在 CentOS 上启用本机分类数据可用性。 目前，仅向可能已自行启用此功能的客户提供最大程度的支持。 
+
+若要在 Red Hat Enterprise 版本6上对更新进行分类，需要安装 yum 插件。 在 Red Hat Enterprise Linux 7 上，该插件已经是 yum 本身的一部分，无需安装任何内容。 有关详细信息，请参阅以下 Red Hat[知识库文章](https://access.redhat.com/solutions/10021)。
+
+## <a name="integrate-with-configuration-manager"></a>与 Configuration Manager 集成
+
+已投资于管理 Pc、服务器和移动设备的 Microsoft 端点 Configuration Manager 的客户也依赖于 Configuration Manager 的强度和成熟度来帮助他们管理软件更新。 Configuration Manager 是其软件更新管理 (SUM) 周期的一部分。
+
+若要了解如何将管理解决方案与 Configuration Manager 集成，请参阅将[Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md)。
 
 ### <a name="third-party-patches-on-windows"></a>Windows 上的第三方修补程序
 
-更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 这是 WSUS 或 Windows 更新。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 此方案允许更新管理将使用 System Center Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
+更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 这是 WSUS 或 Windows 更新。 可以使用 [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)。
 
 ## <a name="patch-linux-machines"></a>修补 Linux 计算机
 

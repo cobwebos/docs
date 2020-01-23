@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364044"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513639"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
-可以将 System Center Configuration Manager 环境连接到 Azure Monitor，以便同步设备集合数据并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
+你可以将 Microsoft 端点 Configuration Manager 环境连接到 Azure Monitor，以便同步设备集合数据并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
 ## <a name="prerequisites"></a>必备组件
 
-Azure Monitor 支持 System Center Configuration Manager 当前分支，版本1606及更高版本。
+Azure Monitor 支持 Configuration Manager 当前分支，版本1606及更高版本。
 
 >[!NOTE]
->使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)。
+>使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>配置概述
 
@@ -67,7 +67,7 @@ Azure Monitor 支持 System Center Configuration Manager 当前分支，版本16
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>将 Configuration Manager 连接到 Log Analytics 工作区
 
 >[!NOTE]
-> 若要添加 Log Analytics 连接，Configuration Manager 环境必须具有配置为联机模式的[服务连接点](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point)。
+> 若要添加 Log Analytics 连接，Configuration Manager 环境必须具有配置为联机模式的[服务连接点](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)。
 
 > [!NOTE]
 > 您必须将层次结构中的顶层站点连接到 Azure Monitor。 如果你将独立主站点连接到 Azure Monitor 然后将管理中心站点添加到你的环境，则必须在新层次结构中删除并重新创建连接。

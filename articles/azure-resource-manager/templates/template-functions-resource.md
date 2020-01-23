@@ -3,12 +3,12 @@ title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310512"
+ms.locfileid: "76513858"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -32,7 +32,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-返回[扩展资源](extension-resource-types.md)的资源 ID，它是应用于要添加到其功能的其他资源的资源类型。
+返回[扩展资源](../management/extension-resource-types.md)的资源 ID，它是应用于要添加到其功能的其他资源的资源类型。
 
 ### <a name="parameters"></a>参数
 
@@ -536,7 +536,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ### <a name="get-managed-identity"></a>获取托管标识
 
-[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](extension-resource-types.md)。 由于未在模板中显式定义托管标识，因此必须引用应用该标识的资源。 使用 `Full` 可获取所有属性，包括隐式创建的标识。
+[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](../management/extension-resource-types.md)。 由于未在模板中显式定义托管标识，因此必须引用应用该标识的资源。 使用 `Full` 可获取所有属性，包括隐式创建的标识。
 
 例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
 

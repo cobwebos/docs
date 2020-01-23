@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280775"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509183"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
@@ -75,17 +75,17 @@ ms.locfileid: "76280775"
 
 若要将存储帐户用于防火墙，你必须为受信任的 Microsoft 服务提供例外，以便访问你的存储帐户：
 
-* 在 [NSG 流日志概览页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找到 NSG 即可找到存储帐户的名称
-* 在门户的全局搜索框中键入存储帐户的名称，导航到存储帐户
+* 通过在门户上的 "全局搜索" 或 "[存储帐户" 页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)中键入存储帐户的名称，导航到存储帐户
 * 在“设置”部分，选择“防火墙和虚拟网络”
 * 在 "允许访问" 中，选择 "**所选网络**"。 然后，在 "**例外**" 下，勾选 **"允许受信任的 Microsoft 服务访问此存储帐户"** 旁边的框 
 * 如果已选中，则不需进行更改。  
+* 在 " [NSG 流日志概述" 页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上查找目标 NSG，并在选择了上述存储帐户的情况启用 NSG 流日志。
 
 可以在数分钟后检查存储日志，应该会看到时间戳已更新，或者会看到新的 JSON 文件已创建。
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>如何实现将 NSG Flow 日志与服务终结点一起用于存储？
 
-请参阅[教程启用服务终结点](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。 
+有关[启用服务终结点的教程](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)，请参阅教程。 
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流日志版本 1 & 2 之间有何区别？

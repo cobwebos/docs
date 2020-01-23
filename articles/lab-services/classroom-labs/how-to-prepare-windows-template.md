@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428943"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514997"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>在 Azure 实验室服务中设置 Windows 模板计算机的指南
 
@@ -142,7 +142,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>更改 Microsoft Office 365 更新通道
 
-使用 Office 配置工具可以设置 Office 接收更新的频率。  但是，如果你需要修改 Office 在安装后接收更新的频率，你可以更改更新通道 url。  可在 [更改更新通道后启用 Office 365 客户端以接收来自 Configuration Manager]/configmgr/sum/deploy-use/manage-office-365-proplus-updates # bkmk_channel）中找到更新通道 url 地址。 下面的示例演示如何将 Office 365 设置为使用月度更新通道。
+使用 Office 配置工具可以设置 Office 接收更新的频率。 但是，如果你需要修改 Office 在安装后接收更新的频率，你可以更改更新通道 URL。 可以在[为组织中的设备更改 Office 365 ProPlus 更新通道中](https://docs.microsoft.com/deployoffice/change-update-channels)找到更新通道 URL 地址。 下面的示例演示如何将 Office 365 设置为使用月度更新通道。
 
 ```powershell
 # Update to the Office 365 Monthly Channel

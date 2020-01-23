@@ -1,5 +1,5 @@
 ---
-title: 通过视频索引器自动标识口述语言-Azure
+title: 使用视频索引器自动标识口述语言-Azure
 titleSuffix: Azure Media Services
 description: 本文介绍如何使用视频索引器语言标识模型来自动识别视频中的语言。
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838994"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513875"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>通过语言标识模型自动标识口述语言
 
@@ -47,9 +47,9 @@ ms.locfileid: "73838994"
       },
 ```
 
-## <a name="guidelines-and-limitations"></a>指导原则和限制
+## <a name="guidelines-and-limitations"></a>指导原则和限制条件
 
-* 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、俄语和葡萄牙语(巴西)。
+* 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、俄语和巴西葡萄牙语。
 * 如果音频包含除以上支持的列表之外的其他语言，则结果为意外的结果。
 * 如果视频索引器无法识别出足够置信度的语言（`>0.6`），则回退语言为英语。
 * 对于带有混合语言音频的文件没有当前支持。 如果音频包含混合语言，则结果为意外的结果。 

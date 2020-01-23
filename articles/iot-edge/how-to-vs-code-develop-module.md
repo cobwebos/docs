@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561018"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509269"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "74561018"
 
 ## <a name="prerequisites"></a>必备组件
 
-可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，您可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/版本17763或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
+可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，您可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/版本17763或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
 首先安装 [Visual Studio Code](https://code.visualstudio.com/)，然后添加以下扩展：
 
@@ -66,18 +66,19 @@ ms.locfileid: "74561018"
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
+   
 > [!NOTE]
 > 目前，iotedgehubdev 使用与 Python 3.8 不兼容的 docker py 库。
 >
 > 如果你有多个 2.7 Python （例如，在 Ubuntu 或 macOS 上），请确保使用正确的 `pip` 或 `pip3` 来安装**iotedgehubdev**
 
-若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
+若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤进行操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
 
 ## <a name="create-a-new-solution-template"></a>创建新的解决方案模板
 
 以下步骤说明如何使用 Visual Studio Code 和 Azure IoT Tools 以首选开发语言（包括使用 C# 编写的 Azure Functions）创建 IoT Edge 模块。 首先创建一个解决方案，然后生成该解决方案中的第一个模块。 每个解决方案可以包含多个模块。
 
-1. 选择“视图” > “命令面板”。
+1. 选择“查看” > “命令面板”。
 
 1. 在“命令面板”中，输入并运行“Azure IoT Edge: New IoT Edge Solution”命令。
 
@@ -97,7 +98,7 @@ ms.locfileid: "74561018"
 
 Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后在新窗口中加载它。
 
-该解决方案中有四个项目：
+该解决方案中有四个项：
 
 - 一个 .vscode 文件夹，包含调试配置。
 
@@ -158,7 +159,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 根据开发语言的要求准备环境以进行调试，在模块中设置断点，并选择要使用的调试配置：
    - **C#**
-     - 在 Visual Studio Code 集成终端中，将目录更改为***&lt;模块名称&gt;*** 文件夹，然后运行以下命令以生成 .net Core 应用程序。
+     - 在 Visual Studio Code 集成终端中, 将目录更改为***&lt;你的模块名称&gt;*** 文件夹, 然后运行以下命令以生成 .net Core 应用程序。
 
        ```cmd
        dotnet build

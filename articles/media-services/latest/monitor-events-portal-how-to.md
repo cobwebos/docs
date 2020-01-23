@@ -1,5 +1,5 @@
 ---
-title: 使用门户监视带有事件网格的 Azure 媒体服务事件 | Microsoft Docs
+title: 用带门户的事件网格监视 Azure 媒体服务事件
 description: 本文介绍如何订阅事件网格以监视 Azure 媒体服务事件。
 services: media-services
 documentationcenter: na
@@ -13,20 +13,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326494"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509217"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>使用门户创建并监视带有事件网格的 Azure 媒体服务事件
 
-Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
+Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 
-在本文中，使用 Azure 门户订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们将事件发送到 web 应用，可收集和显示的消息。
+在本文中，使用 Azure 门户订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们将事件发送到收集和显示消息的 web 应用。
 
 完成后即可看到事件数据已发送到 Web 应用。
 
@@ -39,7 +39,7 @@ Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订
 
 在订阅媒体服务帐户的事件之前，先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 在本文中，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -53,20 +53,20 @@ Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订
 
 订阅主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
 
-1. 在门户中，选择媒体服务帐户并选择“事件”  。
+1. 在门户中，选择媒体服务帐户并选择“事件”。
 1. 若要将事件发送到查看器应用，请为终结点使用 Webhook。 
 
    ![选择“Webhook”](./media/monitor-events-portal/select-web-hook.png)
 
 1. 事件订阅中预先填写了媒体服务帐户的值。 
-1. 对于“终结点类型”，选择“Web 挂钩”  。
-1. 在本主题中，让“订阅所有事件类型”保持选中状态  。 不过可以取消选中，然后筛选特定事件类型。 
-1. 单击“选择终结点”链接  。
+1. 对于“终结点类型”，选择“Web 挂钩”。
+1. 在本主题中，让“订阅所有事件类型”保持选中状态。 不过可以取消选中，然后筛选特定事件类型。 
+1. 单击“选择终结点”链接。
 
     对于 Webhook 终结点，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 
 
-1. 按“确认选择”  。
-1. 按“创建”  。
+1. 按“确认选择”。
+1. 按“创建”。
 1. 为你的订阅提供一个名称。
 
    ![选择日志](./media/monitor-events-portal/create-subscription.png)

@@ -1,5 +1,5 @@
 ---
-title: 使用视频索引器网站自定义语言模型 - Azure
+title: 通过视频索引器网站自定义语言模型-Azure
 titleSuffix: Azure Media Services
 description: 本文介绍如何使用视频索引器网站自定义语言模型。
 services: media-services
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838456"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513909"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义语言模型
 
-视频索引器可以让你通过上传自适应文本（即其词汇需要引擎来适应的领域中的文本）创建自定义语言模型来自定义语音识别。 训练模型以后，就可以识别出现在自适应文本中的新词汇。 
+视频索引器可以让你通过上传自适应文本（即其词汇需要引擎来适应的领域中的文本）创建自定义语言模型来自定义语音识别。 训练模型后，可以识别自适应文本中显示的新单词。 
 
 有关自定义语言模型的详细概述和最佳做法，请参阅[使用视频索引器自定义语言模型](customize-language-model-overview.md)。
 
@@ -61,10 +61,10 @@ ms.locfileid: "73838456"
 
 * 单击页面顶部的“上传”按钮 
 
-    ![上传](./media/customize-language-model/upload.png)
+    ![上载](./media/customize-language-model/upload.png)
 * 将音频或视频文件置于圆圈中，或者以浏览方式查找文件
 
-    ![上传](./media/customize-language-model/upload2.png)
+    ![上载](./media/customize-language-model/upload2.png)
 
 这样即可选择“视频源语言”。 单击下拉列表，从其中选择已创建的语言模型。 它会显示语言模型的语言，以及在括号中提供的名称。
 
@@ -116,7 +116,7 @@ ms.locfileid: "73838456"
 
 此时会出现一个新窗口，指出删除操作无法撤消。 在新窗口中单击“删除”选项。
 
-此操作会从帐户中彻底删除该语言模型。 使用已删除语言模型的视频会保留相同的索引，直至你为该视频重新编制索引。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。 
+此操作会从帐户中彻底删除该语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。 
 
 ## <a name="customize-language-models-by-correcting-transcripts"></a>通过更正脚本自定义语言模型
 

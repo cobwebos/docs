@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704529"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512753"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 
@@ -65,7 +65,7 @@ ms.locfileid: "74704529"
 
 帐户锁定仅出现在托管域中。 仅在 Azure AD DS 中锁定用户帐户，并且仅由于对托管域进行的登录尝试失败。 从 Azure AD 或本地同步的用户帐户不会在其源目录中被锁定，只在 Azure AD DS 中被锁定。
 
-如果你的 Azure AD 密码策略指定超过90天的最长密码期限，则密码期限将应用到 Azure AD DS 中的默认策略。 你可以配置自定义密码策略，以在 Azure AD DS 中定义不同的最长密码期限。 请注意，在 Azure AD DS 密码策略中配置的密码最长期限比 Azure AD 或本地 AD DS 环境中的时间更短。 在这种情况下，在本地 AD DS 环境的 Azure AD 中，用户的密码可能会在 Azure AD DS 后过期。
+如果你的 Azure AD 密码策略指定超过90天的最长密码期限，则密码期限将应用到 Azure AD DS 中的默认策略。 你可以配置自定义密码策略，以在 Azure AD DS 中定义不同的最长密码期限。 请注意，在 Azure AD DS 密码策略中配置的密码最长期限比 Azure AD 或本地 AD DS 环境中的时间更短。 在这种情况下，用户的密码可能会在 Azure AD DS 中过期后才会在 Azure AD 或本地 AD DS 环境中出现提示。
 
 对于在 Azure AD DS 托管域中手动创建的用户帐户，还会通过默认策略应用以下其他密码设置。 这些设置不适用于从 Azure AD 同步的用户帐户，因为用户无法直接在 Azure AD DS 中更新其密码。
 
@@ -103,12 +103,12 @@ ms.locfileid: "74704529"
 1. 根据需要编辑其他密码策略设置。 请记住以下要点：
 
     * 仅限在 Azure AD DS 托管域中手动创建的用户的设置（例如，密码复杂性、年龄或过期时间）。
-    * 帐户锁定设置适用于所有用户，但仅在托管域中生效。
+    * 帐户锁定设置适用于所有用户，但仅在托管域中生效，而不会在 Azure AD 本身生效。
 
     ![创建自定义细化密码策略](./media/how-to/custom-fgpp.png)
 
 1. 取消选中 "**防止意外删除**"。 如果选择此选项，则不能保存 FGPP。
-1. 在 "**直接应用**于" 部分中，选择 "**添加**" 按钮。 在“选择用户或组”对话框中，单击“位置”按钮。
+1. 在 "**直接应用**于" 部分中，选择 "**添加**" 按钮。 在 "**选择用户或组**" 对话框中，选择 "**位置**" 按钮。
 
     ![选择要对其应用密码策略的用户和组](./media/how-to/fgpp-applies-to.png)
 

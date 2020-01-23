@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442075"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513486"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -93,7 +93,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 现在，请创建一个集合用于保存电子商务站点事件。 当某个用户查看商品、将商品添加到购物车或购买商品时，该集合将会收到一条记录，其中包含操作（“已查看”、“已添加”或“已购买”）、涉及的商品名称、涉及的商品价格和涉及的用户购物车的 ID 编号。
 
-1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
+1. 中转到[Azure 门户](https://portal.azure.com/)并找到模板部署创建的**Azure Cosmos DB 帐户**。  
 
 2. 在“数据资源管理器”窗格中，选择“新建集合”并在表单中填写以下详细信息：  
 
@@ -117,7 +117,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>获取 Azure Cosmos DB 连接字符串
 
-1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
+1. 中转到[Azure 门户](https://portal.azure.com/)并找到模板部署创建的**Azure Cosmos DB 帐户**。  
 
 2. 导航到“密钥”窗格，将“主连接字符串”复制到记事本，或复制到可在整个实验室中访问的另一个文档。 应将其标记为“Cosmos DB 连接字符串”。 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
@@ -177,7 +177,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
  
 6. 等待程序运行。 出现星星表示数据正在传入！ 让程序保持运行 - 必须收集大量的数据。  
 
-7. 如果依次导航到 [Azure 门户](https://portal.azure.com/)、资源组中的 Cosmos DB 帐户、“数据资源管理器”，则会看到 **changefeedlabcollection** 中导入的随机化数据。
+7. 如果导航到[Azure 门户](https://portal.azure.com/)，然后转到资源组中的 Cosmos DB 帐户，然后**数据资源管理器**，则会看到在**changefeedlabcollection**中导入的随机数据。
  
    ![门户中生成的数据](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,7 +185,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 Azure 流分析是实时处理流数据的完全托管式云服务。 在此实验室中，我们将使用流分析来处理事件中心发来的新事件（即，查看了商品、将商品添加到了购物车，或购买了商品）、将这些事件合并到实时数据分析，然后将其发送到 Power BI 进行可视化。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次导航到资源组和“streamjob1”（前面在实验室中创建的流分析作业）。  
+1. 在[Azure 门户](https://portal.azure.com/)中，导航到资源组，然后导航到**streamjob1** （在 prelab 中创建的流分析作业）。  
 
 2. 按如下所示选择“输入”。  
 
@@ -320,7 +320,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站，请使用 Azure Cosmos 数据库来存储产品类别列表（女性、男士、中性）、产品目录和最受欢迎的项目列表。
 
-1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
+1. 导航回[Azure 门户](https://portal.azure.com/)，然后导航到**Cosmos DB 帐户**，并**数据资源管理器**。  
 
    在“changefeedlabdatabase  -  产品和类别”下添加具有“固定”存储容量的两个集合。
 
@@ -390,9 +390,8 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 ## <a name="delete-the-resources"></a>删除资源
 
-若要删除在此实验室中创建的资源，请在 [Azure 门户](https://portal.azure.com/)中导航到资源组，从页面顶部的菜单中选择“删除资源组”，然后遵照提供的说明操作。
+若要删除在此实验室中创建的资源，请导航到[Azure 门户](https://portal.azure.com/)上的资源组，然后从页面顶部的菜单中选择 "**删除资源组**"，并按照提供的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤 
   
 * 若要详细了解更改源，请参阅[使用 Azure Cosmos DB 中的更改源支持](change-feed.md)。 
-* 面向使用 Azure Cosmos DB 的医疗保健组织的[更改源通知解决方案](change-feed-hl7-fhir-logic-apps.md)。

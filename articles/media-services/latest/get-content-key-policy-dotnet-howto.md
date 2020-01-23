@@ -1,5 +1,5 @@
 ---
-title: 使用媒体服务 v3 .NET SDK 从现有策略中获取签名密钥 - Azure | Microsoft Docs
+title: 使用 Azure 媒体服务 v3 .NET 从策略中获取签名密钥
 description: 本主题说明如何使用媒体服务 v3 .NET SDK 从现有策略中获取签名密钥。
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff27ae0fd639316f03fe89ffc906561b3ef85f6f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322628"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515065"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>从现有策略获取签名密钥
 
-V3 API 的主要设计原则之一是使 API 更安全。 v3 Api 不返回机密或凭据上**获取**或**列表**操作。 请参阅此处的详细的说明：有关详细信息，请参阅[RBAC 和媒体服务帐户](rbac-overview.md)
+V3 API 的主要设计原则之一是使 API 更安全。 v3 Api 不会在**Get**或**List**操作中返回机密或凭据。 请参阅此处的详细说明：有关详细信息，请参阅[RBAC 和 Media Services 帐户](rbac-overview.md)
 
 本文中的示例演示如何使用 .NET 从现有策略中获取签名密钥。 
  

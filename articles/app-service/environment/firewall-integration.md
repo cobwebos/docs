@@ -4,28 +4,25 @@ description: 了解如何与 Azure 防火墙集成，以保护从应用服务环
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 01/14/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687228"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513332"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
 应用服务环境 (ASE) 需要访问许多的外部依赖项才能正常运行。 ASE 驻留在客户的 Azure 虚拟网络 (VNet) 中。 客户必须允许 ASE 依赖项流量，对于想要锁定从 VNet 传出的所有流量的客户而言，这是一个问题。
 
-ASE 有许多入站依赖项。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.microsoft.com/azure/app-service/environment/management-addresses)文档中发布。 可以使用该信息创建网络安全组规则来保护入站流量。
+有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.microsoft.com/azure/app-service/environment/management-addresses)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组（Nsg）一起使用，以保护入站流量。
 
-ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组 (NSG) 锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
+ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着不能使用网络安全组锁定 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
 保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
-
-> [!NOTE]
-> 目前，我们无法完全锁定出站连接。
 
 ## <a name="system-architecture"></a>系统体系结构
 
@@ -42,6 +39,12 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ![使用 Azure 防火墙的 ASE 连接流][5]
 
+## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
+
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则以允许来自端口454、455上名为 AppServiceManagement 的服务标记的流量。 这是公共 Ip 管理 ASE 所需的全部。 该服务标记后面的地址仅用于管理 Azure App Service。 流过这些连接的管理流量将使用身份验证证书进行加密和保护。 此通道上的典型流量包括客户启动的命令和运行状况探测等内容。 
+
+使用包含新子网的门户生成的 Ase 的 NSG 包含 AppServiceManagement 标记的允许规则。  
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
 使用 Azure 防火墙锁定现有 ASE 的传出流量的步骤如下：
@@ -51,14 +54,19 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
    ![选择服务终结点][2]
   
 1. 在 ASE 所在的 VNet 中创建名为 AzureFirewallSubnet 的子网。 遵循 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/)中的指导创建 Azure 防火墙。
+
 1. 在 Azure 防火墙 UI >“规则”>“应用程序规则集合”中，选择“添加应用程序规则集合”。 提供名称、优先级，并设置“允许”。 在“FQDN 标记”部分提供名称，将源地址设置为 *，然后选择“应用服务环境 FQDN 标记”和“Windows 更新”。 
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分提供名称，选择“任何”，将源和目标地址设置为 *，将端口设置为 123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "IP 地址" 下的 "规则" 部分中，提供一个名称，选择 "**任意**" 的 ptocol，将 "设置为" 设置为源和目标地址，并将端口设置为123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
+   
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "服务标记" 下的 "规则" 部分中，提供一个名称，选择 "**任何**"、"将 * 设置为源地址"、"AzureMonitor 的服务标记"，然后将端口设置为80，443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
 
+   ![添加 NTP 服务标记网络规则][6]
+   
 1. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 将虚拟设备路由添加到 0.0.0.0/0 的路由表，并将 Azure 防火墙专用 IP 地址用作下一跃点。 
 
    ![创建路由表][4]
@@ -116,7 +124,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
 | 40.77.24.27：80 | 需要监视 ASE 问题并发出警报 |
 | 40.77.24.27:443 | 需要监视 ASE 问题并发出警报 |
-| 13.90.249.229：80 | 需要监视 ASE 问题并发出警报 |
+| 13.90.249.229:80 | 需要监视 ASE 问题并发出警报 |
 | 13.90.249.229:443 | 需要监视 ASE 问题并发出警报 |
 | 104.45.230.69：80 | 需要监视 ASE 问题并发出警报 |
 | 104.45.230.69:443 | 需要监视 ASE 问题并发出警报 |
@@ -248,7 +256,25 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 ## <a name="us-gov-dependencies"></a>US Gov 依赖关系
 
-对于 US Gov 仍需为存储、SQL 和事件中心设置服务终结点。  你还可以将 Azure 防火墙与本文档前面的说明配合使用。 如果需要使用自己的出口防火墙设备，请在下面列出这些终结点。
+对于 US Gov 区域中的 Ase，请按照本文档中的[使用 Ase 配置 Azure 防火墙](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分中的说明，使用 Ase 配置 azure 防火墙。
+
+如果要在 US Gov 中使用 Azure 防火墙以外的设备 
+
+* 应在支持服务终结点的服务中配置服务终结点。
+* 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
+* 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。
+
+Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
+
+#### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
+
+| 终结点 |
+|----------|
+| Azure SQL |
+| Azure 存储器 |
+| Azure 事件中心 |
+
+#### <a name="dependencies"></a>依赖项 ####
 
 | 终结点 |
 |----------|
@@ -375,3 +401,4 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
+[6]: ./media/firewall-integration/firewall-ntprule-monitor.png

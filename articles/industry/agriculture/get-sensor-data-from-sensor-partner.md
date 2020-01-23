@@ -5,20 +5,20 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122213"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513723"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
 Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Datahub。 目前支持以下传感器设备合作伙伴。
 
-  ![FarmBeats 合作伙伴](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats 合作伙伴](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-将设备数据与 Azure FarmBeats 集成可帮助你获取在场中部署到 datahub 的 IoT 传感器的基本数据。 数据可通过 FarmBeats 加速器进行可视化。 通过使用 FarmBeats，可将数据用于数据合成和机器学习/人工智能（ML/AI）模型构建。
+将设备数据与 Azure FarmBeats 集成可帮助你获取在场中部署到数据中心的 IoT 传感器的基本数据。 数据可通过 FarmBeats 加速器进行可视化。 通过使用 FarmBeats，可将数据用于数据合成和机器学习/人工智能（ML/AI）模型构建。
 
 若要启动传感器数据流，请确保以下各项：
 
@@ -44,7 +44,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其解压缩到本地驱动器。 Zip 文件中将有一个文件。
 2. 登录到 https://portal.azure.com/ 并中转到 Azure Active Directory > 应用注册
 
-3. 单击在 FarmBeats 部署过程中创建的应用注册。 它的名称与你的 FarmBeats Datahub 相同。
+3. 单击在 FarmBeats 部署过程中创建的应用注册。 它将与 FarmBeats 数据中心具有相同的名称。
 
 4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
 

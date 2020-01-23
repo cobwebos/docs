@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7cd0935177ad4070750a9b2a0ff129af2e13959f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a8725e3ba7be2dc572798d1397e098046a4b352
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510220"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
@@ -30,7 +30,7 @@ ms.locfileid: "75772408"
 
 ## <a name="install-the-latest-runtime-version"></a>安装最新的运行时版本
 
-使用以下部分将 Azure IoT Edge 运行时的最新版本安装到你的设备上。 
+使用以下部分将 Azure IoT Edge 运行时的最新版本安装到你的设备上。
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>注册 Microsoft 密钥和软件存储库源
 
@@ -39,16 +39,19 @@ ms.locfileid: "75772408"
 安装存储库配置。 选择与设备操作系统匹配的**16.04**或**18.04**命令：
 
 * **Ubuntu Server 16.04**：
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Ubuntu Server 18.04**：
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Raspbian Stretch**：
+
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
    ```
@@ -88,7 +91,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install moby-cli
    ```
 
-如果在安装小鲸鱼容器运行时遇到错误，请按照本文后面所述的步骤[验证 Linux 内核的小鲸鱼兼容性](#verify-your-linux-kernel-for-moby-compatibility)。 
+如果在安装小鲸鱼容器运行时遇到错误，请按照本文后面所述的步骤[验证 Linux 内核的小鲸鱼兼容性](#verify-your-linux-kernel-for-moby-compatibility)。
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 
@@ -108,7 +111,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install iotedge
    ```
 
-成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照[配置安全守护](#configure-the-security-daemon)程序部分中的步骤完成设备的预配。 
+成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照[配置安全守护](#configure-the-security-daemon)程序部分中的步骤完成设备的预配。
 
 ## <a name="install-a-specific-runtime-version"></a>安装特定的运行时版本
 
@@ -145,7 +148,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
-   
+
    3. 查找与 IoT Edge 设备体系结构匹配的**iotedge**文件。 右键单击文件链接，并复制链接地址。 
 
    4. 使用以下命令中的复制链接来安装该版本的 IoT Edge 安全守护程序。 
@@ -174,7 +177,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 sudo nano /etc/iotedge/config.yaml
 ```
 
-查找文件的预配配置，并取消注释 "**手动设置配置**" 部分。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。
+查找文件的预配配置，并取消注释 "**手动设置配置**" 部分。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保**预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
 
    ```yaml
    # Manual provisioning configuration
@@ -190,7 +193,8 @@ sudo nano /etc/iotedge/config.yaml
    #   attestation:
    #     method: "tpm"
    #     registration_id: "{registration_id}"
-```
+   ```
+
 若要将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
 保存并关闭该文件。
@@ -213,7 +217,7 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-查找文件的预配配置，并取消注释适用于证明机制的部分。 例如，使用 TPM 证明时，请分别使用 IoT 中心设备预配服务和 IoT Edge 设备的值更新**scope_id**和**registration_id**值。
+查找文件的预配配置，并取消注释适用于证明机制的部分。 例如，使用 TPM 证明时，请分别使用 IoT 中心设备预配服务和 IoT Edge 设备的值更新**scope_id**和**registration_id**值。 请确保**预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
 
    ```yaml
    # Manual provisioning configuration
@@ -265,7 +269,7 @@ journalctl -u iotedge --no-pager --no-full
 sudo iotedge check
 ```
 
-在你将第一个模块部署到设备上 IoT Edge 之前， **$edgeHub**系统模块将不会部署到设备。 因此，自动检查将为 `Edge Hub can bind to ports on host` 连接性检查返回错误。 此错误可能 ingored，除非在将模块部署到设备后发生。
+在你将第一个模块部署到设备上 IoT Edge 之前， **$edgeHub**系统模块将不会部署到设备。 因此，自动检查将为 `Edge Hub can bind to ports on host` 连接性检查返回错误。 除非在将模块部署到设备后发生此错误，否则可以忽略此错误。
 
 最后，列出正在运行的模块：
 

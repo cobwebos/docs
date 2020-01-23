@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456923"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511563"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 数字孪生中的出口和终结点
 
@@ -23,7 +23,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 若要详细了解事件、路由和事件类型，请参阅[在 Azure 数字孪生中路由事件和消息](./concepts-events-routing.md)。
 
-## <a name="events"></a>事件
+## <a name="events"></a>活动
 
 事件由 IoT 对象（例如设备和传感器）发送，由 Azure 消息和事件代理进行处理。 事件是通过以下 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)定义的。
 
@@ -47,13 +47,13 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 属性 | 类型 | 说明 |
+| Attribute | 类型 | Description |
 | --- | --- | --- |
 | id | 字符串 | 事件的唯一标识符。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
-| 数据 | 对象 | 特定于资源提供程序的事件数据。 |
+| data | 对象 | 特定于资源提供程序的事件数据。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| eventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
@@ -85,12 +85,12 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 报表
+- 报告
 - RoleDefinition
 - 传感器
 - SensorBlobMetadata
 - SensorExtendedProperty
-- 空格
+- 航天
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -248,7 +248,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 经过身份验证的 HTTP POST 请求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
@@ -320,7 +320,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
     | YOUR_EVENT_HUB_NAME | 事件中心的名称 |
 
-- 路由到事件中心事件类型 **DeviceMessage**。 必须在 `EntityPath`connectionString**中包含**：
+- 路由到事件中心事件类型 **DeviceMessage**。 必须在 **connectionString** 中包含 `EntityPath`：
 
   ```JSON
   {

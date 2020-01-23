@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290710"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510526"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -43,9 +43,9 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 1. 在该页的 " **IoT Edge 模块**" 部分中，选择 "**添加**"。
 1. 从下拉菜单中查看模块类型：
 
-   * **IoT Edge 模块**-提供模块名称和容器映像 URI。 例如，`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`示例 SimulatedTemperatureSensor 模块的图像 URI。 如果模块映像存储在专用容器注册表中，请在此页上添加凭据来访问映像。 
+   * **IoT Edge 模块**-提供模块名称和容器映像 URI。 例如，`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`示例 SimulatedTemperatureSensor 模块的图像 URI。 如果模块映像存储在专用容器注册表中，请在此页上添加凭据来访问映像。
    * **Marketplace 模块**-托管在 Azure marketplace 中的模块。 某些 marketplace 模块需要其他配置，因此请查看[Azure marketplace IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)列表中的模块详细信息。
-   * **Azure 流分析模块**-从 Azure 流分析工作负荷生成的模块。 
+   * **Azure 流分析模块**-从 Azure 流分析工作负荷生成的模块。
 
 1. 添加模块后，从列表中选择模块名称以打开模块设置。 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 1. 如果需要，请重复步骤5到步骤8，将其他模块添加到部署。

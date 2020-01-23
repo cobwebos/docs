@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978394"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508996"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
-Azure 存储数据移动库是一个跨平台的开源库，旨在高性能上载、下载和复制 blob 和文件。 此库是驱动 [AzCopy](../storage-use-azcopy.md) 的核心数据移动框架。 数据移动库提供了在适用于 .NET 的 Azure 存储客户端库中不可用的便利方法。 这些方法可以设置并行操作的数量、跟踪传输进度、轻松恢复已取消的传输，等等。
+Azure 存储数据移动库是一个跨平台的开源库，旨在高性能上载、下载和复制 blob 和文件。 数据移动库提供了在适用于 .NET 的 Azure 存储客户端库中不可用的便利方法。 这些方法可以设置并行操作的数量、跟踪传输进度、轻松恢复已取消的传输，等等。
 
 此库还使用 .NET Core，这意味着，可以在构建适用于 Windows、Linux 和 macOS 的 .NET 应用时使用它。 若要了解有关 .NET Core 的详细信息，请参阅 [.NET Core 文档](https://dotnet.github.io/)。 此库也适用于面向 Windows 的传统 .NET Framework 应用。
 

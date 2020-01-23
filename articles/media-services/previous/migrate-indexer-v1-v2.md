@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464057"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513229"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>从媒体索引器和媒体索引器2迁移到视频索引器
 
-[Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。  [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+[Azure Media Indexer](media-services-index-content.md)媒体处理器和[Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器即将停用。 有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
 Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）构建的。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。 若要查看视频索引器可用于哪些方案、它所提供的功能以及如何开始使用，请参阅[视频索引器视频和音频型号](../video-indexer/video-indexer-overview.md)。 
 
@@ -50,9 +50,9 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜�
 
 凭借 AudioAnalyzerPreset 能够从音频或视频文件中提取多个音频见解。 输出包括音频稿本的 VTT 或 TTML 文件和一个 JSON 文件（包含所有其他音频见解）。 音频见解包括关键字、扬声器索引和语音情绪分析。 AudioAnalyzerPreset 还支持特定语言的语言检测。 有关详细信息，请参阅[转换](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)。
 
-### <a name="get-started"></a>入门
+### <a name="get-started"></a>开始体验
 
-若要开始，请参阅：
+若要开始操作，请参阅：
 
 * [教程](../latest/analyze-videos-tutorial-with-api.md)
 * AudioAnalyzerPreset 示例： [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer)或[.net sdk](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)

@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705412"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509132"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>检查 Azure Active Directory 域服务托管域的运行状况
 
-Azure Active Directory 域服务（Azure AD DS）运行一些后台任务，以使托管域保持健康和最新。 这些任务包括备份、应用安全更新和从 Azure AD 同步数据。 如果 Azure AD DS 托管域存在问题，则可能无法成功运行这些任务。 若要查看并解决任何问题，可以使用 Azure 门户检查 Azure AD DS 托管域的运行状况状态。
+Azure Active Directory 域服务（Azure AD DS）运行一些后台任务，以使托管域保持健康和最新。 这些任务包括备份、应用安全更新和从 Azure AD 同步数据。 如果 Azure AD DS 托管域存在问题，则可能无法成功完成这些任务。 若要查看并解决任何问题，可以使用 Azure 门户检查 Azure AD DS 托管域的运行状况状态。
 
-本文介绍如何查看 Azure AD DS 运行状况状态，并了解显示的信息或警报。
+本文介绍如何查看 Azure AD DS 健康状况，并了解显示的信息或警报。
 
 ## <a name="view-the-health-status"></a>查看运行状况状态
 
@@ -47,11 +47,11 @@ Azure Active Directory 域服务（Azure AD DS）运行一些后台任务，以�
 
 ## <a name="understand-monitors-and-alerts"></a>了解监视器和警报
 
-Azure AD DS 托管域的运行状况状态显示两种类型的信息监视器和警报。 监视器显示核心后台任务完成的时间。 警报提供了信息或建议来提高托管域的稳定性。
+Azure AD DS 托管域的运行状况状态显示两种类型的信息*监视器*和*警报*。 监视器显示核心后台任务完成的时间。 警报提供了信息或建议来提高托管域的稳定性。
 
 ### <a name="monitors"></a>监视器
 
-监视器是定期检查 Azure AD DS 托管域的区域。 如果 Azure AD DS 托管域有任何活动警报，则可能会导致其中一个监视器报告问题。 目前 Azure AD 域服务监视以下方面：
+监视器是定期检查 Azure AD DS 托管域的区域。 如果 Azure AD DS 托管域有任何活动警报，则可能会导致其中一个监视器报告问题。 目前 Azure AD 域服务的监视器具有以下方面：
 
 * 备份
 * 与 Azure AD 同步
@@ -68,7 +68,7 @@ Azure AD DS 托管域的运行状况状态显示两种类型的信息监视器�
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>与 Azure AD 监视器同步
 
-Azure AD DS 托管域会定期与 Azure Active Directory 同步。 用户和组对象的数量，以及自上次同步后在 Azure AD 目录中所做的更改数会影响同步所用的时间。 如果 Azure AD DS 托管域在三天前同步，请检查并解决所有活动警报。 如果同步监视器未随后更新状态以显示最近的同步，请[打开 Azure 支持请求][azure-support]。
+Azure AD DS 托管域会定期与 Azure Active Directory 同步。 用户和组对象的数量，以及自上次同步后在 Azure AD 目录中所做的更改数会影响同步所用的时间。 如果 Azure AD DS 托管域在三天前同步，请检查并解决所有活动警报。 如果在解决任何活动警报后，同步监视器未将状态更新为显示最近的同步，请[打开 Azure 支持请求][azure-support]。
 
 ### <a name="alerts"></a>警报
 

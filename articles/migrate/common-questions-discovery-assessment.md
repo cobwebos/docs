@@ -3,12 +3,12 @@ title: 常见问题-Azure Migrate 中的发现、评估和依赖项分析
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292359"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513280"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>有关发现、评估和依赖关系分析的常见问题
 
@@ -99,7 +99,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 
 使用此[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。 按照这些说明操作，使用命令行或自动化[来安装 MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) 。 对于 MMA，请使用[此脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 
-除了脚本以外，还可以使用 System Center Configuration Manager 和[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)之类的部署工具来部署代理。
+除了脚本以外，还可以使用部署工具（如 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) ）来部署代理。
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA 支持哪些操作系统？

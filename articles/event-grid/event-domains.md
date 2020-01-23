@@ -1,18 +1,18 @@
 ---
 title: Azure 事件网格中的事件域
-description: 介绍如何使用事件域来管理 Azure 事件网格中的主题。
+description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511376"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -47,7 +47,7 @@ ms.locfileid: "68305408"
 
 ### <a name="built-in-roles"></a>内置角色
 
-事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。   将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围限定为用户需要订阅的主题。
+事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。 将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围限定为用户需要订阅的主题。
 
 有关这些角色的信息，请参阅[事件网格的内置角色](security-authentication.md#built-in-roles)。
 
@@ -97,17 +97,17 @@ ms.locfileid: "68305408"
 事件域会自动处理发布到主题的工作。 可将所有事件发布到域的终结点，而无需将事件发布到单独管理的每个主题。 事件网格确保将每个事件发送到正确的主题。
 
 ## <a name="limits-and-quotas"></a>限制和配额
-下面是与事件域相关的限制和配额:
+下面是与事件域相关的限制和配额：
 
 - 100000每个事件域的主题 
 - 每个 Azure 订阅100个事件域 
 - 事件域中的每个主题 500 个事件订阅
 - 50域范围订阅 
-- 每秒5000事件引入速率 (域中)
+- 每秒5000事件引入速率（域中）
 
-如果这些限制无法满足你的需要, 请通过打开支持票证或向发送电子邮件来[askgrid@microsoft.com](mailto:askgrid@microsoft.com)联系产品团队。 
+如果这些限制不符合您的需要，请通过提出支持票证或发送电子邮件到[askgrid@microsoft.com](mailto:askgrid@microsoft.com)来联系产品团队。 
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 事件域使用的操作定价与事件网格中的所有其他功能使用的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)相同。
 
 操作在事件域中的工作方式与在自定义主题中的相同。 事件域每引入一个事件都为一个操作，每尝试传递一个事件都为一个操作。

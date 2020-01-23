@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425531"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512770"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
-随着 Azure Active Directory 域服务（AD DS）向其他应用程序和工作负荷提供身份验证和管理服务，网络连接是一个关键组件。 如果未正确配置虚拟网络资源，则应用程序和工作负荷无法与通信，并使用 Azure AD DS 提供的功能。 如果你正确规划虚拟网络，请确保 Azure AD DS 可以根据需要为你的应用程序和工作负荷提供服务。
+随着 Azure Active Directory 域服务（AD DS）向其他应用程序和工作负荷提供身份验证和管理服务，网络连接是一个关键组件。 如果未正确配置虚拟网络资源，则应用程序和工作负荷无法与通信，并使用 Azure AD DS 提供的功能。 规划虚拟网络要求，以确保 Azure AD DS 可以根据需要为你的应用程序和工作负荷提供服务。
 
-本文概述支持 Azure AD DS 的 Azure 虚拟网络的设计注意事项和要求。
+本文概述了 Azure 虚拟网络支持 Azure AD DS 的设计注意事项和要求。
 
 ## <a name="azure-virtual-network-design"></a>Azure 虚拟网络设计
 
@@ -33,7 +33,7 @@ ms.locfileid: "75425531"
 * 必须将 Azure AD DS 部署到与虚拟网络相同的 Azure 区域。
     * 此时，每个 Azure AD 租户只能部署一个 Azure AD DS 托管域。 Azure AD DS 托管域部署到单个区域。 请确保在[支持 AZURE AD DS 的区域](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)中创建或选择一个虚拟网络。
 * 请考虑其他 Azure 区域与托管你的应用程序工作负荷的虚拟网络的接近程度。
-    * 若要最大程度地减少延迟，请将核心应用程序靠近或与 Azure AD DS 托管域的虚拟网络子网位于同一区域。 你可以使用虚拟网络对等互连或 Azure 虚拟网络之间的虚拟专用网络（VPN）连接。
+    * 若要最大程度地减少延迟，请将核心应用程序靠近或与 Azure AD DS 托管域的虚拟网络子网位于同一区域。 你可以使用虚拟网络对等互连或 Azure 虚拟网络之间的虚拟专用网络（VPN）连接。 下一节将讨论这些连接选项。
 * 虚拟网络不能依赖于 Azure AD DS 提供的 DNS 服务。
     * Azure AD DS 提供自己的 DNS 服务。 必须将虚拟网络配置为使用这些 DNS 服务地址。 可以使用条件转发器来完成其他命名空间的名称解析。
     * 不能使用自定义 DNS 服务器设置来定向来自其他 DNS 服务器（包括 Vm）的查询。 虚拟网络中的资源必须使用 Azure AD DS 提供的 DNS 服务。
@@ -70,7 +70,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 有关详细信息，请参阅[Azure 虚拟网络对等互连概述](../virtual-network/virtual-network-peering-overview.md)。
 
-### <a name="virtual-private-networking"></a>虚拟专用网络
+### <a name="virtual-private-networking-vpn"></a>虚拟专用网 (VPN)
 
 可以通过将虚拟网络配置为本地站点位置的相同方式将虚拟网络连接到另一个虚拟网络（VNet 到 VNet）。 这两个连接都使用 VPN 网关来创建使用 IPsec/IKE 的安全隧道。 此连接模型使你能够将 Azure AD DS 部署到 Azure 虚拟网络，然后连接到本地位置或其他云。
 
@@ -91,8 +91,8 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 | Azure 资源                          | Description |
 |:----------------------------------------|:---|
 | 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 上作为 Azure Vm 运行的两个域控制器（Dc）上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
-| 动态标准公共 IP 地址         | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
-| Azure 标准负载均衡器               | Azure AD DS 使用标准 SKU 负载均衡器进行网络地址转换（NAT）和负载平衡（与安全 LDAP 一起使用时）。 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
+| 动态标准公共 IP 地址      | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
+| Azure 标准负载均衡器            | Azure AD DS 使用标准 SKU 负载均衡器进行网络地址转换（NAT）和负载平衡（与安全 LDAP 一起使用时）。 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
 | 网络地址转换（NAT）规则 | Azure AD DS 在负载平衡器上创建并使用三个 NAT 规则-一个规则用于安全 HTTP 流量，另外两个规则用于保护 PowerShell 远程处理。 |
 | 负载均衡器规则                     | 在 TCP 端口636上为安全 LDAP 配置 Azure AD DS 托管域时，将在负载均衡器上创建并使用三个规则来分配流量。 |
 
@@ -160,7 +160,3 @@ Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则�
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure 网络安全组](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

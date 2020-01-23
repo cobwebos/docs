@@ -3,15 +3,15 @@ title: 教程 - 在 Azure Spring Cloud 中设置配置服务器实例
 description: 本教程介绍如何在 Azure 门户上为 Azure Spring Cloud 设置 Spring Cloud 配置服务器实例
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708801"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277531"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>教程：为服务设置 Spring Cloud 配置服务器实例
 
@@ -19,7 +19,7 @@ ms.locfileid: "74708801"
 
 Spring Cloud Config 为分布式系统中的外部化配置提供服务器和客户端支持。 使用配置服务器实例可在一个中心位置管理所有环境中应用程序的外部属性。 有关详细信息，请参阅 [Spring Cloud 配置服务器引用](https://spring.io/projects/spring-cloud-config)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 * 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](spring-cloud-quickstart-launch-app-cli.md)。
 
@@ -53,7 +53,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 > [!NOTE]
 > 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
 
-| 属性        | 必选 | Feature                                                      |
+| properties        | 必选 | Feature                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 以“http://”、“https://”、“git@”或“ssh://”开头     。 |
 | `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
@@ -68,7 +68,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 > [!NOTE]
 > 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
 
-| 属性                   | 必选 | Feature                                                      |
+| properties                   | 必选 | Feature                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
 | `default-label`            | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
@@ -87,7 +87,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 > [!NOTE]
 > 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
 
-| 属性        | 必选 | Feature                                                      |
+| properties        | 必选 | Feature                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | 是    | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
 | `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id    。 |
@@ -105,7 +105,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 > [!NOTE]
 > 使用连字符 (-) 分隔单词是目前唯一受支持的命名约定。 例如，可使用“default-label”，但不能使用“defaultLabel”   。
 
-| 属性                           | 必选         | Feature                                                      |
+| properties                           | 必选         | Feature                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | 否             | 包含具有给定名称的 Git 存储库的设置的图。 |
 | `repos."uri"`                      | 在 `repos` 上选择“是” | 用作配置服务器后端的 Git 存储库的 URI 应以“http://”、“https://”、“git@”或“ssh://”开头     。 |
@@ -124,7 +124,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 将配置文件保存到存储库后，需要将 Azure Spring Cloud 连接到该存储库。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 转到 Azure Spring Cloud 的“概览”页  。
 

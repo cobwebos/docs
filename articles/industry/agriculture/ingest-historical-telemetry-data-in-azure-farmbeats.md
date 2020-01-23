@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170154"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513926"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -20,7 +20,7 @@ ms.locfileid: "76170154"
 
 ## <a name="before-you-begin"></a>开始之前
 
-在继续阅读本文之前，请确保已安装 FarmBeats 并收集 IoT 提供的历史数据。
+在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集了历史数据。
 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
 ## <a name="enable-partner-access"></a>启用合作伙伴访问
@@ -38,31 +38,36 @@ ms.locfileid: "76170154"
 >[!NOTE]
 > 您必须是管理员才能执行以下步骤。
 
-1. 下载此[脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器上。 Zip 文件内有两个文件。
-2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。
+1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其解压缩到本地驱动器。 Zip 文件中将有一个文件。
+2. 登录到 https://portal.azure.com/ 并中转到 Azure Active Directory > 应用注册
 
-    ![Azure 门户工具栏](./media/for-tutorials/navigation-bar-1.png)
+3. 单击在 FarmBeats 部署过程中创建的应用注册。 它的名称与你的 FarmBeats Datahub 相同。
 
-3. 请确保将环境设置为**PowerShell**。
+4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
 
-    ![PowerShell 设置](./media/for-tutorials/power-shell-new-1.png)
+5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
-4. 上传你在 Cloud Shell 实例的步骤1中下载的两个文件。
+    ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![工具栏上的 "上传" 按钮](./media/for-tutorials/power-shell-two-1.png)
+6. 请确保将环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
 
-5. 中转到上载文件的目录。
+    ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > 默认情况下，文件将上传到 home directory/home/username。
-6. 使用以下命令运行该脚本：
+7. 在 Cloud Shell 实例的步骤1中上传文件。
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![上传工具栏按钮](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. 中转到上载文件的目录。 默认情况下，文件将上传到用户名下的主目录。
+
+9. 运行以下脚本。 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。 EventHub 连接字符串作为 Swagger 中 API 响应的一部分提供。
-
+10. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
 ## <a name="create-device-or-sensor-metadata"></a>创建设备或传感器元数据
 
  现在，你已拥有所需的凭据，可以定义设备和传感器。 为此，请通过调用 FarmBeats Api 来创建元数据。 请注意，你需要将 Api 作为你在上一节中创建的客户端应用程序调用

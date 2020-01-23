@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964663"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510033"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>在 Windows Server 虚拟机上运行 Azure IoT Edge
 
@@ -26,28 +26,30 @@ ms.locfileid: "72964663"
 
 ## <a name="deploy-from-the-azure-marketplace"></a>从 Azure 市场部署
 
-1.  导航至[Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) azure marketplace 产品/服务，或通过在[Azure marketplace](https://azuremarketplace.microsoft.com/)上搜索 "windows server"
-2.  选择 "**立即获取**" 
-3.  在 "**软件计划**" 中，找到 "Windows Server 2019 Datacenter server Core with 容器"，然后在下一个对话框中选择 "**继续**"。
+1. 导航至[Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) azure marketplace 产品/服务，或通过在[Azure marketplace](https://azuremarketplace.microsoft.com/)上搜索 "windows server"
+2. 选择 "**立即获取**"
+3. 在 "**软件计划**" 中，找到 "Windows Server 2019 Datacenter server Core with 容器"，然后在下一个对话框中选择 "**继续**"。
     * 你还可以将这些说明用于具有容器的 Windows Server 的其他版本
-4.  进入 Azure 门户后，选择“创建”并遵循向导部署 VM。 
-    *   如果是第一次尝试 VM，则使用密码并在公共入站端口菜单中启用 RDP 和 SSH 是最简单的方法。 
-    *   如果你有资源密集型工作负荷，应通过添加更多 CPU 和/或内存来升级虚拟机大小。
-5.  部署虚拟机后，请将其配置为连接到 IoT 中心：
-    1.  从在 IoT 中心内创建的 IoT Edge 设备中复制设备连接字符串。 请参阅过程[检索 Azure 门户中的连接字符串](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)。
-    1.  在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项
-    1.  选择**RunPowerShellScript**选项
-    1.  将此脚本复制到命令窗口中的设备连接字符串： 
+4. 进入 Azure 门户后，选择“创建”并遵循向导部署 VM。
+    * 如果是第一次尝试 VM，则使用密码并在公共入站端口菜单中启用 RDP 和 SSH 是最简单的方法。
+    * 如果你有资源密集型工作负荷，应通过添加更多 CPU 和/或内存来升级虚拟机大小。
+5. 部署虚拟机后，请将其配置为连接到 IoT 中心：
+    1. 从在 IoT 中心内创建的 IoT Edge 设备中复制设备连接字符串。 请参阅过程[检索 Azure 门户中的连接字符串](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)。
+    1. 在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项
+    1. 选择**RunPowerShellScript**选项
+    1. 将此脚本复制到命令窗口中的设备连接字符串：
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  执行脚本以安装 IoT Edge 运行时并通过选择 "**运行**" 设置连接字符串
-    1.  一两分钟后，应该会看到一条消息，指出已成功安装并设置了 Edge 运行时。
+
+    1. 执行脚本以安装 IoT Edge 运行时并通过选择 "**运行**" 设置连接字符串
+    1. 一两分钟后，应该会看到一条消息，指出已成功安装并设置了 Edge 运行时。
 
 ## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户部署
 
-1. 在 Azure 门户中，搜索 "Windows Server" 并选择 " **Windows server 2019 Datacenter** " 以开始创建 VM 工作流。 
+1. 在 Azure 门户中，搜索 "Windows Server" 并选择 " **Windows server 2019 Datacenter** " 以开始创建 VM 工作流。
 2. 从 "**选择软件计划**" 中选择 "使用容器的 Windows Server 2019 Datacenter server Core"，然后选择 "**创建**"
 3. 完成上述 "从 Azure Marketplace 部署" 说明中的步骤5。
 
@@ -69,7 +71,7 @@ ms.locfileid: "72964663"
    1. 复制要使用的订阅的 SubscriptionID 字段
    1. 用复制的 ID 运行此命令：
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 

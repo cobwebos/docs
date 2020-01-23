@@ -4,12 +4,12 @@ description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664626"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513790"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -262,7 +262,6 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储或者快照任务运行延迟，则备份作业可能会失败。 以下状态可能会导致快照任务失败：
 
-* 使用 NSG 阻止对存储进行网络访问。 详细了解如何使用 Ip 允许列表或代理服务器建立对存储的[网络访问](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 * 配置了 SQL Server 备份的 VM 可能会导致快照任务延迟。 默认情况下，VM 备份在 Windows VM 上创建 VSS 完整备份。 运行 SQL Server 且配置有 SQL Server 备份的 VM 可能会遇到快照延迟。 如果快照延迟导致备份失败，请设置以下注册表项：
 
    ```text
@@ -276,29 +275,9 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 
 ## <a name="networking"></a>联网
 
-与所有扩展一样，备份扩展也需要访问公共 Internet 才能工作。 无法访问公共 Internet 可能会出现以下各种情况：
+必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
+获取有关如何通过 PowerShell 设置静态 IP 的详细信息：
 
-* 扩展安装可能会失败。
-* 磁盘快照等备份操作可能失败。
-* 显示备份操作状态可能失败。
+* [如何向现有 VM 添加静态内部 IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [更改分配给网络接口的专用 IP 地址的分配方法](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-[此 Azure 支持博客](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)中讨论了解析公共 Internet 地址的必要性。 检查 VNET 的 DNS 配置，并确保可以解析 Azure URI。
-
-正确完成名称解析后，还需要提供对 Azure IP 的访问权限。 若要取消阻止对 Azure 基础结构的访问，请执行以下步骤之一：
-
-* 允许 Azure 数据中心 IP 范围的列表：
-   1. 获取要在允许列表中出现的[Azure 数据中心 ip](https://www.microsoft.com/download/details.aspx?id=41653)列表。
-   1. 使用 [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) cmdlet 取消阻止 IP。 在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet。 以管理员身份运行。
-   1. 如果已创建规则，则向 NSG 添加规则，以允许访问这些 IP。
-* 为 HTTP 流量创建路径：
-   1. 如果指定了某种网络限制，请部署 HTTP 代理服务器来路由流量。 例如，网络安全组。 请参阅[建立网络连接](backup-azure-arm-vms-prepare.md#establish-network-connectivity)中的部署 HTTP 代理服务器的步骤。
-   1. 如果已创建规则，则向 NSG 添加规则，以允许从 HTTP 代理访问 Internet。
-
-> [!NOTE]
-> 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
-> 获取有关如何通过 PowerShell 设置静态 IP 的详细信息：
->
-> * [如何向现有 VM 添加静态内部 IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [更改分配给网络接口的专用 IP 地址的分配方法](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

@@ -1,20 +1,18 @@
 ---
 title: （已弃用）Azure 容器服务教程 - 管理 DC/OS
 description: Azure 容器服务教程 - 管理 DC/OS
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000424"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278342"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>（已弃用）Azure 容器服务教程 - 管理 DC/OS
 
@@ -24,7 +22,7 @@ DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平�
 
 > [!div class="checklist"]
 > * 创建 ACS DC/OS 群集
-> * 连接至群集
+> * 连接到群集
 > * 安装 DC/OS CLI
 > * 将应用程序部署到群集
 > * 缩放群集上的应用程序
@@ -38,7 +36,7 @@ DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平�
 
 首先，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组。
+以下示例在“westeurope”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -46,7 +44,7 @@ az group create --name myResourceGroup --location westeurope
 
 接下来，使用 [az acs create](/cli/azure/acs#az-acs-create) 命令创建 DC/OS 群集。
 
-下面的示例创建一个名为 myDCOSCluster 的 DC/OS 群集，并且在不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
+下面的示例创建一个名为 myDCOSCluster  的 DC/OS 群集，并且在不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
 ```azurecli
 az acs create \
@@ -88,7 +86,7 @@ dcos config set core.dcos_url http://localhost
 
 ## <a name="run-an-application"></a>运行应用程序
 
-ACS DC/OS 群集的默认计划机制为 Marathon。 Marathon 用于启动应用程序和管理 DC/OS 群集上的应用程序状态。 若要通过 Marathon 计划应用程序，则请创建一个名为 marathon app.json 的文件，并将以下内容复制到其中。 
+ACS DC/OS 群集的默认计划机制为 Marathon。 Marathon 用于启动应用程序和管理 DC/OS 群集上的应用程序状态。 若要通过 Marathon 计划应用程序，则请创建一个名为 marathon app.json 的文件  ，并将以下内容复制到其中。 
 
 ```json
 {
@@ -128,7 +126,7 @@ dcos marathon app add marathon-app.json
 dcos marathon app list
 ```
 
-当“TASKS”列值从“0/1”切换到“1/1”时，应用部署已完成。
+当“TASKS”  列值从“0/1”  切换到“1/1”  时，应用部署已完成。
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -137,7 +135,7 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 ## <a name="scale-marathon-application"></a>缩放 Marathon 应用程序
 
-在上一个示例中，已创建单个实例应用程序。 要更新此部署，以使应用程序的三个实例可用，请打开“marathon-app.json”文件，并将实例属性更新为 3。
+在上一个示例中，已创建单个实例应用程序。 要更新此部署，以使应用程序的三个实例可用，请打开“marathon-app.json”  文件，并将实例属性更新为 3。
 
 ```json
 {
@@ -177,7 +175,7 @@ dcos marathon app update demo-app-private < marathon-app.json
 dcos marathon app list
 ```
 
-当“TASKS”列值从“1/3”切换到“3/1”时，应用程序部署已完成。
+当“TASKS”  列值从“1/3”  切换到“3/1”  时，应用程序部署已完成。
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -190,7 +188,7 @@ ACS DC/OS 群集包括两个节点集，一个是可通过 Internet 访问的公
 
 若要通过 Internet 访问应用程序，则需要将其部署到公共节点集。 若要执行此操作，请为 `acceptedResourceRoles` 对象赋值 `slave_public`。
 
-创建名为 nginx-public.json 的文件，并将以下内容复制到其中。
+创建名为 nginx-public.json  的文件，并将以下内容复制到其中。
 
 ```json
 {
@@ -268,7 +266,7 @@ az group delete --name myResourceGroup --no-wait
 
 > [!div class="checklist"]
 > * 创建 ACS DC/OS 群集
-> * 连接至群集
+> * 连接到群集
 > * 安装 DC/OS CLI
 > * 将应用程序部署到群集
 > * 缩放群集上的应用程序

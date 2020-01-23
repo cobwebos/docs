@@ -3,12 +3,12 @@ title: 备份和还原加密的 Azure Vm
 description: 介绍如何利用 Azure 备份服务备份和还原加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449968"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513773"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原加密的 Azure VM
 
@@ -53,7 +53,6 @@ Azure 备份可以使用包含或不带 Azure AD 应用的 ADE 来备份和还�
 此外，在某些情况下，你可能需要执行几项操作：
 
 - 在**vm 上安装 vm 代理**： azure 备份通过将扩展安装到在计算机上运行的 Azure VM 代理来备份 azure vm。 如果 VM 是从 Azure marketplace 映像创建的，则代理已安装并正在运行。 如果创建自定义 VM，或迁移本地计算机，则可能需要[手动安装代理](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
-- **明确允许出站访问**：通常，无需显式允许 Azure VM 的出站网络访问，就能与 azure 备份进行通信。 但是，某些 Vm 可能会遇到连接问题，并在尝试连接时显示**ExtensionSnapshotFailedNoNetwork**错误。 如果发生这种情况，应[显式允许出站访问](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)，以便 azure 备份扩展可以与 AZURE 公共 IP 地址进行通信，以进行备份通信。
 
 ## <a name="configure-a-backup-policy"></a>配置备份策略
 

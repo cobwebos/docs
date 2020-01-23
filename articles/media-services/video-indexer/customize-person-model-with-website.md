@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 060d94d6181e894c18d268845b48eb802c52730c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838278"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513212"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义人员模型
 
@@ -134,14 +134,14 @@ ms.locfileid: "73838278"
 
 1. 单击页面顶部的 "**上传**" 按钮。
 
-    ![上传](./media/customize-face-model/upload.png)
+    ![上载](./media/customize-face-model/upload.png)
 1. 将视频文件放在圆圈中或浏览文件。
 1. 单击 "高级选项" 箭头。
 
-    ![上传](./media/customize-face-model/upload2.png)
+    ![上载](./media/customize-face-model/upload2.png)
 1. 单击下拉箭头，然后选择所创建的人员模型。
 
-    ![上传](./media/customize-face-model/upload3.png)
+    ![上载](./media/customize-face-model/upload3.png)
 1. 单击页面底部的 "上传" 选项，将使用人员模型为新视频编制索引。
 
 如果在上传过程中未指定人员模型，则视频索引器将使用帐户中的默认人员模型为视频编制索引。

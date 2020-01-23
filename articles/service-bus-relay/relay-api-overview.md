@@ -1,6 +1,6 @@
 ---
 title: Azure 中继 API 概述 | Microsoft Docs
-description: 可用的 Azure 中继 API 概述
+description: 本文概述了可用的 Azure 中继 Api （.NET Standard、.NET Framework、node.js 等）
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593343"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513960"
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
 
@@ -32,7 +32,7 @@ ms.locfileid: "60593343"
 | 语言/平台 | 可用功能 | 客户端程序包 | 存储库 |
 | --- | --- | --- | --- |
 | .NET Standard | 混合连接 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 不适用 |
+| .NET Framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
 | 节点 | 混合连接 | [Websocket：`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket：`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他信息

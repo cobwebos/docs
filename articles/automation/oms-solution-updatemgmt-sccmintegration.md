@@ -3,14 +3,16 @@ title: 将 Azure 更新管理与 Configuration Manager 客户端配合使用
 description: 本文旨在帮助你配置 Microsoft Endpoint Configuration Manager 与此解决方案，以便将软件更新部署到 ConfigMgr 客户端。
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2018
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769942"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513127"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Configuration Manager 客户端将更新部署到更新管理
 
@@ -25,7 +27,7 @@ ms.locfileid: "75769942"
 * 此功能在 Configuration Manager 当前分支版本1606及更高版本中启用。 若要将 Configuration Manager 管理中心站点或独立主站点与 Azure Monitor 日志和导入集合集成，请查看[Connect Configuration Manager 到 Azure Monitor 日志](../azure-monitor/platform/collect-sccm.md)。  
 * 如果 Windows 代理不从 Configuration Manager 接收安全更新，则它们必须配置为与 Windows Server Update Services (WSUS) 服务器进行通信或有权访问 Microsoft 更新。   
 
-如何使用现有 Configuration Manager 环境管理 Azure IaaS 中托管的客户端主要取决于已在 Azure 数据中心与基础结构之间建立的连接。 此连接会影响你可能需要对 Configuration Manager 基础结构所做的任何设计更改，还会影响与支持这些必要更改相关的成本。 若要了解在继续操作之前需要评估哪些规划注意事项，请查看 [Azure 上的 Configuration Manager - 常见问题解答](/sccm/core/understand/configuration-manager-on-azure#networking)。
+如何使用现有 Configuration Manager 环境管理 Azure IaaS 中托管的客户端主要取决于已在 Azure 数据中心与基础结构之间建立的连接。 此连接会影响你可能需要对 Configuration Manager 基础结构所做的任何设计更改，还会影响与支持这些必要更改相关的成本。 若要了解在继续操作之前需要评估哪些规划注意事项，请查看 [Azure 上的 Configuration Manager - 常见问题解答](https://docs.microsoft.com/configmgr/core/understand/configuration-manager-on-azure#networking)。
 
 ## <a name="configuration"></a>配置
 
@@ -33,7 +35,7 @@ ms.locfileid: "75769942"
 
 如果打算继续从 Configuration Manager 管理更新部署，请执行以下步骤。 Azure 自动化连接到 Configuration Manager 来向连接到 Log Analytics 工作区的客户端计算机应用更新。 可以从客户端计算机缓存获取更新内容，就像部署是由 Configuration Manager 管理的一样。
 
-1. 使用 [deploy software update process](/sccm/sum/deploy-use/deploy-software-updates)（部署软件更新过程）中介绍的过程从 Configuration Manager 层次结构中的顶层站点创建软件更新部署。 与标准部署不同的必须配置的唯一设置是选项“不安装软件更新”，此选项用于控制部署包的下载行为。 此行为是通过在下一步骤中创建计划的更新部署而通过更新管理解决方案管理的。
+1. 使用[部署软件更新](https://docs.microsoft.com/configmgr/sum/deploy-use/deploy-software-updates)中所述的过程，从 Configuration Manager 层次结构中的顶层站点创建软件更新部署。 与标准部署不同的必须配置的唯一设置是选项“不安装软件更新”，此选项用于控制部署包的下载行为。 此行为是通过在下一步骤中创建计划的更新部署而通过更新管理解决方案管理的。
 
 1. 在 Azure 自动化中，选择“更新管理”。 根据[创建更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)中介绍的步骤创建一个新部署，并从“类型”下拉列表中选择“导入的组”来选择合适的配置管理器集合。 请记住以下要点：a. 如果为所选的 Configuration Manager 设备集合定义了维护窗口，则它将存储在集合的成员中而不是存储在计划的部署中定义的“持续时间”设置中。
     b.保留“数据库类型”设置，即设置为“共享”。 目标集合的成员必须连接到 Internet（直接连接、通过代理服务器或者通过 Log Analytics 网关）。
@@ -42,7 +44,7 @@ ms.locfileid: "75769942"
 
 ### <a name="manage-software-updates-from-azure-automation"></a>从 Azure 自动化管理软件更新
 
-若要从是 Configuration Manager 客户端的 Windows Server VM 管理更新，需要配置客户端策略来为由此解决方案管理的所有客户端禁用软件更新管理功能。 默认情况下，客户端设置以层次结构中的所有设备为应用目标。 有关此策略设置以及如何配置此设置的详细信息，请查看[如何在 System Center Configuration Manager 中配置客户端设置](/sccm/core/clients/deploy/configure-client-settings)。
+若要从是 Configuration Manager 客户端的 Windows Server VM 管理更新，需要配置客户端策略来为由此解决方案管理的所有客户端禁用软件更新管理功能。 默认情况下，客户端设置以层次结构中的所有设备为应用目标。 有关此策略设置以及如何对其进行配置的详细信息，请参阅[如何在 Configuration Manager 中配置客户端设置](https://docs.microsoft.com/configmgr/core/clients/deploy/configure-client-settings)。
 
 在执行此配置更改后，根据[创建更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)中介绍的步骤创建一个新部署，并从“类型”下拉列表中选择“导入的组”来选择合适的配置管理器集合。
 
