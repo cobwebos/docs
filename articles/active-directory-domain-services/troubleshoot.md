@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c2a8c8cfa2425985a22b93d4ade509320c48564
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998729"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512617"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -31,9 +31,9 @@ ms.locfileid: "70998729"
 | **示例错误消息** | **解决方法** |
 | --- |:--- |
 | *此网络上已在使用该名称 contoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
-| *无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。* |[域服务没有足够的权限访问 Azure AD 域服务同步应用程序](troubleshoot.md#inadequate-permissions) |
-| *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[Azure AD 租户中未正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
-| *无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
+| *无法在此 Azure AD 租户中启用域服务。服务对名为 "Azure AD 域服务同步" 的应用程序没有足够的权限。删除名为 "Azure AD 域服务同步" 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[域服务没有足够的权限访问 Azure AD 域服务同步应用程序](troubleshoot.md#inadequate-permissions) |
+| *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有启用域服务所需的权限。使用应用程序标识符 d87dcbc6-a371-462e-88e3-28ad15ec4e64 删除应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Azure AD 租户中未正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
+| *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中禁用 Microsoft Azure AD 应用程序。启用应用程序标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>域名冲突
 
@@ -43,7 +43,7 @@ ms.locfileid: "70998729"
 
 **解决方法**
 
-检查虚拟网络上没有具有相同域名的现有 AD DS 环境。 例如，你可能有一个在 Azure Vm 上运行的名为*contoso.com*的 AD DS 域。 尝试在虚拟网络上启用具有相同域名*contoso.com*的 Azure AD DS 托管域时，请求的操作将失败。
+检查相同的或对等互连的虚拟网络上没有具有相同域名的现有 AD DS 环境。 例如，你可能有一个在 Azure Vm 上运行的名为*contoso.com*的 AD DS 域。 尝试在虚拟网络上启用具有相同域名*contoso.com*的 Azure AD DS 托管域时，请求的操作将失败。
 
 此失败是由虚拟网络上的域名冲突引起的。 DNS 查找检查现有 AD DS 环境是否响应请求的域名。 若要解决此失败，请使用其他名称设置 Azure AD DS 托管域，或取消预配现有 AD DS 域，然后重试以启用 Azure AD DS。
 
@@ -51,7 +51,7 @@ ms.locfileid: "70998729"
 
 **错误消息**
 
-*无法在此 Azure AD 租户中启用域服务。该服务对名为“Azure AD 域服务同步”的应用程序没有足够的权限。请删除名为“Azure AD 域服务同步”的应用程序，并尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。服务对名为 "Azure AD 域服务同步" 的应用程序没有足够的权限。删除名为 "Azure AD 域服务同步" 的应用程序，然后尝试为 Azure AD 租户启用域服务。*
 
 **解决方法**
 
@@ -66,13 +66,13 @@ ms.locfileid: "70998729"
 
 **错误消息**
 
-*无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有所需的权限来启用域服务。请删除标识符为 d87dcbc6-a371-462e-88e3-28ad15ec4e64 的应用程序，并尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有启用域服务所需的权限。使用应用程序标识符 d87dcbc6-a371-462e-88e3-28ad15ec4e64 删除应用程序，然后尝试为 Azure AD 租户启用域服务。*
 
 **解决方法**
 
 检查 Azure AD 目录中是否有一个名为*AzureActiveDirectoryDomainControllerServices*的现有应用程序，其应用程序标识符为*d87dcbc6-a371-462e-88e3-28ad15ec4e64* 。 如果此应用程序存在，请将其删除，然后重试启用 Azure AD DS。
 
-使用以下 PowerShell 脚本搜索现有应用程序实例，并根据需要将其删除。
+使用以下 PowerShell 脚本搜索现有的应用程序实例，并在需要时将其删除：
 
 ```powershell
 $InformationPreference = "Continue"
@@ -110,7 +110,7 @@ if ($sp -ne $null)
 
 **错误消息**
 
-*无法在此 Azure AD 租户中启用域服务。Microsoft Azure AD 应用程序已在 Azure AD 租户中禁用。请启用标识符为 00000002-0000-0000-c000-000000000000 的应用程序，并尝试为 Azure AD 租户启用域服务。*
+*无法在此 Azure AD 租户中启用域服务。Azure AD 租户中禁用 Microsoft Azure AD 应用程序。启用应用程序标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。*
 
 **解决方法**
 
@@ -128,7 +128,7 @@ if ($sp -ne $null)
 
 如果 Azure AD 租户中的一个或多个用户无法登录到 Azure AD DS 托管域，请完成以下故障排除步骤：
 
-* **凭据格式**-尝试使用 UPN 格式指定凭据，如`dee@contoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
+* **凭据格式**-尝试使用 UPN 格式指定凭据，如 `dee@contoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
 
     如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，则可能会自动生成帐户的*SAMAccountName* （如*CONTOSO\driley* ）。 因此，你的帐户的*SAMAccountName*格式可能不同于你在本地域中的预期或使用的格式。
 
@@ -145,13 +145,13 @@ if ($sp -ne $null)
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **仅限云帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在[启用 AZURE AD DS 后，用户已更改其密码][cloud-only-passwords]。 此密码重置将导致生成 Azure AD 域服务所需的凭据哈希。
+    * **仅限云的帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在[启用 Azure AD DS 后，用户已更改其密码][cloud-only-passwords]。 此密码重置将导致生成 Azure AD 域服务所需的凭据哈希。
 
-* **验证用户帐户是否处于活动状态**：默认情况下，托管域2分钟内的5次无效密码尝试将导致用户帐户被锁定30分钟。 当帐户被锁定时，用户无法登录。30 分钟后用户帐户将自动解锁。
+* **验证用户帐户是否处于活动状态**：默认情况下，在2分钟内，托管域上的5次无效密码尝试将导致用户帐户被锁定30分钟。 当帐户被锁定时，用户无法登录。30分钟后，用户帐户会自动解锁。
   * Azure AD DS 托管域上的密码尝试无效，不会锁定 Azure AD 中的用户帐户。 仅在托管域中锁定用户帐户。 使用[管理 VM][management-vm]（而不是在 Azure AD 中 *）检查 Active Directory 管理控制台（ADAC）* 中的用户帐户状态。
   * 你还可以[配置细化密码策略][password-policy]，以更改默认锁定阈值和持续时间。
 
-* **外部帐户**-检查受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（ `dee@live.com`如）或外部 Azure AD 目录中的用户帐户。 Azure AD DS 不存储外部用户帐户的凭据，因此无法登录到托管域。
+* **外部帐户**-检查受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（如 `dee@live.com`）或外部 Azure AD 目录中的用户帐户。 Azure AD DS 不存储外部用户帐户的凭据，因此无法登录到托管域。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>托管域上出现一个或多个警报
 
@@ -165,11 +165,11 @@ Azure AD 可防止意外删除用户对象。 从 Azure AD 租户中删除用户
 
 即使在 Azure AD 目录中重新创建了具有相同 UPN 的用户帐户，用户帐户仍在 Azure AD DS 托管域中处于禁用状态。 若要从 Azure AD DS 托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
 
-若要从 Azure AD DS 托管域完全删除用户帐户，请使用带有`-RemoveFromRecycleBin`参数的[set-msoluser][Remove-MsolUser] PowerShell cmdlet 从 Azure AD 租户中永久删除该用户。
+若要从 Azure AD DS 托管域完全删除用户帐户，请使用带有 `-RemoveFromRecycleBin` 参数的[Set-msoluser][Remove-MsolUser] PowerShell cmdlet 从 Azure AD 租户中永久删除该用户。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果仍有问题，请[提出 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+如果继续遇到问题，请[提出 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 <!-- INTERNAL LINKS -->
 [cloud-only-passwords]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds

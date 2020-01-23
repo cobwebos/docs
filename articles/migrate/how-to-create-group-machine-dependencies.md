@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 1cd1ff83fd706e3474426f6cc2ac99d39e74dc22
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177936"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514963"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>为评估设置依赖项可视化
 
@@ -34,13 +34,13 @@ ms.locfileid: "72177936"
 - 请确保已在 Azure Migrate 中发现了计算机;为此，可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
 
 
-**功能** | **注意**
+**功能特色** | **注意**
 --- | ---
 可用性 | 依赖关系可视化在 Azure 政府版中不可用。
-服务映射 | 依赖项可视化使用 Azure Monitor 中服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map.md)会自动发现并显示服务器之间的连接。
-代理 | 若要使用依赖关系可视化，请在要映射的计算机上安装以下代理：<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程序代理（以前称为 MICROSOFT MONITORING AGENT （MMA）。<br/> [服务映射依赖关系代理](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)- 。<br/><br/> 若要自动完成代理安装，你可以使用 System Center Configuration Manager 的部署工具，该工具具有用于 Azure Migrate 的代理部署解决方案。
+服务地图 | 依赖项可视化使用 Azure Monitor 中服务映射解决方案。 [服务映射](../azure-monitor/insights/service-map.md)会自动发现并显示服务器之间的连接。
+代理 | 若要使用依赖关系可视化，请在要映射的计算机上安装以下代理：<br/> - [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)程序代理（以前称为 MICROSOFT MONITORING AGENT （MMA）。<br/> [服务映射依赖关系代理](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)- 。<br/><br/> 若要自动完成代理安装，你可以使用 Configuration Manager 的部署工具，该工具具有用于 Azure Migrate 的代理部署解决方案。
 依赖关系代理 | 查看 Windows 和 Linux 的[依赖关系代理支持](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> [了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)有关使用脚本安装依赖关系代理的详细信息。
-Log Analytics 代理（MMA） | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机，无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用集成。 但请注意，依赖关系代理将需要安装在这些计算机上。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
+Log Analytics 代理（MMA） | [了解](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)有关 MMA 安装方法的详细信息。<br/><br/> 对于 System Center Operations Manager 2012 R2 或更高版本监视的计算机，无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 你可以使用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指南启用该集成。 但请注意，依赖关系代理将需要安装在这些计算机上。<br/><br/> [查看](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)Log Analytics 代理支持的 Linux 操作系统。
 评估组 | 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果计算机超过10台，请将它们拆分成较小的组，以可视化依赖项。
 
 ## <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
@@ -88,7 +88,7 @@ Log Analytics 代理（MMA） | [了解](../azure-monitor/platform/log-analytics
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
-你可以从命令行安装代理，也可以使用自动方法（如 System Center Configuration Manager 或[Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)）来安装代理。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)如何使用这些方法安装 MMA 代理。 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
+你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)）来安装代理。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)如何使用这些方法安装 MMA 代理。 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
 
 [了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)有关 MMA 支持的 Windows 操作系统的详细信息。
 

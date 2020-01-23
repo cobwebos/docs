@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912315"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511138"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
 
@@ -26,6 +26,7 @@ ms.locfileid: "75912315"
 本文假定你使用的是 Modbus TCP 协议。 若要详细了解如何配置支持 Modbus RTU 的模块，请参阅 GitHub 上的 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。
 
 ## <a name="prerequisites"></a>必备组件
+
 * Azure IoT Edge 设备。 有关如何设置一个的演练，请参阅在 Windows 或[Linux](quickstart-linux.md)[上部署 Azure IoT Edge](quickstart.md) 。
 * IoT Edge 设备的主键连接字符串。
 * 支持 Modbus TCP 的物理或模拟 Modbus 设备。 你将需要知道其 IPv4 地址。

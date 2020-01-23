@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640697"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513365"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 
@@ -52,7 +52,6 @@ ms.locfileid: "75640697"
 
 -   如果指定了许多 `servers`，API 管理将尝试选择第一个 HTTPs URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
 -   `Examples` 不受支持，但 `example` 为。
--   不支持 `Multipart/form-data`。
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI 导入、更新和导出机制
 

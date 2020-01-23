@@ -1,18 +1,18 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 说明如何针对 Azure 事件网格中的事件设置 CloudEvents 架构。
+description: 介绍如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 服务支持云事件的 JSON 实现中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f903a358ea493cd01238339ede10b4b16f98c7c5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922748"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514589"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
 

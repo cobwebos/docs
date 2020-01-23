@@ -1,28 +1,28 @@
 ---
 title: Azure 事件网格事件架构
-description: 介绍为 Azure 事件网格中事件所提供的属性
+description: 描述所有事件的属性和架构。 事件包含一组五个必需的字符串属性和一个必需的数据对象。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607609"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512974"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
 本文介绍为所有事件提供的属性和架构。 事件包含一组五个必需的字符串属性和一个必需的数据对象。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB（正式版）或 1 MB（预览版）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”。
+事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB （公开上市）或 1 MB （预览）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”。
 
 > [!NOTE]
-> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
+> 最大为 64 KB 的事件包含在公开上市（GA）服务级别协议（SLA）中。 最大为 1 MB 的事件支持目前处于预览状态。 超过 64 KB 的事件以 64-KB 为增量收费。 
 
 事件网格会将事件发送给具有单个事件的数组中的订阅者。 此行为在将来可能会更改。
 
@@ -83,14 +83,14 @@ ms.locfileid: "73607609"
 
 所有事件均具有以下相同的顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
-| 数据 | 对象 | 特定于资源提供程序的事件数据。 |
+| data | 对象 | 特定于资源提供程序的事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -111,7 +111,7 @@ ms.locfileid: "73607609"
 
 将事件发布到自定义主题时，可为事件创建主题，便于订阅者们了解他们是否对该事件感兴趣。 订阅者使用主题来筛选和路由事件。 请考虑为事件发生的位置提供路径，以便订阅者可根据该路径的片段进行筛选。 通过路径，订阅者可精确或宽泛地筛选事件。 例如，如果在主题中提供一个由三个片段构成的路径（如 `/A/B/C`），订阅者可根据第一个片段 `/A` 进行筛选，获取范围较宽泛的一组事件。 这些订阅者会获取主题为 `/A/B/C` 或 `/A/D/E` 这样的事件。 其他订阅者可通过 `/A/B` 进行筛选，这样可以获取范围更精确的一组事件。
 
-有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题`/blobServices/default/containers/<container-name>/blobs/<file>`。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
+有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题 `/blobServices/default/containers/<container-name>/blobs/<file>`。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
 
 ## <a name="next-steps"></a>后续步骤
 

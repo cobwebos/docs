@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968504"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513382"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "74968504"
 ## <a name="a-idissuesknown-issues"></a><a id="issues"/>已知问题
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | 描述 |
+| 问题 | Description |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
@@ -50,15 +50,17 @@ ms.locfileid: "74968504"
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
-有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
+有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。
+
+另请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布不推荐在2020年3月31日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
+我们宣布不推荐在2020年3月1日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
@@ -557,7 +559,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

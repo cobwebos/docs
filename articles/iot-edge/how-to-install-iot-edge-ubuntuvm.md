@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263330"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510050"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "76263330"
 
 若要了解有关 IoT Edge 运行时如何工作以及包含哪些组件的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了使用预配置的 [Ubuntu Azure 市场套餐中的 Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) 在 Ubuntu 16.04 虚拟机上运行 Azure IoT Edge 运行时的步骤。 
+本文列出了使用预配置的 [Ubuntu Azure 市场套餐中的 Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) 在 Ubuntu 16.04 虚拟机上运行 Azure IoT Edge 运行时的步骤。
 
 首次启动时，Ubuntu VM 上的 Azure IoT Edge 会预装最新版本的 Azure IoT Edge 运行时。 它还包含一个脚本用于设置连接字符串并重启运行时（可以通过 Azure VM 门户或 Azure 命令行远程触发重启），这样，你便可以轻松配置和连接 IoT Edge 设备，而无需启动 SSH 或远程桌面会话。 此脚本会等待设置连接字符串并完全安装 IoT Edge 客户端为止，因此，你不需要在自动化中配置这些步骤。
 
@@ -52,22 +52,22 @@ ms.locfileid: "76263330"
    ```azurecli-interactive
    az login
    ```
-    
+
 1. 如果你有多个订阅，请选择要使用的订阅：
    1. 列出订阅：
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. 复制要使用的订阅的 "SubscriptionID" 字段。
 
    1. 使用刚才复制的 ID 设置工作订阅：
-    
-      ```azurecli-interactive 
+
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
-    
+
 1. 创建新资源组（或者在后续步骤中指定现有的资源组）：
 
    ```azurecli-interactive
@@ -93,7 +93,6 @@ ms.locfileid: "76263330"
    ```
 
 设置后若要通过 SSH 连接到此 VM，请在该命令中使用 publicIpAddress：`ssh azureuser@{publicIpAddress}`
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424818"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512583"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：要求托管设备使用条件访问访问 cloud app
 
@@ -69,7 +69,7 @@ ms.locfileid: "75424818"
 
 ![基于设备的条件](./media/require-managed-devices/45.png)
 
-怎样使加入混合 Azure AD 的设备成为受管理设备？  对于加入本地 AD 的设备，假定使用管理解决方案（如 **System Center Configuration Manager (SCCM)** ）或**组策略 (GP)** 对这些设备进行控制来管理它们。 由于 Azure AD 无法确定是否已向设备应用这些方法中的任何一种，因此，在要求使用受管理设备的情况下，要求使用加入混合 Azure AD 的设备是一种相对较弱的机制。 如果加入本地域的设备同时也是加入混合 Azure AD 的设备，则由管理员判断应用于此类设备的方法是否强大到足以使其成为受管理设备。
+怎样使加入混合 Azure AD 的设备成为受管理设备？  对于加入到本地 AD 的设备，假定使用管理解决方案（如**Configuration Manager**或**组策略（GP））** 对这些设备进行控制。 由于 Azure AD 无法确定是否已向设备应用这些方法中的任何一种，因此，在要求使用受管理设备的情况下，要求使用加入混合 Azure AD 的设备是一种相对较弱的机制。 如果加入本地域的设备同时也是加入混合 Azure AD 的设备，则由管理员判断应用于此类设备的方法是否强大到足以使其成为受管理设备。
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 

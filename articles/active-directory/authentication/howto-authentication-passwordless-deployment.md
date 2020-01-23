@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848487"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512566"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>完成无密码 authentication 部署
 
@@ -51,13 +51,13 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 ### <a name="passwordless-authentication-scenarios"></a>无密码 authentication 方案
 
-| 场景 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
+| 方案 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
 | --- | --- | --- | --- |
-| **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
-| **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | **否** |
+| **计算机登录**： <br> 从分配的 Windows 10 设备 | **是** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
+| **计算机登录**： <br> 从共享 Windows 10 设备 | **是** | **是** <br> 带生物识别、PIN  | **是** |
 | **Web 应用登录**： <br>从用户专用计算机 | **是** | **是** <br> 已通过计算机登录启用对应用的单一登录 | **是**<br> 已通过计算机登录启用对应用的单一登录 |
-| **Web 应用登录**： <br> 从移动设备或非 windows 设备 | **是** | **否** | **否** |
-| **计算机登录**： <br> 非 Windows 计算机 | **否** | **否** | **否** |
+| **Web 应用登录**： <br> 从移动设备或非 windows 设备 | **是** | **是** | **是** |
+| **计算机登录**： <br> 非 Windows 计算机 | **是** | **是** | **是** |
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Microsoft Authenticator 应用的技术注意事项
 
@@ -108,7 +108,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
    - 建议使用 Intune 部署。
 - [启用带有预配包的凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - 如果无法部署 Intune，则管理员必须在每台计算机上部署包以启用凭据提供程序功能。 可以通过以下选项之一来执行包安装：
-      - 组策略或 System Center Configuration Manager （SCCM）
+      - 组策略或 Configuration Manager
       - Windows 10 计算机上的本地安装
 
 ### <a name="register-security-keys"></a>注册安全密钥
@@ -129,13 +129,13 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 下表概述了要在此项目中实现的用例。
 
-| 区域 | 描述 |
+| 区域 | Description |
 | --- | --- |
-| **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
+| **Access** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
 | **管理** | 定义和监视相应身份验证方法和关联组的用户分配生命周期。 |
 | **安全性** | 可以通过用户和组分配来控制对适当身份验证方法的访问。 <br> 只有经过授权的用户才能使用无密码登录。 |
-| **性能** | 访问分配传播时间线已记录并被监视。 <br> 为便于使用，对登录时间进行度量。 |
+| **“性能”** | 访问分配传播时间线已记录并被监视。 <br> 为便于使用，对登录时间进行度量。 |
 | **用户体验** | 用户了解移动兼容性。 <br> 用户可以配置身份验证器应用无密码登录。 |
 | **支持** | 用户了解如何查找对无密码登录问题的支持。 |
 
@@ -164,7 +164,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 下面是 Microsoft Authenticator 应用进行无密码身份验证的示例测试案例
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以注册 Microsoft Authenticator 应用 | 用户可以从 aka.ms/mysecurityinfo 注册应用程序 |
 | 用户可以启用手机登录 | 为工作帐户配置的电话登录 |
@@ -178,7 +178,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 **无密码 FIDO 登录到 Azure Active Directory 联接的 Windows 10 设备**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以注册 FIDO2 设备（1809） | 用户可以使用 at > 帐户 > 登录选项 > 安全密钥注册 FIDO2 设备 |
 | 用户可以重置 FIDO2 设备（1809） | 用户可以使用制造商软件重置 FIDO2 设备 |
@@ -189,7 +189,7 @@ Microsoft 提供了 MFA[通信模板](https://aka.ms/mfatemplates)、自助服�
 
 **无密码 FIDO 登录到 Azure AD web 应用**
 
-| 场景 | 预期结果 |
+| 方案 | 预期结果 |
 | --- | --- |
 | 用户可以使用 Microsoft Edge 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
 | 用户可以使用 Firefox 在 aka.ms/mysecurityinfo 上注册 FIDO2 设备 | 注册应成功 |
@@ -245,7 +245,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-| Azure AD 角色 | 描述 |
+| Azure AD 角色 | Description |
 | --- | --- |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
@@ -260,7 +260,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-phone-sign-in"></a>电话登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行组合注册 | 确保启用了[组合注册](concept-registration-mfa-sspr-combined.md)。 |
 | 用户无法在验证器应用中启用电话登录 | 确保用户处于部署范围内 |
@@ -268,7 +268,7 @@ Azure AD 将条目添加到审核日志中：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>安全密钥登录疑难解答
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | --- | --- |
 | 用户无法执行组合注册 | 确保启用了[组合注册](concept-registration-mfa-sspr-combined.md)。 |
 | 用户无法在其[安全设置](https://aka.ms/mysecurityinfo)中添加安全密钥 | 确保启用[安全密钥](howto-authentication-passwordless-security-key.md)。 |

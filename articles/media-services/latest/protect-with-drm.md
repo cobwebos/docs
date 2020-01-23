@@ -1,5 +1,5 @@
 ---
-title: 使用 DRM 动态加密和许可证传送服务
+title: Azure 媒体服务 DRM 加密和许可证传送服务
 titleSuffix: Azure Media Services
 description: 了解如何使用 DRM 动态加密和许可证传送服务传递使用 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974064"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513059"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -92,7 +92,7 @@ ms.locfileid: "74974064"
 
 ## <a name="submit-job"></a>提交作业
 
-如上所述，**转换**对象为脚本，[作业则](transforms-jobs-concept.md)是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 Job 指定输入视频位置和输出位置等信息。
+如上所述，**转换**对象为脚本，[作业则是](transforms-jobs-concept.md)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 Job 指定输入视频位置和输出位置等信息。
 
 在本教程中，我们将基于直接从[HTTPs 源 URL](job-input-from-http-how-to.md)引入的文件创建作业的输入。
 
@@ -150,7 +150,7 @@ ContentKeyPolicy 中使用了 ContentKeyIdentifierClaim，这意味着，提供�
 
 ## <a name="build-a-streaming-url"></a>生成流式处理 URL
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和**流式处理定位符**路径。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和**流式处理定位符**路径。 在此示例中，使用了*默认*的**流式处理终结点**。 首次创建媒体服务帐户时，此*默认***流式处理终结点**将处于停止状态，因此需要调用**Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -178,7 +178,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

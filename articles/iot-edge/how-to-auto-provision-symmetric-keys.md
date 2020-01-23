@@ -9,12 +9,12 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c42d13f4d2e00b67a2ef471a07c80e1ef61e9c07
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3adefbdf248deaec6170037521ab65890356d184
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666318"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510883"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -43,11 +43,7 @@ ms.locfileid: "74666318"
 
 必须定义唯一注册 ID 来标识每个设备。 可以使用 MAC 地址、序列号或设备中的任何唯一信息。
 
-在此示例中，我们使用 MAC 地址和序列号的组合，构成以下注册 ID 字符串。
-
-```
-sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-```
+在此示例中，我们使用一个 MAC 地址和序列号的组合，为注册 ID 提供以下字符串： `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
 
 为设备创建一个唯一注册 ID。 有效字符为小写字母数字和短划线（“-”）。
 
@@ -186,7 +182,7 @@ provisioning:
       symmetric_key: "{symmetric_key}"
 ```
 
-将 `{scope_id}`、`{registration_id}`和 `{symmetric_key}` 的占位符值替换为先前收集的数据。
+将 `{scope_id}`、`{registration_id}`和 `{symmetric_key}` 的占位符值替换为先前收集的数据。 请确保**预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
 
 ### <a name="windows-device"></a>Windows 设备
 

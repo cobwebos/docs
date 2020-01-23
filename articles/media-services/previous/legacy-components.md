@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务旧组件 | Microsoft Docs
+title: Azure 媒体服务旧组件 |Microsoft Docs
 description: 本主题介绍 Azure 媒体服务旧组件。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6a61c868da7b979b1ac5654f4be93b5245179105
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423915"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509166"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -26,7 +26,7 @@ ms.locfileid: "74423915"
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>旧组件和迁移指南的停用计划
 
-我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器。 这些处理器将于2020年3月31日停用。
+我们宣布弃用*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。 这些处理器在2020年3月1日停用。
 
 * [从 Windows Azure 媒体编码器迁移到 Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [从 Azure 媒体编码器迁移到 Media Encoder Standard](migrate-azure-media-encoder.md)
@@ -35,7 +35,7 @@ ms.locfileid: "74423915"
  
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020年1月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
 |[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>后续步骤

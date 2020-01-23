@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263449"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515031"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -160,7 +160,7 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 | 名称 | 说明 |
 |------|-------|
 | 表达式计算限制 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
-| 请求 URL 字符限制 | 32K 个字符 |
+| 请求 URL 字符限制 | 16384个字符 |
 |||
 
 #### <a name="retry-policy"></a>重试策略

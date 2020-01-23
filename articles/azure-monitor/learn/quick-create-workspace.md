@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc8162a157cee10deeb8bf3f1e62a53fbdd30d0e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365523"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513433"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 使用“Log Analytics 工作区”菜单通过 Azure 门户创建 Log Analytics 工作区。 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。 如果打算从以下源收集数据，则需要 Log Analytics 工作区：
 
 * 订阅中的 Azure 资源
 * 受 System Center Operations Manager 监视的本地计算机
-* System Center Configuration Manager 中的设备集合 
+* Configuration Manager 的设备集合 
 * Azure 存储中的诊断或日志数据
 
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：

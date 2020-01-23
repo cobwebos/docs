@@ -1,5 +1,5 @@
 ---
-title: 适用于 Android 的脱机 Widevine 流式处理 Azure 媒体服务 v3
+title: 通过 Azure 媒体服务 v3 流式传输 Widevine Android
 description: 本主题演示如何配置 Azure 媒体服务帐户，以对受 Widevine 保护的内容进行脱机流式处理。
 services: media-services
 keywords: DASH, DRM, Widevine 脱机模式, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 7c7e1ca8c27ba9b5d7558a75106cf6d3f3e2172e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779903"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513093"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
 

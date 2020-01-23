@@ -16,22 +16,15 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295120"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512957"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory 混合标识设计注意事项 - 后续步骤
 既然已为移动设备管理解决方案完成要求定义和所有选项检查，就可以随时采取后续步骤，为你和组织部署合适的支持基础结构。
-
-## <a name="hybrid-identity-solutions"></a>混合标识解决方案
--利用满足需求的特定解决方案应用场景是非常好的方法，用于查看并规划部署移动设备管理基础结构的细节。 以下解决方案概述了多个最常见的移动设备管理方案：
-
-* [管理企业环境中的移动设备和电脑的解决方案](https://technet.microsoft.com/library/dn582037.aspx)通过以下方式帮助你管理移动设备：使用 Microsoft Intune 将本地 System Center 2012 Configuration Manager 基础结构扩展到云中。 此混合基础结构帮助大中型环境中的 IT 专业人员支持 BYOD 和远程访问，同时降低管理复杂性。
-* [管理适用于 Configuration Manager 2007 的移动设备的解决方案](https://technet.microsoft.com/library/dn508400.aspx)在以下情况下帮助你管理移动设备：基础结构依赖 System Center Configuration Manager 2007。 此解决方案介绍了如何设置运行 System Center 2012 Configuration Manager 的单个服务器，以便可以运行 Microsoft Intune 并充分利用其 MDM 功能。
-* [管理小型环境中的移动设备的解决方案](https://technet.microsoft.com/library/dn715906.aspx)适用于需要支持 MDM 的小型企业。 它说明了如何使用 Microsoft Intune 扩展当前基础结构以支持移动设备管理和 BYOD。 本解决方案介绍了以下最简单的方案：支持在独立、仅限云配置且没有本地服务器的情形下使用 Microsoft Intune。
 
 ## <a name="hybrid-identity-documentation"></a>混合标识文档
 实现移动设备管理解决方案时，概念和过程规划、部署和管理内容非常有用：
@@ -46,8 +39,7 @@ ms.locfileid: "60295120"
 * [Microsoft 企业移动性博客](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
 * [云中的 Microsoft 博客](https://blogs.technet.com/b/in_the_cloud/)
 * [Microsoft Intune 博客](https://blogs.technet.com/b/microsoftintune/)
-* [Microsoft System Center Configuration Manager 博客](https://blogs.technet.com/b/configurationmgr/)
-* [Microsoft System Center Configuration Manager 团队博客](https://blogs.technet.com/b/configmgrteam/)
+* [Microsoft 端点 Configuration Manager 博客](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)

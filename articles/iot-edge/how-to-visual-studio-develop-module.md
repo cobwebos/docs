@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: a94bc4825f70b9858260feaadaeded6c76ba46e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457248"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509286"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试 Azure IoT Edge 的模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "75457248"
   
 ## <a name="prerequisites"></a>必备组件
 
-本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，您可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/版本17763或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
+本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，您可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/版本17763或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用满足[Docker 桌面要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
 由于本文使用 Visual Studio 2019 作为主开发工具，因此请安装 Visual Studio。 请确保在 Visual Studio 2019 安装中包含工作负载的**Azure 开发**和**桌面开发C++**  。 可以[修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)以添加所需的工作负荷。
 

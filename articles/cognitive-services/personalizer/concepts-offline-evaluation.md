@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953077"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513603"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
-使用脱机评估方法可以在不更改代码或影响用户体验的情况下，测试和评估个性化体验创建服务的有效性。 脱机评估使用从应用程序发送到排名 API 的既往数据来比较不同排名的执行方式。
+使用脱机评估方法可以在不更改代码或影响用户体验的情况下，测试和评估个性化体验创建服务的有效性。 脱机评估使用过去的数据从应用程序发送到排名和奖励 Api，比较不同排名的执行方式。
 
 脱机评估是针对日期范围执行的。 范围的最迟时间是当前时间。 范围的开头不能大于针对[数据保留期](how-to-settings.md)指定的天数。
 
@@ -56,9 +56,9 @@ ms.locfileid: "73953077"
 
 ## <a name="how-offline-evaluations-are-done"></a>如何执行脱机评估
 
-脱机评估是使用一种称作“反事实评估”的方法执行的。 
+脱机评估是使用一种称作“反事实评估”的方法执行的。
 
-个性化体验创建服务基于这种假设：用户行为（即奖励）无法以回溯方式预测（如果用户反映的事物不同于他们看到的事物，则个性化体验创建服务不知道发生了什么情况），而只能从测得的奖励中学习。 
+个性化体验创建服务基于这种假设：用户行为（即奖励）无法以回溯方式预测（如果用户反映的事物不同于他们看到的事物，则个性化体验创建服务不知道发生了什么情况），而只能从测得的奖励中学习。
 
 下面是用于评估的概念过程：
 
@@ -70,11 +70,11 @@ ms.locfileid: "73953077"
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.

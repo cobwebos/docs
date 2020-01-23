@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919335"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511886"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "74919335"
 
 管理 Azure Active Directory 需要持续执行关键操作任务和进程，这可能不是一个部署项目的一部分。 设置这些任务以优化环境仍非常重要。 关键任务及其建议所有者包括：
 
-| 任务 | 所有者 |
+| 任务 | “所有者” |
 | :- | :- |
 | 管理 Azure AD 中的单一登录（SSO）配置生命周期 | IAM 操作团队 |
 | 为 Azure AD 应用程序设计条件性访问策略 | InfoSec 体系结构团队 |
@@ -127,8 +127,8 @@ ms.locfileid: "74919335"
 
 可以通过使用以下方法之一在 Azure AD 中引入设备标识并对其进行管理，从而执行此目标：
 
-- 组织可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)来管理设备并强制实施符合性策略、证明设备运行状况，并根据设备是否符合来设置条件性访问策略。 Microsoft Intune 可以管理 iOS 设备、Mac 桌面（通过 JAMF 集成）、Windows 桌面（本机使用适用于 Windows 10 的移动设备管理以及与 Microsoft 端点管理器/System Center Configuration Manager）和 Android 移动设备的共同管理。
-- [混合 Azure AD 联接](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains)通过 Active Directory 加入域的计算机设备，在环境中提供组策略、System Center Configuration Manager 或 Microsoft 终结点管理器的管理。 组织可以通过无缝 SSO 的 PHS 或 PTA 部署托管环境。 通过使你的设备 Azure AD 跨云和本地资源的 SSO 提高用户工作效率，同时使你能够使用 [条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) 同时保护对云和本地资源的访问。
+- 组织可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)来管理设备并强制实施符合性策略、证明设备运行状况，并根据设备是否符合来设置条件性访问策略。 Microsoft Intune 可以管理 iOS 设备、Mac 桌面（通过 JAMF 集成）、Windows 桌面（本机使用适用于 Windows 10 的移动设备管理以及与 Microsoft 端点 Configuration Manager 的共同管理）和 Android 移动设备。
+- [混合 Azure AD 联接](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains)在具有 Active Directory 加入域的计算机设备的环境中，通过组策略或 Microsoft 终结点 Configuration Manager 提供管理。 组织可以通过无缝 SSO 的 PHS 或 PTA 部署托管环境。 通过使你的设备 Azure AD 跨云和本地资源的 SSO 提高用户工作效率，同时使你能够使用 [条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) 同时保护对云和本地资源的访问。
 
 如果已加入域且未在云中注册的 Windows 设备或在云中注册但没有条件访问策略的已加入域的 Windows 设备，则应注册未注册的设备，并且在任一情况下，都应[使用混合 Azure AD 联接作为](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)条件性访问策略中的控件。
 
@@ -277,9 +277,9 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 1. 使用[登录活动报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)来识别仍在使用旧身份验证和计划修正的用户：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 升级到受影响用户的支持新式身份验证的客户端。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 升级到受影响用户的支持新式身份验证的客户端。
    
-   b. 计划转换时间范围，按以下步骤进行锁定。
+   b.保留“数据库类型”设置，即设置为“共享”。 计划转换时间范围，按以下步骤进行锁定。
    
    c. 确定哪些旧应用程序对旧式身份验证有硬依赖关系。 请参阅下面的步骤3。
 
@@ -373,7 +373,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 - [Office 365 管理活动 API 参考](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

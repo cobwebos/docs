@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: 2066701a88e03feb29bd1689f36460765f1c638d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264706"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513393"
 ---
-# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>使用中的内置笔记本命令和功能 Azure Cosmos DB
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>在 Azure Cosmos DB 中使用内置笔记本命令和功能（预览版）
 
 Azure Cosmos DB 中的内置 Jupyter 笔记本使你可以从 Azure 门户分析和可视化数据。 本文介绍如何使用内置笔记本命令和功能执行常见操作。
 

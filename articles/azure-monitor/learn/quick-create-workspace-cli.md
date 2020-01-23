@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 66850c3871981a537d36c3b2a3a664d8a2f2eee7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b696d57919383e87f8e5e647b774fc9e4dbdf16b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977702"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513467"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -20,7 +20,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 * 订阅中的 Azure 资源  
 * 受 System Center Operations Manager 监视的本地计算机  
-* System Center Configuration Manager 中的设备集合  
+* Configuration Manager 的设备集合  
 * Azure 存储中的诊断或日志数据  
 
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：

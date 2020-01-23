@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 58d6c8d18e03ab248cfbebcf910ae13c5fee439e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530963"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513620"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>用 Log Analytics agent 收集日志数据
 
@@ -142,9 +142,9 @@ Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 A
 
 |源 | 方法 | Description|
 |-------|-------------|-------------|
-|Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>[从 Azure 门户中手动](../../azure-monitor/learn/quick-collect-azurevm.md)- <br>- [Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md)| -扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将其注册到现有 Azure Monitor 工作区。<br>-Azure 安全中心可在所有受支持的 Azure Vm 和创建的任何新的 Azure Vm 上预配 Log Analytics 代理，以使其监视安全漏洞和威胁。 如果启用，则将预配未安装代理的任何新的或现有的虚拟机。|
-| 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 
-| 混合 Linux 计算机| [手动安装](agent-linux.md)|安装适用于 Linux 的代理调用托管在 GitHub 上的包装脚本，或手动下载并安装代理。 | 
+|Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>[从 Azure 门户中手动](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)- <br>- [Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md)| -扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将其注册到现有 Azure Monitor 工作区。<br>-Azure 安全中心可在所有受支持的 Azure Vm 和创建的任何新的 Azure Vm 上预配 Log Analytics 代理，以使其监视安全漏洞和威胁。 如果启用，则将预配未安装代理的任何新的或现有的虚拟机。|
+| 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |如果在数据中心中部署了 Microsoft Azure Stack，请从命令行或使用自动化的方法（例如 Azure Automation DSC、 [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications)或 azure 资源管理器模板）安装 Microsoft Monitoring agent。| 
+| 混合 Linux 计算机| [手动安装](../../azure-monitor/learn/quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 
 | System Center Operations Manager|[将 Operations Manager 与 Log Analytics 集成](om-agents.md) | 配置 Operations Manager 和 Azure Monitor 日志之间的集成，以便将从 Windows 计算机报告收集的数据转发到管理组。|  
 
 ## <a name="next-steps"></a>后续步骤

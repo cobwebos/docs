@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cc37875b84e215066c52ca8daef0fa0d879c54f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434464"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510815"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -40,7 +40,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 4. **对于所有将来的模块部署，为通过代理进行通信的任何模块设置环境变量。**
 
-   设置 IoT Edge 设备并通过代理服务器连接到 IoT 中心后，需要在将来的所有模块部署中维护连接。 有关详细步骤，请参阅本文的[配置部署清单](#configure-deployment-manifests)部分。 
+   设置 IoT Edge 设备并通过代理服务器连接到 IoT 中心后，需要在将来的所有模块部署中维护连接。 有关详细步骤，请参阅本文的[配置部署清单](#configure-deployment-manifests)部分。
 
    此步骤是远程执行的进程，以便每个新的模块或部署更新保持设备通过代理服务器进行通信的能力。
 
@@ -70,7 +70,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 以下步骤演示使用 `-proxy` 参数的 windows 安装的示例：
 
-1. WebRequest 命令需要使用代理信息来访问安装程序脚本。 然后，IoTEdge 命令需要代理信息来下载安装文件。 
+1. WebRequest 命令需要使用代理信息来访问安装程序脚本。 然后，IoTEdge 命令需要代理信息来下载安装文件。
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
@@ -164,13 +164,13 @@ Restart-Service iotedge
 
 IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代理基于 IoT Edge config.yaml 文件中的信息首次启动， IoT Edge 代理随后连接到 IoT 中心以检索部署清单，其中声明了应在设备上部署的其他模块。
 
-在初始设备安装过程中，此步骤只在 IoT Edge 设备上发生一次。 
+在初始设备安装过程中，此步骤只在 IoT Edge 设备上发生一次。
 
-1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，使用 `sudo` 命令，然后在首选文本编辑器中打开文件。 在 Windows 上，以管理员身份打开文本编辑器（如记事本），然后打开文件。 
+1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，使用 `sudo` 命令，然后在首选文本编辑器中打开文件。 在 Windows 上，以管理员身份打开文本编辑器（如记事本），然后打开文件。
 
-2. 在 config.yaml 文件中，找到“Edge 代理模块规范”部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。 
+2. 在 config.yaml 文件中，找到“Edge 代理模块规范”部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。
 
-3. 删除作为 env 参数占位符的大括号，并在新行上添加新变量。 请记住，YAML 中的缩进为两个空格。 
+3. 删除作为 env 参数占位符的大括号，并在新行上添加新变量。 请记住，YAML 中的缩进为两个空格。
 
    ```yaml
    https_proxy: "<proxy URL>"
@@ -184,7 +184,7 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
    ![具有环境变量的 edgeAgent 定义](./media/how-to-configure-proxy-support/edgeagent-edited.png)
 
-5. 将更改保存到 config.yaml 并关闭编辑器。 重新启动 IoT Edge 以使更改生效。 
+5. 将更改保存到 config.yaml 并关闭编辑器。 重新启动 IoT Edge 以使更改生效。
 
    * Linux：
 
