@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028738"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289435"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估来评估 VMware VM
 
@@ -176,7 +176,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 选择“验证连接”，确保设备可以连接到 vCenter Server。 
 
 ### <a name="specify-vm-credentials"></a>指定 VM 凭据
-若要发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供用于访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions)必需访问权限。
+若要发现应用程序、角色和功能并可视化 VM 的依赖关系，可以提供用于访问 VMware VM 的 VM 凭据。 可以分别为 Windows VM 和 Linux VM 添加一个凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)必需访问权限。
 
 > [!NOTE]
 > 此输入为可选，但需要它才能发现应用程序和可视化无代理依赖关系。
@@ -210,7 +210,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1.  从下拉菜单中选择 vCenter Server 实例。
 1.  选择“创建角色”。 
 1.  输入新角色的名称（例如 <em>Azure_Migrate</em>）。
-1.  将[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)分配到新定义的角色。
+1.  将[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)分配到新定义的角色。
 1.  选择“确定”  。
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3.在 vCenter 对象上分配权限
@@ -219,7 +219,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 对于“服务器评估”，必须将“只读”角色应用到所有父对象（在其中托管要发现的 VM）的 vCenter 用户帐户。  将包括层次结构中一直到数据中心的所有父对象：主机、主机文件夹、群集、群集文件夹。 这些权限将传播到层次结构中的子对象。
 
-同样，对于“服务器迁移”，必须为所有父对象（在其中托管要迁移的 VM）的 vCenter 用户帐户应用具有[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)的用户定义角色。 可以将此角色命名为  <em>Azure _Migrate</em>。
+同样，对于“服务器迁移”，必须为所有父对象（在其中托管要迁移的 VM）的 vCenter 用户帐户应用具有[权限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)的用户定义角色。 可以将此角色命名为  <em>Azure _Migrate</em>。
 
 ![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
 

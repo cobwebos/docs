@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701880"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166999"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -22,7 +22,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 例如，IoT Edge 设备上的自定义视觉可以确定某条高速公路的交通流量是高于还是低于正常，或者某个室内停车场是否有连续的停车位。 这些见解可以与其他服务共享，方便采取行动。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -37,36 +37,36 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 >[!TIP]
 >本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。
 
-在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
+在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
 * 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
-* [Docker CE](https://docs.docker.com/install/) 已配置为运行 Linux 容器。
+* 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
 
-要使用自定义视觉设备开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件： 
+要使用自定义视觉设备开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>使用自定义视觉生成图像分类器
 
 若要生成图像分类器，需创建自定义视觉项目并提供训练图像。 若要详细了解在此部分执行的步骤，请参阅[如何使用自定义视觉生成分类器](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md)。
 
-生成并训练图像分类器以后，即可将它作为 Docker 容器导出并部署到 IoT Edge 设备。 
+生成并训练图像分类器以后，即可将它作为 Docker 容器导出并部署到 IoT Edge 设备。
 
 ### <a name="create-a-new-project"></a>创建新项目
 
 1. 在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai/)。
 
-2. 选择“登录”，使用访问 Azure 资源时所用的帐户进行登录。  
+2. 选择“登录”，使用访问 Azure 资源时所用的帐户进行登录。 
 
 3. 选择“新建项目”。 
 
@@ -74,7 +74,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
    | 字段 | 值 |
    | ----- | ----- |
-   | Name | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
+   | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
    | 资源 | 选择一个包含自定义视觉服务资源的 Azure 资源组，或者如果尚未添加 Azure 资源组，则选择“新建”  。 |
    | 项目类型 | **分类** |
@@ -86,21 +86,21 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 ### <a name="upload-images-and-train-your-classifier"></a>上传图像并训练分类器
 
-创建图像分类器需要一组训练图像和测试图像。 
+创建图像分类器需要一组训练图像和测试图像。
 
-1. 将示例图像从 [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) 存储库克隆或下载到本地开发计算机。 
+1. 将示例图像从 [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) 存储库克隆或下载到本地开发计算机。
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. 返回到自定义视觉项目，选择“添加图像”。  
+2. 返回到自定义视觉项目，选择“添加图像”。 
 
-3. 浏览到已克隆到本地的 git 存储库，导航到第一个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**。 选择文件夹中的所有 10 个图像，然后单击“打开”。  
+3. 浏览到已克隆到本地的 git 存储库，导航到第一个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**。 选择文件夹中的所有 10 个图像，然后单击“打开”。 
 
-4. 将标记“铁杉”  添加到此组图像，然后按 **Enter** 应用该标记。 
+4. 将标记“铁杉”  添加到此组图像，然后按 **Enter** 应用该标记。
 
-5. 选择“上传 10 个文件”。  
+5. 选择“上传 10 个文件”。 
 
    ![将 hemlock 标记的文件上传到自定义视觉](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -108,17 +108,17 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 7. 再次选择“添加图像”。 
 
-8. 浏览到第二个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**。 选择文件夹中的所有 10 个图像，然后单击“打开”。  
+8. 浏览到第二个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**。 选择文件夹中的所有 10 个图像，然后单击“打开”。 
 
-9. 将标记“日本樱花”  添加到此组图像，然后按 **Enter** 应用该标记。 
+9. 将标记“日本樱花”  添加到此组图像，然后按 **Enter** 应用该标记。
 
-10. 选择“上传 10 个文件”。  成功上传图像以后，选择“完成”。  
+10. 选择“上传 10 个文件”。  成功上传图像以后，选择“完成”。 
 
-11. 将两组图像标记并上传后，请选择“训练”，对分类器进行训练。  
+11. 将两组图像标记并上传后，请选择“训练”，对分类器进行训练。 
 
 ### <a name="export-your-classifier"></a>导出分类器
 
-1. 训练分类器以后，请在分类器的“性能”页上选择“导出”。  
+1. 训练分类器以后，请在分类器的“性能”页上选择“导出”。 
 
    ![导出已训练的图像分类器](./media/tutorial-deploy-custom-vision/export.png)
 
@@ -144,7 +144,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 1. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
-1. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
+1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -210,7 +210,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 在此部分，请将新模块添加到同一 CustomVisionSolution 并提供创建模拟摄像头所需的代码。 
 
-1. 在同一 Visual Studio Code 窗口中，使用命令面板运行 **Azure IoT Edge:Add IoT Edge Module**。 在命令面板中提供新模块所需的以下信息： 
+1. 在同一 Visual Studio Code 窗口中，使用命令面板运行 **Azure IoT Edge:** Add IoT Edge Module”。 在命令面板中提供新模块所需的以下信息： 
 
    | Prompt | 值 | 
    | ------ | ----- |
@@ -263,7 +263,8 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 3. 浏览到 IoT Edge 解决方案目录，将测试图像粘贴到 **modules** / **cameraCapture** 文件夹中。 该图像应该置于你在上一部分编辑的 main.py 文件所在的文件夹中。 
 
-3. 在 Visual Studio Code 中打开适用于 cameraCapture 模块的 **Dockerfile.amd64** 文件。 
+4. 在 Visual Studio Code 中打开适用于 cameraCapture 模块的 **Dockerfile.amd64** 文件。
 
-4. 在建立工作目录 `WORKDIR /app` 的行后面，添加以下代码行： 
+5. 在建立工作目录 `WORKDIR /app` 的行后面，添加以下代码行：
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. 保存 Dockerfile。 
+6. 保存 Dockerfile。
 
 ### <a name="prepare-a-deployment-manifest"></a>准备部署清单
 
@@ -358,7 +360,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
     如果为自定义视觉模块提供了 *classifier* 之外的名称，请更新图像处理终结点值，使之匹配。 
 
-5. 在文件底部，更新 $edgeHub 模块的 **routes** 参数。 你希望将预测结果从 cameraCapture 路由到 IoT 中心。 
+6. 在文件底部，更新 $edgeHub 模块的 **routes** 参数。 你希望将预测结果从 cameraCapture 路由到 IoT 中心。
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。 
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
@@ -418,7 +419,6 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 否则，可以删除本文中使用的本地配置和 Azure 资源，以免产生费用。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 

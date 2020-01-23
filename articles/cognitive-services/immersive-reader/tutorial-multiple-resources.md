@@ -258,7 +258,7 @@ module.exports = router;
     npm start
     ```
 
-4. 打开浏览器并导航到 http://localhost:3000[](http://localhost:3000)。 你应该可以在页面上看到以上内容。 单击“EastUS 沉浸式阅读器”  按钮，或单击“WestUS 沉浸式阅读器”  按钮，以使用相应的资源启动沉浸式阅读器。
+4. 打开浏览器并导航到 [http://localhost:3000](http://localhost:3000)。 你应该可以在页面上看到以上内容。 单击“EastUS 沉浸式阅读器”  按钮，或单击“WestUS 沉浸式阅读器”  按钮，以使用相应的资源启动沉浸式阅读器。
 
 ## <a name="next-steps"></a>后续步骤
 
