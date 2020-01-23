@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9355ae1522c653924574b94594e894fdaf3f764e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: ea6e5b5ac829c95a0eca328e8f7f40e7d4a9a94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646649"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547976"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics（以前称为 SQL DW）的速查表
 
@@ -23,7 +23,7 @@ ms.locfileid: "73646649"
 
 下图显示了设计数据仓库的过程：
 
-![草图]
+![草图](media/sql-data-warehouse-cheat-sheet/picture-flow.png)
 
 ## <a name="queries-and-operations-across-tables"></a>跨表的查询和操作
 
@@ -36,16 +36,16 @@ ms.locfileid: "73646649"
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，请将数据载入 [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入临时表中。 使用以下配置：
+首先，请将数据载入 [Azure Data Lake Storage](../data-factory/connector-azure-data-lake-store.md) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |
-| 分发 | 轮循机制 |
+| 分发 | 循环 |
 | 索引 | 堆 |
 | 分区 | 无 |
 | 资源类 | largerc 或 xlargerc |
 
-详细了解[数据迁移]、[数据加载]以及[提取、加载和转换 (ELT) 过程](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading)。 
+详细了解[数据迁移](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[数据加载](design-elt-data-loading.md)以及[提取、加载和转换 (ELT) 过程](design-elt-data-loading.md)。 
 
 ## <a name="distributed-or-replicated-tables"></a>分布式表或复制表
 
@@ -62,10 +62,10 @@ ms.locfileid: "73646649"
 * 确保常见的哈希键具有相同的数据格式。
 * 请勿分布 varchar 格式。
 * 可以将具有常见哈希键的维度表哈希分布到具有频繁联接操作的事实数据表。
-* 使用 *[sys.dm_pdw_nodes_db_partition_stats]* 分析数据中的任何偏斜。
-* 使用 *[sys.dm_pdw_request_steps]* 分析查询背后的数据移动、监视时间广播以及随机选择操作需要。 这有助于查看分布策略。
+* 使用 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* 分析数据中的任何偏斜。
+* 使用 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* 分析查询背后的数据移动、监视时间广播以及随机选择操作需要。 这有助于查看分布策略。
 
-详细了解[复制表]和[分布式表]。
+详细了解[复制表](design-guidance-for-replicated-tables.md)和[分布式表](sql-data-warehouse-tables-distribute.md)。
 
 ## <a name="index-your-table"></a>为表编制索引
 
@@ -85,7 +85,7 @@ ms.locfileid: "73646649"
 * 基于增量加载频率和大小，你想自动执行索引的重新整理或重新生成操作。 彻底清理操作始终有用。
 * 想要剪裁行组时应更具战略性。 打开的行组有多大？ 未来几天希望加载多少数据？
 
-详细了解[索引]。
+详细了解[索引](sql-data-warehouse-tables-index.md)。
 
 ## <a name="partitioning"></a>分区
 如果拥有一个大型事实数据表（超过 10 亿行的表），可能需要对表分区。 在 99% 的情况下，分区键应基于日期。 注意不要过度分区，尤其是在具有聚集列存储索引时。
@@ -93,22 +93,22 @@ ms.locfileid: "73646649"
 对于需要 ELT 的临时表，可从分区中受益。 它使数据生命周期管理更便捷。
 注意不要对数据过度分区，尤其是对聚集列存储索引。
 
-详细了解[分区]。
+详细了解[分区](sql-data-warehouse-tables-partition.md)。
 
 ## <a name="incremental-load"></a>增量加载
 
-若要增量加载数据，请先确保分配更大的资源类来加载数据。  当加载到具有聚集列存储索引的表中时，这一点尤其重要。  有关更多详细信息，请参阅[资源类](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)。  
+若要增量加载数据，请先确保分配更大的资源类来加载数据。  当加载到具有聚集列存储索引的表中时，这一点尤其重要。  有关更多详细信息，请参阅[资源类](resource-classes-for-workload-management.md)。  
 
 建议使用 PolyBase 和 ADF V2 在数据仓库中自动执行 ELT 管道。
 
-对于历史数据中的大量更新，请考虑使用 [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) 将要保留的数据写入表中，而不是使用 INSERT、UPDATE 和 DELETE。
+对于历史数据中的大量更新，请考虑使用 [CTAS](sql-data-warehouse-develop-ctas.md) 将要保留的数据写入表中，而不是使用 INSERT、UPDATE 和 DELETE。
 
 ## <a name="maintain-statistics"></a>维护统计信息
  在自动统计信息功能推出正式版之前，要求手动维护统计信息。 对数据做*重大*更改时务必更新统计信息。 这有助于优化查询计划。 如果发现维护所有统计信息所需时间太长，请更谨慎地选择包含统计信息的列。 
 
 还可以定义更新频率。 例如，可能想要更新每天都要添加新值的日期列。 对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列进行信息统计，可以获得最大效益。
 
-详细了解[统计信息]。
+详细了解[统计信息](sql-data-warehouse-tables-statistics.md)。
 
 ## <a name="resource-class"></a>资源类
 资源组用作将内存分配给查询的一种方式。 如果需要更多内存来提高查询或加载速度，应分配更大的资源类。 但另一方面，使用更大的资源类会影响并发。 在将所有用户移动到大型资源类之前，你希望把这点纳入考虑范围。
@@ -117,7 +117,7 @@ ms.locfileid: "73646649"
 
 最后，通过使用第 2 代的 [SQL 池](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)，每个资源类可比第 1 代获得多 2.5 倍的内存。
 
-详细了解如何使用[资源类和并发]。
+详细了解如何使用[资源类和并发](resource-classes-for-workload-management.md)。
 
 ## <a name="lower-your-cost"></a>降低成本
 Azure Synapse 的一个重要功能是可以[管理计算资源](sql-data-warehouse-manage-compute-overview.md)。 你可在不使用 SQL 池时进行暂停，这会停止计算资源的计费。 可以缩放资源以满足性能需求。 若要暂停，请使用 [Azure 门户](pause-and-resume-compute-portal.md)或 [PowerShell](pause-and-resume-compute-powershell.md)。 若要缩放，请使用 [Azure 门户](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md) 或 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)。
@@ -139,29 +139,3 @@ Azure Synapse 的一个重要功能是可以[管理计算资源](sql-data-wareho
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-
-
-<!--Image references-->
-[草图]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
-
-<!--Article references-->
-[数据加载]:design-elt-data-loading.md
-[deeper guidance]:guidance-for-loading-data.md
-[索引]:sql-data-warehouse-tables-index.md
-[分区]:sql-data-warehouse-tables-partition.md
-[统计信息]:sql-data-warehouse-tables-statistics.md
-[资源类和并发]:resource-classes-for-workload-management.md
-[复制表]:design-guidance-for-replicated-tables.md
-[分布式表]:sql-data-warehouse-tables-distribute.md
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[数据迁移]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
-[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

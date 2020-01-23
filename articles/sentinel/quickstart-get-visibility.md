@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: bf7ff356af343667133c0226b6b31df8fc9e32b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563626"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548027"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -91,7 +91,7 @@ ms.locfileid: "75563626"
 
 使用以下示例查询可以比较不同周次的流量趋势。 可以轻松切换要对其运行查询的设备供应商和数据源。 此示例使用来自 Windows 的 SecurityEvent。可将其切换为针对其他任何防火墙中的 AzureActivity 或 CommonSecurityLog 运行。
 
-     |where DeviceVendor = = "Palo Alto Networks":
+     |where DeviceVendor == "Palo Alto Networks":
       // week over week query
       SecurityEvent
       | where TimeGenerated > ago(14d)
