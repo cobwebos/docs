@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338482"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514130"
 ---
 ::: zone target="docs"
 
@@ -32,13 +32,13 @@ ms.locfileid: "71338482"
 
 本教程介绍了如何为 Azure Data Box 连接电缆、连接到它以及将其打开。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为 Data Box 连接电缆
 > * 连接到 Data Box
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -126,7 +126,7 @@ ms.locfileid: "71338482"
     ![获取设备凭据](media/data-box-deploy-set-up/data-box-device-credentials.png)
     
     
-7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击“登录”  。
+7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击**登录**。
 8. 在“仪表板”  上，确保已配置了网络接口。 
    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 
    - 如果未启用 DHCP，请转到“设置网络接口”  ，并根据需要分配静态 IP。

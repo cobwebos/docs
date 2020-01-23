@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888387"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543046"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -28,19 +28,19 @@ ms.locfileid: "74888387"
 
 下表对实时事件类型的功能进行了比较。 使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)在创建过程中设置这些类型：
 
-* **LiveEventEncodingType** -本地实时编码器发送多比特率流。 引入流通过实时事件传递，无需进行任何进一步的处理。 
+* **LiveEventEncodingType** -本地实时编码器发送多比特率流。 引入流通过实时事件传递，无需进行任何进一步的处理。 也称为传递实时事件。
 * **LiveEventEncodingType** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 如果贡献源的分辨率为720p 或更高，则**Default720p**预设将编码一组6分辨率/比特率对（详细信息将在本文稍后介绍）。
 * **LiveEventEncodingType. Premium1080p** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（详细信息将在本文稍后介绍）。 
 
-| Feature | 直通直播活动 | 标准或 Premium1080p 实时事件 |
+| 功能 | 直通直播活动 | 标准或 Premium1080p 实时事件 |
 | --- | --- | --- |
-| 单比特率输入在云中被编码为多比特率 |No |是 |
+| 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
 | 贡献源中建议的最大层数|最大为 12|1 个音频|
 | 输出中的最大层数| 与输入相同|最多6个（请参阅下面的系统预设）|
 | 贡献源的最大聚合带宽|60 Mbps|N/A|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
-| 支持多语言音轨|是|No|
+| 支持多语言音轨|是|否|
 | 支持的输入视频编解码器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
 | 支持的输出视频编解码器|与输入相同|H.264/AVC|
 | 支持的视频位深、输入和输出|最多 10 位，包括 HDR 10/HLG|8 位|
@@ -52,13 +52,14 @@ ms.locfileid: "74888387"
 | 价格|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|
 | 最长运行时间| 24 小时 x 365 天，实时线性 | 24小时 x 365 天，实时线性（预览）|
 | 传递嵌入式 CEA 608/708 字幕数据的能力|是|是|
-| 支持插入静态图像|No|No|
-| 支持通过 API 发出广告指示| No|No|
+| 能够开启实时脚本|是|是|
+| 支持插入静态图像|否|否|
+| 支持通过 API 发出广告指示| 否|否|
 | 支持通过带内 SCTE35 消息发出广告指示|是|是|
 | 能够从贡献源出现的短时停顿中恢复|是|部分|
 | 支持非一致性输入 GOP|是|否 – 输入必须具有固定的 GOP 持续时间|
 | 支持可变帧率输入|是|否 - 输入必须是固定的帧速率。 轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但贡献源不能丢弃帧速率（例如，15帧/秒）。|
-| 输入源丢失时，会自动关闭直播活动|No|12 小时后，如果没有运行的 LiveOutput|
+| 输入源丢失时，会自动关闭直播活动|否|12 小时后，如果没有运行的 LiveOutput|
 
 ## <a name="system-presets"></a>系统预设
 

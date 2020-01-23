@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830133"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547296"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>使用 Azure Monitor 中的 Log Analytics 网关连接无 internet 访问的计算机
 
@@ -60,7 +60,7 @@ Log Analytics 网关直接将数据从代理传输到服务。 它不会分析�
 指定运行 Log Analytics 网关的计算机必须具有以下配置：
 
 * Windows 10、Windows 8.1 或 Windows 7
-* Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 或 Windows Server 2008
+* Windows Server 2019，Windows Server 2016，Windows Server 2012 R2，Windows Server 2012，Windows Server 2008 R2 或 Windows Server 2008
 * Microsoft .NET Framework 4.5
 * 至少4核处理器和 8 GB 内存 
 * 一个[适用于 Windows 的 Log Analytics 代理](agent-windows.md)，该代理配置为与通过网关进行通信的代理报告到相同的工作区

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9263f9741a1921550a2ed683dbed441552d6cce0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315059"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546327"
 ---
 # <a name="two-class-neural-network-module"></a>双类神经网络模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可创建一个用于预测只包含两个值的目标的神经网络模型。
 

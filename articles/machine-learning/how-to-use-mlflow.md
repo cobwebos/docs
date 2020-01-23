@@ -1,7 +1,7 @@
 ---
 title: 用于 ML 试验的 MLflow 跟踪
 titleSuffix: Azure Machine Learning
-description: 设置 MLflow 与 Azure 机器学习以记录指标 & 项目，并从 Databricks、本地环境或 VM 环境部署模型。
+description: 设置 MLflow 与 Azure 机器学习，以记录 Databricks 群集、本地环境或 VM 环境中创建的 ML 模型的指标和项目。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,32 +9,33 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47d4c1de12823eaf0aae5beeff776d50f8f5a6a7
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1263ecacc2af0559c726fb12c799d0e6d2f1014
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896371"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543335"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
+# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>通过 MLflow 和 Azure 机器学习跟踪模型指标（预览）
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文演示如何使用 Azure 机器学习启用 MLflow 的跟踪 URI 和日志记录 API （统称为[MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)）。 这样做使您能够：
+本文演示如何启用 MLflow 的跟踪 URI 和日志记录 API （统称为[MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以连接 MLflow 试验和 Azure 机器学习。 这样，便可以在[Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)中跟踪和记录试验指标和项目。 如果已使用 MLflow 跟踪进行试验，工作区将提供一个集中、安全和可缩放的位置来存储定型指标和模型。
 
-+ 在[Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)中跟踪和记录试验指标和项目。 如果已使用 MLflow 跟踪进行试验，工作区将提供一个集中、安全和可缩放的位置来存储定型指标和模型。
+<!--
++ Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
+-->
 
-+ 将 MLflow 试验部署为 Azure 机器学习 web 服务。 通过将部署为 web 服务，可以将 Azure 机器学习监视和数据偏差检测功能应用到生产模型。 
-
-[MLflow](https://www.mlflow.org)是一个开源库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，用于记录和跟踪你的培训运行指标和模型项目，无论实验环境如何--在远程计算目标、虚拟机上、本地计算机上，还是在 Azure Databricks 群集上。
+[MLflow](https://www.mlflow.org)是一个开源库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它记录和跟踪你的培训运行指标和模型项目，无论你的实验环境如何-在本地计算机上、远程计算目标、虚拟机或 Azure Databricks 群集上。 
 
 下图说明，使用 MLflow 跟踪，可以跟踪试验的运行度量值并将模型项目存储在 Azure 机器学习工作区中。
 
 ![mlflow 与 azure 机器学习示意图](./media/how-to-use-mlflow/mlflow-diagram-track.png)
 
 > [!TIP]
-> 本文档中的信息主要面向需要监视模型定型过程的数据科学家和开发人员。 如果你是对监视 Azure 机器学习中的资源使用情况和事件（如配额、已完成的培训运行或已完成的模型部署）感兴趣的管理员，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+> 本文档中的信息主要面向需要监视模型定型过程的数据科学家和开发人员。 如果你是对监视资源使用情况和 Azure 机器学习中的事件（如配额、已完成的培训运行或已完成的模型部署）感兴趣的管理员，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>比较 MLflow 和 Azure 机器学习客户端
 
@@ -43,7 +44,7 @@ ms.locfileid: "75896371"
  MLflow 跟踪只提供指标日志记录和项目存储功能，这些功能仅在[Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)中可用。
 
 
-| | MLflow 跟踪 & 部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 机器学习工作室|
+| | MLflow&nbsp;跟踪 <!--& Deployment--> | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 机器学习工作室|
 |---|---|---|---|---|
 | 管理工作区 |   | ✓ | ✓ | ✓ |
 | 使用数据存储  |   | ✓ | ✓ | |
@@ -51,10 +52,11 @@ ms.locfileid: "75896371"
 | 上传项目 | ✓ | ✓ |   | |
 | 查看指标     | ✓ | ✓ | ✓ | ✓ |
 | 管理计算   |   | ✓ | ✓ | ✓ |
-| 部署模型    | ✓ | ✓ | ✓ | ✓ |
-|监视模型性能||✓|  |   |
-| 检测数据偏差 |   | ✓ |   | ✓ |
 
+<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
+|Monitor model performance||✓|  |   |
+| Detect data drift |   | ✓ |   | ✓ |
+-->
 ## <a name="prerequisites"></a>必备组件
 
 * [安装 MLflow。](https://mlflow.org/docs/latest/quickstart.html)
@@ -65,7 +67,7 @@ ms.locfileid: "75896371"
 
 通过 Azure 机器学习跟踪，你可以将记录的指标和项目从本地运行存储到 Azure 机器学习工作区中。
 
-安装 `azureml-contrib-run` 包，以便在 Jupyter Notebook 或代码编辑器中本地运行的试验 Azure 机器学习使用 MLflow 跟踪。
+安装 `azureml-mlflow` 包，以便在 Jupyter Notebook 或代码编辑器中本地运行的试验 Azure 机器学习使用 MLflow 跟踪。
 
 ```shell
 pip install azureml-mlflow
@@ -145,12 +147,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
 
-MLflow 跟踪与 Azure 机器学习使你能够将 Databricks 中记录的指标和项目存储在 Azure 机器学习工作区中。
+通过 Azure 机器学习跟踪，你可以将 Azure Databricks 中记录的指标和项目存储在 Azure 机器学习工作区中。
 
-若要使用 Azure Databricks 运行 Mlflow 试验，需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
+若要使用 Azure Databricks 运行 Mlflow 试验，需要首先创建[Azure Databricks 工作区和群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 在群集中，请确保从 PyPi 安装*mlflow*库，以确保群集有权访问所需的函数和类。
 
-在群集中，请确保从 PyPi 安装*mlflow*库，以确保群集有权访问所需的函数和类。
-在此处导入你的实验笔记本，将你的群集附加到它，并运行你的试验。 
+在此处导入实验笔记本，将其附加到 Azure Databricks 群集并运行试验。 
 
 ### <a name="install-libraries"></a>安装库
 
@@ -388,12 +389,12 @@ If you don't plan to use the logged metrics and artifacts in your workspace, the
 
 1. Enter the resource group name. Then select **Delete**.
 
-
-## Example notebooks
-
-The [MLflow with Azure ML notebooks](https://aka.ms/azureml-mlflow-examples) demonstrate and expand upon concepts presented in this article.
-
-## Next steps
-* [Manage your models](concept-model-management-and-deployment.md).
-* Monitor your production models for [data drift](how-to-monitor-data-drift.md).
  -->
+
+ ## <a name="example-notebooks"></a>示例笔记本
+
+[MLflow With AZURE ML 笔记本](https://aka.ms/azureml-mlflow-examples)演示并扩展本文中介绍的概念。
+
+## <a name="next-steps"></a>后续步骤
+* [管理模型](concept-model-management-and-deployment.md)。
+* 监视生产模型的[数据偏移](how-to-monitor-data-drift.md)。
