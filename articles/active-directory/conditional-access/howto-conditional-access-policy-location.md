@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977992"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543981"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件性访问：按位置阻止访问
 
@@ -25,7 +25,7 @@ ms.locfileid: "75977992"
 ## <a name="define-locations"></a>定义位置
 
 1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 浏览到**Azure Active Directory** > **安全** >  > **命名位置**的**条件性访问**。
 1. 选择 "**新位置**"。
 1. 为你的位置命名。
 1. 如果你知道构成该位置或**国家/地区**的特定于外部的可访问 IPv4 地址范围，请选择 " **IP 范围**"。

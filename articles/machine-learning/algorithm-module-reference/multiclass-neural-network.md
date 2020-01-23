@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b3d79438797f47dfcc178640af60f5207b4f7650
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a1b14a4f004e9b6fe64d9095eeb63ebf78750387
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314634"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546531"
 ---
 # <a name="multiclass-neural-network-module"></a>多类神经网络模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可创建一个用于预测包含多个值的目标的神经网络模型。 
 

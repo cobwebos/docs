@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure 中继指标（预览版）| Microsoft Docs
-description: 使用 Azure 监视来监视 Azure 中继
+description: 本文提供了有关如何使用 Azure Monitor 监视 Azure 中继状态的信息。
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261789"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514929"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 Azure 中继指标提供 Azure 订阅中的资源的状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估中继资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视 Azure 中继的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
@@ -45,9 +45,9 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 对于支持维度的指标，必须使用所需的维度值进行筛选。
 
-## <a name="billing"></a>账单
+## <a name="billing"></a>计费
 
-在预览版中，目前可免费使用 Azure Monitor 中的指标。 但是，如果使用引入指标数据的其他解决方案，可能就需要收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 或者，如果将指标数据流式传输到 Azure Monitor 日志进行高级分析，则 Azure Monitor 日志会收费。
+在预览版中，目前可免费使用 Azure Monitor 中的指标。 但是，如果使用引入指标数据的其他解决方案，可能就需要收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 如果将指标数据流式传输到 Azure Monitor 日志进行高级分析，则会 Azure Monitor 日志进行计费。
 
 以下指标可提供服务运行状况的概述。 
 
@@ -58,24 +58,24 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | 描述 |
+| 标准名称 | Description |
 | ------------------- | ----------------- |
-| ListenerConnections-Success（预览版） | 在指定的期间内成功与 Azure 中继建立的侦听器连接数。 <br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-ClientError（预览版）|在指定的期间内在侦听器连接上发生的客户端错误数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-ServerError（预览版）|在指定的期间内在侦听器连接上发生的服务器错误数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-Success（预览版）|在指定的期间内成功建立的发送者连接数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-ClientError（预览版）|在指定的期间内在发送者连接上发生的客户端错误数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-ServerError（预览版）|在指定的期间内在发送者连接上发生的服务器错误数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-TotalRequests（预览版）|指定的期间内的侦听器连接总数<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-TotalRequests（预览版）|在指定的期间内由发送者发出的连接请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ActiveConnections（预览版）|指定的期间内的活动连接数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ActiveListeners（预览版）|指定的期间内的活动侦听器数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| ListenerConnections-Success（预览版） | 在指定的期间内成功与 Azure 中继建立的侦听器连接数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-ClientError（预览版）|在指定的期间内在侦听器连接上发生的客户端错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-ServerError（预览版）|在指定的期间内在侦听器连接上发生的服务器错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-Success（预览版）|在指定的期间内成功建立的发送者连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-ClientError（预览版）|在指定的期间内在发送者连接上发生的客户端错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-ServerError（预览版）|在指定的期间内在发送者连接上发生的服务器错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-TotalRequests（预览版）|指定的期间内的侦听器连接总数<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-TotalRequests（预览版）|在指定的期间内由发送者发出的连接请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ActiveConnections（预览版）|指定的期间内的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ActiveListeners（预览版）|指定的期间内的活动侦听器数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ListenerDisconnects（预览版）|指定的期间内断开连接的侦听器数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |SenderDisconnects（预览版）|指定的期间内断开连接的发送者数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>内存使用情况指标
 
-| 指标名称 | 描述 |
+| 标准名称 | Description |
 | ------------------- | ----------------- |
 |BytesTransferred（预览版）|在指定的期间内传输的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
@@ -83,7 +83,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 Azure 中继支持为 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选的。 如果不添加维度，则指标是在命名空间级别指定的。 
 
-|维度名称|描述|
+|维度名称|Description|
 | ------------------- | ----------------- |
 |EntityName| Azure 中继支持命名空间下的消息实体。|
 

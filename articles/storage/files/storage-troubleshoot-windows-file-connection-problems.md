@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291187"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544950"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -140,9 +140,8 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 > Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现 "无法访问" 错误
-
-浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现 "无法访问" 错误  
+尝试在门户中访问或删除 Azure 文件共享时，可能会收到以下错误：
 
 无法访问  
 错误代码：403 

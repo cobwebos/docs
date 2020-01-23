@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311625"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548469"
 ---
 # <a name="filter-based-feature-selection"></a>基于筛选器的特征选择
 
-本文介绍如何在 Azure 机器学习设计器中使用基于筛选器的功能选择模块。 此模块有助于标识输入数据集中具有最大预测能力的列。 
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用基于筛选器的功能选择模块。 此模块有助于标识输入数据集中具有最大预测能力的列。 
 
 通常，*功能选择*是指在给定指定输出的情况下将统计测试应用到输入的过程。 目标是确定哪些列对输出的预测性更高。 基于筛选器的特征选择模块提供了多个可供选择的特征选择算法。 此模块包括相关方法，例如皮尔逊相关性和χ-平方值。 
 

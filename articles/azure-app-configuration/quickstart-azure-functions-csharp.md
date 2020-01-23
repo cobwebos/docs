@@ -2,17 +2,17 @@
 title: 将 Azure 应用配置与 Azure Functions 结合使用的快速入门 | Microsoft Docs
 description: 将 Azure 应用程序配置与 Azure Functions 集合使用的快速入门。
 services: azure-app-configuration
-author: yegu-ms
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: yegu
-ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413763"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310050"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
@@ -45,7 +45,7 @@ ms.locfileid: "75413763"
 1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 如果无法找到，请选中“包括预发行版”复选框  。
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.1.0-preview-010380001-1099 or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
     ```
 
 2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间  。

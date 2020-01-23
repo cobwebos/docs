@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912291"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514249"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -105,7 +105,7 @@ ms.locfileid: "75912291"
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>如果 IoT Edge 安全管理器未运行，请验证 yaml 配置文件
 
 > [!WARNING]
-> YAML 文件不能包含作为缩进的制表符。 请改用 2 个空格。
+> YAML 文件不能包含作为缩进的制表符。 请改用 2 个空格。 顶级元素应该没有前导空格。
 
 在 Linux 上：
 
@@ -121,7 +121,7 @@ ms.locfileid: "75912291"
 
 ### <a name="check-container-logs-for-issues"></a>检查容器日志是否有问题
 
-IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 从已部署的容器开始，然后查看组成 IoT Edge 运行时的容器： edgeAgent 和 edgeHub。 IoT Edge 代理日志通常提供有关每个容器的生命周期的信息。 IoT Edge 中心日志提供有关消息传送和路由的信息。 
+IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 从已部署的容器开始，然后查看组成 IoT Edge 运行时的容器： edgeAgent 和 edgeHub。 IoT Edge 代理日志通常提供有关每个容器的生命周期的信息。 IoT Edge 中心日志提供有关消息传送和路由的信息。
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
    ```
 
    > [!WARNING]
-   > YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。
+   > YAML 文件不能包含制表符作为缩进。 请改用 2 个空格。 顶级项不能具有前导空格。
 
 保存该文件并重启 IoT Edge 安全管理器。
 
@@ -249,7 +249,7 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 
 **根本原因**
 
-Iot Edge 代理无权访问模块的映像。
+IoT Edge 代理无权访问模块的映像。
 
 **解决方法**
 
@@ -435,6 +435,6 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 ## <a name="next-steps"></a>后续步骤
 
-认为在 IoT Edge 平台中发现了 bug？ [提交问题](https://github.com/Azure/iotedge/issues)，以便我们可以持续改进。 
+认为在 IoT Edge 平台中发现了 bug？ [提交问题](https://github.com/Azure/iotedge/issues)，以便我们可以持续改进。
 
 如果你还有其他问题，请创建[支持请求](https://portal.azure.com/#create/Microsoft.Support)以获取帮助。

@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153557"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547517"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
-此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤：
+此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击 "**创建**" 后，Azure 将自动完成以下任务：
 
 * 创建群集控制器，该控制器是一个基本 VM，其中包含部署和管理群集所需的软件。
 * 设置资源组和虚拟网络基础结构，包括创建新元素。
@@ -28,10 +28,10 @@ ms.locfileid: "76153557"
 
 在使用创建模板之前，请确保已具备以下必备项：  
 
-1. [新订阅](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [存储服务终结点（如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -部署使用现有虚拟网络和创建 blob 存储所需的项
+* [新订阅](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [存储服务终结点（如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -部署使用现有虚拟网络和创建 blob 存储所需的项
 
 有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。
 

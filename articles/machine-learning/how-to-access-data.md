@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289044"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543489"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "76289044"
 
 ## <a name="supported-data-storage-service-types"></a>支持的数据存储服务类型
 
-数据存储目前支持将连接信息存储到下表中列出的存储服务。
+数据存储目前支持将连接信息存储到下表中列出的存储服务。 目前不支持 Azure 数据仓库。 
 
 | 存储&nbsp;类型 | 身份验证&nbsp;类型 | [Azure&nbsp;计算机&nbsp;学习工作室](https://ml.azure.com/) | [Azure&nbsp;计算机&nbsp;了解&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;计算机&nbsp;学习 CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;计算机&nbsp;学习&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

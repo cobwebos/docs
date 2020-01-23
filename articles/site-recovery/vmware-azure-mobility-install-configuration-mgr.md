@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613901"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514795"
 ---
 # <a name="automate-mobility-service-installation"></a>自动安装移动服务
 
@@ -19,8 +19,8 @@ ms.locfileid: "75613901"
 将本地 VMware Vm 和物理服务器的灾难恢复 Site Recovery 部署到 Azure 时，需要在要复制的每台计算机上安装移动服务代理。 移动服务捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器以进行复制。 可以通过以下几种方式部署移动服务：
 
 - **推送安装**：在为 Azure 门户中的计算机启用复制时，让 Site Recovery 安装移动服务代理。
-- **手动安装**：在每台计算机上手动安装移动服务。 [了解](vmware-physical-mobility-service-overview.md)有关推送和手动安装的详细信息。
-- **自动部署**：通过软件部署工具（如 System Center Configuration Manager）或第三方工具（如 Intigua JetPatch）自动执行安装。
+- **手动安装**：在每台计算机上手动安装移动服务。 [了解](/vmware-physical-mobility-service-overview.md)有关推送和手动安装的详细信息。
+- **自动部署**：通过软件部署工具（例如 Microsoft Endpoint Configuration Manager）或第三方工具（如 Intigua JetPatch）自动执行安装。
 
 自动安装和更新提供了以下解决方案：
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421968"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549081"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -681,8 +681,8 @@ public static void CreateQueueMessage(
 Azure Functions 文档提供了有关每个绑定类型的参考信息。 你将在每个绑定参考文章中找到以下信息。 （此示例基于存储队列。）
 
 * [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 需要安装以包含对 Web 作业 SDK 项目中的绑定的支持的包。
-* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 代码示例。 C#类库示例适用于 WEB 作业 SDK。 只需省略 `FunctionName` 特性。
-* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 要用于绑定类型的特性。
+* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 代码示例。 C#类库示例适用于 WEB 作业 SDK。 只需省略 `FunctionName` 特性。
+* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 要用于绑定类型的特性。
 * [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的说明。
 * [用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可以绑定到的类型，以及绑定的工作方式的相关信息。 例如：轮询算法、有害队列处理。
   

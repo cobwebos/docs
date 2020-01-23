@@ -1,14 +1,14 @@
 ---
 title: 查看和管理客户及委派资源
 description: 作为使用 Azure 委派资源管理的服务提供商，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的客户资源和订阅。
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456837"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543420"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>查看和管理客户及委派资源
 
@@ -40,13 +40,20 @@ ms.locfileid: "75456837"
 - 若要查看关于产品/服务及其委派的详细信息，请选择产品/服务名称。
 - 若要查看关于角色分配的更多详细信息，对于委托订阅或资源组，请选择“委托”列中的条目。
 
-## <a name="view-delegations"></a>查看委派
+## <a name="view-and-manage-delegations"></a>查看和管理委派
 
 委派显示已委派的订阅/资源组，以及有权访问该订阅/资源组的用户和权限。 若要查看此信息，请选择“我的客户”页左侧的“委派”。
 
 可通过页面顶部的筛选器对访问权限分配进行排序和分组，或者按特定的客户、产品/服务或关键字进行筛选。
 
+### <a name="view-role-assignments"></a>查看角色分配
+
 与每个委派相关联的用户和权限显示在“角色分配”列中。 可选择每个条目以查看已向其授予访问订阅或资源组的权限的用户、组和服务主体的完整列表。 在此处，可选择特定用户、组或服务主体名称以获取详细信息。
+
+### <a name="remove-delegations"></a>删除委派
+
+如果在为 Azure 委派的资源管理人员加入客户时包含具有[托管服务注册分配](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的用户，则这些用户可以通过选择在该委托的行中显示的 "垃圾桶" 图标来删除委派。 当他们执行此操作时，服务提供商的租户中的任何用户都将无法访问之前已委派的资源。
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>在委派订阅的上下文中操作
 

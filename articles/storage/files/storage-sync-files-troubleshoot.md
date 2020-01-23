@@ -4,15 +4,15 @@ description: 对 Azure 文件同步的常见问题进行故障排除
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027780"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545035"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -41,8 +41,28 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 
 要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012 R2 或更高版本的域控制器，然后安装同步。
 
-<a id="server-registration-prerequisites"></a>**服务器注册显示以下消息： "缺少必备组件"**
+<a id="parameter-is-incorrect"></a>**访问 Windows Server 2012 R2 上的卷失败，出现错误：参数不正确**  
+在 Windows Server 2012 R2 上创建服务器终结点后，访问卷时出现以下错误：
 
+驱动器号： \不可访问。  
+参数不正确。
+
+若要解决此问题，请安装 Windows Server 2012 R2 的最新更新，然后重新启动服务器。
+
+<a id="server-registration-missing-subscriptions"></a>**服务器注册不列出所有 Azure 订阅**  
+当使用 ServerRegistration 注册服务器时，当你单击 "Azure 订阅" 下拉箭头时，订阅将丢失。
+
+之所以出现此问题，是因为 ServerRegistration 目前不支持多租户环境。 此问题将在将来的 Azure 文件同步代理更新中解决。
+
+若要解决此问题，请使用以下 PowerShell 命令注册服务器：
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
+
+<a id="server-registration-prerequisites"></a>**服务器注册显示以下消息： "缺少必备组件"**  
 如果未在 PowerShell 5.1 上安装 Az 或 AzureRM PowerShell 模块，则会出现此消息。 
 
 > [!Note]  
@@ -304,6 +324,7 @@ PerItemErrorCount: 1006.
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | 由于出现意外错误，无法同步该文件。 | 如果错误持续几天，请打开支持案例。 |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | 无法同步文件，因为该文件正在使用中。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 在同步过程中更改了文件，因此需要再次同步该文件。 | 无需采取措施。 |
+| 0x80070017 | -2147024873 | ERROR_CRC | 由于 CRC 错误，无法同步该文件。 如果在删除服务器终结点之前未重新调用某个分层文件或该文件已损坏，则会出现此错误。 | 若要解决此问题，请参阅[删除服务器终结点后，服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)，以删除孤立的分层文件。 如果在删除已删除孤立分层文件后仍然出现错误，请在卷上运行[chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) 。 |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 由于已达到冲突文件的最大数量，无法同步该文件。 Azure 文件同步支持每个文件100个冲突文件。 若要了解有关文件冲突的详细信息，请参阅 Azure 文件同步[常见问题解答](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)。 | 若要解决此问题，请减少冲突文件的数目。 冲突文件数小于100后，文件将同步。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
@@ -435,6 +456,17 @@ PerItemErrorCount: 1006.
 
 1. [验证存储帐户是否存在。](#troubleshoot-storage-account)
 2. [验证存储帐户上的防火墙和虚拟网络设置是否已正确配置（如果已启用）](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**由于存储帐户被锁定，同步失败。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT（十进制）** | -2134364014 |
+| **错误字符串** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **所需的补救措施** | 是 |
+
+之所以发生此错误，是因为存储帐户具有只读[资源锁](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)。 若要解决此问题，请删除存储帐户上的只读资源锁。 
 
 <a id="-1906441138"></a>**由于同步数据库出现问题，同步失败。**  
 

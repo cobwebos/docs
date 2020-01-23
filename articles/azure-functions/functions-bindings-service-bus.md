@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277392"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549064"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -40,16 +40,7 @@ ms.locfileid: "76277392"
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
-参阅语言特定的示例：
-
-* [C#](#trigger---c-example)
-* [C# 脚本 (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>触发器 - C# 示例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示了读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)：
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 此函数将读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息。
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>触发器 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数记录服务总线队列消息。 
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-F# 脚本代码如下所示：
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>触发器 - Java 示例
-
-以下 Java 函数使用[java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@ServiceBusQueueTrigger` 注释来描述服务总线队列触发器的配置。 函数获取置于队列中的消息，并将其添加到日志中。
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-以下 Java 函数显示在服务总线消息的 "_用户属性_" 中定义的元数据的检索： 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-在将消息添加到服务总线主题时，还可以触发 Java 函数。 下面的示例使用 `@ServiceBusTopicTrigger` 注释来描述触发器配置。
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息。 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>触发器 - Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 下面的示例演示如何通过触发器读取服务总线队列消息。
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>触发器 - 特性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+以下 Java 函数使用[java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@ServiceBusQueueTrigger` 注释来描述服务总线队列触发器的配置。 函数获取置于队列中的消息，并将其添加到日志中。
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+在将消息添加到服务总线主题时，还可以触发 Java 函数。 下面的示例使用 `@ServiceBusTopicTrigger` 注释来描述触发器配置。
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>触发器-特性和批注
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，请使用以下属性来配置服务总线触发器：
 
@@ -308,7 +253,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
+  有关完整示例，请参阅[触发器-示例](#trigger---example)。
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ def main(msg: func.ServiceBusMessage):
 * 应用到类的 `ServiceBusAccount` 特性。
 * “AzureWebJobsServiceBus”应用设置。
 
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueTrigger` 批注允许您创建在创建服务总线队列消息时运行的函数。 可用的配置选项包括队列名称和连接字符串名称。
+
+`ServiceBusTopicTrigger` 批注允许您指定一个主题和订阅，以面向触发函数的数据。
+
+有关更多详细信息，请参见触发器[示例](#trigger---example)。
+
+---
+
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
 下表解释了在 function.json 文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
@@ -356,7 +323,9 @@ def main(msg: func.ServiceBusMessage):
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-在 C# 和 C# 脚本中，可以为队列或主题消息使用以下参数类型：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+以下参数类型可用于队列或主题消息：
 
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
@@ -365,7 +334,32 @@ def main(msg: func.ServiceBusMessage):
 
 这些参数类型适用于 Azure Functions 版本 1.x;对于2.x 和更高版本，请使用[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)而不是 `BrokeredMessage`。
 
-在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+以下参数类型可用于队列或主题消息：
+
+* `string` - 如果消息是文本。
+* `byte[]` - 适用于二进制数据。
+* 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
+* `BrokeredMessage`-通过[GetBody\<t > （）](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法为你提供反序列化的消息。
+
+这些参数适用于 Azure Functions 版本 1.x;对于2.x 和更高版本，请使用[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)而不是 `BrokeredMessage`。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name from function.json>`访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+队列消息通过类型化为 `func.ServiceBusMessage`的参数可用于函数。 服务总线消息作为字符串或 JSON 对象传递到函数中。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+可以通过 `ServiceBusQueueMessage` 或 `ServiceBusTopicMessage` 参数获取传入的服务总线消息。
+
+[有关详细信息，请参阅示例](#trigger)。
+
+---
 
 ## <a name="trigger---poison-messages"></a>触发器 - 有害消息
 
@@ -404,18 +398,9 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 使用 Azure 服务总线输出绑定发送队列或主题消息。
 
-## <a name="output---example"></a>输出 - 示例
+### <a name="output---example"></a>输出 - 示例
 
-参阅语言特定的示例：
-
-* [C#](#output---c-example)
-* [C# 脚本 (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>输出 - C# 示例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示发送服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)：
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>输出 - C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>输出 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-下面是可创建一条消息的 F# 脚本代码：
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>输出 - Java 示例
-
-下面的示例演示一个 Java 函数，该函数将消息发送到服务总线队列 `myqueue` 由 HTTP 请求触发时。
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入服务总线队列的函数参数使用 `@ServiceBusQueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
-
-Java 函数还可以写入到服务总线主题。 下面的示例使用 `@ServiceBusTopicOutput` 批注说明输出绑定的配置。 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>输出 - JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>输出 - Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 以下示例演示如何写出到 Python 中的服务总线队列。
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>输出 - 特性
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+以下示例演示了一个 Java 函数，该函数在由 HTTP 请求触发时将消息发送到服务总线队列 `myqueue`。
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入服务总线队列的函数参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
+
+Java 函数还可以写入到服务总线主题。 下面的示例使用 `@ServiceBusTopicOutput` 批注说明输出绑定的配置。 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>输出-属性和批注
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)。
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出-示例](#output---example)。
 
-您可以使用 `ServiceBusAccount` 特性来指定要在类、方法或参数级别使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
+可以使用 `ServiceBusAccount` 特性在类、方法或参数级别指定要使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes-and-annotations)。
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput` 和 `ServiceBusTopicOutput` 批注可用于将消息作为函数输出进行编写。 用这些批注修饰的参数必须声明为 `OutputBinding<T>`，其中 `T` 是与消息类型对应的类型。
+
+---
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -704,7 +674,9 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 在 Azure Functions 1.x 中，如果队列尚不存在并且 `accessRights` 设置为 `manage`，则运行时会创建队列。 在函数版本1.x 和更高版本中，队列或主题必须已经存在;如果指定的队列或主题不存在，则该函数将失败。 
 
-在 C# 和 C# 脚本中，可以为输出绑定使用以下参数类型：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+为输出绑定使用以下参数类型：
 
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
@@ -719,9 +691,36 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 * 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型，并使用 `sessionId` 属性。
 
-在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象（反序列化为 JSON）分配给 `context.binding.<name>`。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-若要将消息以非C#语言发送到已启用会话的队列，请使用[AZURE 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
+为输出绑定使用以下参数类型：
+
+* `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
+* `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
+* `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
+* `out BrokeredMessage`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x）
+* `out Message`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x 和更高版本）
+* `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
+
+使用C#函数时：
+
+* 异步函数需要返回值或 `IAsyncCollector`，而不是 `out` 参数。
+
+* 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型，并使用 `sessionId` 属性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name from function.json>`访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象（反序列化为 JSON）分配给 `context.binding.<name>`。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 

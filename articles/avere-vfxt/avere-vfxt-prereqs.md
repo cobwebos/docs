@@ -4,14 +4,14 @@ description: Avere vFXT for Azure 的先决条件
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152980"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547500"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -23,10 +23,10 @@ ms.locfileid: "76152980"
 
 在 Azure 门户中创建新的 Azure 订阅：
 
-* 导航到[订阅边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-* 单击顶部的“+ 添加”按钮
-* 如果提示，请登录
-* 选择套餐，逐步完成创建新订阅的各个步骤
+1. 导航到[订阅边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. 单击顶部的“+ 添加”按钮
+1. 如果提示，请登录
+1. 选择套餐，逐步完成创建新订阅的各个步骤
 
 ## <a name="configure-subscription-owner-permissions"></a>配置订阅所有者权限
 
@@ -104,6 +104,6 @@ ms.locfileid: "76152980"
 
    ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>下一步：创建 vFXT 群集
+## <a name="next-steps"></a>后续步骤
 
 完成这些先决条件后，即可创建群集。 阅读[部署 vFXT 群集](avere-vfxt-deploy.md)，查看说明。

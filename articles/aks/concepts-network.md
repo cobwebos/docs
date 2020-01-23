@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913882"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547959"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -45,7 +45,7 @@ Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes �
 
     ![显示 AKS 群集中 NodePort 流量的示意图][aks-nodeport]
 
-- **LoadBalancer** - 创建 Azure 负载均衡器资源、配置外部 IP 地址并将请求的 Pod 连接到负载均衡器后端池。 为允许客户流量发送到应用程序，要在所需端口上创建负载均衡规则。 
+- **LoadBalancer** - 创建 Azure 负载均衡器资源、配置外部 IP 地址并将请求的 Pod 连接到负载均衡器后端池。 为了使客户的流量能够访问应用程序，会在所需端口上创建负载均衡规则。 
 
     ![显示 AKS 群集中负载均衡器流量的示意图][aks-loadbalancer]
 
@@ -132,7 +132,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 若要详细了解如何配置 NGINX 入口控制器，请参阅[入口和 TLS][aks-ingress-tls]。
 
-你还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 ip 将不可用于目标容器。 如果启用*客户端源 ip 保留*，则客户端的源 ip 在 " *X 转发-对于*" 下的请求标头中可用。 如果在入口控制器上使用客户端源 IP 保留，则无法使用 SSL 传递。 客户端源 IP 保存和 SSL 传递可用于其他服务，例如*LoadBalancer*类型。
+你还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用*客户端源 ip 保留*，则客户端的源 ip 在 " *X 转发-对于*" 下的请求标头中可用。 如果在入口控制器上使用客户端源 IP 保留，则无法使用 SSL 传递。 客户端源 IP 保存和 SSL 传递可用于其他服务，例如*LoadBalancer*类型。
 
 ## <a name="network-security-groups"></a>网络安全组
 

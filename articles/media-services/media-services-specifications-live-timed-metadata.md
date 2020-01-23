@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 - 实时传送视频流中的超时元数据信号 | Microsoft Docs
+title: Azure 媒体服务-实时流式处理中的信号计时元数据
 description: 此规范概述在引入和流式传输到 Azure 媒体服务时，用于通知计时元数据的方法。 这包括对一般计时元数据信号（ID3）的支持，以及用于广告插入和接合条件信号的 SCTE-35 信号。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933988"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514232"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771285"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547993"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
@@ -46,13 +46,13 @@ Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/pla
 |删除保存的搜索    |Microsoft.operationalinsights/工作区/savedSearches|
 |更新警报规则 |SecurityInsights/alertRules|
 |删除警报规则 |SecurityInsights/alertRules|
-|更新警报规则响应操作 |SecurityInsights/alertRules|
-|删除警报规则响应操作 |SecurityInsights/alertRules|
+|更新警报规则响应操作 |SecurityInsights/alertRules/actions|
+|删除警报规则响应操作 |SecurityInsights/alertRules/actions|
 |更新书签   |SecurityInsights/书签|
 |删除书签   |SecurityInsights/书签|
 |更新事例   |SecurityInsights/事例|
-|更新案例调查  |SecurityInsights/事例|
-|创建案例注释   |SecurityInsights/事例|
+|更新案例调查  |SecurityInsights/案例/调查|
+|创建案例注释   |SecurityInsights/案例/注释|
 |更新数据连接器 |SecurityInsights/dataConnectors|
 |删除数据连接器 |SecurityInsights/dataConnectors|
 |更新设置    |SecurityInsights/settings|

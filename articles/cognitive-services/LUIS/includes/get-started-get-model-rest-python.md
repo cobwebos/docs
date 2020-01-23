@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: 8cefd8357893657d94959cb853004b34b0ec9d8d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f4d180dd6ad99d5bc00e6970e22b756aa26275da
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505841"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268238"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 初学者密钥。
 * 从 cognitive-services-language-understanding GitHub 存储库中导入 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 应用。
@@ -55,8 +55,8 @@ ms.locfileid: "73505841"
     # The version number of your LUIS app
     LUIS_APP_VERSION = "0.1"
     
-    URI_AddUtterances = f'https://{LUIS_ENDPOINT}/luis/authoring/v3.0-preview/apps/{LUIS_APP_ID}/versions/{LUIS_APP_ID}/examples'
-    URI_Train = f'https://{LUIS_ENDPOINT}/luis/authoring/v3.0-preview/apps/{LUIS_APP_ID}/versions/{LUIS_APP_ID}/train'
+    URI_AddUtterances = f'https://{LUIS_ENDPOINT}/luis/authoring/v3.0-preview/apps/{LUIS_APP_ID}/versions/{LUIS_APP_VERSION}/examples'
+    URI_Train = f'https://{LUIS_ENDPOINT}/luis/authoring/v3.0-preview/apps/{LUIS_APP_ID}/versions/{LUIS_APP_VERSION}/train'
     
     HEADERS = {'Ocp-Apim-Subscription-Key': LUIS_authoringKey}
     
@@ -76,10 +76,10 @@ ms.locfileid: "73505841"
     train()
     trainStatus()
     ```
-1. 替换以下值：
+1. 请替换以下值：
 
-    * `YOUR-KEY` 替换为初学者密钥
-    * `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
+    * 将 `YOUR-KEY` 替换为初学者密钥
+    * 将 `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
     * `YOUR-APP-ID` 替换为应用 ID
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来运行文件：

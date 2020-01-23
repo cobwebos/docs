@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291118"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544933"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -131,9 +131,8 @@ ms.locfileid: "76291118"
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现 "无法访问" 错误
-
-浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现 "无法访问" 错误  
+尝试在门户中访问或删除 Azure 文件共享时，可能会收到以下错误：
 
 无法访问  
 错误代码：403 

@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: 准备 Mobility Service 的推送安装
                   href: vmware-azure-install-mobility-service.md
-                - name: 使用 System Center Configuration Manager 部署移动服务
+                - name: 使用 Configuration Manager 部署出行服务
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 运行故障转移和故障回复
           href: physical-to-azure-failover-failback.md

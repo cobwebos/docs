@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281217"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514725"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -380,7 +380,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 设置新 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure 导入导出      | Microsoft.ImportExport     | 使用导入/导出服务，可以将数据导入到 Azure，并从 Azure 中导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
-| Azure 监视器            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 监视器            | Microsoft.Insights         | 允许将监视数据写入受保护的存储帐户，包括资源诊断日志、Azure Active Directory 登录和审核日志以及 Microsoft Intune 日志。 [了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure 联网         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure 站点恢复      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，启用复制来实现 Azure IaaS 虚拟机灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 

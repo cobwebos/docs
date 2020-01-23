@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240348"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514436"
 ---
 ::: zone target = "docs"
 
@@ -35,13 +35,13 @@ ms.locfileid: "70240348"
 在本教程中，你将了解如下主题：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 准备交付
 > * 将 Data Box Heavy 寄送到 Microsoft
 > * 验证 Azure 中的数据上传
 > * 从 Data Box Heavy 中擦除数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -134,7 +134,7 @@ ms.locfileid: "70240348"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 准备交付
 > * 将 Data Box Heavy 寄送到 Microsoft
 > * 验证 Azure 中的数据上传

@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 3b8c9c80c93430d8dc5a888742e4e4e96ba99400
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695330"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543012"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
 
@@ -27,7 +27,7 @@ ms.locfileid: "67695330"
 > 可以通过本反馈页面或 [Azure 反馈](https://feedback.azure.com/forums/216843-virtual-machines)使用 #azerrormessage 标记给我们留言。
 
 ## <a name="error-response-format"></a>错误响应格式 
-Azure VM 使用以下 JSON 格式提供错误响应：
+Azure VM 使用以下 JSON 格式进行错误响应：
 
 ```json
 {
@@ -37,7 +37,7 @@ Azure VM 使用以下 JSON 格式提供错误响应：
     "message":"Top level error message",
     "details":[
      {
-      "code":"Inner evel error code",
+      "code":"Inner level error code",
       "message":"Inner level error message"
      }
     ]
@@ -99,8 +99,8 @@ Azure VM 使用以下 JSON 格式提供错误响应：
 |  InvalidParameter  |  提供的密码长度必须在 {0} 到 {1} 个字符之间，且必须满足以下至少 {2} 个密码复杂性要求: <ol><li> 包含一个大写字符</li><li>包含一个小写字符</li><li>包含一个数字</li><li>包含一个特殊字符。</li></ol>  |
 |  InvalidParameter  |  不允许指定的管理员用户名。  |
 |  InvalidParameter  |  如果 VM 是通过平台或用户映像创建的，则无法附加现有 OS 磁盘。  |
-|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
-|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
+|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前必须跟一个字母数字字符。  |
+|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前必须跟一个字母数字字符。  |
 |  InvalidParameter  |  URL {0} 中的 Blob 名称包含斜杠。 目前磁盘不支持这种显示方式。  |
 |  InvalidParameter  |  URI {0} 似乎不是正确的 Blob URI。  |
 |  InvalidParameter  |  名为“{0}”的磁盘已在使用相同的 LUN: {1}。  |
@@ -171,7 +171,7 @@ Azure VM 使用以下 JSON 格式提供错误响应：
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有可用性集的群集。 可用的大小为: {1}。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有 VM 的群集。 要将 VM 重设为 {1}，请解除分配(此操作为 Azure 门户中的“停止”操作)并重试重设大小操作。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败，因为当前正在预配来宾 OS。  |
-|  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败。 错误详细信息：{1} 请确保已正确准备(通用化)映像。 <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败。 错误详细信息: {1} 请确保已正确准备(通用化)映像。 <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
 |  OSProvisioningClientError  |  SSH 主机密钥生成失败。 错误详细信息: {0}。 若要解决此问题，请验证 Linux 代理是否设置正确。 <ul><li>可以查看以下位置的说明: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  为 VM 指定的用户名对于此 Linux 分发版无效。 错误详细信息: {0}。  |
 |  OSProvisioningInternalError  |  VM“{0}”的 OS 预配因内部错误而失败。  |
@@ -205,7 +205,7 @@ Azure VM 使用以下 JSON 格式提供错误响应：
 |  VMExtensionManagementInternalError  |  准备 VM 扩展时出现多个错误。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
-|  VMExtensionProvisioningTimeout  |  预配 VM 扩展“{0}”超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
+|  VMExtensionProvisioningTimeout  |  VM 扩展 "{0}" 的预配已超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
 |  VMMarketplaceInvalidInput  |  从非市场映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从市场映像部署。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  从市场映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |

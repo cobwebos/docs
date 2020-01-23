@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755108"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548095"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据加密 
 
@@ -46,7 +46,7 @@ Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的�
 答：Microsoft 有一套关于加密密钥轮换的内部指导，Cosmos DB 按该指导执行。 具体指导方针不对外公布。 Microsoft 会对外公布[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，其被视为内部指导的一部分，可为开发人员提供有用的最佳实践。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>问：我可以使用自己的加密密钥吗？
-答：Cosmos DB 是一项 PaaS 服务，我们一直在努力使该服务易于使用。 我们注意到此问题经常被作为一个与满足符合性要求（例如 PCI-DSS）相关的代理问题问起。 构建此功能的过程中，我们与符合性审核机构进行了合作，确保客户使用 Cosmos DB 可满足其要求，而无需自行管理密钥。
+答：是的。现在，此功能可用于新的 cosmos 帐户，这应在帐户创建时完成。 有关详细信息，请参阅[客户管理的密钥](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)文档。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>问：哪些区域已开启了此加密？
 答：所有 Azure Cosmos DB 区域都已针对所有用户数据开启了此加密。

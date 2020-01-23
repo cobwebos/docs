@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: f903a358ea493cd01238339ede10b4b16f98c7c5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514589"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548044"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
 
@@ -139,11 +139,85 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[使用 HTTP 触发器作为事件网格触发器](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
+ 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅将[CloudEvents 与 Azure Functions 结合使用](#azure-functions)。
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>用 CloudEvents 1.0 版进行终结点验证
 
 如果已熟悉事件网格，可能会注意到事件网格的终结点验证握手，以防止滥用。 CloudEvents 1.0 版使用 HTTP OPTIONS 方法实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格将与 CloudEvents v1.0 滥用保护一起使用，以取代事件网格验证事件机制。
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>与 Azure Functions 一起使用
+
+[Azure Functions 事件网格绑定](../azure-functions/functions-bindings-event-grid.md)本身不支持 CloudEvents，因此使用 HTTP 触发的函数读取 CloudEvents 消息。 使用 HTTP 触发器读取 CloudEvents 时，必须为事件网格触发器自动执行的操作编写代码：
+
+* 将验证响应发送到[订阅验证请求](../event-grid/security-authentication.md#webhook-event-delivery)。
+* 针对请求正文中包含的事件数组的每个元素调用该函数一次。
+
+有关用于在本地调用函数或者在 Azure 中运行函数的 URL 的信息，请参阅 [HTTP 触发器绑定参考文档](../azure-functions/functions-bindings-http-webhook.md)
+
+以下 HTTP 触发器的示例 C# 代码可模拟事件网格触发器的行为。  将此示例用于以 CloudEvents 架构传递的事件。
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.LogInformation("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.LogInformation($"Source: {message["source"]}");
+        log.LogInformation($"Time: {message["eventTime"]}");
+        log.LogInformation($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+以下 HTTP 触发器的示例 JavaScript 代码可模拟事件网格触发器的行为。 将此示例用于以 CloudEvents 架构传递的事件。
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>后续步骤
 

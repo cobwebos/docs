@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277003"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514759"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -27,27 +27,16 @@ ms.locfileid: "76277003"
 
 若要了解如何导出警报（和建议），请参阅[导出安全警报和建议（预览版）](continuous-export.md)。
 
-警报表下面是一个表，用于描述用于对这些警报的目的进行分类的 Azure 安全中心终止链。 
+警报表下面是一个表，描述用于对这些警报的目的进行分类的 Azure 安全中心终止链。 
 
-此表中包含的警报类型：
-* [Windows 计算机的警报](#alerts-windows)
-* [适用于 Linux 计算机的警报](#alerts-linux)
-* [Azure App Service 的警报](#alerts-azureappserv)
-* [AKS 群集级别的警报](#alerts-akscluster)
-* [容器主机级别的警报](#alerts-containerhost)
-* [SQL 数据库和 SQL 数据仓库的警报](#alerts-sql-db-and-warehouse)
-* [Azure 存储的警报](#alerts-azurestorage)
-* [Azure Cosmos DB 的警报](#alerts-azurecosmos)
-* [Azure 网络层警报](#alerts-azurenetlayer)
-* [Azure 资源管理器的警报（预览版）](#alerts-azureresourceman)
-* [Azure Key Vault 的警报（预览）](#alerts-azurekv)
-* [Azure DDoS 保护警报](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Azure 安全中心警报
+
+## <a name="alerts-windows"></a>Windows 计算机的警报
+
+[更多详细信息和说明](security-center-alerts-iaas.md#windows-)
 
 |警报|Description|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Windows 计算机</h3> [更多详细信息和说明](security-center-alerts-iaas.md#windows-)||
 |**检测到来自恶意 IP 的登录**|已成功为帐户 "schleining" 和进程 "Advapi" 进行远程身份验证，但登录 IP 地址 [IP 地址] 以前被报告为恶意或非常罕见。 可能会发生成功的攻击。|-|
 |**检测到来自恶意 IP 的登录。[多次查看]**|已成功为帐户 "IUSR_10001" 和进程 "Advapi" 进行远程身份验证，但登录 IP 地址 [IP 地址] 以前被报告为恶意或非常罕见。 可能会发生成功的攻击。 扩展名为 .scr 的文件是屏幕保护程序文件，通常驻留在 Windows 系统目录中并从其执行。|-|
 |**向本地管理员组添加来宾帐户**|主机数据分析已检测到% {受害主机} 上的本地管理员组中添加了内置来宾帐户，该帐户与攻击者活动强烈关联。|-|
@@ -129,7 +118,15 @@ ms.locfileid: "76277003"
 |**检测到可疑的代码段**|指示已使用非标准方法（如反射注入和进程替换所）分配了代码段。 该警报提供代码段的其他特征，这些特征已经过处理，可为所报告代码段的功能和行为提供上下文。|-|
 |**已发现外壳代码**|Shellcode 是在恶意软件利用软件漏洞之后运行的有效负载。<br>此警报指示故障转储分析检测到可执行代码，该代码展示了恶意有效负载通常会执行的行为。 尽管非恶意软件也可以执行此行为，但它不是一般的软件开发实践。|-|
 |**检测到的 Fileless 攻击方法**|指定进程的内存包含 fileless 攻击工具包： [工具包名称]。 Fileless 攻击工具包通常不会在文件系统上存在，这使得传统的防病毒软件难以检测。|DefenseEvasion/执行|
-||<a name="alerts-linux"></a><h3>Linux 计算机</h3> [更多详细信息和说明](security-center-alerts-iaas.md#linux-)||
+||||
+
+
+## <a name="alerts-linux"></a>适用于 Linux 计算机的警报
+
+[更多详细信息和说明](security-center-alerts-iaas.md#linux-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**以异常方式访问 SSH 授权密钥文件的进程**|已在类似于已知恶意软件活动的方法中访问了 SSH 授权密钥文件。 此访问可能表明攻击者正尝试获取计算机的持久访问权限。|-|
 |**检测到的永久性尝试**|主机数据分析检测到已安装了单用户模式的启动脚本。<br>由于在此模式下运行时，很少需要合法的进程，这可能表明攻击者已向每个运行级别添加了恶意进程以保证持久性。 |持久性|
 |**可疑文件时间戳修改**|主机数据分析检测到可疑的时间戳修改。 攻击者经常将时间戳从现有的合法文件复制到新工具，以避免检测到这些新删除的文件。|持久性/DefenseEvasion|
@@ -210,7 +207,15 @@ ms.locfileid: "76277003"
 |**可疑密码访问 [多次查看]**|分析主机数据时检测到对% {受害主机} 上的加密用户密码的可疑访问。 今天在下列计算机上出现了 [x] 次此行为： [计算机名称]|-|
 |**检测到可疑 PHP 执行**|计算机日志指示可疑 PHP 进程正在运行。 操作包含尝试使用 PHP 进程从命令行运行 OS 命令或 PHP 代码。 虽然这种行为是合法的，但在 web 应用程序中，这种行为也会在恶意活动中被发现，如尝试利用 web shell 感染网站。|-|
 |**Kubernetes API 的可疑请求**|计算机日志表示对 Kubernetes API 发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [更多详细信息和说明](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Azure App Service 的警报
+
+[更多详细信息和说明](security-center-alerts-compute.md#azure-app-service-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**检测到可疑的 WordPress 主题调用**|应用服务活动日志表示应用服务资源上可能的代码注入活动。<br>此可疑活动类似于操作 WordPress 主题以支持服务器端代码执行的活动，后跟一个直接 web 请求来调用操作的主题文件。 此类活动可以是通过 WordPress 的攻击活动的一部分。|-|
 |**检测到 Web 指纹**<br>（NMAP/盲大象）|应用服务活动日志指出了应用服务资源上可能存在的 web 指纹活动。<br>此可疑活动与名为盲大象的工具相关联。 工具指纹 web 服务器并尝试检测已安装的应用程序及其版本。 攻击者通常使用此工具来探测 web 应用程序以查找漏洞。 |-|
 |**检测到可能易受到攻击的网页的可疑访问**|应用服务活动日志表明访问了看似敏感的网页。<br>此可疑活动源自其访问模式与 web 扫描程序类似的源地址。 这种活动通常与攻击者尝试扫描您的网络以尝试访问敏感或易受攻击的网页有关。 |-|
@@ -226,7 +231,15 @@ ms.locfileid: "76277003"
 |**检测到可疑的用户代理**|Azure App Service 活动日志指示具有可疑用户代理的请求。 此行为可以指示尝试利用应用服务应用程序中的漏洞。|-|
 |**上传文件夹中的 PHP 文件**|Azure App Service 活动日志指示对位于上传文件夹中的可疑 PHP 页面的访问。 这种类型的文件夹通常不包含 PHP 文件。 存在这种类型的文件可能表示利用了任意文件上传漏洞的利用。|-|
 |**检测到异常请求模式**|Azure App Service 活动日志指示应用服务来自% {Source IP} 的异常 HTTP 活动。 此活动类似于模糊化 \ 强力强制活动模式。|-|
-||<a name="alerts-akscluster"></a><h3>AKS 群集级别</h3> [更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>AKS 群集级别的警报
+
+[更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**预览-检测到群集-管理员角色的角色绑定**|Kubernetes 审核日志分析检测到群集管理角色的新绑定，导致管理员权限。 不必要地提供管理员权限可能会导致群集中的权限提升问题。|持久性|
 |**检测到预览版的 Kubernetes 仪表板**|Kubernetes 审核日志分析检测到由 LoadBalancer 服务公开的 Kubernetes 仪表板。 公开的仪表板允许未经身份验证的群集管理访问，并带来安全威胁。|持久性|
 |**预览-检测到新的高特权角色**|Kubernetes 审核日志分析检测到具有高权限的新角色。 与具有高权限的角色的绑定在群集中为用户/组提升的权限。 不必要地提供提升的权限可能会导致群集中的权限提升问题。|持久性|
@@ -234,7 +247,14 @@ ms.locfileid: "76277003"
 |**预览-检测到数字货币挖掘容器**|Kubernetes 审核日志分析检测到一个容器具有与数字货币挖掘工具关联的图像。|执行|
 |**预览-检测到特权容器**|Kubernetes 审核日志分析检测到新的特权容器。 特权容器可以访问节点的资源，并打破容器之间的隔离。 如果受到侵害，攻击者可以使用特权容器获取对节点的访问权限。|PrivilegeEscalation|
 |**预览-检测到敏感卷装载的容器**|Kubernetes 审核日志分析检测到具有敏感卷装入的新容器。 检测到的卷是将敏感文件或文件夹从节点装入容器的 hostPath 类型。 如果容器被泄露，则攻击者可以使用此装载获取对节点的访问权限。|PrivilegeEscalation|
-||<a name="alerts-containerhost"></a><h3>容器主机级别</h3> [更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>容器主机级别的警报
+
+[更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**检测到特权容器**|计算机日志指示特权 Docker 容器正在运行。 特权容器对宿主的资源具有完全访问权限。 如果受到侵害，攻击者可以使用特权容器获取对主机的访问权限。|PrivilegeEscalation/执行|
 |**特权命令在容器中运行**|计算机日志指示已在 Docker 容器中运行特权命令。 特权命令具有主机上的扩展权限。|PrivilegeEscalation|
 |**检测到暴露的 Docker 守护程序**|计算机日志指示 Docker 守护程序（dockerd.exe）公开 TCP 套接字。 默认情况下，启用 TCP 套接字后，Docker 配置不使用加密或身份验证。 可以访问相关端口的任何人均可获取对 Docker 守护程序的完全访问权限。|利用/执行|
@@ -242,7 +262,15 @@ ms.locfileid: "76277003"
 |**检测到挖掘器映像的容器**|计算机日志表示执行运行与数字货币挖掘关联的映像的 Docker 容器。 此行为可能表示资源被滥用。|执行|
 |**Kubernetes API 的可疑请求**|计算机日志表示对 Kubernetes API 发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|执行|
 |**向 Kubernetes 仪表板发出可疑请求**|计算机日志指示对 Kubernetes 仪表板发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL 数据库和 SQL 数据仓库</h3> [更多详细信息和说明](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>SQL 数据库和 SQL 数据仓库的警报
+
+[更多详细信息和说明](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**可能的 SQL 注入漏洞**|应用程序在数据库中生成了错误的 SQL 语句。 这可能表示存在 SQL 注入攻击的漏洞。 错误的语句有两个可能的原因。 应用程序代码中的缺陷可能构造了错误的 SQL 语句。 或者，应用程序代码或存储过程在构造出现错误的 SQL 语句时，不会清理用户输入，这可被用于 SQL 注入。|-|
 |**潜在 SQL 注入**|对已识别的应用程序进行主动攻击时，易受 SQL 注入攻击。 这意味着攻击者正尝试使用有漏洞的应用程序代码或存储过程注入恶意 SQL 语句。|-|
 |**从异常位置登录**|访问模式已更改为 SQL Server，其中有人从异常的地理位置登录到了服务器。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工或外部攻击者）。|漏洞利用|
@@ -252,7 +280,15 @@ ms.locfileid: "76277003"
 |**从异常的 Azure 数据中心登录**|对 SQL Server 的访问模式进行了更改，在这种情况下，有人从异常的 Azure 数据中心登录到了服务器。 在某些情况下，警报会检测合法操作（新应用程序或 Azure 服务）。 在其他情况下，警报会检测恶意操作（攻击者在 Azure 中从违例资源运行）。|探测|
 |**可能不安全的操作**|在 SQL Server 中，经常在恶意会话中使用的高特权 SQL 命令已执行。 建议默认禁用这些命令。 在某些情况下，警报会检测合法操作（运行管理脚本）。 在其他情况下，警报会检测恶意操作（攻击者使用 SQL 信任来破坏 Windows 层）。|执行|
 |**异常导出位置**|SQL 导入和导出操作的导出存储目标发生了更改。 在某些情况下，警报会检测到合法的更改（新的备份目标）。 在其他情况下，警报会检测恶意操作（攻击者很容易将数据 exfiltrated 到文件中）。|渗透|
-||<a name="alerts-azurestorage"></a><h3>Azure 存储器</h3> [更多详细信息和说明](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Azure 存储的警报
+
+[更多详细信息和说明](security-center-alerts-data-services.md#azure-storage-)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**从异常位置访问存储帐户**|指示访问模式对 Azure 存储帐户进行了更改。 与最近的活动进行比较时，有人从一个 IP 地址访问此帐户，该地址被视为不熟悉。 攻击者已获得帐户的访问权限，或者合法用户已从新的或异常的地理位置进行连接。 后者的一个示例是从新的应用程序或开发人员进行远程维护。|漏洞利用|
 |**异常应用程序访问了存储帐户**|指示异常应用程序已访问此存储帐户。 可能的原因是攻击者通过使用新的应用程序访问了你的存储帐户。|漏洞利用|
 |**匿名访问存储帐户**|指示存储帐户的访问模式发生更改。 例如，帐户已被匿名访问（无需任何身份验证），这与此帐户上的最新访问模式有意外的对比。 可能的原因是攻击者利用了对保存 blob 存储的容器的公共读取访问权限。|漏洞利用|
@@ -265,10 +301,26 @@ ms.locfileid: "76277003"
 |**存储帐户中的异常访问检查**|表示与此帐户上的最近活动相比，对存储帐户的访问权限的检查方式与此相同。 一个可能的原因是攻击者为将来的攻击执行了侦测。|集合|
 |**存储帐户中的异常数据浏览**|表示与此帐户上的最近活动相比，存储帐户中的 blob 或容器已以异常方式进行枚举。 一个可能的原因是攻击者为将来的攻击执行了侦测。|集合|
 |**预览-可能已上传到存储帐户的恶意软件**|指示包含潜在恶意软件的 blob 已上传到存储帐户。 可能的原因包括攻击者或无意中上传恶意软件（由合法用户进行）。|LateralMovement|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [更多详细信息和说明](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[更多详细信息和说明](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**从异常位置访问 Cosmos DB 帐户**|指示 Azure Cosmos DB 帐户的访问模式发生了更改。 用户已从不熟悉的 IP 地址（与最近的活动）访问了此帐户。 攻击者已访问该帐户，或者合法用户已从新的和不正常的地理位置访问了它。 后者的一个示例是从新的应用程序或开发人员进行远程维护。|漏洞利用|
 |**从 Cosmos DB 帐户提取的异常数据量**|指示 Azure Cosmos DB 帐户的数据提取模式发生了更改。 与最近的活动相比，有人提取了异常的数据量。 攻击者可能已从 Azure Cosmos DB 数据库（例如，数据渗透或泄露或未经授权的数据传输）提取了大量数据。 或者，合法用户或应用程序可能已从容器提取了异常数据量（例如，对于维护备份活动）。|渗透|
-||<a name="alerts-azurenetlayer"></a><h3>Azure 网络层</h3> [更多详细信息和说明](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Azure 网络层警报
+
+[更多详细信息和说明](security-center-alerts-service-layer.md#azure-network-layer)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**建议用于阻止的 IP 地址的流量**|Azure 安全中心检测到来自建议被阻止的 IP 地址的入站流量。 这通常发生在此 IP 地址不会与此资源定期通信的情况下。 或者，安全中心的威胁智能源将 IP 地址标记为 "恶意"。|探测|
 |**检测到与恶意计算机的网络通信**|网络流量分析表明你的计算机（IP% {受害者 IP}）已与可能是哪个命令和控制中心通信。 当泄露的资源是负载均衡器或应用程序网关时，可疑的活动可能表示后端池中的一个或多个资源（负载均衡器或应用程序网关）与可能的命令有关，控制中心。|-|
 |**检测到可能的受攻击计算机**|威胁情报表明你的计算机（在 IP% {Machine IP} 上）可能已被 Conficker 类型的恶意软件破坏。 Conficker 是一种面向 Microsoft Windows 操作系统的计算机蠕虫，在2008年11月首次检测到。 Conficker 感染了数百万台计算机，包括超过200个国家/地区的政府、企业和家庭计算机，使其成为最常见的已知计算机蠕虫病毒，因为 2003 Welchia 蠕虫。|-|
@@ -285,7 +337,15 @@ ms.locfileid: "76277003"
 |**到多个目标的可疑传出 RDP 网络活动**|网络流量分析检测到到多个目标的异常传出远程桌面协议（RDP）通信，这些目标源自% {受害主机} （% {攻击者 IP}），这是部署中的资源。 当泄露的资源是负载均衡器或应用程序网关时，可疑的传出流量来自后端池中的一个或多个资源（负载均衡器或应用程序网关）。 具体而言，采样的网络数据会显示你的计算机连接到% {受攻击的 Ip} 个唯一 Ip，这对于此环境被视为不正常。 此活动可能表示资源已泄露，现已用于暴力破解外部 RDP 终结点。 请注意，此类活动可能导致你的 IP 被外部实体标记为恶意 IP。|-|
 |**可疑的传出 SSH 网络活动**|网络流量分析检测到来自% {受害主机} （% {攻击者 IP}）的异常传出 SSH 通信，该通信源自% {受害主机} （% {攻击者 IP}），部署中的资源。 当泄露的资源是负载均衡器或应用程序网关时，可疑的传出流量来自后端池中的一个或多个资源（负载均衡器或应用程序网关）。 具体而言，采样的网络数据显示资源的% {Connections} 个传出连接，这在此环境中被视为不正常。 此活动可能表示资源已遭到破坏，现已用于暴力破解外部 SSH 终结点。 请注意，此类活动可能导致你的 IP 被外部实体标记为恶意 IP。|-|
 |**到多个目标的可疑传出 SSH 网络活动**|网络流量分析检测到与源自% {受害主机} （% {攻击者 IP}）的多个目标的异常传出 SSH 通信，这是部署中的资源。 当泄露的资源是负载均衡器或应用程序网关时，可疑的传出流量来自后端池中的一个或多个资源（负载均衡器或应用程序网关）。 具体而言，采样的网络数据会显示你的资源连接到% {受攻击的 Ip 的数量} 个唯一 Ip，这对于此环境被视为不正常。 此活动可能表示资源已遭到破坏，现已用于暴力破解外部 SSH 终结点。 请注意，此类活动可能导致你的 IP 被外部实体标记为恶意 IP。|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure 资源管理器（预览版）</h3> [更多详细信息和说明](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Azure 资源管理器的警报（预览版）
+
+[更多详细信息和说明](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**已检测到 MicroBurst 工具包函数运行**|已在你的环境中检测到一个已知的云环境侦测工具包。 攻击者（或渗透测试人员）可以使用工具[MicroBurst](https://github.com/NetSPI/MicroBurst)来映射订阅的资源、标识不安全的配置以及泄露机密信息。|-|
 |**已检测到 Azurite 工具包**|已在你的环境中检测到一个已知的云环境侦测工具包。 攻击者（或渗透测试人员）可以使用工具[Azurite](https://github.com/mwrlabs/Azurite)来映射订阅的资源并标识不安全的配置。|-|
 |**预览-检测到使用非活动帐户的可疑管理会话**|订阅活动日志分析检测到可疑行为。 一段很长一段时间内未使用的主体现在正在执行可确保攻击者持久性的操作。|持久性|
@@ -295,7 +355,15 @@ ms.locfileid: "76277003"
 |**来自不常见国家/地区的活动**|来自组织中任何用户最近或从未访问过的位置中的活动。<br>此项检测考虑过去的活动位置，以确定新的和不常见的位置。 异常情况检测引擎将存储组织中用户以往用过的位置的相关信息。|-|
 |**来自匿名 IP 地址的活动**|检测到来自已被标识为匿名代理 IP 地址的 IP 地址的用户活动。<br>要隐藏其设备 IP 地址的用户使用这些代理，并可用于恶意目的。 此检测使用机器学习算法，该算法可减少误报，例如组织中用户广泛使用的、带有错误标记的 IP 地址。|-|
 |**无法进行的旅行活动**|发生了两个用户活动（在单个或多个会话中），源自地理位置遥远的位置。 这种情况发生在短于用户从第一个位置到达第二个位置所需的时间段内。 这表示其他用户正在使用相同的凭据。<br>此检测使用机器学习算法，该算法会忽略导致不可能旅行情况的明显误报，如组织中其他用户定期使用的 Vpn 和位置。 该检测具有7天的初始学习期间，在此期间，它将学习新用户的活动模式。 |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault （预览）</h3> [更多详细信息和说明](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Azure Key Vault 的警报（预览）
+
+[更多详细信息和说明](security-center-alerts-service-layer.md#azure-keyvault)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**从 TOR exit 节点访问 Key Vault**|使用 TOR IP 匿名系统的用户访问了 Key Vault，以隐藏其位置。 当尝试获取对连接到 internet 的资源的未经授权的访问权限时，恶意执行组件通常会尝试隐藏其位置。|-|
 |**Key Vault 中的可疑策略更改和机密查询**|已进行 Key Vault 策略更改，然后执行列出和/或获取机密操作的操作。 此外，用户通常不会对此保管库执行此操作模式。 这强烈表明 Key Vault 受到威胁，恶意的执行组件已经窃取了中的机密。|-|
 |**Key Vault 中的可疑机密列表和查询**|密码列表操作后跟许多机密 Get 操作。 此外，用户通常不会对此保管库执行此操作模式。 这表明有人可以转储存储在 Key Vault 中的机密，以实现潜在的恶意目的。|-|
@@ -305,11 +373,18 @@ ms.locfileid: "76277003"
 |**Key Vault 中的异常操作模式**|与历史数据相比较，执行了一组异常的 Key Vault 操作。 Key Vault 活动通常在一段时间内是相同的。 这可能是活动的合法更改。 或者，你的基础结构可能已泄露，并且需要进一步调查。|-|
 |**Key Vault 中的大量操作**|与历史数据相比，已经执行了更大量的 Key Vault 操作。 Key Vault 活动通常在一段时间内是相同的。 这可能是活动的合法更改。 或者，你的基础结构可能已泄露，并且需要进一步调查。|-|
 |**用户访问了大量的密钥保管库**|与历史数据相比，用户或应用程序访问的保管库的数目已更改。 Key Vault 活动通常在一段时间内是相同的。 这可能是活动的合法更改。 或者，你的基础结构可能已泄露，并且需要进一步调查。|-|
-||<a name="alerts-azureddos"></a><h3>Azure DDoS 保护</h3> [更多详细信息和说明](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Azure DDoS 保护警报
+
+[更多详细信息和说明](security-center-alerts-integration.md#azure-ddos)
+
+|警报|Description|意向（[了解详细信息](#intentions)）|
+|----|----|:----:|
 |**检测到公共 IP 的 DDoS 攻击**|检测到公共 IP （IP 地址）的 DDoS 攻击，并被减轻。|探测|
 |**为公共 IP 缓解 DDoS 攻击**|公共 IP （IP 地址）对 DDoS 攻击的缓解。|探测|
 ||||
-
 
 ## <a name="intentions"></a>举动
 

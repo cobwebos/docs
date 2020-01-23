@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 054113da7fe06436fab0cdfff6c4257f1263de97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 23a5dbf2333ca86c2d51d54bf983b00a71936eec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290353"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547942"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>将自己的密钥（BYOK）与 azure Kubernetes 服务（AKS）中的 Azure 磁盘结合在一起
 
@@ -98,7 +98,7 @@ az role assignment create --assignee $desIdentity --role Reader --scope $keyVaul
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>创建新的 AKS 群集并加密 OS 磁盘
 
-创建**新的资源组**和 AKS 群集，并使用密钥对 OS 磁盘进行加密。 只有1.17 版的 kubernetes 支持客户管理的密钥。 
+创建**新的资源组**和 AKS 群集，并使用密钥对 OS 磁盘进行加密。 只有1.17 版的 Kubernetes 支持客户管理的密钥。 
 
 > [!IMPORTANT]
 > 确保为 AKS 群集创建新的资源组

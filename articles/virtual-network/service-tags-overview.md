@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975376"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543029"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
@@ -51,7 +51,7 @@ ms.locfileid: "75975376"
 | **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | 创建数字代理。 | 出站 | 否 | 否 |
-| **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 | 出站 | 是 | 是 |
+| **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
 | **AzureCognitiveSearch** | Azure 认知搜索（如果对技能组合使用索引器）。 | 两者 | 否 | 否 |
 | **AzureConnectors** | 用于探测/后端连接的 Azure 逻辑应用连接器。 | 入站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |

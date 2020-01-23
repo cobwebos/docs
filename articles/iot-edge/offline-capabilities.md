@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 951c81b2d65fe17f6e79dbdd699051ba43b86c49
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a057eac8d2a0114cb58f738277e3e9a8fed90672
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867377"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548656"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -52,24 +52,23 @@ Azure IoT Edge 支持对 IoT Edge 设备进行扩展的脱机操作，并对非 
 
 ## <a name="set-up-parent-and-child-devices"></a>设置父设备和子设备
 
-要使 IoT Edge 设备将其扩展的脱机功能扩展到子 IoT 设备，需要完成两个步骤。 首先，在 Azure 门户中声明父子关系。 其次，在父设备和任何子设备之间创建信任关系，然后配置设备到云的通信，将父设备作为网关。 
+要使 IoT Edge 设备将其扩展的脱机功能扩展到子 IoT 设备，需要完成两个步骤。 首先，在 Azure 门户中声明父子关系。 其次，在父设备和任何子设备之间创建信任关系，然后配置设备到云的通信，将父设备作为网关。
 
 ### <a name="assign-child-devices"></a>分配子设备
 
-子设备可以是注册到相同 IoT 中心的任何非 IoT Edge 设备。 父设备可以有多个子设备，但子设备只能有一个父设备。 有三个选项可用于将子设备设置到边缘设备：通过 Azure 门户、使用 Azure CLI 或使用 IoT 中心服务 SDK。 
+子设备可以是注册到相同 IoT 中心的任何非 IoT Edge 设备。 父设备可以有多个子设备，但子设备只能有一个父设备。 有三个选项可用于将子设备设置到边缘设备：通过 Azure 门户、使用 Azure CLI 或使用 IoT 中心服务 SDK。
 
 以下各节提供了有关如何在 IoT 中心中声明现有 IoT 设备的父/子关系的示例。 如果你要为子设备创建新的设备标识，请参阅对[Azure IoT 中心的下游设备进行身份验证](how-to-authenticate-downstream-device.md)，了解详细信息。
 
 #### <a name="option-1-iot-hub-portal"></a>选项1： IoT 中心门户
 
-创建新设备时，可以声明父子关系。 对于现有设备，您可以从父 IoT Edge 设备或子 IoT 设备的 "设备详细信息" 页声明关系。 
+创建新设备时，可以声明父子关系。 对于现有设备，您可以从父 IoT Edge 设备或子 IoT 设备的 "设备详细信息" 页声明关系。
 
    ![从 IoT Edge 设备的详细信息页管理子设备](./media/offline-capabilities/manage-child-devices.png)
 
-
 #### <a name="option-2-use-the-az-command-line-tool"></a>选项2：使用 `az` 命令行工具
 
-将[Azure 命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)用于[IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v 0.7.0 编写或更高版本），可以使用[设备标识](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)子命令管理父子关系。 下面的示例使用查询将集线器中的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。 
+将[Azure 命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)用于[IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v 0.7.0 编写或更高版本），可以使用[设备标识](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest)子命令管理父子关系。 下面的示例使用查询将集线器中的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。
 
 ```shell
 # Set IoT Edge parent device
@@ -89,39 +88,39 @@ az iot hub device-identity add-children \
   --child-list $device_list \
   --hub-name replace-with-hub-name \
   --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name 
+  --subscription replace-with-sub-name
 ```
 
 您可以修改[查询](../iot-hub/iot-hub-devguide-query-language.md)以选择其他设备的子集。 如果指定大量设备，此命令可能需要几秒钟。
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>选项3：使用 IoT 中心服务 SDK 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>选项3：使用 IoT 中心服务 SDK
 
 最后，你可以使用C#Java 或 Node.js IoT 中心服务 SDK 以编程方式管理父子关系。 下面是使用C# SDK[分配子设备的示例](https://aka.ms/set-child-iot-device-c-sharp)。
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>将父设备设置为网关
 
-可以将父/子关系视为透明网关，其中，子设备在 IoT 中心具有其自己的标识，但通过其父级通过云进行通信。 为了安全地通信，子设备需要能够验证父设备是否来自受信任的源。 否则，第三方可能会设置恶意设备来模拟父项和拦截通信。 
+可以将父/子关系视为透明网关，其中，子设备在 IoT 中心具有其自己的标识，但通过其父级通过云进行通信。 为了安全地通信，子设备需要能够验证父设备是否来自受信任的源。 否则，第三方可能会设置恶意设备来模拟父项和拦截通信。
 
 以下文章中详细介绍了创建此信任关系的一种方法：
 
 * [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
 * [将下游（子）设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>指定 DNS 服务器 
+## <a name="specify-dns-servers"></a>指定 DNS 服务器
 
 为了提高可靠性，强烈建议您指定在您的环境中使用的 DNS 服务器地址。 若要为 IoT Edge 设置 DNS 服务器，请参阅故障排除一文中的["边缘代理模块](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)的解决方法"。
 
 ## <a name="optional-offline-settings"></a>可选脱机设置
 
-如果设备处于脱机状态，则在重新建立连接之前，IoT Edge 父设备将存储所有设备到云的消息。 IoT Edge 中心模块管理脱机消息的存储和转发。 对于长时间脱机的设备，可通过配置两个 IoT Edge 集线器设置来优化性能。 
+如果设备处于脱机状态，则在重新建立连接之前，IoT Edge 父设备将存储所有设备到云的消息。 IoT Edge 中心模块管理脱机消息的存储和转发。 对于长时间脱机的设备，可通过配置两个 IoT Edge 集线器设置来优化性能。
 
-首先，增加 "生存时间" 设置，以便 IoT Edge 中心将消息保留足够长的时间，以便重新连接设备。 然后，为消息存储添加更多磁盘空间。 
+首先，增加 "生存时间" 设置，以便 IoT Edge 中心将消息保留足够长的时间，以便重新连接设备。 然后，为消息存储添加更多磁盘空间。
 
 ### <a name="time-to-live"></a>生存时间
 
-生存时间设置是指在过期之前消息可以等待传递的时间量（以秒为单位）。 默认为 7200 秒（两个小时）。 最大值仅受整数变量的最大值限制，此值大约为2000000000。 
+生存时间设置是指在过期之前消息可以等待传递的时间量（以秒为单位）。 默认为 7200 秒（两个小时）。 最大值仅受整数变量的最大值限制，此值大约为2000000000。
 
-此设置是 IoT Edge 中心的所需属性，它存储在模块孪生中。 你可以在 Azure 门户中或直接在部署清单中进行配置。 
+此设置是 IoT Edge 中心的所需属性，它存储在模块孪生中。 你可以在 Azure 门户中或直接在部署清单中进行配置。
 
 ```json
 "$edgeHub": {
@@ -141,7 +140,7 @@ az iot hub device-identity add-children \
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何为父/子设备连接设置透明网关： 
+详细了解如何为父/子设备连接设置透明网关：
 
 * [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
 * [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)

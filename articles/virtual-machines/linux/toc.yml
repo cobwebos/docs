@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a - 通过 Jenkins 生成
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b - 使用 Azure Pipelines 进行部署（经典）
+    - name: 14b - 将 Jenkins 与 Azure DevOps 集成
       href: tutorial-build-deploy-jenkins.md
-    - name: 15 - 将 CI/CD 与 Azure Pipelines 配合使用 (YAML)
+    - name: 15a - Azure 上用于 IaaS 和 PaaS 的 DevOps
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b - 将 CI/CD 与 Azure Pipelines 配合使用 (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - 创建 LAMP 堆栈
       href: tutorial-lamp-stack.md

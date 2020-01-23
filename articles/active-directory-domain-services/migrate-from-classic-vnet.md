@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893053"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544151"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>预览-将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
-对于当前使用经典虚拟网络模型到资源管理器虚拟网络模型的客户，Azure Active Directory 域服务（AD DS）支持一次移动。
+对于当前使用经典虚拟网络模型到资源管理器虚拟网络模型的客户，Azure Active Directory 域服务（AD DS）支持一次移动。 使用资源管理器部署模型 Azure AD DS 托管域提供其他功能，例如细化密码策略、审核日志和帐户锁定保护。
 
-本文概述了迁移的优点和注意事项，以及成功迁移现有 Azure AD DS 实例所需的步骤。 此功能目前处于预览状态。
+本文概述了迁移的优点和注意事项，以及成功迁移现有 Azure AD DS 实例所需的步骤。 此迁移功能目前处于预览阶段。
 
 ## <a name="overview-of-the-migration-process"></a>迁移过程概述
 
@@ -106,7 +106,7 @@ ms.locfileid: "74893053"
 
 ### <a name="ip-addresses"></a>IP 地址
 
-迁移后，Azure AD DS 托管域的域控制器 IP 地址将更改。 这包括安全 LDAP 终结点的公共 IP 地址。 新的 IP 地址位于资源管理器虚拟网络中的新子网的地址范围内。
+迁移后，Azure AD DS 托管域的域控制器 IP 地址将更改。 此更改包括安全 LDAP 终结点的公共 IP 地址。 新的 IP 地址位于资源管理器虚拟网络中的新子网的地址范围内。
 
 如果是回滚，则在回滚之后 IP 地址可能会更改。
 
@@ -122,13 +122,13 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但这并�
 
 默认情况下，在2分钟内尝试执行5次错误密码会锁定帐户30分钟。
 
-锁定的帐户无法登录到，这可能会影响管理由该帐户管理的 Azure AD DS 托管域或应用程序的能力。 迁移 Azure AD DS 托管域后，帐户可能会由于登录失败的重复尝试而感觉到永久性锁定。 迁移后的两种常见方案包括：
+锁定的帐户不能用于登录，这可能会影响管理由帐户管理的 Azure AD DS 托管域或应用程序的能力。 迁移 Azure AD DS 托管域后，帐户可能会由于登录失败的重复尝试而感觉到永久性锁定。 迁移后的两种常见方案包括：
 
 * 使用过期密码的服务帐户。
     * 服务帐户会反复尝试使用过期密码登录，这会锁定帐户。 若要解决此问题，请找到凭据过期的应用程序或 VM，并更新密码。
 * 恶意实体正在使用强行登录帐户。
     * 当 Vm 向 internet 公开时，攻击者通常会尝试进行签名时常见的用户名和密码组合。 这些重复的失败登录尝试可能会锁定帐户。 建议不要使用具有通用名称（如*管理员*或*管理员*）的管理员帐户，例如，将管理帐户从锁定状态降到最低。
-    * 最大程度地减少向 internet 公开的 Vm 数量。 可以使用[Azure 堡垒（目前为预览版）][azure-bastion]通过 Azure 门户安全地连接到 vm。
+    * 最大程度地减少向 internet 公开的 Vm 数量。 可以使用[Azure 堡垒][azure-bastion]通过 Azure 门户安全地连接到 vm。
 
 如果怀疑迁移后某些帐户可能被锁定，最终的迁移步骤概述如何启用审核或更改细化密码策略设置。
 
@@ -164,11 +164,11 @@ Azure AD DS 托管域可以迁移到的虚拟网络有一些限制。 资源管�
 
 ## <a name="update-and-verify-virtual-network-settings"></a>更新并验证虚拟网络设置
 
-在开始迁移之前，请完成以下初始检查和更新。 这些步骤可在迁移之前的任何时间发生，并且不会影响 Azure AD DS 托管域的操作。
+在开始迁移过程之前，请完成以下初始检查和更新。 这些步骤可在迁移之前的任何时间发生，并且不会影响 Azure AD DS 托管域的操作。
 
 1. 将本地 Azure PowerShell 环境更新到最新版本。 若要完成迁移步骤，至少需要*2.3.2*版本。
 
-    有关如何检查和更新的信息，请参阅[Azure PowerShell 概述][azure-powershell]。
+    有关如何检查和更新 PowerShell 版本的信息，请参阅[Azure PowerShell 概述][azure-powershell]。
 
 1. 创建或选择现有资源管理器虚拟网络。
 
@@ -210,7 +210,8 @@ Azure PowerShell 用于为迁移准备 Azure AD DS 托管域。 这些步骤包�
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ Migrate-Aadds `
 
 成功完成迁移过程后，一些可选的配置步骤包括启用审核日志或电子邮件通知，或者更新细化密码策略。
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>使用 Azure Monitor 订阅审核日志
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>使用 Azure Monitor 订阅审核日志
 
 Azure AD DS 公开了审核日志，以帮助排查和查看域控制器上的事件。 有关详细信息，请参阅[启用和使用审核日志][security-audits]。
 
 您可以使用模板来监视日志中公开的重要信息。 例如，"审核日志" 工作簿模板可以监视 Azure AD DS 托管域上的可能帐户锁定。
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>配置 Azure AD 域服务电子邮件通知
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>配置 Azure AD 域服务电子邮件通知
 
 若要在 Azure AD DS 托管域上检测到问题时收到通知，请更新 Azure 门户中的电子邮件通知设置。 有关详细信息，请参阅[配置通知设置][notifications]。
 
-#### <a name="update-fine-grained-password-policy"></a>更新细化密码策略
+### <a name="update-fine-grained-password-policy"></a>更新细化密码策略
 
 如果需要，可以将严格的密码策略更新为低于默认配置。 您可以使用审核日志来确定限制性较低的设置是否合理，然后根据需要配置策略。 使用以下高级步骤来查看和更新迁移后重复锁定的帐户的策略设置：
 
 1. [配置密码策略][password-policy]以减少对 Azure AD DS 托管域的限制，并观察审核日志中的事件。
 1. 如果任何服务帐户使用审核日志中标识的过期密码，请使用正确的密码更新这些帐户。
-1. 如果 VM 向 internet 公开，请查看一般帐户名称（如*管理员*、*用户*或*来宾*），登录尝试次数很高。 如果可能，请更新这些虚拟机以使用不太常用的命名帐户。
+1. 如果向 internet 公开了 VM，请查看一般帐户名称（如*管理员*、*用户*或*来宾*），登录尝试次数很高。 如果可能，请更新这些虚拟机以使用不太常用的命名帐户。
 1. 使用 VM 上的网络跟踪查找攻击源，并阻止这些 IP 地址尝试登录。
 1. 如果出现最少的锁定问题，请根据需要将细化密码策略更新为严格限制。
 
-#### <a name="creating-a-network-security-group"></a>创建网络安全组
+### <a name="creating-a-network-security-group"></a>创建网络安全组
 
 Azure AD DS 需要使用网络安全组来保护托管域所需的端口，并阻止其他所有传入流量。 此网络安全组充当一层额外的保护措施，用于锁定对托管域的访问，但不会自动创建。 若要创建网络安全组并打开所需的端口，请查看以下步骤：
 
@@ -301,6 +302,8 @@ Azure AD DS 需要使用网络安全组来保护托管域所需的端口，并�
 1. 如果使用安全 LDAP，请将规则添加到网络安全组，以允许*TCP*端口*636*的传入流量。 有关详细信息，请参阅[配置安全 LDAP][secure-ldap]。
 
 ## <a name="roll-back-and-restore-from-migration"></a>回退并从迁移还原
+
+在迁移过程中，你可以选择回滚或还原 Azure AD DS 托管域。
 
 ### <a name="roll-back"></a>回滚
 

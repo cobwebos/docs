@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826176"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543148"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
 
@@ -44,11 +44,11 @@ ms.locfileid: "73826176"
 
 提供以下 SKU 值。  需要用星号附加字段。
 
-|    字段         |       说明                                                            |
+|    字段         |       Description                                                            |
 |  ---------       |     ---------------                                                          |
 |  **标题\***     | SKU 的标题。 此标题将显示在此项的库中。   |
 | **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
-| **说明\*** | SKU 的详细说明。 支持基本 HTML。                 | 
+| **Description\*** | SKU 的详细说明。 支持基本 HTML。                 | 
 | **SKU 类型\***   | Azure 应用程序解决方案的类型，对于此方案，请选择 "**解决方案模板**"。 |
 | **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公有 azure** -应用可部署到具有 marketplace 集成的所有公共 Azure 区域中的客户。  azure**政府**版云 <b/>将部署在 azure 政府版云中。 在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)版之前，Microsoft 建议出版商测试和验证其解决方案在此环境中按预期方式工作。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。  |
 | **这是私有 SKU 吗？\*** | 如果此 SKU 仅适用于选择的客户组，请选择 **"是"** 。 |
@@ -66,11 +66,11 @@ ms.locfileid: "73826176"
 
 配置以下 SKU 设置。 需要用星号附加字段。
 
-|    字段         |       说明                                                            |
+|    字段         |       Description                                                            |
 |  ---------       |     ---------------                                                          |
 |  **标题\***     | SKU 的标题。 此标题将显示在此项的库中。   |
 | **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
-| **说明\*** | SKU 的详细说明。 支持基本 HTML。                 | 
+| **Description\*** | SKU 的详细说明。 支持基本 HTML。                 | 
 | **SKU 类型\***   | Azure 应用程序解决方案的类型，对于此方案，请选择 "**托管应用程序**"。 
 | **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公有 azure** -应用可部署到具有 marketplace 集成的所有公共 Azure 区域中的客户。  azure**政府**版云 <b/>将部署在 azure 政府版云中。 在发布到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)版之前，Microsoft 建议出版商测试和验证其解决方案在此环境中按预期方式工作。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。   Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。 |
 | **这是私有 SKU 吗？\*** | 如果此 SKU 仅适用于选择的客户组，请选择 **"是"** 。 |
@@ -82,17 +82,19 @@ ms.locfileid: "73826176"
 
 ### <a name="package-details-for-solution-template"></a>解决方案模板的包详细信息
 
-   ![解决方案模板的包详细信息](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![解决方案模板的包详细信息](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 提供以下**包详细信息**值。  需要用星号附加字段。
 
 - **版本\*** -将要上传的包的版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
 - **包文件（.zip）\*** -此包包含保存在 .zip 文件中的以下文件。
-  - MainTemplate.json - 部署模板文件，用于部署解决方案/应用程序并创建针对解决方案定义的资源。 有关详细信息，请参阅[如何创作部署模板文件](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。
-  - createUIDefinition.json - Azure 门户使用此文件生成用于预配此解决方案/应用程序的用户界面。 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。
+  - **maintemplate.json\*** -部署模板文件，用于部署解决方案/应用程序和创建为解决方案定义的资源。 有关详细信息，请参阅[如何创作部署模板文件](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。
+  - **createUIDefinition\*** -此文件由 Azure 门户用于生成用于预配此解决方案/应用程序的用户界面。 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。
+  - 脚本（如有必要）-运行模板时可能需要的任何其他脚本，例如 `Microsoft.Compute/virtualMachines/extensions`。
+  - 嵌套模板（如果需要）-任何其他嵌套模板。
 
-  >[!IMPORTANT] 
-  >此包应该包含预配此应用程序所需的任何嵌套模板或脚本。 MainTemplate.json 和 createUIDefinition.json 必须位于根文件夹中。
+  > [!IMPORTANT] 
+  > 此包应该包含预配此应用程序所需的任何嵌套模板或脚本。 Maintemplate.json 文件和 createUIDefinition 文件必须位于根文件夹中。 有关部署项目的详细信息，请参阅[Azure 资源管理器模板-最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts)。
 
 
 ### <a name="package-details-for-managed-application"></a>托管应用程序的包详细信息

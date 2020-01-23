@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990318"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542859"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置要使用的 vCenter 标识源 Active Directory
 
@@ -33,7 +33,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 在[添加标识源](#add-an-identity-source-on-vcenter)之前，临时[升级 vCenter 权限](escalate-private-cloud-privileges.md)。
 
 > [!CAUTION]
-> 新用户必须仅添加到*云所有者组*、*云全局-群集管理组*、云全局*存储管理*组、云全局*网络管理*组或*云-全局-VM 管理*组的用户组。  添加到*管理员*组的用户将被自动删除。  只有服务帐户才能添加到*Administrators*组。  
+> 新用户必须仅添加到*云所有者组*、*云全局-群集管理组*、云全局*存储管理*组、云全局*网络管理*组或*云-全局-VM 管理*组的用户组。  添加到*管理员*组的用户将被自动删除。  只有服务帐户必须添加到*Administrators*组，并且服务帐户不得用于登录 VSPHERE web UI。   
 
 
 ## <a name="identity-source-options"></a>标识源选项

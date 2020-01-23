@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/25/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0dfb7245135097780f027185e4037b6cafbae690
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989353"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514708"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 Api
 
@@ -81,7 +81,7 @@ EA Api 使用 API 密钥进行身份验证和授权。 MCA Api 使用 Azure AD �
 | 用途 | 旧产品 | 新产品 |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft 消费税 Insights](/power-bi/desktop-connect-azure-consumption-insights)内容包和连接器 | [Microsoft Azure 使用见解 Power BI 应用](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)和[Azure 使用见解连接器](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft 消费税 Insights](/power-bi/desktop-connect-azure-consumption-insights)内容包和连接器 |  [Azure 使用见解连接器](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>用于获取平衡和信用额度的 Api
 
@@ -271,7 +271,7 @@ MCA 计费帐户不使用计费期间。 相反，他们使用发票将成本范
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-使用 API 将返回整个帐户的价目表。 不过，您也可以获取 PDF 格式的价目表的精简版本。 该摘要包括针对特定发票计费的 Azure 消耗和 Marketplace 消耗服务。 发票由 {invoiceId} 标识，这与发票摘要 PDF 文件中显示的**发票编号**相同。 下面提供了一个示例。
+使用 API 将返回整个帐户的价目表。 不过，您也可以获取 PDF 格式的价目表的精简版本。 该摘要包括针对特定发票计费的 Azure 消耗和 Marketplace 消耗服务。 发票由 {invoiceId} 标识，这与发票摘要 PDF 文件中显示的**发票编号**相同。 下面是一个示例。
 
 ![显示与 InvoiceId 相对应的发票号的示例图像](./media/migrate-cost-management-api/invoicesummary.png)
 

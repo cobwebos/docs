@@ -1,20 +1,18 @@
 ---
 title: （已弃用）快速入门 - 适用于 Linux 的 Azure Kubernetes 群集
 description: 快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659603"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273501"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>（已弃用）为 Linux 容器部署 Kubernetes 群集
 
@@ -39,9 +37,9 @@ ms.locfileid: "55659603"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 
 
-以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组。
+以下示例在“westeurope”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location westeurope
@@ -64,7 +62,7 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster  的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive 
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
@@ -74,7 +72,7 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。 
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)。 
 
@@ -86,7 +84,7 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令返回群集节点列表。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -194,7 +192,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-azure-vote-front 服务的 EXTERNAL-IP 一开始显示为“挂起”。 EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `CTRL-C` 停止 kubectl 监视进程。 
+ azure-vote-front 服务的  EXTERNAL-IP 一开始显示为“挂起”。  EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，   请使用 `CTRL-C` 停止 kubectl 监视进程。 
   
 ```bash
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s

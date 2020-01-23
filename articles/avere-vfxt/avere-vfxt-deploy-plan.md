@@ -4,14 +4,14 @@ description: 介绍部署 Avere vFXT for Azure 之前的规划工作
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153627"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547534"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -175,6 +175,6 @@ Avere vFXT 虚拟机使用了两个内置的 Azure 角色：
 
 如果需要自定义 Avere vFXT 组件的访问角色，则必须定义自己的角色，然后在创建 Vm 时将其分配给 Vm。 不能使用 Azure Marketplace 中的部署模板。 如通过[系统获取帮助](avere-vfxt-open-ticket.md)中所述，在 Azure 门户中打开票证，以咨询 Microsoft 客户服务和支持部门。
 
-## <a name="next-step-understand-the-deployment-process"></a>后续步骤：了解部署过程
+## <a name="next-steps"></a>后续步骤
 
 [部署概述](avere-vfxt-deploy-overview.md)提供创建 Avere VFXT for Azure 系统所需的步骤的大图，并使其准备好提供数据。

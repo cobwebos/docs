@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867558"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543114"
 ---
 # <a name="what-is-azure-private-link-preview"></a>什么是 Azure 专用链接？ （预览版）
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。

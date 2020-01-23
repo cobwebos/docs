@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769347"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167900"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>在 Azure 中创建首个 PowerShell 函数
 
@@ -20,9 +20,6 @@ ms.locfileid: "75769347"
 ![Visual Studio Code 项目中的 Azure Functions 代码](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
 可以使用[适用于 Visual Studio Code 的 Azure Functions 扩展]在本地创建 PowerShell 函数，然后将其部署到 Azure 中的新函数应用。 此扩展目前为预览版。 若要了解详细信息，请参阅[适用于 Visual Studio Code 的 Azure Functions 扩展]页。
-
-> [!NOTE]  
-> [Azure Functions 扩展]的 PowerShell 支持[适用于 Visual Studio Code 的 Azure Functions 扩展]目前默认已禁用。 本文中的某个步骤介绍了如何启用 PowerShell 支持。
 
 支持在 macOS、Windows 和基于 Linux 的操作系统上执行以下步骤。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
-description: Azure 中继 .NET Standard API 概述
+description: 本文总结了一些有关 Azure 中继混合连接 .NET Standard API 的概述。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 78ad3ab49db162af060b4273deea717cd3472668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749013"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514529"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "60749013"
   
 ## <a name="relay-connection-string-builder-class"></a>中继连接字符串生成器类
 
-[RelayConnectionStringBuilder][RelayConnectionStringBuilder] 类对特定于中继混合连接的连接字符串进行格式化。 该类可用于验证连接字符串的格式或从头开始生成连接字符串。 有关示例，请参阅以下代码：
+[RelayConnectionStringBuilder][RelayConnectionStringBuilder]类对特定于中继混合连接的连接字符串进行格式设置。 该类可用于验证连接字符串的格式或从头开始生成连接字符串。 有关示例，请参阅以下代码：
 
 ```csharp
 var endpoint = "[Relay namespace]";
@@ -63,13 +63,13 @@ catch (ArgumentException ae)
 
 ## <a name="hybrid-connection-stream"></a>混合连接流
 
-无论使用的是 [HybridConnectionClient][HCClient]，还是 [HybridConnectionListener][HCListener]，[HybridConnectionStream][HCStream] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
+无论你使用的是[HybridConnectionClient][HCClient]还是[HybridConnectionListener][HCListener]， [HybridConnectionStream][HCStream]类是用于从 Azure 中继终结点发送和接收数据的主要对象。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>获取混合连接流
 
 #### <a name="listener"></a>侦听器
 
-使用 [HybridConnectionListener][HCListener] 对象可以获取 `HybridConnectionStream` 对象，如下所示：
+使用[HybridConnectionListener][HCListener]对象，可以获取 `HybridConnectionStream` 对象，如下所示：
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -82,7 +82,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 
 #### <a name="client"></a>Client
 
-使用 [HybridConnectionClient][HCClient] 对象可以获取 `HybridConnectionStream` 对象，如下所示：
+使用[HybridConnectionClient][HCClient]对象，可以获取 `HybridConnectionStream` 对象，如下所示：
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -93,7 +93,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收数据
 
-[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
+[HybridConnectionStream][HCStream]类启用双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
 
 以下代码可从流中读取各行文本，直到请求取消为止：
 

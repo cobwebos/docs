@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026162"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511206"
 ---
 # <a name="what-is-azure-iot-edge"></a>什么是 Azure IoT Edge
 
@@ -26,7 +26,7 @@ Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的�
 Azure IoT Edge 包含三个组件：
 
 * IoT Edge 模块是容器，可以运行 Azure 服务、第三方服务或者你自己的代码  。 这些模块部署到 IoT Edge 设备，在设备上以本地方式执行。
-* IoT Edge 运行时在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块  。 
+* IoT Edge 运行时在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块  。
 * 可以通过基于云的界面远程监视和管理 IoT Edge 设备  。
 
 >[!NOTE]

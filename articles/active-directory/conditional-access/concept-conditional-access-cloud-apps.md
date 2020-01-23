@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb291f33d2b757ca381e1d675ddc386c78a55d52
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170831"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544049"
 ---
 # <a name="conditional-access-cloud-apps-and-actions"></a>条件性访问：云应用和操作
 
@@ -79,7 +79,6 @@ Office 365 （预览版）客户端应用程序中包含的关键应用程序：
 
    - Microsoft Flow
    - Microsoft Forms
-   - Microsoft Office 365 门户
    - Microsoft Stream
    - 微软待办
    - Microsoft Teams
@@ -89,6 +88,7 @@ Office 365 （预览版）客户端应用程序中包含的关键应用程序：
    - Office 365 Yammer
    - Office Delve
    - Office Online
+   - Office.com
    - OneDrive
    - PowerApp
    - Skype for Business Online

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: ecc2a8236b51013895bfe831d6785ff3e6925906
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 03674d8fb42d56d6b4b40d8111c1a7bbce7c312b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979687"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514480"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -61,6 +61,7 @@ Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递�
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
+
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组 GOP 对齐的 Mp4。 根据给定的任何输入内容，该服务会对输入内容执行初始的轻型分析。 它将使用这些结果来确定最理想的层数、相应的比特率，以及用于通过自适应流式处理传递的分辨率设置。 此预设特别适用于低复杂性和中等复杂度的视频，其中的输出文件是低比特率，但仍会为查看器提供良好的体验。 输出将包含带有视频和音频交错的有文件的文件。 有关详细信息，请参阅[开放 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
 - 改善了 Media Encoder Standard 中 sizer 的性能和多线程处理。 在特定情况下，客户应看到 5-40% VOD 编码之间的性能提升。 编码为多个比特率的低复杂性内容会显示最高的性能。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间为可变帧速率（VFR）内容保留常规 GOP 节奏。  这意味着，如果客户提交的混合帧速率内容在 15-30 fps 之间有所不同，示例现在应查看在输出时计算为自适应比特率流式处理的文件。 这将提高在 HLS 或短划线交付时无缝切换跟踪的功能。 
@@ -82,7 +83,7 @@ Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递�
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](../previous/media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](../previous/media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 有关停用日期，请参阅此[旧版组件](../previous/legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
 有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 
@@ -100,7 +101,7 @@ Live 脚本旨在作为附加功能与实时事件结合使用。  它在传递�
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布不推荐在2020年3月31日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
+我们宣布不推荐要停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。 有关停用日期，请参阅此[旧版组件](../previous/legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  

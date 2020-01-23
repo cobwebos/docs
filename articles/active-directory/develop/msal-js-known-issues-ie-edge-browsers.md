@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424327"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548146"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器（MSAL）中的已知问题
 
@@ -38,10 +38,6 @@ ms.locfileid: "75424327"
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - **使用登录通过 popup 进行身份验证时，弹出窗口不会关闭或停滞**。 在 Microsoft Edge 或 IE （InPrivate）中通过弹出窗口进行身份验证时，如果导航中涉及到多个安全区域中的多个域，则弹出窗口不会关闭，因为 MSAL 丢失了弹出窗口。  
-
-    下面是 Microsoft Edge 问题跟踪器中这些问题的链接：  
-    - [Bug 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Bug 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>更新：在 MSAL 中提供修复0.2。3
 已在[MSAL 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)中发布身份验证重定向循环问题的修复程序。 在 MSAL 配置中启用标志 `storeAuthStateInCookie` 以利用此修补程序。 默认情况下，此标志设置为 false。

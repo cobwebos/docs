@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107639"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549234"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -94,11 +94,11 @@ Azure Dev Spaces 适用于在 Linux pod 和节点上运行的应用程序。
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>定期使用 kube-advisor 检查应用程序问题
 
-**最佳做法指导** - 定期运行最新版本的 `kube-advisor` 开放源代码工具，以检测群集中的问题。 如果针对现有 AKS 群集应用资源配额，请先运行 `kube-advisor`，以查找未定义资源请求和限制的 pod。
+**最佳做法指南**-定期运行 `kube-advisor` 开源工具的最新版本，以检测群集中的问题。 如果针对现有 AKS 群集应用资源配额，请先运行 `kube-advisor`，以查找未定义资源请求和限制的 pod。
 
-[kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
+[Kube][kube-advisor]工具是一个关联的 AKS 开源项目，用于扫描 Kubernetes 群集并报告找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为使用特定 OS 在节点池上运行。
+Kube 工具可以报告 Windows 应用程序和 Linux 应用程序的 PodSpecs 中缺少的资源请求和限制，但必须在 Linux pod 上计划 kube 工具本身。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为使用特定 OS 在节点池上运行。
 
 在托管许多开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`。
 

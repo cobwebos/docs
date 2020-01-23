@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293362"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514549"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -72,7 +72,7 @@ ms.locfileid: "76293362"
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-托管实例中[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)提供了灵活性、控制力和透明度，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来更改计算、内存和存储。 此外，借助[适用于 SQL Server 的 Azure SQL Server 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，还能使用 vCore 模型节省高达 30% 的费用。
+托管实例中[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)提供了灵活性、控制力和透明度，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来更改计算、内存和存储。 对于[SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，vCore 模型还享有高达55% 的节约。
 
 在 vCore 模型中，可在以下两代硬件中进行选择。
 

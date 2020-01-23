@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cb15f637337df05c61eeac611286b49e23b6adac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293634"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549183"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -26,7 +26,7 @@ ms.locfileid: "76293634"
 
 ## <a name="design-clusters-for-multi-tenancy"></a>设计多租户群集
 
-Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 Kubernetes 中的[命名空间][k8s-namespaces]创建逻辑隔离边界。 其他 Kubernetes 功能以及有关隔离和多租户的注意事项包括以下几个方面：
+Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和工作负荷。 目标应该是提供最少量的特权，特权范围限定为每个团队所需的资源。 Kubernetes 中的[命名空间][k8s-namespaces]创建逻辑隔离边界。 针对隔离和多租户的其他 Kubernetes 功能和注意事项包括以下方面：
 
 * “计划”包括资源配额和 pod 中断预算等基本功能的用法。 有关这些功能的详细信息，请参阅[AKS 中的基本计划程序功能的最佳实践][aks-best-practices-scheduler]。
   * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][aks-best-practices-advanced-scheduler]。

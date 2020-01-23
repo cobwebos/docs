@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/18/2020
+ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515031"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548537"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -47,8 +47,8 @@ ms.locfileid: "76515031"
 
 | 名称 | 多租户限制 | Integration service 环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| 运行持续时间 | 90 天 | 366天 | 若要更改默认限制，请参阅[更改运行持续时间](#change-duration)。 |
-| 存储保留期 | 90 天（从运行开始时间计算） | 366天 | 若要更改默认限制，请参阅[更改存储保留](#change-retention)。 |
+| 运行持续时间 | 90 天 | 366天 | 运行持续时间是使用运行的开始时间和工作流设置*在开始时间*指定的限制来计算的，[**以天为单位运行历史记录保持期**](#change-duration)。 <p><p>若要更改默认限制，即90天，请参阅[更改运行持续时间](#change-duration)。 |
+| 运行存储中的保留期 | 90 天 | 366天 | 使用运行的开始时间和工作流设置*在当前时间*指定的限制来计算运行保持期，[**以天为单位运行历史记录保持期**](#change-retention)。 无论运行是完成还是超时，保持期计算始终使用运行的开始时间。 当运行的持续时间超过*当前*的保留限制时，运行将从运行历史记录中删除。 <p><p>如果更改此设置，则始终使用当前限制来计算保留，而与以前的限制无关。 例如，如果将保留限制从90天减少到30天，则将从运行历史记录中删除60天的运行。 如果将保持期从30天增加到60天，则20天之前的运行时间将在另40天的运行历史记录中保留。 <p><p>若要更改默认限制，即90天，请参阅[更改存储中的运行保留](#change-retention)。 |
 | 最小重复间隔 | 1 秒 | 1 秒 ||
 | 最大重复间隔 | 500 天 | 500 天 ||
 |||||
@@ -56,9 +56,13 @@ ms.locfileid: "76515031"
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>更改运行持续时间和存储保留期
+### <a name="change-run-duration-and-run-retention-in-storage"></a>更改运行持续时间并运行存储中的保留期
 
-若要更改运行持续时间和存储保留的默认限制，请执行以下步骤。 若要增加最大限制，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，以获得满足要求的帮助。
+若要更改默认的运行持续时间限制并在存储中运行保留，请执行以下步骤。 若要增加最大限制，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，以获得满足要求的帮助。
+
+> [!NOTE]
+> 对于多租户 Azure 中的逻辑应用，90天的默认限制与最大限制相同。 只能减小此值。
+> 对于 integration service 环境中的逻辑应用，可以减少或增加90天的默认限制。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。 在门户的搜索框中，查找并选择 "**逻辑应用**"。
 
@@ -68,11 +72,9 @@ ms.locfileid: "76515031"
 
 1. 在 "**运行时选项**" 下的 "**运行历史记录保留天数**" 列表中，选择 "**自定义**"。
 
-1. 输入或拖动滑块以获取所需的天数。
+1. 拖动滑块可以更改所需的天数。
 
-   > [!NOTE]
-   > 对于多租户 Azure 中的逻辑应用，90天的默认限制与最大限制相同。 只能减小此值。
-   > 对于 integration service 环境中的逻辑应用，可以减少或增加90天的默认限制。
+1. 完成后，在 "**工作流设置**" 工具栏上，选择 "**保存**"。
 
 <a name="looping-debatching-limits"></a>
 
@@ -82,11 +84,11 @@ ms.locfileid: "76515031"
 
 | 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：并发启用后，[解除批处理数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制将减少到100项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
-| 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
+| 触发器并发 | -在并发控制关闭时无限制 <p><p>-25 是启用并发控制时的默认限制，这在打开控件后不能撤消。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：并发启用后，[解除批处理数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制将减少到100项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
+| 最大等待运行数 | -如果没有并发，则等待运行的最小数目为1，最大数目为50。 <p><p>-对于并发，等待运行的最小数目为10加上并发运行的数量（触发器并发）。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
 | Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](logic-apps-perform-data-operations.md#filter-array-action)筛选更大数组。 |
 | Foreach 并发 | 20 是并发控制关闭时的默认限制。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制是可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
-| SplitOn 项 | * 100000，无需触发器并发 <p><p>* 100 with 触发器并发 | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**注意**：并发启用后，SplitOn 限制将减少到100项。 |
+| SplitOn 项 | -100000，没有触发器并发 <p><p>-100 with 触发器 concurrency | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**注意**：并发启用后，SplitOn 限制将减少到100项。 |
 | Until 迭代 | 5,000 | |
 ||||
 

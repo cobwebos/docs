@@ -9,13 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092083"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514113"
 ---
 ::: zone target="chromeless"
 
@@ -29,13 +28,13 @@ ms.locfileid: "74092083"
 
 本教程介绍如何安排取件以退回 Azure Data Box Disk。 取件说明取决于你将设备退回的位置。 
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将 Data Box 磁盘寄送到 Microsoft
 > * 在不同区域中提取 Data Box Disk
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保已完成[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md)。
 

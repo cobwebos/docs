@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552723"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548928"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark 历史记录服务器的扩展功能来调试和诊断 Spark 应用程序
 
@@ -163,7 +163,7 @@ Spark History Server web UI 可能如下图所示：
 
 #### <a name="specify-parameters"></a>指定参数
 
-"**指定参数**" 部分显示用于检测数据倾斜的参数。 默认规则是：读取的任务数据超过平均任务数据的三倍，任务数据读取量超过 10 MB。 如果要为歪斜任务定义自己的规则，可以选择参数。 **倾斜的阶段**和**扭曲字符**部分将相应地进行更新。
+"**指定参数**" 部分显示用于检测数据倾斜的参数。 默认规则是：读取的任务数据超过平均任务数据的三倍，任务数据读取量超过 10 MB。 如果要为歪斜任务定义自己的规则，可以选择参数。 **倾斜的阶段**和**扭曲图**部分将相应地进行更新。
 
 #### <a name="skewed-stage"></a>歪斜阶段
 

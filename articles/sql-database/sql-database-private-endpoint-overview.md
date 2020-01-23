@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045641"
+ms.locfileid: "76121074"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL 数据库和数据仓库的专用链接（预览版）
 
@@ -43,8 +43,6 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 当客户从本地计算机连接到公共终结点时，需要使用[服务器级防火墙规则](sql-database-server-level-firewall-rule.md)将其 IP 地址添加到基于 IP 的防火墙。 尽管此模型非常适合用于允许对开发或测试工作负荷的单个计算机进行访问，但在生产环境中却难以管理。
 
 借助专用链接，客户可以使用 [ExpressRoute](../expressroute/expressroute-introduction.md)、专用对等互连或 VPN 隧道实现对专用终结点的跨界访问。 然后，客户可以通过公共终结点禁用所有访问，而无需使用基于 IP 的防火墙来允许任何 IP 地址。
-
-借助专用链接，客户可以使用 Express Route (ER) 专用对等互连或 VPN 隧道实现对专用终结点的跨界访问。然后，他们可以通过公共终结点禁用所有访问权限，而无需使用基于 IP 的防火墙。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何设置 Azure SQL 数据库的专用链接 
 

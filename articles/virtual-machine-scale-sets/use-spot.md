@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278215"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544779"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>预览版：用于虚拟机规模集的 Azure 点 Vm 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
 
-创建使用点 Vm 的规模集的过程与适用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的入门文章中详述的过程相同。 在模板中将 "priority" 属性添加到 " *virtualMachineScaleSets/virtualMachineProfile* " 资源类型，并指定 "*位置*" 作为值。 请确保使用*2019-03-01* API 版本或更高版本。 
+创建使用点 Vm 的规模集的过程与适用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的入门文章中详述的过程相同。 
 
-若要将逐出策略设置为删除，请添加“evictionPolicy”参数并将其设置为 *delete*。
-
-以下示例在 "*美国西部*" 中创建名为*MyScaleSet*的 Linux 位置规模集，这将在逐出时*删除*规模集中的 vm：
+对于 "部署点模板"，请使用`"apiVersion": "2019-03-01"` 或更高版本。 将 `priority`、`evictionPolicy` 和 `billingProfile` 属性添加到模板中的 `"virtualMachineProfile":` 部分： 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+若要在逐出实例后将其删除，请将 `evictionPolicy` 参数更改为 `Delete`。
+
 ## <a name="faq"></a>常见问题
 
 **问：** 创建后，点实例是否与标准实例相同？

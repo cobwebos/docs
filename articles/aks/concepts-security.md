@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422285"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547925"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -28,9 +28,9 @@ ms.locfileid: "75422285"
 
 ## <a name="master-security"></a>主组件安全
 
-在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都具有自己的单一租户专用 Kubernetes 主机，以提供 API 服务器、计划程序等。此主机由 Microsoft 管理和维护。
+在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的租户专用 Kubernetes 主机，用于提供 API 服务器、计划程序等。此主机由 Microsoft 管理和维护。
 
-默认情况下，Kubernetes API 服务器使用公共 IP 地址，并具有完全限定的域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅[Azure AD 与 AKS 的集成][aks-aad]。
+默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定的域名（FQDN）。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅[Azure AD 与 AKS 的集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 

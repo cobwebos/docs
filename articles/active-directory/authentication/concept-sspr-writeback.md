@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 151e7b2ab091959c8b6c08d366318a49987aefd9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848521"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544015"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -29,9 +29,9 @@ ms.locfileid: "74848521"
 * [直通身份验证](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> 当 [Azure 访问控制服务 (ACS) 于 2018 年 11 月 7 日停用](../develop/active-directory-acs-migration.md)时，密码写回将停止为使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户工作。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
+> 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 若要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从旧版升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 密码写回提供：
@@ -164,7 +164,7 @@ ms.locfileid: "74848521"
    * 管理员从[Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置
 
 > [!WARNING]
-> 使用 "用户在下次登录时必须更改密码" 复选框在本地 Active Directory 管理工具（如 Active Directory 用户和计算机）或 Active Directory 管理中心支持为 Azure AD Connect 的预览功能。 有关详细信息，请参阅[Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)一文。
+> 使用 "用户在下次登录时必须更改密码" 复选框在本地 Active Directory 管理工具（如 Active Directory 用户和计算机）或 Active Directory 管理中心支持为 Azure AD Connect 的预览功能。 有关详细信息，请参阅[Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

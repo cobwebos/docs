@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429309"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546939"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
 
@@ -347,7 +347,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
-可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹的身份验证，仅验证提供的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 
+可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹进行的身份验证将验证所提供的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 无论采用哪种方式，TLS 握手都要求设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如： [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 支持的证书包括：
 
@@ -461,6 +461,8 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
+
+* [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)提供有关 TLS 身份验证的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

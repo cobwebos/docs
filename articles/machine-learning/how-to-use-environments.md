@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de1e01e56079753a1a9ee8debc2f2172e1dc8375
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932184"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548299"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>重复使用 Azure 机器学习的培训 & 部署环境。
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -248,6 +248,10 @@ myenv.docker.enabled = True
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
+# Alternatively, you can specify the contents of dockerfile of your base image
+with open("docker_file_of_your_base_image", "r") as f:
+    dockerfile_contents_of_your_base_image=f.read()
+myenv.docker.base_dockerfile=dockerfile_contents_of_your_base_image 
 ```
 
 > [!NOTE]
@@ -344,6 +348,10 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>示例笔记本
 
 此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments)扩展了本文中演示的概念和方法。
+
+[使用自定义 docker 基本映像部署模型](how-to-deploy-custom-docker-image.md)演示了如何使用自定义 docker 基本映像部署模型。
+
+此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark)演示如何将 Spark 模型部署为 Web 服务。
 
 ## <a name="create-and-manage-environments-with-the-cli"></a>用 CLI 创建和管理环境
 

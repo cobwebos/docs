@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227662"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515099"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -44,7 +44,7 @@ Windows 10 企业多会话无法在本地生产环境中运行，因为它已针
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>部署后如何实现管理 Windows 10 企业多会话？
 
-你可以使用任何支持的配置工具，但建议使用 System Center Configuration Manager 1906，因为它支持 Windows 10 企业多会话。 目前正在 Microsoft Intune 支持。
+你可以使用任何支持的配置工具，但建议 Configuration Manager 版本1906，因为它支持 Windows 10 企业多会话。 目前正在 Microsoft Intune 支持。
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 企业多会话是否可以 Azure Active Directory （AD）加入？
 

@@ -5,22 +5,22 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926002"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547449"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
-本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。
+本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。 有关如何在 HTTP 终结点中处理事件网格消息的详细信息，请参阅[接收事件到 http 终结](../event-grid/receive-events.md)点。
 
 事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
 
 事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
 
-如果需要，可以使用 HTTP 触发器来处理事件网格事件；请参阅本文稍后介绍的[将 HTTP 触发器用作事件网格触发器](#use-an-http-trigger-as-an-event-grid-trigger)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
+如果愿意，可以使用 HTTP 触发器处理事件网格事件;请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md#azure-functions)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "74926002"
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 1.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub 存储库中提供了此包的源代码。
 
@@ -38,15 +38,9 @@ ms.locfileid: "74926002"
 
 ## <a name="example"></a>示例
 
-请参阅有关事件网格触发器的特定于语言的示例：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* C#
-* [C# 脚本 (.csx)](#c-script-example)
-* [Java](#trigger---java-examples)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-有关 HTTP 触发器示例，请参阅本文稍后介绍的[如何使用 HTTP 触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
+对于 HTTP 触发器示例，请参阅[将事件接收到 http 终结点](../event-grid/receive-events.md)。
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
@@ -74,7 +68,7 @@ namespace Company.Function
 
 有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
-### <a name="c-version-1x"></a>C#（版本 1.x）
+### <a name="version-1x"></a>版本 1.x
 
 以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
 
@@ -99,7 +93,7 @@ namespace Company.Function
 }
 ```
 
-### <a name="c-script-example"></a>C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
@@ -135,7 +129,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 
 有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
 
-#### <a name="c-script-version-1x"></a>C# 脚本（版本 1.x）
+### <a name="version-1x"></a>版本 1.x
 
 下面是绑定到 `JObject` 的 Functions 1.x C# 脚本代码：
 
@@ -151,7 +145,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-### <a name="javascript-example"></a>JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
@@ -182,7 +176,7 @@ module.exports = function (context, eventGridEvent) {
 };
 ```
 
-### <a name="python-example"></a>Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。
 
@@ -205,23 +199,30 @@ module.exports = function (context, eventGridEvent) {
 下面是 Python 代码：
 
 ```python
+import json
 import logging
+
 import azure.functions as func
 
-
 def main(event: func.EventGridEvent):
-    logging.info("Python Event Grid function processed a request.")
-    logging.info("  Subject: %s", event.subject)
-    logging.info("  Time: %s", event.event_time)
-    logging.info("  Data: %s", event.get_json())
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
 ```
 
-### <a name="trigger---java-examples"></a>触发器 - Java 示例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 本部分包含以下示例：
 
-* [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter-java)
-* [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter-java)
+* [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter)
+* [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter)
 
 以下示例显示了 *function.json* 文件和 [Java 函数](functions-reference-java.md)中的触发器绑定，这些函数使用绑定并打印出事件，首先接收 ```String``` 形式的事件，第二个接收 POJO 形式的事件。
 
@@ -237,7 +238,7 @@ def main(event: func.EventGridEvent):
 }
 ```
 
-#### <a name="event-grid-trigger-string-parameter-java"></a>事件网格触发器、字符串参数 (Java)
+### <a name="event-grid-trigger-string-parameter"></a>事件网格触发器，字符串参数
 
 ```java
   @FunctionName("eventGridMonitorString")
@@ -251,7 +252,7 @@ def main(event: func.EventGridEvent):
   }
 ```
 
-#### <a name="event-grid-trigger-pojo-parameter-java"></a>事件网格触发器、POJO 参数 (Java)
+### <a name="event-grid-trigger-pojo-parameter"></a>事件网格触发器，POJO 参数
 
 此示例使用以下 POJO 表示事件网格事件的顶级属性：
 
@@ -293,7 +294,11 @@ public class EventSchema {
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
+---
+
 ## <a name="attributes"></a>属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) 特性。
 
@@ -309,31 +314,77 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 有关完整示例，请参阅 C# 示例。
 
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)批注允许您通过提供配置值以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+
+---
+
 ## <a name="configuration"></a>配置
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |描述|
+|function.json 属性 |Description|
 |---------|---------|
-| 类型 | 必需 - 必须设置为 `eventGridTrigger`。 |
+| type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | direction | 必需 - 必须设置为 `in`。 |
 | name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
-在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+在 Azure Functions 1.x 中，可以对事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-对于C#和F# Azure Functions 1.x 和更高版本中的和函数，您还可以选择对事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 和更高版本中，还可以选择将以下参数类型用于事件网格触发器：
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
+
+> [!NOTE]
+> 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+在 Azure Functions 1.x 中，可以对事件网格触发器使用以下参数类型：
+
+* `JObject`
+* `string`
+
+在 Azure Functions 1.x 和更高版本中，还可以选择将以下参数类型用于事件网格触发器：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
 > [!NOTE]
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。 有关如何在 C# 脚本函数中引用 NuGet 包的信息，请参阅[使用 NuGet 包](functions-reference-csharp.md#using-nuget-packages)
 
-对于 JavaScript 函数，由 *function.json* `name` 属性命名的参数包含对事件对象的引用。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+事件网格实例可通过*函数*的 `name` 属性中配置的参数使用。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+事件网格实例可通过*函数 json*文件的 `name` 属性中配置的参数来使用，类型为 `func.EventGridEvent`。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+事件网格事件实例可通过与类型为 `EventSchema`的 `EventGridTrigger` 属性关联的参数提供。 有关更多详细信息，请参阅[示例](#example)。
+
+---
 
 ## <a name="event-schema"></a>事件架构
 
@@ -545,227 +596,6 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 事件网格触发器函数将会执行，并显示类似于以下示例的日志：
 
 ![事件网格触发器函数日志示例](media/functions-bindings-event-grid/eg-output.png)
-
-## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
-
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作：
-
-1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
-1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。
-1. [创建事件网格订阅](#create-a-subscription)，用于向 ngrok 终结点发送事件。
-1. [触发事件](#trigger-an-event)。
-
-完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI 命令。
-
-### <a name="create-an-ngrok-endpoint"></a>创建 ngrok 终结点
-
-从 [ngrok](https://ngrok.com/) 下载 *ngrok.exe*，然后使用以下命令运行该工具：
-
-```
-ngrok http -host-header=localhost 7071
-```
-
-之所以需要 -host-header 参数，是因为函数运行时运行于 localhost 时，预期接收来自 localhost 的请求。 7071 是在本地运行运行时所用的默认端口号。
-
-该命令创建如下所示的输出：
-
-```
-Session Status                online
-Version                       2.2.8
-Region                        United States (us)
-Web Interface                 http://127.0.0.1:4040
-Forwarding                    http://263db807.ngrok.io -> localhost:7071
-Forwarding                    https://263db807.ngrok.io -> localhost:7071
-
-Connections                   ttl     opn     rt1     rt5     p50     p90
-                              0       0       0.00    0.00    0.00    0.00
-```
-
-请为事件网格订阅使用 `https://{subdomain}.ngrok.io` URL。
-
-### <a name="run-the-event-grid-trigger-function"></a>运行事件网格触发器函数
-
-事件网格不会对 ngrok URL 进行特殊处理，因此，创建订阅时，函数必须在本地运行。 否则不会发送验证响应，并且订阅创建将会失败。
-
-### <a name="create-a-subscription"></a>创建订阅
-
-创建想要测试的类型的事件网格订阅，并在其中指定你的 ngrok 终结点。
-
-此终结点模式适用于函数1.x 和更高版本：
-
-```
-https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
-```
-
-对于 Functions 1.x，请使用以下终结点模式：
-
-```
-https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
-```
-
-`{FUNCTION_NAME}` 参数必须是在 `FunctionName` 特性中指定的名称。
-
-下面是使用 Azure CLI 的示例：
-
-```azurecli
-az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/runtime/webhooks/eventgrid?functionName=EventGridTrigger
-```
-
-有关如何创建订阅的信息，请参阅本文前面所述的[创建订阅](#create-a-subscription)。
-
-### <a name="trigger-an-event"></a>触发事件
-
-触发一个事件，以便向 ngrok 终结点生成 HTTP 流量。  例如，如果创建了 Blob 存储订阅，请上传或删除一个 Blob。
-
-事件网格触发器函数将会执行，并显示类似于以下示例的日志：
-
-![事件网格触发器函数日志示例](media/functions-bindings-event-grid/eg-output.png)
-
-## <a name="use-an-http-trigger-as-an-event-grid-trigger"></a>将 HTTP 触发器用作事件网格触发器
-
-事件网格事件以 HTTP 请求的形式接收，因此，可以使用 HTTP 触发器而不是事件网格触发器来处理事件。 使用 HTTP 触发器的可能原因之一是能够更好地控制调用函数的终结点 URL。 另一个原因是需要以 [CloudEvents 架构](../event-grid/cloudevents-schema.md)接收事件。 目前，事件网格触发器不支持 CloudEvents 架构。 本部分中的示例显示了有关事件网格架构和 CloudEvents 架构问题的解决方案。
-
-如果使用 HTTP 触发器，必须编写代码来指定事件网格触发器自动执行的操作：
-
-* 将验证响应发送到[订阅验证请求](../event-grid/security-authentication.md#webhook-event-delivery)。
-* 针对请求正文中包含的事件数组的每个元素调用该函数一次。
-
-有关用于在本地调用函数或者在 Azure 中运行函数的 URL 的信息，请参阅 [HTTP 触发器绑定参考文档](functions-bindings-http-webhook.md)
-
-### <a name="event-grid-schema"></a>事件网格架构
-
-以下 HTTP 触发器的示例 C# 代码可模拟事件网格触发器的行为。 将此示例用于以事件网格架构传递的事件。
-
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequestMessage req,
-    ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    var messages = await req.Content.ReadAsAsync<JArray>();
-
-    // If the request is for subscription validation, send back the validation code.
-    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-    {
-        log.LogInformation("Validate request received");
-        return req.CreateResponse<object>(new
-        {
-            validationResponse = messages[0]["data"]["validationCode"]
-        });
-    }
-
-    // The request is not for subscription validation, so it's for one or more events.
-    foreach (JObject message in messages)
-    {
-        // Handle one event.
-        EventGridEvent eventGridEvent = message.ToObject<EventGridEvent>();
-        log.LogInformation($"Subject: {eventGridEvent.Subject}");
-        log.LogInformation($"Time: {eventGridEvent.EventTime}");
-        log.LogInformation($"Event data: {eventGridEvent.Data.ToString()}");
-    }
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-以下 HTTP 触发器的示例 JavaScript 代码可模拟事件网格触发器的行为。 将此示例用于以事件网格架构传递的事件。
-
-```javascript
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    var messages = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (messages.length > 0 && messages[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
-        context.log('Validate request received');
-        var code = messages[0].data.validationCode;
-        context.res = { status: 200, body: { "ValidationResponse": code } };
-    }
-    else {
-        // The request is not for subscription validation, so it's for one or more events.
-        // Event Grid schema delivers events in an array.
-        for (var i = 0; i < messages.length; i++) {
-            // Handle one event.
-            var message = messages[i];
-            context.log('Subject: ' + message.subject);
-            context.log('Time: ' + message.eventTime);
-            context.log('Data: ' + JSON.stringify(message.data));
-        }
-    }
-    context.done();
-};
-```
-
-事件处理代码通过 `messages` 数组进入循环内部。
-
-### <a name="cloudevents-schema"></a>CloudEvents 架构
-
-以下 HTTP 触发器的示例 C# 代码可模拟事件网格触发器的行为。  将此示例用于以 CloudEvents 架构传递的事件。
-
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    var requestmessage = await req.Content.ReadAsStringAsync();
-    var message = JToken.Parse(requestmessage);
-
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-以下 HTTP 触发器的示例 JavaScript 代码可模拟事件网格触发器的行为。 将此示例用于以 CloudEvents 架构传递的事件。
-
-```javascript
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
-        context.log('Validate request received');
-        var code = message[0].data.validationCode;
-        context.res = { status: 200, body: { "ValidationResponse": code } };
-    }
-    else {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        var event = JSON.parse(message);
-        context.log('Source: ' + event.source);
-        context.log('Time: ' + event.eventTime);
-        context.log('Data: ' + JSON.stringify(event.data));
-    }
-    context.done();
-};
-```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: 按服务分类的资源提供程序
       href: azure-services-resource-providers.md
+    - name: 扩展资源类型
+      href: extension-resource-types.md
     - name: 资源实例限制
       href: resources-without-resource-group-limit.md
 - name: 如何
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: 标记支持
           href: tag-support.md
-    - name: 管理
+    - name: 管理资源组
       items:
-        - name: 管理资源组
-          items:
-            - name: 使用 Azure 门户
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: 使用 Azure CLI
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: 使用 Azure PowerShell
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: 管理资源
-          items:
-            - name: 使用 Azure 门户
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: 使用 Azure CLI
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: 使用 Azure PowerShell
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: 删除资源组和资源
-          href: delete-resource-group.md
-        - name: 锁定资源
-          href: lock-resources.md
-        - name: 创建 EA 订阅
+        - name: Azure 门户
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure CLI
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: 管理资源
+      items:
+        - name: Azure 门户
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure CLI
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: EA 订阅
+      items:
+        - name: 创建
           href: programmatically-create-subscription.md
-        - name: 授予访问权限以创建 EA 订阅
+        - name: 授予创建权限
           href: grant-access-to-create-subscription.md
-        - name: 跨租户进行身份验证
-          href: authenticate-multi-tenant.md
-    - name: 查看活动日志
-      href: view-activity-logs.md
     - name: 资源提供程序和类型
       href: resource-providers-and-types.md
+    - name: 删除资源组和资源
+      href: delete-resource-group.md
+    - name: 锁定资源
+      href: lock-resources.md
+    - name: 跨租户进行身份验证
+      href: authenticate-multi-tenant.md
+    - name: 查看活动日志
+      href: view-activity-logs.md
     - name: 限制请求
       href: request-limits-and-throttling.md
     - name: 跟踪异步操作

@@ -9,13 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: ef6f342ec2308897d8c2221250ce92f81ce66863
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375883"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514096"
 ---
 ::: zone target="docs"
 
@@ -23,7 +22,7 @@ ms.locfileid: "70375883"
 
 本教程介绍如何打开包装、连接和解锁 Azure Data Box 磁盘。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 打开 Data Box 磁盘的包装
@@ -41,7 +40,7 @@ ms.locfileid: "70375883"
 
 ::: zone target="docs"
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -148,7 +147,7 @@ ms.locfileid: "70375883"
     > [!div class="nextstepaction"]
     > [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux) 
 
-3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 输入以下命令： 
+3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 键入下列命令： 
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
     

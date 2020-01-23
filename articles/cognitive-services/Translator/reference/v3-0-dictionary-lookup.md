@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837259"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548945"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 查询字符串上传递的请求参数如下：
 
-<table width="100%">
-  <th width="20%">查询参数</th>
-  <th>说明</th>
-  <tr>
-    <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
-  </tr>
-  <tr>
-    <td>from</td>
-    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。</td>
-  </tr>
-  <tr>
-    <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。</td>
-  </tr>
-</table>
+| 查询参数  | Description |
+| ------ | ----------- |
+| api-version <img width=200/>   | 必需参数。<br/>客户端所请求的 API 的版本。 值必须为 `3.0` |
+| 从 | 必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to   | 必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](v3-0-languages.md)之一。 |
+
 
 请求标头包括：
 
-<table width="100%">
-  <th width="20%">标头</th>
-  <th>说明</th>
-  <tr>
-    <td>身份验证标头</td>
-    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
-  </tr>
-</table> 
+| 标头  | Description |
+| ------ | ----------- |
+| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length   | 必需的请求标头。<br/>请求正文的长度。 |
+| X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
 
 ## <a name="request-body"></a>请求正文
 
@@ -104,7 +80,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
     * `posTag`：一个字符串，用于将此字词与词性标记相关联。
 
-        | 标记名称 | 说明  |
+        | 标记名称 | Description  |
         |----------|--------------|
         | ADJ      | 形容词   |
         | ADV      | 副词      |

@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 社区概述 |Microsoft Docs
+title: Azure 媒体服务 v3 社区概述
 description: 此 Azure 媒体服务社区页面讨论了你可以提出问题、提供反馈和获取有关媒体服务的更新的不同方式。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 2bfa50068c5a61e8d6807da895dd5bf932ef05ba
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780345"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545919"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure 媒体服务 v3 社区  
 

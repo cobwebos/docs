@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951303"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544610"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -66,17 +66,17 @@ ms.locfileid: "74951303"
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="network-requirements"></a>网络要求
 
 若要为 Azure 中的 Linux Vm 启用 Azure AD 身份验证，需要确保 Vm 网络配置允许通过 TCP 端口443对以下终结点进行出站访问：
 
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com
-* https://pas.windows.net
-* https://management.azure.com
-* https://packages.microsoft.com
+* https:\//login.microsoftonline.com
+* https：\//device.login.microsoftonline.com
+* https：\//pas.windows.net
+* https:\//management.azure.com
+* https：\//packages.microsoft.com
 
 > [!NOTE]
 > 目前，不能为启用了 Azure AD 身份验证的 Vm 配置 Azure 网络安全组。
@@ -96,7 +96,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-创建 VM 和支持的资源需要几分钟时间。
+创建 VM 和支持资源需要几分钟时间。
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安装 Azure AD 登录 VM 扩展
 

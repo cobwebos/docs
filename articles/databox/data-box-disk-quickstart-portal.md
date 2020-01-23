@@ -9,27 +9,16 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70232909"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514062"
 ---
 ::: zone target="docs"
 
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box Disk
-
-::: zone-end
-
-::: zone target="chromeless"
-
-## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk 入门 
-
-::: zone-end
-
-::: zone target="docs"
 
 本快速入门介绍如何使用 Azure 门户部署 Azure Data Box 磁盘。 这些步骤包括快速创建订单、接收磁盘、打开包装、建立连接以及将数据复制到磁盘，以便上传到 Azure。
 
@@ -47,7 +36,7 @@ ms.locfileid: "70232909"
 
 ::: zone target="docs"
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
@@ -74,7 +63,7 @@ ms.locfileid: "70232909"
 
 ::: zone target="docs"
 
-## <a name="order"></a>顺序
+## <a name="order"></a>订单
 
 此步骤大约需要 5 分钟。
 

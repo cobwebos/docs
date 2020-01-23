@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184974"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120863"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 
@@ -27,7 +27,7 @@ ms.locfileid: "74184974"
 
 .NET 功能管理库使用全面的功能标志支持扩展了该框架。 这些库在 .NET 配置系统的基础上构建。 它们可以通过其 .NET 配置提供程序无缝集成到应用程序配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -67,22 +67,32 @@ ms.locfileid: "74184974"
 1. 更新 `Main` 方法以连接到应用程序配置，指定 `UseFeatureFlags` 选项以检索功能标志。 若启用 `Beta` 功能标志，将显示一条消息。
 
     ```csharp
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            AsyncMain().Wait();
+        }
+
+        private static async Task AsyncMain()
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options => 
-                { 
+                .AddAzureAppConfiguration(options =>
+                {
                     options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags(); 
+                           .UseFeatureFlags();
                 }).Build();
-            
-            IServiceCollection services = new ServiceCollection(); 
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement(); 
-            IFeatureManager featureManager = services.BuildServiceProvider().GetRequiredService<IFeatureManager>(); 
-            
-            if (featureManager.IsEnabled("Beta")) 
-            { 
-                Console.WriteLine("Welcome to the beta"); 
+
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                IFeatureManager featureManager = serviceProvider.GetRequiredService<IFeatureManager>();
+
+                if (await featureManager.IsEnabledAsync("Beta"))
+                {
+                    Console.WriteLine("Welcome to the beta!");
+                }
             }
 
             Console.WriteLine("Hello World!");

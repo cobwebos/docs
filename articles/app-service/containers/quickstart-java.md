@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 1efbe9121fa4d4462f6cb50586143d0752b91cd9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707908"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294314"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
@@ -101,10 +101,10 @@ Confirm (Y/N)? : Y
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
 `<appName>` | true | Web 应用的名称。 | 0.1.0+
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | 指定将托管 Web 应用的区域；默认值为“westeurope”  。 [支持的区域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region)部分中列出了所有有效区域。 | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Web 应用的定价层。 默认值为 **P1V2**。| 0.1.0+
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | 运行时环境配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)查看详细信息。 | 0.1.0+
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | 部署配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)查看详细信息。 | 0.1.0+
+`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”  。 [支持的区域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部分中列出了所有有效区域。 | 0.1.0+
+`<pricingTier>` | false | Web 应用的定价层。 默认值为 **P1V2**。| 0.1.0+
+`<runtime>` | true | 运行时环境配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
+`<deployment>` | true | 部署配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)

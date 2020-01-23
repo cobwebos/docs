@@ -3,12 +3,12 @@ title: Azure Service Fabric-使用 Service Fabric application KeyVault 引用
 description: 本文介绍如何使用 service fabric KeyVaultReference 支持应用程序机密。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167124"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545477"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>对 Service Fabric 应用程序（预览版）的 KeyVaultReference 支持
 
@@ -22,7 +22,7 @@ ms.locfileid: "76167124"
 
 - 中央机密存储区（CSS）。
 
-    中央机密存储区（CSS）是服务结构的加密本地机密缓存，提取后，KeyVaultReference 会缓存在 CSS 中。
+    中央机密存储区（CSS） Service Fabric 加密的本地机密缓存。 CSS 是本地密钥存储缓存，用于保留在内存中加密的敏感数据，例如密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
 
     将以下字段添加到 `fabricSettings` 下的群集配置，以启用 KeyVaultReference 支持所需的所有功能。
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707665"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515116"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>将托管实例中的 SQL 数据库还原到以前的时间点
 
@@ -48,17 +48,17 @@ ms.locfileid: "74707665"
 
 |           |将现有数据库还原到同一个托管实例| 将现有数据库还原到另一个托管实例|将删除的数据库还原到同一个托管实例|将删除的数据库还原到另一个托管实例|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure 门户**| 是|No |No|No|
-|**Azure CLI**|是 |是 |No|No|
+|**Azure 门户**| 是|否 |否|否|
+|**Azure CLI**|是 |是 |否|否|
 |**PowerShell**| 是|是 |是|是|
 
 ## <a name="restore-an-existing-database"></a>还原现有数据库
 
 使用 Azure 门户、Powershell 或 Azure CLI 将现有数据库还原到相同的实例。 若要将数据库还原到另一个实例，请使用 Powershell 或 Azure CLI 以便可以指定目标托管实例和资源组的属性。 如果未指定这些参数，则默认情况下，数据库将还原到现有实例。 Azure 门户当前不支持还原到另一个实例。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 中转到托管实例，并选择要还原的数据库。
 3. 在 "数据库" 页上选择 "**还原**"：
 
@@ -134,9 +134,9 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
 
 ---
 
-## <a name="restore-a-deleted-database"></a>还原已删除的数据库
+## <a name="restore-a-deleted-database"></a>还原已删除数据库
 
-只能使用 PowerShell 来还原已删除的数据库。 可以将数据库还原到同一个实例或另一个实例。
+可以使用 PowerShell 或 Azure 门户还原已删除的数据库。请使用本文档通过[Azure 门户](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1)执行此操作。 可以将数据库还原到同一个实例或另一个实例。
 
 若要使用 PowerShell 还原已删除的数据库，请在以下命令中指定参数的值。 然后，运行以下命令：
 
@@ -197,7 +197,7 @@ DROP DATABASE WorldWideImporters;
 - [点到站点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 在 Azure 门户中，从托管实例中选择数据库，然后选择 "**删除**"。
 

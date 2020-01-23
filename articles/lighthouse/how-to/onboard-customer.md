@@ -1,14 +1,14 @@
 ---
 title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca9e17a9ee4e83492eccf63e4c7d353891071f27
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314617"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543403"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -236,7 +236,7 @@ az deployment create --name <deploymentName> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
@@ -302,6 +302,12 @@ az account list
 ```
 
 具有此权限的用户可以通过以下的一种方法删除委托。
+
+### <a name="azure-portal"></a>Azure 门户
+
+1. 导航到[“我的客户”页面](view-manage-customers.md)。
+2. 选择 "**委托**"。
+3. 找到要删除的委派，然后选择显示在其行中的 "垃圾桶" 图标。
 
 ### <a name="powershell"></a>PowerShell
 

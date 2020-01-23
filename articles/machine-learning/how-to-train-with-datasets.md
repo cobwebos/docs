@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311336"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543301"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure 机器学习中的数据集定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 如果要将数据文件提供给计算目标以便进行培训，请使用[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)来装载或下载它所引用的文件。
 
 ### <a name="mount-vs-download"></a>装载 v.s。 下载
-装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，包括 Azure 机器学习计算、虚拟机和 HDInsight。 如果数据大小超出计算磁盘大小，或者只是在脚本中加载部分数据集，则建议安装。 由于下载的数据集大于磁盘大小，因此在处理时，装载将只加载脚本使用的部分数据。 下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 如果你的脚本处理数据集引用的所有文件，并且你的计算磁盘可以适合你的完整数据集，则建议下载，以避免从存储服务传输数据的系统开销。
+装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，包括 Azure 机器学习计算、虚拟机和 HDInsight。 如果数据大小超出计算磁盘大小，或者只是在脚本中加载部分数据集，则建议安装。 由于下载的数据集大于磁盘大小，因此在处理时，装载将只加载脚本使用的部分数据。 
 
+下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 如果你的脚本处理数据集引用的所有文件，并且你的计算磁盘可以适合你的完整数据集，则建议下载，以避免从存储服务传输数据的系统开销。
+
+从 Azure Blob 存储、Azure 文件、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集支持装载或下载任意格式的文件。 
 
 ### <a name="create-a-filedataset"></a>创建 FileDataset
 

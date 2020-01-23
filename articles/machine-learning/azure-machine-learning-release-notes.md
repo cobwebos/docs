@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293192"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546344"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -25,18 +25,39 @@ ms.locfileid: "76293192"
 
 ## <a name="2020-01-21"></a>2020-01-21
 
-### <a name="azure-machine-learning-designer-generally-available-ga"></a>Azure 机器学习设计器已公开发布（GA）
-
-设计器现已正式发布。
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>用于 Python 的 Azure 机器学习 SDK 1.0.85
 
 + **新功能**
-    + 添加了 `Regenerate Output` 模块选项来强制设计器忽略缓存的结果。
-    + 向管道运行详细信息添加了新视图：
-        + 管道列表视图。
-        + 浏览器日志视图。
-    + 已将标签添加到模块输入和输出端口。
-    + 已在 "[终结点" 选项卡](how-to-run-batch-predictions-designer.md#versioning-endpoints)中添加 `Set as Default` 管道选项。
-    + 添加了键盘快捷方式和屏幕阅读器[辅助功能](designer-accessibility.md)。
+  + **azureml-core**
+    + 获取给定工作区和订阅中 AmlCompute 资源的当前核心使用情况和配额限制
+  
+  + **contrib-管道-步骤**
+    + 使用户能够将表格数据集作为上一步中的中间结果传递给 parallelrunstep
+
++ **Bug 修复和改进**
+  + **automl-运行时**
+    + 消除了对已部署预测服务的请求中 y_query 列的要求。 
+    + 已从 Dominick 的橙色汁笔记本服务请求部分中删除 "y_query"。
+    + 修复了对具有日期时间列的数据集进行操作，从而阻止预测已部署的模型。
+    + 添加了 Matthews 相关性系数作为分类指标，适用于 binary 和多类分类。
+  + **contrib-解释**
+    + 从 explainers 中删除了文本 "contrib"-解释为文本解释已移动到即将发布的解释文本存储库。
+  + **azureml-core**
+    + 数据集：文件数据集的使用情况不再依赖于要安装在 python 环境中的 numpy 和 pandas。
+    + 更改了 wait_for_deployment LocalWebservice （）来检查本地 Docker 容器的状态，然后再尝试 ping 其运行状况终结点，从而大大减少了报告失败部署所需的时间量。
+    + 修复了使用 LocalWebservice （）构造函数从现有部署创建服务对象时，在 LocalWebservice （）中使用的内部属性的初始化。
+    + 已编辑错误消息以进行说明。
+    + 向 AksWebservice 中添加了一个名为 get_access_token （）的新方法，该方法将返回 AksServiceAccessToken 对象，其中包含访问令牌、在时间戳后刷新、时间戳和标记类型的到期时间。 
+    + AksWebservice 中不推荐使用的现有 get_token （）方法，因为新方法返回此方法返回的所有信息。
+    + 已修改 az ml 服务 get 访问令牌命令的输出。 将令牌重命名为 accessToken，并将 refreshBy 重命名为 refreshAfter。 添加了 expiryOn 和 tokenType 属性。
+    + 固定 get_active_runs
+  + **azureml-explain-model**
+    + 已将 shap 更新为0.33.0，并将社区解释为 0.4. *
+  + **azureml-解释**
+    + 已将 shap 更新为0.33.0，并将社区解释为 0.4. *
+  + **azureml-automl-运行时**
+    + 添加了 Matthews 相关性系数作为分类指标，适用于 binary 和多类分类。
+    + 弃用在代码中预处理标志并替换为特征化-特征化默认为启用
 
 ## <a name="2020-01-06"></a>2020-01-06
 
@@ -44,6 +65,7 @@ ms.locfileid: "76293192"
 
 + **新功能**
   + 数据集：将两个选项 `on_error` 和 `out_of_range_datetime` 添加 `to_pandas_dataframe` 在数据具有错误值时失败，而不是用 `None`填充它们。
+  + 工作区：为包含敏感数据的工作区添加了 `hbi_workspace` 标志，该标志可启用进一步的加密并禁用工作区上的高级诊断。 通过在创建工作区时指定 `cmk_keyvault` 和 `resource_cmk_uri` 参数，还添加了对为关联的 Cosmos DB 实例引入自己的密钥的支持，在设置工作区时，将在订阅中创建 Cosmos DB 实例。 [在此处阅读详细信息。](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Bug 修复和改进**
   + **automl-运行时**
@@ -64,7 +86,6 @@ ms.locfileid: "76293192"
   + **azureml-automl-客户端**
     + 更正了 automl 运行的控制台输出的对齐方式
     + 修复了可能在远程 amlcompute 上安装的 pandas 的版本不正确的 bug。
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 

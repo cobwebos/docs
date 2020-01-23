@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1de85e2c075d343a72fcc9fd29c0358d0054350
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423964"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548129"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -222,6 +222,7 @@ ms.locfileid: "75423964"
 | AADSTS90092 | GraphNonRetryableError |
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
+| AADSTS900382 | 跨云请求不支持机密客户端。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
 | AADSTS901002 | AADSTS901002：不支持 "resource" 请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |

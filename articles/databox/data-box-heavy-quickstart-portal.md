@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241373"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514402"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70241373"
 
 有关详细的分步部署和跟踪说明，请转到[教程：订购 Azure Data Box Heavy](data-box-heavy-deploy-ordered.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 请先完成下述适用于安装场地、Data Box 服务和设备的配置先决条件，然后部署设备。
 
@@ -34,7 +34,7 @@ ms.locfileid: "70241373"
 
 - 设备可以通过所有入口通道。 设备规格：宽度26 英寸，长度48 英寸，高度28 英寸。
 - 如果你打算在第一层以外的楼层上安装设备，必须能够通过升降机或活动梯来接触设备。
-- 安排两名人员来搬运设备。 设备重约 500 磅， 并配备滚轮。
+- 安排两名人员来搬运设备。 设备重约 500 磅。 并配备滚轮。
 - 在数据中心内的平坦场地上操作，该场地靠近可用的网络连接，并能够放得下 Data Box Heavy 大小的设备。
 
 ### <a name="for-service"></a>对于服务
@@ -63,7 +63,7 @@ ms.locfileid: "70241373"
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="order"></a>顺序
+## <a name="order"></a>订单
 
 此步骤大约需要 5 分钟。
 

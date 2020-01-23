@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: a078f1dc7d7aa3727f3f057f284c2ea5da923e07
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495425"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514844"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -101,7 +101,7 @@ Site Recovery 针对 ISO 27001:2013 和27018、HIPAA 和 DPA 进行了认证。 
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
 - 通过 UI 或 PowerShell[手动安装](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
-- 使用[System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)的部署工具进行部署
+- 使用[Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)的部署工具进行部署
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -149,7 +149,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 
-不支持扩展扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
+不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 

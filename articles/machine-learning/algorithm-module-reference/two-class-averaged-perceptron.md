@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b4180fced60c4a9f2402253c7c3b3d3ff97fe1e1
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 62e2168c674693ded31bd94206e2e13c82c67b68
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314600"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546378"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>双类平均感知器模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以基于平均感知器算法创建机器学习模型。  
   

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892730"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545885"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
 
@@ -29,34 +29,34 @@ ms.locfileid: "74892730"
 
 认知见解小组件包括从视频索引过程中提取的所有视觉对象。 认知见解小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|Description|
 |---|---|---|
 |`widgets`|用逗号分隔的字符串|允许您控制要呈现的见解。 <br/> 示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 仅呈现人员和品牌 UI 见解。<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>请注意，在版本2中不支持 `widgets` URL 参数。<br/>|
-|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。 <br/> 示例：`locale=de`。|
+|`locale`|短语言代码|控制 insights 语言。 默认值是 `en`。 <br/> 示例：`locale=de`。|
 |`tab`|默认选定的选项卡|控制默认呈现的 "**见解**" 选项卡。 <br/> 示例： `tab=timeline` 在选中 "**时间线**" 选项卡的情况中呈现见解。|
 
 ### <a name="player-widget"></a>播放器小组件
 
 可使用播放机小组件通过自适应比特率流式传输视频。 播放机小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|Description|
 |---|---|---|
 |`t`|开始时间（秒）|使播放机从指定的时间点开始播放。<br/> 示例：`t=60`。|
 |`captions`|语言代码|在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 示例：`captions=en-US`。|
 |`showCaptions`|布尔值|使播放器与已启用的字幕一起加载。<br/> 示例：`showCaptions=true`。|
 |`type`||激活音频播放器外观（视频部分被删除）。<br/> 示例：`type=audio`。|
-|`autoplay`|布尔值|指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。|
-|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
+|`autoplay`|布尔值|指示播放机是否应在加载时开始播放视频。 默认值是 `true`。<br/> 示例：`autoplay=false`。|
+|`language`|语言代码|控制播放器语言。 默认值是 `en-US`。<br/>示例：`language=de-DE`。|
 
 ### <a name="editor-widget"></a>编辑器小组件
 
 您可以使用编辑器小组件来创建新项目并管理视频见解。 编辑器小组件支持以下可选 URL 参数。
 
-|名称|定义|描述|
+|名称|定义|Description|
 |---|---|---|
-|`accessToken`<sup>*</sup>|字符串|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。|
-|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
-|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。<br/>示例：`language=de`。|
+|`accessToken`<sup>*</sup>|String|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。|
+|`language`|语言代码|控制播放器语言。 默认值是 `en-US`。<br/>示例：`language=de-DE`。|
+|`locale`|短语言代码|控制 insights 语言。 默认值是 `en`。<br/>示例：`language=de`。|
 
 <sup>*</sup>所有者应提供 `accessToken`。
 
@@ -159,7 +159,8 @@ ms.locfileid: "74892730"
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.
@@ -261,7 +262,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 若要禁用标题，可以将 `captions` 参数值作为 `false`传递。
 
-#### <a name="autoplay"></a>AutoPlay
+#### <a name="autoplay"></a>自动播放
 默认情况下，播放机将开始播放视频。 你可以选择不通过将 `&autoplay=false` 传递到前面的嵌入 URL。
 
 ## <a name="next-steps"></a>后续步骤

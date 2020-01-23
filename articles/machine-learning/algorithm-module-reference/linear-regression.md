@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311438"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548435"
 ---
 # <a name="linear-regression-module"></a>线性回归模块
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以创建线性回归模型，以便在管道中使用。  线性回归尝试在一个或多个独立变量与数值结果或依赖变量之间建立线性关系。 
 

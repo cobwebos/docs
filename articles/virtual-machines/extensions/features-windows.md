@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073081"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544746"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -35,14 +35,14 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 示例包括：
 
 - 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure 所需状态配置扩展](dsc-overview.md)。
-- 使用 Log Analytics 代理 VM 扩展配置 VM 的监视。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../log-analytics/log-analytics-azure-vm-extension.md)。
+- 使用 Log Analytics 代理 VM 扩展配置 VM 的监视。 有关详细信息，请参阅[将 Azure Vm 连接到 Azure Monitor 日志](../../log-analytics/log-analytics-azure-vm-extension.md)。
 - 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](../windows/chef-automation.md)。
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在 VM 上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要处理 VM 上的扩展，需要安装 Azure Windows 代理。 有些单独的扩展附带先决条件，例如，有权访问资源或依赖项。
 
@@ -65,7 +65,7 @@ Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 O
 
 #### <a name="network-access"></a>网络访问
 
-从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理版本，则无需允许在 VM 区域中访问 azure 存储，因为可以使用代理将通信重定向到 azure fabric 控制器以进行代理通信（HostGAPlugin 功能通过专用 IP 上的特权通道[168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
+从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理版本，则无需允许在 VM 区域中访问 azure 存储，因为可以使用代理将通信重定向到 azure fabric 控制器以进行代理通信（HostGAPlugin 功能通过专用 IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)上的特权通道）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
 
 > [!IMPORTANT]
 > 如果你使用来宾防火墙或代理阻止了对*168.63.129.16*的访问，则扩展会因为上述错误而失败。 需要端口80、443和32526。
@@ -252,6 +252,10 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 }
 ```
 
+在使用扩展的 Azure IaaS VM 上，你可能会看到具有使用者 **_Windows AZURE CRP 证书生成器_** 的证书。 在经典 RDFE VM 上，这些证书具有使用者名称 " **_Microsoft Azure Service Management For Extensions_** "。
+
+这些证书保护了在传输扩展所使用的受保护设置（密码和其他凭据）期间 VM 与其主机之间的通信。 证书由 Azure 结构控制器生成并传递给 VM 代理。 如果每天停止并启动 VM，则结构控制器可能会创建新证书。 此证书存储在计算机的 "个人" 证书存储区中。 可以删除这些证书。 如果需要，VM 代理会重新创建证书。
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>如何更新代理和扩展？
 
 代理和扩展使用相同的更新机制。 某些更新不需要附加的防火墙规则。
@@ -367,7 +371,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
+针对 VM 运行 VM 扩展后，请使用[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -417,7 +421,7 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 4. 选择“卸载”。
 
 ## <a name="common-vm-extensions-reference"></a>常见 VM 扩展参考
-| 扩展名称 | 说明 | 详细信息 |
+| 扩展名称 | Description | 详细信息 |
 | --- | --- | --- |
 | 适用于 Windows 的自定义脚本扩展 |针对 Azure 虚拟机运行脚本 |[适用于 Windows 的自定义脚本扩展](custom-script-windows.md) |
 | 适用于 Windows 的 DSC 扩展 |PowerShell DSC（所需状态配置）扩展 |[适用于 Windows 的 DSC 扩展](dsc-overview.md) |

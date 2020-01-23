@@ -9,16 +9,16 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 871f2ec029379f37fc02bcd79847fa04091f0507
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666063"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548690"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
-Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 它是安全强化的重点，并向原始设备制造商（OEM）提供技术集成点。
+Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 安全管理器是安全强化的重点，并向原始设备制造商（OEM）提供技术集成点。
 
 ![Azure IoT Edge 安全管理器](media/edge-security-manager/iot-edge-security-manager.png)
 
@@ -41,7 +41,7 @@ IoT Edge 安全管理器包含三个组件：
 
 ## <a name="the-iot-edge-security-daemon"></a>IoT Edge 安全守护程序
 
-IoT Edge 安全守护程序负责 IoT Edge 安全管理器的逻辑操作。 它代表 IoT Edge 设备的受信任计算基础的重要部分。 
+IoT Edge 安全守护程序负责 IoT Edge 安全管理器的逻辑操作。 它代表 IoT Edge 设备的受信任计算基础的重要部分。
 
 ### <a name="design-principles"></a>设计原理
 
@@ -79,11 +79,11 @@ IoT Edge 安全守护程序利用信任技术的任何可用硬件根来增强�
 
 #### <a name="management-api"></a>管理 API
 
-IoT Edge security daemon 提供管理 API，该 API 在创建/启动/停止/删除 IoT Edge 模块时由 IoT Edge 代理调用。 安全守护程序为所有活动模块存储 "注册"。 这些注册将模块的标识映射到该模块的某些属性。 这些属性的几个示例是容器中运行的进程的进程标识符 (pid) 或 docker 容器内容的哈希。
+IoT Edge security daemon 提供管理 API，该 API 在创建/启动/停止/删除 IoT Edge 模块时由 IoT Edge 代理调用。 安全守护程序为所有活动模块存储 "注册"。 这些注册将模块的标识映射到该模块的某些属性。 例如，这些模块属性包括在容器中运行的进程的进程标识符（pid）以及 docker 容器内容的哈希。
 
-工作负荷 API 使用这些属性（如下所述）验证调用方是否有权执行某一操作。
+工作负荷 API 使用这些属性（如下所述）来验证调用方是否已获得操作授权。
 
-管理 API 是一个特权 API，只能从 IoT Edge 代理调用。  在 IoT Edge 安全守护程序启动，并启动 IoT Edge 代理后，它可在证明 IoT Edge 代理未篡改后为 IoT Edge 代理创建隐式注册。 工作负荷 API 使用的同一证明过程也会将对管理 API 的访问限制为仅限 IoT Edge 代理。
+管理 API 是一个特权 API，只能从 IoT Edge 代理调用。  由于 IoT Edge security daemon 引导并启动 IoT Edge 代理，因此它将验证 IoT Edge 代理是否未被篡改，然后可以为 IoT Edge 代理创建隐式注册。 工作负荷 API 使用的同一证明过程也会将对管理 API 的访问限制为仅限 IoT Edge 代理。
 
 #### <a name="container-api"></a>容器 API
 
@@ -93,11 +93,11 @@ IoT Edge security daemon 提供管理 API，该 API 在创建/启动/停止/删�
 
 工作负荷 API 可供所有模块访问。 它提供标识证明（作为 HSM 根签名令牌或 X509 证书）以及相应的信任捆绑到模块。 信任捆绑包包含模块应信任的所有其他服务器的 CA 证书。
 
-IoT Edge security daemon 使用证明进程来保护此 API。 当模块调用此 API 时，安全守护程序会尝试查找该标识的注册。 如果成功，则其使用注册的属性来度量该模块。 如果度量过程的结果与注册匹配，则会生成新的标识证明。 相应 CA 证书（信任捆绑包）也返回到模块。  该模块使用此证书来连接到 IoT 中心、其他模块或启动服务器。 当已签名的令牌或证书过期时，模块负责请求新证书。 
+IoT Edge security daemon 使用证明进程来保护此 API。 当模块调用此 API 时，安全守护程序会尝试查找该标识的注册。 如果成功，则其使用注册的属性来度量该模块。 如果度量过程的结果与注册匹配，则会生成新的标识证明。 相应 CA 证书（信任捆绑包）也返回到模块。  该模块使用此证书来连接到 IoT 中心、其他模块或启动服务器。 当已签名的令牌或证书过期时，模块负责请求新证书。
 
 ### <a name="integration-and-maintenance"></a>集成和维护
 
-Microsoft 维护 [GitHub 上 IoT Edge 安全守护程序](https://github.com/Azure/iotedge/tree/master/edgelet)的主要代码库。
+Microsoft 维护 [GitHub 上的 IoT Edge 安全守护程序](https://github.com/Azure/iotedge/tree/master/edgelet)的主要代码库。
 
 #### <a name="installation-and-updates"></a>安装和更新
 
@@ -109,7 +109,7 @@ IoT Edge 运行时可跟踪和报告 IoT Edge 安全守护程序的版本。 该
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>硬件安全模块平台抽象层 (HSM PAL)
 
-HSM PAL 将所有信任硬件根抽象化，从而使 IoT Edge 开发者或用户从其复杂性中解脱出来。  它包括应用程序编程接口（API）和事务域通信过程的组合，例如标准执行环境和安全 enclave 之间的通信。  HSM PAL 的实际实现取决于使用的特定安全硬件。 它的存在允许使用几乎任何安全硅硬件。
+HSM PAL 将所有硬件信任根抽象化，从而使 IoT Edge 开发者或用户从其复杂性中解脱出来。  它包括应用程序编程接口（API）和事务域通信过程的组合，例如标准执行环境和安全 enclave 之间的通信。  HSM PAL 的实际实现取决于使用的特定安全硬件。 它的存在允许使用几乎任何安全硅硬件。
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>安全硅硬件信任根
 

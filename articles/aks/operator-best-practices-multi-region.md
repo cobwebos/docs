@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613102"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549149"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -66,7 +66,7 @@ AKS 区域可用性和配对区域是共同考虑因素。 将 AKS 群集部署�
 
 如果群集需要彼此通信，则可以通过[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)来实现两个虚拟网络之间的连接。 这种技术将虚拟网络相互互连，同时跨 Microsoft 主干网络提供高带宽，甚至跨不同地理区域。
 
-对等互连虚拟网络（运行 AKS 群集的虚拟网络）的先决条件是在 AKS 群集中使用标准负载均衡器，以便可通过虚拟网络对等互连访问 kubernetes 服务。
+对等互连虚拟网络（运行 AKS 群集的虚拟网络）的先决条件是在 AKS 群集中使用标准负载均衡器，以便可通过虚拟网络对等互连访问 Kubernetes 服务。
 
 ## <a name="enable-geo-replication-for-container-images"></a>为容器映像启用异地复制
 

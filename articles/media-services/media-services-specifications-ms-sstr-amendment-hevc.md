@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 - HEVC 的平滑流式处理协议 (MS-SSTR) 修正 | Microsoft Docs
+title: 针对 HEVC 的平滑流式处理协议（SSTR）修正-Azure
 description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887860"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514215"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -64,7 +64,7 @@ ms.locfileid: "74887860"
 
 ### <a name="121-normative-references"></a>1.2.1 规范参考 
 
->  [MS SSTR] 平滑流式处理协议 *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [SSTR]平滑流式处理协议*v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
 >   [ISO/IEC 14496-12] 国际标准化组织编写的“信息技术 -- 音频-视频对象编码 -- 第 12 部分：ISO 基本媒体文件格式”，ISO/IEC 14496-12:2014 版本 4，以及勘误 1、修正 1 和 2。
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -78,17 +78,17 @@ ms.locfileid: "74887860"
 > 
 >   [RFC-6381] IETF RFC-6381 中阐述的“‘存储桶’媒体类型的‘编解码器’和‘配置文件’参数”<https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4]MP4REG 注册机构，""， [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] MP4 注册机构，“MP4REG”，[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   RFC2119Bradner，S.，"在 Rfc 中用于指示要求级别的关键字"，BCP 14，RFC 2119，三月1997， [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S. 编写的“RFC 中用于指示要求的关键字”，BCP 14，RFC 2119，1997 年 3 月，[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 信息性参考 
 
 >   [MS-GLOS] Microsoft Corporation 编写的“*Windows 协议主要术语表*”。
 > 
->   RFC3548Josefsson、Base16、Base32 和 Base64 数据编码、RFC 3548、2003年7月[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed. 编写的“Base16、Base32 和 Base64 数据编码”，RFC 3548，2003 年 7 月，[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   RFC5234Crocker、d.，Ed. 和 Overell，P.，"为语法规范扩充 BNF： ABNF"，STD 68，RFC 5234，年1月 2008 [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed. 和 Overell, P. 编写的“扩充的 BNF 语法规范：ABNF”，STD 68，RFC 5234，2008 年 1 月，[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 概述 
@@ -281,7 +281,7 @@ ms.locfileid: "74887860"
 > * **MajorVersion**
 > * **MinorVersion**
 > * **TimeScale**
-> * **持续时间**
+> * **Duration**
 > * **IsLive**
 > * **LookaheadCount**
 > * **DVRWindowLength**

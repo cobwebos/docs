@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311472"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546633"
 ---
 # <a name="module-k-means-clustering"></a>模块： K 平均值聚类
 
-本文介绍如何在 Azure 机器学习设计器中使用*K 平均值聚类分析*模块来创建未经训练的 K 平均值聚类分析模型。 
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用*K 平均值聚类分析*模块来创建未经训练的 K 平均值聚类分析模型。 
  
 K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用于各种机器学习任务，如： 
 

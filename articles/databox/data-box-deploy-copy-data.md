@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d86da3013a3cb4573556bc14ea1e6a0fbab72623
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: c82a67bbbf8f1a4f77db6ca965031e85e69ee100
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240395"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514164"
 ---
 ::: zone target="docs"
 
@@ -32,15 +32,15 @@ ms.locfileid: "70240395"
 
 本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -124,13 +124,13 @@ ms.locfileid: "70240395"
   在这些情况下，最终的结果不可确定。
 - 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
 
-连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
+连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 使用以下命令：
     
     robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
  下表描述了属性。
     
-|属性  |说明  |
+|Attribute  |说明  |
 |---------|---------|
 |/e     |复制包括空目录的子目录。         |
 |/r:     |指定复制失败时的重试次数。         |
@@ -283,7 +283,7 @@ ms.locfileid: "70240395"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
 

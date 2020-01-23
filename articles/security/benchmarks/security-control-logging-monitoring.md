@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930032"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545494"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 |--|--|--|
 | 2.4 | 6.2、6。3 | 客户 |
 
-如果计算资源由 Microsoft 拥有，则 Microsoft 负责监视它。 如果计算资源属于你的组织，你需要负责监视它。 可以使用 Azure 安全中心监视操作系统。 安全中心从操作系统收集的数据包括操作系统类型和版本、OS （Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还会收集故障转储文件。
+如果计算资源由 Microsoft 拥有，则 Microsoft 负责监视它。 如果计算资源属于你的组织，你需要负责监视它。 可以使用 Azure 安全中心监视操作系统。 安全中心从操作系统收集的数据包括操作系统类型和版本、OS 日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还会收集故障转储文件。
 
 如何 Azure Monitor 收集 Azure 虚拟机内部主机日志：
 

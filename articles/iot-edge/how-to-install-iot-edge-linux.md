@@ -9,21 +9,18 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 4a8725e3ba7be2dc572798d1397e098046a4b352
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510220"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548724"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了在 X64、ARM32 或 ARM64 Linux 设备上安装 Azure IoT Edge 运行时的步骤。 为 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspbian Stretch 提供安装包。 有关受支持的 Linux 操作系统和体系结构的列表，请参阅[Azure IoT Edge 支持的系统](support.md#operating-systems)。
-
->[!NOTE]
->ARM64 设备支持[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文列出了在 X64、ARM32 或 ARM64 Linux 设备上安装 Azure IoT Edge 运行时的步骤。 我们提供 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspbian Stretch 的安装包。 有关受支持的 Linux 操作系统和体系结构的列表，请参阅[Azure IoT Edge 支持的系统](support.md#operating-systems)。
 
 > [!NOTE]
 > Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
@@ -31,6 +28,9 @@ ms.locfileid: "76510220"
 ## <a name="install-the-latest-runtime-version"></a>安装最新的运行时版本
 
 使用以下部分将 Azure IoT Edge 运行时的最新版本安装到你的设备上。
+
+>[!NOTE]
+>ARM64 设备支持[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>注册 Microsoft 密钥和软件存储库源
 
@@ -71,9 +71,9 @@ ms.locfileid: "76510220"
 
 ### <a name="install-the-container-runtime"></a>安装容器运行时
 
-Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时。 对于生产方案，建议使用下面提供的[基于小鲸鱼](https://mobyproject.org/)的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与 Moby 运行时兼容。
+Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时。 对于生产方案，建议使用下面提供的[基于小鲸鱼](https://mobyproject.org/)的引擎。 小鲸鱼引擎是 Azure IoT Edge 正式支持的容器引擎。 Docker CE/EE 容器映像与 Moby 运行时兼容。
 
-执行 apt 更新。
+更新设备上的包列表。
 
    ```bash
    sudo apt-get update
@@ -91,7 +91,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install moby-cli
    ```
 
-如果在安装小鲸鱼容器运行时遇到错误，请按照本文后面所述的步骤[验证 Linux 内核的小鲸鱼兼容性](#verify-your-linux-kernel-for-moby-compatibility)。
+如果在安装小鲸鱼容器运行时收到错误，请按照本文后面的步骤[验证 Linux 内核的小鲸鱼兼容性](#verify-your-linux-kernel-for-moby-compatibility)。
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 
@@ -99,7 +99,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 安装命令还会安装标准版本的**libiothsm** （如果尚未存在）。
 
-执行 apt 更新。
+更新设备上的包列表。
 
    ```bash
    sudo apt-get update
@@ -111,37 +111,37 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install iotedge
    ```
 
-成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照[配置安全守护](#configure-the-security-daemon)程序部分中的步骤完成设备的预配。
+成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照[配置安全守护](#configure-the-security-daemon)程序部分中的步骤完成设备设置。
 
 ## <a name="install-a-specific-runtime-version"></a>安装特定的运行时版本
 
 如果要安装特定版本的小鲸鱼和 Azure IoT Edge 运行时，而不是使用最新版本，则可以直接从 IoT Edge GitHub 存储库定位组件文件。 使用以下步骤获取设备上的所有 IoT Edge 组件：小鲸鱼引擎和 CLI、libiothsm，最后 IoT Edge 安全守护程序。 如果你不想更改到特定运行时版本，请跳到下一节 "[配置安全守护](#configure-the-security-daemon)程序"。
 
-1. 导航到[Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本，并找到要以其为目标的发布版本。 
+1. 导航到[Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本，并找到要以其为目标的发布版本。
 
 2. 展开该版本的 "**资产**" 部分。
 
-3. 在任何给定版本中，小鲸鱼引擎可能有也可能没有更新。 如果看到以**小鲸鱼**和**小鲸鱼**开头的文件，请使用以下命令更新这些组件。 如果看不到任何小鲸鱼文件，请返回到旧版本的资产，直到找到最新版本。 
+3. 在任何给定版本中，小鲸鱼引擎可能有也可能没有更新。 如果看到以**小鲸鱼**和**小鲸鱼**开头的文件，请使用以下命令更新这些组件。 如果看不到任何小鲸鱼文件，请返回到旧版本的资产，直到找到最新版本。
 
    1. 查找与 IoT Edge 设备体系结构匹配的**小鲸鱼**文件。 右键单击文件链接，并复制链接地址。
 
-   2. 使用以下命令中复制的链接安装该版本的小鲸鱼引擎： 
+   2. 使用以下命令中复制的链接安装该版本的小鲸鱼引擎：
 
       ```bash
       curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
       ```
 
-   3. 查找与 IoT Edge 设备体系结构匹配的**小鲸鱼**文件。 小鲸鱼 CLI 是一个可选组件，但在开发过程中可能会有所帮助。 右键单击文件链接，并复制链接地址。 
+   3. 查找与 IoT Edge 设备体系结构匹配的**小鲸鱼**文件。 小鲸鱼 CLI 是一个可选组件，但在开发过程中可能会有所帮助。 右键单击文件链接，并复制链接地址。
 
-   4. 使用以下命令中复制的链接安装该版本的小鲸鱼 CLI： 
+   4. 使用以下命令中复制的链接安装该版本的小鲸鱼 CLI：
 
       ```bash
       curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
       ```
 
-4. 每个版本都应有 IoT Edge 安全守护程序和 hsmlib 的新文件。 使用以下命令更新这些组件。 
+4. 每个版本都应有 IoT Edge 安全守护程序和 hsmlib 的新文件。 使用以下命令更新这些组件。
 
-   1. 查找符合 IoT Edge 设备体系结构的**libiothsm 标准**文件。 右键单击文件链接，并复制链接地址。 
+   1. 查找符合 IoT Edge 设备体系结构的**libiothsm 标准**文件。 右键单击文件链接，并复制链接地址。
 
    2. 使用以下命令中的复制链接来安装该版本的 hsmlib：
 
@@ -149,15 +149,15 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
 
-   3. 查找与 IoT Edge 设备体系结构匹配的**iotedge**文件。 右键单击文件链接，并复制链接地址。 
+   3. 查找与 IoT Edge 设备体系结构匹配的**iotedge**文件。 右键单击文件链接，并复制链接地址。
 
-   4. 使用以下命令中的复制链接来安装该版本的 IoT Edge 安全守护程序。 
+   4. 使用以下命令中的复制链接来安装该版本的 IoT Edge 安全守护程序。
 
       ```bash
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
-成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照下一部分中的步骤完成设备的预配。 
+成功安装 IoT Edge 后，输出会提示你更新配置文件。 按照下一部分中的步骤完成设备设置。
 
 ## <a name="configure-the-security-daemon"></a>配置安全守护程序
 
@@ -263,7 +263,7 @@ systemctl status iotedge
 journalctl -u iotedge --no-pager --no-full
 ```
 
-针对最常见的配置和网络错误运行自动检查： 
+针对最常见的配置和网络错误运行自动检查：
 
 ```bash
 sudo iotedge check
@@ -297,8 +297,7 @@ sudo iotedge list
    ./check-config.sh
    ```
 
-这会提供详细的输出，其中包含小鲸鱼运行时使用的内核功能的状态。 你将需要确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，以确保内核与小鲸鱼运行时完全兼容。  如果已确定任何缺少的功能，请通过从源重建内核并选择要包含在适当的内核中的关联模块来启用它们。 同样，如果使用的是 defconfig 或 menuconfig 等内核配置生成器，请查找并启用相应的功能，并相应地重建内核。  部署新修改的内核后，再次运行检查-config 脚本，验证是否已成功启用所有必需的功能。
-
+此命令提供详细的输出，其中包含小鲸鱼运行时使用的内核功能的状态。 你将需要确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，以确保内核与小鲸鱼运行时完全兼容。  如果已确定任何缺少的功能，请通过从源重建内核并选择要包含在适当的内核中的关联模块来启用它们。 同样，如果使用的是 defconfig 或 menuconfig 等内核配置生成器，请查找并启用相应的功能，并相应地重建内核。  部署新修改的内核后，再次运行检查-config 脚本，验证是否已成功启用所有必需的功能。
 
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
 
@@ -310,7 +309,7 @@ sudo iotedge list
 sudo apt-get remove --purge iotedge
 ```
 
-删除 IoT Edge 运行时以后，已创建的容器会被停止，但仍存在于设备上。 查看所有容器以了解哪些容器仍然存在。
+删除 IoT Edge 运行时后，它创建的容器将停止，但仍存在于设备上。 查看所有容器以了解哪些容器仍然存在。
 
 ```bash
 sudo docker ps -a

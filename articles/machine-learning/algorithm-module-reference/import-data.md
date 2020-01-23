@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f9815dac9e61eec51230911094f35a33a64e541c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311506"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546650"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块将数据从现有的云数据服务加载到机器学习管道。 
 

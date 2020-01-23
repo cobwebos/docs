@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7c73d7d07bdfaa4fbbd7eeca4f00895c5add354
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "67172941"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548184"
 ---
-**标准 HDD 托管磁盘**
+**标准 HDD 托管磁盘**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**标准 SSD 托管磁盘**
+**标准 SSD 托管磁盘**  
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**高级 SSD 托管磁盘：每个磁盘的限制**
+**高级 SSD 托管磁盘：每个磁盘的限制**  
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 **高级 SSD 托管磁盘：每个 VM 的限制**

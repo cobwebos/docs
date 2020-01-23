@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d6140e97383fb07e65c87f74a555046f918ac41
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: aba33730d235cc50742cdc86007933e12f763053
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314855"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548452"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以创建逻辑回归模型，该模型可用于预测多个值。
 
