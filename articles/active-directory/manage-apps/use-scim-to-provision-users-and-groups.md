@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
-ms.translationtype: MT
+ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829861"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940870"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -153,8 +153,11 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
   - [更新用户 [多值属性]](#update-user-multi-valued-properties) （[请求](#request-4) /  [响应](#response-4)）
   - [更新用户 [单值属性]](#update-user-single-valued-properties) （[请求](#request-5)
 / [响应](#response-5)） 
+  - [禁用用户](#disable-user)（[请求](#request-14) / 
+[响应](#response-14)）
   - [删除用户](#delete-user)（[请求](#request-6) / 
 [响应](#response-6)）
+
 
 [组操作](#group-operations)
   - [创建组](#create-group)（[请求](#request-7) / [响应](#response-7)）
@@ -435,6 +438,60 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 }
 ```
 
+### <a name="disable-user"></a>禁用用户
+
+##### <a name="request-14"></a>需要
+
+*PATCH/Users/5171a35d82074e068ce2 HTTP/1。1*
+```json
+{
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "active",
+            "value": false
+        }
+    ],
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ]
+}
+```
+
+##### <a name="response-14"></a>回复
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+    ],
+    "id": "CEC50F275D83C4530A495FCF@834d0e1e5d8235f90a495fda",
+    "userName": "deanruiz@testuser.com",
+    "name": {
+        "familyName": "Harris",
+        "givenName": "Larry"
+    },
+    "active": false,
+    "emails": [
+        {
+            "value": "gloversuzanne@testuser.com",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "addresses": [
+        {
+            "country": "ML",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "meta": {
+        "resourceType": "Users",
+        "location": "/scim/5171a35d82074e068ce2/Users/CEC50F265D83B4530B495FCF@5171a35d82074e068ce2"
+    }
+}
+```
 #### <a name="delete-user"></a>删除用户
 
 ##### <a name="request-6"></a>需要
@@ -1258,7 +1315,7 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 请咨询应用程序提供者，或参阅应用程序提供者文档中的说明，以了解是否符合这些要求。
 
 > [!IMPORTANT]
-> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅[预配周期部分：预配周期的初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。 [](how-provisioning-works.md)
+> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅[预配周期部分](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)：[预配周期的初始和增量](how-provisioning-works.md)。
 
 ### <a name="getting-started"></a>入门
 

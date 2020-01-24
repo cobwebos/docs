@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 156b963fc1644d1f863d8ddd1d86c15b311e18a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763379"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311064"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>通过 Azure 机器学习设计器使用回归预测车载价格
 
-**设计器（预览）示例1**
+**设计器示例1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-了解如何在不编写代码的情况下使用设计器（预览）生成机器学习回归模型。
+了解如何使用设计器在不编写代码的情况下生成机器学习回归模型。
 
 此管道根据品牌、型号、动力和大小等技术功能，训练**线性回归量**来预测汽车的价格。 因为你要尝试回答 "多少？" 这称为回归问题。 不过，您可以在本示例中应用相同的基本步骤来处理任何类型的机器学习问题，无论是回归、分类、群集等。
 
@@ -38,7 +38,7 @@ ms.locfileid: "75763379"
 
 ![管道的图形](./media/how-to-designer-sample-regression-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -91,5 +91,5 @@ ms.locfileid: "75763379"
 - [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
 - [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
 - [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
-- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
+- [示例 6-分类：预测飞行延迟](how-to-designer-sample-classification-flight-delay.md)
 - [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7bf5256390961f4d469aa70be4b0b0c1069db4cf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423612"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701682"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web 应用 - 代码配置
 
@@ -35,7 +34,7 @@ ms.locfileid: "75423612"
 
 支持 web 应用的授权代码流的库有：
 
-| MSAL 库 | Description |
+| MSAL 库 | 描述 |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持的平台包括 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序） |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持 Python web 应用程序 |
@@ -314,7 +313,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ```
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 若要求和，`AcquireTokenByAuthorizationCode` 确实兑换了 ASP.NET 请求的授权代码，并获取添加到 MSAL.NET 用户令牌缓存中的令牌。 然后在 ASP.NET Core 控制器中使用这些令牌。
 
@@ -573,8 +572,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-[中提供了](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java) `SessionManagementHelper` 类的详细信息
-
+[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)中提供了 `SessionManagementHelper` 类的详细信息
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
