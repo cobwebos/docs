@@ -8,112 +8,112 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 794f4ad5bba46af53280d35b55b762b9eef8e1a1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: aa2f3481b63c98ec23e1db8213939278684a4cd6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675255"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977641"
 ---
-# <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
+# <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报进行故障排除  
 
-本文介绍如何解决在 Azure Monitor 中设置日志警报时可能发生的常见问题， 并提供有关日志警报功能或配置的常见问题的解决方法。 
+本文说明如何解决在 Azure Monitor 中设置日志警报时可能出现的常见问题。 它还提供有关功能或日志警报配置的常见问题的解决方案。
 
-术语“日志警报”描述基于 [Azure Log Analytics 工作区](../learn/tutorial-viewdata.md)或 [Azure Application Insights](../../azure-monitor/app/analytics.md) 中的日志查询触发的规则。 在 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语*日志警报*介绍了基于[Azure Log Analytics 工作区](../learn/tutorial-viewdata.md)中的日志查询或[Azure 应用程序 Insights](../../azure-monitor/app/analytics.md)触发的规则。 详细了解 Azure Monitor 中的[日志警报](../platform/alerts-unified-log.md)中的功能、术语和类型。
 
 > [!NOTE]
-> 本文不考虑 Azure 门户中显示警报规则已触发以及不是通过关联的操作组执行通知的情况。 对于此类情况，请参阅[在 Azure 门户中创建和管理操作组](../platform/action-groups.md)中的详细信息。
+> 本文不会考虑以下情况： Azure 门户显示触发的警报规则，并且关联的操作组不执行通知。 对于这种情况，请参阅在[Azure 门户中创建和管理操作组](../platform/action-groups.md)中的详细信息。
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
-下面 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)状态不按预期[显示为已激发](../platform/alerts-managing-alert-states.md)的部分常见原因。 
+下面是[Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)的状态在不显示时所显示的[ ](../platform/alerts-managing-alert-states.md)一些常见原因。
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
-日志警报基于 [Log Analytics](../learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 定期运行查询。 由于 Azure Monitor 需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生不同的时间延迟。 有关详细信息，请参阅 [Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)。
+日志警报会定期根据[Log Analytics](../learn/tutorial-viewdata.md)或[Application Insights](../../azure-monitor/app/analytics.md)来运行查询。 由于 Azure Monitor 处理来自世界各地不同源的数千个客户的数 tb 的数据，因此该服务容易发生变化的时间延迟。 有关详细信息，请参阅[Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)。
 
-如果系统发现所需的数据尚未引入，为了缓解延迟，它会等待一段时间，并重试警报查询多次。 为系统设置的等待时间呈指数级递增。 日志警报只会在数据可用后才会触发，因此，延迟可能是日志数据引入速度缓慢造成的。 
+为了缓解延迟，如果发现所需的数据尚未引入，系统会等待多次重试警报查询。 为系统设置的等待时间呈指数级递增。 日志警报仅在数据可用后触发，因此延迟可能是由于日志数据的引入缓慢导致的。
 
 ### <a name="incorrect-time-period-configured"></a>配置了错误的时间段
 
-根据[日志警报的术语](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文中所述，配置中规定的时间段指定查询的时间范围。 查询仅返回在此时间范围内创建的记录。 
+如[日志警报术语](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文中所述，配置中指定的时间段指定查询的时间范围。 查询仅返回在此范围内创建的记录。
 
-时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（例如 **ago**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用类似于 **ago (1d)** 的时间命令，则查询仍只使用在中午 12:15 和下午 1:15 之间的创建数据，因为时间段设置为该间隔。
+时间段限制为日志查询提取的数据以防滥用，并避开日志查询中使用的任何时间命令（如**前**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用类似于**前（1d）** 的时间命令，则该查询仍只使用 12:15 pm 和 1:15 pm 之间的数据，因为该时间段设置为该间隔。
 
-请检查配置中的时间段是否与查询匹配。 对于前面所述的示例，如果日志查询使用 **ago (1d)** （如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示）。 此设置可确保查询按预期方式运行。
+检查配置中的时间段是否与查询匹配。 对于之前显示的示例，如果日志查询使用带有绿色标记的**前（1d）** ，则应将时间段设置为24小时或1440分钟（以红色表示）。 此设置可确保查询按预期方式运行。
 
 ![时间段](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>设置“抑制警报”选项
 
-根据[在 Azure 门户中创建日志警报规则](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。 因此，你可能认为某个警报未激发， 但实际上它已激发，只不过是抑制了而已。  
+如在[Azure 门户中创建日志警报规则](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)一文中所述的步骤8所述，日志警报提供了 "**禁止显示警报**" 选项，以在配置的时间内抑制触发和通知操作。 因此，你可能会认为不会触发警报。 事实上，它已激发但已被取消。  
 
 ![阻止警报](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>指标度量警报规则不正确
 
-*指标度量日志警报*是日志警报的子类型，具有特殊的功能和受限的警报查询语法。 指标度量日志警报的规则要求查询输出是指标时序。 即，输出是包含等量大小的不同时间段以及相应聚合值的表。 
+*指标度量日志警报*是一种具有特殊功能和受限警报查询语法的日志警报的子类型。 指标度量日志警报的规则要求查询输出为指标时间序列。 也就是说，输出是一个表，其中包含不同的、大小相同的时间段以及相应的聚合值。
 
-可以选择在该表中包含其他变量以及 **AggregatedValue**。 可以使用这些变量来为表排序。 
+您可以选择在表中另外添加一些变量，还可以**AggregatedValue**。 这些变量可用于对表进行排序。
 
-例如，假设指标度量日志警报的规则已配置为：
+例如，假设度量值度量日志警报的规则配置为：
 
-- 查询为 `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
-- 时间段为 6 小时
-- 阈值为 50
-- 警报逻辑为三次连续违规
-- 选择 **$table** 作为**聚合依据**
+- `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)` 查询  
+- 6小时的时间段
+- 阈值50
+- 三次连续违规的警报逻辑
+- 选择为 **$Table** **时聚合**
 
-由于命令中包含 **summarize … by**，并提供了两个变量（**timestamp** 和 **$table**），系统将选择 **$table** 作为**聚合依据**。 系统会按 **$table** 字段将结果表排序，如以下屏幕截图所示。 然后查看每个表类型（例如 **availabilityResults**）的多个 **AggregatedValue**，以确定是否发生了三次或更多次的连续违规。
+因为该命令包含**汇总 .。。由**和提供了两个变量（**时间戳**和 **$table**），系统会选择 "**聚合**" **$table** 。 系统按 **$table**字段对结果表进行排序，如以下屏幕截图所示。 然后，查看每个表类型的多个**AggregatedValue**实例（例如**availabilityResults**），以查看是否存在三个或更多的连续漏洞。
 
-![包含多个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMQuery.png)
+![具有多个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMQuery.png)
 
-由于**聚合依据**是基于 **$table** 定义的，因此数据已按 **$table** 列排序（如红框所示）。 然后我们进行分组并查看“聚合依据”字段的类型。 
+由于 **$table**上定义了**聚合**，因此数据按 **$table**列排序（以红色表示）。 然后 **，对字段进行**分组和查找类型。
 
-例如，对于 **$table**，**availabilityResults** 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务将检查三次连续违规（如绿框所示）。 违规时会对表值 **availabilityResults** 触发警报。 
+例如，对于 **$table**， **availabilityResults**的值将被视为一个绘图/实体（用橙色表示）。 在此值绘图/实体中，警报服务将检查三个连续违规（以绿色表示）。 此违规会触发表值**availabilityResults**的警报。
 
-同样，如果其他任何 **$table** 值发生三次连续违规，则会触发另一条警报通知。 警报服务自动按时间排序一个绘图/实体中的值（如橙色框所示）
+同样，如果对任何其他 **$table**值发生了三次连续违规，则会为同一事情触发另一个警报通知。 警报服务按时间对一个绘图/实体（以橙色表示）中的值进行自动排序。
 
-现在，假设指标度量日志警报的规则已修改，且查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 **timestamp**。 在查询中只为 **summarize…by** 提供了一个值（即 **timestamp**）。 与前面的示例类似，在执行结束时，输出将如下所示。
+现在，假设度量度量日志警报的规则已被修改，查询已 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 配置的其余部分保持不变，包括三次连续泄露的警报逻辑。 默认情况下，在此示例中，"**聚合依据**" 选项为**timestamp** 。 在 "汇总 ..." 查询中仅提供一个值**by** （即**timestamp**）。 与前面的示例一样，执行结束时的输出将如下所示。
 
-   ![包含单个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMtimestamp.png)
+   ![用单值度量度量值查询执行](media/alert-log-troubleshoot/LogMMtimestamp.png)
 
-由于**聚合依据**是基于 **timestamp** 定义的，因此数据已按 **timestamp** 列排序（如红框所示）。 然后我们按 **timestamp** 进行分组。 例如，`2018-10-17T06:00:00Z` 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务找不到连续违规（因为每个 **timestamp** 值只包含一个条目）。 因此永远不会触发警报。 在这种情况下，用户必须：
+由于在**时间戳**上定义了**聚合**，因此数据在**时间戳**列上排序（以红色表示）。 然后按**时间戳**分组。 例如，`2018-10-17T06:00:00Z` 的值将被视为一个绘图/实体（用橙色表示）。 在此值绘图/实体中，警报服务将找不到任何连续违规（因为每个**时间戳**值只有一个条目）。 因此永远不会触发警报。 在这种情况下，用户必须：
 
-- 添加一个虚拟变量或现有变量（例如 **$table**），以使用“聚合依据”字段正确执行排序。
-- 将警报规则重新配置为使用基于**违规总数**的警报逻辑。
+- 添加一个虚变量或现有变量（如 **$table**），以使用 "**聚合依据**" 字段正确排序。
+- 重新配置警报规则，以改用**违反全部**的警报逻辑。
 
 ## <a name="log-alert-fired-unnecessarily"></a>不必要地激发了日志警报
 
-在 [Azure 警报](../platform/alerts-managing-alert-states.md)中查看 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)时，可能会意外触发该规则。 以下部分描述了某些常见原因。
+当你在[Azure 警报](../platform/alerts-managing-alert-states.md)中查看时，可能会意外触发[Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)。 以下各节描述了一些常见的原因。
 
 ### <a name="alert-triggered-by-partial-data"></a>部分数据触发了警报
 
-Log Analytics 和 Application Insights 可能会发生引入和处理延迟。 在运行日志警报查询时，可能发现没有可用的数据，或者只有部分数据可用。 有关详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../platform/data-ingestion-time.md)。
+Log Analytics 和 Application Insights 可能会引入延迟和处理。 当你运行日志警报查询时，可能会发现没有数据可用或只有部分数据可用。 有关详细信息，请参阅[中的日志数据引入时间 Azure Monitor](../platform/data-ingestion-time.md)。
 
-根据警报规则的配置方式，如果在执行警报时日志中没有数据或者只有部分数据，则可能会错误地激发警报。 在这种情况下，我们建议你更改警报查询或配置。 
+如果在执行警报时日志中没有数据或部分数据，则可能会发生 misfiring，具体取决于如何配置警报规则。 在这种情况下，我们建议更改警报查询或配置。
 
-例如，如果日志警报规则配置为当分析查询的结果数小于 5 时触发，则当没有任何数据（零个记录）或只有部分结果（一个记录）时，警报将会触发。 但是，在发生数据引入延迟后，具有完整数据的同一查询可能会提供包含 10 个记录的结果。
+例如，如果将分析查询的结果数小于5时要触发日志警报规则，则当没有数据（零记录）或部分结果（一条记录）时，将触发该警报。 但在数据引入延迟后，包含完整数据的同一查询可能会产生10条记录。
 
-### <a name="alert-query-output-is-misunderstood"></a>警报查询输出令人误解
+### <a name="alert-query-output-is-misunderstood"></a>警报查询输出的误解
 
-你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。 警报服务使用指定时间段内的数据按指定的间隔运行查询。 警报服务根据警报类型对查询进行细微更改。 可以在“配置信号逻辑”屏幕上的“要执行的查询”部分查看此更改：
+你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。 警报服务按指定时间段内使用数据指定的时间间隔来运行查询。 警报服务根据警报类型对查询进行细微的更改。 可以在 "**配置信号逻辑**" 屏幕上的 "**要执行的查询**" 部分查看此更改：
 
 ![要执行的查询](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-“要执行的查询”框显示日志警报服务运行的操作。 若要在创建警报之前了解警报查询输出的内容，可以通过 [Analytics 门户](../log-query/portals.md)或 [Analytics API](https://docs.microsoft.com/rest/api/loganalytics/) 运行指定的查询及时间跨度。
+"**要执行的查询**" 框是日志警报服务的运行情况。 如果你想要了解在创建警报之前警报查询输出可能是什么，则可以通过[分析门户](../log-query/portals.md)或[分析 API](https://docs.microsoft.com/rest/api/loganalytics/)运行所述的查询和 timespan。
 
 ## <a name="log-alert-was-disabled"></a>已禁用日志警报
 
-以下部分列出了 Azure Monitor 禁用[日志警报规则](../platform/alerts-log.md)的一些原因。
+以下部分列出了 Azure Monitor 可能禁用[日志警报规则](../platform/alerts-log.md)的一些原因。
 
-### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>在其中创建警报的资源不再存在
+### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>创建警报的资源不再存在
 
-在 Azure Monitor 中创建的日志警报规则针对特定的资源，例如 Azure Log Analytics 工作区、Azure Application Insights 应用和 Azure 资源。 日志警报服务将针对指定的目标运行规则中提供的分析查询。 但是，在创建规则后，用户经常会在 Azure 中删除或移动日志警报规则的目标。 由于警报规则的目标不再有效，因此规则执行也就会失败。
+Azure Monitor 在特定资源（如 Azure Log Analytics 工作区、Azure 应用程序 Insights 应用和 Azure 资源）中创建的日志警报规则。 然后，日志警报服务将为指定的目标运行规则中提供的分析查询。 但在规则创建后，用户通常会继续从 Azure 中删除，或在 Azure 内部移动-日志警报规则的目标。 由于警报规则的目标不再有效，因此执行规则失败。
 
-在这种情况下，Azure Monitor 会禁用日志警报，并确保在该规则持续相当长一段时间（例如一周）无法运行时，不会产生不必要的费用。 可以通过 [Azure 活动日志](../../azure-resource-manager/resource-group-audit.md)查看 Azure Monitor 禁用日志警报的确切时间。 当 Azure Monitor 禁用日志警报规则时，会在 Azure 活动日志中添加一个事件。
+在这种情况下，Azure Monitor 会禁用日志警报，并确保在规则不能连续运行（如一周）的情况下，不需要付费。 通过[Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)Azure Monitor 禁用日志警报时，可以找到准确的时间。 在 Azure 活动日志中，当 Azure Monitor 禁用日志警报规则时，会添加一个事件。
 
-Azure 活动日志中的以下示例事件适用于因持续失败而被禁用的警报规则。
+Azure 活动日志中的以下示例事件适用于由于连续失败而禁用的警报规则。
 
 ```json
 {
@@ -178,19 +178,19 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 
 ### <a name="query-used-in-a-log-alert-is-not-valid"></a>日志警报中使用的查询无效
 
-在 Azure Monitor 中创建为配置的一部分的每个日志警报规则必须指定警报服务要定期运行的分析查询。 在创建或更新规则时，分析查询可能使用了正确的语法。 但有时，在一段时间后，日志警报规则中提供的查询可能会出现语法问题，从而导致规则执行失败。 日志警报规则中提供的分析查询可能出现错误的一些常见原因包括：
+在 Azure Monitor 中创建的每个日志警报规则都必须指定警报服务将定期运行的分析查询。 在创建或更新规则时，分析查询可能有正确的语法。 但有时，在一段时间内，日志警报规则中提供的查询会导致语法问题并导致规则执行失败。 日志警报规则中提供的分析查询可能导致错误的一些常见原因是：
 
-- 该查询已写入到[跨多个资源的运行](../log-query/cross-workspace-query.md)。 一个或多个指定的资源不再存在。
-- 配置的[指标度量类型日志警报](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)具有不符合语法规范的警报查询
-- 没有任何数据流向分析平台。 由于提供的查询没有数据，[查询执行出错](https://dev.loganalytics.io/documentation/Using-the-API/Errors)。
-- [查询语言](https://docs.microsoft.com/azure/kusto/query/)的更改包含命令和函数的已修改格式。 因此，以前在警报规则中提供的查询不再有效。
+- 该查询将写入到[跨多个资源运行](../log-query/cross-workspace-query.md)。 和一个或多个指定的资源不再存在。
+- 配置的[度量值类型日志警报](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)中的警报查询不符合语法规范
+- 没有流向分析平台的数据流。 [查询执行](https://dev.loganalytics.io/documentation/Using-the-API/Errors)会导致错误，因为提供的查询没有数据。
+- [查询语言](https://docs.microsoft.com/azure/kusto/query/)中的更改包括命令和函数的修订格式。 因此，先前在警报规则中提供的查询不再有效。
 
-[Azure 顾问](../../advisor/advisor-overview.md)会警告此类行为。 Azure 顾问会在“高可用性”类别下，针对特定的日志警报规则添加一条中度影响性的、说明为“请修复日志警报规则以确保执行监视”的建议。 如果在 Azure 顾问提供建议七天后仍未纠正日志警报规则中的警报查询，则 Azure Monitor 会禁用日志警报，并确保在该规则持续相当长一段时间（例如一周）无法运行时，不会产生不必要的费用。
+[Azure 顾问](../../advisor/advisor-overview.md)会警告你这一行为。 在 Azure 顾问上，针对特定的日志警报规则添加了一个建议，该规则位于具有中等影响的高可用性类别下，以及有关 "修复日志警报规则以确保监视" 的说明。 如果在 Azure 顾问提供了七天的建议后，不会更正日志警报规则中的警报查询，Azure Monitor 将禁用日志警报，并确保在规则不能连续运行的情况下不会产生不必要的计费（如一周）。
 
-可以通过查看 [Azure 活动日志](../../azure-resource-manager/resource-group-audit.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
+可以通过在[Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中查找事件来找到 Azure Monitor 禁用日志警报规则的确切时间。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure 中的日志警报](../platform/alerts-unified-log.md)。
 - 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
-- 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。
+- 详细了解[日志查询](../log-query/log-query-overview.md)。

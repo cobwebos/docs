@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949620"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154635"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -64,7 +64,7 @@ ms.locfileid: "74949620"
 
 若要在 Blob 存储中托管此 HTML 内容，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。
 1. 为存储帐户选择一个**订阅**。
 1. 创建一个**资源组**或选择现有的资源组。
@@ -87,7 +87,7 @@ ms.locfileid: "74949620"
 1. 对于 "**名称**"，请输入*root*。 这可以是你选择的名称（例如*wingtiptoys*），但为了简单起见，我们在此示例中使用了*root* 。
 1. 对于 "**公共访问级别**"，请选择 " **Blob**"，然后选择 **"确定"** 。
 1. 单击 "**根**" 打开新容器。
-1. 单击“上传”。
+1. 单击“上载” 。
 1. 单击“选择文件”旁边的文件夹图标。
 1. 导航到并选择前面在 "页面 UI 自定义" 部分中创建的**customize-ui.html。**
 1. 如果要上传到子文件夹，请展开 "**高级**"，然后在 "**上传到文件夹**" 中输入文件夹名称。
@@ -106,7 +106,7 @@ ms.locfileid: "74949620"
 1. 对于“允许的标头”，请输入一个星号 (*)。
 1. 对于“公开的标头”，请输入一个星号 (*)。
 1. 对于“最大期限”，请输入 200。
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="test-cors"></a>测试 CORS
 
@@ -146,19 +146,19 @@ ms.locfileid: "74949620"
 
 1. 保存扩展文件。
 
-## <a name="upload-your-updated-custom-policy"></a>上传已更新的自定义策略
+## <a name="upload-and-test-your-updated-custom-policy"></a>上载和测试更新的自定义策略
+
+### <a name="upload-the-custom-policy"></a>上传自定义策略
 
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-1. 选择“标识体验框架”。
-1. 单击“所有策略”。
-1. 单击“上传策略”。
+1. 搜索并选择**Azure AD B2C**。
+1. 在 "**策略**" 下，选择 "**标识体验框架**"。
+1. 选择 "**上载自定义策略**"。
 1. 上传以前已更改的扩展文件。
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
-1. 在 " **Azure AD B2C** " 页上，中转到 "**所有策略**"。
-1. 选择上传的自定义策略，并单击“立即运行”按钮。
+1. 选择上传的策略，然后选择 "**立即运行**"。
 1. 现在，应该可以使用电子邮件地址进行注册了。
 
 ## <a name="reference"></a>参考
@@ -172,7 +172,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | 描述 |
+| HTML5 模板 | Description |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -193,7 +193,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 在“修改注册或登录自定义策略”部分中，你已配置了 `api.idpselections` 的内容定义。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | 描述 |
+| 内容定义 ID | Description |
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

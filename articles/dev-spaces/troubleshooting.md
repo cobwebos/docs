@@ -2,15 +2,15 @@
 title: 故障排除
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438111"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548843"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-发生此错误的原因是 AKS 节点运行的 Docker 版本不支持多阶段生成。 为了避免多阶段生成，请重写 Dockerfile。
+之所以发生此错误，是因为 Azure Dev Spaces 当前不支持多阶段生成。 为了避免多阶段生成，请重写 Dockerfile。
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>连接开发计算机时，不会将网络流量转发到 AKS 群集
 
@@ -475,3 +475,12 @@ kubectl -n my-namespace delete pod --all
 | gcr.io | HTTP：443 | 请求 helm/tiller 映像|
 | storage.googleapis.com | HTTP：443 | 请求 helm/tiller 映像|
 | azds-<guid>。<location>. azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>"找不到群集 \<群集\> 订阅中 \<subscriptionId"\>"
+
+如果你的 kubeconfig 文件的目标不同于你尝试用于 Azure Dev Spaces 客户端工具的不同群集或订阅，你可能会看到此错误。 Azure Dev Spaces 客户端工具将复制*kubectl*的行为，该行为使用[一个或多个 kubeconfig 文件](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)选择群集并与之进行通信。
+
+解决此问题：
+
+* 使用 `az aks use-dev-spaces -g <resource group name> -n <cluster name>` 更新当前上下文。 此命令还会启用 AKS 群集上的 Azure Dev Spaces （如果尚未启用）。 或者，您可以使用 `kubectl config use-context <cluster name>` 更新当前上下文。
+* 使用 `az account show` 显示目标为当前 Azure 订阅，并验证此是否正确。 您可以使用 `az account set`更改目标订阅。

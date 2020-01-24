@@ -3,15 +3,15 @@ title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 493313cbb0b43b04d3c4dde82b5ca95dd7e9ac4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 4eb163376f1a0b8d8194defed4445578975976f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479769"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982208"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
-本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为**支持标记**的列指示资源类型是否具有标记的属性。 标记为 **"成本报表中的标记**" 的列指示该资源类型是否将标记传递给成本报告。 你可以在[成本管理成本分析](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和[Azure 计费发票和每日使用数据](../../billing/billing-download-azure-invoice-daily-usage-date.md)中按标记查看成本。
+本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为**支持标记**的列指示资源类型是否具有标记的属性。 标记为 **"成本报表中的标记**" 的列指示该资源类型是否将标记传递给成本报告。 你可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和[Azure 计费发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按标记查看成本。
 
 若要以逗号分隔值文件的形式获取同一数据，请下载 [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)。
 
@@ -86,12 +86,12 @@ ms.locfileid: "75479769"
 > - [Microsoft. 功能](#microsoftfeatures)
 > - [Microsoft. 库](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
-> - [](#microsoftguestconfiguration)Microsoft.GuestConfiguration
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.hardwaresecuritymodules](#microsofthardwaresecuritymodules)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [](#microsofthybridcompute)Microsoft.HybridCompute
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
