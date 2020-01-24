@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: 配置多重身份验证
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: 为 TDE 配置 BYOK
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: 轮换 TDE BYOK 密钥
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: 删除 TDE 保护器
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: 数据保护
           items:
             - name: 透明数据加密 (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: 将 TDE 与自带密钥配合使用
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: 为 TDE 配置 BYOK
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: 轮换 TDE BYOK 密钥
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: 删除 TDE 保护器
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: 动态数据掩码
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Always Encrypted
