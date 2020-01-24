@@ -17,13 +17,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c509b1b901889241d6837611a2c373750fdb3a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834789"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701359"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
@@ -47,11 +46,11 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 发送到 Azure AD 的 `LogoutRequest` 元素需要以下属性：
 
 * `ID` - 此项标识注销请求。 `ID` 的值不能以数字开头。 典型的做法是在 GUID 的字符串表示形式前面追加 **ID**。
-* `Version` - 将此元素的值设置为 **2.0**。 此值是必填项。
+* `Version` - 将此元素的值设置为 **2.0**。 此值是必需的。
 * `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
-`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的 **应用 ID URI** 。
+`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。
 
 ### <a name="nameid"></a>NameID
 `NameID` 元素的值必须与所要注销的用户的 `NameID` 完全匹配。
@@ -69,12 +68,12 @@ Azure AD 在响应 `LogoutRequest` 元素时发送 `LogoutResponse`。 以下摘
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Azure AD 会在 `LogoutResponse` 元素中设置 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
+Azure AD 将设置 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
 
 ### <a name="issuer"></a>颁发者
-Azure AD 将此值设置`https://login.microsoftonline.com/<TenantIdGUID>/`为\<, 其中 TenantIdGUID > 是 Azure AD 租户的租户 ID。
+Azure AD 将此值设置为 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中 \<TenantIdGUID > 是 Azure AD 租户的租户 ID。
 
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
 
 ### <a name="status"></a>状态
-Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。
+Azure AD 使用 `Status` 元素中的 `StatusCode` 元素来指示注销的成功或失败。当注销尝试失败时，`StatusCode` 元素还可能包含自定义错误消息。

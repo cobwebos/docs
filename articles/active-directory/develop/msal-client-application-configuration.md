@@ -13,13 +13,12 @@ ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917057"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696476"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 

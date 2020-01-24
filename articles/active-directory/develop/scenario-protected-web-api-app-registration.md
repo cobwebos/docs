@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c36661dd8b5d43417ca1d845eef5cdb146f1e9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ffa5c0ff9aac636a584743f839d780d2df2db5ef
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962519"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701988"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 web API：应用注册
 

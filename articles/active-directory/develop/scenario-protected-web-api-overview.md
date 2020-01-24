@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64418138f9eff61cc94a57be4dc5e2625e5fdebb
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f96393adf0eaed8a28bc1a2ec0def6b0386bd7ac
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803691"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701971"
 ---
 # <a name="scenario-protected-web-api"></a>方案：受保护的 web API
 

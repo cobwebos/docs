@@ -17,13 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c13f4cabfbd996c1d811a8a3e35e69893c51154f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042331"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700917"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -61,10 +60,10 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| 属性名称 | 描述 | 示例 |
+| 属性名称 | Description | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | 指示此权限是否可供使用。 | 是 |
+| `IsEnabled` | 指示此权限是否可供使用。 | true |
 | `Type` | 指示此权限是否需要用户许可或管理员许可。 | 用户 |
 | `AdminConsentDescription` | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 |
 | `AdminConsentDisplayName` | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 |
@@ -86,7 +85,7 @@ Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API�
   
 * **管理员同意** - 当应用需要访问特定的高特权权限时必须执行。 管理员同意可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。 [详细了解如何授予管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 ### <a name="client-best-practices"></a>客户端最佳实践
 

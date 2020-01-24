@@ -1,5 +1,5 @@
 ---
-title: 新 Azure 门户应用注册培训指南
+title: 新的 Azure 门户应用注册培训指南
 description: 介绍新的 Azure 门户应用注册体验
 services: active-directory
 author: archieag
@@ -12,15 +12,14 @@ ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b110929051098917d7c3f73161ca8694d4698070
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424658"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698214"
 ---
-# <a name="new-azure-portal-app-registration-training-guide"></a>新 Azure 门户应用注册培训指南
+# <a name="new-azure-portal-app-registration-training-guide"></a>新的 Azure 门户应用注册培训指南
 
 您可以在 Azure 门户中找到许多新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验的改进。 如果你熟悉 Azure 门户中的应用注册（旧）体验，请使用本培训指南开始使用新体验。
 
