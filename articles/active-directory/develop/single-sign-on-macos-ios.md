@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd944af95f80cf456260beb072c703aab0d15ceb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175276"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701376"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 

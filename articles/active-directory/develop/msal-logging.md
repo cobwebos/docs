@@ -13,13 +13,12 @@ ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916139"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695800"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -211,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |描述 |
+|级别  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |
@@ -288,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |描述 |
+|级别  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |

@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918145"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698163"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 

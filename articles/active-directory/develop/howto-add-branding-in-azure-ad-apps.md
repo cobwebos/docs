@@ -14,13 +14,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130bfb055b41ea3d2726c83c06430a0ea58fe98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424556"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697483"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -37,10 +36,10 @@ ms.locfileid: "75424556"
 
 Microsoft 管理两种类型的用户帐户：
 
-- **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人  用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
+- **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
 - **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录 Office 365 和 Microsoft 的其他业务服务。
 
-Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户可以直接在云中（在 Azure AD 平台中）直接控制，也可以从本地目录（如 Windows Server Active Directory）同步到 Azure AD。 Microsoft 是工作或学校帐户的监管员  ，但这些帐户由组织所有和控制。
+Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户可以直接在云中（在 Azure AD 平台中）直接控制，也可以从本地目录（如 Windows Server Active Directory）同步到 Azure AD。 Microsoft 是工作或学校帐户的监管员，但这些帐户由组织所有和控制。
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>在应用程序中引用 Azure AD 帐户
 
@@ -57,9 +56,9 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 应用程序可以为注册和登录提供不同的路径，以下部分提供了这两种应用场景的可视指南。
 
-**如果应用支持最终用户注册（例如免费试用或免费增值模式）** ：可以显示“登录”  按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问应用程序时，Azure AD 会显示许可提示。
+**如果应用支持最终用户注册（例如免费试用或免费增值模式）** ：可以显示“登录”按钮，让用户使用其工作帐户或个人帐户访问应用。 当用户首次访问应用程序时，Azure AD 会显示许可提示。
 
-**如果应用需要只有管理员才能授予的权限，或者需要组织许可：** 请将管理员请求与用户登录区别开来。 “获取此应用”按钮  会将管理员重定向到登录页，然后要求他们代表其组织中的用户授权同意，这还有一个额外的好处，那就是在你的应用中抑制最终用户许可提示。
+如果应用需要只有管理员才能授予的权限，或者需要组织许可：请将管理员请求与用户登录区别开来。 “获取此应用”按钮会将管理员重定向到登录页，然后要求他们代表其组织中的用户授权同意，这还有一个额外的好处，那就是在你的应用中抑制最终用户许可提示。
 
 ## <a name="visual-guidance-for-app-acquisition"></a>有关获取应用程序的可视指南
 
@@ -71,7 +70,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 但是，我们建议编写说明性的文本而不要依赖于按钮。 例如：
 
-> *如果已使用了 Office 365 或 Microsoft 的其他业务服务，则可以授予 <your_app_name> 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 <应用名称>。*
+> *如果已使用 Office 365 或 Microsoft 的其他业务服务，则可以授予 < your_app_name > 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 < your_app_name >。*
 
 若要下载官方 Microsoft 徽标以在应用中使用，请右键单击要使用的徽标，然后将其保存到计算机。
 

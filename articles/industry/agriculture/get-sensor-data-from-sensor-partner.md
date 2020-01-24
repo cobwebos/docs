@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513723"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705660"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -37,9 +37,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
  - 客户端机密
  - EventHub 连接字符串
 
-系统集成商提供前面的信息。 对于启用设备集成时可能会遇到的任何问题，请与系统集成商联系。
-
-或者，你可以通过从 Azure Cloud Shell 运行此脚本来生成凭据。 执行以下步骤。
+可以通过执行以下步骤来生成以上信息：（请注意，需要在 Azure 上执行这些步骤，以便需要访问 FarmBeats 部署到的 Azure 订阅）。
 
 1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其解压缩到本地驱动器。 Zip 文件中将有一个文件。
 2. 登录到 https://portal.azure.com/ 并中转到 Azure Active Directory > 应用注册

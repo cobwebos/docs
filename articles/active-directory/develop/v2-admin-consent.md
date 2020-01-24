@@ -17,13 +17,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b820be5631d207a32cbf14aa1eec9f3f6de2af52
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b9d6ab0fc2f2bf500f17161de7e090a6f60c0feb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766049"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700730"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 标识平台上的管理员许可
 
@@ -51,7 +50,7 @@ ms.locfileid: "74766049"
 ```
 
 
-| 参数     | 条件     | 描述                                                                               |
+| 参数     | 条件     | Description                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | 需要 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `organizations` 以一般方式引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
@@ -70,7 +69,7 @@ ms.locfileid: "74766049"
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| 参数         | 描述                                                                                       |
+| 参数         | Description                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。|
 | `state`           | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。|
@@ -83,7 +82,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 添加到成功响应中出现的参数时，会出现错误参数，如下所示。
 
-| 参数          | 描述                                                                                      |
+| 参数          | Description                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
 | `error`            | 用于分类发生的错误类型与响应错误的错误码字符串。|
 | `error_description`| 帮助开发人员识别错误根本原因的具体错误消息。|

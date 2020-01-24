@@ -14,13 +14,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf436881a74cffd0053718413ce83a148fa019d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918196"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698418"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -84,7 +83,7 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 在此示例方案中：
 
-| 步骤 | 描述 |
+| 步骤 | Description |
 |------|-------------|
 | 第    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
 | 2    | 当 Contoso 和 Fabrikam 的管理员完成同意并向应用程序授予访问权限时，会在其公司的 Azure AD 租户中创建服务主体对象，并向其分配管理员所授予的权限。 另请注意，HR 应用可能配置/设计为允许由用户同意以供个人使用。 |

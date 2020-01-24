@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fa71ca7ea976ab4d724a061d0d0809cdb5767f4f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310996"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705745"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -28,12 +28,12 @@ ms.locfileid: "60310996"
 当生成者通过队列发送消息时，此活动通常发生在其他某个逻辑操作的范围内，并由其他客户端或服务启动。 当使用者收到消息时，会继续相同的操作。 生成者与使用者（以及其他处理该操作的服务）也许会发出遥测事件，以跟踪操作流和结果。 若要将此类事件相关联并以端到端的方式跟踪操作，报告遥测数据的每个服务必须为每个事件提供跟踪上下文戳记。
 
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
-该协议基于 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
+该协议基于 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-| 属性名        | 描述                                                 |
+| 属性名称        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
-|  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
+|  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
+|  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
 ## <a name="service-bus-net-client-auto-tracing"></a>服务总线 .NET 客户端自动跟踪
 
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 在此示例中，侦听器记录每个服务总线操作的持续时间、结果、唯一标识符和开始时间。
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>活动
 
 对于每个操作，将发送两个事件：“Start”和“Stop”。 你很有可能只对“Stop”事件感兴趣。 这些事件提供操作的结果，并以 Activity 属性的形式提供开始时间和持续时间。
 

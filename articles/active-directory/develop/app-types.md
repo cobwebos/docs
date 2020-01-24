@@ -12,13 +12,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e4228febb5b49ad14a89ceec5482c277fca5fae
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d8f5002c60150f39415d6e4debd1fc73b056c386
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844203"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698146"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 

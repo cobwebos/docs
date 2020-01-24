@@ -16,13 +16,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201da533231eea4d597e660931e70e19a497d069
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7eb6c0399cb99de97fa2f45b6cc4f75693ecc5df
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423425"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701308"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上，在 ADAL 和 MSAL 应用之间 SSO
 

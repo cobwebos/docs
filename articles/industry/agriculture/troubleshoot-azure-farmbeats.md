@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485970"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705609"
 ---
 # <a name="troubleshoot"></a>故障排除
 
@@ -44,6 +44,38 @@ ms.locfileid: "75485970"
    - 如果有*传入消息*，请联系 farmbeatssupport@microsoft.com。 附加 Datahub 和加速器日志，并捕获遥测数据。
 
 若要了解如何下载日志，请参阅["手动收集日志"](#collect-logs-manually)部分。  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流式传输数据后，无法查看遥测数据
+
+**症状**：设备或传感器已部署，并且你已在 FarmBeats 和引入遥测上为 EventHub 创建了设备/传感器，但无法在 FarmBeats 上获取或查看遥测数据。
+
+**纠正操作**：
+
+1. 请确保已正确完成合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照此处的[步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+2. 确保使用了正确的遥测消息格式：
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>没有 Azure 事件中心连接字符串
 

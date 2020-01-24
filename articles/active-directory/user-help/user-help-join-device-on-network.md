@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028530"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704640"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -80,7 +79,7 @@ ms.locfileid: "74028530"
 
     ![“设置工作或学校帐户”屏幕](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. 在“开始登录”屏幕中，键入电子邮件地址（例如 **）并选择“下一步”** alain@contoso.com。
+4. 在“开始登录”屏幕中，键入电子邮件地址（例如 alain@contoso.com）并选择“下一步”。
 
     ![“开始登录”屏幕](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 

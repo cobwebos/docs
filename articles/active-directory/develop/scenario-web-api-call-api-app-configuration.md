@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e54e26bba1618a3b5835480ed1b1fe698bc8db4
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dd38cb58e6e6db9767be9adb8f299107601de580
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043427"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701767"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>用于调用 web Api 的 web API：代码配置
 

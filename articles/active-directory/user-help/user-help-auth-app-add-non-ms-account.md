@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278881"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704759"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
-将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
+将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。
@@ -45,7 +44,7 @@ ms.locfileid: "74278881"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome，选择“开始使用”，然后验证身份。
+1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ，选择“开始使用”，然后验证身份。
 
 2. 按照页面上的步骤操作，以为个人 Google 帐户启用双因素验证。
 
@@ -66,7 +65,7 @@ ms.locfileid: "74278881"
 
 5. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
 6. 在电脑上，选择“设置验证器”页中的“下一步”，键入应用中为 Google 帐户提供的六位数验证码，再选择“验证”。
 
@@ -81,7 +80,7 @@ ms.locfileid: "74278881"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” **“安全和登录”**  > 。
+1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” > “安全和登录”。
 
     此时，“安全和登录”页显示。
 
@@ -106,7 +105,7 @@ ms.locfileid: "74278881"
 
 4. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
 5. 在电脑上，选择“双因素身份验证”页中的“下一步”，再键入应用中为 Facebook 帐户提供的六位数验证码。
 
@@ -147,7 +146,7 @@ ms.locfileid: "74278881"
 
 6. 在电脑的“双因素身份验证器”页上，键入应用中为 GitHub 帐户提供的六位数验证码，然后选择“启用”。
 
-    此时，应用的“帐户”页显示帐户名，以及六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    此时，应用的“帐户”页显示帐户名，以及六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
     >[!NOTE]
     >若要详细了解双因素验证和 GitHub 帐户，请参阅[关于双因素身份验证](https://help.github.com/articles/about-two-factor-authentication/)。
@@ -179,7 +178,7 @@ ms.locfileid: "74278881"
 
 7. 检查设备上 Microsoft Authenticator 应用的“帐户”页，以确保帐户信息正确，并有关联的六位数验证码。
 
-    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
 8. 在电脑的“选择如何接收验证码”页上，键入应用中为 Amazon 帐户提供的六位数验证码，再选择“验证验证码并继续”。
 

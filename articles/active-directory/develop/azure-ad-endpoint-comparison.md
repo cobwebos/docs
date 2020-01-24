@@ -12,13 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ed48625e4654ac6b8bdaeed713b476ab23d29f97
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843880"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697976"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为什么要更新到 Microsoft 标识平台（v2.0）？
 

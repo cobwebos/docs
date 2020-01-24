@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914917"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705303"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -43,11 +42,11 @@ ms.locfileid: "70914917"
 
 你可以根据使用双重验证的方式创建和删除应用密码：
 
-- **你的组织使用双重验证和 "其他安全验证" 页。** 如果你在组织中使用工作或学校帐户（例如alain@contoso.com）进行双重验证，则可以从 "[其他安全验证" 页](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理你的应用密码。 有关详细说明，请参阅本文中[的使用其他安全验证创建和删除应用密码页](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
+- **你的组织使用双重验证和 "其他安全验证" 页。** 如果你在组织中使用工作或学校帐户（例如 alain@contoso.com）进行双因素验证，则可以从 "[其他安全验证" 页](https://account.activedirectory.windowsazure.com/Proofup.aspx)管理应用密码。 有关详细说明，请参阅本文中[的使用其他安全验证创建和删除应用密码页](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-- **你的组织使用双因素验证和 Office 365 门户。** 如果你在组织中使用工作或学校帐户（例如、 alain@contoso.com）、双因素验证和 office 365 应用，则可以从[Office 365 门户页面](https://www.office.com)管理应用密码。 有关详细说明，请参阅本文中[的使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
+- **你的组织使用双因素验证和 Office 365 门户。** 如果你在组织中使用工作或学校帐户（例如 alain@contoso.com）、双因素验证和 Office 365 应用，则可以从[Office 365 门户页面](https://www.office.com)管理应用密码。 有关详细说明，请参阅本文中[的使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
-- **你使用的是包含个人 Microsoft 帐户的双重验证。** 如果使用的是个人 Microsoft 帐户（例如alain@outlook.com）进行双重验证，则可以从 "[安全基本](https://account.microsoft.com/security/)信息" 页中管理应用密码。 有关详细说明，请参阅将[应用密码用于不支持双重验证的应用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
+- **你使用的是包含个人 Microsoft 帐户的双重验证。** 如果使用的是个人 Microsoft 帐户（例如，alain@outlook.com）进行双因素验证，则可以从 "[安全基本](https://account.microsoft.com/security/)信息" 页中管理应用密码。 有关详细说明，请参阅将[应用密码用于不支持双重验证的应用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>在 "其他安全性验证" 页中创建和删除应用密码
 

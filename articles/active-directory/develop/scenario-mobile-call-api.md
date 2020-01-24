@@ -16,13 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f56d55a08c46338fb7916664834b69005419e72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6b87809e29940b343a395ffb461c0829295fcd8a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423760"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702056"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 web Api 的移动应用-调用 web API
 

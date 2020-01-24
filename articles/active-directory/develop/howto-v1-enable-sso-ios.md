@@ -15,13 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7915c0dae652e113410002128e4ea19ddba68a07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962621"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696905"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
 
@@ -38,7 +37,7 @@ ms.locfileid: "65962621"
 * Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
 * Azure Active Directory B2B
-* Azure Active Directory 条件访问
+* Azure Active Directory 条件性访问
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -62,9 +61,9 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 * 非中转站辅助的登录
 * 中转站辅助的登录
 
-#### <a name="non-broker-assisted-logins"></a>无中转站辅助的登录
+#### <a name="non-broker-assisted-logins"></a>非中转站辅助的登录
 
-非中转站的辅助登录是应用程序内联的登录体验，使用该应用程序的设备上的本地存储。 此存储可以跨应用程序共享，但凭据紧密绑定到应用或使用该凭据的应用套件。 你最有可能在许多移动应用程序中有过此体验，当你在应用程序本身中输入用户名和密码时。
+非中转站的辅助登录是应用程序内联的登录体验，使用该应用程序的设备上的本地存储。 此存储可以跨应用程序共享，但凭据紧密绑定到应用或使用该凭据的应用套件。 最有可能在许多移动应用程序中有过此体验，在应用程序本身中输入用户名和密码时。
 
 这种登录具有以下优点：
 
@@ -98,7 +97,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 中转站辅助的登录是一种发生在中转站应用程序中的登录体验，它使用中转站的存储和安全性在设备上应用了标识平台的所有应用程序间共享凭据。 这意味着，应用程序依赖于中转站才能将用户登录。 在 iOS 和 Android 平台上，通过可下载的应用程序提供这些中转站。可以由客户独立安装这些应用程序，也可以由负责管理其用户设备的公司将这些应用程序推送到设备。 这种类型的应用程序示例是 iOS 上的 Microsoft Authenticator 应用程序。 在 Windows 内置于操作系统，已知技术作为 Web 身份验证中转站帐户选择器提供此功能。
 
-具体的体验因平台而异，如果未正确管理，有时会给用户带来麻烦。 如果已安装 Facebook 应用程序并在另一个应用程序中使用 Facebook Connect，则可能很熟悉这种模式。 标识平台使用相同的模式。
+体验因平台而异，如果未正确管理，有时会给用户带来麻烦。 如果已安装 Facebook 应用程序并在另一个应用程序中使用 Facebook Connect，则可能很熟悉这种模式。 标识平台使用相同的模式。
 
 对于 iOS，这会导致“过渡”动画，其中，应用程序将发送到后台，而 Microsoft Authenticator 应用程序将发送到前台，让用户选择他们登录时使用的帐户。
 
@@ -165,7 +164,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 要跨你拥有的应用程序启用 SSO，需要执行以下操作：
 
-1. 确保所有应用程序使用的相同客户端 ID 或应用程序 id。
+1. 确保所有应用程序使用相同的客户端 ID 或应用程序 ID。
 2. 确保所有应用程序共享来自 Apple 的相同签名证书，以便可以共享密钥链。
 3. 请求每个应用程序的相同密钥链授权。
 4. 告知 SDK 要使用的共享密钥链。
@@ -231,7 +230,7 @@ App3 重定向 URI：`x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-后必须在每个应用程序中启用密钥链授权，并且已准备好使用 SSO，请告知标识 SDK 密钥链通过使用以下设置你`ADAuthenticationSettings`使用以下设置：
+在每个应用程序中启用密钥链授权并准备好使用 SSO 后，请使用以下设置在 `ADAuthenticationSettings` 中使用以下设置，告诉标识 SDK 关于密钥链：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";

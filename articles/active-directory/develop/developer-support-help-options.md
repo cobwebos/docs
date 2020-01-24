@@ -13,13 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1c6d89af1d88be9a241c94462b17edf0c93de2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843183"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697466"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -48,7 +47,7 @@ ms.locfileid: "74843183"
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
-| 工具  | 描述  |
+| 工具  | Description  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
@@ -59,7 +58,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
-|组件/区域  | Tags |
+|组件/区域  | 标记 |
 |---------|---------|
 | ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |

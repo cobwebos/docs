@@ -16,13 +16,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d956bdfe793f2e8fa3ce8ce83e03b9dae8033757
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373859"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701427"
 ---
 # <a name="single-page-applications"></a>单页应用程序
 

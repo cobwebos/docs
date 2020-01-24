@@ -13,13 +13,12 @@ ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55a6e9976706cb12a53dd5d540a2b6f2edb9e41b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028556"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704623"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能出现的 "无法从此处获取" 错误消息的修补程序
 
@@ -51,7 +50,7 @@ ms.locfileid: "74028556"
 ![与是否已加入网络相关的错误消息](media/user-help-device-remediation/network-version.png)
 
 ### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>检查设备是否已加入网络
-1. 请使用工作或学校帐户登录到 Windows。 例如，alain@contoso.com。
+1. 请使用工作或学校帐户登录到 Windows。 例如，alain@contoso.com 。
 
 2. 通过虚拟专用网络 (VPN) 或 DirectAccess 连接到组织的网络。
 

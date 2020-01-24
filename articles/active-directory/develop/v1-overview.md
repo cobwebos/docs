@@ -16,13 +16,12 @@ ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e790728cbc7415532754d10773d466e9a0280422
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ad58f9b135056ef273f612abc80262a55a7a1f5e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373907"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700985"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>面向开发人员的 Azure Active Directory （1.0 版）概述
 
@@ -52,7 +51,7 @@ v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
 | [身份验证库 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 提供的库和 SDK 的概述。 |
-| [代码示例](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
+| [示例代码](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
 | [术语表](developer-glossary.md)                                      | 本文档通篇使用的术语和单词定义。 |
 |  |  |
 

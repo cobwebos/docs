@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919318"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700679"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -69,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | Description |
 | --- | --- | --- |
 | `tenant` | 需要 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
 | `client_id` | 需要 | [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 | 
@@ -95,9 +94,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数 | 格式 | 描述 |
+| 参数 | 格式 | Description |
 | --------- | ------ | ----------- |
-| `token_type` | 字符串 | 始终设置为 `Bearer`。 |
+| `token_type` | String | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
 | `expires_in`| int | 包含的访问令牌的有效时间，以秒为单位。 |
 | `access_token`| 不透明字符串 | 针对请求的[范围](v2-permissions-and-consent.md)颁发。 |
@@ -110,7 +109,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 如果用户未提供正确的用户名或密码，或者客户端未收到请求的许可，则身份验证会失败。
 
-| 错误 | 描述 | 客户端操作 |
+| 错误 | Description | 客户端操作 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果未授予作用域，则将返回 `consent_required` 错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
 | `invalid_request` | 请求的构造方式不正确 | `/common` 或 `/consumers` 身份验证上下文不支持授予类型。  请改用 `/organizations` 或租户 ID。 |

@@ -3,22 +3,34 @@ title: 用于帮助保护云工作负荷的安全功能
 description: 了解如何在 Azure 备份中使用安全功能，使备份更安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028208"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705490"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
-对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现在提供了安全功能来帮助保护备份数据，即使在删除后也是如此。 其中一项功能是软删除。 使用软删除，即使恶意执行组件删除了 VM 的备份（或意外删除了备份数据），备份数据仍将保留14天，允许恢复该备份项目，而不会丢失数据。 在 "软删除" 状态中，这些额外的14天的备份数据保留不会对客户产生任何费用。 Azure 还使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)对静态中所有已备份的数据进行加密，以便进一步保护数据。
+对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现在提供了安全功能来帮助保护备份数据，即使在删除后也是如此。
+
+其中一项功能是软删除。 使用软删除，即使恶意执行组件删除了 VM 的备份（或意外删除了备份数据），备份数据仍将保留14天，允许恢复该备份项目，而不会丢失数据。 "软删除" 状态中的备份数据的额外14天的保留期不会对客户产生任何费用。 Azure 还使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)对静态中所有已备份的数据进行加密，以便进一步保护数据。
+
+Azure 虚拟机的软删除保护已正式发布。
+
+>[!NOTE]
+>Azure vm 中的 SQL server 软删除和 Azure VM 工作负荷中 SAP HANA 的软删除现已在预览版中提供。<br>
+>若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
+
+## <a name="soft-delete"></a>软删除
+
+### <a name="soft-delete-for-vms"></a>Vm 的软删除
+
+Vm 软删除保护 Vm 的备份不被意外删除。 即使在删除备份后，它们仍将保留14天的软删除状态。
 
 > [!NOTE]
 > 软删除仅保护已删除的备份数据。 如果在没有备份的情况下删除 VM，软删除功能不会保留数据。 所有资源都应通过 Azure 备份进行保护，以确保完全恢复能力。
 >
-
-## <a name="soft-delete"></a>软删除
 
 ### <a name="supported-regions"></a>支持的区域
 

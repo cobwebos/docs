@@ -1,6 +1,6 @@
 ---
-title: 配置用于调用 web Api 的移动应用-Microsoft 标识平台 |Microsoft
-description: 了解如何生成调用 web Api 的移动应用（应用的代码配置）
+title: Configure mobile apps that call web APIs - Microsoft identity platform | Azure
+description: Learn how to build a mobile app that calls web APIs (app's code configuration)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,33 +14,32 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61d3a7b7f06ffdb7f39f80f7f3bf19e9007945d2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423794"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702107"
 ---
-# <a name="mobile-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api-代码配置的移动应用
+# <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile app that calls web APIs - code configuration
 
-创建应用程序后，你将了解如何使用应用注册参数来配置代码。 移动应用程序还具有一些复杂的细节，这与在构建这些应用时使用的框架有关
+Once you've created your application, you'll learn how to configure the code using the app registration parameters. Mobile applications also have some complex specifics, which have to do with fitting into the framework used to build these apps
 
-## <a name="msal-libraries-supporting-mobile-apps"></a>支持移动应用的 MSAL 库
+## <a name="msal-libraries-supporting-mobile-apps"></a>MSAL libraries supporting mobile apps
 
-支持移动应用的 Microsoft 库包括：
+The Microsoft libraries supporting mobile apps are:
 
   MSAL 库 | Description
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 开发可移植应用程序。 用于构建移动应用程序的 MSAL.NET 支持平台为 UWP、Xamarin 和 Xamarin。
-  ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用客观-C 或 Swift 开发本机 iOS 应用程序
-  ![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | 在 Java 中开发适用于 Android 的本机 Android 应用程序
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | To develop portable applications. MSAL.NET supported platforms to build a mobile application are UWP, Xamarin.iOS, and Xamarin.Android.
+  ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | To develop native iOS applications with Objective-C or Swift
+  ![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | To develop native Android applications in Java for Android
 
-## <a name="instantiating-the-application"></a>实例化应用程序
+## <a name="instantiating-the-application"></a>Instantiating the application
 
 ### <a name="android"></a>Android
 
-移动应用程序使用 `PublicClientApplication` 类。 下面介绍如何对其进行实例化：
+Mobile applications use the `PublicClientApplication` class. Here is how to instantiate it:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -50,7 +49,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-IOS 上的移动应用程序需要实例化 `MSALPublicClientApplication` 类。
+Mobile applications on iOS need to instantiate the `MSALPublicClientApplication` class.
 
 Objective-C：
 
@@ -67,26 +66,26 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-还有[其他 MSALPublicClientApplicationConfig 属性](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options)可替代默认权限，指定重定向 URI 或更改 MSAL 令牌缓存行为。 
+There are [additional MSALPublicClientApplicationConfig properties](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) which can override the default authority, specify a redirect URI or change MSAL token caching behavior. 
 
-### <a name="xamarin-or-uwp"></a>Xamarin 或 UWP
+### <a name="xamarin-or-uwp"></a>Xamarin or UWP
 
-下一段说明如何为 Xamarin、Xamarin 和 UWP 应用程序实例化应用程序。
+The following paragraph explains how to instantiate the application for Xamarin.iOS, Xamarin.Android, and UWP apps.
 
-#### <a name="instantiating-the-application"></a>实例化应用程序
+#### <a name="instantiating-the-application"></a>Instantiating the application
 
-在 Xamarin 或 UWP 中，实例化应用程序的最简单方法如下，其中 `ClientId` 是已注册应用的 Guid。
+In Xamarin, or UWP, the simplest way to instantiate the application is as follows, where the `ClientId` is the Guid of your registered app.
 
 ```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-还有其他一些*参数*方法用于设置 UI 父代、替代默认机构、指定客户端名称和版本（对于遥测）、指定重定向 URI、指定要使用的 Http 工厂（例如，处理代理、指定遥测和日志记录）。 这是以下段落的主题。
+There are additional With*parameter* methods which set the UI parent, override the default authority, specify a client name and version (for telemetry), specify a redirect URI, Specify the Http factory to use (for instance to handle proxies, specify telemetry and logging) . This is the topic of the following paragraphs.
 
-##### <a name="specifying-the-parent-uiwindowactivity"></a>指定父 UI/窗口/活动
+##### <a name="specifying-the-parent-uiwindowactivity"></a>Specifying the parent UI/Window/Activity
 
-在 Android 上，你需要在进行交互式身份验证之前传递父活动。 在 iOS 上，使用 broker 时，需要传递 ViewController 中的。 对于 UWP，你可能想要传入父窗口。 这在获取令牌时是可能的，但也可以在应用创建时指定返回 UIParent 的委托。
+On Android, you need to pass the parent activity before you do the interactive authentication. On iOS, when using a broker, you need to pass-in the ViewController. In the same way on UWP, you might want to pass-in the parent window. This is possible when you acquire the token, but it's also possible to specify a callback at app creation time a delegate returning the UIParent.
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -94,7 +93,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-在 Android 上，我们建议你在[此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)使用 `CurrentActivityPlugin`。  然后，`PublicClientApplication` 生成器代码将如下所示：
+On Android, we recommend you use the `CurrentActivityPlugin` [here](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Then your `PublicClientApplication` builder code would look like this:
 
 ```csharp
 // Requires MSAL.NET 4.2 or above
@@ -104,54 +103,54 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-##### <a name="more-app-building-parameters"></a>更多应用生成参数
+##### <a name="more-app-building-parameters"></a>More app building parameters
 
-- 有关 `PublicClientApplicationBuilder`上可用的所有修饰符的列表，请参阅参考文档[PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- 有关 `PublicClientApplicationOptions` 中公开的所有选项的说明，请参阅参考文档中的[PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)
+- For the list of all modifiers available on `PublicClientApplicationBuilder`, see the reference documentation [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- For the description of all the options exposed in `PublicClientApplicationOptions` see [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), in the reference documentation
 
-## <a name="xamarin-ios-specific-considerations"></a>Xamarin 特定于 iOS 的注意事项
+## <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS specific considerations
 
-在 Xamarin iOS 上，使用 MSAL.NET 时，必须考虑几个注意事项：
+On Xamarin iOS, there are several considerations that you must take into account when using MSAL.NET:
 
-1. [重写和实现 `AppDelegate` 中的 `OpenUrl` 函数](msal-net-xamarin-ios-considerations.md#implement-openurl)
-1. [启用密钥链组](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
-1. [启用令牌缓存共享](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
-1. [启用密钥链访问](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+1. [Override and implement the `OpenUrl` function in the `AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
+1. [Enable Keychain groups](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+1. [Enable token cache sharing](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
+1. [Enable Keychain access](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 
-[Xamarin iOS 注意事项](msal-net-xamarin-ios-considerations.md)中提供了详细信息
+Details are provided in [Xamarin iOS considerations](msal-net-xamarin-ios-considerations.md)
 
-## <a name="msal-for-ios-and-macos-specific-considerations"></a>适用于 iOS 和 macOS 的特定注意事项 MSAL
+## <a name="msal-for-ios-and-macos-specific-considerations"></a>MSAL for iOS and macOS specific considerations
 
-使用适用于 iOS 和 macOS 的 MSAL 时，请注意以下事项：
+Similar considerations apply when using MSAL for iOS and macOS:
 
-1. [实现 `openURL` 回调](#brokered-authentication-for-msal-for-ios-and-macos)
-2. [启用密钥链访问组](howto-v2-keychain-objc.md)
-3. [自定义浏览器和 Webview](customize-webviews.md)
+1. [Implement the `openURL` callback](#brokered-authentication-for-msal-for-ios-and-macos)
+2. [Enable keychain access groups](howto-v2-keychain-objc.md)
+3. [Customize browsers and WebViews](customize-webviews.md)
 
-## <a name="xamarin-android-specific-considerations"></a>Xamarin Android 特有注意事项
+## <a name="xamarin-android-specific-considerations"></a>Xamarin Android specific considerations
 
-下面是 Xamarin Android 具体内容：
+Here are Xamarin Android specifics:
 
-- [当身份验证流的交互式部分结束后，确保控件返回到 MSAL](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
-- [更新 Android 清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
-- [使用嵌入的 web 视图（可选）](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
+- [Ensuring control goes back to MSAL once the interactive portion of the authentication flow ends](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
+- [Update the Android manifest](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [Use the embedded web view (optional)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
 - [故障排除](msal-net-xamarin-android-considerations.md#troubleshooting)
 
-[Xamarin Android 注意事项](msal-net-xamarin-android-considerations.md)中提供了详细信息
+Details are provided in [Xamarin Android considerations](msal-net-xamarin-android-considerations.md)
 
-最后，在 Android 上了解有关浏览器的一些 specificities。 MSAL.NET 中的[Xamarin 特定于 Android 的注意事项](msal-net-system-browser-android-considerations.md)对它们进行了介绍。
+Finally, there are some specificities to know about the browsers on Android. They are explained in [Xamarin Android-specific considerations with MSAL.NET](msal-net-system-browser-android-considerations.md)
 
-#### <a name="uwp-specific-considerations"></a>UWP 特定注意事项
+#### <a name="uwp-specific-considerations"></a>UWP specific considerations
 
-在 UWP 上，你可以使用公司网络。 有关将 MSAL 库与 UWP 一起使用的其他信息，请参阅[MSAL.NET 通用 Windows 平台特定的注意事项](msal-net-uwp-considerations.md)。
+On UWP, you can use corporate networks. For additional information about using the MSAL library with UWP, see [Universal Windows Platform-specific considerations with MSAL.NET](msal-net-uwp-considerations.md).
 
-## <a name="configuring-the-application-to-use-the-broker"></a>将应用程序配置为使用 broker
+## <a name="configuring-the-application-to-use-the-broker"></a>Configuring the application to use the broker
 
-### <a name="why-use-brokers-in-ios-and-android-applications"></a>为什么在 iOS 和 Android 应用程序中使用代理？
+### <a name="why-use-brokers-in-ios-and-android-applications"></a>Why use brokers in iOS and Android applications?
 
-在 Android 和 iOS 上，代理启用：
+On Android and iOS, brokers enable:
 
-- 向 AAD 注册设备时的单一登录（SSO）。 用户无需登录到每个应用程序。
+- Single Sign On (SSO) when device is registered with AAD. 用户无需登录到每个应用程序。
 - 设备标识。 通过访问设备上已加入工作区的设备证书，启用与 Azure AD 设备相关的条件性访问策略。
 - 应用程序标识验证。 当应用程序调用代理时，它会传递其重定向 url，并且 broker 将对其进行验证。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389378"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694422"
 ---
 ## <a name="lifecycle"></a>生命周期
 
@@ -33,7 +33,7 @@ ms.locfileid: "72389378"
 
 1. 若要允许用户扩展其分配，请将 "**允许用户扩展" 权限**设置为 **"是"** 。
 
-    如果策略中允许使用扩展，则用户将收到电子邮件14天，并且在访问包分配设置为过期之前的1天内，会提示他们扩展分配。
+    如果策略中允许使用扩展，则用户将收到电子邮件14天，并且在访问包分配设置为过期之前的1天内，会提示他们扩展分配。 如果用户提交一个扩展访问请求，则该扩展日期必须在分配时过期，如用于向用户授予访问包访问权限的策略中定义的那样。 例如，如果策略指示分配设置为在6月30日过期，则用户可以请求的最大扩展为6月30日。
 
     如果用户的访问权限已扩展，则他们将无法在指定的扩展日期之后（在创建策略的用户的时区中设置日期）请求访问包。
 

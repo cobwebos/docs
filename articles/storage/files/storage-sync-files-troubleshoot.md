@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545035"
+ms.locfileid: "76704538"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -298,6 +298,15 @@ PerItemErrorCount: 1006.
 如果对于任何给定的同步会话，在该服务器上的 PerItemErrorCount 或在门户中同步的文件数不是0，则意味着某些项未能同步。文件和文件夹可能有阻止它们同步的特征。 这些特征可能是永久性的，需要采取明确的措施才能恢复同步，例如，从文件或文件夹名称中删除不支持的字符。 它们也可能是暂时性的，也就是说，该文件或文件夹可自动恢复同步；例如，包含开放句柄的文件在关闭后可自动恢复同步。 当 Azure 文件同步引擎检测到此类问题时，会生成错误日志，可以分析这些日志以列出当前未正确同步的项。
 
 若要查看这些错误，请运行 **FileSyncErrorsReport.ps1** PowerShell 脚本（位于 Azure 文件同步代理的代理安装目录中），以识别由于包含开放句柄、不支持的字符或存在其他问题而未能同步的文件。 ItemPath 字段告知相对于根同步目录的文件位置。 请参阅以下常见同步错误列表获取补救步骤。
+
+> [!Note]  
+> 如果 FileSyncErrorsReport 脚本返回 "找不到任何文件错误" 或不列出同步组的每个项的错误，则原因为：
+>
+>- 原因1：最后完成的同步会话没有每项错误。 门户应该会立即更新，以显示0个未同步的文件。 
+>   - 检查遥测事件日志中的[事件 ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ，确认 PerItemErrorCount 是否为0。 
+>
+>- 原因2：服务器上的 ItemResults 事件日志由于每个项目的错误太多而被包装，事件日志不再包含此同步组的错误。
+>   - 若要避免此问题，请增加 ItemResults 事件日志的大小。 在事件查看器中的 "应用程序和服务 Logs\Microsoft\FileSync\Agent" 下可以找到 ItemResults 事件日志。 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>根据文件/目录同步错误进行故障排除
 **ItemResults 日志 - 按项列出的同步错误**  

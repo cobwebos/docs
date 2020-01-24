@@ -15,13 +15,12 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a603be6d57581541c0868b9f48a0bf9997cadd71
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 431f18b9babb52b5000d3bf4cca75a0f5e29bb93
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962825"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702804"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
 

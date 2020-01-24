@@ -17,13 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22abde182437bfeb4a42e5c9a0d8e41a4643f8f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9c02611ea6f083a6ce8f95844e52429fc1152f90
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964440"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701002"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -55,7 +54,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 ### <a name="register-the-middle-tier-service"></a>注册中间层服务
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
 1. 依次选择 "**应用注册**" 和 "**新建注册**"。
@@ -73,7 +72,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 ### <a name="register-the-client-application"></a>注册客户端应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
 1. 依次选择 "**应用注册**" 和 "**新建注册**"。
@@ -109,7 +108,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 描述 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。 |
@@ -117,7 +116,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 | client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
 | resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| scope |必填 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| scope |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 #### <a name="example"></a>示例
 
@@ -143,7 +142,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 描述 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的令牌值。 |
@@ -152,7 +151,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | client_assertion |必填 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](active-directory-certificate-credentials.md)了解断言格式以及如何注册证书。|
 | resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| scope |必填 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| scope |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 这些参数与共享密钥请求几乎相同，只是 `client_secret parameter` 被以下两个参数替换：`client_assertion_type` 和 `client_assertion`。
 
@@ -181,7 +180,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功响应是具有以下参数的 JSON OAuth 2.0 响应：
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | scope |令牌中授予的访问权限的范围。 |
@@ -253,7 +252,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 SAML 断言的服务到服务请求包含以下参数：
 
-| 参数 |  | 描述 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。|
@@ -272,7 +271,7 @@ SAML 断言的服务到服务请求包含以下参数：
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | scope |令牌中授予的访问权限的范围。 |

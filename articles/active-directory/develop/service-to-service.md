@@ -16,13 +16,12 @@ ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a94fcaffc190016a5377fe4b32484f84dc46ed25
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284898"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701495"
 ---
 # <a name="service-to-service-apps"></a>服务到服务应用
 
@@ -30,7 +29,7 @@ ms.locfileid: "74284898"
 
 - 需要调用 Web API 的守护程序，基于 OAuth 2.0 客户端凭据授予类型构建
 
-    在此方案中，务必了解一些事项。 首先，用户无法与后台应用程序进行交互，因为这要求应用程序具有其自己的标识。 在后台运行的批处理作业或操作系统服务都是后台应用程序的示例。 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，后台应用程序会从 Azure AD 收到一个访问令牌，并将使用该令牌来调用 Web API。
+    在此方案中，务必了解一些事项。 首先，用户无法与后台应用程序进行交互，因为这要求应用程序具有其自己的标识。 在后台运行的批处理作业或操作系统服务都是后台应用程序的示例。 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，后台应用程序会从 Azure AD 收到一个访问令牌，然后将使用该令牌来调用 Web API。
 
 - 需要调用 Web API 的服务器应用程序（如 Web API），基于 OAuth 2.0 代理草案规范构建
 

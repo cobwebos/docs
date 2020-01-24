@@ -13,13 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916037"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695732"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -31,7 +30,7 @@ ms.locfileid: "74916037"
 
 - Azure Government
 - Azure 中国世纪互联
-- Azure 德国
+- Azure Germany
 
 本指南演示如何登录到工作和学校帐户，获取访问令牌，并在[Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/)环境中调用 Microsoft Graph API。
 
@@ -71,7 +70,7 @@ ms.locfileid: "74916037"
 
 ### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.us/)。
+1. 登录 [Azure 门户](https://portal.azure.us/)。
     
    若要查找其他国家云 Azure 门户终结点，请参阅[应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)。
 
@@ -102,7 +101,7 @@ ms.locfileid: "74916037"
 
 ### <a name="step-4-configure-your-javascript-spa"></a>步骤4：配置 JavaScript SPA
 
-在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文的 `<script></script>` 标记顶部添加以下代码：
+在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文中的 `<script></script>` 标记顶部添加以下代码：
 
 ```javascript
 const msalConfig = {

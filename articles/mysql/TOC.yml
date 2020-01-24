@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: 数据加密
           href: concepts-data-encryption-mysql.md
+        - name: 数据加密
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD 身份验证
+          href: concepts-azure-ad-authentication.md
     - name: 业务连续性
       items:
         - name: 业务连续性简介
@@ -238,6 +242,10 @@
       items:
         - name: Azure 门户
           href: howto-data-encryption-portal.md
+    - name: Azure AD 集成
+      items:
+        - name: 配置 Azure AD 集成
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: 重新启动服务器
       items:
         - name: Azure 门户

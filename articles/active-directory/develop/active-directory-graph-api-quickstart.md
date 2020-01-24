@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4baee8186894e985143b7d68d3c4a9ec34b55b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845121"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698928"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
@@ -64,7 +63,7 @@ Azure AD 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程�
 
 **加载 Azure AD 图形资源管理器**：若要加载该工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Azure AD 图形资源管理器。 如果针对自己的租户运行 Azure AD 图形资源管理器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在 Azure AD 图形资源管理器中使用这些凭据。
 
-**运行查询**：要运行查询，请在请求文本框中键入查询，并单击“获取”或单击 **Enter** 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
+**运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”或单击 **Enter** 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
 
 请注意，Azure AD 图形资源管理器具有以下功能与限制：
 

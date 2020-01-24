@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dd38eee8ebc12ed01874611ec5e532a4d78ede2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616091"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704793"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手动将帐户添加到应用
 
@@ -44,7 +43,7 @@ ms.locfileid: "69616091"
 
     ![用于输入代码和 URL 的屏幕](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
 
-    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
 ## <a name="add-your-google-account"></a>添加 Google 帐户
 
@@ -58,7 +57,7 @@ ms.locfileid: "69616091"
 
 4. 在计算机的“设置验证器”页上，键入应用中为 Google 帐户提供的六位数验证码，然后选择“验证”。
 
-    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
     >[!NOTE]
     >若要详细了解双因素验证和 Google 帐户，请参阅[启用双因素验证](https://support.google.com/accounts/answer/185839)和[详细了解双因素验证](https://www.google.com/landing/2step/help.html)。
@@ -73,7 +72,7 @@ ms.locfileid: "69616091"
 
 4. 在计算机的“双因素验证器”页上，键入应用中为 Facebook 帐户提供的六位数验证码，然后选择“验证”。
 
-    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个验证码。
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
     >[!NOTE]
     >若要详细了解双因素验证和 Facebook 帐户，请参阅[什么是双因素身份验证及其工作原理？](https://www.facebook.com/help/148233965247823)。
@@ -94,7 +93,7 @@ ms.locfileid: "69616091"
 
 5. 在计算机的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，然后选择“验证验证码并继续”。
 
-6. 在“即将完成”页上，决定是否让计算机成为受信任的设备，然后选择“知道了。 启用双因素验证”。
+6. 在 "几乎完成" 页上，决定是否将计算机设置为受信任的设备，然后选择 "**获取"。启用双重验证**。
 
     此时，“高级安全设置”页显示，其中包含更新后的双因素验证详细信息。
 
@@ -105,6 +104,6 @@ ms.locfileid: "69616091"
 
 - 将帐户添加到应用后，可以在设备上使用 Microsoft Authenticator 应用登录。 有关详细信息，请参阅[使用应用登录](user-help-auth-app-sign-in.md)。
 
-- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题, 请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
+- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题，请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
 
 - 对于运行 iOS 的设备，还可以将帐户凭据和相关的应用设置（如帐户顺序）备份到云中。 有关详细信息，请参阅 [Microsoft Authenticator 应用备份和恢复](user-help-auth-app-backup-recovery.md)。

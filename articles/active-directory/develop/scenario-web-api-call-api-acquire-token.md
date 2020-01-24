@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 1c3d6f8d47152d70bdeaabbbc6d7b81187291857
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044120"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701801"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>用于调用 web Api 的 web API：获取应用的令牌
 

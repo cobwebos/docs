@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231819"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705082"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>查看组织如何使用与隐私相关的数据
 
@@ -25,7 +24,7 @@ ms.locfileid: "74231819"
 
 ## <a name="view-your-privacy-related-info"></a>查看与隐私相关的信息
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
+1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
 2. 从左侧导航窗格中选择“隐私”，或从“隐私”块中选择“查看隐私”链接。
 

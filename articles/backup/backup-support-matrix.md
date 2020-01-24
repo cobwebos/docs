@@ -3,12 +3,12 @@ title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708474"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705371"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -33,7 +33,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **保管库存储中的数据源** | 最大 54400 GB。 Azure VM 备份没有限制。
 **保管库备份** | **Azure vm：** 一天一次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **使用 MARS 代理直接备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
-**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
+**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 但不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
 

@@ -2,25 +2,27 @@
 title: 关于 Azure Site Recovery 中的恢复计划
 description: 了解 Azure Site Recovery 中的恢复计划。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497895"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705847"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
 本文概述了[Azure Site Recovery](site-recovery-overview.md)中的恢复计划。
 
-恢复计划将计算机汇集到恢复组中。 恢复计划通过创建可以进行故障转移的较小独立单元来帮助你定义系统性的恢复流程。 一个单元通常表示你的环境中的一个应用。
+恢复计划将计算机收集到恢复组中，以便进行故障转移。 恢复计划通过创建可以进行故障转移的较小独立单元来帮助你定义系统性的恢复流程。 一个单元通常表示你的环境中的一个应用。
 
 - 恢复计划定义计算机如何进行故障转移，以及它们在故障转移后按什么顺序启动。
+- 恢复计划用于故障转移到 Azure，但不能用于从 Azure 进行故障回复。
 - 最多可以向一个恢复计划中添加100个受保护的实例。
 - 可以通过向计划中添加顺序、说明和任务来自定义计划。
 - 在定义计划后，可以根据它运行故障转移。
 - 在多个恢复计划中可以引用计算机，在此情况下，如果以前使用另一个恢复计划部署了计算机，则后续计划将跳过该计算机的部署/启动。
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>为何使用恢复计划？

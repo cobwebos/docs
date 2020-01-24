@@ -15,13 +15,12 @@ ms.date: 1/15/2020
 ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53fa82cf6eaaba09353ba21a12ae9677b9264b1a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291254"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701461"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -93,7 +92,7 @@ private IPublicClientApplication mApplication;
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>为什么你可能只想要支持单帐户模式
 
-如果你正在编写仅用于使用共享设备的 firstline 工作人员的应用，我们建议你将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可简化开发，因为无需实现属于多帐户应用的一部分的附加功能。
+如果你正在编写仅用于使用共享设备的 firstline 工作人员的应用，我们建议你将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，例如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可简化开发，因为无需实现属于多帐户应用的一部分的附加功能。
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>设备模式更改时会发生的情况
 

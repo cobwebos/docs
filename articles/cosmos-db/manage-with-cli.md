@@ -4,14 +4,14 @@ description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 01/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 06df85c73b6060bf166df37679457715522f80d8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 325840f8961fac49e599f1aa567ad8d4137820b4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385774"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705796"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -19,7 +19,7 @@ ms.locfileid: "72385774"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
@@ -230,13 +230,16 @@ az cosmosdb sql database create \
 resourceGroupName='MyResourceGroup'
 accountName='mycosmosaccount'
 databaseName='database1'
-increaseRU=1000
+newRU=1000
 
-originalRU=$(az cosmosdb sql database throughput show \
+# Get minimum throughput to make sure newRU is not lower than minRU
+minRU=$(az cosmosdb sql database throughput show \
     -g $resourceGroupName -a $accountName -n $databaseName \
-    --query throughput -o tsv)
+    --query resource.minimumThroughput -o tsv)
 
-newRU=$((originalRU + increaseRU))
+if [ $minRU -gt $newRU ]; then
+    newRU=$minRU
+fi
 
 az cosmosdb sql database throughput update \
     -a $accountName \
@@ -344,13 +347,16 @@ resourceGroupName='MyResourceGroup'
 accountName='mycosmosaccount'
 databaseName='database1'
 containerName='container1'
-increaseRU=1000
+newRU=1000
 
-originalRU=$(az cosmosdb sql container throughput show \
+# Get minimum throughput to make sure newRU is not lower than minRU
+minRU=$(az cosmosdb sql container throughput show \
     -g $resourceGroupName -a $accountName -d $databaseName \
-    -n $containerName --query throughput -o tsv)
+    -n $containerName --query resource.minimumThroughput -o tsv)
 
-newRU=$((originalRU + increaseRU))
+if [ $minRU -gt $newRU ]; then
+    newRU=$minRU
+fi
 
 az cosmosdb sql container throughput update \
     -a $accountName \

@@ -12,13 +12,12 @@ ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843897"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697993"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
 
@@ -38,7 +37,7 @@ MSAL 支持使用 `WebView`或系统浏览器的授权。  下图显示了使用
 
 如果应用程序将 MSAL 与 Microsoft Authenticator 或公司门户支持一起使用，则用户可以在应用程序之间具有 SSO 体验，前提是该用户具有其中一个应用的有效登录。
 
-## <a name="webview"></a>WebView
+## <a name="webview"></a>Web 视图
 
 若要使用应用内 Web 视图，请在传递到 MSAL 的应用配置 JSON 中添加以下行：
 

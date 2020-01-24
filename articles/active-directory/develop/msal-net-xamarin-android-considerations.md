@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424151"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695001"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>适用于 MSAL.NET 的 Xamarin 特定于 Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。

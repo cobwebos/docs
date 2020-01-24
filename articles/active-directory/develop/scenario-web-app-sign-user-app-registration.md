@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964814"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701563"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登录用户的 Web 应用：应用注册
 
@@ -53,11 +52,11 @@ ms.locfileid: "74964814"
 
 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
-   1. 在 "**名称**" 部分中，输入将向应用用户显示的有意义的应用程序名称。 例如，输入**AspNetCore-WebApp**。
+   1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入**AspNetCore-WebApp**。
    1. 对于 "**重定向 URI**"，请在身份验证成功后添加应用程序类型和将接受返回的令牌响应的 URI 目标。 例如，输入 https://localhost:44321。 然后，选择“注册”。
 1. 选择“身份验证”菜单，然后添加以下信息：
    1. 对于 "**答复 URL**"，添加类型为 " **Web**" 的 **https://localhost:44321/signin-oidc** 。
-   1. 在 "**高级设置**" 部分中，将 "**注销 URL** " 设置为 **https://localhost:44321/signout-oidc** 。
+   1. 在“高级设置”部分，将“注销 URL”设置为 **https://localhost:44321/signout-oidc** 。
    1. 选择“隐式授权”下的“ID 令牌”。
    1. 选择“保存”。
 
@@ -65,7 +64,7 @@ ms.locfileid: "74964814"
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
-   1. 在 "**名称**" 部分中，输入将向应用用户显示的有意义的应用程序名称。 例如，输入**MailApp-openidconnect-v2**。
+   1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入**MailApp-openidconnect-v2**。
    1. 在 "**重定向 URI （可选）** " 部分中，在组合框中选择 " **Web** "，然后输入以下重定向 URI： " **https://localhost:44326/** "。
 1. 选择“注册”以创建应用程序。
 1. 选择 "**身份验证**" 菜单。
@@ -99,7 +98,7 @@ ms.locfileid: "74964814"
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
-   1. 在 "**名称**" 部分中，输入将向应用用户显示的有意义的应用程序名称。 例如，输入**python-webapp**。
+   1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入**python-webapp**。
    1. 将**支持的帐户类型**更改为**组织目录和个人 Microsoft 帐户中的帐户（例如 Skype、Xbox、Outlook.com）** 。
    1. 在 "**重定向 URI （可选）** " 部分中，在组合框中选择 " **Web** "，然后输入以下重定向 URI： " **http://localhost:5000/getAToken** "。
 1. 选择“注册”以创建应用程序。

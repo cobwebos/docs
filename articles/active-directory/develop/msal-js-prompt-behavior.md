@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6654b523cef4623a55bf9f857fd5a723fae2dc47
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921956"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695970"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL 交互式请求中的提示行为
 

@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974489"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705694"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
+# <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概述
@@ -50,7 +51,7 @@ ms.locfileid: "74974489"
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到策略的开放版本之前，此过程需要花费大约 15 分钟。
 * 如果添加或更新资产的传送策略，则必须删除现有的定位符并创建新的定位符。
 * 目前，无法对渐进式下载进行加密。
-* 媒体服务流式处理终结点将预检响应中 CORS 的“Access-Control-Allow-Origin”标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dashjs 的播放器，因为将凭据模式设置为“包含”之后，dashjs 中的 XMLHttpRequest 不允许将通配符“\*”作为“Access-Control-Allow-Origin”的值。 作为 dashjs 中这一限制的解决办法，如果将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
+* 媒体服务流式处理终结点将预检响应中 CORS 的“Access-Control-Allow-Origin”标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dashjs 的播放器，因为将凭据模式设置为“包含”之后，dashjs 中的 XMLHttpRequest 不允许将通配符“\*”作为“Access-Control-Allow-Origin”的值。 作为 dashjs 中这一限制的解决办法，如果将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户开具支持票证。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 动态加密
 ### <a name="open-restriction"></a>开放限制
@@ -428,7 +429,7 @@ ms.locfileid: "74974489"
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
 title: '& 声明类型 Azure AD 标记 |Microsoft Docs'
-description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。
+description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明
 documentationcenter: na
 author: rwike77
 services: active-directory
@@ -17,13 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acac79d79b584dac93d63f6d478627f7e953f81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 01ea64a56d43976d319618350e68e03bba775e8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965750"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702889"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 ## <a name="claims-in-saml-tokens"></a>SAML 令牌中的声明
 
 > [!div class="mx-codeBreakAll"]
-> | 名称 | 等效 JWT 声明 | 描述 | 示例 |
+> | 名称 | 等效 JWT 声明 | Description | 示例 |
 > | --- | --- | --- | ------------|
 > |受众 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 

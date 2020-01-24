@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f74c1f515df23a89af7cf50a208a9965865f6edf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 599b8a3fdbad5747b0b303c71aeef084d04db6df
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424115"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694914"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>针对 MSAL.NET 的 Xamarin 特定于 iOS 的注意事项
 在 Xamarin iOS 上，使用 MSAL.NET 时，必须考虑几个注意事项

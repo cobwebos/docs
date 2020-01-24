@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14b97677f5aa9624ba70696114ac34fcd9f46182
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918026"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698010"
 ---
 # <a name="national-clouds"></a>国家/地区云
 
@@ -28,7 +27,7 @@ ms.locfileid: "74918026"
 在以下国家/地区中部署 Azure Active Directory （Azure AD）包括全局云：  
 
 - Azure Government
-- Azure 德国
+- Azure Germany
 - Azure 中国世纪互联
 
 国家云是独特的，独立于 Azure global 环境。 在为这些环境开发应用程序时，请务必了解关键区别。 差异包括注册应用程序、获取令牌和配置终结点。
@@ -64,7 +63,7 @@ ms.locfileid: "74918026"
   - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/authorize`。
   - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/token`。
 
-对于单租户应用程序，请将之前 Url 中的 "common" 替换为你的租户 ID 或名称。 例如 `https://login.microsoftonline.de/contoso.com`。
+对于单租户应用程序，请将之前 Url 中的 "common" 替换为你的租户 ID 或名称。 示例为 `https://login.microsoftonline.de/contoso.com`。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 

@@ -13,13 +13,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 702c64fbc4eda2af7132a2117c1b09ca0bf41cff
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918587"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699251"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -58,9 +57,9 @@ ms.locfileid: "74918587"
 
 6. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
-    b. 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。
+    b.保留“数据库类型”设置，即设置为“共享”。 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。
 
       ![“修改权限”按钮](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
@@ -73,7 +72,7 @@ ms.locfileid: "74918587"
 
     d.单击“下一步”。 接受许可。 此时会再次登录到系统。
 
-    e. 将版本更改为“beta”，然后使用以下查询从租户中提取服务主体列表：
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将版本更改为“beta”，然后使用以下查询从租户中提取服务主体列表：
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -159,11 +158,11 @@ ms.locfileid: "74918587"
     >[!NOTE]
     >如果角色声明值为 null，则 Azure AD 将不会在令牌中发送此值，这是默认设置。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击 "**编辑**" 图标，打开 "& 声明" 对话框中的 "**用户属性**"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击 "**编辑**" 图标，打开 "& 声明" 对话框中的 "**用户属性**"。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 在 "**管理用户声明**" 对话框中，单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
+    b.保留“数据库类型”设置，即设置为“共享”。 在 "**管理用户声明**" 对话框中，单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -173,7 +172,7 @@ ms.locfileid: "74918587"
 
     d.单击“下一步”。 将“命名空间”框留空。
 
-    e. 在“源属性”列表中，键入为该行显示的属性值。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“源属性”列表中，键入为该行显示的属性值。
 
     f. 选择“保存”。
 
@@ -209,9 +208,9 @@ ms.locfileid: "74918587"
 
     ![“PATCH”的请求正文，突出显示了“description”和“displayname”](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”。
 
-    b. 复制现有角色，并将其粘贴到“请求正文”下。
+    b.保留“数据库类型”设置，即设置为“共享”。 复制现有角色，并将其粘贴到“请求正文”下。
 
     c. 根据需要更新角色的值，具体说来就是更新角色说明、角色值或角色显示名称。
 
@@ -247,9 +246,9 @@ ms.locfileid: "74918587"
 
     ![“PATCH”的请求正文，IsEnabled 设置为 false](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”。
 
-    b. 从应用程序中复制现有角色，并将其粘贴到“请求正文”下。
+    b.保留“数据库类型”设置，即设置为“共享”。 从应用程序中复制现有角色，并将其粘贴到“请求正文”下。
 
     c. 将想要删除的角色的“IsEnabled”值设置为“false”。
 

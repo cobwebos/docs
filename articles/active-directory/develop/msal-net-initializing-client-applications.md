@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15c0db66fd357ba150af1901a6b50a645fd1ca88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915863"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695545"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
 本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）初始化公共客户端应用程序和机密客户端应用程序。  若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
@@ -97,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在公共客户端或机密客户端应用程序生成器上设置的修饰符包括：
 
-|修饰符 | 描述|
+|修饰符 | Description|
 |--------- | --------- |
 |`.WithAuthority()` 7 覆盖 | 为 Azure AD 机构设置应用程序默认授权，可以选择 Azure 云、受众、租户（租户 ID 或域名），也可以直接提供授权机构 URI。|
 |`.WithAdfsAuthority(string)` | 将应用程序默认授权设置为 ADFS 颁发机构。|
@@ -116,7 +115,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在 Xamarin 上的公共客户端应用程序生成器上设置的修饰符如下：
 
-|修饰符 | 描述|
+|修饰符 | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **仅限 Xamarin**：设置 iOS 密钥链安全组（用于缓存持久性）。|
 
@@ -124,7 +123,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在机密客户端应用程序生成器上设置的修饰符包括：
 
-|修饰符 | 描述|
+|修饰符 | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | 设置用 Azure AD 标识应用程序的证书。|
 |`.WithClientSecret(string clientSecret)` | 设置用于标识具有 Azure AD 的应用程序的客户端密码（应用密码）。|

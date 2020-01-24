@@ -13,13 +13,12 @@ ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879fa55df422e6039c6830e25e43637fc31b8037
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028486"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704606"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在组织的网络上注册个人设备
 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，将能够访问组织的受限资源。
@@ -50,7 +49,7 @@ ms.locfileid: "74028486"
 
     ![突出显示“访问工作单位或学校”和“连接”选项的屏幕](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. 在“添加工作或学校帐户”屏幕上，键入工作或学校帐户的电子邮件地址，然后选择“下一步”。 例如，alain@contoso.com。
+3. 在“添加工作或学校帐户”屏幕上，键入工作或学校帐户的电子邮件地址，然后选择“下一步”。 例如，alain@contoso.com 。
 
 4. 登录工作或学校帐户，然后选择“登录”。
 

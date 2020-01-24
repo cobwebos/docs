@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777830"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696123"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。 用户代理应用程序是公用客户端应用程序的一种形式，其中客户端代码在用户代理（如 web 浏览器）中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。

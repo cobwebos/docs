@@ -11,13 +11,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4e0f434831f624dbd8c9c1302aab6816cd3d148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2801ccc69f15aa275e58e433984ddb4f7c18b66
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966157"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699030"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -49,7 +48,7 @@ AcquireTokenSilent 在保证最终用户不会看到用户界面 (UI) 的情况�
 
 从根本上说，存在两种 AcquireTokenSilent 错误情况：
 
-| 案例 | 描述 |
+| 案例 | Description |
 |------|-------------|
 | **情况 1**：通过交互式登录可解决错误 | 对于因缺少有效令牌而导致的错误，执行交互式请求是必要的。 具体而言，缓存查找和无效/过期的刷新令牌必须通过 AcquireToken 调用才能解决。<br><br>在这些情况下，需提示最终用户进行登录。 应用程序可以选择是在最终用户交互（如点击登录按钮）后立即执行交互式请求，还是稍后执行。 这一选择取决于应用程序所需的行为。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。|
 | **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序还可以在稍后的某个时间点重试，但当和如何依赖于应用程序行为和所需的最终用户体验时。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |

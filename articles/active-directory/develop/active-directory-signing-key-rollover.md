@@ -12,13 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844645"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698537"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
 本文介绍需要了解的有关 Azure Active Directory (Azure AD) 中用来为安全令牌签名的公钥的信息。 需要特别注意的是，这些密钥定期滚动更新，在紧急情况下，可能会立即滚动。 所有使用 Azure AD 的应用程序应该都能以编程方式处理密钥滚动更新过程，或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
@@ -35,7 +34,7 @@ OpenID Connect 发现文档和联合元数据文档中始终有多个有效密�
 
 * [访问资源的本机客户端应用程序](#nativeclient)
 * [访问资源的 Web 应用程序/API](#webclient)
-* [保护资源的和使用 Azure 应用服务构建的 Web 应用程序/API](#appservices)
+* [保护资源并通过 Azure 应用服务构建的 Web 应用程序/API](#appservices)
 * [使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owin)
 * [使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owincore)
 * [使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API](#passport)
@@ -141,7 +140,7 @@ passport.use(new OIDCStrategy({
 3. 在“IssuingAuthorityKeys”表中将至少有一行与密钥的指纹值相对应。 删除该表中的所有行。
 4. 右键单击“Tenants”表，并单击“显示表数据”。
 5. 在“Tenants”表中，至少有一行与唯一的目录租户标识符相对应。 删除该表中的所有行。 如果未同时删除“Tenants”和“IssuingAuthorityKeys”表中的行，则运行时会出现错误。
-6. 构建并运行应用程序。 登录到帐户后，可以停止应用程序。
+6. 生成并运行应用程序。 登录到帐户后，可以停止应用程序。
 7. 返回“服务器资源管理器”，查看“IssuingAuthorityKeys”和“Tenants”表中的值。 你会注意到，已自动使用联合元数据文档中的相应信息对这两个表进行重新填充。
 
 ### <a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web API
@@ -240,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="vs2012"></a>保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序
-如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 负责维护受信任标识提供程序 (Azure AD) 以及验证它们颁发令牌时所使用密钥的相关信息。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，然后根据需要更新应用程序以使用新密钥。
+如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 负责维护受信任标识提供程序 (Azure AD) 以及验证它们颁发令牌时所使用密钥的相关信息。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，并根据需要更新应用程序以使用新密钥。
 
 如果是使用 Microsoft 提供的代码示例或演练文档创建的应用程序，则密钥滚动更新逻辑已包含在项目中。 你会注意到下面的代码已存在于项目中。 如果应用程序尚未包含该逻辑，请按照下面的步骤添加该逻辑，并验证该逻辑是否正常工作。
 
