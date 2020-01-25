@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 포함 파일
+description: 포함 파일
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 16a0fa29c067262f1794528b16abfce662d05605
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751794"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76749012"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -21,26 +21,26 @@ ms.locfileid: "75751794"
 
 Fsv2 系列基于 Intel®强®白金8168处理器。 它的核心 Turbo 时钟速度始终为 3.4 GHz，最大单核 turbo 主频为 3.7 GHz。 Intel® AVX-512 说明是 Intel 可伸缩处理器上的新说明。 这些说明为单精度和双精度浮点运算上的矢量处理工作负荷提供了高达2倍的性能提升。 换句话说，对于任何计算工作负荷，它们都非常快。
 
-凭借较低的每小时定价，Fsv2 系列在基于每个 vCPU 的 Azure 计算单位 (ACU) 的 Azure 产品组合中具有最高性价比。
+시간당 가격이 더 낮은 Fsv2 시리즈는 vCPU당 ACU(Azure 컴퓨팅 단위)를 기준으로 하는 Azure 포트폴리오에서 가격 대비 성능이 가장 좋습니다.
 
-## <a name="fsv2-series-sup1sup"></a>Fsv2 系列 <sup>1</sup>
+## <a name="fsv2-series-sup1sup"></a>Fsv2 시리즈 <sup>1</sup>
 
-ACU：195 - 210
+ACU: 195~210
 
-高级存储：支持
+Premium Storage: 지원됨
 
 高级存储缓存：支持
 
-| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 크기             | vCPU | 메모리: GiB | 임시 스토리지(SSD) GiB | 최대 데이터 디스크 수 | 최대 캐시된 임시 스토리지 처리량: IOPS/MBps(GiB 단위의 캐시 크기) | 최대 캐시되지 않은 디스크 처리량: IOPS/MBps | 최대 NIC 수 / 예상 네트워크 대역폭(Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
-| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | 2 / 875                 |
-| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | 2 / 1750               |
-| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 (128)        | 12800 / 190              | 4 / 3500               |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | 4 / 7000               |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | 8 / 14000              |
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31(32)           | 3200/47                | 2 / 875                 |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63(64)           | 6400/95                | 2 / 1750               |
+| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000/127(128)        | 12800/190              | 4 / 3500               |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000/255(256)        | 25600/380              | 4 / 7000               |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000/512(512)        | 51200/750              | 8 / 14000              |
 | Standard_F48s_v2 | 48     | 96          | 384            | 32             | 96000/768 （768）        | 76800 / 1100             | 8 / 21000              |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | 80000 / 1100             | 8 / 28000              |
-| Standard_F72s_v2<sup>2，&nbsp;3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | 80000 / 1100             | 8 / 30000              |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000/1024(1024)     | 80000/1100             | 8 / 28000              |
+| Standard_F72s_v2<sup>2，&nbsp;3</sup> | 72 | 144 | 576         | 32             | 144000/1152(1520)     | 80000/1100             | 8 / 30000              |
 
 <sup>1</sup> Fsv2 系列 Vm 功能 Intel®超线程技术。
 
@@ -55,4 +55,4 @@ ACU：195 - 210
 - Debian 9 precise-backports 内核，Debian 10 或更高版本
 - 使用4.14 内核或更高版本的 CoreOS
 
-<sup>3</sup> 实例与专用于单个客户的硬件隔离。
+<sup>3</sup> 인스턴스는 단일 고객 전용의 하드웨어에 격리되어 있습니다.

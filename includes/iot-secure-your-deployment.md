@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 포함 파일
+description: 포함 파일
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -8,107 +8,107 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75840702"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748928"
 ---
-本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
+이 문서에서는 Azure IoT 기반 IoT(사물 인터넷) 인프라를 보호하기 위한 세부 정보를 제공합니다. 또한 각 구성 요소의 구성 및 배포에 대한 구현 수준의 세부 정보에 연결됩니다. 그밖에도 다양한 경쟁 방법 간을 비교하고 선택 항목을 제공합니다.
 
-保护 Azure IoT 部署可分为以下三个安全区域：
+Azure IoT 배포 보안 유지 과정은 다음과 같은 세 가지 보안 영역으로 나눌 수 있습니다.
 
-* **设备安全**：在现实中部署 IoT 设备时，保护 IoT 设备安全。
+* **디바이스 보안**: 실제로 배포되는 동안 IoT 디바이스 보안 유지
 
-* **连接安全**：确保 IoT 设备和 IoT 中心之间传输的所有数据的机密性和防篡改性。
+* **연결 보안**: IoT 디바이스와 IoT Hub 간에 전송된 모든 데이터를 기밀 상태로 유지하고 변경 방지
 
-* **云安全**：数据移动或存储在云中时，提供一种数据保护方式。
+* **클라우드 보안**: 데이터가 이동되고 클라우드에 저장되는 동안 보안을 유지하는 수단 제공
 
-![三个安全区域](./media/iot-secure-your-deployment/overview.png)
+![세 가지 보안 영역](./media/iot-secure-your-deployment/overview.png)
 
-## <a name="secure-device-provisioning-and-authentication"></a>安全的设备预配和身份验证
+## <a name="secure-device-provisioning-and-authentication"></a>보안 디바이스를 프로비전 및 인증
 
-IoT 解决方案加速器通过以下两种方法保护 IoT 设备：
+IoT 솔루션 가속기는 다음 두 가지 방법으로 IoT 디바이스를 보호합니다.
 
-* 为每个设备提供唯一标识密钥（安全令牌），设备可使用该密钥与 IoT 中心通信。
+* 각 디바이스에 대해 IoT Hub와 통신하는 데 사용할 수 있는 고유한 ID 키(보안 토큰) 제공
 
-* 使用设备内置 [X.509 证书](https://www.itu.int/rec/T-REC-X.509-201210-S)和私钥作为一种向 IoT 中心验证设备的方式。 此身份验证方式可确保任何时候都无法在设备外部获知设备上的私钥，从而提供更高级别的安全性。
+* 디바이스 기반의 [X.509 인증서](https://www.itu.int/rec/T-REC-X.509-201210-S) 및 프라이빗 키를 IoT Hub에 디바이스를 인증하는 수단으로 사용합니다. 이 인증 방법은 디바이스의 프라이빗 키를 디바이스 외부에서 항상 알 수 없도록 하여 더 높은 수준의 보안을 제공합니다.
 
-安全令牌方式通过将对称密钥与每个呼叫关联，为每个设备向 IoT 中心作出的呼叫提供身份验证。 基于 X.509 的身份验证允许物理层 IoT 设备的身份验证作为 TLS 连接建立的一部分。 基于安全令牌的方式可在没有 X.509 身份验证的情况下使用，但这种模式的安全性较低。 这两种方式的选择主要取决于设备验证需要达到的安全程度和设备上安全储存的可用性（以安全存储私钥）。
+보안 토큰 방법은 대칭 키를 각 호출에 연결하여 디바이스에서 IoT Hub에 대해 수행한 각 호출에 대한 인증을 제공합니다. X.509 기반 인증은 TLS 연결 설정의 일부로 물리적 레이어에서 IoT 디바이스 인증을 허용합니다. 보안 토큰 기반 방법은 X.509 인증 없이 사용할 수 있으므로 덜 안전한 패턴입니다. 두 방법 중에서 선택할 때는 우선, 프라이빗 키를 안전하게 저장하는 데 필요한 디바이스 인증의 보안 수준 및 디바이스에 있는 보안 스토리지의 가용성을 고려해야 합니다.
 
-## <a name="iot-hub-security-tokens"></a>IoT 中心安全标记
+## <a name="iot-hub-security-tokens"></a>IoT Hub 보안 토큰
 
-IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在网络上发送密钥。 并且安全令牌的有效期和范围有限。 Azure IoT SDK 无需任何特殊配置即可自动生成令牌。 但在某些情况下，需要用户生成并直接使用安全令牌。 这些方案包括 MQTT、AMQP 或 HTTP 应用层协议的直接使用，以及令牌服务模式的实现。
+IoT Hub는 네트워크에서 토큰이 전송되는 것을 피하기 위해 보안 토큰을 사용하여 디바이스 및 서비스를 인증합니다. 또한 보안 토큰은 유효 기간 및 범위가 제한됩니다. Azure IoT SDK는 특별한 구성이 필요하지 않고 토큰을 자동으로 생성합니다. 그러나 일부 시나리오에서는 사용자가 보안 토큰을 직접 생성하고 사용해야 합니다. 이러한 시나리오에는 MQTT, AMQP 또는 HTTP 표면의 직접 사용 또는 토큰 서비스 패턴의 구현이 포함됩니다.
 
-可在以下文章中找到有关安全令牌结构及其用法的详细信息：
+보안 토큰의 구조 및 사용법에 대한 자세한 내용은 다음 문서에 나와 있습니다.
 
-* [安全令牌结构](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [보안 토큰 구조](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
 
-* [将 SAS 令牌用作设备](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
+* [디바이스로 SAS 토큰 사용](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
 
-每个 IoT 中心都有一个[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)，可用于在服务中创建各设备的资源（例如包含即时云到设备消息的队列），以及允许访问面向设备的终结点。 IoT 中心标识注册表针对解决方案为设备标识和安全密钥提供安全存储。 可将单个或一组设备标识添加到允许列表或方块列表，以便完全控制设备访问。 以下文章提供有关标识注册表的结构和受支持操作的详细信息。
+각 IoT Hub에는 진행 중인 클라우드-디바이스 메시지를 포함하는 큐와 같은 서비스에 디바이스 단위 리소스를 만들고 디바이스 지향 엔드포인트에 대한 액세스를 허용하는 데 사용할 수 있는 [ID 레지스트리](../articles/iot-hub/iot-hub-devguide-identity-registry.md)가 있습니다. IoT Hub ID 레지스트리는 디바이스 ID에 대한 보안 스토리지와 솔루션을 위한 보안 키를 제공합니다. 개별 또는 그룹 디바이스 ID를 허용 목록 또는 차단 목록에 추가하여 디바이스 액세스를 완벽하게 제어할 수 있습니다. 다음 문서에서는 ID 레지스트리의 구조 및 지원되는 작업에 대한 자세한 내용을 제공합니다.
 
-[IoT 中心支持 MQTT、AMQP 和 HTTP 等协议](../articles//iot-hub/iot-hub-devguide-security.md)。 每个协议使用 IoT 设备到 IoT 中心的安全令牌的方式不同：
+[IoT Hub는 MQTT, AMQP 및 HTTP와 같은 프로토콜을 지원합니다](../articles//iot-hub/iot-hub-devguide-security.md). 이러한 각 프로토콜은 IoT 디바이스에서 IoT Hub로의 보안 토큰을 다음과 같이 다르게 사용합니다.
 
-* AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
+* AMQP: SASL PLAIN 및 AMQP 클레임 기반 보안(IoT 허브 수준 토큰의 경우 `{policyName}@sas.root.{iothubName}`, 디바이스 범위 토큰의 경우 `{deviceId}`)
 
-* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”字段中的 SAS 令牌。
+* MQTT: CONNECT 패킷은 **사용자 이름** 필드에서는 `{deviceId}`를 `{ClientId}`, `{IoThubhostname}/{deviceId}`로 사용하고, **암호** 필드에서는 SAS 토큰을 사용합니다.
 
-* HTTP：有效令牌位于授权请求标头中。
+* HTTP: 올바른 토큰은 권한 부여 요청 헤더에 있습니다.
 
-IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控制。 但是，如果 IoT 解决方案已大幅投资于[自定义设备标识注册表和/或身份验证方案](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，则可通过创建令牌服务，将该解决方案集成到具有 IoT 中心的现有基础结构中。
+IoT Hub ID 레지스트리를 사용하여 디바이스별 보안 자격 증명 및 액세스 제어를 구성할 수 있습니다. 그러나 [사용자 지정 디바이스 ID 레지스트리 및/또는 인증 체계](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)에 이미 상당한 투자를 한 IoT 솔루션의 경우 토큰 서비스를 만들어 IoT Hub가 있는 기존 인프라로 통합할 수 있습니다.
 
-### <a name="x509-certificate-based-device-authentication"></a>基于 X.509 证书的设备身份验证
+### <a name="x509-certificate-based-device-authentication"></a>X.509 인증서 기반 디바이스 인증
 
-使用[基于设备的 X.509 证书](../articles/iot-hub/iot-hub-devguide-security.md)及其关联的私钥和公钥允许在物理层进行其他身份验证。 私钥安全存储在设备中，无法在设备外发现。 X.509 证书包含有关设备的信息（例如设备 ID）以及其他组织详细信息。 使用公钥生成证书签名。
+[디바이스 기반 X.509 인증서](../articles/iot-hub/iot-hub-devguide-security.md) 및 연결된 프라이빗 및 공개 키 쌍을 사용하면 물리적 계층에서 추가 인증이 수행될 수 있습니다. 프라이빗 키는 디바이스에 안전하게 저장되며 디바이스 외부에서 검색할 수 없습니다. X.509 인증서에는 디바이스 ID와 같은 디바이스 정보와 기타 조직 세부 정보가 포함되어 있습니다. 인증서의 서명은 프라이빗 키를 사용하여 생성됩니다.
 
-高级设备预配流：
+고급 디바이스 프로비저닝 흐름:
 
-* 将标识符关联到物理设备 - 设备制造或调试过程中将设备标识和/或 X.509 证书关联到设备。
+* 물리적 디바이스에 식별자 연결 - 디바이스 ID 및/또는 디바이스 제조 또는 위임 동안 디바이스에 연결된 X.509 인증서
 
-* 在 IoT 中心创建对应的标识条目 - IoT 中心标识注册表中的设备标识和关联的设备信息。
+* IoT Hub에서 해당 ID 항목 만들기 – 디바이스 ID 및 IoT Hub ID 레지스트리의 연결된 디바이스 정보
 
-* 将 X.509 证书指纹安全存储在 IoT 中心标识注册表中。
+* X.509 인증서 지문을 IoT Hub ID 레지스트리에 안전하게 저장
 
-### <a name="root-certificate-on-device"></a>设备上的根证书
+### <a name="root-certificate-on-device"></a>디바이스의 루트 인증서
 
-与 IoT 中心建立安全的 TLS 连接时，IoT 设备使用作为设备 SDK 的一部分的根证书验证 IoT 中心。 对于 C 客户端 SDK，该证书位于存储库根下的“\\c\\certs”文件夹中。 虽然这些根证书长期有效，但仍可能过期或被撤销。 如果无法更新设备上的证书，该设备随后可能无法连接到 IoT 中心（或任何其他云服务）。 IoT 设备部署后提供更新根证书的方法可有效减轻此风险。
+IoT Hub와의 보안 TLS 연결을 설정하는 동안 IoT 디바이스는 디바이스 SDK의 일부인 루트 인증서를 사용하여 IoT Hub를 인증합니다. C 클라이언트 SDK의 경우 인증서는 repo의 루트 아래에 있는 "\\c\\certs" 폴더 아래에 있습니다. 이러한 루트 인증서는 수명이 길지만 만료되거나 해지될 수 있습니다. 디바이스의 인증서를 업데이트할 수 없는 경우 나중에 디바이스를 IoT Hub(또는 다른 클라우드 서비스)에 연결하지 못할 수 있습니다. IoT 디바이스가 배포된 후에 루트 인증서를 업데이트하는 방법을 유지하면 이러한 위험을 효과적으로 완화하는 데 도움이 됩니다.
 
-## <a name="securing-the-connection"></a>保护连接安全
+## <a name="securing-the-connection"></a>연결 보안
 
-使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 支持 [TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 和 TLS 1.0（按此顺序）。 对 TLS 1.0 的支持仅为向后兼容性提供。 如果可能，请[将你的集线器配置](../articles/iot-hub/iot-hub-tls.md)为使用 TLS 1.2，因为它提供了最高的安全性。
+IoT 디바이스와 IoT Hub 간 인터넷 연결은 TLS(전송 계층 보안) 표준을 사용하여 보안이 유지됩니다. Azure IoT는 [TLS 1.2](https://tools.ietf.org/html/rfc5246), TLS 1.1 및 TLS 1.0을 순서대로 지원합니다. TLS 1.0에 대한 지원은 이전 버전과의 호환성을 위해서만 제공됩니다. 请[在 IoT 中心内检查 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md)，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最高的安全性。
 
-## <a name="securing-the-cloud"></a>保护云的安全
+## <a name="securing-the-cloud"></a>클라우드 보안
 
-Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
+Azure IoT Hub에서는 각 보안 키에 대해 [액세스 제어 정책](../articles/iot-hub/iot-hub-devguide-security.md)을 정의할 수 있습니다. 또한 다음 권한 집합을 사용하여 각 IoT Hub의 엔드포인트에 대한 액세스 권한을 부여합니다. 사용 권한은 기능에 따라 IoT Hub에 대한 액세스를 제한합니다.
 
-* **RegistryRead**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryRead**. ID 레지스트리에 대한 읽기 액세스 권한을 부여합니다. 자세한 내용은 [ID 레지스트리](../articles/iot-hub/iot-hub-devguide-identity-registry.md)를 참조하세요.
 
-* **RegistryReadWrite**。 授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryReadWrite**. ID 레지스트리에 대한 읽기 및 쓰기 액세스 권한을 부여합니다. 자세한 내용은 [ID 레지스트리](../articles/iot-hub/iot-hub-devguide-identity-registry.md)를 참조하세요.
 
-* **ServiceConnect**。 授予对面向云服务的通信和监视终结点的访问权限。 例如，它授权后端云服务接收设备到云的消息、发送云到设备的消息，以及检索对应的传送确认。
+* **ServiceConnect**. 클라우드 서비스 지향 통신 및 모니터링 중인 엔드포인트에 대한 액세스를 부여합니다. 예를 들어 디바이스-클라우드 메시지를 받고 클라우드-디바이스 메시지를 보내며 해당 전달 승인을 검색할 수 있는 권한을 백 엔드 클라우드 서비스에 부여합니다.
 
-* **DeviceConnect**。 授予对面向设备的终结点的访问权限。 例如，它授予发送设备到云的消息和接收云到设备的消息的权限。 此权限由设备使用。
+* **DeviceConnect**. 디바이스 지향 엔드포인트에 대한 액세스를 부여합니다. 예를 들어 디바이스-클라우드 메시지를 보내고 클라우드-디바이스 메시지를 받을 수 있는 권한을 클라우드에 부여합니다. 이 권한은 디바이스에서 사용됩니다.
 
-有两种方法可以使用[安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
+디바이스 ID 키를 사용하거나 공유 액세스 키를 사용하는 등 두 가지 방법으로 [보안 토큰](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)과 함께 IoT Hub에서 **DeviceConnect** 권한을 얻을 수 있습니다. 또한 디바이스에서 액세스할 수 있는 모든 기능이 `/devices/{deviceId}`접두사가 있는 엔드포인트에서 디자인 시 노출되는 것을 유념해야 합니다.
 
-[服务组件只能使用共享访问策略生成安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)，授予适当权限。
+[서비스 구성 요소는 적절한 권한을 부여하는 공유 액세스 정책을 사용하여 보안 토큰을 생성할 수 있습니다](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components).
 
-Azure IoT 中心和其他可能是解决方案的一部分的服务允许使用 Azure Active Directory 管理用户。
+Azure IoT Hub 및 이 솔루션에 속할 수 있는 기타 서비스는 Azure Active Directory를 사용하여 사용자를 관리할 수 있도록 허용합니다.
 
-Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azure Blob 存储等）使用。 这些服务允许管理访问权限。 了解有关这些服务和可用选项的详细信息：
+Azure IoT Hub를 통해 수집된 데이터는 Azure Stream Analytics, Azure Blob Storage 등과 같은 다양한 서비스에서 사용될 수 있습니다. 이러한 서비스는 관리 액세스를 허용합니다. 이러한 서비스 및 사용 가능한 옵션에 대해 읽어보세요.
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): 반구조화된 데이터에 대한 확장성 있고 완전히 인덱싱된 데이터베이스 서비스로, 프로비전하는 디바이스에 대한 메타데이터(예: 특성, 구성 및 보안 속성)를 관리합니다. Azure Cosmos DB는 높은 성능 및 처리량 처리, 데이터의 스키마와 관계 없는 인덱싱 및 풍부한 SQL 쿼리 인터페이스를 제공합니다.
 
-* [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让你快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): 디바이스, 센서, 인프라 및 애플리케이션에서 실시간 인사이트를 파악하는 저비용 분석 솔루션을 빠르게 개발 및 배포하는 클라우드의 실시간 스트림 처리입니다. 이 완전히 관리되는 서비스의 데이터를 높은 처리량, 낮은 대기 시간 및 복원력을 확보하면서 어떤 볼륨으로도 확장할 수 있습니다.
 
-* [Azure 应用程序服务](https://azure.microsoft.com/services/app-service/)：一个云平台，用于构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): 강력한 웹 및 모바일 앱을 빌드하기 위한 클라우드 플랫폼으로 클라우드 또는 온-프레미스 등 어디서나 데이터에 연결할 수 있습니다. iOS, Android 및 Windows를 위한 유용한 모바일 앱을 빌드하세요. 수십 개의 클라우드 기반 서비스와 엔터프라이즈 애플리케이션에 즉시 연결 가능하므로 귀사의 SaaS(Software as a Service) 및 엔터프라이즈 애플리케이션과 통합이 용이합니다. 가장 자주 사용하는 언어와 IDE(.NET, Node.js, PHP, Python 또는 Java)로 코딩하여 더욱 빨리 웹앱과 API를 빌드하세요.
 
-* [逻辑应用](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Azure App Service의 Logic Apps 기능을 통해 IoT 솔루션을 기존의 LOB(기간 업무) 시스템에 통합하고 워크플로 프로세스를 자동화할 수 있습니다. Logic Apps를 사용하면 개발자는 트리거부터 시작하여 비즈니스 프로세스와 통합할 강력한 커넥터를 사용하는 규칙 및 작업으로 이루어진 일련의 단계를 수행하는 워크플로를 설계할 수 있습니다. Logic Apps는 SaaS, 클라우드 기반 및 온-프레미스 애플리케이션의 방대한 생태계에 즉시 연결을 제공합니다.
 
-* [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备发送到云的数据。
+* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): 디바이스가 클라우드로 전송하는 데이터에 대한 안정적이고 경제적인 클라우드 스토리지입니다.
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>결론
 
-本文概述了使用 Azure IoT 来设计和部署 IoT 基础结构的实现级别的详细信息。 将每个组件配置为安全状态是保护 IoT 总体基础结构安全的关键。 Azure IoT 中可用的设计选择提供了一定程度的灵活性和选择性；但是，每个选择都可能具有安全隐患。 推荐通过风险/成本评估对这些选择进行评估。
+이 문서에서는 Azure IoT를 사용하여 IoT 인프라를 디자인 및 배포하기 위한 구현 수준 세부 정보의 개요를 제공합니다. 각 구성 요소를 보안 상태로 구성하는 것은 전체 IoT 인프라 보안 설정에서 핵심이 됩니다. Azure IoT에서 사용할 수 있는 디자인 선택 옵션은 일정 수준의 유연성과 선택 다양성을 제공하지만 선택 항목마다 보안 문제가 관련되어 있을 수 있습니다. 위험/비용 평가를 통해 이러한 각 선택 옵션을 평가하는 것이 좋습니다.

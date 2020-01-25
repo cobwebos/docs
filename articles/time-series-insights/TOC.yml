@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI 集成
               href: concepts-power-bi.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 授予数据访问权限
       href: time-series-insights-data-access.md
@@ -91,7 +91,7 @@
           href: time-series-insights-send-events.md
         - name: 缩放环境
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: 用于查询的形状 JSON
+        - name: 针对传入和查询调整 JSON
           href: how-to-shape-query-json.md
         - name: 缓解限制
           href: time-series-insights-environment-mitigate-latency.md
@@ -107,11 +107,11 @@
           href: time-series-insights-update-how-to-troubleshoot.md
         - name: 数据建模
           href: time-series-insights-update-how-to-tsm.md
-        - name: 用于查询的形状 JSON
+        - name: 针对传入和查询调整 JSON
           href: time-series-insights-update-how-to-shape-events.md
         - name: 连接到 Power BI
           href: how-to-connect-power-bi.md
-- name: 引用
+- name: 参考
   items:
     - name: 时序见解
       items:

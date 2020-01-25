@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997065"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711652"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
 
@@ -35,32 +35,32 @@ ms.locfileid: "74997065"
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID （对象 ID）
 
 1. 启动[Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将*Workday 导出到 AD 用户预配应用程序*映射，请导航到该应用的 "属性" 部分。 
-1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值。 此值也称为应用的 ServicePrincipalId，它将用于 Graph 浏览器操作。
+1. 프로비전 앱의 속성 섹션에서 ‘개체 ID’ 필드와 연결된 GUID 값을 복사합니다. 이 값은 앱의 **ServicePrincipalId**라고도 하고 Graph Explorer 작업에서 사용됩니다.
 
-   ![Workday 应用服务主体 ID](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Workday 앱 서비스 주체 ID](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>步骤2：登录 Microsoft Graph 资源管理器
 
-1. 启动 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)
-1. 单击“使用 Microsoft 登录”按钮，然后使用 Azure AD 全局管理员或应用管理员凭据登录。
+1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 시작
+1. “Microsoft에 로그인” 단추를 클릭하고 Azure AD 전역 관리자 또는 앱 관리자 자격 증명을 사용하여 로그인합니다.
 
-    ![Graph 登录](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph 로그인](media/skip-out-of-scope-deletions/wd_export_02.png)
 
-1. 成功登录后，你将在左侧窗格中看到用户帐户详细信息。
+1. 로그인에 성공하면 왼쪽 창에 사용자 계정 세부 정보가 표시됩니다.
 
 ## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>步骤3：获取现有应用凭据和连接详细信息
 
-在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 中提取的 ServicePrincipalId。
+Microsoft Graph Explorer에서 [servicePrincipalId]를 [1단계](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)에서 추출된 **ServicePrincipalId**로 바꾸고 다음 GET 쿼리를 실행합니다.
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![获取作业查询](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![获取作业查询](media/skip-out-of-scope-deletions/skip-03.png)
 
 将响应复制到文本文件中。 它看起来将类似于下面所示的 JSON 文本，其值在特定于您的部署的黄色突出显示。 将绿色突出显示的行添加到末尾，并更新以蓝色突出显示的 Workday 连接密码。 
 
-   ![获取作业响应](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![获取作业响应](media/skip-out-of-scope-deletions/skip-04.png)
 
 下面是要添加到映射的 JSON 块。 
 
@@ -82,22 +82,22 @@ ms.locfileid: "74997065"
 ```
 将步骤3中的已更新文本复制到 "请求正文"，并在 "请求标头" 中将标头 "Content-type" 设置为 "application/json"。 
 
-   ![PUT 请求](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![PUT 请求](media/skip-out-of-scope-deletions/skip-05.png)
 
 单击 "运行查询"。 
 
 应该会看到 "成功-状态代码 204" 的输出。 
 
-   ![PUT 响应](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![PUT 响应](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>步骤5：验证超出范围的用户是否未被禁用
 
 你可以通过更新范围规则以跳过特定用户来测试此标志的行为。 在下面的示例中，通过添加新的范围规则，排除 ID 为21173的员工（作用域之前）： 
 
-   ![作用域示例](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![作用域示例](media/skip-out-of-scope-deletions/skip-07.png)
 
 在下一个预配周期中，Azure AD 预配服务将确定用户21173已超出范围，如果启用了 SkipOutOfScopeDeletions 属性，则该用户的同步规则将显示一条消息，如下所示： 
 
-   ![作用域示例](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![作用域示例](media/skip-out-of-scope-deletions/skip-08.png)
 
 

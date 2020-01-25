@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: 概念
   items:
-    - name: 数据引入概述
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: 数据引入
+      items:
+        - name: 数据引入概述
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: 数据可视化概述
       href: viz-overview.md
     - name: 安全概述
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: 流式引入
           href: ingest-data-streaming.md
+        - name: 使用 SDK
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET 标准 SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET 标准 SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: 使用 Azure 数据工厂复制数据
-          href: data-factory-load-data.md
+        - name: json 格式的数据
+          href: ingest-json-formats.md
     - name: 查询数据
       items:
         - name: 编写查询
@@ -182,7 +186,7 @@
                   href: database-table-policies-csharp.md
                 - name: Python
                   href: database-table-policies-python.md
-        - name: data
+        - name: 数据
           items:
             - name: 删除数据
               href: delete-data.md
@@ -204,6 +208,8 @@
           items:
             - name: 与数据工厂集成
               href: data-factory-integration.md
+            - name: 使用 Azure 数据工厂复制数据
+              href: data-factory-load-data.md
             - name: 使用 Azure 数据工厂模板批量复制数据
               href: data-factory-template.md
             - name: 使用 Azure 数据工厂运行控制命令

@@ -56,6 +56,8 @@
               href: supportability/networking-quota-requests.md
     - name: 排查 Azure 门户问题
       items:
+        - name: 恢复已删除的仪表板
+          href: recover-shared-deleted-dashboard.md
         - name: 排查区域或 SKU 订阅问题
           href: supportability/sku-series-unavailable.md
         - name: 捕获浏览器跟踪以进行故障排除
