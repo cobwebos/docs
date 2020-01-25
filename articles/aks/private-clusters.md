@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154335"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713326"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
 
@@ -24,20 +24,20 @@ ms.locfileid: "76154335"
 > AKS 预览功能是自助服务，可通过选择进行提供。 预览*按*原样*提供，并*已从服务级别协议（SLA）和有限担保中排除。 *最大程度地*减少了客户支持 AKS 的预览。 因此，这些功能并不用于生产。 有关详细信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略](support-policies.md)
-> * [Azure 支持常见问题](faq.md)
+> * [Azure 지원 FAQ](faq.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>필수 조건
 
 * Azure CLI 版本2.0.77 或更高版本，以及 Azure CLI AKS 预览版扩展版本0.4.18
 
 ## <a name="currently-supported-regions"></a>当前支持的区域
-* 美国西部
-* 美国西部 2
-* 美国东部 2
-* 加拿大中部
-* 欧洲北部
-* 欧洲西部
-* 澳大利亚东部
+* 미국 서부
+* 미국 서부 2
+* 미국 동부 2
+* 캐나다 중부
+* 북유럽
+* 서유럽
+* 오스트레일리아 동부
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安装最新 Azure CLI AKS 预览版扩展
 
@@ -78,7 +78,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```
 其中 *--enable-private-群集*是专用群集的必需标志。 
 
-### <a name="advanced-networking"></a>高级网络  
+### <a name="advanced-networking"></a>고급 네트워킹  
 
 ```azurecli-interactive
 az aks create \
@@ -98,7 +98,7 @@ az aks create \
 > 如果 Docker 桥地址 CIDR （172.17.0.1/16）与子网 CIDR 冲突，请相应地更改 Docker 桥地址。
 
 ## <a name="connect-to-the-private-cluster"></a>连接到专用群集
-API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络中创建 Azure 虚拟机（VM）并连接到 API 服务器。 为此，请执行以下操作：
+API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络中创建 Azure 虚拟机（VM）并连接到 API 服务器。 이렇게 하려면 다음을 수행합니다.
 
 1. 获取用于连接到群集的凭据。
 
@@ -106,17 +106,17 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
 
-1. 执行下列任一操作：
+1. 다음 중 하나를 수행합니다.
    * 在 AKS 群集所在的虚拟网络中创建 VM。  
    * 在不同的虚拟网络中创建一个 VM，并将此虚拟网络与 AKS 群集虚拟网络对等互连。
 
-     如果在不同的虚拟网络中创建 VM，请在此虚拟网络与专用 DNS 区域之间设置链接。 为此，请执行以下操作：
+     如果在不同的虚拟网络中创建 VM，请在此虚拟网络与专用 DNS 区域之间设置链接。 이렇게 하려면 다음을 수행합니다.
     
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 中转到 Azure 门户中的 MC_ * 资源组。  
-     b.保留“数据库类型”设置，即设置为“共享”。 选择专用 DNS 区域。   
-     c. 在左窗格中，选择 "**虚拟网络**" 链接。  
-     d.单击“下一步”。 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接将需要几分钟的时间。  
-     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 返回到 Azure 门户中的 MC_ * 资源组。  
+     a. 中转到 Azure 门户中的 MC_ * 资源组。  
+     b. 选择专用 DNS 区域。   
+     다. 在左窗格中，选择 "**虚拟网络**" 链接。  
+     d. 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接将需要几分钟的时间。  
+     e. 返回到 Azure 门户中的 MC_ * 资源组。  
      f. 在右侧窗格中，选择 "虚拟网络"。 虚拟网络名称的格式为 aks- *\** 。  
      g. 在左窗格中，选择 "**对等互连**"。  
      h. 选择 "**添加**"，添加 VM 的虚拟网络，然后创建对等互连。  
@@ -126,16 +126,18 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
 1. 安装 Kubectl 工具，并运行 Kubectl 命令。
 
 
-## <a name="dependencies"></a>依赖项  
+## <a name="dependencies"></a>종속성  
 * 仅标准 Azure 负载均衡器支持专用链接服务。 不支持基本的 Azure 负载均衡器。  
+* 若要使用自定义 DNS 服务器，请将具有 DNS 的 AD 服务器部署到此 IP 168.63.129.16
 
-## <a name="limitations"></a>限制 
+## <a name="limitations"></a>제한 사항 
+* 当前不支持可用性区域
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集、Azure 专用终结点和虚拟网络服务终结点，这些终结点当前在同一虚拟网络中不受支持。
-* 不支持专用群集中的虚拟节点将专用 azure 容器实例（ACI）旋转到专用的 Azure 虚拟网络中。
-* 不支持现成的 Azure DevOps 与专用群集集成。
+* 不支持专用群集中的虚拟节点在专用的 Azure 虚拟网络中实现专用 Azure 容器实例（ACI）
+* 不支持具有专用群集的现成的 Azure DevOps 集成
 * 对于需要使 Azure 容器注册表能与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
-* 当前不支持 Azure Dev Spaces。
-* 不支持将现有的 AKS 群集转换为专用群集。  
+* 当前不支持 Azure Dev Spaces
+* 不支持将现有的 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止工作。 
 * 容器 Azure Monitor 当前不支持。
 * 当前不支持*自带 DNS* 。

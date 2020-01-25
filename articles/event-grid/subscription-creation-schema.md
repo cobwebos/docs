@@ -1,61 +1,60 @@
 ---
-title: Azure 事件网格订阅架构
-description: 介绍用于通过 Azure 事件网格订阅到事件的属性。
+title: Azure Event Grid 구독 스키마
+description: 本文介绍使用 Azure 事件网格订阅事件的属性。 事件网格订阅架构。
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 01/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845460"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720752"
 ---
-# <a name="event-grid-subscription-schema"></a>事件网格订阅架构
+# <a name="event-grid-subscription-schema"></a>Event Grid 구독 스키마
 
-若要创建一个事件网格订阅，将请求发送到创建事件订阅操作。 使用以下格式：
+Event Grid 구독을 만들려면 이벤트 만들기 구독 작업에 요청을 보냅니다. 이때 다음 형식을 사용합니다.
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-例如，若要在名为 `examplegroup` 的资源组中创建名为 `examplestorage` 的存储帐户的事件订阅，请使用以下格式：
+예를 들어 `examplegroup`이라는 리소스 그룹의 `examplestorage`라는 스토리지 계정에 대한 이벤트 구독을 만들려면 다음 형식을 사용합니다.
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-事件订阅名称的长度必须为 3-64 个字符，并且只能包含 a-z、A-Z、0-9 和“-”。 本文介绍请求正文的属性和架构。
+이벤트 구독 이름은 길이가 3-64자이어야 하며 a-z, A-Z, 0-9 및 "-"만을 포함할 수 있습니다. 문서는 요청 본문에 대한 속성 및 스키마를 설명합니다.
  
-## <a name="event-subscription-properties"></a>事件订阅属性
+## <a name="event-subscription-properties"></a>이벤트 구독 속성
 
-| 属性 | 类型 | 描述 |
+| 속성 | 유형 | Description |
 | -------- | ---- | ----------- |
-| destination | object | 定义终结点的对象。 |
-| filter | object | 用于筛选事件类型的可选字段。 |
+| destination | object | 엔드포인트를 정의하는 개체입니다. |
+| filter | object | 이벤트 유형을 필터링하기 위한 선택적 필드입니다. |
 
-### <a name="destination-object"></a>目标对象
+### <a name="destination-object"></a>대상 개체
 
-| 属性 | 类型 | 描述 |
+| 속성 | 유형 | Description |
 | -------- | ---- | ----------- |
-| endpointType | string | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
-| endpointUrl | string | 此事件订阅中的事件的目标 URL。 | 
+| endpointType | 문자열 | 구독(웹후크/HTTP, Event Hub 또는 큐)에 대한 엔드포인트의 형식입니다. | 
+| endpointUrl | 문자열 | 이 이벤트 구독에서 이벤트의 대상 URL입니다. | 
 
-### <a name="filter-object"></a>筛选器对象
+### <a name="filter-object"></a>필터 개체
 
-| 属性 | 类型 | 描述 |
+| 속성 | 유형 | Description |
 | -------- | ---- | ----------- |
-| includedEventTypes | array | 当事件消息中的事件类型与这些事件类型名称之一完全匹配时匹配。 当事件名称与事件源的已注册事件类型名称不匹配时，将引发错误。 默认匹配所有事件类型。 |
-| subjectBeginsWith | string | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
-| subjectEndsWith | string | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
-| isSubjectCaseSensitive | string | 用于筛选器的区分大小写匹配的控件。 |
+| includedEventTypes | array | 이벤트 메시지의 이벤트 유형이 이러한 이벤트 유형 이름 중 하나와 정확하게 일치할 때 일치합니다. 이벤트 이름이 이벤트 원본에 대해 등록된 이벤트 유형 이름과 일치하지 않는 경우 오류가 발생합니다. 기본값은 모든 이벤트 유형과 일치합니다. |
+| subjectBeginsWith | 문자열 | 이벤트 메시지의 제목 필드에 대한 접두사-일치 필터입니다. 기본값 또는 빈 문자열은 모두 일치합니다. | 
+| subjectEndsWith | 문자열 | 이벤트 메시지의 제목 필드에 대한 접미사-일치 필터입니다. 기본값 또는 빈 문자열은 모두 일치합니다. |
+| isSubjectCaseSensitive | 문자열 | 필터에 대한 대/소문자 구분 일치를 제어합니다. |
 
 
-## <a name="example-subscription-schema"></a>订阅架构示例
+## <a name="example-subscription-schema"></a>예제 구독 스키마
 
 ```json
 {
@@ -76,6 +75,6 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* 有关事件网格的介绍，请参阅[什么是事件网格？](overview.md)
+* Event Grid에 대한 소개는 [Event Grid란?](overview.md)을 참조하세요.

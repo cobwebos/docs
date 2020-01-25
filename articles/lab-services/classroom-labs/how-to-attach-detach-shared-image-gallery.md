@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 实验室服务中附加或分离共享映像库 |Microsoft Docs
-description: 了解如何在 Azure 实验室服务中将共享映像库附加到实验室。
+description: 本文介绍如何在 Azure 实验室服务中将共享映像库附加到教室实验室。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 98a21e9fa846d5a91ed1242701484afaa641cddc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890332"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718038"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
 教师/实验室管理员可以在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中保存模板 VM 映像，使其可供其他人重复使用。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 
@@ -42,10 +42,10 @@ ms.locfileid: "73890332"
 - 从实验室帐户分离共享映像库
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>创建和附加共享映像库
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分中，选择“实验室服务”。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室服务”。
+1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
+2. 왼쪽 메뉴에서 **모든 서비스**를 선택합니다. **DEVOPS** 섹션에서 **랩 서비스**를 선택합니다. **랩 서비스** 옆에 있는 별표(`*`)를 선택하면 왼쪽 메뉴의 **즐겨찾기** 섹션에 추가됩니다. 다음부터는 **즐겨찾기** 아래에서 **랩 서비스**를 선택합니다.
 
-    ![“所有服务”->“实验室服务”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+    ![모든 서비스 -> 랩 서비스](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. 选择实验室帐户以查看 "**实验室帐户**" 页。 
 4. 选择左侧菜单上的 "**共享图像库**"，然后在工具栏上选择 " **+ 创建**"。  
 
@@ -86,7 +86,7 @@ ms.locfileid: "73890332"
 
 ![从实验室帐户分离共享映像库](../media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 若要了解如何将实验室映像保存到共享映像库，或使用共享映像库中的映像创建 VM，请参阅[如何使用共享映像库](how-to-use-shared-image-gallery.md)。
 
 有关共享映像库的一般详细信息，请参阅[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)。

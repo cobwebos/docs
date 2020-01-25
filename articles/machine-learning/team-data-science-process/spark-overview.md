@@ -1,84 +1,84 @@
 ---
-title: 在 Azure HDInsight 上使用 Spark 的数据科学 - Team Data Science Process
-description: Spark MLlib 工具包向分布式 HDInsight 环境引入了大量机器学习建模功能。
+title: Azure HDInsight의 Spark를 사용하는 데이터 과학 - Team Data Science Process
+description: Spark MLlib 도구 키트를 통해 많은 기계 학습 모델링 기능을 이 분산 HDInsight 환경에서 사용할 수 있습니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 63148b99e65a5ccc49d54d4ae6c58adebc72c6d3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256433"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718508"
 ---
-# <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
+# <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight에서 Spark를 사용하는 데이터 과학 개요
 
-这一系列主题显示了如何使用 HDInsight Spark 完成常见的数据科研任务，例如数据引入、特征工程、建模和模型评估。 所使用的数据是 2013 年 NYC 出租车行程和费用数据集样本。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。 本主题还介绍了如何在 Azure Blob 存储 (WASB) 中存储这些模型，以及如何对其预测性能进行评分和评估。 更高级的主题介绍了如何使用交叉验证和超参数扫描训练模型。 本概述主题参与了有关如何设置 Spark 群集的主题，读者需要完成所提供的三个演练中的步骤。
+이 항목 모음에서는 HDInsight Spark를 사용하여 데이터 수집, 기능 엔지니어링, 모델링 및 모델 평가와 같은 일반적인 데이터 과학 작업을 완료하는 방법을 보여 줍니다. 사용되는 데이터는 2013 NYC Taxi Trip 및 요금 데이터 세트의 샘플입니다. 작성된 모델은 로지스틱 및 선형 회귀, 임의 포리스트 및 그라데이션 향상된 트리를 포함합니다. 또한 이 항목은 이러한 모델을 Azure Blob Storage(WASB)에 저장하고 예측 성능의 점수를 매기며 평가하는 방법도 보여 줍니다. 고급 항목에서는 교차 유효성 검사 및 하이퍼 매개 변수 스위핑을 사용하여 모델을 학습할 수 있는 방법을 다룹니다. 이 개요 토픽은 제공된 연습의 단계를 완료하는 데 필요한 Spark 클러스터를 설정하는 방법을 설명하는 토픽도 참조합니다.
 
-## <a name="spark-and-mllib"></a>Spark 和 MLlib
-[Spark](https://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 [MLlib](https://spark.apache.org/mllib/) 是 Spark 的可缩放机器学习库，向此分布式环境引入算法建模功能。
+## <a name="spark-and-mllib"></a>Spark 및 MLlib
+[Spark](https://spark.apache.org/)는 메모리 내 처리를 지원하여 빅데이터 분석 애플리케이션의 성능을 향상하는 오픈 소스 병렬 처리 프레임워크입니다. 속도, 간편한 사용 및 정교한 분석을 위해 Spark 처리 엔진이 빌드되었습니다. Spark는 메모리 내 분산형 계산 기능을 지원하여 기계 학습 및 그래프 계산에 사용된 반복 알고리즘에 적합합니다. [MLlib](https://spark.apache.org/mllib/)는 Spark의 확장형 기계 학습 라이브러리로, 분산형 환경에서 알고리즘 모델링 기능을 사용할 수 있습니다.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 **Jupyter PySpark 笔记本**的支持，这些笔记本可以运行 Spark SQL 交互式查询，用于对存储在 Azure Blob (WASB) 中的数据进行转换、筛选和可视化。 PySpark 是用于 Spark 的 Python API。 提供解决方案并显示相关图表以可视化此处的数据的代码片段在 Spark 群集上安装的 Jupyter 笔记本中运行。 这些主题中的建模步骤包含代码，显示每种类型模型的训练、评估、保存和使用方式。
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md)는 Azure에서 호스트하는 오픈 소스 Spark의 제품입니다. 또한 Azure Blob(WASB)에 저장된 데이터를 변환, 필터링 및 시각화하기 위해 Spark SQL 대화형 쿼리를 실행할 수 있는 Spark 클러스터상의 **Jupyter PySpark Notebook**에 대한 지원도 포함하고 있습니다. PySpark는 Spark용 Python API입니다. 솔루션을 제공하고 데이터 시각화를 위해 관련 플롯을 여기에 보여 주는 코드 조각은 Spark 클러스터에 설치된 Jupyter Notebook에서 실행됩니다. 이러한 항목의 모델링 단계는 각 모델 유형을 학습, 평가, 저장 및 사용하는 방법을 보여 주는 코드를 포함하고 있습니다.
 
-## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>设置：Spark 群集和 Jupyter 笔记本
-本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了适用于 Spark 1.6 的 Jupyter 笔记本（要在 Jupyter Notebook 服务器的 pySpark 内核中运行）的链接和适用于 Spark 2.0 的 Jupyter 笔记本（要在 Jupyter Notebook 服务器的 pySpark3 内核中运行）的链接：
+## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>설정: Spark 클러스터 및 Jupyter Notebook
+설치 단계와 코드는 HDInsight Spark 1.6을 사용하는 이 연습에 제공됩니다. 하지만 Jupyter Notebook은 HDInsight Spark 1.6과 Spark 2.0 클러스터 둘 다에 제공됩니다. 노트북과 이에 연결된 링크의 설명은 이들을 포함하는 GitHub 리포지토리의 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md)에 제공됩니다. 그뿐 아니라 여기에 있는 코드와 연결된 Notebook에 있는 코드는 일반적이므로 아무 Spark 클러스터에서나 작동할 것입니다. HDInsight Spark를 사용하지 않는 경우 클러스터 설치 및 관리 단계가 여기에 나오는 내용과 약간 다를 수 있습니다. 편의를 위해, Jupyter Notebook 서버의 pySpark 커널에서 실행되는 Spark 1.6 및 Jupyter Notebook 서버의 pySpark3 커널에서 실행되는 Spark 2.0용 Jupyter Notebook에 연결된 링크는 다음과 같습니다.
 
-### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
-这些笔记本将要在 Jupyter 笔记本服务器的 pySpark 内核中运行。
+### <a name="spark-16-notebooks"></a>Spark 1.6 Notebook
+이러한 Notebook은 Jupyter Notebook 서버의 pySpark 커널에서 실행됩니다.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何使用多种不同算法执行数据探索、建模和评分的信息。
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：演示如何在 HDInsight 群集上使用 Python 操作已保存的模型。
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): 몇 가지 알고리즘으로 데이터 탐색, 모델링, 그리고 점수 매기기 등을 수행하는 방법에 대한 정보를 제공합니다.
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): 노트북 #1의 토픽과 하이퍼 매개 변수 조정 및 교차 유효성 검사를 사용하는 모델 개발을 포함합니다.
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): HDInsight 클러스터에서 Python을 사용하여 저장된 모델을 운용하는 방법을 보여줍니다.
 
-### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
-这些笔记本将要在 Jupyter 笔记本服务器的 pySpark3 内核中运行。
+### <a name="spark-20-notebooks"></a>Spark 2.0 노트북
+이러한 Notebook은 Jupyter Notebook 서버의 pySpark3 커널에서 실행됩니다.
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的 NYC 出租车行程和费用数据集执行数据探索、建模和评分的信息。 对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 如需用于分析 NYC 出租车数据的更详细笔记本，请参阅此列表中的下一个笔记本。 请参阅此列表后面比较这些笔记本的说明。
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 我们已在建模之前将航班数据集与机场天气数据（例如风速、温度、海拔等）相集成，因此可在模型中包含这些天气特征。
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): 이 파일은 NYC Taxi Trip 및 [여기](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) 설명된 데이터 집합을 사용하여 Spark 2.0 클러스터에서 데이터 탐색, 모델링, 점수 매기기를 수행하는 방법에 대한 정보를 제공합니다. 이 Notebook은 Spark 2.0에 대해 제공했던 코드를 신속하게 탐색하기 위한 좋은 시작점일 수 있습니다. NYC Taxi 데이터를 분석하는 Notebook 상세 정보는 이 목록에서 다음 Notebook을 참조하세요. 请参阅此列表中对这些笔记本进行比较的注释。
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): 이 파일은 [여기](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)에 설명된 NYC 택시 여정 및 요금 데이터 집합을 사용한 데이터 랭글링(Spark SQL 및 데이터 프레임 작업), 탐색, 모델링 및 점수 매기기를 수행하는 방법을 보여줍니다.
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): 이 파일은 2011년 및 2012년의 유명 항공사 정시 출발 데이터 세트를 사용한 데이터 랭글링(Spark SQL 및 데이터 프레임 작업), 탐색, 모델링 및 점수 매기기를 수행하는 방법을 보여줍니다. 在建模之前，我们将航空公司数据集与机场天气数据（例如，windspeed、温度、海拔等）集成，因此这些天气功能可以包含在模型中。
 
 <!-- -->
 
 > [!NOTE]
-> 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
+> 항공사 데이터 세트는 분류 알고리즘의 사용 이해를 돕기 위해 Spark 2.0 Notebook에 추가되었습니다. 항공사 정시 출발 데이터 세트 및 날씨 데이터 세트에 대한 내용은 다음 링크를 참조하세요.
 > 
-> - 航班准时出发数据：[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - 항공사 정시 출발 데이터: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - 공항 날씨 데이터: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-> 有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本全面显示了数据探索、可视化和 ML 模型训练的许多方面，该笔记本使用下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行时所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)。 此笔记本完成运行的时间短得多（2-3 分钟），对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。
+> NYC taxi의 Spark 2.0 Notebook 및 항공사 비행 지연 데이터 집합은 실행하는 데 10분 이상이 소요될 수 있습니다(HDI 클러스터의 크기에 따라 다름). 上述列表中的第一个笔记本显示了笔记本中数据浏览、可视化和 ML 模型定型的许多方面，使用下采样的 NYC 数据集（在该数据集内预联接了出租车和费用文件）的运行时间更少： [spark 2.0-pySpark3--ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)。 이 노트는 훨씬 더 빠르게 완료할 수 있으며(2-3분) Spark 2.0에 대해 제공했던 코드를 신속하게 탐색하기 위한 좋은 시작점일 수 있습니다.
 
 <!-- -->
 
-有关 Spark 2.0 模型的实施以及使用模型进行评分的指南，请参阅 [Spark 1.6 document on consumption](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)（有关使用 Spark 1.6 的文档）中的示例，其中概述了所要执行的步骤。 要在 Spark 2.0 中使用此功能，将请 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
+점수 매기기를 위한 Spark 2.0 모델 및 모델 사용량의 운용에 대한 지침은 [사용량에 관한 Spark 1.6 문서](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)에서 해당 단계를 설명하는 예제를 참조하세요. 若要在 Spark 2.0 上使用此示例，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>필수 조건
 
-以下过程与 Spark 1.6 相关。 对于 Spark 2.0 版本，请使用前面所述和链接到的笔记本。
+다음 절차는 Spark 1.6에 대한 내용입니다. Spark 2.0 버전의 경우 이전에 설명 및 링크된 Notebook을 사용합니다.
 
-1. 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+1. Azure 구독이 있어야 합니다. 아직 가지고 있지 않은 경우 [Azure 평가판](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)을 참조하세요.
 
-2. 需要使用 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”  菜单中指定群集类型和版本。
+2. 이 연습을 완료하는 데는 Spark 1.6 클러스터가 필요합니다. 만드는 방법은 [시작: Azure HDInsight에서 Apache Spark 만들기](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)를 참조하세요. 클러스터 유형 및 버전은 **클러스터 유형 선택** 메뉴에서 지정됩니다.
 
-![配置群集](./media/spark-overview/spark-cluster-on-portal.png)
+![클러스터 구성](./media/spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
 > [!NOTE]
-> 有关演示如何使用 Scala 而非 Python 完成端到端数据科研过程任务的主题，请参阅[在 Azure 上使用 Scala 与 Spark 开展数据科研](scala-walkthrough.md)。
+> Python이 아닌 Scala를 사용하여 엔드투엔드 데이터 과학 프로세스에 대한 작업을 완료하는 방법을 보여 주는 항목에 대해서는 [Azure에서 Spark를 사용하는 데이터 과학](scala-walkthrough.md)을 참조하세요.
 >
 >
 
@@ -88,10 +88,10 @@ ms.locfileid: "60256433"
 >
 >
 
-## <a name="the-nyc-2013-taxi-data"></a>NYC 2013 年出租车数据
-NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+## <a name="the-nyc-2013-taxi-data"></a>NYC 2013 Taxi 데이터
+NYC Taxi Trip 데이터는 1억 7,300만 개가 넘는 개별 여정 및 각 여정의 요금으로 구성된 약 20GB의 압축된 CSV(쉼표로 구분된 값) 파일(압축되지 않은 경우 약 48GB)입니다. 각 여정 레코드는 승차 및 하차 위치, 익명 처리된 hack(기사) 면허증 번호 및 medallion(택시의 고유 ID) 번호를 포함합니다. 데이터는 2013년의 모든 여정을 포괄하며, 매월 다음 두 개의 데이터 세트로 제공됩니다.
 
-1. “trip_data”CSV 文件包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
+1. 'trip_data' CSV 파일은 승객 수, 승차 및 하차 지점, 여정 기간, 여정 거리 등 여정 세부 정보를 포함합니다. 다음은 몇 가지 샘플 레코드입니다.
 
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -99,7 +99,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. “trip_fare”CSV 文件包含每个行程支付费用的详细信息，例如付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
+2. 'trip_fare' CSV 파일은 지불 유형, 금액, 추가 요금 및 세금, 팁 및 통행료, 총 지불 금액 등 각 여정의 요금에 대한 세부 정보를 포함합니다. 다음은 몇 가지 샘플 레코드입니다.
 
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -108,78 +108,78 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-我们已对这些文件进行 0.1% 采样，并将 trip\_data 和 trip\_fare CVS 文件联接到单个数据集中，以用作本演练的输入数据集。 联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_licence 和 pickup\_datetime。 每个数据集记录包含以下属性，用于表示 NYC 出租车行程：
+이러한 파일 중 0.1% 샘플을 선택하고 trip\_data 및 trip\_fare CVS 파일을 이 연습의 입력 데이터 세트로 사용할 단일 데이터 세트에 조인했습니다. trip\_data와 trip\_fare를 조인할 고유 키는 medallion, hack\_licence 및 pickup\_datetime 필드로 구성됩니다. 데이터 세트의 각 레코드는 NYC Taxi 여정을 나타내는 다음과 같은 특성을 포함하고 있습니다.
 
-| 字段 | 简要说明 |
+| 필드 | 간략한 설명 |
 | --- | --- |
-| medallion |匿名的出租车牌照（出租车的唯一 ID） |
-| hack_license |匿名的出租车司机驾驶证编号 |
-| vendor_id |出租车供应商 ID |
-| rate_code |NYC 出租车费率 |
-| store_and_fwd_flag |停靠和行进标志 |
-| pickup_datetime |上车日期和时间 |
-| dropoff_datetime |下车日期和时间 |
-| pickup_hour |上车小时 |
-| pickup_week |上车星期（一年中的某一周） |
-| weekday |工作日（周一到周日） |
-| passenger_count |出租车行程中的乘客数 |
-| trip_time_in_secs |行程时间（以秒为单位） |
-| trip_distance |行程距离（以英里为单位） |
-| pickup_longitude |上车经度 |
-| pickup_latitude |上车纬度 |
-| dropoff_longitude |下车经度 |
-| dropoff_latitude |下车纬度 |
-| direct_distance |上车位置和下车位置之间的直线距离 |
-| payment_type |付款类型 （现金、 信用卡等） |
-| fare_amount |费用金额 |
-| surcharge |附加费 |
-| mta_tax |MTA 税金 |
-| tip_amount |小费金额 |
-| tolls_amount |通行费金额 |
-| total_amount |总金额 |
-| tipped |是否有小费（0 表示没有，1 表示有） |
-| tip_class |小费等级（0：0 美元，1：0-5 美元，2：6-10 美元，3：11-20 美元，4：大于 20 美元） |
+| medallion |익명 처리된 택시 medallion(고유 택시 id) |
+| hack_license |익명 처리된 Hackney 운전 면허 번호 |
+| vendor_id |택시 공급 업체 id |
+| rate_code |NYC 택시 요율 |
+| store_and_fwd_flag |저장소 및 전달 플래그 |
+| pickup_datetime |승차 날짜 및 시간 |
+| dropoff_datetime |내린 날짜 및 시간 |
+| pickup_hour |승차 시간 |
+| pickup_week |연간 누적 승차 주 수 |
+| weekday |요일(범위 1-7) |
+| passenger_count |택시 여정의 승객 수 |
+| trip_time_in_secs |여정 시간(초) |
+| trip_distance |주행한 여정 거리(마일 단위) |
+| pickup_longitude |승차 경도 |
+| pickup_latitude |승차 위도 |
+| dropoff_longitude |내린 경도 |
+| dropoff_latitude |내린 위도 |
+| direct_distance |태운 위치와 내린 위치 사이의 직접 거리 |
+| payment_type |付款类型（现金、信用卡等） |
+| fare_amount |요금 금액 |
+| surcharge |추가 요금 |
+| mta_tax |MTA 地铁运输税 |
+| tip_amount |팁 금액 |
+| tolls_amount |통행료 금액 |
+| total_amount |총 금액 |
+| tipped |팁 지불 여부(아니요 또는 예에 대해 0/1 지정) |
+| tip_class |팁 클래스(0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
-## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter 笔记本执行代码
-可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 若要打开与 Spark 群集相关联的笔记本，请依次单击“群集仪表板”   -> “Jupyter 笔记本”  。
+## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark 클러스터의 Jupyter Notebook에서 코드 실행
+Azure 포털에서 Jupyter Notebook을 시작할 수 있습니다. 대시보드에서 Spark 클러스터를 찾아 클릭하여 클러스터에 대한 관리 페이지로 들어갑니다. 若要打开与 Spark 群集关联的笔记本，请单击 "**群集仪表板**" -> **Jupyter Notebook**"。
 
-![群集仪表板](./media/spark-overview/spark-jupyter-on-portal.png)
+![클러스터 대시보드](./media/spark-overview/spark-jupyter-on-portal.png)
 
-还可以浏览到 https://CLUSTERNAME.azurehdinsight.net/jupyter 访问 Jupyter 笔记本。 将此 URL 的 CLUSTERNAME 部分替换成自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
+***https://CLUSTERNAME.azurehdinsight.net/jupyter***로 이동하여 Jupyter Notebook에 액세스할 수 있습니다. 이 URL의 CLUSTERNAME 부분을 사용자 고유의 클러스터 이름으로 바꿉니다. Notebook에 액세스하려면 관리자 계정에 대한 암호가 필요합니다.
 
-![浏览 Jupyter 笔记本](./media/spark-overview/spark-jupyter-notebook.png)
+![Jupyter 노트북 찾아보기](./media/spark-overview/spark-jupyter-notebook.png)
 
-选择 PySpark 可查看包含几个使用 PySpark API 的预打包笔记本示例的目录。包含这一系列 Spark 主题的代码示例的笔记本可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上获取
+选择 PySpark 可以查看包含使用 PySpark API 的预打包笔记本示例的目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)中提供了包含此 Spark 主题的代码示例的笔记本
 
-可将笔记本直接从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”  按钮。 它将打开文件资源管理器。 可以在此处粘贴笔记本的 GitHub（原始内容）URL，并单击“打开”  。
+노트북을 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)에서 Spark 클러스터의 Jupyter Notebook 서버에 직접 업로드할 수 있습니다. Jupyter의 홈 페이지에서 화면 오른쪽의 **업로드** 버튼을 클릭합니다. 파일 탐색기가 열립니다. 여기서 Notebook의 GitHub(원시 콘텐츠) URL을 붙여넣고 **열기**를 클릭할 수 있습니다.
 
-将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”  按钮。 单击此“上传”按钮  。 现在已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
+**업로드** 버튼을 다시 사용하면 Jupyter 파일 목록에서 파일 이름을 확인할 수 있습니다. 이 **업로드** 버튼을 클릭합니다. 이제 Notebook을 가져왔습니다. 이 단계를 반복하여 이 연습에서 다른 Notebook을 업로드합니다.
 
 > [!TIP]
-> 可以右键单击浏览器上的链接，并选择“复制链接”获取 GitHub 原始内容 URL  。 可将此 URL 粘贴到“Jupyter 上传文件资源管理器”对话框中。
+> 브라우저의 링크를 마우스 오른쪽 단추로 클릭하고 **링크 복사**를 선택하여 GitHub 원시 콘텐츠 URL을 가져올 수 있습니다. Jupyter 업로드 파일 탐색기 대화 상자에 이 URL을 붙여넣을 수 있습니다.
 > 
 > 
 
-现在可以：
+이제 다음을 수행할 수 있습니다.
 
-* 通过单击笔记本查看代码。
-* 通过按 **SHIFT-ENTER** 执行每个单元格。
-* 通过依次单击“单元格”   -> “运行”  运行整个笔记本。
-* 使用查询的自动可视化。
+* Notebook을 클릭하여 코드를 확인합니다.
+* **Shift+Enter**를 눌러 각 셀을 실행합니다.
+* **셀** -> **실행**을 클릭하여 전체 Notebook을 실행합니다.
+* 쿼리의 자동 시각화를 사용합니다.
 
 > [!TIP]
-> PySpark 内核自动将 SQL (HiveQL) 查询的输出可视化。 可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择：
+> PySpark 커널은 SQL(HiveQL) 쿼리의 출력을 자동으로 시각화합니다. Notebook의 **형식** 메뉴 버튼을 사용하여 다양한 시각화 형식(테이블, 원형, 꺾은선형, 영역 또는 막대) 중에서 선택할 수 있는 옵션이 제공됩니다.
 >
 >
 
-![泛型方法的逻辑回归 ROC 曲线](./media/spark-overview/pyspark-jupyter-autovisualization.png)
+![일반적인 접근 방식에 대한 로지스틱 회귀 분석 ROC 곡선](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="whats-next"></a>后续步骤
-现在，已完成 HDInsight Spark 群集设置并且上传了 Jupyter 笔记本，可以随时完成对应于这三个 PySpark 笔记本的主题。 它们介绍了如何浏览数据以及如何创建和使用模型。 高级数据浏览和建模笔记本介绍了如何包括交叉验证、超参数扫描和模型评估。
+## <a name="whats-next"></a>다음은 무엇일까요?
+이제 HDInsight Spark 클러스터를 설치하고 Jupyter Notebook을 업로드했으므로 이 세 PySpark Notebook에 해당하는 항목을 진행할 준비가 되었습니다. 이들 항목은 데이터 탐색 방법을 보여 준 후 모델을 만들고 사용하는 방법을 보여 줍니다. 고급 데이터 탐색 및 모델링 Notebook은 교차 유효성 검사, 하이퍼 매개 변수 비우기 및 모델 평가를 포함하는 방법을 보여 줍니다.
 
-**使用 Spark 进行数据探索和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，探索数据集并创建、评分和评估机器学习模型。
+**Spark로 데이터 탐색 및 모델링:** [Spark MLlib 도구 키트를 사용하여 데이터에 대한 이진 분류 및 회귀 모델 만들기](spark-data-exploration-modeling.md) 항목을 수행하여 데이터 세트를 탐색하고 기계 학습 모델 만들기, 점수 매기기 및 평가를 수행합니다.
 
-**使用模型：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
+**모델 사용:** 이 항목에서 만든 분류 및 회귀 모델의 점수를 매기는 방법을 알아보려면 [Spark로 빌드된 기계 학습 모델 점수 매기기 및 평가](spark-model-consumption.md)를 참조하세요.
 
-**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
+**교차 유효성 검사 및 하이퍼 매개 변수 비우기**: 교차 유효성 검사 및 하이퍼 매개 변수 비우기를 사용하여 모델을 학습하는 방법은 [Spark로 고급 데이터 탐색 및 모델링](spark-advanced-data-exploration-modeling.md) 을 참조하세요.
 

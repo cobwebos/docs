@@ -1,51 +1,44 @@
 ---
-title: 数据提取 - LUIS
-titleSuffix: Azure Cognitive Services
-description: 从包含意向和实体的话语文本中提取数据。 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据。
-services: cognitive-services
+title: 数据提取-LUIS
+description: 利用意向和实体从查询文本文本中提取数据。 了解可以从语言理解（LUIS）中提取的数据类型。
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703148"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716285"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
-使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>利用意向和实体从查询文本文本提取数据
+LUIS는 사용자의 자연어 발화에서 정보를 가져오는 기능을 제공합니다. 정보는 프로그램, 애플리케이션 또는 챗봇에서 작업을 수행하는 데 사용할 수 있는 방법으로 추출됩니다. 다음 섹션에서는 JSON 예제와 함께 의도 및 엔터티에서 반환되는 데이터에 대해 알아봅니다.
 
-最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
+정확히 일치하는 텍스트가 아니므로 추출하기 가장 어려운 데이터는 기계 학습 데이터입니다. 기계 학습 [엔터티](luis-concept-entity-types.md)의 데이터 추출은 사용자가 예상한 데이터를 받는다고 확신할 때까지 [작성 주기](luis-concept-app-iteration.md)에 포함되어야 합니다.
 
-## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
-LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境。
+## <a name="data-location-and-key-usage"></a>데이터 위치 및 키 사용
+LUIS는 게시된 [엔드포인트](luis-glossary.md#endpoint)의 데이터를 제공합니다. **HTTPS 요청**(POST 또는 GET)에는 스테이징 또는 프로덕션 환경과 같은 일부 선택적 구성과 발화가 포함됩니다.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 预测终结点请求](#tab/V2)
+#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 예측 엔드포인트 요청](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 预测终结点请求](#tab/V3)
+#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 예측 엔드포인트 요청](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
+* * *
 
-在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+`appID`는 LUIS 앱을 편집하는 동안 URL의 일부(`/apps/` 뒤) 및 LUIS 앱의 **설정** 페이지에서 사용할 수 있습니다. `subscription-key`는 앱을 쿼리하는 데 사용되는 엔드포인트 키입니다. LUIS를 학습시키는 동안 체험 작성/시작 키를 사용할 수 있지만, 엔드포인트 키를 [필요한 LUIS 사용](luis-boundaries.md#key-limits)을 지원하는 키로 변경해야 합니다. `timezoneOffset` 단위는 분입니다.
 
-HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”部分的“密钥和终结点”页上。
+**HTTPS 응답**에는 스테이징 또는 프로덕션 엔드포인트의 현재 게시된 모델을 기반으로 LUIS가 확인할 수 있는 모든 의도 및 엔터티 정보가 포함됩니다. 엔드포인트 URL은 [LUIS](luis-reference-regions.md) 웹 사이트의 **관리** 섹션에 있는 **키 및 엔드포인트** 페이지에서 찾을 수 있습니다.
 
-## <a name="data-from-intents"></a>意向中的数据
-主数据是评分最高的意向名称。 终结点响应为：
+## <a name="data-from-intents"></a>의도의 데이터
+기본 데이터는 상위 점수 **의도 이름**입니다. 엔드포인트 응답은 다음과 같습니다.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 {
@@ -58,7 +51,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
 ```JSON
 {
@@ -76,20 +69,20 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
+* * *
 
-|数据对象|数据类型|数据位置|值|
+|데이터 개체|데이터 형식|데이터 위치|값|
 |--|--|--|--|
-|意向|String|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|String|topScoringIntent.intent|“GetStoreInfo”|
 
-如果聊天机器人或 LUIS 调用应用基于不止一个意向评分来进行决策，则返回所有意向的评分。
+如果你的聊天机器人或 LUIS 调用应用根据多个意向评分做出决定，则返回所有意向分数。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
-设置 querystring 参数 `verbose=true`。 终结点响应为：
+设置 querystring 参数 `verbose=true`。 엔드포인트 응답은 다음과 같습니다.
 
 ```JSON
 {
@@ -112,9 +105,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-设置 querystring 参数 `show-all-intents=true`。 终结点响应为：
+设置 querystring 参数 `show-all-intents=true`。 엔드포인트 응답은 다음과 같습니다.
 
 ```JSON
 {
@@ -136,20 +129,20 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
+* * *
 
-意向按评分从高到低排序。
+의도는 최고 점수에서 최하 점수 순으로 정렬됩니다.
 
-|数据对象|数据类型|数据位置|值|得分|
+|데이터 개체|데이터 형식|데이터 위치|값|점수|
 |--|--|--|--|:--|
-|意向|String|intents[0].intent|"GetStoreInfo"|0.984749258|
-|意向|String|intents[1].intent|"None"|0.0168218873|
+|Intent|String|intents[0].intent|“GetStoreInfo”|0.984749258|
+|Intent|String|intents[1].intent|“None”|0.0168218873|
 
-如果添加预构建的域，则意向名称指示该域，例如 `Utilties` 或 `Communication` 以及意向：
+미리 빌드된 도메인을 추가하는 경우, 의도 이름은 의도뿐 아니라 `Utilties` 또는 `Communication`와 같은 도메인을 나타냅니다.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 {
@@ -175,7 +168,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
 ```JSON
 {
@@ -199,25 +192,25 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
+* * *
 
-|域|数据对象|数据类型|数据位置|值|
+|도메인|데이터 개체|데이터 형식|데이터 위치|값|
 |--|--|--|--|--|
-|实用程序|意向|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通信|意向|String|intents[1].intent|<b>Communication</b>.StartOver"|
-||意向|String|intents[2].intent|"None"|
+|공익사업|Intent|String|intents[0].intent|“<b>Utilities</b>.ShowNext”|
+|통신|Intent|String|intents[1].intent|<b>Communication</b>.StartOver”|
+||Intent|String|intents[2].intent|“None”|
 
 
-## <a name="data-from-entities"></a>实体中的数据
-大多数机器人和应用程序需要的都不止是意向名称。 此额外的可选数据来源于在陈述中发现的实体。 每种类型的实体返回有关匹配项的不同信息。
+## <a name="data-from-entities"></a>엔터티의 데이터
+대부분의 챗봇 및 애플리케이션에는 의도 이름 외에 더 많은 것이 필요합니다. 이 추가적이고 선택적인 데이터는 발화에서 검색되는 엔터티에서 가져옵니다. 각 엔터티 형식은 서로 다른 일치 정보를 반환합니다.
 
-陈述中的单个单词或短语可以匹配多个实体。 在这种情况下，会返回每个匹配实体及其评分。
+발화의 단일 단어 또는 구문이 둘 이상의 엔터티와 일치할 수 있습니다. 이 경우, 각 일치하는 엔터티는 점수와 함께 반환됩니다.
 
-所有实体都返回在终结点响应中的“实体”数组中：
+모든 엔터티는 엔드포인트에서 응답의 **엔터티** 배열로 반환됩니다.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 "entities": [
@@ -240,7 +233,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
 ```JSON
 "entities": {
@@ -248,33 +241,32 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
     "number": [3]
 }
 ```
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
+* * *
 
-## <a name="tokenized-entity-returned"></a>返回的切分后的实体
-几个[区域性](luis-language-support.md#tokenization)会返回 `entity` 值[已切分](luis-glossary.md#token)的实体对象。 在实体对象中由 LUIS 返回的 startIndex 和 endIndex 不会映射到已切分的新值，而是映射到原始查询，从而以编程方式提取原始实体。 
+## <a name="tokenized-entity-returned"></a>토큰화된 엔터티가 반환됨
 
-例如，在德语中，单词 `das Bauernbrot` 会切分为 `das bauern brot`。 返回已切分的值 `das bauern brot`，并且能以编程方式从原始查询的 startIndex 和 endIndex 确定原始值，并提供 `das Bauernbrot`。
+查看 LUIS 中的[令牌支持](luis-language-support.md#tokenization)。
 
-## <a name="simple-entity-data"></a>简单实体数据
+## <a name="simple-entity-data"></a>단순 엔터티 데이터
 
-[简单实体](reference-entity-simple.md)是一种机器学习值。 它可以是一个单词或短语。
+[단순 엔터티](reference-entity-simple.md)는 기계 학습 값입니다. 이 값은 단어 또는 구문일 수 있습니다.
 
-## <a name="composite-entity-data"></a>复合实体数据
+## <a name="composite-entity-data"></a>복합 엔터티 데이터
 
-[复合实体](reference-entity-composite.md)由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。 
+[复合实体](reference-entity-composite.md)由其他实体（例如预生成实体、简单、正则表达式和列表实体）组成。 개별 엔터티가 전체 엔터티를 형성합니다.
 
-## <a name="list-entity-data"></a>列表实体数据
+## <a name="list-entity-data"></a>목록 엔터티 데이터
 
-[列表实体](reference-entity-list.md)表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
+[列表实体](reference-entity-list.md)表示固定的、封闭的相关单词集及其同义词。 LUIS는 목록 엔터티에 대한 추가 값을 검색하지 않습니다. **권장** 기능을 사용하여 현재 목록을 기준으로 권장되는 새 단어를 확인합니다. 동일한 값을 갖는 목록 엔터티가 둘 이상 있는 경우, 각 엔터티가 엔드포인트 쿼리에서 반환됩니다.
 
-## <a name="prebuilt-entity-data"></a>预构建实体数据
-[预构建](luis-concept-entity-types.md)实体是基于正则表达式匹配项、使用开源 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 项目发现的。 预构建实体返回在实体数组中，并使用前缀为 `builtin::` 的类型名称。 以下文本是一个示例陈述，其中包含返回的预构建实体：
+## <a name="prebuilt-entity-data"></a>미리 빌드된 엔터티 데이터
+[미리 빌드된](luis-concept-entity-types.md) 엔터티는 오픈 소스 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 프로젝트를 사용하여 정규식 일치를 기반으로 검색됩니다. 미리 빌드된 엔터티는 엔터티 배열로 반환되며 `builtin::` 접두사가 추가된 형식 이름을 사용합니다. 다음 텍스트는 반환된 미리 빌드된 엔터티가 포함된 예제 발화입니다.
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 "entities": [
@@ -355,9 +347,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-不使用 querystring 参数 `verbose=true`：
+如果没有 querystring 参数，`verbose=true`：
 
 ```json
 "entities": {
@@ -399,7 +391,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-使用 querystring 参数 `verbose=true`：
+对于 querystring 参数，`verbose=true`：
 
 ```json
 
@@ -532,41 +524,41 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-* * * 
-## <a name="regular-expression-entity-data"></a>正则表达式实体数据
+* * *
+## <a name="regular-expression-entity-data"></a>정규식 엔터티 데이터
 
-[正则表达式实体](reference-entity-regular-expression.md)基于所提供的正则表达式模式提取实体。
+[正则表达式实体](reference-entity-regular-expression.md)基于您提供的正则表达式模式提取实体。
 
-## <a name="extracting-names"></a>提取名称
-从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 以下建议不是规则，而是更多准则。
+## <a name="extracting-names"></a>이름 추출
+이름은 거의 문자와 단어의 조합일 수 있기 때문에 발화에서 이름을 가져오는 것은 어렵습니다. 추출할 이름의 유형에 따라 몇 가지 옵션이 있습니다. 다음 제안 사항을 규칙이 아니라 자세한 지침입니다.
 
-### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>添加预构建的 PersonName 和 GeographyV2 实体
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>미리 빌드된 PersonName 및 GeographyV2 엔터티 추가
 
-[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。 
+[PersonName](luis-reference-prebuilt-person.md) 및 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 엔터티는 일부 [언어 문화권](luis-reference-prebuilt-entities.md)에서 사용할 수 있습니다.
 
-### <a name="names-of-people"></a>人的姓名
+### <a name="names-of-people"></a>사용자의 이름
 
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 将预生成的 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与包含姓和名的[角色](luis-concept-roles.md)配合使用。 
+사용자의 이름에는 언어 및 문화권에 따라 일부 약한 형식이 적용될 수 있습니다. 使用任一预构建 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。
 
-如果使用简单实体，请确保给出的示例在话语的不同部分、在不同长度的话语中以及在所有意向（包括“None”意向）的话语中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+如果你使用简单实体，请确保在查询文本的不同部分中使用第一个和最后一个名称（以不同的长度为最谈话）和最谈话（包括无意向的所有方法）提供的示例。 정기적으로 엔드포인트 발화를 [검토](luis-how-to-review-endoint-utt.md)하여 올바르게 예측되지 않은 이름에 레이블을 지정합니다.
 
-### <a name="names-of-places"></a>地名
+### <a name="names-of-places"></a>위치 이름
 
-地名是固定且已知的，例如市、县、州、省和国家/地区。 使用预生成的实体 **[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
+位置名称已设置，如城市、县、省/市/自治区和国家/地区。 使用预生成的实体 **[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
 
-### <a name="new-and-emerging-names"></a>新出现的名称
+### <a name="new-and-emerging-names"></a>새롭게 떠오르는 이름
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+일부 앱은 제품이나 회사와 같이 새롭게 떠오르는 이름을 찾을 수 있어야 합니다. 这些类型的名称是最难进行的数据提取类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 정기적으로 엔드포인트 발화를 [검토](luis-how-to-review-endoint-utt.md)하여 올바르게 예측되지 않은 이름에 레이블을 지정합니다.
 
-## <a name="pattern-roles-data"></a>模式角色数据
-角色是实体间的上下文差别。
+## <a name="pattern-roles-data"></a>패턴 역할 데이터
+역할은 엔터티의 컨텍스트 차이입니다.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
-实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
+实体名称为 `Location`，具有两个角色： `Origin` 和 `Destination`。
 
 ```JSON
 "entities": [
@@ -597,13 +589,13 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-在 V3 中，**角色名称**是对象的主要名称。 
+在 V3 中，**角色名称**是对象的主要名称。
 
-实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
+实体名称为 `Location`，具有两个角色： `Origin` 和 `Destination`。
 
-不使用 querystring 参数 `verbose=true`：
+如果没有 querystring 参数，`verbose=true`：
 
 ```json
 "entities": {
@@ -619,7 +611,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-使用 querystring 参数 `verbose=true`：
+对于 querystring 参数，`verbose=true`：
 
 ```json
 "entities": {
@@ -681,21 +673,21 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
 * * *
 
-## <a name="patternany-entity-data"></a>Pattern.any 实体数据
+## <a name="patternany-entity-data"></a>Pattern.any 엔터티 데이터
 
-[Pattern.any](reference-entity-pattern-any.md) 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  
+[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符，用于标记实体开始和结束的位置。
 
-## <a name="sentiment-analysis"></a>情绪分析
-如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。
+## <a name="sentiment-analysis"></a>감정 분석
+감정 분석이 구성된 경우 LUIS json 응답에는 감정 분석이 포함됩니다. [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) 설명서에서 감정 분석에 대해 자세히 알아봅니다.
 
-### <a name="sentiment-data"></a>情绪数据
-情绪数据是一个介于 0 到 1 之间的分数，指示数据的正面情绪（分数接近 1）或负面情绪（分数接近 0）。
+### <a name="sentiment-data"></a>감정 데이터
+감정 데이터는 데이터의 긍정적(1에 가까움) 또는 부정적(0에 가까움) 감정을 나타내는 1과 0 사이의 점수입니다.
 
-当区域性为 `en-us` 时，响应为：
+문화권이 `en-us`인 경우 응답은 다음과 같습니다.
 
 ```JSON
 "sentimentAnalysis": {
@@ -704,7 +696,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-对于所有其他区域性，响应为：
+다른 모든 문화권의 경우 응답은 다음과 같습니다.
 
 ```JSON
 "sentimentAnalysis": {
@@ -713,11 +705,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ```
 
 
-### <a name="key-phrase-extraction-entity-data"></a>关键短语提取实体数据
-关键短语提取实体返回陈述中的关键短语，由[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)提供。
+### <a name="key-phrase-extraction-entity-data"></a>키 구문 추출 엔터티 데이터
+키 구문 추출 엔터티는 [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)에서 제공하는 발화의 키 구문을 반환합니다.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 {
@@ -752,11 +744,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
-不使用 querystring 参数 `verbose=true`：
+如果没有 querystring 参数，`verbose=true`：
 
 ```json
 "entities": {
@@ -768,7 +760,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-使用 querystring 参数 `verbose=true`：
+对于 querystring 参数，`verbose=true`：
 
 ```json
 "entities": {
@@ -817,20 +809,20 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
 * * *
 
 
-## <a name="data-matching-multiple-entities"></a>匹配多个实体的数据
+## <a name="data-matching-multiple-entities"></a>여러 엔터티와 일치하는 데이터
 
-LUIS 返回在陈述中发现的所有实体。 因此，机器人可能需要基于这些结果进行决策。 一个陈述中可能包含很多实体：
+LUIS는 발화에서 검색된 모든 엔터티를 반환합니다. 결과적으로 챗봇은 결과를 기반으로 결정해야 할 수 있습니다. 발화에는 많은 엔터티가 포함될 수 있습니다.
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-LUIS 终结点可以发现不同实体中的相同数据。
+LUIS 终结点可在不同的实体中发现相同的数据。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 {
@@ -956,9 +948,9 @@ LUIS 终结点可以发现不同实体中的相同数据。
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-不使用 `verbose=true` 作为 querystring 参数。
+不 `verbose=true` 作为查询字符串参数。
 
 ```json
 "entities": {
@@ -995,7 +987,7 @@ LUIS 终结点可以发现不同实体中的相同数据。
 }
 ```
 
-使用 `verbose=true` 作为 querystring 参数。
+使用 `verbose=true` 作为查询字符串参数。
 
 
 ```json
@@ -1133,17 +1125,17 @@ LUIS 终结点可以发现不同实体中的相同数据。
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
 * * *
 
-## <a name="data-matching-multiple-list-entities"></a>匹配多个列表实体的数据
+## <a name="data-matching-multiple-list-entities"></a>여러 목록 엔터티와 일치하는 데이터
 
-如果一个单词或短语与多个列表实体匹配，则终结点查询会返回每个列表实体。
+단어나 구가 둘 이상의 목록 엔터티와 일치하는 경우, 엔드포인트 쿼리는 각 목록 엔터티를 반환합니다.
 
-对于查询 `when is the best time to go to red rock?`，且应用中的单词 `red` 出现在多个列表中，LUIS 会识别所有实体，并返回一组实体作为 JSON 终结点响应的一部分： 
+`when is the best time to go to red rock?` 쿼리에서 앱이 둘 이상의 목록에 `red`라는 단어를 갖는 경우 LUIS는 모든 엔터티를 인식하고 엔터티의 배열을 JSON 엔드포인트 응답의 일부로 반환합니다.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 예측 엔드포인트 응답](#tab/V2)
 
 ```JSON
 {
@@ -1181,9 +1173,9 @@ LUIS 终结点可以发现不同实体中的相同数据。
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 예측 엔드포인트 응답](#tab/V3)
 
-在查询字符串中不包含 `verbose=true`：
+查询字符串中无 `verbose=true`：
 
 ```JSON
 {
@@ -1213,7 +1205,7 @@ LUIS 终结点可以发现不同实体中的相同数据。
 ```
 
 
-在查询字符串中包含 `verbose=true`：
+在查询字符串中具有 `verbose=true`：
 
 ```JSON
 {
@@ -1270,10 +1262,10 @@ LUIS 终结点可以发现不同实体中的相同数据。
 }
 ```
 
-详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+[V3 예측 엔드포인트](luis-migration-api-v3.md)에 대해 자세히 알아봅니다.
 
 * * *
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
+LUIS 앱에 엔터티를 추가하는 방법에 대한 자세한 내용은 [엔터티 추가](luis-how-to-add-entities.md)를 참조하세요.

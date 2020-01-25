@@ -12,38 +12,38 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e79b2342f481786caf46aeb9454e2961637da335
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948226"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712932"
 ---
-# <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
+# <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 감사 로그 액세스
 
 Azure Active Directory B2C （Azure AD B2C）会发出审核日志，其中包含有关 B2C 资源、颁发的令牌以及管理员访问的活动信息。 本文简要概述了审核日志中提供的信息，以及如何访问 Azure AD B2C 租户的此数据的说明。
 
-审核日志事件只保留**7 天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
+审核日志事件只保留**7 天**。 보존 기간이 더 오래 필요한 경우, 아래 표시된 방법 중 하나를 사용하여 로그를 다운로드하고 저장하도록 플랜하세요.
 
 > [!NOTE]
 > 在 Azure 门户的 " **Azure Active Directory** " 或 " **Azure AD B2C** " 页下的 "**用户**" 部分下，不能看到用户登录的单个 Azure AD B2C 应用程序。 登录事件显示用户活动，但不能将其与用户登录到的 B2C 应用程序相关联。 如本文中所述，你必须使用审核日志。
 
-## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志的 B2C 类别中提供的活动的概述
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>감사 로그의 B2C 범주에서 사용 가능한 작업 개요
 
-审核日志中的“B2C”类别包含以下类型的活动：
+감사 로그의 **B2C** 범주에는 다음 유형의 작업이 포함됩니다.
 
-|活动类型 |描述  |
+|활동 유형 |Description  |
 |---------|---------|
-|授权 |与访问 B2C 资源的用户授权有关的活动（例如，管理员访问 B2C 策略列表）。         |
-|目录 |当管理员使用 Azure 门户登录时，与检索到的目录属性相关的活动。 |
-|Application | 在 B2C 应用程序上创建、读取、更新和删除（CRUD）操作。 |
-|密钥 |对 B2C 密钥容器中存储的密钥进行 CRUD 操作。 |
-|资源 |B2C 资源上的 CRUD 操作。 例如，策略和标识提供者。
-|Authentication |验证用户凭据和令牌颁发。|
+|권한 부여 |与访问 B2C 资源的用户授权有关的活动（例如，管理员访问 B2C 策略列表）。         |
+|디렉터리 |当管理员使用 Azure 门户登录时，与检索到的目录属性相关的活动。 |
+|애플리케이션 | 在 B2C 应用程序上创建、读取、更新和删除（CRUD）操作。 |
+|키 |对 B2C 密钥容器中存储的密钥进行 CRUD 操作。 |
+|리소스 |B2C 资源上的 CRUD 操作。 例如，策略和标识提供者。
+|인증 |验证用户凭据和令牌颁发。|
 
-有关用户对象 CRUD 活动，请参阅“核心目录”类别。
+사용자 개체 CRUD 활동의 경우 **핵심 디렉터리** 범주를 참조하세요.
 
-## <a name="example-activity"></a>示例活动
+## <a name="example-activity"></a>예제 활동
 
 Azure 门户中的此示例图像显示用户使用外部标识提供者（在本例中为 Facebook）登录时捕获的数据：
 
@@ -51,21 +51,21 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 "活动详细信息" 面板包含下列相关信息：
 
-|部分|字段|描述|
+|섹션|필드|Description|
 |-------|-----|-----------|
-| 活动 | 名称 | 发生的活动。 例如，*向应用程序发出 id_token*，这将结束实际用户登录。 |
-| 发起者（参与者） | ObjectId | 用户登录到的 B2C 应用程序的**对象 ID** 。 此标识符在 Azure 门户中不可见，但可通过 Microsoft Graph API 访问。 |
-| 发起者（参与者） | Spn | 用户登录到的 B2C 应用程序的**应用程序 ID** 。 |
+| 작업 | 이름 | 发生的活动。 例如，*向应用程序发出 id_token*，这将结束实际用户登录。 |
+| 초기자(작업자) | ObjectId | 用户登录到的 B2C 应用程序的**对象 ID** 。 此标识符在 Azure 门户中不可见，但可通过 Microsoft Graph API 访问。 |
+| 초기자(작업자) | Spn | 用户登录到的 B2C 应用程序的**应用程序 ID** 。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID** 。 |
-| 更多详细信息 | TenantId | Azure AD B2C 租户的**租户 ID** 。 |
-| 更多详细信息 | PolicyId | 用于签署用户的用户流（策略）的**策略 ID** 。 |
-| 更多详细信息 | ApplicationId | 用户登录到的 B2C 应用程序的**应用程序 ID** 。 |
+| 추가 세부 정보 | TenantId | Azure AD B2C 租户的**租户 ID** 。 |
+| 추가 세부 정보 | PolicyId | 用于签署用户的用户流（策略）的**策略 ID** 。 |
+| 추가 세부 정보 | ApplicationId | 用户登录到的 B2C 应用程序的**应用程序 ID** 。 |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>查看 Azure 门户中的审核日志
 
 Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
+1. [Azure 포털](https://portal.azure.com)
 1. 切换到包含 Azure AD B2C 租户的目录，然后浏览到**Azure AD B2C**。
 1. 在左侧菜单中的 "**活动**" 下，选择 "**审核日志**"。
 
@@ -84,7 +84,7 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>获取具有 Azure AD 报告 API 的审核日志
 
-审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅[Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
+감사 로그는 Azure Active Directory에 대한 다른 활동과 동일한 파이프라인에 게시되므로 [Azure Active Directory 보고 API](https://docs.microsoft.com/graph/api/directoryaudit-list)를 통해 액세스할 수 있습니다. 有关详细信息，请参阅[Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
 
 ### <a name="enable-reporting-api-access"></a>启用报表 API 访问
 
@@ -102,7 +102,7 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 
 ### <a name="assign-api-access-permissions"></a>分配 API 访问权限
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applicationstabapplications"></a>[애플리케이션](#tab/applications/)
 
 1. 在 "**已注册的应用**概述" 页上，选择 "**设置**"。
 1. 在 " **API 访问**" 下，选择 "**所需权限**"。
@@ -110,21 +110,21 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 1. 选择 " **Microsoft Graph**"，然后**选择**""。
 1. 在 "**应用程序权限**" 下，选择 "**读取所有审核日志数据**"。
 1. 选择 "**选择**" 按钮，然后选择 "**完成**"。
-1. 选择“授予权限”，然后选择“是”。
+1. **사용 권한 부여**를 선택한 다음, **예**를 선택합니다.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[앱 등록(미리 보기)](#tab/app-reg-preview/)
 
-1. 在“管理”下选择“API 权限”。
-1. 在“已配置权限”下，选择“添加权限”。
+1. **관리** 아래에서 **API 권한**을 선택합니다.
+1. **구성된 사용 권한** 아래에서 **권한 추가**를 선택합니다.
 1. 选择 " **Microsoft api** " 选项卡。
-1. 选择“Microsoft Graph”。
-1. 选择“应用程序权限”。
+1. **Microsoft Graph**를 선택합니다.
+1. **애플리케이션 권한**을 선택합니다.
 1. 展开 "**审核日志**"，然后选中 "**审核日志**" 复选框。
-1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
-1. 选择“向(租户名称)授予管理员许可”。
+1. **권한 추가**를 선택합니다. 안내에 따라 몇 분 정도 기다린 후 다음 단계를 진행하세요.
+1. **(테넌트 이름)에 대한 관리자 동의 허용**을 선택합니다.
 1. 如果已为你分配了*全局管理员*角色，请选择你当前登录的帐户，或者使用你的 Azure AD B2C 租户中被分配了*全局管理员*角色的帐户登录。
-1. 选择“接受”。
-1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在*审核日志*权限的 "**状态**" 下。 传播权限可能需要几分钟时间。
+1. **수락**을 선택합니다.
+1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在*审核日志*权限的 "**状态**" 下。 권한이 전파되려면 몇 분 정도 걸릴 수 있습니다.
 
 * * *
 
@@ -142,7 +142,7 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
-### <a name="powershell-script"></a>PowerShell 脚本
+### <a name="powershell-script"></a>PowerShell 스크립트
 
 下面的 PowerShell 脚本演示了如何查询 Azure AD 报告 API 的示例。 查询 API 后，它会将记录的事件打印到标准输出，然后将 JSON 输出写入文件。
 
@@ -165,7 +165,7 @@ Write-Output "Searching for events starting $7daysago"
 $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-# Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+# Parse audit report items, save output to file(s): auditX.json, where X = 0 through n for number of nextLink pages
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
@@ -256,6 +256,6 @@ if ($oauth.access_token -ne $null) {
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 可以自动执行其他管理任务，例如，[用 .net 管理用户](active-directory-b2c-devquickstarts-graph-dotnet.md)。

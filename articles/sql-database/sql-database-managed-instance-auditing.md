@@ -1,6 +1,6 @@
 ---
-title: 托管实例审核
-description: 了解如何通过 T-SQL 开始使用 Azure SQL 数据库托管实例审核
+title: 관리형 인스턴스 감사
+description: T-SQL을 사용하여 Azure SQL Database 관리형 인스턴스 감사를 시작하는 방법을 알아봅니다.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,93 +9,93 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818997"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719902"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database 관리형 인스턴스 감사 시작
 
-[托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
+[관리되는 인스턴스](sql-database-managed-instance.md) 감사는 데이터베이스 이벤트를 추적하고 Azure Storage 계정의 감사 로그에 기록합니다. 또한
 
-- 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
+- 감사는 규정 준수를 유지 관리하고, 데이터베이스 작업을 이해하고, 비즈니스 문제나 의심스러운 보안 위반을 나타낼 수 있는 불일치 및 이상 활동을 파악하는 데 도움이 될 수 있습니다.
+- 감사를 사용하면 규정을 완전히 준수한다고 보장할 수는 없지만 규정 표준을 보다 쉽게 준수할 수 있습니다. 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中可以找到最新的 SQL 数据库符合性认证列表。
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Azure Storage로 서버에 대한 감사 설정
 
-以下部分介绍了托管实例上的审核配置。
+다음 섹션에서는 관리되는 인스턴스에 대한 감사 구성을 설명합니다.
 
-1. 转到 [Azure 门户](https://portal.azure.com)。
-1. 创建一个用于存储审核日志的 Azure 存储**容器**。
+1. [Azure 포털](https://portal.azure.com)로 이동합니다.
+1. 감사 로그가 저장되는 Azure Storage **컨테이너**를 만듭니다.
 
-   1. 导航到要在其中存储审核日志的 Azure 存储。
+   1. 감사 로그를 저장할 Azure Storage로 이동합니다.
 
       > [!IMPORTANT]
-      > 请使用与托管实例位于同一区域中的存储帐户，以避免跨区域读取/写入。
+      > 동일한 지역의 스토리지 계정을 관리되는 인스턴스로 사용하여 지역 간 읽기/쓰기를 방지합니다.
 
-   1. 在存储帐户中，转到“概述”，然后单击“Blob”。
+   1. 스토리지 계정에서 **개요**로 이동한 다음, **Blob**을 클릭합니다.
 
-      ![Azure Blob 小组件](./media/sql-managed-instance-auditing/1_blobs_widget.png)
+      ![Azure Blob 위젯](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. 在顶部菜单中，单击“+ 容器”以创建新容器。
+   1. 최상위 메뉴에서 **+ 컨테이너**를 클릭하여 새 컨테이너를 만듭니다.
 
-      ![创建 Blob 容器图标](./media/sql-managed-instance-auditing/2_create_container_button.png)
+      ![Blob 컨테이너 만들기 아이콘](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. 提供一个容器**名称**，将公共访问级别设置为“专用”，然后单击“确定”。
+   1. 컨테이너 **이름**을 지정하고 공용 액세스 수준을 **프라이빗**으로 설정한 다음, **확인**을 클릭합니다.
 
-      ![创建 Blob 容器配置](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Blob 컨테이너 구성 만들기](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
-1. 为审核日志创建容器后，可通过两种方式将其配置为审核日志的目标：[使用 T-SQL](#blobtsql)，或[使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
+1. 감사 로그용 컨테이너를 만든 후 이 컨테이너를 감사 로그의 대상으로 구성하려면 [T-SQL을 사용](#blobtsql)하거나 [SSMS(SQL Server Management Studio) UI를 사용](#blobssms)할 수 있습니다.
 
-   - <a id="blobtsql"></a>使用 T-SQL 为审核日志配置 Blob 存储：
+   - <a id="blobtsql"></a>T-SQL을 사용하여 감사 로그용 Blog 스토리지 구성:
 
-     1. 在容器列表中，单击新创建的容器，然后单击“容器属性”。
+     1. 컨테이너 목록에서 새로 만든 컨테이너를 클릭한 다음, **컨테이너 속성**을 클릭합니다.
 
-        ![Blob 容器属性按钮](./media/sql-managed-instance-auditing/4_container_properties_button.png)
+        ![Blob 컨테이너 속성 단추](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. 通过单击复制图标来复制容器 URL并保存该 URL（例如在记事本中）供将来使用。 容器 URL 格式应当为 `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. 복사 아이콘을 클릭하여 컨테이너 URL을 복사하고 나중에 사용할 수 있도록 메모장 등에서 URL을 저장합니다. 컨테이너 URL 형식은 `https://<StorageName>.blob.core.windows.net/<ContainerName>`이어야 합니다.
 
-        ![Blob 容器复制 URL](./media/sql-managed-instance-auditing/5_container_copy_name.png)
+        ![Blob 컨테이너 URL 복사](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. 生成一个 Azure 存储 **SAS 令牌**，用于向存储帐户授予托管实例审核访问权限：
+     1. 스토리지 계정에 관리되는 인스턴스 감사 액세스 권한을 부여하기 위한 Azure Storage **SAS 토큰**을 생성합니다.
 
-        - 导航到在前面的步骤中你在其中创建了容器的 Azure 存储帐户。
+        - 이전 단계에서 컨테이너를 만든 Azure Storage 계정으로 이동합니다.
 
-        - 在“存储设置”菜单中单击“共享访问签名”。
+        - 스토리지 설정 메뉴에서 **공유 액세스 서명**을 클릭합니다.
 
-          ![存储设置菜单中的“共享访问签名”图标](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
+          ![스토리지 설정 메뉴의 공유 액세스 서명 아이콘](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
 
-        - 如下所述配置 SAS：
+        - 다음과 같이 SAS를 구성합니다.
 
-          - **允许的服务**：Blob
+          - **허용된 서비스**: Blob
 
-          - **开始日期**：为避免与时区相关的问题，建议使用昨天的日期
+          - **시작 날짜**: 표준 시간대 관련 문제를 방지하려면 어제 날짜를 사용하는 것이 좋습니다.
 
-          - **结束日期**：选择此 SAS 令牌的到期日期
+          - **종료 날짜**: 이 SAS 토큰이 만료되는 날짜를 선택합니다.
 
             > [!NOTE]
-            > 在到期时续订令牌，以避免审核失败。
+            > 감사 오류를 방지하려면 만료 시 토큰을 갱신합니다.
 
-          - 单击“生成 SAS”。
+          - **SAS 생성**을 클릭합니다.
             
-            ![SAS 配置](./media/sql-managed-instance-auditing/7_sas_configure.png)
+            ![SAS 구성](./media/sql-managed-instance-auditing/7_sas_configure.png)
 
-        - 单击“生成 SAS”令牌后，SAS 令牌将出现在底部。 通过单击复制图标来复制令牌并保存该令牌（例如在记事本中）供将来使用。
+        - SAS 생성을 클릭하면 SAS 토큰이 맨 아래에 표시됩니다. 복사 아이콘을 클릭하여 토큰을 복사하고 나중에 사용할 수 있도록 메모장 등에서 토큰을 저장합니다.
 
-          ![复制 SAS 令牌](./media/sql-managed-instance-auditing/8_sas_copy.png)
+          ![SAS 토큰 복사](./media/sql-managed-instance-auditing/8_sas_copy.png)
 
           > [!IMPORTANT]
-          > 从令牌的开头删除问号 (“?”) 字符。
+          > 토큰 시작 부분에서 물음표(“?”) 문자를 제거합니다.
 
-     1. 通过 SQL Server Management Studio (SSMS) 或任何其他支持的工具连接到托管实例。
+     1. SSMS(SQL Server Management Studio) 또는 기타 지원되는 도구를 통해 관리되는 인스턴스에 연결합니다.
 
-     1. 执行以下 T-SQL 语句来使用你在前面的步骤中创建的容器 URL 和 SAS 令牌**创建新凭据**：
+     1. 다음 T-SQL 문을 실행하여 이전 단계에서 만든 컨테이너 URL 및 SAS 토큰으로 **새 자격 증명을 만듭니다**.
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -104,7 +104,7 @@ ms.locfileid: "73818997"
         GO
         ```
 
-     1. 执行以下 T-SQL 语句来创建新的服务器审核（请选择自己的审核名称，并使用在前面步骤中创建的容器 URL）。 如果未指定，则 `RETENTION_DAYS` 默认为 0（无限期保留）：
+     1. 다음 T-SQL 문을 실행하여 새 서버 감사를 만듭니다(고유한 감사 이름을 선택하고 이전 단계에서 만든 컨테이너 URL 사용). 지정되지 않은 경우 `RETENTION_DAYS` 기본값은 0(무제한 보존)입니다.
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -112,38 +112,38 @@ ms.locfileid: "73818997"
         GO
         ```
 
-        1. 继续[创建服务器审核规范或数据库审核规范](#createspec)
+        1. [서버 감사 사양 또는 데이터베이스 감사 사양](#createspec)을 만들어 계속 진행합니다.
 
-   - <a id="blobssms"></a>使用 SQL Server Management Studio (SSMS) 18（预览版）为审核日志配置 Blob 存储：
+   - <a id="blobssms"></a>SSMS(SQL Server Management Studio) 18(미리 보기)을 사용하여 감사 로그에 대한 blob 스토리지를 구성합니다.
 
-     1. 使用 SQL Server Management Studio (SSMS) UI 连接到托管实例。
+     1. SSMS(SQL Server Management Studio) UI를 사용하여 Managed Instance에 연결합니다.
 
-     1. 展开对象资源管理器的根节点。
+     1. 개체 탐색기의 루트 노드를 확장합니다.
 
-     1. 展开“安全性”节点，右键单击“审核”节点，然后单击“新建审核”：
+     1. **보안** 노드를 확장하고 마우스 오른쪽 단추로 **감사** 노드를 클릭한 후 "새 감사"를 클릭합니다.
 
-        ![展开“安全性”和“审核”节点](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
+        ![보안 및 감사 노드 확장](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. 确保“审核目标”中已选择“URL”，然后单击“浏览”：
+     1. **감사 대상**에서 "URL"이 선택되어 있는지 확인하고 **찾아보기**를 클릭합니다.
 
-        ![浏览 Azure 存储](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
+        ![Azure Storage 찾아보기](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
-     1. （可选）登录到 Azure 帐户：
+     1. (선택 사항) Azure 계정에 로그인합니다.
 
-        ![登录 Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Azure에 로그인](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. 从下拉列表中选择订阅、存储帐户和 Blob 容器，或者单击“创建”来创建自己的容器。 完成后，单击“确定”：
+     1. 드롭다운에서 구독, 스토리지 계정 및 Blob 컨테이너를 선택하거나 **만들기**를 클릭하여 고유한 컨테이너를 만듭니다. 완료되면 **확인**을 클릭합니다.
 
-        ![选择 Azure 订阅、存储帐户和 Blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![选择 Azure 订阅、存储帐户和 blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
-     1. 在“创建审核”对话框中单击“确定”。
+     1. "감사 만들기" 대화 상자에서 **확인**을 클릭합니다.
 
-1. <a id="createspec"></a>将 Blob 容器配置为审核日志的目标后，像使用 SQL Server 时一样创建服务器审核规范或数据库审核规范：
+1. <a id="createspec"></a>Blob 컨테이너를 감사 로그의 대상으로 구성한 후 SQL Server의 경우와 마찬가지로, 서버 감사 사양 또는 데이터베이스 감사 사양을 만듭니다.
 
-   - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [서버 감사 사양 만들기 T-SQL 가이드](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [데이터베이스 감사 사양 만들기 T-SQL 가이드](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. 启用在步骤 6 中创建的服务器审核：
+1. 6단계에서 만든 서버 감사를 사용하도록 설정합니다.
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -151,96 +151,96 @@ ms.locfileid: "73818997"
     GO
     ```
 
-了解更多信息：
+추가 정보는 다음을 참조하세요.
 
 - [在 Azure SQL 数据库和 SQL Server 中的数据库中审核单一数据库、弹性池和托管实例之间的差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>将服务器的审核设置为事件中心或 Azure Monitor 日志
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>为服务器设置到事件中心或 Azure Monitor 日志的审核
 
-可将托管实例的审核日志发送到事件中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
+托管实例中的审核日志甚至可以发送到中心或 Azure Monitor 日志。 이 섹션에서는 이렇게 구성하는 방법을 설명합니다.
 
-1. 在 [Azure 门户](https://portal.azure.com/)中导航到托管实例。
+1. [Azure Portal](https://portal.azure.com/)에서 관리되는 인스턴스로 이동합니다.
 
-2. 单击“诊断设置”。
+2. **진단 설정**을 클릭합니다.
 
-3. 单击“启用诊断”。 如果已启用诊断，则会显示“+ 添加诊断设置”。
+3. **진단 켜기**를 클릭합니다. 진단을 이미 사용하도록 설정한 경우 *+진단 설정 추가*가 대신 표시됩니다.
 
-4. 在日志列表中选择“SQLSecurityAuditEvents”。
+4. 로그 목록에서 **SQLSecurityAuditEvents**를 선택합니다.
 
-5. 选择审核事件的目标 - 事件中心和/或 Azure Monitor 日志。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
+5. 选择审核事件的目标-事件中心、Azure Monitor 日志，或同时选择两者。 각 대상에 대해 필수 매개 변수(예: Log Analytics 작업 영역)를 구성합니다.
 
-6. 单击“保存”。
+6. **저장**을 클릭합니다.
 
-    ![配置诊断设置](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
+    ![진단 설정 구성](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. 使用 **SQL Server Management Studio (SSMS)** 或任何其他支持的客户端连接到托管实例。
+7. **SSMS(SQL Server Management Studio)** 또는 기타 지원되는 클라이언트를 사용하여 관리되는 인스턴스에 연결합니다.
 
-8. 执行下面的 T-SQL 语句，创建服务器审核：
+8. 다음 T-SQL 문을 실행하여 서버 감사를 만듭니다.
 
     ```SQL
     CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
     GO
     ```
 
-9. 像针对 SQL Server 那样创建一个服务器审核规范或数据库审核规范：
+9. SQL Server의 경우와 마찬가지로, 서버 감사 사양 또는 데이터베이스 감사 사양을 만듭니다.
 
-   - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [서버 감사 사양 만들기 T-SQL 가이드](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [데이터베이스 감사 사양 만들기 T-SQL 가이드](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. 启用在步骤 8 中创建的服务器审核：
+10. 启用在步骤8：
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
     GO
     ```
 
-## <a name="consume-audit-logs"></a>使用审核日志
+## <a name="consume-audit-logs"></a>감사 로그 사용
 
-### <a name="consume-logs-stored-in-azure-storage"></a>使用存储在 Azure 存储中的日志
+### <a name="consume-logs-stored-in-azure-storage"></a>Azure Storage에 저장된 로그 사용
 
-可使用多种方法查看 blob 审核日志。
+여러 방법으로 Blob 감사 로그를 볼 수 있습니다.
 
-- 使用系统函数 `sys.fn_get_audit_file` (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file 文档](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
+- 시스템 함수 `sys.fn_get_audit_file`(T-SQL)을 사용하여 테이블 형식의 감사 로그 데이터를 반환할 수 있습니다. 이 함수 사용에 대한 자세한 내용은 [sys.fn_get_audit_file 설명서](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)를 참조하세요.
 
-- 可使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具浏览审核日志。 在 Azure 存储中，审核日志作为 Blob 文件的集合保存在定义为存储审核日志的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) 등의 도구를 사용하여 감사 로그를 살펴볼 수 있습니다. Azure Storage에서 감사 로그는 감사 로그를 저장하도록 정의된 컨테이너 내부에 Blob 파일 컬렉션으로 저장됩니다. 스토리지 폴더의 계층 구조, 명명 규칙 및 로그 형식에 대한 자세한 내용은 [BLOB 감사 로그 형식 참조](https://go.microsoft.com/fwlink/?linkid=829599)를 참조하세요.
 
-- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
+- 감사 로그 사용 방법의 전체 목록은 [SQL 데이터베이스 감사 시작](sql-database-auditing.md)을 참조하세요.
 
-### <a name="consume-logs-stored-in-event-hub"></a>使用在事件中心中存储的日志
+### <a name="consume-logs-stored-in-event-hub"></a>Event Hubs에 저장된 로그 사용
 
-若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 Azure 事件中心文档。
+이벤트 허브에서 감사 로그 데이터를 사용하려면 이벤트를 사용하고 이벤트를 대상에 작성하도록 스트림을 설정해야 합니다. 자세한 내용은 Azure Event Hubs 설명서를 참조하세요.
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>使用和分析存储在 Azure Monitor 日志中的日志
 
-如果将审核日志写入到 Azure Monitor 日志，则可以在 Log Analytics 工作区中使用它们，可以在其中对审核数据运行高级搜索。 首先，导航到 Log Analytics 工作区，在“常规”部分下单击“日志”，然后输入一个简单查询（例如： *）以查看审核日志*`search "SQLSecurityAuditEvents"`。  
+如果审核日志写入 Azure Monitor 日志，则它们将在 "Log Analytics" 工作区中提供，您可以在其中对审核数据运行高级搜索。 作为起点，请导航到 "Log Analytics" 工作区，然后在 "*常规*" 部分中单击 "*日志*"，然后输入简单查询，例如： `search "SQLSecurityAuditEvents"` 查看审核日志。  
 
-有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+Azure Monitor 日志使用集成的搜索和自定义仪表板，可以在所有工作负荷和服务器之间轻松分析数百万条记录，从而为你提供实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL 数据库中的数据库与 SQL Server 中的数据库之间的审核差异
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL Database의 데이터베이스 및 SQL Server의 데이터베이스 간 감사 차이점
 
-在 Azure SQL 数据库中的数据库中审核与在 SQL Server 中的数据库中审核的主要差异为：
+Azure SQL Database의 데이터베이스 및 SQL Server의 데이터베이스에서 감사 간의 주요 차이점은 다음과 같습니다.
 
-- 使用 Azure SQL 数据库中的托管实例部署选项，审核在服务器级别执行，并在 Azure Blob 存储中存储 `.xel` 日志文件。
-- 在本地 SQL Server/虚拟机上的 SQL Server 中，审核是在服务器一级执行，但却在文件系统/Windows 事件日志中存储事件。
+- Azure SQL Database의 관리형 인스턴스 배포 옵션을 사용하면 감사는 서버 수준에서 작동하며 `.xel` 로그 파일이 Azure Blob 스토리지에 저장됩니다.
+- SQL Server 온-프레미스/가상 머신에서 감사는 서버 수준에서 작동하지만 파일 시스템/Windows 이벤트 로그에 이벤트를 저장합니다.
 
-托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 **不支持**文件和 Windows 日志。
+관리되는 인스턴스의 XEvent 감사는 Azure Blob Storage 대상을 지원합니다. 파일 및 Windows 로그는 **지원되지 않습니다**.
 
-Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
+Azure Blob Storage에 대한 감사에서 `CREATE AUDIT` 구문의 주요 차이점은 다음과 같습니다.
 
-- 提供了新语法 `TO URL`，该语法允许指定用于放置 `.xel` 文件的 Azure Blob 存储容器的 URL。
-- 提供了新语法 `TO EXTERNAL MONITOR` 以启用事件中心和 Azure Monitor 日志这两个目标。
-- `TO FILE`不支持 语法，因为 SQL 数据库无法访问 Windows 文件共享。
-- **不支持**关闭选项。
-- `queue_delay`不支持 为 0。
+- 새 `TO URL` 구문이 제공되고 `.xel` 파일이 배치되는 Azure Blob Storage 컨테이너의 URL을 지정할 수 있습니다.
+- 提供了一个新的语法 `TO EXTERNAL MONITOR` 来实现即使是中心和 Azure Monitor 日志目标。
+- SQL Database에서 Windows 파일 공유에 액세스할 수 없으므로 `TO FILE` 구문은 **지원되지 않습니다**.
+- 종료 옵션은 **지원되지 않습니다**.
+- `queue_delay` 0은 **지원되지 않습니다**.
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
-- 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
+- 감사 로그 사용 방법의 전체 목록은 [SQL 데이터베이스 감사 시작](sql-database-auditing.md)을 참조하세요.
+- 有关支持标准符合性的 Azure 程序的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中可以找到最新的 SQL 数据库符合性认证列表。
 
 <!--Image references-->
 

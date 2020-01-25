@@ -1,6 +1,6 @@
 ---
-title: 使用范围筛选器预配应用 | Microsoft Docs
-description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
+title: 범위 지정 필터를 사용하여 앱 프로비전 | Microsoft Docs
+description: 개체가 비즈니스 요구 사항을 충족하지 못하는 경우 프로비전하는 자동화된 사용자를 지원하는 앱의 개체가 실제로 프로비전되지 않도록 하기 위한 지정 범위 필터 사용 방법을 알아봅니다.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,116 +15,116 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778339"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711699"
 ---
-# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
-本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
+# <a name="attribute-based-application-provisioning-with-scoping-filters"></a>범위 지정 필터를 사용한 특성 기반 애플리케이션 프로비전
+이 문서에서는 범위 지정 필터를 사용하여 어떤 사용자를 애플리케이션에 프로비전할지 결정하는 특성 기반 규칙을 정의하는 방법을 설명합니다.
 
-## <a name="scoping-filter-use-cases"></a>范围筛选器用例
+## <a name="scoping-filter-use-cases"></a>범위 지정 필터 사용 사례
 
-范围筛选器允许 Azure Active Directory (Azure AD) 预配服务包含或排除具有与特定值匹配的属性的任何用户。 例如，将用户从 Azure AD 预配到销售团队使用的 SaaS 应用程序时，可指定预配范围内仅含“部门”属性为“销售”的用户。
+범위 지정 필터를 사용하면 Azure AD(Azure Active Directory)가 특정 값에 부합하는 특성을 갖는 사용자를 포함하거나 제외하여 서비스를 프로비전할 수 있습니다. 예를 들어 영업 팀에서 사용하는 SaaS 애플리케이션에 Azure AD 사용자를 프로비전할 때, "부서" 속성이 "영업"인 사용자만 프로비전 범위에 포함되도록 지정할 수 있습니다.
 
-范围筛选器的用法因预配连接器的类型而异：
+프로비전 커넥터 유형에 따라 범위 지정 필터를 다르게 사용할 수 있습니다.
 
-* **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](assign-user-or-group-access-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
+* **Azure AD에서 SaaS 애플리케이션으로 아웃바운드 프로비전** Azure AD가 원본 시스템일 때 [사용자 및 그룹 할당](assign-user-or-group-access-portal.md)이 프로비전 범위에 포함될 사용자를 결정하는 가장 일반적인 방법입니다. 이러한 할당은 Single Sign-On 활성화에도 사용되며 액세스 및 프로비전을 관리하는 단일 방법을 제공합니다. 범위 지정 필터는 할당과 함께 또는 할당을 대체하여 선택적으로 사용하여 특성 값에 따라 사용자를 필터링할 수 있습니다.
 
     >[!TIP]
-    > 可将预配设置下的[范围](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。 使用此选项及基于属性的范围筛选器比使用基于组的分配速度更快。  
+    > 프로비전 설정 아래에 있는 [범위](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) 메뉴의 설정을 **모든 사용자 및 그룹 동기화**로 변경하여 엔터프라이즈 애플리케이션에 대한 할당을 기준으로 프로비전을 사용하지 않을 수 있습니다. 이 옵션을 특성 기준 범위 지정 필터와 함께 사용하면 그룹 기반 할당에서보다 더 빠른 성능을 제공합니다.  
 
-* **从 HCM 应用程序到 Azure AD 和 Active Directory 的入站预配**。 当 [Workday 等 HCM 应用程序](../saas-apps/workday-tutorial.md)是源系统时，范围筛选器是确定应从 HCM 应用程序预配到 Active Directory 或 Azure AD 的用户的主要方法。
+* **HCM 애플리케이션에서 Azure AD 및 Active Directory로의 인바운드 프로비전** [Workday 같은 HCM 애플리케이션](../saas-apps/workday-tutorial.md)이 원본 시스템일 경우, 범위 지정 필터가 HCM 애플리케이션이 Active Directory 또는 Azure AD에 프로비전할 사용자를 판단하는 기본 방법이 됩니다.
 
-默认情况下，Azure AD 预配连接器没有配置任何基于属性的范围筛选器。 
+기본적으로 Azure AD 프로비전 커넥터에는 특성 기반 범위 지정 필터가 구성되어 있지 않습니다. 
 
-## <a name="scoping-filter-construction"></a>范围筛选器构造
+## <a name="scoping-filter-construction"></a>범위 지정 필터 구축
 
-范围筛选器包含一个或多个子句。 子句通过评估每个用户的属性来确定允许哪些用户通过范围筛选器。 例如，可能有一个子句要求用户的“state”属性等于“New York”，因此只有纽约用户将预配到应用程序。 
+범위 지정 필터는 하나 이상의 *절*로 구성됩니다. 절은 각 사용자의 특성을 평가하여 어떤 사용자가 범위 지정 필터를 통과할 수 있는지를 파악합니다. 예를 들어, 사용자의 "상태" 특성이 뉴욕이어야 하는 절을 가졌기 때문에 "뉴욕"의 사용자만 애플리케이션에 프로비전됩니다. 
 
-单个子句定义单个属性值的单个条件。 如果在单个范围筛选器中创建多个子句，则将使用“AND”逻辑评估它们。 这意味着所有子句必须评估为“true”方可预配用户。
+단일 절은 단일 특성 값에 대한 단일 조건을 정의합니다. 단일 범위 지정 필터에서 여러 절이 생성될 경우 "AND" 논리를 사용하여 함께 평가됩니다. 즉 사용자에게 프로비전되려면 모든 절이  "true"로 평가되어야 합니다.
 
-最后，可为单个应用程序创建多个范围筛选器。 如果存在多个范围筛选器，则使用“OR”逻辑评估它们。 这意味着，如果配置的任意范围筛选器中所有子句评估为“true”，就会预配用户。
+마지막으로 단일 애플리케이션에 대해 여러 범위 지정 필터를 만들 수 있습니다. 범위 지정 필터가 여러 개 있으면 "OR" 논리를 사용하여 함께 평가됩니다. 즉, 구성된 범위 지정 필터의 모든 절이 "true"로 평가되면 사용자가 프로비전됩니다.
 
-将始终针对每个范围筛选器单独评估由 Azure AD 预配服务处理的每个用户或组。
+Azure AD 프로비전 서비스에서 처리한 각 사용자 또는 그룹은 항상 각 범위 지정 필터에 대해 개별적으로 평가됩니다.
 
-例如，考虑以下范围筛选器：
+예를 들어, 다음과 같은 범위 지정 필터를 고려해봅니다.
 
-![范围筛选器](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![범위 지정 필터](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
-按照此范围筛选器，用户必须满足以下条件，才能进行预配：
+프로비전되는 범위 지정 필터에 따라 사용자는 다음 조건을 충족해야 합니다.
 
-* 他们必须位于纽约。
-* 他们必须在工程部工作。
-* 其公司雇员 ID 必须在 1,000,000 和 2,000,000 之间。
-* 其职务不能为 null 或为空。
+* 뉴욕에 있어야 합니다.
+* 엔지니어링 부서에서 근무해야 합니다.
+* 회사 직원 ID가 1,000,000에서 2,000,000개 사이여야 합니다.
+* 직위가 null이나 공백이 아니어야 합니다.
 
-## <a name="create-scoping-filters"></a>创建范围筛选器
-在每个 Azure AD 用户预配连接器的属性映射过程中，配置范围筛选器。 以下过程假设已为[受支持的应用程序之一](../saas-apps/tutorial-list.md)设置了自动预配，且要向其添加范围筛选器。
+## <a name="create-scoping-filters"></a>범위 지정 필터 만들기
+범위 지정 필터는 각 Azure AD 사용자 프로비전 커넥터에 대해 특성 매핑의 일부로 구성됩니다. 다음 프로시저에서는 이미 [지원되는 애플리케이션 중 하나](../saas-apps/tutorial-list.md)에 대해 자동 프로비전을 설정했고 거기에 범위 지정 필터를 추가한다고 가정합니다.
 
-### <a name="create-a-scoping-filter"></a>创建范围筛选器
-1. 在 [Azure 门户](https://portal.azure.com)中，转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”部分。
+### <a name="create-a-scoping-filter"></a>범위 지정 필터 만들기
+1. [Azure Portal](https://portal.azure.com)에서 **Azure Active Directory** > **엔터프라이즈 애플리케이션** > **모든 애플리케이션** 섹션으로 이동합니다.
 
-2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
+2. 자동 프로비전을 구성한 애플리케이션을 선택합니다(예: "ServiceNow").
 
-3. 选择“预配”选项卡。
+3. **프로비전** 탭을 선택합니다.
 
-4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。
+4. **매핑** 섹션에서 범위 지정 필터를 구성하려는 매핑을 선택합니다.(예: "Azure Active Directory 사용자를 ServiceNow에 동기화합니다.")
 
-5. 选择“源对象范围”菜单。
+5. **원본 개체 범위** 메뉴를 선택합니다.
 
-6. 选择“添加范围筛选器”。
+6. **범위 지정 필터 추가**를 선택합니다.
 
-7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句。 支持以下运算符：
+7. 비교 대상이 될 **특성 이름**, **연산자**, **특성 값**을 선택하여 절을 정의합니다. 다음과 같은 연산자가 지원됩니다.
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **EQUALS**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
+   a. **EQUALS** 평가된 특성이 입력 문자열 값과 정확히 일치하면(대소문자 구분) "true"를 반환합니다.
 
-   b.保留“数据库类型”设置，即设置为“共享”。 **NOT EQUALS**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
+   b. **NOT EQUALS** 평가된 특성이 입력 문자열 값과 정확히 일치하면(대소문자 구분) "true"를 반환합니다.
 
-   c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
+   다. **IS TRUE** 평가된 특성이 부울 값 true를 포함하면 "true"를 반환합니다.
 
-   d.单击“下一步”。 **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d. **IS FALSE** 평가된 특성이 부울 값 false를 포함하면 "true"를 반환합니다.
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **IS NULL**。 如果评估的属性为空，则子句返回“true”。
+   e. **IS NULL** 평가된 특성이 비어 있으면 "true"를 반환합니다.
 
-   f. **IS NOT NULL**。 如果评估的属性不为空，则子句返回“true”。
+   f. **IS NOT NULL** 평가된 특성이 비어 있지 않으면 "true"를 반환합니다.
 
-   g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
+   g. **REGEX MATCH** 평가된 특성이 정규식 패턴과 일치하면 "true"를 반환합니다. 예를 들어, ([1-9][0-9])는 10~99 범위의 모든 숫자와 일치합니다.
 
-   h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
+   h. **NOT REGEX MATCH** 평가된 특성이 정규식 패턴과 일치하지 않으면 "true"를 반환합니다.
  
 >[!IMPORTANT] 
 > 不支持包含和 IsMemberOf 筛选器。 它们很快会从 UI 中删除。
 
-9. 可重复步骤 7-8 以添加其他范围子句。
+9. 필요에 따라 7~8단계를 반복하여 다른 범위 지정 절을 추가합니다.
 
-10. 在“范围筛选器标题”中，为范围筛选器添加名称。
+10. **범위 지정 필터 제목**에서 범위 지정 필터의 이름을 추가합니다.
 
-11. 选择“确定”。
+11. **확인**을 선택합니다.
 
-12. 在“范围筛选器”屏幕上再次选择“确定”。 （可选）重复步骤 6-11 添加另一范围筛选器。
+12. **범위 지정 필터** 화면에서 **확인**을 다시 선택합니다. 필요에 따라 6~11단계를 반복하여 다른 범위 지정 필터를 추가합니다.
 
-13. 在“属性映射”屏幕上选择“保存”。 
+13. **특성 매핑** 화면에서 **저장**을 선택합니다. 
 
 >[!IMPORTANT] 
-> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅[跳过对超出范围的用户帐户的删除](skip-out-of-scope-deletions.md)。
+> 새 범위 지정 필터를 저장하면 애플리케이션의 새로운 전체 동기화가 트리거되며 여기서 원본 시스템의 모든 사용자를 새 범위 지정 필터에 대해 다시 평가합니다. 애플리케이션의 사용자가 프로비전 범위에서 이전에 평가되었으나 범위를 벗어난 경우 해당 계정은 사용되지 않거나 애플리케이션에서 프로비전 해제됩니다. 若要替代此默认行为，请参阅[跳过对超出范围的用户帐户的删除](skip-out-of-scope-deletions.md)。
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 操作员 | 值 | Description|
+| 대상 특성| 연산자 | 값 | Description|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有 userPrincipal 域 @domain.com 的所有用户将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有 @domain.com 域的 userPrincipal 的所有用户将不在预配范围内|
-|department|EQUALS|销售|销售部门的所有用户都处于预配范围内|
+|department|EQUALS|销售量|销售部门的所有用户都处于预配范围内|
 |workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
 
-## <a name="related-articles"></a>相关文章
-* [在 SaaS 应用程序中自动预配和取消预配用户](user-provisioning.md)
-* [为用户预配自定义属性映射](customize-application-attributes.md)
-* [为属性映射编写表达式](functions-for-customizing-application-data.md)
-* [帐户预配通知](user-provisioning.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](use-scim-to-provision-users-and-groups.md)
-* [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
+## <a name="related-articles"></a>관련 문서
+* [SaaS 애플리케이션에 대한 사용자 프로비전 및 프로비전 해제 자동화](user-provisioning.md)
+* [사용자 프로비전을 위한 사용자 지정 특성 매핑](customize-application-attributes.md)
+* [특성 매핑을 위한 식 작성](functions-for-customizing-application-data.md)
+* [계정 프로비전 알림](user-provisioning.md)
+* [SCIM를 사용하여 Azure Active Directory으로부터 애플리케이션에 사용자 및 그룹의 자동 프로비전 사용](use-scim-to-provision-users-and-groups.md)
+* [SaaS App을 통합하는 방법에 대한 자습서 목록](../saas-apps/tutorial-list.md)
 

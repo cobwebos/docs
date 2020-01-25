@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232314"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711454"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>为多租户应用程序启用自动用户预配
 
@@ -56,7 +56,7 @@ ms.locfileid: "74232314"
 
 Azure AD 提供了多个集成路径，以便为应用程序启用自动用户预配。
 
-* [Azure AD 预配服务](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)可管理用户对应用程序（出站预配）和从应用程序到 Azure AD （入站预配）的 Azure AD 的设置和取消预配。 服务将连接到应用程序提供的跨域标识管理（SCIM）用户管理 API 终结点的系统。
+* [Azure AD 预配服务](user-provisioning.md)可管理用户对应用程序（出站预配）和从应用程序到 Azure AD （入站预配）的 Azure AD 的设置和取消预配。 服务将连接到应用程序提供的跨域标识管理（SCIM）用户管理 API 终结点的系统。
 
 * 使用[Microsoft Graph](https://docs.microsoft.com/graph/)时，应用程序通过查询 Microsoft Graph API 来管理用户和组对 Azure AD 到应用程序的入站和出站预配。
 
@@ -87,9 +87,9 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 * [了解有关 SCIM 标准的详细信息](https://aka.ms/SCIMOverview)
 
-* [使用系统进行跨域标识管理（SCIM）以自动将用户和组从 Azure Active Directory 设置到应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [使用系统进行跨域标识管理（SCIM）以自动将用户和组从 Azure Active Directory 设置到应用程序](use-scim-to-provision-users-and-groups.md)
 
-* [了解 Azure AD SCIM 实现](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [了解 Azure AD SCIM 实现](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>用于预配的 Microsoft Graph
 
@@ -101,7 +101,7 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 * [Microsoft Graph 主页](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph 概述](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph 개요](https://docs.microsoft.com/graph/overview)
 
 * [Microsoft Graph 身份验证概述](https://docs.microsoft.com/graph/auth/)
 
@@ -113,9 +113,9 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 SAML JIT 使用 SAML 令牌中的声明信息来创建和更新应用程序中的用户信息。 客户可根据需要在 Azure AD 应用程序中配置这些必需的声明。 有时需要从应用程序端启用 JIT 预配，以便客户可以使用此功能。 SAML JIT 对创建和更新用户很有用，但它不能删除或停用应用程序中的用户。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* [为应用程序启用单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [为应用程序启用单一登录](isv-sso-content.md)
 
 * [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)并与 microsoft 合作，以便在 microsoft 网站上创建文档。
 

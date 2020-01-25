@@ -1,126 +1,126 @@
 ---
-title: 创建 Hive 表以及从 Blob 存储加载数据 - Team Data Science Process
-description: 使用 Hive 查询创建 Hive 表以及从 Azure Blob 存储加载数据。 对 Hive 表进行分区和使用优化行纵栏表 (ORC) 格式来增强查询性能。
+title: Hive 테이블 만들기 및 Blob 스토리지에서 데이터 로드 - Team Data Science Process
+description: Hive 쿼리를 사용하여 Hive 테이블을 만들고 Azure Blob 스토리지에서 데이터를 로드합니다. Hive 테이블을 분할하고 ORC(Optimized Row Columnar) 형식을 사용하여 쿼리 성능을 개선합니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250132"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722520"
 ---
-# <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
+# <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive 테이블을 만들고 Azure Blob Storage에서 데이터 로드
 
-本文介绍通用 Hive 查询，该查询可创建 Hive 表并从 Azure Blob 存储加载数据。 同时提供了一些如何对 Hive 表进行分区和使用优化行纵栏表 (ORC) 格式来增强查询性能的指南。
+이 문서에서는 Hive 테이블을 만들고 Azure Blob Storage의 데이터를 로드하는 일반 Hive 쿼리를 보여 줍니다. 또한 Hive 테이블을 분할하고 ORC(Optimized Row Columnar) 형식을 사용하여 쿼리 성능을 개선하는 방법에 대한 지침도 제공됩니다.
 
-## <a name="prerequisites"></a>系统必备
-本文假设用户具备以下条件：
+## <a name="prerequisites"></a>필수 조건
+이 문서에서는 사용자가 다음 작업을 수행한 것으로 가정합니다.
 
-* 已创建 Azure 存储帐户。 有关说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
-* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[在 HDInsight 中设置群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。
-* 已启用了对群集的远程访问，登录并打开了 Hadoop 命令行控制台。 如果需要说明，请参阅[管理 Apache Hadoop 群集](../../hdinsight/hdinsight-administer-use-portal-linux.md)。
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
+* 사용자 지정된 Hadoop 클러스터에 HDInsight 서비스를 프로비전했습니다.  지침이 필요한 경우 [HDInsight에서 클러스터 설정](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)을 참조하세요.
+* 클러스터에 대한 원격 액세스를 설정하고, 로그인하고, Hadoop 명령줄 콘솔을 열었습니다. 지침이 필요한 경우 [Apache Hadoop 클러스터 관리](../../hdinsight/hdinsight-administer-use-portal-linux.md)를 참조하세요.
 
-## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
-如果按照[设置 Azure 虚拟机以进行高级分析](../../machine-learning/data-science-virtual-machine/overview.md)中提供的说明创建 Azure 虚拟机，那么此脚本文件应已下载到了虚拟机上的 *C:\\Users\\\<用户名\>\\Documents\\Data Science Scripts* 目录中。 这些 Hive 查询仅需要用户在相应的字段中插入自己的数据架构和 Azure Blob 存储配置，即可开始进行提交。
+## <a name="upload-data-to-azure-blob-storage"></a>Azure File Storage는 Windows 및 기타 운영 체제에 대해 표준 SMB 2.1 프로토콜을 사용하므로, 응용 프로그램은 파일 공유 열기, 액세스 및 관리에 대해 익숙한 FileSystem API를 계속 사용할 수 있습니다.
+[고급 분석을 위한 Azure 가상 머신 설정](../../machine-learning/data-science-virtual-machine/overview.md)의 지침에 따라 Azure 가상 머신을 만드는 경우 이 스크립트 파일을 가상 머신의 *C:\\Users\\\<사용자 이름\>\\Documents\\Data Science Scripts* 디렉터리에 다운로드해야 합니다. 这些 Hive 查询只要求在准备好提交的相应字段中提供数据架构和 Azure blob 存储配置。
 
-假设 Hive 表的数据是**未压缩**的表格格式，并且该数据已上传至 Hadoop 群集所使用的存储帐户的默认或其他容器。
+Hive 테이블의 데이터가 **압축되지 않은** 테이블 형식이고 Hadoop 클러스터에서 사용하는 스토리지 계정의 기본 또는 추가 컨테이너에 데이터가 업로드된 것으로 가정합니다.
 
-如果要针对 **NYC 出租车行程数据**进行练习，请执行以下操作：
+**NYC Taxi Trip Data**로 연습하려면 다음을 수행해야 합니다.
 
-* **下载** 24 个 [NYC 出租车行程数据](https://www.andresmh.com/nyctaxitrips)文件（12 个行程文件和 12 个费用文件），
-* 将所有文件**解压缩**为 .csv 文件，然后
-* 将它们上传  到 Azure 存储帐户的默认设置（或适当的容器）；在[将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题中介绍了用于这类帐户的选项。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
+* **NYC Taxi Trip Data** 파일(12개의 Trip 파일과 12개의 Fare 파일)을 [NYC Taxi Trip Data](https://www.andresmh.com/nyctaxitrips) 합니다.
+* **압축을 풉니다** .
+* 将这些文件**上传**到 Azure 存储帐户的默认（或适当的容器）;有关此类帐户的选项，[请参阅将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题。 스토리지 계정의 기본 컨테이너에 .csv 파일을 업로드하는 프로세스는 이 [페이지](hive-walkthrough.md#upload)에 나와 있습니다.
 
-## <a name="submit"></a>如何提交 Hive 查询
-可通过以下方法提交 Hive 查询：
+## <a name="submit"></a>Hive 쿼리를 제출하는 방법
+다음을 사용하여 Hive 쿼리를 제출할 수 있습니다.
 
-1. [在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询](#headnode)
-2. [使用 Hive 编辑器提交 Hive 查询](#hive-editor)
-3. [使用 Azure PowerShell 命令提交 Hive 查询](#ps)
+* [Hadoop 클러스터 헤드 노드의 Hadoop 명령줄을 통해 Hive 쿼리 제출](#headnode)
+* [Hive 편집기를 사용하여 Hive 쿼리 제출](#hive-editor)
+* [Azure PowerShell 명령을 사용하여 Hive 쿼리 제출](#ps)
 
-Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用户的 Hive 备忘单](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)很有用。
+Hive 쿼리는 SQL과 유사하므로, SQL에 익숙한 사용자에게는 [SQL 사용자용 Hive 치트 시트](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)가 유용할 수 있습니다.
 
-提交 Hive 查询时，还可控制 Hive 查询的输出目标，无论是输出到屏幕上还是头节点上的本地文件，或是输入到 Azure blob。
+또한 Hive 쿼리를 제출할 때 Hive 쿼리에서 화면, 헤드 노드의 로컬 파일, Azure blob 등의 출력 대상을 제어할 수 있습니다.
 
-### <a name="headnode"></a> 1.在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
-如果是复杂的 Hive 查询，在 Hadoop 群集的头节点中直接提交通常比使用 Hive 编辑器或 Azure PowerShell 脚本进行提交的处理速度更快。
+### <a name="headnode"></a>在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
+Hive 쿼리가 복잡한 경우 Hadoop 클러스터의 헤드 노드에서 바로 Hive 쿼리를 제출하면 일반적으로 Hive 편집기 또는 Azure PowerShell 스크립트를 사용하여 제출하는 것보다 반환 시간이 빠릅니다.
 
-登录到 Hadoop 群集的头节点，在头节点的桌面上打开 Hadoop 命令行，并输入命令 `cd %hive_home%\bin`。
+Hadoop 클러스터의 헤드 노드에 로그인하고, 헤드 노드 바탕 화면에서 Hadoop 명령줄을 열고, 명령을 입력합니다 `cd %hive_home%\bin`.
 
-有三种方法可在 Hadoop 命令行中提交 Hive 查询：
+세 가지 방법으로 Hadoop 명령줄에서 Hive 쿼리를 제출할 수 있습니다.
 
-* 直接提交
-* 使用 .hql 文件
-* 使用 Hive 命令控制台
+* 직접 제출
+* 使用 "hql" 文件
+* Hive 명령 콘솔을 사용하여 제출
 
-#### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>直接在 Hadoop 命令行中提交 Hive 查询。
-可以运行类似 `hive -e "<your hive query>;` 的命令直接在 Hadoop 命令行中提交简单的 Hive 查询。 此处有一个示例，其中用红色框突出了提交 Hive 查询的命令，用红色框突出了 Hive 查询中的输出。
+#### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Hadoop 명령줄에서 직접 Hive 쿼리를 제출합니다.
+`hive -e "<your hive query>;` 같은 명령을 실행하여 Hadoop 명령줄에서 바로 간단한 Hive 쿼리를 제출할 수 있습니다. 다음은 그 예제입니다. 빨간색 상자는 Hive 쿼리를 제출하는 명령을, 녹색 상자는 Hive 쿼리의 출력을 보여 줍니다.
 
-![用于提交 Hive 查询的命令以及来自 Hive 查询的输出](./media/move-hive-tables/run-hive-queries-1.png)
+![Hive 쿼리의 출력을 사용하여 Hive 쿼리를 제출하는 명령](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>在 .hql 文件中提交 Hive 查询
-如果 Hive 查询更加复杂并且具有多个行，那么在命令行或 Hive 命令控制台中编辑查询的方法并不可行。 另一种方法是在 Hadoop 群集的头节点中使用文本编辑器，将 Hive 查询保存到头节点本地目录中的 .hql 文件中。 然后可使用如下所示的 `-f` 参数将 .hql 文件中的 Hive 查询进行提交：
+#### <a name="submit-hive-queries-in-hql-files"></a>在 "hql" 文件中提交 Hive 查询
+Hive 쿼리가 좀 더 복잡하고 줄이 여러 개인 경우 명령줄 또는 Hive 명령 콘솔에서 쿼리를 편집하는 방법은 실용적이지 않습니다. 一种替代方法是在 Hadoop 群集的头节点中使用文本编辑器，将 Hive 查询保存在头节点的本地目录中的 "hql" 文件中。 然后，可以使用 `-f` 参数提交 "hql" 文件中的 Hive 查询，如下所示：
 
-    hive -f "<path to the .hql file>"
+    hive -f "<path to the '.hql' file>"
 
-![.hql 文件中的 Hive 查询](./media/move-hive-tables/run-hive-queries-3.png)
+!["Hql" 文件中的 Hive 查询](./media/move-hive-tables/run-hive-queries-3.png)
 
-**取消在屏幕上打印 Hive 查询的进度状态**
+**Hive 쿼리의 진행 상태 화면 인쇄 숨기기**
 
-默认情况下，在 Hadoop 命令行中提交了 Hive 查询后，Map/Reduce 作业的进度会打印在屏幕上。 若要取消在屏幕上打印 Map/Reduce 作业的进度，可在命令行中使用参数 `-S`（“S”大写），如下所示：
+기본적으로 Hadoop 명령줄에서 Hive 쿼리가 제출되면 맵/감소 작업의 진행 상태가 화면에 인쇄됩니다. 맵/감소 작업의 진행 상태 화면 인쇄를 숨기려면 다음과 같이 명령줄에 `-S` 인수("S"는 대문자)를 사용합니다.
 
-    hive -S -f "<path to the .hql file>"
+    hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
-#### <a name="submit-hive-queries-in-hive-command-console"></a>在 Hive 命令控制台中提交 Hive 查询。
-也可以首先通过在 Hadoop 命令行中运行命令 `hive` 输入 Hive 命令控制台，然后在 Hive 命令控制台中提交 Hive 查询。 下面是一个示例。 在此示例中，两个红色框分别突出显示了用于输入 Hive 命令控制台的命令，以及在 Hive 命令控制台中提交的 Hive 查询。 绿色框突出显示了 Hive 查询的输出。
+#### <a name="submit-hive-queries-in-hive-command-console"></a>Hive 명령 콘솔에서 Hive 쿼리를 제출합니다.
+또한 Hadoop 명령줄에서 `hive` 명령을 실행하여 Hive 명령 콘솔을 먼저 입력한 후 Hive 명령 콘솔에서 Hive 쿼리를 제출할 수 있습니다. 다음 예를 참조하세요. 이 예제에서 두 빨간색 상자는 각각 Hive 명령 콘솔을 입력하는 데 사용된 명령과 Hive 명령 콘솔에서 제출된 Hive 쿼리를 보여 줍니다. 녹색 상자는 Hive 쿼리의 출력을 보여 줍니다.
 
-![打开 Hive 命令控制台并输入命令，查看 Hive 查询输出](./media/move-hive-tables/run-hive-queries-2.png)
+![Hive 명령 콘솔을 열고 명령을 입력하고, Hive 쿼리 출력 보기](./media/move-hive-tables/run-hive-queries-2.png)
 
-之前的示例会直接在屏幕上输出 Hive 查询结果。 此外，可以将输出写入到头节点上的本地文件，或者写入到 Azure blob。 然后，可以使用其他工具进一步对 Hive 查询输出进行分析。
+이전 예제에서는 Hive 쿼리 결과가 화면에 바로 출력됩니다. 또한 헤드 로드의 로컬 파일 또는 Azure blob에 출력을 작성할 수 있습니다. 그런 다음 다른 도구를 사용하여 Hive 쿼리 출력을 추가로 분석할 수 있습니다.
 
-**将 Hive 查询结果输出到本地文件。**
-要将 Hive 查询结果输出到头节点上的本地目录，必须按如下所示的那样在 Hadoop 命令行中提交 Hive 查询：
+**Hive 쿼리 결과를 로컬 파일에 출력합니다.**
+Hive 쿼리 결과를 헤드 노드의 로컬 디렉터리에 출력하려면 다음과 같이 Hadoop 명령줄에서 Hive 쿼리를 제출해야 합니다.
 
     hive -e "<hive query>" > <local path in the head node>
 
-在下面的示例中，Hive 查询的输出将写入到目录 `C:\apps\temp` 中的文件 `hivequeryoutput.txt` 中。
+다음 예제에서 Hive 쿼리의 출력은 `C:\apps\temp` 디렉터리의 `hivequeryoutput.txt` 파일에 작성됩니다.
 
-![Hive 查询的输出](./media/move-hive-tables/output-hive-results-1.png)
+![Hive 쿼리의 출력](./media/move-hive-tables/output-hive-results-1.png)
 
-**将 Hive 查询结果输出到 Azure blob**
+**Azure blob에 Hive 쿼리 결과 출력**
 
-还可以将 Hive 查询结果输出到 Azure blob，其位于 Hadoop 群集的默认容器中。 以下是使用此方法的 Hive 查询：
+Hadoop 클러스터의 기본 컨테이너 내에 있는 Azure blob에 Hive 쿼리 결과를 출력할 수도 있습니다. 이 경우 관련 Hive 쿼리는 다음과 같습니다.
 
     insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-在下面的示例中，Hive 查询的输出将写入到一个 blob 目录 `queryoutputdir`，该目录位于 Hadoop 群集的默认容器中。 此处，只需提供目录名称，无需提供 blob 名称。 如果同时提供目录名称和 blob 名称，会引发错误，例如：`wasb:///queryoutputdir/queryoutput.txt`。
+다음 예제에서 Hive 쿼리는 Hadoop 클러스터의 기본 컨테이너 내에 있는 blob 디렉터리 `queryoutputdir` 에 작성됩니다. 이때 사용자는 blob 이름 없이 디렉터리 이름만 입력하면 됩니다. `wasb:///queryoutputdir/queryoutput.txt`처럼 디렉터리 이름과 blob 이름을 모두 입력하면 오류가 발생합니다.
 
-![Hive 查询的输出](./media/move-hive-tables/output-hive-results-2.png)
+![Hive 쿼리의 출력](./media/move-hive-tables/output-hive-results-2.png)
 
-如果使用 Azure 存储资源管理器打开 Hadoop 群集的默认容器，则可以看到 Hive 查询的输出，如下图中所示。 可以应用筛选器（红色框中突出显示的），以此来仅检索名称中具有指定字母的 blob。
+Azure Storage Explorer를 사용하여 Hadoop 클러스터의 기본 컨테이너를 열면 다음과 같은 Hive 쿼리 출력을 볼 수 있습니다. 필터(빨간색 상자로 강조 표시됨)를 적용하여 이름에 지정된 문자가 포함된 blob만 검색할 수 있습니다.
 
-![显示 Hive 查询输出的 Azure 存储资源管理器](./media/move-hive-tables/output-hive-results-3.png)
+![Hive 쿼리의 출력을 표시하는 Azure Storage Explorer](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
-还可以通过在 web 浏览器中输入 URL, 将 " *https: Hadoop 群集名称" clustername>.azurehdinsight.net\//Home/HiveEditor 格式输入为 "https:/\<Hadoop 群集 > 名称*"。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
+### <a name="hive-editor"></a>用 Hive 编辑器提交 Hive 查询
+还可以通过在 web 浏览器中输入以下格式的 URL *： https：\//\<Hadoop 群集名称 >* ，使用查询控制台（Hive 编辑器）。 이 콘솔을 보려면 로그인해야 하며, Hadoop 클러스터 자격 증명이 필요합니다.
 
-### <a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
-也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
+### <a name="ps"></a>通过 Azure PowerShell 命令提交 Hive 查询
+PowerShell을 사용하여 Hive 쿼리를 제출할 수도 있습니다. 자세한 내용은 [PowerShell을 사용하여 Hive 작업 제출](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)을 참조하세요.
 
-## <a name="create-tables"></a>创建 Hive 数据库和表
-Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)中共享，并可从该处下载。
+## <a name="create-tables"></a>Hive 데이터베이스 및 테이블 만들기
+Hive 쿼리는 [GitHub 리포지토리](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)에서 공유되며 여기에서 다운로드할 수 있습니다.
 
-以下是创建一个 Hive 表的 Hive 查询。
+다음은 Hive 테이블을 만드는 Hive 쿼리입니다.
 
     create database if not exists <database name>;
     CREATE EXTERNAL TABLE if not exists <database name>.<table name>
@@ -135,34 +135,34 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
     STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
 
-以下是需要插入的字段以及其他配置的说明：
+다음은 연결해야 하는 필드와 기타 구성에 대한 설명입니다.
 
-* **\<数据库名称\>** ：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
-* **\<表名称\>** ：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
-* **\<字段分隔符\>** ：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
-* **\<行分隔符\>** ：用于分隔数据文件中的行的分隔符。
-* **\<存储位置\>** ：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/  目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须与群集的默认容器相关, 格式为 *"wasb:///\<directory 1 >/"* 或 *"\<wasb:///directory 1 >/\<directory 2 >/"* 等。执行查询后，相对目录会创建在默认容器中。
-* **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table  查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
+* **\<데이터베이스 이름\>** : 만들려고 하는 데이터베이스 이름입니다. 如果只想使用默认数据库，则可以省略查询 "*创建数据库 ...* "。
+* **\<테이블 이름\>** : 지정된 데이터베이스 내에 만들려는 테이블 이름입니다. 기본 데이터베이스를 사용하려는 경우 \<데이터베이스 이름\> 없이\<테이블 이름\>을 통해 직접 테이블을 참조할 수 있습니다.
+* **\<필드 구분 기호\>** : 데이터 파일에서 Hive 테이블에 업로드할 필드를 구분하는 구분 기호입니다.
+* **\<줄 구분 기호\>** : 데이터 파일의 줄을 구분하는 구분 기호입니다.
+* **\<存储位置\>** ：保存 Hive 表数据的 Azure 存储位置。 LOCATION \<스토리지 위치\>를 지정하지 않으면 기본적으로 데이터베이스 및 테이블이 Hive 클러스터의 기본 컨테이너에 있는 *hive/warehouse/* 디렉터리에 저장됩니다. 스토리지 위치를 지정하려면 스토리지 위치가 데이터베이스 및 테이블의 기본 컨테이너 내부에 있어야 합니다. 必须将此位置称为相对于群集默认容器的位置，格式为 *"wasb:///\<directory 1 >/"* 或 *"wasb:///\<directory 1 >/\<directory 2 >/"* 等。执行查询后，将在默认容器中创建相对目录。
+* **TBLPROPERTIES("skip.header.line.count"="1")** : 데이터 파일에 헤더 줄이 있으면 *create table* 쿼리의 **끝**에 이 속성을 추가해야 합니다. 그렇지 않으면 헤더 줄이 테이블의 레코드로 로드됩니다. 데이터 파일에 헤더 줄이 없으면 쿼리에서 이 구성을 생략해도 됩니다.
 
-## <a name="load-data"></a>将数据加载到 Hive 表
-以下是将数据加载到 Hive 表的 Hive 查询。
+## <a name="load-data"></a>Hive 테이블에 데이터 로드
+다음은 Hive 테이블에 데이터를 로드하는 Hive 쿼리입니다.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器 *\<对 blob 数据的路径\>* 应采用格式 *wasb: / /\<此容器中目录 > /\<blob 文件名称 >* 。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下,  *\<blob 数据\>的路径*应采用 *\<"wasb://容器名称" 格式 >\<存储帐户名称 >\<> "* 。
+* **\<blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器中，则*blob 数据\>的\<路径*应采用以下格式： *"wasb://\<directory in 此容器 >/\<blob 文件名 >"* 。 blob 파일이 HDInsight Hadoop 클러스터의 추가 컨테이너에 있을 수도 있습니다. 在这种情况下， *\<blob 数据路径\>* 的格式应为 *"wasb://\<容器名称 >\<>/\<blob 文件名 >"* 。
 
   > [!NOTE]
-  > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。
+  > Hive 테이블에 업로드할 blob 데이터가 Hadoop 클러스터에 대한 스토리지 계정의 기본 또는 추가 컨테이너에 있어야 합니다. 그렇지 않으면 데이터에 액세스할 수 없기 때문에 *LOAD DATA* 쿼리가 실패합니다.
   >
   >
 
-## <a name="partition-orc"></a>高级主题：已分区表以及将 Hive 数据存储为 ORC 格式
-如果数据较大，对表进行分区则有利于仅需要对表的少量分区进行扫描的查询。 例如，可以将网站的日志数据按照日期进行分区，这是合理的。
+## <a name="partition-orc"></a>고급 토픽: 분할된 테이블 및 ORC 형식으로 Hive 데이터 저장
+데이터가 큰 경우 테이블을 분할하면 테이블의 파티션 몇 개만 검색하면 되는 쿼리의 속도가 향상됩니다. 예를 들어 웹 사이트의 로그 데이터를 날짜별로 분할하는 것이 합리적입니다.
 
-除了对 Hive 表进行分区以外，还有益于以优化行纵栏表 (ORC) 格式存储 Hive 数据。 有关 ORC 格式设置的详细信息，请参阅<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">使用 ORC 文件提高 Hive 读取、写入和处理数据时的性能</a>。
+Hive 테이블 분할 외에도 Hive 데이터를 ORC(Optimized Row Columnar) 형식으로 저장하는 방법 또한 도움이 됩니다. ORC 형식에 대한 자세한 내용은 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">ORC 파일을 사용하면 Hive에서 데이터를 읽고, 쓰고, 처리할 때 성능 향상</a>을 참조하세요.
 
-### <a name="partitioned-table"></a>已分区表
-以下是创建已分区表并将数据加载到其中的 Hive 查询。
+### <a name="partitioned-table"></a>분할된 테이블
+다음은 분할된 테이블을 만들고 그 테이블에 데이터를 로드하는 Hive 쿼리입니다.
 
     CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
     (field1 string,
@@ -174,17 +174,17 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-查询已分区表时，建议在 `where` 子句的**开头**添加分区条件，这样能显著提高搜索的效力。
+查询已分区表时，建议在 `where` 子句的**开头**添加分区条件，这样可提高搜索效率。
 
     select
         field1, field2, ..., fieldN
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="orc"></a>将 Hive 数据存储为 ORC 格式
-不能直接将 Blob 存储中的数据加载到存储为 ORC 格式的 Hive 表中。 下面的步骤介绍了如何将 Azure blob 中的数据加载到存储为 ORC 格式的 Hive 表中。
+### <a name="orc"></a>ORC 형식으로 Hive 데이터 저장
+Blob Storage의 데이터를 ORC 형식으로 저장된 Hive 테이블에 바로 로드할 수 없습니다. Azure blob의 데이터를 ORC 형식으로 저장된 Hive 테이블에 로드하려면 다음 단계를 수행해야 합니다.
 
-创建外部表 **STORED AS TEXTFILE**，然后将 Blob 存储中的数据加载到此表。
+외부 테이블 **STORED AS TEXTFILE** 을 만들고 Blob Storage의 데이터를 이 테이블에 로드합니다.
 
         CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
         (
@@ -199,7 +199,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
         LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
 
-使用与步骤 1 中的外部表相同的架构和相同的字段分隔符创建内部表，并且将 Hive 数据存储为 ORC 格式。
+1단계의 외부 테이블과 동일한 스키마 및 필드 구분 기호를 사용하여 내부 테이블을 만들고 Hive 데이터를 ORC 형식으로 저장합니다.
 
         CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
         (
@@ -210,13 +210,13 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
         )
         ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
 
-从步骤 1 中的外部表选择数据，然后将其插入到 ORC 表
+1단계의 외부 테이블에서 데이터를 선택하여 ORC 테이블에 삽입합니다.
 
         INSERT OVERWRITE TABLE <database name>.<ORC table name>
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 表 *\<数据库名称\>.\<外部 textfile 表名称\>* 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 *\<数据库名称\>.\<ORC 表名称\>* 失败，因为 *\<数据库名称\>.\<ORC 表名称\>* 没有将分区变量作为表架构中的字段。 在这种情况下，需要专门选择要插入到 *\<数据库名称\>.\<ORC 表名称\>* 的字段，如下所示：
+> TEXTFILE 테이블\<데이터베이스 이름\>.\<외부 텍스트 파일 테이블 이름\>에 파티션이 있으면 3단계의 `SELECT * FROM <database name>.<external textfile table name>` 명령에서는 반환된 데이터 집합의 필드로 파티션 변수를 선택합니다. \<데이터베이스 이름\>.\<ORC 테이블 이름\>에 삽입은 실패하는데,\<데이터베이스 이름\>.\<ORC 테이블 이름\>에는 테이블 스키마의 필드로 해당 파티션 변수가 포함되어 있지 않기 때문입니다. 이 경우\<데이터베이스 이름\>.\<ORC 테이블 이름\>에 삽입할 필드를 다음과 같이 구체적으로 선택해야 합니다.
 >
 >
 
@@ -225,8 +225,8 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在所有数据都已插入到 *\<数据库名称\>.\<ORC 表名称\>* 后，使用以下查询可以安全地删除 *\<外部 textfile 表名称\>* ：
+在将所有数据插入到\<数据库名称\>中后，使用以下查询时，可以安全地删除 *\<外部文本文件表名称\>* *。\<ORC 表名称\>* ：
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
-完成此过程后，应该拥有一个可用的表，此表中具有 ORC 格式的数据。  
+이 절차를 모두 수행했다면 이제 ORC 형식의 데이터를 사용할 수 있는 테이블이 준비되었을 것입니다.  

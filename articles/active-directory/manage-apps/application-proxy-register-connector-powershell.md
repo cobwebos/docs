@@ -1,6 +1,6 @@
 ---
-title: 以无提示方式安装 Azure AD 应用代理连接器 | Microsoft Docs
-description: 介绍如何执行 Azure AD 应用程序代理连接器的无提示安装，以提供本地应用的安全远程访问权限。
+title: Azure AD 앱 프록시 커넥터 자동 설치 | Microsoft Docs
+description: Azure AD 애플리케이션 프록시 커넥터를 무인으로 설치하여 온-프레미스 앱에 대한 보안된 원격 액세스를 제공하는 방법에 대해 설명합니다.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,62 +11,62 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 01/23/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ca40e9717394690374f5ca289a69e5c22551eb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65782922"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712008"
 ---
-# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD 애플리케이션 프록시 커넥터에 대한 무인 설치 스크립트 만들기
 
-本主题可帮助创建 Windows PowerShell 脚本来无人参与安装和注册 Azure AD 应用程序代理连接器。
+이 토픽은 Azure AD 애플리케이션 프록시 커넥터에 대한 무인 설치 및 등록을 수행할 수 있도록 Windows PowerShell 스크립트를 만드는 데 도움이 됩니다.
 
-希望执行以下操作时，此功能非常有用：
+이 기능은 다음을 수행하는 데 유용 합니다.
 
-* 在未启用用户界面或无法使用远程桌面进行访问的 Windows 服务器上安装连接器。
-* 一次性安装并注册多个连接器。
-* 将连接器安装与注册集成为另一个过程的一部分。
-* 创建包含连接器代码但未注册的标准服务器映像。
+* 사용자 인터페이스를 사용하도록 설정하지 않은 Windows 서버에 커넥터를 설치하거나 원격 데스크톱을 사용하여 액세스할 수 없습니다.
+* 한 번에 여러 커넥터를 설치하고 등록합니다.
+* 커넥터 설치 및 등록을 다른 절차의 일부분으로 통합합니다.
+* 커넥터 비트를 포함하지만 등록되지 않은 표준 서버 이미지를 만듭니다.
 
-有关[应用程序代理连接器](application-proxy-connectors.md)工作，它必须注册到 Azure AD 目录使用的应用程序管理员和密码。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
+要使[应用程序代理连接器](application-proxy-connectors.md)正常工作，必须使用应用程序管理员和密码将其注册到 Azure AD 的目录。 일반적으로 이러한 정보는 커넥터 설치 중에 팝업 대화 상자에서 입력되지만, 대신 PowerShell을 사용하여 이 프로세스를 자동화할 수도 있습니다.
 
-无人参与安装包括两个步骤。 第一步，安装连接器。 第二步，向 Azure AD 注册连接器。 
+무인 설치를 위한 두 단계가 있습니다. 먼저 커넥터를 설치합니다. 두 번째, Azure AD에 커넥터를 등록합니다. 
 
-## <a name="install-the-connector"></a>安装连接器
-使用以下步骤免注册安装连接器：
+## <a name="install-the-connector"></a>커넥터 설치
+등록 없이 커넥터를 설치하려면 다음 단계를 사용합니다.
 
-1. 打开命令提示符。
-2. 运行以下命令，其中 /q 表示静默安装。 静默安装不会提示接受最终用户许可协议。
+1. 명령 프롬프트를 엽니다.
+2. 다음 명령을 실행합니다. /q는 자동 설치를 의미합니다. 자동 설치는 최종 사용자 사용권 계약에 동의할지 묻는 메시지가 표시되지 않습니다.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>向 Azure AD 注册连接器
-可以使用两种方法注册连接器：
+## <a name="register-the-connector-with-azure-ad"></a>Azure AD에 커넥터 등록
+커넥터를 등록하는 데 사용할 수 있는 두 가지 방법이 있습니다.
 
-* 使用 Windows PowerShell 凭据对象注册连接器
-* 使用离线创建的令牌注册连接器
+* Windows PowerShell 자격 증명 개체를 사용하여 커넥터 등록
+* 오프라인에서 만든 토큰을 사용하여 커넥터 등록
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>使用 Windows PowerShell 凭据对象注册连接器
-1. 创建包含目录管理用户名和密码的 Windows PowerShell 凭据对象 `$cred`。 运行以下命令，替换 \<用户名\> 和 \<密码\>   ：
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell 자격 증명 개체를 사용하여 커넥터 등록
+1. 디렉터리에 대한 관리 사용자 이름 및 암호를 포함하는 Windows PowerShell 자격 증명 개체 `$cred`를 만듭니다. 다음 명령에서 *\<username\>* 및 *\<암호\>* 를 바꿔서 실행합니다.
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. 转到 C:\Program Files\Microsoft AAD App Proxy Connector 并使用创建的 `$cred` 对象运行以下脚本  ：
+2. **C:\Program Files\Microsoft AAD App Proxy Connector**로 이동하여 사용자가 만든 `$cred` 개체를 사용하여 다음 스크립트를 실행합니다.
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>使用离线创建的令牌注册连接器
-1. 通过 AuthenticationContext 类使用以下代码片段或 PowerShell cmdlet 中的值创建离线令牌：
+### <a name="register-the-connector-using-a-token-created-offline"></a>오프라인에서 만든 토큰을 사용하여 커넥터 등록
+1. 이 코드 조각의 값 또는 아래의 PowerShell cmdlet을 이용하여 AuthenticationContext 클래스를 사용하는 오프라인 토큰을 만듭니다.
 
-    **使用 C#：**
+    **C# 사용:**
 
         using System;
         using System.Diagnostics;
@@ -88,7 +88,7 @@ ms.locfileid: "65782922"
         /// <summary>
         /// The reply address of the connector application in AAD
         /// </summary>
-        static readonly Uri ConnectorRedirectAddress = new Uri("urn:ietf:wg:oauth:2.0:oob");
+        static readonly Uri ConnectorRedirectAddress = new Uri("https://login.microsoftonline.com/common/oauth2/nativeclient");
 
         /// <summary>
         /// The AppIdUri of the registration service in AAD
@@ -121,7 +121,7 @@ ms.locfileid: "65782922"
             tenantID = authResult.TenantId;
         }
 
-    **使用 PowerShell：**
+    **PowerShell 사용:**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed
@@ -141,7 +141,7 @@ ms.locfileid: "65782922"
         [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
         
         # The reply address of the connector application in AAD
-        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
+        [uri]$ConnectorRedirectAddress = "https://login.microsoftonline.com/common/oauth2/nativeclient" 
         
         # The AppIdUri of the registration service in AAD
         [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
@@ -171,17 +171,17 @@ ms.locfileid: "65782922"
         
         #endregion
 
-2. 拥有令牌后，使用令牌创建 SecureString：
+2. 토큰을 만들었으면 토큰을 사용하여 SecureString을 만듭니다.
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. 运行以下 Windows PowerShell 命令，将 \<tenant GUID\> 替换为目录 ID：
+3. 다음 Windows PowerShell 명령을 실행하여 \<테넌트 GUID\>를 디렉터리 ID로 대체합니다.
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
-## <a name="next-steps"></a>后续步骤 
-* [使用自己的域名发布应用程序](application-proxy-configure-custom-domain.md)
-* [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-* [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)
+## <a name="next-steps"></a>다음 단계 
+* [고유한 도메인 이름을 사용하여 애플리케이션 게시](application-proxy-configure-custom-domain.md)
+* [Single Sign-On 사용](application-proxy-configure-single-sign-on-with-kcd.md)
+* [애플리케이션 프록시에서 발생한 문제 해결](application-proxy-troubleshoot.md)
 
 

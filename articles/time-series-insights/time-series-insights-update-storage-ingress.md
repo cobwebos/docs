@@ -1,8 +1,8 @@
 ---
 title: 预览中的数据存储和入口-Azure 时序见解 |Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据存储和入口。
-author: deepakpalled
-ms.author: dpalled
+author: lyrana
+ms.author: lyhughes
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,16 +10,16 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f00529d00312fd6acb045de698590047f991bec7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861398"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714292"
 ---
-# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
+# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights 미리 보기의 데이터 스토리지 및 수신
 
-本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口流程、最佳做法和当前预览限制。
+本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 기본 스토리지 구조, 파일 형식 및 Time Series ID 속성도 다룹니다. 它还讨论了底层入口流程、最佳做法和当前预览限制。
 
 ## <a name="data-ingress"></a>数据入口
 
@@ -29,47 +29,93 @@ ms.locfileid: "75861398"
 
 ### <a name="ingress-policies"></a>入口策略
 
+#### <a name="event-sources"></a>이벤트 원본
+
 时序见解预览版支持以下事件源：
 
-- [Azure IoT 中心](../iot-hub/about-iot-hub.md)
-- [Azure 事件中心](../event-hubs/event-hubs-about.md)
+- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
+- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-时序见解预览版每个实例最多支持两个事件源。 Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。
+时序见解预览版每个实例最多支持两个事件源。
 
 > [!WARNING] 
 > * 将事件源附加到预览环境时，可能会遇到较高的初始延迟。 
 > 事件源延迟取决于当前在 IoT 中心或事件中心内的事件数。
 > * 在事件源数据第一次引入后，会下降高延迟。 如果你遇到持续的高延迟，请通过 Azure 门户提交支持票证来联系我们。
 
-## <a name="ingress-best-practices"></a>入口最佳实践
+#### <a name="supported-data-format-and-types"></a>支持的数据格式和类型
+
+Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 UTF8 编码的 JSON。 
+
+下面是受支持的数据类型的列表。
+
+| 데이터 형식 | Description |
+|-----------|------------------|-------------|
+| bool      |   具有以下两种状态之一的数据类型： true 或 false。       |
+| dateTime    |   表示时间上的一刻，通常以日期和当天的时间表示。 Datetime 应采用 ISO 8601 格式。      |
+| double    |   双精度64位 IEEE 754 浮点
+| 문자열    |   由 Unicode 字符组成的文本值。          |
+
+#### <a name="objects-and-arrays"></a>对象和数组
+
+您可以将复杂类型（如对象和数组）作为事件有效负载的一部分发送，但在存储数据时，您的数据将经历一个平展过程。 若要详细了解如何绘制 JSON 事件以及有关复杂类型和嵌套对象平展的详细信息，请参阅有关[如何为入口和查询构建 json 的](./time-series-insights-update-how-to-shape-events.md)页面。
+
+
+### <a name="ingress-best-practices"></a>入口最佳实践
 
 建议使用以下最佳做法：
 
-* 在同一区域中配置时序见解和 IoT 中心或事件中心。 这会减少由于网络导致的引入延迟。
+* 在同一区域中配置时序见解和 IoT 中心或事件中心，以减少网络引入延迟。
 * 通过计算预计引入率并验证其是否处于下面列出的支持费率中来规划规模需求
 * 通过阅读[如何将 json 用于入口和查询](./time-series-insights-update-how-to-shape-events.md)，了解如何优化和调整 json 数据以及预览版的当前限制。
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>预览中的入口规模和限制
 
-默认情况下，预览版环境支持**每秒 1 mb/秒（MB/s）每个环境**的入口速率。 如果需要，客户可以将其预览版环境扩展到**16 MB/秒**的吞吐量。
-此外，每个分区的限制为**0.5 MB/s**。 
-
-每个分区的限制对于使用 IoT 中心的客户是有意义的。 具体来说，假设 IoT 中心设备与分区之间的相关性。 在一个网关设备使用其自己的设备 ID 和连接字符串将消息转发到中心时，即使事件负载指定了不同的时序 Id，也有可能达到 0.5 MB/s 的限制。 
+#### <a name="per-environment-limitations"></a>每个环境限制
 
 通常，会将入口速率视为你的组织中的设备数、事件发射频率和每个事件的大小的系数：
 
 *  **设备数**×**事件发射频率**×**每个事件的大小**。
 
-> [!TIP]
-> 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器连接数来计算引入速率，而不是使用或组织中的设备总数。
+默认情况下，时序见解预览版可以按**每个 TSI 环境**每秒 1 mb/秒（MBps）的速率引入传入数据。 如果这不能满足您的要求，请与我们联系，我们可以通过在 Azure 门户提交支持票证，为环境支持最多 16 MBps。
+ 
+示例1： Contoso 发货包含100000台设备，每分钟发出一次事件三次。 事件的大小为200个字节。 它们使用带有4个分区的事件中心作为 TSI 事件源。
+其 TSI 环境的引入速率为：100000设备 * 200 字节/事件 * （3/60 事件/秒） = 1 MBps。
+每个分区的引入速率为 0.25 MBps。
+Contoso 发货的引入率将在预览规模限制范围内。
+ 
+示例2： Contoso 汽油分析具有每秒发出事件的60000设备。 它们将 IoT 中心24分区计数4作为 TSI 事件源使用。 事件的大小为200个字节。
+环境引入速率为：20000设备 * 200 字节/事件 * 1 事件/秒 = 4 MBps。
+每个分区速率为 1 MBps。
+Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交请求以实现此规模。
 
-有关吞吐量单元、限制和分区的详细信息，请执行以下操作：
+#### <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区的限制
+
+在规划你的 TSI 环境时，必须考虑要连接到 TSI 的事件源的配置。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。  分区是中心内保留事件的有序序列。 分区计数在 IoT 或事件中心的创建阶段设置，不可更改。 有关确定分区计数的详细信息，请参阅 "事件中心" "需要多少分区？ 对于使用 IoT 中心的 TSI 环境，大多数 IoT 中心仅需4个分区。 无论是为 TSI 环境创建新的集线器还是使用现有的集线器，都需要按分区引入速率来计算，以确定它是否在预览限制内。 目前，TSI 预览的**每个分区**限制为 0.5 MB/s。 使用下面的示例作为参考，如果你是 IoT 中心用户，请注意以下特定于 IoT 中心的注意事项。
+
+#### <a name="iot-hub-specific-considerations"></a>特定于 IoT 中心的注意事项
+
+在 IoT 中心内创建设备时，会将其分配给分区，而不会更改分区分配。 这样，IoT 中心就可以保证事件的排序。 但是，在某些情况下，这种情况下，它会影响 TSI 作为下游读取器。 当使用相同的网关设备 ID 将来自多个设备的消息转发到集线器时，它们将到达同一分区，因此可能超出了每个分区的规模限制。 
+
+**影响**：如果单个分区在预览限制的情况上经历了持续速率，则在超过 IoT 中心数据保持期之前，不会出现一条不会赶上的 TSI 读取器。 这会导致数据丢失。
+
+다음 방법을 사용하는 것이 좋습니다. 
+
+* 在部署解决方案之前计算按环境和按分区引入速率
+* 确保 IoT 中心设备（和分区）的负载均衡，以实现最远的扩展
+
+> [!WARNING]
+> 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器设备数计算引入速率，以确保在预览版中，每个分区限制的速率低于 0.5 MBps。
+
+  ![IoT 中心分区关系图](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+
+有关吞吐量单元和分区的详细信息，请参阅以下链接：
 
 * [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中心分区](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-### <a name="data-storage"></a>数据存储
+### <a name="data-storage"></a>데이터 스토리지
 
 创建时序见解预览即用即付 SKU 环境时，需要创建两个 Azure 资源：
 
@@ -83,14 +129,14 @@ ms.locfileid: "75861398"
 > [!WARNING]
 > 作为冷存储数据所在的 Azure Blob 存储帐户的所有者，你对该帐户中的所有数据具有完全访问权限。 此访问权限包括 "写入" 和 "删除" 权限。 请勿编辑或删除时序见解预览写入的数据，因为这可能会导致数据丢失。
 
-### <a name="data-availability"></a>数据可用性
+### <a name="data-availability"></a>데이터 가용성
 
 时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
-> 在从事件源读取数据后的60秒内，将推出时序见解的未来公开上市（GA）版本。 预览期间，你可能会遇到较长的一段时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
+> 在预览期间，你可能会遇到长达60秒的时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure 存储器
+## <a name="azure-storage"></a>Azure Storage
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
@@ -106,25 +152,25 @@ ms.locfileid: "75861398"
 
 公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
 
-### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights blob 작성 및 편집
 
 若要确保查询性能和数据可用性，请不要编辑或删除时序见解预览创建的任何 blob。
 
-### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>从时序见解预览版访问和导出数据
+#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights 미리 보기에서 데이터 액세스 및 내보내기
 
 你可能希望访问在时序见解预览资源管理器中查看的数据，以便与其他服务一起使用。 例如，你可以使用数据在 Power BI 中生成报表，或使用 Azure 机器学习 Studio 来训练机器学习模型。 或者，你可以使用你的数据在 Jupyter 笔记本中进行转换、可视化和建模。
 
-可通过三种常规方式访问数据：
+다음과 같은 세 가지 일반적인 방법으로 데이터에 액세스할 수 있습니다.
 
-* 通过时序见解预览版资源管理器。 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览资源管理器](./time-series-insights-update-explorer.md)。
-* 来自时序见解预览 API。 可以在 `/getRecorded`访问 API 终结点。 若要了解有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
+* Time Series Insights 미리 보기 탐색기 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览资源管理器](./time-series-insights-update-explorer.md)。
+* 使用获取事件查询从时序见解预览 API。 若要了解有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
 * 直接从 Azure 存储帐户。 需要对用于访问时序见解预览数据的任何帐户进行读取访问。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
-### <a name="data-deletion"></a>数据删除
+#### <a name="data-deletion"></a>데이터 삭제
 
 请勿删除时序见解预览文件。 仅在时序见解预览版中管理相关数据。
 
-## <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
+### <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
 
 Parquet 是一种开源纵栏文件格式，旨在实现高效的存储和性能。 由于这些原因，时序见解预览版使用 Parquet。 它按时间序列 ID 对数据进行分区，以便大规模查询性能。  
 
@@ -149,14 +195,14 @@ Parquet 是一种开源纵栏文件格式，旨在实现高效的存储和性能
 
 时序见解预览版事件映射到 Parquet 文件内容，如下所示：
 
-* 每个事件映射到单个行。
+* 각 이벤트는 단일 행에 매핑됩니다.
 * 每一行都包含带有事件时间戳的**timestamp**列。 时间戳属性决不会为 null。 如果事件源中未指定时间戳属性，则默认为**事件排队时间**。 时间戳始终采用 UTC 格式。
 * 每一行都包含创建时序见解环境时定义的时序 ID 列。 属性名称包括 `_string` 后缀。
 * 作为遥测数据发送的所有其他属性都映射到以 `_string` （string）、`_bool` （布尔）、`_datetime` （datetime）或 `_double` （double）结尾的列名称，具体取决于属性类型。
 * 此映射方案适用于文件格式的第一个版本，作为**V = 1**引用。 随着此功能的演变，名称可能会增加。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-- 阅读[Azure 时序见解预览版存储和入口](./time-series-insights-update-storage-ingress.md)。
+- 阅读[如何将 JSON 作为入口和 query 的形状](./time-series-insights-update-how-to-shape-events.md)。
 
 - 了解新的[数据建模](./time-series-insights-update-tsm.md)。

@@ -1,35 +1,35 @@
 ---
 title: Azure Cosmos DB 服务配额
 description: Azure Cosmos DB 不同资源类型的服务配额和默认限制。
-author: arramac
-ms.author: arramac
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b954b56d3c4f9d3ae0ad3142b11a8660e341b74a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887608"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711297"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
-本文概述了 Azure Cosmos DB 中的不同资源提供的默认配额。
+이 문서에서는 Azure Cosmos DB의 다른 리소스에 제공되는 기본 할당량에 대한 개요를 제공합니다.
 
 ## <a name="storage-and-throughput"></a>存储和吞吐量
 
 在订阅下创建 Azure Cosmos 帐户后，可以通过[创建数据库、容器和项](databases-containers-items.md)来管理帐户中的数据。 你可以在容器级别或数据库级别按[请求单位（RU/s 或 RU）](request-units.md)预配吞吐量。 下表列出了每个容器/数据库的存储和吞吐量限制。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 每个容器的最大 ru 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
 | 每个数据库的最大每个 RUs （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
-| 最大每（逻辑）分区键 | 10,000 |
-| 每个（逻辑）分区键的所有项的最大存储空间| 10 GB |
-| 不同（逻辑）分区键的最大数目 | 无限制 |
-| 每个容器的最大存储 | 无限制 |
-| 每个数据库的最大存储 | 无限制 |
+| 最大每（逻辑）分区键 | 10000 |
+| 每个（逻辑）分区键的所有项的最大存储空间| 10GB |
+| 不同（逻辑）分区键的最大数目 | 제한 없음 |
+| 每个容器的最大存储 | 제한 없음 |
+| 每个数据库的最大存储 | 제한 없음 |
 | 每个帐户的最大附件大小（附件功能正在进行折旧） | 2GB |
 | 每 1 GB 需要的最小 ru | 10 RU/秒 |
 
@@ -50,7 +50,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 ru
 
 概括而言，这里是最小预配的 RU 限制。 
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 每个容器的最小每个 RUs （[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 400 |
 | 每个数据库的最小 ru （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 400 |
@@ -62,7 +62,7 @@ Cosmos DB 支持通过 Sdk 或门户对每个容器或数据库的吞吐量（ru
 
 你可以使用 Azure 门户、Azure PowerShell、Azure CLI 和 Azure 资源管理器模板来[预配和管理 Azure Cosmos 帐户](how-to-manage-database-account.md)。 下表列出了每个订阅、帐户和操作数的限制。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 每个订阅的最大数据库帐户 | 默认值为50。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
 | 区域故障转移的最大数目 | 默认为1小时。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
@@ -74,17 +74,17 @@ Cosmos DB 会定期定期备份数据。 有关备份保留间隔和 windows 的
 
 ## <a name="per-account-limits"></a>每个帐户的限制
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
-| 最大数据库数 | 无限制 |
-| 每个数据库的最大容器数（或帐户） | 无限制 |
+| 最大数据库数 | 제한 없음 |
+| 每个数据库的最大容器数（或帐户） | 제한 없음 |
 | 最大区域数 | 无限制（所有 Azure 区域） |
 
 ## <a name="per-container-limits"></a>每个容器的限制
 
 根据所使用的 API，Azure Cosmos 容器可以表示集合、表或图形。 容器支持[唯一键约束](unique-keys.md)、[存储过程、触发器、udf](stored-procedures-triggers-udfs.md)和[索引策略](how-to-manage-indexing-policy.md)的配置。 下表列出了特定于容器中的配置的限制。 
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 数据库或容器名称的最大长度 | 255 |
 | 每个容器的最大存储过程数 | 100 <sup>*</sup>|
@@ -99,7 +99,7 @@ Cosmos DB 会定期定期备份数据。 有关备份保留间隔和 windows 的
 
 根据所使用的 API，Azure Cosmos 项可以代表集合中的文档、表中的行或图形中的节点或边缘。 下表显示 Cosmos DB 中每个项的限制。 
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 项的最大大小 | 2 MB （utf-8 表示形式的 utf-8 长度） |
 | 分区键值的最大长度 | 2048字节 |
@@ -117,23 +117,23 @@ Cosmos DB 会定期定期备份数据。 有关备份保留间隔和 windows 的
 
 Azure Cosmos DB 支持对容器、项和数据库等资源[进行 CRUD 和查询操作](https://docs.microsoft.com/rest/api/cosmos-db/)。 它还支持针对容器中具有相同分区键的多个项的[事务批请求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
-| 单个操作的最长执行时间（例如存储过程执行或单个查询页检索）| 5 秒 |
-| 最大请求大小（例如，存储过程、CRUD）| 2 MB |
-| 最大响应大小（例如，分页查询） | 4 MB |
+| 单个操作的最长执行时间（例如存储过程执行或单个查询页检索）| 5초 |
+| 最大请求大小（例如，存储过程、CRUD）| 2MB |
+| 最大响应大小（例如，分页查询） | 4MB |
 | 事务批次中的最大操作数 | 100 |
 
 当某个操作（例如查询）达到执行超时值或响应大小限制时，它会向客户端返回结果页和继续标记，以继续执行。 单个查询可跨页面/延续运行的持续时间没有实际限制。
 
 Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](secure-access-to-data.md)对资源（如容器、分区键或项）进行精细的访问控制。 下表列出了 Cosmos DB 中的授权令牌限制。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
-| 最大主令牌到期时间 | 15 分钟  |
-| 最小资源令牌到期时间 | 10 分钟  |
+| 最大主令牌到期时间 | 15분  |
+| 最小资源令牌到期时间 | 10分钟  |
 | 最大资源令牌到期时间 | 默认情况下为 24 h。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它|
-| 令牌授权的最大时钟偏差| 15 分钟 |
+| 令牌授权的最大时钟偏差| 15분 |
 
 Cosmos DB 支持在写入过程中执行触发器。 对于每个写入操作，服务最多支持一个预先触发器和一个后期触发器。 
 
@@ -145,7 +145,7 @@ Cosmos DB 支持在写入过程中执行触发器。 对于每个写入操作，
 
 Cosmos DB 支持使用[SQL](how-to-sql-query.md)查询项。 下表描述了查询语句中的限制，例如，在子句数或查询长度方面。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | SQL 查询的最大长度| 256 KB <sup>*</sup>|
 | 每个查询的最大联接数| 5 <sup>*</sup>|
@@ -163,37 +163,37 @@ Cosmos DB 支持针对 MongoDB 编写的应用程序的 MongoDB 线路协议。 
 
 下表列出了特定于 MongoDB 功能支持的限制。 SQL （core） API 提到的其他服务限制还适用于 MongoDB API。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 最大 MongoDB 查询内存大小 | 40 MB |
-| MongoDB 操作的最长执行时间| 30 秒 |
+| MongoDB 操作的最长执行时间| 30초 |
 
 ## <a name="try-cosmos-db-free-limits"></a>试用 Cosmos DB 可用限制
 
 下表列出了免费试用版试用[Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)的限制。
 
-| 资源 | 默认限制 |
+| 리소스 | 기본 제한 |
 | --- | --- |
 | 试用持续时间 | 30天（可以随时续订） |
-| 每个订阅的最大容器数（SQL、Gremlin、表 API） | 第 |
+| 每个订阅的最大容器数（SQL、Gremlin、表 API） | 1 |
 | 每个订阅的最大容器（MongoDB API） | 3 |
-| 每个容器的最大吞吐量 | 5000 |
+| 每个容器的最大吞吐量 | 5,000 |
 | 每个共享吞吐量数据库的最大吞吐量 | 20000 |
-| 每个帐户的最大总存储 | 10 GB |
+| 每个帐户的最大总存储 | 10GB |
 
 试用 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全局分发。 无法为试用 Azure Cosmos DB 帐户创建 Azure 支持票证。 但是，为具有现有支持计划的订阅者提供了支持。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 详细了解 Cosmos DB 的核心概念[全局分发](distribute-data-globally.md)和[分区](partitioning-overview.md)和[预配的吞吐量](request-units.md)。
 
-请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
+다음 요약 설명서를 통해 Azure Cosmos DB를 시작해 보세요.
 
-* [Azure Cosmos DB SQL API 入门](create-sql-api-dotnet.md)
-* [Azure Cosmos DB 的用于 MongoDB 的 API 入门](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)
-* [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
-* [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
+* [Azure Cosmos DB SQL API 시작](create-sql-api-dotnet.md)
+* [Azure Cosmos DB의 MongoDB API 시작](create-mongodb-nodejs.md)
+* [Azure Cosmos DB Cassandra API 시작](create-cassandra-dotnet.md)
+* [Azure Cosmos DB Gremlin API 시작](create-graph-dotnet.md)
+* [Azure Cosmos DB Table API 시작](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
-> [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+> [무료로 Azure Cosmos DB 사용해 보기](https://azure.microsoft.com/try/cosmosdb/)

@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 61fe4af2d40d7252aa2b0dffb373a81162b9f67a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531388"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722503"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 即插即用预览版建模开发人员指南
 
@@ -20,7 +20,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 若要构建 IoT 即插即用设备，需要创建设备描述。 使用名为数字孪生定义语言（DTDL）的简单定义语言来完成说明。
 
-## <a name="device-capability-model"></a>设备功能模型
+## <a name="device-capability-model"></a>디바이스 기능 모델
 
 使用 DTDL，可以创建_设备功能模型_来描述设备的各个部分。 典型的 IoT 设备由以下内容组成：
 
@@ -45,7 +45,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
       "schema": "urn:azureiot:deviceManagement:DeviceInformation:1"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/CapabilityModel.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 
@@ -63,13 +63,13 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 还有其他可选字段可用于向功能模型中添加更多详细信息，例如显示名称和说明。 在功能模型中声明的接口可以被视为该设备的组件。 对于公共预览版，接口列表每个架构只能有一个条目。
 
-## <a name="interface"></a>接口
+## <a name="interface"></a>인터페이스
 
 使用 DTDL，可以使用接口描述设备的功能。 接口描述设备的一部分实现的_属性_、_遥测_和_命令_：
 
-- `Properties`。 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 可以将属性声明为只读或可写。
-- `Telemetry`。 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
-- `Commands`。 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
+- `Properties`에 대한 답변에 설명되어 있는 단계를 성공적으로 완료하면 활성화됩니다. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 可以将属性声明为只读或可写。
+- `Telemetry`에 대한 답변에 설명되어 있는 단계를 성공적으로 완료하면 활성화됩니다. 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
+- `Commands`에 대한 답변에 설명되어 있는 단계를 성공적으로 완료하면 활성화됩니다. 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
 
 以下示例显示了恒温器设备的接口：
 
@@ -103,7 +103,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 其他可选字段（如显示名称和说明）允许您将更多详细信息添加到界面和功能。
 
-### <a name="properties"></a>属性
+### <a name="properties"></a>속성
 
 默认情况下，属性是只读的。 只读属性意味着设备将属性值更新报告到 IoT 中心。 IoT 中心无法设置只读属性的值。
 
@@ -115,13 +115,13 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 对于可写属性，设备应用程序会返回所需状态状态代码、版本和说明，以指示是否已收到并应用属性值。
 
-### <a name="telemetry"></a>遥测
+### <a name="telemetry"></a>원격 분석
 
 默认情况下，IoT 中心会将来自设备的所有遥测消息路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的[内置面向服务的终结点（**消息/事件**）](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。
 
 可以使用[IoT 中心的自定义终结点和路由规则](../iot-hub/iot-hub-devguide-messages-d2c.md)将遥测数据发送到其他目标，例如 blob 存储或其他事件中心。 路由规则使用消息属性选择消息。
 
-### <a name="commands"></a>命令
+### <a name="commands"></a>명령
 
 命令为同步或异步。 默认情况下，必须在30秒内执行同步命令，并且在命令到达时必须连接设备。 如果设备有时间响应或设备未连接，则该命令将失败。
 
@@ -133,7 +133,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
  `iothub-interface-name`：此接口的实例名称，例如 `myAssetTracker`。
 - `iothub-command-statuscode`：从设备返回的状态代码，例如 `202`。
 
-## <a name="register-a-device"></a>注册设备
+## <a name="register-a-device"></a>디바이스 등록
 
 IoT 即插即用可以轻松地公布设备的功能。 对于 IoT 即插即用，在设备连接到 IoT 中心后，必须注册设备功能模型。 注册使客户能够使用设备的 IoT 即插即用功能。
 
@@ -226,10 +226,10 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 /digitalTwins/{device-id}/interfaces/{interface-name}/commands/{command-name}
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 现在，你已了解设备建模，以下是一些其他资源：
 
 - [数字克隆定义语言（DTDL）](https://aka.ms/DTDL)
-- [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C 디바이스 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

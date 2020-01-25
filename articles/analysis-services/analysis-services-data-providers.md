@@ -1,95 +1,95 @@
 ---
 title: Azure Analysis Services 客户端库 |Microsoft Docs
-description: 介绍了客户端应用程序和工具连接 Azure Analysis Services 时所需的客户端库
+description: 클라이언트 애플리케이션 및 도구에서 Azure Analysis Services를 연결하는 데 필요한 클라이언트 라이브러리에 대해 설명합니다.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ad7165b1205921ad324525b9f46a22bec5cebaa9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885317"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713174"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
+# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services에 연결하기 위한 클라이언트 라이브러리
 
-客户端应用程序和工具连接到 Analysis Services 服务器时需要使用客户端库。 Microsoft 客户端应用程序（例如 Power BI Desktop、Excel、SQL Server Management Studio （SSMS））和 Visual Studio 的 Analysis Services 项目扩展安装所有三个客户端库，并随常规应用程序更新一起更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
+클라이언트 라이브러리는 클라이언트 애플리케이션 및 도구에서 Analysis Services 서버에 연결하는 데 필요합니다. Microsoft 客户端应用程序（例如 Power BI Desktop、Excel、SQL Server Management Studio （SSMS））和 Visual Studio 的 Analysis Services 项目扩展安装所有三个客户端库，并随常规应用程序更新一起更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
 
-## <a name="download-the-latest-client-libraries-windows-installer"></a>下载最新客户端库 (Windows Installer)  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>최신 클라이언트 라이브러리 다운로드(Windows Installer)  
 
-|下载  |产品版本  | 
+|다운로드  |제품 버전  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.10.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.10.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.2.3.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.2.3.0     |
+|[MSOLAP(amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
+|[MSOLAP(x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.0.5    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.0.5     |
 
-## <a name="amo-and-adomd-nuget-packages"></a>AMO 和 ADOMD（NuGet 包）
+## <a name="amo-and-adomd-nuget-packages"></a>AMO 및 ADOMD(NuGet 패키지)
 
 Analysis Services 管理对象（AMO）和 ADOMD 客户端库作为[NuGet.org](https://www.nuget.org/)中的可安装包提供。建议你迁移到 NuGet 引用，而不是使用 Windows Installer。 
 
-|程序包  | 产品版本  | 
+|패키지  | 제품 버전  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.2.3     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.2.3      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.0.5     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.0.5      |
 
-NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH。 NuGet 引用加载预期的版本，即使 GAC 中存在不同的版本（由 MSI 安装导致的）。 PATCH 将随每次发布递增。 AMO 和 ADOMD 版本保持同步。
+NuGet 패키지 어셈블리 AssemblyVersion은 의미 체계 버전 지정 MAJOR.MINOR.PATCH를 따릅니다. NuGet 참조는 GAC에 다른 버전이 있더라도(MSI 설치의 결과) 필요한 버전을 로드합니다. 패치는 각 릴리스에 대해 증가합니다. AMO 및 ADOMD 버전은 동기 상태로 유지됩니다.
 
-## <a name="understanding-client-libraries"></a>了解客户端库
+## <a name="understanding-client-libraries"></a>클라이언트 라이브러리 이해
 
-Analysis Services 利用三个客户端库（也称为数据提供程序）。 ADOMD.NET 和 Analysis Services 管理对象 (AMO) 都是托管型客户端库。 Analysis Services OLE DB 提供程序 (MSOLAP DLL) 是本机客户端库。 通常，所有三个库会同时安装。 **Azure Analysis Services 要求安装所有三个库的最新版本**。 
+Analysis Services는 데이터 공급자로도 알려진 세 가지 클라이언트 라이브러리를 활용합니다. ADOMD.NET 및 AMO(Analysis Services Management Objects)는 관리되는 클라이언트 라이브러리입니다. Analysis Services OLE DB 공급자(MSOLAP DLL)는 네이티브 클라이언트 라이브러리입니다. 일반적으로 세 가지 모두 동시에 설치됩니다. **Azure Analysis Services에는 세 라이브러리 모두의 최신 버전이 필요합니다**. 
 
-Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库，有新版本可用时，会更新这些库。 某些客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他界面，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序需要手动或以编程方式安装库。 用于手动安装的客户端库作为可分发程序包包含在 SQL Server 功能包中。 但是，这些客户端库与 SQL Server 版本关联，可能不是最新的。  
+Power BI Desktop 및 Excel과 같은 Microsoft 클라이언트 애플리케이션은 이러한 세 가지 클라이언트 라이브러리를 모두 설치하고 새 버전이 사용 가능해지면 업데이트합니다. 업데이트의 버전 또는 빈도에 따라 일부 클라이언트 라이브러리가 Azure Analysis Services에서 요구하는 최신 버전이 아닐 수도 있습니다. 사용자 지정 애플리케이션, 또는 AsCmd, TOM, ADOMD.NET과 같은 다른 인터페이스에도 마찬가지입니다. 이러한 애플리케이션에서는 라이브러리를 수동으로 또는 프로그래밍 방식으로 설치해야 합니다. 수동 설치를 위한 클라이언트 라이브러리는 SQL Server 기능 팩에 배포 가능 패키지로 포함되어 있습니다. 그러나 이러한 클라이언트 라이브러리는 SQL Server 버전에 연결되며 최신 버전이 아닐 수도 있습니다.  
 
-进行客户端连接的客户端库不同于从 Azure Analysis Services 服务器连接到数据源时需要的数据提供程序。 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
+클라이언트 연결을 위한 클라이언트 라이브러리는 Azure Analysis Services 서버에서 데이터 원본에 연결하는 데 필요한 데이터 공급자와는 다릅니다. 若要详细了解数据源连接，请参阅[数据源连接](analysis-services-datasource.md)。
 
-## <a name="client-library-types"></a>客户端库类型
+## <a name="client-library-types"></a>클라이언트 라이브러리 형식
 
-### <a name="analysis-services-ole-db-provider-msolap"></a>Analysis Services OLE DB 提供程序 (MSOLAP) 
+### <a name="analysis-services-ole-db-provider-msolap"></a>Analysis Services OLE DB 공급자(MSOLAP) 
 
- Analysis Services OLE DB 提供程序 (MSOLAP) 是用于建立 Analysis Services 数据库连接的本机客户端库。 ADOMD.NET 和 AMO 间接使用它向数据提供程序委托连接请求。 也可以直接从应用程序代码调用 OLE DB 提供程序。  
+ Analysis Services OLE DB Provider(MSOLAP)는 Analysis Services 데이터베이스 연결용 네이티브 클라이언트 라이브러리입니다. 이 라이브러리는 ADOMD.NET과 AMO 둘 다에서 데이터 공급자에 연결 요청을 위임하는 방식으로 간접적으로 사용됩니다. 애플리케이션 코드에서 직접 OLE DB Provider를 호출할 수도 있습니다.  
   
- 用于访问 Analysis Services 数据库的大多数工具和客户端应用程序可自动安装 Analysis Services OLE DB 提供程序。 必须将它安装在用于访问 Analysis Services 数据的计算机上。  
+ Analysis Services OLE DB Provider는 Analysis Services 데이터베이스에 액세스하는 데 사용되는 대부분의 도구와 애플리케이션에 의해 자동으로 설치됩니다. Analysis Services 데이터에 액세스하는 데 사용되는 컴퓨터에 설치되어야 합니다.  
   
- OLE DB 提供程序通常在连接字符串中指定。 Analysis Services 连接字符串使用不同的命名法来引用 OLE DB 提供程序：MSOLAP.\<版本>.dll。
+ OLE DB 공급자는 종종 연결 문자열에 지정됩니다. Analysis Services 연결 문자열은 다른 명명법을 사용하여 OLE DB Provider: MSOLAP.\<version>.dll을 나타냅니다.
 
 ### <a name="amo"></a>AMO  
 
- AMO 是用于服务器管理和数据定义的托管客户端库。 它由工具和客户端应用程序安装和使用。 例如，SQL Server Management Studio (SSMS) 使用 AMO 连接到 Analysis Services。 使用 AMO 的连接通常非常精简，由 `"data source=\<servername>"` 组成。 建立连接后，可以使用 API 来处理数据库集合和主要对象。 Visual Studio 和 SSMS 均使用 AMO 连接到 Analysis Services 的实例。  
+ AMO는 서버 관리 및 데이터 정의에 사용되는 관리되는 클라이언트 라이브러리입니다. 도구 및 클라이언트 애플리케이션에 의해 설치되고 사용됩니다. 예를 들어 SSMS(SQL Server Management Studio)는 AMO를 사용하여 Analysis Services에 연결합니다. AMO를 사용하는 연결은 일반적으로 최소로 유지되며 `"data source=\<servername>"`으로 구성됩니다. 연결이 설정된 후에 API를 사용하여 데이터베이스 컬렉션 및 주요 개체에 대해 작업을 수행합니다. Visual Studio 和 SSMS 均使用 AMO 连接到 Analysis Services 的实例。  
 
   
 ### <a name="adomd"></a>ADOMD
 
- ADOMD.NET 是用于查询 Analysis Services 数据的托管数据客户端库。 它由工具和客户端应用程序安装和使用。 
+ ADOMD.NET은 Analysis Services 데이터를 쿼리하는 데 사용되는 관리되는 데이터 클라이언트 라이브러리입니다. 도구 및 클라이언트 애플리케이션에 의해 설치되고 사용됩니다. 
   
- 连接到数据库时，所有三个库的连接字符串属性相似。 使用 [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) 为 ADOMD.NET 定义的几乎任何连接字符串同样适用于 AMO 和 Analysis Services OLE DB 提供程序 (MSOLAP)。 若要了解详细信息，请参阅[连接字符串属性 &#40;Analysis Services&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services)。  
+ 데이터베이스에 연결하는 경우 세 라이브러리에 대한 연결 문자열 속성이 모두 비슷합니다. [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString)을 사용하여 ADOMD.NET에 대해 정의한 거의 모든 연결 문자열이 AMO 및 Analysis Services OLE DB Provider(MSOLAP)에도 작동합니다. 자세한 내용은 [연결 문자열 속성&#40;Analysis Services&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services)를 참조하세요.  
 
   
-##  <a name="bkmk_LibUpdate"></a>如何确定客户端库版本   
+##  <a name="bkmk_LibUpdate"></a> 클라이언트 라이브러리 버전을 확인하는 방법   
   
-### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
+### <a name="oleddb-msolap"></a>OLEDDB(MSOLAP)  
   
-1.  转到 `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`。 如果有多个文件夹，请选择较大的数字。
+1.  [https://editor.swagger.io](`C:\Program Files\Microsoft Analysis Services\AS OLEDB\`) 로 이동합니다. 둘 이상의 폴더가 있는 경우 더 높은 숫자를 선택합니다.
   
-2.  右键单击“msolap.dll” **“属性”** “详细信息”。 >  >  如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
+2.  마우스 오른쪽 단추로 **msolap.dll** > **Properties** > **Details**를 클릭합니다. 파일 이름이 msolap140.dll이면 최신 버전보다 오래된 것이므로 업그레이드해야 합니다.
     
-    ![客户端库详细信息](media/analysis-services-data-providers/aas-msolap-details.png)
+    ![클라이언트 라이브러리 세부 정보](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
 ### <a name="amo"></a>AMO
 
-1. 转到 `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices” **，选择“属性”** “详细信息”。 >  >   
+1. [https://editor.swagger.io](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`) 로 이동합니다. 둘 이상의 폴더가 있는 경우 더 높은 숫자를 선택합니다.
+2. 마우스 오른쪽 단추로 **Microsoft.AnalysisServices** > **속성** > **세부 정보**를 클릭합니다.  
 
 ### <a name="adomd"></a>ADOMD
 
-1. 转到 `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices.AdomdClient” **，选择“属性”** “详细信息”。 >  >   
+1. [https://editor.swagger.io](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`) 로 이동합니다. 둘 이상의 폴더가 있는 경우 더 높은 숫자를 선택합니다.
+2. 마우스 오른쪽 단추로 **Microsoft.AnalysisServices.AdomdClient** > **속성** > **세부 정보**를 클릭합니다.  
 
 
-## <a name="next-steps"></a>后续步骤
-[使用 Excel 进行连接](analysis-services-connect-excel.md)    
-[使用 Power BI 进行连接](analysis-services-connect-pbi.md)
+## <a name="next-steps"></a>다음 단계
+[Excel로 연결](analysis-services-connect-excel.md)    
+[Power BI와 연결](analysis-services-connect-pbi.md)

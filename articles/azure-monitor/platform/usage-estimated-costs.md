@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Monitor 中监视使用情况和预估成本
-description: Azure Monitor 中的使用情况和预估成本页的使用过程概述
+title: Azure Monitor의 모니터링 사용량 및 예상 비용
+description: Azure Monitor의 모니터링 사용량 및 예상 비용 프로세스 개요 페이지
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 48abf95e65b6185f5c95a1f5d942091ed0f33122
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044198"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715772"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor의 모니터링 사용량 및 예상 비용
 
 > [!NOTE]
 > 本文介绍如何在多个 Azure 监视功能中查看使用情况和估计成本。 Azure Monitor 的特定组件的相关文章包括：
@@ -25,7 +25,7 @@ ms.locfileid: "73044198"
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Monitor 定价模型
 
-基本 Azure Monitor 计费模型是一种基于云的、基于消耗的定价（"即用即付"）。 仅为所用部分付费。 定价详细信息适用于[警报、指标、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)。 
+基本 Azure Monitor 计费模型是一种基于云的、基于消耗的定价（"即用即付"）。 사용한 만큼만 요금을 지불합니다. 定价详细信息适用于[警报、指标、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)。 
 
 除了用于日志数据的即用即付模型外，Log Analytics 还提供了容量预留，这使你可以将其与即用即付价格相比最多保存25%。 产能预留价格使你可以购买起价 100 GB/天的保留。 将按现用现付费率对超出预订级别的任何使用量进行计费。 [了解](https://azure.microsoft.com/pricing/details/monitor/)有关容量保留定价的详细信息。
 
@@ -60,7 +60,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 1. Azure Monitor
 2. Application Insights
 3. Log Analytics
-4. 见解与分析
+4. Insight and Analytics
 
 这将生成如下所示的视图：
 
@@ -68,28 +68,28 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 从这里，您可以从累积成本汇总中深化，以获取 "按资源成本" 视图中的更详细信息。 在当前定价层中，将根据 Log Analytics 或 Application Insights 中的一组计量器对 Azure 日志数据收费。 若要将成本与 Log Analytics 或 Application Insights 使用量隔离开来，你可以在**资源类型**上添加筛选器。 若要查看所有 Application Insights 开销，请将资源类型筛选为 "microsoft.operationalinsights/components"，并为 Log Analytics 成本筛选资源类型。 
 
-通过[从 Azure 门户下载您的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以获得更多详细信息。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过第一次筛选 "计量类别" 列以显示 "Application Insights" 和 "Log Analytics" 来查找 Application Insights 资源的用法，然后在 "Instance ID" 列中添加筛选器，这是 "containsmicrosoft insights/组件 "。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+通过[从 Azure 门户下载您的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以获得更多详细信息。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一个筛选来找到 Application Insights 资源的使用情况，以便显示 "Application Insights" 和 "Log Analytics"，然后在 "Instance ID" 列中添加一个筛选器，该筛选器为 "包含 microsoft Insights/组件"。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 > [!NOTE]
 > 使用**Azure 成本管理 + 计费**中心中的**成本管理**是广泛了解监视成本的首选方法。  [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)和[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs)的**使用情况和估计成本**经验为 Azure Monitor 的每个部分提供更深入的见解。
 
-查看 Azure Monitor 使用情况的另一种方法是监视集线器中的 "**使用情况和估计成本**" 页。 这会显示核心监视功能的使用情况，例如[警报、指标、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Azure 应用程序见解](https://azure.microsoft.com/pricing/details/application-insights/)。 对于使用 2018 年 4 月之前提供的定价计划的客户，这还包括通过见解和分析套餐购买的 Log Analytics 使用情况功能。
+查看 Azure Monitor 使用情况的另一种方法是监视集线器中的 "**使用情况和估计成本**" 页。 这会显示核心监视功能的使用情况，例如[警报、指标、通知](https://azure.microsoft.com/pricing/details/monitor/)、 [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)和[Azure 应用程序见解](https://azure.microsoft.com/pricing/details/application-insights/)。 2018년 4월 이전 제공된 요금제 고객의 경우 Insights 및 Analytics 제안을 통해 구매한 Log Analytics 사용량도 여기에 포함됩니다.
 
-在此页上，用户可以查看过去 31 天的资源使用情况（按订阅聚合）。 `Drill-ins` 显示31天内的使用趋势。 需要聚合大量的数据才能进行此估算，因此请耐心等待页面加载。
+사용자는 이 페이지에서 구독별로 집계된 지난 31일 간의 리소스 사용량을 볼 수 있습니다. `Drill-ins` 显示31天内的使用趋势。 예상치를 내기 위해서는 상당한 데이터를 취합해야 하므로 페이지 로드에 다소 시간이 소요됩니다.
 
-以下示例显示正在监视使用情况，以及最终的预估成本：
+이 예에서는 모니터링 사용량과 그에 따른 비용의 추정치를 보여 줍니다.
 
-![使用情况和预估成本门户屏幕截图](./media/usage-estimated-costs/001.png)
+![사용량 및 예상 비용 포털 스크린 샷](./media/usage-estimated-costs/001.png)
 
-选择“每月使用情况”列中的链接会打开一个图表，其中显示过去 31 天的使用趋势： 
+월별 사용량 열의 링크를 클릭하면 지난 31일 간의 사용량 추세를 보여 주는 차트가 열립니다. 
 
-![“每个节点包含”条形图屏幕截图](./media/usage-estimated-costs/002.png)
+![노드당 포함 가로 막대형 차트 스크린 샷](./media/usage-estimated-costs/002.png)
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Operations Management Suite 订阅权利
 
-购买了 Microsoft Operations Management Suite E1 和 E2 的客户有资格享受 [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) 和 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) 的每节点数据引入权利。 若要在给定的订阅中享受 Log Analytics 工作区或 Application Insights 资源的这些权利： 
+Microsoft Operations Management Suite E1 및 E2를 구매한 고객은 [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) 및 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)에 대한 노드별 데이터 주입 자격이 있습니다. 지정된 구독에서 Log Analytics 작업 영역 또는 Application Insights 리소스에 대해 이러한 자격을 얻으려면: 
 
-- Log Analytics 工作区应使用“按节点 (OMS)”定价层。
+- Log Analytics 작업 영역에서 "노드당(OMS)" 가격 책정 계층을 사용해야 합니다.
 - Application Insights 资源应使用 "企业" 定价层。
 
 根据你的组织购买的套件的节点数，将某些订阅转移到即用即付（每 GB）定价层可能会很有利，但这需要仔细考虑。

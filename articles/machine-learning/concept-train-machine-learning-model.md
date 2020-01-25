@@ -9,14 +9,14 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 4902c679fa9b8b0140f7da8f32b3382983a635ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311319"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721109"
 ---
-# <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
+# <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning을 사용하여 모델 학습
 
 Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优先解决方案到低代码解决方案（例如自动机器学习和可视化设计器）。 使用以下列表来确定哪种培训方法适合你：
 
@@ -29,7 +29,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
     | [估算](#estimators) | 利用估计器类，**可以轻松地根据常用机器学习框架来训练模型**。 **Scikit-learn**、 **PyTorch**、 **TensorFlow**和**Chainer**有估计器类。 还有一个泛型估计器，可用于尚无专用估计器类的框架。 使用估算时，无需担心定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道并不是一种不同的定型方法，而是**使用模块化的可重用步骤定义工作流的一种方法**，该方法可以包含定型作为工作流的一部分。 机器学习管道支持使用自动机器学习、估算和运行配置来训练模型。 由于管道并非专门针对定型，因此使用管道的原因比其他培训方法更有不同。 通常情况下，可以在以下情况下使用管道：<br>* 你需要**计划无人参与的进程**，如长时间运行的培训作业或数据准备。<br>* 使用跨异类计算资源和存储位置协调的**多个步骤**。<br>* 将管道用作特定方案（如重新训练或批处理评分）的**可重用模板**。<br>* **跟踪和版本工作流的数据源、输入和输出**。<br>* 你的工作流**由单独处理特定步骤的不同团队实现**。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
 
-+ **设计器**： Azure 机器学习设计器提供了一种简单的入口点到机器学习中，用于构建概念证明或几乎编码经验的用户。 它允许您使用拖放基于 web 的 UI 来训练模型。 您可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下定型模型。
++ **设计器**： Azure 机器学习设计器（预览）提供了一个简单的入口点，可用于构建概念证明或几乎编码经验的用户。 它允许您使用拖放基于 web 的 UI 来训练模型。 您可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下定型模型。
 
 + **CLI**：机器学习 CLI 为使用 Azure 机器学习的常见任务提供命令，通常用于**脚本和自动化任务**。 例如，在创建训练脚本或管道后，您可以使用 CLI 按计划启动定型运行，或在用于定型的数据文件更新时启动。 对于定型模型，它提供了用于提交训练作业的命令。 它可以使用运行配置或管道提交作业。
 
@@ -43,7 +43,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [安装/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [为 Azure 机器学习配置开发环境](how-to-configure-environment.md)
 
-### <a name="run-configuration"></a>运行配置
+### <a name="run-configuration"></a>실행 구성
 
 可以使用[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)定义具有 Azure 机器学习的一般训练作业。 然后，将使用运行配置，以及训练脚本来训练计算目标上的模型。
 
@@ -54,12 +54,12 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [示例：定型模型的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
 * [如何：设置和使用模型定型的计算目标](how-to-set-up-training-targets.md)
 
-### <a name="automated-machine-learning"></a>自动化机器学习
+### <a name="automated-machine-learning"></a>자동화된 Machine Learning
 
 定义迭代、超参数设置、特征化和其他设置。 在训练过程中，Azure 机器学习会并行尝试不同的算法和参数。 训练一旦达到你定义的出口标准就会停止。 使用估算时，无需担心定义运行配置。
 
 > [!TIP]
-> 在除了到 Python SDK 的情况下，你还可以通过[Azure 机器学习 studio](https://ml.azure.com)使用自动 ML。
+> 除了 Python SDK 外，还可以通过[Azure 机器学习 studio](https://ml.azure.com)使用自动 ML。
 
 * [什么是自动化机器学习？](concept-automated-ml.md)
 * [教程：通过自动机器学习创建您的第一个分类模型](tutorial-first-experiment-automated-ml.md)
@@ -89,7 +89,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [示例：具有自动机器学习的管道](https://aka.ms/pl-automl)
 * [示例：具有估算的管道](https://aka.ms/pl-estimator)
 
-## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 디자이너
 
 设计器使您能够在 web 浏览器中使用拖放界面训练模型。
 
@@ -108,6 +108,6 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [使用 CLI 扩展进行 Azure 机器学习](reference-azure-machine-learning-cli.md)
 * [Azure 上的 MLOps](https://github.com/microsoft/MLOps)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 了解如何[设置培训环境](how-to-set-up-training-targets.md)。

@@ -1,92 +1,92 @@
 ---
-title: 对 Azure 上 SQL Server 中的数据采样 - Team Data Science Process
-description: 使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样，然后将其移到 Azure 机器学习中。
+title: Azure의 SQL Server에서 샘플 데이터 - Team Data Science Process
+description: SQL 또는 Python 프로그래밍 언어를 사용하여 Azure의 SQL Server에 저장된 데이터를 샘플링한 다음, Azure Machine Learning으로 이동합니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043336"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717644"
 ---
-# <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
+# <a name="heading"></a>Azure의 SQL Server에서 데이터 샘플링
 
-本文介绍了如何使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
+이 문서에서는 SQL 또는 Python 프로그래밍 언어를 사용하여 Azure의 SQL Server에 저장된 데이터를 샘플링하는 방법을 보여줍니다. 또한 샘플링된 데이터를 파일에 저장하고, Azure blob에 업로드한 다음, Azure Machine Learning Studio로 읽어 들여 Azure Machine Learning으로 이동하는 방법을 보여 줍니다.
 
-Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 和 [Pandas](https://pandas.pydata.org/) 库进行采样。
+Python 샘플링은 Azure의 SQL Sever와 [Pandas](https://pandas.pydata.org/) 라이브러리에 연결하기 위해 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 라이브러리를 사용하여 샘플링을 수행합니다.
 
 > [!NOTE]
-> 本文档中的示例 SQL 代码假设该数据在 Azure 上的 SQL Server 中。 如果不存在，请参阅“[将数据移动到 Azure 上的 SQL Server](move-sql-server-virtual-machine.md)”文章，获取有关如何将数据移动到 Azure 上的 SQL Server 的说明。
+> 이 문서의 샘플 SQL 코드에서는 데이터가 Azure의 SQL Server에 있는 것으로 가정합니다. 그렇지 않은 경우 Azure의 SQL Server로 데이터를 이동하는 방법에 대한 지침은 [Azure의 SQL Server로 데이터 이동](move-sql-server-virtual-machine.md) 문서를 참조하세요.
 > 
 > 
 
-**为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
+**데이터를 샘플링하는 이유**
+분석할 데이터 세트가 큰 경우 일반적으로 데이터를 다운 샘플링하여 작지만 전형적이고 관리하기 쉬운 크기로 줄이는 것이 좋습니다. 采样有助于数据理解、探索和特征工程。 [TDSP(팀 데이터 과학 프로세스)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 에서는 데이터 처리 기능 및 기계 학습 모델의 빠른 프로토타입 제작을 지원하는 역할을 합니다.
 
-此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
+이 샘플 작업은 [TDSP(팀 데이터 과학 프로세스)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)의 단계입니다.
 
-## <a name="SQL"></a>使用 SQL
-本部分介绍了几种使用 SQL 针对数据库中的数据执行简单随机采样的方法。 请根据数据大小及其分发方式选择一种方法。
+## <a name="SQL"></a>SQL 사용
+이 섹션에는 SQL을 사용하여 데이터베이스의 데이터에 대해 간단한 무작위 샘플링을 수행하는 몇 가지 방법을 설명합니다. 데이터 크기 및 해당 분포에 따라 방법을 선택하세요.
 
-以下两项显示了如何使用 SQL Server 中的 `newid` 执行采样。 选择的方法取决于想要进行采样的随机程度（假设以下示例代码中的 pk_id 是自动生成的主密钥）。
+다음 두 항목은 SQL Server에서 `newid`를 사용하여 샘플링을 수행하는 방법을 보여줍니다. 选择的方法取决于您想要样本的随机程度（在以下示例代码中 pk_id 假设为自动生成的主键）。
 
-1. 不太严格的随机采样
+1. 낮은 수준 무작위 샘플
    
         select  * from <table_name> where <primary_key> in 
         (select top 10 percent <primary_key> from <table_name> order by newid())
-2. 更随机的采样 
+2. 높은 수준 무작위 샘플 
    
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample 也可用于数据采样。 如果数据大小较大（假设不同页面上的数据各不相关）并且想要在一个合理时间完成查询，此方法可能更好。
+데이터를 샘플링하는 데도 Tablesample을 사용할 수 있습니다. 如果数据大小较大（假设不同页面上的数据不相关），并且查询在合理的时间内完成，则此选项可能是更好的方法。
 
     SELECT *
     FROM <table_name> 
     TABLESAMPLE (10 PERCENT)
 
 > [!NOTE]
-> 可以通过将采样数据存储在新表中从其浏览和生成功能
+> 이 샘플링된 데이터를 새 테이블에 저장하여 기능을 탐색하고 생성할 수 있습니다.
 > 
 > 
 
-### <a name="sql-aml"></a>连接到 Azure 机器学习
-可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习实验。 使用读取器模块读取采样的数据的屏幕截图如下所示：
+### <a name="sql-aml"></a>Azure 기계 학습에 연결
+您可以直接使用上面 Azure 机器学习[导入数据][import-data]模块中的示例查询向下采样数据，并将数据放入 Azure 机器学习试验中。 下面显示了使用读取器模块读取采样数据的屏幕截图：
 
-![读取器 SQL][1]
+![판독기 sql][1]
 
-## <a name="python"></a>使用 Python 编程语言
-本部分演示了如何使用 [pyodbc 库](https://code.google.com/p/pyodbc/)建立 ODBC 与 Python 中 SQL Server 数据库的连接。 数据库连接字符串如下所示：（将 servername、dbname、username 和 password 替换为配置）：
+## <a name="python"></a>Python 프로그래밍 언어 사용
+이 섹션에서는 [pyodbc 라이브러리](https://code.google.com/p/pyodbc/)를 사용하여 Python에서 SQL server 데이터베이스에 ODBC 연결을 설정하는 방법을 보여줍니다. 数据库连接字符串如下所示：（将 servername、dbname、username 和 password 替换为你的配置）：
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码将 Azure SQL 数据库表中的 0.1% 数据采样读取到 Pandas 数据中：
+Python의 [Pandas](https://pandas.pydata.org/) 라이브러리에서는 Python 프로그래밍용 데이터 조작을 위한 다양한 데이터 구조 및 데이터 분석 도구 집합을 제공합니다. 下面的代码将 Azure SQL 数据库中的表中的0.1% 样本数据读入 Pandas 数据：
 
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
-现在，可以在 Pandas 数据帧中处理采样的数据。 
+이제 Pandas 데이터 프레임에서 샘플링된 데이터로 작업할 수 있습니다. 
 
-### <a name="python-aml"></a>连接到 Azure 机器学习
-可以使用以下示例代码将低采样的数据保存到文件，并将其上传到 Azure blob。 可以使用[导入数据][import-data]模块将 blob 中的数据直接读取到 Azure 机器学习实验。 步骤如下： 
+### <a name="python-aml"></a>Azure 기계 학습에 연결
+다음 샘플 코드를 사용하여 다운 샘플링한 데이터를 파일에 저장한 후 Azure Blob에 업로드할 수 있습니다. 可以使用[导入数据][import-data]模块将 blob 中的数据直接读入 Azure 机器学习试验。 단계는 다음과 같습니다. 
 
-1. 将 Pandas 数据帧写入本地文件
+1. pandas 데이터 프레임을 로컬 파일에 기록합니다.
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. 将本地文件上传到 Azure Blob
+2. 로컬 파일을 Azure Blob에 업로드합니다.
    
         from azure.storage import BlobService
         import tables
@@ -107,12 +107,12 @@ Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数�
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. 使用 Azure 机器学习[导入数据][import-data]模块从 Azure blob 读取数据，如下方屏幕截图所示：
+3. 使用 Azure 机器学习[导入数据][import-data]模块从 Azure blob 读取数据，如以下屏幕截图所示：
 
-![blob 读取器][2]
+![판독기 blob][2]
 
-## <a name="the-team-data-science-process-in-action-example"></a>运行中的团队数据科学过程示例
-有关使用公用数据集的团队数据科学过程的演练示例，请参阅[运行中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
+## <a name="the-team-data-science-process-in-action-example"></a>실행 중인 팀 데이터 과학 프로세스 예제
+若要逐步了解团队数据科学使用公共数据集处理 a 的示例，请参阅[操作中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

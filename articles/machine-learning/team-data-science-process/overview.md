@@ -1,6 +1,6 @@
 ---
-title: 什么是 Team Data Science Process？
-description: 提供数据科学方法来交付预测分析解决方案和智能应用程序。
+title: 팀 데이터 과학 프로세스가 무엇인가요?
+description: 예측 분석 솔루션 및 지능형 애플리케이션을 제공하는 데이터 과학 방법론을 제공합니다.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -8,100 +8,100 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665067"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721381"
 ---
-# <a name="what-is-the-team-data-science-process"></a>什么是 Team Data Science Process？
+# <a name="what-is-the-team-data-science-process"></a>팀 데이터 과학 프로세스가 무엇인가요?
 
-Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 TDSP 通过说明团队角色如何最好地协同工作，帮助改进团队协作和学习。 TDSP 包括 Microsoft 和其他行业领先公司的最佳做法和结构，以帮助成功实现数据科学计划。 其目标是帮助公司完全实现其分析程序的优势。
+TDSP(Team Data Science Process)는 예측 분석 솔루션 및 지능형 애플리케이션을 효율적으로 제공하는 기민한 반복 데이터 과학 방법론입니다. TDSP 通过说明团队角色如何最好地协同工作，帮助改进团队协作和学习。 TDSP 包括 Microsoft 和其他行业领先公司的最佳做法和结构，以帮助成功实现数据科学计划。 목표는 회사가 해당 분석 프로그램의 이점을 완전히 이해하도록 돕는 것입니다.
 
-本文提供 TDSP 及其主要组件的概述。 我们在此处提供了可使用不同类型的工具实现的流程的一般说明。 其他链接主题中提供了过程生命周期所涉及的项目任务和角色的更详细说明。 此外，还提供了有关如何使用一套具体 Microsoft 工具和基础结构实现 TDSP 的指导（我们的团队就是使用这些工具和基础结构来实现 TDSP）。
+이 문서에서는 TDSP 및 주요 구성 요소의 개요를 제공합니다. 我们在此处提供了可使用不同类型的工具实现的流程的一般说明。 프로젝트 작업 및 프로세스의 수명 주기와 관련된 역할의 더 자세한 설명은 추가 연결된 항목에서 제공됩니다. 팀에서 TDSP를 구현하는 데 사용하는 Microsoft 도구 및 인프라의 특정 집합을 사용하여 TDSP를 구현하는 방법에 대한 지침도 제공됩니다.
 
-## <a name="key-components-of-the-tdsp"></a>TDSP 的关键组件
+## <a name="key-components-of-the-tdsp"></a>TDSP의 주요 구성 요소
 
-TDSP 包括以下关键组件：
+TDSP는 다음 주요 구성 요소로 구성됩니다.
 
-- **数据科学生命周期**定义
-- **标准化项目结构**
-- 数据科学项目的**基础结构和资源**
-- 用于项目执行的**工具和实用程序**
+- **데이터 과학 수명 주기** 정의
+- **표준화된 프로젝트 구조**
+- 데이터 과학 프로젝트에 대한 **인프라 및 리소스**
+- 프로젝트 실행에 대한 **도구 및 유틸리티**
 
 
-## <a name="data-science-lifecycle"></a>数据科学生命周期
+## <a name="data-science-lifecycle"></a>데이터 과학 수명 주기
 
-Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的生命周期。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。
+TDSP(Team Data Science Process)는 데이터 과학 프로젝트의 개발을 구조화하는 수명 주기를 제공합니다. 生命周期概述了成功项目所遵循的完整步骤。
 
-如果使用其他的数据科学生命周期，如 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、[KDD](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的自定义过程，仍可在这些开发生命周期的上下文中使用基于任务的 TDSP。 从较高层面讲，这些不同的方法具有很多共性。 
+如果你正在使用其他数据科学生命周期，如[简洁 DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、 [KDD](https://wikipedia.org/wiki/Data_mining#Process)或组织自己的自定义过程，则仍可在这些开发生命周期的上下文中使用基于任务的 TDSP。 상위 수준에서 이러한 다양한 방법에는 많은 공통점이 있습니다. 
 
-此生命周期面向作为智能应用程序一部分交付的数据科学项目。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目或即席分析项目也可从使用此过程获益。 但在这种情况下可能不需要某些所述的步骤。    
+이 수명 주기는 지능형 애플리케이션의 일부로 제공되는 데이터 과학 프로젝트를 위해 설계되었습니다. 이러한 애플리케이션은 예측 분석을 위해 기계 학습 또는 인공 지능 모델을 배포합니다. 探索数据科学项目或标识分析项目也可从使用此过程中获益。 하지만 이러한 경우 설명하는 단계 중 일부는 필요하지 않을 수도 있습니다.    
 
-该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
+수명 주기는 일반적으로 프로젝트에서 반복적으로 자주 실행하는 주요 단계를 설명합니다.
 
-* **了解业务**
-* **数据采集和理解**
-* **建模**
-* **部署**
-* **客户验收**
+* **비즈니스 이해**
+* **데이터 취득 및 이해**
+* **모델링**
+* **배포**
+* **고객 승인**
 
-以下是 **Team Data Science Process 生命周期**的可视化表示形式 。 
+다음은 **팀 데이터 과학 프로세스 수명 주기**의 시각적 표현입니다. 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![TDSP - 수명 주기 2](./media/overview/tdsp-lifecycle2.png) 
 
-[Team Data Science Process 生命周期](lifecycle.md)主题中介绍了 TDSP 中每个生命周期阶段的目标、任务和文档项目。 这些任务和项目与项目角色相关联：
+TDSP에서 주기의 각 단계에 대한 목표, 작업 및 설명서 아티팩트는 [Team Data Science Process 수명 주기](lifecycle.md) 항목에 설명되어 있습니다. 이러한 작업 및 아티팩트는 프로젝트 역할과 관련이 있습니다.
 
-- 解决方案架构师
-- 项目经理
-- 数据科学家
-- 项目主管 
+- 솔루션 설계자
+- 프로젝트 관리자
+- 데이터 과학자
+- 프로젝트 책임자 
 
-下图提供了与这些角色（纵轴）的每个生命周期阶段（横轴）相关联的任务（蓝色）和项目（绿色）的网格视图。 
+다음 다이어그램은 이러한 작업(세로 축)에 대한 수명 주기(가로 축)의 각 역할에 관련된 작업(파란색) 및 아티팩트(녹색)의 그리드 뷰를 제공합니다. 
 
 [![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
-## <a name="standardized-project-structure"></a>标准化项目结构
+## <a name="standardized-project-structure"></a>표준화된 프로젝트 구조
 
-让所有项目共享一个目录结构并对项目文档使用模板可以方便团队成员查找有关其项目的信息。 所有代码和文档存储在 Git、TFS 或 Subversion 等版本控制系统 (VCS) 中，以实现团队协作。 在 Jira、Rally 和 Azure DevOps 等敏捷项目跟踪系统中跟踪任务和功能可以更密切地跟踪各项功能的代码。 此类跟踪还可让团队获得更准确的成本估算。 TDSP 建议在 VCS 中为每个项目创建一个独立的存储库，以实现版本控制、信息安全和协作。 为所有项目建立标准化结构有助于在整个组织中积累系统性的认知。
+모든 프로젝트가 디렉터리 구조를 공유하고 템플릿을 사용해서 프로젝트 문서를 만든다면 팀 멤버들이 프로젝트 정보를 쉽게 찾을 수 있습니다. 모든 코드와 문서는 팀 협업을 활성화하도록 Git, TFS 또는 Subversion과 같은 VCS(버전 제어 시스템)에 저장됩니다. Jira, Rally 및 Azure DevOps와 같은 기민한 프로젝트 추적 시스템의 추적 작업 및 기능을 통해 개별 기능에 대한 코드를 자세히 추적할 수 있습니다. 또한 이러한 추적을 통해 팀에서는 비용 평가에서도 더 나은 결과를 낼 수 있습니다. TDSP는 버전 관리, 정보 보안 및 협업을 위해 VCS에 각 프로젝트별로 따로 리포지토리를 만드는 것을 권장합니다. 모든 프로젝트에서 표준화된 구조를 가지면 조직 전체에 걸쳐 규격화된 지식을 구축하는 데 도움이 됩니다.
 
-我们在标准位置为文件夹结构和所需的文档提供模板。 此文件夹结构可以组织包含用于数据探索和特征提取以及记录模型迭代的代码的文件。 这些模板可让团队成员更轻松地了解其他人完成的工作，以及将新成员添加到团队。 可以使用标记格式轻松查看和更新文档模板。 使用模板提供包含每个项目关键问题的检查列表，以确保完善定义问题，以及交付件满足预期的质量。 示例包括：
+TDSP에서는 폴더 구조와 표준 위치에 꼭 있어야 하는 파일들로 된 템플릿을 제공합니다. 이 폴더 구조는 데이터 탐색과 기능 추출을 위한 코드가 포함된 파일과 모델 반복을 기록한 파일들을 관리합니다. 이러한 템플릿을 사용하면 팀 멤버가 다른 사용자의 수행 작업을 이해하고 팀에 새 멤버를 추가하는 것이 더 쉬워집니다. 마크다운 형식으로 문서 템플릿을 보고 업데이트하는 것은 쉽습니다. 使用模板为检查表提供了有关每个项目的关键问题，以确保正确定义问题，并确保可交付结果符合预期质量。 예를 들면 다음과 같습니다.
 
-- 用于陈述业务问题和项目范围的项目纲领
-- 用于陈述原始数据的结构和统计信息的数据报告
-- 用于陈述派生特征的模型报告
-- 模型性能指标，例如 ROC 曲线或 MSE
+- 비즈니스 문제 및 프로젝트의 범위를 문서화하는 프로젝트 헌장
+- 원시 데이터의 구조 및 통계를 문서화하는 데이터 보고서
+- 파생된 기능을 문서화하는 모델 보고서
+- ROC 곡선 또는 MSE와 같은 모델 성능 측정
 
 
 [![TDSP-目录](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-可以从 [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 克隆目录结构。
+디렉터리 구조는 [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate)에서 복제할 수 있습니다.
 
-## <a name="infrastructure-and-resources-for-data-science-projects"></a>数据科学项目的基础结构和资源  
+## <a name="infrastructure-and-resources-for-data-science-projects"></a>데이터 과학 프로젝트에 대한 인프라 및 리소스  
 
-TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
+TDSP는 공유 분석 및 스토리지 인프라를 관리하기 위해 다음의 사항을 추천합니다.
 
-- 用于存储数据集的云文件系统 
+- 데이터 세트를 저장하기 위한 클라우드 파일 시스템 
 - databases
-- 大数据（Hadoop 或 Spark）群集 
-- 机器学习服务 
+- 빅 데이터(Hadoop 또는 Spark) 클러스터 
+- 기계 학습 서비스 
 
-分析和存储基础结构可以在云中或本地。 这是原始数据集和已处理数据集的存储位置。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种不错的做法。 然后，不同的团队成员可以复制和验证试验。
+存储原始数据集和处理数据集的分析和存储基础结构可以在云中或本地。 이런 인프라로 인해 실제 확인할 수 있는 분석이 가능해집니다. 또한 불일치 및 불필요한 인프라 비용이 발생할 수 있는 복제를 방지합니다. 제공하는 도구를 이용하면 공유 리소스를 공급하고, 추적하고, 각 팀 멤버가 자원들에 안전하게 연결할 수 있게 해 줍니다. 프로젝트 멤버가 일관성 있는 컴퓨팅 환경을 만들도록 하는 것도 좋은 방법입니다. 그러면 다른 팀 멤버가 실험을 되풀이하고 검증할 수 있습니다.
 
-下面是团队处理多个项目和共享各个云分析基础结构组件的示例。
+다음은 여러 프로젝트를 진행하면서 다양한 클라우드 분석 인프라 구성 요소를 공유하는 팀의 예입니다.
 
 [![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
-## <a name="tools-and-utilities-for-project-execution"></a>用于项目执行的工具和实用程序
+## <a name="tools-and-utilities-for-project-execution"></a>프로젝트 실행을 위한 도구 및 유틸리티
 
-在大多数组织中引入过程很有难度。 TDSP 提供了工具用于实现数据科学过程和生命周期，帮助削减屏障，提高客户的采用一致性。 TDSP 提供了一套初始工具和脚本，帮助在团队中快速采用 TDSP。 另外，它还帮助自动完成数据科学生命周期中的某些常见任务，例如数据探索和基线建模。 它为个人提供一个完善定义的结构，以便在团队的共享代码存储库中贡献共享的工具和实用程序。 然后，这些资源可由团队或组织中的其他项目利用。 TDSP 还计划为向整个社区贡献工具和实用程序提供支持。 可从 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) 克隆 TDSP 实用程序。
+대부분의 조직에서 도입 과정은 만만하지 않습니다. 데이터 과학 프로세스와 수명 주기 구현을 위해 제공되는 도구가 채택으로 가는 장벽을 낮추고 채택의 일관성을 증가시키는데 도움이 됩니다. TDSP는 팀 내에서 TDSP의 도입을 신속하게 시작하도록 도구와 스크립트 기본 셋트를 제공합니다. 또한 데이터 과학 수명 주기에서 데이터 탐색이나 기준 모델링 같은 일반적인 작업 중 일부를 자동화하는 데도 도움이 됩니다. 구조가 잘 정의되어 있어서 개인이 공유 도구와 유틸리티를 팀의 공유 코드 리포지토리에 컨트리뷰트할 수 있게 해줍니다. 이런 리소스는 팀이나 조직 내의 다른 프로젝트에서 활용할 수 있습니다. 또한 TDSP는 툴과 유틸리티를 전체 커뮤니티에 컨트리뷰트할 수 있게 만들 계획도 가지고 있습니다. TDSP 유틸리티는 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)에서 복제할 수 있습니다.
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-[Team Data Science Process：角色和任务](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)概述了致力于标准化此过程的数据科学团队的关键人员角色及其相关任务。 
+[Team Data Science Process: 역할 및 작업](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) 이 프로세스를 표준화하는 데이터 과학 팀에 대한 핵심 인력 역할 및 관련된 작업에 대해 간략하게 설명합니다. 

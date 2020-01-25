@@ -1,6 +1,6 @@
 ---
-title: 配置非库应用程序的联合单一登录时遇到的问题 | Microsoft Docs
-description: 解决在为 Azure AD 应用程序库中所列且为自定义 SAML 的应用程序配置联合单一登录时可能遇到的常见问题
+title: 비갤러리 애플리케이션에 대해 비갤러리 Single Sign-On 구성 문제 | Microsoft Docs
+description: Azure AD 애플리케이션 갤러리에 나열되지 않은 사용자 지정 SAML 애플리케이션에 페더레이션된 Single Sign-On을 구성할 때 발생하는 일반적인 문제 몇 가지를 해결
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,61 +15,60 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422557"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711890"
 ---
-# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
+# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>비갤러리 애플리케이션에 대해 비갤러리 Single Sign-On 구성 문제
 
-如果在配置应用程序时遇到问题。 检查是否遵循了文章[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)中的所有步骤。
+애플리케이션을 구성할 때 문제가 발생 할 경우. [Azure Active Directory 애플리케이션 갤러리에 있지 않은 애플리케이션에 Single Sign-On 구성](configure-federated-single-sign-on-non-gallery-applications.md) 문서에 있는 단계를 모두 수행했는지 확인합니다.
 
-## <a name="cant-add-another-instance-of-the-application"></a>无法添加应用程序的另一个实例
+## <a name="cant-add-another-instance-of-the-application"></a>애플리케이션의 다른 인스턴스를 추가할 수 없음
 
-若要添加应用程序的第二个实例，需要能够：
+애플리케이션의 두 번째 인스턴스를 추가하려면 다음을 수행할 수 있어야 합니다.
 
--   配置第二个实例的唯一标识符。 不能配置与用于第一个实例的标识符相同的标识符。
+-   두 번째 인스턴스에 대한 고유 식별자를 구성합니다. 첫 번째 인스턴스에 대해 사용한 것과 동일한 식별자를 구성할 수 없습니다.
 
--   配置一个与第一个实例中所用证书不同的证书。
+-   첫 번째 인스턴스에 대해 사용한 것과 다른 인증서를 구성합니다.
 
-如果应用程序不支持上述任一方式，则无法配置第二个实例。
+애플리케이션이 이전 항목을 지원하지 않으면 두 번째 인스턴스를 구성할 수 없습니다.
 
-## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>我在何处设置 EntityID（用户标识符）格式
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityID(사용자 식별자) 형식을 설정하는 위치
 
-无法选择 EntityID（用户标识符）格式，因为用户在进行身份验证后，Azure AD 会将格式发送给响应中的应用程序。
+사용자 인증 후에 Azure AD에서 응답을 통해 애플리케이션으로 보내는 EntityID(사용자 ID) 형식은 선택할 수 없습니다.
 
-Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式，为 NameID 属性（用户标识符）选择格式。 有关详细信息，请参阅 NameIDPolicy 部分下的[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章。
+Azure AD에서는 선택한 값 또는 SAML AuthRequest에서 애플리케이션이 요청한 형식을 기반으로 NameID 특성(사용자 ID)의 형식을 선택합니다. 자세한 내용은 NameIDPolicy 섹션 아래의 [Single Sign-On SAML 프로토콜](../develop/single-sign-on-saml-protocol.md#authnrequest) 문서에서 확인할 수 있습니다.
 
-## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>我从 Azure AD 中的何处获取应用程序元数据或证书
+## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Azure AD에서 애플리케이션 메타데이터 또는 인증서를 가져오는 위치
 
-若要从 Azure AD 下载应用程序元数据或证书，请执行以下步骤：
+Azure AD에서 애플리케이션 메타데이터 또는 인증서를 다운로드하려면 아래 단계를 수행합니다.
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. [**Azure Portal**](https://portal.azure.com/)을 열고 **전역 관리자** 또는 **공동 관리자** 권한으로 로그인합니다.
 
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 왼쪽 주 탐색 메뉴의 맨 위에서 **모든 서비스**를 클릭하여 **Azure Active Directory 확장**을 엽니다.
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 필터 검색 상자에 **“Azure Active Directory**”를 입력하고 **Azure Active Directory** 항목을 선택합니다.
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. Azure Active Directory 왼쪽 탐색 메뉴에서 **엔터프라이즈 애플리케이션**을 클릭합니다.
 
-5. 单击“所有应用程序”，查看所有应用程序的列表。
+5. **모든 애플리케이션**을 클릭하여 모든 애플리케이션의 목록을 봅니다.
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 여기에 표시하려는 애플리케이션이 표시되지 않으면 **모든 애플리케이션 목록**의 맨 위에서 **필터** 컨트롤을 사용하고 **표시** 옵션을 **모든 애플리케이션**으로 설정합니다.
 
-6. 选择已配置单一登录的应用程序。
+6. Single Sign-On을 구성한 애플리케이션을 선택합니다.
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 애플리케이션이 로드되면 애플리케이션의 왼쪽 탐색 메뉴에서 **Single Sign-On**을 클릭합니다.
 
-8. 转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8. **SAML 서명 인증서** 섹션으로 이동한 다음 **다운로드** 열 값을 클릭합니다. Single Sign-On을 구성해야 할 애플리케이션에 따라 메타데이터 XML이나 인증서를 다운로드하는 옵션이 표시됩니다.
 
-Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
+Azure AD에서는 메타데이터를 가져오는 URL을 제공하지 않습니다. 메타데이터는 XML 파일로만 검색할 수 있습니다.
 
-## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>不知道如何自定义发送到应用程序的 SAML 声明
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>애플리케이션에 전송된 SAML 클레임을 사용자 지정하는 방법을 알 수 없음
 
-若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
+애플리케이션에 전송된 SAML 특성 클레임을 사용자 지정하는 방법을 알아보려면 [Azure Active Directory의 클레임 매핑](../develop/active-directory-claims-mapping.md)을 참조하세요.
 
-## <a name="next-steps"></a>后续步骤
-[使用 Azure Active Directory 管理应用程序](what-is-application-management.md)
+## <a name="next-steps"></a>다음 단계
+[Azure Active Directory로 애플리케이션 관리](what-is-application-management.md)

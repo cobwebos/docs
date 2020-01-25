@@ -1,6 +1,6 @@
 ---
-title: Azure 经典订阅管理员 | Microsoft Docs
-description: 介绍如何添加或更改 Azure 共同管理员和服务管理员角色，以及如何查看帐户管理员。
+title: Azure 클래식 구독 관리자 | Microsoft Docs
+description: Azure 공동 관리자 및 서비스 관리자 역할을 추가하거나 변경하는 방법과 계정 관리자를 확인하는 방법을 설명합니다.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,46 +11,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979341"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720650"
 ---
-# <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
+# <a name="azure-classic-subscription-administrators"></a>Azure 클래식 구독 관리자
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
+RBAC(역할 기반 액세스 제어)를 사용하여 Azure 리소스에 대한 액세스를 관리하는 것이 좋습니다. 但是，如果仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 자세한 내용은 [Azure Resource Manager 및 클래식 배포](../azure-resource-manager/management/deployment-models.md)를 참조하세요.
 
-本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
+이 문서에서는 공동 관리자 및 서비스 관리자 역할을 추가하거나 변경하는 방법과 계정 관리자를 확인하는 방법을 설명합니다.
 
-## <a name="add-a-co-administrator"></a>添加共同管理员
+## <a name="add-a-co-administrator"></a>공동 관리자 추가
 
 > [!TIP]
-> 如果用户需要使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
+> 사용자가 [Azure 서비스 관리 PowerShell 모듈](https://docs.microsoft.com/powershell/module/servicemanagement/azure)을 사용하여 Azure 클래식 배포를 관리해야 하는 경우에만 공동 관리자를 추가하면 됩니다. 사용자가 Azure Portal을 통해서만 클래식 리소스를 관리하는 경우 사용자에 대한 클래식 관리자를 추가할 필요가 없습니다.
 
 1. 以服务管理员或共同管理员身份登录到[Azure 门户](https://portal.azure.com)。
 
-1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+1. [구독](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)을 열고 구독을 선택합니다.
 
-    只能在订阅范围分配共同管理员。
+    공동 관리자는 구독 범위에서만 할당할 수 있습니다.
 
-1. 单击“访问控制(IAM)”。
+1. **액세스 제어(IAM)** 를 클릭합니다.
 
-1. 单击“经典管理员”选项卡。
+1. **클래식 관리자** 탭을 클릭합니다.
 
-    ![打开经典管理员的屏幕截图](./media/classic-administrators/classic-administrators.png)
+    ![클래식 관리자를 여는 스크린샷](./media/classic-administrators/classic-administrators.png)
 
-1. 单击“添加” > “添加共同管理员”打开“添加共同管理员”窗格。
+1. **추가** > **공동 관리자 추가**를 클릭하여 공동 관리자 추가 창을 엽니다.
 
-    如果“添加共同管理员”选项已禁用，则表示你没有相应的权限。
+    공동 관리자 추가 옵션을 사용할 수 없는 경우 권한이 없는 것입니다.
 
-1. 选择要添加的用户，然后单击“添加”。
+1. 추가할 사용자를 선택하고 **추가**를 클릭합니다.
 
-    ![添加协同管理员的屏幕截图](./media/classic-administrators/add-coadmin.png)
+    ![공동 관리자를 추가하는 스크린샷](./media/classic-administrators/add-coadmin.png)
 
 ## <a name="add-a-guest-user-as-a-co-administrator"></a>添加来宾用户作为共同管理员
 
@@ -62,112 +62,94 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="differences-for-guest-users"></a>来宾用户的差异
 
-与具有共同管理员角色的成员用户相比，已分配有共同管理员角色的来宾用户可能会看到一些不同之处。 请考虑下列方案：
+与具有共同管理员角色的成员用户相比，已分配有共同管理员角色的来宾用户可能会看到一些不同之处。 다음과 같은 시나리오를 고려해 보세요.
 
 - 具有 Azure AD 帐户（工作或学校帐户）的用户 A 是 Azure 订阅的服务管理员。
-- 用户 B 是 Microsoft 帐户。
-- 用户 A 向用户 B 分配共同管理员角色。
-- 用户 B 几乎可以执行所有操作，但无法注册应用程序或查找 Azure AD 目录中的用户。
+- 사용자 B에게는 Microsoft 계정이 있습니다.
+- 사용자 A가 사용자 B에게 공동 관리자 역할을 할당합니다.
+- 사용자 B는 거의 모든 작업을 수행할 수 있지만 Azure AD 디렉터리에서 애플리케이션을 등록하거나 사용자를 조회할 수 없습니다.
 
-你希望用户 B 可以管理所有内容。 此区别的原因在于，Microsoft 帐户作为来宾用户（而不是成员用户）添加到订阅。 与成员用户相比，来宾用户在 Azure AD 中具有不同的默认权限。 例如，成员用户可以在 Azure AD 中读取其他用户，而来宾用户不能。 成员用户可以在 Azure AD 中注册新的服务主体，而来宾用户不能。
+사용자 B는 모든 것을 관리할 수 있다고 예상할 수 있습니다. 이러한 차이가 나타나는 이유는 Microsoft 계정이 멤버 사용자가 아닌 게스트 사용자로 구독에 추가되기 때문입니다. 게스트 사용자에 멤버 사용자와 비교할 때 Azure AD에서 다른 기본 권한을 갖습니다. 예를 들어, 멤버 사용자는 Azure AD에서 다른 사용자가 읽을 수 있지만 게스트 사용자는 그럴 수 없습니다. 멤버 사용자는 Azure AD에서 새 서비스 주체를 등록할 수 있지만 게스트 사용자는 그럴 수 없습니다.
 
-如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 管理员角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限](role-assignments-external-users.md)。
+게스트 사용자가 이러한 작업을 수행할 수 있도록 하려면 게스트 사용자가 필요한 특정 Azure AD 관리자 역할을 할당해야 합니다. 예를 들어, 이전 시나리오에서는 다른 사용자를 읽기 위한 [디렉터리 읽기 권한자](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 역할과 서비스 주체를 만들 수 있는 [애플리케이션 개발자](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) 역할을 할당할 수 있습니다. 멤버 및 게스트 사용자와 해당 권한에 대한 자세한 내용은 [Azure Active Directory의 기본 사용자 권한이란?](../active-directory/fundamentals/users-default-permissions.md)을 참조하세요. 有关为来宾用户授予访问权限的详细信息，请参阅[使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限](role-assignments-external-users.md)。
 
-请注意，[Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+[Azure 리소스의 기본 제공 역할](../role-based-access-control/built-in-roles.md)은 [Azure AD 관리자 역할](../active-directory/users-groups-roles/directory-assign-admin-roles.md)과 다릅니다. 기본 제공 역할은 Azure AD에 대한 액세스 권한을 부여하지 않습니다. 자세한 내용은 [다른 역할 이해](../role-based-access-control/rbac-and-directory-admin-roles.md)를 참조하세요.
 
 有关对成员用户和来宾用户进行比较的信息，请参阅[Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
 
-## <a name="remove-a-co-administrator"></a>删除共同管理员
+## <a name="remove-a-co-administrator"></a>공동 관리자 제거
 
 1. 以服务管理员或共同管理员身份登录到[Azure 门户](https://portal.azure.com)。
 
-1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+1. [구독](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)을 열고 구독을 선택합니다.
 
-1. 单击“访问控制(IAM)”。
+1. **액세스 제어(IAM)** 를 클릭합니다.
 
-1. 单击“经典管理员”选项卡。
+1. **클래식 관리자** 탭을 클릭합니다.
 
-1. 勾选要删除的共同管理员。
+1. 제거할 공동 관리자 옆에 확인 표시를 추가합니다.
 
-1. 单击 **“删除”** 。
+1. **제거**를 클릭합니다.
 
-1. 在出现的消息框中单击“是”。
+1. 표시되는 메시지 상자에서 **예**를 클릭합니다.
 
-    ![删除协同管理员的屏幕截图](./media/classic-administrators/remove-coadmin.png)
+    ![공동 관리자를 제거하는 스크린샷](./media/classic-administrators/remove-coadmin.png)
 
-## <a name="change-the-service-administrator"></a>更改服务管理员
+## <a name="change-the-service-administrator"></a>서비스 관리자 변경
 
-只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。 具有帐户管理员角色的用户无权访问 Azure 门户。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限。 如果帐户管理员和服务管理员是同一个用户，而你将服务管理员更改为其他用户，则帐户管理员会失去 Azure 门户的访问权限。 但是，帐户管理员可始终使用帐户中心将服务管理员重新更改为自己。
+계정 관리자만 구독에 대한 서비스 관리자를 변경할 수 있습니다. 기본적으로, Azure 구독에 가입할 때 서비스 관리자는 계정 관리자와 같습니다. 계정 관리자 역할의 사용자는 Azure Portal에 액세스할 수 없습니다. 서비스 관리자 역할의 사용자는 Azure Portal에 대한 모든 권한이 있습니다. 계정 관리자 및 서비스 관리자가 동일한 사용자이고 서비스 관리자를 다른 사용자로 변경하는 경우 계정 관리자는 Azure Portal에 액세스할 수 없게 됩니다. 그러나 계정 관리자는 계정 센터를 사용하여 언제든지 서비스 관리자를 다시 자신으로 변경할 수 있습니다.
 
-可通过两种方式更改服务管理员。 可以在 **Azure 门户**或**帐户中心**内进行更改。
+请按照以下步骤在**帐户中心**中更改服务管理员。
 
-### <a name="azure-portal"></a>Azure 门户
+### <a name="account-center"></a>계정 센터
 
-1. 通过检查更改服务管理员的限制，确保你的方案受支持。
+1. 请确保通过检查[更改服务管理员的限制](#limitations-for-changing-the-service-administrator)来支持您的方案。
 
-1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. [계정 센터](https://account.windowsazure.com/subscriptions)에 계정 관리자로 로그인합니다.
 
-1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+1. 구독을 클릭합니다.
 
-1. 单击 **“属性”** 。
+1. 오른쪽에서 **구독 세부 사항 편집**을 클릭합니다.
 
-    ![显示帐户管理员的屏幕截图](./media/classic-administrators/account-admin.png)
+    ![계정 센터에서 구독 편집 단추를 보여 주는 스크린샷](./media/classic-administrators/editsub.png)
 
-1. 在顶部单击“服务管理员”打开“服务管理”窗格。
+1. **서비스 관리자** 상자에서 새 서비스 관리자의 메일 주소를 입력합니다.
 
-    如果“服务管理员”按钮已禁用，则表示你没有相应的权限。 只有充当帐户管理员的用户可以更改服务管理员。
+    ![서비스 관리자 전자 메일을 변경하는 상자를 보여 주는 스크린샷](./media/classic-administrators/change-service-admin.png)
 
-1. 选择新的服务管理员，然后单击“保存”。
+1. 확인 표시를 클릭하여 변경 내용을 저장합니다.
 
-### <a name="account-center"></a>帐户中心
-
-1. 通过检查更改服务管理员的限制，确保你的方案受支持。
-
-1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
-
-1. 单击某个订阅。
-
-1. 在右侧单击“编辑订阅详细信息”。
-
-    ![显示帐户中心中“编辑订阅”按钮的屏幕截图](./media/classic-administrators/editsub.png)
-
-1. 在“服务管理员”框中，输入新服务管理员的电子邮件地址。
-
-    ![屏幕截图：用于更改服务管理员电子邮件的框](./media/classic-administrators/change-service-admin.png)
-
-1. 单击勾选标记以保存更改。
-
-### <a name="limitations-for-changing-the-service-administrator"></a>服务管理员变更限制
+### <a name="limitations-for-changing-the-service-administrator"></a>서비스 관리자 변경에 대한 제한 사항
 
 每个 Azure 订阅只能有一个服务管理员。 更改服务管理员的行为会有所不同，具体取决于帐户管理员是 Microsoft 帐户还是 Azure AD 帐户（工作或学校帐户）。
 
 | 帐户管理员帐户 | 是否可以将服务管理员更改为其他 Microsoft 帐户？ | 是否可以将服务管理员更改为同一目录中的 Azure AD 帐户？ | 是否可以将服务管理员更改为其他目录中的 Azure AD 帐户？ |
 | --- | --- | --- | --- |
-| Microsoft 帐户 | 是 | 否 | 否 |
-| Azure AD 帐户 | 是 | 是 | 否 |
+| Microsoft 계정 | 예 | 아닙니다. | 아닙니다. |
+| Azure AD 계정 | 예 | 예 | 아닙니다. |
 
 如果帐户管理员是 Azure AD 帐户，则可以将服务管理员更改为同一目录中的 Azure AD 帐户，但不能更改为其他目录。 例如，abby@contoso.com 可以将服务管理员更改为 bob@contoso.com，但无法将服务管理员更改为 john@notcontoso.com，除非 john@notcontoso.com 在 contoso.com 目录中存在。
 
 有关 Microsoft 帐户和 Azure AD 帐户的详细信息，请参阅[什么是 Azure Active Directory？](../active-directory/fundamentals/active-directory-whatis.md)。
 
-## <a name="view-the-account-administrator"></a>查看帐户管理员
+## <a name="view-the-account-administrator"></a>계정 관리자 보기
 
-帐户管理员是最初注册 Azure 订阅的用户，充当订阅的账单所有者。 若要更改订阅的账户管理员，请参阅[将 Azure 订阅所有权转让给其他帐户](../cost-management-billing/manage/billing-subscription-transfer.md)。
+계정 관리자는 초기에 Azure 구독에 등록한 사용자이며 구독의 청구 소유자로서 책임이 있습니다. 구독의 계정 관리자를 변경하려면 [다른 계정에 Azure 구독의 소유권 이전](../cost-management-billing/manage/billing-subscription-transfer.md)을 참조하세요.
 
-遵循以下步骤查看帐户管理员：
+계정 관리자를 보려면 다음 단계를 수행합니다.
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
 
-1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+1. [구독](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)을 열고 구독을 선택합니다.
 
-1. 单击 **“属性”** 。
+1. **속성**을 클릭합니다.
 
-    订阅的帐户管理员会显示在“帐户管理员”框中。
+    구독의 계정 관리자는 **계정 관리자** 상자에 표시됩니다.
 
-    ![显示帐户管理员的屏幕截图](./media/classic-administrators/account-admin.png)
+    ![계정 관리자를 보여 주는 스크린샷](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)
-* [添加或更改 Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)
+* [Azure의 다양한 역할 이해](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [RBAC 및 Azure Portal을 사용하여 Azure 리소스에 대한 액세스 관리](../role-based-access-control/role-assignments-portal.md)
+* [Azure 구독 관리자 추가 또는 변경](../cost-management-billing/manage/add-change-subscription-administrator.md)

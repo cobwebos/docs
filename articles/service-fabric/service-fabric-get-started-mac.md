@@ -1,18 +1,18 @@
 ---
 title: 在 macOS 上设置开发环境
-description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，即可在 macOS 上生成应用程序。
+description: 런타임, SDK 및 도구를 설치하고 로컬 개발 클러스터를 만듭니다. 完成此设置后，即可在 macOS 上生成应用程序。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609870"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722571"
 ---
-# <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
+# <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X에서 개발 환경 설정
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
@@ -20,23 +20,23 @@ ms.locfileid: "75609870"
 >
 >  
 
-可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
+Mac OS X를 사용하여 Azure Service Fabric 애플리케이션을 Linux 클러스터에서 실행하도록 빌드할 수 있습니다. 이 문서에서는 개발을 위해 Mac을 설정하는 방법을 설명합니다.
 
-## <a name="prerequisites"></a>必备组件
-Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
+## <a name="prerequisites"></a>필수 조건
+Azure Service Fabric은 Mac OS X에서 기본적으로 실행되지 않습니다. 로컬 Service Fabric 클러스터를 실행하기 위해 미리 구성된 Docker 컨테이너 이미지가 제공됩니다. 시작하기 전에 다음 항목이 필요합니다.
 
-* 至少 4 GB 的 RAM。
-* 最新版的 [Docker](https://www.docker.com/)。
+* RAM 4GB 이상
+* 최신 버전의 [Docker](https://www.docker.com/)
 
 >[!TIP]
 >
->若要在 Mac 上安装 Docker，请按 [Docker 文档](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)中的步骤操作。 安装之后，请[验证安装](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine)。
+>Docker를 Mac에 설치하려면 [Docker 설명서](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)의 단계를 따릅니다. 설치 후 [설치를 확인합니다](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine).
 >
 
-## <a name="create-a-local-container-and-set-up-service-fabric"></a>创建本地容器和设置 Service Fabric
-若要设置本地 Docker 容器并在其上运行 Service Fabric 群集，请执行以下步骤：
+## <a name="create-a-local-container-and-set-up-service-fabric"></a>로컬 컨테이너 만들기 및 Service Fabric 설정
+로컬 Docker 컨테이너를 설정하고 Service Fabric 클러스터가 실행되도록 하려면 다음 단계를 수행합니다.
 
-1. 使用以下设置更新主机上的 Docker 守护程序配置并重启 Docker 守护程序： 
+1. 다음 설정을 사용하여 호스트에서 Docker 디먼 구성을 업데이트하고 Docker 디먼을 다시 시작합니다. 
 
     ```json
     {
@@ -44,17 +44,17 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项” > “守护程序” > “高级”。
+    이러한 설정은 Docker 설치 경로의 daemon.json 파일에서 직접 업데이트할 수 있습니다. Docker에서 디먼 구성 설정을 직접 수정할 수 있습니다. **Docker 아이콘**을 선택한 다음 **기본 설정** > **디먼** > **고급**을 선택합니다.
     
     >[!NOTE]
     >
-    >建议直接在 Docker 中修改守护程序，因为 daemon.json 文件的位置可能会因计算机而异。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
+    >建议直接在 Docker 中修改守护程序，因为守护程序 json 文件的位置会因计算机而异。 예: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
-    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。
+    >대규모 애플리케이션을 테스트할 때에는 Docker에 할당된 리소스를 늘리는 것이 좋습니다. 이렇게 하려면 **Docker 아이콘**을 선택한 다음, **고급**을 선택하여 코어 및 메모리 수를 조정합니다.
 
-2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
+2. 새 디렉터리에서 Service Fabric 이미지를 빌드할 `Dockerfile` 파일을 만듭니다.
 
     ```Dockerfile
     FROM microsoft/service-fabric-onebox
@@ -72,36 +72,36 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     ```
 
     >[!NOTE]
-    >可以修改此文件，以便在容器中添加更多程序或依赖项。
-    >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
+    >컨테이너에 추가 프로그램 또는 종속성을 추가하도록 이 파일을 조정할 수 있습니다.
+    >예를 들어 `RUN apt-get install nodejs -y`를 추가하면 게스트 실행 파일인 `nodejs` 애플리케이션에 대한 지원이 허용됩니다.
     
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
+    > 기본적으로 이렇게 하면 최신 버전의 Service Fabric으로 이미지를 가져옵니다. 특정 수정 버전은 [Docker 허브](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 페이지를 참조하세요.
 
-3. 若要通过 `Dockerfile` 生成可重用的映像，请打开终端并运行 `cd` 切换到 `Dockerfile` 所在的目录，然后运行：
+3. `Dockerfile`에서 다시 사용할 수 있는 이미지를 빌드하려면 터미널을 열고 `Dockerfile`을 보관하는 디렉터리에 `cd`한 후 다음을 실행합니다.
 
     ```bash 
     docker build -t mysfcluster .
     ```
     
     >[!NOTE]
-    >此操作需要一段时间，但只需执行一次。
+    >이 작업에 다소 시간이 걸릴 수 있지만 한 번만 수행하면 됩니다.
 
-4. 现在，每当有需要时，都可以运行以下命令，快速启动 Service Fabric 的本地副本：
+4. 이제 필요할 때마다 다음을 실행하여 신속하게 Service Fabric의 로컬 복사를 시작할 수 있습니다.
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
     >[!TIP]
-    >为容器实例提供一个名称，以更具可读性的方式对其进行处理。 
+    >읽기 쉬운 방식으로 처리할 수 있도록 컨테이너 인스턴스의 이름을 제공합니다. 
     >
-    >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
+    >애플리케이션을 특정 포트에서 수신 대기하는 경우 추가 `-p` 태그를 사용하여 포트를 지정해야 합니다. 예를 들어 애플리케이션이 포트 8080에서 수신 대기하는 경우 다음 `-p` 태그를 추가합니다.
     >
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 [http://localhost:19080](http://localhost:19080)：
+5. 클러스터를 시작하는 데 시간이 걸립니다. 클러스터가 실행되면 다음 명령을 사용하여 로그를 보거나, 대시보드로 이동하여 클러스터 상태([http://localhost:19080](http://localhost:19080))를 볼 수 있습니다.
 
     ```bash 
     docker logs sftestcluster
@@ -109,55 +109,55 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
 
 
 
-6. 若要停止并清理容器，请使用以下命令。 但是，我们将在下一步中使用此容器。
+6. 컨테이너를 중지하고 정리하려면 다음 명령을 사용합니다. 그러나 여기서는 다음 단계에서 이 컨테이너를 사용합니다.
 
     ```bash 
     docker rm -f sftestcluster
     ```
 
-### <a name="known-limitations"></a>已知限制 
+### <a name="known-limitations"></a>알려진 제한 사항 
  
- 以下是在 Mac 的容器中运行的本地群集的已知限制： 
+ 다음은 Mac용 컨테이너에서 실행하는 로컬 클러스터의 알려진 제한 사항입니다. 
  
- * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS 서비스가 실행되지 않으며 지원되지 않음 [문제 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
-## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>在 Mac 上设置 Service Fabric CLI (sfctl)
+## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac에서 Service Fabric CLI(sfctl) 설정
 
-按照 [Service Fabric CLI](service-fabric-cli.md#cli-mac) 中的说明在 Mac 上安装 Service Fabric CLI (`sfctl`)。
-CLI 命令支持与 Service Fabric 实体（包括群集、应用程序和服务）交互。
+[Service Fabric CLI](service-fabric-cli.md#cli-mac)의 지침에 따라 Mac에 Service Fabric CLI(`sfctl`)를 설치합니다.
+CLI 명령은 클러스터, 애플리케이션 및 서비스를 비롯한 Service Fabric 엔터티와의 상호 작용을 지원합니다.
 
-1. 若要在部署应用程序之前连接到群集，请运行以下命令。 
+1. 애플리케이션을 배포하기 전에 클러스터에 연결하려면 아래 명령을 실행합니다. 
 
 ```bash
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-## <a name="create-your-application-on-your-mac-by-using-yeoman"></a>使用 Yeoman 在 Mac 上创建应用程序
+## <a name="create-your-application-on-your-mac-by-using-yeoman"></a>Yeoman을 사용하여 Mac에서 애플리케이션 만들기
 
-Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric 应用程序。 执行以下步骤，确保已经有可以在计算机上运行的 Service Fabric Yeoman 模板生成器：
+Service Fabric은 Yeoman 템플릿 생성기를 사용하여 터미널에서 Service Fabric 애플리케이션을 만들 수 있는 스캐폴딩 도구를 제공합니다. 컴퓨터에서 Service Fabric Yeoman 템플릿 생성기가 작동하는지 확인하려면 다음 단계를 수행합니다.
 
-1. Node.js 和 Node 包管理器 (NPM) 必须安装在 Mac 上。 此软件可以使用 [HomeBrew](https://brew.sh/) 进行安装，如下所示：
+1. Node.js 및 NPM(노드 패키지 관리자)가 Mac에 설치되어 있어야 합니다. 다음과 같이 [HomeBrew](https://brew.sh/)를 사용하여 소프트웨어를 설치할 수 있습니다.
 
     ```bash
     brew install node
     node -v
     npm -v
     ```
-2. 通过 NPM 在计算机上安装 [Yeoman](https://yeoman.io/) 模板生成器：
+2. 컴퓨터에 NPM의 [Yeoman](https://yeoman.io/) 템플릿 생성기를 설치합니다.
 
     ```bash
     npm install -g yo
     ```
-3. 请按入门[文档](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)中的步骤，安装首选的 Yeoman 生成器。 若要使用 Yeoman 来创建 Service Fabric 应用程序，请执行以下步骤：
+3. 시작 [설명서](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)의 단계를 수행하여 원하는 Yeoman 생성기를 설치합니다. Yeoman을 사용하여 Service Fabric 애플리케이션을 만들려면 다음 단계를 수행합니다.
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. 安装生成器后，可通过运行 `yo azuresfguest` 或 `yo azuresfcontainer` 分别创建来宾可执行文件或容器服务。
+4. 생성기를 설치한 후에는 각각 `yo azuresfguest` 또는 `yo azuresfcontainer`를 실행하여 게스트 실행 파일 또는 컨테이너 서비스를 만듭니다.
 
-5. 若要在 Mac 上生成 Service Fabric Java 应用程序，必须在主机上安装 JDK 1.8 和 Gradle。 此软件可以使用 [HomeBrew](https://brew.sh/) 进行安装，如下所示： 
+5. Mac에서 Service Fabric Java 애플리케이션을 빌드하려면 JDK 버전 1.8 및 Gradle을 호스트 컴퓨터에 설치해야 합니다. 다음과 같이 [HomeBrew](https://brew.sh/)를 사용하여 소프트웨어를 설치할 수 있습니다. 
 
     ```bash
     brew update
@@ -169,57 +169,57 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     > `brew cask install java` 的当前版本可以安装最新版本的 JDK。
     > 请确保安装 JDK 8。
 
-## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>通过 Terminal 在 Mac 上部署应用程序
+## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>터미널에서 Mac에 애플리케이션 배포
 
-创建和生成 Service Fabric 应用程序以后，即可使用 [Service Fabric CLI](service-fabric-cli.md#cli-mac) 部署该应用程序：
+Service Fabric 애플리케이션을 만들고 빌드한 후 [Service Fabric CLI](service-fabric-cli.md#cli-mac)를 사용하여 애플리케이션을 배포할 수 있습니다.
 
-1. 连接到在 Mac 的容器实例中运行的 Service Fabric 群集：
+1. Mac의 컨테이너 인스턴스 내에서 실행 중인 Service Fabric 클러스터에 연결합니다.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
 
-2. 从项目目录中运行安装脚本：
+2. 프로젝트 디렉터리 내부에서 설치 스크립트를 실행합니다.
 
     ```bash
     cd MyProject
     bash install.sh
     ```
 
-## <a name="set-up-net-core-20-development"></a>设置 .NET Core 2.0 开发
+## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 개발 설정
 
-安装[用于 Mac 的 .NET Core 2.0 SDK](https://www.microsoft.com/net/core#macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core 2.0 Service Fabric 应用程序包托管在目前以预览版形式推出的 NuGet.org 上。
+[Mac용 .NET Core 2.0 SDK](https://www.microsoft.com/net/core#macos)를 설치하여 [C# Service Fabric 애플리케이션을 만들기](service-fabric-create-your-first-linux-application-with-csharp.md) 시작합니다. .NET Core 2.0 Service Fabric 애플리케이션용 패키지는 현재 미리 보기 상태인 NuGet.org에서 호스트됩니다.
 
-## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>在 Mac 上为 Eclipse 安装 Service Fabric 插件
+## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Mac에 Eclipse용 Service Fabric 플러그 인 설치
 
-Azure Service Fabric 为适用于 Java IDE 的 Eclipse Neon（或更高版本）提供插件。 该插件可简化创建、生成和部署 Java 服务的过程。 若要为 Eclipse 安装 Service Fabric 插件或将其更新到最新版本，请执行[这些步骤](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)。 [适用于 Eclipse 的 Service Fabric 文档](service-fabric-get-started-eclipse.md)中的其他步骤也适用：生成应用程序、向应用程序添加服务、卸载应用程序，等等。
+Azure Service Fabric은 Java IDE용 Eclipse Neon(이상)의 플러그 인을 제공합니다. 플러그 인은 Java 서비스를 만들고 빌드하고 배포하는 프로세스를 간소화합니다. Eclipse용 Service Fabric 플러그 인을 설치하거나 최신 버전으로 업데이트하려면 [다음 단계](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)를 수행합니다. [Eclipse용 Service Fabric 설명서](service-fabric-get-started-eclipse.md)의 다른 단계도 적용할 수 있습니다. 애플리케이션 빌드, 애플리케이션에 서비스 추가, 애플리케이션 제거 등을 수행할 수 있습니다.
 
-最后一步是使用与主机共享的路径实例化该容器。 该插件需要此类实例化才能与 Mac 上的 Docker 容器配合使用。 例如：
+마지막 단계는 호스트와 공유되는 경로로 컨테이너를 인스턴스화하는 것입니다. Mac의 Docker 컨테이너로 작업하려면 플러그인에 이러한 유형의 인스턴스화가 필요합니다. 예:
 
 ```bash
 docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
 ```
 
-这些属性定义如下：
-* `/Users/sayantan/work/workspaces/mySFWorkspace` 是 Mac 上的工作区的完全限定路径。
-* `/tmp/mySFWorkspace` 是容器内部的路径，应将工作区映射到此路径。
+특성은 다음과 같이 정의됩니다.
+* `/Users/sayantan/work/workspaces/mySFWorkspace`는 Mac에 있는 작업 영역의 정규화된 경로입니다.
+* `/tmp/mySFWorkspace`는 작업 영역을 매핑해야 하는 컨테이너 내부의 경로입니다.
 
 >[!NOTE]
 > 
->如果为工作区设置了其他名称/路径，请在 `docker run` 命令中更新这些值。
+>작업 영역의 이름/경로가 다른 경우 `docker run` 명령에서 이 값을 업데이트합니다.
 > 
->如果所启动容器的名称不是 `sfonebox`，请在 Service Fabric 执行组件 Java 应用程序的 testclient.sh 文件中更新名称值。
+>`sfonebox`가 아닌 이름으로 컨테이너를 시작하는 경우 Service Fabric 작업자 Java 애플리케이션의 testclient.sh 파일에서 이름 값을 업데이트합니다.
 >
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 <!-- Links -->
-* [使用 Yeoman 在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
-* [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
-* [在 Azure 门户中创建 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)
-* [使用 Azure 资源管理器创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)
-* [了解 Service Fabric 应用程序模型](service-fabric-application-model.md)
-* [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)
-* [在 Windows 上准备 Linux 开发环境](service-fabric-local-linux-cluster-windows.md)
+* [Yeoman을 사용하여 Linux에서 첫 번째 Service Fabric Java 애플리케이션 만들기 및 배포](service-fabric-create-your-first-linux-application-with-java.md)
+* [Eclipse용 Service Fabric 플러그 인을 사용하여 Linux에서 첫 번째 Service Fabric Java 애플리케이션 만들기 및 배포](service-fabric-get-started-eclipse.md)
+* [Azure Portal에서 Service Fabric 클러스터 만들기](service-fabric-cluster-creation-via-portal.md)
+* [Azure Resource Manager를 사용하여 Service Fabric 클러스터 만들기](service-fabric-cluster-creation-via-arm.md)
+* [Service Fabric 애플리케이션 모델 이해](service-fabric-application-model.md)
+* [Service Fabric CLI를 사용하여 애플리케이션 관리](service-fabric-application-lifecycle-sfctl.md)
+* [Windows에서 Linux 개발 환경 준비](service-fabric-local-linux-cluster-windows.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

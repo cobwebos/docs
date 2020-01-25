@@ -1,51 +1,51 @@
 ---
-title: 使用 PowerShell 将 Windows Server 备份到 Azure
+title: PowerShell을 사용하여 Azure에 Windows Server 백업
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689194"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710862"
 ---
-# <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
+# <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell을 사용하여 Windows Server/Windows Client용 Azure 백업 배포 및 관리
 
-本文说明如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
+이 문서에서는 Windows Server 또는 Windows Client에서 Azure Backup을 설정하고 백업과 복원을 관리하기 위해 PowerShell을 사용하는 방법을 보여 줍니다.
 
-## <a name="install-azure-powershell"></a>安装 Azure PowerShell
+## <a name="install-azure-powershell"></a>Azure PowerShell 설치
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要开始，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
-## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
+## <a name="create-a-recovery-services-vault"></a>복구 서비스 자격 증명 모음 만들기
 
-以下步骤引导创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
+다음 단계는 Recovery Services 자격 증명 모음을 만드는 과정을 안내합니다. Recovery Services 자격 증명 모음은 Backup 자격 증명 모음과 다릅니다.
 
-1. 首次使用 Azure 备份时，必须使用 **Register-AzResourceProvider** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+1. 처음으로 Azure Backup을 사용하는 경우 **Register-AzResourceProvider** cmdlet을 사용하여 구독에 Azure Recovery Service 공급자를 등록해야 합니다.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. 恢复服务保管库是一种 ARM 资源，因此需要将它放在资源组中。 可以使用现有资源组，也可以创建新组。 创建新的资源组时，请指定资源组的名称和位置。  
+2. Recovery Services 자격 증명 모음은 ARM 리소스이므로 리소스 그룹 내에 배치해야 합니다. 기존 리소스 그룹을 사용하거나 리소스 그룹을 새로 만들 수 있습니다. 새 리소스 그룹을 만들 때 리소스 그룹의 이름과 위치를 지정합니다.  
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 
-3. 使用**AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+3. 使用**AzRecoveryServicesVault** cmdlet 创建新的保管库。 리소스 그룹에 사용된 동일한 위치를 자격 증명 모음에도 지정해야 합니다.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 以下示例显示，testVault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
+4. [LRS(로컬 중복 스토리지)](../storage/common/storage-redundancy-lrs.md) 또는 [GRS(지역 중복 스토리지)](../storage/common/storage-redundancy-grs.md) 중에 사용할 스토리지 중복 유형을 지정합니다. 다음 예제는 testVault에 대한 BackupStorageRedundancy 옵션이 GeoRedundant로 설정된 것을 보여 줍니다.
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。
+   > 많은 Azure Backup cmdlet에는 Recovery Services 자격 증명 모음 개체가 입력으로 필요합니다. 이런 이유 때문에, 백업 Recovery Services 자격 증명 모음 개체를 변수에 저장하는 것이 편리합니다.
    >
    >
 
@@ -54,9 +54,9 @@ ms.locfileid: "74689194"
     Set-AzRecoveryServicesBackupProperties -Vault $Vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
+## <a name="view-the-vaults-in-a-subscription"></a>구독의 자격 증명 모음 보기
 
-使用**AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
+使用**AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 이 명령을 사용하여 새 자격 증명 모음이 만들어졌는지 확인하거나 구독에서 사용할 수 있는 자격 증명 모음을 확인할 수 있습니다.
 
 运行命令**AzRecoveryServicesVault**，并列出订阅中的所有保管库。
 
@@ -76,11 +76,11 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="installing-the-azure-backup-agent"></a>安装 Azure 备份代理
+## <a name="installing-the-azure-backup-agent"></a>Azure Backup 에이전트 설치
 
-在安装 Azure 备份代理之前，必须先将安装程序下载到 Windows Server 上。 可以从 [Microsoft 下载中心](https://aka.ms/azurebackup_agent)或恢复服务保管库的“仪表板”页获取最新版本的安装程序。 将安装程序保存到方便访问的位置，例如 *C:\Downloads\*。
+Azure Backup 에이전트를 설치하기 전에 Windows Server에 설치 관리자를 다운로드해 두어야 합니다. 최신 버전의 설치 관리자는 [Microsoft 다운로드 센터](https://aka.ms/azurebackup_agent) 또는 Recovery Services의 자격 증명 모음 대시보드 페이지에서 다운로드할 수 있습니다. 쉽게 액세스할 수 있는 위치(예: *C:\Downloads\*)에 설치 관리자를 저장합니다.
 
-或者，使用 PowerShell 获取下载程序：
+또는 PowerShell을 사용하여 다운로더를 가져옵니다.
 
  ```powershell
  $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
@@ -89,19 +89,19 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
  C:\Downloads\MARSAgentInstaller.EXE /q
  ```
 
-若要安装代理，请在已提升权限的 PowerShell 控制台中运行以下命令：
+에이전트를 설치하려면 승격된 PowerShell 콘솔에서 다음 명령을 실행합니다.
 
 ```powershell
 MARSAgentInstaller.exe /q
 ```
 
-这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
+그러면 에이전트가 모두 기본 옵션으로 설치됩니다. 설치는 백그라운드에서 몇 분 정도 소요됩니다. 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 설치되면 설치된 프로그램 목록에 에이전트가 표시됩니다.
 
-若要查看已安装的程序列表，请转到“**控制面板** > **程序** > **程序和功能**”。
+설치된 프로그램 목록을 보려면 **제어판** > **프로그램** > **프로그램 및 기능**으로 이동합니다.
 
-![已安装代理](./media/backup-client-automation/installed-agent-listing.png)
+![에이전트 설치됨](./media/backup-client-automation/installed-agent-listing.png)
 
-### <a name="installation-options"></a>安装选项
+### <a name="installation-options"></a>설치 옵션
 
 若要查看通过命令行提供的所有选项，请使用以下命令：
 
@@ -109,24 +109,24 @@ MARSAgentInstaller.exe /q
 MARSAgentInstaller.exe /?
 ```
 
-可用选项包括：
+사용 가능한 옵션은 다음과 같습니다.
 
-| 选项 | 详细信息 | 默认 |
+| 옵션 | 세부 정보 | 기본값 |
 | --- | --- | --- |
-| /q |静默安装 |- |
-| /p:"location" |Azure 备份代理的安装文件夹路径。 |C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"location" |Azure 备份代理的缓存文件夹路径。 |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |选择启用 Microsoft Update |- |
-| /nu |安装完成后不要检查更新 |- |
-| /d |卸载 Microsoft Azure 恢复服务代理 |- |
-| /ph |代理主机地址 |- |
-| /po |代理主机端口号 |- |
-| /pu |代理主机用户名 |- |
-| /pw |代理密码 |- |
+| /q |자동 설치 |- |
+| /p:"위치" |Azure Backup 에이전트의 설치 폴더에 대한 경로입니다. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s:"위치" |Azure Backup 에이전트의 캐시 폴더에 대한 경로입니다. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Microsoft 업데이트에 옵트인 |- |
+| /nu |설치가 완료된 후 업데이트에 대한 검사 안 함 |- |
+| /d |Microsoft Azure Recovery Services 에이전트를 제거합니다. |- |
+| /ph |프록시 호스트 주소 |- |
+| /po |프록시 호스트 포트 번호 |- |
+| /pu |프록시 호스트 사용자 이름 |- |
+| /pw |프록시 암호 |- |
 
-## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>将 Windows Server 或 Windows 客户端计算机注册到恢复服务保管库
+## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Recovery Services 자격 증명 모음에 Windows Server 또는 Windows 클라이언트 컴퓨터 등록
 
-创建恢复服务保管库后，请下载最新的代理和保管库凭据，并将其存储在一个方便访问的位置（如 C:\Downloads）。
+Recovery Services 자격 증명 모음을 만든 후에, 최신 에이전트 및 보관 자격 증명을 다운로드하여 편리한 위치(예: C:\Downloads)에 저장합니다.
 
 ```powershell
 $CredsPath = "C:\downloads"
@@ -145,22 +145,22 @@ $CredsPath = "C:\downloads"
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
 ```
 
-在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet 以将计算机注册到保管库。
+Windows Server 또는 Windows 클라이언트 컴퓨터에서, [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet을 실행하여 컴퓨터를 자격 증명 모음에 등록합니다.
 此操作以及用于备份的其他 cmdlet 来自 MSONLINE 模块，该模块是 Mars AgentInstaller 作为安装过程的一部分添加的。
 
-代理安装程序不会更新 $Env:PSModulePath 变量。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
+에이전트 설치 관리자는 $Env:PSModulePath 변수를 업데이트하지 않습니다. 즉, 모듈 자동 로드에 실패합니다. 若要解决此问题，可以执行以下操作：
 
 ```powershell
 $Env:PSModulePath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
 ```
 
-或者，可在脚本中手动加载模块，如下所示：
+또는 다음과 같이 스크립트에 모듈을 수동으로 로드할 수 있습니다.
 
 ```powershell
 Import-Module -Name 'C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup'
 ```
 
-加 Online Backup cmdlet 后便可注册保管库凭据：
+Online Backup cmdlet을 로드하면 자격 증명 모음을 등록합니다.
 
 ```powershell
 Start-OBRegistration -VaultCredentials $CredsFilename.FilePath -Confirm:$false
@@ -175,17 +175,17 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> 请勿使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
+> 저장소 자격 증명 파일을 지정할 때 상대 경로를 사용하지 마세요. cmdlet 입력 내용은 반드시 절대 경로를 제공해야 합니다.
 >
 >
 
-## <a name="networking-settings"></a>网络设置
+## <a name="networking-settings"></a>네트워킹 서비스
 
-如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
+Windows 컴퓨터의 인터넷 연결이 프록시 서버를 통하는 경우, 프록시 설정도 에이전트에 제공될 수 있습니다. 이 예제에서는 프록시 서버가 없으므로 프록시와 관련된 모든 정보를 명시적으로 지웁니다.
 
-也可以针对给定的一组星期日期，使用 `work hour bandwidth` 和 `non-work hour bandwidth` 选项来控制带宽使用。
+대역폭 사용 역시 주의 정해진 요일에 대해 `work hour bandwidth` 및 `non-work hour bandwidth` 옵션으로 제어할 수 있습니다.
 
-使用 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) cmdlet 即可设置代理和带宽详细信息：
+프록시 및 대역폭 세부 정보 설정은 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) cmdlet을 사용합니다.
 
 ```powershell
 Set-OBMachineSetting -NoProxy
@@ -203,9 +203,9 @@ Set-OBMachineSetting -NoThrottle
 Server properties updated successfully.
 ```
 
-## <a name="encryption-settings"></a>加密设置
+## <a name="encryption-settings"></a>암호화 설정
 
-发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
+Azure Backup에 전송되는 백업 데이터는 데이터의 기밀성을 보호하기 위해 암호화됩니다. 암호화 암호는 복원 시 데이터를 해독하기 위한 “암호"입니다.
 
 你必须通过在 Azure 门户的 "**恢复服务保管库**" 部分中的 "**设置**" > **属性**" > **安全 pin** " 下选择 "**生成**" 生成安全 pin。 然后，将其用作命令中的 `generatedPIN`：
 
@@ -219,40 +219,40 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，将无法从 Azure 还原数据。
+> 암호 정보를 설정한 후에는 안전하게 보관합니다. 이 암호 없이는 Azure에서 데이터를 복원할 수 없습니다.
 >
 >
 
-## <a name="back-up-files-and-folders"></a>备份文件和文件夹
+## <a name="back-up-files-and-folders"></a>파일 및 폴더 백업
 
-从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。 策略由三个部分组成：
+Windows 서버 및 클라이언트에서 Azure Backup으로의 모든 백업은 정책에 따라 제어됩니다. 정책은 세 부분으로 구성됩니다.
 
-1. 一个**备份计划**，指定何时需要备份以及与服务同步。
-2. 一个**备份计划**，指定要在 Azure 中保留恢复点多长时间。
-3. 一个**文件包含/排除规范**，指示应备份哪些内容。
+1. 백업을 수행하고 서비스와 동기화해야 할 시기를 지정하는 **백업 일정** .
+2. Azure에 복구 지점을 보존할 기간을 지정하는 **보존 일정** 입니다.
+3. 백업해야 할 항목을 지정하는 **파일 포함/제외 사양** .
 
-在本文档中，由于我们要自动备份，因此假设尚未配置任何选项。 首先，我们使用 [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) cmdlet 创建新的备份策略。
+이 문서에서는 백업을 자동화하기 때문에 아무것도 구성되지 않은 것으로 가정합니다. 먼저 [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) cmdlet을 사용하여 새로운 백업 정책을 만듭니다.
 
 ```powershell
 $NewPolicy = New-OBPolicy
 ```
 
-该策略暂时是空的，需要使用其他 cmdlet 来定义要包含或排除的项、运行备份的时间，以及备份的存储位置。
+지금은 정책이 비어 있으며 포함하거나 제외시킬 항목, 백업 실행 시기 및 백업이 저장될 위치를 정의하려면 다른 cmdlet이 필요합니다.
 
-### <a name="configuring-the-backup-schedule"></a>配置备份计划
+### <a name="configuring-the-backup-schedule"></a>백업 일정 구성
 
-策略的三个部分中的第一个部分是备份计划，该计划是使用[OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet 创建的。 备份计划将定义何时需要备份。 创建计划时，需要指定两个输入参数：
+策略的三个部分中的第一个部分是备份计划，该计划是使用[OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet 创建的。 백업 일정은 백업을 수행해야 할 시기를 정의합니다. 创建计划时，需要指定两个输入参数：
 
-* 应运行备份的**星期日期**。 可以只选一天或选择一周的每天运行备份作业，或选择星期日期的任意组合。
-* 应运行备份的**日期时间**。 最多可以定义一天中的三个不同时间来触发备份。
+* **요일** . 백업을 하루만 실행하거나 해당 주의 모든 요일 또는 그 사이의 날짜를 조합하여 실행할 수 있습니다.
+* **시간** . 最多可以定义一天中的三个不同时间来触发备份。
 
-例如，可以配置在每个星期六和星期日下午 4 点运行备份策略。
+예를 들어, 토요일과 일요일마다 오후 4시에 실행되는 백업 정책을 구성할 수 있습니다.
 
 ```powershell
 $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 ```
 
-备份计划需要与策略相关联，这可以使用 [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) cmdlet 来实现。
+백업 일정은 정책과 연결되어야 하며 이 작업은 [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) cmdlet을 사용하여 수행할 수 있습니다.
 
 ```powershell
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
@@ -262,15 +262,15 @@ Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 
-### <a name="configuring-a-retention-policy"></a>配置保留策略
+### <a name="configuring-a-retention-policy"></a>보존 정책 구성
 
-保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) cmdlet 创建新的保留策略时，可以使用 Azure 备份来指定需要保留备份恢复点的天数。 下面的示例将保留策略设置为7天。
+보존 정책은 백업 작업에서 생성된 복구 지점이 유지되는 기간을 정의합니다. [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) cmdlet을 사용하여 새 보존 정책을 만들 때 Azure Backup을 사용하여 백업 복구 지점을 유지해야 할 일수를 지정할 수 있습니다. 下面的示例将保留策略设置为7天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-必须使用 cmdlet [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405) 将保留策略与主要策略相关联：
+보존 정책은 cmdlet [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405)를 사용하여 기본 정책과 연결되어야 합니다.
 
 ```powershell
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
@@ -297,17 +297,17 @@ State           : New
 PolicyState     : Valid
 ```
 
-### <a name="including-and-excluding-files-to-be-backed-up"></a>包含和排除要备份的文件
+### <a name="including-and-excluding-files-to-be-backed-up"></a>백업할 파일 포함 및 제외
 
-`OBFileSpec` 对象定义要在备份中包含与排除的文件。 这组规则可划分出计算机上要保护的文件和文件夹。 可以设置任意数量的文件包含或排除规则，并将其与策略相关联。 创建新的 OBFileSpec 对象时，可以：
+`OBFileSpec` 개체는 백업에 포함 및 제외시킬 파일을 정의합니다. 이 개체는 컴퓨터에서 보호된 파일 및 폴더를 자세히 살펴보는 규칙의 집합입니다. 필요에 따라 원하는 만큼 파일을 포함 또는 제외시키고 정책과 연결할 수 있습니다. 새 OBFileSpec 개체를 만드는 경우 다음 작업을 수행할 수 있습니다.
 
-* 指定要包含的文件和文件夹
-* 指定要排除的文件和文件夹
-* 指定要递归备份文件夹中的数据，或是否仅备份指定文件夹中的顶级文件。
+* 포함시킬 파일 및 폴더 지정
+* 제외시킬 파일 및 폴더 지정
+* 폴더의 데이터에 대한 재귀 백업을 지정하거나 지정된 폴더의 최상위 수준 파일만 백업해야 하는지 여부를 지정합니다.
 
-可以在 New-OBFileSpec 命令中使用 -NonRecursive 标志来完成后一种指定。
+후자는 New-OBFileSpec 명령의 -NonRecursive 플래그를 사용하여 수행됩니다.
 
-在以下示例中，我们要备份卷 C: 和 D:，并排除 Windows 文件夹和任何临时文件夹中的操作系统二进制文件。 为此，我们将使用[OBFileSpec](https://technet.microsoft.com/library/hh770408) cmdlet 创建两个文件规范-一个用于包含，一个用于排除。 创建文件规范后，使用 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) cmdlet 将它们与策略相关联。
+아래 예제에서는 C: 및 D: 볼륨을 백업하고 Windows 폴더 및 임시 폴더에 있는 운영 체제 바이너리를 제외시킵니다. 为此，我们将使用[OBFileSpec](https://technet.microsoft.com/library/hh770408) cmdlet 创建两个文件规范-一个用于包含，一个用于排除。 파일 사양을 만들고 나면 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) cmdlet을 사용하여 정책과 연결됩니다.
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -405,13 +405,13 @@ PolicyState     : Valid
 
 本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
 
-### <a name="schedule"></a>计划
+### <a name="schedule"></a>일정
 
 ```powershell
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>保留期
+### <a name="retention"></a>보존
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -429,9 +429,9 @@ New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn 
 Get-OBSystemStatePolicy
  ```
 
-### <a name="applying-the-policy"></a>应用策略
+### <a name="applying-the-policy"></a>정책 적용
 
-现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请使用[OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
+이제 정책 개체가 완료되었으므로 연결된 백업 일정, 보존 정책 및 파일의 포함/제외 목록이 있습니다. 이제는 이 정책을 Azure Backup에 커밋하여 사용할 수 있습니다. 在应用新创建的策略之前，请使用[OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 确保没有任何现有备份策略与服务器相关联。 정책을 제거하면 확인 메시지가 나타납니다. 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -441,7 +441,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 可以提交策略对象。 系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
+정책 개체 커밋은 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet을 사용하여 수행됩니다. 이 작업에서도 확인 메시지가 표시됩니다. 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -489,7 +489,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-可以使用 [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) cmdlet 来查看现有备份策略的详细信息。 可以使用 [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) cmdlet（适用于备份计划）和 [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) cmdlet（适用于保留策略）向下钻取
+[Get-OBPolicy](https://technet.microsoft.com/library/hh770406) cmdlet을 사용하여 기존 백업 정책에 대한 세부 정보를 볼 수 있습니다. 백업 입정에는 [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) cmdlet, 보존 정책에는 [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) cmdlet을 사용하면 더욱 상세하게 정보를 볼 수 있습니다.
 
 ```powershell
 Get-OBPolicy | Get-OBSchedule
@@ -563,18 +563,18 @@ Job completed.
 The backup operation completed successfully.
 ```
 
-## <a name="restore-data-from-azure-backup"></a>从 Azure 备份还原数据
+## <a name="restore-data-from-azure-backup"></a>Azure Backup에서 데이터 복원
 
-本部分将引导完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
+이 섹션에서는 Azure Backup에서 데이터 복구를 자동화하는 방법을 단계별로 안내합니다. 다음 단계를 수행하여 작업을 진행합니다.
 
-1. 选取源卷
-2. 选择要还原的备份点
+1. 원본 볼륨 선택
+2. 복원할 백업 시점 선택
 3. 指定要还原的项
-4. 触发还原过程
+4. 복원 프로세스 트리거
 
-### <a name="picking-the-source-volume"></a>选取源卷
+### <a name="picking-the-source-volume"></a>원본 볼륨 선택
 
-若要从 Azure 备份还原某个项，需要先识别该项的源。 由于我们要在 Windows Server 或 Windows 客户端的上下文中执行命令，因此已识别了计算机。 识别源的下一步是识别它所在的卷。 运行 [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) cmdlet 可以检索正在从此计算机备份的卷或源的列表。 此命令将返回从此服务器/客户端备份的所有源的数组。
+Azure Backup에서 항목을 복원하려면 먼저 항목의 원본을 식별해야 합니다. Windows 서버 또는 Windows 클라이언트의 컨텍스트에서 명령을 실행 중이므로 컴퓨터는 이미 식별된 상태입니다. 원본을 식별하는 다음 단계는 해당 원본이 포함된 볼륨을 식별하는 것입니다. 이 컴퓨터에서 백업 중인 볼륨 또는 원본 목록은 [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) cmdlet을 실행하여 검색할 수 있습니다. 이 명령은 이 서버/클라이언트에서 백업한 모든 원본의 배열을 반환합니다.
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -591,9 +591,9 @@ RecoverySourceName : D:\
 ServerName : myserver.microsoft.com
 ```
 
-### <a name="choosing-a-backup-point-from-which-to-restore"></a>选择要从中还原的备份点
+### <a name="choosing-a-backup-point-from-which-to-restore"></a>복원할 백업 시점 선택
 
-结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们将选择源卷*C：* 的最新备份点，并使用它来恢复特定文件。
+[Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet을 적절한 매개 변수와 함께 실행하여 백업 시점 목록을 검색합니다. 在本示例中，我们将选择源卷*C：* 的最新备份点，并使用它来恢复特定文件。
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -625,7 +625,7 @@ ItemSize             :
 ItemLastModifiedTime :
 ```
 
-对象 `$Rps` 是备份点数组。 第一个元素是最新备份点，第 N 个元素是最旧的备份点。 为了选择最新的点，我们将使用 `$Rps[0]`。
+개체 `$Rps` 는 백업 시점의 배열입니다. 첫 번째 요소는 가장 최근 시점이고 n 번째 요소는 가장 오래된 시점입니다. 최근 시점을 선택하려면 `$Rps[0]`을 사용합니다.
 
 ### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
@@ -650,15 +650,15 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ```
 
-### <a name="triggering-the-restore-process"></a>触发还原过程
+### <a name="triggering-the-restore-process"></a>복원 프로세스 트리거
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 对于本示例，假设我们想要将文件还原到*C：\temp*。我们还假设要跳过目标文件夹*C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
+복원 프로세스를 트리거하려면 먼저 복구 옵션을 지정해야 합니다. 이 작업은 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet을 사용하여 수행할 수 있습니다. 对于本示例，假设我们想要将文件还原到*C：\temp*。我们还假设要跳过目标文件夹*C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-现在，请对 `Get-OBRecoverableItem` cmdlet 输出中的选定 `$Item` 使用 [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令来触发还原过程：
+이제 `Get-OBRecoverableItem` cmdlet의 출력에서 선택한 `$Item`에 대해 [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) 명령을 사용하여 복원 프로세스를 트리거합니다.
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -673,27 +673,27 @@ Job completed.
 The recovery operation completed successfully.
 ```
 
-## <a name="uninstalling-the-azure-backup-agent"></a>卸载 Azure 备份代理
+## <a name="uninstalling-the-azure-backup-agent"></a>Azure Backup 에이전트 제거
 
-可以使用以下命令卸载 Azure 备份代理：
+Azure Backup 에이전트 제거는 다음 명령을 사용하여 수행할 수 있습니다.
 
 ```powershell
 .\MARSAgentInstaller.exe /d /q
 ```
 
-若要从计算机中卸载代理二进制文件，请注意以下部分后果：
+컴퓨터에서 에이전트 이진 파일을 제거하면 고려해야 할 몇 가지 결과가 발생합니다.
 
-* 这会从计算机中删除文件筛选器，并停止跟踪更改。
-* 将从计算机中删除所有策略信息，但服务中会继续存储这些策略信息。
-* 将删除所有备份计划，且不会进一步创建备份。
+* 컴퓨터에서 파일 필터를 제거하고 변경 내용 추적이 중단됩니다.
+* 모든 정책 정보가 컴퓨터에서 제거되지만 정책 정보는 서비스에 계속 저장됩니다.
+* 모든 백업 일정이 제거되고 더 이상 백업이 수행되지 않습니다.
 
-不过，Azure 中存储的数据会根据你设置的保留策略继续保留。 较旧的恢复点会自动过时。
+하지만 Azure에 저장된 데이터는 그대로 유지되며 사용자가 설정한 보존 정책에 따라 보존됩니다. 이전 지점은 시간이 경과하면 자동으로 삭제됩니다.
 
-## <a name="remote-management"></a>远程管理
+## <a name="remote-management"></a>원격 관리
 
-围绕 Azure 备份代理、策略和数据源的所有管理工作都可通过 Azure PowerShell 远程完成。 要远程管理的计算机需要经过适当的准备。
+Azure Backup 에이전트, 정책, 데이터 원본과 관련된 모든 관리는 PowerShell을 통해 원격으로 수행될 수 있습니다. 원격으로 관리될 컴퓨터는 올바르게 준비되어야 합니다.
 
-默认情况下，WinRM 服务已配置为手动启动。 必须将启动类型设置为“*自动*”，并且应该启动该服务。 若要确认 WinRM 服务正在运行，“状态”属性的值应该是“*正在运行*”。
+기본적으로 WinRM 서비스는 수동 시작으로 구성됩니다. 시작 유형은 반드시 *자동* 으로 설정되어야 하며 서비스가 시작되어야 합니다. WinRM 서비스가 실행되는지 확인하도록 Status 속성의 값은 *Running*이어야 합니다.
 
 ```powershell
 Get-Service -Name WinRM
@@ -705,7 +705,7 @@ Status   Name               DisplayName
 Running  winrm              Windows Remote Management (WS-Manag...
 ```
 
-应该针对远程管理配置 PowerShell。
+PowerShell을 원격 작업용으로 구성해야 합니다.
 
 ```powershell
 Enable-PSRemoting -Force
@@ -721,7 +721,7 @@ WinRM firewall exception enabled.
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 ```
 
-现在可以远程管理计算机 - 从代理的安装开始。 例如，以下脚本会将代理复制到远程计算机并安装代理。
+이제 에이전트 설치부터 시작하여 컴퓨터를 원격으로 관리할 수 있습니다. 예를 들어, 다음 스크립트는 에이전트를 원격 컴퓨터로 복사하고 설치합니다.
 
 ```powershell
 $DLoc = "\\REMOTESERVER01\c$\Windows\Temp"
@@ -733,9 +733,9 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请执行以下操作：
 
-* [Azure 备份简介](backup-introduction-to-azure-backup.md)
-* [备份 Windows Servers](backup-configure-vault.md)
+* [Azure Backup 소개](backup-introduction-to-azure-backup.md)
+* [Windows 서버 백업](backup-configure-vault.md)

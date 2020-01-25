@@ -1,31 +1,31 @@
 ---
-title: 在 Team Data Science Process 中浏览数据
-description: 浏览通常用于 Team Data Science Process 的不同存储环境中的数据。
+title: 팀 데이터 과학 프로세스에서 데이터 탐색
+description: 팀 데이터 과학 프로세스에서 일반적으로 사용되는 다양한 스토리지 환경의 데이터를 살펴봅니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d4d2bc3292926144f13508780885e082f2b1fdc3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca993fd6a449b2655b13da337875fa3f9f27cade
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303615"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721262"
 ---
-# <a name="explore-data-in-the-team-data-science-process"></a>在 Team Data Science Process 中浏览数据
+# <a name="explore-data-in-the-team-data-science-process"></a>팀 데이터 과학 프로세스에서 데이터 탐색
 
-浏览数据是[团队数据科学过程](overview.md)中的一个步骤。
+데이터 탐색은 [팀 데이터 과학 프로세스](overview.md)의 단계입니다.
 
-以下文章介绍了如何浏览数据科学过程中通常使用的三种不同存储环境中的数据：
+다음 문서에서는 데이터 과학 프로세스에 일반적으로 사용되는 3개의 서로 다른 스토리지 환경에서 데이터를 탐색하는 방법을 설명합니다.
 
-* 使用 [Pandas](https://pandas.pydata.org/) Python 包浏览 [Azure blob 容器](explore-data-blob.md)数据。
-* 使用 SQL 和编程语言（如 Python）浏览 [SQL Server](explore-data-sql-server.md) 数据。
-* 使用 Hive 查询浏览 [Hive 表](explore-data-hive-tables.md)数据。
+* [Panda](https://pandas.pydata.org/) Python 패키지를 사용하여 [Azure blob 컨테이너](explore-data-blob.md) 데이터를 탐색합니다.
+* [SQL Server](explore-data-sql-server.md) 데이터는 SQL을 사용하거나 Python과 같은 프로그래밍 언어를 사용하여 탐색합니다.
+* [Hive 테이블](explore-data-hive-tables.md) 데이터는 Hive 쿼리를 사용하여 탐색합니다.
 
-此外，视频[在 Azure 机器学习工作室中预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)介绍了 Azure 机器学习工作室中用于清除和转换数据的常用模块。
+此外，视频（ [Azure 机器学习 Studio 中的预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)）描述了用于清除和转换数据的常用模块。

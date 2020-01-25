@@ -1,27 +1,27 @@
 ---
-title: 在 Azure 流分析中分析 JSON 和 AVRO
-description: 本文介绍如何针对复杂数据类型（如数组、JSON、CSV 格式数据）进行操作。
+title: Azure Stream Analytics에서 JSON 및 AVRO 구문 분석
+description: 이 문서에서는 배열, JSON, CSV 형식의 데이터와 같은 복합 데이터 형식을 조작하는 방법을 설명합니다.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbfa6f8b85814f0f77234e014ade0ff757a4c4b8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431597"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720072"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics에서 JSON 및 Avro 데이터 구문 분석
 
 Azure 流分析支持处理 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以进行结构化，并且包含某些复杂类型（如嵌套对象（记录）和数组）。 
 
 
 
 
-## <a name="record-data-types"></a>记录数据类型
-如果在输入数据流中使用相应的格式，记录数据类型将用于表示 JSON 和 Avro 数组。 这些示例演示示例传感器，该传感器读取 JSON 格式的输入事件。 下面是单一事件的示例：
+## <a name="record-data-types"></a>레코드 데이터 형식
+레코드 데이터 형식은 입력 데이터 스트림에서 사용될 때 JSON 및 Avro 배열을 나타내는 데 사용됩니다. 다음 예제에서는 입력 이벤트를 JSON 형식으로 읽는 샘플 센서를 보여 줍니다. 단일 이벤트의 예제는 다음과 같습니다.
 
 ```json
 {
@@ -60,14 +60,14 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>选择所有属性
-可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
+중첩된 레코드의 모든 속성은 '*' 와일드카드를 사용하여 선택할 수 있습니다. 다음과 같은 예제를 참조하세요.
 
 ```SQL
 SELECT input.Location.*
 FROM input
 ```
 
-结果为：
+결과는 다음과 같습니다.
 
 ```json
 {
@@ -78,7 +78,7 @@ FROM input
 
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
-如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)函数。 
+如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 
 
 例如，假设有一个示例数据流需要与包含每个设备传感器的阈值的引用数据联接。 下面显示了此类引用数据的代码段。
 
@@ -104,7 +104,7 @@ WHERE
 ```
 
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
-若要将记录字段转换为单独事件，请结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。 例如，如果前面的示例具有 SensorReading 的多个记录，可以使用以下查询将它们提取到不同的事件中：
+레코드 필드를 별도의 이벤트로 변환하려면 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자를 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 함수와 함께 사용합니다. 例如，如果前面的示例具有 SensorReading 的多个记录，可以使用以下查询将它们提取到不同的事件中：
 
 ```SQL
 SELECT
@@ -117,14 +117,14 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 
 
-## <a name="array-data-types"></a>数组数据类型
+## <a name="array-data-types"></a>배열 데이터 형식
 
-数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些示例假定输入事件具有名为“arrayField”的数组数据类型属性。
+배열 데이터 형식은 정렬된 값의 컬렉션입니다. 배열 값에 일반적인 몇 가지 연산은 아래에 자세히 나와 있습니다. 이러한 예제에서는 입력 이벤트에 배열 데이터 형식인 "arrayField"라는 속성이 있다고 가정합니다.
 
-这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
+이러한 예제에서는 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 함수 및 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자를 사용합니다.
 
 ### <a name="working-with-a-specific-array-element"></a>使用特定数组元素
-选择指定索引中的数组元素（选择第一个数组元素）：
+지정된 인덱스에서 배열 요소를 선택합니다(첫 번째 배열 요소 선택).
 
 ```SQL
 SELECT
@@ -141,7 +141,7 @@ FROM input
 ```
 
 ### <a name="convert-array-elements-into-separate-events"></a>将数组元素转换为单独的事件
-选择所有数组元素作为各个事件。 结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 内置函数，提取所有数组元素作为各个事件：
+모든 배열 요소를 개별 이벤트로 선택합니다. [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자는 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 기본 제공 함수와 함께 모든 배열 요소를 개별 이벤트로 추출합니다.
 
 ```SQL
 SELECT
@@ -152,5 +152,5 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 ```
 
 
-## <a name="see-also"></a>另请参阅
-[Azure 流分析中的数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+## <a name="see-also"></a>참고 항목
+[Azure Stream Analytics의 데이터 형식](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

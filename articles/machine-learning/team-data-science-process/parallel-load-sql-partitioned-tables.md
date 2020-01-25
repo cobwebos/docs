@@ -1,39 +1,39 @@
 ---
-title: 在 SQL 分区表中进行并行批量数据导入 - Team Data Science Process
-description: 构建分区表来快速将数据并行批量导入到 SQL Server 数据库。
+title: SQL 파티션 테이블의 대량 데이터를 병렬로 가져오기 - 팀 데이터 과학 프로세스
+description: 분할된 테이블을 빌드하여 SQL Server 데이터베이스로 대량 데이터를 빠르게 병렬로 가져옵니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428285"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721330"
 ---
-# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM에서 SQL Server로 데이터를 빠르게 병렬로 가져오기 위한 테이블 빌드 및 최적화
 
-本文介绍如何构建分区表来快速将数据并行批量导入到 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
+이 문서에서는 분할된 테이블을 만들어서 SQL Server 데이터베이스로 대량의 데이터를 병렬로 더 빨리 가져오는 방법을 설명합니다. SQL Database로 빅 데이터를 로드/전송할 때 *분할된 테이블 및 뷰*를 사용하여 SQL DB로 데이터를 가져오는 작업과 후속 쿼리의 성능을 개선할 수 있습니다. 
 
-## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
-* [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
-* 将数据库文件组添加到将保存已分区物理文件的数据库。 
-* 该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成。
-* 向每个数据库文件组中添加一个或多个文件（根据需要）。
+## <a name="create-a-new-database-and-a-set-of-filegroups"></a>새 데이터베이스 및 파일 그룹 만들기
+* 아직 존재하지 않으면 [새 데이터베이스를 만듭니다](https://technet.microsoft.com/library/ms176061.aspx).
+* 분할된 실제 파일을 보유할 데이터베이스에 데이터베이스 파일 그룹을 추가합니다. 
+* 새 데이터베이스를 만드는 경우 [데이터베이스 만들기](https://technet.microsoft.com/library/ms176061.aspx)를 사용하거나, 기존 데이터베이스가 있는 경우 [데이터베이스 변경](https://msdn.microsoft.com/library/bb522682.aspx)을 사용하여 이 작업을 수행할 수 있습니다.
+* 필요한 경우 각 데이터베이스 파일 그룹에 파일을 하나 이상 추가합니다.
   
   > [!NOTE]
-  > 指定保存此分区数据的目标文件组和将存储文件组数据的物理数据库文件名称。
+  > 이 파티션의 데이터를 보유할 대상 파일 그룹과 파일 그룹 데이터가 저장될 실제 데이터베이스 파일 이름을 지정합니다.
   > 
   > 
 
-下面的示例使用除主组和日志组以外的三个主文件组创建新数据库，每个文件组中包含一个物理文件。 在默认 SQL Server 数据文件夹中创建数据库文件，如 SQL Server 实例中所配置。 有关默认文件位置的详细信息，请参阅 [SQL Server 默认和已命名实例的文件位置](https://msdn.microsoft.com/library/ms143547.aspx)。
+다음은 기본 그룹 및 로그 그룹이 아닌 3개의 파일 그룹이 있고 각 파일 그룹에 물리적 파일 1개가 포함되는 새 데이터베이스를 만드는 예제입니다. SQL Server 인스턴스에 구성된 것처럼 데이터베이스 파일은 기본 SQL Server 데이터 폴더에 생성됩니다. 기본 파일 위치에 대한 자세한 내용은 [SQL Server의 기본 인스턴스 및 명명된 인스턴스의 파일 위치](https://msdn.microsoft.com/library/ms143547.aspx)를 참조하세요.
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -54,11 +54,11 @@ ms.locfileid: "61428285"
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>创建分区表
-若要根据映射到在上一步中创建的数据库文件组的数据架构创建分区表，必须先创建分区函数和方案。 将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
+## <a name="create-a-partitioned-table"></a>분할된 테이블 만들기
+이전 단계에서 만든 데이터베이스 파일 그룹에 매핑된 데이터 스키마에 따라 분할된 테이블을 만들려면 먼저 파티션 함수 및 스키마를 만들어야 합니다. 분할된 테이블로 데이터를 대량으로 가져오는 경우 아래에 설명된 것처럼 파티션 구성표에 따라 레코드가 파일 그룹 사이에 분산됩니다.
 
-### <a name="1-create-a-partition-function"></a>1.创建分区函数
-[创建分区函数](https://msdn.microsoft.com/library/ms187802.aspx)此函数用于定义要包括在每个分区表中的值/边界范围，例如，按 2013 年的月份（某些 \_datetime\_ 字段）限制分区：
+### <a name="1-create-a-partition-function"></a>1. 创建分区函数
+[파티션 함수 만들기](https://msdn.microsoft.com/library/ms187802.aspx) 예를 들어 이 함수는 각 파티션 테이블에 포함될 값/경계 범위를 정의하여 2013년에 월별로(some\_datetime\_field) 파티션을 제한합니다.
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -66,8 +66,8 @@ ms.locfileid: "61428285"
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2.创建分区方案
-[创建分区方案](https://msdn.microsoft.com/library/ms179854.aspx)。 此方案将分区函数中的每个分区范围映射到物理文件组，例如：
+### <a name="2-create-a-partition-scheme"></a>2. 创建分区方案
+[파티션 구성표 만들기](https://msdn.microsoft.com/library/ms179854.aspx) 이 파티션은 파티션 함수의 각 파티션 범위를 실제 파일 그룹에 매핑합니다. 아래는 그 예입니다.
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -75,7 +75,7 @@ ms.locfileid: "61428285"
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  若要根据函数/方案验证每个分区中的有效范围，请运行以下查询：
+  함수/스키마에 따라 각 파티션에 적용되는 범위를 확인하려면 다음 쿼리를 실행합니다.
   
         SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
@@ -85,23 +85,23 @@ ms.locfileid: "61428285"
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3.创建分区表
-[创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
+### <a name="3-create-a-partition-table"></a>3. 创建分区表
+데이터 스키마에 따라 [분할된 테이블을 만들고](https://msdn.microsoft.com/library/ms174979.aspx) 테이블을 분할하는 데 사용된 파티션 구성표 및 제약 조건 필드를 지정합니다. 아래는 그 예입니다.
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-有关详细信息，请参阅[创建分区表和索引](https://msdn.microsoft.com/library/ms188730.aspx)。
+자세한 내용은 [분할된 테이블 및 인덱스 만들기](https://msdn.microsoft.com/library/ms188730.aspx)를 참조하세요.
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>批量导入每个分区表的数据
+## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>각 파티션 테이블의 데이터를 대량으로 가져오기
 
-* 可以使用 BCP、BULK INSERT 或其他方法（如 [SQL Server 迁移向导](https://sqlazuremw.codeplex.com/)）。 提供的示例使用 BCP 方法。
-* [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
+* BCP, BULK INSERT 또는 [SQL Server 마이그레이션 마법사](https://sqlazuremw.codeplex.com/)같은 기타 방법을 사용할 수 있습니다. 제공된 예에서는 BCP를 사용합니다.
+* 로깅 오버헤드를 최소화하기 위해 [데이터베이스를 변경](https://msdn.microsoft.com/library/bb522682.aspx)하여 트랜잭션 로깅 스키마를 BULK_LOGGED로 변경합니다. 아래는 그 예입니다.
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加快数据加载，请并行启动批量导入操作。 有关加快将大型数据批量导入到 SQL Server 数据库的提示，请参阅[一小时之内加载 1TB 数据](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
+* 신속한 데이터 로드를 위해 대량 가져오기 작업을 병렬로 실행합니다. 有关将大数据大容量导入到 SQL Server 数据库中的提示，请参阅[在不到1小时内加载 1 TB](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
 
-下面的 PowerShell 脚本是使用 BCP并行加载数据的示例。
+다음 PowerShell 스크립트는 BCP를 사용하여 병렬로 데이터를 로드하는 예입니다.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
@@ -165,22 +165,22 @@ ms.locfileid: "61428285"
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>创建索引以优化联接和查询性能
-* 如果从多个表中提取数据进行建模，请在联接键上创建索引来提高联接性能。
-* [创建索引](https://technet.microsoft.com/library/ms188783.aspx)（群集或非群集）为每个分区锁定相同文件组，例如：
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>인덱스를 만들어서 조인 및 쿼리 성능 최적화
+* 여러 테이블에서 모델링에 대한 데이터를 추출하려는 경우 조인 키에 인덱스를 만들어서 조인 성능을 개선할 수 있습니다.
+* 각 파티션에 대해 동일한 파일 그룹을 대상으로 하는 클러스터형 또는 비클러스터형 [인덱스를 만듭니다](https://technet.microsoft.com/library/ms188783.aspx). 아래는 그 예입니다.
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  或者，
+  또는
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > 可以选择创建索引后再批量导入数据。 进行批量导入之前创建索引会降低数据加载速度。
+  > 인덱스를 만든 후 데이터를 대량으로 가져올 수도 있습니다. 인덱스를 만든 후 대량 가져오기를 수행하면 데이터 로드 속도가 느려집니다.
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a>操作示例中的高级分析流程和技术
-有关使用公用数据集的团队数据科学过程的端到端演练示例，请参阅[运行中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>고급 분석 프로세스 및 기술 작동 예제
+공용 데이터 세트를 포함하는 팀 데이터 과학 프로세스를 사용하는 엔드투엔드 연습 예제는 [실행 중인 팀 데이터 과학 프로세스: SQL Server 사용](sql-walkthrough.md)을 참조하세요.
 

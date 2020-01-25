@@ -2,13 +2,13 @@
 title: 没有800计数限制的资源
 description: 列出资源组中可包含800个以上实例的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659315"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715626"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>资源不限于每个资源组800个实例
 
@@ -26,6 +26,7 @@ ms.locfileid: "75659315"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,7 +36,7 @@ ms.locfileid: "75659315"
 
 * disks
 * images
-* snapshots
+* 스냅샷
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -55,16 +56,16 @@ ms.locfileid: "75659315"
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* 服务器
+* 서버
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* 服务器
+* 서버
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
-* 服务器
+* 서버
 * serversv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -74,7 +75,7 @@ ms.locfileid: "75659315"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * clusters
-* namespaces
+* 네임스페이스
 
 ## <a name="microsoftexperimentation"></a>Microsoft 试验
 
@@ -82,6 +83,7 @@ ms.locfileid: "75659315"
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
 * software
@@ -150,7 +152,7 @@ ms.locfileid: "75659315"
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* namespaces
+* 네임스페이스
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -158,15 +160,15 @@ ms.locfileid: "75659315"
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* namespaces
+* 네임스페이스
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 应用程序
+* 애플리케이션
 * containerGroups
 * gateways
 * networks
-* 机密
+* secrets
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -178,6 +180,10 @@ ms.locfileid: "75659315"
 * apiManagementAccounts/apis
 * sites
 
-## <a name="next-steps"></a>后续步骤
+## <a name="microsoftinsights"></a>microsoft.insights
 
-有关配额和限制的完整列表，请参阅[Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
+* metricalerts
+
+## <a name="next-steps"></a>다음 단계
+
+有关配额和限制的完整列表，请参阅[Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)。

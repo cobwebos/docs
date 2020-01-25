@@ -3,24 +3,24 @@ title: 使用 Azure Pipelines 团队数据科学流程创建 CI/CD 管道
 description: 使用 Docker 和 Kubernetes 为人工智能（AI）应用程序创建持续集成和持续交付管道。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260665"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721823"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 为 AI 应用创建 CI/CD 管道
 
-人工智能（AI）应用程序是嵌入了预先训练机器学习（ML）模型的应用程序代码。 对于 AI 应用程序，始终有两个工作流：数据科学家构建 ML 模型，应用开发人员构建应用，并将其公开给最终用户使用。 本文介绍如何为 AI 应用程序实现持续集成和持续交付（CI/CD）管道，将 ML 模型嵌入应用程序源代码。 示例代码和教程使用简单的 Python Flask web 应用程序，并从专用 Azure blob 存储帐户提取预先训练模型。 你还可以使用 AWS S3 存储帐户。
+人工智能（AI）应用程序是嵌入了预先训练机器学习（ML）模型的应用程序代码。 AI 应用程序始终有两个工作流：数据科学家构建 ML 模型，应用开发人员构建应用并将其公开给最终用户使用。 本文介绍如何为 AI 应用程序实现持续集成和持续交付（CI/CD）管道，将 ML 模型嵌入应用程序源代码。 示例代码和教程使用 Python Flask web 应用程序，并从专用 Azure blob 存储帐户提取预先训练模型。 你还可以使用 AWS S3 存储帐户。
 
 > [!NOTE]
 > 以下过程是执行 CI/CD 的几种方法之一。 此工具和先决条件有一些替代方法。
@@ -60,9 +60,9 @@ ms.locfileid: "71260665"
 10. 用户对应用的请求将通过 DNS 服务器。
 11. DNS 服务器将请求传递给负载均衡器，并将响应发送回用户。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>참고 항목
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure 机器学习 (AML)](/azure/machine-learning/)
+- [TDSP(Team Data Science Process)](/azure/machine-learning/team-data-science-process/)
+- [AML(Azure Machine Learning)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes 服务 (AKS)](/azure/aks/intro-kubernetes)
+- [AKS(Azure Kubernetes Service)](/azure/aks/intro-kubernetes)

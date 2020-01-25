@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 开发测试实验室中自动添加实验室用户 |Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中自动向实验室添加实验室用户。
+description: 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和 CLI 自动将用户添加到 Azure 开发测试实验室中的实验室。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980055"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718133"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动向 Azure 开发测试实验室中的实验室添加实验室用户
 Azure 开发测试实验室允许使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 利用[Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，你可以创建实验室、实验室 vm、自定义映像、公式，并以自动方式添加用户。 本文专门介绍如何将用户添加到开发测试实验室实例中。
 
 若要将用户添加到实验室，请将用户添加到实验室的**开发测试实验室用户**角色。 本文说明如何使用以下方法之一自动将用户添加到实验室：
 
-- Azure 资源管理器模板
+- Azure Resource Manager 템플릿
 - Azure PowerShell cmdlet 
-- Azure CLI。
+- Azure CLI.
 
-## <a name="use-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+## <a name="use-azure-resource-manager-templates"></a>Azure 리소스 관리자 템플릿 사용
 下面的示例资源管理器模板指定要添加到实验室的**开发测试实验室用户**角色的用户。 
 
 ```json
@@ -132,7 +132,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 你还可以使用包含[set-msoluser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、 [get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)和[new-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)的 Azure Active Directory PowerShell cmdlet。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>범위
 作用域指定应应用角色分配的资源或资源组。 对于资源，范围格式为： `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 该模板使用 `subscription().subscriptionId` 函数填充 `subscription-id` 部分，并使用 `resourceGroup().name` 模板函数填充 `resource-group-name` 部分。 使用这些函数意味着你要向其分配角色的实验室必须存在于当前订阅中，以及模板部署所属的同一资源组。 最后一部分 `resource-name`是实验室的名称。 此值通过此示例中的模板参数接收。 
 
 模板中的角色作用域： 
@@ -141,7 +141,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 "roleScope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.DevTestLab/labs/', parameters('labName'))]"
 ```
 
-### <a name="deploying-the-template"></a>部署模板
+### <a name="deploying-the-template"></a>템플릿 배포
 首先，创建一个参数文件（例如： azuredeploy.json），该文件传递资源管理器模板中参数的值。 
 
 ```json
@@ -176,7 +176,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
-## <a name="use-azure-powershell"></a>使用 Azure PowerShell
+## <a name="use-azure-powershell"></a>Azure PowerShell 사용
 如简介中所述，创建新的 Azure 角色分配，以便将用户添加到实验室的**开发测试实验室用户**角色。 在 PowerShell 中，可以使用[new-azurermroleassignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet 来执行此操作。 此 cmdlet 具有多个可选参数，以提供灵活性。 可以将 `ObjectId`、`SigninName`或 `ServicePrincipalName` 指定为向其授予权限的对象。  
 
 下面是将用户添加到指定实验室中开发测试实验室用户角色的 Azure PowerShell 命令示例。
@@ -198,8 +198,8 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
-## <a name="next-steps"></a>后续步骤
-请参阅以下文章：
+## <a name="next-steps"></a>다음 단계
+다음 문서를 참조하세요.
 
 - [使用 Azure CLI 在开发测试实验室中创建和管理虚拟机](devtest-lab-vmcli.md)
 - [使用 Azure PowerShell 创建包含开发测试实验室的虚拟机](devtest-lab-vm-powershell.md)

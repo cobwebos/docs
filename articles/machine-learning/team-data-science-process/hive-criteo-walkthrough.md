@@ -1,128 +1,128 @@
 ---
-title: 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集 - Team Data Science Process
-description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用大型 (1 TB) 公开可用数据集的模型
+title: 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集-团队数据科学流程
+description: HDInsight Hadoop 클러스터를 사용하는 엔드투엔드 시나리오에 팀 데이터 과학 프로세스를 사용하여 공개적으로 사용 가능한 1TB 데이터 세트로 모델을 빌드 및 배포합니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968736"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721398"
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>操作中的团队数据科学过程-使用 1 TB 数据集上的 Azure HDInsight Hadoop 群集
 
-本演练演示如何利用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)在端到端方案中使用 Team Data Science Process 来存储、浏览并描绘工程师数据特征，从其中一个公用 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集下载示例数据。 其中使用了 Azure 机器学习在这些数据上构建二进制分类模型。 此外，还演示如何将这些模型之一发布为 Web 服务。
+이 연습에서는 [Azure HDInsight Hadoop 클러스터](https://azure.microsoft.com/services/hdinsight/)를 사용하는 엔드투엔드 시나리오에서 팀 데이터 과학 프로세스(Team Data Science Process)를 사용하여 공개적으로 사용 가능한 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 데이터 세트 중 하나에서 데이터를 저장, 탐색, 기능 설계, 다운 샘플링하는 방법을 설명합니다. 본 문서에서는 Azure Machine Learning을 사용하여 이 데이터에 대한 이진 분류 모델을 빌드합니다. 또한 이러한 모델 중 하나를 웹 서비스로 게시하는 방법을 보여줍니다.
 
-也可以使用 IPython Notebook 来完成本演练中介绍的任务。 想要尝试此方法的用户应该咨询[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)主题。
+이 연습에서 IPython 노트북을 사용하여 작업을 수행할 수도 있습니다. 이 방법을 사용하려면 [Hive ODBC 연결을 사용하여 Criteo 연습](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) 토픽을 참조해야 합니다.
 
-## <a name="dataset"></a>Criteo 数据集说明
-Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 TSV 文件（约 1.3 TB 未压缩），包含超过 43 亿条记录。 它取自 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 提供的 24 天的单击数据。 为了方便数据科学家，我们已解压缩数据以便用于试验。
+## <a name="dataset"></a>데이터 세트 설명
+Criteo 数据是一个单击预测数据集，它是 370 GB （未压缩的） gzip 压缩 TSV 文件（超过 1.3 TB，其中包含超过4300000000个记录）。 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)에서 사용할 수 있는 24일간의 클릭 데이터를 가져옵니다. 데이터 과학자의 편의를 위해 실험에 사용할 수 있는 데이터의 압축을 해제해 두었습니다.
 
-此数据集中的每个记录包含 40 列：
+이 데이터 세트의 각 레코드에는 40개의 열이 있습니다.
 
-* 第一列是标签列，该列指示用户是否单击“添加”（值 1）或未单击（值 0）
-* 接下来的 13 列是数值列，并且
-* 最后的 26 列是分类列
+* 첫 번째 열은 사용자가 **광고** 를 클릭했는지(값 1) 또는 클릭하지 않았는지(값 0)를 나타내는 레이블 열입니다.
+* 다음 13개의 열은 숫자입니다.
+* 마지막 26개는 범주 열입니다.
 
-列是匿名的，并使用一系列枚举名称：“Col1”（对于标签列）到“Col40”（对于最后一个分类列）。
+열은 익명으로 처리되고 일련의 열거된 이름, 즉 "Col1"(레이블 열)부터 'Col40"(마지막 범주 열)까지를 사용합니다.
 
-以下是此数据集中两个观测（行）的前 20 列的摘要：
+다음은 이 데이터 세트에서 발췌한 두 관찰(행)의 처음 20개 열입니다.
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
     0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
     0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
-在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
+이 데이터 세트의 숫자 열과 범주 열 모두에 누락된 값이 있습니다. 누락된 값을 처리하는 간단한 방법을 설명합니다. 데이터에 대한 추가 정보는 Hive 테이블에 저장할 때 살펴봅니다.
 
-**定义：** *点击链接速率（CTR）：* 这是在数据中单击的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
+**定义：** *点击链接速率（CTR）：* 此指标是在数据中单击的百分比。 이 Criteo 데이터 세트의 CTR은 약 3.3% 또는 0.033입니다.
 
-## <a name="mltasks"></a>预测任务示例
-本演练中涉及两个示例预测问题：
+## <a name="mltasks"></a>예측 작업의 예제
+이 연습에서는 두 가지 샘플 예측 문제를 처리합니다.
 
-1. **二进制分类**：预测用户是否单击了添加：
+1. **이진 분류**: 사용자가 광고를 클릭했는지 여부를 예측합니다.
 
-   * 类 0：未单击
-   * 类 1：单击
-2. **回归**：预测来自用户功能的广告点击概率。
+   * 클래스 0: 클릭 안 함
+   * 클래스 1: 클릭
+2. **회귀**: 사용자 기능에서 광고 클릭 확률을 예측합니다.
 
-## <a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
-**注意：** 这通常是**管理员**任务。
+## <a name="setup"></a>데이터 과학용 HDInsight Hadoop 클러스터 설정
+**注意：** 此步骤通常是一种**管理**任务。
 
-通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
+다음 3단계에 따라 HDInsight 클러스터를 사용하여 예측 분석 솔루션을 빌드하기 위한 Azure 데이터 과학 환경을 설정합니다.
 
-1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
-2. [为 Data Science 自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
+1. [Storage 계정 만들기](../../storage/common/storage-account-create.md):이 Storage 계정은 Azure Blob Storage에 데이터를 저장하는 데 사용됩니다. HDInsight 클러스터에 사용되는 데이터는 여기에 저장됩니다.
+2. [데이터 과학용 Azure HDInsight Hadoop 클러스터 사용자 지정](customize-hadoop-cluster.md):이 단계에서는 모든 노드에 설치된 64비트 Anaconda Python 2.7을 사용하여 Azure HDInsight Hadoop 클러스터를 만듭니다. HDInsight 클러스터를 사용자 지정할 때 두 가지 중요한 단계(이 항목에 설명)를 완료해야 합니다.
 
-   * 必须在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
-   * 必须在创建群集的头节点后启用远程访问。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：需要这些凭据才能完成以下过程。
+   * 创建时，将在步骤1中创建的存储帐户链接到 HDInsight 群集。 이 스토리지 계정은 클러스터 내에서 처리할 수 있는 데이터에 액세스하는 데 사용됩니다.
+   * 创建群集的头节点后，启用对其头节点的远程访问。 请记住在此处指定的远程访问凭据（不同于在创建群集时指定的凭据）：完成以下过程。
 3. [创建 Azure 机器学习 Studio （经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和关闭采样后构建机器学习模型。
 
-## <a name="getdata"></a>从公共源获取和使用数据
-可以通过单击链接、接受使用条款并提供名称来访问 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集。 此处显示的内容的快照如下：
+## <a name="getdata"></a>공용 원본에서 데이터 가져오기 및 사용
+링크를 클릭하고 사용 약관에 동의한 후 이름을 제공하여 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 데이터 세트에 액세스할 수 있습니다. 快照如下所示：
 
-![接受 Criteo 条款](./media/hive-criteo-walkthrough/hLxfI2E.png)
+![Criteo 조건 동의](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
-单击“继续下载”，详细了解数据集及其可用性。
+**다운로드 계속하기**를 클릭하여 데이터 세트 및 사용성을 읽어봅니다.
 
-数据驻留在公共 [Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置：wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。
+数据驻留在[Azure blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 "wasb"는 Azure Blob Storage 위치를 나타냅니다.
 
-1. 此公共 blob 存储中的数据由已解压缩数据的三个子文件夹组成。
+1. 此 Azure blob 存储中的数据由三个已解压缩数据的子文件夹组成。
 
-   1. 子文件夹 raw/count/ 包含前 21 天的数据 - 从第\_00天到第\_20天
-   2. 子文件夹 raw/train/ 由一天的数据组成，即第\_21 天
-   3. 子文件夹 raw/test/ 由两天的数据组成，第\_22 天和第\_23 天
-2. 对于那些想要以原始 gzip 数据开始的用户，也可以在主文件夹 raw/中作为 day_NN.gz 使用这些文件，其中 NN 值从 00 到 23。
+   1. 하위 폴더 *raw/count/* 는 처음 21일간의 데이터(day\_00~day\_20)를 포함합니다.
+   2. 하위 폴더 *raw/train/* 은 단일 날짜의 데이터(day\_21)를 포함합니다.
+   3. 하위 폴더 *raw/test/* 는 2일간의 데이터(day\_22 및 day\_23)를 포함합니다.
+2. 原始的 gzip 数据也在主文件夹*raw/* as day_NN 中提供，其中 NN 从00到23。
 
-另一种访问、浏览和建模不需要任何本地下载的数据的方法会在本演示的后续部分中创建 Hive 表时进行介绍。
+로컬 다운로드가 필요 없는 이 데이터를 액세스, 탐색 및 모델링하는 다른 방법은 이 연습의 뒷부분에서 Hive 테이블을 만들 때 설명합니다.
 
-## <a name="login"></a>登录到群集头节点
-若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到“配置”选项卡，双击页面底部的 CONNECT 图标，并在出现提示时输入远程访问凭据。 转到群集的头节点。
+## <a name="login"></a>클러스터 헤드 노드에 로그인
+클러스터의 헤드 노드에 로그인하려면 [Azure Portal](https://ms.portal.azure.com) 을 사용하여 클러스터를 찾습니다. 왼쪽에 있는 HDInsight 코끼리 아이콘을 클릭하고 클러스터 이름을 두 번 클릭합니다. 导航到 "**配置**" 选项卡，双击页面底部的 "连接" 图标，并在出现提示时输入您的远程访问凭据，并转到群集的头节点。
 
-以下是首次登录到群集头节点的典型示例：
+典型的第一次群集头节点登录如下所示：
 
-![登录到群集](./media/hive-criteo-walkthrough/Yys9Vvm.png)
+![클러스터에 로그인](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
-左侧是“Hadoop 命令行”，这是进行数据浏览的主力。 可以看到两个有用的 URL -“Hadoop Yarn 状态”和“Hadoop 名称节点”。 Yarn 状态 URL 显示作业进度，名称节点 URL 提供有关群集配置的详细信息。
+왼쪽에는 데이터 탐색에 사용될 작업 도구인 "Hadoop 명령줄"이 있습니다. 두 가지 유용한 URL인 "Hadoop Yarn 상태" 및 "Hadoop 이름 노드"도 있습니다. Yarn Status URL은 작업 진행률을 표시하고, Name Node URL은 클러스터 구성에 대한 세부 정보를 표시합니다.
 
-现在设置并准备开始第一部分的演练：使用 Hive 进行数据挖掘，并为 Azure 机器学习准备数据。
+설정을 완료했으므로 이제 이 연습의 첫 번째 부분인 Hive를 사용하여 데이터 탐색 및 Azure Machine Learning용 데이터 준비를 시작할 수 있습니다.
 
-## <a name="hive-db-tables"></a>创建 Hive 数据库和表
-要为我们的 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 ***Hadoop 命令行***，并通过输入命令输入 Hive 目录
+## <a name="hive-db-tables"></a> Hive 데이터베이스 및 테이블 만들기
+Criteo 데이터 세트에 대한 Hive 테이블을 만들려면 헤드 노드의 바탕 화면에서 ***Hadoop 명령줄***을 열고 명령을 입력하여 Hive 디렉터리를 입력합니다.
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> 从 Hive bin/ 目录提示符运行此演练中的所有 Hive 命令。 这会自动处理任何路径问题。 我们将术语“Hive 目录提示符”、“Hive bin/ 目录提示符”和“Hadoop 命令行”互换使用。
+> 이 연습의 모든 Hive 명령은 Hive bin/ 디렉터리 프롬프트에서 실행합니다. 경로 문제가 자동으로 해결됩니다. "Hive 디렉터리 프롬프트", "Hive bin/ 디렉터리 프롬프트" 및 "Hadoop 명령줄"이라는 용어는 같은 의미로 사용할 수 있습니다.
 >
 > [!NOTE]
-> 若要执行任何 Hive 查询，可以使用以下命令：
+> Hive 쿼리를 실행하기 위해 항상 다음 명령을 사용할 수 있습니다.
 >
 >
 
         cd %hive_home%\bin
         hive
 
-Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行。
+"hive >" 기호와 함께 Hive REPL이 표시되면 쿼리를 잘라내고 붙여넣어 실행하면 됩니다.
 
-以下代码创建一个数据库“criteo”，并生成 4 个表：
+以下代码将创建一个数据库 "criteo"，然后生成四个表：
 
-* 一个用于生成在第\_00 天至第\_20 天构建的计数的表，
-* 一个用于在第\_21 天构建的定型数据集的表，以及
-* 两个分别用于在第\_22 天和第\_23 天构建的测试数据集的表。
+* *개수 생성을 위한 테이블* 한 개(day\_00~day\_20의 날짜를 기반으로 작성)
+* *학습 데이터 세트로 사용하기 위한 테이블* 한 개(day\_21의 날짜를 기반으로 작성)
+* *테스트 데이터 세트로 사용하기 위한 테이블* 두 개(각각 day\_22와 day\_23의 날짜를 기반으로 작성)
 
-因为其中某一天是节假日，所以我们将测试数据集分为两类不同的表。 目标是确定模型是否可以检测节假日和非节假日之间的点击率差异。
+날짜 중 하나가 휴일이기 때문에 두 개의 다른 테이블로 테스트 데이터 세트를 분할합니다. 목표는 모델이 클릭 속도에서 공휴일과 평일 간의 차이점을 감지할 수 있는지를 확인하는 것입니다.
 
-为方便起见，此处显示脚本 [ sample_hive_create_criteo_database_and_tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)：
+편의를 위해 다음에 [sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) 스크립트가 표시되어 있습니다.
 
     CREATE DATABASE IF NOT EXISTS criteo;
     DROP TABLE IF EXISTS criteo.criteo_count;
@@ -153,38 +153,38 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
 
-所有这些表都是外部的，因此可以简单地指向其 Azure Blob 存储 (wasb) 位置。
+所有这些表都是外部的，因此可以指向其 Azure Blob 存储（wasb）位置。
 
-**有两种可以执行任何 Hive 查询的方法：**
+**모든 Hive 쿼리를 실행할 수 있는 두 가지 방법이 있습니다.**
 
-1. **使用 Hive REPL 命令行**：首先发出“hive”命令，然后在 Hive REPL 命令行中复制并粘贴查询。 为此，请执行以下操作：
+* **使用 HIVE 复制命令行**：第一种是发出 "hive" 命令，并在 Hive 复制命令行复制并粘贴查询：
 
         cd %hive_home%\bin
         hive
 
-     在 REPL 命令行，剪切并粘贴查询以执行它。
-2. **将查询保存到文件并执行命令**：第二种方法是将查询保存到 .hql 文件 ([ sample_hive_create_criteo_database_and_tables.hql ](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令以执行查询：
+     现在，在复制命令行上，剪切并粘贴查询执行。
+* **将查询保存到文件并执行命令**：第二种是将查询保存到 "hql" 文件（[示例&#95;hive&#95;创建&#95;criteo&#95;数据库&#95;和&#95;表](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)），然后发出以下命令来执行查询：
 
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
-### <a name="confirm-database-and-table-creation"></a>确认数据库和表的创建
-接下来，使用 Hive bin/ 目录提示符中的以下命令来确认数据库的创建：
+### <a name="confirm-database-and-table-creation"></a>데이터베이스 및 테이블 만들기 확인
+다음으로 Hive bin/ 디렉터리 프롬프트에서 다음 명령을 실행하여 데이터베이스 생성을 확인합니다.
 
         hive -e "show databases;"
 
-会得到：
+다음 출력이 표시됩니다.
 
         criteo
         default
         Time taken: 1.25 seconds, Fetched: 2 row(s)
 
-这确认了新数据库“criteo”的创建。
+이는 "criteo"라는 새 데이터베이스의 생성을 확인합니다.
 
-若要查看所创建的表，只需从 Hive bin/ 目录提示符中输入命令：
+생성된 테이블을 확인하려면 Hive bin/ 디렉터리 프롬프트에서 다음 명령을 실행하기만 하면 됩니다.
 
         hive -e "show tables in criteo;"
 
-应会看到以下输出：
+그러면 다음 출력이 표시됩니다.
 
         criteo_count
         criteo_test_day_22
@@ -192,63 +192,63 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a>Hive 中的数据浏览
-现已准备好在 Hive 中做一些基本的数据浏览。 首先统计训练和测试数据表中的示例数目。
+## <a name="exploration"></a> Hive에서 데이터 탐색
+이제 Hive에서 몇 가지 기본 데이터 탐색을 수행할 준비가 완료되었습니다. 먼저 학습 및 테스트 데이터 테이블에서 예제 수를 계산합니다.
 
-### <a name="number-of-train-examples"></a>定型示例数
-[sample_hive_count_train_table_examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) 的内容如下所示：
+### <a name="number-of-train-examples"></a>train 예제 수
+[sample&#95;hive&#95;count&#95;train&#95;table&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql)의 내용은 다음과 같습니다.
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         192215183
         Time taken: 264.154 seconds, Fetched: 1 row(s)
 
-或者，也可以从 Hive bin/ 目录提示符发出以下命令：
+또는 Hive bin/ 디렉터리 프롬프트에서 다음 명령을 실행할 수도 있습니다.
 
         hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
 
-### <a name="number-of-test-examples-in-the-two-test-datasets"></a>两个测试数据集中的测试示例数
-现在统计两个测试数据集中的示例数目。 [sample_hive_count_criteo_test_day_22_table_examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) 的内容如下：
+### <a name="number-of-test-examples-in-the-two-test-datasets"></a>두 가지 테스트 데이터 세트의 test 예제 수
+이제 두 가지 테스트 데이터 세트의 예제 수를 계산합니다. [sample&#95;hive&#95;count&#95;criteo&#95;test&#95;day&#95;22&#95;table&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql)의 내용은 다음과 같습니다.
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         189747893
         Time taken: 267.968 seconds, Fetched: 1 row(s)
 
-像往常一样，也可以通过发出命令从 Hive bin/ 目录提示符调用脚本：
+일반적으로 다음 명령을 실행하여 Hive bin/ 디렉터리 프롬프트에서 스크립트를 호출할 수도 있습니다.
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-最后，检查基于第 \_23 天的测试数据集中的测试示例数目。
+마지막으로 day\_23을 기준으로 테스트 데이터 세트의 데이터 예제 수를 알아봅니다.
 
-执行此操作的命令与刚才显示的命令类似（请参阅 [sample_hive_count_criteo_test_day_23_examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)）：
+执行此操作的命令类似于所示的命令（请参阅[示例&#95;hive&#95;count&#95;criteo&#95;test&#95;day&#95;23&#95;举例](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)）：
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
-会得到：
+다음 출력이 표시됩니다.
 
         178274637
         Time taken: 253.089 seconds, Fetched: 1 row(s)
 
-### <a name="label-distribution-in-the-train-dataset"></a>定型数据集中的标签分布
-定型数据集中的标签分布是很有趣的。 为了看到这一点，我们显示 [sample_hive_criteo_label_distribution_train_table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql) 的内容：
+### <a name="label-distribution-in-the-train-dataset"></a>학습 데이터 세트의 레이블 분포
+학습 데이터 세트의 레이블 분포를 알아보겠습니다. 여기에 사용되는 [sample&#95;hive&#95;criteo&#95;label&#95;distribution&#95;train&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql)의 내용은 다음과 같습니다.
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
-这会产生标签分布：
+다음과 같은 레이블 분포가 산출됩니다.
 
         1       6292903
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-请注意，正标签的百分比约为3.3%（与原始数据集一致）。
+正值标签的百分比约为3.3% （与原始数据集一致）。
 
-### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>定型数据集中某些数值变量的直方图分布
-可以使用 Hive 的本地“histogram\_numeric”函数来找出数值变量的分布。 以下是 [sample_hive_criteo_histogram_numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql) 的内容：
+### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>학습 데이터 세트의 일부 숫자 변수에 대한 히스토그램 분포
+Hive의 네이티브 "histogram\_numeric" 함수를 사용하여 숫자 변수의 배포가 어떤지 확인할 수 있습니다. [sample&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql)의 내용은 다음과 같습니다.
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -258,7 +258,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
             ) a
             LATERAL VIEW explode(col2_hist) exploded_table as hist;
 
-这会生成以下内容：
+다음과 같은 결과가 산출됩니다.
 
         26      155878415
         2606    92753
@@ -282,52 +282,52 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出，而不是通常的列表。 请注意，在该表中，第一列对应于量化中心，第二列对应于量化频率。
+Hive의 LATERAL VIEW - explode 조합은 일반 목록 대신 SQL과 유사한 출력을 생성합니다. 在此表中，第一列对应于 bin 中心和第二列。
 
-### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>定型数据集中一些数值变量的近似百分位数
-有关数值变量的另一个有趣之处是近似百分位数的计算。 Hive 的本地“percentile \_approx”能为我们完成这些操作。 [sample_hive_criteo_approximate_percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) 的内容为：
+### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>학습 데이터 세트의 일부 숫자 변수에 대한 백분위수 근사치
+숫자 변수와 함께 백분위수 근사치도 알아보겠습니다. 여기에는 Hive의 기본 "percentile\_approx"가 사용됩니다. [sample&#95;hive&#95;criteo&#95;approximate&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql)의 내용은 다음과 같습니다.
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-百分位数的分布与任何数值变量的直方图分布密切相关。
+일반적으로 백분위수 분포는 숫자 변수의 히스토그램 분포와 밀접한 관련이 있습니다.
 
-### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>查找定型数据集中某些分类列的唯一值的数量
-继续数据浏览，我们发现某些分类列所采用的唯一值的数量。 为此，显示 [sample_hive_criteo_unique_values_categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql) 的内容：
+### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>학습 데이터 세트의 일부 범주 열에 대한 고유 값 수 확인
+데이터 탐색을 계속하면서 일부 범주 열에서 고유한 값의 수를 확인합니다. 여기에 사용되는 [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql)의 내용은 다음과 같습니다.
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-请注意 Col15 有 19M 个唯一值！ 使用类似“one-hot encoding”的 naive 技术来编码这种高维分类变量是不可行的。 特别是，我们解释和演示了一中功能强大且可靠的技术，称为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)，以有效地解决这个问题。
+Col15 具有19M 的唯一值！ "one-hot 인코딩"과 같은 네이티브 기술을 사용하여 이러한 고차원 범주 변수를 인코딩할 수는 없습니다. 따라서 여기에서는 이 문제를 효과적으로 해결하는 [통계로 알아보기](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)라는 강력한 기술을 설명하고 알아봅니다.
 
-最后，查看一些其他分类列的唯一值的数量来结束本小节。 [sample_hive_criteo_unique_values_multiple_categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) 的内容为：
+마지막으로 일부 다른 범주 열에 대한 고유 값의 수도 알아봅니다. [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql)의 내용은 다음과 같습니다.
 
         SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
         FROM criteo.criteo_train;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         30935   15200   7349    20067   3
         Time taken: 1933.883 seconds, Fetched: 1 row(s)
 
-我们再次看到，除了 Col20，所有其他列都有许多唯一的值。
+Col20을 제외하고 다른 모든 열에도 많은 고유 값이 있습니다.
 
-### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>定型数据集中分类变量对的共同计数
+### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>train 데이터 세트의 범주 변수 쌍에 대한 동시 발생 수
 
-分类变量对的共同计数也很有趣。 可以使用 [sample_hive_criteo_paired_categorical_counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql) 中的代码来确定：
+分类变量对的计数分布也是相关的。 [sample&#95;hive&#95;criteo&#95;paired&#95;categorical&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql)의 코드를 사용하여 확인할 수 있습니다.
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
-按照它们的出现顺序逆序排列，在此情况下查看其中前 15 个。 会得到：
+여기에서는 발생별 개수의 역순으로 상위 15개를 확인합니다. 다음 출력이 표시됩니다.
 
         ad98e872        cea68cd3        8964458
         ad98e872        3dbb483e        8444762
@@ -346,10 +346,10 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a>对 Azure 机器学习的数据集进行下采样
-浏览数据集并演示我们如何对任何变量（包括组合）进行这种类型的浏览，现在对数据集进行取样，以便可以在 Azure 机器学习中生成模型。 回想一下，我们关注的问题是：给定一组示例属性（Col2 - Col40 的特征值），预测 Col1 是 0（未单击）还是 1（单击）。
+## <a name="downsample"></a> Azure 기계 학습에 대한 데이터 세트 다운 샘플링
+데이터 세트를 탐색하고 모든 변수(조합 포함)에 대해 이 형식의 탐색을 수행하는 방법을 살펴보았으므로 이제 Azure Machine Learning에서 모델을 빌드할 수 있도록 데이터 세트를 다운 샘플링합니다. 문제의 중점은 지정된 예제 특성 집합(Col2~Col40의 기능 값)에 대해 Col1이 0(클릭 안 함)인지 1(클릭)인지 예측하는 것입니다.
 
-为了将训练和测试数据集降至原始大小的 1%，我们使用 Hive 的原生 RAND() 函数。 下一个脚本，[sample_hive_criteo_downsample_train_dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) 对定型数据集执行此操作：
+학습 및 테스트 데이터 세트를 원래 크기의 1%로 다운 샘플링하려면 Hive의 네이티브 RAND() 함수를 사용합니다. [sample&#95;hive&#95;criteo&#95;downsample&#95;train&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) 스크립트는 학습 데이터 세트에 대해 이 작업을 수행합니다.
 
         CREATE TABLE criteo.criteo_train_downsample_1perc (
         col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
@@ -361,12 +361,12 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_train_downsample_1perc SELECT * FROM criteo.criteo_train WHERE RAND() <= 0.01;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-脚本 [sample_hive_criteo_downsample_test_day_22_dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) 用于测试数据，第\_22 天：
+[sample&#95;hive&#95;criteo&#95;downsample&#95;test&#95;day&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) 스크립트는 테스트 데이터 day\_22에 대해 이 작업을 수행합니다.
 
         --- Now for test data (day_22)
 
@@ -378,13 +378,13 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_22_downsample_1perc SELECT * FROM criteo.criteo_test_day_22 WHERE RAND() <= 0.01;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         Time taken: 1.22 seconds
         Time taken: 317.66 seconds
 
 
-最后，脚本 [sample_hive_criteo_downsample_test_day_23_dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) 用于测试数据，第\_23 天：
+마지막으로 [sample&#95;hive&#95;criteo&#95;downsample&#95;test&#95;day&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) 스크립트는 test 데이터 day\_23에 대해 이 작업을 수행합니다.
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -395,237 +395,237 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_23_downsample_1perc SELECT * FROM criteo.criteo_test_day_23 WHERE RAND() <= 0.01;
 
-这会生成：
+다음과 같은 결과가 산출됩니다.
 
         Time taken: 1.86 seconds
         Time taken: 300.02 seconds
 
-有此结果，我们准备使用取样缩小训练和测试数据集在 Azure 机器学习中构建模型。
+이제 다운 샘플링한 학습 및 테스트 데이터 세트를 사용하여 Azure Machine Learning에서 모델을 빌드할 준비가 완료되었습니다.
 
-在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 下一小节将更详细地讨论计数表。
+Azure Machine Learning을 계속 진행하기 전에 마지막 중요한 구성 요소는 통계(Count) 테이블과 관련됩니다. 在下一节中，将在下一节中讨论计数表。
 
-## <a name="count"></a>关于计数表的简要讨论
-正如我们所看到的，有几个分类变量具有非常高的维度。 在演练中，我们提出了一种名为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)的有效的技术，以高效、可靠的方式对这些变量进行编码。 有关此技术的详细信息，请参阅提供的链接。
+## <a name="count"></a> count 테이블에 대한 간략한 설명
+正如您所看到的，有几个分类变量的维数很高。 이 연습에서는 이러한 변수를 효율적이고 강력한 방식으로 인코딩하는 [통계로 알아보기](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)라는 강력한 기술을 설명합니다. 이 기술에 대한 자세한 내용은 제공된 링크에서 확인할 수 있습니다.
 
-[!NOTE]
->本演练重点讲解如何使用计数表来生成高维分类特征的紧凑表示形式。 这不是编码分类特征的唯一方法；有关其他技术的详细信息，感兴趣的用户可以查看 [one-hot 编码](https://en.wikipedia.org/wiki/One-hot)和[特性哈希](https://en.wikipedia.org/wiki/Feature_hashing)。
+>[!NOTE]
+>이 연습에서는 통계 테이블을 사용하여 고차원 범주 기능의 압축된 표현을 생성하는 데 중점을 둡니다. 이 기술 외에도 범주 기능을 인코딩하는 여러 기술이 있습니다. 다른 기술에 대한 자세한 내용은 [one-hot-encoding](https://en.wikipedia.org/wiki/One-hot) 및 [기능 해싱](https://en.wikipedia.org/wiki/Feature_hashing)을 참조하세요.
 >
 
-若要在计数数据上构建计数表，需要使用文件夹 raw/count 中的数据。 在建模部分中，我们向用户展示了如何从零开始构建这些计数表，或者使用预建的计数表来进行浏览。 在下文中，当我们提到“预建计数表”时，指的是使用提供的计数表。 下一节提供了有关如何访问这些表的详细说明。
+통계 데이터에 대한 통계 테이블을 작성하려면 raw/count 폴더의 데이터를 사용합니다. 모델링 섹션에서는 처음부터 범주 기능에 이러한 통계 테이블을 작성하는 방법 또는 미리 작성된 통계 테이블을 사용하여 탐색하는 방법을 사용자에게 보여줍니다. 다음에서 "미리 작성된 통계 테이블"을 참조한다는 것은 Microsoft에서 제공한 통계 테이블을 사용하는 것을 의미합니다. 이러한 테이블에 액세스하는 방법에 대한 자세한 지침은 다음 섹션에 제공됩니다.
 
-## <a name="aml"></a>使用 Azure 机器学习构建模型
-我们在 Azure 机器学习中的模型构建过程遵循以下步骤：
+## <a name="aml"></a> Azure 기계 학습에서 모델 빌드
+Azure Machine Learning의 모델 빌드 프로세스는 다음 단계를 따릅니다.
 
-1. [将数据从 Hive 表中获取到 Azure 机器学习](#step1)
+1. [Hive 테이블에서 Azure Machine Learning으로 데이터 가져오기](#step1)
 2. [创建试验：清理数据并使其成为包含计数表的功能](#step2)
-3. [生成、训练和评分模型](#step3)
-4. [评估模型](#step4)
-5. [将模型发布为 Web 服务](#step5)
+3. [모델 빌드, 학습 및 점수 매기기](#step3)
+4. [모델 평가](#step4)
+5. [모델을 웹 서비스로 게시](#step5)
 
-现已准备好在 Azure 机器学习工作室中构建模型。 我们的取样缩小数据将作为 Hive 表保存在群集中。 使用 Azure 机器学习的“导入数据”模块来读取此数据。 在下方提供访问此群集的存储帐户的凭据。
+이제 Azure Machine Learning Studio에서 모델을 빌드할 준비가 완료되었습니다. 다운 샘플링한 데이터는 클러스터에 Hive 테이블로 저장됩니다. Azure Machine Learning **데이터 가져오기** 모듈을 사용하여 이 데이터를 읽습니다. 이 클러스터의 스토리지 계정에 액세스하는 데 사용되는 자격 증명은 뒤에 제공됩니다.
 
-### <a name="step1"></a>步骤 1：使用导入数据模块将数据从 Hive 表中导入到 Azure 机器学习中，并选择它用于机器学习实验
-首先，选择“+新建” -> “实验” -> 空白实验。 然后，从左上角的“搜索”框中搜索“导入数据”。 将“导入数据”模块拖放到实验画布（屏幕中间部分），以使用模块进行数据访问。
+### <a name="step1"></a> 1단계: Import Data 모듈을 사용하여 Hive 테이블에서 Azure Machine Learning으로 데이터를 가져와 기계 학습 실험용으로 선택
+**+새로 만들기** -> **실험** -> **빈 실험**을 선택하여 시작합니다. 그런 다음 왼쪽 맨 위의 **검색** 상자에서 "Import Data"를 검색합니다. 실험 캔버스(화면 중간 부분)에 **Import Data** 모듈을 끌어다 놓고 데이터에 액세스하기 위해 모듈을 사용합니다.
 
-这是从 Hive 表获取数据时“导入数据”的样子：
+Hive 테이블에서 데이터를 가져오는 동안의 **Import Data** 모양은 다음과 같습니다.
 
-![导入数据获取数据](./media/hive-criteo-walkthrough/i3zRaoj.png)
+![데이터 가져오기로 데이터 가져오기](./media/hive-criteo-walkthrough/i3zRaoj.png)
 
-对于“导入数据”模块，图形中提供的参数值仅是需要提供的值类型的示例。 以下是有关如何填写“导入数据”模块的参数集的常规指导。
+**Import Data** 모듈의 경우 그래픽에서 제공되는 매개 변수의 값은 사용자가 제공해야 하는 값 종류에 해당하는 예입니다. 다음은 **Import Data** 모듈에 대해 설정된 매개 변수를 입력하는 방법에 대한 일반적인 지침입니다.
 
-1. 为“数据源”选择“Hive 查询”
-2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI**：如果群集是“abc”，则此项就是： https://abc.azurehdinsight.net
-4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
-5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
-6. **输出数据的位置**：选择“Azure”
+1. **데이터 원본**
+2. **Hive 데이터베이스 쿼리** 상자에 SELECT * FROM <your\_database\_name.your\_table\_name> 정도만 입력합니다.
+3. **Hcatalog 서버 URI**: 클러스터가 "abc"인 경우 간단하게 https://abc.azurehdinsight.net 입니다.
+4. **Hadoop user account name**(Hadoop 사용자 계정 이름): 클러스터를 지정할 때 선택한 사용자 이름입니다. (원격 액세스 사용자 이름이 아님).
+5. **Hadoop user account password**(Hadoop 사용자 계정 암호): 클러스터를 지정할 때 선택한 사용자 이름에 대한 암호입니다. (원격 액세스 암호가 아님).
+6. **Location of output data**(출력 데이터 위치): "Azure"를 선택합니다.
 7. **Azure 存储帐户名称**：与群集关联的存储帐户
 8. **Azure 存储帐户密钥**：与群集关联的存储帐户的密钥。
-9. **Azure 容器名称**：如果群集名称为“abc”，则通常只是简单的“abc”。
+9. **Azure container name**(Azure 컨테이너 이름): 클러스터 이름 "abc"의 경우 일반적으로 단순히 "abc"입니다.
 
-“导入数据”完成获取数据后（会在模块上看到绿色对勾），（使用选择的名称）将此数据另存为数据集。 将显示为：
+**Import Data** 에서 데이터 가져오기를 완료하면(모듈에 녹색 틱이 표시됨) 이 데이터를 데이터 세트(선택한 이름 사용)로 저장합니다. 다음과 같이 표시됩니다.
 
-![导入数据保存数据](./media/hive-criteo-walkthrough/oxM73Np.png)
+![데이터 가져오기로 데이터 저장](./media/hive-criteo-walkthrough/oxM73Np.png)
 
-右键单击“导入数据”模块的输出端口。 这会显示“另存为数据集”选项和“可视化”选项。 如果单击“可视化”选项，会显示 100 行数据，以及对某些摘要统计信息有用的右侧面板。 要保存数据，只需选择“另存为数据集”，并按照说明操作即可。
+**Import Data** 모듈의 출력 포트를 마우스 오른쪽 단추로 클릭합니다. **데이터 세트로 저장** 옵션 및 **시각화** 옵션이 표시됩니다. **Visualize** 옵션을 클릭하면 몇 가지 요약 통계에 유용한 오른쪽 패널과 함께 100개의 데이터 행이 표시됩니다. 데이터를 저장하려면 **Save as dataset** 을 클릭하고 지침을 따릅니다.
 
-若要选择用于机器学习实验的保存数据集，请使用下图中显示的“搜索”框来定位数据集。 然后只需输入给定数据集的部分名称即可访问该数据集，并将其拖动到主面板上。 将其放在主面板上，并选择用于机器学习建模。
+기계 학습 실험에서 사용하기 위해 저장된 데이터 세트를 선택하려면 다음 그림에 표시된 **검색** 상자를 사용하여 데이터 세트를 찾습니다. 그런 다음, 데이터 세트의 이름을 부분적으로 입력하여 데이터 세트에 액세스하고 주 패널로 끌어옵니다. 주 패널에 끌어다 놓으면 기계 학습 모델링에 사용하도록 선택됩니다.
 
 ![将数据集拖到主面板上](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。\*\*
+> 학습 및 테스트 데이터 세트 모두에 대해 이를 수행합니다. 또한 데이터베이스 이름 및 이 목적으로 지정한 테이블 이름을 사용해야 합니다. 그림에서 사용한 값은 오직 예제용입니다.\*\*
 >
 >
 
-### <a name="step2"></a>步骤 2：在 Azure 机器学习中创建一个简单实验，以预测单击/无单击
+### <a name="step2"></a>步骤2：在 Azure 机器学习中创建实验，以预测单击/不单击
 我们的 Azure 机器学习 Studio （经典）试验如下所示：
 
-![机器学习实验](./media/hive-criteo-walkthrough/xRpVfrY.png)
+![기계 학습 실험](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-现在，检查一下此试验的关键组件。 将保存的训练和测试数据集拖到试验画布上。
+이제 이 실험의 주요 구성 요소를 검사합니다. 首先将已保存的训练和测试数据集拖到试验画布上。
 
-#### <a name="clean-missing-data"></a>清理缺失数据
-“清除缺失数据”模块执行其名称所表示的功能：按用户指定的方式清除缺失的数据。 看一下此模块，我们看到：
+#### <a name="clean-missing-data"></a>누락 데이터 정리
+**누락된 데이터 처리** 모듈은 이름에서 알 수 있듯이 사용자가 지정할 수 있는 방법으로 누락 데이터를 정리합니다. 이 모듈을 다음과 같습니다.
 
-![清理缺失数据](./media/hive-criteo-walkthrough/0ycXod6.png)
+![누락 데이터 정리](./media/hive-criteo-walkthrough/0ycXod6.png)
 
-此处已选择将所有缺失值替换为 0。 还有其他选项，可以通过查看模块中的下拉列表看到这些选项。
+在此处，选择将所有缺失值替换为0。 모듈의 드롭다운에서 확인할 수 있는 다른 옵션도 있습니다.
 
-#### <a name="feature-engineering-on-the-data"></a>对数据进行特性工程
-对于大型数据集的某些分类特征，可能有数百万个唯一值。 使用诸如 one-hot 编码之类的 naive 方法来表示这种高维分类特征是完全不可行的。 本演练演示了如何使用计数功能使用内置的 Azure 机器学习模块来生成这些高维分类变量的紧凑表示形式。 最终结果是更小的模型大小、更快的定型时间和与使用其他技术类似的性能指标。
+#### <a name="feature-engineering-on-the-data"></a>데이터에 대한 기능 엔지니어링
+큰 데이터 세트의 범주 기능 중 일부에는 수백 만개의 고유 값이 있을 수 있습니다. 원 핫(one-hot) 인코딩과 같은 미숙한 방법을 사용하여 이러한 고차원 범주 기능을 나타내는 것은 전적으로 불가능합니다. 이 연습에서는 이러한 고차원 범주 변수를 압축해서 표현하기 위해 기본 제공 Azure Machine Learning 모듈로 통계 기능을 사용하는 방법을 보여줍니다. 最终结果是更小的模型大小、更快的定型时间和与使用其他技术相当的性能指标。
 
-##### <a name="building-counting-transforms"></a>构建计数转换
-若要构建计数功能，可使用 Azure 机器学习中提供的“构建计数转换”模块。 模块如下所示：
+##### <a name="building-counting-transforms"></a>개수 변환 작성
+통계 기능을 작성하기 위해 Azure Machine Learning에서 사용할 수 있는 **통계 변환 작성** 모듈을 사용합니다. 이 모듈은 다음과 같습니다.
 
-![“生成计数转换”模块属性](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![“生成计数转换”模块](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![개수 변환 모듈 속성 빌드](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![개수 변환 모듈 빌드](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT]
-> 在“计数列”框中，输入要执行计数的列。 通常，要输入是（正如所提到的）高维分类列。 请记住，Criteo 数据集有 26 个分类列：从 Col15 到 Col40。 此处对所有分类列进行计数，并给出其指数（从 15 到 40，用逗号分隔，如图所示）。
+> **통계 열** 상자에서 통계를 수행하려는 해당 열을 입력합니다. 이미 설명한 대로 이러한 열은 일반적으로 고차원 범주의 열입니다. Criteo 데이터 세트에 Col15에서 Col40까지 26개의 범주 열이 있습니다. 여기서 이 모든 범주 열의 개수를 세고 인덱스를 지정합니다(아래 나온 것 같이 15부터 40까지 쉼표로 구분).
 >
 
-若要在 MapReduce 模式下使用模块（适用于大型数据集），则需要访问 HDInsight Hadoop 群集（用于功能浏览的群集也可以重复使用于此目的）及其凭据。 前面的图说明了填充值的样式（将提供的值替换为与自己的用例相关的值）。
+MapReduce 모드에서 모듈을 사용하려면(큰 데이터 세트에 적합) HDInsight Hadoop 클러스터 액세스 권한(기능 탐색에 사용했던 액세스 권한도 이 용도에 재사용 가능) 및 해당 자격 증명이 필요합니다. 이전 그림은 값을 입력했을 때 보이는 모양을 나타냅니다. 이 그림의 표시된 값은 필요한 값으로 바꾸세요.
 
-![模块参数](./media/hive-criteo-walkthrough/05IqySf.png)
+![모듈 매개 변수](./media/hive-criteo-walkthrough/05IqySf.png)
 
-上图展示了如何输入 blob 位置。 此位置含有为构建计数表保留的数据。
+위의 그림은 입력 Blob 위치를 입력하는 방법을 보여줍니다. 이 위치에는 개수 테이블을 작성하기 위해 예약된 데이터가 있습니다.
 
-此模块完成运行后，可以右键单击模块并选择“另存为转换”选项保存转换以便稍后使用：
+이 모듈의 실행이 완료되면 모듈을 마우스 오른쪽 단추로 클릭하고 **변환으로 저장** 옵션을 선택하여 나중에 사용하기 위해 변환을 저장합니다.
 
-![“另存为转换”选项](./media/hive-criteo-walkthrough/IcVgvHR.png)
+!["변환으로 저장" 옵션](./media/hive-criteo-walkthrough/IcVgvHR.png)
 
-在上面显示的实验体系结构中，数据集“ytransform2”正好与保存的计数转换相对应。 对于本试验的其余部分，假设读者对某些数据使用“构建计数转换”模块来生成计数，并可以使用这些计数来在训练和测试数据集上生成计数功能。
+위에 나와 있는 실험 아키텍처에서 데이터 세트 "ytransform2"는 저장된 개수 변환과 정확히 일치합니다. 이 실험의 나머지 부분에서는 독자가 일부 데이터에 대해 **통계 변환 작성** 모듈을 사용하여 통계를 생성한 다음, 해당 통계를 사용하여 학습 및 테스트 데이터 세트에 대해 통계 기능을 생성할 수 있다고 가정합니다.
 
-##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>选择要将哪些计数功能作为定型和测试数据集的一部分
-计数转换准备就绪后，用户可以使用“修改计数表参数”模块选择要包括在其训练和测试数据集中的功能。 为了完整，此处展示了该模块。 但为了简单起见，在试验中并没有使用它。
+##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>학습 및 테스트 데이터 세트의 일부로 포함할 개수 기능 선택
+통계 변환이 준비되면 사용자는 **통계 테이블 매개 변수 수정** 모듈을 사용하여 학습 및 테스트 데이터 세트에 포함할 기능을 선택할 수 있습니다. 완성도를 위해 이 모듈을 아래에 표시했지만, 실험을 단순하게 하려면 이 모듈을 실제로 사용하지 마세요.
 
-![修改计数表参数](./media/hive-criteo-walkthrough/PfCHkVg.png)
+![개수 테이블 매개 변수를 수정합니다.](./media/hive-criteo-walkthrough/PfCHkVg.png)
 
-在此情况下，可以看出，已使用对数几率并忽略了退避列。 还可以设置参数，例如垃圾桶阈值、要添加的用于平滑处理的伪先验示例数以及是否使用 Laplacian 噪声。 所有这些参数都是高级功能，需要注意的是，对于还不熟悉此类功能生成的用户而言，使用默认值会是一个很好的选择。
+이 경우에 볼 수 있듯이 로그 확률(log-odds)을 사용하고 백오프(back off) 열을 무시합니다. 휴지통 임계값(garbage bin threshold), 원활한 진행을 위해 추가할 의사 이전 예제(pseudo-prior examples) 수, 라플라스 노이즈(Laplacian noise) 사용 여부 같은 매개 변수도 설정할 수 있습니다. 이들은 모두 고급 기능으로, 이러한 종류의 기능 생성을 처음 시도하는 사용자는 기본값을 사용하는 것이 좋습니다.
 
-##### <a name="data-transformation-before-generating-the-count-features"></a>生成计数功能前的数据转换
-现在关注的重点是在实际生成计数功能之前转换训练和测试数据。 请注意，在对数据应用计数转换之前，要使用两个“执行 R 脚本”模块。
+##### <a name="data-transformation-before-generating-the-count-features"></a>개수 기능을 생성하기 전에 데이터 변환
+이제 통계 기능을 실제로 생성하기 전에 학습 및 테스트 데이터를 변환하는 방법에서 중요한 부분에 초점을 맞추겠습니다. 在对数据应用计数转换之前，将使用两个**执行 R 脚本**模块。
 
-![“执行 R 脚本”模块](./media/hive-criteo-walkthrough/aF59wbc.png)
+![R 스크립트 모듈 실행](./media/hive-criteo-walkthrough/aF59wbc.png)
 
-下面是第一个 R 脚本：
+첫 번째 R 스크립트는 다음과 같습니다.
 
-![第一个 R 脚本](./media/hive-criteo-walkthrough/3hkIoMx.png)
+![첫 번째 R 스크립트](./media/hive-criteo-walkthrough/3hkIoMx.png)
 
-此 R 脚本将列重命名为“Col1”到“Col40”。 这是因为计数转换需要此格式的名称。
+이 R 스크립트는 열 이름을 "Col1"부터 "Col40"까지로 바꿉니다. 개수 변환에서 이 형식의 이름을 필요로 하기 때문입니다.
 
-第二个 R 脚本通过对负类进行缩小取样来平衡正类和负类（分别是类 1和 0）之间的分布。 R 脚本会在此处演示如何执行此操作：
+두 번째 R 스크립트에서는 음수 클래스를 다운샘플링하여 양수 클래스와 음수 클래스(각각 클래스 1과 클래스 0) 사이에서 분포의 균형을 맞춥니다. 다음 R 스크립트에서 이 작업을 수행하는 방법을 보여 줍니다.
 
-![第二个 R 脚本](./media/hive-criteo-walkthrough/91wvcwN.png)
+![두 번째 R 스크립트](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-在这一简单的 R 脚本中，使用了“pos\_neg\_ratio”设置正类和负类之间的平衡量。 这是十分重要的，因为改进类不平衡通常对类分布存在偏差的分类问题的性能有很大帮助（回想一下，在本例中，有 3.3% 的正类和 96.7% 的负类）。
+이 간단한 R 스크립트에서 "pos\_neg\_ratio"를 사용하여 양수 클래스와 음수 클래스 간의 균형량을 설정합니다. 클래스의 불균형을 개선하면 일반적으로 클래스 분포가 편향되는 분류 문제에 대해 성능 이점이 있으므로 이 작업이 중요합니다(이 경우에 양수 클래스가 3.3%이고 음수 클래스가 96.7%임).
 
-##### <a name="applying-the-count-transformation-on-our-data"></a>对我们的数据应用计数转换
-最后，可以使用“应用转换”模块将计数转换应用于训练和测试数据集。 此模块将保存的计数转换作为一个输入，将定型或测试数据集作为另一个输入，并返回具有计数功能的数据。 如下所示：
+##### <a name="applying-the-count-transformation-on-our-data"></a>개수 변환을 데이터에 적용
+마지막으로 **변환 적용** 모듈을 사용하여 학습 및 테스트 데이터 세트에 통계 변환을 적용합니다. 이 모듈은 저장된 개수 변환을 하나의 입력으로 사용하고, 학습 또는 테스트 데이터 세트를 다른 입력으로 사용하여 개수 기능을 통해 데이터를 반환합니다. 다음과 같이 표시됩니다.
 
-![“应用转换”模块](./media/hive-criteo-walkthrough/xnQvsYf.png)
+![변환 모듈 적용](./media/hive-criteo-walkthrough/xnQvsYf.png)
 
-##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>计数功能样式概要
-在本示例中看一下计数功能的样式是有所帮助的。 下面是该样式的概要：
+##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>개수 기능이 보이는 모양 발췌
+개수 기능이 어떻게 보이는지 보겠습니다. 발췌 내용은 다음과 같습니다.
 
-![计数功能](./media/hive-criteo-walkthrough/FO1nNfw.png)
+![개수 기능](./media/hive-criteo-walkthrough/FO1nNfw.png)
 
-在此概要中，展示了之前进行计数的列，除了任何相关的回退外，还得到了计数和对数几率。
+이 발췌 내용에서는 계산된 열에서 통계 및 로그 확률뿐만 아니라 관련 백오프도 볼 수 있습니다.
 
-现在，准备使用这些转换的数据集构建 Azure 机器学习模型。 下一部分将演示如何执行此操作。
+이제 이렇게 변환된 데이터 세트를 사용하여 Azure Machine Learning 모델을 빌드할 준비가 되었습니다. 다음 섹션에서는 이 작업을 수행할 방법을 보여줍니다.
 
-### <a name="step3"></a>步骤 3：生成、训练和评分模型
+### <a name="step3"></a> 3단계: 모델 빌드, 학습 및 점수 매기기
 
-#### <a name="choice-of-learner"></a>选择学习者
-首先需要选择一个学习者。 使用双类提升的决策树来作为学习者。 以下是此学习者的默认选项：
+#### <a name="choice-of-learner"></a>학습자의 선택
+먼저 학습자를 선택해야 합니다. 2클래스 향상된 의사 결정 트리를 학습자로 사용합니다. 다음은 이 학습자에 대한 기본 옵션입니다.
 
-![双类提升决策树参数](./media/hive-criteo-walkthrough/bH3ST2z.png)
+![2 클래스 향상된 의사 결정 트리 매개 변수](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
-对于试验，请选择默认值。 请注意，默认值通常有意义，并且是获得性能的快速基线的有效方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
+실험에서 기본값을 선택합니다. 默认值是有意义的，它是获得性能的快速基线的好方法。 기준이 있는 상태에서 원하는 경우 매개 변수를 스윕하여 성능을 향상시킬 수 있습니다.
 
-#### <a name="train-the-model"></a>定型模型
-对于训练，只需调用“训练模型”模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
+#### <a name="train-the-model"></a>모델 교육
+학습용으로 간단히 **모델 학습** 모듈을 호출합니다. 이 모듈에 대한 두 가지 입력이 2클래스 향상된 의사 결정 트리 학습자와 학습 데이터 세트입니다. 다음과 같습니다.
 
-![“定型模型”模块](./media/hive-criteo-walkthrough/2bZDZTy.png)
+![모델 학습 모듈](./media/hive-criteo-walkthrough/2bZDZTy.png)
 
-#### <a name="score-the-model"></a>为模型评分
-获取训练的模型后，可对测试数据集进行评分，并评估其性能。 可以使用下图中显示的“评分模型”模块以及“评估模型”模块来完成此操作：
+#### <a name="score-the-model"></a>모델 점수 매기기
+학습된 모델이 있으면 테스트 데이터 세트에 대한 점수를 매기고 성능을 평가할 준비가 되었습니다. **평가 모델** 모듈과 함께 다음 그림에 있는 **점수 매기기 모델** 모듈을 사용하여 이 작업을 수행합니다.
 
-![“评分模型”模块](./media/hive-criteo-walkthrough/fydcv6u.png)
+![모델 점수 매기기 모듈](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a>步骤 4：评估模型
-最后，应分析模型性能。 通常，对于两类（二进制）分类问题，一种有效地度量值为 AUC。 为了将其可视化，请将“评分模型”模块连接到“评估模型”模块。 在“评估模型”模块上单击“可视化”将生成如下图所示的图形：
+### <a name="step4"></a> 4단계: 모델 평가
+마지막으로 모델 성능을 분석해야 합니다. 일반적으로 2클래스(이진) 분류 문제의 경우 AUC를 측정하는 것이 좋습니다. 若要可视化此曲线，请将 "**评分模型**" 模块连接到 "**评估模型**" 模块。 **모델 평가** 모듈에서 **시각화**를 클릭하면 다음과 같은 그림이 표시됩니다.
 
-![评估模块 BDT 模型](./media/hive-criteo-walkthrough/0Tl0cdg.png)
+![Evaluate module BDT 모델](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-在二进制（或二类）分类问题中，预测准确性的有效度量值是曲线下面积 (AUC)。 下一部分使用此模型在测试数据集上显示结果。 为此，右键单击“评估模型”模块的输出端口，并单击“可视化”。
+이진(또는 2클래스) 분류 문제에서 예측 정확도의 적절한 척도는 AUC(Area Under Curve)입니다. 다음 섹션에서는 테스트 데이터 세트에서 이 모델을 사용한 결과를 보여줍니다. 右键单击 "**评估模型**" 模块的输出端口，然后单击 "**可视化**"。
 
-![可视化评估模型模块](./media/hive-criteo-walkthrough/IRfc7fH.png)
+![Evaluate Model 모듈 시각화](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a>步骤 5：将模型发布为 Web 服务
-将 Azure 机器学习模型以最小误差发布为 Web 服务的能力是使其广泛可用的一个有价值的功能。 完成后，任何人都可以使用其需要预测的输入数据调用 Web 服务，并且 Web 服务使用模型返回这些预测。
+### <a name="step5"></a> 5단계: 모델을 웹 서비스로 게시
+혼란을 최소화하면서 Azure 기계 학습 모델을 웹 서비스로 게시하는 기능은 이 기능의 광범위한 사용을 위한 유용한 기능입니다. 이 작업이 완료되면 누구나 예측이 필요한 입력 데이터를 사용하여 웹 서비스를 호출하고 웹 서비스는 모델을 사용하여 해당 예측을 반환할 수 있습니다.
 
-为此，请先将训练模型另存为“训练模型”对象。 通过右键单击“定型模型”模块并使用“另存为定型模型”选项来完成此操作。
+首先，通过右键单击 "**训练模型**" 模块并使用 "**另存为定型模型**" 选项，将训练的模型另存为定型模型对象。
 
-接下来，为 Web 服务创建输入和输出端口：
+다음으로 웹 서비스에 입력 및 출력 포트를 만듭니다.
 
-* 输入端口接收与所需要预测的数据相同的形式的数据
-* 输出端口返回评分标签和关联概率。
+* 입력 포트는 예측이 필요한 데이터와 동일한 형식의 데이터를 사용합니다.
+* 출력 포트는 점수가 매겨진 레이블 및 관련 확률을 반환합니다.
 
-#### <a name="select-a-few-rows-of-data-for-the-input-port"></a>为输入端口选择少量几行数据
-使用“应用 SQL 转换”模块可以方便地选择仅 10 行作为输入端口数据。 使用此处显示的 SQL 查询为输入端口选择仅这几行数据：
+#### <a name="select-a-few-rows-of-data-for-the-input-port"></a>입력 포트에 대한 몇 가지 데이터 행 선택
+**SQL 변환 적용** 모듈을 사용하여 입력 포트 데이터로 사용할 10개 행만 편리하게 선택할 수 있습니다. 다음에 나와 있는 SQL 쿼리를 사용하여 입력 포트에 대해 이러한 데이터 행을 선택합니다.
 
-![输入端口数据](./media/hive-criteo-walkthrough/XqVtSxu.png)
+![입력 포트 데이터](./media/hive-criteo-walkthrough/XqVtSxu.png)
 
-#### <a name="web-service"></a>Web 服务
-现在可以运行一个小试验，用于发布我们的 Web 服务。
+#### <a name="web-service"></a>웹 서비스
+이제 웹 서비스를 게시하는 데 사용할 수 있는 소규모 실험을 실행할 준비가 완료되었습니다.
 
-#### <a name="generate-input-data-for-webservice"></a>为 webservice 生成输入数据
-首先，由于计数表很大，因此我们采用几行测试数据，并从中生成带有计数功能的输出数据。 这可以作为 webservice 的输入数据格式。 如下所示：
+#### <a name="generate-input-data-for-webservice"></a>웹 서비스에 대한 입력 데이터 생성
+통계 테이블이 크기 때문에 가장 먼저 테스트 데이터의 몇 줄을 가져와 통계 기능과 함께 출력 데이터를 생성합니다. 此输出可作为 web 服务的输入数据格式，如下所示：
 
-![创建 BDT 输入数据](./media/hive-criteo-walkthrough/OEJMmst.png)
+![BDT 입력 데이터 만들기](./media/hive-criteo-walkthrough/OEJMmst.png)
 
 > [!NOTE]
-> 对于输入数据格式，请使用 **Count Featurizer** 模块的 OUTPUT。 此实验完成运行后，将 **Count Featurizer** 模块的输出另存为数据集。 此数据集用于 webservice 中的输入数据。
+> 입력 데이터 서식에 대해 **통계 Featurizer** 모듈의 출력을 사용합니다. 이 실험의 실행이 완료되면 **Count Featurizer** 모듈의 출력을 Dataset으로 저장합니다. 이 Dataset은 웹 서비스의 입력 데이터로 사용됩니다.
 >
 >
 
-#### <a name="scoring-experiment-for-publishing-webservice"></a>发布 webservice 的评分实验
-首先，我们演示一下这种情况。 基本结构为“评分模型”模块，该模块接受训练模型对象和在前面步骤中使用 **Count Featurizer** 模块生成的几行输入数据。 使用“在数据集中选择列”来投影出评分标签和评分概率。
+#### <a name="scoring-experiment-for-publishing-webservice"></a>웹 서비스 게시를 위한 실험 점수 매기기
+首先，基本结构是一个**评分模型**模块，该模块接受我们训练的模型对象和在前面步骤中使用**Count 特征化器**模块生成的几行输入数据。 "데이터 세트의 열 선택"을 사용하여 점수가 매겨진 레이블 및 점수 매기기 확률을 표시합니다.
 
-![在数据集中选择列](./media/hive-criteo-walkthrough/kRHrIbe.png)
+![데이터 세트의 열 선택](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
-请注意如何将“在数据集中选择列”模块用于从数据集中“过滤”数据。 将显示以下内容：
+**데이터 세트의 열 선택** 모듈은 데이터 세트에서 데이터를 ‘필터링'할 때 사용할 수 있습니다. 콘텐츠는 다음과 같습니다.
 
-![使用“在数据集中选择列”进行过滤](./media/hive-criteo-walkthrough/oVUJC9K.png)
+![데이터 세트의 열 선택 모듈로 필터링](./media/hive-criteo-walkthrough/oVUJC9K.png)
 
-若要获取蓝色输入和输出端口，只需单击右下角的“准备 webservice”。 运行此实验会允许发布 Web 服务：单击右下角的“发布 Web 服务”图标，如下所示：
+파란색 입력 및 출력 포트를 가져오려면 오른쪽 아래에서 **prepare webservice** (웹 서비스 준비)를 클릭하면 됩니다. 이 실험을 실행하면 다음과 같이 오른쪽 아래에서 **PUBLISH WEB SERVICE** (웹 서비스 게시) 아이콘을 클릭하여 웹 서비스를 게시할 수도 있습니다.
 
-![发布 Web 服务](./media/hive-criteo-walkthrough/WO0nens.png)
+![PUBLISH WEB SERVICE](./media/hive-criteo-walkthrough/WO0nens.png)
 
-Web 服务发布后，会重定向到一个如下所示的页面：
+웹 서비스가 게시되면 다음과 같은 페이지로 리디렉션됩니다.
 
-![Web 服务仪表板](./media/hive-criteo-walkthrough/YKzxAA5.png)
+![웹 서비스 대시보드](./media/hive-criteo-walkthrough/YKzxAA5.png)
 
-请注意在左侧 Web 服务的两个链接：
+왼쪽에 웹 서비스에 대한 두 개의 링크가 있습니다.
 
-* “请求/响应”服务（或 RRS）适用于单个预测，本次研讨会中已使用该服务。
-* “BATCH 执行”服务 (BES) 适用于 batch 预测，该服务要求用于进行预测的输入数据驻留在 Azure Blob 存储中。
+* **REQUEST/RESPONSE** 서비스(또는 RRS)는 단일 예측에 사용되며 이 워크숍에서는 활용되었습니다.
+* **BATCH EXECUTION** 서비스(또는 BES)는 배치 예측에 사용되며 이 서비스를 사용하려면 예측에 사용되는 입력 데이터가 Azure Blob Storage에 있어야 합니다.
 
-单击“请求/响应”链接，进入一个页面，该页面提供了 C#、python 和 R 中的固有代码。此代码轻松地可用于调用 Web 服务。 请注意，此页面上的 API 密钥需要用于身份验证。
+**REQUEST/RESPONSE** 링크를 클릭하면 C#, python 및 R로 미리 만든 코드를 제공하는 페이지가 나타납니다. 이 코드를 사용하여 웹 서비스를 간편하게 호출할 수 있습니다. 此页面上的 API 密钥需要用于身份验证。
 
-可以方便地将此 python 代码复制到 IPython Notebook 中的一个新单元格。
+이 python 코드를 IPython 노트북의 새 셀에 복사하면 편리합니다.
 
-下面是一段带有正确 API 密钥的 python 代码。
+올바른 API 키가 있는 Python 코드의 세그먼트는 다음과 같습니다.
 
-![Python 代码](./media/hive-criteo-walkthrough/f8N4L4g.png)
+![Python 코드](./media/hive-criteo-walkthrough/f8N4L4g.png)
 
-请注意，默认 API 密钥已替换为 Web 服务的 API 密钥。 在 IPython Notebook 中此单元格上单击“运行”将生成以下响应：
+默认 API 密钥已替换为 webservice 的 API 密钥。 IPython 노트북에서 이 셀에 대해 **Run** (실행)을 클릭하면 다음 응답이 나타납니다.
 
-![IPython 响应](./media/hive-criteo-walkthrough/KSxmia2.png)
+![IPython 응답](./media/hive-criteo-walkthrough/KSxmia2.png)
 
-对于所询问的两个测试示例（在 JSON 框架的 python 脚本中），会以“评分标签，评分概率”的形式得到返回答案。 在本例中，已选择固有代码提供的默认值（所有数值列为 0，所有分类列为字符串“value”）。
+对于在 Python script JSON framework 中所询问的两个测试示例，您将以 "评分标签，评分概率" 的形式获取答案。 이 경우에 미리 만든 코드에서 제공하는 기본값(모든 숫자 열의 경우 0, 모든 범주 열의 경우 문자열 "값")을 선택했습니다.
 
-本演练现展示完如何使用 Azure 机器学习处理大规模数据集。 我们从 1 TB 的数据开始，构建了一个预测模型，并在云中将其部署为 Web 服务。
+总之，我们的演练演示如何使用 Azure 机器学习来处理大规模数据集。 이제 테라바이트의 데이터를 시작해서 예측 모델을 구성하고 클라우드의 웹 서비스로 배포했습니다.
 

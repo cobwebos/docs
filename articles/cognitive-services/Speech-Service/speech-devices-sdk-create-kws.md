@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
-ms.openlocfilehash: 5bd7352230d4d9daaed219f654be51dc528bea8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380178"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717026"
 ---
 # <a name="create-a-custom-keyword-using-speech-studio"></a>使用 Speech Studio 创建自定义关键字
 
@@ -49,12 +49,12 @@ ms.locfileid: "75380178"
 
     ![查看关键字](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. 生成模型最多可能需要10分钟时间。 模型完成后，关键字列表将从**处理**更改为**成功**。 然后，你可以下载该文件。
+1. 生成模型最多可能需要30分钟时间。 模型完成后，关键字列表将从**处理**更改为**成功**。 然后，你可以下载该文件。
 
     ![查看关键字](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. 将 .zip 文件保存到计算机。 需要此文件将自定义关键字部署到设备。
+1. .zip 파일을 컴퓨터에 저장합니다. 需要此文件将自定义关键字部署到设备。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 通过[语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)测试自定义关键字。

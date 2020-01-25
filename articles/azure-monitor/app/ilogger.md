@@ -8,17 +8,17 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931160"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716023"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core ILogger 日志
 
 ASP.NET Core 支持使用各种内置和第三方日志记录提供程序的日志记录 API。 日志记录是通过在*ILogger*实例上调用**日志（）** 或其变体来完成的。 本文演示如何使用*ApplicationInsightsLoggerProvider*来捕获控制台和 ASP.NET Core 应用程序中的 ILogger 日志。 本文还介绍了 ApplicationInsightsLoggerProvider 如何与其他 Application Insights 遥测数据集成。
-有关详细信息，请参阅[登录 ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
+자세한 내용은 [ASP.NET Core의 로깅](https://docs.microsoft.com/aspnet/core/fundamentals/logging)을 참조하세요.
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core应用程序
 
@@ -29,7 +29,7 @@ ASP.NET Core 支持使用各种内置和第三方日志记录提供程序的日�
 
 ILogger 记录 ApplicationInsightsLoggerProvider 捕获的配置与所收集的任何其他遥测的配置相同。 它们具有相同的一组 TelemetryInitializers 和 TelemetryProcessors，使用同一 TelemetryChannel，并与其他遥测的方式关联和采样。 如果使用版本2.7.1 或更高版本，则不需要执行任何操作来捕获 ILogger 日志。
 
-默认情况下，仅将*警告*或更高版本的 ILogger 日志（来自所有类别）发送到 Application Insights。 但是，您可以[应用筛选器来修改此行为](#control-logging-level)。 从**Program.cs**或**Startup.cs**捕获 ILogger 日志需要执行其他步骤。 （请参阅[在 ASP.NET Core 应用程序中捕获 Startup.cs 和 Program.cs 中的 ILogger 日志](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)。）
+默认情况下，仅将*警告*或更高版本的 ILogger 日志（来自所有[类别](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)）发送到 Application Insights。 但是，您可以[应用筛选器来修改此行为](#control-logging-level)。 从**Program.cs**或**Startup.cs**捕获 ILogger 日志需要执行其他步骤。 （请参阅[在 ASP.NET Core 应用程序中捕获 Startup.cs 和 Program.cs 中的 ILogger 日志](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)。）
 
 如果使用的是早期版本的 Applicationinsights.config SDK，或者想要只使用 ApplicationInsightsLoggerProvider 而不进行任何其他 Application Insights 监视，请使用以下过程：
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>在 ASP.NET Core 应用中捕获 Startup.cs 和 Program.cs 中的 ILogger 日志
 
 > [!NOTE]
-> 在 ASP.NET Core 3.0 及更高版本中，将无法在 Startup.cs 和 Program.cs 中注入 `ILogger`。 有关详细信息，请参阅 https://github.com/aspnet/Announcements/issues/353 。
+> 在 ASP.NET Core 3.0 及更高版本中，将无法在 Startup.cs 和 Program.cs 中注入 `ILogger`。 자세한 내용은 https://github.com/aspnet/Announcements/issues/353 를 참조하세요.
 
 新的 ApplicationInsightsLoggerProvider 可以在应用程序启动管道的早期捕获日志。 尽管 ApplicationInsightsLoggerProvider 会自动在 Application Insights 中启用（从版本2.7.1 开始），但它不会将检测密钥设置到后面的管道中。 因此，只会捕获**控制器**其他类中的日志。 若要捕获每个以**Program.cs**和**Startup.cs**本身开头的日志，必须显式启用 ApplicationInsightsLoggerProvider 的检测密钥。 此外，当你从**Program.cs**或**Startup.cs**本身记录时， *TelemetryConfiguration*未完全设置。 因此，这些日志将具有使用 InMemoryChannel 的最小配置，不使用采样，并且没有标准遥测初始值设定项或处理器。
 
@@ -219,14 +219,14 @@ public class Startup
 > [!Note]
 > 新的提供程序适用于面向 NETSTANDARD 2.0 或更高版本的应用程序。 如果你的应用程序以较旧的 .NET Core 版本（如 .NET Core 1.1）为目标，或者它以 .NET Framework 为目标，请继续使用旧的提供程序。
 
-## <a name="console-application"></a>控制台应用程序
+## <a name="console-application"></a>콘솔 애플리케이션
 
 > [!NOTE]
 > 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights （ILogger 和其他 Application Insights 遥测）。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。
 
 下面的代码演示一个示例控制台应用程序，该应用程序配置为将 ILogger 跟踪发送到 Application Insights。
 
-已安装的包：
+설치된 패키지:
 
 ```xml
 <ItemGroup>
@@ -284,7 +284,7 @@ class Program
 
 此示例使用 `Microsoft.Extensions.Logging.ApplicationInsights`的独立包。 默认情况下，此配置使用 "最小值" TelemetryConfiguration 将数据发送到 Application Insights。 最小值表示 InMemoryChannel 是使用的通道。 没有采样，也没有标准的 TelemetryInitializers。 对于控制台应用程序，可以重写此行为，如以下示例所示。
 
-安装此附加包：
+다음 추가 패키지를 설치합니다.
 
 ```xml
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
@@ -362,7 +362,7 @@ ASP.NET Core *ILogger*具有用于应用[日志筛选](https://docs.microsoft.co
                         ("Microsoft", LogLevel.Error);
 ```
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>FAQ(질문과 대답)
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>ApplicationInsightsLoggerProvider 的旧版本和新版本有哪些？
 
@@ -500,9 +500,9 @@ Azure Web Apps 中的 Application Insights 扩展使用新的提供程序。 可
    }
    ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-了解有关以下方面的详细信息：
+다음에 대해 자세히 알아봅니다.
 
 * [登录 ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
 * [Application Insights 中的 .NET 跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)

@@ -1,28 +1,28 @@
 ---
-title: Azure 的航天工业预见性维护 - Team Data Science Process
-description: 航天工业、实用工具和交通运输预见性维护的 Microsoft Cortana Intelligence 解决方案模板的体系结构图
+title: Azure를 사용한 항공 우주 예측 유지 관리 - Team Data Science Process
+description: Microsoft Cortana Intelligence 解决方案模板的预测性维护体系结构示意图-适用于航空、公用事业、交通
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 057607a67de72fa3607f584772693a31c9448fd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 888f638182964872bb38dff1c9d6e125473bacc4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303702"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721789"
 ---
-# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航天工业预见性维护的 Cortana Intelligence 解决方案模板体系结构
-下图提供了 [Cortana Intelligence Solution Template for predictive maintenance](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)（预见性维护的 Cortana Intelligence 解决方案模板）的体系结构概述。
+# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>항공 우주에서 예측 유지 관리를 위한 Cortana Intelligence 솔루션 템플릿의 아키텍처
+아래 다이어그램은 [예측 유지 관리를 위한 Cortana Intelligence 솔루션 템플릿 아키텍처](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)의 아키텍처 개요를 제공합니다.
 
-可在此处下载图表的完全尺寸版本：[体系结构图：预见性维护解决方案模板](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
+여기에서 다이어그램의 전체 크기 버전을 다운로드할 수 있습니다: [아키텍처 다이어그램: 예측 유지 관리를 위한 솔루션 템플릿](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
-![预见性维护解决方案模板体系结构图][image]
+![예측 유지 관리를 위한 솔루션 템플릿 아키텍처 다이어그램][image]
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png

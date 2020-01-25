@@ -1,6 +1,6 @@
 ---
-title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
-description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsSchema 元素。
+title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C에서 사용자 지정 정책의 ClaimsSchema 요소를 지정하는 방법을 설명합니다.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999103"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713070"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType 元素的列表。 ClaimType 元素包含 Id 属性，它是声明名称。
+**ClaimsSchema** 요소는 정책의 일부로 참조할 수 있는 클레임 형식을 정의합니다. 클레임 스키마에서 클레임을 선언합니다. 클레임은 이름, 성, 표시 이름, 전화 번호 등일 수 있습니다. ClaimsSchema 요소에는 **ClaimType** 요소 목록이 포함됩니다. **ClaimType** 요소에는 **Id** 특성(클레임 이름)이 포함됩니다.
 
 ```XML
 <BuildingBlocks>
@@ -40,41 +40,41 @@ ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 
 
 ## <a name="claimtype"></a>ClaimType
 
-ClaimType 元素包含以下属性：
+**ClaimType** 요소에는 다음과 같은 특성이 포함됩니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| Id | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
+| Id | 예 | 클레임 형식에 사용되는 식별자입니다. 다른 요소는 정책에서 이 식별자를 사용할 수 있습니다. |
 
-ClaimType 元素包含以下元素：
+**ClaimType** 요소에는 다음과 같은 요소가 포함됩니다.
 
-| 元素 | 匹配项 | 描述 |
+| 요소 | 발생 수 | Description |
 | ------- | ----------- | ----------- |
-| 显示名称 | 0:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
-| 数据类型 | 0:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection、alternativeSecurityIdCollection 等数据类型。 |
-| DefaultPartnerClaimTypes | 0:1 | 用于指定协议的合作伙伴默认声明类型。 可以覆盖 InputClaim 或 OutputClaim 元素中指定的 PartnerClaimType 中的值。 将此元素用于指定协议的默认名称。  |
-| Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
-| UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
-| UserInputType | 0:1 | 应在手动输入声明类型的声明数据时可供用户使用的输入控制的类型。 请参阅稍后在此页中定义的用户输入类型。 |
-| 限制 | 0:1 | 此声明的值限制，如正则表达式 (Regex) 或可接受值的列表。 可将值[本地化](localization.md)。 |
-PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的引用。 **PredicateValidationReference** 元素可用于执行验证过程，以确保仅输入格式正确的数据。 有关详细信息，请参阅 [Predicates](predicates.md)。 |
+| DisplayName | 0:1 | 다양한 화면에서 사용자에게 표시되는 제목입니다. 값을 [지역화](localization.md)할 수 있습니다. |
+| DataType | 0:1 | 클레임의 형식입니다. boolean, date, dateTime, int, long, string, stringCollection, alternativeSecurityIdCollection 데이터 형식을 사용할 수 있습니다. |
+| DefaultPartnerClaimTypes | 0:1 | 지정된 프로토콜에 사용할 파트너 기본 클레임 형식입니다. **InputClaim** 또는 **OutputClaim** 요소에 지정된 **PartnerClaimType**에서 값을 덮어쓸 수 있습니다. 이 요소를 사용하여 프로토콜의 기본 이름을 지정합니다.  |
+| Mask | 0:1 | 클레임을 표시할 때 적용할 수 있는 마스킹 문자로 구성된 선택적 문자열입니다. 예를 들어 전화 번호 324-232-4343은 XXX-XXX-4343으로 마스킹할 수 있습니다. |
+| UserHelpText | 0:1 | 사용자가 클레임의 용도를 파악하는 데 도움이 될 수 있는 클레임 형식의 설명입니다. 값을 [지역화](localization.md)할 수 있습니다. |
+| UserInputType | 0:1 | 클레임 형식의 클레임 데이터를 수동으로 입력할 때 사용자에게 제공해야 하는 입력 컨트롤 유형입니다. 이 페이지 아래쪽에 정의되어 있는 사용자 입력 형식을 참조하세요. |
+| 제한 | 0:1 | 정규식(Regex) 또는 허용되는 값 목록과 같은 이 클레임의 값 제한입니다. 값을 [지역화](localization.md)할 수 있습니다. |
+PredicateValidationReference| 0:1 | **PredicateValidationsInput** 요소에 대한 참조입니다. **PredicateValidationReference** 요소를 사용하면 적절한 형식의 데이터만 입력하도록 유효성 검사 프로세스를 수행할 수 있습니다. 자세한 내용은 [Predicates](predicates.md)를 참조하세요. |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
-DefaultPartnerClaimTypes 可能包含以下元素：
+**DefaultPartnerClaimTypes**는 다음 요소를 함할 수 있습니다.
 
-| 元素 | 匹配项 | 描述 |
+| 요소 | 발생 수 | Description |
 | ------- | ----------- | ----------- |
-| Protocol | 0:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
+| 프로토콜 | 0:n | 기본 파트너 클레임 형식 이름이 포함된 프로토콜 목록입니다. |
 
-Protocol 元素包含以下属性：
+**Protocol** 요소에는 다음과 같은 특성이 포함됩니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值有：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
-| PartnerClaimType | 是 | 要使用的声明类型名称。 |
+| 이름 | 예 | Azure AD B2C에서 지원하는 유효한 프로토콜의 이름입니다. 可能的值包括： OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| PartnerClaimType | 예 | 사용할 클레임 형식 이름입니다. |
 
-在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname 声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
+다음 예제에서는 ID 경험 프레임워크가 SAML2 ID 공급자 또는 신뢰 당사자 애플리케이션과 상호 작용할 때 **surname** 클레임이 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`에 매핑되며 OpenIdConnect 및 OAuth2와 상호 작용할 때는 `family_name`에 매핑됩니다.
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ Protocol 元素包含以下属性：
 </ClaimType>
 ```
 
-因此，Azure AD B2C 发布的 JWT 令牌会忽略 `family_name`，而不是 ClaimType 名称 surname。
+그러므로 Azure AD B2C에서 발급하는 JWT 토큰에서는 ClaimType 이름 **surname** 대신 `family_name`이 생략됩니다.
 
 ```JSON
 {
@@ -100,16 +100,16 @@ Protocol 元素包含以下属性：
 }
 ```
 
-### <a name="mask"></a>掩码
+### <a name="mask"></a>Mask
 
-Mask 元素包含以下属性：
+**Mask** 요소에는 다음과 같은 특성이 포함됩니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
-| `Regex` | 否 | 如果将 **`Type`** 设置为 `Regex`，请指定要使用的正则表达式。
+| `Type` | 예 | 클레임 마스크의 형식입니다. 가능한 값은 `Simple` 또는 `Regex`입니다. `Simple` 값은 문자열 클레임의 앞부분에 단순 텍스트 마스크가 적용됨을 나타냅니다. `Regex` 값은 문자열 클레임 전체에 정규식이 적용됨을 나타냅니다.  `Regex` 값을 지정하는 경우에는 사용할 정규식과 함께 선택적 특성도 정의해야 합니다. |
+| `Regex` | 아닙니다. | 如果 **`Type`** 设置为 `Regex`，请指定要使用的正则表达式。
 
-以下示例将配置具有 `Simple` 掩码的 PhoneNumber 声明：
+다음 예제에서는 `Simple` 마스크를 사용하여 **PhoneNumber** 클레임을 구성합니다.
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -120,11 +120,11 @@ Mask 元素包含以下属性：
 </ClaimType>
 ```
 
-标识体验框架呈现电话号码的同时隐藏了前六个数字：
+이 경우 ID 경험 프레임워크에서는 첫 6자리 숫자를 숨기고 전화 번호를 렌더링합니다.
 
-![浏览器中显示的电话号码声明，其中前六位数字由 X 掩码](./media/claimsschema/mask.png)
+![在浏览器中显示的电话号码声明，其中前六个数字由 Xs 屏蔽](./media/claimsschema/mask.png)
 
-以下示例将配置具有 `Regex` 掩码的 AlternateEmail 声明：
+다음 예제에서는 `Regex` 마스크를 사용하여 **AlternateEmail** 클레임을 구성합니다.
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -135,37 +135,37 @@ Mask 元素包含以下属性：
 </ClaimType>
 ```
 
-标识体验框架仅呈现电子邮件地址和电子邮件域名的第一个字母：
+이 경우 ID 경험 프레임워크에서는 전자 메일 주소의 첫 문자와 전자 메일 도메인 이름만 렌더링합니다.
 
-![浏览器中显示的电子邮件声明，其中字符由星号掩码](./media/claimsschema/mask-regex.png)
+![浏览器中显示的电子邮件声明，其中包含星号掩码字符](./media/claimsschema/mask-regex.png)
 
 
-### <a name="restriction"></a>限制
+### <a name="restriction"></a>제한
 
-Restriction 元素可能包含以下属性：
+**Restriction** 요소는 다음 특성을 포함할 수 있습니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| MergeBehavior | 否 | 用于将枚举值与具有相同标识符的父策略中的 ClaimType 合并的方法。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是应追加到父策略中指定的集合的末尾的数据集合。 `Prepend` 值是应在父策略中指定的集合之前添加的数据集合。 `ReplaceAll` 值是应忽略的父策略中指定的数据集合。 |
+| MergeBehavior | 아닙니다. | 식별자가 같은 상위 정책에서 ClaimType과 열거 값을 병합하는 데 사용할 메서드입니다. 기본 정책에 지정된 클레임을 덮어쓰는 경우 이 특성을 사용합니다. 가능한 값은 `Append`, `Prepend` 또는 `ReplaceAll`입니다. `Append` 값은 상위 정책에 지정된 컬렉션 끝에 추가해야 하는 데이터 컬렉션입니다. `Prepend` 값은 상위 정책에 지정된 컬렉션 앞에 추가해야 하는 데이터 컬렉션입니다. `ReplaceAll` 값은 상위 정책에 지정되어 있는 무시해야 하는 데이터 컬렉션입니다. |
 
-Restriction 元素包含以下元素：
+**Restriction** 요소에는 다음과 같은 요소가 포함됩니다.
 
-| 元素 | 匹配项 | 描述 |
+| 요소 | 발생 수 | Description |
 | ------- | ----------- | ----------- |
-| 枚举 | 1:n | 可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
-| 模式 | 1:1 | 要使用的正则表达式。 |
+| 열거형 | 1:n | 사용자가 클레임을 선택하는 데 사용할 수 있는 사용자 인터페이스의 옵션(예: 드롭다운의 값)입니다. |
+| 패턴 | 1:1 | 사용할 정규식입니다. |
 
-### <a name="enumeration"></a>枚举
+### <a name="enumeration"></a>열거형
 
-Enumeration 元素包含以下属性：
+**Enumeration** 요소에는 다음과 같은 특성이 포함됩니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
-|ReplTest1 | 是 | 与此选项关联的声明值。 |
-| SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
+| 텍스트 | 예 | 이 옵션에 대해 사용자 인터페이스에서 사용자에게 표시되는 표시 문자열입니다. |
+|값 | 예 | 이 옵션 선택과 연결된 클레임 값입니다. |
+| SelectByDefault | 아닙니다. | UI에서 이 옵션을 기본적으로 선택해야 하는지 여부를 나타냅니다. 가능한 값은 True 또는 False입니다. |
 
-以下示例将配置默认值设置为 `New York` 的“城市”下拉列表声明：
+다음 예제에서는 기본값을 `New York`으로 설정하여 **city** 드롭다운 목록 클레임을 구성합니다.
 
 ```XML
 <ClaimType Id="city">
@@ -180,20 +180,20 @@ Enumeration 元素包含以下属性：
 </ClaimType>
 ```
 
-默认值设置为纽约的城市下拉列表：
+기본값이 New York으로 설정된 드롭다운 city 목록은 다음과 같습니다.
 
 ![在浏览器中呈现并显示默认值的下拉控件](./media/claimsschema/dropdownsingleselect.png)
 
-### <a name="pattern"></a>模式
+### <a name="pattern"></a>패턴
 
-Pattern 元素可以包含以下属性：
+**Pattern** 요소는 다음 특성을 포함할 수 있습니다.
 
-| 特性 | 必填 | 描述 |
+| attribute | 필수 | Description |
 | --------- | -------- | ----------- |
-| RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
-| HelpText | 否 | 此声明的模式或正则表达式。 |
+| RegularExpression | 예 | 이 형식의 클레임이 유효하려면 일치해야 하는 정규식입니다. |
+| HelpText | 아닙니다. | 이 클레임의 패턴 또는 정규식입니다. |
 
-以下示例将配置具有正则表达式输入验证和帮助文本的 email 声明：
+다음 예제에서는 정규식 입력 유효성 검사 및 도움말 텍스트를 사용하여 **email** 클레임을 구성합니다.
 
 ```XML
 <ClaimType Id="email">
@@ -210,19 +210,19 @@ Pattern 元素可以包含以下属性：
  </ClaimType>
 ```
 
-标识体验框架呈现具有电子邮件格式输入验证的电子邮件地址声明：
+이 경우 ID 경험 프레임워크에서는 전자 메일 형식 입력 유효성 검사가 포함된 전자 메일 주소 클레임을 렌더링합니다.
 
-![显示由正则表达式限制触发的错误消息的 TextBox](./media/claimsschema/pattern.png)
+![显示 regex 限制触发的错误消息的文本框](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型的声明数据时可以使用的文本框、密码和下拉列表。 使用[自断言技术配置文件](self-asserted-technical-profile.md)从用户收集信息时，必须指定 UserInputType。
+Azure AD B2C는 클레임 형식의 클레임 데이터를 수동으로 입력할 때 사용할 수 있는 텍스트 상자, 암호, 드롭다운 목록 등의 다양한 사용자 입력 유형을 지원합니다. [자체 어설션된 기술 프로필](self-asserted-technical-profile.md)을 통해 사용자로부터 정보를 수집할 때는 **UserInputType**을 지정해야 합니다.
 
 ### <a name="textbox"></a>TextBox
 
-TextBox 用户输入类型用于提供单行文本框。
+**TextBox** 사용자 입력 유형은 한 줄 텍스트 상자를 제공하는 데 사용됩니다.
 
-![显示在声明类型中指定的属性的 TextBox](./media/claimsschema/textbox.png)
+![显示声明类型中指定的属性的 TextBox](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -235,9 +235,9 @@ TextBox 用户输入类型用于提供单行文本框。
 
 ### <a name="emailbox"></a>EmailBox
 
-EmailBox 用户输入类型用于提供基本电子邮件输入字段。
+**EmailBox** 사용자 입력 유형은 기본적인 전자 메일 입력 필드를 제공하는 데 사용됩니다.
 
-![显示在声明类型中指定的属性的 EmailBox](./media/claimsschema/emailbox.png)
+![显示声明类型中指定的属性的 EmailBox](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -251,11 +251,11 @@ EmailBox 用户输入类型用于提供基本电子邮件输入字段。
 </ClaimType>
 ```
 
-### <a name="password"></a>密码
+### <a name="password"></a>암호
 
-Password 用户输入类型用于记录用户输入的密码。
+**Password** 사용자 입력 유형은 사용자가 입력하는 암호를 기록하는 데 사용됩니다.
 
-![使用具有 password 的声明类型](./media/claimsschema/password.png)
+![password가 포함된 클레임 형식 사용](./media/claimsschema/password.png)
 
 ```XML
 <ClaimType Id="password">
@@ -268,9 +268,9 @@ Password 用户输入类型用于记录用户输入的密码。
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-DateTimeDropdown 用户输入类型用于提供一组用来选择日、月和年的下拉列表。 可以使用 Predicates 和 PredicateValidations 元素来控制最小日期值和最大日期值。 有关详细信息，请参阅 [Predicates 和 PredicateValidations](predicates.md) 的“配置日期范围”部分。
+**DateTimeDropdown** 사용자 입력 유형은 년/월/일을 선택하는 드롭다운 집합을 제공하는 데 사용됩니다. Predicates 및 PredicateValidations 요소를 사용하여 최소 및 최대 날짜 값을 제어할 수 있습니다. 자세한 내용은 [Predicates 및 PredicateValidations](predicates.md)의 **날짜 범위 구성** 섹션을 참조하세요.
 
-![使用具有 datetimedropdown 的声明类型](./media/claimsschema/datetimedropdown.png)
+![datetimedropdown이 포함된 클레임 형식 사용](./media/claimsschema/datetimedropdown.png)
 
 ```XML
 <ClaimType Id="dateOfBirth">
@@ -283,9 +283,9 @@ DateTimeDropdown 用户输入类型用于提供一组用来选择日、月和年
 
 ### <a name="radiosingleselect"></a>RadioSingleSelect
 
-RadioSingleSelect 用户输入类型用于提供允许用户选择一个选项的单选按钮集合。
+**RadioSingleSelect** 사용자 입력 유형은 사용자가 옵션 하나를 선택할 수 있는 라디오 단추 모음을 제공하는 데 사용됩니다.
 
-![使用具有 radiodsingleselect 的声明类型](./media/claimsschema/radiosingleselect.png)
+![radiodsingleselect가 포함된 클레임 형식 사용](./media/claimsschema/radiosingleselect.png)
 
 ```XML
 <ClaimType Id="color">
@@ -302,9 +302,9 @@ RadioSingleSelect 用户输入类型用于提供允许用户选择一个选项�
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-DropdownSingleSelect 用户输入类型用于提供允许用户选择一个选项的下拉框。
+**DropdownSingleSelect** 사용자 입력 유형은 사용자가 옵션 하나를 선택할 수 있는 드롭다운 상자를 제공하는 데 사용됩니다.
 
-![使用具有 dropdownsingleselect 的声明类型](./media/claimsschema/dropdownsingleselect.png)
+![dropdownsingleselect가 포함된 클레임 형식 사용](./media/claimsschema/dropdownsingleselect.png)
 
 ```XML
 <ClaimType Id="city">
@@ -321,9 +321,9 @@ DropdownSingleSelect 用户输入类型用于提供允许用户选择一个选�
 
 ### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-CheckboxMultiSelect 用户输入类型用于提供允许用户选择多个选项的复选框集合。
+**CheckboxMultiSelect** 사용자 입력 유형은 사용자가 여러 옵션을 선택할 수 있는 확인란 모음을 제공하는 데 사용됩니다.
 
-![使用具有 checkboxmultiselect 的声明类型](./media/claimsschema/checkboxmultiselect.png)
+![checkboxmultiselect가 포함된 클레임 형식 사용](./media/claimsschema/checkboxmultiselect.png)
 
 ```XML
 <ClaimType Id="languages">
@@ -340,9 +340,9 @@ CheckboxMultiSelect 用户输入类型用于提供允许用户选择多个选项
 
 ### <a name="readonly"></a>Readonly
 
-Readonly 用户输入类型用于提供要显示声明和值的只读字段。
+**Readonly** 사용자 입력 유형은 클레임과 값을 표시할 읽기 전용 필드를 제공하는 데 사용됩니다.
 
-![使用具有 readonly 的声明类型](./media/claimsschema/readonly.png)
+![readonly가 포함된 클레임 형식 사용](./media/claimsschema/readonly.png)
 
 ```XML
 <ClaimType Id="membershipNumber">
@@ -356,9 +356,9 @@ Readonly 用户输入类型用于提供要显示声明和值的只读字段。
 
 ### <a name="paragraph"></a>Paragraph
 
-Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字段。 例如，&lt;p&gt;文本&lt;/p&gt;。
+**Paragraph** 사용자 입력 유형은 단락 태그에 텍스트만 표시하는 필드를 제공하는 데 사용됩니다. 예를 들어 &lt;p&gt;text&lt;/p&gt;를 사용할 수 있습니다.
 
-![使用具有 paragraph 的声明类型](./media/claimsschema/paragraph.png)
+![paragraph가 포함된 클레임 형식 사용](./media/claimsschema/paragraph.png)
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -368,11 +368,11 @@ Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字�
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
 </ClaimType>
 ```
 
-若要显示 responseMsg 声明中的 Enumeration 值之一，请使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 声明转换。 有关详细信息，请参阅[字符串声明转换](string-transformations.md)
+**responseMsg** 클레임에서 **Enumeration** 값 중 하나를 표시하려면 `GetMappedValueFromLocalizedCollection` 또는 `CreateStringClaim` 클레임 변환을 사용합니다. 자세한 내용은 [문자열 클레임 변환](string-transformations.md)을 참조하세요.

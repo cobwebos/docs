@@ -5,18 +5,18 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651626"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715667"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>带有通知的 Azure 托管应用程序
 
 Azure 托管应用程序通知允许发布者根据托管应用程序实例的生命周期事件自动执行操作。 发布者可以指定自定义通知 webhook 终结点，以接收有关新的和现有的托管应用程序实例的事件通知。 发布者可以在应用程序预配、更新和删除时设置自定义工作流。
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>시작
 若要开始接收托管应用程序，请启动一个公共 HTTPS 终结点，并在发布服务目录应用程序定义或 Azure Marketplace 产品/服务时指定它。
 
 下面是快速入门的建议步骤：
@@ -28,7 +28,7 @@ Azure 托管应用程序通知允许发布者根据托管应用程序实例的�
 6. 按照本文的**通知架构**部分中的说明进行操作，以分析通知请求并根据通知实现业务逻辑。
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>添加服务目录应用程序定义通知
-#### <a name="azure-portal"></a>Azure 门户
+#### <a name="azure-portal"></a>Azure Portal
 若要开始使用，请参阅[通过 Azure 门户发布服务目录应用程序](./publish-portal.md)。
 
 ![Azure 门户中的服务目录应用程序定义通知](./media/publish-notifications/service-catalog-notifications.png)
@@ -64,18 +64,18 @@ Azure 托管应用程序通知允许发布者根据托管应用程序实例的�
 有关详细信息，请参阅[创建 Azure 应用程序产品/服务](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md)。
 
 ![Azure 门户中的 Azure Marketplace 托管应用程序通知](./media/publish-notifications/marketplace-notifications.png)
-## <a name="event-triggers"></a>事件触发器
+## <a name="event-triggers"></a>이벤트 트리거
 下表描述了事件可能与 ProvisioningState 及其触发器的所有可能组合：
 
 EventType | ProvisioningState | 通知触发器
 ---|---|---
-PUT | 已接受 | 在应用程序 PUT 之后（在启动托管资源组中的部署之前），已成功创建并投影了托管资源组。
-PUT | 已成功 | 完成托管应用程序的完全预配后成功完成。
-PUT | 已失败 | 在任何时候都不能设置应用程序实例。
-PATCH | 已成功 | 在托管应用程序实例上成功修补后，以更新标记、JIT 访问策略或托管标识。
-DELETE | 正在删除 | 一旦用户启动了托管应用程序实例的删除。
-DELETE | 已删除 | 在完全和成功删除托管应用程序之后。
-DELETE | 已失败 | 在取消预配过程中的任何错误之后阻止删除。
+PUT | 수락됨 | 在应用程序 PUT 之后（在启动托管资源组中的部署之前），已成功创建并投影了托管资源组。
+PUT | 성공 | 完成托管应用程序的完全预配后成功完成。
+PUT | 실패 | 在任何时候都不能设置应用程序实例。
+패치 | 성공 | 在托管应用程序实例上成功修补后，以更新标记、JIT 访问策略或托管标识。
+Delete | 삭제 중 | 一旦用户启动了托管应用程序实例的删除。
+Delete | 삭제됨 | 在完全和成功删除托管应用程序之后。
+Delete | 실패 | 在取消预配过程中的任何错误之后阻止删除。
 ## <a name="notification-schema"></a>通知架构
 当您加速 webhook 终结点以处理通知时，您需要分析有效负载以获取重要属性，然后对通知进行操作。 服务目录和 Azure Marketplace 托管应用程序通知提供很多相同的属性。 示例的下表中概述了两个小差异。
 
@@ -176,20 +176,20 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-参数 | Description
+매개 변수 | Description
 ---|---
 eventType | 触发通知的事件类型。 （例如 PUT、PATCH、DELETE。）
 applicationId | 触发通知的托管应用程序的完全限定的资源标识符。
-EventTime | 触发通知的事件的时间戳。 （UTC ISO 8601 格式的日期和时间。）
+eventTime | 触发通知的事件的时间戳。 （UTC ISO 8601 格式的日期和时间。）
 provisioningState | 托管应用程序实例的设置状态。 （例如，成功、失败、删除、删除。）
 error | *仅在 ProvisioningState 失败时指定*。 包含错误代码、消息以及导致失败的问题的详细信息。
 applicationDefinitionId | *仅为服务目录托管应用程序指定*。 表示为其预配了托管应用程序实例的应用程序定义的完全限定的资源标识符。
-计划 | *仅适用于 Azure Marketplace 托管应用程序*。 表示托管应用程序实例的发布者、产品/服务、SKU 和版本。
+계획 | *仅适用于 Azure Marketplace 托管应用程序*。 表示托管应用程序实例的发布者、产品/服务、SKU 和版本。
 billingDetails | *仅适用于 Azure Marketplace 托管应用程序。* 托管应用程序实例的计费详细信息。 包含可用于在 Azure Marketplace 中查询使用情况详细信息的 resourceUsageId。
 
 ## <a name="endpoint-authentication"></a>终结点身份验证
 保护 webhook 终结点并确保通知的真实性：
-1. 在 webhook URI 的顶层提供一个查询参数，如下所示： https://your-endpoint.com?sig=Guid 。 对于每个通知，请检查查询参数 `sig` 是否 `Guid`了预期的值。
+1. 在 webhook URI 的顶层提供一个查询参数，如下所示： https\://your-endpoint.com？ sig = Guid。 对于每个通知，请检查查询参数 `sig` 是否 `Guid`了预期的值。
 2. 使用 applicationId 在托管应用程序实例上发出 GET。 验证 provisioningState 是否符合通知的 provisioningState，以确保一致性。
 
 ## <a name="notification-retries"></a>通知重试次数

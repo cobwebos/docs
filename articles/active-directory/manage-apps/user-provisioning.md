@@ -1,6 +1,6 @@
 ---
-title: Azure AD 中的自动 SaaS 应用用户预配 | Microsoft Docs
-description: 介绍可以如何使用 Azure AD 进行自动化设置、取消设置，并不断跨多个第三方 SaaS 应用程序更新用户帐户。
+title: Azure AD에서 SaaS 앱 사용자를 자동으로 프로비저닝 | Microsoft Docs
+description: Azure AD를 사용하여 여러 타사 SaaS 애플리케이션에서 사용자 계정을 자동으로 프로비저닝, 프로비저닝 해제, 지속적으로 업데이트하는 방법을 소개합니다.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433791"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711467"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>通过 Azure Active Directory 自动执行用户预配和取消预配
 
-在 Azure Active Directory （Azure AD）中，术语 "**应用设置**" 是指在用户需要访问的云（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）应用程序中自动创建用户标识和角色。 除了创建用户身份外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见的方案包括将 Azure AD 用户预配到[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、 [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、 [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)等应用程序中。
+在 Azure Active Directory （Azure AD）中，术语 "**应用设置**" 是指在用户需要访问的云（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）应用程序中自动创建用户标识和角色。 除了创建用户身份外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见的方案包括将 Azure AD 用户预配到[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、 [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、 [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等应用程序中。
 
 ![预配概述关系图](media/user-provisioning/provisioning-overview.png)
 
@@ -55,7 +55,7 @@ Azure AD 用户预配可帮助解决这些难题。 若要了解有关客户如�
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD 자동 사용자 프로비전에서 사용할 수 있는 애플리케이션과 시스템은 무엇입니까?
 
 Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支持，以及对实现[SCIM 2.0 标准](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)的特定部分的应用的一般性支持。
 
@@ -63,7 +63,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
    ![Salesforce 徽标](media/user-provisioning/gallery-app-logos.png)
 
-   如果要请求新的预配应用程序，可以[请求将应用程序与应用程序库集成](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)。 对于用户设置请求，我们要求应用程序具有与 SCIM 兼容的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便可以将应用程序快速加入我们的平台。
+   如果要请求新的预配应用程序，可以[请求将应用程序与应用程序库集成](../develop/howto-app-gallery-listing.md)。 对于用户设置请求，我们要求应用程序具有与 SCIM 兼容的终结点。 请请求应用程序供应商遵循 SCIM 标准，以便可以将应用程序快速加入我们的平台。
 
 * **支持 SCIM 2.0 的应用程序**。 有关如何一般连接实现基于 SCIM 2.0 的用户管理 Api 的应用程序的信息，请参阅[生成 SCIM 终结点和配置用户设置](use-scim-to-provision-users-and-groups.md)。
 
@@ -75,13 +75,13 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 有关使用 SCIM 自动将用户和组预配和取消预配到应用程序的详细指南，请参阅[构建 SCIM 终结点和配置用户设置](use-scim-to-provision-users-and-groups.md)。
 
-## <a name="manual-vs-automatic-provisioning"></a>手动预配与自动预配
+## <a name="manual-vs-automatic-provisioning"></a>수동 및 자동 프로비저닝
 
 Azure AD 库中的应用程序支持以下两种预配模式之一：
 
 * **手动**设置意味着该应用尚无自动 Azure AD 预配连接器。 用户帐户必须手动创建，例如通过将用户直接添加到应用的管理门户中，或使用用户帐户详细信息上传电子表格。 请查阅应用提供的文档，或联系应用开发人员来确定可用的机制。
 
-* **自动化**意味着已为此应用程序开发了 Azure AD 预配连接器。 你应遵循特定于设置应用程序预配的安装教程。 可以在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)找到这些应用教程。
+* **자동**이란 Azure AD 프로비전 커넥터가 이 애플리케이션에 대해 개발되었음을 의미합니다. 你应遵循特定于设置应用程序预配的安装教程。 앱 자습서는 [Azure Active Directory와 SaaS Apps를 통합하는 방법에 대한 자습서 목록](../saas-apps/tutorial-list.md)에서 찾을 수 있습니다.
 
 在 Azure AD 库中，支持自动预配的应用程序由**预配**图标指定。 切换到新的库预览体验来查看这些图标（在 "**添加应用程序" 页**顶部的标题中，选择 "**单击此处以试用新的和改进的应用程序库**" 的链接）。
 
@@ -89,20 +89,20 @@ Azure AD 库中的应用程序支持以下两种预配模式之一：
 
 向**企业应用**添加应用程序后，应用程序支持的预配模式也会显示在 "**设置**" 选项卡上。
 
-## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>如何设置为自动预配到应用程序？
+## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>애플리케이션에 자동 프로비전을 설정하려면 어떻게 합니까?
 
-对于库中列出的预先集成的应用程序，可以使用分步指南设置自动预配。 请参阅[集成库应用的教程列表](https://docs.microsoft.com/azure/active-directory/saas-apps/)。 以下视频演示了如何设置 SalesForce 的自动用户预配。
+对于库中列出的预先集成的应用程序，可以使用分步指南设置自动预配。 请参阅[集成库应用的教程列表](../saas-apps/tutorial-list.md)。 以下视频演示了如何设置 SalesForce 的自动用户预配。
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 对于支持 SCIM 2.0 的其他应用程序，请按照[创建 SCIM 终结点和配置用户设置一](use-scim-to-provision-users-and-groups.md)文中的步骤进行操作。
 
 
-## <a name="related-articles"></a>相关文章
+## <a name="related-articles"></a>관련 문서
 
-- [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
+- [SaaS App을 통합하는 방법에 대한 자습서 목록](../saas-apps/tutorial-list.md)
 - [为用户预配自定义属性映射](customize-application-attributes.md)
 - [为属性映射编写表达式](functions-for-customizing-application-data.md)
 - [用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 - [生成 SCIM 终结点并配置用户预配](use-scim-to-provision-users-and-groups.md)
-- [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 동기화 API 개요](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

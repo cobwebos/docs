@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658332"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714854"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -25,7 +25,7 @@ Azure 应用程序网关包含多个组件，你可以在不同方案中以多�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>필수 조건
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虚拟网络和专用子网
 
@@ -34,7 +34,7 @@ Azure 应用程序网关包含多个组件，你可以在不同方案中以多�
 > [!NOTE]
 > 不能将 Standard_v2 和标准 Azure 应用程序网关混合到同一子网中。
 
-#### <a name="size-of-the-subnet"></a>子网的大小
+#### <a name="size-of-the-subnet"></a>서브넷 크기
 
 应用程序网关每个实例使用1个专用 IP 地址，此外，如果配置了专用前端 IP，还会使用另一个专用 IP 地址。
 
@@ -48,12 +48,12 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 应用程序网关上支持网络安全组（Nsg）。 但存在一些限制：
 
-- 对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为**Any** and Source as **GatewayManager** service 标记）。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 外部实体（包括这些网关的客户）无法在这些终结点上进行通信。
+- 对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为**Any** and Source as **GatewayManager** service 标记）。 이 포트 범위는 Azure 인프라 통신에 필요합니다. 这些端口受 Azure 证书保护（锁定）。 外部实体（包括这些网关的客户）无法在这些终结点上进行通信。
 
-- 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 internet 连接。 建议：
+- 아웃바운드 인터넷 연결은 차단할 수 없습니다. NSG 中的默认出站规则允许 internet 连接。 다음을 수행하는 것이 좋습니다.
 
   - 请勿删除默认的出站规则。
-  - 请勿创建其他拒绝出站 internet 连接的出站规则。
+  - 请勿创建拒绝任何出站连接的其他出站规则。
 
 - 必须允许来自**AzureLoadBalancer**标记的流量。
 
@@ -62,10 +62,10 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 对于此方案，请在应用程序网关子网中使用 Nsg。 按照此优先级顺序在子网上施加以下限制：
 
 1. 允许来自源 IP 或 IP 范围的传入流量，其目标为整个应用程序网关子网地址范围和目标端口作为入站访问端口，例如，HTTP 访问端口80。
-2. 允许来自源的传入请求作为**GatewayManager**服务标记，目标作为应用程序网关 v1 SKU 为65503-65534 的**任何**和目标端口，为 v2 sku 允许端口65200-65535 用于[后端运行状况状态通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书保护（锁定）。 如果没有适当的证书，外部实体将无法在这些终结点上启动更改。
+2. 允许来自源的传入请求作为**GatewayManager**服务标记，目标作为应用程序网关 v1 SKU 为65503-65534 的**任何**和目标端口，为 v2 sku 允许端口65200-65535 用于[后端运行状况状态通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 이 포트 범위는 Azure 인프라 통신에 필요합니다. 这些端口受 Azure 证书保护（锁定）。 如果没有适当的证书，外部实体将无法在这些终结点上启动更改。
 3. 允许[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)上的传入 Azure 负载均衡器探测（*AzureLoadBalancer*标记）和入站虚拟网络流量（*VirtualNetwork*标记）。
 4. 使用 "全部拒绝" 规则阻止其他所有传入流量。
-5. 允许所有目的地的 Internet 出站流量。
+5. 모든 대상에 대해 인터넷으로의 아웃바운드 트래픽을 허용합니다.
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持的用户定义的路由
 
@@ -93,7 +93,7 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 前端 IP 地址与*侦听器*相关联，后者检查前端 ip 的传入请求。
 
-## <a name="listeners"></a>侦听器
+## <a name="listeners"></a>수신기
 
 侦听器是一个逻辑实体，通过使用端口、协议、主机和 IP 地址来检查传入的连接请求。 配置侦听器时，必须输入与网关上传入请求中的相应值相匹配的值。
 
@@ -121,7 +121,7 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 选择前端端口。 选择一个现有端口或创建一个新端口。 从[允许的端口范围](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)中选择任何值。 你不仅可以使用众所周知的端口，例如80和443，还可以使用合适的任何允许的自定义端口。 端口可用于面向公众的侦听器或面向专用的侦听器。
 
-### <a name="protocol"></a>协议
+### <a name="protocol"></a>프로토콜
 
 选择 HTTP 或 HTTPS：
 
@@ -139,7 +139,7 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 #### <a name="http2-support"></a>HTTP2 支持
 
-HTTP/2 协议支持仅适用于连接到应用程序网关侦听器的客户端。 与后端服务器池的通信通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 以下 Azure PowerShell 代码片段演示了如何启用此操作：
+HTTP/2 协议支持仅适用于连接到应用程序网关侦听器的客户端。 与后端服务器池的通信通过 HTTP/1.1 进行。 기본적으로 HTTP/2 지원은 사용할 수 없습니다. 以下 Azure PowerShell 代码片段演示了如何启用此操作：
 
 ```azurepowershell
 $gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
@@ -149,19 +149,19 @@ $gw.EnableHttp2 = $true
 Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
-#### <a name="websocket-support"></a>WebSocket 支持
+#### <a name="websocket-support"></a>WebSocket 지원
 
 默认情况下启用 WebSocket 支持。 无用户可配置的设置来启用或禁用该设置。 可以将 Websocket 与 HTTP 和 HTTPS 侦听器一起使用。
 
-### <a name="custom-error-pages"></a>自定义错误页
+### <a name="custom-error-pages"></a>사용자 지정 오류 페이지
 
-可以在全局级别或侦听器级别定义自定义错误。 但当前不支持从 Azure 门户创建全局级别的自定义错误页。 可以在侦听器级别为 403 web 应用程序防火墙错误或502维护页配置自定义错误页。 还必须指定给定错误状态代码的可公开访问的 blob URL。 有关详细信息，请参阅[创建应用程序网关自定义错误页](https://docs.microsoft.com/azure/application-gateway/custom-error)。
+可以在全局级别或侦听器级别定义自定义错误。 但当前不支持从 Azure 门户创建全局级别的自定义错误页。 可以在侦听器级别为 403 web 应用程序防火墙错误或502维护页配置自定义错误页。 还必须指定给定错误状态代码的可公开访问的 blob URL。 자세한 내용은 [Application Gateway 사용자 지정 오류 페이지 만들기](https://docs.microsoft.com/azure/application-gateway/custom-error)를 참조하세요.
 
-![应用程序网关错误代码](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
+![Application Gateway 오류 코드](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
 若要配置全局自定义错误页，请参阅[Azure PowerShell 配置](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration)。
 
-### <a name="ssl-policy"></a>SSL 策略
+### <a name="ssl-policy"></a>SSL 정책
 
 可以集中 SSL 证书管理，并减少后端服务器场的加密解密开销。 集中式 SSL 处理还允许指定适合于安全要求的中央 SSL 策略。 你可以选择*默认*、*预定义*或*自定义*SSL 策略。
 
@@ -220,7 +220,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 选择另一个侦听器或外部站点作为重定向目标。
 
-##### <a name="listener"></a>侦听器
+##### <a name="listener"></a>수신기
 
 选择 "侦听器" 作为重定向目标，以在网关上将流量从一个侦听器重定向到另一个侦听器。 如果要启用 HTTP 到 HTTPS 重定向，则需要此设置。 它将检查传入 HTTP 请求的源侦听器的流量重定向到检查传入 HTTPS 请求的目标侦听器。 你还可以选择在转发到重定向目标的请求中包含来自原始请求的查询字符串和路径。
 
@@ -241,7 +241,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
 
-此设置在客户端和后端池之间移动请求和响应数据包时添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
+此设置在客户端和后端池之间移动请求和响应数据包时添加、删除或更新 HTTP 请求和响应标头。 자세한 내용은 다음을 참조하세요.
 
  - [重写 HTTP 标头概述](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [配置 HTTP 标头重写](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
@@ -250,15 +250,15 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 应用程序网关使用你在此处指定的配置将流量路由到后端服务器。 创建 HTTP 设置之后，必须将其与一个或多个请求路由规则相关联。
 
-### <a name="cookie-based-affinity"></a>基于 Cookie 的相关性
+### <a name="cookie-based-affinity"></a>쿠키 기반 선호도
 
 如果要在同一台服务器上保留用户会话，此功能很有用。 通过网关管理的 cookie，应用程序网关可以将来自用户会话的后续流量定向到相同的服务器进行处理。 当在服务器上为用户会话保存会话状态时，这一点非常重要。 如果应用程序无法处理基于 cookie 的关联，则无法使用此功能。 若要使用它，请确保客户端支持 cookie。
 
-### <a name="connection-draining"></a>连接清空
+### <a name="connection-draining"></a>연결 드레이닝
 
 连接排出有助于在计划内服务更新期间正常删除后端池成员。 你可以在创建规则期间将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例都继续维持现有连接，并为可配置的超时提供正在进行的请求，而不会收到任何新的请求或连接。 这种情况的唯一例外是，由于网关托管会话相关性，为注销实例绑定的请求将继续转发到取消注册实例。 连接排出适用于从后端池中显式删除的后端实例。
 
-### <a name="protocol"></a>协议
+### <a name="protocol"></a>프로토콜
 
 应用程序网关支持将请求路由到后端服务器的 HTTP 和 HTTPS。 如果选择 HTTP，则不会加密到后端服务器的流量。 如果无法接受未加密的通信，请选择 HTTPS。
 
@@ -268,7 +268,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 此设置指定后端服务器侦听来自应用程序网关的流量的端口。 可以配置范围从1到65535的端口。
 
-### <a name="request-timeout"></a>请求超时
+### <a name="request-timeout"></a>요청 시간 초과
 
 此设置是应用程序网关等待接收来自后端服务器的响应的秒数。
 
@@ -327,20 +327,20 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 例如，如果在 "**主机名**" 设置中指定了*www.contoso.com* ，则在将请求转发到后端服务器时，原始请求 * https://appgw.eastus.cloudapp.azure.com/path1 将更改为 * https://www.contoso.com/path1 。
 
-## <a name="back-end-pool"></a>后端池
+## <a name="back-end-pool"></a>백 엔드 풀
 
 可以将后端池指向四种类型的后端成员：特定虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 每个后端池可以指向同一类型的多个成员。 不支持指向同一后端池中不同类型的成员。
 
 创建后端池后，必须将其与一个或多个请求路由规则相关联。 还必须为应用程序网关上的每个后端池配置运行状况探测。 满足请求路由规则条件时，应用程序网关会将流量转发到相应后端池中的正常服务器（由运行状况探测决定）。
 
-## <a name="health-probes"></a>运行状况探测
+## <a name="health-probes"></a>상태 프로브
 
 默认情况下，应用程序网关监视其后端中所有资源的运行状况。 但我们强烈建议为每个后端 HTTP 设置创建自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)。
 
 > [!NOTE]
 > 创建自定义运行状况探测后，需要将其关联到后端 HTTP 设置。 自定义探测不会监视后端池的运行状况，除非相应的 HTTP 设置与使用规则的侦听器显式关联。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 现在，你已了解应用程序网关组件，你可以：
 

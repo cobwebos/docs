@@ -1,93 +1,93 @@
 ---
-title: Team Data Science Process 生命周期建模阶段
-description: 你的数据科学项目建模阶段的目标、任务和可交付结果
+title: Team Data Science Process 수명 주기의 모델링 단계
+description: 데이터 과학 프로젝트의 모델링 단계에 대한 목표, 작업 및 결과물입니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d72d39a2a59e06954c36473083af2d2b4689a7b6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538223"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720463"
 ---
-# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 수명 주기의 모델링 단계
 
-本文概述了与 Team Data Science Process (TDSP) 的建模阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 生命周期概括了项目通常执行且经常重复的主要阶段：
+이 문서에서는 TDSP(팀 데이터 과학 프로세스)의 모델링 단계와 관련된 목표, 작업 및 결과물을 설명합니다. 이 프로세스는 데이터 과학 프로젝트를 구조화하는 데 사용할 수 있는 권장 수명 주기를 제공합니다. 수명 주기는 일반적으로 프로젝트에서 반복적으로 자주 실행하는 주요 단계를 설명합니다.
 
-   1. **了解业务**
-   2. **数据采集和理解**
-   3. **建模**
-   4. **部署**
-   5. **客户验收**
+   1. **비즈니스 이해**
+   2. **데이터 취득 및 이해**
+   3. **모델링**
+   4. **배포**
+   5. **고객 승인**
 
-此处直观地展示了 TDSP 生命周期：
+다음은 TDSP 수명 주기를 시각적으로 나타낸 것입니다.
 
-![TDSP 生命周期](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP 수명 주기](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-## <a name="goals"></a>目标
-* 确定机器学习模型的最佳数据功能。
-* 创建可精准预测目标的信息性机器学习模型。
-* 创建适用于生产的机器学习模型。
+## <a name="goals"></a>목표
+* Machine Learning 모델을 위한 최적의 데이터 기능을 결정합니다.
+* 대상에 대해 가장 정확하게 예측하는 정보 제공용 Machine Learning 모델을 만듭니다.
+* 프로덕션 환경에 적합한 Machine Learning 모델을 만듭니다.
 
-## <a name="how-to-do-it"></a>如何执行
-在此阶段中解决了三个主要任务：
+## <a name="how-to-do-it"></a>수행 방법
+이 단계에서 설명하는 세 가지 기본 작업은 다음과 같습니다.
 
-  * **功能设计**：从原始数据创建数据功能，以实现模型定型。
-  * **模型定型**：通过比较模型的成功指标，找出最能准确回答问题的模型。
-  * 确定模型是否适用于生产。
+  * **기능 엔지니어링**: 모델 학습을 용이하게 하기 위해 원시 데이터로부터 데이터 기능을 만듭니다.
+  * **모델 학습**: 성공 메트릭을 비교하여 질문에 가장 정확하게 대답하는 모델을 찾습니다.
+  * **프로덕션에 적합한** 모델인지 확인합니다.
 
-### <a name="feature-engineering"></a>特性工程
-功能设计包括对原始变量的涵盖、聚合和转换，以创建分析中使用的功能。 若要深入了解模型的驱动因素，则需要了解这些功能彼此间的关系，以及使用这些功能的机器学习算法方式。 
+### <a name="feature-engineering"></a>기능 엔지니어링
+기능 엔지니어링은 원시 변수의 포함, 집계 및 변환을 포함하여 분석에 사용되는 기능을 만듭니다. 모델에 영향을 주는 요인들에 대한 통찰력을 원하면 기능이 서로 어떻게 관련되어 있고 Machine Learning 알고리즘에서 이러한 기능을 어떻게 사용하는지를 이해해야 합니다. 
 
-此步骤需要创造性地组合域专业知识，并从数据浏览的步骤中获取见解。 功能工程可平衡信息性变量的查找与添加，同时避免产生过多不相关的变量。 信息性变量会改善结果；而不相关的变量会将不必要的干扰引入模型。 还需要为在评分过程中获取的任何新数据生成一些功能。 因此，可仅根据在评分时可用的数据生成这些功能。 
+이 단계에서 도메인 전문지식과 데이터 탐색 단계에서 얻은 통찰력을 창의적으로 결합해야 합니다. 기능 엔지니어링은 관련이 없는 변수를 상당히 많이 제거하면서 유용한 정보를 제공하는 변수를 찾아 포함합니다. 정보 제공 변수는 결과를 향상시키지만 관련이 없는 변수는 모델에 불필요한 혼란만 가져옵니다. 또한 점수 매기기 중에 가져온 새로운 데이터에 대해 이러한 기능을 생성해야 합니다. 따라서 이러한 기능은 점수를 매길 때 사용할 수 있는 데이터에만 기반하여 생성할 수 있습니다. 
 
-有关使用各种 Azure 数据技术时的功能设计的相关技术指导，请参阅[数据科学过程中的功能设计](create-features.md)。 
+다양한 Azure 데이터 기술을 사용하는 경우 기능 엔지니어링에 대한 기술 지침은 [데이터 과학 프로세스의 기능 엔지니어링](create-features.md)을 참조하세요. 
 
-### <a name="model-training"></a>模型定型
-根据所要回答的问题类型，会有许多可用的建模算法。 有关选择算法的指南，请参阅[如何选择 Microsoft Azure 机器学习的算法](../studio/algorithm-choice.md)。 尽管本文使用的是 Azure 机器学习，但所述指南也适用于其他任何机器学习项目。 
+### <a name="model-training"></a>모델 학습
+대답하려는 질문 유형에 따라 다양한 모델링 알고리즘을 사용할 수 있습니다. 알고리즘 선택에 대한 지침은 [Microsoft Azure Machine Learning을 위한 알고리즘 선택 방법](../studio/algorithm-choice.md)을 참조하세요. 이 문서는 Azure Machine Learning을 사용하지만 제공되는 지침은 모든 Machine Learning 프로젝트에 유용합니다. 
 
-模型定型的过程包括以下步骤： 
+모델 학습 프로세스에는 다음 단계가 포함됩니다. 
 
-   * 随机拆分输入数据，以建模成定型数据集和测试数据集。
-   * 使用定型数据集生成模型。
-   * 评估定型数据集和测试数据集。 使用一系列竞争机器学习算法，以及关联的各种优化参数（称为“参数整理”），这些参数适用于回答与当前数据相关的问题。
-   * 比较备用方法的成功指标，确定可回答问题的“最佳”解决方案。
+   * 모델링을 위해 학습 데이터 집합과 테스트 데이터 집합으로 **입력 데이터를 임의로 분할**합니다.
+   * 학습 데이터 집합을 사용하여 **모델을 빌드**합니다.
+   * 학습 및 테스트 데이터 집합을 **평가**합니다. 현재 데이터로 관심 있는 질문에 대답하는 데 관련된 다양한 튜닝 매개 변수(*매개 변수 스윕*이라고 함)와 함께 일련의 경쟁적인 컴퓨터 학습 알고리즘을 사용합니다.
+   * 대체 방법 간의 성공 메트릭을 비교하여 질문에 대답하는 **"최상"의 솔루션을 결정**합니다.
 
 > [!NOTE]
-> **避免泄漏**：若添加定型数据集外部数据，则会导致数据泄漏，因为此类数据允许模型或机器学习算法做出不切实际的良好预测。 泄露是数据科学家获得好到不真实的预测结果时会紧张的常见原因。 很难检测到这些依赖项。 为避免泄漏，通常需要在生成分析数据集、创建模型和评估结果准确性之间进行循环。 
+> **유출 방지**: 모델 또는 Machine Learning 알고리즘을 통해 비현실적으로 좋은 예측을 만들기 위해 학습 데이터 집합 외부의 데이터를 포함하면 데이터 유출이 발생할 수 있습니다. 유출은 데이터 과학자들이 진실하기에는 너무 좋아 보이는 예측 결과를 가져올 때 불안해 하는 일반적 이유입니다. 이러한 종속성은 감지하기 어려울 수 있습니다. 유출을 방지하려면 종종 분석 데이터 집합을 빌드하고 모델을 만들어 결과의 정확성을 평가하는 과정을 반복해야 합니다. 
 > 
 > 
 
-我们提供包含 TDSP 的[自动化建模和报告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling)，该工具能够运行多个算法和参数扫描以生成基准模型。 它还会生成基准建模报表，该报表汇总每个模型的性能和参数组合，包括变量重要性。 此过程可以进一步促进功能设计，因为它也是可以迭代的。 
+여러 알고리즘 및 매개 변수 스윕을 통해 실행하여 기본 모델을 생성할 수 있는 [자동화된 모델링 및 보고 도구](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling)에 TDSP를 제공합니다. 또한 각 모델의 성능과 변수 중요도를 포함한 매개 변수 조합을 요약한 기본 모델링 보고서를 생성합니다. 이 프로세스는 추가 기능 엔지니어링을 진행할 수 있으므로 반복적입니다. 
 
 ## <a name="artifacts"></a>Artifacts
-在此阶段中生成的项目包括：
+이 단계에서 생성되는 아티팩트는 다음과 같습니다.
 
-   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
-   * [模型报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)：对于尝试过的每个模型，都会根据模板生成一个标准报表，用于详细介绍每次试验。
-   * **检查点决策**：评估模型的执行是否足够良好，以便将其部署到生产系统。 要提出的一些关键问题有：
-     * 在给定测试数据的情况下，模型是否能充分地回答问题？ 
-     * 是否应尝试备用方法？ 是否应收集其他数据、进行更多的功能设计或使用其他算法进行试验？
+   * [기능 집합](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): 모델링을 위해 개발된 기능은 **데이터 정의** 보고서의 **기능 집합** 섹션에 설명되어 있습니다. 여기에는 기능을 생성하는 코드에 대한 조언과 기능을 생성한 방법에 대한 설명이 있습니다.
+   * [모델 보고서](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): 시도하는 각 모델에 대해 각 실험에 대한 세부 정보를 제공하는 템플릿 기반 표준 보고서가 생성됩니다.
+   * **检查点决策**：评估模型是否足以用于生产。 몇 가지 주요 질문은 다음과 같습니다.
+     * 테스트 데이터가 제공되면 질문에 대해 모델에서 매우 신뢰성 있게 대답합니까? 
+     * 대안을 시도해야 할까요? 추가 데이터를 수집하고 더 많은 기능 엔지니어링을 수행하거나 다른 알고리즘으로 시험해 볼까요?
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-以下是 TDSP 生命周期中每个步骤的链接：
+TDSP의 수명 주기에서 각 단계에 대한 링크는 다음과 같습니다.
 
-   1. [了解业务](lifecycle-business-understanding.md)
-   2. [数据采集和理解](lifecycle-data.md)
-   3. [建模](lifecycle-modeling.md)
-   4. [部署](lifecycle-deployment.md)
-   5. [客户验收](lifecycle-acceptance.md)
+   1. [비즈니스 이해](lifecycle-business-understanding.md)
+   2. [데이터 취득 및 이해](lifecycle-data.md)
+   3. [모델링](lifecycle-modeling.md)
+   4. [배포](lifecycle-deployment.md)
+   5. [고객 승인](lifecycle-acceptance.md)
 
-我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
+특정 시나리오 프로세스의 모든 단계를 보여주는 전체 엔드투엔드 연습도 제공됩니다. [예제 연습](walkthroughs.md) 문서는 링크 및 썸네일 설명을 포함하는 시나리오 목록을 제공합니다. 이 연습에서는 클라우드 및 온-프레미스 도구와 서비스를 워크플로 또는 파이프라인에 결합하여 지능형 애플리케이션을 만드는 방법을 설명합니다. 
 
-有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
+Azure Machine Learning Studio를 사용하는 TDSP의 단계 실행 방법의 예제를 보려면 [Azure Machine Learning에서 TDSP 사용](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)을 참조하세요. 

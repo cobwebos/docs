@@ -1,241 +1,244 @@
 ---
-title: 航天工业预见性维护指南 - Team Data Science Process
-description: 在航天工业、实用工具和运输业中用于预见性维护的 Microsoft Cortana Intelligence 解决方案模板的技术指南。
+title: 항공 우주 예측 유지 관리에 대한 가이드 - Team Data Science Process
+description: 항공, 유틸리티 및 운송에서 예측 유지 관리를 위한 Microsoft Cortana Intelligence를 사용한 솔루션 템플릿에 대한 기술 지침
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: a73308274c9aedf6a85745c17c14637e2ef3d27d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9871e1402336f5ad282c12f959d45fda85512a84
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492472"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721840"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>항공 우주에서 예측 유지 관리를 위한 Cortana Intelligence 솔루션 템플릿에 대한 기술 가이드
 
 > [!Important]
-> 此文已弃用。 讨论仍与航天工业的预测性维护相关，但如果需要最新信息，请参阅[面向商业受众的解决方案概述](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)。
+> 이 문서는 더 이상 사용되지 않습니다. 항공 우주 분야에서의 예측 유지 관리와 관련된 논의가 여전히 있지만, 최신 정보는 [비즈니스 담당자를 위한 솔루션 개요](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)를 참조하세요.
 
 
-解决方案模板可加速在 Cortana Intelligence Suite 上构建 E2E 演示的过程。 已部署的模板使用所需的 Cortana Intelligence 组件预配订阅，并在两者之间建立关系。 它还使用从数据生成器应用程序中的数据示例来设定数据管道的种子（会在部署解决方案模板后在本地计算机上下载和安装数据生成器应用程序）。 生成器中的数据将生成数据管道，并开始生成机器学习预测，然后可在 Power BI 仪表板上将其可视化。
+솔루션 템플릿은 Cortana Intelligence Suite를 기반으로 E2E 데모 빌드 프로세스를 가속화하도록 디자인되었습니다. 배포된 템플릿은 필요한 Cortana Intelligence 구성 요소로 구독을 프로비전한 다음 이들 간의 관계를 빌드합니다. 또한 솔루션 템플릿을 배포한 후 다운로드하여 로컬 컴퓨터에 설치하는 데이터 생성기 애플리케이션의 샘플 데이터로 데이터 파이프라인을 시드합니다. 생성기의 데이터는 데이터 파이프라인을 하이드레이션하며 나중에 Power BI 대시보드에서 시각화할 수 있는 기계 학습 예측을 생성하기 시작합니다.
 
-部署过程会逐步引导用户完成设置解决方案凭据的多个步骤。 请务必记下这些凭据，例如在部署期间提供的解决方案名称、用户名和密码。 
+배포 프로세스는 솔루션 자격 증명을 설정하는 몇 가지 단계를 안내합니다. 솔루션 이름, 사용자 이름 및 배포하는 동안 제공하는 암호와 같은 자격 증명을 기록합니다. 
 
 
-本文的目标是：
-- 介绍订阅中预配的参考体系结构和组件。
-- 演示如何将示例数据替换为自己的数据。 
-- 演示如何修改解决方案模板。  
+이 문서의 목표는 다음과 같습니다.
+- 구독에 프로비전된 참조 아키텍처 및 구성 요소를 설명합니다.
+- 샘플 데이터를 자신의 데이터로 바꾸는 방법을 보여줍니다. 
+- 솔루션 템플릿을 수정하는 방법을 보여줍니다.  
 
 > [!TIP]
-> 可下载和打印[本文的 PDF 版本](https://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)。
+> [이 문서의 PDF 버전](https://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)을 다운로드하여 인쇄할 수 있습니다.
 > 
 > 
 
-## <a name="overview"></a>概述
-![预见性维护体系结构](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
+## <a name="overview"></a>개요
+![예측 유지 관리 아키텍처](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-部署解决方案时，会激活 Cortana Analytics Suite 中的 Azure 服务（包括事件中心、流分析、HDInsight、数据工厂和机器学习）。 体系结构图展示了如何构造航天工业预测性维护解决方案模板。 可以通过在与解决方案部署一起创建的解决方案模板图表上单击 Azure 门户中的服务对其进行调查（HDInsight 除外，该服务是在要求相关管道活动运行时按需预配的，且随后进行了删除）。
-下载[图表的完全尺寸版本](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
+솔루션을 배포하면 Cortana Analytics Suite 내의 Azure 서비스(Event Hub, Stream Analytics, HDInsight, Data Factory, Machine Learning 등)가 활성화됩니다. 아키텍처 다이어그램에서는 항공 솔루션 템플릿에 대한 예측 유지 관리가 생성되는 방법을 보여 줍니다. 이러한 서비스는 솔루션을 배포할 때 생성된 솔루션 템플릿 다이어그램에서 해당 서비스를 클릭하여 Azure Portal에서 조사할 수 있습니다(관련 파이프라인 작업을 실행하고 나중에 삭제해야 할 때 요청 시 프로비전되는 HDInsight 제외).
+[다이어그램의 전체 크기 버전](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)을 다운로드합니다.
 
-以下部分介绍解决方案部分。
+다음 섹션은 솔루션 부분을 설명합니다.
 
-## <a name="data-source-and-ingestion"></a>数据源和引入
-### <a name="synthetic-data-source"></a>综合数据源
-对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。
+## <a name="data-source-and-ingestion"></a>데이터 원본 및 수집
+### <a name="synthetic-data-source"></a>가상 데이터 원본
+对于此模板，使用的数据源是从下载的桌面应用程序生成的，该应用程序是在成功部署后在本地运行的。
 
-若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](https://c3.nasa.gov/dashlink/resources/139/) 由 [NASA 数据存储库](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)中的公开可用数据派生的。
+이 애플리케이션 다운로드 및 설치에 대한 지침을 찾으려면 솔루션 템플릿 다이어그램에서 첫 번째 노드인 예측 유지 관리 데이터 생성기를 선택합니다. 지시 사항은 속성 표시줄에 있습니다. 이 애플리케이션은 솔루션 흐름의 나머지 부분에서 사용되는 데이터 요소 또는 이벤트로 [Azure Event Hub](#azure-event-hub) 서비스를 피드합니다. 이 데이터 원본은 [Turbofan 엔진 성능 저하 시뮬레이션 데이터 집합](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)을 사용한 [NASA 데이터 저장소](https://c3.nasa.gov/dashlink/resources/139/)의 공개적으로 사용할 수 있는 데이터에서 파생되었습니다.
 
-仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。  
+이벤트 생성 애플리케이션은 컴퓨터에서 실행되는 동안 Azure Event Hub를 채웁니다.  
 
-### <a name="azure-event-hub"></a>Azure 事件中心  
-[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是综合数据源提供的输入接收者。
+### <a name="azure-event-hub"></a>Azure Event Hub  
+[Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) 서비스는 가상 데이터 원본에서 제공되는 입력을 받는 대상입니다.
 
-## <a name="data-preparation-and-analysis"></a>数据准备和分析  
-### <a name="azure-stream-analytics"></a>Azure 流分析
-使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)对 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析。 然后可将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储服务](https://azure.microsoft.com/services/storage/)中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
+## <a name="data-preparation-and-analysis"></a>데이터 준비 및 분석  
+### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)를 사용하여 [Azure Event Hub](#azure-event-hub) 서비스의 입력 스트림에 대한 분석을 거의 실시간으로 제공합니다. 그런 다음 결과를 [Power BI](https://powerbi.microsoft.com) 대시보드에 게시하고 모든 원시 수신 이벤트를 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) 서비스에 의해 나중에 처리하기 위해 [Azure Storage](https://azure.microsoft.com/services/storage/) 서비스에 보관합니다.
 
-### <a name="hdinsight-custom-aggregation"></a>HDInsight 自定义聚合
-使用 HDInsight 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
+### <a name="hdinsight-custom-aggregation"></a>HDInsight 사용자 지정 집계
+使用 HDInsight 运行[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析资源存档的原始事件的聚合。
 
-### <a name="azure-machine-learning"></a>Azure 机器学习
-使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定飞机引擎（根据收到的输入数据）的剩余使用寿命 (RUL)。 
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+[Azure Machine Learning 서비스](https://azure.microsoft.com/services/machine-learning/)(Azure Data Factory에서 오케스트레이션됨)로 수신된 입력을 사용하여 특정 항공기 엔진의 잔여 수명(RUL)을 예측합니다. 
 
-## <a name="data-publishing"></a>数据发布
-### <a name="azure-sql-database"></a>Azure SQL 数据库
+## <a name="data-publishing"></a>데이터 게시
+### <a name="azure-sql-database"></a>Azure SQL Database
 使用[AZURE SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储 Azure 机器学习收到的预测，然后在[Power BI](https://powerbi.microsoft.com)仪表板中使用。
 
-## <a name="data-consumption"></a>数据使用
+## <a name="data-consumption"></a>데이터 사용
 ### <a name="power-bi"></a>Power BI
-使用 [Power BI](https://powerbi.microsoft.com) 显示仪表板，其中包含 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)提供的聚合和警报，以及 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)中存储的、使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)生成的 RUL 预测。
+[Power BI](https://powerbi.microsoft.com)를 사용하여 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)가 제공하는 집계 및 경고뿐만 아니라 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)을 통해 생성된 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)에 저장된 RUL 예측을 포함하는 대시보드를 표시합니다.
 
-## <a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据
-本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
+## <a name="how-to-bring-in-your-own-data"></a>사용자 고유 데이터를 가져오는 방법
+이 섹션은 Azure에 사용자 고유 데이터를 가져오는 방법 및 이 아키텍처에 가져오는 데이터에 대한 변경 내용이 필요한 영역을 설명합니다.
 
-你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
+데이터 세트는 이 솔루션 템플릿에 사용되는 [Turbofan 엔진 성능 저하 시뮬레이션 데이터 세트](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)에서 사용하는 데이터 세트와 일치하지 않을 수 있습니다. 사용자 고유 데이터로 작업하기 위해 이 템플릿을 수정하는 과정에서는 데이터 및 요구 사항을 이해하는 것이 중요합니다. 
 
-以下部分介绍引入新数据集需要修改的模板部分。
+다음 섹션에서는 새 데이터 세트를 도입할 때 수정해야 하는 템플릿의 일부분을 설명합니다.
 
-### <a name="azure-event-hub"></a>Azure 事件中心
-Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数据发布到中心。 Azure 事件中心对数据不做任何特殊处理，但用户必须了解提供的数据。
+### <a name="azure-event-hub"></a>Azure Event Hub
+Azure Event Hub는 매우 일반적으로, CSV 또는 JSON 형식 중 하나로 허브에 데이터를 게시할 수 있습니다. Azure 이벤트 허브에서 특별한 처리가 발생하지 않지만 공급되는 데이터를 이해하는 것이 중요합니다.
 
-本文档不会介绍如何引入数据，但可以使用事件中心 API，轻松将事件或数据发送到 Azure 事件中心。
+이 문서는 데이터를 수집하는 방법을 설명하지 않지만 이벤트 허브 API를 사용하여 Azure 이벤트 허브에 이벤트 또는 데이터를 손쉽게 보낼 수 있습니다.
 
 ### <a name="azure-stream-analytics-1"></a>Azure 流分析
-可以使用 Azure 流分析服务从数据流读取数据并将数据输出到任意数量的源，从而提供近实时分析。
+使用 Azure 流分析资源，通过从数据流读取数据并将数据输出到任意数量的源，提供近乎实时的分析。
 
-对于航天工业预测性维护的解决方案模板，Azure 流分析查询包含四个子查询，每个查询均从 Azure 事件中心服务使用事件，并且输出到四个不同的位置。 这些输出包括三个 Power BI 数据集和一个 Azure 存储位置。
+항공 솔루션 템플릿에 대한 예측 유지 관리의 경우 Azure Stream Analytics 쿼리는 각각 Azure Event Hub 서비스에서 이벤트를 소비하고 4개의 고유 위치에 출력을 갖는 4개의 하위 쿼리로 구성됩니다. 이러한 출력은 세 개의 Power BI 데이터 세트 및 하나의 Azure Storage 위치로 구성됩니다.
 
-可通过以下方式找到 Azure 流分析查询：
+Azure Stream Analytics 쿼리는 다음으로 찾을 수 있습니다.
 
-* 连接到 Azure 门户
-* 查找部署解决方案时生成的流分析作业![流分析图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-stream-analytics.png)（例如，预测性维护解决方案的 **maintenancesa02asapbi** 和 **maintenancesa02asablob**）
-* 选择
+* Azure Portal에 연결
+* 솔루션이 배포될 때 생성된 Stream Analytics 작업 ![Stream Analytics 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-stream-analytics.png)(*예:* 예측 유지 관리 솔루션에 대한 **maintenancesa02asapbi** 및 **maintenancesa02asablob**) 찾기
+* 선택
   
-  * “输入”可查看查询输入
-  * “查询”可查看查询本身
-  * “输出”可查看不同的输出
+  * 쿼리 입력을 보려면 ***입력***
+  * 쿼리 자체를 보려면 ***쿼리***
+  * 다른 출력을 보려면 ***출력***
 
-有关 Azure 流分析查询构造的信息，请参阅 MSDN 上的 [Stream Analytics Query Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)（流分析查询参考）。
+Azure Stream Analytics 쿼리 생성에 대한 정보는 MSDN의 [Stream Analytics 쿼리 참조](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 에서 찾을 수 있습니다.
 
-在此解决方案中，查询将三个数据集（具有近乎实时的传入数据流相关分析信息）输出到作为此解决方案模板中的一部分提供的 Power BI 仪表板。 由于对传入数据格式有隐含的了解，必须根据数据格式更改这些查询。
+이 솔루션에서 쿼리는 이 솔루션 템플릿의 일부로 제공되는 Power BI 대시보드에 들어오는 데이터 스트림에 대한 거의 실시간 분석 정보로 세 개의 데이터 세트를 출력합니다. 들어오는 데이터 형식에 대한 암시적 지식이 있기 때문에 이러한 쿼리는 데이터 형식에 기반하여 변경되어야 합니다.
 
-第二个流分析作业 **maintenancesa02asablob** 中的查询将所有[事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)，由于将完整的事件信息流输出到存储，因此无论数据格式为何都无需进行修改。
+두 번째 Stream Analytics 작업 **maintenancesa02asablob**의 쿼리는 모든 [이벤트 허브](https://azure.microsoft.com/services/event-hubs/) 이벤트를 [Azure Storage](https://azure.microsoft.com/services/storage/)에 출력하므로 전체 이벤트 정보는 스토리지로 스트리밍되므로 데이터 형식에 관계 없이 변경이 필요하지 않습니다.
 
-### <a name="azure-data-factory"></a>Azure 数据工厂
-[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/) 服务协调数据的移动和处理。 在航天工业预测性维护的解决方案模板中，数据工厂由 3 个[管道](../../data-factory/concepts-pipelines-activities.md)组成，使用不同的技术移动和处理数据。  可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 数据集下的错误之所以发生，是因为启动数据生成器之前已部署数据工厂。 这些错误可以忽略，不会防碍数据工厂的正常运行
+### <a name="azure-data-factory"></a>Azure Data Factory
+[Azure 데이터 팩터리](https://azure.microsoft.com/documentation/services/data-factory/) 서비스는 데이터의 이동 및 처리를 오케스트레이션합니다. 항공 솔루션 템플릿에 대한 예측 유지 관리에서 데이터 팩터리는 다양한 기술을 사용하여 데이터를 이동 및 처리하는 세 개의 [파이프라인](../../data-factory/concepts-pipelines-activities.md)으로 구성됩니다.  솔루션의 배포로 만든 솔루션 템플릿 다이어그램 맨 아래의 데이터 팩터리 노드를 열어 데이터 팩터리에 액세스합니다. 데이터 세트에서 발생한 오류는 데이터 생성기가 시작되기 전에 배포된 데이터로 인한 것입니다. 이러한 오류는 무시할 수 있으며 데이터 팩터리도 제대로 작동합니다.
 
-![数据工厂数据集错误](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
+![Data Factory 데이터 세트 오류](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-本部分介绍了 [Azure 数据工厂](../../data-factory/concepts-pipelines-activities.md)中的必要[管道和活动](https://azure.microsoft.com/documentation/services/data-factory/)。 下面是解决方案的图示视图。
+이 섹션에서는 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)에 포함된 필요한 [파이프라인 및 작업](../../data-factory/concepts-pipelines-activities.md)을 설명합니다. 솔루션의 다이어그램 보기는 다음과 같습니다.
 
-![Azure 数据工厂](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
+![Azure Data Factory](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-此工厂的两个管道包含 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：maintenancesascript\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/maintenancesascript）。
+이 팩터리의 두 파이프라인은 데이터를 분할하고 집계하는 데 사용되는 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트를 포함합니다. 언급했듯이 스크립트는 설치하는 동안 만든 [Azure Storage](https://azure.microsoft.com/services/storage/) 계정에 있습니다. 해당 위치는 maintenancesascript\\\\script\\\\hive\\\\(또는 https://[Your solution name].blob.core.windows.net/maintenancesascript)입니다.
 
-类似于 [Azure 流分析](#azure-stream-analytics-1)查询，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本对传入的数据格式有隐含了解，必须根据数据格式进行更改。
+[Azure Stream Analytics](#azure-stream-analytics-1) 쿼리와 유사하게 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트는 들어오는 데이터 형식에 대한 암시적 지식을 가지며 데이터 형식에 따라 변경해야 합니다.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/storage/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/stream-analytics/)的数据进行分区。
+이 [파이프라인](../../data-factory/concepts-pipelines-activities.md)은 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) 작업 동안 [Azure Storage](https://azure.microsoft.com/services/storage/)에 넣은 데이터를 분할하도록 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트를 실행하는 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx)를 사용한 단일 작업([HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 작업)을 포함합니다.
 
-此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateFlightInfo.hql***
+이 분할 작업에 대한 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트는 ***AggregateFlightInfo.hql***입니다.
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
-此[管道](../../data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验评分的预测。
+이 [파이프라인](../../data-factory/concepts-pipelines-activities.md)은 여러 작업을 포함하며 최종 결과는 이 솔루션 템플릿과 연결된 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 실험의 점수가 매겨진 예측입니다.
 
-包含的活动有：
+포함된 작업은 다음과 같습니다.
 
-* 使用 [HDInsightLinkedService](../../data-factory/transform-data-using-hadoop-hive.md) 的 [HDInsightHive](https://msdn.microsoft.com/library/azure/dn893526.aspx) 活动运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
-  此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***PrepareMLInput.hql***。
-* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://azure.microsoft.com/services/storage/) 活动访问的单个 [Azure 存储](https://msdn.microsoft.com/library/azure/dn894009.aspx) Blob。
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动调用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验，将结果放入单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
+* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 실험에 필요한 집계 및 기능 엔지니어링을 수행하도록 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트를 실행하는 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx)를 사용한 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 작업.
+  이 분할 작업에 대한 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 스크립트는 ***PrepareMLInput.hql***입니다.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 작업의 결과를 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 작업으로 액세스할 수 있는 단일 [Azure Storage](https://azure.microsoft.com/services/storage/) Blob으로 이동하는 [복사](https://msdn.microsoft.com/library/azure/dn835035.aspx) 작업.
+* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 작업은 단일 [Azure Storage](https://azure.microsoft.com/services/storage/) Blob에 배치되는 결과로 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 실험을 호출합니다.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-此[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将 [Azure 机器学习](#azure-machine-learning)试验的结果从 ***MLScoringPipeline*** 移到随解决方案模板安装一起预配的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)。
+이 [파이프라인](../../data-factory/concepts-pipelines-activities.md)은 ***MLScoringPipeline***에서 [Azure Machine Learning](#azure-machine-learning) 실험의 결과를 솔루션 템플릿 설치의 일부로 프로비전되는 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)에 이동하는 단일 작업([복사](https://msdn.microsoft.com/library/azure/dn835035.aspx) 작업)을 포함합니다.
 
-### <a name="azure-machine-learning"></a>Azure 机器学习
-用于此解决方案模板的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验提供了飞机引擎的剩余使用寿命 (RUL)。 该试验因使用的数据集而有所不同，需要专门针对引入的数据进行修改或替换。
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+이 솔루션 템플릿에 사용된 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 실험은 항공기 엔진의 잔여 수명(RUL)을 제공합니다. 실험은 사용된 데이터 집합에 특정되며 가져온 데이터에 특정된 수정 또는 대체가 필요합니다.
 
-有关 如何创建 Azure 机器学习试验的信息，请参阅[预见性维护：步骤 1（共 3 步），数据准备和特征设计](https://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)。
+Azure Machine Learning 실험 생성 방법에 대한 정보는 [예측 유지 관리: 1/3단계, 데이터 준비 및 기능 엔지니어링](https://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)을 참조하세요.
 
-## <a name="monitor-progress"></a>监视进度
-启动数据生成器后，管道将开始冻结，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
+## <a name="monitor-progress"></a>진행률 모니터링
+데이터 생성기가 시작되면 파이프라인이 하이드레이션하기 시작하고 솔루션의 다양한 구성 요소가 데이터 팩터리에서 발급한 명령을 실행하는 작업을 시작합니다. 두 가지 방법으로 파이프라인을 모니터링할 수 있습니다.
 
-1. 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
-2. 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中找到“SQL 数据库”![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png)并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”
+* Stream Analytics 작업 중 하나는 Blob Storage에 들어오는 원시 데이터를 씁니다. 솔루션을 성공적으로 배포한 화면에서 솔루션의 Blob Storage 구성 요소를 클릭하고 오른쪽 패널에서 열기를 클릭하면 [Azure Portal](https://portal.azure.com/)로 이동합니다. Blob을 클릭합니다. 다음 패널에서 컨테이너 목록이 표시됩니다. **maintenancesadata**를 클릭합니다. 다음 패널에 **rawdata** 폴더가 표시됩니다. rawdata 폴더 안에 hour=17, hour=18 등과 같은 이름을 가진 폴더가 표시됩니다. 이러한 폴더가 표시되는 경우 원시 데이터가 컴퓨터에 생성되고 Blob Storage에 저장되고 있음을 나타냅니다. 해당 폴더에 한정된 크기(MB)로 있어야 하는 csv 파일이 표시됩니다.
+* 파이프라인의 마지막 단계는 SQL Database에 데이터(예: Machine Learning에서 예측)를 쓰는 것입니다. 데이터를 SQL Database에 표시하려면 최대 3시간을 기다려야 할 수도 있습니다. 얼마나 많은 데이터를 SQL Database에서 사용할 수 있는지를 모니터링하는 한 가지 방법은 [Azure Portal](https://portal.azure.com/)을 통한 방법입니다. 在左侧面板中，找到 "SQL 数据库 ![SQL" 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png) 并单击它。 그런 다음 데이터베이스 **pmaintenancedb**를 찾고 클릭합니다. 맨 아래의 다음 페이지에서 관리를 클릭합니다.
    
-    ![管理图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
+    ![관리 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
-    可在此处单击“新建查询”并查询行数（例如，select count(*) from PMResult）。 表中的行数会随数据库的增长而增加。
+    여기에서는 새 쿼리를 클릭하고 행 수를 쿼리(예: PMResult의 select count(*))할 수 있습니다. 데이터베이스 증가에 따라 테이블의 행 수도 증가해야 합니다.
 
-## <a name="power-bi-dashboard"></a>Power BI 仪表板
+## <a name="power-bi-dashboard"></a>Power BI 대시보드
 
-设置 Power BI 仪表板，可视化 Azure 流分析数据（热路径）以及来自 Azure 机器学习（冷路径）的批量预测结果。
+Azure Machine Learning(콜드 경로)의 배치 예측 결과와 Azure Stream Analytics 데이터(실행 부하 과다 경로)를 시각화하도록 Power BI 대시보드를 설정합니다.
 
-### <a name="set-up-the-cold-path-dashboard"></a>设置冷路径仪表板
-在冷路径数据管道中，目标是完成航班后获取每个飞机引擎的预测 RUL（剩余使用寿命）（周期）。 预测结果每 3 小时更新一次，预测过去 3 小时内已结束航班的的飞机引擎。
+### <a name="set-up-the-cold-path-dashboard"></a>콜드 경로 대시보드 설정
+콜드 경로 데이터 파이프라인에서 목표는 각 항공기 엔진이 비행(주기)을 완료하면 예측 RUL(잔여 수명)을 가져오는 것입니다. 예측 결과는 지난 3시간 동안 비행을 완료한 항공기 엔진을 예측하기 위해 3시간마다 업데이트됩니다.
 
-Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。 注意：1）部署解决方案后，预测会在 3 小时内在数据库中显示。
-生成器下载附带的 pbix 文件包含某些种子数据，因此需要立即创建 Power BI 仪表板。 2) 此步骤的先决条件是下载并安装免费软件 [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)。
+Power BI 连接到 Azure SQL 数据库作为其数据源，其中存储了预测结果。 
 
-以下步骤介绍如何将 pbix 文件连接到解决方案部署包含可视化数据时启动的 SQL 数据库（例如预测结果）。
+참고: 
+1.    部署解决方案时，预测将在3小时内出现在数据库中。 생성기 다운로드와 함께 제공되는 pbix 파일은 지금 바로 Power BI 대시보드를 만들 수 있도록 일부 시드 데이터를 포함합니다. 
+2.    在此步骤中，必备组件是下载免费软件[Power BI 桌面](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)并将其安装。
 
-1. 获取数据库凭据。
+다음 단계는 pbix 파일을 시각화에 대한 데이터(예: 예측 결과)를 포함하는 솔루션 배포 시 스핀업된 SQL Database에 연결하는 방법을 안내합니다.
+
+1. 데이터베이스 자격 증명을 가져옵니다.
    
-   在继续下一步之前，需要获取**数据库服务器名称、数据库名称、用户名和密码**。 下面提供了有关如何查找这些信息的指导。
+   다음 단계로 이동하기 전에 **데이터베이스 서버 이름, 데이터베이스 이름, 사용자 이름 및 암호** 가 필요합니다. 찾는 방법을 안내하는 단계는 다음과 같습니다.
    
-   * 解决方案模板图示上的“Azure SQL 数据库”变为绿色后，请单击它，并单击“打开”。
-   * 会看到新的浏览器选项卡/窗口显示 Azure 门户页面。 单击左侧面板中的“资源组”。
-   * 选择要用于部署该解决方案的订阅，并选择“YourSolutionName**ResourceGroup”\_** 。
-   * 在新弹出的面板中，单击 ![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png)图标以访问数据库。 数据库名称位于此图标的旁边（例如 'pmaintenancedb'），“数据库服务器名称”列于服务器名称属性下方且应类似于 YourSoutionName.database.windows.net。
-   * 数据库**用户名**和**密码**与部署解决方案期间记下的用户名和密码相同。
-2. 使用 Power BI Desktop 更新冷路径报表文件的数据源。
+   * 솔루션 템플릿 다이어그램의 **'Azure SQL Database'** 가 녹색으로 바뀌면 클릭한 다음, **'열기'** 를 클릭합니다.
+   * 你将看到一个新的浏览器选项卡/窗口，其中显示了 "Azure 门户" 页。 왼쪽 패널에서 **'리소스 그룹'** 을 클릭합니다.
+   * 솔루션 배포에 사용 중인 구독을 선택한 다음 **'YourSolutionName\_ResourceGroup'** 을 선택합니다.
+   * 새 팝업 패널에서 ![SQL 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) 아이콘을 클릭하여 데이터베이스에 액세스합니다. 데이터베이스 이름(예: **'pmaintenancedb'** )은 이 아이콘 옆에 있으며, **데이터베이스 서버 이름**은 서버 이름 속성 아래에 나열되고 **YourSolutionName.database.windows.net**과 비슷합니다.
+   * 데이터베이스 **사용자 이름** 및 **암호**는 솔루션 배포 중 이전에 기록된 사용자 이름 및 암호와 동일합니다.
+2. Power BI 데스크톱을 사용하여 콜드 경로 보고서 파일의 데이터 원본을 업데이트합니다.
    
-   * 在下载和解压生成器文件的文件夹中，双击“PowerBI**PredictiveMaintenanceAerospace.pbix”\\** 文件。 如果在打开文件时看到任何警告消息，请忽略。 请在文件顶部单击“编辑查询”。
+   * 생성기 파일을 다운로드하고 압축을 푼 폴더에서 **PowerBI\\PredictiveMaintenanceAerospace.pbix** 파일을 두 번 클릭합니다. 파일을 열 때 경고 메시지가 표시되는 경우 무시합니다. 파일의 맨 위에서 **'쿼리 편집'** 을 클릭합니다.
      
-     ![编辑查询](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
-   * 会看到两个表：**RemainingUsefulLife** 和 **PMResult**。 选择第一个表，并在右侧“查询设置”![](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png)面板的“应用的步骤”下的“源”旁边单击**查询设置图标**。 忽略显示的任何警告消息。
-   * 在弹出窗口中，将“服务器”和“数据库”替换为自己的服务器和数据库名称，并单击“确定”。 对于服务器名称，请确保指定端口 1433 (**YourSolutionName.database.windows.net, 1433**)。 将数据库字段保留为 **pmaintenancedb**。 忽略屏幕上出现的警告消息。
-   * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（这是首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
-   * 单击第二个表 **PMResult**，在右侧“查询设置”![](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png)面板的“应用的步骤”下的“源”旁边单击**导航图标**，根据以上步骤更新服务器和数据库名称并单击“确定”。
-   * 返回上一页后，请关闭窗口。 此时会显示一条消息 - 单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
-3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 请注意，此步骤需要 Power BI 帐户（或 Office 365 帐户）。
+     ![쿼리 편집](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
+   * 두 개의 테이블, **RemainingUsefulLife** 및 **PMResult**가 표시됩니다. 첫 번째 테이블을 선택하고 오른쪽 **'쿼리 설정'** 패널의 **'적용된 단계'** 아래에서 **'원본'** 옆의 ![쿼리 설정 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png)을 클릭합니다. 표시되는 경고 메시지를 무시합니다.
+   * 팝 아웃 창에서 **"서버"** 및 **"데이터베이스"** 를 사용자 고유 서버 및 데이터베이스 이름으로 바꾼 다음 **"확인"** 을 클릭합니다. 서버 이름의 경우 포트 1433을 지정했는지 확인합니다(**YourSolutionName.database.windows.net, 1433**). 데이터베이스 필드를 **pmaintenancedb**로 남겨 둡니다. 화면에 나타나는 경고 메시지를 무시합니다.
+   * 다음 팝 아웃 창에서 왼쪽 창에 두 가지 옵션이 표시됩니다(**Windows** 및 **데이터베이스**). 单击 **"数据库"** ，填充 **"用户名"** 和 **"密码"** （首次部署解决方案和创建 Azure SQL 数据库时输入的用户名和密码）。 ***이러한 설정을 적용할 수준 선택***에서 데이터베이스 수준 옵션을 선택합니다. 그런 다음 **'연결'** 을 클릭합니다.
+   * 두 번째 테이블 **PMResult**를 클릭하고 오른쪽 **'쿼리 설정'** 패널의 **'적용된 단계'** 아래 **'원본'** 옆에 있는 ![탐색 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png)을 클릭한 다음 위 단계와 마찬가지로 서버 및 데이터베이스 이름을 업데이트하고 확인을 클릭합니다.
+   * 이전 페이지로 안내된 후 창을 닫습니다. 메시지가 표시되면 **적용**을 클릭합니다. 마지막으로 **저장** 단추를 클릭하여 변경 내용을 저장합니다. Power BI 파일은 이제 서버에 대한 연결을 설정합니다. 시각화가 비어 있는 경우 범례의 오른쪽 위 모퉁이의 지우개 아이콘을 클릭하여 모든 데이터를 시각화하도록 시각화의 선택 항목을 해제해야 합니다. 새로 고침 단추를 사용하여 시각화에 새 데이터를 반영합니다. 처음에 데이터 팩터리는 3시간마다 새로 고치도록 예약되어 있으므로 시각화에는 시드 데이터만 나타납니다. 3시간 후 데이터를 새로 고치면 시각화에 적용된 새 예측이 표시됩니다.
+3. (선택 사항) 콜드 경로 대시보드를 [Power BI 온라인](https://www.powerbi.com/)에 게시합니다. 此步骤需要 Power BI 帐户（或 Office 365 帐户）。
    
-   * 单击“发布”，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!” 一个绿色的复选标记。 单击以下链接“在 Power BI 中 打开 PredictiveMaintenanceAerospace.pbix”。 若要查找详细说明，请参阅 [Publish from Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)（从 Power BI Desktop 发布）。
-   * 若要创建新仪表板，请在左侧窗格中单击“仪表板”部分旁边的 **+** 号。 为新仪表板输入名称“Predictive Maintenance Demo”。
-   * 打开报表后，请单击![大头针图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png)以将所有可视化效果固定到仪表板。 要查找详细说明，请参阅[从报表将磁贴固定到 Power BI 仪表板](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)。
-     转到仪表板页并调整可视化效果的大小和位置并编辑其标题。 若要查找有关如何编辑磁贴的详细说明，请参阅 [Edit a tile -- resize, move, rename, pin, delete, add hyperlink](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)（编辑磁贴 -- 调整大小、移动、重命名、固定、删除、添加超链接）。 下面是固定了一些冷路径可视化效果的仪表板示例。  根据运行数据生成器的时间，可视化效果上的数字可能会不同。
+   * **‘게시’** 를 클릭하고 몇 초 후 녹색 확인 표시로 "Power BI에 게시 성공!"을 표시하는 창이 나타납니다. 아래 링크 "Power BI에서 PredictiveMaintenanceAerospace.pbix 열기"를 클릭합니다. 자세한 지침을 찾으려면 [Power BI 데스크톱에서 게시](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)를 참조하세요.
+   * 새 대시보드를 만들려면 왼쪽 창의 **대시보드** 섹션 옆의 **+** 기호를 클릭합니다. 이 새 대시보드에 대해 이름 "예측 유지 관리 데모"를 입력합니다.
+   * 보고서를 열면 ![PIN 아이콘](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png)을 클릭하여 모든 시각화를 대시보드에 고정합니다. 자세한 지침을 찾으려면 [보고서에서 Power BI 대시보드에 타일 고정](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)을 참조하세요.
+     대시보드 페이지로 이동하고 시각화의 크기 및 위치를 조정하고 제목을 편집합니다. 타일을 편집하는 방법에 자세한 지침을 찾으려면 [타일 편집 - 하이퍼링크 크기 조정, 이동, 이름 바꾸기, 고정, 삭제, 추가](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)를 참조하세요. 다음은 고정된 몇 가지 콜드 경로 시각화를 사용한 예제 대시보드입니다.  데이터 생성기의 실행 시간에 따라 시각화에 대한 숫자가 달라질 수 있습니다.
      <br/>
-     ![最终视图](./media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
+     ![최종 보기](./media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
      <br/>
    * 要计划数据刷新，请将鼠标悬停在**PredictiveMaintenanceAerospace**数据集上，单击](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) ![省略号图标，然后选择 "**计划刷新**"。
      <br/>
-     **注意：** 如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
+     **참고:** 경고 메시지가 표시되는 경우 **자격 증명 편집**을 클릭하고 데이터베이스 자격 증명이 1단계에서 설명된 것과 동일한지 확인합니다.
      <br/>
-     ![计划刷新](./media/cortana-analytics-technical-guide-predictive-maintenance/schedule-refresh.png)
+     ![새로 고침 예약](./media/cortana-analytics-technical-guide-predictive-maintenance/schedule-refresh.png)
      <br/>
-   * 展开“计划刷新”部分。 打开“保持数据最新”。
+   * **새로 고침 예약** 섹션을 확장합니다. "데이터를 최신 상태로 유지"를 켭니다.
      <br/>
-   * 根据需要计划刷新。 若要查找详细信息，请参阅 [Data refresh in Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)（Power BI 中的数据刷新）。
+   * 필요에 따라 새로 고침을 예약합니다. 자세한 정보를 찾으려면 [Power BI에서 데이터 새로 고침](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)을 참조하세요.
 
-### <a name="setup-hot-path-dashboard"></a>设置热路径仪表板
-以下步骤逐步说明如何可视化部署解决方案时生成的流分析作业的数据输出。 若要执行以下步骤，需要一个 [Power BI online](https://www.powerbi.com/) 帐户。 如果没有帐户，可以[创建一个](https://powerbi.microsoft.com/pricing)。
+### <a name="setup-hot-path-dashboard"></a>실행 부하 과다 경로 대시보드 설정
+다음 단계에서는 솔루션 배포 시 생성된 Stream Analytics 작업에서 데이터 출력을 시각화하는 방법을 안내합니다. 다음 단계를 수행하려면 [Power BI 온라인](https://www.powerbi.com/) 계정이 필요합니다. 계정이 없는 경우 [새로 만들](https://powerbi.microsoft.com/pricing)수 있습니다.
 
-1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
+1. Azure Stream Analytics(ASA)에 Power BI 출력을 추가합니다.
    
-   * 必须根据 [Azure 流分析和 Power BI：用于实时查看流数据的分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
-   * ASA 查询具有三个输出，分别为 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 您可以通过单击 "查询" 选项卡来查看查询。对应于每个表，需要将输出添加到 ASA。 添加第一个输出时 (**aircraftmonitor**)，请确保“输出别名”、“数据集名称”和“表名称”都相同 (**aircraftmonitor**)。 重复以上步骤为 **aircraftalert** 和 **flightsbyhour** 添加输出。 将三个输出表全部添加完成并启动 ASA 作业后，应收到一条确认消息（“成功启动流分析作业 maintenancesa02asapbi”）。
-2. 登录到 [Power BI online](https://www.powerbi.com)
+   * [Azure Stream Analytics 및 Power BI: 스트리밍 데이터의 실시간 가시성에 대한 분석 대시보드](../../stream-analytics/stream-analytics-power-bi-dashboard.md)의 지침에 따라 Power BI 대시보드로 Azure Stream Analytics 작업의 출력을 설정해야 합니다.
+   * ASA 查询有三个输出，分别为**aircraftmonitor**、 **aircraftalert**和**flightsbyhour**。 您可以通过单击 "查询" 选项卡来查看查询。对应于每个表，需要将输出添加到 ASA。 첫 번째 출력(**aircraftmonitor**)을 추가하는 경우 **출력 별칭**, **데이터 세트 이름** 및 **테이블 이름**이 동일(**aircraftmonitor**)한지 확인합니다. 단계를 반복하여 **aircraftalert** 및 **flightsbyhour**에 대한 출력을 추가합니다. 세 개의 모든 출력 테이블을 추가하고 ASA 작업을 시작한 후 확인 메시지를 받아야 합니다("Stream Analytics 작업 maintenancesa02asapbi 시작 성공").
+2. [Power BI 온라인](https://www.powerbi.com)
    
-   * 在左侧面板“我的工作区”中的“数据集”部分，会显示数据集名称 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 这是在上一步骤中从 Azure 流分析推送的流数据。 数据集 **flightsbyhour** 可能不与其他两个数据集同时显示，因为其后的 SQL 查询的性质不同。 但它会在一小时后显示。
-   * 确保“可视化效果”窗格已打开，并显示在屏幕的右侧。
-3. 将数据传输到 Power BI 后，可开始可视化流式处理数据。 下面是固定了一些热路径可视化效果的仪表板示例。 根据相应的数据集可创建其他仪表板磁贴。 根据运行数据生成器的时间，可视化效果上的数字可能会不同。
+   * 내 작업 영역의 왼쪽 패널에 있는 데이터 세트 섹션에는 ***데이터 세트*** 이름이 **aircraftmonitor**, **aircraftalert** 및 **flightsbyhour**로 표시되어야 합니다. 이전 단계에서 Azure Stream Analytics에서 푸시한 스트리밍 데이터입니다. 데이터 세트 **flightsbyhour**는 SQL 쿼리의 특성상 다른 두 데이터 세트로 동시에 표시되지 않을 수 있습니다. 그러나 한 시간 후에 표시됩니다.
+   * ***처리*** 창이 열려 있고 화면 오른쪽에 표시되는지 확인합니다.
+3. 데이터가 Power BI로 흐르게 한 후 스트리밍 데이터의 시각화를 시작할 수 있습니다. 다음은 고정된 몇 가지 실행 부하 과다 경로 시각화를 사용한 예제 대시보드입니다. 적절한 데이터 세트에 따라 다른 대시보드 타일을 만들 수 있습니다. 데이터 생성기의 실행 시간에 따라 시각화에 대한 숫자가 달라질 수 있습니다.
 
-    ![仪表板视图](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
+    ![대시보드 보기](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. 下面是创建上述某个磁贴的一些步骤– "传感器11与阈值48.26 的汽油视图" 磁贴：
    
-   * 在左侧面板“数据集”部分中单击数据集“aircraftmonitor”。
-   * 单击**折线图**图标。
-   * 单击“字段”窗格中的“已处理”，其会在“可视化效果”窗格中的“轴”下显示。
-   * 单击“s11”和“s11\_alert”，两者都会在“值”下显示。 单击“s11”和“s11**警告”\_** 旁的小箭头，将“总和”更改为“平均值”。
-   * 单击顶部的“保存”，将报表命名为“aircraftmonitor”。 名为“aircraftmonitor”的报表随即显示在左侧“导航”窗格的“报表”部分。
-   * 单击折线图右上角的“固定视觉对象”图标。 可能会显示“固定到仪表板”窗口让你选择仪表板。 选择“预测性维护演示”，然后单击“固定”。
+   * 왼쪽 패널 데이터 세트 섹션에서 데이터 세트 **aircraftmonitor** 를 클릭합니다.
+   * **꺾은선형 차트** 아이콘을 클릭합니다.
+   * **시각화** 창의 "축" 아래에 보이도록 **필드** 창에서 **처리**를 클릭합니다.
+   * "값" 아래에 모두 표시되도록 "s11" 및 "s11\_alert"을 클릭합니다. **s11** 및 **s11\_alert** 옆에 있는 작은 화살표를 클릭하고 "합계"를 "평균"으로 변경합니다.
+   * 위의 **저장**을 클릭하고 "aircraftmonitor"로 보고서 이름을 지정합니다. "aircraftmonitor"라는 보고서가 왼쪽의 **탐색기** 창에서 **보고서** 섹션에 표시됩니다.
+   * 单击此折线图右上角的 "**固定视觉对象**" 图标。 "대시보드에 고정" 창이 대시보드를 선택하도록 표시될 수 있습니다. "예측 유지 관리 데모"를 선택한 다음 "고정"을 클릭합니다.
    * 在仪表板上将鼠标悬停在此磁贴上，单击右上角的 "编辑" 图标，将其标题更改为 "传感器11与阈值48.26 的汽油视图"，并将副标题更改为 "一段时间内的每个汽油的平均数量"。
 
-## <a name="delete-your-solution"></a>删除解决方案
-在不经常使用解决方案的情况下，请务必停止数据生成器，因为运行数据生成器会产生较高的费用。 如果不使用解决方案，请将其删除。 删除解决方案会删除部署该解决方案时在订阅中预配的所有组件。 若要删除解决方案，请在解决方案模板左侧面板中单击该解决方案的名称，并单击“删除”。
+## <a name="delete-your-solution"></a>솔루션 삭제
+데이터 생성기를 실행하면 비용이 더 높아지므로 솔루션을 활발히 사용하지 않을 때 데이터 생성기를 중지하도록 합니다. 솔루션을 사용하지 않는 경우에는 삭제합니다. 솔루션을 삭제하면 솔루션을 배포할 때 구독에 프로비전된 모든 구성 요소가 삭제됩니다. 솔루션을 삭제하려면 솔루션 템플릿 왼쪽 패널의 솔루션 이름을 클릭한 다음 **삭제**를 클릭합니다.
 
-## <a name="cost-estimation-tools"></a>成本估算工具
-以下两个工具可帮助进一步了解在订阅中运行航天工业预见性维护的解决方案模板产生的总成本：
+## <a name="cost-estimation-tools"></a>비용 예측 도구
+다음 두 가지 도구는 구독에서 항공 솔루션 템플릿에 대한 예측 유지 관리를 실행하는 데 필요한 총 비용을 더욱 잘 이해할 수 있도록 사용할 수 있습니다.
 
-* [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator Tool (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure 비용 추정 도구(온라인)](https://azure.microsoft.com/pricing/calculator/)
+* [Microsoft Azure 비용 추정 도구(데스크톱)](https://www.microsoft.com/download/details.aspx?id=43376)
 

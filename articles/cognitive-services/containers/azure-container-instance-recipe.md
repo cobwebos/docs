@@ -1,51 +1,51 @@
 ---
-title: Azure 容器实例方案
+title: Azure 容器实例食谱
 titleSuffix: Azure Cognitive Services
-description: 了解如何部署 Azure 容器实例上的认知服务容器
+description: 了解如何在 Azure 容器实例上部署认知服务容器
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704335"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716997"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance"></a>部署和 Azure 容器实例上运行容器
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure Container Instance에서 컨테이너 배포 및 실행
 
-使用以下步骤中，Azure 认知服务应用程序中轻松地使用 Azure 在云中缩放[容器实例](https://docs.microsoft.com/azure/container-instances/)。 本帮助你专注于构建您的应用程序而不是管理基础结构。
+通过以下步骤，可以轻松地通过 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)缩放云中的 Azure 认知服务应用程序。 容器化可帮助你专注于构建应用程序，而不是管理基础结构。 有关使用容器的详细信息，请参阅[功能和优势](../cognitive-services-container-support.md#features-and-benefits)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>필수 조건
 
-此解决方案适用于任何认知服务容器。 使用此方案之前，必须在 Azure 门户中创建认知服务资源。 每个支持容器的认知服务具有专门为安装和配置容器的服务的"如何安装"文档。 由于某些服务需要作为容器的输入文件或一组文件，务必了解并使用该容器已成功使用此解决方案之前。
+食谱适用于任何认知服务容器。 使用食谱之前，必须在 Azure 门户中创建认知服务资源。 支持容器的每个认知服务都有一个 "如何安装" 文档，专门用于安装和配置容器的服务。 某些服务需要一个文件或一组文件作为容器的输入，在使用此解决方案之前，请务必了解并成功使用容器。
 
-* 在 Azure 门户中创建认知服务资源。
-* 认知服务**终结点 URL** -容器查看在特定服务的"如何安装"，要找到其中的终结点 URL 是在 Azure 门户中，以及一个正确的 URL 的示例，如下所示。 确切格式可以更改服务到服务。
-* 认知服务**键**-密钥位于**密钥**Azure 资源页。 您只需要两个密钥中的一个即可。 该密钥为 32 个字母数字字符的字符串。
-* 单个认知服务容器在本地主机 （计算机） 上。 请确保你可以：
-  * 拉取映像`docker pull`命令。
-  * 使用所有所需的配置设置已成功运行本地容器`docker run`命令。
-  * 调用容器的终结点，取回 2xx 响应和 JSON 响应。
+* 在 Azure 门户中创建的认知服务资源。
+* 认知服务**终结点 URL** -查看容器的特定服务 "如何安装"，以查找 endpoint URL 在 Azure 门户中的位置，以及正确的 url 示例。 确切的格式可以从服务更改为服务。
+* 认知服务**密钥**-密钥位于 Azure 资源的 "**密钥**" 页上。 두 키 중 하나만 필요합니다. 此键是32字母数字字符的字符串。
+* 本地主机（您的计算机）上的单个认知服务容器。 请确保可以：
+  * 使用 `docker pull` 命令拉取映像。
+  * 使用 `docker run` 命令通过所有必需的配置设置成功运行本地容器。
+  * 调用容器的终结点，获取 HTTP 2xx 和 JSON 响应的响应。
 
-在尖括号内的所有变量`<>`，需要替换为你自己的值。 这种替换包含在尖括号。
+尖括号（`<>`）中的所有变量都需要替换为自己的值。 此替换包括尖括号。
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>使用容器实例
 
-1. 选择**概述**和复制的 IP 地址。 它将是数字 IP 地址，如`55.55.55.55`。
-1. 打开新的浏览器选项卡，并使用的 IP 地址，例如， `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 您将看到容器的主页上，让您知道正在运行容器。
+1. 选择 "**概述**" 并复制 "IP 地址"。 它将是数字 IP 地址，如 `55.55.55.55`。
+1. 打开新的浏览器选项卡，并使用 IP 地址，例如 `http://<IP-address>:5000 (http://55.55.55.55:5000`）。 你将看到容器的主页，让你知道容器正在运行。
 
-1. 选择**服务 API 说明**若要查看容器的 swagger 页。
+1. 选择 "**服务 API 说明**" 以查看容器的 swagger 页面。
 
-1. 选择任一**POST** Api，然后选择**试试看**。这些参数会显示包括输入。 填写参数。
+1. 选择任何**POST** api，并选择 "**试用**"。 将显示参数，包括输入。 填写参数。
 
-1. 选择**Execute**将请求发送到容器实例。
+1. 选择 "**执行**" 将请求发送到容器实例。
 
-    已成功创建并在 Azure 容器实例中使用认知服务容器。
+    已成功在 Azure 容器实例中创建并使用了认知服务容器。

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 Windows 桌面入门 - 配置 | Microsoft Docs
-description: Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用 Azure Active Directory v2 终结点保护的 API。
+title: Azure AD v2 Windows 데스크톱 시작 - 구성 | Microsoft Docs
+description: Windows Desktop .NET(XAML) 애플리케이션이 액세스 토큰을 얻고 Azure Active Directory v2 엔드포인트로 보호되는 API를 호출하는 방식
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,23 +15,22 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a058024f8d6bdf7399e222c134f9f24c4ddffee8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e84d99d18d999a7b629f65f9d18355321f04e538
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835563"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712515"
 ---
-# <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
-在此步骤中，需要将应用程序 ID 添加到项目。
+# <a name="add-the-applications-registration-information-to-your-app"></a>앱에 애플리케이션의 등록 정보 추가
+이 단계에서는 프로젝트에 애플리케이션 ID를 추가해야 합니다.
 
-1.  打开 `App.xaml.cs`，并将包含 `ClientId` 的行替换为：
+1.  `App.xaml.cs`를 열고 다음으로 `ClientId`를 바꿉니다.
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";
 ```
 
-### <a name="what-is-next"></a>后续操作
+### <a name="what-is-next"></a>다음 내용
 
 [!INCLUDE [Test and Validate](../../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]

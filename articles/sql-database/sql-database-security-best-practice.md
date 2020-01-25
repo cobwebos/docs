@@ -8,16 +8,16 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615025"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715177"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL 数据库安全最佳实践操作手册
 
-## <a name="overview"></a>概述
+## <a name="overview"></a>개요
 
 本文档提供有关如何解决使用 Azure SQL 数据库的新的或现有应用程序的常见安全要求的指导。 它按高级安全区域进行组织。 若要解决特定的威胁，请参阅[常见安全威胁和潜在缓解](#common-security-threats-and-potential-mitigations)部分。 虽然在将应用程序从本地迁移到 Azure 时，某些提供的建议适用，但迁移方案并不是本文档的重点。
 
@@ -28,11 +28,11 @@ ms.locfileid: "75615025"
 
 ### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>本指南未涵盖的 SQL 部署提供
 
-- Azure SQL 数据仓库
+- Azure SQL Data Warehouse
 - Azure SQL Vm （IaaS）
-- 本地 SQL Server
+- SQL Server 온-프레미스
 
-### <a name="audience"></a>受众
+### <a name="audience"></a>대상
 
 本指南的目标读者是面向客户的有关如何保护 Azure SQL 数据库的问题。 此最佳实践文章中感兴趣的角色包括但不限于：
 
@@ -55,16 +55,16 @@ ms.locfileid: "75615025"
 - [NIST 特殊发布800-53 安全控制](https://nvd.nist.gov/800-53)： ac-5、ac 6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library)：6.3.2、6.4。2
 
-### <a name="feedback"></a>反馈
+### <a name="feedback"></a>피드백
 
 我们计划继续更新此处列出的建议和最佳实践。 使用本文底部的 "**反馈**" 链接提供对此文档的输入或任何更正。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>인증
 
-身份验证是证明用户所声明身份的过程。 Azure SQL 数据库支持两种类型的身份验证：
+인증은 사용자의 신원을 증명하는 과정입니다. Azure SQL Database는 두 가지 인증 유형을 지원합니다.
 
-- SQL 身份验证
-- Azure Active Directory 身份验证
+- SQL 인증
+- Azure Active Directory 인증
 
 ### <a name="central-management-for-identities"></a>标识的集中管理
 
@@ -78,7 +78,7 @@ ms.locfileid: "75615025"
 
 - 使用 Azure Active Directory （Azure AD）身份验证实现集中标识管理。
 
-**最佳做法**：
+**모범 사례**:
 
 - 创建 Azure AD 租户，并[创建用户](../active-directory/fundamentals/add-users-azure-active-directory.md)来表示人为用户并创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，以表示应用、服务和自动化工具。 服务主体等效于 Windows 和 Linux 中的服务帐户。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "75615025"
 > - 在客户端 Azure AD 身份验证上，需要访问 internet 或通过用户定义的路由（UDR）连接到 VNet。
 > - Azure AD 访问令牌缓存在客户端，其生存期取决于令牌配置。 请参阅[Azure Active Directory 中可配置的令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)一文
 
-### <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
+### <a name="multi-factor-authentication-mfa"></a>MFA(Multi-Factor Authentication)
 
 > [!NOTE]
 > 中提到的： OSA 实践 #2、ISO 访问控制（AC）
@@ -117,7 +117,7 @@ Azure 多重身份验证（MFA）通过要求多种形式的身份验证来帮�
 
 - 替代方法是为整个 Azure AD 或 AD 域启用 MFA。
 
-**最佳做法**：
+**모범 사례**:
 
 - 激活 Azure AD 中的条件性访问（需要高级订阅）。 
   - 请参阅文章[Azure AD 中的条件性访问](../active-directory/conditional-access/overview.md)。  
@@ -152,7 +152,7 @@ Azure 多重身份验证（MFA）通过要求多种形式的身份验证来帮�
 
 - 使用不使用密码的 Azure AD 集成身份验证。
 
-**最佳做法**：
+**모범 사례**:
 
 - 使用 Windows 凭据进行单一登录身份验证。 将本地 AD 域与 Azure AD 联合，并使用集成 Windows 身份验证（对于已加入域的计算机，Azure AD）。
   - 请参阅[Azure AD 集成身份验证的 SSMS 支持](sql-database-aad-authentication-configure.md#active-directory-integrated-authentication)一文。
@@ -166,7 +166,7 @@ Azure 多重身份验证（MFA）通过要求多种形式的身份验证来帮�
 
 - 启用 Azure 托管标识。 你还可以使用集成或基于证书的身份验证。 
 
-**最佳做法**：
+**모범 사례**:
 
 - 使用[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
   - [系统分配的托管标识](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md) 
@@ -187,7 +187,7 @@ Azure 多重身份验证（MFA）通过要求多种形式的身份验证来帮�
 
 - 使用 Azure Key Vault 存储密码和密码。 如果适用，请使用与 Azure AD 用户的 Azure SQL 数据库的 MFA。
 
-**最佳做法**：
+**모범 사례**:
 
 - 如果无法避免密码或机密，请在 Azure Key Vault 中存储用户密码和应用程序机密，并通过 Key Vault 访问策略管理访问权限。 
 
@@ -201,7 +201,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 使用 SQL 身份验证。
 
-**最佳做法**：
+**모범 사례**:
 
 - 作为服务器管理员，创建登录名和用户。 除非使用包含密码的包含数据库用户，否则所有密码都存储在 master 数据库中。
   - 请参阅[如何控制和授予数据库对 Sql 数据库和 Sql 数据仓库的访问权限](sql-database-manage-logins.md)一文。
@@ -211,7 +211,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
   - 使用更长的密码，而不是较短的随机选定字符。
   - 至少每90天执行一次手动密码更改。
 
-## <a name="access-management"></a>访问管理
+## <a name="access-management"></a>액세스 관리
 
 访问管理是对 Azure SQL 数据库的授权用户访问和权限的控制和管理过程。
 
@@ -243,9 +243,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 在 Azure 中资源管理器：
   - 使用内置角色（如果可用）或自定义 RBAC 角色，并分配必要的权限。
     - [Azure 的内置角色](../role-based-access-control/built-in-roles.md) 
-    - [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)
+    - [Azure 리소스에 대한 사용자 지정 역할](../role-based-access-control/custom-roles.md)
 
-**最佳做法**：
+**모범 사례**:
 
 以下最佳做法是可选的，但将导致更好的可管理性和安全策略的可支持性： 
 
@@ -257,16 +257,16 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 当内置角色授予过多或权限不足时，创建和使用自定义角色。 实践中使用的典型角色： 
   - 安全部署 
-  - 管理员 
-  - Developer 
+  - 관리자 
+  - 개발자 
   - 支持人员 
-  - 审核员 
+  - 감사자 
   - 自动化过程 
   - 最终用户 
 
 - 请记住，SQL Server 数据库引擎中的权限可应用于以下作用域。 范围越小，授予权限的影响越小。 
   - Azure SQL 数据库服务器（master 数据库中的特殊角色） 
-  - 数据库 
+  - 데이터베이스 
   - 架构（另请参阅：针对[SQL Server 的架构设计：针对架构设计的建议，具有安全性](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
   - 对象（表、视图、过程等） 
   > [!NOTE]
@@ -283,7 +283,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 **如何实现**：
 
-- 确定所需的职责分离级别。 示例： 
+- 确定所需的职责分离级别。 예시: 
   - 在开发/测试和生产环境之间 
   - 与安全相关的任务 vs 数据库管理员（DBA）管理级别任务与开发人员任务。 
     - 示例：审核员，为角色级安全性（RLS）创建安全策略，实现带有 DDL 权限的 SQL 数据库对象。
@@ -308,7 +308,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
   - 进程中的人工干预。 
   - 审核跟踪–有关审核的详细信息，请参阅[审核关键安全事件](#audit-critical-security-events)。
 
-**最佳做法**：
+**모범 사례**:
 
 - 请确保将不同的帐户用于开发/测试环境和生产环境。 不同的帐户有助于满足测试 & 生产系统的隔离。
 
@@ -335,15 +335,15 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 对于想要深入了解 SoD 的读者，建议采用以下资源： 
 
-- 对于 Azure SQL 数据库：  
+- Azure SQL 데이터베이스의 경우.  
   - [控制和授予数据库对 SQL 数据库和 SQL 数据仓库的访问权限](sql-database-manage-logins.md)
   - [应用程序开发人员的引擎分离职责](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [SQL Server 2014 中的职责分离](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [在 SQL Server 中对存储过程签名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [SQL Server 中的签名存储过程](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - 对于 Azure 资源管理：
   - [Azure 的内置角色](../role-based-access-control/built-in-roles.md) 
-  - [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)
+  - [Azure 리소스에 대한 사용자 지정 역할](../role-based-access-control/custom-roles.md)
   - [使用 Azure AD Privileged Identity Management 提升访问权限](https://www.microsoft.com/en-us/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>执行常规代码评审
@@ -361,7 +361,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 在提交到 main 分支之前，人员（代码本身的作者除外）必须检查代码是否有可能提升权限风险，并检查恶意数据修改以防止欺诈和恶意访问。 可以使用源代码管理机制完成此操作。
 
-**最佳做法**：
+**모범 사례**:
 
 - 标准化：它有助于实现适用于任何代码更新的标准过程。 
 
@@ -377,7 +377,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 务必了解代码更改的所有源：代码可以在 T-sql 脚本中进行;它可以是以视图、函数、触发器和存储过程形式执行或部署的即席命令。 它也可以是 SQL 代理作业定义（步骤）的一部分，可从 SSIS 包、Azure 数据工厂和其他服务中执行。
 
-## <a name="data-protection"></a>数据保护
+## <a name="data-protection"></a>데이터 보호
 
 数据保护是一组功能，用于保护重要信息不受加密或模糊处理的影响。
 
@@ -392,7 +392,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 在客户端和服务器之间移动数据的同时保护数据。 请参阅[网络安全](#network-security)。
 
-### <a name="encrypt-data-at-rest"></a>静态数据加密
+### <a name="encrypt-data-at-rest"></a>미사용 암호화 데이터
 
 > [!NOTE]
 > 中提到的： OSA 实践 #6、ISO 控制系列：加密
@@ -404,7 +404,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 默认情况下，将为在 Azure SQL 数据库中2017之后创建的任何数据库启用[透明数据库加密（TDE）](transparent-data-encryption-azure-sql.md)和服务托管密钥。
 - 在托管实例中，如果数据库是作为从本地服务器还原操作的结果创建的，则会遵守原始数据库的 TDE 设置。 如果原始数据库未启用 TDE，我们建议为托管实例手动打开 TDE。
 
-**最佳做法**：
+**모범 사례**:
 
 - 不要存储需要在 master 数据库中进行静态加密的数据。 不能用 TDE 加密 master 数据库。
 
@@ -420,7 +420,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 使用[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)确保在 Azure SQL 数据库中不以纯文本形式公开敏感数据，即使在内存/正在使用中也是如此。 这将保护来自数据库管理员（Dba）和云管理员的数据（或可以模拟高特权但未经授权的用户的不良参与者），并使你能够更好地控制谁可以访问你的数据。
 
-**最佳做法**：
+**모범 사례**:
 
 - Always Encrypted 不能代替静态数据（TDE）或传输（SSL/TLS），也不能将其用于非敏感数据，以最大程度地降低性能和功能的影响。 建议将 Always Encrypted 与 TDE 和 TLS 结合使用来全面保护静态数据、传输内和使用中的数据。 
 
@@ -451,7 +451,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 使用单元格级加密（CLE）。 有关详细信息，请参阅文章[加密列的数据](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data)。 
 - 另外，请考虑使用 Always Encrypted，但请注意下面所列的限制。
 
-**最佳做法**
+**모범 사례**
 
 使用 CLE 时：
 
@@ -480,7 +480,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 > [!NOTE]
 > Always Encrypted 在动态数据掩码中不起作用。 不能加密和屏蔽同一列，这意味着需要确定所使用的数据的优先级，以及通过动态数据掩码屏蔽应用用户的数据。
 
-**最佳做法**：
+**모범 사례**:
 
 > [!NOTE]
 > 动态数据掩码不能用于保护高特权用户的数据。 屏蔽策略不适用于具有管理访问权限的用户，如 db_owner。
@@ -492,7 +492,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 -  动态数据掩码不会保留掩码值的统计属性，这可能会影响查询结果（例如，包含筛选谓词的查询或对掩码数据的联接）。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>네트워크 보안
 网络安全是指访问控制和最佳实践，以确保传输到 Azure SQL 数据库的数据的安全。
 
 ### <a name="configure-my-client-to-connect-securely-to-azure-sql-database"></a>将客户端配置为安全连接到 Azure SQL 数据库 
@@ -502,7 +502,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 确保连接到 Azure SQL 数据库的客户端计算机正在使用[传输层安全性（TLS）](sql-database-security-overview.md#transport-layer-security-tls-encryption-in-transit)。
 
-**最佳做法**：
+**모범 사례**:
 
 - 配置所有应用和工具以连接到启用了加密的 SQL 数据库 
   - 加密 = On，TrustServerCertificate = Off （或等效于非 Microsoft 驱动程序）。 
@@ -535,7 +535,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 在托管实例中：
 - 按照[网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)中的指南进行操作。 
 
-**最佳做法**：
+**모범 사례**:
 
 - 通过在专用终结点上连接来限制对 Azure SQL 数据库的访问（例如，使用专用数据路径）： 
   - 托管实例可在虚拟网络内隔离，以防止外部访问。 位于同一区域中相同或对等互连的虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可以利用 VNet 到 VNet 连接或 ExpressRoute 线路对等互连来建立连接。 客户应使用网络安全组（NSG）将仅限端口1433的访问限制到需要访问托管实例的资源 
@@ -559,7 +559,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 ### <a name="configure-power-bi-for-secure-connections-to-azure-sql-database"></a>配置用于安全连接到 Azure SQL 数据库的 Power BI
 
-**最佳做法**：
+**모범 사례**:
 
 - 对于 Power BI Desktop，请尽可能使用专用数据路径。 
 
@@ -571,7 +571,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 ### <a name="configure-app-service-for-secure-connections-to-azure-sql-database"></a>配置应用服务以安全连接到 Azure SQL 数据库
 
-**最佳做法**：
+**모범 사례**:
 
 - 对于简单的 Web 应用，通过公共终结点进行连接需要将 "**允许 Azure 服务**" 设置为 "开"。 
 
@@ -585,7 +585,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 ### <a name="configure-azure-vm-hosting-for-secure-connections-to-azure-sql-database"></a>为 azure SQL 数据库的安全连接配置 Azure VM 托管
 
-**最佳做法**：
+**모범 사례**:
 
 - 在 Azure Vm 的 Nsg 上结合使用允许和拒绝规则，以控制可从 VM 访问哪些区域。
 
@@ -617,7 +617,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 使用[AZURE SQL 数据库的高级威胁防护](sql-database-threat-detection-overview.md)来检测对数据库的拒绝服务（DoS）攻击。
 
-**最佳做法**：
+**모범 사례**:
 
 - 遵循[最小化攻击面](#minimize-attack-surface)中所述的做法有助于最大程度地减少 DDoS 攻击威胁。 
 
@@ -642,7 +642,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
   - 权限滥用。
   - 数据渗透。
 
-**最佳做法**：
+**모범 사례**:
 
 - 通过切换到[Azure 安全中心标准层](../security-center/security-center-pricing.md)，为特定 SQL 数据库服务器、托管实例或订阅中的所有 sql 数据库服务器和托管实例配置[高级数据安全](sql-database-advanced-data-security.md#getting-started-with-ads) 。 
 
@@ -655,9 +655,9 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 启用 [SQL 数据库审核](sql-database-auditing.md)，以跟踪数据库事件，并将这些事件写入 Azure 存储帐户中的审核日志、Log Analytics 工作区（预览版）或事件中心（预览）。 
 
-- 可以将审核日志写入 Azure 存储帐户、Log Analytics 的工作区中，以便通过 Azure Monitor 日志或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。 
+- 可以将审核日志写入 Azure 存储帐户、Log Analytics 的工作区中，以便通过 Azure Monitor 日志或使用事件中心进行消耗的事件中心。 이러한 옵션을 조합하여 구성할 수 있으며, 감사 로그는 각각에 대해 작성됩니다. 
 
-**最佳做法**：
+**모범 사례**:
 
 - 通过在数据库服务器上配置[SQL 数据库审核](sql-database-auditing.md)来审核事件，将对该服务器上的所有现有数据库和新创建的数据库进行审核。
 - 默认情况下，审核策略包括对数据库执行的所有操作（查询、存储过程以及成功和失败的登录），这可能会导致大量的审核日志。 建议客户[使用 PowerShell 配置不同类型的操作和操作组的审核](sql-database-auditing.md#subheading-7)、控制已审核操作的数目，并将事件丢失的风险降到最低。 这将允许客户只捕获真正需要的审核数据。
@@ -669,8 +669,8 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 **其他资源**：
 
-- [SQL 数据库审核](sql-database-auditing.md)
-- [SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) 
+- [SQL 데이터베이스 감사](sql-database-auditing.md)
+- [SQL Server 감사](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) 
 
 ### <a name="secure-audit-logs"></a>安全审核日志
 若要支持职责分离并将 DBA 与审计员分离，可以采取措施限制对存储帐户的访问。 
@@ -681,13 +681,13 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 有关详细信息，请参阅[授权访问 Azure 存储](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-**最佳做法**：
+**모범 사례**:
 
 - 控制对审核目标的访问是将 DBA 与审计员分离的关键概念。 
 
 - 审核对敏感数据的访问时，请考虑使用数据加密来保护数据，以避免信息泄露给审计员。 有关详细信息，请参阅[从高权限的、未授权的用户中保护使用的敏感数据](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)部分。
 
-## <a name="security-management"></a>安全管理
+## <a name="security-management"></a>보안 관리
 
 本部分介绍管理数据库安全状况的不同方面和最佳实践。 它包括确保数据库配置为符合安全标准的最佳实践，用于发现和跟踪对数据库中可能敏感的数据进行分类和跟踪访问的权限。 
 
@@ -699,7 +699,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 启用[SQL 漏洞评估](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)（VA）以扫描数据库中的安全问题，并在数据库上定期自动运行。
 
-**最佳做法**：
+**모범 사례**:
 
 - 最初，在数据库上运行 VA，并通过修正检查失败的检查 oppose 安全最佳做法，并为可接受的配置设置基线，直到扫描出现 "干净" （所有检查都通过）。  
 
@@ -711,7 +711,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 **其他资源**：
 
-- [SQL 漏洞评估](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) 
+- [SQL 취약성 평가](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) 
 - [SQL 漏洞评估服务帮助你确定数据库漏洞](sql-vulnerability-assessment.md)
 
 ### <a name="identify-and-tag-sensitive-data"></a>标识并标记敏感数据 
@@ -725,7 +725,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
   - 对于未被自动机制发现的任何其他敏感数据字段，手动添加分类。 
 - 有关详细信息，请参阅[SQL 数据发现 & 分类](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)。
 
-**最佳做法**：
+**모범 사례**:
 
 - 定期监视分类仪表板，准确评估数据库的分类状态。 可以出于相容性和审核目的，将有关数据库分类状态的报表导出或打印到共享中。
 
@@ -741,7 +741,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 结合使用 SQL 审核和数据分类。 
   - 在[SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪敏感数据的访问权限，还可以查看信息（如已访问的数据及其敏感度[标签）。](sql-database-data-discovery-and-classification.md#subheading-3) 
 
-**最佳做法**：
+**모범 사례**:
 
 - 请参阅审核和数据分类部分的最佳实践： 
   - [审核关键安全事件](#audit-critical-security-events) 
@@ -789,11 +789,11 @@ Data 渗透是未经授权从计算机或服务器复制、传输或检索数据
 
 - 业务关键层包括故障转移组、多可用性区域、完整和差异日志备份，以及默认情况下启用的时间点还原备份：  
   - [高可用性和 Azure SQL 数据库-区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)
-  - [自动备份](sql-database-automated-backups.md)
+  - [자동화된 백업](sql-database-automated-backups.md)
   - [使用自动数据库备份恢复 Azure SQL 数据库-时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 - 其他业务连续性功能（如跨不同 Azure 地域的自动故障转移组）可按如下所述进行配置： [AZURE SQL 数据库的业务连续性概述](sql-database-business-continuity.md)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 - 请参阅[AZURE SQL 数据库安全功能概述](sql-database-security-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 开发测试实验室的 Key Vault 中存储机密 | Microsoft Docs
-description: 了解如何在 Azure Key Vault 中存储机密，并在创建 VM、公式或环境时使用这些机密。
+title: Azure DevTest Labs의 키 자격 증명 모음에서 비밀 저장 | Microsoft Docs
+description: Azure Key Vault에 비밀을 저장하고, VM, 수식 또는 환경을 만드는 동안 사용하는 방법을 알아봅니다.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 3f16d84f66f2da6094054d161f286070fc86a73b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 29a4d20390575778ccdecde390c257ccf6a48eb1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720117"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720922"
 ---
-# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的 Key Vault 中存储机密
-使用 Azure 开发测试实验室时可能需要输入复杂的机密：Windows VM 的密码、Linux VM 的公共 SSH 密钥或个人访问令牌，以通过项目克隆 Git 存储库。 机密通常很长并且具有随机字符。 因此，输入它们可能会非常棘手且不方便，尤其是如果多次使用相同的机密。
+# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs의 키 자격 증명 모음에서 비밀 저장
+Azure DevTest Labs를 사용하는 경우 복잡한 비밀을 입력해야 할 수 있습니다. 예를 들어 Windows VM의 암호, Linux VM의 공용 SSH 키 또는 아티팩트를 통해 Git 리포지토리를 복제하기 위한 개인용 액세스 토큰 등입니다. 비밀은 일반적으로 길며 임의 문자를 포함합니다. 따라서 특히 여러 번 동일한 비밀을 사용하는 경우 비밀 입력은 까다롭고 불편할 수 있습니다.
 
-为解决此问题并还将机密保存在安全位置，开发测试实验室支持在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中存储机密。 当用户第一次保存机密时，开发测试实验室服务会自动在包含实验室的同一资源组中创建密钥保管库，并将机密存储在密钥保管库中。 开发测试实验室为每个用户创建单独的密钥保管库。 
+이 문제를 해결하고 비밀을 안전한 장소에 보관하기 위해 DevTest Labs가 [Azure 키 자격 증명 모음](../key-vault/key-vault-overview.md)에서 비밀 저장을 지원합니다. 사용자가 처음으로 비밀을 저장하는 경우 DevTest Labs 서비스는 랩을 포함하고 키 자격 증명 모음에 비밀을 저장하는 동일한 리소스 그룹에서 키 자격 증명 모음을 자동으로 만듭니다. DevTest Labs에서는 각 사용자에 대한 별도 키 자격 증명 모음을 만듭니다. 
 
 请注意，实验室用户首先需要创建实验室虚拟机，然后才能在 key vault 中创建机密。 这是因为，开发测试实验室服务需要将实验室用户与有效的用户文档关联，然后才允许用户在其密钥保管库中创建和存储机密。 
 
 
-## <a name="save-a-secret-in-azure-key-vault"></a>将机密保存在 Azure Key Vault 中
-若要在 Azure Key Vault 中保存机密，请执行以下步骤：
+## <a name="save-a-secret-in-azure-key-vault"></a>Azure Key Vault에 비밀 저장
+Azure Key Vault에 비밀을 저장하려면 다음 단계를 수행합니다.
 
-1. 在左侧菜单中选择“我的机密”。
-2. 输入机密的**名称**。 在创建 VM、公式或环境时，你会在下拉列表中看到此名称。 
-3. 输入机密作为**值**。
+1. 왼쪽 메뉴에서 **내 비밀**을 선택합니다.
+2. 비밀에 **이름**을 입력하세요. VM, 수식 또는 환경을 만들 때 드롭다운 목록에 이 이름이 표시됩니다. 
+3. 비밀을 **값**으로 입력합니다.
 
-    ![存储机密](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+    ![비밀 저장](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
-## <a name="use-a-secret-from-azure-key-vault"></a>使用 Azure Key Vault 中的机密
-当需要输入机密以创建 VM、公式或环境时，可以手动输入机密或从 Key Vault 中选择已保存的机密。 若要使用存储在 Key Vault 中的机密，请执行以下操作：
+## <a name="use-a-secret-from-azure-key-vault"></a>Azure Key Vault에서 비밀 사용
+VM, 수식 또는 환경을 만들기 위해 비밀을 입력해야 하는 경우 수동으로 비밀을 입력하거나 키 자격 증명 모음에서 저장된 비밀을 선택할 수 있습니다. 키 자격 증명 모음에 저장된 비밀을 사용하려면 다음 작업을 수행합니다.
 
-1. 选择“使用已保存的机密”。 
-2. 从“选取机密”的下拉列表中选择机密。 
+1. **저장된 비밀 사용**을 선택합니다. 
+2. **비밀 선택**에 대한 드롭다운 목록에서 비밀을 선택합니다. 
 
-    ![在 VM 中使用机密](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
+    ![VM에서 비밀 사용](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
-## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>在 Azure 资源管理器模板中使用机密
-可以在用于创建 VM 的 Azure 资源管理器模板中指定机密名称，如以下示例所示：
+## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 비밀 사용
+다음 예제에 표시된 것처럼 VM을 만드는 데 사용되는 Azure Resource Manager 템플릿에서 비밀 이름을 지정할 수 있습니다.
 
-![在公式或环境中使用机密](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+![수식이나 환경에서 비밀 사용](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-- [使用机密创建 VM](devtest-lab-add-vm.md) 
-- [使用机密创建公式](devtest-lab-manage-formulas.md)
-- [使用机密创建环境](devtest-lab-create-environment-from-arm.md)
+- [비밀을 사용하여 VM 만들기](devtest-lab-add-vm.md) 
+- [비밀을 사용하여 수식 만들기](devtest-lab-manage-formulas.md)
+- [비밀을 사용하여 환경 만들기](devtest-lab-create-environment-from-arm.md)

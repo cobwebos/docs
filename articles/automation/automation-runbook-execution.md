@@ -1,58 +1,58 @@
 ---
-title: 在 Azure 自动化中执行 Runbook
-description: 详细介绍如何处理 Azure 自动化中的 Runbook。
+title: Azure Automation에서 Runbook 실행
+description: Azure Automation의 Runbook이 처리되는 방법에 대한 자세한 내용을 설명합니다.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658111"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714840"
 ---
-# <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
+# <a name="runbook-execution-in-azure-automation"></a>Azure Automation에서 Runbook 실행
 
-在 Azure 自动化中启动 Runbook 时，会创建一个作业。 作业是 Runbook 的单一执行实例。 将分配一个 Azure 自动化工作线程来运行每个作业。 尽管辅助角色由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。 无法控制要由哪个辅助角色为作业请求提供服务。 一个 runbook 可以同时运行多个作业。 可以重用同一自动化帐户中的作业的执行环境。 同时运行的作业越多，就越可能将其分派到同一个沙盒中。 在同一沙盒进程中运行的作业可能会相互影响，一个示例就是运行 `Disconnect-AzureRMAccount` cmdlet。 运行此 cmdlet 将断开共享沙盒进程中的每个 Runbook 作业。 在 Azure 门户中查看 Runbook 列表时，列表中会列出为每个 Runbook 启动的所有作业的状态。 可以查看每个 runbook 的作业列表以跟踪每个作业的状态。 作业日志最长可存储 30 天。 有关不同作业状态的说明，请参阅[作业状态](#job-statuses)。
+Azure Automation에서 Runbook을 시작하면 작업이 생성됩니다. 작업은 Runbook의 단일 실행 인스턴스입니다. 각 작업을 실행하기 위해 Azure Automation 작업자가 할당됩니다. 작업자가 많은 Azure 계정에서 공유되지만 여러 Automation 계정의 작업은 서로 격리됩니다. 사용자는 작업에 대한 요청을 처리할 작업자를 제어할 수 없습니다. 단일 Runbook에서 동시에 많은 작업을 실행할 수 있습니다. 동일한 Automation 계정의 작업 실행 환경은 다시 사용할 수 있습니다. 더 많은 작업을 동시에 실행할 수록 동일한 샌드박스에 더 자주 디스패치될 수 있습니다. 동일한 샌드박스에서 실행하는 작업은 서로 영향을 줄 수 있습니다. 한 가지 예는 `Disconnect-AzureRMAccount` cmdlet을 실행하는 것입니다. 이 cmdlet을 실행하면 공유 샌드박스 프로세스의 각 Runbook 작업의 연결을 끊습니다. Azure Portal에서 Runbook 목록을 확인하면 각 Runbook에 대해 시작된 모든 작업의 상태가 나열됩니다. 각 Runbook에 대한 작업 목록을 확인하여 각 작업의 상태를 추적할 수 있습니다. 작업 로그는 최대 30일 동안 저장됩니다. 다양한 작업 상태에 대한 설명은 [작업 상태](#job-statuses)를 참조하세요.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 下图显示了[PowerShell runbook](automation-runbook-types.md#powershell-runbooks)、[图形 Runbook](automation-runbook-types.md#graphical-runbooks)和[powershell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)的 runbook 作业生命周期。
 
-![作业状态 - PowerShell 工作流](./media/automation-runbook-execution/job-statuses.png)
+![작업 상태 - PowerShell 워크플로](./media/automation-runbook-execution/job-statuses.png)
 
-作业可以通过与 Azure 订阅建立连接来访问 Azure 资源。 仅当数据中心内的资源可从公有云访问时，作业才能访问这些资源。
+Azure 구독에 연결하면 작업에서 Azure 리소스에 액세스할 수 있습니다. 단, 퍼블릭 클라우드에서 액세스할 수 있는 데이터 센터의 리소스에만 액세스할 수 있습니다.
 
-## <a name="where-to-run-your-runbooks"></a>运行 runbook 的位置
+## <a name="where-to-run-your-runbooks"></a>Runbook을 실행하는 위치
 
-Azure 自动化中的 Runbook 可以在 Azure 中的沙盒上运行，也可以在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行。 沙盒是 Azure 中可以由多个作业使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。 混合 Runbook 辅助角色可以直接在托管角色的计算机上运行 runbook，也可以针对环境中的资源运行 runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一台或多台指定的计算机。 大多数 runbook 可以轻松地在 Azure 沙盒中运行。 在某些特定方案中，可能会建议选择混合 Runbook（而不是 Azure 沙盒）执行 Runbook。 请参阅下表，了解一些示例方案：
+Azure Automation의 Runbook은 Azure의 샌드박스 또는 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)에서 실행할 수 있습니다. 샌드박스는 여러 작업에서 사용할 수 있는 Azure의 공유 환경입니다. 동일한 샌드박스를 사용하는 작업에는 샌드박스의 리소스 제한이 적용됩니다. 混合 Runbook 辅助角色可以直接在托管角色的计算机上运行 runbook，也可以针对环境中的资源运行 runbook，从而管理这些本地资源。 Runbook은 Azure Automation에 저장 및 관리된 후 하나 이상의 할당된 컴퓨터에 전달됩니다. 大多数 runbook 可以轻松地在 Azure 沙盒中运行。 Azure 샌드박스를 통해 하이브리드 Runbook을 선택하여 Runbook을 실행하도록 추천되는 특정 시나리오가 있습니다. 몇 가지 예제 시나리오의 목록은 다음 표를 참조하세요.
 
-|任务|最佳选择|说明|
+|Task|최선의 선택|메모|
 |---|---|---|
-|与 Azure 资源集成|Azure 沙盒|托管在 Azure 中，身份验证更为简单。 如果使用的是 Azure VM 上的混合 Runbook 辅助角色，则可使用 [Azure 资源的托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
-|管理 Azure 资源的最佳性能|Azure 沙盒|脚本在同一环境中运行，而这种情况下，延迟时间较短|
-|最大程度减少运营成本|Azure 沙盒|没有计算开销，不需要 VM|
-|长期脚本|混合 Runbook 辅助角色|Azure 沙盒具有[对资源的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
-|与本地服务进行交互|混合 Runbook 辅助角色|可以直接访问主机|
-|需要第三方软件和可执行文件|混合 Runbook 辅助角色|管理操作系统并且可以安装软件|
-|使用 Runbook 监视文件或文件夹|混合 Runbook 辅助角色|在混合 Runbook 辅助角色上，使用[观察程序任务](automation-watchers-tutorial.md)|
-|资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[对资源的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
-|使用具有特定需求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> **WinSCP** - winscp.exe 上的依赖项 </br> **IISAdministration** - 需要启用 IIS|
-|安装需要安装程序的模块|混合 Runbook 辅助角色|沙盒的模块必须是可复制|
-|使用需要不同于 4.7.2 版本的 .NET Framework 的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒的 .NET Framework 4.7.2 无法进行升级|
-|需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许提升。 若要解决此情况，请使用混合 Runbook 辅助角色，并可以在运行需要提升的命令时关闭 UAC 并使用 `Invoke-Command`|
-|需要访问 WMI 的脚本|混合 Runbook 辅助角色|在云中沙盒中运行的作业无权[访问 WMI](#device-and-application-characteristics)|
+|Azure 리소스와 통합|Azure 샌드박스|Azure에서 호스팅되며, 인증이 더 간단합니다. Azure VM에서 Hybrid Runbook Worker를 사용하는 경우 [Azure 리소스에 대한 관리 ID](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)를 사용할 수 있습니다.|
+|Azure 리소스를 관리하는 최적의 성능|Azure 샌드박스|脚本在同一环境中运行，而这种情况下，延迟时间较短|
+|운영 비용 최소화|Azure 샌드박스|컴퓨팅 오버헤드가 없고 VM이 필요하지 않습니다.|
+|장기 실행 스크립트|Hybrid Runbook Worker|Azure 샌드박스는 [리소스에 제한](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)이 있습니다.|
+|로컬 서비스와 상호 작용|Hybrid Runbook Worker|호스트 머신에 직접 액세스할 수 있습니다.|
+|타사 소프트웨어 및 실행 파일 필요|Hybrid Runbook Worker|OS를 관리하고 소프트웨어를 설치할 수 있습니다.|
+|Runbook으로 파일 또는 폴더 모니터링|Hybrid Runbook Worker|Hybrid Runbook Worker에서 [감시자 작업](automation-watchers-tutorial.md)을 사용합니다.|
+|리소스 사용량이 많은 스크립트|Hybrid Runbook Worker| Azure 샌드박스는 [리소스에 제한](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)이 있습니다.|
+|특정 요구 사항이 있는 모듈 사용| Hybrid Runbook Worker|예는 다음과 같습니다.</br> **WinSCP** - winscp.exe에 대한 종속성 </br> **IISAdministration** - IIS를 사용하도록 설정해야 함|
+|설치 관리자가 필요한 모듈 설치|Hybrid Runbook Worker|沙盒的模块必须是可复制|
+|4\.7.2와 다른 .NET 프레임워크가 필요한 Runbook 또는 모듈 사용|Hybrid Runbook Worker|Automation 샌드박스에는 NET Framework 4.7.2가 있으며, 업그레이드할 수 있는 방법이 없습니다.|
+|需要提升的脚本|Hybrid Runbook Worker|沙盒不允许提升。 若要解决此情况，请使用混合 Runbook 辅助角色，并可以在运行需要提升的命令时关闭 UAC 并使用 `Invoke-Command`|
+|需要访问 WMI 的脚本|Hybrid Runbook Worker|在云中沙盒中运行的作业无权[访问 WMI](#device-and-application-characteristics)|
 
-## <a name="runbook-behavior"></a>Runbook 行为
+## <a name="runbook-behavior"></a>Runbook 동작
 
-Runbook 基于其内部定义的逻辑执行操作。 如果 Runbook 中断，则 Runbook 将在开始时重启。 这种行为要求 runbook 以某种方式进行编写，在此方式中，如果存在瞬态问题，runbook 支持重启。
+Runbook은 내부에 정의된 논리에 따라 실행됩니다. Runbook이 중단되면 해당 Runbook이 처음부터 다시 시작됩니다. 일시적인 문제가 있는 경우 이 동작을 수행하려면 다시 시작을 지원하는 방식으로 Runbook을 작성해야 합니다.
 
 从在 Azure 沙盒中运行的 Runbook 启动的 PowerShell 作业可能无法在完整语言模式下运行。 若要了解有关 PowerShell 语言模式的详细信息，请参阅[powershell 语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)。 有关如何在 Azure 自动化中与作业交互的其他详细信息，请参阅[通过 PowerShell 检索作业状态](#retrieving-job-status-using-powershell)
 
-### <a name="creating-resources"></a>创建资源
+### <a name="creating-resources"></a>리소스 만들기
 
-如果由脚本创建资源，则在尝试再次创建资源之前，应查看资源是否已经存在。 以下示例显示了一个基本示例：
+스크립트에서 리소스를 만드는 경우 리소스를 다시 만들기 전에 해당 리소스가 이미 있는지 확인해야 합니다. 기본 예제는 다음 예제와 같습니다.
 
 ```powershell
 $vmName = "WindowsVM1"
@@ -71,20 +71,20 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>时间依赖脚本
+### <a name="time-dependent-scripts"></a>依赖于时间的脚本
 
-创作 runbook 时，应仔细考虑。 如前所述，需要以某种方式编写 runbook，使其可靠并且能够处理可能导致 runbook 重启或失败的瞬态错误。 如果 runbook 失败，则会重试。 如果 runbook 通常在时间约束内运行，则应在 runbook 中实现用于检查执行时间的逻辑，以确保启动、关机或横向扩展等操作仅在特定时间运行。
+Runbook을 작성할 때는 신중하게 고려해야 합니다. 앞에서 설명한 대로 Runbook은 강력하고 Runbook이 다시 시작되거나 실패할 수 있는 일시적인 오류를 처리할 수 있는 방식으로 작성되어야 합니다. 如果 runbook 失败，则会重试。 如果 runbook 通常在时间约束内运行，则应在 runbook 中实现用于检查执行时间的逻辑，以确保启动、关机或横向扩展等操作仅在特定时间运行。
 
 > [!NOTE]
 > Azure 沙盒进程的本地时间设置为 UTC 时间。 Runbook 中的日期和时间计算需要考虑到这一点。
 
-### <a name="tracking-progress"></a>跟踪进程
+### <a name="tracking-progress"></a>진행률 추적
 
-实际上模块化创作 runbook 是很好的做法。 这意味着要在 runbook 中构造逻辑，以便能够轻松重用和重启。 如果出现问题，可以通过在 runbook 中跟踪进度来确保 runbook 中的逻辑正确执行。 跟踪 runbook 进程可以利用的一些方法是使用外部源（如存储帐户、数据库或共享文件）。 通过在外部跟踪状态，可以在 runbook 中创建逻辑，以首先检查 runbook 采取的最后一个操作的状态。 然后，根据结果，跳过或继续 runbook 中的特定任务。
+Runbook을 모듈식으로 작성하는 것이 좋습니다. 즉, Runbook의 논리를 쉽게 다시 사용하고 다시 시작할 수 있도록 구조화합니다. 如果出现问题，可以通过在 runbook 中跟踪进度来确保 runbook 中的逻辑正确执行。 Runbook에서 진행률을 추적할 수 있는 몇 가지 방법은 스토리지 계정, 데이터베이스 또는 공유 파일과 같은 외부 원본을 사용하는 것입니다. 通过在外部跟踪状态，可以在 runbook 中创建逻辑，以首先检查 runbook 采取的最后一个操作的状态。 然后，根据结果，跳过或继续 runbook 中的特定任务。
 
-### <a name="prevent-concurrent-jobs"></a>预防并发作业
+### <a name="prevent-concurrent-jobs"></a>동시 작업 방지
 
-如果同时运行多个作业，某些 runbook 可能会表现得很奇怪。 在此情况下，重要的是实现检查逻辑，查看 runbook 是否已有正在运行的作业。 以下示例显示了如何执行此行为的基本操作：
+여러 작업을 동시에 실행하는 경우 일부 Runbook에서는 이상하게 작동할 수 있습니다. 이 경우 이미 실행 중인 작업이 Runbook에 있는지 확인하는 논리를 구현해야 합니다. 이 동작을 수행하는 방법에 대한 기본 예제는 다음 예제와 같습니다.
 
 ```powershell
 # Authenticate to Azure
@@ -112,7 +112,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 }
 ```
 
-### <a name="working-with-multiple-subscriptions"></a>使用多个订阅
+### <a name="working-with-multiple-subscriptions"></a>여러 구독 작업
 
 在创作处理多个订阅的 runbook 时，runbook 需要使用[disable-azurermcontextautosave](/powershell/module/azurerm.profile/disable-azurermcontextautosave) cmdlet，以确保不会从可能在同一沙盒中运行的另一个 runbook 中检索到身份验证上下文。 然后，需要使用 `AzureRM` cmdlet 上的 `-AzureRmContext` 参数并向其传递适当的上下文。
 
@@ -139,13 +139,13 @@ Start-AzureRmAutomationRunbook `
     -DefaultProfile $context
 ```
 
-### <a name="handling-exceptions"></a>处理异常
+### <a name="handling-exceptions"></a>예외 처리
 
 创作脚本时，必须能够处理异常和潜在的间歇性故障。 下面是处理 runbook 的异常或间歇问题的几种不同方法：
 
 #### <a name="erroractionpreference"></a>$ErrorActionPreference
 
-[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference)首选项变量确定 PowerShell 如何响应非终止错误。 终止错误不受 `$ErrorActionPreference`影响，它们始终会终止。 通过使用 `$ErrorActionPreference`，如 `Get-ChildItem` cmdlet 中 `PathNotFound` 的正常非终止错误将阻止 runbook 完成。 下面的示例显示了使用 `$ErrorActionPreference`。 当脚本停止运行时，最终 `Write-Output` 行将永远不会执行。
+[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference)首选项变量确定 PowerShell 如何响应非终止错误。 终止错误不受 `$ErrorActionPreference`影响，它们始终会终止。 通过使用 `$ErrorActionPreference`，如 `Get-ChildItem` cmdlet 中 `PathNotFound` 的正常非终止错误将阻止 runbook 完成。 다음 예에서는 `$ErrorActionPreference`를 사용하는 방법을 보여 줍니다. 当脚本停止运行时，最终 `Write-Output` 行将永远不会执行。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Throw
+#### <a name="throw"></a>放弃
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw)可用于生成终止错误。 在 runbook 中定义自己的逻辑时，这可能很有用。 如果满足了应停止脚本的特定条件，则可以使用 `throw` 来停止脚本。 下面的示例演示如何使用 `throw`所需的函数参数。
 
@@ -185,73 +185,73 @@ function Get-ContosoFiles
 }
 ```
 
-### <a name="using-executables-or-calling-processes"></a>使用可执行文件或调用进程
+### <a name="using-executables-or-calling-processes"></a>실행 파일 또는 호출 프로세스 사용
 
-在 Azure 沙盒中运行的 runbook 不支持调用进程（如 .exe 或子进程）。 这是因为 Azure 沙箱是在容器中运行的共享进程，可能无法访问所有底层 Api。 对于需要第三方软件或调用子进程的方案，建议在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上执行 runbook。
+在 Azure 沙盒中运行的 runbook 不支持调用进程（如 .exe 或子进程）。 这是因为 Azure 沙箱是在容器中运行的共享进程，可能无法访问所有底层 Api。 타사 소프트웨어 또는 하위 프로세스의 호출이 필요한 시나리오의 경우 [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)에서 Runbook을 실행하는 것이 좋습니다.
 
 ### <a name="device-and-application-characteristics"></a>设备和应用程序特征
 
 在 Azure 沙盒中运行的 Runbook 作业无法访问任何设备或应用程序特征。 用于在 Windows 上查询性能指标的最常见 API 是 WMI。 其中一些常用指标是内存和 CPU 使用率。 但是，使用什么 API 并不重要。 在云中运行的作业无权访问基于 Web 的企业管理（WBEM）的 Microsoft 实现，这是基于通用信息模型（CIM）构建的，这是用于定义设备和应用程序特征的行业标准。
 
-## <a name="job-statuses"></a>作业状态
+## <a name="job-statuses"></a>작업 상태
 
-下表描述了作业的各种可能状态。 PowerShell 具有两种类型的错误，终止性和非终止性错误。 终止性错误在发生时将 runbook 状态设置为“失败”。 非终止性错误允许在发生错误时继续运行脚本。 非终止错误的示例为：对不存在的路径使用 `Get-ChildItem` cmdlet。 PowerShell 发现路径不存在，然后引发错误，并继续转到下一文件夹。 此错误不会将 runbook 状态设置为“失败”，并且可能标记为“完成”。 若要强制 runbook 在发生非终止性错误时停止，可以使用 `-ErrorAction Stop` cmdlet。
+다음 표에서는 작업의 가능한 여러 상태를 설명합니다. PowerShell에는 두 가지 유형의 오류, 즉 종료되는 오류와 종료되지 않는 오류가 있습니다. 종료되는 오류는 발생하는 경우 Runbook 상태를 **실패**로 설정합니다. 종료되지 않는 오류를 사용하면 오류 발생 후에도 스크립트가 계속 진행될 수 있습니다. 종료되지 않는 오류의 예는 존재하지 않는 경로로 `Get-ChildItem` cmdlet을 사용하는 것입니다. PowerShell은 경로가 없다는 것을 확인하고 오류가 throw한 후 다음 폴더로 계속 진행됩니다. 이 오류는 Runbook 상태를 **실패**로 설정하지 않으며 **완료**로 표시될 수 있습니다. 종료되지 않는 오류에서 강제로 Runbook을 중지하려면 cmdlet에서 `-ErrorAction Stop`을 사용할 수 있습니다.
 
-| 状态 | Description |
+| 상태 | Description |
 |:--- |:--- |
-| 已完成 |作业已成功完成。 |
-| 已失败 |对于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)，Runbook 未能编译。 对于 [PowerShell 脚本 runbook](automation-runbook-types.md)，runbook 未能启动或作业遇到异常。 |
-| 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
-| 已排队 |作业正在等待提供自动化工作线程的资源，以便能够启动。 |
-| 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
-| 正在恢复 |系统正在恢复已暂停的作业。 |
-| 正在运行 |作业正在运行。 |
-| 正在运行，正在等待资源 |作业已卸载，因为它已达到[公平份额](#fair-share)限制。 片刻之后，它将从其上一个检查点恢复。 |
-| 已停止 |作业在完成之前已被用户停止。 |
-| 正在停止 |系统正在停止作业。 |
-| 已挂起 |作业已被用户、系统或 Runbook 中的命令暂停。 如果 runbook 没有检查点，它将从 runbook 的开端启动。 如果它有检查点，它将重新启动并从其上一个检查点继续。 只有发生异常时，系统才会将 Runbook 挂起。 默认情况下，ErrorActionPreference 设置为“继续”，表示出错时作业将保持运行。 如果此首选项变量设置为“停止”，则出错时作业会挂起。 仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 |
-| 正在暂停 |系统正在尝试按用户请求暂停作业。 Runbook 只有在达到其下一个检查点后才能挂起。 如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。 仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 |
+| Completed |작업이 완료되었습니다. |
+| 실패 |[그래픽 및 PowerShell 워크플로 Runbook](automation-runbook-types.md)의 경우 Runbook을 컴파일하지 못했습니다. [PowerShell 스크립트 Runbook](automation-runbook-types.md)의 경우 Runbook을 시작하지 못했거나 작업에서 예외가 발생했습니다. |
+| Failed, waiting for resources |작업이 [공평 분배](#fair-share) 한도에 세 번 도달했기 때문에 실패했고 매번 동일한 검사점 또는 Runbook의 처음부터 시작되었습니다. |
+| Queued |작업이 시작될 수 있도록 Automation 작업자의 리소스가 사용 가능한 상태가 되기를 기다리고 있습니다. |
+| 시작 중 |작업이 작업자에게 지정되었으며 시스템이 작업을 시작하고 있습니다. |
+| Resuming |시스템이 일시 중단된 후 작업을 재개하는 중입니다. |
+| 실행 중 |작업이 실행 중입니다. |
+| Running, waiting for resources |작업이 [공평 분배](#fair-share) 한도에 도달했기 때문에 언로드되었습니다. 잠시 후 마지막 검사점에서 작업이 다시 시작됩니다. |
+| 중지됨 |작업이 완료되기 전에 사용자에 의해 중지되었습니다. |
+| 중지 중 |시스템이 작업을 중지하는 중입니다. |
+| 일시 중단 |작업이 Runbook의 사용자, 시스템 또는 명령에 의해 일시 중단되었습니다. Runbook에 검사점이 없으면 Runbook의 처음부터 시작됩니다. 검사점이 있으면 다시 시작되고 마지막 검사점에서 재개될 수 있습니다. 예외가 발생하는 경우에만 시스템에서 Runbook을 일시 중단합니다. 기본적으로 ErrorActionPreference는 **Continue**로 설정되며, 이는 오류 발생 시 작업이 계속 실행된다는 의미입니다. 이 기본 설정 변수가 **Stop** 으로 설정된 경우 오류 발생 시 작업이 일시 중단됩니다. [그래픽 및 PowerShell 워크플로 Runbook](automation-runbook-types.md) 에만 적용됩니다. |
+| Suspending |시스템이 사용자의 요청에 따라 작업을 일시 중단하려고 합니다. Runbook의 다음 검사점에 도달해야만 Runbook을 일시 중단할 수 있습니다. 이미 마지막 검사점을 지난 경우 완료되어야만 일시 중단할 수 있습니다. [그래픽 및 PowerShell 워크플로 Runbook](automation-runbook-types.md) 에만 적용됩니다. |
 
-## <a name="viewing-job-status-from-the-azure-portal"></a>从 Azure 门户查看作业状态
+## <a name="viewing-job-status-from-the-azure-portal"></a>Azure Portal에서 작업 상태 보기
 
-可以查看所有 runbook 作业的概述状态或在 Azure 门户中深入了解特定 runbook 作业的详细信息。 此外，还可配置与 Log Analytics 工作区的集成，以转发 runbook 作业状态和作业流。 有关与 Azure Monitor 日志集成的详细信息，请参阅[将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+모든 Runbook 작업의 요약 상태를 보거나 Azure Portal에서 특정 Runbook 작업의 세부 정보로 드릴할 수 있습니다. 또한 Runbook의 작업 상태와 작업 스트림을 전달하기 위해 Log Analytics 작업 영역과 통합하도록 구성할 수도 있습니다. 有关与 Azure Monitor 日志集成的详细信息，请参阅[将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
-### <a name="automation-runbook-jobs-summary"></a>自动化 Runbook 作业摘要
+### <a name="automation-runbook-jobs-summary"></a>Automation runbook 작업 요약
 
-在所选的“自动化帐户”右侧，可在“作业统计信息”磁贴下看到所有 Runbook 作业的摘要。
+선택한 Automation 계정 오른쪽의 **작업 통계** 타일 아래에서 모든 Runbook 작업에 대한 요약을 확인할 수 있습니다.
 
-![作业统计信息磁贴](./media/automation-runbook-execution/automation-account-job-status-summary.png)
+![작업 통계 타일](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
-此磁贴显示执行的所有作业的作业状态计数和图形表示形式。
+이 타일은 실행된 모든 작업의 개수 및 작업 상태를 그래픽으로 표시합니다.
 
-单击磁贴可显示“作业”页，此页包括所有已执行作业的摘要列表。 此页显示状态、开始时间和完成时间。
+타일을 클릭하면 실행된 모든 작업의 요약 목록이 포함된 **작업** 페이지가 표시됩니다. 이 페이지는 상태, 시작 시간 및 완료 시간을 표시합니다.
 
-![自动化帐户作业页](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Automation 계정 작업 페이지](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-可以通过选择“筛选作业”来筛选作业列表并筛选特定的 runbook 和作业状态，或从下拉列表中的时间范围中进行搜索。
+**작업 필터링**을 선택하여 작업 목록을 필터링할 수 있습니다. 특정 Runbook이나 작업 상태를 필터링하거나 드롭다운 목록에서 검색할 시간 범위를 필터링할 수 있습니다.
 
-![筛选作业状态](./media/automation-runbook-execution/automation-account-jobs-filter.png)
+![작업 상태 필터링](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-或者，可通过从自动化帐户中的“runbook”页上选择特定的 runbook，并选择“作业”磁贴，来查看该 runbook 的作业摘要详情。 此操作将显示“作业”页，在此可以单击作业记录，查看作业详细信息和输出。
+또는 Automation 계정의 **Runbook** 페이지에서 Runbook을 선택하여 특정 Runbook에 대한 작업 요약 세부 정보를 확인한 다음, **작업** 타일을 선택할 수 있습니다. 이 작업을 수행하면 **작업** 페이지가 표시되며, 여기서 작업 레코드를 클릭하여 세부 정보와 출력을 확인할 수 있습니다.
 
-![自动化帐户作业页](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Automation 계정 작업 페이지](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
-### <a name="job-summary"></a>作业摘要
+### <a name="job-summary"></a>작업 요약
 
-可以查看为特定 Runbook 创建的所有作业的列表及其最新状态。 可以按作业状态以及上次对作业进行更改的日期范围筛选此列表。 单击作业的名称可以查看其详细信息和输出。 作业的详细视图包括提供给该作业的 Runbook 参数值。
+특정 Runbook에 대해 만들어진 모든 작업 및 해당 작업의 최신 상태가 나와 있는 목록을 볼 수 있습니다. 이 목록에서 작업 상태 및 날짜 범위를 필터링하면 작업의 마지막 변경 사항을 볼 수 있습니다. 세부 정보와 출력을 표시하려면 작업의 이름을 클릭합니다. 작업의 세부 보기에는 해당 작업에 제공된 Runbook 매개 변수의 값이 포함됩니다.
 
-可以使用以下步骤查看 Runbook 的作业。
+다음 단계를 수행하여 Runbook의 작업을 볼 수 있습니다.
 
-1. 在 Azure 门户中，选择“自动化”，然后选择自动化帐户的名称。
-2. 从中心选择“Runbook”，然后在“Runbook”页的列表中选择一个 Runbook。
-3. 在所选 runbook 的页上，单击“作业”磁贴。
-4. 单击列表中的一个作业，然后可在 runbook 作业详细信息页上查看其详细信息和输出。
+1. Azure Portal에서 **Automation**을 선택한 다음 Automation 계정의 이름을 선택합니다.
+2. 허브에서 **Runbook**을 선택하고 **Runbook** 페이지의 목록에서 Runbook을 선택합니다.
+3. 선택한 Runbook에 대한 페이지에서 **작업** 타일을 클릭합니다.
+4. 목록에 있는 작업 중 하나를 클릭하면 Runbook 작업 세부 정보 페이지에서 세부 정보와 출력을 확인할 수 있습니다.
 
 ## <a name="retrieving-job-status-using-powershell"></a>使用 PowerShell 检索作业状态
 
-可以使用 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) 检索为 Runbook 创建的作业和特定作业的详细信息。 如果使用[start-azurermautomationrunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)启动带有 PowerShell 的 runbook，则将返回生成的作业。 使用 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) 可以获取作业的输出。
+[Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob)을 사용하여 Runbook에 대해 생성된 작업 및 특정 작업을 검색할 수 있습니다. 如果使用[start-azurermautomationrunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)启动带有 PowerShell 的 runbook，则将返回生成的作业。 작업의 출력을 얻으려면 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput)을 사용합니다.
 
-以下示例命令检索示例 Runbook 的最后一个作业，并显示其状态、为 Runbook 参数提供的值以及作业的输出。
+다음 명령 예제는 샘플 Runbook에 대한 마지막 작업을 검색하고 작업의 상태, Runbook 매개 변수에 제공된 값, 작업의 출력을 표시합니다.
 
 ```azurepowershell-interactive
 $job = (Get-AzureRmAutomationJob –AutomationAccountName "MyAutomationAccount" `
@@ -262,7 +262,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-以下示例检索特定作业的输出，并返回每个记录。 如果其中一个记录出现异常，将写出异常而不是值。 此行为非常有用，因为异常可以提供在输出过程中无法正常记录的其他信息。
+다음 예제는 특정 작업에 대한 출력을 검색하고, 각 레코드를 반환합니다. 레코드 중 하나에 대한 예외가 발생한 경우 값 대신 예외가 쓰여집니다. 이 동작은 출력하는 동안 예외가 일반적으로 기록되지 않을 수 있는 추가 정보를 제공하므로 유용합니다.
 
 ```azurepowershell-interactive
 $output = Get-AzureRmAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -280,9 +280,9 @@ foreach($item in $output)
 }
 ```
 
-## <a name="get-details-from-activity-log"></a>从活动日志中获取详细信息
+## <a name="get-details-from-activity-log"></a>활동 로그에서 세부 정보 가져오기
 
-可以从自动化帐户的活动日志中检索其他详细信息，例如启动了 Runbook 的人员或帐户。 以下 PowerShell 示例提供运行相关 Runbook 的最后一个用户：
+Runbook을 시작한 사용자 또는 계정과 같은 기타 세부 정보는 Automation 계정의 활동 로그에서 검색할 수 있습니다. 다음 PowerShell 예에서는 문제의 Runbook을 실행하는 마지막 사용자를 제공합니다.
 
 ```powershell-interactive
 $SubID = "00000000-0000-0000-0000-000000000000"
@@ -312,15 +312,15 @@ foreach ($log in $JobActivityLogs)
 $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```
 
-## <a name="fair-share"></a>公平份额
+## <a name="fair-share"></a>공평 분배
 
-为了在云中的所有 runbook 之间共享资源，Azure 自动化会临时卸载或停止运行超过三个小时的任何作业。 [基于 PowerShell 的 Runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python Runbook](automation-runbook-types.md#python-runbooks) 的作业将停止且不会重启，作业状态显示“已停止”。
+为了在云中的所有 runbook 之间共享资源，Azure 自动化会临时卸载或停止运行超过三个小时的任何作业。 [PowerShell 기반 Runbook](automation-runbook-types.md#powershell-runbooks) 및 [Python Runbook](automation-runbook-types.md#python-runbooks)의 작업은 중지된 후 다시 시작되지 않으며 작업 상태는 중지됨으로 표시됩니다.
 
-对于长期任务，建议使用[混合 Runbook 辅助角色](automation-hrw-run-runbooks.md#job-behavior)。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受3小时公平份额限制的限制，但应开发运行 runbook 以支持来自意外的本地基础结构问题的重启行为。
+장기 실행 작업의 경우 [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior)를 사용하는 것이 좋습니다. Hybrid Runbook Worker는 공평 분배로 제한되지 않으며, Runbook을 실행할 수 있는 기간에 대한 제한이 없습니다. 다른 작업 [제한](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)은 Azure 샌드박스 및 Hybrid Runbook Worker에 모두 적용됩니다. 虽然混合 Runbook 辅助角色不受3小时公平份额限制的限制，但应开发运行 runbook 以支持来自意外的本地基础结构问题的重启行为。
 
-另一种选择是通过使用子 runbook 来优化 runbook。 如果 runbook 在多个资源上遍历同一函数，例如在多个数据库上执行某个数据库操作，可将该函数移到[子 runbook](automation-child-runbooks.md)，并使用 [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 进行调用。 各个子 runbook 是在单独的进程中并行执行的。 此行为降低了完成父 runbook 所需的时间总量。 如果子 runbook 完成后执行了某些操作，则可以在 runbook 中使用[get-azurermautomationjob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) cmdlet 来检查每个子项的作业状态。
+또 다른 옵션은 자식 Runbook을 사용하여 Runbook을 최적화하는 것입니다. Runbook이 여러 데이터베이스의 데이터베이스 작업과 같이 여러 리소스에서 동일한 함수를 반복하는 경우, 해당 함수를 [자식 Runbook](automation-child-runbooks.md)으로 이동하고 [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet을 사용하여 이를 호출할 수 있습니다. 이러한 자식 Runbook은 각각 개별 프로세스에서 병렬로 실행됩니다. 이 동작은 부모 Runbook이 완료되는 총 기간을 감소시킵니다. 如果子 runbook 完成后执行了某些操作，则可以在 runbook 中使用[get-azurermautomationjob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) cmdlet 来检查每个子项的作业状态。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* 若要详细了解可用于在 Azure 自动化中启动 Runbook 的不同方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)
+* Azure Automation에서 runbook을 시작하는 데 사용할 수 있는 여러 가지 방법에 대해 자세히 알아보려면 [Azure Automation에서 Runbook 시작](automation-starting-a-runbook.md)을 참조하세요.
 * 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅[Powershell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

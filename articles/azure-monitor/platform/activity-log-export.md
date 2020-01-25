@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969665"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715896"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
-> [!WARNING]
-> 你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[在 Azure Monitor 中的 Log Analytics 工作区中收集和分析 Azure 活动日志](diagnostic-settings-legacy.md)。
+> [!IMPORTANT]
+> 用于将 Azure 活动日志发送到 Azure 存储和 Azure 事件中心的方法已更改为[诊断设置](diagnostic-settings.md)。 本文介绍不推荐使用的旧方法。 请参阅更新到[Azure 活动日志集合和导出](diagnostic-settings-legacy.md)进行比较。
+
 
 [Azure 活动日志](platform-logs-overview.md)提供对 Azure 订阅中发生的订阅级别事件的见解。 除了查看 Azure 门户中的活动日志，或者将其复制到 Log Analytics 工作区（其中可以使用 Azure Monitor 收集的其他数据进行分析），可以创建日志配置文件，将活动日志存档到 Azure 存储帐户，或将其流式传输到 事件中心。
 
@@ -26,30 +27,30 @@ ms.locfileid: "75969665"
 如果要将日志数据保留超过90天（对保留策略具有完全控制），以进行审核、静态分析或备份，将活动日志存档到存储帐户非常有用。 如果只需将事件保留90天或更短的时间，则无需设置到存储帐户的存档，因为活动日志事件保留在 Azure 平台90天内。
 
 ## <a name="stream-activity-log-to-event-hub"></a>将活动日志流式传输到事件中心
-[Azure 事件中心](/azure/event-hubs/)是一种数据流式处理平台和事件引入服务，每秒可接收和处理数百万事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。 可以通过两种方式将流式传输功能用于活动日志：
-* **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和 Log Analytics 解决方案。
-* **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。
+[Azure 事件中心](/azure/event-hubs/)是一种数据流式处理平台和事件引入服务，每秒可接收和处理数百万事件。 이벤트 허브로 전송된 데이터는 실시간 분석 공급자 또는 일괄 처리/스토리지 어댑터를 사용하여 변환하고 저장할 수 있습니다. 可以通过两种方式将流式传输功能用于活动日志：
+* **타사 로깅 및 원격 분석 시스템으로 스트림**: 시간이 지나면서 Azure Event Hubs 스트리밍은 활동 로그를 타사 SIEM 및 로그 분석 솔루션으로 파이핑하기 위한 메커니즘이 되고 있습니다.
+* **사용자 지정 원격 분석 및 로깅 플랫폼 빌드**: 사용자 지정 빌드 원격 분석 플랫폼이 이미 있거나 플랫폼 빌드에 대해 생각하고 있는 경우 Event Hubs의 확장성 높은 게시-구독 특성을 통해 활동 로그를 유연하게 수집할 수 있습니다.
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>필수 조건
 
-### <a name="storage-account"></a>存储帐户
+### <a name="storage-account"></a>Storage 계정
 如果要存档活动日志，则需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未安装）。 不应使用存储在其中的其他非监视数据的现有存储帐户，以便您可以更好地控制对监视数据的访问。 不过，如果还将日志和指标存档到存储帐户，则可以选择使用同一个存储帐户将所有监视数据都保存在一个中央位置。
 
-只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发出日志的的订阅中。
+설정을 구성하는 사용자가 두 구독에 대한 적절한 RBAC 액세스를 가진 경우 스토리지 계정은 로그를 내보내는 구독과 동일한 구독을 가지고 있지 않아도 됩니다.
 > [!NOTE]
->  当前无法将数据存档到受保护虚拟网络后面的存储帐户。
+>  현재는 보안 가상 네트워크 뒤에 있는 스토리지 계정에 데이터를 보관할 수 없습니다.
 
-### <a name="event-hubs"></a>事件中心
+### <a name="event-hubs"></a>Event Hubs
 如果要将活动日志发送到事件中心，则需要[创建一个事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 如果以前已将活动日志事件流式传输到此事件中心命名空间，则会重复使用该事件中心。
 
-共享访问策略定义了流式传输机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 可以在事件中心命名空间的 "配置" 选项卡下的 Azure 门户中创建或修改事件中心命名空间的共享访问策略。
+공유 액세스 정책은 스트리밍 메커니즘에서 보유하는 권한을 정의합니다. 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 可以在事件中心命名空间的 "配置" 选项卡下的 Azure 门户中创建或修改事件中心命名空间的共享访问策略。
 
-若要更新活动日志的日志配置文件以包含流式处理，必须对该事件中心授权规则具有 ListKey 权限。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都在同一个 AAD 租户中，事件中心命名空间就不必与发出日志的订阅位于同一订阅中。
+若要更新活动日志的日志配置文件以包含流式处理，必须对该事件中心授权规则具有 ListKey 权限。 설정을 구성하는 사용자에게 구독 모두에 액세스할 수 있는 적절한 RBAC 액세스 권한이 있다면 Event Hubs 네임스페이스가 로그를 내보내는 구독과 동일한 구독에 위치하지 않아도 됩니다. 구독은 모두 동일한 AAD 테넌트에 위치합니다.
 
 通过[创建日志配置文件](#create-a-log-profile)，将活动日志流式传输到事件中心。
 
 ## <a name="create-a-log-profile"></a>创建日志配置文件
-定义如何使用**日志配置文件**导出 Azure 活动日志。 每个 Azure 订阅只能有一个日志配置文件。 可以通过门户中的 "活动日志" 边栏选项卡中的 "**导出**" 选项配置这些设置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。
+定义如何使用**日志配置文件**导出 Azure 活动日志。 每个 Azure 订阅只能有一个日志配置文件。 可以通过门户中的 "活动日志" 边栏选项卡中的 "**导出**" 选项配置这些设置。 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell cmdlet 또는 CLI를 사용하여 프로그래밍 방식으로 구성할 수도 있습니다.
 
 日志配置文件定义以下各项。
 
@@ -59,9 +60,9 @@ ms.locfileid: "75969665"
 
 **应导出哪些区域（位置）。** 你应包括所有位置，因为活动日志中的许多事件都是全局事件。
 
-**应将活动日志保留在存储帐户中的时间长度。** 保留期为 0 天表示永久保留日志。 否则，该值可以是介于1到365之间的任意天数。
+**应将活动日志保留在存储帐户中的时间长度。** 보존 기간이 0일이라는 것은 로그가 영원히 보관된다는 의미입니다. 否则，该值可以是介于1到365之间的任意天数。
 
-如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。
+如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 보존 정책은 매일 적용되므로 하루의 마지막에(UTC) 보존 정책이 지난 날의 로그가 삭제됩니다. 예를 들어, 하루의 보존 정책이 있는 경우 오늘 날짜가 시작될 때 하루 전의 로그가 삭제됩니다. 삭제 프로세스는 자정(UTC)에 시작되지만, 스토리지 계정에서 로그가 삭제될 때까지 최대 24시간이 걸릴 수 있습니다.
 
 
 > [!IMPORTANT]
@@ -72,22 +73,27 @@ ms.locfileid: "75969665"
 
 在 Azure 门户中使用 "**导出到事件中心**" 选项创建或编辑日志配置文件。
 
-1. 在 Azure 门户的 "**监视**" 菜单中，选择 "**导出到事件中心**"。
+1. 从 Azure 门户的 " **Azure Monitor** " 菜单中，选择 "**活动日志**"。
+3. **진단 설정**을 클릭합니다.
 
-    ![门户中的“导出”按钮](media/activity-log-export/portal-export.png)
+   ![진단 설정](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. 单击紫色横幅了解旧体验。
+
+    ![旧体验](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. 在出现的边栏选项卡中，指定以下内容：
    * 包含要导出的事件的区域。 你应选择 "所有区域"，以确保不会错过关键事件，因为活动日志是一个全局（非区域）日志，因此大多数事件都没有关联的区域。
    * 如果要写入存储帐户，请执行以下操作：
        * 要将事件保存到的存储帐户。
-       * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
+       * 要在存储中保留这些事件的天数。 0일로 설정하면 로그를 계속 유지합니다.
    * 如果要写入事件中心，请执行以下操作：
        * 要在其中创建事件中心来流式传输这些事件的服务总线命名空间。
 
-     ![“导出活动日志”边栏选项卡](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
+     ![활동 로그 내보내기 블레이드](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 
 
-4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。
+4. **저장**을 클릭하여 이러한 설정을 저장합니다. 해당 설정이 구독에 즉시 적용됩니다.
 
 
 ### <a name="configure-log-profile-using-powershell"></a>使用 PowerShell 配置日志配置文件
@@ -96,31 +102,31 @@ ms.locfileid: "75969665"
 
 如果日志配置文件已存在，首先需要删除现有的日志配置文件，然后再创建一个新的日志配置文件。
 
-1. 使用 `Get-AzLogProfile` 确定日志配置文件是否存在。  如果日志配置文件已存在，请记下*name*属性。
+1. `Get-AzLogProfile`를 사용하여 로그 프로필이 있는지 확인합니다.  如果日志配置文件已存在，请记下*name*属性。
 
-1. 使用 `Remove-AzLogProfile` 通过 *name* 属性的值删除日志配置文件。
+1. *name* 속성의 값을 사용하여 로그 프로필을 제거하려면 `Remove-AzLogProfile`을 사용합니다.
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. 使用 `Add-AzLogProfile` 创建新的日志配置文件：
+3. `Add-AzLogProfile`를 사용하여 새 로그 프로필을 만듭니다.
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 需要 | Description |
+    | 속성 | 필수 | Description |
     | --- | --- | --- |
-    | 名称 |是 |日志配置文件的名称。 |
-    | StorageAccountId |否 |应将活动日志保存到其中的存储帐户的资源 ID。 |
-    | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是一个字符串，格式为： `{service bus resource ID}/authorizationrules/{key name}`。 |
-    | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
-    | RetentionInDays |是 |事件在存储帐户中的保留天数，介于1到365之间。 值为零时，将无限期存储日志。 |
-    | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能的值包括 "_写入_"、"_删除_" 和 "_操作_"。 |
+    | 이름 |예 |로그 프로필의 이름입니다. |
+    | StorageAccountId |아닙니다. |应将活动日志保存到其中的存储帐户的资源 ID。 |
+    | serviceBusRuleId |아닙니다. |이벤트 허브를 만들 Service Bus 네임스페이스의 Service Bus 규칙 ID입니다. 这是一个字符串，格式为： `{service bus resource ID}/authorizationrules/{key name}`。 |
+    | 위치 |예 |활동 로그 이벤트를 수집할 쉼표로 구분된 지역 목록입니다. |
+    | RetentionInDays |예 |事件在存储帐户中的保留天数，介于1到365之间。 0 값은 로그를 무기한 저장합니다. |
+    | 범주 |아닙니다. |수집할 쉼표로 구분된 이벤트 범주 목록입니다. 可能的值包括 "_写入_"、"_删除_" 和 "_操作_"。 |
 
-### <a name="example-script"></a>示例脚本
+### <a name="example-script"></a>예제 스크립트
 下面是一个示例 PowerShell 脚本，用于创建将活动日志写入存储帐户和事件中心的日志配置文件。
 
    ```powershell
@@ -144,28 +150,28 @@ ms.locfileid: "75969665"
 
 ### <a name="configure-log-profile-using-azure-cli"></a>使用 Azure CLI 配置日志配置文件
 
-如果日志配置文件已存在，首先需要删除现有日志配置文件，然后创建新的日志配置文件。
+로그 프로필이 이미 있으면 먼저 기존 로그 프로필을 제거한 다음, 새 로그 프로필을 생성해야 합니다.
 
-1. 使用 `az monitor log-profiles list` 确定日志配置文件是否存在。
-2. 使用 `az monitor log-profiles delete --name "<log profile name>` 通过 *name* 属性的值删除日志配置文件。
-3. 使用 `az monitor log-profiles create` 创建新的日志配置文件：
+1. `az monitor log-profiles list`를 사용하여 로그 프로필이 있는지 확인합니다.
+2. *name* 속성의 값을 사용하여 로그 프로필을 제거하려면 `az monitor log-profiles delete --name "<log profile name>`을 사용합니다.
+3. `az monitor log-profiles create`를 사용하여 새 로그 프로필을 만듭니다.
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 需要 | Description |
+    | 속성 | 필수 | Description |
     | --- | --- | --- |
-    | name |是 |日志配置文件的名称。 |
-    | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
-    | 位置 |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
-    | days |是 |事件应保留的天数，介于1到365之间。 值为零时，将无限期（永久）存储日志。  如果为零，则 enabled 参数应设置为 false。 |
-    |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
-    | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
+    | name |예 |로그 프로필의 이름입니다. |
+    | storage-account-id |예 |활동 로그를 저장할 Storage 계정의 리소스 ID입니다. |
+    | 위치 |예 |활동 로그 이벤트를 수집할 공백으로 구분된 지역 목록입니다. `az account list-locations --query [].name`을 사용하여 구독에 대한 모든 지역 목록을 볼 수 있습니다. |
+    | 일 |예 |事件应保留的天数，介于1到365之间。 0 값은 로그를 무기한(영원히) 저장합니다.  如果为零，则 enabled 参数应设置为 false。 |
+    |사용 | 예 |True 또는 False입니다.  보존 정책을 사용하거나 비활성화하는 데 사용합니다.  True이면 일 매개 변수 0보다 큰 값이어야 합니다.
+    | 범주 |예 |수집해야 할 공백으로 구분된 이벤트 범주 목록입니다. 가능한 값은 쓰기, 삭제 및 작업입니다. |
 
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
+* [활동 로그에 대한 자세한 내용](../../azure-resource-manager/management/view-activity-logs.md)
 * [将活动日志收集到 Azure Monitor 日志中](activity-log-collect.md)

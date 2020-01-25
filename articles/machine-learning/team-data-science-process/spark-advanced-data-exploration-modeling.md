@@ -1,72 +1,74 @@
 ---
-title: 使用 Spark 进行高级数据探索和建模 - Team Data Science Process
-description: 使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。
+title: Spark로 고급 데이터 탐색 및 모델링 - Team Data Science Process
+description: HDInsight Spark를 사용하여 데이터 탐색 및 학습 이진 분류를 수행하며 교차 유효성 검사 및 하이퍼 매개 변수 최적화를 사용하는 회귀 모델링을 수행합니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253428"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718644"
 ---
-# <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
+# <a name="advanced-data-exploration-and-modeling-with-spark"></a>고급 Spark로 데이터 탐색 및 모델링
 
-此演练对 NYC 出租车行程和车费 2013 数据的样本使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。 它端到端演练[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure Blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 已使用 Python 编写解决方案并显示相关绘图。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。 
+이 연습에서는 HDInsight Spark를 사용하여 데이터 탐색 및 학습 이진 분류를 수행하며 NYC Taxi Trip 및 요금 2013 데이터 세트 샘플에서 교차 유효성 검사 및 하이퍼 매개 변수 최적화를 사용하는 회귀 모델링을 수행합니다. 처리를 위한 HDInsight Spark 클러스터와 데이터 및 모델을 저장하는 Azure Blob을 사용하여 [데이터 과학 프로세스](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)의 단계를 엔드투엔드 안내합니다. 프로세스는 Azure Storage Blob에서 가져온 데이터를 탐색하고 시각화한 다음 데이터를 준비하여 예측 모델을 빌드합니다. Python은 솔루션을 코딩하고 관련 차트를 표시하는 데 사용합니다. 이러한 모델은 Spark MLlib 도구 키트를 사용하여 이진 분류 및 회귀 모델링 작업을 수행합니다. 
 
-* **二元分类**任务用于预测某个行程是否会支付小费。 
-* **回归**任务用于根据其他小费特征预测小费的金额。 
+* **이진 분류** 작업은 여정에 대해 팁이 지불되었는지 여부를 예측합니다. 
+* **회귀** 작업은 다른 팁 기능을 기반으로 하는 팁의 금액을 예측합니다. 
 
-建模步骤还包含显示如何训练、评估和保存每个模型类型的代码。 此主题涵盖某些与[使用 Spark 进行数据探索和建模](spark-data-exploration-modeling.md)主题相同的基础。 但是其内容更“高级”，因为还会涉及如何将交叉验证与超参数扫描结合使用，以训练最准确的分类和回归模型。 
+또한 모델링 단계에는 각 모델 유형을 학습, 평가 및 저장하는 방법을 보여주는 코드가 포함되어 있습니다. 이 항목에는 [Spark로 데이터 탐색 및 모델링](spark-data-exploration-modeling.md) 항목과 동일한 기본적인 내용이 일부 포함되어 있습니다. 하지만 좀 더 "고급" 내용으로, 하이퍼 매개 변수 비우기와 교차 유효성 검사를 함께 사용하여 정확한 분류 및 회귀 모델을 최적으로 학습할 수 있습니다. 
 
-**交叉验证 (CV)** 是评估在已知数据集上训练的模型对预测未经训练的数据集特征的一般化程度的技术。  此处使用的常见实现是将数据集划分为 K 折，然后以轮询机制方式在除一折以外的所有折上训练模型。 模型的准确预测能力在针对此不用来训练模型的折叠中的独立数据集进行测试时受到评估。
+**CV(교차 유효성 검사)** 는 알려진 데이터 세트에서 학습된 모델이 학습되지 않은 데이터 세트의 기능 예측을 얼마나 잘 일반화하는지 평가하는 기술입니다.  여기에 사용된 일반적인 구현은 데이터 세트를 K 접기로 나눈 다음 접기 중 하나를 제외한 모든 접기에서 라운드 로빈 방식으로 모델을 학습하는 것입니다. 이 접기에서 모델을 테스트하는 데 사용되지 않은 독립 데이터 세트에 대해 모델을 테스트할 때 모델이 정확히 예측하는 기능이 평가됩니다.
 
-**超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
+**하이퍼 매개 변수 최적화** 는 학습 알고리즘에 대한 하이퍼 매개 변수 집합을 선택하는 문제이며, 일반적으로 독립된 데이터 집합에서의 알고리즘 성능 측정값을 최적화하는 것을 목표로 합니다. **하이퍼 매개 변수** 는 모델 학습 절차 외부에서 지정해야 하는 값입니다. 이러한 값에 대한 가정은 모델의 유연성 및 정확도에 영향을 줄 수 있습니다. 의사 결정 트리에는 원하는 깊이와 트리의 리프 수와 같은 하이퍼 매개 변수가 있습니다. SVM(Support Vector Machine)은 오분류 페널티 조건을 설정해야 합니다. 
 
-执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 这包括为学习算法在这些值（超参数空间的指定子集）中执行详尽搜索。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
+여기에 사용된 하이퍼 매개 변수 최적화를 수행하는 일반적인 방법은 그리드 검색 또는 **매개 변수 비우기**입니다. 此搜索将经历学习算法的超参数空间子集。 교차 유효성 검사는 그리드 검색 알고리즘에 의해 생성되는 최적의 결과를 분류하는 성능 메트릭을 제공할 수 있습니다. 하이퍼 매개 변수 비우기와 함께 사용된 CV를 통해 데이터 학습 모델의 과잉 맞춤과 같은 문제를 제한하여 모델이 학습 데이터가 추출되는 일반 데이터 집합에 적용할 용량을 유지하도록 합니다.
 
-我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
+사용하는 모델은 로지스틱 및 선형 회귀, 임의 포리스트, 그라데이션 향상된 트리를 포함합니다.
 
-* [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
-* [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
-* [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+* [SGD로 선형 회귀](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) 는 SGD(Stochastic Gradient Descent) 메서드를 사용하는 선형 회귀 모델이며 최적화 및 기능에 대해 크기를 조정하여 결재된 팁 금액을 예측합니다. 
+* [LBFGS로 로지스틱 회귀 분석](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) 또는 "로짓" 회귀는 종속 변수가 데이터 분류를 수행하는 범주인 경우 사용할 수 있는 회귀 모델입니다. LBFGS는 제한된 양의 컴퓨터 메모리를 사용하여 BFGS(Broyden–Fletcher–Goldfarb–Shanno) 알고리즘을 비슷하게 만들고 기계 학습에서 널리 사용되는 준 뉴턴 최적화 알고리즘입니다.
+* [임의 포리스트](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) 는 결정 트리의 결합체입니다.  즉, 과잉 맞춤의 위험을 줄이기 위해 많은 결정 트리를 결합합니다. 임의 포리스트는 회귀 및 분류에 사용되며 범주 기능을 처리하고 다중 클래스 분류 설정으로 확장할 수 있습니다. 기능 크기 조정을 필요로 하지 않으며 비선형 및 기능 상호 작용을 캡처할 수 있습니다. 임의 포리스트는 분류 및 회귀를 위해 매우 성공적인 기계 학습 모델 중 하나입니다.
+* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 以迭代方式定型决策树，以最大程度地降低损失函数。 GBT 用于回归和分类，可处理分类特征，不需要功能缩放，并且能够捕获非非线性和特征交互。 또한 다중 클래스 분류 설정에도 사용할 수 있습니다.
 
-为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络**是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
+이진 분류 문제에 대한 CV 및 하이퍼 매개 변수 비우기를 사용하는 모델링 예제가 표시됩니다. 더 간단한 예제(매개 변수 비우기 없음)가 회귀 작업에 대한 주요 토픽으로 표시됩니다. 하지만 부록에서는 선형 회귀에 대해 탄력적 net을 사용한 유효성 검사와 임의 포리스트 회귀에 대해 사용한 매개 변수 비우기가 있는 CV도 표시됩니다. **탄력적 net**은 L1 및 L2 메트릭을 선형으로 결합하는 선형 회귀 모델을 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 및 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 메서드의 페널티로 맞추기 위한 정칙 회귀 메서드입니다.   
+
+<!-- -->
 
 > [!NOTE]
-> 尽管 Spark MLlib 工具包设计用于处理大型数据集，但为方便起见，此处使用相对较小的样本（约 30 Mb，使用 170K 行，大约原始 NYC 数据集的 0.1%）。 此处提供的练习在带有 2 个辅助节点的 HDInsight 群集中高效运行（在大约 10 分钟内）。 相同的代码（带有少量修改）可用于处理更大的数据集，前提是进行相应的修改以在内存中缓存数据和更改群集大小。
-> 
-> 
+> Spark MLlib 도구 키트가 큰 데이터 세트에서 작동하도록 디자인되었지만 여기서는 편의상 비교적 작은 샘플을 사용합니다(30Mb보다 작은 170,000개 행 즉, 원래 NYC 데이터 세트의 약 0.1%를 사용함). 여기에 제공된 연습은 2개의 작업자 노드를 가진 HDInsight 클러스터에서 효율적으로 실행됩니다(약 10분 동안). 동일한 코드를 약간만 수정하면 데이터를 메모리에 캐시하고 클러스터 크기를 변경하도록 적절하게 수정하여 더 큰 데이터 집합을 처리하는 데 사용할 수 있습니다.
 
-## <a name="setup-spark-clusters-and-notebooks"></a>设置：Spark 群集和笔记本
-本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了在 Jupyter 笔记本服务器的 pyspark 内核中运行的、适用于 Spark 1.6 和 2.0 的 Jupyter 笔记本的链接：
+<!-- -->
 
-### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
+## <a name="setup-spark-clusters-and-notebooks"></a>설정: Spark 클러스터 및 Notebook
+설치 단계와 코드는 HDInsight Spark 1.6을 사용하는 이 연습에 제공됩니다. 하지만 Jupyter Notebook은 HDInsight Spark 1.6과 Spark 2.0 클러스터 둘 다에 제공됩니다. 노트북과 이에 연결된 링크의 설명은 이들을 포함하는 GitHub 리포지토리의 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md)에 제공됩니다. 그뿐 아니라 여기에 있는 코드와 연결된 Notebook에 있는 코드는 일반적이므로 아무 Spark 클러스터에서나 작동할 것입니다. HDInsight Spark를 사용하지 않는 경우 클러스터 설치 및 관리 단계가 여기에 나오는 내용과 약간 다를 수 있습니다. 편의를 위해, Jupyter Notebook 서버의 pyspark 커널에서 실행되는 Spark 1.6 및 2.0용 Jupyter Notebook에 연결된 링크는 다음과 같습니다.
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
+### <a name="spark-16-notebooks"></a>Spark 1.6 Notebook
 
-### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): 노트북 #1의 토픽과 하이퍼 매개 변수 조정 및 교차 유효성 검사를 사용하는 모델 개발을 포함합니다.
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
+### <a name="spark-20-notebooks"></a>Spark 2.0 노트북
+
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): 이 파일은 Spark 2.0 클러스터에서 데이터 탐색, 모델링, 점수 매기기를 수행하는 방법에 대한 정보를 제공합니다.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>设置：存储位置、库和预设 Spark 上下文
-Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，存储在该处的任何现有数据都可以使用 Spark 处理，并将结果再次存储在 WASB 中。
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>설정: 스토리지 위치, 라이브러리 및 사전 설정 Spark 컨텍스트
+Spark는 Azure Storage Blob(WASB라고도 함)를 읽고 쓸 수 있습니다. 따라서 Spark 및 WASB에 다시 저장된 결과를 사용하여 해당 저장소에 저장된 기존 데이터를 처리할 수 있습니다.
 
-若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为以下内容的路径，引用附加到 Spark 群集的默认容器：“wasb:///”。 其他位置通过“wasb://”引用。
+모델 또는 파일을 WASB에 저장하려면 경로를 올바르게 지정해야 합니다. "wasb///"로 시작하는 경로를 사용하여 Spark 클러스터에 연결된 기본 컨테이너를 참조할 수 있습니다. 다른 위치를 “wasb://”에서 참조합니다.
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
-以下代码示例指定要读取的数据位置，以及用于保存模型输出的模型存储目录的路径：
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB의 스토리지 위치에 대 한 디렉터리 경로를 설정합니다.
+다음 코드 샘플은 읽을 데이터의 위치 및 모델 출력을 저장할 모델 스토리지 디렉터리에 대한 경로를 지정합니다.
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -82,12 +84,12 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
     import datetime
     datetime.datetime.now()
 
-**输出**
+**OUTPUT**
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
-### <a name="import-libraries"></a>导入库
-使用以下代码导入必要的库：
+### <a name="import-libraries"></a>라이브러리 가져오기
+다음 코드를 사용하여 필요한 라이브러리를 가져옵니다.
 
     # LOAD PYSPARK LIBRARIES
     import pyspark
@@ -105,29 +107,29 @@ datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>预设 Spark 上下文和 PySpark magic
-与 Jupyter 笔记本一起提供的 PySpark 内核具有预设上下文。 因此在开始处理正在开发的应用程序前无需显式设置 Spark 或 Hive 上下文。 这些上下文默认可用。 这些上下文包括：
+### <a name="preset-spark-context-and-pyspark-magics"></a>미리 설정된 Spark 컨텍스트 및 PySpark 매직
+Jupyter Notebook과 함께 제공되는 PySpark 커널에는 사전 설정 컨텍스트가 있습니다. 따라서 개발 중인 애플리케이션으로 작업을 시작하기 전에 Spark 또는 Hive 컨텍스트를 명시적으로 설정할 필요는 없습니다. 이러한 컨텍스트는 기본적으로 사용할 수 있습니다. 이러한 컨텍스트는 다음과 같습니다.
 
-* sc - 用于 Spark 
-* sqlContext - 用于 Hive
+* sc - Spark용 
+* sqlContext - Hive용
 
-PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用的特殊命令。 在这些代码示例中使用的此类命令有两个。
+PySpark 커널은 특수 명령인 일부 미리 정의된 "매직"을 제공하며 이러한 매직은 %%를 사용하여 호출할 수 있습니다. 이러한 코드 샘플에 사용되는 다음과 같은 두 가지 명령이 있습니다.
 
-* **%%local** 指定本地执行后续行中的代码。 代码必须是有效的 Python 代码。
-* **%%sql-o\<变量的名称 >** 执行针对 sqlContext 的 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
+* **%%local** 다음 줄의 코드는 로컬로 실행됩니다. 코드는 유효한 Python 코드여야 합니다.
+* **%% sql-o \<变量名 >** 针对 sqlContext 执行 Hive 查询。 -o 매개 변수가 전달된 경우 쿼리 결과가 %%local Python 컨텍스트에서 Pandas 데이터 프레임으로 유지됩니다.
 
-有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
+Jupyter Notebook의 커널 및 제공되는 미리 정의된 "매직"에 대한 자세한 내용은 [HDInsight의 HDInsight Spark Linux 클러스터에서 Jupyter Notebook에 사용할 수 있는 커널](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)을 참조하세요.
 
-## <a name="data-ingestion-from-public-blob"></a>来自公共 blob 的数据引入：
-数据科学过程的第一步是从源引入数据以供分析，使其驻留在数据探索和建模环境中。 此环境在本演练中为 Spark。 本部分包含要完成一系列任务的代码：
+## <a name="data-ingestion-from-public-blob"></a>공용 blob에서 데이터 수집:
+데이터 과학 프로세스의 첫 번째 단계는 원본에서 분석할 데이터를 수집하여 데이터 탐색 및 모델링 환경에 상주시키는 것입니다. 이 환경은 이 연습에서 Spark입니다. 이 섹션은 일련의 작업을 완료하는 코드를 포함합니다.
 
-* 引入数据样本以供建模
-* 读取输入数据集（以 .tsv 文件的形式存储）
-* 格式化并清理数据
-* 在内存中创建并缓存对象（RDD 或数据帧）
-* 在 SQL 上下文中将其注册为临时表。
+* 모델링할 데이터 샘플 수집
+* 입력 데이터 세트 읽기(.tsv 파일로 저장됨)
+* 데이터 포맷 및 정리
+* 메모리에 개체 만들기 및 캐시(RDD 또는 데이터 프레임)
+* SQL 컨텍스트에 임시 테이블로 등록
 
-下面是用于数据引入的代码。
+데이터 수집에 대한 코드는 다음과 같습니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -185,20 +187,20 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：276.62 秒
+위의 셀을 실행하는 데 걸린 시간: 276.62초
 
-## <a name="data-exploration--visualization"></a>数据探索和可视化
-将数据引入到 Spark 中后，数据科学过程的下一步是通过探索和可视化更深入地了解数据。 在本部分中，我们使用 SQL 查询检查出租车数据，并绘制目标变量和预期特征以供视觉检查。 具体而言，我们绘制出租车行程中乘客数的频率、小费金额的频率以及小费如何随支付金额和类型而变化。
+## <a name="data-exploration--visualization"></a>데이터 탐색 및 시각화
+데이터를 Spark로 가져오면 데이터 과학 프로세스의 다음 단계에서 탐색 및 시각화를 통해 데이터를 더 잘 이해할 수 있습니다. 이 섹션에서는 SQL 쿼리를 사용하여 Taxi 데이터를 검사하고 시각적 조사에 대한 대상 변수 및 잠재 기능을 그립니다. 특히, Taxi Trip에서 승객 수의 빈도, 팁 금액의 빈도 및 지불 금액 및 형식에 따른 팁의 변화를 그립니다.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>绘制出租车小费样本中乘客数频率的直方图
-此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Taxi Trip의 샘플에서 승객 수 빈도의 히스토그램을 그립니다.
+이 코드와 후속 코드 조각은 샘플을 쿼리하는 데 SQL 매직을 사용하고 데이터를 그리는 데 로컬 매직을 사용합니다.
 
-* **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
+* **SQL 매직(`%%sql`)** HDInsight PySpark 커널은 sqlContext에 대해 간편한 인라인 HiveQL 쿼리를 지원합니다. (-o VARIABLE_NAME) 인수는 Jupyter 서버에서 Pandas 데이터 프레임으로 SQL 쿼리의 출력을 유지합니다. 즉, 로컬 모드에서 사용할 수 있습니다.
+* **`%%local` 매직** 은 HDInsight 클러스터의 헤드 노드인 Jupyter 서버에서 코드를 로컬로 실행하는 데 사용됩니다. 일반적으로 `%%sql -o` 매직을 사용하여 쿼리를 실행한 후에 `%%local`을 사용합니다. -o 매개 변수는 SQL 쿼리 출력을 로컬로 유지합니다. 그런 다음 `%%local` 매직은 로컬로 유지된 SQL 쿼리 출력에 대해 다음 코드 조각 집합이 로컬로 실행되도록 트리거합니다. 코드를 실행한 후 출력이 자동으로 시각화됩니다.
 
-此查询通过乘客数检索行程。 
+이 쿼리는 승객 수에 따라 여정을 검색합니다. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
@@ -207,12 +209,14 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-此代码从查询输出创建本地数据帧，并绘制数据。 `%%local` magic 创建本地数据帧 `sqlResults`，可用于使用 matplotlib 进行绘制。 
+이 코드는 쿼리 출력에서 로컬 데이터 프레임을 만들고 데이터를 그립니다. `%%local` 매직은 로컬 데이터 프레임 `sqlResults`를 만드는데, 이것은 matplotlib로 그리는 데 사용할 수 있습니다. 
+
+<!-- -->
 
 > [!NOTE]
-> 此 PySpark magic 在本演练中多次使用。 如果数据量很大，应采样以创建本地内存可容纳的数据帧。
-> 
-> 
+> 이 PySpark 매직은 이 연습에서 여러 번 사용됩니다. 데이터 양이 많은 경우 로컬 메모리에 맞게 데이터 프레임을 만들도록 샘플링해야 합니다.
+
+<!-- -->
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -221,7 +225,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-下面是用于按乘客数绘制行程的代码
+다음은 승객 수에 따라 여정을 그리는 코드입니다.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -237,14 +241,14 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**输出**
+**OUTPUT**
 
-![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
+![승객 수에 따른 여정 빈도](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择。 此处显示了条形图。
+Notebook의 **형식** 메뉴 버튼을 사용하여 다양한 시각화 형식(테이블, 원형, 꺾은선형, 영역 또는 막대) 중에서 선택할 수 있습니다. 막대 그리기는 다음과 같습니다.
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
-使用 SQL 查询为数据采样。
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>승객 수 및 요금 금액에 따라 팁 금액이 어떻게 달라지는지와 팁 금액에 대한 히스토그램을 그립니다.
+SQL 쿼리를 사용하여 데이터를 샘플링합니다.
 
     # SQL SQUERY
     %%sql -q -o sqlResults
@@ -259,7 +263,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         AND tip_amount < 25
 
 
-此代码单元格使用 SQL 查询创建三个数据图。
+이 코드 셀에서는 SQL 쿼리를 사용하여 3가지로 데이터 그리기를 만듭니다.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -290,26 +294,26 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     plt.show()
 
 
-**输出：** 
+**출력:** 
 
-![小费金额分布](./media/spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
+![팁 금액 분포](./media/spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
 
-![按乘客数的小费金额](./media/spark-advanced-data-exploration-modeling/tip-amount-by-passenger-count.png)
+![승객 수에 따른 여정 수](./media/spark-advanced-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
-![按车费金额的小费金额](./media/spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
+![금액에 따른 팁 금액](./media/spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>用于建模的特征工程、转换和数据准备
-本部分介绍并提供使数据准备好在 ML 建模中使用的过程的代码。 它介绍如何执行以下任务：
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>모델링에 대한 기능 엔지니어링, 변환 및 데이터 준비
+이 섹션에서는 기계 학습 모델링에 사용할 데이터를 준비하는 데 사용되는 프로시저에 대한 코드를 설명하고 제공합니다. 다음 작업을 수행하는 방법을 보여줍니다.
 
-* 通过将小时划分到交通时间箱来创建新特征
-* 为分类特征编制索引并进行独热编码
-* 创建标签点对象用于输入到 ML 函数中
-* 创建数据的随机子采样，并将其拆分为训练集和测试集
-* 特征缩放
-* 在内存中缓存对象
+* 시간을 트래픽 시간 bin으로 분할하여 새로운 기능 만들기
+* 범주 기능 인덱스 및 원 핫 인코딩(one-hot encoding)
+* 기계 학습 함수에 입력에 대한 레이블이 지정된 지점 개체 만들기
+* 创建数据的随机采样，并将其拆分为定型集和测试集
+* 기능 크기 조정
+* 메모리에서 개체 캐시
 
-### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>通过将交通时间划分到箱来创建新特征
-此代码显示如何通过将交通时间划分到箱来创建新特征，以及如何在内存中缓存生成的数据帧。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 因此，我们在本演练中的多个阶段缓存 RDD 和数据帧。
+### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>트래픽 시간을 bin으로 분할하여 새로운 기능 만들기
+이 코드는 트래픽 시간을 bin으로 분할하여 새로운 기능을 만드는 방법 및 메모리에 결과 데이터 프레임을 캐시하는 방법을 보여 줍니다. RDD(복원력 있는 분산된 데이터 세트) 및 데이터 프레임을 반복해서 사용하는 경우 캐시하면 실행 시간이 향상됩니다. 따라서 RDD 및 데이터 프레임을 연습의 여러 단계에서 캐시합니다.
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -330,16 +334,16 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**输出**
+**OUTPUT**
 
 126050
 
-### <a name="index-and-one-hot-encode-categorical-features"></a>为分类特征编制索引并进行独热编码
-本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要在使用前，对带有分类输入数据的特征进行索引或编码。 
+### <a name="index-and-one-hot-encode-categorical-features"></a>범주 기능 인덱스 및 원 핫 인코딩(one-hot encoding)
+이 섹션에는 모델링 기능에 입력에 대한 범주 기능을 인덱싱하거나 인코딩하는 방법을 보여줍니다. MLlib의 모델링 및 예측 함수는 사용하기 전에 범주 입력 데이터로 기능을 인덱싱 또는 인코딩해야 합니다. 
 
-根据模型，需要以不同方式为它们编制索引或进行独热编码。 例如，逻辑和线性回归模型需要独热编码，举例来说，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
+모델에 따라 다양한 방식에서 인덱싱하거나 인코드해야 합니다. 예를 들어 로지스틱 및 선형 회귀 모델은 원 핫 인코딩(one-hot encoding)이 필요하며 이런 경우, 예를 들어 3개의 범주가 있는 기능이 관찰 범주에 따라 각각 0 또는 1을 포함하는 3개의 기능 열로 확장될 수 있습니다. MLlib는 원 핫 인코딩 작업을 수행하는 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 함수를 제공합니다. 이 인코더는 레이블 인덱스의 열을 단 하나의 값을 가진 이진 벡터의 열에 매핑합니다. 이 인코딩을 사용하여 로지스틱 회귀 분석 등과 같은 숫자 값을 가진 기능을 예상하는 알고리즘을 범주 기능에 적용할 수 있습니다.
 
-下面是用于为分类特征编制索引和编码的代码：
+다음은 범주 기능을 인덱스 및 인코딩하는 코드입니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -381,14 +385,14 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：3.14 秒
+위의 셀을 실행하는 데 걸린 시간: 3.14초
 
-### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
-本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 这会准备将其用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
+### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>기계 학습 함수에 입력에 대한 레이블이 지정된 지점 개체 만들기
+이 섹션에는 범주별 텍스트 데이터를 레이블이 지정된 지점 데이터 형식으로 인덱싱하는 방법과 인코딩하는 방법을 보여 주는 코드가 포함되어 있습니다. 此转换准备要用于定型和测试 MLlib 逻辑回归和其他分类模型的文本数据。 레이블이 지정된 지점 개체는 대부분 MLlib의 기계 학습 알고리즘에서 입력 데이터로 필요한 방식으로 형식이 지정된 RDD(Resilient Distributed Datasets)입니다. [레이블이 지정된 지점](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 은 레이블/응답과 연결된 로컬 벡터, 밀도 또는 스파스입니다.
 
-下面是用于针对二元分类为文本特征编制索引和编码的代码。
+다음은 이진 분류를 위해 텍스트 기능을 인덱싱 및 인코딩하는 코드입니다.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -412,7 +416,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-下面是用于针对线性回归分析为分类文本特征编码和编制索引的代码。
+다음은 선형 회귀 분석을 위해 범주 텍스트 기능을 인코딩 및 인덱싱하는 코드입니다.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -434,8 +438,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机采样，并将其拆分为定型集和测试集
+이 코드는 데이터의 무작위 샘플링을 만듭니다(25%가 여기에서 사용됨). 데이터 세트의 크기로 인해 이 예제에 필요하지 않지만 여기서는 데이터를 샘플링하는 방법도 살펴봅니다. 그러면 필요할 때 자체 문제에 사용하는 방법을 알 수 있게 됩니다. 当样本较大时，采样可节省大量时间，同时训练模型。 다음 샘플을 교육 부분(여기서 75%)와 테스트 부분(여기서 25%)로 분할하여 분류 및 회귀 모델링에 사용합니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -474,19 +478,19 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：0.31 秒
 
-### <a name="feature-scaling"></a>特征缩放
-特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放为单位差异。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归。 SGD 是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。   
+### <a name="feature-scaling"></a>기능 크기 조정
+데이터 정규화라고도 하는 기능 크기 조정은 폭 넓게 분배된 값을 가진 기능이 목적 함수에서 과도한 가중치를 부여하지 않도록 합니다. 기능 크기 조정에 대한 코드는 단위 분산에 대한 기능의 크기를 조정하는 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 를 사용합니다. 이러한 기능은 SGD(Stochastic Gradient Descent)와 함께 선형 회귀에 사용하기 위해 MLlib에서 제공합니다. SGD는 정칙 회귀 또는 SVM(support vector machine)과 같은 광범위한 다른 기계 학습 모델을 학습하기 위한 인기 있는 알고리입니다.   
 
 > [!TIP]
-> 我们发现，LinearRegressionWithSGD 算法对特征缩放很敏感。   
+> LinearRegressionWithSGD 알고리즘이 기능 크기 조정에 민감하다는 점을 발견했습니다.   
 > 
 > 
 
-下面是用于缩放变量以用于正则化线性 SGD 算法的代码。
+여기에 정칙 선형 SGD 알고리즘에 사용할 변수의 크기를 조정하는 코드가 있습니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -515,12 +519,12 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：11.67 秒
+위의 셀을 실행하는 데 걸린 시간: 11.67초
 
-### <a name="cache-objects-in-memory"></a>在内存中缓存对象
-可通过缓存用于分类、回归和缩放特征的输入数据帧对象来缩短训练和测试 ML 算法所花的时间。
+### <a name="cache-objects-in-memory"></a>메모리에서 개체 캐시
+분류, 회귀 및 확장된 기능에 사용되는 입력 데이터 프레임 개체를 캐시하여 ML(기계 학습) 알고리즘의 학습 및 테스트에 소요된 시간을 줄일 수 있습니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -546,41 +550,43 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出** 
+**OUTPUT** 
 
 执行以上单元格所花的时间：0.13 秒
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>通过二元分类模型预测是否支付小费
-本部分介绍如何将二元分类任务的三个模型用于预测是否为某个出租车行程支付小费。 显示的模型包括：
+## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>팁이 지불되었는지 여부를 이진 분류 모델로 예측합니다.
+이 섹션에서는 Taxi Trip에 팁을 지불했는지 여부를 예측하는 이진 분류 작업에 대한 세 개의 모델을 사용하는 방법을 보여줍니다. 제공된 모델은 다음과 같습니다.
 
-* 逻辑回归 
-* 随机林
-* 梯度提升树
+* 로지스틱 회귀 
+* 임의 포리스트
+* 그라데이션 향상 트리
 
-每个模型生成代码部分拆分为多个步骤： 
+코드 섹션을 빌드하는 각 모델은 다음과 같은 단계로 분할됩니다. 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用
+1. **모델 교육** 데이터
+2. **모델 평가**
+3. **모델 저장**
 
-我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
+매개 변수 비우기를 사용하여 CV(교차 유효성 검사)를 수행하는 두 가지 방법을 보여 줍니다.
 
-1. 使用**泛型**自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
-2. 使用 **pySpark CrossValidator 管道函数**。 请注意，CrossValidator 对于 Spark 1.5.0 有几个限制： 
+1. 使用可应用于 MLlib 中的任何算法和算法中的任何参数集的**泛型**自定义代码。 
+2. **pySpark CrossValidator 파이프라인 함수** 사용 对于 Spark 1.5.0 的 CrossValidator 有几个限制： 
    
-   * 无法保存/保留管道模型以供将来使用。
-   * 无法用于模型中的每个参数。
-   * 无法用于每个 MLlib 算法。
+   * 无法保存或保留管道模型以供将来使用。
+   * 모델의 모든 매개 변수에 사용할 수 없습니다.
+   * 모든 MLlib 알고리즘에 사용할 수 없습니다.
 
-### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>与二元分类的逻辑回归算法一起使用的泛型交叉验证和超参数扫描
-本部分中的代码显示如何使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 训练、评估和保存逻辑回归模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。 使用交叉验证 (CV) 和通过自定义代码（可应用到 MLlib 中的任何学习算法）实现的超参数扫描训练模型。   
+### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>이진 분류에 대한 로지스틱 회귀 분석 알고리즘과 함께 사용되는 일반적인 교차 유효성 검사 및 하이퍼 매개 변수 비우기
+이 섹션의 코드에서는 NYC Taxi Trip 및 요금 데이터 세트에서 팁이 여정에 지불되었는지를 예측하는 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 로 로지스틱 회귀 분석 모델을 학습하고 평가하며 저장하는 방법을 보여 줍니다. MLlib 내의 모든 학습 알고리즘에 적용할 수 있는 사용자 지정 코드로 구현된 CV(교차 유효성 검사) 및 하이퍼 매개 변수 비우기를 사용하여 모델을 학습합니다.   
+
+<!-- -->
 
 > [!NOTE]
-> 此自定义 CV 代码的执行可能需要几分钟。
-> 
-> 
+> 이 사용자 지정 CV 코드를 실행하는 데 몇 분 정도 걸릴 수 있습니다.
 
-**使用 CV 和超参数扫描训练逻辑回归模型**
+<!-- -->
+
+**CV 및 하이퍼 매개 변수 비우기를 사용하여 로지스틱 회귀 모델 학습**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -661,17 +667,17 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-系数：[0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
+Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
-截距：-0.0111216486893
+Intercept: -0.0111216486893
 
-执行以上单元格所花的时间：14.43 秒
+위의 셀을 실행하는 데 걸린 시간: 14.43초
 
-**通过标准指标评估二元分类模型**
+**표준 메트릭을 사용한 이진 분류 모델 평가**
 
-本部分中的代码显示如何针对测试数据集评估逻辑回归模型，包括 ROC 曲线图。
+이 섹션의 코드는 ROC 곡선 그림을 포함하는 테스트 데이터 집합에 대해 로지스틱 회귀 분석 모델을 평가하는 방법을 보여 줍니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -714,32 +720,32 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-PR = 0.985336538462 下的面积
+Area under PR = 0.985336538462
 
-ROC = 0.983383274312 下的面积
+Area under ROC = 0.983383274312
 
-摘要统计信息
+Summary Stats
 
-精度 = 0.984174341679
+Precision = 0.984174341679
 
-召回率 = 0.984174341679
+Recall = 0.984174341679
 
-F1 分数 = 0.984174341679
+F1 Score = 0.984174341679
 
-执行以上单元格所花的时间：2.67 秒
+위의 셀을 실행하는 데 걸린 시간: 2.67초
 
-**绘制 ROC 曲线。**
+**ROC 곡선을 그립니다.**
 
-在上一个单元格中，*predictionAndLabelsDF* 注册为表 *tmp_results*。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
+*predictionAndLabelsDF*는 이전 셀에서 테이블 *tmp_results*로 등록되었습니다. *tmp_results*를 사용하면 쿼리를 수행하고 결과를 sqlResults 데이터 프레임으로 출력하여 그래프에 표시할 수 있습니다. 코드는 다음과 같습니다.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-下面是进行预测并绘制 ROC 曲线的代码。
+ROC 곡선을 그리고 예측을 수행하는 코드는 다음과 같습니다.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
@@ -767,13 +773,13 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
-![泛型方法的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
+![일반적인 접근 방식에 대한 로지스틱 회귀 분석 ROC 곡선](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-**在 blob 中保留模型以供将来使用**
+**나중에 사용할 Blob의 모델 유지**
 
-本部分中的代码显示如何保存逻辑回归模型以供使用。
+이 섹션의 코드는 소비에 대한 로지스틱 회귀 분석 모델을 저장하는 방법을 보여 줍니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -794,17 +800,19 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：34.57 秒
+위의 셀을 실행하는 데 걸린 시간: 34.57초
 
-### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>将 MLlib 的 CrossValidator 管道函数与逻辑回归（弹性回归）模型一起使用
-本部分中的代码显示如何使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 训练、评估和保存逻辑回归模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。 使用交叉验证 (CV) 和通过 MLlib CrossValidator 管道函数（用于使用参数扫描的 CV）实现的超参数扫描训练模型。   
+### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>로지스틱 회귀(탄력적 회귀) 모델과 함께 MLlib의 CrossValidator 파이프라인 함수 사용
+이 섹션의 코드에서는 NYC Taxi Trip 및 요금 데이터 세트에서 팁이 여정에 지불되었는지를 예측하는 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 로 로지스틱 회귀 분석 모델을 학습하고 평가하며 저장하는 방법을 보여 줍니다. 매개 변수 비우기와 함께 CV에 대한 MLlib CrossValidator 파이프라인 함수로 구현되는 CV(교차 유효성 검사) 및 하이퍼 매개 변수 비우기를 사용하여 모델을 학습합니다.   
+
+<!-- -->
 
 > [!NOTE]
-> 此 MLlib CV 代码的执行可能需要几分钟。
-> 
-> 
+> 이 MLlib CV 코드를 실행하는 데 몇 분 정도 걸릴 수 있습니다.
+
+<!-- -->
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -850,19 +858,19 @@ F1 分数 = 0.984174341679
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：107.98 秒
+위의 셀을 실행하는 데 걸린 시간: 107.98초
 
-**绘制 ROC 曲线。**
+**ROC 곡선을 그립니다.**
 
-在上一个单元格中，*predictionAndLabelsDF* 注册为表 *tmp_results*。 *tmp_results* 可用于执行查询并将结果输出到 sqlResults 数据帧中用于绘图。 代码如下。
+*predictionAndLabelsDF*는 이전 셀에서 테이블 *tmp_results*로 등록되었습니다. *tmp_results*를 사용하면 쿼리를 수행하고 결과를 sqlResults 데이터 프레임으로 출력하여 그래프에 표시할 수 있습니다. 코드는 다음과 같습니다.
 
     # QUERY RESULTS
     %%sql -q -o sqlResults
     SELECT label, prediction, probability from tmp_results
 
-下面是用于绘制 ROC 曲线的代码。
+다음은 ROC 곡선을 그리는 코드입니다.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES 
     %%local
@@ -886,12 +894,12 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
-![使用 MLlib 的 CrossValidator 的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
+![MLlib의 CrossValidator를 사용하는 로지스틱 회귀 분석 ROC 곡선](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
-### <a name="random-forest-classification"></a>随机林分类
-本部分中的代码显示如何训练、评估和保存随机林回归，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
+### <a name="random-forest-classification"></a>임의 포리스트 분류
+이 섹션의 코드에서는 NYC Taxi Trip 및 요금 데이터 세트에서 팁이 여정에 지불되었는지 여부를 예측하는 임의 포리스트 회귀를 학습, 평가, 저장하는 방법을 보여 줍니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -935,14 +943,14 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-ROC = 0.985336538462 下的面积
+Area under ROC = 0.985336538462
 
-执行以上单元格所花的时间：26.72 秒
+위의 셀을 실행하는 데 걸린 시간: 26.72초
 
-### <a name="gradient-boosting-trees-classification"></a>梯度提升树分类
-本部分中的代码显示如何训练、评估和保存渐变提升树模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
+### <a name="gradient-boosting-trees-classification"></a>그라데이션 향상 트리 분류
+이 섹션의 코드에서는 NYC Taxi Trip 및 요금 데이터 세트에서 팁이 여정에 지불되었는지 여부를 예측하는 그라데이션 향상 트리 모델을 학습, 평가, 저장하는 방법을 보여줍니다.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -979,36 +987,44 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
-ROC = 0.985336538462 下的面积
+Area under ROC = 0.985336538462
 
-执行以上单元格所花的时间：28.13 秒
+위의 셀을 실행하는 데 걸린 시간: 28.13초
 
-## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>通过回归模型预测小费金额（不使用 CV）
-本部分介绍如何针对以下回归任务使用三个模型：基于其他小费特征预测为某个出租车行程支付的小费金额。 显示的模型包括：
+## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>회귀 모델로 CV를 사용하지 않고 팁 금액 예측
+이 섹션에서는 다른 팁 기능에 따라 지불한 팁의 금액을 예측하는 회귀 작업에 대한 세 가지 모델을 사용하는 방법을 보여 줍니다. 제공된 모델은 다음과 같습니다.
 
-* 正则化线性回归
-* 随机林
-* 梯度提升树
+* 정칙 선형 회귀
+* 임의 포리스트
+* 그라데이션 향상 트리
 
-简介中介绍了这些模型。 每个模型生成代码部分拆分为多个步骤： 
+이러한 모델은 소개에서 설명했습니다. 코드 섹션을 빌드하는 각 모델은 다음과 같은 단계로 분할됩니다. 
 
-1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用指标的**模型评估**
-3. 在 blob 中**保存模型**以供将来使用   
+1. **모델 교육** 데이터
+2. **모델 평가**
+3. **모델 저장**   
 
-> Azure 备注：交叉验证在本部分中不与三个回归模型一起使用，因为已针对逻辑回归模型详细显示此操作。 本主题的附录中提供了显示如何将 CV 和弹性网络一起用于线性回归的示例。
-> 
-> Azure 备注：根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 还可使用本主题的附录中显示的弹性网络回归代替 LinearRegressionWithSGD。
-> 
-> 
+<!-- -->
 
-### <a name="linear-regression-with-sgd"></a>使用 SGD 的线性回归
-本部分中的代码显示如何使用缩放特征训练使用随机梯度下降线性回归 (SGD) 进行优化的线性回归，以及如何在 Azure Blob 存储 (WASB) 中评分、评估和保存模型。
+> [!NOTE] 
+> 교차 유효성 검사는 로지스틱 회귀 모델에 대한 세부 정보에 표시되므로 이 섹션의 3가지 회귀 모델에 사용되지 않습니다. 선형 회귀에 대한 탄력적 net과 함께 CV를 사용하는 방법을 보여 주는 예제를 이 토픽의 부록에 제공합니다.
+
+<!-- -->
+
+<!-- -->
+
+> [!NOTE] 
+> 경험에 따르면 LinearRegressionWithSGD 모델의 수렴과 관련된 문제가 발생할 수 있으며 매개 변수는 유효한 모델을 얻기 위해 신중하게 변경/최적화되어야 합니다. 변수의 크기를 조정하면 수렴에 큰 도움이 됩니다. 이 토픽의 부록에 나와 있는 바와 같이 LinearRegressionWithSGD 대신 탄력적 net 회귀를 사용할 수도 있습니다.
+
+<!-- -->
+
+### <a name="linear-regression-with-sgd"></a>SGD로 선형 회귀
+이 섹션의 코드는 크기 조정된 기능을 사용하여 최적화를 위해 SGD(Stochastic Gradient Descent)를 사용하는 선형 회귀를 학습하는 방법 및 WASB(Azure Blob Storage)에서 모델의 점수를 매기고 평가하며 저장하는 방법을 보여줍니다.
 
 > [!TIP]
-> 根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。
+> 경험에 따르면 LinearRegressionWithSGD 모델의 수렴과 관련된 문제가 발생할 수 있으며 매개 변수는 유효한 모델을 얻기 위해 신중하게 변경/최적화되어야 합니다. 변수의 크기를 조정하면 수렴에 큰 도움이 됩니다.
 > 
 > 
 
@@ -1050,25 +1066,27 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
-系数：[0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
+Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-截距：0.854507624459
+Intercept: 0.854507624459
 
 RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
-执行以上单元格所花的时间：38.62 秒
+위의 셀을 실행하는 데 걸린 시간: 38.62초
 
-### <a name="random-forest-regression"></a>随机林回归
-本部分中的代码显示如何训练、评估和保存随机林模型，该模型预测 NYC 出租车行程数据的小费金额。   
+### <a name="random-forest-regression"></a>임의 포리스트 회귀
+이 섹션의 코드에서는 NYC Taxi Trip 데이터에서 팁 금액을 예측하는 임의 포리스트 모델을 학습, 평가, 저장하는 방법을 보여줍니다.   
+
+<!-- -->
 
 > [!NOTE]
-> 附录中提供通过使用自定义代码的超参数扫描的交叉验证。
-> 
-> 
+> 사용자 지정 코드로 매개 변수 비우기를 사용하는 교차 유효성 검사는 부록에 제공됩니다.
+
+<!-- -->
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -1110,18 +1128,18 @@ R-sqr = 0.597963951127
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.931981967875
 
 R-sqr = 0.733445485802
 
-执行以上单元格所花的时间：25.98 秒
+위의 셀을 실행하는 데 걸린 시간: 25.98초
 
-### <a name="gradient-boosting-trees-regression"></a>梯度提升树回归
-本部分中的代码显示如何训练、评估和保存梯度提升树模型，该模型预测 NYC 出租车行程数据的小费金额。
+### <a name="gradient-boosting-trees-regression"></a>그라데이션 향상 트리 회귀
+이 섹션의 코드에서는 NYC Taxi Trip 데이터에서 팁 금액을 예측하는 그라데이션 향상 트리 모델을 학습, 평가, 저장하는 방법을 보여줍니다.
 
-**训练和评估**
+**학습 및 평가**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1161,17 +1179,17 @@ R-sqr = 0.733445485802
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
-执行以上单元格所花的时间：20.9 秒
+위의 셀을 실행하는 데 걸린 시간: 20.9초
 
-**图**
+**그림**
 
-*tmp_results* 在上一个单元格中注册为 Hive 表。 表中的结果输出到 *sqlResults* 数据帧中用于绘图。 代码如下
+*tmp_results*는 이전 셀에서 Hive 테이블로 등록되어 있습니다. 테이블의 결과는 그래프로 나타내기 위해 *sqlResults* 데이터 프레임에 출력됩니다. 코드는 다음과 같습니다.
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1180,7 +1198,7 @@ R-sqr = 0.732680354389
     SELECT * from tmp_results
 
 
-下面是用于使用 Jupyter 服务器绘制数据的代码。
+다음은 Jupyter 서버를 사용하여 데이터를 그리는 코드입니다.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1198,11 +1216,11 @@ R-sqr = 0.732680354389
 
 ![Actual-vs-predicted-tip-amounts](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>附录：使用交叉验证和参数扫描的其他回归任务
-本附录包含的代码显示如何为线性回归使用弹性网络执行 CV 以及如何为随机林回归使用自定义代码执行使用参数扫描的 CV。
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>부록: 매개 변수 비우기를 사용하는 교차 유효성 검사로 추가 회귀 작업
+이 부록에는 선형 회귀에 대한 탄력적 net을 사용하여 CV를 수행하는 방법 및 임의 포리스트 회귀에 대한 사용자 지정 코드로 매개 변수 비우기를 사용하여 CV를 수행하는 방법을 보여 주는 코드가 있습니다.
 
-### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>用于线性回归的使用弹性网络的交叉验证
-本部分中的代码显示如何为线性回归使用弹性网络执行交叉验证以及如何参照测试数据评估模型。
+### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>선형 회귀에 대한 탄력적 net을 사용하여 교차 유효성 검사
+이 섹션의 코드는 선형 회귀에 대한 탄력적 net을 사용하여 교차 유효성 검사를 실행하는 방법 및 테스트 데이터에 대한 모델을 평가하는 방법을 보여 줍니다.
 
     ###  CV USING ELASTIC NET FOR LINEAR REGRESSION
 
@@ -1258,20 +1276,20 @@ R-sqr = 0.732680354389
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
-执行以上单元格所花的时间：161.21 秒
+위의 셀을 실행하는 데 걸린 시간: 161.21초
 
-**使用 R-SQR 指标评估**
+**Evaluate with R-SQR metric**
 
-*tmp_results* 在上一个单元格中注册为 Hive 表。 表中的结果输出到 *sqlResults* 数据帧中用于绘图。 代码如下
+*tmp_results*는 이전 셀에서 Hive 테이블로 등록되어 있습니다. 테이블의 결과는 그래프로 나타내기 위해 *sqlResults* 데이터 프레임에 출력됩니다. 코드는 다음과 같습니다.
 
     # SELECT RESULTS
     %%sql -q -o sqlResults
     SELECT label,prediction from tmp_results
 
 
-下面是用于计算 R-sqr 的代码。
+R-sqr을 계산하는 코드는 다음과 같습니다.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1283,12 +1301,12 @@ R-sqr = 0.732680354389
     print("R-sqr = %s" % r2)
 
 
-**输出**
+**OUTPUT**
 
 R-sqr = 0.619184907088
 
-### <a name="cross-validation-with-parameter-sweep-using-custom-code-for-random-forest-regression"></a>用于随机林回归的通过使用自定义代码的参数扫描的交叉验证
-本部分中的代码显示如何为线性回归通过使用自定义代码的参数扫描执行交叉验证以及如何参照测试数据评估模型。
+### <a name="cross-validation-with-parameter-sweep-using-custom-code-for-random-forest-regression"></a>임의 포리스트 회귀에 대한 사용자 지정 코드로 교차 유효성 검사를 사용한 매개 변수 비우기
+이 섹션의 코드는 임의 포리스트 회귀에 대한 사용자 지정 코드로 교차 유효성 검사를 사용하여 매개 변수 비우기를 수행하는 방법과 테스트 데이터에 대한 모델을 평가하는 방법을 보여 줍니다.
 
     # RECORD START TIME
     timestart= datetime.datetime.now()
@@ -1370,16 +1388,16 @@ R-sqr = 0.619184907088
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.906972198262
 
 R-sqr = 0.740751197012
 
-执行以上单元格所花的时间：69.17 秒
+위의 셀을 실행하는 데 걸린 시간: 69.17초
 
-### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>从内存中清除对象并打印模型位置
-使用 `unpersist()` 删除内存中缓存的对象。
+### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>메모리에서 개체 정리 및 모델 위치 인쇄
+`unpersist()` 를 사용하여 메모리에 캐시된 개체를 삭제합니다.
 
     # UNPERSIST OBJECTS CACHED IN MEMORY
 
@@ -1406,11 +1424,11 @@ R-sqr = 0.740751197012
     oneHotTESTregScaled.unpersist()
 
 
-**输出**
+**OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala:43
+PythonRDD[122] at RDD at PythonRDD.scala: 43
 
-**打印输出要在使用笔记本中使用的模型文件的路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
+\* * 要在使用笔记本中使用的模型文件的输出路径。 ** 독립적인 데이터 집합을 사용하고 점수를 매기려면 이러한 파일 이름을 복사하여 "Consumption notebook(소비 Notebook)"에 붙여넣어야 합니다.
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1421,7 +1439,7 @@ PythonRDD[122] at RDD at PythonRDD.scala:43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**输出**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 
@@ -1435,8 +1453,8 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>后续步骤
-现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
+## <a name="whats-next"></a>다음은 무엇일까요?
+Spark MlLib로 회귀 및 분류 모델을 만든 경우 이러한 모델의점수를  매기고 평가하는 방법을 배울 수 있습니다.
 
-**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**모델 사용:** 이 토픽에서 만든 분류 및 회귀 모델의 점수를 매기고 평가하는 방법을 알아보려면 [Spark에서 만든 기계 학습 모델 점수 매기기 및 평가](spark-model-consumption.md)를 참조하세요.
 

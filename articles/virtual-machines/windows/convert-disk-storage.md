@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: e339f0c7ca0807eec3e160eeb3464044c2ef29ba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563303"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720939"
 ---
-# <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
+# <a name="update-the-storage-type-of-a-managed-disk"></a>관리 디스크의 스토리지 형식 업데이트
 
 有四种磁盘类型的 Azure 托管磁盘： Azure ultra Ssd （预览版）、高级 SSD、标准 SSD 和标准 HDD。 你可以根据性能需求在三个 GA 磁盘类型（高级 SSD、标准 SSD 和标准 HDD）之间进行切换。 你还不能从或切换到 ultra SSD，你必须部署一个新的。
 
@@ -22,14 +22,14 @@ ms.locfileid: "75563303"
 
  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>필수 조건
 
 * 由于转换需要重新启动虚拟机（VM），因此应在预先存在的维护时段内计划磁盘存储的迁移。
 * 如果磁盘未受管理，请首先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以在存储选项之间进行切换。
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>在高级和标准版之间切换 VM 的所有托管磁盘
 
-此示例演示如何将 VM 的所有磁盘从标准存储或高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](sizes.md)。 此示例还切换到了支持高级存储的大小：
+此示例演示如何将 VM 的所有磁盘从标准存储或高级存储转换为标准存储。 프리미엄 Managed Disks를 사용하려면 VM이 Premium Storage를 지원하는 [VM 크기](sizes.md)를 사용해야 합니다. 또한 이 예제에서는 Premium Storage를 지원하는 크기로 전환합니다.
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -63,9 +63,8 @@ foreach ($disk in $vmDisks)
 {
     if ($disk.ManagedBy -eq $vm.Id)
     {
-        $diskUpdateConfig = New-AzDiskUpdateConfig –AccountType $storageType
-        Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
-        -DiskName $disk.Name
+        $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+        $disk | Update-AzDisk
     }
 }
 
@@ -74,7 +73,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>在标准和高级之间切换各个托管磁盘
 
-对于开发/测试工作负荷，可能需要混合使用标准磁盘和高级磁盘，以减少成本。 你可以选择仅升级那些需要更好性能的磁盘。 此示例显示了如何将单个 VM 磁盘从标准存储或高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](sizes.md)。 此示例还演示如何切换到支持高级存储的大小：
+对于开发/测试工作负荷，可能需要混合使用标准磁盘和高级磁盘，以减少成本。 你可以选择仅升级那些需要更好性能的磁盘。 此示例显示了如何将单个 VM 磁盘从标准存储或高级存储转换为标准存储。 프리미엄 Managed Disks를 사용하려면 VM이 Premium Storage를 지원하는 [VM 크기](sizes.md)를 사용해야 합니다. 此示例还演示如何切换到支持高级存储的大小：
 
 ```azurepowershell-interactive
 
@@ -102,18 +101,17 @@ $vm.HardwareProfile.VmSize = $size
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 # Update the storage type
-$diskUpdateConfig = New-AzDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
-Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
--DiskName $disk.Name
+$disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+$disk | Update-AzDisk
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
 ## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>将 Azure 门户中的托管磁盘转换为标准版
 
-执行以下步骤:
+다음 단계를 수행하세요.
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
 2. 从门户中的**虚拟机**列表中选择 VM。
 3. 如果未停止 VM，请选择 "VM**概述**" 窗格顶部的 "**停止**"，然后等待 VM 停止。
 3. 在 VM 的窗格中，从菜单中选择 "**磁盘**"。
@@ -147,13 +145,12 @@ Stop-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Nam
 $vm = Get-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Name 
 
 # Update the storage type
-$diskUpdateConfig = New-AzDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
-Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
--DiskName $disk.Name
+$disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+$disk | Update-AzDisk
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-使用[快照](snapshot-copy-managed-disk.md)创建 VM 的只读副本。
+[스냅샷](snapshot-copy-managed-disk.md)을 사용하여 VM의 읽기 전용 복사본을 만듭니다.

@@ -1,16 +1,16 @@
 ---
-title: 与 Windows 容器交互
+title: Windows 컨테이너와 상호 작용
 services: azure-dev-spaces
 ms.date: 01/16/2020
 ms.topic: conceptual
 description: 了解如何使用 Windows 容器在现有群集上运行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Windows 容器
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156992"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720361"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 与 Windows 容器交互
 
@@ -20,13 +20,13 @@ ms.locfileid: "76156992"
 
 本文假设已有一个具有 Linux 和 Windows 节点池的群集。 如果需要使用 Linux 和 Windows 节点池创建群集，则可以按照[此处][windows-container-cli]的说明进行操作。
 
-使用[kubectl][kubectl]和 Kubernetes 命令行客户端连接到群集。 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+使用[kubectl][kubectl]和 Kubernetes 命令行客户端连接到群集。 Kubernetes 클러스터에 연결하도록 `kubectl`을 구성하려면 [az aks get-credentials][az-aks-get-credentials] 명령을 사용합니다. 이 명령은 자격 증명을 다운로드하고 Kubernetes CLI가 해당 자격 증명을 사용하도록 구성합니다.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
+클러스터에 대한 연결을 확인하려면 [kubectl get][kubectl-get] 명령을 사용하여 클러스터 노드 목록을 반환합니다.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-示例应用程序使用[Helm][helm-installed]在群集上运行 Windows 服务。 导航到 `charts` 目录，并使用 Helm 运行 Windows 服务：
+示例应用程序使用[Helm 3][helm-installed]在群集上运行 Windows 服务。 导航到 `charts` 目录，并使用 Helm 运行 Windows 服务：
 
 ```console
 cd charts/
@@ -141,7 +141,7 @@ azds up
 `azds prep --public` 命令生成应用程序的 Helm 图和 Dockerfile。
 
 > [!TIP]
-> Azure Dev Spaces 使用项目的[Dockerfile 和 Helm 图表](../how-dev-spaces-works.md#prepare-your-code)来生成和运行代码，但是如果要更改项目的生成和运行方式，则可以修改这些文件。
+> 프로젝트의 [Dockerfile 및 Helm 차트](../how-dev-spaces-works.md#prepare-your-code)는 Azure Dev Spaces에서 코드를 빌드하고 실행하는 데 사용되지만 프로젝트를 빌드하고 실행하는 방법을 변경하려면 이러한 파일을 수정할 수 있습니다.
 
 `azds up` 命令将在命名空间中运行你的服务。
 
@@ -165,12 +165,12 @@ Service 'webfrontend' port 80 (http) is available via port forwarding at http://
 
 ![显示来自 mywebapi 的 Windows 版本的示例应用](../media/run-dev-spaces-windows-containers/sample-app.png)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
+Azure Dev Spaces를 통해 여러 컨테이너에서 더 복잡한 애플리케이션을 개발할 수 있는 방법 및 사용자가 다양한 환경에서 다양한 코드 버전이나 분기로 작업하여 공동 개발을 간소화하는 방법을 알아봅니다.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 中的团队开发][team-development-qs]
+> [Azure Dev Spaces에서 팀 개발][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797577"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715074"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>使用应用程序网关度量值自动缩放 AKS pod （Beta）
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 一旦我们能通过指标服务器公开 `appgw-request-count-metric`，就可以使用[`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)来扩展目标部署。
 
-在下面的示例中，我们将以 `aspnet`部署为目标。 当 `appgw-request-count-metric` 每个 Pod > 200 到最大 `10` 盒时，将纵向扩展盒。
+在下面的示例中，我们将以 `aspnet`部署为目标。 将每个 Pod `appgw-request-count-metric` > 200 到最大 `10` 盒时，将扩展箱。
 
 替换目标部署名称并应用以下自动缩放配置：
 ```yaml
@@ -121,5 +121,5 @@ spec:
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 - [**诊断入口控制器问题**](ingress-controller-troubleshoot.md)：排查入口控制器的任何问题。

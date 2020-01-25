@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 8c4169ccfb35b74b92ea4996cbc779bac35d6ccb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045166"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715865"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本
 
@@ -29,11 +29,11 @@ ms.locfileid: "76045166"
 > [!NOTE]
 > 本文中所示的所有价格和成本仅用于举例。 
 
-Azure Monitor 日志旨在根据企业中的任何源或在 Azure 中部署的资源，缩放和支持每天收集、索引和存储大量数据。  尽管这可能是组织的主要驱动力，但成本效益最终是基本驱动力。 为此，必须了解 Log Analytics 工作区的成本不仅基于收集的数据量，它还依赖于所选的计划，以及你选择用于存储从连接的源生成的数据的时间。  
+Azure Monitor 日志旨在根据企业中的任何源或在 Azure 中部署的资源，缩放和支持每天收集、索引和存储大量数据。  조직에 대한 주 드라이버인 반면 비용 효율성은 궁극적으로 기본 드라이버입니다. 为此，必须了解 Log Analytics 工作区的成本不仅基于收集的数据量，它还依赖于所选的计划，以及你选择用于存储从连接的源生成的数据的时间。  
 
 在本文中，我们将回顾如何主动监视引入数据量和存储增长，并定义限制来控制这些关联的成本。 
 
-## <a name="pricing-model"></a>定价模型
+## <a name="pricing-model"></a>가격 책정 모델
 
 Log Analytics 的默认定价是基于数据量引入的即**用即付**模型，还可以选择用于更长的数据保留。 数据量作为要存储的数据的大小来度量。 每个 Log Analytics 工作区都收费为单独的服务，并对 Azure 订阅计费。 数据引入量可能会很大，具体取决于以下因素： 
 
@@ -56,15 +56,15 @@ Log Analytics 的默认定价是基于数据量引入的即**用即付**模型�
 
 如果你现在使用 Azure Monitor 日志，则可以很容易地了解基于最近使用模式的可能成本。 为此，请使用**Log Analytics 使用情况和估计成本**来查看和分析数据使用情况。 这会显示每个解决方案收集的数据量、正在保留的数据量，以及基于引入的数据量和超出包含数量的任何附加保留期的成本估算。
 
-![使用情况和预估成本](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
+![사용량 및 예상 비용](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
-若要更详细地探索数据，请单击“使用情况和预估成本”页上任一图表右上侧的图标。 现在可以使用此查询来探索有关使用情况的更多详细信息。  
+데이터를 더 자세히 탐색하려면 **사용량 및 예상 비용** 페이지의 차트 중 하나의 오른쪽 상단 모서리에 있는 아이콘을 클릭합니다. 이제 이 쿼리에 대해 작업하여 사용량을 자세히 살펴볼 수 있습니다.  
 
-![日志视图](media/manage-cost-storage/logs.png)
+![로그 보기](media/manage-cost-storage/logs.png)
 
-从“使用情况和估计成本”页面，可以查看当月的数据量。 这包括 Log Analytics 工作区中收到和保留的所有数据。  单击页面顶部的 "**使用情况详细信息**"，以查看 "使用情况" 仪表板，其中包含有关源、计算机和服务的数据量趋势的信息。 若要查看和设置每日上限或修改保留期，请单击“数据量管理”。
+**사용량 및 예상 비용** 페이지에서 해당 월의 데이터 볼륨을 검토할 수 있습니다. 여기에는 Log Analytics 작업 영역에 수신되고 보존된 모든 데이터가 포함됩니다.  单击页面顶部的 "**使用情况详细信息**"，以查看 "使用情况" 仪表板，其中包含有关源、计算机和服务的数据量趋势的信息。 보존 기간을 수정하거나 일일 한도를 설정하고 확인하려면 **데이터 볼륨 관리**를 클릭합니다.
  
-Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计费”部分或在 [Azure 计费门户](https://account.windowsazure.com/Subscriptions)中查看 Azure 账单详细信息。  
+Log Analytics 요금은 Azure 청구서에 추가됩니다. Azure 청구서의 자세한 내용은 Azure Portal의 청구 섹션 또는 [Azure 청구 포털](https://account.windowsazure.com/Subscriptions)에서 참고할 수 있습니다.  
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Log Analytics 使用情况 
 
@@ -72,7 +72,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源的使用情况（例如 Log Analytics 工作区）。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一次筛选来找到 Log Analytics 工作区的使用情况，以显示 "Insights 和分析" （由某些旧的定价层使用）和 "Log Analytics"，然后在 "实例" 上添加筛选器ID "列是" 包含工作区 "。 使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
-## <a name="changing-pricing-tier"></a>更改定价层
+## <a name="changing-pricing-tier"></a>가격 책정 계층 변경
 
 若要更改工作区的 Log Analytics 定价层，请 
 
@@ -80,13 +80,13 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 2. 查看每个定价层的预估成本。 这一估算基于最后31天的使用情况，因此，这种成本估算依赖于过去的31天，代表您的典型使用量。 在下面的示例中，你可以看到，基于过去31天的数据模式，此工作区将在即用即付层（#1）中的成本低于 100 GB/天容量预留层（#2）。  
 
-    ![定价层](media/manage-cost-storage/pricing-tier-estimated-costs.png)
+    ![가격 책정 계층](media/manage-cost-storage/pricing-tier-estimated-costs.png)
 
 3. 根据最近31天的使用情况查看估计的成本后，如果决定更改定价层，请单击 "**选择**"。  
 
 还可以通过 Azure 资源管理器使用 `sku` 参数（在 Azure 资源管理器模板中为`pricingTier`）来[设置定价层](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)。 
 
-## <a name="legacy-pricing-tiers"></a>旧版定价层
+## <a name="legacy-pricing-tiers"></a>레거시 가격 책정 계층
 
 在2019企业协议2018年4月2日之前，具有 Log Analytics 工作区或 Application Insights 资源的订阅将继续具有使用旧版定价层的访问权限：**免费**版、**独立版（每 GB）** 和**每节点（OMS）** 。  免费定价层中的工作区将每日数据引入限制为 500 MB （Azure 安全中心收集的安全数据类型除外），并且数据保留期限制为7天。 免费定价层仅用于评估目的。 独立或按节点定价层中的工作区在用户可配置的保留期最多为2年。 
 
@@ -95,19 +95,19 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 有关定价层限制的更多详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)文。
 
 > [!NOTE]
-> 若要使用通过购买用于 System Center 的 OMS E1 套件、OMS E2 套件或 OMS 附加产品所获得的权利，请选择 Log Analytics 的“按节点”定价层。
+> System Center용 OMS E1 Suite, OMS E2 Suite 또는 OMS 추가 기능을 구매할 때 제공되는 자격을 사용하려면 Log Analytics의 *노드별* 가격 책정 계층을 선택합니다.
 
-## <a name="change-the-data-retention-period"></a>更改数据保留期
+## <a name="change-the-data-retention-period"></a>데이터 보존 기간 변경
 
-以下步骤说明如何配置日志数据在工作区中的保留期限。
+다음 단계에서는 로그 데이터가 작업 영역에 보존되는 기간을 구성하는 방법을 설명합니다.
 
 ### <a name="default-retention"></a>默认保留期
 
 若要设置工作区的默认保留期， 
  
 1. 在 Azure 门户的工作区中，从左窗格中选择 "**使用情况和估计成本**"。
-2. 在“使用情况和预估成本”页面顶部，单击“数据量管理”。
-3. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。
+2. **사용량 및 예상 비용** 창의 페이지의 상단에서 **데이터 볼륨 관리**를 클릭합니다.
+3. 창에서 슬라이더를 이동하여 일 수를 늘리거나 줄인 다음, **확인**을 클릭합니다.  *무료* 계층에서 작업 중인 경우 데이터 보존 기간을 수정할 수 없으며 이 설정을 제어하기 위해 유료 계층으로 업그레이드해야 합니다.
 
     ![更改工作区数据保持期设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
@@ -149,7 +149,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 `Usage` 和 `AzureActivity` 数据类型不能通过自定义保留设置进行设置。 它们将采用默认工作区保持期或90天内的最大值。 
 
-用于直接连接到 Azure 资源管理器以通过数据类型设置保留的极佳工具是 OSS 工具[ARMclient](https://github.com/projectkudu/ARMClient)。  详细了解 ARMclient [Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)的文章。  下面是使用 ARMClient 的示例，将 SecurityEvent 数据设置为730天的保留期：
+用于直接连接到 Azure 资源管理器以通过数据类型设置保留的极佳工具是 OSS 工具[ARMclient](https://github.com/projectkudu/ARMClient)。  详细了解 ARMclient [Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)的文章。  下面是一个使用 ARMClient 的示例，将 SecurityEvent 数据设置为730天的保留期：
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -160,9 +160,9 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
-可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种方法，用于管理托管资源中意外增加的数据量并保持在限制范围内，或者当你希望限制工作区的计划外费用时。  
+작업 영역에 대한 일일 한도를 구성하고 일일 수집량을 제한할 수 있지만 목표치가 일일 한도에 도달하지 않도록 주의하십시오.  그렇지 않으면 남은 기간 동안의 데이터가 손실됩니다. 이는 해당 기능이 작업 영역에서 사용할 수 있는 최신 데이터에 의존할 수도 있는 다른 Azure 서비스 및 솔루션에 영향을 줄 수 있습니다.  결과적으로 리소스의 상태 조건이 IT 서비스를 지원할 때 경고를 관찰하고 수신하는 기능이 영향을 받습니다.  每日上限旨在用作一种方法，用于管理托管资源中意外增加的数据量并保持在限制范围内，或者当你希望限制工作区的计划外费用时。  
 
-达到每日限制后，在当天的剩余时间，应计费数据类型的收集将会停止。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 我们建议基于此操作事件定义一个警报规则，并将其配置为在达到每日数据限制时发出通知。 
+일일 한도에 도달하면 하루의 나머지 시간 동안 청구 가능한 데이터 형식의 수집을 중지합니다. 선택된 Log Analytics 작업 영역에 대한 페이지의 상단에 경고 배너가 표시되고 작업 이벤트가 **LogManagement** 범주 아래의 *작업* 테이블로 전송됩니다. *일일 한도 아래 정의된 재설정 시간이* 로 설정된 후 데이터 수집이 다시 시작합니다. 일일 데이터 한도에 도달했을 때 알려주도록 구성된 이 작업 이벤트를 기반으로 경고 규칙을 정의하는 것이 좋습니다. 
 
 > [!NOTE]
 > 除了在2017年6月19日之前安装了 Azure 安全中心的工作区之外，每日上限不会停止从 Azure 安全中心收集数据。 
@@ -170,43 +170,43 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > [!NOTE]
 > 应用每日上限所固有的延迟可能意味着上限不会应用到指定的每日上限级别。 
 
-### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
+### <a name="identify-what-daily-data-limit-to-define"></a>정의할 일일 데이터 한도 식별
 
-查看 [Log Analytics 使用情况和预估成本](usage-estimated-costs.md)，了解数据引入趋势，以及要定义的每日数据量上限。 应该慎重考虑上限，因为在达到限制后，将无法监视资源。 
+데이터 수집 추세 및 정의할 일일 볼륨 한도를 이해하려면 [Log Analytics 사용량 및 예상 비용](usage-estimated-costs.md)을 검토합니다. 한도에 도달한 후에는 리소스를 모니터링할 수 없으므로 신중하게 고려해야 합니다. 
 
 ### <a name="set-the-daily-cap"></a>设置每日上限
 
 以下步骤介绍了如何配置限制，以管理 Log Analytics 工作区将每天摄取的数据量。  
 
-1. 在工作区的左窗格中，选择“使用情况和预估成本”。
-2. 在所选工作区的“使用情况和预估成本”页面顶部，单击“数据量管理”。 
-3. 每日上限默认为“关闭”– 单击“打开”将其启用，然后设置数据量限制（以 GB/天为单位）。
+1. 작업 영역의 왼쪽 창에서 **사용량 및 예상 비용**을 선택합니다.
+2. 선택한 작업 영역에 대한 **사용량 및 예상 비용** 창의 페이지의 상단에서 **데이터 볼륨 관리**를 클릭합니다. 
+3. 일일 한도는 기본으로 **OFF**이며 이를 사용하도록 설정하려면 **ON**을 클릭한 다음, 데이터 볼륨 한도를 GB/일로 설정합니다.
 
     ![Log Analytics 配置数据限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>达到每日上限时发出警报
 
-尽管在达到数据限制阈值时，Azure 门户中会显示视觉提示，但此行为不一定符合需要立即关注的操作问题的处理方式。  若要接收警报通知，可以在 Azure Monitor 中创建一个新的警报规则。  若要了解详细信息，请参阅[如何创建、查看和管理警报](alerts-metric.md)。
+데이터 제한 임계값에 도달하는 경우 Azure Portal에 시각적 큐를 표시하는 반면, 이 동작은 즉각적인 주의가 필요한 운영 문제를 관리하는 방법에 맞출 필요는 없습니다.  경고 알림을 수신하려면 Azure Monitor에서 새 경고 규칙을 만들 수 있습니다.  若要了解详细信息，请参阅[如何创建、查看和管理警报](alerts-metric.md)。
 
-若要开始操作，请参考下面提供的建议警报设置：
+시작하려면 경고에 대한 권장 설정은 다음과 같습니다.
 
-- 目标：选择 Log Analytics 资源
-- 条件： 
-   - 信号名称：自定义日志搜索
-   - 搜索查询：Operation | where Detail has 'OverQuota'
-   - 基于：结果数
-   - 条件：大于
-   - 阈值：0
-   - 期限：5（分钟）
-   - 频率：5（分钟）
-- 警报规则名称：达到每日数据限制
-- 严重性：警告（严重性 1）
+- 대상: Log Analytics 리소스 선택
+- 조건: 
+   - 신호 이름: 사용자 지정 로그 검색
+   - 검색 쿼리: 작업 | 세부 정보에 'OverQuota'가 있는 경우
+   - 기준: 결과 수
+   - 조건: 보다 큼
+   - 임계값: 0
+   - 기간: 5(분)
+   - 빈도: 5(분)
+- 경고 규칙 이름: 일일 데이터 한계 도달
+- 심각도: 경고(심각도 1)
 
-定义警报并达到限制后，警报将会触发，并执行操作组中定义的响应。 该警报可通过电子邮件和短信通知团队，或者使用 Webhook、自动化 Runbook 或[与外部 ITSM 解决方案的集成](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)来自动执行操作。 
+경고가 정의되고 한계에 도달하면 경고가 트리거되고 작업 그룹에서 정의된 응답을 수행합니다. 이메일 및 텍스트 메시지를 통해 팀에 알리거나 웹후크, Automation Runbook 또는 [외부 ITSM 솔루션을 사용해 통합](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)을 사용하여 작업을 자동화할 수 있습니다. 
 
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>排查使用量超出预期的原因
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>사용량이 예상보다 더 높은 원인 해결
 
-使用量较高是由下面的一个或两个原因引起的：
+사용량이 높은 원인은 다음과 같습니다.
 - 与将数据发送到 Log Analytics 工作区相比，需要更多节点
 - 超出了发送到 Log Analytics 工作区所需的数据
 
@@ -241,7 +241,7 @@ union withsource = tt *
 ```
 
 > [!NOTE]
-> 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 此查询替代了使用使用情况数据类型查询每台计算机的信息的旧方法。  
+> 여러 데이터 형식을 검색할 경우 비용이 많이 들기 때문에 이러한 `union withsource = tt *` 쿼리는 자주 사용하지 않도록 합니다. 此查询替代了使用使用情况数据类型查询每台计算机的信息的旧方法。  
 
 更准确地计算实际将计费的内容是获取每小时发送计费数据类型的计算机的计数。 （对于旧的按节点定价层中的工作区，Log Analytics 计算需要按小时计费的节点数。） 
 
@@ -255,16 +255,16 @@ union withsource = tt *
 
 ## <a name="understanding-ingested-data-volume"></a>了解引入数据量
 
-在“使用情况和预估成本”页上，“单个解决方案的数据引入”图表显示发送的总数据量以及每个解决方案发送的量。 这样就可以确定趋势，例如总数据使用量（或特定解决方案的使用量）是正在增长、保持平稳还是正在下降。 用于生成此指标的查询是：
+**사용량 및 예상 비용** 페이지에서 *솔루션당 데이터 수집* 차트는 전송된 총 데이터 양과 각 솔루션이 전송하는 데이터 양을 보여 줍니다. 이를 통해 전체 데이터 사용량(또는 특정 솔루션에 의한 사용량)이 증가하는지, 고정적인지, 감소하는지 여부의 추세를 판단할 수 있습니다. 이를 생성하는 데 사용되는 쿼리는 다음과 같습니다.
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
-请注意，子句“where IsBillable = true”从某些解决方案中筛选掉没有引入费用的数据类型。 
+여기서 “where IsBillable = true” 절은 수집 비용이 없는 특정 솔루션에서 데이터 형식을 필터링합니다. 
 
-可以进一步钻取，以查看特定数据类型的数据趋势，例如，可以研究 IIS 日志的数据：
+데이터 추세를 보다 자세히 조사하여 특정 데이터 형식을 발견할 수 있습니다(예: IIS 로그로 인한 데이터를 연구하려는 경우).
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
@@ -294,7 +294,7 @@ union withsource = tt *
 | summarize eventCount=count() by computerName  | sort by eventCount nulls last
 ```
 
-若要查看向特定计算机发送数据的计费数据类型计数，请使用：
+특정 컴퓨터로 데이터를 전송하는 청구 가능 데이터 형식 수를 확인하려면 다음을 사용합니다.
 
 ```kusto
 union withsource = tt *
@@ -327,46 +327,46 @@ union withsource = tt *
 
 
 > [!NOTE]
-> 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。
+> 사용량 데이터 형식의 일부 필드가 여전히 스키마에 있지만 더 이상 사용되지 않으며 해당 값은 더 이상 채워지지 않습니다. 이는 **컴퓨터**일 뿐 아니라 수집과 관련된 필드(**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** 및 **AverageProcessingTimeMs**)이기도 합니다.
 
 ### <a name="querying-for-common-data-types"></a>查询常用数据类型
 
-若要更深入地了解特定数据类型的数据源，请使用下面这些有用的示例查询：
+특정 데이터 형식의 데이터 소스를 더 자세히 알아보려면 다음 예와 같은 몇 가지 쿼리를 사용합니다.
 
-+ “安全”解决方案
++ **보안** 솔루션
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ “日志管理”解决方案
++ **로그 관리** 솔루션
   - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
-+ “性能”数据类型
++ **성능** 데이터 형식
   - `Perf | summarize AggregatedValue = count() by CounterPath`
   - `Perf | summarize AggregatedValue = count() by CounterName`
-+ “事件”数据类型
++ **이벤트** 데이터 형식
   - `Event | summarize AggregatedValue = count() by EventID`
   - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
-+ “Syslog”数据类型
++ **Syslog** 데이터 형식
   - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
   - `Syslog | summarize AggregatedValue = count() by ProcessName`
-+ AzureDiagnostics 数据类型
++ **AzureDiagnostics** 데이터 형식
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-### <a name="tips-for-reducing-data-volume"></a>有关如何减少数据量的提示
+### <a name="tips-for-reducing-data-volume"></a>데이터 볼륨을 줄이기 위한 팁
 
-有关如何减少所收集日志的量的一些提示：
+수집된 로그 볼륨을 줄이기 위한 몇 가지 제안 사항은 다음과 같습니다.
 
-| 高数据量来源 | 如何减少数据量 |
+| 높은 데이터 볼륨의 소스 | 데이터 볼륨을 줄이는 방법 |
 | -------------------------- | ------------------------- |
-| 安全性事件            | 选择[通用或最低安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
-| 性能计数器       | 更改[性能计数器配置](data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
-| 事件日志                 | 更改[事件日志配置](data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
-| Syslog                     | 更改 [syslog 配置](data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |
-| AzureDiagnostics           | 更改资源日志集合，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
-| 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
+| 보안 이벤트            | [일반 또는 최소한의 보안 이벤트](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)를 선택합니다. <br> 보안 감사 정책을 변경하여 필요한 이벤트만을 수집합니다. 특히, 다음 항목에 대한 이벤트를 수집할 필요를 검토합니다. <br> - [감사 필터링 플랫폼](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [감사 레지스트리](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [감사 파일 시스템](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [감사 커널 개체](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [감사 핸들 조작](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 이동식 저장소 감사 |
+| 성능 카운터       | [성능 카운터 구성](data-sources-performance-counters.md)을 다음과 같이 변경합니다. <br> - 컬렉션의 빈도 감소 <br> - 성능 카운터의 수 감소 |
+| 이벤트 로그                 | [이벤트 로그 구성](data-sources-windows-events.md)을 다음과 같이 변경합니다. <br> - 수집된 이벤트 로그의 수 감소 <br> - 필수 이벤트 수준만 수집 예를 들어 *정보* 수준 이벤트를 수집하지 않습니다. |
+| Syslog                     | [syslog 구성](data-sources-syslog.md)을 다음과 같이 변경합니다. <br> - 수집된 기능의 수 감소 <br> - 필수 이벤트 수준만 수집 예를 들어 *정보* 및 *디버그* 수준 이벤트를 수집하지 않습니다. |
+| AzureDiagnostics           | 다음 작업을 수행하도록 리소스 로그 컬렉션을 변경합니다. <br> - Log Analytics로 보내는 리소스 송신 로그의 수 축소 <br> - 필요한 로그만 수집 |
+| 솔루션을 사용하지 않는 컴퓨터의 솔루션 데이터 | [솔루션 대상](../insights/solution-targeting.md)을 사용하여 필수 그룹의 컴퓨터에서 데이터를 수집합니다. |
 
 ### <a name="getting-security-and-automation-node-counts"></a>获取安全和自动化节点计数
 
-如果你位于“按节点(OMS)”定价层，则根据所用节点和解决方案数收费，需付费的 Insights and Analytics 节点数将显示在“使用情况和预估成本”页的表中。  
+“노드별 (OMS)” 가격 책정 계층에 속하는 경우 사용하는 노드 및 솔루션 수에 따라 비용이 청구됩니다. 요금이 청구되는 Insights 및 Analytics 노드의 수는 **사용량 및 예상 비용** 페이지의 표에 표시됩니다.  
 
-若要查看不同安全节点的数目，可以使用以下查询：
+고유한 보안 노드의 수를 보려면 다음 쿼리를 사용할 수 있습니다.
 
 ```kusto
 union
@@ -392,7 +392,7 @@ union
 | count
 ```
 
-若要查看不同自动化节点的数目，请使用以下查询：
+고유한 Automation 노드의 수를 보려면 다음 쿼리를 사용합니다.
 
 ```kusto
  ConfigurationData 
@@ -408,13 +408,13 @@ union
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>在数据收集很高的情况时创建警报
 
-本部分介绍如何在以下情况下创建警报：
-- 数据量超过指定的量。
-- 预测数据量会超过指定的量。
+이 섹션에서는 경고가 발생하는 경우를 설명합니다.
+- 데이터 볼륨이 지정된 크기를 초과합니다.
+- 데이터 볼륨이 지정된 크기를 초과할 것으로 예측됩니다.
 
-Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。 
+검색 쿼리를 사용하는 Azure 경고 지원 [경고 로그](alerts-unified-log.md)입니다. 
 
-如果在过去 24 小时内收集的数据超过 100 GB，则以下查询就会有结果：
+최근 24시간 내에 수집된 데이터가 100GB를 초과하는 경우 다음 쿼리에 결과가 표시됩니다.
 
 ```kusto
 union withsource = $table Usage 
@@ -423,7 +423,7 @@ union withsource = $table Usage
 | where DataGB > 100
 ```
 
-以下查询使用简单的公式来预测在一天中发送的数据何时会超过 100 GB： 
+다음 쿼리는 간단한 수식을 사용하여 하루에 100GB를 초과하는 데이터가 전송되는 시기를 예측합니다. 
 
 ```kusto
 union withsource = $table Usage 
@@ -433,74 +433,74 @@ union withsource = $table Usage
 | where EstimatedGB > 100
 ```
 
-若要针对其他数据量发出警报，请在查询中将 100 更改为要发出警报的 GB 数。
+다른 크기의 데이터 볼륨에 대해 경고하려면 쿼리의 100GB를 원하는 수로 변경합니다.
 
-执行[创建新的日志警报](alerts-metric.md)中介绍的步骤，当数据收集量超出预期时，系统就会发出通知。
+[새 로그 경고 만들기](alerts-metric.md)에 설명한 단계를 사용하여 데이터 컬렉션이 예상보다 높은 경우 알림을 받을 수 있습니다.
 
-为第一个查询创建警报时，如果 24 小时内的数据超出 100 GB，则请进行如下设置：  
+첫 번째 쿼리에 대한 경고를 만들 때 즉, 24시간 내에 데이터가 100GB를 초과하는 경우 다음을 설정합니다.  
 
-- **定义警报条件**将 Log Analytics 工作区指定为资源目标。
-- **警报条件**指定下列项：
-   - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
+- **경고 조건 정의**는 리소스 대상으로 Log Analytics 작업 영역을 지정합니다.
+- **경고 조건**은 다음을 지정합니다.
+   - **신호 이름**은 **로그 검색 사용자 지정**을 선택합니다.
+   - **쿼리 검색**을 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`으로
    - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
-   - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
-- **定义警报详细信息**指定以下项：
-   - 将“名称”设置为“24 小时内的数据量大于 100 GB”
-   - 将“严重性”设置为“警告”
+   - 사용량 데이터가 시간당 한 번만 업데이트되므로 **기간**은 *1440*분이고 **주파수 경고**는 *60*분마다입니다.
+- **경고 세부 정보 정의**는 다음을 지정합니다.
+   - **이름**을 *24시간 내에 100GB를 초과하는 데이터 볼륨*으로
+   - **심각도**를 *경고*로
 
-指定现有的操作组或创建一个新[操作组](action-groups.md)，以便当日志警报匹配条件时，你会收到通知。
+기존 또는 새 [작업 그룹](action-groups.md)을 지정하거나 만들어서 로그 경고가 조건과 일치하는 경우 알려줍니다.
 
-为第二个查询创建警报时，如果预测 24 小时内的数据会超出 100 GB，则请进行如下设置：
+두 번째 쿼리에 대한 경고를 만들 때 즉, 24시간 내에 100GB를 초과하는 데이터가 예측되는 경우 다음을 설정합니다.
 
-- **定义警报条件**将 Log Analytics 工作区指定为资源目标。
-- **警报条件**指定下列项：
-   - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
+- **경고 조건 정의**는 리소스 대상으로 Log Analytics 작업 영역을 지정합니다.
+- **경고 조건**은 다음을 지정합니다.
+   - **신호 이름**은 **로그 검색 사용자 지정**을 선택합니다.
+   - **쿼리 검색**을 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`으로
    - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
-   - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
-- **定义警报详细信息**指定以下项：
-   - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
-   - 将“严重性”设置为“警告”
+   - 사용량 데이터가 시간당 한 번만 업데이트되므로 **기간**은 *180*분이고 **주파수 경고**는 *60*분마다입니다.
+- **경고 세부 정보 정의**는 다음을 지정합니다.
+   - **이름**을 *24시간 내에 100GB를 초과한다고 예측되는 데이터 볼륨*으로
+   - **심각도**를 *경고*로
 
-指定现有的操作组或创建一个新[操作组](action-groups.md)，以便当日志警报匹配条件时，你会收到通知。
+기존 또는 새 [작업 그룹](action-groups.md)을 지정하거나 만들어서 로그 경고가 조건과 일치하는 경우 알려줍니다.
 
-收到警报后，请执行以下部分介绍的步骤，排查使用量超出预期的原因。
+경고를 수신하는 경우 사용량이 예상보다 더 높은 원인을 해결하려면 다음 섹션의 단계를 사용합니다.
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的数据传输费用
 
 向 Log Analytics 发送数据可能会导致数据带宽费用。 如[Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域的 azure 服务之间的数据传输以正常费率作为出站数据传输收费。 入站数据传输是免费的。 但是，这种收费非常小（几%）与 Log Analytics 数据引入的成本比较。 因此，控制 Log Analytics 的成本需要专注于引入数据量，我们提供了有助于[了解这一点的指南。](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)   
 
 
-## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因
+## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics에서 더 이상 데이터를 수집하지 않는 문제 해결
 
-如果采用的是旧版免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  在数据收集启动和停止时，Log Analytics 会创建一个类型为“操作”的事件。 请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据： 
+레거시 무료 가격 책정 계층을 사용 중이고 하루에 500MB 이상의 데이터를 보낸 경우 남은 날 동안 데이터 수집이 중지됩니다. 일일 한도에 도달하는 것은 Log Analytics가 데이터 수집을 중지하고 데이터가 사라진 것처럼 표시되는 일반적인 이유입니다.  Log Analytics는 데이터 수집을 시작하고 중지할 때 Operation 형식의 이벤트를 만듭니다. 일일 한도에 도달하고 데이터 누락이 있는지 확인하려면 검색에서 다음 쿼리를 실행합니다. 
 
 ```kusto
 Operation | where OperationCategory == 'Data Collection Status'
 ```
 
-数据收集停止时，OperationStatus 为**Warning**。 数据收集开始时，OperationStatus**成功**。 下表描述了数据收集停止的原因以及用于恢复数据收集的建议操作：  
+数据收集停止时，OperationStatus 为**Warning**。 数据收集开始时，OperationStatus**成功**。 다음 표에서 데이터 수집을 중지하는 이유 및 데이터 수집을 다시 시작하는 권장되는 작업을 설명합니다.  
 
-|停止收集的原因| 解决方案| 
+|수집 중지 이유| 솔루션| 
 |-----------------------|---------|
-|达到旧版免费定价层的每日限制 |等到下一天收集自动重启，或者更改为付费定价层。|
-|达到了工作区的每日上限|等到收集自动重启，或者根据“管理每日最大数据量”中所述提高每日数据量限制。 每日上限重置时间显示在“数据量管理”页面上。 |
-|Azure 订阅由于以下原因处于挂起状态：<br> 免费试用已结束<br> Azure 许可已过期<br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）|转换为付费订阅<br> 删除限制，或者等到限制重置|
+|레거시 무료 가격 책정 계층의 일일 한도에 도달함 |수집이 다음 날에 자동으로 다시 시작될 때까지 대기 또는 유료 가격 책정 계층으로 변경합니다.|
+|작업 영역의 일일 상한에 도달함|수집이 자동으로 다시 시작될 때까지 대기하거나, 최대 일일 데이터 볼륨 관리의 설명처럼 일일 데이터 볼륨 한도를 늘립니다. 일일 상한 다시 설정 시간이 **데이터 볼륨 관리** 페이지에 표시됩니다. |
+|Azure 구독이 다음으로 인해 일시 중단된 상태:<br> 평가판 종료<br> Azure 암호 만료<br> 월별 지출 한도 도달(예: MSDN 또는 Visual Studio 구독에서)|유료 구독으로 전환<br> 한도 제거 또는 한도가 재설정될 때까지 대기|
 
 若要在数据收集停止时得到通知，请使用*创建每日数据上限*警报中所述的步骤，以便在数据收集停止时收到通知。 使用[创建操作组](action-groups.md)中所述的步骤，为警报规则配置电子邮件、webhook 或 runbook 操作。 
 
-## <a name="limits-summary"></a>限制摘要
+## <a name="limits-summary"></a>제한 요약
 
 还有其他 Log Analytics 限制，其中一些限制依赖于 Log Analytics 定价层。 [此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)介绍了这些内容。
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-- 有关如何使用搜索语言的详细说明，请参阅[Azure Monitor 日志中的日志搜索](../log-query/log-query-overview.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
-- 执行[创建新的日志警报](alerts-metric.md)中介绍的步骤，当满足搜索条件时，系统就会通知你。
-- 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。
-- 若要配置有效的事件收集策略，请参阅 [Azure 安全中心筛选策略](../../security-center/security-center-enable-data-collection.md)。
-- 更改[性能计数器配置](data-sources-performance-counters.md)。
-- 若要修改事件收集设置，请参阅[事件日志配置](data-sources-windows-events.md)。
-- 若要修改 syslog 收集设置，请参阅 [syslog 配置](data-sources-syslog.md)。
+- 有关如何使用搜索语言的详细说明，请参阅[Azure Monitor 日志中的日志搜索](../log-query/log-query-overview.md)。 사용량 현황 데이터에 대한 추가 분석을 수행하려면 검색 쿼리를 사용할 수 있습니다.
+- [새 로그 경고 만들기](alerts-metric.md)에 설명한 단계를 사용하여 검색 기준이 충족되는 경우 알림을 받을 수 있습니다.
+- [솔루션 대상](../insights/solution-targeting.md)을 사용하여 필수 그룹의 컴퓨터에서 데이터를 수집합니다.
+- [Azure Security Center 필터링 정책](../../security-center/security-center-enable-data-collection.md)을 검토하여 효과적인 이벤트 컬렉션 정책을 구성합니다.
+- [성능 카운터 구성](data-sources-performance-counters.md)을 변경합니다.
+- 이벤트 컬렉션 설정을 수정하려면 [이벤트 로그 구성](data-sources-windows-events.md)을 검토합니다.
+- syslog 컬렉션 설정을 수정하려면 [syslog 구성](data-sources-syslog.md)을 검토합니다.

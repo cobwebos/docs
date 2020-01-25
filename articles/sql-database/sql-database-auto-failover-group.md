@@ -1,6 +1,6 @@
 ---
-title: 故障转移组
-description: 自动故障转移组是一项 SQL 数据库功能，可便于管理 SQL 数据库服务器中一组数据库或托管实例中所有数据库的复制和自动/协调式故障转移。
+title: 장애 조치(failover) 그룹
+description: 자동 장애 조치(failover) 그룹은 관리되는 인스턴스의 모든 데이터베이스 또는 SQL Database 서버에서 데이터베이스 그룹의 복제 및 자동/조정된 를 관리할 수 있도록 하는 SQL Database 기능입니다.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,36 +11,36 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732410"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722537"
 ---
-# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
+# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>자동 장애 조치(failover) 그룹을 통해 여러 데이터베이스의 투명하고 조정된 장애 조치(failover)를 사용할 수 있습니다.
 
-自动故障转移组是一项 SQL 数据库功能，可用于管理 SQL 数据库服务器上的一组数据库的复制和故障转移，或者管理托管实例中的所有数据库到另一个区域。 它是一种基于现有[活动异地复制](sql-database-active-geo-replication.md)功能的声明性抽象，旨在简化大规模地部署和管理异地复制的数据库。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 故障转移组可以包含一个或多个数据库，通常由同一应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
+自动故障转移组是一项 SQL 数据库功能，可用于管理 SQL 数据库服务器上的一组数据库的复制和故障转移，或者管理托管实例中的所有数据库到另一个区域。 它是一种基于现有[活动异地复制](sql-database-active-geo-replication.md)功能的声明性抽象，旨在简化大规模地部署和管理异地复制的数据库。 수동으로 장애 조치(failover)를 시작하거나, 사용자 정의 정책에 따라 SQL Database 서비스에 위임할 수 있습니다. 사용자 정의 정책 옵션을 사용하면 치명적인 오류 또는 계획되지 않은 다른 이벤트가 발생하여 주 지역에서 SQL Database 서비스의 가용성이 완전히 또는 부분적으로 상실될 경우 보조 지역에서 여러 관련 데이터베이스를 자동으로 복구할 수 있습니다. 故障转移组可以包含一个或多个数据库，通常由同一应用程序使用。 또한 읽을 수 있는 보조 데이터베이스를 사용하여 읽기 전용 쿼리 워크로드를 오프로드할 수 있습니다. 자동 장애 조치 그룹에 여러 데이터베이스가 포함되기 때문에 주 서버에서 이러한 데이터베이스를 구성해야 합니다. 자동 장애 조치 그룹은 그룹의 모든 데이터베이스를 다른 지역에 있는 하나의 보조 서버로만 복제할 수 있도록 지원합니다.
 
 > [!NOTE]
-> 如果在 SQL 数据库服务器上使用单一数据库或共用数据库，并要在相同或不同的区域中使用多个辅助数据库，请使用[活动异地复制](sql-database-active-geo-replication.md)。 
+> SQL Database 서버에서 단일 또는 풀링된 데이터베이스를 사용 중이며 동일하거나 다른 지역에 여러 개의 보조 데이터베이스를 만들려는 경우 [활성 지역 복제](sql-database-active-geo-replication.md)를 사용합니다. 
 
-将自动故障转移组与自动故障转移策略配合使用时，任何影响组中一个或多个数据库的服务中断都会导致自动故障转移。 通常，这些事件是无法通过内置自动高可用性操作自行缓解的事件。 故障转移触发器的示例包括： SQL 租户环或控制环由于多个计算节点上的 OS 内核内存泄漏而导致的事件，或由于在 ro 期间断了错误的网络电缆而导致一个或多个租户环关闭的事件。utine 硬件解除授权。  有关详细信息，请参阅[SQL 数据库高可用性](sql-database-high-availability.md)。
+자동 장애 조치(failover) 정책과 함께 자동 장애 조치(failover) 그룹을 사용하는 경우 그룹 내 데이터베이스 중 하나 이상에 영향을 미치는 중단이 발생하면 자동 장애 조치(failover)가 수행됩니다. 通常，这些事件是无法通过内置自动高可用性操作自行缓解的事件。 故障转移触发器的示例包括： SQL 租户环或控制环由于多个计算节点上的 OS 内核内存泄漏而导致的事件，或由于在 ro 期间断了错误的网络电缆而导致一个或多个租户环关闭的事件。utine 硬件解除授权。  有关详细信息，请参阅[SQL 数据库高可用性](sql-database-high-availability.md)。
 
-此外，自动故障转移组提供在故障转移期间保持不变的读写和只读侦听器终结点。 无论使用手动故障转移激活还是自动故障转移激活，故障转移都会将组中所有的辅助数据库切换到主数据库。 数据库故障转移完成后，会自动更新 DNS 记录，以便将终结点重定向到新的区域。 有关具体的 RPO 和 RTO 数据，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+또한 자동 장애 조치 그룹은 장애 조치하는 동안 변경되지 않는 읽기-쓰기 및 읽기 전용 수신기 끝점을 제공합니다. 수동 또는 자동 장애 조치 활성화를 사용하는지 여부에 관계 없이 장애 조치는 그룹의 모든 보조 데이터베이스를 주 데이터베이스로 전환합니다. 데이터베이스 장애 조치(failover)가 완료되면 엔드포인트를 새 지역으로 리디렉션하도록 DNS 레코드가 자동으로 업데이트됩니다. 특정 RPO 및 RTO 데이터에 대해서는 [비즈니스 연속성 개요](sql-database-business-continuity.md)를 참조하세요.
 
-将自动故障转移组与自动故障转移策略配合使用时，任何影响 SQL 数据库服务器或托管实例中数据库的服务中断都会导致自动故障转移。 可使用以下方式管理自动故障转移组：
+자동 장애 조치(failover) 정책과 함께 자동 장애 조치(failover) 그룹을 사용하는 경우 SQL Database 서버 또는 관리되는 인스턴스의 데이터베이스에 영향을 미치는 중단이 발생하면 자동 장애 조치(failover)가 수행됩니다. 다음을 사용하여 자동 장애 조치(failover) 그룹을 관리할 수 있습니다.
 
-- [Azure 门户](sql-database-implement-geo-distributed-database.md)
+- [Azure Portal](sql-database-implement-geo-distributed-database.md)
 - [Azure CLI：故障转移组](scripts/sql-database-add-single-db-to-failover-group-cli.md)
-- [PowerShell：故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API：故障转移组](/rest/api/sql/failovergroups)。
+- [PowerShell: 그룹 장애 조치](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: 장애 조치(failover) 그룹](/rest/api/sql/failovergroups)
 
-故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+장애 조치(failover) 후에는 새로운 주 데이터베이스에서 서버 및 데이터베이스의 인증 요구 사항이 구성되어 있는지 확인합니다. 자세한 내용은 [재해 복구 후의 SQL Database 보안](sql-database-geo-replication-security-config.md)을 참조하세요.
 
-若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对服务所依赖的服务执行故障转移期间，服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
+실제 비즈니스 연속성을 달성하기 위해 데이터 센터 간에 데이터베이스 중복을 추가하는 것은 솔루션의 일부입니다. 치명적인 오류 후 애플리케이션(서비스) 엔드투엔드 복구에는 서비스 및 모든 종속성 서비스를 구성하는 모든 구성 요소의 복구가 필요합니다. 이러한 구성 요소의 예에는 클라이언트 소프트웨어(예: 사용자 지정 JavaScript를 사용한 브라우저), 웹 프런트 엔드, 스토리지 및 DNS가 포함됩니다. 모든 구성 요소는 동일한 오류에 탄력적이며 애플리케이션의 복구 시간 목표(RTO) 내에서 사용할 수 있는 것이 중요합니다. 따라서 모든 종속성 서비스를 확인하고 제고하는 보장 사항 및 기능을 이해해야 합니다. 그런 다음 의존하는 서비스 장애 조치 중 서비스 기능을 확인하도록 적절한 단계를 수행해야 합니다. 재해 복구를 위한 솔루션 설계에 대한 자세한 내용은 [활성 지역 복제를 사용하여 재해 복구를 위한 클라우드 솔루션 설계](sql-database-designing-cloud-solutions-for-disaster-recovery.md)를 참조하세요.
 
-## <a name="auto-failover-group-terminology-and-capabilities"></a>自动故障转移组的术语和功能
+## <a name="auto-failover-group-terminology-and-capabilities"></a>자동 장애 조치(failover) 그룹 용어 및 기능
 
 - **故障转移组（雾化）**
 
@@ -49,83 +49,90 @@ ms.locfileid: "75732410"
   > [!IMPORTANT]
   > 故障转移组的名称在 `.database.windows.net` 域中必须是全局唯一的。
 
-- **SQL 数据库服务器**
+- **SQL Database 서버**
 
-     使用 SQL 数据库服务器，可以将一个 SQL 数据库服务器上的部分或所有用户数据库放入故障转移组。 此外，SQL 数据库服务器支持一个 SQL 数据库服务器上有多个故障转移组。
+     SQL Database 서버를 사용하면 단일 SQL Database 서버의 사용자 데이터베이스를 일부 또는 모두 장애 조치(failover) 그룹에 배치할 수 있습니다. 또한 SQL Database 서버는 단일 SQL Database 서버에서 여러 개의 장애 조치(failover) 그룹을 지원합니다.
 
-- **主要节点**
+- **주**
 
   承载故障转移组中的主数据库的 SQL 数据库服务器或托管实例。
 
-- **辅助节点**
+- **보조**
 
-  在故障转移组中托管辅助数据库的 SQL 数据库服务器或托管实例。 辅助节点不能与主要节点位于相同的区域。
+  在故障转移组中托管辅助数据库的 SQL 数据库服务器或托管实例。 보조 서버는 주 서버와 동일한 지역에 있을 수 없습니다.
 
-- **将单一数据库添加到故障转移组**
+- **장애 조치(failover) 그룹에 단일 데이터베이스 추가**
 
-  可以将同一 SQL 数据库服务器上的多个单一数据库放入同一故障转移组。 如果将单一数据库添加到故障转移组，则它会在辅助服务器上自动使用相同的版本和计算大小创建辅助数据库。  创建故障转移组时指定该服务器。 如果在辅助服务器中添加已具有辅助数据库的数据库，则该异地复制链接由组继承。 在不属于故障转移组的服务器中添加已有辅助数据库的数据库时，会在辅助服务器中创建新的辅助节点。
+  동일한 SQL Database 서버에 있는 여러 개의 단일 데이터베이스를 동일한 장애 조치(failover) 그룹에 포함할 수 있습니다. 장애 조치(failover) 그룹에 단일 데이터베이스를 추가하면 동일한 버전과 컴퓨팅 크기를 사용하는 보조 데이터베이스가 보조 서버에 자동으로 만들어집니다.  장애 조치(failover) 그룹을 만들 때 해당 서버를 지정했습니다. 보조 서버에 보조 데이터베이스가 이미 있는 데이터베이스를 추가하는 경우 해당 지역 복제 링크가 그룹에 상속됩니다. 장애 조치(failover) 그룹에 속하지 않는 서버에 보조 데이터베이스가 이미 있는 데이터베이스를 추가하면 새 보조 데이터베이스가 보조 서버에 만들어집니다.
 
   > [!IMPORTANT]
-  > 请确保辅助服务器没有同名的数据库，除非它是现有的辅助数据库。 在托管实例的故障转移组中，所有用户数据库都将被复制。 无法选择复制故障转移组中的一部分用户数据库。
+  > 请确保辅助服务器没有同名的数据库，除非它是现有的辅助数据库。 在托管实例的故障转移组中，所有用户数据库都将被复制。 장애 조치(failover) 그룹에서 복제를 위해 사용자 데이터베이스 하위 집합을 선택할 수 없습니다.
 
-- **将弹性池中的数据库添加到故障转移组**
+- **장애 조치(failover) 그룹에 탄력적 풀의 데이터베이스 추가**
 
-  可将一个弹性池内的所有或多个数据库放入同一故障转移组。 如果主数据库在弹性池中，将在具有相同名称的弹性池（辅助池）中自动创建辅助数据库。 必须确保辅助服务器包含名称完全相同的弹性池，并有足够的可用容量来托管将由故障转移组创建的辅助数据库。 如果在辅助池中已有辅助数据库的池中添加数据库，则该异地复制链接由组继承。 在不属于故障转移组的服务器中添加已有辅助数据库的数据库时，会在辅助池中创建新的辅助数据库。
+  탄력적 풀에 있는 전체 또는 여러 개의 데이터베이스를 동일한 장애 조치(failover) 그룹에 포함할 수 있습니다. 탄력적 풀에 주 데이터베이스가 있는 경우 동일한 이름을 가진 보조 데이터베이스가 탄력적 풀에 자동으로 만들어집니다(보조 풀). 장애 조치(failover) 그룹에서 만들 보조 데이터베이스를 호스트하기에 충분한 여유 용량과 정확히 동일한 이름을 가진 탄력적 풀이 보조 서버에 있는지 확인해야 합니다. 보조 풀에 보조 데이터베이스가 이미 있는 데이터베이스를 풀에 추가하는 경우 해당 지역 복제 링크가 그룹에 상속됩니다. 장애 조치(failover) 그룹에 속하지 않는 보조 데이터베이스가 서버에 이미 있는 데이터베이스를 추가하는 경우 새 보조 데이터베이스가 보조 풀에 만들어집니다.
   
-- **DNS 区域**
+- **初始种子设定** 
+
+  将数据库、弹性池或托管实例添加到故障转移组时，在开始数据复制之前，会有一个初始种子设定阶段。 初始种子设定阶段是最长和最昂贵的操作。 初始种子设定完成后，数据将同步，然后将仅复制后续的数据更改。 完成初始种子所用的时间取决于数据的大小、复制数据库的数量，以及故障转移组中的实体之间的链接速度。 正常情况下，对于单个数据库或弹性池18-35，典型的种子设定速度为 50-500 GB; 对于托管实例，典型的种子设定速度为 GB。 并行为所有数据库执行种子设定。 您可以使用所述的种子设定速度，以及数据库数和数据的总大小，以估计初始种子设定阶段在数据复制开始之前需要花费多长时间。
+
+  对于托管实例，在估计初始种子设定阶段的时间时，还需要考虑两个实例之间的快速路由链接速度。 如果两个实例之间的链接速度比所需的速度慢，则播种时间可能会受到影响。 您可以使用所述的种子设定速度、数据库数、数据的总大小以及用于估计初始种子设定阶段在数据复制开始之前需要多长时间的链接速度。 例如，对于单个 100 GB 数据库，如果该链路能够按小时推送 35 GB，则初始种子阶段会在 2.8-5.5 小时内执行。 如果此链接每小时只能传输 10 GB，则 100 GB 数据库的种子设定将需要大约10小时。 如果有多个要复制的数据库，种子设定将并行执行，并且在结合速度缓慢的链接速度时，初始种子设定阶段可能需要相当长的时间，尤其是当所有数据库的数据并行种子设定超过可用时链接带宽。 如果两个实例之间的网络带宽受到限制，并且要将多个托管实例添加到故障转移组，请考虑将多个托管实例按顺序逐个添加到故障转移组。
+
+  
+- **DNS 영역**
 
   在创建新实例时自动生成的唯一 ID。 为此实例预配了多域（SAN）证书，以对同一 DNS 区域中的任何实例的客户端连接进行身份验证。 同一故障转移组中的两个托管实例必须共享 DNS 区域。
   
   > [!NOTE]
   > 为 SQL 数据库服务器创建的故障转移组不需要 DNS 区域 ID。
 
-- **故障转移组读写侦听器**
+- **장애 조치 그룹 읽기-쓰기 수신기**
 
   指向当前主副本的 URL 的 DNS CNAME 记录。 这是在故障转移组创建时自动创建的，并允许读写 SQL 工作负荷在故障转移后主数据库发生更改时以透明方式重新连接到主数据库。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.database.windows.net`。 在托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.zone_id.database.windows.net`。
 
-- **故障转移组只读侦听器**
+- **장애 조치 그룹 읽기 전용 수신기**
 
-  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 它是在创建故障转移组时自动创建的，并允许只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助工作负荷。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.secondary.database.windows.net`。 在托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.zone_id.secondary.database.windows.net`。
+  보조 데이터베이스의 URL을 가리키는 읽기 전용 수신기를 가리키는 DNS CNAME 레코드가 생성됩니다. 它是在创建故障转移组时自动创建的，并允许只读 SQL 工作负荷使用指定的负载均衡规则以透明方式连接到辅助工作负荷。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.secondary.database.windows.net`。 在托管实例上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录将形成为 `<fog-name>.zone_id.secondary.database.windows.net`。
 
-- **自动故障转移策略**
+- **자동 장애 조치 정책**
 
-  默认使用自动故障转移策略配置故障转移组。 检测到故障且宽限期过后，SQL 数据库服务会触发故障转移。 系统必须确保，因影响范围太大，[SQL 数据库服务的内置高可用性基础结构](sql-database-high-availability.md)无法缓解服务中断。 如果要从应用程序控制故障转移工作流，可以关闭自动故障转移。
+  기본적으로 장애 조치(failover) 그룹은 자동 장애 조치(failover) 정책을 사용하여 구성됩니다. SQL Database 서비스는 오류가 검색되고 유예 기간이 만료된 후에 장애 조치(failover)를 트리거합니다. 영향의 규모로 인해 [SQL Database 서비스의 기본 제공 고가용성 인프라](sql-database-high-availability.md)를 통해 중단을 완화할 수 없음을 시스템에서 확인해야 합니다. 애플리케이션에서 장애 조치 워크플로를 제어하려는 경우 자동 장애 조치를 해제할 수 있습니다.
   
   > [!NOTE]
   > 由于服务中断的规模和缓解措施的快慢涉及操作团队的人工操作，因此不能在1小时内设置宽限期。  此限制适用于故障转移组中的所有数据库，而不考虑它们的数据同步状态。 
 
-- **只读故障转移策略**
+- **읽기 전용 장애 조치 정책**
 
-  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果你不能容忍只读会话的停机时间，并且可以暂时将主副本用于只读和读写流量，但代价是主副本可能出现性能下降的情况，则可以通过配置 `AllowReadOnlyFailoverToPrimary` 属性为只读侦听器启用故障转移。 在这种情况下，如果辅助数据库不可用，只读流量将自动重定向到主数据库。
+  기본적으로 읽기 전용 수신기에 대한 장애 조치가 사용되지 않습니다. 이렇게 하면 보조 서버가 오프라인 상태일 때 주 서버의 성능이 영향을 받지 않습니다. 그러나 보조 서버가 복구될 때까지 읽기 전용 세션이 연결할 수 없음을 의미합니다. 如果你不能容忍只读会话的停机时间，并且可以暂时将主副本用于只读和读写流量，但代价是主副本可能出现性能下降的情况，则可以通过配置 `AllowReadOnlyFailoverToPrimary` 属性为只读侦听器启用故障转移。 在这种情况下，如果辅助数据库不可用，只读流量将自动重定向到主数据库。
 
-- **计划内故障转移**
+- **계획된 장애 조치**
 
-   将辅助角色切换为主要角色之前，计划内故障转移在主要数据库与辅助数据库之间执行完全同步。 这可以保证数据不会丢失。 计划内故障转移用于以下场景：
+   계획된 장애 조치(failover)는 보조 역할이 주 역할로 전환되기 전에 주 데이터베이스와 보조 데이터베이스 간에 전체 동기화를 수행합니다. 이렇게 하면 데이터 손실이 발생하지 않습니다. 계획된 장애 조치(failover)는 다음과 같은 시나리오에서 사용합니다.
 
-  - 不可接受数据丢失时在生产环境中执行灾难恢复 (DR) 演练
-  - 将数据库重新定位到不同的区域
-  - 缓解服务中断（故障回复）后将数据库恢复到主要区域。
+  - 데이터 손실이 허용되지 않을 때 프로덕션에서 DR(재해 복구) 드릴 수행
+  - 데이터베이스를 다른 지역으로 재배치
+  - 중단이 완화된 후 데이터베이스를 주 지역으로 반환합니다(장애 복구(failback)).
 
-- **计划外故障转移**
+- **계획되지 않은 장애 조치**
 
-   计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始主副本重新联机后，它将自动重新连接而不进行同步，并成为新的辅助副本。
+   계획되지 않은 장애 조치 또는 강제 장애 조치(failover)는 주 데이터베이스와의 동기화 없이 보조 역할을 주 역할로 즉시 전환합니다. 이 작업으로 인해 데이터가 손실됩니다. 계획되지 않은 장애 조치(failover)는 주 데이터베이스에 액세스할 수 없는 중단 중에 복구 방법으로 사용됩니다. 原始主副本重新联机后，它将自动重新连接而不进行同步，并成为新的辅助副本。
 
-- **手动故障转移**
+- **수동 장애 조치**
 
-  可随时手动启动故障转移，而不考虑自动故障转移配置。 如果未配置自动故障转移策略，则需要执行手动故障转移才能将故障转移组中的数据库恢复到辅助节点。 可通过完整数据同步启动强制或友好的故障转移。 后者可用于将主要节点重新定位到次要区域。 故障转移完成后，会自动更新 DNS 记录，以确保与新的主要节点建立连接
+  자동 장애 조치 구성에 관계 없이 언제든지 장애 조치를 수동으로 시작할 수 있습니다. 자동 장애 조치(failover) 정책이 구성되지 않은 경우 장애 조치 그룹의 데이터베이스를 보조 데이터베이스에 복구하려면 수동 장애 조치(failover)를 수행해야 합니다. 강제 장애 조치 또는 친숙한 장애 조치(전체 데이터 동기화 사용)를 시작할 수 있습니다. 친숙한 장애 조치를 사용하면 주 데이터베이스를 보조 지역에 재배치할 수 있습니다. 장애 조치(failover)가 완료되면 새로운 주 데이터베이스에 대한 연결을 보장하기 위해 DNS 레코드가 자동으로 업데이트됩니다.
 
-- **数据丢失宽限期**
+- **데이터 손실이 있는 유예 기간**
 
-  由于主数据库和辅助数据库是使用异步复制进行同步的，因此故障转移可能会导致数据丢失。 可以自定义自动故障转移策略，以便反映应用程序对数据丢失的容错。 通过配置 `GracePeriodWithDataLossHours`，你可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
+  주 및 보조 데이터베이스가 비동기 복제를 사용하여 동기화되기 때문에 장애 조치로 인해 데이터가 손실될 수 있습니다. 애플리케이션의 데이터 손실 허용 오차를 반영하도록 자동 장애 조치 정책을 사용자 지정할 수 있습니다. 通过配置 `GracePeriodWithDataLossHours`，你可以控制系统启动可能导致数据丢失的故障转移之前的等待时间。
 
-- **多个故障转移组**
+- **여러 장애 조치 그룹**
 
-  可为同一对服务器配置多个故障转移组以控制故障转移规模。 每个组均独立进行故障转移。 如果多租户应用程序使用弹性池，则可使用此功能来混合每个池的主数据库和辅助数据库。 采用这种方式可将服务中断的影响范围缩小到一半的租户中。
+  동일한 서버 쌍에 대해 여러 장애 조치 그룹을 구성하여 장애 조치의 크기를 제어할 수 있습니다. 각 그룹은 독립적으로 장애 조치됩니다. 다중 테넌트 애플리케이션에서 탄력적 풀을 사용하는 경우 이 기능을 사용하여 각 풀에 주 및 보조 데이터베이스를 혼합할 수 있습니다. 이렇게 하면 테넌트의 절반에 대해서만 가동 중단에 따른 영향을 줄일 수 있습니다.
 
   > [!NOTE]
-  > 托管实例不支持多个故障转移组。
+  > Managed Instance는 여러 개의 장애 조치(failover) 그룹을 지원하지 않습니다.
   
-## <a name="permissions"></a>权限
+## <a name="permissions"></a>권한
 
 故障转移组的权限是通过[基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)来管理的。 [SQL Server 参与者](../role-based-access-control/built-in-roles.md#sql-server-contributor)角色具有管理故障转移组所需的所有权限。
 
@@ -141,31 +148,31 @@ ms.locfileid: "75732410"
 
 若要对故障转移组进行故障转移，需要在新的主服务器或托管实例上对故障转移组的 RBAC 写入访问权限。
 
-## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>有关将故障转移组与单一数据库和弹性池配合使用的最佳做法
+## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>단일 데이터베이스 및 탄력적 풀로 장애 조치(failover) 그룹을 사용하는 방법의 모범 사례
 
-自动故障转移组必须在主要 SQL 数据库服务器上进行配置，并会将它连接到不同 Azure 区域中的辅助 SQL 数据库服务器。 组可以包含这些服务器中的所有或部分数据库。 下图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。
+자동 장애 조치(failover) 그룹은 주 SQL Database 서버에서 구성되어야 하며 다른 Azure 지역의 보조 SQL Database 서버에 연결됩니다. 그룹에는 이러한 서버에 있는 데이터베이스가 모두 또는 일부 포함될 수 있습니다. 다음 다이어그램은 여러 데이터베이스와 자동 장애 조치(failover) 그룹을 사용하는 지역 중복 클라우드 애플리케이션의 일반적인 구성을 보여 줍니다.
 
-![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group.png)
+![자동 장애 조치(failover)](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
 > 有关将单个数据库添加到故障转移组的详细分步教程，请参阅[将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)。
 
-在设计具有业务连续性的服务时，请遵循以下一般准则：
+비즈니스 연속성을 고려하여 서비스를 설계하는 경우 다음과 같은 일반 지침을 따르세요.
 
 ### <a name="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>使用一个或多个故障转移组来管理多个数据库的故障转移
 
-可在不同区域的两个服务器（主服务器和辅助服务器）之间创建一个或多个故障转移组。 每组可包含一个或多个数据库，这些数据库是在所有或某些主数据库因主要区域中的服务中断而变得不可用时，作为单元恢复的。 故障转移组使用服务目标作为主数据库创建异地辅助数据库。 如果将现有的异地复制关系添加到故障转移组，请确保使用与主数据库相同的服务层级和计算大小来配置异地辅助数据库。
+다른 하위 지역의 두 서버(기본 및 보조 서버) 간에 하나 이상의 장애 조치 그룹을 만들 수 있습니다. 주 지역의 가동 중단으로 인해 주 데이터베이스 전체 또는 일부를 사용할 수 없게 되는 경우를 대비하여 각 그룹에 한 단위로 복구되는 하나 또는 여러 개의 데이터베이스가 포함될 수 있습니다. 장애 조치(failover) 그룹을 사용하는 경우 주 데이터베이스와 서비스 목표가 동일한 지역 보조 데이터베이스가 작성됩니다. 장애 조치(failover) 그룹에 기존의 지역 복제 관계를 추가하는 경우 보조 데이터베이스가 주 데이터베이스와 동일한 서비스 계층 및 컴퓨팅 크기로 구성되었는지 확인합니다.
   
 > [!IMPORTANT]
 > 单一数据库和弹性池目前不支持在不同订阅中的两个服务器之间创建故障转移组。 如果在创建故障转移组后将主服务器或辅助服务器移到其他订阅，则可能会导致故障转移请求和其他操作失败。
 
 ### <a name="using-read-write-listener-for-oltp-workload"></a>对 OLTP 工作负荷使用读写侦听器
 
-执行 OLTP 操作时，请使用 `<fog-name>.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 请注意，故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主数据库。
+OLTP 작업을 수행할 때 `<fog-name>.database.windows.net`을 서버 URL로 사용하면 자동으로 주 데이터베이스에 연결됩니다. 이 URL은 장애 조치(failover) 후에 변경되지 않습니다. 장애 조치(failover) 시에는 DNS 레코드가 업데이트되므로 클라이언트 DNS 캐시를 새로 고친 후에만 클라이언트 연결이 새 주 데이터베이스로 리디렉션됩니다.
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>将只读侦听器用于只读工作负荷
 
-如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 `ApplicationIntent=ReadOnly`指示连接字符串的读取意向。 如果要确保在故障转移后只读工作负荷可以重新连接，或者当辅助服务器脱机时，请确保配置故障转移策略的 `AllowReadOnlyFailoverToPrimary` 属性。
+특정 데이터가 부실해도 정상적으로 수행 가능한 논리적으로 격리된 읽기 전용 작업이 있는 경우에는 애플리케이션에서 보조 데이터베이스를 사용할 수 있습니다. 읽기 전용 세션의 경우 `<fog-name>.secondary.database.windows.net`을 서버 URL로 사용하면 자동으로 보조 데이터베이스에 연결됩니다. 此外，还建议使用 `ApplicationIntent=ReadOnly`指示连接字符串的读取意向。 如果要确保在故障转移后只读工作负荷可以重新连接，或者当辅助服务器脱机时，请确保配置故障转移策略的 `AllowReadOnlyFailoverToPrimary` 属性。
 
 ### <a name="preparing-for-performance-degradation"></a>为性能降低做好准备
 
@@ -173,10 +180,10 @@ ms.locfileid: "75732410"
 
 ### <a name="preparing-for-data-loss"></a>准备数据丢失
 
-如果检测到服务中断，则 SQL 会等待 `GracePeriodWithDataLossHours`指定的时间段。 默认值为 1 小时。 如果你不能承受丢失数据，请确保将 `GracePeriodWithDataLossHours` 设置为足够大的数字，如24小时。 使用手动组故障转移从辅助节点故障回复到主要节点。
+如果检测到服务中断，则 SQL 会等待 `GracePeriodWithDataLossHours`指定的时间段。 기본값은 1시간입니다. 如果你不能承受丢失数据，请确保将 `GracePeriodWithDataLossHours` 设置为足够大的数字，如24小时。 수동 그룹 장애 조치(failover)를 사용하여 보조 데이터베이스에서 주 데이터베이스로 장애 복구할 수 있습니다.
 
 > [!IMPORTANT]
-> DTU 少于或等于 800、使用异地复制的数据库超过 250 个的弹性数据库池可能会遇到更长的计划故障转移和性能下降等问题。  这些问题更可能在写密集型工作负荷下发生，例如，异地复制终结点广泛分隔于各个地理位置，或者每个数据库使用多个辅助终结点。  当异地复制滞后随着时间推移增加时，这些问题的症状便会显现。  这种滞后可以使用 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 进行监视。  如果发生这些问题，缓解方法包括增加池 DTU 的数量或者减少同一池中异地复制数据库的数量。
+> 지역 복제를 사용하는 800개 이하의 DTU 및 250개 초과의 데이터베이스가 있는 탄력적 풀에는 계획된 장애 조치 지연 및 성능 저하가 포함된 문제가 발생할 수 있습니다.  이러한 문제는 지역에서 복제 엔드포인트가 지리적으로 광범위하게 분리되어 있거나 여러 보조 엔드포인트가 각 데이터베이스에 대해 사용되는 경우 쓰기 집약적 작업에 발생할 가능성이 높습니다.  이러한 문제의 증상은 지역에서 복제 지연이 시간에 따라 증가하는 경우에 표시됩니다.  이러한 지연은 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)를 사용하여 모니터링할 수 있습니다.  이러한 문제가 발생하는 경우 완화 방안에는 풀 DTU의 수를 늘리거나 동일한 풀에 지역에서 복제된 데이터베이스 수를 줄이는 방법이 있습니다.
 
 ### <a name="changing-secondary-region-of-the-failover-group"></a>更改故障转移组的次要区域
 
@@ -206,11 +213,11 @@ ms.locfileid: "75732410"
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>将故障转移组用于托管实例的最佳做法
 
-自动故障转移组必须在主要实例上进行配置，需将其连接到不同 Azure 区域中的辅助实例。  实例中的所有数据库将复制到辅助实例。
+자동 장애 조치(failover) 그룹은 주 인스턴스에서 구성되어야 하며 다른 Azure 지역의 보조 인스턴스에 연결됩니다.  인스턴스의 모든 데이터베이스가 보조 인스턴스에 복제됩니다.
 
-下图演示了使用托管实例和自动故障转移组的异地冗余云应用程序的典型配置。
+다음 다이어그램은 관리되는 인스턴스와 자동 장애 조치(failover) 그룹을 사용하는 지역 중복 클라우드 애플리케이션의 일반적인 구성을 보여 줍니다.
 
-![自动故障转移](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
+![자동 장애 조치(failover)](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
 > 有关将托管实例添加到使用故障转移组的详细分步教程，请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。
@@ -219,7 +226,7 @@ ms.locfileid: "75732410"
 
 ### <a name="creating-the-secondary-instance"></a>创建辅助实例 
 
-若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 它将保证相同的多域（SAN）证书可用于对与故障转移组中的两个实例之一的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 可以通过使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数来执行此操作。
+장애 조치(failover) 후 주 인스턴스에 대한 무중단 연결을 보장하려면 주 인스턴스와 보조 인스턴스가 동일한 DNS 영역에 있어야 합니다. 它将保证相同的多域（SAN）证书可用于对与故障转移组中的两个实例之一的客户端连接进行身份验证。 애플리케이션이 프로덕션 배포에 사용할 준비가 되면 다른 지역에 보조 인스턴스를 만들고 주 인스턴스와 DNS 영역을 공유하는지 확인합니다. 可以通过使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数来执行此操作。
 
 > [!IMPORTANT]
 > 在子网中创建的第一个实例决定同一子网中的所有后续实例的 DNS 区域。 这意味着，同一子网中的两个实例不能属于不同的 DNS 区域。
@@ -228,7 +235,7 @@ ms.locfileid: "75732410"
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在两个实例之间启用复制流量
 
-由于每个实例隔离在其自身的 VNet 中，因此，必须允许这些 VNet 之间的双向流量。 请参阅 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+각 인스턴스가 자체 VNet에 격리되므로 이러한 VNet 간의 양방향 트래픽을 허용해야 합니다. [Azure VPN 게이트웨이](../vpn-gateway/vpn-gateway-about-vpngateways.md)를 참조하세요.
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同订阅中的托管实例之间创建故障转移组
 
@@ -239,22 +246,22 @@ ms.locfileid: "75732410"
 
 ### <a name="managing-failover-to-secondary-instance"></a>管理故障转移到辅助实例
 
-故障转移组将管理实例中所有数据库的故障转移。 创建某个组后，实例中的每个数据库将自动异地复制到辅助实例。 无法使用故障转移组针对一部分数据库启动部分故障转移。
+장애 조치(failover) 그룹은 인스턴스에 있는 모든 데이터베이스의 장애 조치(failover)를 관리합니다. 그룹을 만들면 인스턴스의 각 데이터베이스가 자동으로 보조 인스턴스에 지역 복제됩니다. 장애 조치(failover) 그룹을 사용하여 데이터베이스 하위 집합의 부분 장애 조치(failover)를 시작할 수 없습니다.
 
 > [!IMPORTANT]
-> 如果从主要实例中删除了某个数据库，该数据库也会在异地辅助实例上自动删除。
+> 주 인스턴스에서 데이터베이스를 제거하면 지역 보조 인스턴스에서도 자동으로 삭제됩니다.
 
 ### <a name="using-read-write-listener-for-oltp-workload"></a>对 OLTP 工作负荷使用读写侦听器
 
-执行 OLTP 操作时，请使用 `<fog-name>.zone_id.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主要节点。 由于辅助实例与主实例共享 DNS 区域，因此客户端应用程序将能够使用同一个 SAN 证书重新连接到该区域。
+OLTP 작업을 수행할 때 `<fog-name>.zone_id.database.windows.net`을 서버 URL로 사용하면 자동으로 주 데이터베이스에 연결됩니다. 이 URL은 장애 조치(failover) 후에 변경되지 않습니다. 장애 조치(failover) 시에는 DNS 레코드가 업데이트되므로 클라이언트 DNS 캐시를 새로 고친 후에만 클라이언트 연결이 새로운 주 데이터베이스로 리디렉션됩니다. 由于辅助实例与主实例共享 DNS 区域，因此客户端应用程序将能够使用同一个 SAN 证书重新连接到该区域。
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>使用只读侦听器连接到辅助实例
 
-如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 若要直接连接到异地复制的辅助节点，请使用 `server.secondary.zone_id.database.windows.net` 作为服务器 URL，这样可以直接连接到异地复制的辅助节点。
+특정 데이터가 부실해도 정상적으로 수행 가능한 논리적으로 격리된 읽기 전용 작업이 있는 경우에는 애플리케이션에서 보조 데이터베이스를 사용할 수 있습니다. 지역 복제된 보조 데이터베이스에 직접 연결하려는 경우 `server.secondary.zone_id.database.windows.net`을 서버 URL로 사용하면 지역 복제된 보조 데이터베이스에 직접 연결됩니다.
 
 > [!NOTE]
-> 在某些服务层级中，Azure SQL 数据库支持通过[只读副本](sql-database-read-scale-out.md)使用只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负荷进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
-> - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.zone_id.database.windows.net`。
+> 특정 서비스 계층에서 Azure SQL Database는 [읽기 전용 복제본](sql-database-read-scale-out.md)을 사용하여 읽기 전용 복제본의 용량 및 연결 문자열의 `ApplicationIntent=ReadOnly` 매개 변수를 통해 읽기 전용 쿼리 워크로드를 부하를 분산할 수 있도록 지원합니다. 지역 복제된 보조 데이터베이스를 구성한 경우 이 기능을 사용하여 주 위치 또는 지역 복제된 위치에 있는 읽기 전용 복제본에 연결할 수 있습니다.
+> - 주 위치의 읽기 전용 복제본에 연결하려면 `<fog-name>.zone_id.database.windows.net`을 사용합니다.
 > - 若要连接到辅助位置中的只读副本，请使用 `<fog-name>.secondary.zone_id.database.windows.net`。
 
 ### <a name="preparing-for-performance-degradation"></a>为性能降低做好准备
@@ -263,12 +270,12 @@ ms.locfileid: "75732410"
 
 ### <a name="preparing-for-data-loss"></a>准备数据丢失
 
-如果检测到服务中断，则 SQL 会自动触发读写故障转移是否我们的知识的最佳零数据丢失。 否则，它会等待 `GracePeriodWithDataLossHours` 指定的期限。 如果指定了 `GracePeriodWithDataLossHours`，则可能会丢失数据。 一般情况下，在中断期间 Azure 倾向于可用性。 如果不能承受丢失数据，请务必将 GracePeriodWithDataLossHours 设置为一个足够大的数字，例如 24 小时。
+가동 중단이 감지되는 경우 SQL은 중요한 지식에 대한 데이터 손실이 없으면 읽기 쓰기 장애 조치를 자동으로 트리거합니다. 그렇지 않으면 `GracePeriodWithDataLossHours`에서 지정한 기간 동안 대기합니다. `GracePeriodWithDataLossHours`를 지정한 경우 데이터 손실을 준비합니다. 일반적으로 중단 시에 Azure에서는 가용성을 우선으로 합니다. 데이터 손실을 방지하려는 경우 GracePeriodWithDataLossHours를 24시간과 같은 충분히 큰 숫자로 설정해야 합니다.
 
-启动故障转移后，读写侦听器的 DNS 更新会立即发生。 此操作不会导致数据丢失。 但是，在正常情况下，切换数据库角色的过程可能需要 5 分钟时间。 在完成之前，新主要实例中的某些数据库仍是只读的。 如果使用 PowerShell 启动故障转移，则整个操作都是同步的。 如果使用 Azure 门户启动，则 UI 将指示完成状态。 如果使用 REST API 启动故障转移，可以使用标准 Azure 资源管理器的轮询机制来监视完成状态。
+읽기/쓰기 수신기의 DNS 업데이트는 장애 조치(failover)가 시작된 후 즉시 발생합니다. 이 작업으로 인한 데이터 손실은 없습니다. 그러나 일반적인 조건에서 데이터베이스 역할을 전환하는 데 최대 5분 정도 걸릴 수 있습니다. 완료될 때까지 새로운 주 인스턴스의 일부 데이터베이스는 계속 읽기 전용입니다. 如果使用 PowerShell 启动故障转移，则整个操作都是同步的。 如果使用 Azure 门户启动，则 UI 将指示完成状态。 REST API를 사용하여 시작하는 경우, 표준 Azure Resource Manager의 폴링 메커니즘을 사용하여 완료되었는지 모니터링합니다.
 
 > [!IMPORTANT]
-> 使用手动组故障转移可将主要数据库移回到原始位置。 缓解导致故障转移的服务中断问题后，可将主要数据库移到原始位置。 为此，应该启动组的手动故障转移。
+> 수동 그룹 장애 조치(failover)를 사용하여 주 데이터베이스를 원래 위치로 다시 이동할 수 있습니다. 장애 조치(failover)를 유발한 중단이 완화되면 주 데이터베이스를 원래 위치로 이동할 수 있습니다. 이렇게 하려면 그룹의 수동 장애 조치(failover)를 시작해야 합니다.
   
 ### <a name="changing-secondary-region-of-the-failover-group"></a>更改故障转移组的次要区域
 
@@ -298,39 +305,39 @@ ms.locfileid: "75732410"
 > [!IMPORTANT]
 > 删除故障转移组后，还将删除侦听器终结点的 DNS 记录。 此时，其他人不会有任何其他人创建具有相同名称的故障转移组或服务器别名，这会阻止再次使用。 若要将风险降到最低，请不要使用一般故障转移组名称。
 
-## <a name="failover-groups-and-network-security"></a>故障转移组和网络安全
+## <a name="failover-groups-and-network-security"></a>장애 조치 그룹 및 네트워크 보안
 
 对于某些应用程序，安全规则要求对数据层的网络访问仅限于特定组件或组件（例如 VM、web 服务等）。对于业务连续性设计和使用故障转移组，这一要求会带来一些挑战。 实现此类受限访问时，请考虑以下选项。
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>使用故障转移组和虚拟网络规则
+### <a name="using-failover-groups-and-virtual-network-rules"></a>장애 조치 그룹 및 가상 네트워크 규칙 사용
 
-如果使用[虚拟网络服务终结点和规则](sql-database-vnet-service-endpoint-rule-overview.md)来限制对 SQL 数据库的访问，请注意每个虚拟网络服务终结点仅适用于一个 Azure 区域。 终结点不允许其他区域接受来自该子网的通信。 因此，只有部署在同一区域中的客户端应用程序才能连接到主数据库。 因为故障转移会导致 SQL 客户端会话重新路由到不同（次要）区域中的服务器，所以源自该区域之外的客户端的这些会话将失败。 因此，如果参与的服务器包含在虚拟网络规则中，则无法启用自动故障转移策略。 若要支持手动故障转移，请执行以下步骤：
+[Virtual Network 서비스 엔드포인트 및 규칙](sql-database-vnet-service-endpoint-rule-overview.md)을 사용하여 SQL 데이터베이스에 대한 액세스를 제한하는 경우 각 Virtual Network 서비스 엔드포인트가 하나의 Azure 지역에만 적용됩니다. 엔드포인트를 사용하여 다른 지역이 서브넷에서 보낸 통신을 수락하도록 할 수 없습니다. 따라서 동일한 지역에 배포된 클라이언트 애플리케이션만 주 데이터베이스에 연결할 수 있습니다. 장애 조치가 SQL 클라이언트 세션을 다른 (보조) 지역의 서버로 다시 라우팅하는 결과를 발생시키므로 해당 지역 외부에 있는 클라이언트에서 시작된 경우 이러한 세션에 실패합니다. 이런 이유로 참여하는 서버가 Virtual Network 규칙에 포함된 경우 자동 장애 조치(failover) 정책을 사용할 수 없습니다. 수동 장애 조치를 지원하려면 다음 단계를 수행합니다.
 
-1. 在次要区域中预配应用程序前端组件（Web 服务、虚拟机等）的冗余副本
-2. 为主服务器和辅助服务器分别配置[虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)
-3. 使用流量管理器配置启用[前端故障转移](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
-4. 检测到服务中断时启动手动故障转移。 此选项针对需要在前端和数据层之间保持一致延迟的应用程序进行了优化，并支持在前端和/或数据层受到服务中断的影响时进行恢复。
+1. 보조 지역에서 애플리케이션(웹 서비스, 가상 머신 등) 프런트 엔드 구성 요소의 중복 복사본을 프로비전합니다.
+2. 기본 및 보조 서버에 대한 [가상 네트워크 규칙](sql-database-vnet-service-endpoint-rule-overview.md)을 개별적으로 구성합니다.
+3. [트래픽 관리자 구성을 사용하여 프런트 엔드 장애 조치](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)를 사용하도록 설정합니다.
+4. 중단이 검색되면 수동 장애 조치(failover)를 시작합니다. 이 옵션은 프런트 엔드와 데이터 계층 간에 일관된 대기 시간을 필요로 하는 애플리케이션에 대해 최적화되고 프런트 엔드, 데이터 계층 또는 둘 모두가 중단의 영향을 받는 경우 복구를 지원합니다.
 
 > [!NOTE]
-> 如果使用**只读侦听器**对只读工作负荷进行负载均衡，请确保在次要区域中的 VM 或其他资源上执行此工作负荷，以便它可以连接到辅助数据库。
+> **읽기 전용 수신기**를 사용하여 읽기 전용 워크로드의 부하를 분산하는 경우 이 워크로드가 보조 데이터베이스에 연결할 수 있도록 보조 지역의 VM 또는 다른 리소스에서 실행되는지 확인합니다.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>使用故障转移组和 SQL 数据库防火墙规则
+### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>장애 조치 그룹 및 SQL 데이터베이스 방화벽 규칙 사용
 
-如果业务连续性计划要求使用自动故障转移组进行故障转移，则可以使用传统防火墙规则限制对 SQL 数据库的访问。 若要支持自动故障转移，请执行以下步骤：
+비즈니스 연속성 계획이 자동 장애 조치에서 그룹을 사용하는 장애 조치가 필요한 경우 기존 방화벽 규칙을 사용하여 SQL 데이터베이스에 대한 액세스를 제한할 수 있습니다. 자동 장애 조치를 지원하려면 다음 단계를 수행합니다.
 
-1. [创建公共 IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [创建公共负载均衡器](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer)并为其分配公共 IP。
-3. 为前端组件[创建虚拟网络和虚拟机](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)
-4. [创建网络安全组](../virtual-network/security-overview.md)并配置入站连接。
-5. 使用“Sql”[服务标记](../virtual-network/security-overview.md#service-tags)确保出站连接向 Azure SQL 数据库开放。
-6. 创建 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)，以允许来自步骤 1 中创建的公共 IP 地址的入站流量。
+1. [공용 IP를 만듭니다.](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+2. [공용 부하 분산 장치를 만들고](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) 여기에 공용 IP를 할당합니다.
+3. 프런트 엔드 구성 요소에 대한 [가상 네트워크 및 가상 머신을 만듭니다.](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)
+4. [네트워크 보안 그룹을 만들고](../virtual-network/security-overview.md) 인바운드 연결을 구성합니다.
+5. 'Sql' [서비스 태그](../virtual-network/security-overview.md#service-tags)를 사용하여 아웃바운드 연결이 Azure SQL 데이터베이스에 대해 열려 있는지 확인합니다.
+6. [SQL 데이터베이스 방화벽 규칙](sql-database-firewall-configure.md)을 만들어서 1단계에서 만든 공용 IP 주소에서 인바운드 트래픽을 허용합니다.
 
-有关如何配置出站访问以及在防火墙规则中使用哪个 IP 的详细信息，请参阅[负载均衡器出站连接](../load-balancer/load-balancer-outbound-connections.md)。
+아웃바운드 액세스를 구성하는 방법 및 방화벽 규칙에서 사용할 IP에 대한 자세한 내용은 [부하 분산 장치 아웃바운드 연결](../load-balancer/load-balancer-outbound-connections.md)을 참조하세요.
 
-上述配置将确保自动故障转移不会阻止来自前端组件的连接，并假定应用程序可以容忍前端与数据层之间的较长延迟。
+위의 구성에서는 자동 장애 조치가 프런트 엔드 구성 요소에서 연결을 차단하지 않는지 확인하고 애플리케이션이 프런트 엔드와 데이터 계층 간의 긴 대기 시간을 허용할 수 있다고 가정합니다.
 
 > [!IMPORTANT]
-> 若要保证区域服务中断的业务连续性，则必须确保前端组件和数据库的地理冗余。
+> 지역 중단에 대한 비즈니스 연속성을 보장하기 위해 프런트 엔드 구성 요소와 데이터베이스 모두에 대한 지리적 복제를 확인해야 합니다.
 
 ## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在托管实例与其 Vnet 之间启用异地复制
 
@@ -339,57 +346,57 @@ ms.locfileid: "75732410"
 1. 这两个托管实例需要在不同的 Azure 区域中。
 2. 这两个托管实例必须是相同的服务层，并且具有相同的存储大小。
 3. 辅助托管实例必须为空（无用户数据库）。
-4. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[Express Route](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接。 当两个虚拟网络通过本地网络连接时，请确保没有阻止端口5022和11000-11999 的防火墙规则。 不支持全局 VNet 对等互连。
+4. 托管实例使用的虚拟网络需要通过[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[Express Route](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接。 当两个虚拟网络通过本地网络连接时，请确保没有阻止端口5022和11000-11999 的防火墙规则。 전역 VNet 피어링은 지원되지 않습니다.
 5. 这两个托管实例 Vnet 不能有重叠的 IP 地址。
 6. 需要设置网络安全组（NSG 5022），以便为来自其他托管实例的子网的连接打开入站和出站。 这是为了允许实例之间的复制流量。
 
    > [!IMPORTANT]
-   > NSG 安全规则配置不当会导致数据库复制操作停滞。
+   > NSG 보안 규칙을 잘못 구성하면 데이터베이스 복사 작업이 중단됩니다.
 
 7. 辅助实例配置了正确的 DNS 区域 ID。 DNS 区域是托管实例和虚拟群集的属性，其 ID 包含在主机名地址中。 当在每个 VNet 中创建第一个托管实例并且为同一子网中的所有其他实例分配相同的 ID 时，区域 ID 将作为随机字符串生成。 分配后，将无法修改 DNS 区域。 包含在同一故障转移组中的托管实例必须共享 DNS 区域。 为此，可以在创建辅助实例时将主实例的区域 ID 作为 DnsZonePartner 参数的值传递。 
 
    > [!NOTE]
    > 有关使用托管实例配置故障转移组的详细教程，请参阅[将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
+## <a name="upgrading-or-downgrading-a-primary-database"></a>주 데이터베이스 업그레이드 또는 다운그레이드
 
-无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层级中，但不在“常规用途”与“业务关键”类型之间）。 升级时，建议先升级所有辅助数据库，然后再升级主数据库。 降级时，反向顺序：先降级主数据库，然后降级所有辅助数据库。 将数据库升级或降级到不同服务层级时，将强制执行此建议操作。
+보조 데이터베이스와의 연결을 끊지 않고도 주 데이터베이스를 다른 컴퓨팅 크기(동일한 서비스 계층 내, 범용 및 중요 비즈니스용 사이 아님)로 업그레이드하거나 다운그레이드할 수 있습니다. 升级时，建议先升级所有辅助数据库，然后再升级主数据库。 降级时，反向顺序：先降级主数据库，然后降级所有辅助数据库。 데이터베이스를 다른 서비스 계층으로 업그레이드하거나 다운그레이드할 때 이 권장 사항이 적용됩니다.
 
 建议使用此序列来避免出现以下问题：在升级或降级过程中，较低 SKU 上的辅助副本超载并必须重新设定其种子。 您还可以通过使主副本处于只读状态来避免该问题，但代价是对主工作负荷产生影响。
 
 > [!NOTE]
-> 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。
+> 장애 조치 그룹 구성의 일부로 보조 데이터베이스를 만든 경우 보조 데이터베이스를 다운그레이드하지 않는 것이 좋습니다. 이렇게 하면 장애 조치가 활성화된 후 데이터 계층에서 일반 워크로드를 처리할 수 있을 만큼 충분한 용량을 갖출 수 있습니다.
 
-## <a name="preventing-the-loss-of-critical-data"></a>防止丢失关键数据
+## <a name="preventing-the-loss-of-critical-data"></a>중요한 데이터 손실 방지
 
-由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用 `sp_wait_for_database_copy_sync` 会阻止调用线程，直到最后提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 `sp_wait_for_database_copy_sync` 的作用域限定为特定的连续复制链接。 对主数据库具有连接权限的任何用户都可以调用此过程。
+광역 네트워크의 높은 대기 시간으로 인해 연속 복사는 비동기 복제 메커니즘을 사용합니다. 비동기 복제를 수행하면 오류가 발생하는 경우에 일부 데이터 손실은 불가피합니다. 그러나 일부 애플리케이션은 데이터 손실이 없어야 합니다. 이러한 중요한 업데이트를 보호하기 위해 애플리케이션 개발자는 트랜잭션을 커밋한 후 즉시 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 시스템 프로시저를 호출할 수 있습니다. 调用 `sp_wait_for_database_copy_sync` 会阻止调用线程，直到最后提交的事务传输到辅助数据库。 그러나 전송된 트랜잭션이 보조 데이터베이스에서 재생 및 커밋될 때까지 기다리지 않습니다. `sp_wait_for_database_copy_sync` 的作用域限定为特定的连续复制链接。 주 데이터베이스에 대한 연결 권한이 있는 모든 사용자는 이 프로시저를 호출할 수 있습니다.
 
 > [!NOTE]
 > `sp_wait_for_database_copy_sync` 会在故障转移后防止数据丢失，但不保证读取访问的完全同步。 `sp_wait_for_database_copy_sync` 过程调用导致的延迟可能会很大，并且取决于调用时事务日志的大小。
 
-## <a name="failover-groups-and-point-in-time-restore"></a>故障转移组和时间点还原
+## <a name="failover-groups-and-point-in-time-restore"></a>장애 조치(failover) 그룹 및 지정 시간 복원
 
-有关将时间点还原与故障转移组配合使用的信息，请参阅[时间点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)。
+장애 조치(failover) 그룹과 함께 지정 시간 복원을 사용하는 방법에 대한 자세한 내용은 [PITR(지정 시간 복구)](sql-database-recovery-using-backups.md#point-in-time-restore)을 참조하세요.
 
 ## <a name="limitations-of-failover-groups"></a>故障转移组的限制
 
-注意以下限制：
+다음과 같은 제한 사항을 고려해야 합니다.
 
 - 无法在同一 Azure 区域中的两个服务器或实例之间创建故障转移组。
 - 不能重命名故障转移组。 你将需要删除组，并使用不同的名称重新创建它。 
 - 故障转移组中的实例不支持数据库重命名。 你将需要临时删除故障转移组，以便能够重命名数据库。
 
-## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
+## <a name="programmatically-managing-failover-groups"></a>프로그래밍 방식으로 장애 조치(failover) 그룹 관리
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
+앞에서 설명한 대로, 자동 장애 조치(failover) 그룹과 활성 지역 복제는 Azure PowerShell 및 REST API를 사용하여 프로그래밍 방식으로 관리할 수도 있습니다. 다음 표는 사용 가능한 명령의 집합을 보여 줍니다. 활성 지역 복제는 관리를 위해 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 및 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)을 비롯한 Azure Resource Manager API 세트를 포함합니다. 이러한 API는 리소스 그룹을 사용해야 하며 RBAC(역할 기반 보안)를 지원합니다. 액세스 역할을 구현하는 방법에 대한 자세한 내용은 [Azure 역할 기반 Access Control](../role-based-access-control/overview.md)을 참조하세요.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用单一数据库和弹性池管理 SQL 数据库故障转移
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>단일 데이터베이스 및 탄력적 풀을 사용하여 SQL Database 장애 조치(failover) 관리
 
 | Cmdlet | Description |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |장애 조치 그룹을 만들고 주 및 보조 서버 모두에 등록합니다|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | 从服务器中删除故障转移组 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 检索故障转移组的配置 |
 | [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |修改故障转移组的配置 |
@@ -404,15 +411,15 @@ ms.locfileid: "75732410"
 | [AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |修改故障转移组的配置|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |检索故障转移组的配置|
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |触发故障转移组到辅助实例的故障转移|
-| [AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | 删除故障转移组|
+| [AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | 장애 조치(failover) 그룹을 제거합니다.|
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用单一数据库和弹性池管理 SQL 数据库故障转移
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>단일 데이터베이스 및 탄력적 풀을 사용하여 SQL Database 장애 조치(failover) 관리
 
-| 命令 | Description |
+| 명령 | Description |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |장애 조치 그룹을 만들고 주 및 보조 서버 모두에 등록합니다|
 | [az sql 故障转移-组删除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 从服务器中删除故障转移组 |
 | [az sql 故障转移-组显示](/cli/azure/sql/failover-group#az-sql-failover-group-show) | 检索故障转移组配置 |
 | [az sql 故障转移-组更新](/cli/azure/sql/failover-group#az-sql-failover-group-update) |修改故障转移组的配置，并/或将一个或多个数据库添加到故障转移组|
@@ -420,53 +427,53 @@ ms.locfileid: "75732410"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>管理包含托管实例的 SQL 数据库故障转移组
 
-| 命令 | Description |
+| 명령 | Description |
 | --- | --- |
 | [az sql 实例-故障转移-组创建](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | 此命令创建一个故障转移组，并将其注册到主实例和辅助实例上 |
 | [az sql 实例-故障转移-组更新](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | 修改故障转移组的配置|
 | [az sql 实例-故障转移-组显示](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | 检索故障转移组的配置|
 | [az sql 实例-故障转移-组集-主](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | 触发故障转移组到辅助实例的故障转移|
-| [az sql 实例-故障转移-组删除](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | 删除故障转移组 |
+| [az sql 实例-故障转移-组删除](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | 장애 조치(failover) 그룹을 제거합니다. |
 
 * * *
 
 > [!IMPORTANT]
-> 有关示例脚本，请参阅[为单一数据库配置并故障转移一个故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+> 샘플 스크립트는 [단일 데이터베이스에 대한 장애 조치(failover) 그룹 구성 및 장애 조치(failover)](scripts/sql-database-add-single-db-to-failover-group-powershell.md)를 참조하세요.
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：管理包含单个和共用数据库的 SQL 数据库故障转移组
 
 | API | Description |
 | --- | --- |
-| [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 创建或更新故障转移组 |
-| [删除故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
-| [故障转移（计划内）](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 通过完全数据同步，触发从当前主服务器到辅助服务器的故障转移。|
-| [强制故障转移可能导致数据丢失](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 触发从当前主服务器到辅助服务器的故障转移，而不同步数据。 此操作可能会导致数据丢失。 |
-| [获取故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | 检索故障转移组的配置。 |
-| [服务器的故障转移组列表](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | 列出服务器上的故障转移组。 |
-| [更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | 更新故障转移组的配置。 |
+| [장애 조치(failover) 그룹 만들기 또는 업데이트](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 장애 조치(failover) 그룹을 만들거나 업데이트합니다. |
+| [장애 조치(failover) 그룹 삭제](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
+| [장애 조치(failover)(계획됨)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 通过完全数据同步，触发从当前主服务器到辅助服务器的故障转移。|
+| [장애 조치(failover)로 인한 데이터 손실 허용](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 触发从当前主服务器到辅助服务器的故障转移，而不同步数据。 此操作可能会导致数据丢失。 |
+| [장애 조치 그룹 가져오기](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | 检索故障转移组的配置。 |
+| [서버별 장애 조치(failover) 그룹 나열](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | 列出服务器上的故障转移组。 |
+| [장애 조치(failover) 그룹 업데이트](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | 更新故障转移组的配置。 |
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API：管理具有托管实例的故障转移组
 
 | API | Description |
 | --- | --- |
-| [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组的配置 |
-| [删除故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从实例中删除故障转移组 |
-| [故障转移（计划内）](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 通过完全数据同步，触发从当前主实例到此实例的故障转移。 |
-| [强制故障转移可能导致数据丢失](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 触发从当前主实例到辅助实例的故障转移，而不同步数据。 此操作可能会导致数据丢失。 |
-| [获取故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | 检索故障转移组的配置。 |
-| [列出故障转移组 - 按位置列出](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 列出某个位置中的故障转移组。 |
+| [장애 조치(failover) 그룹 만들기 또는 업데이트](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组的配置 |
+| [장애 조치(failover) 그룹 삭제](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从实例中删除故障转移组 |
+| [장애 조치(failover)(계획됨)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 通过完全数据同步，触发从当前主实例到此实例的故障转移。 |
+| [장애 조치(failover)로 인한 데이터 손실 허용](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 触发从当前主实例到辅助实例的故障转移，而不同步数据。 此操作可能会导致数据丢失。 |
+| [장애 조치 그룹 가져오기](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | 检索故障转移组的配置。 |
+| [장애 조치(failover) 그룹 나열 - 위치별 목록](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 위치에 있는 장애 조치(failover) 그룹을 나열합니다. |
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 - 有关详细教程，请参阅
     - [将单一数据库添加到故障转移组](sql-database-single-database-failover-group-tutorial.md)
     - [将弹性池添加到故障转移组](sql-database-elastic-pool-failover-group-tutorial.md)
     - [将托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)
-- 示例脚本请参阅：
+- 샘플 스크립트에 대해서는 다음을 참조하세요.
   - [使用 PowerShell 为 Azure SQL 数据库中的单个数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [使用 PowerShell 为 Azure SQL 数据库中的池数据库配置活动异地复制](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
   - [使用 PowerShell 将 Azure SQL 数据库单一数据库添加到故障转移组](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
-- 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
-- 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
-- 若要了解新主服务器和数据库的身份验证要求，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+- 비즈니스 연속성의 개요 및 시나리오를 보려면 [비즈니스 연속성 개요](sql-database-business-continuity.md)
+- Azure SQL Database 자동화 백업에 대한 자세한 내용은 [SQL Database 자동화 백업](sql-database-automated-backups.md)을 참조하세요.
+- 복구를 위해 자동화된 백업을 사용하는 방법을 알아보려면 [서비스에서 시작한 백업에서 데이터베이스 복원](sql-database-recovery-using-backups.md)을 참조하세요.
+- 새로운 주 서버 및 데이터베이스의 인증 요구 사항에 대해 알아보려면 [재해 복구 후의 SQL Database 보안](sql-database-geo-replication-security-config.md)을 참조하세요.

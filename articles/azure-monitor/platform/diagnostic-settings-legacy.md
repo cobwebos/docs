@@ -6,21 +6,21 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977571"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715837"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>收集具有旧设置的 Azure 活动日志
-[Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 最近，你创建了一个日志配置文件，用于将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)，并使用连接器将其收集到[Log Analytics 工作区](activity-log-collect.md)中。 本文介绍方法之间的差异、如何使用现有旧设置，以及如何在准备诊断设置时清除旧设置。
+# <a name="update-to-azure-activity-log-collection-and-export"></a>更新到 Azure 活动日志收集和导出
+[Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)或[Log Analytics 工作区](activity-log-collect.md)的方法已更改为使用[诊断设置](diagnostic-settings.md)。 本文介绍方法之间的差异，以及如何在准备更改为诊断设置时清除旧设置。
 
 
 ## <a name="differences-between-methods"></a>方法之间的差异
 
-### <a name="advantages"></a>优点
+### <a name="advantages"></a>장점
 与当前方法相比，使用诊断设置具有以下优势：
 
 - 用于收集所有平台日志的一致方法。
@@ -29,7 +29,7 @@ ms.locfileid: "75977571"
 - 收集所有活动日志类别。 某些类别不是使用旧方法收集的。
 - 日志引入延迟更快。 前一种方法的延迟大约为15分钟，诊断设置仅添加大约1分钟的时间。
 
-### <a name="considerations"></a>注意事项
+### <a name="considerations"></a>고려 사항
 在启用此功能之前，请考虑使用诊断设置的活动日志收集的以下详细信息。
 
 - 删除了用于将活动日志收集到 Azure 存储的保留设置，这意味着数据将无限期存储，直到将其删除。
@@ -39,14 +39,16 @@ ms.locfileid: "75977571"
 ### <a name="differences-in-data"></a>数据差异
 诊断设置收集的数据与之前用于收集活动日志的方法相同，但其当前差异如下：
 
-以下属性已删除：
+以下列已删除的列。 这些列的替换采用不同的格式，因此您可能需要修改使用它们的日志查询。 您可能仍会在架构中看到删除的列，但不会用数据填充它们。
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| 删除的列 | 替换列 |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-添加了以下属性：
+添加了以下列：
 
 - Authorization_d
 - Claims_d
@@ -56,9 +58,9 @@ ms.locfileid: "75977571"
 如果未选择使用诊断设置替换，则收集活动日志的旧设置将继续工作。 使用以下方法来管理订阅的日志配置文件。
 
 1. 从 Azure 门户的 " **Azure Monitor** " 菜单中，选择 "**活动日志**"。
-3. 单击“诊断设置”。
+3. **진단 설정**을 클릭합니다.
 
-   ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
+   ![진단 설정](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
 4. 单击紫色横幅了解旧体验。
 
@@ -91,7 +93,7 @@ ms.locfileid: "75977571"
 ## <a name="activity-log-monitoring-solution"></a>活动日志监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。 如果你使用诊断设置收集活动日志，此解决方案将使用在 Log Analytics 工作区中收集的日志数据并将继续工作，而无需进行任何更改。 有关此解决方案的详细信息，请参阅[活动日志分析监视解决方案](activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
+* [활동 로그에 대한 자세한 내용](../../azure-resource-manager/management/view-activity-logs.md)
 * [了解有关诊断设置的详细信息](diagnostic-settings.md)

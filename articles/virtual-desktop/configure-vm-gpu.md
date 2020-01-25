@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953946"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719749"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>配置 Windows 虚拟桌面的图形处理单元（GPU）加速
 
@@ -31,15 +31,15 @@ Azure 提供了大量[GPU 优化的虚拟机大小](/azure/virtual-machines/wind
 Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编码：
 
 * Windows 10 版本1511或更高版本
-* Windows Server 2016 或更高版本
+* Windows Server 2016 이상
 
 你还必须配置应用组，或使用创建新主机池时自动创建的默认桌面应用组（名为 "桌面应用程序组"）。 有关说明，请参阅[教程：管理适用于 Windows 虚拟桌面的应用组](/azure/virtual-desktop/manage-app-groups)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在虚拟机中安装支持的图形驱动程序
 
-若要利用 Windows 虚拟桌面中 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA 图形驱动程序。 请按照在[运行 Windows 的 N 系列 vm 上的安装 NVIDIA gpu 驱动程序](/azure/virtual-machines/windows/n-series-driver-setup)中的说明，手动或使用[NVIDIA Gpu 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)安装驱动程序。
+若要利用 Windows 虚拟桌面中 Azure N 系列 Vm 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的说明，手动或使用 Azure VM 扩展从适当的图形供应商处安装驱动程序。
 
-请注意，Windows 虚拟桌面只支持 Azure 分发的[NVIDIA GRID 驱动程序](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
+Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 Additionaly，对于具有 NVIDIA Gpu 的 Azure Vm，Windows 虚拟桌面只支持[NVIDIA 网格驱动程序](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
 
 驱动程序安装完成后，需要重新启动 VM。 使用上述说明中的验证步骤确认图形驱动程序已成功安装。
 
@@ -49,7 +49,7 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 
 1. 使用具有本地管理员特权的帐户连接到 VM 的桌面。
 2. 打开 "开始" 菜单，键入 "gpedit.msc" 以打开组策略编辑器。
-3. 将树导航到 "**计算机配置**" > **管理模板** > **Windows 组件** > **远程桌面服务** ** > 远程桌面会话主机**"**远程会话环境**"。 > 
+3. 将树导航到 "**计算机配置**" > **管理模板** > **Windows 组件** > **远程桌面服务** ** > 远程桌面会话主机**"**远程会话环境**"。
 4. 选择 **"策略" 使用所有远程桌面服务会话的硬件默认图形适配器**，并将此策略设置为 "**启用**" 以在远程会话中启用 GPU 呈现。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>配置 GPU 加速帧编码
@@ -74,7 +74,7 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 
 若要验证应用是否正在使用 GPU 进行呈现，请尝试执行以下任一操作：
 
-* 使用在运行应用时[验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的 `nvidia-smi` 实用程序来检查 GPU 使用率。
+* 对于带有 NVIDIA GPU 的 Azure Vm，请使用在运行应用时[验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的 `nvidia-smi` 实用程序来检查 GPU 使用率。
 * 在支持的操作系统版本上，可以使用任务管理器来检查 GPU 利用率。 在 "性能" 选项卡中选择 GPU，查看应用是否正在使用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>验证 GPU 加速帧编码
@@ -86,9 +86,9 @@ Windows 虚拟桌面支持在以下操作系统中执行 GPU 加速呈现和编�
 3. 若要确定是否使用 GPU 加速编码，请查找事件 ID 170。 如果看到 "AVC 硬件编码器已启用： 1"，则使用 GPU 编码。
 4. 若要确定是否使用了 AVC 444 模式，请查找事件 ID 162。 如果出现 "AVC 可用：1初始配置文件： 2048"，则使用 AVC 444。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 这些说明应指导您在单个会话主机 VM 上运行 GPU 加速。 在更大的主机池中启用 GPU 加速的一些其他注意事项：
 
-* 请考虑使用[NVIDIA GPU 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)简化多个 vm 的驱动程序安装和更新。
+* 请考虑使用[VM 扩展](/azure/virtual-machines/extensions/overview)简化多个 vm 的驱动程序安装和更新。 将[NVIDIA Gpu 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)用于具有 NVIDIA Gpu 的 vm，并为具有 amd Gpu 的 VM 使用 Amd Gpu 驱动程序扩展（即将推出）。
 * 请考虑使用 Active Directory 组策略来简化多个 Vm 上的组策略配置。 有关在 Active Directory 域中部署组策略的信息，请参阅使用[组策略对象](https://go.microsoft.com/fwlink/p/?LinkId=620889)。

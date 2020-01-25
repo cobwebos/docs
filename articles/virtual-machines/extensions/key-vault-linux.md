@@ -8,18 +8,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806967"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721296"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的虚拟机扩展 Key Vault
 
 Key Vault VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展会监视存储在密钥保管库中的已观察证书的列表。  检测到更改后，扩展会检索并安装相应的证书。 当前在 Linux Vm 上发布并支持 Key Vault VM 扩展。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展的支持平台、配置和部署选项。 
 
-### <a name="operating-system"></a>操作系统
+### <a name="operating-system"></a>운영 체제
 
 Key Vault VM 扩展支持以下 Linux 分发版：
 
@@ -28,9 +28,9 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 - Debian-9
 - Suse-15 
 
-## <a name="extension-schema"></a>扩展架构
+## <a name="extension-schema"></a>확장 스키마
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体如下：  
+다음 JSON은 Key Vault VM 확장에 대한 스키마를 보여 줍니다. 확장에는 protected 설정이 필요하지 않습니다. 모든 설정은 보안의 영향을 받지 않는 정보로 간주됩니다. 확장에는 모니터링되는 비밀 목록, 폴링 빈도 및 대상 인증서 저장소가 필요합니다. 특히 다음과 같은 혜택이 있습니다.  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -65,25 +65,25 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 > 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
-### <a name="property-values"></a>属性值
+### <a name="property-values"></a>속성 값
 
-| 名称 | 值/示例 | 数据类型 |
+| 이름 | 값/예제 | 데이터 형식 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| 发布者 | Microsoft.Azure.KeyVault | 字符串 |
-| type | KeyVaultForLinux | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | 문자열 |
+| type | KeyVaultForLinux | 문자열 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
-| certificateStoreName | MY | 字符串 |
+| pollingIntervalInS | 3600 | 문자열 |
+| certificateStoreName | MY | 문자열 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | 字符串 |
-| requiredInitialSync | 是 | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
+| certificateStoreLocation  | LocalMachine | 문자열 |
+| requiredInitialSync | true | boolean |
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 문자열 배열
 
 
-## <a name="template-deployment"></a>模板部署
+## <a name="template-deployment"></a>템플릿 배포
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
+Azure Resource Manager 템플릿을 사용하여 Azure VM 확장을 배포할 수 있습니다. 배포 후에 인증서를 새로 고칠 필요가 있는 하나 이상의 가상 머신을 배포하는 경우 템플릿을 사용하는 것이 좋습니다. 此扩展可以部署到单个 Vm 或虚拟机规模集。 스키마와 구성은 두 템플릿 형식 모두에 공통적으로 적용됩니다. 
 
 虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，`"resources": []` 虚拟机模板的对象和 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下的虚拟机规模集。
 
@@ -113,11 +113,11 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 ```
 
 
-## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
+## <a name="azure-powershell-deployment"></a>Azure PowerShell 배포
 
-可以使用 Azure PowerShell，将 Key Vault VM 扩展部署到现有虚拟机或虚拟机规模集。 
+Azure PowerShell은 기존 가상 머신 또는 가상 머신 확장 집합에 Key Vault VM 확장을 배포하는 데 사용할 수 있습니다. 
 
-* 在 VM 上部署该扩展：
+* VM에 확장을 배포하려면 다음과 같습니다.
     
     ```powershell
         # Build settings
@@ -159,11 +159,11 @@ Key Vault VM 扩展支持以下 Linux 分发版：
     
     ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI 部署
+## <a name="azure-cli-deployment"></a>Azure CLI 배포
 
 Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟机规模集。 
  
-* 在 VM 上部署该扩展：
+* VM에 확장을 배포하려면 다음과 같습니다.
     
     ```azurecli
        # Start the deployment
@@ -185,17 +185,17 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-请注意以下限制/要求：
-- Key Vault 限制：
-  - 必须在部署时存在 
+다음 제한 사항/요구 사항에 주의하세요.
+- Key Vault 제한 사항:
+  - 배포 시점에 있어야 합니다. 
   - 使用 MSI 为 VM/VMSS 标识设置 Key Vault 访问策略
 
 
-## <a name="troubleshoot-and-support"></a>故障排除和支持
+## <a name="troubleshoot-and-support"></a>문제 해결 및 지원
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>문제 해결
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
+확장 배포 상태에 대한 데이터는 Azure PowerShell 또는 Azure Portal을 통해 검색할 수 있습니다. 지정된 VM에 대한 확장의 배포 상태를 보려면 Azure PowerShell을 사용하여 다음 명령을 실행합니다.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
@@ -207,6 +207,6 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
-### <a name="support"></a>支持
+### <a name="support"></a>지원
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+이 문서의 어디에서든 도움이 필요한 경우 [MSDN Azure 및 Stack Overflow 포럼](https://azure.microsoft.com/support/forums/)에서 Azure 전문가에게 문의할 수 있습니다. 또는 Azure 기술 지원 인시던트를 제출할 수 있습니다. [Azure 지원 사이트](https://azure.microsoft.com/support/options/)로 가서 지원 받기를 선택합니다. Azure 지원을 사용하는 방법에 대한 자세한 내용은 [Microsoft Azure 지원 FAQ](https://azure.microsoft.com/support/faq/)를 참조하세요.

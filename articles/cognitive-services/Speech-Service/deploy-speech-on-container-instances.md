@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/5/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 690a45ad7f009a65686e27eba5095a5a2870039c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e5d9143b0c84b579945b283ccae1cce36a7a4291
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806263"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717405"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>将 Speech service 容器部署到 Azure 容器实例
 
@@ -23,7 +23,7 @@ ms.locfileid: "74806263"
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
+## <a name="request-access-to-the-container-registry"></a>컨테이너 레지스트리에 대한 액세스 요청
 
 必须先完成并提交[认知服务语音容器请求表单](https://aka.ms/speechcontainerspreview/)，才能请求访问容器。 
 

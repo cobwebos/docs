@@ -1,30 +1,30 @@
 ---
-title: 使用高级分析处理 Azure Blob 数据 - Team Data Science Process
-description: 使用高级分析探索数据并从 Azure Blob 存储中存储的数据生成功能。
+title: 고급 분석을 사용하여 Azure Blob 데이터 처리 - 팀 데이터 과학 프로세스
+description: 고급 분석을 사용하여 데이터를 살펴보고 Azure Blob Storage에 저장된 데이터에서 기능을 생성합니다.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492427"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721092"
 ---
-# <a name="heading"></a>使用高级分析处理 Azure Blob 数据
-本文档介绍了如何浏览数据，以及如何从 Azure Blob 存储中存储的数据生成功能。 
+# <a name="heading"></a>고급 분석을 사용하여 Azure blob 데이터 처리
+이 문서에서는 Azure Blob Storage에 저장된 데이터를 탐색하고 기능을 생성하는 방법을 다룹니다. 
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
-要浏览和操作数据集，必须将数据集从 blob 源下载到本地文件，该本地文件随后可加载到 Pandas 数据帧中。 下面是此过程的所需步骤：
+## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas 데이터 프레임에 데이터 로드
+要浏览和操作数据集，必须将其从 blob 源下载到本地文件，然后可以将其加载到 Pandas 数据帧中。 이 절차를 수행하는 단계는 다음과 같습니다.
 
-1. 通过 blob 服务使用下方示例 Python 代码从 Azure blob 下载数据。 使用特定值替代下方代码中的变量： 
+1. 从 Azure blob 下载数据，其中包含使用 Blob 服务的以下示例 Python 代码。 아래의 코드 변수를 사용자가 원하는 값으로 대체합니다. 
    
         from azure.storage.blob import BlobService
         import tables
@@ -41,52 +41,52 @@ ms.locfileid: "73492427"
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. 从下载的文件中将数据读入 Pandas 数据帧。
+2. 다운로드한 파일에서 데이터를 Pandas 데이터 프레임으로 읽습니다.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-现在可以准备浏览数据并在此数据集上生成功能了。
+이제 데이터를 탐색하고 이 데이터 세트에 기능을 생성할 준비가 완료되었습니다.
 
-## <a name="blob-dataexploration"></a>数据浏览
-下方为如何使用 Pandas 浏览数据的几个示例：
+## <a name="blob-dataexploration"></a>데이터 탐색
+다음은 Pandas를 사용하여 데이터를 탐색하는 방법의 예입니다.
 
-1. 检查行数和列数 
+1. 행 및 열 수를 검사합니다. 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. 检查数据集中的前面或后面几行，如下所示：
+2. 아래와 같이 데이터 세트의 처음 또는 마지막 몇 행을 검사합니다.
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. 使用以下示例代码检查每列导入的数据类型
+3. 다음 샘플 코드를 사용하여 각 열을 가져온 데이터 유형을 확인합니다.
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. 检查数据集中列的基本统计信息，如下所示
+4. 다음과 같이 데이터 집합의 열에 대한 기본 통계를 확인합니다.
    
         dataframe_blobdata.describe()
-5. 如下所示，查看每列值的条目数
+5. 다음과 같이 각 열 값에 대한 항목 수를 확인합니다.
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. 使用以下示例代码计算每列中缺少的值与实际的条目数
+6. 다음 샘플 코드를 사용하여 각 열의 실제 항목 수와 누락된 값을 계산합니다.
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. 如果数据中有特定列存在缺少的值，可按如下方法进行替代：
+7. 데이터의 특정 열에 대한 값이 누락된 경우 다음과 같이 해당 데이터를 삭제할 수 있습니다.
    
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
    
-   另一种替代缺失值的方法是使用模式函数：
+   누락된 값을 대체하는 또 다른 방법으로 mode 함수가 있습니다.
    
         dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. 使用数量不定的量化创建直方图，以绘制变量的分布情况    
+8. 가변 bin을 사용하여 히스토그램 플롯을 만들고 변수 분포 그리기    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. 使用散点图或内置的关联函数查看变量之间的关联
+9. 산점도 또는 기본 제공 상관관계 함수를 사용하여 변수 간의 상관관계를 살펴봅니다.
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -94,49 +94,49 @@ ms.locfileid: "73492427"
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>功能生成
-可按如下所示使用 Python 生成功能：
+## <a name="blob-featuregen"></a>기능 생성
+다음과 같이 Python을 사용하여 기능을 생성할 수 있습니다.
 
-### <a name="blob-countfeature"></a>基于指示器值生成功能
-可以按如下方式创建分类功能：
+### <a name="blob-countfeature"></a>표시기 값 기반 기능 생성
+범주 기능은 다음과 같은 방법으로 만들 수 있습니다.
 
-1. 检查分类列的分布：
+1. 범주 열의 분포를 검사합니다.
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. 为每个列值生成指示器值
+2. 각 열 값에 대한 표시기 값을 생성합니다.
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. 联接指示器列与原始数据帧 
+3. 표시기 열을 원래 데이터 프레임에 조인합니다. 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. 删除原始变量本身：
+4. 원래 변수 자체를 제거합니다.
    
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>生成装箱功能
-要生成装箱功能，请按如下所示操作：
+### <a name="blob-binningfeature"></a>범주화 기능 생성
+범주화된 기능을 생성하려면 다음 단계를 진행합니다.
 
-1. 添加一系列的列，量化数字列
+1. 열 시퀀스를 추가하여 숫자 열을 범주화합니다.
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. 将装箱转换为一系列的布尔变量
+2. 범주화를 부울 변수 시퀀스로 변환합니다.
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. 最后，将虚拟变量联接回原始数据帧
+3. 마지막으로 더미 변수를 다시 원래 데이터 프레임에 조인합니다.
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
-浏览数据并创建必要的功能后，可以使用以下步骤将数据（抽样或特征化）上传到 Azure blob 并在 Azure 机器学习中使用：请注意，可以在 Azure 计算机中创建其他功能也是学习工作室（经典）。 
+## <a name="sql-featuregen"></a>다시 Azure blob에 데이터를 쓰고 Azure 기계 학습에서 데이터 사용
+浏览数据并创建所需的功能后，可以使用以下步骤将数据（抽样或特征化）上传到 Azure blob 并在 Azure 机器学习中使用：其他功能可在 Azure 机器学习Studio （经典）。 
 
-1. 将数据帧写入本地文件
+1. 로컬 파일에 데이터 프레임을 씁니다.
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. 将数据上传到 Azure blob，操作如下：
+2. 다음과 같이 Azure blob에 데이터를 업로드합니다.
    
         from azure.storage.blob import BlobService
         import tables
@@ -157,9 +157,9 @@ ms.locfileid: "73492427"
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. 现在可使用 Azure 机器学习的[导入数据][import-data]模块从 blob 读取数据，如下方屏幕截图所示：
+3. 이제 아래 그림과 같이 Azure Machine Learning [데이터 가져오기][import-data] 모듈을 사용하여 blob에서 데이터를 읽을 수 있습니다.
 
-![blob 读取器][1]
+![판독기 blob][1]
 
 [1]: ./media/data-blob/reader_blob.png
 

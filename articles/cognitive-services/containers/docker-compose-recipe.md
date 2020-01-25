@@ -1,5 +1,5 @@
 ---
-title: 使用 Docker Compose 部署多个容器
+title: Docker Compose를 사용하여 여러 컨테이너 배포
 titleSuffix: Azure Cognitive Services
 description: 了解如何部署多个认知服务容器。 本文介绍如何使用 Docker Compose 来协调多个 Docker 容器映像。
 services: cognitive-services
@@ -8,35 +8,35 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311550"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716891"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose를 사용하여 여러 컨테이너 배포
 
-本文介绍如何部署多个 Azure 认知服务容器。 具体来说, 您将了解如何使用 Docker Compose 来协调多个 Docker 容器映像。
+本文介绍如何部署多个 Azure 认知服务容器。 具体来说，您将了解如何使用 Docker Compose 来协调多个 Docker 容器映像。
 
-> [Docker Compose](https://docs.docker.com/compose/)是一种用于定义和运行多容器 Docker 应用程序的工具。 使用 YAML 文件来配置应用程序的服务。 然后, 通过运行单个命令从配置创建和启动所有服务。
+> [Docker Compose](https://docs.docker.com/compose/)是一种用于定义和运行多容器 Docker 应用程序的工具。 使用 YAML 文件来配置应用程序的服务。 然后，通过运行单个命令从配置创建和启动所有服务。
 
-在单台主机计算机上协调多个容器映像可能会很有用。 在本文中, 我们将识别文本和窗体识别器容器组合在一起。
+在单台主机计算机上协调多个容器映像可能会很有用。 在本文中，我们将识别文本和窗体识别器容器组合在一起。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>필수 조건
 
-此过程需要多个必须在本地安装和运行的工具:
+此过程需要多个必须在本地安装和运行的工具：
 
-* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 구독 구독이 없으면 시작하기 전에 [계정](https://azure.microsoft.com/free/)을 만드세요.
 * [Docker 引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 在控制台窗口中工作。
-* 具有适当定价层的 Azure 资源。 只有以下定价层才能使用此容器:
+* 올바른 가격 책정 계층이 지정된 Azure 리소스. 只有以下定价层才能使用此容器：
   * 仅**计算机视觉**具有 F0 或标准定价层的资源。
   * 仅具有 F0 或标准定价层的**窗体识别器**资源。
-  * 具有 S0 定价层的认知服务资源  。
+  * S0 가격 책정 계층이 있는 **Cognitive Services** 리소스
 
-## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
+## <a name="request-access-to-the-container-registry"></a>컨테이너 레지스트리에 대한 액세스 요청
 
 完成并提交[认知服务语音容器请求窗体](https://aka.ms/speechcontainerspreview/)。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "68311550"
 
 ## <a name="docker-compose-file"></a>Docker Compose 文件
 
-YAML 文件定义要部署的所有服务。 这些服务依赖`DockerFile`于或现有的容器映像。 在这种情况下, 我们将使用两个预览图像。 复制并粘贴以下 YAML 文件, 并将其另存为*docker YAML*。 在文件中提供适当的**apikey**、**计费**和**EndpointUri**值。
+YAML 文件定义要部署的所有服务。 这些服务依赖于 `DockerFile` 或现有容器映像。 在这种情况下，我们将使用两个预览图像。 复制并粘贴以下 YAML 文件，并将其另存为*docker YAML*。 在文件中提供适当的**apikey**、**计费**和**EndpointUri**值。
 
 ```yaml
 version: '3.7'
@@ -80,22 +80,22 @@ services:
 ```
 
 > [!IMPORTANT]
-> 在主计算机上创建在 "**卷**" 节点下指定的目录。 此方法是必需的, 因为目录必须存在, 然后才能尝试使用卷绑定来装载映像。
+> 在主计算机上创建在 "**卷**" 节点下指定的目录。 此方法是必需的，因为目录必须存在，然后才能尝试使用卷绑定来装载映像。
 
 ## <a name="start-the-configured-docker-compose-services"></a>启动配置的 Docker Compose 服务
 
-使用 Docker Compose 文件可以管理定义的服务生命周期中的所有阶段: 启动、停止和重新生成服务;查看服务状态;和日志流式处理。 从项目目录中打开一个命令行接口 (docker yaml 文件所在的位置)。
+使用 Docker Compose 文件可以管理定义的服务生命周期中的所有阶段：启动、停止和重新生成服务;查看服务状态;和日志流式处理。 从项目目录中打开一个命令行接口（docker yaml 文件所在的位置）。
 
 > [!NOTE]
-> 若要避免错误, 请确保主机计算机与 Docker 引擎正确共享驱动器。 例如, 如果将 E:\publicpreview 用作 docker yaml 文件中的目录, 请将驱动器 E 与 Docker 共享。
+> 若要避免错误，请确保主机计算机与 Docker 引擎正确共享驱动器。 例如，如果将 E:\publicpreview 用作 docker yaml 文件中的目录，请将驱动器 E 与 Docker 共享。
 
-在命令行界面中, 执行以下命令以启动 (或重新启动) docker yaml 文件中定义的所有服务:
+在命令行界面中，执行以下命令以启动（或重新启动） docker yaml 文件中定义的所有服务：
 
 ```console
 docker-compose up
 ```
 
-当 Docker 第一次使用此配置执行**docker 编写**命令时, 它将提取在 "**服务**" 节点下配置的映像, 然后下载并装载它们:
+当 Docker 第一次使用此配置执行**docker 编写**命令时，它将提取在 "**服务**" 节点下配置的映像，然后下载并装载它们：
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -126,7 +126,7 @@ c56511552241: Waiting
 e91d2aa0f1ad: Downloading [==============================================>    ]  162.2MB/176.1MB
 ```
 
-下载映像后, 将启动映像服务:
+下载映像后，将启动映像服务：
 
 ```console
 Starting docker_ocr_1   ... done
@@ -162,7 +162,7 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-下面是一些示例输出:
+下面是一些示例输出：
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
@@ -172,17 +172,17 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>测试识别文本容器
 
-在主计算机上打开浏览器, 并使用  yaml 文件中的指定端口 (例如 http://localhost:5021/swagger/index.html ) 来使用 localhost。 可以使用 API 中的 "试用" 功能来测试识别文本终结点。
+在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5021/swagger/index.html ）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试识别文本终结点。
 
 ![识别文本容器](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>测试窗体识别器容器
 
-在主计算机上打开浏览器, 并使用  yaml 文件中的指定端口 (例如 http://localhost:5010/swagger/index.html ) 来使用 localhost。 可以使用 API 中的 "试用" 功能来测试窗体识别器终结点。
+在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5010/swagger/index.html ）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试窗体识别器终结点。
 
 ![窗体识别器容器](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 > [!div class="nextstepaction"]
 > [认知服务容器](../cognitive-services-container-support.md)

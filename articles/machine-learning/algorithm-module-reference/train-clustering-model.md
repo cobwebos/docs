@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6b154cdbf6490abd935156e6d081d2260cfbc578
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546446"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719358"
 ---
-# <a name="train-clustering-model"></a>训练聚类模型
+# <a name="train-clustering-model"></a>클러스터링 모델 학습
 
 本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
@@ -25,7 +25,7 @@ ms.locfileid: "76546446"
 该模块采用了一个已使用[K 平均值聚类分析](k-means-clustering.md)模块进行配置的未训练的聚类模型，并使用标签或未标记的数据集训练该模型。 该模块创建一个可用于预测的定型模型，以及针对定型数据中每个事例的一组群集分配。
 
 > [!NOTE]
-> 聚类分析模型不能使用[训练模型](train-model.md)模块定型，后者是用于定型机器学习模型的通用模块。 这是因为[训练模型](train-model.md)仅适用于监督学习算法。 K 平均值和其他聚类分析算法允许无人监督学习，这意味着该算法可以从未标记的数据中进行学习。  
+> 聚类分析模型无法使用 "[训练模型](train-model.md)" 模块定型，后者是用于训练机器学习模型的通用模块。 这是因为[训练模型](train-model.md)仅适用于监督学习算法。 K 平均值和其他聚类分析算法允许无人监督学习，这意味着该算法可以从未标记的数据中进行学习。  
   
 ## <a name="how-to-use-train-clustering-model"></a>如何使用定型聚类模型  
 
@@ -45,7 +45,7 @@ ms.locfileid: "76546446"
 
 7. 运行管道，或单击 "**训练聚类模型**" 模块并选择 "**运行所选项**"。  
   
-### <a name="results"></a>结果
+### <a name="results"></a>결과
 
 完成训练后：
 
@@ -53,6 +53,6 @@ ms.locfileid: "76546446"
 
 + 若要从模型中生成评分，请使用 "[将数据分配给群集](assign-data-to-clusters.md)"。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
 查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

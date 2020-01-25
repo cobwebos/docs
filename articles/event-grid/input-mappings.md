@@ -1,33 +1,33 @@
 ---
-title: 将自定义字段映射到 Azure 事件网格架构
-description: 介绍如何将自定义架构转换为 Azure 事件网格架构。
+title: Azure Event Grid 스키마에 사용자 지정 필드 매핑
+description: 本文介绍当事件数据与事件网格架构不匹配时，如何将自定义架构转换为 Azure 事件网格架构。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565491"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721653"
 ---
-# <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
+# <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid 스키마에 사용자 지정 필드 매핑
 
-即使事件数据与预期的[事件网格架构](event-schema.md)不匹配，也仍然可以使用事件网格将事件路由到订阅服务器。 本文介绍如何将你的架构映射到事件网格架构。
+이벤트 데이터가 예상되는 [Event Grid 스키마](event-schema.md)와 일치하지 않는 경우 계속 Event Grid를 사용하여 구독자에 이벤트를 라우팅할 수 있습니다. 이 문서에서는 Event Grid 스키마로 사용자의 스키마를 매핑하는 방법을 설명합니다.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>安装预览功能
+## <a name="install-preview-feature"></a>미리 보기 기능 설치
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>原始事件架构
+## <a name="original-event-schema"></a>원래 이벤트 스키마
 
-假设你有一个以下述格式发送事件的应用程序：
+다음과 같은 형식의 이벤트를 보내는 애플리케이션이 있다고 가정하겠습니다.
 
 ```json
 [
@@ -39,19 +39,19 @@ ms.locfileid: "60565491"
 ]
 ```
 
-虽然该格式与所需的架构不符，但你仍可使用事件网格将字段映射到架构。 也可以原始架构接收值。
+해당 형식이 필요한 스키마와 일치하지 않지만 Event Grid를 사용하면 스키마에 사용자의 필드를 매핑할 수 있습니다. 또는 원래 스키마의 값을 받을 수 있습니다.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>使用映射的字段创建自定义主题
+## <a name="create-custom-topic-with-mapped-fields"></a>매핑된 필드로 사용자 지정 토픽 만들기
 
-在创建自定义主题时，请指定如何将字段从原始事件映射到事件网格架构。 可以使用三个值来自定义映射：
+사용자 지정 토픽을 만들 때 Event Grid 스키마로 사용자의 원래 이벤트의 필드를 매핑하는 방법을 지정합니다. 매핑을 사용자 지정하는 데 사용하는 값은 다음 세 가지입니다.
 
-* **输入架构**值指定架构的类型。 可用选项包括 CloudEvents 架构、自定义事件架构或事件网格架构。 默认值为事件网格架构。 在你的架构和事件网格架构之间创建自定义映射时，请使用自定义事件架构。 当事件采用 CloudEvents 架构时，请使用 Cloudevents 架构。
+* **입력 스키마** 값은 스키마 유형을 지정합니다. 사용 가능한 옵션은 CloudEvents 스키마, 사용자 지정 이벤트 스키마 또는 Event Grid 스키마입니다. 기본값은 Event Grid 스키마입니다. 사용자의 스키마와 Event Grid 스키마 간 사용자 지정 매핑을 만들 때는 사용자 지정 이벤트 스키마를 사용합니다. 이벤트가 CloudEvents 스키마에 있는 경우 Cloudevents 스키마를 사용합니다.
 
-* “映射默认值”  属性指定事件网格架构中字段的默认值。 可以为 `subject`、`eventtype` 和 `dataversion` 设置默认值。 通常情况下，如果自定义架构不包括这三个字段中的一个的对应字段，请使用此参数。 例如，可以指定将数据版本始终设置为 **1.0**。
+* **매핑 기본값** 속성은 Event Grid 스키마의 필드에 대한 기본값을 지정합니다. `subject`, `eventtype` 및 `dataversion`의 기본값을 설정할 수 있습니다. 일반적으로 사용자 지정 스키마가 이 세 필드 중 하나에 해당하는 필드를 포함하지 않는 경우에 이 매개 변수를 사용합니다. 예를 들어 해당 데이터 버전은 항상 **1.0**으로 설정됩니다.
 
-* “映射字段”  值将字段从你的架构映射到事件网格架构。 请以空格分隔的键/值对形式指定值。 对于键名称，请使用事件网格字段的名称。 对于值，请使用字段的名称。 可以对 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用键名称。
+* **매핑 필드** 값은 스키마의 필드를 Event Grid 스키마에 매핑합니다. 공백으로 구분된 키/값 쌍의 값을 지정합니다. 키 이름의 경우 Event Grid 필드의 이름을 사용합니다. 값의 경우 사용자의 필드 이름을 사용합니다. `id`, `topic`, `eventtime`, `subject`, `eventtype` 및 `dataversion`의 키 이름을 사용할 수 있습니다.
 
-要使用 Azure CLI 创建自定义主题，请使用：
+Azure CLI로 사용자 지정 토픽을 만들려면 다음을 사용합니다.
 
 ```azurecli-interactive
 # If you have not already installed the extension, do it now.
@@ -67,7 +67,7 @@ az eventgrid topic create \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
 
-对于 PowerShell，请使用：
+PowerShell의 경우 다음을 사용합니다.
 
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
@@ -83,11 +83,11 @@ New-AzureRmEventGridTopic `
   -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>订阅事件网格主题
+## <a name="subscribe-to-event-grid-topic"></a>Event Grid 토픽 구독
 
-订阅自定义主题时，请指定要用于接收事件的架构。 可以指定 CloudEvents 架构、自定义事件架构或事件网格架构。 默认值为事件网格架构。
+사용자 지정 항목을 구독할 경우 이벤트를 수신하는 데 사용할 스키마를 지정합니다. CloudEvents 스키마, 사용자 지정 이벤트 스키마 또는 Event Grid 스키마를 지정합니다. 기본값은 Event Grid 스키마입니다.
 
-以下示例订阅一个事件网格主题并使用事件网格架构。 对于 Azure CLI，请使用：
+다음 예제에서는 Event Grid 토픽을 구독하고 Event Grid 스키마를 사용합니다. Azure CLI의 경우
 
 ```azurecli-interactive
 topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-下一示例使用事件的输入架构：
+다음 예제에서는 이벤트의 입력 스키마를 사용합니다.
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -109,7 +109,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-以下示例订阅一个事件网格主题并使用事件网格架构。 对于 PowerShell，请使用：
+다음 예제에서는 Event Grid 토픽을 구독하고 Event Grid 스키마를 사용합니다. PowerShell의 경우 다음을 사용합니다.
 
 ```azurepowershell-interactive
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
@@ -122,7 +122,7 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema EventGridSchema
 ```
 
-下一示例使用事件的输入架构：
+다음 예제에서는 이벤트의 입력 스키마를 사용합니다.
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -133,11 +133,11 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CustomInputSchema
 ```
 
-## <a name="publish-event-to-topic"></a>将事件发布到主题
+## <a name="publish-event-to-topic"></a>항목에 이벤트 게시
 
-现在可以将事件发送到自定义主题并查看映射结果了。 以下脚本采用[示例架构](#original-event-schema)发布事件：
+이제 사용자 지정 토픽에 이벤트를 보내고 매핑의 결과 확인할 준비가 되었습니다. 다음 스크립트는 [예제 스키마](#original-event-schema)에서 이벤트를 게시합니다.
 
-对于 Azure CLI，请使用：
+Azure CLI의 경우
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
@@ -148,7 +148,7 @@ event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
-对于 PowerShell，请使用：
+PowerShell의 경우 다음을 사용합니다.
 
 ```azurepowershell-interactive
 $endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
@@ -166,9 +166,9 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-现在，请查看 WebHook 终结点。 这两个订阅以不同架构分发了事件。
+이제 웹후크 엔드포인트를 살펴봅니다. 두 개의 구독이 서로 다른 스키마에 이벤트를 전달합니다.
 
-第一个订阅使用了事件网格架构。 已分发事件的格式为：
+첫 번째 구독은 Event Grid 스키마를 사용합니다. 전달된 이벤트의 형식은 다음과 같습니다.
 
 ```json
 {
@@ -189,9 +189,9 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-这些字段包含来自自定义主题的映射。 **myEventTypeField** 映射到 **EventType**。 使用 **DataVersion** 和“主题”  的默认值。 “数据”对象包含原始的事件架构字段。 
+이러한 필드에는 사용자 지정 토픽에 나온 매핑을 포함합니다. **myEventTypeField**는 **EventType**에 매핑됩니다. **DataVersion** 및 **Subject**에 대한 기본값이 사용됩니다. **Data** 개체에는 원래 이벤트 스키마 필드가 포함됩니다.
 
-第二个订阅使用了输入事件架构。 已分发事件的格式为：
+두 번째 구독은 입력 이벤트 스키마를 사용합니다. 전달된 이벤트의 형식은 다음과 같습니다.
 
 ```json
 {
@@ -203,10 +203,10 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-请注意，分发的是原始字段。
+원본 필드가 전달되었음을 확인합니다.
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>다음 단계
 
-* 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
-* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
-* 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+* 이벤트 배달 및 다시 시도에 대한 자세한 내용은 [Event Grid 메시지 배달 및 다시 시도](delivery-and-retry.md)를 참조하세요.
+* Event Grid에 대한 소개는 [Event Grid 정보](overview.md)를 참조하세요.
+* Event Grid를 빠르게 시작하려면 [Azure Event Grid를 사용하여 사용자 지정 이벤트 만들기 및 라우팅](custom-event-quickstart.md)을 참조하세요.
