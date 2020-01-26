@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs
-description: 有关 SQLFilter 语法的详细信息。
+description: 本文提供了有关 SQLFilter 语法的详细信息。 SqlFilter 支持 SQL-92 标准的子集。
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591791"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759657"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出了有关 SqlFilter 语法的详细信息。  
   
@@ -66,7 +66,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
 
 尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 不存在的用户属性在内部是作为未知值计算的。 在运算符求值过程中，未知值的处理方式很特殊。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -123,7 +123,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
   
 -   `_`：任何单个字符。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -136,7 +136,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
   
  例如，`property LIKE 'ABC\%' ESCAPE '\'` 与 `ABC%` 匹配，而不是与开头为 `ABC` 的字符串配置。  
   
-## <a name="constant"></a>constant  
+## <a name="constant"></a>常量  
   
 ```  
 <constant> ::=  
@@ -154,7 +154,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
     2  
     ```  
   
--   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
   
      在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
@@ -172,7 +172,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -183,7 +183,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
 
 布尔常量以关键字 **TRUE** 或 **FALSE** 表示。 这些值以 `System.Boolean` 形式存储。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +193,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
 
 字符串常量使用单引号，包括任何有效的 Unicode 字符。 嵌入字符串常量中的单引号采用两个单引号的形式。  
   
-## <a name="function"></a>function  
+## <a name="function"></a>函数  
   
 ```  
 <function> :=  
@@ -239,11 +239,11 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
   
   `[NOT] LIKE` 中的未知求值：  
   
-- 如果任何操作数的求值结果为“未知”  ，则结果为“未知”  。  
+- 如果任何操作数的求值结果为“未知”，则结果为“未知”。  
   
   `[NOT] IN` 中的未知求值：  
   
-- 如果左侧操作数的求值结果为“未知”  ，则结果为“未知”  。  
+- 如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
   
   **AND** 运算符中的未知求值：  
   

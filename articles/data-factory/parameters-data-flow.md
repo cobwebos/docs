@@ -1,5 +1,5 @@
 ---
-title: 参数映射数据流
+title: 将映射数据流参数化
 description: 了解如何从数据工厂管道中参数化映射数据流
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746124"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760209"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>参数映射数据流
+# <a name="parameterizing-mapping-data-flows"></a>将映射数据流参数化
 
 在 Azure 数据工厂中映射数据流支持使用参数。 你可以在数据流定义中定义参数，然后可以在整个表达式中使用这些参数。 通过执行数据流活动，可以通过调用管道设置参数值。 有三个选项可用于设置数据流活动表达式中的值：
 
@@ -23,9 +23,6 @@ ms.locfileid: "75746124"
 * 使用任意一种表达式语言设置静态文本值
 
 使用此功能可以使您的数据流过常规用途、灵活和可重用性。 可以用这些参数参数化数据流设置和表达式。
-
-> [!NOTE]
-> 若要使用管道控制流表达式，数据流参数的类型必须为 string。
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>在映射数据流中创建参数
 

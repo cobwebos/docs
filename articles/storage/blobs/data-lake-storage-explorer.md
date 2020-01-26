@@ -1,37 +1,40 @@
 ---
 title: 将 Azure 存储资源管理器与 Azure Data Lake Storage Gen2 配合使用
-description: 了解如何使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户以及目录和文件中创建文件系统。 接下来，介绍如何将文件下载到本地计算机，以及如何查看目录中的所有文件。
+description: 使用 Azure 存储资源管理器管理已启用分层命名空间（HNS）的存储帐户中的目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b300d96408bed621a0687c04a9c94021af009f95
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fca9fa8a964c6c9d69ffbb3036bd4774e0d1bd34
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484477"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761098"
 ---
-# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>将 Azure 存储资源管理器与 Azure Data Lake Storage Gen2 配合使用
+# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl
 
-本文介绍如何使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)来创建目录和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何在目录中查看所有 blob。 此外，还将了解如何创建 blob 快照、管理目录访问策略以及创建共享访问签名。
+本文介绍如何使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在已启用分层命名空间（HNS）的存储帐户中创建和管理目录、文件和权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-本快速入门要求安装 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+> [!div class="checklist"]
+> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已启用分层命名空间（HNS）的存储帐户。 按照[以下](data-lake-storage-quickstart-create-account.md)说明创建一个。
+> * Azure 存储资源管理器安装在本地计算机上。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
 ## <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
-首次启动时，会显示“Microsoft Azure 存储资源管理器 - 连接”窗口。 尽管存储资源管理器提供了几种连接到存储帐户的方法，但是目前只有一种方法支持管理 ACL。
+首次启动存储资源管理器时，将会显示“Microsoft Azure 存储资源管理器 - 连接”窗口。 尽管存储资源管理器提供了几种连接到存储帐户的方法，但是目前只有一种方法支持管理 ACL。
 
-|任务|目的|
+|任务|用途|
 |---|---|
-|添加 Azure 帐户 | 将你重定向到组织的登录页，向 Azure 进行身份验证。 目前，如果想管理和设置 ACL，这是唯一支持的身份验证方法。 |
+|添加 Azure 帐户 | 将你重定向到组织的登录页，向 Azure 进行身份验证。 目前，如果想管理和设置 ACL，这是唯一支持的身份验证方法。|
+|使用连接字符串或共享访问签名 URI | 可以用来通过 SAS 令牌或共享的连接字符串直接访问容器或存储帐户。 |
+|使用存储帐户名称和密钥| 使用存储帐户的名称和密钥连接到 Azure 存储。|
 
 选择 "**添加 Azure 帐户**"，然后单击 "**登录 ...** "按照屏幕上的提示登录到 Azure 帐户。
 
@@ -43,25 +46,23 @@ ms.locfileid: "74484477"
 
 ## <a name="create-a-container"></a>创建容器
 
-始终将 Blob 上传到目录中。 这样，就能够整理 blob 组，就像在计算机的文件夹中整理文件一样。
+容器保存目录和文件。 若要创建一个，请展开在继续步骤中创建的存储帐户。 选择“Blob 容器”，然后右键单击并选择“创建 Blob 容器”。 输入容器的名称。 有关命名容器的规则和限制列表，请参阅[创建容器](storage-quickstart-blobs-dotnet.md#create-a-container)部分。 完成后，按**enter**创建容器。 成功创建容器后，该容器将显示在所选存储帐户的 " **Blob 容器**" 文件夹下。
 
-要创建目录，请展开在前面的步骤中创建的存储帐户。 选择“Blob 容器”，然后右键单击并选择“创建 Blob 容器”。 输入容器的名称。 完成后，请按 **Enter** 创建容器。 成功创建 Blob 目录后，该目录会显示在所选存储帐户的“Blob 容器”文件夹下。
+![Microsoft Azure 存储资源管理器创建容器](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
-![Microsoft Azure 存储资源管理器 - 创建容器](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+## <a name="create-a-directory"></a>创建目录
+
+若要创建目录，请选择在继续步骤中创建的容器。 在容器功能区中，选择 "**新建文件夹**" 按钮。 输入目录的名称。 完成后，按**enter**创建目录。 成功创建目录后，它将显示在编辑器窗口中。
+
+![Microsoft Azure 存储资源管理器创建目录](media/data-lake-storage-explorer/creating-a-directory.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>将 blob 上传到目录
 
-blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 VHD 文件都是页 blob。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 Blob 存储中存储的大多数文件都是块 blob。
+在目录功能区上，选择 "**上传**" 按钮。 此操作提供上传文件夹或文件的选项。
 
-在目录功能区中，选择“上传”。 此操作提供上传文件夹或文件的选项。
+选择要上传的文件或文件夹。
 
-选择要上传的文件或文件夹。 选择“Blob 类型”。 可以接受的选项是“追加”、“页”或“块”Blob。
-
-如果上传 .vhd 或 .vhdx 文件，请选择“将 .vhd/.vhdx 文件作为页 Blob 上传(推荐)”。
-
-在“上传到文件夹(可选)”字段中输入一个文件夹名称，用于在目录下的文件夹中存储文件或文件夹。 如果没有选择任何文件夹，文件会直接上传到目录。
-
-![Microsoft Azure 存储资源管理器 - 上传 Blob](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
+![Microsoft Azure 存储资源管理器 - 上传 Blob](media/data-lake-storage-explorer/upload-file.png)
 
 选择“确定”以后，所选文件会排队上传。每个文件都会上传。 上传完成后，结果显示在“活动”窗口中。
 
@@ -69,15 +70,45 @@ blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 
 
 在 Azure 存储资源管理器应用程序的存储帐户下选择一个目录。 主窗格会显示一个列表，包含所选目录中的所有 Blob。
 
-![Microsoft Azure 存储资源管理器 - 列出目录中的所有 Blob](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Microsoft Azure 存储资源管理器 - 列出目录中的所有 Blob](media/data-lake-storage-explorer/list-files.png)
 
 ## <a name="download-blobs"></a>下载 Blob
 
-若要使用 **Azure 存储资源管理器**下载 Blob，请在选中某个 Blob 的情况下，从功能区选择“下载”。 此时会打开一个文件对话框，用于输入文件名。 选择“保存”，开始将 Blob 下载到本地位置。
+若要使用**Azure 存储资源管理器**下载文件，并选中某个文件，请从功能区中选择 "**下载**"。 此时会打开一个文件对话框，用于输入文件名。 选择 "**保存**"，开始将文件下载到本地位置。
+
+## <a name="managing-access"></a>管理访问权限
+
+可以在容器的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 右键单击容器，然后选择“管理权限”，打开“管理权限”对话框。
+
+![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+
+“管理权限”对话框可以管理所有者和所有者组的权限。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
+
+要将新用户或组添加到访问控制列表中，请选择“添加用户或组”字段。
+
+输入要添加到列表中的相应 Azure Active Directory (AAD) 条目，然后选择“添加”。
+
+用户或组随即出现在“用户和组:”字段中，然后便可开始管理其权限。
+
+> [!NOTE]
+> 建议的最佳做法是在 AAD 中创建安全组并维护组而不是单个用户的权限。 有关此建议以及其他最佳做法的详细信息，请参阅 [Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)。
+
+有两类权限可以分配：访问 ACL 和默认 ACL。
+
+* **访问**： access acl 控制对对象的访问。 文件和目录都具有访问 ACL。
+
+* **默认值**：与目录关联的 acl 模板，用于确定在该目录下创建的任何子项的访问 acl。 文件没有默认 ACL。
+
+在这两个类别中，可以为文件或目录分配三个权限：**读取**、**写入**和**执行**。
+
+>[!NOTE]
+> 在此处进行选择不会对目录中任何当前存在的项设置权限。 如果文件已存在，则必须转到每个项并手动设置权限。
+
+由于可以管理各个目录以及各个文件的权限，因此可以实现细化访问控制。 管理目录和文件的权限的过程与上述过程相同。 右键单击要管理权限的文件或目录，然后按照相同的过程进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用 **Azure 存储资源管理器**在本地磁盘和 Azure Blob 存储之间转移文件。 要了解如何在文件和目录上设置 ACL，请继续阅读该主题的“操作说明”。
+了解 Data Lake Storage Gen2 中的访问控制列表。
 
 > [!div class="nextstepaction"]
-> [如何在文件和目录上设置 ACL](data-lake-storage-how-to-set-permissions-storage-explorer.md)
+> [Azure Data Lake Storage Gen2 中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

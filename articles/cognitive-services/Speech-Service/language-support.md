@@ -3,20 +3,20 @@ title: 语言支持-语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务支持多种语言进行语音到文本和文本到语音转换，同时提供语音翻译。 本文提供按服务功能列出的语言支持的综合列表。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381046"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760617"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -24,49 +24,58 @@ ms.locfileid: "75381046"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft Speech SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人贴标签的脚本或相关文本：句子，为语言子集提供自定义项。  发音自定义当前仅适用于 `en-US` 和 `de-DE`。 [在此处](how-to-custom-speech.md)了解有关自定义的详细信息。
+Microsoft Speech SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人贴标签的脚本或相关文本：句子，为语言子集提供自定义项。 发音自定义当前仅适用于 `en-US` 和 `de-DE`。 [在此处](how-to-custom-speech.md)了解有关自定义的详细信息。
 
- 区域设置 | 语言 | 受支持 | 可自定义
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ 区域设置 | 语言 | 受支持 | 自定义
 ------|------------|-----------|-------------
-`ar-EG` | 阿拉伯语(埃及)，现代标准 | 是 | 是
-`ar-SA` | 阿拉伯语（沙特阿拉伯） | 是 | 是
-`ar-AE` | 阿拉伯语（阿拉伯联合酋长国） | 是 | 是
-`ar-KW` | 阿拉伯语（科威特） | 是 | 是
-`ar-QA` | 阿拉伯语（卡塔尔） | 是 | 是
-`ca-ES` | 加泰罗尼亚语 | 是 | 否
-`da-DK` | 丹麦语（丹麦） | 是 | 否
-`de-DE` | 德语（德国） | 是 | 是
-`en-AU` | 英语（澳大利亚） | 是 | 是
-`en-CA` | 英语（加拿大） | 是 | 是
-`en-GB` | 英语（英国） | 是 | 是
-`en-IN` | English (India) | 是 | 是
-`en-NZ` | 英语（新西兰） | 是 | 是
-`en-US` | 英语（美国） | 是 | 是
-`es-ES` | 西班牙语(西班牙) | 是 | 是
-`es-MX` | 西班牙语（墨西哥） | 是 | 是
-`fi-FI` | 芬兰语（芬兰） | 是 | 否
-`fr-CA` | 法语（加拿大） | 是 | 是
-`fr-FR` | 法语（法国） | 是 | 是
-`gu-IN` | 古吉拉特语（印度） | 是 | 是
-`hi-IN` | 印地语（印度） | 是 | 是
-`it-IT` | 意大利语（意大利） | 是 | 是
-`ja-JP` | 日语（日本） | 是 | 是
-`ko-KR` | 韩语(韩国) | 是 | 是
-`mr-IN` | 马拉地语（印度） | 是 | 是
-`nb-NO` | 书面挪威语(挪威) | 是 | 否
-`nl-NL` | 荷兰语（荷兰） | 是 | 是
-`pl-PL` | 波兰语（波兰） | 是 | 否
-`pt-BR` | 葡萄牙语（巴西） | 是 | 是
-`pt-PT` | 葡萄牙语(葡萄牙) | 是 | 是
-`ru-RU` | 俄语（俄罗斯） | 是 | 是
-`sv-SE` | 瑞典语（瑞典） | 是 | 否
-`ta-IN` | 泰米尔语（印度） | 是 | 是
-`te-IN` | 泰卢固语（印度） | 是 | 是
-`zh-CN` | 中文(普通话，简体) | 是 | 是
-`zh-HK` | 中文（粤语，繁体） | 是 | 是
-`zh-TW` | 中文(台湾普通话) | 是 | 是
+`ar-AE` | 阿拉伯语（阿拉伯联合酋长国） | 是 | 否
+`ar-BH` | 阿拉伯语（巴林） | 是 | 语言模型
+`ar-EG` | 阿拉伯语(埃及)，现代标准 | 是 | 语言模型
+`ar-KW` | 阿拉伯语（科威特） | 是 | 否
+`ar-QA` | 阿拉伯语（卡塔尔） | 是 | 否
+`ar-SA` | 阿拉伯语（沙特阿拉伯） | 是 | 否
+`ca-ES` | 加泰罗尼亚语 | 是 | 语言模型
+`da-DK` | 丹麦语（丹麦） | 是 | 语言模型
+`de-DE` | 德语（德国） | 是 | 声学模型<br>语言模型<br>发音
+`en-AU` | 英语（澳大利亚） | 是 | 声学模型<br>语言模型
+`en-CA` | 英语（加拿大） | 是 | 声学模型<br>语言模型
+`en-GB` | 英语（英国） | 是 | 声学模型<br>语言模型<br>发音
+`en-IN` | English (India) | 是 | 声学模型<br>语言模型
+`en-NZ` | 英语（新西兰） | 是 | 声学模型<br>语言模型
+`en-US` | 英语（美国） | 是 | 声学模型<br>语言模型<br>发音
+`es-ES` | 西班牙语(西班牙) | 是 | 声学模型<br>语言模型
+`es-MX` | 西班牙语（墨西哥） | 是 | 声学模型<br>语言模型
+`fi-FI` | 芬兰语（芬兰） | 是 | 语言模型
+`fr-CA` | 法语（加拿大） | 是 | 声学模型<br>语言模型
+`fr-FR` | 法语（法国） | 是 | 声学模型<br>语言模型<br>发音
+`gu-IN` | 古吉拉特语（印度） | 是 | 语言模型
+`hi-IN` | 印地语（印度） | 是 | 声学模型<br>语言模型
+`it-IT` | 意大利语（意大利） | 是 | 声学模型<br>语言模型<br>发音
+`ja-JP` | 日语（日本） | 是 | 语言模型
+`ko-KR` | 韩语(韩国) | 是 | 语言模型
+`mr-IN` | 马拉地语（印度） | 是 | 语言模型
+`nb-NO` | 书面挪威语(挪威) | 是 | 语言模型
+`nl-NL` | 荷兰语（荷兰） | 是 | 语言模型
+`pl-PL` | 波兰语（波兰） | 是 | 语言模型
+`pt-BR` | 葡萄牙语（巴西） | 是 | 声学模型<br>语言模型<br>发音
+`pt-PT` | 葡萄牙语(葡萄牙) | 是 | 语言模型
+`ru-RU` | 俄语（俄罗斯） | 是 | 声学模型<br>语言模型
+`sv-SE` | 瑞典语（瑞典） | 是 | 语言模型
+`ta-IN` | 泰米尔语（印度） | 是 | 语言模型
+`te-IN` | 泰卢固语（印度） | 是 | 否
 `th-TH` | 泰语（泰国） | 是 | 否
-`tr-TR` | 土耳其 | 是 | 是
+`tr-TR` | 土耳其 | 是 | 否
+`zh-CN` | 中文(普通话，简体) | 是 | 声学模型<br>语言模型
+`zh-HK` | 中文（粤语，繁体） | 是 | 语言模型
+`zh-TW` | 中文(台湾普通话) | 是 | 语言模型
 
 ## <a name="text-to-speech"></a>文本转语音
 
@@ -102,7 +111,7 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 
 区域设置 | 语言 | 性别 | 完全服务名称映射 | 短名称
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda"
+<sup>**1**</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda"
 `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）” | "ar-SA-Naayf"
 `bg-BG` | 保加利亚语 | 男 | “Microsoft 服务器语音的文本转语音（bg-BG，Ivan）” | "bg-BG-Ivan"
 `ca-ES` | 加泰罗尼亚语(西班牙) | 女 | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）” | "HerenaRUS"
@@ -184,7 +193,7 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 | | | 女 | “Microsoft 服务器语音的文本转语音（zh-TW，HanHanRUS）” | "zh-TW-HanHanRUS"
 | | | 男 | “Microsoft 服务器语音的文本转语音（zh-TW，Zhiwei，Apollo）” | "zh-CN-Zhiwei-Apollo"
 
-&dagger; *ar-例如支持新式标准阿拉伯语（MSA）。*
+**1** *ar-例如支持新式标准阿拉伯语（MSA）。*
 
 > [!NOTE]
 > 你可以在语音合成请求中使用完整的服务名称映射或短名称。

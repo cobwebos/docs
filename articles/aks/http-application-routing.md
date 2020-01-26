@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: e550f81a758d27491b01a13c6c0e24c6d364fb5a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: fc04e38c3d6933cde81d81d5569ed73e7506a745
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276115"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756430"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -50,7 +50,7 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 部署或更新群集后，使用[az aks show][az-aks-show]命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
 结果

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289078"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756188"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ)
 
@@ -39,7 +39,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。 Azure AD �
 
 在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。 我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，选择 "**标识提供者**"，选择 "**本地帐户**"，然后选择 "**用户名**"。
 
-应用程序的用户帐户必须始终通过注册用户流、注册或登录用户流，或使用 Azure AD Graph API 创建。 在 Azure 门户中创建的用户帐户仅用于管理租户。
+可以通过注册用户流、注册或登录用户流、Microsoft Graph API 或 Azure 门户来创建应用程序的用户帐户。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 
@@ -150,7 +150,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在 "**管理**" 下选择 "**用户设置**"。
 1. 如果存在，则在 " **LinkedIn 帐户连接**" 下，选择 "**否**"，然后选择 "**保存**"。
 1. 在 "**管理**" 下选择 "**属性**"
-1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
+1. 在 " **Azure 资源的访问管理**" 下，选择 **"是**"，然后选择 "**保存**"。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
 1. 在左侧菜单中选择 " **Azure Active Directory** "。
 1. 在 "**概述**" 页上，选择 "**删除目录**"。 按照屏幕上的说明完成该过程。
@@ -170,7 +170,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在 "**管理**" 下选择 "**用户设置**"。
 1. 如果存在，则在 " **LinkedIn 帐户连接**" 下，选择 "**否**"，然后选择 "**保存**"。
 1. 在 "**管理**" 下选择 "**属性**"
-1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
+1. 在 " **Azure 资源的访问管理**" 下，选择 **"是**"，然后选择 "**保存**"。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
 1. 在左侧菜单中选择 " **Azure Active Directory** "。
 1. 在 "**概述**" 页上，选择 "**删除目录**"。 按照屏幕上的说明完成该过程。

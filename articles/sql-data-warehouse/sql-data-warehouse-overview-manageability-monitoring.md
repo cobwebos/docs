@@ -11,12 +11,12 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3bacd77f49f97bd98a5e1bee844bc80c595f5cbe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685602"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760736"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的可管理性和监视
 
@@ -24,23 +24,13 @@ ms.locfileid: "73685602"
 
 ## <a name="overview"></a>概述
 
-* [了解计算管理和弹性][manage compute]
-* [了解 Azure 门户中提供了哪些指标和日志][resource utilization]
-* [了解备份和还原功能][data protection]
-* [了解内置的智能和建议][recommendations]
-* [了解维护期间以及可用于最大程度减少数据仓库停机的时间][maintenance]
-* [查找常见的故障排除指南][troubleshoot]
+* [了解计算管理和弹性](sql-data-warehouse-manage-compute-overview.md)
+* [了解 Azure 门户中提供了哪些指标和日志](sql-data-warehouse-concept-resource-utilization-query-activity.md)
+* [了解备份和还原功能](backup-and-restore.md)
+* [了解内置的智能和建议](sql-data-warehouse-concept-recommendations.md)
+* [了解维护期间以及可用于最大程度减少数据仓库停机的时间](service-maintenance.md)
+* [查找常见的故障排除指南](sql-data-warehouse-troubleshoot.md)
 
 
 ## <a name="next-steps"></a>后续步骤
 有关操作说明的指南，请参阅[监视和优化数据仓库](sql-data-warehouse-manage-monitor.md)。
-
-<!--Image references-->
-
-<!--Article references-->
-[manage compute]: ./sql-data-warehouse-manage-compute-overview.md
-[resource utilization]: ./sql-data-warehouse-concept-resource-utilization-query-activity.md
-[data protection]: ./backup-and-restore.md
-[recommendations]: ./sql-data-warehouse-concept-recommendations.md
-[maintenance]: ./service-maintenance.md
-[troubleshoot]: ./sql-data-warehouse-troubleshoot.md

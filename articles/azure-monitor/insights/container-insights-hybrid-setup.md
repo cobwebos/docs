@@ -2,13 +2,13 @@
 title: 配置混合 Kubernetes 群集与 Azure Monitor 容器 |Microsoft Docs
 description: 本文介绍如何配置容器 Azure Monitor，以监视托管在 Azure Stack 或其他环境中的 Kubernetes 群集。
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977743"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759886"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为容器配置混合 Kubernetes 群集 Azure Monitor
 
@@ -39,7 +39,7 @@ ms.locfileid: "75977743"
     |\* .blob.core.windows.net |端口 443 |  
     |*. dc.services.visualstudio.com |端口 443 |
 
-* 容器化代理需要在群集中的所有节点上打开 `cAdvisor port: 10255` 以收集性能指标。
+* 容器化代理需要在群集中的所有节点上打开 Kubelet 的 `cAdvisor secure port: 10250` 或 `unsecure port :10255` 以收集性能指标。 建议你在 Kubelet 的 cAdvisor 上配置 `secure port: 10250` （如果尚未配置）。
 
 * 容器化代理要求在容器上指定以下环境变量，以便与群集中的 Kubernetes API 服务通信，以收集清单数据 `KUBERNETES_SERVICE_HOST` 和 `KUBERNETES_PORT_443_TCP_PORT`。
 
@@ -290,12 +290,12 @@ ms.locfileid: "75977743"
 * OmsAgent 运行状况服务正在运行
 * 容器化代理上配置的 Log Analytics 工作区 Id 和密钥与用于配置见解的工作区匹配。
 * 验证所有 Linux 辅助角色节点都有 `kubernetes.io/role=agent` 标签来计划 rs pod。 如果它不存在，请添加它。
-* 验证是否已在群集中的所有节点上打开 `cAdvisor port: 10255`。
+* 验证是否已在群集中的所有节点上打开 `cAdvisor secure port:10250` 或 `unsecure port: 10255`。
 
 若要使用 Azure PowerShell 执行，请在包含脚本的文件夹中使用以下命令：
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>后续步骤

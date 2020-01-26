@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息传输、锁定和处置 | Microsoft Docs
-description: 服务总线消息传输和处置操作概述
+title: Azure 服务总线消息传输、锁定和结算
+description: 本文概述了 Azure 服务总线消息传输、锁定和结算操作。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676268"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759272"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>处置接收操作
 
-对于接收操作，服务总线 API 客户端启用两种不同的显式模式：*Receive-and-Delete* 和 *Peek-Lock*。
+对于接收操作，服务总线 API 客户端启用两种不同的显式模式：接收并删除和扫视锁定。
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 

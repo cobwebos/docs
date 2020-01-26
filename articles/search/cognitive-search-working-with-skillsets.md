@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790884"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760787"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组合概念和组合
 
@@ -37,7 +37,7 @@ ms.locfileid: "74790884"
 ### <a name="enrichment-tree"></a>扩充树
 
 为了构想技能组合如何逐步丰富您的文档，让我们先从文档的外观开始，然后再进行任何扩充。 文档破解的输出取决于数据源以及所选的特定分析模式。 这也是在将数据添加到搜索索引时，[字段映射](search-indexer-field-mappings.md)可以从中源内容的文档的状态。
-![管道中的知识存储示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "K管道关系图中的 nowledge 存储区 ")
+![管道中的知识存储示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "管道中的知识存储示意图")
 
 文档位于扩充管道中后，它将表示为内容树和关联的根据。 此树实例化为文档破解的输出。 使用扩充树格式，扩充管道可以将元数据附加到甚至基元数据类型，但它不是有效的 JSON 对象，但可以投影为有效的 JSON 格式。 下表显示了进入扩充管道的文档的状态：
 
@@ -56,7 +56,7 @@ ms.locfileid: "74790884"
 每项技能都需要一个上下文。 上下文确定：
 +   根据所选节点执行技能的次数。 对于集合类型的上下文值，在末尾添加 ```/*``` 会导致为集合中的每个实例调用一次技能。 
 +   在扩充树中添加技能输出的位置。 输出始终作为上下文节点的子级添加到树中。 
-+   输入的形状。 对于多级别集合，将上下文设置为父集合将影响输入技能的形状。 例如，如果你有一个包含国家/地区列表的扩充树，每个包含一个包含 zipcodes 列表的状态列表。
++   输入的形状。 对于多级别集合，将上下文设置为父集合将影响技能输入的形状。 例如，如果你有一个包含国家/地区列表的扩充树，每个包含一个包含 zipcodes 列表的状态列表。
 
 |上下文|输入|输入的形状|技能调用|
 |---|---|---|---|
@@ -65,7 +65,7 @@ ms.locfileid: "74790884"
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` 仅用于技能输入和[预测](knowledge-store-projection-overview.md)。 它用于构造多层嵌套对象。 可能需要创建一个新的项目，将其作为技能或项目的输入传递到知识库中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且树中的节点仅在创建时才返回节点的状态，因此，使用根据作为技能输入或预测需要创建格式正确的 JSON 对象。 使用 `sourceContext` 可构造分层匿名类型的对象，如果仅使用上下文，该对象将需要多项技能。 下一节将演示如何使用 `sourceContext`。 查看生成扩充的技能输出，以确定它是否为有效的 JSON 对象而不是基元类型。
+`sourceContext` 仅用于技能输入和[预测](knowledge-store-projection-overview.md)。 它用于构造多层嵌套对象。 您可能需要创建一个新的对象，以将其作为技能或项目的输入传递到知识库中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且引用树中的节点仅在创建时返回节点的状态，因此，使用根据作为技能输入或预测时，需要创建一个格式正确的 JSON 对象。 使用 `sourceContext` 可构造分层匿名类型的对象，如果仅使用上下文，该对象将需要多项技能。 下一节将演示如何使用 `sourceContext`。 查看生成扩充的技能输出，以确定它是否为有效的 JSON 对象而不是基元类型。
 
 ### <a name="projections"></a>投影
 
@@ -100,7 +100,7 @@ ms.locfileid: "74790884"
 
 ### <a name="skill-2-language-detection"></a>技能 #2 语言检测
  尽管语言检测技能是在技能组合中定义的第三种（技能 #3）技术，但这是执行的下一项技能。 由于它不会被要求输入，因此它将与以前的技能并行执行。 就像前面的拆分技能一样，语言检测技能也只为每个文档调用一次。 扩充树现在具有新的语言节点。
- ![技能 #2 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "En执行技能 #2 后的 richment 树 "）
+ ![技能 #2 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "执行技能 #2 后的扩充树")
  
  ### <a name="skill-3-key-phrases-skill"></a>技能 #3：关键短语技能 
 
@@ -114,7 +114,7 @@ ms.locfileid: "74790884"
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>将根据保存到知识库中 
 
-技能集还定义了一个知识存储，您可以在其中将所扩充的文档投影为表或对象。 若要将您的已扩充数据保存在知识库中，可以定义一组丰富的文档的预测。 若要了解有关知识库的详细信息，请参阅[知识 store 概述](knowledge-store-concept-intro.md)
+技能集还定义了一个知识存储，您可以在其中将所扩充的文档投影为表或对象。 若要将您的已扩充数据保存在知识库中，可以为您的文档定义一组预测。 若要了解有关知识库的详细信息，请参阅[知识 store 概述](knowledge-store-concept-intro.md)
 
 ### <a name="slicing-projections"></a>切片投影
 

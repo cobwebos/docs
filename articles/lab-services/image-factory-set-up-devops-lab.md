@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 开发测试实验室中从 Azure DevOps 运行映像工厂 |Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中创建自定义映像工厂。
+title: 从 azure 开发测试实验室中的 Azure DevOps 运行映像工厂
+description: 本文介绍了从 Azure DevOps （以前称为 Visual Studio Team Services）运行映像工厂所需的所有准备工作。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638946"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758676"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>从 Azure DevOps 运行映像工厂
 本文介绍了从 Azure DevOps （以前称为 Visual Studio Team Services）运行映像工厂所需的所有准备工作。

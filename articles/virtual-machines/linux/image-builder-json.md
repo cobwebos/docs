@@ -1,18 +1,18 @@
 ---
 title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建用于 Azure 映像生成器的模板。
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763073"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760005"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览：创建 Azure 映像生成器模板 
 
@@ -28,11 +28,15 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+默认情况下，映像生成器将使用 "Standard_D1_v2" 生成 VM，你可以重写此设置，例如，如果要为 GPU VM 自定义映像，则需要 GPU VM 大小。 此为可选项。
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+默认情况下，映像生成器不会更改图像的大小，它将使用源图像中的大小。 你可以调整操作系统磁盘的大小（Win 和 Linux），请注意，不要小于操作系统所需的最小所需空间。 这是可选的，值为0表示保留与源映像相同的大小。 此为可选项。
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>标记
@@ -135,13 +157,7 @@ Azure 映像生成器仅支持使用已发布的 Red Hat Enterprise Linux 7. x �
 > 链接的访问令牌会定期刷新，因此，每次需要提交模板时，都必须检查 RH 链接地址是否已更改。
  
 ### <a name="platformimage-source"></a>PlatformImage 源 
-Azure 映像生成器支持以下 Azure Marketplace 映像：
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7.6
-* CentOS 7。6
-* Windows 2016
-* Windows 2019
+Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure Marketplace 映像，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)查看完整列表。 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，I
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，I
 - **名称**-用于跟踪自定义项的名称 
 - **scriptUri** -文件位置的 URI 
 - **内联**-shell 命令的数组，用逗号分隔。
- 
+- **sha256Checksum** -文件的 sha256 校验和的值，你可以在本地生成它，然后映像生成器将进行校验和验证。
+    * 若要使用 Mac/Linux 上的终端生成 sha256Checksum，请运行： `sha256sum <fileName>`
+
+
+对于以超级用户权限运行的命令，它们必须以 `sudo`为前缀。
+
 > [!NOTE]
 > 使用 RHEL ISO 源运行 shell 定制器时，需要确保第一个自定义项 shell 在进行任何自定义之前，使用 Red Hat 授权服务器进行注册。 自定义完成后，脚本应向授权服务器取消注册。
 
@@ -275,12 +298,15 @@ Shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，I
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 OS 支持： Windows
@@ -300,13 +326,16 @@ Shell 定制器支持运行 PowerShell 脚本和内联命令，这些脚本必�
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ OS 支持： Windows 和 Linux
 - **scriptUri** -PowerShell 脚本文件所在位置的 URI。 
 - **内联**–要运行的内联命令（用逗号分隔）。
 - **valid_exit_codes** –可从 script/inline 命令返回的可选有效代码，这将避免在 script/inline 命令中报告失败。
+- **runElevated** –可选的布尔值，支持通过提升的权限运行命令和脚本。
+- **sha256Checksum** -文件的 sha256 校验和的值，你可以在本地生成它，然后映像生成器将进行校验和验证。
+    * 若要生成 sha256Checksum，请在 Windows 上使用 PowerShell[获取-哈希](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+
 
 ### <a name="file-customizer"></a>文件定制器
 
@@ -330,7 +363,8 @@ OS 支持： Windows 和 Linux
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure 映像生成器支持三个分发目标：
 
 您可以在同一配置中将图像分发到这两个目标类型，请参阅[示例](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)。
 
-由于可以将多个目标分发到，因此，映像生成器会为每个可通过查询 `runOutputName`来访问的分发目标维护状态。  `runOutputName` 是一个对象，您可以在分发分发中查询该分发的相关信息。 例如，你可以查询 VHD 的位置或将映像版本复制到的区域。 这是每个分布目标的属性。 每个分发目标的 `runOutputName` 必须是唯一的。
- 
+由于可以将多个目标分发到，因此，映像生成器会为每个可通过查询 `runOutputName`来访问的分发目标维护状态。  `runOutputName` 是一个对象，您可以在分发分发中查询该分发的相关信息。 例如，你可以查询 VHD 的位置或复制到的映像版本，或者创建的 SIG 映像版本。 这是每个分布目标的属性。 每个分发目标的 `runOutputName` 必须是唯一的。 下面是一个示例，其中查询了共享的映像库分布：
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+输出：
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>分发： managedImage
 
 图像输出将为托管映像资源。
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>后续步骤
 
 [Azure 映像生成器 GitHub](https://github.com/danielsollondon/azvmimagebuilder)中提供了适用于不同方案的示例 json 文件。
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

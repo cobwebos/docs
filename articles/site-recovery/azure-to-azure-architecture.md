@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754519"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759800"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -146,7 +146,7 @@ Site Recovery 按如下所述创建快照：
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
 允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<区域名称 >
-允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的网络安全组 (NSG) 规则。  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Active Directory （Azure AD）对应的范围  | AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<区域名称 >
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
 
@@ -155,7 +155,7 @@ Site Recovery 按如下所述创建快照：
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
 允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<区域名称 >
-允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的 NSG 规则。  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure AD 相对应的范围  | AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<区域名称 >
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
 

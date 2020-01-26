@@ -1,22 +1,14 @@
 ---
 title: 限制和边界 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381114"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760226"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -33,6 +25,15 @@ ms.locfileid: "75381114"
  例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引 `testkb` 用于所有知识库以进行创作和测试。
 
 ## <a name="extraction-limits"></a>提取限制
+
+### <a name="file-naming-constraints"></a>文件命名约束
+
+文件名不能包含以下字符：
+
+|不使用字符|
+|--|
+|单引号 `'`|
+|双引号 `"`|
 
 ### <a name="maximum-file-size"></a>文件大小上限
 

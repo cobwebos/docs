@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756539"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757860"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系统要求
 
 本文介绍 Microsoft Azure Data Box Edge 解决方案以及连接到 Azure Data Box Edge 的客户端的重要系统要求。 我们建议在部署 Data Box Edge 之前仔细查看这些信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
@@ -36,7 +36,7 @@ Data Box Edge 的系统要求包括：
 
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-storage-types"></a>支持的存储类型
+## <a name="supported-storage-types"></a>受支持的存储类型
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
@@ -48,7 +48,7 @@ Data Box Edge 的系统要求包括：
 
 ### <a name="port-requirements-for-data-box-edge"></a>Data Box Edge 的端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Edge 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。  
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Edge 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必选 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 需要 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -82,11 +82,11 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式                      | 组件或功能                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
+| https：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
 | https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
 | https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure government 的网关的 URL 模式
+### <a name="url-patterns-for-gateway-for-azure-government"></a>适用于 Azure 政府的网关的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
@@ -94,43 +94,43 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式                      | 组件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器注册表（必填）               |
+| https：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器注册表（必填）               |
 | https://\*.azure-devices.us              | Iot 中心访问权限（必填）           |
-| https://\*.azurecr.us                    | 个人和第三方容器注册表（可选） | 
+| https://\*. azurecr.us                    | 个人和第三方容器注册表（可选） | 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>计算调整大小考虑事项
+## <a name="compute-sizing-considerations"></a>计算大小注意事项
 
-使用您体验，同时开发和测试你的解决方案来确保数据框边缘设备上没有足够的容量和从你的设备获取最佳性能。
+在开发和测试解决方案时使用体验，以确保 Data Box Edge 设备上有足够的容量，并获得设备的最佳性能。
 
 应考虑的因素包括：
 
-- **容器细节**-考虑以下。
+- **容器详细信息**-请考虑以下内容。
 
-    - 你的工作负荷中有多少个容器？ 你可以与几个占用大量资源的轻量级容器的很多。
-    - 分配给这些容器而不是什么是进程占用的资源的资源有哪些？
+    - 工作负荷中有多少容器？ 你可能有大量轻型容器，而不是占用大量资源的容器。
+    - 分配给这些容器的资源有哪些，以及它们消耗的资源是多少？
     - 容器共享多少层？
-    - 是否有未使用的容器？ 停止的容器仍将占用磁盘空间。
-    - 哪种语言编写所用容器？
-- **处理的数据的大小**的数据量将你的容器处理？ 此数据将会占用磁盘空间或内存中处理的数据？
-- **预期性能**-你的解决方案的所需的性能特征是什么？ 
+    - 是否存在未使用的容器？ 已停止的容器仍占用磁盘空间。
+    - 你的容器在哪种语言中编写？
+- 已**处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
+- **预期的性能**-你的解决方案所需的性能特征是什么？ 
 
-若要了解和优化你的解决方案的性能，可以使用：
+若要了解和优化解决方案的性能，可以使用：
 
-- 在 Azure 门户中可用的计算度量值。 转到数据框边缘资源，然后转到**监视 > 指标**。 看看**边缘计算的内存使用情况**并**边缘计算-CPU 百分比**若要了解可用的资源和如何将占用的资源获取。
-- 通过 PowerShell 接口，例如设备的可用监视命令：
+- Azure 门户中可用的计算指标。 中转到 Data Box Edge 资源，然后开始**监视 > 指标**。 查看**边缘计算内存使用情况**和**边缘计算百分比 CPU** ，了解可用资源以及资源的使用情况。
+- 可通过设备的 PowerShell 接口使用的监视命令，例如：
 
-    - `dkr` 若要获取资源使用情况统计信息的容器的实时流的统计信息。 该命令支持 CPU、 内存使用情况、 内存限制和网络 IO 指标。
-    - `dkr system df` 若要获取有关使用的磁盘空间量的信息。 
-    - `dkr image [prune]` 若要清理未使用的映像并释放空间。
-    - `dkr ps --size` 若要查看正在运行的容器的近似大小。 
+    - `dkrdbe stats` 获取容器资源使用情况统计信息的实时流。 命令支持 CPU、内存使用量、内存限制和网络 IO 指标。
+    - `dkrdbe system df` 获取有关使用的磁盘空间量的信息。 
+    - `dkrdbe image prune` 清除未使用的映像并释放空间。
+    - `dkrdbe ps --size`，查看正在运行的容器的近似大小。 
 
-    有关可用命令的详细信息，请转到[监视和故障排除计算模块](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
+    有关可用命令的详细信息，请参阅对[计算模块进行监视和故障排除](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
 
-最后，请确保你在你的数据集上验证你的解决方案和量化数据框边缘部署在生产环境中之前的性能。
+最后，请确保在数据集上验证解决方案并量化 Data Box Edge 上的性能，然后再在生产环境中进行部署。
 
 
 ## <a name="next-step"></a>后续步骤

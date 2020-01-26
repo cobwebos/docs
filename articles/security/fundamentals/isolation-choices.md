@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121941"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756154"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
@@ -111,6 +111,9 @@ Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例�
 ### <a name="isolated-virtual-machine-sizes"></a>独立虚拟机大小
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>专用主机
+除了前面的部分中所述的独立主机以外，Azure 还提供了专用主机。 Azure 中的专用主机是一项服务，可提供可托管一台或多台虚拟机的物理服务器，以及专用于单个 Azure 订阅的物理服务器。 专用主机在物理服务器级别提供硬件隔离。 不会在主机上放置任何其他 Vm。 专用主机部署在同一数据中心内，与其他非独立主机主机共享相同的网络和底层存储基础结构。 有关详细信息，请参阅[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的详细概述。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
 Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户代码都在 Hyper-V 虚拟机中执行。 在每个 Azure 节点（或网络终结点）上，都有一个虚拟机监控程序在硬件上直接运行，并将节点分为数目不定的来宾虚拟机 (VM)。

@@ -1,22 +1,22 @@
 ---
 title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
-description: 解答一些有关 Azure 服务总线的常见问题。
+description: 本文提供了有关 Azure 服务总线的一些常见问题（FAQ）的解答。
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352874"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760243"
 ---
-# <a name="service-bus-faq"></a>服务总线常见问题
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线-常见问题（FAQ）
 
 本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)了解常规的 Azure 定价和支持信息。
 

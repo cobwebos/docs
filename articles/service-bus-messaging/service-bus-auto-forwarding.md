@@ -1,6 +1,6 @@
 ---
-title: 自动转发 Azure 服务总线消息传送实体 | Microsoft Docs
-description: 如何将服务总线队列或订阅链接到另一个队列或主题。
+title: 自动转发 Azure 服务总线消息传送实体
+description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390135"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761043"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -27,7 +27,7 @@ ms.locfileid: "70390135"
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 
-可通过在源的 [QueueDescription][QueueDescription] 或 [SubscriptionDescription][SubscriptionDescription] 对象上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 或 [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] 属性来启用自动转发，如以下示例所示：
+可以通过在源的[ForwardTo][QueueDescription]或[QueueDescription][SubscriptionDescription]对象上设置[ForwardTo][QueueDescription.ForwardTo]或[SubscriptionDescription][SubscriptionDescription.ForwardTo]属性来启用自动转发，如下例所示：
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

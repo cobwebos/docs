@@ -1,5 +1,5 @@
 ---
-title: 内容感知编码的实验性预设-Azure |Microsoft Docs
+title: 内容感知编码的预设-Azure 媒体服务 |
 description: 本文介绍 Microsoft Azure 媒体服务 v3 中的内容感知编码。
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933482"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759340"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>内容感知编码的实验预设
+# <a name="a-preset-for-content-aware-encoding"></a>内容感知编码的预设
 
 若要为[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)准备传递内容，需要以多个比特率（从高到低）对视频进行编码。 为了确保质量的质量下降，因为比特率降低，因此视频的分辨率。 这会生成一个所谓的编码阶梯，即一个解决方案表和一个比特率;请参阅媒体服务[内置的编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 

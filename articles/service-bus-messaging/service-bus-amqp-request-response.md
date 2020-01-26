@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线中的 AMQP 1.0 请求/响应操作
-description: Microsoft Azure 服务总线基于请求/响应的操作的列表。
+description: 本文定义 Microsoft Azure 服务总线中基于 AMQP 请求/响应的操作的列表。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: aschhab
-ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785276"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761077"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -117,7 +117,7 @@ properties: {
   
 |实体类型|地址|示例|  
 |-----------------|-------------|-------------|  
-|队列|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
+|queue|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
 |主题|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
 |订阅|`<topic_name>/Subscriptions/<subscription_name>`|`“myTopic/Subscriptions/MySub”`|  
   
@@ -134,7 +134,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:renew-lock`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
  请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -153,7 +153,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -172,7 +172,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -188,7 +188,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -213,7 +213,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:schedule-message`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -226,9 +226,9 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |message-id|字符串|是|`amqpMessage.Properties.MessageId`，充当字符串|  
-|session-id|字符串|No|`amqpMessage.Properties.GroupId as string`|  
-|partition-key|字符串|No|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|via-partition-key|字符串|No|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|session-id|字符串|否|`amqpMessage.Properties.GroupId as string`|  
+|partition-key|字符串|否|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|字符串|否|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|字节数组|是|AMQP 1.0 有线编码消息。|  
   
 #### <a name="response"></a>响应  
@@ -238,7 +238,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -257,7 +257,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:cancel-scheduled-message`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -272,7 +272,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|No|状态的说明。|   
+|statusDescription|字符串|否|状态的说明。|   
   
 ## <a name="session-operations"></a>会话操作  
   
@@ -287,7 +287,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:renew-session-lock`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -302,7 +302,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -321,7 +321,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -338,7 +338,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -363,7 +363,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:set-session-state`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -379,7 +379,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="get-session-state"></a>获取会话状态  
 
@@ -392,7 +392,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:get-session-state`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -407,7 +407,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -426,7 +426,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:get-message-sessions`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -443,7 +443,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -463,7 +463,7 @@ properties: {
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:add-rule`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -490,15 +490,15 @@ correlation-filter 映射至少必须包含以下条目之一：
   
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
-|correlation-id|字符串|No||  
-|message-id|字符串|No||  
-|to|字符串|No||  
-|reply-to|字符串|No||  
-|label|字符串|No||  
-|session-id|字符串|No||  
-|reply-to-session-id|字符串|No||  
-|content-type|字符串|No||  
-|属性|map|No|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
+|correlation-id|字符串|否||  
+|message-id|字符串|否||  
+|to|字符串|否||  
+|reply-to|字符串|否||  
+|label|字符串|否||  
+|session-id|字符串|否||  
+|reply-to-session-id|字符串|否||  
+|content-type|字符串|否||  
+|properties|map|否|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
   
 sql-rule-action 映射必须包含以下条目：  
   
@@ -513,7 +513,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="remove-rule"></a>删除规则  
   
@@ -524,7 +524,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:remove-rule`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -539,7 +539,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="get-rules"></a>获取规则
 
@@ -550,7 +550,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:enumerate-rules`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
 
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -584,7 +584,7 @@ sql-rule-action 映射必须包含以下条目：
 
 `filter` 可以是以下任一类型：
 
-| 描述符名称 | 描述符代码 | Value |
+| 描述符名称 | 描述符代码 | 值 |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | SQL 筛选器 |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | 关联筛选器 |
@@ -603,9 +603,9 @@ sql-rule-action 映射必须包含以下条目：
 |---------|----------------|--------------|
 | 0 | 字符串 | 相关性 ID |
 | 第 | 字符串 | 消息 ID |
-| 2 | 字符串 | 目标 |
+| 2 | 字符串 | 到 |
 | 3 | 字符串 | 回复 |
-| 4 | 字符串 | Label |
+| 4 | 字符串 | 标签 |
 | 5 | 字符串 | 会话 ID |
 | 6 | 字符串 | 会话 ID 回复|
 | 7 | 字符串 | 内容类型 |
@@ -613,7 +613,7 @@ sql-rule-action 映射必须包含以下条目：
 
 `ruleAction` 可以是以下任一类型：
 
-| 描述符名称 | 描述符代码 | Value |
+| 描述符名称 | 描述符代码 | 值 |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | 空规则操作 - 不存在任何规则操作 |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL 规则操作 |
@@ -633,7 +633,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:receive-by-sequence-number`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -649,7 +649,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|  
+|statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -675,7 +675,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|字符串|是|`com.microsoft:update-disposition`|  
-|`com.microsoft:server-timeout`|uint|No|操作服务器超时以毫秒为单位。|  
+|`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -683,9 +683,9 @@ sql-rule-action 映射必须包含以下条目：
 |---------|----------------|--------------|--------------------|  
 |disposition-status|字符串|是|已完成<br /><br /> 已放弃<br /><br /> 已暂停|  
 |lock-tokens|uuid 数组|是|消息锁定标记，用于更新处理状态。|  
-|deadletter-reason|字符串|No|如果处理状态设置为“已暂停”，则可进行设置。|  
-|deadletter-description|字符串|No|如果处理状态设置为“已暂停”，则可进行设置。|  
-|properties-to-modify|map|No|要修改的服务总线中转消息属性的列表。|  
+|deadletter-reason|字符串|否|如果处理状态设置为“已暂停”，则可进行设置。|  
+|deadletter-description|字符串|否|如果处理状态设置为“已暂停”，则可进行设置。|  
+|properties-to-modify|map|否|要修改的服务总线中转消息属性的列表。|  
   
 #### <a name="response"></a>响应  
 
@@ -694,7 +694,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|需要|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
-|statusDescription|字符串|No|状态的说明。|
+|statusDescription|字符串|否|状态的说明。|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线管理库 | Microsoft Docs
-description: 在 .NET 中管理服务总线命名空间和消息实体。
+description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816074"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756260"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -32,7 +32,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * 主题创建、更新、删除
 * 订阅创建、更新、删除
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 
@@ -77,7 +77,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
    ```
 
 ## <a name="complete-code-to-create-a-queue"></a>完成创建队列的代码
-下面是创建服务总线队列的完整代码: 
+下面是创建服务总线队列的完整代码： 
 
 ```csharp
 using System;
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> 有关完整示例, 请参阅[GitHub 上的 .net 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
+> 有关完整示例，请参阅[GitHub 上的 .net 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft.Azure.Management.ServiceBus API 参考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

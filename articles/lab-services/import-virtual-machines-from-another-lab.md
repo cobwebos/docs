@@ -1,6 +1,6 @@
 ---
 title: 从 Azure 开发测试实验室中的其他实验室导入虚拟机
-description: 了解如何将虚拟机从另一个实验室导入到当前实验室。
+description: 本文介绍如何将虚拟机从另一个实验室导入到 Azure 开发测试实验室中的当前实验室。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: d399bede7851b3acc282312994464d06370746e3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 299d5c8758a13edded63b99abb2f12ddf9fa14be
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169474"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759510"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>从 Azure 开发测试实验室中的其他实验室导入虚拟机
 本文介绍如何将虚拟机从另一个实验室导入实验室。

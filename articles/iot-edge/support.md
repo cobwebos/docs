@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665876"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760090"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
-本文提供了有关 IoT Edge 支持的系统和组件的详细信息，无论是正式还是预览版。 
+本文提供了有关 IoT Edge 支持的系统和组件的详细信息，无论是正式还是预览版。
 
 如果使用 Azure IoT Edge 服务时遇到问题，可以通过多种方式寻求支持。 尝试以下支持服务之一：
 
@@ -34,18 +34,20 @@ Azure IoT Edge 模块作为容器实现，因此 IoT Edge 需要一个容器引�
 <br>
 <center>
 
-![小鲸鱼作为容器运行时](./media/support/only-moby-for-production.png)
-</center>
+![作为容器运行时](./media/support/only-moby-for-production.png)
+的小鲸鱼引擎 </center>
 
 ## <a name="operating-systems"></a>操作系统
+
 在可运行容器的大多数操作系统上运行 Azure IoT Edge;但是，并非所有这些系统都同样受支持。 操作系统分组为各个层级，这些层级表示用户可以预期的支持级别。
+
 * 支持第1层系统。 对于第1层系统，Microsoft：
-    * 将此操作系统包括在自动化测试中
-    * 为它们提供安装程序包
+  * 将此操作系统包括在自动化测试中
+  * 为它们提供安装程序包
 * 第2层系统与 Azure IoT Edge 兼容，可以相对较容易地使用。 对于第2层系统：
-    * Microsoft 已在平台上完成即席测试，或了解合作伙伴在平台上成功运行 Azure IoT Edge
-    * 适用于其他平台的安装程序包在这些平台上可能会正常工作
-    
+  * Microsoft 在平台上进行了非正式测试，或了解到在平台上成功运行 Azure IoT Edge 的合作伙伴
+  * 适用于其他平台的安装程序包在这些平台上可能会正常工作
+
 主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持处理独立容器，而不支持 Hyper-v 隔离容器。  
 
 <br>
@@ -68,7 +70,6 @@ Microsoft 支持下表中列出的系统，该系统公开发布或公开预览�
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19)，版本17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server)，版本17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-
 上面列出的 Windows 操作系统是在 Windows 上运行 Windows 容器的设备的要求，这是唯一受支持的生产配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器;但是，此配置仅用于开发和测试。 有关详细信息，请参阅[使用 Windows 上的 IoT Edge 运行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
 
 ### <a name="tier-2"></a>第 2 层
@@ -90,13 +91,14 @@ Microsoft 支持下表中列出的系统，该系统公开发布或公开预览�
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> Debian 10 个系统，包括 Raspian Buster，请使用 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装早期版本： 
+<sup>1</sup> Debian 10 个系统，包括 Raspian Buster，请使用 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装早期版本：
 
 ```bash
 sudo apt-get install libssl1.0.2
 ```
 
 ## <a name="virtual-machines"></a>虚拟机
+
 Azure IoT Edge 可在虚拟机中运行。 如果客户想要使用边缘智能增强现有的基础结构，则使用虚拟机作为 IoT Edge 设备很常见。 主机 VM OS 系列必须与模块容器内部使用的来宾 OS 系列相匹配。 此要求与直接在设备上运行 Azure IoT Edge 时相同。 Azure IoT Edge不区分底层虚拟化技术，将在以 Hyper-V 和 vSphere 等平台为后盾的 VM 中工作。
 
 <br>
@@ -106,13 +108,14 @@ VM](./media/support/edge-on-vm.png)
 中 Azure IoT Edge ![</center>
 
 ## <a name="minimum-system-requirements"></a>最低系统要求
+
 在 Raspberry Pi3 等小型设备以及服务器级硬件上，Azure IoT Edge 都能非常顺利地运行。 为方案选择适当的硬件取决于要运行的工作负荷。 在设备方面做出最终决策可能比较复杂；但是，可以在传统的便携式计算机或台式机上轻松开始设计解决方案的原型。
 
-在设计原型期间获得的经验可以帮助你在设备方面做出最终的选择。 应考虑的问题包括： 
+在设计原型期间获得的经验可以帮助你在设备方面做出最终的选择。 应考虑的问题包括：
 
 * 工作负荷中有多少个模块？
 * 模块容器共享了多少层？
-* 你的模块的编写语言是什么？ 
+* 你的模块的编写语言是什么？
 * 模块将处理多少数据？
 * 模块是否需要任何专用硬件来加速其工作负荷？
 * 你的解决方案所需的性能特征有哪些？

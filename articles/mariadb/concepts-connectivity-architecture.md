@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 530cc029f2339c4aeb7aa1744dceec21810db2b1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58f6e49280925b550deff21ecf04528d91d924d7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432068"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760124"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍了 Azure Database for MariaDB 连接体系结构，以及如何从 Azure 内部和外部的客户端将流量定向到 Azure Database for MariaDB 实例。
@@ -42,7 +42,7 @@ ms.locfileid: "75432068"
 | 中国北部 2 | 40.73.50.0     |
 | 亚洲东部 | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | 美国东部 | 40.121.158.30, 191.238.6.43  |
-| 美国东部 2 |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| 美国东部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | 法国中部 | 40.79.137.0, 40.79.129.1  |
 | 德国中部 | 51.4.144.100     |
 | 德国东北部 | 51.5.144.179  |

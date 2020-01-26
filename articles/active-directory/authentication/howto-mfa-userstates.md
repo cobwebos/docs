@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763226"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756754"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -63,8 +63,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 搜索并选择“Azure Active Directory”。 选择“用户” > “所有用户”。
-3. 选择“多重身份验证”。
-   选择“多重身份验证”![](./media/howto-mfa-userstates/selectmfa.png)
+3. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图，查看完整的 Azure 门户窗口和菜单位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "从 "用户" 窗口中选择 "多重身份验证" Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. 此时会打开一个新页面，其中显示了用户状态。
    ![多重身份验证用户状态 - 屏幕截图](./media/howto-mfa-userstates/userstate1.png)
 

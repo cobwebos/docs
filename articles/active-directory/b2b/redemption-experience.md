@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 01/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e85b0ae298589c0e0e051a24e5db89eae81db62
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272138"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758270"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -38,10 +38,10 @@ ms.locfileid: "74272138"
 作为邀请电子邮件的替代方法，你可以向来宾授予你的应用或门户的直接链接。 首先需要通过[Azure 门户](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或[PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)将来宾用户添加到目录。 然后，你可以使用任何[可自定义的方式将应用程序部署到用户](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)，包括直接登录链接。 当来宾使用直接链接而不是邀请电子邮件时，他们仍将通过首次同意体验指导。
 
 > [!IMPORTANT]
-> 直接链接必须特定于租户。 换句话说，它必须包含租户 ID 或已验证的域，以便在你的租户中对来宾进行身份验证，共享应用位于该位置。 常见的 URL （如 https://myapps.microsoft.com）对来宾不起作用，因为它将重定向到其主租户进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
- > - 应用访问面板： https://myapps.microsoft.com/?tenantid=&lt; 租户 id&gt; 
- > - 已验证域的 "应用访问面板"： https://myapps.microsoft.com/&lt; 已验证的域&gt;
- > - Azure 门户： https://portal.azure.com/&lt; 租户 id&gt;
+> 直接链接必须特定于租户。 换句话说，它必须包含租户 ID 或已验证的域，以便在你的租户中对来宾进行身份验证，共享应用位于该位置。 常见的 URL （如 https://myapps.microsoft.com ）对来宾不起作用，因为它将重定向到其主租户进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
+ > - 应用访问面板： https://myapps.microsoft.com/?tenantid=&lt ; 租户 id&gt; 
+ > - 已验证域的 "应用访问面板"： https://myapps.microsoft.com/&lt ; 已验证的域&gt;
+ > - Azure 门户： https://portal.azure.com/&lt ; 租户 id&gt;
  > - 单个应用：请参阅如何使用[直接登录链接](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
 在某些情况下，建议通过直接链接使用邀请电子邮件。 如果这些特殊案例对你的组织很重要，我们建议你通过使用仍发送邀请电子邮件的方法邀请用户：

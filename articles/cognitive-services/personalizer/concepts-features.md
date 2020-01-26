@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490760"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760821"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "73490760"
 例如，**特征**可能与以下对象相关：
 
 * _用户角色_，如 `Sports_Shopper`。 这不应是单个用户 ID。 
-* 内容，视频是 _、_ 还是 `Documentary`，或者某个零售商品在商店中是否有货。`Movie``TV Series`
+* 内容，视频是 `Documentary`、`Movie` 还是 `TV Series`，或者某个零售商品在商店中是否有货。
 * 当前时间段，例如星期几。
 
 Personalizer 不规定、限制或修复您可以为操作和上下文发送哪些功能：
@@ -107,6 +107,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 * 它不能是 unicode。
 * 对于命名空间名称，你可以使用代码 < 256 的一些可打印符号。 
 * 不能将符号用于代码 < 32 （不可打印）、32（空格）、58（冒号）、124（管道）和126–140。
+* 它不应以下划线 "_" 开头，否则将忽略该功能。
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>如何使得特征集对于个性化体验创建服务更为有效
 
@@ -178,7 +179,7 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 
 下面是一些示例：
 
-|目的|行动|
+|用途|行动|
 |--|--|
 |个性化要在新闻网站上突出显示的文章。|每个操作是一篇潜在的新闻文章。|
 |优化网站上的广告位置。|每个操作是一个布局或有关创建广告布局的规则（例如，在顶部排列、在右侧排列、使用小图像、使用大图像）。|

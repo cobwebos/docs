@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431742"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759697"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
  
-如果用户打开分层文件，Azure 文件同步会从 Azure 文件中无缝召回文件数据，而用户无需知道文件实际存储在 Azure 中。 
+当用户打开分层文件时，Azure 文件同步无需知道该文件存储在 Azure 中，即可从 Azure 文件中无缝地撤回文件数据。 
  
  > [!Important]  
  > Windows 系统卷上的服务器终结点不支持云分层，只有大小超过 64 KiB 的文件才能分层到 Azure 文件中。
@@ -61,7 +61,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>我添加了新的服务器终结点。 要在多长时间后，我的文件会在此服务器上分层？
-在 Azure 文件同步代理 4.0 和更高版本中，将文件上传到 Azure 文件共享后，只要运行下一个分层会话（每小时运行一次），这些文件就会根据策略立即分层。 在早期的代理上，分层最长可能需要在 24 小时后发生。
+在 Azure 文件同步代理的版本4.0 及更高版本中，一旦将文件上传到 Azure 文件共享，就会在下一次运行分层会话（每小时执行一次）时，根据策略对它们进行分层。 在早期的代理上，分层最长可能需要在 24 小时后发生。
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>如何判断文件是否已分层？
@@ -127,6 +127,13 @@ Windows 文件资源管理器公开了两个属性来表示文件的大小：即
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>为什么分层文件在 Windows 资源管理器中未显示缩略图或预览？
+对于分层文件，不会在服务器终结点显示缩略图和预览。 此行为是预期行为，因为 Windows 中的缩略图缓存功能有意跳过读取具有脱机属性的文件。 启用云分层后，通过分层文件读取将导致下载（回调）。
+
+此行为并不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示 "灰色 X"。 通过 SMB 访问文件时，你将看到 X 图标。 有关此行为的详细说明，请参阅[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702991"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758744"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -40,7 +40,20 @@ ms.locfileid: "76702991"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-2019年9月：根据 URL 分析规则附加了 POST 语义-重复参数将触发错误并忽略[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) 。
+目前没有计划。  请参阅下面的，了解或即将进入生产环境中的更改。 
+
+## <a name="february-2020"></a>2020年2月： 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>空片段将追加到登录终结点的每个 HTTP 重定向。 
+
+**生效日期**：2020年2月8日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：使用 response_type = query 的 OAUTH 和 OIDC 流-这涵盖了某些情况下的[授权代码流](v2-oauth2-auth-code-flow.md)和[隐式流](v2-oauth2-implicit-grant-flow.md)。 
+
+当通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，从而防止出现重定向攻击的类。  任何应用程序都不应依赖于此行为。 
+
 
 ## <a name="august-2019"></a>2019 年 8 月
 

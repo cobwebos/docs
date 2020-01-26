@@ -2,14 +2,14 @@
 title: 有关 Azure Site Recovery 服务的一般问题
 description: 本文讨论有关 Azure Site Recovery 的常见一般问题。
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863557"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760345"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -147,7 +147,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量到达 Azure 存储的公共终结点。 因此，你只能通过 ExpressRoute （Microsoft 对等互连或现有的公共对等互连）通过公共 internet 进行复制，并且 VPN 不起作用。
+复制到 Azure 时，复制流量到达 Azure 存储的公共终结点。 因此，只能通过公共 internet 或 ExpressRoute （Microsoft 对等互连或现有的公共对等互连）进行复制。
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>是否可以使用 Riverbed SteelHeads 进行复制？
 
@@ -172,7 +172,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 * **Azure vm、VMware vm、物理服务器：** 复制频率与此无关。 复制是连续的。
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>我可以将复制从现有的恢复站点扩展到其他站点吗？
-不支持扩展扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
+不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
 
 ### <a name="can-i-do-an-offline-replication-the-first-time-i-replicate-to-azure"></a>在首次复制到 Azure 时可以进行脱机复制吗？
 不支持此操作。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。

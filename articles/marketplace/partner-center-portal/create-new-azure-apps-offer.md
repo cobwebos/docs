@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046043"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760876"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -156,19 +156,9 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 选择最小值，最多可选择三个类别，这些类别将用于将你的产品/服务放入相应的 marketplace 搜索区域。 在产品/服务描述中，请务必了解你的产品/服务如何支持这些类别。 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>标准 Marketplace 条款和条件
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 的标准协定
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 提供了标准合同模板，以帮助促进 marketplace 中的事务。
-
-您可以选择在标准合同下提供您的软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。
-
-可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178
-
-若要使用标准协定，请选中 "**使用标准协定？** " 框。
-
-#### <a name="terms-of-use"></a>使用条款
-
-如果不选中 "**使用标准协定"** 框，则需要在 "**使用条款**" 字段中提供自己的使用条款。 最多输入10000个字符的文本，或者，如果使用条款需要较长的说明，请提供可在其中找到你的其他许可条款的 URL。 客户需要接受这些条款，然后才能试用你的应用。
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -461,7 +451,7 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 将[Azure 策略](https://docs.microsoft.com/azure/governance/policy/overview)应用到托管应用程序，以指定所部署解决方案的符合性要求。  有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/index)。  最多可以配置五个策略，每个策略选项只有一个实例。  某些策略需要其他参数。  审核策略需选择标准 SKU。  策略名称限制为50个字符。
 
-## <a name="co-sell"></a>联合销售
+## <a name="co-sell"></a>共同销售
 
 在发布产品/服务时，提供有关 "做好" 选项卡的信息是完全可选的。 需要实现合作销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息来了解有关您的解决方案的详细信息。 不会直接向客户提供此功能。
 

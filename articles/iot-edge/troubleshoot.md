@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514249"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759221"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "76514249"
 
 ## <a name="run-the-iotedge-check-command"></a>运行 iotedge "check" 命令
 
-故障排除 IoT Edge 的第一步应该是使用 `check` 命令，该命令将为常见问题执行配置和连接测试的集合。 [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7)和更高版本中提供了 `check` 命令。
+故障排除 IoT Edge 的第一步应该是使用 `check` 命令，该命令将运行一系列常见问题的配置和连接测试。 [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7)和更高版本中提供了 `check` 命令。
 
 您可以按如下所示运行 `check` 命令，或包含 `--help` 标志以查看选项的完整列表：
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **根本原因**
 
-IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通常不具有长主机名，但此问题在虚拟机上更常见。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。 
+IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通常不具有长主机名，但此问题在虚拟机上更常见。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。
 
 **解决方法**
 
@@ -302,7 +302,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下，它已针�
 
 **解决方法**
 
-对于 IoT Edge 中心，请将环境变量**OptimizeForPerformance**设置为**false**。 可通过两种方式实现此目的：
+对于 IoT Edge 中心，请将环境变量**OptimizeForPerformance**设置为**false**。 可以通过两种方法设置环境变量：
 
 在 Azure 门户中：
 
@@ -340,7 +340,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下，它已针�
 
 设置 IoT Edge 守护程序的注册表项。 创建包含以下内容的 **iotedge.reg** 文件，再双击该文件或使用 `reg import iotedge.reg` 命令将其导入到 Windows 注册表中：
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge 模块无法将消息发送到 edgeHub 并出现 404 错误
 
-自定义 IoT Edge 模块无法将消息发送到 edgeHub 并出现 404 `Module not found` 错误。 IoT Edge 守护程序在日志中输出以下消息： 
+自定义 IoT Edge 模块无法将消息发送到 edgeHub 并出现 404 `Module not found` 错误。 IoT Edge 守护程序在日志中输出以下消息：
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **根本原因**
@@ -401,7 +401,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 上面的示例将 DNS 服务器设置为可公开访问的 DNS 服务。 如果边缘设备无法从其环境访问此 IP，请将其替换为可访问的 DNS 服务器地址。
 
-将 `daemon.json` 放置在平台的正确位置中： 
+将 `daemon.json` 放置在平台的正确位置中：
 
 | 平台 | 位置 |
 | --------- | -------- |
@@ -410,7 +410,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 如果该位置已包含 `daemon.json` 文件，请向其中添加**dns**密钥并保存该文件。
 
-*重新启动容器引擎以使更新生效*
+重新启动容器引擎以使更新生效。
 
 | 平台 | 命令 |
 | --------- | -------- |
@@ -431,7 +431,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 }
 ```
 
-请确保同时为*edgeAgent*和*edgeHub*模块设置此设置。
+务必同时为*edgeAgent*和*edgeHub*模块设置此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

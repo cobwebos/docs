@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 管理 Azure 服务总线资源 | Microsoft Docs
-description: 使用 PowerShell 模块创建和管理服务总线资源
+description: 本文介绍如何使用 Azure PowerShell 模块来创建和管理服务总线实体（命名空间、队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311040"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759238"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
@@ -37,13 +37,13 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>开始体验
 
 第一步是使用 PowerShell 登录 Azure 帐户和 Azure 订阅。 按照 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)中的说明登录 Azure 帐户，检索并访问 Azure 订阅中的资源。
 
 ## <a name="provision-a-service-bus-namespace"></a>设置 Service Bus 命名空间
 
-使用服务总线命名空间，可以使用[Get AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace)，[新建 AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace)，[删除 AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)，并且[集 AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) cmdlet。
+使用 Service Bus 命名空间时，你可以使用[AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace)、 [AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace)、 [AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)和[AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) cmdlet。
 
 本示例在脚本中创建几个本地变量：`$Namespace` 和 `$Location`。
 
@@ -83,7 +83,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 ### <a name="create-a-namespace-authorization-rule"></a>创建命名空间授权规则
 
-下面的示例演示如何管理使用的命名空间授权规则[新建 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)， [Get AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)， [集 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)，并[删除 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) cmdlet。
+下面的示例演示如何使用[AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)、 [AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)、 [AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)和[AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) cmdlet 管理命名空间授权规则。
 
 ```powershell
 # Query to see if rule exists
@@ -147,7 +147,7 @@ else
 
 ### <a name="modify-queue-properties"></a>修改队列属性
 
-在上一部分中执行该脚本之后, 可以使用[集 AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) cmdlet 可更新队列，如以下示例所示的属性：
+执行上一部分中的脚本后，可以使用[AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) cmdlet 更新队列的属性，如以下示例中所示：
 
 ```powershell
 $CurrentQ.DeadLetteringOnMessageExpiration = $True
@@ -170,8 +170,8 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 这些博客文章介绍管理服务总线实体的一些备选方法：
 
-* [How to create Service Bus queues, topics and subscriptions using a PowerShell script（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
+* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

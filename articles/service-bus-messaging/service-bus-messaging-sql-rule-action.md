@@ -1,6 +1,6 @@
 ---
-title: Azure 中的 SQLRuleAction 语法参考 | Microsoft Docs
-description: 有关 SQLRuleAction 语法的详细信息。
+title: Azure 服务总线中的 SQLRuleAction 语法参考
+description: 本文提供 SQLRuleAction 语法参考。 操作用基于 SQL 语言的语法编写，该语法针对中转消息执行。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60307472"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759622"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction 语法
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 
 *SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
   
@@ -71,7 +71,7 @@ ms.locfileid: "60307472"
 
 尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 不存在的用户属性在内部是作为未知值计算的。 在运算符求值过程中，未知值的处理方式很特殊。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -92,7 +92,7 @@ ms.locfileid: "60307472"
   
  这是指任何以字母开头且后跟一个或多个下划线/字母/数字的字符串。  
   
- `[:IsLetter:]` 是指分类为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
+ `[:IsLetter:]` 是指其类别为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
   
  `[:IsDigit:]` 是指其类别为十进制数字的任何 Unicode 字符。 `System.Char.IsDigit(c)` 返回 `true`（如果 `c` 为 Unicode 数字）。  
   
@@ -127,7 +127,7 @@ ms.locfileid: "60307472"
   
 -   `_`：任何单个字符。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -140,7 +140,7 @@ ms.locfileid: "60307472"
   
  例如，`property LIKE 'ABC\%' ESCAPE '\'` 与 `ABC%` 匹配，而不是与开头为 `ABC` 的字符串配置。  
   
-## <a name="constant"></a>constant  
+## <a name="constant"></a>常量  
   
 ```  
 <constant> ::=  
@@ -158,7 +158,7 @@ ms.locfileid: "60307472"
     2  
     ```  
   
--   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
   
      在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
@@ -176,7 +176,7 @@ ms.locfileid: "60307472"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -187,7 +187,7 @@ ms.locfileid: "60307472"
   
 布尔常量以关键字 `TRUE` 或 `FALSE` 表示。 这些值以 `System.Boolean` 形式存储。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -197,7 +197,7 @@ ms.locfileid: "60307472"
   
 字符串常量使用单引号，包括任何有效的 Unicode 字符。 嵌入字符串常量中的单引号采用两个单引号的形式。  
   
-## <a name="function"></a>function  
+## <a name="function"></a>函数  
   
 ```  
 <function> :=  
