@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422344"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756294"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -84,6 +84,8 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="fixed-issues"></a>修复的问题
 
 在某些情况下，自动升级到版本1.4.18.0 的服务器不会在升级完成后重新启用自助密码重置和密码写回。 此自动升级版本修复了该问题，并重新启用了自助服务密码重置和密码写回。
+
+修复了同步错误压缩实用工具中未正确处理代理项字符的 bug。
 
 ## <a name="14180"></a>1.4.18.0
 
