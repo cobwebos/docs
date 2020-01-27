@@ -27,7 +27,7 @@
       href: body-joints.md
     - name: 人体跟踪索引映射
       href: body-index-map.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用传感器 SDK
       items:
@@ -79,6 +79,8 @@
       href: system-requirements.md
     - name: 硬件规格
       href: hardware-specification.md
+    - name: 多相机同步
+      href: multi-camera-sync.md
     - name: 与 Kinect for Windows 的比较
       href: windows-comparison.md
     - name: Azure Kinect 支持

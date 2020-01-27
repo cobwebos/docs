@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: 32b6c2d840c602a04e12a77004f5d981cdaca911
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: f94a1da3ddc4166a4c8636c5f109af0cd611f01b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931717"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270549"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
 
@@ -24,11 +24,12 @@ ms.locfileid: "73931717"
 
 整篇文章使用了以下缩写术语。
 
-* NFOV（窄视场深度模式）
-* WFOV（宽视场深度模式）
-* FOV（视场）
-* FPS（每秒帧数）
-* IMU（惯性测量单元）
+- NFOV（窄视场深度模式）
+- WFOV（宽视场深度模式）
+- FOV（视场）
+- FPS（每秒帧数）
+- IMU（惯性测量单元）
+- FoI（感兴趣的字段）
 
 ## <a name="product-dimensions-and-weight"></a>产品尺寸和重量
 
@@ -55,13 +56,13 @@ Azure Kinect DK 适用于在以下环境条件下工作的开发人员和商业�
 
 Azure Kinect DK 集成了 Microsoft 设计的 1 兆像素时差测距 (ToF) 深度相机，该相机使用[符合 ISSCC 2018 的图像传感器](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018)。 深度相机支持如下所述的模式：
 
- | Mode            | 解决方法 | FOI       | FPS                | 工作范围* | 曝光时间 |
+ | “模式”            | 解决方法 | FoI       | FPS                | 工作范围* | 曝光时间 |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
 | NFOV 非装箱   | 640x576    | 75°x65°   | 0、5、15、30       | 0.5 - 3.86 米       | 12.8 毫秒        |
 | NFOV 2x2 装箱 (SW) | 320x288    | 75°x65°   | 0、5、15、30       | 0.5 - 5.46 米       | 12.8 毫秒        |
 | WFOV 2x2 装箱 | 512x512    | 120°x120° | 0、5、15、30       | 0.25 - 2.88 米      | 12.8 毫秒        |
 | WFOV 非装箱   | 1024x1024  | 120°x120° | 0、5、15           | 0.25 - 2.21 米      | 20.3 毫秒        |
-| 被动 IR      | 1024x1024  | 不适用       | 0、5、15、30       | 不适用              | 1.6 毫秒         |
+| 被动 IR      | 1024x1024  | 空值       | 0、5、15、30       | 空值              | 1.6 毫秒         |
 
 \*850nm 时 15% 到 95% 的反射率，2.2 μW/cm<sup>2</sup>/nm，随机误差标准偏差 ≤ 17 mm，典型系统误差 < 11 mm + 0.1% 的距离（无多路径干扰）。 超出指示范围的深度取决于对象反射率。
 
@@ -102,6 +103,14 @@ RGB 相机与 USB 视频类兼容，可以在未安装传感器 SDK 的情况下
 |  -1|  500000| 100000| 100000 |
 |   0| 1000000| 120000| 116670 |
 |   1| 2000000| 130000| 133330 |
+
+## <a name="depth-sensor-raw-timing"></a>深度传感器原始计时
+
+深度模式 | IR <br>脉冲 | 脉冲 <br>宽度  | 空闲 <br>周期| 空闲时间 | 曝光 <br> 时间
+-|-|-|-|-|-
+NFOV 非装箱 <br>  NFOV 2xx 装箱 <br> WFOV 2x2 装箱 | 9 | 125 微秒 | 8 | 1450 微秒 | 12.8 毫秒 
+WFOV 非装箱                                            | 9 | 125 微秒 | 8 | 2390 微秒 | 20.3 毫秒
+
 
 ## <a name="camera-field-of-view"></a>相机视场
 
@@ -196,20 +205,6 @@ Azure Kinect DK 的最大功率为 5.9W；具体的功耗与用例相关。
 ## <a name="calibration"></a>校准
 
 Azure Kinect DK 在出厂之前已校准。 可通过传感器 SDK 以编程方式查询视觉传感器和惯性传感器的校准参数。
-
-## <a name="external-synchronization"></a>外部同步
-
-设备包含 3.5 mm 同步插孔，可将多个单元链接到一起。 链接后，相机可以协调深度相机和 RGB 相机的触发时间。 设备上专门配备了内同步和外同步插孔，可以轻松组建菊花链。 兼容的线缆未随设备附送，必须单独购买。
-
-线缆要求：
-
-- 3.5-mm 插针式公对公线缆（“3.5-mm 音频线”）
-- 最大线缆长度 < 10 米
-- 支持立体声和单音线缆
-
-在同步捕获中使用多个深度相机的线缆时，深度相机捕获应相互偏移 160us 或更多，以避免深度相机干扰。
-
-有关[外部同步设置](https://support.microsoft.com/help/4494429)的更多详细信息
 
 ## <a name="device-recovery"></a>设备恢复
 

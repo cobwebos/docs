@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868637"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167623"
 ---
 # <a name="what-is-identity-provisioning"></a>什么是标识预配？
 
@@ -50,9 +50,7 @@ ms.locfileid: "74868637"
 
 ![云预配](media/what-is-provisioning/cloud3.png)
 
-应用预配涉及到在用户需要访问的应用程序中预配用户和角色。  
-
-最常见的场景是，将 Azure AD 中的用户预配到 O365 或 Salesforce。
+在 Azure Active Directory (Azure AD) 中，术语 **[应用预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** 是指在用户需要访问的云应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) 等应用程序中。
 
 ## <a name="directory-provisioning"></a>目录预配
 

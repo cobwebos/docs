@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152964"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>教程：Azure Active Directory 与 &frankly 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "73152964"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 &frankly 的集成，需要具有以下项：
 
@@ -123,19 +123,15 @@ ms.locfileid: "73152964"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 &frankly”部分中，根据要求复制相应 URL  。
-
-    ![复制配置 URL](common/copy-configuration-urls.png)
-
-    a. 登录 URL
-
-    b. Azure AD 标识符
-
-    c. 注销 URL
 
 ### <a name="configure-frankly-single-sign-on"></a>配置 &frankly 单一登录
 
-若要在 &frankly 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [&frankly 支持团队](mailto:help@andfrankly.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 &frankly 中启用单一登录，请执行以下操作：
+
+1. 登录到 &frankly。 转到“帐户”   > “用户管理”  。
+1. 将身份验证机制从默认值更改为“企业登录(SAML)”  。
+1. 上传在上一部分的步骤 6 中下载的**联合元数据 XML**。
+1. 选择“保存”。 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

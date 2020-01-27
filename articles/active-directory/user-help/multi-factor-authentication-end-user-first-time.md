@@ -1,6 +1,6 @@
 ---
-title: 设置双重验证方法概述 - Azure Active Directory | Microsoft Docs
-description: 概述如何为双重验证设置双重验证方法。
+title: 什么是“附加验证”页？ - Azure AD
+description: 如何进入“附加安全验证”页进行两因素验证。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -8,22 +8,24 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/12/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83bba343ac73fd0df575ae1e8a83c589a0bc15ac
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7dfcc02928cc92aedd0eb0f966bea9804be5fdcc
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616164"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156244"
 ---
-# <a name="set-up-your-two-factor-verification-methods-overview"></a>设置双重验证方法概述
+# <a name="what-is-the-additional-verification-page"></a>什么是“附加验证”页？
 
-你的组织已启用双重验证，这意味着，现在登录工作或学校帐户需要结合用户名、密码、移动设备或手机。 你的组织启用了此额外验证，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品，比只使用密码更安全。 双重验证有助于防止恶意黑客假装你的身份，因为即使他们有你的密码，也不太可能有你的设备。
+假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出组织已对你的帐户添加了附加的安全验证。 这意味着什么？ 这意味着组织要采取额外的措施来确保使用你帐户登录的是你本人。 这种额外的验证也称双重验证，是使用用户名、密码和移动设备或电话的组合来实现的。
+
+双重验证比单纯使用密码更安全，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品。 你知道的事情就是你的密码。 你拥有的物品就是你经常携带的手机或设备。 双重验证有助于防止恶意黑客假装你的身份，因为即使他们有你的密码，也不太可能有你的设备。
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
+>本文适用于尝试通过工作或学校帐户（如 alain@contoso.com）使用双因素验证的用户。 如果你是管理员，正在查找有关如何为你的员工或其他用户启用双因素验证的信息，请参阅 [Azure Active Directory 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/)。
 
 ## <a name="who-decides-if-you-use-this-feature"></a>谁决定是否要使用此功能？
 
@@ -31,7 +33,10 @@ ms.locfileid: "69616164"
 
 - **工作或学校帐户。** 如果你使用工作或学校帐户（例如 alain@contoso.com），则由你的组织决定是否必须使用双重验证，以及具体的验证方法是什么。 由于你的组织已决定你必须使用此功能，因此无法单独将其关闭。
 
-- **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 如果无法使用双重验证和个人 Microsoft 帐户，请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。 因为你选择是否使用此功能，则可随时将其打开或关闭。
+- **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 如果无法使用双重验证和个人 Microsoft 帐户，请参阅[为你的 Microsoft 帐户打开或关闭双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。 因为你选择是否使用此功能，所以可根据需要随时将其打开或关闭。
+
+    >[!Note]
+    >如果你在使用双因素验证和其中一个个人 Microsoft 帐户（例如，danielle@outlook.com）时遇到问题，可以尝试有关[如何对 Microsoft 帐户使用双重验证](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)的建议。
 
 ## <a name="access-the-additional-security-verification-page"></a>访问“其他安全性验证”页
 
@@ -69,6 +74,6 @@ ms.locfileid: "69616164"
 
 - [管理应用密码](multi-factor-authentication-end-user-app-passwords.md)
 
-- [使用双重验证进行登录](multi-factor-authentication-end-user-signin.md)
+- [使用双重验证登录](multi-factor-authentication-end-user-signin.md)
 
 - [获取有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md) 

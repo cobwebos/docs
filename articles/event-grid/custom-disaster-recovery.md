@@ -1,18 +1,18 @@
 ---
 title: Azure 事件网格中自定义主题的灾难恢复
-description: 了解如何从区域性服务中断恢复，使 Azure 事件网格保持连接。
+description: 本教程逐步讲解如何设置事件处理体系结构，以便在区域中的事件网格服务运行不正常时能够予以恢复。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790276"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511512"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
@@ -46,7 +46,7 @@ ms.locfileid: "72790276"
 
 首先创建两个事件网格主题。 这些主题充当主要和辅助主题。 默认情况下，事件将会通过主要主题传送。 如果主要区域中发生服务中断，次要区域将接管工作。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。   
 

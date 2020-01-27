@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB 中的内置 Jupyter 笔记本支持简介
+title: Azure Cosmos DB（预览版）中的内置 Jupyter 笔记本支持简介
 description: 了解如何使用 Azure Cosmos DB 中的内置 Jupyter 笔记本支持以交互方式运行查询。
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756967"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260865"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Azure Cosmos DB 中的内置 Jupyter 笔记本支持
 

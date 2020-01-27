@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964183"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293430"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>教程：将 Dropbox for Business 与 Azure Active Directory 集成
 
@@ -33,7 +32,7 @@ ms.locfileid: "74964183"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,6 +44,7 @@ ms.locfileid: "74964183"
 * 本教程在测试环境中配置并测试 Azure AD SSO。 Dropbox for Business 支持 SP 发起的 SSO 
 
 * Dropbox for Business 支持[自动用户预配和取消预配](dropboxforbusiness-tutorial.md)
+* 配置 Dropbox 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>从库中添加 Dropbox for Business
 
@@ -63,14 +63,14 @@ ms.locfileid: "74964183"
 
 若要配置和测试 Dropbox for Business 的 Azure AD SSO，请完成以下构建基块：
 
-1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 Dropbox for Business SSO](#configure-dropbox-for-business-sso)** - 在应用程序端配置单一登录。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Dropbox for Business 测试用户](#create-dropbox-for-business-test-user)** - 在 Dropbox for Business 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。    
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Dropbox for Business SSO](#configure-dropbox-for-business-sso)** - 在应用程序端配置单一登录。
+    1. **[创建 Dropbox for Business 测试用户](#create-dropbox-for-business-test-user)** - 在 Dropbox for Business 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -103,13 +103,44 @@ ms.locfileid: "74964183"
 
     c. 注销 URL
 
-### <a name="configure-dropbox-for-business-sso"></a>配置 Dropbox for Business SSO
+
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `Britta Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 Dropbox for Business 的权限，允许她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Dropbox for Business”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-dropbox-for-business-sso"></a>配置 Dropbox for Business SSO
 
 1. 若要在 Dropbox for Business 中自动完成配置，需要单击“安装扩展”安装“我的应用安全登录浏览器扩展”。  
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，单击“安装 Dropbox for Business”  会定向到 Dropbox for Business 应用程序。 在此处，请提供用于登录到 Dropbox for Business 的管理员凭据。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-8。
+2. 将扩展添加到浏览器后，单击“安装 Dropbox for Business”  会定向到 Dropbox for Business 应用程序。 在此处，请提供用于登录到 Dropbox for Business 的管理员凭据。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-8。
 
     ![设置配置](common/setup-sso.png)
 
@@ -149,36 +180,6 @@ ms.locfileid: "74964183"
 
     e. 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Dropbox for Business 的权限，允许她使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Dropbox for Business”  。
-1. 在应用的概览页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-dropbox-for-business-test-user"></a>创建 Dropbox for Business 测试用户
 
 本部分将在 Dropbox for Business 中创建一个名为 Britta Simon 的用户。 Dropbox for Business 支持在默认情况下启用的实时用户预配。 此部分不存在任何操作项。 如果 Dropbox for Business 中尚不存在用户，则会在身份验证后创建一个新用户。
@@ -196,4 +197,6 @@ ms.locfileid: "74964183"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+
+- [如何通过高级可见性和控制保护 Dropbox](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

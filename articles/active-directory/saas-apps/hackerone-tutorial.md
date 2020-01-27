@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768140"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "75768140"
 
     ![HackerOne 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”  文本框中，输入以下内容：`https://hackerone.com/users/saml/auth`
+    a. 在“登录 URL”  文本框中，输入以下内容：`https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. 在“标识符(实体 ID)”  文本框中，输入以下内容：`hackerone.com`
 
@@ -155,7 +155,13 @@ ms.locfileid: "75768140"
 
     a. 单击“运行测试”。 
 
-    b. 如果“状态”  字段的值为“上次测试状态: 已创建”  ，则请联系 [HackerOne 支持团队](mailto:support@hackerone.com)请求查看配置。
+6. 当测试成功完成并且“状态”  字段显示“上次测试状态: 成功”  时，请选择“请求验证”  按钮以提交到 HackerOne 进行审批。
+
+    ![提交到 HackerOne 进行审批](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. HackerOne 批准设置后，你可以选择“迁移用户”  按钮以要求对所有用户进行 SSO 身份验证。
+
+    ![启用 SAML](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -174,7 +180,7 @@ ms.locfileid: "75768140"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 

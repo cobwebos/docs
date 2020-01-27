@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a8a1736092578634680da5d56b5ec02f70cdde38
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885363"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 G Suite 集成
 
@@ -33,7 +32,7 @@ ms.locfileid: "73885363"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -42,7 +41,7 @@ ms.locfileid: "73885363"
 - Google Apps 订阅或 Google Cloud Platform 订阅。
 
 > [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。 本文档中是使用新用户单一登录体验进行创建的。 如果你仍在使用旧版，安装程序看起来会有所不同。 可以在 G Suite 应用程序的单一登录设置中启用新体验。 转到“Azure AD，企业应用程序”，依次选择“G Suite”、“单一登录”，然后单击“尝试新体验”     。
+> 不建议使用生产环境测试本教程中的步骤。 本文档中是使用新用户单一登录体验进行创建的。 如果你仍在使用旧版，安装程序看起来会有所不同。 可以在 G Suite 应用程序的单一登录设置中启用新体验。 转到“Azure AD，企业应用程序”，依次选择“G Suite”、“单一登录”，然后单击“尝试新体验”     。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -53,27 +52,27 @@ ms.locfileid: "73885363"
 
 1. **问：此集成是否支持 Google Cloud Platform SSO 与 Azure AD 的集成？**
 
-    答：是的。 Google Cloud Platform 和 Google Apps 共用同一个身份验证平台。 因此，若要实现 GCP 集成，需要配置 Google Apps 的 SSO。
+    A:是的。 Google Cloud Platform 和 Google Apps 共用同一个身份验证平台。 因此，若要实现 GCP 集成，需要配置 Google Apps 的 SSO。
 
 2. **问：Chromebook 和其他 Chrome 设备与 Azure AD 单一登录兼容吗？**
   
-    答：兼容，用户能够使用他们的 Azure AD 凭据登录到他们的 Chromebook 设备。 若要了解为何有时用户会两次收到输入凭据的提示，请参阅此 [G Suite 支持文章](https://support.google.com/chrome/a/answer/6060880)。
+    A:兼容，用户能够使用他们的 Azure AD 凭据登录到他们的 Chromebook 设备。 若要了解为何有时用户会两次收到输入凭据的提示，请参阅此 [G Suite 支持文章](https://support.google.com/chrome/a/answer/6060880)。
 
 3. **问：如果我启用单一登录，用户可以使用他们的 Azure AD 凭据登录到任何 Google 产品（例如 Google Classroom、GMail、Google Drive、YouTube 等）吗？**
 
-    答：可以，具体取决于你选择为组织启用或禁用的 [G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)。
+    A:可以，具体取决于你选择为组织启用或禁用的 [G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)。
 
 4. **问：我能否仅为 G Suite 用户的一个子集启用单一登录？**
 
-    答：不能，启用单一登录会立即要求所有 G Suite 用户使用他们的 Azure AD 凭据进行身份验证。 由于 G Suite 不支持具有多个标识提供者，因此，G Suite 环境的标识提供者可以是 Azure AD 或 Google - 但不能同时为两者。
+    A:不能，启用单一登录会立即要求所有 G Suite 用户使用他们的 Azure AD 凭据进行身份验证。 由于 G Suite 不支持具有多个标识提供者，因此，G Suite 环境的标识提供者可以是 Azure AD 或 Google - 但不能同时为两者。
 
 5. **问：如果用户通过 Windows 登录，他们是否会自动进行 G Suite 身份验证而不会收到输入密码的提示？**
 
-    答：有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，以在 Azure AD 和 G Suite 之间启用单一登录。
+    A:有两种用于启用此方案的选项。 第一种，用户可通过 [Azure Active Directory Join](../device-management-introduction.md) 登录到 Windows 10 设备。 或者，用户可以登录到通过域加入的方式加入到一个本地 Active Directory（已通加 [Active Directory 联合身份验证服务 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署启用 Azure AD 单一登录）的 Windows 设备。 两种选项都要求执行以下教程中的步骤，以在 Azure AD 和 G Suite 之间启用单一登录。
 
 6. **问：当我收到"无效的电子邮件"错误消息时，该怎么办？**
 
-    答：对于此设置，需要电子邮件属性才能使用户进行登录。 无法手动设置此属性。
+    A:对于此设置，需要电子邮件属性才能使用户进行登录。 无法手动设置此属性。
 
     对于任何拥有有效的 Exchange 许可证的用户，电子邮件属性会自动填充。 如果用户未启用电子邮件，则将收到此错误，因为应用程序需要获取此属性才能提供访问权限。
 
@@ -88,6 +87,7 @@ ms.locfileid: "73885363"
 * G Suite 支持“SP”发起的 SSO 
 
 * G Suite 支持[**自动**用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+* 配置 G Suite 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-g-suite-from-the-gallery"></a>从库添加 G Suite
 
@@ -154,31 +154,8 @@ ms.locfileid: "73885363"
 
 1. G Suite 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “唯一用户标识符”的默认值是“user.userprincipalname”，但 G Suite 要求通过用户的电子邮件地址映射此项   。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
-
-    | Name | 源属性 |
-    | ---------------| --------------- |
-    | 唯一用户标识符 | User.mail |
-
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    ![图像](common/new-save-attribute.png)
-
-    ![图像](common/new-attribute-details.png)
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 将“命名空间”留空  。
-
-    d. 选择“源”作为“属性”  。
-
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    f. 单击“确定” 
-
-    g. 单击“ **保存**”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -222,7 +199,7 @@ ms.locfileid: "73885363"
 
 1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](https://admin.google.com/)。
 
-2. 单击“安全”  。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”  菜单下。
+2. 单击 **“安全性”** 。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”  菜单下。
 
     ![单击“安全”。][10]
 
@@ -246,7 +223,7 @@ ms.locfileid: "73885363"
 
     f. 按照 Azure AD 中的上述“基本 SAML 配置”部分提供的说明，勾选/取消选中“使用特定于域的颁发者”选项。  
 
-    g. 单击“保存更改”  。
+    g. 单击 **“保存更改”** 。
 
 ### <a name="create-g-suite-test-user"></a>创建 G Suite 测试用户
 
@@ -275,7 +252,9 @@ G Suite 还支持自动用户预配。 若要配置自动用户预配，你必�
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 - [在 Azure AD 中试用 G Suite](https://aad.portal.azure.com/)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
+- [如何通过高级可见性和控制保护 G Suite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

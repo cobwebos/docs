@@ -1,5 +1,5 @@
 ---
-title: 示例：标识图像中的人脸 - 人脸 API
+title: 示例：识别图像中的人脸 - 人脸
 titleSuffix: Azure Cognitive Services
 description: 本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977176"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169920"
 ---
 # <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
 
-本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸 API 客户端库以 C# 编写的。
+本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸客户端库以 C# 编写的。
 
 ## <a name="preparation"></a>准备工作
 
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>步骤 4：根据定义的 PersonGroup 标识人脸
 
-当人脸 API 执行识别时，它会计算某个测试人脸与组中所有人脸的相似性。 它将返回与该测试人脸最有可比性的人。 此过程是通过 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或客户端库的 IdentifyAsync 方法完成的。
+当人脸服务执行识别时，它会计算某个测试人脸与组中所有人脸的相似性。 它将返回与该测试人脸最有可比性的人。 此过程是通过 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或客户端库的 IdentifyAsync 方法完成的。
 
 必须使用前面的步骤检测测试人脸。 然后将人脸 ID 作为另一个参数传递给识别 API。 可以一次性识别多个人脸 ID。 结果包含所有识别到的结果。 默认情况下，识别过程仅返回与测试人脸最匹配的一个人。 可根据需要指定可选参数 maxNumOfCandidatesReturned，让识别过程返回更多候选项。
 
@@ -173,7 +173,7 @@ using (Stream s = File.OpenRead(testImageFile))
 根据以往的设计限制，一个 PersonGroup 最多可以包含 10,000 个人。
 若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本指南介绍了如何创建 PersonGroup 并识别某个人。 其中解释并演示了以下功能：
 
@@ -186,6 +186,6 @@ using (Stream s = File.OpenRead(testImageFile))
 ## <a name="related-topics"></a>相关主题
 
 - [人脸识别的概念](../concepts/face-recognition.md)
-- [在图像中检测人脸](HowtoDetectFacesinImage.md)
+- [检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [添加人脸](how-to-add-faces.md)
 - [使用大规模功能](how-to-use-large-scale.md)

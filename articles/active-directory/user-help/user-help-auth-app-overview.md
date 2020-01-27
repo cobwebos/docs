@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator 应用概述 - Azure Active Directory | Microsoft Docs
+title: 什么是 Microsoft Authenticator 应用？ - Azure Active Directory | Microsoft Docs
 description: 了解 Microsoft Authenticator 应用，包括其概念、工作原理，以及本部分包括的信息。
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382331"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155802"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
-
->[!Important]
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。
 
@@ -37,9 +34,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 > [!Important]
 > Microsoft Authenticator 应用可与使用双因素验证并支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
 >
-> 组织可能要求你使用验证器应用来登录和访问组织数据和文档。 尽管用户名可能会在应用中显示，但在完成注册过程前，该帐户实际上并未设置为用作验证方法。 有关详细信息，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)。
-> 
-> 如果在登录帐户时遇到问题，请参阅[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429)以获取帮助。 详细了解如何解决在尝试登录 Microsoft 帐户时收到“[该 Microsoft 帐户不存在](https://support.microsoft.com/help/13811)”消息的问题。
+>本文适用于尝试下载并使用 Microsoft Authenticator 应用作为安全验证方法的用户。 如果你是管理员，正在查找有关如何使用 Authenticator 应用为你的员工和其他用户启用无密码登录的信息，请参阅[使用 Microsoft Authenticator 应用启用无密码登录(预览版)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)。
 
 ## <a name="terminology"></a>术语
 
@@ -59,7 +54,7 @@ Microsoft Authenticator 应用通过两种方式执行双重验证：
 
 - **验证码。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名和密码，然后复制 Microsoft Authenticator 应用的“帐户”屏幕中显示的关联验证码。  验证码也称为一次性密码 (OTP) 身份验证。
 
-- **无密码登录。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名，然后在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 使用此方法无需输入密码。
+- **无密码登录。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名，然后在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 对于这种方法，无需输入密码。
 
 ### <a name="whether-to-use-your-devices-biometric-capabilities"></a>是否使用设备的生物识别功能
 
@@ -75,9 +70,9 @@ Microsoft Authenticator 应用通过两种方式执行双重验证：
 
 - **非 Microsoft 帐户。** 可以选择为非 Microsoft 帐户（例如 alain@gmail.com）设置双重验证。 非 Microsoft 帐户可能不使用“两重验证”这一术语，但你应该可以在“安全性”或“登录”设置中找到类似功能。   Microsoft Authenticator 应用适用于支持 TOTP 标准的任何帐户。 有关添加非 Microsoft 帐户的详细信息，请参阅[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)。
 
-## <a name="in-this-section"></a>本节内容
+## <a name="in-this-section"></a>在本节中
 
-| 文章 | 说明 |
+| 项目 | 说明 |
 | ------ | ------------ |
 | [下载并安装应用](user-help-auth-app-download-install.md) | 介绍了从何处以及如何为运行 Android 和 iOS 的设备获取并安装 Microsoft Authenticator 应用。 |
 | [添加工作或学校帐户](user-help-auth-app-add-work-school-account.md) | 介绍如何将各种工作或学校帐户和个人帐户添加到 Microsoft Authenticator 应用。 |

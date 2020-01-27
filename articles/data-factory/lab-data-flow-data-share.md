@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865219"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156720"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "75865219"
 
 ![门户](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>使用复制活动将数据从 Azure SQL 数据库引入 ADLS Gen2
+## <a name="ingest-data-using-the-copy-activity"></a>使用复制活动引入数据
 
 在本部分，你将创建一个包含复制活动的管道，该活动将一个表从 Azure SQL 数据库引入 ADLS Gen2 存储帐户。 你将了解如何通过 ADF UX 添加管道、配置数据集和调试管道。 本部分使用的配置模式适用于从关系数据存储复制到基于文件的数据存储。
 

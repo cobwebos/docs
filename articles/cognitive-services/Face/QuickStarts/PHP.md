@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 PHP 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用人脸 API 和 PHP 检测图像中的人脸。
+description: 在本快速入门中，你将使用人脸 REST API 和 PHP 检测图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977924"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169737"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入门：使用 REST API 和 PHP 检测图像中的人脸
 
 在本快速入门中，将使用 Azure 人脸 REST API 和 PHP 来检测图像中的人脸。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
+- 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。
 - 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
 - PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 包。
 - 支持 PHP 的 Web 浏览器。 如果尚未进行设置，可以在计算机上安装并设置 [XAMPP](https://www.apachefriends.org/)。
@@ -288,7 +288,7 @@ catch (HttpException $ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于检测图像中人脸的人脸 API，使用矩形划分人脸，并返回年龄和性别等属性。
+探索用于检测图像中人脸的人脸 API，使用矩形定人脸界线，并返回年龄和性别等属性。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

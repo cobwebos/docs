@@ -4,14 +4,14 @@ description: 本文概述了如何使用 Azure 自动化更改管理来管理 Az
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420637"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310129"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -141,7 +141,7 @@ ms.locfileid: "75420637"
 
 * **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示   。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
-* **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
+* **更新分类**：选择可用于更新部署中包含的每个产品的受支持更新分类。 对于本教程，请保留所有选定的类型。
 
   分类类型：
 
@@ -156,6 +156,10 @@ ms.locfileid: "75420637"
 
 > [!NOTE]
 > 请务必注意，排除项会替代包含项。 例如，如果定义 `*` 的排除规则，全部排除后将不会安装任何修补程序或包。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含包且已排除相关包，将不会安装此包。
+
+> [!NOTE]
+> 你不能指定已被取代的更新包含在更新部署中。
+>
 
 * **计划设置**：打开“计划设置”窗格  。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
 

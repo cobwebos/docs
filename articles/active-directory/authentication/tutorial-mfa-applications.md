@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846396"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154833"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>教程：完成 Azure 多重身份验证试验试点推广
 
@@ -26,7 +26,7 @@ ms.locfileid: "74846396"
 > * 启用 Azure 多重身份验证
 > * 测试 Azure 多重身份验证
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个至少启用了试用版许可证的有效 Azure AD 租户。
 * 一个具有全局管理员权限的帐户。
@@ -36,7 +36,7 @@ ms.locfileid: "74846396"
 ## <a name="enable-azure-multi-factor-authentication"></a>启用 Azure 多重身份验证
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”  
+1. 浏览到“Azure Active Directory”   > “安全性”   > “条件访问” 
 1. 选择“新建策略” 
 1. 将策略命名为“MFA 试点” 
 1. 在“用户和组”  下，选择“选择用户和组”  单选按钮
@@ -47,7 +47,7 @@ ms.locfileid: "74846396"
     * 单击“选择” 
     * 单击“完成” 
 1. 跳过“条件”  部分
-1. 在“授予”  下，确保选择“授权访问”  单选按钮
+1. 在“授予”下，确保选中“授权访问”单选按钮  
     * 选中“要求多重身份验证”复选框 
     * 单击“选择” 
 1. 跳过“会话”  部分
@@ -59,20 +59,20 @@ ms.locfileid: "74846396"
 为了证明条件访问策略正常工作，请通过以下方式进行测试：登录到不要求 MFA 的某个资源，然后登录到要求 MFA 的 Azure 门户。
 
 1. 在 InPrivate 或 incognito 模式下打开新的浏览器窗口并浏览到 [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)。
-   * 使用在本文的先决条件部分中创建的测试用户进行登录，注意，应当不会要求你完成 MFA。
+   * 使用在本文的先决条件部分创建的测试用户登录，你将发现，系统不会要求你完成 MFA。
    * 关闭浏览器窗口。
-2. 在 InPrivate 或 incognito 模式下打开一个新的浏览器窗口并浏览到 [https://portal.azure.com](https://portal.azure.com)。
-   * 使用在本文的先决条件部分中创建的测试用户进行登录，注意，现在应当会要求你注册并使用 Azure 多重身份验证。
+2. 在 InPrivate 或 incognito 模式下打开新的浏览器窗口并浏览到 [https://portal.azure.com](https://portal.azure.com)。
+   * 使用在本文的先决条件部分创建的测试用户登录，你将发现，现在系统要求你注册并使用 Azure 多重身份验证。
    * 关闭浏览器窗口。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果你决定不再使用作为本教程的一部分配置的功能，请进行以下更改。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory”、“条件访问”。  
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 浏览到“Azure Active Directory”   > “安全性”   > “条件访问”  。
 1. 选择你创建的条件访问策略。
-1. 单击“删除”  。
+1. 单击 **“删除”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

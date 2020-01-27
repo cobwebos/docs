@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997082"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309993"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -58,7 +58,7 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 
 **问：如果已同步的用户在下次登录时必须更改密码，将会发生什么情况？**
 
-如果在云预配中启用了密码哈希同步，并且已同步的用户下次在本地 AD 中登录时必须更改密码，则云预配不会将要更改的密码哈希预配到 Azure AD 中。 用户更改密码后，用户密码哈希将从 AD 预配到 Azure AD。
+如果在云预配中启用了密码哈希同步，并且要求已同步用户在本地 AD 中下次登录时更改密码，则云预配不会将要更改的密码哈希预配到 Azure AD。 用户更改密码后，用户密码哈希将从 AD 预配到 Azure AD。
 
 **问：云预配是否支持写回任何对象的 ms-ds-consistencyGUID？**
 

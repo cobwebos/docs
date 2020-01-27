@@ -1,7 +1,7 @@
 ---
-title: 示例：将人脸添加到 PersonGroup - 人脸 API
+title: 示例：将人脸添加到 PersonGroup - 人脸
 titleSuffix: Azure Cognitive Services
-description: 本指南演示了如何使用 Azure 认知服务人脸 API 将大量人员和人脸添加到 PersonGroup 对象。
+description: 本指南演示了如何使用 Azure 认知服务人脸服务将大量人员和人脸添加到 PersonGroup 对象。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744241"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169829"
 ---
 # <a name="add-faces-to-a-persongroup"></a>将人脸添加到 PersonGroup
 
-本指南演示了如何将大量人员和人脸添加到 PersonGroup 对象。 此同一策略还适用于 LargePersonGroup、FaceList 和 LargeFaceList 对象。 此示例是通过 C# 使用 Azure 认知服务人脸 API .NET 客户端库编写的。
+本指南演示了如何将大量人员和人脸添加到 PersonGroup 对象。 此同一策略还适用于 LargePersonGroup、FaceList 和 LargeFaceList 对象。 此示例是通过 C# 使用 Azure 认知服务人脸 .NET 客户端库编写的。
 
 ## <a name="step-1-initialization"></a>步骤 1：初始化
 
@@ -87,7 +87,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 可同时创建所有人员，为避免超出调用限制，还会应用 `await WaitCallLimitPerSecondAsync()`。
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
@@ -120,7 +120,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本指南中，你已学习了如何创建包含大量人员和人脸的 PersonGroup。 请注意以下几点：
 

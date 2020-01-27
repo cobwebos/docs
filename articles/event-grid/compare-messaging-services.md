@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790312"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122196"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
@@ -44,7 +44,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 ## <a name="comparison-of-services"></a>服务对比
 
-| 服务 | 目的 | 类型 | 使用时机 |
+| 服务 | 目的 | 类型 | 何时使用 |
 | ------- | ------- | ---- | ----------- |
 | 事件网格 | 反应编程 | 事件分发（离散） | 对状态更改做出响应 |
 | 事件中心 | 大数据管道 | 事件流式处理（系列） | 遥测数据和分布式数据流式处理 |
@@ -90,7 +90,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="use-the-services-together"></a>同时使用多种服务
 
-在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已云发货）。
+在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已发货）。
 
 在其他情况下，可将它们链接在一起以形成事件和数据管道。 使用事件网格可响应其他服务中的事件。 有关结合使用事件网格和事件中心以将数据迁移到数据仓库的实例，请参阅[将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)。 下图显示流式处理数据的工作流。
 

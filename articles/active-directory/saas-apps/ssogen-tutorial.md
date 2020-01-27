@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841c2b7067427b703d2aa7647e0c0c3ef2287c6e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773581"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>教程：Azure Active Directory 与 SSOGEN（用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关）的单一登录 (SSO) 集成
 
@@ -43,7 +43,8 @@ ms.locfileid: "75773581"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* SSOGEN（用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关）支持 **SP 和 IDP** 启动的 SSO
+* SSOGEN - 用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关支持 **SP 和 IDP** 发起的 SSO。
+* 配置 SSOGEN - 用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -161,3 +162,7 @@ ms.locfileid: "75773581"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 SSOGEN（用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关）](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 SSOGEN - 用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

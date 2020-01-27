@@ -1,30 +1,28 @@
 ---
 title: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 description: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758288"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276790"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
 结合使用 [Kubernetes 服务目录][kubernetes-service-catalog]和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅
 
-* Azure CLI：可[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
+* Azure CLI：[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
-* Helm CLI 2.7+：可[在本地安装][helm-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
+* Helm CLI 2.7+：[在本地安装][helm-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
 * 使用 Azure 订阅上的参与者角色创建服务主体的权限
 
@@ -146,7 +144,7 @@ chmod +x ./svcat
 ./svcat get brokers
 ```
 
-应该会看到与下面类似的输出：
+会得到类似于下面的输出：
 
 ```
   NAME                               URL                                STATUS
@@ -191,7 +189,7 @@ kubectl get secrets -n wordpress -o yaml
 
 遵照此文章的说明，已将服务目录部署到 Azure Kubernetes 服务 (AKS) 群集。 并使用 Open Service Broker for Azure 部署了 WordPress 安装，后者使用 Azure 托管服务（在此例中为 Azure Database for MySQL）。
 
-请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解如何创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
+请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
 
 <!-- LINKS - external -->
 [helm-charts]: https://github.com/Azure/helm-charts

@@ -3,8 +3,7 @@ title: 有关将功能标志添加到 Spring Boot 的快速入门 - Azure 应用
 description: 有关将功能标志添加到 Spring Boot 应用以及在 Azure 应用程序配置中管理这些标志的快速入门
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184950"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310044"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入门：将功能标志添加到 Spring Boot 应用
 
@@ -27,7 +26,7 @@ ms.locfileid: "74184950"
 
 Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架。 这些库**不**依赖于任何 Azure 库。 它们可以通过其 Spring Boot 配置提供程序无缝集成到应用程序配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 支持的 [Java 开发工具包 SDK](https://docs.microsoft.com/java/azure/jdk) 版本 8。
@@ -54,7 +53,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
    - 使用 **Java** 生成一个 **Maven** 项目。
    - 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
    - 指定应用程序的“组”和“项目”名称。  
-   - 添加 **Web** 依赖项。
+   - 添加 **Spring Web** 依赖项。
 
 3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
 
@@ -68,12 +67,12 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 打开位于应用资源目录下的 `bootstrap.properties`，将以下行添加到该文件中。 添加应用配置信息。
+1. 打开应用的 resources  目录下的 bootstrap.properties  。 如果 bootstrap.properties  不存在，则创建它。 将以下行添加到该文件。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. 在配置存储的应用程序配置门户中，转到“访问密钥”。 选择“只读密钥”选项卡。在此选项卡中，复制某个连接字符串的值，并将其添加为变量名称为 `APP_CONFIGURATION_CONNECTION_STRING` 的新环境变量。
+1. 在配置存储的应用程序配置门户中，转到“访问密钥”。 选择“只读密钥”选项卡。在此选项卡中，复制某个连接字符串的值，并将其添加为变量名称为 `APP_CONFIGURATION_CONNECTION_STRING` 的新环境变量。
 
-3. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
+1. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
+1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     }
     ```
 
-5. 在应用的 templates 目录中，创建名为 *welcome.html* 的新 HTML 文件。 添加以下行：
+1. 在应用的 templates 目录中，创建名为 *welcome.html* 的新 HTML 文件。 添加以下行：
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
     ```
 
-6. 在 static 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。 添加以下行：
+1. 在 static 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。 添加以下行：
 
     ```css
     html {

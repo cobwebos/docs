@@ -1,5 +1,5 @@
 ---
-title: 示例：使用大规模功能 - 人脸 API
+title: 示例：使用大规模功能 - 人脸
 titleSuffix: Azure Cognitive Services
 description: 本指南是有关如何从现有 PersonGroup 和 FaceList 对象纵向扩展到 LargePersonGroup 和 LargeFaceList 对象的文章。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743727"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169778"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 
@@ -23,14 +23,14 @@ ms.locfileid: "73743727"
 
 LargePersonGroup 和 LargeFaceList 统称为大规模操作。 LargePersonGroup 最多可以包含 100 万个人，其中每个人最多有 248 张人脸。 LargeFaceList 最多可以包含 100 万张人脸。 大规模操作类似于传统的 PersonGroup 和 FaceList，但因采用新体系结构而有一些差异。 
 
-这些示例是使用 Azure 认知服务人脸 API 客户端库以 C# 编写的。
+这些示例是使用 Azure 认知服务人脸客户端库以 C# 编写的。
 
 > [!NOTE]
 > 为了在大规模的 Identification 和 FindSimilar 操作中提高人脸搜索的性能，我们引入了一个“训练”操作用于预处理 LargeFaceList 和 LargePersonGroup。 训练时间从几秒到约半小时不等，具体取决于实际容量。 如果以前的某个训练操作成功，则在训练期间，可以执行 Identification 和 FindSimilar。 缺点在于，在完成迁移到大规模训练的最新后处理前，新添加的人员和人脸不会出现在结果中。
 
 ## <a name="step-1-initialize-the-client-object"></a>步骤 1：初始化客户端对象
 
-使用人脸 API 客户端库时，订阅密钥和订阅终结点将通过 FaceClient 类的构造函数传入。 例如：
+使用人脸客户端库时，订阅密钥和订阅终结点将通过 FaceClient 类的构造函数传入。 例如：
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -261,7 +261,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 有关数据管理和识别相关实现的详细信息，请参阅[添加人脸](how-to-add-faces.md)和[在图像中识别人脸](HowtoIdentifyFacesinImage.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本指南介绍了如何将现有 PersonGroup 或 FaceList 代码（不是数据）迁移到 LargePersonGroup 或 LargeFaceList：
 
@@ -273,4 +273,4 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 请遵循操作指南了解如何将人脸添加到 PersonGroup，或针对 PersonGroup 执行“识别”操作。
 
 - [添加人脸](how-to-add-faces.md)
-- [在图像中识别人脸](HowtoIdentifyFacesinImage.md)
+- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)

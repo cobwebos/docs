@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907845"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512838"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -33,7 +33,7 @@ ms.locfileid: "69907845"
 
 - 提供完整的证书管理：为你处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
 
-本教程介绍如何执行以下操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > - 在自定义域上启用 HTTPS 协议。
 > - 使用 AFD 托管的证书 
@@ -44,7 +44,7 @@ ms.locfileid: "69907845"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在完成本教程中的步骤之前，必须先创建一个 Front Door 并至少载入一个自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Front Door](front-door-custom-domain.md)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "69907845"
 通过 PowerShell 将 Azure Front Door 服务的服务主体注册为 Azure Active Directory 中的应用。
 
 > [!NOTE]
-> 每个租户只需要执行**一**次此操作。
+> 此操作需要全局管理员权限，并且每个租户只需要执行**一次**。
 
 1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -147,7 +147,7 @@ ms.locfileid: "69907845"
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
-| Name            | 类型  | 值                 |
+| 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

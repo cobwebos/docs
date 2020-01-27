@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75843504"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548979"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
@@ -267,7 +267,7 @@ ms.locfileid: "75843504"
     * **scriptContent**：指定脚本内容。 若要运行外部脚本，请改用 **primaryScriptURI**。 有关详细信息，请参阅[使用外部脚本](./deployment-script-template.md#use-external-scripts)。
         仅当在本地计算机上测试脚本时，才需要声明 **$DeploymentScriptOutputs**。 通过声明该变量，可在本地计算机和 deploymentScript 资源中运行脚本，而无需进行更改。 分配给 $DeploymentScriptOutputs 的值可用作部署中的输出。 有关详细信息，请参阅[使用部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
     * **cleanupPreference**：指定有关何时删除部署脚本资源的首选项。  默认值为 **Always**，这意味着不管最终状态如何（成功、失败、已取消），都会删除部署脚本资源。 在本教程中，将使用 **OnSuccess**，以便你有机会查看脚本执行结果。
-    * **retentionInterval**：指定服务在达到最终状态后保留脚本资源的时间间隔。 在此持续时间到期时，将删除资源。 持续时间基于 ISO 8601 模式。 本教程使用 P1D，这意味着只有一天的时间。  当 **retentionInterval** 设置为 **OnExpiration** 时将使用此属性。 当前未启用此属性。
+    * **retentionInterval**：指定服务在达到最终状态后保留脚本资源的时间间隔。 在此持续时间到期时，将删除资源。 持续时间基于 ISO 8601 模式。 本教程使用 P1D，这意味着只有一天的时间。  当 **cleanupPreference** 设置为 **OnExpiration** 时将使用此属性。 当前未启用此属性。
 
     部署脚本采用三个参数：密钥保管库名称、证书名称和使用者名称。  它将创建一个证书，然后将该证书添加到密钥保管库。
 

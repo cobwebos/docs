@@ -1,27 +1,19 @@
 ---
-title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘 | Microsoft 文档
+title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘
 description: 了解如何通过 Azure PowerShell 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728584"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278258"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 
@@ -34,7 +26,7 @@ ms.locfileid: "66728584"
 > * 磁盘性能
 > * 附加和准备数据磁盘
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -49,7 +41,7 @@ ms.locfileid: "66728584"
 **临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”  ，且装载点为 /mnt  。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
-| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
+| 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
 | [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 1600 |
 | [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
@@ -63,7 +55,7 @@ ms.locfileid: "66728584"
 可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| Type | 常见大小 | 每个 VM 的最大数据磁盘数 |
+| 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
 | [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 64 |
 | [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |

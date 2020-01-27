@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448190"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165892"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入门：适用于 .NET 的人脸客户端库
 
-适用于 .NET 的人脸客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 人脸 API 服务可让你访问用于检测和识别图像中的人脸的高级算法。
+适用于 .NET 的人脸客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
 使用适用于 .NET 的人脸客户端库可以：
 
@@ -317,5 +317,5 @@ dotnet run
 > [!div class="nextstepaction"]
 > [人脸 API 参考 (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
-* [什么是人脸 API？](../overview.md)
+* [什么是人脸服务？](../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) 上找到此示例的源代码。

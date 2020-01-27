@@ -1,7 +1,7 @@
 ---
 title: 教程：通过 .NET SDK 检测和显示图像中的人脸数据
 titleSuffix: Azure Cognitive Services
-description: 本教程将创建一个 Windows 应用，以便使用人脸 API 来检测和定格图像中的人脸。
+description: 本教程将创建一个 Windows 应用，以便使用人脸服务来检测和定格图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977958"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165923"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>教程：创建 Windows Presentation Framework (WPF) 应用以显示图像中的人脸数据
 
-本教程介绍如何通过 .NET 客户端 SDK 使用 Azure 人脸 API 检测图像中的人脸，然后在 UI 中显示该数据。 你将创建一个 WPF 应用程序，用于检测人脸，围绕每张人脸绘制一个框架，并在状态栏中显示人脸描述。 
+本教程介绍如何通过 .NET 客户端 SDK 使用 Azure 人脸服务检测图像中的人脸，然后在 UI 中显示该数据。 你将创建一个 WPF 应用程序，用于检测人脸，围绕每张人脸绘制一个框架，并在状态栏中显示人脸描述。 
 
 本教程演示如何：
 
 > [!div class="checklist"]
 > - 创建 WPF 应用程序
-> - 安装人脸 API 客户端库
+> - 安装人脸客户端库
 > - 使用客户端库检测图像中的人脸
 > - 围绕每个检测到的人脸绘制一个框架
 > - 在状态栏上显示被框出的人脸的描述
@@ -37,9 +37,9 @@ ms.locfileid: "74977958"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
+- 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
@@ -61,7 +61,7 @@ ms.locfileid: "74977958"
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
-### <a name="create-the-main-class"></a>创建 main 类
+### <a name="create-the-main-class"></a>创建主类
 
 打开 *MainWindow.xaml.cs*，添加客户端库命名空间和其他必需的命名空间。 
 

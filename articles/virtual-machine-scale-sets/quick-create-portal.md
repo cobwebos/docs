@@ -1,9 +1,7 @@
 ---
 title: 快速入门 - 在 Azure 门户中创建虚拟机规模集
 description: 通过了解如何在 Azure 门户中快速创建虚拟机规模集来开始部署。
-services: virtual-machine-scale-sets.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351142"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543131"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -33,7 +31,7 @@ ms.locfileid: "75351142"
 
 Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正常的虚拟机实例之间分配传入流量。 
 
-首先，使用门户创建公共基本负载均衡器。 创建的名称和公共 IP 地址自动配置为负载均衡器的前端。
+首先，使用门户创建公共标准负载均衡器。 创建的名称和公共 IP 地址自动配置为负载均衡器的前端。
 
 1. 在搜索框中，键入“负载均衡器”  。 在搜索结果中的“市场”下，选取“负载均衡器”   。
 1. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息   ：

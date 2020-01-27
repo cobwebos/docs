@@ -1,23 +1,19 @@
 ---
-title: 在 H 系列 VM（Azure 虚拟机）上进行的高性能计算 | Microsoft Docs
+title: 在 H 系列 VM 上进行高性能计算 - Azure 虚拟机
 description: 了解针对 HPC 优化的 H 系列 VM 的特性和功能。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: jeconnoc
-editor: ''
+ms.author: amverma
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.author: amverma
-ms.openlocfilehash: d6e857a87e4c7df8ffb2be1eefb7a0290da5b10a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799002"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271021"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>在 H 系列 VM 上进行的高性能计算
 

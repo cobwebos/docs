@@ -1,6 +1,6 @@
 ---
 title: C++/WinRT 中的粗略重新局部化
-description: 深入介绍如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点。
+description: 深入解释了如何使用 C++/WinRT 中的粗略重新局部化来创建和查找定位点。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: dd759ed4cbda936b00ce2ac0946184f9f6581c78
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790370"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548282"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>如何使用 C++/WinRT 中的粗略重新局部化来创建和查找定位点
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -27,7 +27,7 @@ ms.locfileid: "74790370"
 
 Azure 空间定位点可以将设备上的定位传感器数据与所创建的定位点相关联。 此数据还可用于快速确定设备附近是否有任何定位点。 有关详细信息，请参阅[粗略重新局部化](../concepts/coarse-reloc.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，请确保做好以下准备：
 

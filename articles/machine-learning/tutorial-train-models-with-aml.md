@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532460"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261358"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>创建或附加现有的计算目标
 
-Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 如果工作区中尚无计算群集，以下代码将创建计算群集。
+Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 在本教程的后面部分，你将提交要在此 VM 上运行的 Python 代码。 
+
+如果工作区中尚无计算群集，以下代码将创建计算群集。
 
  **创建计算目标需要大约 5 分钟。** 如果计算资源已经在工作区中，则代码将使用它并跳过创建过程。
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-现在已有所需的包和计算资源，可以在云中定型模型。
+现在已有所需的包和计算资源，可以在云中定型模型。 
 
 ## <a name="explore-data"></a>浏览数据
 
@@ -215,7 +217,7 @@ plt.show()
 
 ## <a name="train-on-a-remote-cluster"></a>在远程群集上定型
 
-对于此任务，将作业提交到之前设置的远程定型群集。  若要提交作业：
+在此任务中，你将提交作业以在前面设置的远程训练群集上运行。  若要提交作业：
 * 创建目录
 * 创建定型脚本
 * 创建估算器对象

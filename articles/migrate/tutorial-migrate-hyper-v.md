@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyp
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028965"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545902"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -181,7 +181,7 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 - **服务总线**：“Azure Migrate:服务器迁移使用服务总线将复制业务流程消息发送到设备。
 - **网关存储帐户**：“Azure Migrate:服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 已针对 Hyper-V VM 评估和迁移[准备了 Azure](tutorial-prepare-hyper-v.md#prepare-azure)。 
+- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在[准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以进行 Hyper-V VM 评估和迁移时，应该已设置密钥保管库访问存储帐户所需的权限。 
 
 
 ## <a name="track-and-monitor"></a>跟踪和监视

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 064786de1f25c3d185984534b9a8fc61602826ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974140"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311455"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）有何不同
 
@@ -24,20 +24,19 @@ ms.locfileid: "75974140"
 
 ## <a name="about-azure-machine-learning"></a>关于 Azure 机器学习
 
-同时，[Azure 机器学习](overview-what-is-azure-ml.md)提供称为设计器（预览版）的 Web 界面以及一些 SDK 和 CLI，可以快速准备数据，以及对机器学习模型进行训练和部署  。 通过 Azure 机器学习可以获得缩放性、多个框架支持、高级 ML 功能，如自动机器学习和管道支持。
+同时，[Azure 机器学习](overview-what-is-azure-ml.md)同时提供称为设计器的 Web 界面**和**多个 SDK 和 CLI，以快速准备数据、训练和部署机器学习模型。 通过 Azure 机器学习可以获得缩放性、多个框架支持、高级 ML 功能，如自动机器学习和管道支持。
 
 Azure 机器学习设计器提供与工作室（经典版）类似的拖放体验。 但是，不像工作室（经典版）的专用计算平台，此设计器使用你自己的计算资源，可缩放，并且已完全集成到 Azure 机器学习中。  
 
 > [!TIP]
-> 鼓励当前正在使用或评估机器学习工作室（经典版）的客户尝试 [Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)（预览版），它提供拖放 ML 模块以及  可伸缩性、版本控制和企业安全性。
+> 建议当前使用或评估机器学习工作室（经典版）的客户尝试使用 [Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)，该设计器提供了拖放式 ML 模块以及  可伸缩性、版本控制和企业安全性。
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比较：Azure 机器学习与机器学习工作室（经典版）
 
 这是一个快速比较。
 
 ||  Azure 机器学习设计器|工作室（经典版） |
-|---| --- | --- |
-||设计器目前为预览版，Azure 机器学习已推出正式版|正式发布 (GA) | 
+|---| --- | --- | 
 |拖放界面| 是 | 是|
 |试验| 使用计算目标进行缩放|规模（10GB 训练数据限制） | 
 |界面的模块| [许多流行模块](algorithm-module-reference/module-reference.md) | 很多 |

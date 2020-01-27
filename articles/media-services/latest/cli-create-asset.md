@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Azure 媒体服务资产 | Microsoft Docs
+title: 使用 Azure CLI 将内容上传到 Azure 媒体服务资产
 description: 本主题中的 Azure CLI 脚本演示如何创建媒体服务资产供上传内容使用。
 services: media-services
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4b6aebc807426f533bc4c1e2c0405e69c264dc33
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0c24464050d0beee120dcb234582a464d6245270
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235972"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310639"
 ---
 # <a name="cli-example-create-an-asset"></a>CLI 示例：创建资产
 
 本文中的 Azure CLI 脚本演示如何创建媒体服务资产供上传内容使用。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 

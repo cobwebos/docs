@@ -1,5 +1,5 @@
 ---
-title: 快速入门：文本分析客户端库 | Microsoft Docs
+title: 快速入门：文本分析客户端库 v3 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: 在此快速入门中，通过 Azure 认知服务使用文本分析 API 检测语言。
 services: cognitive-services
@@ -8,54 +8,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/15/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: edd4c09bb8cf724e293f1f947eab81f0f9f7a7c8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+zone_pivot_groups: programming-languages-set-six
+ms.openlocfilehash: 41e6828f03533bfd239f6408a580150e614eb5e7
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832212"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281120"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
+# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>快速入门：使用文本分析客户端库 v3
 
 从文本分析客户端库开始操作。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
-使用文本分析客户端库执行：
+使用文本分析客户端库 `3.0-preview` 版执行以下操作：
 
-* 情绪分析
+* 情绪分析（公共预览版）
 * 语言检测
-* 实体识别
+* 命名实体识别（公共预览版）
 * 关键短语提取
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/csharp.md)]
+[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-nodejs"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-go"
-
-[!INCLUDE [Go quickstart](../includes/quickstarts/go-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-ruby"
-
-[!INCLUDE [Ruby quickstart](../includes/quickstarts/ruby-sdk.md)]
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
 
 ::: zone-end
 
@@ -70,7 +64,6 @@ ms.locfileid: "75832212"
 
 > [!div class="nextstepaction"]
 > [探索解决方案](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
-
 
 * [文本分析概述](../overview.md)
 * [情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)

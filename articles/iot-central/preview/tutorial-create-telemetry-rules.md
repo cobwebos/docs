@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979047"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262591"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知（预览功能）
 
@@ -25,21 +25,22 @@ ms.locfileid: "74979047"
 
 设备使用遥测从设备发送数值数据。 选定的设备遥测超过指定阈值时会触发规则。
 
-在本教程中，你将创建一个规则，用于在环境传感器设备中的温度超过 80&deg; F 时发送电子邮件。
+在本教程中，你将创建一个规则，用于在环境传感器设备中的温度超过 70&deg; F 时发送电子邮件。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建规则
 > * 添加电子邮件操作
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的环境传感器设备模板  。
 
 ## <a name="create-a-rule"></a>创建规则
 
-若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本教程使用可发送温度和湿度遥测数据的环境传感器设备。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 80 度时发送电子邮件。
+若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本教程使用可发送温度和湿度遥测数据的环境传感器设备。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 70 度时发送电子邮件。
 
 1. 在左窗格中，选择“规则”  。
 
@@ -57,18 +58,18 @@ ms.locfileid: "74979047"
 
 ### <a name="configure-the-rule-conditions"></a>配置规则条件
 
-条件可定义规则监视的条件。 在本教程中，请配置在温度超过 80&deg; F 时触发的规则。
+条件可定义规则监视的条件。 在本教程中，将配置在温度超过 70&deg; F 时触发的规则。
 
 1. 在“遥测”下拉列表中选择“温度”   。
 
-1. 接下来，选择“大于”作为“运算符”，并输入“80”作为“值”     。
+1. 接下来，选择“大于”作为“运算符”，并输入“70”作为“值”     。
 
     ![条件](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. （可选）可以设置“时间聚合”  。 选择时间聚合时，还必须从聚合下拉列表中选择一种聚合类型（例如，平均值或求和）。
 
-    * 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果规则配置为在温度高于 80 华氏度时触发，则当设备报告温度高于 80 华氏度时，该规则会在瞬间触发。
-    * 使用聚合时，如果时间窗口中遥测数据点的聚合值满足条件，将触发规则。 例如，如果将规则配置为在温度高于 80 华氏度时触发，将时间聚合设置为 10 分钟，并且将聚合类型设置为“平均值”，那么该规则将在设备报告平均温度高于 80 华氏度时触发（以 10 分钟以上为间隔进行计算）。
+    * 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果规则配置为在温度高于 70 度时触发，则当设备报告温度高于 70 度时，该规则会几乎立即触发。
+    * 使用聚合时，如果时间窗口中遥测数据点的聚合值满足条件，将触发规则。 例如，如果规则配置为在温度高于 70 度时触发，将时间聚合设置为 10 分钟，并且将聚合类型设置为“平均值”，那么该规则将在设备报告平均温度高于 70 度时触发（在 10 分钟间隔内计算）。
 
      ![聚合条件](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -109,7 +110,7 @@ ms.locfileid: "74979047"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 * 创建基于遥测的规则
 * 添加操作

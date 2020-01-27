@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170051"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168883"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
@@ -28,12 +28,12 @@ ms.locfileid: "71170051"
 > * 运行示例应用并与其交互以执行各种场景
 > * 探索示例应用附带的各种场景
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在探索示例应用之前，请确保已满足以下先决条件：
 
 * 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-* 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 还要记下“服务终结点 URL”。
+* 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 还要记下“服务终结点 URL”。
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 
@@ -311,4 +311,4 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [人脸 API 入门](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [人脸服务入门](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798382"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121244"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -29,7 +29,7 @@ ms.locfileid: "67798382"
 
 [将功能标志添加到 ASP.NET Core 应用快速入门](./quickstart-feature-flag-aspnet-core.md)介绍了在 ASP.NET Core 应用程序中添加功能标志的多种方法。 本教程将更详细地介绍这些方法。 有关完整参考信息，请参阅 [ASP.NET Core 功能管理文档](https://go.microsoft.com/fwlink/?linkid=2091410)。
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在应用程序的关键组件中添加功能标志，以控制功能可用性。
@@ -177,7 +177,7 @@ public enum MyFeatureFlags
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -254,7 +254,7 @@ public IActionResult Index()
 
 ## <a name="mvc-filters"></a>MVC 筛选器
 
-可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `SomeMvcFilter` 的 MVC 筛选器。 仅当已启用 `FeatureA` 时，才会在 MVC 管道内部触发此筛选器。
+可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `SomeMvcFilter` 的 MVC 筛选器。 仅当已启用 `FeatureA` 时，才会在 MVC 管道内部触发此筛选器。 此功能仅限于 `IAsyncActionFilter`。 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -267,16 +267,6 @@ public void ConfigureServices(IServiceCollection services)
         options.Filters.AddForFeature<SomeMvcFilter>(nameof(MyFeatureFlags.FeatureA));
     });
 }
-```
-
-## <a name="routes"></a>路由
-
-可以使用功能标志来动态公开路由。 以下代码添加一个路由，仅当已启用 `FeatureA` 时，此路由才将 `Beta` 设置为默认控制器。
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
 ```
 
 ## <a name="middleware"></a>中间件

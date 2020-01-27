@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969609"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 
@@ -33,7 +32,7 @@ ms.locfileid: "74969609"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -48,9 +47,10 @@ ms.locfileid: "74969609"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Workplace by Facebook 支持 SP 发起的 SSO 
-* Workplace by Facebook 支持 **[自动用户预配和取消预配（推荐）](workplacebyfacebook-provisioning-tutorial.md)**
 * Workplace by Facebook 支持实时预配 
+* Workplace by Facebook 支持[自动用户预配](workplacebyfacebook-provisioning-tutorial.md) 
 * 现在可以为 Workplace by Facebook 移动应用程序配置 Azure AD 以启用 SSO。 本教程在测试环境中配置并测试 Azure AD SSO。
+* 配置 Workplace by Facebook 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>从库添加 Workplace by Facebook
 
@@ -90,10 +90,12 @@ ms.locfileid: "74969609"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<instancename>.facebook.com` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://www.facebook.com/company/<instanceID>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://www.facebook.com/company/<instanceID>` 
 
-    > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请参阅工作区公司仪表板的身份验证页，了解你的工作区社区的正确值。
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://www.facebook.com/company/<instanceID>`
+
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 有关 Workplace 社区的正确值，请参阅 Workplace 公司仪表板的“身份验证”页，本教程稍后将对此进行说明。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -172,13 +174,15 @@ ms.locfileid: "74969609"
 
     f. 复制实例的“收件人 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中    。
 
-    g. 滚动到该部分的底部，单击“测试 SSO”按钮  。 此时会出现包含 Azure AD 登录页面的一个弹出窗口。 照常输入凭据进行身份验证。
+    g. 复制实例的“ACS (断言使用者服务) URL”  ，并将其粘贴到 Azure 门户中“基本 SAML 配置”  部分的“回复 URL”  文本框中。
 
-    故障排除  ：确保从 Azure AD 返回的电子邮件地址与用于登录的 Workplace 帐户相同。
+    h. 滚动到该部分的底部，单击“测试 SSO”按钮  。 此时会出现包含 Azure AD 登录页面的一个弹出窗口。 照常输入凭据进行身份验证。
 
-    h. 成功完成测试后，滚动到页面底部并单击“保存”按钮  。
+    **故障排除：** 确保从 Azure AD 返回的电子邮件地址与用于登录的 Workplace 帐户相同。
 
-    i. 现在所有使用 Workplace 的用户都会在 Azure AD 登录页面上进行身份验证。
+    i. 成功完成测试后，滚动到页面底部并单击“保存”按钮  。
+
+    j. 现在所有使用 Workplace 的用户都会在 Azure AD 登录页面上进行身份验证。
 
 1. **SAML 注销重定向（可选）**  -
 
@@ -241,3 +245,7 @@ ms.locfileid: "74969609"
 - [配置用户预配](workplacebyfacebook-provisioning-tutorial.md)
 
 - [通过 Azure AD 试用 Workplace by Facebook](https://aad.portal.azure.com)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 Workplace by Facebook](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

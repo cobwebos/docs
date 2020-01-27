@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433320"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262990"
 ---
 # <a name="entity-functions"></a>实体函数
 
@@ -53,7 +53,9 @@ ms.locfileid: "75433320"
 
 基于函数的语法，其中，实体以函数的形式表示，操作由应用程序显式调度  。 此语法适合用于具有简单状态、少量操作或一组动态操作的实体，例如在应用程序框架中。 此语法的维护可能很繁琐，因为它不会在编译时捕获类型错误。
 
-基于类的语法，其中，实体和操作由类和方法表示  。 此语法可生成更易于阅读的代码，使操作能够以类型安全的方式调用。 基于类的语法是建立基于函数的语法基础之上的一个精简层，因此，在同一应用程序中，这两种变体可以换用。
+**基于类的语法（仅限 .NET）** ，其中，实体和操作分别由类和方法表示。 此语法可生成更易于阅读的代码，使操作能够以类型安全的方式调用。 基于类的语法是建立基于函数的语法基础之上的一个精简层，因此，在同一应用程序中，这两种变体可以换用。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>示例：基于函数的语法 - C#
 
@@ -107,11 +109,13 @@ public class Counter
 
 有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>示例：JavaScript 实体
 
 从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体  。 以下代码是作为使用 JavaScript 编写的持久函数实现的 `Counter` 实体。
 
-**function.json**
+**Counter/function.json**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ public class Counter
 }
 ```
 
-**index.js**
+**Counter/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>访问实体
 
 可以使用单向或双向通信访问实体。 以下术语用于区分这两种形式的通信： 
@@ -161,12 +167,14 @@ module.exports = df.entity(function(context) {
 
 以下示例演示了访问实体的各种方式。
 
-> [!NOTE]
-> 为简单起见，以下示例演示了用于访问实体的松散类型化语法。 通常，我们建议[通过接口访问实体](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。
-
 ### <a name="example-client-signals-an-entity"></a>示例：客户端向实体发出信号
 
 若要从普通的 Azure 函数（也称为客户端函数）访问实体，请使用[实体客户端绑定](durable-functions-bindings.md#entity-client)。 以下示例演示一个队列触发的函数使用此绑定来发送实体信号。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> 为简单起见，以下示例演示了用于访问实体的松散类型化语法。 通常，我们建议[通过接口访问实体](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 术语“信号”是指实体 API 调用是单向、异步的。  客户端函数无法知道实体何时处理了操作。 另外，客户端函数无法观察到任何结果值或异常。 
 
 ### <a name="example-client-reads-an-entity-state"></a>示例：客户端读取实体状态
 
 客户端函数还可以查询实体的状态，如以下示例中所示：
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 实体状态查询将发送到持久跟踪存储，并返回实体的最近持久状态。 此状态始终为“已提交”，即，它永远不会是在执行操作的中途设想的暂时中间状态。 但是，与实体的内存中状态相比，此状态可能已过时。 如下一部分所述，只有业务流程可以读取实体的内存中状态。
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>示例：业务流程向实体发出信号和调用实体
 
 业务流程协调程序函数可以使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)中的 API 访问实体。 以下示例代码演示了一个调用 `Counter` 实体并发送其信号的业务流程协调程序函数。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript 目前不支持从业务流程协调程序向实体发送信号。 请改用 `callEntity`。
 
+---
+
 只有业务流程能够调用实体和获取响应，该响应可能是返回值或异常。 使用[客户端绑定](durable-functions-bindings.md#entity-client)的客户端函数只能发送实体的信号。
 
 > [!NOTE]
@@ -266,6 +290,8 @@ module.exports = df.orchestrator(function*(context){
 
 当某个实体函数在执行操作时，可以向其他实体（甚至是自身）发送信号。
 例如，我们可以修改上述 `Counter` 实体示例，以便在计数器达到值 100 时，向某个监视器实体发送“已达到里程碑”信号。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-## <a name="entity-coordination"></a>实体协调
+---
+
+## <a name="entity-coordination"></a>实体协调（当前仅限 .NET）
 
 有时可能需要跨多个实体协调操作。 例如，在银行应用程序中，可能会使用实体来代表不同的银行帐户。 将资金从一个帐户转移到另一个帐户时，必须确保源帐户有足够的资金。 还必须确保对源帐户和目标帐户的更新都以事务一致性的方式进行。
 

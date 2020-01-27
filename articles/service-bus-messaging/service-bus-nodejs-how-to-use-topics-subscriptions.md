@@ -1,6 +1,6 @@
 ---
-title: 通过 azure/service-bus Node.js 包使用 Azure 服务总线主题和订阅
-description: 快速入门：了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。
+title: 通过 azure/service-bus Node.js 包使用 Azure 服务总线主题
+description: 了解如何通过使用 azure/service-bus 包的 Node.js 应用在 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3955b67bd0fd40eb903543a240795ed8bc36b3b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e6ac3c74a0a8346ad8a6820c676224bfcba0e8b4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462110"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264435"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]

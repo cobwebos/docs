@@ -1,6 +1,6 @@
 ---
 title: C++/NDK 中的粗略重新局部化
-description: 深入介绍如何在 C++/NDK 中使用设备上的传感器创建和查找定位点。
+description: 深入解释了如何使用 C++/NDK 中的粗略重新局部化来创建和查找定位点。
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e505e6a8a3c9f28905c1b1fc3d90dbeee959a793
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: db7480b8aa2a78e40cf52d22cbaa7a15422602e8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277253"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545409"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cndk"></a>如何在 C++/NDK 中使用设备上的传感器创建和查找定位点
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cndk"></a>如何使用 C++/NDK 中的粗略重新局部化来创建和查找定位点
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -27,7 +27,7 @@ ms.locfileid: "74277253"
 
 Azure 空间定位点可以将设备上的定位传感器数据与所创建的定位点相关联。 此数据还可用于快速确定设备附近是否有任何定位点。 有关详细信息，请参阅[粗略重新局部化](../concepts/coarse-reloc.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，请确保做好以下准备：
 

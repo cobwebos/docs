@@ -1,19 +1,17 @@
 ---
-title: 教程 - 删除 Azure Red Hat OpenShift 群集 | Microsoft Docs
+title: 教程 - 删除 Azure Red Hat OpenShift 群集
 description: 在本教程中，了解如何使用 Azure CLI 删除 Azure Red Hat OpenShift 群集
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669337"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278778"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>教程：删除 Azure Red Hat OpenShift 群集
 
@@ -30,7 +28,7 @@ ms.locfileid: "67669337"
 > * [缩放 Azure Red Hat OpenShift 群集](tutorial-scale-cluster.md)
 > * 删除 Azure Red Hat OpenShift 群集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -44,7 +42,7 @@ ms.locfileid: "67669337"
 az login
 ```
 
-如果你具有多个订阅的访问权限，请运行 `az account set -s {subscription ID}`，将 `{subscription ID}` 替换为要使用的订阅。
+如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
 
 ## <a name="step-2-delete-the-cluster"></a>步骤 2：删除群集
 

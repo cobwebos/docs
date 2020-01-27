@@ -3,18 +3,18 @@ title: 快速入门：使用 Azure Maps 执行交互式地图搜索 | Microsoft 
 description: 了解如何使用 Microsoft Azure Maps Web SDK 创建用于交互式地图搜索的演示 Web 应用程序。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910682"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156431"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
@@ -61,7 +61,7 @@ ms.locfileid: "75910682"
 
 ## <a name="download-the-application"></a>下载应用程序
 
-1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) 文件的内容。
+1. 转到 [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) 并单击它以查看 GitHub 用户界面中的内容。 右键单击“原始”  按钮，然后复制文件的内容或单击“另存为”以下载文件。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**。 在文本编辑器中将其打开。
 3. 搜索字符串 `<Your Azure Maps Key>`。 将其替换为在上一部分获取的**主密钥**值。
 

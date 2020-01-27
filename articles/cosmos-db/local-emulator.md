@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441674"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309976"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -283,7 +283,6 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 如果在已超过当前分区计数后尝试创建容器，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
 
 “很抱歉，此区域当前需求较高，暂时无法满足你的请求。 我们在持续努力推出越来越多的容量，请进行重试。
-随时欢迎出于任何原因发送电子邮件至 askcosmosdb@microsoft.com。
 ActivityId:12345678-1234-1234-1234-123456789abc”
 
 要更改 Azure Cosmos 模拟器中可用容器的数量，请执行以下步骤：
@@ -496,7 +495,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果安装了新版本的模拟器并遇到错误，请务必重置数据。 可在系统任务栏上右键单击“Azure Cosmos 模拟器”图标，然后单击“重置数据...”来重置数据。 如果仍无法消除错误，可卸载该模拟器和所有旧版模拟器（如有），删除“C:\Program files\Azure Cosmos DB Emulator”目录，并卸载模拟器。 有关说明，请参阅[卸载本地模拟器](#uninstall)。
 
-- 如果 Azure Cosmos 模拟器崩溃，请从“%LOCALAPPDATA%\CrashDumps”文件夹收集转储文件、将其压缩，再附加到电子邮件发送到 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
+- 如果 Azure Cosmos 模拟器崩溃，请从“%LOCALAPPDATA%\CrashDumps”文件夹收集转储文件，对其进行压缩，然后从 [Azure 门户](https://portal.azure.com)开具支持票证。
 
 - 如果 `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` 中出现崩溃，这可能表示性能计数器处于损坏状态。 通常，从管理员命令提示符处运行以下命令即可解决此问题：
 
@@ -504,7 +503,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
   lodctr /R
    ```
 
-- 如果遇到连接问题，请[收集跟踪文件](#trace-files)、进行压缩并将其附加到电子邮件，发送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
+- 如果遇到连接问题，请[收集跟踪文件](#trace-files)，对其进行压缩，然后在 [Azure 门户](https://portal.azure.com)中开具支持票证。
 
 - 如果收到“服务不可用”  消息，模拟器可能无法初始化网络堆栈。 请查看是否安装了 Pulse 安全客户端或 Juniper 网络客户端，因为其网络筛选器驱动程序可能会导致该问题。 卸载第三方网络筛选器驱动程序通常可修复此问题。 或者，使用 /DisableRIO 启动模拟器，这会将模拟器网络通信切换到常规 Winsock。 
 
@@ -519,9 +518,9 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 再现问题。 如果数据资源管理器无法运行，只需等待几秒钟，待浏览器打开以捕获错误。
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. 导航到 `%ProgramFiles%\Azure Cosmos DB Emulator`，查找 docdbemulator_000001.etl 文件。
-7. 将 .etl 文件和重现步骤一起发送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 进行调试。
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. 导航到 `%ProgramFiles%\Azure Cosmos DB Emulator`，查找 docdbemulator_000001.etl 文件。
+8. 在 [Azure 门户](https://portal.azure.com)中开具支持票证，并提供 .etl 文件以及再现步骤。
 
 ### <a id="uninstall"></a>卸载本地模拟器
 

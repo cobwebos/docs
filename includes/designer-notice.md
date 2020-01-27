@@ -8,12 +8,12 @@ ms.topic: include
 author: nibaccam
 ms.author: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e526a0ceeb20ec3a1d05db800e6d936b9d33de30
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 0802cfea424beb26f34ff2250cfd64ce69db0ca6
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865162"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314057"
 ---
 > [!TIP]
-> 鼓励当前正在使用或评估机器学习工作室（经典版）的客户尝试 [Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)（预览版），它提供拖放 ML 模块以及  可伸缩性、版本控制和企业安全性。
+> 建议当前使用或评估机器学习工作室（经典版）的客户尝试使用 [Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)，该设计器提供了拖放式 ML 模块以及  可伸缩性、版本控制和企业安全性。

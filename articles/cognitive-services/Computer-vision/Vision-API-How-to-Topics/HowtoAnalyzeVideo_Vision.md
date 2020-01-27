@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770367"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166828"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>近实时分析视频
 
@@ -148,7 +148,7 @@ while (true)
 
 为了演示某些可行性，我们提供了使用该库的两个示例应用。 
 
-第一个示例应用是一个简单的控制台应用，它从默认的网络摄像头抓帧，然后将其提交到人脸 API 进行人脸检测。 以下代码再现了该应用的简化版本：
+第一个示例应用是一个简单的控制台应用，它从默认的网络摄像头抓帧，然后将其提交到人脸服务进行人脸检测。 以下代码再现了该应用的简化版本：
 
 ```csharp
 using System;
@@ -169,7 +169,7 @@ namespace BasicConsoleSample
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
 
-            // Create Face API Client.
+            // Create Face Client.
             FaceClient faceClient = new FaceClient(new ApiKeyServiceClientCredentials(ApiKey))
             {
                 Endpoint = Endpoint
@@ -185,7 +185,7 @@ namespace BasicConsoleSample
             grabber.AnalysisFunction = async frame =>
             {
                 Console.WriteLine($"Submitting frame acquired at {frame.Metadata.Timestamp}");
-                // Encode image and submit to Face API.
+                // Encode image and submit to Face service.
                 return (await faceClient.Face.DetectWithStreamAsync(frame.Image.ToMemoryStream(".jpg"))).ToArray();
             };
 
@@ -230,13 +230,13 @@ namespace BasicConsoleSample
 
 若要开始使用此示例，请执行以下操作：
 
-1. 从[订阅](https://azure.microsoft.com/try/cognitive-services/)获取视觉 API 的 API 密钥。 对于视频帧分析，适用的 API 包括：
-    - [计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+1. 从[订阅](https://azure.microsoft.com/try/cognitive-services/)获取视觉 API 的 API 密钥。 对于视频帧分析，适用的服务包括：
+    - [计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
+    - [人脸](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 2. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库。
 
 3. 在 Visual Studio 2015 或更高版本中打开示例，然后生成并运行示例应用程序：
-    - 对于 BasicConsoleSample，人脸 API 密钥直接在 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
+    - 对于 BasicConsoleSample，人脸密钥直接在 [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
     - 对于 LiveCameraSample，请在应用的“设置”窗格中输入密钥。  在切换不同的会话后，这些密钥将持久保存为用户数据。
 
 准备好集成示例时，请从自己的项目引用 VideoFrameAnalyzer 库。
@@ -245,7 +245,7 @@ VideoFrameAnalyzer 的图像、语音、视频和文本理解功能使用 Azure 
 
 ## <a name="summary"></a>总结
 
-本文介绍了如何使用人脸 API 和计算机视觉 API 对实时视频流运行近实时分析。 此外还介绍了如何通过示例代码开始使用这些功能。 若要开始使用免费 API 密钥生成应用，请转到 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)。
+本文介绍了如何使用人脸服务和计算机视觉服务对实时视频流运行近实时分析。 此外还介绍了如何通过示例代码开始使用这些功能。 若要开始使用免费 API 密钥生成应用，请转到 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)。
 
 欢迎在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议。 若要提供更广泛的 API 反馈，请访问 [UserVoice 站点](https://cognitive.uservoice.com/)。
 

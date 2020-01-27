@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 64cae5812a380725d612d27190042797542ee255
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68943626"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289095"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教程：将 Oracle Cloud Infrastructure Console 与 Azure Active Directory 集成
 
@@ -33,7 +32,7 @@ ms.locfileid: "68943626"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -42,7 +41,10 @@ ms.locfileid: "68943626"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 Oracle Cloud Infrastructure Console 支持 SP 发起的 SSO  。
+本教程在测试环境中配置并测试 Azure AD SSO。
+
+* Oracle Cloud Infrastructure Console 支持 SP 发起的 SSO  。
+* 配置 Oracle Cloud Infrastructure Console 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>从库中添加 Oracle Cloud Infrastructure Console
 
@@ -62,10 +64,10 @@ ms.locfileid: "68943626"
 若要配置和测试 Oracle Cloud Infrastructure Console 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
 1. [配置 Oracle Cloud Infrastructure Console](#configure-oracle-cloud-infrastructure-console) 以便在应用程序端配置 SSO 设置  。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
-1. [创建 Oracle Cloud Infrastructure Console 测试用户](#create-oracle-cloud-infrastructure-console-test-user)以便在 Oracle Cloud Infrastructure Console 中创建 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
+    1. [创建 Oracle Cloud Infrastructure Console 测试用户](#create-oracle-cloud-infrastructure-console-test-user)以便在 Oracle Cloud Infrastructure Console 中创建 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
 1. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -137,7 +139,39 @@ ms.locfileid: "68943626"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-oracle-cloud-infrastructure-console"></a>配置 Oracle Cloud Infrastructure Console
+
+
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B. Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 B. Simon 访问 Oracle Cloud Infrastructure Console 的权限，允许她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Oracle Cloud Infrastructure Console”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+   ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-oracle-cloud-infrastructure-console"></a>配置 Oracle Cloud Infrastructure Console
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Oracle Cloud Infrastructure Console。
 
@@ -170,37 +204,7 @@ ms.locfileid: "68943626"
    1. 可以根据 Azure 门户中的设置和组织需要来映射多个组。 单击“+ 添加映射”可添加所需数量的组  。
 
    1. 单击“提交”  。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 B. Simon 访问 Oracle Cloud Infrastructure Console 的权限，允许她使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Oracle Cloud Infrastructure Console”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-   ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
+   
 ### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>创建 Oracle Cloud Infrastructure Console 测试用户
 
  Oracle Cloud Infrastructure Console 默认支持实时预配。 此部分不存在任何操作项。 在尝试访问期间不会创建新用户，也不需要创建该用户。
@@ -218,3 +222,5 @@ ms.locfileid: "68943626"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [如何通过高级可见性和控制保护 Oracle Cloud Infrastructure Console](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

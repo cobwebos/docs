@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门介绍如何使用 Azure Dev Spaces 对容器和微服务进行团队 Kubernetes 开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770826"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290404"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行团队开发 - Azure Dev Spaces
 
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-以上命令将在 *dev* 下创建名为 *azureuser1* 和 *azureuser2* 的两个子空间。 这些两个子空间表示开发人员 *azureuser1* 和 *azureuser2* 的不同开发空间，用于对示例应用程序进行更改。
+以上命令将在 *dev* 下创建名为 *azureuser1* 和 *azureuser2* 的两个子空间。 这两个子空间表示开发人员 azureuser1  和 azureuser2  的不同开发空间，用于对示例应用程序进行更改。
 
 使用 `azds space list` 命令列出所有开发空间，并确认 *dev/azureuser2* 是否已选中。
 

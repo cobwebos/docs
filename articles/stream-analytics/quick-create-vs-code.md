@@ -4,15 +4,15 @@ description: 本快速入门介绍如何开始使用 Visual Studio Code 创建�
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659587"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313869"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
 
@@ -179,9 +179,11 @@ ms.locfileid: "75659587"
    |IotHubNamespace|MyASAIoTHub|选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。|
    |SharedAccessPolicyName|iothubowner| |
 
-   可以借助 CodeLens 功能来输入字符串，从下拉列表中选择值，或者直接在文件中更改文本。 以下屏幕截图显示了“从订阅中选择”示例  。
+   可以借助 CodeLens 功能来输入字符串，从下拉列表中选择值，或者直接在文件中更改文本。 以下屏幕截图显示了“从订阅中选择”示例  。 凭据将自动列出并保存在本地凭据管理器中。
 
    ![在 Visual Studio Code 中配置输入](./media/quick-create-vs-code/configure-input.png)
+
+   ![在 Visual Studio Code 中配置输入值](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>预览输入
 

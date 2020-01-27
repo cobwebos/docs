@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348811"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514266"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -86,17 +86,27 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
 
-为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够对以下 URL 进行出站 TCP 443 访问：
+为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问以下 URL：
 
-* *.wvd.microsoft.com
-* \* .blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|地址|出站端口|目的|
+|---|---|---|
+|*.wvd.microsoft.com|TCP 端口 443|服务流量|
+|\* .blob.core.windows.net|TCP 端口 443|代理、SXS 堆栈更新和代理流量|
+|*.core.windows.net|TCP 端口 443|代理流量|
+|*.servicebus.windows.net|TCP 端口 443|代理流量|
+|prod.warmpath.msftcloudes.com|TCP 端口 443|代理流量|
+|catalogartifact.azureedge.net|TCP 端口 443|Azure 市场|
+|kms.core.windows.net|TCP 端口 1688|Windows 10 激活|
+
+>[!IMPORTANT]
+>若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure AD 等其他服务的 URL。
 
 >[!NOTE]
->若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure AD 等其他服务的 URL。
+>对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
+>
+>1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
+>2. 打开“事件查看器”  ，导航到  “Windows” > “应用程序日志”  并查找事件 ID 3702。
+>3. 将在事件 ID 3702 下找到的 URL 加入白名单。 事件 ID 3702 下的 URL 是特定于区域的。 你需要对要在其中部署虚拟机的每个区域的相关 URL 重复执行加入白名单过程。
 
 Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
 

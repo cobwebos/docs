@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612864"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514640"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
@@ -262,7 +262,7 @@ IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 �
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    请确保“证书”部分没有前导空格，且每个证书前面有两个空格。
+    请确保“证书:”  行前面没有空格，并且每个嵌套证书都缩进了两个空格。
 
     在 nano 中右键单击会将剪贴板的内容粘贴到当前游标位置。 要替换字符串，可使用键盘箭头导航到要替换的字符串，删除该字符串，然后右键单击来粘贴缓冲区中的内容。
 

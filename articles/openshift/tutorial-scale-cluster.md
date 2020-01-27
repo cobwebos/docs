@@ -1,23 +1,21 @@
 ---
-title: 教程 - 缩放 Azure Red Hat OpenShift 群集 | Microsoft Docs
+title: 教程 - 缩放 Azure Red Hat OpenShift 群集
 description: 了解如何使用 Azure CLI 缩放 Microsoft Azure Red Hat OpenShift 群集
-services: container-service
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: deb136a70c24cb7bd1b6c60505cc6ab0376a7b02
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672434"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278312"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>教程：缩放 Azure Red Hat OpenShift 群集
 
-本教程是一个系列中的第二部分。 你将了解如何使用 Azure CLI 创建 Microsoft Azure Red Hat OpenShift 群集，对其进行缩放，然后删除该群集以清理资源。
+本教程是一个系列中的第二部分。 其中将会介绍如何使用 Azure CLI 创建 Microsoft Azure Red Hat OpenShift 群集，对其进行缩放，然后删除该群集以清理资源。
 
 本系列教程的第二部分将介绍如何：
 
@@ -30,7 +28,7 @@ ms.locfileid: "67672434"
 > * 缩放 Azure Red Hat OpenShift 群集
 > * [删除 Azure Red Hat OpenShift 群集](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -44,7 +42,7 @@ ms.locfileid: "67672434"
 az login
 ```
 
-如果你具有多个订阅的访问权限，请运行 `az account set -s {subscription ID}`，将 `{subscription ID}` 替换为要使用的订阅。
+如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
 
 ## <a name="step-2-scale-the-cluster-with-additional-nodes"></a>步骤 2：通过额外节点缩放群集
 

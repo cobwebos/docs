@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476948"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263942"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教程：安装 Azure Data Box Edge
 
@@ -22,14 +22,14 @@ ms.locfileid: "66476948"
 
 安装可能需要大约两小时才能完成。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 拆开设备包装
 > * 将设备装入机架
 > * 为设备布线
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是安装物理设备所要满足的先决条件：
 
@@ -50,7 +50,7 @@ ms.locfileid: "66476948"
 - 检查进行安装的场地是否具有：
     - 从独立线路引出的标准交流电源
 
-        - 或 -
+        \- 或 -
     - 带有不间断电源 (UPS) 的机架配电装置 (PDU)
     - 要安装设备的机架上有一个 1U 插槽
 
@@ -86,7 +86,7 @@ ms.locfileid: "66476948"
 > Data Box Edge 设备必须安装在机架中才能正常工作。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 在开始之前，请阅读“安全、环保和法规信息”小册子中的安全指示。 这本小册子已随设备一起交付。
 - 在最靠近机箱底部的分配空间中开始安装导轨。
@@ -154,21 +154,10 @@ ms.locfileid: "66476948"
 
     ![啮合和释放撞击闩锁](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
-### <a name="route-the-cables"></a>布线
-
-> [!NOTE]
->  如果你未订购选配的线缆管理臂 (CMA)，请使用导轨工具包中提供的两片粘扣带在系统的背面布线。
-
-1. 在两个机架法兰的内侧找到外部 CMA 支架。
-2. 轻轻绑好线缆，将其拉到左侧。请不要碰到系统连接器。
-3. 将挂钩和环带穿过系统两侧外部 CMA 支架上的插槽，以固定电缆束。
-
-
-    ![布线](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>为设备布线
 
-以下过程说明如何为 Data Box Edge 设备排布电源线和网线。
+敷设电缆，然后将电缆连接到设备。 以下过程说明如何为 Data Box Edge 设备排布电源线和网线。
 
 在开始为设备布线之前，需要符合以下先决条件：
 

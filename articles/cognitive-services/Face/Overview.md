@@ -1,7 +1,7 @@
 ---
-title: 什么是人脸 API？
+title: 什么是人脸服务？
 titleSuffix: Azure Cognitive Services
-description: Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸的算法。
+description: Azure 认知服务人脸服务提供用于检测、识别和分析图像中人脸的算法。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961533"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170252"
 ---
-# <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
+# <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
-Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全、自然用户界面、图像内容分析和管理、移动应用及机器人。
+Azure 认知服务人脸服务提供用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全、自然用户界面、图像内容分析和管理、移动应用及机器人。
 
-人脸 API 提供多个不同的函数。 以下各部分将概述每个函数。 请继续阅读以了解详细信息。
+人脸服务提供多个不同的函数。 以下各部分将概述每个函数。 请继续阅读以了解详细信息。
 
 ## <a name="face-detection"></a>人脸检测
 
-人脸 API 可以检测图像中的人脸，并返回其位置的矩形坐标。 （可选）人脸检测可以提取一系列人脸相关的属性。 示例包括头部姿势、性别、年龄、情感、胡须和眼镜。
+人脸服务可以检测图像中的人脸，并返回其位置的矩形坐标。 （可选）人脸检测可以提取一系列人脸相关的属性。 示例包括头部姿势、性别、年龄、情感、胡须和眼镜。
 
 > [!NOTE]
-> 也可以通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 使用人脸检测功能。 若要对人脸数据执行进一步的操作，请使用本文所述的人脸 API 服务。
+> 也可以通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 使用人脸检测功能。 若要对人脸数据执行进一步的操作，请使用人脸服务（即本文中所述的服务）。
 
 ![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸
 
 ## <a name="sample-apps"></a>示例应用
 
-以下示例应用程序显示了人脸 API 的多种用法：
+以下示例应用程序显示了人脸服务的多种用法：
 
-- [Microsoft 人脸 API：Windows 客户端库和示例](https://github.com/Microsoft/Cognitive-Face-Windows)是一个 WPF 应用，演示人脸检测、分析和识别的多种方案。
+- [人脸 API：Windows 客户端库和示例](https://github.com/Microsoft/Cognitive-Face-Windows)是一个 WPF 应用，演示人脸检测、分析和识别的多种方案。
 - [FamilyNotes UWP 应用](https://github.com/Microsoft/Windows-appsample-familynotes)是一个通用 Windows 平台 (UWP) 应用，可以在家庭便笺共享方案中使用人脸识别、语音、Cortana、墨迹和相机。
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性

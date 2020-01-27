@@ -1,5 +1,5 @@
 ---
-title: 与应用服务移动应用集成
+title: 通知中心与应用服务移动应用集成
 description: 了解如何将 Azure 通知中心与 Azure 应用服务移动应用配合使用。
 author: sethmanheim
 manager: femila
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 09ecc258001dd735b920c3a7cb51d8ce7443ceb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686543"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264146"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
 

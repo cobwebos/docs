@@ -11,28 +11,28 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495229"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165749"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入门：使用浏览器获取意向
 
 若要了解 LUIS 预测终结点返回的内容，请在 Web 浏览器中查看预测结果。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要查询公共应用，需要：
 
-* 自己的语言理解 (LUIS) 密钥。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。 无法使用 LUIS 创作密钥。 
+* 你自己的语言理解 (LUIS) 创作或预测密钥，可从 [LUIS 门户(预览)](https://preview.luis.ai/) 获取。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。 
 * 公共应用的 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用浏览器查看预测
 
 1. 打开 Web 浏览器。 
-1. 使用以下完整 URL（请将 `YOUR-KEY` 替换为自己的 LUIS 密钥）。 请求为 GET 请求，并包含授权和 LUIS 密钥作为查询字符串参数。
+1. 使用以下完整 URL（请将 `YOUR-KEY` 替换为自己的 LUIS 创作或预测密钥）。 这些请求是 GET 请求，并包含授权（使用 LUIS 创作或预测密钥作为查询字符串参数）。
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 预测请求](#tab/V3-1-1)
     

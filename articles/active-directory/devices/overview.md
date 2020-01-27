@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423120"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511869"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -54,7 +54,7 @@ ms.locfileid: "75423120"
 
 ## <a name="device-management"></a>设备管理
 
-使用 Microsoft Intune、System Center Configuration Manager、组策略（混合 Azure AD 加入）、移动应用管理 (MAM) 工具等移动设备管理 (MDM) 工具或其他第三方工具，来管理 Azure AD 中的设备。
+可以使用 Microsoft Intune、Microsoft Endpoint Configuration Manager、组策略（混合 Azure AD 联接）、移动应用管理 (MAM) 工具等移动设备管理 (MDM) 工具或其他第三方工具来管理 Azure AD 中的设备。
 
 ## <a name="resource-access"></a>资源访问
 
