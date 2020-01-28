@@ -4,15 +4,15 @@ description: 本文介绍了在 Azure Monitor 中准备部署工作区的客户�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395759"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -63,7 +63,7 @@ Log Analytics 工作区可提供：
 
 用户有权访问的数据由下表中列出的一系列因素决定。 下面各部分介绍了每个。
 
-| 因素 | 描述 |
+| 因素 | Description |
 |:---|:---|
 | [访问模式](#access-mode) | 用户用于访问工作区的方法。  定义可用数据的范围以及所应用的访问控制模式。 |
 | [访问控制模式](#access-control-mode) | 用于定义是否在工作区或资源级别应用权限的工作区设置。 |
@@ -128,7 +128,9 @@ Azure Monitor 根据你执行日志搜索的上下文，自动确定正确的模
 
 ## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 默认引入速率阈值设置为每个工作区**500 MB/分钟**。 如果以更高的速率将数据发送到单个工作区，则会删除某些数据，并且每隔6小时会将事件发送到工作区中的*操作*表，而阈值仍将会超出。 如果引入卷继续超出速率限制，或者你预计会在某个时间到达，则可以通过打开支持请求来请求增加工作区。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 默认引入速率阈值设置为每个工作区**6 GB/分钟**。 这是一个近似值，因为每个数据类型的实际大小都可以根据日志长度和其压缩率变化。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md)发送的数据。
+
+如果以更高的速率将数据发送到单个工作区，则会删除某些数据，并且每隔6小时会将事件发送到工作区中的*操作*表，而阈值仍将会超出。 如果引入卷继续超出速率限制，或者你预计会在某个时间到达，则可以通过打开支持请求来请求增加工作区。
  
 若要在工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](alerts-log.md)，并在结果大于数与零的情况下使用警报逻辑基数。
 
