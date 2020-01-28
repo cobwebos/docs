@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: OPC 保管库体系结构
           href: overview-opc-vault-architecture.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 远程监视
       items:
@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 远程监视
       items:
         - name: 开发人员参考指南 (.NET)

@@ -8,68 +8,97 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707953"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514290"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
-Azure 个性化体验创建服务是基于云的 API 服务，可让应用程序选择要显示给用户的最佳体验，并从其集体实时行为中进行学习。
+Azure 个性化体验创建服务是基于云的 API 服务，有助于客户端应用程序选择最佳的单个内容  项来显示每个用户。 此服务根据你提供的有关内容和上下文的实时集合信息，从内容项中选择最佳项。
 
-* 提供有关用户和内容的信息，并接收要显示给用户的排名最高的操作。 
-* 无需清理和标记数据即可使用个性化体验创建服务。
-* 在方便的时候向个性化体验创建服务提供反馈。 
-* 查看实时分析。 
+向用户显示内容项后，系统会监视用户行为，并回头向个性化体验创建服务报告奖励评分，以提高其根据收到的上下文信息选择最佳内容的能力。
 
-观看[个性化体验创建服务工作方式](https://personalizercontentdemo.azurewebsites.net/)的演示
+**内容**可以是你希望在经过选择后向用户显示的任何信息单元，如文本、图像、URL 或电子邮件。
 
-## <a name="how-does-personalizer-work"></a>个性化体验创建服务的工作原理
+<!--
+![What is personalizer animation](./media/what-is-personalizer.gif)
+-->
 
-个性化体验创建服务使用机器学习模型来发现上下文中排名最高的操作。 客户端应用程序会提供可能操作的列表，其中包含有关这些操作的信息、有关上下文的信息，并且可能包含有关用户、设备等的信息。个性化体验创建服务会确定要执行的操作。 一旦客户端应用程序使用所选的操作，就会向个性化体验创建服务提供奖励评分形式的反馈。 收到反馈后，个性化体验创建服务会自动更新自身用于将来排名的模型。 随着时间的推移，个性化体验创建服务将训练一个模型，该模型可以根据其功能推荐要在每个上下文中选择的最佳操作。
+## <a name="how-does-personalizer-select-the-best-content-item"></a>个性化体验创建服务如何选择最佳内容项目？
 
-## <a name="how-do-i-use-the-personalizer"></a>如何使用个性化体验创建服务？
+个性化体验创建服务使用**强化学习**根据所有用户的集体行为和奖励评分来选择最佳项目（操作  ）。 操作是可供选择的内容项，例如新闻文章、特定电影或产品。
 
-![使用个性化体验创建服务来选择要向用户显示的视频](media/what-is-personalizer/personalizer-example-highlevel.png)
+**排名**调用可采用操作项以及操作的特征和上下文特征来选择顶级操作项：
 
-1. 在应用中选择要个性化的体验。
-1. 在 Azure 门户中创建并配置个性化服务的实例。 每个实例都是一个个性化体验创建服务循环。
-1. 结合有关用户的信息（特征）以及内容（操作）使用 [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) 调用个性化体验创建服务。   使用个性化体验创建服务之前，无需提供清理的带标签的数据。 可以直接调用 API，也可以使用适用于不同编程语言的 SDK。
-1. 在客户端应用程序中，向用户显示个性化体验创建服务选择的操作。
-1. 使用 [Reward API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 向个性化体验创建服务提供反馈，指示用户是否选择了个性化体验创建服务的操作。 这是 _[奖励评分](concept-rewards.md)_ 。
-1. 在 Azure 门户中查看分析，以评估系统的工作状态以及数据为个性化提供的帮助大小。
+* **包含特征的操作** - 其特征特定于每个项的内容项
+* **上下文特征** - 使用应用时用户的特征、其上下文或环境
 
-## <a name="where-can-i-use-personalizer"></a>可在哪种场合下使用个性化体验创建服务？
+排名调用在“奖励操作 ID”  字段中返回要向用户显示的具体内容项（操作  ）的 ID。
+向用户显示的操作  与机器学习模型一起选择，目的是尝试将一段时间内的总奖励量最大化。
 
-例如，客户端应用程序可以添加个性化体验创建服务来执行以下操作：
+几个示例方案如下：
 
-* 个性化要在新闻网站上突出显示的文章。    
-* 优化网站上的广告位置。
-* 在购物网站上显示个性化的“推荐商品”。
-* 建议要应用到特定照片的用户界面元素（例如筛选器）。
-* 选择用于澄清用户意向或建议操作的聊天机器人响应。
-* 确定用户要在业务流程的下一步骤中优先处理的操作建议。
+|内容类型|**操作（包含特征）**|**上下文特征**|返回的奖励操作 ID<br>（显示此内容）|
+|--|--|--|--|
+|新闻列表|a. `The president...`（国家/地区、政治、[文本]）<br>b. `Premier League ...`（全球、体育、[文本、图像、视频]）<br> c. `Hurricane in the ...`（区域、天气、[文本、图像]|从中读取设备新闻<br>月或季<br>|a `The president...`|
+|电影列表|1.`Star Wars`（1977，[动作、冒险、奇幻]，George Lucas）<br>2.`Hoop Dreams`（1994，[记录、体育]，Steve James<br>3.`Casablanca`（1942，[浪漫、剧情、战争]，Michael Curtiz）|从中观看设备电影<br>屏幕大小<br>用户类型<br>|3. `Casablanca`|
+|产品列表|i. `Product A`（3 公斤，$$$$，在 24 小时内交付）<br>ii. `Product B`（20 公斤，$$，通过海关运输，运输时间为 2 周）<br>iii. `Product C`（3 公斤，$$$，在 48 小时内交付）|从中读取设备购买信息<br>用户的支出层<br>月或季|ii. `Product B`|
 
-个性化体验创建服务不是用于保存和管理用户配置文件信息的服务，也不是记录单个用户的首选项或历史记录的服务。 个性化体验创建服务在单个模型的上下文操作中从每个交互的特征学习，从而在出现类似的特征时获得最大的奖励。 
+个性化体验创建服务使用了强化学习，根据以下组合选择单个最佳操作（称为“奖励操作 ID”  ）：
+* 训练的模型 - 个性化体验创建服务收到的过去的信息
+* 当前数据 - 包含特征和上下文特征的特定操作
 
-## <a name="personalization-for-developers"></a>面向开发人员的个性化
+## <a name="when-to-call-personalizer"></a>何时调用个性化体验创建服务
 
-个性化体验创建服务有两个 API：
+每次以实时方式显示内容时，就会调用个性化体验创建服务的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082)。  这称为“事件”  ，使用“事件 ID”  来标注。
 
-* 排名  ：使用排名 API 来确定在当前上下文中要显示的具体操作。   操作以 JSON 对象数组的形式发送，包含每个对象的 ID 和信息（功能  ）；上下文以另一 JSON 对象的形式发送。 API 返回应该由应用程序呈现给用户的 actionId。
-* *回馈*：在用户与应用程序交互以后，即可以 0 到 1 之间的某个数字来度量个性化的效果，并将其作为[奖励评分](concept-rewards.md)发送。 
+个性化体验创建服务的**奖励** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可以实时调用，也可以延迟，以便更好地适应基础结构。 根据业务需要确定奖励分数。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务目标和指标创建的算法所生成的某个数字。
 
-![个性化事件的基本顺序](media/what-is-personalizer/personalization-intro.png)
+## <a name="personalizer-content-requirements"></a>个性化体验创建服务内容要求
+
+当内容符合以下条件时，请使用个性化体验创建服务：
+
+* 可供选择的项数有限（最多为 50 左右）。 如果列表较大，请[使用建议引擎](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines)将列表缩小到 50 项。
+* 提供的信息描述了要排名的内容：包含特征的操作和上下文特征   。
+* 至少每天有大约 1000 个与内容相关的事件，否则个性化体验创建服务无法正常运行。 如果个性化体验创建服务未收到所需的最小流量，则该服务需要较长时间来确定单个最佳内容项。
+
+由于个性化体验创建服务以近实时方式根据集合信息来返回单个最佳内容项目，因此该服务不会执行以下操作：
+* 保留和管理用户配置文件信息
+* 记录单个用户的首选项或历史记录
+* 要求已清理并标记的内容
+
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>如何为客户端应用程序设计和实现个性化体验创建服务
+
+1. [设计](concepts-features.md)和计划内容、操作和上下文   。 确定奖励  分数的奖励算法。
+1. 系统将你创建的每个[个性化体验创建服务资源](how-to-settings.md)视为 1 个学习循环。 该循环会收到针对该内容或用户体验的排名和奖励调用。
+1. 将个性化体验创建服务添加到网站或内容系统：
+    1. 在应用程序、网站或系统中添加对个性化体验创建服务的**排名**调用，这样就可以在向用户显示内容之前确定最佳的单一内容  项。
+    1. 显示最佳的单一内容  项，它是为用户返回的奖励操作 ID  。
+    1. 对收集的有关用户行为的信息应用算法  ，确定**奖励**分数，例如：
+
+        |行为|计得的奖励分数|
+        |--|--|
+        |用户选择了最佳单一内容  项（奖励操作 ID）|**1**|
+        |用户选择了其他内容|**0**|
+        |用户在选择最佳单一内容  项（奖励操作 ID）之前犹豫不决|**0.5**|
+
+    1. 添加一个**奖励**调用，发送的奖励分数在 0 到 1 之间
+        * 在显示内容后立即这样做
+        * 或者稍后在脱机系统中这样做
+    1. 使用一段时间后，使用脱机评估来[评估循环](concepts-offline-evaluation.md)。 使用脱机评估，可以在不更改代码或影响用户体验的情况下测试和评估个性化体验创建服务的有效性。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [个性化体验创建服务的新增功能](whats-new.md)
-* [个性化体验创建服务工作原理](how-personalizer-works.md)
+
+* [个性化体验创建服务的工作原理](how-personalizer-works.md)
 * [什么是强化学习？](concepts-reinforcement-learning.md)
 * [了解排名请求的功能和操作](concepts-features.md)
 * [了解如何确定奖励请求的分数](concept-rewards.md)
+* [快速入门]()
+* [教程]()
 * [使用交互式演示](https://personalizationdemo.azurewebsites.net/)

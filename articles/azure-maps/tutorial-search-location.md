@@ -1,20 +1,20 @@
 ---
 title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
-description: 本教程介绍如何使用 Microsoft Azure Maps 在地图上搜索附近位置（兴趣点）。
+description: 在本教程中，你将了解如何使用 Microsoft Azure Maps 在地图上搜索兴趣点。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910827"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153014"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -69,7 +69,7 @@ ms.locfileid: "75910827"
 
 ## <a name="create-a-new-map"></a>创建新地图
 
-Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps 集成到 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过有样式且可自定义的组件促升工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
+Map Control API 是一个便利的客户端库。 使用此 API，可以轻松将 Maps 集成到你的 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过可自定义的组件提高工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
 
 1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html**。
 2. 将以下 HTML 组件添加到该文件：
@@ -133,7 +133,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
    此段为 Azure Maps 帐户密钥初始化地图控件 API。 `atlas` 是包含 API 和相关视觉对象组件的命名空间。 `atlas.Map` 提供视觉对象和交互式 Web 地图的控件。
 
-4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
+4. 将更改保存到文件并在浏览器中打开 HTML 页。 所显示的地图是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
 
    ![查看地图](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-   在此代码段中，将会向地图添加一个 `ready` 事件。当地图资源加载以后，该事件会触发，然后地图就可以供用户访问。 在地图 `ready` 事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定如何呈现数据源中的结果数据。在此示例中，深蓝色的圆形针位于结果坐标的中心，其他图标可以与其重叠。 结果层将添加到地图层。
+   在此代码段中，将会向地图添加一个 `ready` 事件。当地图资源加载以后，该事件会触发，然后地图就可以供用户访问。 在地图 `ready` 事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定应当如何呈现数据源中的结果数据。 在本例中，结果将使用深蓝色圆形图钉图标呈现，该图标位于结果坐标的中心，并允许其他图标重叠。 结果层将添加到地图层。
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-3. 保存“MapSearch.html”文件并刷新浏览器  。 现在应看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
+3. 保存“MapSearch.html”文件并刷新浏览器  。 你应当会看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
 
    ![查看包含搜索结果的地图](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ## <a name="add-interactive-data"></a>添加交互式数据
 
-现在为止已完成的地图仅显示搜索结果的经度/纬度数据。 但是，如果查看该 Maps Search 服务返回的原始 JSON，会看到它包含有关每个加油站的其他信息，包括名称和街道地址。 可以使用交互式弹出框将数据合并到地图。
+现在为止已完成的地图仅显示搜索结果的经度/纬度数据。 但是，Maps 搜索服务返回的原始 JSON 包含有关每个加油站的其他信息。 包括名称和街道地址。 可以使用交互式弹出框将数据合并到地图。
 
-1. 在地图 `ready` 事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 这样会创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
+1. 在地图 `ready` 事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 此代码将创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

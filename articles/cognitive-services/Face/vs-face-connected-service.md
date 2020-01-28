@@ -1,7 +1,7 @@
 ---
-title: 教程：人脸 API C#
+title: 教程：人脸连接的服务
 titleSuffix: Azure Cognitive Services
-description: 创建一个 Windows 应用，该应用使用认知服务人脸 API 检测图像中人脸的特征。
+description: 创建一个 Windows 应用，该应用使用认知服务人脸服务检测图像中人脸的特征。
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970289"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170242"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务连接到认知服务人脸 API
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中的连接的服务连接到人脸服务
 
-通过使用认知服务人脸 API，可以检测、分析、组织和标记照片中的人脸。
+通过使用 Azure 人脸服务，可以检测、分析、组织和标记照片中的人脸。
 
-本文及其同类文章提供了对认知服务人脸 API 使用 Visual Studio 连接服务功能的详细信息。 安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中均提供此功能。
+本文及其同类文章详细介绍了如何将 Visual Studio 连接服务功能用于人脸服务。 安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中均提供此功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2017 版本 15.7 或更高版本，并安装有 **Web 开发**工作负荷。 [立即下载](https://www.visualstudio.com/downloads/)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>创建项目，并添加对认知服务人脸 API 的支持
+## <a name="create-a-project-and-add-support-for-face"></a>创建项目并添加对人脸的支持
 
 1. 创建新的 ASP.NET Core Web 项目。 使用空项目模板。 
 
@@ -47,16 +47,16 @@ ms.locfileid: "74970289"
 
    ![选择订阅](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. 选择要使用的订阅，然后选择人脸 API 的名称，或选择“编辑”链接以修改自动生成的名称，选择资源组和定价层。
+1. 选择要使用的订阅，然后为人脸服务选择一个名称，或选择“编辑”链接以修改自动生成的名称，选择资源组和定价层。
 
    ![编辑连接服务详细信息](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    有关定价层的详细信息，请访问链接。
 
 1. 选择“添加”，添加对“连接服务”的支持。
-   Visual Studio 会修改项目以添加 NuGet 包、配置文件条目和其他更改，从而支持与人脸 API 的连接。
+   Visual Studio 会修改项目以添加 NuGet 包、配置文件条目和其他更改，从而支持与人脸服务的连接。
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>使用人脸 API 检测图像中人脸的特征
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>使用人脸服务检测图像中人脸的特征
 
 1. 在 Startup.cs 中添加以下 using 语句。
  
@@ -79,7 +79,7 @@ ms.locfileid: "74970289"
       }
    ```
 
-1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[人脸 API 页](https://azure.microsoft.com/services/cognitive-services/face/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中   。 项目在解决方案资源管理器中应如下所示：
+1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可以使用 Azure 门户中[人脸页面](https://azure.microsoft.com/services/cognitive-services/face/)上的图像之一。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中   。 项目在解决方案资源管理器中应如下所示：
  
    ![包含图像文件的图像文件夹](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ ms.locfileid: "74970289"
 
    ![如果较新则复制](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. 将配置方法替换为以下代码，访问人脸 API 并测试图像。 将 imagePath 字符串更改为人脸图像正确的路径和文件名。
+1. 将配置方法替换为以下代码，访问人脸服务并测试图像。 将 imagePath 字符串更改为人脸图像正确的路径和文件名。
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,9 +231,9 @@ ms.locfileid: "74970289"
         }
    ```
 
-1. 运行 Web 应用程序并查看人脸 API 在图像中发现的信息。
+1. 运行 Web 应用程序并查看人脸服务在图像中发现的信息。
  
-   ![人脸 API 图像和格式化结果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![人脸服务图像和格式化结果](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -245,4 +245,4 @@ ms.locfileid: "74970289"
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读[人脸 API 文档](Overview.md)，了解有关人脸 API 的详细信息。
+阅读[人脸文档](Overview.md)，了解有关人脸服务的详细信息。

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2019
 ms.author: allensu
-ms.openlocfilehash: dc986d40d50b93720c87ba36d265ed3044b0abc9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9f824c1348420393f8fbf67bf96932e40b67bc32
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045400"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264910"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
 “负载均衡”是指在一组后端资源或服务器之间均衡地分配负载（传入网络流量）。  Azure 提供[多种负载均衡选项](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)让你根据需要进行选择。 本文档介绍 Azure 负载均衡器。
 
-Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行。 它是客户端的单一联系点。 负载均衡器将抵达负载均衡器前端的新入站流量分配到后端池实例。 这些流取决于配置的负载均衡规则和运行状况探测。 后端池实例可以是 Azure 虚拟机，或虚拟机规模集中的实例。
-
+Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行。 它是客户端的单一联系点。 负载均衡器将抵达负载均衡器前端的入站流量分配到后端池实例。 这些流取决于所配置的负载均衡规则和运行状况探测。 后端池实例可以是 Azure 虚拟机，或虚拟机规模集中的实例。
 
 **[公共负载均衡器](./concepts-limitations.md#publicloadbalancer)** 可以为虚拟网络中的虚拟机 (VM) 提供出站连接。 可以通过将专用 IP 地址转换为公共 IP 地址来实现这些连接。 公共负载均衡器用于对传入 VM 的 Internet 流量进行负载均衡。
 
@@ -40,14 +39,10 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 有关各个负载均衡器组件的详细信息，请参阅 [Azure 负载均衡器组件和限制](./concepts-limitations.md)
 
->[!NOTE]
-> Microsoft 建议使用[标准负载均衡器](./load-balancer-standard-overview.md)。
-独立 VM、可用性集和虚拟机规模集只能连接到一个 SKU，永远无法同时连接到两个 SKU。 与公共 IP 地址配合使用时，负载均衡器和公共 IP 地址 SKU 必须匹配。 负载均衡器和公共 IP SKU 不可变。
-
 ## <a name="why-use-azure-load-balancer"></a>为什么使用 Azure 负载均衡器？
-使用 Azure 负载均衡器可以缩放应用程序，并创建高度可用的服务。 负载均衡器支持入站和出站方案。 负载均衡器提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
+使用标准负载均衡器，你可以缩放应用程序，并创建高度可用的服务。 负载均衡器支持入站和出站方案。 负载均衡器提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
 
-可以使用 Azure 负载均衡器完成的关键方案包括：
+可以使用标准负载均衡器完成的关键方案包括：
 
 - 对发往 Azure 虚拟机的 **[内部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** 和 **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** 流量进行负载均衡。
 
@@ -61,7 +56,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 - 启用对 **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[负载均衡](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** 的支持。
 
-- 利用可与 **[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)** 配合使用的 Azure 负载均衡器的 **[指标和诊断](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)** 。
+- 标准负载均衡器通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 提供多维度指标。  可以就给定维度对这些指标进行筛选、分组和细分。  可便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。 有关更多详细信息，请查看 **[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)** 。
 
 - 对 **[多个端口和/或多个 IP 地址](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** 上的服务进行负载均衡。
 
@@ -69,20 +64,17 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 - 使用 **[HA 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** ，同时对所有端口上的 TCP 和 UDP 流进行负载均衡。
 
-## <a name="pricing"></a>定价
+### <a name="securebydefault"></a>默认保护
 
-使用标准负载均衡器是收费的。
+标准负载均衡器的核心是零信任网络安全模型。 标准负载均衡器默认情况下保护你的虚拟网络并且是虚拟网络的一部分。 虚拟网络是一个专用的隔离网络。  这意味着除非由网络安全组打开，否则，标准负载均衡器和标准公用 IP 地址将对入站流关闭。 NSG 用来显式允许以及将允许的流量加入允许列表。  如果虚拟机资源的子网或 NIC 上没有 NSG，禁止流量到达此资源。 若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/security-overview.md)。
+默认情况下，基本负载均衡器对 Internet 是开放的。
 
-* 已配置的负载均衡和出站规则的数目。 入站 NAT 规则不会计入规则总数。
-* 处理的入站和出站数据的数量，与规则无关。
+
+## <a name="pricing-and-sla"></a>定价和 SLA
 
 有关标准负载均衡器的定价信息，请参阅[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)。
-
 基本负载均衡器是免费提供的。
-
-## <a name="sla"></a>SLA
-
-有关标准负载均衡器 SLA 的信息，请参阅[负载均衡器的 SLA](https://aka.ms/lbsla)。
+请参阅[负载均衡器的 SLA](https://aka.ms/lbsla)。 基本负载均衡器没有 SLA。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468462"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264723"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -29,7 +29,7 @@ ms.locfileid: "73468462"
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 声明变量
@@ -45,15 +45,17 @@ ms.locfileid: "73468462"
 
 如果要使用 Azure PowerShell 完成此过程，请参阅[使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙](tutorial-hybrid-ps.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要正常开展此方案，必须符合三项关键要求：
+混合网络使用中心辐射型网络体系结构模型在 Azure VNet 与本地网络之间路由流量。 中心辐射型网络体系结构具有以下要求：
 
-- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由 (UDR)。 必须在此路由表中**禁用** BGP 路由传播。
-- 中心网关子网中的 UDR 必须指向用作分支网络下一跃点的防火墙 IP 地址。
+- 将 VNet-Hub 对等互连到 VNet-Spoke 时设置 **AllowGatewayTransit**。 在中心辐射型网络体系结构中，辐射虚拟网络可以通过网关传输共享中心的 VPN 网关，不必在每个辐射虚拟网络中部署 VPN 网关。 
 
-   无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
-- 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
+   此外，通往网关连接的虚拟网络或本地网络的路由会通过网关传输自动传播到对等互连的虚拟网络的路由表。 有关详细信息，请参阅[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
+
+- 将 VNet-Spoke 对等互连到 VNet-Hub 时设置 **UseRemoteGateways**。 如果设置了 **UseRemoteGateways** 并且还在远程对等互连上设置了 **AllowGatewayTransit**，则辐射虚拟网络使用远程虚拟网络的网关进行传输。
+- 若要通过中心防火墙对中心子网流量进行路由，你需要有一个用户定义的路由 (UDR) 且该路由应指向设置了“禁用 BGP 路由传播”  选项的防火墙。 “禁用 BGP 路由传播”  选项会阻止到辐射子网的路由通信。 这可以防止获知的路由与你的 UDR 冲突。
+- 请在中心网关子网上配置一个指向防火墙 IP 地址的 UDR，将其作为通向辐射网络的下一跃点。 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 
 请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
 
@@ -151,9 +153,9 @@ ms.locfileid: "73468462"
 
    |设置  |值  |
    |---------|---------|
-   |Subscription     |\<用户的订阅\>|
-   |Resource group     |**FW-Hybrid-Test** |
-   |Name     |**AzFW01**|
+   |订阅     |\<用户的订阅\>|
+   |资源组     |**FW-Hybrid-Test** |
+   |名称     |**AzFW01**|
    |位置     |选择前面使用的同一位置|
    |选择虚拟网络     |**使用现有项**：<br> **VNet-hub**|
    |公共 IP 地址     |新建： <br>“名称” - “fw-pip”。   |

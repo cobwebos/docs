@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 uniFLOW Online 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 uniFLOW Online 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,29 +16,29 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823149"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262106"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 与 uniFLOW Online 的单一登录 (SSO) 集成
 
 本教程介绍如何将 uniFLOW Online 与 Azure Active Directory (Azure AD) 集成。 将 uniFLOW Online 与 Azure AD 集成后，可以：
 
 * 在 Azure AD 中控制谁有权访问 uniFLOW Online。
-* 让用户使用其 Azure AD 帐户自动登录到 uniFLOW Online。
+* 让用户使用其 Azure AD 帐户登录到 uniFLOW Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 uniFLOW Online 单一登录 (SSO) 的订阅。
+* uniFLOW Online 租户。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -64,11 +64,10 @@ ms.locfileid: "74823149"
 若要配置并测试 uniFLOW Online 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 uniFLOW Online SSO](#configure-uniflow-online-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 uniFLOW Online 测试用户](#create-uniflow-online-test-user)** - 在 uniFLOW Online 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    * **[使用创建的测试用户登录到 uniFLOW Online](#sign-in-to-uniflow-online-using-the-created-test-user)** - 在应用程序端测试用户登录。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -86,24 +85,24 @@ ms.locfileid: "74823149"
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [uniFLOW Online 客户端支持团队](mailto:support@nt-ware.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [uniFLOW Online 客户端支持团队](mailto:support@nt-ware.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式，或者参考你的 uniFLOW Online 租户中显示的回复 URL。 
 
 1. uniFLOW Online 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -111,10 +110,13 @@ ms.locfileid: "74823149"
 
 1. 除上述属性以外，uniFLOW Online 应用程序还要求在 SAML 响应中传回下面所述的其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | -----------| --------------- |
     | displayname | user.displayname |
     | nickname | user.onpremisessamaccountname |
+
+   > [!NOTE]
+   > 只有当 Azure AD 用户是从本地 Windows Active Directory 同步的时，`user.onpremisessamaccountname` 属性才会包含值。
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -134,21 +136,24 @@ ms.locfileid: "74823149"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，你将通过授予 B.Simon 访问 uniFLOW Online 的权限，使其能够使用 Azure 单一登录。
+在本部分，将通过授予 B.Simon 访问 uniFLOW Online 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中选择“uniFLOW Online”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用的概述页中转到“管理”部分，然后选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
-    ![“添加用户”链接](common/add-assign-user.png)
+   ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+> [!NOTE]
+> 若要无需手动分配即可允许所有用户访问应用程序，请转到“管理”  部分并选择“属性”  。 然后，将“需要进行用户分配”参数更改为“否”   。
 
 ## <a name="configure-uniflow-online-sso"></a>配置 uniFLOW Online SSO
 
@@ -185,7 +190,7 @@ ms.locfileid: "74823149"
 
     a. 输入显示名称，例如：*AzureAD SSO*。
 
-    b. 为“ADGS 联合元数据”选择“从 URL”选项。  
+    b. 为“ADFS 联合元数据”选择“从 URL”选项。  
 
     c. 在“联合元数据 URI”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。  
 
@@ -195,31 +200,13 @@ ms.locfileid: "74823149"
 
     f. 单击“ **保存**”。
 
-### <a name="create-uniflow-online-test-user"></a>创建 uniFLOW Online 测试用户
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>使用创建的测试用户登录到 uniFLOW Online
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 uniFLOW Online 网站。
+1. 在另一个 Web 浏览器窗口中，转到你的租户的 uniFLOW Online URL。
 
-1. 从左侧导航窗格中，选择“用户”选项卡。 
+1. 选择之前创建的标识提供者，通过你的 Azure AD 实例登录。
 
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/configure1.png)
-
-1. 单击“添加用户”。 
-
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/user1.png)
-
-1. 单击“手动创建用户”。 
-
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/user2.png)
-
-1. 在“手动创建用户”选项卡上，根据组织的要求提供所需的值。 
-
-    ![uniFLOW Online 配置](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>测试 SSO
-
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
-
-在访问面板中单击“uniFLOW Online”磁贴时，应会自动登录到设置了 SSO 的 uniFLOW Online。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+1. 使用测试用户登录。
 
 ## <a name="additional-resources"></a>其他资源
 
