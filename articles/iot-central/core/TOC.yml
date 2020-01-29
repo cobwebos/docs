@@ -151,7 +151,7 @@
           href: /azure/azure-maps
         - name: 时序见解
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解决方案
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -159,6 +159,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 客户数据请求
       href: iot-central-customer-data-requests.md
     - name: 支持的浏览器

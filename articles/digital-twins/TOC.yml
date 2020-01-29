@@ -33,9 +33,9 @@
       href: concepts-events-routing.md
     - name: 公共预览版服务限制
       href: concepts-service-limits.md
-    - name: 安全
+    - name: 安全性
       items:
-        - name: 安全最佳实践
+        - name: 安全最佳做法
           href: security-best-practices.md
         - name: 基于角色的访问控制
           href: security-role-based-access-control.md
@@ -43,7 +43,7 @@
           href: security-create-manage-role-assignments.md
         - name: 管理 API 身份验证
           href: security-authenticating-apis.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 启用多租户应用程序
       href: how-to-multitenant-applications.md
@@ -67,12 +67,14 @@
           href: how-to-navigate-apis.md
         - name: 通用查询模式
           href: how-to-query-common-apis.md
-- name: 引用
+- name: 参考
   items:
     - name: 用户定义函数客户端库
       href: reference-user-defined-functions-client-library.md
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: /azure/iot-fundamentals/iot-support-help
     - name: '用于 C# (.NET) 的 Azure 数字孪生示例'
       href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
     - name: Azure 数字孪生 REST API
@@ -93,3 +95,31 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: 视频
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT 解决方案加速器
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: 地图
+          href: /azure/azure-maps
+        - name: 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: Edge 解决方案
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

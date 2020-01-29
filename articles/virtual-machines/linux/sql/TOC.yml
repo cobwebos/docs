@@ -6,7 +6,11 @@
   items:
     - name: 创建 SQL VM - 门户
       href: provision-sql-server-linux-virtual-machine.md
-- name: 引用
+- name: 教程
+  items:
+    - name: 通过 STONITH 设置 Azure RHEL VM 可用性组
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/

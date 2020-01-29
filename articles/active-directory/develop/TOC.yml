@@ -404,6 +404,8 @@
               href: active-directory-optional-claims.md
             - name: 配置令牌生存期
               href: active-directory-configurable-token-lifetimes.md
+            - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 应用程序配置
           items:
             - name: 新的 Azure 门户应用注册培训指南

@@ -34,8 +34,6 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: 将应用程序绑定到 Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
-    - name: 使用 Jenkins 和 Azure CLI 将应用部署到 Azure Spring Cloud
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: 概念
   items:
     - name: 了解 Azure Spring Cloud 配额和限制
@@ -56,10 +54,18 @@
       href: diagnostic-services.md
     - name: 实时流式传输 Azure Spring Cloud 应用日志
       href: spring-cloud-howto-log-streaming.md
-    - name: 在 Azure Spring Cloud 中自动运行 CI/CD 管道
-      href: spring-cloud-howto-cicd.md
     - name: 在 Azure Spring Cloud 中使用永久性存储
       href: spring-cloud-howto-persistent-storage.md
+- name: DevOps 部署到 Azure Spring Cloud
+  items:
+    - name: 使用 Azure DevOps 进行 CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: 使用 GitHub Actions 进行 CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: 在 GitHub Actions 中通过密钥保管库对 Auth Azure Spring Cloud 进行身份验证
+      href: spring-cloud-github-actions-key-vault.md
+    - name: 使用 Jenkins 进行 CI/CD
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: 参考
   items:
     - name: Azure CLI 插件

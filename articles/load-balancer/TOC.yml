@@ -26,8 +26,6 @@
           href: quickstart-create-basic-load-balancer-powershell.md
         - name: 模板
           href: load-balancer-get-started-internet-arm-template.md
-        - name: REST API
-          href: create-load-balancer-rest-api.md
 - name: 教程
   items:
     - name: 对传入 VM 的 Internet 流量进行负载均衡
@@ -94,6 +92,8 @@
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+    - name: 将基本公共负载均衡器升级到标准公共负载均衡器
+      href: upgrade-basic-standard.md
     - name: 跨可用性区域对 VM 进行负载均衡 (CLI)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: 在区域内对 VM 进行负载均衡 (CLI)

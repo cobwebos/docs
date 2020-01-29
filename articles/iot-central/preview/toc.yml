@@ -139,7 +139,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge 解决方案
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -147,6 +147,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
+    - name: 支持和帮助选项
+      href: /azure/iot-fundamentals/iot-support-help
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 客户数据请求

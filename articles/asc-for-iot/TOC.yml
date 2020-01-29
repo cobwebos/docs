@@ -37,6 +37,8 @@
       href: concept-security-module.md
     - name: 安全警报
       href: concept-security-alerts.md
+    - name: 可自定义的安全警报
+      href: concept-customizable-security-alerts.md
     - name: 安全建议
       href: concept-recommendations.md
     - name: 基线
@@ -45,7 +47,7 @@
       href: event-aggregation.md
     - name: 定价和关联的成本
       href: concept-pricing.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 我应该部署哪个代理？
       items:

@@ -9,14 +9,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.manager: dougeby
-  ms.date: 12/18/2019
-  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
-  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 274d4f6b88923fc0c6d3cda03a4ffa73535e13b1
+  ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/15/2020
-  ms.locfileid: "75983216"
+  ms.lasthandoff: 01/28/2020
+  ms.locfileid: "76769653"
 landingContent:
 - title: 了解成本管理
   linkLists:
@@ -32,6 +31,10 @@ landingContent:
       url: understand-cost-mgt-data.md
     - text: 了解并使用范围
       url: understand-work-scopes.md
+  - linkListType: video
+    links:
+    - text: Azure 成本管理视频
+      url: https://www.youtube.com/c/AzureCostManagement
 - title: 分析和管理 Azure 成本
   linkLists:
   - linkListType: quickstart
@@ -58,14 +61,6 @@ landingContent:
       url: get-started-partners.md
     - text: 使用 Power BI Desktop 进行连接
       url: /power-bi/desktop-connect-azure-cost-management
-- title: 分析和管理 AWS 成本
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 设置和配置 AWS 集成
-      url: aws-integration-set-up-configure.md
-    - text: 管理 AWS 成本和使用情况
-      url: aws-integration-manage.md
 - title: 成本管理 API
   linkLists:
   - linkListType: concept
@@ -82,3 +77,19 @@ landingContent:
       url: /azure/templates/microsoft.consumption/budgets
     - text: 成本管理 REST API 示例
       url: https://github.com/Azure-Samples/Cost-Management-Samples
+- title: 最新功能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 每月更新
+      url: https://azure.microsoft.com/blog/tag/cost-management/
+    - text: 功能更新
+      url: https://azure.microsoft.com/updates/?product=cost-management
+- title: 分析和管理 AWS 成本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 设置和配置 AWS 集成
+      url: aws-integration-set-up-configure.md
+    - text: 管理 AWS 成本和使用情况
+      url: aws-integration-manage.md

@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: 多个租户 (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: 设置客户管理的密钥 (CMK)
+      href: customer-managed-keys.md
     - name: 从警报创建事件
       href: create-incidents-from-alerts.md
     - name: 搜寻

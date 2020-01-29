@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: 创建其他订阅
           href: create-subscription.md
+        - name: 转让云解决方案提供商订阅
+          href: transfer-subscriptions-subscribers-csp.md
         - name: 导出订阅信息
           href: export-subscriptions.md
     - name: 管理企业协议订阅
