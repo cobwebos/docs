@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: 列出角色定义
           href: role-definitions-list.md
-        - name: 内置角色
-          href: built-in-roles.md
     - name: 列出角色分配
       items:
         - name: 门户
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: 参考
   items:
+    - name: 内置角色
+      href: built-in-roles.md
     - name: 资源提供程序操作
       href: resource-provider-operations.md
     - name: RBAC 限制

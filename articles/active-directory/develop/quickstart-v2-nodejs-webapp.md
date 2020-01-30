@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968011"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703331"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -25,7 +24,7 @@ ms.locfileid: "74968011"
 
 在本快速入门中，你将了解如何在使用 Node.js 和 Express 生成的 Web 应用中设置 OpenID Connect 身份验证。 该示例设计为在任何平台上运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要运行此示例，需要：
 

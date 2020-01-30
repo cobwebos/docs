@@ -15,13 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401681b1704e36072da3854ef5b5f8e7c1e3f7b2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 98882ad115ff977cfd8222c6055a436855f50c04
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030753"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701240"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教程：在 Android 应用程序中使用共享设备模式
 

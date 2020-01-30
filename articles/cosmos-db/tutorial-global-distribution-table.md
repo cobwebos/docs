@@ -1,19 +1,19 @@
 ---
 title: 适用于表 API 的 Azure Cosmos DB 全局分发教程
 description: 了解全局分布如何在 Azure Cosmos DB 表 API 帐户中工作以及如何配置首选区域列表
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e6cd574d1041908e91ad5e6629403c0e40d11c03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870354"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770580"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用表 API 设置 Azure Cosmos DB 全局分发
 

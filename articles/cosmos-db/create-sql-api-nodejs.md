@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: dech
-ms.openlocfilehash: 44cdd4307be56d864afb45d619958cc59a3fa978
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8df78df27ffb7e8bb8fc88567bd0b3d37be20488
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220523"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719477"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 
@@ -27,7 +27,7 @@ ms.locfileid: "74220523"
 
 本快速入门演示如何使用 Node.js 应用连接 Azure Cosmos DB 中的 [SQL API](sql-api-introduction.md) 帐户。 然后，可以使用 Azure Cosmos DB SQL 查询来查询和管理数据。 本文中生成的 Node.js 应用将使用 [SQL JavaScript SDK](sql-api-sdk-node.md)。 本快速入门使用 2.0 版的 [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -142,11 +142,11 @@ ms.locfileid: "74220523"
 
 3. 从门户中复制 URI 值（使用复制按钮），并在 `config.js` 中将其设为终结点密钥的值。 
 
-    `config.endpoint = "https://FILLME.documents.azure.com"`
+    `config.endpoint = "<Your Azure Cosmos account URI>"`
 
 4. 然后从门户复制“主密钥”的值，并在 `config.js` 中将其设为 `config.key` 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
-    `config.key = "FILLME"`
+    `config.key = "<Your Azure Cosmos account key>"`
     
 ## <a name="run-the-app"></a>运行应用
 

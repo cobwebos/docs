@@ -11,14 +11,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 6306d893f491f93cc31b7e478afe5632e997285c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3cbfee90997c6b7cd9df1ec76543d77a4402100f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692642"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774537"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟网络
 
@@ -32,7 +32,7 @@ ms.locfileid: "64692642"
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus 位置中创建一个名为 myResourceGroup 的资源组   ：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus  位置中创建一个名为 myResourceGroup  的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -98,7 +98,7 @@ az vm create \
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公用 IP 地址  ：
+在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公共 IP 地址  ：
 
 ```bash
 ssh <publicIpAddress>

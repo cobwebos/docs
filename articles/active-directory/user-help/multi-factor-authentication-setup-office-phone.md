@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619848"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705218"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>将办公室电话设置为双因素验证方法
 
@@ -35,23 +34,23 @@ ms.locfileid: "69619848"
 
     ![测试指定的电话号码](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. 从“第 3 步:  继续使用您的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+3. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双因素验证的旧应用，只需要使用应用密码。
+    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
 4. 选择“完成”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-设置双因素验证方法后，可以添加其他方法、管理设置和应用密码、进行登录，或获得一些常见双因素验证相关问题的帮助。
+设置双重验证方法后，可以添加其他方法、管理设置和应用密码、登录，或获得一些常见双重验证相关问题的帮助。
 
-- [管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)
+- [管理双重验证方法设置](multi-factor-authentication-end-user-manage-settings.md)
 
 - [管理应用密码](multi-factor-authentication-end-user-app-passwords.md)
 
-- [使用双因素验证进行登录](multi-factor-authentication-end-user-signin.md)
+- [使用双重验证登录](multi-factor-authentication-end-user-signin.md)
 
 - [获取有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md)

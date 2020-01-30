@@ -12,13 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fff6d07bd0e353541dec23fd8c3edf7407ef6d68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963284"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704079"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>快速入门：删除注册到 Microsoft 标识平台的应用程序
 
@@ -29,7 +28,7 @@ ms.locfileid: "74963284"
 * 删除你或你的组织编写的应用程序
 * 删除其他组织编写的应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 拥有一个其中已注册了应用程序的租户。 若要了解如何添加和注册应用，请参阅[将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 
@@ -59,6 +58,6 @@ ms.locfileid: "74963284"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
+* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
 * [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)

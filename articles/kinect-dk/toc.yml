@@ -92,6 +92,6 @@
     - name: 传感器 API
       href: 'https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html'
     - name: 人体跟踪 API
-      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/index.html'
+      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html'
     - name: 录制文件格式
       href: record-file-format.md

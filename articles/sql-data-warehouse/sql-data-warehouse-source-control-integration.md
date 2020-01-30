@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645264"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720021"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的源代码管理集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "73645264"
 
    ![管理连接](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理连接")
 
-   ![连接](media/sql-data-warehouse-source-control-integration/3-connect.png "连接")
+   ![“连接”](media/sql-data-warehouse-source-control-integration/3-connect.png "连接")
 
 3. 将项目中的 Azure Repo 存储库克隆到本地计算机
 
@@ -55,7 +55,7 @@ ms.locfileid: "73645264"
 
 3. 在 Visual Studio 的团队资源管理器中，将所有更改提交到本地 Git 存储库 
 
-   ![提交](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "提交")  
+   ![提交](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
 4. 既然已在克隆的存储库中本地提交了更改，请将更改同步并推送到 Azure DevOps 项目中的 Azure Repo 存储库。
 
@@ -82,13 +82,3 @@ ms.locfileid: "73645264"
 ## <a name="next-steps"></a>后续步骤
 
 - [针对 Azure SQL 数据仓库进行开发](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

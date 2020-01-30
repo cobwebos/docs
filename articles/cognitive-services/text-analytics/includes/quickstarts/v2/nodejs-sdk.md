@@ -2,18 +2,18 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 7cb3dce31592771deb5c57b9d73670465f7424fe
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d5197cfe749ae27b9f8807ba62825c8a73371c85
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281425"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748919"
 ---
 <a name="HOLTop"></a>
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [库源代码](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [包 (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [库源代码](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -28,13 +28,13 @@ ms.locfileid: "76281425"
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。 
+运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。
 
 ```console
 npm init
@@ -67,9 +67,9 @@ npm install @azure/cognitiveservices-textanalytics @azure/ms-rest-js
 
 文本分析客户端是一个 [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。
 
-文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。
 
-响应对象是一个列表，其中包含每个文档的分析信息。 
+响应对象是一个列表，其中包含每个文档的分析信息。
 
 ## <a name="code-examples"></a>代码示例
 

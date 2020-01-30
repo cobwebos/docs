@@ -2,14 +2,15 @@
 title: 使用 Azure Site Recovery 设置 Azure VM 灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务为 Azure VM 设置到其他 Azure 区域的灾难恢复。
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169337"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759783"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
@@ -75,17 +76,6 @@ ms.locfileid: "76169337"
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 如果使用的是网络安全组 (NSG)，请创建基于服务标记的 NSG 规则，以访问 Azure 存储、Azure Active Directory、Site Recovery 服务和 Site Recovery 监视。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
-
-> [!NOTE]
-> 建议始终为 NSG 规则配置服务标记以进行出站访问。
-
-若要使用 IP 地址来控制出站连接，请允许将这些地址用于基于 IP 的防火墙、代理或 NSG 规则：
-
-- [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)
-- [德国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=54770)
-- [中国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [Site Recovery 服务终结点 IP 地址](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>验证 Azure VM 证书
 

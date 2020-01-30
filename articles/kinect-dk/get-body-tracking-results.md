@@ -8,12 +8,12 @@ ms.reviewer: yijwan
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 联接
-ms.openlocfilehash: 68863a2b91652f9e1f13dd4d722da682ede784d4
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1b62022242144d5db51455a32ac04b67c3e5dd7a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932208"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759833"
 ---
 # <a name="get-body-tracking-results"></a>获取人体跟踪结果
 
@@ -72,7 +72,7 @@ case K4A_WAIT_RESULT_FAILED:
 
 ## <a name="enqueue-the-capture-and-pop-the-results"></a>将捕获排入队列并弹出结果
 
-跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 使用 [k4abt_tracker_enqueue_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e) 函数将新的捕获添加到输入队列。 使用 [k4abt_tracker_pop_result()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b) 函数弹出输出队列的结果。 使用的超时值与应用程序相关，控制排队等待时间。
+跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 使用 [k4abt_tracker_enqueue_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e) 函数将新的捕获添加到输入队列。 使用 [k4abt_tracker_pop_result()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b) 函数弹出输出队列的结果。 使用的超时值与应用程序相关，控制排队等待时间。
 
 ### <a name="real-time-processing"></a>实时处理
 对需要实时结果并且可以适应掉帧情况的单线程应用程序使用此模式。 [GitHub Azure-Kinect-Samples](https://github.com/microsoft/Azure-Kinect-Samples) 中的 `simple_3d_viewer` 示例是一个实时处理的示例。

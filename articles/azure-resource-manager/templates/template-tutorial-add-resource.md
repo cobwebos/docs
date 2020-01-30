@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471672"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765591"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教程：将资源添加到资源管理器模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "75471672"
 
 请将 **{provide-unique-name}** 替换为唯一的存储帐户名称。 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 可以尝试使用某种命名模式，例如，使用 **store1** 作为前缀，然后添加你的姓名首字母缩写和当天的日期。 例如，使用的名称类似于 **store1abc09092019**。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 存储帐户的唯一名称不容易猜出，尤其是在大型部署的自动化中不太适合进行这种猜测。 稍后在本教程系列中，你将使用相应的模板功能来更轻松地创建唯一名称。
 

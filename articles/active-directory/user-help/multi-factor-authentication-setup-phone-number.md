@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619818"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705184"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>将移动设备设置为双因素验证方法
 
@@ -31,18 +30,18 @@ ms.locfileid: "69619818"
 
 2. 从“方法”  区域中选择“通过文本消息向我发送代码”  ，然后选择“下一步”  。
 
-    ![“其他安全验证”页，其中包含身份验证电话和文本消息](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![“其他安全验证”页，其中显示身份验证电话和文本消息](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. 将 Microsoft 发送的文本消息中的验证码键入“第 2 步:  我们已将文本消息发送至您的手机”区域，然后选择“验证”  。
 
     ![“其他安全验证”页，其中显示身份验证电话和文本消息](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. 从“第 3 步:  继续使用您的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+4. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双因素验证的旧应用，只需要使用应用密码。
+    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
 5. 选择“完成”  。
 
@@ -58,23 +57,23 @@ ms.locfileid: "69619818"
 
     ![测试指定的电话号码](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. 从“第 3 步:  继续使用您的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+4. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双因素验证的旧应用，只需要使用应用密码。
+    >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
 5. 选择“完成”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-设置双因素验证方法后，可以添加其他方法、管理设置和应用密码、进行登录，或获得一些常见双因素验证相关问题的帮助。
+设置双重验证方法后，可以添加其他方法、管理设置和应用密码、登录，或获得一些常见双重验证相关问题的帮助。
 
-- [管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)
+- [管理双重验证方法设置](multi-factor-authentication-end-user-manage-settings.md)
 
 - [管理应用密码](multi-factor-authentication-end-user-app-passwords.md)
 
-- [使用双因素验证进行登录](multi-factor-authentication-end-user-signin.md)
+- [使用双重验证登录](multi-factor-authentication-end-user-signin.md)
 
 - [获取有关双重验证的帮助](multi-factor-authentication-end-user-troubleshoot.md)

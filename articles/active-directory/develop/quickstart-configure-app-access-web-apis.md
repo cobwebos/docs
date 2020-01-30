@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963327"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704283"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -40,7 +39,7 @@ ms.locfileid: "74963327"
 * [将凭据添加到 Web 应用程序](#add-credentials-to-your-web-application)
 * [添加用于访问 Web API 的权限](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，请确保满足下列先决条件：
 

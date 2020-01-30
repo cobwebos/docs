@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本教程介绍如何使用网络观察程序的 VPN 诊断功能，诊断通过 Azure 虚拟网关连接到本地虚拟网络或其他虚拟网络的 Azure 虚拟网络之间的通信问题。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,18 +12,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419731"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834672"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教程：使用 Azure 门户诊断网络之间的通信问题
 
-虚拟网关将 Azure 虚拟网络连接到本地虚拟网络或其他虚拟网络。 本教程介绍如何执行下列操作：
+虚拟网关将 Azure 虚拟网络连接到本地虚拟网络或其他虚拟网络。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用网络观察程序的 VPN 诊断功能诊断虚拟网关的问题
@@ -37,7 +35,7 @@ ms.locfileid: "74419731"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 VPN 诊断，必须有一个现成的正在运行的 VPN 网关。 如果没有现成的需要诊断的 VPN 网关，可以使用 [PowerShell 脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署一个。 可通过以下程序运行 PowerShell 脚本：
 - **本地安装的 PowerShell**：此脚本需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
@@ -47,7 +45,7 @@ ms.locfileid: "74419731"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="enable-network-watcher"></a>启用网络观察程序
 

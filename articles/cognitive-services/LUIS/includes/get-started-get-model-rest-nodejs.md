@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: cc8f01d5608b36521185695cd5f7be531ba7aeaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a262db04e51015edb760a8b04952dfa24b2ad63a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505857"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748824"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 初学者密钥。
 * 从 cognitive-services-language-understanding GitHub 存储库中导入 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 应用。
@@ -89,8 +89,8 @@ ms.locfileid: "73505857"
             body: utterances
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     const train = async (verb) => {
     
@@ -104,17 +104,17 @@ ms.locfileid: "73505857"
             body: null // The body can be empty for a training request
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     
     // MAIN
     main().then(() => console.log("done")).catch((err)=> console.log(err returned));
     ```
-1. 替换以下值：
+1. 请替换以下值：
 
-    * `YOUR-KEY` 替换为初学者密钥
-    * `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
+    * 将 `YOUR-KEY` 替换为初学者密钥
+    * 将 `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
     * `YOUR-APP-ID` 替换为应用 ID
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来运行文件：

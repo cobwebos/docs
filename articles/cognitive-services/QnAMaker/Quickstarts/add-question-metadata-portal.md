@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447676"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843033"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
 
@@ -28,7 +28,7 @@ ms.locfileid: "75447676"
 <a name="qna-table"></a>
 
 
-|Set|问题|Answer|元数据|
+|设置|问题|Answer|元数据|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -86,7 +86,7 @@ ms.locfileid: "75447676"
 
 ## <a name="add-metadata-to-filter-the-answers"></a>添加用于筛选回答的元数据
 
-将元数据添加到问题和回答集可让客户端应用程序请求筛选的回答。 此筛选器将在应用[第一个和第二个排名器](../concepts/knowledge-base.md#ranker-process)之前应用。
+将元数据添加到问题和回答集可让客户端应用程序请求筛选的回答。 此筛选器将在应用[第一个和第二个排名器](../concepts/query-knowledge-base.md#ranker-process)之前应用。
 
 1. 添加[此快速入门的第一个表格](#qna-table)中不包含元数据的第二个问题和回答集，然后继续执行以下步骤。
 

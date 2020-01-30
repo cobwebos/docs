@@ -9,34 +9,33 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 420db19a5ddcddfe37fa1a922e792fc0c8bc5b66
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912303"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773005"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
-使用 Azure Notebooks 开发机器学习模型，并将其部署到运行 Azure IoT Edge 的 Linux 设备。 
-
+使用 Azure Notebooks 开发机器学习模型，并将其部署到运行 Azure IoT Edge 的 Linux 设备。
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/how-to-deploy-and-where.md)。
+
+>[!NOTE]
+>Azure IoT Edge 上的 Azure 机器学习模块为公开预览版。
 
 本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建 Azure 机器学习模块
 > * 将模块容器推送到 Azure 容器注册表
 > * 将 Azure 机器学习模块部署到 IoT Edge 设备
 > * 查看生成的数据
 
->[!NOTE]
->Azure IoT Edge 上的 Azure 机器学习模块为公开预览版。
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -50,21 +49,19 @@ Azure IoT Edge 设备：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * Azure 机器学习工作区。 按照[通过 Azure 门户开始使用 Azure 机器学习](../machine-learning/tutorial-1st-experiment-sdk-setup.md)中的说明创建一个工作区并了解如何使用它。
-   * 请记下工作区名称、资源组和订阅 ID。 Azure 门户中的工作区概述中提供了这些值。 你将在本教程后面部分使用这些值，将 Azure 笔记本连接到工作区资源。 
-
+  * 请记下工作区名称、资源组和订阅 ID。 Azure 门户中的工作区概述中提供了这些值。 你将在本教程后面部分使用这些值，将 Azure 笔记本连接到工作区资源。
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>创建和部署 Azure 机器学习模块
 
 在本部分中，将已训练的机器学习模型文件转换为 Azure 机器学习容器。 Docker 映像所需的所有组件都在 [Azure IoT Edge Git 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)中。 请按照下列步骤将该存储库上传到 Microsoft Azure Notebooks 中，以创建容器并将其推送到 Azure 容器注册表。
 
-
 1. 导航到 Azure Notebooks 项目。 可以从 [Azure 门户](https://portal.azure.com)中的 Azure 机器学习工作区导航到该处，也可以通过使用 Azure 帐户登录到 [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) 来这样做。
 
 2. 选择“上传 GitHub 存储库”  。
 
-3. 提供以下 GitHub 存储库名称：`Azure/ai-toolkit-iot-edge`。 如果要将项目设为专用，请取消选中“公共”框  。 选择“导入”  。 
+3. 提供以下 GitHub 存储库名称：`Azure/ai-toolkit-iot-edge`。 如果要将项目设为专用，请取消选中“公共”框  。 选择“导入”  。
 
-4. 导入完成后，导航到新的 ai-toolkit-iot-edge 项目，然后打开“IoT Edge 异常情况检测教程”文件夹   。 
+4. 导入完成后，导航到新的 ai-toolkit-iot-edge 项目，然后打开“IoT Edge 异常情况检测教程”文件夹   。
 
 5. 验证项目是否正在运行。 如果没有，请选择“在免费计算上运行”  。
 
@@ -72,7 +69,7 @@ Azure IoT Edge 设备：
 
 6. 打开 aml_config/config.json 文件  。
 
-7. 编辑配置文件以包含以下值：Azure 订阅 ID、订阅中的资源组以及 Azure 机器学习工作区名称。 可以从 Azure 工作区的“概述”部分获取所有这些值  。 
+7. 编辑配置文件以包含以下值：Azure 订阅 ID、订阅中的资源组以及 Azure 机器学习工作区名称。 可以从 Azure 工作区的“概述”部分获取所有这些值  。
 
 8. 保存 config 文件。
 
@@ -85,31 +82,31 @@ Azure IoT Edge 设备：
 12. 通过选择它们并选择“运行”或按下 `Shift + Enter` 来运行笔记本中的单元格  。
 
     >[!TIP]
-    >异常情况检测教程笔记本中的一些单元是可选的，因为它们创建了一些用户可能拥有或可能没有的资源，如 IoT 中心。 如果将现有资源信息放在第一个单元格中，则在运行创建新资源的单元格时会收到错误，因为 Azure 不会创建重复的资源。 这没什么关系，可以忽略错误或完全跳过这些可选部分。 
+    >异常情况检测教程笔记本中的一些单元是可选的，因为它们创建了一些用户可能拥有或可能没有的资源，如 IoT 中心。 如果将现有资源信息放在第一个单元格中，则在运行创建新资源的单元格时会收到错误，因为 Azure 不会创建重复的资源。 这没什么关系，可以忽略错误或完全跳过这些可选部分。
 
-完成笔记本中的所有步骤后，就已经训练了一个异常情况检测模型，将其构建为 Docker 容器映像，并将该映像推送到 Azure 容器注册表。 然后，你测试了该模型，并最终将其部署到 IoT Edge 设备。 
+完成笔记本中的所有步骤后，就已经训练了一个异常情况检测模型，将其构建为 Docker 容器映像，并将该映像推送到 Azure 容器注册表。 然后，你测试了该模型，并最终将其部署到 IoT Edge 设备。
 
 ## <a name="view-container-repository"></a>查看容器存储库
 
-检查容器映像是否已成功创建并存储在与机器学习环境关联的 Azure 容器注册表中。 在上一节中使用的笔记本自动将容器映像和注册表凭据提供到 IoT Edge 设备，但你应该知道它们的存储位置，以便以后可以自行查找信息。 
+检查容器映像是否已成功创建并存储在与机器学习环境关联的 Azure 容器注册表中。 在上一节中使用的笔记本自动将容器映像和注册表凭据提供到 IoT Edge 设备，但你应该知道它们的存储位置，以便以后可以自行查找信息。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure 机器学习服务工作区。 
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure 机器学习服务工作区。
 
-2. 概述部分列出了工作区详细信息及其相关资源  。 选择“注册表”值，该值应为工作区名称，后跟随机数字  。 
+2. 概述部分列出了工作区详细信息及其相关资源  。 选择“注册表”值，该值应为工作区名称，后跟随机数字  。
 
-3. 在容器注册表中，选择“存储库”  。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的  。 
+3. 在容器注册表中，选择“存储库”  。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的  。
 
-4. 选择“tempanomalydetection”  。 应看到存储库中有一个标记：1  。 
+4. 选择“tempanomalydetection”  。 应看到存储库中有一个标记：1  。
 
-   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1  。 映像路径可用于将此容器部署到 IoT Edge 设备。 
+   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1  。 映像路径可用于将此容器部署到 IoT Edge 设备。
 
 5. 在容器注册表中，选择“访问密钥”  。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”    。
 
-   这些凭据可以包含在部署清单中，使 IoT Edge 设备能够从注册表中拉取容器映像。 
+   这些凭据可以包含在部署清单中，使 IoT Edge 设备能够从注册表中拉取容器映像。
 
-现在你已了解机器学习容器映像的存储位置。 下一部分详细介绍如何通过各种步骤来查看在 IoT Edge 设备上作为模块运行的容器。 
+现在你已了解机器学习容器映像的存储位置。 下一部分详细介绍如何通过各种步骤来查看在 IoT Edge 设备上作为模块运行的容器。
 
-## <a name="view-generated-data"></a>查看生成的数据
+## <a name="view-the-generated-data"></a>查看生成的数据
 
 可以查看由每个 IoT Edge 模块生成的消息，还可以查看传送到 IoT 中心的消息。
 

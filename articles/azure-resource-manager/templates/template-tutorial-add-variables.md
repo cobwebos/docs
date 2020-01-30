@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471522"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765503"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>教程：将变量添加到资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471522"
 
 在上一篇教程的结束时，模板包含以下 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 存储帐户名称的参数难以使用，因为你必须提供唯一名称。 如果已完成本系列中的前述教程，你可能已厌倦了猜测某个唯一的名称。 若要解决此问题，可以添加一个变量，以便为存储帐户构造唯一名称。
 
@@ -34,7 +34,7 @@ ms.locfileid: "75471522"
 
 以下示例突出显示了在将变量添加到模板时所做的更改，该模板用于创建唯一的存储帐户名称。 复制整个文件，将模板替换为该文件的内容。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 请注意，它包含一个名为 **uniqueStorageName** 的变量。 此变量使用四个函数来构造一个字符串值。
 

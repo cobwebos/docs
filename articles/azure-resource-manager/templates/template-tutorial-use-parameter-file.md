@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470832"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773148"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "75470832"
 
 模板有许多可以在部署过程中提供的参数。 在上一教程的末尾，模板如下所示：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 该模板可以正常工作，但现在，你希望能够轻松地管理为模板传入的参数。
 
@@ -36,13 +36,13 @@ ms.locfileid: "75470832"
 
 在 VS Code 中，创建包含以下内容的新文件。 使用名称 **azuredeploy.parameters.dev.json** 保存文件。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 此文件是用于开发环境的参数文件。 请注意，它将 Standard_LRS 用于存储帐户，使用 **dev** 前缀为资源命名，并将 **Environment** 标记设置为 **Dev**。
 
 同样，创建包含以下内容的新文件。 使用名称 **azuredeploy.parameters.prod.json** 保存文件。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 此文件是用于生产环境的参数文件。 请注意，它将 Standard_GRS 用于存储帐户，使用 **contoso** 前缀为资源命名，并将 **Environment** 标记设置为 **Production**。 在实际生产环境中，还需要将应用服务与非免费版 SKU 配合使用，但在本教程中，我们将继续使用该免费版 SKU。
 

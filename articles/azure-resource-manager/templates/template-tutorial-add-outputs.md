@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 540e037e83d359dc67cb32f98dec0319bf490707
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471702"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765734"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>教程：将输出添加到资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471702"
 
 在上一篇教程的结束时，模板包含以下 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
 它部署一个存储帐户，但不返回有关该存储帐户的任何信息。 可能需要从新资源捕获属性，以便以后引用它们。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75471702"
 
 以下示例重点介绍添加输出值时需要对模板进行的更改。 复制整个文件，将模板替换为该文件的内容。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
 关于添加的输出值，有一些重要的值得注意的项。
 

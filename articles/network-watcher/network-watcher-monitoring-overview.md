@@ -3,9 +3,7 @@ title: Azure 网络观察程序 | Microsoft Docs
 description: 了解 Azure 网络观察程序针对虚拟网络中的资源提供的监视、诊断、指标和日志记录功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -14,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645202"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844983"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
@@ -77,7 +75,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 网络接口的有效安全规则是应用到网络接口以及网络接口所在子网的所有安全规则的组合。  安全组视图功能显示应用到网络接口、网络接口所在的子网和两者的聚合的所有安全规则。  了解已将哪些规则应用到网络接口后，可以添加、删除规则，或者更改规则（如果这些规则允许或拒绝所要更改的流量）。 详细了解[安全组视图](network-watcher-security-group-view-overview.md)。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 在一个 Azure 订阅和区域中可以创建的网络资源数有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果超过了限制，则无法在该订阅或区域中创建更多的资源。 网络订阅限制功能汇总每个网络资源在某个订阅和区域中部署的数目，以及该资源的限制。  下图显示了在美国东部区域为某个示例订阅部署的网络资源的部分输出：
 

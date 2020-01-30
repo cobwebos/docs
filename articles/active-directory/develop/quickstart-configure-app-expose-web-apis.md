@@ -12,13 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966106"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704215"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入门：配置应用程序来公开 Web API
 
@@ -26,7 +25,7 @@ ms.locfileid: "74966106"
 
 本快速入门介绍如何将应用程序配置为公开新的范围，使其可供客户端应用程序使用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，请确保满足下列先决条件：
 
@@ -130,7 +129,7 @@ ms.locfileid: "74966106"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
+* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 * [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
 

@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 创建 Azure 服务总线队列
 keywords: ansible, azure, devops, bash, playbook, 服务总线, 队列
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 9903419a52be61cd7ec74214858bce81df7e727e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 8ba4c2296d903c4f35aa36eb92dfbc3b56ec4b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155814"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713230"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>教程：使用 Ansible 配置 Azure 服务总线中的队列
 
@@ -27,7 +27,7 @@ ms.locfileid: "74155814"
 > * 检索队列信息
 > * 撤销队列 SAS 策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -90,7 +90,7 @@ ansible-playbook servicebus_queue.yml
       namespace: servicebustestns
       queue: servicebustestqueue
   tasks:
-    - name: Create a policy with send and listen priviledge
+    - name: Create a policy with send and listen privilege
       azure_rm_servicebussaspolicy:
           name: "{{ queue }}-policy"
           queue: "{{ queue }}"
@@ -102,7 +102,7 @@ ansible-playbook servicebus_queue.yml
           var: policy
 ```
 
-在运行 playbook 之前，请参阅以下说明：
+运行 playbook 之前，请参阅以下说明：
 - `rights` 值表示用户对队列具有的权限。 请指定下列值之一：`manage`、`listen`、`send` 或 `listen_send`。
 
 使用 `ansible-playbook` 命令运行 playbook：
@@ -193,7 +193,7 @@ ansible-playbook servicebus_queue_info.yml
       namespace: servicebustestns
       queue: servicebustestqueue
   tasks:
-    - name: Create a policy with send and listen priviledge
+    - name: Create a policy with send and listen privilege
       azure_rm_servicebussaspolicy:
           name: "{{ queue }}-policy"
           queue: "{{ queue }}"

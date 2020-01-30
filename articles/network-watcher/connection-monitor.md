@@ -3,8 +3,7 @@ title: 教程：使用 Azure 门户监视网络通信
 description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419697"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834648"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
-在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 本教程介绍如何执行下列操作：
+在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建两个 VM
@@ -37,7 +36,7 @@ ms.locfileid: "74419697"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-vms"></a>创建 VM
 
@@ -51,10 +50,10 @@ ms.locfileid: "74419697"
 
     |设置|值|
     |---|---|
-    |Name|myVM1|
+    |名称|myVM1|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |Subscription| 选择订阅。|
+    |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -74,9 +73,9 @@ ms.locfileid: "74419697"
 |步骤|设置|值|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | 名称                                  | myVm2                                                                   |
 | 3 | 身份验证类型                   | 粘贴 SSH 公钥，或者在选择“密码”后输入密码。  |
-| 3 | Resource group                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
+| 3 | 资源组                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
 | 6 | 扩展                            | **适用于 Linux 的网络观察程序代理**                                             |
 
 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
@@ -93,7 +92,7 @@ ms.locfileid: "74419697"
 
     | 设置                  | 值               |
     | ---------                | ---------           |
-    | Name                     | myVm1-myVm2(22)     |
+    | 名称                     | myVm1-myVm2(22)     |
     | 源                   |                     |
     | 虚拟机          | myVM1               |
     | 目标              |                     |
@@ -152,7 +151,7 @@ ms.locfileid: "74419697"
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
     | 优先度                | 100            |
-    | Name                    | DenySshInbound |
+    | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
 
@@ -169,7 +168,7 @@ ms.locfileid: "74419697"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

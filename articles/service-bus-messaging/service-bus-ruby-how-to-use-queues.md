@@ -1,6 +1,6 @@
 ---
-title: 快速入门：如何通过 Ruby 使用 Azure 服务总线队列
-description: 快速入门：了解如何在 Azure 中使用服务总线队列。 用 Ruby 编写的代码示例。
+title: 如何通过 Ruby 使用 Azure 服务总线队列
+description: 本教程介绍如何创建 Ruby 应用程序，用于向/从服务总线队列发送/接收消息。
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718770"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760583"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线队列
 
@@ -27,7 +27,7 @@ ms.locfileid: "73718770"
 
 本教程介绍如何创建 Ruby 应用程序，用于向/从服务总线队列发送/接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤。
     1. 阅读服务总线**队列**的快速**概述**。 

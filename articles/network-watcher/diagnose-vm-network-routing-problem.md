@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本教程介绍如何使用 Azure 网络观察程序的“下一跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,18 +15,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276042"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845208"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
 
-部署虚拟机 (VM) 时，Azure 会为其创建多个默认路由。 可以创建自定义路由来覆盖 Azure 的默认路由。 有时候，自定义路由可能导致 VM 无法与其他资源通信。 本教程介绍如何执行下列操作：
+部署虚拟机 (VM) 时，Azure 会为其创建多个默认路由。 可以创建自定义路由来覆盖 Azure 的默认路由。 有时候，自定义路由可能导致 VM 无法与其他资源通信。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM
@@ -51,10 +50,10 @@ ms.locfileid: "74276042"
 
     |设置|值|
     |---|---|
-    |Name|myVm|
+    |名称|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |Subscription| 选择订阅。|
+    |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -77,16 +76,16 @@ ms.locfileid: "74276042"
 
 3. 选择“启用网络观察程序”。 
 
-### <a name="use-next-hop"></a>使用下一跃点
+### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时候，自定义路由可能会导致通信故障。 请使用网络观察程序的“下一跃点”功能来确定 Azure 使用哪个路由来路由流量。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 请使用网络观察程序的“下一跃点”功能来确定 Azure 使用哪个路由来路由流量。
 
 1. 在 Azure 门户的“网络观察程序”下选择“下一跃点”。  
 2. 选择订阅，输入或选择以下值，然后选择“下一跃点”，如下图所示： 
 
     |设置                  |值                                                   |
     |---------                |---------                                               |
-    | Resource group          | 选择 myResourceGroup                                 |
+    | 资源组          | 选择 myResourceGroup                                 |
     | 虚拟机         | 选择 myVm                                            |
     | 网络接口       | myvm - 你的网络接口名称可能有所不同。   |
     | 源 IP 地址       | 10.0.0.4                                               |
@@ -107,19 +106,19 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 
     使用[使用下一跃点](#use-next-hop)中的 13.107.21.200 运行测试时，地址前缀为 0.0.0.0/0 的路由用于将流量路由到该地址，因为没有其他路由包含该地址。 默认情况下，未在另一路由的地址前缀中指定的所有地址都会路由到 Internet。
 
-    但在使用 172.31.0.100 运行测试时，结果指示没有下一跃点类型。 在上图中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“下一跃点类型”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无缘无故地指定下一跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“下一跃点类型”更改为“虚拟网络”。   此时进行检查会显示“下一跃点类型”为“虚拟网络”。  
+    但在使用 172.31.0.100 运行测试时，结果指示没有下一跃点类型。 在上图中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“下一跃点类型”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“下一跃点类型”更改为“虚拟网络”。   此时进行检查会显示“下一跃点类型”为“虚拟网络”。  
 
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建 VM 并根据该 VM 诊断网络路由问题， 同时还介绍了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
+本教程介绍了如何创建 VM 并根据该 VM 诊断网络路由问题， 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
 对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-portal.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量，以及所使用的通往某个终结点的路由。 了解如何使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。
 

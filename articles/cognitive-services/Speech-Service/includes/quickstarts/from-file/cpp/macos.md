@@ -2,19 +2,19 @@
 title: 快速入门：从音频文件中识别语音，C++ (macOS) - 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: wolfma61
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
-ms.author: wolfma
-ms.openlocfilehash: 4a043c246cc859706e062cdc11d30cbd657bc6b2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: erhopf
+ms.openlocfilehash: 92586667675823343eb1f44f054e939c59719379
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037526"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748833"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -31,47 +31,7 @@ ms.locfileid: "76037526"
 
 1. 创建一个名为 `helloworld.cpp` 的 C++ 源文件，并将以下代码粘贴到其中。
 
-   ```cpp
-    // Creates an instance of a speech config with specified subscription key and service region.
-    // Replace with your own subscription key and service region (e.g., "westus").
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-    // Creates a speech recognizer using a WAV file. The default language is "en-us".
-    // Replace with your own audio file name.
-    auto audioInput = AudioConfig::FromWavFileInput("whatstheweatherlike.wav");
-    auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
-    cout << "Recognizing first result...\n";
-
-    // Starts speech recognition, and returns after a single utterance is recognized. The end of a
-    // single utterance is determined by listening for silence at the end or until a maximum of 15
-    // seconds of audio is processed.  The task returns the recognition text as result.
-    // Note: Since RecognizeOnceAsync() returns only a single utterance, it is suitable only for single
-    // shot recognition like command or query.
-    // For long-running multi-utterance recognition, use StartContinuousRecognitionAsync() instead.
-    auto result = recognizer->RecognizeOnceAsync().get();
-
-    // Checks result.
-    switch (result->Reason)
-    {
-        case ResultReason::RecognizedSpeech:
-            cout << "RECOGNIZED: Text=" << result->Text << std::endl;
-            break;
-        case ResultReason::NoMatch:
-            cout << "NOMATCH: Speech could not be recognized." << std::endl;
-            break;
-        case ResultReason::Canceled:
-            auto cancellation = CancellationDetails::FromResult(result);
-            cout << "CANCELED: Reason=" << (int)cancellation->Reason << std::endl;
-
-            if (cancellation->Reason == CancellationReason::Error)
-            {
-                cout << "CANCELED: ErrorCode=" << (int)cancellation->ErrorCode << std::endl;
-                cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
-                cout << "CANCELED: Did you update the subscription info?" << std::endl;
-            }
-            break;
-    }
-   ```
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-file/helloworld/helloworld.cpp#code)]
 
 1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 

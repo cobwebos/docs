@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471802"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773228"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教程：将模板函数添加到资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471802"
 
 在上一篇教程的结束时，模板包含以下 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 存储帐户的位置硬编码为“美国东部”。  但是，可能需要将存储帐户部署到其他区域。 你会再次面对一个问题：模板缺乏灵活性。 可以添加一个位置参数，但理想的情况是默认值更理性，而不仅仅是一个硬编码值。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75471802"
 
 复制整个文件，将模板替换为该文件的内容。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>部署模板
 

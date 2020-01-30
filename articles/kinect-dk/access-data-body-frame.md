@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: how-to
 keywords: 人体, 帧, azure, kinect, 跟踪, 提示
-ms.openlocfilehash: b3273d73c176631fca7218016bb181be28ffc97a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456992"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760939"
 ---
 # <a name="access-data-in-body-frame"></a>访问人体帧中的数据
 
@@ -21,12 +21,12 @@ ms.locfileid: "75456992"
 
 本文将介绍以下函数：
 
-- [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92)
-- [k4abt_frame_get_body_index_map()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga0e4f2d0d7e330d444de7070fb1fee4f6.html#ga0e4f2d0d7e330d444de7070fb1fee4f6)
-- [k4abt_frame_get_body_skeleton()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gac7032ab06268253538556750775064fb.html#gac7032ab06268253538556750775064fb)
-- [k4abt_frame_get_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gad9eef11f6496bbfe997536c374217d9a.html#gad9eef11f6496bbfe997536c374217d9a)
-- [k4abt_frame_get_num_bodies()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga29ab088b1a0d1a246bdb5542e21aa3c3.html#ga29ab088b1a0d1a246bdb5542e21aa3c3)
-- [k4abt_frame_get_device_timestamp_usec()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga04be7b814b40296cd6b97044ed7283e4.html#ga04be7b814b40296cd6b97044ed7283e4)
+- [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92)
+- [k4abt_frame_get_body_index_map()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga0e4f2d0d7e330d444de7070fb1fee4f6.html#ga0e4f2d0d7e330d444de7070fb1fee4f6)
+- [k4abt_frame_get_body_skeleton()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gac7032ab06268253538556750775064fb.html#gac7032ab06268253538556750775064fb)
+- [k4abt_frame_get_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gad9eef11f6496bbfe997536c374217d9a.html#gad9eef11f6496bbfe997536c374217d9a)
+- [k4abt_frame_get_num_bodies()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga29ab088b1a0d1a246bdb5542e21aa3c3.html#ga29ab088b1a0d1a246bdb5542e21aa3c3)
+- [k4abt_frame_get_device_timestamp_usec()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga04be7b814b40296cd6b97044ed7283e4.html#ga04be7b814b40296cd6b97044ed7283e4)
 
 ## <a name="key-components-of-a-body-frame"></a>人体帧的关键组成部分
 
@@ -36,13 +36,13 @@ ms.locfileid: "75456992"
 
 ## <a name="access-the-collection-of-body-structs"></a>访问人体结构的集合
 
-在单个捕获中可能会检测到多个人体。 可以调用 [k4abt_frame_get_num_bodies()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga29ab088b1a0d1a246bdb5542e21aa3c3.html#ga29ab088b1a0d1a246bdb5542e21aa3c3) 函数查询人体数目。
+在单个捕获中可能会检测到多个人体。 可以调用 [k4abt_frame_get_num_bodies()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga29ab088b1a0d1a246bdb5542e21aa3c3.html#ga29ab088b1a0d1a246bdb5542e21aa3c3) 函数查询人体数目。
 
 ```C
 size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
 ```
 
-使用 [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92) 和 [k4abt_frame_get_body_skeleton()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gac7032ab06268253538556750775064fb.html#gac7032ab06268253538556750775064fb) 函数可以循环访问每个人体索引，以查找人体 ID 和关节位置/方向信息。
+使用 [k4abt_frame_get_body_id()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92) 和 [k4abt_frame_get_body_skeleton()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gac7032ab06268253538556750775064fb.html#gac7032ab06268253538556750775064fb) 函数可以循环访问每个人体索引，以查找人体 ID 和关节位置/方向信息。
 
 ```C
 for (size_t i = 0; i < num_bodies; i++)
@@ -55,7 +55,7 @@ for (size_t i = 0; i < num_bodies; i++)
 
 ## <a name="access-the-body-index-map"></a>访问人体索引映射
 
-使用 [k4abt_frame_get_body_index_map()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga0e4f2d0d7e330d444de7070fb1fee4f6.html#ga0e4f2d0d7e330d444de7070fb1fee4f6) 函数可以访问人体索引映射。 有关人体索引映射的详细说明，请参阅[人体索引映射](body-index-map.md)。 不再需要人体索引映射时，请务必将其释放。
+使用 [k4abt_frame_get_body_index_map()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga0e4f2d0d7e330d444de7070fb1fee4f6.html#ga0e4f2d0d7e330d444de7070fb1fee4f6) 函数可以访问人体索引映射。 有关人体索引映射的详细说明，请参阅[人体索引映射](body-index-map.md)。 不再需要人体索引映射时，请务必将其释放。
 
 ```C
 k4a_image_t body_index_map = k4abt_frame_get_body_index_map(body_frame);
@@ -65,7 +65,7 @@ k4a_image_release(body_index_map);
 
 ## <a name="access-the-input-capture"></a>访问输入捕获
 
-人体跟踪器是一个异步 API。 弹出结果时，可能已释放原始捕获。 使用 [k4abt_frame_get_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gad9eef11f6496bbfe997536c374217d9a.html#gad9eef11f6496bbfe997536c374217d9a) 函数可以查询用于生成此人体跟踪结果的输入捕获。 每次调用此函数，k4a_capture_t 的引用计数就会递增。 不再需要捕获时，请使用 [k4a_capture_release()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga0ed6f74ec403c3eac1b8ef3afb32cee6.html#ga0ed6f74ec403c3eac1b8ef3afb32cee6) 函数。
+人体跟踪器是一个异步 API。 弹出结果时，可能已释放原始捕获。 使用 [k4abt_frame_get_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gad9eef11f6496bbfe997536c374217d9a.html#gad9eef11f6496bbfe997536c374217d9a) 函数可以查询用于生成此人体跟踪结果的输入捕获。 每次调用此函数，k4a_capture_t 的引用计数就会递增。 不再需要捕获时，请使用 [k4a_capture_release()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga0ed6f74ec403c3eac1b8ef3afb32cee6.html#ga0ed6f74ec403c3eac1b8ef3afb32cee6) 函数。
 
 ```C
 k4a_capture_t input_capture = k4abt_frame_get_capture(body_frame);

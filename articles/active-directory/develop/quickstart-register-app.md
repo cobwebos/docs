@@ -12,13 +12,12 @@ ms.date: 05/09/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a68b89ce38664c0d0ec87b509fe5f872cfd78c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bb741fe36e00c3d528470866669e64e9b0b221ae
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921409"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704130"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -30,7 +29,7 @@ ms.locfileid: "74921409"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 搜索并选择“Azure Active Directory”。  在“Active Directory”页上选择“应用注册”，然后选择“新建注册”   。 
+1. 搜索并选择“Azure Active Directory”  。 在“Active Directory”页上选择“应用注册”，然后选择“新建注册”   。 
 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 
    - **名称**：输入一个会显示给应用用户的有意义的应用程序名称。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
-ms.date: 06/20/2019
+ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5acd6e4be178c7e645eb6855a79cd0f58303ba9a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904366"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846417"
 ---
 # <a name="what-is-immersive-reader"></a>什么是沉浸式阅读器？
 

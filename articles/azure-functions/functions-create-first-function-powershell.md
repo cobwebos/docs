@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167900"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845905"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>在 Azure 中创建首个 PowerShell 函数
 
@@ -67,36 +67,7 @@ ms.locfileid: "76167900"
 
 Visual Studio Code 将在新的工作区中创建 PowerShell 函数应用项目。 此项目包含 [host.json](functions-host-json.md) 和 [local.settings.json](functions-run-local.md#local-settings-file) 配置文件，这些文件将应用到项目中的所有函数。 此 [PowerShell 项目](functions-reference-powershell.md#folder-structure)与 Azure 中运行的函数应用相同。
 
-## <a name="run-the-function-locally"></a>在本地运行函数
-
-Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运行和调试 Azure Functions 项目。  
-
-1. 若要调试函数，请在函数代码中要附加调试器的位置前面插入对 [`Wait-Debugger`] cmdlet 的调用，然后按 F5 启动函数应用项目并附加调试器。 来自 Core Tools 的输出会显示在“终端”  面板中。
-
-1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
-
-    ![Azure 本地输出](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. 将查询字符串 `?name=<yourname>` 追加到此 URL，然后使用 `Invoke-RestMethod` 执行请求，如下所示：
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    也可以从浏览器执行 GET 请求。
-
-    在未作为查询参数或者在正文中传递 `name` 参数的情况下调用 HttpTrigger 终结点时，该函数将返回 [HttpStatusCode]::BadRequest 错误。 在 run.ps1 中检查代码时，会看到此错误，这是设计使然。
-
-1. 若要停止调试，请按 Shift + F5。
-
-确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
-
-> [!NOTE]
-> 将函数发布到 Azure 之前，请记得删除对 `Wait-Debugger` 的所有调用。 
->
-> 在 Azure 中创建函数应用时，系统只会提示输入函数应用名称。 其他值已定义好。
-> 要提示输入所有其他值，请将 `azureFunctions.advancedCreation` 设置为 `true`。
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

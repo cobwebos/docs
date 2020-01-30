@@ -9,15 +9,15 @@
 - name: 工作负荷
   items:
     - name: Red Hat
-      href: /redhat/redhat-overview.md
+      href: ./workloads/redhat/redhat-overview.md
     - name: 高性能计算
-      href: /hpc/overview.md
+      href: ./workloads/hpc/overview.md
     - name: SAP
-      href: /sap/get-started.md
+      href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: /oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-considerations.md
     - name: 大型机重新托管
-      href: /mainframe-rehosting/overview.md
+      href: ./workloads/mainframe-rehosting/overview.md
 - name: 经典部署
   items:
     - name: 使用经典部署的 Linux VM

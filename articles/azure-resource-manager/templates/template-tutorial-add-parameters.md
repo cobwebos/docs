@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471682"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773209"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>教程：将参数添加到资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "75471682"
 
 在上一篇教程的结束时，模板包含以下 JSON：
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 可能已注意到此模板有一个问题。 存储帐户名称已经过硬编码。 每次只能使用此模板部署同一个存储帐户。 若要使用不同的名称部署存储帐户，必须创建新的模板，这显然不是实现自动化部署的实用方法。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75471682"
 
 复制整个文件，将模板替换为该文件的内容。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>部署模板
 
@@ -80,7 +80,7 @@ az group deployment create \
 
 前一个模板始终部署 Standard_LRS 存储帐户。 你可能希望能够根据环境灵活部署不同的 SKU。 以下示例演示了为 SKU 添加参数而需要做出的更改。 复制整个文件并将其粘贴到模板中。
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 **storageSKU** 参数有默认值。 如果在部署过程中未指定值，将使用此默认值。 它还有允许值列表。 这些值与创建存储帐户所需的值相匹配。 你不希望模板用户传入没有作用的 SKU。
 

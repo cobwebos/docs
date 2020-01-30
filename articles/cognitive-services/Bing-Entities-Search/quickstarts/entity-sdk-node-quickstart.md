@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 9fdb1e68a413adcbf5d27ec3a90cd79fdeb29f21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ece3d7979dc80a2c6c576b3ce279d4fb9bc9472
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384376"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716387"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>快速入门：通过适用于 Node.js 的必应实体搜索 SDK 来发送搜索请求
 
@@ -25,23 +25,23 @@ ms.locfileid: "75384376"
 
 * 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 
-* [适用于 Node.js 的必应实体搜索 SDK](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* [适用于 Node.js 的必应实体搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 若要安装必应实体搜索 SDK，请执行以下操作：
 
 1. 在开发环境中运行 `npm install ms-rest-azure`。
-2. 在开发环境中运行 `npm install azure-cognitiveservices-entitysearch`。
+2. 在开发环境中运行 `npm install @azure/cognitiveservices-entitysearch`。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你喜欢使用的 IDE 或编辑器中创建新的 JavaScript 文件，然后添加以下要求。 
-    
+1. 在你喜欢使用的 IDE 或编辑器中创建新的 JavaScript 文件，然后添加以下要求。
+
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
+    const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
 2. 使用你的订阅密钥创建 `CognitiveServicesCredentials` 的实例。 然后，使用该实例创建搜索客户端的实例。
@@ -54,7 +54,7 @@ ms.locfileid: "75384376"
 ## <a name="send-a-request-and-receive-a-response"></a>发送请求并接收响应
 
 1. 通过 `entitiesOperations.search()` 发送实体搜索请求。 在收到响应后，输出 `queryContext`、返回的结果数以及第一个结果的说明。
-      
+
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
         console.log(result.queryContext);

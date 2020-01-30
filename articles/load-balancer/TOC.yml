@@ -2,11 +2,11 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是负载均衡器？
+    - name: 什么是 Azure 负载均衡器？
       href: load-balancer-overview.md
 - name: 快速入门
   items:
-    - name: 创建标准负载均衡器
+    - name: 创建 Azure 负载均衡器
       items:
         - name: 门户
           href: quickstart-load-balancer-standard-public-portal.md
@@ -16,16 +16,6 @@
           href: quickstart-create-standard-load-balancer-powershell.md
         - name: 模板
           href: quickstart-load-balancer-standard-public-template.md
-    - name: 创建基本负载均衡器
-      items:
-        - name: 门户
-          href: quickstart-create-basic-load-balancer-portal.md
-        - name: Azure CLI
-          href: quickstart-create-basic-load-balancer-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-basic-load-balancer-powershell.md
-        - name: 模板
-          href: load-balancer-get-started-internet-arm-template.md
 - name: 教程
   items:
     - name: 对传入 VM 的 Internet 流量进行负载均衡
@@ -76,22 +66,6 @@
       href: load-balancer-security-controls.md
 - name: 如何
   items:
-    - name: 创建区域冗余的公共标准负载均衡器
-      items:
-        - name: 门户
-          href: load-balancer-get-started-internet-az-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-internet-az-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-internet-az-powershell.md
-    - name: 创建区域的公共标准负载均衡器
-      items:
-        - name: 门户
-          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: 将基本公共负载均衡器升级到标准公共负载均衡器
       href: upgrade-basic-standard.md
     - name: 跨可用性区域对 VM 进行负载均衡 (CLI)

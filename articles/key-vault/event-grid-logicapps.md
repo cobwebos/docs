@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133994"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845840"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用逻辑应用接收有关 Key Vault 机密状态更改的电子邮件
 
@@ -22,7 +22,7 @@ ms.locfileid: "74133994"
 
 有关 Azure Key Vault/Azure 事件网格集成的概述，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](event-grid-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 受 Azure 逻辑应用支持的任何电子邮件提供程序（如 Office 365 Outlook）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](/connectors)
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -34,7 +34,6 @@ ms.locfileid: "74133994"
 
 若要创建 Azure 事件网格订阅，请执行以下操作：
 
-1. 使用以下链接打开 Azure 门户： https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. 在 Azure 门户中，转到 Key Vault，选择“事件”>“入门”并  单击“逻辑应用” 
 
     

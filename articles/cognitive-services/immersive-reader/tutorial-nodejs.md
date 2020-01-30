@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 37453e1fdd8fdcfc89468731980581652027343c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945241"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842021"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>教程：启动沉浸式阅读器 (Node.js)
 
@@ -189,7 +189,7 @@ module.exports = router;
     npm start
     ```
 
-4. 打开浏览器并导航到 http://localhost:3000  。 你应该可以在页面上看到以上内容。 单击沉浸式阅读器按钮，启动沉浸式阅读器以显示你的内容  。
+4. 打开浏览器并导航到 _http://localhost:3000_ 。 你应该可以在页面上看到以上内容。 单击沉浸式阅读器按钮，启动沉浸式阅读器以显示你的内容  。
 
 ## <a name="specify-the-language-of-your-content"></a>指定内容的语言
 

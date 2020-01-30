@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7654d952469e35c3b45af252e910cb0e36693029
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772930"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761420"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "75772930"
 
 添加一些代码作为项目的框架。
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,69-76)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,68-75)]
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
@@ -45,8 +45,8 @@ ms.locfileid: "75772930"
 
 将此代码插入到 `main()` 中的 try/catch 块中。 请确保更新以下值：
 
-* 将 `"YourLanguageUnderstandingSubscriptionKey"` 替换为 LUIS 预测密钥。 
-* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。 
+* 将 `"YourLanguageUnderstandingSubscriptionKey"` 替换为 LUIS 预测密钥。
+* 将 `"YourLanguageUnderstandingServiceRegion"` 替换为 LUIS 位置。
 
 >[!TIP]
 > 如果需要帮助查找这些值，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
@@ -65,14 +65,14 @@ ms.locfileid: "75772930"
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>添加 LanguageUnderstandingModel 和意向
 
-需要将 `LanguageUnderstandingModel` 与意向识别器相关联，并添加要识别的意向。 我们将使用预生成的域中的意向进行主自动化。 
+需要将 `LanguageUnderstandingModel` 与意向识别器相关联，并添加要识别的意向。 我们将使用预生成的域中的意向进行主自动化。
 
-将此代码插入到你的 `IntentRecognizer` 下方。 请确保将 `"YourLanguageUnderstandingAppId"` 替换为 LUIS 应用 ID。 
+将此代码插入到你的 `IntentRecognizer` 下方。 请确保将 `"YourLanguageUnderstandingAppId"` 替换为 LUIS 应用 ID。
 
 >[!TIP]
 > 如果需要查找此值的帮助，请参阅[创建 LUIS 应用以进行意向识别](#create-a-luis-app-for-intent-recognition)。
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-36)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>识别意向
 
@@ -80,19 +80,19 @@ ms.locfileid: "75772930"
 
 将此代码插入到你的模型下方：
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=41)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=40)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>显示识别结果（或错误）
 
 语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到控制台。
 
-将此代码插入到对 `recognizeOnceAsync()` 的调用下方：[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=44-65)]
+将此代码插入到对 `recognizeOnceAsync()` 的调用下方：[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
 
 ## <a name="release-resources"></a>释放资源
 
 使用完语音资源后，必须将其释放。 将此代码插入到 try/catch 块的末尾：
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=67-68)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=66-67)]
 
 ## <a name="check-your-code"></a>查看代码
 
@@ -101,7 +101,7 @@ ms.locfileid: "75772930"
 > [!NOTE]
 > 我们已向此版本添加了一些注释。
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-75)]
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 

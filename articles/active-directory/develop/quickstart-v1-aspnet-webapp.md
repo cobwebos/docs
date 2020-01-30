@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc68db841b900ca96899e6fda8f8f3e07f41256a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 91c697cd11c0d411b7805e22be4cf70fe2a3e763
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921086"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703875"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 

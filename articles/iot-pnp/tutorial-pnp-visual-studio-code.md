@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 720b3e56e1dd45bd2940b337adefa6ebdaa2e5a1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550260"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719715"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>教程：使用 Visual Studio Code 创建和测试设备功能模型
 
@@ -233,7 +233,7 @@ ms.locfileid: "75550260"
           "name": "deviceinfo"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/CapabilityModel.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 

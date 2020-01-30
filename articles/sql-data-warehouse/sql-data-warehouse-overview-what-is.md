@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645511"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760753"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什么是 Azure Synapse Analytics（以前称为 SQL DW）？
 
@@ -54,43 +54,14 @@ SQL Analytics 通过按列存储将数据存储到关系表中。 此格式可�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览 [Azure Synapse 体系结构](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- 浏览 [Azure Synapse 体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建 SQL 池](create-data-warehouse-portal.md)
-- [加载示例数据][load sample data]
-- 浏览[视频](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+- [加载示例数据](sql-data-warehouse-load-sample-databases.md)
+- 浏览[视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 或者，查看以下一些其他 Azure Synapse 资源。  
-* 搜索[博客]
-* 提交[功能请求]
-* 搜索[客户顾问团队博客]
-* [创建支持票证]
-* 搜索 [MSDN 论坛]
-* 搜索 [Stackoverflow 论坛]
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[创建支持票证]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* 搜索[博客](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* 提交[功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)
+* 搜索 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* 搜索 [Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)

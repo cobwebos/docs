@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 在 Azure Kubernetes 服务 (AKS) 群集
 keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, 容器, aks, Kubernetes, azure active directory, rbac
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156871"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836960"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>教程：使用 Ansible 在 Azure Kubernetes 服务 (AKS) 中配置基于角色的访问控制 (RBAC) 角色
 
@@ -26,7 +26,7 @@ ms.locfileid: "74156871"
 > * 创建支持 Azure AD 的 AKS 群集
 > * 在群集中配置 RBAC 角色
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -119,11 +119,11 @@ ms.locfileid: "74156871"
 
 要创建 RBAC 绑定，首先需要获取 Azure AD 对象 ID。 
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 在页面顶部的搜索字段中，输入 `Azure Active Directory`。 
 
-1. 单击`Enter`。
+1. 单击 `Enter`。
 
 1. 在“管理”菜单中选择“用户”   。
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-使用 Azure AD 租户[对象 ID](#get-the-azure-ad-object-id) 替换 `&lt;your-aad-account>` 占位符。
+使用 Azure AD 租户[对象 ID](#get-the-azure-ad-object-id) 替换 `<your-aad-account>` 占位符。
 
 按 `aks-kube-deploy.yml` 形式保存下列将新角色部署到 AKS 的 playbook：
 

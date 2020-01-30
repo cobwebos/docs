@@ -1,19 +1,19 @@
 ---
 title: 如何查询 Azure Cosmos DB 中的表数据？
 description: 了解如何使用 OData 筛选器和 LINQ 查询来查询 Azure Cosmos DB 表 API 帐户中存储的数据
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869912"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770489"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数
 
 有关 Azure Cosmos DB 所提供的高级功能的详细信息，请参阅 [Azure Cosmos DB 表 API](table-introduction.md) 和[使用 .NET 通过表 API 进行开发](tutorial-develop-table-dotnet.md)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含实体数据。 没有这些内容？ 请学习[五分钟快速入门](create-table-dotnet.md)或者[开发人员教程](tutorial-develop-table-dotnet.md)，创建帐户并填充数据库。
 
@@ -84,18 +84,9 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 还可使用 LINQ 进行查询，这会转换为相应的 OData 查询表达式。 以下示例演示如何使用 .NET SDK 生成查询：
 
 ```csharp
-CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("People");
-
-TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-    .Where(
-        TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"),
-            TableOperators.And,
-            TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal,"Ben@contoso.com")
-    ));
-
-await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
+IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
+            .Where(x => x.PartitionKey == "4")
+            .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
 ## <a name="next-steps"></a>后续步骤

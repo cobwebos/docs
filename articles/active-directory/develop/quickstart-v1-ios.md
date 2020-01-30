@@ -15,13 +15,12 @@ ms.date: 10/25/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 055e954251654633bc948a98e0d5e33c9c8e11cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f612a6f59455162d0acdffc8e05201be0a730d9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963488"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703773"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app-v10"></a>快速入门：从 iOS 应用将用户登录并调用 Microsoft Graph API (v1.0)
 

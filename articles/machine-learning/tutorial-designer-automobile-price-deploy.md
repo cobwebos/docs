@@ -1,7 +1,7 @@
 ---
 title: 教程：使用设计器部署机器学习模型
 titleSuffix: Azure Machine Learning
-description: 本教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
+description: 此教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314991"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719783"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 可以部署在[本教程第一部分](tutorial-designer-automobile-price-train-score.md)开发的预测模型供其他人使用。 在第一部分中，你已定型了模型。 现在，让我们基于用户输入生成新的预测。 本教程的此部分介绍如何：
@@ -55,10 +55,6 @@ ms.locfileid: "76314991"
     >
 
 1. 选择“运行”，并使用在第一部分使用过的相同计算目标和试验  。
-
-1. 选择“评分模型”模块。 
-
-1. 在属性窗格中选择“输出” > “可视化”，验证模型是否仍有效。   此时会显示原始数据，以及预测的价格（“评分标签”）。
 
 1. 选择“部署”。 
 

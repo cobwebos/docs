@@ -1,6 +1,6 @@
 ---
-title: 快速入门：通过 Java 使用 Azure 服务总线主题和订阅
-description: 快速入门：在 Azure 中使用服务总线主题和订阅。
+title: 通过 Java 使用 Azure 服务总线主题和订阅
+description: 在本快速入门中，你将编写一些 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720000"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759289"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
@@ -28,7 +28,7 @@ ms.locfileid: "73720000"
 
 在本快速入门中，你将编写一些 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：

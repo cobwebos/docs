@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045645"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719885"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>教程：在两个托管实例和 SQL Server 之间配置事务复制
 
@@ -385,7 +385,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 使用“新建订阅”向导添加新订阅时，你可能会发现没有作为可用选项列出的数据库和发布，并且可能会看到以下错误消息：  
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 虽然此错误消息可能是准确的，但实际上连接到的发布服务器上没有可用的发布，或者你缺少足够权限，此错误也可能是由较旧版本的 SQL Server Management Studio 所致。 尝试升级到 SQL Server Management Studio 18.0 或更高版本，以排除这是根本原因。 
 
