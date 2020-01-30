@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706020"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841585"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4。0
 
@@ -73,13 +73,13 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，无法共享单
 
 使用下表中的值。 将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为**复制**的 Hive 元存储的适当值，用空格分隔。 指定 SQL server 名称时不要包含 ". database.windows.net"。
 
-|properties | Value |
+|属性 | 值 |
 |---|---|
 |脚本类型|- Custom|
 |名称|Hive 升级|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |节点类型|Head|
-|parameters|SQLSERVERNAME DATABASENAME 用户名密码|
+|参数|SQLSERVERNAME DATABASENAME 用户名密码|
 
 > [!Warning]  
 > 无法反转将 HDInsight 3.6 元数据架构转换为 HDInsight 4.0 架构的升级。
@@ -176,14 +176,16 @@ alter table myacidtable compact 'major';
 
 在 HDInsight 3.6 中，用于与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 Ambari 视图不附带 HDInsight 4.0。 我们为客户提供了一种使用数据分析工作室（DAS）的方法，该方法不是核心 HDInsight 服务。 DAS 不会随 HDInsight 群集一起提供，并且不是正式支持的程序包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
 
-|properties | Value |
+|属性 | 值 |
 |---|---|
 |脚本类型|- Custom|
 |名称|转移|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |节点类型|Head|
 
-等待5到10分钟，然后使用以下 URL 启动 Data Analytics Studio： `https://CLUSTERNAME.azurehdinsight.net/das/`。
+等待10到15分钟，然后使用以下 URL 启动 Data Analytics Studio： `https://CLUSTERNAME.azurehdinsight.net/das/`。
+
+在访问 DAS 之前，可能需要刷新 Ambari UI 和/或重新启动所有 Ambari 组件。
 
 安装 DAS 后，如果在查询查看器中看不到已运行的查询，请执行以下步骤：
 

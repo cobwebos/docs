@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552550"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765680"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -73,11 +73,11 @@ ms.locfileid: "72552550"
 
 ## <a name="essentials"></a>要素
 
-| 字段 | 描述|
+| 字段 | Description|
 |:---|:---|
 | alertId | 用于唯一标识警报实例的 GUID。 |
-| Add-alertrule | 生成警报实例的警报规则的名称。 |
-| Severity | 警报的严重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| alertRule | 生成警报实例的警报规则的名称。 |
+| 严重性 | 警报的严重性。 可能的值： Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
 | signalType | 标识在其上定义警报规则的信号。 可能的值： "指标"、"日志" 或 "活动日志"。 |
 | monitorCondition | 当警报触发时，警报的监视条件将被设置为 "已**触发**"。 当导致触发警报的基础条件清除时，监视条件设置为 "**已解决**"。   |
 | monitoringService | 生成警报的监视服务或解决方案。 警报上下文的字段由监视服务决定。 |
@@ -87,7 +87,7 @@ ms.locfileid: "72552550"
 | resolvedDateTime | 警报实例的监视器条件设置为在 UTC 中**解决**的日期和时间。 目前仅适用于指标警报。|
 | description | 警报规则中定义的说明。 |
 |essentialsVersion| Essentials 部分的版本号。|
-|alertContextVersion | @No__t_0 部分的版本号。 |
+|alertContextVersion | `alertContext` 部分的版本号。 |
 
 **示例值**
 ```json
@@ -151,7 +151,7 @@ ms.locfileid: "72552550"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义 JSON 有效负载的日志警报，启用通用架构会将负载架构恢复为如下所述的模式。 对于启用了通用架构的警报，每个警报的大小上限为 256 KB。 如果搜索结果导致警报大小超过此阈值，则不会将其嵌入日志警报有效负载。 可以通过检查标志 `IncludedSearchResults` 来确定这一点。 如果不包含搜索结果，则应将搜索查询与[LOG ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)一起使用。 
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或负载架构恢复为如下所述的架构。 对于启用了通用架构的警报，每个警报的大小上限为 256 KB。 如果搜索结果导致警报大小超过此阈值，则不会将其嵌入日志警报有效负载。 可以通过检查标志 `IncludedSearchResults`来确定这一点。 如果不包含搜索结果，则应将搜索查询与[LOG ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)一起使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

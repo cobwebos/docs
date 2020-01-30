@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707225"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767366"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -42,6 +42,8 @@ AKS 不是完全托管的群集解决方案。 某些组件（例如辅助角色
 
 > [!NOTE]
 > AKS 工作节点在 Azure 门户中显示为常规的 Azure IaaS 资源。 但这些虚拟机部署到自定义 Azure 资源组（使用 MC\\*）作为前缀。 可以更改 AKS 辅助角色节点。 例如，你可以使用安全外壳（SSH）更改常规虚拟机（但不能更改基础操作系统映像，并且更改可能不会通过更新或重新启动）中的 AKS 辅助角色节点，还可以将其他 Azure 资源附加到 AKS辅助角色节点。 但在进行*带外管理和自定义*的更改时，AKS 群集可能会似乎。 请避免更改辅助角色节点，除非 Microsoft 支持部门指示你进行更改。
+
+发出前面定义的不受支持的操作，如所有代理节点的带外释放，将导致不受支持的群集。 AKS 保留了存档控制平面的权利，该控制面已配置为延长时间段（超过30天）的支持准则。 AKS 维护群集 etcd 元数据的备份，并可随时重新分配群集。 此重新分配可由使群集返回到支持的任何 PUT 操作（如升级或缩放到活动代理节点）启动。
 
 ## <a name="shared-responsibility"></a>共担责任
 
@@ -124,10 +126,10 @@ Microsoft 不会自动重新启动工作节点以应用操作系统级修补程�
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、access 和 Nsg
 
-作为托管服务，AKS 具有特定的网络和连接要求。 这些要求的灵活性低于正常 IaaS 组件的要求。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用阻止出站端口443的防火墙规则）和允许列表 Url 等操作都可以使群集似乎。
+作为托管服务，AKS 具有特定的网络和连接要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入允许列表等操作可能导致群集不受支持。
 
 > [!NOTE]
-> 目前，AKS 不允许完全锁定群集传出的流量。 若要控制群集可用于出站流量的 Url 和端口的列表，请参阅[限制传出流量](limit-egress-traffic.md)。
+> 目前，AKS 不允许你完全锁定群集的出口流量。 若要控制群集可用于出站流量的 Url 和端口的列表，请参阅[限制传出流量](limit-egress-traffic.md)。
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Alpha 和 beta Kubernetes 功能不受支持
 

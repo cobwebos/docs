@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100714"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841706"
 ---
 # <a name="delivery-and-retry"></a>传递和重试
 
@@ -27,9 +27,9 @@ ms.locfileid: "73100714"
 
 传递消息后，事件网格会等待长达60秒的响应。 如果订阅服务器的终结点不能确认响应，则该消息将在某个后端队列中排队等待以后重试。
 
-有两个预配置的后端队列，它们确定将尝试重试的计划。 它们是：-
+有两个预配置的后端队列，它们确定将尝试重试的计划。 它们分别是：
 
-| 计划 | 描述 |
+| 计划 | Description |
 | ---------| ------------ |
 | 1 分钟 | 每隔一分钟就会尝试发送到此处的消息。
 | 10 分钟 | 每隔10分钟就会尝试在此处结束的消息。
@@ -43,7 +43,7 @@ ms.locfileid: "73100714"
 
 ## <a name="retry-policy-limits"></a>重试策略限制
 
-可以通过两种配置来确定重试策略。 它们是：-
+可以通过两种配置来确定重试策略。 它们分别是：
 
 * 最大尝试次数
 * 事件生存时间（TTL）
@@ -52,12 +52,12 @@ ms.locfileid: "73100714"
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>为所有订阅服务器配置默认值
 
-有两个属性： `brokers:defaultMaxDeliveryAttempts` 和 `broker:defaultEventTimeToLiveInSeconds`，可将其配置为事件网格部署的一部分，该部署控制所有订阅服务器的重试策略默认值。
+有两个属性： `brokers__defaultMaxDeliveryAttempts` 和 `broker__defaultEventTimeToLiveInSeconds`，可将其配置为事件网格部署的一部分，该部署控制所有订阅服务器的重试策略默认值。
 
-| 属性名称 | 描述 |
+| 属性名称 | Description |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | 尝试传递事件的最大次数。 默认值：30。
-| `broker:defaultEventTimeToLiveInSeconds` | 事件 TTL （秒），在此时间之后，如果未传递事件，事件将被丢弃。 默认值： **7200**秒
+| `broker__defaultMaxDeliveryAttempts` | 尝试传递事件的最大次数。 默认值：30。
+| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （秒），在此时间之后，如果未传递事件，事件将被丢弃。 默认值： **7200**秒
 
 ## <a name="configuring-defaults-per-subscriber"></a>为每个订阅服务器配置默认值
 
@@ -71,8 +71,8 @@ ms.locfileid: "73100714"
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933437"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765400"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -79,7 +79,6 @@ ms.locfileid: "75933437"
 
 设置并配置 Postman 以获取 Azure Active Directory 令牌。 之后，使用获取的令牌向 Azure 数字孪生发出经过身份验证的 HTTP 请求：
 
-1. 前往 [www.getpostman.com](https://www.getpostman.com/) 下载应用。
 1. 验证“授权 URL”正确无误。 它应采用以下格式：
 
     ```plaintext
@@ -88,9 +87,13 @@ ms.locfileid: "75933437"
 
     | 名称  | 替换为 | 示例 |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | 租户或组织的名称 | `microsoft` |
+    | YOUR_AZURE_TENANT | 租户或组织的名称。 使用友好名称，而不是 Azure Active Directory 应用注册的字母数字**租户 ID** 。 | `microsoft` |
 
-1. 依次选择“授权”选项卡、“OAuth 2.0”、“获取新访问令牌”。
+1. 前往 [www.getpostman.com](https://www.getpostman.com/) 下载应用。
+
+1. 打开 Postman 应用，单击“新建”>“新建”并选择“请求”。 输入请求名称。 选择要保存到的集合或文件夹，然后单击 "保存"。 
+
+1. 我们想要发出 GET 请求。 选择 "**授权**" 选项卡，选择 "OAuth 2.0"，然后选择 "**获取新的访问令牌**"。
 
     | 字段  | 值 |
     |---------|---------|

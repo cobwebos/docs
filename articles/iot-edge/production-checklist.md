@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548588"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772311"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -39,7 +39,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-有关如何在 IoT Edge 设备上安装证书并从 yaml 文件中引用它们的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-create-transparent-gateway.md)。
+有关如何在 IoT Edge 设备上安装证书并从 yaml 文件中引用它们的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-install-production-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>创建设备管理计划
 

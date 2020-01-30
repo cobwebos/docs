@@ -3,19 +3,19 @@ title: Azure Migrate 中的评估
 description: 了解 Azure Migrate 中的评估。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029114"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833322"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>关于 Azure Migrate 中的评估
 
 本文介绍如何在[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)中计算评估。 对本地计算机组运行评估，确定是否已准备好迁移到 Azure Migrate。
 
 ## <a name="how-do-i-run-an-assessment"></a>如何实现运行评估？
-你可以使用 Azure Migrate：服务器评估或其他 Azure 或第三方工具来运行评估。 创建 Azure Migrate 项目后，添加所需的工具。 [了解详细信息]（how-to-add-tool-first-time.md
+你可以使用 Azure Migrate：服务器评估或其他 Azure 或第三方工具来运行评估。 创建 Azure Migrate 项目后，添加所需的工具。 [了解详细信息](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>收集计算数据
 

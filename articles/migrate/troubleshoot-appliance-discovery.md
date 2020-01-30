@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289520"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772031"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "76289520"
     1. 以管理员身份打开记事本。
     2. 打开 C:\Windows\System32\Drivers\etc\hosts 文件。
     3. 在行中添加 IP 地址和主机名。 对于出现此错误的每个主机或群集重复此操作。
-    4. 保存然后关闭 hosts 文件。
+    4. 保存并关闭 hosts 文件。
     5. 使用设备管理应用检查设备是否可以连接到主机。 30分钟后，应在 Azure 门户中看到这些主机的最新信息。
 
 ## <a name="discovered-vms-not-in-portal"></a>未在门户中发现的 Vm
@@ -131,7 +131,7 @@ ms.locfileid: "76289520"
 
 ## <a name="vm-data-not-in-portal"></a>VM 数据不在门户中
 
-如果已发现的 Vm 未显示在门户中，请等待几分钟。 在门户中显示发现的数据最长需要30分钟。 如果30分钟后没有任何数据，请尝试刷新，如下所示
+如果已发现的 Vm 未显示在门户中，或者 VM 数据已过时，请等待几分钟。 已发现的 VM 配置数据中的更改会在门户中显示，最多需要30分钟。 应用程序数据更改可能需要几个小时才能显示。 如果此时间之后没有任何数据，请尝试刷新，如下所示
 
 1. 在**服务器** > **Azure Migrate 服务器评估**中，选择 "**概述**"。
 2. 在 "**管理**" 下，选择**代理运行状况**。
@@ -166,7 +166,8 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 9009： "无法检索安装了服务器的应用程序"。 | 如果服务器上的 Windows 用户帐户控制（UAC）设置受到限制，则可能会发生这种情况，并阻止发现已安装的应用程序。 | 搜索服务器上的 "用户帐户控制" 设置，并将服务器上的 UAC 设置配置为下面两个级别之一。
 9010： "无法检索安装了服务器的应用程序"。 | 可能是内部错误。  | Tf 此问题不会在24小时内自行解决，请联系支持人员。
 8084： "由于 VMware 错误，无法发现应用程序： <Exception from VMware>" | Azure Migrate 设备使用 VMware Api 来发现应用程序。 如果在尝试发现应用程序时 vCenter Server 引发异常，则可能出现此问题。 VMware 中的错误消息将显示在 "门户" 中显示的错误消息中。 | 在[VMware 文档](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)中搜索该消息，然后按照步骤进行修复。 如果无法解决问题，请联系 Microsoft 支持部门。
-
+9012： "无法发现服务器上安装的应用程序" | 此问题可能是由于内部错误引起的。  | 如果问题无法在24小时内自行解决，请联系支持人员。
+9013： "无法发现服务器上安装的应用程序" | 每次登录到 VM 时都会创建一个新的临时配置文件。  | 确保不为提供的来宾用户创建临时配置文件。
 
 
 

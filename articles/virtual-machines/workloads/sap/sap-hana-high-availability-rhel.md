@@ -3,21 +3,21 @@ title: 在 Azure 虚拟机 (VM) 上设置 SAP HANA 系统复制 | Microsoft Docs
 description: 在 Azure 虚拟机 (VM) 上建立 SAP HANA 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/28/2020
+ms.author: radeltch
+ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721538"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837028"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -139,7 +139,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
       1. 选择“添加虚拟机”。
       1. 选择 "虚拟机"。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
-      1. 选择“添加”。
+      1. 选择 **添加** 。
 
    1. 接下来创建运行状况探测：
 
@@ -263,7 +263,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `lvcreate` 开关的 `-i` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
+   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -560,14 +560,21 @@ sudo yum install -y resource-agents-sap-hana
 <pre><code>sudo pcs property set maintenance-mode=true
 
 # Replace the bold string with your instance number and HANA system ID
-sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> --clone clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
+op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
+--clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
 接着，创建 HANA 资源：
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 
-sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false master notify=true clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 
@@ -583,6 +590,9 @@ sudo pcs property set maintenance-mode=false
 </code></pre>
 
 请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
+
+> [!NOTE]
+> 上述配置中的超时只是示例，可能需要适应特定的 HANA 设置。 例如，如果启动 SAP HANA 数据库需要较长时间，则可能需要增加启动超时。  
 
 <pre><code>sudo pcs status
 
@@ -601,7 +611,7 @@ sudo pcs property set maintenance-mode=false
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-## <a name="test-the-cluster-setup"></a>测试群集设置
+## <a name="test-the-cluster-setup"></a>测试群集设
 
 本部分介绍如何测试设置。 在开始测试之前，请确保 Pacemaker 没有任何失败的操作（通过 pcs 状态检查）、没有任何意外的位置约束（例如迁移测试的遗留内容），并且 HANA 处于同步状态，例如，使用 systemReplicationStatus：
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513977"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834971"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍了在开发云应用程序时要考虑的安全活动和控制措施。 介绍了在 Microsoft[安全开发生命周期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的实施和验证阶段中要考虑的安全问题和概念。 其目标是帮助你定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -89,7 +89,7 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 
 若要防御暴力破解和基于字典的猜测，你必须实施强密码策略，以确保用户创建复杂密码（例如，12个字符的最小长度并要求字母数字和特殊字符）。
 
-您可以使用标识框架来创建和强制实施密码策略。 Azure AD B2C 提供[内置策略](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助密码重置](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)等功能，从而帮助你进行密码管理。
+您可以使用标识框架来创建和强制实施密码策略。 Azure AD B2C 提供[内置策略](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助密码重置](../../active-directory-b2c/user-flow-self-service-password-reset.md)等功能，从而帮助你进行密码管理。
 
 若要防御默认帐户的攻击，请验证所有密钥和密码是否可替换，并确保在安装资源后生成或替换它们。
 

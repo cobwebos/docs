@@ -3,12 +3,12 @@ title: 用 Azure Monitor 容器监视 Kubernetes 群集运行状况 |Microsoft D
 description: 本文介绍了如何通过 Azure Monitor 容器来查看和分析 AKS 和非 AKS 群集的运行状况。
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405099"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843984"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 Kubernetes 群集运行状况
 
@@ -23,7 +23,7 @@ ms.locfileid: "75405099"
 >[!NOTE]
 >若要支持 AKS 引擎群集，请验证它是否满足以下各项：
 >- 它使用的是最新版本的[HELM 客户端](https://helm.sh/docs/using_helm/)。
->- 容器化代理版本为*microsoft/oms： ciprod11012019*。 若要升级代理，请参阅[升级 Kubernetes 群集上的代理](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)。
+>- 容器化代理版本为*microsoft/oms： ciprod11012019*。 若要升级代理，请参阅[升级 Kubernetes 群集上的代理](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)。
 >
 
 ## <a name="overview"></a>概述
@@ -48,13 +48,13 @@ Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的
 * 评估节点和容器的内存使用率。
 * 基于 Kubernetes 报告的就绪状态的计算箱和节点的状态。
 
-用于表示状态的图标如下所示：
+用于指示状态的图标如下所示：
 
 |图标|含义|  
 |--------|-----------|  
 |![绿色复选图标指示正常](./media/container-insights-health/healthyicon.png)|成功、运行状况正常（绿色）|  
 |![黄色三角形和感叹号为警告](./media/container-insights-health/warningicon.png)|警告（黄色）|  
-|![带白色 X 的红色按钮指示严重状态](./media/container-insights-health/criticalicon.png)|严重（红色）|  
+|![带有白色 X 的红色按钮指示严重状态](./media/container-insights-health/criticalicon.png)|严重（红色）|  
 |![灰显图标](./media/container-insights-health/grayicon.png)|未知（灰色）|  
 
 ## <a name="monitor-configuration"></a>监视配置

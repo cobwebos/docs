@@ -1,72 +1,82 @@
 ---
 title: 工作负荷分类
-description: 有关使用分类管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指导。
+description: 有关使用分类来管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指南。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685379"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768829"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 数据仓库工作负荷分类
 
-本文介绍用于向传入请求分配资源类和重要性的 SQL 数据仓库工作负荷分类过程。
+本文介绍为传入请求分配资源类和重要性的 SQL 数据仓库工作负荷分类过程。
 
 ## <a name="classification"></a>分类
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
-使用工作负荷管理分类可以通过分配[资源类](resource-classes-for-workload-management.md#what-are-resource-classes)和[重要性](sql-data-warehouse-workload-importance.md)对请求应用工作负荷策略。
+工作负荷管理分类允许通过分配[资源类](resource-classes-for-workload-management.md#what-are-resource-classes)和[重要性](sql-data-warehouse-workload-importance.md)将工作负荷策略应用到请求。
 
-可通过多种方法来分类数据仓库工作负荷，而最简单且最常用的分类方法是加载和查询。 可以使用 insert、update 和 delete 语句加载数据。  可以使用 select 查询数据。 数据仓库解决方案通常对加载活动使用工作负荷策略，例如，分配具有更多资源的更高资源类。 可对查询应用不同的工作负荷策略，例如，分配比加载活动更低的重要性。
+虽然有多种方法可对数据仓库工作负荷进行分类，但最简单、最常见的分类是加载和查询。 可以加载包含 insert、update 和 delete 语句的数据。  使用 select 查询数据。 数据仓库解决方案通常会提供负载活动的工作负荷策略，例如，使用更多资源分配更高的资源类。 不同的工作负荷策略可能适用于查询，如相对于负载活动的重要性较低。
 
-还可以将加载和查询工作负荷进一步分类。 进一步分类能够更好地控制工作负荷。 例如，查询工作负荷可能包括多维数据集刷新、仪表板查询或即席查询。 可以使用不同的资源类或重要性设置将其中的每个查询工作负荷分类。 加载活动也可以受益于进一步分类。 可将大型转换分配到较大的资源类。 可以使用较高的重要性来确保先加载重要销售数据，再加载天气数据或社交数据馈送。
+你还可以 subclassify 负载和查询工作负荷。 Subclassification 使你可以更好地控制工作负荷。 例如，查询工作负荷可以包含多维数据集刷新、仪表板查询或即席查询。 可以用不同的资源类或重要性设置对其中每个查询工作负荷进行分类。 负载还可以从 subclassification 受益。 大型转换可以分配给较大的资源类。 高重要性可用于确保关键销售数据在天气数据或社交数据馈送之前是加载程序。
 
-不会对所有语句分类，因为它们不需要会影响执行的资源或重要因素。  DBCC 命令、BEGIN、COMMIT 和 ROLLBACK TRANSACTION 语句不会进行分类。
+并非所有语句都是分类的，因为它们不需要资源或需要重要性来影响执行。  DBCC 命令、BEGIN、COMMIT 和 ROLLBACK TRANSACTION 语句未分类。
 
 ## <a name="classification-process"></a>分类过程
 
-目前，SQL 数据仓库中的分类是通过将用户分配到某个角色来实现的，该角色具有一个使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 分配的相应资源类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  SQL 数据仓库用户可以使用此语法向请求分配重要性和资源类。  
+现在，通过将用户分配到具有分配给[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)它的对应资源类的角色，可以在 SQL 数据仓库中进行分类。 将请求的特征化超出了资源类登录名的能力仅限于此功能。 "[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)" 语法现在提供了更丰富的分类方法。  使用此语法，SQL 数据仓库用户可以通过 `workload_group` 参数分配重要性和分配给请求的系统资源量。 
 
 > [!NOTE]
-> 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
+> 分类按请求进行评估。 单个会话中的多个请求可以不同地分类。
 
-## <a name="classification-precedence"></a>分类过程
+## <a name="classification-weighting"></a>分类权重
 
-在分类过程中，将使用优先顺序来确定要分配哪个资源类。 基于数据库用户的分类优先于角色成员身份。 如果创建一个将 UserA 数据库用户映射到 mediumrc 资源类的分类器， 请将 RoleA 数据库角色（UserA 是其成员）映射到 largerc 资源类。 将数据库用户映射到 mediumrc 资源类的分类器优先于将 RoleA 数据库角色映射到 largerc 资源类的分类器。
+作为分类过程的一部分，权重用于确定分配了哪个工作负荷组。  权重如下所示：
 
-如果某个用户是多个角色的成员，并且这些角色分配有不同的资源类或者在多个分类器中相匹配，则会为该用户分配最高的资源类。  此行为与现有的资源类分配行为保持一致。
+|分类器参数 |重量   |
+|---------------------|---------|
+|成员名称：用户      |64       |
+|成员名称： ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+`membername` 参数是必需的。  但是，如果指定的成员名称是数据库用户而不是数据库角色，则用户的权重较高，因此选择了分类器。
+
+如果用户是具有在多个分类器中分配或匹配的不同资源类的多个角色的成员，则会授予此用户最高的资源类分配。  此行为与现有资源类分配行为一致。
 
 ## <a name="system-classifiers"></a>系统分类器
 
-工作负荷分类采用系统工作负荷分类器。 系统分类器将现有的资源类角色成员身份映射到具有一般重要性的资源类资源分配。 无法删除系统分类器。 若要查看系统分类器，可运行以下查询：
+工作负荷分类具有系统工作负荷分类器。 系统分类器将现有资源类角色成员身份映射到资源类资源分配，并具有普通重要性。 不能删除系统分类器。 若要查看系统分类器，你可以运行以下查询：
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <= 12
 ```
 
-## <a name="mixing-resource-class-assignments-with-classifiers"></a>混合使用资源类分配和分类器
+## <a name="mixing-resource-class-assignments-with-classifiers"></a>混合资源类分配与分类器
 
-使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
+以你的名义创建的系统分类器提供迁移到工作负荷分类的简单途径。 使用具有分类优先级的资源类角色映射，可以在开始创建具有重要性的新分类器时错误分类。
 
-请考虑以下方案：
+请考虑下列方案：
 
-- 某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
-- 现已使用工作负荷管理更新该数据仓库。
-- 为了测试新的分类语法，为数据库角色 DBARole（DBAUser 是其成员）创建了一个分类器（用于将用户映射到 mediumrc），并且该角色具有较高的重要性。
-- 当 DBAUser 登录并运行查询时，该查询将分配到 largerc， 因为用户优先于角色成员身份。
+- 现有数据仓库具有分配给 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是通过 sp_addrolemember 来完成的。
+- 数据仓库现已更新工作负荷管理。
+- 若要测试新的分类语法，数据库角色 DBARole （DBAUser 是的成员）具有创建的分类器，以将其映射到 mediumrc 和高重要性。
+- 当 DBAUser 登录并运行查询时，该查询将分配给 largerc。 因为用户优先于角色成员身份。
 
-为了简化分类错误的排查，我们建议在创建工作负荷分类器时删除资源类角色映射。  以下代码返回现有的资源类角色成员身份。  针对相应资源类返回的每个成员名称运行 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。
+为了简化错误分类的故障排除，建议你在创建工作负荷分类器时删除资源类角色映射。  下面的代码返回现有资源类角色成员身份。  为从相应资源类返回的每个成员名称运行[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) 。
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -82,7 +92,7 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解如何创建分类器，请参阅 [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
-- 有关如何创建工作负荷分类器的信息，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。
-- 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)以及如何[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。
+- 有关创建分类器的详细信息，请参阅[创建工作负荷分类器（transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
+- 请参阅快速入门，了解如何创建工作负荷分类器[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。
+- 请参阅操作指南文章，[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)，以及如何[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
 - 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bc00f348e9443384c7799bf227efd7309d6aeac2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702192"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834121"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 web Api 的桌面应用：获取令牌
 
@@ -413,7 +413,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 传入的授权机构 `PublicClientApplicationBuilder` 需要：
   - 格式 `https://login.microsoftonline.com/{tenant}/`的租户，其中 `tenant` 为表示租户 ID 的 GUID 或与租户关联的域。
-  - 适用于任何[工作和学校帐户](`https://login.microsoftonline.com/organizations/`)。
+  - 对于工作和学校帐户： `https://login.microsoftonline.com/organizations/`。
   - 不支持 Microsoft 个人帐户。 不能使用/common 或/consumers 租户。
 
 - 因为集成的 Windows 身份验证是一个无提示流：

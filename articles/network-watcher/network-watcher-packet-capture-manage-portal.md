@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: 了解如何使用 Azure 门户管理网络观察程序的数据包捕获功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: 4950ef8b763967e4e852e319429cc263a4a85f6c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277866"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840821"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
-使用网络观察程序数据包捕获功能，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 远程触发数据包捕获能够减轻在所需虚拟机上手动运行数据包捕获的负担，并节省宝贵的时间。
+使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 远程触发数据包捕获能够减轻在所需虚拟机上手动运行数据包捕获的负担，并节省宝贵的时间。
 
 本文介绍如何启动、停止、下载和删除数据包捕获。 
 
@@ -35,7 +32,7 @@ ms.locfileid: "74277866"
 * 与 169.254.169.254 建立的入站和出站连接
 * 与 168.63.129.16 建立的入站和出站连接
 
-如果某个网络安全组已关联到网络接口或该网络接口所在的子网，请确保存在允许上述端口的规则。 同样，将用户定义的流量路由添加到网络可能会阻止与上述 IP 和端口的连接。 请确保可以访问它们。 
+如果某个网络安全组已关联到网络接口或该网络接口所在的子网，请确保存在允许上述端口的规则。 同样，将用户定义的流量路由添加到网络可能会阻止与以上提到的 Ip 和端口建立连接。 请确保可以访问它们。 
 
 ## <a name="start-a-packet-capture"></a>启动数据包捕获
 
@@ -73,7 +70,7 @@ ms.locfileid: "74277866"
 > [!NOTE]
 > 门户自动执行以下操作：
 >  * 如果选定虚拟机所在的同一区域中没有网络观察程序，则在该区域中创建一个网络观察程序。
->  * 如果尚未安装 *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) 或 [Windows](../virtual-machines/windows/extensions-nwa.md) 虚拟机扩展，则将此扩展添加到虚拟机。
+>  * 如果尚未安装，则将*AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md)或[Windows](../virtual-machines/windows/extensions-nwa.md)虚拟机扩展添加到虚拟机。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290642"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773128"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -449,7 +449,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
 ```json
-"diskUri":"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, 'container/myosdisk.vhd')]"
+"diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
 通过将存储帐户终结点的硬编码值替换为 `reference` 模板函数，可以使用同一个模板成功部署到不同环境，无需对终结点引用进行任何更改。

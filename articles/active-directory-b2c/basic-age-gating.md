@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064456"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836230"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
 
@@ -25,7 +25,7 @@ ms.locfileid: "71064456"
 
 Azure Active Directory B2C （Azure AD B2C）的使用期限，你可以确定要使用应用程序的不需要的其他项。 可选择阻止未成年人登录应用程序。 用户还可返回应用程序并确定其年龄组和父母同意状态。 Azure AD B2C 可以阻止未获父母同意的未成年人使用应用程序。 也可以将 Azure AD B2C 设置为允许应用程序决定如何对待未成年人。
 
-在[用户流](active-directory-b2c-reference-policies.md)中启用年龄限制后，系统会询问用户的出生日期及其所居住的国家/地区。 如果用户登录之前未输入信息，则他们需要在下次登录时输入该信息。 每次用户登录时都会应用这些规则。
+在[用户流](user-flow-overview.md)中启用了年龄分级后，会在用户出生时询问用户，以及他们所在的国家/地区。 如果用户登录之前未输入信息，则他们需要在下次登录时输入该信息。 每次用户登录时都会应用这些规则。
 
 Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 然后，在其帐户中更新“ageGroup”字段。 值可为 `null`、`Undefined`、`Minor`、`Adult` 和 `NotAdult`。  然后，将 ageGroup 和 consentProvidedForMinor 字段用于计算 legalAgeGroupClassification 的值。
 
@@ -33,7 +33,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 
 | 国家/地区 | 国家/地区名称 | 须征得同意的未成年人年龄 | 未成年人年龄 |
 | -------------- | ------------------- | ----------------- | --------- |
-| 默认 | None | None | 18 |
+| 默认 | 无 | 无 | 18 |
 | AE | 阿拉伯联合酋长国 | 无 | 21 |
 | AT | 奥地利 | 14 | 18 |
 | BE | 比利时 | 14 | 18 |
@@ -42,10 +42,10 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | CM | 喀麦隆 | 无 | 21 |
 | CY | 塞浦路斯 | 16 | 18 |
 | CZ | 捷克共和国 | 16 | 18 |
-| DE | 德国 | 16 | 18 |
+| 德国 | 德国 | 16 | 18 |
 | DK | 丹麦 | 16 | 18 |
 | EE | 爱沙尼亚 | 16 | 18 |
-| EG | 埃及 | None | 21 |
+| EG | 埃及 | 无 | 21 |
 | ES | 西班牙 | 13 | 18 |
 | FR | 法国 | 16 | 18 |
 | GB | 英国 | 13 | 18 |
@@ -68,9 +68,9 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | SG | 新加坡 | 无 | 21 |
 | SI | 斯洛文尼亚 | 16 | 18 |
 | SK | 斯洛伐克 | 16 | 18 |
-| TD | 乍得 | None | 21 |
+| TD | 乍得 | 无 | 21 |
 | TH | 泰国 | 无 | 20 |
-| TW | 中国台湾 | 无 | 20 |
+| TW | 台湾 | 无 | 20 |
 | 美国 | 美国 | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年龄限制选项

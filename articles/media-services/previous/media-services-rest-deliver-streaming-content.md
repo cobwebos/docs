@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 974f0af461ecdc7de820191950b010035d02a601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598303"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774938"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容 
 > [!div class="op_single_selector"]
@@ -73,7 +73,7 @@ ms.locfileid: "60598303"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 6bcfd511-a561-448d-a022-a319a89ecffa
     Host: media.windows.net
     Content-Length: 68
@@ -111,7 +111,7 @@ ms.locfileid: "60598303"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ac159492-9a0c-40c3-aacc-551b1b4c5f62
     Host: media.windows.net
     Content-Length: 181
@@ -140,20 +140,20 @@ ms.locfileid: "60598303"
 ### <a name="build-streaming-urls"></a>生成流 URL
 使用创建定位符后返回的**路径**值生成平滑流式处理、HLS 和 MPEG DASH URL。 
 
-平滑流：路径 + 清单文件名 +“/manifest” 
+平滑流式处理：**路径** + 清单文件名 +“/manifest”
 
 示例：
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS：路径 + 清单文件名 +“/manifest(format=m3u8-aapl)” 
+HLS：**路径** + 清单文件名 +“/manifest(format=m3u8-aapl)”
 
 示例：
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH：路径 + 清单文件名 +“/manifest(format=mpd-time-csf)” 
+DASH：**路径** + 清单文件名 +“/manifest(format=mpd-time-csf)”
 
 示例：
 
@@ -163,7 +163,7 @@ DASH：路径 + 清单文件名 +“/manifest(format=mpd-time-csf)”
 ### <a name="build-progressive-download-urls"></a>生成渐进式下载 URL
 使用创建定位符后返回的**路径**值生成渐进式下载 URL。   
 
-URL：路径 + 资产文件 mp4 名称 
+URL：**路径** + 资产文件 mp4 名称
 
 示例：
 

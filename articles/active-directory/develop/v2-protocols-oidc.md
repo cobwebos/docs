@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700254"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773323"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -75,7 +75,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 }
 ```
 
-如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 `appid` 查询参数，才能获取指向应用的签名密钥信息 `jwks_uri`。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
+如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 `appid` 查询参数，才能获取指向应用的签名密钥信息 `jwks_uri`。 例如： `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
 
 通常，使用此元数据文档来配置 OpenID Connect 库或 SDK；该库使用元数据来完成其工作。 但是，如果不使用预生成的 OpenID Connect 库，则可以按照本文剩余部分中的步骤操作，以使用 Microsoft 标识平台终结点登录到 web 应用。
 

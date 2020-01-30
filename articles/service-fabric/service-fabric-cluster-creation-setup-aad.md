@@ -3,12 +3,12 @@ title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843814"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -104,9 +104,19 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”列表中。
 
 #### <a name="solution"></a>解决方案
-在 AAD 页面中选择“应用注册”，选择你的群集应用程序，然后选择“回复 URL”按钮。 在“回复 URL”页面上，将 Service Fabric Explorer 的 URL 添加到列表中或替换列表中的某一项。 完成后，保存所做的更改。
+在 "Azure AD" 页上，选择 "**应用注册**"，选择群集应用程序，然后选择 "**答复 url**"。 在 "**答复 url** " 窗格中，将 Service Fabric Explorer URL 添加到列表，或替换列表中的某个项。 保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>在登录时，通过 PowerShell 使用 Azure AD 身份验证连接到群集时，会出现错误： "AADSTS50011"
+#### <a name="problem"></a>问题
+尝试通过 PowerShell 连接到使用 Azure AD 的 Service Fabric 群集时，登录页返回失败： "AADSTS50011：请求中指定的回复 url 与为应用程序配置的回复 url： &lt;guid&gt;。"
+
+#### <a name="reason"></a>原因
+与前面的问题类似，PowerShell 尝试对 Azure AD 进行身份验证，该 URL 提供 Azure AD 应用程序**答复 url**列表中未列出的重定向 URL。  
+
+#### <a name="solution"></a>解决方案
+使用与上述问题相同的过程，但 URL 必须设置为 `urn:ietf:wg:oauth:2.0:oob`，这是命令行身份验证的特殊重定向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>使用 Azure AD 身份验证通过 PowerShell 连接群集
 若要连接 Service Fabric 群集，请使用以下 PowerShell 命令示例：

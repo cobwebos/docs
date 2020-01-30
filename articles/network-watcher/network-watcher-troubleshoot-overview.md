@@ -4,29 +4,26 @@ titleSuffix: Azure Network Watcher
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277781"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840683"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对网关和连接进行故障排除的功能。 可通过门户、PowerShell、Azure CLI 或 REST API 调用该功能。 调用后，网络观察程序将对网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。 诊断完成后，将返回结果。
 
-![门户][2]
+![portal][2]
 
 ## <a name="results"></a>结果
 
@@ -50,7 +47,7 @@ ms.locfileid: "74277781"
 
 ### <a name="gateway"></a>网关
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -65,7 +62,7 @@ ms.locfileid: "74277781"
 
 ### <a name="connection"></a>连接
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -88,14 +85,14 @@ ms.locfileid: "74277781"
 |  |  |
 |---------|---------|
 |网关类型   |         |
-|VPN      | 是否支持        |
+|VPN      | 受支持        |
 |ExpressRoute | 不支持 |
 |VPN 类型 | |
-|基于路由 | 是否支持|
+|基于路由 | 受支持|
 |基于策略 | 不支持|
 |连接类型||
-|IPSec| 是否支持|
-|VNet2Vnet| 是否支持|
+|IPSec| 受支持|
+|VNet2Vnet| 受支持|
 |ExpressRoute| 不支持|
 |VPNClient| 不支持|
 

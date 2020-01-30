@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 29fef3bec90819b252b43491c08e7a5bc2b3d454
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014904"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774957"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器 
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -118,7 +118,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -168,7 +168,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>获取与资产关联的 **AssetFilter**
@@ -179,7 +179,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -191,7 +191,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000
 
 
@@ -213,7 +213,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -253,7 +253,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -291,7 +291,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN>  
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 
@@ -305,7 +305,7 @@ ms.locfileid: "69014904"
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流 URL
@@ -336,6 +336,6 @@ ms.locfileid: "69014904"
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [动态清单概述](media-services-dynamic-manifest-overview.md)
 

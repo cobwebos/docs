@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951031"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840190"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -38,7 +38,7 @@ ms.locfileid: "74951031"
 - [RESTful 提供程序](restful-technical-profile.md)-对 REST API 服务的调用，例如验证用户输入、丰富用户数据或与业务线应用程序集成。
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
-- [会话管理](active-directory-b2c-reference-sso-custom.md) - 处理不同类型的会话。
+- [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技术配置文件流
@@ -57,7 +57,7 @@ ms.locfileid: "74951031"
 4. ValidationTechnicalProfiles - 对于[自断言技术配置文件](self-asserted-technical-profile.md)，你可以调用输入[验证技术配置文件](validation-technical-profile.md)。 验证技术配置文件可验证用户分析的数据并返回错误消息或正常信息，包含或不包含输出声明。 例如，在 Azure AD B2C 创建新帐户之前，它会检查用户是否已存在于目录服务中。 你可以调用 REST API 技术配置文件来添加自己的业务逻辑。<p>验证技术配置文件的输出声明的范围仅限于在相同技术配置文件下调用验证技术配置文件和其他验证技术配置文件的技术配置文件。 如果要在下一个业务流程步骤中使用输出声明，则需要将输出声明添加到调用验证技术配置文件的技术配置文件中。
 5. OutputClaims - 将声明返回到声明包中。 可以在下一个业务流程步骤或输出声明转换中使用这些声明。
 6. OutputClaimsTransformations - 从声明包中提取每个输出[声明转换](claimstransformations.md)的输入声明。 先前步骤中的技术配置文件的输出声明可以是输出声明转换的输入声明。 执行后，输出声明将被放回到声明包中。 输出声明转换的输出声明也可以是后续输出声明转换的输入声明。
-7. 单一登录 (SSO) 会话管理 - [SSO 会话管理](active-directory-b2c-reference-sso-custom.md)控制与已经过身份验证的用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。
+7. 单一登录 (SSO) 会话管理 - [SSO 会话管理](custom-policy-reference-sso.md)控制与已经过身份验证的用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。
 
 技术配置文件可以从其他技术配置文件继承，以更改设置或添加新功能。  IncludeTechnicalProfile 元素是对基本技术配置文件的引用，可从中派生技术配置文件。
 

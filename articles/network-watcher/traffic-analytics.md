@@ -3,23 +3,21 @@ title: Azure 流量分析 | Microsoft Docs
 description: 了解如何使用流量分析来分析 Azure 网络安全组流日志。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907155"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840581"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -47,7 +45,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 - **网络安全组 (NSG)** ：包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 有关详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - **网络安全组 (NSG) 流日志**：用于查看有关传入和传出网络安全组的 IP 流量的信息。 NSG 流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的五元组信息（源/目标 IP 地址、源/目标端口和协议），以及是允许还是拒绝流量。 有关 NSG 流日志的详细信息，请参阅 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)。
-- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是在 Azure Monitor 日志的基础上构建的。 有关详细信息，请参阅[Azure Monitor 日志](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是使用 Azure Monitor 日志来构建的。 有关详细信息，请参阅[Azure Monitor 日志](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - **Log Analytics 工作区**：存储与 Azure 帐户相关的数据的 Azure Monitor 日志的实例。 有关 Log Analytics 工作区的详细信息，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - **网络观察程序**：一个区域性服务，用于在 Azure 中监视和诊断网络方案级别的状态。 可以使用网络观察程序启用和禁用 NSG 流日志。 有关详细信息，请参阅[网络观察程序](network-watcher-monitoring-overview.md)。
 
@@ -71,21 +69,21 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 美国西部
 * 美国西部 2
 * 法国中部
-* 西欧
-* 北欧
+* 欧洲西部
+* 欧洲北部
 * 巴西南部
 * 英国西部
 * 英国南部
 * 澳大利亚东部
 * 澳大利亚东南部
-* 东亚
-* 东南亚
+* 亚洲东部
+* 亚洲东南部
 * 韩国中部
 * 印度中部
 * 印度南部
 * 日本东部 
 * 日本西部
-* 美国政府弗吉尼亚州
+* 美国弗吉尼亚州政府
 * 中国东部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域： Log Analytics 工作区
@@ -102,22 +100,22 @@ Log Analytics 工作区必须存在于以下区域中：
 * 美国西部 2
 * 美国中部
 * 法国中部
-* 西欧
-* 北欧
+* 欧洲西部
+* 欧洲北部
 * 巴西南部
 * 英国西部
 * 英国南部
 * 澳大利亚东部
 * 澳大利亚东南部
-* 东亚
-* 东南亚
+* 亚洲东部
+* 亚洲东南部
 * 韩国中部
 * 印度中部
 * 日本东部
-* 美国政府弗吉尼亚州
+* 美国弗吉尼亚州政府
 * 中国东部 2
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -125,7 +123,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|Resource Manager   | 所有者                  |
+|Resource Manager   | “所有者”                  |
 |                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
@@ -183,14 +181,14 @@ New-AzStorageAccount `
 如图所示选择以下选项：
 
 1. 为“状态”选择“打开”
-2. 为*流日志版本*选择“版本 2”。 版本 2 包含流会话统计信息（字节和数据包）
-3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保存储没有将“Data Lake Storage Gen2 分层命名空间已启用”设置为 true。 此外，NSG 流日志不能存储在带有防火墙的存储帐户中。 
+2. 选择*版本 2*作为**流日志版本**。 版本 2 包含流会话统计信息（字节和数据包）
+3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保你的存储未将 "已启用 Data Lake Storage Gen2 分层命名空间" 设置为 true。 此外，NSG 流日志不能存储在具有防火墙的存储帐户中。 
 4. 将“保留期”设置为存储数据的天数。
 > [!IMPORTANT]
 > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 5. 为“流量分析状态”选择“打开”。
-6. 选择处理时间间隔。 根据你的选择，流日志将从存储帐户收集并由流量分析进行处理。 可以选择每 1 小时或每 10 分钟的处理时间间隔。 
+6. 选择处理时间间隔。 根据你的选择，将从存储帐户收集流日志并由流量分析处理。 你可以选择每1小时或每10分钟的处理间隔。 
 7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 > [!NOTE]
@@ -200,9 +198,9 @@ New-AzStorageAccount `
 
     ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理时间间隔，则将以不同的时间间隔收集数据。 例如：对于关键 Vnet，可以选择启用10分钟的处理间隔，为非关键 Vnet 启用1小时。
+针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 Nsg 设置了不同的处理间隔，将以不同的时间间隔收集数据。 例如：对于关键 Vnet，可以选择启用10分钟的处理间隔，为非关键 Vnet 启用1小时。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+你还可以使用 Azure PowerShell 中的[AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
@@ -212,7 +210,7 @@ New-AzStorageAccount `
 
 首次显示仪表板最长可能需要花费 30 分钟时间，因为流量分析必须先聚合足够的数据来派生有意义的见解，然后才能生成任何报告。
 
-## <a name="usage-scenarios"></a>使用方案
+## <a name="usage-scenarios"></a>使用情景
 
 完全配置流量分析之后，可以获取的某些见解如下：
 
@@ -294,13 +292,13 @@ New-AzStorageAccount `
 
     ![展示流量分布的仪表板](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- 使用地图顶部的功能区可以选择参数，例如数据中心（已部署/未部署/活动/非活动/已启用流量分析/未启用流量分析），以及向活动部署分配良性/恶意流量的国家/地区：
+- 该地图显示了用于选择参数的顶级功能区（例如，流量分析已部署/未部署/活动/非流量分析活动/非启用/未启用/未启用/未启用/未启用/未启用/未启用/未启用/未启用/未启用），以及向活动部署提供良性/
 
     ![展示活动部署的地图视图](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- 地图以蓝色（良性流量）和红色（恶意流量）彩色线显示了从与数据中心通信的国家/地区和大洲到数据中心的流量分布：
+- 该地图显示了来自国家/地区的数据中心的流量分布，并以蓝色（良性流量）和红色（恶意流量）彩色线路与它进行通信：
 
-    ![展示不同国家/地区和大洲流量分布的地图视图](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![地区地图视图展示流量分布到国家/地区和洲](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![日志搜索中流量分布的流详细信息](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 

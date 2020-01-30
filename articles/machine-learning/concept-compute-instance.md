@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974108"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769099"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -115,9 +115,9 @@ Python 包都安装在**python 3.6 AzureML**环境中。
 
 ![管理计算实例](./media/concept-compute-instance/manage-compute-instance.png)
 
-您可以执行以下操作：
+你可以执行以下操作：
 
-* 创建计算实例。 指定名称、Azure VM 类型（包括 Gpu）、启用/禁用 SSH 访问以及配置虚拟网络设置（可选）。 你还可以直接从集成的笔记本、Azure 门户、资源管理器模板或 Azure 机器学习 SDK 创建实例。 适用于计算实例创建的每个区域配额专用核心是统一的，并与 Azure 机器学习计算群集配额共享。
+* 创建计算实例。 指定名称，包括 Gpu 的 Azure VM 类型（请注意，创建后无法更改 VM 类型）、启用/禁用 SSH 访问和配置虚拟网络设置（可选）。 你还可以直接从集成的笔记本、Azure 门户、资源管理器模板或 Azure 机器学习 SDK 创建实例。 适用于计算实例创建的每个区域配额专用核心是统一的，并与 Azure 机器学习计算群集配额共享。
 * 刷新 "计算实例" 选项卡
 * 启动、停止和重新启动计算实例
 * 删除计算实例

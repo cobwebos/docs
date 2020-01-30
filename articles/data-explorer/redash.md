@@ -7,18 +7,18 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588585"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773955"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>可视化 Redash 中 Azure 数据资源管理器的数据
 
-[Redash](https://www.redash.io/)连接和查询您的数据源，构建仪表板来可视化数据并将其与对等方共享。 本文介绍如何将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化。
+[Redash](https://redash.io/)连接和查询您的数据源，构建仪表板来可视化数据并将其与对等方共享。 本文介绍如何将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 1. [创建群集和数据库](create-cluster-database-portal.md)。
 1. 引入数据，如将[示例数据引入 Azure 数据资源管理器](ingest-sample-data.md)中所述。 有关引入选项的详细信息，请参阅[引入概述](ingest-data-overview.md)。
@@ -64,7 +64,7 @@ ms.locfileid: "73588585"
 
 ### <a name="create-a-query-using-a-parameter"></a>使用参数创建查询
 
-1. **创建** > **查询**以创建新查询。 使用 {{}} 大括号向其添加参数。 选择 " **{{}}** " 以打开 "**添加参数**" 窗口。 你还可以选择 "*设置" 图标*来修改现有参数的属性，并打开 **< parameter_name ">** " 窗口。 
+1. **创建** > **查询**以创建新查询。 使用 {{}} 大括号向其添加参数。 选择 " **{{}}** " 以打开 "**添加参数**" 窗口。 您还可以选择 "*设置" 图标*来修改现有参数的属性，并打开 " **< parameter_name >** " 窗口。 
 
     ![插入参数](media/redash/insert-parameter.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "73588585"
 
     ![创建仪表板](media/redash/create-dashboard.png)
 
-1. 在 "**新建仪表板**" 窗口中，为仪表板命名并选择 "**保存**"。 在 **< Dashboard_name ">** " 窗口中，选择 "**添加小组件**" 以创建新的小组件。 
+1. 在 "**新建仪表板**" 窗口中，为仪表板命名并选择 "**保存**"。 在 **< Dashboard_name >** "窗口中，选择"**添加小组件**"以创建新的小组件。 
 
 1. 在 "**添加小组件**" 窗口中，选择查询名称，**选择可视化效果**和**参数**。 选择 "**添加到仪表板**"
 

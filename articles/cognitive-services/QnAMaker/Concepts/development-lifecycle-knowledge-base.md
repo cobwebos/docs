@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794840"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843399"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
-QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 
+QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
 
 ![创作周期](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
@@ -28,14 +28,14 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>测试和更新知识库
 
-知识库只要填充了内容（无论是以编辑方式填充还是通过自动提取填充），就可以用于测试。 可以通过 "**测试**" 面板在 QnA Maker 门户中完成交互式测试，方法是输入常见的用户查询，并验证返回的响应是否正确，以及是否有足够的置信度得分。 
+知识库只要填充了内容（无论是以编辑方式填充还是通过自动提取填充），就可以用于测试。 可以通过 "**测试**" 面板在 QnA Maker 门户中完成交互式测试，方法是输入常见的用户查询，并验证返回的响应是否正确，以及是否有足够的置信度得分。
 
-* **若要修复置信度较低的评分**：添加替代问题。 
-* **如果查询错误地返回[默认响应](confidence-score.md#change-default-answer)** ：将新答案添加到正确的问题。 
+* **若要修复置信度较低的评分**：添加替代问题。
+* **如果查询错误地返回[默认响应](../How-to/change-default-answer.md)** ：将新答案添加到正确的问题。
 
 测试更新这一紧凑周期会持续至得到满意的结果为止。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
 
-对于大型 Kb，请对[GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)使用自动测试，`isTest` 并将查询 `test` 知识库而不是已发布的知识库。 
+对于大型 Kb，将自动测试与[GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)和 `isTest` body 属性一起使用，该属性查询 `test` 知识库而不是已发布的知识库。
 
 ```json
 {
@@ -62,13 +62,27 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 
 根据从分析中得出的结论，适当[更新知识库](../How-To/edit-knowledge-base.md)。
 
-## <a name="version-control-of-a-knowledge-base"></a>知识库的版本控制
+## <a name="version-control-for-data-in-your-knowledge-base"></a>知识库中数据的版本控制
 
-QnA Maker 未提供版本控制。 需要从 "**设置**" 页导出知识库，并使用自己的方法和工具。
+数据的版本控制是通过 QnA Maker 门户的 "**设置**" 页上的 "导入/导出" 功能提供的。
 
-从 "**设置**" 页将知识库导出到 TSV 或 XLS 格式。 
+您可以通过导出 `.tsv` 或 `.xls` 格式的知识库来备份知识库。 导出后，将此文件作为常规源代码管理检查的一部分包含在内。
 
-需要返回到特定版本时，需要从本地系统导入该文件。 在 "**设置**" 页中，导入 TSV 或 XLS 文件。 这会将知识库中当前存在的问题和答案替换为导入的文件的内容。   
+需要返回到特定版本时，需要从本地系统导入该文件。 导出的**知识库只能通过**"**设置**" 页上的 "导入" 使用。 不能将它用作文件或 URL 文档数据源。 这会将知识库中当前存在的问题和答案替换为导入的文件的内容。
+
+## <a name="test-and-production-knowledge-base"></a>测试和生产知识库
+知识库是通过 QnA Maker 创建、维护和使用的问题和答案集的存储库。 每个 QnA Maker 资源可以保存多个知识库。
+
+知识库有两种状态：*测试*和*发布*。
+
+### <a name="test-knowledge-base"></a>测试知识库
+
+*测试知识库*是当前已编辑、保存和测试的版本，它是响应的准确性和完整性。 对测试知识库所做的更改不会影响应用程序或聊天机器人的最终用户。 测试知识库在 HTTP 请求中称为 `test`。 QnA Maker 的门户交互**测试**窗格提供 `test` 知识。
+
+### <a name="production-knowledge-base"></a>生产知识库
+
+*已发布的知识库*是在聊天机器人或应用程序中使用的版本。 发布知识库的操作会将测试知识库的内容放入知识库中的已发布版本。 由于已发布的知识库是应用程序通过终结点使用的版本，因此请确保内容正确并经过测试。 已发布的知识库在 HTTP 请求中称为 `prod`。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768531"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836450"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器的限制
 下列各部分介绍数据库服务中的容量和功能限制。 如需了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
 
 
 ## <a name="maximum-connections"></a>最大连接数
-每个定价层的最大连接数和 vCore 数如下所示： 
+每个定价层和 Vcore 的最大连接数如下所示。 Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
 
 |**定价层**| **vCore(s)**| 最大连接数 | **最大用户连接数** |
 |---|---|---|---|
@@ -40,7 +40,10 @@ ms.locfileid: "74768531"
 当连接数超出限制时，可能会收到以下错误：
 > 严重：很抱歉，客户端数过多
 
-Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
+> [!IMPORTANT]
+> 为了获得最佳体验，我们建议使用 pgBouncer 等连接池来有效地管理连接。
+
+PostgreSQL 连接（即使处于空闲状态）可能占用大约10MB 的内存。 而且，创建新的连接会耗费时间。 大多数应用程序会请求很多生存期较短的连接，这将会出现这种情况。 结果是，为实际工作负荷提供的资源越少，从而降低性能。 减少空闲连接并重复使用现有连接的连接池会有助于避免这种情况。 若要了解详细信息，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
 
 ## <a name="functional-limitations"></a>功能限制
 ### <a name="scale-operations"></a>缩放操作

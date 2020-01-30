@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314719"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838541"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -74,7 +74,7 @@ ms.locfileid: "76314719"
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
 | 未能将字段映射应用于字段 | 无法将映射函数 `'functionName'` 应用于字段 `'fieldName'`。 数组不能为 null。 参数名称：字节 | 仔细检查在索引器上定义的[字段映射](search-indexer-field-mappings.md)，并将与已失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
-| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 (访问接口: TCP 访问接口，错误: 0 - 现有连接已被远程主机强行关闭。) | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
+| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-execute-skill"/>
 
@@ -187,7 +187,7 @@ ms.locfileid: "76314719"
 | --- | --- | --- |
 | 无法在容器 `'containerName'` 中更新投影 blob `'blobUri'` |指定的容器不存在。 | 索引器将检查是否已创建了指定的容器，并在必要时创建它，但它只会在每个索引器运行时执行此检查一次。 此错误表示在执行此步骤后删除了容器。  若要解决此错误，请尝试以下操作：仅保留存储帐户信息，等待索引器完成，然后重新运行索引器。 |
 | 无法在容器 `'containerName'` 中更新投影 blob `'blobUri'` |无法将数据写入传输连接：现有连接被远程主机强行关闭。 | 这应该是 Azure 存储的暂时性故障，因此应通过重新运行索引器来解决此问题。 如果持续遇到此错误，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便进一步调查。  |
-| 无法更新表中的行 `'projectionRow'` `'tableName'` | 该服务器正忙。 | 这应该是 Azure 存储的暂时性故障，因此应通过重新运行索引器来解决此问题。 如果持续遇到此错误，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便进一步调查。  |
+| 无法更新表中的行 `'projectionRow'` `'tableName'` | 服务器正忙。 | 这应该是 Azure 存储的暂时性故障，因此应通过重新运行索引器来解决此问题。 如果持续遇到此错误，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便进一步调查。  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
@@ -249,7 +249,7 @@ ms.locfileid: "76314719"
 ```
 
 下面是可能产生此错误消息的每项技能当前支持的语言的参考资料：
-* [文本分析支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（适用[于 KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、 [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)和[SentimentSkill](cognitive-search-skill-sentiment.md)）
+* [文本分析支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（适用于[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、 [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、 [SentimentSkill](cognitive-search-skill-sentiment.md)和[PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
 * [翻译工具支持的语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)（用于[文本 TranslationSkill](cognitive-search-skill-text-translation.md)）
 * [文本 SplitSkill](cognitive-search-skill-textsplit.md)支持的语言： `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ ms.locfileid: "76314719"
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>警告：将提取的文本截断为 X 个字符
-索引器限制可以从任何一个文档中提取的文本量。 此限制取决于定价层：免费64000级别为32000个字符，适用于基本、标准 S2 和标准 S3 层的4000000。 不会为被截断的文本编制索引。 若要避免此警告，请尝试将包含大量文本的文档拆分为多个较小的文档。 
+索引器限制可以从任何一个文档中提取的文本量。 此限制取决于定价层： "免费" 层的32000个字符、"4000000 基本"、"64000"、"标准"、"标准"、"8000000" 16000000 和 "标准 S3"。 不会为被截断的文本编制索引。 若要避免此警告，请尝试将包含大量文本的文档拆分为多个较小的文档。 
 
 有关详细信息，请参阅[索引器限制](search-limits-quotas-capacity.md#indexer-limits)。
 

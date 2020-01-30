@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951058"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840258"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
@@ -38,7 +38,7 @@ ROPC 流支持以下选项：
 
 ## <a name="prerequisites"></a>必备组件
 
-完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
+完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
 ## <a name="register-an-application"></a>注册应用程序
 
@@ -229,7 +229,7 @@ ROPC 流支持以下选项：
 
 7. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
 8. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-9. 单击“上传”。
+9. 单击“上载” 。
 
 ## <a name="create-a-relying-party-file"></a>创建信赖方文件
 
@@ -250,7 +250,7 @@ ROPC 流支持以下选项：
 
 5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
 6. 如果已存在，请启用 **"覆盖策略"** ，然后浏览到并选择*ROPC_Auth .xml*文件。
-7. 单击“上传”。
+7. 单击“上载” 。
 
 ## <a name="test-the-policy"></a>测试策略
 
@@ -261,7 +261,7 @@ ROPC 流支持以下选项：
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 密钥 | Value |
+| 密钥 | 值 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -306,7 +306,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 密钥 | Value |
+| 密钥 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -342,4 +342,4 @@ Azure AD B2C 符合公共客户端资源所有者密码凭据的 OAuth 2.0 标�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关此方案的完整示例，请参阅 [Azure Active Directory B2C 自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)。
-- 若要了解有关 Azure Active Directory B2C 所用令牌的详细信息，请参阅[令牌参考](active-directory-b2c-reference-tokens.md)。
+- 若要了解有关 Azure Active Directory B2C 所用令牌的详细信息，请参阅[令牌参考](tokens-overview.md)。

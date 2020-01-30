@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950946"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840156"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 中的应用程序
 
-在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户将 Azure Active Directory B2C （Azure AD B2C）支持的标识提供者添加到[用户流](active-directory-b2c-reference-policies.md)。
+在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户将 Azure Active Directory B2C （Azure AD B2C）支持的标识提供者添加到[用户流](user-flow-overview.md)。
 
 在本文中，学习如何：
 
@@ -29,13 +29,13 @@ ms.locfileid: "74950946"
 > * 向租户添加标识提供程序
 > * 向用户流添加标识提供程序
 
-通常在应用程序中只使用一个标识提供程序，但可以视需要添加更多标识提供程序。 本教程介绍了如何将 Azure AD 标识提供程序和 Facebook 标识提供程序添加到应用程序。 视需要将这两个标识提供程序添加到应用程序。 你还可以添加其他标识提供程序，如[Amazon](active-directory-b2c-setup-amzn-app.md)、 [GitHub](active-directory-b2c-setup-github-app.md)、 [Google](active-directory-b2c-setup-goog-app.md)、 [LinkedIn](active-directory-b2c-setup-li-app.md)、 [Microsoft](active-directory-b2c-setup-msa-app.md)或[Twitter](active-directory-b2c-setup-twitter-app.md)。
+通常在应用程序中只使用一个标识提供程序，但可以视需要添加更多标识提供程序。 本教程介绍了如何将 Azure AD 标识提供程序和 Facebook 标识提供程序添加到应用程序。 视需要将这两个标识提供程序添加到应用程序。 你还可以添加其他标识提供程序，如[Amazon](identity-provider-amazon.md)、 [GitHub](identity-provider-github.md)、 [Google](identity-provider-google.md)、 [LinkedIn](identity-provider-linkedin.md)、 [Microsoft](identity-provider-microsoft-account.md)或[Twitter](identity-provider-twitter.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
-[创建用户流](tutorial-create-user-flows.md)以便用户注册并登录到你的应用程序。
+[创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
 ## <a name="create-applications"></a>创建应用程序
 
@@ -45,7 +45,7 @@ ms.locfileid: "74950946"
 
 若要让用户从 Azure AD 登录，需要在 Azure AD 租户中注册应用程序。 Azure AD 租户与 Azure AD B2C 租户不同。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
 1. 选择“新注册”。
@@ -133,7 +133,7 @@ ms.locfileid: "74950946"
 
 在本教程中，你已完成先决条件的一部分，创建了名为“B2C_1_signupsignin1”的注册和登录用户流。 在此部分中，将标识提供程序添加到 B2C_1_signupsignin1 用户流。
 
-1. 选择“用户流(策略)”，然后选择”B2C_1_signupsignin1”用户流。
+1. 依次选择“用户流(策略)”和“B2C_1_signupsignin1”用户流。
 2. 依次选择“标识提供程序”和所添加的“Facebook”和“Contoso Azure AD”标识提供程序。
 3. 选择“保存”。
 

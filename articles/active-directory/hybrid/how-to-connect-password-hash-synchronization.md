@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543913"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833358"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -130,9 +130,9 @@ Azure AD 支持每个注册域单独的密码过期策略。
   
 临时密码功能有助于确保在第一次使用时完成凭据的所有权转移，以最大程度地减少多个人员有权了解该凭据的时间。
 
-若要在 Azure AD 中支持为同步用户提供临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用*ForcePasswordResetOnLogonFeature*功能：
+若要在 Azure AD 中支持为同步用户提供临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用*ForcePasswordChangeOnLogOn*功能：
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > 强制用户在下次登录时更改其密码需要同时更改密码。  AD Connect 不会自行选取强制密码更改标志;它是在密码哈希同步过程中检测到的密码更改的补充。

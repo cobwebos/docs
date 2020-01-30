@@ -3,7 +3,7 @@ title: 适用于第2代 Vm 的 Azure 支持
 description: 第2代 Vm 的 Azure 支持概述
 services: virtual-machines-windows
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790038"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837336"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -30,7 +30,7 @@ Azure 上现在提供对第2代虚拟机（Vm）的支持。 创建虚拟机后�
 
 ## <a name="generation-2-vm-sizes"></a>第2代 VM 大小
 
-Azure 中的所有 VM 大小都支持第1代 Vm。 Azure 现在为以下选定 VM 系列提供第2代支持：
+Azure 中的所有 VM 大小（Mv2 系列 Vm 除外）都支持第1代 Vm。 Azure 现在为以下选定 VM 系列提供第2代支持：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -76,7 +76,7 @@ Azure 目前不支持第2代 Vm 的本地 Hyper-v 支持的某些功能。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第1代和第2代功能
 
-| Feature | 第 1 代 | 第2代 |
+| 功能 | 第 1 代 | 第2代 |
 |---------|--------------|--------------|
 | 引导             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
@@ -123,6 +123,12 @@ Windows 和 SLES 的第2代映像包含在 Gen1 映像所在的同一个服务�
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+或者，可以使用 Azure CLI 查看**发布者**列出的任何可用第2代映像。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 如果要使用 Windows Server 2012 作为 OS 创建 VM，则会选择第1代（BIOS）或第2代（UEFI） VM SKU，如下所示：

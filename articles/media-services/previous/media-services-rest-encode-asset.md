@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640066"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774921"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用 Media Encoder Standard 对资产进行编码
 > [!div class="op_single_selector"]
@@ -33,12 +33,12 @@ ms.locfileid: "60640066"
 
 若要通过 Internet 传送数字视频，必须压缩媒体文件。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。
 
-编码作业是 Azure 媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 编码时，可以使用媒体服务的内置编码器（Media Encoder Standard）。 还可使用媒体服务合作伙伴提供的编码器。 可通过 Azure 市场获取第三方编码器。 可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。 若要查看可用预设的类型，请参阅 [Media Encoder Standard 的任务预设](https://msdn.microsoft.com/library/mt269960)。
+编码作业是 Azure 媒体服务中最常见的处理操作之一。 创建编码作业以便在不同编码之间转换媒体文件。 编码时，可以使用媒体服务的内置编码器（Media Encoder Standard）。 还可使用媒体服务合作伙伴提供的编码器。 可通过 Azure 市场获取第三方编码器。 可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。 若要查看可用预设的类型，请参阅 [Media Encoder Standard 的任务预设](https://msdn.microsoft.com/library/mt269960)。
 
 每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 通过 REST API，可采用以下两种方式之一创建作业及相关任务：
 
 * 可通过作业实体上的任务导航属性以内联方式定义任务。
-* 使用 OData 批处理
+* 使用 OData 批处理。
 
 建议始终将源文件编码为自适应比特率 MP4 集，然后使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
@@ -61,7 +61,7 @@ ms.locfileid: "60640066"
 >
 > 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 >
-> 使用 JSON 并指定在请求中使用 __metadata 关键字（例如，为了引用某个链接对象）时，必须将 Accept 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)   ：Accept: application/json;odata=verbose。
+> 使用 JSON 并指定在请求（例如，引用某个链接对象的请求）中使用 **__metadata** 关键字时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 >
 >
 
@@ -74,7 +74,7 @@ ms.locfileid: "60640066"
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
         Host: media.windows.net
@@ -116,7 +116,7 @@ ms.locfileid: "60640066"
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -160,7 +160,7 @@ ms.locfileid: "60640066"
     Accept: multipart/mixed
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
 
@@ -180,7 +180,7 @@ ms.locfileid: "60640066"
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
@@ -197,7 +197,7 @@ ms.locfileid: "60640066"
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {  
@@ -221,7 +221,7 @@ ms.locfileid: "60640066"
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -248,7 +248,7 @@ ms.locfileid: "60640066"
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263415"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765719"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍 Azure Monitor 监视的各种应用程序和服务。 
@@ -27,7 +27,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 | 见解 | Description |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展的应用程序性能管理（APM）服务，用于在任何平台上监视实时 web 应用程序。 |
-| [用于容器的 Azure Monitor](insights/container-insights-overview.md) | 监视部署到 azure 容器实例或托管在 Azure Kubernetes 服务（AKS）上的托管 Kubernetes 群集的容器工作负荷的性能。 |
+| [容器 Azure Monitor](insights/container-insights-overview.md) | 监视部署到 azure 容器实例或托管在 Azure Kubernetes 服务（AKS）上的托管 Kubernetes 群集的容器工作负荷的性能。 |
 | [Cosmos DB 的 Azure Monitor （预览）](insights/cosmosdb-insights-overview.md) | 提供统一交互式体验中所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况的视图。 |
 | [网络 Azure Monitor （预览）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 "高级搜索" 功能可帮助你识别资源依赖关系，通过只需搜索你的网站名称来启用标识托管你的网站的资源等方案。 |
 [资源组的 Azure Monitor （预览）](insights/resource-group-insights.md) |  会审和诊断您的个别资源遇到的任何问题，同时提供作为整体资源组的运行状况和性能的上下文。 |
@@ -42,7 +42,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |:---|:---|
 | [代理运行状况](insights/solution-agenthealth.md) | 分析 Log Analytics 代理的运行状况和配置。 |
 | [警报管理](platform/alert-management-solution.md) | 分析从 System Center Operations Manager、Nagios 或 Zabbix 收集的警报。 |
-| [服务地图](insights/service-map.md) | 自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 中提供了相同的功能   |
+| [服务地图](insights/service-map.md) | 自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 |
 
 
 
@@ -63,14 +63,14 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |顾问 | 否 | 否 | 否 |  |
 |AI Builder | 否 | 否 | 否 |  |
 |Analysis Services | 是 | 是 | 否 |  |
-|API for FHIR | 否 | 否 | 否 |  |
+|适用于 FHIR 的 API | 否 | 否 | 否 |  |
 |API 管理 | 是 | 是 | 否 |  |
 |应用服务 | 是 | 是 | 否 |  |
 |AppConfig | 否 | 否 | 否 |  |
 |应用程序网关 | 是 | 是 | 否 |  |
 |证明服务 | 否 | 否 | 否 |  |
 |自动化 | 是 | 是 | 否 |  |
-|Azure 服务管理器 (RDFE) | 否 | 否 | 否 |  |
+|Azure Service Manager （RDFE） | 否 | 否 | 否 |  |
 |备份 | 否 | 是 | 否 |  |
 |Bastion | 否 | 否 | 否 |  |
 |批处理 | 是 | 是 | 否 |  |
@@ -91,17 +91,17 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |数据资源管理器 | 是 | 是 | 否 |  |
 |数据工厂 | 是 | 是 | 否 |  |
 |数据工厂 v2 | 否 | 是 | 否 |  |
-|Data Share | 否 | 否 | 否 |  |
-|Database for MariaDB | 是 | 是 | 否 |  |
-|Database for MySQL | 是 | 是 | 否 |  |
-|Database for PostgreSQL | 是 | 是 | 否 |  |
+|数据共享 | 否 | 否 | 否 |  |
+|MariaDB 的数据库 | 是 | 是 | 否 |  |
+|MySQL 数据库 | 是 | 是 | 否 |  |
+|PostgreSQL 的数据库 | 是 | 是 | 否 |  |
 |数据库迁移服务 | 否 | 否 | 否 |  |
 |Databricks | 否 | 是 | 否 |  |
 |DDoS 保护 | 是 | 是 | 否 |  |
 |开发运营 | 否 | 否 | 否 |  |
 |DNS | 是 | 否 | 否 |  |
 |域名 | 否 | 否 | 否 |  |
-|DPS | 否 | 否 | 否 |  |
+|分发 | 否 | 否 | 否 |  |
 |Dynamics 365 客户参与 | 否 | 否 | 否 |  |
 |Dynamics 365 财务和运营 | 否 | 否 | 否 |  |
 |事件网格 | 是 | 否 | 否 |  |

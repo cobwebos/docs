@@ -3,17 +3,15 @@ title: 使用 Azure Monitor 日志跟踪 B2B 消息
 description: 使用 Azure Log Analytics 跟踪集成帐户和 Azure 逻辑应用的 B2B 通信
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792927"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773714"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure Monitor 日志跟踪 B2B 消息
 
@@ -34,7 +32,7 @@ ms.locfileid: "74792927"
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
-* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为该帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
+* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为集成帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
 
 * 如果尚未这样做，请[将诊断数据发布到 Azure Monitor 日志](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
@@ -50,7 +48,7 @@ ms.locfileid: "74792927"
 
 1. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择“Log Analytics 工作区”](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
+   ![选择 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
 1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
 
@@ -106,7 +104,7 @@ ms.locfileid: "74792927"
 3. 若要查看或导出特定消息的的输入和输出内容，请依次选择这些消息和“下载”。 看到提示时，将 .zip 文件保存到本地计算机，再解压缩此文件。 
 
    在解压缩的文件夹中，选择的每个消息都对应一个文件夹。 
-   如果设置了确认信息，消息文件夹中还有包含确认详细信息的文件。 
+   如果设置了确认，则消息文件夹还会包含包含确认详细信息的文件。 
    每个消息文件夹至少有下面这些文件： 
    
    * 包含输入和输出有效负载详细信息的人工可读文件
@@ -145,14 +143,14 @@ ms.locfileid: "74792927"
 
 下面列出了各个 AS2 消息的属性说明。
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
 | 逻辑应用程序 | 设置了 AS2 操作的逻辑应用 |
 | 状态 | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | Ack | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
-| Direction | AS2 消息传送方向 |
+| 方向 | AS2 消息传送方向 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息 ID | AS2 消息头中的 AS2 消息 ID |
 | Timestamp | AS2 操作处理消息的时间 |
@@ -167,7 +165,7 @@ ms.locfileid: "74792927"
 | 文件夹或文件 | 名称格式 |
 | :------------- | :---------- |
 | 消息文件夹 | [发送方]\_[接收方]\_AS2\_[关联 ID]\_[消息 ID]\_[时间戳] |
-| 输入、输出文件，以及确认文件（若设置） | **输入有效负载**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_outputs.txt |
+| 输入、输出，以及设置的确认文件 | **输入有效负载**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_AS2\_[关联 ID]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -176,14 +174,14 @@ ms.locfileid: "74792927"
 
 下面列出了各个 X12 消息的属性说明。
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
 | 逻辑应用程序 | 设置了 X12 操作的逻辑应用 |
 | 状态 | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
-| Direction | X12 消息传送方向 |
+| 方向 | X12 消息传送方向 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDI X12 消息类型 |
 | ICN | X12 消息的交换控制编号 |
@@ -200,7 +198,7 @@ ms.locfileid: "74792927"
 | 文件夹或文件 | 名称格式 |
 | :------------- | :---------- |
 | 消息文件夹 | [发送方]\_[接收方]\_X12\_[交换控制编号]\_[全局控制编号]\_[交易集控制编号]\_[时间戳] |
-| 输入、输出文件，以及确认文件（若设置） | **输入有效负载**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_outputs.txt |
+| 输入、输出，以及设置的确认文件 | **输入有效负载**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_X12\_[交换控制编号]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -209,14 +207,14 @@ ms.locfileid: "74792927"
 
 下面列出了各个 EDIFACT 消息的属性说明。
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
 | 逻辑应用程序 | 设置了 EDIFACT 操作的逻辑应用 |
 | 状态 | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认（CONTRL）状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
-| Direction | EDIFACT 消息传送方向 |
+| 方向 | EDIFACT 消息传送方向 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDIFACT 消息类型 |
 | ICN | EDIFACT 消息的交换控制编号 |
@@ -233,7 +231,7 @@ ms.locfileid: "74792927"
 | 文件夹或文件 | 名称格式 |
 | :------------- | :---------- |
 | 消息文件夹 | [发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_[全局控制编号]\_[交易集控制编号]\_[时间戳] |
-| 输入、输出文件，以及确认文件（若设置） | **输入有效负载**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_outputs.txt |
+| 输入、输出，以及设置的确认文件 | **输入有效负载**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_input_payload.txt </p>**输出有效负载**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_output\_payload.txt </p></p>**输入**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_inputs.txt </p></p>**输出**：[发送方]\_[接收方]\_EDIFACT\_[交换控制编号]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3090c0bb809b302f0326d2586d2ce1426e4ace85
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: b606566fa2b8154eb9ac8fda97d3c3ae81cd3447
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760600"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767422"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -1720,7 +1720,7 @@ Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3
 全局读取器 | 全局读取器 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-支持管理员 | 密码管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+支持管理员 | 支持管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

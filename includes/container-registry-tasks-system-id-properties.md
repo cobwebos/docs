@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5cca18b881250ce99df35d681bec6091ea4a27b9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 94adac6ba232f8931d00083432c027ddccb2ce64
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642093"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842482"
 ---
-在命令输出中, `identity`部分显示在任务中设置类型`SystemAssigned`的标识。 `principalId`是标识的服务主体 ID:
+在命令输出中，`identity` 部分显示在任务中设置 `SystemAssigned` 类型的标识。 `principalId` 是标识的服务主体 ID：
 
 ```console
 [...]
@@ -28,10 +28,10 @@ ms.locfileid: "68642093"
   "location": "eastus",
 [...]
 ``` 
-使用[az acr task show][az-acr-task-show]命令将 principalId 存储在变量中, 以便在后面的命令中使用:
+使用[az acr task show][az-acr-task-show]命令将 principalId 存储在变量中，以便在以后的命令中使用。 在以下命令中替换任务的名称和注册表：
 
 ```azurecli
-principalID=$(az acr task show --name dockerhubtask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

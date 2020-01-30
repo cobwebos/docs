@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978162"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843933"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -65,7 +65,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
     建议向输出资产应用存储加密选项，以便保护静态内容。
 3. 配置资产传送策略（由动态打包使用）。
 
-    如果资产已经过存储加密，则**必须**配置资产传送策略。
+    如果资产已经过存储加密，则 **必须** 配置资产传送策略。
 4. 通过创建 OnDemand 定位符来发布资产。
 5. 流式传输已发布的内容。
 
@@ -179,7 +179,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 |名称|状态|数据中心
 |---|---|---|
-|标准版|GA|所有|
+|标准|GA|所有|
 |高级|GA|所有|
 
 ### <a name="live-encoding"></a>实时编码
@@ -208,12 +208,11 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 |媒体处理器名称|状态|数据中心
 |---|---|---|
 |Azure 媒体面部检测器|预览|所有|
-|Azure 媒体索引器|GA|所有|
+|Azure Media Indexer|GA|所有|
 |Azure Media Motion Detector|预览|所有|
 |Azure 媒体 OCR|预览|所有|
-|Azure 媒体编修器|预览|所有|
+|Azure 媒体编修器|GA|所有|
 |Azure 媒体视频缩略图|预览|所有|
-|Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
 
@@ -255,7 +254,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

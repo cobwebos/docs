@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462616"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835906"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -55,7 +55,8 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
-如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
+如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact)。 
+
 
 > [!NOTE]
 > 缩小/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。

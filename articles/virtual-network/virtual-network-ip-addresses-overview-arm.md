@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: f6f77268952f0ac7c01498ab8833bdad592bdc3f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 56e02d5723fefe45f5df15a4889a35fc55d8da3b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155598"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842378"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "76155598"
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。  本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是[经典部署模型](virtual-network-ip-addresses-overview-classic.md)。
 > 
 
-如果熟悉经典部署模型，请参阅[经典部署与 Resource Manager 之间的 IP 寻址差异](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)。
+如果熟悉经典部署模型，请参阅[经典部署与 Resource Manager 之间的 IP 寻址差异](/previous-versions/azure/virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)。
 
 ## <a name="public-ip-addresses"></a>公共 IP 地址
 

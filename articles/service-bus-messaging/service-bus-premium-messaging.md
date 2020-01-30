@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线高级层和标准层 |Microsoft Docs
-description: 服务总线高级和标准消息传送层
+title: Azure 服务总线高级层和标准层
+description: 本文介绍 Azure 服务总线的 "标准" 层和 "高级" 层。 比较这些层并提供技术差异。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: cc783dc4b2bf49724f4a2c7ab9cd9904ded2c703
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352867"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774570"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 

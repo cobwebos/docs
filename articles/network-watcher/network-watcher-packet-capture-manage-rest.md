@@ -3,23 +3,20 @@ title: 使用 Azure 网络观察程序管理数据包捕获 - REST API | Microso
 description: 此页说明如何使用 Azure REST API 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 896c681cd7337faba7add214e186e18ec87b529d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.author: damendo
+ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676353"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840887"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
@@ -47,7 +44,7 @@ ms.locfileid: "71676353"
 
 本方案通过调用网络观察程序 Rest API 来运行“IP 流验证”。 通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-本方案假设已根据[创建网络观察程序](network-watcher-create.md)中的步骤创建了网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 > 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
@@ -59,11 +56,11 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>检索虚拟机
 
-运行以下脚本以返回虚拟机。 以下信息是启动数据包捕获所必需的。
+运行以下脚本返回虚拟机。 以下信息是启动数据包捕获所必需的。
 
 以下代码需要以下变量：
 
-- **subscriptionId** - 还可以使用 **Get-AzSubscription** cmdlet 检索订阅 ID。
+- **subscriptionId** -还可以通过**AzSubscription** cmdlet 检索订阅 id。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell

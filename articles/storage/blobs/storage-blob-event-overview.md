@@ -8,32 +8,35 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648795"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835957"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
-Azure 存储事件允许应用程序使用新式无服务器体系结构对事件 (如创建和删除 blob) 做出反应。 为此，它无需复杂的代码或高价低效的轮询服务。
+Azure 存储事件允许应用程序响应事件，例如创建和删除 blob。 为此，它无需复杂的代码或高价低效的轮询服务。
 
-相反, 事件会通过[Azure 事件网格](https://azure.microsoft.com/services/event-grid/)推送到订阅服务器 (例如 Azure Functions、Azure 逻辑应用, 甚至是你自己的自定义 http 侦听器), 并且只需为你使用的部分付费。
+使用[Azure 事件网格](https://azure.microsoft.com/services/event-grid/)将事件推送到 Azure Functions、Azure 逻辑应用等订阅服务器，甚至可推送到自己的 http 侦听器。 最好的做法是只为使用的部分付费。
 
-Blob 存储事件可靠地发送到事件网格服务, 该服务通过丰富的重试策略和死信传递为应用程序提供可靠的传送服务。
+Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。 异步文件上传十分适合事件。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-若要立即试用, 请参阅以下任一快速入门文章:
+若要立即试用，请参阅以下任一快速入门文章：
 
-|若要使用此工具：    |请参阅此文： |
+|如果要使用此工具：    |请参阅以下文章： |
 |--|-|
 |Azure 门户    |[快速入门：将 Blob 存储事件路由到具有 Azure 门户的 web 终结点](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[快速入门：通过 PowerShell 将存储事件路由到 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure CLI    |[快速入门：通过 Azure CLI 将存储事件路由到 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[快速入门：将存储事件路由到具有 Azure CLI 的 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-如果帐户具有分层命名空间, 本教程将演示如何在 Azure Databricks 中将事件网格订阅、Azure 函数和[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)连接在一起:[教程：使用 Azure Data Lake Storage Gen2 事件来更新 Databricks 增量表](data-lake-storage-events.md)。
+如果你的帐户具有分层命名空间，本教程将演示如何在 Azure Databricks 中连接事件网格订阅、Azure 函数和[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)：[教程：使用 Azure Data Lake Storage Gen2 事件来更新 Databricks 增量表](data-lake-storage-events.md)。
+
+>[!NOTE]
+> 只有类型**StorageV2 （常规用途 v2）** 和**BlobStorage**的存储帐户支持事件集成。 **Storage （genral）** *不支持与*事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -41,9 +44,9 @@ Blob 存储事件可靠地发送到事件网格服务, 该服务通过丰富的�
 
 ![事件网格模型](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-首先, 将终结点订阅到事件。 然后, 在触发事件时, 事件网格服务将有关该事件的数据发送到终结点。
+首先，将终结点订阅到事件。 然后，在触发事件时，事件网格服务将有关该事件的数据发送到终结点。
 
-若要查看, 请参阅[Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)一文:
+若要查看，请参阅[Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)一文：
 
 > [!div class="checklist"]
 > * Blob 存储事件以及每个事件的触发方式的完整列表。
@@ -52,9 +55,9 @@ Blob 存储事件可靠地发送到事件网格服务, 该服务通过丰富的�
 
 ## <a name="filtering-events"></a>筛选事件
 
-可按事件类型以及已创建或已删除对象的容器名称和 blob 名称来筛选 blob 事件订阅。  可在[创建](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)事件订阅期间或[以后](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)将筛选器应用于事件订阅。 事件网格中的使用者筛选器基于“开始时间”和“结束时间”的匹配进行筛选，将含有匹配使用者的事件传送给订阅方。
+可以按事件类型、容器名称或创建/删除的对象的名称来[筛选 Blob 事件](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)。 事件网格中的筛选器与主题的开头或结尾匹配，因此具有匹配的主题的事件将跳到订阅服务器。
 
-若要了解有关如何应用筛选器的详细信息, 请参阅 "[事件网格的筛选事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)"。
+若要了解有关如何应用筛选器的详细信息，请参阅 "[事件网格的筛选事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)"。
 
 Blob 存储事件使用者使用的格式：
 
@@ -94,7 +97,7 @@ Blob 存储事件使用者使用的格式：
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 
 > * 将 URL 字段与 `CloudBlockBlob` 和 `CloudAppendBlob` 构造函数配合使用，以访问 blob。
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。
-> * 如果你想要确保仅在完全提交块 Blob 时触发**BlobCreated**事件`CopyBlob`, 请筛选、 `PutBlob` `PutBlockList`或`FlushWithClose` REST API 调用的事件。 仅当数据完全提交到块 Blob 后, 这些 API 调用才会触发**BlobCreated**事件。 若要了解如何创建筛选器, 请参阅 "[事件网格的筛选事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)"。
+> * 如果要确保仅在完全提交块 Blob 时触发**BlobCreated**事件，请筛选 `CopyBlob`、`PutBlob`、`PutBlockList` 或 `FlushWithClose` REST API 调用的事件。 仅当数据完全提交到块 Blob 后，这些 API 调用才会触发**BlobCreated**事件。 若要了解如何创建筛选器，请参阅 "[事件网格的筛选事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)"。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699472"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834411"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 

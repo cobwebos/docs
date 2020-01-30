@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447714"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843080"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -116,9 +116,37 @@ QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权�
 
 了解有关[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)的详细信息。
 
-### <a name="using-a-single-search-service"></a>使用单个搜索服务
+## <a name="using-a-single-search-service"></a>使用单个搜索服务
 
 如果通过门户创建 QnA 服务及其依赖项（如搜索），将为你创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
+
+如果通过 Azure 资源管理器模板创建 QnA 服务，则可以创建所有资源，并控制应用服务创建，以使用现有搜索服务。
+
+
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>将 QnA Maker 配置为使用不同的认知搜索资源
+
+如果通过门户创建 QnA 服务及其依赖项（如搜索），将为你创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
+
+QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA Maker 使用的认知搜索资源，需要更改 Azure 门户中的设置。
+
+1. 获取要 QnA Maker 使用的认知搜索资源的**管理员密钥**和**名称**。
+
+1. 登录到[Azure 门户](https://portal.azure.com)并找到与 QnA Maker 资源关联的**应用服务**。 具有相同名称的。
+
+1. 依次选择 "**设置**"、"**配置**"。 这将显示 QnA Maker 的应用服务的所有现有设置。
+
+    > [!div class="mx-imgBorder"]
+    > 显示应用服务配置设置 Azure 门户 ![屏幕快照](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. 更改以下项的值：
+
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. 若要使用新设置，需要重新启动应用服务。 选择 "**概述**"，然后选择 "**重新启动**"。
+
+    > [!div class="mx-imgBorder"]
+    > 更改配置设置后 Azure 门户重新启动应用服务的 ![屏幕快照](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 如果通过 Azure 资源管理器模板创建 QnA 服务，则可以创建所有资源，并控制应用服务创建，以使用现有搜索服务。
 

@@ -3,12 +3,12 @@ title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513858"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773236"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -443,7 +443,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 | 参数 | 需要 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，请提供资源 ID。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
 | 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
@@ -460,11 +460,11 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -476,11 +476,11 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 {
   "type": "Microsoft.KeyVault/vaults",
   "properties": {
-    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
-        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
             "all"
@@ -520,10 +520,10 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-若要避免对所引用的资源有歧义，可以提供完全限定的资源名称。
+若要避免对所引用的资源有歧义，可以提供完全限定的资源标识符。
 
 ```json
-"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
 ```
 
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
@@ -534,6 +534,8 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
+若要简化任何资源 ID 的创建，请使用本文档中所述的 `resourceId()` 函数，而不是 `concat()` 函数。
+
 ### <a name="get-managed-identity"></a>获取托管标识
 
 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](../management/extension-resource-types.md)。 由于未在模板中显式定义托管标识，因此必须引用应用该标识的资源。 使用 `Full` 可获取所有属性，包括隐式创建的标识。
@@ -541,7 +543,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>参考示例

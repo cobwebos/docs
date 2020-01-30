@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895815"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773665"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 
@@ -45,7 +45,7 @@ ms.locfileid: "74895815"
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -58,7 +58,7 @@ ms.locfileid: "74895815"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
 每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
-| 标头 | Type | Value |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
 | x-ms-version |Decimal |2.17（或最新版本）|
@@ -72,32 +72,32 @@ ms.locfileid: "74895815"
 
 以下是一组可选标头：
 
-| 标头 | Type | Value |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
-| 日期 |RFC 1123 日期 |请求的时间戳 |
-| 接受 |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
+| Date |RFC 1123 日期 |请求的时间戳 |
+| Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
 | Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 编码（如果适用）。 注意：对于大型资源，媒体服务可能会忽略此标头并返回未经压缩的数据。 |
 | Accept-Language |“en”、“es”等。 |指定响应的首选语言。 |
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |允许不支持 HTTP 方法（例如 PUT 或 DELETE）的客户端或防火墙使用这些通过 GET 调用隧道化的方法。 |
 | Content-Type |内容类型 |PUT 或 POST 请求中请求正文的内容类型。 |
-| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
+| client-request-id |String |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
 下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
-| 标头 | Type | Value |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
-| request-id |字符串 |当前操作的唯一标识符，由服务生成。 |
-| client-request-id |字符串 |调用方在原始请求（如果存在）中指定的标识符。 |
-| 日期 |RFC 1123 日期 |处理请求的日期/时间。 |
-| Content-Type |多种多样 |响应正文的内容类型。 |
-| Content-Encoding |多种多样 |Gzip 或 deflate（视情况而定）。 |
+| request-id |String |当前操作的唯一标识符，由服务生成。 |
+| client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
+| Date |RFC 1123 日期 |处理请求的日期/时间。 |
+| Content-Type |不定 |响应正文的内容类型。 |
+| Content-Encoding |不定 |Gzip 或 deflate（视情况而定）。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：
 
-| Verb | 描述 |
+| 谓词 | Description |
 | --- | --- |
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |

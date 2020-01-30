@@ -1,108 +1,108 @@
 ---
-title: Azure 经典部署模型 |Microsoft Docs
-description: Azure 经典部署模型
+title: Azure 经典部署模型
+description: 经典部署模型现在被资源管理器模型取代，对 Vm 和虚拟机规模集强制实施全局 vCPU 配额限制。
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897047"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835530"
 ---
 # <a name="classic-deployment-model"></a>经典部署模型
 
-经典部署模型是较旧的代 Azure 部署模型。 它对虚拟机和虚拟机规模集强制实施全局 vCPU 配额限制。 不再建议使用经典部署模型，它现在被资源管理器模型取代。 
+经典部署模型是较旧的代 Azure 部署模型。 它对虚拟机和虚拟机规模集强制实施全局 vCPU 配额限制。 不再建议使用经典部署模型，它现在被资源管理器模型取代。
 
-若要详细了解这两种部署模型以及使用资源管理器的优点，请参阅[资源管理器和经典部署](../../azure-resource-manager/management/deployment-models.md)页。
- 
-创建新订阅时，将为其分配默认的个 vcpu 配额。 每当使用经典部署模型部署新的 VM 时，所有区域中新的和现有 vCPU 使用的总和不得超过针对经典部署模型批准的 vCPU 配额。
- 
-在[Azure 订阅和服务限制](https://aka.ms/quotalimits)页上了解有关配额的详细信息。
+若要详细了解这两种部署模型以及使用资源管理器的优点，请参阅[资源管理器和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
-可以通过门户中的 "帮助 + 支持" 边栏选项卡或 "使用情况 + 配额" 边栏选项卡，为经典部署模型请求增加 vCPU 配额限制。
+创建新订阅时，将为其分配默认的个 vcpu 配额。 无论何时使用经典部署模型部署新的虚拟机，所有区域中新的和现有 vCPU 使用的总和不得超过针对经典部署模型批准的 vCPU 配额。
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>使用 "**帮助 + 支持**" 边栏选项卡在订阅级别增加按 VM 序列 vCPU 配额增加的请求
+若要了解有关配额的详细信息，请参阅[Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
-按照下面的说明通过 Azure 的 "帮助 + 支持" 边栏选项卡，在 Azure 门户中创建支持请求。 
+可以为经典部署模型请求增加 vCPU 配额限制。 在 Azure 门户中使用 "**帮助 + 支持**" 或 "使用**情况 + 配额**"。
 
-1. 在 https://portal.azure.com 中，选择 "**帮助 + 支持**"。
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>使用 "帮助 + 支持" 在订阅级别增加每个 VM 序列 vCPU 配额
 
-   ![帮助 + 支持](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  选择“新建支持请求”。 
+按照以下说明使用 Azure 门户中的 "**帮助 + 支持**" 创建支持请求。
 
-      ![新建支持请求](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. 从 " [Azure 门户](https://portal.azure.com)" 菜单中，选择 "**帮助 + 支持**"。
 
-3. 在 "问题类型" 下拉列表中，选择 "**服务和订阅限制（配额）** "。
+   ![在 Azure 门户中选择 "帮助 + 支持"](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![问题类型下拉列表](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. 选择“新建支持请求”。
 
-4. 选择需要增加配额的订阅。
+   ![在 Azure 门户中创建新的支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![选择订阅 newSR](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. 在 "**配额类型**" 下拉列表中选择 "**计算-VM （个 vcpu）订阅限制增加**"。 
+1. 在 "**问题类型**" 中，选择 "**服务和订阅限制（配额）** "。
+
+   ![选择 "配额" 作为问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. 选择要增加其配额的订阅。
+
+   ![选择要增加配额的订阅](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. 对于 "**配额类型**"，选择 "**计算-VM （个 vcpu）订阅限制增加**"。
+
+   ![选择要增加的配额类型](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. 选择 "**下一步：** 用于打开**问题详细信息**的解决方案"。 选择 "**提供详细**信息" 以提供其他信息。
+
+   ![提供详细信息来帮助你的请求](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. 在 "**配额详细信息**" 中，选择 "**经典**" 并选择一个**位置**。
+
+   ![添加详细信息，包括部署模型和位置](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. 对于 " **sku 系列**"，选择一个或多个要增加的 SKU 系列。
+
+   ![指定要增加的 SKU 系列](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. 输入想对订阅设定的新限制。 若要删除线条，请取消选择**sku 系列**中的 sku，或选择 "丢弃" X 图标。 为每个 SKU 系列输入配额后，请在 "**配额详细信息**" 中选择 "**保存并继续**" 以继续支持请求。
+
+   ![请求新限制](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>使用使用情况 + 配额在订阅级别增加每个 VM 序列的请求 vCPU 配额
+
+按照以下说明使用 Azure 门户中的**使用情况 + 配额**创建支持请求。
+
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**订阅**"。
+
+   ![在 Azure 门户中，请参阅订阅](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. 选择要增加其配额的订阅。
+
+   ![选择要修改的订阅](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. 选择“使用情况 + 配额”。
+
+   ![选择订阅的使用情况和配额](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. 在右上角选择“请求增加”。
+
+   ![选择以增加配额](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. 选择 "**计算-VM （个 vcpu）订阅限制" 会增加** **配额类型**。
 
    ![选择配额类型](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. 在 "**问题详细信息**" 中，通过单击 "**提供详细信息**" 提供附加信息以帮助处理您的请求。
+1. 选择 "**下一步：** 用于打开**问题详细信息**的解决方案"。 选择 "**提供详细**信息" 以提供其他信息。
 
-   ![提供详细信息](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![提供请求的详细信息](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. 在 "**配额详细信息**" 面板中，选择 "经典" 并选择一个位置。
+1. 在 "**配额详细信息**" 中，选择 "**经典**" 和 "**位置**"。
 
-   ![配额详细信息 DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![选择配额详细信息，包括部署模型和位置](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. 选择需要增加的**SKU 系列**。 
+1. 选择一个或多个 SKU 系列以增加。
 
-   ![SKU 系列](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![选择要增加的 SKU 系列](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. 输入想对订阅设定的新限制。 若要删除某行，请从 SKU 系列下拉列表中取消选中 SKU，或单击“x”丢弃图标。 为每个 SKU 系列输入所需的配额后，在 "配额详细信息" 面板上单击 "**保存并继续**"，以继续创建支持请求。
+1. 输入想对订阅设定的新限制。 若要删除线条，请取消选择**sku 系列**中的 sku，或选择 "丢弃" X 图标。 为每个 SKU 系列输入配额后，请在 "**配额详细信息**" 中选择 "**保存并继续**" 以继续支持请求。
 
-   ![新限制](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>使用 "使用情况 **+ 配额**" 边栏选项卡在订阅级别增加每个 VM 序列 vCPU 配额
-
-按照下面的说明操作，通过 Azure 的 "使用情况 + 配额" 边栏选项卡，在 Azure 门户中创建支持请求。 
-
-1. 从 https://portal.azure.com 中选择“订阅”。
-
-   ![订阅](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. 选择需要增加配额的订阅。
-
-   ![选择订阅](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. 选择“使用情况 + 配额”
-
-   ![选择使用情况和配额](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. 在右上角选择“请求增加”。
-
-   ![请求增加](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. 选择 "**计算-VM （个 vcpu）订阅限制**" 将增加为引号类型。 
-
-   ![填写表单](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. 在 "**问题详细信息**" 中，通过单击 "**提供详细信息**" 提供附加信息以帮助处理您的请求。
-
-   ![提供详细信息](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. 在 "**配额详细信息**" 面板中，选择 "经典" 并选择一个位置。
-
-   ![配额详细信息 DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. 选择需要增加的**SKU 系列**。 
-
-   ![SKU 系列](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. 输入想对订阅设定的新限制。 若要删除某行，请从 SKU 系列下拉列表中取消选中 SKU，或单击“x”丢弃图标。 为每个 SKU 系列输入所需的配额后，在 "配额详细信息" 面板上单击 "**保存并继续**"，以继续创建支持请求。
-
-   ![新限制](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![输入新配额](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

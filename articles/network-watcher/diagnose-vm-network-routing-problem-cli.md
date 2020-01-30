@@ -1,11 +1,10 @@
 ---
 title: 诊断 VM 网络路由问题-Azure CLI
 titleSuffix: Azure Network Watcher
-description: 本教程介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
+description: 本文介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,20 +15,20 @@ ms.topic: article
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 23ffc16948c250a6999c33b8812769ba889f4900
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bf4c5e364b7f18b363f9915f54e43c7ea54c33c4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276097"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834665"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
 
-在本教程中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信。 请确定通信失败的原因以及解决方法。
+本文首先部署虚拟机 (VM)，然后检查其与 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -70,9 +69,9 @@ az network watcher configure \
   --enabled
 ```
 
-### <a name="use-next-hop"></a>使用下一跃点
+### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时候，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) 确定流量发送到特定地址时的下一个路由跃点。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) 确定流量发送到特定地址时的下一个路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -150,7 +149,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无缘无故地指定下一跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。 此时进行检查会将“nextHopType”显示为“虚拟网络”。
+从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。 此时进行检查会将“nextHopType”显示为“虚拟网络”。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -162,6 +161,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建 VM 并根据该 VM 诊断网络路由问题。 同时还介绍了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
+本文介绍了如何创建 VM 并根据该 VM 诊断网络路由问题。 同时说明了 Azure 可以创建多个默认路由，并且还测试了到两个不同目标的路由。 详细了解 [Azure 中的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，以及如何[创建自定义路由](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)。
 
 对于出站 VM 连接，还可以使用网络观察程序的[连接故障排除](network-watcher-connectivity-cli.md)功能来确定延迟、VM 和终结点之间获得允许的和被拒绝的网络流量。 可以使用网络观察程序的连接监视器功能监视 VM 和终结点（例如 IP 地址或 URL）之间在某段时间的通信情况。 如需了解如何操作，请参阅[监视网络连接](connection-monitor.md)。

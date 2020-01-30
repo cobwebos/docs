@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940995"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841023"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -370,7 +370,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 > [!NOTE]
 > systemlabels 是不能与 Intune 一起设置的只读属性。
 >
-> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：（deviceOSVersion-eq "10.0 （17763）"）。 可以通过 Get-msoldevice PowerShell cmdlet 验证格式设置。
+> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：（deviceOSVersion-eq "10.0.17763"）。 可以通过 Get-msoldevice PowerShell cmdlet 验证格式设置。
 
 可以使用以下设备属性。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950980"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840394"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>将基于 OWIN 的 web API 迁移到 b2clogin.com
 
@@ -33,7 +33,7 @@ ms.locfileid: "74950980"
 
 在继续执行本文中的步骤之前，需要准备好以下 Azure AD B2C 资源：
 
-* [用户流](tutorial-create-user-flows.md)或在租户中创建的[自定义策略](active-directory-b2c-get-started-custom.md)
+* [用户流](tutorial-create-user-flows.md)或在租户中创建的[自定义策略](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>获取令牌颁发者终结点
 
@@ -127,7 +127,7 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 更改 TaskWebApp 的*web.config*中的 `ida:AadInstance` 值，使其引用 `{your-b2c-tenant-name}.b2clogin.com` 而不是 `login.microsoftonline.com`。
 
-之前：
+早于:
 
 ```xml
 <!-- Old value -->
@@ -147,7 +147,7 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 本文介绍了一种方法，该方法将实现 Microsoft OWIN 中间件（Katana）的 web API 配置为接受来自多个颁发者终结点的令牌。 你可能会注意到，TaskService 和 TaskWebApp 项目的 web.config 文件中还有一些其他字符串，如果你要针对自己的租户生成并运行这些项目，则需要更改这些项目 *。* 如果你想要在操作中查看项目，则欢迎你对其进行修改，但在本文的讨论范围外，此操作的完整演练超出了本文的范围。
 
-有关 Azure AD B2C 发出的不同类型的安全令牌的详细信息，请参阅[Azure Active Directory B2C 中的令牌概述](active-directory-b2c-reference-tokens.md)。
+有关 Azure AD B2C 发出的不同类型的安全令牌的详细信息，请参阅[Azure Active Directory B2C 中的令牌概述](tokens-overview.md)。
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

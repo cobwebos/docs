@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264842"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768021"
 ---
-# <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>为 Azure Cosmos DB 帐户启用笔记本
+# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>为 Azure Cosmos DB 帐户启用笔记本（预览）
 
 > [!IMPORTANT]
 > 以下 Azure 区域中当前提供了 Azure Cosmos DB 的内置笔记本：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧和美国西部2。 若要使用笔记本，请使用[笔记本创建新帐户](#enable-notebooks-in-a-new-cosmos-account)，或在其中一个区域中的[现有帐户上启用笔记本](#enable-notebooks-in-an-existing-cosmos-account)。

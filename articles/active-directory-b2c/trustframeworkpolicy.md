@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063358"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840173"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,15 +38,15 @@ ms.locfileid: "71063358"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 特性 | 必填 | 描述 |
+| Attribute | 需要 | Description |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory B2C （Azure AD B2C）租户的唯一对象标识符。 |
 | TenantId | 是 | 此策略所属的租户的唯一标识符。 |
 | PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
-| DeploymentMode | 否 | 可能的值：`Production`、`Debugging` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](active-directory-b2c-troubleshoot-custom.md)。 |
-| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](active-directory-b2c-troubleshoot-custom.md)。 |
+| DeploymentMode | 否 | 可能的值：`Production`、`Debugging` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
+| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
 
 
 以下示例演示如何指定 **TrustFrameworkPolicy** 元素：
@@ -72,7 +72,7 @@ ms.locfileid: "71063358"
 
 信赖方应用程序调用 RP 策略文件来执行特定的任务。 例如，启动登录流。 Azure AD B2C 中的标识体验框架依次从“基本”文件、“扩展”文件和“RP”策略文件中添加所有元素，以组合当前生效的策略。 “RP”文件中具有相同类型和名称的元素将替代“扩展”中的这些元素，“扩展”替代“基本”。 下图显示了策略文件与信赖方应用程序之间的关系。
 
-![显示信任框架策略继承模型的示意图](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![显示信任框架策略继承模型的关系图](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
 继承模型如下所示：
 
@@ -80,7 +80,7 @@ ms.locfileid: "71063358"
 - 任何级别的子策略可以继承自父策略，并通过添加新元素来扩展父策略。
 - 级别数没有限制。
 
-有关详细信息，请参阅[自定义策略入门](active-directory-b2c-get-started-custom.md)。
+有关详细信息，请参阅[自定义策略入门](custom-policy-get-started.md)。
 
 ## <a name="base-policy"></a>基本策略
 
@@ -88,7 +88,7 @@ ms.locfileid: "71063358"
 
 **BasePolicy** 元素包含以下元素：
 
-| 元素 | 匹配项 | 描述 |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
 | PolicyId | 1:1 | 父策略的标识符。 |
@@ -116,7 +116,7 @@ ms.locfileid: "71063358"
 
 ## <a name="policy-execution"></a>策略执行
 
-信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都会收到包含声明的相同令牌，用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
+信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都接收与声明相同的令牌，并且用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
 
 在 RP 策略文件中，指定指向 [UserJourney](userjourneys.md) 的 **DefaultUserJourney** 元素。 用户旅程通常在基本或扩展策略中定义。
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 用户旅程定义用户所要经历的业务逻辑。 每个用户旅程是按顺序执行一系列操作，以进行身份验证和收集信息的一组业务流程步骤。
 
-[初学者包](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。
+[初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可以为其他方案添加更多用户旅程，例如更改电子邮件地址或链接和取消链接社交帐户。
 
 业务流程步骤可以调用[技术配置文件](technicalprofiles.md)。 技术配置文件提供带有内置机制的框架来与不同类型的参与方通信。 例如，技术配置文件可执行以下操作：
 
@@ -148,7 +148,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 - 在 Azure AD B2C 标识存储中读取和写入数据。
 - 调用自定义 Restful API 服务。
 
-![显示策略执行流的示意图](./media/trustframeworkpolicy/custom-policy-execution.png)
+![显示策略执行流程的图示](./media/trustframeworkpolicy/custom-policy-execution.png)
 
  **TrustFrameworkPolicy** 元素包含以下元素：
 

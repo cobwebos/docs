@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961983"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840411"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 门户在 Azure AD B2C 中创建和删除使用者用户
 
@@ -37,7 +37,7 @@ ms.locfileid: "73961983"
 
 ## <a name="create-a-consumer-user"></a>创建使用者用户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户”。
@@ -61,4 +61,4 @@ ms.locfileid: "73961983"
 
 ## <a name="next-steps"></a>后续步骤
 
-对于自动用户管理方案，例如，将用户从其他标识提供者迁移到 Azure AD B2C 目录，请参阅[Azure AD B2C：用户迁移](active-directory-b2c-user-migration.md)。
+对于自动用户管理方案，例如，将用户从其他标识提供者迁移到 Azure AD B2C 目录，请参阅[Azure AD B2C：用户迁移](user-migration.md)。

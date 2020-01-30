@@ -2,49 +2,49 @@
 title: 从 ACR 任务进行跨注册表身份验证
 description: 使用 Azure 资源的托管标识配置 Azure 容器注册表任务（ACR 任务）以访问其他专用 Azure 容器注册表
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456196"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842481"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的跨注册表身份验证 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识的 ACR 任务中的跨注册表身份验证 
 
-在 [ACR 任务](container-registry-tasks-overview.md)中，可以[启用 Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 该任务可以使用该标识来访问其他 Azure 资源，而无需提供或管理凭据。 
+在[ACR 任务](container-registry-tasks-overview.md)中，可以[为 Azure 资源启用托管标识](container-registry-tasks-authentication-managed-identity.md)。 该任务可以使用该标识来访问其他 Azure 资源，而无需提供或管理凭据。 
 
-本文介绍如何在任务中启用托管标识。该任务不是从运行它的注册表提取映像，而是从其他注册表提取。
+本文介绍如何在任务中启用托管标识，从注册表中提取映像，该映像与用于运行任务的注册表不同。
 
-为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+若要创建 Azure 资源，本文要求运行 Azure CLI 版本2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>方案概述
 
-该示例任务从另一 Azure 容器注册表提取基础映像，以生成和推送应用程序映像。 若要提取基础映像，请使用托管标识配置任务，并为其分配适当的权限。 
+此示例任务从其他 Azure 容器注册表中提取基本映像，以生成和推送应用程序映像。 若要拉取基本映像，请使用托管标识配置任务，并为其分配适当的权限。 
 
-此示例演示了使用用户分配的或系统分配的托管标识的步骤。 选择哪种标识取决于组织的需求。
+此示例演示使用用户分配的托管标识或系统分配的托管标识的步骤。 你选择的标识取决于你的组织的需求。
 
-在实际方案中，组织可能会维护一组基础映像，供所有开发团队用来生成应用程序。 这些基础映像存储在企业注册表中，每个开发团队对该注册表仅拥有提取权限。 
+在实际情况下，组织可能会维护一组由所有开发团队用来生成应用程序的基本映像。 这些基本映像存储在企业注册表中，每个开发团队仅具有拉取权限。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在本文中，需要准备好两个 Azure 容器注册表：
+对于本文，需要两个 Azure 容器注册表：
 
-* 第一个注册表用于创建和执行 ACR 任务。 在本文中，此注册表名为 *myregistry*。 
-* 第二个注册表托管由任务用来生成映像的基础映像。 在本文中，第二个注册表名为 *mybaseregistry*。 
+* 使用第一个注册表来创建和执行 ACR 任务。 在本文中，此注册表名为*myregistry*。 
+* 第二个注册表承载用于生成映像的任务所使用的基本映像。 在本文中，第二个注册表名为*mybaseregistry*。 
 
-在后续步骤中，请将其替换为自己的注册表名称。
+在后面的步骤中将替换为你自己的注册表名称。
 
-如果还没有所需的 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
+如果还没有所需的 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 你还不需要将映像推送到注册表。
 
-## <a name="prepare-base-registry"></a>准备基础注册表
+## <a name="prepare-base-registry"></a>准备基注册表
 
-首先创建一个工作目录，然后创建包含以下内容的名为 Dockerfile 的文件。 此简单示例基于 Docker Hub 中的公共映像生成一个 Node.js 基础映像。
+首先，创建一个工作目录，然后使用以下内容创建名为 Dockerfile 的文件。 此简单示例基于 Docker 中心内的公共映像生成 node.js 基映像。
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
-在当前目录中运行 [az acr build][az-acr-build] 命令，生成基础映像并将其推送到基础注册表。 在实践中，组织中的另一个团队或流程可能会维护基础注册表。
+在当前目录中，运行[az acr build][az-acr-build]命令，生成基本映像并将其推送到基本注册表。 实际上，组织中的另一个团队或进程可能会维护基本注册表。
     
 ```azurecli
 az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
@@ -52,27 +52,27 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>在 YAML 文件中定义任务步骤
 
-此示例[多步骤任务](container-registry-tasks-multi-step.md)的步骤在一个 [YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 在本地工作目录中创建名为 `helloworldtask.yaml` 的文件，并粘贴以下内容。 使用基础注册表的服务器名称更新生成步骤中的 `REGISTRY_NAME` 值。
+在[YAML 文件](container-registry-tasks-reference-yaml.md)中定义此示例[多步骤任务](container-registry-tasks-multi-step.md)的步骤。 在本地工作目录中创建一个名为 `helloworldtask.yaml` 的文件并粘贴以下内容。 将生成步骤中 `REGISTRY_NAME` 的值更新为基本注册表的服务器名称。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}}  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
-生成步骤使用 `Dockerfile-app`Azure-Samples/acr-build-helloworld-node[ 存储库中的 ](https://github.com/Azure-Samples/acr-build-helloworld-node.git) 文件生成映像。 `--build-arg` 引用基础注册表以提取基础映像。 成功生成后，该映像将推送到用于运行该任务的注册表。
+生成步骤使用[Azure-Samples/helloworld](https://github.com/Azure-Samples/acr-build-helloworld-node.git)存储库中的 `Dockerfile-app` 文件来构建映像。 `--build-arg` 引用用于请求基本映像的基本注册表。 成功生成后，会将映像推送到用于运行任务的注册表。
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>选项1：创建具有用户分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用用户分配的标识。 如果要改为启用系统分配的标识，请参阅[选项2：使用系统分配的标识创建任务](#option-2-create-task-with-system-assigned-identity)。 
+本部分中的步骤创建任务并启用用户分配的标识。 如果要改为启用系统分配的标识，请参阅[选项2：使用系统分配的标识创建任务](#option-2-create-task-with-system-assigned-identity)。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>创建任务
 
-执行以下 *az acr task create* 命令创建 [helloworldtask][az-acr-task-create] 任务。 该任务无需源代码上下文即可运行，该命令将引用工作目录中的 `helloworldtask.yaml` 文件。 `--assign-identity` 参数传递用户分配的标识的资源 ID。 
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 该任务在没有源代码上下文的情况下运行，并且该命令将引用工作目录中的文件 `helloworldtask.yaml`。 `--assign-identity` 参数传递用户分配的标识的资源 ID。 
 
 ```azurecli
 az acr task create \
@@ -87,11 +87,11 @@ az acr task create \
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>选项2：创建包含系统分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项1：使用用户分配的标识创建任务](#option-1-create-task-with-user-assigned-identity)。 
+本部分中的步骤将创建一个任务，并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项1：使用用户分配的标识创建任务](#option-1-create-task-with-user-assigned-identity)。 
 
 ### <a name="create-task"></a>创建任务
 
-执行以下 *az acr task create* 命令创建 [helloworldtask][az-acr-task-create] 任务。 该任务无需源代码上下文即可运行，该命令将引用工作目录中的 `helloworldtask.yaml` 文件。 不带任何值的 `--assign-identity` 参数将在任务中启用系统分配的标识。 
+通过执行以下[az acr task create][az-acr-task-create]命令创建任务*helloworldtask* 。 该任务在没有源代码上下文的情况下运行，并且该命令将引用工作目录中的文件 `helloworldtask.yaml`。 不带值的 `--assign-identity` 参数将对任务启用系统分配的标识。 
 
 ```azurecli
 az acr task create \
@@ -103,25 +103,28 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>为标识授予对基础注册表的提取权限
+## <a name="give-identity-pull-permissions-to-the-base-registry"></a>向基本注册表授予标识请求权限
 
-在本部分，为托管标识授予从基础注册表 *mybaseregistry* 提取映像的权限。
+在本部分中，请向托管标识授予从基本注册表*mybaseregistry*请求的权限。
 
-使用 [az acr show][az-acr-show] 命令获取基础注册表的资源 ID，并将其存储在变量中：
+使用[az acr show][az-acr-show]命令获取基注册表的资源 ID 并将其存储在变量中：
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-使用 [az role assignment create][az-role-assignment-create] 命令为标识分配对基础注册表的 `acrpull` 角色。 此角色仅有权从该注册表提取映像。
+使用[az role assign create][az-role-assignment-create]命令将 `acrpull` 角色的标识分配给基本注册表。 此角色仅具有从注册表提取映像的权限。
 
 ```azurecli
-az role assignment create --assignee $principalID --scope $baseregID --role acrpull
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
 ```
 
 ## <a name="add-target-registry-credentials-to-task"></a>将目标注册表凭据添加到任务
 
-现在，请使用 [az acr task credential add][az-acr-task-credential-add] 命令将标识的凭据添加到任务，使该标识可在基础注册表中进行身份验证。 根据在任务中启用的托管标识类型运行相应的命令。 如果启用了用户分配的标识，请传递包含标识客户端 ID 的 `--use-identity`。 如果启用了系统分配的标识，请传递 `--use-identity [system]`。
+现在，使用[az acr task credential add][az-acr-task-credential-add]命令使任务能够使用标识的凭据通过基本注册表进行身份验证。 运行与任务中启用的托管标识类型对应的命令。 如果启用了用户分配的标识，请将 `--use-identity` 传递到标识的客户端 ID。 如果已启用系统分配的标识，请通过 `--use-identity [system]`。
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -141,7 +144,7 @@ az acr task credential add \
 
 ## <a name="manually-run-the-task"></a>手动运行任务
 
-若要验证启用了托管标识的任务是否成功运行，请使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。 
+若要验证启用了托管标识的任务是否成功运行，请使用[az acr task run][az-acr-task-run]命令手动触发该任务。 
 
 ```azurecli
 az acr task run \
@@ -149,7 +152,7 @@ az acr task run \
   --registry myregistry
 ```
 
-如果任务成功运行，则输出将类似于：
+如果任务成功运行，则输出类似于：
 
 ```
 Queued a run with ID: cf10
@@ -198,7 +201,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-运行 [az acr repository show-tags][az-acr-repository-show-tags] 命令，验证映像是否已生成并成功推送到 *myregistry*：
+运行[az acr repository show-tags][az-acr-repository-show-tags]命令，以验证生成并已成功推送到*myregistry*的映像：
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -213,7 +216,7 @@ cf10
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[在 ACR 任务中启用托管标识](container-registry-tasks-authentication-managed-identity.md)。
-* 参阅 [ACR 任务 YAML 参考](container-registry-tasks-reference-yaml.md)
+* 请参阅[ACR 任务 YAML 参考](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

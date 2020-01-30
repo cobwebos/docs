@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992452"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841741"
 ---
 # <a name="output-batching"></a>输出批处理
 
@@ -77,16 +77,16 @@ ms.locfileid: "72992452"
 
 以下部署时间设置控制创建事件订阅时允许的最大值。
 
-| 属性名称 | 描述 |
+| 属性名称 | Description |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes` 旋钮允许的最大值。 默认 `1033`。
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | `MaxEventsPerBatch` 旋钮允许的最大值。 默认 `50`。
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | `PreferredBatchSizeInKilobytes` 旋钮允许的最大值。 默认 `1033`。
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch` 旋钮允许的最大值。 默认 `50`。
 
 ## <a name="configuring-runtime-default-values"></a>配置运行时默认值
 
 以下部署时间设置控制每个旋钮在事件订阅中未指定时的运行时默认值。 重申一遍，必须在事件订阅上设置至少一个旋钮才能打开批处理行为。
 
-| 属性名称 | 描述 |
+| 属性名称 | Description |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | 仅指定 `MaxEventsPerBatch` 时的最大传递请求大小。 默认 `1_058_576`。
-| `broker:defaultMaxEventsPerBatch` | 仅指定 `MaxBatchSizeInBytes` 时要添加到批中的事件的最大数量。 默认 `10`。
+| `broker__defaultMaxBatchSizeInBytes` | 仅指定 `MaxEventsPerBatch` 时的最大传递请求大小。 默认 `1_058_576`。
+| `broker__defaultMaxEventsPerBatch` | 仅指定 `MaxBatchSizeInBytes` 时要添加到批中的事件的最大数量。 默认 `10`。

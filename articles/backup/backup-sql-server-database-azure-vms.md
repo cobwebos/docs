@@ -4,12 +4,12 @@ description: 本文介绍如何在 azure 虚拟机上备份 SQL Server 数据库
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156465"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773117"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -25,6 +25,10 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
 
+>[!NOTE]
+>Azure vm**中的 SQL Server 软删除和 AZURE vm 工作负荷中 SAP HANA 的软删除**现已在预览版中提供。<br>
+>若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
+
 ## <a name="prerequisites"></a>必备组件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
@@ -39,26 +43,26 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
 
-对于所有操作，SQL Server VM 需要连接到 Azure 公共 IP 地址。 VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）在未连接到 Azure 公共 IP 地址的情况下失败。
+对于所有操作，SQL Server VM 需要连接到 Azure 公共 IP 地址。 如果未连接到 Azure 公共 IP 地址，VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）将失败。
 
 使用以下选项之一建立连接：
 
 #### <a name="allow-the-azure-datacenter-ip-ranges"></a>允许 Azure 数据中心 IP 范围
 
-此选项允许下载的文件中的[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组（NSG），请使用 Set-azurenetworksecurityrule cmdlet。 如果安全收件人列表仅包含特定于区域的 Ip，则还需要更新安全收件人列表以启用身份验证 Azure Active Directory （Azure AD）服务标记。
+此选项允许已下载文件中的 [IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组 (NSG)，请使用 Set-AzureNetworkSecurityRule cmdlet。 如果安全收件人列表仅包含特定于区域的 IP，则还需更新 Azure Active Directory (Azure AD) 服务标记的安全收件人列表以启用身份验证。
 
 #### <a name="allow-access-using-nsg-tags"></a>允许使用 NSG 标记进行访问
 
-如果使用 NSG 来限制连接，则应使用 AzureBackup service 标记允许对 Azure 备份进行出站访问。 此外，还应允许通过使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)进行身份验证和数据传输。 这可以通过 Azure 门户或通过 PowerShell 来完成。
+如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 此外，还应允许使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，在连接后进行身份验证和数据传输。 这可以通过 Azure 门户或 PowerShell 来完成。
 
-使用门户创建规则：
+若要使用门户创建规则，请执行以下操作：
 
-  1. 在 "**所有服务**" 中，请参阅 "**网络安全组**" 并选择 "网络安全组"。
-  2. 选择 "**设置**" 下的 "**出站安全规则**"。
-  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如 "[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)" 中所述。 确保选项**Destination**设置为**服务标记**，**目标服务标记**设置为**AzureBackup**。
-  4. 单击 "**添加**" 以保存新创建的出站安全规则。
+  1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
+  2. 在“设置”下，选择“出站安全规则”。
+  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
+  4. 单击“添加”，保存新创建的出站安全规则。
 
-使用 PowerShell 创建规则：
+若要使用 PowerShell 创建规则，请执行以下操作：
 
  1. 添加 Azure 帐户凭据并更新国家/地区云<br/>
       `Add-AzureRmAccount`<br/>
@@ -72,27 +76,27 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
  4. 为 Azure 备份服务标记添加允许出站规则<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
 
- 5. 为存储服务标记添加允许出站规则<br/>
+ 5. 为 Azure 存储服务标记添加允许出站规则<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
 
- 6. Add allow AzureActiveDirectory service 标记的出站规则<br/>
+ 6. 为 AzureActiveDirectory 服务标记添加允许出站规则<br/>
     `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
 
  7. 保存 NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**允许使用 Azure 防火墙标记进行访问**。 如果使用的是 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
+**允许使用 Azure 防火墙标记进行访问**。 如果使用 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
 
-**部署 HTTP 代理服务器来路由流量**。 在 Azure VM 上备份 SQL Server 数据库时，VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 Backup extension 还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 上备份 SQL Server 数据库时，VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
-连接选项包括以下优点和缺点：
+连接性选项包括以下优点和缺点：
 
 **选项** | **优点** | **缺点**
 --- | --- | ---
-允许 IP 范围 | 无额外成本 | 管理复杂，因为 IP 地址范围随时间而变化 <br/><br/> 提供对整个 Azure 的访问权限，而不只是 Azure 存储空间
-使用 NSG 服务标记 | 随着范围更改的自动合并，更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可用于 Nsg <br/><br/> 提供对整个服务的访问权限
-使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 Fqdn，因此更易于管理 | 仅可用于 Azure 防火墙
-使用 HTTP 代理 | 允许通过存储 Url 在代理中进行精细控制 <br/><br/> 对 Vm 进行单点 internet 访问 <br/><br/> 不受 Azure IP 地址更改的限制 | 使用代理软件运行 VM 的额外成本
+允许 IP 范围 | 无额外成本 | 管理起来很复杂，因为 IP 地址范围随时会变化 <br/><br/> 允许访问整个 Azure，而不只是 Azure 存储
+使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
+使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
+使用 HTTP 代理 | 允许在代理中对存储 URL 进行精细控制 <br/><br/> 对 VM 进行单点 Internet 访问 <br/><br/> 不受 Azure IP 地址变化的影响 | 通过代理软件运行 VM 带来的额外成本
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 备份的数据库命名准则
 
@@ -247,7 +251,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
     ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在 "**备份策略**" 菜单上，选择是否启用**SQL 备份压缩**。 默认情况下该选项处于禁用状态。 如果启用，SQL Server 会将压缩的备份流发送到 VDI。  请注意，Azure 备份会根据此控件的值，用 COMPRESSION/NO_COMPRESSION 子句覆盖实例级别的默认值。
+13. 在 "**备份策略**" 菜单上，选择是否启用**SQL 备份压缩**。 默认情况下，此选项处于禁用状态。 如果启用，SQL Server 会将压缩的备份流发送到 VDI。  请注意，Azure 备份会根据此控件的值，用 COMPRESSION/NO_COMPRESSION 子句覆盖实例级别的默认值。
 
 14. 完成备份策略的编辑后，选择“确定”。
 

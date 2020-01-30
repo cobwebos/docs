@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949868"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836042"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
-Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-b2c-overview-custom.md)中的声明解析程序提供有关授权请求的上下文信息，如策略名称、请求相关 ID、用户界面语言等。
+Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-overview.md)中的声明解析程序提供有关授权请求的上下文信息，如策略名称、请求相关 ID、用户界面语言等。
 
 若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
 
@@ -46,16 +46,16 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 ### <a name="culture"></a>区域性
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
-| {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
+| {Culture:LCID}   | 语言代码的 LCID。 | 2052 |
 | {Culture:RegionName} | 区域的两字母 ISO 代码。 | 美国 |
-| {Culture:RFC5646} | RFC5646 语言代码。 | en-US |
+| {Culture:RFC5646} | RFC5646 语言代码。 | zh-CN |
 
 ### <a name="policy"></a>策略
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信赖方策略名称。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | N/A |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
@@ -72,13 +72,13 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | N/A |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
-| {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
+| {OIDC:Prompt} | `prompt` 查询字符串参数。 | login |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | N/A |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
 
 ### <a name="context"></a>上下文
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 标识体验框架版本（内部版本号）。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
@@ -100,7 +100,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 ### <a name="oauth2"></a>OAuth2
 
-| 声明 | 描述 | 示例 |
+| 声明 | Description | 示例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 访问令牌。 | N/A |
 
@@ -137,7 +137,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便可以动态呈现页面内容。 例如，可以基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](active-directory-b2c-ui-customization-custom-dynamic.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便可以动态呈现页面内容。 例如，可以基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization-dynamic.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
 以下示例将名为 campaignId，且值为 `hawaii`，语言代码为 `en-US`，以及表示客户端 ID 的 app 的参数传入查询字符串：
 
@@ -159,7 +159,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 ### <a name="application-insights-technical-profile"></a>Application Insights 技术配置文件
 
-使用 Azure Application Insights 和声明解析程序，可以了解用户行为。 在 Application Insights 技术配置文件中，将向 Azure Application Insights 发送保留的输入声明。 有关详细信息，请参阅[使用 Application Insights 在 Azure AD B2C 过程中跟踪用户行为](active-directory-b2c-custom-guide-eventlogger-appins.md)。 下面的示例将向 Azure Application Insights 发送策略 ID、相关 ID、语言 ID 和客户端 ID。
+使用 Azure Application Insights 和声明解析程序，可以了解用户行为。 在 Application Insights 技术配置文件中，将向 Azure Application Insights 发送保留的输入声明。 有关详细信息，请参阅[使用 Application Insights 在 Azure AD B2C 过程中跟踪用户行为](analytics-with-application-insights.md)。 下面的示例将向 Azure Application Insights 发送策略 ID、相关 ID、语言 ID 和客户端 ID。
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

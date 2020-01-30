@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885511"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772629"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -56,7 +56,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
@@ -115,7 +115,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @
 DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查自上次查询以来事件有效负载是否已更改。
 
 ### <a name="event-properties"></a>事件属性
-|properties  |  描述 |
+|属性  |  Description |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会挂起，但不会影响内存或打开的文件。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除点虚拟机（临时磁盘将丢失）。|
@@ -130,7 +130,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 |EventType  | 最小值通知 |
 | - | - |
 | 冻结| 15 分钟 |
-| 重新启动 | 15 分钟 |
+| 重启 | 15 分钟 |
 | 重新部署 | 10 分钟 |
 | 优先于 | 30 秒 |
 

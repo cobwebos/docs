@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75367648"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836336"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -46,7 +46,7 @@ ms.locfileid: "75367648"
 
 * 将标识提供程序的应用程序中的重定向 URL 更改为引用*b2clogin.com*。
 * 更新 Azure AD B2C 应用程序，以便在其用户流和令牌终结点引用中使用*b2clogin.com* 。
-* 更新在 CORS 设置中为[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)定义的任何**允许的来源**。
+* 更新在 CORS 设置中为[用户界面自定义](custom-policy-ui-customization-dynamic.md)定义的任何**允许的来源**。
 
 ## <a name="change-identity-provider-redirect-urls"></a>更改标识提供程序重定向 Url
 

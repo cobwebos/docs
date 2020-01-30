@@ -12,14 +12,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/15/2019
+ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029822"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842531"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -143,6 +143,67 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。
 
 ![向应用程序分配 RBAC 角色](./media/batch-aad-auth/app-rbac-role.png)
+
+### <a name="assign-a-custom-role"></a>分配自定义角色
+
+自定义角色向用户授予用于提交作业、任务等的精细权限。 这可以防止用户执行影响成本的操作，例如创建池或修改节点。
+
+你可以使用自定义角色向 Azure AD 的用户、组或服务主体授予以下 RBAC 操作的权限：
+
+- Microsoft.Batch/batchAccounts/pools/write
+- Microsoft.Batch/batchAccounts/pools/delete
+- Microsoft.Batch/batchAccounts/pools/read
+- BatchAccounts/jobSchedules/write
+- BatchAccounts/jobSchedules/delete
+- BatchAccounts/jobSchedules/read
+- BatchAccounts/作业/写入
+- BatchAccounts/作业/删除
+- BatchAccounts/作业/读取
+- Microsoft.Batch/batchAccounts/certificates/write
+- Microsoft.Batch/batchAccounts/certificates/delete
+- Microsoft.Batch/batchAccounts/certificates/read
+- BatchAccounts/read （适用于任何读取操作）
+- BatchAccounts/listKeys/action （适用于任何操作）
+
+自定义角色适用于 Azure AD 身份验证的用户，而不是 Batch 帐户凭据（共享密钥）。 请注意，Batch 帐户凭据将为批处理帐户授予完全权限。 另请注意，使用 autopool 的作业需要池级别权限。
+
+下面是自定义角色定义的示例：
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+有关创建自定义角色的更多常规信息，请参阅[Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444510"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773849"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -129,6 +129,12 @@ ms.locfileid: "75444510"
 * 批大小：计算数据的粗略行大小，并确保行大小 * 批大小小于2000000。 如果是，请增加批大小以获得更好的吞吐量
 * 吞吐量：在此处设置较高的吞吐量设置，以允许文档更快写入 CosmosDB。 请记住，基于高吞吐量设置的 RU 成本较高。
 *   写入吞吐量预算：使用小于每分钟的总 ru 数的值。 如果具有大量 Spark 分区的数据流，则设置预算吞吐量会允许对这些分区进行更多的均衡。
+
+## <a name="join-performance"></a>联接性能
+
+管理数据流中的联接性能是一项很常见的操作，您将在数据转换的整个生命周期中执行此操作。 在 ADF 中，数据流不要求在联接之前对数据进行排序，因为这些操作在 Spark 中作为哈希联接执行。 但是，可以通过 "广播" 联接优化提高性能。 这将避免洗牌，方法是将联接关系的任意一侧的内容向下推送到 Spark 节点。 这非常适合用于引用查找的小型表。 可能不适用于节点内存的较大表不适合进行广播优化。
+
+另一种联接优化是以这样一种方式构建联接，从而避免了 Spark 实现交叉联接的倾向。 例如，当你在联接条件中包含文本值时，Spark 可能会发现，作为要求首先执行完整笛卡尔积，然后筛选掉联接值。 但是，如果您确保联接条件两端都有列值，则可以避免这种 Spark 引发的笛卡尔积，并提高联接和数据流的性能。
 
 ## <a name="next-steps"></a>后续步骤
 

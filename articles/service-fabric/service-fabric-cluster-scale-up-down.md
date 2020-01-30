@@ -3,12 +3,12 @@ title: 放大或缩小 Service Fabric 群集
 description: 通过为每个节点类型/虚拟机规模集设置自动缩放规则，缩小或缩小 Service Fabric 群集以满足需求。 在 Service Fabric 群集中添加或删除节点
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451939"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774466"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -101,7 +101,7 @@ Service fabric 系统服务在群集中的主节点类型上运行。 缩小主�
 为了使群集节点均匀地分布在升级域和容错域中，从而使它们的利用均匀，应该首先删除最近创建的节点。 换句话说，应该按照创建节点的相反顺序删除节点。 最近创建的节点是具有最大 `virtual machine scale set InstanceId` 属性值的节点。 下面的代码示例返回最近创建的节点。
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

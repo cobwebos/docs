@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933535"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774998"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我们正在将 Azure Marketplace 中的虚拟机（VM）映像迁移到托管磁盘存储
 
@@ -56,6 +56,10 @@ VM 映像的用户将不会遇到中断。
 ### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>能否在移动过程中将更新发布到我的 VM 映像？
 
 移动期间无法对 VM 映像进行更新。
+
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>在将 VM 映像迁移到托管磁盘后，发布过程是否会更改？
+
+不，发布过程将保持不变。 
 
 ## <a name="next-steps"></a>后续步骤
 

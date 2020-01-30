@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407508"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765813"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 应用程序的 Application Insights
 
@@ -416,7 +416,7 @@ public class HomeController : Controller
 
 可以。 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
 
-* 只有 Windows 支持性能计数器。
+* SDK 收集 Linux 上的[事件计数器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因为只有 Windows 支持[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。 大多数指标是相同的。
 * 即使默认情况下启用 `ServerTelemetryChannel`，如果应用程序在 Linux 或 MacOS 中运行，则通道不会自动创建本地存储文件夹，以在出现网络问题时暂时保留遥测数据。 由于存在此限制，因此当存在暂时性网络或服务器问题时，遥测将丢失。 若要解决此问题，请配置通道的本地文件夹：
 
 ```csharp

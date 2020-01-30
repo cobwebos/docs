@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450059"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767736"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供了功能强大的类似于 SQL 的语言，用于检索信息有关[设备孪生](iot-hub-devguide-device-twins.md)，[模块孪生](iot-hub-devguide-module-twins.md)，[作业](iot-hub-devguide-jobs.md)，和[消息路由](iot-hub-devguide-messages-d2c.md). 本文内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
 
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。 有关用于消息路由的查询语言的详细信息，请参阅[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +25,7 @@ IoT 中心提供了功能强大的类似于 SQL 的语言，用于检索信息�
 
 ## <a name="device-and-module-twin-queries"></a>设备和模块孪生查询
 
-[设备孪生](iot-hub-devguide-device-twins.md)并[模块孪生](iot-hub-devguide-module-twins.md)可以包含任意 JSON 对象作为标记和属性。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)可以包含任意 JSON 对象作为标记和属性。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
 
 例如，假定 IoT 中心设备孪生具有以下结构（模块孪生将与之类似，只是具有附加的 moduleId）：
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模块孪生查询
 
-在模块孪生上查询是类似于针对设备孪生查询，但使用其他集合/命名空间;而不是从**设备**，从查询**devices.modules**:
+在 module 孪生上查询类似于在设备孪生上查询，但使用不同的集合/命名空间;从**设备**查询，而不是从**设备**查询：
 
 ```sql
 SELECT * FROM devices.modules
@@ -181,7 +181,7 @@ SELECT * FROM devices.modules
 
 ### <a name="c-example"></a>C# 示例
 
-查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开  。
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开。
 
 下面是一个简单的查询示例：
 
@@ -197,13 +197,13 @@ while (query.HasMoreResults)
 }
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开  。
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开。
 
 下面是一个简单的查询示例：
 
@@ -226,14 +226,14 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 nextAsTwin 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 nextAsTwin 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果通过 ID 查询单个设备孪生，请使用检索设备双向 API。 此 API 始终包含最新值，并具有更高的节流限制。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[get 双子 REST API](https://docs.microsoft.com/rest/api/iothub/service/gettwin)。 此 API 始终返回最新值，并具有更高的限制。 可以直接发出 REST API 或在[Azure IoT 中心服务 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)之一中使用等效的功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
@@ -315,7 +315,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询基础知识
 
-每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合 (**设备**， **devices.modules**，或**devices.jobs**)。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
+每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices**、 **devices**或**devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
 
 ```sql
 SELECT <select_list>
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-**从 < from_specification >** 子句可以假定只有三个值：**从设备**查询设备孪生**从 devices.modules**查询模块孪生，或**从 devices.jobs**查询作业每设备详细信息。
+**From < from_specification >** 子句只能假设三个值：**从**设备到查询设备孪生、**从**设备到查询模块孪生，或**从 devices.jobs**到查询作业的每设备详细信息。
 
 ## <a name="where-clause"></a>WHERE 子句
 
@@ -402,7 +402,7 @@ GROUP BY <group_by_element>
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件  是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”   。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”    。
+条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”。
 
 表达式的语法为：
 
@@ -447,23 +447,23 @@ GROUP BY <group_by_element>
 
 支持以下运算符：
 
-| 系列 | 运算符 |
+| 家庭 | 运算符 |
 | --- | --- |
 | 算术 |+, -, *, /, % |
 | 逻辑 |AND、OR、NOT |
 | 比较 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>函数
+### <a name="functions"></a>Functions
 
 查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | 描述 |
+| 函数 | Description |
 | -------- | ----------- |
 | IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
 在路由情况下，支持以下数学函数：
 
-| 函数 | 描述 |
+| 函数 | Description |
 | -------- | ----------- |
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
@@ -476,7 +476,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | 描述 |
+| 函数 | Description |
 | -------- | ----------- |
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下字符串函数：
 
-| 函数 | 描述 |
+| 函数 | Description |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
 | LENGTH(x) | 返回指定字符串表达式的字符数。|

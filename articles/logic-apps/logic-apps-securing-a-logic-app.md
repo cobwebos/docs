@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981176"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843542"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -620,9 +620,9 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 ### <a name="basic-authentication"></a>基本身份验证
 
-如果 "[基本](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)" 选项可用，请指定以下属性值：
+如果 "[基本](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)" 选项可用，请指定以下属性值：
 
-| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -653,7 +653,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
 | **Pfx** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以通过执行以下步骤来使用 PowerShell： <p>1. 将证书内容保存到变量： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 通过使用 `ToBase64String()` 函数来转换证书内容，并将该内容保存到文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -682,7 +682,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 * [在 Azure API 管理中使用客户端证书身份验证保护 Api](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [在 Azure API 管理中使用客户端证书身份验证保护后端服务](../api-management/api-management-howto-mutual-certificates.md)
-* [使用客户端证书保护 RESTfuL 服务](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [使用客户端证书保护 RESTfuL 服务](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [用于应用程序身份验证的证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -692,10 +692,10 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
-| 租户 | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
+| **组织** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
 | **凭据类型** | `credentialType` | 是 | 证书 <br>或 <br>机密 | 客户端用于请求授权的凭据类型。 此属性和值不会出现在逻辑应用的基础定义中，而是确定为所选凭据类型显示的属性。 |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中，指定以下属性值：
 
-| 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | Raw | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-标头值*> | 要用于身份验证的授权标头值 |
@@ -781,7 +781,7 @@ Authorization: OAuth realm="Photos",
 
 3. 在要使用托管标识的触发器或操作中，指定以下属性值：
 
-   | 属性（设计器） | Property (JSON) | 需要 | 值 | Description |
+   | 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管的标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **受众** | `audience` | 是 | <*目标资源 ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使得用于身份验证的访问令牌对所有存储帐户都有效。 但是，你还可以为特定的存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：此属性可能会在某些触发器或操作中隐藏。 若要使此属性可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**受众**"。 <p><p>**重要提示**：请确保此目标资源 ID 与 Azure AD 预期的值完全匹配，其中包括所有必需的尾随斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部斜杠。 不过，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 Id，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |

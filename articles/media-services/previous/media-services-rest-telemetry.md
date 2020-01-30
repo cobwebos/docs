@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761771"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774862"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
 
@@ -34,7 +34,7 @@ ms.locfileid: "60761771"
 - 获取通知终结点
 - 创建用于监视的通知终结点。 
 
-    若要创建通知终结点，请将 EndPointType 设置为 AzureTable (2) 并将 endPontAddress 设置为存储表 (例如，https:\//telemetryvalidationstore.table.core.windows.net/)。
+    若要创建通知终结点，请将 EndPointType 设置为 AzureTable （2），并将将 endpontaddress 设置为存储表（例如，https：\//telemetryvalidationstore.table.core.windows.net/）。
   
 - 获取监视配置
 
@@ -49,7 +49,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -77,7 +77,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -110,7 +110,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -126,7 +126,7 @@ ms.locfileid: "60761771"
     }
 
 > [!NOTE]
-> 不要忘了将"https:\//telemetryvalidationstore.table.core.windows.net"到您的存储帐户的值。
+> 请不要忘记将 "https：\//telemetryvalidationstore.table.core.windows.net" 值更改为存储帐户。
 
 ### <a name="response"></a>响应
 
@@ -152,7 +152,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -182,7 +182,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -225,7 +225,7 @@ ms.locfileid: "60761771"
 ### <a name="request"></a>请求
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose

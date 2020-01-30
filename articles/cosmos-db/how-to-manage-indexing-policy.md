@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872054"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767979"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -346,7 +346,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门户中直接编辑这些文档。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>使用 Python SDK
+## <a name="use-the-python-sdk-v3"></a>使用 Python SDK V3
 
-使用 [Python SDK](https://pypi.org/project/azure-cosmos/) 时（请参阅有关其用法的[此快速入门](create-sql-api-python.md)），容器配置是作为字典管理的。 从此字典中，可以访问索引策略及其所有属性。
+使用[PYTHON SDK V3](https://pypi.org/project/azure-cosmos/)时（有关其用法，请参阅[此快速入门](create-sql-api-python.md)），容器配置将作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
 
 检索容器的详细信息
 
@@ -671,9 +671,75 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
+## <a name="use-the-python-sdk-v4"></a>使用 Python SDK V4
+
+使用[PYTHON SDK V4](https://pypi.org/project/azure-cosmos/)时，容器配置作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
+
+检索容器的详细信息
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+将索引模式设置为一致
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+使用包含的路径和空间索引定义索引策略
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+使用排除的路径定义索引策略
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+添加复合索引
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+更新包含更改的容器
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-阅读以下文章中有关索引的更多信息：
+阅读以下文章中有关索引的详细信息：
 
 - [索引概述](index-overview.md)
 - [索引策略](index-policy.md)

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948805"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838949"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
-Azure Active Directory B2C （Azure AD B2C）中的[用户流](active-directory-b2c-reference-policies.md)为应用程序的用户提供了使用标识提供者注册或登录的机会。 此过程开始时，Azure AD B2C 会从标识提供者处收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
+Azure Active Directory B2C （Azure AD B2C）中的[用户流](user-flow-overview.md)为应用程序的用户提供了使用标识提供者注册或登录的机会。 此过程开始时，Azure AD B2C 会从标识提供者处收到一个[访问令牌](tokens-overview.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
-Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 标识提供者（这包括 [Facebook](active-directory-b2c-setup-fb-app.md) 和 [Google](active-directory-b2c-setup-goog-app.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 当前仅支持传递 [OAuth 2.0](authorization-code-flow.md) 标识提供者（这包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -56,4 +56,4 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oa
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[Azure AD B2C 令牌概述](active-directory-b2c-reference-tokens.md)。
+有关详细信息，请参阅[Azure AD B2C 令牌概述](tokens-overview.md)。

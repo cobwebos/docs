@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线主题筛选器 | Microsoft Docs
-description: 筛选 Azure 服务总线主题
+description: 本文介绍了订户可以通过指定筛选器来定义要从主题接收的消息。
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332221"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774499"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 

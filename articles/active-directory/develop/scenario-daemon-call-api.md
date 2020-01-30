@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a234e0b5d3a88b722257aa80249f4d80182d12f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702226"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775193"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>用于调用 web Api 的后台应用程序-从应用程序调用 web API
 
-守护程序应用可以从 .NET 后台程序应用程序调用 web API，或调用多个预先批准的 web Api。
+.NET 后台程序应用可以调用 web API。 .NET daemon 应用程序还可以调用多个预先批准的 web Api。
 
-## <a name="calling-a-web-api-daemon-application"></a>调用 web API 后台程序应用程序
+## <a name="calling-a-web-api-from-a-daemon-application"></a>从后台应用程序调用 web API
 
 下面介绍如何使用令牌来调用 API：
 
@@ -67,7 +67,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>调用多个 Api
 
-对于后台应用程序，你调用的 web Api 需要预先批准。 守护程序应用不会有任何增量许可（无用户交互）。 租户管理员需要预先同意该应用程序和所有 API 权限。 如果要调用多个 Api，则每次调用 `AcquireTokenForClient`时，都需要为每个资源获取令牌。 MSAL 将使用应用程序令牌缓存，以避免不必要的服务调用。
+对于后台应用程序，你调用的 web Api 需要预先批准。 守护程序应用无增量许可。 （没有用户交互。）租户管理员需要提前为应用程序和所有 API 权限提供许可。 如果要调用多个 Api，则每次调用 `AcquireTokenForClient`时，都需要为每个资源获取令牌。 MSAL 将使用应用程序令牌缓存，以避免不必要的服务调用。
 
 ## <a name="next-steps"></a>后续步骤
 

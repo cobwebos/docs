@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732772"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774137"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -23,7 +23,7 @@ ms.locfileid: "75732772"
 
 ### <a name="entity-linking"></a>实体链接
 
-实体链接是指识别并消除文本中发现的实体标识的能力（例如，确定单词的出现 `Mars` 指的是指的是地球，还是罗马字的上帝）。 此过程要求使用适当的语言显示某个知识库，以便链接文本中识别的实体。 
+实体链接是指识别并消除文本中发现的实体标识的能力（例如，确定单词的出现 `Mars` 指的是指的是地球，还是罗马字的上帝）。 此过程要求使用适当的语言显示某个知识库，以便链接文本中识别的实体。 实体链接使用[维基百科](https://www.wikipedia.org/)作为此知识库。
 
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
@@ -36,7 +36,7 @@ ms.locfileid: "75732772"
 
 | 功能                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
-| 单个和批处理请求的方法                          | X      | X      |
+| 用于单个请求和批量请求的方法                          | X      | X      |
 | 跨多个类别的基本实体识别              | X      | X      |
 | 已识别实体的扩展分类                 |        | X      |
 | 用于发送实体链接和 NER 请求的不同终结点。 |        | X      |
@@ -83,7 +83,7 @@ ms.locfileid: "75732772"
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
-#### <a name="version-3-public-previewtabversion-3"></a>[版本3（公共预览版）](#tab/version-3)
+#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
 
 ### <a name="entity-types"></a>实体类型
 
@@ -150,11 +150,11 @@ NER
 
 ---
 
-设置请求标头以包括文本分析 API 密钥。 在请求正文中，提供已准备的 JSON 文档。
+发送请求标头以包括文本分析 API 密钥。 在请求正文中，提供已准备的 JSON 文档。
 
 ### <a name="example-ner-request"></a>NER 请求示例 
 
-下面是可能发送到 API 的内容示例。 对于这两个版本的 API，请求格式是相同的。
+下面是可能发送到 API 的内容示例。 两个版本的 API 的请求格式相同。
 
 ```json
 {
@@ -172,7 +172,7 @@ NER
 
 在收到请求时执行分析。 有关每分钟和每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
-文本分析 API 是无状态的。 帐户中不存储任何数据，结果会立即返回到响应中。
+文本分析 API 是无状态的。 不会在帐户中存储数据，结果会立即在响应中返回。
 
 ## <a name="view-results"></a>查看结果
 
@@ -217,7 +217,7 @@ NER
 }
 ```
 
-#### <a name="version-3-public-previewtabversion-3"></a>[版本3（公共预览版）](#tab/version-3)
+#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>V3 响应示例
 

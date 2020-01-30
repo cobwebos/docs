@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026214"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842727"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -46,7 +46,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>什么是 Batch 文件约定标准？
 
-[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)为输出文件要写入到的目标容器和 Blob 路径提供命名方案。 可在 Azure 门户中查看 Azure 存储中保存的、遵守文件约定标准的文件。 门户可以识别命名约定，因此可以显示遵守该约定的文件。
+[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)为输出文件要写入到的目标容器和 Blob 路径提供命名方案。 可在 Azure 门户中查看 Azure 存储中保存的、遵守文件约定标准的文件。 门户可以识别命名约定，因此可以显示遵守该约定的文件。
 
 适用于 .NET 的文件约定库根据文件约定标准，自动为存储容器和任务输出文件命名。 文件约定库还提供根据作业 ID、任务 ID 或用途在 Azure 存储中查询输出文件的方法。
 
@@ -228,15 +228,15 @@ Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/
 - 若要了解如何使用 Batch 服务 API 保存输出数据，请参阅[使用 Batch 服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
-[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files
+[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
 [net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
 [net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx

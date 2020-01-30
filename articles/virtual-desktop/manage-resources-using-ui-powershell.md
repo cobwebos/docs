@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122502"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772795"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>使用 PowerShell 部署管理工具
 
@@ -163,4 +163,4 @@ Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.Us
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何部署和连接到管理工具后，接下来可以了解如何使用 Azure 服务帮助来监视服务问题和获得运行状况方面的建议。 若要了解详细信息，请参阅[“设置服务警报”教程](./set-up-service-alerts.md)。
+了解如何部署和连接管理工具后，接下来可以了解如何使用 Azure 服务运行状况来监视服务问题和获得运行状况方面的建议。 若要了解详细信息，请参阅[“设置服务警报”教程](./set-up-service-alerts.md)。

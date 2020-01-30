@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942233"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833288"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>管理 Azure 数据资源管理器中的群集横向缩放（扩大）以适应不断变化的需求
 
@@ -58,9 +58,10 @@ ms.locfileid: "74942233"
 当群集接近利用率的状态时，可以横向扩展以保持最佳性能。 向外扩展将在以下情况下发生：
 * 群集实例的数量低于用户定义的最大实例数。
 * 缓存利用率长达一小时。
+* CPU 长达一小时。
 
 > [!NOTE]
-> Scale out 逻辑目前不考虑引入利用率和 CPU 指标。 如果这些指标对用例非常重要，则使用[自定义自动缩放](#custom-autoscale)。
+> Scale out 逻辑目前不考虑引入利用率指标。 如果此指标对用例非常重要，则使用[自定义自动缩放](#custom-autoscale)。
 
 **缩小**
 
@@ -99,7 +100,7 @@ ms.locfileid: "74942233"
     | **时间聚合** | 选择聚合条件，例如“平均”。 |
     | **指标名称** | 选择要求缩放操作依赖的指标，例如“缓存使用率”。 |
     | 时间粒度统计信息 | 在 **Average**、**Minimum**、**Maximum** 和 **Sum** 之间选择。 |
-    | 运算符 | 选择适当的选项，例如“大于或等于”。 |
+    | **“运算符”** | 选择适当的选项，例如“大于或等于”。 |
     | **阈值** | 选择适当的值。 例如，对于缓存利用率，80% 是一个很好的起点。 |
     | **持续时间（分钟）** | 选择适当的时间值，以便系统在计算指标时进行回溯。 一开始可将默认值设置为 10 分钟。 |
     |  |  |
@@ -121,7 +122,7 @@ ms.locfileid: "74942233"
     | --- | --- |
     | **最低** | 群集在缩放时不管使用率如何都不得低于的实例数。 |
     | 最大值 | 群集在缩放时不管使用率如何都不得高于的实例数。 |
-    | **默认** | 实例的默认数目。 如果读取资源指标时出现问题，则使用此设置。 |
+    | **Default** | 实例的默认数目。 如果读取资源指标时出现问题，则使用此设置。 |
     |  |  |
 
 7. 选择“保存”。

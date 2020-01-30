@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154816"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773304"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
@@ -30,22 +30,21 @@ ms.locfileid: "76154816"
 
 ## <a name="how-it-works"></a>如何运作 
 
-因为你只需记住一个用户名和密码，因此 SSO 简化了资源访问，并提高了环境的安全性。 使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果环境具有一个 Azure AD 和一个本地 AD，建议将 SSO 体验的范围扩展到本地业务线 (LOB) 应用、文件共享和打印机。  
+因为你只需记住一个用户名和密码，因此 SSO 简化了资源访问，并提高了环境的安全性。 使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果环境具有一个 Azure AD 和一个本地 AD，建议将 SSO 体验的范围扩展到本地业务线 (LOB) 应用、文件共享和打印机。
 
 已加入 Azure AD 的设备不了解你的本地 AD 环境，因为它们未加入其中。 但是，可以使用 Azure AD Connect 向这些设备提供本地 AD 的其他信息。
 
 同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地用户信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
 
-1. Azure AD 将用户所属本地域的名称发送回设备。 
+1. Azure AD 将用户所属本地域的名称发送回设备。
 1. 本地安全机构 (LSA) 服务在该设备允许进行 Kerberos 身份验证。
 
-尝试访问用户本地域中的资源期间中，设备将：
+在尝试访问用户本地环境中请求 Kerberos 的资源期间，设备：
 
-1. 使用域信息来查找域控制器 (DC)。 
 1. 向找到的 DC 发送本地域信息和用户凭据，以对用户进行身份验证。
-1. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets)。
+1. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets)。 如果尝试获取 AAD connect 域的 TGT 失败（相关 Dc 定位程序超时可能会导致延迟）、凭据管理器条目被尝试或用户可能会收到针对目标资源的身份验证弹出请求凭据。
 
-当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO。  
+当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO。
 
 Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 

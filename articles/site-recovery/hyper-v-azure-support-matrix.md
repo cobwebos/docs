@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863887"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774425"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -33,7 +33,7 @@ ms.locfileid: "75863887"
 **Server** | **要求** | **详细信息**
 --- | --- | ---
 Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016 （包括服务器核心安装）、带有最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
-Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019，Virtual Machine Manager 2016，Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中进行管理。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中进行管理。<br/><br/>
+Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019，Virtual Machine Manager 2016，Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中进行管理。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中进行管理。<br/><br/> 注意： Windows Server 2019 主机不支持故障回复到备用位置。
 
 
 ## <a name="replicated-vms"></a>复制的 VM
@@ -111,7 +111,7 @@ SMB 3.0 | 否 | 否
 RDM | 不可用 | 不可用
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
 磁盘：4K 逻辑和物理扇区 | 不支持：第 1 代/第 2 代 | 不支持：第 1 代/第 2 代
-磁盘：4K 逻辑扇区和 512 字节物理扇区 | 是 |  是
+磁盘：4K 逻辑和 512-字节物理扇区 | 是 |  是
 逻辑卷管理 (LVM)。 仅数据磁盘支持 LVM。 Azure 仅提供单个 OS 磁盘。 | 是 | 是
 包含条带化磁盘的卷 > 1 TB | 是 | 是
 存储空间 | 否 | 否

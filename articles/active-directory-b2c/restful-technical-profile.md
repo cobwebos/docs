@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263364"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840275"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -260,7 +260,7 @@ public class ResponseContent
 
 请参阅以下文章，了解有关使用 RESTful 技术配置文件的示例：
 
-- [在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)
-- [使用 HTTP 基本身份验证保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [使用客户端证书保护 RESTful 服务](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-rest-api-validation-custom.md)
+- [在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](rest-api-claims-exchange-dotnet.md)
+- [使用 HTTP 基本身份验证保护 RESTful 服务](secure-rest-api-dotnet-basic-auth.md)
+- [使用客户端证书保护 RESTful 服务](secure-rest-api-dotnet-certificate-auth.md)
+- [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](custom-policy-rest-api-claims-validation.md)

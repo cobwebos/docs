@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932030"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840292"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ SingleSignOn 元素包含在以下属性中：
 | Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值指示已取消行为。 例如，在单一登录会话的情况下，不会为用户维护会话，并且始终提示用户选择标识提供者。 `TrustFramework` 值指示该行为适用于信任框架中的所有策略。 例如，不会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
-| KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](active-directory-b2c-reference-kmsi-custom.md)。 |
+| KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](custom-policy-keep-me-signed-in.md)。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -140,7 +140,7 @@ JourneyInsights 元素包含以下属性：
 | ServerEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，则将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。 |
 | TelemetryVersion | 是 | 值必须是 `1.0.0`。 |
 
-有关详细信息，请参阅[收集日志](active-directory-b2c-troubleshoot-custom.md)
+有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -162,7 +162,7 @@ ContentDefinitionParameters 元素包含以下属性：
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
-有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](active-directory-b2c-ui-customization-custom-dynamic.md)
+有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](custom-policy-ui-customization-dynamic.md)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

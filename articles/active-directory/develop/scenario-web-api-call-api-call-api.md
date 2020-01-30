@@ -14,18 +14,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7c54c7c4718cea479a812574e961ef2338a6be6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701750"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833356"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>用于调用 web Api 的 web API：调用 API
 
-获得令牌后，可以调用受保护的 web API。 可以从 ASP.NET 的控制器或 ASP.NET Core 的 web API 执行此操作。
+获得令牌后，可以调用受保护的 web API。 可以从 web API 的控制器执行此操作。
 
 ## <a name="controller-code"></a>控制器代码
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 下面的代码将继续在调用 web Api 的 web API 中显示的示例代码[：获取应用程序的令牌](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中调用该代码。 它调用名为*todolist*的下游 API。
 
@@ -56,6 +58,35 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ...
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+下面的代码将继续在调用 web Api 的 web API 中显示的示例代码[：获取应用程序的令牌](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中调用该代码。 它调用下游 API MS Graph。
+
+获取令牌后，将其用作持有者令牌以调用下游 API。
+
+```Java
+private String callMicrosoftGraphMeEndpoint(String accessToken){
+    RestTemplate restTemplate = new RestTemplate();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    headers.set("Authorization", "Bearer " + accessToken);
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    String result = restTemplate.exchange("https://graph.microsoft.com/v1.0/me", HttpMethod.GET,
+            entity, String.class).getBody();
+
+    return result;
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+使用 MSAL Python 演示此流的示例尚不可用。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,28 +4,25 @@ titleSuffix: Azure Network Watcher
 description: 本页说明如何在 REST 中使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ab9f7fd95d7081b66e05dfd3d6a5ef47eb3c4053
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277800"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840666"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
 > [!div class="op_single_selector"]
-> - [Portal](diagnose-communication-problem-between-networks.md)
+> - [门户](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -39,9 +36,9 @@ ms.locfileid: "74277800"
 
 ## <a name="before-you-begin"></a>开始之前
 
-ARMclient 用于使用 PowerShell 调用 REST API。 按照 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 在 chocolatey 上找到 ARMClient
+通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 有关支持的网关类型列表，请访问[支持的网关类型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 

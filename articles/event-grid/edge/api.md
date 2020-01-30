@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992530"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841823"
 ---
 # <a name="rest-api"></a>REST API
 本文介绍 IoT Edge 上的 Azure 事件网格的 REST Api
@@ -41,7 +41,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 
 ```Content-Type: application/json; charset=utf-8```
 
-对于结构化模式下的**CloudEventSchemaV1_0** ，content-type 的值可以是以下值之一：
+如果在结构化模式下**CloudEventSchemaV1_0** ，content-type 的值可以是以下值之一：
 
 ```Content-Type: application/cloudevents+json```
     
@@ -51,7 +51,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
     
 ```Content-Type: application/cloudevents-batch+json; charset=utf-8```
 
-对于二进制模式下的**CloudEventSchemaV1_0** ，请参阅[文档](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)了解详细信息。
+如果在二进制模式下**CloudEventSchemaV1_0** ，请参阅[文档](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)以了解详细信息。
 
 ### <a name="error-response"></a>错误响应
 所有 Api 都将返回具有以下有效负载的错误：
@@ -183,6 +183,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -620,7 +621,7 @@ IoT Edge 上的事件网格具有通过 HTTP （端口5888）和 HTTPS （端口
 - 它必须为非 null。
 - 它必须是绝对 URL。
 - 如果在 EventGridModule 设置中将 outbound__webhook__httpsOnly 设置为 true，则它必须仅为 HTTPS。
-- 如果 outbound__webhook__httpsOnly 设置为 false，则它可以是 HTTP 或 HTTPS。
+- 如果 outbound__webhook__httpsOnly 设置为 "false"，则它可以是 HTTP 或 HTTPS。
 
 对 `eventDeliverySchema` 属性的约束：
 - 它必须与订阅主题的输入架构匹配。
@@ -674,7 +675,7 @@ EndpointUrl
 - 必须在请求 URL 路径中定义路径 `/api/events`。
 - 它必须在查询字符串中有 `api-version=2018-01-01`。
 - 如果在 EventGridModule 设置中将 outbound__eventgrid__httpsOnly 设置为 true （默认值为 true），则它必须仅为 HTTPS。
-- 如果 outbound__eventgrid__httpsOnly 设置为 false，则它可以是 HTTP 或 HTTPS。
+- 如果 outbound__eventgrid__httpsOnly 设置为 "false"，则它可以是 HTTP 或 HTTPS。
 - 如果 outbound__eventgrid__allowInvalidHostnames 设置为 false （默认值为 false），则它必须面向以下终结点之一：
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
@@ -686,3 +687,93 @@ SasKey:
 TopicName:
 - 如果 EventDeliverySchema 设置为 EventGridSchema，则此字段的值将放入每个事件的 "主题" 字段，然后将其转发到云中的事件网格。
 - 如果 EventDeliverySchema 设置为 CustomEventSchema，则将忽略此属性，并按接收到的原样转发自定义事件负载。
+
+## <a name="set-up-event-hubs-as-a-destination"></a>将事件中心设置为目标
+
+若要发布到事件中心，请将 `endpointType` 设置为 `eventHub` 并提供以下内容：
+
+* connectionString：目标为通过共享访问策略生成的特定事件中心的连接字符串。
+
+    >[!NOTE]
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 可以通过导航到要在 Azure 门户中发布到的特定事件中心，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，来生成特定于实体的连接字符串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>将服务总线队列设置为目标
+
+若要发布到服务总线队列，请将 `endpointType` 设置为 `serviceBusQueue` 并提供以下内容：
+
+* connectionString：目标为通过共享访问策略生成的特定服务总线队列的连接字符串。
+
+    >[!NOTE]
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线队列，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>将服务总线主题设置为目标
+
+若要发布到服务总线主题，请将 `endpointType` 设置为 `serviceBusTopic` 并提供以下内容：
+
+* connectionString：目标为通过共享访问策略生成的特定服务总线主题的连接字符串。
+
+    >[!NOTE]
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线主题，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>将存储队列设置为目标
+
+若要发布到存储队列，请将 `endpointType` 设置为 `storageQueue` 并提供以下内容：
+
+* queueName：要发布到的存储队列的名称。
+* connectionString：存储队列所在的存储帐户的连接字符串。
+
+    >[!NOTE]
+    > Unline 事件中心、服务总线队列和服务总线主题，用于存储队列的连接字符串不特定于实体。 它必须是存储帐户的连接字符串。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

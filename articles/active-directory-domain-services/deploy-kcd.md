@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705282"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772540"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中配置 Kerberos 约束委派（KCD）
 
-当你运行应用程序时，这些应用程序可能需要在不同用户的上下文中访问资源。 Active Directory 域服务（AD DS）支持一种称为*Kerberos 委派*的机制，该机制可实现此用例。 然后，Kerberos*约束*委派（KCD）建立在此机制上，用于定义可在用户的上下文中访问的特定资源。 Azure Active Directory 域服务（Azure AD DS）托管域更安全地锁定了传统本地 AD DS 环境，因此请使用更安全的*基于资源*的 KCD。
+当你运行应用程序时，这些应用程序可能需要在不同用户的上下文中访问资源。 Active Directory 域服务（AD DS）支持一种称为*Kerberos 委派*的机制，该机制可实现此用例。 然后，Kerberos*约束*委派（KCD）建立在此机制上，用于定义可在用户的上下文中访问的特定资源。 与传统的本地 AD DS 环境相比，Azure Active Directory 域服务（Azure AD DS）托管域更安全地被锁定，因此，请使用更安全的*基于资源*的 KCD。
 
 本文介绍如何在 Azure AD DS 托管域中配置基于资源的 Kerberos 约束委派。
 

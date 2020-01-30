@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043527"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836647"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -41,15 +41,15 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 | 方案 | Azure AD B2C 角色 | 操作说明 |
 | -------- | ----------------- | ------- |
 | 我的应用程序需要 SAML 断言才能完成身份验证。 | **Azure AD B2C 充当标识提供者（IdP）**<br />Azure AD B2C 充当应用程序的 SAML IdP。 | 本文。 |
-| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供商（SP）**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[使用自定义策略将 ADFS 设置为 SAML IdP](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[使用自定义策略设置 Salesforce SAML 提供程序登录](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供商（SP）**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[使用自定义策略将 ADFS 设置为 SAML IdP](identity-provider-adfs2016-custom.md)</li><li>[使用自定义策略设置 Salesforce SAML 提供程序登录](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>必备组件
 
-* 完成[Azure AD B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 你需要从本文中讨论的自定义策略初学者包中*SocialAndLocalAccounts*自定义策略。
+* 完成[Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。 你需要从本文中讨论的自定义策略初学者包中*SocialAndLocalAccounts*自定义策略。
 * 基本了解安全断言标记语言（SAML）协议。
 * 配置为 SAML 服务提供程序（SP）的 web 应用程序。 对于本教程，可以使用我们提供的[SAML 测试应用程序][samltest]。
 
-## <a name="components-of-the-solution"></a>解决方案的构成
+## <a name="components-of-the-solution"></a>解决方案的组件
 
 此方案需要三个主要组件：
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981817"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768394"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>为具有保留容量的 Blob 存储优化成本
 
@@ -54,7 +54,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 - 对于至少一个企业或个人订阅，你必须以即用即付费率作为**所有者**角色。
 - 对于企业订阅，必须在 EA 门户中启用 "**添加保留实例**"。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
-- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Cosmos DB 预留容量。
+- 对于云解决方案提供商（CSP）程序，只有管理代理或销售代理可以购买 Azure Blob 存储预留容量。
 
 ## <a name="determine-required-capacity-before-purchase"></a>在购买前确定所需容量
 

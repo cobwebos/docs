@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452118"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774478"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集描述 Service Fabric 群集资源管理器
 Azure Service Fabric 的群集资源管理器功能提供了用于描述群集的多种机制：
@@ -472,7 +472,7 @@ Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstr
 
 其次，有平衡和优化，这对于有效地运行服务至关重要。 经济高效或性能敏感的服务产品不允许某些节点处于热状态，而其他节点是冷的。 热节点会导致资源争用和性能不佳。 冷节点表示浪费资源并增加成本。 
 
-Service Fabric 将资源表示为*指标*。 指标是你想要向 Service Fabric 描述的任何逻辑或物理资源。 指标的示例包括 "WorkQueueDepth" 或 "MemoryInMb"。 有关 Service Fabric 可以管理节点的物理资源的信息，请参阅[资源调控](service-fabric-resource-governance.md)。 有关配置自定义指标及其用法的信息，请参阅[此文](service-fabric-cluster-resource-manager-metrics.md)。
+Service Fabric 将资源表示为*指标*。 指标是你想要向 Service Fabric 描述的任何逻辑或物理资源。 指标的示例包括 "WorkQueueDepth" 或 "MemoryInMb"。 有关 Service Fabric 可以管理节点的物理资源的信息，请参阅[资源调控](service-fabric-resource-governance.md)。 有关群集使用的默认指标资源管理器以及如何配置自定义度量值的信息，请参阅[此文](service-fabric-cluster-resource-manager-metrics.md)。
 
 指标与放置约束和节点属性不同。 节点属性是节点自身的静态描述符。 指标描述节点所具有的资源以及服务在节点上运行时所使用的资源。 节点属性可能**HasSSD** ，可能会设置为 true 或 false。 该 SSD 上的可用空间量和服务消耗的空间量是类似于 "DriveSpaceInMb" 的指标。 
 

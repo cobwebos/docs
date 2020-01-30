@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951099"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840377"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 **OutputClaims** 元素包含 OAuth1 标识提供者返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 如果设置了 **DefaultValue** 属性，则还可以包含标识提供者不会返回的声明。
 
-“OutputClaimsTransformations”元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”元素的一个集合。
+**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
 以下示例演示 Twitter 标识提供者返回的声明：
 
@@ -68,21 +68,21 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
-| ProviderName | No | 标识提供者的名称。 |
+| ProviderName | 否 | 标识提供者的名称。 |
 | request_token_endpoint | 是 | 符合 RFC 5849 规范的请求令牌终结点的 URL。 |
 | authorization_endpoint | 是 | 符合 RFC 5849 规范的授权终结点的 URL。 |
 | access_token_endpoint | 是 | 符合 RFC 5849 规范的令牌终结点的 URL。 |
-| ClaimsEndpoint | No | 用户信息终结点的 URL。 |
-| ClaimsResponseFormat | No | 声明响应格式。|
+| ClaimsEndpoint | 否 | 用户信息终结点的 URL。 |
+| ClaimsResponseFormat | 否 | 声明响应格式。|
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   |
 
@@ -94,7 +94,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 示例：
 
-- [使用自定义策略添加 Twitter 作为 OAuth1 标识提供者](active-directory-b2c-custom-setup-twitter-idp.md)
+- [使用自定义策略添加 Twitter 作为 OAuth1 标识提供者](identity-provider-twitter-custom.md)
 
 
 

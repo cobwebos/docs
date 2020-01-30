@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759221"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772233"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -302,7 +302,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下，它已针�
 
 **解决方法**
 
-对于 IoT Edge 中心，请将环境变量**OptimizeForPerformance**设置为**false**。 可以通过两种方法设置环境变量：
+对于 IoT Edge 中心，请将环境变量**OptimizeForPerformance**设置为**false**。 可以通过两种方法来设置环境变量：
 
 在 Azure 门户中：
 

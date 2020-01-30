@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949400"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841227"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义用户界面 Azure Active Directory B2C
 
@@ -28,15 +28,15 @@ ms.locfileid: "74949400"
 
 ### <a name="user-flows"></a>用户流
 
-如果使用[用户流](active-directory-b2c-reference-policies.md)，则可以通过使用内置*页面布局模板*或使用自己的 HTML 和 CSS 来更改用户流页面的外观。 本文后面将讨论这两种方法。
+如果使用[用户流](user-flow-overview.md)，则可以通过使用内置*页面布局模板*或使用自己的 HTML 和 CSS 来更改用户流页面的外观。 本文后面将讨论这两种方法。
 
 使用[Azure 门户](tutorial-customize-ui.md)为用户流配置 UI 自定义。
 
 ### <a name="custom-policies"></a>自定义策略
 
-如果要使用[自定义策略](active-directory-b2c-overview-custom.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，请使用[策略文件来自定义 UI](active-directory-b2c-ui-customization-custom.md)。
+如果要使用[自定义策略](custom-policy-overview.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，请使用[策略文件来自定义 UI](custom-policy-ui-customization.md)。
 
-如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](active-directory-b2c-ui-customization-custom-dynamic.md)的自定义策略。 例如，可以基于从 web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
+如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](custom-policy-ui-customization-dynamic.md)的自定义策略。 例如，可以基于从 web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ ms.locfileid: "74949400"
 选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
 
 ## <a name="custom-html-and-css"></a>自定义 HTML 和 CSS
+
+如果希望使用自定义 HTML 和 CSS 设计自己的策略布局，可以通过对策略中存在的每个布局名称切换 "使用自定义页面内容" 切换来实现此目的。 请按照以下有关自定义布局配置的说明进行操作：
 
 Azure AD B2C 使用称为[跨域资源共享（CORS）](https://www.w3.org/TR/cors/)的方法在客户的浏览器中运行代码。
 
@@ -150,7 +152,7 @@ Azure AD B2C 使用称为[跨域资源共享（CORS）](https://www.w3.org/TR/co
 
 ## <a name="localize-content"></a>本地化内容
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能可允许 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](user-flow-language-customization.md)来本地化 HTML 内容。 启用此功能可允许 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 
@@ -179,4 +181,4 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
     [在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)。
 - 如果使用的是**自定义策略**，则可以使用以下文章开始自定义 UI：
 
-    [使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
+    [使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)。

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779939"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773934"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -118,6 +118,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心 | test-hub | 你创建的事件中心。 |
     | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
     | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，系统属性将添加到第一个记录。 添加系统属性时，[创建](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 |
+    | 压缩 | 无 | 事件中心消息负载的压缩类型。 支持的压缩类型： *None、GZip*。|
     | | |
 
     **目标表：**
@@ -128,15 +129,15 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 支持的压缩选项： GZip |
-    | 列映射 | TestMapping | 在**TestDatabase**中创建的[映射](/azure/kusto/management/mappings)，用于将传入 JSON 数据映射到**TestTable**的列名称和数据类型。 对于 JSON、多行 JSON 或 AVRO 是必需的，对于其他格式是可选的。|
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
+    | 列映射 | TestMapping | 在**TestDatabase**中创建的[映射](/azure/kusto/management/mappings)，用于将传入 JSON 数据映射到**TestTable**的列名称和数据类型。 对于 JSON 或多行 JSON 是必需的，对于其他格式则是可选的。|
     | | |
 
     > [!NOTE]
     > * 选择“我的数据包含路由信息”以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
     > * 只有在创建数据连接后排队的事件引入。
-    > * 通过[在 Azure 门户中打开支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)，为静态路由启用 GZip 压缩。 为动态路由启用 GZip 压缩，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)所示。 
-    > * 压缩有效负载不支持 Avro 格式和事件系统属性。
+    > * 还可以通过动态属性设置压缩类型，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)所示。
+    > * GZip 压缩有效负载不支持 Avro、ORC 和 PARQUET 格式以及事件系统属性。
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

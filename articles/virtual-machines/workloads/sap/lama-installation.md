@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978059"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842429"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -87,7 +87,7 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 1. 单击 "新建注册"
 1. 输入名称，然后单击 "注册"
 1. 选择新应用，并在 "设置" 选项卡中单击 "证书" & 机密 "
-1. 创建新的客户端密码，输入新密钥的说明，选择机密应 exire 的时间，并单击 "保存"
+1. 创建新的客户端密码，输入新密钥的说明，选择密钥过期时间，并单击 "保存"
 1. 记下值。 此值用作服务主体的密码
 1. 记下应用程序 ID。 此值用作服务主体的用户名
 

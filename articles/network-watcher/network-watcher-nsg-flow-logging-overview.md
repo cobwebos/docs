@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 本文说明如何使用 Azure 网络观察程序的 NSG 流日志功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830507"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840989"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 

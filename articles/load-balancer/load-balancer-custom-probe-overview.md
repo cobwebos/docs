@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690394"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769171"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -200,7 +200,7 @@ TCP、HTTP 和 HTTPS 运行状况探测视为正常，并在以下情况下将�
 
 UDP 数据报将发送到正常的后端终结点。
 
-UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果任何后端终结点的运行状况探测失败，则现有 UDP 流可能会移动到后端池中的另一个正常实例。
+UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果任何后端终结点的运行状况探测失败，则现有 UDP 流将移到后端池中的另一个正常实例。
 
 如果后端池中所有实例的所有探测都失败，则基本和标准负载均衡器的现有 UDP 流将会终止。
 

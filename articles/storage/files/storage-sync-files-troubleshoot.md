@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704538"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842710"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -1084,7 +1084,35 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
        - 在权限提升的命令提示符下，运行 `fltmc`。 验证 StorageSync.sys 和 StorageSyncGuard.sys 文件系统筛选器驱动程序是否已列出。
 
 > [!NOTE]
-> 如果文件无法分层，则每小时在“遥测”事件日志中记录事件 ID 9003 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
+> 如果文件无法分层，则每小时在“遥测”事件日志中记录事件 ID 9003 一次（为每个错误代码记录一个事件）。 请查看[分层错误和修正](#tiering-errors-and-remediation)部分，以查看是否列出了更正步骤来查找错误代码。
+
+### <a name="tiering-errors-and-remediation"></a>分层错误和修正
+
+| HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 文件无法进行层级，因为它正在使用中。 | 无需采取措施。 当文件不再使用时，将对其进行分层。 |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 文件无法进行层级，因为它已被同步排除。 | 无需采取措施。 同步排除列表中的文件不能分层。 |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 由于在服务器上找不到该文件，因此无法将其分层。 | 无需采取措施。 如果错误仍然存在，请检查服务器上是否存在该文件。 |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | 由于在 Azure 文件共享中删除了该文件，因此无法将其分层。 | 无需采取措施。 当下一个下载同步会话运行时，应在服务器上删除该文件。 |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | 由于网络问题，文件无法进行层级。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 由于网络问题，文件无法进行层级。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件失败。 如果文件位于 DFS R 只读复制文件夹中，则会发生此错误。 | Azure 文件同步不支持 DFS-R 只读复制文件夹中的服务器终结点。 有关详细信息，请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 由于网络问题，文件无法进行层级。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 文件无法进行层级，因为文件大小小于支持的大小。 | 如果代理版本低于9.0，则支持的最小文件大小为64kb。 如果代理版本为9.0 和更高版本，则支持的最小文件大小取决于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为4kb，则最小文件大小为8kb。 |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 由于 Azure 存储问题，文件未能分层。 | 如果错误仍然存在，请打开支持请求。 |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 由于此文件是同时回调的，因此无法将其分层。 | 无需采取措施。 撤回完成并且文件不再使用时，将会对文件进行分层。 |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 无需采取措施。 该文件在同步到 Azure 文件共享后将层级。 |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 由于云分层筛选器驱动程序（storagesync.sys）未运行，导致文件无法分层。 | 若要解决此问题，请打开提升的命令提示符并运行以下命令： fltmc load storagesync.sys <br>如果在运行 fltmc 命令时无法加载 storagesync.sys 筛选器驱动程序，请卸载 Azure 文件同步代理，重新启动服务器，然后重新安装 Azure 文件同步代理。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于服务器终结点所在的卷上的磁盘空间不足，导致文件无法分层。 | 若要解决此问题，请在服务器终结点所在的卷上至少释放 100 MB 的磁盘空间。 |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 无需采取措施。 该文件在同步到 Azure 文件共享后将层级。 |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 文件无法进行层级，因为它是不受支持的重新分析点。 | 如果该文件是重复数据删除重新分析点，请按照[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步骤启用重复数据删除支持。 不支持重分析点为重复数据删除的文件，也不会对其进行分层。  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 文件无法进行层级，因为已对其进行了修改。 | 无需采取措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行层级。 |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 无需采取措施。 该文件在同步到 Azure 文件共享后将层级。 |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 由于网络问题，文件无法进行层级。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 文件无法进行层级，因为已对其进行了修改。 | 无需采取措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行层级。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法进行层级。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
+
+
 
 ### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>如何对未能召回的文件进行故障排除  
 如果无法重新调用文件：
@@ -1109,7 +1137,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 由于在 Azure 文件共享中无法访问该文件，因此该文件无法撤回。 | 若要解决此问题，请验证文件是否存在于 Azure 文件共享中。 如果文件存在于 Azure 文件共享中，请升级到最新的 Azure 文件同步[代理版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 由于对存储帐户的授权失败，文件无法撤回。 | 若要解决此问题，请验证[Azure 文件同步是否有权访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | 由于无法访问 Azure 文件共享，该文件未能撤回。 | 验证文件共享存在并且可访问。 如果删除并重新创建了文件共享，请执行同步失败中所述的步骤，[因为已删除并重新创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)部分以删除并重新创建同步组。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于 insuffcient 系统资源，该文件无法撤回。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法撤回。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 由于 insuffcient 内存，文件无法重新调用。 | 如果错误仍然存在，请调查是哪个应用程序或内核模式驱动程序导致内存不足的情况。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于磁盘空间不足，文件无法撤回。 | 若要解决此问题，请通过将文件移动到不同的卷，增加卷的大小，或者使用 StorageSyncCloudTiering cmdlet 将文件强制转换为级别，从而释放卷上的空间。 |
 

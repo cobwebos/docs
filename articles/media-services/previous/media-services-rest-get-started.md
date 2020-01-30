@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014876"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773687"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
 
@@ -36,7 +36,7 @@ ms.locfileid: "69014876"
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 以下是开始使用媒体服务和 REST API 进行开发所要满足的先决条件。
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -85,7 +85,7 @@ ms.locfileid: "69014876"
 
 ## <a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
-在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及有关这些文件的元数据）。 文件上传到资产后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。
 
 创建资产时必须提供的值之一是资产创建选项。 **Options** 属性是一个枚举值，描述可用于创建资产的加密选项。 有效值为以下列表中的某个值，而不是此列表中值的组合：
 
@@ -109,7 +109,7 @@ ms.locfileid: "69014876"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -163,7 +163,7 @@ ms.locfileid: "69014876"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -225,7 +225,7 @@ ms.locfileid: "69014876"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -261,7 +261,7 @@ ms.locfileid: "69014876"
 
 ### <a name="get-the-upload-url"></a>获取上传 URL
 
-若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -270,7 +270,7 @@ SAS URL 采用以下格式：
 请注意以下事项：
 
 * 一项给定的资产一次最多只能与五个唯一的定位符相关联。 
-* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 StartTime 值还必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
+* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。    
 * 定位符从创建到可用可能会有 30-40 秒的延迟。 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 和源定位符都会出现这个问题。
 
 以下示例说明了如何创建 SAS URL 定位符，由请求正文中的 Type 属性定义（“1”表示 SAS 定位符，“2”表示按需来源定位符）。 返回的 **Path** 属性包含上传文件时必须使用的 URL。
@@ -284,7 +284,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -332,7 +332,7 @@ SAS URL 采用以下格式：
 设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
 
 > [!NOTE]
-> 必须将要上传文件的文件名添加到在上一节收到的定位符 **Path** 值中。 例如， `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?` 。
+> 必须将要上传文件的文件名添加到在上一节收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?` 。
 >
 >
 
@@ -348,7 +348,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -376,7 +376,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -395,7 +395,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **HTTP 响应**
@@ -426,7 +426,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -460,7 +460,7 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="create-a-job"></a>创建作业
-每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 允许通过以下两种方式之一创建作业及相关任务：可按以下两种方式以内联形式定义任务：通过作业实体上的任务导航属性，或通过 OData 批处理。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
+每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 可通过以下两种方式之一创建作业及相关任务：可以通过作业实体上的任务导航属性以内联方式定义任务，或通过 OData 批处理来定义任务。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
 以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。 以下文档部分包含 Media Encoder Standard 处理器支持的所有[任务预设](https://msdn.microsoft.com/library/mt269960)的列表。  
 
@@ -473,7 +473,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -568,7 +568,7 @@ SAS URL 采用以下格式：
 * 传递给 JobInputAsset 或 JobOutputAsset 的 value 参数代表资产的索引值。 实际资产在作业实体定义的 InputMediaAssets 和 OutputMediaAssets 导航属性中定义。
 
 > [!NOTE]
-> 由于媒体服务基于 OData v3，因此通过“__metadata : uri”名称-值对引用 InputMediaAssets 和 OutputMediaAssets 导航属性集合中的各项资产。
+> 由于媒体服务基于 OData v3，因此，InputMediaAssets 和 OutputMediaAssets 导航属性集合中的单个资产将通过“__metadata : uri”名称/值对进行引用。
 >
 >
 
@@ -595,7 +595,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -632,7 +632,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
 
@@ -656,7 +656,7 @@ SAS URL 采用以下格式：
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -694,14 +694,14 @@ SAS URL 采用以下格式：
 
 ## <a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
-若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如，MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
+要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
 
 创建定位符后，可以创建用来流式处理或下载文件的 URL。
 
 >[!NOTE]
 >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
-平滑流式处理的流 URL 采用以下格式：
+平滑流式处理的流式处理 URL 采用以下格式：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
@@ -733,7 +733,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -744,7 +744,7 @@ MPEG DASH 的流 URL 采用以下格式：
 如果成功，将返回描述已创建的 AccessPolicy 实体的 201 成功代码。 然后，需要使用 AccessPolicy ID 以及包含需传送文件的资产（如某个输出资产）的资产 ID 来创建定位符实体。
 
 > [!NOTE]
-> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。
+> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。
 >
 >
 
@@ -756,7 +756,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -817,7 +817,7 @@ MPEG DASH 的流 URL 采用以下格式：
 设置 AccessPolicy 和定位符后，可以使用 Azure 存储 REST API 下载文件。  
 
 > [!NOTE]
-> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如： https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如： https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? 。 。 。
 
 有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
@@ -847,7 +847,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs
     Content-Length: 182

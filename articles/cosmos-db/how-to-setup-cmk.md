@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: c77e89c509f10155ddc27e92f09465959b629f67
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979205"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771903"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>为你的 Azure Cosmos 帐户配置客户托管密钥，Azure Key Vault
 
 > [!NOTE]
-> 此时，你必须请求访问权限才能使用此功能。 为此，请联系[cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com)。
+> 此时，你必须请求访问权限才能使用此功能。 为此，请联系[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com)。
 
 存储在 Azure Cosmos 帐户中的数据会自动且无缝地加密。 Azure Cosmos DB 提供了两个选项来管理用于加密静态数据的密钥：
 

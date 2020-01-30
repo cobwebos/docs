@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备生产 Service Fabric 群集部署到 Azure。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463314"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834444"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -37,9 +37,59 @@ ms.locfileid: "75463314"
 
 主节点类型的 Vm 数目下限取决于选择的[可靠性层][reliability]。
 
-请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)的最小建议、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)。 
+请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)的最小建议、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)。
 
 最少节点数应基于要在此节点类型中运行的应用程序/服务的副本数。  [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)可帮助你估计运行应用程序所需的资源。 你始终可以在以后缩放群集来调整应用程序工作负载。 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>为虚拟机规模集使用临时 OS 磁盘
+
+*临时 OS 磁盘*是在本地虚拟机（VM）上创建的存储，不会保存到远程 Azure 存储中。 建议为所有 Service Fabric 节点类型（主节点和辅助节点类型）执行这些操作，这与传统的永久性 OS 磁盘相比，临时操作系统磁盘相同：
+
+* 降低操作系统磁盘的读/写延迟
+* 实现更快的重置/重置映像节点管理操作
+* 降低总体成本（磁盘免费，不会产生额外的存储成本）
+
+临时 OS 磁盘不是特定 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure*虚拟机规模集*的一项功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
+
+1. 确保节点类型为临时 OS 磁盘指定[支持的 AZURE VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，并确保 VM 大小具有足够的缓存大小以支持其操作系统磁盘大小（请参见下面的*说明*）。例如：
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > 请确保选择缓存大小等于或大于 VM 本身的 OS 磁盘大小的 VM 大小，否则，Azure 部署可能会导致错误（即使最初接受）。
+
+2. 指定 `2018-06-01` 或更高版本的虚拟机规模集版本（`vmssApiVersion`）：
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. 在部署模板的 "虚拟机规模集" 部分中，为 `diffDiskSettings`指定 `Local` 选项：
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+有关详细信息和更多配置选项，请参阅[Azure vm 的暂时 OS 磁盘](../virtual-machines/windows/ephemeral-os-disks.md) 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>为群集选择持久性和可靠性级别
 耐久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重新启动、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。  要了解不同级别的优点和有关使用哪种级别以及何时使用的建议，请参阅[群集的持续性特性][durability]。

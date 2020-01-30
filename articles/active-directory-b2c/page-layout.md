@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425642"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840309"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>使用自定义策略在 Azure Active Directory B2C 中选择页面布局
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-无论你使用的是用户流还是自定义策略，你都可以在 Azure Active Directory B2C （Azure AD B2C）策略中启用 JavaScript 客户端代码。 若要为应用程序启用 JavaScript，则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md)，选择页面布局，并在请求中使用[b2clogin.com](b2clogin.md) 。
+无论你使用的是用户流还是自定义策略，你都可以在 Azure Active Directory B2C （Azure AD B2C）策略中启用 JavaScript 客户端代码。 若要为应用程序启用 JavaScript，则必须将元素添加到[自定义策略](custom-policy-overview.md)，选择页面布局，并在请求中使用[b2clogin.com](b2clogin.md) 。
 
 页面布局是 Azure AD B2C 提供的元素与提供的内容之间的关联。
 
@@ -75,7 +75,7 @@ ms.locfileid: "75425642"
 
 ### <a name="120"></a>1.2.0
 
-- 全部页
+- 所有页面
   - 辅助功能修补程序
   - 你现在可以在 HTML 标记中添加 `data-preload="true"` 特性来控制 CSS 和 JavaScript 的加载顺序。 方案包括：
     - 在您的 CSS 链接上使用此方法，以便在加载文件的同时以 HTML 的形式加载 CSS，使其不会 "闪烁"
@@ -113,4 +113,4 @@ ms.locfileid: "75425642"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
+有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)。

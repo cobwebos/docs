@@ -1,25 +1,27 @@
 ---
-title: SKU 系列不可用 | Microsoft 文档
-description: 对于该区域的选定订阅，某些 SKU 系列不可用。
+title: 区域或 SKU 系列不可用-Azure
+description: 对于此区域，某些 SKU 系列不可用于所选订阅，这可能需要订阅管理支持请求。
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896722"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843614"
 ---
 # <a name="region-or-sku-unavailable"></a>区域或 SKU 不可用
+
 本文介绍如何解决 Azure 订阅无法访问区域或 VM SKU 的问题。
 
 ## <a name="symptoms"></a>症状
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>部署虚拟机时，收到以下错误消息之一：
+部署虚拟机时，收到以下错误消息之一：
+
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -37,7 +39,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>购买虚拟机预留实例时，收到以下错误消息之一：
+购买虚拟机预留实例时，收到以下错误消息之一：
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -48,32 +50,38 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>在创建用于增加计算核心配额的支持请求时，无法选择某一区域或 SKU 系列。
+当创建支持请求以增加计算核心配额时，区域或 SKU 系列不可供选择。
 
 ## <a name="solution"></a>解决方案
-首先，我们建议你考虑选择满足业务需求的备选区域或 SKU。 如果找不到合适的区域或 SKU，请按照以下步骤创建“订阅管理”[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
 
+首先，我们建议你考虑选择满足业务需求的备选区域或 SKU。
 
-- 在“基本信息”页上，选择“订阅管理”作为问题类型，选择订阅并单击“下一步”。
+如果你找不到合适的区域或 SKU，请按照以下步骤创建**订阅管理**[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
 
-![“基本信息”边栏选项卡](./media/SKU-series-unavailable/BasicsSubMgmt.png)
+1. 从 " [Azure 门户](https://portal.azure.com)" 菜单中，选择 "**帮助 + 支持**"。 然后选择“新建支持请求”。
 
+1. 在 "**基本**信息" 中，对于 "**问题类型**"，选择 "**订阅管理**"。
 
--   在“问题”页上，选择“其他常规问题”作为问题类型。
-- 在“详细信息”部分中：
-  - 请指示是要部署虚拟机还是要购买虚拟机预留实例
-  - 请指定区域、SKU 以及计划部署或购买的虚拟机实例数
+1. 选择**订阅**，并在 "**摘要**" 中输入简短说明。
 
+   ![新支持请求的 "基本信息" 选项卡](./media/SKU-series-unavailable/support-request-basics.png)
 
-![问题](./media/SKU-series-unavailable/ProblemSubMgmt.png)
+1. 对于 "**问题类型**"，请选择 "**选择问题类型**"。
 
--   输入联系人详细信息，然后单击“创建”。
+1. 对于 "**选择问题类型**"，请选择一个选项，例如**无法访问我的订阅或资源** > **我的问题不在上面列出**。 选择“保存”。
 
-![联系人信息](./media/SKU-series-unavailable/ContactInformation.png)
+   ![为请求指定问题](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-## <a name="feedback"></a>反馈
-我们始终乐于接受反馈和建议！ 向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，可以通过 [Twitter](https://twitter.com/azuresupport) 或 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure)与我们联系。
+1. 选择 "**下一步：** 用于浏览可能的解决方案的解决方案"。 如有必要，选择 "**下一步：详细信息**" 以继续。
+
+1. 输入您可以提供的任何其他信息，以及您的联系信息。
+
+1. 选择“查看 + 创建”。 验证信息后，选择 "**创建**" 以创建请求。
+
+## <a name="send-us-your-suggestions"></a>向我们发送你的建议
+
+我们始终公开反馈和建议！ 向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，你可以在[Twitter](https://twitter.com/azuresupport)或[MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure)上与我们合作。
 
 ## <a name="learn-more"></a>了解更多
-[Azure 支持常见问题](https://azure.microsoft.com/support/faq)
 
+[Azure 支持常见问题](https://azure.microsoft.com/support/faq)

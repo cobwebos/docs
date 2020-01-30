@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374074"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835158"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -82,15 +82,6 @@ ms.locfileid: "75374074"
 
    有三种方法可以实现此目的。 如果你是企业协议（EA）客户，则可以预配[支持许可证的虚拟机映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一，这也称为 "自带许可证" （BYOL）。 如果你有[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在现有的即用即付（PAYG）映像上启用[Azure 混合权益](virtual-machines-windows-sql-ahb.md)。 或者，你可以将 SQL Server 安装媒体复制到 Windows Server VM，然后在 VM 上安装 SQL Server。 请确保向[资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)注册你的 SQL Server VM，以获取门户管理、自动备份和自动修补等功能。 
 
-1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
-
-   若要为备用次要可用性组或故障转移群集实例提供免费的被动许可证，必须满足以下所有条件，如[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)所述：
-
-   1. 你有通过[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得的[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
-   1. 被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步，否则，维护被动数据库处于热备用状态。 如果它正在为数据提供服务（例如，向运行活动 SQL Server 工作负荷的客户端报告，或者执行产品条款中未指定的任何工作，则必须是付费许可 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 你还可以同时运行主和相应的灾难恢复实例，每隔90天运行一次灾难恢复测试。 
-   1. Active SQL Server 许可证由软件保障涵盖，并允许使用**一个**被动辅助 SQL Server 实例，最多可有与许可的活动服务器相同的计算量。 
-   1. 辅助 SQL Server VM 利用 Azure 门户中的[灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)许可证。
-
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
    可以。 可以通过启用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)轻松地将即用即付（PAYG）库图像切换为自带许可证（BYOL）。  有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 目前，此功能仅面向公有云客户提供。
@@ -98,6 +89,10 @@ ms.locfileid: "75374074"
 1. **切换许可模型是否需要将 SQL Server 停机？**
 
    不。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要向 SQL Server VM 资源提供程序注册你的 SQL Server VM，则[Sql iaas 扩展](virtual-machines-windows-sql-server-agent-extension.md)为必备组件，并且在_完整_模式下安装 sql iaas 扩展会重启 SQL Server 服务。 同样，如果需要安装 SQL IaaS 扩展，则可以在_轻型_模式下安装它以实现有限的功能，或在维护时段内以_完全_模式安装。 在_轻型_模式下安装的 SQL IaaS 扩展可随时升级到_完整_模式，但需要重新启动 SQL Server 服务。 
+   
+1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
+
+   不。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 Azure 资源管理器型号，并向 SQL Server VM 资源提供程序进行注册。 将 VM 注册到 SQL Server VM 资源提供程序后，会在 VM 上提供授权模型更改。
 
 1. **是否可以使用 Azure 门户来管理同一 VM 上的多个实例？**
 
@@ -106,6 +101,32 @@ ms.locfileid: "75374074"
 1. **CSP 订阅是否能够激活 Azure 混合权益？**
 
    能，Azure 混合权益适用于 CSP 订阅。 CSP 客户应首先部署即用即付映像，然后[将许可模式更改](virtual-machines-windows-sql-ahb.md)为自带许可。
+   
+ 
+1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
+
+   若要为备用次要可用性组或故障转移群集实例提供免费的被动许可证，必须满足以下所有条件，如[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)所述：
+
+   1. 你有通过[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得的[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
+   1. 被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步，否则，维护被动数据库处于热备用状态。 如果它正在为数据提供服务（例如，向运行活动 SQL Server 工作负荷的客户端报告，或者执行产品条款中未指定的任何工作，则必须是付费许可 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 你还可以同时运行主和相应的灾难恢复实例，每隔90天运行一次灾难恢复测试。 
+   1. Active SQL Server 许可证由软件保障涵盖，并允许使用**一个**被动辅助 SQL Server 实例，最多可有与许可的活动服务器相同的计算量。 
+   1. 辅助 SQL Server VM 利用 Azure 门户中的[灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)许可证。
+   
+1. **什么被视为被动实例？**
+
+   被动 SQL Server 实例不会向客户端提供 SQL Server 数据或运行活动 SQL Server 工作负荷。 它仅用于与主服务器同步，否则，维护被动数据库处于热备用状态。 如果它正在为数据提供服务（例如，向运行活动 SQL Server 工作负荷的客户端报告，或者执行产品条款中未指定的任何工作，则必须是付费许可 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 你还可以同时运行主和相应的灾难恢复实例，每隔90天运行一次灾难恢复测试。
+   
+
+1. **哪些方案可以利用 Distaster 恢复（DR）权益？**
+
+   [许可指南](https://aka.ms/sql2019licenseguide)提供了可使用灾难恢复权益的方案。 有关详细信息，请参阅你的产品条款，并与你的许可联系或客户经理联系。
+
+1. **哪些订阅支持灾难恢复（DR）权益？**
+
+   作为固定权益提供软件保障等效订阅权限的综合性程序支持 DR 权益。 这包括。 但并不限于：开盘值（OV-ES）、开盘值订阅（OVS-ES）、企业协议（EA）、企业订阅协议（EAS）以及服务器和云注册（SCE）。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)，并与你的许可联系或 acocunt 经理联系。 
+
+   
+ ## <a name="resource-provider"></a>资源提供程序
 
 1. **是否会向新的 SQL Server VM 资源提供程序注册我的 VM 带来额外的费用？**
 
@@ -127,9 +148,7 @@ ms.locfileid: "75374074"
 
     可以。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，无法将自部署 SQL Server VM 转换为即用即付。
 
-1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
 
-   不。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 Azure 资源管理器型号，并向 SQL Server VM 资源提供程序进行注册。 将 VM 注册到 SQL Server VM 资源提供程序后，会在 VM 上提供授权模型更改。 
    
 
 
@@ -181,9 +200,9 @@ ms.locfileid: "75374074"
 
 ## <a name="general"></a>常规
 
-1. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
+1. **Azure Vm 是否支持 SQL Server 故障转移群集实例（FCI）？**
 
-   可以。 可在 [Windows Server 2016 上创建 Windows 故障转移群集 ](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+   可以。 可以使用[高级文件共享（PFS）](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)或存储[空间直通（S2D）](virtual-machines-windows-portal-sql-create-failover-cluster.md)为存储子系统安装故障转移群集实例。 高级文件共享提供可满足多个工作负荷需求的 IOPS 和吞吐量容量。 对于 IO 密集型工作负荷，请考虑使用存储空间直通（基于托管高级或 hyper-v）。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
 
    > [!IMPORTANT]
    > 目前，Azure 上的 SQL Server FCI 不支持_完整_ [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 建议从参与 FCI 的 Vm 中卸载_完全_扩展，并改为在_轻型_模式下安装扩展。 此扩展插件支持功能，如自动备份和修补功能，以及 SQL Server 的一些门户功能。 卸载_完整_代理后，这些功能对 SQL Server 的 vm 将不起作用。

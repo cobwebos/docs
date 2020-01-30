@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546480"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841261"
 ---
 # <a name="summarize-data"></a>汇总数据
 
@@ -22,9 +22,9 @@ ms.locfileid: "76546480"
 
 使用 "汇总数据" 模块可创建一组标准统计度量值，这些度量值用于描述输入表中的每一列。
 
-当您想要了解完整数据集的特征时，汇总统计信息非常有用。 例如，你可能需要了解以下内容：
+当您想要了解完整数据集的特征时，汇总统计信息非常有用。 例如，你可能需要知道：
 
-- 每个列中缺少多少个值？
+- 每个列中的缺失值有多少？
 - 功能列中有多少个唯一值？
 - 每个列的平均值和标准偏差是怎样的？
 
@@ -49,7 +49,7 @@ ms.locfileid: "76546480"
 |列名称|Description|
 |------|------|  
 |**功能**|列的名称|
-|**Count**|统计所有行|
+|**Count**|所有行的计数|
 |**唯一值计数**|列中的唯一值数|
 |**缺少值计数**|列中的唯一值数|
 |**Min**|列中的最小值|  
@@ -65,11 +65,25 @@ ms.locfileid: "76546480"
 |**样本标准偏差**|列的标准偏差;请参阅说明|
 |**样本偏斜度**|列偏斜度;请参阅说明|
 |**示例峰值**|列峰值;请参阅说明|
-|**P 0。5**|0.5% 百评分|
+|**P 0。5**|0.5% 百分点|
 |**P1**|1% 百分点|
 |**P5**|5% 百分点|
 |**P95**|95% 百分点|
 |**P 99。5**|99.5% 百分点 |
+
+## <a name="technical-notes"></a>技术说明
+
+- 对于非数字列，只计算 "计数"、"唯一值计数" 和 "缺失值计数" 的值。 对于其他统计信息，返回 null 值。
+
+- 使用以下规则处理包含布尔值的列：
+
+    - 计算最小值时，将应用逻辑 AND。
+    
+    - 计算 Max 时，应用逻辑 OR
+    
+    - 计算范围时，该模块首先检查列中的唯一值数是否等于2。
+    
+    - 在计算需要浮点计算的任何统计信息时，True 的值被视为1.0，False 的值被视为0.0。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: dd38cb58e6e6db9767be9adb8f299107601de580
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701767"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834087"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>用于调用 web Api 的 web API：代码配置
 
 注册 web API 后，可以为该应用程序配置代码。
 
 用于配置 web API 的代码，以使其调用下游 web Api 基于用于保护 web API 的代码构建。 有关详细信息，请参阅[受保护的 WEB API：应用配置](scenario-protected-web-api-app-configuration.md)。
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>已订阅 OnTokenValidated 的代码
 
@@ -47,7 +49,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.AddTokenAcquisition();
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
-        // When an access token for our own web API is validated, we add it 
+        // When an access token for our own web API is validated, we add it
         // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
@@ -55,7 +57,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
         {
             context.Success();
 
-            // Adds the token to the cache and handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -142,6 +144,82 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+代表（OBO）流用于获取用于调用下游 web API 的令牌。 在此流中，你的 web API 从客户端应用程序接收具有用户委托权限的持有者令牌，然后交换另一个访问令牌的此令牌以调用下游 web API。
+
+下面的代码使用 web API 中的弹簧 Security framework `SecurityContextHolder` 来获取经验证的持有者令牌。 然后，它使用 MSAL Java 库通过 `OnBehalfOfParameters``acquireToken` 调用来获取下游 API 的令牌。 MSAL 缓存令牌，以便对 API 的后续调用可以使用 `acquireTokenSilently` 获取缓存的令牌。
+
+```Java
+@Component
+class MsalAuthHelper {
+
+    @Value("${security.oauth2.client.authority}")
+    private String authority;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String secret;
+
+    @Autowired
+    CacheManager cacheManager;
+
+    private String getAuthToken(){
+        String res = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+            res = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+        }
+        return res;
+    }
+
+    String getOboToken(String scope) throws MalformedURLException {
+        String authToken = getAuthToken();
+
+        ConfidentialClientApplication application =
+                ConfidentialClientApplication.builder(clientId, ClientCredentialFactory.create(secret))
+                        .authority(authority).build();
+
+        String cacheKey = Hashing.sha256()
+                .hashString(authToken, StandardCharsets.UTF_8).toString();
+
+        String cachedTokens = cacheManager.getCache("tokens").get(cacheKey, String.class);
+        if(cachedTokens != null){
+            application.tokenCache().deserialize(cachedTokens);
+        }
+
+        IAuthenticationResult auth;
+        SilentParameters silentParameters =
+                SilentParameters.builder(Collections.singleton(scope))
+                        .build();
+        auth = application.acquireTokenSilently(silentParameters).join();
+
+        if (auth == null){
+            OnBehalfOfParameters parameters =
+                    OnBehalfOfParameters.builder(Collections.singleton(scope),
+                            new UserAssertion(authToken))
+                            .build();
+
+            auth = application.acquireToken(parameters).join();
+        }
+
+        cacheManager.getCache("tokens").put(cacheKey, application.tokenCache().serialize());
+
+        return auth.accessToken();
+    }
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+代表（OBO）流用于获取用于调用下游 web API 的令牌。 在此流中，你的 web API 从客户端应用程序接收具有用户委托权限的持有者令牌，然后交换另一个访问令牌的此令牌以调用下游 web API。
+
+Python web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，web API 可以通过调用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法，使用 MSAL Python 库获取下游 API 的访问令牌。 使用 MSAL Python 演示此流的示例尚不可用。
+
+---
 
 你还可以在[node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)中查看 OBO flow 实现的示例。
 

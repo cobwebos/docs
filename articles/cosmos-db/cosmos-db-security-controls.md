@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d06afb3670b1c3af3f1acf0bd690c1e3e266a11c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913078"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771790"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 的安全控制
 
@@ -52,7 +52,7 @@ ms.locfileid: "75913078"
 | 服务器端加密：客户托管的密钥（BYOK） | 是 | 请参阅[为你的 Azure Cosmos DB 帐户配置客户托管的密钥](how-to-setup-cmk.md)  |
 | 列级加密（Azure 数据服务）| 是 | 仅适用于表 API 高级版。 并非所有 Api 都支持此功能。 请参阅[Azure Cosmos DB 简介：表 API](table-introduction.md)。 |
 | 传输中的加密（如 ExpressRoute 加密、VNet 加密和 VNet-VNet 加密）| 是 | 传输时加密所有 Azure Cosmos DB 数据。 |
-| 加密的 API 调用| 是 | 与 Azure Cosmos DB 的所有连接都支持 HTTPS。 Azure Cosmos DB 还支持 TLS 1.2。<br>可以强制服务器端使用最低 TLS 版本。 为此，请联系[cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com])。 |
+| 加密的 API 调用| 是 | 与 Azure Cosmos DB 的所有连接都支持 HTTPS。 Azure Cosmos DB 还支持 TLS 1.2。<br>可以强制服务器端使用最低 TLS 版本。 为此，请联系[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)。 |
 
 ## <a name="configuration-management"></a>配置管理
 

@@ -3,26 +3,26 @@ title: 缩放级别和磁贴网格 |Microsoft Azure 映射
 description: 在本文中，你将了解 Microsoft Azure 图中的缩放级别和磁贴网格。
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910774"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765841"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
-Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用于将球面地球转换为平面地图的数学模型。 球状 Mercator 投影将在两极处拉伸地图，以创建一个方形地图。 这会明显扭曲地图的刻度和面积，但具有两个比此扭曲更重要的重要属性：
+Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用于将球面地球转换为平面地图的数学模型。 球状 Mercator 投影在两极处拉伸地图，以创建正方形图。 此投影会明显扭曲地图的刻度和面积，但具有两个比此扭曲更重要的重要属性：
 
-- 它是一个 conformal 投影，这意味着它将保留相对较小对象的形状。 当显示高空图像时，这一点尤其重要，因为我们希望避免改变建筑物的形状。 方形建筑应显示为方形，而不是矩形。
-- 这是一个圆柱投影，这意味着北部和南部始终都是直接的，而西部和东始终是直接的左右。 
+- 它是一个 conformal 投影，这意味着它将保留相对较小对象的形状。 在显示高空图像时，保留小对象的形状尤其重要。 例如，我们希望避免使建筑物的形状变形。 方形建筑应显示为方形，而不是矩形。
+- 这是一个圆柱投影。 北部和南部始终为向上和向下，而西部和东始终是左和右。 
 
-为了优化地图检索和显示的性能，地图分成了方块图块。 对于公路地图，Azure Maps SDK 使用大小为 512 x 512 像素的磁贴，为卫星图像使用较小的 256 x 256 像素。 Azure maps 提供23个缩放级别的光栅和矢量磁贴，编号为0到22。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
+为了优化地图检索和显示的性能，地图分成了方块图块。 对于公路地图，Azure Maps SDK 使用大小为 512 x 512 像素的磁贴，为卫星图像使用较小的 256 x 256 像素。 Azure Maps 提供23个缩放级别的光栅和矢量磁贴，编号为0到22。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
 
 <center>
 
@@ -36,7 +36,7 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用
 
 每个附加的缩放级别四分割上一个的平铺，创建 2<sup>缩放</sup>x 2<sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
 
-适用于 web 和 Android 的 Azure Maps 交互式地图控件支持缩放级别25个缩放级别，其编号为0到24。 尽管仅当磁贴可用时，路上数据才会出现在中的缩放级别。
+适用于 web 和 Android 的 Azure Maps 交互式地图控件支持25个缩放级别，其编号为0到24。 尽管仅当磁贴可用时，路上数据才会出现在中的缩放级别。
 
 下表提供了缩放级别的值的完整列表，其中图块大小为512像素正方形：
 
@@ -70,7 +70,7 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用
 
 ## <a name="pixel-coordinates"></a>像素坐标
 
-选择要在每个缩放级别使用的投影和缩放时，可以将地理坐标转换为像素坐标。 可以按以下方式计算特定缩放级别的世界地图图像的完整像素宽度和高度：
+选择要在每个缩放级别使用的投影和缩放时，可以将地理坐标转换为像素坐标。 特定缩放级别的世界地图图像的完整像素宽度和高度将计算如下：
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ var mapHeight = mapWidth;
 
 <center>
 
-显示像素尺寸的 ![地图](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![显示像素尺寸的地图](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-给定纬度和经度（以度为单位）和详细程度，像素 XY 坐标可以按如下方式计算：
+</center>
+
+给定纬度和经度（以度为单位）和详细程度，像素 XY 坐标的计算方法如下：
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-纬度和经度值假设在 WGS 84 基准上。 即使 Azure Maps 使用球面投影，也务必将所有地理坐标转换为通用基准，并将 WGS 84 选为该基准。 假定该经度值的范围介于-180 到 + 180 度之间，并且纬度值必须从-85.05112878 到85.05112878。 这可以避免两极上的奇点，并使投影的地图成为正方形。
+纬度和经度值假设在 WGS 84 基准上。 尽管 Azure Maps 使用球面投影，但将所有地理坐标转换为通用基准非常重要。 WGS 84 是所选的基准。 假定该经度值的范围介于-180 度到 + 180 度之间，并且纬度值必须从-85.05112878 到85.05112878。 坚持这些值可避免在两极中使用奇点，并确保投影的地图为方形形状。
 
 ## <a name="tile-coordinates"></a>磁贴坐标
 
-为了优化地图检索和显示的性能，会将呈现的地图剪切为磁贴。 由于像素数在每个缩放级别上不同，因此磁贴的数目是多少：
+为了优化地图检索和显示的性能，会将呈现的地图剪切为磁贴。 每个缩放级别上的像素数和磁贴数不同：
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-通过缩放级别调用磁贴，x 和 y 坐标对应磁贴在该缩放级别的网格上的位置。
+磁贴由缩放级别调用。 X 和 y 坐标对应于该缩放级别在网格上的位置。
 
-确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 这意味着要显示给定范围区域所需的磁贴数量取决于世界上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
+确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 因此，显示给定范围的区域所需的磁贴数取决于世界地图上缩放网格的特定位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
 <center>
 

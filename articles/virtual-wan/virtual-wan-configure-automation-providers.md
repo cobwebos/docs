@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168491"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775320"
 ---
 # <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
 
@@ -81,7 +81,7 @@ ms.locfileid: "72168491"
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
 * **vpnSiteConnections** - 此部分提供以下信息：
 
-    * 虚拟中心 VNet 的地址空间。<br>例如：
+    * 虚拟中心 VNet 的地址空间。<br>示例：
  
         ```
         "AddressSpace":"10.1.0.0/24"
@@ -89,15 +89,15 @@ ms.locfileid: "72168491"
     * 已连接到中心的 VNet 的地址空间。<br>示例：
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>例如：
+    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
+    * **Vpngateway 连接配置详细信息**，例如 BGP、预共享密钥等等。PSK 是自动为您生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
 **设备配置文件示例**
 
@@ -118,7 +118,7 @@ ms.locfileid: "72168491"
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 

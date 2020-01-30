@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563167"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772142"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
 
@@ -30,9 +30,11 @@ IoT 中心公共终结点的 IP 地址前缀会定期发布在_AzureIoTHub_ [服
 
 * 在设备的防火墙配置中添加允许规则时，最好提供[适用协议使用的特定端口](./iot-hub-devguide-protocols.md#port-numbers)。
 
-* IoT 中心的 IP 地址前缀可能会发生更改。 这些更改会在生效之前通过服务标记定期发布。 因此，请务必开发定期检索和使用最新服务标记的过程。 可以通过[服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)自动执行此过程。
+* IoT 中心的 IP 地址前缀可能会发生更改。 这些更改会在生效之前通过服务标记定期发布。 因此，请务必开发定期检索和使用最新服务标记的过程。 可以通过[服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)自动执行此过程。 请注意，服务标记发现 API 仍处于预览阶段，在某些情况下，可能不会生成标记和 IP 地址的完整列表。 在发现 API 正式发布之前，请考虑[以可下载的 JSON 格式使用服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
 
 * 使用*AzureIoTHub. [区域名称]* 标记，用于标识特定区域的 IoT 中心终结点使用的 IP 前缀。 若要考虑数据中心灾难恢复，或[区域故障转移](iot-hub-ha-dr.md)，请确保也启用与 IoT 中心的地理对区域的 IP 前缀的连接。
+
+* 在 IoT 中心设置防火墙规则可能会阻止对 IoT 中心运行 Azure CLI 和 PowerShell 命令所需的连接。 为避免出现这种情况，可以为客户端的 IP 地址前缀添加允许规则，以重新启用 CLI 或 PowerShell 客户端以与 IoT 中心通信。  
 
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法

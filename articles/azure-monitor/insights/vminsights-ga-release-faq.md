@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450705"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765766"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 
@@ -20,19 +20,28 @@ ms.locfileid: "75450705"
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 更新
 
-我们计划在2020年1月发布用于 VM 的 Azure Monitor 的新版本。 在此版本后为 Vm 启用 Azure 监视器的客户会自动收到新版本，但已在使用用于 VM 的 Azure Monitor 的现有客户将会收到升级提示。 如果在多个工作区中部署大型部署，则此 FAQ 和我们的文档将提供指导以进行大规模升级。
+我们发布了新版本的用于 VM 的 Azure Monitor。 为 Vm 启用 Azure 监视器的客户现在会收到新版本，但已在使用用于 VM 的 Azure Monitor 的现有客户将会收到升级提示。 如果在多个工作区中部署大型部署，则此 FAQ 和我们的文档将提供指导以进行大规模升级。
 
-在此升级过程中，用于 VM 的 Azure Monitor 的性能数据与[容器 Azure Monitor](container-insights-overview.md)存储在同一 `InsightsMetrics` 表中，并使您可以更轻松地查询这两个数据集。 此外，还可以存储在以前使用的表中无法存储的多个不同的数据集。 我们的性能视图也将更新为使用这个新表。
+在此升级过程中，用于 VM 的 Azure Monitor 性能数据存储在[容器 Azure Monitor](container-insights-overview.md)相同的*InsightsMetrics*表中，这使你可以更轻松地查询两个数据集。 此外，还可以存储在以前使用的表中无法存储的多个不同的数据集。 
 
-我们正在迁移到新的连接数据集数据类型。 此更改将在12月2019发生，并将在 Azure 更新博客中公布。 目前存储在 `ServiceMapComputer_CL` 和 `ServiceMapProcess_CL`（自定义日志表）中的数据将移到名为 `VMComputer` 和 `VMProcess`的专用数据类型。 通过迁移到专用数据类型，它们会获得数据引入的优先级，表架构将在所有客户之间进行标准化。
+在接下来的一周或第二周，我们的性能视图也将更新为使用此新表。
 
 我们认识到，请求现有客户升级导致工作流中断，这就是我们目前在公共预览版中（而不是在 GA 之后）完成此操作的原因。
 
+
 ## <a name="what-is-changing"></a>有什么变化？
 
-目前，当你完成用于 VM 的 Azure Monitor 的载入过程时，将在你选择用于存储监视数据的工作区中启用服务映射解决方案，然后为我们从 Vm 收集的数据配置性能计数器。 我们将发布名为**VMInsights**的新解决方案，其中包括用于数据收集的其他功能，以及用于将此数据存储在 Log Analytics 工作区中的新位置。
+我们发布了一个名为 VMInsights 的新解决方案，其中包括用于数据收集的其他功能，以及用于将此数据存储在 Log Analytics 工作区中的新位置。 
 
-当前在 Log Analytics 工作区中使用性能计数器的过程将数据发送到 `Perf` 表。 这一新的解决方案会将数据发送到名为 `InsightsMetrics` 的表，该表也由容器 Azure Monitor 使用。 此表架构使我们可以存储与 Perf 表格式不兼容的其他度量值和服务数据集。
+过去，我们在你的工作区中启用了 ServiceMap 解决方案，并在 Log Analytics 工作区中设置了性能计数器，以将数据发送到*Perf*表。 这一新的解决方案会将数据发送到名为*InsightsMetrics*的表，用于容器 Azure Monitor。 此表架构使我们可以存储与*Perf*表格式不兼容的其他度量值和服务数据集。
+
+
+## <a name="how-do-i-upgrade"></a>如何实现升级？
+需要升级的每个 VM 都将在 Azure 门户中用于 VM 的 Azure Monitor 的 "**入门**" 选项卡中进行标识。 可以升级单个 VM，也可以选择多个 VM 一起升级。 使用以下命令通过 PowerShell 进行升级：
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果安装 VMInsights 解决方案，我应该如何处理我的工作区中的性能计数器？
 

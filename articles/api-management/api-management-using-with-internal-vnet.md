@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430597"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841857"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -126,7 +126,7 @@ ms.locfileid: "75430597"
 
 * 子网范围内的负载平衡*专用*虚拟 IP 地址将被保留，并用于从虚拟网络中访问 API 管理服务终结点。 此*专用*IP 地址可在 Azure 门户中服务的 "概述" 边栏选项卡上找到。 此地址必须在虚拟网络使用的 DNS 服务器上注册。
 * 负载均衡的*公共*IP 地址（VIP）也将保留，以通过端口3443提供对管理服务终结点的访问。 此*公共*IP 地址可在 Azure 门户中服务的 "概述" 边栏选项卡上找到。 *公共*IP 地址仅用于通过端口3443到 `management` 终结点的控制平面流量，并可锁定到[ApiManagement][ServiceTags] servicetag。
-* 子网 IP 范围（DIP）中的 IP 地址将分配给服务中的每个 VM，并将用于访问虚拟网络中的资源。 公共 IP 地址（VIP）将用于访问虚拟网络外部的资源。 如果使用 IP 限制列表来保护虚拟网络中的资源，则必须指定部署了 API 管理服务的子网的整个范围，才能授予或限制服务的访问权限。
+* 子网 IP 范围（DIP）中的 IP 地址将分配给服务中的每个 VM，并将用于访问虚拟网络中的资源。 公共 IP 地址（VIP）将用于访问虚拟网络外部的资源。 如果使用 IP 限制列表来保护虚拟网络中的资源，则必须指定要在其中部署 API 管理服务的子网的整个范围，才能授予或限制服务的访问权限。
 * 可在 Azure 门户中的 "概述" 边栏选项卡上找到负载平衡的公共和专用 IP 地址。
 * 如果从中删除服务，然后将其重新添加到虚拟网络中，则分配给公共和专用访问的 IP 地址可能会更改。 如果发生这种情况，可能需要在虚拟网络中更新 DNS 注册、路由规则和 IP 限制列表。
 

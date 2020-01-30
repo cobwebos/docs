@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759697"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768209"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -103,11 +103,10 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
-
-指定 `-Order CloudTieringPolicy` 将首先撤回最近修改的文件。
-其他可选参数：
+可选参数：
+* `-Order CloudTieringPolicy` 将首先撤回最近修改的文件。  
 * `-ThreadCount` 确定可并行回调的文件数。
 * `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
 * `-PerFileRetryDelaySeconds`确定重试两次重试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。

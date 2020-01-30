@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867687"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842446"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -56,7 +56,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure SQL 数据仓库** | Microsoft.Sql/servers    |  Sql Server （sqlServer）        |
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> 表（表、table_secondary）<BR> 队列（队列、queue_secondary）<BR> 文件（文件、file_secondary）<BR> Web （web、web_secondary）        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）       |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob （blob、blob_secondary）<BR> Data Lake 文件系统 Gen2 （dfs，dfs_secondary）       |
 |**Azure Cosmos DB** | AzureCosmosDB/databaseAccounts | Sql、MongoDB、Cassandra、Gremlin、表|
 |**Azure Database for PostgreSQL-单服务器** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
@@ -101,7 +101,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 对于 Azure 服务，请使用下表中所述的建议区域名称：
 
-|专用链接资源类型   |子资源  |区域名称  |
+|专用链接资源类型   |Subresource  |区域名称  |
 |---------|---------|---------|
 |SQL DB/DW （Sql/服务器）    |  Sql Server （sqlServer）        |   privatelink.database.windows.net       |
 |存储帐户（storageAccounts/）    |  Blob （blob、blob_secondary）        |    privatelink.blob.core.windows.net      |

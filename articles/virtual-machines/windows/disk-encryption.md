@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: bc45f05da553f456094c1ca96454090ded4d9f4f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8833a70b88b59c59dd373f1cfa9535fd7205ceb5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290421"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837742"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -176,6 +176,20 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB
 
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 
+```
+
+#### <a name="encrypt-existing-unattached-managed-disks"></a>加密现有未附加的托管磁盘 
+
+不能将现有磁盘附加到正在运行的 VM，以便使用以下脚本对其进行加密：
+
+```PowerShell
+$rgName = "yourResourceGroupName"
+$diskName = "yourDiskName"
+$diskEncryptionSetName = "yourDiskEncryptionSetName"
+ 
+$diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $diskEncryptionSetName
+ 
+New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
 ```
 
 #### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 Marketplace 映像创建虚拟机规模集，使用客户管理的密钥对 OS 和数据磁盘进行加密

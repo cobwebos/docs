@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480185"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840326"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置自定义策略的手机注册和登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "75480185"
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)
 * 在租户中[注册的 Web 应用程序](tutorial-register-applications.md)
-* 已上传到租户的[自定义策略](active-directory-b2c-get-started-custom.md)
+* 已上传到租户的[自定义策略](custom-policy-get-started.md)
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>获取电话注册 & 登录初学者包
 
@@ -44,7 +44,7 @@ ms.locfileid: "75480185"
 
 1. 在每个文件中，将字符串 `yourtenant` 替换为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为*contosob2c*，则 `yourtenant.onmicrosoft.com` 的所有实例都将变为 `contosob2c.onmicrosoft.com`。
 
-1. 完成[Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的[将应用程序 id 添加到自定义策略](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy)部分中的步骤。 在这种情况下，请 `/phone-number-passwordless/`在完成必备组件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*时注册的两个应用程序的**应用程序（客户端） id** **`Phone_Email_Base.xml`** 进行更新。
+1. 完成[Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的[将应用程序 id 添加到自定义策略](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)部分中的步骤。 在这种情况下，请 `/phone-number-passwordless/`在完成必备组件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*时注册的两个应用程序的**应用程序（客户端） id** **`Phone_Email_Base.xml`** 进行更新。
 
 ## <a name="upload-the-policy-files"></a>上传策略文件
 

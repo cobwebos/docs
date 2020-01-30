@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure CLI 通过安全组视图分析虚拟机安全性。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 70460d3b46baa094f227f96733f8ac98fae9285b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277853"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840769"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI 通过安全组视图分析虚拟机安全性
 
@@ -35,9 +32,9 @@ ms.locfileid: "74277853"
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 本文中介绍的方案检索给定虚拟机的已配置有效安全规则。
 

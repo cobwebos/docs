@@ -5,26 +5,26 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472498"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767437"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本文介绍如何使用 Azure CLI 部署 AKS 群集。 还可将 Windows Server 容器中的 ASP.NET 示例应用程序部署到群集。
 
-此功能目前以预览版提供。
+此功能目前处于预览状态。
 
 ![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
 
 本文假定你基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 创建可运行 Windows Server 容器的群集后，必须添加其他节点池。 稍后的步骤中介绍了添加其他节点池，但首先需要启用一些预览功能。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
+> AKS 预览功能是可选的自助服务。 预览按 "原样" 提供，并从服务级别协议和有限担保中排除。 AKS 预览版是以最大努力为基础的客户支持部分覆盖的。 因此，这些功能并不用于生产。 有关其他信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]
@@ -69,7 +69,7 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-当注册状态为 `Registered` 时，按 Ctrl-c 停止监视状态。  然后使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
+当注册状态 `Registered`时，请按 Ctrl-c 停止监视状态。  然后使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -89,7 +89,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -119,7 +119,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要使用使用[AZURE CNI][azure-cni-about] （advanced）网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项，请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 如果这些资源不存在，此命令将创建必要的网络资源。
+若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要使用使用[AZURE CNI][azure-cni-about] （advanced）网络插件的网络策略。 若要详细了解如何计划所需的子网范围和网络注意事项，请参阅[配置 AZURE CNI 网络][use-advanced-networking]。 使用[az aks create][az-aks-create]命令创建名为*myAKSCluster*的 aks 群集。 如果这些资源不存在，此命令将创建必要的网络资源。
   * 群集配置了两个节点
   * *Windows 管理员密码*和*windows 管理员-用户名*参数为群集上创建的任何 windows Server 容器设置管理员凭据。
 
@@ -136,7 +136,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.6 \
+    --kubernetes-version 1.15.7 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -162,12 +162,12 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.6
+    --kubernetes-version 1.15.7
 ```
 
 上述命令将创建一个名为*npwin*的新节点池，并将其添加到*myAKSCluster*中。 创建节点池以运行 Windows Server 容器时，*节点-vm 大小*的默认值为*Standard_D2s_v3*。 如果选择设置*节点-vm 大小*的参数，请查看[受限 vm 大小][restricted-vm-sizes]的列表。 建议的最小大小为*Standard_D2s_v3*。 上述命令还使用运行 `az aks create`时创建的默认 vnet 中的默认子网。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -181,7 +181,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -191,8 +191,8 @@ kubectl get nodes
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.6
-aksnpwin987654                      Ready    agent   108s   v1.14.6
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
+aksnpwin987654                      Ready    agent   108s   v1.15.7
 ```
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -302,7 +302,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何部署 Kubernetes 群集，以及如何将 Windows Server 容器中的 ASP.NET 示例应用程序部署到该群集。 访问刚刚创建的群集的 [Kubernetes Web 仪表板][kubernetes-dashboard]。
+本文介绍了如何部署 Kubernetes 群集，以及如何将 Windows Server 容器中的 ASP.NET 示例应用程序部署到该群集。 访问刚刚创建的群集的[Kubernetes web 仪表板][kubernetes-dashboard]。
 
 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 

@@ -3,22 +3,20 @@ title: 读取 NSG 流日志 | Microsoft Docs
 description: 本文介绍如何分析 NSG 流日志
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.author: damendo
+ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539249"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840819"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -29,7 +27,7 @@ NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageserv
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在如下方案中，你有一个存储在存储帐户的示例流日志。 了解如何选择性地读取 NSG 流日志中的最新事件。 虽然本文中将使用 PowerShell，但本文中讨论到的概念并不限于编程语言，而是适用于 Azure 存储 API 支持的所有语言。
 

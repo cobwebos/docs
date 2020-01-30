@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992439"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841759"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>配置事件网格模块的标识
 
-本文提供事件网格模块的可能标识配置示例。 默认情况下，事件网格模块将显示 IoT security daemon 配置的标识证书。 标识证书由事件网格模块在其传出的调用（即传递事件时）提供。 然后，事件网格事件的订阅者可以选择验证它是否确实是在接受事件前发送事件的事件网格模块。
+本文介绍如何在边缘上为网格配置标识。 默认情况下，事件网格模块会提供 IoT security daemon 配置的标识证书。 边缘的事件网格在传递事件时，会向其提供其传出调用的标识证书。 然后，订阅者可以验证它是否是在接受前发送事件的事件网格模块。
 
 有关所有可能的配置，请参阅[安全性和身份验证](security-authentication.md)指南。
 
@@ -28,8 +28,8 @@ ms.locfileid: "72992439"
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ ms.locfileid: "72992439"
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

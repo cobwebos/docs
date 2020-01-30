@@ -3,26 +3,26 @@ title: 在容器组中启用 SSL
 description: 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483485"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773070"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器组中启用 SSL 终结点
 
 本文介绍如何使用应用程序容器和运行 SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 通过使用单独的 SSL 终结点设置容器组，你可以为应用程序启用 SSL 连接，而无需更改应用程序代码。
 
-设置包含两个容器的容器组：
+设置包含两个容器的容器组示例：
 * 使用公共 Microsoft [helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)映像运行简单 web 应用的应用程序容器。 
 * 运行公共[Nginx](https://hub.docker.com/_/nginx)映像的挎斗容器，配置为使用 SSL。 
 
-在此示例中，容器组只公开端口443的 Nginx 及其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用，该应用在内部侦听端口80。 可以调整侦听其他端口的容器应用的示例。
+在此示例中，容器组只公开端口443的 Nginx 及其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用，该应用在内部侦听端口80。 可以调整侦听其他端口的容器应用的示例。 请参阅[后续步骤](#next-steps)，了解在容器组中启用 SSL 的其他方法。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 如果想要在本地使用它，建议使用 2.0.55 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -235,4 +235,10 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 尽管本文在挎斗中使用 Nginx，但你可以使用另一个 SSL 提供程序，例如[Caddy](https://caddyserver.com/)。
 
-在容器组中启用 SSL 的另一种方法是在[azure 虚拟网络](container-instances-vnet.md)中使用[azure 应用程序网关](../application-gateway/overview.md)部署组。 网关可以设置为 SSL 终结点。 请参阅可调整的示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)，以便在网关上启用 SSL 终端。
+如果在[Azure 虚拟网络](container-instances-vnet.md)中部署容器组，则可以考虑使用其他选项为后端容器实例启用 SSL 终结点，包括：
+
+* [Azure Functions 代理](../azure-functions/functions-proxies.md)
+* [Azure API 管理](../api-management/api-management-key-concepts.md)
+* [Azure 应用程序网关](../application-gateway/overview.md)
+
+若要使用应用程序网关，请参阅示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。

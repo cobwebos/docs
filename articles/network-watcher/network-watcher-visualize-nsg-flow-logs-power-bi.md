@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用 Power BI 可视化 NSG 流日志。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277731"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840598"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
@@ -31,7 +28,7 @@ ms.locfileid: "74277731"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 在以下方案中，我们会将 Power BI Desktop 连接到已配置为 NSG 流日志数据接收器的存储帐户。 连接到存储帐户后，Power BI 将下载并分析日志，提供网络安全组记录的流量的可视化形式。
 

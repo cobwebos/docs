@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950861"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840122"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户体验的接口
 
-对于更常见的用户体验，例如注册、登录和配置文件编辑，可以在 Azure Active Directory B2C （Azure AD B2C）中使用[用户流](active-directory-b2c-reference-policies.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
+对于更常见的用户体验，例如注册、登录和配置文件编辑，可以在 Azure Active Directory B2C （Azure AD B2C）中使用[用户流](user-flow-overview.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
 
 在本文中，学习如何：
 
@@ -33,7 +33,7 @@ ms.locfileid: "74950861"
 
 ## <a name="prerequisites"></a>必备组件
 
-[创建用户流](tutorial-create-user-flows.md)以便用户注册并登录到你的应用程序。
+[创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
 ## <a name="create-customization-files"></a>创建自定义文件
 
@@ -43,7 +43,7 @@ ms.locfileid: "74950861"
 
 虽然可以通过多种方式存储文件，但在本教程中，可以将其存储在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 请确保使用的是包含 Azure 订阅的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的订阅的目录。 此目录与包含 Azure B2C 租户的目录不同。
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择“存储帐户”。
 4. 选择 **添加** 。
@@ -71,7 +71,7 @@ ms.locfileid: "74950861"
 
     ![Azure 门户中的 Azure Blob 存储中的 CORS 配置页](./media/tutorial-customize-ui/enable-cors.png)
 
-5. 单击“保存”。
+5. 单击“ **保存**”。
 
 ### <a name="create-the-customization-files"></a>创建自定义文件
 
@@ -139,7 +139,7 @@ ms.locfileid: "74950861"
 ## <a name="update-the-user-flow"></a>更新用户流
 
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-2. 选择“用户流(策略)”，然后选择”B2C_1_signupsignin1”用户流。
+2. 依次选择“用户流(策略)”和“B2C_1_signupsignin1”用户流。
 3. 选择“页面布局”，然后在“统一注册或登录页面”下，对“使用自定义页面内容”单击“是”。
 4. 在“自定义页面 URI”中，输入之前记录的“custom-ui.html”文件的 URI。
 5. 在页面顶部，选择“保存”。
@@ -166,4 +166,4 @@ ms.locfileid: "74950861"
 > * 测试自定义 UI
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 中的语言自定义 ](active-directory-b2c-reference-language-customization.md)
+> [Azure Active Directory B2C 中的语言自定义 ](user-flow-language-customization.md)

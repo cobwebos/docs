@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756222"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841244"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -209,6 +209,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 ## <a name="common-issues"></a>常见问题
 * 如果用于建立连接的帐户不是 GSuite 中的管理员，则可能会发生授权失败。 确保用于授权访问权限的帐户对用户需要预配的**所有域**都具有管理员权限。 
+* Azure AD 支持在 GSuite 中禁用用户，以使他们无法访问应用程序，但它不会删除 GSuite 中的用户。
 
 ## <a name="next-steps"></a>后续步骤
 

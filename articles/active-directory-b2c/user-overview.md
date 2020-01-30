@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620458"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840054"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -76,12 +76,12 @@ ms.locfileid: "73620458"
 
 ## <a name="consumer-user"></a>使用者用户
 
-使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 用户帐户是使用[注册或登录用户流](../active-directory-b2c/active-directory-b2c-reference-policies.md)创建的，使用 Azure AD 图形 API 或使用 Azure 门户创建的。
+使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 用户帐户是使用[注册或登录用户流](user-flow-overview.md)创建的，使用 Azure AD 图形 API 或使用 Azure 门户创建的。
 
-可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)。
+可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
-可以使用**使用 Azure AD Graph API** 的创建使用者用户帐户[](active-directory-b2c-devquickstarts-graph-dotnet.md)部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”部分中的信息来管理帐户的属性。
+可以使用[使用 Azure AD Graph API](manage-user-accounts-graph-api.md) 的创建使用者用户帐户部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”部分中的信息来管理帐户的属性。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 
-可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅[用户迁移](active-directory-b2c-user-migration.md)或[迁移具有社交标识的用户](active-directory-b2c-social-migration.md)。
+可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅[用户迁移](user-migration.md)或[迁移具有社交标识的用户](migrate-social-identities.md)。

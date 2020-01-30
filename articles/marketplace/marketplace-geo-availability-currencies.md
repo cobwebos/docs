@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822940"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843831"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和货币支持
 
@@ -49,11 +49,12 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
+| 中国\**                            | CN        | N/A          |
 | 哥伦比亚                            | CO        | USD          |
 | 哥斯达黎加                          | CR        | USD          |
 | 科特迪瓦                       | CI        | USD          |
 | 克罗地亚                             | HR        | EUR          |
-| 库拉索岛                             | °        | USD          |
+| 库拉索岛                             | CW        | USD          |
 | 塞浦路斯                              | CY        | EUR          |
 | 捷克共和国                      | CZ        | EUR          |
 | 丹麦                             | DK        | DKK          |
@@ -68,7 +69,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 芬兰                             | FI        | EUR          |
 | 法国                              | FR        | EUR          |
 | 格鲁吉亚                             | GE        | USD          |
-| 德国                             | DE        | EUR          |
+| 德国                             | 德国        | EUR          |
 | 加纳                               | GH        | USD          |
 | 希腊                              | GR        | EUR          |
 | 危地马拉                           | GT        | USD          |
@@ -113,7 +114,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 尼加拉瓜                           | NI        | USD          |
 | 新西兰                         | NZ        | NZD          |
 | 尼日利亚                             | NG        | USD          |
-| 挪威                              | 否        | NOK          |
+| 挪威                              | 是        | NOK          |
 | 阿曼                                | OM        | USD          |
 | 巴基斯坦                            | PK        | USD          |
 | 巴勒斯坦民族权力机构               | PS        | USD          |
@@ -165,3 +166,5 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 |   |   |   |
 
 对于巴西的客户 \*，通过云解决方案提供商（CSP）提供的 Marketplace 使用 USD。
+
+仅 \** 免费和 BYOL VM 映像。

@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552128"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769495"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -156,7 +156,7 @@ ms.locfileid: "75552128"
 | 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | 10 \* TTL 为10的一般计算的16核 |
 | 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
-**方案总定价： $0.3011**
+**方案总定价： $1.4631**
 
 - 数据工厂操作 = **$0.0001**
   - 读取/写入 = 10\*00001 = $0.0001 [1 读/写 = $0.50/50000 = 0.00001]

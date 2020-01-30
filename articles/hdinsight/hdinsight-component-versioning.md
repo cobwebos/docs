@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: 475b784f4d25e28289536e6c70200fe86dd806f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435599"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764471"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -37,7 +37,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从2017年
 | Apache Hive            | 3.1.0         | 2.1.0，1.2。1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2c6986409f4cd9ad7e5799a55c4c301e51d5e879
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8942ad8bdc4f9fc37a88d09871c983f63cd8c1b9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968164"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773694"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "74968164"
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到策略的开放版本之前，此过程需要花费大约 15 分钟。
 * 如果添加或更新资产的传送策略，则必须删除现有的定位符并创建新的定位符。
 * 目前，无法对渐进式下载进行加密。
-* 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
+* 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户开具支持票证。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 动态加密
 > [!NOTE]
@@ -73,7 +73,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d732dbfa-54fc-474c-99d6-9b46a006f389
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 36
@@ -109,7 +109,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d225e357-e60e-4f42-add8-9d93aba1409a
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 168
@@ -145,7 +145,7 @@ ms.locfileid: "74968164"
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9847f705-f2ca-4e95-a478-8f823dbbaa29
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 154
@@ -166,7 +166,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: e613efff-cb6a-41b4-984a-f4f8fb6e76a4
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 78
@@ -248,7 +248,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 2643d836-bfe7-438e-9ba2-bc6ff28e4a53
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1079
@@ -300,7 +300,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9e7fa407-f84e-43aa-8f05-9790b46e279b
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 58
@@ -337,7 +337,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: f160ad25-b457-4bc6-8197-315604c5e585
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 593
@@ -385,7 +385,7 @@ ms.locfileid: "74968164"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ab079b0e-2ba9-4cf1-b549-a97bfa6cd2d3
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1525
@@ -442,7 +442,7 @@ ms.locfileid: "74968164"
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

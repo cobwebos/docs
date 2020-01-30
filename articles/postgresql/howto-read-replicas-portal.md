@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770214"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768950"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure Database for PostgreSQL 单服务器中的读取副本
 
@@ -27,6 +27,9 @@ ms.locfileid: "74770214"
 1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
 2. 在服务器边栏上的 "**设置**" 下，选择 "**复制**"。
+
+> [!NOTE] 
+> 如果你看到 "**禁用复制支持**" 灰显，则默认情况下已在服务器上设置了复制设置。 您可以跳过以下步骤并转到创建读取副本。 
 
 3. 选择 "**启用复制支持**"。 
 

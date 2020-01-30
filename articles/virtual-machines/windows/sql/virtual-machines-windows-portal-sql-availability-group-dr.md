@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037542"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772661"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在 Azure 上配置可用性组在不同区域中的虚拟机上 SQL Server
 
@@ -93,9 +93,26 @@ ms.locfileid: "74037542"
 
 1. [将新的 SQL Server 添加到 Windows Server 故障转移群集](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)。
 
-1. 在群集上创建 IP 地址资源。
+1. 将 IP 地址资源添加到群集。
 
-   可在故障转移群集管理器中创建 IP 地址资源。 右键单击可用性组角色，单击“添加资源”，“更多资源”，并单击“IP 地址”。
+   可在故障转移群集管理器中创建 IP 地址资源。 选择群集的名称，然后在 "**群集核心资源**" 下右键单击群集名称，然后选择 "**属性**"： 
+
+   ![群集属性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   在 "**属性**" 对话框中，在 " **IP 地址**" 下选择 "**添加**"，然后从远程网络区域添加群集名称的 IP 地址。 在 " **IP 地址**" 对话框中选择 **"确定"** ，然后在 "**群集属性**" 对话框中再次选择 **"确定**" 以保存新的 IP 地址。 
+
+   ![添加群集 IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. 为核心群集名称添加 IP 地址作为依赖项。
+
+   再次打开群集属性，并选择 "**依赖关系**" 选项卡。为这两个 IP 地址配置或依存关系： 
+
+   ![群集属性](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. 将 IP 地址资源添加到群集中的可用性组角色。 
+
+   在故障转移群集管理器中右键单击可用性组角色，选择 "**添加资源**"、"**更多资源**"，然后选择 " **IP 地址**"。
 
    ![创建 IP 地址](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ ms.locfileid: "74037542"
 
    - 使用远程数据中心的网络。
    - 从新的 Azure 负载均衡器中分配 IP 地址。 
-
-1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](https://msdn.microsoft.com/library/ff878259.aspx)。
-
-1. [在新的 SQL Server 上打开防火墙端口](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
-
-   打开端口所需的端口号具体取决于环境。 打开镜像终结点和 Azure 负载均衡器运行状况探测的端口。
-
-1. [将副本添加到新 SQL Server 上的可用性组](https://msdn.microsoft.com/library/hh213239.aspx)。
-
-   对位于远程 Azure 区域中的副本，将其设置为与手动故障转移进行异步复制。  
 
 1. 将 IP 地址资源设成侦听器客户端访问点（网络名称）群集的依赖项。
 
@@ -138,17 +145,28 @@ ms.locfileid: "74037542"
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
+1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)。
+
+1. [在新的 SQL Server 上打开防火墙端口](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
+
+   打开端口所需的端口号具体取决于环境。 打开镜像终结点和 Azure 负载均衡器运行状况探测的端口。
+
+
+1. [将副本添加到新 SQL Server 上的可用性组](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
+
+   对位于远程 Azure 区域中的副本，将其设置为与手动故障转移进行异步复制。  
+
 ## <a name="set-connection-for-multiple-subnets"></a>设置多个子网的连接
 
 远程数据中心中的副本属于可用性组，但位于不同子网。 如果此副本成为主副本，可能出现应用程序连接超时。 这种情况类似于多子网部署中的本地可用性组。 若要允许客户端应用程序进行连接，可更新客户端连接，或在群集网络名称资源上配置名称解析缓存。
 
 最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
+如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[超时错误，并且无法在多子网环境中连接到 SQL Server 2012 AlwaysOn 可用性组侦听器](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
-要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请执行以下步骤：
+要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请使用以下步骤：
 
 1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
 1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，并单击“属性”。
@@ -166,19 +184,19 @@ ms.locfileid: "74037542"
 
 | 位置 | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
 | ----- | ----- | ----- | ----- | -----
-| 主数据中心 | SQL-1 | 主要 | 同步 | 自动
-| 主数据中心 | SQL-2 | 辅助 | 同步 | 自动
-| 辅助或远程数据中心 | SQL-3 | 辅助 | 异步 | 手动
+| 主数据中心 | SQL-1 | 主 | 同步 | 自动
+| 主数据中心 | SQL-2 | 辅助副本 | 同步 | 自动
+| 辅助或远程数据中心 | SQL-3 | 辅助副本 | 异步 | 手动
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>有关计划和强制的手动故障转移的详细信息
 
-相关详细信息，请参阅以下主题：
+有关详情，请参阅以下主题：
 
-- [对可用性组执行计划的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [执行可用性组的计划手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>更多链接
+## <a name="additional-links"></a>其他链接
 
 * [Always On 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/)

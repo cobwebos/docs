@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864981"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841091"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services （SSIS）集成运行时（IR）以加入虚拟网络
 
@@ -44,7 +44,7 @@ ms.locfileid: "75864981"
     
         Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资源。 这些资源包括：
         - Azure 负载均衡器，其名称 *\<Guid >-azurebatch-cloudserviceloadbalancer*
-        - 网络工作安全组，名称为 *\<Guid >-azurebatch-cloudservicenetworksecuritygroup
+        - 网络安全组，名称为 *\<Guid >-azurebatch-cloudservicenetworksecuritygroup
         - 使用名称 azurebatch-cloudservicepublicip 的 Azure 公共 IP 地址
     
         Azure-SSIS IR 启动时，将创建这些资源。 当你的 Azure-SSIS IR 停止时，它们将被删除。 若要避免阻止 Azure-SSIS IR 停止，请不要在其他资源中重复使用这些网络资源。
@@ -66,7 +66,7 @@ ms.locfileid: "75864981"
 
 ## <a name="configure-a-virtual-network"></a>配置虚拟网络
 
-在尝试将 Azure-SSIS IR 加入到虚拟网络之前，请使用该 Azure 门户。
+在尝试将 Azure-SSIS IR 加入到虚拟网络之前，请使用 Azure 门户对其进行配置。
 
 1. 启动 Microsoft Edge 或 Google Chrome。 目前，只有这些 web 浏览器支持数据工厂 UI。
 

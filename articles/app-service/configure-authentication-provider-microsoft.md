@@ -5,24 +5,28 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768429"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842327"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>将应用服务应用配置为使用 Microsoft 帐户登录
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本主题说明如何将 Azure 应用服务配置为使用 Microsoft 帐户作为身份验证提供程序。 
+本主题说明如何将 Azure App Service 配置为使用 AAD 来支持个人 Microsoft 帐户登录。
+
+> [!NOTE]
+> 个人 Microsoft 帐户和组织帐户都使用 AAD 标识提供者。 目前无法将此标识提供程序配置为支持两种类型的登录。
 
 ## <a name="register-microsoft-account"></a>向 Microsoft 帐户注册你的应用
 
 1. 中转到 Azure 门户中的[**应用注册**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 如果需要，请用 Microsoft 帐户登录。
 1. 选择 "**新建注册**"，然后输入应用程序名称。
-1. 在 "**重定向 uri**" 中，选择 " **Web**"，然后输入 `https://<app-domain-name>/.auth/login/microsoftaccount/callback`。 将 *\<的应用程序域名 >* 替换为应用的域名。  例如，`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 。 请务必在 URL 中使用 HTTPS 方案。
+1. 在 "**受支持的帐户类型**" 下，选择**任何组织目录中的帐户（任何 Azure AD Directory-多租户）和个人 Microsoft 帐户（例如 Skype、Xbox）**
+1. 在 "**重定向 uri**" 中，选择 " **Web**"，然后输入 `https://<app-domain-name>/.auth/login/aad/callback`。 将 *\<的应用程序域名 >* 替换为应用的域名。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。 请务必在 URL 中使用 HTTPS 方案。
 
 1. 选择“注册”。
 1. 复制**应用程序（客户端） ID**。 稍后需要用到此信息。
@@ -36,12 +40,12 @@ ms.locfileid: "75768429"
 
 1. 在[Azure 门户]中转到你的应用程序。
 1. 选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
-1. 在 "**身份验证提供程序**" 下，选择 " **Microsoft 帐户**"。 粘贴你之前获取的应用程序（客户端） ID 和客户端密码。 启用应用程序所需的任何范围。
+1. 在“身份验证提供程序”下，选择“Azure Active Directory”。 选择 "**管理模式**" 下的 "**高级**"。 粘贴你之前获取的应用程序（客户端） ID 和客户端密码。 使用 "**颁发者 Url** " 字段 **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** 。
 1. 选择“确定”。
 
    应用服务提供身份验证，但不限制对站点内容和 Api 的授权访问。 必须在应用代码中为用户授权。
 
-1. 可有可无若要限制对 Microsoft 帐户用户的访问，请将 "**请求未经身份验证时要执行的操作**" 设置为 "**使用 Microsoft 帐户登录**"。 设置此功能时，应用要求对所有请求进行身份验证。 它还会将所有未经身份验证的请求重定向到 Microsoft 帐户进行身份验证。
+1. 可有可无若要限制对 Microsoft 帐户用户的访问，请将 "**请求未经身份验证时要执行的操作**" 设置为 " **Azure Active Directory**。 设置此功能时，应用要求对所有请求进行身份验证。 它还会将所有未经身份验证的请求重定向为使用 AAD 进行身份验证。 请注意，由于你已将**颁发者 Url**配置为使用 Microsoft 帐户租户，因此只有个人帐户才能成功进行身份验证。
 
    > [!CAUTION]
    > 以这种方式限制访问权限适用于对应用的所有调用，对于具有公开可用主页的应用，与在许多单页应用程序中一样，这可能并不理想。 对于此类应用程序，"**允许匿名请求（无操作）** " 可能首选，以便应用手动启动身份验证。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732580"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771569"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的偏移限制子句
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>备注
   
-  偏移量限制子句和限制计数都是必需的。 如果使用了可选的 `ORDER BY` 子句，则通过跳过有序值来生成结果集。 否则，查询将返回固定的值顺序。 此子句现在支持单个分区中的查询以及跨分区查询。
+  `OFFSET LIMIT` 子句中需要 `OFFSET` 计数和 `LIMIT` 计数。 如果使用了可选的 `ORDER BY` 子句，则通过跳过有序值来生成结果集。 否则，查询将返回固定的值顺序。
+
+  与 `OFFSET LIMIT` 的查询的 RU 费用将随着要增加的字词数量的增加而增加。 对于具有多个结果页的查询，我们通常建议使用继续标记。 继续标记是一个 "书签"，用于查找以后可恢复查询的位置。 如果使用 `OFFSET LIMIT`，则没有 "书签"。 如果希望返回查询的下一页，则必须从头开始。
+  
+  如果希望完全跳过文档并保存客户端资源，则应使用 `OFFSET LIMIT`。 例如，如果要跳到1000th 查询结果，而无需查看结果1到999，则应使用 `OFFSET LIMIT`。 在后端上，`OFFSET LIMIT` 仍会加载每个文档，包括跳过的文档。 通过避免处理不需要的文档，可节省客户端资源。
 
 ## <a name="examples"></a>示例
 

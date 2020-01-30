@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432308"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842395"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查由于文件系统错误导致的 Linux VM 启动问题
 
@@ -88,13 +88,13 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
 
 2. 选择电源图标按钮，然后选择 "重新启动 VM"。 （如果串行控制台未启用或未成功连接，你将看不到此按钮。）
 
-   ![影像](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
+   ![IMAGE](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
 3. 在紧急模式下启动 VM。
 
 4. 输入用于登录到紧急模式的根帐户的密码。
 
-5. 使用 xfs_repair 和-n 选项检测文件系统中的错误。 在下面的示例中，我们假定系统分区为/dev/sda1。 将其替换为 VM 的适当值：
+5. 使用带有-n 选项的 xfs_repair 检测文件系统中的错误。 在下面的示例中，我们假定系统分区为/dev/sda1。 将其替换为 VM 的适当值：
 
    ```
    xfs_repair -n /dev/sda1
@@ -110,20 +110,20 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. 如果磁盘未能装入，请运行 xfs_repair 命令和-L 选项（强制日志为零）：
+8. 如果磁盘未能装入，请运行包含-L 选项的 xfs_repair 命令（强制日志为零）：
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. 接下来，尝试装载文件系统。 如果磁盘安装成功，您将收到以下输出：
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. 重新启动 VM，然后检查问题是否已解决。
@@ -138,7 +138,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
 
 2. 找到所附加的系统磁盘的驱动器标签。 在这种情况下，我们假设附加的系统磁盘的标签是/dev/sdc1 将其替换为 VM 的适当值。
 
-3. 使用 xfs_repair 和-n 选项检测文件系统中的错误。
+3. 使用带有-n 选项的 xfs_repair 检测文件系统中的错误。
 
    ```
    xfs_repair -n /dev/sdc1
@@ -158,7 +158,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    mount /dev/sdc1 /temp
    ```
 
-   如果磁盘未能装入，请运行 xfs_repair 命令和-L 选项（强制日志为零）：
+   如果磁盘未能装入，请运行包含-L 选项的 xfs_repair 命令（强制日志为零）：
 
    ```
    xfs_repair /dev/sdc1 -L

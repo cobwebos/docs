@@ -1,5 +1,5 @@
 ---
-title: 将后台应用程序调用 web Api 移动到生产-Microsoft 标识平台 |Microsoft
+title: 将用于调用 web Api 的守护程序应用移动到生产-Microsoft 标识平台 |Microsoft
 description: 了解如何将用于调用 web Api 的守护程序应用移动到生产环境
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,23 +15,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 990273e84bfceb9f4a19eae8bf5890e8303a5857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702260"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775206"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的后台应用程序-迁移到生产
 
 现在，你已了解如何获取和使用令牌进行服务到服务调用，了解如何将应用移到生产环境。
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>部署-多租户后台程序应用的案例
+## <a name="deployment---multitenant-daemon-apps"></a>部署-多租户守护程序应用
 
 如果你是创建可在多个租户中运行的后台应用程序的 ISV 应用程序，则需要确保租户管理员：
 
-- 预配应用程序的服务主体
-- 向应用程序授予许可
+- 预配应用程序的服务主体。
+- 向应用程序授予许可。
 
 你需要向客户说明如何执行这些操作。 有关详细信息，请参阅[请求整个租户的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
@@ -39,24 +39,24 @@ ms.locfileid: "76702260"
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是一些用于了解详细信息的链接：
+下面是一些可帮助你了解更多信息的链接：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- 如果尚未安装，请尝试快速入门[获取令牌，并使用应用的标识从控制台应用调用 MICROSOFT GRAPH API](./quickstart-v2-netcore-daemon.md)。
+- 快速入门：[使用应用的标识从控制台应用获取令牌并调用 MICROSOFT GRAPH API](./quickstart-v2-netcore-daemon.md)。
 - 参考文档：
-  - 实例化[ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
-  - 调用[AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
+  - 实例化[ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+  - 调用[AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
 - 其他示例/教程：
   - [microsoft 标识平台-控制台守护](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon)程序是一个简单的 .net Core 守护程序控制台应用程序，它显示查询 Microsoft Graph 的租户用户。
 
-    ![拓扑](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![示例后台应用程序拓扑](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    同一示例还说明了证书的变体。
+    同一示例还演示了具有证书的变体：
 
-    ![拓扑](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![示例后台应用拓扑-证书](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [microsoft 标识平台 webapp](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon)功能是一种 ASP.NET MVC web 应用程序，它使用应用程序的标识（而不是代表用户）从 Microsoft Graph 同步数据。 该示例还演示了管理员许可过程。
+  - [microsoft 标识平台 webapp](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon)功能是一种 ASP.NET MVC web 应用程序，它通过使用应用程序的标识（而不是代表用户），从 Microsoft Graph 同步数据。 此示例还说明了管理员同意过程。
 
     ![拓扑](media/scenario-daemon-app/damon-app-sample-web.svg)
 

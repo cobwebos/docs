@@ -6,21 +6,21 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: ef5c7de782d833aad96516d3e5357a0ed575a781
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/27/2020
+ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722871"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772329"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
-本文介绍如何将 JSON 格式的数据引入 Azure 数据资源管理器数据库。 首先，你将从一个简单的原始和映射的 JSON 示例开始，继续多个多线 JSON，然后应对包含数组和字典的更复杂的 JSON 架构。 
+本文介绍如何将 JSON 格式的数据引入 Azure 数据资源管理器数据库。 首先，你将从一个简单的原始和映射的 JSON 示例开始，继续多个多线 JSON，然后应对包含数组和字典的更复杂的 JSON 架构。  这些示例详细说明了如何使用 Kusto 查询语言（KQL）、 C#或 PYTHON 引入 JSON 格式的数据。 Kusto 查询语言 `ingest` 控件命令直接执行到引擎终结点。 在生产方案中，将使用客户端库或数据连接对数据管理服务执行引入。 阅读[使用 azure 数据资源管理器 Python 库引入数据](/azure/data-explorer/python-ingest-data)，并[使用 AZURE 数据资源管理器 .NET Standard SDK 引入数据](/azure/data-explorer/net-standard-ingest-data)，了解如何使用这些客户端库引入数据。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备组件
 
-[테스트 클러스터 및 데이터베이스](create-cluster-database-portal.md)
+[测试群集和数据库](create-cluster-database-portal.md)
 
 ## <a name="the-json-format"></a>JSON 格式
 
@@ -54,11 +54,11 @@ Azure 数据资源管理器支持两个 JSON 文件格式：
 
 使用 Kusto 查询语言以原始 JSON 格式引入数据。
 
-1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com)에 로그인합니다.
+1. 登录到 [https://dataexplorer.azure.com](https://dataexplorer.azure.com)。
 
-1. **클러스터 추가**를 선택합니다.
+1. 选择“添加群集”。
 
-1. **클러스터 추가** 대화 상자에 `https://<ClusterName>.<Region>.kusto.windows.net/` 형식으로 클러스터 URL을 입력하고 **추가**를 선택합니다.
+1. 在“添加群集”对话框中，以 `https://<ClusterName>.<Region>.kusto.windows.net/` 格式输入群集 URL，然后选择“添加”。
 
 1. 粘贴以下命令，然后选择 "**运行**" 以创建表。
 
@@ -81,9 +81,6 @@ Azure 数据资源管理器支持两个 JSON 文件格式：
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
-
-    > [!NOTE]
-    > 这会显示直接执行到引擎终结点的 `ingest` 控件命令。 在生产方案中，将使用客户端库或数据连接对数据管理服务执行引入。 阅读[使用 azure 数据资源管理器 Python 库引入数据](/azure/data-explorer/python-ingest-data)，并[使用 AZURE 数据资源管理器 .NET Standard SDK 引入数据](/azure/data-explorer/net-standard-ingest-data)，了解如何使用这些客户端库引入数据。
 
 # <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
 
@@ -374,7 +371,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## <a name="ingest-json-records-containing-arrays"></a>引入包含数组的 JSON 记录
 
-배열 데이터 형식은 정렬된 값의 컬렉션입니다. JSON 数组的引入是由[更新策略](/azure/kusto/management/update-policy)完成的。 JSON 与中间表引入。 更新策略在 `RawEvents` 表上运行预定义的函数，并将结果 reingesting 目标表。 我们将采用以下结构引入数据：
+数组数据类型是按顺序排列的值集合。 JSON 数组的引入是由[更新策略](/azure/kusto/management/update-policy)完成的。 JSON 与中间表引入。 更新策略在 `RawEvents` 表上运行预定义的函数，并将结果 reingesting 目标表。 我们将采用以下结构引入数据：
 
 ```json
 {
@@ -648,7 +645,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ---    
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * [数据引入概述](ingest-data-overview.md)
-* [쿼리 작성](write-queries.md)
+* [编写查询](write-queries.md)

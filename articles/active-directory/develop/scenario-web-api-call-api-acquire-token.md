@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1c3d6f8d47152d70bdeaabbbc6d7b81187291857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2721837459af24f39bb15ee17d394345cbb37eb1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701801"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834104"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>用于调用 web Api 的 web API：获取应用的令牌
 
 生成客户端应用程序对象后，使用该对象获取可用于调用 web API 的令牌。
 
 ## <a name="code-in-the-controller"></a>控制器中的代码
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 下面是在 API 控制器的操作中调用的代码示例。 它调用名为*todolist*的下游 API。
 
@@ -68,6 +70,33 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
  return null;
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+下面是在 API 控制器的操作中调用的代码示例。 它调用下游 API Microsoft Graph。
+
+```java
+@RestController
+public class ApiController {
+
+    @Autowired
+    MsalAuthHelper msalAuthHelper;
+
+    @RequestMapping("/graphMeApi")
+    public String graphMeApi() throws MalformedURLException {
+
+        String oboAccessToken = msalAuthHelper.getOboToken("https://graph.microsoft.com/.default");
+
+        return callMicrosoftGraphMeEndpoint(oboAccessToken);
+    }
+
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，web API 可以通过调用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法，使用 MSAL Python 库获取下游 API 的访问令牌。 使用 MSAL Python 演示此流的示例尚不可用。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

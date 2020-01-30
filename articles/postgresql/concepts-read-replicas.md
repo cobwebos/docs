@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792306"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769042"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>读取 Azure Database for PostgreSQL-单服务器中的副本
 
@@ -59,8 +59,6 @@ ms.locfileid: "74792306"
 
 
 ## <a name="create-a-replica"></a>创建副本
-主服务器的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 （`azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层）。
-
 启动“创建副本”工作流时，将创建空白的 Azure Database for PostgreSQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
 为存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)启用了每个副本。 使用自动增长功能，副本可与复制到它的数据保持同步，防止存储空间错误引起的复制中断。
