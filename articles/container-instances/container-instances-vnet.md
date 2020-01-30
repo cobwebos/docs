@@ -4,12 +4,12 @@ description: 了解如何将容器组部署到新的或现有的 Azure 虚拟网
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887950"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845172"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -33,6 +33,7 @@ ms.locfileid: "75887950"
 
 * 若要将容器组部署到某个子网，该子网不能包含其他任何资源类型。 将容器组部署到现有子网之前，请从该子网中删除所有现有资源，或创建新的子网。
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
+* 无法在部署到虚拟网络的容器组中启用[活动探测](container-instances-liveness-probe.md)或[准备情况探测](container-instances-readiness-probe.md)。
 * 由于涉及到额外的网络资源，将容器组部署到虚拟网络通常比部署标准容器实例慢。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> 如果尝试删除网络配置文件时收到错误，请在2-3 天内使平台自动缓解此问题，然后重试删除操作。 如果在删除网络配置文件时仍出现问题，请[打开支持请求](https://azure.microsoft.com/support/create-ticket/)。
+> 如果尝试删除网络配置文件时收到错误，请在3-4 天内使平台自动缓解此问题，然后重试删除操作。 如果需要立即删除网络配置文件，请打开引用 Azure 容器实例服务[的支持请求](https://azure.microsoft.com/support/create-ticket/)。
 
 此功能当前需要几个附加命令来删除之前创建的网络资源。 如果你在本文的前面几个部分中使用示例命令创建了虚拟网络和子网，则可以使用以下脚本来删除这些网络资源。
 

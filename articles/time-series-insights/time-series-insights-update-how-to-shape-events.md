@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861653"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846141"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -156,5 +156,4 @@ ms.locfileid: "75861653"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要将这些准则引入实践，请阅读[Azure 时序见解预览查询语法](./time-series-insights-query-data-csharp.md)。 你将了解有关用于数据访问的时序见解预览 REST API 的查询语法的详细信息。
-- 若要了解支持的 JSON 形状，请参阅[支持的 json 形状](./time-series-insights-send-events.md#supported-json-shapes)。
+若要将这些准则引入实践，请阅读[Azure 时序见解预览查询语法](./time-series-insights-query-data-csharp.md)。 你将了解有关用于数据访问的时序见解预览 REST API 的查询语法的详细信息。

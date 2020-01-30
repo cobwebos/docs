@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406536"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845638"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -38,9 +38,9 @@ Application Insights 旨在获取监视 web 应用程序的可用性、性能和
 
 ### <a name="data-collection-when-using-sampling"></a>使用采样时的数据收集
 
-使用 ASP.NET SDK 的[自适应采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
+使用 ASP.NET SDK 的[自适应采样](sampling.md#adaptive-sampling)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
 
-对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，这会在 Application Insights 收到数据时根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 网站的固定速率采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)来采样，从而减少从 web 服务器和 web 浏览器发送的流量。
+对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，这会在 Application Insights 收到数据时根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 网站的固定速率采样](sampling.md#fixed-rate-sampling)来采样，从而减少从 web 服务器和 web 浏览器发送的流量。
 
 ### <a name="learn-from-what-similar-customers-collect"></a>了解类似客户收集的内容
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894849"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845736"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -32,7 +32,7 @@ ms.locfileid: "75894849"
 
 Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中的一个完整 stack 监视服务。 Azure Monitor 提供了一组完整的功能来监视 Azure 资源。 它还可以监视其他云和本地的资源。
 
-从[Azure Monitor 概述](/azure/azure-monitor/overview)一文开始，其中概述了监视功能。 以下各节通过使用 Azure Monitor 与 Azure 机器学习提供具体的 oo，对此信息进行构建。
+从[Azure Monitor 概述](/azure/azure-monitor/overview)一文开始，其中概述了监视功能。 以下各节通过提供有关将 Azure Monitor 与 Azure 机器学习结合使用的细节来构建此信息。
 
 要了解与 Azure Monitor 相关的成本，请参阅[使用情况和预估成本](/azure/azure-monitor/platform/usage-estimated-costs)。 若要了解在 Azure Monitor 中显示数据所用的时间，请参阅[记录数据引入时间](/azure/azure-monitor/platform/data-ingestion-time)。
 

@@ -3,12 +3,12 @@ title: 与 Azure CLI 备份 Azure 文件共享
 description: 了解如何使用 Azure CLI 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294482"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844035"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>通过 CLI 备份 Azure 文件共享
 
@@ -104,7 +104,7 @@ Name                                  ResourceGroup
 
 需要定义以下参数来触发按需备份：
 
-* **--container-name**是托管文件共享的存储帐户的名称。 若要检索容器的**名称**或**友好名称**，请使用[az backup container list](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+* **--container-name**是托管文件共享的存储帐户的名称。 若要检索容器的**名称**或**友好名称**，请使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
 * **--name**是要触发按需备份的文件共享的名称。 若要检索已备份项的**名称**或**友好名称**，请使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
 * **--保留-直到**指定要保留恢复点的日期。 应将该值设置为 UTC 时间格式（yyyy-mm-dd）。
 

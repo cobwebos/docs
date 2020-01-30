@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083893"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844337"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
@@ -31,7 +31,6 @@ ms.locfileid: "74083893"
 
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020年1月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
 |[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)
  
 ## <a name="overview"></a>概述
@@ -51,17 +50,21 @@ ms.locfileid: "74083893"
 ## <a name="media-analytics-services"></a>媒体分析服务
 
 ### <a name="indexer"></a>索引器
-借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 与以前的版本相比，Azure Media Indexer 2 预览版编制索引的速度更快，并且语言支持更广泛。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文、葡萄牙语和阿拉伯语。 有关详细信息和示例，请参阅[使用 Azure Media Indexer 2 处理视频](media-services-process-content-with-indexer2.md)。
+借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 有关详细信息和示例，请参阅[在 Azure Media Indexer 中为媒体文件编制索引](media-services-index-content.md)。
+
 ### <a name="motion-detector"></a>动作检测器
 可以使用移动探测器来检测背景平稳的视频中的动作。 这样，便可以检查监控摄像机所检测到的动作事件是否存在误报。 有关详细信息和示例，请参阅 [Azure 媒体分析的动作检测](media-services-motion-detection.md)。
+
 ### <a name="face-detector"></a>面部检测器
 使用面部检测器可以检测人脸及情绪，包括快乐、悲伤和惊讶。 此服务具有多个有用行业应用程序（稍后将进行介绍），包括聚合与分析参与事件的人员的反应。 有关详细信息和示例，请参阅 [Azure 媒体分析的人脸和情绪检测](media-services-face-and-emotion-detection.md)。
+
 ### <a name="video-summarization"></a>视频摘要
 视频摘要可通过自动选择来自源视频的有趣片段帮助你创建长视频的摘要。 如果想要提供有关长视频内容的快速概述，此功能会很有用。 有关详细信息和示例，请参阅[使用 Azure Media Video Thumbnails 创建视频摘要](media-services-video-summarization.md)。
 ### <a name="optical-character-recognition"></a>光学字符识别
 借助 Azure 媒体 OCR（光学字符识别），可以将视频文件中的文本内容转换成可编辑、可搜索的数字文本。 可以从媒体的视频信号中自动提取有意义的元数据。
 ### <a name="scalable-face-redaction"></a>可缩放的面部修订
 Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在新闻媒体中或涉及公共安全时使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成面部修订。 有关详细信息，请参阅[使用 Azure 媒体分析进行面部修订](media-services-face-redaction.md)文章。
+
 ### <a name="content-moderation"></a>内容审核
 借助 Azure 内容审查器，可以对视频使用机器辅助审查。 例如，你可能希望检测视频中可能存在的成人和猥亵内容，以及复查由人工审查团队标记出的内容。 手动审查不良内容的视频是一项耗时且成本高昂的任务。 使用此服务及关联的检查工具，就可将机器辅助审查与“人在回路中”功能相结合，以经济高效的方式获得最佳结果。 若要了解详细信息，请参阅[使用 Azure 内容审查器处理视频](media-services-content-moderation.md)一文。
 
@@ -75,7 +78,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 本节列出媒体分析媒体处理器，并说明如何使用 .NET 或 REST 来获取媒体处理器 (MP) 对象。
 
 ### <a name="mp-names"></a>MP 名称
-* Azure Media Indexer 2 Preview
+
 * Azure Media Indexer
 * Azure 媒体面部检测器
 * Azure Media Motion Detector
@@ -112,7 +115,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 响应：

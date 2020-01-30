@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268290"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887778"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> 注意：在某些情况下，可能会发生同一 AvailabilitySet 的2个 Vm 共享相同的 FaultDomain。 可以通过转到 AvailabilitySet 并检查 "容错域" 列来确认这一点。
-> 部署 Vm 时，可能会出现以下序列：
+> [!NOTE]
+> 在某些情况下，同一 AvailabilitySet 中的2个 Vm 可能共享相同的 FaultDomain。 可以通过转到可用性集并检查**容错域**列来确认这一点。
+> 部署 Vm 时，可能会出现以下序列问题：
 > - 部署第一个 VM
 > - 停止/解除分配第一个 VM
 > - 部署第2个 VM 在这种情况下，第二个 VM 的 OS 磁盘可能是在第一个 VM 所在的同一容错域上创建的，因此第二个 vm 也会在同一 FaultDomain 上。 
-> 若要避免此问题，建议不要在部署之间停止/解除分配 VM。
+> 若要避免此问题，建议不要在部署之间停止/解除分配 Vm。
 
 如果计划使用包含非托管磁盘的 VM，请按下述针对存储帐户的最佳做法进行操作。在这些存储帐户中，VM 的虚拟硬盘 (VHD) 以[页 Blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 形式存储。
 

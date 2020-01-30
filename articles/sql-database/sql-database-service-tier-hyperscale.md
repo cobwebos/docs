@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759493"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845883"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -72,7 +72,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 - **存储**：
 
-  配置“超大规模”数据库时，无需指定最大数据大小。 超大规模层中根据实际分配量收取数据库存储费用。 存储空间自动分配在 40 GB 和 100 TB 之间，增量是在 10 GB 和 40 GB 之间动态调整的。 创建的超大规模数据库的起始大小为 10 GB，每10分钟开始增加 10 GB，直到达到 40 GB 的大小。
+  配置“超大规模”数据库时，无需指定最大数据大小。 超大规模层中根据实际分配量收取数据库存储费用。 存储在 40 GB 到 100 TB 之间自动分配，以 10 GB 为增量。 如果需要，多个数据文件可以同时增长。 创建的超大规模数据库的起始大小为 10 GB，每10分钟开始增加 10 GB，直到达到 40 GB 的大小。
 
 有关“超大规模”服务层级定价的详细信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -112,13 +112,13 @@ Azure 存储包含数据库中的所有数据文件。 页面服务器将 Azure 
 
 ## <a name="create-a-hyperscale-database"></a>创建超大规模数据库
 
-可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) 或者 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) 创建超大规模数据库。 仅可通过[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)使用超大规模数据库。
+可以使用[Azure 门户](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、 [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)创建超大规模数据库。 超大规模数据库仅可使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 以下 T-SQL 命令可创建一个“超大规模”数据库。 必须在 `CREATE DATABASE` 语句中指定版本和服务目标。 有关有效服务目标的列表，请参阅[资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4)。
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 这将在具有4个内核的 Gen5 硬件上创建超大规模数据库。
@@ -130,14 +130,14 @@ GO
 以下 T-SQL 命令可将数据库移动到“超大规模”服务层级。 必须在 `ALTER DATABASE` 语句中指定版本和服务目标。
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>连接到“超大规模”数据库的读取扩展副本
 
-在超大规模数据库中，由客户端提供的连接字符串中的 `ApplicationIntent` 参数决定连接是路由到写入副本，还是路由到只读的次要副本。 如果将 `ApplicationIntent` 设置为 `READONLY`并且数据库不具有辅助副本，连接将路由到主副本，默认执行 `ReadWrite` 行为。
+在超大规模数据库中，客户端提供的连接字符串中的 `ApplicationIntent` 参数指示连接是路由到写入副本还是只读辅助副本。 如果将 `ApplicationIntent` 设置为 `READONLY`并且数据库不具有辅助副本，连接将路由到主副本，默认执行 `ReadWrite` 行为。
 
 ```cmd
 -- Connection string with application intent
@@ -160,7 +160,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 2. 按照从自动备份还原 Azure SQL 数据库页上的 "[异地还原](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore)" 主题中的说明进行操作。
 
 > [!NOTE]
-> 由于源和目标位于不同的区域中，因此数据库无法与源数据库共享快照存储，就像在非异地还原中一样，这种情况极快完成。  对于超大规模数据库的异地还原，它将是一项数据大小的操作，即使目标位于异地复制存储的配对区域中。  这意味着，执行异地还原需要与要还原的数据库的大小成正比。  如果目标在配对的区域中，则副本将位于数据中心内，其速度要快于 internet 上的长距离副本，但它仍将复制所有的位。
+> 由于源和目标位于不同的区域中，因此数据库无法与源数据库共享快照存储，就像在非异地还原中一样，这种情况极快完成。 对于超大规模数据库的异地还原，它将是一项数据大小的操作，即使目标位于异地复制存储的配对区域中。  这意味着，执行异地还原需要与要还原的数据库的大小成正比。  如果目标在配对的区域中，则该副本将在某个区域内，这会明显快于跨区域副本，但它仍是数据大小的操作。
 
 ## <a name=regions></a>可用区域
 

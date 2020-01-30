@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解 Azure Migrate 中的 VMware 评估支持。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154680"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846172"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -52,7 +52,7 @@ ms.locfileid: "76154680"
 --- | ---
 **vCenter Server** | 要发现和评估的计算机必须由 vCenter Server 5.5、6.0、6.5 或6.7 版本来管理。
 **权限（评估）** | vCenter Server 只读帐户。
-**权限（应用程序发现）** | vCenter Server 具有只读访问权限的帐户以及为虚拟机启用的特权 > 来宾操作。
+**权限（应用程序发现）** | vCenter Server 具有只读访问权限的帐户以及为虚拟机启用的特权 **> 来宾操作**。
 **权限（依赖项可视化）** | 中心服务器帐户具有只读访问权限，并且为**虚拟机**启用了特权 > **来宾操作**。
 
 
@@ -67,8 +67,9 @@ Azure Migrate 使用[Azure Migrate 设备](migrate-appliance.md)进行发现和�
 
 **设备** | **Connection**
 --- | ---
-家用电器 | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
+本 | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接，使用以下 URL 远程访问设备管理应用： ```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443（HTTPS）、5671和5672（AMQP）上的出站连接，以将发现和性能元数据发送到 Azure Migrate。
 vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下，设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口，则可以在设置发现时修改端口。
+ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery)和[无代理依赖项可视化项](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization)是必需的** <br/><br/> 设备连接到 TCP 端口443上的 ESXi 主机，以发现应用程序，并在主机上运行的 Vm 上运行无代理依赖项可视化。
 
 ## <a name="agent-based-dependency-visualization"></a>基于代理的依赖项可视化
 
@@ -80,7 +81,7 @@ vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配�
 **部署** | 在部署依赖项可视化之前，应准备好一个 Azure Migrate 项目，并将 Azure Migrate： Server 评估工具添加到项目。 将 Azure Migrate 设备设置为发现本地计算机后，部署依赖关系可视化。<br/><br/> 依赖关系可视化在 Azure 政府版中不可用。
 **服务地图** | 基于代理的依赖项可视化使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案。<br/><br/> 若要部署，请将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。
 **Log Analytics 工作区** | 工作区必须与 Azure Migrate 项目位于同一订阅中。<br/><br/> Azure Migrate 支持位于美国东部、东南亚和西欧区域的工作区。<br/><br/>  工作区必须位于[支持服务映射](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)的区域中。<br/><br/> 添加 Azure Migrate 项目后，不能修改该工作区的工作区。
-**费用** | 服务映射解决方案不会在前180天（从 Log Analytics 工作区与 Azure Migrate 项目关联的那一天）产生任何费用。<br/><br/> 在 180 天之后，将收取标准 Log Analytics 费用。<br/><br/> 使用关联 Log Analytics 工作区中服务映射以外的任何解决方案将产生标准 Log Analytics 费用。<br/><br/> 如果删除 Azure Migrate 项目，则工作区不会随之一起删除。 删除项目后，服务映射不可用，将按 Log Analytics 工作区的付费层对每个节点进行收费。
+**话费** | 服务映射解决方案不会在前180天（从 Log Analytics 工作区与 Azure Migrate 项目关联的那一天）产生任何费用。<br/><br/> 在 180 天之后，将收取标准 Log Analytics 费用。<br/><br/> 使用关联 Log Analytics 工作区中服务映射以外的任何解决方案将产生标准 Log Analytics 费用。<br/><br/> 如果删除 Azure Migrate 项目，则工作区不会随之一起删除。 删除项目后，服务映射不可用，将按 Log Analytics 工作区的付费层对每个节点进行收费。
 **代理** | 基于代理的依赖项可视化需要在要分析的每台计算机上安装两个代理。<br/><br/> - [Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依赖关系代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
 **Internet 连接** | 如果计算机未连接到 internet，则需要在其上安装 Log Analytics 网关。
 

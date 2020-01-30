@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760617"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845330"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -72,7 +72,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `ta-IN` | 泰米尔语（印度） | 是 | 语言模型
 `te-IN` | 泰卢固语（印度） | 是 | 否
 `th-TH` | 泰语（泰国） | 是 | 否
-`tr-TR` | 土耳其 | 是 | 否
+`tr-TR` | 土耳其语（土耳其） | 是 | 否
 `zh-CN` | 中文(普通话，简体) | 是 | 声学模型<br>语言模型
 `zh-HK` | 中文（粤语，繁体） | 是 | 语言模型
 `zh-TW` | 中文(台湾普通话) | 是 | 语言模型
@@ -111,7 +111,7 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 
 区域设置 | 语言 | 性别 | 完全服务名称映射 | 短名称
 -------|----------|---------|----------|----------
-<sup>**1**</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda"
+<sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）” | "ar-EG-Hoda"
 `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）” | "ar-SA-Naayf"
 `bg-BG` | 保加利亚语 | 男 | “Microsoft 服务器语音的文本转语音（bg-BG，Ivan）” | "bg-BG-Ivan"
 `ca-ES` | 加泰罗尼亚语(西班牙) | 女 | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）” | "HerenaRUS"
@@ -181,7 +181,7 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 `ta-IN` | 泰米尔语（印度） | 男 | “Microsoft 服务器语音的文本转语音（ta-IN，Valluvar）” | "ta-Valluvar"
 `te-IN` | 泰卢固语（印度） | 女 | “Microsoft 服务器语音的文本转语音（te-IN，Chitra）” | "te-Chitra"
 `th-TH` | 泰语 | 男 | “Microsoft 服务器语音的文本转语音（th-TH，Pattara）” | "第 Pattara"
-`tr-TR` | 土耳其语 | 女 | “Microsoft 服务器语音的文本转语音（tr-TR，SedaRUS）” | "tr-TR-SedaRUS"
+`tr-TR` | 土耳其语（土耳其） | 女 | “Microsoft 服务器语音的文本转语音（tr-TR，SedaRUS）” | "tr-TR-SedaRUS"
 `vi-VN` | 越南语 | 男 | “Microsoft 服务器语音的文本转语音（vi-VN，An）” | "vi-VN"
 `zh-CN` | 中文(中国) | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，HuihuiRUS）” | "zh-CN-HuihuiRUS"
 | | | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，Yaoyao，Apollo）” | "zh-CN-Yaoyao-Apollo"

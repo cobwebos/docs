@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100650"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844711"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：向事件网格云转发事件
 
@@ -23,7 +23,7 @@ ms.locfileid: "73100650"
 * 响应云中的边缘事件。
 * 将事件转发到云中的事件网格，并使用 Azure 事件中心或 Azure 存储队列来缓冲事件，然后在云中处理事件。
 
-若要完成本教程，你需要了解有关[边缘](concepts.md)和[Azure](../concepts.md)的事件网格概念。
+ 若要完成本教程，你需要了解有关[边缘](concepts.md)和[Azure](../concepts.md)的事件网格概念。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。 
 
 ## <a name="prerequisites"></a>必备组件 
 为了完成本教程，你将需要：
@@ -83,6 +83,7 @@ ms.locfileid: "73100650"
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>在边缘创建事件网格订阅
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建具有以下内容的 subscription3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
@@ -201,3 +202,4 @@ ms.locfileid: "73100650"
 * 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
 * 遵循本[教程](forward-events-iothub.md)将事件转发到 IoTHub
 * 遵循本[教程](pub-sub-events-webhook-cloud.md)将事件转发到云中的 Webhook
+* [监视边缘上的主题和订阅](monitor-topics-subscriptions.md)

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169574"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846292"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -41,12 +41,12 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
    从版本 2018-05-01-preview 开始，事件网格支持手动验证握手。 如果你在创建事件订阅时使用的 SDK 或工具使用了 API 版本 2018-05-01-preview 或更高版本，则事件网格将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，请在事件数据中找到该 URL 并向其发送一个 GET 请求。 你可以使用 REST 客户端或 Web 浏览器。
 
-   所提供的 URL 的有效期为 5 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 5 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
+   提供的 URL 有效时间为5分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在5分钟内未完成手动验证，则预配状态将设置为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
 
-    此身份验证机制还要求 Webhook 终结点返回 HTTP 状态代码 200，这样它就知道验证事件的 POST 已被接受，然后它就可以进入手动验证模式。 换句话说，如果终结点返回 200，但没有以编程方式返回验证响应，则此模式会转到手动验证模式。 如果在 5 分钟内在验证 URL 上出现 GET，则可以认为验证握手成功。
+    此身份验证机制还要求 webhook 终结点返回 HTTP 状态代码200，使其知道验证事件的 POST 已接受，然后才能将其置于手动验证模式。 换言之，如果终结点返回200，但不以编程方式返回验证响应，则该模式将转换为手动验证模式。 如果在5分钟内收到验证 URL，验证握手将视为成功。
 
 > [!NOTE]
-> 不支持使用自签名证书进行验证。 改用来自证书颁发机构 (CA) 的签名证书。
+> 不支持使用自签名证书进行验证。 改为使用证书颁发机构（CA）颁发的签名证书。
 
 ### <a name="validation-details"></a>验证详细信息
 
@@ -85,17 +85,17 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 接受未被识别为有效的事件网格订阅验证响应。必须在30秒内完成 http 请求。 如果操作未在30秒内完成，则操作将被取消，并且可能会在5秒后重试。 如果所有尝试都失败，则会将其视为验证握手错误。
+你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。 必须在30秒内完成 http 请求。 如果操作未在30秒内完成，则操作将被取消，并且可能会在5秒后重试。 如果所有尝试都失败，则会将其视为验证握手错误。
 
-另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 在验证之前，事件订阅一直处于挂起状态。验证 Url 使用端口553。 如果防火墙规则阻止端口553，则可能需要更新规则才能成功进行手动握手。
+另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。 验证 Url 使用端口553。 如果防火墙规则阻止端口553，则可能需要更新规则才能成功进行手动握手。
 
 有关处理订阅验证握手的示例，请参阅 [C# 示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)。
 
 ### <a name="checklist"></a>清单
 
-创建事件订阅期间，是否看到“尝试验证所提供的终结点 https:\//your-endpoint-here 失败。 有关更多详细信息，请访问 https:\//aka.ms/esvalidation ”等错误消息，它表示验证握手出现故障。 若要解决此错误，请验证以下各方面：
+在创建事件订阅的过程中，如果你看到一条错误消息，如 "尝试验证提供的终结点 https：\//your-endpoint-here 失败。 有关更多详细信息，请访问 https：\//aka.ms/esvalidation "，它表示验证握手中出现故障。 若要解决此错误，请验证以下各方面：
 
-* 能否控制目标终结点中的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
+* 是否控制在目标终结点中运行的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
 * 如果有权访问应用程序代码，请实现基于 ValidationCode 的握手机制，如上面的示例中所示。
 
 * 如果无权访问应用程序代码（例如，如果使用的是支持 Webhook 的第三方服务），则可以使用手动握手机制。 请确保使用 2018-05-01-preview API 版本或更高版本（安装事件网格 Azure CLI 扩展）以便接收验证事件中的 validationUrl。 若要完成手动验证握手，请获取 `validationUrl` 属性的值，并在 Web 浏览器中访问该 URL。 如果验证成功，应当会在 Web 浏览器中看到指明验证已成功的消息。 你将看到事件订阅的 provisioningState 为“Succeeded”。 
@@ -109,7 +109,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 #### <a name="query-parameters"></a>查询参数
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
-编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 参数，否则，不会显示或返回查询参数。
+编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
 
 最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 
@@ -123,13 +123,13 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 对于系统主题，需要在资源范围内写入新事件订阅的权限，才能发布该事件。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-例如，若要订阅存储帐户上名为“myacct”的事件，需要  **的 Microsoft.EventGrid/EventSubscriptions/Write 权限**`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+例如，若要订阅存储帐户上名为“myacct”的事件，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限
 
 ### <a name="custom-topics"></a>自定义主题
 
 对于自定义主题，需要在事件网格主题范围内写入新事件订阅的权限。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-例如，若要订阅名为“mytopic”的自定义主题，需要  **的 Microsoft.EventGrid/EventSubscriptions/Write 权限**`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+例如，若要订阅名为“mytopic”的自定义主题，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限
 
 ## <a name="custom-topic-publishing"></a>自定义主题发布
 
@@ -348,6 +348,10 @@ EventGridContributorRole.json：允许所有事件网格操作。
 ```
 
 可以使用 [PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md) 和 [REST](../role-based-access-control/custom-roles-rest.md) 创建自定义角色。
+
+## <a name="encryption-at-rest"></a>静态加密
+
+事件网格服务写入到磁盘的所有事件或数据都通过 Microsoft 托管的密钥进行加密，确保静态加密。 此外，事件或数据保留的最长时间为24小时，并遵循[事件网格重试策略](delivery-and-retry.md)。 事件网格将在24小时或事件生存时间之后自动删除所有事件或数据（以两者中的较小者为准）。
 
 ## <a name="next-steps"></a>后续步骤
 

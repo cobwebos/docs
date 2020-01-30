@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359898"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887569"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -145,31 +145,23 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。 超磁盘不支持快照。
 
-### <a name="disk-reservation"></a>磁盘保留
-
 **什么是 Azure 磁盘保留？**
-磁盘保留是提前购买一年的磁盘存储的选项，降低了总成本。
+磁盘保留是提前购买一年的磁盘存储的选项，降低了总成本。 有关 Azure 磁盘保留的详细信息，请参阅主题的文章：[了解如何将预订折扣应用到 Azure 磁盘](../articles/cost-management-billing/reservations/understand-disk-reservations.md)。
 
-**Azure 磁盘保留提供哪些选项？**
-Azure 磁盘保留提供的选项可用于从 P30 （1 TiB）到一年的时间从（1）到 P80 （32 TiB）购买高级 Ssd。 购买磁盘保留所需的最小磁盘数量没有限制。 此外，用户还可以选择以单笔预付款或按月付款的方式付款。 高级 SSD 托管磁盘不应用附加的事务开销。
+**Azure 磁盘保留提供哪些选项？** Azure 磁盘保留提供的选项可用于从 P30 （1 TiB）到一年的时间从（1）到 P80 （32 TiB）购买高级 Ssd。 购买磁盘保留所需的最小磁盘数量没有限制。 此外，用户还可以选择以单笔预付款或按月付款的方式付款。 高级 SSD 托管磁盘不应用附加的事务开销。 
 
-保留磁盘的形式，而非容量。 换句话说，当你保留 P80 （32 TiB）磁盘时，你将收到单个 P80 磁盘，因此，你不能将该特定预订就到两个较小的 P70 （16 TiB）磁盘。 当然，您可以根据自己的需要保留任意多个磁盘，包括两个单独的 P70 （16 TiB）磁盘。
+保留磁盘的形式，而非容量。 换句话说，当你保留 P80 （32 TiB）磁盘时，你将收到单个 P80 磁盘，因此，你不能将该特定预订分为两个较小的 P70 （16 TiB）磁盘。 当然，您可以根据自己的需要保留任意多个磁盘，包括两个单独的 P70 （16 TiB）磁盘。
 
-**如何对 Azure 磁盘保留计费？**
-- 对于企业协议（EA）客户，Azure 货币承诺将首先用于购买 Azure 磁盘预留。 在 EA 客户已使用其所有货币承诺的情况下，仍可能会购买磁盘预留，并将对其下一次超额支付的单个支付开票。
+**如何应用 Azure 磁盘保留？**  
+磁盘保留遵循类似于保留虚拟机（VM）实例的模型。 不同之处在于，无法将磁盘保留应用于不同的 Sku，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 保留 VM 实例节省成本](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)。    
 
-- 对于通过 Azure.com 购买的客户，在购买时，将按 Azure 磁盘预留的完全提前支付（或月度固定付款）对文件中的信用卡收费。
+**能否使用通过 Azure 磁盘预留购买的数据存储跨多个区域？**     
+Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30），因此不能在这些构造之外使用。 对于其他区域或 Sku 中的磁盘存储需求，你始终可以购买额外的 Azure 磁盘保留。 
 
-**如何应用 Azure 磁盘保留？**
-磁盘保留遵循类似于保留虚拟机（VM）实例的模型。 不同之处在于，无法将磁盘保留应用于不同的 Sku，而 VM 实例可以。 有关 VM 实例的详细信息，请参阅[通过 Azure 保留 VM 实例节省成本](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)。 
-
-**能否使用通过 Azure 磁盘预留购买的数据存储跨多个区域？**
-Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30），因此不能在这些构造之外使用。 对于其他区域或 Sku 中的磁盘存储需求，你始终可以购买额外的 Azure 磁盘保留。
-
-**Azure 磁盘保留过期时会发生什么情况？**
+**Azure 磁盘保留过期时会发生什么情况？**    
 你将在过期前30天收到电子邮件通知，并在过期日期再次收到通知。 保留到期后，部署的磁盘将继续运行，并按最新的现用现[付费率](https://azure.microsoft.com/pricing/details/managed-disks/)进行计费。
 
-## <a name="ultra-disks"></a>超级磁盘
+## <a name="ultra-disks"></a>超磁盘
 
 **我应该如何将我的 ultra 磁盘吞吐量设置为？**
 如果不确定如何将磁盘吞吐量设置为，则建议首先假定 IO 大小为 16 KiB，并在监视应用程序时调整性能。 公式为：以 MBps 为单位的吞吐量 = IOPS * 16/1000。

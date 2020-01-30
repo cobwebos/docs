@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100337"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844626"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中持久保存状态
 
-在事件网格模块中创建的主题和订阅默认存储在容器文件系统中。 如果不具有持久性，则在重新部署该模块时，创建的所有元数据都将丢失。 目前仅保存元数据。 事件存储在内存中。 如果重新部署或重新启动事件网格模块，则任何未传递的事件都将丢失。
+默认情况下，在事件网格模块中创建的主题和订阅存储在容器文件系统中。 如果不具有持久性，则在重新部署该模块时，创建的所有元数据都将丢失。 若要在部署和重启之间保留数据，需要将数据保留在容器文件系统之外。
+
+默认情况下，只保存元数据，事件仍存储在内存中，以提高性能。 按照 "持久事件" 部分，启用事件持久性。
 
 本文提供了在 Linux 部署中部署具有持久性的事件网格模块的步骤。
 
@@ -61,7 +63,8 @@ ms.locfileid: "73100337"
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ ms.locfileid: "73100337"
 }
 ```
 
-或者，可以使用 docker 客户端命令创建 docker 卷。 
+你可以在主机系统上创建一个目录并装载该目录，而不是装载卷。
 
 ## <a name="persistence-via-host-directory-mount"></a>通过主机目录装载的持久性
 
@@ -138,7 +141,8 @@ ms.locfileid: "73100337"
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ ms.locfileid: "73100337"
 
     >[!IMPORTANT]
     >不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 linux 上的事件网格模块，必须 **/app/metadata**。
+
+
+## <a name="persist-events"></a>持久保存事件
+
+若要启用事件持久性，必须首先使用上述部分通过卷装载或主机目录装载启用元数据持久性。
+
+有关保留事件的重要事项：
+
+* 在每个事件订阅的基础上启用保留事件，并在装入卷或目录后选择加入。
+* 事件持久性在创建时配置在事件订阅上，并且在创建事件订阅后无法修改。 若要切换事件持久性，必须删除并重新创建事件订阅。
+* 保持事件的速度几乎始终比在内存操作中慢，但速度差异很大程度上取决于驱动器的特征。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但通常只是大规模 noticible。
+
+若要在事件订阅中启用事件持久性，请将 `persistencePolicy` 设置为 `true`：
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

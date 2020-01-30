@@ -4,18 +4,23 @@ description: 使用清单收集管理虚拟机
 services: automation
 ms.subservice: change-inventory-management
 keywords: 清单, 自动化, 更改, 跟踪
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419814"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844813"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
-可以从 Azure 虚拟机的资源页为该虚拟机启用清单跟踪。 可以收集和查看清单，了解计算机上的软件、文件、Linux 守护程序、Windows 服务和 Windows 注册表项。 此方法提供一个基于浏览器的用户界面，用于设置和配置清单收集。
+可以从 Azure 虚拟机的资源页为该虚拟机启用清单跟踪。 你可以收集并查看计算机上的下列清单信息：
+
+- Windows 软件（Windows 应用程序和 Windows 更新）、服务、文件和注册表项
+- Linux 软件（包）守护程序和文件
+
+此方法提供一个基于浏览器的用户界面，用于设置和配置清单收集。
 
 ## <a name="before-you-begin"></a>开始之前
 

@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098684"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844694"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教程：将事件转发到 IoTHub
 
@@ -81,6 +81,8 @@ ms.locfileid: "73098684"
 ## <a name="create-event-subscription"></a>创建事件订阅
 
 订户可以注册发布到主题的事件。 若要接收任何事件，需要在相关主题上创建事件网格订阅。
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建具有以下内容的 subscription4。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
@@ -212,3 +214,4 @@ ms.locfileid: "73098684"
 * 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上设置事件网格模块的持久性
 * 按照[文档](configure-client-auth.md)配置客户端身份验证
 * 遵循本[教程](forward-events-event-grid-cloud.md)将事件转发到云中的 Azure 事件网格
+* [监视边缘上的主题和订阅](monitor-topics-subscriptions.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646483"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845588"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -39,7 +39,7 @@ ms.locfileid: "75646483"
 
 ## <a name="subscriptions"></a>订阅
 
-可根据需要在每个订阅中部署尽可能多的虚拟网络，直至达到[上限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 例如，一些组织的不同部门有不同的订阅。 有关订阅的详细信息和注意事项，请参阅[订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)。
+可根据需要在每个订阅中部署尽可能多的虚拟网络，直至达到[上限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 例如，一些组织的不同部门有不同的订阅。 有关订阅的详细信息和注意事项，请参阅[订阅监管](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy)。
 
 ## <a name="segmentation"></a>分段
 

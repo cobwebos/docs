@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027773"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844677"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "76027773"
 
 Azure HDInsight 是 Azure 上的开源分析企业客户中最受欢迎的服务之一。
 
-## <a name="release-date-01092019"></a>发布日期：01/09/2019
+## <a name="release-date-01092020"></a>发布日期：01/09/2020
 
 此版本适用于 HDInsight 3.6 和4.0。 HDInsight 版本将在几天内提供给所有区域。 此处的发布日期指示第一个区域发布日期。 如果看不到下面的更改，请等待几天内发布在你的区域中。
 
@@ -42,7 +42,7 @@ Azure HDInsight 是 Azure 上的开源分析企业客户中最受欢迎的服务
 ## <a name="deprecation"></a>弃用
 此版本没有弃用功能。 若要为即将推出的弃用功能做好准备，请参阅[即将发生的更改](#upcoming-changes)。
 
-## <a name="behavior-changes"></a>行为变更
+## <a name="behavior-changes"></a>行为更改
 此版本不会更改行为。 若要准备即将发生的更改，请参阅[即将发生的更改](#upcoming-changes)。
 
 ## <a name="upcoming-changes"></a>即将推出的更改
@@ -65,3 +65,34 @@ HDInsight 继续提高群集的可靠性和性能。
 
 ## <a name="component-version-change"></a>组件版本更改
 此版本没有更改组件版本。 可在此处找到 HDInsight 4.0 ad HDInsight 3.6 的当前组件版本。
+
+## <a name="known-issues"></a>已知问题
+
+从2020年1月24日起，在尝试使用 Jupyter 笔记本时，可能会收到错误。 使用以下步骤解决此问题。 你还可以参阅此[MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或此[StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)以获取最新信息，或提出其他问题。 解决问题后，将更新此页。
+
+**错误**
+
+* ValueError：无法将笔记本转换为 v5，因为该版本不存在
+* 加载笔记本时出错，加载此笔记本时出现未知错误。 此版本可以将笔记本格式设置为 v4 或更早版本
+
+**原因** 
+
+群集上 _version 的 py 文件已更新为，而不是 4.4. x. x. x. x. x. x. x. x. # #。
+
+**解决方案**
+
+如果创建新的 Jupyter 笔记本并收到上面列出的其中一个错误，请执行以下步骤来解决此问题。
+
+1. 转到 "https://CLUSTERNAME.azurehdinsight.net"，在 web 浏览器中打开 Ambari，其中 CLUSTERNAME 是群集的名称。
+1. 在 Ambari 的左侧菜单中，单击 " **Jupyter**"，然后在 "**服务操作**" 上，单击 "**停止**"。
+1. 通过 ssh 连接到运行 Jupyter 服务的群集头节点。
+1. 在 sudo 模式下打开以下文件/usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version。 py。
+1. 现有条目应显示类似于以下代码的内容： 
+
+    version_info = （5，0，3）
+
+    修改以下项： 
+    
+    version_info = （4，4，0）
+1. 保存文件。
+1. 返回到 Ambari，然后在 "**服务操作**" 中，单击 "**全部重启**"。

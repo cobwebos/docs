@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982495"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846059"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>客户托管的密钥磁盘加密
+# <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
 Azure HDInsight 支持客户托管的密钥，也称为创建自己的密钥（BYOK）对托管磁盘上的数据和附加到 HDInsight 群集 Vm 的资源磁盘进行加密。 此功能允许你使用 Azure Key Vault 来管理保护 HDInsight 群集上静态数据的加密密钥。 群集可能有一个或多个附加的 Azure 存储帐户，其中的加密密钥也可以是 Microsoft 管理的或客户管理的，但加密服务有所不同。
 
@@ -79,7 +79,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“选择主体”下，选择你创建的用户分配的托管标识。
 
-    ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. 将“密钥权限”设置为“获取”、“解包密钥”和“包装密钥”。
 
@@ -100,6 +100,8 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 还需要将托管标识分配给集群并提供密钥 URI。
+
+![创建新群集](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 

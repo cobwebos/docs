@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462493"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846284"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -117,7 +117,7 @@ ms.locfileid: "75462493"
 | 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |N/A  |24 小时 |24 小时 |
 | 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |N/A  |2 小时 |2 小时 |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |4&nbsp;百万 |4&nbsp;百万 |N/A |4&nbsp;百万 |4&nbsp;百万 |
+| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |8&nbsp;百万 |16&nbsp;百万 |N/A |4&nbsp;百万 |4&nbsp;百万 |
 
 <sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 对于调入认知服务的 AI 索引，免费服务限制为每天20个免费事务，其中，事务定义为成功通过扩充管道的文档。
 
@@ -151,7 +151,7 @@ ms.locfileid: "75462493"
 
 ## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 
-用于调用[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)和[语言检测](cognitive-search-skill-language-detection.md)的文本分析资源的[AI 扩充管道](cognitive-search-concept-intro.md)受数据限制的限制。 记录的最大大小应为50000个字符， [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)度量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+用于调用[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)和[PII 检测](cognitive-search-skill-pii-detection.md)的文本分析资源的[AI 扩充管道](cognitive-search-concept-intro.md)受数据限制的限制。 记录的最大大小应为50000个字符， [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)度量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>限制
 

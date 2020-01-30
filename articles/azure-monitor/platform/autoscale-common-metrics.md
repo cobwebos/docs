@@ -4,12 +4,12 @@ description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364588"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845560"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 
@@ -36,7 +36,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 - [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>基于 Resource Manager 的 Windows VM 的来宾 OS 指标
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows Vm 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。
 
 可以在 PowerShell 中使用以下命令生成指标列表。
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |计数 |
 | \NetworkInterface\TotalCollisions |计数 |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web（服务器场）指标
-也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>常用应用服务（服务器场）指标
+也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名称为**HttpQueueLength**。  以下部分列出了可用的服务器场（应用服务）指标。
 
 ### <a name="web-apps-metrics"></a>Web 应用指标
 可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
@@ -159,8 +159,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 对于（非经典）存储帐户，metricTrigger 将包括：
@@ -177,7 +177,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

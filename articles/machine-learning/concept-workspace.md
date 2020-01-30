@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 4891ec0ae87f0d7b0cd7e5d5d550f955a8fde1db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312373"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844069"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -49,7 +49,7 @@ ms.locfileid: "76312373"
 
 + 在 web 上：
     + [Azure 机器学习工作室](https://ml.azure.com) 
-    + [Azure 机器学习设计器](concept-designer.md)-仅适用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作区。
+    + [Azure 机器学习设计器（预览）](concept-designer.md) -仅适用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作区。
 + [适用于 python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)的任何 Python 环境。
 + 在具有适用于 R 的[AZURE 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的任何 R 环境中。
 + 在命令行上使用 Azure 机器学习[CLI 扩展](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
@@ -79,7 +79,7 @@ ms.locfileid: "76312373"
 | 创建笔记本 VM |   | **&check;** | |     |
 
 > [!NOTE]
-> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区。
+> 计算实例仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。
 
 ## <a name='create-workspace'></a>创建工作区

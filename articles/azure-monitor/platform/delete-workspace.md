@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547245"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845554"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 
@@ -23,7 +23,7 @@ ms.locfileid: "76547245"
 删除 Log Analytics 工作区时，将执行软删除操作，以允许在14天内恢复工作区（包括其数据和连接的代理），无论是意外删除还是有意删除。 软删除期间之后，工作区资源及其数据是不可恢复的，其数据将排队等待永久删除并在30天内完全清除。 工作区名称为 "已发布"，你可以使用它来创建新的工作区。
 
 > [!NOTE]
-> 无法关闭软删除行为。 稍后，我们将添加一个选项，以在删除操作中使用 "force" 标记时替代软删除。
+> 如果要重写软删除行为，并永久删除工作区，请执行[永久工作区删除](#Permanent workspace delete)中的步骤。
 
 删除工作区时要格外小心，因为可能会对你的服务操作造成重要的数据和配置。 查看哪些代理、解决方案以及将其数据存储在 Log Analytics 中的其他 Azure 服务和源，例如：
 

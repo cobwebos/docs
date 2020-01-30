@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546055"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845617"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "76546055"
 + <a href="#compute-targets">计算目标</a>
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
 + <a href="#endpoints">端点</a>
-+ <a href="#environments">环境</a>
++ <a href="#environments">情形</a>
 + [估算](#estimators)
 + <a href="#experiments">试验</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
@@ -85,7 +85,7 @@ ms.locfileid: "76546055"
 ### <a name="compute-instance"></a>计算实例（预览）
 
 > [!NOTE]
-> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区。
+> 计算实例仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 **Azure 机器学习计算实例**（以前称为笔记本 VM）是一种完全托管的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 计算实例可用作定型和推断作业的计算目标。 对于大型任务，使用多节点缩放功能[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。

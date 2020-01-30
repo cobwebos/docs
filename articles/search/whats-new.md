@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719817"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844966"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
-서비스의 새로운 기능에 대해 알아봅니다. 将此页加入书签，以便与服务保持最新状态。
+了解服务中的新增功能。 将此页加入书签，以便与服务保持最新状态。
 
 <a name="new-service-name"></a>
 
@@ -27,7 +27,11 @@ Azure 搜索现已重命名为**azure 认知搜索**，以反映核心操作中�
 
 ## <a name="feature-announcements"></a>功能公告
 
-### <a name="january-2020"></a>2020년 1월
+### <a name="february-2020"></a>2020年2月
+
++ [PII 检测](cognitive-search-skill-pii-detection.md)是在编制索引期间使用的一项认知技能，可从输入文本中提取个人身份信息，并提供以各种方式从文本中屏蔽该文本的选项。
+
+### <a name="january-2020"></a>2020 年 1 月
 
 + [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用的是 REST，则可以使用 `api-version=2019-05-06`访问该功能。 对于托管代码，正确的包仍然是[.NET SDK 版本 8.0-预览](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
 
@@ -37,7 +41,7 @@ Azure 搜索现已重命名为**azure 认知搜索**，以反映核心操作中�
 
   + 当前可通过受限访问预览版提供，你可以预配 Azure 搜索服务，该服务支持来自同一虚拟网络上的客户端的连接的 Azure 专用终结点。 有关详细信息，请参阅[创建安全连接的专用终结点](service-create-private-endpoint.md)。
 
-### <a name="december-2019"></a>2019년 12월
+### <a name="december-2019"></a>2019 年 12 月
 
 + "[创建应用" （预览版）](search-create-app-portal.md)是门户中的一个新向导，用于生成可下载的 HTML 文件。 该文件附带嵌入的脚本，该脚本可呈现操作 "localhost" 样式的 web 应用，并将其绑定到搜索服务中的索引。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和 typeahead 查询支持。 您可以将 HTML 脱机修改为扩展或自定义工作流或外观。
 
@@ -52,16 +56,16 @@ Azure 搜索现已重命名为**azure 认知搜索**，以反映核心操作中�
 
 + [文档提取（预览版）](cognitive-search-skill-document-extraction.md)是在编制索引期间使用的一种认知技巧，可用于从技能组合中提取文件的内容。 以前，文档破解仅在技能组合执行之前发生。 添加了这一技能后，还可以在执行技能组合的过程中执行此操作。
 
-+ [文本翻译（预览）](cognitive-search-skill-text-translation.md)是在编制索引时使用的一项认知技巧，用于计算文本，对于每个记录，将返回转换为指定目标语言的文本。
++ [文本翻译](cognitive-search-skill-text-translation.md)是在编制索引时使用的一项认知技巧，用于计算文本，对于每个记录，将返回转换为指定目标语言的文本。
 
 + [Power BI 模板](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md)可以在 Power BI 桌面的知识存储中快速学习对已丰富内容的可视化和分析。 此模板专用于通过 "[导入数据" 向导](knowledge-store-create-portal.md)创建的 Azure 表投影。
 
 + 索引器中现在支持[Azure Data Lake Storage Gen2 （预览版）](search-howto-index-azure-data-lake-storage.md)、 [Cosmos DB Gremlin API （预览）](search-howto-index-cosmosdb.md)和[Cosmos DB Cassandra API （预览版）](search-howto-index-cosmosdb.md) 。 你可以使用[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)进行注册。 一旦您接受了预览计划，您将收到一封确认电子邮件。
 
-### <a name="july-2019"></a>2019년 7월
+### <a name="july-2019"></a>2019 年 7 月
 
 + 在[Azure 政府版云中](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)公开发布。
 
-## <a name="service-updates"></a>서비스 업데이트
+## <a name="service-updates"></a>服务更新
 
 可在 Azure 网站上找到 Azure 认知搜索的[服务更新公告](https://azure.microsoft.com/updates/?product=search&status=all)。

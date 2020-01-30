@@ -3,9 +3,7 @@ title: 使用 Azure 网络观察程序执行数据包检查 | Microsoft 文档
 description: 本文介绍如何在 VM 中使用网络观察程序执行深度数据包检查
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716900"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845082"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
@@ -31,7 +29,7 @@ ms.locfileid: "64716900"
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本方案中的操作：
 
@@ -53,7 +51,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-3"></a>步骤 3
 
-若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
+若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 接收到后，服务器将发送 [ACK] 数据包作为接收来自客户端的 SYN 的确认。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
 
 使用 WireShark 可以计算此值。
 
@@ -79,7 +77,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”  
+使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”
 
 ![协议层次结构菜单][2]
 
@@ -95,7 +93,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”   
+使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”
 
 ![数据包捕获窗口][4]
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548044"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844728"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
 
@@ -73,7 +73,6 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 |--------------------|---------------------
 | CloudEvents 格式 | CloudEvents 格式
 | 事件网格格式  | CloudEvents 格式
-| CloudEvents 格式 | 事件网格格式
 | 事件网格格式  | 事件网格格式
 
 对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-CloudEvents 的当前版本不支持对事件进行批处理。 若要使用 CloudEvent 架构将事件发布到某个主题，请单独发布每个事件。
 
 ### <a name="output-schema"></a>输出架构
 

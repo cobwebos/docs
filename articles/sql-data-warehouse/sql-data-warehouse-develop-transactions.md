@@ -11,21 +11,21 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903071"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846198"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
 
-## <a name="what-to-expect"></a>期望
+## <a name="what-to-expect"></a>你的期望
 与预期一样，SQL 数据仓库支持将事务纳入数据仓库工作负载。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
-SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限于 READ UNCOMMITTED；此级别不能更改。 如果考虑 READ UNCOMMITTED，可以实现许多编码方法，以避免脏读数据。 大多数流行方法使用 CTAS 和表分区切换（通常称为滑动窗口模式），以防止用户查询仍正准备的数据。 预先筛选数据的视图也是常用的方法。  
+SQL 数据仓库实现 ACID 事务。 事务支持的隔离级别默认为未提交读。  在连接到 master 数据库时，可以通过打开用户数据库的 READ_COMMITTED_SNAPSHOT 数据库选项，将其更改为读取已提交快照隔离。  启用后，此数据库中的所有事务都将在已提交读快照隔离下执行，并将不会遵守设置 "在会话级别未提交的读取"。 有关详细信息，请参阅[ALTER DATABASE SET 选项（transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) 。
 
 ## <a name="transaction-size"></a>事务大小
 单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 要预计事务中的最大行数，请将分发上限除以每一行的总大小。 对于可变长度列，考虑采用平均的列长度而不使用最大大小。
@@ -37,9 +37,9 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
+| [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限（GB） | 分布的数量 | 最大事务大小（GB） | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
+| DW100c |第 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400c |3 |60 |180 |12,000,000 |720,000,000 |
@@ -58,9 +58,9 @@ SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每分发的行数 | 每个事务的最大行数 |
+| [DWU](sql-data-warehouse-overview-what-is.md) | 每个分布的上限（GB） | 分布的数量 | 最大事务大小（GB） | 每分发的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
+| DW100 |第 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |

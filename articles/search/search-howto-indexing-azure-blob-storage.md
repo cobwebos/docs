@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 793258b572fdcf2487d4b20fa07fb4ef5524b149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113022"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846268"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何在 azure Blob 存储中用 Azure 认知搜索索引文档
 
@@ -127,21 +127,21 @@ Blob 索引器可从以下文档格式提取文本：
 根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
 > [!NOTE]
-> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
+> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果要以结构化的方式为 JSON 和 CSV blob 编制索引，请参阅为[json Blob 编制](search-howto-index-json-blobs.md)索引和为[csv blob 编制](search-howto-index-csv-blobs.md)索引以获取详细信息。
 >
 > 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
 > [!NOTE]
-> Azure 认知搜索会根据定价层限制其提取的文本量：用于免费层的32000个字符、适用于 Basic 的64000和标准、标准 S2 和标准 S3 层的4000000。 已截断的文本会在索引器状态响应中出现一条警告。  
+> Azure 认知搜索会根据定价层限制其提取的文本大小：用于免费层的32000个字符、适用于 Basic 的64000、适用于 standard 8000000 的、标准 S2 的4000000以及标准 S3 的16000000。 已截断的文本会在索引器状态响应中出现一条警告。  
 
 * Blob 中用户指定的元数据属性（如果有）将逐字提取。
 * 标准 Blob 元数据属性将提取到以下字段中：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
-  * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如 `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
+  * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream` 。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 blob，以避免在初始索引后对所有内容进行索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
@@ -162,8 +162,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 应该仔细考虑要将提取的哪个字段映射到索引的键字段。 候选字段包括：
 
-* **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)实现此目的）。
-* **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
+* **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 您可以使用 `base64Encode`[字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效字符-如果这样做，请记得在将文档键传入 API 调用（如查找）时对其进行编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)实现此目的）。
+* **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。  如上所述，你可以选择使用 `base64Encode`[函数](search-indexer-field-mappings.md#base64EncodeFunction)对密钥进行编码。
 * 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
@@ -256,7 +256,7 @@ Blob 索引器可从以下文档格式提取文本：
 | 属性名称 | 属性值 | 说明 |
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |指示 Blob 索引器完全跳过该 Blob， 既不尝试提取元数据，也不提取内容。 如果特定的 Blob 反复失败并且中断编制索引过程，此属性非常有用。 |
-| AzureSearch_SkipContent |"true" |此属性等效于`"dataToExtract" : "allMetadata"`上面[所述的与特定 Blob 相关的 ](#PartsOfBlobToIndex) 设置。 |
+| AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>处理错误
@@ -299,7 +299,7 @@ Azure 认知搜索限制已编制索引的 blob 的大小。 [Azure 认知搜索
 2. 在数据源上配置软删除检测策略
 3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
 
-例如，如果某个 Blob 具有值为 `IsDeleted` 的元数据属性 `true`，以下策略会将该 Blob 视为已删除：
+例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
 
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json

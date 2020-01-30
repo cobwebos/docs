@@ -4,28 +4,26 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 自动化和网络观察程序诊断本地连接
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275913"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845040"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
 若要向客户提供可靠的服务，获取网络性能的深入见解至关重要。 因此，必须能够快速检测网络中断状态，并采取纠正措施来缓解中断状态。 在 Azure 自动化中，可以通过 Runbook 以编程方式实施和运行任务。 使用 Azure 自动化可以创建完美的脚本来执行连续、主动的网络监视和警报。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 下图中的方案是一个多层应用程序，其中使用 VPN 网关和隧道建立了本地连接。 确保 VPN 网关正常运行对于应用程序的性能至关重要。
 

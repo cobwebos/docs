@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432487"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846129"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -136,11 +136,11 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
 
 4. 现在，运行 Python 脚本时，系统仍会提示输入值，但会仅在 shell 中打印值。 创建的 `SpanData` 将发送到 Azure Monitor。 您可以在 `dependencies`下找到已发出的范围数据。
 
-5. 有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python)。
+5. 有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
 
 6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的度量值，用于跟踪用户按 Enter 的次数。
 

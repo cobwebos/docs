@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 开发 Azure Functions
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Functions 扩展来开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547415"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845401"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 开发 Azure Functions
 
@@ -65,11 +65,13 @@ Azure Functions 扩展提供以下好处：
 
 1. 选择 function app 项目的文件夹，然后为**函数项目选择语言**。
 
+1. 如果尚未安装核心工具，系统会要求选择要安装的核心工具**版本**。 选择版本2.x 或更高版本。 
+
 1. 选择 " **HTTP 触发器**函数" 模板，也可以选择 "**跳过**" 以创建没有函数的项目。 你随时可以在[项目中添加函数](#add-a-function-to-your-project)。
 
     ![选择 HTTP 触发器模板](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 为 "函数名称" 键入**HTTPTrigger** ，然后选择 Enter，然后选择 "**函数**授权"。 此授权级别要求你在调用函数终结点时提供[功能键](functions-bindings-http-webhook.md#authorization-keys)。
+1. 为 "函数名称" 键入**HttpExample** ，然后选择 Enter，然后选择 "**函数**授权"。 此授权级别要求你在调用函数终结点时提供[功能键](functions-bindings-http-webhook.md#authorization-keys)。
 
     ![选择函数授权](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
