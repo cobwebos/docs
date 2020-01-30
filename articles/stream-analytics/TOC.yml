@@ -176,6 +176,8 @@
           href: stream-analytics-live-data-local-testing.md
         - name: 在 Visual Studio 中查看作业
           href: stream-analytics-vs-tools.md
+        - name: 使用作业关系图调试查询
+          href: debug-locally-using-job-diagram.md
         - name: 开发 Edge 作业
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: 设置 CI/CD 管道

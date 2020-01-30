@@ -13,26 +13,25 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: '创建函数 - C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: 创建函数 - Java
-      href: functions-create-first-java-maven.md
-    - name: 创建函数 - JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: 创建函数 - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: 创建函数 - Python
-      href: functions-create-first-function-python.md
-    - name: 连接到服务
+    - name: 创建函数
+      expanded: true
       items:
-        - name: '存储 - C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: 存储 - Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: 存储 - JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: 命令行
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: 连接到存储
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: 存储 - Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: 教程
   items:
     - name: Functions 与逻辑应用
@@ -137,7 +136,7 @@
       href: functions-networking-options.md
     - name: IP 地址
       href: ip-addresses.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -160,7 +159,7 @@
                 - name: Azure 门户
                   href: functions-create-first-azure-function.md
                 - name: 命令行
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code
@@ -312,7 +311,7 @@
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
-- name: 引用
+- name: 参考
   items:
     - name: API 参考
       items:
@@ -358,7 +357,7 @@
           href: functions-bindings-signalr-service.md
         - name: 表存储
           href: functions-bindings-storage-table.md
-        - name: 计时器
+        - name: Timer
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md

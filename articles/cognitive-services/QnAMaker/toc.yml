@@ -67,23 +67,37 @@
       href: Tutorials/create-qna-bot.md
 - name: 概念
   items:
-    - name: 知识库
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: 使用 LUIS 和 QnA Maker
-      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
-    - name: 知识库的开发生命周期
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Azure 资源
+      href: Concepts/azure-resources.md
+    - name: 设计知识库
+      items:
+        - name: 对于语言
+          href: Concepts/design-language-culture.md
+        - name: 对于客户端应用程序
+          href: Concepts/integration-with-other-applications.md
+    - name: 数据源和内容
+      items:
+        - name: 从数据源导入
+          href: Concepts/knowledge-base.md
+        - name: 导入的内容类型
+          href: Concepts/content-types.md
+        - name: 问答集
+          href: Concepts/question-answer-set.md
+    - name: 知识库生命周期
+      items:
+        - name: 开发生命周期
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: 查询知识库
+      items:
+        - name: 获取答案
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: 置信度分数
+          href: Concepts/confidence-score.md
     - name: 最佳做法
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: 置信度分数
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: 支持的数据源
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: 操作方法指南
   items:
     - name: 编辑知识库
@@ -106,6 +120,8 @@
         - name: 使用元数据获取答案
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: 设置默认答案
+          href: How-to/change-default-answer.md
         - name: 创建带有 QnA Maker 和 LUIS 的机器人
           href: Tutorials/integrate-qnamaker-luis.md
         - name: 语言选择

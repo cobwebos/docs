@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: 文档提取
           href: cognitive-search-skill-document-extraction.md
+        - name: PII 检测
+          href: cognitive-search-skill-pii-detection.md
     - name: 自定义技能
       items:
         - name: 自定义 Web API
