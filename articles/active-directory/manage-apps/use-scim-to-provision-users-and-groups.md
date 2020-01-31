@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
-ms.translationtype: HT
+ms.openlocfilehash: 2c2f0abeab31fc64fceb10bf17ef90924efefa22
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940870"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841210"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -49,7 +49,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>步骤1：设计用户和组架构
 
-每个应用程序都需要使用不同的属性来创建用户或组。 通过标识应用程序所需的对象（用户、组）和属性（名称、管理器、作业标题等）开始集成。 然后，你可以使用下表来了解应用程序所需的属性如何映射到 Azure AD 中的属性和 SCIM RFC。 请注意，你可以[自定义](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)属性在 AZURE AD 和 SCIM 终结点之间的映射方式。 
+每个应用程序都需要使用不同的属性来创建用户或组。 通过标识应用程序所需的对象（用户、组）和属性（名称、管理器、作业标题等）开始集成。 然后，你可以使用下表来了解应用程序所需的属性如何映射到 Azure AD 中的属性和 SCIM RFC。 请注意，你可以[自定义](customize-application-attributes.md)属性在 AZURE AD 和 SCIM 终结点之间的映射方式。 
 
 用户资源由以下协议规范中包含的架构标识符 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`确定： https://tools.ietf.org/html/rfc7643 。  表1提供了 Azure AD 中用户的属性的默认映射。  
 
@@ -119,14 +119,14 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
     - `and`
 * 对于 SCIM 中的结构元素，无需区分大小写匹配，具体 `op` 操作值，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中所定义。 Azure AD `Add`、`Replace`和 `Remove`发出 "op" 的值。
 * Microsoft Azure AD 请求获取随机用户和组，以确保终结点和凭据有效。 它也作为[Azure 门户](https://portal.azure.com)中的**测试连接**流的一部分完成。 
-* 可在其上查询资源的属性应设置为[Azure 门户](https://portal.azure.com)的应用程序上的匹配属性。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* 可在其上查询资源的属性应设置为[Azure 门户](https://portal.azure.com)的应用程序上的匹配属性。 有关详细信息，请参阅[自定义用户预配属性映射](customize-application-attributes.md)
 
 ### <a name="user-provisioning-and-deprovisioning"></a>用户预配和取消预配
 
 下图显示了 Azure Active Directory 发送到 SCIM 服务的消息，以管理应用程序的标识存储中用户的生命周期。  
 
-![显示用户预配和取消设置序列][4]<br/>
-*图4：用户预配和取消预配序列*
+![显示用户预配和取消设置序列](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+*用户预配和取消预配顺序*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>组预配和取消预配
 
@@ -135,8 +135,8 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 * 检索组的请求指定要从为响应请求而提供的任何资源中排除成员属性。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 
-![显示组预配和取消设置序列][5]<br/>
-*图5：组预配和取消预配顺序*
+![显示组预配和取消设置序列](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+*组预配和取消预配顺序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
 本部分提供 Azure AD SCIM 客户端发出的示例 SCIM 请求以及预期的响应。 为了获得最佳结果，应将应用编码为按此格式处理这些请求，并发出预期的响应。
@@ -168,7 +168,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
   - [更新组 [添加成员]](#update-group-add-members) （[请求](#request-11) /
 [响应](#response-11)）
   - [更新组 [删除成员]](#update-group-remove-members) （[请求](#request-12) /
-[响应](#response-12)）（
+[响应](#response-12)）
   - [删除组](#delete-group)（[请求](#request-13) /
 [响应](#response-13)）
 
@@ -752,7 +752,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
 * 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库 Microsoft.systemforcrossdomainidentitymanagement 声明了一个接口每 microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior，如下图中所示：。 使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 这些库允许开发人员部署符合 SCIM 规范的 web 服务。 Web 服务可以位于 Internet Information Services 或任何可执行 CLI 程序集中。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
   
-   ![细目：请求转换为对提供程序方法的调用][3]
+   ![细目：请求转换为对提供程序方法的调用](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [快速路由处理程序](https://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。
 
@@ -1315,7 +1315,7 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 请咨询应用程序提供者，或参阅应用程序提供者文档中的说明，以了解是否符合这些要求。
 
 > [!IMPORTANT]
-> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅[预配周期部分](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)：[预配周期的初始和增量](how-provisioning-works.md)。
+> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 [有关详细信息](how-provisioning-works.md)，请参阅[预配周期部分：预配周期的初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
 
 ### <a name="getting-started"></a>入门
 
@@ -1328,14 +1328,14 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 3. 选择 " **+ 新建应用程序** > **所有** > **的非库应用程序**。
 4. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 新应用将添加到企业应用程序列表中，并打开到其应用管理屏幕。
 
-   ![屏幕快照显示 Azure AD 应用程序库][1]<br/>
-   *图2： Azure AD 应用程序库*
+   ![屏幕快照显示 Azure AD 应用程序库](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   *Azure AD 应用程序库*
 
 5. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 6. 在“预配模式”菜单中，选择“自动”。
 
-   ![示例： Azure 门户中的应用设置页][2]<br/>
-   *图3：在 Azure 门户中配置预配*
+   ![示例： Azure 门户中的应用设置页](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   *在 Azure 门户中配置预配*
 
 7. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/
 8. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段保留为空，则 Azure AD 包括每个请求 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。 
@@ -1347,7 +1347,7 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
     > **测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息。
 
 10. 如果尝试连接到应用程序成功，请选择 "**保存**" 以保存管理员凭据。
-11. 在 "**映射**" 部分中，有两个可选择的[属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”，提交所有更改。
+11. 在 "**映射**" 部分中，有两个可选择的[属性映射](customize-application-attributes.md)集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”，提交所有更改。
 
     > [!NOTE]
     > 也可通过禁用“组”映射来选择性禁用组对象的同步。
@@ -1364,7 +1364,7 @@ Microsoft 提供的用于实现 SCIM 服务的 CLI 库将该请求转换为对�
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步骤5：将应用程序发布到 Azure AD 应用程序库
 
-如果要构建的应用程序将由多个租户使用，则可以将其提供给 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序并配置设置。 在 Azure AD 库中发布你的应用程序并使其可供其他人使用非常简单。 在[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)查看步骤。 Microsoft 将与你合作，将你的应用程序集成到我们的库、测试终结点，并发布载入[文档](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)供客户使用。 
+如果要构建的应用程序将由多个租户使用，则可以将其提供给 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序并配置设置。 在 Azure AD 库中发布你的应用程序并使其可供其他人使用非常简单。 在[此处](../develop/howto-app-gallery-listing.md)查看步骤。 Microsoft 将与你合作，将你的应用程序集成到我们的库、测试终结点，并发布载入[文档](../saas-apps/tutorial-list.md)供客户使用。 
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在应用程序库中预配连接器的授权
@@ -1376,11 +1376,13 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 *  客户端 ID：授权服务器向注册的客户端颁发客户端标识符，该标识符是表示客户端提供的注册信息的唯一字符串。  客户端标识符不是机密;它向资源所有者公开，**不得**单独用于客户端身份验证。  
 *  客户端密码：客户端密码是由授权服务器生成的机密。 它应该是唯一的唯一值，只是授权服务器。 
 
+请注意，由于公开了客户端机密，因此不支持 OAuth v1。 支持 OAuth v2。  
+
 最佳做法（建议但不需要）：
 * 支持多个重定向 Url。 管理员可以配置 "portal.azure.com" 和 "aad.portal.azure.com" 中的预配。 支持多个重定向 Url 将确保用户可以从任一门户授予访问权限。
 * 支持多个机密，以确保顺利地续订密钥，而无需停机。 
 
-**生存期较长的 OAuth 持有者令牌：** 如果你的应用程序不支持 OAuth 授权代码授予流，你还可以生成一个长期的 OAuth 持有者令牌，而不是管理员可用于设置预配集成。 令牌应为永久标记，否则在令牌过期时将[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)设置作业。 此令牌的大小必须小于 1 KB。  
+**生存期较长的 OAuth 持有者令牌：** 如果你的应用程序不支持 OAuth 授权代码授予流，你还可以生成一个长期的 OAuth 持有者令牌，而不是管理员可用于设置预配集成。 令牌应为永久标记，否则在令牌过期时将[隔离](application-provisioning-quarantine-status.md)设置作业。 此令牌的大小必须小于 1 KB。  
 
 有关其他身份验证和授权方法，请在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上告诉我们。
 
@@ -1396,11 +1398,3 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 * [用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [帐户预配通知](user-provisioning.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
-
-<!--Image references-->
-[0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png
-[1]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png
-[2]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png
-[3]: ./media/use-scim-to-provision-users-and-groups/scim-figure-3.png
-[4]: ./media/use-scim-to-provision-users-and-groups/scim-figure-4.png
-[5]: ./media/use-scim-to-provision-users-and-groups/scim-figure-5.png

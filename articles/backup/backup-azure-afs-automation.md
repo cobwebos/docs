@@ -1,18 +1,18 @@
 ---
-title: 通过 PowerShell 备份和还原 Azure 文件
-description: 本文介绍如何使用 Azure 备份服务和 PowerShell 备份和还原 Azure 文件。
+title: 通过 PowerShell 备份 Azure 文件
+description: 本文介绍如何使用 Azure 备份服务和 PowerShell 来备份 Azure 文件。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294042"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773103"
 ---
-# <a name="back-up-and-restore-azure-files-with-powershell"></a>通过 PowerShell 备份和还原 Azure 文件
+# <a name="back-up-azure-files-with-powershell"></a>通过 PowerShell 备份 Azure 文件
 
-本文介绍如何使用 Azure PowerShell 使用[Azure 备份](backup-overview.md)恢复服务保管库备份和恢复 azure 文件文件共享。
+本文介绍如何使用 Azure PowerShell 通过[Azure 备份](backup-overview.md)恢复服务保管库备份 azure 文件文件共享。
 
 本文介绍如何执行以下操作：
 
@@ -22,8 +22,6 @@ ms.locfileid: "76294042"
 > * 创建恢复服务保管库。
 > * 为 Azure 文件共享配置备份。
 > * 运行备份作业。
-> * 还原已备份的 Azure 文件共享或共享中的单个文件。
-> * 监视备份和还原作业。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -113,7 +111,7 @@ ms.locfileid: "76294042"
 
 ### <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-若要查看订阅中的所有保管库，请使用 [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)。
+若要查看订阅中的所有保管库，请使用[“Get-AzRecoveryServicesVault”](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -274,148 +272,6 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 按需备份可用于将快照保留10年。 计划程序可用于运行具有选定保留期的按需 PowerShell 脚本，从而每周、每月或每年按固定间隔拍摄快照。 在拍摄常规快照时，请参阅使用 Azure 备份进行按[需备份的限制](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
 
 如果你正在查找示例脚本，则可以使用 Azure 自动化 runbook 在 GitHub （<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>）上引用示例脚本，该 runbook 允许定期计划备份并将其保留10年。
-
-### <a name="modify-the-protection-policy"></a>修改保护策略
-
-若要更改用于备份 Azure 文件共享的策略，请使用[AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)。 指定相关的备份项目和新的备份策略。
-
-以下示例将“testAzureFS”保护策略从“dailyafs”更改为“monthlyafs”。
-
-```powershell
-$monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
-$afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType AzureFiles -Name "testAzureFS"
-Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
-```
-
-## <a name="restore-azure-file-shares-and-files"></a>还原 Azure 文件共享和文件
-
-可以还原整个文件共享或共享中的特定文件。 可以还原到原始位置，或还原到备用位置。
-
-### <a name="fetch-recovery-points"></a>提取恢复点
-
-使用[AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0)列出备份项的所有恢复点。
-
-在下面的脚本中：
-
-* 变量 **$rp**是过去七天内所选备份项的恢复点数组。
-* 该数组按时间进行反向排序，以最新的恢复点作为索引 0。
-* 使用标准 PowerShell 数组索引选取恢复点。
-* 在示例中，$rp[0] 选择最近的恢复点。
-
-```powershell
-$startDate = (Get-Date).AddDays(-7)
-$endDate = Get-Date
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-
-$rp[0] | fl
-```
-
-输出如下所示。
-
-```powershell
-FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
-                       00Z
-RecoveryPointType    : FileSystemConsistent
-RecoveryPointTime    : 11/20/2018 12:31:05 AM
-RecoveryPointId      : 86593702401459
-ItemName             : testAzureFS
-Id                   : /Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Micros                      oft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;teststorageRG;testStorageAcct/protectedItems/AzureFileShare;testAzureFS/recoveryPoints/86593702401462
-WorkloadType         : AzureFiles
-ContainerName        : storage;teststorageRG;testStorageAcct
-ContainerType        : AzureStorage
-BackupManagementType : AzureStorage
-```
-
-选择相关恢复点后，将文件共享或文件还原到原始位置或备用位置。
-
-### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>将 Azure 文件共享还原到备用位置
-
-使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定以下参数以标识备用位置：
-
-* **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
-* **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。
-* **TargetFolder**：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
-
-用以下参数运行 cmdlet：
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-```
-
-该命令返回一个要跟踪的、带有 ID 的作业，如以下示例所示。
-
-```powershell
-WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   -----
-testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-```
-
-### <a name="restore-an-azure-file-to-an-alternate-location"></a>将 Azure 文件还原到备用位置
-
-使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定这些参数以标识备用位置，并唯一地标识要还原的文件。
-
-* **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
-* **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。
-* **TargetFolder**：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **SourceFilePath**：文件共享中要还原的文件的绝对路径，字符串格式。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同。
-* **SourceFileType**：选择的是目录还是文件。 接受“目录”或“文件”。
-* **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
-
-其他参数（SourceFilePath 和 SourceFileType）只与要还原的单个文件相关。
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-此命令返回具有要跟踪的 ID 的作业，如前一部分中所示。
-
-### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>将 Azure 文件共享和文件还原到原始位置
-
-还原到原始位置时，无需指定与目标和目标相关的参数。 仅“ResolveConflict”必须提供。
-
-#### <a name="overwrite-an-azure-file-share"></a>覆盖 Azure 文件共享
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
-```
-
-#### <a name="overwrite-an-azure-file"></a>覆盖 Azure 文件
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-## <a name="track-backup-and-restore-jobs"></a>跟踪备份和还原作业
-
-按需备份和还原操作返回一个作业以及一个 ID，如[运行按需备份](#trigger-an-on-demand-backup)时所示。 使用[AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) cmdlet 跟踪作业进度和详细信息。
-
-```powershell
-$job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
-
- $job | fl
-
-
-IsCancellable        : False
-IsRetriable          : False
-ErrorDetails         : {Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureFileShareJobErrorInfo}
-ActivityId           : 00000000-5b71-4d73-9465-8a4a91f13a36
-JobId                : 00000000-6c46-496e-980a-3740ccb2ad75
-Operation            : Restore
-Status               : Failed
-WorkloadName         : testAFS
-StartTime            : 12/10/2018 9:56:38 AM
-EndTime              : 12/10/2018 11:03:03 AM
-Duration             : 01:06:24.4660027
-BackupManagementType : AzureStorage
-
-$job.ErrorDetails
-
- ErrorCode ErrorMessage                                          Recommendations
- --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
-```
 
 ## <a name="next-steps"></a>后续步骤
 
