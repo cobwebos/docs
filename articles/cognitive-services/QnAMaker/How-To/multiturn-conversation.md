@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872292"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843254"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -65,7 +65,7 @@ ms.locfileid: "74872292"
 
 * 使用标题和子标题来表示层次结构。 例如，可以通过 h1 表示父 QnA 和 h2，以表示应作为 prompt 出现的 QnA。 使用较小的标题尺寸来表示后续层次结构。 不要使用样式、颜色或其他某些机制来表示文档中的结构，QnA Maker 将不会提取多个提示。
 
-* 标题的第一个字符必须大写。 
+* 标题的第一个字符必须大写。
 
 * 不要以问号结束标题，`?`。
 
@@ -113,7 +113,7 @@ ms.locfileid: "74872292"
 1. 在**Signout**的行中的 "**答案**" 列中，选择 "**添加后续提示**"。
 1. 在 "**跟进提示符**" 弹出窗口的 "字段" 中，输入以下值：
 
-    |字段|Value|
+    |字段|值|
     |--|--|
     |显示文本|输入 **"关闭设备"** 。 这是要在后续提示中显示的自定义文本。|
     |仅限上下文| 选中此复选框。 仅当问题指定上下文时，才返回答案。|
@@ -150,7 +150,7 @@ ms.locfileid: "74872292"
 1. 在此问题的 "**答案**" 列中，选择 "**添加后续提示**"。
 1. 在 "**后续提示（预览）** " 下，输入以下值创建新的后续提示：
 
-    |字段|Value|
+    |字段|值|
     |--|--|
     |显示文本|*创建 Windows 帐户*。 要在跟进提示中显示的自定义文本。|
     |仅限上下文|选中此复选框。 仅当问题指定了上下文时，才返回此答案。|
@@ -368,7 +368,7 @@ QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 `co
 
 ## <a name="export-knowledge-base-for-version-control"></a>用于版本控制的导出知识库
 
-QnA Maker 支持 QnA Maker 门户中的[版本控制](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)，方法是在导出的文件中包含多轮会话步骤。
+QnA Maker 通过在导出文件中包含多轮会话步骤，支持版本控制。
 
 ## <a name="next-steps"></a>后续步骤
 
