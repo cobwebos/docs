@@ -17,36 +17,20 @@
       items:
         - name: 在没有标签的情况下训练和使用自定义模型
           items:
-            - name: v2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract.md
-                - name: Python
-                  href: quickstarts/python-train-extract.md
-            - name: v1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract-v1.md
-                - name: Python
-                  href: quickstarts/python-train-extract-v1.md
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
         - name: 在有标签的情况下训练和使用自定义模型
           items:
             - name: Python
               href: quickstarts/python-labeled-data.md
         - name: 使用预生成的回执模型
           items:
-            - name: v2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts.md
-                - name: Python
-                  href: quickstarts/python-receipts.md
-            - name: v1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts-v1.md
-                - name: Python
-                  href: quickstarts/python-receipts-v1.md
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
         - name: 获取文本布局信息
           items:
             - name: Python

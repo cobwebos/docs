@@ -65,6 +65,7 @@
       items:
         - name: 了解和调整流式处理单元
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: 提高查询性能
           href: stream-analytics-parallelization.md
         - name: 将输入重新分区

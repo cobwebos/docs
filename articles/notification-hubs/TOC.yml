@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: 概念
   items:
+    - name: 传输层安全 (TLS) (Transport Layer Security) (TLS)
+      href: notification-hubs-tls12.md
     - name: 企业推送体系结构指南
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: 设备注册数
@@ -90,7 +92,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: 安全模型
       href: notification-hubs-push-notification-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 更改定价层
       href: change-pricing-tier.md
@@ -138,7 +140,7 @@
       href: notification-hubs-push-notification-fixer.md
     - name: 使用百度云推送来推送通知
       href: notification-hubs-baidu-china-android-notifications-get-started.md
-- name: 引用
+- name: 参考
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs

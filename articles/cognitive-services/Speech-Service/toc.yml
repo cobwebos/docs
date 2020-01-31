@@ -459,6 +459,8 @@
           href: speech-sdk.md
         - name: 方案可用性
           href: scenario-availability.md
+        - name: 交付应用程序
+          href: ship-application.md
     - name: 快速入门
       items:
         - name: 创建一个项目

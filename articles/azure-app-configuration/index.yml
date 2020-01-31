@@ -4,9 +4,9 @@ title: Azure 应用配置预览版文档
 metadata:
   title: Azure 应用配置文档 - 教程和 API 参考
   description: Azure 应用配置是一项托管服务，可帮助开发人员轻松且安全地集中管理其应用程序和功能设置。
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019
