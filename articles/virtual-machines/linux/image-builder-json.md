@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760005"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905760"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览：创建 Azure 映像生成器模板 
 
@@ -317,6 +317,8 @@ OS 支持： Windows
 - **restartCheckCommand** –用于检查重新启动是否成功的命令（可选）。 
 - **restartTimeout** -以数量级和 unit 的字符串形式指定的重新启动超时。 例如，`5m` （5分钟）或 `2h` （2小时）。 默认值为： "5 分钟"
 
+### <a name="linux-restart"></a>Linux 重新启动  
+无 Linux 重新启动定制器，但是，如果您要安装驱动程序或需要重新启动的组件，则可以安装这些驱动程序并使用 Shell 定制器调用重新启动，生成 VM 的 SSH 超时为20min。
 
 ### <a name="powershell-customizer"></a>PowerShell 定制器 
 Shell 定制器支持运行 PowerShell 脚本和内联命令，这些脚本必须可公开访问，IB 才能访问这些脚本。

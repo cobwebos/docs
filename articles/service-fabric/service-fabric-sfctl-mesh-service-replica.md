@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 网格服务-副本
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取应用程序资源的副本详细信息的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 219a691dd1b74ec2214c156018e6e3f62366f523
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645321"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905952"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 获取副本详细信息并列出应用程序资源中给定服务的副本。

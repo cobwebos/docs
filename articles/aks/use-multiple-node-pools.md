@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713313"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901523"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -23,11 +23,11 @@ ms.locfileid: "76713313"
 
 本文介绍如何在 AKS 群集中创建和管理多个节点池。
 
-## <a name="before-you-begin"></a>시작하기 전에
+## <a name="before-you-begin"></a>开始之前
 
-需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 `az --version`을 실행하여 버전을 찾습니다. 설치 또는 업그레이드해야 하는 경우 [Azure CLI 설치][install-azure-cli]를 참조하세요.
+需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
-## <a name="limitations"></a>제한 사항
+## <a name="limitations"></a>限制
 
 创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
@@ -41,7 +41,7 @@ ms.locfileid: "76713313"
 * 所有节点池必须位于同一 vnet 和子网中。
 * 在创建群集时，在创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与控制平面的版本相匹配。 使用每个节点池操作设置群集后，可以更新此设置。
 
-## <a name="create-an-aks-cluster"></a>AKS 클러스터 만들기
+## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
 若要开始，请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后，使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.15.7*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
 
@@ -63,7 +63,7 @@ az aks create \
     --load-balancer-sku standard
 ```
 
-클러스터를 만드는 데 몇 분이 걸립니다.
+创建群集需要几分钟时间。
 
 > [!NOTE]
 > 若要确保群集正常运行，应在默认节点池中至少运行2个节点，因为基本的系统服务在此节点池上运行。
@@ -387,22 +387,22 @@ aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
-Kubernetes 스케줄러는 taint 및 toleration을 사용하여 노드에서 실행할 수 있는 워크로드를 제한할 수 있습니다.
+Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行的工作负荷。
 
-* **Taint**는 노드에서 특정 Pod만 예약할 수 있음을 나타내는 노드에 적용됩니다.
-* **Toleration**은 노드의 오류를 ‘허용’할 수 있도록 하는 Pod에 적용됩니다.
+* 将**排斥**应用到指明了只能计划特定 pod 的节点。
+* 然后，将**容许**应用到可以*容许*节点排斥的 pod。
 
 有关如何使用高级 Kubernetes 计划功能的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][taints-tolerations]
 
 在此示例中，使用--taints 命令将破坏应用到基于 GPU 的节点。 从上一个 `kubectl get nodes` 命令的输出中指定基于 GPU 的节点的名称。 破坏将应用为*键：值*和计划选项。 下面的示例使用*sku = gpu*对，并定义了*NoSchedule*功能：
 
 ```console
-az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 下面的基本示例 YAML 清单使用 toleration，以允许 Kubernetes 计划程序在基于 GPU 的节点上运行 NGINX pod。 有关对 MNIST 数据集运行 Tensorflow 作业的更合适但更耗时的示例，请参阅[AKS 上的将 gpu 用于计算密集型工作负荷][gpu-cluster]。
 
-`gpu-toleration.yaml` 파일을 만들고 다음 예제 YAML을 복사합니다.
+创建名为 `gpu-toleration.yaml` 的文件，并将其复制到以下示例 YAML 中：
 
 ```yaml
 apiVersion: v1
@@ -575,7 +575,7 @@ az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerSe
 
 注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并将 "布尔值" 属性 `enableNodePublicIP` 添加到 "agentPoolProfiles"。 将值设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
-## <a name="clean-up-resources"></a>리소스 정리
+## <a name="clean-up-resources"></a>清理资源
 
 本文创建了包含基于 GPU 的节点的 AKS 群集。 为了降低不必要的成本，你可能想要删除*gpunodepool*或整个 AKS 群集。
 
@@ -591,7 +591,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][operator-best-practices-advanced-scheduler]。
 

@@ -3,12 +3,12 @@ title: 在容器实例上设置就绪探测器
 description: 了解如何配置探测，以确保 Azure 容器实例中的容器仅在准备就绪时接收请求
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533562"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901857"
 ---
 # <a name="configure-readiness-probes"></a>配置就绪情况探测
 
@@ -17,6 +17,9 @@ ms.locfileid: "74533562"
 本文介绍如何部署包含准备情况探测器的容器组，以便在探测成功时，容器只接收流量。
 
 Azure 容器实例还支持[活动探测](container-instances-liveness-probe.md)，你可以将其配置为导致不正常的容器自动重启。
+
+> [!NOTE]
+> 目前不能在部署到虚拟网络的容器组中使用准备情况探测。
 
 ## <a name="yaml-configuration"></a>YAML 配置
 

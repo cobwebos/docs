@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979084"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904952"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>部署 Azure 逻辑应用的 Azure 资源管理器模板
 
@@ -128,4 +128,4 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [监视逻辑应用](../logic-apps/monitor-logic-apps.md)

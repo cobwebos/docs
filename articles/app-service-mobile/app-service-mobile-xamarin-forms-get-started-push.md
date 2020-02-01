@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f8aab2c5e942944f6251eef0aaaec204ce5ad076
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fc05763046da365e7770a9b208100e0366062f25
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668776"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898869"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
@@ -201,7 +201,8 @@ ms.locfileid: "74668776"
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+            //Unique request code to avoid PendingIntent collision.
+            var requestCode = new Random().Next();
 
             var notificationBuilder = new NotificationCompat.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
@@ -230,7 +231,7 @@ ms.locfileid: "74668776"
 3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，并单击“设为启动项目”。
 4. 单击“运行”生成项目，并在 Android 设备或模拟器中启动应用。
 5. 在应用中，键入一项任务，并单击加号 ( **+** ) 图标。
-6. 确认在添加该项目时收到了通知。
+6. 确认在添加项时收到了通知。
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>配置和运行 iOS 项目（可选）
 
@@ -396,7 +397,7 @@ ms.locfileid: "74668776"
 1. 在 Visual Studio 中，右键单击 Windows 项目，并单击“设为启动项目”。
 2. 按“运行”按钮生成项目并启动应用程序 。
 3. 在应用中，为新 todoitem 键入一个名称，并单击加号 ( **+** ) 图标以添加它。
-4. 确认在添加项时收到了通知。
+4. 确认在添加该项目时收到了通知。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034077"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905280"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -99,8 +99,10 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>选项
 
-|选项|说明|
+|选项|Description|
 |--|--|
+|--aad 终结点|要使用的 Azure Active Directory 终结点。 默认值（ https://login.microsoftonline.com) 适用于公共 Azure 云。 在全国云中进行身份验证时设置此参数。 请参阅[Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+托管服务标识不需要此标志。|
 |--application-id 字符串|用户分配的标识的应用程序 ID。 对于服务主体身份验证是必需的。|
 |--证书-路径字符串|SPN 身份验证的证书路径。 基于证书的服务主体身份验证所必需的。|
 |-h、--help|显示登录命令的帮助内容。|
@@ -113,7 +115,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|说明|
+|选项|Description|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 每分钟的吞吐量可能与 cap 略有不同。 如果将此选项设置为零，或省略此选项，则不会限制吞吐量。|
 |--output 类型字符串|命令输出的格式。 选项包括：文本、json。 默认值为 "text"。|

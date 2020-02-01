@@ -1,20 +1,20 @@
 ---
-title: Azure 门户概述 | Microsoft Docs
+title: Azure 快速入门中心入门
 description: 使用 Azure 快速启动中心指导体验开始使用 Azure。 了解如何设置、迁移和创新。
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 624be4cca4fd274fdc5d2b2c374b87b3e0974888
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310510"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900686"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure 快速入门中心入门
 
@@ -33,8 +33,10 @@ Azure 快速入门中心有三个入门选项：
 ## <a name="how-to-use-azure-quickstart-center"></a>如何使用 Azure 快速入门中心
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 从侧栏顶部部分中选择 "**所有服务**"。
-1. 选择 "**常规**" > **快速入门中心**。 选择星形图标保存到**收藏夹**。
+
+1. 从 "Azure 门户" 菜单中选择 "**所有服务**"。
+
+1. 选择 "**常规**" > **快速入门中心**。
 
 若要深入了解 Azure 快速入门中可执行的操作，请查看此视频：
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

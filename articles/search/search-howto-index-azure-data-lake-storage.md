@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112285"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905665"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的索引文档
 
@@ -38,7 +38,7 @@ ms.locfileid: "74112285"
 
 收到预览注册成功的确认后，便可以创建索引管道了。
 
-可以通过使用[REST API 版本 2019-05-06-Preview](search-api-preview.md)来索引 Data Lake Storage Gen2 内容和元数据。 目前不支持门户或 .NET SDK。
+可以通过使用[REST API 版本 2019-05-06-Preview](search-api-preview.md)来索引 Data Lake Storage Gen2 内容和元数据。 目前没有门户或 .NET SDK 支持。
 
 Data Lake Storage Gen2 中的索引内容与 Azure Blob 存储中的索引内容相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何在 Azure Blob 存储中通过 azure 认知搜索为文档编制索引](search-howto-indexing-azure-blob-storage.md)。 Blob 存储一文还提供了有关支持的文档格式、提取的 Blob 元数据属性、增量索引等信息。 此信息对于 Data Lake Storage Gen2 是相同的。
 
@@ -47,3 +47,10 @@ Data Lake Storage Gen2 中的索引内容与 Azure Blob 存储中的索引内容
 Azure Data Lake Storage Gen2 实现一个支持 Azure 基于角色的访问控制（RBAC）和类似于 POSIX 的访问控制列表（Acl）的[访问控制模型](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 在 Data Lake Storage Gen2 编制内容的索引时，Azure 认知搜索不会从内容中提取 RBAC 和 ACL 信息。 因此，此信息不会包含在 Azure 认知搜索索引中。
 
 如果保持对索引中每个文档的访问控制很重要，则由应用程序开发人员来实现[安全修整](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)。
+
+## <a name="change-detection"></a>更改检测
+
+Data Lake Storage Gen2 索引器支持更改检测。 这意味着当索引器运行时，它仅重新编制索引由 blob 的 `LastModified` 时间戳确定的已更改 blob。
+
+> [!NOTE] 
+> Data Lake Storage Gen2 允许重命名目录。 重命名目录时，该目录中的 blob 的时间戳不会更新。 因此，索引器不会重新索引这些 blob。 如果需要在目录重命名之后重新编制索引目录中的 blob，因为它们现在具有新的 Url，则需要更新目录中所有 blob 的 `LastModified` 时间戳，以便索引器知道在以后运行时将其重新编制索引。

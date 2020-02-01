@@ -1,27 +1,29 @@
 ---
-title: Azure Stream Analytics에서 JSON 및 AVRO 구문 분석
-description: 이 문서에서는 배열, JSON, CSV 형식의 데이터와 같은 복합 데이터 형식을 조작하는 방법을 설명합니다.
+title: 在 Azure 流分析中分析 JSON 和 AVRO
+description: 本文介绍如何针对复杂数据类型（如数组、JSON、CSV 格式数据）进行操作。
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: cbfa6f8b85814f0f77234e014ade0ff757a4c4b8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/29/2020
+ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720072"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905447"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics에서 JSON 및 Avro 데이터 구문 분석
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
 Azure 流分析支持处理 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以进行结构化，并且包含某些复杂类型（如嵌套对象（记录）和数组）。 
 
+>[!NOTE]
+>事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求你使用*自定义反序列*化功能。 有关详细信息，请参阅[使用 .net 自定义反以任意格式读取输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
 
 
 
-## <a name="record-data-types"></a>레코드 데이터 형식
-레코드 데이터 형식은 입력 데이터 스트림에서 사용될 때 JSON 및 Avro 배열을 나타내는 데 사용됩니다. 다음 예제에서는 입력 이벤트를 JSON 형식으로 읽는 샘플 센서를 보여 줍니다. 단일 이벤트의 예제는 다음과 같습니다.
+## <a name="record-data-types"></a>记录数据类型
+如果在输入数据流中使用相应的格式，记录数据类型将用于表示 JSON 和 Avro 数组。 这些示例演示示例传感器，该传感器读取 JSON 格式的输入事件。 下面是单一事件的示例：
 
 ```json
 {
@@ -46,7 +48,6 @@ Azure 流分析支持处理 CSV、JSON 和 Avro 数据格式的事件。 JSON �
 }
 ```
 
-
 ### <a name="access-nested-fields-in-known-schema"></a>访问已知架构中的嵌套字段
 使用点表示法（.）可以轻松地直接从查询中访问嵌套字段。 例如，下面的查询在前面的 JSON 数据的 Location 属性下选择纬度和经度坐标。 点表示法可用于导航多个级别，如下所示。
 
@@ -55,56 +56,82 @@ SELECT
     DeviceID,
     Location.Lat,
     Location.Long,
+    SensorReadings.Temperature,
     SensorReadings.SensorMetadata.Version
 FROM input
 ```
 
+结果为：
+
+|DeviceID|Lat|Long|温度|版本|
+|-|-|-|-|-|
+|12345|47|122|80|1.2.45|
+
+
 ### <a name="select-all-properties"></a>选择所有属性
-중첩된 레코드의 모든 속성은 '*' 와일드카드를 사용하여 선택할 수 있습니다. 다음과 같은 예제를 참조하세요.
+可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
 
 ```SQL
-SELECT input.Location.*
+SELECT
+    DeviceID,
+    Location.*
 FROM input
 ```
 
-결과는 다음과 같습니다.
+结果为：
 
-```json
-{
-    "Lat" : 47,
-    "Long" : 122
-}
-```
+|DeviceID|Lat|Long|
+|-|-|-|
+|12345|47|122|
 
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
-如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 
 
-例如，假设有一个示例数据流需要与包含每个设备传感器的阈值的引用数据联接。 下面显示了此类引用数据的代码段。
+如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 这允许在不硬编码属性名称的情况下生成动态查询。
+
+例如，假设示例数据流需要与包含每个设备传感器阈值的**引用数据联接**。 下面显示了此类引用数据的代码段。
 
 ```json
 {
     "DeviceId" : "12345",
     "SensorName" : "Temperature",
-    "Value" : 75
+    "Value" : 85
+},
+{
+    "DeviceId" : "12345",
+    "SensorName" : "Humidity",
+    "Value" : 65
 }
 ```
+
+此处的目标是将示例数据集从文章顶部联接到引用数据，并为每个传感器度量值超过其阈值输出一个事件。 这意味着，如果由于加入，多个传感器超出各自的阈值，则上述单个事件可以生成多个输出事件。 若要在没有联接的情况下实现类似的结果，请参阅下面的部分。
 
 ```SQL
 SELECT
     input.DeviceID,
-    thresholds.SensorName
+    thresholds.SensorName,
+    "Alert : Sensor above threshold" AS AlertMessage
 FROM input      -- stream input
 JOIN thresholds -- reference data input
 ON
     input.DeviceId = thresholds.DeviceId
 WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
-    -- the where statement selects the property value coming from the reference data
 ```
 
+**GetRecordPropertyValue**选择*SensorReadings*中的属性，该属性的名称与来自引用数据的属性名称匹配。 然后，提取*SensorReadings*中的关联值。
+
+结果为：
+
+|DeviceID|SensorName|AlertMessage|
+|-|-|-|
+|12345|湿度|警报：传感器超出阈值|
+
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
-레코드 필드를 별도의 이벤트로 변환하려면 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자를 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 함수와 함께 사용합니다. 例如，如果前面的示例具有 SensorReading 的多个记录，可以使用以下查询将它们提取到不同的事件中：
+
+若要将记录字段转换为单独事件，请结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函数。
+
+使用原始示例数据时，可以使用以下查询将属性提取到不同的事件中。
 
 ```SQL
 SELECT
@@ -115,42 +142,158 @@ FROM input as event
 CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 ```
 
+结果为：
 
+|DeviceID|SensorName|AlertMessage|
+|-|-|-|
+|12345|温度|80|
+|12345|湿度|70|
+|12345|CustomSensor01|5|
+|12345|CustomSensor02|99|
+|12345|SensorMetadata|[对象对象]|
 
-## <a name="array-data-types"></a>배열 데이터 형식
+使用[WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)，可以将这些事件路由到不同的目标：
 
-배열 데이터 형식은 정렬된 값의 컬렉션입니다. 배열 값에 일반적인 몇 가지 연산은 아래에 자세히 나와 있습니다. 이러한 예제에서는 입력 이벤트에 배열 데이터 형식인 "arrayField"라는 속성이 있다고 가정합니다.
+```SQL
+WITH Stage0 AS
+(
+    SELECT
+        event.DeviceID,
+        sensorReading.PropertyName,
+        sensorReading.PropertyValue
+    FROM input as event
+    CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
+)
 
-이러한 예제에서는 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 함수 및 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자를 사용합니다.
+SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
+SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+## <a name="array-data-types"></a>数组数据类型
+
+数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
+
+下面是单个事件的示例。 `CustomSensor03` 和 `SensorMetadata` 均为**数组**类型：
+
+```json
+{
+    "DeviceId" : "12345",
+    "SensorReadings" :
+    {
+        "Temperature" : 80,
+        "Humidity" : 70,
+        "CustomSensor01" : 5,
+        "CustomSensor02" : 99,
+        "CustomSensor03": [12,-5,0]
+     },
+    "SensorMetadata":[
+        {          
+            "smKey":"Manufacturer",
+            "smValue":"ABC"                
+        },
+        {
+            "smKey":"Version",
+            "smValue":"1.2.45"
+        }
+    ]
+}
+```
 
 ### <a name="working-with-a-specific-array-element"></a>使用特定数组元素
-지정된 인덱스에서 배열 요소를 선택합니다(첫 번째 배열 요소 선택).
+
+选择指定索引中的数组元素（选择第一个数组元素）：
 
 ```SQL
 SELECT
-    GetArrayElement(arrayField, 0) AS firstElement
+    GetArrayElement(SensorReadings.CustomSensor03, 0) AS firstElement
 FROM input
 ```
+
+结果为：
+
+|firstElement|
+|-|
+|12|
 
 ### <a name="select-array-length"></a>选择数组长度
 
 ```SQL
 SELECT
-    GetArrayLength(arrayField) AS arrayLength
+    GetArrayLength(SensorReadings.CustomSensor03) AS arrayLength
 FROM input
 ```
 
+结果为：
+
+|arrayLength|
+|-|
+|3|
+
 ### <a name="convert-array-elements-into-separate-events"></a>将数组元素转换为单独的事件
-모든 배열 요소를 개별 이벤트로 선택합니다. [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 연산자는 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 기본 제공 함수와 함께 모든 배열 요소를 개별 이벤트로 추출합니다.
+
+选择所有数组元素作为各个事件。 结合使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符和 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 内置函数，提取所有数组元素作为各个事件：
 
 ```SQL
 SELECT
-    arrayElement.ArrayIndex,
-    arrayElement.ArrayValue
-FROM input as event
-CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
+    DeviceId,
+    CustomSensor03Record.ArrayIndex,
+    CustomSensor03Record.ArrayValue
+FROM input
+CROSS APPLY GetArrayElements(SensorReadings.CustomSensor03) AS CustomSensor03Record
+
 ```
 
+结果为：
 
-## <a name="see-also"></a>참고 항목
-[Azure Stream Analytics의 데이터 형식](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+|DeviceId|ArrayIndex|ArrayValue|
+|-|-|-|
+|12345|0|12|
+|12345|第|-5|
+|12345|2|0|
+
+```SQL
+SELECT   
+    i.DeviceId, 
+    SensorMetadataRecords.ArrayValue.smKey as smKey,
+    SensorMetadataRecords.ArrayValue.smValue as smValue
+FROM input i
+CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
+ ```
+ 
+结果为：
+
+|DeviceId|smKey|smValue|
+|-|-|-|
+|12345|制造商|ABC|
+|12345|版本|1.2.45|
+
+如果提取的字段需要显示在列中，则除了[联接](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)操作外，还可以使用[WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)语法来透视数据集。 该联接需要一个阻止重复的[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件：
+
+```SQL
+WITH DynamicCTE AS (
+    SELECT   
+        i.DeviceId,
+        SensorMetadataRecords.ArrayValue.smKey as smKey,
+        SensorMetadataRecords.ArrayValue.smValue as smValue
+    FROM input i
+    CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords 
+)
+
+SELECT
+    i.DeviceId,
+    i.Location.*,
+    V.smValue AS 'smVersion',
+    M.smValue AS 'smManufacturer'
+FROM input i
+LEFT JOIN DynamicCTE V ON V.smKey = 'Version' and V.DeviceId = i.DeviceId AND DATEDIFF(minute,i,V) BETWEEN 0 AND 0 
+LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId AND DATEDIFF(minute,i,M) BETWEEN 0 AND 0
+```
+
+结果为：
+
+|DeviceId|Lat|Long|smVersion|smManufacturer|
+|-|-|-|-|-|
+|12345|47|122|1.2.45|ABC|
+
+## <a name="see-also"></a>另请参阅
+[Azure 流分析中的数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

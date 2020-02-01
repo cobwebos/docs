@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863336"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905409"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>将事件中心事件源添加到时序见解环境
 

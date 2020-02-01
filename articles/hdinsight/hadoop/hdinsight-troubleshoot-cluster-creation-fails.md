@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980493"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905155"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 群集创建失败问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "75980493"
 
 基于订阅的 Azure 策略可以拒绝创建公共 IP 地址。 创建 HDInsight 群集需要两个公共 IP。  
 
-通常，以下策略会影响群集创建：
+通常，以下策略可能会影响群集创建：
 
 * 禁止在订阅中创建 IP 地址 & 负载平衡器的策略。
 * 阻止创建存储帐户的策略。
@@ -53,10 +53,10 @@ ms.locfileid: "75980493"
 
 | 源 IP 地址 | 目标 | 方向 |
 |---|---|---|
-| 168.61.49.99 | *:443 | 入站 |
-| 23.99.5.239 | *:443 | 入站 |
-| 168.61.48.131 | *:443 | 入站 |
-| 138.91.141.162 | *:443 | 入站 |
+| 168.61.49.99 | *：443 | 入站 |
+| 23.99.5.239 | *：443 | 入站 |
+| 168.61.48.131 | *：443 | 入站 |
+| 138.91.141.162 | *：443 | 入站 |
 
 还要添加特定于创建群集的区域的 IP 地址。 有关每个 Azure 区域的地址列表，请参阅[HDInsight 管理 IP 地址](../hdinsight-management-ip-addresses.md)。
 
@@ -72,13 +72,13 @@ ms.locfileid: "75980493"
 
 ## <a name="storage-account-name-restrictions"></a>存储帐户名称限制
 
-存储帐户名称不能超过 24 个字符，且不能包含特殊字符。 这些限制也适用于存储帐户中的默认容器名称。
+存储帐户名称不能超过24个字符，并且不能包含特殊字符。 这些限制也适用于存储帐户中的默认容器名称。
 
 其他命名限制还适用于群集创建。 有关详细信息，请参阅[群集名称限制](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)。
 
 ## <a name="service-outages"></a>服务中断
 
-检查[Azure 状态](https://status.azure.com/status)以了解任何潜在的中断或服务问题。
+检查[Azure 状态](https://status.azure.com)以了解任何潜在的中断或服务问题。
 
 ## <a name="next-steps"></a>后续步骤
 

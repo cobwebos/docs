@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549340"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909034"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配的先决条件
 本文提供了有关如何选择和使用 Azure Active Directory （Azure AD）将云预配作为标识解决方案进行连接的指导。
@@ -29,6 +29,9 @@ ms.locfileid: "75549340"
 - Azure AD 租户的全局管理员帐户。
 - 使用 Windows 2012 R2 或更高版本的预配代理的本地服务器。
 - 本地防火墙配置。
+
+>[!NOTE]
+>当前只能在英文版服务器上安装设置代理。 在非英语服务器上安装英语语言包不是一个有效的解决方法，将导致代理安装失败。 
 
 本文档的其余部分提供了有关这些先决条件的分步说明。
 

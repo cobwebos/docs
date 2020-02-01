@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841057"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906849"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -38,6 +38,14 @@ Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft 
 
 - [在 Microsoft Azure 上注册适用于地平线云的技术预览版](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG 徽标](./media/partners/10zig.png)
+
+具有先进的瘦和零客户端硬件和软件的10ZiG 技术是一个长久持续合作伙伴，其中包含 Microsoft 和专用的 Microsoft Azure 和 Windows 虚拟桌面合作伙伴。 10ZiG Windows 10 基于 IoT 的瘦客户端是适用于所有 Windows 虚拟桌面多用户的功能强大、可靠和经济实惠的终结点。 10ZiG Manager 软件提供卓越的管理和部署而无需额外付费。 10ZiG 技术团队、高级担保计划和无障碍演示是云中的一站式 Windows 虚拟桌面多会话支持解决方案。
+
+10ZiG's 全球市场领导，适用于虚拟桌面的瘦和零客户端终结点设备和管理软件的工作方式由其客户的工作方式举例说明。 它的瘦客户端硬件附带了周全构造的权益功能和选项，旨在确保客户根据其需求接收正确的客户端设备。 10ZiG 通过基于 Windows 和 Linux 的客户端对其设备进行定制，使其能够在虚拟桌面（云内部和外部）提供最佳性能。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -81,7 +89,7 @@ deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 d
 
 - [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
 
-## <a name="hp"></a>HP
+## <a name="hp"></a>制造
 
 ![HP 徽标](./media/partners/hp.png)
 
@@ -132,6 +140,14 @@ Liquidware Essentials 通过有效地收集用户配置文件和收集重要用�
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)。
 - [请参阅合作伙伴网站](https://www.liquidware.com/solutions/solutions-platform/microsoft)。
+
+## <a name="liquit"></a>Liquit
+
+![Liquit 徽标](./media/partners/liquit.png)
+
+Liquit 应用程序聚合和交付软件使企业和服务提供商能够连接到所有工作区后端（Citrix、VMWare、Windows 虚拟桌面、RDP 和旧版）并与之合并，并提供自定义且一致的客户体验，而不考虑客户的应用程序所在的位置。 当客户发布智能图标时，Liquit 根据客户的位置、设备和配置文件权限决定启动应用程序的位置。
+
+作为认证的集成合作伙伴，Liquit 可帮助加速过渡到云，而无需延迟和替换延迟。 Windows 虚拟桌面可以轻松连接到现有环境，创建工作区，并交付桌面。 然后，你可以将时间从旧的平台迁移，并在不需要用户注意的情况下在后端进行更改。 无论在何处，都可以获得一致的最终用户体验、灵活的基础结构，并保持对应用程序的控制。
 
 ## <a name="login-vsi"></a>登录 .VSI
 
@@ -202,6 +218,16 @@ RDPSoft 是一个 Windows 虚拟桌面合作伙伴，可提供功能强大、价
 RDPSoft 的远程桌面指挥解决方案增强了 Windows 虚拟桌面管理。 高级管理功能通过提供远程协助、用户会话和流程管理，简化了对 Windows 虚拟桌面管理任务的委派以支持桌面人员。 同时，远程桌面指挥套件会收集有关每个用户的性能和负载、用户活动和审核、Windows 虚拟桌面连接质量（延迟和带宽）、授权和安全到中央 Azure SQL 的丰富指标要查看的数据库实例。 使用 RDPSoft，只需单击一下即可了解丰富的历史报告和全面的仪表板。
 
 - [请参阅合作伙伴网站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago 徽标](./media/partners/sepago.png)
+
+sepago 由 Cologne 中的四个朋友构建在2002中。 如今，sepago 是一项 IT 管理咨询，其中 sepagists 的数量不断增长，在德国的 Cologne，慕尼黑，和汉堡。 sepago 是有关自动化应用程序预配、虚拟化、云解决方案和 IT 安全的专家。 sepago 支持中型和大型公司的数字转换，并确保用户可以安全高效地工作。
+
+sepago 的创新和开发实验室使用大数据和 AI 技术构建智能解决方案。 这些解决方案侧重于提高企业虚拟桌面等合作伙伴产品的业务、用户体验和管理中心。
+
+- [请参阅合作伙伴网站](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

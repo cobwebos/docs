@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 应用配置同步中使用 GitHub 操作
 description: 使用 GitHub 操作可在 GitHub 存储库上执行定义的操作时触发对应用配置实例的更新
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310592"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899621"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>使用 GitHub 操作同步应用配置实例
 Azure 应用配置使用 GitHub 操作来更新应用配置实例，该实例由对 GitHub 存储库执行的操作触发。 你可以利用 GitHub 工作流来更新应用配置，使应用配置更新与用于更新应用程序代码的工作流集成。

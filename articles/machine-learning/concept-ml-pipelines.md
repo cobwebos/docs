@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772595"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905733"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -26,7 +26,7 @@ Azure 机器学习管道使你可以在机器学习项目中创建工作流。 �
 + 灵活性
 + 版本控制和跟踪
 + 模块化 
-+ 质量保证测试
++ 质量保证
 + 成本控制
 
 当你的机器学习项目超出了纯粹的探索和迭代后，这些优势就变得非常明显。 即使是简单的单步管道也很有价值。 机器学习项目通常处于一种复杂的状态，这可能会使单个工作流的精确成就成为一个非常简单的过程。
@@ -203,6 +203,20 @@ pipeline_run.wait_for_completion()
 |**跟踪和版本控制**|可以使用管道 SDK 显式对数据源、输入和输出进行命名和版本控制，而不是在循环访问时手动跟踪数据和结果路径。 还可以将脚本和数据分开管理以提高工作效率。|
 | **模块化** | 分离关注区和隔离更改可让软件以更快的速度以更高的质量发展。 | 
 |**协作**|管道使数据科学家能够在机器学习设计过程的所有方面进行协作，同时能够同时处理管道步骤。|
+
+## <a name="modules"></a>模块
+
+虽然管道步骤允许重复使用以前运行的结果，但在许多情况下，该步骤的构造假定所需的脚本和依赖文件必须在本地可用。 如果数据科研人员希望在现有代码的基础上进行构建，则通常必须从单独的存储库克隆脚本和依赖项。
+
+模块在使用管道步骤时相似，但提供通过工作区加速的版本控制，可实现大规模协作和可重用性。 模块设计为在多个管道中重复使用，并且可以发展以适应不同的用例。 用户可以通过工作区执行以下任务，而无需使用外部存储库：
+
+* 创建新模块并发布现有模块的新版本
+* 弃用现有版本
+* 标记禁用的版本以防止使用者使用该版本
+* 指定默认版本
+* 从工作区按版本检索模块，以确保团队使用相同的代码
+
+有关如何在 Azure 机器学习管道中创建、连接和使用模块的代码示例，请参阅[笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 646d9206ec82d5f35ccab9365e76276ff779d225
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073487"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898783"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
-事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
+Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以引入数百万的事件，从而使你能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
 
 本文是[将 Azure API 管理与事件中心集成](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/)视频的配套内容，介绍了如何使用 Azure 事件中心记录 API 管理事件。
 
@@ -30,60 +30,9 @@ ms.locfileid: "70073487"
 有关如何创建事件中心以及获取将事件发送到事件中心和从事件中心接收事件所需的连接字符串的详细步骤，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="create-an-api-management-logger"></a>创建 API 管理记录器
-现在有了事件中心，下一步是在 API 管理服务中配置[记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)，以便它可以将事件记录到事件中心。
+现在有了事件中心，下一步是在 API 管理服务中配置[记录器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)，以便它可以将事件记录到事件中心。
 
-使用 [API 管理 REST API](https://aka.ms/smapi) 配置 API 管理记录器。 在第一次使用 REST API 之前，查看[先决条件](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest)并确保已[启用对 REST API 的访问](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI)。
-
-若要创建记录器，请使用以下 URL 模板发出 HTTP PUT 请求：
-
-`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
-
-* 将 `{your service}` 替换为 API 管理服务实例的名称。
-* 将 `{new logger name}` 替换为新记录器的所需名称。 配置 [log-to-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) 策略时，将引用此名称
-
-将以下标头添加到请求：
-
-* 内容类型：应用程序/json
-* 授权：SharedAccessSignature 58...
-  * 有关生成 `SharedAccessSignature` 的说明，请参阅 [Azure API 管理 REST API 身份验证](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication)。
-
-使用以下模板指定请求正文：
-
-```json
-{
-  "loggerType" : "AzureEventHub",
-  "description" : "Sample logger description",
-  "credentials" : {
-    "name" : "Name of the Event Hub from the portal",
-    "connectionString" : "Endpoint=Event Hub Sender connection string"
-    }
-}
-```
-
-* `loggerType` 必须设置为 `AzureEventHub`。
-* `description` 提供记录器的可选说明，并且可在需要时为零长度。
-* `credentials` 包含 Azure 事件中心的 `name` 和 `connectionString`。
-
-发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。 基于上面示例请求的示例响应，如下所示。
-
-```json
-{
-    "id": "/loggers/{new logger name}",
-    "loggerType": "azureEventHub",
-    "description": "Sample logger description",
-    "credentials": {
-        "name": "Name of the Event Hub from the Portal",
-        "connectionString": "{{Logger-Credentials-xxxxxxxxxxxxxxx}}"
-    },
-    "isBuffered": true,
-    "resourceId": null
-}
-```
-
-> [!NOTE]
-> 有关其他可能的返回代码及其原因，请参阅[创建记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT)。 若要查看如何执行其他操作，如列表、更新和删除，请参阅[记录器](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)实体文档。
->
->
+使用 [API 管理 REST API](https://aka.ms/apimapi) 配置 API 管理记录器。 有关详细的请求示例，请参阅[如何创建记录器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhubs-policies"></a>配置 log-to-eventhubs 策略
 
@@ -116,7 +65,7 @@ ms.locfileid: "70073487"
   * [使用 EventProcessorHost 接收消息](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)
 * 了解有关 API 管理和事件中心集成的详细信息
-  * [记录器实体引用](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [记录器实体引用](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
   * [log-to-eventhub 策略引用](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [使用 Azure API 管理、事件中心和 Moesif 监视 API](api-management-log-to-eventhub-sample.md)  
 * 详细了解如何[与 Azure Application Insights 集成](api-management-howto-app-insights.md)

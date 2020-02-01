@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772119"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905205"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -89,6 +89,7 @@ ms.locfileid: "75772119"
 |TargetReplicaSetSize |Int，默认值为 7 |不允许|ClusterManager 的 TargetReplicaSetSize。 |
 |UpgradeHealthCheckInterval |以秒为单位的时间，默认值为 60 |动态|受监视应用程序升级期间的运行状况检查频率 |
 |UpgradeStatusPollInterval |以秒为单位的时间，默认值为 60 |动态|轮询应用程序升级状态的频率。 此值确定任何 GetApplicationUpgradeProgress 调用的更新速率 |
+|CompleteClientRequest | Bool，默认值为 false |动态| 按 CM 接受时完成客户端请求。 |
 
 ## <a name="common"></a>通用
 
@@ -568,6 +569,8 @@ ms.locfileid: "75772119"
 |ValidatePlacementConstraint | Bool，默认值为 true |动态| 指定更新服务的服务说明时，是否验证服务的放置约束表达式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool，默认值为 TRUE |动态|指定是否为服务的 PlacementConstraint 表达式评估故障转移的主要首选项。 |
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |
+|NodeLoadsOperationalTracingEnabled | Bool，默认值为 true |动态|在事件存储区中启用节点加载操作结构跟踪的配置。 |
+|NodeLoadsOperationalTracingInterval | TimeSpan，默认值为 Common：： TimeSpan：： FromSeconds （20） | 动态|指定以秒为单位的时间范围。 为每个服务域跟踪节点加载到事件存储的时间间隔。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 

@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 应用程序
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理应用程序的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645406"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906199"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
@@ -530,9 +530,12 @@ ms.locfileid: "75645406"
 |参数|Description|
 | --- | --- |
 | --path [必需] | 本地应用程序包的路径。 |
+| --压缩 | 仅适用于 Service Fabric 应用程序包。 创建一个包含压缩应用程序包的新文件夹到默认位置，或创建到压缩位置参数所指定的位置，然后上传新创建的文件夹。 <br><br> 如果已经有 sfctl 生成的压缩文件，则如果设置此标志，则将覆盖该文件。 如果目录不是应用程序包，则将返回错误。 如果已压缩应用程序包，则将按原样复制文件夹。 默认情况下，在上载成功后，将删除新创建的压缩应用程序包。 如果上传未成功，请根据需要手动清理压缩包。 如果压缩位置参数引用了不存在的目录，则删除操作不会删除任何可能已创建的空目录。 |
+| --压缩-位置 | 要放置压缩应用程序包的位置。 <br><br> 如果未提供任何位置，压缩的包将位于新创建的文件夹下，该文件夹位于在 path 参数中指定的父目录下 sfctl_compressed_temp。 例如，如果 path 参数的值为 C\:/FolderA/AppPkg，则压缩的包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
 | --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 <br><br> 若要上传到文件位置，请使用 "file\:" 启动此参数。 否则，该值应为映像存储连接字符串，例如默认值。 |
+| --保留压缩 | 在成功完成上传时是否保留生成的压缩包。 <br><br> 如果未设置，则在成功完成时将删除压缩的应用包。 如果上传未成功，则应用程序包将始终保留在输出目录中以便重新上传。 |
 | --show-progress | 显示大型包的文件上传进度。 |
-| --timeout -t | 总超时（以秒为单位）。 上载超时持续时间过后，将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时时间。  默认\: 300。 |
+| --timeout -t | 总超时（以秒为单位）。 上载超时持续时间过后，将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时时间。 超时不包括压缩应用程序包所需的时间。  默认\: 300。 |
 
 ### <a name="global-arguments"></a>全局参数
 

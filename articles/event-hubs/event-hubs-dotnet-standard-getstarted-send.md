@@ -1,10 +1,9 @@
 ---
-title: 使用 .NET Core 发送和接收事件-Azure 事件中心 |Microsoft Docs
-description: 本文提供了创建 .NET Core 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
+title: 使用 .NET 从 Azure 事件中心发送和接收事件（旧）
+description: 本文介绍了如何创建一个使用旧的 EventHubs 包在 Azure 事件中心之间发送/接收事件的 .NET Core 应用。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -12,32 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a58c344f644f91634fba267ff157bd56a18f40d3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846675"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900116"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>使用 .NET Core 将事件发送到 Azure 事件中心或从其接收事件
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core （EventHubs）将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-本教程介绍如何在 C# 中创建 .NET Core 应用程序，以便将事件发送到事件中心或从其接收事件。 
+本教程介绍如何在中C#创建 .net Core 应用程序，以将事件发送到事件中心或从事件中心接收事件。 
 
-> [!NOTE]
-> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName`字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> [!WARNING]
+> 此快速入门使用旧的**EventHubs**包。 建议将代码[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)到使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)包。  
 
-## <a name="prerequisites"></a>先决条件
+
+## <a name="prerequisites"></a>必备组件
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com)。
 - [.NET Core Visual Studio 2015 或 2017 工具](https://www.microsoft.com/net/core)。 
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照 "[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)" 一文中的说明，获取**事件中心命名空间的连接字符串**。 本教程后面的步骤将使用此连接字符串。
 
 ## <a name="send-events"></a>发送事件 
-此部分介绍如何创建可将事件发送到事件中心的 .NET Core 控制台应用程序。 
+本部分说明如何创建 .NET Core 控制台应用程序，以将事件发送到事件中心。 
+
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -120,7 +123,7 @@ ms.locfileid: "73846675"
     }
     ```
 
-5. 在 `Main` 类的 `Program` 方法中添加以下代码：
+5. 在 `Program` 类的 `Main` 方法中添加以下代码：
 
     ```csharp
     MainAsync(args).GetAwaiter().GetResult();
@@ -195,7 +198,7 @@ ms.locfileid: "73846675"
 6. 运行程序，并确保没有任何错误。
 
 ## <a name="receive-events"></a>接收事件
-此部分介绍如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。
+本部分介绍如何编写 .NET Core 控制台应用程序，该应用程序使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 下载此用作示例的快速入门，将 `EventHubConnectionString`、`EventHubName`、`StorageAccountName`、`StorageAccountKey`、`StorageContainerName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 

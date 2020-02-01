@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771609"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906272"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -201,49 +201,14 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 ### <a name="regional-availability"></a>区域可用性
 
-标准文件共享在所有区域中可用，最高可达 5 TiB。 在某些区域中，它们可用于 100 TiB 限制，下表列出了这些区域：
+100 TiB 容量限制的标准文件共享在所有 Azure 区域中全局可用-
 
-|地区 |支持的冗余 |
-|-------|---------|
-|澳大利亚中部    |LRS     |
-|澳大利亚中部 2    |LRS     |
-|澳大利亚东部 |LRS     |
-|澳大利亚东南部|LRS |
-|巴西南部    |LRS     |
-|加拿大中部  |LRS     |
-|加拿大东部     |LRS     |
-|印度中部  |LRS     |
-|美国中部 *   |LRS、ZRS    |
-|亚洲东部      |LRS     |
-|美国东部 *        |LRS、ZRS|
-|美国东部 2 *      |LRS、ZRS     |
-|法国中部 |LRS、ZRS|
-|法国南部   |LRS     |
-|日本东部     |LRS     |
-|日本西部     |LRS     |
-|韩国中部  |LRS     |
-|韩国南部    |LRS     |
-|美国中北部 |LRS   |
-|欧洲北部   |LRS     |
-|印度南部    |LRS     |
-|美国中南部 |LRS     |
-|亚洲东南部 |LRS、ZRS|
-|瑞士北部    |LRS     |
-|瑞士西部    |LRS     |
-|阿拉伯联合酋长国中部    |LRS     |
-|阿拉伯联合酋长国北部    |LRS     |
-|英国北部   |LRS、ZRS    |
-|英国南部    |LRS     |
-|英国西部    |LRS     |
-|美国中西部|LRS     |
-|西欧 *    |LRS、ZRS|
-|印度西部   |LRS     |
-|美国西部        |LRS     |
-|美国西部 2      |LRS、ZRS|
+- LRS：除南非北部和南非西部之外的所有区域。
+   - 通过 PowerShell 和 Azure 命令行接口（CLI）支持全国云（政府、德国、中国）。 无门户支持。 
+   - 美国东部、东2、西欧：支持所有新帐户。 少量现有帐户尚未完成升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
 
-新帐户支持 \*，并非所有现有帐户都完成了升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
-
-若要帮助我们确定新的区域和功能的优先级，请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
+- ZRS：除日本东部、北欧、南非北部以外的所有区域。
+- GRS/GZRS：不支持。
 
 ### <a name="enable-and-create-larger-file-shares"></a>启用和创建更大的文件共享
 

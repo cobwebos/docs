@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926751"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901325"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -21,7 +21,7 @@ ms.locfileid: "74926751"
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf 代理 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) 是一种插件驱动型代理，可以从 150 多个不同的源收集指标。 根据在 VM 上运行的具体工作负荷，可将该代理配置为利用专用输入插件来收集指标。 工作负荷的示例包括 MySQL、NGINX 和 Apache。 然后，代理可以使用输出插件向所选的目标写入数据。 Telegraf 代理直接集成了 Azure Monitor 自定义指标 REST API。 它支持 Azure Monitor 输出插件。 使用此插件，代理可以在 Linux VM 上收集特定于工作负荷的指标，然后将其作为自定义指标提交到 Azure Monitor。 
+[Telegraf](https://docs.influxdata.com/telegraf/) 是一种插件驱动型代理，可以从 150 多个不同的源收集指标。 根据在 VM 上运行的具体工作负荷，可将该代理配置为利用专用输入插件来收集指标。 工作负荷的示例包括 MySQL、NGINX 和 Apache。 然后，代理可以使用输出插件向所选的目标写入数据。 Telegraf 代理直接集成了 Azure Monitor 自定义指标 REST API。 它支持 Azure Monitor 输出插件。 使用此插件，代理可以在 Linux VM 上收集特定于工作负荷的指标，然后将其作为自定义指标提交到 Azure Monitor。 
 
  ![Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74926751"
 
 在本教程中，我们将部署运行 Ubuntu 16.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 [InfluxData 下载门户](https://portal.influxdata.com/downloads)提供了 Debian 和 RPM 包以及未打包的 Linux 二进制文件。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 创建新的 Linux VM： 
 

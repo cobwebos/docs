@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427034"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899850"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -21,15 +21,20 @@ ms.locfileid: "75427034"
 
 大多数客户都从免费层开始，以便他们能够评估服务。 评估后，在开发和生产部署的更高级别中创建第二个服务是很常见的。
 
-尽管所有层（包括免费层）一般都提供功能奇偶校验，较大的工作负荷也可以要求更高的层级。 例如， [AI 扩充](cognitive-search-concept-intro.md)具有长时间运行的技能，在免费服务上超时，除非数据集很小。
+## <a name="feature-availability-by-tier"></a>按层提供的功能可用性
 
-> [!NOTE] 
-> 特征奇偶校验的例外是[索引器](search-indexer-overview.md)，在 S3 HD 上不可用。
->
+几乎每个功能都可在每个层上使用（包括免费），但如果你赋予了足够的容量，则消耗大量资源的功能或工作流可能会无法正常工作。 例如， [AI 扩充](cognitive-search-concept-intro.md)具有长时间运行的技能，在免费服务上超时，除非数据集很小。
 
-## <a name="available-tiers"></a>可用层
+下表描述了与层相关的功能约束。
 
-层反映托管服务（而不是功能）的硬件的特征，并按以下标准进行区分：
+| 功能 | 限制 |
+|---------|-------------|
+| [索引器](search-indexer-overview.md) | 索引器在 S3 HD 上不可用。 |
+| [客户托管的加密密钥](search-security-manage-encryption-keys.md) | 在免费层上不可用。 |
+
+## <a name="tiers-skus"></a>层（Sku）
+
+可以通过以下方式区分层：
 
 + 可以创建的索引和索引器数量
 + 分区（物理存储）的大小和速度
@@ -97,9 +102,9 @@ SU 是服务使用的*副本*和*分区*的产品： **（R x P = SU）** 。
 
 大多数客户只是联机使用一部分总容量，将剩余的容器保持预留状态。 对于帐单，你联机的分区和副本的数量（由 SU 公式计算）决定了每小时支付的费用。
 
-## <a name="how-to-manage-and-reduce-costs"></a>如何管理和降低成本
+## <a name="how-to-manage-costs"></a>如何管理成本
 
-除了以下建议，请访问[计费和成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
+以下建议可帮助你至少保持成本：
 
 - 在同一区域中创建所有资源，或在尽可能少的区域中创建所有资源，以最大程度地减少或消除带宽费用。
 
@@ -109,7 +114,11 @@ SU 是服务使用的*副本*和*分区*的产品： **（R x P = SU）** 。
 
 - 增加资源密集型操作（如索引），然后对常规查询工作负荷进行调整。 首先使用 Azure 认知搜索的最低配置（一个 SU 由一个分区和一个副本组成），然后监视用户活动以确定使用模式，这种模式会指示需要更多的容量。 如果有可预测的模式，则可以将缩放与活动同步（需要编写代码来自动执行此操作）。
 
-不能关闭搜索服务来减少帐单。 专用资源始终是可操作的，在服务的生存期内可供独占使用。 就服务本身而言，降低帐单的唯一方法是将副本和分区减少到仍能提供可接受的性能和[SLA 符合性](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的级别，或在较低层创建服务（S1 小时费率低于 S2 或 S3 速率）。 假设你在负载预测的低端预配服务，则可以创建另一个更大层的服务，在第二个服务上重新生成索引，然后删除第一个服务。
+此外，请访问与支出相关的内置工具和功能的[计费和成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
+
+不可能临时关闭搜索服务。 专用资源始终是可操作的，在服务的生存期内可供独占使用。 删除服务是永久性的，也会删除其关联的数据。
+
+就服务本身而言，降低帐单的唯一方法是将副本和分区减少到仍能提供可接受的性能和[SLA 符合性](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的级别，或在较低层创建服务（S1 小时费率低于 S2 或 S3 速率）。 假设你在负载预测的低端预配服务，则可以创建另一个更大层的服务，在第二个服务上重新生成索引，然后删除第一个服务。
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>如何评估容量需求
 

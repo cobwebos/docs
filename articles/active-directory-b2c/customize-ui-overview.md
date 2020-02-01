@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841227"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908918"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义用户界面 Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ ms.locfileid: "76841227"
 如果使用[用户流](user-flow-overview.md)，则可以通过使用内置*页面布局模板*或使用自己的 HTML 和 CSS 来更改用户流页面的外观。 本文后面将讨论这两种方法。
 
 使用[Azure 门户](tutorial-customize-ui.md)为用户流配置 UI 自定义。
+
+> [!TIP]
+> 如果只希望修改用户流页面的标题徽标、背景图像和背景色，则可以尝试本文后面所述的 "[公司品牌（预览版）](#company-branding-preview) " 功能。
 
 ### <a name="custom-policies"></a>自定义策略
 
@@ -149,6 +152,60 @@ Azure AD B2C 使用称为[跨域资源共享（CORS）](https://www.w3.org/TR/co
 | 统一注册或登录 | 处理客户的注册和登录，这些客户可以使用社交标识提供者（Facebook、Google）的帐户或本地帐户。 |
 | 多重身份验证 | 用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
 | 错误 | 向客户提供错误信息。 |
+
+## <a name="company-branding-preview"></a>公司品牌（预览版）
+
+您可以使用横幅徽标、背景图像和背景色自定义用户流页面，方法是使用 Azure Active Directory[公司品牌](../active-directory/fundamentals/customize-branding.md)。
+
+若要自定义用户流页面，请先在 Azure Active Directory 中配置公司品牌，然后在 Azure AD B2C 中用户流的页面布局中启用它。
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>配置公司品牌
+
+首先在**公司品牌**内设置横幅徽标、背景图像和背景色。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
+1. 在 "**管理**" 下，选择 "**公司品牌**"。
+1. 按照[将品牌添加到组织的 Azure Active Directory 登录页](../active-directory/fundamentals/customize-branding.md)中的步骤进行操作。
+
+在 Azure AD B2C 中配置公司品牌时，请牢记以下事项：
+
+* Azure AD B2C 中的公司品牌目前仅限于**背景图像**、**横幅徽标**和**背景色**自定义。 *不支持*"公司品牌" 窗格中的其他属性，例如 "**高级设置**" 中的属性。
+* 在用户流页面中，在加载背景图像之前显示背景色。 建议选择与背景图像中的颜色最接近的背景色，以获得更流畅的加载体验。
+* 当用户启动注册用户流时，会向用户发送的验证电子邮件中显示横幅徽标。
+
+### <a name="enable-branding-in-user-flow-pages"></a>在用户流页面中启用署名
+
+配置公司品牌后，请在用户流中启用它。
+
+1. 在 Azure 门户的左侧菜单中，选择 " **Azure AD B2C**"。
+1. 在 "**策略**" 下，选择 "**用户流（策略）** "。
+1. 选择要为其启用公司品牌的用户流。 对于*登录版本 v1*和*配置文件编辑 v1*用户流类型，**不支持**公司品牌。
+1. 在 "**自定义**" 下，选择 "**页面布局**"，然后选择想要品牌的布局。 例如，选择 "**统一注册" 或 "登录" 页**。
+1. 对于 "**页面布局版本（预览）** "，选择 "版本**1.2.0** " 或更高版本。
+1. 选择“保存”。
+
+如果要在用户流中标记所有页面，请在用户流中为每个页面布局设置页面布局版本。
+
+![页面布局选择 Azure AD B2C 的 Azure 门户](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+此带批注的示例显示了使用海洋蓝模板的*注册和登录*用户流页上的自定义横幅徽标和背景图像：
+
+![Azure AD B2C 提供的品牌注册/登录页面](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>在自定义 HTML 中使用公司品牌资产
+
+若要在自定义 HTML 中使用公司品牌资产，请在 `<div id="api">` 标记之外添加以下标记：
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+图像源被替换为背景图像和横幅徽标的图像源。 如[自定义 HTML 和 CSS 入门](#get-started-with-custom-html-and-css)部分中所述，在页面上使用 CSS 类来对资产进行样式和定位。
 
 ## <a name="localize-content"></a>本地化内容
 

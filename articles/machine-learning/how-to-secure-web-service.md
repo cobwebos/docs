@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4555c6094bd133dd7c929b4e0f7e93b3193b9101
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689056"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905222"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -82,7 +82,7 @@ TLS 和 SSL 均依赖于*数字证书*，这有助于加密和身份验证。 �
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
--  如果创建新群集，请使用 **[Provisionining_configuration AksCompute （）](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
+-  如果创建新群集，请使用 **[Provisioning_configuration AksCompute （）](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
 - 如果附加现有群集，请使用 **[Attach_configuration AksCompute （）](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 两者都返回具有**enable_ssl**方法的配置对象。
 
 **Enable_ssl**方法可以使用 Microsoft 提供的证书，也可以使用您购买的证书。

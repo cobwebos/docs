@@ -4,16 +4,16 @@ description: 配置、优化 AzCopy 并对其进行故障排除。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371388"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905264"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -22,15 +22,15 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 > [!NOTE]
 > 如果你正在寻找有助于你开始处理 AzCopy 的内容，请参阅以下文章：
 > - [AzCopy 入门](storage-use-azcopy-v10.md)
-> - [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
-> - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-> - [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
+> - [用 AzCopy 和 blob 存储传输数据](storage-use-azcopy-blobs.md)
+> - [用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+> - [用 AzCopy 和 Amazon S3 存储桶传输数据](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
 若要为 AzCopy 配置代理设置，请设置 `https_proxy` 环境变量。 如果在 Windows 上运行 AzCopy，则 AzCopy 会自动检测代理设置，因此你无需在 Windows 中使用此设置。 如果选择在 Windows 中使用此设置，它将替代自动检测。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | 在命令提示符下，使用： `set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中使用： `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -41,6 +41,14 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 ## <a name="optimize-performance"></a>优化性能
 
 您可以对性能进行基准测试，然后使用命令和环境变量在性能和资源消耗之间找到最佳平衡点。
+
+本部分将帮助你执行以下优化任务：
+
+> [!div class="checklist"]
+> * 运行基准测试
+> * 优化吞吐量
+> * 优化内存使用 
+> * 优化文件同步
 
 ### <a name="run-benchmark-tests"></a>运行基准测试
 
@@ -77,7 +85,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果计算机的 Cpu 少于5个，则将此变量的值设置为 `32`。 否则，默认值等于16乘以 Cpu 数。 此变量的最大默认值为 `3000`，但您可以手动将此值设置为更高或更低。 
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -92,22 +100,30 @@ azcopy jobs resume <job-id> --cap-mbps 10
 设置 `AZCOPY_BUFFER_GB` 环境变量，以指定在下载和上传文件时 AzCopy 要使用的系统内存的最大数量。
 以千兆字节（GB）为单位表示此值。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
-## <a name="troubleshoot-issues"></a>排查问题
+### <a name="optimize-file-synchronization"></a>优化文件同步
 
-AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并解决任何潜在问题。 
+[Sync](storage-ref-azcopy-sync.md)命令标识目标中的所有文件，然后在开始同步操作前比较文件名和上次修改时间戳。 如果有大量文件，则可以通过消除此前期处理来提高性能。 
+
+若要实现此目的，请改用[azcopy copy](storage-ref-azcopy-copy.md)命令，并将 `--overwrite` 标志设置为 `ifSourceNewer`。 AzCopy 会在文件复制时比较文件，而不执行任何前扫描和比较。 如果有大量文件要比较，这会提供性能优势。
+
+[Azcopy copy](storage-ref-azcopy-copy.md)命令不会从目标删除文件，因此，如果想要在目标位置删除文件时在目标位置删除文件，请使用[azcopy sync](storage-ref-azcopy-sync.md)命令，将 `--delete-destination` 标志设置为 `true` 或 `prompt`的值。 
+
+## <a name="troubleshoot-issues"></a>解决问题
+
+AzCopy 为每个作业创建日志和计划文件。 您可以使用这些日志来调查并解决任何潜在问题。 
 
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED`和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
 默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但你可以根据需要更改该位置。
 
 > [!IMPORTANT]
-> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可确保 SAS 不会意外地与任何人共享。 可以在日志文件的开头找到经修订的版本。
+> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可确保 SAS 不会意外地与任何人共享。 您可以在日志文件的开头找到修正版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
@@ -165,7 +181,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何这些命令。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -177,7 +193,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何这些命令。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

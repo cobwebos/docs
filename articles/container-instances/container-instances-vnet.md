@@ -4,12 +4,12 @@ description: 了解如何将容器组部署到新的或现有的 Azure 虚拟网
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845172"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901869"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>删除网络资源
-
-
-> [!NOTE]
-> 如果尝试删除网络配置文件时收到错误，请在3-4 天内使平台自动缓解此问题，然后重试删除操作。 如果需要立即删除网络配置文件，请打开引用 Azure 容器实例服务[的支持请求](https://azure.microsoft.com/support/create-ticket/)。
 
 此功能当前需要几个附加命令来删除之前创建的网络资源。 如果你在本文的前面几个部分中使用示例命令创建了虚拟网络和子网，则可以使用以下脚本来删除这些网络资源。
 

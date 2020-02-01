@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 分区
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理服务分区的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646052"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905842"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
@@ -38,10 +38,13 @@ ms.locfileid: "75646052"
 ## <a name="sfctl-partition-data-loss"></a>sfctl partition data-loss
 此 API 会造成指定的分区发生数据丢失。
 
-它会触发对分区的 OnDataLossAsync API 的调用。  此 API 会造成指定的分区发生数据丢失。 它会触发对分区的 OnDataLoss API 的调用。 实际的数据丢失情况将取决于指定的 DataLossMode。  <br> - PartialDataLoss - 仅删除副本仲裁，并且会为分区触发 OnDataLoss，但实际的数据丢失情况取决于是否存在正在进行的复制。  <br> - FullDataLoss - 会删除所有副本，因此会丢失所有数据并触发 OnDataLoss。 调用此 API 时，只能将有状态服务作为目标。 建议不要在调用此 API 时将系统服务作为目标。
+它会触发对分区的 OnDataLossAsync API 的调用。  此 API 会造成指定的分区发生数据丢失。 它会触发对分区的 OnDataLoss API 的调用。 实际的数据丢失情况将取决于指定的 DataLossMode。
+- PartialDataLoss：仅删除副本的仲裁，并对分区触发 OnDataLoss，但实际的数据丢失取决于是否存在正在进行的复制。  
+- FullDataLoss：删除所有副本，因此会丢失所有数据，并触发 OnDataLoss。 调用此 API 时，只能将有状态服务作为目标。 建议不要在调用此 API 时将系统服务作为目标。
 
 > [!NOTE]   
 > 此 API 一旦被调用就无法撤消。 调用 CancelOperation 只会停止执行操作并清除内部系统状态。 如果命令的执行时间很长，已导致数据丢失，则不会还原数据。 使用同一 OperationId 调用 GetDataLossProgress API 会返回使用此 API 启动的操作的信息。
+
 ### <a name="arguments"></a>参数
 
 |参数|Description|

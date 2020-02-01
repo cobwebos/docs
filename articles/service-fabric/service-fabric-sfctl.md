@@ -3,17 +3,17 @@ title: Azure Service Fabric CLI-sfctl
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包括命令和子组的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 518e60ee92a637533fdf5ab44053d1a1c8757bbe
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645236"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906215"
 ---
 # <a name="sfctl"></a>sfctl
-用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 6.5 运行时兼容。
+用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 7.0 运行时兼容。
 
 命令遵循名词谓词模式。 有关详细信息，请参阅子组。
 

@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945713"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899943"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure 中的内容的静态加密认知搜索在 Azure Key Vault 中使用客户托管的密钥
 
@@ -26,13 +26,13 @@ ms.locfileid: "75945713"
 密钥并不需要在同一 Key Vault 中。 单个搜索服务可以托管多个已加密的索引或同义词映射，每个加密的加密密钥存储在不同的密钥保管库中。  你还可以在未使用客户管理的密钥加密的同一服务中包含索引和同义词映射。 
 
 > [!IMPORTANT] 
-> 此功能在[REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 8.0 版-预览版](search-dotnet-sdk-migration-version-9.md)中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。
+> 此功能在[REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 8.0 版-预览版](search-dotnet-sdk-migration-version-9.md)中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。 搜索服务必须在2019年1月之后创建，且不能是免费（共享）服务。
 
 ## <a name="prerequisites"></a>必备组件
 
 本示例中使用了以下服务。 
 
-+ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 搜索服务必须在2019年1月之后创建，且不能是免费（共享）服务。
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
 
 + [创建 Azure Key Vault 资源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)，或查找订阅下的现有保管库。
 

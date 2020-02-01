@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2624f9fafd82aad9613d6940eca69486d897aa08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749779"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905327"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "75749779"
 * **IntelliJ IDEA**。 本文使用版本 2017.1。 可以从 [JetBrains 网站](https://www.jetbrains.com/idea/download/)进行安装。
 * **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure 工具包的安装方法说明，请参阅[安装用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)。
 * **从 IntelliJ IDEA 登录到 Azure 订阅**。 遵照[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)中的说明操作。
-* **异常解决方法**。 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会出现异常。 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中解释了此异常，其原因是 Windows 中缺少 WinUtils.exe 文件。 若要解决此错误，必须[下载该可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到某个位置（例如 **C:\WinUtils\bin**）。 添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
+* **异常解决方法**。 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会出现异常。 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中解释了此异常，其原因是 Windows 中缺少 WinUtils.exe 文件。 若要解决此错误，必须将 `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` 下载到**C:\WinUtils\bin**等位置。 添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步骤 1：创建 Azure 虚拟网络
 

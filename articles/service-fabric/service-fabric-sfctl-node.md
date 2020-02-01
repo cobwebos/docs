@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 节点
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理群集节点的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645287"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905873"
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
@@ -19,17 +19,44 @@ ms.locfileid: "75645287"
 
 |命令|Description|
 | --- | --- |
+| 添加-配置-参数-替代 | 将配置重写的列表添加到指定的节点上。 |
 | disable | 根据指定的停用意图停用 Service Fabric 群集节点。 |
 | enable | 激活当前已停用的 Service Fabric 群集节点。 |
+| 接收方配置-替代 | 获取指定节点上的配置重写的列表。 |
 | 健康 | 获取 Service Fabric 节点的运行状况。 |
 | info | 获取有关 Service Fabric 群集中特定节点的信息。 |
 | list | 获取 Service Fabric 群集中的节点的列表。 |
 | load | 获取 Service Fabric 节点的负载信息。 |
+| 删除-配置-替代 | 删除指定节点上的配置重写。 |
 | remove-state | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。 |
 | report-health | 发送有关 Service Fabric 节点的运行状况报告。 |
 | restart | 重启 Service Fabric 群集节点。 |
 | transition | 启动或停止群集节点。 |
 | transition-status | 获取使用 StartNodeTransition 启动的操作的进度。 |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl 节点添加配置-参数-替代
+将配置重写的列表添加到指定的节点上。
+
+此 api 允许在指定的节点上添加所有现有的配置重写。
+
+### <a name="arguments"></a>参数
+
+|参数|Description|
+| --- | --- |
+| --config-参数-override [必需] | 添加配置替代列表的说明。 |
+| --node-name [必需] | 节点的名称。 |
+| --force | 在指定节点上强制添加配置重写。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|Description|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-node-disable"></a>sfctl node disable
 根据指定的停用意图停用 Service Fabric 群集节点。
@@ -58,6 +85,28 @@ ms.locfileid: "75645287"
 激活当前已停用的 Service Fabric 群集节点。
 
 激活当前已停用的 Service Fabric 群集节点。 激活后，该节点再次成为可放置新副本的有效目标，该节点上剩余的所有已停用副本会重新激活。
+
+### <a name="arguments"></a>参数
+
+|参数|Description|
+| --- | --- |
+| --node-name [必需] | 节点的名称。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|Description|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl 节点 get-configuration-overrides
+获取指定节点上的配置重写的列表。
+
+此 api 允许获取指定节点上的所有现有配置重写。
 
 ### <a name="arguments"></a>参数
 
@@ -167,10 +216,32 @@ ms.locfileid: "75645287"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl 节点删除-配置-替代
+删除指定节点上的配置重写。
+
+此 api 允许删除指定节点上的所有现有配置替代。
+
+### <a name="arguments"></a>参数
+
+|参数|Description|
+| --- | --- |
+| --node-name [必需] | 节点的名称。 |
+| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|Description|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。
 
-这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 从 Service Fabric 6.5 开始，为了将此 API 用于种子节点，请将种子节点更改为常规（非种子）节点，然后调用此 API 以删除节点状态。 如果在 Azure 上运行群集，则在种子节点出现故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要进行此操作，请确保主节点类型中的非种子节点数量不小于向下种子节点数。 如有必要，请将更多节点添加到主节点类型以实现此目的。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 从 Service Fabric 6.5 开始，为了将此 API 用于种子节点，请将种子节点更改为常规（非种子）节点，然后调用此 API 以删除节点状态。 如果在 Azure 上运行群集，则在种子节点出现故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要进行此操作，请确保主节点类型中的非种子节点数量不小于向下种子节点数。 如有必要，请将更多节点添加到主节点类型以实现此目的。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
 ### <a name="arguments"></a>参数
 
@@ -207,7 +278,7 @@ ms.locfileid: "75645287"
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
 | --timeout -t | 默认值\: 60。 |
-| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端报告转换，则可以将该时间设置得太活到无限大。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
+| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端以非定期的方式报告，它们可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
 
 ### <a name="global-arguments"></a>全局参数
 

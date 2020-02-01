@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843542"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898431"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -324,7 +324,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>隐藏输入和输出时的注意事项
 
-* 当你保护触发器或操作的输入或输出时，逻辑应用不会将受保护的数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)添加到该触发器或操作进行监视。
+* 当你保护触发器或操作的输入或输出时，逻辑应用不会将受保护的数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
 
 * [用于处理工作流历史记录的逻辑应用 API](https://docs.microsoft.com/rest/api/logic/)不返回安全输出。
 
@@ -806,7 +806,7 @@ Authorization: OAuth realm="Photos",
 
 ## <a name="next-steps"></a>后续步骤
 
-* [自动部署 Azure 逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)  
-* [监视逻辑应用](logic-apps-monitor-your-logic-apps.md)  
-* [诊断逻辑应用的错误和问题](logic-apps-diagnosing-failures.md)  
-* [自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)
+* [自动部署 Azure 逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [诊断逻辑应用的错误和问题](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

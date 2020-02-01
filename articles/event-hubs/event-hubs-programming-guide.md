@@ -1,5 +1,5 @@
 ---
-title: .NET 编程指南-Azure 事件中心 |Microsoft Docs
+title: .NET 编程指南-Azure 事件中心（旧版） |Microsoft Docs
 description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 services: event-hubs
 documentationcenter: na
@@ -7,17 +7,21 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: afd466e0266cf2d95f95eb8536943f5856c26a58
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309817"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899909"
 ---
-# <a name="net-programming-guide-for-azure-event-hubs"></a>Azure 事件中心的 .NET 编程指南
+# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
+
+> [!WARNING]
+> 本指南适用于旧的**EventHubs**包。 建议将代码[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)到使用最新的[EventHubs](get-started-dotnet-standard-send-v2.md)包。  
+
 
 ## <a name="event-publishers"></a>事件发布者
 
@@ -25,7 +29,7 @@ ms.locfileid: "71309817"
 
 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据（属性）和有关事件的标头信息（SystemProperties）。 其他属性会在通过事件中心传递时添加到 [EventData][] 对象。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始体验
 支持事件中心的 .NET 类在 [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包中提供。 可以通过 Visual Studio 解决方案资源管理器进行安装，也可以使用 Visual Studio 中的[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)来进行。 为此，请在 [“Package Manager Console”](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
 
 ```shell
@@ -113,7 +117,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 若要开始处理事件，请实例化 [EventProcessorHost][]，为事件中心提供适当的参数。 例如：
 
 > [!NOTE]
-> EventProcessorHost 及其相关类在 **Microsoft.Azure.EventHubs.Processor** 包中提供。 按照[此文](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)中的说明或在[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中发出以下命令，将包添加到 Visual Studio 项目中：`Install-Package Microsoft.Azure.EventHubs.Processor`。
+> EventProcessorHost 和其相关类在**EventHubs**包中提供。 按照[本文](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)中的说明将包添加到 Visual Studio 项目中，或在 "[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)" 窗口中发出以下命令：`Install-Package Microsoft.Azure.EventHubs.Processor`。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(
@@ -136,7 +140,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 经过一段时间后，就会建立平衡。 通过这种动态功能，可以向使用者应用基于 CPU 的自动缩放，以实现向上扩展和向下缩减。 由于事件中心没有直接的消息计数概念，平均 CPU 利用率通常是度量后端或使用者规模的最佳机制。 如果发布者开始发布的事件数超过了使用者可以处理的数量，可以使用使用者的 CPU 增大功能来实现工作线程实例数的自动缩放。
 
-[EventProcessorHost][] 类还实现了基于 Azure 存储的检查点机制。 此机制按分区存储偏移量，每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
+[EventProcessorHost][] 类还实现了基于 Azure 存储的检查点机制。 此机制按分区存储偏移量，使每个使用者都能确定前一个使用者的最后一个检查点是什么。 当分区通过租约在节点之间转移时，正是这个同步机制在促进负载转移。
 
 ## <a name="publisher-revocation"></a>发布者吊销
 

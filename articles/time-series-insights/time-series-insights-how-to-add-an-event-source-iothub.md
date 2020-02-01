@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aace01e2f3d514ee5f4b406f4067e104151e5d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 3ea73e2ca20faea30294bc5d5e1788415095c39f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863319"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905364"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>向时序见解环境添加 IoT 中心事件源
 
@@ -54,7 +54,7 @@ ms.locfileid: "75863319"
 
 1. 在左侧菜单中，选择“所有资源”。 选择时序见解环境。
 
-1. 在“环境拓扑”下，依次选择“事件源”、“添加”。
+1. 在 "**设置**" 下，选择 "**事件源**"，然后选择 "**添加**"。
 
    [!["选择事件源"，然后选择 "添加" 按钮](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 

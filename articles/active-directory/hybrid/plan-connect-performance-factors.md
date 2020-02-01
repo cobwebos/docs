@@ -6,18 +6,19 @@ author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295360"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897053"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
@@ -26,7 +27,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 | **设计因素**| **定义** |
 |:-|-|
 | 拓扑| Azure AD Connect 必须在网络上管理的终结点和组件的分布。 |
-| 缩放| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
+| 调整规模| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
 | 硬件| 用于 Azure AD Connect 的硬件（物理或虚拟）以及各个硬件组件（包括 CPU、内存、网络和硬盘配置）的相关性能容量。 |
 | 配置| Azure AD Connect 处理目录和信息的方式。 |
 | 加载| 对象更改的频率。 一小时、一日或一周内的负载各不相同。 可能需要根据峰值负载或平均负载进行设计，具体取决于组件。 |
@@ -34,7 +35,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 本文档旨在介绍影响 Azure AD Connect 预配引擎性能的因素。 大规模或复杂的组织（预配超过 10 万个对象的组织）如果遇到此处所述的任何性能问题，可使用建议方法来优化其 Azure AD Connect 实现。 其他 Azure AD Connect 组件（例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)）以及代理不在本文讨论范围之内。
 
 > [!IMPORTANT]
-> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
+> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 其中的任何操作都可能导致 Azure AD Connect 同步的状态不一致或不受支持。因此，Microsoft 无法为此类部署提供技术支持。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 组件因素
 
@@ -42,7 +43,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，可参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
+预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，请参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
 
 Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Active Directory 到 Azure AD 的同步：
 
@@ -95,7 +96,7 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 > [!NOTE]
 > 对 Active Directory 或 Azure AD 中的许多对象执行批量更新时，需要仔细规划。 批量更新将导致增量同步过程在导入时花费更长时间，因为有大量对象发生了更改。 即使批量更新未影响同步过程，也可能出现导入时间长的情况。 例如，将许可证分配给 Azure AD 中的多个用户将导致从 Azure AD 导入的周期较长，但不会导致 Active Directory 中的任何属性发生更改。
 
-### <a name="synchronization"></a>同步
+### <a name="synchronization"></a>Synchronization
 
 同步过程运行时具有以下性能特征：
 

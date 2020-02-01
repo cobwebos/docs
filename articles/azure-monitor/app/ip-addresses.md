@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: c571a4f36372b250a05564182b240bc4007240a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977814"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899122"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -56,6 +56,14 @@ ms.locfileid: "75977814"
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
+
+如果使用的是 Azure 网络安全组，只需添加**入站端口规则**以允许来自 Application Insights 可用性测试的流量，方法是选择 "**服务标记**" 作为**源**，并选择 " **ApplicationInsightsAvailability** " 作为**源服务标记**。
+
+>[!div class="mx-imgBorder"]
+>在 "设置" 下 ![选择 "入站安全规则"，然后选择选项卡顶部的 "添加" ](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>!["添加入站安全规则" 选项卡](./media/ip-addresses/add-inbound-security-rule2.png)
 
 为来自这些地址的传入流量打开端口 80 (http) 和 443 (https)（IP 地址按位置进行分组）：
 

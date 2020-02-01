@@ -7,52 +7,52 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771557"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902698"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
-本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
+此方案描述如何扩展逻辑应用以更好地支持异常处理。 我们使用了真实用例来回答问题： "Azure 逻辑应用是否支持异常和错误处理？"
 
 > [!NOTE]
-> 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证以及从 API 应用返回的错误响应。
+> 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证和从 API 应用返回的错误响应。
 
 ## <a name="scenario-and-use-case-overview"></a>方案和用例概述
 
-下面是本方案的用例： 
+下面是此方案的使用案例： 
 
-一个著名的医疗保健组织与我们合作开发一个使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户与 Salesforce 之间发送约会记录。 我们需要对所有患者记录使用 [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) 标准。
+众所周知的医疗保健组织，致力于开发可使用 Microsoft Dynamics CRM Online 创建患者门户的 Azure 解决方案。 他们需要在 Dynamics CRM Online 患者门户和 Salesforce 之间发送约会记录。 我们要求对所有患者记录使用[HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) standard。
 
-该项目具有两个主要要求：  
+该项目有两个主要要求：  
 
-* 用于对从 Dynamics CRM Online 门户发送的记录进行日志记录的一种方法
-* 用于查看工作流中发生的任何错误的一种方式
+* 用于记录从 Dynamics CRM Online 门户发送的记录的方法
+* 查看工作流中发生的任何错误的一种方法
 
 > [!TIP]
-> 有关本项目的高级视频，请参阅[集成用户组](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group")。
+> 有关此项目的高级视频，请参阅[集成用户组](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "集成用户组")。
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-我们选择[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB")作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+我们选择[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB")作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建一个 API 应用，用于**插入**和**查询**错误记录和日志记录。 我们还可以为 API 应用中的每个定义架构。  
 
-另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名[为生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间")（TTL）的属性，这允许我们为每个记录或集合设置一个**生存时间**值。 这样便无需在 Cosmos DB 中手动删除记录。
+另一个要求是在特定日期之后清除记录。 Cosmos DB 具有一个名[为生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "生存时间")（TTL）的属性，这允许我们为每个记录或集合设置一个**生存时间**值。 此功能无需在 Cosmos DB 中手动删除记录。
 
 > [!IMPORTANT]
 > 若要完成本教程，需要创建一个 Cosmos DB 数据库和两个集合（日志记录和错误）。
 
 ## <a name="create-the-logic-app"></a>创建逻辑应用
 
-第一步是在逻辑应用设计器中创建并打开逻辑应用。 在此示例中，我们使用父-子逻辑应用。 我们假设已创建了父级并将创建一个子逻辑应用。
+第一步是在逻辑应用设计器中创建逻辑应用并打开应用。 在此示例中，我们使用的是父子逻辑应用。 假设我们已经创建了父对象，并将要创建一个子逻辑应用。
 
-因为我们要对从 Dynamics CRM Online 传出的记录进行日志记录，所以我们从顶部开始。 我们必须使用“Request”触发器，因为父逻辑应用会触发此子级。
+因为我们要记录来自 Dynamics CRM Online 的记录，所以我们从顶部开始。 必须使用**请求**触发器，因为父逻辑应用会触发此子级。
 
 ### <a name="logic-app-trigger"></a>逻辑应用触发器
 
-我们使用如下面示例中所示的“Request”触发器。
+我们使用的是**请求**触发器，如以下示例中所示：
 
 ``` json
 "triggers": {
@@ -90,16 +90,16 @@ ms.locfileid: "75771557"
 ```
 
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>逐步
 
-必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
+我们必须从 Dynamics CRM Online 门户记录患者记录的源（请求）。
 
-1. 必须从 Dynamics CRM Online 获取新的预约记录。
+1. 我们必须从 Dynamics CRM Online 获取新的约会记录。
 
-   来自 CRM 的触发器为我们提供 **CRM PatentId**、**记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
-   使用 CRM 的“PatientID”和“记录类型”来获取 CRM 记录。
+   来自 CRM 的触发器向我们提供**Crm PatentId**、**记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及**SalesforceId**。 **SalesforceId**可以为 null，因为它仅用于更新。
+   我们使用 CRM **PatientID**和**记录类型**获取 crm 记录。
 
-2. 接下来，需要在逻辑应用设计器中添加 Azure Cosmos DB SQL API 应用 **InsertLogEntry** 操作，如下所示。
+2. 接下来，我们需要在逻辑应用设计器中添加我们的 Azure Cosmos DB SQL API 应用**InsertLogEntry**操作，如下所示。
 
    **插入日志条目**
 
@@ -109,20 +109,20 @@ ms.locfileid: "75771557"
 
    ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-   **检查是否存在创建记录失败**
+   **检查创建记录失败**
 
-   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![状态](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>逻辑应用源代码
 
 > [!NOTE]
-> 以下内容只是示例。 由于本教程基于正在生产中的实现，因此“源节点”的值可能不会显示与安排预约相关的属性。 
+> 下面的示例仅为示例。 由于本教程基于生产中的一个实现，因此**源节点**的值可能不会显示与安排约会相关的属性。 > 
 
 ### <a name="logging"></a>日志记录
 
 以下逻辑应用代码示例演示如何处理日志记录。
 
-#### <a name="log-entry"></a>日志项
+#### <a name="log-entry"></a>日志条目
 
 下面是用于插入日志条目的逻辑应用源代码。
 
@@ -206,9 +206,9 @@ ms.locfileid: "75771557"
 
 ```
 
-现在我们来看一下错误处理步骤。
+现在，让我们看一下错误处理步骤。
 
-### <a name="error-handling"></a>错误处理。
+### <a name="error-handling"></a>错误处理
 
 以下逻辑应用代码示例演示如何实现错误处理。
 
@@ -249,7 +249,7 @@ ms.locfileid: "75771557"
 }             
 ```
 
-#### <a name="insert-error-into-cosmos-db--request"></a>将错误插入 Cosmos DB 中 - 请求
+#### <a name="insert-error-into-cosmos-db--request"></a>向 Cosmos DB 插入错误--请求
 
 ``` json
 
@@ -272,7 +272,7 @@ ms.locfileid: "75771557"
 }
 ```
 
-#### <a name="insert-error-into-cosmos-db--response"></a>将错误插入 Cosmos DB 中 - 响应
+#### <a name="insert-error-into-cosmos-db--response"></a>向 Cosmos DB 插入错误--响应
 
 ``` json
 {
@@ -342,7 +342,7 @@ ms.locfileid: "75771557"
 
 ### <a name="return-the-response-back-to-parent-logic-app"></a>将响应返回给父逻辑应用
 
-获取响应之后，可以将它传递回父逻辑应用。
+获取响应后，可以将响应传递回父逻辑应用。
 
 #### <a name="return-success-response-to-parent-logic-app"></a>将成功响应返回给父逻辑应用
 
@@ -392,16 +392,16 @@ ms.locfileid: "75771557"
 
 ## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB 存储库和门户
 
-我们的解决方案通过引入 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) 新增了多项功能。
+我们的解决方案添加了[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db)的功能。
 
 ### <a name="error-management-portal"></a>错误管理门户
 
-若要查看这些错误，可以创建 MVC Web 应用，显示来自 Cosmos DB 的错误记录。 当前版本包含“列表”、“详细信息”、“编辑”和“删除”操作。
+若要查看这些错误，可以创建 MVC web 应用，以显示来自 Cosmos DB 的错误记录。 **列表**、**详细信息**、**编辑**和**删除**操作包含在当前版本中。
 
 > [!NOTE]
-> “编辑”操作：Cosmos DB 对整个文档进行替换。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
+> 编辑操作： Cosmos DB 替换整个文档。 **列表**和**详细信息**视图中显示的记录只是示例。 它们不是实际的患者约会记录。
 
-下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
+下面是用前面介绍的方法创建的 MVC 应用详细信息的示例。
 
 #### <a name="error-management-list"></a>错误管理列表
 ![错误列表](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -411,7 +411,7 @@ ms.locfileid: "75771557"
 
 ### <a name="log-management-portal"></a>日志管理门户
 
-为了查看日志，我们也创建了一个 MVC web 应用。 下面是使用前面所述的方法创建的 MVC 应用详细信息的示例。
+若要查看日志，我们还创建了一个 MVC web 应用。 下面是用前面介绍的方法创建的 MVC 应用详细信息的示例。
 
 #### <a name="sample-log-detail-view"></a>示例日志详细信息视图
 ![日志详细信息视图](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
@@ -420,20 +420,20 @@ ms.locfileid: "75771557"
 
 #### <a name="logic-apps-exception-management-api"></a>逻辑应用异常管理 API
 
-我们的开源 Azure 逻辑应用异常管理 API 应用提供如下所述的功能 - 有两个控制器：
+我们的开源 Azure 逻辑应用异常管理 API 应用提供了如下所述的功能-有两个控制器：
 
-* **ErrorController** 将错误记录（文档）插入 Azure Cosmos DB 集合中。
-* **LogController** 将错误记录（文档）插入 Azure Cosmos DB 集合中。
+* **ErrorController**在 Azure Cosmos DB 集合中插入错误记录（文档）。
+* **LogController**在 Azure Cosmos DB 集合中插入日志记录（文档）。
 
 > [!TIP]
-> 这两个控制器都使用 `async Task<dynamic>` 操作，这样可以在运行时解析操作，因此我们可以在操作的正文中创建 Azure Cosmos DB 架构。 
+> 这两个控制器都使用 `async Task<dynamic>` 操作，允许在运行时解析操作，因此我们可以在操作的正文中创建 Azure Cosmos DB 架构。 
 > 
 
-Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId` 并添加戳转换为 Unix 时间戳值（双精度型）的时间戳。 将该值截断以删除小数值。
+Azure Cosmos DB 中的每个文档都必须具有唯一的 ID。 我们使用 `PatientId` 并添加一个转换为 Unix 时间戳值（double）的时间戳。 我们截断该值以删除小数值。
 
-可以从 [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs) 查看我们的错误控制器 API 的源代码。
+可以从[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)查看错误控制器 API 的源代码。
 
-使用以下语法从逻辑应用调用该 API：
+我们使用以下语法从逻辑应用调用 API：
 
 ``` json
  "actions": {
@@ -466,13 +466,13 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
  }
 ```
 
-前面代码示例中的表达式检查“Create_NewPatientRecord”的状态是否为“Failed”。
+前面的代码示例中的表达式检查的*Create_NewPatientRecord*状态是否为**Failed**。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>요약
 
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
-* 可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。
-* 可以使用 MVC 创建门户来显示日志和错误记录。
+* 您可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。
+* 您可以使用 MVC 创建一个门户来显示日志和错误记录。
 
 ### <a name="source-code"></a>源代码
 
@@ -481,5 +481,5 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 ## <a name="next-steps"></a>后续步骤
 
 * [查看更多逻辑应用示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [了解如何监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [监视逻辑应用](../logic-apps/monitor-logic-apps.md)
 * [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

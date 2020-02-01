@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310775"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901146"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -992,9 +992,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |度量值|指标显示名称|单位|聚合类型|Description|维度|
 |---|---|---|---|---|---|
 |TransactionCount|事务计数|计数|计数|事务计数总计|TransactionCount|
-|成功计数|成功计数|计数|计数|成功的事务计数|成功计数|
+|SuccessCount|成功计数|计数|计数|成功的事务计数|SuccessCount|
 |FailureCount|失败计数|计数|计数|失败的事务计数|FailureCount|
-|SuccessLatency|成功延迟|毫秒|平均值|成功事务的延迟|成功计数|
+|SuccessLatency|成功延迟|毫秒|平均值|成功事务的延迟|SuccessCount|
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
@@ -1672,9 +1672,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Average_Total Rx Errors|Rx 错误数总计|计数|平均值|Average_Total Rx Errors|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Total Tx Errors|Tx 错误数总计|计数|平均值|Average_Total Tx Errors|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Total Collisions|冲突数总计|计数|平均值|Average_Total Collisions|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
-|Average_Avg. 磁盘秒数/读取|每次读取的平均磁盘扇区数|计数|平均值|Average_Avg. 磁盘秒数/读取|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
+|Average_Avg. 磁盘秒数/读取|Avg. Disk sec/Read|计数|平均值|Average_Avg. 磁盘秒数/读取|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Avg. 磁盘秒数/传输|Avg. Disk sec/Transfer|计数|平均值|Average_Avg. 磁盘秒数/传输|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
-|Average_Avg. 磁盘秒数/写入|每次写入的平均磁盘扇区数|计数|平均值|Average_Avg. 磁盘秒数/写入|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
+|Average_Avg. 磁盘秒数/写入|Avg. Disk sec/Write|计数|平均值|Average_Avg. 磁盘秒数/写入|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Physical Disk Bytes/sec|物理磁盘字节数/秒|计数|平均值|Average_Physical Disk Bytes/sec|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Pct Privileged Time|特权时间百分比|计数|平均值|Average_Pct Privileged Time|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Pct User Time|用户时间百分比|计数|平均值|Average_Pct User Time|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
@@ -1695,8 +1695,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Average_Size Stored In Paging Files|分页文件中存储的大小|计数|平均值|Average_Size Stored In Paging Files|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Uptime|运行时间|计数|平均值|Average_Uptime|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Users|用户|计数|平均值|Average_Users|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
-|Average_Avg. 磁盘秒数/读取|每次读取的平均磁盘扇区数|计数|平均值|Average_Avg. 磁盘秒数/读取|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
-|Average_Avg. 磁盘秒数/写入|每次写入的平均磁盘扇区数|计数|平均值|Average_Avg. 磁盘秒数/写入|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
+|Average_Avg. 磁盘秒数/读取|Avg. Disk sec/Read|计数|平均值|Average_Avg. 磁盘秒数/读取|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
+|Average_Avg. 磁盘秒数/写入|Avg. Disk sec/Write|计数|平均值|Average_Avg. 磁盘秒数/写入|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Current Disk Queue Length|Current Disk Queue Length|计数|平均值|Average_Current Disk Queue Length|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Disk Reads/sec|磁盘读取数/秒|计数|平均值|Average_Disk Reads/sec|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
 |Average_Disk Transfers/sec|磁盘传输数/秒|计数|平均值|Average_Disk Transfers/sec|Computer，ObjectName，InstanceName，CounterPath，SourceSystem|
@@ -1851,8 +1851,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |dwu_used|已用的 DWU|计数|最大值|使用的 DWU。 仅适用于数据仓库。|无|
 |cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|无|
 |cache_used_percent|缓存使用百分比|百分比|最大值|已用缓存百分比。 仅适用于数据仓库。|无|
-|sqlserver_process_core_percent|SQL Server 处理核心百分比|百分比|最大值|作为 SQL DB 进程百分比的 CPU 使用率。 不适用于数据仓库。|无|
-|sqlserver_process_memory_percent|SQL Server 处理内存百分比|百分比|最大值|内存使用率（以 SQL DB 进程的百分比形式表示）。 不适用于数据仓库。|无|
+|sqlserver_process_core_percent|SQL Server 处理核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。 目前仅适用于无服务器数据库。|无|
+|sqlserver_process_memory_percent|SQL Server 处理内存百分比|百分比|最大值|SQL Server 进程的内存使用率百分比（由操作系统度量）。 目前仅适用于无服务器数据库。|无|
 |tempdb_data_size|Tempdb 数据文件大小（Kb）|计数|最大值|Tempdb 数据文件大小（Kb）。 不适用于数据仓库。|无|
 |tempdb_log_size|Tempdb 日志文件大小（Kb）|计数|最大值|Tempdb 日志文件大小（Kb）。 不适用于数据仓库。|无|
 |tempdb_log_used_percent|使用的 Tempdb 百分比日志|百分比|最大值|使用的 Tempdb 百分比日志。 不适用于数据仓库。|无|
@@ -1885,7 +1885,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |sessions_percent|会话百分比|百分比|平均值|会话百分比|无|
 |database_sessions_percent|会话百分比|百分比|平均值|会话百分比|DatabaseResourceId|
 |eDTU_limit|eDTU 限制|计数|平均值|eDTU 限制。 适用于基于 DTU 的弹性池。|无|
-|storage_limit|数据的最大大小|字节|平均值|数据的最大大小|无|
+|storage_limit|数据最大大小|字节|平均值|数据最大大小|无|
 |eDTU_used|已用的 eDTU|计数|平均值|使用的 eDTU。 适用于基于 DTU 的弹性池。|无|
 |database_eDTU_used|已用的 eDTU|计数|平均值|已用的 eDTU|DatabaseResourceId|
 |storage_used|已用数据空间|字节|平均值|已用数据空间|无|

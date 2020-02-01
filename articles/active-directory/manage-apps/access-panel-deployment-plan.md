@@ -1,6 +1,6 @@
 ---
-title: Plan an Azure Active Directory Access Panel deployment
-description: Guidance on deploying the Azure Active Directory Access Panel
+title: 规划 Azure Active Directory 访问面板部署
+description: 有关部署 Azure Active Directory 访问面板的指南
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -15,110 +15,110 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512845"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897069"
 ---
-# <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Plan an Azure Active Directory Access Panel deployment
+# <a name="plan-an-azure-active-directory-access-panel-deployment"></a>规划 Azure Active Directory 访问面板部署
 
-The Azure Active Directory (Azure AD) Access Panel is a web-based portal that helps lower support costs, increase productivity and security, and reduce user frustration. The system includes detailed reporting that tracks when you access the system and notifies administrators of misuse or abuse.
+Azure Active Directory （Azure AD）访问面板是一个基于 web 的门户，可帮助降低支持成本、提高工作效率和安全性并减少用户不满。 系统包括详细的报告，用于跟踪何时访问系统并通知管理员误用或滥用。
 
-By using the Azure AD Access Panel, you can:
+通过使用 Azure AD 访问面板，可以执行以下操作：
 
-* Discover and access all of their company’s Azure AD-connected resources, such as applications
-* Request access to new apps and groups
-* Manage access to these resources for others
-* Manage self-service password resets and Azure Multi-Factor Authentication settings
-* Manage their devices
+* 发现并访问其公司的所有 Azure AD 连接的资源，例如应用程序
+* 请求访问新的应用和组
+* 管理其他人对这些资源的访问权限
+* 管理自助服务密码重置和 Azure 多重身份验证设置
+* 管理其设备
 
-It also allows administrators to manage:
+它还允许管理员管理：
 
 * 服务条款
-* 单位 2
+* 组织
 * 访问评审
 
 
-## <a name="benefits-of-azure-ad-access-panel-integration"></a>Benefits of Azure AD Access Panel integration
+## <a name="benefits-of-azure-ad-access-panel-integration"></a>Azure AD 访问面板集成的优点
 
-The Azure AD Access Panel benefits businesses in the following ways:
+Azure AD 访问面板通过以下方式提高企业的优势：
 
-**Provides intuitive user experience**: The Access Panel provides you with a single platform for all of your Azure single sign-on (SSO)-connected applications. You have a unified portal to find existing settings and new capabilities, like group management and self-service password reset, as they're added. The intuitive experience allows users to return to work faster and be more productive, while reducing their frustration.
+**提供直观的用户体验**：访问面板为您提供了适用于所有 Azure 单一登录（SSO）连接的应用程序的单一平台。 你有一个统一门户来查找现有设置和新功能（如组管理和自助密码重置），因为它们已经添加。 直观的体验使用户能够更快地工作并提高工作效率，同时降低其不满。
 
-**Increases productivity**: All user applications in the Access Panel have SSO enabled. Enabling SSO across enterprise applications and Office 365 creates a superior sign-in experience by reducing or eliminating additional sign-in prompts. The Access Panel uses self-service and dynamic membership and improves the overall security of your identity system. It does this by ensuring that the right people manage access to the applications. The Access Panel serves as a coherent landing page for you to quickly find resources and continue work tasks.
+**提高工作效率**：访问面板中的所有用户应用程序均已启用 SSO。 跨企业应用程序和 Office 365 启用 SSO，通过减少或消除额外的登录提示，建立了一个出色的登录体验。 访问面板使用自助服务和动态成员身份，并改善标识系统的整体安全性。 它通过确保适当的人员管理对应用程序的访问来实现此功能。 访问面板作为一个连贯的登陆页面，可用于快速查找资源和继续工作任务。
 
-**Manages cost**: Enabling the Access Panel with Azure AD can help with the divestment of on-premises infrastructures. It reduces support costs by providing you with a consistent portal to find all of your apps, request access to resources, and manage accounts.
+**管理成本**：启用具有 Azure AD 的访问面板可帮助 divestment 本地基础结构。 它提供一致的门户来查找所有应用、请求访问资源和管理帐户，从而降低了支持成本。
 
-**Increases flexibility and security**: The Access Panel gives you access to the security and flexibility that a cloud platform provides. Administrators can easily change settings to applications and resources and can accommodate new security requirements without affecting users.
+**提高灵活性和安全性**：访问面板使你可以访问云平台提供的安全性和灵活性。 管理员可以轻松地将设置更改为应用程序和资源，并且可以在不影响用户的情况下适应新的安全要求。
 
-**Enables robust auditing and usage tracking**: Auditing and usage tracking for all user capabilities let you know when users are using their resources and ensures that you can assess security.
+**启用可靠的审核和使用情况跟踪**：对于所有用户功能的审核和使用情况跟踪，可让用户了解用户使用其资源的时间，并确保可以评估安全。
 
-### <a name="licensing-considerations"></a>Licensing considerations
+### <a name="licensing-considerations"></a>许可注意事项
 
-The Access Panel is free and requires no licenses to use at a basic level. However, the number of objects in your directory and the additional features you want to deploy can require additional licenses. Some common Azure AD scenarios that have licensing requirements include the following security features:
+访问面板是免费的，不需要任何许可证即可在基本级别使用。 但是，目录中的对象数以及要部署的其他功能可能需要额外的许可证。 某些具有许可要求的常见 Azure AD 情况包括以下安全功能：
 
 * [Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
-* [Group-based membership](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
+* [基于组的成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
 * [自助密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
-See the [full licensing guide for Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+请参阅[Azure AD 的完整许可指南](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>Prerequisites for deploying the Azure AD Access Panel
+### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>部署 Azure AD 访问面板的先决条件
 
-Complete the following prerequisites before you begin this project:
+在开始此项目之前，请完成以下先决条件：
 
-* [Integrate application SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
+* [集成应用程序 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
 
-* [Manage Azure AD user and group infrastructure](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [管理 Azure AD 用户和组基础结构](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
-## <a name="plan-the-azure-ad-access-panel-deployment"></a>Plan the Azure AD Access Panel deployment
+## <a name="plan-the-azure-ad-access-panel-deployment"></a>规划 Azure AD 访问面板部署
 
-The following table outlines the key use cases for an Access Panel deployment:
+下表概述了访问面板部署的主要用例：
 
 | 区域| Description |
 | - | - |
-| 访问| Access Panel portal is accessible from corporate and personal devices within the corporate network. |
-|访问 | Access Panel portal is accessible from corporate devices outside of the corporate network. |
-| 审核| Usage data is downloaded into corporate systems at least every 29 days. |
-| 管理| Life cycle of the user assignments to Azure AD-connected applications and groups is defined and monitored. |
-| 安全性| Access to resources is controlled via user and group assignments. Only authorized users can manage resource access. |
-| 性能| Access assignment propagation timelines are documented and monitored. |
-| 用户体验| Users are aware of the Access Panel capabilities and how to use them.|
-| 用户体验| Users can manage their access to applications and groups.|
-| 用户体验| Users can manage their accounts. |
-| 用户体验| Users are aware of browser compatibility. |
-| 支持| Users can find support for Access Panel issues. |
+| 访问| 可以从企业网络中的公司和个人设备访问访问面板门户。 |
+|访问 | 可以从企业网络外部的企业设备访问访问面板门户。 |
+| 审核| 使用情况数据至少每29天下载到企业系统。 |
+| 管理| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
+| 安全性| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
+| 性能| 访问分配传播时间线已记录并被监视。 |
+| 用户体验| 用户了解访问面板功能以及如何使用它们。|
+| 用户体验| 用户可以管理对应用程序和组的访问。|
+| 用户体验| 用户可以管理其帐户。 |
+| 用户体验| 用户了解浏览器的兼容性。 |
+| 支持| 用户可以找到对访问面板问题的支持。 |
 
-### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Best practices for deploying the Azure AD Access Panel
+### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>部署 Azure AD 访问面板的最佳实践
 
-The functionality of the Access Panel can be enabled gradually. We recommend the following order of deployment:
+访问面板的功能可以逐渐启用。 建议遵循以下部署顺序：
 
 1. 我的应用
-   * App launcher
-   * Self-service app management
-   * Microsoft Office 365 integration
+   * 应用启动器
+   * 自助服务应用管理
+   * Microsoft Office 365 集成
 
-1. Self-service app discovery
+1. 自助服务应用程序发现
    * 自助式密码重置
-   * Multi-Factor Authentication settings
+   * 多重身份验证设置
    * 设备管理
    * 使用条款
-   * Manage organizations
+   * 管理组织
 
 1. 我的组
    * 自助组管理
 1. 访问评审
-   * Access review management
+   * 访问评审管理
 
-Starting with My Apps introduces users to the portal as a common place for accessing resources. The addition of self-service application discovery builds on the My Apps experience. My Groups and access reviews build on the self-service capabilities.
+从 "我的应用" 开始，将用户作为访问资源的公用位置引入门户。 自助服务应用程序发现的添加是在 "我的应用" 体验的基础上进行的。 我的组和访问权限审阅了自助服务功能上的版本。
 
-### <a name="plan-configurations-for-the-azure-ad-access-panel"></a>Plan configurations for the Azure AD Access Panel
+### <a name="plan-configurations-for-the-azure-ad-access-panel"></a>Azure AD 访问面板的规划配置
 
 下表列出了几个重要的访问面板配置和您可能使用的典型值：
 
@@ -227,9 +227,9 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 
 任何启用了 SSO 的 Azure AD 应用程序均可添加到 "我的应用" 启动程序。 使用链接的 SSO 选项添加其他应用程序。 你可以配置应用程序磁贴，该磁贴链接到现有 web 应用程序的 URL。 链接 SSO 使你可以在不将所有应用程序迁移到 Azure AD SSO 的情况下，开始将用户定向到 "我的应用" 门户。 你可以逐步迁移到 Azure AD SSO 配置的应用程序，而不会中断用户的体验。
 
-#### <a name="use-my-apps-workspaces-preview"></a>使用我的应用工作区（预览）
+#### <a name="use-my-apps-collections"></a>使用我的应用集合
 
-默认情况下，所有应用程序都在一个页面上一起列出。 但你可以使用工作区将相关应用程序组合在一起，并将它们显示在单独的选项卡上，使其更易于查找。 例如，你可以使用工作区为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关信息，请参阅[如何使用我的应用工作区自定义用户访问面板（预览）](access-panel-workspaces.md)。 
+默认情况下，所有应用程序都在一个页面上一起列出。 但你可以使用集合将相关应用程序组合在一起，并将它们显示在一个单独的选项卡上，使其更易于查找。 例如，你可以使用集合为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关信息，请参阅[如何使用我的应用集合自定义用户访问面板](access-panel-collections.md)。 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>规划是使用我的应用还是现有门户
 
@@ -264,7 +264,7 @@ Azure AD 提供了[提供技术和业务见解的报表](https://azure.microsoft
 |   | 管理风险| 提高工作效率| 管理和符合性 |
 |  - |- | - | - |
 | 报表类型|  应用程序权限和使用情况| 帐户设置活动| 查看谁在访问应用程序 |
-| 可能的操作| 审核访问;废除权限| 修正任何预配错误| “撤销访问权限” |
+| 可能的操作| 审核访问;废除权限| 修正任何预配错误| 撤消访问权限 |
 
 Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户或 API 使用这些数据下载到分析系统。
 
@@ -309,7 +309,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 #### <a name="application-sso-access-test-case-examples"></a>应用程序 SSO 访问测试用例示例：
 
 
-| 商业案例| 预期的结果 |
+| 商业案例| 预期结果 |
 | - | -|
 | 用户登录到 "我的应用" 门户| 用户可以登录并查看其应用程序 |
 | 用户启动联合 SSO 应用程序| 用户自动登录到应用程序 |
@@ -322,7 +322,7 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 #### <a name="application-self-service-capabilities-test-case-examples"></a>应用程序自助服务功能测试用例示例
 
 
-| 商业案例| 预期的结果 |
+| 商业案例| 预期结果 |
 | - | - |
 | 用户可以管理应用程序的成员身份| 用户可以添加/删除有权访问该应用程序的成员 |
 | 用户可以编辑应用程序| 用户可以为密码 SSO 应用程序编辑应用程序的描述和凭据 |

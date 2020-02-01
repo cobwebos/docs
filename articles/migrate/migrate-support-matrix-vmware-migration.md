@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030219"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901544"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -73,7 +73,7 @@ ms.locfileid: "76030219"
 
 **设备** | **Connection**
 --- | ---
-家用电器 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
+本 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
 vCenter 服务器 | 端口443上的入站连接，使设备能够协调复制-创建快照、复制数据、发布快照
 vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
@@ -123,7 +123,15 @@ vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
 - 了解 VMware 的[复制设备要求](migrate-replication-appliance.md#appliance-requirements)。
 - 必须在设备上安装 MySQL。 了解[安装选项](migrate-replication-appliance.md#mysql-installation)。
-- 了解复制设备需要访问的[url](migrate-replication-appliance.md#url-access) 。
+- 了解复制设备需要访问的[url](migrate-replication-appliance.md#url-access)和[端口]()。
+
+## <a name="agent-based-ports"></a>基于代理的端口
+
+**设备** | **Connection**
+--- | ---
+VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站上的本地复制设备（配置服务器）进行通信。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
+复制设备 | 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
+进程服务器 | 进程服务器接收复制数据，对其进行优化并对其进行加密，并通过端口443出站发送到 Azure 存储。<br/> 默认情况下，进程服务器在复制设备上运行。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 

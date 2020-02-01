@@ -1,126 +1,126 @@
 ---
 title: 创建群集错误字典
 description: 了解如何创建群集错误字典。
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156856"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905483"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
 本文介绍了在创建群集时可能会遇到的错误的解决方法。
 
 > [!NOTE]
-> 本文中所述的前三个错误为验证错误。 They can occur when an Azure HDInsight product uses the **CsmDocument_2_0** class.
+> 本文中所述的前三个错误为验证错误。 当 Azure HDInsight 产品使用**CsmDocument_2_0**类时，可能会出现这种情况。
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Error code: DeploymentDocument 'CsmDocument_2_0' failed the validation
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>错误代码： DeploymentDocument "CsmDocument_2_0" 验证失败
 
 ### <a name="error"></a>错误
 
-"Script Action location cannot be accessed URI:\<SCRIPT ACTION URL\>"
+"无法访问脚本操作位置 URI：\<脚本操作 URL\>"
 
 #### <a name="error-message"></a>错误消息
 
-"The remote server returned an error: (404) Not Found."
+"远程服务器返回了一个错误：（404）。"
 
 ### <a name="cause"></a>原因
 
-The HDInsight service can't access the script action URL that you provided as part of the Create Cluster request. The service receives the preceding error message when it tries to access the script action.
+HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操作 URL。 当服务尝试访问脚本操作时，会收到前面的错误消息。
 
 ### <a name="resolution"></a>分辨率
 
-- For an HTTP or HTTPS URL, verify the URL by trying to go to it from an incognito browser window.
-- For a WASB URL, be sure that the script exists in the storage account that you give in the request. Also make sure that the storage key for this storage account is correct.
-- For an ADLS URL, be sure that the script exists in the storage account.
+- 对于 HTTP 或 HTTPS URL，请尝试从 incognito 浏览器窗口中转到该 URL。
+- 对于 WASB URL，请确保在请求中提供的存储帐户中存在该脚本。 另外，请确保此存储帐户的存储密钥是正确的。
+- 对于 ADLS URL，请确保该脚本存在于存储帐户中。
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Error code: DeploymentDocument 'CsmDocument_2_0' failed the validation
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>错误代码： DeploymentDocument "CsmDocument_2_0" 验证失败
 
 ### <a name="error"></a>错误
 
-"Script Action location cannot be accessed URI: \<SCRIPT_ACTION_URL\>"
+"无法访问脚本操作位置 URI： \<SCRIPT_ACTION_URL\>"
 
 #### <a name="error-message"></a>错误消息
 
-"The given script URI \<SCRIPT_URI\> is in ADLS, but this cluster has no data lake storage principal"
+"给定的脚本 URI \<SCRIPT_URI\> 在 ADLS 中，但此群集没有 data lake storage 主体"
 
 ### <a name="cause"></a>原因
 
-The HDInsight service can't access the script action URL that you provided as part of the Create Cluster request. The service receives the preceding error message when it tries to access the script action.
+HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操作 URL。 当服务尝试访问脚本操作时，会收到前面的错误消息。
 
 ### <a name="resolution"></a>分辨率
 
-Add the corresponding Azure Data Lake Storage Gen 1 account to the cluster. Also add the service principal that accesses the Data Lake Storage Gen 1 account to the cluster.
+将相应的 Azure Data Lake Storage 第1代帐户添加到群集。 还要将访问 Data Lake Storage 第1代帐户的服务主体添加到群集。
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Error code: DeploymentDocument 'CsmDocument_2_0' failed the validation
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>错误代码： DeploymentDocument "CsmDocument_2_0" 验证失败
 
 ### <a name="error"></a>错误
 
-"VM size '\<CUSTOMER_SPECIFIED_VM_SIZE\>' provided in the request is invalid or not supported for role '\<ROLE\>'. Valid values are: \<VALID_VM_SIZE_FOR_ROLE\>."
+请求中提供的 "VM 大小"\<CUSTOMER_SPECIFIED_VM_SIZE\>"无效，或"\<ROLE\>"角色不支持。 有效值为： \<VALID_VM_SIZE_FOR_ROLE\>"。
 
 ### <a name="cause"></a>原因
 
-The virtual machine size that you specified isn't allowed for the role. This error might occur because the VM size value doesn't work as expected or isn't suitable for the computer role.
+角色不允许您指定的虚拟机大小。 出现此错误的原因可能是 VM 大小值无法按预期工作，或者不适合计算机角色。
 
 ### <a name="resolution"></a>分辨率
 
-The error message lists the valid values for the VM size. Select one of these values and retry the Create Cluster request.
+错误消息将列出 VM 大小的有效值。 选择其中一个值，然后重试 "创建群集请求"。
 
 ---
 
-## <a name="error-codeinvalidvirtualnetworkid"></a>Error code: InvalidVirtualNetworkId  
+## <a name="error-codeinvalidvirtualnetworkid"></a>错误代码： InvalidVirtualNetworkId  
 
 ### <a name="error"></a>错误
 
-"The VirtualNetworkId is not valid. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>'*"
+"VirtualNetworkId 无效。 VirtualNetworkId "\<USER_VIRTUALNETWORKID\>" * "
 
 ### <a name="cause"></a>原因
 
-The **VirtualNetworkId** value that you specified during cluster creation isn't in the correct format.
+在群集创建过程中指定的**VirtualNetworkId**值的格式不正确。
 
 ### <a name="resolution"></a>分辨率
 
-Make sure that the **VirtualNetworkId** and subnet values are in the correct format. To get the **VirtualNetworkId** value:
+请确保**VirtualNetworkId**和子网的值格式正确。 若要获取**VirtualNetworkId**值：
 
 1. 转到 Azure 门户。
-1. Select your virtual network.
-1. Select the **Properties** menu item. The **ResourceID** property value is the **VirtualNetworkId** value.
+1. 选择虚拟网络。
+1. 选择 "**属性**" 菜单项。 **ResourceID**属性值为**VirtualNetworkId**值。
 
-Here's an example of a virtual network ID:
+下面是虚拟网络 ID 的示例：
 
 "/subscriptions/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
 
 ---
 
-## <a name="error-code-customizationfailederrorcode"></a>Error code: CustomizationFailedErrorCode
+## <a name="error-code-customizationfailederrorcode"></a>错误代码： CustomizationFailedErrorCode
 
 ### <a name="error"></a>错误
 
-"Cluster deployment failed due to an error in the custom script action. Failed Actions: \<SCRIPT_NAME\>, Please go to Ambari UI to further debug the failure."
+"群集部署因自定义脚本操作中的错误而失败。 失败的操作： \<SCRIPT_NAME\>，请参阅 Ambari UI 以进一步调试失败。 "
 
 ### <a name="cause"></a>原因
 
-The custom script that you provided during the Create Cluster request is executed after the cluster is deployed successfully. This error code indicates that an error arose during execution of the custom script named \<SCRIPT_NAME\>.
+在创建群集请求过程中提供的自定义脚本在群集成功部署后执行。 此错误代码表示在执行名为 \<SCRIPT_NAME\>的自定义脚本期间出现错误。
 
 ### <a name="resolution"></a>分辨率
 
-Because the script is your custom script, we recommend that you troubleshoot the problem and rerun the script if necessary. To troubleshoot the script failure, examine the logs in the /var/lib/ambari-agent/* folder. Or open the **Operations** page in the Ambari UI and then select the **run_customscriptaction** operation to view the error details.
+因为脚本是您的自定义脚本，所以我们建议您对问题进行故障排除，并根据需要重新运行脚本。 若要对脚本失败进行故障排除，请检查/var/lib/ambari-agent/* 文件夹中的日志。 或在 Ambari UI 中打开 "**操作**" 页，然后选择**run_customscriptaction**操作以查看错误详细信息。
 
 ---
 
-## <a name="error-codeinvaliddocumenterrorcode"></a>Error code: InvalidDocumentErrorCode
+## <a name="error-codeinvaliddocumenterrorcode"></a>错误代码： InvalidDocumentErrorCode
 
 ### <a name="error"></a>错误
 
@@ -210,7 +210,7 @@ Because the script is your custom script, we recommend that you troubleshoot the
 
 ### <a name="resolution"></a>分辨率
 
-查看[azure 状态](https://status.azure.com/status)页，了解可能会影响群集部署的任何 azure 中断。 如果没有中断，请重试群集部署。
+查看[azure 状态](https://status.azure.com)页，了解可能会影响群集部署的任何 azure 中断。 如果没有中断，请重试群集部署。
 
 ## <a name="next-steps"></a>后续步骤
 

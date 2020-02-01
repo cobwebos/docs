@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 02e2c0472a6ba7449229a5de5c6d8948be064644
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c4124f46e1b900e240858e4dcd332f13ba0950ec
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845785"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901610"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -205,7 +205,7 @@ Azure 国内云彼此独立，并来自全球商业 Azure。 一个 Azure 云的
 | **开普敦** | Teraco | MTN |
 | **芝加哥** | Equinix| 王冠城堡，Windstream |
 | **达拉斯** | Equinix、Megaport | Axtel、C3ntro 电信、Cox Business、王冠城堡、Data Foundry、彩虹 Enterprise、Transtelco |
-| **法兰克福** | Interxion | BICS、Cinia、Nianet、QSC AG、Telekom Deutschland GmbH |
+| **法兰克福** | Interxion | BICS、Cinia、Equinix、Nianet、QSC AG、Telekom Deutschland GmbH |
 | **汉堡** | Equinix | Cinia |
 | **香港特别行政区** | Equinix | Chief、Macroview Telecom |
 | **约翰内斯堡** | Teraco | MTN |

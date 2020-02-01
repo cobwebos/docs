@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
-ms.translationtype: HT
+ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844847"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901652"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -39,13 +39,6 @@ ms.locfileid: "76844847"
 1. "概述" 部分提供了终结点 URL
 
     ![QnAMaker 终结点](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-
-
-## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>在 QnA Maker 门户中使用帮助机器人
-
-QnA Maker 在 QnA Maker 门户中提供**帮助**机器人来帮助你。 每个网页上都提供了帮助机器人。 机器人使用 QnA Maker 来提供答案，并向机器人提供[ C#机器人框架代码项目](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)，以便你可以快速启动并运行你自己的应答机器人。
-
-![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 

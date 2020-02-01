@@ -4,15 +4,15 @@ description: 了解如何在 Azure 中管理 Analysis Services 服务器上的�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147011"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901493"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -25,9 +25,9 @@ ms.locfileid: "73147011"
 *  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
 *  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-创建表格模型项目时，可以使用 Visual Studio 中的角色管理器和 Analysis Services 项目，创建角色并向这些角色添加用户或组。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
+创建表格模型项目时，可以使用 Visual Studio 中的角色管理器和 Analysis Services 项目，创建角色并向这些角色添加用户或组。 部署到服务器时，可以使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）来添加或删除角色和用户成员。
 
-**安全组**必须[已启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)且 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
+**安全组**必须[启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)，并将 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>在 Visual Studio 中添加或管理角色和用户  
@@ -42,13 +42,13 @@ ms.locfileid: "73147011"
   
 4.  选择以下权限之一：  
   
-    |权限|说明|  
+    |权限|Description|  
     |----------------|-----------------|  
-    |**无**|成员无法修改模型架构，也无法查询数据。|  
+    |无|成员无法读取或修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
-    |读取和处理|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
-    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
-    |管理员|成员可以修改模型架构并查询所有数据。|   
+    |**读取和处理**|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
+    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法读取或修改模型架构，也无法查询数据。|  
+    |**管理员**|成员可以修改模型架构并查询所有数据。|   
   
 5.  如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”选项卡，选择表，再单击“DAX 筛选器”字段，然后键入一个 DAX 公式。
   
@@ -71,10 +71,10 @@ ms.locfileid: "73147011"
 
 3. 选择权限。
 
-   |权限|说明|  
+   |权限|Description|  
    |----------------|-----------------|  
-   |完全控制（管理员）|成员可以修改模型架构，处理并查询所有数据。| 
-   |处理数据库|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+   |**完全控制(管理员)**|成员可以修改模型架构，处理并查询所有数据。| 
+   |**处理数据库**|成员可以运行“处理”和“全部处理”操作。 不能修改模型架构且不能查询数据。|  
    |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
   
 4. 单击“成员资格”，然后按电子邮件地址在租户 Azure AD 中输入用户或组。
@@ -121,7 +121,7 @@ ms.locfileid: "73147011"
 
 [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
-|Cmdlet|说明|
+|Cmdlet|Description|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色删除成员。|   
@@ -129,17 +129,17 @@ ms.locfileid: "73147011"
 
 ## <a name="row-filters"></a>行筛选器  
 
-行筛选器定义特定角色的成员可以查询表中的哪些行。 可使用 DAX 公式为模型中的每个表定义行筛选器。  
+行筛选器定义特定角色的成员可以查询表中的哪些行。 通过使用 DAX 公式为模型中的每个表定义行筛选器。  
   
 可仅为具有“读取”和“读取和处理”权限的角色定义行筛选器。 默认情况下，如果没有为特定表定义行筛选器，除非交叉筛选其他表中的适用项，否则成员可以查询表中的所有行。
   
  行筛选器需要 DAX 公式，该公式的求值结果必须为 TRUE/FALSE，以定义该特定角色的成员可以查询的行。 无法查询未包含在 DAX 公式中的行。 例如，Customers 表的以下行筛选器表达式，=Customers [Country] = “USA”，Sales 角色的成员只能查看美国境内的客户。  
   
-行筛选器适用于指定的行和相关行。 如果表具有多个关系，筛选器将对处于活动状态的关系应用安全性。 行筛选器与为相关表定义的其他行筛选器相交，示例如下：  
+行筛选器适用于指定的行和相关行。 如果表具有多个关系，则筛选器将安全性应用于处于活动状态的关系。 行筛选器与为相关表定义的其他行筛选器相交，示例如下：  
   
 |表|DAX 表达式|  
 |-----------|--------------------|  
-|区域|=Region[Country]="USA"|  
+|地区|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |事务|=Transactions[Year]=2016|  
   

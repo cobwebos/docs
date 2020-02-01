@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538418"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904281"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>创建事件驱动的机器学习工作流（预览）
 
@@ -28,25 +28,10 @@ ms.locfileid: "75538418"
 * 触发管道以便重新训练
 * 将事件从 Azure 机器学习流式传输到各种终结点
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>Prerequisites
 
 * 参与者或所有者对要为其创建事件的 Azure 机器学习工作区的访问权限。
 * 选择一个事件处理程序终结点，例如 webhook 或事件中心。 有关详细信息，请参阅[事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)。 
-
-## <a name="register-resource-providers"></a>注册资源提供程序
-
-如果在 1 2019 年11月之前使用过 Azure 事件网格或机器学习，则可能需要重新注册资源提供程序，然后才能按照本文档中的步骤进行操作。 若要重新注册提供程序，请使用以下步骤：
-
-1. 中转到 Azure 门户并选择 "__订阅__"。 选择要使用的订阅。
-1. 选择 "__资源提供程序__"，然后搜索 " __EventGrid__"。
-1. 选择__EventGrid__条目，然后选择 "__重新注册__"。
-
-    ![重新注册-资源提供程序](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. 搜索 " __MachineLearningServices__"，选择该条目，然后选择 "__重新注册__"。
-
-> [!TIP]
-> 如果没有完成这些步骤的权限，请要求订阅管理员执行这些步骤。
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>使用 Azure 门户配置机器学习事件
 
@@ -145,7 +130,7 @@ az eventgrid event-subscription create \
 
     ![搜索-逻辑应用](./media/how-to-use-event-grid/search-for-logic-app.png)
 
-1. 填写必需的信息。 若要简化体验，请使用与 Azure 数据工厂管道相同的订阅和资源组，并 Azure 机器学习工作区。
+1. 填写所需的信息。 若要简化体验，请使用与 Azure 数据工厂管道相同的订阅和资源组，并 Azure 机器学习工作区。
 
     ![设置逻辑应用-adf 应用](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 

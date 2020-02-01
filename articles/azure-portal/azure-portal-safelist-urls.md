@@ -1,30 +1,33 @@
 ---
-title: Azure 门户 Url 的安全安全 |Microsoft Docs
+title: 请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
 description: 将这些 Url 添加到代理服务器旁路，以与 Azure 门户及其服务进行通信
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310556"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900660"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
 
-若要在本地或广域网络与 Azure 云之间实现良好的性能和连接性，请将本地安全设备配置为绕过 Azure 门户 Url 的安全限制。 网络管理员经常部署代理服务器、防火墙或其他设备以帮助保护和控制用户访问 internet 的方式。 但是，旨在保护用户的规则有时会阻止或减慢与 internet 相关的合法 internet 流量，包括你和 Azure 之间的通信。 若要优化网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 Url 添加到安全安全的安全服务。
+可以配置本地安全设备，绕过 Azure 门户 Url 的安全限制。 此配置可以提高本地网络或广域网络与 Azure 云之间的性能和连接性。
+
+网络管理员通常会部署代理服务器、防火墙或其他设备。 这些设备有助于保护并控制用户访问 internet 的方式。 旨在保护用户的规则有时会阻止或减慢与合法业务相关的 internet 流量。 此流量包括你和 Azure 之间的通信。 若要优化网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 Url 添加到安全安全的安全服务。
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>代理绕过 Azure 门户 Url
 
-要 Azure 门户的安全领域的 URL 终结点特定于部署组织的 Azure 云。 选择云，将 Url 列表添加到代理服务器或防火墙，以允许到这些终结点的网络流量绕过限制。
+要 Azure 门户的安全领域的 URL 终结点特定于部署组织的 Azure 云。 若要允许这些终结点的网络流量绕过限制，请选择云。 然后，将 Url 列表添加到代理服务器或防火墙。
 
 #### <a name="public-cloudtabpublic-cloud"></a>[公有云](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ ms.locfileid: "76310556"
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ ms.locfileid: "76310556"
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

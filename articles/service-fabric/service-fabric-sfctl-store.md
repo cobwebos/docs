@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 应用商店
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于在群集映像存储区上执行文件级别操作的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 64a8ea963afa9e20dfafb71db69b2baf66959369
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645253"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905622"
 ---
 # <a name="sfctl-store"></a>sfctl store
 针对群集映像存储执行基本文件级别操作。

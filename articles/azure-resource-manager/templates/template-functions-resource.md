@@ -3,12 +3,12 @@ title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773236"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900645"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -479,7 +479,7 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
     "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
         "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [

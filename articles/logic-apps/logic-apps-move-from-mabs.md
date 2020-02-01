@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666646"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905432"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将你的应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
@@ -125,7 +125,7 @@ BizTalk 服务和逻辑应用包括 EDI 和 B2B 处理，并支持 AS2（适用�
 
 ## <a name="manage-and-monitor"></a>管理和监视
 
-在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用通过 [Azure 门户](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供更丰富的跟踪和监视功能，包括用于在行动中对事物保持关注的一款移动应用。
+在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能，用于[监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，并包含一个移动应用，用于在移动时保持注意力。
 
 ## <a name="high-availability"></a>高可用性
 

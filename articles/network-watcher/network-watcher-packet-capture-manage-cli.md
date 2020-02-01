@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序管理数据包捕获 - Azure CLI | Microsoft 文档
-description: 此页说明如何使用 Azure CLI 管理网络观察程序的数据包捕获功能
+title: 通过 Azure 网络观察程序管理数据包捕获-Azure CLI |Microsoft Docs
+description: 本页说明如何使用 Azure CLI 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f83fb2377f2db1deaed453131a61e26677b3d87d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840855"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896396"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
+# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure 网络观察程序管理数据包捕获使用 Azure CLI
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-packet-capture-manage-portal.md)
@@ -27,11 +27,11 @@ ms.locfileid: "76840855"
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
+网络观察程序数据包捕获允许您创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器，以确保只捕获所需的流量。 数据包捕获可帮助同时被动和主动诊断网络异常。 其他用途包括收集网络统计信息、获取有关网络入侵的信息、调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并使在所需的计算机上能够节省宝贵的时间。
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](/cli/azure/install-azure-cli)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口（Azure CLI）](/cli/azure/install-azure-cli)。
 
-本文将引导完成当前可用于数据包捕获的不同管理任务。
+本文将指导你完成当前可用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -43,16 +43,16 @@ ms.locfileid: "76840855"
 本文假定你拥有以下资源：
 
 - 要创建数据包捕获的区域中的网络观察程序实例
-- 已启用数据包捕获扩展的虚拟机。
+- 启用了数据包捕获扩展的虚拟机。
 
 > [!IMPORTANT]
-> 数据包捕获要求在虚拟机上运行代理。 已安装代理作为扩展。 有关 VM 扩展的说明，请访问[虚拟机扩展和功能](../virtual-machines/windows/extensions-features.md)。
+> 数据包捕获需要在虚拟机上运行代理。 代理安装为扩展。 有关 VM 扩展的说明，请访问[虚拟机扩展和功能](../virtual-machines/windows/extensions-features.md)。
 
 ## <a name="install-vm-extension"></a>安装 VM 扩展
 
-### <a name="step-1"></a>步骤 1
+### <a name="step-1"></a>步骤1
 
-在来宾虚拟机上运行 `az vm extension set` cmdlet 以安装数据包捕获代理。
+运行 `az vm extension set` 命令，在来宾虚拟机上安装数据包捕获代理。
 
 对于 Windows 虚拟机：
 
@@ -63,18 +63,24 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 对于 Linux 虚拟机：
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
-### <a name="step-2"></a>步骤 2
+### <a name="step-2"></a>步骤2
 
-若要确保已安装代理，请运行 `vm extension show` cmdlet 并向其传递资源组和虚拟机的名称。 检查结果列表，以确保已安装代理。
+若要确保已安装代理，请运行 `vm extension show` 命令，并向其传递资源组和虚拟机名称。 检查生成的列表以确保已安装代理。
 
+对于 Windows 虚拟机：
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
-以下示例是运行 `az vm extension show` 后的响应的实例
+对于 Linux 虚拟机：
+```azurecli
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
+```
+
+以下示例是运行的响应的示例 `az vm extension show`
 
 ```json
 {
@@ -98,33 +104,26 @@ az vm extension show --resource-group resourceGroupName --vm-name virtualMachine
 
 ## <a name="start-a-packet-capture"></a>启动数据包捕获
 
-完成前面的步骤后，数据包捕获代理将安装在虚拟机上。
+完成上述步骤后，将在虚拟机上安装数据包捕获代理。
 
-### <a name="step-1"></a>步骤 1
 
-下一步是检索网络观察程序实例。 在步骤 4 中，会将网络观察程序的名称传递给 `az network watcher show` cmdlet。
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>步骤 2
+### <a name="step-1"></a>步骤1
 
 检索存储帐户。 此存储帐户用于存储数据包捕获文件。
 
 ```azurecli
-azure storage account list
+az storage account list
 ```
 
-### <a name="step-3"></a>步骤 3
+### <a name="step-2"></a>步骤2
 
-可以使用筛选器来限制数据包捕获存储的数据。 以下示例为数据包捕获设置了多个筛选器。  前三个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。  最后一个筛选器仅收集 UDP 流量。
+此时，您已准备好创建数据包捕获。  首先，让我们检查你可能想要配置的参数。 筛选器是一个此类参数，可用于限制数据包捕获存储的数据。 下面的示例使用多个筛选器设置数据包捕获。  前三个筛选器仅收集从本地 IP 10.0.0.3 到目标端口20、80和443的传出 TCP 流量。  最后一个筛选器仅收集 UDP 流量。
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-以下示例是运行 `az network watcher packet-capture create` cmdlet 后的预期输出。
+下面的示例是运行 `az network watcher packet-capture create` 命令的预期输出。
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>获取数据包捕获
 
-运行 `az network watcher packet-capture show-status` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
+运行 `az network watcher packet-capture show-status` 命令，检索当前正在运行的或已完成的数据包捕获的状态。
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-以下示例是 `az network watcher packet-capture show-status` cmdlet 的输出。 以下是捕获停止的示例，其中 StopReason 为 TimeExceeded。 
+下面的示例是 `az network watcher packet-capture show-status` 命令的输出。 以下示例是停止捕获时，StopReason 为 TimeExceeded。 
 
 ```
 {
@@ -204,14 +203,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-运行 `az network watcher packet-capture stop` cmdlet 后，如果捕获会话正在进行，它将停止。
+通过运行 `az network watcher packet-capture stop` 命令，如果捕获会话正在进行，则它将停止。
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> 该 cmdlet 在当前正在运行的捕获会话或已停止的现有会话中运行时，将不返回任何响应。
+> 在当前正在运行的捕获会话或已停止的现有会话上运行时，该命令将返回 "无响应"。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
@@ -224,9 +223,9 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>下载数据包捕获
 
-完成数据包捕获会话后，可以将捕获文件上传到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问这些保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器，下载地址为： https://storageexplorer.com/
+完成数据包捕获会话后，可以将捕获文件上传到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器的，可在此处下载： https://storageexplorer.com/
 
-如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
+如果指定了存储帐户，则会将数据包捕获文件保存到位于以下位置的存储帐户：
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
@@ -234,8 +233,8 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
+查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何使用虚拟机警报自动执行数据包捕获
 
-访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，了解是否允许某些流量传入和传出 VM
+访问[检查 IP 流验证](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允许某些流量传入或传出 VM
 
 <!-- Image references -->

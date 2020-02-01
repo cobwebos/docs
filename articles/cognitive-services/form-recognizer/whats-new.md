@@ -1,5 +1,5 @@
 ---
-title: 表单识别器中的新增功能
+title: 表单识别器的新增功能
 titleSuffix: Azure Cognitive Services
 description: 了解窗体识别器 API 的最新更改。
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456362"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901878"
 ---
-# <a name="whats-new-in-form-recognizer"></a>表单识别器中的新增功能
+# <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
 本文重点介绍了新版本的窗体识别器 API 所提供的重大更改。
 
@@ -25,13 +25,10 @@ ms.locfileid: "75456362"
 
 ## <a name="form-recognizer-20-preview"></a>表单识别器2.0 （预览版）
 
-> [!IMPORTANT]
-> 窗体识别器2.0 当前可用于 `West US 2` 和 `West Europe` 区域中的订阅。 如果你的订阅不在此区域中，请使用 1.0 API。 用于培训和使用自定义模型的快速入门可用于 v1.0 和 v2.0。
-
 ### <a name="new-features"></a>新增功能
 
 * **自定义模型**
-  * **标签定型**你现在可以使用手动标记的数据来训练自定义模型。 这会生成更好的模型，并且可以生成处理复杂的窗体或窗体（其中包含没有键的值）的模型。
+  * **标签定型**你现在可以使用手动标记的数据来训练自定义模型。 这会生成表现更好的模型，并且可以生成处理复杂表单或所含值没有键的表单的模型。
   * **异步 API**可以使用异步 API 调用来训练和分析大型数据集和文件。
   * **TIFF 文件支持**你现在可以训练和提取 TIFF 文档中的数据。
   * **提取准确性改进**

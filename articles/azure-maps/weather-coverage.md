@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910807"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898552"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps 天气范围
 
@@ -179,7 +179,6 @@ ms.locfileid: "75910807"
 | 阿富汗                       | ✓ |   |  ✓| 
 | 美属萨摩亚                    | ✓ |   |  ✓| 
 | 澳大利亚                         | ✓ | ✓ |  ✓| 
-| 阿塞拜疆                        | ✓ |   |  ✓| 
 | 孟加拉                        | ✓ |   |  ✓| 
 | 不丹                            | ✓ |   |  ✓| 
 | 英属印度洋领地    | ✓ |   |  ✓| 
@@ -247,7 +246,8 @@ ms.locfileid: "75910807"
 | 阿尔巴尼亚                | ✓ |   |  ✓| 
 | 安道尔                | ✓ |   |  ✓| 
 | 亚美尼亚                | ✓ |   |  ✓| 
-| 奥地利                | ✓ | ✓ |  ✓| 
+| 奥地利                | ✓ | ✓ |  ✓|
+| 阿塞拜疆             | ✓ |   |  ✓| 
 | 白俄罗斯                | ✓ |   |  ✓| 
 | 比利时                | ✓ | ✓ |  ✓| 
 | 波斯尼亚和黑塞哥维那 | ✓ | ✓ |  ✓| 

@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281064"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899075"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -531,7 +531,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *某些罕见事件始终需要查看。如何使它们超过采样模块？*
 
-* 实现此目的的最佳方式是编写一个自定义[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，该自定义的会将要保留的遥测项的 `SamplingPercentage` 设置为100，如下所示。 由于可以保证初始值设定项在遥测处理器（包括采样）之前运行，因此这可确保所有采样方法都将忽略任何采样注意事项中的此项。
+* 实现此目的的最佳方式是编写一个自定义[TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，该自定义的会将要保留的遥测项的 `SamplingPercentage` 设置为100，如下所示。 由于可以保证初始值设定项在遥测处理器（包括采样）之前运行，因此这可确保所有采样方法都将忽略任何采样注意事项中的此项。 自定义遥测初始值设定项在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 Java SDK 中提供。 例如，可以使用 ASP.NET SDK 配置遥测初始值设定项：
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

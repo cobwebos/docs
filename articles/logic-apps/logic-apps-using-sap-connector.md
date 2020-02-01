@@ -9,12 +9,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: a9cf818e8b31ea2efb2f2ef2f0848a759e017dfa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790875"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904650"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -213,7 +213,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 1. 发送 HTTP 请求之后，等待逻辑应用返回响应。
 
    > [!NOTE]
-   > 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为帮助诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)。
+   > 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为帮助诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/monitor-logic-apps.md)。
 
 现在，你已创建了可与 SAP 服务器通信的逻辑应用。 为逻辑应用设置 SAP 连接后，可以探索其他可用的 SAP 操作，例如 BAPI 和 RFC。
 
@@ -464,7 +464,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    ![在连接中配置 SAP SNC](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | properties | 描述 |
+   | 属性 | Description |
    |----------| ------------|
    | **SNC 库路径** | 相对于 NCo 安装位置或绝对路径的 SNC 库名称或路径。 示例 `sapsnc.dll` 或 `.\security\sapsnc.dll` 或 `c:\security\sapsnc.dll`。 |
    | **SNC SSO** | 通过 SNC 连接时，SNC 标识通常用于对调用方进行身份验证。 另一种方法是重写，以便可以使用用户和密码信息对调用方进行身份验证，但行仍然是加密的。 |

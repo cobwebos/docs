@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026147"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900283"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳实践
 
@@ -67,7 +67,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 
 在第一次分配或后续调整大小的过程中，可能会发生池分配失败。 这可能是由于区域中的临时容量消耗或批处理依赖的其他 Azure 服务中的故障造成的。 核心配额并不是一个保证，而是限制。
 
-### <a name="unplanned-downtime"></a>计划外故障时间
+### <a name="unplanned-downtime"></a>计划外停机
 
 在 Azure 中，批处理池可能会遇到停机事件。 在为批处理规划和开发方案或工作流时，必须记住这一点。
 
@@ -109,7 +109,7 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 - **在集合中提交大量任务。**  
     可以单独或按集合提交任务。 在对任务进行大容量提交时，每次在 100[集合](https://docs.microsoft.com/rest/api/batchservice/task/addcollection)中提交任务，以减少开销和提交时间。
 
-### <a name="task-execution"></a>执行任务
+### <a name="task-execution"></a>任务执行
 
 - **选择每个节点的最大任务数**  
     Batch 支持节点上的需要超额订阅任务（运行的任务比节点具有多个内核的多个任务）。 你需要确保任务 "适合" 到池中的节点。 例如，如果你试图计划八个任务，每个任务都消耗25% 的 CPU 使用率，则你可能会遇到性能下降的 `maxTasksPerNode = 8`情况。
@@ -152,3 +152,15 @@ Batch 池是用于在批处理服务上执行作业的计算资源。 以下各�
 ### <a name="security-isolation"></a>安全隔离
 
 出于隔离的目的，如果方案需要彼此隔离作业，则应将这些作业隔离在不同的池中。 池是批处理中的安全隔离边界，默认情况下，两个池不可见或无法相互通信。 避免使用单独的批处理帐户作为隔离方法。
+
+## <a name="moving"></a>动
+
+### <a name="move-batch-account-across-regions"></a>跨区域移动批处理帐户 
+
+在各种情况下，你希望将现有批处理帐户从一个区域移到另一个区域。 例如，你可能想要在灾难恢复规划过程中移到另一个区域。
+
+不能将 Azure Batch 帐户从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出 Batch 帐户的现有配置。  然后，你可以在另一个区域中暂存资源，方法是将批处理帐户导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。 将模板上传到新区域后，必须重新创建证书、作业计划和应用程序包。 若要提交更改并完成批处理帐户的移动，请记得删除原始批处理帐户或资源组。  
+
+有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+
+

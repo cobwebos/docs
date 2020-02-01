@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659825"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901469"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -88,13 +88,13 @@ ms.locfileid: "75659825"
 
 操作组中可能包含有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-### <a name="email-azure-resource-manager-role"></a>通过电子邮件发送 Azure 资源管理器角色
+### <a name="email-azure-resource-manager-role"></a>电子邮件 Azure 资源管理器角色
 向订阅角色的成员发送电子邮件。
 
 操作组中可能包含有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-为操作配置的函数应用的功能密钥是通过函数 API 读取的，该 API 当前需要 v2 函数应用将应用设置 "AzureWebJobsSecretStorageType" 配置为 "files"。 有关详细信息，请参阅[函数 V2 中对密钥管理的更改]( https://aka.ms/funcsecrets)。
+调用[Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的现有 HTTP 触发器终结点。
 
 操作组中可能包含有限数量的函数操作。
 

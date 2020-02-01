@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045584"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898848"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -213,6 +213,18 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 如果 API 管理服务在 VNet 中，请参阅上述 VNet 连接问题。
 
 调用失败也可能由将分配给自定义域且不受浏览器信任的 SSL 证书引起。 作为缓解措施，你可以删除管理终结点自定义域-API 管理将回退到具有受信任证书的默认终结点。
+
+### <a name="whats-the-browser-support-for-the-portal"></a>门户的浏览器支持有哪些？
+
+| 浏览器                     | 受支持       |
+|-----------------------------|-----------------|
+| Apple Safari                | 是<sup>1</sup> |
+| Google Chrome               | 是<sup>1</sup> |
+| Microsoft Edge              | 是<sup>1</sup> |
+| Microsoft Internet Explorer | 否              |
+| Mozilla Firefox             | 是<sup>1</sup> |
+
+ <small><sup>1</sup>在两个最新的生产版本中受支持。</small>
 
 ## <a name="next-steps"></a>后续步骤
 

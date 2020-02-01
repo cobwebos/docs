@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 撰写
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包括用于 Docker Compose 应用程序的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645389"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906132"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。

@@ -7,32 +7,32 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429928"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896530"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>批准或拒绝 Privileged Identity Management 中 Azure AD 角色的请求
 
-通过 Azure Active Directory （Azure AD） Privileged Identity Management （PIM），可以将角色配置为需要批准激活，并选择一个或多个用户或组作为委托的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
+通过 Azure Active Directory （Azure AD） Privileged Identity Management （PIM），可以将角色配置为需要批准激活，并选择一个或多个用户或组作为委托的审批者。 委派的审批者有24小时批准请求。 如果在24小时内未批准请求，则合格用户必须重新提交新的请求。 "24 小时批准时间" 窗口不可配置。
 
 ## <a name="determine-your-version-of-pim"></a>确定 PIM 版本
 
 从2019年11月开始，Privileged Identity Management 的 Azure AD 角色部分更新为与 Azure 资源角色体验相匹配的新版本。 这将创建其他功能以及对[现有 API 的更改](azure-ad-roles-features.md#api-changes)。 在推出新版本时，本文中所遵循的过程取决于当前所用 Privileged Identity Management 的版本。 按照本部分中的步骤确定 Privileged Identity Management 的版本。 了解 Privileged Identity Management 版本后，可以在本文中选择与该版本匹配的过程。
 
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 角色的用户登录到[Azure 门户](https://portal.azure.com/)。
-1. 打开“Azure AD Privileged Identity Management”。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
+1. 打开**Azure AD Privileged Identity Management**。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
 
     ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
@@ -40,69 +40,69 @@ ms.locfileid: "75429928"
 
 # <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
 
-## <a name="view-pending-requests"></a>查看待处理请求
+## <a name="view-pending-requests"></a>查看挂起的请求
 
 作为委托的审批者，当 Azure AD 的角色请求等待批准时，你将收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开**Azure AD Privileged Identity Management**。
 
-1. 单击“Azure AD 角色”。
+1. 单击 " **Azure AD 角色**"。
 
-1. 单击“审批请求”。
+1. 单击 "**批准请求**"。
 
     ![Azure AD 角色-批准请求](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
-    将看到待审批的请求列表。
+    你将看到等待你审批的请求的列表。
 
-## <a name="approve-requests"></a>审批请求
+## <a name="approve-requests"></a>批准请求
 
-1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格。
+1. 选择要批准的请求，然后单击 "**批准**" 以打开 "批准所选请求" 窗格。
 
     ![突出显示 "批准" 选项的 "批准请求" 列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-1. 在“审批原因”框中，键入原因。
+1. 在 "**批准原因**" 框中，键入一个原因。
 
     ![批准所选请求窗格并提供批准原因](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. 单击“批准”。
+1. 单击 "**批准**"。
 
-    状态符号将随审批操作更新。
+    状态符号将更新为你的审批。
 
     ![单击 "批准" 按钮后批准选定请求窗格](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
 ## <a name="deny-requests"></a>拒绝请求
 
-1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格。
+1. 选择要拒绝的请求，然后单击 "**拒绝**" 以打开 "拒绝所选请求" 窗格。
 
     ![突出显示拒绝选项的批准请求列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-1. 在“拒绝原因”框中，键入原因。
+1. 在 "**拒绝原因**" 框中，键入一个原因。
 
     ![拒绝所选请求窗格，拒绝原因](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. 单击“拒绝”。
+1. 单击 "**拒绝**"。
 
-    状态符号将随拒绝操作更新。
+    状态符号将用拒绝更新。
 
 # <a name="new-versiontabnew"></a>[新版本](#tab/new)
 
-## <a name="view-pending-requests"></a>查看待处理请求
+## <a name="view-pending-requests"></a>查看挂起的请求
 
-有 Azure 资源角色请求正在等待审批时，委派的审批者将收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
+作为委托的审批者，你将在 Azure 资源角色请求等待你的批准时收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开**Azure AD Privileged Identity Management**。
 
 1. 选择 "**批准请求**"。
 
     ![批准请求-显示请求评审的 Azure 资源页面](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
-    在“请求激活角色”部分，将看到等待审批的请求列表。
+    在 "**对角色的请求激活**" 部分中，你将看到等待你审批的请求的列表。
 
-## <a name="approve-requests"></a>审批请求
+## <a name="approve-requests"></a>批准请求
 
 1. 查找并选择要批准的请求。 此时将显示 "批准" 或 "拒绝" 页。
 
@@ -110,7 +110,7 @@ ms.locfileid: "75429928"
 
 1. 在 "**对齐**" 框中，输入业务理由。
 
-1. 选择“批准”。 你将收到 Azure 审批通知。
+1. 选择 "**批准**"。 你将收到 Azure 审批通知。
 
     ![批准显示请求的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
@@ -122,13 +122,13 @@ ms.locfileid: "75429928"
 
 1. 在 "**对齐**" 框中，输入业务理由。
 
-1. 选择 "**拒绝**"。 拒绝后会出现一个通知。
+1. 选择 "**拒绝**"。 此时会出现一个通知，告知你拒绝。
 
 ## <a name="workflow-notifications"></a>工作流通知
 
-下面是一些有关工作流通知的信息：
+以下是有关工作流通知的一些信息：
 
-- 当某个角色的请求等待其审阅时，审批者将收到电子邮件通知。 电子邮件通知包含请求的直接链接，审批者可通过此链接批准或拒绝请求。
+- 当某个角色的请求等待其审阅时，审批者将收到电子邮件通知。 电子邮件通知包括指向请求的直接链接，审批者可以在其中批准或拒绝。
 - 请求由批准或拒绝的第一个审批者来解析。
 - 当审批者响应请求时，会通知所有审批者该操作。
 - 当批准的用户处于活动状态时，会通知资源管理员。

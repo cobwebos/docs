@@ -8,20 +8,18 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687579"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898780"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
-[安全外壳 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用于通过命令行终端以远程方式执行管理命令。 Linux 应用服务对应用容器提供了 SSH 支持，每个内置 Docker 映像都可用于新 Web 应用的运行时堆栈。 
+[安全外壳 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用于通过命令行终端以远程方式执行管理命令。 Linux 应用服务在应用容器中提供 SSH 支持。 
 
-![运行时堆栈](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-对于自定义 Docker 映像，可以在自定义映像中配置 SSH 服务器。
+![Linux 应用服务 SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 还可以使用 SSH 和 SFTP 直接从本地开发计算机连接到容器。
 

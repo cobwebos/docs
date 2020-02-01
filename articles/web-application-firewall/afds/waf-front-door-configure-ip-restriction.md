@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 6b5793408545c2a61a30b5d89bc41d35460ed3eb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 52108d40c53c2470d542bd9c6816453ba2b6ebba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119459"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896283"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>使用 Azure 前门服务的 Web 应用程序防火墙配置 IP 限制规则
 本文介绍如何使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 Web 应用程序防火墙（WAF）中为 Azure 前门服务配置 IP 限制规则。
@@ -24,11 +24,11 @@ ms.locfileid: "76119459"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>Prerequisites
 在开始配置 IP 限制策略之前，请设置 CLI 环境并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-the-azure-cli-environment"></a>设置 Azure CLI 环境
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
+1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash Shell。 它已预安装了 Azure CLI 并将其配置为与帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
  2. 如果在 Bash 本地使用 CLI，请使用 `az login`登录到 Azure。
 
 #### <a name="create-an-azure-front-door-service-profile"></a>创建 Azure 前门服务配置文件
@@ -66,12 +66,12 @@ az network front-door waf-policy rule create \
 接下来，将 "匹配条件" 添加到规则：
 
 ```azurecli
-az network front-door waf-policy rule match-condition add\
+az network front-door waf-policy rule match-condition add \
 --match-variable RemoteAddr \
---operator IPMatch
---values "ip-address-range-1" "ip-address-range-2"
---negate true\
---name IPAllowListRule\
+--operator IPMatch \
+--values "ip-address-range-1" "ip-address-range-2" \
+--negate true \
+--name IPAllowListRule \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
@@ -91,7 +91,7 @@ az network front-door waf-policy rule match-condition add\
 
    ```azurecli
    az network front-door update \
-     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/<resource- name>/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
+     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/resource-group-name/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```
@@ -101,13 +101,13 @@ az network front-door waf-policy rule match-condition add\
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>Prerequisites
 在开始配置 IP 限制策略之前，请设置 PowerShell 环境，并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供了一组 cmdlet，这些 cmdlet 使用[azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型来管理 azure 资源。
 
-可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 并在任何 PowerShell 会话中使用它。 按照页面上的说明使用 Azure 凭据登录到 PowerShell，然后安装 Az 模块。
+你可以在本地计算机上安装[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) ，并在任何 PowerShell 会话中使用它。 按照页面上的说明使用 Azure 凭据登录到 PowerShell，然后安装 Az 模块。
 
 1. 使用以下命令连接到 Azure，然后使用交互式对话框进行登录。
     ```

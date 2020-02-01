@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 群集
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理群集的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906158"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -93,7 +93,7 @@ ms.locfileid: "75639150"
 | --applications-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的应用程序运行状态对象。 此参数的可能值包括从成员获取的整数值或对 HealthStateFilter 枚举成员进行位运算获取的整数值。 仅返回与筛选器匹配的应用程序。 所有应用程序都用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为“OK”(2) 和“Warning”(4) 的应用程序的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
-| --include-system-application-health-statistics | 指示运行状况统计信息是否应包含构造\:/System 应用程序运行状况统计信息。 默认值为 False。 如果 IncludeSystemApplicationHealthStatistics 设置为 true，则运行状况统计信息包含属于 fabric\:/System 应用程序的实体。 否则，查询结果仅包含用户应用程序的运行状况统计信息。 应用此参数后，查询结果中必须包含运行状况统计信息。 |
+| --include-system-application-health-statistics | 指示运行状况统计信息是否应包括 fabric\:/System 应用程序的运行状况统计信息。 默认值为 False。 如果 IncludeSystemApplicationHealthStatistics 设置为 true，则运行状况统计信息包含属于 fabric\:/System 应用程序的实体。 否则，查询结果仅包含用户应用程序的运行状况统计信息。 应用此参数后，查询结果中必须包含运行状况统计信息。 |
 | --nodes-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的节点运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的节点。 所有节点用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的节点的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
@@ -160,7 +160,7 @@ ms.locfileid: "75639150"
 
 |参数|Description|
 | --- | --- |
-| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 -65535-选择 "全部-1-选择" "运行-2-选择 RollingBack-8-选择已完成-16-选择已取消-32-选择已取消-64-选择已强制取消"。  默认值\: 65535。 |
+| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 -65535-选择所有-1-选择 "运行-2-选择 RollingBack-8-选择已完成-32 16-选择已取消-已取消-已取消-64-选择已强制取消"。  默认值\: 65535。 |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 | --type-filter | 用于根据用户造成的操作的 OperationType 进行筛选。 -65535-选择 "全部-1-选择 PartitionDataLoss"。 -2-选择 PartitionQuorumLoss。 -4-选择 PartitionRestart。 -8-选择 NodeTransition。  默认值\: 65535。 |
 
@@ -235,7 +235,7 @@ ms.locfileid: "75639150"
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
 | --timeout -t | 默认值\: 60。 |
-| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端报告转换，则可以将该时间设置得太活到无限大。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
+| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端以非定期的方式报告，它们可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -250,7 +250,7 @@ ms.locfileid: "75639150"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 连接到 Service Fabric 群集终结点。
 
-如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  没有与群集的连接，请先运行此命令，包括与 localhost 的连接。 但是，连接到本地群集时，不需要显式终结点。
+如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  没有与群集的连接，请先运行此命令，包括与 localhost 的连接。 但是，连接到本地群集时，不需要显式终结点。  如果使用的是自签名证书，或不是由知名 CA 签署的其他证书，请传入--CA 参数以确保验证通过。 如果不在生产群集上，若要跳过客户端验证（对于自签名或不是众所周知的 CA 签名非常有用），请使用--no-verify 选项。 尽管可能，但不建议用于生产群集。 否则，可能会导致证书验证错误。
 
 ### <a name="arguments"></a>参数
 

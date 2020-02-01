@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030141"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900262"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用
 
@@ -23,7 +23,9 @@ ms.locfileid: "76030141"
 * 接收来自另一个逻辑应用的 HTTPS 调用并对其作出响应。
 
 > [!NOTE]
-> 对于传入呼叫，请求触发器*仅*支持传输层安全性（TLS）1.2。 传出呼叫继续支持 TLS 1.0、1.1 和1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。 对于传入调用，以下是受支持的密码套件：
+> 对于传入呼叫，请求触发器*仅*支持传输层安全性（TLS）1.2。 传出呼叫继续支持 TLS 1.0、1.1 和1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
+>
+> 如果出现 SSL 握手错误，请确保使用 TLS 1.2。 对于传入调用，以下是受支持的密码套件：
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

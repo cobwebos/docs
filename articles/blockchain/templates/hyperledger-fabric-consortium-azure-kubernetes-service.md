@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger F
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289639"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901628"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -466,7 +466,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-分别在 `<queryFunction>` 和 `<queryFuncArgs>` 中传递查询函数名称和逗号分隔的参数列表。 同样，将 `fabcar` chaincode 作为参考，查询世界状态集中的所有轿车 `<queryFunction>` `"queryAllCars"` 并 `<queryArgs>' to `"" "。
+分别在 `<queryFunction>` 和 `<queryFuncArgs>` 中传递查询函数名称和逗号分隔的参数列表。 同样，将 `fabcar` chaincode 作为参考，查询世界状态集中的所有轿车 `<queryFunction>` `"queryAllCars"` 并 `<queryArgs>` 到 `""`。
 
 有关命令中传递的参数的更多详细信息，请参阅命令帮助
 

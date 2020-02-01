@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric sfctl 属性
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于 storying 和查询属性的命令的列表。
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于存储和查询属性的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639099"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905826"
 ---
 # <a name="sfctl-property"></a>sfctl property
 在 Service Fabric 名称下存储和查询属性。
@@ -105,7 +105,7 @@ ms.locfileid: "75639099"
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | Service Fabric 属性的名称。 |
-| --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br><br> Json 字符串有两个字段：数据的“Kind”和数据的“Value”。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
+| --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br><br> Json 字符串包含两个字段：数据的 "Kind" 和输入为数据的 "数据" 的值。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
 | --custom-id-type | 属性的自定义类型 ID。 使用此属性，用户就能够标记属性值的类型。 |
 | --timeout -t | 默认值\: 60。 |
 

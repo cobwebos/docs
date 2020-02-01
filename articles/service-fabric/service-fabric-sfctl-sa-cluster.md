@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl sa-群集
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理独立群集的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646018"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904921"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
@@ -80,9 +80,9 @@ ms.locfileid: "75646018"
 ### <a name="examples"></a>示例
 
 启动群集配置更新
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status

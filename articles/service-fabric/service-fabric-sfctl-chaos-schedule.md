@@ -3,14 +3,14 @@ title: Azure Service Fabric sfctl 混乱计划
 description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于混乱计划的命令的列表。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639167"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906187"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 获取和设置 Chaos Schedule。
@@ -71,9 +71,10 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
 
 ### <a name="examples"></a>示例
 
-以下命令设置一个计划（假定当前计划的版本为 0），该计划于 2016 年 1 月 1 日开始，于 2038 年 1 月 1 日过期，每周 7 天、每天 24 小时运行 Chaos。 Chaos 将被计划于该时间内在群集上运行。
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+以下命令设置一个计划（假定当前计划的版本为 0），该计划于 2016 年 1 月 1 日开始，于 2038 年 1 月 1 日过期，每周 7 天、每天 24 小时运行 Chaos。
+Chaos 将被计划于该时间内在群集上运行。
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>后续步骤

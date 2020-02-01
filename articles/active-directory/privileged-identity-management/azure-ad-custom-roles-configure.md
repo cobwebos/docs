@@ -1,12 +1,13 @@
 ---
-title: 在 Privileged Identity Management (PIM) 中配置 Azure AD 自定义角色 | Microsoft Docs
-description: 如何在 Privileged Identity Management (PIM) 中配置 Azure AD 自定义角色
+title: 在 Privileged Identity Management （PIM）中配置 Azure AD 自定义角色 |Microsoft Docs
+description: 如何在 Privileged Identity Management （PIM）中配置 Azure AD 自定义角色
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,28 +16,28 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d5a7fe20a53baa86f43703c97fb8437fbb0fcd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 82d0c001ecea4c3afbcb800b68246b628c130ff2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756418"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896540"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 自定义角色
 
-特权角色管理员可以更改当用户激活其自定义角色分配时应用到该用户的角色设置，以及适用于分配自定义角色的其他应用程序管理员的角色设置。
+特权角色管理员可以更改应用于用户的角色设置，当用户激活其对自定义角色的分配时，以及其他分配自定义角色的应用程序管理员。
 
 ## <a name="open-role-settings"></a>打开角色设置
 
-遵循以下步骤打开 Azure AD 角色的设置。
+按照以下步骤打开 Azure AD 角色的设置。
 
-1. 在 Azure 门户中使用分配给特权角色管理员角色的用户帐户登录到 [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
-1. 选择“Azure AD 自定义角色(预览版)”。
+1. 使用分配给特权角色管理员角色的用户帐户登录到 Azure 门户中的[Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) 。
+1. 选择 " **Azure AD 自定义角色（预览版）** "。
 
-    ![选择 Azure AD 自定义角色预览版，查看符合条件的角色分配](./media/azure-ad-custom-roles-configure/settings-list.png)
+    ![选择 Azure AD 自定义角色预览以查看符合条件的角色分配](./media/azure-ad-custom-roles-configure/settings-list.png)
 
-1. 选择“设置”打开“设置”页。 选择要配置其设置的角色。
-1. 选择“编辑”打开“角色设置”页。
+1. 选择 "**设置**" 以打开 "**设置**" 页。 选择要配置的设置的角色。
+1. 选择 "**编辑**" 以打开 "**角色设置**" 页。
 
     ![打开 Azure AD 自定义角色以编辑设置](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
@@ -46,55 +47,55 @@ ms.locfileid: "72756418"
 
 ### <a name="assignment-duration"></a>分配持续时间
 
-配置角色的设置时，可以从用于每种分配类型（“符合条件”或“活动”）的两个分配持续时间选项中进行选择·。 在 Privileged Identity Management 中将成员分配到角色时，这些选项将成为默认的最大持续时间。
+为角色配置设置时，可以为每个分配类型（合格或活动）选择两个分配持续时间选项。 当成员分配到 Privileged Identity Management 中的角色时，这些选项将成为默认的最大持续时间。
 
-可以选择其中一个“符合条件”的分配持续时间选项：
+可以选择以下*符合条件*的分配持续时间选项之一。
 
 - **允许永久符合条件的分配**：管理员可以分配永久符合条件的成员资格。
 - **在以下时间之后过期符合条件的分配**：管理员可以要求所有符合条件的分配都具有指定的开始日期和结束日期。
 
-此外，可以选择其中一个“活动”分配持续时间选项：
+此外，你还可以选择下列*活动*的分配持续时间选项之一：
 
 - **允许永久活动分配**：管理员可以分配永久活动成员身份。
 - 使**活动分配在之后过期**：管理员可以要求所有活动分配都具有指定的开始日期和结束日期。
 
 ### <a name="require-azure-multi-factor-authentication"></a>需要 Azure 多重身份验证
 
-Privileged Identity Management 提供了两种不同的可选 Azure 多重身份验证强制执行方案。
+Privileged Identity Management 为两个不同的方案提供了对 Azure 多重身份验证的可选强制。
 
-- **要求在活动分配时进行多重身份验证**
+- **在活动分配上需要多重身份验证**
 
-  如果你只是想要短时间地（例如一天）将某个成员分配到某个角色，要求分配的成员请求激活可能需要花费较长时间。 在这种情况下，当用户激活其角色分配时，Privileged Identity Management 无法强制实施多重身份验证，因为从分配的那一刻，该用户的角色已处于活动状态。 为确保负责分配角色的管理员是其本人，请选中“进行活动分配时要求执行多重身份验证”框。
+  如果只是想要将某个角色分配给短时间（例如一天），则要求分配的成员请求激活可能太慢。 在这种情况下，当用户激活其角色分配时，Privileged Identity Management 无法强制实施多重身份验证，因为它们已在分配的时刻处于活动状态。 若要确保完成分配的管理员是其所声称的用户，请选中 "**对活动分配要求多重身份验证**" 复选框。
 
-- **要求在激活时进行多重身份验证**
+- **激活时需要多重身份验证**
 
-  可以要求分配到某个角色的符合条件用户在激活之前，先在 Azure 多重身份验证中进行注册。 此过程可确保请求激活的用户一定就是其本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键角色。 若要要求符合条件的成员在激活之前运行 Azure 多重身份验证，请选中“在激活时要求进行多重身份验证”框。
+  你可以在 Azure 多重身份验证中要求分配有资格的用户注册 Azure 多重身份验证，然后才能激活。 此过程可确保正在请求激活的用户具有合理确定性。 如果用户帐户可能已泄露，则强制实施此选项可保护关键角色。 若要在激活之前要求符合条件的成员运行 Azure 多重身份验证，请选择 "**激活时需要多重身份验证**" 复选框。
 
 有关详细信息，请参阅[多重身份验证和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
 ### <a name="activation-maximum-duration"></a>最长激活持续时间
 
-使用“最长激活持续时间”滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以是 1 到 24 个小时。
+使用 "**激活最大持续时间**" 滑块设置角色在过期之前保持活动状态的最长时间（以小时为单位）。 此值可以是从1到24小时。
 
-### <a name="require-justification"></a>需要理由
+### <a name="require-justification"></a>要求理由
 
-可以要求成员在活动分配或激活时输入理由。 若需要理由，请选中“在活动分配时需要理由”复选框或“在激活时需要理由”框。
+您可以要求成员输入活动分配或激活时的理由。 若要要求论证，请选中 "**要求对活动分配进行理由**" 复选框或 "**需要激活时的理由**" 框。
 
 ### <a name="require-approval-to-activate"></a>需要批准才能激活
 
-如果要求批准以激活角色，请按照以下步骤操作。
+如果要要求批准激活角色，请执行以下步骤。
 
-1. 选中“需要批准以激活”复选框。
-1. 选择“选择审批者”打开“选择成员或组”列表。
+1. 选中 "**需要批准才能激活**" 复选框。
+1. 选择 "**选择审批者**"，打开 "**选择成员或组**" 列表。
 
     ![打开 Azure AD 自定义角色以编辑设置](./media/azure-ad-custom-roles-configure/select-approvers.png)
 
-1. 至少选择一个成员或组，然后单击“选择”。 必须至少选择 1 个审批者。 没有默认的审批者。 所选项将出现在所选审批者列表中。
-1. 指定角色设置后，选择“更新”以保存更改。
+1. 至少选择一个成员或组，然后单击 "**选择**"。 您必须至少选择一个审批者。 没有默认审批者。 你的选择将显示在所选审批者列表中。
+1. 指定角色设置后，请选择 "**更新**" 以保存所做的更改。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [激活 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
-- [发票 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
+- [分配 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
 - [删除或更新 Azure AD 自定义角色分配](azure-ad-custom-roles-update-remove.md)
 - [Azure AD 中的角色定义](../users-groups-roles/directory-assign-admin-roles.md)

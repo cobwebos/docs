@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792137"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906675"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
@@ -75,15 +75,15 @@ ms.locfileid: "74792137"
 * [使用范围将操作组合在一起](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [工作流中的授权错误和异常处理](../logic-apps/logic-apps-exception-handling.md)
 * [用例：医疗保健公司如何将逻辑应用异常处理用于 HL7 FHIR 工作流](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [创建逻辑应用时启用监视和诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/monitor-logic-apps.md)
+* [创建逻辑应用时启用监视和诊断日志记录](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>部署和管理逻辑应用
 
 可以使用 Visual Studio、Azure DevOps，或任何其他源代码管理和自动生成工具充分开发和部署逻辑应用。 为了支持资源模板中工作流和从属连接的部署，逻辑应用使用 Azure 资源部署模板。 Visual Studio 工具会自动生成这些模板，可以在源代码管理中签入这些模板以进行版本控制。
 
 * [使用 Visual Studio 创建和部署逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/monitor-logic-apps.md)
 * [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [示例：从 azure 逻辑应用连接到 Azure 服务总线队列，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：从 azure 逻辑应用连接到 azure 存储帐户，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

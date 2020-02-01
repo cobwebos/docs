@@ -3,38 +3,26 @@ title: 快速入门： Azure Blob 存储客户端库 v8 for Java
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用 Azure 存储客户端库 v8 for Java 将 blob 上传到 Azure 存储，下载一个 blob，然后列出容器中的 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825372"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906488"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>快速入门： Azure Blob 存储客户端库 v8 for Java
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：通过 Java v8 SDK 管理 blob
 
-适用于 Java 的 Azure Blob 存储客户端库 v8 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
+本快速入门介绍如何使用 Java 来管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 上载、下载和列出 blob。 你还将创建、设置和删除容器。
 
-使用适用于 Java 的 Azure Blob 存储客户端库完成以下操作：
+## <a name="prerequisites"></a>必备组件
 
-* 创建容器
-* 设置容器权限
-* 在 Azure 存储中创建 blob
-* 将 blob 下载到本地计算机
-* 列出容器中所有的 blob
-* 删除容器
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 包含 Maven 集成的 IDE。
-* 或者，从命令行安装和配置 Maven。
-
-本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](https://www.eclipse.org/downloads/)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- 具有 Maven 集成的 IDE。 本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](https://www.eclipse.org/downloads/)。
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
@@ -46,9 +34,9 @@ ms.locfileid: "73825372"
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开项目，请启动 Eclipse 并关闭欢迎屏幕。 选择“文件”，然后选择“从文件系统打开项目”。 请确保已选中“检测并配置项目性质”。 选择“目录”，然后导航到存储克隆存储库的位置。 在克隆的存储库中，选择 **blobAzureApp** 文件夹。 请确保 blobAzureApp 项目显示为 Eclipse 项目，然后选择“完成”。
+此命令会将存储库克隆到本地 git 文件夹。 若要打开项目，请启动 Eclipse 并关闭欢迎屏幕。 选择“文件”，然后选择“从文件系统打开项目”。 请确保已选中 "**检测并配置项目性质**"。 选择“目录”，然后导航到存储克隆存储库的位置。 在克隆的存储库中，选择 **blobAzureApp** 文件夹。 请确保 blobAzureApp 项目显示为 Eclipse 项目，然后选择“完成”。
 
-完成项目导入后，打开 AzureApp.java（位于 src/main/java 内的 blobQuickstart.blobAzureApp 中），并替换 **字符串中的** 和`accountname``accountkey``storageConnectionString`。 然后运行应用程序。 以下部分是有关如何完成这些任务的具体说明。
+项目完成导入后，打开**AzureApp** （位于**src/main/Java**中的**blobQuickstart. blobAzureApp**中），并将 `accountname` 和 `accountkey` 替换 `storageConnectionString` 字符串中。 然后运行应用程序。 以下部分是有关如何完成这些任务的具体说明。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -89,11 +77,11 @@ Deleting the source, and downloaded files
   >[!NOTE]
   >还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
 
-验证文件后，按 **Enter** 键可完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。
+验证文件后，按**enter**键完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。
 
-## <a name="understand-the-sample-code"></a>理解示例代码
+## <a name="understand-the-sample-code"></a>了解示例代码
 
-下一步，我们演练示例代码，以便了解它的工作原理。
+接下来逐步介绍示例代码，以便展示其工作方式。
 
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 
@@ -155,7 +143,7 @@ blob.uploadFromFile(sourceFile.getAbsolutePath());
 
 有多个可以与 Blob 存储配合使用的 `upload` 方法，其中包括 [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext)。 例如，如果有字符串，可以使用 `UploadText` 方法，而不是 `Upload` 方法。
 
-块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
+块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 Blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -209,5 +197,5 @@ sourceFile.deleteOnExit();
 本文介绍如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
 
 > [!div class="nextstepaction"]
-> [Java API 参考](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
-> [适用于 Java 的代码示例](../common/storage-samples-java.md)
+> Java [API 参考](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
+> [java 代码示例](../common/storage-samples-java.md)

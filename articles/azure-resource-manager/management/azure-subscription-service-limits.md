@@ -3,19 +3,21 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包含有关如何增加限制以及最大值的信息。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845993"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901421"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束条件
 
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，将展开并更新该列表以涵盖更多服务。
 
 若要了解有关 Azure 定价的详细信息，请参阅[azure 定价概述](https://azure.microsoft.com/pricing/)。 可以通过使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以前往特定服务（例如， [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的定价详细信息页。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../billing/billing-getting-started.md)。
+
+有关资源名称的限制，请参阅[Azure 资源的命名规则和限制](resource-name-rules.md)。
 
 > [!NOTE]
 > 如果要提高限制或配额超过默认限制，请免费[打开联机客户支持请求](../templates/error-resource-quota.md)。 此限制不能高于下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
@@ -25,7 +27,7 @@ ms.locfileid: "76845993"
 
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure 资源管理器
 
-现在可以将多个 Azure 资源合并到单个 Azure 资源组中。 当你使用资源组时，在使用 Azure 资源管理器，一次全局的限制会在区域级别进行管理。 有关 Azure 资源组的详细信息，请参阅[azure 资源管理器概述](overview.md)。
+可以将多个 Azure 资源合并到单个 Azure 资源组中。 当你使用资源组时，在使用 Azure 资源管理器，一次全局的限制会在区域级别进行管理。 有关 Azure 资源组的详细信息，请参阅[azure 资源管理器概述](overview.md)。
 
 在下面的限制列表中，新表反映使用 Azure 资源管理器时限制的任何差异。 例如，存在一个**订阅限制**表和一个**订阅限制-Azure 资源管理器**表。 当某个限制同时适用于这两种方案时，它将仅显示在第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
 
@@ -484,3 +486,4 @@ ms.locfileid: "76845993"
 * [了解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虚拟机和云服务大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 云服务的大小](../../cloud-services/cloud-services-sizes-specs.md)
+* [Azure 资源的命名规则和限制](resource-name-rules.md)

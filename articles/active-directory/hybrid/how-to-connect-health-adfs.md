@@ -9,6 +9,7 @@ manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,15 +18,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350392"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897277"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect （同步）的信息，请参阅[使用同步 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅将[Azure AD Connect Health 与 AD DS 一起使用](how-to-connect-health-adds.md)。
 
 ## <a name="alerts-for-ad-fs"></a>AD FS 的警报
 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。
@@ -46,11 +47,11 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 若要选择其他指标、指定时间范围或更改分组，请右键单击使用情况分析图表并选择“编辑图表”。 然后可以指定时间范围、选择不同的指标以及更改分组。 可以查看基于不同“度量值”的身份验证流量分布，并使用以下部分中所述的相关“分组依据”参数对每个度量值进行分组:
 
-**指标：请求总数** - 由 AD FS 服务器处理的请求总数。
+**度量值：请求总数** - 由 AD FS 服务器处理的请求总数。
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-| 全部 | 显示所有 AD FS 服务器处理的请求总数的计数。|
+| 所有 | 显示所有 AD FS 服务器处理的请求总数的计数。|
 | 应用程序 | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
 |  服务器 |基于处理请求的服务器对请求总数分组。 此分组有助于了解总流量的负载分布。
 | 工作区加入 |基于请求是否来自已加入工作区（已知）的设备对请求总数分组。 此分组有助于了解是否使用标识基础结构未知的设备来访问资源。 |
@@ -58,7 +59,7 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 | 网络位置 | 基于用户的网络位置对请求总数分组。 该位置可以是 Intranet 或 Extranet。 此分组有助于了解来自 Intranet 或 Extranet 的流量分别为多少百分比。 |
 
 
-**指标：失败请求总数** - 失败了的由联合身份验证服务处理的请求总数。 （此度量值仅在 Windows Server 2012 R2 的 AD FS 上可用）
+**度量值：失败请求总数** - 失败了的由联合身份验证服务处理的请求总数。 （此度量值仅在 Windows Server 2012 R2 的 AD FS 上可用）
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
@@ -67,11 +68,11 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 | 网络位置 | 基于请求的网络位置（Intranet 或 Extranet）对错误分组。 这种分组有助于了解失败的请求类型。 |
 |  应用程序 | 基于目标应用程序（信赖方）对失败分组。 这种分组有助于了解错误数最多的目标应用程序。 |
 
-**指标：用户计数** - 使用 AD FS 主动进行身份验证的独立用户平均数
+**度量值：用户计数** - 使用 AD FS 主动进行身份验证的独立用户平均数
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-|全部 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
+|所有 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
 | 应用程序 |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的性能监视
@@ -84,7 +85,7 @@ Azure AD Connect Health 性能监视提供有关度量值的监视信息。 选�
 ## <a name="top-50-users-with-failed-usernamepassword-logins"></a>用户名/密码登录失败的前 50 个用户
 AD FS 服务器上身份验证请求失败的常见原因之一就是请求所提供的凭据无效，也就是错误的用户名或密码。 这往往是用户的密码太复杂、忘记密码或打错字。
 
-但还是有其他原因导致 AD FS 服务器所处理的请求数量超出预期，例如：可缓存用户凭据的应用程序和到期的凭据，或尝试以一系列的常见密码登录某个帐户的恶意用户。 这两个示例都是可能导致请求激增的合理原因。
+但也有其他原因导致 AD FS 服务器处理的请求数超过预期，例如：某个应用程序缓存了用户凭据、凭据过期，或者某个恶意用户尝试以一系列的常见密码登录到帐户。 这两个示例都是可能导致请求激增的合理原因。
 
 Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户名或密码无效而登录尝试失败的前 50 个用户。 处理场中所有 AD FS 服务器所生成的审核事件即可完成此报告。
 
@@ -107,7 +108,7 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 
 该报告提供以下信息：
 
-| 报告项 | 描述 |
+| 报告项 | Description |
 | --- | --- |
 | 用户 ID |显示使用的用户 ID。 此值是用户键入的内容，在某些情况下是使用的错误用户 ID。 |
 | 失败尝试次数 |显示该特定用户 ID 的尝试失败总次数。 该表已按最多失败尝试次数的降序排序。 |
@@ -120,5 +121,5 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
-* [风险 IP 报表](how-to-connect-health-adfs-risky-ip.md)
+* [有风险的 IP 报表](how-to-connect-health-adfs-risky-ip.md)
 

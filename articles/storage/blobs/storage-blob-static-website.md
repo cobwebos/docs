@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906589"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -81,28 +81,22 @@ ms.locfileid: "75708156"
 
 但是，对主 blob 服务终结点 `https://contosoblobaccount.blob.core.windows.net/$web/index.html` 的公共访问权限会从 private 更改为 public。 现在用户可以使用这两个终结点中的任意一个来打开该文件。
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>内容交付网络（CDN）和安全套接字层（SSL）支持
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 
-若要通过自定义域和 HTTPS 使静态网站文件可用，请参阅[使用 Azure CDN 通过 HTTPS 访问包含自定义域的 blob](storage-https-custom-domain-cdn.md)。 作为此过程的一部分，你需要将 CDN 指向主*静态网站*终结点，而不是主*blob 服务*终结点。 你可能需要等待几分钟时间，你的内容才可见，因为 CDN 配置不会立即执行。
+可以通过自定义域使静态网站可用。 
 
-更新静态网站时，请确保通过清除 CDN 终结点来清除 CDN 边缘服务器上的缓存内容。 有关详细信息，请参阅[清除 Azure CDN 终结点](../../cdn/cdn-purge-endpoint.md)。
+为自定义域启用 HTTP 访问会更容易，因为 Azure 存储本身就支持它。 若要启用 HTTPS，你必须使用 Azure CDN，因为 Azure 存储尚不支持对自定义域使用 HTTPS。 有关分步指南，请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
 
-> [!NOTE]
-> HTTPS 通过帐户 web 终结点以本机方式受到支持，因此可通过 HTTP 和 HTTPS 访问 web 终结点。 但是，如果将存储帐户配置为需要通过 HTTPS 进行安全传输，则用户必须使用 HTTPS 终结点。 有关详细信息，请参阅[在 Azure 存储中要求安全传输](../common/storage-require-secure-transfer.md)。
->
-> 使用 HTTPS 上的自定义域需要目前使用 Azure CDN。
+如果将存储帐户配置为需要通过 HTTPS 进行[安全传输](../common/storage-require-secure-transfer.md)，则用户必须使用 https 终结点。 
 
-## <a name="custom-domain-names"></a>自定义域名
-
-可以通过自定义域使静态网站可用。 若要了解详细信息，请参阅[为 Azure 存储帐户配置自定义域名](storage-custom-domain-name.md)。
-
-若要深入了解如何在 Azure 上托管你的域，请参阅[在 Azure DNS 中托管你的域](../../dns/dns-delegate-domain-azure-dns.md)。
+> [!TIP]
+> 考虑在 Azure 上托管域。 有关详细信息，请参阅[在 Azure DNS 中托管你的域](../../dns/dns-delegate-domain-azure-dns.md)。
 
 ## <a name="pricing"></a>价格
 
 可以免费启用静态网站托管。 仅对你的站点利用的 blob 存储和运营成本计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 可以在静态网站页面上启用指标。 一旦启用了指标，就会在 "指标" 仪表板中报告 **$web**容器中的文件的流量统计信息。
 
@@ -111,8 +105,7 @@ ms.locfileid: "75708156"
 ## <a name="next-steps"></a>后续步骤
 
 * [在 Azure 存储中托管静态网站](storage-blob-static-website-how-to.md)
-* [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 blob](storage-https-custom-domain-cdn.md)
-* [为 blob 或 Web 终结点配置自定义域名](storage-custom-domain-name.md)
+* [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure 应用服务](/azure/app-service/overview)
 * [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

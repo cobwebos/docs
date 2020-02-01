@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 61bc77e7ac7671cd439eedea25eac11c91457aa9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f76d94cc50d1451835bd14577efc8f68acb0390
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838711"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901593"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -97,7 +97,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **du datamena** |受支持 |受支持 | Dubai2 |
 | **eir** |受支持 |受支持 |都柏林|
 | **[Epsilon 全局通信](https://www.epsilontel.com/solutions/direct-cloud-connect)** |受支持 |受支持 |新加坡、新加坡 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |受支持 |受支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、Geneva、香港特别行政区、伦敦、London2、洛杉矶、墨尔本、迈阿密、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、斯德哥尔摩、悉尼、东京、多伦多和华盛顿特区 |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |受支持 |受支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、法兰克福、Geneva、香港特别行政区、伦敦、London2、洛杉矶、墨尔本、迈阿密、北京、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、悉尼 |
 | **Etisalat 阿拉伯联合酋长国** |受支持 |受支持 |迪拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |受支持 |受支持 |阿姆斯特丹、Amsterdam2、都柏林、伦敦 |
 | **FarEasTone** |受支持 |受支持 |中国台北|
@@ -210,6 +210,8 @@ Azure 国内云彼此独立，并来自全球商业 Azure。 一个 Azure 云的
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](https://www.nextdc.com/)
   * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure) 
+  * [Teraco](https://www.teraco.co.za/platform-teraco/africa-cloud-exchange/)
+
 * 让连接提供商将网络扩展到选择的对等互连位置。
   * 确保连接提供商以高可用性方式扩展连接，以防出现单点故障。
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。

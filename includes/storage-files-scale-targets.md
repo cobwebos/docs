@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821952"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901408"
 ---
 | 资源 | 标准文件共享 | 高级文件共享 |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72821952"
 | 最大对象（目录和文件）名称长度 | 2048个字符 | 2048个字符 |
 | 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |
 
-\* 在所有区域中均不可用，请参阅[区域可用性](../articles/storage/files/storage-files-planning.md#regional-availability)，了解可用区域列表。
+在大多数区域中提供 \*，请参阅[区域可用性](../articles/storage/files/storage-files-planning.md#regional-availability)，了解可用区域的详细信息。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843080"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901755"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -97,7 +97,8 @@ QnA Maker 服务处理两种类型的密钥：**订阅密钥**和**终结点密�
 
 2. 查看或重置密钥：
 
-    ![终结点密钥管理器](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [![显示、复制或设置服务设置中的终结点密钥](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >如果你认为密钥已泄露，请刷新你的密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
@@ -136,7 +137,7 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 1. 依次选择 "**设置**"、"**配置**"。 这将显示 QnA Maker 的应用服务的所有现有设置。
 
     > [!div class="mx-imgBorder"]
-    > 显示应用服务配置设置 Azure 门户 ![屏幕快照](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [显示应用服务配置设置的 Azure 门户的 ![屏幕截图](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. 更改以下项的值：
 
@@ -146,7 +147,7 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 1. 若要使用新设置，需要重新启动应用服务。 选择 "**概述**"，然后选择 "**重新启动**"。
 
     > [!div class="mx-imgBorder"]
-    > 更改配置设置后 Azure 门户重新启动应用服务的 ![屏幕快照](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [更改配置设置后 Azure 门户重新启动应用服务的 ![屏幕截图](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 如果通过 Azure 资源管理器模板创建 QnA 服务，则可以创建所有资源，并控制应用服务创建，以使用现有搜索服务。
 

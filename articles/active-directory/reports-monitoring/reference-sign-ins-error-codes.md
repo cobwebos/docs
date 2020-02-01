@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294093"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898886"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -143,6 +143,7 @@ ms.locfileid: "76294093"
 |53002|使用的应用程序不是用于条件性访问的已批准的应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
 |53003|由于条件访问策略，访问被阻止。|
 |53004|在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。|
+|53032|由于策略 Azure AD Identity Protection，帐户被阻止。|
 |65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y 向租户管理员发送针对资源 Z 的授权请求。|
 |65004|用户拒绝许可该应用的访问权限。 让用户重试登录并许可应用|
 |65005|应用程序所需的资源访问列表不包含可以通过资源来发现的应用程序，或者客户端应用程序请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用程序支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用程序。 使用以下链接，尝试针对 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|

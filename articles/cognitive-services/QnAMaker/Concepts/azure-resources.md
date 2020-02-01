@@ -3,12 +3,12 @@ title: Azure 资源-QnA Maker
 description: QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何结合使用它们，可以在出现问题时查找并解决问题。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843483"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902062"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -28,29 +28,29 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 ## <a name="pricing-tier-considerations"></a>定价层注意事项
 
-通常，你需要考虑三个参数：
+通常需要考虑三个参数：
 
-* **你需要的服务吞吐量**：根据需要为你的应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](https://docs.microsoft.com/azure/app-service/manage-scale-up)或收缩应用。 这还会影响 Azure 认知搜索 SKU 选择，有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)。
+* **服务所需的吞吐量**：根据需要为应用服务选择适当的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以向上或向下[缩放](https://docs.microsoft.com/azure/app-service/manage-scale-up)应用。 这还会影响 Azure 认知搜索 SKU 选择，有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)。
 
-* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，根据不同的使用者域的数量决定所需的知识库数。 一旦使用者域（适用于一种语言）应在一个知识库中。
+* **知识库的大小和数量**：为方案选择适当的[Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/) 。 通常，根据不同的使用者域的数量决定所需的知识库数。 一旦使用者域（适用于一种语言）应在一个知识库中。
 
-    可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
+    您可以在特定层中发布 N-1 知识库，其中 N 是该层允许的最大索引。 还要检查每个层允许的最大大小和最大文档数。
 
-    例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。
+    例如，如果您的层有15个允许的索引，则可以发布14个知识库（每个已发布知识库1个索引）。 第十五个索引用于创作和测试的所有知识库。
 
-* **源文档的数量**：QnA Maker 管理服务的免费 SKU 将可以通过门户和 API 管理的文档数限制为 3（每个文档的大小限制为 1 MB）。 标准 SKU 对于可以管理的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
+* **作为源的文档数**： QnA Maker 管理服务的免费 SKU 限制了可通过门户管理的文档数和 api 3 （每个 MB 大小为 1 MB）。 标准 SKU 对可管理的文档数没有限制。 请[在此处](https://aka.ms/qnamaker-pricing)查看更多详细信息。
 
-下表提供了一些概要准则。
+下表提供了一些高级指导原则。
 
 |                        | QnA Maker 管理 | 应用服务 | Azure 认知搜索 | 限制                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| 试验        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
-| 开发/测试环境   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| 生产环境 | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
+| 经过        | 免费 SKU             | 免费层   | 免费层    | 发布最多2个 Kb，50 MB 大小  |
+| 开发/测试环境   | 标准 SKU         | 共享      | 基本        | 发布最多14个 Kb，2 GB 大小    |
+| 生产环境 | 标准 SKU         | 基本       | 标准     | 发布最多 49 Kb，25 GB 大小 |
 
 ## <a name="when-to-change-a-pricing-tier"></a>何时更改定价层
 
-|升级|原因|
+|升级|Reason|
 |--|--|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA Maker 管理 SKU|你需要在知识库中具有更多 QnA 集或文档源。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)应用服务 SKU|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
@@ -112,6 +112,10 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及运行时 QnA 集
 
 第二个排名适用于智能筛选器，这些筛选器可以包含元数据和跟进提示。
 
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 资源配置设置
+
+在[QnA Maker 门户](https://qnamaker.ai)中创建新知识库时，"**语言**" 设置是在资源级别应用的唯一设置。 您在为资源创建第一个知识库时选择语言。 
+
 ### <a name="app-service-and-app-service-plan"></a>应用服务和应用服务计划
 
 [应用服务](../../../app-service/index.yml)由客户端应用程序用于通过运行时终结点访问已发布的知识库。
@@ -128,7 +132,7 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及运行时 QnA 集
 
 QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
 
-|服务|共享|原因|
+|服务|共享|Reason|
 |--|--|--|
 |认知服务|X|不能通过设计|
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
@@ -156,7 +160,7 @@ QnA Maker 服务处理两种类型的密钥：**创作密钥**和用于在应用
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名称|位置|用途|
+|姓名|位置|用途|
 |--|--|--|
 |创作密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用于访问[QnA Maker 管理服务 api](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|

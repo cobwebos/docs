@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965938"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906693"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -360,9 +360,9 @@ ms.locfileid: "75965938"
 
 若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 您可以选择在接受整个筛选后的故障数组的范围之外执行单个异常处理操作，并删除 `For_each` 操作。 你还可以根据前面所述，将 `\@result()` 响应中包含其他有用的属性。
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure 诊断和指标
+## <a name="set-up-azure-monitor-logs"></a>设置 Azure Monitor 日志
 
-上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure 诊断](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供了一种将所有工作流事件（包括所有运行和操作状态）发送到 azure 存储帐户或使用[azure 事件](../event-hubs/event-hubs-about.md)中心创建的事件中心的简单方法。
+上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure Monitor](../azure-monitor/overview.md)提供了一种将所有工作流事件（包括所有运行和操作状态）发送到[Log Analytics 工作区](../azure-monitor/platform/data-platform-logs.md)、 [Azure 存储帐户](../storage/blobs/storage-blobs-overview.md)或[azure 事件中心](../event-hubs/event-hubs-about.md)的简单方法。
 
 要评估运行状态，可以监视日志和指标，或将它们发布到你习惯使用的任何监视工具中。 一种潜在选项是通过事件中心将所有事件流式传输到 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以根据诊断日志中的任何异常、平均值或失败编写实时查询。 可以使用流分析将信息发送到其他数据源，例如队列、主题、SQL、Azure Cosmos DB 或 Power BI。
 

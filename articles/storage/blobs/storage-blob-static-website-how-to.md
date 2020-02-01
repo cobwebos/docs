@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489087"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906614"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -98,7 +98,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+* 将 `<resource-group-name>` 的占位符值替换为资源组的名称。
 
 <a id="powershell" />
 
@@ -116,7 +116,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
    如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
-3. 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+3. 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
    ```powershell
    Connect-AzAccount
@@ -138,7 +138,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
    $ctx = $storageAccount.Context
    ```
 
-   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+   * 将 `<resource-group-name>` 的占位符值替换为资源组的名称。
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
@@ -179,7 +179,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+* 将 `<resource-group-name>` 的占位符值替换为资源组的名称。
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
@@ -221,10 +221,5 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 存储中的静态网站托管](storage-blob-static-website.md)
-* [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 blob](storage-https-custom-domain-cdn.md)
-* [为 blob 或 Web 终结点配置自定义域名](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure 应用服务](/azure/app-service/overview)
-* [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)
+* 了解如何使用静态网站配置自定义域。 请参阅将[自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
+
