@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895852"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773048"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
 
@@ -45,10 +45,10 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
 > [!div class="mx-imgBorder"]
-> ![互联物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
 
 > [!div class="mx-imgBorder"]
-> ![互联物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+> ![联接的物流仪表板](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
 
 若要了解详细信息，请参阅[部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics-pnp.md)教程。
 

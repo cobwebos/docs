@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981266"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773086"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>教程：使用表单识别器和 Azure 逻辑应用分析发票
 
-在本教程中，你将在 Azure 逻辑应用中创建一个使用表单识别器（Azure 认知服务套件的一部分服务）从发票提取数据的工作流。 使用表单识别器，首先使用样本数据集训练模型，然后使用另一个数据集测试模型。 本教程中使用的示例数据存储在 Azure 存储 blob 容器中。
+在本教程中，你将在 Azure 逻辑应用中创建一个使用表单识别器（Azure 认知服务套件的一部分服务）从发票提取数据的工作流。 首先使用示例数据集训练表单识别器模型，然后在另一个数据集上测试模型。
 
 本教程的内容：
 
@@ -41,12 +41,12 @@ ms.locfileid: "75981266"
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>了解要分析的发票
 
-用于训练模型和测试模型的示例数据集在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 中以 .zip 文件提供。 下载并提取 .zip 文件，然后在“/Train”文件夹下打开发票 PDF 文件  。 请注意，它有一个包含发票号、发票日期等的表格。 
+用于训练和测试模型的示例数据集在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 中以 .zip 文件形式提供。 下载并提取 .zip 文件，然后在“/Train”文件夹下打开发票 PDF 文件  。 请注意，它有一个包含发票号、发票日期等项目的表。 
 
 > [!div class="mx-imgBorder"]
 > ![示例发票](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-在本教程中，我们将了解如何使用通过 Azure 逻辑应用和表单识别器创建的工作流将这些表格中的信息提取为 JSON 格式。
+本教程介绍如何使用 Azure 逻辑应用工作流将信息从这样的表中提取为 JSON 格式。
 
 ## <a name="create-an-azure-storage-blob-container"></a>创建 Azure 存储 blob 容器
 
@@ -62,7 +62,7 @@ ms.locfileid: "75981266"
 
 下载 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 上提供的示例数据。 将数据提取到本地文件夹，并将“/Train”文件夹的内容上传到先前创建的“formrecocontainer”   。 按照[上传块 Blob](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) 中的说明将数据上传到容器。
 
-复制容器的 URL。 本教程后面的步骤中会用到此 URL。 如果使用与本教程中列出的相同名称创建了存储帐户和容器，则 URL 将为 https:\//formrecostorage.blob.core.windows.net/formrecocontainer/  。
+复制容器的 URL。 需要在本教程的后面部分使用此 URL。 如果使用与本教程中列出的相同名称创建了存储帐户和容器，则 URL 将为 https:\//formrecostorage.blob.core.windows.net/formrecocontainer/  。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -75,7 +75,7 @@ ms.locfileid: "75981266"
 * 将逻辑应用配置为使用表单识别器“训练模型”操作以使用上传到 Azure Blob 存储的示例数据训练模型  。
 * 将逻辑应用配置为使用表单识别器“分析表单”操作以使用已训练的模型  。 此组件将根据先前训练的模型分析提供给此逻辑应用的发票。
 
-开始吧! 请按以下步骤设置工作流。
+请按以下步骤设置工作流。
 
 1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
 
@@ -99,7 +99,7 @@ ms.locfileid: "75981266"
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>配置逻辑应用以在收到电子邮件时触发工作流
 
-在本教程中，当收到带有附有发票的电子邮件时，将触发工作流。 对于本教程，我们选择 Office 365 作为电子邮件服务，但你可以使用你想要使用的任何其他电子邮件提供程序。
+在本教程中，当收到带有附有发票的电子邮件时，将触发工作流。 本教程使用 Office 365 作为电子邮件服务，但你可以使用自己想要使用的任何其他电子邮件提供程序。
 
 1. 从选项卡中，依次选择“全部”、“Office 365 Outlook”，然后在“触发器”下，选择“收到新电子邮件时”    。
 
@@ -149,14 +149,14 @@ ms.locfileid: "75981266"
     > [!div class="mx-imgBorder"]
     > ![分析表单识别器模型](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. 在“分析表单”对话框中执行以下操作  ：
+1. 在“分析表单”对话框中执行以下步骤  ：
 
     1. 单击“模型 ID”文本框，然后在打开的对话框中的“动态内容”选项卡下，选择“modelId”    。 通过执行此操作，可以为流应用程序提供上一节中训练的模型的模型 ID。
 
         > [!div class="mx-imgBorder"]
         > ![使用表单识别器的 ModelID](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. 单击“文档”文本框，然后在打开的对话框中的“动态内容”选项卡下，选择“附件内容”    。 通过执行此操作，可以将流配置为使用电子邮件中附有的示例发票文件来触发工作流。
+    2. 单击“文档”文本框，然后在打开的对话框中的“动态内容”选项卡下，选择“附件内容”    。 这样就会将流配置为使用电子邮件中附有的示例发票文件来触发工作流。
 
         > [!div class="mx-imgBorder"]
         > ![使用电子邮件附件分析发票](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ ms.locfileid: "75981266"
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>从发票中提取表信息
 
-在本节中，我们将配置逻辑应用以提取发票内表中的信息。
+在此部分，我们配置逻辑应用以提取发票中的表信息。
 
 1. 选择“添加操作”，然后在“选择操作”下，搜索“撰写”，然后在可用的操作下，再次选择“撰写”     。
     ![从发票中提取表信息](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ ms.locfileid: "75981266"
 
 ## <a name="test-your-logic-app"></a>测试逻辑应用
 
-若要测试逻辑应用，请使用从 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 下载的示例数据集的“/Test”文件夹中的示例发票  。 执行以下步骤：
+若要测试逻辑应用，请使用从 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) 下载的示例数据集的“/Test”文件夹中的示例发票  。 执行以下步骤:
 
 1. 在应用的 Azure 逻辑应用设计器中，从顶部的工具栏中选择“运行”  。 工作流现在处于活动状态，等待收到附有发票的电子邮件。
 1. 将一封附有发票的电子邮件发动到创建逻辑应用时所提供的电子邮件地址。 确保在配置逻辑应用时将电子邮件发送到你所提供的文件夹。

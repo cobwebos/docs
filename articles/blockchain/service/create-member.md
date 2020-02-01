@@ -1,15 +1,15 @@
 ---
 title: 创建 Azure 区块链服务成员 - Azure 门户
 description: 使用 Azure 门户创建区块链联盟的 Azure 区块链服务成员。
-ms.date: 11/18/2019
+ms.date: 01/23/2020
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 90f859e4d2e2621afad9cab11d66e81018bd3147
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03cd4be1228fcf6a501203e6efb40a8b45c30d0c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455785"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760770"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 区块链服务区块链成员
 
@@ -19,9 +19,9 @@ ms.locfileid: "74455785"
 
 ## <a name="create-a-blockchain-member"></a>创建区块链成员
 
-创建在新的或现有的联盟中运行仲裁账本协议的区块链成员。
+Azure 区块链服务成员是专用联盟区块链网络中的区块链节点。 预配成员时，可以创建或加入联盟网络。 至少需要一个联盟网络的成员。 参与者所需的区块链成员数取决于方案。 联盟参与者可能有一个或多个区块链成员，或者与其他参与者共享成员。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户的左上角选择“创建资源”。 
 1. 选择“区块链” > “Azure 区块链服务(预览版)”   。
 
@@ -29,14 +29,13 @@ ms.locfileid: "74455785"
 
     设置 | 说明
     --------|------------
-    Subscription | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    Resource group | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
+    订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    资源组 | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
     区域 | 选择要创建的成员的所属区域。 联盟中所有成员的位置必须相同。
     协议 | Azure 区块链服务预览版目前支持仲裁协议。
-    联盟 | 对于新联盟，请输入唯一的名称。 如果通过某个计划加入联盟，请选择要加入的联盟。
-    Name | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
+    联盟 | 对于新联盟，请输入唯一的名称。 如果通过某个计划加入联盟，请选择要加入的联盟。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
+    名称 | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
     成员帐户密码 | 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
-    说明 | 联盟的说明。
     定价 | 新服务的节点配置和成本。 选择“更改”链接，在“标准”层和“基本”层之间进行选择    。
     节点密码 | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。
 
@@ -59,7 +58,7 @@ ms.locfileid: "74455785"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了一个 Azure 区块链服务成员和一个新的联盟。 请尝试学习下一个快速入门，使用适用于 Ethereum 的 Azure 区块链开发工具包将联盟附加到 Azure 区块链服务。
+在本快速入门中，你已部署了一个 Azure 区块链服务成员和一个新的联盟。 请尝试学习下一个快速入门，使用适用于 Ethereum 的 Azure 区块链开发工具包将内容附加到 Azure 区块链服务成员。
 
 > [!div class="nextstepaction"]
 > [使用 Visual Studio Code 连接到 Azure 区块链服务](connect-vscode.md)

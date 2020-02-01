@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045971"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769467"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -72,7 +72,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
    az extension add --name azure-cli-iot-ext
    ```
 
-* [下载示例 C# 项目](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并解压缩 ZIP 存档。
+* [下载 Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)，并提取 ZIP 存档。
 
 * 设备（Windows 或 Linux）上用于对用户进行身份验证的有效用户帐户和凭据。
 

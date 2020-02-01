@@ -5,25 +5,20 @@ description: 本教程介绍如何使用 Azure 门户通过路由表路由网络
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350295"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775282"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -48,19 +43,19 @@ ms.locfileid: "75350295"
 
 ## <a name="create-a-route-table"></a>创建路由表
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “路由表”。   
-
-1. 在“创建路由表”中，输入或选择以下信息  ：
+1. 在 Azure 门户菜单中，选择“创建资源”  。
+2. 在搜索框中，输入“路由表”  。 当“路由表”出现在搜索结果中时，请选择它。 
+3. 在“路由表”  页中，选择“创建”  。
+4. 在“创建路由表”中，输入或选择以下信息  ：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *myRouteTablePublic*。 |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“新建”，输入 *myResourceGroup*，然后选择“确定”   。 |
-    | 位置 | 保留默认值“美国东部”。 
+    | 位置 | 选择“美国东部”  。
     | 虚拟网络网关路由传播 | 保留默认值“已启用”。  |
-
-1. 选择“创建”  。
+5. 选择“创建”  。
 
 ## <a name="create-a-route"></a>创建路由
 
@@ -167,7 +162,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 保留默认值“无”  。
+    | 公共入站端口 | 选择“无”。 
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 保留默认值“否”  。 |
 

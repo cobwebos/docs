@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995858"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769222"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 客户端库
 
@@ -22,12 +22,12 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 提高安全性以及控制密钥和密码。
 - 在几分钟内创建并导入加密密钥。
 - 通过云扩展和全局冗余减少延迟。
-- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
 [源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API 参考文档](https://azure.github.io/azure-sdk-for-java) | [产品文档](index.yml) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本
@@ -248,7 +248,7 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 ```java
 package com.keyvault.quickstart;

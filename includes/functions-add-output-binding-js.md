@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: e84774ba564d807780be5d5a04555bcfa1ea795d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: d0f1f4cc44fb71899012d63a9caf2ea6a8cb5c4a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838923"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845670"
 ---
-添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在`context.res` 语句之前添加此代码。
+添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
 
 ```javascript
 // Add a message to the Storage queue.

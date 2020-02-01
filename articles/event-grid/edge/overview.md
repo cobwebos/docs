@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991490"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844644"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge 上的 Azure 事件网格是什么？
-IoT Edge 事件网格为所有发布/订阅和事件驱动方案的边缘提供了 Azure 事件网格的强大功能和灵活性。 创建主题、发布事件并订阅多个目标，无论它们是同一设备上的模块、其他边缘设备还是云中的服务。
+IoT Edge 事件网格为边缘提供了 Azure 事件网格的强大功能和灵活性。 创建主题、发布事件并订阅多个目标，无论它们是同一设备上的模块、其他边缘设备还是云中的服务。
 
-与在云中一样，IoT Edge 事件网格处理大规模事件的传递、筛选和可靠交付。 使用高级字符串、数字和布尔值筛选器对事件进行筛选，以确保仅将相关事件发送到不同的事件处理程序。 使用重试逻辑可确保事件到达目标模块、边缘设备或云服务，即使该事件在发布时不可用。 通过该逻辑可将 IoT Edge 事件网格用作强大的存储和转发机制。
+与在云中一样，IoT Edge 事件网格处理大规模事件的传递、筛选和可靠交付。 使用高级字符串、数字和布尔值筛选器对事件进行筛选，以确保仅将相关事件发送到不同的事件处理程序。 使用重试逻辑可确保事件到达目标，即使该事件在发布时不可用。 通过该逻辑可将 IoT Edge 事件网格用作强大的存储和转发机制。
 
-IoT Edge 事件网格同时支持 CloudEvents v1.0 和自定义事件架构。 它还支持与云中的事件网格相同的发布和订阅语义，以便与 Azure 和第三方轻松实现互操作性。
+IoT Edge 事件网格同时支持 CloudEvents v1.0 和自定义事件架构。 它还支持与云中的事件网格相同的 Pub/Sub 语义，以便轻松实现互操作性。
 
 本文将对 Azure IoT Edge 事件网格进行简要概述。 有关在边缘上使用此模块的分步说明，请参阅[在本地发布和订阅事件](pub-sub-events-webhook-local.md)。 
 
@@ -29,7 +29,7 @@ IoT Edge 事件网格同时支持 CloudEvents v1.0 和自定义事件架构。 �
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>何时使用 IoT Edge 事件网格
 
-IoT Edge 事件网格旨在提供统一、易于使用且可靠的事件模型，用于在边缘和云之间构建事件驱动的体系结构。
+IoT Edge 事件网格旨在提供易于在边缘和云之间使用且可靠的事件模型。
 
 IoT Edge 事件网格可通过 Azure 云服务的对称运行时外围应用生成，因此可在任何需要的地方使用相同的事件和 API 调用。 无论是在云中、在边缘还是在两者之间发布/订阅，IoT Edge 事件网格现可作为你的首选解决方案。
 
@@ -55,8 +55,12 @@ IoT Edge 事件网格旨在将事件发送到所需的任何位置。 目前支�
 
 * 其他模块，包括 IoT 中心、函数和自定义模块
 * 其他边缘设备
-* 云中托管的服务，包括 Azure 事件网格和 Azure Functions
 * Webhook
+* Azure 事件网格云服务
+* 事件中心
+* 服务总线队列
+* 服务总线主题
+* 存储队列
 
 ## <a name="supported-environments"></a>支持的环境
 目前支持 Windows 64 位、Linux 64 位和 ARM 32 位环境。

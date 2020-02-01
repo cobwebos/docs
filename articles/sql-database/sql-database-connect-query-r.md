@@ -1,5 +1,5 @@
 ---
-title: 将 R 与机器学习服务配合使用进行查询
+title: 将 R 与机器学习服务配合使用来查询数据库（预览版）
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: 本文演示如何将 R 脚本与 Azure SQL 数据库机器学习服务配合使用，以连接到 Azure SQL 数据库并使用 Transact-SQL 语句对其进行查询。
 services: sql-database
@@ -13,64 +13,39 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826969"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768513"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>快速入门：将 R 与机器学习服务配合使用来查询 Azure SQL 数据库（预览版）
 
-本快速入门演示了如何将 [R](https://www.r-project.org/) 与机器学习服务配合使用来连接到 Azure SQL 数据库并使用 Transact-SQL 语句来查询数据。 机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 有关进一步的信息，请参阅[使用 R 的 Azure SQL 数据库机器学习服务（预览版）](sql-database-machine-learning-services-overview.md)。
+在本快速入门中，我们将 R 与机器学习服务配合使用来连接到 Azure SQL 数据库，并使用 T-SQL 语句来查询数据。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本快速入门，请确保符合以下条件：
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
+- 启用了 R 的[机器学习服务](sql-database-machine-learning-services-overview.md)。 [注册预览版](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+> [!IMPORTANT]
+> 本文中脚本的编写目的是使用 **Adventure Works** 数据库。
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+> [!NOTE]
+> 在发布公共预览版期间，Microsoft 会让你加入并为你的现有数据库或新数据库启用机器学习，但目前不支持托管实例部署选项。
 
-  || 单一数据库 |
-  |:--- |:--- |
-  | 创建| [门户](sql-database-single-database-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md) |
-  | 加载数据 | 根据快速入门加载的 Adventure Works |
-  |||
-
-  > [!NOTE]
-  > 在使用 R 预览 Azure SQL 数据库机器学习服务期间，不支持托管实例部署选项。
-
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- 启用了机器学习服务（使用 R）。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
-
-- 最新 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
+使用 R 的机器学习服务是 Azure SQL 数据库的一项功能，用于执行数据库中的 R 脚本。 有关详细信息，请参阅 [R 项目](https://www.r-project.org/)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
@@ -84,7 +59,7 @@ ms.locfileid: "73826969"
 
 1. 将完整的 R 脚本传递给 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 存储过程。
 
-   此脚本是通过 `@script` 参数传递的。 `@script` 参数中的所有内容都必须是有效的 R 代码。
+   通过 `@script` 参数传递脚本。 `@script` 参数内的所有内容都必须是有效的 R 代码。
    
    >[!IMPORTANT]
    >本示例中的代码使用示例 AdventureWorksLT 数据，在创建数据库时可以选择该数据作为源。 如果数据库有不同数据，请在 SELECT 查询中使用自己数据库中的表。 

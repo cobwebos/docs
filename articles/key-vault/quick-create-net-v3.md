@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 29e1af5f23b2167a524872731490b5862a14e5c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975391"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773746"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v3)
 
@@ -25,7 +25,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 提高安全性以及控制密钥和密码。
 - 在几分钟内创建并导入加密密钥。
 - 通过云扩展和全局冗余减少延迟。
-- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
 [API 参考文档](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
@@ -34,7 +34,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 > 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。

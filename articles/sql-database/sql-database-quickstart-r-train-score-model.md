@@ -13,33 +13,33 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714890"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768466"
 ---
-# <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>通过 Azure SQL 数据库机器学习服务（预览版）使用 R 创建并训练预测模型
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>快速入门：通过 Azure SQL 数据库机器学习服务（预览版）使用 R 创建并训练预测模型
 
-在本快速入门中，你将使用 R 创建并训练一个预测模型，将该模型保存在 SQL 数据库中的表中，然后通过 [Azure SQL 数据库中的机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)公共预览版使用该模型基于新数据来预测值。 
-
-你在本快速入门中要使用的模型是一个简单的回归模型，用于根据速度预测汽车的制动距离。 你将使用 R 附带的 **cars** 数据集，因为它小且易于理解。
-
-> [!TIP]
-> R 运行时随附许多数据集，有大有小。 若要获取在 R 中安装的数据集的列表，请通过 R 命令提示符键入 `library(help="datasets")`。
+在本快速入门中，我们使用 R 创建并训练一个预测模型，将该模型保存到数据库的表中，然后通过 Azure SQL 数据库中的机器学习服务（使用 R）使用该模型基于新数据来预测值。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 一个使用[服务器级防火墙规则](sql-database-server-level-firewall-rule.md)的 [Azure SQL 数据库](sql-database-single-database-get-started.md)
+- 启用了 R 的[机器学习服务](sql-database-machine-learning-services-overview.md)。 [注册预览版](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- 若要在这些练习中运行示例代码，必须先有一个启用了机器学习服务（使用 R）的 Azure SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
+> [!NOTE]
+> 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。
 
-- 确保已安装了最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
+此示例使用 R 随附的 **cars** 数据集，通过一个简单的回归模型根据速度预测汽车的制动距离。
 
-- 在本快速入门中，你需要配置一个服务器级防火墙规则。 有关如何执行此操作的信息，请参阅[创建服务器级防火墙规则](sql-database-server-level-firewall-rule.md)。
+> [!TIP]
+> R 运行时随附了许多数据集。若要获取已安装数据集的列表，请在 R 命令提示符下键入 `library(help="datasets")`。
 
 ## <a name="create-and-train-a-predictive-model"></a>创建并训练预测模型
 
@@ -50,7 +50,7 @@ ms.locfileid: "64714890"
 - 提供用于训练模型的输入数据。
 
 > [!TIP]
-> 如果需要补习线性模型方面的内容，请尝试使用以下教程，它介绍了使用 rxLinMod 进行模型拟合的过程：[拟合线性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> 如果需要对线性模型进行回顾，请尝试以下教程，其中介绍了使用 rxLinMod 拟合模型的过程：[拟合线性模型](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
 在下面的步骤中，你将设置训练数据，创建一个回归模型，使用训练数据对其进行训练，然后将该模型保存到一个 SQL 表。
 
@@ -173,9 +173,9 @@ VALUES (
 
 ![具有额外输出的已训练模型](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>使用已训练的模型为新数据评分
+## <a name="score-new-data-using-the-trained-model"></a>使用已定型的模型对新数据进行评分
 
-“评分”  是一个术语，在数据科学中用来表示根据馈送到已训练模型中的新数据生成预测、概率或其他值。 你将使用在上一部分创建的模型对根据新数据进行的预测评分。
+评分是数据科学领域使用的术语，用于表示根据馈送到已定型的模型中的新数据生成预测、概率或其他值  。 你将使用在上一节中创建的模型来对新数据的预测进行评分。
 
 你是否注意到，原始训练数据的最高速度是 25 英里/小时？ 这是因为原始数据基于 1920 年的一次试验！ 你可能想知道，如果一辆上世纪 20 年代的汽车可以达到 60 mph 甚至 100 mph 的速度，其制动时间会是多长？ 要回答此问题，你可以向模型提供一些新的速度值。
 
@@ -244,7 +244,7 @@ VALUES (
 > [!NOTE]
 > 在此示例脚本中，`str` 函数是在测试阶段添加的，用于检查从 R 返回的数据的架构。稍后可以删除该语句。
 >
-> 在 R 脚本中使用的列名不一定传递到存储过程输出。 此处，WITH RESULTS 子句定义了一些新的列名。
+> R 脚本中使用的列名不必传递到存储过程输出。 此处，WITH RESULTS 子句定义了一些新的列名。
 
 ## <a name="next-steps"></a>后续步骤
 

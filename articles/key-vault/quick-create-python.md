@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527920"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769197"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 
@@ -22,7 +22,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 提高安全性以及控制密钥和密码。
 - 在几分钟内创建并导入加密密钥。
 - 通过云扩展和全局冗余减少延迟。
-- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
 [API 参考文档](/python/api/overview/azure/key-vault?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [包（Python 包索引）](https://pypi.org/project/azure-keyvault/)

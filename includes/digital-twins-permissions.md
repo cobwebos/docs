@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/06/2020
+ms.date: 01/23/2020
 ms.custom: include file
-ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895524"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748748"
 ---
 >[!NOTE]
 >本部分提供有关 [Azure AD 应用注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明。
@@ -33,9 +33,18 @@ ms.locfileid: "75895524"
 
 1. 若要确保[将应用注册为“公共客户端”](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)  ，请打开用于应用注册的“身份验证”  窗格，然后在该窗格中向下滚动。 在“默认客户端类型”部分中，为“将应用程序视为公共客户端”选择“是”，然后点击“保存”     。
 
-    选中“访问令牌”以启用 Manifest.json 中的“oauth2AllowImplicitFlow”设置   。
+    1. “重定向 URI”  必须与身份验证请求所提供的地址相匹配：
 
-    [![公共客户端配置设置](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+        * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”  。 确保将“默认客户端类型”设置为“是”  。
+        * 对于 Azure 应用服务上托管的单页应用，请选择“Web”  。
+
+        选择“公共客户端(移动和桌面)”，然后输入 `http://localhost:8080/`。 
+
+        [![配置重定向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+
+    1. 勾选“访问令牌”  ，在资源的**清单** JSON 中将 **oauth2AllowImplicitFlow** 设置配置为 `true`。
+
+        [![公共客户端配置设置](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  打开已注册的应用的“概述”  窗格，然后将以下实体的值复制到临时文件。 在以下部分中，将使用这些值配置示例应用程序。
 

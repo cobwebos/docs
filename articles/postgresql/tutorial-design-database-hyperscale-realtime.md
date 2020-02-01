@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978094"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716326"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：使用 Azure Database for PostgreSQL 设计实时分析仪表板 – Hyperscale (Citus)
 
-在本教程中，你将了解如何使用 Azure Database for PostgreSQL - Hyperscale (Citus)来执行以下操作：
+在本教程中，你将了解如何使用 Azure Database for PostgreSQL - 超大规模 (Citus) 来执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Hyperscale (Citus) 服务器组
@@ -28,13 +28,13 @@ ms.locfileid: "74978094"
 > * 查询原始数据和聚合数据
 > * 使数据过期
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用工具创建架构
 
-使用 psql 连接到 Azure Database for PostgreSQL - Hyperscale (Citus)后，可以完成一些基本任务。 本教程将引导你从 Web 分析引入流量数据，然后汇总数据以基于这些数据提供实时仪表板。
+使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)后，可以完成一些基本任务。 本教程将引导你从 Web 分析引入流量数据，然后汇总数据以基于这些数据提供实时仪表板。
 
 让我们创建一个使用所有原始 Web 流量数据的表。 在 psql 终端中运行以下命令：
 

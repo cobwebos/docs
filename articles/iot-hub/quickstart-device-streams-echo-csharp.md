@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084295"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773809"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流（预览版）使用 C# 与设备应用程序进行通信
 
@@ -28,7 +28,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 目前仅以下区域中创建的 IoT 中心支持设备流预览：
   * 美国中部
@@ -50,7 +50,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
     az extension add --name azure-cli-iot-ext
     ```
 
-* [下载示例 C# 项目](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并解压缩 ZIP 存档。 需要在设备端和服务端执行此操作。
+* [下载 Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)，并提取 ZIP 存档。 需要在设备端和服务端执行此操作。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

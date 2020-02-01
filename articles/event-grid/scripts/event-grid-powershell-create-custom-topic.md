@@ -1,23 +1,22 @@
 ---
 title: Azure PowerShell 脚本示例 - 创建自定义主题 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 创建自定义主题
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何创建事件网格自定义主题。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117154"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719936"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>使用 PowerShell 创建事件网格自定义主题
 
@@ -35,7 +34,7 @@ ms.locfileid: "66117154"
 
 此脚本使用以下命令创建自定义主题。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | 创建事件网格自定义主题。 |
 

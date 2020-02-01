@@ -2,18 +2,17 @@
 title: 教程 - 在 Azure 流分析作业中运行 Azure Functions
 description: 本教程介绍如何将 Azure Functions 配置为流分析作业的输出接收器。
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369314"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772873"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -51,7 +50,7 @@ ms.locfileid: "75369314"
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数
 
-1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 该小节演示了如何通过使用 CSharp 语言，[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
+1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 本部分演示如何使用 CSharp 语言[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
 2. 浏览到 run.csx  函数。 将其更新为以下代码。 将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”  替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。 
 
@@ -149,7 +148,7 @@ ms.locfileid: "75369314"
    |导入选项| 可使用当前订阅中的函数；如果函数位于其他订阅中，也可手动提供设置。 |
    |Function App| Functions 应用的名称 |
    |函数| Functions 应用中函数的名称（run.csx 函数的名称）。|
-   |最大批大小|设置每个输出批的最大大小（以字节为单位），此值将发送到你的函数。 默认情况下，此值设置为 262,144 字节 (256 KB)。|
+   |最大批大小|设置发送到函数的每个输出批的最大大小（以字节为单位）。 默认情况下，此值设置为 262,144 字节 (256 KB)。|
    |最大批数|指定发送给函数的每个批次中的最大事件数。 默认值为 100。 此属性是可选的。|
    |密钥|可以使用其他订阅中的函数。 提供用于访问你的函数的键值。 此属性是可选的。|
 
@@ -187,13 +186,10 @@ ms.locfileid: "75369314"
    此命令应会打印指定键的值：
 
    ![用于 Redis 的 Azure 缓存输出的屏幕截图](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>错误处理和重试
-如果在将事件发送到 Azure Functions 时失败，流分析会重试，直至成功完成操作。 不过，有些失败不会进行重试，如下所示：
 
- 1. HttpRequestExceptions
- 2. 请求实体太大（Http 错误代码 413）
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>错误处理和重试
+
+如果在将事件发送到 Azure Functions 时失败，流分析会重试大多数操作。 将会重试所有 http 异常，直至成功，但 http 错误 413（实体太大）除外。 实体太大错误被视为数据错误，遵循[重试或删除策略](stream-analytics-output-error-policy.md)。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -210,7 +206,7 @@ ms.locfileid: "75369314"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了一个运行 Azure 函数的简单流分析作业，若要详细了解流分析作业，请继续学习下一教程：
+在本教程中，你创建了一个简单的运行 Azure 函数的流分析作业。 若要详细了解流分析作业，请继续阅读下一教程：
 
 > [!div class="nextstepaction"]
 > [在流分析作业中运行 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)

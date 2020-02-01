@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469645"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714426"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -35,13 +35,13 @@ ms.locfileid: "73469645"
 
 你可以使用任何代码编辑器执行本教程中的步骤。 例如，[Visual Studio Code](https://code.visualstudio.com/) 是适用于 Windows、macOS 和 Linux 操作系统的跨平台代码编辑器。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建一个应用程序配置密钥，用于引用 Key Vault 中存储的值
 > * 从 ASP.NET Core Web 应用程序访问此密钥的值。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -75,14 +75,14 @@ ms.locfileid: "73469645"
 1. 选择“生成/导入”。 
 1. 在“创建机密”窗格中输入以下值： 
     - **上传选项**：输入 **Manual**。
-    - **名称**：输入 **Message**。
+    - **Name**：输入 **Message**。
     - **值**：输入 **Hello from Key Vault**。
 1. 将“创建机密”的其他属性保留默认值。 
 1. 选择“创建”  。
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>将 Key Vault 引用添加到应用程序配置
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储实例  。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储实例  。
 
 1. 选择“配置资源管理器”。 
 
@@ -119,30 +119,62 @@ ms.locfileid: "73469645"
 
 1. 运行以下命令，使服务主体能够访问 Key Vault：
 
-    ```
+    ```cmd
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. 将 *clientId* 和 *clientSecret* 的机密添加到机密管理器，该工具用于存储在以下教程中添加到 *.csproj* 文件的敏感数据：[快速入门：使用 Azure 应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。 必须在 .csproj 文件所在的目录中执行以下命令  。
+1. 添加环境变量以存储 *clientId*、*clientSecret*和 *tenantId* 的值。
 
-    ```
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    #### <a name="windows-command-prompttabcmd"></a>[Windows 命令提示符](#tab/cmd)
+
+    ```cmd
+    setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
+    setx AZURE_CLIENT_SECRET <clientSecret-of-your-service-principal>
+    setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-> [!NOTE]
-> 这些 Key Vault 凭据只在应用程序中使用。 应用程序使用这些凭据直接向 Key Vault 进行身份验证。 这些凭据从不传递到应用程序配置服务。
+    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+    ```PowerShell
+    $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    $Env:AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+
+    ```bash
+    export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    export AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    export AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    ---
+
+    > [!NOTE]
+    > 这些 Key Vault 凭据只在应用程序中使用。 应用程序使用这些凭据直接向 Key Vault 进行身份验证。 这些凭据从不传递到应用程序配置服务。
+
+1. 重启终端以加载这些新的环境变量。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新代码以使用 Key Vault 引用
+
+1. 运行以下命令，添加对所需 NuGet 包的引用：
+
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.KeyVault
+    dotnet add package Azure.Identity
+    ```
 
 1. 打开 *Program.cs*，添加对以下所需包的引用：
 
     ```csharp
     using Microsoft.Azure.KeyVault;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Azure.Identity;
     ```
 
 1. 通过调用 `config.AddAzureAppConfiguration` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。 包含 `UseAzureKeyVault` 选项，以传入对 Key Vault 的新 `KeyVaultClient` 引用。
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -151,18 +183,38 @@ ms.locfileid: "73469645"
             {
                 var settings = config.Build();
 
-                KeyVaultClient kvClient = new KeyVaultClient(async (authority, resource, scope) =>
+                config.AddAzureAppConfiguration(options =>
                 {
-                    var adCredential = new ClientCredential(settings["ConnectionStrings:KeyVaultClientId"], settings["ConnectionStrings:KeyVaultClientSecret"]);
-                    var authenticationContext = new AuthenticationContext(authority, null);
-                    return (await authenticationContext.AcquireTokenAsync(resource, adCredential)).AccessToken;
-                });
-
-                config.AddAzureAppConfiguration(options => {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                            .UseAzureKeyVault(kvClient); });
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
             })
             .UseStartup<Startup>();
+    ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
+            })
+            .UseStartup<Startup>());
     ```
 
 1. 初始化与应用程序配置的连接后，即已将 `KeyVaultClient` 引用传递给 `UseAzureKeyVault` 方法。 初始化之后，可以像访问普通的应用程序配置密钥值一样访问 Key Vault 引用值。
@@ -179,7 +231,7 @@ ms.locfileid: "73469645"
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 

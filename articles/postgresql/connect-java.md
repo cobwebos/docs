@@ -8,33 +8,34 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767885"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769022"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Java 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
-本快速入门演示了如何使用 Java 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>先决条件
-此快速入门使用以下任意指南中创建的资源作为起点：
-- [创建 DB - 门户](quickstart-create-server-database-portal.md)
-- [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
+在本快速入门中，我们使用 Java 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
-还需要：
-- 下载与 Java 版本和 Java 开发工具包匹配的 [PostgreSQL JDBC 驱动程序](https://jdbc.postgresql.org/download.html)。
-- 在应用程序类路径中包括 PostgreSQL JDBC jar 文件（例如 postgresql-42.1.1.jar）。 有关详细信息，请参阅[类路径详细信息](https://jdbc.postgresql.org/documentation/head/classpath.html)。
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 完成[快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)或[快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md) 中的步骤。
+
+- [PostgreSQL JDBC 驱动程序](https://jdbc.postgresql.org/download.html) - 与 Java 版本和 Java 开发工具包匹配。
+- [Classpath 详细信息](https://jdbc.postgresql.org/documentation/head/classpath.html) - 在应用程序 classpath 中包括 PostgreSQL JDBC jar 文件（例如 postgresql-42.1.1.jar）。
 
 ## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for PostgreSQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
-3. 选择服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
- ![Azure Database for PostgreSQL 服务器名称](./media/connect-java/azure-database-postgresql-server-name.png)
+1. 在 [Azure 门户](https://portal.azure.com/)中，搜索并选择已创建的服务器（例如 **mydemoserver**）。
+
+1. 从服务器的“概览”面板中记下“服务器名称”和“管理员用户名”。    如果忘记了密码，也可通过此面板来重置密码。
+
+    ![Azure Database for PostgreSQL 连接字符串](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
 通过以下代码进行连接，然后使用函数和 INSERT  SQL 语句将数据加载到数据库。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接到数据库、删除和创建表。 使用 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法为每组参数运行该命令。 

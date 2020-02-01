@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281124"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774123"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281124"
 
 > [!NOTE]
 > * 本快速入门使用文本分析客户端库的 `3.0-preview` 版本，这包括改进的[情绪分析](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。
+>
 > * 为了简单起见，本文中的代码使用了不受保护的凭据存储。 对于生产方案，我们建议成批发送字符串以提高性能和可伸缩性。 例如，调用 `SentimentBatchAsync()` 而非 `Sentiment()`。
 
 ## <a name="prerequisites"></a>必备条件
@@ -36,6 +37,9 @@ ms.locfileid: "76281124"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
+
+> [!NOTE]
+> 还可[在浏览器中](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)运行此版本的文本分析客户端库。
 
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
 

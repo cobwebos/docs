@@ -3,15 +3,15 @@ title: Azure Cosmos 模拟器下载和发行说明
 description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载信息。
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445297"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719681"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -25,6 +25,10 @@ ms.locfileid: "75445297"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="290"></a>2.9.0
+
+- 此版本添加了用于将一致性设置为一致前缀并提高用户和权限的最大限制的选项。
 
 ### <a name="272"></a>2.7.2
 

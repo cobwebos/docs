@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: 将用户分配到应用
               href: assign-user-or-group-access-portal.md
-            - name: 在“我的应用”上创建工作区（预览版）
-              href: access-panel-workspaces.md
+            - name: 在“我的应用”上创建集合
+              href: access-panel-collections.md
             - name: 使用自助服务应用访问权限
               href: access-panel-manage-self-service-access.md
             - name: 用于删除用户对应用的访问权限的方法

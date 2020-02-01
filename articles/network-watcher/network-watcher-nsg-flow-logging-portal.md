@@ -1,12 +1,9 @@
 ---
-title: 教程 - 使用 Azure 门户记录出入 VM 的网络流量流
-titleSuffix: Azure Network Watcher
-description: 本教程介绍如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量流。
+title: 记录出入 VM 的网络流量 - 教程 - Azure 门户 | Microsoft Docs
+description: 了解如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -16,16 +13,23 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280979"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841006"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
+
+> [!div class="op_single_selector"]
+> - [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 在本教程中，你将了解如何执行以下操作：
 
@@ -93,7 +97,10 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     | 位置       | 选择“美国东部”                                            |
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
 
-    存储帐户必须与 NSG 位于同一区域中。 创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。     
+    创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。    在所有情况下，存储帐户必须与 NSG 位于同一区域中。
+
+    > [!NOTE]
+    > 虽然 Azure 存储当前支持 Microsoft.Insight 和 Microsoft.Network 提供程序作为可信 Microsoft 服务，但 NSG 流日志尚未完全上线。 在此功能完全上线之前，若要启用 NSG 流日志记录，还必须选择“所有网络”  。 
 4. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 5. 在“日志”下选择“NSG 流日志”，如下图所示   ：
 
@@ -108,6 +115,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 9. 选择在步骤 3 中创建的存储帐户。
    > [!NOTE]
    > 在以下情况下，NSG 流日志不适用于存储帐户：
+   > * 存储帐户已启用防火墙。
    > * 存储帐户已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。
 1. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。  
@@ -120,7 +128,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
    ![下载流日志](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 选择在[启用 NSG 流日志](#enable-nsg-flow-log)的步骤 2 中配置的存储帐户。
-4. 在“Blob 服务”下选择“容器”，然后选择“insights-logs-networksecuritygroupflowevent”容器    。
+4. 在“Blob 服务”下选择“Blob”，然后选择“insights-logs-networksecuritygroupflowevent”容器    。
 5. 在容器中，导航浏览文件夹层次结构，直至找到 PT1H.json 文件，如下图所示。 日志文件写入遵循以下命名约定的文件夹层次结构： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![流日志](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -220,4 +228,4 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何为 NSG 启用 NSG 流日志记录， 以及如何下载和查看文件中记录的数据。 json 文件中的原始数据可能难以解释。 若要将数据可视化，可以使用网络观察程序[流量分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) 以及其他工具。
+本教程介绍了如何为 NSG 启用 NSG 流日志记录， 以及如何下载和查看文件中记录的数据。 json 文件中的原始数据可能难以解释。 若要将流日志数据可视化，可以使用 [Azure 流量分析](traffic-analytics.md)、[Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) 以及其他工具。 可以尝试通过其他方法（例如 [PowerShell](network-watcher-nsg-flow-logging-powershell.md)、[Azure CLI](network-watcher-nsg-flow-logging-cli.md)、[REST API](network-watcher-nsg-flow-logging-rest.md) 和 [ARM 模板](network-watcher-nsg-flow-logging-azure-resource-manager.md)）来启用 NSG 流日志。

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 8e72a5100da312ac477ca8b25bd3005a77aee2cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429025"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718201"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -135,6 +135,10 @@ ms.locfileid: "75429025"
 
 1) 抓取 [Azure Kinect 查看器](azure-kinect-viewer.md)的暂停视图并抓取屏幕截图，或
 2) 使用 [Azure Kinect 录制器](azure-kinect-recorder.md)录制，例如 `k4arecorder.exe -l 5 -r 5 output.mkv`
+
+## <a name="inconsistent-or-unexpected-device-timestamps"></a>不一致或意外的设备时间戳
+
+调用 ```k4a_device_set_color_control``` 可能会暂时引发设备的计时更改，这些更改可能需要几个捕获才能稳定。 避免在图像捕获循环中调用 API，以免重置每个新图像的内部计时计算。 可以改为在启动相机之前或需要更改图像捕获循环内的值时调用 API。 具体而言，请避免调用 ```k4a_device_set_color_control(K4A_COLOR_CONTROL_AUTO_EXPOSURE_PRIORITY)```。
 
 ## <a name="usb3-host-controller-compatibility"></a>USB3 主控制器兼容性
 

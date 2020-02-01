@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, 访问, 深度, sdk, 人体, 跟踪, 关节, 设置, cuda, nvidia
-ms.openlocfilehash: 21655bb5a7e5b3eeef008f715e703512734f3960
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2cf4c1097730f88fc4bd66c28e1bdddd7fea8640
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931765"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756240"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>快速入门：设置 Azure Kinect 人体跟踪
 
@@ -53,6 +53,10 @@ ms.locfileid: "73931765"
 
 
 ![人体跟踪 3D 查看器](./media/quickstarts/samples-simple3dviewer.png)
+
+## <a name="examples"></a>示例
+
+可在[此处](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples)找到有关如何使用正文跟踪 SDK 的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

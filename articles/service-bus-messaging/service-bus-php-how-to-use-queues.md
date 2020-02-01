@@ -1,6 +1,6 @@
 ---
-title: 快速入门：如何通过 PHP 使用服务总线队列
-description: 快速入门：了解如何在 Azure 中使用服务总线队列。 采用 PHP 编写的代码示例。
+title: 如何通过 PHP 使用 Azure 服务总线队列
+description: 本教程介绍如何创建 PHP 应用程序，用于向/从服务总线队列发送/接收消息。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719186"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760685"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>快速入门：如何通过 PHP 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 本教程介绍如何创建 PHP 应用程序，用于向/从服务总线队列发送/接收消息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
@@ -48,7 +48,7 @@ ms.locfileid: "73719186"
 ## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用应用程序
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 若要使用服务总线队列 API，请执行以下操作：
 
 1. 使用 [require_once][require_once] 语句引用 autoloader 文件。

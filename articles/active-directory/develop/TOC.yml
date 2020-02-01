@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Azure 资源的托管标识
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Microsoft 标识平台视频
+      href: identity-videos.md

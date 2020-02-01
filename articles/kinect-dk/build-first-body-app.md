@@ -8,18 +8,18 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: 46110021495f924b3521f8748fbd282c0e8094b8
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053880"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756238"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>快速入门：生成 Azure Kinect 人体跟踪应用程序
 
-想要开始使用人体跟踪 SDK？ 本快速入门可帮助你启动并运行人体跟踪！
+想要开始使用人体跟踪 SDK？ 本快速入门可帮助你启动并运行人体跟踪！ 可以在此 [Azure-Kinect-Sample 存储库](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples)中找到更多示例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [设置 Azure Kinect DK](set-up-azure-kinect-dk.md)
 - [设置人体跟踪 SDK](body-sdk-setup.md)
@@ -30,11 +30,11 @@ ms.locfileid: "73053880"
   - [k4a_device_stop_cameras()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8)
   - [k4a_device_close()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7a3931d9a690b3971caaac83b43f9423.html#ga7a3931d9a690b3971caaac83b43f9423)
 - 查看有关以下人体跟踪 SDK 函数的文档：
-  - [k4abt_tracker_create()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga1aa71481b8441def94de11b29e0e3cbc.html#ga1aa71481b8441def94de11b29e0e3cbc)
-  - [k4abt_tracker_enqueue_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e)
-  - [k4abt_tracker_pop_result()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b)
-  - [k4abt_tracker_shutdown()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga94036969ef94cbc414c78b3f6d04bfa5.html#ga94036969ef94cbc414c78b3f6d04bfa5)
-  - [k4abt_tracker_destroy()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gab2c9afca092130976cd66077c0557ed1.html#gab2c9afca092130976cd66077c0557ed1)
+  - [k4abt_tracker_create()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga1aa71481b8441def94de11b29e0e3cbc.html#ga1aa71481b8441def94de11b29e0e3cbc)
+  - [k4abt_tracker_enqueue_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e)
+  - [k4abt_tracker_pop_result()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b)
+  - [k4abt_tracker_shutdown()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga94036969ef94cbc414c78b3f6d04bfa5.html#ga94036969ef94cbc414c78b3f6d04bfa5)
+  - [k4abt_tracker_destroy()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gab2c9afca092130976cd66077c0557ed1.html#gab2c9afca092130976cd66077c0557ed1)
 
 ## <a name="headers"></a>标头
 
@@ -116,7 +116,7 @@ if (pop_frame_result == K4A_WAIT_RESULT_SUCCEEDED)
 
 ## <a name="access-the-body-tracking-result-data"></a>访问人体跟踪结果数据
 
-每个传感器捕获的人体跟踪结果存储在人体帧 [k4abt_frame_t](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/structk4abt__frame__t.html) 结构中。 每个人体帧包含三个重要组成部分：人体结构的集合、2D 人体索引映射和输入捕获。
+每个传感器捕获的人体跟踪结果存储在人体帧 [k4abt_frame_t](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/structk4abt__frame__t.html) 结构中。 每个人体帧包含三个重要组成部分：人体结构的集合、2D 人体索引映射和输入捕获。
 
 第一个人体跟踪应用程序只访问检测到人体数。 有关人体帧中的数据的详细说明，请参阅[访问人体帧中的数据](access-data-body-frame.md)。
 
@@ -125,7 +125,7 @@ size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
 printf("%zu bodies are detected!\n", num_bodies);
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 最后一步是关闭人体跟踪器并释放人体跟踪对象。 此外，还需要停止并关闭设备。
 

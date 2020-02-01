@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ac7fefd8ecabd40070b422c169befe64c08f12a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277080"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844881"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -25,7 +25,7 @@ Azure 空间定位点是一个托管云服务和开发人员平台，可跨 Holo
 
 **问：Azure 空间定位点支持哪些设备？**
 
-**答:** Azure 空间定位点使开发人员可以在 HoloLens 上、在具有 ARKit 支持的 iOS 设备上以及在具有 ARCore 支持的 Android 上构建应用；对于 iOS 和 Android，这包括手机和平板电脑。
+**答:** Azure 空间定位点使开发人员可以在 HoloLens 上、在具有 ARKit 支持的 iOS 设备上以及在具有 ARCore 支持的 Android 设备上构建应用；对于 iOS 和 Android，这包括手机和平板电脑。
 
 **问：是否必须连接到云才能使用 Azure 空间定位点？**
 
@@ -63,7 +63,7 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 **问：我是否有方法可以向 Microsoft 发送诊断信息？**
 
-**答**：是的。 Azure 空间定位点有一种诊断模式，开发人员可以通过 Azure 空间定位点 API 选择加入该模式。 这很有用，例如在遇到无法以可预测方式创建并查找定位点的环境时。 我们可能会询问是否可以提交包含可帮助我们进行调试的诊断报告。 有关详细信息，请参阅 [Azure 空间定位点中的日志记录和诊断](./concepts/logging-diagnostics.md)。
+**答**：是的。 Azure 空间定位点有一种诊断模式，开发人员可以通过 Azure 空间定位点 API 选择加入该模式。 这很有用（例如在遇到无法以可预测方式创建并查找定位点的环境时，可以使用）。 我们可能会询问是否可以提交包含可帮助我们进行调试的诊断报告。 有关详细信息，请参阅 [Azure 空间定位点中的日志记录和诊断](./concepts/logging-diagnostics.md)。
 
 ## <a name="availability-and-pricing-faqs"></a>可用性和定价常见问题解答
 
@@ -112,6 +112,7 @@ Azure 空间定位点将 6DoF 跟踪器作为构造块，使你可以将真实�
 **答:** 开发人员可以使用熟悉的工具和框架为其设备构建带 Azure 空间定位点的应用：
 
 - 跨 HoloLens、iOS 和 Android 的 Unity
+- IOS 和 Android 上的 Xamarin
 - iOS 上的 Swift 或 Objective-C
 - Android 上的 Java 或 Android NDK
 - C++/WinRT on HoloLens

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754586"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837997"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
 AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob 和其他非结构化的数据源中提取文本，这样就可以丰富内容，使其在索引或知识存储中更易于搜索。 通过附加到索引管道的“认知技能”来实现提取和丰富  。 服务内置的认知技能分为以下几类： 
 
-+ “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作和[情绪检测](cognitive-search-skill-sentiment.md)  。 通过这些技能，非结构化文本可以假定新窗体，在索引中映射为可搜索和可筛选字段。
++ “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作、[情绪检测](cognitive-search-skill-sentiment.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)  。 通过这些技能，非结构化文本可以假定新窗体，在索引中映射为可搜索和可筛选字段。
 
 + “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如颜色或图像方向）  。 可以创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的所有查询功能进行搜索。
 
@@ -109,7 +109,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 | 认知技能 | 扩充管道中的原子转换。 通常，它是提取或推断结构的组件，因此增强了我们对输入数据的理解。 输出几乎总是基于文本，处理是自然语言处理，或者从图像输入提取或生成文本的图像处理。 技能的输出可映射到索引中的字段，或用作下游扩充组件的输入。 技能是预定义的、由 Microsoft 提供的或自定义的（由你创建并部署）。 | [内置认知技能](cognitive-search-predefined-skills.md) |
 | 数据提取 | 涵盖大量处理，但与 AI 扩充相关，实体识别技能最常用于从不以本机方式提供相关信息的源中提取数据（即实体）。 | 请参阅[实体识别技能](cognitive-search-skill-entity-recognition.md)和[文档提取技能（预览版）](cognitive-search-skill-document-extraction.md)| 
 | 图像处理 | 从图像推断文本，例如识别某个地标，或者从图像提取文本。 常见示例包括从扫描的文档 (JPEG) 文件中提取字符的 OCR，或者在包含街道标志的照片中识别街道名称。 | 请参阅[图像分析技能](cognitive-search-skill-image-analysis.md)或 [OCR 技能](cognitive-search-skill-ocr.md)
-| 自然语言处理 | 进行文本处理以提供见解，并提供有关文本输入的信息。 语言检测、情绪分析和关键短语提取是属于自然语言处理的技能。  | 请参阅[关键短语提取技能](cognitive-search-skill-keyphrases.md)、[语言检测技能](cognitive-search-skill-language-detection.md)、[文本翻译技能（预览版）](cognitive-search-skill-text-translation.md)和[情绪分析技能](cognitive-search-skill-sentiment.md) |
+| 自然语言处理 | 进行文本处理以提供见解，并提供有关文本输入的信息。 语言检测、情绪分析和关键短语提取是属于自然语言处理的技能。  | 请参阅[关键短语提取技能](cognitive-search-skill-keyphrases.md)、[语言检测技能](cognitive-search-skill-language-detection.md)、[文本翻译技能](cognitive-search-skill-text-translation.md)、[情绪分析技能](cognitive-search-skill-sentiment.md)、[PII 检测技能（预览版）](cognitive-search-skill-pii-detection.md) |
 | 文档破解 | 在索引编制期间从非文本源提取或创建文本内容的过程。 光学字符识别 (OCR) 就是一个例子，但它通常是指索引器从应用程序文件中提取内容时使用的核心索引器功能。 提供源文件位置的数据源，以及提供字段映射的索引器定义都是文档破解中的两个关键因素。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 造型 | 将文本片段整合到较大的结构，或反之，将较大的文本区块分解成易于管理的大小，以进一步执行下游处理。 | 请参阅[整型程序技能](cognitive-search-skill-shaper.md)、[文本合并技能](cognitive-search-skill-textmerger.md)、[文本拆分技能](cognitive-search-skill-textsplit.md) |
 | 扩充文档 | 在处理过程中生成的临时内部结构，其最终输出反映在搜索索引中。 技能集决定执行哪些扩充。 字段映射确定要将哪些数据元素添加到索引。 （可选）可以使用存储资源管理器、Power BI 等工具或连接到 Azure Blob 存储的任何其他工具创建知识存储，以保留和浏览丰富的文档。 | 请参阅[知识存储（预览版）](knowledge-store-concept-intro.md) |

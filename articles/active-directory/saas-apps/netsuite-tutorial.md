@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289027"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760040"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教程：将 Azure AD 单一登录 (SSO) 与 NetSuite 集成
 
@@ -98,8 +98,12 @@ NetSuite 支持：
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > 上述 URL 中的值不是真实值。 请使用实际回复 URL 更新这些值。 若要获取该值，请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
+    * 我们将在 Netsuite 配置节中获取 **<`Account ID`>** 值，本教程稍后将在 Netsuite 配置下的步骤 8 中对此进行说明。 我们将找到确切的域（例如，在本例中为 system.na0.netsuite.com）。
+
+        ![配置单一登录](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > 上述 URL 中的值不是真实值。 请使用实际回复 URL 更新这些值。 若要获取该值，请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
 
 1. NetSuite 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -204,7 +208,7 @@ NetSuite 支持：
 
     b. 在“公司信息”窗格中的右侧列中，复制“帐户 ID”值。  
 
-    c. 将从 NetSuite 帐户中复制的“帐户 ID”粘贴到 Azure AD 中的“属性值”框内。   
+    c. 将从 NetSuite 帐户中复制的“帐户 ID”粘贴到 Azure AD 中的“属性值”框内。  
 
 10. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 若要分配这些权限，请执行以下操作：
 

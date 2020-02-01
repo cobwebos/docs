@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708667"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712982"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据仓库的持续集成和部署
 
@@ -30,11 +30,11 @@ ms.locfileid: "74708667"
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>使用 Visual Studio 生成实现持续集成
 
-1. 导航到 Azure Pipelines 并创建新的生成管道
+1. 导航到 Azure Pipelines 并创建新的生成管道。
 
       ![新建管道](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "新建管道")
 
-2. 选择源代码存储库 (Azure Repos Git)，然后选择 .NET Desktop 应用模板
+2. 选择源代码存储库 (Azure Repos Git)，然后选择 .NET Desktop 应用模板。
 
       ![管道设置](media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "管道设置") 
 
@@ -47,7 +47,7 @@ ms.locfileid: "74708667"
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>使用 Azure SQL 数据仓库（或数据库）部署任务实现持续部署
 
-1. 使用 [Azure SQL 数据库部署任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 也可使用 [Azure SQL 数据仓库部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) 
+1. 使用 [Azure SQL 数据库部署任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 也可使用 [Azure SQL 数据仓库部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。 
 
       ![部署任务](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "部署任务")
 
@@ -61,37 +61,7 @@ ms.locfileid: "74708667"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索 [Azure SQL 数据仓库体系结构](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-- 快速[创建 SQL 数据仓库][create a SQL Data Warehouse]
-- [加载示例数据][load sample data]
+- 探索 [Azure SQL 数据仓库体系结构](massively-parallel-processing-mpp-architecture.md)
+- 快速[创建 SQL 数据仓库](create-data-warehouse-portal.md)
+- [加载示例数据](sql-data-warehouse-load-sample-databases.md)
 - 浏览[视频](/azure/sql-data-warehouse/sql-data-warehouse-videos)
-
-
-
-<!--Image references-->
-
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Feature requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN forum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线消息传送概述 | Microsoft Docs
-description: 介绍服务总线消息传送
+description: 本文粗略概述了 Azure 服务总线（一种完全托管的企业集成消息代理）。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561603"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759374"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -106,7 +106,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 在 Azure 区域数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 服务总线支持标准的 [AMQP 1.0](service-bus-amqp-overview.md) 和 [HTTP/REST](/rest/api/servicebus/) 协议。
 

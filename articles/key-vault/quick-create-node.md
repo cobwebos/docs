@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978571"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773726"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入门：适用于 Node.js 的 Azure Key Vault 客户端库 (v4)
 
@@ -22,12 +22,12 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 提高安全性以及控制密钥和密码。
 - 在几分钟内创建并导入加密密钥。
 - 通过云扩展和全局冗余减少延迟。
-- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 简化和自动化与 TLS/SSL 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
 [API 参考文档](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [包 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 适用于操作系统的当前 [Node.js](https://nodejs.org)。
@@ -198,7 +198,7 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建公共标准负载均衡器 - Azure CLI
+title: 快速入门：创建公共负载均衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure CLI 创建公共负载均衡器
 services: load-balancer
@@ -7,7 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: twooley
 tags: azure-resource-manager
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 30f2fa7537ed481c25940a2ed67c99c58a7a80ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214793"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837165"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
-本快速入门演示如何创建标准负载均衡器。 为了测试负载均衡器，需要部署两个运行 Ubuntu 服务器的虚拟机 (VM)，并在两个 VM 之间对一个 Web 应用进行负载均衡。
+本快速入门演示如何创建公共负载均衡器。 为了测试负载均衡器，需要部署两个运行 Ubuntu 服务器的虚拟机 (VM)，并在两个 VM 之间对一个 Web 应用进行负载均衡。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -44,13 +44,21 @@ ms.locfileid: "74214793"
     --location eastus
 ```
 
-## <a name="create-a-public-standard-ip-address"></a>创建公共标准 IP 地址
+## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 标准负载均衡器仅支持标准公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 *myResourceGroupSLB* 中创建名为 *myPublicIP* 的标准公共 IP 地址。
+若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 *myResourceGroupSLB* 中创建名为 *myPublicIP* 的标准区域冗余公共 IP 地址。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
+
+若要在区域 1 中创建区域性公共 IP 地址，请使用：
+
+```azurecli-interactive
+  az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
+```
+
+ 使用 ```--sku basic``` 创建基本公共 IP。 “基本”不支持可用性区域。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
 
@@ -62,7 +70,7 @@ ms.locfileid: "74214793"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 ```--sku basic``` 创建基本公共 IP。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 ```azurecli-interactive
   az network lb create \
@@ -182,20 +190,11 @@ ms.locfileid: "74214793"
 
 ```
 
-
 ## <a name="create-backend-servers"></a>创建后端服务器
 
 本示例将创建三个要用作负载均衡器后端服务器的虚拟机。 若要验证负载均衡器是否已成功创建，还需要在虚拟机上安装 NGINX。
 
-### <a name="create-an-availability-set"></a>创建可用性集
-
-使用 [az vm availabilityset create](/cli/azure/network/nic) 创建可用性集
-
- ```azurecli-interactive
-  az vm availability-set create \
-    --resource-group myResourceGroupSLB \
-    --name myAvailabilitySet
-```
+如果创建具有基本公共 IP 的基本负载均衡器，则需使用 [az vm availabilityset create](/cli/azure/network/nic) 创建可用性集，以便将虚拟机添加到其中。 标准负载均衡器不需要此额外步骤。 Microsoft 建议使用标准负载均衡器。
 
 ### <a name="create-three-virtual-machines"></a>创建三个虚拟机
 
@@ -300,9 +299,7 @@ VM 可能需要几分钟才能部署好。
 ```azurecli-interactive 
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-step"></a>后续步骤
-本快速入门介绍了如何创建标准负载均衡器，向其附加 VM，配置负载均衡器流量规则、运行状况探测，然后测试负载均衡器。 若要了解有关 Azure 负载均衡器的详细信息，请继续学习 Azure 负载均衡器教程。
+## <a name="next-steps"></a>后续步骤
+在本快速入门中，我们创建了一个标准负载均衡器，向其附加了 VM，配置了负载均衡器流量规则与运行状况探测，然后测试了该负载均衡器。 若要详细了解 Azure 负载均衡器，请继续学习 [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 
-> [!div class="nextstepaction"]
-> [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
+详细了解[负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。

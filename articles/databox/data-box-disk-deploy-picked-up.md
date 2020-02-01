@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514113"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845484"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ ms.locfileid: "76514113"
 
    如果遇到任何问题，请访问 Data Box Operations Asia，网址为 adbo@microsoft.com。 提供主题标头中的作业名称和遇到的问题。
 
-3. 转交给快递员。 
+3. 转交给快递员。
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[在自托管中](#tab/in-selfmanaged)
+
+如果在日本、新加坡、韩国和西欧使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
+
+1. 在 Azure 门户中转到订单的“概览”边栏选项卡  。 如果选择“安排提货”  ，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
+
+2. 准备好返回设备时，请使用以下模板将电子邮件发送到 Azure Data Box 运营团队。
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Azure Data Box 运营团队会与你协作安排送货到 Azure 数据中心。
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

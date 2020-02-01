@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276012"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844915"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>快速入门：使用 Azure 门户诊断虚拟机网络流量筛选器问题
 
@@ -43,10 +42,10 @@ ms.locfileid: "74276012"
 
     |设置|值|
     |---|---|
-    |Name|myVm|
+    |名称|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |Subscription| 选择订阅。|
+    |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -73,13 +72,13 @@ ms.locfileid: "74276012"
 
 创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。
 
-1. 在门户中，选择“所有服务”。  在“所有服务”>“筛选器”框中，输入“网络观察程序”    。 结果中出现“网络观察程序”后，将其选中  。
+1. 在门户中，选择“所有服务”。  在“所有服务”筛选器框中，输入“网络观察程序”   。  结果中出现“网络观察程序”后，将其选中  。
 2. 在“网络诊断工具”下选择“IP 流验证”。  
 3. 选择订阅，输入或选择以下值，然后选择“检查”，如下图所示： 
 
     |设置            |值                                                                                              |
     |---------          |---------                                                                                          |
-    | Resource group    | 选择 myResourceGroup                                                                            |
+    | 资源组    | 选择 myResourceGroup                                                                            |
     | 虚拟机   | 选择 myVm                                                                                       |
     | 网络接口 | myvm - 你在创建 VM 时由门户创建的网络接口的名称是不同的。 |
     | 协议          | TCP                                                                                               |
@@ -93,7 +92,7 @@ ms.locfileid: "74276012"
 
     数秒钟后返回结果，指示访问已获得名为 **AllowInternetOutbound** 的安全规则的允许。 运行检查时，网络观察程序自动在“美国东部”区域创建一个网络观察程序，前提是你在运行检查之前，已经在“美国东部”区域以外的其他区域有了一个网络观察程序。
 4. 再次完成步骤 3，但请将“远程 IP 地址”更改为 **172.31.0.100**。  返回的结果指示访问已被名为 **DefaultOutboundDenyAll** 的安全规则拒绝。
-5. 再次完成步骤 3，但请将“方向”更改为“入站”，   将“本地端口”更改为  **80**，将“远程端口”更改为  **60000**。 返回的结果指示访问已被名为 **DefaultInboundDenyAll** 的安全规则拒绝。
+5. 再次完成步骤 3，但请将“方向”更改为“入站”，   将“本地端口”更改为  **80**，将“远程端口”更改为  **60000**。 返回的结果指示名为 **DefaultInboundDenyAll** 的安全规则已拒绝了访问。
 
 了解哪些安全规则允许或拒绝出入 VM 的流量以后，即可确定问题解决方法。
 
@@ -109,7 +108,7 @@ ms.locfileid: "74276012"
 
     ![安全规则前缀](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
-    列表中的一个前缀是 **12.0.0.0/6**，涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在步骤 2 的图片中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 关闭“地址前缀”框。  若要拒绝到 13.107.21.200 的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
+    列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在步骤 2 的图片中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 关闭“地址前缀”框。  若要拒绝到 13.107.21.200 的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 4. 运行[使用 IP 流验证](#use-ip-flow-verify)的步骤 4 中针对 172.131.0.100 的出站检查时，你了解到 **DefaultOutboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllOutBound** 规则，后者指定 **0.0.0.0/0** 作为“目标”。  此规则拒绝到 172.131.0.100 的出站通信，因为此地址不在图片中显示的任何其他“出站规则”的“目标”范围内。   若要允许出站通信，可以添加一项优先级更高的安全规则，允许出站流量到达 172.131.0.100 地址的端口 80。
 5. 运行[使用 IP 流验证](#use-ip-flow-verify)的步骤 5 中流量来自 172.131.0.100 的入站检查时，你了解到 **DefaultInboundDenyAll** 规则拒绝了通信。 该规则相当于在步骤 2 的图片中显示的 **DenyAllInBound** 规则。 **DenyAllInBound** 规则会强制实施，因为没有任何其他允许端口 80 将入站流量从 172.31.0.100 发往 VM 的规则有更高的优先级。 若要允许入站通信，可以添加一项优先级更高的安全规则，允许通过端口 80 从 172.31.0.100 发送入站流量。
 
@@ -120,7 +119,7 @@ ms.locfileid: "74276012"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

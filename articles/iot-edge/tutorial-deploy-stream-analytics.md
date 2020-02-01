@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457237"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772277"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
 许多 IoT 解决方案使用分析服务来了解从 IoT 设备到达云的数据。 使用 Azure IoT Edge 时，可以获取 [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)逻辑，将其转到设备中。 在边缘处理遥测流可以减少上传数据量，缩短对可操作见解进行响应的时间。
 
-Azure IoT Edge 和 Azure 流分析已集成，因此可以在 Azure 门户中创建一项 Azure 流分析作业，然后将其作为 IoT Edge 模块进行部署，不需额外的代码。  
+集成 Azure IoT Edge 和 Azure 流分析，以简化工作负载开发。 可以在 Azure 门户中创建 Azure 流分析作业，然后将其部署为 IoT Edge 模块，无附加代码。  
 
 Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 IoT Edge 设备上进行数据分析。 有关详细信息，请参阅 [Azure 流分析文档](../stream-analytics/stream-analytics-edge.md)。
 
@@ -33,7 +33,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 <center>
 
-![关系图 - 教程体系结构、阶段和部署 ASA 作业](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+![关系图 - 教程体系结构：阶段和部署 ASA 作业](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +46,7 @@ Azure IoT Edge 设备：
 
 云资源：
 
-* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 
 ## <a name="create-an-azure-stream-analytics-job"></a>创建 Azure 流分析作业
 
@@ -54,20 +54,20 @@ Azure IoT Edge 设备：
 
 * 从 IoT Edge 设备接收数据。
 * 查询遥测数据中超出设置的范围的值。
-* 根据查询结果对 IoT Edge 设备采取措施。 
+* 根据查询结果对 IoT Edge 设备采取措施。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-创建可以在 IoT Edge 设备上运行的 Azure 流分析作业时，需采用特定的存储方式，以便能够从设备进行调用。 可以使用现有的 Azure 存储帐户，也可以现在就创建一个新的。 
+创建可以在 IoT Edge 设备上运行的 Azure 流分析作业时，需采用特定的存储方式，以便能够从设备进行调用。 可以使用现有的 Azure 存储帐户，也可以现在就创建一个新的。
 
-1. 在 Azure 门户中，转到“创建资源” > “存储” > “存储帐户”。    
+1. 在 Azure 门户中，转到“创建资源” > “存储” > “存储帐户”。   
 
 1. 提供以下值来创建存储帐户：
 
    | 字段 | 值 |
    | ----- | ----- |
    | 订阅 | 选择与 IoT 中心相同的订阅。 |
-   | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
+   | 资源组 | 建议对 IoT Edge 快速入门和教程中的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 名称 | 为存储帐户提供唯一的名称。 |
    | 位置 | 选择靠近你的位置。 |
 
@@ -88,7 +88,7 @@ Azure IoT Edge 设备：
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 |
    | 宿主环境 | 选择“边缘”。  |
- 
+
 1. 选择“创建”  。
 
 ### <a name="configure-your-job"></a>配置作业
@@ -105,7 +105,7 @@ Azure IoT Edge 设备：
 
 1. 从下拉列表中选择“边缘中心”。 
 
-1. 在“新建输入”  窗格中，输入 **temperature** 作为输入别名。 
+1. 在“新建输入”  窗格中，输入 **temperature** 作为输入别名。
 
 1. 将其他字段保留默认值，然后选择“保存”。 
 
@@ -152,7 +152,7 @@ Azure IoT Edge 设备：
 
 ## <a name="deploy-the-job"></a>部署作业
 
-现已准备好在 IoT Edge 设备上部署 Azure 流分析作业。 
+现已准备好在 IoT Edge 设备上部署 Azure 流分析作业。
 
 在本部分，请使用 Azure 门户中的**设置模块**向导来创建部署清单。  部署清单是一个 JSON 文件，该文件描述将要部署到设备的所有模块、用于存储模块映像的容器注册表、模块的管理方式，以及模块的相互通信方式。 IoT Edge 设备从 IoT 中心检索其部署清单，任何使用其中的信息来部署和配置所有已分配的模块。
 

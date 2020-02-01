@@ -51,7 +51,7 @@
       href: service-fabric-mesh-storing-state.md
     - name: 机密
       href: service-fabric-mesh-secrets-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 设置开发环境
       href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
@@ -71,9 +71,11 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: 管理机密
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: 将应用程序移动到另一个 Azure 区域
+      href: move-across-regions.md
     - name: 查找示例
       href: service-fabric-mesh-howto-find-samples.md
-- name: 引用
+- name: 参考
   items:
     - name: Service Fabric 网格资源提供程序 REST API
       href: /rest/api/servicefabric/sfmeshrp-index

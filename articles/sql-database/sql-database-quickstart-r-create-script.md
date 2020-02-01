@@ -13,32 +13,34 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123192"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768491"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>快速入门：在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本
 
-在本快速入门中，你将使用 [Azure SQL 数据库中的机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)创建并运行一组简单的 R 脚本。 你将学习如何将一个格式标准的 R 脚本包装在存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 中并在 SQL 数据库中执行该脚本。
+在本快速入门中，我们使用 Azure SQL 数据库中的机器学习服务（使用 R）创建并运行一组 R 脚本。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 一个使用[服务器级防火墙规则](sql-database-server-level-firewall-rule.md)的 [Azure SQL 数据库](sql-database-single-database-get-started.md)
+- 启用了 R 的[机器学习服务](sql-database-machine-learning-services-overview.md)。 [注册预览版](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- 若要在这些练习中运行示例代码，必须先有一个启用了机器学习服务（使用 R）的 Azure SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
+> [!NOTE]
+> 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。
 
-- 确保已安装了最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
-
-- 在本快速入门中，你需要配置一个服务器级防火墙规则。 有关如何执行此操作的信息，请参阅[创建服务器级防火墙规则](sql-database-server-level-firewall-rule.md)。
+此示例使用存储过程 [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 包装格式正确的 R 脚本。
 
 ## <a name="run-a-simple-script"></a>运行简单脚本
 
-若要运行某个 R 脚本，需要将其作为参数传递给系统存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)。
+若要运行 R 脚本，请将它作为参数传递给系统存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)。
 
 在下面的步骤中，你将在 SQL 数据库中运行此示例 R 脚本：
 
@@ -56,7 +58,7 @@ print(c(c, d))
 
 1. 将完整的 R 脚本传递给 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 存储过程。
 
-   此脚本是通过 `@script` 参数传递的。 `@script` 参数中的所有内容都必须是有效的 R 代码。
+   通过 `@script` 参数传递脚本。 `@script` 参数内的所有内容都必须是有效的 R 代码。
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -73,11 +75,11 @@ print(c(c, d))
 
    > [!NOTE]
    > 如果你是管理员，可以自动运行外部代码。 你可以使用以下命令向其他用户授予权限：
-   <br>**GRANT EXECUTE ANY EXTERNAL SCRIPT TO** *\<username\>* 。
+   <br>**GRANT EXECUTE ANY EXTERNAL SCRIPT TO** *\<username\>* .
 
-2. 将会计算出正确结果，且 R 的 `print` 函数会将结果返回到“消息”窗口。 
+2. 计算出正确的结果，R `print` 函数将结果返回到“消息”窗口  。
 
-   它应当如下所示。
+   结果应该如下所示。
 
     **结果**
 
@@ -88,7 +90,7 @@ print(c(c, d))
 
 ## <a name="run-a-hello-world-script"></a>运行 Hello World 脚本
 
-仅输出字符串“Hello World”的脚本是一个典型的示例脚本。 运行以下命令。
+典型的示例脚本只输出字符串“Hello World”。 运行以下命令。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -102,12 +104,12 @@ GO
 
 | | |
 |-|-|
-| @language | 定义要调用的语言扩展，在本例中为 R |
-| @script | 定义传递给 R 运行时的命令。 必须将整个 R 脚本作为 Unicode 文本包括在此参数中。 还可以将文本添加到 **nvarchar** 类型的一个变量，然后调用该变量 |
-| @input_data_1 | 由查询返回的数据，将传递给 R 运行时，后者再将数据作为数据帧返回到 SQL Server |
-|WITH RESULT SETS | 子句定义为 SQL Server 返回的数据表的架构，添加“Hello World”作为列名，添加 **int** 作为数据类型 |
+| @language | 定义本例中要调用 R 的语言扩展 |
+| @script | 定义传递给 R 运行时的命令。 必须将整个 R 脚本作为 Unicode 文本包括在此参数中。 还可将文本添加到 nvarchar 类型的变量并调用该变量  |
+| @input_data_1 | 查询返回的数据将传递给 R 运行时，后者将数据以数据框架的形式返回给 SQL Server |
+|WITH RESULT SETS | 子句为 SQL Server 定义返回的数据表的架构，并将“Hello World”添加为列名称且 int 为数据类型  |
 
-命令将输出以下文本：
+命令输出以下文本：
 
 | Hello World |
 |-------------|
@@ -115,11 +117,11 @@ GO
 
 ## <a name="use-inputs-and-outputs"></a>使用输入和输出
 
-默认情况下，[sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 接受单个数据集作为输入，该数据集通常以有效 SQL 查询的形式提供。 然后，它将返回单个 R 数据帧作为输出。
+默认情况下，[sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 接受单个数据集作为输入，该数据集通常以有效 SQL 查询的形式提供。 然后，它返回单个 R 数据帧作为输出。
 
 现在，让我们使用 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 的默认输入和输出变量：**InputDataSet** 和 **OutputDataSet**。
 
-1. 创建一个小型的测试数据表。
+1. 创建一个小型测试数据表。
 
     ```sql
     CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -135,7 +137,7 @@ GO
     GO
     ```
 
-1. 使用 `SELECT` 语句查询该表。
+1. 使用 `SELECT` 语句来查询表。
   
     ```sql
     SELECT *
@@ -146,7 +148,7 @@ GO
 
     ![RTestData 表的内容](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. 运行以下 R 脚本。 它使用 `SELECT` 语句从表中检索数据，将其传递给 R 运行时，然后将数据作为数据帧返回。 `WITH RESULT SETS` 子句定义 SQL 数据库的返回数据表的架构，添加列名 *NewColName*。
+1. 运行以下 R 脚本。 它使用 `SELECT` 语句从表中检索数据，通过 R 运行时传递数据，并以数据帧的形式返回数据。 `WITH RESULT SETS` 子句定义 SQL 数据库的返回数据表的架构，添加列名 *NewColName*。
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -157,9 +159,9 @@ GO
 
     **结果**
 
-    ![可以从表返回数据的 R 脚本的输出](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
+    ![从表返回数据的 R 脚本的输出](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. 现在，让我们更改输入和输出变量的名称。 默认的输入和输出变量名称为 **InputDataSet** 和 **OutputDataSet**，此脚本将这些名称更改成了 **SQL_in** 和 **SQL_out**：
+1. 现在，更改输入变量和输出变量的名称。 默认的输入和输出变量名称是 InputDataSet 和 OutputDataSet，而此脚本会将名称更改为 SQL_in 和 SQL_out     ：
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -170,14 +172,14 @@ GO
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    请注意，R 区分大小写。 R 脚本中使用的输入和输出变量（**SQL_out**、**SQL_in**）需要与通过 `@input_data_1_name` 和 `@output_data_1_name` 定义的值匹配，包括大小写。
+    请注意 R 区分大小写。 R 脚本中使用的输入和输出变量（**SQL_out**、**SQL_in**）需要与通过 `@input_data_1_name` 和 `@output_data_1_name` 定义的值匹配，包括大小写。
 
    > [!TIP]
    > 只能将一个输入数据集作为参数传递，并且只能返回一个数据集。 但是，可以从 R 代码内部调用其他数据集，并且可以返回除数据集之外的其他类型的输出。 也可向任何参数添加 OUTPUT 关键字，让该参数随结果一起返回。
 
-1. 还可以仅使用 R 脚本在无输入数据的情况下（`@input_data_1` 设置为空）生成值。
+1. 还可以仅使用没有输入数据的 R 脚本（`@input_data_1` 设置为空白）生成值。
 
-   下面的脚本输出文本“hello”和“world”。
+   以下脚本输出文本“hello”和“world”。
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -203,7 +205,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-R 的 `print` 函数将版本返回到“消息”窗口。  在下面的示例输出中，可以看到此示例中的 SQL 数据库已安装 R 版本 3.4.4。
+R `print` 函数将该版本返回到“消息”窗口  。 在下面的示例输出中，可以看到此示例中的 SQL 数据库已安装 R 版本 3.4.4。
 
 **结果**
 
@@ -230,7 +232,7 @@ nickname       Someone to Lean On
 
 Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R 包。
 
-若要查看已安装 R 包的列表（包括版本、依赖项、许可证和库路径信息），请运行以下脚本。
+若要查看已安装的 R 包列表（包括版本、依赖项、许可证和库路径的信息），请运行以下脚本。
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -245,11 +247,11 @@ WITH result sets((
             ));
 ```
 
-输出来自 R 中的 `installed.packages()`，以结果集的形式返回。
+输出来自 R 中的 `installed.packages()`，并作为结果集返回。
 
 **结果**
 
-![R 中的已安装包](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
+![R 中安装的包](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>后续步骤
 

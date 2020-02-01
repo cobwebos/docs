@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: bf09d8e9b2dd8cebcf3ef8414afcc8ac031f4cdf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170432"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774221"
 ---
 可以使用适用于 Python 的语言理解 (LUIS) 创作客户端库执行以下操作：
 
@@ -187,3 +187,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 ```console
 python quickstart-file.py
 ```
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成预测后，请删除文件及其子目录，对此快速入门中的工作进行清理。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466715"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837784"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -25,7 +25,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 + [认知搜索中的 AI 简介](cognitive-search-concept-intro.md)
 + [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
-+ 示例：[创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
++ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>操作说明指南
 + [如何定义技能集](cognitive-search-defining-skillset.md)
@@ -36,13 +36,14 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 + [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
 + [故障排除提示](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 + [内置技能](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)

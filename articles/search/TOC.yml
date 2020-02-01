@@ -64,15 +64,15 @@
 - name: 示例
   items:
     - name: 'C# 示例'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: JavaScript 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Python 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: 培训
   items:
     - name: 简介 (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: API 版本
           href: search-api-versions.md
+        - name: 预览功能列表
+          href: search-api-preview.md
         - name: 使用 .NET 进行开发
           href: search-howto-dotnet-sdk.md
         - name: 升级 SDK
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: 为关系数据建模
           href: index-sql-relational-data.md
-    - name: 导入（编制索引）
+    - name: 编制索引（导入）
       items:
         - name: 数据导入概述
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: 处理并发更新
           href: search-howto-concurrency.md
-    - name: 为 Azure Blob 数据编制索引
+    - name: 使用索引器
       items:
-        - name: 将 AI 与 Blob 数据配合使用
-          href: search-blob-ai-integration.md
-        - name: 添加全文搜索
-          href: search-blob-storage-integration.md
-        - name: 设置 blob 索引器
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: 设置 Azure Data Lake Storage Gen2 索引器
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: 为一对多 blob 创建索引
-          href: search-howto-index-one-to-many-blobs.md
-        - name: 为 CSV Blob 创建索引
-          href: search-howto-index-csv-blobs.md
-        - name: 为 JSON Blob 创建索引
-          href: search-howto-index-json-blobs.md
-    - name: 使用“索引器”编制索引
-      items:
-        - name: 索引器概述
+        - name: 配置索引器
           href: search-indexer-overview.md
-        - name: Azure 表存储索引器
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL DB 索引器
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB 索引器
-          href: search-howto-index-cosmosdb.md
-        - name: 计划索引器
-          href: search-howto-schedule-indexers.md
         - name: 映射字段
           href: search-indexer-field-mappings.md
-        - name: 连接到 SQL 托管实例
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: 连接到 SQL Server VM
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: 监视索引器
           href: search-howto-monitor-indexers.md
-    - name: 使用 AI 扩充
+        - name: 计划索引器
+          href: search-howto-schedule-indexers.md
+        - name: 数据源
+          items:
+            - name: Azure Blob
+              items:
+                - name: 在 Blob 上搜索
+                  href: search-blob-storage-integration.md
+                - name: 使用 AI 了解 Blob
+                  href: search-blob-ai-integration.md
+                - name: 配置 Blob 索引器
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: 为一对多 blob 创建索引
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: 为 CSV Blob 创建索引
+                  href: search-howto-index-csv-blobs.md
+                - name: 为 JSON Blob 创建索引
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Azure Data Lake Storage Gen2
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: Azure SQL 数据库
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure 表存储
+              href: search-howto-indexing-azure-tables.md
+            - name: SQL 托管实例
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Server VM
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: AI 扩充
       items:
         - name: 附加认知服务资源
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET（管理）
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python（管理）
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: .NET（管理）
-      href: /rest/api/searchmanagement
-    - name: REST（预览）
-      items:
-        - name: API 版本 2019-05-06-Preview
-          href: search-api-preview.md
-        - name: 重置技能 API
-          href: preview-api-resetskills.md
     - name: 资源管理器模板
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: 搜索 2019-05-06
+          href: /rest/api/searchservice
+        - name: 重置技能 (api-version=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: 管理 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: 管理 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: 管理 API
+          href: /python/api/overview/azure/search?view=azure-python
     - name: OData 语言参考
       items:
         - name: 概述
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: OData 语言语法
           href: search-query-odata-syntax-reference.md
-    - name: 认知技能参考
-      href: cognitive-search-predefined-skills.md
+    - name: 技能参考
       items:
-        - name: 关键短语提取
-          href: cognitive-search-skill-keyphrases.md
-        - name: 语言检测
-          href: cognitive-search-skill-language-detection.md
-        - name: 实体识别
-          href: cognitive-search-skill-entity-recognition.md
-        - name: 文本合并
-          href: cognitive-search-skill-textmerger.md
-        - name: 文本拆分
-          href: cognitive-search-skill-textsplit.md
-        - name: 情绪
-          href: cognitive-search-skill-sentiment.md
-        - name: 文本翻译
-          href: cognitive-search-skill-text-translation.md
-        - name: 图像分析
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: 整形程序
-          href: cognitive-search-skill-shaper.md
-        - name: 条件逻辑
-          href: cognitive-search-skill-conditional.md
-        - name: 文档提取
-          href: cognitive-search-skill-document-extraction.md
-        - name: PII 检测
-          href: cognitive-search-skill-pii-detection.md
-    - name: 自定义技能
-      items:
-        - name: 自定义 Web API
-          href: cognitive-search-custom-skill-web-api.md
-    - name: 不推荐使用的技能
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: 命名实体识别
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: 内置技能
+          items:
+            - name: 概述
+              href: cognitive-search-predefined-skills.md
+            - name: 条件逻辑
+              href: cognitive-search-skill-conditional.md
+            - name: 文档提取
+              href: cognitive-search-skill-document-extraction.md
+            - name: 实体识别
+              href: cognitive-search-skill-entity-recognition.md
+            - name: 图像分析
+              href: cognitive-search-skill-image-analysis.md
+            - name: 关键短语提取
+              href: cognitive-search-skill-keyphrases.md
+            - name: 语言检测
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII 检测
+              href: cognitive-search-skill-pii-detection.md
+            - name: 情绪
+              href: cognitive-search-skill-sentiment.md
+            - name: 整形程序
+              href: cognitive-search-skill-shaper.md
+            - name: 文本合并
+              href: cognitive-search-skill-textmerger.md
+            - name: 文本拆分
+              href: cognitive-search-skill-textsplit.md
+            - name: 文本翻译
+              href: cognitive-search-skill-text-translation.md
+        - name: 自定义技能
+          items:
+            - name: 自定义 Web API
+              href: cognitive-search-custom-skill-web-api.md
+        - name: 弃用的技能
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: 命名实体识别
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: 资源
   items:
     - name: Azure 社区支持

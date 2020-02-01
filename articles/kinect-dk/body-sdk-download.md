@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: c4e831aebf7e5b8e1eed2682ae4c531f210445c6
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e64e706c2a15b6621d2ee3b46af05827316f745
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708925"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756239"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -28,6 +28,7 @@ ms.locfileid: "75708925"
 
 版本       | 下载
 --------------|----------
+1.0.0 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100848) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/1.0.0)
 0.9.5 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100636) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.5)
 0.9.4 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100415) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.4)
 0.9.3 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100307) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.3)
@@ -46,14 +47,21 @@ ms.locfileid: "75708925"
 
 基本教程需要 `libk4abt<major>.<minor>-dev` 包。 若要安装该包，请运行
 
-`sudo apt install libk4abt0.9-dev`
+`sudo apt install libk4abt1.0-dev`
 
 如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 1.0.0”。 你将要在此路径中查找文章中参考的示例。
 > 正文跟踪示例位于 Azure-Kinect-Samples 存储库的 [body-tracking-samples](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples) 文件夹中。 你将在此处的文章中找到参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v100"></a>v1.0.0
+* [功能] 为 msi 安装程序添加了 C# 包装器。
+* [Bug 修复] 修复了无法正确检测头旋转的问题：[链接](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/997)
+* [Bug 修复] 修复了在 Linux 计算机上 CPU 使用率高达 100% 的问题：[链接](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1007)
+* [示例] 将两个示例添加到示例存储库中。 示例 1 演示了如何将深度空间中的正文跟踪结果转换为颜色空间[链接](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples/camera_space_transform_sample)；示例 2 演示了如何检测地面[链接](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples/floor_detector_sample)
 
 ### <a name="v095"></a>v0.9.5
 * [功能] C# 支持。 C# 包装器已打包在 nuget 包中。
@@ -101,12 +109,6 @@ ms.locfileid: "75708925"
 * [API 更改] 已将 `k4abt_frame_get_body()` 划分为两个单独的函数：`k4abt_frame_get_body_skeleton()` 和 `k4abt_frame_get_body_id()`。 现在，无需复制整个主干结构即可查询人体 ID。
 * [API 更改] 添加了 `k4abt_frame_get_timestamp_usec()` 函数用于简化用户查询人体帧时间戳的步骤。
 * 进一步改进了人体跟踪算法的准确性和跟踪可靠性
-
-### <a name="v030"></a>v0.3.0
-
-* [中断性变更] 通过转移到 CUDA 10.1 依赖项添加了对 NVIDIA RTX GPU 的支持
-* [API 更改] 提供与 Kinect for Windows v2 SDK 一致的关节输出（以毫米为单位）
-* 进一步改进了人体跟踪算法的准确性和可靠性。
 
 ## <a name="next-steps"></a>后续步骤
 

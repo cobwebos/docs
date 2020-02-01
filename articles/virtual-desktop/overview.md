@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514266"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772786"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -99,13 +99,15 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 |kms.core.windows.net|TCP 端口 1688|Windows 10 激活|
 
 >[!IMPORTANT]
->若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure AD 等其他服务的 URL。
+>若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
 
 >[!NOTE]
+>Windows 虚拟桌面目前没有可以通过将其加入允许列表来允许网络流量的 IP 地址范围列表。 我们目前仅支持特定于允许列表操作的 URL。
+>
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
->2. 打开“事件查看器”  ，导航到  “Windows” > “应用程序日志”  并查找事件 ID 3702。
+>2. 打开“事件查看器”  ，导航到“Windows 日志” > “应用程序” > “WVD-Agent”并查找事件 ID 3702。   
 >3. 将在事件 ID 3702 下找到的 URL 加入白名单。 事件 ID 3702 下的 URL 是特定于区域的。 你需要对要在其中部署虚拟机的每个区域的相关 URL 重复执行加入白名单过程。
 
 Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
@@ -137,7 +139,7 @@ Windows 虚拟桌面目前支持以下 x64 操作系统映像：
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windows 10 企业版 KN 操作系统映像。
+Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windows 10 企业版 KN 操作系统映像。 由于扇区大小限制，Windows 7 也不支持在托管 Azure 存储上托管的任何基于 VHD 或 VHDX 的配置文件解决方案。
 
 可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
 

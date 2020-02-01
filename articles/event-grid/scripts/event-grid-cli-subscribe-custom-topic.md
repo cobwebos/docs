@@ -1,22 +1,22 @@
 ---
 title: Azure CLI 脚本示例 - 订阅自定义主题 | Microsoft Docs
-description: Azure CLI 脚本示例 - 订阅自定义主题
+description: 本文提供了一个示例 Azure CLI 脚本，演示如何订阅自定义主题的事件网格事件。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: a46c348533468ad037ac092037cb34def2b0405c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 9d82a5c3d9723c26d5a98bb2f0c92a6739ffee25
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580369"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720123"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>使用 Azure CLI 订阅自定义主题的事件
 
@@ -41,7 +41,7 @@ ms.locfileid: "73580369"
 
 此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 创建事件网格订阅。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 扩展版本 | 创建事件网格订阅。 |
