@@ -740,18 +740,18 @@
   items:
     - name: 术语表
       href: developer-glossary.md
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 视频
+      href: identity-videos.md
     - name: Azure AD 博客
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft 标识平台开发人员博客
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 尝试使用 Microsoft 登录
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Azure 资源的托管标识
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: 获取帮助
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Azure 资源的托管标识
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Microsoft 标识平台视频
-      href: identity-videos.md

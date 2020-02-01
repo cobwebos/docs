@@ -13,6 +13,8 @@
           href: Quickstarts/csharp-sdk.md
         - name: Python SDK
           href: QuickStarts/python-sdk.md
+        - name: Go SDK
+          href: QuickStarts/go-sdk.md
     - name: 使用 REST API
       items:
         - name: 在图像中检测人脸
