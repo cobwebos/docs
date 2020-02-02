@@ -1,5 +1,5 @@
 ---
-title: 以并行方式运行任务以高效使用计算资源 - Azure Batch | Microsoft 文档
+title: 并行运行任务以优化计算资源-Azure Batch
 description: 通过减少所用的计算节点数并在 Azure Batch 池的每个节点上运行并发任务，来提高效率并降低成本
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/17/2019
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1ee0db85818349938fcf5248e10e5eaac546bae5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026811"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930450"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
 

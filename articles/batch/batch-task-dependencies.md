@@ -1,5 +1,5 @@
 ---
-title: 使用任务依赖关系来基于其他任务的完成情况运行任务 - Azure Batch | Microsoft 文档
+title: 创建任务依赖关系以运行任务-Azure Batch
 description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，以处理 MapReduce 样式和类似的大数据工作负荷。
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026231"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937766"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 

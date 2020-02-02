@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6d03e66d125c4234a95e5a79f212bc81e7cea560
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892696"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933390"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -26,6 +26,10 @@ ms.locfileid: "74892696"
 下图是一个图例，而不是有关在后端中视频索引器工作原理的技术说明。
 
 ![Azure 媒体服务视频索引器流程图](./media/video-indexer-overview/model-chart.png)
+
+## <a name="compliance-privacy-and-security"></a>合规性、隐私性和安全性
+ 
+作为一项重要提醒，你必须遵守对你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何其他 Azure 服务，可能会对其他人造成损害。 在将任何视频（包括任何生物识别数据）上传到视频索引器服务进行处理和存储之前，你必须拥有所有正确的权限，包括来自视频中个人的所有适当的同意。 若要了解 Microsoft[认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)，请参阅有关视频索引器的隐私和安全性。 若要获得 Microsoft 的隐私义务并处理数据，请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款（"OST"）](https://www.microsoft.com/licensing/product-licensing/products)和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 其他隐私信息（包括数据保留、删除/销毁）在 OST 和[此处](faq.md)提供。 通过使用视频索引器，你同意遵守认知服务条款、OST、DPA 和隐私声明。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>我可以使用视频索引器进行哪些操作？
 

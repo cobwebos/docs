@@ -3,17 +3,17 @@ title: 导入和导出域区域文件-Azure CLI
 titleSuffix: Azure DNS
 description: 了解如何通过使用 Azure CLI 导入和导出 Azure DNS 的 DNS 区域文件
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.date: 4/3/2019
-ms.author: allensu
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 036486ed15c9d6502b5e1655bdab4643128bca4b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082899"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936976"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 导入和导出 DNS 区域文件
 
@@ -55,7 +55,7 @@ Azure CLI 是用于管理 Azure 服务的跨平台命令行工具。 它适用�
 * `$ORIGIN` 指令是可选的并受支持。 如果未设置 `$ORIGIN`，则使用的默认值是在命令行上指定的区域名称（加上结尾 "."）。
 * `$INCLUDE` 和 `$GENERATE` 指令不受支持。
 * 支持这些记录类型： A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
-* Azure DNS 会在创建区域时，自动创建 SOA 记录。 导入区域文件时，*除了* `host` 参数，所有的 SOA 参数都取自区域文件。 此参数会使用 Azure DNS 提供的值。 这是因为此参数必须引用 Azure DNS 提供的主名称服务器。
+* Azure DNS 会在创建区域时，自动创建 SOA 记录。 导入区域文件时，*除了*`host` 参数，所有的 SOA 参数都取自区域文件。 此参数会使用 Azure DNS 提供的值。 这是因为此参数必须引用 Azure DNS 提供的主名称服务器。
 * Azure DNS 在创建区域时，也会在区域顶点处自动创建名称服务器记录集。 仅导入此记录集的 TTL。 这些记录包含由 Azure DNS 提供的名称服务器名称。 导入的区域文件中包含的值不会覆盖记录数据。
 * 在公开预览版期间，Azure DNS 仅支持单字符串的 TXT 记录。 多字符串 TXT 记录会被连接在一起并截断为 255 个字符。
 
@@ -155,7 +155,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 ## <a name="export-a-dns-zone-file-from-azure-dns"></a>从 Azure DNS 导出 DNS 区域文件
 
-用于导出 DNS 区域的 Azure CLI 命令的格式为：
+用于导出 DNS 区域 Azure CLI 命令的格式为：
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>

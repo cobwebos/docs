@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录 | Microsoft Do
 description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: allensu
-ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211693"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932535"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -35,7 +35,7 @@ ms.locfileid: "74211693"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
@@ -230,7 +230,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-使用 `Set-AzDnsRecordSet` 可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换为指定的记录集。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
+使用 `Set-AzDnsRecordSet` 用指定的记录集*替换*Azure DNS （以及它包含的所有记录）中的现有记录集。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
 此操作序列也可*通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
 
@@ -238,7 +238,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `-Ipv4Address` 的 `Add-AzDnsRecordConfig` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
+上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
 类型为“CNAME”或“SOA”的记录集不能包含多个记录。 此约束源自 DNS 标准， 不是 Azure DNS 的限制。
 
@@ -388,7 +388,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则每个 cmdlet 都会提示用户进行确认。 由于 `$ConfirmPreference` 的默认值为 `High`，因此在使用默认的 PowerShell 设置时不会发出这些提示。
 
-可以使用 `$ConfirmPreference` 参数重写当前的 `-Confirm` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。 
+可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。 
 
 有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](/powershell/module/microsoft.powershell.core/about/about_preference_variables)（关于首选项变量）。
 

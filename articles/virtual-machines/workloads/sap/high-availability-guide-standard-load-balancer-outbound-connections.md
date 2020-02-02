@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293804"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935185"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接
 
@@ -165,7 +165,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
    防火墙规则如下所示： ![与 Azure 防火墙建立出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. 创建从 Vm 子网到**MyAzureFirewall**专用 IP 的用户定义路由。
-   1. 在路由表中，单击 "路由"。 选择“添加”。 
+   1. 在路由表中，单击 "路由"。 选择 "添加"。 
    1. 路由名称： ToMyAzureFirewall，地址前缀： **0.0.0.0/0**。 下一跃点类型：选择 "虚拟设备"。 下一个跃点地址：输入配置的防火墙的专用 IP 地址： **11.97.1.4**。  
    1. 保存
 
@@ -200,11 +200,11 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
   - SUSE  
      ```
      # Place the cluster in maintenance mode
-     sudo pcs property set maintenance-mode=true
+     sudo crm configure property maintenance-mode=true
      #Restart on all nodes
      sudo systemctl restart pacemaker
      # Take the cluster out of maintenance mode
-     sudo pcs property set maintenance-mode=false
+     sudo crm configure property maintenance-mode=true
      ```
 
   - Red Hat  

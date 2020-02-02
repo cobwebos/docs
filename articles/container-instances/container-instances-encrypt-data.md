@@ -2,14 +2,15 @@
 title: 加密部署数据
 description: 了解为容器实例资源保留的数据加密，以及如何使用客户管理的密钥对数据进行加密
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904206"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934306"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -87,15 +88,18 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 > [!IMPORTANT]
 > 使用客户管理的密钥加密部署数据在当前推出的最新 API 版本（2019-12-01）中提供。在部署模板中指定此 API 版本。 如果你有任何问题，请联系 Azure 支持部门。
 
-设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 有关使用模板部署 ACI 资源的详细信息，请[参阅教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板部署 ACI 资源，请[参阅教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+* 在 "`resources`" 下，将 `apiVersion` 设置为 "`2012-12-01`"。
+* 在部署模板的容器组属性部分下，添加一个 `encryptionProperties`，其中包含以下值：
+  * `vaultBaseUrl`：密钥保管库的 DNS 名称，可在门户中密钥保管库资源的 "概述" 边栏选项卡上找到。
+  * `keyName`：之前生成的密钥的名称
+  * `keyVersion`：密钥的当前版本。 若要找到此项，可单击密钥本身（在 key vault 资源的 "设置" 部分中的 "密钥" 下）
+* 在容器组属性下，添加值为 `Standard`的 `sku` 属性。 API 版本2019-12-01 中需要 `sku` 属性。
 
-具体来说，在部署模板的容器组属性部分下，添加 "encryptionProperties"，其中包含以下值：
-* vaultBaseUrl：密钥保管库的 DNS 名称，可在门户中密钥保管库资源的 "概述" 边栏选项卡上找到。
-* keyName：前面生成的密钥的名称
-* keyVersion：密钥的当前版本。 若要找到此项，可单击密钥本身（在 key vault 资源的 "设置" 部分中的 "密钥" 下）
-
+以下模板代码段显示了用于加密部署数据的其他属性：
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,6 +112,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
@@ -116,11 +121,105 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
+下面是一个完整的模板，该模板在[教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中的模板改编。 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
+```
+
 ### <a name="deploy-your-resources"></a>部署资源
 
 如果在桌面上创建并编辑了模板文件，则可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
 
-使用“az group create”命令创建资源组[][az-group-create]。
+使用“[az group create][az-group-create]”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

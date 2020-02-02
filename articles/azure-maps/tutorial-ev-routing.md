@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910907"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844745"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
-Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 创建位置感知的应用及 IoT、移动、物流与资产跟踪解决方案。 
+Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 创建位置感知的应用、IoT、移动、物流与资产跟踪解决方案。 
 
 可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API](https://docs.microsoft.com/rest/api/maps/route)，让用户根据各种条件计算多个数据点之间的路线。 计算基于各种条件，例如车辆类型或可抵达区域。 
 
-本教程逐步讲解一种方案，帮助遇到电量不足情况的电动车司机根据驾驶时间和车辆位置找到最近的充电站。
+本教程介绍如何为遇到电量不足情况的电动车司机提供帮助。 该司机需要找到离当前车辆位置最近的充电站。
 
 在本教程中，将：
 
@@ -39,7 +39,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 若要完成本教程，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 
 
-若要在 S1 定价层中创建 Azure Maps 帐户订阅，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 S1 定价层的 Azure Maps 帐户订阅。 
+若要创建 Azure Maps 帐户订阅，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明操作。 需要一个使用 S1 价格层的 Azure Maps 帐户订阅。 
 
 若要获取帐户的主要订阅密钥，请遵循[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的说明。
 
@@ -47,7 +47,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 ## <a name="create-an-azure-notebook"></a>创建 Azure Notebook
 
-若要遵循本教程，需要创建一个 Azure Notebook 项目，然后下载并运行 Jupyter Notebook 文件。 该 Notebook 文件包含用于实现本教程中的方案的 Python 代码。 创建 Azure Notebook 项目并将 Jupyter Notebook 文档上传到其中，请执行以下操作：
+若要遵循本教程，需要创建一个 Azure Notebook 项目，然后下载并运行 Jupyter Notebook 文件。 该 Notebook 文件包含用于实现本教程中的方案的 Python 代码。 创建 Azure Notebook 项目并将 Jupyter Notebook 文档上传到其中，请执行以下步骤：
 
 1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门：登录并设置用户 ID](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)。
 1. 在公共个人资料页的顶部，选择“我的项目”。 
@@ -64,7 +64,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 1. 选择“创建”  。
 
-1. 创建项目后，从 [Azure Maps Jupyter Notebook 存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)下载 [Jupyter Notebook 文档文件](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)。 
+1. 创建项目后，从 [Azure Maps Jupyter Notebook 存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)下载此 [Jupyter Notebook 文档文件](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)。
 
 1. 在“我的项目”页上的项目列表中选择你的项目，然后选择“上传”以上传 Jupyter Notebook 文档文件。   
 
@@ -72,15 +72,15 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 1. 上传计算机中的文件，然后选择“完成”。 
 
-1. 成功完成上传后，项目页中会显示你的文件。 选择该文件，将其作为 Jupyter Notebook 打开。
+1. 成功完成上传后，项目页中会显示你的文件。 双击该文件，将其作为 Jupyter Notebook 打开。
 
-为了帮助你更好地了解 Notebook 文件中实现的功能，我们建议以每次一个单元的形式运行 Notebook 中的代码。 可以选择 Notebook 应用顶部的“运行”按钮来运行每个单元中的代码。 
+为了更好地了解 Notebook 文件中实现的功能，请以每次一个单元的形式运行 Notebook 中的代码。 可以选择 Notebook 应用顶部的“运行”按钮来运行每个单元中的代码。 
 
   ![“运行”按钮](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>安装项目级包
 
-若要运行 Notebook 中的代码，请执行以下操作，以便在项目级别安装包：
+若要运行 Notebook 中的代码，请执行以下步骤，以便在项目级别安装包：
 
 1. 从 [Azure Maps Jupyter Notebook 存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)下载 [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) 文件，并将其上传到自己的项目。
 1. 在项目仪表板上，选择“项目设置”  。 
@@ -95,9 +95,9 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 ## <a name="load-the-required-modules-and-frameworks"></a>加载所需的模块和框架
 
-若要加载全部所需的模块和框架，请运行以下脚本：
+若要加载全部所需的模块和框架，请运行以下脚本。
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>请求可抵达的范围边界
 
-在本场景中，包裹递送公司在其车队中添置了一些电动车。 在这一天，电动车必须能够在不返回仓库的情况下完成充电。 每当当前剩余电量不足一小时（电池电量不足）时，你需要搜索可抵达范围内的一系列充电站，并获取该范围的边界信息。 
+包裹递送公司在其车队中添置了一些电动车。 在这一天，电动车必须能够在不返回仓库的情况下完成充电。 每当剩余电量不足一小时的行程时，你需要搜索可抵达范围内的一系列充电站。 实质上，每当电池电量不足时，就要搜索充电站。 同时，需要获取充电站分布范围的边界信息。 
 
-由于公司倾向于使用经济性和速度均衡的路线，因此请求的线路类型为“经济”。  以下脚本使用车辆的耗电模型参数调用 Azure Maps 路线服务的[获取路线范围 API](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 然后，该脚本分析响应以创建 geojson 格式的多边形对象来表示汽车的最大可抵达范围。
+由于公司倾向于使用经济性和速度均衡的路线，因此请求的线路类型为“经济”。  以下脚本调用 Azure Maps 路由服务的[获取路线范围 API](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 它使用参数来表示车辆的耗电模型。 然后，该脚本分析响应以创建 geojson 格式的多边形对象来表示汽车的最大可抵达范围。
 
 若要确定电动车可抵达范围的边界，请运行以下单元中的脚本：
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务
 
-你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务。 
+你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务。 可使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 
 
 若要将边界和充电站数据上传到 Azure Maps 数据服务，请运行以下两个单元：
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>在地图上呈现充电站和可抵达范围
 
-将数据上传到数据服务后，运行以下脚本来调用 Azure Maps 的[获取地图图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，以便在静态地图图像上呈现充电站和最大可抵达边界：
+将数据上传到数据服务后，调用 Azure Maps 的[获取地图图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)。 此服务可运行以下脚本，在静态地图图像上呈现充电站和最大可抵达边界：
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>查找最佳充电站
 
-确定可抵达范围内的所有可能的充电站之后，需要知道在最短时间内可以抵达其中的哪个充电站。 
+首先需要确定可抵达范围内的所有可能的充电站。 然后需要知道在最短时间内可以抵达其中的哪个充电站。 
 
-以下脚本调用 Azure Maps 的[矩阵路线 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)，以返回指定车辆的位置，以及与每个充电站之间的行程时间和距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
+以下脚本调用 Azure Maps 的[矩阵路线 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)。 它会返回指定车辆的位置、行程时间，以及与每个充电站之间的距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
 
 若要查找可在最短时间内抵达的最近充电站，请运行以下单元中的脚本：
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>直观显示路线
 
-为了帮助直观显示路线，首先请使用 Azure Maps 的[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，将路线数据作为 geojson 对象上传到 Azure Maps 数据服务。 然后调用呈现服务[获取地图图像 API](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
+为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务。 为此，可使用 Azure Maps 的[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
 
 若要获取地图上呈现的路线图像，请运行以下脚本：
 

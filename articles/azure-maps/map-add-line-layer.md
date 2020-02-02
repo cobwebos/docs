@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911172"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933469"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>向地图添加线条层
 
-线条层可用于将 `LineString` 和 `MultiLineString` 功能呈现为地图上的路径或路由。 线条层还可用于呈现 `Polygon` 和 `MultiPolygon` 功能的轮廓。 数据源连接到线条层以提供要呈现的数据。 
+线条层可用于将 `LineString` 和 `MultiLineString` 功能呈现为地图上的路径或路由。 线条层还可用于呈现 `Polygon` 和 `MultiPolygon` 功能的轮廓。 数据源连接到线条层以向其提供要呈现的数据。 
 
 > [!TIP]
 > 默认情况下，线条层将呈现数据源中的多边形和线条的坐标。 若要将该层限制为仅呈现 LineString 功能，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'LineString']` 或 `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` （如果还想要包括 MultiLineString 功能）。
 
-下面的代码演示如何创建一行，将其添加到数据源，并使用[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)类以线条层呈现。
+下面的代码演示如何创建一行。 将行添加到数据源，然后使用[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)类通过线条层呈现该行。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-symbols-along-a-line"></a>沿行添加符号
 
-此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，请将 "放置" 选项设置为 "line"，这将沿线条呈现符号并旋转图标（0度 = 右）。
+此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，请将 "放置" 选项设置为 "line"。 此选项将沿行呈现符号并旋转图标（0度 = 右）。
 
 <br/>
 
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>向线条添加笔划渐变
 
-除了能够对线条应用一种笔划颜色外，还可以使用颜色渐变填充线条，以显示从一个直线段过渡到下一个线段。 例如，线条梯度可用于表示一段时间和距离内的变化，或与连接的对象线之间的不同温度。 为了将此功能应用到行，数据源必须将 `lineMetrics` 选项设置为 true，然后可以将颜色渐变表达式传递到行的 `strokeColor` 选项。 笔划渐变表达式必须引用 `['line-progress']` 数据表达式，该表达式将计算行指标公开给表达式。
+您可以将一种笔划颜色应用于线条。 您还可以使用颜色渐变填充线条，以显示从一个直线段到下一个线段的转换。 例如，线条梯度可用于表示一段时间和距离内的变化，或与连接的对象线之间的不同温度。 为了将此功能应用到行，数据源必须将 `lineMetrics` 选项设置为 true，然后可以将颜色渐变表达式传递到行的 `strokeColor` 选项。 笔划渐变表达式必须引用 `['line-progress']` 数据表达式，该表达式将计算行指标公开给表达式。
 
 <br/>
 
@@ -76,7 +76,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="customize-a-line-layer"></a>自定义线条层
 
-线条层有多个样式选项。 以下工具可用来试用这些选项。
+线条层具有多个样式选项。 以下工具可用来试用这些选项。
 
 <br/>
 

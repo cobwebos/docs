@@ -3,7 +3,7 @@ title: 在 Azure 中使用负载均衡服务 | Microsoft 文档
 description: 本教程说明如何使用以下 Azure 负载均衡产品组合创建方案：流量管理器、应用程序网关和负载均衡器。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227787"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939226"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布和负载均衡方式。 可以单独使用这些服务，或者根据需要结合使用这些服务提供的方法来构建优化解决方案。
 
@@ -37,11 +37,11 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
   * 基于子网的路由 - 根据用户的子网（IP 地址范围）将流量分布到应用程序终结点。
   * 多值路由 - 允许你在单个 DNS 响应中发送多个应用程序终结点的 IP 地址。
 
-  客户端直接连接到由流量管理器返回的终结点。 当某个终结点运行不正常时，Azure 流量管理器可以检测到这种状态，并将客户端重定向到另一个正常的实例。 若要详细了解此服务，请参阅 [Azure 流量管理器文档](traffic-manager-overview.md)。
+  客户端直接连接到由流量管理器返回的终结点。 当某个终结点运行不正常时，Azure 流量管理器可以检测到这种状态，然后将客户端重定向到另一个正常的实例。 若要详细了解此服务，请参阅 [Azure 流量管理器文档](traffic-manager-overview.md)。
 * **应用程序网关**以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供各种第 7 层负载均衡功能。 客户可以用它将 CPU 密集型 SSL 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
 * **负载均衡器**是 Azure SDN 堆栈的组成部分，为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡服务。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点，定义规则将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 本示例方案使用一个简单的网站，该网站提供两种类型的内容：图像和动态呈现的网页。 此网站必须在地理上冗余，应从最靠近用户的位置（延迟最低的位置）为用户提供服务。 应用程序开发人员决定通过一个专用的 VM 池（不同于 Web 场中的其他池）来提供与模式 /images/* 匹配的所有 URL。
 
@@ -65,7 +65,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>第 1 步：创建流量管理器配置文件
 
-1. 在 Azure 门户中，单击“创建资源” **“网络”** “流量管理器配置文件” > “创建” >  > 。
+1. 在 Azure 门户中，单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 输入以下基本信息：
 
    * **名称**：为流量管理器配置文件提供 DNS 前缀名称。
@@ -80,7 +80,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-2-create-the-application-gateways"></a>步骤 2：创建应用程序网关
 
-1. 在 Azure 门户的右侧窗格中，单击“创建资源” **“网络”** “应用程序网关” >  > 。
+1. 在 Azure 门户的右侧窗格中，单击“创建资源” > “网络” > “应用程序网关”。
 2. 输入有关应用程序网关的下述基本信息：
 
    * **名称**：应用程序网关的名称。
@@ -158,9 +158,9 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 有关配置内部负载均衡器的详细信息，请参阅[在 Azure 门户中创建内部负载均衡器](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)。
 
-1. 在 Azure 门户的左侧窗格中，单击“创建资源” **“网络”** “负载均衡器” >  > 。
+1. 在 Azure 门户的左侧窗格中，单击“创建资源” > “网络” > “负载均衡器”。
 2. 为负载均衡器选择一个名称。
-3. 将“类型”设置为“内部”，并选择相应的虚拟网络和子网以供负载均衡器驻留。
+3. 将“类型”设置为“内部”，然后选择相应的虚拟网络和子网以供负载均衡器驻留。
 4. 在“IP 地址分配”下，选择“动态”或“静态”。
 5. 在“资源组”下面，选择负载均衡器的资源组。
 6. 在“位置”下面，为负载均衡器选择适当的区域。

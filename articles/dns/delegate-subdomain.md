@@ -2,17 +2,17 @@
 title: 委派子域-Azure DNS
 description: 使用此学习路径，开始委派 Azure DNS 子域。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: 462282e9674e7a253f61c96338b54174c80fb03f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212380"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937436"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>委托 Azure DNS 子域
 
@@ -20,7 +20,7 @@ ms.locfileid: "74212380"
 
 如果需要，可以使用 [Azure PowerShell](delegate-subdomain-ps.md) 委托子域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要委托 Azure DNS 子域，必须先将公共域委托给 Azure DNS。 有关如何为委托配置名称服务器的说明，请参阅[将域委托给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委托给 Azure DNS 区域后，可以委托子域。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74212380"
 3. 选择“创建”。
 4. 在“创建 DNS 区域”窗格中的“名称”文本框内，键入 **engineering.contoso.com**。
 5. 选择区域的资源组。 可以使用父区域所在的同一资源组将类似资源放到一起。
-6. 单击“**创建**”。
+6. 单击“创建”。
 7. 部署成功后，转到新区域。
 
 ## <a name="note-the-name-servers"></a>记下名称服务器

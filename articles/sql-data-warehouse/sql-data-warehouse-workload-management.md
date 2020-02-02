@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940577"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935412"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -31,7 +31,7 @@ ms.locfileid: "75940577"
 - 从数据仓库导出数据
 
 数据仓库的性能容量由[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)决定。
-- 若要查看为所有性能配置文件分配的资源，请参阅 [内存和并发限制] 内存 limits.md）。
+- 若要查看为所有性能配置文件分配的资源，请参阅[内存和并发限制](memory-concurrency-limits.md)。
 - 若要调整容量，可以[增加或减少](quickstart-scale-compute-portal.md)。
 
 

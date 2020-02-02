@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911269"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933284"
 ---
 # <a name="add-controls-to-a-map"></a>向地图添加控件
 
-本文介绍如何将控件添加到地图中。 还将了解如何创建包含所有控件和一个[样式选取器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地图。
+本文介绍如何将控件添加到地图中。 你还将了解如何创建包含所有控件和[样式选取器](https://docs.microsoft.com/azure/azure-maps/choose-map-style)的地图。
 
 ## <a name="add-zoom-control"></a>添加缩放控件
 
@@ -39,7 +39,7 @@ map.controls.add(new atlas.control.ZoomControl(), {
 
 ## <a name="add-pitch-control"></a>添加绕 X 轴旋转控件
 
-螺距控件添加倾斜的按钮，以相对于水平位置进行地图。 下面的代码示例创建[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)类的一个实例，并将其添加到地图的右上角。
+螺距控件添加倾斜的按钮，以相对于水平位置进行地图。 下面的代码示例创建[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)类的实例。 它将 PitchControl 添加到地图的右上角。
 
 ```javascript
 //Construct a pitch control and add it to the map.

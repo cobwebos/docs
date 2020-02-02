@@ -2,21 +2,21 @@
 title: 故障排除指南-Azure DNS
 description: 在此学习路径中，开始对 Azure DNS 的常见问题进行故障排除
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: b5fedba7b739c07a37f3aabf75ddd8ca465ba73b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210940"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939032"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
-此文介绍有关 Azure DNS 常见问题的疑难解答信息。
+本文提供 Azure DNS 常见问题的疑难解答信息。
 
 如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 或者，你可以打开 Azure 支持请求。
 
@@ -26,9 +26,9 @@ ms.locfileid: "74210940"
 若要解决常见问题，请尝试下面的一个或多个步骤：
 
 1.  查看 Azure DNS 审核日志以确定失败原因。
-2.  每个 DNS 区域名称在其资源组中必须唯一。 即，一个资源组中不能具有名称相同的两个 DNS 区域。 请尝试使用不同的区域名称，或采用不同的资源组。
+2.  每个 DNS 区域名称在其资源组中必须唯一。 也就是说，具有相同名称的两个 DNS 区域无法共享资源组。 请尝试使用不同的区域名称，或采用不同的资源组。
 3.  可能会显示一个错误“已达到或超过订阅 {订阅 id} 中的区域的最大数量。” 请使用其他 Azure 订阅，删除一些区域，或者联系 Azure 支持部门以提高订阅限制。
-4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 或者，如果是该域名的所有者，可联系 Azure 支持部门分配名称服务器。
+4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 或者，如果你是域名所有者，你可以联系 Azure 支持部门为你分配名称服务器。
 
 
 ### <a name="recommended-articles"></a>推荐的文章
@@ -42,9 +42,9 @@ ms.locfileid: "74210940"
 
 1.  查看 Azure DNS 审核日志以确定失败原因。
 2.  该记录集是否已存在？  Azure DNS 使用记录集管理记录，记录集是具有相同名称和类型的记录的集合。 如果已存在名称和类型相同的记录，那么在添加另一此类记录时，应编辑现有记录集。
-3.  希望在 DNS 区域顶点处（该区域的“根”）尝试创建记录？ 如果是这样，DNS 约定会使用“@”字符作为记录名称。 另请注意，DNS 标准不允许在区域顶点创建 CNAME 记录。
-4.  是否存在 CNAME 冲突？  DNS 标准不允许创建与其他类型记录的名称相同的 CNAME 记录。 如果已存在 CNAME 记录，则无法创建具有相同名称的其他类型的记录。  同样，如果创建的 CNAME 记录与现有其他类型记录的名称相匹配，则无法创建 CNAME 记录。 可通过删除另一条记录或选用不同的记录名称来解决此冲突。
-5.  是否已达到 DNS 区域中允许的记录集数量上限？ 在 Azure 门户中此区域的“属性”下，显示有当前记录集数和最大记录集数。 如果已达此限制，则可删除一些记录集或联系 Azure 支持来提高此区域的记录集上限，并重试。 
+3.  希望在 DNS 区域顶点处（该区域的“根”）尝试创建记录？ 如果是这样，DNS 约定会使用“@”字符作为记录名称。 另请注意，DNS 标准不允许区域顶点的 CNAME 记录。
+4.  是否存在 CNAME 冲突？  DNS 标准不允许与任何其他类型的记录同名的 CNAME 记录。 如果已存在 CNAME 记录，则无法创建具有相同名称的其他类型的记录。  同样，如果创建的 CNAME 记录与现有其他类型记录的名称相匹配，则无法创建 CNAME 记录。 可通过删除另一条记录或选用不同的记录名称来解决此冲突。
+5.  是否已达到 DNS 区域中允许的记录集数量上限？ 在 Azure 门户中此区域的“属性”下，显示有当前记录集数和最大记录集数。 如果已达到此限制，则删除某些记录集或联系 Azure 支持以提高此区域的记录集限制，然后重试。 
 
 
 ### <a name="recommended-articles"></a>推荐的文章

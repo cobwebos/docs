@@ -1,28 +1,29 @@
 ---
-title: 将 HDInsight 群集升级到最新版本 - Azure
-description: 了解将 Azure HDInsight 群集升级到较新版本的准则。
-author: omidm1
-ms.author: omidm
+title: 将群集迁移到较新的版本
+titleSuffix: Azure HDInsight
+description: 了解将 Azure HDInsight 群集迁移到较新版本的准则。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951150"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935488"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集迁移到较新版本
 
-要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
+为了充分利用最新的 HDInsight 功能，我们建议将 HDInsight 群集定期迁移到最新版本。 HDInsight 不支持就地升级，其中现有群集升级到较新的组件版本。 必须使用所需的组件和平台版本创建新群集，然后迁移应用程序以使用新群集。 遵循以下准则来迁移 HDInsight 群集版本。
 
 > [!NOTE]  
 > 有关支持的 HDInsight 版本的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
-## <a name="upgrade-tasks"></a>升级任务
+## <a name="migration-tasks"></a>迁移任务
 
 升级 HDInsight 群集的工作流如下所示。
 ![HDInsight 升级工作流关系图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ ms.locfileid: "74951150"
 1. 使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
 1. 导入任何已备份的暂时性数据。
 1. 使用新群集启动作业/继续处理。
+
+## <a name="workload-specific-guidance"></a>特定于工作负载的指南
+
+以下文档提供有关如何迁移特定工作负载的指南：
+
+* [迁移 HBase](/hbase/apache-hbase-migrate-new-version.md)
+* [迁移 Kafka](/kafka/migrate-versions.md)
+* [迁移 Hive/Interactive 查询](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>备份和还原
+
+有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 AZURE SQL 数据库](../sql-database/sql-database-recovery-using-backups.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

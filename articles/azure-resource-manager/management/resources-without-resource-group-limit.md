@@ -2,13 +2,13 @@
 title: 没有800计数限制的资源
 description: 列出资源组中可包含800个以上实例的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715626"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937936"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>资源不限于每个资源组800个实例
 
@@ -36,7 +36,7 @@ ms.locfileid: "76715626"
 
 * disks
 * images
-* 스냅샷
+* snapshots
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -56,16 +56,16 @@ ms.locfileid: "76715626"
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* 서버
+* 服务器
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* 서버
+* 服务器
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
-* 서버
+* 服务器
 * serversv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -75,7 +75,7 @@ ms.locfileid: "76715626"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * clusters
-* 네임스페이스
+* namespaces
 
 ## <a name="microsoftexperimentation"></a>Microsoft 试验
 
@@ -89,6 +89,10 @@ ms.locfileid: "76715626"
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -152,7 +156,7 @@ ms.locfileid: "76715626"
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* 네임스페이스
+* namespaces
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -160,15 +164,15 @@ ms.locfileid: "76715626"
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* 네임스페이스
+* namespaces
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 애플리케이션
+* 应用程序
 * containerGroups
 * gateways
 * networks
-* secrets
+* 机密
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -180,10 +184,6 @@ ms.locfileid: "76715626"
 * apiManagementAccounts/apis
 * sites
 
-## <a name="microsoftinsights"></a>microsoft.insights
-
-* metricalerts
-
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 有关配额和限制的完整列表，请参阅[Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)。

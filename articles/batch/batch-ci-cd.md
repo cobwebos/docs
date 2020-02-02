@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Pipelines 生成和部署 HPC 解决方案-Azure Batch |Microsoft Docs
+title: 使用 Azure Pipelines 生成 & 部署 HPC 解决方案-Azure Batch
 description: 了解如何为 Azure Batch 上运行的 HPC 应用程序部署生成/发布管道。
 author: christianreddington
 ms.author: chredd
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ee87cd7d80d4b24e8c52fb3c7dbb780d39071066
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982702"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935133"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 来构建和部署 HPC 解决方案
 

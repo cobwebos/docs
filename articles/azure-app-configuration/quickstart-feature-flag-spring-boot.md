@@ -1,24 +1,17 @@
 ---
-title: 有关将功能标志添加到 Spring Boot 的快速入门 - Azure 应用程序配置 | Microsoft Docs
-description: 有关将功能标志添加到 Spring Boot 应用以及在 Azure 应用程序配置中管理这些标志的快速入门
-services: azure-app-configuration
-documentationcenter: ''
+title: 有关使用 Azure 应用程序配置将功能标志添加到 Spring Boot 的快速入门
+description: 将功能标志添加到 Spring Boot 应用并使用 Azure 应用配置对其进行管理
 author: lisaguthrie
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring Boot
-ms.workload: tbd
-ms.date: 1/9/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310044"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766442"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入门：将功能标志添加到 Spring Boot 应用
 
@@ -32,15 +25,16 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 - 支持的 [Java 开发工具包 SDK](https://docs.microsoft.com/java/azure/jdk) 版本 8。
 - [Apache Maven](https://maven.apache.org/download.cgi) 版本 3.0 或更高版本。
 
-## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
+## <a name="create-an-app-configuration-instance"></a>创建应用程序配置实例
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“功能管理器” > “+创建”以添加以下功能标志：  
+6. 选择“功能管理器” > “+添加”以添加名为 `Beta` 的功能标志。  
 
-    | 密钥 | 状态 |
-    |---|---|
-    | Beta | 关闭 |
+    > [!div class="mx-imgBorder"]
+    > ![启用名为 Beta 的功能标志](media/add-beta-feature-flag.png)
+
+    暂时不定义 `label`。
 
 ## <a name="create-a-spring-boot-app"></a>创建 Spring Boot 应用
 
@@ -52,27 +46,27 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
    - 使用 **Java** 生成一个 **Maven** 项目。
    - 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
-   - 指定应用程序的“组”和“项目”名称。  
+   - 指定应用程序的“组”和“项目”名称。    本文使用 `com.example` 和 `demo`。
    - 添加 **Spring Web** 依赖项。
 
-3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
+3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机。
 
 ## <a name="add-feature-management"></a>添加功能管理
 
-1. 从本地系统提取文件后，即可使用简单的 Spring Boot 应用程序进行编辑。 在应用的根目录中找到 pom.xml 文件  。
+1. 在本地系统中提取文件后，即可对 Spring Boot 应用程序进行编辑。 在应用的根目录中找到 *pom.xml*。
 
-2. 在文本编辑器中打开 *pom.xml* 文件，将 Spring Cloud Azure Config Starter 和功能管理添加到 `<dependencies>` 列表：
+1. 在文本编辑器中打开 *pom.xml* 文件，将以下内容添加到 `<dependencies>` 列表中：
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,35 +75,48 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     ```
 
 > [!Note]
-> 有一个非 Web 功能管理库不依赖于 spring-web。 有关差异，请参阅其他[文档](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)。 此外，如果不使用应用程序配置，请参阅[功能标志声明](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management#feature-flag-declaration)。
+> 有一个非 Web 功能管理库不依赖于 spring-web。 请参阅 GitHub 的[文档](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management)来了解差异。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 打开应用的 resources  目录下的 bootstrap.properties  。 如果 bootstrap.properties  不存在，则创建它。 将以下行添加到该文件。
+1. 导航到应用的 `resources` 目录并打开 `bootstrap.properties`。  如果该文件不存在，请创建它。 将以下行添加到该文件。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. 在配置存储的应用程序配置门户中，转到“访问密钥”。 选择“只读密钥”选项卡。在此选项卡中，复制某个连接字符串的值，并将其添加为变量名称为 `APP_CONFIGURATION_CONNECTION_STRING` 的新环境变量。
+1. 在配置存储的应用程序配置门户的侧栏中选择 `Access keys`。 选择“只读密钥”选项卡。复制主连接字符串的值。
+
+1. 使用变量名称 `APP_CONFIGURATION_CONNECTION_STRING` 添加环境变量形式的主连接字符串。
 
 1. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.context.properties.ConfigurationProperties;
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
     public class DemoApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
-
-1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
+1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -124,11 +131,22 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     }
     ```
 
-1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
+1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+
+    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+
     @Controller
     @ConfigurationProperties("controller")
+
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -139,13 +157,13 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabled("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
             return "welcome";
         }
     }
     ```
 
-1. 在应用的 templates 目录中，创建名为 *welcome.html* 的新 HTML 文件。 添加以下行：
+1. 在应用的 templates 目录中，创建名为 *welcome.html* 的新 HTML 文件。
 
     ```html
     <!DOCTYPE html>
@@ -202,7 +220,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
     ```
 
-1. 在 static 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。 添加以下行：
+6. 在 `static` 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。
 
     ```css
     html {
@@ -237,24 +255,24 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序，例如：
+1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序。
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. 启动浏览器窗口并转到 `https://localhost:8080`，即本地托管的 Web 应用的默认 URL。
+1. 打开浏览器窗口，转到本地托管的 Web 应用的默认 URL：`https://localhost:8080`。
 
     ![本地启动应用快速入门](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-3. 在应用程序配置门户中选择“功能管理器”，并将“Beta”密钥的状态更改为“打开”：   
+1. 在应用程序配置门户中选择“功能管理器”，并将“Beta”密钥的状态更改为“打开”：   
 
     | 密钥 | 状态 |
     |---|---|
     | Beta | 启用 |
 
-4. 刷新浏览器页面，查看新的配置设置。
+1. 刷新浏览器页面，查看新的配置设置。
 
     ![本地启动应用快速入门](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965923"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935323"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>用于公共基本负载均衡器的 Azure Monitor 日志
 
@@ -156,11 +156,11 @@ JSON 输出显示 "*事件名称*" 属性，该属性将描述负载均衡器创
 
 JSON 输出在属性字段显示了探测运行状况的基本信息。 *DipDownCount*属性显示后端上的实例总数，这些实例未收到网络流量，原因是探测响应失败。
 
-### <a name="view-and-analyze-the-audit-log"></a>查看和分析审核日志
+### <a name="view-and-analyze-the-activity-log"></a>查看和分析活动日志
 
-可以使用任何以下方法查看和分析审核日志数据：
+可以使用任何以下方法查看和分析活动日志数据：
 
-* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行接口（CLI）、Azure REST API 或 Azure 门户检索审核日志中的信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具：** 通过 Azure PowerShell、Azure 命令行接口（CLI）、Azure REST API 或 Azure 门户从活动日志中检索信息。 [使用 Resource Manager 审核操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
 * **Power BI：** 如果还没有 [Power BI](https:// .microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 审核日志内容包](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)，可以借助预配置的仪表板分析数据，也可以自定义视图来满足自己的要求。
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>查看和分析运行状况探测和事件日志

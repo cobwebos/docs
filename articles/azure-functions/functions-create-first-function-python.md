@@ -1,180 +1,303 @@
 ---
 title: 在 Azure 中创建 HTTP 触发的 Python 函数
-description: 了解如何使用 Azure Functions Core Tools 和 Azure CLI 在 Azure 中创建你的第一个 Python 函数。
-ms.date: 11/07/2019
+description: 使用 Azure Functions 创建无服务器 Python 代码并将其部署到云中。
+ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769330"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845503"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入门：在 Azure 中创建 HTTP 触发的 Python 函数
 
-本文介绍如何使用命令行工具创建在 Azure Functions 中运行的 Python 项目。 另外还介绍如何创建由 HTTP 请求触发的函数。 本地运行后，发布项目，在 Azure 中作为[无服务器函数](functions-scale.md#consumption-plan)运行。 
-
-本文是 Azure Functions 的两个 Python 快速入门之一。 完成本快速入门后，可将[ Azure 存储队列输出绑定添加](functions-add-output-binding-storage-queue-python.md)到你的函数。
+在本文中，你将使用命令行工具创建响应 HTTP 请求的 Python 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
 本文还提供了[基于 Visual Studio 代码的版本](/azure/python/tutorial-vs-code-serverless-python-01)。
 
 ## <a name="prerequisites"></a>必备条件
 
-开始之前，必须：
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高版本。
+- [Azure CLI](/cli/azure/install-azure-cli) 2.0.76 或更高版本。 
+- [Python 3.7.4 - 64 位](https://www.python.org/downloads/release/python-374/)。 （Python 3.7.4 已在 Azure Functions 中进行验证；目前尚不支持 Python 3.8 和更高版本。）
 
-+ 安装 [Python 3.7.4](https://www.python.org/downloads/)。 此版本的 Python 已使用 Functions 进行验证。 尚不支持 Python 3.8 和更高版本。
+### <a name="prerequisite-check"></a>先决条件检查
 
-+ 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.7.1846 或更高版本。
-
-+ 安装 [Azure CLI](/cli/azure/install-azure-cli) 版本 2.0.76 或更高版本。
-
-+ 拥有一个有效的 Azure 订阅。
-
-    [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+1. 在终端或命令窗口中，运行 `func --version` 检查 Azure Functions Core Tools 的版本是否为 2.7.1846 或以上。
+1. 运行 `az --version` 检查 Azure CLI 版本是否为 2.0.76 或以上。
+1. 运行 `az login` 登录到 Azure 并验证活动订阅。
+1. 运行 `python --version` (Linux/MacOS) 或 `py --version` (Windows)，检查报告的 Python 版本是否为 3.7.x。
 
 ## <a name="create-and-activate-a-virtual-environment"></a>创建并激活虚拟环境
 
-应使用 Python 3.7 环境在本地开发 Python 函数。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
+在适当的文件夹中，运行以下命令以创建并激活一个名为 `.venv` 的虚拟环境。 请务必使用受 Azure Functions 支持的 Python 3.7。
 
-> [!NOTE]
-> 如果 Python 未在 Linux 分发版上安装 venv，则可以使用以下命令安装它：
-> ```command
-> sudo apt-get install python3-venv
 
-### <a name="bash"></a>Bash：
+# <a name="bashtabbash"></a>[bash](#tab/bash)
 
 ```bash
 python -m venv .venv
+```
+
+```bash
 source .venv/bin/activate
 ```
 
-### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell 或 Windows 命令提示符：
+如果 Python 未在 Linux 分发版中安装 venv 包，请运行以下命令：
+
+```bash
+sudo apt-get install python3-venv
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -m venv .venv
+```
+
+```powershell
 .venv\scripts\activate
 ```
 
-激活虚拟环境以后，即可在其中运行剩下的命令。 若要脱离虚拟环境，请运行 `deactivate`。
+# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
 
-## <a name="create-a-local-functions-project"></a>创建本地函数项目
-
-函数项目可能具有多个函数，这些函数具有相同的本地和托管配置。
-
-在虚拟环境中，运行以下命令：
-
-```console
-func init MyFunctionProj --python
-cd MyFunctionProj
+```cmd
+py -m venv .venv
 ```
 
-`func init` 命令创建 MyFunctionProj  文件夹。 此文件夹中的 Python 项目尚未包含任何函数。 接下来你将添加函数。
-
-## <a name="create-a-function"></a>创建函数
-
-若要将函数添加到项目中，请运行以下命令：
-
-```console
-func new --name HttpTrigger --template "HTTP trigger"
+```cmd
+.venv\scripts\activate
 ```
 
-此命令创建名为 HttpTrigger 的子文件夹，其中包含以下文件  ：
+---
 
-* function.json：  定义函数、触发器和其他绑定的配置文件。 请注意，在此文件中，`scriptFile` 的值指向包含函数的文件，而 `bindings` 数组则定义调用触发器和绑定。
+所有后续命令将在这个已激活的虚拟环境中运行。 （若要退出虚拟环境，请运行 `deactivate`。）
 
-    每个绑定都需要一个方向、类型和唯一名称。 HTTP 触发器具有类型为 [`httpTrigger`](functions-bindings-http-webhook.md#trigger) 的输入绑定和类型为 [`http`](functions-bindings-http-webhook.md#output) 的输出绑定。
+## <a name="create-a-local-function-project"></a>创建本地函数项目
 
-* *\_\_init\_\_.py*：作为 HTTP 触发函数的脚本文件。 请注意，此脚本有默认的 `main()`。 触发器中的 HTTP 数据使用 `req` 命名`binding parameter`传递到此函数。 根据 function.json 中的定义，`req` 是 [azure.functions.HttpRequest class](/python/api/azure-functions/azure.functions.httprequest) 的一个实例。 
+在 Azure Functions 中，有一个函数项目是一个或多个单独函数（每个函数响应特定的触发器）的容器。 项目中的所有函数共享相同的本地和宿主配置。 在本部分，你将创建包含单个函数的函数项目。
 
-    在 *function.json* 中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse 类](/python/api/azure-functions/azure.functions.httpresponse)的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](functions-bindings-http-webhook.md)。
+1. 在虚拟环境中运行 `func init` 命令，以在某个文件夹中创建名为 *LocalFunctionProj* 的包含指定运行时的函数项目：
 
-现在，你可以在本地计算机上运行新函数。
+    ```
+    func init LocalFunctionProj --python
+    ```
+    
+    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+
+    > [!TIP]
+    > 由于函数项目绑定到特定的运行时，因此必须使用相同的语言编写项目中的所有函数。
+
+1. 导航到项目文件夹：
+
+    ```
+    cd LocalFunctionProj
+    ```
+    
+1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的、包含项目所选语言适用的代码文件的子文件夹，以及一个名为 *function.json* 的配置文件。
+
+    ```
+    func new --name HttpExample --template "HTTP trigger"
+    ```
+
+### <a name="optional-examine-the-file-contents"></a>（可选）检查文件内容
+
+如果需要，可以跳到[在本地运行函数](#run-the-function-locally)并稍后再检查文件内容。
+
+### <a name="__init__py"></a>\_\_init\_\_.py
+
+*\_\_init\_\_.py* 包含一个根据 *function.json* 中的配置触发的 `main()` Python 函数。
+
+```python
+import logging
+
+import azure.functions as func
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             status_code=400
+        )
+```
+
+对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 `req` 是 [azure.functions.HttpRequest 类](/python/api/azure-functions/azure.functions.httprequest)的实例。 在 *function.json* 中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse 类](/python/api/azure-functions/azure.functions.httpresponse)的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](functions-bindings-http-webhook.md)。
+
+### <a name="functionjson"></a>function.json
+
+*function.json* 是一个配置文件，其中定义了函数的输入和输出 `bindings`，包括触发器类型。 如果需要，可以更改 `scriptFile` 以调用不同的 Python 文件。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+每个绑定都需要一个方向、类型和唯一的名称。 HTTP 触发器具有类型为 [`httpTrigger`](functions-bindings-http-webhook.md#trigger) 的输入绑定和类型为 [`http`](functions-bindings-http-webhook.md#output) 的输出绑定。
+
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-此命令使用 Azure Functions 运行时 (func.exe) 启动函数应用：
+通过启动 *LocalFunctionProj* 文件夹中的本地 Azure Functions 运行时主机来启动函数：
 
-```console
-func host start
+```
+func start
 ```
 
-你应看到写入输出中的以下信息：
+应显示以下输出。 （如果 HttpExample 未按如下所示出现，原因可能是从 *HttpExample* 文件夹中启动了主机。 在这种情况下，请按 **Ctrl**+**C** 停止主机，导航到父级 *LocalFunctionProj* 文件夹，然后再次运行 `func start`。）
 
 ```output
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
+
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/HttpTrigger    
+        HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
 ```
 
-从此输出中复制 `HttpTrigger` 函数的 URL，将其粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 以下屏幕截图演示本地函数返回到浏览器的对 GET 请求的响应：
+将此输出中 `HttpExample` 函数的 URL 复制到浏览器，并追加查询字符串 `?name=<your-name>`，使完整 URL 类似于 `http://localhost:7071/api/HttpExample?name=Functions`。 浏览器应会显示类似于 `Hello Functions` 的消息：
 
-![在浏览器中进行本地验证](./media/functions-create-first-function-python/function-test-local-browser.png)
+![在浏览器中本地运行函数后的结果](./media/functions-create-first-function-python/function-test-local-browser.png)
 
-选择 Ctrl+C，关闭函数应用执行。
+当你发出请求时，运行 `func start` 所在的终端还会显示日志输出。
 
-现在，你已在本地运行函数，接下来可以将函数代码部署到 Azure。  
-在部署应用之前，需要创建一些 Azure 资源。
+准备就绪后，按 **Ctrl**+**C** 停止函数宿主。
 
-[!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
+## <a name="create-supporting-azure-resources-for-your-function"></a>创建函数的支持性 Azure 资源
 
-[!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
+若要将函数代码部署到 Azure，需要创建三个资源：
 
-## <a name="create-a-function-app-in-azure"></a>在 Azure 中创建一个函数应用
+- 一个资源组：相关资源的逻辑容器。
+- 一个 Azure 存储帐户：维护有关项目的状态和其他信息。
+- 一个 Azure Functions 应用：提供用于执行函数代码的环境。 函数应用映射到本地函数项目，可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。
 
-函数应用提供了用于执行函数代码的环境。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
+使用 Azure CLI 命令创建这些项。 完成后，每个命令将提供 JSON 输出。
 
-运行以下命令。 将 `<APP_NAME>` 替换为唯一函数应用名称。 将 `<STORAGE_NAME>` 替换为存储帐户名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 此名称在 Azure 的所有应用中必须独一无二。
+1. 使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure（如果尚未这样做）：
 
-> [!NOTE]
-> 不能在同一资源组中托管 Linux 和 Windows 应用。 如果名为 `myResourceGroup` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
+    ```azurecli
+    az login
+    ```
+    
+1. 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsQuickstart-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
 
-```azurecli-interactive
-az functionapp create --resource-group myResourceGroup --os-type Linux \
---consumption-plan-location westeurope  --runtime python --runtime-version 3.7 \
---name <APP_NAME> --storage-account  <STORAGE_NAME>
+    ```azurecli
+    az group create --name AzureFunctionsQuickstart-rg --location westeurope
+    ```
+    
+    > [!NOTE]
+    > 不能在同一资源组中托管 Linux 和 Windows 应用。 如果名为 `AzureFunctionsQuickstart-rg` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
+    
+1. 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令在资源组和区域中创建常规用途存储帐户。 在以下示例中，请将 `<storage_name>` 替换为适合自己的全局唯一名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定典型的常规用途帐户。
+
+    ```azurecli
+    az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+    ```
+    
+    在本快速入门中使用的存储帐户只会产生几美分的费用。
+    
+1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Functions 应用。 在以下示例中，请将 `<storage_name>` 替换为在上一步骤中使用的帐户的名称，并将 `<app_name>` 替换为适合自己的全局唯一名称。 `<app_name>` 也是函数应用的默认 DNS 域。
+
+    ```azurecli
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --name <app_name> --storage-account <storage_name>
+    ```
+    
+    此命令将创建一个函数应用，该应用运行 [Azure Functions 消耗计划](functions-scale.md#consumption-plan)中指定的语言运行时，根据本教程产生的用量，此操作是免费的。 该命令还会在同一资源组中预配关联的 Azure Application Insights 实例，可以使用它来监视函数应用和查看日志。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。 该实例在激活之前不会产生费用。
+    
+## <a name="deploy-the-function-project-to-azure"></a>将函数项目部署到 Azure
+
+准备好所需的资源后，便可以使用 [func azure functionapp publish](functions-run-local.md#project-file-deployment) 命令将本地函数项目部署到 Azure 中的函数应用。 在以下示例中，请将 `<app_name>` 替换为你的应用的名称。
+
+```
+func azure functionapp publish <app_name>
 ```
 
-上述命令创建运行 Python 3.7.4 的函数应用。 上述命令还在同一资源组中预配关联的 Azure Application Insights 实例。 可以使用该实例来监视函数应用并查看日志。 
+如果看到错误“找不到名为...的应用”，请等待几秒后重试，因为在执行上一 `az functionapp create` 命令后，Azure 可能尚未完全初始化该应用。
 
-现在，可以将本地函数项目发布到 Azure 中的函数应用了。
-
-## <a name="deploy-the-function-app-project-to-azure"></a>将函数应用项目部署到 Azure
-
-在 Azure 中创建函数应用后，可以使用 [func azure functionapp publish](functions-run-local.md#project-file-deployment) Core Tools 命令将项目代码部署到 Azure。 在此示例中，使用应用名称替代 `<APP_NAME>`。
-
-```console
-func azure functionapp publish <APP_NAME>
-```
-
-你的 Python 项目是通过部署包中的文件在 Azure 中远程构建的。 
-
-将会看到类似于以下消息的输出。 在这里，为了可读性，这些输出已经被截断：
+publish 命令显示类似于以下输出的结果（为简洁起见，示例中的结果已截断）：
 
 ```output
 Getting site publishing info...
+Creating archive for current directory...
+Performing remote build for functions project.
+
 ...
 
-Preparing archive...
-Uploading content...
-Upload completed successfully.
-Deployment completed successfully.
+Deployment successful.
+Remote build succeeded!
 Syncing triggers...
-Functions in myfunctionapp:
-    HttpTrigger - [httpTrigger]
-        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+Functions in msdocs-azurefunctions-qs:
+    HttpExample - [httpTrigger]
+        Invoke url: https://msdocs-azurefunctions-qs.azurewebsites.net/api/httpexample?code=KYHrydo4GFe9y0000000qRgRJ8NdLFKpkakGJQfC3izYVidzzDN4gQ==
 ```
 
-可以复制 `HttpTrigger` 的 `Invoke url` 值，并使用它在 Azure 中验证函数。 此 URL 包含 `code` 查询字符串值，该值是一个函数密钥，因此其他人难以在 Azure 中调用你的 HTTP 触发器终结点。
+## <a name="invoke-the-function-on-azure"></a>在 Azure 上调用函数
 
-[!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+由于函数使用 HTTP 触发器，因此，可以通过在浏览器中或使用 curl 等工具，向此函数的 URL 发出 HTTP 请求来调用它。 在这两种情况下，`code` URL 参数都是唯一的函数密钥，用于授权函数终结点的调用。
 
-> [!NOTE]
+# <a name="browsertabbrowser"></a>[浏览器](#tab/browser)
+
+将 publish 命令的输出中显示的完整“调用 URL”复制到浏览器的地址栏，并追加查询参数 `&name=Azure`。  浏览器显示的输出应与本地运行函数时显示的输出类似。
+
+![在 Azure 上运行函数后浏览器中的输出](./media/functions-create-first-function-python/function-test-cloud-browser.png)
+
+
+# <a name="curltabcurl"></a>[curl](#tab/curl)
+
+结合“调用 URL”运行 [curl](https://curl.haxx.se/)，并追加参数 `&name=Azure`。  该命令的输出应是文本“Hello Azure”。
+
+![使用 curl 在 Azure 上运行函数后的输出](./media/functions-create-first-function-python/function-test-cloud-curl.png)
+
+---
+
+> [!TIP]
 > 若要查看已发布的 Python 应用的近乎实时日志，请使用 [Application Insights 实时指标流](functions-monitoring.md#streaming-logs)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="clean-up-resources"></a>清理资源
 
-已使用 HTTP 触发函数创建 Python 函数项目，在本地计算机上运行该项目，并将其部署到 Azure。 现在，通过以下方式扩展函数
+若要继续执行下一步骤[添加 Azure 存储队列输出绑定](functions-add-output-binding-storage-queue-python.md)，请保留到目前为止构建的所有资源。
+
+否则，请使用以下命令删除资源组及其包含的所有资源，以免产生额外的费用。
+
+```azurecli
+az group delete --name AzureFunctionsQuickstart-rg
+```
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [添加 Azure 存储队列输出绑定](functions-add-output-binding-storage-queue-python.md)

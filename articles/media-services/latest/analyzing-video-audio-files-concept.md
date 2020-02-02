@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186260"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934692"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>通过 Azure 媒体服务分析视频和音频文件
 
@@ -26,7 +26,11 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用**VideoAnalyzerPreset**的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
-> 使用视频或音频分析器预设时，使用 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
+> 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
+
+## <a name="compliance-privacy-and-security"></a>合规性、隐私性和安全性
+
+作为一项重要提醒，你必须遵守对你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何其他 Azure 服务，可能会对其他人造成损害。 在将任何视频（包括任何生物识别数据）上传到视频索引器服务进行处理和存储之前，你必须拥有所有正确的权限，包括来自视频中个人的所有适当的同意。 若要了解 Microsoft[认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)，请参阅有关视频索引器的隐私和安全性。 若要获得 Microsoft 的隐私义务并处理数据，请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款（"OST"）](https://www.microsoft.com/licensing/product-licensing/products)和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 其他隐私信息（包括数据保留、删除/销毁）在 OST 和[此处](../video-indexer/faq.md)提供。 通过使用视频索引器，你同意遵守认知服务条款、OST、DPA 和隐私声明。
 
 ## <a name="built-in-presets"></a>内置预设
 
@@ -63,12 +67,12 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="transcript"></a>脚本
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
-|instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
+|实例|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
 示例：
 
@@ -101,13 +105,13 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="ocr"></a>ocr
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
-|instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
+|实例|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
 
 ```json
 "ocr": [
@@ -144,19 +148,19 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="faces"></a>人脸
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|人脸 ID。|
 |name|人脸姓名。 它可以是 "Unknown #0"、标识名人或客户训练的人员。|
 |confidence|人脸识别置信度。|
-|说明|名人的说明。 |
+|description|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
 |knownPersonId|内部 ID （如果是已知的人员）。|
 |referenceId|必应 ID （如果是必应名人）。|
 |referenceType|当前仅限必应。|
 |title|标题（如果是名人，如 "Microsoft CEO"）。|
 |imageUrl|如果是名人，则为图像 URL。|
-|instances|人脸出现在给定时间范围内的实例。 每个实例还具有一个 thumbnailsId。 |
+|实例|人脸出现在给定时间范围内的实例。 每个实例还具有一个 thumbnailsId。 |
 
 ```json
 "faces": [{
@@ -189,11 +193,11 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="shots"></a>截图
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
-|instances|此截图的时间范围列表（截图仅有 1 个实例）。|
+|实例|此截图的时间范围列表（截图仅有 1 个实例）。|
 
 ```json
 "Shots": [
@@ -246,7 +250,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="statistics"></a>statistics
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -259,11 +263,11 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
-|instances|出现此情绪的时间范围列表。|
+|实例|出现此情绪的时间范围列表。|
 |sentimentType |类型可以是“Positive”、“Neutral”或“Negative”。|
 
 ```json
@@ -294,12 +298,12 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="labels"></a>标签
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
 |语言|标签名称语言（转换后）。 BCP-47|
-|instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
+|实例|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
 
 ```json
 "labels": [
@@ -352,13 +356,13 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="keywords"></a>关键字
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
-|instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
+|实例|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
 
 ```json
 "keywords": [
@@ -403,12 +407,12 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以提交内容的人工审阅请求，在这种情况下，`IsAdult` 属性将包含人工审阅的结果。
 
-|名称|说明|
+|名称|Description|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
-|racyScore|猥亵内容评分（由内容审核员提供）。|
-|instances|显示此视觉内容审核的时间范围列表。|
+|racyScore|不雅内容评分（由内容审核员提供）。|
+|实例|显示此视觉内容审核的时间范围列表。|
 
 ```json
 "VisualContentModeration": [

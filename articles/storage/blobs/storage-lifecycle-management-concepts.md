@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260947"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939241"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -348,9 +348,9 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>引入时存档数据
+### <a name="archive-data-after-ingest"></a>摄取后存档数据
 
-某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略配置为在引入数据后对其进行存档。 此示例将容器 `archivecontainer` 的存储帐户中的块 blob 转换为存档层。 通过在上次修改时间之后的 blob 0 天执行转换：
+某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略配置为在引入后立即存档数据。 此示例将容器 `archivecontainer` 的存储帐户中的块 blob 转换为存档层。 通过在上次修改时间之后的 blob 0 天执行转换：
 
 > [!NOTE] 
 > 建议将 blob 直接上传到 "存档" 层以提高效率。 可以将[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x-ms 跨区标头用于 REST 版本2018-11-09 和更高版本或最新的 blob 存储客户端库。 

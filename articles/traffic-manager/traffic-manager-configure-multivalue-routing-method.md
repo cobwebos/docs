@@ -3,7 +3,7 @@ title: 配置多值流量路由-Azure 流量管理器
 description: 本文介绍如何配置流量管理器以将流量路由到 A/AAAA 终结点。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040369"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938783"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 

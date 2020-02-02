@@ -4,29 +4,29 @@ description: 教程：准备环境，以便开发和部署用于在边缘实现�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114074"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722268"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
 > [!NOTE]
 > 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
-本文出自 IoT Edge 上的端到端 Azure 机器学习教程，可帮助你准备环境以进行开发和部署。 首先，在开发计算机上设置好所有必需工具。 然后，在 Azure 中创建必要的云资源。
+本文将帮助你准备好用于开发和部署的环境。 首先，在开发计算机上设置好所有必需工具。 然后，在 Azure 中创建必要的云资源。
 
-## <a name="set-up-a-development-machine"></a>设置开发计算机
+## <a name="set-up-the-development-vm"></a>设置开发 VM
 
 此步骤通常由云开发人员执行。 其中一些软件也可能对数据科学家有所帮助。
 
-在本文中，我们将执行各种开发人员任务，包括编码、编译、配置和部署 IoT Edge 模块和 IoT 相关设备。 为了便于使用，我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) 虚拟机大小。
+我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) 虚拟机大小。
 
 为开发 VM 设置以下项：
 
@@ -50,101 +50,95 @@ ms.locfileid: "74114074"
 
 创建和配置虚拟机大约需要 30 分钟的时间。
 
-### <a name="get-the-script"></a>获取脚本
+1. 将[机器学习和 IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) 示例存储库克隆或下载到本地计算机。
 
-克隆或下载[机器学习和 IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) 示例存储库中的 PowerShell 脚本。
-
-### <a name="create-an-azure-virtual-machine"></a>创建 Azure 虚拟机
-
-DevVM 目录包含创建适合完成本教程的 Azure 虚拟机所需的文件。
-
-1. 以管理员身份打开 Powershell 并导航到已下载代码的目录。 我们将源的根目录称为 `<srcdir>`。
+1. 以管理员身份打开 Powershell，导航到代码所下载到的根目录中的 **\IoTEdgeAndMlSample\DevVM** 目录。 我们将源的根目录称为 `srcdir`。
 
     ```powershell
-    cd <srcdir>\IoTEdgeAndMlSample\DevVM
+    cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-2. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+   DevVM 目录包含创建适合完成本教程的 Azure 虚拟机所需的文件。
+
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-3. 从该目录运行 Create-AzureDevVM.ps1。
+1. 运行 Create-AzureDevVM.ps1。
 
     ```powershell
     .\Create-AzureDevVm.ps1
     ```
 
-    * 系统出现提示时，请提供以下信息：
-      * **Azure 订阅 ID**：订阅 ID，可以在 Azure 门户中找到
-      * **资源组名称**：Azure 中新的或现有的资源组的名称
-      * **位置**：选择将在其中创建虚拟机的 Azure 位置。 例如 westus2 或 northeurope。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
-      * **AdminUsername**：为要在虚拟机上创建和使用的管理员帐户提供容易记住的名称。
-      * **AdminPassword**：在虚拟机上设置管理员帐户的密码。
+    系统出现提示时，请提供以下信息：
 
-    * 如果尚未安装 Azure PowerShell，脚本将安装 [Azure PowerShell Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
+    * **Azure 订阅 ID**：你的订阅 ID，可在门户中的“[Azure 订阅](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)”中找到。
+    * **资源组名称**：Azure 中新的或现有的资源组的名称。
+    * **位置**：选择将在其中创建虚拟机的 Azure 位置。 例如“美国西部 2”或“北欧”。 有关详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
+    * **用户名**：为 VM 的管理员帐户提供一个易记的名称。
+    * **密码**：为 VM 的管理员帐户设置密码。
 
-    * 系统会提示登录到 Azure。
+   脚本在执行以下步骤时，会运行几分钟：
 
-    * 该脚本会确认此信息来创建 VM。 按 `y` 或 `Enter` 以继续操作。
+    1. 安装 [Azure PowerShell Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
+    1. 系统会提示你登录到 Azure。
+    1. 确认用于创建 VM 的信息。 按 **y** 或 **Enter** 继续操作。
+    1. 创建资源组（如果不存在）。
+    1. 部署虚拟机。
+    1. 在 VM 上启用 Hyper-V。
+    1. 安装开发所需的软件并克隆示例存储库。
+    1. 重启 VM。
+    1. 在桌面上创建 RDP 文件以连接到 VM。
 
-脚本在执行以下步骤时，会运行几分钟：
-
-* 创建资源组（如果不存在）
-* 部署虚拟机
-* 在 VM 上启用 Hyper-V
-* 安装开发所需的软件并克隆示例存储库
-* 重启 VM
-* 在桌面上创建 RDP 文件以连接到 VM
+   如果系统提示输入 VM 的名称以将其重启，可以从脚本输出中复制其名称。 输出中还显示了用于连接到 VM 的 RDP 文件的路径。
 
 ### <a name="set-auto-shutdown-schedule"></a>设置自动关机计划
 
-为了帮助降低成本，创建 VM 时设置了自动关机计划，将在太平洋标准时间 (PST) 19:00 自动关机。 根据你的位置和计划，可能需要更新此时间。 若要更新关机计划，请执行以下操作：
+为了帮助降低成本，创建开发 VM 时设置了自动关闭计划，将在太平洋标准时间 (PST) 19:00 自动关闭。 根据你的位置和计划，可能需要更新此设置。 若要更新关机计划，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户中，导航到脚本创建的 VM。
 
-2. 在你在上一部分中提供的资源组中，导航到你的虚拟机。
+1. 在左侧窗格菜单中的“操作”下，选择“自动关闭”。  
 
-3. 在侧边导航栏上选择“自动关闭”  。
+1. 根据需要调整“计划的关闭”和“时区”，然后选择“保存”。   
 
-4. 在“计划关闭时间”中输入新的关闭时间或更改“时区”，然后单击“保存”    。
-
-### <a name="connect-and-configure-development-machine"></a>连接并配置开发计算机
+## <a name="connect-to-the-development-vm"></a>连接到开发 VM
 
 我们现已创建 VM，需要安装完成教程所需软件。
 
-#### <a name="start-a-remote-desktop-session"></a>启动远程桌面会话
+1. 在桌面上双击脚本创建的 RDP 文件。
 
-1. VM 创建脚本在桌面上创建了 RDP 文件。
+1. 系统将显示一个对话框，其中显示远程连接的发布者未知。 这是正常情况，因此请选择“连接”。 
 
-2. 双击名为“\<Azure VM 名称\>.rdp”的文件  。
+1. 提供创建 VM 时所提供的管理员密码，然后单击“确定”。 
 
-3. 系统将显示一个对话框，其中显示远程连接的发布者未知。 单击“不再询问是否连接到此计算机”复选框，然后选择“连接”   。
+1. 系统将提示你是否接受 VM 的证书。 请选择“是”。 
 
-4. 系统出现提示时，提供运行脚本以设置 VM 时使用的 AdminPassword，然后单击“确定”  。
-
-5. 系统将提示你是否接受 VM 的证书。 选择“不再询问是否连接到此计算机”，然后选择“是”   。
-
-#### <a name="install-visual-studio-code-extensions"></a>安装 Visual Studio Code 扩展
+## <a name="install-visual-studio-code-extensions"></a>安装 Visual Studio Code 扩展
 
 现在你已连接到开发计算机，请为 Visual Studio Code 添加一些有用的扩展，以使开发体验更加轻松。
 
-1. 在 PowerShell 窗口中，导航到 C:\\source\\IoTEdgeAndMlSample\\DevVM  。
-
-2. 允许通过键入内容在虚拟机上执行脚本。
+1. 连接到开发 VM，打开 PowerShell 窗口，然后导航到 **C:\source\IoTEdgeAndMlSample\DevVM** 目录。 此目录是创建 VM 的脚本所创建的。
 
     ```powershell
-    Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
+    cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-3. 运行该脚本。
+1. 运行以下命令，以允许执行脚本。 系统出现提示时，请选择“全部同意”  。
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process
+    ```
+
+1. 运行 Visual Studio Code 扩展脚本。
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-4. 该脚本将运行几分钟以安装以下 VS 代码扩展：
+1. 该脚本将运行几分钟以安装以下 VS 代码扩展：
 
     * Azure IoT Tools
     * Python
@@ -156,19 +150,15 @@ DevVM 目录包含创建适合完成本教程的 Azure 虚拟机所需的文件�
 
 这些步骤通常由云开发人员执行。
 
-Azure IoT 中心是所有 IoT 应用程序的核心。 它处理 IoT 设备和云之间的安全通信。 它是 IoT Edge 机器学习解决方案运行的主要协调点。
+Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和云之间的安全通信。 它是 IoT Edge 机器学习解决方案运行的主要协调点。
 
-* IoT 中心使用路由将来自 IoT 设备的传入数据直接传送到其他下游服务。 我们将利用 IoT 中心路由将设备数据发送到 Azure 存储，以便 Azure 机器学习使用这些数据来训练剩余使用寿命 (RUL) 分类器。
+* IoT 中心使用路由将来自 IoT 设备的传入数据直接传送到其他下游服务。 我们将利用 IoT 中心路由将设备数据发送到 Azure 存储。 Azure 机器学习使用 Azure 存储中的设备数据来训练剩余的使用寿命 (RUL) 分类器。
 
 * 在本教程的后面部分，我们将使用 IoT 中心来配置和管理 Azure IoT Edge 设备。
 
-在本部分中，你要使用脚本来创建 Azure IoT 中心和 Azure 存储帐户。 然后，使用 Azure 门户来配置路由，将中心接收的数据转发到 Azure 存储 Blob 容器。 完成这些步骤大约需要 10 分钟。
+在本部分中，你要使用脚本来创建 Azure IoT 中心和 Azure 存储帐户。 然后，在 Azure 门户中配置路由，将中心收到的数据转发到 Azure 存储容器。 完成这些步骤大约需要 10 分钟。
 
-### <a name="create-cloud-resources"></a>创建云资源
-
-1. 在开发计算机上，打开 PowerShell 窗口。
-
-1. 切换到 IoTHub 目录。
+1. 连接到开发 VM，打开 PowerShell 窗口，然后导航到 **IoTHub** 目录。
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
@@ -177,50 +167,50 @@ Azure IoT 中心是所有 IoT 应用程序的核心。 它处理 IoT 设备和�
 1. 运行创建脚本。 使用创建开发 VM 时所用的订阅 ID、位置和资源组值。
 
     ```powershell
-    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location
-    <location> -ResourceGroupName <resource group>
+    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * 系统会提示登录到 Azure。
-    * 该脚本会确认信息来创建中心和存储帐户。 按 `y` 或 `Enter` 以继续操作。
+    * 该脚本会确认信息来创建中心和存储帐户。 按 **y** 或 **Enter** 继续操作。
 
-运行该脚本需要大约 2 分钟。 完成后，脚本将输出中心和存储帐户的名称。
+运行该脚本需要大约 2 分钟。 完成后，脚本将输出 IoT 中心和存储帐户的名称。
 
-### <a name="review-route-to-storage-in-iot-hub"></a>查看 IoT 中心存储的路由
+## <a name="review-route-to-storage-in-iot-hub"></a>查看 IoT 中心存储的路由
 
 我们在上一节中运行脚本以创建 IoT 中心时，该脚本还创建了自定义终结点和路由。 IoT 中心路由包含查询表达式和终结点。 如果消息与表达式匹配，则数据将沿路由发送到关联的终结点。 终结点可以是事件中心、服务总线队列和主题。 在本例中，终结点是存储帐户中的 Blob 容器。 让我们使用 Azure 门户来查看脚本创建的路由。
 
-1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 打开 [Azure 门户](https://portal.azure.com)，并转到本教程所用的资源组。
 
-1. 从左侧导航栏中选择所有服务，在搜索框中键入 IoT，然后选择“IoT 中心”  。
+1. 在资源列表中，选择脚本创建的 IoT 中心。 其名称以随机字符结尾，例如 `IotEdgeAndMlHub-jrujej6de6i7w`。
 
-1. 选择上一步中创建的 IoT 中心。
+1. 在左侧窗格菜单中的“消息”下，选择“消息路由”。  
 
-1. 在 IoT 中心侧边导航栏中，选择“消息路由”  。
+1. 在“消息路由”页上，选择“自定义终结点”选项卡。  
 
-1. 消息路由页有两个选项卡：“路由”和“自定义终结点”   。 选择“自定义终结点”选项卡  。
+1. 展开“存储”部分： 
 
-1. 在“Blob 存储”下，选择“turbofanDeviceStorage”   。
+   ![检查 turbofandevicestorage 是否在自定义终结点列表中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-1. 请注意，此终结点指向上一步中创建的存储帐户（名为 iotedgeandml\<unique suffix\>）中名为“devicedata”的 Blob 容器   。
+   我们看到，**turbofandevicestorage** 包含在自定义终结点列表中。 请注意有关此终结点的以下特征：
 
-1. 另请注意，Blob 文件名格式已由默认格式发生改变，现在，它将分区作为名称中的最后一个元素  。 我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
-
-1. 关闭终结点详细信息边栏选项卡，以返回“消息路由”页  。
+   * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。 
+   * 其“文件名格式”使用分区作为名称中的最后一个元素。  我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
 
 1. 选择“路由”选项卡  。
 
 1. 选择名为“turbofanDeviceDataToStorage”的路由  。
 
-1. 请注意，路由的终结点是“turbofanDeviceStorage”自定义终结点  。
+1. 在“路由详细信息”页上，请注意，路由的终结点是 **turbofanDeviceStorage** 终结点。 
 
-1. 查看设置为“true”的路由查询  。 这意味着所有设备遥测消息都将与此路由匹配，因此所有消息都将发送到“turbofanDeviceStorage”终结点  。
+   ![查看有关 turbofanDeviceDataToStorage 路由的详细信息](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. 关闭路由详细信息。
+1. 查看设置为“true”的“路由查询”   。 此设置意味着所有设备遥测消息都将与此路由匹配，因此所有消息将发送到 **turbofanDeviceStorage** 终结点。
+
+1. 由于我们未进行任何编辑，因此请直接关闭此页。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们创建了 IoT 中心，并配置了 Azure 存储帐户的路由。 在下一篇文章中，我们将通过 IoT 中心将来自一组模拟设备的数据发送到存储帐户。 在本教程的后面部分，在配置 IoT Edge 设备和模块之后，我们将再次关注路由并详细了解路由查询。
+在本文中，我们创建了 IoT 中心，并配置了 Azure 存储帐户的路由。 接下来，我们将通过 IoT 中心将来自一组模拟设备的数据发送到存储帐户。 在本教程的后面部分，在配置 IoT Edge 设备和模块之后，我们将再次关注路由并详细了解路由查询。
 
 有关 IoT Edge 上的机器学习教程这部分所涵盖的步骤详细信息，请参阅：
 

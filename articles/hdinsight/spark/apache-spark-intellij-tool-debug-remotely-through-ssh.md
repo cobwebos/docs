@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 6e3cf8fa70d6abe8005fe2d2de059c0a3944ff81
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905320"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934747"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>通过 SSH 在 HDInsight 群集上调试 Apache Spark 的应用程序 Azure Toolkit for IntelliJ
 
@@ -25,7 +25,7 @@ ms.locfileid: "76905320"
 
 * 对于 Windows 用户：在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会出现异常，如[Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)中所述。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
 
-    若要解决此错误，请将 `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` 下载到**C:\WinUtils\bin**等位置。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
+    若要解决此错误，请将[winutils.exe](https://github.com/steveloughran/winutils)下载到某个位置，例如**C:\WinUtils\bin**。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
 
 * [IntelliJ](https://www.jetbrains.com/idea/download/#section=windows) （社区版免费）。
 

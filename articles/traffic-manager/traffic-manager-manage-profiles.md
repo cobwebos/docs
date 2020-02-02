@@ -1,9 +1,9 @@
 ---
 title: 管理 Azure 流量管理器配置文件 | Microsoft Docs
-description: 本文有助于创建、禁用、启用和删除 Azure 流量管理器配置文件。
+description: 本文可帮助你创建、禁用、启用和删除 Azure 流量管理器配置文件。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: allensu
-ms.openlocfilehash: 8ec30a4d3f02505e764cd6f8dcec42c56d11ed27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071103"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938615"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -30,14 +30,14 @@ ms.locfileid: "67071103"
 ### <a name="to-create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
-2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”     。
-4. 在“创建流量管理器配置文件”  中，按如下所示完成操作：
+2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
+4. 在“创建流量管理器配置文件”中，按如下所示完成操作：
     1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（`<name>`,trafficmanager.net），该名称用于访问流量管理器配置文件。
-    2. 在**路由方法**中，选择“优先级”  路由方法。
+    2. 在**路由方法**中，选择“优先级”路由方法。
     3. 在**订阅**中，选择要创建此配置文件的订阅
     4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。
     5. 在**资源组位置**中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
-    6. 单击**创建**。
+    6. 单击“创建”。
     7. 流量管理器配置文件的全局部署完成后，它会在相应的资源组中作为资源之一列出。
 
 ## <a name="disable-enable-or-delete-a-profile"></a>禁用、启用或删除配置文件
@@ -50,14 +50,14 @@ ms.locfileid: "67071103"
 2. 流量不再通过流量管理器配置文件设置定向到终结点。
 3. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
-3. 单击“概览”   >   “禁用”。
+3. 单击“概览” > “禁用”。
 4. 确认禁用流量管理器配置文件。
 
 ### <a name="to-enable-a-profile"></a>启用配置文件
 
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
-3. 单击“概览”   >   “启用”。
+3. 单击“概览” > “启用”。
 1. 如果使用自定义域名，请在 Internet DNS 服务器上创建一条指向流量管理器配置文件域名的 CNAME 资源记录。
 2. 然后，流量将再次定向到终结点。
 
@@ -65,7 +65,7 @@ ms.locfileid: "67071103"
 
 1. 确保 Internet DNS 服务器上的 DNS 资源记录不再使用指向流量管理器配置文件域名的 CNAME 资源记录。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
-3. 单击“概览”   >   “删除”。
+3. 单击“概览” > “删除”。
 4. 确认删除流量管理器配置文件。
 
 ## <a name="next-steps"></a>后续步骤

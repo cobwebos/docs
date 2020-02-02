@@ -2,17 +2,17 @@
 title: Azure 专用 DNS 常见问题解答
 description: 本文介绍 Azure 专用 DNS 的常见问题
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.author: rohink
+ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642142"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939426"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a4140ffc0d4e97afabb1c3080951eeb75c792a8c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887778"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961395"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -53,7 +53,7 @@ Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 通过�
 可用性集是用于提供 VM 冗余和可用性的另一个数据中心配置。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。
 
 > [!IMPORTANT]
-> 避免将单实例虚拟机单独地置于可用性集中。 此配置中的 VM 并不符合 SLA 保证，在出现 Azure 计划内维护事件时会停机，除非某个 VM 正在使用 [Azure 高级 SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd)。 对于使用高级 SSD 的单一 VM，Azure SLA 适用。
+> 可用性集中的单个实例虚拟机应使用所有操作系统磁盘和数据磁盘的高级 SSD 或 Ultra 磁盘，才能至少满足至少99.9% 的虚拟机连接性的 SLA 要求。
 
 基础 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 对于给定的可用性集，默认情况下会分配五个非用户可配置的更新域（可以增加资源管理器部署以最多提供 20 个更新域），以指示可同时重新启动的虚拟机和底层物理硬件组。 在单个可用性集中配置了 5 个以上的虚拟机时，第 6 个虚拟机将放置在第 1 个虚拟机所在的更新域中，第 7 个虚拟机将放置在第 2 个虚拟机所在的更新域中，依此类推。 在计划内维护期间，更新域的重启顺序可能不会按序进行，但一次只重启一个更新域。 重启的更新域有 30 分钟的时间进行恢复，此时间过后，就会在另一更新域上启动维护操作。
 

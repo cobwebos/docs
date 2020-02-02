@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481009"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931571"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中的用户帐户、密码和管理的管理概念
 
@@ -34,7 +34,7 @@ ms.locfileid: "74481009"
 * 可以从 Azure AD 同步用户帐户。 这包括直接在 Azure AD 中创建的仅限云的用户帐户，以及使用 Azure AD Connect 从本地 AD DS 环境同步的混合用户帐户。
     * Azure AD DS 中的大部分用户帐户是通过 Azure AD 中的同步过程创建的。
 * 可以在 Azure AD DS 托管域中手动创建用户帐户，并且 Azure AD 中不存在该帐户。
-    * 如果需要为仅在 Azure AD DS 中运行的应用程序创建服务帐户，你可以在托管域中手动创建它们。 由于同步是 Azure AD 单向的，因此在 Azure AD DS 中创建的用户帐户不会同步回 Azure AD。
+    * 如果需要为仅在 Azure AD DS 中运行的应用程序创建服务帐户，你可以在托管域中手动创建它们。 由于同步是 Azure AD 的一种方式，在 Azure AD DS 中创建的用户帐户不会同步回 Azure AD。
 
 ## <a name="password-policy"></a>密码策略
 
@@ -60,7 +60,7 @@ Azure AD DS 包括一个默认密码策略，该策略定义帐户锁定、最�
 经过适当的配置后，可用的密码哈希将存储在 Azure AD DS 托管域中。 删除 Azure AD DS 托管域也会删除其中存储的所有密码哈希。 如果之后创建 Azure AD DS 托管域，Azure AD 中的同步凭据信息将无法重复使用-你必须重新配置密码哈希同步，以再次存储密码哈希。 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的 Azure AD DS 托管域中生成并存储密码哈希。 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][azure-ad-password-sync]。
 
 > [!IMPORTANT]
-> 只应安装并配置 Azure AD Connect 以便与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect，以将对象同步回 Azure AD。
+> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
 
 ## <a name="forests-and-trusts"></a>林和信任
 
@@ -68,11 +68,41 @@ Azure AD DS 包括一个默认密码策略，该策略定义帐户锁定、最�
 
 在 Azure AD DS 中，林只包含一个域。 本地 AD DS 林通常包含多个域。 在大型组织中，特别是合并和收购后，最终可能会得到多个本地林，每个林都包含多个域。
 
-默认情况下，将 Azure AD DS 托管域创建为*用户*林。 这种类型的林将同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的任何用户帐户。 用户帐户可以直接针对 Azure AD DS 托管域进行身份验证，例如登录到已加入域的 VM。 用户林可用于同步密码哈希，并且用户不使用类似于智能卡身份验证的专用登录方法。
+默认情况下，将 Azure AD DS 托管域创建为*用户*林。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 用户帐户可以直接针对 Azure AD DS 托管域进行身份验证，例如登录到已加入域的 VM。 用户林可用于同步密码哈希，并且用户不使用类似于智能卡身份验证的专用登录方法。
 
 在 Azure AD DS*资源*林中，用户从本地 AD DS 对单向林*信任*进行身份验证。 采用此方法时，用户对象和密码哈希不会同步到 Azure AD DS。 仅本地 AD DS 中存在用户对象和凭据。 此方法允许企业在 Azure 中托管依赖于经典身份验证（例如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，但会删除任何身份验证问题或问题。 Azure AD DS 资源林目前处于预览阶段。
 
 有关 Azure AD DS 中的林类型的详细信息，请参阅[什么是资源林？][concepts-forest]和[林信任如何在 Azure AD DS 中工作？][concepts-trust]
+
+## <a name="azure-ad-ds-skus"></a>Azure AD DS Sku
+
+在 Azure AD DS 中，可用的性能和功能基于 SKU。 当你创建托管域时，你可以选择 SKU，你可以在部署托管域后，根据业务需求的变化来切换 Sku。 下表概述了可用的 Sku 以及它们之间的差异：
+
+| SKU 名称   | 最大对象计数 | 备份频率 | 最大出站林信任数量 |
+|------------|----------------------|------------------|----|
+| 标准   | 无限制            | 每7天     | 0  |
+| Enterprise 版 | 无限制            | 每3天     | 5  |
+| 高级    | 无限制            | 每天            | 10 |
+
+在这些 Azure AD DS Sku 之前，使用基于 Azure AD DS 托管域中的对象数（用户和计算机帐户）的计费模型。 对于托管域中的对象数量，不再提供可变定价。
+
+有关详细信息，请参阅[AZURE AD DS 定价页][pricing]。
+
+### <a name="managed-domain-performance"></a>托管域性能
+
+域性能因应用程序的身份验证的实现方式而异。 额外的计算资源可能有助于改善查询响应时间，并缩短同步操作所用的时间。 当 SKU 级别增加时，可用于托管域的计算资源将增加。 监视应用程序的性能并规划所需的资源。
+
+如果业务或应用程序要求发生更改，并且你需要 Azure AD DS 托管域的额外计算能力，则可以切换到其他 SKU。
+
+### <a name="backup-frequency"></a>备份频率
+
+备份频率决定了托管域快照的拍摄频率。 备份是 Azure 平台管理的自动化过程。 当你的托管域出现问题时，Azure 支持人员可以帮助你从备份还原。 由于同步仅*在*Azure AD 的一种方式下进行，因此 Azure AD DS 托管域中的任何问题不会影响 Azure AD 或本地 AD DS 环境和功能。
+
+随着 SKU 级别的增加，这些备份快照的频率会增加。 查看您的业务需求和恢复点目标（RPO），以确定托管域所需的备份频率。 如果业务或应用程序要求发生更改，并且需要更频繁的备份，则可以切换到其他 SKU。
+
+### <a name="outbound-forests"></a>出站林
+
+上一节详细介绍了从 Azure AD DS 托管域到本地 AD DS 环境（当前为预览版）的单向出站林信任。 SKU 决定了可以为 Azure AD DS 托管域创建的林信任的最大数目。 查看你的业务和应用程序要求，确定你实际需要的信任数量，并选择适当的 Azure AD DS SKU。 同样，如果你的业务要求发生了变化，并且你需要创建其他林信任，则可以切换到其他 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,3 +117,6 @@ Azure AD DS 包括一个默认密码策略，该策略定义帐户锁定、最�
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845330"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935346"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -240,8 +240,10 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 | 白苗文      | `mww`          |
 | 匈牙利语      | `hu`          |
 | 印度尼西亚语      | `id`          |
+| 爱尔兰语      | `ga`          |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
+| 卡纳达语      | `kn`          |
 | 斯瓦希里语      | `sw`          |
 | 克林贡语      | `tlh`          |
 | 克林贡语(plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ Microsoft Speech SDK 和 REST Api 都支持这些声音，其中每个都支持�
 | 立陶宛语      | `lt`          |
 | 马达加斯加语      | `mg`          |
 | 马来语      | `ms`          |
+| 马拉雅拉姆语      | `ml`          |
 | 马耳他语      | `mt`          |
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语      | `pt`          |
+| 葡萄牙语（巴西）      | `pt-br`          |
+| 葡萄牙语(葡萄牙)      | `pt-pt`          |
+| 旁遮普语      | `pa`          |
 | 克雷塔罗奥托米语      | `otq`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |

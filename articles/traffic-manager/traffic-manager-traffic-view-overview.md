@@ -3,21 +3,21 @@ title: Azure 流量管理器中的流量视图
 description: 在本简介中，了解流量管理器流量视图的工作原理。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: allensu
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023248"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938356"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 

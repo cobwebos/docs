@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425437"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931227"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建对本地域的出站林信任
 
@@ -45,7 +45,7 @@ ms.locfileid: "75425437"
     * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance-advanced]。
     
     > [!IMPORTANT]
-    > 请确保使用*资源*林创建 Azure AD DS 托管域。 默认选项创建*用户*林。 只有资源林可以创建对本地 AD DS 环境的信任。
+    > 请确保使用*资源*林创建 Azure AD DS 托管域。 默认选项创建*用户*林。 只有资源林可以创建对本地 AD DS 环境的信任。 还需要为托管域使用至少*企业*SKU。 如果需要，请[更改 AZURE AD DS 托管域的 SKU][howto-change-sku]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -188,7 +188,7 @@ ms.locfileid: "75425437"
 1. 从 "**组或用户名**" 列表中选择 " *FileServerAccess* "。 在 " **FileServerAccess 的权限**" 列表中，选择 "*允许***修改**和**写入**权限"，然后选择 **"确定"** 。
 1. 选择 "**共享**" 选项卡，然后选择 "**高级共享 ...** "
 1. 选择 "**共享此文件夹**"，然后为**共享名称**（如*CrossForestShare*）中的文件共享输入一个便于记忆的名称。
-1. 选择“权限”。 在 "**适用于每个人的权限**" 列表中，选择 "**允许** **更改**权限"。
+1. 选择**权限**。 在 "**适用于每个人的权限**" 列表中，选择 "**允许** **更改**权限"。
 1. 选择 **"确定"** 两次，然后**关闭**。
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>验证资源的跨林身份验证
@@ -220,3 +220,4 @@ ms.locfileid: "75425437"
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

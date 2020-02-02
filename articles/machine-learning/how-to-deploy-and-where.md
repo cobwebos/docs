@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543556"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932378"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "76543556"
 无论[你在何处部署](#target)模型，工作流都是类似的：
 
 1. 注册模型。
-1. 准备部署。 （指定资产、使用情况、计算目标。）
+1. 准备部署。 （指定资产，使用量，计算目标。）
 1. 将模型部署到计算目标。
 1. 测试已部署的模型，也称为 "web 服务"。
 
@@ -174,12 +174,12 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
 
 ## <a name="prepare-to-deploy"></a>准备部署
 
-若要部署模型，需备齐以下项：
+若要部署模型，需要以下项：
 
-* **入口脚本**。 此脚本接受请求，使用模型为请求评分，并返回结果。
+* **一个项脚本**。 此脚本接受请求，使用模型为请求评分，并返回结果。
 
     > [!IMPORTANT]
-    > * 入口脚本特定于你的模型。 它必须了解传入请求数据的格式、模型所需的数据格式，以及返回给客户端的数据的格式。
+    > * 条目脚本特定于您的模型。 它必须了解传入请求数据的格式、模型所需的数据格式，以及返回给客户端的数据的格式。
     >
     >   如果请求数据的格式不能由模型使用，则该脚本可以将其转换为可接受的格式。 它还可以在将响应返回给客户端之前对其进行转换。
     >
@@ -187,21 +187,21 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
     >
     >   可能适用于你的方案的一种替代方法是[批处理预测](how-to-use-parallel-run-step.md)，它在评分期间提供对数据存储区的访问。
 
-* **依赖项**，如入口脚本或模型所需的帮助程序脚本或 Python/Conda 包。
+* **依赖项**，如运行条目脚本或模型所需的帮助程序脚本或 Python/Conda 包。
 
-* 托管部署模型的计算目标的部署配置。 此配置描述运行模型所需的内存和 CPU 要求等内容。
+* 托管已部署模型的计算目标的**部署配置**。 此配置描述运行模型所需的内存和 CPU 需求等因素。
 
-这些项被封装到推理配置和部署配置中。 推理配置引用入口脚本和其他依赖项。 使用 SDK 执行部署时，可以通过编程方式定义这些配置。 使用 CLI 时，可在 JSON 文件中定义这些配置。
+这些项封装为*推理配置*和*部署配置*。 推理配置引用入口脚本和其他依赖项。 使用 SDK 执行部署时，以编程方式定义这些配置。 使用 CLI 时，可在 JSON 文件中定义它们。
 
 ### <a id="script"></a>1. 定义条目脚本和依赖项
 
-入口脚本接收提交到已部署 Web 服务的数据，并将此数据传递给模型。 然后，该脚本接收模型返回的响应，并将该响应返回给客户端。 *该脚本特定于您的模型*。 它必须了解模型需要的数据并返回数据。
+条目脚本接收提交给已部署 web 服务的数据，并将其传递给模型。 然后，该脚本接收模型返回的响应，并将该响应返回给客户端。 *该脚本特定于您的模型*。 它必须了解模型需要的数据并返回数据。
 
-该脚本包含两个用于加载和运行模型的函数：
+该脚本包含用于加载和运行模型的两个函数：
 
 * `init()`：通常，此函数将模型加载到全局对象。 当 web 服务的 Docker 容器启动时，此函数只运行一次。
 
-* `run(input_data)`：此函数使用模型根据输入数据来预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以先转换数据，然后再将其发送给模型，或将其返回给客户端。
+* `run(input_data)`：此函数使用模型根据输入数据来预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 在将数据发送到模型之前，或将其返回到客户端之前，可以转换数据。
 
 #### <a name="locate-model-files-in-your-entry-script"></a>在条目脚本中找到模型文件
 
@@ -220,17 +220,23 @@ AZUREML_MODEL_DIR 是在服务部署过程中创建的环境变量。 您可以�
 | 单个模型 | 包含模型的文件夹的路径。 |
 | 多个模型 | 包含所有模型的文件夹的路径。 按名称和版本在此文件夹中查找模型（`$MODEL_NAME/$VERSION`） |
 
-若要获取模型中的文件的路径，请将环境变量与要查找的文件名组合在一起。
-在注册和部署过程中将保留模型文件的文件名。 
+在模型注册和部署过程中，会将模型放置在 AZUREML_MODEL_DIR 路径中，并保留它们的原始文件名。
+
+若要获取条目脚本中的模型文件的路径，请将环境变量与要查找的文件路径组合在一起。
 
 **单个模型示例**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **多个模型示例**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -425,7 +431,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLRequest` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
+> `AMLRequest` 类在 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
 >
 > 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装组件：
 >
@@ -471,7 +477,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLResponse` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
+> `AMLResponse` 类在 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
 >
 > 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装组件：
 >
@@ -859,7 +865,7 @@ Azure 机器学习通过 Azure 机器学习创建和管理计算目标。 它们
 ## <a name="download-a-model"></a>下载模型
 如果要下载模型以便在自己的执行环境中使用它，则可以使用以下 SDK/CLI 命令执行此操作：
 
-SDK：
+SDK
 ```python
 model_path = Model(ws,'mymodel').download()
 ```
@@ -912,7 +918,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-### <a name="scikit-learn-models"></a>Scikit-learn 模型
+### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
 
 并非所有内置 scikit-learn 模型类型都支持代码模型部署。
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677454"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933071"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -96,7 +96,7 @@ ms.locfileid: "72677454"
 
 ## <a name="account-id"></a>帐户 ID
 
-在多租户应用程序中，这是用户使用的帐户 ID 或名称。 例如，Azure 门户的订阅 ID 或博客平台的博客名称。
+在多租户应用程序中，这是用户使用的帐户 ID 或名称。 示例可以是博客平台的 Azure 门户或博客名称的订阅 ID。
 
 最大长度：1024
 
@@ -132,5 +132,5 @@ SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/bl
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。
-- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - 查看标准上下文属性集合[配置](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。

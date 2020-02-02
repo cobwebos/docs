@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 31d81c6946fc256f5c22b93674469d7b87500173
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480706"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930351"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
 本文提供有关混合 Runbook 辅助角色故障排除问题的信息。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））。 对于 Linux，这是适用于 Linux 的 Log Analytics 代理。
 
@@ -34,7 +34,7 @@ Runbook 执行失败，你收到以下错误：
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可能会中断，无法正常完成。 如果出现这种情况，收到的错误消息可能不会显示额外信息来解释相关原因。
+Runbook 在尝试执行三次后立刻暂停。 存在可能会阻止 runbook 完成的情况。 相关错误消息不能包含任何其他信息。
 
 #### <a name="cause"></a>原因
 
@@ -50,11 +50,11 @@ Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可
 
 #### <a name="resolution"></a>分辨率
 
-验证计算机是否在端口 443 上对 *.azure-automation.net 有出站访问权限。
+确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
 
-运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能配置它托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统被过度利用，并造成 Runbook 作业延迟或超时。
+运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，然后才能将辅助角色配置为承载此功能。 Runbook 及其使用的后台进程可能会导致系统过度使用，并导致 runbook 作业延迟或超时。
 
-确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能意味着需要升级资源。 也可以选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
+确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 任何内存或 CPU 压力都可能表明需要升级资源。 也可以选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
 
 检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 此错误的原因是尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 请查看 [Runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
 
@@ -79,13 +79,13 @@ At line:3 char:1
 
 #### <a name="resolution"></a>分辨率
 
-如果混合 Runbook 辅助角色是 Azure VM，则可以使用 [Azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM 的托管标识而非运行方式帐户，向 Azure 资源进行身份验证，从而简化了身份验证过程。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请查看 [Export-runascertificatetohybridworker](../automation-hrw-run-runbooks.md#runas-script) runbook 的运行步骤。
+如果你的混合 Runbook 辅助角色是 Azure VM，则可以改用[azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM （而不是运行方式帐户）的托管标识对 Azure 资源进行身份验证，从而简化了身份验证。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅在[混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)中运行 PowerShell runbook export-runascertificatetohybridworker 的步骤。
 
 ## <a name="linux"></a>Linux
 
 Linux 混合 Runbook 辅助角色依赖于[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)来与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-### <a name="oms-agent-not-running"></a>方案：适用于 Linux 的日志 Analyics 代理未运行
+### <a name="oms-agent-not-running"></a>方案：适用于 Linux 的 Log Analytics 代理未运行
 
 #### <a name="issue"></a>问题
 
@@ -112,19 +112,46 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 * **worker.conf** - 此进程是自动注册混合辅助角色进程，由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 如果未在计算机上启用更新管理解决方案，则不会显示此进程。
 
-* **diy/worker.conf**：此进程是 DIY 混合辅助角色进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 它仅与使用不同配置的自动注册混合辅助角色进程在主要细节上有所不同。 如果禁用 Azure 自动化解决方案，并且 DIY Linux 混合辅助角色未注册，则不会显示此进程。
+* **diy/worker.conf**：此进程是 DIY 混合辅助角色进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 它只与自动注册混合辅助进程在使用不同配置的关键细节中不同。 如果 Azure 自动化解决方案已禁用并且 DIY Linux 混合辅助角色未注册，则此过程不存在。
 
 如果代理未运行，请运行以下命令来启动该服务： `sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
+### <a name="error-403-on-registration"></a>方案：在混合 Runbook 辅助角色的注册过程中出现错误403
+
+#### <a name="issue"></a>问题
+
+工作线程的初始注册阶段失败，你将收到以下错误（403）。
+
+```error
+"Forbidden: You don't have permission to access / on this server."
+```
+
+#### <a name="cause"></a>原因
+
+可能的原因如下：
+* 代理设置中的工作区 ID 或工作区密钥（主）有误。 
+* 混合 Runbook 辅助角色无法下载配置，导致帐户链接错误。 当 Azure 启用解决方案时，它仅支持特定的区域以链接 Log Analytics 工作区和自动化帐户。 还可能在计算机上设置了不正确的日期和/或时间。 如果从当前时间开始的时间为 +/-15 分钟，则载入失败。
+
+#### <a name="resolution"></a>分辨率
+
+##### <a name="mistyped-workspace-idkey"></a>工作区 ID/密钥错误键入
+若要验证代理的工作区 ID 或工作区密钥是否已键入错误，请参阅[添加或删除工作区–](../../azure-monitor/platform/agent-manage.md#windows-agent) windows 代理的 windows 代理或[添加或删除工作区–](../../azure-monitor/platform/agent-manage.md#linux-agent) linux 代理的 linux 代理。  请确保从 Azure 门户中选择完整的字符串，并仔细复制并粘贴。
+
+##### <a name="configuration-not-downloaded"></a>未下载配置
+
+Log Analytics 工作区和自动化帐户必须位于链接区域。 有关支持的区域的列表，请参阅[Azure 自动化和 Log Analytics 工作区映射](../how-to/region-mappings.md)。
+
+你可能还需要更新计算机的日期和或时区。 如果选择自定义时间范围，请确保范围为 UTC，这可能与本地时区不同。
+
 ### <a name="class-does-not-exist"></a>方案：指定的类不存在
 
-如果看到错误“指定的类不存在。” 在 `/var/opt/microsoft/omsconfig/omsconfig.log` 中，需要更新 Linux 的 Log Analytics 代理。 运行以下命令以重新安装代理：
+如果看到错误 **，则指定的类不存在。** 在 `/var/opt/microsoft/omsconfig/omsconfig.log`中，需要更新 Linux 的 Log Analytics 代理。 运行以下命令以重新安装代理：
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
-## <a name="windows"></a>{1}Windows{2}
+## <a name="windows"></a>Windows
 
 Windows 混合 Runbook 辅助角色依赖于[windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)来与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
@@ -136,13 +163,13 @@ Windows 混合 Runbook 辅助角色依赖于[windows 的 Log Analytics 代理](.
 
 #### <a name="cause"></a>原因
 
-如果 Microsoft Monitoring Agent Windows 服务未运行，会导致混合 Runbook 辅助角色无法与 Azure 自动化通信。
+如果 Microsoft Monitoring Agent Microsoft 服务未运行，则此状态会阻止混合 Runbook 辅助角色与 Azure Automation 通信。
 
 #### <a name="resolution"></a>分辨率
 
 在 PowerShell 中输入以下命令，验证代理是否正在运行：`Get-Service healthservice`。 如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`Start-Service healthservice`。
 
-### <a name="event-4502"></a> Operations Manager 日志中的事件 4502
+### <a name="event-4502"></a>方案：事件 4502 Operations Manager 日志中
 
 #### <a name="issue"></a>问题
 
@@ -154,11 +181,11 @@ Windows 混合 Runbook 辅助角色依赖于[windows 的 Log Analytics 代理](.
 
 #### <a name="resolution"></a>分辨率
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以检查“应用程序和服务日志\Microsoft-SMA\Operations”和“应用程序和服务日志\Operations Manager”事件日志中是否有任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。 有关排查 Log Analytics 代理问题的详细信息，请参阅[Log Analytics Windows 代理解决问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
+日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 你可以检查**Application And service Logs\Microsoft-SMA\Operations** and **application And service Logs\Operations Manager**事件日志中是否有任何警告或错误事件，这些事件指明了影响角色加入 Azure 自动化或在正常操作中出现的问题。 有关排查 Log Analytics 代理问题的详细信息，请参阅[Log Analytics Windows 代理解决问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)将从混合辅助角色发送到 Azure 自动化，就像在云中运行的 Runbook 作业一样。 就像在其他 Runbook 中一样，还可以启用详细流和进度流。
 
-### <a name="corrupt-cache"></a> 混合 Runbook 辅助角色未提供报告
+### <a name="corrupt-cache"></a>方案：混合 Runbook 辅助角色未报告
 
 #### <a name="issue"></a>问题
 
@@ -178,7 +205,7 @@ Heartbeat
 
 #### <a name="resolution"></a>分辨率
 
-若要解决此问题，请登录到混合 Runbook 辅助角色并运行以下脚本。 此脚本将停止 Microsoft Monitoring Agent，删除其高速缓存并重启该服务。 此操作会强制混合 Runbook 辅助角色从 Azure 自动化重新下载其配置。
+若要解决此问题，请登录到混合 Runbook 辅助角色并运行以下脚本。 此脚本将停止 Microsoft Monitoring Agent，删除其高速缓存并重启该服务。 此操作强制混合 Runbook 辅助角色从 Azure 自动化重新下载其配置。
 
 ```powershell
 Stop-Service -Name HealthService
@@ -200,7 +227,7 @@ Machine is already registered
 
 #### <a name="cause"></a>原因
 
-如果计算机已注册到一个不同的自动化帐户，或者在将混合 Runbook 辅助角色从计算机中删除后尝试重新添加它，则可能会出现此消息。
+如果已使用不同的自动化帐户注册了计算机，或者在从计算机中删除了混合 Runbook 辅助角色之后尝试重新添加，则可能会导致此问题。
 
 #### <a name="resolution"></a>分辨率
 
@@ -214,5 +241,4 @@ Machine is already registered
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
-
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

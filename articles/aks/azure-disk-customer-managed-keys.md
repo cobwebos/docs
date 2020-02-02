@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 831a867d1084f7396db0f8aa4c2e2e665eb98732
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898819"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932616"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>将自己的密钥（BYOK）与 azure Kubernetes 服务（AKS）中的 Azure 磁盘结合在一起
 
-Azure 存储加密静态存储帐户中的所有数据。 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了进一步控制加密密钥，你可以提供[客户管理的密钥][customer-managed-keys]，用于对 AKS 群集的 OS 和数据磁盘进行加密。
+Azure 存储加密静态存储帐户中的所有数据。 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了进一步控制加密密钥，你可以提供[客户管理的密钥][customer-managed-keys]，以用于 AKS 群集的 OS 和数据磁盘进行静态加密。
 
 > [!NOTE]
 > BYOK Linux 和基于 Windows 的 AKS 群集在支持 Azure 托管磁盘服务器端加密的[azure 区域][supported-regions]中提供。

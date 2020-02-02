@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911151"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933357"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911151"
 
 ## <a name="understand-the-code"></a>了解代码
 
-下面的代码使用符号层向地图添加一个具有 `name` 和 `description` 属性的点功能。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的实例，但未将其显示出来。 当鼠标悬停在符号标记上时，鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 当悬停标记符号时，将用标记的位置更新 popup 的 `position` 属性，并用一些 HTML 来更新 `content` 选项，这些 HTML 包装 `name` 并 `description` 要悬停的点功能的属性。 然后，使用其 `open` 函数在地图上显示弹出窗口。
+下面的代码使用符号层向地图添加一个具有 `name` 和 `description` 属性的点功能。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)的实例，但未将其显示出来。 鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 悬停标记符号时，将用标记的位置更新 popup 的 `position` 属性，并用一些 HTML 来更新 `content` 选项，这些 HTML 包装 `name` 并 `description` 悬停的点功能的属性。 然后，使用其 `open` 函数在地图上显示弹出窗口。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重复使用具有多个点的弹出窗口
 
-如果有大量的点，并且只想要一次显示一个弹出窗口，最佳方法是创建一个弹出窗口并重复使用它，而不是为每个点功能创建一个弹出窗口。 通过重复使用弹出式窗口，应用程序创建的 DOM 元素数量大大降低，从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
+如果有大量的点，并且只想一次显示一个弹出窗口，最佳方法就是创建一个弹出窗口并重复使用。 通过重复使用弹出式窗口，应用程序创建的 DOM 元素数量大大降低，从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
 
 <br/>
 
@@ -94,7 +94,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="customizing-a-popup"></a>自定义弹出项
 
-默认情况下，popup 具有白色背景、底部有一个指针箭头以及右上角的 "关闭" 按钮。 下面的示例使用 popup 的 `fillColor` 选项将背景色更改为黑色。 通过将 `shoCloseButton` 选项设置为 false 来删除 "关闭" 按钮。 弹出项的 HTML 内容使用从弹出项边缘填充10像素，文本变为白色，使其在黑色背景上正常显示。  
+默认情况下，popup 具有白色背景、底部有一个指针箭头以及右上角的 "关闭" 按钮。 下面的示例使用 popup 的 `fillColor` 选项将背景色更改为黑色。 通过将 `CloseButton` 选项设置为 false 来删除 "关闭" 按钮。 弹出项的 HTML 内容使用从弹出项边缘填充10像素。 文本变为白色，因此显示在黑色背景上。  
 
 <br/>
 
@@ -104,7 +104,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="popup-events"></a>弹出项事件
 
-可以打开、关闭和拖动弹出窗口。 Popup 类为帮助开发人员对这些操作做出反应的事件提供事件。 下面的示例突出显示打开、关闭或拖动弹出项时要触发的事件。 
+可以打开、关闭和拖动弹出窗口。 Popup 类提供事件以帮助开发人员响应这些事件。 下面的示例重点介绍当用户打开、关闭或拖动弹出项时触发的事件。 
 
 <br/>
 

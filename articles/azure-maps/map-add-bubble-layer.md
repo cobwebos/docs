@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911284"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933666"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
@@ -25,7 +25,7 @@ ms.locfileid: "75911284"
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源，并将其连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 为气泡层提供了一些选项，可用于以5个像素为单位呈现每个气泡的半径、白颜色、蓝笔划颜色和六个像素的笔划宽度。 
+下面的代码将一个点数组加载到数据源中。 然后，数据点连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 气泡图层呈现每个气泡的半径，其中包含五个像素、白色的填充颜色、蓝色的笔划颜色以及六个像素的笔划宽度。 
 
 ```javascript
 //Add point locations.

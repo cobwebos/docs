@@ -3,7 +3,7 @@ title: 指标和警报-Azure DNS
 description: 利用此学习路径，开始 Azure DNS 度量值和警报。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: dns
 ms.devlang: na
@@ -11,20 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: allensu
-ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212406"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937452"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 指标和警报
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 本文介绍了 Azure DNS 服务的指标和警报。
 
 ## <a name="azure-dns-metrics"></a>Azure DNS 指标
 
-Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区域的具体各方面。 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
+Azure DNS 为客户提供指标，使其能够监视服务中托管的 DNS 区域的特定方面。 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
 
 -   QueryVolume
 -   RecordSetCount
@@ -34,7 +34,7 @@ Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区�
 >[!NOTE]
 > 这个时候，这些指标仅可用于 Azure DNS 中托管的公共 DNS 区域。 如果 Azure DNS 托管专用区域，那么这些指标不为这些区域提供数据。 此外，仅 Azure 公有云支持指标和警报功能。 对主权云的支持将会在稍后跟进。 
 
-可以看到指标的最细粒度元素是 DNS 区域。 当前无法查看区域中单个资源记录的指标。
+可以查看其指标的最精细元素是 DNS 区域。 当前无法在区域内查看单个资源记录的指标。
 
 ### <a name="query-volume"></a>查询量
 

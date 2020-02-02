@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771268"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937985"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>开发 Azure AD 应用程序的安全应用程序
 ## <a name="overview"></a>概述
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -334,7 +335,7 @@ Azure App Service 使你能够使用 Python、Ruby、 C#和 Java 等语言构建
 
 5. 在 NSG 的 "子网" 边栏选项卡中，选择 "**关联**"，选择在部署中创建的虚拟网络，然后选择名为 " **gw-子**网" 的网关子网。 NSG 将应用于子网。
 
-6. 如前面的步骤所示，创建另一个 NSG，这是应用服务实例的时间。 输入名称。 添加端口443的入站规则，就像对应用程序网关 NSG 执行的操作一样。
+6. 如前面的步骤所示，创建另一个 NSG，这是应用服务实例的时间。 为其命名。 添加端口443的入站规则，就像对应用程序网关 NSG 执行的操作一样。
 
    如果在应用服务环境实例上部署了应用服务实例（这对于此应用不是这种情况），则可以通过在应用服务 NSG 的入站安全组中打开端口454-455 来添加入站规则，以允许 Azure 服务运行状况探测。 下面是配置：
 
@@ -411,7 +412,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
    - Application Insights 密钥
    - 数据存储访问密钥
    - 连接字符串
-   - 数据表名
+   - 数据表名称
    - 用户凭据
    - 根据需要配置高级访问权限策略
    - 使用密钥和机密所需的最小权限定义 Key Vault 访问策略
@@ -451,7 +452,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
     1.  在应用服务的 "概览" 选项卡中，通过单击 "获取发布配置文件" 链接并保存来下载发布配置文件。 还可以使用其他部署机制，如源代码管理。
     2.  切换到 Visual Studio 并转到 WebApp-OpenIDConnect-DotNet 项目。 右键单击 "解决方案资源管理器中的项目，然后选择" 发布 "。 单击底部栏上的 "导入配置文件"，然后导入之前下载的发布配置文件。
     3.  单击 "配置"，然后在 "连接" 选项卡中更新目标 URL，使其成为主页 url 中的 https，例如 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net 。 单击“下一步”。
-    4.  在“设置”选项卡上，确保未选中“启用组织身份验证”。 单击“保存”。 在主屏幕上单击 "发布"。
+    4.  在 "设置" 选项卡上，确保未选中 "启用组织身份验证"。 单击“保存”。 在主屏幕上单击 "发布"。
     5.  Visual Studio 将发布项目，并自动打开浏览器以访问该项目的 URL。 如果看到该项目的默认网页，则发布成功。
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>为 Azure Active Directory 实施多重身份验证
    管理员需要确保门户中的订阅帐户受到保护。 由于该订阅管理创建的资源，因此它容易受到攻击。 若要保护订阅，请在订阅的 " **Azure Active Directory** " 选项卡上启用多重身份验证。
@@ -465,7 +466,7 @@ Azure 会创建默认策略，指定管理员需要双重身份验证才能登�
    1. 中转到 Azure 门户中的 " **Azure Active Directory** " 选项卡
    2. 在 "安全" 类别下，选择 "条件访问"。 你会看到此屏幕
 
-       ![条件访问 - 策略](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![条件性访问-策略](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 如果无法创建新策略
 

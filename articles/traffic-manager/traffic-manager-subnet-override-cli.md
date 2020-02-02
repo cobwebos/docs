@@ -3,18 +3,18 @@ title: 使用 Azure CLI 的 Azure 流量管理器子网覆盖 |Microsoft Docs
 description: 本文将帮助你了解如何使用流量管理器子网替代来替代流量管理器配置文件的路由方法，以根据最终用户 IP 地址将流量定向到基于最终用户 IP 地址的终结点。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351178"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938473"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理器子网覆盖
 

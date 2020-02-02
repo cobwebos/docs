@@ -1,28 +1,30 @@
 ---
-title: Azure Service Fabric-配置现有 Azure Service Fabric 群集以启用托管标识支持
-description: 本文介绍如何配置现有 Azure Service Fabric 群集以启用对托管标识的支持
+title: 在现有 Service Fabric 群集中配置托管标识支持
+description: 下面介绍如何在现有 Azure Service Fabric 群集中启用托管标识支持
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351608"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934948"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>配置现有 Azure Service Fabric 群集以启用托管标识支持（预览）
-为了访问 Azure Service Fabric 应用程序的托管标识功能，你必须首先在群集上启用**托管标识令牌服务**。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证，并负责代表用户获取访问令牌。 启用该服务后，可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务，并在名称**Fabric：/System/ManagedIdentityTokenService**下运行。
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>在现有 Service Fabric 群集中配置托管标识支持（预览）
+
+若要在 Service Fabric 应用程序中对[Azure 资源使用托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用*托管标识令牌服务*。 此服务负责使用其托管标识对 Service Fabric 应用程序进行身份验证，并负责代表用户获取访问令牌。 启用该服务后，可以在左窗格中的 "**系统**" 部分下的 "Service Fabric Explorer" 下查看该服务，并在名称**Fabric：/System/ManagedIdentityTokenService**下运行。
 
 > [!NOTE]
 > 启用**托管标识令牌服务**需要 Service Fabric 运行时版本6.5.658.9590 或更高版本。  
-> 
+>
 > 可以通过打开群集资源并在 "**概要**" 部分中检查 " **Service Fabric 版本**" 属性，从 Azure 门户找到群集的 Service Fabric 版本。
-> 
+>
 > 如果群集处于**手动**升级模式，则需要首先将其升级到6.5.658.9590 或更高版本。
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在现有群集中启用*托管标识令牌服务*
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>在现有群集中启用托管标识令牌服务
-若要在现有群集中启用托管标识令牌服务，你将需要启动群集升级，指定两个更改：启用托管标识令牌服务并请求重新启动每个节点。 为此，请在 Azure 资源管理器模板中添加以下两个代码片段：
+若要在现有群集中启用托管标识令牌服务，你将需要启动指定两个更改的群集升级：（1）启用托管标识令牌服务，（2）请求重新启动每个节点。 首先，将以下代码片段添加到群集 Azure 资源管理器模板：
 
 ```json
 "fabricSettings": [

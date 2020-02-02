@@ -1,20 +1,20 @@
 ---
 title: DNS 区域和记录概述-Azure DNS
 description: 对在 Microsoft Azure DNS 中托管 DNS 区域和记录的支持的概述。
-author: asudbring
+author: rohinkoul
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: allensu
-ms.openlocfilehash: 460a1696497918ba525560507a16b0a321bd0e18
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.author: rohink
+ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276202"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938852"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843916"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935475"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
-此页介绍有关 Azure 负载均衡器常见问题的疑难解答信息。 当负载均衡器连接不可用时，最常见的症状如下： 
+本页提供有关基本和标准常见 Azure 负载均衡器问题的疑难解答信息。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)。
+
+当负载均衡器连接不可用时，最常见的症状如下： 
+
 - 负载均衡器后端的 VM 不响应运行状况探测 
 - 负载均衡器后端的 VM 不响应已配置端口上的通信
 
@@ -124,6 +127,10 @@ ms.locfileid: "76843916"
 如果在 VNet 中配置了内部负载均衡器，并且某个参与的后端 VM 正在尝试访问内部负载均衡器前端，则当将流映射到原始 VM 时会发生故障。 不支持这种情况。 有关详细讨讨论，请参阅[限制](concepts-limitations.md#limitations)。
 
 解决方案：有几种方法来取消阻止此方案，包括使用代理。 评估应用程序网关或其他第三方代理服务器（例如 nginx 或 haproxy）。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>症状：无法为负载均衡器的现有 LB 规则更改后端端口，此负载均衡器已在后端池中部署 VM 规模集。 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：无法针对 VM 规模集引用的负载均衡器所用的负载均衡规则修改后端端口。
+**解决方法**若要更改端口，可以通过更新 VM 规模集删除运行状况探测，更新端口，然后重新配置运行状况探测。
 
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911253"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933606"
 ---
 # <a name="add-html-markers-to-the-map"></a>向地图添加 HTML 标记
 
@@ -24,7 +24,7 @@ ms.locfileid: "75911253"
 > HTML 标记不连接到数据源。 相反，位置信息将被直接添加到标记中，标记将被添加到地图 `markers` 属性中，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)。
 
 > [!IMPORTANT]
-> 与 Azure Maps Web 控件中使用 WebGL 进行呈现的大多数层不同，HTML 标记使用传统的 DOM 元素进行呈现。 在这种情况下，添加页面的 HTML 标记越多，DOM 元素就越多。 添加几百个 HTML 标记后，可能会降低性能。 对于较大的数据集，可以考虑对数据进行聚类分析，或者使用符号或气泡层。
+> 与 Azure Maps Web 控件中使用 WebGL 进行呈现的大多数层不同，HTML 标记使用传统的 DOM 元素进行呈现。 同样，添加到页面中的 HTML 标记越多，DOM 元素越多。 添加几百个 HTML 标记后，可能会降低性能。 对于较大的数据集，可以考虑对数据进行聚类分析，或者使用符号或气泡层。
 
 ## <a name="add-an-html-marker"></a>添加 HTML 标记
 
@@ -33,7 +33,7 @@ ms.locfileid: "75911253"
 下面的代码创建一个 HTML 标记，并将 color 属性设置为 "DodgerBlue"，并将 text 属性设置为 "10"。 Popup 附加到标记，并使用 `click` 事件来切换 popup 的可见性。
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

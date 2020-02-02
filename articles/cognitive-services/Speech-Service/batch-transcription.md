@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768044"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936391"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批处理脚本
 
@@ -78,7 +78,7 @@ Batch 听录 API 支持以下格式：
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ Batch 听录 API 支持以下格式：
 | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
 | `AddSentiment` | 指定应将情绪添加到查询文本中。 接受的值为 `true`，这将启用每个查询文本的情绪和 `false` （默认值）以禁用它。 |
 | `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道，该输入应为包含两个声音的 mono 通道。 接受的值为 `true`，这将启用 diarization 和 `false` （默认值）以禁用它。 它还要求将 `AddWordLevelTimestamps` 设置为 true。|
-|`TranscriptionResultsContainerUrl`|可选 SAS 令牌到 Azure 中的可写容器。 结果将存储在此容器中。
+|`TranscriptionResultsContainerUrl`|指向 Azure 中可写容器的[服务 SAS](../../storage/common/storage-sas-overview.md)的可选 URL。 结果将存储在此容器中。
 
 ### <a name="storage"></a>存储空间
 

@@ -3,7 +3,7 @@ title: 在 Azure DNS 中管理 DNS 区域 - PowerShell | Microsoft Docs
 description: 可以使用 Azure PowerShell 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: allensu
-ms.openlocfilehash: 7a838f10d44f3be0af79bba5d303467884159cbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0120501aab7f0a63721126bfb5b3d04d9deb42fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211699"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936797"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [Portal](dns-operations-dnszones-portal.md)
+> * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
@@ -125,7 +125,7 @@ Set-AzureRmDnsZone -Zone $zone
 可以使用 `Remove-AzureRmDnsZone` cmdlet 删除 DNS 区域。
 
 > [!NOTE]
-> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 此操作不可撤消。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
+> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 无法撤消此操作。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
 >
 >若要防止意外删除区域，请参阅[如何保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。
 
@@ -140,7 +140,7 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>指定使用 $zone 对象的区域
 
-可使用 `$zone` 返回的 `Get-AzureRmDnsZone` 对象指定要删除的区域。
+可使用 `Get-AzureRmDnsZone` 返回的 `$zone` 对象指定要删除的区域。
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -160,11 +160,11 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 `New-AzureRmDnsZone`、`Set-AzureRmDnsZone` 和 `Remove-AzureRmDnsZone` cmdlet 都支持确认提示。
 
-如果 `New-AzureRmDnsZone` PowerShell 首选项变量的值为 `Set-AzureRmDnsZone` 或更低，则 `$ConfirmPreference` 和 `Medium` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `Remove-AzureRmDnsZone` PowerShell 变量拥有除 `$ConfirmPreference` 之外的其他值，则 `None` cmdlet 会提示用户进行确认。
+如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzureRmDnsZone` 和 `Set-AzureRmDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzureRmDnsZone` cmdlet 会提示用户进行确认。
 
 由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzureRmDnsZone` 会提示用户进行确认。
 
-可以使用 `$ConfirmPreference` 参数重写当前的 `-Confirm` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
+可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
 
 有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](/powershell/module/microsoft.powershell.core/about/about_preference_variables)（关于首选项变量）。
 

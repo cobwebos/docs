@@ -3,24 +3,24 @@ title: Azure 流量管理器的性能注意事项 | Microsoft 文档
 description: 了解流量管理器的性能以及如何测试使用流量管理器时的网站性能
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071056"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938544"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
-本页介绍使用流量管理器的性能注意事项。 请考虑以下方案：
+本页介绍使用流量管理器的性能注意事项。 请考虑下列方案：
 
 在美国西部和东亚区域分别创建了网站的实例。 其中一个实例未通过流量管理器探测的运行状况检查。 应用程序流量定向到正常的区域。 这种故障转移是意料之中的，但由于流量现在要传送到远方区域，这种延迟会给性能造成问题。
 
@@ -28,7 +28,7 @@ ms.locfileid: "67071056"
 
 流量管理器对网站产生的唯一性能影响是初始 DNS 查找。 针对流量管理器配置文件名称发出的 DNS 请求由托管 trafficmanager.net 区域的 Microsoft DNS 根服务器处理。 流量管理器根据流量管理器策略和探测结果填充并定期更新 Microsoft DNS 根服务器。 因此，即使在初始 DNS 查找期间，也不会将 DNS 查询发送到流量管理器。
 
-流量管理器是由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
+流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
 DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
 
@@ -58,7 +58,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
-    以前称为监视鼠标检查网站工具，此站点显示你的 DNS 解析时间从多个地理区域同时。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
+    此站点以前称为 "监视鼠标检查网站" 工具，可同时显示来自多个地理区域的 DNS 解析时间。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

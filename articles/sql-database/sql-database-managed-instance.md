@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514549"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935209"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -147,7 +147,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 下表总结了操作和典型的总持续时间：
 
-|类别  |操作  |长时间运行的段  |估计的持续时间  |
+|类别  |操作  |长时间运行的段  |估计持续时间  |
 |---------|---------|---------|---------|
 |**部署** |空子网中的第一个实例|创建虚拟群集|90% 的操作在4小时内完成|
 |部署 |非空子网中的第一个硬件生成的第一个实例（例如，子网中的第一个第1代实例，具有第4代实例）|虚拟群集创建 *|90% 的操作在4小时内完成|
@@ -188,7 +188,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 下表总结了取消特定管理操作和典型总持续时间的能力：
 
-类别  |操作  |可取消  |估计取消持续时间  |
+类别  |操作  |可  |估计取消持续时间  |
 |---------|---------|---------|---------|
 |部署 |实例创建 |否 |  |
 |更新 |实例存储增加/减少（常规用途） |否 |  |
@@ -303,7 +303,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>本地 SQL Server 与托管实例中 SQL Server 的主要差异
 
-托管实例部署选项受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。 在某些情况下，当工具需要识别特定的功能是否以略微不同的方式工作或者服务是否不在某个环境中运行时，你无法完全控制这一点：
+托管实例部署选项受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。 在某些情况下，工具需要识别特定功能的工作方式略有不同，或者服务在不完全控制的环境中运行：
 
 - 高可用性是通过类似 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术内置和预配的。
 - 自动备份和时间点还原。 客户可以启动 `copy-only` 备份，而不会干扰自动备份链。

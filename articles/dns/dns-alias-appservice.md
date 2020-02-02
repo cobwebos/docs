@@ -2,17 +2,17 @@
 title: 在区域顶点托管负载均衡的 Azure Web 应用
 description: 使用 Azure DNS 别名记录在区域顶点托管负载均衡的 Web 应用
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212373"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937371"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
@@ -26,7 +26,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
@@ -45,8 +45,8 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 |名称  |操作系统  |位置  |定价层  |
 |---------|---------|---------|---------|
-|ASP-01     |{1}Windows{2}|美国东部|Dev/Test D1-Shared|
-|ASP-02     |{1}Windows{2}|美国中部|Dev/Test D1-Shared|
+|ASP-01     |Windows|美国东部|Dev/Test D1-Shared|
+|ASP-02     |Windows|美国中部|Dev/Test D1-Shared|
 
 ## <a name="create-app-services"></a>创建应用服务
 
@@ -84,10 +84,10 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 1. 打开资源组并选择流量管理器配置文件。
 2. 在左列中，选择 "**终结点**"。
-3. 选择“添加”。
+3. 选择 **添加** 。
 4. 参考下表配置终结点：
 
-   |类型  |名称  |目标  |位置  |自定义标头设置|
+   |类型  |名称  |确定目标  |位置  |自定义标头设置|
    |---------|---------|---------|---------|---------|
    |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
    |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<为 App-02 记下的 URL\><br>示例：**host:app-02.azurewebsites.net**

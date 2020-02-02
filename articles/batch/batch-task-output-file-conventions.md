@@ -1,6 +1,6 @@
 ---
-title: 使用适用于 .NET 的文件约定库将作业和任务输出保存到 Azure 存储 - Azure Batch | Microsoft Docs
-description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出保存到 Azure 存储，并在 Azure 门户中查看保存的输出。
+title: 通过 .NET 文件约定库将输出数据持久保存到 Azure 存储-Azure Batch
+description: 了解如何使用适用于 .NET Azure Batch 文件约定库将 Batch 任务 & 作业输出持久保存到 Azure 存储，并在 Azure 门户中查看该输出。
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842727"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935267"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 

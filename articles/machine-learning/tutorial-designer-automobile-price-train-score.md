@@ -9,19 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314974"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720146"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-本教程分为两部分，介绍如何使用 Azure 机器学习设计器来开发和部署预测分析解决方案，以预测任何汽车的价格。 
-
-在第一部分，你将设置环境，将模块拖动到交互式画布上，并将它们连接到一起以创建一个 Azure 机器学习管道。
+本教程分为两部分，介绍如何使用 Azure 机器学习设计器来开发和部署预测分析解决方案，以预测任何汽车的价格。
 
 本教程的第一部分介绍如何：
 
@@ -32,7 +30,7 @@ ms.locfileid: "76314974"
 > * 训练机器学习模型。
 > * 评估机器学习模型。
 
-本教程的[第二部分](tutorial-designer-automobile-price-deploy.md)介绍如何将预测模型部署为实时推理终结点，以根据发送它的技术规范来预测任何汽车的价格。 
+在本教程的[第二部分](tutorial-designer-automobile-price-deploy.md)，你要将模型部署为实时推理终结点，以根据发送它的技术规范来预测任何汽车的价格。 
 
 > [!NOTE]
 >我们提供了本教程的已完成版本作为示例管道。
@@ -41,7 +39,9 @@ ms.locfileid: "76314974"
 
 ## <a name="create-a-new-pipeline"></a>创建新管道
 
-Azure 机器学习管道可将多个相关的机器学习和数据处理步骤组织成单个资源。 管道可帮助你在不同的项目和用户之间组织、管理与重用复杂的机器学习工作流。 若要创建 Azure 机器学习管道，需要一个 Azure 机器学习工作区。 本部分介绍如何创建这两个资源。
+Azure 机器学习管道可将多个机器学习和数据处理步骤组织成单个资源。 管道可让你在不同的项目和用户之间组织、管理与重用复杂的机器学习工作流。
+
+若要创建 Azure 机器学习管道，需要一个 Azure 机器学习工作区。 本部分介绍如何创建这两个资源。
 
 ### <a name="create-a-new-workspace"></a>创建新的工作区
 
@@ -59,7 +59,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择“易用的预生成模块”。 
 
-1. 在画布顶部选择默认管道名称“Pipeline-Created-on”  。 并将它重命名为有意义的名称。 例如“汽车价格预测”  。 名称不需唯一。
+1. 在画布顶部，选择默认管道名称“Pipeline-Created-on”。  将其重命名为“汽车价格预测”。  名称不需唯一。
 
 ## <a name="import-data"></a>导入数据
 
@@ -109,7 +109,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择“在数据集中选择列”模块。 
 
-1. 在画布右侧的“属性”窗格中，选择“参数” > “编辑列”   。
+1. 在画布右侧的“属性”窗格中，选择“所有列”。 
 
 1. 选择 **+** 以添加新规则。
 
@@ -120,12 +120,12 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 1. 在右下角，选择“保存”以关闭列选择器。 
 
     ![排除列](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
-        
-    属性窗格显示 **normalized-losses** 列已排除。
 
 1. 选择“在数据集中选择列”模块。  
 
-1. 在“属性”窗格中，选择“参数” > “注释”并输入“排除规范化损失”    。
+1. 在“属性”窗格中，选择“注释”文本框并输入“排除规范化损失”。  
+
+    注释将显示在图形中，以帮助你组织管道。
 
 ### <a name="clean-missing-data"></a>清理缺失数据
 
@@ -148,31 +148,30 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 ## <a name="train-a-machine-learning-model"></a>训练机器学习模型
 
-预处理数据后，可以训练一个预测模型。
-
-### <a name="select-an-algorithm"></a>选择一个算法
-
-*分类* 和*回归* 是两种监督式机器学习算法。 分类可以从一组定义的类别预测答案，例如红、蓝或绿之类的颜色。 回归用于预测数字。
+准备好用于处理数据的模块后，接下来可以设置训练模块。
 
 由于你要预测价格（一个数字），因此可以使用回归算法。 本示例将使用线性回归模型。
 
 ### <a name="split-the-data"></a>拆分数据
 
-将数据拆分为两个单独的数据集，用于模型训练和测试。
+拆分数据是机器学习中的一项常见任务。 你要将数据拆分成两个独立的数据集。 一个数据集训练模型，另一个数据集测试模型的表现。
 
-1. 在搜索框中输入“拆分数据”以查找“拆分数据”模块   。 将它连接到“清理缺失数据”模块的左侧端口  。
+1. 在搜索框中输入“拆分数据”以查找“拆分数据”模块   。 将“清理缺失数据”模块的左侧端口连接到“拆分数据”模块。  
+
+    > [!IMPORTANT]
+    > 请确保“清理缺失数据”的左侧输出端口连接到“拆分数据”。   左侧端口包含清理的数据。 右侧端口包含丢弃的数据。
 
 1. 选择“拆分数据”  模块。
 
 1. 在“属性”窗格中，将“第一个输出集中的行部分”设置为 0.7  。
 
-    此选项使用 70% 的数据来训练模型，保留 30% 的数据用于测试。
+    此选项使用 70% 的数据来训练模型，保留 30% 的数据用于测试。 可通过左侧输出端口访问 70% 的数据集。 可通过右侧输出端口访问剩余的数据。
 
 1. 在“属性”窗格中的“注释”框内，输入“将数据集拆分为训练集(0.7)和测试集(0.3)”   。
 
 ### <a name="train-the-model"></a>定型模型
 
-在模型中提供一组包含价格的数据以对其进行训练。 该模型会扫描数据，查找汽车特征与其价格之间的关联以构造模型。
+在模型中提供包含价格的数据集以对其进行训练。 算法将构造一个模型，用于解释训练数据提供的特征与价格之间的关系。
 
 1. 若要选择学习算法，请清除模块控制板搜索框。
 
@@ -187,6 +186,9 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 1. 将“线性回归”模块的输出连接到“训练模型”模块的左侧输入。  
 
 1. 将“拆分数据”模块的训练数据输出（左侧端口）连接到“训练模型”模块的右侧输入。  
+    
+    > [!IMPORTANT]
+    > 请确保“拆分数据”的左侧输出端口连接到“训练模型”。   左侧端口包含训练集。 右侧端口包含测试集。
 
     ![显示“训练模型”模块的正确配置的屏幕截图。 “线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
@@ -196,19 +198,23 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 在“标签列”对话框中展开下拉菜单，然后选择“列名”   。 
 
-1. 在文本框中输入“价格”。  价格是模型要预测的值。
+1. 在文本框中，输入“价格”以指定模型要预测的值。 
 
     管道应如下所示：
 
     ![显示添加“训练模型”模块后管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>评估机器学习模型
+## <a name="score-a-machine-learning-model"></a>为机器学习模型评分
 
 使用 70% 的数据训练模型后，可以使用该模型为另外 30% 的数据评分，确定模型的运行情况。
 
 1. 在搜索框中输入“评分模型”以找到“评分模型”模块   。 将该模块拖到管道画布上。 
 
 1. 将 **训练模型** 模块的输出连接到 **评分模型** 的左侧输入端口。 将 **拆分数据** 模型的测试数据输出（右端口）连接到 **评分模型** 的右侧输入端口。
+
+## <a name="evaluate-a-machine-learning-model"></a>评估机器学习模型
+
+使用“评估模型”模块来评估模型为测试数据集评分的准确度。 
 
 1. 在搜索框中输入“评估”以找到“评估模型”模块   。 将该模块拖到管道画布上。 
 
@@ -218,25 +224,29 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
     ![显示管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-### <a name="run-the-pipeline"></a>运行管道
+## <a name="run-the-pipeline"></a>运行管道
 
 [!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
 
-### <a name="view-results"></a>查看结果
+### <a name="view-scored-labels"></a>查看评分标签
 
-运行完成后，可以查看管道运行的结果。 
+运行完成后，可以查看管道运行的结果。 首先查看回归模型生成的预测。
 
 1. 选择“评分模型”模块以查看其输出。 
 
-1. 在“属性”窗格中，选择“输出” > “可视化”   。
+1. 在“属性”窗格中，选择“输出”> 图形图标 ![可视化图标](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) 来查看结果。 
 
     在此处可以看到从测试数据预测的价格和实际价格。
 
     ![输出可视化效果的屏幕截图，其中突出显示了“评分标签”列](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
+### <a name="evaluate-models"></a>评估模型
+
+使用“评估模型”来确定已训练的模型处理测试数据集时的表现。 
+
 1. 选择“评估模型”模块以查看其输出。 
 
-1. 在“属性”窗格中，选择“输出” > “可视化”   。
+1. 在“属性”窗格中，选择“输出”> 图形图标 ![可视化图标](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) 来查看结果。 
 
 针对模型显示了以下统计信息：
 

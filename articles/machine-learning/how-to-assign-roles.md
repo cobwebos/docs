@@ -11,15 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43e04e0ef347ec46a8aad12aac380f68106fc2f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541603"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935358"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
-[!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku.md)]
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何管理对 Azure 机器学习工作区的访问。 [基于角色的访问控制（RBAC）](/azure/role-based-access-control/overview)用于管理对 Azure 资源的访问。 将为 Azure Active Directory 中的用户分配特定角色，从而授予对资源的访问权限。 Azure 既提供内置角色，也提供创建自定义角色的功能。
 

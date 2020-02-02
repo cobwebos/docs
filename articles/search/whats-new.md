@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844966"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934870"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -29,13 +29,15 @@ Azure 搜索现已重命名为**azure 认知搜索**，以反映核心操作中�
 
 ### <a name="february-2020"></a>2020年2月
 
-+ [PII 检测](cognitive-search-skill-pii-detection.md)是在编制索引期间使用的一项认知技能，可从输入文本中提取个人身份信息，并提供以各种方式从文本中屏蔽该文本的选项。
++ [PII 检测（预览版）](cognitive-search-skill-pii-detection.md)是在编制索引期间使用的一项认知技能，可从输入文本中提取个人身份信息，并使你能够以各种方式从该文本中屏蔽它。
+
++ [自定义实体查找（预览）](cognitive-search-skill-custom-entity-lookup.md )从自定义的、用户定义的单词和短语列表中查找文本。 使用此列表，它将标记具有任何匹配实体的所有文档。 该技能还支持一定程度的模糊匹配，可用于查找类似但不完全完全相同的匹配项。 
 
 ### <a name="january-2020"></a>2020 年 1 月
 
 + [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用的是 REST，则可以使用 `api-version=2019-05-06`访问该功能。 对于托管代码，正确的包仍然是[.NET SDK 版本 8.0-预览](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
 
-+ 可以通过两种机制获得对搜索服务的私有访问权限：
++ 可以通过两种机制（当前为预览版）提供对搜索服务的私有访问权限：
 
   + 你可以通过使用管理 REST API `api-version=2019-10-01-Preview` 来创建服务，从而限制对特定 IP 地址的访问。 预览 API 在[CREATEORUPDATE api](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)中具有新的**IpRule**和**NetworkRuleSet**属性。 此预览功能在所选区域中可用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 

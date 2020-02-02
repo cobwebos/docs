@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d2260e5c9e4125be1c4b0fa5e9d7c39a8e03d43f
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911196"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933216"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 <iframe height='500' scrolling='no' title='简单图像层' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>简单图像层</a>。
 </iframe>
 
-## <a name="import-a-kml-ground-overlay"></a>导入 KML 地面叠加
+## <a name="import-a-kml-file-as-ground-overlay"></a>导入 KML 文件作为地面覆盖
 
 下一个示例演示如何将 KML 地面叠加信息覆盖为地图上的图像图层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转，而图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖是 Chartres cathedral，其来源为[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 

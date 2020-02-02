@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 对 Batch 管理解决方案进行身份验证 | Microsoft Docs
-description: 用 Azure 资源管理器和批处理资源提供程序生成的应用程序将通过 Azure AD 进行身份验证。
+title: 使用 Azure Active Directory 对 Batch 管理解决方案进行身份验证
+description: 浏览使用 Azure Active Directory 从使用 Batch Management .NET 库的应用程序进行身份验证。
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029835"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938262"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 

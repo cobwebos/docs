@@ -1,5 +1,5 @@
 ---
-title: 将已完成作业和任务的结果或日志保存到数据存储 - Azure Batch | Microsoft Docs
+title: 将作业和任务输出保存到数据存储-Azure Batch
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
 services: batch
 author: ju-shim
@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5063955fc6e04c9cfec2407f8b1cc91c5b24d10
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 242121ecffa76029b3e10a291ac08347da0c97ce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026257"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935784"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 

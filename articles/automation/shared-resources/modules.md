@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786463"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930424"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
 
@@ -60,11 +60,11 @@ PowerShell 库中的模块可以直接从[PowerShell 库](https://www.powershell
 
 ## <a name="delete-modules"></a>删除模块
 
-如果你遇到了某个模块的问题，或者需要回滚到以前版本的模块，则可以将其从自动化帐户中删除。 你不能删除在创建自动化帐户时导入的[默认模块](#default-modules)的原始版本。 如果要删除的模块是安装的其中一个[默认模块](#default-modules)的更新版本，则会将其回滚到与自动化帐户一起安装的版本。 否则，将删除从自动化帐户中删除的任何模块。
+如果你遇到了某个模块的问题，或者需要回滚到以前版本的模块，则可以将其从自动化帐户中删除。 你无法删除在创建自动化帐户时导入的[默认模块](#default-modules)的原始版本。 如果要删除的模块是安装的其中一个[默认模块](#default-modules)的更新版本，则它将回滚到随你的自动化帐户一起安装的版本。 否则，将删除从自动化帐户中删除的任何模块。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中，导航到自动化帐户，并选择 "**共享资源**" 下的 "**模块**"。 选择要删除的模块。 在**模块**页上，clcick**删除**。 如果此模块是[默认模块](#default-modules)之一，则会将其回滚到创建自动化帐户时提供的版本。
+在 Azure 门户中，导航到自动化帐户，并选择 "**共享资源**" 下的 "**模块**"。 选择要删除的模块。 在 "**模块**" 页上，选择 "**删除**"。 如果此模块是[默认模块](#default-modules)之一，则会将其回滚到创建自动化帐户时提供的版本。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,18 +79,18 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 下面列出了导入到每个 Automation 帐户的内部 `Orchestrator.AssetManagement.Cmdlets` 模块中的 cmdlet。 这些 cmdlet 可在 runbook 和 DSC 配置中访问，并可用于与自动化帐户中的资产交互。 此外，内部 cmdlet 允许您从加密的**变量**值、**凭据**和加密的**连接**字段检索机密。 Azure PowerShell cmdlet 无法检索这些机密。 使用这些 cmdlet 时，不需要使用运行方式帐户进行 Azure 身份验证，就可以在使用 Azure 时隐式连接到 Azure。
 
 >[!NOTE]
->这些内部 cmdlet 在混合 Runbook 辅助角色上不可用，只能从在 Azure 中运行的 runbook 中访问它们。 为直接在计算机上运行的 runbook 或环境中的资源使用相应的[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0)或[Az 模块](../az-modules.md)。 
+>这些内部 cmdlet 在 Windows 混合 Runbook 辅助角色上可用，在 Linux 混合 Runbook 辅助角色上不可用。 为直接在计算机上运行的 runbook 或环境中的资源使用相应的[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0)或[Az 模块](../az-modules.md)。 
 >
 
-|名称|描述|
+|名称|Description|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
-|AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 ## <a name="add-a-connection-type-to-your-module"></a>将连接类型添加到模块
 
@@ -265,13 +265,13 @@ myModule
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
 | GPRegistryPolicyParser | 0.2 |
-| Microsoft. Core | 0 |
-| Microsoft PowerShell 诊断 |  |
-| Microsoft PowerShell. 管理 |  |
-| Microsoft. Security |  |
-| Microsoft PowerShell。 |  |
-| Microsoft WSMan. 管理 |  |
-| AssetManagement | 第 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 第 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 第 |

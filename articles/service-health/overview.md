@@ -3,12 +3,12 @@ title: 什么是 Azure 服务运行状况？
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 4d9d9dcb4db483b524cb7be8e006ba12edcc8442
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 039583d9243f8ce76b33afcee098e71a670b5285
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463953"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939200"
 ---
 # <a name="what-is-azure-service-health"></a>什么是 Azure 服务运行状况？
 
@@ -27,3 +27,5 @@ Azure[状态](azure-status-overview.md)通知你 azure 上的 azure **[状态页
 **观看 Azure 状态页、Azure 服务运行状况和 Azure 资源运行状况的概述**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]

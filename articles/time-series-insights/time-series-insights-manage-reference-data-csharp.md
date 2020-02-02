@@ -9,20 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772831"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935121"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用管理 Azure 时序见解环境的 GA 引用数据C#
 
 本文演示如何结合C#、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory 将编程式 API 请求发送到 Azure 时序见解 GA[参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="summary"></a>摘要
+
+下面的示例代码演示了以下功能：
+
+* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**获取访问令牌。
+* 针对 GA[引用数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的顺序创建、读取、更新和删除操作。
+* 常见的响应代码，包括[常见错误代码](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
+    
+    数据管理 API 的引用分别处理每个项，且一个项的错误不会阻止其他项成功完成。 例如，如果你的请求包含100个项目，一个项目发生错误，则会写入99个项目，并拒绝一项。
+
+## <a name="prerequisites-and-setup"></a>先决条件和设置
 
 在编译和运行示例代码之前，请完成以下步骤：
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>摘要
-
-上面的示例代码演示了以下功能：
-
-* 使用[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**获取访问令牌。
-* 针对 GA[引用数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的顺序创建、读取、更新和删除操作。
-* 常见的响应代码，包括[常见错误代码](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
-    
-    数据管理 API 的引用分别处理每个项，且一个项的错误不会阻止其他项成功完成。 例如，如果你的请求包含100个项目，一个项目发生错误，则会写入99个项目，并拒绝一项。
 
 ## <a name="next-steps"></a>后续步骤
 
