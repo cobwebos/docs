@@ -130,6 +130,9 @@
     - name: 性能注意事项
       href: functions-best-practices.md
       displayName: best practice
+    - name: 存储注意事项
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: Functions 代理
       href: functions-proxies.md
     - name: 网络选项
