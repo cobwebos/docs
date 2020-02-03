@@ -18,15 +18,15 @@ ms.locfileid: "76710833"
 
 Azure 事件网格是一种完全托管的事件路由服务，它使用 pub 子模型提供统一的事件消耗。 在本指南中，将使用 Azure CLI 创建 Azure SignalR 服务、订阅连接事件，并部署一个示例 web 应用程序来接收事件。 最后，你可以连接和断开连接，并在示例应用程序中查看事件负载。
 
-Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정][azure-account]을 만듭니다.
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-이 문서에서 Azure CLI 명령은 **Bash** 셸에서 실행하도록 형식이 지정됩니다. PowerShell 또는 명령 프롬프트와 같은 다른 셸을 사용하는 경우 줄 연속 문자 또는 변수 할당 줄을 적절히 조정해야 합니다. 이 문서에서는 변수를 사용하여 필요한 명령 편집 작업을 최소화합니다.
+本文中的 Azure CLI 命令已根据 **Bash** shell 设置了格式。 如果使用其他 shell（例如 PowerShell 或命令提示符），则可能需要相应地调整行连续字符或变量赋值行。 本文使用变量来最大程度地减少所需的命令编辑量。
 
-## <a name="create-a-resource-group"></a>리소스 그룹 만들기
+## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 리소스 그룹은 Azure 리소스를 배포하고 관리하는 논리 컨테이너입니다. 以下[az group create][az-group-create]命令会在*eastus*区域中创建名为*myResourceGroup*的资源组。 리소스 그룹에 다른 이름을 사용하려면 `RESOURCE_GROUP_NAME`을 다른 값으로 설정합니다.
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下[az group create][az-group-create]命令会在*eastus*区域中创建名为*myResourceGroup*的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -34,7 +34,7 @@ RESOURCE_GROUP_NAME=myResourceGroup
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
-## <a name="create-a-signalr-service"></a>SignalR Service 만들기
+## <a name="create-a-signalr-service"></a>创建 SignalR 服务
 
 接下来，使用以下命令将 Azure Signalr 服务部署到资源组。
 ```azurecli-interactive
@@ -71,11 +71,11 @@ az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --s
 
 ```
 
-## <a name="create-an-event-endpoint"></a>이벤트 엔드포인트 만들기
+## <a name="create-an-event-endpoint"></a>创建事件终结点
 
-이 섹션에서는 GitHub 리포지토리에 있는 Resource Manager 템플릿을 사용하여 Azure App Service에 미리 작성된 샘플 웹 애플리케이션을 배포합니다. 나중에 레지스트리의 Event Grid 이벤트를 구독하고 이벤트가 전송되는 엔드포인트로 이 앱을 지정합니다.
+在本部分，我们使用 GitHub 存储库中的资源管理器模板，将一个预生成的示例 Web 应用程序部署到 Azure 应用服务。 稍后，我们将订阅该注册表的事件网格事件，并将此应用指定为事件要发送到的终结点。
 
-샘플 앱을 배포하려면 `SITE_NAME`을 웹앱의 고유한 이름으로 설정하고 다음 명령을 실행합니다. 사이트 이름은 웹앱의 FQDN(정규화된 도메인 이름)의 일부를 형성하기 때문에 Azure 내에서 고유해야 합니다. 이후 섹션에서 레지스트리의 이벤트를 보려면 웹 브라우저에서 앱의 FQDN으로 이동합니다.
+若要部署示例应用，请将 `SITE_NAME` 设置为 Web 应用的唯一名称，并执行以下命令。 站点名称在 Azure 中必须唯一，因为它是 Web 应用的完全限定域名 (FQDN) 的一部分。 在稍后的部分，我们将在 Web 浏览器中导航到应用的 FQDN，以查看注册表的事件。
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -92,9 +92,9 @@ az group deployment create \
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>레지스트리 이벤트 구독
+## <a name="subscribe-to-registry-events"></a>订阅注册表事件
 
-Event Grid에서 *항목*을 구독하여 추적하려는 이벤트와 이벤트를 보낼 위치를 알립니다. 以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的 Azure SignalR 服务，并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 이전 섹션에서 채워진 환경 변수가 여기에 재사용되므로 편집이 필요 없습니다.
+在事件网格中订阅一个主题，以告知你要跟踪哪些事件，以及要将事件发送到何处。 以下[az eventgrid event-订阅 create][az-eventgrid-event-subscription-create]命令订阅你创建的 Azure SignalR 服务，并将你的 web 应用的 URL 指定为它应将事件发送到的终结点。 此处可以重复使用在前面几个部分填充的环境变量，因此无需进行编辑。
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -106,7 +106,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-구독이 완료되면 다음과 비슷한 출력이 표시되어야 합니다.
+完成订阅后，应会看到如下所示的输出：
 
 ```JSON
 {
@@ -139,7 +139,7 @@ az eventgrid event-subscription create \
 }
 ```
 
-## <a name="trigger-registry-events"></a>레지스트리 이벤트 트리거
+## <a name="trigger-registry-events"></a>触发注册表事件
 
 切换到服务模式以 `Serverless Mode` 并设置与 SignalR 服务建立的客户端连接。 您可以采用[无服务器示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)作为参考。
 
@@ -160,7 +160,7 @@ cd SignalRClient
 dotnet run
 ```
 
-## <a name="view-registry-events"></a>레지스트리 이벤트 보기
+## <a name="view-registry-events"></a>查看注册表事件
 
 现已将客户端连接到 SignalR 服务。 导航到事件网格查看器 web 应用，应会看到 `ClientConnectionConnected` 事件。 如果终止该客户端，则还会看到 `ClientConnectionDisconnected` 事件。
 

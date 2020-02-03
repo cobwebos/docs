@@ -1,6 +1,6 @@
 ---
 title: 优化 Gen2 缓存
-description: Azure Portal을 사용하여 Gen2 캐시를 모니터링하는 방법에 대해 알아봅니다.
+description: 了解如何通过 Azure 门户监视 Gen2 缓存。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -17,38 +17,38 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721211"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>Gen2 캐시 모니터링 방법
-Gen2 스토리지 아키텍처는 Gen2 데이터 웨어하우스용으로 설계된 NVMe 기반의 SSD에 있는 캐시에 가장 자주 쿼리되는 columnstore 세그먼트를 자동으로 계층화합니다. 쿼리가 캐시에 있는 세그먼트를 검색하면 성능이 향상됩니다. 이 문서에서는 워크로드가 Gen2 캐시를 최적으로 활용하는지 판단하여 쿼리 성능을 모니터링하고 문제를 해결하는 방법에 대해 설명합니다.  
-## <a name="troubleshoot-using-the-azure-portal"></a>Azure Portal을 사용하여 문제 해결
-Azure Monitor를 사용하여 Gen2 캐시 메트릭을 보고 쿼리 성능 문제를 해결할 수 있습니다. 먼저 Azure Portal로 이동하여 Azure Monitor를 클릭합니다.
+# <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
+Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。 本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。  
+## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 门户进行故障排除
+可以使用 Azure Monitor 来查看 Gen2 缓存指标，以便排查查询性能问题。 首先转到 Azure 门户，然后单击“监视”：
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
 选择 "指标" 按钮，并填写数据仓库的 "**订阅**"、"**资源** **组**"、"**资源类型**" 和 "**资源名称**"。
 
-Gen2 캐시 문제 해결에 대한 키 메트릭은 **캐시 적중 비율** 및 **캐시 사용 비율**입니다. 이러한 두 개의 메트릭을 표시하도록 Azure 메트릭 차트를 구성합니다.
+排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。 配置 Azure 指标图表，以便显示这两个指标。
 
-![캐시 메트릭](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![缓存指标](./media/sql-data-warehouse-cache-portal/cache_1.png)
 
 
-## <a name="cache-hit-and-used-percentage"></a>캐시 적중 및 사용 비율
-아래 매트릭스에서는 캐시 메트릭의 값에 따라 시나리오를 설명합니다.
+## <a name="cache-hit-and-used-percentage"></a>缓存命中和使用百分比
+下表根据缓存指标的值对场景进行了说明：
 
-|                                | **높은 캐시 적중 비율** | **낮은 캐시 적중 비율** |
+|                                | **缓存命中百分比高** | **缓存命中百分比低** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **높은 캐시 사용 비율** |          시나리오 1           |          시나리오 2          |
-| **낮은 캐시 사용 비율**  |          시나리오 3           |          시나리오 4          |
+| **缓存使用百分比高** |          方案 1           |          方案 2          |
+| **缓存使用百分比低**  |          方案 3           |          方案 4          |
 
-**시나리오 1:** 현재 캐시를 최적으로 사용하고 있습니다. [排查](sql-data-warehouse-manage-monitor.md)可能会减慢查询速度的其他方面。
+**场景 1：** 你的缓存使用已优化。 [排查](sql-data-warehouse-manage-monitor.md)可能会减慢查询速度的其他方面。
 
-**시나리오 2:** 현재 작업 중인 데이터 집합이 물리적 읽기로 인해 낮은 캐시 적중 비율을 초래할 수 있어 캐시에 적합하지 않습니다. 성능 수준의 규모를 확장하고 워크로드를 다시 실행하여 캐시를 채우는 것을 고려하세요.
+**场景 2：** 当前工作数据集不适合放置在缓存中，引发物理读取困难，导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
 
-**시나리오 3:** 캐시와 관련이 없는 이유로 인해 쿼리가 느리게 실행되는 것 같습니다. [排查](sql-data-warehouse-manage-monitor.md)可能会减慢查询速度的其他方面。 또한 캐시 크기를 줄여 비용을 절약하도록 [인스턴스 규모를 축소](sql-data-warehouse-manage-monitor.md)하는 것을 고려해 보세요. 
+**场景 3：** 查询运行速度慢的原因可能与缓存无关。 [排查](sql-data-warehouse-manage-monitor.md)可能会减慢查询速度的其他方面。 也可以考虑[缩减实例](sql-data-warehouse-manage-monitor.md)，通过缩减缓存大小来节省成本。 
 
-**시나리오 4:** 쿼리가 느려진 원인일 수 있는 콜드 캐시가 있습니다. 작업 데이터 세트가 캐시될 때 쿼리를 다시 실행해보세요. 
+**场景 4：** 你使用了冷缓存，这可能是查询速度慢的原因。 考虑重新运行查询，因此工作数据集现在应该位于缓存中。 
 
 > [!IMPORTANT]
 > 如果在重新运行工作负荷后未更新缓存命中百分比或缓存已用百分比，则工作集可能已驻留在内存中。 仅缓存聚集列存储表。
 
-## <a name="next-steps"></a>다음 단계
-일반 쿼리 성능 튜닝에 대한 자세한 내용은 [쿼리 실행 모니터링](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution)을 참조하세요.
+## <a name="next-steps"></a>后续步骤
+有关常规查询性能优化的详细信息，请参阅[监视查询执行](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution)。

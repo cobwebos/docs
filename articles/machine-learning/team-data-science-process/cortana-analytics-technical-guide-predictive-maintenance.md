@@ -51,7 +51,7 @@ ms.locfileid: "76721840"
 ### <a name="synthetic-data-source"></a>综合数据源
 对于此模板，使用的数据源是从下载的桌面应用程序生成的，该应用程序是在成功部署后在本地运行的。
 
-若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
+若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](https://c3.nasa.gov/dashlink/resources/139/) 由 [NASA 数据存储库](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)中的公开可用数据派生的。
 
 仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。  
 
@@ -69,7 +69,7 @@ ms.locfileid: "76721840"
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定飞机引擎（根据收到的输入数据）的剩余使用寿命 (RUL)。 
 
 ## <a name="data-publishing"></a>数据发布
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL 数据库
 使用[AZURE SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储 Azure 机器学习收到的预测，然后在[Power BI](https://powerbi.microsoft.com)仪表板中使用。
 
 ## <a name="data-consumption"></a>数据使用
@@ -114,7 +114,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 
 ![数据工厂数据集错误](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-本部分介绍了 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)中的必要[管道和活动](../../data-factory/concepts-pipelines-activities.md)。 下面是解决方案的图示视图。
+本部分介绍了 [Azure 数据工厂](../../data-factory/concepts-pipelines-activities.md)中的必要[管道和活动](https://azure.microsoft.com/documentation/services/data-factory/)。 下面是解决方案的图示视图。
 
 ![Azure 数据工厂](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
@@ -123,7 +123,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 类似于 [Azure 流分析](#azure-stream-analytics-1)查询，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本对传入的数据格式有隐含了解，必须根据数据格式进行更改。
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
+该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/storage/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/stream-analytics/)的数据进行分区。
 
 此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateFlightInfo.hql***
 
@@ -132,9 +132,9 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 
 包含的活动有：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
+* 使用 [HDInsightLinkedService](../../data-factory/transform-data-using-hadoop-hive.md) 的 [HDInsightHive](https://msdn.microsoft.com/library/azure/dn893526.aspx) 活动运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
   此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***PrepareMLInput.hql***。
-* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
+* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://azure.microsoft.com/services/storage/) 活动访问的单个 [Azure 存储](https://msdn.microsoft.com/library/azure/dn894009.aspx) Blob。
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动调用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验，将结果放入单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
@@ -176,23 +176,23 @@ Power BI 连接到 Azure SQL 数据库作为其数据源，其中存储了预测
    
    * 解决方案模板图示上的“Azure SQL 数据库”变为绿色后，请单击它，并单击“打开”。
    * 你将看到一个新的浏览器选项卡/窗口，其中显示了 "Azure 门户" 页。 单击左侧面板中的“资源组”。
-   * 选择要用于部署该解决方案的订阅，并选择“YourSolutionName\_ResourceGroup”。
+   * 选择要用于部署该解决方案的订阅，并选择“YourSolutionName**ResourceGroup”\_** 。
    * 在新弹出的面板中，单击 ![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png)图标以访问数据库。 数据库名称位于此图标的旁边（例如 'pmaintenancedb'），“数据库服务器名称”列于服务器名称属性下方且应类似于 YourSoutionName.database.windows.net。
    * 数据库**用户名**和**密码**与部署解决方案期间记下的用户名和密码相同。
 2. 使用 Power BI Desktop 更新冷路径报表文件的数据源。
    
-   * 在下载和解压生成器文件的文件夹中，双击“PowerBI\\PredictiveMaintenanceAerospace.pbix”文件。 如果在打开文件时看到任何警告消息，请忽略。 请在文件顶部单击“编辑查询”。
+   * 在下载和解压生成器文件的文件夹中，双击“PowerBI**PredictiveMaintenanceAerospace.pbix”\\** 文件。 如果在打开文件时看到任何警告消息，请忽略。 请在文件顶部单击“编辑查询”。
      
      ![编辑查询](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
-   * 会看到两个表：**RemainingUsefulLife** 和 **PMResult**。 选择第一个表，并在右侧“查询设置”面板的“应用的步骤”下的“源”旁边单击![查询设置图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png)。 忽略显示的任何警告消息。
+   * 会看到两个表：**RemainingUsefulLife** 和 **PMResult**。 选择第一个表，并在右侧“查询设置”![](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png)面板的“应用的步骤”下的“源”旁边单击**查询设置图标**。 忽略显示的任何警告消息。
    * 在弹出窗口中，将“服务器”和“数据库”替换为自己的服务器和数据库名称，然后单击“确定”。 对于服务器名称，请确保指定端口 1433 (**YourSolutionName.database.windows.net, 1433**)。 将数据库字段保留为 **pmaintenancedb**。 忽略屏幕上出现的警告消息。
    * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击 **"数据库"** ，填充 **"用户名"** 和 **"密码"** （首次部署解决方案和创建 Azure SQL 数据库时输入的用户名和密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
-   * 单击第二个表 **PMResult**，在右侧“查询设置”面板的“应用的步骤”下的“源”旁边单击![导航图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png)，根据以上步骤更新服务器和数据库名称并单击“确定”。
+   * 单击第二个表 **PMResult**，在右侧“查询设置”![](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png)面板的“应用的步骤”下的“源”旁边单击**导航图标**，根据以上步骤更新服务器和数据库名称并单击“确定”。
    * 返回上一页后，请关闭窗口。 此时会显示一条消息 - 单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
 3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 此步骤需要 Power BI 帐户（或 Office 365 帐户）。
    
    * 单击“发布”，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!” 和一个绿色的复选标记。 单击以下链接“在 Power BI 中 打开 PredictiveMaintenanceAerospace.pbix”。 若要查找详细说明，请参阅[从 Power BI Desktop 发布](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)。
-   * 若要创建新仪表板，请在左侧窗格中单击“仪表板”部分旁边的 **+** 号。 为新仪表板输入名称“Predictive Maintenance Demo”。
+   * 若要创建新仪表板，请在左侧窗格中单击“仪表板” **+部分旁边的**  号。 为新仪表板输入名称“Predictive Maintenance Demo”。
    * 打开报表后，请单击![大头针图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png)以将所有可视化效果固定到仪表板。 要查找详细说明，请参阅[从报表将磁贴固定到 Power BI 仪表板](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)。
      转到仪表板页并调整可视化效果的大小和位置并编辑其标题。 若要查找有关如何编辑磁贴的详细说明，请参阅[编辑磁贴 - 重设大小、移动、重命名、固定、删除、添加超链接](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)。 下面是固定了一些冷路径可视化效果的仪表板示例。  根据运行数据生成器的时间，可视化效果上的数字可能会不同。
      <br/>
@@ -228,7 +228,7 @@ Power BI 连接到 Azure SQL 数据库作为其数据源，其中存储了预测
    * 在左侧面板“数据集”部分中单击数据集“aircraftmonitor”。
    * 单击**折线图**图标。
    * 单击“字段”窗格中的“已处理”，其会在“可视化效果”窗格中的“轴”下显示。
-   * 单击“s11”和“s11\_alert”，两者都会在“值”下显示。 单击“s11”和“s11\_警告”旁的小箭头，将“总和”更改为“平均值”。
+   * 单击“s11”和“s11\_alert”，两者都会在“值”下显示。 单击“s11”和“s11**警告”\_** 旁的小箭头，将“总和”更改为“平均值”。
    * 单击顶部的“保存”，将报表命名为“aircraftmonitor”。 名为“aircraftmonitor”的报表随即显示在左侧“导航”窗格的“报表”部分。
    * 单击此折线图右上角的 "**固定视觉对象**" 图标。 可能会显示“固定到仪表板”窗口让你选择仪表板。 选择“预测性维护演示”，然后单击“固定”。
    * 在仪表板上将鼠标悬停在此磁贴上，单击右上角的 "编辑" 图标，将其标题更改为 "传感器11与阈值48.26 的汽油视图"，并将副标题更改为 "一段时间内的每个汽油的平均数量"。

@@ -1,6 +1,6 @@
 ---
 title: Azure Functions 的 JavaScript 开发人员参考
-description: JavaScript를 사용하여 함수를 개발하는 방법을 알아봅니다.
+description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
@@ -11,19 +11,19 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76714793"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 개발자 가이드
+# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
-이 가이드에는 JavaScript로 Azure Functions를 작성하는 복잡성에 대한 정보가 포함되어 있습니다.
+本指南包含有关使用 JavaScript 编写 Azure Functions 的复杂性的信息。
 
-JavaScript 함수는 트리거될 때 실행되는 내보낸 `function`입니다([트리거는 function.json에서 구성됨](functions-triggers-bindings.md)). 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、记录和与运行时通信。
+JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、记录和与运行时通信。
 
-이 문서에서는 [Azure Functions 개발자 참조](functions-reference.md)를 이미 읽었다고 가정합니다. 完成函数快速入门，使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[在门户中](functions-create-first-azure-function.md)创建第一个函数。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成函数快速入门，使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[在门户中](functions-create-first-azure-function.md)创建第一个函数。
 
 本文还支持[TypeScript 应用程序开发](#typescript)。
 
-## <a name="folder-structure"></a>폴더 구조
+## <a name="folder-structure"></a>文件夹结构
 
-JavaScript 프로젝트에 필요한 폴더 구조는 다음과 같습니다. 이 기본값은 변경 가능합니다. 자세한 내용은 아래의 [scriptFile](#using-scriptfile) 섹션을 참조하세요.
+JavaScript 项目所需的文件夹结构如下所示。 可更改此默认值。 有关详细信息，请参阅下面的 [scriptFile](#using-scriptfile) 部分。
 
 ```
 FunctionsProject
@@ -42,17 +42,17 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-프로젝트 루트에는 함수 앱을 구성하는 데 사용할 수 있는 공유 [host.json](functions-host-json.md) 파일이 있습니다. 각 함수에는 자체 코드 파일(.js)과 바인딩 구성 파일(function.json)이 있는 폴더가 있습니다. `function.json`의 부모 디렉터리 이름은 항상 함수의 이름입니다.
+项目的根目录中有共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有一个文件夹，其中包含其代码文件 (.js) 和绑定配置文件 (function.json)。 `function.json` 父目录的名称始终是函数的名称。
 
-Functions 런타임의 [버전 2.x](functions-versions.md)에 필요한 바인딩 확장은 `extensions.csproj` 파일에 정의되어 있고 실제 라이브러리 파일은 `bin` 폴더에 있습니다. 로컬에서 개발할 때는 [바인딩 확장을 등록](./functions-bindings-register.md#extension-bundles)해야 합니다. Azure Portal에서 함수를 개발할 때 이 등록이 자동으로 수행됩니다.
+[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
-## <a name="exporting-a-function"></a>함수 내보내기
+## <a name="exporting-a-function"></a>导出函数
 
-JavaScript 함수는 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports)(또는 [`exports`](https://nodejs.org/api/modules.html#modules_exports))를 통해 내보내야 합니다. 내보낸 함수는 트리거될 때 실행되는 JavaScript 함수여야 합니다.
+必须通过 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports)（或 [`exports`](https://nodejs.org/api/modules.html#modules_exports)）导出 JavaScript 函数。 导出的函数应是触发时执行的 JavaScript 函数。
 
-기본적으로 Functions 런타임은 `index.js`에서 함수를 찾습니다. 여기서 `index.js`는 해당하는 `function.json`과 동일한 부모 디렉터리를 공유합니다. 기본적인 경우 내보낸 함수는 `run` 또는 `index`라는 해당 파일 또는 내보내기의 유일한 내보내기여야 합니다. 함수의 파일 위치 및 내보내기 이름을 구성하려면 아래에서 [함수의 진입점 구성](functions-reference-node.md#configure-function-entry-point)에 대한 내용을 읽어보세요.
+默认情况下，Functions 运行时会在 `index.js` 中查找你的函数，其中，`index.js` 与其相应的 `function.json` 共享同一个父目录。 默认情况下，导出的函数应该是其文件中的唯一导出，或者名为 `run` 或 `index` 的导出。 若要配置文件位置和导出函数名称，请阅读下面的[配置函数的入口点](functions-reference-node.md#configure-function-entry-point)。
 
-내보낸 함수는 실행에서 인수의 수로 전달됩니다. 사용하는 첫 번째 인수는 항상 `context` 개체입니다. 如果函数是同步的（不返回承诺），则必须传递 `context` 对象，因为需要调用 `context.done` 才能正确使用。
+在执行时，将为导出的函数传递一些参数。 采用的第一个参数始终是 `context` 对象。 如果函数是同步的（不返回承诺），则必须传递 `context` 对象，因为需要调用 `context.done` 才能正确使用。
 
 ```javascript
 // You should include context, other arguments are optional
@@ -62,10 +62,10 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-### <a name="exporting-an-async-function"></a>비동기 함수 내보내기
-Functions 런타임 2.x 버전에서 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 선언 또는 일반 JavaScript [Promises](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)를 사용할 때 함수가 완료되었음을 나타내는 [`context.done`](#contextdone-method) 콜백을 명시적으로 호출할 필요가 없습니다. 내보낸 비동기 함수/Promise가 완료되면 함수가 완료됩니다. 버전 1.x 런타임을 대상으로 하는 함수의 경우 코드 실행이 완료되면 [`context.done`](#contextdone-method)을 호출해야 합니다.
+### <a name="exporting-an-async-function"></a>导出异步函数
+在 Functions 运行时版本 2.x 中使用 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 声明或普通 JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)，无需显式调用 [`context.done`](#contextdone-method) 回调即可通知函数已完成。 导出的异步函数/Promise 完成时，函数将完成。 对于面向版本 1.x 运行时的函数，在代码完成执行后，仍必须调用 [`context.done`](#contextdone-method)。
 
-다음 예제는 트리거되었으며 즉시 실행을 완료한다고 기록하는 간단한 함수입니다.
+以下示例是一个简单的函数，用于记录其已被触发并立即完成执行。
 
 ```javascript
 module.exports = async function (context) {
@@ -73,9 +73,9 @@ module.exports = async function (context) {
 };
 ```
 
-비동기 함수를 내보낼 때는 `return` 값을 사용하도록 출력 바인딩을 구성할 수도 있습니다. 하나의 출력 바인딩이 있는 경우에 권장됩니다.
+导出异步函数时，还可配置输出绑定，以使用 `return` 值。 如果只有一个输出绑定，则建议使用此值。
 
-`return`을 사용하여 출력을 할당하려면 `function.json`에서 `name` 속성을 `$return`으로 변경합니다.
+若要使用 `return` 分配输出，请将 `name` 属性更改为 `$return` 中的 `function.json`。
 
 ```json
 {
@@ -85,7 +85,7 @@ module.exports = async function (context) {
 }
 ```
 
-이 경우에 함수는 다음 예제와 유사합니다.
+在这种情况下，函数应如以下示例所示：
 
 ```javascript
 module.exports = async function (context, req) {
@@ -97,18 +97,18 @@ module.exports = async function (context, req) {
 }
 ```
 
-## <a name="bindings"></a>바인딩 
-JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 function.json에서 구성되고 정의됩니다. Functions는 다양한 방법으로 바인딩과 상호 작용합니다.
+## <a name="bindings"></a>绑定 
+在 JavaScript 中，需在函数的 function.json 中配置和定义[绑定](functions-triggers-bindings.md)。 函数通过多种方式来与绑定交互。
 
-### <a name="inputs"></a>입력
-입력은 Azure Functions에서 두 가지 범주로 나뉩니다. 즉 하나는 트리거 입력이고, 다른 하나는 추가 입력입니다. 트리거 및 기타 입력 바인딩(`direction === "in"`의 바인딩)은 다음과 같은 세 가지 방법으로 함수에서 읽을 수 있습니다.
- - **_[권장]_  함수에 전달된 매개 변수입니다.** 이러한 항목은 *function.json*에 정의된 순서대로 함수에 전달됩니다. 在*函数*中定义的 `name` 属性不需要与参数名称匹配，尽管它应该是这样。
+### <a name="inputs"></a>输入
+在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
+ - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 在*函数*中定义的 `name` 属性不需要与参数名称匹配，尽管它应该是这样。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **[`context.bindings`](#contextbindings-property) 개체의 모든 멤버입니다.** 각 멤버는 *function.json*에서 정의된 `name` 속성으로 이름이 지정됩니다.
+ - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 `name`function.json*中定义的* 属性命名。
  
    ```javascript
    module.exports = async function(context) { 
@@ -118,7 +118,7 @@ JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 functi
    };
    ```
    
- - **입력으로 JavaScript[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 개체를 사용합니다.** 그러면 기본적으로 입력 매개 변수로 전달하는 것과 동일하지만 동적으로 입력을 처리할 수 있습니다.
+ - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
  
    ```javascript
    module.exports = async function(context) { 
@@ -128,12 +128,12 @@ JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 functi
    };
    ```
 
-### <a name="outputs"></a>outputs
-출력(`direction === "out"`의 바인딩)은 다양한 방법으로 함수에서 작성될 수 있습니다. 모든 경우에 *function.json*에 정의된 대로 바인딩의 `name` 속성은 함수에서 작성된 개체 멤버의 이름에 해당합니다. 
+### <a name="outputs"></a>Outputs
+函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，`name`function.json*中定义的绑定属性* 对应于函数中所写入到的对象成员的名称。 
 
 可以通过以下方式之一将数据分配到输出绑定（请勿组合这些方法）：
 
-- **_[여러 출력에 대한 권장]_ 개체를 반환합니다.** 如果使用的是异步/承诺返回函数，则可以返回具有分配的输出数据的对象。 아래 예제에서 출력 바인딩의 이름은 *function.json*에서 "httpResponse" 및 "queueOutput"으로 지정됩니다.
+- **_[有多个输出时建议使用]_ 返回对象。** 如果使用的是异步/承诺返回函数，则可以返回具有分配的输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
   module.exports = async function(context) {
@@ -147,9 +147,9 @@ JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 functi
   };
   ```
 
-  동기 함수를 사용하는 경우 [`context.done`](#contextdone-method)을 사용하여 이 개체를 반환할 수 있습니다(예제 참조).
-- **_[단일 출력에 대한 권장]_ 직접 값을 반환하고 $return 바인딩 이름을 사용합니다.** 함수를 반환하는 비동기/Promise에서 작동합니다. [비동기 함수 내보내기](#exporting-an-async-function)에서 예제를 참조하세요. 
-- **`context.bindings`에 대한 값을 할당합니다.** context.bindings에 직접 값을 할당할 수 있습니다.
+  如果使用同步函数，可以使用 [`context.done`](#contextdone-method) 返回此对象（请参阅示例）。
+- **_[有单个输出时建议使用]_ 直接返回值，并使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
+- **向 `context.bindings` 赋值** 可以直接向 context.bindings 赋值。
 
   ```javascript
   module.exports = async function(context) {
@@ -162,9 +162,9 @@ JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 functi
   };
   ```
 
-### <a name="bindings-data-type"></a>바인딩 데이터 형식
+### <a name="bindings-data-type"></a>绑定数据类型
 
-입력 바인딩에 대한 데이터 형식을 정의하려면 바인딩 정의에서 `dataType` 속성을 사용합니다. 예를 들어 이진 형식의 HTTP 요청 내용을 읽으려면 `binary` 형식을 사용합니다.
+若要定义输入绑定的数据类型，请使用绑定定义中的 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，请使用类型 `binary`：
 
 ```json
 {
@@ -175,12 +175,12 @@ JavaScript에서 [바인딩](functions-triggers-bindings.md)은 함수의 functi
 }
 ```
 
-`dataType`에 대한 옵션은 `binary`, `stream` 및 `string`입니다.
+`dataType` 的选项包括：`binary`、`stream` 和 `string`。
 
-## <a name="context-object"></a>context 개체
-런타임은 함수로 데이터를 전달하거나 전달받으며 사용자가 런타임과 통신할 수 있도록 하는 `context` 개체를 사용합니다. 내보낸 함수가 동기화된 경우 컨텍스트 개체는 바인딩에서 데이터를 읽고 설정하고, 로그를 작성하고, `context.done` 콜백을 사용하는 데 사용될 수 있습니다.
+## <a name="context-object"></a>上下文对象
+运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。 上下文对象可用于从绑定读取和设置数据、写入日志，以及当导出的函数是同步函数时使用 `context.done` 回调。
 
-`context` 개체는 항상 함수의 첫 번째 매개 변수입니다. `context.done` 및 `context.log`와 같은 중요한 메서드가 있으므로 포함되어야 합니다. 원하는 개체 이름(예: `ctx` 또는 `c`)을 지정할 수 있습니다.
+`context` 对象始终是传递给函数的第一个参数。 之所以需要包含此对象，是因为它包含 `context.done` 和 `context.log` 等重要方法。 可以按个人喜好为对象命名（例如 `ctx` 或 `c`）。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -190,7 +190,7 @@ module.exports = function(ctx) {
 };
 ```
 
-### <a name="contextbindings-property"></a>context.bindings 속성
+### <a name="contextbindings-property"></a>context.bindings 属性
 
 ```js
 context.bindings
@@ -198,7 +198,7 @@ context.bindings
 
 返回用于读取或分配绑定数据的命名对象。 可以通过读取 `context.bindings`上的属性访问输入和触发器绑定数据。 可以通过将数据添加到 `context.bindings` 来分配输出绑定数据
 
-예를 들어 function.json의 다음 바인딩 정의를 통해 `context.bindings.myInput`에서 큐의 콘텐츠에 액세스하고 `context.bindings.myOutput`을 사용하여 출력을 큐에 할당할 수 있습니다.
+例如，function.json 中的以下绑定定义允许通过 `context.bindings.myInput` 访问队列的内容和使用 `context.bindings.myOutput` 将输出分配给队列。
 
 ```json
 {
@@ -224,27 +224,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-`context.binding` 개체 대신 `context.done` 메서드를 사용하여 출력 바인딩 데이터를 정의하도록 선택할 수 있습니다(아래 참조).
+可以选择使用 `context.done` 方法而不是 `context.binding` 对象来定义输出绑定数据（参阅下文）。
 
-### <a name="contextbindingdata-property"></a>context.bindingData property
+### <a name="contextbindingdata-property"></a>context.bindingData 属性
 
 ```js
 context.bindingData
 ```
 
-트리거 메타데이터 및 함수 호출 데이터(`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`)를 포함하는 명명된 개체를 반환합니다. 트리거 메타데이터의 예제는 [event hubs example](functions-bindings-event-hubs.md#trigger)을 참조하세요.
+返回包含触发器元数据和函数调用数据（`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`）的命名对象。 有关触发器元数据的示例，请参阅此[事件中心示例](functions-bindings-event-hubs.md#trigger)。
 
-### <a name="contextdone-method"></a>context.done 메서드
+### <a name="contextdone-method"></a>context.done 方法
 
 ```js
 context.done([err],[propertyBag])
 ```
 
-런타임에서는 코드가 완료되었음을 알 수 있습니다. 함수가 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 선언을 사용하는 경우 `context.done()`을 사용할 필요가 없습니다. `context.done` 콜백을 암시적으로 호출합니다. 비동기 함수는 Node 8 이상 버전에서 지원되며 Functions 런타임의 2.x 버전이 필요합니다.
+让运行时知道代码已完成。 如果函数使用 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 声明，则你不需要使用 `context.done()`。 `context.done` 回调是隐式调用的。 异步函数在 Node 8 或更高版本（需要 Functions 运行时版本 2.x）中可用。
 
-如果函数不是异步函数，**则必须调用**`context.done` 以通知运行时函数已完成。 실행이 누락된 경우 시간 초과가 발생합니다.
+如果函数不是异步函数，**则必须调用**`context.done` 以通知运行时函数已完成。 如果缺少它，则执行将会超时。
 
-`context.done` 메서드를 사용하면 출력 바인딩 데이터가 포함된 JSON 개체와 런타임에 사용자 정의 오류를 다시 전달할 수 있습니다. `context.done`에 전달된 속성은 `context.bindings` 개체에 설정된 내용을 덮어씁니다.
+`context.done` 方法允许将用户定义的错误传递回运行时以及包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。
 
 ```javascript
 // Even though we set myOutput to have:
@@ -256,73 +256,73 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: 'hello there, world', noNumber: true
 ```
 
-### <a name="contextlog-method"></a>context.log 메서드  
+### <a name="contextlog-method"></a>context.log 方法  
 
 ```js
 context.log(message)
 ```
 
-기본 추적 수준에서 스트리밍 함수 로그에 기록할 수 있습니다. `context.log`에 다른 추적 수준에서 함수 로그를 작성할 수 있는 추가 로깅 메서드가 제공됩니다.
+允许在默认跟踪级别向流式处理函数日志进行写入。 `context.log` 中还提供了其他的日志记录方法，用以允许在其他跟踪级别写入函数日志：
 
 
-| 방법                 | Description                                |
+| 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | 오류 수준 로깅 또는 더 낮은 수준의 로깅에 씁니다.   |
-| **warn(_message_)**    | 경고 수준 로깅 또는 더 낮은 수준의 로깅에 씁니다. |
-| **info(_message_)**    | 정보 수준 로깅 또는 더 낮은 수준의 로깅에 씁니다.    |
-| **verbose(_message_)** | 자세한 정보 표시 수준 로깅에 씁니다.           |
+| **error(_message_)**   | 向错误级日志记录或更低级别进行写入。   |
+| **warn(_message_)**    | 向警告级日志记录或更低级别进行写入。 |
+| **info(_message_)**    | 向信息级日志记录或更低级别进行写入。    |
+| **verbose(_message_)** | 向详细级日志记录进行写入。           |
 
-다음 예제는 경고 추적 수준에서 로그를 기록합니다.
+以下示例在警告跟踪级别写入日志：
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
 
-host.json 파일에 [로깅에 대한 추적 수준 임계값을 구성](#configure-the-trace-level-for-console-logging)할 수 있습니다. 로그 작성에 대한 자세한 내용은 아래에서 [추적 출력 작성](#writing-trace-output-to-the-console)을 참조하세요.
+可以在 host.json 文件中[为日志记录配置跟踪级别阈值](#configure-the-trace-level-for-console-logging)。 有关写入日志的详细信息，请参阅下面的[写入跟踪输出](#writing-trace-output-to-the-console)。
 
-함수 로그 보기 및 쿼리에 대해 자세히 알아보려면 [Azure Functions 모니터링](functions-monitoring.md)을 읽어보세요.
+若要了解有关查看和查询函数日志的详细信息，请阅读[监视 Azure Functions](functions-monitoring.md)。
 
-## <a name="writing-trace-output-to-the-console"></a>콘솔에 추적 출력 작성 
+## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
-Functions에서 `context.log` 메서드를 사용하여 추적 출력을 콘솔에 씁니다. Functions v2.x에서 `console.log`를 사용하는 추적 출력은 함수 앱 수준에서 캡처됩니다. 这意味着 `console.log` 的输出不会绑定到特定函数调用，并且不会显示在特定函数的日志中。 하지만 Application Insights로 전파됩니다. Functions v1.x에서는 `console.log`를 사용하여 콘솔에 쓸 수 없습니다.
+在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着 `console.log` 的输出不会绑定到特定函数调用，并且不会显示在特定函数的日志中。 但是，它们将传播到 Application Insights。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
 
-`context.log()`를 호출하면 메시지를 _정보_ 추적 수준인 기본 추적 수준에서 콘솔에 씁니다. 다음 코드는 정보 추적 수준에서 콘솔에 씁니다.
+调用 `context.log()` 时，消息会在默认跟踪级别（即_信息_跟踪级别）写入到控制台。 以下代码在信息跟踪级别向控制台进行写入：
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-이 코드는 위의 코드와 같습니다.
+此代码等同于上面的代码：
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-이 코드는 오류 수준에서 콘솔에 기록합니다.
+此代码在错误级别向控制台进行写入：
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-_error_(오류)가 가장 높은 추적 수준이므로 로깅이 활성화되어 있는 한 이 추적은 모든 추적 수준에서 출력에 씁니다.
+因为_错误_是最高跟踪级别，所以，只要启用了日志记录，此跟踪会在所有跟踪级别写入到输出中。
 
-모든 `context.log` 메서드는 Node.js [util.format 메서드](https://nodejs.org/api/util.html#util_util_format_format)에서 지원하는 것과 동일한 매개 변수 형식을 지원합니다. 기본 추적 수준을 사용하여 함수 로그를 작성하는 다음 코드를 살펴보세요.
+所有 `context.log` 方法都支持 Node.js [util.format 方法](https://nodejs.org/api/util.html#util_util_format_format)支持的同一参数格式。 请考虑以下代码，它使用默认跟踪级别写入函数日志：
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-또한 동일한 코드를 다음과 같은 형식으로 작성할 수도 있습니다.
+还可以采用以下格式编写同一代码：
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>콘솔 로깅에 대한 추적 수준 구성
+### <a name="configure-the-trace-level-for-console-logging"></a>为控制台日志记录配置跟踪级别
 
-Functions 1.x에서는 콘솔에 작성할 임계값 추적 수준을 정의할 수 있으므로 추적이 함수에서 콘솔에 작성되는 방식을 쉽게 제어할 수 있습니다. 콘솔에 기록되는 모든 추적에 대한 임계값을 설정하려면 host.json 파일의 `tracing.consoleLevel` 속성을 사용합니다. 이 설정은 함수 앱의 모든 함수에 적용됩니다. 다음 예제에서는 추적 임계값을 설정하여 자세한 정보 표시 로깅을 사용하도록 설정합니다.
+Functions 1.x 允许定义向控制台进行写入时使用的阈值跟踪级别，这使得可以轻松控制从函数向控制台写入跟踪的方式。 若要针对写入到控制台的所有跟踪设置阈值，请在 host.json 文件中使用 `tracing.consoleLevel` 属性。 此设置应用于 Function App 中的所有函数。 以下示例设置跟踪阈值来启用详细日志记录：
 
 ```json
 {
@@ -332,43 +332,43 @@ Functions 1.x에서는 콘솔에 작성할 임계값 추적 수준을 정의할 
 }  
 ```
 
-**consoleLevel**의 값은 `context.log` 메서드의 이름에 해당합니다. 콘솔에 대한 모든 추적 로깅을 사용하지 않으려면 **consoleLevel**을 _off_로 설정합니다. 자세한 내용은 [host.json 참조](functions-host-json-v1.md)를 참조하세요.
+**consoleLevel** 的值对应于 `context.log` 方法的名称。 要为控制台禁用所有跟踪日志记录，请将 **consoleLevel** 设置为 _off_。 有关详细信息，请参阅 [host.json 参考](functions-host-json-v1.md)。
 
-## <a name="http-triggers-and-bindings"></a>HTTP 트리거 및 바인딩
+## <a name="http-triggers-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP, 웹후크 트리거 및 HTTP 출력 바인딩은 요청 및 응답 개체를 사용하여 HTTP 메시지를 나타냅니다.  
+HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来表示 HTTP 消息。  
 
-### <a name="request-object"></a>요청 개체
+### <a name="request-object"></a>请求对象
 
-`context.req`(요청) 개체의 속성은 다음과 같습니다.
+`context.req`（请求）对象具有以下属性：
 
-| 속성      | Description                                                    |
+| properties      | 说明                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | 요청의 본문을 포함하는 개체입니다.               |
-| _headers_     | 요청 헤더를 포함하는 개체입니다.                   |
-| _method_      | 요청의 HTTP 메서드입니다.                                |
-| _originalUrl_ | 요청의 URL입니다.                                        |
-| _params_      | 요청의 라우팅 매개 변수를 포함하는 개체입니다. |
-| _query_       | 쿼리 매개 변수를 포함하는 개체입니다.                  |
-| _rawBody_     | 문자열 형식의 메시지 본문입니다.                           |
+| _body_        | 一个包含请求正文的对象。               |
+| _headers_     | 一个包含请求标头的对象。                   |
+| _method_      | 请求的 HTTP 方法。                                |
+| _originalUrl_ | 请求的 URL。                                        |
+| _params_      | 一个包含请求的路由参数的对象。 |
+| _query_       | 一个包含查询参数的对象。                  |
+| _rawBody_     | 字符串形式的消息正文。                           |
 
 
-### <a name="response-object"></a>응답 개체
+### <a name="response-object"></a>响应对象
 
-`context.res`(응답) 개체의 속성은 다음과 같습니다.
+`context.res`（响应）对象具有以下属性：
 
-| 속성  | Description                                               |
+| properties  | 说明                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | 응답의 본문을 포함하는 개체입니다.         |
-| _headers_ | 응답 헤더를 포함하는 개체입니다.             |
-| _isRaw_   | 응답에 대한 서식 지정을 건너뜀을 나타냅니다.    |
-| _status_  | 응답의 HTTP 상태 코드입니다.                     |
+| _body_    | 一个包含响应正文的对象。         |
+| _headers_ | 一个包含响应标头的对象。             |
+| _isRaw_   | 指示是否为响应跳过格式设置。    |
+| _status_  | 响应的 HTTP 状态代码。                     |
 
-### <a name="accessing-the-request-and-response"></a>요청 및 응답 액세스 
+### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 
-HTTP 트리거로 작업할 때 여러 가지 방법으로 HTTP 요청 및 응답 개체에 액세스할 수 있습니다.
+使用 HTTP 触发器时，可采用多种方式来访问 HTTP 请求和响应对象：
 
-+ **`context` 개체의 `req` 및 `res` 속성에서.** 이러한 방식으로 전체 `context.bindings.name` 패턴을 사용하지 않고 대신 기존 패턴을 사용하여 context 개체에서 HTTP 데이터에 액세스할 수 있습니다. 다음 예제에서는 `context`의 `req` 및 `res` 개체에 액세스하는 방법을 보여 줍니다.
++ **通过 `req` 对象的 `res` 和 `context` 属性。** 采用此方式时，可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `req` 上的 `res` 和 `context` 对象：
 
     ```javascript
     // You can access your HTTP request off the context ...
@@ -377,7 +377,7 @@ HTTP 트리거로 작업할 때 여러 가지 방법으로 HTTP 요청 및 응�
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ **명명된 입출력 바인딩에서.** 이러한 방식으로 HTTP 트리거와 바인딩은 다른 바인딩과 동일하게 작동합니다. 다음 예제에서는 명명된 `response` 바인딩을 사용하여 응답 개체를 설정합니다. 
++ **通过已命名的输入和输出绑定。** 采用此方式时，HTTP 触发器和绑定的工作方式与其他绑定相同。 以下示例使用已命名的 `response` 绑定设置响应对象： 
 
     ```json
     {
@@ -389,9 +389,9 @@ HTTP 트리거로 작업할 때 여러 가지 방법으로 HTTP 요청 및 응�
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[응답 전용]_ `context.res.send(body?: any)`를 호출합니다.** HTTP 응답은 입력 `body`를 응답 본문으로 작성합니다. `context.done()`은 암시적으로 호출됩니다.
++ **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 是隐式调用的。
 
-+ **_[응답 전용]_ `context.done()`를 호출합니다.** 一种特殊类型的 HTTP 绑定，返回传递到 `context.done()` 方法的响应。 다음 HTTP 출력 바인딩은 `$return` 출력 매개 변수를 정의합니다.
++ **_[仅响应]_ 通过调用 `context.done()`。** 一种特殊类型的 HTTP 绑定，返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
     ```json
     {
@@ -416,19 +416,19 @@ HTTP 트리거로 작업할 때 여러 가지 방법으로 HTTP 요청 및 응�
 
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于在扩展应用程序以满足需求时创建的每个宿主。 
 
-## <a name="node-version"></a>노드 버전
+## <a name="node-version"></a>Node 版本
 
-다음 표에서는 주 버전의 Functions 런타임 각각에서 사용되는 Node.js 버전을 보여 줍니다.
+下表显示了 Functions 运行时的每个主要版本使用的 Node.js 版本：
 
-| Functions 버전 | Node.js 버전 | 
+| Functions 版本 | Node.js 版本 | 
 |---|---|
-| 1.x | 6.11.2(런타임에 의해 잠김) |
+| 1.x | 6.11.2（运行时锁定） |
 | 2.x  | _ACTIVE LTS_ AND_维护 LTS_ node.js 版本（建议使用约10个）。 将 WEBSITE_NODE_DEFAULT_VERSION[应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设置为 "`~10`，以将 Azure 版本定位在 Azure 中。|
 
-위의 앱 설정을 확인하거나 함수에서 `process.version`을 인쇄하여 런타임에 사용 중인 현재 버전을 확인할 수 있습니다.
+可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 
-## <a name="dependency-management"></a>종속성 관리
-아래 예제와 같이 JavaScript 코드에서 커뮤니티 라이브러리를 사용하려면, Azure의 함수 앱에 모든 종속성이 설치되어 있는지 확인해야 합니다.
+## <a name="dependency-management"></a>依赖项管理
+若要在 JavaScript 代码中使用社区库（如下面的示例所示），需要确保在 Azure 中的 Function App 上安装所有依赖项。
 
 ```javascript
 // Import the underscore.js library
@@ -442,32 +442,32 @@ module.exports = function(context) {
 ```
 
 > [!NOTE]
-> 함수 앱의 루트에 `package.json` 파일을 정의해야 합니다. 파일을 정의하면 앱의 모든 함수에서 동일한 캐시된 패키지를 공유할 수 있으므로 최상의 성능을 제공합니다. 버전 충돌이 발생하는 경우 특정 함수의 폴더에 `package.json` 파일을 추가하여 이 충돌을 해결할 수 있습니다.  
+> 应当在 Function App 的根目录下定义一个 `package.json` 文件。 定义该文件将允许应用中的所有函数共享所缓存的相同包，从而获得最佳性能。 如果发生版本冲突，可以通过在具体函数的文件夹中添加一个 `package.json` 文件来解决冲突。  
 
-원본 제어에서 함수 앱을 배포할 때 리포지토리에 있는 모든 `package.json` 파일이 배포 중에 폴더의 `npm install`을 트리거합니다. 그러나 포털 또는 CLI를 통해 배포할 때는 수동으로 패키지를 설치해야 합니다.
+部署过程中，从源控件中部署 Function App 时，存储库中存在的任何 `package.json` 文件都将在其文件夹中触发 `npm install`。 但在通过门户或 CLI 部署时，必须手动安装包。
 
-함수 앱에 패키지를 설치하는 방법에는 두 가지가 있습니다. 
+可通过两种方法在 Function App 上安装包： 
 
-### <a name="deploying-with-dependencies"></a>종속성을 사용하여 배포
-1. `npm install`을 실행하여 모든 필수 패키지를 로컬에 설치합니다.
+### <a name="deploying-with-dependencies"></a>使用依赖项部署
+1. 通过运行 `npm install` 在本地安装所有必需的包。
 
-2. 코드를 배포하고 `node_modules` 폴더가 배포에 포함되어 있는지 확인합니다. 
+2. 部署代码，并确保部署中包含 `node_modules` 文件夹。 
 
 
-### <a name="using-kudu"></a>Kudu 사용
-1. [https://editor.swagger.io](`https://<function_app_name>.scm.azurewebsites.net`) 로 이동합니다.
+### <a name="using-kudu"></a>使用 Kudu
+1. 转到  `https://<function_app_name>.scm.azurewebsites.net` 。
 
-2. **디버그 콘솔** > **CMD**를 클릭합니다.
+2. 单击“调试控制台”，选择“CMD”。 > 
 
-3. `D:\home\site\wwwroot`로 이동한 다음 package.json 파일을 페이지 위쪽의 **wwwroot** 폴더로 끌어갑니다.  
-    다른 방법으로 함수 앱에 파일을 업로드할 수도 있습니다. 자세한 내용은 [함수 앱 파일을 업데이트하는 방법](functions-reference.md#fileupdate)을 참조하세요. 
+3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
+    还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#fileupdate)。 
 
-4. package.json 파일을 업로드한 후 **Kudu 원격 실행 콘솔**에서 `npm install` 명령을 실행합니다.  
-    이 작업은 package.json 파일에 표시된 패키지를 다운로드하고 함수 앱을 다시 시작합니다.
+4. 上传 package.json 文件后，在 `npm install`Kudu 远程执行控制台**中运行**  命令。  
+    此操作将下载 package.json 文件中指定的包并重新启动 Function App。
 
-## <a name="environment-variables"></a>환경 변수
+## <a name="environment-variables"></a>环境变量
 
-Functions에서 [앱 설정](functions-app-settings.md)(예: 서비스 연결 문자열)은 실행 중에 환경 변수로 노출됩니다. 你可以使用 `process.env`访问这些设置，如第二次和第三次调用中所示 `context.log()` 记录 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 环境变量的位置：
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 你可以使用 `process.env`访问这些设置，如第二次和第三次调用中所示 `context.log()` 记录 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 环境变量的位置：
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -481,17 +481,17 @@ module.exports = async function (context, myTimer) {
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-로컬로 실행하는 경우 앱 설정은 [local.settings.json](functions-run-local.md#local-settings-file) 프로젝트 파일에서 읽습니다.
+在本地运行时，可从 [local.settings.json](functions-run-local.md#local-settings-file) 项目文件读取应用设置。
 
-## <a name="configure-function-entry-point"></a>함수 진입점 구성
+## <a name="configure-function-entry-point"></a>配置函数入口点
 
-`function.json` 속성과 `scriptFile` 및 `entryPoint`는 내보낸 함수의 위치와 이름을 구성하는 데 사용할 수 있습니다. 이러한 속성은 JavaScript가 트랜스파일된 경우에 중요할 수 있습니다.
+`function.json` 属性 `scriptFile` 和 `entryPoint` 可用于配置导出函数的位置和名称。 转译 JavaScript 时，这些属性可能非常重要。
 
-### <a name="using-scriptfile"></a>`scriptFile` 사용
+### <a name="using-scriptfile"></a>使用 `scriptFile`
 
-기본적으로 JavaScript 함수는 해당하는 `function.json`과 동일한 부모 디렉터리를 공유하는 `index.js` 파일에서 실행됩니다.
+默认情况下通过 `index.js`（与其对应的 `function.json` 共享相同父目录的文件）执行 JavaScript 函数。
 
-`scriptFile`은 다음 예제와 같은 폴더 구조를 가져오는 데 사용할 수 있습니다.
+`scriptFile` 可用于获取以下示例所示的文件夹结构：
 
 ```
 FunctionApp
@@ -505,7 +505,7 @@ FunctionApp
  | - package.json
 ```
 
-`myNodeFunction`의 `function.json`에는 실행할 내보낸 함수가 있는 파일을 가리키는 `scriptFile` 속성이 포함되어야 합니다.
+`function.json` 的 `myNodeFunction` 应包含 `scriptFile` 属性，该属性指向包含要运行的导出函数的文件。
 
 ```json
 {
@@ -516,11 +516,11 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>`entryPoint` 사용
+### <a name="using-entrypoint"></a>使用 `entryPoint`
 
-`scriptFile`(또는 `index.js`)에서 함수를 찾아서 실행하려면 `module.exports`를 사용하여 함수를 내보내야 합니다. 기본적으로 트리거되면 실행되는 함수는 해당 파일의 내보내기, `run`이라는 이름의 내보내기 또는 `index`라고 명명된 내보내기입니다.
+在 `scriptFile`（或 `index.js`）中，必须使用 `module.exports` 导出函数才能使其被找到和运行。 默认情况下，触发时执行的函数是该文件的唯一导出（导出名为 `run` 或 `index`）。
 
-다음 예제와 같이 `function.json`에서 `entryPoint`를 사용하여 구성할 수 있습니다.
+可以使用 `entryPoint` 中的 `function.json` 配置此项设置，如以下示例所示：
 
 ```json
 {
@@ -531,7 +531,7 @@ FunctionApp
 }
 ```
 
-사용자 함수에서 `this` 매개 변수를 지원하는 Functions v2.x에서 함수 코드는 다음 예제와 같을 수 있습니다.
+Functions v2.x 支持用户函数中的 `this` 参数，其中的函数代码可能如以下示例所示：
 
 ```javascript
 class MyObj {
@@ -588,13 +588,13 @@ Visual Studio Code 扩展的[Azure Functions](https://marketplace.visualstudio.c
 
 使用 Core 工具时，TypeScript 项目与 JavaScript 项目有多种不同的方式。
 
-#### <a name="create-project"></a>프로젝트 만들기
+#### <a name="create-project"></a>创建项目
 
 若要使用核心工具创建 TypeScript 函数应用项目，必须在创建函数应用时指定 TypeScript language 选项。 可以通过以下方式之一执行此操作：
 
 - 运行 `func init` 命令，选择 "`node`" 作为语言堆栈，然后选择 "`typescript`"。
 
-- `func init --worker-runtime typescript` 명령을 실행합니다.
+- 运行 `func init --worker-runtime typescript` 命令。
 
 #### <a name="run-local"></a>运行本地
 
@@ -612,7 +612,7 @@ npm start
 - `tsc`
 - `func start`
 
-#### <a name="publish-to-azure"></a>Azure에 게시
+#### <a name="publish-to-azure"></a>发布到 Azure
 
 使用[`func azure functionapp publish`]命令部署到 Azure 之前，可以从 TypeScript 源文件创建一个生产就绪的 JavaScript 文件生成。 
 
@@ -625,17 +625,17 @@ func azure functionapp publish <APP_NAME>
 
 在此命令中，将 `<APP_NAME>` 替换为 function app 的名称。
 
-## <a name="considerations-for-javascript-functions"></a>JavaScript 함수에 대한 고려 사항
+## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 
-JavaScript 함수로 작업하는 경우 다음 섹션의 고려 사항에 유의해야 합니다.
+使用 JavaScript 函数时，请注意以下各节中的注意事项。
 
-### <a name="choose-single-vcpu-app-service-plans"></a>단일 vCPU App Service 계획 선택
+### <a name="choose-single-vcpu-app-service-plans"></a>选择单 vCPU 应用服务计划
 
-App Service 계획을 사용하는 함수 앱을 만들 때 여러 vCPU가 있는 계획보다는 단일 vCPU 계획을 선택하는 것이 좋습니다. 현재 Functions는 단일 vCPU VM에서 JavaScript 함수를 더 효율적으로 실행합니다. 더 큰 VM을 사용해도 예상된 성능 향상을 보여 주지 않습니다. 必要时，可以通过添加更多的 vCPU VM 实例来手动扩大，也可以启用自动缩放。 자세한 내용은 [수동 또는 자동으로 인스턴스 개수 조정](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)을 참조하세요.
+创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 必要时，可以通过添加更多的 vCPU VM 实例来手动扩大，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
 
-### <a name="cold-start"></a>콜드 부팅
+### <a name="cold-start"></a>冷启动
 
-서버리스 호스팅 모델에서 Azure Functions를 개발하는 경우 콜드 부팅이 현실입니다. *콜드 부팅*이란 일정 기간 동안 비활성이었다가 처음으로 함수 앱을 시작하면 시작하는 데 더 오래 걸린다는 사실을 의미합니다. 특히 종속성 트리가 큰 JavaScript 함수의 경우 콜드 부팅은 중요할 수 있습니다. 콜드 부팅 프로세스의 속도를 높이려면 가능한 경우 [함수를 패키지 파일로 실행](run-functions-from-deployment-package.md)합니다. 여러 배포 방법은 기본적으로 패키지 모델에서 실행을 사용하지만 대규모 콜드 부팅이 발생하고 이러한 방식으로 실행하지 않는 경우 이 변경 내용으로 인해 크게 개선될 수 있습니다.
+对于无服务器托管模型中开发 Azure Functions，冷启动已成为现实。 “冷启动”是指在函数应用处于非活动状态一段时间后进行第一次启动时，将需要较长时间才能启动。 具体而言，对于具有较大依赖项树的 JavaScript 函数，冷启动可能不足以解决问题。 为了加快冷启动过程，请尽量[以包文件的形式运行函数](run-functions-from-deployment-package.md)。 许多部署方法默认使用包模型中的运行，但如果遇到大规模的冷启动而不是以这种方式运行，则此项更改可以提供明显的改善。
 
 ### <a name="connection-limits"></a>连接限制
 
@@ -691,12 +691,12 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-자세한 내용은 다음 리소스를 참조하세요.
+有关详细信息，请参阅以下资源：
 
-+ [Azure Functions에 대한 모범 사례](functions-best-practices.md)
-+ [Azure Functions 개발자 참조](functions-reference.md)
-+ [Azure Functions 트리거 및 바인딩](functions-triggers-bindings.md)
++ [Azure Functions 最佳实践](functions-best-practices.md)
++ [Azure Functions 开发人员参考](functions-reference.md)
++ [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 ["func azure functionapp 发布"]: functions-run-local.md#project-file-deployment

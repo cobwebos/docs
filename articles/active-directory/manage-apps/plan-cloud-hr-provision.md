@@ -53,11 +53,11 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 - 需要根据在云 HR 应用中检测到的更改信息，加入、移动和离开用户以同步到一个或多个 Active Directory 林、域和 Ou。
 - 使用 Office 365 发送电子邮件。
 
-## <a name="learn"></a>학습
+## <a name="learn"></a>了解
 
 用户预配为正在进行的标识管理创建基础。 它增强了依赖于权威标识数据的业务流程的质量。
 
-### <a name="terms"></a>용어
+### <a name="terms"></a>术语
 
 本文使用以下术语：
 
@@ -65,7 +65,7 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 - **目标系统**： Azure AD 预配到的用户的存储库。 例如 Active Directory、Azure AD、Office 365 或其他 SaaS 应用程序。
 - **Joiners-离开者 process**：使用云 HR 应用作为记录的一种术语，用于新员工、转移和终止。 当服务成功地将所需的属性预配到目标系统时，该过程完成。
 
-### <a name="key-benefits"></a>주요 이점
+### <a name="key-benefits"></a>主要优点
 
 HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
@@ -74,13 +74,13 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 - **解决合规性和监管：** Azure AD 支持由源系统和目标系统的应用执行的用户预配请求的本地审核日志。 通过审核，您可以在单个屏幕上跟踪谁有权访问应用程序。
 - **管理成本：** 通过避免与手动预配相关的低效和人为错误，自动预配可降低成本。 它通过使用旧版和过时的平台减少了随时间而构建的自定义开发用户预配解决方案的需求。
 
-### <a name="licensing"></a>라이선스
+### <a name="licensing"></a>授权
 
 若要将云 HR 应用配置为 Azure AD 用户预配集成，需要一个有效的[Azure AD Premium 许可证](https://azure.microsoft.com/pricing/details/active-directory/)和一个云 HR 应用的许可证，如 Workday 或 SuccessFactors。
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 cloud HR 应用并设置为 Active Directory 或 Azure AD。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
-### <a name="prerequisites"></a>필수 조건
+### <a name="prerequisites"></a>必备条件
 
 - Azure AD 全局管理员访问权限来配置 Azure AD Connect 预配代理。
 - Cloud HR 应用的测试和生产实例。
@@ -90,23 +90,23 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ### <a name="training-resources"></a>定型资源
 
-| **리소스** | **链接和说明** |
+| **资源** | **链接和说明** |
 |:-|:-|
-| 비디오 | [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) |
+| 视频 | [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) |
 | | [如何在 Active Azure Directory 中部署用户预配](https://youtu.be/pKzyts6kfrw) |
-| 자습서 | [有关如何将 SaaS 应用与 Azure AD 集成的教程列表](../saas-apps/tutorial-list.md) |
+| 教程 | [有关如何将 SaaS 应用与 Azure AD 集成的教程列表](../saas-apps/tutorial-list.md) |
 | | [教程：为 Workday 配置自动用户预配](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| FAQ | [自动用户预配](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| 常见问题解答 | [自动用户预配](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [从 Workday 预配到 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
-### <a name="solution-architecture"></a>솔루션 아키텍처
+### <a name="solution-architecture"></a>解决方案体系结构
 
 以下示例介绍了适用于常见混合环境的端到端用户预配解决方案体系结构，其中包括：
 
 - **从 cloud HR 应用到 Active Directory 的权威 HR 数据流。** 在此流中，HR 事件（Joiners-离开者进程）在云 HR 应用租户中启动。 Azure AD 预配服务和 Azure AD Connect 预配代理将用户数据从云 HR 应用租户预配到 Active Directory 中。 根据事件，可能会导致在 Active Directory 中创建、更新、启用和禁用操作。
 - **与 Azure AD 同步，并将本地 Active Directory 中的电子邮件和用户名写回云 HR 应用。** Active Directory 中的帐户更新后，它将通过 Azure AD Connect 与 Azure AD 同步。 电子邮件地址和用户名属性可以写回到云 HR 应用租户。
 
-![워크플로 다이어그램](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
+![工作流关系图](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>工作流的说明
 
@@ -130,7 +130,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 包括 HR 组织的代表，可以提供现有 HR 业务流程的输入和工作人员标识以及作业数据处理要求。
 
-### <a name="plan-communications"></a>통신 계획
+### <a name="plan-communications"></a>规划沟通
 
 通信对于任何新服务的成功至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
 
@@ -144,7 +144,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 为了便于 Azure AD 在 cloud HR 应用和 Active Directory 之间预配工作流，你可以从 Azure AD 应用库添加多个预配连接器应用：
 
-- **要 Active Directory 用户预配的 CLOUD hr 应用**：此预配连接器应用可帮助将云 hr 应用的用户帐户预配到单个 Active Directory 域。 도메인이 여러 개 있는 경우 프로비전해야 하는 각 Active Directory 도메인에 대해 Azure AD 앱 갤러리에서 이 앱의 하나의 인스턴스를 추가할 수 있습니다.
+- **要 Active Directory 用户预配的 CLOUD hr 应用**：此预配连接器应用可帮助将云 hr 应用的用户帐户预配到单个 Active Directory 域。 如果你有多个域，可以针对需要预配到的每个 Active Directory 域，从 Azure AD 应用库添加此应用的一个实例。
 - **要 Azure AD 用户预配的云 HR 应用程序**：虽然 Azure AD Connect 是应该用于将 Active Directory 用户同步到 Azure AD 的工具，但此预配连接器应用可用于帮助将仅限云的用户从 cloud HR 应用程序预配到单个 Azure AD 租户。
 - **CLOUD hr 应用回写**：此预配连接器应用便于将用户电子邮件地址的回写从 Azure AD 到云 HR 应用。
 
@@ -178,7 +178,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 建议采用以下生产配置：
 
-|요구 사항|권장|
+|要求|建议|
 |:-|:-|
 |要部署的 Azure AD Connect 预配代理数|2（用于高可用性和故障转移）
 |要配置的预配连接器应用数|每个子域一个应用|
@@ -192,7 +192,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 建议采用以下生产配置：
 
-|요구 사항|권장|
+|要求|建议|
 |:-|:-|
 |要在本地部署的 Azure AD Connect 预配代理数|每个非连续 Active Directory 林2个|
 |要配置的预配连接器应用数|每个子域一个应用|
@@ -247,7 +247,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 默认情况下，代表唯一员工 ID 的 cloud HR 应用中的属性用作*映射到 Active Directory 中的唯一属性*的匹配属性。 例如，在 Workday 应用程序方案中， **workday** **WorkerID**属性映射到 Active Directory**雇员 id**属性。
 
-你可以设置多个匹配属性并分配匹配的优先级。 它们按匹配优先级计算。 일치 항목이 발견되는 즉시 더 이상 일치 특성을 평가하지 않습니다.
+你可以设置多个匹配属性并分配匹配的优先级。 它们按匹配优先级计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
 您还可以[自定义默认属性映射](customize-application-attributes.md#understanding-attribute-mapping-types)，例如更改或删除现有属性映射。 你还可以根据业务需求创建新的属性映射。 有关详细信息，请参阅 cloud HR app 教程（如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），了解要映射的自定义属性列表。
 
@@ -257,7 +257,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 프로세스 | 요구 사항 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | 从标识生命周期角度看，如何处理 rehires？ Rehires 是否保留其旧的员工 Id？ |
 | | 您是否会提前处理日后招聘的员工并提前为他们创建 Active Directory 帐户？ 这些帐户是否创建为启用或禁用状态？ |
@@ -276,7 +276,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 프로세스 | 요구 사항 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | Active Directory 帐户创建过程是手动、自动还是部分自动？ |
 | | 你是否打算将自定义属性从 cloud HR 应用传播到 Active Directory？ |
@@ -336,7 +336,7 @@ SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方�
 
 将 cloud HR 应用配置为 Azure AD 用户预配后，运行测试用例以验证此解决方案是否满足组织的要求。
 
-|시나리오|예상 결과|
+|方案|预期结果|
 |:-|:-|
 |在云 HR 应用中雇用新员工。| -在 Active Directory 中设置用户帐户。</br>-用户可以登录 Active Directory 域应用并执行所需的操作。</br>-如果已配置 Azure AD Connect 同步，则还会在 Azure AD 中创建用户帐户。
 |用户在云 HR 应用中终止。|-Active Directory 中禁用该用户帐户。</br>-用户无法登录到受 Active Directory 保护的任何企业应用。
@@ -382,7 +382,7 @@ Azure AD 可以通过审核日志和报告，进一步深入了解你的组织�
 
 若要查看这些事件以及预配服务执行的所有其他活动，请[了解如何查看日志并获取有关预配活动的报告](check-status-user-account-provisioning.md)。
 
-#### <a name="azure-monitor-logs"></a>Azure Monitor 로그
+#### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
 预配服务执行的所有活动都记录在 Azure AD 审核日志中。 可以将 Azure AD 审核日志路由到 Azure Monitor 日志以便进一步分析。 利用 Azure Monitor 日志（也称为 Log Analytics 工作区），您可以查询数据以查找事件、分析趋势，并跨各种数据源执行关联。 观看此[视频](https://youtu.be/MP5IaCTwkQg)，了解在实际用户方案中使用 Azure Monitor 日志 Azure AD 日志的好处。
 
@@ -390,31 +390,31 @@ Azure AD 可以通过审核日志和报告，进一步深入了解你的组织�
 
 有关详细信息，请参阅如何[分析 Azure Monitor 日志中的 Azure AD 活动日志](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)。
 
-### <a name="manage-personal-data"></a>개인 데이터 관리
+### <a name="manage-personal-data"></a>管理个人数据
 
 Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日志中创建日志，该日志可能包含个人数据，具体取决于你的云 HR 应用程序 Active Directory 属性映射。 若要遵守用户隐私义务，请设置 Windows 计划任务以清除事件日志，并确保不会将任何数据保留超过48小时。
 
 Azure AD 预配服务不会生成报表、执行分析，也不会在30天内提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>문제 해결
+### <a name="troubleshoot"></a>故障排除
 
 若要解决在预配期间可能会打开的任何问题，请参阅以下文章：
 
 - [为 Azure AD 库应用程序配置用户预配时出现问题](application-provisioning-config-problem.md)
 - [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](user-provisioning-sync-attributes-for-mapping.md)
 - [用户预配到 Azure AD 库应用程序需要数小时或更长时间](application-provisioning-when-will-provisioning-finish.md)
-- [사용자가 Azure Active Directory 갤러리 애플리케이션에 프로비전을 구성하는 동안 관리자 자격 증명을 저장하는 문제](application-provisioning-config-problem-storage-limit.md)
+- [配置 Azure Active Directory 库应用程序的用户预配时遇到保存管理员凭据问题](application-provisioning-config-problem-storage-limit.md)
 - [未将任何用户预配到 Azure AD 库应用程序](application-provisioning-config-problem-no-users-provisioned.md)
 - [正在将错误的用户组预配到 Azure AD 库应用程序](application-provisioning-config-problem-wrong-users-provisioned.md)
-- [에이전트 문제 해결을 위한 Windows 이벤트 뷰어 설정](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [서비스 문제 해결을 위한 Azure Portal 감사 로그 설정](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [AD 사용자 계정 생성 작업에 대한 로그 이해](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [관리자 업데이트 작업에 대한 로그 이해](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
-- [일반적으로 발생하는 오류 해결](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
+- [设置 Windows 事件查看器来排查代理方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [设置 Azure 门户审核日志来排查服务方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [了解 AD 用户帐户创建操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [了解经理更新操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [解决常见错误](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
-### <a name="next-steps"></a>다음 단계
+### <a name="next-steps"></a>后续步骤
 
 - [为属性映射编写表达式](functions-for-customizing-application-data.md)
-- [Azure AD 동기화 API 개요](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 - [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 - [Azure AD Connect 预配代理：版本发布历史记录](provisioning-agent-release-version-history.md)

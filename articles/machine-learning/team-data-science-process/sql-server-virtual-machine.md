@@ -1,5 +1,5 @@
 ---
-title: SQL Server 가상 머신에서 데이터 탐색 - Team Data Science Process
+title: 浏览 SQL Server 虚拟机中的数据 - Team Data Science Process
 description: 在 Azure 上的 SQL Server 虚拟机中浏览和处理数据，并使用 Python 或 SQL 生成功能。
 services: machine-learning
 author: marktab
@@ -18,84 +18,84 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718474"
 ---
-# <a name="heading"></a>Azure의 SQL Server 가상 컴퓨터에서 데이터 처리
-이 문서에서는 Azure의 SQL Server VM에 저장된 데이터를 탐색하고 데이터에 대한 기능을 생성하는 방법에 대해 알아봅니다. 使用 SQL 或使用 Python 等编程语言，可以通过数据整理来完成此目标。
+# <a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
+本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 使用 SQL 或使用 Python 等编程语言，可以通过数据整理来完成此目标。
 
 > [!NOTE]
-> 이 문서의 샘플 SQL 문에서는 데이터가 SQL Server에 있는 것으로 가정합니다. 그렇지 않은 경우 데이터를 SQL Server로 이동하는 방법은 클라우드 데이터 과학 프로세스 맵을 참조하세요.
+> 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。
 > 
 > 
 
-## <a name="SQL"></a>SQL 사용
-이 섹션에서는 SQL을 사용하여 다음과 같은 데이터 랭글링 작업을 수행하는 방법에 대해 설명합니다.
+## <a name="SQL"></a>使用 SQL
+我们介绍本部分中使用 SQL 的以下数据整理任务：
 
-1. [데이터 탐색](#sql-dataexploration)
-2. [기능 생성](#sql-featuregen)
+1. [数据浏览](#sql-dataexploration)
+2. [功能生成](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>데이터 탐색
-SQL Server에서 데이터 저장소를 탐색하는 데 사용할 수 있는 몇 가지 샘플 SQL 스크립트는 다음과 같습니다.
+### <a name="sql-dataexploration"></a>数据浏览
+以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
 > [!NOTE]
-> 실용적인 예제에는 [NYC Taxi 데이터 세트](https://www.andresmh.com/nyctaxitrips/)를 사용할 수 있으며, 엔드투엔드 연습에 [IPython Notebook 및 SQL Server를 사용한 NYC 데이터 랭글링](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)이라는 IPNB를 참조할 수 있습니다.
+> 有关实际的示例，可以使用 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/)，并参考名为[使用 IPython Notebook 和 SQL Server 的 NYC 数据整理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)的IPNB，以获取端到端的演练。
 > 
 > 
 
-1. 일별 관찰 수 가져오기
+1. 获取每个工作日观测值的计数
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. 범주 열의 수준 가져오기
+2. 获取某分类列中的级别
    
     `select  distinct <column_name> from <databasename>`
-3. 두 범주 열 조합의 수준 수 가져오기 
+3. 获取两个分类列组合中的级别数 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. 숫자 열의 분포 가져오기
+4. 获取数字列的分布
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>기능 생성
-이 섹션에서는 SQL을 사용하여 기능을 생성하는 방법에 대해 설명합니다.  
+### <a name="sql-featuregen"></a>功能生成
+在本部分中，介绍使用 SQL 生成功能的方法：  
 
-1. [개수 기반 기능 생성](#sql-countfeature)
-2. [범주화 기능 생성](#sql-binningfeature)
-3. [단일 열에서 기능 롤아웃](#sql-featurerollout)
+1. [生成基于计数的功能](#sql-countfeature)
+2. [生成装箱功能](#sql-binningfeature)
+3. [从单个列推出功能](#sql-featurerollout)
 
 > [!NOTE]
-> 추가 기능을 생성한 후 이를 기존 테이블에 열로 추가하거나, 추가 기능 및 기본 키를 사용하여 새 테이블을 만들어 원래 테이블에 조인할 수 있습니다. 
+> 一旦生成其他功能，可将它们作为列添加到现有表格，或使用其他功能和主键来创建可与原始表结合的新表格。 
 > 
 > 
 
-### <a name="sql-countfeature"></a>개수 기반 기능 생성
-다음의 예제에서는 개수 기능을 생성하는 두 가지 방법을 보여 줍니다. 첫 번째 방법에서는 조건부 합계를 사용하고, 두 번째 방법에서는 'where' 절을 사용합니다. 然后，可以将这些结果与原始表联接（使用主键列），使其与原始数据一起使用计数功能。
+### <a name="sql-countfeature"></a>基于计数生成功能
+以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 然后，可以将这些结果与原始表联接（使用主键列），使其与原始数据一起使用计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>범주화 기능 생성
-다음 예제에서는 기능으로 사용할 수 있는 숫자 열을 범주화하여(다섯 개의 bin 사용) 범주화된 기능을 생성하는 방법을 보여 줍니다.
+### <a name="sql-binningfeature"></a>生成装箱功能
+下面的示例演示如何通过将可用作函数的数值列装箱（使用 5 箱），从而生成装箱函数：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>단일 열에서 기능 롤아웃
-이 섹션에서는 테이블의 단일 열을 롤아웃하여 추가 기능을 생성하는 방법을 보여 줍니다. 이 예제에서는 기능을 생성하려는 테이블에 위도 또는 경도 열이 있는 것으로 가정합니다.
+### <a name="sql-featurerollout"></a>从单个列推出功能
+在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
-다음은 위도/경도 위치 데이터에 대한 간략한 기초 정보입니다(stackoverflow [위도 및 경도의 정확도를 측정하는 방법](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)에서 발췌). 在将位置作为一个或多个功能包含之前，此指导将非常有用：
+下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 在将位置作为一个或多个功能包含之前，此指导将非常有用：
 
-* 부호는 지구에서 현재 위치의 방위(북쪽, 남쪽, 동쪽 또는 서쪽)를 알려 줍니다.
-* 0이 아닌 100자리수는 위도가 아니라 경도를 사용하고 있음을 알려 줍니다.
-* 10자리수는 약 1,000km까지의 위치를 제공합니다. 현재 위치의 대륙 또는 대양에 대한 유용한 정보를 제공합니다.
-* 단위 자리수(하나의 도 단위)는 최대 111km(60해리, 약 69마일)까지의 위치를 제공합니다. 它可以大致了解你所在的州、国家或地区。
-* 첫 번째 소수 자릿수는 11.1km까지 적용되며, 하나의 대도시를 인접한 대도시와 구분할 수 있습니다.
-* 두 번째 소수 자릿수는 1.1km까지 적용되며, 하나의 마을을 다음 마을과 구분할 수 있습니다.
-* 세 번째 소수 자릿수는 110m까지 적용되며, 대규모 농경지 또는 기업 부지를 식별할 수 있습니다.
-* 네 번째 소수 자릿수는 11m까지 적용되며, 하나의 필지를 식별할 수 있습니다. 이는 간섭 없이 보정되지 않은 GPS 장치의 일반적인 정확도에 해당됩니다.
-* 다섯 번째 소수 자릿수는 1.1m까지 적용되며, 수목을 서로 구분할 수 있습니다. 상용 GPS 장치에서는 미분 보정을 통해서만 이 수준의 정확도를 실현할 수 있습니다.
-* 여섯 번째 소수 자릿수는 0.11m까지 적용되며, 상세 구조물 배치, 조경 설계, 도로 건설 등에 사용될 수 있습니다. 빙하 및 강의 이동을 추적하는 데 매우 적합합니다. 미분 보정된 GPS와 같은 GPS로 세밀히 측정하여 이를 수행할 수 있습니다.
+* 符号指示地球上的四个方向：东、南、西、北。
+* 非零的百位数代表经度，而不是纬度！
+* 十位数提供约 1000 公里的位置。 提供处于哪个大洲或海洋的有用信息。
+* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它可以大致了解你所在的州、国家或地区。
+* 第一个小数位值达 11.1 km：可将相邻的大城市区分开。
+* 第二位小数值达 1.1 km：可将村庄分开。
+* 第三位小数值达 110 m：可以定大型农业区域或工业园区。
+* 第四位小数值达 11 m：可识别小块土地。 其准确性相当于未更正的、无干扰的 GPS 部件的典型准确性。
+* 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
+* 第六个小数位值达 0.11 m：可用于详细布局结构、设计景观和修建道路等。 对于追踪冰川和河流的运动，它是不二之选。 可通过差异更正 GPS 等获得以上数值。
 
-위치 정보는 다음과 같이 지역, 위치 및 도시 정보를 구분하여 기능화할 수 있습니다. 你还可以调用 REST 终结点，例如 "[按点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)" 中提供的 BING 地图 API，以获取区域/地区信息。
+位置信息还具有以下特征：分离地区、位置和城市信息。 你还可以调用 REST 终结点，例如 "[按点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)" 中提供的 BING 地图 API，以获取区域/地区信息。
 
     select 
         <location_columnname>
@@ -108,36 +108,36 @@ SQL Server에서 데이터 저장소를 탐색하는 데 사용할 수 있는 �
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-이러한 위치 기반 기능을 사용하여 앞서 설명한 대로 추가 개수 기능을 생성할 수도 있습니다. 
+如前面所述：可以进一步使用上述基于位置的功能来生成其他计数功能。 
 
 > [!TIP]
-> 선택한 언어를 사용하여 프로그래밍 방식으로 레코드를 삽입할 수 있습니다. 쓰기 효율성을 개선하기 위해 청크에 데이터를 삽입해야 할 수도 있습니다. pyodbc를 사용하여 이 작업을 수행하는 방법에 대한 예제는 [Python을 사용하여 SQL Server에 액세스하는 HelloWorld 샘플](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)을 참조하세요. 또 다른 방법은 [BCP 유틸리티](https://msdn.microsoft.com/library/ms162802.aspx)를 사용하여 데이터베이스에 데이터를 삽입하는 것입니다.
+> 可以使用设定语言，以编程方式插入记录。 可能需要以块形式插入数据以提高写入效率（有关如何使用 pyodbc 执行此操作的示例，请参阅[使用 python 访问 SQLServer 的 HelloWorld 示例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)）。 另一种方法是使用 [BCP 实用工具](https://msdn.microsoft.com/library/ms162802.aspx)将数据插入数据库中。
 > 
 > 
 
-### <a name="sql-aml"></a>Azure 기계 학습에 연결
-새로 생성한 기능을 기존 테이블에 열로 추가하거나, 새 테이블에 저장하여 기계 학습을 위해 원래 테이블과 조인할 수 있습니다. 如果已创建功能，可以使用 Azure 机器学习中的 "[导入数据][import-data]" 模块生成或访问功能，如下所示：
+### <a name="sql-aml"></a>连接到 Azure 机器学习
+新生成的功能可作为列添加到现有表或存储在新表中，也可与原始表结合以进行机器学习。 如果已创建功能，可以使用 Azure 机器学习中的 "[导入数据][import-data]" 模块生成或访问功能，如下所示：
 
-![azureml 판독기][1] 
+![azureml 读取器][1] 
 
-## <a name="python"></a>Python과 같은 프로그래밍 언어 사용
-데이터가 SQL Server에 있는 경우 Python을 사용하여 데이터를 탐색하고 기능을 생성하는 작업은 [데이터 과학 환경에서 Azure Blob 데이터 처리](data-blob.md)에 설명된 대로 Python을 사용하여 Azure Blob의 데이터를 처리하는 것과 유사합니다. 将数据库中的数据加载到 pandas 数据帧，以便进行更多的处理。 데이터베이스에 연결하여 데이터 프레임으로 데이터를 로드하는 프로세스는 이 섹션에 설명되어 있습니다.
+## <a name="python"></a>使用 Python 等编程语言
+如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据库中的数据加载到 pandas 数据帧，以便进行更多的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
-다음 연결 문자열 형식은 pyodbc를 사용(servername, dbname, username 및 password를 특정 값으로 대체)하여 Python에서 SQL Server 데이터베이스 연결하는 데 사용될 수 있습니다.
+以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python의 [Pandas 라이브러리](https://pandas.pydata.org/) 에서는 Python 프로그래밍용 데이터 조작을 위한 다양한 데이터 구조 및 데이터 분석 도구 집합을 제공합니다. 아래 코드는 SQL Server 데이터베이스에서 Pandas 데이터 프레임으로 반환되는 결과를 읽습니다.
+Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 下面的代码读取 SQL Server 数据库返回的结果到 Pandas 数据帧:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-이제 [데이터 과학 환경에서 Azure Blob 데이터 처리](data-blob.md) 문서에 설명된 대로 Pandas 데이터 프레임으로 작업할 수 있습니다.
+现可使用 Pandas 数据帧，如文章[处理数据科学环境中的 Azure Blob 数据](data-blob.md)所述。
 
-## <a name="azure-data-science-in-action-example"></a>Azure 데이터 과학 작동 예제
-공용 데이터 세트를 사용한 Azure 데이터 과학 프로세스의 엔드투엔드 연습 예제는 [Azure에서 Azure 데이터 과학 프로세스](sql-walkthrough.md)를 참조하세요.
+## <a name="azure-data-science-in-action-example"></a>运行中的 Azure 数据科学示例
+有关使用公用数据集的 Azure 数据科学过程的端到端演练示例，请参阅[运行中的 Azure 数据科学过程](sql-walkthrough.md)。
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

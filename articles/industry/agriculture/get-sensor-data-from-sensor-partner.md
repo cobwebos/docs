@@ -32,9 +32,9 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 开始流式处理传感器数据后，可以开始将数据导入到 FarmBeats 系统的过程。 向设备提供商提供以下信息以启用与 FarmBeats 的集成：
 
  - API 终结点
- - 테넌트 ID
- - 클라이언트 ID
- - 클라이언트 암호
+ - 租户 ID
+ - 客户端 ID
+ - 客户端机密
  - EventHub 连接字符串
 
 可以通过执行以下步骤来生成以上信息：（请注意，需要在 Azure 上执行这些步骤，以便需要访问 FarmBeats 部署到的 Azure 订阅）。
@@ -46,7 +46,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
 
-5. Cloud Shell을 엽니다. 此选项位于 Azure 门户右上角工具栏中。
+5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -60,7 +60,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 8. 中转到上载文件的目录。 默认情况下，文件将上传到用户名下的主目录。
 
-9. 다음 스크립트를 실행합니다. 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
+9. 运行以下脚本。 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
 
     ```azurepowershell-interactive 
 
@@ -75,9 +75,9 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 现在，你已获得了上一节中生成的以下信息。
  - API 终结点
  - EventHub 连接字符串
- - 클라이언트 ID
- - 클라이언트 암호
- - 테넌트 ID
+ - 客户端 ID
+ - 客户端机密
+ - 租户 ID
  
 你将需要向设备合作伙伴提供此链接，以链接 FarmBeats。 若要执行相同操作，请参阅设备合作伙伴门户。 例如，如果使用的是来自 Davis 乐器的设备，请参阅以下页面：
 
@@ -89,24 +89,24 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 使用以下部分查看场的设备和传感器。
 
-### <a name="view-devices"></a>디바이스 보기
+### <a name="view-devices"></a>查看设备
 
 目前，FarmBeats 支持以下设备：
 
 - **Node**：连接了一个或多个传感器的设备。
 - **网关**：一个或多个节点附加到的设备。
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 1. 在主页上，从菜单中选择 "**设备**"。
   "**设备**" 页显示设备类型、型号、状态、它所在的场和元数据的上次更新日期。 默认情况下，场列设置为*NULL*。 你可以选择将设备分配到场。 有关详细信息，请参阅[分配设备](#assign-devices)。
 2. 选择设备以查看连接到设备的设备属性、遥测和子设备。
 
-    ![디바이스 페이지](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![“设备”页](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>查看传感器
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 1. 在主页上，从菜单中选择 "**传感器**"。
   "**传感器**" 页显示有关传感器类型、其连接到的服务器、父设备、端口名称、端口类型和上次更新状态的详细信息。
@@ -134,7 +134,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ### <a name="visualize-sensor-data"></a>直观显示传感器数据
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 1. 在主页上，从菜单中选择 "**服务器场**" 以查看 "**服务器场**" 页。
 2. 选择要查看其传感器数据的**场**。
@@ -144,24 +144,24 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="delete-a-sensor"></a>删除传感器
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 1. 在 "主页" 页上，从菜单中选择 "**传感器**" 以查看**传感器**页面。
 2. 选择要删除的设备，然后在确认窗口中选择 "**删除**"。
 
-    ![삭제 단추](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![“删除”按钮](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
 确认消息显示传感器已成功删除。
 
-## <a name="delete-devices"></a>디바이스 삭제
+## <a name="delete-devices"></a>删除设备
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 1. 在主页上，从菜单中选择 "**设备**" 以查看 "**设备**" 页。
 2. 选择要删除的设备，然后在确认窗口中选择 "**删除**"。
 
-    ![삭제 단추](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![“删除”按钮](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 现在，传感器数据流入 Azure FarmBeats 实例。 现在，了解如何为你的场[生成地图](generate-maps-in-azure-farmbeats.md#generate-maps)。

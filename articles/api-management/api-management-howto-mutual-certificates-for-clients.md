@@ -1,7 +1,7 @@
 ---
 title: 在 API 管理中使用客户端证书身份验证保护 Api
 titleSuffix: Azure API Management
-description: 클라이언트 인증서를 사용하여 API에 대한 액세스의 보안을 유지하는 방법을 알아봅니다.
+description: 了解如何使用客户端证书保护对 API 的访问
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -20,9 +20,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76713147"
 ---
-# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management에서 클라이언트 인증서 인증을 사용하여 API를 보호하는 방법
+# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
-API Management에서는 클라이언트 인증서를 사용하여 API에 대한 액세스(예: API Management에 대한 클라이언트)를 보호하는 기능을 제공합니다. 您可以使用策略表达式来验证传入证书，并根据所需值检查证书属性。
+API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 您可以使用策略表达式来验证传入证书，并根据所需值检查证书属性。
 
 有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
@@ -36,9 +36,9 @@ API Management에서는 클라이언트 인증서를 사용하여 API에 대한 
 
 ![请求客户端证书](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>발급자 및 주체 확인
+## <a name="checking-the-issuer-and-subject"></a>检查颁发者和使用者
 
-클라이언트 인증서의 발급자 및 주체를 확인하도록 아래 정책을 구성할 수 있습니다.
+可以将以下策略配置为检查客户端证书的颁发者和使用者：
 
 ```xml
 <choose>
@@ -54,9 +54,9 @@ API Management에서는 클라이언트 인증서를 사용하여 API에 대한 
 > 若要禁用检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
 > 如果客户端证书是自签名的，则必须将根（或中间） CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，以便 `context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 工作。
 
-## <a name="checking-the-thumbprint"></a>지문 확인
+## <a name="checking-the-thumbprint"></a>检查指纹
 
-클라이언트 인증서의 지문을 확인하도록 아래 정책을 구성할 수 있습니다.
+可以将以下策略配置为检查客户端证书的指纹：
 
 ```xml
 <choose>
@@ -72,9 +72,9 @@ API Management에서는 클라이언트 인증서를 사용하여 API에 대한 
 > 若要禁用检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
 > 如果客户端证书是自签名的，则必须将根（或中间） CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，以便 `context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 工作。
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>API Management에 업로드된 인증서에 대해 지문 확인
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上传到 API 管理的证书检查指纹
 
-다음 예제에서는 API Management에 업로드된 인증서에 대해 클라이언트 인증서의 지문을 확인하는 방법을 보여 줍니다.
+以下示例演示如何针对已上传到 API 管理的证书，检查客户端证书的指纹：
 
 ```xml
 <choose>
@@ -97,7 +97,7 @@ API Management에서는 클라이언트 인증서를 사용하여 API에 대한 
 
 ![协商客户端证书](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
--   [클라이언트 인증서 인증을 사용하여 백 엔드 서비스를 보호하는 방법](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [인증서 업로드 방법](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [如何使用客户端证书身份验证确保后端服务安全](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [如何上传证书](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

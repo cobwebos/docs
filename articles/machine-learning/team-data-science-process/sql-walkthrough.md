@@ -1,6 +1,6 @@
 ---
-title: SQL Server VM에서 모델 빌드 및 배포 - Team Data Science Process
-description: 공개적으로 사용 가능한 데이터 세트가 있는 Azure VM에서 SQL Server를 사용하여 기계 학습 모델을 빌드하고 배포합니다.
+title: 在 SQL Server VM 中构建和部署模型 - Team Data Science Process
+description: 使用 Azure VM 上的 SQL Server 和公开提供的数据集生成和部署机器学习模型。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,13 +18,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718525"
 ---
-# <a name="the-team-data-science-process-in-action-using-sql-server"></a>실행 중인 팀 데이터 과학 프로세스: SQL Server 사용
-이 자습서에서는 SQL Server 및 공개적으로 사용할 수 있는 데이터 세트([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) 데이터 세트)를 사용하여 Machine Learning 모델의 배포 및 빌드 처리를 연습합니다. 이 절차는 표준 데이터 과학 워크플로를 따릅니다. 데이터를 수집 및 탐색하고 학습이 용이하도록 기능을 엔지니어링한 후 모델을 빌드 및 배포합니다.
+# <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
+在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
 
-## <a name="dataset"></a>NYC Taxi Trips 데이터 세트 설명
-NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件（约 48 GB），其中包含超过173000000个单独行程和每个行程支付的费用。 각 여정 레코드는 승차 및 하차 위치, 익명 처리된 hack(기사) 면허증 번호 및 medallion(택시의 고유 ID) 번호를 포함합니다. 데이터는 2013년의 모든 여정을 포괄하며, 매월 다음 두 개의 데이터 세트로 제공됩니다.
+## <a name="dataset"></a>NYC 出租车行程数据集介绍
+NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件（约 48 GB），其中包含超过173000000个单独行程和每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
-1. 'trip_data' CSV는 승객 수, 승차 및 하차 지점, 여정 기간, 여정 거리 등 여정 세부 정보를 포함합니다. 다음은 몇 가지 샘플 레코드입니다.
+1. 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -32,7 +32,7 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件（约 48 GB），�
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. 'trip_fare' CSV는 지불 유형, 금액, 추가 요금 및 세금, 팁 및 통행료, 총 지불 금액 등 각 여정의 요금에 대한 세부 정보를 포함합니다. 다음은 몇 가지 샘플 레코드입니다.
+2. 'trip_fare' CSV 包含每个行程所付费用的详细信息，例如付款类型、费用金额、附加税和税金、小费和通行税，以及支付的总金额等。 下面是一些示例记录：
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -41,121 +41,121 @@ NYC 出租车行程数据是大约 20 GB 的压缩 CSV 文件（约 48 GB），�
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data와 trip\_fare를 조인할 고유 키는 medallion, hack\_licence 및 pickup\_datetime 필드로 구성됩니다.
+联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_licence 和 pickup\_datetime。
 
-## <a name="mltasks"></a>예측 작업의 예제
-*tip\_amount*를 기반으로 다음 세 가지 예측 문제를 작성해 보겠습니다.
+## <a name="mltasks"></a>预测任务示例
+我们会根据 *tip\_amount* 编写三个预测问题的公式，即：
 
 * 二元分类：预测是否为行程支付了提示（即，大于 $0 的*tip\_量*为正示例），而*tip\_$0 量*为负的示例。
-* 다중 클래스 분류: 여정에 대해 지불된 팁의 범위를 예측합니다. *tip\_amount*를 5개의 bin 또는 클래스로 나눕니다.
+* 多元分类：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-* 회귀 작업: 여정에 대해 지불된 팁의 금액을 예측합니다.  
+* 回归任务：预测为行程支付的小费金额。  
 
-## <a name="setup"></a>고급 분석을 위한 Azure 데이터 과학 환경 설정
-[환경 계획 가이드](plan-your-environment.md)에서 볼 수 있듯이 Azure에서 NYC Taxi Trips 데이터 세트로 작업할 수 있는 여러 가지 옵션이 있습니다.
+## <a name="setup"></a>设置 Azure 数据科学环境进行高级分析
+正如你从[规划环境](plan-your-environment.md)指南中看到的那样，在 Azure 中使用 NYC 出租车行程数据集时，有几个选项可以使用：
 
-* Azure Blob의 데이터로 작업한 다음 Azure Machine Learning에서 모델링
-* SQL Server 데이터베이스로 데이터를 로드한 다음 Azure Machine Learning에서 모델링
+* 使用 Azure blob 中的数据，并在 Azure 机器学习中模型化
+* 将数据加载到 SQL Server 数据库，然后在 Azure 机器学习中模型化
 
-在本教程中，我们将演示如何使用 SQL Server Management Studio 将数据并行大容量导入到 SQL Server、数据浏览、功能设计和向下采样，并使用 IPython 笔记本。 [샘플 스크립트](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 및 [IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)은 GitHub에서 공유됩니다. Azure Blob의 데이터로 작업하는 샘플 IPython Notebook도 같은 위치에서 사용할 수 있습니다.
+在本教程中，我们将演示如何使用 SQL Server Management Studio 将数据并行大容量导入到 SQL Server、数据浏览、功能设计和向下采样，并使用 IPython 笔记本。 [示例脚本](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)和 [IPython notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 在 GitHub 中共享。 使用 Azure blob 中数据的示例 IPython notebook 也可以在同一位置取得。
 
-Azure 데이터 과학 환경을 설정하려면
+要设置 Azure 数据科学环境：
 
-1. [스토리지 계정을 만드는](../../storage/common/storage-account-create.md)
-2. [Azure Machine Learning 작업 영역 만들기](../studio/create-workspace.md)
-3. [데이터 과학 Virtual Machine 프로비전](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)(SQL Server 및 IPython Notebook 서버 제공)
+1. [创建存储帐户](../../storage/common/storage-account-create.md)
+2. [创建 Azure 机器学习工作区](../studio/create-workspace.md)
+3. [预配数据科研虚拟机](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)，提供 SQL Server 和 IPython Notebook 服务器。
    
    > [!NOTE]
-   > 샘플 스크립트와 IPython Notebook은 설정 프로세스 중에 데이터 과학 가상 머신으로 다운로드됩니다. VM 사후 설치 스크립트가 완료되면 샘플이 VM의 문서 라이브러리에 배치됩니다.  
+   > 在安装过程中，示例脚本和 IPython notebook 将下载到数据科学虚拟机。 VM 后续安装脚本完成后，这些示例会在虚拟机文档库中：  
    > 
-   > * 샘플 스크립트: `C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * 샘플 IPython Notebook: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
-   >   where `<user_name>` 은(는) VM의 Windows 로그인 이름입니다. 샘플 폴더는 **Sample Scripts** 및 **Sample IPython Notebooks**이라고 합니다.
+   > * 示例脚本： `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * 示例 IPython Notebook：`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   >   其中 `<user_name>` 是 VM 的 Windows 登录名。 我们将示例文件夹称为**示例脚本**和**示例 IPython Notebook**。
    > 
    > 
 
-데이터 세트 크기, 데이터 원본 위치 및 선택한 Azure 대상 환경에 따라 이 시나리오는 [시나리오 \#5: 로컬 파일에서 큰 데이터 세트, Azure VM에서 대상 SQL Server](plan-sample-scenarios.md#largelocaltodb)와 비슷합니다.
+根据数据集大小、数据源位置和所选的 Azure 目标环境，此应用场景类似于[应用场景 \#5：本地文件中的大型数据集、Azure VM 中的目标 SQL Server](plan-sample-scenarios.md#largelocaltodb)。
 
-## <a name="getdata"></a>공용 원본에서 데이터 가져오기
-해당 공용 위치에서 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) 데이터 세트를 가져오려면 [Azure Blob Storage에서 데이터 이동](move-azure-blob.md)에 설명된 방법 중 하나를 사용하여 데이터를 새 가상 머신에 복사하면 됩니다.
+## <a name="getdata"></a>从公共源获取数据
+要从 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集的公共位置获取该数据集，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法，将数据复制到新的虚拟机。
 
-AzCopy를 사용하여 데이터를 복사하려면
+使用 AzCopy 复制数据：
 
-1. VM(가상 컴퓨터)에 로그인합니다.
+1. 登录到虚拟机 (VM)
 2. 在 VM 的数据磁盘中创建新目录（注意：不要使用 VM 随附的临时磁盘作为数据磁盘）。
-3. 명령 프롬프트 창에서 <path_to_data_folder>를 (2)에서 만든 데이터 폴더로 바꿔 다음 Azcopy 명령줄을 실행합니다.
+3. 在“命令提示符”窗口中，运行以下 Azcopy 命令行，将 < path_to_data_folder > 替换成在步骤 (2) 中创建的数据文件夹：
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
    
-    AzCopy가 완료되면 데이터 폴더에 총 24개의 압축된 CSV 파일(trip\_data 파일 12개와 trip\_fare 12개)이 있어야 합니다.
-4. 다운로드한 파일의 압축을 풉니다. 압축을 푼 파일이 있는 폴더를 적어 둡니다. 이 폴더를 <path\_to\_data\_files\>라고 합니다.
+    AzCopy 完成时，数据文件夹中总共应有 24 个压缩 CSV 文件（其中 12 个文件是 trip\_data，12 个文件是 trip\_fare）。
+4. 解压缩下载的文件。 注意未压缩的文件所在的文件夹。 此文件夹将称为 <path\_to\_data\_files\>。
 
-## <a name="dbload"></a>SQL Server 데이터베이스로 대량 데이터 가져오기
-通过使用已*分区的表和视图*，可以提高将大量数据加载到 SQL 数据库和后续查询的性能。 이 섹션에서는 [SQL 파티션 테이블을 사용하여 병렬로 대량 데이터 가져오기](parallel-load-sql-partitioned-tables.md) 에 설명된 지침에 따라 새 데이터베이스를 만들고 데이터를 분할된 테이블로 병렬로 로드합니다.
+## <a name="dbload"></a>将数据批量导入 SQL Server 数据库
+通过使用已*分区的表和视图*，可以提高将大量数据加载到 SQL 数据库和后续查询的性能。 在本部分中，我们将按照[使用 SQL 分区表平行批量量导入数据](parallel-load-sql-partitioned-tables.md)中的说明进行操作，创建新数据库并将数据并行加载到分区表。
 
-1. VM에 로그인한 상태로 **SQL Server Management Studio**를 시작합니다.
-2. Windows 인증을 사용하여 연결
+1. 登录到 VM 后，启动 **SQL Server Management Studio**。
+2. 使用 Windows 身份验证进行连接。
    
-    ![SSMS 연결][12]
-3. SQL Server 인증 모드를 변경하여 새 SQL 로그인 사용자를 만드는 작업을 아직 수행하지 않은 경우 **Sample Scripts** 폴더에서 **change\_auth.sql**이라는 스크립트 파일을 엽니다. 기본 사용자 이름 및 암호를 변경합니다. 单击工具栏中的 "**执行**" 运行该脚本。
+    ![SSMS 连接][12]
+3. 如果尚未更改的 SQL Server 身份验证模式并尚未创建新的 SQL 登录用户，请打开 **Sample Scripts\_ 文件夹中名为** change**auth.sql** 的脚本文件。 更改默认用户名和密码。 单击工具栏中的 "**执行**" 运行该脚本。
    
-    ![스크립트 실행][13]
-4. SQL Server 기본 데이터베이스 및 로그 폴더를 확인하거나 변경하여 새로 만든 데이터베이스가 데이터 디스크에 저장되도록 합니다. 为数据仓库负载优化的 SQL Server VM 映像是预先配置的数据和日志磁盘。 VM에 데이터 디스크가 포함되지 않은 상태에서 VM 설정 프로세스 중에 새 가상 하드 디스크를 추가한 경우 다음과 같이 기본 폴더를 변경합니다.
+    ![执行脚本][13]
+4. 验证和/或更改 SQL Server 默认数据库和日志文件夹，以确保新创建的数据库将存储在数据磁盘中。 为数据仓库负载优化的 SQL Server VM 映像是预先配置的数据和日志磁盘。 如果 VM 不包含数据磁盘，并且在 VM 安装过程中添加了新的虚拟硬盘，则需按照如下步骤更改默认文件夹：
    
-   * 왼쪽 패널에서 SQL Server 이름을 마우스 오른쪽 단추로 클릭하고 **속성**을 클릭합니다.
+   * 右键单击左侧面板中的 SQL Server 名称，并单击“**属性**”。
      
-       ![SQL Server 속성][14]
-   * 왼쪽의 **페이지 선택** 목록에서 **데이터베이스 설정**을 선택합니다.
-   * **데이터베이스 기본 위치**가 선택한 **데이터 디스크** 위치인지 확인하고 아닌 경우 변경합니다. 如果创建的是具有默认设置的，则此位置是新数据库的驻留位置。
+       ![SQL Server 属性][14]
+   * 从左侧的“**选择页**”列表中选择“**数据库设置**”。
+   * 验证**数据库默认位置**，并/或将其更改为所选的**数据磁盘**位置。 如果创建的是具有默认设置的，则此位置是新数据库的驻留位置。
      
-       ![SQL Database 기본값][15]  
-5. 새 데이터베이스 및 파일 그룹 집합을 만들어 분할된 테이블을 유지하려면 **create\_db\_default.sql** 샘플 스크립트를 엽니다. 이 스크립트는 **TaxiNYC** 라는 새 데이터베이스를 만들고 기본 데이터 위치에 12개의 파일 그룹을 만듭니다. 각 파일 그룹에는 한 달 분량의 trip\_data 및 trip\_fare 데이터가 유지됩니다. 필요한 경우 데이터베이스 이름을 수정합니다. 单击 "**执行**" 以运行脚本。
-6. 이제 trip\_data와 trip\_fare에 대해 각각 하나씩 두 개의 파티션 테이블을 만듭니다. 다음 작업을 수행하는 **create\_partitioned\_table.sql** 샘플 스크립트를 엽니다.
+       ![SQL 数据库默认设置][15]  
+5. 若要创建新数据库和一组文件组来保存已分区的表，请打开示例脚本 **create\_db\_default.sql**。 该脚本会在默认数据位置创建一个名为 **TaxiNYC** 的新数据库和 12 个文件组。 每个文件组将保存一个月内的 trip\_data 和 trip\_fare 数据。 根据需要修改数据库名称。 单击 "**执行**" 以运行脚本。
+6. 接下来，创建两个分区表，一个用于 trip\_data，另一个用于 trip\_fare。 打开示例脚本 **create\_partitioned\_table.sql**，其功能如下：
    
-   * 데이터를 월별로 분할하는 파티션 함수를 만듭니다.
-   * 각 월의 데이터를 다른 파일 그룹에 매핑하는 파티션 구성표를 만듭니다.
-   * 파티션 구성표에 매핑된 분할된 테이블 두 개를 만듭니다. **nyctaxi\_trip**은 trip\_data 보유하고 **nyctaxi\_fare**는 trip\_fare 데이터를 보관합니다.
+   * 创建分区函数，以按月拆分数据。
+   * 创建分区方案，以将每个月的数据映射到不同的文件组。
+   * 创建两个映射到分区方案的分区表：**nyctaxi\_trip** 将保存 trip\_data，而 **nyctaxi\_fare** 将保存 trip\_fare 数据。
      
      单击 "**执行**" 以运行脚本并创建已分区表。
-7. **Sample Scripts** 폴더에는 대량의 데이터를 SQL Server 테이블로 병렬로 가져오는 방법을 보여 주는 두 개의 샘플 PowerShell 스크립트가 제공되어 있습니다.
+7. 在“**示例脚本**”文件夹中，提供了两个示例 PowerShell 脚本，可用于演示将数据并行批量导入到 SQL Server 表的方式。
    
-   * **bcp\_parallel\_generic.ps1**은 대량의 데이터를 테이블로 병렬로 가져오는 일반 스크립트입니다. 이 스크립트를 수정하여 스크립트의 명령줄에 표시된 대로 입력 및 대상 변수를 설정합니다.
-   * **bcp\_parallel\_nyctaxi.ps1**은 미리 구성된 버전의 일반 스크립트로서, NYC Taxi Trips 데이터의 두 테이블을 모두 로드하는 데 사용될 수 있습니다.  
-8. **bcp\_parallel\_nyctaxi.ps1** 스크립트 이름을 마우스 오른쪽 단추로 클릭하고 **편집**을 클릭하여 PowerShell에서 엽니다. 사전 설정 변수를 검토하고 선택한 데이터베이스 이름, 입력 데이터 폴더, 대상 로그 폴더 및 샘플 형식파일 **nyctaxi_trip.xml** 및 **nyctaxi\_fare.xml**(**Sample Scripts** 폴더에 제공)의 경로에 따라 수정합니다.
+   * **bcp\_parallel\_generic.ps1** 是将数据并行批量导入到表的通用脚本。 修改此脚本以设置此脚本的注释行中指示的输入和目标变量。
+   * **bcp\_parallel\_nyctaxi.ps1** 是通用脚本的预配置版本，可用于为 NYC 出租车行程数据同时加载这两个表。  
+8. 右键单击 **bcp\_parallel\_nyctaxi.ps1** 脚本名称，然后单击“**编辑**”可在 PowerShell 中将其打开。 查看预设的变量，并根据所选的数据库名称、输入数据文件夹、目标日志文件夹和到示例格式文件 **nyctaxi_trip.xml** 和 **nyctaxi\_fare.xml**（在“**示例脚本**”文件夹中提供）的路径进行修改。
    
-    ![대용량 데이터 가져오기][16]
+    ![批量导入数据][16]
    
-    인증 모드를 선택할 수도 있습니다. 기본값은 Windows 인증입니다. 도구 모음에서 녹색 화살표를 클릭하여 실행합니다. 스크립트는 분할된 테이블에 대해 12개씩 24개의 대량 가져오기 작업을 시작합니다. 위에 설정된 대로 SQL Server 기본 데이터 폴더를 열어 데이터 가져오기 진행률을 모니터링할 수 있습니다.
-9. PowerShell 스크립트는 시작 및 종료 시간을 보고합니다. 모든 대량 가져오기가 완료되면 종료 시간이 보고됩니다. 检查目标日志文件夹以验证大容量导入是否成功，即目标日志文件夹中未报告任何错误。
-10. 이제 데이터베이스에서 탐색, 기능 엔지니어링 및 필요에 따라 다른 작업을 수행할 준비가 완료되었습니다. 由于表是根据**分拣\_日期时间**字段进行分区的，因此在**WHERE**子句中包含**拾取\_datetime**条件的查询将从分区方案中获益。
-11. **SQL Server Management Studio**에서 제공된 샘플 스크립트인 **sample\_queries.sql**을 탐색합니다. 若要运行任何示例查询，请突出显示查询行，然后单击工具栏中的 "**执行**"。
-12. NYC Taxi Trips 데이터가 별도 두 테이블에 로드됩니다. 조인 작업을 향상시키려면 테이블을 인덱싱하는 것이 좋습니다. 샘플 스크립트 **create\_partitioned\_index.sql**은 복합 조인 키 **medallion, hack\_license 및 pickup\_datetime**에 대한 분할된 인덱스를 만듭니다.
+    也可以选择身份验证模式，默认值为 Windows 身份验证。 单击工具栏中的绿色箭头运行。 该脚本将启动 24 个并行批量导入操作，每个分区表对应 12 个操作。 也可以通过打开上述步骤中设置的 SQL Server 默认数据文件夹，监测数据导入进度。
+9. PowerShell 脚本将报告起始和结束时间。 所有批量导入完成时，将报告结束时间。 检查目标日志文件夹以验证大容量导入是否成功，即目标日志文件夹中未报告任何错误。
+10. 数据库已就绪，可以进行浏览、功能设计及需要的其他操作。 由于表是根据**分拣\_日期时间**字段进行分区的，因此在**WHERE**子句中包含**拾取\_datetime**条件的查询将从分区方案中获益。
+11. 在 **SQL Server Management Studio** 中，探索提供的示例脚本 **sample\_queries.sql**。 若要运行任何示例查询，请突出显示查询行，然后单击工具栏中的 "**执行**"。
+12. NYC 出租车行程数据加载到两个独立的表中。 若要改进联接操作，强烈建议为表建立索引。 示例脚本 **create\_partitioned\_index.sql** 会在复合联接键 **medallion、hack\_license 和 pickup\_datetime** 上创建分区索引。
 
-## <a name="dbexplore"></a>SQL Server에서 데이터 탐색 및 기능 엔지니어링
-이 섹션에서는 이전에 만든 SQL Server 데이터베이스를 사용하여 **SQL Server Management Studio**에서 직접 SQL 쿼리를 실행해 데이터 탐색 및 기능 생성을 수행합니다. **sample\_queries.sql**이라는 샘플 스크립트는 **Sample Scripts** 폴더에서 제공됩니다. 기본값과 다른 경우 스크립트를 수정하여 데이터베이스 이름을 변경합니다. **TaxiNYC**
+## <a name="dbexplore"></a>SQL Server 中的数据浏览和功能设计
+在此部分中，我们通过使用之前创建的 SQL Server 数据库，直接在 **SQL Server Management Studio** 中运行 SQL 查询来执行数据浏览和功能设计。 “**示例脚本\_”文件夹中提供了名为** sample**queries.sql** 的示例脚本。 如果数据库名称不同于默认值：**TaxiNYC**，请修改此脚本以更改数据库名称。
 
-이 연습에서는 다음을 수행합니다.
+在本练习中，我们将：
 
-* Windows 인증 또는 SQL 인증과 SQL 로그인 이름 및 암호를 사용하여 **SQL Server Management Studio** 에 연결합니다.
-* 다양한 기간에 걸쳐 몇몇 필드의 데이터 분포를 탐색합니다.
-* 경도 및 위도 필드의 데이터 품질을 조사합니다.
-* **tip\_amount**에 따라 이진 및 다중 클래스 분류 레이블을 생성합니다.
-* 기능을 생성하고 여정 거리를 계산/비교합니다.
-* 두 테이블을 조인하고 모델을 빌드하는 데 사용할 무작위 샘플을 추출합니다.
+* 使用 Windows 身份验证，或 SQL 身份验证及 SQL 登录名和密码，连接到 **SQL Server Management Studio**。
+* 在不同的时间范围中探索几个字段的数据分布。
+* 调查经度和纬度字段的数据质量。
+* 根据 **tip\_amount** 生成二元和多元分类标签。
+* 生成特征，并计算/比较行程距离。
+* 联接两个表，并提取用于构建模型的随机示例。
 
-Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 수 있습니다.  
+准备好进行 Azure 机器学习后，也可以：  
 
 1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制到 Azure 机器学习中的 "[导入数据][import-data]" 模块，或者
 2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，并使用 Azure 机器学习中的 "[导入数据][import-data]" 模块中的新表。
 
-在本部分中，我们将保存最终查询以提取和采样数据。 두 번째 방법은 [IPython Notebook에서 데이터 탐색 및 기능 엔지니어](#ipnb) 섹션에 설명되어 있습니다.
+在本部分中，我们将保存最终查询以提取和采样数据。 第二种方法在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分进行了演示。
 
-이전에 병렬 대량 가져오기를 사용하여 채운 테이블에서 행 및 열 수를 신속하게 확인하려면 다음을 실행합니다.
+若要在之前使用并行批量导入填充的表中快速验证表的多个行和列，请采用如下方式：
 
     -- Report number of rows in table nyctaxi_trip without table scan
     SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -163,8 +163,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     -- Report number of columns in table nyctaxi_trip
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
-#### <a name="exploration-trip-distribution-by-medallion"></a>탐색: medallion별 여정 분포
-이 예제에서는 지정된 기간 내의 여정이 100개가 넘는 medallion(택시 번호)을 식별합니다. 쿼리는 **pickup\_datetime** 파티션 구성표를 조건으로 하므로 분할된 테이블 액세스를 활용합니다. 전체 데이터 세트를 쿼리할 때도 분할된 테이블 및/또는 인덱스 검색을 사용합니다.
+#### <a name="exploration-trip-distribution-by-medallion"></a>浏览：依据徽章的行程分布
+此示例标识在给定的时间段内具有 100 多个行程的徽章（出租车数）。 查询将受益于分区表访问，因为它受 **pickup\_datetime** 分区方案的限制。 查询完整数据集还将使用分区表和/或索引扫描。
 
     SELECT medallion, COUNT(*)
     FROM nyctaxi_fare
@@ -172,15 +172,15 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>탐색: medallion 및 hack_license별 여정 분포
+#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>浏览：依据徽章和 hack_license 的行程分布
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>데이터 품질 평가: 경도 및/또는 위도가 잘못된 레코드 확인
-이 예제에서는 경도 및/또는 위도 필드에 유효하지 않은 값(라디안이 -90도~90도에 속해야 함)이 포함되거나 (0, 0) 좌표가 있는지 조사합니다.
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确经度和/或纬度的记录
+此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
 
     SELECT COUNT(*) FROM nyctaxi_trip
     WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
@@ -191,8 +191,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>탐색: 왕복 여정과 비왕복 여정 분포
-이 예제에서는 지정된 기간 동안(또는 전체 연도를 포괄하는 경우 전체 데이터 세트에서) 왕복 여정 수와 비왕복 여정 수를 확인합니다. 이 분포는 나중에 이진 분류 모델링에 사용할 이진 레이블 분포를 반영합니다.
+#### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览：附属和不是相对行程分布
+此示例将查找给定时间段（或如果时间段为全年，则是在完整的数据集）内，已付小费与未付小费的行程的数量。 此分布反映二元标签分布，以便以后用于二元分类建模。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
@@ -200,8 +200,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-#### <a name="exploration-tip-classrange-distribution"></a>탐색: 팁 클래스/범위 분포
-이 예제에서는 지정된 기간 동안(또는 전체 연도를 포괄하는 경우 전체 데이터 세트에서) 팁 범위 분포를 계산합니다. 此标签类的分布稍后将用于多类分类建模。
+#### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 此标签类的分布稍后将用于多类分类建模。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -215,8 +215,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>탐색: 여정 거리 컴퓨팅 및 비교
-이 예제에서는 승차 및 하차 경도/위도를 SQL 지리 지점으로 변환하고, SQL 지리 지점 차이를 사용하여 여정 거리를 계산한 다음, 비교를 위해 무작위 결과 샘플을 반환합니다. 앞서 설명한 데이터 품질 평가 쿼리를 사용하여 유효한 좌표로만 결과가 제한됩니다.
+#### <a name="exploration-compute-and-compare-trip-distance"></a>浏览：计算并比较行程距离
+此示例将上车和下车经度和纬度转换为 SQL 地理位置点，使用 SQL 地理位置点差异计算行程距离，并返回一个随机抽样的结果进行比较。 该示例仅在使用前面介绍的数据质量评估查询，将结果限制为有效坐标。
 
     SELECT
     pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
@@ -229,11 +229,11 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     AND   CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-#### <a name="feature-engineering-in-sql-queries"></a>SQL 쿼리의 기능 엔지니어링
-레이블 생성 및 지리 변환 탐색 쿼리는 계산 부분을 제거하여 레이블/기능을 생성하는 데에도 사용될 수 있습니다. 추가적인 기능 엔지니어링 SQL 예제는 [IPython Notebook에서 데이터 탐색 및 기능 엔지니어링](#ipnb) 섹션에서 제공됩니다. 使用直接在 SQL Server 数据库实例上运行的 SQL 查询，在完整数据集或它的大子集上运行功能生成查询更有效。 查询可在**SQL Server Management Studio**、IPython 笔记本或可以本地或远程访问数据库的任何开发工具或环境中执行。
+#### <a name="feature-engineering-in-sql-queries"></a>SQL 查询中的功能设计
+标签生成和地理转换浏览查询还可通过删除计数部分，用于生成标签/功能。 其他功能设计 SQL 示例在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分提供。 使用直接在 SQL Server 数据库实例上运行的 SQL 查询，在完整数据集或它的大子集上运行功能生成查询更有效。 查询可在**SQL Server Management Studio**、IPython 笔记本或可以本地或远程访问数据库的任何开发工具或环境中执行。
 
-#### <a name="preparing-data-for-model-building"></a>모델 빌드를 위한 데이터 준비
-다음 쿼리는 **nyctaxi\_trip** 및 **nyctaxi\_fare** 테이블을 조인하고, 이진 분류 레이블 **tipped**와 다중 클래스 분류 레이블 **tip\_class**를 생성하며, 조인된 전체 데이터 세트에서 1% 무작위 샘플을 추출합니다. 可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio](https://studio.azureml.net) [导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 잘못된 (0, 0) 좌표가 있는 레코드는 쿼리에서 제외됩니다.
+#### <a name="preparing-data-for-model-building"></a>准备建模的数据
+下面的查询可联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**、多类分类标签 **tip\_class**，以及从完整联接的数据集中提取 1% 的随机样本。 可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio](https://studio.azureml.net) [导入数据][import-data]模块中，以便从 Azure 中的 SQL Server 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -251,26 +251,26 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 
-## <a name="ipnb"></a>IPython Notebook에서 데이터 탐색 및 기능 엔지니어링
-이 섹션에서는 Python과 SQL 쿼리를 모두 사용하여 이전에 만든 SQL Server 데이터베이스에 대해 데이터 탐색 및 기능 생성을 수행합니다. **machine-Learning-data-science-process-sql-story.ipynb**라는 샘플 IPython Notebook은 **Sample IPython Notebooks** 폴더에서 제공됩니다. [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)에서 이 Notebook을 사용할 수도 있습니다.
+## <a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
+在此部分中，我们会在之前创建的 SQL Server 数据库中使用 Python 和 SQL 查询，执行数据浏览和功能生成。 “**Sample IPython Notebooks**”文件夹中提供了名为 **machine-Learning-data-science-process-sql-story.ipynb** 的示例 IPython notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) 也提供此 Notebook。
 
 使用大数据时，请遵循以下建议的顺序：
 
-* 소량의 데이터 샘플을 메모리 내 데이터 프레임으로 읽습니다.
-* 샘플링된 데이터를 사용하여 일부 시각화 및 탐색을 수행합니다.
-* 샘플링된 데이터를 사용하여 기능 엔지니어링을 실험합니다.
-* 더 큰 데이터 탐색, 데이터 조작 및 기능 엔지니어링의 경우 Python을 사용하여 Azure VM의 SQL Server 데이터베이스에 대해 SQL 쿼리를 직접 실행합니다.
-* Azure Machine Learning 모델 빌드에 사용할 샘플 크기를 결정합니다.
+* 将小型数据示例读入到内存中的数据帧。
+* 使用抽样数据执行一些可视化效果和浏览。
+* 使用抽样数据进行功能设计实验。
+* 对于大型数据浏览、数据操作和功能设计，请使用 Python 直接针对 Azure VM 中的 SQL Server 数据库发出 SQL 查询。
+* 决定用于 Azure 机器学习建模的样本大小。
 
-Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 수 있습니다.  
+准备好继续进行 Azure 机器学习后，也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制并粘贴到 Azure 机器学习的[导入数据][import-data]模块中。 이 방법은 [Azure Machine Learning에서 모델 빌드](#mlmodel) 섹션에 설명되어 있습니다.    
+1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制并粘贴到 Azure 机器学习的[导入数据][import-data]模块中。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
 2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，然后使用 "[导入数据][import-data]" 模块中的新表。
 
-다음은 데이터 탐색, 데이터 시각화 및 기능 엔지니어링에 대한 몇 가지 예제입니다. 더 많은 예제는 **Sample IPython Notebooks** 폴더에 있는 샘플 SQL IPython Notebook을 참조하세요.
+以下是几个数据浏览、数据可视化和功能设计示例。 有关更多示例，请参阅 **Sample IPython Notebooks** 文件夹中的 SQL IPython Notebook 示例。
 
-#### <a name="initialize-database-credentials"></a>데이터베이스 자격 증명 초기화
-다음 변수에서 데이터베이스 연결 설정을 초기화합니다.
+#### <a name="initialize-database-credentials"></a>初始化数据库凭据
+使用以下变量初始化数据库连接设置：
 
     SERVER_NAME=<server name>
     DATABASE_NAME=<database name>
@@ -278,11 +278,11 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     PASSWORD=<password>
     DB_DRIVER = <database server>
 
-#### <a name="create-database-connection"></a>데이터베이스 연결 만들기
+#### <a name="create-database-connection"></a>创建数据库连接
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-#### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>nyctaxi_trip 테이블의 행 및 열 수 보고
+#### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>报告表 nyctaxi_trip 中的行数和列数
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -297,10 +297,10 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* 총 행 수 = 173179759  
-* 총 열 수 = 14
+* 总行数 = 173179759  
+* 总列数 = 14
 
-#### <a name="read-in-a-small-data-sample-from-the-sql-server-database"></a>SQL Server 데이터베이스에서 소량의 데이터 샘플 읽기
+#### <a name="read-in-a-small-data-sample-from-the-sql-server-database"></a>从 SQL Server 数据库读入小型数据样本
     t0 = time.time()
 
     query = '''
@@ -320,68 +320,68 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-샘플 테이블을 읽은 시간 = 6.492000초  
-검색된 행 및 열 수 = (84952, 21)
+读取示例表的时间为 6.492000 秒  
+检索到的行数和列数 = (84952, 21)
 
-#### <a name="descriptive-statistics"></a>기술 통계
-이제 샘플링된 데이터를 탐색할 준비가 완료되었습니다. **trip\_distance**(또는 다른 모든) 필드에 대한 기술 통계부터 살펴봅니다.
+#### <a name="descriptive-statistics"></a>描述性统计信息
+浏览抽样数据现已就绪。 接下来，首先查看 **trip\_distance**（或任何其他）字段的描述性统计信息：
 
     df1['trip_distance'].describe()
 
-#### <a name="visualization-box-plot-example"></a>시각화: 상자 그림 예제
-다음으로, 여정 거리에 대한 상자 그림을 확인하여 사분위수를 시각화합니다.
+#### <a name="visualization-box-plot-example"></a>可视化效果：盒须图示例
+接下来我们查看行程距离的盒须图，以可视化分位数
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![그릴 #1][1]
+![Plot #1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>시각화: 분포 그림 예제
+#### <a name="visualization-distribution-plot-example"></a>可视化效果：分布的盒须图示例
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![그릴 #2][2]
+![Plot #2][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>시각화: 가로 막대형 및 꺾은선형 차트
-이 예에서는 여정 거리를 5개의 bin으로 범주화하고 범주화 결과를 시각화합니다.
+#### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形和折线图
+在此示例中，我们可以将行程距离量化为五个分类收纳组，并将分类收纳结果可视化。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
     df1['trip_distance']
     trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
     trip_dist_bin_id
 
-위의 bin 분포를 아래와 같이 가로 막대형 또는 꺾은선형 차트로 그릴 수 있습니다.
+我们可以在条形图和折线图中绘制上述分类收纳组分布，如下所示
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![그릴 #3][3]
+![Plot #3][3]
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![그릴 #4][4]
+![Plot #4][4]
 
-#### <a name="visualization-scatterplot-example"></a>시각화: 산점도 예제
-**trip\_time\_in\_secs** 및 **trip\_distance** 사이의 산점도를 표시하여 상관관계가 있는지 확인합니다.
+#### <a name="visualization-scatterplot-example"></a>可视化效果：散点图示例
+我们会显示在 **trip\_time\_in\_secs** 和 **trip\_distance** 之间的散点图，以查看是否存在任何关联
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![그릴 #6][6]
+![Plot #6][6]
 
-마찬가지로 **rate\_code** 및 **trip\_distance** 간의 관계를 확인할 수 있습니다.
+同样地，我们可以检查 **rate\_code** 和 **trip\_distance** 之间的关系。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![그릴 #8][8]
+![Plot #8][8]
 
-### <a name="sub-sampling-the-data-in-sql"></a>SQL에서 데이터 하위 샘플링
+### <a name="sub-sampling-the-data-in-sql"></a>二次采样 SQL 中的数据
 在[Azure 机器学习 Studio](https://studio.azureml.net)中准备用于模型生成的数据时，可以决定在 "**导入数据" 模块中直接使用 SQL 查询**，也可以在 "[导入数据][import-data]" 模块中使用简单的**SELECT * FROM <\_新的\_表\_名称 >** 中使用。
 
-在本部分中，我们将创建一个新表，用于保存采样和工程处理的数据。 모델 빌드를 위한 직접 SQL 쿼리 예제는 SQL Server에서 [데이터 탐색 및 기능 엔지니어링 섹션](#dbexplore) 에서 제공됩니다.
+在本部分中，我们将创建一个新表，用于保存采样和工程处理的数据。 [SQL Server 中的数据浏览和特征工程](#dbexplore)部分提供了可用于模型构建的直接 SQL 查询示例。
 
-#### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>샘플 테이블을 만들고 조인된 테이블의 1%로 채우기(테이블이 있는 경우 먼저 해당 테이블 삭제)
-이 섹션에서는 **nyctaxi\_trip** 및 **nyctaxi\_fare**를 조인하고, 1% 무작위 샘플을 추출하며, 이름이 **nyctaxi\_one\_percent**인 새 테이블에 샘플링된 데이터를 유지합니다.
+#### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>创建取样表，并使用 1% 已联接表的填充。 如果存在此表，请首先将其删除。
+在本部分中，我们会联接表 **nyctaxi\_trip** 和 **nyctaxi\_fare**，提取 1% 的随机样本，并将抽样数据保存到名为 **nyctaxi\_one\_percent** 的新表中：
 
     cursor = conn.cursor()
 
@@ -404,10 +404,10 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     cursor.execute(nyctaxi_one_percent_insert)
     cursor.commit()
 
-### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython Notebook에서 SQL 쿼리를 사용하여 데이터 탐색
+### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询进行数据浏览
 在本部分中，我们将使用之前创建的新表中保留的1% 抽样数据来浏览数据分布。 可以使用原始表执行类似的探索，还可以选择使用**TABLESAMPLE**限制探索示例，或者使用**分拣\_日期时间**分区将结果限制在给定的时间段，如 SQL Server 部分中的[数据浏览和功能设计](#dbexplore)中所示。
 
-#### <a name="exploration-daily-distribution-of-trips"></a>탐색: 일일 여정 분포
+#### <a name="exploration-daily-distribution-of-trips"></a>浏览：每日行程分布
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM nyctaxi_one_percent
@@ -416,7 +416,7 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>탐색: medallion당 여정 분포
+#### <a name="exploration-trip-distribution-per-medallion"></a>浏览：按徽章的行程分布
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -425,14 +425,14 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
 
     pd.read_sql(query,conn)
 
-### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>IPython Notebook에서 SQL 쿼리를 사용하여 기능 생성
-이 섹션에서는 이전 섹션에서 만든 1% 샘플 테이블에서 작동하는 SQL 쿼리를 직접 사용하여 새 레이블 및 기능을 생성합니다.
+### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询进行功能设计
+在本部分中，我们将使用 SQL 查询直接生成新标签和特征，以在上一部分创建的 1% 的取样表上操作。
 
-#### <a name="label-generation-generate-class-labels"></a>레이블 생성: 클래스 레이블을 생성합니다.
-다음 예제에서는 모델링에 사용할 두 개의 레이블 집합을 생성합니다.
+#### <a name="label-generation-generate-class-labels"></a>标签生成：生成类标签
+在下面示例中，我们会生成两组用于建模的标签：
 
-1. 이진 클래스 레이블 **tipped** (팁이 제공되는지 예측)
-2. 다중 클래스 레이블 **tip\_class**(팁 bin 또는 범위 예측)
+1. 二进制类标签 **tipped**（预测是否会支付小费）
+2. 多类标签 **tip\_class**（预测小费的收纳组或范围）
    
         nyctaxi_one_percent_add_col = '''
             ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -456,8 +456,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
         cursor.execute(nyctaxi_one_percent_update_col)
         cursor.commit()
 
-#### <a name="feature-engineering-count-features-for-categorical-columns"></a>기능 엔지니어링: 범주 열에 대한 개수 기능
-이 예제에서는 각 범주를 데이터에서 발생한 횟수로 바꿔 범주 필드를 숫자 필드로 변환합니다.
+#### <a name="feature-engineering-count-features-for-categorical-columns"></a>功能设计：适用于分类列的计数功能
+此示例会将分类字段替换为数字字段，方法是使用它在数据中发生的计数来替换每个类别。
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
@@ -486,7 +486,7 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>기능 엔지니어링: 숫자 열에 대한 Bin 기능
+#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>功能设计：适用于数值列的收纳组功能
 此示例将连续数值字段转换为预设类别范围，即将数值字段转换为分类字段。
 
     nyctaxi_one_percent_insert_col = '''
@@ -514,8 +514,8 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>기능 엔지니어링: 10진수 위도/경도에서 위치 기능 추출
-此示例将纬度和/或经度字段的十进制表示形式分解为不同粒度（如国家/地区、城市、城镇、块等）的多个区域字段。新的地理字段未映射到实际位置。 지오코드 위치 매핑에 대한 자세한 내용은 [Bing Maps REST 서비스](https://msdn.microsoft.com/library/ff701710.aspx)를 참조하세요.
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>功能设计：从十进制纬度/经度提取位置功能
+此示例将纬度和/或经度字段的十进制表示形式分解为不同粒度（如国家/地区、城市、城镇、块等）的多个区域字段。新的地理字段未映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -540,91 +540,91 @@ Azure Machine Learning을 진행할 준비가 되었으면 다음을 수행할 �
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="verify-the-final-form-of-the-featurized-table"></a>기능화한 테이블의 최종 양식 확인
+#### <a name="verify-the-final-form-of-the-featurized-table"></a>验证功能化表的最终形式
     query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
     pd.read_sql(query,conn)
 
-이제 [Azure Machine Learning](https://studio.azureml.net)에서 모델 빌드 및 모델 배포를 진행할 준비가 완료되었습니다. 이전에 식별된 다음과 같은 예측 문제에 데이터를 사용할 수 있습니다.
+我们现已准备好在 [Azure 机器学习](https://studio.azureml.net) 中进行建模和模型部署。 数据已可用于之前识别的任意预测问题，即：
 
-1. 이진 분류: 여정에 대해 팁이 지불되었는지 여부를 예측합니다.
-2. 다중 클래스 분류: 이전에 정의한 클래스에 따라 지불된 팁의 범위를 예측합니다.
-3. 회귀 작업: 여정에 대해 지불된 팁의 금액을 예측합니다.  
+1. 二元分类：预测某个行程是否会支付小费。
+2. 多类分类：根据以前定义的类，预测小费支付范围。
+3. 回归任务：预测为行程支付的小费金额。  
 
-## <a name="mlmodel"></a>Azure 기계 학습에서 모델 빌드
-모델링 연습을 시작하려면 Azure Machine Learning 작업 영역에 로그인합니다. 기계 학습 작업 영역을 아직 만들지 않은 경우 [Azure Machine Learning 작업 영역 만들기](../studio/create-workspace.md)를 참조하세요.
+## <a name="mlmodel"></a>在 Azure 机器学习中建模
+若要开始建模练习，请登录到 Azure 机器学习工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
 
-1. Azure Machine Learning을 시작하려면 [Azure Machine Learning Studio란?](../studio/what-is-ml-studio.md)
-2. [Azure Machine Learning Studio](https://studio.azureml.net)에 로그인합니다.
-3. 스튜디오 홈 페이지에서는 다양한 정보, 비디오, 자습서, 모듈 참조 링크 및 기타 리소스를 제공합니다. Azure Machine Learning에 대한 자세한 내용은 [Azure Machine Learning 설명서 센터](https://azure.microsoft.com/documentation/services/machine-learning/)를 참조하세요.
+1. 要开始使用 Azure 机器学习，请参阅[什么是 Azure 机器学习工作室？](../studio/what-is-ml-studio.md)
+2. 登录 [Azure 机器学习工作室](https://studio.azureml.net)。
+3. 工作室主页上提供丰富的信息、视频、教程、指向模块参考链接及其他资源。 有关 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
-일반적인 학습 실험은 다음 단계로 구성됩니다.
+典型的训练实验由以下步骤组成：
 
-1. **+새** 실험 만들기
-2. Azure Machine Learning으로 데이터를 이동합니다.
+1. “**新建 +** ”实验。
+2. 将数据放入 Azure 机器学习。
 3. 根据需要预先处理、转换和处理数据。
-4. 필요에 따라 기능을 생성합니다.
-5. 데이터를 학습/유효성 검사/테스트 데이터 세트로 분할하거나, 각각에 대한 별도의 데이터 세트를 만듭니다.
-6. 해결할 학습 문제에 따라 하나 이상의 기계 학습 알고리즘을 선택하세요. 例如，二元分类、多类分类和回归。
-7. 학습 데이터 세트를 사용하여 하나 이상의 모델을 학습합니다.
-8. 학습된 모델을 사용하여 유효성 검사 데이터 세트의 점수를 매깁니다.
-9. 모델을 평가하여 학습 문제에 대한 관련 메트릭을 컴퓨팅합니다.
+4. 根据需要生成功能。
+5. 将数据拆分为训练/验证/测试数据集（或每个类具有单独的数据集）。
+6. 根据要解决的学习问题，选择一个或多个机器学习算法。 例如，二元分类、多类分类和回归。
+7. 使用定型数据集训练一个或多个模型。
+8. 使用定型模型对验证数据集评分。
+9. 评估模型来计算针对学习问题的相关指标。
 10. 优化模型并选择要部署的最佳模型。
 
-이 연습에서는 이미 SQL Server에서 데이터를 탐색 및 엔지니어링하고 Azure Machine Learning에서 수집할 샘플 크기를 결정했습니다. 若要生成一个或多个预测模型，我们决定：
+在此练习中，我们已经探讨和设计了 SQL Server 中的数据，并确定了要引入 Azure 机器学习中的样本大小。 若要生成一个或多个预测模型，我们决定：
 
 1. 使用 "**数据输入和输出**" 部分中的 "[导入数据][import-data]" 模块获取要 Azure 机器学习的数据。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
    
-    ![Azure Machine Learning 데이터 가져오기][17]
-2. **속성** 패널에서 **Azure SQL Database**를 **데이터 원본**으로 선택합니다.
-3. **데이터베이스 서버 이름** 필드에 데이터베이스 DNS 이름을 입력합니다. 형식: `tcp:<your_virtual_machine_DNS_name>,1433`
-4. **데이터베이스 이름** 을 해당 필드에 입력합니다.
-5. **서버 사용자 계정 이름**에 **SQL 사용자 이름**을 입력하고, **서버 사용자 계정 암호**에 **암호**를 입력합니다.
+    ![Azure 机器学习导入数据][17]
+2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
+3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
+4. 在相应字段中输入**数据库名称**。
+5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入**密码**。
 7. 在 "**数据库查询**" 编辑文本区域中，粘贴用于提取必需的数据库字段（包括所有计算字段，如标签）的查询，然后向下采样数据，使数据达到所需的样本大小。
 
-SQL Server 데이터베이스에서 직접 데이터를 읽는 이진 분류 실험 예제는 아래 그림에 나와 있습니다. 다중 클래스 분류 및 회귀 문제에 대한 유사한 실험을 생성할 수 있습니다.
+二元分类实验直接从 SQL Server 数据库读取数据，示例如下图所示。 可以针对多类分类和回归问题构建类似实验。
 
-![Azure Machine Learning 학습][10]
+![Azure 机器学习训练][10]
 
 > [!IMPORTANT]
-> 이전 섹션에 제공된 모델링 데이터 추출 및 샘플링 쿼리 예제에서는 **세 가지 모델링 연습에 대한 모든 레이블이 쿼리에 포함되어 있습니다**. 각 모델링 연습의 중요한(필수) 단계는 다른 두 문제에 대한 필요 없는 레이블 및 다른 모든 **목표 누설**을 **제외**하는 것입니다. 예를 들어, 이진 분류를 사용할 때는 레이블 **tipped**를 사용하고, **tip\_class**, **tip\_amount** 및 **total\_amount** 필드를 제외합니다. 이러한 필드는 지불된 팁을 의미하므로 목표 누설입니다.
+> 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是**排除**其他两个问题不需要的标签，以及任何其他的**目标泄漏**。 例如，使用二元分类时，使用标签 **tipped**并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 > 
 > 若要排除不必要的列和/或目标泄漏，可以使用 "[选择数据集中的列][select-columns]" 模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅 "[选择数据集中的列][select-columns]" 和 "[编辑元数据][edit-metadata]引用页"。
 > 
 > 
 
-## <a name="mldeploy"></a>Azure 기계 학습에서 모델 배포
-모델이 준비된 경우 실험에서 직접 웹 서비스로 쉽게 배포할 수 있습니다. Azure Machine Learning 웹 서비스 배포에 대한 자세한 내용은 [Azure Machine Learning 웹 서비스 배포](../studio/deploy-a-machine-learning-web-service.md)를 참조하세요.
+## <a name="mldeploy"></a>在 Azure 机器学习中部署模型
+模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure 机器学习 Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 
-새 웹 서비스를 배포하려면 다음을 수행해야 합니다.
+要部署新 Web 服务，需要：
 
-1. 점수 매기기 실험을 만듭니다.
-2. 웹 서비스를 배포합니다.
+1. 创建评分实验。
+2. 部署 Web 服务。
 
-**완료된** 학습 실험에서 점수 매기기 실험을 만들려면 아래쪽 작업 모음에서 **점수 매기기 실험 만들기**를 클릭합니다.
+若要从**已完成**的训练实验中创建评分实验，请单击下方操作栏中的“**创建评分实验**”。
 
-![Azure 점수 매기기][18]
+![Azure 评分][18]
 
-Azure Machine Learning에서는 학습 실험의 구성 요소를 기반으로 점수 매기기 실험을 만듭니다. 특히 다음 작업을 수행합니다.
+Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特别是，它将：
 
-1. 학습된 모델을 저장하고 모델 학습 모듈을 제거합니다.
-2. 필요한 입력 데이터 스키마를 나타내는 논리적 **입력 포트** 를 식별합니다.
-3. 필요한 웹 서비스 출력 스키마를 나타내는 논리적 **출력 포트** 를 식별합니다.
+1. 保存训练的模型，并删除模型训练模块。
+2. 标识逻辑**输入端口**，以表示预期输入数据架构。
+3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-점수 매기기 실험을 만들 때 필요에 따라 검토하고 조정합니다. 典型的调整是将输入数据集和/或查询替换为不包含标签字段的数据集，因为调用服务时，这些标签在架构中将不可用。 更好的做法是，将输入数据集和/或查询的大小减小到一些记录，足以指示输入架构。 对于输出端口，通常使用 "[选择数据集中的列][select-columns]" 模块排除所有输入字段并仅在输出中包括**评分标签**和**评分概率**。
+创建评分实验后，请检查并根据需要进行调整。 典型的调整是将输入数据集和/或查询替换为不包含标签字段的数据集，因为调用服务时，这些标签在架构中将不可用。 更好的做法是，将输入数据集和/或查询的大小减小到一些记录，足以指示输入架构。 对于输出端口，通常使用 "[选择数据集中的列][select-columns]" 模块排除所有输入字段并仅在输出中包括**评分标签**和**评分概率**。
 
-샘플 점수 매기기 실험은 아래 그림에 나와 있습니다. 배포할 준비가 되면 아래쪽 작업 모음에서 **웹 서비스 게시** 단추를 클릭합니다.
+评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
-![Azure Machine Learning 게시][11]
+![Azure 机器学习发布][11]
 
-이 연습 자습서에서는 Azure 데이터 과학 환경을 만들고, 대용량 공용 데이터 세트로 데이터 취득에서 모델 학습 및 Azure Machine Learning 웹 서비스 배포에 이르는 모든 과정을 수행했습니다.
+概括来说，在本分步介绍的教程中，已创建了 Azure 数据科学环境，从数据采集到 Azure 机器学习 Web 服务的模型训练和部署等多项工作中，都会使用大型公共数据集。
 
-### <a name="license-information"></a>라이선스 정보
-이 샘플 연습 및 이와 함께 제공되는 스크립트와 IPython Notebook은 MIT 라이선스에 따라 Microsoft에서 공유한 것입니다. 자세한 내용은 GitHub의 샘플 코드 디렉터리에 있는 LICENSE.txt 파일을 참조하세요.
+### <a name="license-information"></a>许可证信息
+此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需更多详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
-### <a name="references"></a>참조
-• [Andrés Monroy NYC Taxi Trips 다운로드 페이지](https://www.andresmh.com/nyctaxitrips/)  
-• [Chris Whong의 FOILing NYC Taxi Trip 데이터](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi 및 Limousine 수수료 연구 및 통계](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+### <a name="references"></a>参考
+•    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)  
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

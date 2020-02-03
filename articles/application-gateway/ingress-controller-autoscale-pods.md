@@ -121,5 +121,5 @@ spec:
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 - [**诊断入口控制器问题**](ingress-controller-troubleshoot.md)：排查入口控制器的任何问题。

@@ -18,9 +18,9 @@ Azure VM 映像生成器（Azure 映像生成器）可让你从基于 Windows �
 
 > [!IMPORTANT]
 > Azure 映像生成器目前为公共预览版。
-> 이 미리 보기 버전은 서비스 수준 계약 없이 제공되며 프로덕션 워크로드에는 사용하지 않는 것이 좋습니다. 특정 기능이 지원되지 않거나 기능이 제한될 수 있습니다. 자세한 내용은 [Microsoft Azure Preview에 대한 추가 사용 약관](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)을 참조하세요.
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="preview-features"></a>미리 보기 기능
+## <a name="preview-features"></a>预览功能
 
 对于预览版，支持以下功能：
 
@@ -33,13 +33,13 @@ Azure VM 映像生成器（Azure 映像生成器）可让你从基于 Windows �
 - 以 VHD 格式创建映像。
  
 
-## <a name="regions"></a>개 지역
+## <a name="regions"></a>区域
 Azure 映像生成器服务将在这些区域提供预览版。 可以在这些区域外分发映像。
-- 미국 동부
-- 미국 동부 2
-- 미국 중서부
-- 미국 서부
-- 미국 서부 2
+- 美国东部
+- 美国东部 2
+- 美国中西部
+- 美国西部
+- 美国西部 2
 
 ## <a name="os-support"></a>OS 支持
 AIB 将支持 Azure Marketplace 基础操作系统映像：
@@ -60,7 +60,7 @@ AIB 将支持 RHEL ISO，作为的源：
 
 RHEL 7.6 Iso 不受支持，但正在进行测试。
 
-## <a name="how-it-works"></a>작동 원리
+## <a name="how-it-works"></a>工作原理
 
 
 ![Azure 映像生成器的概念图](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -79,7 +79,7 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 1. 在创建映像时，图像生成器会根据模板对其进行处理，然后删除 IT_\<DestinationResourceGroup > _\<TemplateName > 为该进程创建的资源组中的其他资源。
 
 
-## <a name="permissions"></a>권한
+## <a name="permissions"></a>权限
 
 若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，需要为服务 "Azure 虚拟机映像生成器" （应用 ID： cf32a0cc-373c-47c9-9156-0db11f6a6dfc）提供 "参与者" 权限。）。 
 
@@ -104,7 +104,7 @@ New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subs
 如果找不到服务帐户，这可能意味着你要添加角色分配的订阅尚未注册到资源提供程序。
 
 
-## <a name="costs"></a>비용
+## <a name="costs"></a>成本
 通过 Azure 映像生成器创建、构建和存储映像时，会产生一些计算、网络和存储成本。 这些成本与手动创建自定义映像的成本类似。 对于资源，将按 Azure 费率向你收费。 
 
 在映像创建过程中，会下载文件并将其存储在 `IT_<DestinationResourceGroup>_<TemplateName>` 资源组中，这会产生较小的存储成本。 如果你不希望保留这些模板，请在生成映像后删除该**映像模板**。
@@ -113,7 +113,7 @@ New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subs
  
 Azure 映像生成器会将映像分发到所选区域，这可能会导致网络出口费用。
  
-## <a name="next-steps"></a>다음 단계 
+## <a name="next-steps"></a>后续步骤 
  
 若要试用 Azure 映像生成器，请参阅用于构建[Linux](../articles/virtual-machines/linux/image-builder.md)或[Windows](../articles/virtual-machines/windows/image-builder.md)映像的文章。
  

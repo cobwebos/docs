@@ -37,9 +37,9 @@ ms.locfileid: "76722355"
 > [!IMPORTANT]
 > 创建或附件过程是一次性任务。 将 AKS 群集连接到工作区后，可以将其用于部署。 如果不再需要 AKS 群集，可以分离或删除它。 分离或删除后，将无法再部署到群集。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
-- Azure Machine Learning 작업 영역 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
+- Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 - 已在工作区中注册的机器学习模型。 如果没有已注册的模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "76722355"
 
 **估计时间**：约20分钟。
 
-创建或附加 AKS 群集是工作区的一次过程。 이 클러스터를 여러 배포에 재사용할 수 있습니다. 如果删除群集或包含该群集的资源组，则下次需要部署时，必须创建新群集。 可以将多个 AKS 群集附加到工作区。
+创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组，则下次需要部署时，必须创建新群集。 可以将多个 AKS 群集附加到工作区。
 
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
@@ -171,7 +171,7 @@ aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 az aks show -n myexistingcluster -g myresourcegroup --query id
 ```
 
-이 명령은 다음 텍스트와 유사한 값을 반환합니다.
+此命令会返回类似于以下文本的值：
 
 ```text
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
@@ -185,11 +185,11 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 有关详细信息，请参阅[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) reference。
 
-## <a name="deploy-to-aks"></a>AKS에 배포
+## <a name="deploy-to-aks"></a>部署到 AKS
 
 若要将模型部署到 Azure Kubernetes 服务，请创建一个描述需要计算资源的__部署配置__。 例如，核心数和内存数。 还需要一个__推理配置__，其中描述了托管模型和 web 服务所需的环境。 有关创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-### <a name="using-the-sdk"></a>SDK 사용
+### <a name="using-the-sdk"></a>使用 SDK
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -213,7 +213,7 @@ print(service.get_logs())
 * [部署模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [Webservice. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>CLI 사용
+### <a name="using-the-cli"></a>使用 CLI
 
 若要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为注册的模型的名称和版本。 将 `myservice` 替换为要为此服务提供的名称：
 
@@ -225,7 +225,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 有关详细信息，请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)参考。
 
-### <a name="using-vs-code"></a>VS Code 사용
+### <a name="using-vs-code"></a>使用 VS Code
 
 有关使用 VS Code 的信息，请参阅[通过 VS Code 扩展部署到 AKS](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
@@ -235,7 +235,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
 使用终结点以受控方式分析和升级模型版本。 在单个终结点上部署最多6个版本，并配置到每个已部署版本的评分流量百分比。 可以启用 app insights 来查看终结点和已部署版本的操作指标。
 
-### <a name="create-an-endpoint"></a>엔드포인트 만들기
+### <a name="create-an-endpoint"></a>创建终结点
 准备好部署模型后，请创建评分终结点，并部署第一个版本。 下面的步骤演示如何使用 SDK 部署和创建终结点。 第一个部署将被定义为默认版本，这意味着所有版本中未指定的流量百分比将会转为默认版本。  
 
 ```python
@@ -339,16 +339,16 @@ print(token)
 >
 > Microsoft 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 若要使用令牌进行身份验证，web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用，则即使群集与工作区位于不同的区域，也无法获取 web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，不能使用基于令牌的身份验证。 此外，群集区域与工作区区域之间的距离越大，提取令牌所需的时间就越长。
 
-## <a name="update-the-web-service"></a>웹 서비스 업데이트
+## <a name="update-the-web-service"></a>更新 Web 服务
 
 [!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * [在虚拟网络中保护试验和推理](how-to-enable-virtual-network.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署故障排除](how-to-troubleshoot-deployment.md)
-* [SSL을 사용하여 Azure Machine Learning 웹 서비스 보호](how-to-secure-web-service.md)
-* [웹 서비스로 배포된 ML 모델 사용](how-to-consume-web-service.md)
-* [Application Insights를 사용하여 Azure Machine Learning 모델 모니터링](how-to-enable-app-insights.md)
-* [프로덕션 환경에서 모델용 데이터 수집](how-to-enable-data-collection.md)
+* [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
+* [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
+* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

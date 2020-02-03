@@ -16,13 +16,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721109"
 ---
-# <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning을 사용하여 모델 학습
+# <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
 Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优先解决方案到低代码解决方案（例如自动机器学习和可视化设计器）。 使用以下列表来确定哪种培训方法适合你：
 
 + [适用于 python 的 AZURE 机器学习 SDK](#python-sdk)： python sdk 提供多种方法来训练模型，每个模型都具有不同的功能。
 
-    | 定型方法 | Description |
+    | 定型方法 | 说明 |
     | ----- | ----- |
     | [运行配置](#run-configuration) | **训练模型的一般方法**是使用训练脚本并运行配置。 运行配置提供了配置用于定型模型的定型环境所需的信息。 您可以执行运行配置、训练脚本和计算目标（定型环境）并运行培训作业。 |
     | [自动机器学习](#automated-machine-learning) | 通过自动化机器学习，**无需大量数据科学或编程知识即可定型模型**。 对于具有数据科学和编程背景的人员，它提供了一种方法，可通过自动化算法选择和超参数优化来节省时间和资源。 使用自动机器学习时，无需担心定义运行配置。 |
@@ -43,7 +43,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [安装/更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [为 Azure 机器学习配置开发环境](how-to-configure-environment.md)
 
-### <a name="run-configuration"></a>실행 구성
+### <a name="run-configuration"></a>运行配置
 
 可以使用[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)定义具有 Azure 机器学习的一般训练作业。 然后，将使用运行配置，以及训练脚本来训练计算目标上的模型。
 
@@ -54,7 +54,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [示例：定型模型的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
 * [如何：设置和使用模型定型的计算目标](how-to-set-up-training-targets.md)
 
-### <a name="automated-machine-learning"></a>자동화된 Machine Learning
+### <a name="automated-machine-learning"></a>自动化机器学习
 
 定义迭代、超参数设置、特征化和其他设置。 在训练过程中，Azure 机器学习会并行尝试不同的算法和参数。 训练一旦达到你定义的出口标准就会停止。 使用估算时，无需担心定义运行配置。
 
@@ -89,7 +89,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [示例：具有自动机器学习的管道](https://aka.ms/pl-automl)
 * [示例：具有估算的管道](https://aka.ms/pl-estimator)
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 디자이너
+## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
 设计器使您能够在 web 浏览器中使用拖放界面训练模型。
 
@@ -108,6 +108,6 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [使用 CLI 扩展进行 Azure 机器学习](reference-azure-machine-learning-cli.md)
 * [Azure 上的 MLOps](https://github.com/microsoft/MLOps)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 了解如何[设置培训环境](how-to-set-up-training-targets.md)。

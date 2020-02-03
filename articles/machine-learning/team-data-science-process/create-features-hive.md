@@ -1,6 +1,6 @@
 ---
 title: 为 Azure HDInsight Hadoop 群集中的数据创建功能-团队数据科学过程
-description: Azure HDInsight Hadoop 클러스터에 저장된 데이터의 기능을 생성하는 Hive 쿼리의 예입니다.
+description: 在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,34 +18,34 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721772"
 ---
-# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive 쿼리를 사용하여 Hadoop 클러스터의 데이터에 대한 기능 만들기
-이 문서에는 Hive 쿼리를 사용하여 Azure HDInsight Hadoop 클러스터에 저장된 데이터에 대한 기능을 만드는 방법을 보여 줍니다. 이러한 Hive 쿼리는 제공된 스크립트인 포함된 Hive UDF(사용자 정의 함수)를 사용합니다.
+# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
+本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
 
-기능을 만드는 데 필요한 작업은 메모리 집약적일 수 있습니다. 이 경우 Hive 쿼리의 성능이 더욱 중요해지며 특정 매개 변수를 조정하여 성능을 향상시킬 수 있습니다. 이러한 매개 변수를 조정하는 내용은 마지막 섹션에 설명되어 있습니다.
+创建功能所需要的操作可以是内存密集型。 在这种情况下，Hive 查询的性能将变得更加重要，可通过优化某些参数来对其进行改善。 将在最后部分中讨论这些参数的优化。
 
-또한 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/) 시나리오에 대해 제공되는 쿼리 예제가 [GitHub 리포지토리](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)에도 제공됩니다. 이러한 쿼리는 이미 데이터 스키마가 지정되어 있으며 바로 제출하여 실행할 수 있습니다. 마지막 섹션에서는 사용자가 조정하여 Hive 쿼리 성능을 높일 수 있는 매개 변수에 대해서도 설명합니다.
+显示的查询示例特定于 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
 
-이 작업은 [TDSP(팀 데이터 과학 프로세스)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)의 단계입니다.
+此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
-## <a name="prerequisites"></a>필수 조건
-이 문서에서는 사용자가 다음 작업을 수행한 것으로 가정합니다.
+## <a name="prerequisites"></a>必备条件
+本文假设用户具备以下条件：
 
-* Azure Storage 계정을 만들었습니다. 지침이 필요한 경우 [Azure Storage 계정 만들기](../../storage/common/storage-account-create.md)
-* 사용자 지정된 Hadoop 클러스터에 HDInsight 서비스를 프로비전했습니다.  지침이 필요한 경우 [고급 분석을 위한 Azure HDInsight Hadoop 클러스터 사용자 지정](customize-hadoop-cluster.md)을 참조하세요.
-* Azure HDInsight Hadoop 클러스터의 Hive 테이블에 데이터가 업로드되었습니다. 업로드되지 않은 경우 [데이터를 만들어서 Hive 테이블에 로드](move-hive-tables.md)의 지침에 따라 먼저 Hive 테이블에 데이터를 업로드합니다.
-* 클러스터에 대한 원격 액세스가 설정되었습니다. 지침이 필요한 경우 [Hadoop 클러스터의 헤드 노드에 액세스](customize-hadoop-cluster.md)를 참조하세요.
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
+* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。
+* 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](move-hive-tables.md)，先将数据上传到 Hive 表。
+* 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)。
 
-## <a name="hive-featureengineering"></a>기능 생성
-이 섹션에서는 Hive 쿼리를 사용하여 기능을 생성할 수 있는 방법의 몇 가지 예를 설명합니다. 추가 기능을 생성한 후 기존 테이블에 열로 추가하거나 추가 기능 및 기본 키를 사용하여 새 테이블을 만들어서 원래 테이블과 조인할 수 있습니다. 제시된 예는 다음과 같습니다.
+## <a name="hive-featureengineering"></a>功能生成
+在本部分中，介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
 
-1. [빈도 기반 기능 생성](#hive-frequencyfeature)
-2. [이진 분류에서 범주 변수의 위험](#hive-riskfeature)
-3. [날짜/시간 필드에서 기능 추출](#hive-datefeatures)
-4. [텍스트 필드에서 기능 추출](#hive-textfeatures)
-5. [GPS 좌표 사이의 거리 계산](#hive-gpsdistance)
+1. [基于频率的功能生成](#hive-frequencyfeature)
+2. [二元分类中分类变量的风险](#hive-riskfeature)
+3. [从日期时间字段中提取功能](#hive-datefeatures)
+4. [从文本字段中提取功能](#hive-textfeatures)
+5. [计算 GPS 坐标之间的距离](#hive-gpsdistance)
 
-### <a name="hive-frequencyfeature"></a>빈도 기반 기능 생성
-범주 변수의 빈도 수준 또는 여러 범주 변수로 구성된 특정 조합의 빈도 수준을 계산하는 것이 매우 유용한 경우가 종종 있습니다. 사용자는 다음 스크립트를 사용하여 빈도를 계산할 수 있습니다.
+### <a name="hive-frequencyfeature"></a>基于频率的功能生成
+通常用于计算分类变量级别的频率，或多个分类变量中某些组合级别的频率。 用户可使用以下脚本计算这些频率：
 
         select
             a.<column_name1>, a.<column_name2>, a.sub_count/sum(a.sub_count) over () as frequency
@@ -58,8 +58,8 @@ ms.locfileid: "76721772"
         order by frequency desc;
 
 
-### <a name="hive-riskfeature"></a>이진 분류에서 범주 변수의 위험
-사용하는 모델에 숫자 기능만 허용되는 경우 이진 분류에서 숫자가 아닌 범주 변수를 숫자 기능으로 변환해야 합니다. 이렇게 변환하려면 숫자가 아닌 각 수준을 숫자 위험으로 바꾸면 됩니다. 이 섹션에서는 범주 변수의 위험 값(log odds)을 계산하는 몇 가지 일반적인 Hive 쿼리를 보여 줍니다.
+### <a name="hive-riskfeature"></a>二元分类中分类变量的风险
+在二元分类中，如果使用的模型只采用数字功能，则需要将非数字分类变量转换为数字功能。 通过使用数字风险替代非数字级别来完成此转换。 此部分将演示计算分类变量的风险值（对数几率）的某些泛型 Hive 查询。
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -79,40 +79,40 @@ ms.locfileid: "76721772"
             group by <column_name1>, <column_name2>
             )b
 
-이 예에서, 변수 `smooth_param1` 및 `smooth_param2`는 데이터에서 계산된 위험 값을 완화하도록 설정되었습니다. 위험 범위는 -Inf~Inf입니다. 0보다 큰 위험은 대상이 1일 확률이 0.5보다 크다는 것을 나타냅니다.
+在此示例中，将变量 `smooth_param1` 和 `smooth_param2` 设置为平滑处理数据中计算的风险值。 风险值必须介于 -Inf 和 Inf 之间。 风险值 > 0，指示目标值等于 1 的概率大于 0.5。
 
-위험 테이블이 계산되면 사용자는 위험 값을 위험 테이블에 조인하여 위험 값을 할당할 수 있습니다. Hive 조인 쿼리는 이전 섹션에서 제공되었습니다.
+计算风险表之后，用户可通过将其联接到风险表来将风险值分配到表。 前面部分中提供了 Hive 联接查询。
 
-### <a name="hive-datefeatures"></a>날짜/시간 필드에서 기능 추출
-Hive는 날짜/시간 필드를 처리할 수 있는 UDF가 함께 제공됩니다. Hive의 기본 날짜/시간 형식은 'yyyy-MM-dd 00:00:00'입니다(예: '1970-01-01 12:21:32'). 이 섹션에서는 날짜/시간 필드에서 일 및 월을 추출하는 예제 및 기본 형식 이외의 형식으로 된 날짜/시간 문자열을 기본 형식의 날짜/시간 문자열로 변환하는 예제를 보여 줍니다.
+### <a name="hive-datefeatures"></a>从日期时间字段中提取功能
+Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认日期时间格式为“yyyy-MM-dd 00:00:00”（例如，“1970-01-01 12:21:32”）。 本部分将演示从日期时间字段中提取某月、某月中某天的示例，以及将非默认格式的日期时间字符串转换为默认格式的日期时间字符串。
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
 此 Hive 查询假定 *\<日期时间字段 >* 采用默认日期时间格式。
 
-날짜/시간 필드가 기본 형식이 아닌 경우 먼저 날짜/시간 필드를 Unix 타임스탬프로 변환한 후 Unix 타임스탬프를 기본 형식의 날짜/시간 문자열로 변환해야 합니다. 날짜/시간이 기본 형식으로 변환되면 포함된 날짜/시간 UDF를 적용하여 기능을 추출할 수 있습니다.
+如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查询中，如果 *> 的\<日期时间字段*的模式类似于*03/26/2015 12:04:39*，则应 `'MM/dd/yyyy HH:mm:ss'`*日期时间字段 > "的\<模式*。 이를 테스트하려면 다음 명령을 실행합니다.
+在此查询中，如果 *> 的\<日期时间字段*的模式类似于*03/26/2015 12:04:39*，则应 `'MM/dd/yyyy HH:mm:ss'`*日期时间字段 > "的\<模式*。 若要对其进行测试，用户可以运行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-이 쿼리에서 *hivesampletable* 은 기본적으로 클러스터가 프로비전될 때 모든 Azure HDInsight Hadoop 클러스터에 미리 설치된 상태로 제공됩니다.
+预配群集时，此查询中的 *hivesampletable* 会在所有 Azure HDInsight Hadoop 群集上默认预安装。
 
-### <a name="hive-textfeatures"></a>텍스트 필드에서 기능 추출
-Hive 테이블에 텍스트 필드가 있고 이 텍스트 필드에 공백으로 구분된 단어 문자열이 포함되어 있으면 다음 쿼리는 문자열의 길이와 문자열에 포함된 단어 수를 추출합니다.
+### <a name="hive-textfeatures"></a>从文本字段中提取功能
+如果 Hive 表具有包含以空格分隔的单词的字符串的文本字段，那么以下查询将提取字符串的长度和字符串中的单词数。
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="hive-gpsdistance"></a>GPS 좌표 사이의 거리 계산
-이 섹션에 제공된 쿼리를 뉴욕시 택시 여행 데이터에 바로 적용할 수 있습니다. 이 쿼리의 목적은 Hive에 포함된 수학 함수를 적용하여 기능을 생성하는 방법을 보여 주는 것입니다.
+### <a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
+本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中嵌入的数学函数来生成功能。
 
-이 쿼리에 사용된 필드는 승차 위치와 하차 위치의 GPS 좌표이며 이름은 *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* 및 *dropoff\_latitude*입니다. 태우는 좌표와 내리는 좌표 사이의 직접 거리를 계산하는 쿼리는 다음과 같습니다.
+此查询中使用的字段为提取和减少位置的 GPS 坐标，名为*提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
 
         set R=3959;
         set pi=radians(180);
@@ -130,44 +130,44 @@ Hive 테이블에 텍스트 필드가 있고 이 텍스트 필드에 공백으�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-두 GPS 좌표 사이의 거리를 계산하는 수학 방정식은 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> 사이트에서 찾을 수 있으며, 작성자는 Peter Lapisu입니다. 在此 Javascript 中，函数 `toRad()` 仅*lat_or_lon*pi/180，将度转换为弧度。 여기서 *lat_or_lon*은 위도 또는 경도입니다. Hive에서 `atan2` 함수를 제공하지 않고 `atan` 함수를 제공하므로 위의 Hive 쿼리에서는 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>에서 제공하는 정의를 사용하여 `atan` 함수가 `atan2` 함수를 구현합니다.
+计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 仅*lat_or_lon*pi/180，将度转换为弧度。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 `atan`Wikipedia<a href="https://en.wikipedia.org/wiki/Atan2" target="_blank"> 中提供的定义由上述的 Hive 查询中的函数 </a> 来实现。
 
-![작업 영역 만들기](./media/create-features-hive/atan2new.png)
+![创建工作区](./media/create-features-hive/atan2new.png)
 
-Hive에 포함된 UDF 전체 목록은 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>의 **기본 제공 함수** 섹션에서 확인할 수 있습니다.  
+嵌入 UDF 的 Hive 的完整列表可在 **Apache Hive wiki** 上的<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">内置函数</a>部分中找到）。  
 
-## <a name="tuning"></a> 고급 항목: Hive 매개 변수를 조정하여 쿼리 속도 개선
-Hive 클러스터의 기본 매개 변수 설정이 Hive 쿼리 및 쿼리에서 처리하는 데이터에 적합하지 않을 수 있습니다. 이 섹션에서는 사용자가 조정하여 Hive 쿼리 성능을 개선할 수 있는 일부 매개 변수에 대해 설명합니다. 사용자는 매개 변수 조정 쿼리를 먼저 추가한 후 데이터 처리 쿼리를 추가해야 합니다.
+## <a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
+Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
-1. **Java 힙 공간**: 대용량 데이터 세트를 조인하거나 긴 레코드 처리하는 것과 관련된 쿼리에서 발생하는 일반적인 오류 중 하나는 **힙 공간 부족**입니다. *mapreduce.map.java.opts* 및 *mapreduce.task.io.sort.mb* 매개 변수를 원하는 값으로 설정하여 이 오류를 피할 수 있습니다. 다음은 예제입니다.
+1. Java 堆空间：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 mapreduce.map.java.opts 和 mapreduce.task.io.sort.mb 设置为所需的值来避免此错误。 下面是一个示例：
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    此参数将 4 GB 内存分配给 Java 堆空间，并通过为其分配更多内存来提高排序效率。 힙 공간과 관련된 작업 실패 오류가 발생할 경우 이러한 할당 방법을 사용하면 좋습니다.
+    此参数将 4 GB 内存分配给 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
 
-1. **DFS 블록 크기**: 이 매개 변수는 파일 시스템에 저장되는 최소 데이터 단위를 설정합니다. 예를 들어 DFS 블록 크기가 128MB인 경우 128MB 이하의 모든 데이터는 단일 블록에 저장됩니다. 128MB보다 큰 데이터는 추가 블록에 할당됩니다. 
-2. 블록 크기를 작게 할 경우 이름 노드에서 해당 파일과 관련된 블록을 찾으려면 훨씬 많은 요청을 처리해야 하므로 Hadoop에서 큰 오버헤드가 발생합니다. 기가바이트 단위(또는 그 이상)의 데이터를 처리할 때 권장되는 설정은 다음과 같습니다.
+1. DFS 块大小：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块的大小为 128 MB，那么任何小于等于 128 MB 的数据都存储在单个块中。 大于 128 MB 的数据会被分配到额外的块。 
+2. 选择较小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
 
         set dfs.block.size=128m;
 
-2. **Hive에서 조인 작업 최적화**: 맵/감소 프레임워크의 조인 작업은 일반적으로 감소 단계에서 수행되지만, 맵 단계("맵 조인"이라고도 함)에서 조인 작업을 예약하여 엄청난 이점을 얻을 수 있는 경우도 있습니다. 设置此选项：
+2. 优化 Hive 中的联接操作：映射/归约框架中的联接操作通常发生在归约阶段，有时可通过规划映射阶段（也称为“映射联接”）中的联接来实现巨大的提升。 设置此选项：
    
        set hive.auto.convert.join=true;
 
-3. **Hive에 매퍼 수 지정**: Hadoop을 사용하면 사용자가 리듀서 수를 설정할 수 있지만, 매퍼 수는 일반적으로 사용자가 설정하지 않습니다. 한 가지 팁으로, 맵 작업 각각의 크기가 다음과 같은 방법으로 결정되므로 *mapred.min.split.size* 및 *mapred.max.split.size* Hadoop 변수를 선택하여 매퍼 수를 어느 정도 조절할 수 있습니다.
+3. 将映射器数指定为 Hive：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    일반적으로 기본값은 다음과 같습니다.
+    通常而言：
     
-   - *mapred.min.split.size*: 0
-   - *mapred.max.split.size*: **Long.MAX** 
-   - *dfs.block.size*: 64MB
+   - mapred.min.split.size 的默认值为 0，
+   - mapred.max.split.size 的默认值为 Long.MAX， 
+   - dfs.block.size 的默认值为 64 MB。
 
-     보시는 것처럼 데이터 크기를 고려하려 이러한 매개 변수를 "설정"하면 사용되는 매퍼 수를 조정할 수 있습니다.
+     如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
 
-4. 아래에 Hive 성능을 최적화하는 **고급 옵션** 몇 가지가 추가로 설명되어 있습니다. 这些选项允许您设置分配的内存来映射和减少任务，并可用于调整性能。 주의할 사항으로, *mapreduce.reduce.memory.mb* 가 Hadoop 클러스터에 있는 각 작업자 노드의 실제 메모리 크기보다 크면 안 됩니다.
+4. 以下是用于优化 Hive 性能的一些其他高级选项。 这些选项允许您设置分配的内存来映射和减少任务，并可用于调整性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小。
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

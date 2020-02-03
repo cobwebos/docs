@@ -17,17 +17,17 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76716997"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure Container Instance에서 컨테이너 배포 및 실행
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>在 Azure 容器实例上部署和运行容器
 
 通过以下步骤，可以轻松地通过 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)缩放云中的 Azure 认知服务应用程序。 容器化可帮助你专注于构建应用程序，而不是管理基础结构。 有关使用容器的详细信息，请参阅[功能和优势](../cognitive-services-container-support.md#features-and-benefits)。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
 食谱适用于任何认知服务容器。 使用食谱之前，必须在 Azure 门户中创建认知服务资源。 支持容器的每个认知服务都有一个 "如何安装" 文档，专门用于安装和配置容器的服务。 某些服务需要一个文件或一组文件作为容器的输入，在使用此解决方案之前，请务必了解并成功使用容器。
 
 * 在 Azure 门户中创建的认知服务资源。
 * 认知服务**终结点 URL** -查看容器的特定服务 "如何安装"，以查找 endpoint URL 在 Azure 门户中的位置，以及正确的 url 示例。 确切的格式可以从服务更改为服务。
-* 认知服务**密钥**-密钥位于 Azure 资源的 "**密钥**" 页上。 두 키 중 하나만 필요합니다. 此键是32字母数字字符的字符串。
+* 认知服务**密钥**-密钥位于 Azure 资源的 "**密钥**" 页上。 您只需要两个密钥中的一个即可。 此键是32字母数字字符的字符串。
 * 本地主机（您的计算机）上的单个认知服务容器。 请确保可以：
   * 使用 `docker pull` 命令拉取映像。
   * 使用 `docker run` 命令通过所有必需的配置设置成功运行本地容器。

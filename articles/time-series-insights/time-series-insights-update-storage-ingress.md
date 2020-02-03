@@ -17,9 +17,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76714292"
 ---
-# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights 미리 보기의 데이터 스토리지 및 수신
+# <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
-本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 기본 스토리지 구조, 파일 형식 및 Time Series ID 속성도 다룹니다. 它还讨论了底层入口流程、最佳做法和当前预览限制。
+本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口流程、最佳做法和当前预览限制。
 
 ## <a name="data-ingress"></a>数据入口
 
@@ -29,12 +29,12 @@ ms.locfileid: "76714292"
 
 ### <a name="ingress-policies"></a>入口策略
 
-#### <a name="event-sources"></a>이벤트 원본
+#### <a name="event-sources"></a>事件源
 
 时序见解预览版支持以下事件源：
 
-- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
-- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
+- [Azure IoT 中心](../iot-hub/about-iot-hub.md)
+- [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
 时序见解预览版每个实例最多支持两个事件源。
 
@@ -49,12 +49,12 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 U
 
 下面是受支持的数据类型的列表。
 
-| 데이터 형식 | Description |
+| 数据类型 | 说明 |
 |-----------|------------------|-------------|
 | bool      |   具有以下两种状态之一的数据类型： true 或 false。       |
 | dateTime    |   表示时间上的一刻，通常以日期和当天的时间表示。 Datetime 应采用 ISO 8601 格式。      |
 | double    |   双精度64位 IEEE 754 浮点
-| 문자열    |   由 Unicode 字符组成的文本值。          |
+| 字符串    |   文本值，包含 Unicode 字符。          |
 
 #### <a name="objects-and-arrays"></a>对象和数组
 
@@ -99,7 +99,7 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 
 **影响**：如果单个分区在预览限制的情况上经历了持续速率，则在超过 IoT 中心数据保持期之前，不会出现一条不会赶上的 TSI 读取器。 这会导致数据丢失。
 
-다음 방법을 사용하는 것이 좋습니다. 
+建议如下： 
 
 * 在部署解决方案之前计算按环境和按分区引入速率
 * 确保 IoT 中心设备（和分区）的负载均衡，以实现最远的扩展
@@ -115,7 +115,7 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 * [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中心分区](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-### <a name="data-storage"></a>데이터 스토리지
+### <a name="data-storage"></a>数据存储
 
 创建时序见解预览即用即付 SKU 环境时，需要创建两个 Azure 资源：
 
@@ -129,14 +129,14 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 > [!WARNING]
 > 作为冷存储数据所在的 Azure Blob 存储帐户的所有者，你对该帐户中的所有数据具有完全访问权限。 此访问权限包括 "写入" 和 "删除" 权限。 请勿编辑或删除时序见解预览写入的数据，因为这可能会导致数据丢失。
 
-### <a name="data-availability"></a>데이터 가용성
+### <a name="data-availability"></a>数据可用性
 
 时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
 > 在预览期间，你可能会遇到长达60秒的时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure 存储
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
@@ -152,21 +152,21 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 
 公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
 
-#### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights blob 작성 및 편집
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 
 若要确保查询性能和数据可用性，请不要编辑或删除时序见解预览创建的任何 blob。
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights 미리 보기에서 데이터 액세스 및 내보내기
+#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>从时序见解预览版访问和导出数据
 
 你可能希望访问在时序见解预览资源管理器中查看的数据，以便与其他服务一起使用。 例如，你可以使用数据在 Power BI 中生成报表，或使用 Azure 机器学习 Studio 来训练机器学习模型。 或者，你可以使用你的数据在 Jupyter 笔记本中进行转换、可视化和建模。
 
-다음과 같은 세 가지 일반적인 방법으로 데이터에 액세스할 수 있습니다.
+可通过三种常规方式访问数据：
 
-* Time Series Insights 미리 보기 탐색기 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览资源管理器](./time-series-insights-update-explorer.md)。
+* 通过时序见解预览版资源管理器。 你可以从资源管理器中将数据导出为 CSV 文件。 有关详细信息，请参阅[时序见解预览资源管理器](./time-series-insights-update-explorer.md)。
 * 使用获取事件查询从时序见解预览 API。 若要了解有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
 * 直接从 Azure 存储帐户。 需要对用于访问时序见解预览数据的任何帐户进行读取访问。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
-#### <a name="data-deletion"></a>데이터 삭제
+#### <a name="data-deletion"></a>数据删除
 
 请勿删除时序见解预览文件。 仅在时序见解预览版中管理相关数据。
 
@@ -195,13 +195,13 @@ Parquet 是一种开源纵栏文件格式，旨在实现高效的存储和性能
 
 时序见解预览版事件映射到 Parquet 文件内容，如下所示：
 
-* 각 이벤트는 단일 행에 매핑됩니다.
+* 每个事件映射到单个行。
 * 每一行都包含带有事件时间戳的**timestamp**列。 时间戳属性决不会为 null。 如果事件源中未指定时间戳属性，则默认为**事件排队时间**。 时间戳始终采用 UTC 格式。
 * 每一行都包含创建时序见解环境时定义的时序 ID 列。 属性名称包括 `_string` 后缀。
 * 作为遥测数据发送的所有其他属性都映射到以 `_string` （string）、`_bool` （布尔）、`_datetime` （datetime）或 `_double` （double）结尾的列名称，具体取决于属性类型。
 * 此映射方案适用于文件格式的第一个版本，作为**V = 1**引用。 随着此功能的演变，名称可能会增加。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 - 阅读[如何将 JSON 作为入口和 query 的形状](./time-series-insights-update-how-to-shape-events.md)。
 

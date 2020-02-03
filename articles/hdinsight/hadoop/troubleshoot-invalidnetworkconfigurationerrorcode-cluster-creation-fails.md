@@ -22,15 +22,15 @@ ms.locfileid: "76720378"
 
 ## <a name="hostname-resolution-failed"></a>"主机名解析失败"
 
-### <a name="issue"></a>문제
+### <a name="issue"></a>问题
 
 错误说明包含 "主机名解析失败"。
 
-### <a name="cause"></a>원인
+### <a name="cause"></a>原因
 
-此错误指向自定义 DNS 配置问题。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名（有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)）。 Azure의 재귀 확인자에 대한 액세스는 가상 IP 168.63.129.16을 통해 제공됩니다. 此 IP 只能从 Azure Vm 进行访问。 如果你使用的是 OnPrem DNS 服务器，或者你的 DNS 服务器是 Azure VM，而这不是群集的虚拟网络的一部分，则它将不起作用。
+此错误指向自定义 DNS 配置问题。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名（有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)）。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。 此 IP 只能从 Azure Vm 进行访问。 如果你使用的是 OnPrem DNS 服务器，或者你的 DNS 服务器是 Azure VM，而这不是群集的虚拟网络的一部分，则它将不起作用。
 
-### <a name="resolution"></a>해상도
+### <a name="resolution"></a>解决方法
 
 1. 通过 Ssh 连接到作为群集一部分的 VM，并运行命令 `hostname -f`。 这会返回主机的完全限定域名（在以下说明中称为 `<host_fqdn>`）。
 
@@ -48,15 +48,15 @@ ms.locfileid: "76720378"
 
 ## <a name="failed-to-connect-to-azure-storage-account"></a>"无法连接到 Azure 存储帐户"
 
-### <a name="issue"></a>문제
+### <a name="issue"></a>问题
 
 错误说明包含 "无法连接到 Azure 存储帐户" 或 "无法连接到 Azure SQL"。
 
-### <a name="cause"></a>원인
+### <a name="cause"></a>原因
 
 Azure 存储和 SQL 没有固定 IP 地址，因此，我们需要允许与所有 Ip 的出站连接，以允许访问这些服务。 具体的解决步骤取决于您是否设置了网络安全组（NSG）或用户定义的规则（UDR）。 有关这些配置的详细信息，请参阅有关利用[HDInsight 和网络安全组和用户定义的路由控制网络流量](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)的部分。
 
-### <a name="resolution"></a>해상도
+### <a name="resolution"></a>解决方法
 
 * 如果群集使用[网络安全组（NSG）](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
@@ -72,7 +72,7 @@ Azure 存储和 SQL 没有固定 IP 地址，因此，我们需要允许与所�
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"虚拟网络配置与 HDInsight 要求不兼容"
 
-### <a name="issue"></a>문제
+### <a name="issue"></a>问题
 
 错误说明包含类似如下所示的消息：
 
@@ -81,13 +81,13 @@ ErrorCode: InvalidNetworkConfigurationErrorCode
 ErrorDescription: Virtual Network configuration is not compatible with HDInsight Requirement. Error: 'Failed to connect to Azure Storage Account; Failed to connect to Azure SQL; HostName Resolution failed', Please follow https://go.microsoft.com/fwlink/?linkid=853974 to fix it.
 ```
 
-### <a name="cause"></a>원인
+### <a name="cause"></a>原因
 
 自定义 DNS 设置可能存在问题。
 
-### <a name="resolution"></a>해상도
+### <a name="resolution"></a>解决方法
 
-验证168.63.129.16 是否在自定义 DNS 链中。 가상 네트워크 내에서 DNS 서버는 해당 가상 네트워크 내에서 호스트 이름을 확인하기 위해 Azure의 재귀 확인자에게 DNS 쿼리를 전달할 수 있습니다. 有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 Azure의 재귀 확인자에 대한 액세스는 가상 IP 168.63.129.16을 통해 제공됩니다.
+验证168.63.129.16 是否在自定义 DNS 链中。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。 有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
 
 1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 将 CLUSTERNAME 替换为群集名称，然后输入以下命令，以编辑以下命令：
 
@@ -95,13 +95,13 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 다음 명령을 실행하십시오.
+1. 执行以下命令：
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    다음과 유사한 결과가 표시됩니다.
+    应看到与下面类似的内容：
 
     ```output
     nameserver 168.63.129.16
@@ -113,11 +113,11 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 #### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 不在此列表中
 
-**옵션 1**  
+**选项 1**  
 按照[规划 Azure HDInsight 的虚拟网络](../hdinsight-plan-virtual-network-deployment.md)中所述的步骤，将168.63.129.16 添加为虚拟网络的第一个自定义 DNS。 这些步骤仅适用于在 Linux 上运行的自定义 DNS 服务器。
 
-**옵션 2**  
-为虚拟网络部署 DNS 服务器 VM。 다음 단계를 포함합니다.
+**选项 2**  
+为虚拟网络部署 DNS 服务器 VM。 这包括以下步骤：
 
 * 在虚拟网络中创建一个 VM，该 VM 将配置为 DNS 转发器（它可以是 Linux 或 windows VM）。
 * 在此 VM 上配置 DNS 转发规则（将所有 Idn 名称解析请求转发到168.63.129.16，将其余的请求转发到你的 DNS 服务器）。
@@ -137,9 +137,9 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 ---
 
-### <a name="next-steps"></a>다음 단계
+### <a name="next-steps"></a>后续步骤
 
-문제가 표시되지 않거나 문제를 해결할 수 없는 경우 다음 채널 중 하나를 방문하여 추가 지원을 받으세요.
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 

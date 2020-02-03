@@ -1,6 +1,6 @@
 ---
-title: Azure Functions에 대한 Microsoft Graph 바인딩
-description: Azure Functions에서 Microsoft Graph 트리거 및 바인딩을 사용하는 방법을 파악합니다.
+title: Azure Functions 的 Microsoft Graph 绑定
+description: 了解如何在 Azure Functions 中使用 Microsoft Graph 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
@@ -12,86 +12,86 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715028"
 ---
-# <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions에 대한 Microsoft Graph 바인딩
+# <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
-이 문서에서는 Azure Functions에서 Microsoft Graph 트리거 및 바인딩을 구성하고 사용하는 방법에 대해 설명합니다. 이러한 방법을 배우고 나면 Azure Functions를 사용하여 [Microsoft Graph](https://developer.microsoft.com/graph)에서 데이터, 자세한 정보 및 이벤트를 작업할 수 있습니다.
+本文介绍如何在 Azure Functions 中配置和使用 Microsoft Graph 触发器和绑定。 借助它们，你可以使用 Azure Functions 处理 [Microsoft Graph](https://developer.microsoft.com/graph) 中的数据、见解和事件。
 
-Microsoft Graph 확장에는 다음과 같은 바인딩이 제공됩니다.
-- 모든 Microsoft Graph API와 상호 작용할 수 있게 해주는 [인증 토큰 입력 바인딩](#token-input).
-- Excel에서 데이터를 읽을 수 있게 해주는 [Excel 테이블 입력 바인딩](#excel-input).
-- Excel 데이터를 수정할 수 있게 해주는 [Excel 테이블 출력 바인딩](#excel-output).
-- OneDrive에서 파일을 읽을 수 있게 해주는 [OneDrive 파일 입력 바인딩](#onedrive-input).
-- OneDrive에 파일을 쓸 수 있게 해주는 [OneDrive 파일 출력 바인딩](#onedrive-output).
-- Outlook을 통해 전자 메일을 보낼 수 있게 해주는 [Outlook 메시지 출력 바인딩](#outlook-output).
-- Microsoft Graph의 이벤트에 대응할 수 있게 해주는 [Microsoft Graph 웹후크 트리거 및 바인딩](#webhooks) 컬렉션.
+Microsoft Graph 扩展提供了以下绑定：
+- [身份验证令牌输入绑定](#token-input)，通过它你可以与任意 Microsoft Graph API 进行交互。
+- [Excel 表输入绑定](#excel-input)，通过它你可以读取 Excel 中的数据。
+- [Excel 表输出绑定](#excel-output)，通过它你可以修改 Excel 数据。
+- [OneDrive 文件输入绑定](#onedrive-input)，用于读取 OneDrive 中的文件。
+- [OneDrive 文件输出绑定](#onedrive-output)，用于写入到 OneDrive 中的文件。
+- [Outlook 邮件输出绑定](#outlook-output)，通过它你可以使用 Outlook 发送电子邮件。
+- 一系列 [Microsoft Graph webhook 触发器和绑定](#webhooks)，通过它你可以响应 Microsoft Graph 中的事件。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> 对于 Azure Functions 版本2.x 和更高版本，Microsoft Graph 绑定当前为预览版。 Functions 버전 1.x에서 지원되지 않습니다.
+> 对于 Azure Functions 版本2.x 和更高版本，Microsoft Graph 绑定当前为预览版。 Functions 1.x 版不支持这些绑定。
 
-## <a name="packages"></a>패키지
+## <a name="packages"></a>包
 
-인증 토큰 입력 바인딩은 [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet 패키지에서 제공됩니다. 다른 Microsoft Graph 바인딩은 [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) 패키지에서 제공됩니다. 이 패키지에 대한 소스 코드는 [azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub 리포지토리에 있습니다.
+[Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet 包中提供了身份验证令牌输入绑定。 [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) 包中提供了其他 Microsoft Graph 绑定。 [azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub 存储库中提供了这些包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="setting-up-the-extensions"></a>확장 설정
+## <a name="setting-up-the-extensions"></a>设置扩展
 
-Microsoft Graph 바인딩은 _바인딩 확장_을 통해 제공됩니다. 바인딩 확장은 Azure Functions 런타임의 선택적 구성 요소입니다. 이 섹션에서는 Microsoft Graph 및 인증 토큰 확장을 설정하는 방법을 설명합니다.
+可通过绑定扩展获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
 
-### <a name="enabling-functions-20-preview"></a>Functions 2.0 미리 보기를 사용하도록 설정
+### <a name="enabling-functions-20-preview"></a>启用 Functions 2.0 预览版
 
-바인딩 확장은 Azure Functions 2.0 미리 보기에서만 사용할 수 있습니다. 
+绑定扩展仅适用于 Azure Functions 2.0 预览版。 
 
-미리 보기 2.0 버전의 Functions 런타임을 사용하도록 함수 앱을 설정하는 방법에 대한 내용은 [버전 2.0 런타임을 대상으로 지정하는 방법](set-runtime-version.md)을 참조하세요.
+有关如何将函数应用设置为使用 Functions 运行时预览版 2.0 的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
 
-### <a name="installing-the-extension"></a>확장 설치
+### <a name="installing-the-extension"></a>安装扩展
 
-Azure Portal에서 확장을 설치하려면 확장을 참조하는 템플릿 또는 바인딩으로 이동합니다. 새 함수를 만들고, 템플릿 선택 화면에서 "Microsoft Graph" 시나리오를 선택합니다. 이 시나리오의 템플릿 중 하나를 선택합니다. 또는 기존 함수의 "통합" 탭으로 이동하여 이 문서에서 다루는 바인딩 중 하나를 선택할 수도 있습니다.
+若要从 Azure 门户安装扩展，请导航到引用此扩展的模板或绑定。 新建一个函数，在模板选择屏幕中选择“Microsoft Graph”方案。 从此方案中选择一个模板。 或者，可以导航到现有函数的的“集成”选项卡，然后选择本文介绍的绑定之一。
 
-어떤 방법을 선택하든 설치할 확장을 지정하는 경고가 표시됩니다. **설치**를 클릭하여 확장을 가져옵니다. 각 확장을 함수 앱마다 한 번씩만 설치하면 됩니다. 
+在这两种情况下，均会显示一个警告，它将指定要安装的扩展。 单击“安装”，以获取该扩展。 每个函数应用只需安装每个扩展一次。 
 
 > [!Note] 
 > 在消耗计划中，门户安装过程可能需要长达10分钟的时间。
 
-Visual Studio를 사용하는 경우 [앞서 이 아티클에서 나열된 NuGet 패키지](#packages)를 설치하여 확장을 설치할 수 있습니다.
+如果使用的是 Visual Studio，可以通过安装[本文中前面列出的 NuGet 包](#packages)来获取扩展。
 
-### <a name="configuring-authentication--authorization"></a>인증/권한 부여 구성
+### <a name="configuring-authentication--authorization"></a>配置身份验证/授权
 
-이 문서에서 설명하는 바인딩은 반드시 ID를 사용해야 합니다. 이를 통해 Microsoft Graph가 권한을 적용하고 상호 작용을 감사할 수 있습니다. ID는 애플리케이션에 액세스하는 사용자일 수도 있고 애플리케이션 자체일 수도 있습니다. 이 ID를 구성하려면 Azure Active Directory를 사용하여 [App Service 인증/권한 부여](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)를 설정합니다. 그리고 함수에 필요한 리소스 권한을 요청해야 합니다.
+本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 还需要请求你的函数所需的任意资源权限。
 
 > [!Note] 
-> Microsoft Graph 확장은 Azure AD 인증만 지원합니다. 사용자는 회사 또는 학교 계정으로 로그인해야 합니다.
+> Microsoft Graph 扩展仅支持 Azure AD 身份验证。 用户需要使用工作或学校帐户登录。
 
-Azure Portal을 사용하는 경우 확장을 설치할지 묻는 메시지 아래에 경고가 표시됩니다. 이 경고는 App Service 인증/권한 부여를 구성하고, 템플릿 또는 바인딩에 필요한 사용 권한을 요구하라는 메시지를 표시합니다. **지금 Azure AD 구성** 또는 **지금 권한 추가**를 적절히 클릭합니다.
+如果使用的是 Azure 门户，则安装扩展的提示下面会显示一条警告。 该警告提示配置应用服务身份验证/授权并请求模板或绑定所需的任意权限。 根据需要单击“立即配置 Azure AD”或“立即添加权限”。
 
 
 
 <a name="token-input"></a>
-## <a name="auth-token"></a>인증 토큰
+## <a name="auth-token"></a>身份验证令牌
 
-인증 토큰 입력 바인딩은 지정된 리소스에 대한 Azure AD 토큰을 획득하여 코드에 문자열로 제공합니다. 애플리케이션이 권한을 갖고 있는 모든 것을 리소스로 사용할 수 있습니다. 
+身份验证令牌输入绑定将获取给定资源的 Azure AD 令牌，并将其作为字符串提供给你的代码。 该资源可以是此应用程序拥有访问权限的任何资源。 
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#auth-token---example)
-* [특성](#auth-token---attributes)
-* [Configuration](#auth-token---configuration)
-* [사용 현황](#auth-token---usage)
+* [示例](#auth-token---example)
+* [属性](#auth-token---attributes)
+* [配置](#auth-token---configuration)
+* [使用情况](#auth-token---usage)
 
-### <a name="auth-token---example"></a>인증 토큰 - 예제
+### <a name="auth-token---example"></a>身份验证令牌 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#auth-token---c-script-example)
+* [C# 脚本 (.csx)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
-#### <a name="auth-token---c-script-example"></a>인증 토큰 - C# 스크립트 예제
+#### <a name="auth-token---c-script-example"></a>身份验证令牌 - C# 脚本示例
 
-다음 예제에서는 사용자 프로필 정보를 가져옵니다.
+以下示例获取用户配置文件信息。
 
-*function.json* 파일은 토큰 입력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含令牌输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -118,7 +118,7 @@ Azure Portal을 사용하는 경우 확장을 설치할지 묻는 메시지 아�
 }
 ```
 
-다음 C# 스크립트 코드는 토큰을 사용하여 Microsoft Graph에 대한 HTTP 호출을 만들고 그 결과를 반환합니다.
+该 C# 脚本代码使用此令牌向 Microsoft Graph 发出 HTTP 调用，并返回结果：
 
 ```csharp
 using System.Net; 
@@ -134,11 +134,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-#### <a name="auth-token---javascript-example"></a>인증 토큰 - JavaScript 예제
+#### <a name="auth-token---javascript-example"></a>身份验证令牌 - JavaScript 示例
 
-다음 예제에서는 사용자 프로필 정보를 가져옵니다.
+以下示例获取用户配置文件信息。
 
-*function.json* 파일은 토큰 입력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含令牌输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -165,7 +165,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-다음 JavaScript 코드는 토큰을 사용하여 Microsoft Graph에 대한 HTTP 호출을 만들고 그 결과를 반환합니다.
+该 JavaScript 代码使用此令牌向 Microsoft Graph 发出 HTTP 调用，并返回结果：
 
 ```js
 const rp = require('request-promise');
@@ -197,57 +197,57 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="auth-token---attributes"></a>인증 토큰 - 특성
+### <a name="auth-token---attributes"></a>身份验证令牌 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) 特性。
 
-### <a name="auth-token---configuration"></a>인증 토큰 - 구성
+### <a name="auth-token---configuration"></a>身份验证令牌 - 配置
 
-다음 표에서는 *function.json* 파일 및 `Token` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `Token` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 인증 토큰의 함수 코드에 사용되는 변수 이름입니다. [코드에서 인증 토큰 입력 바인딩 사용](#token-input-code)을 참조하세요.|
-|**type**| n/a |필수 - `token`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `in`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**userId**|**UserId**  |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**리소스**|**resource**|필수 - 토큰이 요청되는 Azure AD 리소스 URL입니다.|
+|name| 不适用 |必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用身份验证令牌输入绑定](#token-input-code)。|
+|type| 不适用 |必需 - 必须设置为 `token`。|
+|direction| 不适用 |必需 - 必须设置为 `in`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**资源**|**resource**|必需 - 正在为其请求令牌的 Azure AD 资源 URL。|
 
 <a name="token-input-code"></a>
-### <a name="auth-token---usage"></a>인증 토큰 - 사용
+### <a name="auth-token---usage"></a>身份验证令牌 - 用法
 
-바인딩 자체는 Azure AD 권한이 전혀 필요 없지만, 토큰이 사용되는 방식에 따라 추가 권한을 요청해야 할 수도 있습니다. 토큰을 사용하여 액세스하려는 리소스의 요구 사항을 확인하세요.
+该绑定本身不需要任何 Azure AD 权限，但是你可能需要请求其他权限，具体取决于使用该令牌的方式。 请查看想要使用此令牌访问的资源的要求。
 
-토큰은 항상 코드에 문자열로 표시됩니다.
+通常会将此令牌作为字符串提供给代码。
 
 > [!Note]
-> `userFromId`, `userFromToken` 또는 `userFromRequest` 옵션 중 하나를 사용하여 로컬로 개발할 경우 필요한 토큰을 [수동으로 가져오고](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) 호출 클라이언트 애플리케이션의 `X-MS-TOKEN-AAD-ID-TOKEN` 요청 헤더에 지정할 수 있습니다.
+> 当使用 `userFromId`、`userFromToken` 或 `userFromRequest` 选项进行本地开发时，所需的令牌可以[手动获取](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857)并在来自调用方客户端应用程序的 `X-MS-TOKEN-AAD-ID-TOKEN` 请求标头中指定。
 
 
 <a name="excel-input"></a>
-## <a name="excel-input"></a>Excel 입력
+## <a name="excel-input"></a>Excel 输入
 
-Excek 테이블 입력 바인딩은 OneDrive에 저장된 Excel 테이블의 콘텐츠를 읽습니다.
+Excel 表输入绑定将读取 OneDrive 中存储的 Excel 表的内容。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#excel-input---example)
-* [특성](#excel-input---attributes)
-* [Configuration](#excel-input---configuration)
-* [사용 현황](#excel-input---usage)
+* [示例](#excel-input---example)
+* [属性](#excel-input---attributes)
+* [配置](#excel-input---configuration)
+* [使用情况](#excel-input---usage)
 
-### <a name="excel-input---example"></a>Excel 입력 - 예제
+### <a name="excel-input---example"></a>Excel 输入 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#excel-input---c-script-example)
+* [C# 脚本 (.csx)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
-#### <a name="excel-input---c-script-example"></a>Excel 입력 - C# 스크립트 예제
+#### <a name="excel-input---c-script-example"></a>Excel 输入 - C# 脚本示例
 
-다음 *function.json* 파일은 Excel 입력 바인딩을 사용하여 HTTP 트리거를 정의합니다.
+以下 *function.json* 文件定义一个包含 Excel 输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -276,7 +276,7 @@ Excek 테이블 입력 바인딩은 OneDrive에 저장된 Excel 테이블의 콘
 }
 ```
 
-다음 C# 스크립트 코드는 지정된 테이블의 내용을 읽어서 사용자에게 반환합니다.
+以下 C# 脚本代码读取指定表的内容并将它们返回给用户：
 
 ```csharp
 using System.Net;
@@ -290,9 +290,9 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 }
 ```
 
-#### <a name="excel-input---javascript-example"></a>Excel 입력 - JavaScript 예제
+#### <a name="excel-input---javascript-example"></a>Excel 输入 - JavaScript 示例
 
-다음 *function.json* 파일은 Excel 입력 바인딩을 사용하여 HTTP 트리거를 정의합니다.
+以下 *function.json* 文件定义一个包含 Excel 输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -321,7 +321,7 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 }
 ```
 
-다음 JavaScript 코드는 지정된 테이블의 내용을 읽어서 사용자에게 반환합니다.
+以下 JavaScript 代码读取指定表的内容并将它们返回给用户：
 
 ```js
 module.exports = function (context, req) {
@@ -332,39 +332,39 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-input---attributes"></a>Excel 입력 - 특성
+### <a name="excel-input---attributes"></a>Excel 输入 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 特性。
 
-### <a name="excel-input---configuration"></a>Excel 입력 - 구성
+### <a name="excel-input---configuration"></a>Excel 输入 - 配置
 
-다음 표에서는 *function.json* 파일 및 `Excel` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - Excel 테이블의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Excel 테이블 입력 바인딩 사용](#excel-input-code)을 참조하세요.|
-|**type**| n/a |필수 - `excel`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `in`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**userId**|**UserId**  |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**path**|**Path**|필수 - OneDrive에서 Excel 통합 문서의 경로입니다.|
-|**worksheetName**|**WorksheetName**|테이블이 검색되는 워크시트입니다.|
-|**tableName**|**TableName**|테이블의 이름입니다. 지정하지 않으면 워크시트의 콘텐츠가 사용됩니다.|
+|name| 不适用 |必需 - 在 Excel 表的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输入绑定](#excel-input-code)。|
+|type| 不适用 |必需 - 必须设置为 `excel`。|
+|direction| 不适用 |必需 - 必须设置为 `in`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**路径**|**路径**|必须 - OneDrive 中到 Excel 工作簿的路径。|
+|**worksheetName**|**WorksheetName**|表所在的工作表。|
+|**tableName**|**TableName**|表的名称。 如果未指定，将使用工作表的内容。|
 
 <a name="excel-input-code"></a>
-### <a name="excel-input---usage"></a>Excel 입력 - 사용
+### <a name="excel-input---usage"></a>Excel 输入 - 用法
 
-이 바인딩에는 다음 Azure AD 권한이 필요합니다.
+此绑定需要以下 Azure AD 权限：
 
-|리소스|사용 권한|
+|资源|权限|
 |--------|--------|
-|Microsoft Graph|사용자 파일 읽기|
+|Microsoft Graph|读取用户文件|
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - string[][]
 - Microsoft.Graph.WorkbookTable
-- 사용자 지정 개체 형식(구조 모델 바인딩 사용)
+- 自定义对象类型（使用结构化模型绑定）
 
 
 
@@ -376,29 +376,29 @@ module.exports = function (context, req) {
 
 
 <a name="excel-output"></a>
-## <a name="excel-output"></a>Excel 출력
+## <a name="excel-output"></a>Excel 输出
 
-Excel 출력 바인딩은 OneDrive에 저장된 Excel 테이블의 콘텐츠를 수정합니다.
+Excel 输出绑定修改 OneDrive 中存储的 Excel 表的内容。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#excel-output---example)
-* [특성](#excel-output---attributes)
-* [Configuration](#excel-output---configuration)
-* [사용 현황](#excel-output---usage)
+* [示例](#excel-output---example)
+* [属性](#excel-output---attributes)
+* [配置](#excel-output---configuration)
+* [使用情况](#excel-output---usage)
 
-### <a name="excel-output---example"></a>Excel 출력 - 예제
+### <a name="excel-output---example"></a>Excel 输出 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#excel-output---c-script-example)
+* [C# 脚本 (.csx)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
-#### <a name="excel-output---c-script-example"></a>Excel 출력 - C# 스크립트 예제
+#### <a name="excel-output---c-script-example"></a>Excel 输出 - C# 脚本示例
 
-다음 예제에서는 Excel 테이블에 행을 추가합니다.
+以下示例将行添加到 Excel 表。
 
-*function.json* 파일은 Excel 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 Excel 输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -428,7 +428,7 @@ Excel 출력 바인딩은 OneDrive에 저장된 Excel 테이블의 콘텐츠를 
 }
 ```
 
-이 C# 스크립트 코드는 쿼리 문자열의 입력을 기반으로 테이블에(단일 열로 가정) 새 행을 추가합니다.
+该 C# 脚本代码根据查询字符串中的输入向表（假设是单列）添加新的行：
 
 ```csharp
 using System.Net;
@@ -448,11 +448,11 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-#### <a name="excel-output---javascript-example"></a>Excel 출력 - JavaScript 예제
+#### <a name="excel-output---javascript-example"></a>Excel 输出 - JavaScript 示例
 
-다음 예제에서는 Excel 테이블에 행을 추가합니다.
+以下示例将行添加到 Excel 表。
 
-*function.json* 파일은 Excel 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 Excel 输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -482,7 +482,7 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-다음 JavaScript 코드는 쿼리 문자열의 입력을 기반으로 테이블에(단일 열로 가정) 새 행을 추가합니다.
+以下 JavaScript 代码根据查询字符串中的输入向表（假设是单列）添加新的行：
 
 ```js
 module.exports = function (context, req) {
@@ -494,70 +494,70 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-output---attributes"></a>Excel 출력 - 특성
+### <a name="excel-output---attributes"></a>Excel 输出 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 特性。
 
-### <a name="excel-output---configuration"></a>Excel 출력 - 구성
+### <a name="excel-output---configuration"></a>Excel 输出 - 配置
 
-다음 표에서는 *function.json* 파일 및 `Excel` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 인증 토큰의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Excel 테이블 출력 바인딩 사용](#excel-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `excel`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `out`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**UserId** |**userId** |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**path**|**Path**|필수 - OneDrive에서 Excel 통합 문서의 경로입니다.|
-|**worksheetName**|**WorksheetName**|테이블이 검색되는 워크시트입니다.|
-|**tableName**|**TableName**|테이블의 이름입니다. 지정하지 않으면 워크시트의 콘텐츠가 사용됩니다.|
-|**updateType**|**UpdateType**|필수 - 테이블에 적용해야 하는 변경 형식입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>update</code> - OneDrive에 있는 테이블의 콘텐츠를 대체합니다.</li><li><code>append</code> - 새 행을 만들어서 OneDrive에 있는 테이블의 끝에 페이로드를 추가합니다.</li></ul>|
+|name| 不适用 |必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输出绑定](#excel-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `excel`。|
+|direction| 不适用 |必需 - 必须设置为 `out`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**路径**|**路径**|必须 - OneDrive 中到 Excel 工作簿的路径。|
+|**worksheetName**|**WorksheetName**|表所在的工作表。|
+|**tableName**|**TableName**|表的名称。 如果未指定，将使用工作表的内容。|
+|**updateType**|**UpdateType**|必需 - 对表进行的更改的类型。 可以是以下值之一：<ul><li><code>update</code> - 替换 OneDrive 中的表的内容。</li><li><code>append</code> - 通过新建行将负载添加到 OneDrive 中的表的末尾。</li></ul>|
 
 <a name="excel-output-code"></a>
-### <a name="excel-output---usage"></a>Excel 출력 - 사용
+### <a name="excel-output---usage"></a>Excel 输出 - 用法
 
-이 바인딩에는 다음 Azure AD 권한이 필요합니다.
+此绑定需要以下 Azure AD 权限：
 
-|리소스|사용 권한|
+|资源|权限|
 |--------|--------|
-|Microsoft Graph|사용자 파일에 대한 전체 액세스 권한이 있음|
+|Microsoft Graph|拥有对用户文件的完全访问权限|
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - string[][]
 - Newtonsoft.Json.Linq.JObject
 - Microsoft.Graph.WorkbookTable
-- 사용자 지정 개체 형식(구조 모델 바인딩 사용)
+- 自定义对象类型（使用结构化模型绑定）
 
 
 
 
 
 <a name="onedrive-input"></a>
-## <a name="file-input"></a>파일 입력
+## <a name="file-input"></a>文件输入
 
-OneDrive 파일 입력 바인딩은 OneDrive에 저장된 파일의 콘텐츠를 읽습니다.
+OneDrive 文件输入绑定读取 OneDrive 中存储的文件的内容。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#file-input---example)
-* [특성](#file-input---attributes)
-* [Configuration](#file-input---configuration)
-* [사용 현황](#file-input---usage)
+* [示例](#file-input---example)
+* [属性](#file-input---attributes)
+* [配置](#file-input---configuration)
+* [使用情况](#file-input---usage)
 
-### <a name="file-input---example"></a>파일 입력 - 예제
+### <a name="file-input---example"></a>文件输入 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#file-input---c-script-example)
+* [C# 脚本 (.csx)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
-#### <a name="file-input---c-script-example"></a>파일 입력 - C# 스크립트 예제
+#### <a name="file-input---c-script-example"></a>文件输入 - C# 脚本示例
 
-다음 예제에서는 OneDrive에 저장된 파일을 읽습니다.
+以下示例读取 OneDrive 中存储的文件。
 
-*function.json* 파일은 OneDrive 파일 입력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 OneDrive 文件输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -585,7 +585,7 @@ OneDrive 파일 입력 바인딩은 OneDrive에 저장된 파일의 콘텐츠를
 }
 ```
 
-C# 스크립트 코드는 쿼리 문자열에 지정된 파일을 읽고 그 길이를 기록합니다.
+该 C# 脚本代码读取查询字符串中指定的文件并记录它的长度：
 
 ```csharp
 using System.Net;
@@ -597,11 +597,11 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 }
 ```
 
-#### <a name="file-input---javascript-example"></a>파일 입력 - JavaScript 예제
+#### <a name="file-input---javascript-example"></a>文件输入 - JavaScript 示例
 
-다음 예제에서는 OneDrive에 저장된 파일을 읽습니다.
+以下示例读取 OneDrive 中存储的文件。
 
-*function.json* 파일은 OneDrive 파일 입력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 OneDrive 文件输入绑定的 HTTP 触发器：
 
 ```json
 {
@@ -629,7 +629,7 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 }
 ```
 
-다음 JavaScript 코드는 쿼리 문자열에 지정된 파일을 읽고 그 길이를 반환합니다.
+以下 JavaScript 代码读取查询字符串中指定的文件并返回它的长度。
 
 ```js
 module.exports = function (context, req) {
@@ -640,37 +640,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-input---attributes"></a>파일 입력 - 특성
+### <a name="file-input---attributes"></a>文件输入 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 特性。
 
-### <a name="file-input---configuration"></a>파일 입력 - 구성
+### <a name="file-input---configuration"></a>文件输入 - 配置
 
-다음 표에서는 *function.json* 파일 및 `OneDrive` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 파일의 함수 코드에 사용되는 변수 이름입니다. [코드에서 OneDrive 파일 입력 바인딩 사용](#onedrive-input-code)을 참조하세요.|
-|**type**| n/a |필수 - `onedrive`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `in`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**userId**|**UserId**  |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**path**|**Path**|필수 - OneDrive에서 파일의 경로입니다.|
+|name| 不适用 |必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输入绑定](#onedrive-input-code)。|
+|type| 不适用 |必需 - 必须设置为 `onedrive`。|
+|direction| 不适用 |必需 - 必须设置为 `in`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**路径**|**路径**|必须 - OneDrive 中到文件的路径。|
 
 <a name="onedrive-input-code"></a>
-### <a name="file-input---usage"></a>파일 입력 - 사용
+### <a name="file-input---usage"></a>文件输入 - 用法
 
-이 바인딩에는 다음 Azure AD 권한이 필요합니다.
+此绑定需要以下 Azure AD 权限：
 
-|리소스|사용 권한|
+|资源|权限|
 |--------|--------|
-|Microsoft Graph|사용자 파일 읽기|
+|Microsoft Graph|读取用户文件|
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - byte[]
 - Stream
-- 문자열
+- 字符串
 - Microsoft.Graph.DriveItem
 
 
@@ -679,29 +679,29 @@ module.exports = function (context, req) {
 
 
 <a name="onedrive-output"></a>
-## <a name="file-output"></a>파일 출력
+## <a name="file-output"></a>文件输出
 
-OneDrive 파일 출력 바인딩은 OneDrive에 저장된 파일의 콘텐츠를 수정합니다.
+OneDrive 文件输出绑定修改 OneDrive 中存储的文件的内容。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#file-output---example)
-* [특성](#file-output---attributes)
-* [Configuration](#file-output---configuration)
-* [사용 현황](#file-output---usage)
+* [示例](#file-output---example)
+* [属性](#file-output---attributes)
+* [配置](#file-output---configuration)
+* [使用情况](#file-output---usage)
 
-### <a name="file-output---example"></a>파일 출력 - 예제
+### <a name="file-output---example"></a>文件输出 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#file-output---c-script-example)
+* [C# 脚本 (.csx)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
-#### <a name="file-output---c-script-example"></a>파일 출력 - C# 스크립트 예제
+#### <a name="file-output---c-script-example"></a>文件输出 - C# 脚本示例
 
-다음 예제에서는 OneDrive에 저장된 파일에 씁니다.
+以下示例写入 OneDrive 中存储的文件。
 
-*function.json* 파일은 OneDrive 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 OneDrive 输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -729,7 +729,7 @@ OneDrive 파일 출력 바인딩은 OneDrive에 저장된 파일의 콘텐츠를
 }
 ```
 
-다음 C# 스크립트 코드는 쿼리 문자열에서 텍스트를 가져와서 호출자의 OneDrive 루트에 있는 텍스트 파일(이전 예제에 정의된 FunctionsTest.txt)에 기록합니다.
+该 C# 脚本代码从查询字符串获取文本并将其写入文本文件（上述示例中定义的 FunctionsTest.txt，位于调用者的 OneDrive 的根目录）：
 
 ```csharp
 using System.Net;
@@ -747,11 +747,11 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 }
 ```
 
-#### <a name="file-output---javascript-example"></a>파일 출력 - JavaScript 예제
+#### <a name="file-output---javascript-example"></a>文件输出 - JavaScript 示例
 
-다음 예제에서는 OneDrive에 저장된 파일에 씁니다.
+以下示例写入 OneDrive 中存储的文件。
 
-*function.json* 파일은 OneDrive 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 OneDrive 输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -779,7 +779,7 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 }
 ```
 
-JavaScript 코드는 쿼리 문자열에서 텍스트를 가져와서 호출자의 OneDrive 루트에 있는 텍스트 파일(위의 config에 정의된 FunctionsTest.txt)에 기록합니다.
+该 JavaScript 代码从查询字符串获取文本并将其写入文本文件（上述配置中定义的 FunctionsTest.txt，位于调用者的 OneDrive 的根目录）。
 
 ```js
 module.exports = function (context, req) {
@@ -788,37 +788,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-output---attributes"></a>파일 출력 - 특성
+### <a name="file-output---attributes"></a>文件输出 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 特性。
 
-### <a name="file-output---configuration"></a>파일 출력 - 구성
+### <a name="file-output---configuration"></a>文件输出 - 配置
 
-다음 표에서는 *function.json* 파일 및 `OneDrive` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 파일의 함수 코드에 사용되는 변수 이름입니다. [코드에서 OneDrive 파일 출력 바인딩 사용](#onedrive-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `onedrive`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `out`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**UserId** |**userId** |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**path**|**Path**|필수 - OneDrive에서 파일의 경로입니다.|
+|name| 不适用 |必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输出绑定](#onedrive-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `onedrive`。|
+|direction| 不适用 |必需 - 必须设置为 `out`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**路径**|**路径**|必须 - OneDrive 中到文件的路径。|
 
 <a name="onedrive-output-code"></a>
-#### <a name="file-output---usage"></a>파일 출력 - 사용
+#### <a name="file-output---usage"></a>文件输出 - 用法
 
-이 바인딩에는 다음 Azure AD 권한이 필요합니다.
+此绑定需要以下 Azure AD 权限：
 
-|리소스|사용 권한|
+|资源|权限|
 |--------|--------|
-|Microsoft Graph|사용자 파일에 대한 전체 액세스 권한이 있음|
+|Microsoft Graph|拥有对用户文件的完全访问权限|
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - byte[]
 - Stream
-- 문자열
+- 字符串
 - Microsoft.Graph.DriveItem
 
 
@@ -826,29 +826,29 @@ module.exports = function (context, req) {
 
 
 <a name="outlook-output"></a>
-## <a name="outlook-output"></a>Outlook 출력
+## <a name="outlook-output"></a>Outlook 输出
 
-Outlook 메시지 출력 바인딩은 Outlook을 통해 메일 메시지를 보냅니다.
+Outlook 消息输出绑定通过 Outlook 发送电子邮件。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#outlook-output---example)
-* [특성](#outlook-output---attributes)
-* [Configuration](#outlook-output---configuration)
-* [사용 현황](#outlook-output---usage)
+* [示例](#outlook-output---example)
+* [属性](#outlook-output---attributes)
+* [配置](#outlook-output---configuration)
+* [使用情况](#outlook-output---usage)
 
-### <a name="outlook-output---example"></a>Outlook 출력 - 예제
+### <a name="outlook-output---example"></a>Outlook 输出 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#outlook-output---c-script-example)
+* [C# 脚本 (.csx)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
-#### <a name="outlook-output---c-script-example"></a>Outlook 출력 - C# 스크립트 예제
+#### <a name="outlook-output---c-script-example"></a>Outlook 输出 - C# 脚本示例
 
-다음 예제에서는 Outlook 통해 전자 메일을 보냅니다.
+以下示例通过 Outlook 发送电子邮件。
 
-*function.json* 파일은 Outlook 메시지 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 Outlook 消息输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -869,7 +869,7 @@ Outlook 메시지 출력 바인딩은 Outlook을 통해 메일 메시지를 보�
 }
 ```
 
-C# 스크립트 코드는 호출자의 메일을 쿼리 문자열에 지정된 받는 사람에게 보냅니다.
+该 C# 脚本代码将邮件从调用者发送到查询字符串中指定的收件人：
 
 ```csharp
 using System.Net;
@@ -899,11 +899,11 @@ public class Recipient {
 }
 ```
 
-#### <a name="outlook-output---javascript-example"></a>Outlook 출력 - JavaScript 예제
+#### <a name="outlook-output---javascript-example"></a>Outlook 输出 - JavaScript 示例
 
-다음 예제에서는 Outlook 통해 전자 메일을 보냅니다.
+以下示例通过 Outlook 发送电子邮件。
 
-*function.json* 파일은 Outlook 메시지 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件定义一个包含 Outlook 消息输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -924,7 +924,7 @@ public class Recipient {
 }
 ```
 
-JavaScript 코드는 호출자의 메일을 쿼리 문자열에 지정된 받는 사람에게 보냅니다.
+该 JavaScript 代码将邮件从调用者发送到查询字符串中指定的收件人：
 
 ```js
 module.exports = function (context, req) {
@@ -939,37 +939,37 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="outlook-output---attributes"></a>Outlook 출력 - 특성
+### <a name="outlook-output---attributes"></a>Outlook 输出 - 属性
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) 特性。
 
-### <a name="outlook-output---configuration"></a>Outlook 출력 - 구성
+### <a name="outlook-output---configuration"></a>Outlook 输出 - 配置
 
-다음 표에서는 *function.json* 파일 및 `Outlook` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `Outlook` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 메일 메시지의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Outlook 메시지 출력 바인딩 사용](#outlook-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `outlook`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `out`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**userId**|**UserId**  |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
+|name| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `outlook`。|
+|direction| 不适用 |必需 - 必须设置为 `out`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
 
 <a name="outlook-output-code"></a>
-### <a name="outlook-output---usage"></a>Outlook 출력 - 사용
+### <a name="outlook-output---usage"></a>Outlook 输出 - 用法
 
-이 바인딩에는 다음 Azure AD 권한이 필요합니다.
+此绑定需要以下 Azure AD 权限：
 
-|리소스|사용 권한|
+|资源|权限|
 |--------|--------|
-|Microsoft Graph|사용자로 메일 보내기|
+|Microsoft Graph|以用户身份发送邮件|
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- 문자열
-- 사용자 지정 개체 형식(구조 모델 바인딩 사용)
+- 字符串
+- 自定义对象类型（使用结构化模型绑定）
 
 
 
@@ -978,42 +978,42 @@ module.exports = function (context, req) {
 
 ## <a name="webhooks"></a>Webhook
 
-웹후크를 사용하여 Microsoft Graph의 이벤트에 대응할 수 있습니다. 웹후크를 지원하려면 함수를 만들고, 새로 고치고, _웹후크 구독_에 반응해야 합니다. 완전한 웹후크 솔루션을 구성하려면 다음과 같은 바인딩 조합이 필요합니다.
-- 들어오는 웹후크에 대응할 수 있는 [Microsoft Graph 웹후크 트리거](#webhook-trigger).
-- 기존 구독을 나열하고 필요에 따라 새로 고칠 수 있는 [Microsoft Graph 웹후크 구독 입력 바인딩](#webhook-input).
-- 웹후크 구독을 만들거나 삭제할 수 있는 [Microsoft Graph 웹후크 구독 출력 바인딩](#webhook-output).
+通过 Webhook，你可以响应 Microsoft Graph 中的事件。 若要支持 webhook，需要使用函数创建、刷新和响应 webhook 订阅。 完整的 webhook 解决方案需要组合以下绑定：
+- [Microsoft Graph webhook 触发器](#webhook-trigger)，使你可以响应传入的 webhook。
+- [Microsoft Graph webhook 订阅输入绑定](#webhook-input)，使你可以列出现有的订阅并选择性地更新这些订阅。
+- [Microsoft Graph webhook 订阅输出绑定](#webhook-output)，使你可以创建或删除 webhook 订阅。
 
-바인딩 자체는 Azure AD 권한이 필요 없지만, 대응하려는 리소스 종류와 관련된 권한을 요청해야 합니다. 각 리소스 종류에 필요한 권한 목록은 [구독 권한](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)을 참조하세요.
+这些绑定本身不需要任何 Azure AD 权限，但是你需要请求你想要响应的资源类型的相关权限。 有关每种资源类型所需的权限列表，请参阅[订阅权限](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
 
-웹후크에 대한 자세한 내용은 [Microsoft Graph에서 웹후크 작업]을 참조하세요.
-
-
+有关 webhook 的详细信息，请参阅[使用 Microsoft Graph 中的 webhook]。
 
 
 
-## <a name="webhook-trigger"></a>웹후크 트리거
 
-Microsoft Graph 웹후크 트리거를 사용하면 함수가 Microsoft Graph에서 들어오는 웹후크에 대응할 수 있습니다. 이 트리거의 각 인스턴스는 한 가지 Microsoft Graph 리소스 종류에 대응할 수 있습니다.
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+## <a name="webhook-trigger"></a>Webhook 触发器
 
-* [예제](#webhook-trigger---example)
-* [특성](#webhook-trigger---attributes)
-* [Configuration](#webhook-trigger---configuration)
-* [사용 현황](#webhook-trigger---usage)
+Microsoft Graph webhook 触发器使函数可以响应从 Microsoft Graph 传入的 webhook。 此触发器的每个实例均可响应一个 Microsoft Graph 资源类型。
 
-### <a name="webhook-trigger---example"></a>웹후크 트리거 - 예제
+此节包含以下子节：
 
-언어 관련 예제를 참조하세요.
+* [示例](#webhook-trigger---example)
+* [属性](#webhook-trigger---attributes)
+* [配置](#webhook-trigger---configuration)
+* [使用情况](#webhook-trigger---usage)
 
-* [C# 스크립트(.csx)](#webhook-trigger---c-script-example)
+### <a name="webhook-trigger---example"></a>Webhook 触发器 - 示例
+
+参阅语言特定的示例：
+
+* [C# 脚本 (.csx)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
-#### <a name="webhook-trigger---c-script-example"></a>웹후크 트리거 - C# 스크립트 예제
+#### <a name="webhook-trigger---c-script-example"></a>Webhook 触发器 - C# 脚本示例
 
-다음 예제에서는 들어오는 Outlook 메시지에 대한 웹후크를 처리합니다. 웹후크 트리거를 사용하려면 [구독을 만들고](#webhook-output---example) 만료되지 않도록 [새로 고칠 수 있습니다](#webhook-subscription-refresh).
+以下示例处理传入 Outlook 消息的 webhook。 若要使用 webhook 触发器，可以[创建订阅](#webhook-output---example)，并[刷新订阅](#webhook-subscription-refresh)以防止过期。
 
-*function.json* 파일은 웹후크 트리거를 정의합니다.
+*function.json* 文件定义 webhook 触发器：
 
 ```json
 {
@@ -1029,7 +1029,7 @@ Microsoft Graph 웹후크 트리거를 사용하면 함수가 Microsoft Graph에
 }
 ```
 
-C# 스크립트 코드는 들어오는 이메일 메시지에 반응하여 받는 사람이 보냈고 제목에 "Azure Functions"가 포함된 이메일 메시지의 본문을 기록합니다.
+该 C# 脚本代码将响应传入邮件并记录收件人发送的主题中包含“Azure Functions”的邮件的正文：
 
 ```csharp
 #r "Microsoft.Graph"
@@ -1048,11 +1048,11 @@ public static async Task Run(Message msg, ILogger log)
 }
 ```
 
-#### <a name="webhook-trigger---javascript-example"></a>웹후크 트리거 - JavaScript 예제
+#### <a name="webhook-trigger---javascript-example"></a>Webhook 触发器 - JavaScript 示例
 
-다음 예제에서는 들어오는 Outlook 메시지에 대한 웹후크를 처리합니다. 웹후크 트리거를 사용하려면 [구독을 만들고](#webhook-output---example) 만료되지 않도록 [새로 고칠 수 있습니다](#webhook-subscription-refresh).
+以下示例处理传入 Outlook 消息的 webhook。 若要使用 webhook 触发器，可以[创建订阅](#webhook-output---example)，并[刷新订阅](#webhook-subscription-refresh)以防止过期。
 
-*function.json* 파일은 웹후크 트리거를 정의합니다.
+*function.json* 文件定义 webhook 触发器：
 
 ```json
 {
@@ -1068,7 +1068,7 @@ public static async Task Run(Message msg, ILogger log)
 }
 ```
 
-JavaScript 코드는 들어오는 이메일 메시지에 반응하여 받는 사람이 보냈고 제목에 "Azure Functions"가 포함된 이메일 메시지의 본문을 기록합니다.
+该 JavaScript 代码将响应传入邮件并记录收件人发送的主题中包含“Azure Functions”的邮件的正文：
 
 ```js
 module.exports = function (context) {
@@ -1082,57 +1082,57 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-trigger---attributes"></a>웹후크 트리거 - 특성
+### <a name="webhook-trigger---attributes"></a>Webhook 触发器 - 属性
 
 在[ C#类库](functions-dotnet-class-library.md)中，使用[GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs)特性。
 
-### <a name="webhook-trigger---configuration"></a>웹후크 트리거 - 구성
+### <a name="webhook-trigger---configuration"></a>Webhook 触发器 - 配置
 
-다음 표에서는 *function.json* 파일 및 `GraphWebhookTrigger` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `GraphWebhookTrigger` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 메일 메시지의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Outlook 메시지 출력 바인딩 사용](#outlook-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `graphWebhook`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `trigger`으로 설정해야 합니다.|
-|**resourceType**|**ResourceType**|필수 - 이 함수가 웹후크에 응답해야 하는 그래프 리소스입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>#Microsoft.Graph.Message</code> - Outlook 메시지의 변경 내용입니다.</li><li><code>#Microsoft.Graph.DriveItem</code> - OneDrive 루트 항목의 변경 내용입니다.</li><li><code>#Microsoft.Graph.Contact</code> - Outlook의 개인 연락처에 대한 변경 내용입니다.</li><li><code>#Microsoft.Graph.Event</code> - Outlook 일정 항목의 변경 내용입니다.</li></ul>|
+|name| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `graphWebhook`。|
+|direction| 不适用 |必需 - 必须设置为 `trigger`。|
+|**resourceType**|**ResourceType**|必需 - 此函数应为其响应 webhook 的图表资源。 可以是以下值之一：<ul><li><code>#Microsoft.Graph.Message</code> - 对 Outlook 邮件进行的更改。</li><li><code>#Microsoft.Graph.DriveItem</code> - 对 OneDrive 根项目进行的更改。</li><li><code>#Microsoft.Graph.Contact</code> - 对 Outlook 中的联系人所做的更改。</li><li><code>#Microsoft.Graph.Event</code> - 对 Outlook 日历项所做的更改。</li></ul>|
 
 > [!Note]
-> 함수 앱은 지정된 `resourceType` 값에 대해 등록된 함수 하나만 사용할 수 있습니다.
+> 一个函数应用只能拥有一个针对给定 `resourceType` 值注册的函数。
 
-### <a name="webhook-trigger---usage"></a>웹후크 트리거 - 사용
+### <a name="webhook-trigger---usage"></a>Webhook 触发器 - 用法
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
-- 리소스 종류와 관련된 Microsoft Graph SDK 형식(예: `Microsoft.Graph.Message` 또는 `Microsoft.Graph.DriveItem`)
-- 사용자 지정 개체 형식(구조 모델 바인딩 사용)
+此绑定将向 .NET 函数公开以下类型：
+- 与资源类型相关的 Microsoft Graph SDK 类型，例如 `Microsoft.Graph.Message` 或 `Microsoft.Graph.DriveItem`。
+- 自定义对象类型（使用结构化模型绑定）
 
 
 
 
 <a name="webhook-input"></a>
-## <a name="webhook-input"></a>웹후크 입력
+## <a name="webhook-input"></a>Webhook 输入
 
-Microsoft Graph 웹후크 입력 바인딩을 사용하면 이 함수 앱이 관리하는 구독 목록을 검색할 수 있습니다. 이 바인딩은 함수 앱 스토리지에서 정보를 읽으므로, 앱 외부에서 작성된 다른 구독은 반영하지 않습니다.
+Microsoft Graph webhook 输入绑定使你可以检索此函数应用管理的订阅列表。 此绑定将读取函数应用存储中的信息，并且不会反映在此应用外部创建的其他订阅。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#webhook-input---example)
-* [특성](#webhook-input---attributes)
-* [Configuration](#webhook-input---configuration)
-* [사용 현황](#webhook-input---usage)
+* [示例](#webhook-input---example)
+* [属性](#webhook-input---attributes)
+* [配置](#webhook-input---configuration)
+* [使用情况](#webhook-input---usage)
 
-### <a name="webhook-input---example"></a>웹후크 입력 - 예제
+### <a name="webhook-input---example"></a>Webhook 输入 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#webhook-input---c-script-example)
+* [C# 脚本 (.csx)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
-#### <a name="webhook-input---c-script-example"></a>웹후크 입력 - C# 스크립트 예제
+#### <a name="webhook-input---c-script-example"></a>Webhook 输入 - C# 脚本示例
 
-다음 예제는 호출하는 사용자에 대한 모든 구독을 가져와서 삭제합니다.
+以下示例获取调用者的所有订阅并将其删除。
 
-*function.json* 파일은 삭제 작업을 사용하는 구독 입력 바인딩 및 구독 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件使用删除操作定义了一个包含订阅输入绑定和订阅输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -1165,7 +1165,7 @@ Microsoft Graph 웹후크 입력 바인딩을 사용하면 이 함수 앱이 관
 }
 ```
 
-C# 스크립트 코드는 구독을 가져와서 삭제합니다.
+该 C# 脚本代码获取订阅并将其删除：
 
 ```csharp
 using System.Net;
@@ -1182,11 +1182,11 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-#### <a name="webhook-input---javascript-example"></a>웹후크 입력 - JavaScript 예제
+#### <a name="webhook-input---javascript-example"></a>Webhook 输入 - JavaScript 示例
 
-다음 예제는 호출하는 사용자에 대한 모든 구독을 가져와서 삭제합니다.
+以下示例获取调用者的所有订阅并将其删除。
 
-*function.json* 파일은 삭제 작업을 사용하는 구독 입력 바인딩 및 구독 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件使用删除操作定义了一个包含订阅输入绑定和订阅输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -1219,7 +1219,7 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-JavaScript 코드는 구독을 가져와서 삭제합니다.
+该 JavaScript 代码获取订阅并将其删除：
 
 ```js
 module.exports = function (context, req) {
@@ -1234,26 +1234,26 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-input---attributes"></a>웹후크 입력 - 특성
+### <a name="webhook-input---attributes"></a>Webhook 输入 - 属性
 
 在[ C#类库](functions-dotnet-class-library.md)中，使用[GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs)特性。
 
-### <a name="webhook-input---configuration"></a>웹후크 입력 - 구성
+### <a name="webhook-input---configuration"></a>Webhook 输入 - 配置
 
-다음 표에서는 *function.json* 파일 및 `GraphWebhookSubscription` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 메일 메시지의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Outlook 메시지 출력 바인딩 사용](#outlook-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `graphWebhookSubscription`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `in`으로 설정해야 합니다.|
-|**filter**|**Filter**| `userFromRequest`로 설정하면 바인딩이 호출하는 사용자 소유의 구독만 검색합니다([HTTP 트리거]에만 유효).| 
+|name| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `graphWebhookSubscription`。|
+|direction| 不适用 |必需 - 必须设置为 `in`。|
+|**filter**|**筛选器**| 如果设置为 `userFromRequest`，则此绑定将只检索调用者所拥有的订阅（仅对 [HTTP 触发器]）。| 
 
-### <a name="webhook-input---usage"></a>웹후크 입력 - 사용
+### <a name="webhook-input---usage"></a>Webhook 输入 - 用法
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
+此绑定将向 .NET 函数公开以下类型：
 - string[]
-- 사용자 지정 개체 형식 배열
+- 自定义对象类型数组
 - Newtonsoft.Json.Linq.JObject[]
 - Microsoft.Graph.Subscription[]
 
@@ -1261,29 +1261,29 @@ module.exports = function (context, req) {
 
 
 
-## <a name="webhook-output"></a>웹후크 출력
+## <a name="webhook-output"></a>Webhook 输出
 
-웹후크 구독 출력 바인딩을 사용하면 Microsoft Graph에서 웹후크 구독을 만들고, 삭제하고, 새로 고칠 수 있습니다.
+webhook 订阅输出绑定使你可以在 Microsoft Graph 中创建、删除和刷新 webhook 订阅。
 
-이 섹션은 다음 하위 섹션을 포함합니다.
+此节包含以下子节：
 
-* [예제](#webhook-output---example)
-* [특성](#webhook-output---attributes)
-* [Configuration](#webhook-output---configuration)
-* [사용 현황](#webhook-output---usage)
+* [示例](#webhook-output---example)
+* [属性](#webhook-output---attributes)
+* [配置](#webhook-output---configuration)
+* [使用情况](#webhook-output---usage)
 
-### <a name="webhook-output---example"></a>웹후크 출력 - 예제
+### <a name="webhook-output---example"></a>Webhook 输出 - 示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#webhook-output---c-script-example)
+* [C# 脚本 (.csx)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
-#### <a name="webhook-output---c-script-example"></a>웹후크 출력 - C# 스크립트 예제
+#### <a name="webhook-output---c-script-example"></a>Webhook 输出 - C# 脚本示例
 
-다음 예제는 구독을 만듭니다. 만료되지 않도록 [구독을 새로 고칠 수 있습니다](#webhook-subscription-refresh).
+以下示例创建订阅。 可以[刷新订阅](#webhook-subscription-refresh)以防止过期。
 
-*function.json* 파일은 만들기 작업을 사용하여 구독 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件使用创建操作定义了一个包含订阅输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -1314,7 +1314,7 @@ module.exports = function (context, req) {
 }
 ```
 
-C# 스크립트 코드는 호출하는 사용자가 Outlook 메시지를 받으면 이 함수 앱에 그 사실을 알리는 웹후크를 등록합니다.
+该 C# 脚本代码注册一个 webhook，当调用者收到 Outlook 邮件时它将通知此函数应用：
 
 ```csharp
 using System;
@@ -1329,11 +1329,11 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 }
 ```
 
-#### <a name="webhook-output---javascript-example"></a>웹후크 출력 - JavaScript 예제
+#### <a name="webhook-output---javascript-example"></a>Webhook 输出 - JavaScript 示例
 
-다음 예제는 구독을 만듭니다. 만료되지 않도록 [구독을 새로 고칠 수 있습니다](#webhook-subscription-refresh).
+以下示例创建订阅。 可以[刷新订阅](#webhook-subscription-refresh)以防止过期。
 
-*function.json* 파일은 만들기 작업을 사용하여 구독 출력 바인딩으로 HTTP 트리거를 정의합니다.
+*function.json* 文件使用创建操作定义了一个包含订阅输出绑定的 HTTP 触发器：
 
 ```json
 {
@@ -1364,7 +1364,7 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 }
 ```
 
-JavaScript 코드는 호출하는 사용자가 Outlook 메시지를 받으면 이 함수 앱에 그 사실을 알리는 웹후크를 등록합니다.
+该 JavaScript 代码注册一个 webhook，当调用者收到 Outlook 邮件时它将通知此函数应用：
 
 ```js
 const uuidv4 = require('uuid/v4');
@@ -1375,60 +1375,60 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-output---attributes"></a>웹후크 출력 - 특성
+### <a name="webhook-output---attributes"></a>Webhook 输出 - 属性
 
 在[ C#类库](functions-dotnet-class-library.md)中，使用[GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs)特性。
 
-### <a name="webhook-output---configuration"></a>웹후크 출력 - 구성
+### <a name="webhook-output---configuration"></a>Webhook 输出 - 配置
 
-다음 표에서는 *function.json* 파일 및 `GraphWebhookSubscription` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**name**| n/a |필수 - 메일 메시지의 함수 코드에 사용되는 변수 이름입니다. [코드에서 Outlook 메시지 출력 바인딩 사용](#outlook-output-code)을 참조하세요.|
-|**type**| n/a |필수 - `graphWebhookSubscription`으로 설정해야 합니다.|
-|**direction**| n/a |필수 - `out`으로 설정해야 합니다.|
-|**identity**|**ID**|필수 - 작업 수행에 사용되는 ID입니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>userFromRequest</code> - [HTTP 트리거]에만 유효합니다. 호출하는 사용자의 ID를 사용합니다.</li><li><code>userFromId</code> - 지정된 ID를 사용하여 이전에 로그인한 사용자의 ID를 사용합니다. <code>userId</code> 속성을 참조하세요.</li><li><code>userFromToken</code> - 지정된 토큰으로 표시된 ID를 사용합니다. <code>userToken</code> 속성을 참조하세요.</li><li><code>clientCredentials</code> - 함수 앱의 ID를 사용합니다.</li></ul>|
-|**userId**|**UserId**  |_identity_ 가 `userFromId`으로 설정된 경우에만 필요합니다. 이전에 로그인한 사용자와 연결된 사용자 계정 ID입니다.|
-|**userToken**|**UserToken**|_identity_ 가 `userFromToken`으로 설정된 경우에만 필요합니다. 함수 앱에 유효한 토큰입니다. |
-|**action**|**동작**|필수 - 바인딩이 수행해야 하는 작업을 지정합니다. 다음 값 중 하나를 사용할 수 있습니다.<ul><li><code>create</code> - 새 구독을 등록합니다.</li><li><code>delete</code> - 지정된 구독을 삭제합니다.</li><li><code>refresh</code> - 구독이 만료되지 않도록 지정된 구독을 새로 고칩니다.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|_action_ 이 `create`로 설정된 경우에만 필요합니다. 변경 내용이 모니터링될 Microsoft Graph 리소스를 지정합니다. [Microsoft Graph에서 웹후크 작업]을 참조하세요. |
-|**changeType**|**ChangeType**|_action_ 이 `create`로 설정된 경우에만 필요합니다. 구독하는 리소스에서 알림을 발생시키는 변경 형식을 나타냅니다. 지원되는 값은 `created`, `updated`, `deleted`입니다. 쉼표로 구분된 목록을 사용하여 여러 값을 조합할 수 있습니다.|
+|name| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|type| 不适用 |必需 - 必须设置为 `graphWebhookSubscription`。|
+|direction| 不适用 |必需 - 必须设置为 `out`。|
+|**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
+|**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
+|**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
+|**action**|**Action**|必需 - 指定绑定应执行的操作。 可以是以下值之一：<ul><li><code>create</code> - 注册新订阅。</li><li><code>delete</code> - 删除指定订阅。</li><li><code>refresh</code> - 刷新指定订阅，避免它过期。</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|仅在将 _action_ 设置为 `create` 时为必需。 指定 Microsoft Graph 资源，以监视其更改。 请参阅[使用 Microsoft Graph 中的 webhook]。 |
+|**changeType**|**ChangeType**|仅在将 _action_ 设置为 `create` 时为必需。 指示订阅资源中将触发通知的更改类型。 支持的值为：`created`、`updated`、`deleted`。 可以使用逗号分隔的列表组合多个值。|
 
-### <a name="webhook-output---usage"></a>웹후크 출력 - 사용
+### <a name="webhook-output---usage"></a>Webhook 输出 - 用法
 
-이 바인딩은 .NET 함수에 다음 형식을 노출합니다.
-- 문자열
+此绑定将向 .NET 函数公开以下类型：
+- 字符串
 - Microsoft.Graph.Subscription
 
 
 
 
 <a name="webhook-examples"></a>
-## <a name="webhook-subscription-refresh"></a>웹후크 구독 새로 고침
+## <a name="webhook-subscription-refresh"></a>Webhook 订阅刷新
 
-구독을 새로 고치는 두 가지 방법이 있습니다.
+有两种刷新订阅的方法：
 
-- 애플리케이션 ID를 사용하여 모든 구독을 처리하는 방법. 这将要求管理员同意 Azure Active Directory。Azure Functions 支持的所有语言都可以使用此方法。
-- 각 사용자 ID를 수동으로 바인딩하여 각 구독에 연결된 ID를 사용하는 방법. 이렇게 하려면 일부 사용자 지정 코드에서 바인딩을 수행해야 합니다. 이 방법은 .NET 함수에만 사용할 수 있습니다.
+- 使用应用程序标识处理所有订阅。 这将要求管理员同意 Azure Active Directory。Azure Functions 支持的所有语言都可以使用此方法。
+- 通过手动绑定各个用户 ID 来使用与各个订阅关联的标识。 此方法需要一些自定义代码来执行绑定。 仅 .NET functions 可以使用此方法。
 
-이 섹션에는 이러한 각 방법의 예제가 나와 있습니다.
+本部分包含其中每种方法的示例：
 
-* [앱 ID 예제](#webhook-subscription-refresh---app-identity-example)
-* [사용자 ID 예제](#webhook-subscription-refresh---user-identity-example)
+* [应用标识示例](#webhook-subscription-refresh---app-identity-example)
+* [用户标识示例](#webhook-subscription-refresh---user-identity-example)
 
-### <a name="webhook-subscription-refresh---app-identity-example"></a>웹후크 구독 새로 고침 - 앱 ID 예제
+### <a name="webhook-subscription-refresh---app-identity-example"></a>Webhook 订阅刷新 - 应用标识示例
 
-언어 관련 예제를 참조하세요.
+参阅语言特定的示例：
 
-* [C# 스크립트(.csx)](#app-identity-refresh---c-script-example)
+* [C# 脚本 (.csx)](#app-identity-refresh---c-script-example)
 * JavaScript
 
-### <a name="app-identity-refresh---c-script-example"></a>앱 ID 새로 고침 - C# 스크립트 예제
+### <a name="app-identity-refresh---c-script-example"></a>应用标识刷新 - C# 脚本示例
 
-다음 예제에서는 애플리케이션 ID를 사용하여 구독을 새로 고칩니다.
+以下示例使用应用程序标识来刷新订阅。
 
-*function.json*은 구독 입력 바인딩 및 구독 출력 바인딩으로 타이머 트리거를 정의합니다.
+*function.json* 使用订阅输入绑定和订阅输出绑定定义一个计时器触发器：
 
 ```json
 {
@@ -1456,7 +1456,7 @@ module.exports = function (context, req) {
 }
 ```
 
-C# 스크립트 코드는 구독을 새로 고칩니다.
+该 C# 脚本代码刷新订阅：
 
 ```csharp
 using System;
@@ -1475,11 +1475,11 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 }
 ```
 
-### <a name="app-identity-refresh---c-script-example"></a>앱 ID 새로 고침 - C# 스크립트 예제
+### <a name="app-identity-refresh---c-script-example"></a>应用标识刷新 - C# 脚本示例
 
-다음 예제에서는 애플리케이션 ID를 사용하여 구독을 새로 고칩니다.
+以下示例使用应用程序标识来刷新订阅。
 
-*function.json*은 구독 입력 바인딩 및 구독 출력 바인딩으로 타이머 트리거를 정의합니다.
+*function.json* 使用订阅输入绑定和订阅输出绑定定义一个计时器触发器：
 
 ```json
 {
@@ -1507,7 +1507,7 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 }
 ```
 
-JavaScript 코드는 구독을 새로 고칩니다.
+该 JavaScript 代码刷新订阅：
 
 ```js
 // This template uses application permissions and requires consent from an Azure Active Directory admin.
@@ -1525,11 +1525,11 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-subscription-refresh---user-identity-example"></a>웹후크 구독 새로 고침 - 사용자 ID 예제
+### <a name="webhook-subscription-refresh---user-identity-example"></a>Webhook 订阅刷新 - 用户标识示例
 
-다음 예제에서는 사용자 ID를 사용하여 구독을 새로 고칩니다.
+以下示例使用用户标识来刷新订阅。
 
-*function.json* 파일은 타이머 트리거를 정의하고 함수 코드에 대한 구독 입력 바인딩을 지연합니다.
+*function.json*文件定义一个计时器触发器，并使订阅输入绑定遵从函数代码：
 
 ```json
 {
@@ -1550,7 +1550,7 @@ module.exports = function (context) {
 }
 ```
 
-C# 스크립트 코드는 각 사용자의 ID를 사용하여 코드에서 구독을 새로 고치고, 출력 바인딩을 만듭니다.
+该 C# 脚本代码使用每个用户的标识刷新订阅，并在代码中创建输出绑定：
 
 ```csharp
 using System;
@@ -1583,10 +1583,10 @@ public class UserSubscription {
 }
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Functions 트리거 및 바인딩에 대한 자세한 정보](functions-triggers-bindings.md)
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
-[HTTP 트리거]: functions-bindings-http-webhook.md
-[Microsoft Graph에서 웹후크 작업]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
+[HTTP 触发器]: functions-bindings-http-webhook.md
+[使用 Microsoft Graph 中的 webhook]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

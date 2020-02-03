@@ -1,5 +1,5 @@
 ---
-title: 동적 데이터 마스킹
+title: 动态数据掩码
 description: 动态数据掩码通过对 SQL 数据库和数据仓库的非特权用户屏蔽敏感数据来限制敏感数据的泄露
 services: sql-database
 ms.service: sql-database
@@ -21,44 +21,44 @@ ms.locfileid: "76721908"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>适用于 Azure SQL 数据库和数据仓库的动态数据掩码
 
-SQL Database 동적 데이터 마스킹에서는 권한이 없는 사용자에 대해 중요한 데이터를 마스킹해 표시함으로써 데이터 노출을 제한합니다. 
+SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 
 
-동적 데이터 마스킹을 사용하면 고객이 애플리케이션 계층에 미치는 영향을 최소화하고 표시할 중요한 데이터의 양을 지정할 수 있게 하여 중요한 데이터에 대한 무닥 액세스를 방지할 수 있습니다. 데이터베이스의 데이터는 변경되지 않으면서 지정된 데이터베이스 필드에 대한 쿼리의 결과 집합에서 중요한 데이터를 숨기는 정책 기반 보안 기능입니다.
+动态数据屏蔽允许客户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
 
-예를 들어 콜 센터 서비스 상담원은 신용 카드 번호 중 몇 자리로 발신자를 식별할 수 있지만 이러한 데이터 항목이 서비스 상담원에게 완전히 노출되어서는 안 됩니다. 모든 쿼리의 결과 집합에서 신용 카드 번호의 마지막 4자리를 제외한 모든 숫자를 마스킹하도록 마스킹 규칙을 정의할 수 있습니다. 또 다른 예로, 적합한 데이터 마스크를 정의하여 PII(개인 식별이 가능한 정보) 데이터를 보호하여 준수 규정을 위반하지 않고 문제 해결을 위해 프로덕션 환경을 쿼리할 수 있습니다.
+例如，呼叫中心服务代表可以根据呼叫者的信用卡号的多个数字来识别其身份，但这些数据项不应完全透露给服务代表。 可以定义屏蔽规则，屏蔽任意查询的结果集中任何信用卡号除最后四位数以外的其他所有数字。 另举一例，通过定义适当的数据屏蔽来保护个人身份信息 (PII) 数据，开发人员一方面可以查询生产环境以进行故障排除，同时又不违反法规遵从性要求。
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
-SQL Database 구성 블레이드 또는 설정 블레이드에서 동적 데이터 마스킹 작업을 선택하여 Azure Portal에서 동적 데이터 마스킹 정책을 설정합니다. 不能使用 SQL DW 的门户设置此功能（请使用 Powershell 或 REST API）
+通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。 不能使用 SQL DW 的门户设置此功能（请使用 Powershell 或 REST API）
 
-### <a name="dynamic-data-masking-permissions"></a>동적 데이터 마스킹 사용 권한
+### <a name="dynamic-data-masking-permissions"></a>动态数据屏蔽权限
 
-Azure SQL Database 관리자, 서버 관리자 또는 [SQL 보안 관리자](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) 역할이 동적 데이터 마스킹을 구성할 수 있습니다.
+Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)角色可以配置动态数据掩码。
 
-### <a name="dynamic-data-masking-policy"></a>동적 데이터 마스킹 정책
+### <a name="dynamic-data-masking-policy"></a>动态数据屏蔽策略
 
-* **마스킹에서 제외되는 SQL 사용자** - SQL 쿼리 결과에서 마스킹되지 않은 데이터를 가져오는 SQL 사용자 또는 ADD ID 집합입니다. 관리자 권한이 있는 사용자는 항상 마스킹에서 제외되며 마스크 없이 원본 데이터를 보게 됩니다.
-* **마스킹 규칙** - 마스킹하도록 지정되는 필드와 사용할 마스킹 기능을 정의하는 규칙 집합입니다. 데이터베이스 스키마 이름, 테이블 이름 및 열 이름을 사용하여 마스킹하도록 지정되는 필드를 정의할 수 있습니다.
-* **마스킹 함수** - 각 시나리오에서 데이터 표시를 제어하는 메서드 집합입니다.
+* **不对其进行屏蔽的 SQL 用户** - 一组可以在 SQL 查询结果中获取非屏蔽数据的 SQL 用户或 AAD 标识。 始终不会对拥有管理员权限的用户进行屏蔽，这些用户可以看到没有任何屏蔽的原始数据。
+* **屏蔽规则** - 一组规则，定义将要屏蔽的指定字段，以及使用的屏蔽函数。 可以使用数据库架构名称、表名称和列名称定义指定的字段。
+* **屏蔽函数** - 一组方法，用于控制不同情况下的数据透露。
 
-| 마스킹 기능 | 마스킹 논리 |
+| 屏蔽函数 | 屏蔽逻辑 |
 | --- | --- |
-| **기본값** |**지정된 필드의 데이터 형식에 따라 모든 데이터 마스킹**<br/><br/>• 문자열 데이터 형식(nchar, ntext, nvarchar)의 필드 크기가 4자 미만이면 XXXX개 이하의 X를 사용합니다.<br/>• 숫자 데이터 형식(bigint, bit, decimal, int, money, numeric, smallint, smallmoney, tinyint, float, real)의 경우 0 값을 사용합니다.<br/>• 날짜/시간 데이터 형식(date, datetime2, datetime, datetimeoffset, smalldatetime, time)의 경우 01-01-1900을 사용합니다.<br/>• SQL 변형의 경우 현재 형식의 기본값이 사용됩니다.<br/>•对于 XML，将使用 \<掩码/> 的文档。<br/>• 특수 데이터 형식(타임스탬프 테이블, hierarchyid, GUID, 이진, 이미지, varbinary 공간 형식)의 경우 빈 값을 사용합니다. |
-| **신용 카드** |**지정된 필드의 마지막 4자리를 표시**하고 신용 카드 형식 접두사로 상수 문자열을 추가하는 마스킹 방법입니다.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **Email** |메일 주소 형식의 상수 문자열 접두사를 사용하여 **첫 글자를 표시하고 도메인을 XXX.com으로 바꾸는 마스킹 메서드**입니다.<br/><br/>aXX@XXXX.com |
-| **난수** |선택한 경계 및 실제 데이터 형식에 따라 **난수를 생성하는 마스킹 메서드**입니다. 지정된 경계가 같으면 마스킹 함수로 상수가 사용됩니다.<br/><br/>![탐색 창](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **사용자 지정 텍스트** |**첫 문자와 마지막 문자를 표시**하고 가운데에 사용자 지정 패딩 문자열을 추가하는 마스킹 메서드입니다. 원래 문자열이 노출된 접두사 및 접미사보다 짧은 경우 패딩 문자열만 사용됩니다. <br/>접두사[여백]접미사<br/><br/>![탐색 창](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Default** |**根据指定字段的数据类型完全屏蔽**<br/><br/>对于字符串数据类型（nchar、ntext、nvarchar），将使用 XXXX；如果字段大小小于 4 个字符，则使用更少的 X。<br/>• 对于数字数据类型（bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real），将使用零值。<br/>对于日期/时间数据类型（date、datetime2、datetime、datetimeoffset、smalldatetime、time），将使用 1900-01-01。<br/>• 对于 SQL 变量，将使用当前类型的默认值。<br/>•对于 XML，将使用 \<掩码/> 的文档。<br/>• 对于特殊数据类型（timestamp、table、hierarchyid、GUID、binary、image、varbinary 空间类型），将使用空值。 |
+| **信用卡** |**此屏蔽方法公开指定字段的最后四位数**，并添加一个信用卡格式的常量字符串作为前缀。<br/><br/>XXXX-XXXX-XXXX-1234 |
+| **电子邮件** |**此屏蔽方法公开第一个字母并将域替换为 XXX.com**，并使用一个电子邮件地址格式的常量字符串作为前缀。<br/><br/>aXX@XXXX.com |
+| **随机数** |**此屏蔽方法根据选定边界和实际数据类型生成随机数**。 如果指定的边界相等，则屏蔽函数将是常数。<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **自定义文本** |**此屏蔽方法公开第一个和最后一个字符**，并在中间添加一个自定义填充字符串。 如果原始字符串短于公开的前缀和后缀，则只使用填充字符串。 <br/>前缀 [填充] 后缀<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
-### <a name="recommended-fields-to-mask"></a>마스크 권장 필드
+### <a name="recommended-fields-to-mask"></a>建议进行屏蔽的字段
 
-DDM 권장 사항 엔진은 중요한 필드일 가능성이 있어 마스크 대상이 될 만한 데이터베이스의 특정 필드를 플래그합니다. 포털의 동적 데이터 마스킹 블레이드에는 데이터베이스에 대한 권장 열이 표시됩니다. 이 필드에 마스크를 적용하려면 하나 이상의 열에 대해 **마스크 추가**를 클릭한 다음 **저장**을 클릭하기만 하면 됩니다.
+DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，会看到针对数据库建议的列。 只需针对一个或多个列单击“添加屏蔽”，并单击“保存”，即可对这些字段应用屏蔽。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 为数据库设置动态数据掩码
 
-[Azure SQL Database cmdlet](https://docs.microsoft.com/powershell/module/az.sql)을 참조하세요.
+请参阅 [Azure SQL 数据库 Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>REST API를 사용하여 데이터베이스에 대한 동적 데이터 마스킹 설정
+## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>使用 REST API 为数据库设置动态数据屏蔽
 
-[Azure SQL Database 작업](https://docs.microsoft.com/rest/api/sql/)을 참조하세요.
+请参阅[对 Azure SQL 数据库的操作](https://docs.microsoft.com/rest/api/sql/)。

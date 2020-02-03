@@ -18,13 +18,13 @@ ms.locfileid: "76722806"
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="issue"></a>문제
+## <a name="issue"></a>问题
 
 在 Apache Ambari UI 中，你可能会看到类似于下图的警报：
 
 ![Apache Ambari 陈旧警报示例](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
-## <a name="cause"></a>원인
+## <a name="cause"></a>原因
 
 Ambari 代理持续执行运行状况检查来监视多个资源的运行状况。 每个警报都配置为在预定义的时间间隔运行。 执行每个警报后，Ambari 代理会将状态报告回 Ambari 服务器。 此时，如果 Ambari server 检测到任何警报不能及时运行，则会触发 "Ambari 服务器警报"。 运行状况检查可能无法在其定义的时间间隔内执行的原因有多种：
 
@@ -34,7 +34,7 @@ Ambari 代理持续执行运行状况检查来监视多个资源的运行状况�
 
 * 群集中的少数主机可能会托管多个组件，因此需要运行多个警报。 如果组件数量很大，警报作业可能会错过其计划间隔
 
-## <a name="resolution"></a>해상도
+## <a name="resolution"></a>解决方法
 
 ### <a name="increase-alert-interval-time"></a>增加警报间隔时间
 
@@ -72,9 +72,9 @@ Ambari 代理持续执行运行状况检查来监视多个资源的运行状况�
 
 默认 `alert_grace_period` 值为5秒。 此 `alert_grace_period` 设置在 `/etc/ambari-agent/conf/ambari-agent.ini`中是可配置的。 对于定期触发陈旧警报的那些主机，请尝试将值增加到10。 然后重新启动 Ambari 代理
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-문제가 표시되지 않거나 문제를 해결할 수 없는 경우 다음 채널 중 하나를 방문하여 추가 지원을 받으세요.
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 

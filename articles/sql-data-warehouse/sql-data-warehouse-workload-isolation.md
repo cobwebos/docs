@@ -1,5 +1,5 @@
 ---
-title: 워크로드 격리
+title: 工作负荷隔离
 description: 有关在 Azure SQL 数据仓库中设置工作负荷组的工作负荷隔离的指南。
 services: sql-data-warehouse
 author: ronortloff
@@ -22,13 +22,13 @@ ms.locfileid: "76721024"
 
 本文介绍了如何使用工作负荷组来配置工作负荷隔离、包含资源和应用用于执行查询的运行时规则。
 
-## <a name="workload-groups"></a>워크로드 그룹
+## <a name="workload-groups"></a>工作负荷组
 
 工作负荷组是一组请求的容器，是在系统上配置工作负荷管理（包括工作负荷隔离）的基础。  使用 "[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)" 语法创建工作负荷组。  简单的工作负荷管理配置可以管理数据加载和用户查询。  例如，名为 `wgDataLoads` 的工作负荷组将定义加载到系统中的数据的工作负荷部分。 此外，名为 `wgUserQueries` 的工作负荷组将为运行查询的用户定义工作负荷方面，以便从系统读取数据。
 
 以下各部分将重点介绍工作负荷组如何提供定义隔离、包含、请求资源定义以及遵循执行规则的功能。
 
-## <a name="workload-isolation"></a>워크로드 격리
+## <a name="workload-isolation"></a>工作负荷隔离
 
 工作负荷隔离意味着工作负荷组仅保留资源。  通过在[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零，实现工作负荷隔离。  对于需要遵守严格 Sla 的连续执行工作负荷，隔离确保资源始终可用于工作负荷组。 
 
@@ -85,7 +85,7 @@ ms.locfileid: "76721024"
 
 对共享池中的资源的访问权限将按[重要性](sql-data-warehouse-workload-importance.md)分配。  具有相同重要性级别的请求将按先进先出的方式访问共享池资源。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 - [快速入门：配置工作负荷隔离](quickstart-configure-workload-isolation-tsql.md)
 - [创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

@@ -36,11 +36,11 @@ ms.locfileid: "76720690"
 
 1. 单击要列出其角色分配的用户或组。
 
-1. **Azure 리소스**를 클릭합니다.
+1. 单击“Azure 资源”。
 
     你会在管理组、订阅、资源组或资源等不同范围内看到分配给所选用户或组的角色的列表。 此列表包含您有权读取的所有角色分配。
 
-    ![사용자에 대한 역할 할당](./media/role-assignments-list-portal/azure-resources-user.png)    
+    ![用户的角色分配](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. 若要更改订阅，请单击 "**订阅**" 列表。
 
@@ -48,13 +48,13 @@ ms.locfileid: "76720690"
 
 已分配订阅的 "[所有者](built-in-roles.md#owner)" 角色的用户可以管理订阅中的所有内容。 按照以下步骤列出订阅的所有者。
 
-1. Azure Portal에서 **모든 서비스**, **구독**을 차례로 클릭합니다.
+1. 在 Azure 门户中，依次单击“所有服务”、“订阅”。
 
 1. 单击要列出其所有者的订阅。
 
-1. **액세스 제어(IAM)** 를 클릭합니다.
+1. 单击“访问控制(IAM)”。
 
-1. **역할 할당** 탭을 클릭하여 이 구독의 모든 역할 할당을 봅니다.
+1. 单击“角色分配”选项卡以查看此订阅的所有角色分配。
 
 1. 滚动到 "**所有者**" 部分，查看为此订阅分配了 "所有者" 角色的所有用户。
 
@@ -62,43 +62,43 @@ ms.locfileid: "76720690"
 
 ## <a name="list-role-assignments-at-a-scope"></a>列出范围内的角色分配
 
-1. 在 Azure 门户中，单击 "**所有服务**"，然后选择范围。 예를 들어 **관리 그룹**, **구독**, **리소스 그룹** 또는 리소스를 선택할 수 있습니다.
+1. 在 Azure 门户中，单击 "**所有服务**"，然后选择范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
 1. 单击特定资源。
 
-1. **액세스 제어(IAM)** 를 클릭합니다.
+1. 单击“访问控制(IAM)”。
 
-1. **역할 할당** 탭을 클릭하여 이 범위의 모든 역할 할당을 봅니다.
+1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-   ![액세스 제어 - 역할 할당 탭](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![“访问控制”-“角色分配”选项卡](./media/role-assignments-list-portal/access-control-role-assignments.png)
 
-   역할 할당 탭에서 이 범위에서 액세스 권한이 있는 사용자를 볼 수 있습니다. 일부 역할의 범위는 **이 리소스**이지만 나머지는 다른 범위에서 **(상속)** 됩니다. 액세스 권한은 이 리소스에 특정적으로 할당되거나 부모 범위에 대한 할당에서 상속됩니다.
+   在“角色分配”选项卡上，可以看到谁有权访问此范围。 请注意，有些角色的权限范围已划归到**此资源**，还有一些角色是从另一范围 **(继承的)** 。 访问权限可以专门分配给此资源，也可以从父作用域的分配继承。
 
 ## <a name="list-role-assignments-for-a-user-at-a-scope"></a>列出某个用户在某个范围内的角色分配
 
 若要列出用户、组、服务主体或托管标识的访问权限，请列出其角色分配。 按照以下步骤列出特定范围内单个用户、组、服务主体或托管标识的角色分配。
 
-1. 在 Azure 门户中，单击 "**所有服务**"，然后选择范围。 예를 들어 **관리 그룹**, **구독**, **리소스 그룹** 또는 리소스를 선택할 수 있습니다.
+1. 在 Azure 门户中，单击 "**所有服务**"，然后选择范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
 1. 单击特定资源。
 
-1. **액세스 제어(IAM)** 를 클릭합니다.
+1. 单击“访问控制(IAM)”。
 
-1. **액세스 권한 확인** 탭을 클릭합니다.
+1. 单击“检查访问权限”选项卡。
 
-    ![액세스 제어 - 액세스 권한 확인 탭](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![“访问控制”-“检查访问权限”选项卡](./media/role-assignments-list-portal/access-control-check-access.png)
 
-1. **찾기** 목록에서 액세스 권한을 확인하려는 보안 주체의 유형을 선택합니다.
+1. 在“查找”列表中，选择要检查访问权限的安全主体类型。
 
-1. 검색 상자에서 표시 이름, 이메일 주소 또는 개체 ID에 대한 디렉터리를 검색할 문자열을 입력합니다.
+1. 在搜索框中，输入字符串以在目录中搜索显示名称、电子邮件地址或对象标识符。
 
-    ![액세스 권한 확인 선택 목록](./media/role-assignments-list-portal/check-access-select.png)
+    ![“检查访问权限”选择列表](./media/role-assignments-list-portal/check-access-select.png)
 
-1. 보안 주체를 클릭하여 **할당** 창을 엽니다.
+1. 单击安全主体以打开“分配”窗格。
 
-    ![할당 창](./media/role-assignments-list-portal/check-access-assignments.png)
+    ![分配窗格](./media/role-assignments-list-portal/check-access-assignments.png)
 
-    이 창에서 선택한 보안 주체 및 범위에 할당된 역할을 볼 수 있습니다. 이 범위에 거부 할당이 있거나 이 범위에 상속된 거부 할당이 있으면 나열됩니다.
+    在此窗格中，可以看到分配给所选安全主体和范围的角色。 如果此范围内有任何拒绝分配或继承到此范围的角色，则会将其列出。
 
 ## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>为系统分配的托管标识列出角色分配
 
@@ -106,7 +106,7 @@ ms.locfileid: "76720690"
 
 1. 在左侧菜单中，单击 "**标识**"。
 
-    ![시스템 할당 관리 ID](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![系统分配的托管标识](./media/role-assignments-list-portal/identity-system-assigned.png)
 
 1. 在 "**角色分配**" 下，单击 **"显示分配给此托管标识的 Azure RBAC 角色"** 。
 
@@ -118,7 +118,7 @@ ms.locfileid: "76720690"
 
 1. 在 Azure 门户中，打开一个系统分配的托管标识。
 
-1. **Azure 리소스**를 클릭합니다.
+1. 单击“Azure 资源”。
 
     在管理组、订阅、资源组或资源等不同范围内，你会看到分配给所选用户分配的托管标识的角色的列表。 此列表包含您有权读取的所有角色分配。
 
@@ -136,7 +136,7 @@ ms.locfileid: "76720690"
 
 ![访问控制-添加角色分配警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure RBAC 和 Azure 门户添加或删除角色分配](role-assignments-portal.md)
-- [Azure 리소스에 대한 RBAC 문제 해결](troubleshooting.md)
+- [ Azure 资源 RBAC 故障排除](troubleshooting.md)

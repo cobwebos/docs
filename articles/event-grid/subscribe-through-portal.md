@@ -1,5 +1,5 @@
 ---
-title: 포털을 통해 Azure Event Grid 구독
+title: 通过门户创建 Azure 事件网格订阅
 description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
 services: event-grid
 author: spelluru
@@ -14,58 +14,58 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721500"
 ---
-# <a name="subscribe-to-events-through-portal"></a>포털을 통해 이벤트 구독
+# <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
-이 문서에서는 포털을 통해 Event Grid 구독을 만드는 방법을 설명합니다.
+本文介绍了如何通过门户创建事件网格订阅。
 
-## <a name="create-event-subscriptions"></a>이벤트 구독 만들기
+## <a name="create-event-subscriptions"></a>创建事件订阅
 
-지원되는 [이벤트 원본](event-sources.md)에 대한 Event Grid 구독을 만들려면 다음 단계를 따르세요. 이 문서에서는 Azure 구독에 대한 Event Grid 구독을 만드는 방법을 설명합니다.
+若要针对任何受支持的[事件源](event-sources.md)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
 
-1. **모든 서비스**를 선택합니다.
+1. 选择“所有服务”。
 
-   ![모든 서비스 선택](./media/subscribe-through-portal/select-all-services.png)
+   ![选择所有服务](./media/subscribe-through-portal/select-all-services.png)
 
-1. **Event Grid 구독**을 검색하고 사용 가능한 옵션에서 선택합니다.
+1. 搜索“事件网格订阅”，并从可用选项中选择它。
 
-   ![검색](./media/subscribe-through-portal/search.png)
+   ![搜索](./media/subscribe-through-portal/search.png)
 
-1. **+ 이벤트 구독**을 선택합니다.
+1. 选择“+ 事件订阅”。
 
-   ![구독 추가](./media/subscribe-through-portal/add-subscription.png)
+   ![添加订阅](./media/subscribe-through-portal/add-subscription.png)
 
-1. 만들려는 구독 유형을 선택합니다. 예를 들어 Azure 구독에 대한 이벤트를 구독하려면 **Azure 구독** 및 대상 구독을 선택합니다.
+1. 选择要创建的订阅的类型。 例如，若要订阅你的 Azure 订阅的事件，请选择“Azure 订阅”，然后选择目标订阅。
 
-   ![Azure 구독 선택](./media/subscribe-through-portal/azure-subscription.png)
+   ![选择 Azure 订阅](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 이 이벤트 원본에 대한 모든 이벤트 유형을 구독하려면 **모든 이벤트 유형 구독** 옵션을 선택한 상태로 둡니다. 그렇지 않을 경우 이 구독의 이벤트 유형을 선택합니다.
+1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”选项保持选中状态。 否则，请为此订阅选择事件类型。
 
-   ![이벤트 유형 선택](./media/subscribe-through-portal/select-event-types.png)
+   ![选择事件类型](./media/subscribe-through-portal/select-event-types.png)
 
-1. 이벤트 및 구독 이름을 처리하는 엔드포인트 같은 이벤트 구독에 대 한 추가 정보를 제공합니다.
+1. 提供关于事件订阅的其他详细信息，例如，用于处理事件的终结点以及订阅名称。
 
-   ![구독 세부 정보 제공](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![提供订阅详细信息](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 배달 못한 편지를 사용하도록 설정하고 재시도 정책을 사용자 지정하려면 **추가 기능**을 선택합니다.
+1. 若要启用死信和自定义重试策略，请选择“其他功能”。
 
-   ![추가 기능 선택](./media/subscribe-through-portal/select-additional-features.png)
+   ![选择其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
-1. 제공되지 않은 이벤트를 저장하는 데 사용할 컨테이너를 선택하고 재시도를 전송하는 방법을 설정합니다.
+1. 选择用于存储未传递事件的容器，并设置重试的发送方式。
 
-   ![배달 못한 편지 및 재시도 사용](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![启用死信并重试](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 완료되면 **만들기**를 선택합니다.
+1. 完成后，选择“创建”。
 
-## <a name="create-subscription-on-resource"></a>리소스에 대한 구독 만들기
+## <a name="create-subscription-on-resource"></a>创建关于资源的订阅
 
-일부 이벤트 원본은 해당 리소스의 포털 인터페이스를 통해 이벤트 구독을 생성하도록 지원합니다. 이벤트 원본을 선택하고 왼쪽 창에서 **이벤트**를 찾습니다.
+某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”。
 
-![구독 세부 정보 제공](./media/subscribe-through-portal/resource-events.png)
+![提供订阅详细信息](./media/subscribe-through-portal/resource-events.png)
 
-포털은 해당 원본과 관련된 이벤트 구독을 만드는 방법에 대한 옵션을 제공합니다.
+门户提供了用于创建与该源相关的事件订阅的选项。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-* 이벤트 배달 및 다시 시도에 대한 자세한 내용은 [Event Grid 메시지 배달 및 다시 시도](delivery-and-retry.md)를 참조하세요.
-* Event Grid에 대한 소개는 [Event Grid 정보](overview.md)를 참조하세요.
-* Event Grid를 빠르게 시작하려면 [Azure Event Grid를 사용하여 사용자 지정 이벤트 만들기 및 라우팅](custom-event-quickstart.md)을 참조하세요.
+* 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
+* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
+* 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

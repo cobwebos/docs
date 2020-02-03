@@ -1,6 +1,6 @@
 ---
-title: pandas를 사용하여 Azure Blob Storage에서 데이터 탐색 - Team Data Science Process
-description: pandas Python 패키지를 사용하여 Azure Blob 컨테이너에 저장된 데이터를 탐색하는 방법
+title: 使用 pandas 浏览 Azure blob 存储中的数据 - Team Data Science Process
+description: 如何使用 pandas Python 包浏览存储在 Azure blob 容器中的数据。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,22 +18,22 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722180"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>pandas를 사용하여 Azure Blob Storage의 데이터 탐색
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
 
-이 문서는 [pandas](https://pandas.pydata.org/) Python 패키지를 사용하여 Azure Blob 컨테이너에 저장된 데이터를 탐색하는 방법에 대해 설명합니다.
+本文介绍如何使用 [pandas](https://pandas.pydata.org/) Python 包浏览存储在 Azure blob 容器中的数据。
 
-이 작업은 [팀 데이터 과학 프로세스](overview.md)의 단계입니다.
+此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>필수 조건
-이 문서에서는 사용자가 다음 작업을 수행한 것으로 가정합니다.
+## <a name="prerequisites"></a>必备条件
+本文假设用户具备以下条件：
 
-* Azure Storage 계정을 만들었습니다. 지침이 필요한 경우 [Azure Storage 계정 만들기](../../storage/common/storage-account-create.md)
-* Azure Blob Storage 계정에 데이터를 저장합니다. 지침이 필요한 경우 [Azure Storage에서 데이터 이동](../../storage/common/storage-moving-data.md)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
+* 将数据存储在 Azure Blob 存储帐户中。 如果需要说明，请参阅[将数据移动到和移出 Azure 存储](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>pandas DataFrame에 데이터 로드
-데이터 세트를 탐색 및 조작하려면 먼저 Blob 원본에서 로컬 파일로 다운로드한 다음, pandas DataFrame에 로드해야 합니다. 이 절차를 수행하는 단계는 다음과 같습니다.
+## <a name="load-the-data-into-a-pandas-dataframe"></a>将数据加载到 pandas 数据帧
+要浏览和操作数据集，首先必须从 blob 源将数据集下载到本地文件，然后将数据集加载到 pandas 数据帧。 下面是此过程的所需步骤：
 
-1. 通过以下使用 Blob 服务的 Python 代码示例，从 Azure blob 下载数据。 다음 코드의 변수를 사용자가 원하는 값으로 대체합니다.
+1. 通过以下使用 Blob 服务的 Python 代码示例，从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -53,25 +53,25 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-1. 다운로드한 파일에서 pandas DataFrame으로 데이터를 읽습니다.
+1. 从下载的文件中将数据读入 pandas 数据帧。
 
 ```python
 # LOCALFILE is the file path
 dataframe_blobdata = pd.read_csv(LOCALFILE)
 ```
 
-이제 데이터를 탐색하고 이 데이터 세트에 기능을 생성할 준비가 완료되었습니다.
+现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="blob-dataexploration"></a>pandas를 사용 하 여 데이터 탐색의 예
-다음은 pandas를 사용하여 데이터를 탐색하는 방식의 예입니다.
+## <a name="blob-dataexploration"></a>使用 pandas 浏览数据的示例
+下方举例说明了如何使用 pandas 浏览数据：
 
-1. **행** 및 열 수
+1. 检查**行数和列数**
 
 ```python
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-1. 다음 데이터 세트에서 첫 번째 또는 마지막 몇 **행**을 **검사**합니다.
+1. 在下方数据集中**检查**前面或后面几**行**：
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,47 +79,47 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-1. 다음 샘플 코드를 사용하여 각 열을 가져온 **데이터 유형** 을 확인합니다.
+1. 使用如下示例代码检查每列导入的**数据类型**
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-1. 다음과 같이 데이터 집합의 열에 대한 **기본 통계** 를 확인합니다.
+1. 如下所示，检查数据中列的**基本统计信息**
 
 ```python
 dataframe_blobdata.describe()
 ```
 
-1. 다음과 같이 각 열 값에 대한 항목 수를 확인합니다.
+1. 如下所示，查看每列值的条目数
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-1. **누락된 값을 계산** 합니다.
+1. 使用下方示例代码计算每列中的**缺失值**与实际项目数
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-1. 데이터의 특정 열에 대해 **누락된 값** 이 있는 경우 다음과 같이 해당 데이터를 삭제할 수 있습니다.
+1. 如果数据中的特定列存在**缺失值**，可按如下方法进行替代：
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
 dataframe_blobdata_noNA.shape
 ```
 
-누락된 값을 대체하는 또 다른 방법으로 mode 함수가 있습니다.
+另一种替代缺失值的方法是使用模式函数：
 
 ```python
 dataframe_blobdata_mode = dataframe_blobdata.fillna(
     {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-1. 가변 bin을 사용하여 **히스토그램** 플롯을 만들고 변수 분포 그리기
+1. 使用数量不定的量化创建**直方图**绘制出变量分布情况
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -127,7 +127,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-1. 산점도 또는 기본 제공 상관관계 함수를 사용하여 변수 간의 **상관관계** 를 살펴봅니다.
+1. 使用散点图或内置关联函数查看变量间的**关联**
 
 ```python
 # relationship between column_a and column_b using scatter plot

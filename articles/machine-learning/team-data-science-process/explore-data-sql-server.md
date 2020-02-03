@@ -1,6 +1,6 @@
 ---
-title: SQL Server 가상 머신에서 데이터 탐색 - Team Data Science Process
-description: SQL 또는 Python과 같은 프로그래밍 언어를 사용하여 Azure에서 SQL Server VM에 저장된 데이터를 탐색하는 방법입니다.
+title: 浏览 SQL Server 虚拟机中的数据 - Team Data Science Process
+description: 如何使用 SQL 或编程语言（如 Python）浏览 Azure 上的 SQL Server VM 中存储的数据。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,54 +18,54 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720089"
 ---
-# <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure의 SQL Server Virtual Machine에서 데이터 탐색
+# <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 
-이 문서에서는 Azure에서 SQL Server VM에 저장된 데이터를 탐색하는 방법을 다룹니다. 使用 SQL 或 Python 来检查数据。
+本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 使用 SQL 或 Python 来检查数据。
 
-이 작업은 [팀 데이터 과학 프로세스](overview.md)의 단계입니다.
+此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
 > [!NOTE]
-> 이 문서의 샘플 SQL 문에서는 데이터가 SQL Server에 있는 것으로 가정합니다. 그렇지 않은 경우 데이터를 SQL Server로 이동하는 방법은 클라우드 데이터 과학 프로세스 맵을 참조하세요.
+> 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。
 > 
 > 
 
-## <a name="sql-dataexploration"></a>SQL 스크립트로 SQL 데이터 탐색
-SQL Server에서 데이터 저장소를 탐색하는 데 사용할 수 있는 몇 가지 샘플 SQL 스크립트는 다음과 같습니다.
+## <a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
+以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
-1. 일별 관찰 수 가져오기
+1. 获取每个工作日观测值的计数
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. 범주 열의 수준 가져오기
+2. 获取某分类列中的级别
    
     `select  distinct <column_name> from <databasename>`
-3. 두 범주 열 조합의 수준 수 가져오기 
+3. 获取两个分类列组合中的级别数 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. 숫자 열의 분포 가져오기
+4. 获取数字列的分布
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> 실용적인 예제에는 [NYC Taxi 데이터 세트](https://www.andresmh.com/nyctaxitrips/)를 사용할 수 있으며, 엔드투엔드 연습에 [IPython Notebook 및 SQL Server를 사용한 NYC 데이터 랭글링](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)이라는 IPNB를 참조할 수 있습니다.
+> 有关实际的示例，可以使用 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/)，并参考名为[使用 IPython Notebook 和 SQL Server 的 NYC 数据整理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)的IPNB，以获取端到端的演练。
 > 
 > 
 
-## <a name="python"></a>Python으로 SQL 데이터 탐색
-데이터가 SQL Server에 있는 경우 Python을 사용하여 데이터를 탐색하고 기능을 생성하는 작업은 [데이터 과학 환경에서 Azure Blob 데이터 처리](data-blob.md)에 설명된 대로 Python을 사용하여 Azure Blob의 데이터를 처리하는 것과 유사합니다. 将数据从数据库加载到 pandas 数据帧中，然后可以进一步处理。 데이터베이스에 연결하여 데이터 프레임으로 데이터를 로드하는 프로세스는 이 섹션에 설명되어 있습니다.
+## <a name="python"></a>使用 Python 浏览 SQL 数据
+如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据从数据库加载到 pandas 数据帧中，然后可以进一步处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
 
-다음 연결 문자열 형식은 pyodbc를 사용(servername, dbname, username 및 password를 특정 값으로 대체)하여 Python에서 SQL Server 데이터베이스 연결하는 데 사용될 수 있습니다.
+以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python의 [Pandas 라이브러리](https://pandas.pydata.org/) 에서는 Python 프로그래밍용 데이터 조작을 위한 다양한 데이터 구조 및 데이터 분석 도구 집합을 제공합니다. 다음 코드는 SQL Server 데이터베이스에서 Pandas 데이터 프레임으로 반환되는 결과를 읽습니다.
+Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-이제 [데이터 과학 환경에서 Azure Blob 데이터 처리](data-blob.md)토픽에 설명된 대로 Pandas DataFrame으로 작업할 수 있습니다.
+现可使用 Pandas 数据帧，如本主题中[处理数据科学环境中的 Azure Blob 数据](data-blob.md)所述。
 
-## <a name="the-team-data-science-process-in-action-example"></a>실행 중인 팀 데이터 과학 프로세스 예제
-공용 데이터 세트를 사용하여 Cortana 분석 프로세스의 엔드투엔드 연습 예제는 [실행 중인 팀 데이터 과학 프로세스: SQL Server 사용](sql-walkthrough.md)을 참조하세요.
+## <a name="the-team-data-science-process-in-action-example"></a>运行中的团队数据科学过程示例
+有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
 

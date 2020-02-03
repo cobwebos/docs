@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719358"
 ---
-# <a name="train-clustering-model"></a>클러스터링 모델 학습
+# <a name="train-clustering-model"></a>训练聚类模型
 
 本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
@@ -45,7 +45,7 @@ ms.locfileid: "76719358"
 
 7. 运行管道，或单击 "**训练聚类模型**" 模块并选择 "**运行所选项**"。  
   
-### <a name="results"></a>결과
+### <a name="results"></a>结果
 
 完成训练后：
 
@@ -53,6 +53,6 @@ ms.locfileid: "76719358"
 
 + 若要从模型中生成评分，请使用 "[将数据分配给群集](assign-data-to-clusters.md)"。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

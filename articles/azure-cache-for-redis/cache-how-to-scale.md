@@ -1,5 +1,5 @@
 ---
-title: Azure Cache for Redis 크기를 조정하는 방법
+title: 如何缩放 Azure Redis 缓存
 description: 了解如何使用 Azure 门户和工具（如 Azure PowerShell 和 Azure CLI）缩放 Azure Cache for Redis 实例。
 author: yegu-ms
 ms.author: yegu
@@ -13,70 +13,70 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76714453"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis 크기를 조정하는 방법
-Azure Cache for Redis에는 캐시 크기와 기능을 유연하게 선택할 수 있는 다양한 캐시 제안이 있습니다. 캐시를 만든 후 애플리케이션 요구 사항이 변경되면 캐시의 크기 및 가격 책정 계층의 크기를 조정할 수 있습니다. 이 문서에서는 Azure Portal과 Azure PowerShell 및 Azure CLI와 같은 도구를 사용하여 캐시 크기를 조정하는 방법을 보여 줍니다.
+# <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
+Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
 
-## <a name="when-to-scale"></a>크기를 조정하는 경우
-Azure Cache for Redis의 [모니터링](cache-how-to-monitor.md) 기능을 사용하여 캐시의 상태 및 성능을 모니터링하고 캐시 크기를 조정해야 하는 경우를 결정할 수 있습니다. 
+## <a name="when-to-scale"></a>何时缩放
+可以使用 Azure Redis 缓存的[监视](cache-how-to-monitor.md)功能来监视缓存的运行状况和性能，并帮助确定何时缩放缓存。 
 
-다음 메트릭을 모니터링하면 크기를 조정해야 하는지 결정하는데 도움이 될 수 있습니다.
+可以监视以下指标以帮助确定是否需要进行缩放。
 
-* Redis 서버 부하
-* 메모리 사용량
-* 네트워크 대역폭
-* CPU 사용량
+* Redis 服务器负载
+* 内存用量
+* 网络带宽
+* CPU ㄏノ秖
 
-캐시가 더 이상 애플리케이션 요구 사항을 충족시키지 못한다고 판단되면 애플리케이션에 적합하도록 더 크거나 더 작은 캐시 가격 책정 계층으로 규모를 변경할 수 있습니다. 사용할 캐시 가격 책정 계층을 결정하는 방법에 대한 자세한 내용은 [사용해야 하는 Azure Cache for Redis 제안 및 크기는 어떻게 되나요?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)를 참조하세요.
+如果确定缓存不再满足应用程序的要求，可以更改到应用程序所需的更大或更小缓存定价层。 有关确定应使用哪个缓存定价层的详细信息，请参阅 [我应当使用哪些 Azure Redis 缓存套餐和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
-## <a name="scale-a-cache"></a>캐시 크기 조정
-캐시 크기를 조정하려면 [Azure Portal](cache-configure.md#configure-azure-cache-for-redis-settings)에서 [캐시를 찾은](https://portal.azure.com) 다음 **리소스 메뉴**에서 **크기 조정**을 클릭합니다.
+## <a name="scale-a-cache"></a>缩放缓存
+要缩放缓存，请在 [Azure 门户](cache-configure.md#configure-azure-cache-for-redis-settings)中[浏览到缓存](https://portal.azure.com)，并从“资源菜单”单击“缩放”。
 
-![확장성](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-**가격 책정 계층 선택** 블레이드에서 원하는 가격 책정 계층을 선택하고 **선택**을 클릭합니다.
+从“选择定价层”边栏选项卡选择所需的定价层，并单击“选择”。
 
-![가격 책정 계층][redis-cache-pricing-tier-blade]
+![定价层][redis-cache-pricing-tier-blade]
 
 
-다른 가격 책정 계층으로 크기를 조정할 수 있지만 다음과 같은 제한 사항이 있습니다.
+可以扩展到不同定价层，但有以下限制：
 
-* 높은 가격 책정 계층에서 낮은 가격 책정 계층으로 크기를 조정할 수 없습니다.
-  * **프리미엄** 캐시에서 **표준** 또는 **기본** 캐시로 축소할 수 없습니다.
-  * **표준** 캐시에서 **기본** 캐시로 축소할 수 없습니다.
-* **기본** 캐시에서 **표준** 캐시로 크기를 조정할 수 있지만 동시에 크기를 변경할 수는 없습니다. 다른 크기가 필요한 경우 후속 크기 조정 작업을 통해 원하는 크기로 조정할 수 있습니다.
-* **기본** 캐시에서 바로 **프리미엄** 캐시로 확장할 수 없습니다. 먼저 크기 조정 작업을 통해 **기본**에서 **표준**으로 확장한 다음, 후속 크기 조정 작업을 통해 **표준**에서 **프리미엄**으로 확장합니다.
-* 더 큰 크기에서 **C0(250MB)** 크기로 축소할 수 없습니다.
+* 不能从较高的定价层缩放到较低的定价层。
+  * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
+  * 不能从**标准**缓存向下缩放到**基本**缓存。
+* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
+* 不能从较大的大小减小为 **C0 (250 MB)** 。
  
-캐시의 크기를 새 가격 책정 계층으로 조정하는 동안에는 **Azure Cache for Redis** 블레이드에 **크기 조정 중** 상태가 표시됩니다.
+当缓存缩放到新的定价层，会在“Azure Redis 缓存”边栏选项卡中显示**缩放**状态。
 
-![크기 조정][redis-cache-scaling]
+![扩展][redis-cache-scaling]
 
-크기 조정이 완료되면 상태가 **Scaling(크기 조정 중)** 에서 **실행 중**으로 변경됩니다.
+缩放完成后，状态将从**正在缩放**更改为**正在运行**。
 
-## <a name="how-to-automate-a-scaling-operation"></a>크기 조정 작업을 자동화하는 방법
-Azure Portal에서 캐시 인스턴스의 크기를 조정할 뿐만 아니라 PowerShell cmdlet, Azure CLI를 사용하거나 MAML(Microsoft Azure Management Libraries)을 사용하여 크기를 조정할 수 있습니다. 
+## <a name="how-to-automate-a-scaling-operation"></a>如何自动执行缩放操作
+除了在 Azure 门户中缩放缓存实例以外，还可以使用 PowerShell cmdlet、Azure CLI 和 Microsoft Azure 管理库 (MAML) 进行缩放。 
 
-* [PowerShell을 사용하여 크기 조정](#scale-using-powershell)
-* [Azure CLI를 사용한 크기 조정](#scale-using-azure-cli)
-* [MAML을 사용하여 크기 조정](#scale-using-maml)
+* [使用 PowerShell 进行缩放](#scale-using-powershell)
+* [使用 Azure CLI 进行缩放](#scale-using-azure-cli)
+* [使用 MAML 进行缩放](#scale-using-maml)
 
-### <a name="scale-using-powershell"></a>PowerShell을 사용하여 크기 조정
+### <a name="scale-using-powershell"></a>使用 PowerShell 进行缩放
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-`Size`, `Sku` 또는 `ShardCount` 속성을 수정할 때 [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet를 사용하여 PowerShell을 통해 Azure Cache for Redis 인스턴스의 크기를 조정할 수 있습니다. 다음 예제에서는 `myCache` 라는 캐시를 2.5GB 캐시로 크기를 조정하는 방법을 보여 줍니다. 
+修改 [、](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) 或 `Size` 属性后，可以在 PowerShell 中使用 `Sku`Set-AzRedisCache`ShardCount` cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-PowerShell을 사용하여 크기를 조정하는 방법에 대한 자세한 내용은 [Powershell을 사용하여 Azure Cache for Redis 크기 조정](cache-how-to-manage-redis-cache-powershell.md#scale)을 참조하세요.
+有关使用 PowerShell 进行缩放的详细信息，请参阅[使用 PowerShell 缩放 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#scale)。
 
-### <a name="scale-using-azure-cli"></a>Azure CLI를 사용한 크기 조정
-Azure CLI를 사용하여 Azure Cache for Redis 인스턴스의 크기를 조정하려면 `azure rediscache set` 명령을 호출하고 원하는 크기 조정 작업에 따라 새 크기, SKU, 또는 클러스터 크기가 포함된 원하는 구성 변경 내용을 전달합니다.
+### <a name="scale-using-azure-cli"></a>使用 Azure CLI 进行缩放
+若要使用 Azure CLI 缩放 Azure Redis 缓存实例，请调用 `azure rediscache set` 命令并传入所需的配置更改，包括新大小、sku 或群集大小，具体取决于所需的缩放操作。
 
-Azure CLI를 사용하여 크기를 조정하는 방법에 대한 자세한 내용은 [기존 Azure Cache for Redis에 대한 설정 변경](cache-manage-cli.md#scale)을 참조하세요.
+有关使用 Azure CLI 进行缩放的详细信息，请参阅[更改现有 Azure Redis 缓存的设置](cache-manage-cli.md#scale)。
 
-### <a name="scale-using-maml"></a>MAML을 사용하여 크기 조정
-[MAML(Microsoft Azure Management Libraries)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)을 사용하여 Azure Cache for Redis 인스턴스의 크기를 조정하려면 `IRedisOperations.CreateOrUpdate` 메서드를 호출하고 `RedisProperties.SKU.Capacity`에 대한 새 크기를 전달합니다.
+### <a name="scale-using-maml"></a>使用 MAML 进行缩放
+若要使用 [Microsoft Azure 管理库 (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) 缩放 Azure Redis 缓存实例，请调用 `IRedisOperations.CreateOrUpdate` 并传入 `RedisProperties.SKU.Capacity` 的新大小。
 
     static void Main(string[] args)
     {
@@ -96,80 +96,80 @@ Azure CLI를 사용하여 크기를 조정하는 방법에 대한 자세한 내�
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
 
-자세한 내용은 [MAML을 사용하여 Azure Cache for Redis 관리](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) 샘플을 참조하세요.
+有关详细信息，请参阅[使用 MAML 管理 Azure Redis 缓存](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML)示例。
 
-## <a name="scaling-faq"></a>크기 조정 FAQ
-Azure Cache for Redis 크기 조정에 대해 자주 묻는 질문과 대답이 나와 있는 목록은 다음과 같습니다.
+## <a name="scaling-faq"></a>关于缩放的常见问题
+以下列表包含有关 Azure Redis 缓存缩放的常见问题的解答。
 
-* [프리미엄 캐시로 확장하거나, 이 캐시를 축소하거나 이 캐시 내에서 크기를 조정할 수 있나요?](#can-i-scale-to-from-or-within-a-premium-cache)
-* [크기를 조정한 후 내 캐시 이름 또는 액세스 키를 변경해야 하나요?](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
-* [크기 조정은 어떻게 수행되나요?](#how-does-scaling-work)
-* [크기를 조정하는 동안 캐시의 데이터가 손실되나요?](#will-i-lose-data-from-my-cache-during-scaling)
-* [사용자 지정 데이터베이스 설정이 크기 조정 하는 동안에 영향을 받나요?](#is-my-custom-databases-setting-affected-during-scaling)
-* [크기를 조정하는 동안 내 캐시를 사용할 수 있나요?](#will-my-cache-be-available-during-scaling)
-* 지역 복제를 구성하여 내 캐시의 크기를 조정하거나 클러스터의 분할된 데이터베이스를 변경할 수 없는 이유는 무엇인가요?
-* [지원되지 않는 작업](#operations-that-are-not-supported)
-* [크기 조정은 시간이 얼마나 걸리나요?](#how-long-does-scaling-take)
-* [크기 조정이 완료되었는지 어떻게 알 수 있나요?](#how-can-i-tell-when-scaling-is-complete)
+* [可以向上缩放到高级缓存，或在其中向下缩放吗？](#can-i-scale-to-from-or-within-a-premium-cache)
+* [缩放后，我是否需要更改缓存名称或访问密钥？](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
+* [缩放的工作原理？](#how-does-scaling-work)
+* [在缩放过程中是否会丢失缓存中的数据？](#will-i-lose-data-from-my-cache-during-scaling)
+* [在缩放过程中，自定义数据库设置是否会受影响？](#is-my-custom-databases-setting-affected-during-scaling)
+* [在缩放过程中，缓存是否可用？](#will-my-cache-be-available-during-scaling)
+* 配置异地复制后，我为什么不能在群集中缩放缓存或更改分片？
+* [不支持的操作](#operations-that-are-not-supported)
+* [缩放需要多长时间？](#how-long-does-scaling-take)
+* [如何判断缩放何时完成？](#how-can-i-tell-when-scaling-is-complete)
 
-### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>프리미엄 캐시로 확장하거나, 이 캐시를 축소하거나 이 캐시 내에서 크기를 조정할 수 있나요?
-* **프리미엄** 캐시에서 **기본** 또는 **표준** 가격 책정 계층으로 축소할 수 없습니다.
-* 하나의 **프리미엄** 캐시 가격 책정 계층에서 다른 프리미엄 캐시 가격 책정 계층으로 크기를 조정할 수 있습니다.
-* **기본** 캐시에서 바로 **프리미엄** 캐시로 확장할 수 없습니다. 먼저 크기 조정 작업을 통해 **기본**에서 **표준**으로 확장한 다음, 후속 크기 조정 작업을 통해 **표준**에서 **프리미엄**으로 확장합니다.
-* **프리미엄** 캐시를 만들 때 클러스터링을 사용하도록 설정했으면 [클러스터 크기를 변경](cache-how-to-premium-clustering.md#cluster-size)할 수 있습니다. 클러스터를 사용하지 않고 캐시를 만든 경우 나중에 클러스터링를 구성할 수 있습니다.
+### <a name="can-i-scale-to-from-or-within-a-premium-cache"></a>可以向上缩放到高级缓存，或在其中向下缩放吗？
+* 不能从**高级**缓存向下缩放到**基本**或**标准**定价层。
+* 可以从一个**高级**缓存定价层缩放到另一个高级缓存定价层。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
+* 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果创建缓存时未启用群集功能，可以稍后进行配置。
   
-  자세한 내용은 [프리미엄 Azure Cache for Redis에 대한 클러스터링을 구성하는 방법](cache-how-to-premium-clustering.md)을 참조하세요.
+  有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 
-### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>크기를 조정한 후 내 캐시 이름 또는 액세스 키를 변경해야 하나요?
-아니요, 캐시 이름 및 키는 크기 조정 작업을 수행하는 동안 변경되지 않습니다.
+### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>缩放后，我是否需要更改缓存名称或访问密钥？
+不需要，在缩放操作期间缓存名称和密钥不变。
 
-### <a name="how-does-scaling-work"></a>크기 조정은 어떻게 수행되나요?
-* **기본** 캐시 크기를 다른 크기로 조정하는 경우 캐시가 종료되고 새 크기를 사용하여 새 캐시를 프로비전합니다. 이 시간 동안에는 캐시를 사용할 수 없으며 캐시의 모든 데이터가 손실됩니다.
-* **기본** 캐시를 **표준** 캐시로 확장하는 경우 복제본 캐시가 프로비전되며 데이터가 주 캐시에서 복제본 캐시로 복사됩니다. 크기를 조정하는 동안 캐시를 계속 사용할 수 있습니다.
-* **표준** 캐시 크기를 다른 크기 또는 **프리미엄** 캐시로 조정하는 경우 복제본 중 하나가 종료되고 새 크기로 다시 프로비전되며 데이터가 전송됩니다. 그런 다음 나머지 복제본이 장애 조치(failover)를 수행한 후 다시 프로비전됩니다. 캐시 노드 중 하나에 오류가 발생하면 수행되는 프로세스와 비슷합니다.
+### <a name="how-does-scaling-work"></a>缩放的工作原理？
+* 将**基本**缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都将丢失。
+* 将**基本**缓存缩放为**标准**缓存时，将预配副本缓存并将主缓存中的数据复制到副本缓存。 在缩放过程中，缓存仍然可用。
+* 将**标准**缓存缩放为不同大小或缩放到**高级**缓存时，将关闭其中一个副本，同时将其重新预配为新的大小，将数据转移，然后，在重新预配另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
 
-### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>크기를 조정하는 동안 캐시의 데이터가 손실되나요?
-* **기본** 캐시 크기를 새 크기로 조정하는 경우 모든 데이터가 손실되고 크기 조정 작업을 수행하는 동안 캐시를 사용할 수 없습니다.
-* **기본** 캐시를 **표준** 캐시로 확장하는 경우 캐시의 데이터가 일반적으로 유지됩니다.
-* **표준** 캐시가 더 큰 크기나 계층으로 확장되거나, **프리미엄** 캐시가 더 크게 확장되는 경우에는 일반적으로 모든 데이터가 유지됩니다. **표준** 또는 **프리미엄** 캐시를 더 작게 축소하는 경우, 새로 조정된 크기 대비 캐시에 있는 데이터의 양에 따라 데이터가 손실될 수 있습니다. 크기를 축소하는 경우 데이터가 손실되면 [allkeys-lru](https://redis.io/topics/lru-cache) 제거 정책을 사용하여 키를 제거합니다. 
+### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>在缩放过程中是否会丢失缓存中的数据？
+* 将**基本**缓存缩放为新的大小时，所有数据都将丢失，且在缩放操作期间缓存将不可用。
+* 将**基本**缓存缩放为**标准**缓存时，通常将保留缓存中的数据。
+* 将**标准**缓存扩展为更大大小或更大层，或者将**高级**缓存扩展为更大大小时，通常将保留所有数据。 将**标准**或**高级**缓存缩小到更小大小时，数据可能会丢失，具体取决于与缩放后的新大小相关的缓存中的数据量。 如果缩小时数据丢失，则使用 [allkeys lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。 
 
-### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>사용자 지정 데이터베이스 설정이 크기 조정 하는 동안에 영향을 받나요?
-캐시 생성 중에 `databases` 설정에 대한 사용자 지정 값을 구성한 경우 일부 가격 책정 계층에 서로 다른 [데이터베이스 제한](cache-configure.md#databases)이 있습니다. 이 시나리오를 확장할 때 몇 가지 고려 사항이 있습니다.
+### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>在缩放过程中，自定义数据库设置是否会受影响？
+如果在缓存创建过程中为 `databases` 设置配置了自定义值，请记住，某些定价层具有不同的[数据库限制](cache-configure.md#databases)。 以下是在这种情况下缩放时的一些注意事项：
 
-* 현재 계층보다 낮은 `databases` 제한을 가진 가격 책정 계층으로 크기를 조정할 때:
-  * 모든 가격 책정 계층에 대해 기본값이 16개인 `databases`을 사용하는 경우 데이터 손실은 전혀 없습니다.
-  * 크기 조정하는 계층에 대한 제한내에 포함되는 `databases`의 사용자 지정 수를 사용하는 경우, 이 `databases` 설정은 유지되고 데이터 손실은 전혀 없습니다.
-  * 새 계층의 제한을 초과하는 `databases`의 사용자 지정 수를 사용하는 경우, `databases` 설정은 새 계층의 제한까지 낮춰지고 제거된 데이터베이스의 모든 데이터는 손실됩니다.
-* 현재 계층보다 같거나 높은 `databases` 제한을 가진 가격 책정 계층으로 크기를 조정할 때 `databases` 설정은 유지되고 데이터 손실은 전혀 없습니다.
+* 缩放到的定价层的 `databases` 限制低于当前层：
+  * 如果使用默认 `databases` 数（对于所有定价层来说均为 16），则不会丢失数据。
+  * 如果使用的是在要缩放到的层的限制内的自定义 `databases` 数，则将保留此 `databases` 设置并且不会丢失数据。
+  * 如果使用的是超出新层限制的自定义 `databases` 数，则 `databases` 设置将降低到新层的限制，并且已删除数据库中的所有数据都将丢失。
+* 所缩放到的定价层的 `databases` 限制等于或高于当前定价层时，将保留 `databases` 设置并且不会丢失数据。
 
-표준 및 프리미엄 캐시의 가용성에 대한 SLA는 99.9%이나 데이터 손실에 대한 SLA는 없습니다.
+虽然标准和高级缓存具有 99.9% 可用性 SLA，但没有数据丢失方面的 SLA。
 
-### <a name="will-my-cache-be-available-during-scaling"></a>크기를 조정하는 동안 내 캐시를 사용할 수 있나요?
-* **표준** 및 **프리미엄** 캐시는 크기 조정 작업을 수행하는 동안 사용할 수 있습니다. 그러나 표준 및 프리미엄 캐시 크기를 조정하는 동안 및 기본 에서 표준 캐시로 확장하는 동안 연결 블립이 발생할 수 있습니다. 이러한 연결 블립은 작을 것으로 예상되며 redis 클라이언트는 연결을 즉시 다시 설정할 수 있습니다.
-* 작업을 다른 크기로 확장하는 동안 **기본** 캐시는 오프라인 상태입니다. **기본**에서 **표준**으로 확장하는 동안 기본 캐시를 그대로 사용할 수 있지만 작은 연결 블립이 발생할 수도 있습니다. 연결 블립이 발생하는 경우 redis 클라이언트가 해당 연결을 즉시 다시 설정할 수 있습니다.
-
-
-### <a name="scaling-limitations-with-geo-replication"></a>지역 복제를 사용하여 제한 사항 크기 조정
-
-두 개의 캐시 간에 지역 복제 링크를 추가하면 더 이상 크기 조정 작업을 시작하거나 클러스터에서 분할된 데이터베이스의 수를 변경할 수 없습니다. 캐시의 연결을 해제하여 이러한 명령을 실행해야 합니다. 자세한 내용은 [지역 복제 구성](cache-how-to-geo-replication.md)을 참조하세요.
+### <a name="will-my-cache-be-available-during-scaling"></a>在缩放过程中，缓存是否可用？
+* **标准**和**高级**缓存在缩放操作期间保持可用。 但是，缩放标准和高级缓存时，以及从基本缓存缩放到标准缓存时，可能会发生连接故障。 这些连接故障预期为很小的故障，redis 客户端应能立即重新建立连接。
+* **基本**缓存在缩放为不同大小的操作期间处于脱机状态。 基本缓存在从**基本**缩放到**标准**时仍然可用，但可能会出现较小的连接故障。 如果发生连接故障，redis 客户端应能立即重新建立连接。
 
 
-### <a name="operations-that-are-not-supported"></a>지원되지 않는 작업
-* 높은 가격 책정 계층에서 낮은 가격 책정 계층으로 크기를 조정할 수 없습니다.
-  * **프리미엄** 캐시에서 **표준** 또는 **기본** 캐시로 축소할 수 없습니다.
-  * **표준** 캐시에서 **기본** 캐시로 축소할 수 없습니다.
-* **기본** 캐시에서 **표준** 캐시로 크기를 조정할 수 있지만 동시에 크기를 변경할 수는 없습니다. 다른 크기가 필요한 경우 후속 크기 조정 작업을 통해 원하는 크기로 조정할 수 있습니다.
-* **기본** 캐시에서 바로 **프리미엄** 캐시로 확장할 수 없습니다. 먼저 크기 조정 작업을 통해 **기본**에서 **표준**으로 확장한 다음, 후속 작업을 통해 **표준**에서 **프리미엄**으로 확장합니다.
-* 더 큰 크기에서 **C0(250MB)** 크기로 축소할 수 없습니다.
+### <a name="scaling-limitations-with-geo-replication"></a>异地复制的缩放限制
 
-크기 조정 작업이 실패하면 서비스는 작업을 되돌리려고 하며 캐시는 원래 크기로 되돌아갑니다.
+向两个缓存之间添加异地复制链接后，便无法在群集中启动缩放操作或更改分片数。 若要发布这些命令，必须取消链接缓存。 有关详细信息，请参阅[配置异地复制](cache-how-to-geo-replication.md)。
 
 
-### <a name="how-long-does-scaling-take"></a>크기 조정은 시간이 얼마나 걸리나요?
+### <a name="operations-that-are-not-supported"></a>不支持的操作
+* 不能从较高的定价层缩放到较低的定价层。
+  * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
+  * 不能从**标准**缓存向下缩放到**基本**缓存。
+* 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+* 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续操作中从**标准**缩放到**高级**。
+* 不能从较大的大小减小为 **C0 (250 MB)** 。
+
+如果缩放操作失败，该服务将尝试还原操作并且缓存将还原为原始大小。
+
+
+### <a name="how-long-does-scaling-take"></a>缩放需要多长时间？
 缩放时间取决于缓存中的数据量，以及要花费更长时间才能完成的数据量。 缩放约需20分钟。 对于群集缓存，每个分片的缩放时间大约为20分钟。
 
-### <a name="how-can-i-tell-when-scaling-is-complete"></a>크기 조정이 완료되었는지 어떻게 알 수 있나요?
-Azure Portal에서 진행 중인 크기 조정 작업을 볼 수 있습니다. 크기 조정이 완료되면 캐시 상태가 **실행 중**으로 변경됩니다.
+### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何判断缩放何时完成？
+在 Azure 门户中可以看到进行中的缩放操作。 缩放完成后，缓存状态将更改为**正在运行**。
 
 <!-- IMAGES -->
 

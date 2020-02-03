@@ -20,7 +20,7 @@ ms.locfileid: "76715837"
 
 ## <a name="differences-between-methods"></a>方法之间的差异
 
-### <a name="advantages"></a>장점
+### <a name="advantages"></a>优点
 与当前方法相比，使用诊断设置具有以下优势：
 
 - 用于收集所有平台日志的一致方法。
@@ -29,7 +29,7 @@ ms.locfileid: "76715837"
 - 收集所有活动日志类别。 某些类别不是使用旧方法收集的。
 - 日志引入延迟更快。 前一种方法的延迟大约为15分钟，诊断设置仅添加大约1分钟的时间。
 
-### <a name="considerations"></a>고려 사항
+### <a name="considerations"></a>注意事项
 在启用此功能之前，请考虑使用诊断设置的活动日志收集的以下详细信息。
 
 - 删除了用于将活动日志收集到 Azure 存储的保留设置，这意味着数据将无限期存储，直到将其删除。
@@ -58,9 +58,9 @@ ms.locfileid: "76715837"
 如果未选择使用诊断设置替换，则收集活动日志的旧设置将继续工作。 使用以下方法来管理订阅的日志配置文件。
 
 1. 从 Azure 门户的 " **Azure Monitor** " 菜单中，选择 "**活动日志**"。
-3. **진단 설정**을 클릭합니다.
+3. 单击“诊断设置”。
 
-   ![진단 설정](media/diagnostic-settings-subscription/diagnostic-settings.png)
+   ![诊断设置](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
 4. 单击紫色横幅了解旧体验。
 
@@ -93,7 +93,7 @@ ms.locfileid: "76715837"
 ## <a name="activity-log-monitoring-solution"></a>活动日志监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。 如果你使用诊断设置收集活动日志，此解决方案将使用在 Log Analytics 工作区中收集的日志数据并将继续工作，而无需进行任何更改。 有关此解决方案的详细信息，请参阅[活动日志分析监视解决方案](activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-* [활동 로그에 대한 자세한 내용](../../azure-resource-manager/management/view-activity-logs.md)
+* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
 * [了解有关诊断设置的详细信息](diagnostic-settings.md)

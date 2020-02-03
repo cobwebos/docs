@@ -1,6 +1,6 @@
 ---
-title: Azure Functions Twilio 바인딩
-description: Azure Functions와 함께 Twilio 바인딩을 사용하는 방법을 배웁니다.
+title: Azure Functions Twilio 绑定
+description: 了解如何将 Azure Functions 与 Twilio 绑定配合使用。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
@@ -13,21 +13,21 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715056"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Azure Functions에 대한 Twilio 바인딩
+# <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
-이 문서에서는 Azure Functions에서 [Twilio](https://www.twilio.com/) 바인딩을 사용하여 문자 메시지를 보내는 방법에 대해 설명합니다. Azure Functions는 Twilio에 대한 출력 바인딩을 지원합니다.
+本文介绍如何使用 Azure Functions 中的 [Twilio](https://www.twilio.com/) 绑定发送短信。 Azure Functions 支持 Twilio 的输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>패키지 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-Twilio 바인딩은 [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 패키지 버전 1.x에서 제공됩니다. 이 패키지에 대한 소스 코드는 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub 리포지토리에 있습니다.
+[Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包 1.x 版中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
-Twilio 바인딩은 [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 패키지 버전 3.x에서 제공됩니다. 이 패키지에 대한 소스 코드는 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub 리포지토리에 있습니다.
+[Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包 3.x 版中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -37,7 +37,7 @@ Twilio 바인딩은 [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuge
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-다음 예제에서는 큐 메시지에서 트리거되면 문자 메시지를 보내는 [C# 함수](functions-dotnet-class-library.md)를 보여 줍니다.
+以下示例演示在队列消息触发时发送短信的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -68,15 +68,15 @@ namespace TwilioQueueOutput
 }
 ```
 
-이 예제에서는 메서드 반환 값과 `TwilioSms` 특성을 사용합니다. 또는 `out CreateMessageOptions` 매개 변수나, `ICollector<CreateMessageOptions>` 또는 `IAsyncCollector<CreateMessageOptions>` 매개 변수와 특성을 사용합니다.
+此示例使用包含方法返回值的 `TwilioSms` 特性。 一种替代方法是使用包含 `out CreateMessageOptions` 参数或者 `ICollector<CreateMessageOptions>` 或 `IAsyncCollector<CreateMessageOptions>` 参数的特性。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-다음 예에서는 *function.json* 파일의 Twilio 출력 바인딩 및 바인딩을 사용하는 [C# 스크립트 함수](functions-reference-csharp.md)를 보여줍니다. 이 함수는 `out` 매개 변수를 사용하여 문자 메시지를 보냅니다.
+以下示例演示 *function.json* 文件中的一个 Twilio 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用 `out` 参数发送短信。
 
-*function.json* 파일의 바인딩 데이터는 다음과 같습니다.
+下面是 *function.json* 文件中的绑定数据：
 
-예제 function.json:
+示例 function.json：
 
 ```json
 {
@@ -90,7 +90,7 @@ namespace TwilioQueueOutput
 }
 ```
 
-C# 스크립트 코드는 다음과 같습니다.
+C# 脚本代码如下所示：
 
 ```cs
 #r "Newtonsoft.Json"
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-Out 매개 변수는 비동기 코드에서 사용할 수 없습니다. 비동기 C# 스크립트 코드 예제는 다음과 같습니다.
+不能在异步代码中使用 out 参数。 下面是异步 C# 脚本代码的示例：
 
 ```cs
 #r "Newtonsoft.Json"
@@ -158,11 +158,11 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-다음 예에서는 Twilio 출력 바인딩을 사용하는 *function.json* 파일 및 [JavaScript 함수](functions-reference-node.md)에서 테이블 출력 바인딩을 보여줍니다.
+以下示例演示 *function.json* 文件中的一个 Twilio 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-*function.json* 파일의 바인딩 데이터는 다음과 같습니다.
+下面是 *function.json* 文件中的绑定数据：
 
-예제 function.json:
+示例 function.json：
 
 ```json
 {
@@ -176,7 +176,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-JavaScript 코드는 다음과 같습니다.
+JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -289,9 +289,9 @@ public class TwilioOutput {
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 特性。
 
-구성할 수 있는 특성 속성에 대한 자세한 내용은 [구성](#configuration)을 참조하세요. 다음은 메서드 서명의 `TwilioSms` 특성 예제입니다.
+有关可以配置的特性属性的信息，请参阅[配置](#configuration)。 下面是某个方法签名中的 `TwilioSms` 特性示例：
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -303,7 +303,7 @@ public static CreateMessageOptions Run(
 }
  ```
 
-전체 예제는 [C# 예제](#example)를 참조하세요.
+有关完整示例，请参阅 [C# 示例](#example)。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
@@ -323,24 +323,24 @@ Python 不支持特性。
 
 ---
 
-## <a name="configuration"></a>구성
+## <a name="configuration"></a>配置
 
-다음 표에서는 *function.json* 파일 및 `TwilioSms` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `TwilioSms` 特性中设置的绑定配置属性。
 
-| v1 function.json 속성 | v2 function.json 속성 | 특성 속성 |Description|
+| v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
-|**type**|**type**| `twilioSms`로 설정해야 합니다.|
-|**direction**|**direction**| `out`로 설정해야 합니다.|
-|**name**|**name**| Twilio SMS 텍스트 메시지에 대한 함수 코드에 사용되는 변수 이름입니다. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称（`TwilioAccountSid`）。 설정되지 않은 경우 기본 앱 설정 이름은 "AzureWebJobsTwilioAccountSid"입니다. |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称（`TwilioAccountAuthToken`）。 설정되지 않은 경우 기본 앱 설정 이름은 "AzureWebJobsTwilioAuthToken"입니다. |
-|**to**| 해당 없음 - 코드에서 지정 | **수행할 작업**| 이 값은 SMS 텍스트 메시지가 전송된 전화 번호로 설정됩니다.|
-|**from**|**from** | **From**| 이 값은 SMS 텍스트 메시지를 보낸 전화 번호로 설정됩니다.|
-|**body**|**body** | **본문**| 이 값은 함수에 대한 코드에서 동적으로 설정할 필요가 없는 경우에 SMS 텍스트 메시지를 하드 코딩하는 데 사용할 수 있습니다. |  
+|type|type| 必须设置为 `twilioSms`。|
+|direction|direction| 必须设置为 `out`。|
+|name|name| 在 Twilio 短信的函数代码中使用的变量名。 |
+|**accountSid**|**AccountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称（`TwilioAccountSid`）。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
+|**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称（`TwilioAccountAuthToken`）。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
+|**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
+|**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
+|**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Functions 트리거 및 바인딩에 대한 자세한 정보](functions-triggers-bindings.md)
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)

@@ -30,12 +30,12 @@ Azure 门户是一种简单的方法，用于一次配置单个应用的预配�
 **使用 Microsoft Graph Api 自动执行预配配置的步骤概述**
 
 
-|단계  |세부 정보  |
+|步骤  |详细信息  |
 |---------|---------|
 |[步骤1。创建库应用程序](#step-1-create-the-gallery-application)     |登录到 API 客户端 <br> 检索库应用程序模板 <br> 创建库应用程序         |
 |[步骤2。基于模板创建预配作业](#step-2-create-the-provisioning-job-based-on-the-template)     |检索预配连接器的模板 <br> 创建设置作业         |
 |[步骤3。授权访问](#step-3-authorize-access)     |测试与应用程序的连接 <br> 保存凭据         |
-|[步骤4。开始预配作业](#step-4-start-the-provisioning-job)     |작업 시작         |
+|[步骤4。开始预配作业](#step-4-start-the-provisioning-job)     |启动作业         |
 |[步骤5。监视预配](#step-5-monitor-provisioning)     |检查设置作业的状态 <br> 检索预配日志         |
 
 > [!NOTE]
@@ -48,14 +48,14 @@ Azure 门户是一种简单的方法，用于一次配置单个应用的预配�
 1. 启动[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)
 1. 选择 "使用 Microsoft 登录" 按钮，并使用 Azure AD 全局管理员或应用管理员凭据进行登录。
 
-    ![Graph 로그인](media/application-provisioning-configure-api/wd_export_02.png)
+    ![Graph 登录](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. 成功登录后，左侧窗格中会显示用户帐户的详细信息。
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>检索库应用程序模板标识符
 每个应用程序库中 Azure AD 的应用程序都有一个描述该应用程序的元数据的[应用程序模板](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)。 使用此模板，可以在租户中创建应用程序和服务主体的实例，以进行管理。
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 
 <!-- {
   "blockType": "request",
@@ -66,7 +66,7 @@ Azure 门户是一种简单的方法，用于一次配置单个应用的预配�
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 
 <!-- {
   "blockType": "response",
@@ -107,7 +107,7 @@ Content-type: application/json
 
 在上一步中，使用为应用程序检索的模板 ID 在租户中创建应用程序和服务主体的[实例](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)。
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 
 <!-- {
   "blockType": "request",
@@ -123,7 +123,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 
 
 <!-- {
@@ -176,7 +176,7 @@ Content-type: application/json
 
 库中为预配启用的应用程序具有可简化配置的模板。 使用以下请求[检索预配配置的模板](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)。
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 
 <!-- {
   "blockType": "request",
@@ -187,7 +187,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -214,7 +214,7 @@ HTTP/1.1 200 OK
 ### <a name="create-the-provisioning-job"></a>创建设置作业
 若要启用预配，首先需要[创建一个作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)。 使用以下请求创建设置作业。 指定要用于作业的模板时，请使用上一步中的 templateId。
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 <!-- {
   "blockType": "request",
   "name": "create_synchronizationjob_from_synchronization"
@@ -228,7 +228,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -268,7 +268,7 @@ Content-type: application/json
 
 测试与第三方应用程序的连接。 以下示例适用于需要 clientSecret 和 secretToken 的应用程序。 每个应用程序都有自己的要求。 查看[API 文档](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)以查看可用选项。 
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 ```http
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
@@ -278,7 +278,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -292,7 +292,7 @@ HTTP/1.1 204 No Content
 
 配置预配要求在 Azure AD 与应用程序之间建立信任。 授予对第三方应用程序的访问权限。 以下示例适用于需要 clientSecret 和 secretToken 的应用程序。 每个应用程序都有自己的要求。 查看[API 文档](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)以查看可用选项。 
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 ```json
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
@@ -304,7 +304,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -318,7 +318,7 @@ HTTP/1.1 204 No Content
 配置预配作业后，请使用以下命令[启动作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)。 
 
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 <!-- {
   "blockType": "request",
   "name": "synchronizationjob_start"
@@ -327,7 +327,7 @@ HTTP/1.1 204 No Content
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -344,7 +344,7 @@ HTTP/1.1 204 No Content
 
 现在预配作业正在运行，请使用以下命令来跟踪当前预配周期的进度以及统计信息，例如目标系统中已创建的用户和组的数目。 
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 <!-- {
   "blockType": "request",
   "name": "get_synchronizationjob"
@@ -353,7 +353,7 @@ HTTP/1.1 204 No Content
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -399,11 +399,11 @@ Content-length: 2577
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>使用预配日志监视预配事件
 除了监视预配作业的状态之外，还可以使用[设置日志](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)来查询发生的所有事件（例如，查询特定用户并确定是否已成功设置这些事件）。
 
-#### <a name="request"></a>*요청*
+#### <a name="request"></a>*请求*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*응답*
+#### <a name="response"></a>*响应*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>관련 문서
+## <a name="related-articles"></a>相关文章
 
 - [查看同步 Microsoft Graph 文档](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [将自定义 SCIM 应用与 Azure AD 集成](use-scim-to-provision-users-and-groups.md)

@@ -20,9 +20,9 @@ ms.locfileid: "76722248"
 
 本文介绍如何以编程方式安排要在 Azure 上运行的管道。 你可以选择基于运行时间或文件系统更改创建计划。 基于时间的计划可用于处理日常任务，如监视数据偏移。 基于更改的计划可用于对异常或不可预测的更改（例如上传的新数据或正在编辑的旧数据）做出反应。 在了解如何创建计划后，你将了解如何检索和停用它们。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
-* Azure 구독 Azure 구독이 아직 없는 경우 [무료 계정](https://aka.ms/AMLFree)을 만듭니다.
+* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
 * 用于安装 Python Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于定型和部署的可重复使用的环境。](how-to-use-environments.md)
 
@@ -130,11 +130,11 @@ stop_by_schedule_id(ws, schedule_id)
 
 如果随后再次运行 `Schedule.list(ws)`，则应该会获得一个空列表。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何使用适用于 Python 的 Azure 机器学习 SDK 以两种不同的方式安排管道。 基于已用的时钟时间重复一个计划。 如果在指定的 `Datastore` 上或在该存储区的某个目录内修改了某个文件，则其他计划将运行。 你了解了如何使用门户来检查管道和单个运行。 最后，您学习了如何禁用计划以便管道停止运行。
 
-자세한 내용은 다음을 참조하세요.
+有关详细信息，请参阅：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 机器学习管道进行批处理评分](tutorial-pipeline-batch-scoring-classification.md)

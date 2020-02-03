@@ -1,6 +1,6 @@
 ---
-title: Hadoop 클러스터에서 데이터 탐색 - Team Data Science Process
-description: HDInsight Hadoop 클러스터를 사용하는 엔드투엔드 시나리오에 팀 데이터 과학 프로세스를 사용하여 모델을 빌드 및 배포합니다.
+title: 在 Hadoop 群集中浏览数据 - Team Data Science Process
+description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署模型。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,17 +18,17 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720565"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>실행 중인 팀 데이터 과학 프로세스: Azure HDInsight Hadoop 클러스터 사용
-이 연습에서는 엔드투엔드 시나리오에 [TDSP(Team Data Science Process)](overview.md)를 사용합니다. [Azure HDInsight Hadoop 클러스터](https://azure.microsoft.com/services/hdinsight/)를 사용하여 공개적으로 사용 가능한 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) 데이터 세트에서 데이터를 저장, 탐색, 기능 설계, 다운 샘플링합니다. 이진/다중 클래스 분류 및 회귀 예측 작업을 처리하기 위해 데이터의 모델을 Azure Machine Learning으로 빌드합니다. 
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
+本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)对公开发布的[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
 有关演示如何处理更大数据集的演练，请参阅[团队数据科学过程-在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)。
 
-还可以使用 IPython 笔记本完成使用 1 TB 数据集的演练中介绍的任务。 자세한 내용은 [Hive ODBC 연결을 사용하여 Criteo 연습](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)을 참조하세요.
+还可以使用 IPython 笔记本完成使用 1 TB 数据集的演练中介绍的任务。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
 
-## <a name="dataset"></a>NYC Taxi Trips 데이터 세트 설명
-NYC Taxi Trip 데이터는 20GB의 압축된 CSV(쉼표로 구분된 값) 파일입니다(압축되지 않은 경우 ~48GB). 1억 7300만 개가 넘는 개별 여정이 있으며 각 여정의 요금을 포함합니다. 각 여정 레코드는 승차 및 하차 위치와 시간, 익명 처리된 hack(기사) 면허증 번호 및 medallion 번호(택시의 고유 ID)를 포함합니다. 데이터는 2013년의 모든 여정을 포괄하며, 매월 다음 두 개의 데이터 세트로 제공됩니다.
+## <a name="dataset"></a>NYC 出租车行程数据集介绍
+NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录会包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照编号（出租车的唯一 ID）。 数据涵盖 2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
-- Trip_data CSV 文件包含行程详细信息：乘客数、提取和下车点、行程持续时间和行程长度。 다음은 몇 가지 샘플 레코드입니다.
+- Trip_data CSV 文件包含行程详细信息：乘客数、提取和下车点、行程持续时间和行程长度。 下面是一些示例记录：
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ NYC Taxi Trip 데이터는 20GB의 압축된 CSV(쉼표로 구분된 값) 파일
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- Trip_fare CSV 文件包含每个行程支付的费用的详细信息：付款类型、费用金额、附加费和税金、提示和通行费以及支付的总金额。 다음은 몇 가지 샘플 레코드입니다.
+- Trip_fare CSV 文件包含每个行程支付的费用的详细信息：付款类型、费用金额、附加费和税金、提示和通行费以及支付的总金额。 下面是一些示例记录：
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -45,89 +45,89 @@ NYC Taxi Trip 데이터는 20GB의 압축된 CSV(쉼표로 구분된 값) 파일
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data와 trip\_fare를 조인할 고유 키는 medallion, hack\_license 및 pickup\_datetime 필드로 구성됩니다. 특정 여정과 관련된 모든 세부 정보를 가져오려면 이러한 세 개의 키를 사용하여 조인하면 됩니다.
+联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_license 和 pickup\_datetime。 若要获取与特定行程相关的所有详细信息，只需联接这三个键即可。
 
-## <a name="mltasks"></a>예측 작업의 예제
+## <a name="mltasks"></a>预测任务示例
 根据数据分析确定要进行的预测类型，以帮助阐明所需的处理任务。 下面是我们在本演练中讨论的三个预测问题示例，所有这些都基于*tip\_数量*：
 
-- **이진 분류**: 여정에 대해 팁이 지불되었는지 여부를 예측합니다. 즉, $0보다 큰 *팁\_금액*은 양수 예이고, $0의 *팁\_금액*은 음수 예입니다.
+- **二元分类**：预测某个行程是否支付小费。 即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **다중 클래스 분류**: 여정에 대해 지불된 팁 금액의 범위를 예측합니다. *tip\_amount*를 5개의 클래스로 나눕니다.
+- **多类分类**：预测为行程支付的小费金额范围。 我们将 *tip\_amount* 划分成五个类：
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **회귀 작업**: 여정에 대해 지불된 팁의 금액을 예측합니다.  
+- **回归任务**：预测为行程支付的小费金额。  
 
-## <a name="setup"></a>고급 분석용 HDInsight Hadoop 클러스터 설정
+## <a name="setup"></a>针对高级分析设置 HDInsight Hadoop 群集
 > [!NOTE]
-> 이는 일반적으로 관리자 작업입니다.
+> 这通常是管理任务。
 > 
 > 
 
-다음 세 단계를 통해 HDInsight 클러스터를 사용하는 고급 분석용 Azure 환경을 설정할 수 있습니다.
+可以通过三个步骤为使用 HDInsight 群集的高级分析设置 Azure 环境：
 
-1. [스토리지 계정 만들기](../../storage/common/storage-account-create.md):이 스토리지 계정은 Azure Blob Storage에 데이터를 저장하는 데 사용됩니다. HDInsight 클러스터에 사용되는 데이터도 여기에 상주합니다.
-2. [고급 분석 프로세스 및 기술을 위한 Azure HDInsight Hadoop 클러스터 사용자 지정](customize-hadoop-cluster.md). 이 단계에서는 모든 노드에 64비트 Anaconda Python 2.7이 설치된 HDInsight Hadoop 클러스터를 만듭니다. HDInsight 클러스터 사용자 지정하는 동안 기억해야 할 중요한 두 단계가 있습니다.
+1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据也驻留在此处。
+2. [为高级分析过程和技术自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。 此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 HDInsight Hadoop 群集。 自定义 HDInsight 群集时需牢记两个重要步骤。
    
-   * HDInsight 클러스터를 만들 때 1단계에서 만든 스토리지 계정을 연결해야 합니다. 이 스토리지 계정은 클러스터 내에서 처리되는 데이터에 액세스합니다.
-   * 클러스터를 만든 후에는 클러스터의 헤드 노드에 대한 원격 액세스를 활성화합니다. **구성** 탭으로 이동하고 **원격 사용**을 선택합니다. 이 단계에서는 원격 로그인에 사용되는 사용자 자격 증명을 지정합니다.
-3. [Azure Machine Learning 작업 영역 만들기](../studio/create-workspace.md): 이 작업 영역을 사용하여 기계 학습 모델을 빌드합니다. 이 작업은 초기 데이터 탐색을 완료하고 HDInsight 클러스터를 사용하여 다운 샘플링한 후 처리됩니다.
+   * 创建 HDInsight 群集时，请记住将其与步骤 1 中创建的存储帐户相链接。 此存储帐户访问在该群集中处理的数据。
+   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”选项卡，并选择“启用远程”。 此步骤指定用于远程登录的用户凭据。
+3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：使用此工作区构建机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
-## <a name="getdata"></a>공용 원본에서 데이터 가져오기
+## <a name="getdata"></a>从公共源获取数据
 > [!NOTE]
-> 이는 일반적으로 관리자 작업입니다.
+> 这通常是管理任务。
 > 
 > 
 
-해당 공용 위치에서 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) 데이터 세트을 컴퓨터로 복사하려면 [Azure Blob Storage에서 데이터 이동](move-azure-blob.md)에 설명된 방법 중 하나를 사용합니다.
+若要将 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集从其公共位置复制，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法。
 
-여기서는 AzCopy를 사용하여 데이터가 포함된 파일을 전송하는 방법을 설명합니다. AzCopy를 다운로드하여 설치하려면 [AzCopy 명령줄 유틸리티 시작](../../storage/common/storage-use-azcopy.md)의 지침을 따르세요.
+此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
 1. 在命令提示符窗口中，运行以下 AzCopy 命令，将 *\<path_to_data_folder >* 替换为所需目标：
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 복사가 완료되면 총 24개의 압축된 파일이 선택한 데이터 폴더에 표시됩니다. 로컬 컴퓨터에서 동일한 디렉터리에 다운로드한 파일의 압축을 풉니다. 압축을 푼 파일이 있는 폴더를 적어 둡니다. 此文件夹被称为 *\<路径\_，\_unzipped_data\_文件*。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹被称为 *\<路径\_，\_unzipped_data\_文件*。\>
 
-## <a name="upload"></a>HDInsight Hadoop 클러스터의 기본 컨테이너에 데이터 업로드
+## <a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
-> 이는 일반적으로 관리자 작업입니다.
+> 这通常是管理任务。
 > 
 > 
 
-다음 AzCopy 명령에서 다음 매개 변수를 Hadoop 클러스터를 만들고 데이터 파일의 압축을 풀 때 지정한 실제 값으로 바꿉니다.
+在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
 * ***\<path_to_data_folder >*** 计算机上包含解压缩数据文件的目录（和路径）。  
 * ***\<Hadoop 群集的存储帐户名称 >*** 与 HDInsight 群集关联的存储帐户。
-* ***Hadoop 群集\<默认容器 >*** 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 예를 들어 클러스터가 "abc123.azurehdinsight.net"인 경우 기본 컨테이너는 abc123입니다.
+* ***Hadoop 群集\<默认容器 >*** 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
 * ***\<存储帐户密钥 >*** 群集使用的存储帐户的密钥。
 
-명령 프롬프트 또는 Windows PowerShell 창에서 다음 두 AzCopy 명령을 실행합니다.
+在命令提示符或 Windows PowerShell 窗口中，运行以下两个 AzCopy 命令。
 
-이 명령은 여정 데이터를 Hadoop 클러스터의 기본 컨테이너에 있는 ***nyctaxitripraw*** 디렉터리에 업로드합니다.
+此命令将行程数据上传到 Hadoop 群集的默认容器中的 ***nyctaxitripraw*** 目录。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 
-이 명령은 요금 데이터를 Hadoop 클러스터의 기본 컨테이너에 있는 ***nyctaxifareraw*** 디렉터리에 업로드합니다.
+此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw*** 目录。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 
-이제 데이터가 Blob Storage에 있고 HDInsight 클러스터 내에서 사용할 수 있도록 준비됩니다.
+现在，数据应在 Blob 存储中，并且可以在 HDInsight 群集中使用。
 
-## <a name="#download-hql-files"></a>Hadoop 클러스터의 헤드 노드에 로그인하여 예비 데이터 분석 준비
+## <a name="#download-hql-files"></a>登录到 Hadoop 群集的头节点，并为探索数据分析做好准备
 > [!NOTE]
-> 이는 일반적으로 관리자 작업입니다.
+> 这通常是管理任务。
 > 
 > 
 
-예비 데이터 분석 및 데이터 다운 샘플링을 위해 클러스터의 헤드 노드에 액세스하려면 [Hadoop 클러스터의 헤드 노드 액세스](customize-hadoop-cluster.md)에 설명된 절차를 따르세요.
+若要访问群集的头节点以进行探索数据分析和数据的下采样，请按照[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)中所述的过程进行操作。
 
-이 연습에서는 주로 SQL과 유사한 쿼리 언어인 [Hive](https://hive.apache.org/)로 작성된 쿼리를 사용하여 예비 데이터 탐색을 수행합니다. Hive 查询存储在 "hql" 文件中。 그런 다음 모델 빌드를 위해 Machine Learning 내에서 사용하도록 이 데이터를 다운 샘플링합니다.
+在本演练中，我们主要使用 [Hive](https://hive.apache.org/)（一种类似 SQL 的查询语言）编写的查询来执行初步数据探索。 Hive 查询存储在 "hql" 文件中。 然后，对此数据进行下采样，以便用于在机器学习中构建模型。
 
 若要为探索数据分析准备群集，请将包含相关 Hive 脚本的 "hql" 文件从[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)下载到头节点上的本地目录（C：\temp）。 从群集的头节点中打开命令提示符，并运行以下两个命令：
 
@@ -137,19 +137,19 @@ trip\_data와 trip\_fare를 조인할 고유 키는 medallion, hack\_license 및
 
 这两个命令会将本演练中所需的所有 "hql" 文件下载到头节点中的本地目录***C：\temp&#92;***  。
 
-## <a name="#hive-db-tables"></a>월별로 분할된 Hive 데이터베이스 및 테이블 만들기
+## <a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
 > [!NOTE]
 > 此任务通常用于管理员。
 > 
 > 
 
-이제 NYC taxi 데이터 세트에 대한 Hive 테이블을 만들 준비가 완료되었습니다.
-Hadoop 클러스터 헤드 노드의 헤드 노드 바탕 화면에서 Hadoop 명령줄을 엽니다. 다음 명령을 실행하여 Hive 디렉터리를 입력합니다.
+现在已准备就绪，可以为 NYC 出租车数据集创建 Hive 表。
+在 Hadoop 群集的头节点中，在头节点的桌面上打开 Hadoop 命令行。 运行以下命令进入 Hive 目录：
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> 이 연습의 모든 Hive 명령은 Hive bin/ 디렉터리 프롬프트에서 실행합니다. 모든 경로 문제를 자동으로 처리합니다. "Hive 디렉터리 프롬프트", "Hive bin/ 디렉터리 프롬프트" 및 "Hadoop 명령줄"은 이 연습에서 상호 교환적으로 사용되는 용어입니다.
+> 从 Hive bin/ 目录提示符运行此演练中的所有 Hive 命令。 这会自动处理任何路径问题。 我们在本演练中交替使用术语“Hive 目录提示符”、“Hive bin/ 目录提示符”和“Hadoop 命令行”。
 > 
 > 
 
@@ -198,45 +198,45 @@ Hadoop 클러스터 헤드 노드의 헤드 노드 바탕 화면에서 Hadoop �
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
     STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
 
-이 Hive 스크립트는 두 개의 테이블을 만듭니다.
+此 Hive 脚本会创建两个表：
 
-* **trip** 테이블은 각 승객의 여정 정보(운전 기사 정보, 승차 시간, 여정 거리 및 시간)를 포함합니다.
-* **fare** 테이블은 요금 정보(요금 금액, 팁 금액, 통행료 및 추가 요금)를 포함합니다.
+* **trip** 表包含每个行程的行程详情（司机详细信息、上车时间、行程距离和时间）。
+* **fare** 表包含费用详细信息（费用金额、小费金额、通行费和附加费）。
 
-이러한 절차에 대한 추가 도움이 필요하거나 다른 방법을 조사하려는 경우 [Hadoop 명령줄에서 직접 Hive 쿼리 제출](move-hive-tables.md#submit) 섹션을 참조하세요.
+如果需要有关这些过程的任何其他帮助或想要了解另外的过程，请参阅[直接从 Hadoop 命令行提交 Hive 查询](move-hive-tables.md#submit)部分。
 
-## <a name="#load-data"></a>분할된 Hive 테이블에 데이터 로드
+## <a name="#load-data"></a>按分区将数据加载到 Hive 表
 > [!NOTE]
 > 此任务通常用于管理员。
 > 
 > 
 
-NYC taxi 데이터 세트에는 처리 및 쿼리 시간을 단축하기 위해 사용하는 월별 자연 분할 기능이 있습니다. 다음 PowerShell 명령(Hadoop 명령줄을 사용하여 Hive 디렉터리에서 실행)은 월별로 분할된 trip 및 fare Hive 테이블에 데이터를 로드합니다.
+NYC 出租车数据集具有按月划分的自然分区，用于加快处理和查询时间。 以下 PowerShell 命令（使用 Hadoop 命令行 从 Hive 目录发出）将数据加载到按月分区的 trip 和 fare Hive 表。
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-**sample\_hive\_load\_data\_by\_partitions.hql** 파일에는 다음 **LOAD** 명령이 포함되어 있습니다.
+**sample\_hive\_load\_data\_by\_partitions.hql** 文件包含以下 **LOAD** 命令：
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-在浏览过程中，此处使用的多个 Hive 查询只涉及查看一个或两个分区。 그러나 이러한 쿼리는 전체 데이터 세트에서 실행될 수 있습니다.
+在浏览过程中，此处使用的多个 Hive 查询只涉及查看一个或两个分区。 但是可以针对整个数据集运行这些查询。
 
-### <a name="#show-db"></a>HDInsight Hadoop 클러스터에서 데이터베이스 표시
-HDInsight Hadoop 클러스터에서 만든 데이터베이스를 Hadoop 명령줄 창 내에 표시하려면 Hadoop 명령줄에서 다음 명령을 실행합니다.
+### <a name="#show-db"></a>在 HDInsight Hadoop 群集中显示数据库
+若要在 Hadoop 命令行窗口中显示 HDInsight Hadoop 群集中创建的数据库，请在 Hadoop 命令行中运行以下命令：
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>**nyctaxidb** 데이터베이스에서 Hive 테이블 표시
-**nyctaxidb** 데이터베이스에서 테이블을 표시하려면 Hadoop 명령줄에서 다음 명령을 실행합니다.
+### <a name="#show-tables"></a>显示 **nyctaxidb** 数据库中的 Hive 表
+若要显示 **nyctaxidb** 数据库中的表，请在 Hadoop 命令行中运行以下命令：
 
     hive -e "show tables in nyctaxidb;"
 
-다음 명령을 실행하여 테이블이 분할되었는지 확인할 수 있습니다.
+可以通过运行以下命令，确认表是否分区：
 
     hive -e "show partitions nyctaxidb.trip;"
 
-예상된 출력은 다음과 같습니다.
+下面是预期的输出：
 
     month=1
     month=10
@@ -252,11 +252,11 @@ HDInsight Hadoop 클러스터에서 만든 데이터베이스를 Hadoop 명령�
     month=9
     Time taken: 2.075 seconds, Fetched: 12 row(s)
 
-마찬가지로 다음 명령을 실행하여 fare 테이블이 분할되었는지 확인할 수 있습니다.
+同样，可以通过运行以下命令确保 fare 表已分区：
 
     hive -e "show partitions nyctaxidb.fare;"
 
-예상된 출력은 다음과 같습니다.
+下面是预期的输出：
 
     month=1
     month=10
@@ -272,33 +272,33 @@ HDInsight Hadoop 클러스터에서 만든 데이터베이스를 Hadoop 명령�
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Hive에서 데이터 탐색 및 기능 엔지니어링
+## <a name="#explore-hive"></a>Hive 中的数据探索和功能设计
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-Hive 쿼리를 사용하여 Hive 테이블에 로드된 데이터에 대한 데이터 탐색 및 기능 엔지니어링 작업을 수행할 수 있습니다. 이러한 작업의 예는 다음과 같습니다.
+对于加载到 Hive 表中的数据，可以使用 Hive 查询完成数据探索和特征工程任务。 下面是此类任务的示例：
 
-* 두 테이블의 상위 10개 레코드를 봅니다.
-* 다양한 기간에 걸쳐 몇몇 필드의 데이터 분포를 탐색합니다.
-* 경도 및 위도 필드의 데이터 품질을 조사합니다.
-* 팁 금액에 따라 이진 및 다중 클래스 분류 레이블을 생성합니다.
-* 직접 여정 거리를 계산하여 기능을 생성합니다.
+* 查看两个表中的前 10 条记录。
+* 在不同的时间范围中探索几个字段的数据分布。
+* 调查经度和纬度字段的数据质量。
+* 根据小费金额生成二元和多元分类标签。
+* 通过计算直接行程距离生成特性。
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>탐색: trip 테이블의 상위 10개 레코드 보기
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索：查看“行程”表中的前 10 条记录
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-데이터 모양을 보려면 각 테이블에서 10개의 레코드를 살펴봅니다. 레코드를 검사하려면 Hadoop 명령줄 콘솔의 Hive 디렉터리 프롬프트에서 다음 두 쿼리를 따로 실행합니다.
+为了查看数据是什么样，我们会检查每个表的 10 条记录。 若要检查记录，请在 Hadoop 命令行控制台中，从 Hive 目录提示符分别运行以下两个查询。
 
-첫째 달의 trip 테이블에서 상위 10개의 레코드를 가져오려면
+获取 trip 表中第一个月的前 10 条记录：
 
     hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
 
-첫째 달의 fare 테이블에서 상위 10개의 레코드를 가져오려면
+获取 fare 表中第一个月的前 10 条记录：
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
@@ -306,13 +306,13 @@ Hive 쿼리를 사용하여 Hive 테이블에 로드된 데이터에 대한 데�
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>탐색: 각 12개 파티션의 각 레코드 수 보기
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索：查看 12 个分区中每个分区的记录数
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-1년 동안 여정 수가 어떻게 변하는지 확인하려고 합니다. 월별 그룹화는 여정의 분포를 보여 줍니다.
+此任务关注的是在历年内行程次数如何变化。 按月分组可以显示行程的分布情况。
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
@@ -332,9 +332,9 @@ Hive 쿼리를 사용하여 Hive 테이블에 로드된 데이터에 대한 데�
     12      13971118
     Time taken: 283.406 seconds, Fetched: 12 row(s)
 
-여기서 첫 번째 열은 월이고, 두 번째 열은 해당 월의 여정 수입니다.
+此处，第一列表示月份，第二列表示该月份的行程数。
 
-Hive 디렉터리 프롬프트에서 다음 명령을 실행하여 여정 데이터 세트의 총 레코드 수를 계산할 수도 있습니다.
+我们还可以通过在 Hive 目录提示符下运行以下命令来计算行程数据集中的记录总数：
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
@@ -343,7 +343,7 @@ Hive 디렉터리 프롬프트에서 다음 명령을 실행하여 여정 데이
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
 
-trip 데이터 세트에 표시된 것과 유사한 명령을 사용하여 Hive 디렉터리 프롬프트에서 fare 데이터 세트에 대해 레코드 수를 확인하는 Hive 쿼리를 실행할 수 있습니다.
+使用类似于对行程数据集显示的命令，可以从 Hive 目录提示符中针对费用数据集发出 Hive 查询，以便验证记录数。
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
@@ -365,7 +365,7 @@ trip 데이터 세트에 표시된 것과 유사한 명령을 사용하여 Hive 
 
 对于这两个数据集，将返回完全相同的每月行程数，并提供数据已正确加载的第一次验证。
 
-Hive 디렉터리 프롬프트에서 다음 명령을 사용하여 fare 데이터 세트의 총 레코드 수를 계산할 수 있습니다.
+可以通过在 Hive 目录提示符下运行以下命令来计算 fare 数据集中的记录总数：
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
@@ -376,17 +376,17 @@ Hive 디렉터리 프롬프트에서 다음 명령을 사용하여 fare 데이�
 
 这两个表中的记录总数也是相同的，它提供了数据已正确加载的第二个验证。
 
-### <a name="exploration-trip-distribution-by-medallion"></a>탐색: medallion별 여정 분포
+### <a name="exploration-trip-distribution-by-medallion"></a>浏览：依据徽章的行程分布
 > [!NOTE]
 > 此分析通常是一种数据科学家任务。
 > 
 > 
 
-이 예제에서는 지정된 기간 내의 여정이 100개가 넘는 medallion(택시 번호)을 식별합니다. 쿼리는 파티션 변수 **month**의 영향을 받기 때문에 테이블을 분할하면 쿼리 성능이 개선됩니다. 쿼리 결과는 `C:\temp` 헤드 노드의 로컬 파일 **queryoutput.tsv**에 작성됩니다.
+此示例标识在给定的时间段内具有 100 多个行程的徽章（出租车数）。 查询受益于分区表访问，因为它受分区变量 **month** 的限制。 查询结果将写入头节点上 **中的本地文件**queryoutput.tsv`C:\temp`。
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-다음은 검사할 **sample\_hive\_trip\_count\_by\_medallion.hql** 파일의 내용입니다.
+下面是要检查的 **sample\_hive\_trip\_count\_by\_medallion.hql** 文件的内容。
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -395,9 +395,9 @@ Hive 디렉터리 프롬프트에서 다음 명령을 사용하여 fare 데이�
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-NYC taxi 데이터 세트의 medallion은 고유한 택시를 식별합니다. 특정 기간에 특정 여정 수를 초과하는 택시를 조회하여 비교적 운행량이 많은 택시를 식별할 수 있습니다. 다음 예제에서는 첫 3개월 동안 여정 수가 100건이 넘는 택시를 식별하여 쿼리 결과를 로컬 파일 **C:\temp\queryoutput.tsv**에 저장합니다.
+NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问特定时间段内，哪些出租车的行程数超过了一定量，可以确定哪些车处于相对忙碌状态。 以下示例标识前三个月内行程数超过 100 的出租车，并将查询结果保存到本地文件 **C:\temp\queryoutput.tsv**。
 
-다음은 검사할 **sample\_hive\_trip\_count\_by\_medallion.hql** 파일의 내용입니다.
+下面是要检查的 **sample\_hive\_trip\_count\_by\_medallion.hql** 文件的内容。
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -406,11 +406,11 @@ NYC taxi 데이터 세트의 medallion은 고유한 택시를 식별합니다. �
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-Hive 디렉터리 프롬프트에서 다음 명령을 실행합니다.
+在 Hive 目录提示符下运行以下命令：
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>탐색: medallion 및 hack license별 여정 분포
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>浏览：依据徽章和出租汽车执照的行程分布
 > [!NOTE]
 > 此任务通常适用于数据科学家。
 > 
@@ -418,7 +418,7 @@ Hive 디렉터리 프롬프트에서 다음 명령을 실행합니다.
 
 浏览数据集时，经常需要检查值组的分布情况。 本部分提供了有关如何为 cab 和驱动程序执行此分析的示例。
 
-**sample\_hive\_trip\_count\_by\_medallion\_license.hql** 파일은 **medallion** 및 **hack_license**에서 fare 데이터 세트를 그룹화하고 각 조합의 개수를 반환합니다. 파일 내용은 다음과 같습니다.
+**sample\_hive\_trip\_count\_by\_medallion\_license.hql** 文件将 **medallion** 和 **hack_license** 上的费用数据集分组，并返回每个组合的计数。 以下是其内容：
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -427,23 +427,23 @@ Hive 디렉터리 프롬프트에서 다음 명령을 실행합니다.
     HAVING trip_count > 100
     ORDER BY trip_count desc;
 
-이 쿼리는 택시와 운전 기사의 조합을 여정 수 내림차순으로 반환합니다.
+此查询返回出租车和司机的组合，按行程数降序排序。
 
-Hive 디렉터리 프롬프트에서 다음을 실행합니다.
+从 Hive 目录提示符中，运行：
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
 
-쿼리 결과는 로컬 파일 **C:\temp\queryoutput.tsv**에 작성됩니다.
+查询结果将写入本地文件 **C:\temp\queryoutput.tsv**。
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>탐색: 잘못된 경도 또는 위도 레코드를 확인하여 데이터 품질 평가
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索：通过检查无效的经度或纬度记录，评估数据质量
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-예비 데이터 분석의 일반적인 목적은 유효하지 않거나 잘못된 레코드를 걸러내는 것입니다. 이 섹션의 예제에서는 위도 또는 경도 필드에 NYC 영역 밖의 값이 포함되어 있는지 여부를 확인합니다. 이러한 레코드에는 잘못된 경도-위도 값이 있을 수 있기 때문에 모델링에 사용할 데이터에서 이를 제거하려고 합니다.
+探索数据分析的共同目标是剔除无效或错误的记录。 本部分中的示例确定经度或纬度字段是否包含 NYC 区域外的值。 由于有可能此类记录具有错误的经纬值，因此我们希望将其从任何用于建模的数据中清除。
 
-다음은 검사할 **sample\_hive\_quality\_assessment.hql** 파일의 내용입니다.
+以下是用于检查的 **sample\_hive\_quality\_assessment.hql** 文件内容。
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -453,22 +453,22 @@ Hive 디렉터리 프롬프트에서 다음을 실행합니다.
         OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
 
-Hive 디렉터리 프롬프트에서 다음을 실행합니다.
+从 Hive 目录提示符中，运行：
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-이 명령에 포함된 *-S* 인수는 Hive 맵/감소 작업의 상태 화면 인쇄를 표시하지 않습니다. 此命令非常有用，因为这样可以使 Hive 查询输出的屏幕打印更具可读性。
+此命令中包含的 *-S* 参数阻止状态屏幕打印输出 Hive Map/Reduce 作业。 此命令非常有用，因为这样可以使 Hive 查询输出的屏幕打印更具可读性。
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>탐색: 여정 팁의 이진 클래스 분포
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索：行程小费的二元类分布
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-[예측 작업의 예제](hive-walkthrough.md#mltasks) 섹션에 설명된 이진 분류 문제의 경우 팁 제공 여부를 아는 것이 유용합니다. 이 팁 분포는 이진입니다.
+对于[预测任务示例](hive-walkthrough.md#mltasks)部分中所述的二元分类问题，了解是否已付小费非常有用。 小费的分布为二元形式：
 
-* tip given(Class 1, tip\_amount > $0)  
-* no tip(Class 0, tip\_amount = $0)
+* 已付小费（类 1，tip\_amount > $0）  
+* 无小费（类 0，tip\_amount = $0）
 
 下面的**示例\_hive\_附属\_网频**文件显示要运行的命令：
 
@@ -480,18 +480,18 @@ Hive 디렉터리 프롬프트에서 다음을 실행합니다.
     )tc
     GROUP BY tipped;
 
-Hive 디렉터리 프롬프트에서 다음을 실행합니다.
+从 Hive 目录提示符中，运行：
 
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>탐색: 다중 클래스 설정의 클래스 분포
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索：多类设置中的类分布
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-[예측 작업의 예](hive-walkthrough.md#mltasks) 섹션에 설명된 다중 클래스 분류 문제를 위해 이 데이터 세트는 운전 기사가 받은 팁 금액을 예측하는 자연 분류에도 적합합니다. bin을 사용하여 쿼리에서 팁 범위를 정의할 수 있습니다. 여러 팁 범위에 대한 클래스 분포를 가져오려면 **sample\_hive\_tip\_range\_frequencies.hql** 파일을 사용합니다. 파일 내용은 다음과 같습니다.
+对于[预测任务示例](hive-walkthrough.md#mltasks)部分中所述的多类分类问题，此数据集也适用于自然分类，在这种分类中可预测所付小费的金额。 我们可以使用 bin 在查询中定义小费范围。 若要获取各种小费范围的类分布，请使用 **sample\_hive\_tip\_range\_frequencies.hql** 文件。 以下是其内容。
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -504,19 +504,19 @@ Hive 디렉터리 프롬프트에서 다음을 실행합니다.
     )tc
     GROUP BY tip_class;
 
-Hadoop 명령줄 콘솔에서 다음 명령을 실행합니다.
+从 Hadoop 命令行控制台运行以下命令：
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>탐색: 두 경도-위도 위치 간의 직접 거리 컴퓨팅
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索：计算两个经纬位置之间的直接距离
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-두 위치 사이의 직접 거리와 택시의 실제 여정 거리 간에 차이가 있는지 알아야 할 수 있습니다. 승객이 운전 기사가 의도적으로 더 긴 경로를 이용했는지 알면 팁을 제공하지 않을 수 있습니다.
+你可能想要知道两个位置之间的直接距离是否有差异，以及出租车的实际行程距离。 如果乘客发现司机故意绕远路，该乘客提供小费的可能性更低。
 
-두 경도-위도 지점 사이의 실제 주행 거리와 [Haversine 거리](https://en.wikipedia.org/wiki/Haversine_formula)("대권" 거리)를 비교하기 위해 Hive 내에서 사용할 수 있는 삼각 함수를 사용할 수 있습니다.
+为了查看实际行程距离与两个经纬点（“大圆”距离）之间的[半正矢距离](https://en.wikipedia.org/wiki/Haversine_formula)的比较结果，我们使用 Hive 中可用的三角函数：
 
     set R=3959;
     set pi=radians(180);
@@ -537,57 +537,57 @@ Hadoop 명령줄 콘솔에서 다음 명령을 실행합니다.
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-앞의 쿼리에서 R은 지구의 반경(마일)이고, pi는 라디안으로 변환됩니다. 对经度-纬度点进行筛选，以删除远离 NYC 区域的值。
+在上面的查询中，R 表示以英里为单位的地球半径，pi 转换为弧度。 对经度-纬度点进行筛选，以删除远离 NYC 区域的值。
 
-이 경우 결과를 **queryoutputdir**이라는 디렉터리에 씁니다. 다음 명령의 시퀀스는 먼저 이 출력 디렉터리를 만든 다음, Hive 명령을 실행합니다.
+在此例中，我们将结果写入名为 **queryoutputdir** 的目录。 以下命令序列先创建此输出目录，并运行 Hive 命令。
 
-Hive 디렉터리 프롬프트에서 다음을 실행합니다.
+从 Hive 目录提示符中，运行：
 
     hdfs dfs -mkdir wasb:///queryoutputdir
 
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-쿼리 결과는 Hadoop 클러스터의 기본 컨테이너 아래에 있는 9개의 Azure Blob(**queryoutputdir/000000\_0** ~ **queryoutputdir/000008\_0**)에 기록됩니다.
+查询结果将写入 Hadoop 群集的默认容器下的 9 个 Azure Blob（**queryoutputdir/000000\_0** 到 **queryoutputdir/000008\_0**）。
 
-개별 Blob의 크기를 확인하려면 Hive 디렉터리 프롬프트에서 다음 명령을 실행합니다.
+若要查看各个 Blob 的大小，可在 Hive 目录提示符下运行以下命令：
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-지정된 파일, 즉 **000000\_0**의 내용을 보려면 Hadoop의 `copyToLocal` 명령을 사용합니다.
+若要查看给定文件（例如 **000000\_0**）的内容，可以使用 Hadoop 的 `copyToLocal` 命令。
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
 > [!WARNING]
-> `copyToLocal`은 파일이 큰 경우 매우 느려질 수 있으므로 큰 파일에 사용하지 않는 것이 좋습니다.  
+> 对于大型文件，`copyToLocal` 可能非常慢，因此不建议将其用于此类文件。  
 > 
 > 
 
 将此数据驻留在 Azure blob 中的一个主要优点是，我们可以使用 "[导入数据][import-data]" 模块来浏览机器学习中的数据。
 
-## <a name="#downsample"></a>Machine Learning에서 데이터 다운 샘플링 및 모델 빌드
+## <a name="#downsample"></a>在机器学习中对数据进行下采样和构建模型
 > [!NOTE]
-> 이는 일반적으로 데이터 과학자 작업입니다.
+> 这通常是数据科学家的任务。
 > 
 > 
 
-예비 데이터 분석 단계를 마쳤으므로 이제 Machine Learning에서 모델을 빌드하기 위한 데이터를 다운 샘플링할 수 있습니다. 이 섹션에서는 Hive 쿼리를 사용하여 데이터를 다운 샘플링하는 방법을 보여 줍니다. 然后机器学习从 "[导入数据][import-data]" 模块访问该数据。
+在探索数据分析阶段之后，便可以开始在机器学习中对数据进行下采样，以便构建模型。 本部分演示如何使用 Hive 查询对数据进行下采样。 然后机器学习从 "[导入数据][import-data]" 模块访问该数据。
 
-### <a name="down-sampling-the-data"></a>데이터 다운 샘플링
-이 절차에는 두 단계가 있습니다. 먼저 모든 레코드에 있는 세 개의 키(**medallion**, **hack\_license** 및 **pickup\_datetime**)에 **nyctaxidb.trip** 및 **nyctaxidb.fare** 테이블을 조인합니다. 그런 다음, 이진 분류 레이블 **tipped**와 다중 클래스 분류 레이블 **tip\_class**를 생성합니다.
+### <a name="down-sampling-the-data"></a>对数据进行下采样
+此过程包含两个步骤。 首先，在存在于所有记录中的三个键上将 **nyctaxidb.trip** 和 **nyctaxidb.fare** 表相联接，这三个键是：**medallion**、**hack\_license** 和 **pickup\_datetime**。 然后，生成一个二元分类标签 **tipped** 和一个多类分类标签 **tip\_class**。
 
-为了能够从机器学习中的 "[导入数据][import-data]" 模块中直接使用向下采样的数据，应将上述查询的结果存储到内部 Hive 表中。 아래에서는 내부 Hive 테이블을 만들고 해당 콘텐츠를 조인 및 다운 샘플링된 데이터로 채웁니다.
+为了能够从机器学习中的 "[导入数据][import-data]" 模块中直接使用向下采样的数据，应将上述查询的结果存储到内部 Hive 表中。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
 
 查询直接应用标准 Hive 函数，以从 "**分拣\_日期时间**" 字段生成以下时间参数：
-- 하루 중 시간
-- 연간 주
+- 一天的某一小时
+- 一年的某一周
 - weekday （"1" 表示星期一，"7" 代表星期日）
 
-쿼리는 승차 및 하차 위치 사이의 거리도 생성합니다. 이러한 함수의 전체 목록은 [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)를 참조하세요.
+该查询还会生成上车与下车位置之间的直接距离。 有关此类函数的完整列表，请参阅 [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)。
 
-그런 다음, 이 쿼리는 쿼리 결과가 Azure Machine Learning Studio에 적합하도록 데이터를 다운 샘플링합니다. 원래 데이터 세트의 약 1%만 스튜디오로 가져옵니다.
+然后，查询会对数据进行下采样，以便查询结果适合 Azure 机器学习工作室。 导入到该工作室中的原始数据集仅有 1%。
 
-다음은 Machine Learning에서 모델 빌드를 위해 데이터를 준비하는 **sample\_hive\_prepare\_for\_aml\_full.hql** 파일의 내용입니다.
+下面是 **sample\_hive\_prepare\_for\_aml\_full.hql** 文件的内容，用于为在机器学习中构建模型准备数据。
 
         set R = 3959;
         set pi=radians(180);
@@ -710,20 +710,20 @@ Hive 디렉터리 프롬프트에서 다음을 실행합니다.
         on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
         where t.sample_key<=0.01
 
-이 쿼리를 실행하려면 Hive 디렉터리 프롬프트에서 다음을 수행합니다.
+从 Hive 目录提示符中运行此查询：
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-现在，我们有了一个内部表 nyctaxidb，可以使用机器学习中的 "[导入数据][import-data]" 模块访问该**nyctaxi_downsampled_dataset。** 또한 이 데이터 세트를 사용하여 Machine Learning 모델을 빌드할 수 있습니다.  
+现在，我们有了一个内部表 nyctaxidb，可以使用机器学习中的 "[导入数据][import-data]" 模块访问该**nyctaxi_downsampled_dataset。** 此外，可将此数据集用于构建机器学习模型。  
 
-### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Machine Learning의 데이터 가져오기 모듈을 사용하여 다운 샘플링된 데이터 액세스
-若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，需要访问机器学习工作区。 또한 클러스터의 자격 증명 및 연결된 스토리지 계정에 액세스할 수 있어야 합니다.
+### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>使用机器学习中的“导入数据”模块访问已经过下采样的数据
+若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，需要访问机器学习工作区。 此外，还需有权访问群集凭据及其关联的存储帐户。
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为**abc123**，则使用： https://abc123.azurehdinsight.net 。
+**HCatalog 服务器 URI**：如果群集名称为**abc123**，则使用： https://abc123.azurehdinsight.net。
 
-**Hadoop user account name**: 클러스터에 대해 선택한 사용자 이름입니다(원격 액세스 사용자 이름이 아님).
+**Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
 **Hadoop 用户帐户密码**：为群集选择的密码（不是远程访问密码）。
 
@@ -738,93 +738,93 @@ Hive 디렉터리 프롬프트에서 다음을 실행합니다.
 > 
 > 
 
-데이터베이스 **D.db**의 테이블 **T**가 내부 테이블인지 확인하는 방법은 다음과 같습니다. Hive 디렉터리 프롬프트에서 다음 명령을 실행합니다.
+下面介绍如何确定数据库 **D.db** 中的表 **T** 是否是内部表。 在 Hive 目录提示符下运行以下命令：
 
     hdfs dfs -ls wasb:///D.db/T
 
-테이블이 내부 테이블이고 채워진 경우 해당 내용이 여기에 표시되어야 합니다.
+如果该表是内部表并且已填充，则其内容一定会在此处显示。
 
-테이블이 내부 테이블인지 확인하는 또 다른 방법은 Azure Storage Explorer를 사용하는 것입니다. Azure 저장소 탐색기를 사용하여 클러스터의 기본 컨테이너 이름으로 이동한 다음 테이블 이름으로 필터링합니다. 테이블과 해당 내용이 표시되면 내부 테이블인 것입니다.
+确定表是否是内部表的另一种方法是使用 Azure 存储资源管理器。 使用它导航到群集的默认容器名称，并按表名称进行筛选。 如果显示了表及其内容，则可确定该表为内部表。
 
 下面是 Hive 查询和[导入数据][import-data]模块的屏幕截图：
 
-![데이터 가져오기 모듈에 대한 Hive 쿼리의 스크린샷](./media/hive-walkthrough/1eTYf52.png)
+![“导入数据”模块的 Hive 查询屏幕截图](./media/hive-walkthrough/1eTYf52.png)
 
-由于按下采样的数据驻留在默认容器中，因此机器学习中生成的 Hive 查询很简单。 간단히 **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data**입니다.
+由于按下采样的数据驻留在默认容器中，因此机器学习中生成的 Hive 查询很简单。 只是 **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data**。
 
-이제 이 데이터 세트를 Machine Learning 모델 빌드를 위한 시작 지점으로 사용할 수 있습니다.
+现在，可将数据集用作构建机器学习模型的起点。
 
-### <a name="mlmodel"></a>Machine Learning에서 모델 빌드
-이제 [Machine Learning](https://studio.azureml.net)에서 모델 빌드 및 모델 배포를 진행할 수 있습니다. 이전에 파악된 다음과 같은 예측 문제를 해결하는 데 데이터를 사용할 수 있습니다.
+### <a name="mlmodel"></a>在机器学习中构建模型
+现在，可以在[机器学习](https://studio.azureml.net)中继续构建模型以及为部署建模。 数据已可用于解决上述预测问题：
 
-- **이진 분류**: 여정에 대해 팁이 지불되었는지 여부를 예측합니다.
+- **二元分类**：预测某个行程是否支付小费。
 
-  **사용된 학습자:** 2클래스 로지스틱 회귀
+  **使用的学习器：** 双类逻辑回归
 
-  a. 이 문제의 경우 대상(또는 클래스) 레이블은 **tipped**입니다. 다운 샘플링된 원래 데이터 세트에는 이 분류 실험의 대상 누수인 몇 가지 열이 있습니다. 특히 **tip\_class**, **tip\_amount** 및 **total\_amount**는 테스트 시 사용할 수 없는 대상 레이블에 대한 정보를 표시합니다. 使用 "[选择数据集中的列][select-columns]" 模块将删除这些列。
+  a. 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用 "[选择数据集中的列][select-columns]" 模块将删除这些列。
 
-  다음 다이어그램은 지정된 여정에 대해 팁이 지불되었는지 여부를 예측하는 실험을 보여 줍니다.
+  下图显示预测给定行程是否支付小费的试验。
 
-  ![팁 지불 여부를 예측하는 실험 다이어그램](./media/hive-walkthrough/QGxRz5A.png)
+  ![示意图：预测是否支付小费试验](./media/hive-walkthrough/QGxRz5A.png)
 
-  b. 이 실험의 경우 대상 레이블 분포는 약 1:1입니다.
+  b. 对于此实验，我们的目标标签分布大约是 1:1。
 
-   다음 차트는 이진 분류 문제에 대한 팁 클래스 레이블의 분포를 보여 줍니다.
+   下图显示该二元分类问题的小费类标签的分布情况。
 
-  ![팁 클래스 레이블 분포의 차트](./media/hive-walkthrough/9mM4jlD.png)
+  ![tip 类标签分布图表](./media/hive-walkthrough/9mM4jlD.png)
 
-    결과적으로, 다음 그림에 표시된 것처럼 0.987의 곡선(AUC) 아래에 영역을 가져옵니다.
+    最终，我们获得的曲线下面积 (AUC) 为 0.987，如下图所示：
 
-  ![AUC 값의 차트](./media/hive-walkthrough/8JDT0F8.png)
+  ![AUC 值的图表](./media/hive-walkthrough/8JDT0F8.png)
 
-- **다중 클래스 분류**: 이전에 정의된 클래스를 사용하여 여정에 대해 지불된 팁 금액 범위를 예측합니다.
+- **多类分类**：使用以前定义的类预测为行程支付的小费金额范围。
 
-  **사용된 학습자:** 다중 클래스 로지스틱 회귀
+  **使用的学习器：** 多类逻辑回归
 
-  a. 이 문제의 경우 대상(또는 클래스) 레이블은 5개 값(0, 1, 2, 3, 4) 중 하나일 수 있는 **tip\_class**입니다. 이진 분류와 마찬가지로 이 실험에 대한 대상 누수인 몇 개 열이 있습니다. 특히 **tipped**, **tip\_amount** 및 **total\_amount**는 테스트 시 사용할 수 없는 대상 레이블에 대한 정보를 표시합니다. 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
+  a. 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
 
-  다음 다이어그램에서는 팁이 대체될 가능성이 높은 bin을 예측하는 실험을 보여 줍니다. bin은 Class 0: tip = $0, Class 1: tip > $0, tip <= $5, Class 2: tip > $5, tip <= $10, Class 3: tip > $10, tip <= $20 및 Class 4: tip > $20입니다.
+  下图显示预测小费可能归属的 bin 的试验。 bin 为：类 0：小费 = $0，类 1：小费 > $0 且 <= $5，类 2：小费 > $5 且 <= $10，类 3：小费 > $10 且 <= $20，类 4：小费 > $20。
 
-  ![팁에 대한 bin을 예측하는 실험 다이어그램](./media/hive-walkthrough/5ztv0n0.png)
+  ![示意图：预测小费的 bin 试验](./media/hive-walkthrough/5ztv0n0.png)
 
-  실제 테스트 클래스 분포는 다음과 같습니다. Class 0과 Class 1은 우세한 반면, 다른 클래스는 희박합니다.
+  现在，我们将展示实际测试类的分布情况。 类 0 和类 1 的情况很普遍，而其他类的情况很少。
 
-  ![테스트 클래스 분포의 차트](./media/hive-walkthrough/Vy1FUKa.png)
+  ![测试类分布图表](./media/hive-walkthrough/Vy1FUKa.png)
 
   b. 对于此实验，我们使用混淆矩阵来查看预测准确性，如下所示：
 
-  ![혼동 행렬](./media/hive-walkthrough/cxFmErM.png)
+  ![混淆矩阵](./media/hive-walkthrough/cxFmErM.png)
 
   虽然常见类的 "准确性" 是正确的，但模型不会在罕见类上执行 "学习" 工作。
 
-- **회귀 작업**: 여정에 대해 지불된 팁의 금액을 예측합니다.
+- **回归任务**：预测为行程支付的小费数量。
 
-  **사용된 학습자:** 향상된 의사 결정 트리
+  **使用的学习器：** 提升决策树
 
-  a. 이 문제의 대상(또는 클래스) 레이블은 **tip\_amount**입니다. 이 경우 대상 누수는 **tipped**, **tip\_class** 및 **total\_amount**입니다. 이러한 모든 변수는 테스트 시 일반적으로 사용할 수 없는 팁 크기에 대한 정보를 표시합니다. 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
+  a. 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用 "[选择数据集中的列][select-columns]" 模块删除这些列。
 
-  다음 다이어그램은 운전 기사가 받은 팁 금액을 예측하는 실험을 보여 줍니다.
+  下图显示预测支付的小费金额的试验。
 
-  ![팁 액수를 예측하는 실험 다이어그램](./media/hive-walkthrough/11TZWgV.png)
+  ![示意图：预测小费金额的试验](./media/hive-walkthrough/11TZWgV.png)
 
-  b. 회귀 문제의 경우 예측의 제곱된 오류, 결정 계수를 확인하여 예측 정확도를 측정합니다.
+  b. 对于回归问题，我们将通过查看预测中的平方误差和决定系数，测量预测准确性：
 
-  ![예측 통계의 스크린샷](./media/hive-walkthrough/Jat9mrz.png)
+  ![预测统计信息的屏幕截图](./media/hive-walkthrough/Jat9mrz.png)
 
-  여기서 결정 계수는 0.709이며 이는 분산의 약 71%가 모델 계수로 설명됨을 의미합니다.
+  此处，决定系数是 0.709，这意味着模型系数解释了大约 71% 的方差。
 
 > [!IMPORTANT]
-> Machine Learning 및 이를 액세스하고 사용하는 방법에 대한 자세한 내용은 [Machine Learning이란?](../studio/what-is-machine-learning.md)을 참조하세요. 또한 [Azure AI 갤러리](https://gallery.cortanaintelligence.com/)에는 다양한 실험이 있으며, Machine Learning의 광범위한 기능을 소개합니다.
+> 若要深入了解机器学习及其访问和使用方式，请参阅[什么是机器学习](../studio/what-is-machine-learning.md)。 此外，[Azure AI 库](https://gallery.cortanaintelligence.com/)涵盖了各类试验，并提供对机器学习功能范围的全面介绍。
 > 
 > 
 
-## <a name="license-information"></a>라이선스 정보
-이 샘플 연습 및 함께 제공되는 스크립트는 Microsoft에서 MIT 라이선스에 따라 공유하고 있습니다. 有关详细信息，请参阅 GitHub 上的示例代码目录中的**license.txt**文件。
+## <a name="license-information"></a>许可证信息
+此示例演练及其附带脚本在 MIT 许可证下由 Microsoft 共享。 有关详细信息，请参阅 GitHub 上的示例代码目录中的**license.txt**文件。
 
-## <a name="references"></a>참조
-• [Andrés Monroy NYC Taxi Trips 다운로드 페이지](https://www.andresmh.com/nyctaxitrips/)  
-• [Chris Whong의 FOILing NYC Taxi Trip 데이터](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi 및 Limousine 수수료 연구 및 통계](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+## <a name="references"></a>参考
+•    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)  
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png

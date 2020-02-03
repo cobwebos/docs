@@ -1,7 +1,7 @@
 ---
-title: Peering Service 파트너 연습
+title: 对等互连服务合作伙伴演练
 titleSuffix: Azure
-description: Peering Service 파트너 연습
+description: 对等互连服务合作伙伴演练
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720242"
 ---
-# <a name="peering-service-partner-walkthrough"></a>Peering Service 파트너 연습
+# <a name="peering-service-partner-walkthrough"></a>对等互连服务合作伙伴演练
 
 本部分介绍了提供程序为实现对等互连服务启用直接对等互连所需遵循的步骤。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76720242"
 1. 按照说明[使用门户将旧直接对等互连转换为 Azure 资源](howto-legacy-direct-portal.md)。 如果需要，请订购其他线路以满足高可用性要求。
 1. 然后，按照步骤[使用门户在直接对等互连上启用对等互连服务](howto-peering-service-portal.md)。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * 了解对[等互连策略](https://peering.azurewebsites.net/peering)。
 * 若要了解有关设置与 Microsoft 的直接对等互连的步骤，请遵循[直接对等演练](walkthrough-direct-all.md)。

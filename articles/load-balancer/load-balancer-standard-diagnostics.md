@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722435"
 ---
-# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>메트릭, 경고 및 리소스 상태를 사용하는 표준 Load Balancer 진단
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
 Azure 标准负载均衡器公开以下诊断功能：
 
@@ -27,181 +27,181 @@ Azure 标准负载均衡器公开以下诊断功能：
 
 * **资源运行状况**： "Azure 门户" 和 "资源运行状况" 页（"监视" 下）中的 "负载均衡器" 页公开标准负载均衡器的资源运行状况部分。 
 
-이 문서에서는 이러한 기능에 대한 간단한 설명을 제공하고 표준 Load Balancer에 이러한 기능을 사용하는 방법을 제공합니다. 
+本文概要介绍这些功能，以及如何对标准负载均衡器使用这些功能。 
 
-## <a name = "MultiDimensionalMetrics"></a>다차원 메트릭
+## <a name = "MultiDimensionalMetrics"></a>多维指标
 
 Azure 负载均衡器通过 Azure 门户中的 Azure 指标提供多维指标，并可帮助你获取负载均衡器资源的实时诊断见解。 
 
-다양한 표준 Load Balancer 구성에서는 다음 메트릭을 제공합니다.
+各种标准负载均衡器配置提供以下指标：
 
-| 메트릭 | 리소스 유형 | Description | 권장 집계 |
+| 指标 | 资源类型 | 说明 | 建议的聚合 |
 | --- | --- | --- | --- |
-| 数据路径可用性（VIP 可用性）| 공용 및 내부 부하 분산 장치 | 표준 Load Balancer는 지역 내에서 부하 분산 장치 프런트 엔드로, 마지막으로 VM을 지원하는 SDN 스택으로 데이터 경로를 연속적으로 실행합니다. 정상 인스턴스가 남아 있는 한 측정은 애플리케이션 부하가 분산된 트래픽과 동일한 경로를 따릅니다. 고객이 사용하는 데이터 경로의 유효성도 검사합니다. 측정은 애플리케이션에 표시되지 않으며 다른 작업을 방해하지 않습니다.| 평균 |
-| 运行状况探测状态（DIP 可用性） | 공용 및 내부 부하 분산 장치 | 표준 Load Balancer는 구성 설정에 따라 애플리케이션 엔드포인트의 상태를 모니터링하는 분산된 상태 검색 서비스를 사용합니다. 이 메트릭은 부하 분산 장치 풀에서 각 인스턴스 엔드포인트의 집계 또는 엔드포인트당 필터링된 보기를 제공합니다. 상태 프로브 구성에 표시된 대로 Load Balancer에서 애플리케이션의 상태를 보는 방법을 확인할 수 있습니다. |  평균 |
-| SYN(동기화) 패킷 | 공용 및 내부 부하 분산 장치 | 표준 Load Balancer는 TCP(Transmission Control Protocol) 연결을 종료하거나 TCP 또는 UDP 패킷 흐름을 조작하지 않습니다. 흐름 및 해당 핸드셰이크는 항상 원본과 VM 인스턴스 사이에 있습니다. TCP 프로토콜 시나리오의 문제를 잘 해결하기 위해 SYN 패킷 카운터를 사용하여 TCP 연결 시도 횟수를 파악할 수 있습니다. 메트릭은 수신된 TCP SYN 패킷 수를 보고합니다.| 평균 |
-| SNAT 연결 | 공용 부하 분산 장치 |표준 Load Balancer는 공용 IP 주소 프런트 엔드로 위장되는 아웃바운드 흐름 수를 보고합니다. SNAT(원본 네트워크 주소 변환) 포트는 소모성 리소스입니다. 이 메트릭은 애플리케이션이 아웃바운드에서 시작된 흐름에 대해 SNAT에 얼마나 의존하는지를 나타낼 수 있습니다. 성공 및 실패한 아웃바운드 SNAT 흐름에 대한 카운터가 보고되고 아웃바운드 흐름의 상태를 이해하고 문제를 해결하는 데 사용할 수 있습니다.| 평균 |
-| 바이트 카운터 |  공용 및 내부 부하 분산 장치 | 표준 Load Balancer는 프런트 엔드당 처리된 데이터를 보고합니다. 你可能会注意到，字节不会在后端实例中均匀分布。 这是预期的，因为 Azure 的负载均衡器算法基于流 | 평균 |
-| 패킷 카운터 |  공용 및 내부 부하 분산 장치 | 표준 Load Balancer는 프런트 엔드당 처리된 패킷을 보고합니다.| 평균 |
+| 数据路径可用性（VIP 可用性）| 公共和内部负载均衡器 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。| 平均值 |
+| 运行状况探测状态（DIP 可用性） | 公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
+| SYN（同步）数据包 | 公共和内部负载均衡器 | 标准负载均衡器不会终止传输控制协议 (TCP) 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。| 平均值 |
+| SNAT 连接 | 公共负载均衡器 |标准负载均衡器报告公共 IP 地址前端上伪装的出站流数。 源网络地址转换 (SNAT) 端口是消耗性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。 将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。| 平均值 |
+| 字节计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。 你可能会注意到，字节不会在后端实例中均匀分布。 这是预期的，因为 Azure 的负载均衡器算法基于流 | 平均值 |
+| 数据包计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据包。| 平均值 |
 
-### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Azure Portal에서 부하 분산 장치 메트릭 보기
+### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 门户中查看负载均衡器指标
 
 Azure 门户通过 "指标" 页公开负载平衡器指标，可在特定资源的负载均衡器资源页和 Azure Monitor 页上使用。 
 
-표준 Load Balancer 리소스에 대한 메트릭을 보려면:
+若要查看标准负载均衡器资源的指标，请执行以下操作：
 1. 请在 "指标" 页上，执行以下任一操作：
-   * 부하 분산 장치 리소스 페이지의 드롭다운 목록에서 메트릭 유형을 선택합니다.
-   * Azure Monitor 페이지에서 부하 분산 장치 리소스를 선택합니다.
-2. 적절한 집계 유형을 설정합니다.
-3. 필요에 따라 필요한 필터링 및 그룹화를 구성합니다.
+   * 在负载均衡器资源页的下拉列表中选择指标类型。
+   * 在 Azure Monitor 页中选择负载均衡器资源。
+2. 设置适当的聚合类型。
+3. （可选）配置需要的筛选和分组。
 
     ![标准负载均衡器的指标](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
     *图：标准负载均衡器的数据路径可用性指标*
 
-### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API를 통해 프로그래밍 방식으로 다차원 메트릭 검색
+### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>通过 API 以编程方式检索多维指标
 
-다차원 메트릭 정의 및 값을 검색하기 위한 API 지침은 [Azure Monitoring REST API 연습](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)을 참조하세요. 只能通过 "所有指标" 选项将这些指标写入存储帐户。 
+有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。 只能通过 "所有指标" 选项将这些指标写入存储帐户。 
 
-### <a name = "DiagnosticScenarios"></a>일반적인 진단 시나리오 및 권장 보기
+### <a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>이 데이터 경로가 작동되며 부하 분산 장치 VIP에 사용할 수 있나요?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>数据路径是否已启动并适用于我的负载均衡器 VIP？
 
-VIP 가용성 메트릭은 지역 내에서 VM이 있는 Compute 호스트로의 데이터 경로 상태를 설명합니다. 메트릭은 Azure 인프라의 상태를 반영한 것입니다. 이 메트릭으로 다음을 수행할 수 있습니다.
-- 서비스의 외부 가용성 모니터링
-- 서비스가 배포된 플랫폼이 정상 상태인지 여부 또는 게스트 OS 또는 애플리케이션 인스턴스가 정상 상태인지 여부를 심층 분석 및 이해
-- 이벤트가 서비스와 관련된 것인지 또는 기본 데이터 평면과 관련된 것인지를 구분합니다. 이 메트릭을 상태 프로브 상태("DIP 가용성")와 혼동하지 마세요.
+VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
+- 监视服务的外部可用性
+- 深入分析和了解部署服务的平台是否正常，或者来宾 OS 或应用程序实例是否正常。
+- 查明某个事件是与服务还是底层数据平面相关。 请不要将此指标与运行状况探测状态（“DIP 可用性”）相混淆。
 
 若要获取标准负载均衡器资源的数据路径可用性，请执行以下操作：
-1. 올바른 부하 분산 장치 리소스를 선택했는지 확인합니다. 
+1. 确保选择正确的负载均衡器资源。 
 2. 在 "**指标**" 下拉列表中，选择 "**数据路径可用性**"。 
-3. **집계** 드롭다운 목록에서 **Avg**를 선택합니다. 
+3. 在“聚合”下拉列表中，选择“平均”。 
 4. 此外，在前端 IP 地址或前端端口上添加一个筛选器，该筛选器具有所需前端 IP 地址或前端端口，然后按所选维度进行分组。
 
-![VIP 검색](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
+![VIP 探测](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
 *图：负载均衡器前端探测详细信息*
 
-이 메트릭은 활성, 대역 내 측정을 통해 생성됩니다. 지역 내의 검색 서비스는 측정에 대한 트래픽을 발생합니다. 서비스는 공용 프런트 엔드로 배포를 만드는 즉시 활성화되고, 프런트 엔드를 제거할 때까지 계속됩니다. 
+将会根据活动的带内度量值生成该指标。 区域中的探测服务根据此测量值发起流量， 使用公共前端创建部署后，此服务会立即激活，并一直运行到删除了前端为止。 
 
-배포의 프런트 엔드 및 규칙과 일치하는 패킷이 주기적으로 생성됩니다. 원본에서 백 엔드 풀의 VM이 있는 호스트까지 해당 지역을 트래버스합니다. 부하 분산 장치 인프라는 다른 모든 트래픽의 경우와 동일하게 부하 분산 및 변환 작업을 수행합니다. 이 프로브는 대역 내의 부하 분산된 엔드포인트에 있습니다. 프로브가 백 엔드 풀의 정상 VM이 있는 Compute 호스트에 도착하면, 컴퓨팅 호스트는 검색 서비스에 대한 응답을 생성합니다. VM에는 이 트래픽이 표시되지 않습니다.
+会定期生成与部署前端和规则匹配的数据包。 该服务在区域中从源遍历到后端池中 VM 所在的主机。 负载均衡器基础结构执行的负载均衡和转换运算与针对其他所有流量执行的操作一样。 此探测在负载均衡终结点上的带内执行。 探测抵达后端池中正常 VM 所在的计算主机后，计算主机会针对探测服务生成响应。 VM 看不到此流量。
 
-다음과 같은 이유로 VIP 가용성이 실패합니다.
-- 배포의 백 엔드 풀에 정상 상태의 VM이 남아 있지 않습니다. 
-- 인프라 중단이 발생했습니다.
+VIP 可用性探测会出于原因而失败：
+- 后端池中没有剩余的可用于部署的正常 VM。 
+- 发生基础结构服务中断。
 
 出于诊断目的，可以将[数据路径可用性指标与运行状况探测状态一起](#vipavailabilityandhealthprobes)使用。
 
-대부분의 시나리오에서 집계로 **Average**를 사용합니다.
+在大多数情况下，可以使用“平均值”作为聚合。
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP에 대한 백 엔드 인스턴스가 프로브에 응답하고 있나요?
+#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP 的后端实例是否正在响应探测？
 
-상태 프로브 상태 메트릭은 부하 분산 장치의 상태 프로브를 구성할 때 사용자가 구성한 애플리케이션 배포의 상태를 설명합니다. 부하 분산 장치는 상태 프로브의 상태를 사용하여 새 흐름을 보낼 위치를 결정합니다. 상태 프로브는 Azure 인프라 주소에서 시작되며, VM의 게스트 OS 내에서 볼 수 있습니다.
+运行状况探测状态指标描述在配置负载均衡器的运行状况探测时，由你配置的应用程序部署的运行状况。 负载均衡器使用运行状况探测的状态来确定要将新流量发送到何处。 运行状况探测源自某个 Azure 基础结构地址，并会显示在 VM 的来宾 OS 中。
 
 获取标准负载均衡器资源的运行状况探测状态：
 1. 选择包含**Avg**聚合类型的**运行状况探测状态**指标。 
 2. 对所需的前端 IP 地址或端口应用筛选器。
 
-다음과 같은 이유로 상태 프로브가 실패합니다.
-- 수신 또는 응답하지 않거나 잘못된 프로토콜을 사용하는 포트로 상태 프로브를 구성하는 경우. 서비스가 DSR(Direct Server Return 또는 부동 IP) 규칙을 사용하는 경우 서비스가 프런트 엔드 IP 주소로 구성된 루프백이 아니라 NIC의 IP 구성에서 수신 대기하고 있는지 확인해야 합니다.
-- 프로브가 네트워크 보안 그룹, VM의 게스트 OS 방화벽 또는 애플리케이션 계층 필터에서 허용되지 않는 경우.
+运行状况探测会出于以下原因而失败：
+- 针对不在侦听、无响应或者使用错误协议的端口配置运行状况探测。 如果服务使用直接服务器返回（DSR 或浮动 IP）规则，请确保服务侦听 NIC IP 配置的 IP 地址，而不仅仅是侦听使用前端 IP 地址配置的环回地址。
+- 网络安全组、VM 的来宾 OS 防火墙或应用层筛选器不允许你的探测。
 
-대부분의 시나리오에서 집계로 **Average**를 사용합니다.
+在大多数情况下，可以使用“平均值”作为聚合。
 
-#### <a name="how-do-i-check-my-outbound-connection-statistics"></a>내 아웃바운드 연결 통계는 어떻게 확인할 수 있나요? 
+#### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何检查出站连接统计信息？ 
 
-SNAT 연결 메트릭은 [아웃바운드 흐름](https://aka.ms/lboutbound)에 대한 성공 및 실패 연결의 볼륨을 설명합니다.
+“SNAT 连接”指标描述适用于[出站流](https://aka.ms/lboutbound)的成功和失败连接的数量。
 
-실패한 연결 볼륨이 0보다 크면 SNAT 포트가 고갈된 것을 나타냅니다. 추가로 조사하여 이러한 실패의 원인을 확인해야 합니다. SNAT 포트 고갈은 [아웃바운드 흐름](https://aka.ms/lboutbound) 설정 실패를 나타냅니다. 아웃바운드 연결에 대한 문서를 검토하여 시나리오 및 작동 메커니즘을 이해하고, SNAT 포트 고갈 방지를 위한 완화 및 설계 방법을 알아봅니다. 
+如果失败连接数量大于零，则表示 SNAT 端口已耗尽。 必须进一步调查，确定失败的可能原因。 SNAT 端口耗尽的表现形式是无法建立[出站流](https://aka.ms/lboutbound)。 请查看有关出站连接的文章，以了解相关的场景和运行机制，并了解如何缓解并尽量避免 SNAT 端口耗尽的情况。 
 
-SNAT 연결 통계를 가져오려면:
-1. **SNAT 연결** 메트릭 유형을 선택하고 집계로 **Sum**을 선택합니다. 
-2. 다른 줄로 표시된 성공 및 실패 SNAT 연결 수를 **연결 상태**별로 그룹화합니다. 
+若要获取 SNAT 连接统计信息，请执行以下操作：
+1. 选择“SNAT 连接”作为指标类型，并选择“总和”作为聚合。 
+2. 根据不同行中显示的成功和失败 SNAT 连接计数的“连接状态”进行分组。 
 
-![SNAT 연결](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
+![SNAT 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*그림: Load Balancer SNAT 연결 수*
-
-
-#### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>내 서비스에 대한 인바운드/아웃바운드 연결 시도를 확인하려면 어떻게 해야 하나요?
-
-SYN 패킷 메트릭은 특정 프런트 엔드와 관련해서 도착했거나 전송된 ([아웃바운드 흐름](https://aka.ms/lboutbound) 관련) TCP SYN 패킷 볼륨을 설명합니다. 이 메트릭을 사용하여 서비스에 대한 TCP 연결 시도를 이해할 수 있습니다.
-
-대부분의 시나리오에서 집계로 **Total**을 사용합니다.
-
-![SYN 연결](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
-
-*그림: Load Balancer SYN 수*
+*图：负载均衡器 SNAT 连接计数*
 
 
-#### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>내 네트워크 대역폭 소비를 어떻게 확인할 수 있나요? 
+#### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
 
-바이트 및 패킷 카운터 메트릭은 프런트 엔드 기준으로 서비스에서 전송 또는 수신된 바이트 및 패킷 볼륨을 설명합니다.
+“SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](https://aka.ms/lboutbound)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
-대부분의 시나리오에서 집계로 **Total**을 사용합니다.
+在大多数情况下，可以使用“总计”作为聚合。
 
-바이트 또는 패킷 수 통계를 가져오려면:
-1. 집계가 **Avg**인 **바이트 수** 및/또는 **패킷 수** 메트릭 유형을 선택합니다. 
-2. 다음 중 하나를 수행합니다.
-   * 특정 프런트 엔드 IP, 프런트 엔드 포트, 백 엔드 IP 또는 백 엔드 포트에 필터를 적용합니다.
-   * 필터링 없이 부하 분산 장치 리소스에 대한 전체 통계를 가져옵니다.
+![SYN 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-![바이트 수](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
+*图：负载均衡器 SYN 计数*
 
-*그림: Load Balancer 바이트 수*
 
-#### <a name = "vipavailabilityandhealthprobes"></a>내 부하 분산 장치 배포를 진단하려면 어떻게 해야 하나요?
+#### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>如何检查网络带宽消耗？ 
 
-단일 차트에 VIP 가용성 및 상태 프로브 메트릭의 조합을 사용하여 문제를 확인하고 해결할 위치를 식별할 수 있습니다. Azure가 제대로 작동하고 있는지 확신하고, 이 정보를 토대로 구성 또는 애플리케이션이 근본 원인이라는 결론을 얻을 수 있습니다.
+字节和数据包计数器指标描述服务发送或收到的字节和数据包数量，根据前端显示信息。
 
-상태 프로브 메트릭을 사용하여 Azure에서 사용자가 제공한 구성을 기준으로 배포의 상태를 확인하는 방법을 이해할 수 있습니다. 상태 프로브를 확인하는 것은 항상 모니터링 또는 원인 파악에 도움이 되는 첫 단계입니다.
+在大多数情况下，可以使用“总计”作为聚合。
 
-추가 단계를 수행하고 VIP 가용성 메트릭을 사용하여 Azure가 특정 배포를 담당하는 기본 데이터 평면의 상태를 확인하는 방법을 이해할 수 있습니다. 두 메트릭에 함께 사용하면 이 예제에 설명된 대로 오류 위치를 격리시킬 수 있습니다.
+获取字节或数据包计数统计信息：
+1. 选择“字节计数”和/或“数据包计数”作为指标类型，并选择“平均值”作为聚合。 
+2. 执行下列任一操作：
+   * 在特定的前端 IP、前端端口、后端 IP 或后端端口应用筛选器。
+   * 不使用任何筛选器获取负载均衡器资源的总体统计信息。
+
+![字节计数](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
+
+*图：负载均衡器字节计数*
+
+#### <a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
+
+在单个图表中结合使用 VIP 可用性和运行状况探测指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
+
+可以使用运行状况探测指标来了解 Azure 如何根据提供的配置查看部署的运行状况。 在监视或确定原因时，查看运行状况探测始终是合理的第一个动作。
+
+然后可以采取进一步的措施，并使用 VIP 可用性指标来深入了解 Azure 如何查看负责特定部署的底层数据平面的运行状况。 结合使用两个指标，可以查明错误的所在位置，如以下示例所示：
 
 ![组合数据路径可用性和运行状况探测状态指标](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *图：组合数据路径可用性和运行状况探测状态指标*
 
-차트에는 다음 정보가 표시됩니다.
+此图表显示以下信息：
 - 托管 Vm 的基础结构不可用，但在图表开始时为0%。 稍后，基础结构运行正常且 Vm 可访问，且后端中已放置多个 VM。 此信息由数据路径可用性（VIP 可用性）的蓝色跟踪指示，该跟踪稍后为100%。 
 - 紫色跟踪指示的运行状况探测状态（DIP 可用性）在图表开始时为0%。 绿色突出显示的圆圈区域，其中的运行状况探测状态（DIP 可用性）变为正常，此时客户的部署能够接受新流。
 
-이 차트를 통해 고객은 다른 문제 발생 여부에 관계없이, 추측을 하거나 지원을 요청하지 않고 직접 배포 문제를 해결할 수 있습니다. 잘못된 구성 또는 실패한 애플리케이션 때문에 상태 프로브가 실패했으므로 서비스는 사용할 수 없었습니다.
+客户可以使用该图表来自行排查部署问题，而无需猜测或询问支持部门是否发生了其他问题。 此服务之所以不可用，是因为配置不当或应用程序故障导致运行状况探测失败。
 
-## <a name = "ResourceHealth"></a>Resource Health 상태
+## <a name = "ResourceHealth"></a>资源运行状况
 
-표준 Load Balancer **리소스에 대한 상태는** **모니터 > 서비스 상태** 아래의 기존 를 통해 표시됩니다.
+可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。
 
-공용 표준 Load Balancer 리소스의 상태를 보려면:
-1. **모니터** > **Service Health**를 선택합니다.
+若要查看公共标准负载均衡器资源的运行状况，请执行以下步骤：
+1. 选择“Monitor” > “服务运行状况”。
 
-   ![모니터 페이지](./media/load-balancer-standard-diagnostics/LBHealth1.png)
+   ![“Monitor”页](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *그림: Azure Monitor의 Service Health 링크*
+   *图：Azure Monitor 中的“服务运行状况”链接*
 
-2. **Resource Health**를 선택한 다음, **구독 ID** 및 **리소스 유형 = Load Balancer**를 선택했는지 확인합니다.
+2. 选择“资源运行状况”，然后确保正确选择“订阅 ID”和“资源类型 = 负载均衡器”。
 
-   ![Resource Health 상태](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![资源运行状况](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *그림: 상태 보기에 대한 리소스 선택*
+   *图：选择要查看其运行状况的资源*
 
-3. 목록에서 Load Balancer 리소스를 선택하여 기록 상태를 확인합니다.
+3. 在列表中，选择要查看其历史运行状况的负载均衡器资源。
 
-    ![Load Balancer 상태](./media/load-balancer-standard-diagnostics/LBHealth4.png)
+    ![负载均衡器运行状况](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *그림: Load Balancer 리소스 상태 보기*
+   *图：负载均衡器资源运行状况视图*
  
-다음 표에는 다양한 리소스 상태와 해당 설명이 나와 있습니다. 
+下表列出了各种资源运行状况及其说明： 
 
-| Resource Health 상태 | Description |
+| 资源运行状况 | 说明 |
 | --- | --- |
-| 사용할 수 있음 | 标准负载均衡器资源正常且可用。 |
-| 사용할 수 없음 | 标准负载均衡器资源不正常。 **Azure Monitor** > **메트릭**을 선택하여 상태를 진단합니다.<br>（"*不可用*" 状态也可能表示资源未与标准负载均衡器连接。） |
-| 알 수 없음 | 尚未更新标准负载均衡器资源的资源运行状况状态。<br>（*未知*状态还可能意味着资源未与标准负载均衡器连接。）  |
+| 可用 | 标准负载均衡器资源正常且可用。 |
+| 不可用 | 标准负载均衡器资源不正常。 选择“Azure Monitor” **“指标”来诊断运行状况。**  > <br>（"*不可用*" 状态也可能表示资源未与标准负载均衡器连接。） |
+| 未知 | 尚未更新标准负载均衡器资源的资源运行状况状态。<br>（*未知*状态还可能意味着资源未与标准负载均衡器连接。）  |
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-- [Standard Load Balancer](load-balancer-standard-overview.md)에 대해 자세히 알아보세요.
-- [Load Balancer 아웃바운드 연결](https://aka.ms/lboutbound)에 대해 자세히 알아봅니다.
-- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)에 대해 자세히 알아봅니다.
-- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 및 [REST API를 통해 메트릭을 검색하는 방법](/rest/api/monitor/metrics/list)에 대해 자세히 알아봅니다.
+- 详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
+- 详细了解[负载均衡器出站连接](https://aka.ms/lboutbound)。
+- 了解有关 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 的信息。
+- 了解有关 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 的信息，以及[如何通过 REST API 检索指标](/rest/api/monitor/metrics/list)。

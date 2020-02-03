@@ -24,17 +24,17 @@ ms.locfileid: "76712568"
 
 本文说明如何使用资源管理器模板创建 Windows Server VM 并将其加入到 Azure AD DS 托管域。 你还将了解如何将现有 Windows Server VM 加入到 Azure AD DS 域。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
-이 자습서를 완료하는 데 필요한 리소스와 권한은 다음과 같습니다.
+需有以下资源和特权才能完成本教程：
 
-* 활성화된 Azure 구독.
-    * Azure 구독이 없는 경우 [계정을 만듭니다](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* 온-프레미스 디렉터리 또는 클라우드 전용 디렉터리와 동기화되어 구독과 연결된 Azure Active Directory 테넌트
-    * 필요한 경우 [Azure Active Directory 테넌트를 만들거나][create-azure-ad-tenant][Azure 구독을 계정에 연결합니다][associate-azure-ad-tenant].
-* Azure AD 테넌트에서 사용하도록 설정되고 구성된 Azure Active Directory Domain Services 관리되는 도메인
-    * 필요한 경우 첫 번째 자습서에서 [Azure Active Directory Domain Services 인스턴스를 만들고 구성합니다][create-azure-ad-ds-instance].
-* Azure AD 테넌트의 *Azure AD DC Administrators* 그룹에 속한 멤버인 사용자 계정
+* 一个有效的 Azure 订阅。
+    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
+    * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
+* 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
+    * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
+* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
 
 ## <a name="azure-resource-manager-template-overview"></a>Azure 资源管理器模板概述
 
@@ -84,17 +84,17 @@ ms.locfileid: "76712568"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以创建 WINDOWS Server VM 并将其加入到 Azure AD DS 托管域：
 
-    | 설정                   | 값 |
+    | 设置                   | 值 |
     |---------------------------|-------|
-    | Subscription              | Azure AD Domain Services를 사용하도록 설정한 동일한 Azure 구독을 선택합니다. |
-    | 리소스 그룹            | 选择 VM 的资源组。 |
-    | 위치                  | 选择 VM 的位置。 |
+    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | 资源组            | 选择 VM 的资源组。 |
+    | 位置                  | 选择 VM 的位置。 |
     | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
     | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
     | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如*myvm*。 |
-    | VM 크기                   | 指定 VM 大小，如*Standard_DS2_v2*。 |
+    | VM 大小                   | 指定 VM 大小，如*Standard_DS2_v2*。 |
     | 要加入的域            | Azure AD DS 托管域 DNS 名称，例如*aadds.contoso.com*。 |
-    | 도메인 사용자 이름           | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aadds.contoso.com`。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
+    | 域用户名           | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aadds.contoso.com`。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
     | 域密码           | 在上一个设置中指定的用户帐户的密码。 |
     | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |
     | VM 管理员用户名         | 指定要在虚拟机上创建的本地管理员帐户。 |
@@ -103,12 +103,12 @@ ms.locfileid: "76712568"
 1. 查看条款和条件，并选中 "**我同意上述条款和条件**" 复选框。 准备就绪后，选择 "**购买**" 创建 VM，并将其加入到 Azure AD DS 托管域。
 
 > [!WARNING]
-> **암호 처리에 주의하세요.**
+> **请小心处理密码。**
 > 模板参数文件请求作为*AZURE AD DC administrators*组成员的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
 
 成功完成部署需要几分钟时间。 完成后，会创建 Windows VM，并将其加入到 Azure AD DS 托管域。 可以管理 VM，也可以使用域帐户登录。
 
-## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>관리되는 도메인에 기존 Windows Server VM 조인
+## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>将现有的 Windows Server VM 加入托管域
 
 如果你有要加入到 Azure AD DS 托管域的现有 VM 或 Vm 组，则可以使用资源管理器模板来仅部署 VM 扩展。
 
@@ -117,11 +117,11 @@ ms.locfileid: "76712568"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择要**部署到 Azure**的选项。
 1. 在 "**自定义部署**" 页上，输入以下信息以将 VM 加入到 Azure AD DS 托管域：
 
-    | 설정                   | 값 |
+    | 设置                   | 值 |
     |---------------------------|-------|
-    | Subscription              | Azure AD Domain Services를 사용하도록 설정한 동일한 Azure 구독을 선택합니다. |
-    | 리소스 그룹            | 选择包含现有 VM 的资源组。 |
-    | 위치                  | 选择现有 VM 的位置。 |
+    | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
+    | 资源组            | 选择包含现有 VM 的资源组。 |
+    | 位置                  | 选择现有 VM 的位置。 |
     | VM 列表                   | 输入要加入到 Azure AD DS 托管域的现有 VM 的逗号分隔列表，例如*myVM1、myVM2*。 |
     | 域加入用户名     | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aadds.contoso.com`。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
     | 域加入用户密码 | 在上一个设置中指定的用户帐户的密码。 |
@@ -130,12 +130,12 @@ ms.locfileid: "76712568"
 1. 查看条款和条件，并选中 "**我同意上述条款和条件**" 复选框。 准备就绪后，选择 "**购买**" 以将 VM 加入到 Azure AD DS 托管域。
 
 > [!WARNING]
-> **암호 처리에 주의하세요.**
+> **请小心处理密码。**
 > 模板参数文件请求作为*AZURE AD DC administrators*组成员的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
 
 完成部署需要几分钟时间。 完成后，指定的 Windows Vm 将加入到 Azure AD DS 托管域，并可使用域帐户进行管理或登录。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何使用 Azure 门户通过模板配置和部署资源。 你还可以使用[Azure PowerShell][deploy-powershell]或[Azure CLI][deploy-cli]部署具有资源管理器模板的资源。
 

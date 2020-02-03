@@ -1,5 +1,5 @@
 ---
-title: Team Data Science Process 그룹 관리자 작업
+title: 团队数据科学流程组管理员任务
 description: 遵循组管理器在数据科学团队项目中完成的任务的详细演练。
 author: marktab
 manager: marktab
@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721347"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process 그룹 관리자 작업
+# <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
 
 本文介绍了*组经理*对数据科学组织完成的任务。 组管理器管理企业中的整个数据科学单元。 数据科学部门可能有多个团队，每个团队都在不同的业务行业中处理多个数据科学项目。 组经理的目标是建立在[团队数据科学过程](overview.md)（TDSP）上实现标准化的协作组环境。 有关 TDSP 上的数据科学团队处理的所有人事角色和相关任务的概述，请参阅[团队数据科学过程角色和任务](roles-tasks.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "76721347"
 
 1. 请访问[visualstudio.microsoft.com](https://visualstudio.microsoft.com)，选择右上角的 "**登录**"，然后登录到 Microsoft 帐户。 
    
-   ![Microsoft 계정으로 로그인](./media/group-manager-tasks/signinvs.png)
+   ![登录 Microsoft 帐户](./media/group-manager-tasks/signinvs.png)
    
    如果没有 Microsoft 帐户，请选择 "**立即注册**"，创建 Microsoft 帐户，然后使用此帐户登录。 如果你的组织有 Visual Studio 订阅，请使用该订阅的凭据登录。
    
@@ -51,11 +51,11 @@ ms.locfileid: "76721347"
    
 1. 如果系统提示你同意服务条款、隐私声明和行为准则，请选择 "**继续**"。
    
-1. 在注册对话框中，为 Azure DevOps 组织命名并接受主机区域分配，或删除并选择其他区域。 그런 다음, **계속**을 선택합니다. 
+1. 在注册对话框中，为 Azure DevOps 组织命名并接受主机区域分配，或删除并选择其他区域。 然后选择“继续”。 
 
 1. 在 "**创建要开始的项目**" 下，输入*GroupCommon*，然后选择 "**创建项目**"。 
    
-   ![프로젝트 만들기](./media/group-manager-tasks/create-project.png)
+   ![创建项目](./media/group-manager-tasks/create-project.png)
 
 此时将打开 " **GroupCommon**项目**摘要**" 页。 页面 URL 是*https：\//\<servername >/\</GroupCommon >* 。
 
@@ -151,7 +151,7 @@ Azure Repos 为你的组托管以下类型的存储库：
      
    - 若要上传文件，请选择 "**上传文件**"。 
      
-     ![파일 업로드](./media/group-manager-tasks/upload-files.png)
+     ![上传文件](./media/group-manager-tasks/upload-files.png)
      
    - 若要编辑现有文件，请导航到该文件，然后选择 "**编辑**"。 
      
@@ -166,7 +166,7 @@ Azure Repos 为你的组托管以下类型的存储库：
 如果要使用本地计算机或 DSVM 进行更改并将更改推送到组存储库，请确保具有使用 Git 和 Dsvm 的先决条件：
 
 - Azure 订阅（如果想要创建 DSVM）。
-- 已在计算机上安装 Git。 如果你使用的是 DSVM，则将预安装 Git。 그렇지 않은 경우 [플랫폼 및 도구 부록](platforms-and-tools.md#appendix)을 참조하세요.
+- 已在计算机上安装 Git。 如果你使用的是 DSVM，则将预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
 - 如果要使用 DSVM，请在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅[Data Science Virtual Machine 文档](/azure/machine-learning/data-science-virtual-machine/)。
 - 对于安装在计算机上的 Windows DSVM、 [Git 凭据管理器（GCM）](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在*README.md*文件中，向下滚动到 "**下载并安装**" 部分，然后选择**最新的安装程序**。 从 "安装程序" 页下载 *.exe*安装程序并运行它。 
 - 对于 Linux DSVM，在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
@@ -179,7 +179,7 @@ Azure Repos 为你的组托管以下类型的存储库：
    
 1. 在 "**克隆存储库**" 对话框中，选择 " **HTTPS**用于 HTTP 连接 **" 或 "ssh"** 作为 Ssh 连接，然后将 "**命令行**" 下的克隆 URL 复制到剪贴板。
    
-   ![리포지토리 복제](./media/group-manager-tasks/clone.png)
+   ![克隆存储库](./media/group-manager-tasks/clone.png)
    
 1. 在本地计算机上，创建以下目录：
    
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果这是您第一次提交到 Git 存储库，则在运行 `git commit` 命令之前，您可能需要配置全局参数*user.name*和*user. email* 。 다음 두 명령을 실행합니다.
+> 如果这是您第一次提交到 Git 存储库，则在运行 `git commit` 命令之前，您可能需要配置全局参数*user.name*和*user. email* 。 运行以下两个命令：
 > 
 > `git config --global user.name <your name>`
 > 
@@ -254,10 +254,10 @@ git push
    
    ![向成员授予权限](./media/group-manager-tasks/grant-permissions.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 下面是团队数据科学过程中其他角色和任务的详细说明的链接：
 
-- [데이터 과학 팀에 대한 팀 리더 작업](team-lead-tasks.md)
-- [데이터 과학 팀에 대한 프로젝트 리더 작업](project-lead-tasks.md)
+- [数据科学团队的团队主管任务](team-lead-tasks.md)
+- [数据科学团队的项目主管任务](project-lead-tasks.md)
 - [为数据科学团队项目单独的参与者任务](project-ic-tasks.md)

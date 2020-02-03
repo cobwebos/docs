@@ -1,5 +1,5 @@
 ---
-title: Docker Compose를 사용하여 여러 컨테이너 배포
+title: 使用 Docker Compose 部署多个容器
 titleSuffix: Azure Cognitive Services
 description: 了解如何部署多个认知服务容器。 本文介绍如何使用 Docker Compose 来协调多个 Docker 容器映像。
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76716891"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose를 사용하여 여러 컨테이너 배포
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
 
 本文介绍如何部署多个 Azure 认知服务容器。 具体来说，您将了解如何使用 Docker Compose 来协调多个 Docker 容器映像。
 
@@ -25,18 +25,18 @@ ms.locfileid: "76716891"
 
 在单台主机计算机上协调多个容器映像可能会很有用。 在本文中，我们将识别文本和窗体识别器容器组合在一起。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
 此过程需要多个必须在本地安装和运行的工具：
 
-* Azure 구독 구독이 없으면 시작하기 전에 [계정](https://azure.microsoft.com/free/)을 만드세요.
+* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 在控制台窗口中工作。
-* 올바른 가격 책정 계층이 지정된 Azure 리소스. 只有以下定价层才能使用此容器：
+* 具有适当定价层的 Azure 资源。 只有以下定价层才能使用此容器：
   * 仅**计算机视觉**具有 F0 或标准定价层的资源。
   * 仅具有 F0 或标准定价层的**窗体识别器**资源。
-  * S0 가격 책정 계층이 있는 **Cognitive Services** 리소스
+  * 具有 S0 定价层的认知服务资源。
 
-## <a name="request-access-to-the-container-registry"></a>컨테이너 레지스트리에 대한 액세스 요청
+## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
 完成并提交[认知服务语音容器请求窗体](https://aka.ms/speechcontainerspreview/)。 
 
@@ -172,17 +172,17 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>测试识别文本容器
 
-在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5021/swagger/index.html ）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试识别文本终结点。
+在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5021/swagger/index.html）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试识别文本终结点。
 
 ![识别文本容器](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>测试窗体识别器容器
 
-在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5010/swagger/index.html ）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试窗体识别器终结点。
+在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5010/swagger/index.html）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试窗体识别器终结点。
 
 ![窗体识别器容器](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [认知服务容器](../cognitive-services-container-support.md)

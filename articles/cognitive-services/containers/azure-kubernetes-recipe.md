@@ -1,7 +1,7 @@
 ---
 title: 在 Kubernetes Service 中运行语言检测容器
 titleSuffix: Text Analytics -  Azure Cognitive Services
-description: 언어 감지 컨테이너와 실행 샘플을 Azure Kubernetes Service에 배포하고 웹 브라우저에서 테스트합니다.
+description: 使用正在运行的示例将语言检测容器部署到 Azure Kubernetes 服务，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -19,66 +19,66 @@ ms.locfileid: "76716887"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
-언어 감지 컨테이너를 배포하는 방법을 알아봅니다. 이 절차에서는 로컬 Docker 컨테이너를 만들고, 컨테이너를 고유한 프라이빗 컨테이너 레지스트리로 푸시하고, Kubernetes 클러스터에서 컨테이너를 실행하고, 웹 브라우저에서 테스트하는 방법을 보여 줍니다.
+了解如何部署语言检测容器。 此过程说明如何创建本地 Docker 容器，将容器推送到自己的专用容器注册表，在 Kubernetes 群集中运行容器，以及在 Web 浏览器中对其进行测试。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
-이 절차를 수행하려면 로컬로 설치 및 실행해야 하는 몇 가지 도구가 필요합니다. Azure Cloud Shell은 사용하지 않도록 합니다.
+此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。
 
-* Azure 구독을 사용합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/)을 만듭니다.
-* 이 절차에서 사용되는 [샘플](https://github.com/Azure-Samples/cognitive-services-containers-samples)을 복제할 수 있도록 사용하는 운영 체제용 [Git](https://git-scm.com/downloads)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Docker 엔진](https://www.docker.com/products/docker-engine). 콘솔 창에서 Docker CLI를 가 작동하는지 확인합니다.
-* [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
-* 올바른 가격 책정 계층이 지정된 Azure 리소스. 모든 가격 책정 계층이 이 컨테이너에 작동하는 것은 아닙니다.
-  * F0 또는 표준 가격 책정 계층만 있는 **Text Analytics** 리소스
-  * S0 가격 책정 계층이 있는 **Cognitive Services** 리소스
+* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
+* [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
+* 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
+  * 仅具有 F0 或标准定价层的文本分析资源。
+  * 具有 S0 定价层的认知服务资源。
 
-## <a name="running-the-sample"></a>샘플 실행
+## <a name="running-the-sample"></a>运行示例
 
-이 절차에서는 언어 감지를 위해 Cognitive Services 컨테이너 샘플을 로드하고 실행합니다. 샘플은 클라이언트 애플리케이션용 1개, Cognitive Services 컨테이너용 1개, 모두 2개의 컨테이너를 포함합니다. 我们会将这两个映像推送到 Azure 容器注册表。 이미지가 사용자 고유의 레지스트리에 추가되면 Azure Kubernetes Service를 만들어 이러한 이미지에 액세스하고 컨테이너를 실행합니다. 컨테이너가 실행되는 동안 **kubectl** CLI를 사용하여 컨테이너 성능을 감시합니다. HTTP 요청을 사용하여 클라이언트 애플리케이션에 액세스하고 결과를 봅니다.
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们会将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。
 
-![샘플 컨테이너 실행에 대한 개념적 아이디어](../text-analytics/media/how-tos/container-instance-sample/containers.png)
+![运行示例容器的概念性想法](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
-## <a name="the-sample-containers"></a>샘플 컨테이너
+## <a name="the-sample-containers"></a>示例容器
 
-샘플에는 2개의 컨테이너 이미지가 있으며 하나는 프런트 엔드 웹 사이트용입니다. 두 번째 이미지는 텍스트의 감지된 언어(문화권)를 반환하는 언어 감지 컨테이너입니다. 완료되면 두 컨테이너 모두 외부 IP에서 액세스할 수 있습니다.
+该示例有两个容器映像，一个用于前端网站。 第二个映像是可返回检测到的文本语言（区域性）的语言检测容器。 完成后，这两个容器都可以从外部 IP 进行访问。
 
-### <a name="the-language-frontend-container"></a>언어-프런트 엔드 컨테이너
+### <a name="the-language-frontend-container"></a>语言前端容器
 
-이 웹 사이트는 언어 감지 엔드포인트를 요청하는 고유한 클라이언트 쪽 애플리케이션과 같습니다. 이 절차가 완료되면 `http://<external-IP>/<text-to-analyze>`를 통해 브라우저에서 웹 사이트에 액세스하여 문자열의 감지된 언어를 얻게 합니다. 이 URL의 예제는 `http://132.12.23.255/helloworld!`입니다. 브라우저의 결과는 `English`입니다.
+此网站相当于自己的进行语言检测终结点的请求的客户端应用程序。 完成此过程后，使用 `http://<external-IP>/<text-to-analyze>` 在浏览器中访问网站容器，即可获得检测到的字符串语言。 此 URL 的示例为 `http://132.12.23.255/helloworld!`。 浏览器中的结果为 `English`。
 
-### <a name="the-language-container"></a>언어 컨테이너
+### <a name="the-language-container"></a>语言容器
 
-이 특정 절차에 나오는 언어 감지 컨테이너는 모든 외부 요청에서 액세스할 수 있습니다. 컨테이너는 어떤 방식으로든 변경되지 않았으므로 표준 Cognitive Services 컨테이너별 언어 감지 API를 사용할 수 있습니다.
+在此特定过程中，任何外部访问请求都可以访问语言检测容器。 容器未以任何方式更改，因此标准的特定于的认知服务容器的语言检测 API 可供使用。
 
-이 컨테이너에서 해당 API는 언어 감지를 위한 POST 요청입니다. 모든 Cognitive Services 컨테이너와 마찬가지로, 호스트된 Swagger 정보 `http://<external-IP>:5000/swagger/index.html`에서 컨테이너에 대해 자세히 알아볼 수 있습니다.
+对于此容器，该 API 是进行语言检测的 POST 请求。 与所有认知服务容器一样，可以从容器的托管 Swagger 信息 (`http://<external-IP>:5000/swagger/index.html`) 了解有关容器的详细信息。
 
-포트 5000은 Cognitive Services 컨테이너에 사용되는 기본 포트입니다.
+端口 5000 是用于认知服务容器的默认端口。
 
-## <a name="create-azure-container-registry-service"></a>Azure Container Registry 서비스 만들기
+## <a name="create-azure-container-registry-service"></a>创建 Azure 容器注册表服务
 
-Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미지에 액세스할 수 있어야 합니다. 이미지를 호스트할 고유한 Azure Container Registry 서비스를 만듭니다.
+若要将容器部署到 Azure Kubernetes 服务，需要能够访问容器映像。 创建自己的 Azure 容器注册表服务以托管映像。
 
-1. Azure CLI에 로그인
+1. 登录 Azure CLI
 
     ```azurecli-interactive
     az login
     ```
 
-1. 이 절차에서 만든 모든 리소스를 저장할 `cogserv-container-rg`라는 리소스 그룹을 만듭니다.
+1. 创建名为 `cogserv-container-rg` 的资源组来保存此过程中创建的每一个资源。
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. 사용자 이름과 `registry` 형식(예: `pattyregistry`)으로 고유한 Azure Container Registry를 만듭니다. 이름에 대시나 밑줄 문자를 사용하지 마세요.
+1. 使用名字后加 `registry` 这一格式（如 `pattyregistry`）创建自己的 Azure 容器注册表。 请勿在名称中使用短划线或下划线字符。
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    결과를 저장하여 **loginServer** 속성을 가져옵니다. 이 속성은 나중에 `language.yml` 파일에서 사용되는 호스트된 컨테이너 주소의 일부가 됩니다.
+    保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -102,39 +102,39 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     }
     ```
 
-1. 컨테이너 레지스트리에 로그인합니다. 레지스트리에 이미지를 푸시하려면 먼저 로그인해야 합니다.
+1. 登录容器注册表。 需登录后才能将映像推送到注册表。
 
     ```azurecli-interactive
     az acr login --name pattyregistry
     ```
 
-## <a name="get-website-docker-image"></a>웹 사이트 Docker 이미지 가져오기
+## <a name="get-website-docker-image"></a>获取网站 Docker 映像
 
-1. 이 절차에 사용되는 샘플 코드는 Cognitive Services 컨테이너 샘플 리포지토리에 있습니다. 리포지토리를 복제하여 샘플의 로컬 복사본을 만듭니다.
+1. 此过程中使用的示例代码位于认知服务容器样本存储库中。 克隆存储库以生成示例的本地副本。
 
     ```console
     git clone https://github.com/Azure-Samples/cognitive-services-containers-samples
     ```
 
-    리포지토리가 로컬 컴퓨터에 있으면 [\dotnet\Language\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) 디렉터리에서 웹 사이트를 찾습니다. 이 웹 사이트는 언어 감지 컨테이너에 호스트되는 언어 감지 API를 호출하는 클라이언트 애플리케이션으로 작동합니다.  
+    如果存储库已在本地计算机上，请在 [\dotnet\Language\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) 目录中查找网站。 该网站用作客户端应用程序，可调用语言检测容器中托管的语言检测 API。  
 
-1. 이 웹 사이트에 대한 Docker 이미지를 빌드합니다. 콘솔은 다음 명령을 실행할 때 Dockerfile이 위치하는 [\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) 디렉터리에 있습니다.
+1. 为网站生成 Docker 映像。 运行以下命令时，确保控制台位于 Dockerfile 所在的[\FrontendService](https://github.com/Azure-Samples/cognitive-services-containers-samples/tree/master/dotnet/Language/FrontendService) 目录中：
 
     ```console
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    컨테이너 레지스트리에 버전을 추적하려면 버전 형식의 태그(예: `v1`)를 추가합니다.
+    若要在容器注册表上跟踪版本，请添加具有版本格式的标记，如 `v1`。
 
-1. 이미지를 컨테이너 레지스트리에 푸시합니다. 몇 분이 걸릴 수 있습니다.
+1. 将映像推送到容器注册表。 这可能需要几分钟的时间。
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    `unauthorized: authentication required` 오류가 발생하면 `az acr login --name <your-container-registry-name>` 명령을 사용하여 로그인합니다. 
+    如果收到 `unauthorized: authentication required` 错误，请使用 `az acr login --name <your-container-registry-name>` 命令登录。 
 
-    프로세스가 완료되면 결과는 다음과 비슷합니다.
+    该过程完成后，结果应类似于以下内容：
 
     ```console
     > docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -148,37 +148,37 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     v1: digest: sha256:31930445deee181605c0cde53dab5a104528dc1ff57e5b3b34324f0d8a0eb286 size: 1580
     ```
 
-## <a name="get-language-detection-docker-image"></a>언어 감지 Docker 이미지 가져오기
+## <a name="get-language-detection-docker-image"></a>获取语言检测 Docker 映像
 
-1. 최신 버전의 Docker 이미지를 로컬 컴퓨터로 끌어옵니다. 몇 분이 걸릴 수 있습니다. 이 컨테이너의 최신 버전이 있으면 `1.1.006770001-amd64-preview`의 값을 최신 버전으로 변경합니다.
+1. 将 Docker 映像的最新版本拉取到本地计算机上。 这可能需要几分钟的时间。 如果有此容器的较新版本，请将值从 `1.1.006770001-amd64-preview` 更改到较新版本。
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
     ```
 
-1. 이미지에 컨테이너 레지스트리 태그를 지정합니다. 최신 버전을 찾은 경우 버전 `1.1.006770001-amd64-preview`를 최신 버전으로 바꿉니다. 
+1. 使用容器注册表标记图像。 查找最新版本，如果有更新的版本，请替换版本 `1.1.006770001-amd64-preview`。 
 
     ```console
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. 이미지를 컨테이너 레지스트리에 푸시합니다. 몇 분이 걸릴 수 있습니다.
+1. 将映像推送到容器注册表。 这可能需要几分钟的时间。
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-## <a name="get-container-registry-credentials"></a>컨테이너 레지스트리 자격 증명 가져오기
+## <a name="get-container-registry-credentials"></a>获取容器注册表凭据
 
-다음 단계는 이 절차의 뒷부분에서 만든 Azure Kubernetes Service에 컨테이너 레지스트리를 연결하는 데 필요한 정보를 가져오는 데 필요합니다.
+需要执行以下步骤来获取所需信息，以便将容器注册表与稍后此过程中要创建的 Azure Kubernetes 服务进行连接。
 
-1. 서비스 주체를 만듭니다.
+1. 创建服务主体。
 
     ```azurecli-interactive
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    assignee 매개 변수에 대한 결과 `appId` 값을 3단계 `<appId>`에 저장합니다. 다음 섹션의 클라이언트-암호 매개 변수 `<client-secret>`을 위해 `password`를 저장합니다.
+    为步骤 3 中代理人参数 `appId` 的保存结果 `<appId>` 值。 为下一节中 client-secret 参数 `password` 保存 `<client-secret>`。
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -191,36 +191,36 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     }
     ```
 
-1. 컨테이너 레지스트리 ID를 가져옵니다.
+1. 获取容器注册表 ID。
 
     ```azurecli-interactive
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    범위 매개 변수 값의 출력 `<acrId>`를 다음 단계에 저장합니다. 다음과 같이 표시됩니다.
+    为下一步中范围参数值 `<acrId>` 保存输出。 输出如下所示：
 
     ```console
     > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
-    3단계의 전체 값을 이 섹션에 저장합니다.
+    为本节中步骤 3 保存完整值。
 
-1. ACR 클러스터에 대해 올바른 액세스 권한을 부여하여 컨테이너 레지스트리에 저장된 이미지를 사용하도록 하려면 역할 할당을 만듭니다. `<appId>` 및 `<acrId>`를 이전 두 단계에서 수집한 값으로 바꿉니다.
+1. 若要授予 AKS 群集使用容器注册表中存储的映像的适当访问权限，请创建角色分配。 将 `<appId>` 和 `<acrId>` 替换为在前两个步骤中收集的值。
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
     ```
 
-## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes Service 만들기
+## <a name="create-azure-kubernetes-service"></a>创建 Azure Kubernetes 服务
 
-1. Kubernetes 클러스터를 만듭니다. name 매개 변수를 제외한 모든 매개 변수는 이전 섹션에서 가져옵니다. 만든 사람과 용도를 나타내는 이름을 선택합니다(예: `patty-kube`).
+1. 创建 Kubernetes 群集。 所有参数值都来自前一部分，name 参数除外。 选择一个名称，指明其创建者及其用途，例如 `patty-kube`。
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
     ```
 
-    이 단계를 완료하는 데 몇 분이 걸릴 수 있습니다. 결과는 다음과 같습니다.
+    这个步骤可能需要几分钟的时间。 结果为：
 
     ```console
     > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -280,25 +280,25 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     }
     ```
 
-    서비스가 만들어지지만 아직 웹 사이트 컨테이너나 언어 감지 컨테이너는 포함하지 않습니다.  
+    服务已创建，但还没有网站容器或语言检测容器。  
 
-1. Kubernetes 클러스터의 자격 증명을 가져옵니다.
+1. 获取 Kubernetes 群集的凭据。
 
     ```azurecli-interactive
     az aks get-credentials --resource-group cogserv-container-rg --name patty-kube
     ```
 
-## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>오케스트레이션 정의를 Kubernetes 서비스로 로드
+## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>将业务流程定义加载到 Kubernetes 服务中
 
-이 섹션에서는 **kubectl** CLI를 사용하여 Azure Kubernetes Service와 통신합니다.
+本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信。
 
-1. 오케스트레이션 정의를 로드하기 전에 **kubectl**에 노드에 대한 액세스 권한이 있는지 확인합니다.
+1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点。
 
     ```console
     kubectl get nodes
     ```
 
-    응답은 다음과 같습니다.
+    响应如下所示：
 
     ```console
     > kubectl get nodes
@@ -307,35 +307,35 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. 다음 파일을 복사하고 이름을 `language.yml`로 지정합니다. 이 파일에는 두 컨테이너 유형인 `language-frontend` 웹 사이트 컨테이너 및 `language` 검색 컨테이너 각각에 대한 `service` 섹션 및 `deployment` 섹션이 있습니다.
+1. 复制以下文件并将其命名为 `language.yml`。 该文件含有一个 `service` 部分和一个 `deployment` 部分，各自用于两种容器类型，即 `language-frontend` 网站容器和 `language` 检测容器。
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. 다음 표에 따라 `language.yml`의 언어-프런트 엔드 배포 줄을 변경하여 고유한 컨테이너 레지스트리에 이미지 이름, 클라이언트 비밀 및 텍스트 분석 설정을 추가합니다.
+1. 根据下表更改 `language.yml` 的语言前端部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    언어-프런트 엔드 배포 설정|용도|
+    语言前端部署设置|目的|
     |--|--|
-    |줄 32<br> `image` 속성|Container Registry에 있는 프런트 엔드 이미지의 이미지 위치입니다.<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |줄 44<br> `name` 속성|이전 섹션에서 `<client-secret>`으로 나타낸 이미지의 컨테이너 레지스트리 비밀입니다.|
+    |第 32 行<br> `image` 属性|容器注册表中的前端映像的映像位置<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |第 44 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
 
-1. 다음 표에 따라 `language.yml`의 언어 배포 줄을 변경하여 고유한 컨테이너 레지스트리에 이미지 이름, 클라이언트 비밀 및 텍스트 분석 설정을 추가합니다.
+1. 根据下表更改 `language.yml` 的语言部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    |언어 배포 설정|용도|
+    |语言部署设置|目的|
     |--|--|
-    |줄 78<br> `image` 속성|Container Registry에 있는 언어 이미지의 이미지 위치입니다.<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |줄 95<br> `name` 속성|이전 섹션에서 `<client-secret>`으로 나타낸 이미지의 컨테이너 레지스트리 비밀입니다.|
-    |줄 91<br> `apiKey` 속성|Text Analytics 리소스 키|
-    |줄 92<br> `billing` 속성|Text Analytics 리소스의 청구 엔드포인트입니다.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |第 78 行<br> `image` 属性|容器注册表中语言映像的映像位置<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |第 95 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
+    |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
+    |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    **apiKey** 및 **청구 엔드포인트**는 Kubernetes 오케스트레이션 정의의 일부로 설정되므로 웹 사이트 컨테이너가 이러한 항목을 알아야 하거나 요청의 일부로 전달해야 할 필요가 없습니다. 웹 사이트 컨테이너는 오케스트레이터 이름 `language`로 언어 감지 컨테이너를 나타냅니다.
+    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
 
-1. `language.yml`을 만들고 저장한 폴더에서 이 샘플의 오케스트레이션 정의 파일을 로드합니다.
+1. 从创建和保存 `language.yml` 的文件夹中加载此示例的业务流程定义文件。
 
     ```console
     kubectl apply -f language.yml
     ```
 
-    응답은 다음과 같습니다.
+    响应为：
 
     ```console
     > kubectl apply -f language.yml
@@ -345,9 +345,9 @@ Azure Kubernetes Service에 컨테이너를 배포하려면 컨테이너 이미�
     deployment.apps "language" created
     ```
 
-## <a name="get-external-ips-of-containers"></a>컨테이너의 외부 IP 가져오기
+## <a name="get-external-ips-of-containers"></a>获取容器的外部 IP
 
-두 컨테이너에서 `language-frontend` 및 `language` 서비스가 실행되고 있는지 확인하고 외부 IP 주소를 가져옵니다.
+对于这两个容器，请验证 `language-frontend` 和 `language` 服务是否正在运行，并获取外部 IP 地址。
 
 ```console
 kubectl get all
@@ -381,31 +381,31 @@ replicaset.apps/language-586849d8dc            1         1         1         13h
 replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 ```
 
-서비스의 `EXTERNAL-IP`가 보류 상태로 표시되면 다음 단계로 이동하기 전에 IP 주소가 표시될 때까지 명령을 다시 실행합니다.
+如果服务的 `EXTERNAL-IP` 显示为挂起，请重新运行该命令，直到显示 IP 地址，然后再转到下一步。
 
-## <a name="test-the-language-detection-container"></a>언어 감지 컨테이너 테스트
+## <a name="test-the-language-detection-container"></a>测试语言检测容器
 
-브라우저를 열고 이전 섹션에 나오는 `language` 컨테이너의 외부 IP로 이동합니다. `http://<external-ip>:5000/swagger/index.html` API의 `Try it` 기능을 사용하여 언어 감지 엔드포인트를 테스트합니다.
+打开浏览器并导航到上一节中 `language` 容器的外部 IP：`http://<external-ip>:5000/swagger/index.html`。 可以使用 API 的 `Try it` 功能来测试语言检测终结点。
 
-![컨테이너의 swagger 설명서 보기](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
+![查看容器的 swagger 文档](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
-## <a name="test-the-client-application-container"></a>클라이언트 애플리케이션 컨테이너 테스트
+## <a name="test-the-client-application-container"></a>测试客户端应用程序容器
 
-`http://<external-ip>/helloworld` 형식을 사용하여 브라우저의 URL을 `language-frontend` 컨테이너의 외부 IP로 변경합니다. 영어 문화권 텍스트인 `helloworld`는 `English`로 예측됩니다.
+使用以下格式将浏览器中的 URL 更改为 `language-frontend` 容器的外部 IP：`http://<external-ip>/helloworld`。 `helloworld` 的英文区域性文本预测为 `English`。
 
-## <a name="clean-up-resources"></a>리소스 정리
+## <a name="clean-up-resources"></a>清理资源
 
-클러스터가 완료되면 Azure 리소스 그룹을 삭제합니다.
+群集操作完成后，请删除 Azure 资源组。
 
 ```azurecli-interactive
 az group delete --name cogserv-container-rg
 ```
 
-## <a name="related-information"></a>관련 정보
+## <a name="related-information"></a>相关信息
 
-* [Docker 사용자용 kubectl](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
+* [kubectl for Docker Users](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)（面向 Docker 用户的 kubectl）
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [认知服务容器](../cognitive-services-container-support.md)

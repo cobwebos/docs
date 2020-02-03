@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76711592"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>자동 사용자 프로비저닝 배포 계획
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
 许多组织依赖软件即服务（SaaS）应用程序（如 ServiceNow、Zscaler 和可供最终用户使用的时差）。 过去的 IT 人员依赖手动预配方法，例如上传 CSV 文件或使用自定义脚本来安全管理每个 SaaS 应用程序中的用户标识。 这些过程容易出错、不安全且难以管理。
 
@@ -27,11 +27,11 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](user-provisioning.md)，以更好地了解功能。
 
-## <a name="learn"></a>학습
+## <a name="learn"></a>了解
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
-### <a name="key-benefits"></a>주요 이점
+### <a name="key-benefits"></a>主要优点
 
 启用自动用户预配的主要好处包括：
 
@@ -43,7 +43,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>라이선스
+### <a name="licensing"></a>授权
 
 Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提供自助集成。 有关许可证要求的完整列表，请参阅[Azure AD 授权 "页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -51,7 +51,7 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 
 需要为要自动预配的应用程序提供适当的许可证。 与应用程序所有者讨论，分配给应用程序的用户是否具有适用于其应用程序角色的适当许可证。 如果 Azure AD 基于角色管理自动预配，则 Azure AD 中分配的角色必须与应用程序许可证一致。 在应用程序中拥有的许可证不正确可能会导致在用户的预配/更新过程中出现错误。
 
-### <a name="terms"></a>용어
+### <a name="terms"></a>术语
 
 本文使用以下术语：
 
@@ -67,18 +67,18 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 
 ### <a name="training-resources"></a>定型资源
 
-| 리소스| 链接和说明 |
+| 资源| 链接和说明 |
 | - | - |
-| 웹 세미나 다시 보기| [利用 Azure AD 管理企业应用程序](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>了解 Azure AD 如何帮助你为企业 SaaS 应用程序实现 SSO，并了解控制访问的最佳做法。 |
-| 비디오| [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) <br> [将 Salesforce 与 Azure AD 集成：如何实现用户预配](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| 온라인 과정| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
-| 帐簿| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
-| 자습서| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](../saas-apps/tutorial-list.md)。 |
-| FAQ| [有关自动](user-provisioning.md)用户预配的常见问题 |
+| 点播网络研讨会| [利用 Azure AD 管理企业应用程序](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>了解 Azure AD 如何帮助你为企业 SaaS 应用程序实现 SSO，并了解控制访问的最佳做法。 |
+| 视频| [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) <br> [将 Salesforce 与 Azure AD 集成：如何实现用户预配](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| 联机课程| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
+| 图书| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
+| 教程| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](../saas-apps/tutorial-list.md)。 |
+| 常见问题解答| [有关自动](user-provisioning.md)用户预配的常见问题 |
 
-### <a name="solution-architectures"></a>솔루션 아키텍처
+### <a name="solution-architectures"></a>解决方案体系结构
 
-Azure AD 预配服务通过连接到每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 이러한 사용자 관리 API 엔드포인트를 사용하면 Azure AD에서 프로그래밍 방식으로 사용자를 만들고, 업데이트하고, 제거할 수 있습니다.
+Azure AD 预配服务通过连接到每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 这些用户管理 API 终结点允许 Azure AD 以编程方式创建、更新和删除用户。
 
 #### <a name="automatic-user-provisioning-for-hybrid-enterprises"></a>混合企业的自动用户预配
 
@@ -132,7 +132,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请[确保参与到正确的利益干系人](https://aka.ms/deploymentplans)，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
 
-### <a name="plan-communications"></a>통신 계획
+### <a name="plan-communications"></a>规划沟通
 
 通信对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
 
@@ -154,7 +154,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="determine-the-type-of-connector-to-use"></a>确定要使用的连接器类型
 
-자동 프로비전을 사용하도록 설정하고 구성하는 데 필요한 실제 단계는 애플리케이션에 따라 달라집니다. 如果要自动预配的应用程序列在[Azure AD SaaS 应用库](../saas-apps/tutorial-list.md)中，则应选择[应用特定的集成教程](../saas-apps/tutorial-list.md)来配置其预先集成的用户预配连接器。
+启用和配置自动化预配所需的实际步骤因具体应用程序而异。 如果要自动预配的应用程序列在[Azure AD SaaS 应用库](../saas-apps/tutorial-list.md)中，则应选择[应用特定的集成教程](../saas-apps/tutorial-list.md)来配置其预先集成的用户预配连接器。
 
 否则，请执行以下步骤：
 
@@ -228,7 +228,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 
 为应用程序配置了自动用户预配后，你将运行测试用例来验证此解决方案是否符合组织的要求。
 
-| 시나리오| 예상 결과 |
+| 方案| 预期结果 |
 | - | - |
 | 用户已添加到分配给目标系统的组 | 在目标系统中设置用户对象。 <br>用户可以登录目标系统并执行所需的操作。 |
 | 已将用户从分配给目标系统的组中删除 | 在目标系统中取消预配用户对象。<br>用户无法登录到目标系统。 |
@@ -261,11 +261,11 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 
 预配服务在初始周期后存储两个系统的状态，从而提高后续增量循环的性能。
 
-### <a name="configure-automatic-user-provisioning"></a>자동 사용자 프로비저닝 구성
+### <a name="configure-automatic-user-provisioning"></a>配置自动用户预配
 
 使用[Azure 门户](https://portal.azure.com/)管理自动用户帐户预配，并对支持它的应用程序取消预配。 按照[如何实现设置应用程序的自动预配](user-provisioning.md)中的步骤操作？
 
-[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)를 사용하여 Azure AD 사용자 프로비저닝 서비스를 구성 및 관리할 수도 있습니다.
+还可以使用 [Microsoft 图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
 
 ## <a name="manage-automatic-user-provisioning"></a>管理自动用户预配
 
@@ -293,7 +293,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](application-provi
 
 建议你假设所有权，并使用这些报表来满足组织的要求。 Azure AD 将大多数审核数据保留30天。
 
-### <a name="troubleshoot"></a>문제 해결
+### <a name="troubleshoot"></a>故障排除
 
 请参阅以下链接，以解决在预配期间可能会打开的任何问题：
 
@@ -303,7 +303,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](application-provi
 
 * [用户预配到 Azure AD 库应用程序需要数小时或更长时间](application-provisioning-when-will-provisioning-finish.md)
 
-* [사용자가 Azure Active Directory 갤러리 애플리케이션에 프로비전을 구성하는 동안 관리자 자격 증명을 저장하는 문제](application-provisioning-config-problem-storage-limit.md)
+* [配置 Azure Active Directory 库应用程序的用户预配时遇到保存管理员凭据问题](application-provisioning-config-problem-storage-limit.md)
 
 * [未将任何用户预配到 Azure AD 库应用程序](application-provisioning-config-problem-no-users-provisioned.md)
 
@@ -313,13 +313,13 @@ Azure AD 可以通过审核日志和报告，[进一步深入](application-provi
 
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)
 
-* [Azure AD 동기화 API 개요](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
 * [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 
 * [Azure AD Connect 预配代理：版本发布历史记录](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>리소스
+#### <a name="resources"></a>资源
 
 * [提供产品反馈](https://feedback.azure.com/forums/169401-azure-active-directory)
 
@@ -327,7 +327,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](application-provi
 
 * [论坛 Azure AD 堆栈溢出](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 * [配置自动用户预配](configure-automatic-user-provisioning-portal.md)
 
 * [使用 Microsoft Graph API 导出或导入预配配置](export-import-provisioning-configuration.md)

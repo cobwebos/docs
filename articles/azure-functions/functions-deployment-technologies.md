@@ -22,7 +22,7 @@ ms.locfileid: "76714812"
 Azure Functions 支持在 Windows 和 Linux 上进行跨平台本地开发和托管。 目前提供三种托管计划：
 
 + [料](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
++ [高级](functions-scale.md#premium-plan)
 + [专用（应用服务）](functions-scale.md#app-service-plan)
 
 每个计划都有不同的行为。 并非所有部署技术都适用于每种风格的 Azure Functions。 下图显示了操作系统和托管计划的每个组合所支持的部署技术：
@@ -31,9 +31,9 @@ Azure Functions 支持在 Windows 和 Linux 上进行跨平台本地开发和托
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | 外部包 URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | 压缩部署 |✔|✔|✔|✔|✔|✔|
-| Docker 컨테이너 | | | | |✔|✔|
+| Docker 容器 | | | | |✔|✔|
 | Web 部署 |✔|✔|✔| | | |
-| 원본 제어 |✔|✔|✔| |✔|✔|
+| 源代码管理 |✔|✔|✔| |✔|✔|
 | 本地 Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | 云同步<sup>1</sup> |✔|✔|✔| |✔|✔|
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -42,7 +42,7 @@ Azure Functions 支持在 Windows 和 Linux 上进行跨平台本地开发和托
 <sup>1</sup>需要[手动触发器同步](#trigger-syncing)的部署技术。  
 <sup>2</sup>仅对 Linux 上使用高级和专用计划的 HTTP 和计时器触发器启用门户编辑。
 
-## <a name="key-concepts"></a>주요 개념
+## <a name="key-concepts"></a>关键概念
 
 一些关键概念对于了解部署在 Azure Functions 中的工作方式至关重要。
 
@@ -78,7 +78,7 @@ Azure Functions 可以自动对其在实现 zip 部署后收到的代码执行�
 
 如果应用是在 Linux 上远程构建的，则它们[从部署包运行](run-functions-from-deployment-package.md)。 
 
-##### <a name="consumption-plan"></a>사용량 과금 플랜
+##### <a name="consumption-plan"></a>消耗计划
 
 在消耗计划中运行的 Linux function apps 没有 SCM/Kudu 站点，它限制了部署选项。 但是，在消耗计划中运行的 Linux 上的函数应用支持远程生成。
 
@@ -110,11 +110,11 @@ Azure Functions 中提供了以下部署方法。
 
 >__何时使用它：__ Zip 部署是 Azure Functions 推荐的部署技术。
 
-### <a name="docker-container"></a>Docker 컨테이너
+### <a name="docker-container"></a>Docker 容器
 
 你可以部署包含 function app 的 Linux 容器映像。
 
->__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 다음 두 가지 방법으로 수행할 수 있습니다.
+>__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可通过两种方式实现此目的：
 >
 >* 在 Azure 门户中的 Azure App Service 计划上创建 Linux 函数应用。 对于 "**发布**"，选择 " **Docker 映像**"，然后配置容器。 输入托管图像的位置。
 >* 使用 Azure CLI 在应用服务计划中创建 Linux 函数应用。 若要了解如何操作，请参阅[在 Linux 上使用自定义映像创建函数](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)。
@@ -133,15 +133,15 @@ Web 部署包，并将 Windows 应用程序部署到任何 IIS 服务器，包�
 
 >__何时使用它：__ Web 部署受支持，并且不存在问题，但首选机制是[启用了 "从包运行" 的 zip 部署](#zip-deploy)。 若要了解详细信息，请参阅[Visual Studio 开发指南](functions-develop-vs.md#publish-to-azure)。
 
-### <a name="source-control"></a>원본 제어
+### <a name="source-control"></a>源代码管理
 
 使用源代码管理将函数应用连接到 Git 存储库。 对该存储库中的代码的更新会触发部署。 有关详细信息，请参阅[Kudu Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments)。
 
->__如何使用：__ 使用门户的 "功能" 区域中的 "部署中心" 设置从源代码管理发布。 자세한 내용은 [Azure Functions에 대한 연속 배포](functions-continuous-deployment.md)를 참조하세요.
+>__如何使用：__ 使用门户的 "功能" 区域中的 "部署中心" 设置从源代码管理发布。 有关详细信息，请参阅 [Azure Functions 的连续部署](functions-continuous-deployment.md)。
 
 >__何时使用它：__ 对于协作处理其函数应用的团队而言，使用源代码管理是最佳实践。 源代码管理是一种很好的部署选项，可实现更复杂的部署管道。
 
-### <a name="local-git"></a>로컬 Git
+### <a name="local-git"></a>本地 Git
 
 可以使用本地 Git 将代码从本地计算机推送到使用 Git Azure Functions。
 
@@ -182,25 +182,25 @@ Web 部署包，并将 Windows 应用程序部署到任何 IIS 服务器，包�
 | | Windows 消耗 | Windows 高级 | Windows 专用 | Linux 消耗 | Linux 高级版 | Linux 专用 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C# 스크립트 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| C# 脚本 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript(Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
-| Python(미리 보기) | | | | | | |
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| Python（预览版） | | | | | | |
 | PowerShell （预览版） |✔|✔|✔| | | |
 | TypeScript （node.js） | | | | | | |
 
 <sup>*</sup>仅对 Linux 上使用高级和专用计划的 HTTP 和计时器触发器启用门户编辑。
 
-## <a name="deployment-slots"></a>배포 슬롯
+## <a name="deployment-slots"></a>部署槽
 
 将函数应用部署到 Azure 时，可以将部署到单独的部署槽而不是直接部署到生产环境。 有关部署槽的详细信息，请参阅[Azure Functions 部署槽](../app-service/deploy-staging-slots.md)文档以获取详细信息。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 阅读以下文章，了解有关部署函数应用的详细信息： 
 
-+ [Azure Functions에 대한 연속 배포](functions-continuous-deployment.md)
++ [Azure Functions 的连续部署](functions-continuous-deployment.md)
 + [使用 Azure DevOps 进行持续交付](functions-how-to-azure-devops.md)
 + [Azure Functions 的 Zip 部署](deployment-zip-push.md)
 + [从包文件运行 Azure Functions](run-functions-from-deployment-package.md)

@@ -34,7 +34,7 @@ ___
 ___
 ### <code>add</code>的余弦反值 
 <code><b>add(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-문자열 또는 숫자의 쌍을 추가합니다. 날짜에 일 수를 추가합니다. 将持续时间添加到时间戳。 유사한 형식의 한 배열을 다른 배열에 추가합니다. 与 + 运算符 * ``add(10, 20) -> 30``
+添加一对字符串或数字。 将日期添加到日期数。 将持续时间添加到时间戳。 将类似类型的数组追加到另一个数组。 与 + 运算符 * ``add(10, 20) -> 30``
 * ``10 + 20 -> 30``
 * ``add('ice', 'cream') -> 'icecream'``
 * ``'ice' + 'cream' + ' cone' -> 'icecream cone'``
@@ -45,7 +45,7 @@ ___
 ___
 ### <code>addDays</code>
 <code><b>addDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to add&gt;</i> : integral) => datetime</b></code><br/><br/>
-날짜 또는 타임스탬프에 일을 추가합니다. 与日期 * ``addDays(toDate('2016-08-08'), 1) -> toDate('2016-08-09')``
+将日期添加到日期或时间戳。 与日期 * ``addDays(toDate('2016-08-08'), 1) -> toDate('2016-08-09')``
 ___
 ### <code>addMonths</code>的 + 运算符相同 
 <code><b>addMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to add&gt;</i> : integral, [<i>&lt;value3&gt;</i> : string]) => datetime</b></code><br/><br/>
@@ -54,7 +54,7 @@ ___
 ___
 ### <code>and</code>
 <code><b>and(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-논리적 AND 연산자입니다. 与 & & * ``and(true, false) -> false``
+“逻辑与”运算符。 与 & & * ``and(true, false) -> false``
 * ``true && false -> false``
 ___
 ### <code>asin</code>
@@ -88,7 +88,7 @@ ___
 ___
 ### <code>case</code>使用参数替换 * ``toString(byPosition(1))``
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
-교대로 나오는 조건에 따라 하나의 값 또는 다른 값이 적용됩니다. 如果输入数为偶数，另一个默认值为 NULL （对于最后一个条件 * ``case(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
+根据备用条件应用一个值或另一个值。 如果输入数为偶数，另一个默认值为 NULL （对于最后一个条件 * ``case(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
 * ``case(10 + 20 == 25, 'bojjus', 'do' < 'go', 'gunchus') -> 'gunchus'``
 * ``isNull(case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus')) -> true``
 * ``case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus', 'dumbo') -> 'dumbo'``
@@ -113,13 +113,13 @@ ___
 ___
 ### <code>concat</code>，则返回正值 
 <code><b>concat(<i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-가변 개수의 문자열을 함께 연결합니다. 문자열이 있는 + 연산자와 같습니다. * ``concat('dataflow', 'is', 'awesome') -> 'dataflowisawesome'``
+将字符串的可变数字连接在一起。 与包含字符串的 + 运算符相同 * ``concat('dataflow', 'is', 'awesome') -> 'dataflowisawesome'``
 * ``'dataflow' + 'is' + 'awesome' -> 'dataflowisawesome'``
 * ``isNull('sql' + null) -> true``
 ___
 ### <code>concatWS</code>
 <code><b>concatWS(<i>&lt;separator&gt;</i> : string, <i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-가변 개수의 문자열을 구분 기호와 함께 연결합니다. 第一个参数是 
+使用分隔符将字符串的可变数字连接在一起。 第一个参数是 
 * ``isNull(concatWS(null, 'dataflow', 'is', 'awesome')) -> true``
 * ``concatWS(' is ', 'dataflow', 'awesome') -> 'dataflow is awesome'``
 ___
@@ -138,11 +138,11 @@ ___
 ___
 ### <code>crc32</code>的值的双曲余弦值 
 <code><b>crc32(<i>&lt;value1&gt;</i> : any, ...) => long</b></code><br/><br/>
-0(256), 224, 256, 384, 512 값의 지정된 비트 길이를 갖는 다양한 기본 데이터 형식의 열 세트에서 CRC32 해시를 계산합니다. 它可用于计算行 * ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``
+根据位长度计算不同基元数据类型的列集的 CRC32 哈希，值只能为 0(256)、224、256、384、512。 它可用于计算行 * ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``
 ___
 ### <code>currentDate</code>的指纹 
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-이 작업 실행이 시작되는 현재 날짜를 가져옵니다. 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false``
+当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false``
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``
 ___
@@ -152,7 +152,7 @@ ___
 ___
 ### <code>currentUTC</code>运行时的当前时间戳 
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-获取作为 UTC 的当前时间戳。 如果希望在与群集时区不同的时区中解释当前时间，则可以传递格式为 "GMT"、"PST"、"UTC"、"中美洲/开曼" 的可选时区。 它默认为当前时区。 有关可用格式，请参阅 Java 的 SimpleDateFormat。 [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)를 참조하세요. 若要将 UTC 时间转换为其他时区，请使用 fromUTC （） * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+获取作为 UTC 的当前时间戳。 如果希望在与群集时区不同的时区中解释当前时间，则可以传递格式为 "GMT"、"PST"、"UTC"、"中美洲/开曼" 的可选时区。 它默认为当前时区。 有关可用格式，请参阅 Java 的 SimpleDateFormat。 [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)： 若要将 UTC 时间转换为其他时区，请使用 fromUTC （） * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___
@@ -162,7 +162,7 @@ ___
 ___
 ### <code>dayOfWeek</code>的月份日期 
 <code><b>dayOfWeek(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-지정된 날짜의 요일을 가져옵니다. 1-星期日、2-星期一 ...、7-星期六 * ``dayOfWeek(toDate('2018-06-08')) -> 6``
+获取给定日期的星期日期。 1-星期日、2-星期一 ...、7-星期六 * ``dayOfWeek(toDate('2018-06-08')) -> 6``
 ___
 ### <code>dayOfYear</code>
 <code><b>dayOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
@@ -178,7 +178,7 @@ ___
 ___
 ### <code>divide</code>
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-숫자 쌍을 나눕니다. 与/operator * ``divide(20, 10) -> 2``
+将数字对相除。 与/operator * ``divide(20, 10) -> 2``
 * ``20 / 10 -> 2``
 ___
 ### <code>endsWith</code>相同 
@@ -187,7 +187,7 @@ ___
 ___
 ### <code>equals</code>
 <code><b>equals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 같음 연산자. 与 = = 运算符 * ``equals(12, 24) -> false``
+“等于”比较运算符。 与 = = 运算符 * ``equals(12, 24) -> false``
 * ``12 == 24 -> false``
 * ``'bad' == 'bad' -> true``
 * ``isNull('good' == toString(null)) -> true``
@@ -195,7 +195,7 @@ ___
 ___
 ### <code>equalsIgnoreCase</code>
 <code><b>equalsIgnoreCase(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : string) => boolean</b></code><br/><br/>
-비교는 대/소문자를 무시하는 연산자와 같습니다. 与 < = > operator * ``'abc'<=>'Abc' -> true``
+忽略大小写的“等于”比较运算符。 与 < = > operator * ``'abc'<=>'Abc' -> true``
 * ``equalsIgnoreCase('abc', 'Abc') -> true``
 ___
 ### <code>factorial</code>
@@ -204,7 +204,7 @@ ___
 ___
 ### <code>false</code>的阶乘 
 <code><b>false() => boolean</b></code><br/><br/>
-항상 false 값을 반환합니다. 如果有一个名为 "false" 的列 * ``(10 + 20 > 30) -> false``
+始终返回 false 值。 如果有一个名为 "false" 的列 * ``(10 + 20 > 30) -> false``
 * ``(10 + 20 > 30) -> false()``
 ___
 ### <code>filter</code>，请使用函数语法（false （）） 
@@ -227,13 +227,13 @@ ___
 ___
 ### <code>greater</code>
 <code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 보다 큼 연산자. 与 > 运算符 * ``greater(12, 24) -> false``
+“大于”比较运算符。 与 > 运算符 * ``greater(12, 24) -> false``
 * ``('dumbo' > 'dum') -> true``
 * ``(toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS') > toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``
 ___
 ### <code>greaterOrEqual</code>
 <code><b>greaterOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 보다 크거나 같음 연산자. 与 > = 运算符 * ``greaterOrEqual(12, 12) -> true``
+“大于等于”比较运算符。 与 > = 运算符 * ``greaterOrEqual(12, 12) -> true``
 * ``('dumbo' >= 'dum') -> true``的 
 ___
 ### <code>greatest</code>
@@ -249,7 +249,7 @@ ___
 ___
 ### <code>hour</code>使用参数替换 
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-타임스탬프의 시간 값을 가져옵니다. 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
+获取时间戳的小时值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
 * ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``
 ___
 ### <code>hours</code>
@@ -258,7 +258,7 @@ ___
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-조건에 따라 하나의 값 또는 다른 값이 적용됩니다. 如果未指定其他值，则将其视为 NULL。 这两个值都必须兼容（数值、字符串 ...） * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
+根据条件应用一个值或另一个值。 如果未指定其他值，则将其视为 NULL。 这两个值都必须兼容（数值、字符串 ...） * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
 * ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``
 * ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``
 ___
@@ -275,37 +275,37 @@ ___
 ___
 ### <code>initCap</code>
 <code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-모든 단어의 첫 글자를 대문자로 변환합니다. 单词被标识为由空白 * ``initCap('cool iceCREAM') -> 'Cool Icecream'``
+将每个单词的第一个字母转换为大写。 单词被标识为由空白 * ``initCap('cool iceCREAM') -> 'Cool Icecream'``
 ___
 ### <code>instr</code>分隔 
 <code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/>
-문자열 내에서 부분 문자열의 위치(1부터 시작)를 찾습니다. 如果 
+在字符串中查找子字符串的位置（从 1 开始）。 如果 
 * ``instr('microsoft', 'o') -> 5``
 * ``instr('good', 'bad') -> 0``
 ___
 ### <code>isDelete</code>中找不到 * ``instr('dumbo', 'mbo') -> 3``，则返回 0 
 <code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 삭제용으로 표시되어 있는지 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isDelete()``
+检查该行是否标记为删除。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isDelete()``
 * ``isDelete(1)``
 ___
 ### <code>isError</code>
 <code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 오류로 표시되는지 여부를 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isError()``
+检查该行是否标记为错误。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isError()``
 * ``isError(1)``
 ___
 ### <code>isIgnore</code>
 <code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 무시되도록 표시되는지 여부를 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isIgnore()``
+检查该行是否标记为忽略。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isIgnore()``
 * ``isIgnore(1)``
 ___
 ### <code>isInsert</code>
 <code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 삽입용으로 표시되어 있는지 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isInsert()``
+检查该行是否标记为插入。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isInsert()``
 * ``isInsert(1)``
 ___
 ### <code>isMatch</code>
 <code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-조회 시 행이 일치하는지 여부를 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isMatch()``
+检查查找时是否匹配该行。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isMatch()``
 * ``isMatch(1)``
 ___
 ### <code>isNull</code>
@@ -315,12 +315,12 @@ ___
 ___
 ### <code>isUpdate</code>
 <code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 업데이트용으로 표시되어 있는지 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isUpdate()``
+检查该行是否标记为更新。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isUpdate()``
 * ``isUpdate(1)``
 ___
 ### <code>isUpsert</code>
 <code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-행이 삽입용으로 표시되어 있는지 확인합니다. 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isUpsert()``
+检查该行是否标记为插入。 对于采用多个输入流的转换，可以传递流的（从1开始）索引。 流索引应为1或2，默认值为 1 * ``isUpsert()``
 * ``isUpsert(1)``
 ___
 ### <code>lastDayOfMonth</code>
@@ -329,12 +329,12 @@ ___
 ___
 ### <code>least</code>的月份的最后日期 
 <code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-비교 보다 작거나 같음 연산자. 与 < = 运算符 * ``least(10, 30, 15, 20) -> 10``
+“小于等于”比较运算符。 与 < = 运算符 * ``least(10, 30, 15, 20) -> 10``
 * ``least(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2000-12-12')``的 
 ___
 ### <code>left</code>
 <code><b>left(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-인덱스 1에서 시작하여 지정된 문자 수를 갖는 부분 문자열을 추출합니다. 与 SUBSTRING （str，1，n） * ``left('bojjus', 2) -> 'bo'``
+从索引 1 处开始提取包含字符数的子字符串。 与 SUBSTRING （str，1，n） * ``left('bojjus', 2) -> 'bo'``
 * ``left('bojjus', 20) -> 'bojjus'``
 ___
 ### <code>length</code>相同 
@@ -343,13 +343,13 @@ ___
 ___
 ### <code>lesser</code>的长度 
 <code><b>lesser(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 보다 작음 연산자. 与 < 运算符 * ``lesser(12, 24) -> true``
+“小于”比较运算符。 与 < 运算符 * ``lesser(12, 24) -> true``
 * ``('abcd' < 'abc') -> false``
 * ``(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') < toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``
 ___
 ### <code>lesserOrEqual</code>
 <code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 보다 작거나 같음 연산자. 与 < = 运算符 * ``lesserOrEqual(12, 12) -> true``
+“小于等于”比较运算符。 与 < = 运算符 * ``lesserOrEqual(12, 12) -> true``
 * ``('dumbo' <= 'dum') -> false``的 
 ___
 ### <code>levenshtein</code>
@@ -358,19 +358,19 @@ ___
 ___
 ### <code>like</code>两个字符串之间的 levenshtein 距离 
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-模式是按原义匹配的字符串。 以下特殊符号除外： _ 与输入中的任何一个字符匹配（类似于。 .과 유사). %는 입력의 0개 이상의 문자와 일치합니다(posix 정규식의 .*와 유사).
-이스케이프 문자는 ''입니다. 특수 기호 또는 다른 이스케이프 문자 앞에 이스케이프 문자가 오면 다음 문자는 글자 그대로 일치됩니다. 다른 모든 문자를 이스케이프하는 것은 유효하지 않습니다.
+模式是按原义匹配的字符串。 以下特殊符号除外： _ 与输入中的任何一个字符匹配（类似于。 posix 正则表达式中的 .）。% 匹配输入中的零个或多个字符（类似于 posix 正则表达式中的 .*）。
+转义字符为 ''。 如果转义字符的之前带有特殊符号或其他转义字符，则在字面上匹配后面的字符。 转义其他任何字符的操作无效。
 * ``like('icecream', 'ice%') -> true``
 ___
 ### <code>locate</code>
 <code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/>
-특정 위치에서 시작하는 문자열 내에서 부분 문자열의 위치(1부터 시작)를 찾습니다. 이 위치를 생략하면 문자열의 시작 부분에서 찾습니다. 如果 
+从特定的位置开始，在字符串中查找子字符串的位置（从 1 开始）。 如果省略位置，则视为从字符串开头查找。 如果 
 * ``locate('o', 'microsoft', 6) -> 7``
 * ``locate('bad', 'good') -> 0``
 ___
 ### <code>log</code>中找不到 * ``locate('mbo', 'dumbo') -> 3``，则返回 0 
 <code><b>log(<i>&lt;value1&gt;</i> : number, [<i>&lt;value2&gt;</i> : number]) => double</b></code><br/><br/>
-로그 값을 계산합니다. 如果使用 * ``log(100, 10) -> 2``
+计算对数值。 如果使用 * ``log(100, 10) -> 2``
 ___
 ### <code>log10</code>，则可以提供可选的基，如 
 <code><b>log10(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -382,13 +382,13 @@ Lowercases
 ___
 ### <code>lpad</code>字符串 * ``lower('GunChus') -> 'gunchus'``
 <code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-특정 길이가 될 때까지 제공된 패딩으로 문자열의 왼쪽 여백을 채웁니다. 如果字符串等于或大于长度，则会将其修整为长度 * ``lpad('dumbo', 10, '-') -> '-----dumbo'``
+在左侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于长度，则会将其修整为长度 * ``lpad('dumbo', 10, '-') -> '-----dumbo'``
 * ``lpad('dumbo', 4, '-') -> 'dumb'``
 * "" lpad （"dumbo"、"8"、"< >"）-> "< ><dumbo'``
 ___
 ### <code>ltrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-왼쪽의 선행 문자열을 삭제합니다. 두 번째 매개 변수를 지정하지 않으면 공백을 삭제합니다. 否则，它会将第二个参数中指定的任何字符 * ``ltrim('  dumbo  ') -> 'dumbo  '``
+在左侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它会将第二个参数中指定的任何字符 * ``ltrim('  dumbo  ') -> 'dumbo  '``
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``
 ___
 ### <code>map</code>中 
@@ -402,11 +402,11 @@ ___
 ___
 ### <code>md5</code>
 <code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-다양한 기본 데이터 형식의 열 세트에서 MD5 다이제스트를 계산하고 32자의 16진수 문자열을 반환합니다. 它可用于计算行 * ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``
+计算不同基元数据类型的列集的 MD5 摘要，并返回 32 字符十六进制字符串。 它可用于计算行 * ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``
 ___
 ### <code>millisecond</code>的指纹 
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-获取日期的毫秒值。 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
+获取日期的毫秒值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 ___
 ### <code>milliseconds</code>
 <code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
@@ -414,7 +414,7 @@ ___
 ___
 ### <code>minus</code>
 <code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-숫자를 뺍니다. 날짜에서 일 수를 뺍니다. 减时间戳的持续时间。 减两个时间戳以毫秒为单位。 与-operator * ``minus(20, 10) -> 10``
+减去数字。 从日期数中减去日期。 减时间戳的持续时间。 减两个时间戳以毫秒为单位。 与-operator * ``minus(20, 10) -> 10``
 * ``20 - 10 -> 10``
 * ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``
 * ``toDate('2012-12-15') - 3 -> toDate('2012-12-12')``
@@ -423,7 +423,7 @@ ___
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-타임스탬프의 분 값을 가져옵니다. 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
+获取时间戳的分钟值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
 * ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``
 ___
 ### <code>minutes</code>
@@ -432,7 +432,7 @@ ___
 ___
 ### <code>mod</code>的分钟数（以毫秒为单位） 
 <code><b>mod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-숫자 쌍의 모듈러스입니다. 与% operator * ``mod(20, 8) -> 4``
+将数字对取模。 与% operator * ``mod(20, 8) -> 4``
 * ``20 % 8 -> 4``
 ___
 ### <code>month</code>相同 
@@ -445,16 +445,16 @@ ___
 ___
 ### <code>multiply</code>
 <code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-숫자 쌍을 곱합니다. 与 * 运算符 * ``multiply(20, 10) -> 200``
+将数字对相乘。 与 * 运算符 * ``multiply(20, 10) -> 200``
 * ``20 * 10 -> 200``
 ___
 ### <code>negate</code>相同 
 <code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-숫자를 부정합니다. 将正数转换为负数，反之亦然 * ``negate(13) -> -13``
+对数字求反。 将正数转换为负数，反之亦然 * ``negate(13) -> -13``
 ___
 ### <code>nextSequence</code>
 <code><b>nextSequence() => long</b></code><br/><br/>
-고유한 다음 시퀀스를 반환합니다. 该数字仅在分区内是连续的，并以 partitionId * ``nextSequence() == 12313112 -> false``
+返回下一个唯一序列。 该数字仅在分区内是连续的，并以 partitionId * ``nextSequence() == 12313112 -> false``
 ___
 ### <code>normalize</code>为前缀 
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
@@ -467,7 +467,7 @@ ___
 ___
 ### <code>notEquals</code>
 <code><b>notEquals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-비교 같지 않음 연산자. 与！ = 运算符 * ``12 != 24 -> true``
+“不等于”比较运算符。 与！ = 运算符 * ``12 != 24 -> true``
 * ``'bojjus' != 'bo' + 'jjus' -> false``
 ___
 ### <code>notNull</code>相同 
@@ -477,7 +477,7 @@ ___
 ___
 ### <code>null</code>
 <code><b>null() => null</b></code><br/><br/>
-NULL 값을 반환합니다. 'Null'라는 열이 있는 경우 함수 syntax(null())를 사용합니다. 使用的任何操作都将导致 NULL * ``isNull('dumbo' + null) -> true``
+返回 NULL 值。 如果存在名为“null”的列，则使用函数 syntax(null())。 使用的任何操作都将导致 NULL * ``isNull('dumbo' + null) -> true``
 * ``isNull(10 * null) -> true``
 * ``isNull('') -> false``
 * ``isNull(10 + 20) -> false``
@@ -485,12 +485,12 @@ NULL 값을 반환합니다. 'Null'라는 열이 있는 경우 함수 syntax(nul
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-논리적 OR 연산자입니다. 与 | |* ``or(true, false) -> true``
+“逻辑或”运算符。 与 | |* ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>
 <code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-숫자 쌍의 양의 모듈러스입니다.
+将数字对正数取模。
 * ``pmod(-20, 8) -> 4``
 ___
 ### <code>partitionId</code>
@@ -507,12 +507,12 @@ ___
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-지정된 정규식 패턴에 대해 일치하는 부분 문자열을 추출합니다. 마지막 매개 변수는 일치 그룹을 식별하고 생략하면 기본적으로 1이 지정됩니다. 使用 "<regex>" （后引号）可匹配不 
+提取给定正则表达式模式的匹配子字符串。 最后一个参数标识匹配组，如果省略，则默认为 1。 使用 "<regex>" （后引号）可匹配不 
 * ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``
 ___
 ### <code>regexMatch</code>转义的字符串 * ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-문자열이 지정된 정규식 패턴과 일치하는지 확인합니다. 使用 "<regex>" （后引号）可匹配不 
+检查字符串是否与给定的正则表达式模式相匹配。 使用 "<regex>" （后引号）可匹配不 
 * ``regexMatch('200.50', `(\d+).(\d+)`) -> true``
 ___
 ### <code>regexReplace</code>转义的字符串 * ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``
@@ -539,7 +539,7 @@ ___
 ___
 ### <code>right</code>
 <code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-오른쪽부터 지정된 문자 수를 갖는 부분 문자열을 추출합니다. 与 SUBSTRING （str，LENGTH （str）-n，n）相同 * ``right('bojjus', 2) -> 'us'``
+从右侧提取包含字符数的子字符串。 与 SUBSTRING （str，LENGTH （str）-n，n）相同 * ``right('bojjus', 2) -> 'us'``
 * ``right('bojjus', 20) -> 'bojjus'``
 ___
 ### <code>rlike</code>
@@ -555,18 +555,18 @@ ___
 ___
 ### <code>rpad</code>
 <code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-특정 길이가 될 때까지 제공된 패딩으로 문자열의 오른쪽 여백을 채웁니다. 如果字符串等于或大于该长度，则将其剪裁到 * ``rpad('dumbo', 10, '-') -> 'dumbo-----'``
+在右侧使用提供的填充内容填充字符串，直到达到特定的长度。 如果字符串等于或大于该长度，则将其剪裁到 * ``rpad('dumbo', 10, '-') -> 'dumbo-----'``
 * ``rpad('dumbo', 4, '-') -> 'dumb'``
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``
 ___
 ### <code>rtrim</code>rtrim</code>的长度 
 <code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-오른쪽의 선행 문자열을 삭제합니다. 두 번째 매개 변수를 지정하지 않으면 공백을 삭제합니다. 否则，它会将第二个参数中指定的任何字符 * ``rtrim('  dumbo  ') -> '  dumbo'``
+在右侧裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它会将第二个参数中指定的任何字符 * ``rtrim('  dumbo  ') -> '  dumbo'``
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``
 ___
 ### <code>second</code>中 
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-날짜의 초 값을 가져옵니다. 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
+获取日期的秒值。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
 ___
 ### <code>seconds</code>
 <code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
@@ -574,7 +574,7 @@ ___
 ___
 ### <code>sha1</code>的秒数的持续时间（以毫秒为单位） 
 <code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-다양한 기본 데이터 형식의 열 세트에서 SHA-1 다이제스트를 계산하고 40자의 16진수 문자열을 반환합니다. 它可用于计算行 * ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``
+计算不同基元数据类型的列集的 SHA-1 摘要，并返回 40 字符十六进制字符串。 它可用于计算行 * ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``
 ___
 ### <code>sha2</code>的指纹 
 <code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
@@ -590,7 +590,7 @@ ___
 ___
 ### <code>slice</code>的双曲正弦值 
 <code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></code><br/><br/>
-특정 위치에서 배열의 하위 세트를 추출합니다. 위치는 1부터 시작합니다. 如果省略长度，则默认为字符串末尾的 * ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``
+从位置提取数组的子集。 位置从 1 开始。 如果省略长度，则默认为字符串末尾的 * ``slice([10, 20, 30, 40], 1, 2) -> [10, 20]``
 * ``slice([10, 20, 30, 40], 2) -> [20, 30, 40]``
 * ``slice([10, 20, 30, 40], 2)[1] -> 20``
 * ``isNull(slice([10, 20, 30, 40], 2)[0]) -> true``
@@ -634,7 +634,7 @@ ___
 ___
 ### <code>substring</code>
 <code><b>substring(<i>&lt;string to subset&gt;</i> : string, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of characters&gt;</i> : integral]) => string</b></code><br/><br/>
-특정 위치에서 특정 길이의 부분 문자열을 추출합니다. 위치는 1부터 시작합니다. 如果省略长度，则默认为字符串末尾的 * ``substring('Cat in the hat', 5, 2) -> 'in'``
+从某个位置提取特定长度的子字符串。 位置从 1 开始。 如果省略长度，则默认为字符串末尾的 * ``substring('Cat in the hat', 5, 2) -> 'in'``
 * ``substring('Cat in the hat', 5, 100) -> 'in the hat'``
 * ``substring('Cat in the hat', 5) -> 'in the hat'``
 * ``substring('Cat in the hat', 100, 100) -> ''``
@@ -668,45 +668,45 @@ ___
 ___
 ### <code>toDecimal</code>
 <code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
-숫자 또는 문자열을 10진수 값으로 변환합니다. 자릿수와 소수 자릿수를 지정하지 않으면 기본값인 (10,2)가 사용됩니다. 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 采用 BCP47 语言形式的可选区域设置格式，如 en-us、de、zh-chs * ``toDecimal(123.45) -> 123.45``
+将任何数字或字符串转换为小数值。 如果未指定精度和小数位数，则默认为 (10,2)。可以使用可选的 Java 十进制格式进行转换。 采用 BCP47 语言形式的可选区域设置格式，如 en-us、de、zh-chs * ``toDecimal(123.45) -> 123.45``
 * ``toDecimal('123.45', 8, 4) -> 123.4500``
 * ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``
 * ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``
 ___
 ### <code>toDouble</code>
 <code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
-숫자 또는 문자열을 배정도 값으로 변환합니다. 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 采用 BCP47 语言形式的可选区域设置格式，如 en-us、de、zh-chs * ``toDouble(123.45) -> 123.45``
+将任何数字或字符串转换为双精度值。 可以使用可选的 Java 十进制格式进行转换。 采用 BCP47 语言形式的可选区域设置格式，如 en-us、de、zh-chs * ``toDouble(123.45) -> 123.45``
 * ``toDouble('123.45') -> 123.45``
 * ``toDouble('$123.45', '$###.00') -> 123.45``
 * ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``
 ___
 ### <code>toFloat</code>
 <code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
-숫자 또는 문자열을 부동 소수점 값으로 변환합니다. 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 截断任何 double * ``toFloat(123.45) -> 123.45f``
+将任何数字或字符串转换为浮点值。 可以使用可选的 Java 十进制格式进行转换。 截断任何 double * ``toFloat(123.45) -> 123.45f``
 * ``toFloat('123.45') -> 123.45f``
 * ``toFloat('$123.45', '$###.00') -> 123.45f``
 ___
 ### <code>toInteger</code>
 <code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
-将任何数字或字符串转换为整数值。 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 截断任意 long、float、double * ``toInteger(123) -> 123``
+将任何数字或字符串转换为整数值。 可以使用可选的 Java 十进制格式进行转换。 截断任意 long、float、double * ``toInteger(123) -> 123``
 * ``toInteger('123') -> 123``
 * ``toInteger('$123', '$###') -> 123``
 ___
 ### <code>toLong</code>
 <code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
-숫자 또는 문자열을 긴 값으로 변환합니다. 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 截断任意 float、double * ``toLong(123) -> 123``
+将任何数字或字符串转换为长值。 可以使用可选的 Java 十进制格式进行转换。 截断任意 float、double * ``toLong(123) -> 123``
 * ``toLong('123') -> 123``
 * ``toLong('$123', '$###') -> 123``
 ___
 ### <code>toShort</code>
 <code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
-숫자 또는 문자열을 짧은 값으로 변환합니다. 변환을 위해 선택적인 Java 10진수 형식을 사용할 수 있습니다. 截断所有整数、long、float、double * ``toShort(123) -> 123``
+将任何数字或字符串转换为短值。 可以使用可选的 Java 十进制格式进行转换。 截断所有整数、long、float、double * ``toShort(123) -> 123``
 * ``toShort('123') -> 123``
 * ``toShort('$123', '$###') -> 123``
 ___
 ### <code>toString</code>
 <code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
-기본 데이터 형식을 문자열로 변환합니다. 숫자 및 날짜의 경우 형식을 지정할 수 있습니다. 지정하지 않으면 시스템 기본값은 picked.Java입니다. 숫자에는 10진수 형식이 사용됩니다. 有关所有可能的日期格式，请参阅 Java SimpleDateFormat;默认格式为 yyyy-mm-dd * ``toString(10) -> '10'``
+将基元数据类型转换为字符串。 对于数字和日期，可以指定格式。 如果未指定，则选择系统默认值。对数字使用 Java 十进制格式。 有关所有可能的日期格式，请参阅 Java SimpleDateFormat;默认格式为 yyyy-mm-dd * ``toString(10) -> '10'``
 * ``toString('engineer') -> 'engineer'``
 * ``toString(123456.789, '##,###.##') -> '123,456.79'``
 * ``toString(123.78, '000000.000') -> '000123.780'``
@@ -724,27 +724,27 @@ ___
 ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-타임스탬프를 UTC로 변환합니다. 'GMT', 'PST', 'UTC', 'America/Cayman' 형태로 선택적 표준 시간대를 제공할 수 있습니다. 它默认为当前 timezoneRefer Java 的 SimpleDateFormat 的可用格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
+将时间戳转换为 UTC。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 它默认为当前 timezoneRefer Java 的 SimpleDateFormat 的可用格式。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
 * ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
-하나의 문자 세트를 문자열의 다른 문자 세트로 바꿉니다. 字符的替换 * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``为1到 1 
+将字符串中的一组字符替换为另一组字符。 字符的替换 * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``为1到 1 
 * ``translate('(gunchus)', '()', '[') -> '[gunchus'``
 ___
 ### <code>trim</code>
 <code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-선행 및 후행 문자열을 삭제합니다. 두 번째 매개 변수를 지정하지 않으면 공백을 삭제합니다. 否则，它会将第二个参数中指定的任何字符 * ``trim('  dumbo  ') -> 'dumbo'``
+裁剪掉前导和尾随字符的字符串。 如果未指定第二个参数，则裁剪掉空格。 否则，它会将第二个参数中指定的任何字符 * ``trim('  dumbo  ') -> 'dumbo'``
 * ``trim('!--!du!mbo!', '-!') -> 'du!mbo'``
 ___
 ### <code>true</code>中 
 <code><b>true() => boolean</b></code><br/><br/>
-항상 true 값을 반환합니다. 如果有一个名为 "true" 的列 * ``(10 + 20 == 30) -> true``
+始终返回 true 值。 如果有一个名为 "true" 的列 * ``(10 + 20 == 30) -> true``
 * ``(10 + 20 == 30) -> true()``
 ___
 ### <code>typeMatch</code>，则使用函数语法（true （）） 
 <code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/>
-열의 형식과 일치합니다. 仅可用于模式表达式。数字匹配 short、integer、long、double、float 或 decimal，整数与 short、integer、long、decimal 匹配 double、float、decimal 和 datetime 匹配 date 或 timestamp type * ``typeMatch(type, 'number')``
+匹配列的类型。 仅可用于模式表达式。数字匹配 short、integer、long、double、float 或 decimal，整数与 short、integer、long、decimal 匹配 double、float、decimal 和 datetime 匹配 date 或 timestamp type * ``typeMatch(type, 'number')``
 * ``typeMatch('date', 'datetime')``
 ___
 ### <code>upper</code>
@@ -765,7 +765,7 @@ ___
 ___
 ### <code>xor</code>的周数的持续时间（以毫秒为单位） 
 <code><b>xor(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-논리 XOR 연산자입니다. 与 ^ operator * ``xor(true, false) -> true``
+逻辑 XOR 运算符。 与 ^ operator * ``xor(true, false) -> true``
 * ``xor(true, true) -> false``
 * ``true ^ false -> true``
 ___
@@ -783,7 +783,7 @@ ___
 ___
 ### <code>count</code>的平均值 
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
-값의 집계 개수를 가져옵니다. 如果指定了可选列，则将忽略计数 * ``count(custId)``
+获取值的聚合计数。 如果指定了可选列，则将忽略计数 * ``count(custId)``
 * ``count(custId, custName)``
 * ``count()``
 * ``count(iif(isNull(custId), 1, NULL))``
@@ -794,7 +794,7 @@ ___
 ___
 ### <code>countIf</code>的一组列的非重复值的聚合计数 
 <code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/>
-조건에 따라 값의 집계 개수를 가져옵니다. 如果指定了可选列，则将忽略计数 * ``countIf(state == 'CA' && commission < 10000, name)``
+根据条件获取值的聚合计数。 如果指定了可选列，则将忽略计数 * ``countIf(state == 'CA' && commission < 10000, name)``
 ___
 ### <code>covariancePopulation</code>中的 NULL 值 
 <code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
@@ -814,7 +814,7 @@ ___
 ___
 ### <code>first</code>两个列的样本协方差 
 <code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-열 그룹의 첫 번째 값을 가져옵니다. 如果省略第二个参数 ignoreNulls，将假定 
+获取列组的第一个值。 如果省略第二个参数 ignoreNulls，将假定 
 * ``first(sales, false)``* ``first(sales)``为 false 
 ___
 ### <code>kurtosis</code>
@@ -827,7 +827,7 @@ ___
 ___
 ### <code>last</code>的峰值 
 <code><b>last(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-열 그룹의 마지막 값을 가져옵니다. 如果省略第二个参数 ignoreNulls，将假定 
+获取列组的最后一个值。 如果省略第二个参数 ignoreNulls，将假定 
 * ``last(sales, false)``* ``last(sales)``为 false 
 ___
 ### <code>max</code>
@@ -840,15 +840,15 @@ ___
 ___
 ### <code>mean</code>的列的最大值 
 <code><b>mean(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-열 값의 평균값을 가져옵니다. 与 AVG * ``mean(sales)``
+获取列值的中间值。 与 AVG * ``mean(sales)``
 ___
 ### <code>meanIf</code>相同 
 <code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-조건에 따라 열 값의 평균값을 가져옵니다. 与 avgIf * ``meanIf(region == 'West', sales)``
+根据条件获取列值的中间值。 与 avgIf * ``meanIf(region == 'West', sales)``
 ___
 ### <code>min</code>相同 
 <code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
-열의 최소값을 가져옵니다. * ``min(sales)``
+获取列的最小值 * ``min(sales)``
 ___
 ### <code>minIf</code>
 <code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
@@ -896,12 +896,12 @@ ___
 ___
 ### <code>sumDistinctIf</code>的非重复值的聚合总和 
 <code><b>sumDistinctIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-기준에 따라 숫자 열의 집계 합계를 가져옵니다. 条件可以基于任何列 * ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``
+根据条件获取数字列的聚合总数。 条件可以基于任何列 * ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``
 * ``sumDistinctIf(true, sales)``
 ___
 ### <code>sumIf</code>
 <code><b>sumIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-기준에 따라 숫자 열의 집계 합계를 가져옵니다. 条件可以基于任何列 * ``sumIf(state == 'CA' && commission < 10000, sales)``
+根据条件获取数字列的聚合总数。 条件可以基于任何列 * ``sumIf(state == 'CA' && commission < 10000, sales)``
 * ``sumIf(true, sales)``
 ___
 ### <code>variance</code>
@@ -930,37 +930,37 @@ ___
 ## 窗口函数的无偏差方差。以下函数仅可用于窗口转换 ___
 ### <code>cumeDist</code>中 
 <code><b>cumeDist() => integer</b></code><br/><br/>
-CumeDist 함수는 파티션의 모든 값을 기준으로 값의 위치를 계산합니다. 결과는 파티션 순서에서 현재 행보다 앞에 있거나 같은 위치에 있는 행 수를 창 파티션의 총 행 수로 나눈 값입니다. 排序中的任何并列值都将计算为相同的位置。
+CumeDist 函数计算某个值相对于分区中所有值的位置。 结果是前面的行数，或者等于当前行在分区中的顺序除以窗口分区中的总行数。 排序中的任何并列值都将计算为相同的位置。
 * ``cumeDist()``
 ___
 ### <code>denseRank</code>
 <code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-값 그룹에 있는 값의 순위를 계산합니다. 결과는 파티션 순서에서 현재 행보다 앞에 있거나 같은 위치에 있는 행의 수에 1을 더한 것입니다. 값은 시퀀스에 간격을 생성하지 않습니다. 即使数据未排序并在值中查找更改 * ``denseRank(salesQtr, salesAmt)``
+计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值不会在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``denseRank(salesQtr, salesAmt)``
 ___
 ### <code>lag</code>，密集排名仍有效 
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-현재 행보다 n개 행 전에 평가되는 첫 번째 매개 변수의 값을 가져옵니다. 第二个参数是要返回的行数，默认值为1。 如果没有多行，则返回值为 null 的值，除非指定默认值 * ``lag(amount, 2)``
+获取当前行之前由第一个参数计算的 n 行的值。 第二个参数是要返回的行数，默认值为1。 如果没有多行，则返回值为 null 的值，除非指定默认值 * ``lag(amount, 2)``
 * ``lag(amount, 2000, 100)``
 ___
 ### <code>lead</code>
 <code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-현재 행보다 n개 행 뒤에 평가되는 첫 번째 매개 변수의 값을 가져옵니다. 第二个参数是要向前看的行数，默认值为1。 如果没有多行，则返回值为 null 的值，除非指定默认值 * ``lead(amount, 2)``
+获取当前行之后由第一个参数计算的 n 行的值。 第二个参数是要向前看的行数，默认值为1。 如果没有多行，则返回值为 null 的值，除非指定默认值 * ``lead(amount, 2)``
 * ``lead(amount, 2000, 100)``
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile 함수는 각 창 파티션의 행을 1부터 `n`개 이내의 `n` 버킷 수로 나눕니다. 버킷 값 차이는 최대 1 이내입니다. 파티션의 행 수가 버킷 수로 균일하게 나누어 떨어지지 않으면 나머지 값은 첫 번째 버킷부터 시작해서 하나씩 분산됩니다. NTile 函数可用于计算 tertiles、四分位数、十分位数和其他常见汇总统计信息。 函数在初始化期间计算两个变量：常规 bucket 的大小将额外添加一行。 这两个变量都以当前分区的大小为基础。 계산 프로세스 동안 이 함수는 현재 행 번호, 현재 버킷 수 및 버킷이 변경되는 행 번호(bucketThreshold)를 추적합니다. 현재 행 번호가 버킷 임계값에 도달하면 버킷 값이 1씩 커지고, 임계값은 버킷 크기만큼 커집니다(현재 버킷이 채워질 경우 하나씩 추가).
+NTile 函数将每个窗口分区的行分割为从 1 到 `n` 的 `n` 桶。 桶值最大相差 1。 如果分区中的行数不能均匀分割成桶数，则余值将逐个分布在每个桶中，从第一个桶开始。 NTile 函数可用于计算 tertiles、四分位数、十分位数和其他常见汇总统计信息。 函数在初始化期间计算两个变量：常规 bucket 的大小将额外添加一行。 这两个变量都以当前分区的大小为基础。 在计算过程中，该函数将跟踪当前行号、当前桶号，以及发生桶更改的行号 (bucketThreshold)。 如果当前行号达到桶的阈值，则桶值将会加 1，阈值将按桶大小增加（如果当前桶已填充，则额外加 1）。
 * ``nTile()``
 * ``nTile(numOfBuckets)``
 ___
 ### <code>rank</code>
 <code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-값 그룹에 있는 값의 순위를 계산합니다. 결과는 파티션 순서에서 현재 행보다 앞에 있거나 같은 위치에 있는 행의 수에 1을 더한 것입니다. 값은 시퀀스에 간격을 생성합니다. 即使数据未排序并在值中查找更改 * ``rank(salesQtr, salesAmt)``
+计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值将在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``rank(salesQtr, salesAmt)``
 ___
 ### <code>rowNumber</code>，排名仍有效 
 <code><b>rowNumber() => integer</b></code><br/><br/>
-1부터 시작하는 창에서 행에 대해 순차적인 번호 매기기를 할당합니다. * ``rowNumber()``
+为窗口中的行分配一个顺序行号，从 1 开始 * ``rowNumber()``
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 [了解如何使用表达式生成器](concepts-data-flow-expression-builder.md)。

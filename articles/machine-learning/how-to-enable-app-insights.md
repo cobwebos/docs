@@ -23,19 +23,19 @@ ms.locfileid: "76722418"
 
 本文介绍如何在 Azure Kubernetes Service （AKS）或 Azure 容器实例（ACI）中通过启用 Azure 应用程序 Insights 来收集和监视部署到 web 服务终结点的模型。 除了收集终结点的输入数据和响应外，还可以监视：
 
-* 요청 속도, 응답 시간 및 실패율
-* 종속성 비율, 응답 시간 및 실패율
-* 예외
+* 请求速率、响应时间和失败率
+* 依赖项速率、响应时间和失败率
+* 例外
 
 [详细了解 Azure 应用程序 Insights](../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
-* Azure 구독이 없는 경우 시작하기 전에 체험 계정을 만듭니다. 지금 [Azure Machine Learning 평가판 또는 유료 버전](https://aka.ms/AMLFree)을 사용해 보세요.
+* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
 
-* Azure Machine Learning 작업 영역, 스크립트가 포함된 로컬 디렉터리 및 Python용 Azure Machine Learning SDK가 설치되어 있어야 합니다. 若要了解如何获取这些必备组件，请参阅[如何配置开发环境](how-to-configure-environment.md)
-* AKS(Azure Kubernetes Service) 또는 ACI(Azure Container Instances)에 배포할 학습된 Machine Learning 모델. 如果没有，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
+* 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何获取这些必备组件，请参阅[如何配置开发环境](how-to-configure-environment.md)
+* 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
 
 ## <a name="web-service-metadata-and-response-data"></a>Web 服务元数据和响应数据
 
@@ -52,36 +52,36 @@ ms.locfileid: "76722418"
 
 1. 在 "**部署**" 选项卡上，选择要在其中启用 Azure 应用程序 Insights 的服务
 
-   [![배포 탭의 서비스 목록](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![“部署”选项卡上的服务列表](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. 选择 "**编辑**"
 
-   [![편집 단추](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![编辑按钮](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. 在 "**高级设置**" 中，选中 "**启用 AppInsights 诊断**" 复选框
 
-   [![진단을 사용하도록 설정하기 위한 확인란을 선택함](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![已选中启用诊断的复选框](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. 选择屏幕底部的 "**更新**" 以应用更改
 
-### <a name="disable"></a>사용 안 함
+### <a name="disable"></a>禁用
 
 1. 在[Azure 门户](https://portal.azure.com)中，打开工作区
 1. 选择 "**部署**"，选择服务，然后选择 "**编辑**"
 
-   [![편집 단추 사용](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![使用编辑按钮](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. 在 "**高级设置**" 中，清除 "**启用 AppInsights 诊断**" 复选框
 
-   [![진단을 사용하도록 설정하기 위한 확인란을 선택 취소함](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![已清除启用诊断的复选框](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. 选择屏幕底部的 "**更新**" 以应用更改
  
 ## <a name="use-python-sdk-to-configure"></a>使用 Python SDK 进行配置 
 
-### <a name="update-a-deployed-service"></a>배포된 서비스 업데이트
+### <a name="update-a-deployed-service"></a>更新已部署的服务
 
-1. 작업 영역에서 서비스를 식별합니다. `ws` 的值是你的工作区的名称
+1. 在工作区中标识该服务。 `ws` 的值是你的工作区的名称
 
     ```python
     from azureml.core.webservice import Webservice
@@ -93,9 +93,9 @@ ms.locfileid: "76722418"
     aks_service.update(enable_app_insights=True)
     ```
 
-### <a name="log-custom-traces-in-your-service"></a>서비스에서 사용자 지정 추적 로그
+### <a name="log-custom-traces-in-your-service"></a>在服务中记录自定义跟踪
 
-사용자 지정 추적을 기록하려는 경우 [배포 방법 및 위치](how-to-deploy-and-where.md) 문서에서 AKS 또는 ACI에 대한 표준 배포 프로세스를 수행합니다. 그런 후 다음 단계를 사용하세요.
+如果要记录自定义跟踪，请遵循[部署方式和部署位置](how-to-deploy-and-where.md)文档中适用于 AKS 或 ACI 的标准部署过程。 然后，使用以下步骤：
 
 1. 通过添加 print 语句更新计分文件
     
@@ -111,7 +111,7 @@ ms.locfileid: "76722418"
 
 3. 生成一个映像并将其部署在[AKS 或 ACI](how-to-deploy-and-where.md)上。
 
-### <a name="disable-tracking-in-python"></a>Python에서 추적을 사용하지 않도록 설정
+### <a name="disable-tracking-in-python"></a>在 Python 中禁用跟踪
 
 若要禁用 Azure 应用程序 Insights，请使用以下代码：
 
@@ -120,9 +120,9 @@ ms.locfileid: "76722418"
 <service_name>.update(enable_app_insights=False)
 ```
 
-## <a name="evaluate-data"></a>데이터 평가
+## <a name="evaluate-data"></a>评估数据
 你的服务数据存储在与 Azure 机器学习相同的资源组中的 Azure 应用程序 Insights 帐户中。
-이 데이터를 보려면:
+查看数据：
 
 1. 在[Azure 机器学习 studio](https://ml.azure.com)中转到 Azure 机器学习工作区，然后单击 Application Insights 链接
 
@@ -130,7 +130,7 @@ ms.locfileid: "76722418"
 
 1. 选择 "**概览**" 选项卡以查看服务的一组基本指标
 
-   [![개요](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [![概述](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. 若要查看 web 服务请求元数据和响应，请在 "**日志（Analytics）** " 部分中选择 "**请求**" 表，并选择 "**运行**" 以查看请求
 
@@ -138,9 +138,9 @@ ms.locfileid: "76722418"
 
 
 3. 若要查看自定义跟踪，请选择 "**分析**"
-4. 스키마 섹션에서 **추적**을 선택합니다. 그런 후 **실행**을 선택하여 쿼리를 실행합니다. 数据应以表格格式显示，并应映射到计分文件中的自定义调用
+4. 在架构部分，选择“跟踪”。 然后选择“运行”以运行查询。 数据应以表格格式显示，并应映射到计分文件中的自定义调用
 
-   [![사용자 지정 추적](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![自定义追踪](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 若要了解有关如何使用 Azure 应用程序 Insights 的详细信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
 
@@ -156,13 +156,13 @@ ms.locfileid: "76722418"
    [![连续导出](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
 
 
-## <a name="example-notebook"></a>예제 Notebook
+## <a name="example-notebook"></a>示例笔记本
 
 [Ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb)笔记本展示了这篇文章中的概念的概念。 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * 了解[如何将模型部署到 Azure Kubernetes Service 群集](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)，或者[如何将模型部署到 azure 容器实例](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)，以将模型部署到 web 服务终结点，并启用 Azure 应用程序 Insights 来利用数据收集和终结点监视
 * 请参阅[MLOps： Azure 机器学习的管理、部署和监视模型](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment)，详细了解如何利用生产中的模型收集的数据。 此类数据可帮助不断改进机器学习过程

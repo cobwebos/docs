@@ -21,7 +21,7 @@ ms.locfileid: "76720429"
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure 前门服务中 HTTP 标头的协议支持
 本文概述了前门服务在呼叫路径的各个部分（请参阅图像）中支持的协议。 以下各节提供了有关前门服务支持的 HTTP 标头的详细信息。
 
-![Azure Front Door Service HTTP 헤더 프로토콜][1]
+![Azure Front Door 服务 HTTP 头协议][1]
 
 >[!IMPORTANT]
 >前门服务不验证此处未记录的任何 HTTP 标头。
@@ -33,7 +33,7 @@ ms.locfileid: "76720429"
 
 前门服务包含传入请求中的标头，除非由于限制而被删除。 前门还添加以下标头：
 
-| 헤더  | 예제 및 설명 |
+| 标头  | 示例和说明 |
 | ------------- | ------------- |
 | Via |  Via： 1.1 Azure </br> 前门添加客户端的 HTTP 版本，后跟*Azure*作为 Via 标头的值。 这表示客户端的 HTTP 版本，而前端是客户端与后端之间的请求的中间接收方。  |
 | X-Azure-ClientIP | X-ClientIP：127.0.0。1 </br> 表示与正在处理的请求关联的客户端 IP 地址。 例如，来自代理的请求可能会添加标头为 X 的标头，以指示原始调用方的 IP 地址。 |
@@ -49,11 +49,11 @@ ms.locfileid: "76720429"
 
 从后端发送到前门的任何标头也会传递给客户端。 下面是从前门发送到客户端的标头。
 
-| 헤더  | 예 |
+| 标头  | 示例 |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Front Door에서 제공하는 요청을 참조하는 고유한 참조 문자열입니다. 这对于疑难解答至关重要，因为它用于搜索访问日志。|
+| X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 这对于疑难解答至关重要，因为它用于搜索访问日志。|
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 - [创建前门](quickstart-create-front-door.md)
 - [前门的工作方式](front-door-routing-architecture.md)

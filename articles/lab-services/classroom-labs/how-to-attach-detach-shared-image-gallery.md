@@ -42,10 +42,10 @@ ms.locfileid: "76718038"
 - 从实验室帐户分离共享映像库
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>创建和附加共享映像库
-1. [Azure Portal](https://portal.azure.com)에 로그인합니다.
-2. 왼쪽 메뉴에서 **모든 서비스**를 선택합니다. **DEVOPS** 섹션에서 **랩 서비스**를 선택합니다. **랩 서비스** 옆에 있는 별표(`*`)를 선택하면 왼쪽 메뉴의 **즐겨찾기** 섹션에 추가됩니다. 다음부터는 **즐겨찾기** 아래에서 **랩 서비스**를 선택합니다.
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分中，选择“实验室服务”。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室服务”。
 
-    ![모든 서비스 -> 랩 서비스](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+    ![“所有服务”->“实验室服务”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. 选择实验室帐户以查看 "**实验室帐户**" 页。 
 4. 选择左侧菜单上的 "**共享图像库**"，然后在工具栏上选择 " **+ 创建**"。  
 
@@ -86,7 +86,7 @@ ms.locfileid: "76718038"
 
 ![从实验室帐户分离共享映像库](../media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 若要了解如何将实验室映像保存到共享映像库，或使用共享映像库中的映像创建 VM，请参阅[如何使用共享映像库](how-to-use-shared-image-gallery.md)。
 
 有关共享映像库的一般详细信息，请参阅[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)。

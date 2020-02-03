@@ -60,9 +60,9 @@ ms.locfileid: "76721823"
 10. 用户对应用的请求将通过 DNS 服务器。
 11. DNS 服务器将请求传递给负载均衡器，并将响应发送回用户。
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>另请参阅
 
-- [TDSP(Team Data Science Process)](/azure/machine-learning/team-data-science-process/)
-- [AML(Azure Machine Learning)](/azure/machine-learning/)
+- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure 机器学习 (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [AKS(Azure Kubernetes Service)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes 服务 (AKS)](/azure/aks/intro-kubernetes)

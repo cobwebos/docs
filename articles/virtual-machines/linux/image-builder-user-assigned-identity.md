@@ -25,7 +25,7 @@ Azure 映像生成器支持使用脚本，或从多个位置（例如 GitHub 和
 
 > [!IMPORTANT]
 > Azure 映像生成器目前为公共预览版。
-> 이 미리 보기 버전은 서비스 수준 계약 없이 제공되며 프로덕션 워크로드에는 사용하지 않는 것이 좋습니다. 특정 기능이 지원되지 않거나 기능이 제한될 수 있습니다. 자세한 내용은 [Microsoft Azure Preview에 대한 추가 사용 약관](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)을 참조하세요.
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
 若要在预览期间使用 Azure 映像生成器，需要注册新功能。
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>리소스 그룹 만들기
+## <a name="create-a-resource-group"></a>创建资源组
 
 我们将重复使用某些信息，因此我们将创建一些变量来存储该信息。
 
@@ -162,7 +162,7 @@ sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateMsi.json
 sed -i -e "s%<runOutputName>%$runOutputName%g" helloImageTemplateMsi.json
 ```
 
-## <a name="create-the-image"></a>이미지 만들기
+## <a name="create-the-image"></a>创建映像
 
 将映像配置提交到 Azure 映像生成器服务。
 
@@ -185,9 +185,9 @@ az resource invoke-action \
      --action Run 
 ```
 
-빌드가 완료될 때까지 기다립니다. 这可能需要大约15分钟。
+等待生成完成。 这可能需要大约15分钟。
 
-## <a name="create-a-vm"></a>VM 만들기
+## <a name="create-a-vm"></a>创建 VM
 
 从映像创建 VM。 
 
@@ -218,7 +218,7 @@ ssh aibuser@<publicIp>
 *******************************************************
 ```
 
-## <a name="clean-up"></a>정리
+## <a name="clean-up"></a>清除
 
 完成后，可以删除不再需要的资源。
 
@@ -232,6 +232,6 @@ az group delete -n $imageResourceGroup
 az group delete -n $strResourceGroup
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 如果在使用 Azure 映像生成器时遇到任何问题，请参阅[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。

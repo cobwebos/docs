@@ -18,27 +18,27 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76712851"
 ---
-# <a name="string-claims-transformations"></a>문자열 클레임 변환
+# <a name="string-claims-transformations"></a>字符串声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的字符串声明转换的示例。 자세한 내용은 [ClaimsTransformations](claimstransformations.md)를 참조하세요.
+本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的字符串声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
-두 클레임을 비교한 다음 지정된 비교 inputClaim1, inputClaim2 및 stringComparison에 따라 두 클레임이 같지 않으면 예외를 throw합니다.
+比较两个声明，如果根据指定的比较 inputClaim1、inputClaim2 和 stringComparison 它们不相等，将引发异常。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 문자열 | 비교할 첫 번째 클레임의 형식입니다. |
-| InputClaim | inputClaim2 | 문자열 | 비교할 두 번째 클레임의 형식입니다. |
-| InputParameter | stringComparison | 문자열 | Ordinal 또는 OrdinalIgnoreCase 값 중 하나로 문자열을 비교합니다. |
+| InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明的类型。 |
+| InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
+| InputParameter | stringComparison | 字符串 | 字符串比较，其中一个值：Ordinal、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 클레임 변환은 항상 [자체 어설션된 기술 프로필](self-asserted-technical-profile.md)을 통해 호출되는 [유효성 검사 기술 프로필](validation-technical-profile.md)에서 실행됩니다. **UserMessageIfClaimsTransformationStringsAreNotEqual** 자체 어설션된 기술 프로필 메타데이터는 사용자에게 표시되는 오류 메시지를 제어합니다.
+AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual 自断言技术配置文件元数据控制向用户显示的错误消息。
 
-![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
 
-이 클레임 변환을 사용하면 두 ClaimType의 값이 같은지를 확인할 수 있습니다. 두 값이 같지 않으면 오류 메시지가 throw됩니다. 다음 예제에서는 **strongAuthenticationEmailAddress** ClaimType이 **이메일** ClaimType과 동일한 지 확인합니다. 두 ClaimType이 같지 않으면 오류 메시지가 throw됩니다.
+可以使用此声明转换来确保两个 ClaimTypes 具有相同的值。 如果没有，则会引发错误消息。 以下示例检查 strongAuthenticationEmailAddress ClaimType 是否等同于 email ClaimType， 否则会引发错误消息。
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -53,7 +53,7 @@ ms.locfileid: "76712851"
 ```
 
 
-**login-NonInteractive** 유효성 검사 기술 프로필은 **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** 클레임 변환을 호출합니다.
+login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenticationEmailAddressAreEqual 声明转换。
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -63,7 +63,7 @@ ms.locfileid: "76712851"
 </TechnicalProfile>
 ```
 
-자체 어설션된 기술 프로필은 **login-NonInteractive** 유효성 검사 기술 프로필을 호출합니다.
+自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -76,26 +76,26 @@ ms.locfileid: "76712851"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
-    - 입력 매개 변수:
-  - **stringComparison**:  ordinalIgnoreCase
-- 결과: 오류가 throw됨
+- 输入声明：
+  - inputClaim1: someone@contoso.com
+  - inputClaim2: someone@outlook.com
+    - 输入参数：
+  - stringComparison: ordinalIgnoreCase
+- 结果：引发错误
 
 ## <a name="changecase"></a>ChangeCase
 
-입력한 클레임의 대/소문자를 연산자에 따라 소문자나 대문자로 변경합니다.
+将所提供的声明更改为小写或大写，具体要取决于运算符。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 문자열 | 변경할 ClaimType입니다. |
-| InputParameter | toCase | 문자열 | `LOWER` 또는 `UPPER` 값 중 하나입니다. |
-| OutputClaim | outputClaim | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputClaim | inputClaim1 | 字符串 | 要更改的 ClaimType。 |
+| InputParameter | toCase | 字符串 | 以下值之一：`LOWER` 或 `UPPER`。 |
+| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
 
-모든 문자열 ClaimType을 소문자나 대문자로 변경하려면 다음 클레임 변환을 사용합니다.
+使用此声明转换将任何字符串 ClaimType 更改为小写或大写。
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -111,25 +111,25 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-  - **email**: SomeOne@contoso.com
-- 입력 매개 변수:
-    - **toCase**: LOWER
-- 출력 클레임:
-  - **email**: someone@contoso.com
+- 输入声明：
+  - email: SomeOne@contoso.com
+- 输入参数：
+    - toCase: LOWER
+- 输出声明：
+  - email: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-정책에 제공된 입력 매개 변수에서 문자열 클레임을 만듭니다.
+基于策略中提供的输入参数创建字符串声明。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | 값 | 문자열 | 설정할 문자열입니다. |
-| OutputClaim | createdClaim | 문자열 | 입력 매개 변수에 지정된 값을 사용하여 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputParameter | 值 | 字符串 | 要设置的字符串 |
+| OutputClaim | createdClaim | 字符串 | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
-문자열 ClaimType 값을 설정하려면 다음 클레임 변환을 사용합니다.
+使用此声明转换设置一个字符串 ClaimType 值。
 
 ```XML
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
@@ -142,26 +142,26 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 매개 변수:
-    - **value**: Contoso 서비스 약관...
-- 출력 클레임:
-    - **createdClaim**: TOS ClaimType은 "Contoso 사용 약관..." 값을 포함합니다.
+- 输入参数：
+    - value：Contoso 服务条款...
+- 输出声明：
+    - createdClaim：TOS ClaimType 包含“Contoso 服务条款...”值。
 
 ## <a name="compareclaims"></a>CompareClaims
 
-특정 문자열 클레임이 다른 클레임과 같은지 여부를 확인합니다. 결과는 값이 `true` 또는 `false`인 새 부울 ClaimType입니다.
+确定一个字符串声明是否等于另一个字符串声明。 结果是新布尔型 ClaimType，值为 `true` 或 `false`。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 문자열 | 비교할 첫 번째 클레임 형식입니다. |
-| InputClaim | inputClaim2 | 문자열 | 비교할 두 번째 클레임 형식입니다. |
-| InputParameter | operator | 문자열 | 가능한 값은 `EQUAL` 또는 `NOT EQUAL`입니다. |
-| InputParameter | ignoreCase | boolean | 이 비교에서 비교할 문자열의 대/소문자를 무시해야 하는지 여부를 지정합니다. |
-| OutputClaim | outputClaim | boolean | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明类型。 |
+| InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明类型。 |
+| InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
-특정 클레임이 다른 클레임과 같은지 여부를 확인하려면 다음 클레임 변환을 사용합니다. 예를 들어 다음 클레임 변환에서는 **email** 클레임의 값이 **Verified.Email** 클레임과 같은지를 확인합니다.
+使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email 声明的值是否等于 Verified.Email 声明的值。
 
 ```XML
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
@@ -179,30 +179,30 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
-- 입력 매개 변수:
-    - **operator**:  NOT EQUAL
-    - **ignoreCase**: true
-- 출력 클레임:
+- 输入声明：
+  - inputClaim1: someone@contoso.com
+  - inputClaim2: someone@outlook.com
+- 输入参数：
+    - operator:  NOT EQUAL
+    - ignoreCase: true
+- 输出声明：
     - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
-클레임 값이 입력 매개 변수 값과 같은지 여부를 확인합니다.
+确定声明值是否等于输入参数值。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 문자열 | 비교할 클레임의 형식입니다. |
-| InputParameter | operator | 문자열 | 가능한 값은 `EQUAL` 또는 `NOT EQUAL`입니다. |
-| InputParameter | compareTo | 문자열 | Ordinal 또는 OrdinalIgnoreCase 값 중 하나로 문자열을 비교합니다. |
-| InputParameter | ignoreCase | boolean | 이 비교에서 비교할 문자열의 대/소문자를 무시해야 하는지 여부를 지정합니다. |
-| OutputClaim | outputClaim | boolean | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputClaim | inputClaim1 | 字符串 | 要比较的声明类型。 |
+| InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
+| InputParameter | compareTo | 字符串 | 字符串比较，其中一个值：Ordinal、OrdinalIgnoreCase。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
-이 클레임 변환을 사용하면 특정 클레임이 지정한 값과 같은지를 확인할 수 있습니다. 예를 들어 다음 클레임 변환에서는 **termsOfUseConsentVersion** 클레임의 값이 `v1`과 같은지를 확인합니다.
+可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。
 
 ```XML
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
@@ -220,30 +220,30 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
-- 입력 클레임:
-    - **inputClaim1**: v1
-- 입력 매개 변수:
-    - **compareTo**: V1
-    - **operator**: EQUAL
-    - **ignoreCase**: true
-- 출력 클레임:
+### <a name="example"></a>示例
+- 输入声明：
+    - inputClaim1: v1
+- 输入参数：
+    - compareTo: V1
+    - operator: EQUAL
+    - ignoreCase:  true
+- 输出声明：
     - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
-난수 생성기를 사용하여 임의 문자열을 만듭니다. 난수 생성기가 `integer` 형식인 경우 필요에 따라 초기값 매개 변수 및 최대 수를 제공할 수 있습니다. 문자열 형식 매개 변수(선택 사항)를 제공하는 경우 해당 매개 변수를 사용하여 출력 서식을 지정할 수 있습니다. base64 매개 변수(선택 사항)는 출력이 base64 인코딩 randomGeneratorType [guid, integer] outputClaim(String)인지 여부를 지정합니다.
+使用随机数生成器创建随机字符串。 如果随机数生成器是 `integer` 类型，则可以选择提供种子参数和最大数。 可选字符串格式参数允许使用它来格式化输出，可选的 base64 参数指定输出是否为 base64 编码的 encoded randomGeneratorType [guid, integer] outputClaim（字符串）。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | 문자열 | 생성할 임의 값을 지정합니다. `GUID`(Globally Unique ID) 또는 `INTEGER`(숫자)입니다. |
-| InputParameter | stringFormat | 문자열 | [선택 사항] 임의 값의 서식을 지정합니다. |
-| InputParameter | base64 | boolean | [선택 사항] 임의 값을 base64로 변환합니다. 문자열 형식을 적용하는 경우에는 문자열 형식 뒤의 값이 base64로 인코딩됩니다. |
-| InputParameter | maximumNumber | int | [선택 사항] `INTEGER` randomGeneratorType 전용입니다. 최대 수를 지정합니다. |
-| InputParameter | seed  | int | [선택 사항] `INTEGER` randomGeneratorType 전용입니다. 임의 값의 초기값을 지정합니다. 참고: 초기값이 같으면 동일 난수 시퀀스가 생성됩니다. |
-| OutputClaim | outputClaim | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. 임의 값입니다. |
+| InputParameter | randomGeneratorType | 字符串 | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
+| InputParameter | stringFormat | 字符串 | [可选]格式化随机值。 |
+| InputParameter | base64 | boolean | [可选]将随机值转换为 base64。 如果应用字符串格式，则字符串格式之后的值将被编码为 base64。 |
+| InputParameter | maximumNumber | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定最大数。 |
+| InputParameter | seed  | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定随机值的种子。 注意：同一个种子生成相同的随机数字序列。 |
+| OutputClaim | outputClaim | 字符串 | 调用此声明转换后将生成的 ClaimTypes。 随机值。 |
 
-다음 예제에서는 GUID(Global Unique ID)를 생성합니다. 이 클레임은 임의 UPN(사용자 계정 이름)을 만드는 데 사용됩니다.
+下面的示例将生成全局唯一 ID。 此声明转换用于创建随机 UPN（用户主体名称）。
 
 ```XML
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
@@ -255,14 +255,14 @@ ms.locfileid: "76712851"
   </OutputClaims>
 </ClaimsTransformation>
 ```
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 매개 변수:
-    - **randomGeneratorType**: GUID
-- 출력 클레임:
-    - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+- 输入参数：
+    - randomGeneratorType: GUID
+- 输出声明：
+    - outputClaim: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
-다음 예제에서는 0에서 1000 사이의 임의 정수 값을 생성합니다. 값에는 OTP_{임의 값} 서식이 지정됩니다.
+下面的示例生成 0 到 1000 之间的随机整数值。 值被格式化为 OTP_{random value}。
 
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
@@ -278,28 +278,28 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 매개 변수:
-    - **randomGeneratorType**: INTEGER
-    - **maximumNumber**: 1000
-    - **stringFormat**: OTP_{0}
-    - **base64**: false
-- 출력 클레임:
-    - **outputClaim**: OTP_853
+- 输入参数：
+    - randomGeneratorType: INTEGER
+    - maximumNumber: 1000
+    - stringFormat: OTP_{0}
+    - base64: false
+- 输出声明：
+    - outputClaim: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
-입력한 형식 문자열에 따라 클레임 서식을 지정합니다. 이 변환에서는 C# `String.Format` 메서드를 사용합니다.
+根据提供的格式字符串格式化声明。 此转换将使用 C# `String.Format` 方法。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |문자열 |문자열 형식 {0} 매개 변수로 사용되는 ClaimType입니다. |
-| InputParameter | stringFormat | 문자열 | {0} 매개 변수를 포함하는 문자열 형식입니다. |
-| OutputClaim | outputClaim | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputClaim | inputClaim |字符串 |作为字符串格式 {0} 参数的 ClaimType。 |
+| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 |
+| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
 
-매개 변수 {0} 하나가 포함된 모든 문자열의 서식을 지정하려면 이 클레임 변환을 사용합니다. 다음 예제에서는 **userPrincipalName**을 만듭니다. `Facebook-OAUTH` 등의 모든 소셜 ID 공급자 기술 프로필은 **CreateUserPrincipalName**을 호출하여 **userPrincipalName**을 생성합니다.
+使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName。 所有社交标识提供者技术配置文件（如 `Facebook-OAUTH`）都调用 CreateUserPrincipalName 来生成 userPrincipalName。
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -315,27 +315,27 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
-- 입력 매개 변수:
-    - **stringFormat**: cpim_{0}@{RelyingPartyTenantId}
-- 출력 클레임:
-  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+- 输入声明：
+    - inputClaim: 5164db16-3eee-4629-bfda-dcc3326790e9
+- 输入参数：
+    - stringFormat:  cpim_{0}@{RelyingPartyTenantId}
+- 输出声明：
+  - outputClaim: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-입력한 형식 문자열에 따라 두 클레임의 서식을 지정합니다. 이 변환에서는 C# **String.Format** 메서드를 사용합니다.
+根据提供的格式字符串格式化两个声明。 此转换将使用 C# String.Format 方法。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |문자열 | 문자열 형식 {0} 매개 변수로 사용되는 ClaimType입니다. |
-| InputClaim | inputClaim | 문자열 | 문자열 형식 {1} 매개 변수로 사용되는 ClaimType입니다. |
-| InputParameter | stringFormat | 문자열 | {0} 및 {1} 매개 변수를 포함하는 문자열 형식입니다. |
-| OutputClaim | outputClaim | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. |
+| InputClaim | inputClaim |字符串 | 作为字符串格式 {0} 参数的 ClaimType。 |
+| InputClaim | inputClaim | 字符串 | 作为字符串格式 {1} 参数的 ClaimType。 |
+| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 和 {1} 参数。 |
+| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
 
-두 매개 변수({0} 및 {1})가 포함된 모든 문자열의 서식을 지정하려면 이 클레임 변환을 사용합니다. 다음 예제는 지정된 형식으로 **displayName**을 만듭니다.
+使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName：
 
 ```XML
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -352,26 +352,26 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **inputClaim1**: Joe
-    - **inputClaim2**: Fernando
-- 입력 매개 변수:
+- 输入声明：
+    - inputClaim1: Joe
+    - inputClaim2: Fernando
+- 输入参数：
     - **stringFormat**： {0} {1}
-- 출력 클레임:
-    - **outputClaim**: Joe Fernando
+- 输出声明：
+    - outputClaim: Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
-클레임 **Restriction** 컬렉션에서 항목을 조회합니다.
+从声明 Restriction 集合中查找项。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | 문자열 | **Restriction** 컬렉션이 포함된 **restrictionValueClaim** 클레임에서 조회할 텍스트가 들어 있는 클레임입니다.  |
-| OutputClaim | restrictionValueClaim | 문자열 | **Restriction** 컬렉션이 포함된 클레임입니다. 클레임 변환을 호출하고 나면 이 클레임의 값에는 선택한 항목의 값이 포함됩니다. |
+| InputClaim | mapFromClaim | 字符串 | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
+| OutputClaim | restrictionValueClaim | 字符串 | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
 
-다음 예제에서는 오류 키를 기준으로 오류 메시지 설명을 조회합니다. **responseMsg** 클레임은 최종 사용자에게 표시하거나 신뢰 당사자에게 보낼 오류 메시지 컬렉션을 포함합니다.
+下面的示例基于错误密钥查找错误消息描述。 ResponseMsg 声明包含一系列要显示给最终用户或发送给信赖方的错误消息。
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -385,7 +385,7 @@ ms.locfileid: "76712851"
   </Restriction>
 </ClaimType>
 ```
-이 클레임 변환 항목의 텍스트를 조회하고 해당 값을 반환합니다. `<LocalizedCollection>`을 사용하여 제한을 지역화하는 경우 클레임 변환은 지역화된 값을 반환합니다.
+声明转换将查找项文本，并返回其值。 如果使用 `<LocalizedCollection>` 本地化限制，则声明转换返回本地化的值。
 
 ```XML
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
@@ -398,25 +398,25 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **mapFromClaim**: B2C_V1_90001
-- 출력 클레임:
+- 输入声明：
+    - mapFromClaim: B2C_V1_90001
+- 输出声明：
     - **restrictionValueClaim**：你无法登录，因为你是个小版本。
 
 ## <a name="lookupvalue"></a>LookupValue
 
-다른 클레임의 값을 기준으로 값 목록에서 클레임 값을 조회합니다.
+基于另一个声明的值从值列表中查找声明值。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputParameterId | 문자열 | 조회 값을 포함하는 클레임입니다. |
-| InputParameter | |문자열 | InputParameters 컬렉션입니다. |
-| InputParameter | errorOnFailedLookup | boolean | 조회에서 일치하는 항목이 없으면 오류가 반환되는지 여부를 제어합니다. |
-| OutputClaim | inputParameterId | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType입니다. 일치하는 ID의 값입니다. |
+| InputClaim | inputParameterId | 字符串 | 包含查找值的声明 |
+| InputParameter | |字符串 | inputParameters 集合。 |
+| InputParameter | errorOnFailedLookup | boolean | 控制在没有任何匹配查找时是否返回错误。 |
+| OutputClaim | inputParameterId | 字符串 | 调用此声明转换后将生成的 ClaimTypes。 匹配 ID 的值。 |
 
-다음 예제에서는 inputParameters 컬렉션 중 하나에서 도메인 이름을 조회합니다. 클레임 변환은 식별자에서 도메인 이름을 조회한 다음, 해당 값(애플리케이션 ID)을 반환합니다.
+下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -435,27 +435,27 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **inputParameterId**: test.com
-- 입력 매개 변수:
-    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: false
-- 출력 클레임:
-    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+- 输入声明：
+    - inputParameterId: test.com
+- 输入参数：
+    - contoso.com: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - microsoft.com: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - errorOnFailedLookup: false
+- 输出声明：
+    - outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
-지정된 클레임의 값을 정리합니다.
+清除给定声明的值。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | 문자열 | 값을 NULL로 설정할 클레임입니다. |
+| OutputClaim | claim_to_null | 字符串 | 其值为 NULL 的声明。 |
 
-클레임 속성 모음에서 불필요한 데이터를 제거하려면 이 클레임 변환을 사용합니다. 그러면 세션 쿠키의 크기가 작아집니다. 다음 예제에서는 `TermsOfService` 클레임 형식의 값을 제거합니다.
+使用此声明转换可从声明属性包中删除不必要的数据。 因此，会话 cookie 会比较小。 以下示例将删除 `TermsOfService` 声明类型的值。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -465,21 +465,21 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-- 입력 클레임:
-    - **outputClaim**: Contoso 앱을 시작합니다. 이 웹 사이트를 계속 검색 및 사용하는 경우 다음 사용 약관을 준수하며 해당 약관에 구속됨에 동의하게 됩니다.
-- 출력 클레임:
-    - **outputClaim**: NULL
+- 输入声明：
+    - outputClaim：欢迎使用 Contoso 应用。 如果继续浏览和使用本网站，表示你同意遵守并受下列条款和条件的约束...
+- 输出声明：
+    - outputClaim: NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
-전자 메일 주소의 도메인 부분을 가져옵니다.
+获取电子邮件地址的域部分。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | emailAddress | 문자열 | 전자 메일 주소를 포함하는 ClaimType입니다. |
-| OutputClaim | 도메인 | 문자열 | 이 클레임 변환을 호출하고 나면 생성되는 ClaimType(도메인)입니다. |
+| InputClaim | emailAddress | 字符串 | 包含电子邮件地址的 ClaimType。 |
+| OutputClaim | 域 | 字符串 | 调用此声明转换后生成的 ClaimType - 域。 |
 
-사용자의 @ 기호 뒤에 붙은 도메인 이름을 구문 분석하려면 이 클레임 변환을 사용합니다. 그러면 감사 데이터에서 PII(개인 식별이 가능한 정보)를 제거할 수 있습니다. 다음 클레임 변환은 **email** 클레임에서 도메인 이름을 구문 분석하는 방법을 보여 줍니다.
+使用此声明转换分析用户 @ 符号之后的域名。 这可以帮助从审核数据中删除个人身份信息 (PII)。 以下声明转换演示如何分析 email 声明中的域名。
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -492,29 +492,29 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-  - **emailAddress**: joe@outlook.com
-- 출력 클레임:
-    - **domain**: outlook.com
+- 输入声明：
+  - emailAddress: joe@outlook.com
+- 输出声明：
+    - domain: outlook.com
 
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
-문자열 클레임 및 `matchTo` 입력 매개 변수가 같은지를 확인하고 `stringMatchMsg` 및 `stringMatchMsgCode` 입력 매개 변수에 있는 값을 사용하여 출력 클레임을 설정하는 동시에 비교 결과 출력 클레임(비교 결과에 따라 `true` 또는 `false`로 설정됨)도 설정합니다.
+检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `stringMatchMsg` 和 `stringMatchMsgCode` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | 문자열 | 비교할 클레임 형식입니다. |
-| InputParameter | matchTo | 문자열 | `inputClaim`과 비교할 문자열입니다. |
-| InputParameter | stringComparison | 문자열 | 가능한 값은 `Ordinal` 또는 `OrdinalIgnoreCase`입니다. |
-| InputParameter | stringMatchMsg | 문자열 | 문자열이 같으면 설정할 첫 번째 값입니다. |
-| InputParameter | stringMatchMsgCode | 문자열 | 문자열이 같으면 설정할 두 번째 값입니다. |
-| OutputClaim | outputClaim1 | 문자열 | 문자열이 같으면 이 출력 클레임에는 `stringMatchMsg` 입력 매개 변수의 값이 포함됩니다. |
-| OutputClaim | outputClaim2 | 문자열 | 문자열이 같으면 이 출력 클레임에는 `stringMatchMsgCode` 입력 매개 변수의 값이 포함됩니다. |
-| OutputClaim | stringCompareResultClaim | boolean | 비교 결과 출력 클레임 형식입니다. 비교 결과에 따라 `true` 또는 `false`로 설정됩니다. |
+| InputClaim | inputClaim | 字符串 | 要比较的声明类型。 |
+| InputParameter | matchTo | 字符串 | 要与 `inputClaim` 进行比较的字符串。 |
+| InputParameter | stringComparison | 字符串 | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
+| InputParameter | stringMatchMsg | 字符串 | 字符串相等情况下第一个要设置的值。 |
+| InputParameter | stringMatchMsgCode | 字符串 | 字符串相等情况下第二个要设置的值。 |
+| OutputClaim | outputClaim1 | 字符串 | 如果字符串相等，则此输出声明包含 `stringMatchMsg` 输入参数的值。 |
+| OutputClaim | outputClaim2 | 字符串 | 如果字符串相等，则此输出声明包含 `stringMatchMsgCode` 输入参数的值。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
-이 클레임 변환을 사용하면 특정 클레임이 지정한 값과 같은지를 확인할 수 있습니다. 예를 들어 다음 클레임 변환에서는 **termsOfUseConsentVersion** 클레임의 값이 `v1`과 같은지를 확인합니다. 두 값이 같은 경우 값을 `v2`로 변경합니다.
+可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -534,34 +534,34 @@ ms.locfileid: "76712851"
   </OutputClaims>
 </ClaimsTransformation>
 ```
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **inputClaim**: v1
-- 입력 매개 변수:
-    - **matchTo**: V1
-    - **stringComparison**: ordinalIgnoreCase
-    - **stringMatchMsg**: B2C_V1_90005
-    - **stringMatchMsgCode**: The TOS is upgraded to v2
-- 출력 클레임:
-    - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: The TOS is upgraded to v2
-    - **stringCompareResultClaim**: true
+- 输入声明：
+    - inputClaim: v1
+- 输入参数：
+    - matchTo: V1
+    - stringComparison: ordinalIgnoreCase
+    - stringMatchMsg:  B2C_V1_90005
+    - stringMatchMsgCode：TOS 升级到 v2
+- 输出声明：
+    - outputClaim1: B2C_V1_90005
+    - outputClaim2：TOS 升级到 v2
+    - stringCompareResultClaim: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
-문자열 클레임 및 `matchTo` 입력 매개 변수가 같은지를 확인하고 `outputClaimIfMatched` 입력 매개 변수에 있는 값을 사용하여 출력 클레임을 설정하는 동시에 비교 결과 출력 클레임(비교 결과에 따라 `true` 또는 `false`로 설정됨)도 설정합니다.
+检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `outputClaimIfMatched` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| 항목 | TransformationClaimType | 데이터 형식 | 메모 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | claimToMatch | 문자열 | 비교할 클레임 형식입니다. |
-| InputParameter | matchTo | 문자열 | inputClaim과 비교할 문자열입니다. |
-| InputParameter | stringComparison | 문자열 | 가능한 값은 `Ordinal` 또는 `OrdinalIgnoreCase`입니다. |
-| InputParameter | outputClaimIfMatched | 문자열 | 문자열이 같으면 설정할 값입니다. |
-| OutputClaim | outputClaim | 문자열 | 문자열이 같으면 이 출력 클레임에는 `outputClaimIfMatched` 입력 매개 변수의 값이 포함됩니다. 문자열이 일치하지 않는 경우에는 null입니다. |
-| OutputClaim | stringCompareResultClaim | boolean | 비교 결과 출력 클레임 형식입니다. 비교 결과에 따라 `true` 또는 `false`로 설정됩니다. |
+| InputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
+| InputParameter | matchTo | 字符串 | 要与 inputClaim 进行比较的字符串。 |
+| InputParameter | stringComparison | 字符串 | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
+| InputParameter | outputClaimIfMatched | 字符串 | 字符串相等情况下要设置的值。 |
+| OutputClaim | outputClaim | 字符串 | 如果字符串相等，则此输出声明包含 `outputClaimIfMatched` 输入参数的值。 或者如果字符串不匹配，则为 NULL。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
-예를 들어 다음 클레임 변환에서는 **ageGroup** 클레임의 값이 `Minor`와 같은지를 확인합니다. 두 값이 같으면 값을 `B2C_V1_90001`로 반환합니다.
+例如，以下声明转换检查 ageGroup 声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -580,15 +580,15 @@ ms.locfileid: "76712851"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>示例
 
-- 입력 클레임:
-    - **claimToMatch**: Minor
-- 입력 매개 변수:
-    - **matchTo**: Minor
-    - **stringComparison**: ordinalIgnoreCase
-    - **outputClaimIfMatched**: B2C_V1_90001
-- 출력 클레임:
-    - **isMinorResponseCode**: B2C_V1_90001
-    - **isMinor**: true
+- 输入声明：
+    - claimToMatch: Minor
+- 输入参数：
+    - matchTo: Minor
+    - stringComparison: ordinalIgnoreCase
+    - outputClaimIfMatched:  B2C_V1_90001
+- 输出声明：
+    - isMinorResponseCode: B2C_V1_90001
+    - isMinor: true
 

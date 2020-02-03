@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid 메시지 배달 모니터링
+title: 监视 Azure 事件网格消息传送
 description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格消息的传递状态。
 services: event-grid
 author: spelluru
@@ -15,75 +15,75 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722129"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>Event Grid 메시지 배달 모니터링 
+# <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 
-이 문서에서는 포털을 사용하여 이벤트 배달 상태를 확인하는 방법을 설명합니다.
+本文介绍如何使用门户查看事件传送的状态。
 
-Event Grid는 지속성이 있는 배달을 제공합니다. 각 메시지를 각 구독에 대해 최소 한 번 배달합니다. 이벤트는 각 구독에 등록된 웹후크로 즉시 전송됩니다. 웹후크가 첫 번째 배달 시도 후 60초 이내에 이벤트 수신을 승인하지 않는 경우 Event Grid는 이벤트의 배달을 다시 시도합니다.
+事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册 webhook。 如果 webhook 在首次发送后 60 秒内未确认已接收事件，则事件网格会重试事件传送。
 
-이벤트 배달 및 다시 시도에 대한 자세한 내용은 [Event Grid 메시지 배달 및 다시 시도](delivery-and-retry.md)를 참조하세요.
+有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
 
-## <a name="delivery-metrics"></a>배달 메트릭
+## <a name="delivery-metrics"></a>传送指标
 
-포털에는 이벤트 메시지 배달 상태에 대한 메트릭이 표시됩니다.
+门户将显示用于表示事件消息传送状态的指标。
 
-토픽에 대한 메트릭은 다음과 같습니다.
+对于主题，指标包括：
 
-* **게시 성공**: 이벤트가 성공적으로 토픽으로 전송되고 2xx 응답으로 처리되었습니다.
-* **게시 실패**: 이벤트가 토픽으로 전송되었지만 거부되고 오류 코드가 표시되었습니다.
-* **일치하지 않음**: 이벤트가 성공적으로 토픽에 게시되었지만 이벤트 구독과 일치하지 않습니다. 이벤트가 삭제되었습니다.
+* **发布成功**：事件已成功发送到主题，并且以 2xx 响应进行处理。
+* **发布失败**：事件已发送到主题，但被拒绝并返回错误代码。
+* **不匹配**：事件已成功发布到主题，但与事件订阅不匹配。 已删除该事件。
 
-구독에 대한 메트릭은 다음과 같습니다.
+对于订阅，指标包括：
 
-* **배달 성공**: 이벤트가 성공적으로 구독 엔드포인트로 배달되고 2xx 응답을 받았습니다.
-* **배달 실패**: 이벤트가 구독 엔드포인트로 전송되었지만 4xx 또는 5xx 응답을 받았습니다.
-* **만료된 이벤트**: 이벤트가 배달되지 않았으며 다시 시도 횟수가 모두 전송되었습니다. 이벤트가 삭제되었습니다.
-* **일치된 이벤트**: 토픽의 이벤트가 이벤트 구독과 일치되었습니다.
+* **传送成功**：事件已成功传送到订阅的终结点，但收到 2xx 响应。
+* **传送失败**：事件已发送到订阅的终结点，但收到 4xx 或 5xx 响应。
+* **事件过期**：未传送事件，并且已发送所有重试尝试。 已删除该事件。
+* **已匹配事件**：事件订阅已匹配主题中的事件。
 
-## <a name="event-subscription-status"></a>이벤트 구독 상태
+## <a name="event-subscription-status"></a>事件订阅状态
 
-이벤트 구독에 대한 메트릭을 보려면 구독 유형별로 또는 특정 리소스에 대한 구독별로 검색할 수 있습니다.
+若要查看事件订阅的指标，可以按订阅类型搜索或按特定资源的订阅搜索。
 
-이벤트 구독 유형별로 검색하려면 **모든 서비스**를 선택합니다.
+若要按事件订阅类型搜索，请选择“所有服务”。
 
-![모든 서비스 선택](./media/monitor-event-delivery/all-services.png)
+![选择所有服务](./media/monitor-event-delivery/all-services.png)
 
-**Event Grid**를 검색하고 사용 가능한 옵션에서 **Event Grid 구독**을 선택합니다.
+搜索事件网格，并从可用选项中选择“事件网格订阅”。
 
-![이벤트 구독 검색](./media/monitor-event-delivery/search-and-select.png)
+![搜索事件订阅](./media/monitor-event-delivery/search-and-select.png)
 
-이벤트 유형, 구독 및 위치를 기준으로 필터링합니다. 보려는 구독에 대한 **메트릭**을 선택합니다.
+按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”。
 
-![이벤트 구독 필터링](./media/monitor-event-delivery/filter-events.png)
+![筛选事件订阅](./media/monitor-event-delivery/filter-events.png)
 
-이벤트 토픽 및 구독에 대한 메트릭을 봅니다.
+查看事件主题和订阅的指标。
 
-![이벤트 메트릭 보기](./media/monitor-event-delivery/subscription-metrics.png)
+![查看事件指标](./media/monitor-event-delivery/subscription-metrics.png)
 
-특정 리소스에 대한 메트릭을 찾으려면 해당 리소스를 선택합니다. 그런 다음, **이벤트**를 선택합니다.
+若要查找特定资源的指标，请选择该资源。 然后，选择“事件”。
 
-![리소스에 대한 이벤트 선택](./media/monitor-event-delivery/select-events.png)
+![选择资源的事件](./media/monitor-event-delivery/select-events.png)
 
-해당 리소스의 구독에 대한 메트릭이 표시됩니다.
+你会看到该资源的订阅指标。
 
-## <a name="custom-event-status"></a>사용자 지정 이벤트 상태
+## <a name="custom-event-status"></a>自定义事件状态
 
-사용자 지정 항목을 게시한 경우 해당 메트릭을 볼 수 있습니다. 해당 항목에 대한 리소스 그룹을 선택한 다음, 항목을 선택합니다.
+如果已发布自定义主题，则可以查看其指标。 选择该主题的资源组，然后选择主题。
 
-![사용자 지정 토픽 선택](./media/monitor-event-delivery/select-custom-topic.png)
+![选择自定义主题](./media/monitor-event-delivery/select-custom-topic.png)
 
-사용자 지정 이벤트 토픽에 대한 메트릭을 봅니다.
+查看自定义事件主题的指标。
 
-![이벤트 메트릭 보기](./media/monitor-event-delivery/custom-topic-metrics.png)
+![查看事件指标](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="set-alerts"></a>경고 설정
+## <a name="set-alerts"></a>设置警报
 
 您可以为自定义主题和事件域设置主题和域级别指标的警报。 在的 "概述" 边栏选项卡中，从左侧选择 "**警报**"，以查看、管理和创建警报规则。 [详细了解 Azure Monitor 警报](../azure-monitor/platform/alerts-overview.md)
 
-![이벤트 메트릭 보기](./media/monitor-event-delivery/select-alerts.png)
+![查看事件指标](./media/monitor-event-delivery/select-alerts.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-* 이벤트 배달 및 다시 시도에 대한 자세한 내용은 [Event Grid 메시지 배달 및 다시 시도](delivery-and-retry.md)를 참조하세요.
-* Event Grid에 대한 소개는 [Event Grid 정보](overview.md)를 참조하세요.
-* Event Grid를 빠르게 시작하려면 [Azure Event Grid를 사용하여 사용자 지정 이벤트 만들기 및 라우팅](custom-event-quickstart.md)을 참조하세요.
+* 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
+* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
+* 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

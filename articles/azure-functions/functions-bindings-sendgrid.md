@@ -1,6 +1,6 @@
 ---
-title: Azure Functions SendGrid 바인딩
-description: Azure Functions SendGrid 바인딩 참조.
+title: Azure Functions SendGrid 绑定
+description: Azure Functions SendGrid 绑定参考。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 11/29/2017
@@ -12,31 +12,31 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76710985"
 ---
-# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 바인딩
+# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
-이 문서에서는 Azure Functions에서 [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) 바인딩을 사용하여 전자 메일을 보내는 방법에 대해 설명합니다. Azure Functions는 SendGrid에 대해 출력 바인딩을 지원합니다.
+本文介绍如何使用 Azure Functions 中的 [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) 绑定发送电子邮件。 Azure Functions 支持 SendGrid 的输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>패키지 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-SendGrid 바인딩은 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 패키지 버전 2.x에서 제공됩니다. 이 패키지에 대한 소스 코드는 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 리포지토리에 있습니다.
+[Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 2.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
-SendGrid 바인딩은 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 패키지 버전 3.x에서 제공됩니다. 이 패키지에 대한 소스 코드는 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 리포지토리에 있습니다.
+[Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example"></a>예
+## <a name="example"></a>示例
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-다음 예제에서는 Service Bus 큐 트리거와 SendGrid 출력 바인딩을 사용하는 [C# 함수](functions-dotnet-class-library.md)를 보여줍니다.
+以下示例演示使用服务总线队列触发器和 SendGrid 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。
 
-### <a name="synchronous"></a>동기
+### <a name="synchronous"></a>Synchronous
 
 ```cs
 [FunctionName("SendEmail")]
@@ -62,7 +62,7 @@ public class OutgoingEmail
 }
 ```
 
-### <a name="asynchronous"></a>비동기
+### <a name="asynchronous"></a>异步
 
 ```cs
 [FunctionName("SendEmail")]
@@ -90,13 +90,13 @@ public class OutgoingEmail
 }
 ```
 
-"AzureWebJobsSendGridApiKey"라는 앱 설정에 API 키가 있는 경우 특성의 `ApiKey` 속성 설정을 생략할 수 있습니다.
+如果在应用设置中指定了名为“AzureWebJobsSendGridApiKey”的 API 密钥，则可以不设置特性的 `ApiKey` 属性。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-다음 예에서는 *function.json* 파일의 SendGrid 출력 바인딩 및 바인딩을 사용하는 [C# 스크립트 함수](functions-reference-csharp.md)를 보여줍니다.
+以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-*function.json* 파일의 바인딩 데이터는 다음과 같습니다.
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -120,9 +120,9 @@ public class OutgoingEmail
 }
 ```
 
-[구성](#configuration) 섹션에서는 이러한 속성을 설명합니다.
+[配置](#configuration)部分解释了这些属性。
 
-C# 스크립트 코드는 다음과 같습니다.
+C# 脚本代码如下所示：
 
 ```csharp
 #r "SendGrid"
@@ -153,9 +153,9 @@ public class Message
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-다음 예에서는 *function.json* 파일의 SendGrid 출력 바인딩 및 바인딩을 사용하는 [JavaScript 함수](functions-reference-node.md)를 보여줍니다.
+以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-*function.json* 파일의 바인딩 데이터는 다음과 같습니다.
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -173,9 +173,9 @@ public class Message
 }
 ```
 
-[구성](#configuration) 섹션에서는 이러한 속성을 설명합니다.
+[配置](#configuration)部分解释了这些属性。
 
-JavaScript 코드는 다음과 같습니다.
+JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, input) {
@@ -308,9 +308,9 @@ public class HttpTriggerSendGrid {
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-[C# 클래스 라이브러리](functions-dotnet-class-library.md)에서 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
-구성할 수 있는 특성 속성에 대한 자세한 내용은 [구성](#configuration)을 참조하세요. 다음은 메서드 서명의 `SendGrid` 특성 예제입니다.
+有关可以配置的特性属性的信息，请参阅[配置](#configuration)。 下面是某个方法签名中的 `SendGrid` 特性示例：
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -322,7 +322,7 @@ public static void Run(
 }
 ```
 
-전체 예제는 [C# 예제](#example)를 참조하세요.
+有关完整示例，请参阅 [C# 示例](#example)。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
@@ -342,20 +342,20 @@ Python 不支持特性。
 
 ---
 
-## <a name="configuration"></a>구성
+## <a name="configuration"></a>配置
 
 下表列出了*函数 json*文件中可用的绑定配置属性以及 `SendGrid` 特性/批注。
 
-| *函数 json*属性 | 属性/批注属性 | Description | 선택 사항 |
+| *函数 json*属性 | 属性/批注属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n/a| `sendGrid`로 설정해야 합니다.| 아닙니다. |
-| direction |n/a| `out`로 설정해야 합니다.| 아닙니다. |
-| name |n/a| 在请求或请求正文的函数代码中使用的变量名称。 반환 값이 하나만 있는 경우 이 값은 `$return`입니다. | 아닙니다. |
-| apiKey | ApiKey | API 키가 포함 된 앱 설정의 이름입니다. 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 아닙니다. |
-| to| - | 받는 사람의 이메일 주소입니다. | 예 |
-| 원본| 최저 | 发件人的电子邮件地址。 |  예 |
-| subject| 제목 | 电子邮件的主题。 | 예 |
-| text| 텍스트 | 电子邮件内容。 | 예 |
+| type |不适用| 必须设置为 `sendGrid`。| 否 |
+| direction |不适用| 必须设置为 `out`。| 否 |
+| name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
+| apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 否 |
+| to| 目标 | 收件人的电子邮件地址。 | 是 |
+| 从| 源 | 发件人的电子邮件地址。 |  是 |
+| subject| 主题 | 电子邮件的主题。 | 是 |
+| text| 文本 | 电子邮件内容。 | 是 |
 
 可选属性可能具有在绑定中定义的默认值，并以编程方式添加或重写。
 
@@ -363,12 +363,12 @@ Python 不支持特性。
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json 설정
+## <a name="hostjson-settings"></a>host.json 设置
 
 本部分介绍此绑定在版本2.x 和更高版本中可用的全局配置设置。 下面的示例 host json 文件仅包含此绑定的版本 2.x + 设置。 有关版本2.x 和更高版本中的全局配置设置的详细信息，请参阅[host json reference for Azure Functions](functions-host-json.md)。
 
 > [!NOTE]
-> Functions 1.x에서 host.json의 참조는 [Azure Functions 1.x에 대한 host.json 참조](functions-host-json-v1.md)를 참조하세요.
+> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
 ```json
 {
@@ -381,12 +381,12 @@ Python 不支持特性。
 }
 ```  
 
-|속성  |기본값 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
-|원본|n/a|모든 함수에서 보낸 사람의 이메일 주소입니다.| 
+|从|不适用|所有函数的发件人电子邮件地址。| 
 
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Functions 트리거 및 바인딩에 대한 자세한 정보](functions-triggers-bindings.md)
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)

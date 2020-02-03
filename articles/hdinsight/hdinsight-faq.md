@@ -46,21 +46,21 @@ ms.locfileid: "76720344"
 
 #### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>错误：部署将超过 "800" 的配额
 
-Azure의 할당량 한도는 리소스 그룹당 800개 배포입니다. 每个资源组、订阅、帐户或其他范围应用不同的配额。 예를 들어 지역에 대한 코어 수를 제한하도록 구독을 구성할 수 있습니다. 如果尝试部署的虚拟机的内核数多于允许的数量，你会收到一条错误消息，指出已超出配额。
+Azure 的配额限制为每个资源组 800 个部署。 每个资源组、订阅、帐户或其他范围应用不同的配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署的虚拟机的内核数多于允许的数量，你会收到一条错误消息，指出已超出配额。
 
 若要解决此问题，请使用 Azure 门户、CLI 或 PowerShell 删除不再需要的部署。
 
-자세한 내용은 [리소스 할당량에 대한 오류 해결](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)을 참조하세요.
+有关详细信息，请参阅[解决资源配额错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
 
 #### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>错误：最大节点已超过此区域中的可用内核数
 
-지역에 대한 코어 수를 제한하도록 구독을 구성할 수 있습니다. 如果尝试部署的资源的内核数多于允许的数量，会收到一条错误消息，指出已超出配额。
+订阅可能配置为限制某个区域的核心数目。 如果尝试部署的资源的内核数多于允许的数量，会收到一条错误消息，指出已超出配额。
 
-할당량 증가를 요청하려면 다음 단계를 수행합니다.
+若要请求增加配额，请按以下步骤操作：
 
 1. 请参阅[Azure 门户](https://portal.azure.com)，并选择 "**帮助 + 支持**"。
    
-1. **새 지원 요청**을 선택합니다.
+1. 选择“新建支持请求”。
    
 1. 在 "**新建支持请求**" 页的 "**基本**信息" 选项卡上，提供以下信息：
    
@@ -68,7 +68,7 @@ Azure의 할당량 한도는 리소스 그룹당 800개 배포입니다. 每个�
    - **订阅：** 选择要修改的订阅。
    - **配额类型：** 选择 " **HDInsight**"。
 
-자세한 내용은 [코어를 늘리기 위한 지원 티켓 만들기](hdinsight-capacity-planning.md#quotas)를 참조하세요.
+有关详细信息，请参阅[创建支持票证来增加核心](hdinsight-capacity-planning.md#quotas)。
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight 群集中的各种类型的节点是什么？
 
@@ -80,7 +80,7 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>能否在群集上安装其他组件？
 
-예. 若要安装其他组件或自定义群集配置，请使用：
+是的。 若要安装其他组件或自定义群集配置，请使用：
 
 - 在创建过程中或之后创建脚本。 脚本可通过[脚本操作调用，脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)是一种配置选项，可在 Azure 门户、Hdinsight Windows PowerShell Cmdlet 或 HDINSIGHT .net SDK 中使用。 此配置选项可在 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 中使用。
 
@@ -109,7 +109,7 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
    ![Ambari 用户设置](media/hdinsight-faq/ambari-user-settings.png)
 
-## <a name="metastore"></a>메타 저장소
+## <a name="metastore"></a>元存储
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>如何从现有的元存储迁移到 Azure SQL Server？ 
 
@@ -119,11 +119,11 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 这取决于群集配置为使用的元存储类型。
 
-对于默认的元存储：默认元存储是群集生命周期的一部分。 클러스터를 삭제하면 해당하는 metastore와 메타데이터도 삭제됩니다.
+对于默认的元存储：默认元存储是群集生命周期的一部分。 删除群集时，会一并删除相应的元存储和元数据。
 
 对于自定义元存储：元存储的生命周期未绑定到群集的生命周期。 因此，你可以在不丢失元数据的情况下创建和删除群集。 即使在删除并重新创建 HDInsight 群集后，也会保留你的 Hive 架构等元数据。
 
-자세한 내용은 [Azure HDInsight에서 외부 메타데이터 저장소 사용](hdinsight-use-external-metadata-stores.md)을 참조하세요.
+有关详细信息，请参阅[在 Azure HDInsight 中使用外部元数据存储](hdinsight-use-external-metadata-stores.md)。
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>迁移 Hive 元存储还会迁移 Ranger 数据库的默认策略吗？
 
@@ -151,7 +151,7 @@ Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小
 
 如果阻止端口22和端口23，则不会有权访问群集。 HDInsight 服务不使用这些端口。
 
-자세한 내용은 다음 문서를 참조하세요.
+有关详细信息，请参阅以下文档：
 
 - [控制网络流量](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 
@@ -202,7 +202,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>能否在 AAD DS 安全 LDAP 设置中使用自签名证书并设置 ESP 群集？
 
-建议使用证书颁发机构颁发的证书，但 ESP 上也支持使用自签名证书。 자세한 내용은 다음을 참조하세요.
+建议使用证书颁发机构颁发的证书，但 ESP 上也支持使用自签名证书。 有关详细信息，请参阅：
 
 - [启用 Azure Active Directory 域服务](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -237,7 +237,7 @@ Clamscan 是在 HDInsight 群集上运行的防病毒软件，由 Azure 安全�
 可以通过两种方式实现此目的： 1-可以重新创建群集，并在创建群集时添加其他组。 如果正在 AAD-DS 中使用作用域同步，请确保范围内同步中包含组 B。
 2-将组添加为之前组中用于创建 ESP 群集的嵌套子组。 例如，如果你已使用组 `A`创建了一个 ESP 群集，稍后你可以将组 `B` 作为 `A` 的嵌套子组，在大约一小时后，它将自动同步并在群集中可用。 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>存储
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>是否可以将 Azure Data Lake Storage Gen2 添加到现有 HDInsight 群集作为附加存储帐户？
 
@@ -249,9 +249,9 @@ Clamscan 是在 HDInsight 群集上运行的防病毒软件，由 Azure 安全�
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>如何计算 HDInsight 群集的存储帐户和 blob 容器的使用情况？
 
-다음 중 하나를 수행합니다.
+执行以下操作之一：
 
-- [PowerShell 사용](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+- [使用 PowerShell](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
 - 查找/user/hive/. 的大小HDInsight 群集上的垃圾桶/文件夹，使用以下命令行：
   
@@ -279,20 +279,20 @@ done
 
 目前 blob 存储和 Azure Data Lake Storage Gen1 或 Gen2 不存在任何 Ranger 插件。 对于 ESP 群集，你应使用 Azure Data Lake Storage，因为你至少可以使用 HDFS 工具在文件系统级别上手动设置精细权限。 此外，在使用 Azure Data Lake Storage 时，ESP 群集将使用群集级别的 Azure Active Directory 执行一些文件系统访问控制。 
 
-可以使用 Azure 存储资源管理器将数据访问策略分配给用户的安全组。 자세한 내용은 다음을 참조하세요.
+可以使用 Azure 存储资源管理器将数据访问策略分配给用户的安全组。 有关详细信息，请参阅：
 
 - [如何实现使用 Hive 或其他服务为 Azure AD 用户设置 Data Lake Storage Gen2 查询数据的权限？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-- [Azure Data Lake Storage Gen2와 함께 Azure Storage Explorer를 사용하여 파일 및 디렉터리 수준 사용 권한 설정](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>能否增加群集上的 HDFS 存储而不增加辅助角色节点的磁盘大小？
 
 不可以增加任何辅助角色节点的磁盘大小，因此，增加磁盘大小的唯一方法是删除群集，并在更大的辅助 Vm 上重新创建。 请勿使用 HDFS 存储任何 HDInsight 数据，因为如果删除群集，则会删除数据。 请改为将数据存储在 Azure 中。 增加群集还可以将额外容量添加到 HDInsight 群集。
 
-## <a name="edge-nodes"></a>에지 노드
+## <a name="edge-nodes"></a>边缘节点
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>创建群集后，是否可以添加边缘节点？
 
-HDInsight 群集，或者在创建群集时到新群集。 자세한 내용은 [HDInsight의 Apache Hadoop 클러스터에서 빈 에지 노드 사용](hdinsight-apps-use-edge-node.md)을 참조하세요.
+HDInsight 群集，或者在创建群集时到新群集。 有关详细信息，请参阅[在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)一文。
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>如何连接到边缘节点？
 
@@ -345,7 +345,7 @@ http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/component
 > [!NOTE]
 > 卷将提示你输入密码。 必须输入群集登录用户名的有效密码。
 
-## <a name="billing"></a>청구
+## <a name="billing"></a>计费
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>部署 HDInsight 群集需要多少费用？
 
@@ -353,7 +353,7 @@ http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/component
 
 ### <a name="when-does-hdinsight-billing-start--stop"></a>HDInsight 计费何时开始 & 停止？
 
-클러스터가 만들어지면 HDInsight 클러스터 청구가 시작되고 클러스터가 삭제되면 중지됩니다. 每分钟按比例计费。
+创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 每分钟按比例计费。
 
 ### <a name="how-do-i-cancel-my-subscription"></a>如何实现取消我的订阅？
 

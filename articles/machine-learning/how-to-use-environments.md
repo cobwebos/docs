@@ -33,12 +33,12 @@ ms.locfileid: "76717812"
 
 若要大致了解环境在 Azure 机器学习中的工作原理，请参阅[什么是 ML 环境？](concept-environments.md)。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
 * [用于 Python 的 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Azure 机器学习工作区](how-to-manage-workspace.md)
 
-## <a name="create-an-environment"></a>환경 만들기
+## <a name="create-an-environment"></a>创建环境
 
 以下部分将介绍可为试验创建环境的多种方式。
 
@@ -170,7 +170,7 @@ conda_dep.add_pip_package(whl_url)
 myenv.python.conda_dependencies=conda_dep
 ```
 
-## <a name="manage-environments"></a>환경 관리
+## <a name="manage-environments"></a>管理环境
 
 管理环境，使你可以跨计算目标以及工作区的其他用户对其进行更新、跟踪和重复使用。
 
@@ -343,7 +343,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>노트북 예제
+## <a name="example-notebooks"></a>示例笔记本
 
 此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments)扩展了本文中演示的概念和方法。
 
@@ -379,7 +379,7 @@ az ml environment list
 az ml environment download -n myenv -d downloaddir
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * 若要使用托管计算目标来定型模型，请参阅[教程：训练模型](tutorial-train-models-with-aml.md)。
 * 获得训练模型后，请了解[部署模型的方式和位置](how-to-deploy-and-where.md)。

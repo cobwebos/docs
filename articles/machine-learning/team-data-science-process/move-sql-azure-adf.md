@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory를 사용하여 SQL Server 데이터를 SQL Azure로 이동 - 팀 데이터 과학 프로세스
-description: 온-프레미스와 클라우드의 데이터베이스 간에 데이터를 매일 이동하는 두 데이터 마이그레이션 활동으로 구성된 ADF 파이프라인을 설정합니다.
+title: 使用 Azure 数据工厂将 SQL Server 数据移动到 SQL Azure - Team Data Science Process
+description: 设置一个 ADF 管道，它由两个数据迁移活动组成，这两个活动每天共同在本地和云中的数据库之间移动数据。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,97 +18,97 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722486"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory를 사용하여 온-프레미스 SQL Server에서 SQL Azure로 데이터 이동
+# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 
 本文介绍如何使用 Azure 数据工厂（ADF）通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 SQL Azure 数据库：此方法是受支持的旧版方法，该方法具有已复制的暂存副本的优点，但[我们建议查看数据迁移页获取最新的选项](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
-Azure SQL Database로 데이터를 이동하는 다양한 옵션을 요약한 표는 [Azure Machine Learning을 위해 Azure SQL Database로 데이터 이동](move-sql-azure.md)을 참조하세요.
+有关汇总了用于将数据移到 Azure SQL 数据库的各种选项的表格，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](move-sql-azure.md)。
 
-## <a name="intro"></a>소개: ADF란 무엇이며 데이터를 마이그레이션하는 데 사용하려면 언제 사용해야 하나요?
-Azure 데이터 팩터리는 데이터의 이동과 변환을 오케스트레이션하고 자동화하는 완전히 관리되는 클라우드 기반의 데이터 통합 서비스입니다. ADF 모델의 핵심 개념은 파이프라인입니다. 파이프라인은 각각 데이터 세트에 포함된 데이터에 수행할 작업을 정의하는 활동의 논리적 그룹화입니다. 연결된 서비스는 데이터 팩터리가 데이터 리소스에 연결하기 위해 필요한 정보를 정의하는 데 사용됩니다.
+## <a name="intro"></a>简介：什么是 ADF 以及它应何时用于迁移数据？
+Azure 数据工厂是一项完全托管、基于云的数据集成服务，可安排并自动化处理数据的移动和转换。 ADF 模型中的关键概念是管道。 管道是活动的逻辑分组，其中每个活动定义对包含在数据集中的数据所执行的操作。 链接服务用于定义数据工厂连接到数据资源所需的信息。
 
-ADF와 함께 기존 데이터 처리 서비스는 가용성이 높고 클라우드에서 관리되는 데이터 파이프라인으로 구성될 수 있습니다. 이러한 데이터 파이프라인에서 데이터 수집, 준비, 변환, 분석 및 게시를 예약할 수 있으며 ADF가 복잡한 데이터 및 처리 종속성을 관리하고 오케스트레이션합니다. 클라우드에서 솔루션을 신속하게 구축 및 배포할 수 있으며 증가하는 온-프레미스 및 클라우드 데이터 원본을 연결합니다.
+凭借 ADF，可将现有的数据处理服务整合到数据管道中，该数据管道具有高可用性且托管在云中。 可安排这些数据管道用于引入、准备、转换、分析和发布数据，ADF 可管理并安排复杂数据和处理依赖关系。 可在云中快速生成并部署解决方案，连接越来越多的本地和云数据源。
 
-다음 경우에 ADF 사용을 고려합니다.
+在以下情况中，请考虑使用 ADF：
 
-* 온-프레미스 및 클라우드 리소스 둘 다에 액세스하는 하이브리드 시나리오에서 데이터를 지속적으로 마이그레이션해야 하는 경우
+* 在同时访问本地和云资源的混合方案中需要不断迁移数据时
 * 数据需要转换或在迁移时向其添加业务逻辑时。
 
-ADF에서는 정기적으로 데이터 이동을 관리하는 간단한 JSON 스크립트를 사용하여 작업 예약 및 모니터링이 가능합니다. 또한 복잡한 작업을 지원하는 기타 기능도 포함하고 있습니다. ADF에 대한 자세한 내용은 [Azure 데이터 팩터리(ADF)](https://azure.microsoft.com/services/data-factory/)를 참조하세요.
+ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。 有关 ADF 的详细信息，请参阅 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 中的文档。
 
-## <a name="scenario"></a>시나리오
-두 가지 데이터 마이그레이션 작업을 구성하는 ADF 파이프라인을 설정했습니다. 它们共同在本地 SQL 数据库和云中的 Azure SQL 数据库之间每天移动数据。 두 활동은 다음과 같습니다.
+## <a name="scenario"></a>方案
+我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们共同在本地 SQL 数据库和云中的 Azure SQL 数据库之间每天移动数据。 这两个活动是：
 
-* 온-프레미스 SQL Server 데이터베이스에서 Azure Blob Storage 계정으로 데이터 복사
-* Azure Blob Storage 계정에서 Azure SQL Database로 데이터를 복사합니다.
+* 从本地 SQL Server 数据库将数据复制到 Azure Blob 存储帐户
+* 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
 > 此处所示的步骤已从 ADF 团队提供的更详细教程中进行了修改：[将数据从本地 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)，将在适当的时候提供该主题的相关部分。
 >
 >
 
-## <a name="prereqs"></a>필수 조건
-이 자습서에서는 사용자가 다음을 보유하고 있다고 가정합니다.
+## <a name="prereqs"></a>先决条件
+本教程假设你拥有：
 
-* **Azure 구독**. 구독이 없는 경우 [무료 평가판](https://azure.microsoft.com/pricing/free-trial/)을 등록할 수 있습니다.
-* **Azure Storage 계정**. 이 자습서에서는 데이터 저장을 위해 Azure Storage 계정을 사용합니다. Azure Storage 계정이 없는 경우 [스토리지 계정 만들기](../../storage/common/storage-account-create.md) 문서를 참조하세요. 스토리지 계정을 만든 후에는 스토리지 액세스에 사용되는 계정 키를 확보해야 합니다. 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
-* **Azure SQL Database**에 대한 액세스. 如果必须设置 Azure SQL 数据库，[与 Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)的主题提供了有关如何设置 Azure SQL 数据库的新实例的信息。
-* 로컬로 설치 및 구성된 **Azure PowerShell** . 자세한 내용은 [Azure PowerShell 설치 및 구성법](/powershell/azure/overview)을 참조하세요.
+* 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+* 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，[与 Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)的主题提供了有关如何设置 Azure SQL 数据库的新实例的信息。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 > [!NOTE]
-> 이 절차에서는 [Azure 포털](https://portal.azure.com/)을 사용합니다.
+> 此过程将使用 [Azure 门户](https://portal.azure.com/)。
 >
 >
 
-## <a name="upload-data"></a> 온-프레미스 SQL Server에 데이터 업로드
-[NYC Taxi 데이터 세트](https://chriswhong.com/open-data/foil_nyc_taxi/)를 사용하여 마이그레이션 프로세스를 시연합니다. 해당 게시물에서 설명한 것처럼 NYC Taxi 데이터 세트는 Azure Blob Storage [NYC Taxi 데이터](https://www.andresmh.com/nyctaxitrips/)에서 제공됩니다. 데이터에는 두 개 파일이 있습니다. trip_data.csv 파일에는 여정 세부 정보가 들어 있고 trip_far.csv 파일에는 각 여정에 대한 요금 세부 정보가 들어 있습니다. 이러한 파일의 샘플 및 설명은 [NYC Taxi Trips 데이터 세트 설명](sql-walkthrough.md#dataset)에 제공됩니다.
+## <a name="upload-data"></a>将数据上传到本地 SQL Server
+将使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)来演示迁移过程。 该文章所述的 NYC 出租车数据集在 Azure Blob 存储 [NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)上可用。 该数据具有两个文件，trip_data.csv 文件（包含行程详情）和 trip_far.csv 文件（包含每次行程的费用详情）。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
-자신의 데이터 세트에 여기에 제공된 절차를 도입하거나 NYC Taxi 데이터 세트를 사용하여 설명된 대로 단계를 따릅니다. NYC Taxi 데이터 세트를 온-프레미스 SQL Server 데이터베이스에 업로드하려면 [SQL Server Database로 대량 데이터 가져오기](sql-walkthrough.md#dbload)에 설명된 절차를 따릅니다. 이러한 지침은 Azure Virtual Machine의 SQL Server에 대한 내용이지만 온-프레미스 SQL Server로 업로드하는 절차는 동일합니다.
+可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
-## <a name="create-adf"></a> Azure 데이터 팩터리 만들기
-[Azure Portal](https://portal.azure.com/)에서 새 Azure Data Factory 및 리소스 그룹을 만들기 위한 지침은 [Azure Data Factory 만들기](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)에서 제공됩니다. 새 ADF 인스턴스의 이름은 *adfdsp*이고 생성된 리소스 그룹은 *adfdsprg*입니다.
+## <a name="create-adf"></a>创建 Azure 数据工厂
+[创建 Azure 数据工厂](https://portal.azure.com/)中提供了在 [Azure 门户](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
 
-## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory 통합 런타임 설치 및 구성
-Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的客户托管的数据集成基础结构。 이전에는 이 런타임을 “데이터 관리 게이트웨이”라고 했습니다.
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安装和配置 Azure 数据工厂集成运行时
+Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的客户托管的数据集成基础结构。 此运行时以前称为“数据管理网关”。
 
 若要设置，请[按照创建管道的说明进行](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)操作
 
-## <a name="adflinkedservices"></a>데이터 리소스에 연결할 연결된 서비스 만들기
-연결된 서비스는 Azure 데이터 팩터리가 데이터 리소스에 연결하기 위해 필요한 정보를 정의합니다. 이 시나리오에는 연결된 서비스가 필요한 3개의 리소스가 있습니다.
+## <a name="adflinkedservices"></a>创建链接服务以连接到数据资源
+链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：
 
-1. 온-프레미스 SQL Server
-2. Azure Blob Storage
-3. Azure SQL Database
+1. 本地 SQL Server
+2. Azure Blob 存储
+3. Azure SQL 数据库
 
-연결된 서비스를 만들기 위한 단계별 절차가 [연결된 서비스 만들기](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)에 제공됩니다.
+[创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
 
-## <a name="adf-tables"></a>데이터 세트에 액세스하는 방법을 지정하는 테이블 정의 및 만들기
-다음 스크립트 기반 프로시저로 데이터 세트의 구조, 위치 및 가용성을 지정하는 테이블을 만듭니다. 테이블을 정의하는 데 JSON 파일이 사용됩니다. 이러한 파일의 구조에 대한 자세한 내용은 [데이터 세트](../../data-factory/concepts-datasets-linked-services.md)를 참조하세요.
+## <a name="adf-tables"></a>定义和创建表以指定访问数据集的方式
+使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
-> [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet을 실행하기 전에 `Add-AzureAccount` cmdlet을 실행하여 명령 실행을 위해 Azure 구독을 선택했는지 확인해야 합니다. 이 cmdlet의 설명서는 [Add-azureaccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)를 참조하세요.
+> 在执行 `Add-AzureAccount`New-AzureDataFactoryTable[ cmdlet 之前，应先执行 ](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet，以确认是否为命令执行选择了正确的 Azure 订阅。 有关此 cmdlet 的文档，请参阅 [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)。
 >
 >
 
-테이블에서 JSON 기반 정의는 다음 이름을 사용합니다.
+表中基于 JSON 的定义使用以下名称：
 
-* 온-프레미스 SQL Server의 **테이블 이름**은 *nyctaxi_data*
-* Azure Blob Storage 계정의 **컨테이너 이름**은 *containername*
+* 本地 SQL server 中的“表名”为 nyctaxi_data
+* Azure Blob 存储帐户中的**容器名**为 containername
 
-이 ADF 파이프라인에는 3개의 테이블 정의가 필요합니다.
+此 ADF 管道所需的表定义有 3 个：
 
-1. [SQL 온-프레미스 테이블](#adf-table-onprem-sql)
+1. [SQL 本地表](#adf-table-onprem-sql)
 2. [Blob 表](#adf-table-blob-store)
-3. [SQL Azure 테이블](#adf-table-azure-sql)
+3. [SQL Azure 表](#adf-table-azure-sql)
 
 > [!NOTE]
-> 이러한 절차에서는 Azure PowerShell을 사용하여 ADF 활동을 정의하고 만듭니다. 그러나 이러한 작업은 Azure 포털을 사용해서도 수행할 수 있습니다. 자세한 내용은 [데이터 세트 만들기](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)를 참조하세요.
+> 这些过程使用 Azure PowerShell 来定义和创建 ADF 活动。 但是，也可使用 Azure 门户来完成这些任务。 有关详细信息，请参阅[创建数据集](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)。
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>SQL 온-프레미스 테이블
-온-프레미스 SQL Server에 대한 테이블 정의는 다음 JSON 파일에 지정됩니다.
+### <a name="adf-table-onprem-sql"></a>SQL 本地表
+本地 SQL Server 的表定义指定在以下的 JSON 文件中：
 
 ```json
 {
@@ -136,15 +136,15 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 }
 ```
 
-여기서는 열 이름이 포함되지 않았습니다. 可以通过在列名称中包含它们来对其进行选择（有关详细信息，请参阅[ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
+此处不包括列名称。 可以通过在列名称中包含它们来对其进行选择（有关详细信息，请参阅[ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
 
-테이블의 JSON 정의를 *onpremtabledef.json* 파일로 복사하고 알려진 위치에 저장합니다(여기서는 *C:\temp\onpremtabledef.json*으로 간주). 다음 Azure PowerShell cmdlet을 사용하여 ADF에 테이블을 만듭니다.
+将表的 JSON 定义复制到名为 onpremtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store"></a>Blob 테이블
-출력 blob 위치에 대한 테이블 정의는 다음과 같습니다(온-프레미스에서 수집된 데이터를 Azure blob에 매핑).
+### <a name="adf-table-blob-store"></a>Blob 表
+以下是适用于输出 blob 位置的表的定义（这将引入的数据从本地映射到 Azure blob）：
 
 ```json
 {
@@ -171,12 +171,12 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 }
 ```
 
-테이블의 JSON 정의를 *bloboutputtabledef.json* 파일로 복사하고 알려진 위치에 저장합니다(여기서는 *C:\temp\bloboutputtabledef.json*으로 간주). 다음 Azure PowerShell cmdlet을 사용하여 ADF에 테이블을 만듭니다.
+将表的 JSON 定义复制到名为 bloboutputtabledef.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
-### <a name="adf-table-azure-sql"></a>SQL Azure 테이블
-SQL Azure 출력에 대한 테이블 정의가 다음과 같습니다(이 스키마는 blob에서 가져온 데이터를 매핑).
+### <a name="adf-table-azure-sql"></a>SQL Azure 表
+以下是适用于 SQL Azure 输出的表的定义（此架构将映射来自 blob 的数据）：
 
 ```json
 {
@@ -203,23 +203,23 @@ SQL Azure 출력에 대한 테이블 정의가 다음과 같습니다(이 스키
 }
 ```
 
-테이블의 JSON 정의를 *AzureSqlTable.json*이라는 파일로 복사하고 알려진 위치에 저장합니다(여기서는 *C:\temp\AzureSqlTable.json*으로 간주). 다음 Azure PowerShell cmdlet을 사용하여 ADF에 테이블을 만듭니다.
+将表的 JSON 定义复制到名为 AzureSqlTable.json 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
-## <a name="adf-pipeline"></a>파이프라인 정의 및 만들기
-파이프라인에 포함될 활동을 지정하고 다음 스크립트 기반 프로시저로 파이프라인을 만듭니다. 파이프라인 속성을 정의하는 데 JSON 파일이 사용됩니다.
+## <a name="adf-pipeline"></a>定义和创建管道
+使用以下基于脚本的过程，指定属于管道的活动并创建管道。 可使用 JSON 文件定义管道属性。
 
-* 스크립트는 **파이프라인 이름** 이 *AMLDSProcessPipeline*이라고 가정합니다.
-* 또한 파이프라인이 매일 정기적으로 실행되도록 파이프라인의 주기성을 설정하고 작업에 대한 기본 실행 시간을 사용합니다(오전 12시 UTC).
+* 该脚本假设管道名称是 AMLDSProcessPipeline。
+* 另请注意：我们将管道的周期设置为每天执行，并且为作业使用默认的执行时间（UTC 的凌晨 12 点）。
 
 > [!NOTE]
-> 다음 절차에서는 Azure PowerShell을 사용하여 ADF 파이프라인을 정의하고 만듭니다. 그러나 이러한 작업은 Azure 포털을 사용해서도 수행할 수 있습니다. 자세한 내용은 [파이프라인 만들기](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)를 참조하세요.
+> 以下过程使用 Azure PowerShell 来定义和创建 ADF 管道。 但是，也可使用 Azure 门户来完成此任务。 有关详细信息，请参阅[创建管道](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)。
 >
 >
 
-이전에 제공된 테이블 정의를 사용하여 ADF에 대한 파이프라인 정의는 다음과 같이 지정됩니다.
+使用前面提供的表定义，按以下步骤指定适用于 ADF 的管道定义：
 
 ```json
 {
@@ -288,18 +288,18 @@ SQL Azure 출력에 대한 테이블 정의가 다음과 같습니다(이 스키
 }
 ```
 
-파이프라인의 이 JSON 정의를 *pipelinedef.json* 파일로 복사하고 알려진 위치에 저장합니다(여기서는 *C:\temp\pipelinedef.json*으로 간주). 다음 Azure PowerShell cmdlet을 사용하여 ADF에 파이프라인을 만듭니다.
+将管道的 JSON 定义复制到名为 *pipelinedef.json* 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\pipelinedef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建管道：
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
-## <a name="adf-pipeline-start"></a>파이프라인 시작
-이제 다음 명령을 사용하여 파이프라인을 실행할 수 있습니다.
+## <a name="adf-pipeline-start"></a>启动管道
+现在可使用以下命令来运行管道：
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-*startdate* 및 *enddate* 매개 변수 값을 파이프라인을 실행할 실제 날짜로 바꿔야 합니다.
+需要将 *startdate* 和 *enddate* 参数值替换为想要在此期间运行管道的实际日期。
 
-파이프라인이 실행된 후에는 blob에 대해 선택한 컨테이너에 표시된 데이터를 하루에 한 개 파일로 볼 수 있습니다.
+在管道执行后，应能看到数据显示在为 blob 选择的容器中，每天一个文件。
 
-我们尚未将 ADF 提供的功能增量用于管道数据。 이 작업을 수행하는 방법 및 ADF에서 제공하는 기타 기능에 대한 자세한 내용은 [ADF 설명서](https://azure.microsoft.com/services/data-factory/)를 참조하세요.
+我们尚未将 ADF 提供的功能增量用于管道数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。

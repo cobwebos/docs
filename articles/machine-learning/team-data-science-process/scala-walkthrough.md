@@ -1,6 +1,6 @@
 ---
-title: Azure에서 Scala 및 Spark를 사용하는 데이터 과학 - Team Data Science Process
-description: Azure HDInsight Spark 클러스터에서 Spark 확장형 MLlib 및 Spark ML 패키지를 사용하여 감독 기계 학습 작업에 대해 Scala를 사용하는 방법을 설명합니다.
+title: 在 Azure 上使用 Scala 和 Spark 展开数据科学 - Team Data Science Process
+description: 如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,76 +18,76 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76716757"
 ---
-# <a name="data-science-using-scala-and-spark-on-azure"></a>Azure에서 Scala 및 Spark를 사용하는 데이터 과학
-이 문서에서는 Azure HDInsight Spark 클러스터에서 Spark 확장형 MLlib 및 SparkML 패키지를 사용하여 감독 기계 학습 작업에 대해 Scala를 사용하는 방법을 설명합니다. 또한 [데이터 과학 프로세스](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): 데이터 수집 및 탐색, 시각화, 기능 엔지니어링, 모델링 및 모델 사용으로 이루어진 작업을 단계별로 안내합니다. 이 문서의 모델에는 두 가지 일반적인 감독 기계 학습 작업 외에 로지스틱 및 선형 회귀, 임의 포리스트 및 GBT(그라데이션 향상 트리)가 포함됩니다.
+# <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
+本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
 
-* 회귀 문제: 택시 여정에 대한 팁 금액 예측($)
-* 이진 분류: 택시 여정에 대한 팁 또는 노팁(1/0) 예측
+* 回归问题：预测某个出租车行程的小费金额 ($)
+* 二元分类：预测某个出租车行程是否支付小费 (1/0)
 
-모델링 프로세스에는 관련 정확도 메트릭을 통한 테스트 데이터 집합의 학습 및 평가가 필요합니다. 이 문서에서는 이러한 모델을 Azure Blob Storage에 저장하고 예측 성능의 점수를 매기며 평가하는 방법을 설명합니다. 그뿐 아니라 교차 유효성 검사 및 하이퍼 매개 변수 스윕 작업을 사용하여 모델을 최적화하는 방법의 고급 항목도 포함되어 있습니다. 사용되는 데이터는 GitHub에서 사용할 수 있는 2013 NYC 택시 여정 및 요금 데이터 집합의 샘플입니다.
+建模过程需要对测试数据集和相关准确性度量值进行定型和评估。 在本文中，可以了解如何在 Azure Blob 存储中存储这些模型，以及如何对其预测性能进行评分和评估。 本文还介绍了如何通过使用交叉验证和超参数扫描优化模型的更高级主题。 所使用的数据是 GitHub 上提供的 2013 年 NYC 出租车行程和费用数据集样本。
 
-Java 가상 머신 기반 언어인 [Scala](https://www.scala-lang.org/)는 개체 지향 개념과 함수 언어 개념을 통합합니다. 클라우드의 분산형 처리 및 Azure Spark 클러스터에 실행하기에 적합한 확장형 언어입니다.
+[Scala](https://www.scala-lang.org/) 是一种基于 Java 虚拟机的语言，其集成面向对象和功能语言概念。 这是一种可扩展的语言，非常适合云中的分布式处理，且在 Azure Spark 群集上运行。
 
-[Spark](https://spark.apache.org/)는 메모리 내 처리를 지원하여 빅 데이터 분석 애플리케이션의 성능을 향상하는 오픈 소스 병렬 처리 프레임워크입니다. 속도, 간편한 사용 및 정교한 분석을 위해 Spark 처리 엔진이 빌드되었습니다. Spark는 메모리 내 분산형 계산 기능을 지원하여 기계 학습 및 그래프 계산의 반복 알고리즘에 적합합니다. [spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) 패키지는 DataFrames 맨 위에 빌드된 균일한 상위 수준 API 집합을 제공하여 사용자가 실제 기계 학습 파이프라인을 만들고 조정할 수 있도록 합니다. [MLlib](https://spark.apache.org/mllib/) 는 Spark의 확장형 기계 학습 라이브러리로, 분산형 환경에서 모델링 기능을 사용할 수 있습니다.
+[Spark](https://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) 包提供了一组统一的高级 API，它们构建在数据帧之上，可以帮助创建和优化实际机器学习管道。 [MLlib](https://spark.apache.org/mllib/) 是 Spark 的可扩展机器学习库，为此分布式环境提供建模功能。
 
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md)는 Azure에서 호스트하는 오픈 소스 Spark의 제품입니다. 또한 Azure Blob Storage에 저장된 데이터를 변환, 필터링 및 시각화하기 위해 Spark SQL 대화형 쿼리를 실행할 수 있는 Spark 클러스터 상의 Jupyter Scala Notebook에 대한 지원도 포함하고 있습니다. 이 문서에서 솔루션을 제공하고 데이터 시각화를 위해 관련 플롯을 보여 주는 Scala 코드 조각은 Spark 클러스터에 설치된 Jupyter Notebook에서 실행됩니다. 이러한 항목의 모델링 단계는 각 모델 형식을 학습, 평가, 저장 및 사용하는 방법을 보여 주는 코드를 포함하고 있습니다.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
 
-이 문서의 설정 단계 및 코드는 Azure HDInsight 3.4 Spark 1.6용입니다. 그러나 이 문서에 나오는 코드와 [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) 에 포함된 코드는 일반적이므로 모든 Spark 클러스터에서 작동해야 합니다. HDInsight Spark를 사용하지 않는 경우 클러스터 설치 및 관리 단계가 이 문서에 나오는 내용과 약간 다를 수 있습니다.
+本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
 
 > [!NOTE]
-> Scala가 아닌 Python을 사용하여 엔드투엔드 데이터 과학 프로세스에 대한 작업을 완료하는 방법을 보여 주는 항목에 대해서는 [Azure HDInsight에서 Spark를 사용하는 데이터 과학](spark-overview.md)을 참조하세요.
+> 有关演示如何使用 Python 而非 Scala 完成端到端数据科学过程任务的主题，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学](spark-overview.md)。
 > 
 > 
 
-## <a name="prerequisites"></a>필수 조건
-* Azure 구독이 있어야 합니다. 아직 없으면 [Azure 무료 평가판을 다운로드하세요](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* 다음 절차를 완료하려면 Azure HDInsight 3.4 Spark 1.6 클러스터가 필요합니다. 클러스터를 만들려면 [시작: Azure HDInsight에서 Apache Spark 만들기](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)를 참조하세요. **클러스터 형식 선택** 메뉴에서 클러스터 형식 및 버전을 설정합니다.
+## <a name="prerequisites"></a>必备条件
+* 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
-![HDInsight 클러스터 형식 구성](./media/scala-walkthrough/spark-cluster-on-portal.png)
+![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
 > [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 > 
 > 
 
-NYC 택시 여정 데이터에 대한 설명 및 Spark 클러스터의 Jupyter Notebook에서 코드를 실행하는 방법에 관한 지침은 [Azure HDInsight에서 Spark를 사용하는 데이터 과학 개요](spark-overview.md)의 관련 섹션을 참조하세요.  
+有关 NYC 出租车行程数据说明以及如何从 Spark 群集上的 Jupyter notebook 执行代码的说明，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)中的相关部分。  
 
-## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark 클러스터의 Jupyter Notebook에서 Scala 코드 실행
-Azure 포털에서 Jupyter Notebook을 시작할 수 있습니다. 대시보드에서 Spark 클러스터를 찾아 클릭하여 클러스터에 대한 관리 페이지로 들어갑니다. 다음으로 **클러스터 대시보드**, **Jupyter Notebook**을 차례로 클릭하여 Spark 클러스터와 연결된 Notebook을 엽니다.
+## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter notebook 执行 Scala 代码
+可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”，再单击“Jupyter Notebook”打开与 Spark 群集关联的笔记本。
 
-![클러스터 대시보드 및 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
+![群集仪表板和 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-https://&lt;clustername&gt;.azurehdinsight.net/jupyter에서 Jupyter Notebook에 액세스할 수도 있습니다. *clustername* 을 사용자의 클러스터 이름으로 바꿉니다. Jupyter Notebook에 액세스하려면 관리자 계정에 대한 암호가 필요합니다.
+还可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 访问 Jupyter notebook。 将 *clustername* 替换为群集名称。 需要使用管理员帐户密码访问 Jupyter notebook。
 
-![클러스터 이름을 사용하여 Jupyter Notebook으로 이동](./media/scala-walkthrough/spark-jupyter-notebook.png)
+![使用群集名称可转到 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-**Scala** 를 선택하여 PySpark API를 사용하는 미리 패키지된 Notebook의 몇 가지 예제가 있는 디렉터리를 확인합니다. 이 Spark 항목 모음에 대한 코드 샘플이 포함된 Scala.ipynb Notebook을 사용하는 탐색 모델링 및 점수 매기기는 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)에서 사용할 수 있습니다.
+选择“Scala”，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
 
-Notebook을 Github에서 Spark 클러스터의 Jupyter Notebook 서버에 직접 업로드할 수 있습니다. Jupyter 홈페이지에서 **Upload** 단추를 클릭합니다. 파일 탐색기에서 Scala Notebook의 Github(원시 콘텐츠) URL을 붙여넣고 **열기**를 클릭합니다. Scala Notebook은 다음 URL로 제공됩니다.
+可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”。 可通过以下 URL 获取 Scala notebook:
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>설정: 사전 설정 Spark 및 Hive 컨텍스트, Spark 매직 및 Spark 라이브러리
-### <a name="preset-spark-and-hive-contexts"></a>사전 설정 Spark 및 Hive 컨텍스트
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>设置：预设 Spark 和 Hive 上下文、Spark magic 和 Spark 库
+### <a name="preset-spark-and-hive-contexts"></a>预设的 Spark 和 Hive 上下文
     # SET THE START TIME
     import java.util.Calendar
     val beginningTime = Calendar.getInstance().getTime()
 
 
-Jupyter Notebook이 제공되는 Spark 커널에는 사전 설정 컨텍스트가 있습니다. 개발하는 애플리케이션으로 작업을 시작하기 전에 Spark 또는 Hive 컨텍스트를 명시적으로 설정할 필요는 없습니다. 사전 설정 컨텍스트는 다음과 같습니다.
+与 Jupyter notebook 一起提供的 Spark 内核具有预设上下文。 在开始处理正在开发的应用程序前，无需显式设置 Spark 或 Hive 上下文。 预设上下文是：
 
-* `sc`
-* `sqlContext`
+* SparkContext 的 `sc`
+* HiveContext 的 `sqlContext`
 
-### <a name="spark-magics"></a>Spark 매직
-Spark 커널은 특수 명령인 일부 미리 정의된 "매직"을 제공하며 이러한 매직은 `%%`기호를 사용하여 호출할 수 있습니다. 이러한 명령 중 두 가지는 다음 코드 샘플에 사용됩니다.
+### <a name="spark-magics"></a>Spark magic
+Spark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令。 以下代码示例中使用了其中两个命令。
 
-* `%%local` 다음 줄의 코드가 로컬로 실행될 것임을 지정합니다. 코드는 유효한 Scala 코드여야 합니다.
-* `%%sql -o <variable name>``sqlContext`에 대해 Hive 쿼리를 실행합니다. `-o` 매개 변수가 전달된 경우 쿼리 결과가 `%%local` Scala 컨텍스트에서 Spark 데이터 프레임으로 유지됩니다.
+* `%%local` 后续行中的代码会在本地执行。 代码必须是有效的 Scala 代码。
+* `%%sql -o <variable name>` 针对 `sqlContext` 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 Spark 数据帧的形式保存在 `%%local` Scala 上下文中。
 
-Jupyter Notebook의 커널 및 `%%`(예: `%%local`)로 호출할 수 있는 미리 정의된 "매직"에 대한 자세한 내용은 [HDInsight의 HDInsight Spark Linux 클러스터에서 Jupyter Notebook에 대해 사용할 수 있는 커널](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)을 참조하세요.
+若要详细了解 Jupyter notebook 内核及调用的其 `%%`（如 `%%local`）预定义“magic”，请参阅[适用于 HDInsight 上具有 HDInsight Spark Linux 群集的 Jupyter notebook 的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
-### <a name="import-libraries"></a>라이브러리 가져오기
-다음 코드를 사용하여 Spark, MLlib 및 기타 필요한 라이브러리를 가져옵니다.
+### <a name="import-libraries"></a>导入库
+使用以下代码导入 Spark、MLlib 和其他需要的库。
 
     # IMPORT SPARK AND JAVA LIBRARIES
     import org.apache.spark.sql.SQLContext
@@ -123,22 +123,22 @@ Jupyter Notebook의 커널 및 `%%`(예: `%%local`)로 호출할 수 있는 미�
     val sqlContext = new SQLContext(sc)
 
 
-## <a name="data-ingestion"></a>데이터 수집
-데이터 과학 프로세스의 첫 단계는 분석하려는 데이터를 수집하는 것입니다. 외부 원본 또는 시스템의 데이터를 데이터 탐색 및 모델링 환경으로 가져옵니다. 이 문서에서 수집하는 데이터는 택시 여정 및 요금 파일(.tsv 파일로 저장됨)의 연결된 0.1% 샘플을 나타냅니다. 데이터 탐색 및 모델링 환경은 Spark입니다. 이 섹션은 다음과 같은 일련의 작업을 완료하는 코드를 포함합니다.
+## <a name="data-ingestion"></a>数据引入
+数据科学过程的第一步是引入要分析的数据。 将数据从外部源或其所在的系统引入数据浏览和建模环境中。 本文中，引入的数据是 0.1％ 出租车行程和费用文件（以 .tsv 文件的形式存储）示例的结合。 数据浏览和建模环境是 Spark。 本部分包含用于完成以下一系列任务的代码：
 
-1. 데이터 및 모델 스토리지에 대한 디렉터리 경로를 설정합니다.
-2. 입력 데이터 집합을 읽습니다(.tsv 파일로 저장됨).
-3. 데이터에 대한 스키마를 정의하고 데이터를 정리합니다.
-4. 정리된 데이터 프레임을 만들고 메모리에 캐시합니다.
-5. 데이터를 SQLContext의 임시 테이블로 등록합니다.
-6. 테이블을 쿼리하고 결과를 데이터 프레임으로 가져옵니다.
+1. 设置数据和模型存储的目录路径。
+2. 读取输入数据集（以 .tsv 文件的形式存储）。
+3. 定义数据架构，并清理数据。
+4. 创建清理数据帧并将其缓存在内存中。
+5. 将数据注册为 SQLContext 中的临时表。
+6. 查询表，并将结果导入数据帧。
 
-### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Azure Blob Storage의 스토리지 위치에 대한 디렉터리 경로 설정
-Spark에서는 Azure Blob Storage에서 읽고 쓸 수 있습니다. Spark를 사용하여 기존 데이터를 처리한 다음 결과를 Blob Storage에 다시 저장할 수 있습니다.
+### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>在 Azure Blob 存储中为存储位置设置目录路径
+Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任何现有数据，然后将结果再次存储在 Blob 存储中。
 
-Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지정해야 합니다. `wasb:///`로 시작하는 경로를 사용하여 Spark 클러스터에 연결된 기본 컨테이너를 참조합니다. `wasb://`를 사용하여 다른 위치를 참조합니다.
+若要在 Blob 存储中保存模型或文件，需要指定正确路径。 可使用以 `wasb:///` 开头的路径引用附加到 Spark 群集的默认容器。 使用 `wasb://` 引用其他位置。
 
-다음 코드 샘플은 읽을 입력 데이터의 위치 및 모델이 저장될 Spark 클러스터에 연결된 Blob Storage에 대한 경로를 지정합니다.
+以下代码示例指定要读取的输入数据位置以及到 Blob 存储的路径，该存储附加到将要保存模型的 Spark 群集。
 
     # SET PATHS TO DATA AND MODEL FILE LOCATIONS
     # INGEST DATA AND SPECIFY HEADERS FOR COLUMNS
@@ -150,7 +150,7 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
     val modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/";
 
 
-### <a name="import-data-create-an-rdd-and-define-a-data-frame-according-to-the-schema"></a>데이터 가져오기, RDD 만들기 및 스키마에 따라 데이터 프레임 정의
+### <a name="import-data-create-an-rdd-and-define-a-data-frame-according-to-the-schema"></a>导入数据，创建 RDD，并根据架构定义数据帧
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -224,12 +224,12 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 8초
+运行该单元格的时间：8 秒。
 
-### <a name="query-the-table-and-import-results-in-a-data-frame"></a>테이블을 쿼리하고 결과를 데이터 프레임으로 가져오기
-다음으로 요금, 승객 및 팁 데이터에 대한 테이블을 쿼리하고, 손상된 외부 데이터를 필터링하며 여러 행으로 인쇄합니다.
+### <a name="query-the-table-and-import-results-in-a-data-frame"></a>查询表，并将结果导入数据帧
+接下来，查询表格中的费用、乘客和小费数据；筛选出期限外和范围外的数据；并打印数行。
 
     # QUERY THE DATA
     val sqlStatement = """
@@ -245,7 +245,7 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**출력:**
+**输出：**
 
 | fare_amount | passenger_count | tip_amount | tipped |
 | --- | --- | --- | --- |
@@ -253,31 +253,31 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
 |        16.0 |2.0 |3.4 |1.0 |
 |        10.5 |2.0 |1.0 |1.0 |
 
-## <a name="data-exploration-and-visualization"></a>데이터 탐색 및 시각화
-데이터를 Spark로 가져오면 데이터 과학 프로세스의 다음 단계에서 탐색 및 시각화를 통해 데이터를 더 잘 이해할 수 있습니다. 이 섹션에서는 SQL 쿼리를 사용하여 Taxi 데이터를 검사합니다. 然后，将结果导入到数据帧中，以便使用自动可视化 Jupyter 功能绘制目标变量和用于视觉检查的预期功能。
+## <a name="data-exploration-and-visualization"></a>数据浏览和可视化
+将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入到数据帧中，以便使用自动可视化 Jupyter 功能绘制目标变量和用于视觉检查的预期功能。
 
-### <a name="use-local-and-sql-magic-to-plot-data"></a>로컬 및 SQL 매직을 사용하여 데이터 그리기
-기본적으로 Jupyter Notebook에서 실행하는 코드 조각의 출력은 작업자 노드에서 유지되는 세션 컨텍스트 내에서 사용할 수 있습니다. 모든 계산에 대한 작업자 노드에 여정을 저장하는 경우와 계산에 필요한 모든 데이터를 Jupyter 서버 노드(헤드 노드)에서 로컬로 사용할 수 있는 경우, `%%local` 매직을 사용하여 Jupyter 서버에서 코드 조각을 실행할 수 있습니다.
+### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本地和 SQL magic 绘制数据
+默认情况下，从 Jupyter notebook 运行的任何代码片段的输出，在保留于辅助角色节点上的会话上下文中可用。 如果要将行程保存到辅助角色节点，以便每次计算，并且计算所需的所有数据都可以在 Jupyter 服务器节点（这是头节点）上本地可用，则可以使用 `%%local` magic 在 Jupyter 服务器上运行代码片段。
 
-* **SQL 매직**(`%%sql`). HDInsight Spark 커널은 SQLContext에 대해 간편한 인라인 HiveQL 쿼리를 지원합니다. (`-o VARIABLE_NAME`) 인수는 Jupyter 서버에서 Pandas 데이터 프레임으로 SQL 쿼리의 출력을 유지합니다. 此设置表示输出将在本地模式下可用。
-* `%%local`**幻**数。 `%%local` 매직은 HDInsight 클러스터의 헤드 노드인 Jupyter 서버에서 코드를 로컬로 실행하는 데 사용됩니다. 일반적으로 `-o` 매개 변수를 사용하여 `%%local` 매직을 `%%sql` 매직과 함께 사용합니다. `-o` 매개 변수는 SQL 쿼리의 출력을 로컬로 유지하고 그 다음 `%%local` 매직은 로컬로 유지되는 SQL 쿼리의 출력에 대해 로컬로 실행할 다음 코드 조각 집합을 트리거합니다.
+* **SQL magic** (`%%sql`). HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
+* `%%local`**幻**数。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
 
-### <a name="query-the-data-by-using-sql"></a>SQL을 사용하여 데이터 쿼리
-이 쿼리는 요금 금액, 승객 수 및 팁 금액에 따라 택시 여정을 검색합니다.
+### <a name="query-the-data-by-using-sql"></a>使用 SQL 查询数据
+此查询按费用金额、乘客数量和小费金额检索出租车行程。
 
     # RUN THE SQL QUERY
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped FROM taxi_train WHERE passenger_count > 0 AND passenger_count < 7 AND fare_amount > 0 AND fare_amount < 200 AND payment_type in ('CSH', 'CRD') AND tip_amount > 0 AND tip_amount < 25
 
-다음 코드에서 `%%local` 매직은 sqlResults 로컬 데이터 프레임을 만듭니다. sqlResults의 matplotlib를 사용하여 그림을 그립니다.
+在以下代码中，`%%local` magic 创建本地数据帧 sqlResults。 可以使用 sqlResults 通过 matplotlib 进行绘图。
 
 > [!TIP]
-> 로컬 매직은 이 문서에서 여러 번 사용됩니다. 데이터 집합이 큰 경우 로컬 메모리에 맞게 데이터 프레임을 만들도록 샘플링하세요.
+> 本文中多次使用本地 magic。 如果数据集较大，请采样创建本地内存可容纳的数据帧。
 > 
 > 
 
-### <a name="plot-the-data"></a>데이터 그리기
-데이터 프레임이 Pandas 데이터 프레임처럼 로컬 컨텍스트에 있으면 Python 코드를 사용하여 그릴 수 있습니다.
+### <a name="plot-the-data"></a>绘制数据
+可以在数据帧处于本地上下文之后，使用 Python 代码作为 Pandas 数据帧进行绘制。
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -287,15 +287,15 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
     sqlResults
 
 
- Spark 커널은 코드를 실행한 후 SQL(HiveQL) 쿼리의 출력을 자동으로 시각화합니다. 여러 형식의 시각화 요소 중에서 선택할 수 있습니다.
+ 运行代码后，Spark 内核自动可视化 SQL (HiveQL) 查询的输出。 可以在以下几种类型的可视化之间进行选择：
 
-* Table
-* 원형
-* 라인
-* 영역
-* 가로 막대형
+* 表
+* 饼图
+* 行
+* 区域
+* 条形图​​
 
-다음은 데이터를 그리는 코드입니다.
+以下是用于绘制数据的代码：
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -327,25 +327,25 @@ Blob Storage에 모델 또는 파일을 저장하려면 경로를 적절히 지�
     plt.show()
 
 
-**출력:**
+**输出：**
 
-![팁 금액 히스토그램](./media/scala-walkthrough/plot-tip-amount-histogram.png)
+![小费金额直方图](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
-![승객 수에 따른 여정 수](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
+![按乘客数的小费金额](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
 
-![금액으로 녀건 금액](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
+![按车费金额的小费金额](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
 
-## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>기능을 만들고 변환한 후 모델링 함수에 입력하기 위한 데이터 준비
-Spark ML 및 MLlib의 트리 기반 모델링 기능의 경우 범주화, 인덱싱, 원 핫 인코딩(one hot encoding), 벡터화 등의 다양한 해당 기법을 사용하여 대상 및 기능을 준비해야 합니다. 이 섹션에서 수행하는 절차는 다음과 같습니다.
+## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>创建特征和转换特征，并准备输入到建模函数中的数据
+对于 Spark ML 和 MLlib 中基于树的建模函数，必须使用各种技术（如装箱、索引、独热编码和矢量化）准备目标和特征。 以下是本部分中要遵循的步骤：
 
-1. 시간을 트래픽 시간 버킷으로 **범주화** 하여 새로운 기능을 만듭니다.
-2. 범주 기능에 **인덱싱 및 원 핫 인코딩(one-hot encoding)** 을 적용합니다.
-3. **데이터 집합을 학습 및 테스트 부분으로 샘플링 및 분할** 합니다.
-4. **학습 변수 및 기능을 지정**하고, 인덱싱되었거나 원 핫 인코딩된 학습 및 테스팅 입력 레이블이 지정된 지점 RDD(탄력성 분산 데이터 세트) 또는 데이터 프레임을 만듭니다.
-5. 기계 학습 모델에 대한 입력으로 사용할 **기능과 대상을 자동으로 범주화 및 벡터화** 합니다.
+1. 通过将小时**装箱**到交通时间存储桶来创建新特征。
+2. 将**索引和独热编码**应用于分类特征。
+3. **将数据集采样和拆分**为定型和测试分数。
+4. **指定定型变量和特征**，并创建索引或独热编码定型和测试输入标记点弹性分布式数据集 (RDD) 或数据帧。
+5. 自动**对特征和目标进行分类和矢量化**，以用作机器学习模型的输入。
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>시간을 트래픽 시간 버킷으로 범주화하여 새로운 기능 만들기
-이 코드는 트래픽 시간 버킷으로 시간을 범주화하여 새로운 기능을 만드는 방법 및 메모리에 결과 데이터 프레임을 캐시하는 방법을 설명합니다. RDD 및 데이터 프레임을 반복해서 사용하는 경우 캐시하면 실행 시간이 향상됩니다. 따라서 RDD 및 데이터 프레임을 다음 절차의 여러 단계에서 캐시합니다.
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>通过将小时装入交通时间存储桶来创建新特征
+此代码显示如何通过将小时装入交通时间存储桶创建新特征，以及如何在内存中缓存生成的数据帧。 重复使用 RDD 和数据帧时，缓存会改善执行时间。 相应地，会在以下过程中的多个节点缓存 RDD 和数据帧。
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     val sqlStatement = """
@@ -365,14 +365,14 @@ Spark ML 및 MLlib의 트리 기반 모델링 기능의 경우 범주화, 인덱
     taxi_df_train_with_newFeatures.count()
 
 
-### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>범주 기능 인덱싱 및 원 핫 인코딩
-MLlib의 모델링 및 예측 함수는 사용하기 전에 범주 입력 데이터로 기능을 인덱싱 또는 인코딩해야 합니다. 이 섹션에는 모델링 기능에 입력에 대한 범주 기능을 인덱싱하거나 인코딩하는 방법을 설명합니다.
+### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>分类特征的索引和独热编码
+MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 本部分介绍如何对分类特征进行索引和独热编码，输入到建模函数中。
 
-모델에 따라 다양한 방식으로 모델을 인덱싱하거나 인코드해야 합니다. 예를 들어 로지스틱 및 선형 회귀 모델에는 원 핫 인코딩이 필요합니다. 예를 들어 세 개의 범주가 있는 기능을 세 개의 기능 열로 확장할 수 있습니다. 관찰 범주에 따라, 각 열에는 0 또는 1이 포함됩니다. MLlib는 원 핫 인코딩을 위한 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 함수를 제공합니다. 이 인코더는 레이블 인덱스의 열을 단 하나의 값을 가진 이진 벡터의 열에 매핑합니다. 이 인코딩을 사용하여 로지스틱 회귀 분석 등과 같은 숫자 값을 가진 기능을 예상하는 알고리즘을 범주 기능에 적용할 수 있습니다.
+根据模型，需要以不同方式为其编制索引或进行独热编码。 例如，逻辑和线性回归模型需进行独热编码。 例如，具有三个类别的特性可以扩展为三个特征列。 根据观察类别，每个列将包含 0 或 1 个类别。 MLlib 为独热编码提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder)。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 使用此编码，可将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
-여기서는 문자열 예를 보여 주기 위해 4개의 변수만 변환합니다. 평일과 같이 숫자 값으로 표현되는 기타 변수는 범주 변수로 인덱싱할 수도 있습니다.
+此处，只需转换四个字符串变量来显示示例。 还可以将由数值表示的其他变量（例如工作日）编制索引为类别变量。
 
-인덱싱에는 `StringIndexer()` 함수를 사용하고 원 핫 인코딩에는 MLlib의 `OneHotEncoder()` 함수를 사용합니다. 다음은 범주 기능을 인덱스 및 인코딩하는 코드입니다.
+对于索引，请使用 `StringIndexer()`，对于独热编码，请使用 MLlib 中的 `OneHotEncoder()` 函数。 下面是用于为分类特征编制索引和编码的代码：
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -409,14 +409,14 @@ MLlib의 모델링 및 예측 함수는 사용하기 전에 범주 입력 데이
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 4초
+运行该单元格时间：4 秒。
 
-### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>데이터 집합을 학습 및 테스트 부분으로 샘플링 및 분할
-이 코드는 데이터의 무작위 샘플링을 만듭니다(이 예제에서는 25%). 데이터 집합의 크기로 인해 이 예제에는 샘플링이 필요하지 않지만, 이 문서에서는 필요한 경우 자신의 문제에 사용하는 방식을 알 수 있도록 샘플링 방법을 설명합니다. 샘플이 큰 경우 모델을 학습하는 동안 상당한 시간을 절약할 수 있습니다. 다음으로, 샘플을 교육 부분(이 예제에서는 75%)과 테스트 부분(이 예제에서는 25%)으로 분할하여 분류 및 회귀 모델링에 사용합니다.
+### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>将数据集采样和拆分为定型和测试分数
+此代码创建数据的随机采样（本示例中为 25%）。 尽管由于数据集的大小限制，本示例不需要进行采样，但本文介绍了如何采样，以便了解如何在需要时针对自己的问题使用它。 若样本很大，此操作可在定型模型时节省大量时间。 接下来将样本拆分为定型部分（本示例中为 75%）和测试部分（本示例中为 25%），用于分类和回归建模。
 
-학습 중에 교차 유효성 검사 접기를 선택하는 데 사용할 수 있는 행("rand" 열에서)에 도달하기 위해 난수(0과 1 사이)를 추가합니다.
+在每一行（“rand”列）中添加一个随机数（0 和 1 之间），可用于在定型期间选择交叉验证折叠。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -448,14 +448,14 @@ MLlib의 모델링 및 예측 함수는 사용하기 전에 범주 입력 데이
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 2초
+运行该单元格时间：2 秒。
 
-### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>학습 변수 및 기능 지정, 인덱싱되었거나 원 핫 인코딩된 학습 및 테스팅 입력 레이블이 지정된 지점 RDD 또는 데이터 프레임 만들기
-이 섹션은 범주 텍스트 데이터를 레이블이 지정된 지점 데이터 형식으로 인덱싱하고 인코딩하는 방법을 보여주는 코드를 포함하여 MLlib 로지스틱 회귀 및 다른 분류 모델을 학습하고 테스트하는 데 사용될 수 있습니다. 레이블이 지정된 지점 개체는 대부분 MLlib의 기계 학습 알고리즘에서 입력 데이터로 필요한 방식으로 형식이 지정된 RDD입니다. [레이블이 지정된 지점](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) 은 레이블/응답과 연결된 로컬 벡터, 밀도 또는 스파스입니다.
+### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>指定定型变量和特征，并创建索引或独热编码定型和测试输入标记点 RDD 或数据帧
+本部分包含的代码演示了如何将分类文本数据编制索引为标签点数据类型，并对其编码，以便其可用于定型和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是 RDD，格式为 MLlib 中的大多数机器学习算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
 
-이 코드에서는 모델을 학습하는 데 사용할 대상(종속) 변수 및 기능을 지정합니다. 그런 후 인덱싱되었거나 원 핫 인코딩된 학습 및 테스팅 입력 레이블이 지정된 지점 RDD 또는 데이터 프레임을 만듭니다.
+在此代码中，指定用于定型模型的目标（依赖）变量和特征。 然后创建索引或独热编码定型和测试输入标记点 RDD 或数据帧。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -491,17 +491,17 @@ MLlib의 모델링 및 예측 함수는 사용하기 전에 범주 입력 데이
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 4초
+运行该单元格时间：4 秒。
 
-### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>기계 학습 모델에 대한 입력으로 사용할 기능과 대상을 자동으로 범주화 및 벡터화
-Spark ML을 사용하여 트리 기반 모델링 기능에 사용할 대상 및 기능을 범주화합니다. 이 코드는 다음 두 작업을 완료합니다.
+### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>自动对特征和目标进行分类和矢量化，以用作机器学习模型的输入
+使用 Spark ML 对用于基于树的建模函数的目标和特征进行分类。 代码完成两个任务：
 
-* 0\.5의 임계값을 사용하는 0과 1 사이의 각 데이터 요소에 0 또는 1 값을 할당하여 분류의 이진 대상을 만듭니다.
-* 기능을 자동으로 범주화합니다. 기능에 대한 고유 숫자 값이 32보다 작은 경우 해당 기능은 범주화됩니다.
+* 通过使用阈值 0.5 为 0 到 1 之间的每个数据点分配值 0 或 1，创建用于分类的二元目标。
+* 自动对特征进行分类。 如果任何特征的不同数值的数量小于 32，则对该特征进行分类。
 
-이러한 두 작업에 대한 코드는 다음과 같습니다.
+下面是这两个任务的代码。
 
     # CATEGORIZE FEATURES AND BINARIZE THE TARGET FOR THE BINARY CLASSIFICATION PROBLEM
 
@@ -532,23 +532,23 @@ Spark ML을 사용하여 트리 기반 모델링 기능에 사용할 대상 및 
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>이진 분류 모델: 팁이 지불되었는지 예측
-이 섹션에서는 팁이 지불되었는지 아닌지를 예측하기 위해 이진 분류 모델을 세 가지 형식으로 만듭니다.
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二元分类模型：预测是否应支付小费
+在本部分中，创建三种类型的二元分类模型，用以预测是否应支付小费：
 
-* Spark ML `LogisticRegression()` 함수를 사용하는 **로지스틱 회귀 모델**
-* Spark ML `RandomForestClassifier()` 함수를 사용하는 **임의 포리스트 분류 모델**
-* MLlib `GradientBoostedTrees()` 함수를 사용하는 **그라데이션 향상 트리 분류 모델**
+* 使用 Spark ML  **函数创建**逻辑回归模型`LogisticRegression()`
+* 使用 Spark ML  **函数创建**随机林分类模型`RandomForestClassifier()`
+* 使用 MLlib  **函数创建**梯度提升树分类模型`GradientBoostedTrees()`
 
-### <a name="create-a-logistic-regression-model"></a>로지스틱 회귀 모델 만들기
-다음으로, Spark ML `LogisticRegression()` 함수를 사용하여 로지스틱 회귀 모델을 만듭니다. 다음과 같은 단계를 통해 모델 빌딩 코드를 만듭니다.
+### <a name="create-a-logistic-regression-model"></a>创建逻辑回归模型
+下一步，使用 Spark ML `LogisticRegression()` 函数创建逻辑回归模型。 通过一系列步骤创建模型构建代码：
 
-1. **모델 학습** 데이터
-2. **모델 평가**
-3. **모델 스토리지**
-4. **모델 점수 매기기**
-5. **결과 그리기**
+1. 使用一个参数集**定型模型**数据。
+2. 使用度量值**评估测试数据集上的模型**。
+3. 在 Blob 存储中**保存模型**以供将来使用。
+4. 根据测试数据**对模型进行评分**。
+5. 使用接收者操作特性 (ROC) 曲线**绘制结果**。
 
-이러한 절차에 대한 코드는 다음과 같습니다.
+下面是这些过程的代码：
 
     # CREATE A LOGISTIC REGRESSION MODEL
     val lr = new LogisticRegression().setLabelCol("tipped").setFeaturesCol("features").setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8)
@@ -568,7 +568,7 @@ Spark ML을 사용하여 트리 기반 모델링 기능에 사용할 대상 및 
     val filename = modelDir.concat(modelName).concat(datestamp)
     lrModel.save(filename);
 
-결과를 로드하고 점수를 매기고 저장합니다.
+加载、评分和保存结果。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -594,11 +594,11 @@ Spark ML을 사용하여 트리 기반 모델링 기능에 사용할 대상 및 
     println("ROC on test data = " + ROC)
 
 
-**출력:**
+**输出：**
 
-ROC on test data = 0.9827381497557599
+测试数据的 ROC = 0.9827381497557599
 
-로컬 Pandas 데이터 프레임에서 Python을 사용하여 ROC 곡선을 그립니다.
+在本地 Pandas 数据帧上使用 Python 绘制 ROC 曲线。
 
     # QUERY THE RESULTS
     %%sql -q -o sqlResults
@@ -632,12 +632,12 @@ ROC on test data = 0.9827381497557599
     plt.show()
 
 
-**출력:**
+**输出：**
 
-![팁 여부 ROC 곡선](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
+![有无小费 ROC 曲线](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
-### <a name="create-a-random-forest-classification-model"></a>임의 포리스트 분류 모델 만들기
-다음으로 Spark ML `RandomForestClassifier()` 함수를 사용하는 임의 포리스트 분류 모델을 만들고 테스트 데이터에 대해 모델을 평가합니다.
+### <a name="create-a-random-forest-classification-model"></a>创建随机林分类模型
+下一步，使用 Spark ML `RandomForestClassifier()` 函数创建随机林分类模型，并根据测试数据评估模型。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -665,12 +665,12 @@ ROC on test data = 0.9827381497557599
     println("ROC on test data = " + ROC)
 
 
-**출력:**
+**输出：**
 
-ROC on test data = 0.9847103571552683
+测试数据的 ROC = 0.9847103571552683
 
-### <a name="create-a-gbt-classification-model"></a>GBT 분류 모델 만들기
-다음으로 MLlib `GradientBoostedTrees()` 함수를 사용하여 GBT 분류 모델을 만들고 테스트 데이터에 대해 모델을 평가합니다.
+### <a name="create-a-gbt-classification-model"></a>创建 GBT 分类模型
+下一步，使用 MLlib 的 `GradientBoostedTrees()` 函数创建 GBT 分类模型，并根据测试数据评估模型。
 
     # TRAIN A GBT CLASSIFICATION MODEL BY USING MLLIB AND A LABELED POINT
 
@@ -721,17 +721,17 @@ ROC on test data = 0.9847103571552683
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**출력:**
+**输出：**
 
-Area under ROC curve: 0.9846895479241554
+ROC 曲线为 0.9846895479241554 下的面积
 
-## <a name="regression-model-predict-tip-amount"></a>회귀 모델: 팁 금액 예측
-이 섹션에서는 팁 금액을 예측하기 위해 두 가지 형식의 회귀 모델을 만듭니다.
+## <a name="regression-model-predict-tip-amount"></a>回归模型：预测小费金额
+在本部分中，创建两种类型的回归模型，预测小费金额：
 
-* Spark ML `LinearRegression()` 함수를 사용하는 **정칙 선형 회귀 모델** 모델을 저장하고 테스트 데이터에 대해 모델을 평가합니다.
-* Spark ML `GBTRegressor()` 함수를 사용하는 **그라데이션 향상 트리 회귀 모델**
+* 使用 Spark ML  **函数创建**正则化线性回归模型`LinearRegression()`。 保存此模型，并根据测试数据评估模型。
+* 使用 Spark ML  **函数创建**梯度提升树回归模型`GBTRegressor()`。
 
-### <a name="create-a-regularized-linear-regression-model"></a>정칙 선형 회귀 모델 만들기
+### <a name="create-a-regularized-linear-regression-model"></a>创建正则化线性回归模型
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
 
@@ -773,9 +773,9 @@ Area under ROC curve: 0.9846895479241554
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 13초
+运行该单元格时间：13 秒。
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -804,11 +804,11 @@ Area under ROC curve: 0.9846895479241554
     println("R-sqr on test data = " + r2)
 
 
-**출력:**
+**输出：**
 
-R-sqr on test data = 0.5960320470835743
+测试数据的 R-sqr = 0.5960320470835743
 
-다음으로, 테스트 결과를 데이터 프레임으로 쿼리하고 AutoVizWidget 및 matplotlib를 사용하여 시각화합니다.
+下一步，将测试结果作为数据帧进行查询，并使用 AutoVizWidget 和 matplotlib 将其可视化。
 
     # RUN A SQL QUERY
     %%sql -q -o sqlResults
@@ -821,14 +821,14 @@ R-sqr on test data = 0.5960320470835743
     # CLICK THE TYPE OF PLOT TO GENERATE (LINE, AREA, BAR, AND SO ON)
     sqlResults
 
-이 코드는 쿼리 출력에서 로컬 데이터 프레임을 만들고 데이터를 그립니다. `%%local` 매직은 matplotlib로 그리는 데 사용할 수 있는 로컬 데이터 프레임 `sqlResults`를 만듭니다.
+该代码从查询输出创建本地数据帧，并绘制数据。 `%%local`magic 创建本地数据帧`sqlResults`，可用于使用 matplotlib 进行绘制。
 
 > [!NOTE]
-> 이 Spark 매직은 이 문서에서 여러 번 사용됩니다. 데이터 양이 많은 경우 로컬 메모리에 맞게 데이터 프레임을 만들도록 샘플링해야 합니다.
+> 本文中多次使用此 Spark magic。 如果数据量很大，应采样创建本地内存可容纳的数据帧。
 > 
 > 
 
-Python matplotlib를 사용하여 도표를 만듭니다.
+使用 Python matplotlib 创建绘图。
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -846,14 +846,14 @@ Python matplotlib를 사용하여 도표를 만듭니다.
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**출력:**
+**输出：**
 
-![팁 금액: 실제 및 예측](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![小费金额：实际与预测](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
-### <a name="create-a-gbt-regression-model"></a>GBT 회귀 모델 만들기
-Spark ML `GBTRegressor()` 함수를 사용하여 GBT 회귀 모델을 만들고 테스트 데이터에 대해 모델을 평가합니다.
+### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
+使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 培训决策树，以最大程度地减少丢失函数。 您可以使用 GBT 进行回归和分类。 GBT는 범주 기능을 처리하고 기능 규모 결정을 요구하지 않으며 비선형 기능 상호 작용을 캡처할 수 있습니다. 또한 다중 클래스 분류 설정에도 사용할 수 있습니다.
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 培训决策树，以最大程度地减少丢失函数。 您可以使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -879,25 +879,25 @@ Spark ML `GBTRegressor()` 함수를 사용하여 GBT 회귀 모델을 만들고 
     println("Test R-sqr is: " + Test_R2);
 
 
-**출력:**
+**输出：**
 
-Test R-sqr is: 0.7655383534596654
+测试 R sqr 为：0.7655383534596654
 
-## <a name="advanced-modeling-utilities-for-optimization"></a>최적화를 위한 고급 모델링 유틸리티
-이 섹션에서는 개발자가 모델 최적화를 위해 자주 사용하는 기계 학습 유틸리티를 사용합니다. 특히, 매개 변수 스윕 작업 및 교차 유효성 검사를 사용하여 세 가지 다른 방식으로 기계 학습 모델을 최적화할 수 있습니다.
+## <a name="advanced-modeling-utilities-for-optimization"></a>用于优化的高级建模实用程序
+本部分中，使用开发人员经常用于模型优化的机器学习实用程序。 具体而言，可以通过使用参数扫描和交叉验证，以三种不同的方式优化机器学习模型：
 
-* 데이터를 학습 및 유효성 검사 집합으로 분할하고, 학습 집합에서 하이퍼 매개 변수 스윕 작업을 사용하여 모델을 최적화하고, 유효성 검사 집합에서 평가를 수행합니다(선형 회귀).
-* Spark ML의 CrossValidator 함수(이진 분류)를 사용하여 교차 유효성 검사 및 하이퍼 매개 변수 스윕 작업을 통해 모델을 최적화합니다.
-* 사용자 지정 교차 유효성 검사 및 매개 변수 스윕 작업 코드를 사용하여 모든 기계 학습 함수 및 매개 변수 집합을 통해 모델을 최적화합니다(선형 회귀).
+* 将数据拆分成定型和验证数据集，通过对定型数据集使用超参数扫描优化模型，并且对验证数据集进行评价（线性回归）
+* 使用 Spark ML 的 CrossValidator 函数，通过交叉验证和超参数扫描优化模型（二元分类）
+* 通过自定义交叉验证和参数扫描代码，使用任何机器学习函数和参数集优化模型（线性回归）
 
-**교차 유효성 검사** 는 알려진 데이터 집합에서 학습된 모델이 학습되지 않은 데이터 집합의 기능 예측을 얼마나 잘 일반화하는지 평가하는 기술입니다. 이 기술의 일반 개념은 알려진 데이터의 데이터 집합에서 모델을 학습한 다음 독립된 데이터 집합에 대해 예측 정확도를 테스트하는 것입니다. 일반적인 구현은 데이터 집합을 *k*접기로 나눈 다음 접기 중 하나를 제외한 모든 접기에서 라운드 로빈 방식으로 모델을 학습하는 것입니다.
+**交叉验证**是一种技术，用于评估在已知数据集上定型的模型的概括性，利用概括性来预测未对其进行定型的数据集的特征。 此技术背后的一般理念是模型在已知数据的数据集上定型，并参照独立数据集测试其预测的准确性。 此处使用的常见实现是将数据集划分为 *K* 折叠，然后以轮询机制方式在所有折叠上定型模型（其中一个折叠除外）。
 
-**하이퍼 매개 변수 최적화** 는 학습 알고리즘에 대한 하이퍼 매개 변수 집합을 선택하는 문제이며, 일반적으로 독립된 데이터 집합에서의 알고리즘 성능 측정값을 최적화하는 것을 목표로 합니다. 하이퍼 매개 변수는 모델 학습 프로시저 외부에서 지정해야 하는 값입니다. 하이퍼 매개 변수 값에 대한 가정은 모델의 유연성 및 정확도에 영향을 줄 수 있습니다. 의사 결정 트리에는 원하는 깊이와 트리의 리프 수와 같은 하이퍼 매개 변수가 있습니다. SVM(지원 벡터 컴퓨터)은 오분류 페널티 조건을 설정해야 합니다.
+**超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 超参数是必须在模型定型过程外指定的值。 关于超参数值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 必须为支持向量机 (SVM) 设置错误分类惩罚项。
 
-하이퍼 매개 변수 최적화를 수행하는 일반적인 방법은 **매개 변수 스윕**이라고도 하는 그리드 검색을 사용하는 것입니다. 그리드 검색에서는 학습 알고리즘에 대한 하이퍼 매개 변수 공간의 지정된 하위 집합 값으로 철저하게 검색합니다. 교차 유효성 검사는 그리드 검색 알고리즘에 의해 생성되는 최적의 결과를 분류하는 성능 메트릭을 제공할 수 있습니다. 교차 유효성 검사 하이퍼 매개 변수 스윕 작업을 사용하는 경우 모델 과잉 맞춤과 같은 문제를 학습 데이터로 제한하는 데 도움이 될 수 있습니다. 이러한 방식으로 모델은 학습 데이터가 추출된 일반적인 데이터 집합에 적용할 수 있는 용량을 유지합니다.
+执行超参数优化的常用方法是使用网格搜索，也称为**参数扫描**。 在网格搜索中，为学习算法在这些值（超参数空间的指定子集）中执行详尽搜索。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 如果使用交叉验证超参数扫描，有助于限制模型过度拟合以定型数据等问题。 如此，模型可保留应用于从中提取定型数据的一般数据集的容量。
 
-### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>하이퍼 매개 변수 스윕 작업으로 선형 회귀 모델 최적화
-다음으로 데이터를 학습 및 유효성 검사 집합으로 분할하고, 학습 집합에서 하이퍼 매개 변수 스윕 작업을 사용하여 모델을 최적화하고, 유효성 검사 집합에서 평가를 수행합니다(선형 회귀).
+### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>使用超参数扫描优化线性回归模型
+下一步，将数据拆分成定型和验证数据集，对定型数据集使用超参数扫描，并且对验证数据集进行评价（线性回归）
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -936,12 +936,12 @@ Test R-sqr is: 0.7655383534596654
     println("Test R-sqr is: " + Test_R2);
 
 
-**출력:**
+**输出：**
 
-Test R-sqr is: 0.6226484708501209
+测试 R sqr 为：0.6226484708501209
 
-### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>교차 유효성 검사 및 하이퍼 매개 변수 스윕 작업을 사용하여 이진 분류 모델 최적화
-이 섹션에서는 교차 유효성 검사 및 하이퍼 매개 변수 스윕 작업을 사용하여 이진 분류 모델을 최적화하는 방법을 설명합니다. 여기서는 Spark ML `CrossValidator` 함수를 사용합니다.
+### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>使用交叉验证和超参数扫描优化二元分类模型
+本部分介绍如何使用交叉验证和超参数扫描优化二元分类模型。 这使用 Spark ML `CrossValidator` 函数。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -980,12 +980,12 @@ Test R-sqr is: 0.6226484708501209
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 33초
+运行该单元格时间：33 秒。
 
-### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>사용자 지정 교차 유효성 검사 및 매개 변수 스윕 작업 코드를 사용하여 선형 회귀 모델 최적화
-다음으로 사용자 지정 코드를 사용하여 모델을 최적화하고 최고 정확도 기준을 사용하여 최적의 모델 매개 변수를 식별합니다. 그런 다음 최종 모델을 만들고 테스트 데이터로 모델을 평가하고 Blob Storage에 모델을 저장합니다. 마지막으로 모델을 로드하고 테스트 데이터의 점수를 매기며 해당 정확도를 평가합니다.
+### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>使用自定义交叉验证和参数扫描代码优化线性回归模型
+接下来，通过使用自定义代码优化模型，并通过使用最高准确性条件标识最佳模型参数。 然后，创建最终模型，根据测试数据评估模型，并在 Blob 存储中保存此模型。 最后，加载模型、测试数据评分并评估准确性。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -1095,14 +1095,14 @@ Test R-sqr is: 0.6226484708501209
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**출력:**
+**输出：**
 
-셀 실행 시간: 61초
+运行该单元格时间：61 秒。
 
-## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Scala를 사용하여 Spark에서 빌드한 기계 학습 모델을 자동으로 사용
-Azure에서 데이터 과학 프로세스를 구성하는 작업을 안내하는 항목에 대한 개요는 [팀 데이터 과학 프로세스](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)를 참조하세요.
+## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>通过 Scala 自动使用 Spark 构建的机器学习模型
+获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
 
-[팀 데이터 과학 프로세스 연습](walkthroughs.md) 에서는 특정 시나리오에 대한 팀 데이터 과학 프로세스의 단계를 보여 주는 다른 엔드투엔드 연습에 대해 설명합니다. 또한 이 연습에서는 클라우드 및 온-프레미스 도구와 서비스를 워크플로 또는 파이프라인에 결합하여 지능형 애플리케이션을 만드는 방법을 설명합니다.
+[Team Data Science Process 演练](walkthroughs.md)针对特定方案，介绍了其他端到端演练，演示 Team Data Science Process 中的步骤。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。
 
-[Spark에서 빌드한 기계 학습 모델 점수 매기기](spark-model-consumption.md) 에서는 Scala 코드를 사용하여 Spark에서 빌드한 기계 학습 모델과 함께 Azure Blob Storage에 저장된 새 데이터 집합을 자동으로 로드하고 점수를 매기는 방법을 설명합니다. 사용자는 제공된 지침을 따르고 자동 사용을 위해 Python 코드를 이 문서의 Scala 코드로 바꿀 수 있습니다.
+[为 Spark 构建的机器学习模型评分](spark-model-consumption.md)展示如何使用 Scala 代码通过内置在 Spark 中且保存在 Azure Blob 存储中的机器学习模型自动加载数据并对新数据评分。 可以按照文中提供的说明进行操作，只需使用本文中的 Scala 代码替换 Python 代码，便可自动使用。
 

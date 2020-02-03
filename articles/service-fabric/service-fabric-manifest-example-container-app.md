@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric 容器应用程序清单示例
-description: 다중 컨테이너 Service Fabric 애플리케이션에 대한 애플리케이션 및 서비스 매니페스트 설정을 구성하는 방법을 알아봅니다.
+description: 了解如何为多容器 Service Fabric 应用程序配置应用程序和服务清单设置。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
@@ -12,20 +12,20 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722554"
 ---
-# <a name="multi-container-application-and-service-manifest-examples"></a>다중 컨테이너 애플리케이션 및 서비스 매니페스트 예제
-다음은 다중 컨테이너 Service Fabric 애플리케이션에 대한 애플리케이션 및 서비스 매니페스트의 예제입니다. 이러한 예제의 목적은 사용 가능한 설정 및 사용 방법을 보여주는 것입니다. 이러한 애플리케이션 및 서비스 매니페스트는 [Windows Server 2016 컨테이너 샘플](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) 매니페스트를 기반으로 합니다.
+# <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
+下面是多容器 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
 
-다음 기능이 표시됩니다.
+展示了以下功能：
 
-|매니페스트|기능|
+|Manifest|功能|
 |---|---|
-|[애플리케이션 매니페스트](#application-manifest)| [환경 변수 재정의](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [컨테이너 포트-호스트 간 매핑 구성](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [컨테이너 레지스트리 인증 구성](service-fabric-get-started-containers.md#configure-container-repository-authentication), [리소스 거버넌스](service-fabric-resource-governance.md), [격리 모드 설정](service-fabric-get-started-containers.md#configure-isolation-mode), [OS 빌드별 컨테이너 이미지 지정](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
-|[FrontEndService 서비스 매니페스트](#frontendservice-service-manifest)| [환경 변수 설정](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [엔드포인트 구성](service-fabric-get-started-containers.md#configure-communication), 컨테이너에 명령 전달, [컨테이너로 인증서 가져오기](service-fabric-securing-containers.md)| 
-|[BackEndService 서비스 매니페스트](#backendservice-service-manifest)|[환경 변수 설정](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [엔드포인트 구성](service-fabric-get-started-containers.md#configure-communication), [볼륨 드라이버 구성](service-fabric-containers-volume-logging-drivers.md)| 
+|[应用程序清单](#application-manifest)| [替代环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 内部版本特定的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[FrontEndService 服务清单](#frontendservice-service-manifest)| [设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、将命令传递给容器、[将证书导入到容器中](service-fabric-securing-containers.md)| 
+|[BackEndService 服务清单](#backendservice-service-manifest)|[设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、[配置卷驱动程序](service-fabric-containers-volume-logging-drivers.md)| 
 
-특정 XML 요소에 대한 자세한 내용은 [애플리케이션 매니페스트 요소](#application-manifest-elements), [FrontEndService 서비스 매니페스트 요소](#frontendservice-service-manifest-elements) 및 [BackEndService 서비스 매니페스트 요소](#backendservice-service-manifest-elements)를 참조하세요.
+有关特定 XML 元素的详细信息，请参阅[应用程序清单元素](#application-manifest-elements)、[FrontEndService 服务清单元素](#frontendservice-service-manifest-elements)和 [BackEndService 服务清单元素](#backendservice-service-manifest-elements)。
 
-## <a name="application-manifest"></a>애플리케이션 매니페스트.
+## <a name="application-manifest"></a>应用程序清单
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -156,7 +156,7 @@ ms.locfileid: "76722554"
 </ApplicationManifest>
 ```
 
-## <a name="frontendservice-service-manifest"></a>FrontEndService 서비스 매니페스트
+## <a name="frontendservice-service-manifest"></a>FrontEndService 服务清单
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,7 +206,7 @@ ms.locfileid: "76722554"
 </ServiceManifest>
 ```
 
-## <a name="backendservice-service-manifest"></a>BackEndService 서비스 매니페스트
+## <a name="backendservice-service-manifest"></a>BackEndService 服务清单
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -255,157 +255,157 @@ ms.locfileid: "76722554"
 </ServiceManifest>
 ```
 
-## <a name="application-manifest-elements"></a>애플리케이션 매니페스트 요소
-### <a name="applicationmanifest-element"></a>ApplicationManifest 요소
-애플리케이션 유형 및 버전을 선언적으로 설명합니다. 구성 요소 서비스의 서비스 매니페스트 하나 이상에서 애플리케이션 유형을 작성하기 위해 참조됩니다. 구성 요소 서비스의 구성 설정은 매개 변수화된 애플리케이션 설정을 사용하여 재정의할 수 있습니다. 기본 서비스, 서비스 템플릿, 보안 주체, 정책, 진단 설정 및 인증서도 애플리케이션 수준에서 선언할 수 있습니다. 자세한 내용은 [ApplicationManifest 요소](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)를 참조하세요.
+## <a name="application-manifest-elements"></a>应用程序清单元素
+### <a name="applicationmanifest-element"></a>ApplicationManifest 元素
+以声明方式描述应用程序类型和版本。 引用构成服务的一个或多个服务清单来撰写应用程序类型。 可以使用参数化应用程序设置重写构成服务的配置设置。 默认服务、服务模板、主体、策略、诊断设置和证书也可以在应用程序级别声明。 有关详细信息，请参阅 [ApplicationManifest 元素](service-fabric-service-model-schema-elements.md#ApplicationManifestElementApplicationManifestTypeComplexType)
 
-### <a name="parameters-element"></a>Parameters 요소
-이 애플리케이션 매니페스트에 사용되는 매개 변수를 선언합니다. 애플리케이션이 인스턴스화되고 애플리케이션 또는 서비스 구성 설정을 재정의하는 데 사용될 수 있을 때 이러한 매개 변수의 값을 제공할 수 있습니다. 자세한 내용은 [Parameters 요소](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)를 참조하세요.
+### <a name="parameters-element"></a>Parameters 元素
+声明在此应用程序清单中使用的参数。 当应用程序已实例化并可用于重写应用程序或服务配置设置时，可以提供这些参数的值。 有关详细信息，请参阅 [Parameters 元素](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Parameter 요소
-이 매니페스트에 사용할 애플리케이션 매개 변수입니다. 매개 변수 값은 애플리케이션 인스턴스하는 동안 변경될 수 있거나, 값이 제공되지 않으면 기본값이 사용됩니다. 자세한 내용은 [Parameter 요소](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)를 참조하세요.
+### <a name="parameter-element"></a>Parameter 元素
+要在此清单中使用的应用程序参数。 可在应用程序实例化期间更改参数值；如果未提供值，则使用默认值。 有关详细信息，请参阅 [Parameter 元素](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
-### <a name="servicemanifestimport-element"></a>ServiceManifestImport 요소
-서비스 개발자가 만든 서비스 매니페스트를 가져옵니다. 애플리케이션의 각 구성 요소 서비스에 대한 서비스 매니페스트를 가져와야 합니다. 서비스 매니페스트에 대한 구성 재정의 및 정책을 선언할 수 있습니다. 자세한 내용은 [ServiceManifestImport 요소](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)를 참조하세요.
+### <a name="servicemanifestimport-element"></a>ServiceManifestImport 元素
+导入服务开发人员创建的服务清单。 必须导入应用程序中每个构成服务的服务清单。 可为服务清单声明配置重写和策略。 有关详细信息，请参阅 [ServiceManifestImport 元素](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="servicemanifestref-element"></a>ServiceManifestRef 요소
-참조별로 서비스 매니페스트를 가져옵니다. 현재 이 빌드 패키지에 서비스 매니페스트 파일(ServiceManifest.xml)이 있어야 합니다. 자세한 내용은 [ServiceManifestRef 요소](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)를 참조하세요.
+### <a name="servicemanifestref-element"></a>ServiceManifestRef 元素
+按引用导入服务清单。 当前，服务清单文件 (ServiceManifest.xml) 必须存在于生成包中。 有关详细信息，请参阅 [ServiceManifestRef 元素](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="policies-element"></a>Policies 요소
-가져온 서비스 매니페스트에 적용할 정책(끝점 바인딩, 패키지 공유, 실행 및 보안 액세스)을 설명합니다. 자세한 내용은 [Policies 요소](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)를 참조하세요.
+### <a name="policies-element"></a>Policies 元素
+描述要在导入的服务清单中应用的策略（终结点绑定、包共享、运行方式和安全访问权限）。 有关详细信息，请参阅 [Policies 元素](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy 요소
-전체 서비스 패키지 수준에서 적용되는 리소스 관리 정책을 정의합니다. 자세한 내용은 [ServicePackageResourceGovernancePolicy 요소](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)를 참조하세요.
+### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy 元素
+定义在整个服务包级别应用的资源调控策略。 有关详细信息，请参阅 [ServicePackageResourceGovernancePolicy 元素](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
 
-### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy 요소
-코드 패키지에 대한 리소스 제한을 지정합니다. 자세한 내용은 [ResourceGovernancePolicy 요소](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)를 참조하세요.
+### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy 元素
+指定代码包的资源限制。 有关详细信息，请参阅 [ResourceGovernancePolicy 元素](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
 
-### <a name="containerhostpolicies-element"></a>ContainerHostPolicies 요소
-컨테이너 호스트를 사용하도록 설정하기 위한 정책을 지정합니다. 자세한 내용은 [ContainerHostPolicies 요소](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)를 참조하세요.
+### <a name="containerhostpolicies-element"></a>ContainerHostPolicies 元素
+指定用于激活容器主机的策略。 有关详细信息，请参阅 [ContainerHostPolicies 元素](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="repositorycredentials-element"></a>RepositoryCredentials 요소
-이미지를 끌어올 컨테이너 이미지 리포지토리에 대한 자격 증명입니다. 자세한 내용은 [RepositoryCredentials 요소](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)를 참조하세요.
+### <a name="repositorycredentials-element"></a>RepositoryCredentials 元素
+要从中提取映像的容器映像存储库的凭据。 有关详细信息，请参阅 [RepositoryCredentials 元素](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="portbinding-element"></a>PortBinding 요소
-노출된 컨테이너 포트에 바인딩할 엔드포인트 리소스를 지정합니다. 자세한 내용은 [PortBinding 요소](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)를 참조하세요.
+### <a name="portbinding-element"></a>PortBinding 元素
+指定要绑定到公开的容器端口的终结点资源。 有关详细信息，请参阅 [PortBinding 元素](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="volume-element"></a>Volume 요소
-컨테이너에 바인딩할 볼륨을 지정합니다. 자세한 내용은 [Volume 요소](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)를 참조하세요.
+### <a name="volume-element"></a>Volume 元素
+指定要绑定到容器的卷。 有关详细信息，请参阅 [Volume 元素](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="driveroption-element"></a>DriverOption 요소
-드라이버에 전달할 드라이버 옵션입니다. 자세한 내용은 [DriverOption 요소](service-fabric-service-model-schema-elements.md#DriverOptionElementDriverOptionTypeComplexTypeDefinedInContainerLoggingDriverTypecomplexTypeDefinedInContainerVolumeTypecomplexType)를 참조하세요.
+### <a name="driveroption-element"></a>DriverOption 元素
+要传递给驱动程序的驱动程序选项。 有关详细信息，请参阅 [DriverOption 元素](service-fabric-service-model-schema-elements.md#DriverOptionElementDriverOptionTypeComplexTypeDefinedInContainerLoggingDriverTypecomplexTypeDefinedInContainerVolumeTypecomplexType)
 
-### <a name="imageoverrides-element"></a>ImageOverrides 요소
-Windows Server 컨테이너는 여러 OS 버전에서 호환되지 않을 수 있습니다.  컨테이너마다 여러 OS 이미지를 지정하고 OS 빌드 버전을 태그로 지정할 수 있습니다. Windows 명령 프롬프트에서 "winver"를 실행하여 OS 빌드 버전을 가져옵니다. 기본 OS가 빌드 버전 16299(Windows Server 버전 1709)이면 Service Fabric은 Os="16299"라는 태그가 지정된 컨테이너 이미지를 선택합니다. 태그가 지정되지 않은 컨테이너 이미지는 모든 OS 버전에서 작동하는 것으로 간주되어 서비스 매니페스트에 지정된 이미지를 재정의합니다. 자세한 내용은 [ImageOverrides 요소](service-fabric-service-model-schema-elements.md#ImageOverridesElementImageOverridesTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)를 참조하세요.
+### <a name="imageoverrides-element"></a>ImageOverrides 元素
+Windows Server 容器在不同 OS 版本中可能不兼容。  可以为每个容器指定多个 OS 映像，并使用 OS 的内部版本来标记它们。 通过在 Windows 命令提示符下运行“winver”获取 OS 的内部版本。 如果基础 OS 为内部版本 16299（Windows Server 版本 1709），Service Fabric 会选取带有 Os="16299" 标记的容器映像。 可以认为未标记的容器映像适合所有版本的 OS，并且会替代在服务清单中指定的映像。 有关详细信息，请参阅 [ImageOverrides 元素](service-fabric-service-model-schema-elements.md#ImageOverridesElementImageOverridesTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="image-element"></a>Image 요소
-실행할 OS 빌드 버전 번호에 해당하는 컨테이너 이미지 이름입니다. OS 특성을 지정하지 않으면 컨테이너 이미지가 모든 OS 버전에서 작동하는 것으로 간주되어 서비스 매니페스트에 지정된 이미지를 재정의합니다. 자세한 내용은 [Image 요소](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType)를 참조하세요.
+### <a name="image-element"></a>Image 元素
+容器映像，对应于要启动的 OS 内部版本号。 如果 Os 属性未指定，则认为容器映像适合所有版本的 OS，并且会替代在服务清单中指定的映像。 有关详细信息，请参阅 [Image 元素](service-fabric-service-model-schema-elements.md#ImageElementImageTypeComplexTypeDefinedInImageOverridesTypecomplexType)
 
-### <a name="environmentoverrides-element"></a>EnvironmentOverrides 요소
- 자세한 내용은 [EnvironmentOverrides 요소](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)를 참조하세요.
+### <a name="environmentoverrides-element"></a>EnvironmentOverrides 元素
+ 有关详细信息，请参阅 [EnvironmentOverrides 元素](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="environmentvariable-element"></a>EnvironmentVariable 요소
-환경 변수입니다. 자세한 내용은 [EnvironmentVariable 요소](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)를 참조하세요.
+### <a name="environmentvariable-element"></a>EnvironmentVariable 元素
+环境变量。 有关详细信息，请参阅 [EnvironmentVariable 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="certificateref-element"></a>CertificateRef 요소
-컨테이너 환경에 노출해야 하는 X509 인증서에 대한 정보를 지정합니다. 모든 클러스터 노드의 LocalMachine 저장소에 인증서를 설치해야 합니다.
-애플리케이션이 시작되면 런타임이 인증서를 읽고 PFX 파일 및 암호를 생성하거나(Windows인 경우) PEM 파일을 생성합니다(Linux인 경우).
-PFX 파일과 암호는 Certificates_ServicePackageName_CodePackageName_CertName_PFX 및 Certificates_ServicePackageName_CodePackageName_CertName_Password 환경 변수를 사용하여 컨테이너에서 액세스할 수 있습니다. PEM 파일은 Certificates_ServicePackageName_CodePackageName_CertName_PEM 및 Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey 환경 변수를 사용하여 컨테이너에서 액세스할 수 있습니다. 자세한 내용은 [CertificateRef 요소](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)를 참조하세요.
+### <a name="certificateref-element"></a>CertificateRef 元素
+指定要向容器环境公开的 X509 证书的相关信息。 该证书必须安装在所有群集节点的 LocalMachine 存储中。
+应用程序启动时，运行时读取证书并生成 PFX 文件和密码（在 Windows 上）或 PEM 文件（在 Linux 上）。
+可在容器内使用 Certificates_ServicePackageName_CodePackageName_CertName_PFX 和 Certificates_ServicePackageName_CodePackageName_CertName_Password 环境变量访问此 PFX 文件和密码。 可在容器内使用 Certificates_ServicePackageName_CodePackageName_CertName_PEM 和 Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey 环境变量访问此 PEM 文件。 有关详细信息，请参阅 [CertificateRef 元素](service-fabric-service-model-schema-elements.md#CertificateRefElementContainerCertificateTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
-### <a name="defaultservices-element"></a>DefaultServices 요소
-이 애플리케이션 유형에 대해 애플리케이션이 인스턴스화될 때마다 자동으로 만드는 서비스 인스턴스를 선언합니다. 자세한 내용은 [DefaultServices 요소](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)를 참조하세요.
+### <a name="defaultservices-element"></a>DefaultServices 元素
+声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。 有关详细信息，请参阅 [DefaultServices 元素](service-fabric-service-model-schema-elements.md#DefaultServicesElementDefaultServicesTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInApplicationInstanceTypecomplexType)
 
-### <a name="service-element"></a>Service 요소
-애플리케이션이 인스턴스화될 때 자동으로 만드는 서비스를 선언합니다. 자세한 내용은 [Service 요소](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)를 참조하세요.
+### <a name="service-element"></a>Service 元素
+声明在实例化应用程序时要自动创建的服务。 有关详细信息，请参阅 [Service 元素](service-fabric-service-model-schema-elements.md#ServiceElementanonymouscomplexTypeComplexTypeDefinedInDefaultServicesTypecomplexType)
 
-### <a name="statelessservice-element"></a>StatelessService 요소
-상태 비저장 서비스를 정의합니다. 자세한 내용은 [StatelessService 요소](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)를 참조하세요.
-
-
-## <a name="frontendservice-service-manifest-elements"></a>FrontEndService 서비스 매니페스트 요소
-### <a name="servicemanifest-element"></a>ServiceManifest 요소
-서비스 유형 및 버전을 선언적으로 설명합니다. 하나 이상의 서비스 유형을 지원하도록 서비스 패키지를 함께 구성하는 독립적으로 업그레이드 가능한 코드, 구성 및 데이터 패키지를 나열합니다. 리소스, 진단 설정 및 서비스 메타데이터(예: 서비스 유형, 상태 속성 및 부하 분산 메트릭)도 지정합니다. 자세한 내용은 [ServiceManifest 요소](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)를 참조하세요.
-
-### <a name="servicetypes-element"></a>ServiceTypes 요소
-이 매니페스트의 CodePackage에서 지원하는 서비스 유형을 정의합니다. 이러한 서비스 유형 중 하나에 대해 서비스가 인스턴스화되면 코드 패키지의 진입점을 실행하여 이 매니페스트에 선언된 모든 코드 패키지가 활성화됩니다. 서비스 유형은 코드 패키지 수준이 아니라 매니페스트 수준에서 선언됩니다. 자세한 내용은 [ServiceTypes 요소](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)를 참조하세요.
-
-### <a name="statelessservicetype-element"></a>StatelessServiceType 요소
-상태 비저장 서비스 유형을 설명합니다. 자세한 내용은 [StatelessServiceType 요소](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)를 참조하세요.
-
-### <a name="codepackage-element"></a>CodePackage 요소
-정의된 서비스 유형을 지원하는 코드 패키지를 설명합니다. 이러한 서비스 유형 중 하나에 대해 서비스가 인스턴스화되면 코드 패키지의 진입점을 실행하여 이 매니페스트에 선언된 모든 코드 패키지가 활성화됩니다. 결과 프로세스는 런타임에 지원되는 서비스 유형을 등록합니다. 여러 코드 패키지가 있는 경우 시스템에서 선언된 서비스 유형 중 하나를 찾을 때마다 모두 활성화됩니다. 자세한 내용은 [CodePackage 요소](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)를 참조하세요.
-
-### <a name="entrypoint-element"></a>EntryPoint 요소
-EntryPoint에서 지정한 실행 파일은 일반적으로 장기 실행 서비스 호스트입니다. 별도의 설정 진입점이 있으면 한동안은 높은 권한을 사용하여 서비스 호스트를 실행하지 않아도 됩니다. SetupEntryPoint가 성공적으로 종료된 후에 EntryPoint에서 지정한 실행 파일이 실행됩니다. 결과 프로세스를 모니터링하고, 종료되거나 충돌하는 경우 다시 시작합니다(SetupEntryPoint를 사용하여 다시 시작). 자세한 내용은 [EntryPoint 요소](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)를 참조하세요.
-
-### <a name="containerhost-element"></a>ContainerHost 요소
- 자세한 내용은 [ContainerHost 요소](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)를 참조하세요.
-
-### <a name="imagename-element"></a>ImageName 요소
-[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表中的存储库和映像。 자세한 내용은 [ImageName 요소](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)를 참조하세요.
-
-### <a name="environmentvariables-element"></a>EnvironmentVariables 요소
-환경 변수를 컨테이너 또는 exe.에 전달합니다.  자세한 내용은 [EnvironmentVariables 요소](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)를 참조하세요.
-
-### <a name="environmentvariable-element"></a>EnvironmentVariable 요소
-환경 변수입니다. 자세한 내용은 [EnvironmentVariable 요소](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)를 참조하세요.
-
-### <a name="configpackage-element"></a>ConfigPackage 요소
-Name 특성으로 명명되고 Settings.xml 파일이 포함된 폴더를 선언합니다. 이 파일은 런타임에 프로세스에서 다시 읽을 수 있는 사용자 정의 키-값 쌍 설정의 섹션을 포함합니다. 업그레이드하는 동안 ConfigPackage 버전만 변경되면 실행 중인 프로세스가 다시 시작되지 않습니다. 대신, 콜백에서는 구성 설정이 변경되어 동적으로 다시 로드할 수 있음을 프로세스에 알립니다. 자세한 내용은 [ConfigPackage 요소](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)를 참조하세요.
-
-### <a name="datapackage-element"></a>DataPackage 요소
-Name 특성으로 명명되고 정적 데이터 파일이 포함된 폴더를 선언합니다. Service Fabric에서 서비스 매니페스트에 나열된 데이터 패키지를 업그레이드할 때 호스트 및 지원 패키지에 지정된 모든 EXE 및 DLLHOST를 재활용합니다. 자세한 내용은 [DataPackage 요소](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)를 참조하세요.
-
-### <a name="resources-element"></a>Resources 요소
-이 서비스에서 사용하는 리소스를 설명합니다. 이 리소스는 컴파일된 코드를 수정하지 않고 선언할 수 있으며, 서비스를 배포할 때 변경할 수 있습니다. 이러한 리소스에 대한 액세스는 애플리케이션 매니페스트의 Principals 및 Policies 섹션을 통해 제어됩니다. 자세한 내용은 [Resources 요소](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)를 참조하세요.
-
-### <a name="endpoints-element"></a>Endpoints 요소
-서비스에 대한 엔드포인트를 정의합니다. 자세한 내용은 [Endpoints 요소](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)를 참조하세요.
-
-### <a name="endpoint-element"></a>Endpoint 요소
-자세한 내용은 [Endpoint 요소](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)를 참조하세요.
+### <a name="statelessservice-element"></a>StatelessService 元素
+定义无状态服务。 有关详细信息，请参阅 [StatelessService 元素](service-fabric-service-model-schema-elements.md#StatelessServiceElementStatelessServiceTypeComplexTypeDefinedInServiceTemplatesTypecomplexTypeDefinedInServiceelement)
 
 
-## <a name="backendservice-service-manifest-elements"></a>BackEndService 서비스 매니페스트 요소
-### <a name="servicemanifest-element"></a>ServiceManifest 요소
-서비스 유형 및 버전을 선언적으로 설명합니다. 하나 이상의 서비스 유형을 지원하도록 서비스 패키지를 함께 구성하는 독립적으로 업그레이드 가능한 코드, 구성 및 데이터 패키지를 나열합니다. 리소스, 진단 설정 및 서비스 메타데이터(예: 서비스 유형, 상태 속성 및 부하 분산 메트릭)도 지정합니다. 자세한 내용은 [ServiceManifest 요소](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)를 참조하세요.
+## <a name="frontendservice-service-manifest-elements"></a>FrontEndService 服务清单元素
+### <a name="servicemanifest-element"></a>ServiceManifest 元素
+以声明方式描述服务类型和版本。 它列出组成一个服务包以支持一个或多个服务类型的独立可升级的代码、配置和数据包。 此外，还指定资源、诊断设置和服务元数据，例如服务类型、运行状况属性和负载均衡指标。 有关详细信息，请参阅 [ServiceManifest 元素](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
 
-### <a name="servicetypes-element"></a>ServiceTypes 요소
-이 매니페스트의 CodePackage에서 지원하는 서비스 유형을 정의합니다. 이러한 서비스 유형 중 하나에 대해 서비스가 인스턴스화되면 코드 패키지의 진입점을 실행하여 이 매니페스트에 선언된 모든 코드 패키지가 활성화됩니다. 서비스 유형은 코드 패키지 수준이 아니라 매니페스트 수준에서 선언됩니다. 자세한 내용은 [ServiceTypes 요소](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)를 참조하세요.
+### <a name="servicetypes-element"></a>ServiceTypes 元素
+定义此清单中的 CodePackage 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 在清单级别而不是代码包级别声明服务类型。 有关详细信息，请参阅 [ServiceTypes 元素](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="statelessservicetype-element"></a>StatelessServiceType 요소
-상태 비저장 서비스 유형을 설명합니다. 자세한 내용은 [StatelessServiceType 요소](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)를 참조하세요.
+### <a name="statelessservicetype-element"></a>StatelessServiceType 元素
+描述无状态服务类型。 有关详细信息，请参阅 [StatelessServiceType 元素](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
 
-### <a name="codepackage-element"></a>CodePackage 요소
-정의된 서비스 유형을 지원하는 코드 패키지를 설명합니다. 이러한 서비스 유형 중 하나에 대해 서비스가 인스턴스화되면 코드 패키지의 진입점을 실행하여 이 매니페스트에 선언된 모든 코드 패키지가 활성화됩니다. 결과 프로세스는 런타임에 지원되는 서비스 유형을 등록합니다. 여러 코드 패키지가 있는 경우 시스템에서 선언된 서비스 유형 중 하나를 찾을 때마다 모두 활성화됩니다. 자세한 내용은 [CodePackage 요소](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)를 참조하세요.
+### <a name="codepackage-element"></a>CodePackage 元素
+描述支持定义的服务类型的代码包。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都会被激活。 有关详细信息，请参阅 [CodePackage 元素](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
 
-### <a name="entrypoint-element"></a>EntryPoint 요소
-EntryPoint에서 지정한 실행 파일은 일반적으로 장기 실행 서비스 호스트입니다. 별도의 설정 진입점이 있으면 한동안은 높은 권한을 사용하여 서비스 호스트를 실행하지 않아도 됩니다. SetupEntryPoint가 성공적으로 종료된 후에 EntryPoint에서 지정한 실행 파일이 실행됩니다. 결과 프로세스를 모니터링하고, 종료되거나 충돌하는 경우 다시 시작합니다(SetupEntryPoint를 사용하여 다시 시작). 자세한 내용은 [EntryPoint 요소](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)를 참조하세요.
+### <a name="entrypoint-element"></a>EntryPoint 元素
+EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 EntryPoint 指定的可执行文件在 SetupEntryPoint 成功退出后运行。 如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 SetupEntryPoint 开始）。 有关详细信息，请参阅 [EntryPoint 元素](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
-### <a name="containerhost-element"></a>ContainerHost 요소
-자세한 내용은 [ContainerHost 요소](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)를 참조하세요.
+### <a name="containerhost-element"></a>ContainerHost 元素
+ 有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="imagename-element"></a>ImageName 요소
-[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表中的存储库和映像。 자세한 내용은 [ImageName 요소](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)를 참조하세요.
+### <a name="imagename-element"></a>ImageName 元素
+[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表中的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
-### <a name="commands-element"></a>Commands 요소
-쉼표로 구분된 명령 목록을 컨테이너에 전달합니다. 자세한 내용은 [Commands 요소](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)를 참조하세요.
+### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
+将环境变量传递给容器或 exe。  有关详细信息，请参阅 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
-### <a name="environmentvariables-element"></a>EnvironmentVariables 요소
-환경 변수를 컨테이너 또는 exe.에 전달합니다.  자세한 내용은 [EnvironmentVariables 요소](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)를 참조하세요.
+### <a name="environmentvariable-element"></a>EnvironmentVariable 元素
+环境变量。 有关详细信息，请参阅 [EnvironmentVariable 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
-### <a name="environmentvariable-element"></a>EnvironmentVariable 요소
-환경 변수입니다. 자세한 내용은 [EnvironmentVariable 요소](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)를 참조하세요.
+### <a name="configpackage-element"></a>ConfigPackage 元素
+声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
-### <a name="configpackage-element"></a>ConfigPackage 요소
-Name 특성으로 명명되고 Settings.xml 파일이 포함된 폴더를 선언합니다. 이 파일은 런타임에 프로세스에서 다시 읽을 수 있는 사용자 정의 키-값 쌍 설정의 섹션을 포함합니다. 업그레이드하는 동안 ConfigPackage 버전만 변경되면 실행 중인 프로세스가 다시 시작되지 않습니다. 대신, 콜백에서는 구성 설정이 변경되어 동적으로 다시 로드할 수 있음을 프로세스에 알립니다. 자세한 내용은 [ConfigPackage 요소](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)를 참조하세요.
+### <a name="datapackage-element"></a>DataPackage 元素
+声明一个由 Name 属性命名的文件夹，该文件夹中包含静态数据文件。 升级服务清单中所列的任何数据包时，Service Fabric 会回收主机和支持包中指定的所有 EXE 和 DLLHOST。 有关详细信息，请参阅 [DataPackage 元素](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
 
-### <a name="resources-element"></a>Resources 요소
-이 서비스에서 사용하는 리소스를 설명합니다. 이 리소스는 컴파일된 코드를 수정하지 않고 선언할 수 있으며, 서비스를 배포할 때 변경할 수 있습니다. 이러한 리소스에 대한 액세스는 애플리케이션 매니페스트의 Principals 및 Policies 섹션을 통해 제어됩니다. 자세한 내용은 [Resources 요소](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)를 참조하세요.
+### <a name="resources-element"></a>Resources 元素
+描述此服务使用的资源，可以在不修改已编译代码的情况下声明，并可以在部署服务时更改。 通过应用程序清单的 Principals 和 Policies 节控制对这些资源的访问。 有关详细信息，请参阅 [Resources 元素](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
-### <a name="endpoints-element"></a>Endpoints 요소
-서비스에 대한 엔드포인트를 정의합니다. 자세한 내용은 [Endpoints 요소](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)를 참조하세요.
+### <a name="endpoints-element"></a>Endpoints 元素
+定义服务的终结点。 有关详细信息，请参阅 [Endpoints 元素](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
-### <a name="endpoint-element"></a>Endpoint 요소
- 자세한 내용은 [Endpoint 요소](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)를 참조하세요.
+### <a name="endpoint-element"></a>Endpoint 元素
+有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+
+
+## <a name="backendservice-service-manifest-elements"></a>BackEndService 服务清单元素
+### <a name="servicemanifest-element"></a>ServiceManifest 元素
+以声明方式描述服务类型和版本。 它列出组成一个服务包以支持一个或多个服务类型的独立可升级的代码、配置和数据包。 此外，还指定资源、诊断设置和服务元数据，例如服务类型、运行状况属性和负载均衡指标。 有关详细信息，请参阅 [ServiceManifest 元素](service-fabric-service-model-schema-elements.md#ServiceManifestElementServiceManifestTypeComplexType)
+
+### <a name="servicetypes-element"></a>ServiceTypes 元素
+定义此清单中的 CodePackage 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 在清单级别而不是代码包级别声明服务类型。 有关详细信息，请参阅 [ServiceTypes 元素](service-fabric-service-model-schema-elements.md#ServiceTypesElementServiceAndServiceGroupTypesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+
+### <a name="statelessservicetype-element"></a>StatelessServiceType 元素
+描述无状态服务类型。 有关详细信息，请参阅 [StatelessServiceType 元素](service-fabric-service-model-schema-elements.md#StatelessServiceTypeElementStatelessServiceTypeTypeComplexTypeDefinedInServiceAndServiceGroupTypesTypecomplexTypeDefinedInServiceTypesTypecomplexType)
+
+### <a name="codepackage-element"></a>CodePackage 元素
+描述支持定义的服务类型的代码包。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都会被激活。 有关详细信息，请参阅 [CodePackage 元素](service-fabric-service-model-schema-elements.md#CodePackageElementCodePackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedCodePackageelement)
+
+### <a name="entrypoint-element"></a>EntryPoint 元素
+EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 EntryPoint 指定的可执行文件在 SetupEntryPoint 成功退出后运行。 如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 SetupEntryPoint 开始）。 有关详细信息，请参阅 [EntryPoint 元素](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
+
+### <a name="containerhost-element"></a>ContainerHost 元素
+有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
+
+### <a name="imagename-element"></a>ImageName 元素
+[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表中的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+
+### <a name="commands-element"></a>Commands 元素
+将以逗号分隔的命令列表传递给容器。 有关详细信息，请参阅 [Commands 元素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+
+### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
+将环境变量传递给容器或 exe。  有关详细信息，请参阅 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
+
+### <a name="environmentvariable-element"></a>EnvironmentVariable 元素
+环境变量。 有关详细信息，请参阅 [EnvironmentVariable 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
+
+### <a name="configpackage-element"></a>ConfigPackage 元素
+声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+
+### <a name="resources-element"></a>Resources 元素
+描述此服务使用的资源，可以在不修改已编译代码的情况下声明，并可以在部署服务时更改。 通过应用程序清单的 Principals 和 Policies 节控制对这些资源的访问。 有关详细信息，请参阅 [Resources 元素](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+
+### <a name="endpoints-element"></a>Endpoints 元素
+定义服务的终结点。 有关详细信息，请参阅 [Endpoints 元素](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
+
+### <a name="endpoint-element"></a>Endpoint 元素
+ 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 

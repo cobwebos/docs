@@ -52,8 +52,8 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为其主帐�
 | 帐户标识符                | MSAL                                                         | ADAL 2.7. x      | 旧 ADAL （ADAL 2.7. x 之前） |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示标识符            | `username`                                                   | `userId`        | `userId`                       |
-| 唯一不可显示的标识符 | `identifier`                                                 | `homeAccountId` | N/A                            |
-| 不知道帐户 id               | 通过 `MSALPublicClientApplication` 中的 `allAccounts:` API 查询所有帐户 | N/A             | N/A                            |
+| 唯一不可显示的标识符 | `identifier`                                                 | `homeAccountId` | 空值                            |
+| 不知道帐户 id               | 通过 `MSALPublicClientApplication` 中的 `allAccounts:` API 查询所有帐户 | 空值             | 空值                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 
@@ -111,7 +111,7 @@ ADAL 中的 `homeAccountId` 与 MSAL 中 `identifier` 等效。 可以保存此�
 
 在 MSAL 中，首先 `username` 或 `identifier`查找帐户。 始终使用 `identifier` 进行查询（如果有），并且仅将 `username` 用作回退。 如果找到该帐户，请使用 `acquireTokenSilent` 调用中的帐户。
 
-Objective-C:
+Objective-C：
 
 ```objc
 NSString *msalIdentifier = @"previously.saved.msal.account.id";
@@ -138,7 +138,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+Swift：
 
 ```swift
         
@@ -207,9 +207,9 @@ Returns account for for the given username (received from an account object retu
                               error:(NSError * __autoreleasing *)error;
 ```
 
-예:
+例如：
 
-Objective-C:
+Objective-C：
 
 
 ```objc
@@ -218,7 +218,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+Swift：
 
 ```swift
 do {
@@ -237,7 +237,7 @@ do {
 
 或者，你可以读取所有帐户，这些帐户也将从 ADAL 读取帐户信息：
 
-Objective-C:
+Objective-C：
 
 ```objc
 NSArray *accounts = [application allAccounts:nil];
@@ -258,7 +258,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+Swift：
 
 ```swift
       
@@ -286,6 +286,6 @@ do {
 
 
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-[인증 흐름 및 애플리케이션 시나리오](authentication-flows-app-scenarios.md)에 대해 알아보기
+详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)

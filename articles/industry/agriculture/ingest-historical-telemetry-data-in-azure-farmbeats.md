@@ -1,5 +1,5 @@
 ---
-title: 기록 원격 분석 데이터 수집
+title: 引入历史遥测数据
 description: 本文介绍如何引入历史遥测数据。
 author: uhabiba04
 ms.topic: article
@@ -12,13 +12,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715516"
 ---
-# <a name="ingest-historical-telemetry-data"></a>기록 원격 분석 데이터 수집
+# <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
 本文介绍如何将历史传感器数据引入 Azure FarmBeats。
 
 在 FarmBeats 中，引入（IoT）资源（如设备和传感器）的历史物联网数据是常见的方案。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>시작하기 전에
+## <a name="before-you-begin"></a>开始之前
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集了历史数据。
 还需要启用合作伙伴访问权限，如以下步骤中所述。
@@ -28,12 +28,12 @@ ms.locfileid: "76715516"
 需要启用与 Azure FarmBeats 实例的合作伙伴集成。 此步骤将创建一个客户端，该客户端可以访问作为设备伙伴的 Azure FarmBeats 实例，并提供后续步骤中所需的以下值：
 
 - API 终结点：这是 Datahub URL，例如 https://\<Datahub > appname>.azurewebsites.net。
-- 테넌트 ID
-- 클라이언트 ID
-- 클라이언트 암호
+- 租户 ID
+- 客户端 ID
+- 客户端机密
 - EventHub 连接字符串
 
-다음 단계를 수행합니다.
+执行以下步骤。
 
 >[!NOTE]
 > 您必须是管理员才能执行以下步骤。
@@ -45,7 +45,7 @@ ms.locfileid: "76715516"
 
 4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
 
-5. Cloud Shell을 엽니다. 此选项位于 Azure 门户右上角工具栏中。
+5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "76715516"
 
 8. 中转到上载文件的目录。 默认情况下，文件将上传到用户名下的主目录。
 
-9. 다음 스크립트를 실행합니다. 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
+9. 运行以下脚本。 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
 
     ```azurepowershell-interactive 
 
@@ -80,45 +80,45 @@ ms.locfileid: "76715516"
 - /**传感器**：传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。  
 
 
-|        DeviceModel   |  추천   |
+|        DeviceModel   |  建议   |
 | ------- | -------             |
 |     类型（节点、网关）        |          设备节点或网关的类型      |
-|          제조업체            |         制造商的名称    |
+|          制造商            |         制造商的名称    |
 |  ProductCode                    |  设备产品代码或型号名称。 例如，EnviroMonitor # 6800。  |
-|            포트          |     端口名称和类型，它是数字或模拟。
-|     이름                 |  用于标识资源的名称。 例如，模型名称或产品名称。
-      Description     | 提供模型的有意义的说明。
-|    속성          |    制造商提供的其他属性。   |
-|    **디바이스**             |                      |
+|            端口          |     端口名称和类型，它是数字或模拟。
+|     名称                 |  用于标识资源的名称。 例如，模型名称或产品名称。
+      说明     | 提供模型的有意义的说明。
+|    属性          |    制造商提供的其他属性。   |
+|    **设备**             |                      |
 |   DeviceModelId     |     关联的设备模型的 ID。  |
 |  HardwareId          | 设备的唯一 ID，如 MAC 地址。
 |  ReportingInterval        |   报告间隔（秒）。
-|  위치            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
+|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
-|    이름            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
-|     Description       |      提供有意义的说明。 |
-|     속성    |  制造商提供的其他属性。
+|    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
+|     说明       |      提供有意义的说明。 |
+|     属性    |  制造商提供的其他属性。
 |     **SensorModel**        |          |
 |       类型（模拟、数字）          |      传感器类型，无论是模拟还是数字。       |
-|          제조업체            |       传感器的制造商。     |
+|          制造商            |       传感器的制造商。     |
 |     ProductCode| 产品代码或型号名称。 例如，RS-N01。 |
 |       SensorMeasures > 名称       | 传感器度量值的名称。 仅支持小写。 对于不同深度的度量，请指定深度。 例如，soil_moisture_15cm。 此名称必须与遥测数据一致。  |
 |          SensorMeasures > 数据类型       |遥测数据类型。 目前支持 double。|
 |    SensorMeasures > 类型    |传感器遥测数据的度量类型。 系统定义类型为 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、压力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要添加更多，请参阅/ExtendedType API。|
 |        SensorMeasures > 单元              | 传感器遥测数据的单位。 系统定义的单位为 NoUnit、摄氏度、华氏度、开氏度、Rankine、Pascal、水星、PSI、毫米、厘米、米、英寸、英尺、英里、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、WattsPerSquareMeter、KiloWattsPerSquareMeter、百分比、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、PartsPerMillion、MilliSiemensPerCentiMeter，Centibar，DeciSiemensPerMeter，KiloPascal，VolumetricIonContent，升，MilliLiter，Seconds，UnixTimestamp，MicroMolPerMeterSquaredPerSecond，InchesPerHour 若要添加更多，请参阅/ExtendedType API。|
 |    SensorMeasures > AggregationType    |  值可以为 "无"、"平均值"、"最大值" 或 "StandardDeviation"。  |
-|          이름            | 用于标识资源的名称。 例如，模型名称或产品名称。  |
-|    Description        | 提供模型的有意义的说明。  |
-|   속성       |  制造商提供的其他属性。  |
+|          名称            | 用于标识资源的名称。 例如，模型名称或产品名称。  |
+|    说明        | 提供模型的有意义的说明。  |
+|   属性       |  制造商提供的其他属性。  |
 |    **器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。 |
 |  SensorModelId     |    关联的传感器型号的 ID。   |
-| 위치          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
+| 位置          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
-|    DeviceID  |    传感器连接到的设备的 ID。     |
-| 이름            |   标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
-|    Description      | 提供有意义的说明。 |
-|    속성        |制造商提供的其他属性。 |
+|    设备 ID  |    传感器连接到的设备的 ID。     |
+| 名称            |   标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
+|    说明      | 提供有意义的说明。 |
+|    属性        |制造商提供的其他属性。 |
 
 有关对象的详细信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
@@ -126,13 +126,13 @@ ms.locfileid: "76715516"
 
 若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （ https://\<yourdatahub > appname>.azurewebsites.net）。  
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>身份验证
 
 FarmBeats Datahub 使用持有者身份验证，该身份验证需要在上一节中生成的以下凭据：
 
-- 클라이언트 ID
-- 클라이언트 암호
-- 테넌트 ID
+- 客户端 ID
+- 客户端机密
+- 租户 ID
 
 使用这些凭据，调用方可以请求访问令牌。 令牌必须在后续 API 请求的标头部分中发送，如下所示：
 
@@ -196,7 +196,7 @@ DeviceModel
 }
 ```
 
-디바이스
+设备
 
 ```json
 {
@@ -248,7 +248,7 @@ SensorModel
 }
 
 ```
-센서
+传感器
 
 ```json
 {
@@ -287,7 +287,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 > [!NOTE]
 > Api 为创建的每个实例返回唯一 Id。 必须保留 Id 才能发送相应的遥测消息。
 
-### <a name="send-telemetry"></a>원격 분석 전송
+### <a name="send-telemetry"></a>发送遥测
 
 现在，你已在 FarmBeats 中创建了设备和传感器，接下来可以发送关联的遥测消息。
 
@@ -384,7 +384,7 @@ write_client.stop()
 }
 ```
 
-## <a name="troubleshooting"></a>문제 해결
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流式传输数据后，无法查看遥测数据
 
@@ -420,6 +420,6 @@ write_client.stop()
 ```
 
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](references-for-azure-farmbeats.md#rest-api)。

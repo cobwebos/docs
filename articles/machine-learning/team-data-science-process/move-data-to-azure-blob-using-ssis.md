@@ -1,5 +1,5 @@
 ---
-title: SSIS 커넥터를 사용하여 Blob 스토리지 데이터 이동 - Team Data Science Process
+title: 使用 SSIS 连接器移动 Blob 存储数据 - Team Data Science Process
 description: 了解如何使用适用于 Azure SQL Server Integration Services 功能包将数据移入或移出 Azure Blob 存储。
 services: machine-learning
 author: marktab
@@ -18,8 +18,8 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720865"
 ---
-# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS 커넥터를 사용하여 Azure Blob Storage의 데이터 이동
-[Azure용 SQL Server Integration Services 기능 팩](https://msdn.microsoft.com/library/mt146770.aspx) 에서는 Azure에 연결하고, Azure와 온-프레미스 데이터 원본 간에 데이터를 전송하며, Azure에 저장된 데이터를 처리하는 구성 요소를 제공합니다.
+# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
+[用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -27,63 +27,63 @@ ms.locfileid: "76720865"
 
 有关使用这些 Azure 资源的示例，请查看[SQL](sql-walkthrough.md)和[HDInsight](hive-walkthrough.md)演练。
 
-SSIS를 사용하여 하이브리드 데이터 통합 시나리오에서 일반적인 비즈니스 요구 사항을 충족하는 정식 시나리오에 대한 자세한 내용은 [Azure용 SQL Server Integration Services 통합 팩으로 더 많은 작업 수행](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) 블로그를 참조하세요.
+若要深入了解使用 SSIS 完成混合数据集成方案中常见的业务需求的规范方案讨论，请参阅[Doing more with SQL Server Integration Services Feature Pack for Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx)（使用用于 Azure 的 SQL Server Integration Services 功能包执行更多操作）博客。
 
 > [!NOTE]
-> Azure Blob Storage에 대한 전체 소개 내용은 [Azure Blob 기본 사항](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) 및 [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)를 참조하세요.
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 若要执行本文中所述的任务，必须设置 Azure 订阅和 Azure 存储帐户。 需要 Azure 存储帐户名称和帐户密钥来上传或下载数据。
 
-* **Azure 구독**을 설정하려면 [1개월 무료 평가판](https://azure.microsoft.com/pricing/free-trial/)을 참조하세요.
+* 若要设置 **Azure 订阅**，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 * 有关创建**存储帐户**以及获取帐户和密钥信息的说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
 
-**SSIS 커넥터**를 사용하려면 다음을 다운로드해야 합니다.
+若要使用 **SSIS 连接器**，则必须下载：
 
-* **SQL Server 2014 또는 2016 Standard 이상**: 설치 파일에 SQL Server Integration Services가 포함되어 있습니다.
+* **SQL Server 2014 或 2016 Standard（或更高版本）** ：安装包括 SQL Server Integration Services。
 * **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以分别从[SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366)和[SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492)页下载这些连接器。
 
 > [!NOTE]
-> SSIS는 SQL Server와 함께 설치되지만 Express 버전에는 포함되어 있지 않습니다. 다양한 버전의 SQL Server에 포함된 애플리케이션에 대한 자세한 내용은 [SQL Server 버전](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)을 참조하세요.
+> SSIS 随 SQL Server 一起安装，但并不包括在 Express 版本中。 若要深入了解 SQL Server 各种版本中包含哪些应用程序，请参阅 [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)（SQL Server 版本）
 > 
 > 
 
-SSIS에 대한 교육 자료는 [SSIS에 대한 실습 교육](https://www.microsoft.com/sql-server/training-certification)
+有关 SSIS 的培训资料，请参阅 [Hands On Training for SSIS](https://www.microsoft.com/sql-server/training-certification)（SSIS 培训指导）
 
-SISS를 사용하여 간단한 ETL(추출, 변환 및 로드) 패키지를 빌드하는 방법에 대한 자세한 내용은 [SSIS 자습서: 간단한 ETL 패키지 만들기](https://msdn.microsoft.com/library/ms169917.aspx)를 참조하세요.
+若要深入了解如何使用 SISS 启动并运行以生成简单的提取、转换和加载 (ETL) 包，请参阅 [SSIS教程：创建简单的 ETL 包](https://msdn.microsoft.com/library/ms169917.aspx)。
 
-## <a name="download-nyc-taxi-dataset"></a>NYC Taxi 데이터 세트 다운로드
-여기에 설명된 예제에서는 공개적으로 제공되는 데이터 세트인 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) 데이터 세트를 사용합니다. 이 데이터 세트는 2013년 뉴욕 시의 1억 7,300만 건에 달하는 택시 승차 기록으로 구성됩니다. 데이터는 여정 정보 데이터와 요금 데이터의 두 종류가 있습니다. 每个月有一个文件，每个文件有24个文件，每个文件大约有 2 GB 未压缩。
+## <a name="download-nyc-taxi-dataset"></a>下载 NYC 出租车数据集
+此处所述的示例使用公开发布的数据集 - [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)。 此数据集包含 2013 年纽约市内约 1.73 亿次出租车行程。 有两种类型的数据：行程详细信息数据和费用数据。 每个月有一个文件，每个文件有24个文件，每个文件大约有 2 GB 未压缩。
 
-## <a name="upload-data-to-azure-blob-storage"></a>Azure File Storage는 Windows 및 기타 운영 체제에 대해 표준 SMB 2.1 프로토콜을 사용하므로, 응용 프로그램은 파일 공유 열기, 액세스 및 관리에 대해 익숙한 FileSystem API를 계속 사용할 수 있습니다.
-File Storage 시작하기
+## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
+要使用 SSIS 功能包将数据从本地移动到 Azure Blob 存储，使用[**Azure Blob 上传任务**](https://msdn.microsoft.com/library/mt146776.aspx)的实例，如下所示：
 
 ![configure-data-science-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
-작업에 사용되는 매개 변수는 다음과 같습니다.
+以下是任务使用的参数：
 
-| 필드 | Description |
+| 字段 | 说明 |
 | --- | --- |
-| **AzureStorageConnection** |指定一个现有的 Azure 存储连接管理器，或创建一个新的连接管理器，用于引用指向在其中托管 blob 文件的 Azure 存储帐户。 |
+| AzureStorageConnection |指定一个现有的 Azure 存储连接管理器，或创建一个新的连接管理器，用于引用指向在其中托管 blob 文件的 Azure 存储帐户。 |
 | **BlobContainer** |指定将上载的文件作为 blob 保留的 blob 容器的名称。 |
-| **BlobDirectory** |업로드한 파일이 블록 blob으로 저장되는 blob 디렉터리를 지정합니다. blob 디렉터리는 가상 계층 구조입니다. blob가 이미 있는 경우 바뀝니다. |
-| **LocalDirectory** |업로드할 파일이 포함된 로컬 디렉터리를 지정합니다. |
-| **FileName** |지정된 이름 패턴의 파일을 선택할 이름 필터를 지정합니다. 예를 들어 MySheet\*.xls\*는 MySheet001.xls 및 MySheetABC.xlsx와 같은 파일을 포함합니다. |
-| **TimeRangeFrom/TimeRangeTo** |시간 범위 필터를 지정합니다. *TimeRangeFrom*에서 *TimeRangeTo* 사이에 수정된 파일이 포함됩니다. |
+| **BlobDirectory** |指定将上载的文件作为块 blob 存储的 blob 目录。 该 blob 目录是一个虚拟层次结构。 如果 blob 已存在，其会被替代。 |
+| **LocalDirectory** |指定包含要上传的文件的本地目录。 |
+| **FileName** |指定名称筛选器以选择具有指定名称模式的文件。 例如，MySheet\*.xls\* 包括 MySheet001.xls 和 MySheetABC.xlsx 等文件 |
+| **TimeRangeFrom/TimeRangeTo** |指定时间范围筛选器。 将包括在 *TimeRangeFrom* 之后以及 *TimeRangeTo* 之前修改的文件。 |
 
 > [!NOTE]
-> 전송을 시도하기 전에 **AzureStorageConnection** 자격 증명이 올바르고 **BlobContainer**가 있어야 합니다.
+> **AzureStorageConnection** 凭据必须正确，且在尝试进行传输之前，**BlobContainer** 必须存在。
 > 
 > 
 
-## <a name="download-data-from-azure-blob-storage"></a>Azure Blob Storage에서 데이터 다운로드
-SSIS를 사용하여 Azure Blob Storage에서 온-프레미스 스토리지로 데이터를 다운로드하려면 [Azure Blob 다운로드 작업](https://msdn.microsoft.com/library/mt146779.aspx)의 인스턴스를 사용합니다.
+## <a name="download-data-from-azure-blob-storage"></a>从 Azure Blob 存储下载数据
+要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 下载任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
 
-## <a name="more-advanced-ssis-azure-scenarios"></a>고급 SSIS-Azure 시나리오
-SSIS 기능 팩을 사용하면 패키징 작업을 통해 보다 복잡한 흐름을 처리할 수 있습니다. 예를 들어 blob 데이터를 HDInsight 클러스터에 직접 공급하여 해당 출력을 blob로 다시 다운로드한 다음 온-프레미스 스토리지에 다운로드할 수 있습니다. SSIS는 추가 SSIS 커넥터를 사용하여 HDInsight 클러스터에서 Hive 및 Pig 작업을 실행할 수 있습니다.
+## <a name="more-advanced-ssis-azure-scenarios"></a>更高级的 SSIS-Azure 方案
+SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：
 
-* SSIS를 사용하여 Azure HDInsight 클러스터에서 Hive 스크립트를 실행하려면 [Azure HDInsight Hive 작업](https://msdn.microsoft.com/library/mt146771.aspx)을 사용합니다.
-* SSIS를 사용하여 Azure HDInsight 클러스터에서 Pig 스크립트를 실행하려면 [Azure HDInsight Pig 작업](https://msdn.microsoft.com/library/mt146781.aspx)을 사용합니다.
+* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](https://msdn.microsoft.com/library/mt146771.aspx)。
+* 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](https://msdn.microsoft.com/library/mt146781.aspx)。
 

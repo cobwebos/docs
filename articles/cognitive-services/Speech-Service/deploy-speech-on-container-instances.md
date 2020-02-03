@@ -23,7 +23,7 @@ ms.locfileid: "76717405"
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-container-registry"></a>컨테이너 레지스트리에 대한 액세스 요청
+## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
 必须先完成并提交[认知服务语音容器请求表单](https://aka.ms/speechcontainerspreview/)，才能请求访问容器。 
 

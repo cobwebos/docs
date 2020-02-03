@@ -101,7 +101,7 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 * [Microsoft Graph 主页](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph 개요](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph 概述](https://docs.microsoft.com/graph/overview)
 
 * [Microsoft Graph 身份验证概述](https://docs.microsoft.com/graph/auth/)
 
@@ -113,7 +113,7 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 SAML JIT 使用 SAML 令牌中的声明信息来创建和更新应用程序中的用户信息。 客户可根据需要在 Azure AD 应用程序中配置这些必需的声明。 有时需要从应用程序端启用 JIT 预配，以便客户可以使用此功能。 SAML JIT 对创建和更新用户很有用，但它不能删除或停用应用程序中的用户。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * [为应用程序启用单一登录](isv-sso-content.md)
 

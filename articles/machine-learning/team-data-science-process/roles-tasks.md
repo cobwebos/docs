@@ -1,5 +1,5 @@
 ---
-title: Team Data Science Process 역할 및 작업
+title: Team Data Science Process 角色和任务
 description: 用于数据科学组的关键组件、人员角色和相关任务的概述。
 author: marktab
 manager: marktab
@@ -18,7 +18,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720004"
 ---
-# <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 역할 및 작업
+# <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
 团队数据科学过程（TDSP）是 Microsoft 开发的一个框架，它提供了一种高效构建预测分析解决方案和智能应用程序的结构化方法。 本文概述了在此过程中实现数据科学团队标准化的主要人员角色和相关任务。
 
@@ -40,9 +40,9 @@ ms.locfileid: "76720004"
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>四个 TDSP 角色的定义和任务
 假设数据科学单元由组中的团队组成，TDSP 人员有四种不同的角色：
 
-1. **组管理员**：管理企业中整个数据科学单元。 데이터 과학 단위에는 여러 팀이 있을 수 있고 각 팀은 고유 비즈니스 직종에서 여러 데이터 과학 프로젝트 작업을 수행합니다. 그룹 관리자는 대리인에게 작업을 위임할 수는 있지만 역할에 관련된 작업은 변경되지 않습니다.
+1. **组管理员**：管理企业中整个数据科学单元。 数据科学部门可能有多个团队，每个团队都在不同的业务垂直领域开展多个数据科学项目。 组管理员可以将任务委托给代理，但与角色相关的任务不变。
    
-2. **团队主管**：管理企业数据科学单位的团队。 팀은 여러 명의 데이터 과학자로 구성됩니다. 对于小型数据科学单位，组经理和团队主管可能是同一个人。
+2. **团队主管**：管理企业数据科学单位的团队。 团队由多个数据科学家组成。 对于小型数据科学单位，组经理和团队主管可能是同一个人。
    
 3. **项目主管**：管理特定数据科学项目上各个数据科学家的日常活动。
    
@@ -55,9 +55,9 @@ ms.locfileid: "76720004"
 
 下图显示了每个团队数据科学流程角色的顶级任务。 此架构和下面更详细地概述了每个 TDSP 角色的任务，可帮助你根据自己的责任选择所需教程。
 
-![역할 및 작업 개요](./media/roles-tasks/overview-tdsp-top-level.png)
+![角色和任务概述](./media/roles-tasks/overview-tdsp-top-level.png)
 
-## <a name="group-manager-tasks"></a>그룹 관리자 작업
+## <a name="group-manager-tasks"></a>组管理员任务
 
 组管理器或指定的 TDSP 系统管理员完成以下任务以采用 TDSP：
 
@@ -70,21 +70,21 @@ ms.locfileid: "76720004"
 
 有关详细说明，请参阅[数据科学团队的组管理员任务](group-manager-tasks.md)。
 
-## <a name="team-lead-tasks"></a>팀 리더 작업
+## <a name="team-lead-tasks"></a>团队主管任务
 
 团队主管或指定的项目管理员完成以下任务以采用 TDSP：
 
 - 在组的 Azure DevOps 组织中创建团队**项目**。
 - 在项目中创建**项目模板存储库**，并通过组管理器或委托设置的组项目模板存储库将其设定为种子。
 - 创建**团队实用工具存储库**，将其从组实用工具存储库中植入，并将特定于团队的实用程序添加到存储库。
-- （可选）创建[Azure 文件存储](https://azure.microsoft.com/services/storage/files/)来存储团队有用的数据资产。 다른 팀 구성원도 팀의 분석 데스크톱에 이 공유 클라우드 파일 저장소를 탑재할 수 있습니다.
+- （可选）创建[Azure 文件存储](https://azure.microsoft.com/services/storage/files/)来存储团队有用的数据资产。 其他团队成员可以在其分析桌面上装载这个共享的云文件存储。
 - 可以选择在团队**DSVM**上装载 Azure 文件存储，并向其中添加团队数据资产。
 - 设置**安全控制**，方法是添加团队成员并配置其权限。
 
 有关详细说明，请参阅[数据科学团队的团队主管任务](team-lead-tasks.md)。
 
 
-## <a name="project-lead-tasks"></a>프로젝트 리더 작업
+## <a name="project-lead-tasks"></a>项目主管任务
 
 项目主管完成以下任务以采用 TDSP：
 
@@ -95,7 +95,7 @@ ms.locfileid: "76720004"
 
 有关详细说明，请参阅[数据科学团队的项目主管任务](project-lead-tasks.md)。
 
-## <a name="project-individual-contributor-tasks"></a>프로젝트 개별 참가자 작업
+## <a name="project-individual-contributor-tasks"></a>项目单独参与者任务
 
 项目个体撰稿人（通常是数据科学家）使用 TDSP 执行以下任务：
 
@@ -125,11 +125,11 @@ ms.locfileid: "76720004"
 
 使用 Microsoft TDSP 团队的[项目模板存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate)来支持高效的项目执行和协作。 存储库提供了可用于自己的 TDSP 项目的标准化目录结构和文档模板。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-Team Data Science Process에서 정의한 역할 및 작업에 대한 자세한 설명을 살펴봅니다.
+浏览 Team Data Science Process 定义的角色和任务的更详细说明：
 
-- [데이터 과학 팀에 대한 그룹 관리자 작업](group-manager-tasks.md)
-- [데이터 과학 팀에 대한 팀 리더 작업](team-lead-tasks.md)
-- [데이터 과학 팀에 대한 프로젝트 리더 작업](project-lead-tasks.md)
+- [数据科学团队的组管理员任务](group-manager-tasks.md)
+- [数据科学团队的团队主管任务](team-lead-tasks.md)
+- [数据科学团队的项目主管任务](project-lead-tasks.md)
 - [为数据科学团队项目单独的参与者任务](project-ic-tasks.md)

@@ -1,6 +1,6 @@
 ---
-title: 팀 데이터 과학 프로세스 수명 주기
-description: TDSP(팀 데이터 과학 프로세스)는 데이터 과학 프로젝트를 구조화하는 데 사용할 수 있는 권장 수명 주기를 제공합니다.
+title: Team Data Science Process 生命周期
+description: Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建议生命周期。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,37 +18,37 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720446"
 ---
-# <a name="the-team-data-science-process-lifecycle"></a>팀 데이터 과학 프로세스 수명 주기
+# <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期
 
-TDSP(팀 데이터 과학 프로세스)는 데이터 과학 프로젝트를 구조화하는 데 사용할 수 있는 권장 수명 주기를 제공합니다. 生命周期概述了成功项目所遵循的完整步骤。 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)(Cross Industry Standard Process for Data Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process)(Knowledge Discovery in Databases) 또는 조직 자체의 사용자 지정 프로세스 등과 같은 다른 데이터 과학 수명 주기를 사용하는 경우에도 작업 기반 TDSP를 계속 사용할 수 있습니다. 
+Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建议生命周期。 生命周期概述了成功项目所遵循的完整步骤。 如果使用另一数据科学生命周期，例如数据挖掘的跨行业标准过程 [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、数据库中的知识发现 [(KDD)](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的定制过程，仍可使用基于任务的 TDSP。 
 
-이 수명 주기는 지능형 애플리케이션의 일부로 제공되는 데이터 과학 프로젝트를 위해 설계되었습니다. 이러한 애플리케이션은 예측 분석을 위해 기계 학습 또는 인공 지능 모델을 배포합니다. 探索数据科学项目和标识分析项目也可从使用此过程中获益。 하지만 이러한 프로젝트의 경우 여기에 설명된 단계 중 일부가 필요하지 않을 수도 있습니다. 
+此生命周期为数据科学项目而设计，这些项目旨在作为智能应用程序的一部分提供。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目和标识分析项目也可从使用此过程中获益。 但对于这些项目，可能并不需要这里描述的一些步骤。 
 
-## <a name="five-lifecycle-stages"></a>5가지 수명 주기 단계
+## <a name="five-lifecycle-stages"></a>五个生命周期阶段
 
-TDSP 수명 주기는 반복적으로 실행되는 5가지 주요 단계로 구성됩니다. 이러한 단계에는 다음이 포함됩니다.
+TDSP 生命周期由 5 个以迭代方式执行的主要阶段组成。 这些阶段包括：
 
-   1. [비즈니스 이해](lifecycle-business-understanding.md)
-   2. [데이터 취득 및 이해](lifecycle-data.md)
-   3. [모델링](lifecycle-modeling.md)
-   4. [배포](lifecycle-deployment.md)
-   5. [고객 승인](lifecycle-acceptance.md)
+   1. [了解业务](lifecycle-business-understanding.md)
+   2. [数据采集和理解](lifecycle-data.md)
+   3. [建模](lifecycle-modeling.md)
+   4. [部署](lifecycle-deployment.md)
+   5. [客户验收](lifecycle-acceptance.md)
 
-다음은 TDSP 수명 주기를 시각적으로 나타낸 것입니다. 
+此处直观地展示了 TDSP 生命周期： 
 
-![TDSP 수명 주기](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP 生命周期](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-TDSP 수명 주기는 예측 모델을 사용하는 데 필요한 작업에 대한 지침을 제공하는 일련의 반복 단계로 모델링됩니다. 지능형 애플리케이션을 빌드하는 데 사용하려는 예측 모델을 프로덕션 환경에 배포합니다. 이 프로세스 수명 주기의 목표는 명확한 합의 종점까지 데이터 과학 프로젝트를 계속 진행하는 것입니다. 데이터 과학은 연구 및 발견을 연습하는 과정입니다. 표준화된 템플릿을 활용하는 잘 정의된 아티팩트 집합을 통해 팀 및 고객에게 작업을 전달하면 오해를 방지할 수 있습니다. 또한 이러한 템플릿을 사용하면 복잡한 데이터 과학 프로젝트를 성공적으로 완료할 확률도 높아집니다.
+将 TDSP 生命周期建模为一系列迭代步骤，这些步骤为使用预测模型所需的任务提供指导。 在计划使用的生产环境中部署预测模型以构建智能应用程序。 此过程生命周期的目标是将数据科学项目继续推动到明确的参与终点。 数据科学是研究和发现中的一项运用。 通过使用标准模板的定义完善的一系列项目，可以将任务传达给团队和客户，这有助于避免产生误解。 使用这些模板还可增加成功完成复杂数据科学项目的几率。
 
-각 단계마다 다음 정보를 제공합니다.
+我们为每个阶段提供以下信息：
 
-   * **목표**: 구체적 목적입니다.
-   * **수행 방법**: 특정 작업의 개요 및 완료 방법에 대한 지침입니다.
-   * **아티팩트**: 결과물 및 이를 생성하기 위한 지원입니다.
+   * **目标**：具体目标。
+   * **如何执行**：具体任务和有关如何完成这些任务的指导的概述。
+   * **项目**：可交付结果和用于生成结果的支持。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-특정 시나리오 프로세스의 모든 단계를 보여주는 전체 엔드투엔드 연습도 제공됩니다. [예제 연습](walkthroughs.md) 문서는 링크 및 썸네일 설명을 포함하는 시나리오 목록을 제공합니다. 이 연습에서는 클라우드 및 온-프레미스 도구와 서비스를 워크플로 또는 파이프라인에 결합하여 지능형 애플리케이션을 만드는 방법을 설명합니다. 
+我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
-Azure Machine Learning Studio를 사용하는 TDSP의 단계 실행 방법의 예제를 보려면 [Azure Machine Learning에서 TDSP 사용](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)을 참조하세요.
+有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。

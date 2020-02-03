@@ -1,6 +1,6 @@
 ---
 title: 具有 Azure Cosmos DB 和 Apache Spark 的 Lambda 体系结构
-description: 이 문서에서는 Azure Cosmos DB, HDInsight 및 Spark를 사용하여 람다 아키텍처를 구현하는 방법을 설명합니다.
+description: 本文介绍如何实现使用 Azure Cosmos DB、HDInsight 和 Spark 的 lambda 体系结构
 ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
@@ -13,56 +13,56 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719732"
 ---
-# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Azure 플랫폼에 람다 아키텍처 구현 
+# <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 
-람다 아키텍처는 대규모 데이터 집합의 효율적인 데이터 처리를 가능하게 합니다. 람다 아키텍처는 일괄 처리, 스트림 처리 및 서비스 계층을 사용하여 빅 데이터를 쿼리하는 데 관련된 대기 시간을 최소화합니다. 
+使用 Lambda 体系结构可对大型数据集进行高效的数据处理。 Lambda 体系结构使用批处理、流式处理和服务层，将查询大数据时存在的延迟降到最低。 
 
-Azure에서 람다 아키텍처를 구현하려면 다음 기술을 결합하여 실시간 빅 데이터 분석을 가속화합니다.
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) - 업계 최초로 전 세계적으로 배포된 다중 모델 데이터베이스 서비스입니다. 
-* [Azure HDInsight용 Apache Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) - 대규모 데이터 분석 애플리케이션을 실행하는 처리 프레임워크입니다.
-* Azure Cosmos DB [변경 피드](change-feed.md) - HDInsight의 일괄 처리 계층에 새 데이터를 스트리밍하여 처리합니다.
-* [Spark-Azure Cosmos DB 커넥터](spark-connector.md)
+若要在 Azure 上实现 lambda 体系结构，可以结合以下技术来加快实时大数据分析：
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：本行业第一款全球分布式多模型数据库服务。 
+* [Apache Spark for Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/)：用于运行大规模数据分析应用程序的处理框架。
+* Azure Cosmos DB [更改源](change-feed.md)：将新数据流式传输到批处理层供 HDInsight 处理
+* [Spark 到 Azure Cosmos DB 的连接器](spark-connector.md)
 
-이 문서에서는 원래의 다중 계층 설계를 기반으로 한 람다 아키텍처의 기본 사항과 작업을 간소화하는 "재개발된" 람다 아키텍처의 이점에 대해 설명합니다.  
+本文介绍基于原始多层设计的 lambda 体系结构的基础知识，以及可以简化操作的、“经过重建”的 lambda 体系结构的优势。  
 
-## <a name="what-is-a-lambda-architecture"></a>람다 아키텍처란?
-[Nathan Marz](https://twitter.com/nathanmarz)가 기술한 대로, 람다 아키텍처는 일괄 처리 및 짧은 대기 시간 시나리오를 처리하기 위한 확장 가능하고 내결함성이 있는 일반적인 데이터 처리 아키텍처입니다.
+## <a name="what-is-a-lambda-architecture"></a>什么是 lambda 体系结构？
+lambda 体系结构是一种通用、可缩放且容错的数据处理体系结构，可以解决 [Nathan Marz](https://twitter.com/nathanmarz) 所述的批处理和速度延迟方案。
 
-![람다 아키텍처를 보여 주는 다이어그램](./media/lambda-architecture/lambda-architecture-intro.png)
+![显示 lambda 体系结构的示意图](./media/lambda-architecture/lambda-architecture-intro.png)
 
-원본: http://lambda-architecture.net/
+源： http://lambda-architecture.net/
 
-람다 아키텍처의 기본 원칙은 [http://lambda-architecture.net](http://lambda-architecture.net/)에 따라 앞의 다이어그램에서 설명하고 있습니다.
+上图根据 [http://lambda-architecture.net](http://lambda-architecture.net/) 中的内容描绘了 lambda 体系结构的基本原理。
 
- 1. 모든 **데이터**는 *일괄 처리 계층* 및 *속도 계층* *모두*로 푸시됩니다.
- 2. **일괄 처리 계층**에는 마스터 데이터 세트(변경 불가능한 추가 전용 원시 데이터 세트)가 있으며, 일괄 처리 보기가 미리 계산됩니다.
- 3. **서비스 계층**에는 빠른 쿼리에 대한 일괄 처리 보기가 있습니다. 
- 4. **속도 계층**은 서비스 계층에 대한 처리 시간을 보정하고 최근 데이터만 처리합니다.
- 5. 일괄 처리 보기와 실시간 보기의 결과를 병합하거나 개별적으로 ping하여 모든 쿼리에 응답할 수 있습니다.
+ 1. 所有**数据**同时推送到批处理层和速度层。
+ 2. **批处理层**包含主数据集（不可变、仅限追加的原始数据集），并预先计算批处理视图。
+ 3. **服务层**包含快速查询的批处理视图。 
+ 4. **速度层**补偿处理时间（针对服务层），只处理最新的数据。
+ 5. 通过合并批处理视图和实时视图中的结果或者单独 ping 每个结果，可以应答所有查询。
 
-계속 참조해 가면서 다음을 사용하여 이 아키텍처를 구현할 수 있습니다.
+阅读后续内容后，只需使用以下内容即可实现此体系结构：
 
 * Azure Cosmos 容器
-* HDInsight(Apache Spark 2.1) 클러스터
-* Spark 커넥터 [1.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
+* HDInsight (Apache Spark 2.1) 群集
+* Spark 连接器 [1.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
 
-## <a name="speed-layer"></a>속도 계층
+## <a name="speed-layer"></a>速度层
 
-작업 측면에서 데이터의 올바른 상태를 유지하면서 두 개의 데이터 스트림을 유지하는 것은 복잡한 작업일 수 있습니다. 작업을 간소화하려면 [Azure Cosmos DB 변경 피드 지원](change-feed.md)을 활용하여 *속도 계층*에 대한 *변경 피드 API*를 통해 Azure Cosmos DB 변경 로그를 표시하면서 *일괄 처리 계층*에 대한 상태를 유지합니다.  
-![새 데이터, 속도 계층 및 마스터 데이터 세트 부분을 강조 표시한 람다 아키텍처 다이어그램](./media/lambda-architecture/lambda-architecture-change-feed.png)
+从操作的角度看，既要维护两个数据流，又要确保数据状态正确，可能是一项复杂的任务。 为了简化操作，可以利用 [Azure Cosmos DB 更改源支持](change-feed.md)来保留批处理层的状态，同时通过速度层的更改源 API 来展示 Azure Cosmos DB 更改日志。  
+![突出显示 lambda 体系结构的新数据、速度层和主数据集部分的示意图](./media/lambda-architecture/lambda-architecture-change-feed.png)
 
-이러한 계층에 대한 중요 사항
+这些层中的要点包括：
 
- 1. 모든 **데이터**가 *Azure Cosmos DB에만* 푸시됩니다. 이에 따라 멀티캐스팅 문제를 방지할 수 있습니다.
- 2. **일괄 처리 계층**에는 마스터 데이터 세트(변경 불가능한 추가 전용 원시 데이터 세트)가 있으며, 일괄 처리 보기가 미리 계산됩니다.
- 3. **서비스 계층**은 다음 섹션에서 설명합니다.
- 4. **속도 계층**은 HDInsight(Apache Spark)를 활용하여 Azure Cosmos DB 변경 피드를 읽습니다. 이렇게 하면 데이터를 유지하고 동시에 쿼리하고 처리할 수 있습니다.
- 5. 일괄 처리 보기와 실시간 보기의 결과를 병합하거나 개별적으로 ping하여 모든 쿼리에 응답할 수 있습니다.
+ 1. 所有**数据**只会推送到 Azure Cosmos DB，因此可以避免多重强制转换问题。
+ 2. **批处理层**包含主数据集（不可变、仅限追加的原始数据集），并预先计算批处理视图。
+ 3. 下一部分介绍**服务层**。
+ 4. **速度层**利用 HDInsight (Apache Spark) 读取 Azure Cosmos DB 更改源。 这样，便可以持久保存数据，同时可并行查询和处理数据。
+ 5. 通过合并批处理视图和实时视图中的结果或者单独 ping 每个结果，可以应答所有查询。
  
-### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>코드 예제: Azure Cosmos DB 변경 피드에 대한 Spark 구조화 스트리밍
-Azure Cosmos DB 변경 피드의 빠른 프로토타입을 **속도 계층**의 일부로 실행하려면, Twitter 데이터를 [Azure Cosmos DB 변경 피드 및 Apache Spark를 사용하여 스트림 처리 변경](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark) 예제의 일부로 사용하여 테스트할 수 있습니다. Twitter 출력을 빠르게 시작하려면 [Twitter에서 Cosmos DB로 스트림 피드](https://github.com/tknandu/TwitterCosmosDBFeed)의 코드 샘플을 참조하세요. 앞의 예제를 사용하면 Twitter 데이터를 Azure Cosmos DB에 로드한 다음, HDInsight(Apache Spark) 클러스터를 변경 피드에 연결하도록 설정할 수 있습니다. 이 구성을 설정하는 방법에 대한 자세한 내용은 [Apache Spark-Azure Cosmos DB 커넥터 설정](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup)을 참조하세요.  
+### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>代码示例：流式传输到 Azure Cosmos DB 更改源的 Spark 结构化数据
+若要运行**速度层**中包含的 Azure Cosmos DB 更改源的快速原型，可以使用[使用 Azure Cosmos DB 更改源和 Apache Spark 流处理更改](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)示例中的 Twitter 数据来测试该原型。 若要立即开始生成 Twitter 输出，请参阅中[将源从 Twitter 流式传输到 Cosmos DB](https://github.com/tknandu/TwitterCosmosDBFeed) 中的代码示例。 沿用前面的示例，可将 Twitter 数据载入 Azure Cosmos DB，然后将 HDInsight (Apache Spark) 群集设置为连接到更改源。 有关如何设置此配置的详细信息，请参阅 [Apache Spark 到 Azure Cosmos DB 连接器的设置](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup)。  
 
-다음 코드 조각에서는 실시간 Twitter 데이터 스트림을 검토하는 Azure Cosmos DB 변경 피드에 연결하기 위해 구조화된 스트리밍 작업을 실행하도록 `spark-shell`을 구성하여 실행 간격 수를 계산하는 방법을 보여 줍니다.
+以下代码片段演示如何配置 `spark-shell` 来运行一个结构化流作业，以连接到 Azure Cosmos DB 更改源。该项设置会检查实时 Twitter 数据流，以执行运行间隔计数。
 
 ```
 // Import Libraries
@@ -91,37 +91,37 @@ var streamData = spark.readStream.format(classOf[CosmosDBSourceProvider].getName
 val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0)).groupBy("countcol").count().writeStream.outputMode("complete").format("console").start()
 ```
 
-완전한 코드 샘플은 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)를 참조하세요.
-* 여기에는 [Streaming Query from Cosmos DB Change Feed.scala](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) 및
-* [Streaming Tags Query from Cosmos DB Change Feed.scala](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala)가 있습니다.
+有关完整代码示例，请参阅 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)，其中包括：
+* [Cosmos DB 更改源中的流查询 (Scala)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala)
+* [Cosmos DB 更改源中的流标记查询 (Scala)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala)
 
-이 출력은 Azure Cosmos DB 변경 피드의 Twitter 데이터에 대한 간격 수를 계산하는 구조화된 스트리밍 작업을 지속적으로 실행하는 `spark-shell` 콘솔입니다. 다음 이미지에서는 스트림 작업의 출력과 간격 수를 보여 줍니다.
+此代码的输出是一个 `spark-shell` 控制台，它会不断地运行一个结构化流作业，用于针对 Azure Cosmos DB 更改源中的 Twitter 数据执行间隔计数。 下图显示了流作业的输出和间隔计数。
 
-![Azure Cosmos DB 변경 피드의 Twitter 데이터에 대한 간격 수를 보여 주는 스트리밍 출력](./media/lambda-architecture/lambda-architecture-speed-layer-twitter-count.png) 
+![流的输出显示了针对 Azure Cosmos DB 更改源中的 Twitter 数据执行的间隔计数](./media/lambda-architecture/lambda-architecture-speed-layer-twitter-count.png) 
 
-Azure Cosmos DB 변경 피드에 대한 자세한 내용은 다음을 참조하세요.
+有关 Azure Cosmos DB 更改源的详细信息，请参阅：
 
-* [Azure Cosmos DB에서 변경 피드 지원 사용](change-feed.md)
-* [Azure CosmosDB 변경 피드의 프로세서 라이브러리에 대한 소개](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
-* [스트림 처리 변경: Azure CosmosDB 변경 피드 + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
+* [使用 Azure Cosmos DB 中的更改源支持](change-feed.md)
+* [Azure CosmosDB 更改源处理程序库简介](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
+* [流处理更改：Azure CosmosDB 更改源 + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
 
-## <a name="batch-and-serving-layers"></a>일괄 처리 및 서비스 계층
-새 데이터가 Azure Cosmos DB(속도 계층에 사용되는 변경 피드)에 로드되기 때문에 **마스터 데이터 세트**(변경 불가능한 추가 전용 원시 데이터 세트)가 있는 위치입니다. 이제부터는 HDInsight(Apache Spark)를 사용하여 다음 이미지와 같이 **일괄 처리 계층**에서 **서비스 계층**으로 미리 계산 기능을 수행합니다.
+## <a name="batch-and-serving-layers"></a>批处理层和服务层
+由于新数据将载入 Azure Cosmos DB（其中的更改源用于速度层），因此，Azure Cosmos DB 是**主数据集**（不可变、仅限追加的原始数据集）所在的位置。 从载入后开始，可以使用 HDInsight (Apache Spark) 执行从**批处理层**到**服务层**的预先计算功能，如下图所示：
 
-![일괄 처리 계층 및 서비스 계층을 강조 표시한 람다 아키텍처 다이어그램](./media/lambda-architecture/lambda-architecture-batch-serve.png)
+![突出显示 lambda 体系结构的批处理层和服务层的示意图](./media/lambda-architecture/lambda-architecture-batch-serve.png)
 
-이러한 계층에 대한 중요 사항
+这些层中的要点包括：
 
- 1. 멀티캐스팅 문제를 방지하기 위해 모든 **데이터**가 Azure Cosmos DB에만 푸시됩니다.
- 2. **일괄 처리 계층**에는 Azure Cosmos DB에 저장되는 마스터 데이터 세트(변경 불가능한 추가 전용 원시 데이터 세트)가 있습니다. HDI Spark를 사용하면 집계를 미리 계산하여 계산된 일괄 처리 보기에 저장할 수 있습니다.
+ 1. 所有**数据**只会推送到 Azure Cosmos DB（以避免多重强制转换问题）。
+ 2. **批处理层**包含 Azure Cosmos DB 中存储的主数据集（不可变、仅限追加的原始数据集）。 使用 HDI Spark 可以预先计算要存储在计算的批处理视图中的聚合。
  3. **服务层**是一个 Azure Cosmos 数据库，其中包含主数据集和计算的批处理视图的集合。
- 4. **속도 계층**은 이 문서의 뒷부분에서 설명합니다.
- 5. 일괄 처리 보기와 실시간 보기의 결과를 병합하거나 개별적으로 ping하여 모든 쿼리에 응답할 수 있습니다.
+ 4. 本文稍后将介绍**速度层**。
+ 5. 通过合并批处理视图和实时视图中的结果或者单独 ping 每个结果，可以应答所有查询。
 
-### <a name="code-example-pre-computing-batch-views"></a>코드 예제: 미리 계산된 일괄 처리 보기
-Apache Spark에서 Azure Cosmos DB로 연결되는 **마스터 데이터 세트**에 대해 미리 계산된 보기를 실행하는 방법을 보여 주기 위해, 노트북에 있는 [람다 아키텍처 재개발 - 일괄 처리 계층](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) 및 [람다 아키텍처 재개발 - 일괄 처리 및 서비스 계층](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) 코드 조각을 사용합니다. 이 시나리오에서는 Azure Cosmos DB에 저장된 Twitter 데이터를 사용합니다.
+### <a name="code-example-pre-computing-batch-views"></a>代码示例：预先计算批处理视图
+为了展示如何针对**主数据集**执行从 Apache Spark 到 Azure Cosmos DB 的预先计算视图，请使用[重建的 Lambda 体系结构 - 批处理层](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)和[重建的 Lambda 体系结构 - 批处理层到服务层](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) Notebook 中的以下代码片段。 此方案使用 Azure Cosmos DB 中存储的 Twitter 数据。
 
-아래 PySpark 코드를 사용하여 Azure Cosmos DB 내의 Twitter 데이터에 대한 구성 연결을 만드는 것으로 시작해 보겠습니다.
+让我们先使用以下 PySpark 代码与 Azure Cosmos DB 中的 Twitter 数据建立配置连接。
 
 ```
 # Configuration to connect to Azure Cosmos DB
@@ -143,7 +143,7 @@ tweets = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**tweet
 tweets.createOrReplaceTempView("tweets")
 ```
 
-다음으로, 아래 Spark SQL 문을 실행하여 트윗 집합의 상위 10개 해시태그를 확인해 보겠습니다. 이 Spark SQL 쿼리의 경우 이 코드 조각 바로 뒤에 출력 막대형 차트가 없는 Jupyter 노트북에서 이 쿼리를 실행합니다.
+接下来，运行以下 Spark SQL 语句，确定推文集的前 10 个井号标签。 对于此 Spark SQL 查询，我们将在 Jupyter Notebook 中运行此代码，且不会紧接在此代码片段的后面提供输出条形图。
 
 ```
 %%sql
@@ -159,9 +159,9 @@ order by tweets desc
 limit 10
 ```
 
-![해시태그당 트윗 수를 보여 주는 차트](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
+![按井号标签显示推文数量的图表](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-이제 쿼리를 수행했으므로 출력 데이터를 다른 컬렉션에 저장하기 위해 Spark 커넥터를 사용하여 컬렉션에 다시 저장해 보겠습니다.  이 예제에서는 Scala를 사용하여 연결을 보여 줍니다. 与前面的示例类似，创建配置连接将 Apache Spark 数据帧保存到不同的 Azure Cosmos 容器。
+创建查询后，让我们使用 Spark 连接器将它保存回到某个集合，以便将输出数据保存到不同的集合中。  此示例使用 Scala 来展示连接。 与前面的示例类似，创建配置连接将 Apache Spark 数据帧保存到不同的 Azure Cosmos 容器。
 
 ```
 val writeConfigMap = Map(
@@ -179,7 +179,7 @@ val writeConfig = Config(writeConfigMap)
 
 ```
 
-`SaveMode`(문서에 대한 `Overwrite` 또는 `Append` 중 어떤 작업인지 여부를 나타냄)가 지정되면 이전 예제의 Spark SQL 쿼리와 비슷한 `tweets_bytags` 데이터 프레임을 만듭니다.  `tweets_bytags` 데이터 프레임이 만들어지면 이전에 지정한 `writeConfig`를 사용하는 `write` 메서드를 통해 이 데이터 프레임을 저장할 수 있습니다.
+指定 `SaveMode`（指示是要 `Overwrite`还是 `Append` 文档）后，创建与前面示例中的 Spark SQL 查询类似的 `tweets_bytags` 数据帧。  创建 `tweets_bytags` 数据帧后，可以使用 `write` 方法和前面指定的 `writeConfig` 将其保存。
 
 ```
 // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore
@@ -194,18 +194,18 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 此最后一条语句现在已将 Spark 数据帧保存到新的 Azure Cosmos 容器;从 lambda 体系结构的角度来看，这是**服务层**中的**批处理视图**。
  
-#### <a name="resources"></a>리소스
+#### <a name="resources"></a>资源
 
-완전한 코드 샘플은 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)를 참조하세요.
-* 여기에는 람다 아키텍처 재개발 - 일괄 처리 계층 [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) 및
-* 람다 아키텍처 재개발 - 일괄 처리 및 서비스 계층 [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)가 있습니다.
+有关完整代码示例，请参阅 [azure-cosmosdb-spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)，其中包括：
+* 重建的 Lambda 体系结构 - 批处理层[HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
+* 重建的 Lambda 体系结构 - 批处理层到服务层[HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
 
-## <a name="speed-layer"></a>속도 계층
-앞에서 언급한 대로 Azure Cosmos DB 변경 피드 라이브러리를 사용하면 일괄 처리 및 속도 계층 간의 작업을 간소화할 수 있습니다. 이 아키텍처에서는 HDInsight를 통해 Apache Spark를 사용하여 데이터에 대해 *구조화된 스트리밍* 쿼리를 수행합니다. 또한 다른 시스템에서 이 데이터를 액세스할 수 있도록 구조화된 스트리밍 쿼리의 결과를 일시적으로 유지하려고 할 수도 있습니다.
+## <a name="speed-layer"></a>速度层
+如前所述，使用 Azure Cosmos DB 更改源库可以简化批处理层与速度层之间的操作。 在此体系结构中，使用 Apache Spark（通过 HDInsight）可以针对数据执行结构化流查询。 此外，还可以暂时保存结构化流查询的结果，使其他系统可以访问此数据。
 
-![속도 계층을 강조 표시한 람다 아키텍처 다이어그램](./media/lambda-architecture/lambda-architecture-speed.png)
+![突出显示 lambda 体系结构的速度层的示意图](./media/lambda-architecture/lambda-architecture-speed.png)
 
-为此，请创建一个单独的 Azure Cosmos 容器来保存结构化流查询的结果。  이렇게 하면 Apache Spark뿐 아니라 다른 시스템에서도 이 정보에 액세스할 수 있습니다. Cosmos DB TTL(Time-to-Live) 기능뿐만 아니라 설정된 기간 후에 문서가 자동으로 삭제되도록 구성할 수 있습니다.  有关 Azure Cosmos DB TTL 功能的详细信息，请参阅在[Azure Cosmos 容器中自动使数据过期，并显示生存时间](time-to-live.md)
+为此，请创建一个单独的 Azure Cosmos 容器来保存结构化流查询的结果。  这样，就可以让其他系统（而不只是 Apache Spark）访问此信息。 另外，使用 Cosmos DB 生存时间 (TTL) 功能，可以配置为在设置的期限后自动删除文档。  有关 Azure Cosmos DB TTL 功能的详细信息，请参阅在[Azure Cosmos 容器中自动使数据过期，并显示生存时间](time-to-live.md)
 
 ```
 // Import Libraries
@@ -240,40 +240,40 @@ var streamingQuery = streamingQueryWriter.start()
 
 ```
 
-## <a name="lambda-architecture-rearchitected"></a>람다 아키텍처: 재개발
-이전 섹션에서 언급한 대로 다음 구성 요소를 사용하여 원래의 람다 아키텍처를 간소화할 수 있습니다.
+## <a name="lambda-architecture-rearchitected"></a>Lambda 体系结构：重建
+如前面的部分中所述，可以使用以下组件来简化原始的 lambda 体系结构：
 * Azure Cosmos DB
-* \- 일괄 처리와 속도 계층 간에 데이터를 멀티캐스팅할 필요가 없도록 하는 Azure Cosmos DB 변경 피드 라이브러리입니다.
-* HDInsight의 Apache Spark
-* Azure Cosmos DB용 Spark 커넥터
+* 使用 Azure Cosmos DB 更改源库来避免对批处理层与速度层之间的数据执行多重强制转换
+* HDInsight 上的 Apache Spark
+* Azure Cosmos DB 的 Spark 连接器
 
-![Azure Cosmos DB, Spark 및 Azure Cosmos DB 변경 피드 API를 사용한 람다 아키텍처의 재개발을 보여 주는 다이어그램](./media/lambda-architecture/lambda-architecture-re-architected.png)
+![显示使用 Azure Cosmos DB、Spark 和 Azure Cosmos DB 更改源 API 重建 lambda 体系结构的示意图](./media/lambda-architecture/lambda-architecture-re-architected.png)
 
-이 설계를 사용하면 Azure Cosmos DB와 HDInsight의 두 가지 관리 서비스만 필요합니다. 이와 결합하여 람다 아키텍처의 일괄 처리, 서비스 및 속도 계층을 처리합니다. 이 경우 작업뿐만 아니라 데이터 흐름도 간소화합니다. 
- 1. 모든 데이터는 처리를 위해 Azure Cosmos DB에 푸시됩니다.
- 2. 일괄 처리 계층에는 마스터 데이터 세트(변경 불가능한 추가 전용 원시 데이터 세트)가 있으며, 일괄 처리 보기가 미리 계산됩니다.
- 3. 서비스 계층에는 빠른 쿼리에 대한 데이터의 일괄 처리 보기가 있습니다.
- 4. 속도 계층은 서비스 계층에 대한 처리 시간을 보정하고 최근 데이터만 처리합니다.
- 5. 일괄 처리 보기와 실시간 보기의 결과를 병합하여 모든 쿼리에 응답할 수 있습니다.
+使用这种设计只需两个托管服务：Azure Cosmos DB 和 HDInsight。 这两个服务共同解决了 lambda 体系结构的批处理层、服务层和速度层需求。 这不仅简化了操作，而且也简化了数据流。 
+ 1. 所有数据将推送到 Azure Cosmos DB 进行处理
+ 2. 批处理层包含主数据集（不可变、仅限追加的原始数据集），并预先计算批处理视图。
+ 3. 服务层包含快速查询的数据批处理视图。
+ 4. 速度层补偿处理时间（针对服务层），只处理最新的数据。
+ 5. 通过合并批处理视图和实时视图中的结果，可以应答所有查询。
 
-### <a name="resources"></a>리소스
+### <a name="resources"></a>资源
 
-* **새 데이터**: 새 데이터를 Azure Cosmos DB로 푸시하는 메커니즘인 [Twitter에서 CosmosDB로의 스트림 피드](https://github.com/tknandu/TwitterCosmosDBFeed)입니다.
-* **일괄 처리 계층:** 일괄 처리 계층은 *마스터 데이터 세트*(변경 불가능한 추가 전용 원시 데이터 세트) 및 **서비스 계층**에 푸시된 데이터의 일괄 처리 보기를 미리 계산할 수 있는 기능으로 구성됩니다.
-   * **람다 아키텍처 재개발 - 일괄 처리 계층** 노트북 [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html)은 일괄 처리 보기의 *마스터 데이터 세트*를 쿼리합니다.
-* **서비스 계층:** **서비스 계층**은 미리 계산된 데이터로 구성되어 빠른 쿼리에 대한 일괄 처리 보기(예: 집계, 특정 슬라이서 등)를 생성합니다.
-  * **람다 아키텍처 재개발 - 일괄 처리 및 서비스 계층** 노트북 [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html)은 일괄 처리 데이터를 서비스 계층으로 푸시합니다. 즉 Spark에서 트윗의 일괄 처리 컬렉션을 쿼리하고, 처리하고, 다른 컬렉션(계산된 일괄 처리)에 저장합니다.
-    * **속도 계층:** **속도 계층**은 Azure Cosmos DB 변경 피드를 활용하여 즉시로 읽고 작업을 수행할 수 있는 Spark로 구성됩니다. 또한 데이터가 *계산된 RT*에 저장되어 다른 시스템에서 실시간 쿼리를 실행하는 것과 달리 처리된 실시간 데이터를 쿼리할 수 있습니다.
-  * [Streaming Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) Scala 스크립트는 Azure Cosmos DB 변경 피드의 스트리밍 쿼리를 실행하여 spark-shell의 간격 수를 컴퓨팅합니다.
-  * [Streaming Tags Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) Scala 스크립트는 Azure Cosmos DB 변경 피드의 스트리밍 쿼리를 실행하여 spark-shell의 태그 간격 수를 컴퓨팅합니다.
+* **新数据**：[将源从 Twitter 流式传输到 CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed)，这是将新数据推送到 Azure Cosmos DB 的机制。
+* **批处理层：** 批处理层由主数据集（不可变、仅限追加的原始数据集）组成，可以预先计算已推送到*服务层*的数据的批处理视图。
+   * **重建的 Lambda 体系结构 - 批处理层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 查询批处理视图的主数据集。
+* **服务层：** **服务层**由预先计算的数据组成，这些数据生成用于快速查询的批处理视图（例如聚合、特定的切片器，等等）。
+  * **重建的 Lambda 体系结构 - 批处理层到服务层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) 将批处理数据推送到服务层；即，Spark 将查询推文的批处理集合、对其进行处理，然后将其存储到另一个集合（计算的批处理）中。
+    * **速度层：** **速度层**由利用 Azure Cosmos DB 更改源读取并立即处理数据的 Spark 组成。 还可以将数据保存到计算的 RT 中，使其他系统可以查询已处理的实时数据，而无需自行运行实时查询。
+  * [Cosmos DB 更改源中的流查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算间隔计数。
+  * [Cosmos DB 更改源中的流标记查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算标记的间隔计数。
   
-## <a name="next-steps"></a>다음 단계
-Cosmos DB와 Spark를 아직 연결하지 않았으면 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub 리포지토리에서 Spark-Azure Cosmos DB 커넥터를 다운로드하고 다음 리포지토리에서 추가 리소스를 탐색합니다.
-* [람다 아키텍처](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)
-* [분산 집계 예제](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
-* [샘플 스크립트 및 노트북](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
-* [구조화된 스트리밍 데모](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
-* [변경 피드 데모](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
-* [Azure Cosmos DB 변경 피드 및 Apache Spark를 사용하여 스트림 처리 변경](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
+## <a name="next-steps"></a>后续步骤
+从 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub 存储库下载 Spark 到 Azure Cosmos DB 的连接器（如果尚未下载），并浏览该存储库中的其他资源：
+* [Lambda 体系结构](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)
+* [分布式聚合示例](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
+* [示例脚本和 Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
+* [结构化流示例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
+* [更改源演示](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
+* [使用 Azure Cosmos DB 更改源和 Apache Spark 流处理更改](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 
-또한 [Apache Spark SQL, DataFrames, and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)(Apache Spark SQL, DataFrame 및 데이터 세트 가이드) 및 [Azure HDInsight의 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 문서를 검토할 수도 있습니다.
+此外，还可以查看文章 [Apache Spark SQL、数据框架和数据集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。

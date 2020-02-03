@@ -1,6 +1,6 @@
 ---
-title: Git를 사용하여 공동 코딩 - Team Data Science Process
-description: Agile 계획과 함께 Git를 사용하여 데이터 과학 프로젝트용 공동 코드 개발을 수행하는 방법입니다.
+title: 利用 Git 实现协作编码 - Team Data Science Process
+description: 如何配合敏捷规划使用 Git 针对数据科学项目执行协作代码开发。
 author: marktab
 manager: marktab
 editor: marktab
@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721891"
 ---
-# <a name="collaborative-coding-with-git"></a>Git를 사용하여 공동 코딩
+# <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
 本文介绍如何使用 Git 作为数据科学项目的协作代码开发框架。 本文介绍如何将 Azure Repos 中的代码链接到 Azure Boards 中的[敏捷开发](agile-development.md)工作项、如何执行代码评审以及如何创建和合并对更改的拉取请求。
 
@@ -55,7 +55,7 @@ git checkout <working branch name>
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-또한 작업 항목을 기존 분기에 연결할 수도 있습니다. 在工作项的**详细信息**页上，选择 "**添加链接**"。 然后选择要将工作项链接到的现有分支，然后选择 **"确定"** 。 
+还可以将工作项链接到现有的分支。 在工作项的**详细信息**页上，选择 "**添加链接**"。 然后选择要将工作项链接到的现有分支，然后选择 **"确定"** 。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
@@ -84,7 +84,7 @@ git push origin script
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>검토 및 병합
+## <a name='ReviewandMerge-4'></a>评审及合并
 
 创建拉取请求后，你的审阅者会收到电子邮件通知以查看拉取请求。 评审者测试更改是否有效，并尽可能使用请求者检查更改。 审阅者可以根据自己的评估提出注释、请求更改以及批准或拒绝拉取请求。 
 
@@ -112,7 +112,7 @@ git branch -d script
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 [执行数据科学任务](execute-data-science-tasks.md)介绍如何使用实用程序来完成几个常见的数据科学任务，例如交互式数据探索、数据分析、报告和模型创建。
 

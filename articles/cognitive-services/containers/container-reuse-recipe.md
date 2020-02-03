@@ -17,7 +17,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76717203"
 ---
-# <a name="create-containers-for-reuse"></a>재사용할 컨테이너 만들기
+# <a name="create-containers-for-reuse"></a>创建要重复使用的容器
 
 使用这些容器脚本来创建可重复使用的认知服务容器。 可以用部分或全部配置设置来构建容器，以便在容器启动时_不_需要它们。
 
@@ -27,9 +27,9 @@ ms.locfileid: "76717203"
 
 本文档中的任何 `docker run` 示例都假定 Windows 控制台具有 `^` 行继续符。 请考虑以下各项使用：
 
-* Docker 컨테이너에 대해 잘 알고 있지 않은 경우 인수 순서를 변경하지 마세요.
+* 除非非常熟悉 docker 容器，否则不要更改参数顺序。
 * 如果使用的是 Windows 以外的操作系统或 Windows 控制台以外的控制台，请使用正确的控制台/终端、用于装载的文件夹语法，以及控制台和系统的行继续符。  由于认知服务容器是 Linux 操作系统，因此目标装载使用 Linux 样式的文件夹语法。
-* `docker run` 示例使用 `c:` 驱动器上的目录，以避免在 Windows 上出现任何权限冲突。 입력 디렉터리로 특정 디렉터리를 사용해야 할 경우 Docker 서비스 권한을 받아야 할 수도 있습니다.
+* `docker run` 示例使用 `c:` 驱动器上的目录，以避免在 Windows 上出现任何权限冲突。 如果需要使用特定目录作为输入目录，则需要授予 docker 服务权限。
 
 ## <a name="store-no-configuration-settings-in-image"></a>在映像中不存储任何配置设置
 
@@ -102,7 +102,7 @@ docker run --rm <your-image-name>
 
 请按照以下步骤使用 Dockerfile，并将新映像放置在专用容器注册表中。  
 
-1. `Dockerfile`使用文本 "重用脚本" 创建。 `Dockerfile` 没有扩展。
+1. 使用文本 "重用食谱" 创建 `Dockerfile`。 `Dockerfile` 没有扩展。
 
 1. 将尖括号中的所有值替换为自己的值。
 
@@ -148,7 +148,7 @@ docker run --rm <your-image-name>
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [创建和使用 Azure 容器实例](azure-container-instance-recipe.md)

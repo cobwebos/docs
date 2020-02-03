@@ -23,7 +23,7 @@ ms.locfileid: "76716260"
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>프라이빗 컨테이너 레지스트리에 대한 액세스 요청
+## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

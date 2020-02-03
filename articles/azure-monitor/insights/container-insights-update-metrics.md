@@ -20,7 +20,7 @@ ms.locfileid: "76715918"
 
 以下度量值作为此功能的一部分启用：
 
-| 메트릭 네임스페이스 | 메트릭 | Description |
+| 指标命名空间 | 指标 | 说明 |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | 这些是*节点*指标，并将*主机*作为维度包括在内，它们还包括<br> 作为*主机*维度的值的节点名称。 |
 | insights.container/pods | podCount | 这些是*pod*指标，包括以下各项： ControllerName、Kubernetes 命名空间、名称和阶段。 |
@@ -29,14 +29,14 @@ ms.locfileid: "76715918"
 
 任一进程都将**监视指标发布者**角色分配给群集的服务主体，以便可以将代理收集的数据发布到群集资源。 监视指标发布者只有向资源推送指标的权限，它无法更改任何状态、更新资源或读取任何数据。 有关角色的详细信息，请参阅[监视指标发布者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
-## <a name="prerequisites"></a>필수 조건
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确认以下各项：
 
 * 自定义指标仅适用于 Azure 区域的一个子集。 [此处](../platform/metrics-custom-overview.md#supported-regions)记录了受支持区域的列表。
 * 你是 AKS 群集资源上的 " **[所有者](../../role-based-access-control/built-in-roles.md#owner)** " 角色的成员，用于启用 node 和 pod 自定义性能指标的收集。 
 
-Azure CLI를 사용하도록 선택한 경우, 먼저 CLI를 로컬에 설치하고 사용해야 합니다. 必须运行 Azure CLI 版本2.0.59 或更高版本。 버전을 확인하려면 `az --version`을 실행합니다. Azure CLI를 설치하거나 업그레이드해야 하는 경우 [Azure CLI 설치](https://docs.microsoft.com/cli/azure/install-azure-cli)를 참조하세요. 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>从 Azure 门户升级群集
 
@@ -58,7 +58,7 @@ Azure CLI를 사용하도록 선택한 경우, 먼저 CLI를 로컬에 설치하
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    配置更改可能需要几秒钟才能完成。 완료되면 다음과 유사한 메시지가 표시되고 결과가 포함됩니다.
+    配置更改可能需要几秒钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -327,7 +327,7 @@ Azure CLI를 사용하도록 선택한 경우, 먼저 CLI를 로컬에 설치하
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    配置更改可能需要几秒钟才能完成。 완료되면 다음과 유사한 메시지가 표시되고 결과가 포함됩니다.
+    配置更改可能需要几秒钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -578,7 +578,7 @@ Azure CLI를 사용하도록 선택한 경우, 먼저 CLI를 로컬에 설치하
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    配置更改可能需要几秒钟才能完成。 완료되면 다음과 유사한 메시지가 표시되고 결과가 포함됩니다.
+    配置更改可能需要几秒钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

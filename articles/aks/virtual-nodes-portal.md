@@ -1,6 +1,6 @@
 ---
-title: AKS(Azure Kubernetes Service)에서 포털을 사용하여 가상 노드 만들기
-description: Azure Portal을 통해 가상 노드를 사용하여 Pod를 실행하는 AKS(Azure Kubernetes Service) 클러스터를 만드는 방법을 알아봅니다.
+title: 在 Azure Kubernetes 服务 (AKS) 中使用门户创建虚拟节点
+description: 了解如何通过 Azure 门户创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 author: mlearned
 ms.topic: conceptual
@@ -14,23 +14,23 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76713205"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Portal에서 가상 노드를 사용하는 AKS(Azure Kubernetes Service) 클러스터 만들기 및 구성
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
-가상 노드를 사용하면 AKS(Azure Kubernetes Service) 클러스터에서 워크로드를 신속하게 배포할 수 있습니다. 가상 노드를 사용하면 Pod를 신속하게 프로비전할 수 있으며, 실행 시간(초) 단위로 요금이 청구됩니다. 크기 조정 시나리오에서 Kubernetes 클러스터 자동 크기 조정기가 추가 Pod를 실행하는 VM 컴퓨팅 노드를 배포할 때까지 기다릴 필요가 없습니다. 只有 Linux pod 和节点支持虚拟节点。
+若要在 Azure Kubernetes 服务 (AKS) 群集中快速部署工作负荷，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 在缩放方案中，无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 只有 Linux pod 和节点支持虚拟节点。
 
-이 문서에서는 가상 노드를 사용하도록 설정된 가상 네트워크 리소스 및 AKS 클러스터를 만들고 구성하는 방법을 보여줍니다.
+本文介绍如何创建和配置虚拟网络资源以及启用了虚拟节点的 AKS 群集。
 
-## <a name="before-you-begin"></a>시작하기 전에
+## <a name="before-you-begin"></a>开始之前
 
-虚拟节点在 Azure 容器实例（ACI）和 AKS 群集中运行的 pod 之间启用网络通信。 이 통신을 제공하기 위해 가상 네트워크 서브넷이 만들어지고 위임된 사용 권한이 할당됩니다. 가상 노드는 *고급* 네트워킹을 사용하여 만든 AKS 클러스터에만 작동합니다. 기본적으로 AKS 클러스터는 *기본* 네트워킹을 사용하여 만듭니다. 이 문서에서는 가상 네트워크 및 서브넷을 만든 다음, 고급 네트워킹을 사용하는 AKS 클러스터에 배포하는 방법을 보여 줍니다.
+虚拟节点在 Azure 容器实例（ACI）和 AKS 群集中运行的 pod 之间启用网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
-이전에 ACI를 사용하지 않은 경우 구독에서 서비스 공급자를 등록합니다. 你可以使用[az provider list][az-provider-list]命令检查 ACI 提供程序注册的状态，如以下示例中所示：
+如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用[az provider list][az-provider-list]命令检查 ACI 提供程序注册的状态，如以下示例中所示：
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* 공급자는 다음 예제 출력에 나온 대로 *Registered*로 보고됩니다.
+Microsoft.ContainerInstance 提供程序应报告为“已注册”，如下面的示例输出所示：
 
 ```
 Namespace                    RegistrationState
@@ -44,23 +44,23 @@ Microsoft.ContainerInstance  Registered
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>지역별 가용성
+## <a name="regional-availability"></a>区域可用性
 
 虚拟节点部署支持以下区域：
 
 * 澳大利亚东部（australiaeast）
 * 美国中部（centralus）
-* 미국 동부(eastus)
+* 美国东部 (eastus)
 * 美国东部2（eastus2）
 * 日本东部（japaneast）
-* 북유럽(northeurope)
+* 北欧 (northeurope)
 * 东南亚（southeastasia）
 * 美国中部（westcentralus）
-* 유럽 서부(westeurope)
-* 미국 서부(westus)
-* 미국 서부 2(westus2)
+* 西欧 (westeurope)
+* 美国西部 (westus)
+* 美国西部 2 (westus2)
 
-## <a name="known-limitations"></a>알려진 제한 사항
+## <a name="known-limitations"></a>已知的限制
 虚拟节点功能很大程度上依赖于 ACI 的功能集。 虚拟节点尚不支持以下方案
 
 * 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
@@ -71,54 +71,54 @@ az provider register --namespace Microsoft.ContainerInstance
 * [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)不会将 pod 部署到虚拟节点
 * 虚拟节点不支持[Windows Server 节点（当前在 AKS 中为预览版）](windows-container-cli.md) 。 你可以使用虚拟节点来计划 Windows Server 容器，而无需在 AKS 群集中使用 Windows Server 节点。
 
-## <a name="sign-in-to-azure"></a>Azure에 로그인
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-https://portal.azure.com 에서 Azure Portal에 로그인합니다.
+通过 https://portal.azure.com 登录到 Azure 门户。
 
-## <a name="create-an-aks-cluster"></a>AKS 클러스터 만들기
+## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-Azure Portal의 왼쪽 위 모서리에서 **리소스 만들기** > **Kubernetes Service**를 선택합니다.
+在 Azure 门户的左上角，选择“创建资源” > “Kubernetes 服务”。
 
-**기본** 페이지에서 다음 옵션을 구성합니다.
+在“基本信息”页面上，配置以下选项：
 
-- *프로젝트 세부 정보*: Azure 구독을 선택하고 *myResourceGroup* 같은 Azure 리소스 그룹을 선택하거나 만듭니다. *myAKSCluster* 같은 **Kubernetes 클러스터 이름**을 입력합니다.
-- *클러스터 세부 정보*: AKS 클러스터의 지역, Kubernetes 버전 및 DNS 이름 접두사를 선택합니다.
-- *主节点池*：为 AKS 节点选择 VM 大小。 AKS 클러스터를 배포한 후에는 VM 크기를 변경할 수 **없습니다**.
-     - 클러스터에 배포할 노드 수를 선택합니다. 이 문서에서는 **노드 수**를 *1*로 설정합니다. 클러스터를 배포한 후에 노드 수를 조정할 수 **있습니다**.
+- *项目详细信息*：选择 Azure 订阅，然后选择或创建一个 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
+- *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
+- *主节点池*：为 AKS 节点选择 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
+     - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 **1**。 部署群集后，可以调整节点计数。
 
 单击 "**下一步：缩放**"。
 
 在 "**缩放**" 页上，选择 "**虚拟节点**" 下的 "*启用*"。
 
-![AKS 클러스터를 만들고 가상 노드를 사용하도록 설정](media/virtual-nodes-portal/enable-virtual-nodes.png)
+![创建 AKS 群集并启用虚拟节点](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-기본적으로 Azure Active Directory 서비스 사용자가 생성됩니다. 이 서비스 사용자는 클러스터 통신 및 다른 Azure 서비스와의 통합에 사용됩니다.
+默认情况下，将创建一个 Azure Active Directory 服务主体。 此服务主体用于群集通信以及与其他 Azure 服务集成。
 
-고급 네트워킹에 대한 클러스터도 구성됩니다. 가상 노드는 자체 Azure 가상 네트워크 서브넷을 사용하도록 구성됩니다. 이 서브넷은 AKS 클러스터 간에 Azure 리소스를 연결할 수 있는 위임된 권한을 갖습니다. 위임된 서브넷이 아직 없는 경우 Azure Portal에서는 가상 노드에 사용할 Azure 가상 네트워크 및 서브넷을 만들고 구성합니다.
+群集还配置有高级网络。 虚拟节点配置为使用自己的 Azure 虚拟网络子网。 此子网具有委托的权限，可连接 AKS 群集之间的 Azure 资源。 如果还没有委托的子网，Azure 门户将创建并配置 Azure 虚拟网络和子网，以便与虚拟节点配合使用。
 
-**검토 + 만들기**를 선택합니다. 유효성 검사가 완료되면 **만들기**를 선택합니다.
+选择“查看 + 创建”。 完成验证后，选择“创建”。
 
-AKS 클러스터를 만들고 사용 준비를 마칠 때까지 몇 분 정도 걸립니다.
+创建 AKS 群集并让其可供使用需要几分钟的时间。
 
-## <a name="connect-to-the-cluster"></a>클러스터에 연결
+## <a name="connect-to-the-cluster"></a>连接到群集
 
-Azure Cloud Shell은 이 항목의 단계를 실행하는 데 무료로 사용할 수 있는 대화형 셸입니다. 공용 Azure 도구가 사전 설치되어 계정에서 사용하도록 구성되어 있습니다. Kubernetes 클러스터를 관리하려면 Kubernetes 명령줄 클라이언트인 [kubectl][kubectl]을 사용하세요. `kubectl` 클라이언트가 Azure Cloud Shell에 사전 설치됩니다.
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 `kubectl` 客户端已预装在 Azure Cloud Shell 中。
 
-Cloud Shell을 열려면 코드 블록의 오른쪽 위 모서리에 있는 **사용해 보세요**를 선택합니다. 또한 [https://shell.azure.com/bash](https://shell.azure.com/bash)로 이동하여 별도의 브라우저 탭에서 Cloud Shell을 시작할 수도 있습니다. **복사**를 선택하여 코드 블록을 복사하여 Cloud Shell에 붙여넣고, Enter 키를 눌러 실행합니다.
+若要打开 Cloud Shell，请从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
-使用[az aks get][az-aks-get-credentials]命令将 `kubectl` 配置为连接到 Kubernetes 群集。 다음 예제는 *myResourceGroup*이라는 리소스 그룹에서 *myAKSCluster*라는 클러스터의 자격 증명을 가져옵니다.
+使用[az aks get][az-aks-get-credentials]命令将 `kubectl` 配置为连接到 Kubernetes 群集。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-클러스터에 대한 연결을 확인하려면 [kubectl get][kubectl-get] 명령을 사용하여 클러스터 노드 목록을 반환합니다.
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli-interactive
 kubectl get nodes
 ```
 
-다음 예제 출력은 생성된 단일 VM 노드를 보여준 후 Linux용 가상 노드 *virtual-node-aci-linux*를 보여 줍니다.
+以下示例输出依次显示了所创建的单个 VM 节点以及用于 Linux 的虚拟节点 virtual-node-aci-linux：
 
 ```
 $ kubectl get nodes
@@ -128,9 +128,9 @@ virtual-node-aci-linux         Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 ```
 
-## <a name="deploy-a-sample-app"></a>샘플 앱 배포
+## <a name="deploy-a-sample-app"></a>部署示例应用
 
-Azure Cloud Shell에서 `virtual-node.yaml`이라는 파일을 만들고 다음 YAML에 복사합니다. 若要计划节点上的容器，请定义[nodeSelector][node-selector]和[toleration][toleration] 。 이러한 설정을 통해 가상 노드에서 Pod를 예약하고 기능이 성공적으로 활성화되었는지 확인할 수 있습니다.
+在 Azure Cloud Shell 中，创建一个名为 `virtual-node.yaml` 的文件并复制到以下 YAML 中。 若要计划节点上的容器，请定义[nodeSelector][node-selector]和[toleration][toleration] 。 这些设置允许在虚拟节点上计划 Pod，并确认已成功启用该功能。
 
 ```yaml
 apiVersion: apps/v1
@@ -169,7 +169,7 @@ spec:
 kubectl apply -f virtual-node.yaml
 ```
 
-使用带有 `-o wide` 参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 `virtual-node-helloworld` Pod는 `virtual-node-linux` 노드에서 예약되었습니다.
+使用带有 `-o wide` 参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-helloworld` 节点上计划 `virtual-node-linux` pod。
 
 ```
 $ kubectl get pods -o wide
@@ -178,32 +178,32 @@ NAME                                     READY     STATUS    RESTARTS   AGE     
 virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
 
-Pod에는 가상 노드에 사용하도록 위임된 Azure 가상 네트워크 서브넷의 내부 IP 주소가 할당됩니다.
+系统从被委派用于虚拟节点的 Azure 虚拟网络子网中为该 Pod 分配了一个内部 IP 地址。
 
 > [!NOTE]
-> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 비밀을 사용하지 않으면 가상 노드에서 예약된 Pod가 시작되지 않고 오류 `HTTP response status code 400 error code "InaccessibleImage"`가 보고됩니다.
+> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
 
-## <a name="test-the-virtual-node-pod"></a>가상 노드 Pod 테스트
+## <a name="test-the-virtual-node-pod"></a>测试虚拟节点 Pod
 
-가상 노드에서 실행되는 Pod를 테스트하려면 웹 클라이언트를 사용하여 데모 애플리케이션으로 이동합니다. Pod에는 내부 IP 주소가 할당되므로 AKS 클러스터의 다른 Pod에서 이 연결을 신속하게 테스트할 수 있습니다. 테스트 Pod를 만들고 여기에 터미널 세션을 연결합니다.
+若要测试虚拟节点上运行的 Pod，请使用 Web 客户端浏览到演示应用程序。 由于为该 Pod 分配了一个内部 IP 地址，因此，可以从 AKS 群集上的另一个 Pod 快速测试此连接。 创建一个测试 Pod，并在其上附加一个终端会话：
 
 ```azurecli-interactive
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-`apt-get`을 사용하여 Pod에 `curl`을 설치합니다.
+使用 `curl` 在 Pod 中安装 `apt-get`：
 
 ```azurecli-interactive
 apt-get update && apt-get install -y curl
 ```
 
-이제 *http://10.241.0.4* 같은 `curl` 을 사용하여 Pod 주소에 액세스합니다. 앞의 `kubectl get pods` 명령에서 본 내부 IP 주소를 입력합니다.
+现在使用 `curl` 访问 Pod 的地址，例如 *http://10.241.0.4* 。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
 
 ```azurecli-interactive
 curl -L http://10.241.0.4
 ```
 
-다음과 같이 축소된 예제 출력처럼 데모 애플리케이션이 표시됩니다.
+将显示演示应用程序，如以下精简版示例输出中所示：
 
 ```
 $ curl -L 10.241.0.4
@@ -215,13 +215,13 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-`exit` 명령을 사용하여 테스트 Pod에 대한 터미널 세션을 종료합니다. 세션이 종료되면 Pod가 삭제됩니다.
+使用 `exit` 关闭与测试 Pod 之间的终端会话。 会话结束时便会删除该 Pod。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-이 문서에서는 가상 노드에서 Pod를 예약하고 프라이빗 내부 IP 주소를 할당했습니다. 그 대신 서비스 배포를 만들고 부하 분산 장치 또는 수신 컨트롤러를 통해 Pod로 트래픽을 라우팅할 수도 있습니다. 有关详细信息，请参阅[在 AKS 中创建基本入口控制器][aks-basic-ingress]。
+在本文中，在虚拟节点上计划了一个 Pod，并为其分配了一个专用的内部 IP 地址。 也可以改为创建服务部署，并通过负载均衡器或入口控制器将流量路由到 Pod。 有关详细信息，请参阅[在 AKS 中创建基本入口控制器][aks-basic-ingress]。
 
-가상 노드는 AKS에서 크기 조정 솔루션의 구성 요소 중 하나입니다. 크기 조정 솔루션에 대한 자세한 내용은 다음 문서를 참조하세요.
+虚拟节点是 AKS 中缩放解决方案的一个组件。 有关缩放解决方案的详细信息，请参阅以下文章：
 
 - [使用 Kubernetes 横向 pod 自动缩放程序][aks-hpa]
 - [使用 Kubernetes cluster 自动缩放程序][aks-cluster-autoscaler]

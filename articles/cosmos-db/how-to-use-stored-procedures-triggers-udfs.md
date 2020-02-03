@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Cosmos DB Sdk 中注册并使用存储过程、触发器和用户定义的函数
-description: Azure Cosmos DB SDK를 사용하여 저장 프로시저, 트리거 및 사용자 정의 함수를 등록하고 호출하는 방법 알아보기
+description: 了解如何使用 Azure Cosmos DB SDK 注册和调用存储过程、触发器与用户定义的函数
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -13,18 +13,18 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719698"
 ---
-# <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB에서 저장 프로시저, 트리거 및 사용자 정의 함수를 등록하고 사용하는 방법
+# <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 
-Azure Cosmos DB의 SQL API는 저장 프로시저, 트리거 및 JavaScript로 작성된 UDF(사용자 정의 함수)를 등록하고 호출하도록 지원합니다. SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md) 또는 [Python](sql-api-sdk-python.md) SDK를 사용하여 저장 프로시저를 등록하고 호출할 수 있습니다. 하나 이상의 저장 프로시저, 트리거 및 사용자 정의 함수를 정의했다면 데이터 탐색기를 사용하여 [Azure Portal](https://portal.azure.com/)에서 해당 항목을 로드하고 확인할 수 있습니다.
+Azure Cosmos DB 中的 SQL API 支持注册和调用以 JavaScript 编写的存储过程、触发器与用户定义函数 (UDF)。 可以使用 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md) 或 [Python](sql-api-sdk-python.md) SDK 注册和调用存储过程。 在定义一个或多个存储过程、触发器和用户定义的函数之后，可以使用数据资源管理器在 [Azure 门户](https://portal.azure.com/)中加载和查看它们。
 
-## <a id="stored-procedures"></a>저장 프로시저를 실행하는 방법
+## <a id="stored-procedures"></a>如何运行存储过程
 
-저장 프로시저는 JavaScript를 사용하여 작성됩니다. Azure Cosmos 컨테이너 내에서 항목을 만들고, 업데이트하고, 읽고, 쿼리하고, 삭제할 수 있습니다. Azure Cosmos DB에서 저장 프로시저를 작성하는 방법에 대한 자세한 내용은 [Azure Cosmos DB에서 저장 프로시저를 작성하는 방법](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) 문서를 참조하세요.
+存储过程是使用 JavaScript 编写的。 它们可以在 Azure Cosmos 容器中创建、更新、读取、查询和删除项。 有关如何在 Azure Cosmos DB 中编写存储过程的详细信息，请参阅[如何在 Azure Cosmos DB 中编写存储过程](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)一文。
 
-다음 예제에서는 Azure Cosmos DB SDK를 사용하여 저장 프로시저를 등록하고 호출하는 방법을 보여줍니다. 저장 프로시저에 대한 원본이 `spCreateToDoItem.js`로 저장되면 [문서 만들기](how-to-write-stored-procedures-triggers-udfs.md#create-an-item)를 참조하세요.
+以下示例演示如何使用 Azure Cosmos DB SDK 注册和调用存储过程。 请参阅[创建文档](how-to-write-stored-procedures-triggers-udfs.md#create-an-item)，因为此存储过程的源代码保存为 `spCreateToDoItem.js`。
 
 > [!NOTE]
-> 분할된 컨테이너의 경우 저장 프로시저를 실행할 때 파티션 키 값은 요청 옵션에서 제공되어야 합니다. 저장 프로시저의 범위는 항상 파티션 키로 지정됩니다. 다른 파티션 키 값을 가진 항목은 저장 프로시저에 표시되지 않습니다. 이 트리거에도 적용되었습니다.
+> 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
 
 ### <a name="stored-procedures---net-sdk-v2"></a>存储过程-.NET SDK V2
 
@@ -84,9 +84,9 @@ dynamic newItem = new
 var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
 ```
 
-### <a name="stored-procedures---java-sdk"></a>저장 프로시저 - Java SDK
+### <a name="stored-procedures---java-sdk"></a>存储过程 - Java SDK
 
-다음 예제는 Java SDK를 사용하여 저장 프로시저를 등록하는 방법을 보여줍니다.
+以下示例演示如何使用 Java SDK 注册存储过程：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -100,7 +100,7 @@ StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(conta
     .toBlocking().single().getResource();
 ```
 
-다음 코드는 Java SDK를 사용하여 저장 프로시저를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 调用存储过程：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -138,9 +138,9 @@ asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArg
 successfulCompletionLatch.await();
 ```
 
-### <a name="stored-procedures---javascript-sdk"></a>저장 프로시저 - JavaScript SDK
+### <a name="stored-procedures---javascript-sdk"></a>存储过程 - JavaScript SDK
 
-다음 예제는 JavaScript SDK를 사용하여 저장 프로시저를 등록하는 방법을 보여줍니다.
+以下示例演示如何使用 JavaScript SDK 注册存储过程
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -151,7 +151,7 @@ await container.scripts.storedProcedures.create({
 });
 ```
 
-다음 코드는 JavaScript SDK를 사용하여 저장 프로시저를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 调用存储过程：
 
 ```javascript
 const newItem = [{
@@ -165,9 +165,9 @@ const sprocId = "spCreateToDoItem";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
-### <a name="stored-procedures---python-sdk"></a>저장 프로시저 - Python SDK
+### <a name="stored-procedures---python-sdk"></a>存储过程 - Python SDK
 
-다음 예제는 Python SDK를 사용하여 저장 프로시저를 등록하는 방법을 보여줍니다.
+以下示例演示如何使用 Python SDK 注册存储过程
 
 ```python
 with open('../js/spCreateToDoItem.js') as file:
@@ -180,7 +180,7 @@ sproc_definition = {
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
-다음 코드는 Python SDK를 사용하여 저장 프로시저를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 调用存储过程
 
 ```python
 sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
@@ -193,14 +193,14 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a id="pre-triggers"></a>사전 트리거를 실행하는 방법
+## <a id="pre-triggers"></a>如何运行前触发器
 
-다음 예제에서는 Azure Cosmos DB SDK를 사용하여 사전 트리거를 등록하고 호출하는 방법을 보여줍니다. 이 사전 트리거의 원본이 `trgPreValidateToDoItemTimestamp.js`로 저장되면 [사전 트리거 예제](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers)를 참조하세요.
+以下示例演示如何使用 Azure Cosmos DB SDK 注册和调用前触发器。 请参阅[前触发器示例](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers)，因为此前触发器的源代码保存为 `trgPreValidateToDoItemTimestamp.js`。
 
-실행하는 경우 사전 트리거가 `PreTriggerInclude`를 지정한 다음, 트리거의 이름을 목록 개체에 전달하여 RequestOptions 개체에 전달됩니다.
+执行前触发器时，将会通过指定 `PreTriggerInclude` 在该触发器中传入 RequestOptions 对象，然后在 List 对象中传递该触发器的名称。
 
 > [!NOTE]
-> 트리거의 이름이 목록으로 전달되는 경우에도 작업당 하나의 트리거만 실행할 수 있습니다.
+> 即使以列表的形式传递触发器的名称，也仍只能对每个操作执行一个触发器。
 
 ### <a name="pre-triggers---net-sdk-v2"></a>预先触发器-.NET SDK V2
 
@@ -263,9 +263,9 @@ dynamic newItem = new
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
-### <a name="pre-triggers---java-sdk"></a>사전 트리거 - Java SDK
+### <a name="pre-triggers---java-sdk"></a>前触发器 - Java SDK
 
-다음 코드는 Java SDK를 사용하여 사전 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 注册前触发器：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -279,7 +279,7 @@ trigger.setTriggerType(TriggerType.Pre);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-다음 코드는 Java SDK를 사용하여 사전 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 调用前触发器：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -296,9 +296,9 @@ requestOptions.setPreTriggerInclude(Arrays.asList("trgPreValidateToDoItemTimesta
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="pre-triggers---javascript-sdk"></a>사전 트리거 - JavaScript SDK
+### <a name="pre-triggers---javascript-sdk"></a>前触发器 - JavaScript SDK
 
-다음 코드는 JavaScript SDK를 사용하여 사전 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 注册前触发器：
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -311,7 +311,7 @@ await container.triggers.create({
 });
 ```
 
-다음 코드는 JavaScript SDK를 사용하여 사전 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 调用前触发器：
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -324,9 +324,9 @@ await container.items.create({
 }, {preTriggerInclude: [triggerId]});
 ```
 
-### <a name="pre-triggers---python-sdk"></a>사전 트리거 - Python SDK
+### <a name="pre-triggers---python-sdk"></a>前触发器 - Python SDK
 
-다음 코드는 Python SDK를 사용하여 사전 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 注册前触发器：
 
 ```python
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
@@ -341,7 +341,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-다음 코드는 Python SDK를 사용하여 사전 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 调用前触发器：
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -351,9 +351,9 @@ client.CreateItem(container_link, item, {
                   'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>사후 트리거를 실행하는 방법
+## <a id="post-triggers"></a>如何运行后触发器
 
-다음 예제에서는 Azure Cosmos DB SDK를 사용하여 사후 트리거를 등록하는 방법을 보여줍니다. 이 사후 트리거의 원본이 `trgPostUpdateMetadata.js`로 저장되면 [사후 트리거 예제](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)를 참조하세요.
+以下示例演示如何使用 Azure Cosmos DB SDK 注册后触发器。 请参阅[后触发器示例](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)，因为此后触发器的源代码保存为 `trgPostUpdateMetadata.js`。
 
 ### <a name="post-triggers---net-sdk-v2"></a>后触发器-.NET SDK V2
 
@@ -412,9 +412,9 @@ var newItem = {
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
-### <a name="post-triggers---java-sdk"></a>사후 트리거 - Java SDK
+### <a name="post-triggers---java-sdk"></a>后触发器 - Java SDK
 
-다음 코드는 Java SDK를 사용하여 사후 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 注册后触发器：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -427,7 +427,7 @@ trigger.setTriggerType(TriggerType.Post);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-다음 코드는 Java SDK를 사용하여 사후 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 调用后触发器：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -443,9 +443,9 @@ requestOptions.setPostTriggerInclude(Arrays.asList("trgPostUpdateMetadata"));
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="post-triggers---javascript-sdk"></a>사후 트리거 - JavaScript SDK
+### <a name="post-triggers---javascript-sdk"></a>后触发器 - JavaScript SDK
 
-다음 코드는 JavaScript SDK를 사용하여 사후 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 注册后触发器：
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -458,7 +458,7 @@ await container.triggers.create({
 });
 ```
 
-다음 코드는 JavaScript SDK를 사용하여 사후 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 调用后触发器：
 
 ```javascript
 const item = {
@@ -471,9 +471,9 @@ const triggerId = "trgPostUpdateMetadata";
 await container.items.create(item, {postTriggerInclude: [triggerId]});
 ```
 
-### <a name="post-triggers---python-sdk"></a>사후 트리거 - Python SDK
+### <a name="post-triggers---python-sdk"></a>后触发器 - Python SDK
 
-다음 코드는 Python SDK를 사용하여 사후 트리거를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 注册后触发器：
 
 ```python
 with open('../js/trgPostUpdateMetadata.js') as file:
@@ -488,7 +488,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-다음 코드는 Python SDK를 사용하여 사후 트리거를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 调用后触发器：
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -498,9 +498,9 @@ client.CreateItem(container_link, item, {
                   'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
-## <a id="udfs"></a>사용자 정의 함수로 작업하는 방법
+## <a id="udfs"></a>如何使用用户定义的函数
 
-다음 예제에서는 Azure Cosmos DB SDK를 사용하여 사용자 정의 함수를 등록하는 방법을 보여줍니다. 이 사후 트리거의 원본이 `udfTax.js`로 저장되면 [사용자 정의 함수 예제](how-to-write-stored-procedures-triggers-udfs.md#udfs)를 참조하세요.
+以下示例演示如何使用 Azure Cosmos DB SDK 注册用户定义的函数。 请参阅[用户定义的函数示例](how-to-write-stored-procedures-triggers-udfs.md#udfs)，因为此后触发器的源代码保存为 `udfTax.js`。
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>用户定义函数-.NET SDK V2
 
@@ -557,9 +557,9 @@ while (iterator.HasMoreResults)
 }
 ```
 
-### <a name="user-defined-functions---java-sdk"></a>사용자 정의 함수 - Java SDK
+### <a name="user-defined-functions---java-sdk"></a>用户定义的函数 - Java SDK
 
-다음 코드는 Java SDK를 사용하여 사용자 정의 함수를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 注册用户定义的函数：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -571,7 +571,7 @@ udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js
 UserDefinedFunction createdUDF = client.createUserDefinedFunction(containerLink, udf, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-다음 코드는 Java SDK를 사용하여 사용자 정의 함수를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Java SDK 调用用户定义的函数：
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -595,9 +595,9 @@ queryObservable.subscribe(
 completionLatch.await();
 ```
 
-### <a name="user-defined-functions---javascript-sdk"></a>사용자 정의 함수 - JavaScript SDK
+### <a name="user-defined-functions---javascript-sdk"></a>用户定义的函数 - JavaScript SDK
 
-다음 코드는 JavaScript SDK를 사용하여 사용자 정의 함수를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 注册用户定义的函数：
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -607,7 +607,7 @@ await container.userDefinedFunctions.create({
     body: require(`../js/${udfId}`)
 ```
 
-다음 코드는 JavaScript SDK를 사용하여 사용자 정의 함수를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 JavaScript SDK 调用用户定义的函数：
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -615,9 +615,9 @@ const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
-### <a name="user-defined-functions---python-sdk"></a>사용자 정의 함수 - Python SDK
+### <a name="user-defined-functions---python-sdk"></a>用户定义的函数 - Python SDK
 
-다음 코드는 Python SDK를 사용하여 사용자 정의 함수를 등록하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 注册用户定义的函数：
 
 ```python
 with open('../js/udfTax.js') as file:
@@ -630,7 +630,7 @@ udf_definition = {
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
-다음 코드는 Python SDK를 사용하여 사용자 정의 함수를 호출하는 방법을 보여줍니다.
+以下代码演示如何使用 Python SDK 调用用户定义的函数：
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -638,11 +638,11 @@ results = list(client.QueryItems(
     container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-Azure Cosmos DB에서 저장 프로시저, 트리거 및 사용자 정의 함수를 작성하고 사용하는 개념 및 방법을 알아봅니다.
+详细了解概念以及如何在 Azure Cosmos DB 中编写或使用存储过程、触发器和用户定义的函数：
 
-- [Azure Cosmos DB에서 Azure Cosmos DB 저장 프로시저, 트리거 및 사용자 정의 함수 작업](stored-procedures-triggers-udfs.md)
-- [Azure Cosmos DB에서 JavaScript 언어 통합 쿼리 API 작업](javascript-query-api.md)
-- [Azure Cosmos DB에서 저장 프로시저, 트리거 및 사용자 정의 함수를 작성하는 방법](how-to-write-stored-procedures-triggers-udfs.md)
-- [Azure Cosmos DB에서 JavaScript 쿼리 API를 사용하여 저장 프로시저 및 트리거를 작성하는 방법](how-to-write-javascript-query-api.md)
+- [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器与用户定义的函数](stored-procedures-triggers-udfs.md)
+- [在 Azure Cosmos DB 中使用 JavaScript 语言集成式查询 API](javascript-query-api.md)
+- [如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md)
+- [如何在 Azure Cosmos DB 中使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)

@@ -37,7 +37,7 @@ azds prep --public
 ```
 
 > [!TIP]
-> `prep` 명령은 프로젝트에 대해 [Dockerfile 및 Helm 차트](../how-dev-spaces-works.md#prepare-your-code)를 생성하려고 합니다. Azure Dev Spaces는 이러한 파일을 사용하여 코드를 빌드하고 실행하지만 프로젝트를 빌드하고 실행하는 방법을 변경하려면 이러한 파일을 수정할 수 있습니다.
+> `prep` 命令将尝试为项目生成 [Dockerfile 和 Helm 图表](../how-dev-spaces-works.md#prepare-your-code)。 Azure Dev Spaces 使用这些文件来生成和运行代码，但是如果要更改项目的生成和运行方式，则可以修改这些文件。
 
 使用你的图表在应用程序的图表目录中创建[yaml][helm-requirements]文件。 例如，如果应用程序名为*app1*，则需要创建*图表/app1/yaml*。
 
@@ -58,7 +58,7 @@ helm dependency update
 
 已下载专用 Helm 存储库中的图表，并将其添加到项目。 删除*yaml*文件，使 Dev 空格不会尝试更新此依赖项。
 
-## <a name="run-your-application"></a>애플리케이션 실행
+## <a name="run-your-application"></a>运行应用程序
 
 导航到项目的根目录，然后运行 `azds up`，验证应用程序是否已成功地在开发环境中运行。
 
@@ -75,7 +75,7 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 了解有关[Helm 及其工作原理][helm]的详细信息。
 

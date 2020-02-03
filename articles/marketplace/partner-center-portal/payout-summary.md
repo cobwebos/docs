@@ -32,7 +32,7 @@ ms.locfileid: "76715434"
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>用于访问支出报表的角色和权限
 
-| 报表/页    | 계정 소유자    | Manager  | 개발자 | 业务参与者 |  财务参与者 | 营销人员 |
+| 报表/页    | 帐户所有者    | Manager  | 开发人员 | 业务参与者 |  财务参与者 | 营销人员 |
 |------------------|------------------|----------|-----------|----|----|-----|
 | 购置报表（包括近乎实时的数据） | 可以查看 | 可以查看 | 无访问权限 | 无访问权限 | 可以查看 | 无访问权限 |
 | 反馈报告/响应 | 可以查看和发送反馈 | 可以查看和发送反馈 | 可以查看和发送反馈 | 无访问权限 | 无访问权限 | 可以查看和发送反馈 |
@@ -40,27 +40,27 @@ ms.locfileid: "76715434"
 | 使用情况报表 | 可以查看 | 可以查看 | 可以查看 | 可以查看 | 无访问权限 | 无访问权限 |
 | 帐户支出 | 可以更新 | 无访问权限 | 无访问权限 | 无访问权限 | 可以更新 | 无访问权限 |
 | 税务配置文件 | 可以更新 | 无访问权限 | 无访问权限 | 无访问权限 | 可以更新 | 无访问权限 |
-| 지급 요약 | 可以查看 | 无访问权限 | 无访问权限 | 无访问权限 | 可以查看 | 无访问权限 |
+| 付款摘要 | 可以查看 | 无访问权限 | 无访问权限 | 无访问权限 | 可以查看 | 无访问权限 |
 
 ## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>支出报表：云合作伙伴门户和合作伙伴中心之间的差异
 
-| | 클라우드 파트너 포털 | 파트너 센터 |
+| | 云合作伙伴门户 | 合作伙伴中心 |
 |---------|---------|---------|
-| 링크 | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) 和 [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| 탐색 | Insights 付出的支出报告 | 合作伙伴中心提供的支出报告-支出支出 |
-| 범위 | <ul> <li>每行的事务项是可见的，表示正在进行收集、收集和支付 </li> <li>报告–在创建采购订单后显示所有行项，包括正在进行的收集和正在进行的计费，以及尚未获得资格支付的集合状态和行项。 </li> </ul> | <ul> <li>将行项视为符合条件后显示。</li> <li>客户首先向 Microsoft 支付费用，然后 Isv 可以看到付出的费用报告。</li> <li>支出报表将不会显示正在进行的收集和正在进行的计费。  </li> </ul>  |
+| 链接 | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)和[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+| 导航 | Insights 付出的支出报告 | 合作伙伴中心提供的支出报告-支出支出 |
+| 范围 | <ul> <li>每行的事务项是可见的，表示正在进行收集、收集和支付 </li> <li>报告–在创建采购订单后显示所有行项，包括正在进行的收集和正在进行的计费，以及尚未获得资格支付的集合状态和行项。 </li> </ul> | <ul> <li>将行项视为符合条件后显示。</li> <li>客户首先向 Microsoft 支付费用，然后 Isv 可以看到付出的费用报告。</li> <li>支出报表将不会显示正在进行的收集和正在进行的计费。  </li> </ul>  |
 | 事务未准备好进行支出 | 正在进行计费 | 下一次估计付款：支出状态为 "未处理" 状态。  |
-| 支出状态 |  | 尚未 <br> 收益有资格支付。 它在激励计划的收视指南中定义的冷却周期处于此状态。 <br> <br> 到来 <br> 支付订单-在处理付款之前生成的待定内部审查。 <br> <br> Sent <br> 已将付款发送到银行。 |
+| 支出状态 |  | 尚未 <br> 收益有资格支付。 它在激励计划的收视指南中定义的冷却周期处于此状态。 <br> <br> 到来 <br> 支付订单-在处理付款之前生成的待定内部审查。 <br> <br> 发送时间: <br> 已将付款发送到银行。 |
 
 ## <a name="customer-types"></a>客户类型
 
 ### <a name="enterprise-agreement"></a>企业协议
 
-기업 계약을 사용하지 않는 고객은 Marketplace 소프트웨어 라이선스에 대해 월별로 청구됩니다. 기업 계약을 사용하는 고객은 분기별로 표시된 청구서를 통해 월별로 청구됩니다.
+将对没有企业协议的客户就市场软件许可证按月计费。 通过每季度显示的发票对具有企业协议的客户按月计费。
 
 ### <a name="credit-cards-and-monthly-invoice"></a>信用卡和月度发票
 
-고객은 신용 카드 및 월별 청구서를 사용하여 지불할 수도 있습니다. 在这种情况下，软件许可证费用将按月计费。
+客户还可以使用信用卡和每月发票进行付款。 在这种情况下，软件许可证费用将按月计费。
 
 ### <a name="csp-and-direct-pay-users"></a>CSP 和直接支付用户
 
@@ -68,38 +68,38 @@ ms.locfileid: "76715434"
 
 ## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关
 
-|Description    |    날짜  | 订单/使用情况  | 支出 |
+|说明    |    Date  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
-|주문 기간   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单</li> <li>CustomerId</li> </ul> <br> **사용 현황** <br> <ul> <li>CustomerId </li> <li>고객 이름</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 예상 지급액(PC) </li> </ul> |  |
-|기간 종료일(월)   | 8月30日，2019 | | |
-|청구 날짜 | 9月1日，2019 | | |
-|고객 지불 날짜 | 9月1日，2019 | | |
-|에스크로 기간(신용 카드만 해당, 30일) | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>고객 ID</li> <li> 고객 이름</li> </ul> <br> **사용 현황** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>고객 이름</li> <li>订单</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
-|수금 기간 시작일 | 9月1日，2019 | | |
-|수금 기간 종료일(최대 30일) | 9月30日，2019 | | |
-|지불 계산 날짜(매월 15일) | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>고객 ID</li> <li>고객 이름</li> </ul> <br> **사용 현황** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>고객 이름</li> <li>订单</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
-|지급 날짜 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>고객 ID</li> <li> 고객 이름</li> </ul> <br> **사용 현황** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>고객 이름</li> <li>订单</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
+|订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
+|期限结束（月）   | 8月30日，2019 | | |
+|计费日期 | 9月1日，2019 | | |
+|客户付款日期 | 9月1日，2019 | | |
+|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
+|费用收集期开始 | 9月1日，2019 | | |
+|费用收集期结束（最大值，30 天） | 9月30日，2019 | | |
+|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
+|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
-| Description |    날짜  | 사용량 | 支出 |
+| 说明 |    Date  | 使用情况 | 付款 |
 |----------|----------|---------|-----------|
-|주문 기간 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单</li> <li>CustomerId</li> </ul> <br> **使用情况报表** <br> <ul> <li>CustomerId </li> <li>고객 이름</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 예상 지급액(PC) </li> </ul> | |
-|기간 종료일(분기) | 9月30日，2019 | | |
-|청구 날짜 | 十月15，2019 | | |
-|에스크로 기간(신용 카드만 해당, 30일) | n/a | | |
-|수금 기간 시작일 | 十月15，2019 | | |
+|订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况报表** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> | |
+|期限结束（季度） | 9月30日，2019 | | |
+|计费日期 | 十月15，2019 | | |
+|代管期（仅限信用卡，30 天） | 不适用 | | |
+|费用收集期开始 | 十月15，2019 | | |
 |信用卡仅限30天 | 11月1日，2019-11 月30日，2019 | | |
-|수금 기간 종료일(최대 90일) | 2020年1月15日 | | |
-|고객 지불 날짜 | 2019年12月30日 | | |
+|费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
+|客户付款日期 | 2019年12月30日 | | |
 |支出计算 | 2020年1月15日 | | |
-|지급 날짜 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>고객 ID</li> <li> 고객 이름</li> </ul> <br> **사용 현황** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>고객 이름</li> <li>订单</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
+|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>客户名称</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
 
 ## <a name="transaction-history-download-export"></a>事务历史记录下载导出
 
 此选项提供了在交易历史记录页中看到的每个收益行项的下载、收入类型、日期、关联的交易金额、客户、产品和其他适用于激励计划的事务详细信息。
 
-| 열 이름     | Description    |
+| 列名称     | 说明    |
 |-------------|-------------------------------|
 | earningId                      | 每个收益的唯一标识符                                                                                                       |
 | participantId                  | 计划下合作伙伴收益的主要标识                                                                            |
@@ -165,15 +165,15 @@ ms.locfileid: "76715434"
 | earningAmountInLastPaymentCurrency       | 按上一付款币种计算的数量（如果没有支付以前的付款，则字段将为空）                                                                                                                   |
 | lastPaymentCurrency       | 上次支付的货币（如果尚未支付以前的付款，则字段将为空）                                                                                                                   |
 | AssetId       | 适用于 marketplace 服务的客户订单的唯一标识符。  它表示交易记录的采购订单行项。 可以有多个资产。                                                                                                                   |
-| 订单       | 与客户的发票相关                                                                                                                   |
+| OrderId       | 与客户的发票相关                                                                                                                   |
 | LineItemId       | 客户发票中的单个行                                                                                                                   |
-| 고객 국가       | 客户提供的国家/地区名称。  这可能不同于客户的 Azure 订阅中的国家/地区。                                                                                                                   |
+| 客户所在国家/地区       | 客户提供的国家/地区名称。  这可能不同于客户的 Azure 订阅中的国家/地区。                                                                                                                   |
 | 客户 EmailAddress       | 最终客户提供的电子邮件地址。  这可能与客户的 Azure 订阅中的电子邮件地址不同。                                                                                                                   |
 | SkuId       | 在发布过程中定义的 SKU ID。 产品/服务可能有许多 Sku，但 SKU 只能与单个产品/服务相关联。                                                                                                                   |
 
 >[!Note]
 >对于 "事务发布" 选项的所有报告和见解，均可通过合作伙伴中心的 "云合作伙伴门户或分析" 部分的 "见解" 部分获得。
 
-## <a name="billing-questions-and-support"></a>청구 관련 질문 및 지원
+## <a name="billing-questions-and-support"></a>计费问题和支持
 
 若要获取有关计费问题的帮助，请联系[商业 marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)。

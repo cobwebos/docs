@@ -1,6 +1,6 @@
 ---
-title: 사용자 지정 Azure Event Grid 토픽에 이벤트 게시
-description: 이 문서에서는 Azure Event Grid에 대한 사용자 지정 토픽에 이벤트를 게시하는 방법을 설명합니다. 게시 및 이벤트 데이터의 형식을 보여 줍니다.
+title: 将事件发布到自定义 Azure 事件网格主题
+description: 本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。
 services: event-grid
 author: spelluru
 manager: timlt
@@ -15,51 +15,51 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721546"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid에 대한 사용자 지정 토픽에 게시
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
-이 문서에서는 Azure Event Grid에 대한 사용자 지정 토픽에 이벤트를 게시하는 방법을 설명합니다. 게시 및 이벤트 데이터의 형식을 보여 줍니다. [SLA(서비스 수준 계약)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)는 기대한 형식과 일치하는 게시에만 적용됩니다.
+本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) 仅适用于与预期格式匹配的发布。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>엔드포인트
+## <a name="endpoint"></a>端点
 
-HTTP POST를 사용자 지정 토픽에 보낼 때 URI 형식: `https://<topic-endpoint>?api-version=2018-01-01`을 사용합니다.
+使用 URI 格式 `https://<topic-endpoint>?api-version=2018-01-01` 将 HTTP POST 发送到自定义主题。
 
-예를 들어 올바른 URI는 `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`입니다.
+例如，有效的 URI 为：`https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`。
 
-Azure CLI에서 사용자 지정 토픽에 대한 엔드포인트를 가져오려면 다음을 사용합니다.
+若要使用 Azure CLI 获取自定义主题的终结点，请使用：
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Azure PowerShell에서 사용자 지정 토픽에 대한 엔드포인트를 가져오려면 다음을 사용합니다.
+若要使用 Azure PowerShell 获取自定义主题的终结点，请使用：
 
 ```powershell
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>헤더
+## <a name="header"></a>标头
 
-요청에 인증을 위한 키를 포함하며 이름이 `aeg-sas-key`인 헤더를 포함합니다.
+在请求中包含一个名为 `aeg-sas-key` 的标头值，其中包含身份验证密钥。
 
-예를 들어 올바른 헤더 값은 `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`입니다.
+例如，有效的标头值为 `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`。
 
-Azure CLI에서 사용자 지정 토픽에 대한 키를 가져오려면 다음을 사용합니다.
+若要使用 Azure CLI 获取自定义主题的密钥，请使用：
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-PowerShell에서 사용자 지정 토픽에 대한 키를 가져오려면 다음을 사용합니다.
+若要使用 PowerShell 获取自定义主题的密钥，请使用：
 
 ```powershell
 (Get-AzEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
 ```
 
-## <a name="event-data"></a>이벤트 데이터
+## <a name="event-data"></a>事件数据
 
-사용자 지정 토픽에서 최상위 수준 데이터에는 표준 리소스 정의 이벤트와 동일한 필드가 있습니다. 이러한 속성 중 하나는 사용자 지정 토픽에 고유한 속성을 포함하는 데이터 속성입니다. 이벤트 게시자가 이 데이터 개체에 대한 속성을 결정합니다. 다음 스키마를 사용합니다.
+就自定义主题而言，顶级数据包含与标准资源所定义事件相同的字段。 这些属性之一是包含自定义主题所特有的属性的数据属性。 作为事件发布者，你确定该数据对象的属性。 使用以下架构：
 
 ```json
 [
@@ -76,12 +76,12 @@ PowerShell에서 사용자 지정 토픽에 대한 키를 가져오려면 다음
 ]
 ```
 
-이 속성에 대한 설명은 [Azure Event Grid 이벤트 스키마](event-schema.md)를 참조하세요. 이벤트를 Event Grid 항목에 게시할 때 배열은 최대 1MB의 전체 크기를 가질 수 있습니다. 数组中的每个事件都限制为 64 KB （公开上市）或 1 MB （预览）。
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB （公开上市）或 1 MB （预览）。
 
 > [!NOTE]
 > 最大为 64 KB 的事件包含在公开上市（GA）服务级别协议（SLA）中。 最大为 1 MB 的事件支持目前处于预览状态。 超过 64 KB 的事件以 64-KB 为增量收费。 
 
-예를 들어 올바른 이벤트 데이터 스키마는 다음과 같습니다.
+例如，有效的事件数据架构是：
 
 ```json
 [{
@@ -97,19 +97,19 @@ PowerShell에서 사용자 지정 토픽에 대한 키를 가져오려면 다음
 }]
 ```
 
-## <a name="response"></a>응답
+## <a name="response"></a>响应
 
-항목 엔드포인트에 게시한 후 응답을 수신합니다. 응답은 표준 HTTP 응답 코드입니다. 몇 가지 일반적인 응답은 다음과 같습니다.
+发布到主题终结点后，你将收到响应。 响应是标准 HTTP 响应代码。 一些常见的响应如下所示：
 
-|결과  |응답  |
+|结果  |响应  |
 |---------|---------|
-|Success  | 200 정상  |
-|이벤트 데이터의 형식이 잘못되었습니다. | 400 잘못된 요청 |
-|잘못된 액세스 키 | 401 권한 없음 |
-|잘못된 엔드포인트 | 404 찾을 수 없음 |
-|배열 또는 이벤트가 크기 제한을 초과합니다. | 413 페이로드가 너무 큼 |
+|Success  | 200 正常  |
+|事件数据的格式不正确 | 400 错误请求 |
+|访问密钥无效 | 401 未授权 |
+|终结点不正确 | 404 未找到 |
+|数组或事件超出大小限制 | 413 有效负载太大 |
 
-오류의 경우 메시지 본문에 다음과 같은 형식이 있습니다.
+对于错误，消息正文采用以下格式：
 
 ```json
 {
@@ -124,8 +124,8 @@ PowerShell에서 사용자 지정 토픽에 대한 키를 가져오려면 다음
 }
 ```
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-* 이벤트 배달 모니터링에 대한 정보는 [Event Grid 메시지 배달 모니터링](monitor-event-delivery.md)을 참조하세요.
-* 인증 키에 대한 자세한 내용은 [Event Grid 보안 및 인증](security-authentication.md)을 참조하세요.
-* Azure Event Grid 구독을 만드는 방법에 대한 자세한 내용은 [Event Grid 구독 스키마](subscription-creation-schema.md)를 참조하세요.
+* 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
+* 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
+* 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。

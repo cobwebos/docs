@@ -23,7 +23,7 @@ ms.locfileid: "76716349"
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>프라이빗 컨테이너 레지스트리에 대한 액세스 요청
+## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
 必须先完成并提交[异常探测器容器请求窗体](https://aka.ms/adcontainer)，才能请求访问容器。
 
@@ -35,8 +35,8 @@ ms.locfileid: "76716349"
 
 [!INCLUDE [API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 * 查看[安装并运行](../anomaly-detector-container-configuration.md)容器以拉取容器映像并运行容器
-* [컨테이너 구성](../anomaly-detector-container-configuration.md)에서 구성 설정을 검토합니다.
+* 查看[配置容器](../anomaly-detector-container-configuration.md)了解配置设置
 * [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

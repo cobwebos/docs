@@ -53,8 +53,8 @@ ms.locfileid: "76717026"
 
     ![查看关键字](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. .zip 파일을 컴퓨터에 저장합니다. 需要此文件将自定义关键字部署到设备。
+1. 将 .zip 文件保存到计算机。 需要此文件将自定义关键字部署到设备。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
 通过[语音设备 SDK 快速入门](https://aka.ms/sdsdk-quickstart)测试自定义关键字。

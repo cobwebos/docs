@@ -1,6 +1,6 @@
 ---
-title: AKS(Azure Kubernetes Service)에서 클러스터 자동 크기 조정기 사용
-description: 클러스터 자동 크기 조정기를 사용하여 AKS(Azure Kubernetes Service) 클러스터에서 애플리케이션 수요에 맞게 자동으로 클러스터 크기를 조정하는 방법을 알아봅니다.
+title: 使用 Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序
+description: 了解如何使用群集自动缩放程序自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 群集中的应用程序需求。
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,52 +14,52 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76713398"
 ---
-# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>AKS(Azure Kubernetes Service)에서 애플리케이션 수요에 맞게 자동으로 클러스터 크기 조정
+# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
-AKS(Azure Kubernetes Service)에서 애플리케이션 수요에 맞추려면 워크로드를 실행하는 노드 수를 조정해야 할 수 있습니다. 클러스터 자동 크기 조정기 구성 요소는 리소스 제약 조건으로 인해 예약할 수 없는 클러스터의 Pod를 확인할 수 있습니다. 当检测到问题时，将增加节点池中的节点数，以满足应用程序的需求。 또한 실행 중인 Pod가 부족한지 노드를 주기적으로 확인하고 필요에 따라 노드 수가 감소합니다. AKS 클러스터에서 노드 수를 자동으로 강화하거나 규모 축소하는 이 기능을 통해 효율적이고 비용 효과적인 클러스터를 실행할 수 있습니다.
+若要满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求，可能需要调整运行工作负载的节点数。 群集自动缩放程序组件可以监视群集中由于资源约束而无法进行计划的 Pod。 当检测到问题时，将增加节点池中的节点数，以满足应用程序的需求。 还会定期检查节点是否缺少正在运行的 Pod，随后根据需要减少节点数。 这种自动增加或减少 AKS 群集中的节点数的功能使你可以运行具有成本效益的高效群集。
 
-이 문서에서는 AKS 클러스터에서 클러스터 자동 크기 조정기를 사용하도록 설정하고 관리하는 방법을 보여 줍니다. 
+本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。 
 
-## <a name="before-you-begin"></a>시작하기 전에
+## <a name="before-you-begin"></a>开始之前
 
-本文要求运行 Azure CLI 版本2.0.76 或更高版本。 `az --version`을 실행하여 버전을 찾습니다. 설치 또는 업그레이드해야 하는 경우 [Azure CLI 설치][azure-cli-install]를 참조하세요.
+本文要求运行 Azure CLI 版本2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
-## <a name="limitations"></a>제한 사항
+## <a name="limitations"></a>限制
 
 创建和管理使用群集自动缩放程序的 AKS 群集时，有以下限制：
 
 * 无法使用 HTTP 应用程序路由加载项。
 
-## <a name="about-the-cluster-autoscaler"></a>클러스터 자동 크기 조정기 정보
+## <a name="about-the-cluster-autoscaler"></a>关于群集自动缩放程序
 
-업무 시간에서 야간 사이에 또는 주말에 변화하는 애플리케이션 수요에 맞게 조정하기 위해 일반적으로 클러스터에는 자동으로 크기를 조정하는 방법이 필요합니다. AKS 클러스터는 다음 두 가지 방법 중 하나로 크기를 조정할 수 있습니다.
+若要进行调整以适应不断变化的应用程序需求（如工作日与夜间或周末之间），群集通常需要一种自动缩放方式。 AKS 群集可以采用两种方式之一进行缩放：
 
-* **클러스터 자동 크기 조정기**는 리소스 제약 조건으로 인해 노드에서 예약할 수 없는 Pod를 확인합니다. 然后，群集将自动增加节点数。
-* **Horizontal Pod Autoscaler**는 Kubernetes 클러스터에서 메트릭 서버를 사용하여 Pod의 리소스 수요를 모니터링합니다. 如果应用程序需要更多资源，则会自动增加 pod 数量以满足需求。
+* 群集自动缩放程序会监视由于资源约束而无法在节点上计划的 Pod。 然后，群集将自动增加节点数。
+* 水平 Pod 自动缩放程序会在 Kubernetes 群集中使用指标服务器来监视 Pod 的资源需求。 如果应用程序需要更多资源，则会自动增加 pod 数量以满足需求。
 
-![종종 클러스터 자동 크기 조정기 및 Horizontal Pod Autoscaler가 연동되어 필요한 애플리케이션 수요를 지원함](media/autoscaler/cluster-autoscaler.png)
+![群集自动缩放程序和水平 Pod 自动缩放程序通常协同工作以支持所需的应用程序需求](media/autoscaler/cluster-autoscaler.png)
 
-水平 pod 自动缩放程序和群集自动缩放程序还可以根据需要减少箱和节点的数量。 클러스터 자동 크기 조정기는 일정 기간 사용되지 않은 용량이 있는 경우 노드 수를 줄입니다. 클러스터 자동 크기 조정기가 제거할 노드의 Pod는 클러스터의 다른 위치에서 안전하게 예약됩니다. 다음 상황에서처럼 Pod를 이동할 수 없는 경우 클러스터 자동 크기 조정기가 규모를 축소하지 못할 수 있습니다.
+水平 pod 自动缩放程序和群集自动缩放程序还可以根据需要减少箱和节点的数量。 当已有一段时间存在未使用的容量时，群集自动缩放程序会减少节点数。 要由群集自动缩放程序删除的节点上的 Pod 会在群集中的其他位置安全地进行计划。 如果无法移动 Pod，则群集自动缩放程序可能无法减少，如以下情况：
 
 * Pod 是直接创建的，不受控制器对象（如部署或副本集）支持。
-* PDB(Pod Disruption Budget)가 너무 제한적이고 이를 사용하면 Pod 수가 특정 임계값보다 낮아질 수 없습니다.
-* Pod는 다른 노드에서 예약된 경우 적용할 수 없는 노드 선택기 또는 선호도 방지를 사용합니다.
+* Pod 中断预算 (PDB) 限制太多，不允许 Pod 数低于特定阈值。
+* Pod 使用在不同节点上进行计划时无法遵循的节点选择器或反相关性。
 
 有关群集自动缩放程序如何无法缩减的详细信息，请参阅[哪些类型的 pod 可以阻止群集自动缩放程序删除节点？][autoscaler-scaledown]
 
-클러스터 자동 크기 조정기는 크기 조정 이벤트와 리소스 임계값 사이의 시간 간격 같은 항목에 시작 매개 변수를 사용합니다. 이러한 매개 변수는 Azure 플랫폼에 의해 정의되며 현재는 사용자가 조정하도록 표시되지 않습니다. 有关群集自动缩放程序使用的参数的详细信息，请参阅[什么是群集自动缩放程序参数？][autoscaler-parameters]。
+群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 这些参数由 Azure 平台订阅，当前并未公开以供你调整。 有关群集自动缩放程序使用的参数的详细信息，请参阅[什么是群集自动缩放程序参数？][autoscaler-parameters]。
 
-群集和水平 pod autoscalers 可以一起使用，并且通常部署在群集中。 결합된 경우 Horizontal Pod Autoscaler는 애플리케이션 수요를 충족하는 데 필요한 개수의 Pod를 실행하는 데 중점을 둡니다. 클러스터 자동 크기 조정기는 예약된 Pod를 지원하는 데 필요한 개수의 노드를 실행하는 데 중점을 둡니다.
+群集和水平 pod autoscalers 可以一起使用，并且通常部署在群集中。 结合使用时，水平 Pod 自动缩放程序侧重于运行满足应用程序需求所需的 Pod 数。 群集自动缩放程序侧重于运行支持计划 Pod 所需的节点数。
 
 > [!NOTE]
-> 클러스터 자동 크기 조정기를 사용하면 수동 크기 조정이 사용하지 않도록 설정됩니다. 클러스터 자동 크기 조정기가 필요한 노드 수를 결정하도록 해보겠습니다. 클러스터 크기를 수동으로 조정하려면 [클러스터 자동 크기 조정기를 사용하지 않도록 설정](#disable-the-cluster-autoscaler)합니다.
+> 使用群集自动缩放程序时，会禁用手动缩放。 请让群集自动缩放程序确定所需的节点数。 如果要手动缩放群集，则[禁用群集自动缩放程序](#disable-the-cluster-autoscaler)。
 
-## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AKS 클러스터를 만들고 클러스터 자동 크기 조정기를 사용하도록 설정
+## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>创建 AKS 群集并启用群集自动缩放程序
 
 如果需要创建 AKS 群集，请使用[az AKS create][az-aks-create]命令。 若要在群集的节点池上启用并配置群集自动缩放程序，请使用 *--自动缩放程序*参数，并指定节点 *-最小计数*和 *--最大计数*。
 
 > [!IMPORTANT]
-> 클러스터 자동 크기 조정기는 Kubernetes 구성 요소입니다. AKS 클러스터는 가상 머신 확장 집합을 노드에 사용하지만, Azure Portal에서 또는 Azure CLI를 사용하여 확장 집합 자동 크기 조정에 대한 설정을 직접 설정하거나 편집하지 마세요. Kubernetes 클러스터 자동 크기 조정기가 필수 크기 조정 설정을 자동으로 관리하게 두세요. 有关详细信息，请参阅可否[修改节点资源组中的 AKS 资源？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
+> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅可否[修改节点资源组中的 AKS 资源？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
 以下示例创建一个 AKS 群集，其中包含一个虚拟机规模集支持的单一节点池。 它还会在群集的节点池中启用群集自动缩放程序，并将最小值设置为*1* ，最大值为*3*个节点：
 
@@ -79,14 +79,14 @@ az aks create \
   --max-count 3
 ```
 
-클러스터를 만들고 클러스터 자동 크기 조정기 설정을 구성하는 데 몇 분 정도 걸립니다.
+创建群集并配置群集自动缩放程序设置需要几分钟时间。
 
-## <a name="change-the-cluster-autoscaler-settings"></a>클러스터 자동 크기 조정기 설정 변경
+## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 
 > [!IMPORTANT]
 > 如果 AKS 群集中有多个节点池，请跳到 "[带多个代理池的自动缩放" 部分](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。 具有多个代理池的群集要求使用 `az aks nodepool` 命令集来更改节点池特定属性，而不是 `az aks`。
 
-在上一步中，若要创建 AKS 群集或更新现有节点池，请将 "群集自动缩放程序最小节点计数" 设置为 " *1*"，并将 "最大节点计数" 设置为*3*。 애플리케이션 수요가 변경되면 클러스터 자동 크기 조정기의 노드 수를 조정해야 할 수 있습니다.
+在上一步中，若要创建 AKS 群集或更新现有节点池，请将 "群集自动缩放程序最小节点计数" 设置为 " *1*"，并将 "最大节点计数" 设置为*3*。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
 
 若要更改节点计数，请使用[az aks update][az-aks-update]命令。
 
@@ -102,13 +102,13 @@ az aks update \
 上面的示例将*myAKSCluster*中单节点池上的 cluster 自动缩放程序更新为最小值为*1* ，最大值为*5*节点。
 
 > [!NOTE]
-> 不能设置比当前为节点池设置的最小节点计数。 예를 들어 현재 최소 개수가 *1*로 설정되어 있으면 최소 개수를 *3*으로 업데이트할 수 없습니다.
+> 不能设置比当前为节点池设置的最小节点计数。 例如，如果当前将最小计数设置为 1，则不能将最小计数更新为 3。
 
-애플리케이션 및 서비스의 성능을 모니터링하고 클러스터 자동 크기 조정기 노드 수를 필요한 성능과 일치하도록 조정합니다.
+监视应用程序和服务的性能，并调整群集自动缩放程序节点计数以匹配所需性能。
 
-## <a name="disable-the-cluster-autoscaler"></a>클러스터 자동 크기 조정기 사용 안 함
+## <a name="disable-the-cluster-autoscaler"></a>禁用群集自动缩放程序
 
-如果不再想要使用群集自动缩放程序，可以使用[az aks update][az-aks-update]命令禁用该群集，并指定 *--disable-自动缩放程序*参数。 클러스터 자동 크기 조정기가 사용하지 않도록 설정되면 노드가 제거되지 않습니다.
+如果不再想要使用群集自动缩放程序，可以使用[az aks update][az-aks-update]命令禁用该群集，并指定 *--disable-自动缩放程序*参数。 群集自动缩放程序处于禁用状态时，不会删除节点。
 
 ```azurecli-interactive
 az aks update \
@@ -180,9 +180,9 @@ az aks nodepool update \
 
 如果要在现有群集上重新启用群集自动缩放程序，可以使用[az aks nodepool update][az-aks-nodepool-update]命令重新启用群集，同时指定 *--enable-cluster-自动缩放程序*、 *--min*和 *--max*参数。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-이 문서에서는 AKS 노드 수를 자동으로 조정하는 방법을 설명했습니다. Horizontal Pod Autoscaler를 사용하여 애플리케이션을 실행하는 Pod 수를 자동으로 조정할 수도 있습니다. 有关使用横向 pod 自动缩放程序的步骤，请参阅[在 AKS 中缩放应用程序][aks-scale-apps]。
+本文演示了如何自动缩放 AKS 节点数。 还可以使用水平 Pod 自动缩放程序自动调整运行应用程序的 Pod 数。 有关使用横向 pod 自动缩放程序的步骤，请参阅[在 AKS 中缩放应用程序][aks-scale-apps]。
 
 <!-- LINKS - internal -->
 [aks-upgrade]: upgrade-cluster.md

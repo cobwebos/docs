@@ -18,7 +18,7 @@ ms.locfileid: "76722832"
 
 本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
 
-## <a name="issue"></a>문제
+## <a name="issue"></a>问题
 
 收到来自 Apache Ambari 的错误，这些错误类似于：
 
@@ -27,11 +27,11 @@ ms.locfileid: "76722832"
 1/1 log-dirs have errors: [ /mnt/resource/hadoop/yarn/log : Cannot create directory: /mnt/resource/hadoop/yarn/log ]
 ```
 
-## <a name="cause"></a>원인
+## <a name="cause"></a>原因
 
 受影响的工作节点上缺少 Ambari 警报中所述的目录。
 
-## <a name="resolution"></a>해상도
+## <a name="resolution"></a>解决方法
 
 在受影响的工作节点上手动创建缺少的目录。
 
@@ -52,9 +52,9 @@ ms.locfileid: "76722832"
 
 1. 从 Apache Ambari UI 中，禁用，然后启用警报。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-문제가 표시되지 않거나 문제를 해결할 수 없는 경우 다음 채널 중 하나를 방문하여 추가 지원을 받으세요.
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 

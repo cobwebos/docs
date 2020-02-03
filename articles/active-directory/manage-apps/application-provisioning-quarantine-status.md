@@ -33,7 +33,7 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
 
 有三种方法可以检查应用程序是否处于隔离区：
   
-- 在 Azure 门户中，导航到**Azure Active Directory** > **企业应用程序** > &lt;&gt;**预配**的*应用程序名称*，并滚动到底部的进度栏。  
+- 在 Azure 门户中，导航到**Azure Active Directory** > **企业应用程序** > &lt;&gt;**预配**的*应用程序名称*，并滚动到底部的进度栏。 >   
 
   ![显示隔离状态的设置状态栏](media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -69,6 +69,6 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
 
 - 使用 Azure 门户重启预配作业。 在应用程序的 "设置 **" 页的**"**设置**" 下，选择 "**清除状态并重新启动同步**"，并将设置**状态**设置为**On**。 此操作完全重启预配服务，这可能需要一些时间。 将再次运行完整的初始周期，这会清除 escrows，从隔离区中删除应用程序，并清除所有水印。
 
-- 使用 Microsoft Graph[重启预配作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 你可以完全控制重新启动的内容。 你可以选择清除 escrows （以重新启动向隔离状态累算的保管计数器）、清除隔离（从隔离区删除应用程序）或清除水印。 다음 요청을 사용합니다.
+- 使用 Microsoft Graph[重启预配作业](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 你可以完全控制重新启动的内容。 你可以选择清除 escrows （以重新启动向隔离状态累算的保管计数器）、清除隔离（从隔离区删除应用程序）或清除水印。 使用以下请求：
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

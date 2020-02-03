@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 流分析
-description: 솔루션 개발을 위한 Azure SQL Data Warehouse와 함께 Azure Stream Analytics 사용을 위한 팁
+description: 有关在开发解决方案时将 Azure 流分析与 Azure SQL 数据仓库配合使用的技巧。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -19,51 +19,51 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721194"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>将 Azure 流分析与 Azure Synapse Analytics 配合使用
-Azure Stream Analytics는 완전히 관리되는 서비스로, 클라우드의 스트리밍 데이터에 대해 대기 시간이 짧고 확장성이 뛰어난 고가용성의 복합 이벤트 처리 기능을 제공합니다. [Azure Stream Analytics 소개](../stream-analytics/stream-analytics-introduction.md)를 읽어 기본 사항을 배울 수 있습니다. [Azure Stream Analytics를 사용하여 시작](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 자습서에 따라 Stream Analytics로 엔드투엔드 솔루션을 만드는 방법에 대해 알 수 있습니다.
+Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以通过阅读[Azure 流分析简介](../stream-analytics/stream-analytics-introduction.md)了解基本知识。 然后，你可以使用[Azure 流分析入门](../stream-analytics/stream-analytics-real-time-fraud-detection.md)教程，了解如何使用流分析创建端到端解决方案。
 
 本文介绍如何使用数据仓库数据库作为流分析作业的输出接收器。
 
-## <a name="prerequisites"></a>필수 조건
-먼저, [Azure Stream Analytics를 사용하여 시작](../stream-analytics/stream-analytics-real-time-fraud-detection.md) 자습서에서 다음 단계를 실행합니다.  
+## <a name="prerequisites"></a>必备条件
+首先，请在[开始使用 Azure 流分析](../stream-analytics/stream-analytics-real-time-fraud-detection.md)教程中完成以下步骤。  
 
-1. 이벤트 허브 입력 만들기
-2. 이벤트 생성기 애플리케이션 구성 및 시작
-3. Stream Analytics 작업 프로비전
-4. 작업 입력 및 쿼리 지정
+1. 创建事件中心输入
+2. 配置并启动事件生成器应用程序
+3. 预配流分析作业
+4. 指定作业输入和查询
 
-그런 다음 SQL Data Warehouse 데이터베이스를 만듭니다.
+然后，创建 Azure SQL 数据仓库数据库
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>작업 출력 지정: Azure SQL Data Warehouse 데이터베이스
-### <a name="step-1"></a>1단계
+## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>指定作业输出：Azure SQL 数据仓库数据库
+### <a name="step-1"></a>步骤 1
 在流分析作业中，单击页面顶部的 "**输出**"，然后单击 "**添加**"。
 
-### <a name="step-2"></a>2단계
+### <a name="step-2"></a>步骤 2
 选择 "SQL 数据库"。
 
-### <a name="step-3"></a>3단계
-다음 페이지에 다음 값을 입력합니다.
+### <a name="step-3"></a>步骤 3
+在下一页输入以下值：
 
-* *출력 별칭*: 이 작업 출력의 이름을 입력합니다.
-* *구독*:
-  * SQL Data Warehouse가 Stream Analytics 작업과 동일한 구독 내에 있는 경우 현재 구독에서 SQL Database 사용을 선택할 수 있습니다.
-  * 데이터베이스가 다른 구독에 있는 경우 다른 구독에서 SQL Database 사용을 선택합니다.
-* *데이터베이스*: 대상 데이터베이스의 이름을 지정합니다.
-* *서버 이름*: 방금 지정한 데이터베이스에 대한 서버 이름을 지정합니다. Azure Portal을 사용하여 찾을 수 있습니다.
+* *输出别名*：输入此作业输出的友好名称。
+* *订阅*：
+  * 如果 SQL 数据仓库数据库与此流分析作业位于同一订阅中，请选择“使用当前订阅中的 SQL 数据库”。
+  * 如果你的数据库在不同的订阅中，请选择“使用其他订阅中的 SQL 数据库”。
+* *数据库*：指定目标数据库的名称。
+* *服务器名称*：为刚刚指定的数据库指定服务器名称。 可以使用 Azure 门户查找此信息。
 
 ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png)
 
-* *사용자 이름*: 데이터베이스에 대한 쓰기 권한이 있는 계정의 사용자 이름을 지정합니다.
-* *암호*: 지정된 사용자 계정에 대한 암호를 제공합니다.
-* *테이블*: 데이터베이스에서 대상 테이블의 이름을 지정합니다.
+* *用户名*：指定具有数据库写入访问权限的帐户的用户名。
+* *密码*：提供指定的用户帐户的密码。
+* *表*：指定数据库中目标表的名称。
 
 ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
 
-### <a name="step-4"></a>4단계:
-확인 단추를 클릭하여 이 작업 출력을 추가하고 Stream Analytics가 데이터베이스에 성공적으로 연결될 수 있는지 확인합니다.
+### <a name="step-4"></a>步骤 4
+单击相应勾选按钮以添加此作业输出，并确保流分析可以成功连接到数据库。
 
 成功连接到数据库后，会在门户中看到一条通知。 您可以单击 "测试" 以测试与数据库的连接。
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 有关集成的概述，请参阅[集成其他服务](sql-data-warehouse-overview-integrate.md)。
 有关更多开发技巧，请参阅[数据仓库的设计决策和编码技术](sql-data-warehouse-overview-develop.md)。
 

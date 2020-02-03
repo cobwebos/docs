@@ -54,13 +54,13 @@ TLS 1.0 和1.1 被视为旧版，并计划弃用。 有关详细信息，请参�
 > [!NOTE]
 > `minTlsVersion` 属性是只读的，一旦创建了 IoT 中心资源，就不能再对其进行更改。 因此，请务必正确地测试和验证*所有*IoT 设备和服务是否与 TLS 1.2 和[推荐的密码](#recommended-ciphers)兼容。
 
-### <a name="supported-regions"></a>지원되는 지역
+### <a name="supported-regions"></a>支持的区域
 
 需要使用 TLS 1.2 的 IoT 中心可在以下区域创建：
 
-* 미국 동부
-* 미국 중남부
-* 미국 서부 2
+* 美国东部
+* 美国中南部
+* 美国西部 2
 
 > [!NOTE]
 > 故障转移后，IoT 中心的 `minTlsVersion` 属性在故障转移后将保持有效，在异地配对区域中。
@@ -78,13 +78,13 @@ TLS 1.0 和1.1 被视为旧版，并计划弃用。 有关详细信息，请参�
 
 使用以下链接在 IoT 中心客户端 Sdk 中配置 TLS 1.2 和允许的密码。
 
-| 언어 | 支持 TLS 1。2 | 설명서 |
+| 语言 | 支持 TLS 1。2 | 文档 |
 |----------|-------------------|---------------|
-| C        | 예               | [링크](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | 예               | [링크](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | 예               | [링크](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | 예               | [링크](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJs   | 예               | [링크](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | 是               | [链接](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | 是               | [链接](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | 是               | [链接](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | 是               | [链接](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | 是               | [链接](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>在 IoT Edge 安装程序中使用 TLS 1。2
