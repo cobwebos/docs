@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973520"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964764"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>选择 vCore 和 DTU 购买模型
 
@@ -47,9 +47,9 @@ ms.locfileid: "74973520"
 
 在预配的计算层中，计算成本反映了为应用程序预配的总计算能力。
 
-在“业务关键”服务层级中，我们会自动分配至少 3 个副本。 为了反映这种额外的计算资源分配，在业务关键服务层中，基于 vCore 的购买模型中的价格大约为 2.7 x，而不是常规用途的服务层。 同样，业务关键服务层中每 GB 的更高存储价格反映了 SSD 存储的高 i/o 和低延迟。
+在“业务关键”服务层级中，我们会自动分配至少 3 个副本。 为了反映这种额外的计算资源分配，在业务关键服务层中，基于 vCore 的购买模型中的价格大约比常规用途服务层高 2.7 x。 同样，在 "业务关键" 服务 "层中，每 GB 的存储价格越高，就会反映更高的 IO 限制和 SSD 存储的延迟较低。
 
-对于业务关键服务层和常规用途服务层，备份存储的成本是相同的，因为这两个层都使用标准存储。
+对于业务关键服务层和常规用途服务层，备份存储的成本是相同的，因为这两个层都使用标准存储进行备份。
 
 ### <a name="serverless-compute-costs"></a>无服务器计算成本
 
@@ -67,7 +67,7 @@ ms.locfileid: "74973520"
 
 虚拟核心（vCore）表示逻辑 CPU，并提供在硬件的各代和硬件物理特征之间进行选择的选项（例如，内核数、内存和存储大小）。 基于 vCore 的购买模型为你提供了对单个资源消耗的灵活性、控制、透明性，并通过一种简单的方式将本地工作负荷要求转换到云。 此模型可让你根据工作负荷需求选择计算、内存和存储资源。
 
-在基于 vCore 的购买模型中，你可以在[单一数据库](sql-database-single-database-scale.md)、[弹性池](sql-database-elastic-pool.md)和[托管实例](sql-database-managed-instance.md)的[常规用途](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)和[业务关键](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)服务层之间进行选择。 对于单一数据库，还可以选择[超大规模服务层](sql-database-service-tier-hyperscale.md)。
+在基于 vCore 的购买模型中，可以在[单个数据库](sql-database-single-database-scale.md)、[弹性池](sql-database-elastic-pool.md)和[托管实例](sql-database-managed-instance.md)的[常规用途](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)和[业务关键](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)服务层之间进行选择。 对于单一数据库，还可以选择[超大规模服务层](sql-database-service-tier-hyperscale.md)。
 
 基于 vCore 的购买模式使你可以独立选择计算和存储资源、与本地性能匹配，并优化价格。 在基于 vCore 的购买模型中，你需要支付：
 
@@ -83,8 +83,8 @@ ms.locfileid: "74973520"
 
 若要从基于 DTU 的购买模型转换为基于 vCore 的购买模型，请使用以下经验法则选择计算大小：
 
-- 标准层中的每个 100 Dtu 要求在常规用途服务层中至少有1个 vCore。
-- 高级层中的每个 125 Dtu 要求在业务关键服务层中至少有1个 vCore。
+- 标准层中的每个 100 Dtu 要求常规用途服务层中至少有1个 vCore。
+- 高级层中的每个 125 Dtu 要求业务关键服务层中至少有1个 vCore。
 
 ## <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 
@@ -125,7 +125,19 @@ Dtu 最适用于了解为不同计算大小和服务层的 Azure SQL 数据库�
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>确定工作负荷所需的 DTU 数
 
-如果要将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，请使用[dtu 计算器](https://dtucalculator.azurewebsites.net/)估计所需的 dtu 数。 对于现有的 Azure SQL 数据库工作负荷，请使用[查询性能见解](sql-database-query-performance.md)来了解数据库资源消耗（dtu），并获得更深入的信息来优化工作负荷。 使用[dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)动态管理视图（DMV），可以查看最近一小时的资源消耗。 [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)目录视图显示过去14天的资源消耗，但以较低的保真度表示平均的5分钟。
+如果要将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，请使用[dtu 计算器](https://dtucalculator.azurewebsites.net/)估计所需的 dtu 数。 对于现有的 Azure SQL 数据库工作负荷，请使用[查询性能见解](sql-database-query-performance.md)来了解数据库资源消耗（dtu），并获得更深入的信息来优化工作负荷。 [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)动态管理视图（DMV）允许您查看最近一小时的资源消耗。 [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)目录视图显示过去14天的资源消耗，但以较低的保真度表示平均的5分钟。
+
+### <a name="determine-dtu-utilization"></a>确定 DTU 利用率
+
+若要确定 DTU/eDTU 使用率相对于数据库或弹性池的 DTU/eDTU 限制的平均百分比，请使用以下公式：
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+此公式的输入值可从[sys.databases. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv 获得。 换句话说，若要确定 DTU/eDTU 对数据库或弹性池的 DTU/edtu 限制的百分比，请从以下位置选择最大百分比值： `avg_cpu_percent`、`avg_data_io_percent`和 `avg_log_write_percent` 在给定时间点。
+
+> [!NOTE]
+> 数据库的 DTU 限制由 CPU、读取、写入和数据库的可用内存决定。 但是，因为 SQL Server 数据库引擎通常会使用所有可用内存来提高性能，所以，不管当前的数据库负载如何，`avg_memory_usage_percent` 的值通常接近100%。 因此，即使内存间接影响 DTU 限制，也不会在 DTU 利用率公式中使用它。
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>受益于资源弹性池的工作负荷
 

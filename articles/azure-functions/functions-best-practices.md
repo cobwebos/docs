@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433298"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963644"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -74,7 +74,9 @@ ms.locfileid: "75433298"
 
 ### <a name="avoid-sharing-storage-accounts"></a>避免共享存储帐户
 
-创建 function app 时，必须将其与存储帐户相关联。 存储帐户连接在[AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 若要最大程度地提高性能，请对每个 function app 使用单独的存储帐户。 如果有 Durable Functions 或事件中心触发的函数，这两种函数都会产生大量存储事务，这一点特别重要。 当应用程序逻辑与 Azure 存储交互时，无论是直接（使用存储 SDK）还是通过某个存储绑定进行交互，都应使用专用存储帐户。 例如，如果有事件中心触发的函数将一些数据写入 blob 存储，请使用两个存储帐户&mdash;一个用于函数应用，另一个用于由函数存储的 blob。
+创建 function app 时，必须将其与存储帐户相关联。 存储帐户连接在[AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 

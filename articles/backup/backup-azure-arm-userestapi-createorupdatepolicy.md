@@ -4,33 +4,18 @@ description: 在本文中，你将了解如何使用 REST API 创建和管理备
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554888"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963846"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
 [策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
 
-## <a name="backup-policy-essentials"></a>备份策略概要
-
-- 备份策略是按保管库创建的。
-- 可为以下工作负荷的备份创建备份策略
-  - Azure VM
-  - Azure VM 中的 SQL
-  - Azure 文件共享
-- 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
-- 策略由两个部分组成
-  - 计划：何时创建备份
-  - 保留期：每个备份应保留多长时间。
-- 可将计划定义为带有特定时间点的“每日”或“每周”计划。
-- 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
-- “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
-- “每月”、“每年”备份点的保留期称为“LongTermRetention”。
-- 创建保管库后，还会创建名为 "DefaultPolicy" 的 Azure VM 备份的策略，并将其用于备份 Azure Vm。
+## <a name="create-or-update-a-policy"></a>创建或更新策略
 
 若要创建或更新 Azure 备份策略，请使用以下 *PUT* 操作
 
@@ -44,9 +29,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |需要  |Type  |描述  |
+|名称  |需要  |类型  |Description  |
 |---------|---------|---------|---------|
-|属性     |   正确      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
+|properties     |   正确      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |标记     |         | 对象        |  资源标记       |
 
 有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)。
@@ -148,11 +133,11 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="responses"></a>响应
 
-创建/更新备份策略是一项[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着此操作会创建另一个需要单独跟踪的操作。
+创建/更新备份策略是一项[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 当创建另一个操作时，它将返回两个响应：202（接受），然后在该操作完成时返回200（确定）。
 
-|名称  |Type  |描述  |
+|名称  |类型  |Description  |
 |---------|---------|---------|
 |200 正常     |    [Protection PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  确定       |
 |202 已接受     |         |     已接受    |
