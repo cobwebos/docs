@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863115"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964883"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
 
@@ -35,11 +35,14 @@ ms.locfileid: "75863115"
    ![NSG 入站安全规则](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG 入站安全规则")
 
 > [!NOTE]
-> 通过将当前规则（`public_endpoint_inbound`）替换为2个规则，可以选择对托管 SQL 实例的入站访问权限更严格：
+> 索引器仍要求使用公用终结点配置 SQL 托管实例以便读取数据。
+> 但是，你可以选择使用以下2个规则替换当前规则（`public_endpoint_inbound`）来限制对该公共终结点的入站访问：
 >
-> * 允许从 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)进行入站访问（"源" = `AzureCognitiveSearch`）
+> * 允许来自 `AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)（"SOURCE" = `AzureCognitiveSearch`，"NAME" = `cognitive_search_inbound`）的入站访问
 >
-> * 允许来自搜索服务的 IP 地址的入站访问，可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来获取。 （"SOURCE" = `IP address`）
+> * 允许来自搜索服务的 IP 地址的入站访问，可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来获取。 （"SOURCE" = `IP address`，"NAME" = `search_service_inbound`）
+>
+> 对于这两个规则中的每一个，请设置 "PORT" = `3342`，"PROTOCOL" = `TCP`，"DESTINATION" = `Any`，"ACTION" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>获取公共终结点连接字符串
 请确保使用**公用终结点**（端口3342，而不是端口1433）的连接字符串。

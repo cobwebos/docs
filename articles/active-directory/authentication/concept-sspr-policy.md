@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425326"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962486"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -85,8 +85,8 @@ ms.locfileid: "75425326"
 | 不允许的字符 | Unicode 字符。 |
 | 密码限制 |<ul><li>最少8个字符，最多256个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期持续时间（最长密码期限） |<ul><li>默认值：**90** 天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
-| 密码到期通知（当用户通知密码过期时） |<ul><li>默认值：**14** 天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
-| 密码过期（密码过期） |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
+| 密码到期通知（通知用户密码过期时） |<ul><li>默认值：**14** 天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
+| 密码过期（允许密码永不过期） |<ul><li>默认值： **false** （指示密码的到期日期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
 | 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
 | 帐户锁定 | 使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md)跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |

@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490639"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964237"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何为 Azure 数据共享中接收的共享配置数据集映射
 
-本文介绍如何使用 Azure 数据共享为接收的共享配置数据集映射。 如果接受了数据共享邀请，但选择了 "以后接受并配置"，则需要执行此操作。 如果需要更改与你共享的数据的目标，或者想要将数据接收到 SQL Server，则可能需要配置数据集映射。 
+本文介绍如何使用 Azure 数据共享为接收的共享配置数据集映射。 如果接受了数据共享邀请，但选择了 "以后接受并配置"，或在就地共享数据，则需要执行此操作。 如果需要更改与你共享的数据的目标，或者想要将数据接收到 SQL Server，则可能需要配置数据集映射。 
 
 ## <a name="navigate-to-a-received-data-share"></a>导航到收到的数据共享
 
@@ -27,9 +27,9 @@ ms.locfileid: "73490639"
 
 ![映射到目标](./media/dataset-map-target.png "映射到目标") 
 
-## <a name="select-a-new-destination-store"></a>选择新的目标存储
+## <a name="select-a-new-target-store"></a>选择新的目标存储
 
-选择要将数据置于居住的目标数据类型。 请注意，任何之前映射的存储帐户中已存在的数据将不会自动移动到新的目标。
+选择要将数据置于居住的目标数据类型。 对于基于快照的共享，任何之前映射的存储帐户中已存在的任何数据都不会自动移动到新的目标存储中。 对于 "就地共享"，请选择指定位置中的数据存储。 此位置是数据访问接口的源数据存储所在的 Azure 数据中心。
 
 ![目标存储帐户](./media/dataset-map-target-sql.png "目标存储") 
 

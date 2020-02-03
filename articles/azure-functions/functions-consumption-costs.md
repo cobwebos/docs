@@ -3,12 +3,12 @@ title: 估计 Azure Functions 的消耗计划成本
 description: 了解如何更好地估计在 Azure 中的消耗计划中运行函数应用时可能会产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890319"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963982"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估计消耗计划成本
 
@@ -47,7 +47,7 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
 
 | 相关成本 | Description |
 | ------------ | ----------- |
-| **存储帐户** | 每个函数应用都要求有一个关联的常规用途[Azure 存储帐户](../storage/common/storage-introduction.md#types-of-storage-accounts)，该帐户[单独计费](https://azure.microsoft.com/pricing/details/storage/)。 此帐户由函数运行时在内部使用，但你也可以将其用于存储触发器和绑定。 如果没有存储帐户，则会在创建函数应用时为你创建一个。 若要了解详细信息，请参阅[存储帐户要求](functions-scale.md#storage-account-requirements)。|
+| **存储帐户** | 每个函数应用都要求有一个关联的常规用途[Azure 存储帐户](../storage/common/storage-introduction.md#types-of-storage-accounts)，该帐户[单独计费](https://azure.microsoft.com/pricing/details/storage/)。 此帐户由函数运行时在内部使用，但你也可以将其用于存储触发器和绑定。 如果没有存储帐户，则会在创建函数应用时为你创建一个。 若要了解详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。|
 | **Application Insights** | 函数依赖于[Application Insights](../azure-monitor/app/app-insights-overview.md)来为函数应用提供高性能的监视体验。 虽然不是必需的，但应[启用 Application Insights 集成](functions-monitoring.md#enable-application-insights-integration)。 每个月都包含遥测数据的免费授予。 若要了解详细信息，请参阅[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 |
 | **网络带宽** | 无需为同一区域中的 Azure 服务之间的数据传输付费。 但是，对于到其他区域或 Azure 外部的出站数据传输，可能会产生费用。 若要了解详细信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 |
 

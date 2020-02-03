@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696634"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962079"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -39,7 +39,7 @@ ms.locfileid: "76696634"
  
 根据客户端的构建方式，它可以使用 Microsoft 标识平台支持的身份验证流中的一个（或多个）。  这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供了概述：
  
-|Flow | 要求 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
+|Flow | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授权代码流](v2-oauth2-auth-code-flow.md) | | 不可以 | 不可以 | 不可以 | 不可以|  
 |[隐式流](v2-oauth2-implicit-grant-flow.md) | | 不可以        | 不可以    |      |                    |

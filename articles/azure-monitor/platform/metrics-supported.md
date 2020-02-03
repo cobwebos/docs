@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e67cd8c85d9ba85e32ef7aece402f97ab24243e5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901146"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963438"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
-Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 度量值按命名空间组织。 有关服务及其所属命名空间的列表，请参阅[Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。 若要以编程方式查询和访问这些指标，请使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -25,7 +25,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 > 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
 > 有关通过诊断设置导出的平台指标列表，请参阅[此文](metrics-supported-export-diagnostic-settings.md)。
-
 
 
 

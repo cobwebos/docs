@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895888"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964866"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>预览：控制包含维护控制的更新和 Azure CLI
 
@@ -31,13 +31,13 @@ ms.locfileid: "75895888"
 > [!IMPORTANT]
 > 维护控制目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 
+>
 
 ## <a name="limitations"></a>限制
 
 - Vm 必须位于[专用主机](./linux/dedicated-hosts.md)上，或使用[独立的 VM 大小](./linux/isolation.md)创建。
 - 35天后，将自动应用更新。
-- 用户必须具有**资源所有者**访问权限。
+- 用户必须具有**资源参与者**访问权限。
 
 
 ## <a name="install-the-maintenance-extension"></a>安装维护扩展
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 使用 `az maintenance update list` 查看是否存在挂起的更新。 Update--订阅为包含 VM 的订阅的 ID。
 
+如果没有更新，则该命令将返回一条错误消息，其中包含文本： `Resource not found...StatusCode: 404`。
+
+如果有更新，则只会返回一个更新，即使存在多个挂起的更新。 此更新的数据将在对象中返回：
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>独立 VM
 
 检查独立 VM 的挂起更新。 在此示例中，输出的格式为表格以便于阅读。
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>专用主机
 
-检查专用主机的挂起更新。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
+检查专用主机的挂起更新（ADH）。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>应用更新
 
-使用 `az maintenance apply update` 来应用挂起的更新。
+使用 `az maintenance apply update` 来应用挂起的更新。 成功时，此命令将返回包含更新详细信息的 JSON。
 
 ### <a name="isolated-vm"></a>独立 VM
 
@@ -191,7 +208,7 @@ az maintenance update list \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ az maintenance applyupdate create \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 你可以使用 `az maintenance applyupdate get`查看更新进度。 
 
-### <a name="isolated-vm"></a>独立 VM
+你可以使用 `default` 作为更新名称来查看上次更新的结果，或将 `myUpdateName` 替换为运行 `az maintenance applyupdate create`时返回的更新的名称。
 
-将 `myUpdateName` 替换为运行 `az maintenance applyupdate create`时所返回的更新的名称。
+### <a name="isolated-vm"></a>独立 VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>专用主机
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

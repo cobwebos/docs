@@ -1,32 +1,25 @@
 ---
 title: 更改 Vm 可用性集
-description: 了解如何使用 Azure PowerShell 和 Resource Manager 部署模型更改虚拟机的可用性集。
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+description: 了解如何使用 Azure PowerShell 更改虚拟机的可用性集。
+ms.service: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039568"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964917"
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>更改 Windows VM 的可用性集
+# <a name="change-the-availability-set-for-a-vm"></a>更改 VM 的可用性集
 以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 若要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 
+
+本文适用于 Linux 和 Windows Vm。
 
 本文最后一次使用 [Azure Cloud Shell](https://shell.azure.com/powershell) 和 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.2.0 在 2019 年 2 月 12 日进行了测试。
 
- 
 
 ## <a name="change-the-availability-set"></a>更改可用性集 
 
@@ -61,12 +54,13 @@ ms.locfileid: "74039568"
 # Remove the original VM
     Remove-AzVM -ResourceGroupName $resourceGroup -Name $vmName    
 
-# Create the basic configuration for the replacement VM
+# Create the basic configuration for the replacement VM. 
     $newVM = New-AzVMConfig `
        -VMName $originalVM.Name `
        -VMSize $originalVM.HardwareProfile.VmSize `
        -AvailabilitySetId $availSet.Id
-  
+ 
+# For a Linux VM, change the last parameter from -Windows to -Linux 
     Set-AzVMOSDisk `
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `

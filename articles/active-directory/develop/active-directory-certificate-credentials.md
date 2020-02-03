@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 15fa6b9c7b9c84cd17b67c53dd65acd54ea63910
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699217"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962112"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
@@ -130,6 +130,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ## <a name="code-sample"></a>代码示例
 
 > [!NOTE]
-> 必须通过使用证书的哈希来计算 X5T 标头，并将其转换为 base64 字符串。 C#其中类似于： `System.Convert.ToBase64String(cert.GetCertHash());`
+> 必须通过使用证书哈希将 X5T 标头转换为基本64字符串来计算该标头。 要在中C#执行此操作的代码是： `System.Convert.ToBase64String(cert.GetCertHash());`
 
 [使用证书在守护程序应用中对 Microsoft 标识平台进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)的代码示例显示应用程序如何使用其自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)执行创建证书、计算指纹等操作。

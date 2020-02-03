@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045891"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964645"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -444,7 +444,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="metadata-apis"></a>元数据 API
+## <a name="metadata-apis"></a>元数据 Api
 
 以下 Api 可通过元数据终结点获得：
 
@@ -542,7 +542,7 @@ Nonce 是一个可选的10位字符串。 如果未提供，IMDS 将在其位置
 
 可通过 Powershell 实用工具 `curl` 在 Windows 中检索实例元数据：
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -1055,7 +1055,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. 如何获取服务支持？
    * 若要获取该服务的支持，请针对长时间重试后仍无法获取元数据响应的 VM，在 Azure 门户中创建相关支持问题。
 9. 调用服务时请求超时？
-   * 必须从分配给 VM 的网卡的主 IP 地址进行元数据调用，此外，在已更改路由的情况下，网卡外必须存在地址 169.254.0.0/16 的路由。
+   * 必须从分配给 VM 主要网卡的主 IP 地址进行元数据调用，另外，如果更改了路由，则必须为网络卡的 "169.254.0.0/16" 地址提供路由。
 10. 我更新了虚拟机规模集中的标记，但与 VM 不同，它们未显示在实例中，这是怎么回事？
     * 目前，对于规模集，仅在重启/重置映像/或对实例的磁盘更改时，向 VM 显示标记。
 

@@ -1,86 +1,97 @@
 ---
-title: Azure 数据共享的角色和要求
-description: 了解用于在 Azure 数据共享中共享数据的数据访问接口和数据使用者的访问控制角色和要求。
+title: Azure Data Share 的角色和要求
+description: 了解使用 Azure 数据共享来共享和接收数据所需的权限。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 34c73a6bd400da076c68f308a2100a0f4569bd04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490585"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964458"
 ---
-# <a name="roles-and-requirements-for-azure-data-share"></a>Azure 数据共享的角色和要求 
+# <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和要求 
 
-本文介绍了使用 Azure 数据共享共享数据以及使用 Azure 数据共享接受和接收数据所需的角色。 
+本文介绍使用 Azure 数据共享服务共享和接收数据所需的角色和权限。 
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
-Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基础存储帐户进行身份验证，以便能够读取数据提供程序共享的数据，以及接收作为数据使用者共享的数据。 因此，数据提供程序和数据使用者之间不会交换凭据。 
+使用 Azure 数据共享服务，无需在数据访问接口和使用者之间交换凭据即可共享数据。 Azure 数据共享服务使用托管标识（以前称为 Msi）在 Azure 数据存储中进行身份验证。 
 
-需要授予托管服务标识对基础存储帐户或 SQL 数据库的访问权限。 Azure 数据共享服务使用 Azure 数据共享资源的托管服务标识来读取和写入数据。 Azure 数据共享的用户需要能够为要从/向其共享数据的存储帐户或 SQL 数据库创建托管服务标识角色分配。 
+需要为 azure 数据共享资源的托管标识授予对 Azure 数据存储的访问权限。 然后，Azure 数据共享服务使用此托管标识来读取和写入数据，以进行基于快照的共享，并建立用于就地共享的符号链接。 
 
-对于存储，创建角色分配的权限存在于**所有者**角色、用户访问管理员角色或分配了 Microsoft 的自定义角色中。 
+若要在 Azure 数据存储中共享或接收数据，用户需要至少具有以下权限。 对于基于 SQL 的共享，需要其他权限。
+* 写入 Azure 数据存储的权限。 通常，此权限存在于**参与者**角色中。
+* 在 Azure 数据存储中创建角色分配的权限。 通常，创建角色分配的权限存在于**所有者**角色、用户访问管理员角色或分配了 Microsoft 的自定义角色中。 如果数据共享资源的托管标识已被授予对 Azure 数据存储的访问权限，则不需要此权限。 请参阅下表了解必需的角色。
 
-如果你不是相关存储帐户的所有者，并且无法自行为 Azure 数据共享资源的托管标识创建角色分配，则可以请求 Azure 管理员以你的名义创建角色分配。 
-
-下面是分配给数据共享资源托管标识的角色的摘要：
+下面是分配给数据共享资源的托管标识的角色的摘要：
 
 | |  |  |
 |---|---|---|
-|**存储类型**|**数据提供程序存储**|**数据使用者目标存储**|
-|Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
-|Azure Data Lake Gen1 | 所有者 | 不支持
-|Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
-|Azure SQL | dbo | dbo 
+|**数据存储类型**|**数据访问接口源数据存储**|**数据使用者目标数据存储**|
+|Azure Blob 存储| 存储 Blob 数据读取器 | 存储 Blob 数据参与者
+|Azure Data Lake Gen1 | “所有者” | 不支持
+|Azure Data Lake Gen2 | 存储 Blob 数据读取器 | 存储 Blob 数据参与者
+|Azure SQL Server | SQL DB 参与者 | SQL DB 参与者
+|Azure 数据资源管理器群集 | 参与者 | 参与者
 |
 
-### <a name="data-providers"></a>数据提供程序 
-若要将数据集添加到 Azure 数据共享，需要将数据访问接口数据共享资源托管标识添加到存储 Blob 数据读取器角色。 如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是分配了 Microsoft 授权/角色分配/写入权限的自定义角色的成员，则 Azure 数据共享服务会自动完成此操作。 
+对于基于 SQL 的共享，需要在 SQL 数据库中创建一个与 Azure 数据共享资源同名的外部提供程序的 SQL 用户。 下面汇总了 SQL 用户所需的权限。
 
-或者，用户可以让 Azure 管理员手动将数据共享资源管理标识添加到存储 Blob 数据读取器角色。 如果管理员手动创建此角色分配，则必须是存储帐户的所有者或具有自定义角色分配。 这适用于从 Azure 存储或 Azure Data Lake Gen2 共享的数据。 
+| |  |  |
+|---|---|---|
+|**SQL 数据库类型**|**数据访问接口 SQL 用户权限**|**数据使用者 SQL 用户权限**|
+|Azure SQL Database | db_datareader | db_datareader、db_datawriter db_ddladmin
+|Azure Synapse Analytics（以前称为 SQL DW） | db_datareader | db_datareader、db_datawriter db_ddladmin
+|
 
-如果从 Azure Data Lake Gen1 共享数据，则必须将角色分配给所有者角色。 
+
+### <a name="data-provider"></a>数据访问接口 
+若要在 Azure 数据共享中添加数据集，需要授予访问接口数据共享资源的托管标识访问源 Azure 数据存储的权限。 例如，在存储帐户的情况下，会向数据共享资源的托管标识授予存储 Blob 数据读取者角色。 
+
+当用户通过 Azure 门户添加数据集，并且用户具有适当的权限时，Azure 数据共享服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是分配了 Microsoft. Authorization/role 分配/写入权限的自定义角色的成员。 
+
+或者，用户可以将数据共享资源的托管标识手动添加到 Azure 数据存储中。 每个数据共享资源只需要执行一次此操作。
 
 若要为数据共享资源的托管标识创建角色分配，请执行以下步骤：
 
-1. 导航到存储帐户。
+1. 导航到 Azure 数据存储。
 1. 选择“访问控制 (IAM)”。
 1. 选择 "**添加角色分配**"。
-1. 在 "*角色*" 下，选择 "*存储 Blob 数据读取器*"。
-1. 在 "*选择*" 下，键入 Azure 数据共享帐户的名称。
-1. 单击“保存”。
+1. 在 "*角色*" 下，选择上一个角色分配表中的角色（例如，对于 "存储帐户"，选择 "*存储 Blob 数据读取器*"）。
+1. 在 "*选择*" 下，键入 Azure 数据共享资源的名称。
+1. 单击“ *保存*”。
 
-对于基于 SQL 的源，需要从 SQL 数据库中的外部提供程序创建一个用户，该提供程序将从与 Azure 数据共享帐户相同的名称共享数据。 可以在 "[共享数据](share-your-data.md)" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
+对于基于 SQL 的源，除了以上步骤以外，还需要从 SQL 数据库中的外部提供程序创建 SQL 用户，其名称与 Azure 数据共享资源的名称相同。 需要授予此用户*db_datareader*权限。 可以在 "[共享数据](share-your-data.md)" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
 
-### <a name="data-consumers"></a>数据使用者
-若要接收数据，如果将数据接收到 SQL 数据库，则需要将数据使用者数据共享资源托管的标识添加到 SQL 数据库的 "存储 Blob 数据参与者" 角色和/或 "dbo" 角色中。 
+### <a name="data-consumer"></a>数据使用者
+若要接收数据，需要向使用者数据共享资源的托管标识授予对目标 Azure 数据存储的访问权限。 例如，在存储帐户的情况下，会向数据共享资源的托管标识授予存储 Blob 数据参与者角色。 
 
-如果是存储，则 Azure 数据共享服务会自动完成此操作，如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是具有 Microsoft. 授权/角色分配/写入权限的自定义角色的成员。已. 
+如果用户通过 Azure 门户指定目标数据存储，并且用户具有适当的权限，则 Azure 数据共享服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是分配了 Microsoft. Authorization/role 分配/写入权限的自定义角色的成员。 
 
-或者，用户可以让 Azure 管理员手动将数据共享资源管理标识添加到存储 Blob 数据参与者角色。 如果管理员手动创建此角色分配，则必须是存储帐户的所有者或具有自定义角色分配。 请注意，这适用于将数据共享到 Azure 存储或 Azure Data Lake Gen2。 不支持将数据接收到 Azure Data Lake Gen1。 
+或者，用户可以将数据共享资源的托管标识手动添加到 Azure 数据存储中。 每个数据共享资源只需要执行一次此操作。
 
 若要手动创建数据共享资源的托管标识的角色分配，请执行以下步骤：
 
-1. 导航到存储帐户。
+1. 导航到 Azure 数据存储。
 1. 选择“访问控制 (IAM)”。
 1. 选择 "**添加角色分配**"。
-1. 在 "*角色*" 下，选择 "*存储 Blob 数据参与者*"。 
-1. 在 "*选择*" 下，键入 Azure 数据共享帐户的名称。
-1. 单击“保存”。
+1. 在 "*角色*" 下，选择上一个角色分配表中的角色（例如，对于 "存储帐户"，选择 "*存储 Blob 数据读取器*"）。
+1. 在 "*选择*" 下，键入 Azure 数据共享资源的名称。
+1. 单击“ *保存*”。
 
-如果要使用 REST Api 共享数据，则需要通过将中的数据共享帐户添加到相应的角色中，手动创建这些角色分配。 
+对于基于 SQL 的目标，除了以上步骤以外，还需要从 SQL 数据库中的外部提供程序创建 SQL 用户，其名称与 Azure 数据共享资源的名称相同。 此用户需要被授予*db_datareader、db_datawriter db_ddladmin*权限。 可以在[接受和接收数据](subscribe-to-data-share.md)教程中找到一个示例脚本以及基于 SQL 的共享的其他必备组件。 
 
-如果要将数据接收到基于 SQL 的源，请确保使用与 Azure 数据共享帐户相同的名称创建一个新用户。 请参阅[接受和接收数据](subscribe-to-data-share.md)教程中的先决条件。 
+如果使用 REST Api 共享数据，则需要手动创建这些角色分配。 
 
-若要了解有关如何添加角色分配的详细信息，请参阅[此文档，](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)其中概述了如何将角色分配添加到 Azure 资源。 
+若要了解有关如何添加角色分配的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。 
 
 ## <a name="resource-provider-registration"></a>资源提供程序注册 
 
-接受 Azure 数据共享邀请时，需要手动将 DataShare 资源提供程序注册到订阅。 按照以下步骤将 DataShare 资源提供程序注册到你的 Azure 订阅。 
+若要在 Azure 租户中首次查看 Azure 数据共享邀请，你可能需要手动将 DataShare 资源提供程序注册到你的 Azure 订阅中。 按照以下步骤将 DataShare 资源提供程序注册到你的 Azure 订阅。 
 
 1. 在 Azure 门户中，导航到 "**订阅**"。
 1. 选择要用于 Azure 数据共享的订阅。

@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921097"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963693"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -32,14 +32,14 @@ ms.locfileid: "75921097"
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。 此设置仅对面向版本1.x 的 Azure Functions 运行时的应用有效。 存储帐户必须是支持 Blob、队列和表的通用帐户。 若要了解详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 |密钥|示例值|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https;AccountName =<name>;AccountKey =<key>|
 
-> [!TIP]
-> 有关性能和体验，建议使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 进行监视，而不使用 AzureWebJobsDashboard
+> [!NOTE]
+> 为了获得更好的性能和体验，运行时版本2.x 和更高版本使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 来监视而不是 `AzureWebJobsDashboard`。
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ ms.locfileid: "75921097"
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函数使用此存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函数使用此存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 |密钥|示例值|
 |---|------------|

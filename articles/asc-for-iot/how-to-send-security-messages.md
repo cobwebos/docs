@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937132"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963812"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
@@ -46,7 +46,7 @@ Azure 安全中心可以处理和分析任何类型的安全消息数据，只�
 - 如果消息符合[安全消息架构](https://aka.ms/iot-security-schemas)
 - 如果在发送之前将消息设置为安全消息，则为
 
-每个安全消息都包含发件人的元`AgentId`数据`AgentVersion` `MessageSchemaVersion` ，如、和安全事件的列表。
+每个安全消息都包含发件人的元数据，如 `AgentId`、`AgentVersion`、`MessageSchemaVersion` 和安全事件的列表。
 架构定义安全消息的有效属性和必需属性，包括事件类型。
 
 >[!Note]
@@ -57,7 +57,7 @@ Azure 安全中心可以处理和分析任何类型的安全消息数据，只�
 
 ## <a name="valid-message-example"></a>有效的消息示例
 
-下面的示例显示了有效的安全消息对象。 该示例包含消息元数据和一个`ProcessCreate`安全事件。
+下面的示例显示了有效的安全消息对象。 该示例包含消息元数据和一个 `ProcessCreate` 安全事件。
 
 一旦设置为安全消息并发送，此消息将由 Azure 安全中心进行 IoT 处理。
 
@@ -192,14 +192,21 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
+若要使用 Python API，需要安装[azure iot-设备](https://pypi.org/project/azure-iot-device/)包。
+
+使用 Python API 时，可以通过模块或使用唯一设备或模块连接字符串通过设备发送安全消息。 使用以下 Python 脚本示例时，使用的是设备，使用**IoTHubDeviceClient**，使用模块时，请使用**IoTHubModuleClient**。 
+
 ```python
+from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
+from azure.iot.device import Message
+
 async def send_security_message_async(message_content):
     conn_str = os.getenv("<connection_string>")
     device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     await device_client.connect()
     security_message = Message(message_content)
     security_message.set_as_security_message()
-    await device_client.send_d2c_message(security_message)
+    await device_client.send_message(security_message)
     await device_client.disconnect()
 ```
 

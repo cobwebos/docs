@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 开发 Azure Functions
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Functions 扩展来开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845401"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964001"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 开发 Azure Functions
 
@@ -79,6 +79,8 @@ Azure Functions 扩展提供以下好处：
 
     ![Visual Studio Code 中的 HTTP 触发函数模板](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>生成的项目文件
+
 项目模板用所选的语言创建项目并安装所需的依赖项。 对于任何语言，新项目包含以下文件：
 
 * **host.json**：用于配置 Functions 主机。 当你在本地运行函数以及在 Azure 中运行它们时，将应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
@@ -87,6 +89,30 @@ Azure Functions 扩展提供以下好处：
 
     >[!IMPORTANT]
     >由于本地. json 文件可能包含机密，因此需要从项目源代码管理中排除它。
+
+根据你的语言，将创建这些其他文件：
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* 实现函数的[HttpExample.cs 类库文件](functions-dotnet-class-library.md#functions-class-library-project)。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* 根文件夹中的包文件。
+
+* 一个 HttpExample 文件夹，其中包含[函数 json 定义文件](functions-reference-node.md#folder-structure)和一个 node.js[文件](functions-reference-node.md#exporting-a-function)，其中包含函数代码。
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 此时，可以通过[修改函数 json 文件](#add-a-function-to-your-project)或通过[将参数添加到C#类库函数](#add-a-function-to-your-project)来向函数添加输入和输出绑定。
 

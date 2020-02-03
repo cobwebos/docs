@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450200"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963931"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -101,6 +101,23 @@ Azure 备份提供不同的备份代理，具体取决于要备份的计算机�
 备份已删除重复数据的磁盘 | | | ![部分][yellow]<br/><br/> 仅适用于本地部署的 DPM/MABS 服务器。
 
 ![表键](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>备份策略概要
+
+- 备份策略是按保管库创建的。
+- 可为以下工作负荷的备份创建备份策略
+  - Azure VM
+  - Azure VM 中的 SQL
+  - Azure 文件共享
+- 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
+- 策略由两个部分组成
+  - 计划：何时创建备份
+  - 保留期：每个备份应保留多长时间。
+- 可将计划定义为带有特定时间点的“每日”或“每周”计划。
+- 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
+- “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
+- “每月”、“每年”备份点的保留期称为“LongTermRetention”。
+- 创建保管库后，还会创建名为 "DefaultPolicy" 的 Azure VM 备份的策略，并将其用于备份 Azure Vm。
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 

@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152946"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963472"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可通过诊断设置导出 Azure Monitor 平台指标
 
@@ -24,6 +24,19 @@ ms.locfileid: "76152946"
 2. 使用[指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 
 由于 Azure Monitor 后端中的复杂性，并非所有指标都可使用诊断设置进行导出。 下表列出了使用诊断设置可以和不能导出的情况。
+
+该表包含以下列。 
+- 是否可通过诊断设置导出？ 
+- ResourceType 
+- 度量值 
+- MetricDisplayName
+- 单位 
+- AggregationType
+
+
+> [!NOTE]
+> 下表的底部可能有水平滚动条。 如果你认为缺少信息，请检查滚动条是否一直在左侧。  
+
 
 是否可通过诊断设置导出？ | ResourceType | 度量值 | MetricDisplayName | 单位 | AggregationType
 |----|-----|------|----|----|-----|
@@ -752,7 +765,7 @@ ms.locfileid: "76152946"
 是 | Microsoft.DocumentDB/databaseAccounts | TotalRequests | 请求总数 | 计数 | 计数
 是 | Microsoft.DocumentDB/databaseAccounts | TotalRequestUnits | 总请求单位数 | 计数 | 总计
 否 | EnterpriseKnowledgeGraph/服务 | FailureCount | 失败计数 | 计数 | 计数
-否 | EnterpriseKnowledgeGraph/服务 | 成功计数 | 成功计数 | 计数 | 计数
+否 | EnterpriseKnowledgeGraph/服务 | SuccessCount | 成功计数 | 计数 | 计数
 否 | EnterpriseKnowledgeGraph/服务 | SuccessLatency | 成功延迟 | 毫秒 | 平均值
 否 | EnterpriseKnowledgeGraph/服务 | TransactionCount | 事务计数 | 计数 | 计数
 是 | Microsoft.EventGrid/domains | DeadLetteredCount | 死信事件数 | 计数 | 总计
@@ -1224,11 +1237,11 @@ ms.locfileid: "76152946"
 是 | Microsoft.OperationalInsights/workspaces | Average_Available MBytes | 可用兆字节数 | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Available MBytes Memory | 可用内存 MB 数 | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Available MBytes Swap | 可用交换空间 MB 数 | 计数 | 平均值
-是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/读取 | 每次读取的平均磁盘扇区数 | 计数 | 平均值
-是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/读取 | 每次读取的平均磁盘扇区数 | 计数 | 平均值
+是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/读取 | Avg. Disk sec/Read | 计数 | 平均值
+是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/读取 | Avg. Disk sec/Read | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/传输 | Avg. Disk sec/Transfer | 计数 | 平均值
-是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/写入 | 每次写入的平均磁盘扇区数 | 计数 | 平均值
-是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/写入 | 每次写入的平均磁盘扇区数 | 计数 | 平均值
+是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/写入 | Avg. Disk sec/Write | 计数 | 平均值
+是 | Microsoft.OperationalInsights/workspaces | Average_Avg. 磁盘秒数/写入 | Avg. Disk sec/Write | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Bytes Received/sec | 收到的字节数/秒 | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Bytes Sent/sec | 发送的字节数/秒 | 计数 | 平均值
 是 | Microsoft.OperationalInsights/workspaces | Average_Bytes Total/sec | 字节总数/秒 | 计数 | 平均值
@@ -1395,7 +1408,7 @@ ms.locfileid: "76152946"
 是 | Microsoft.Sql/servers/elasticPools | log_write_percent | 日志 IO 百分比 | 百分比 | 平均值
 是 | Microsoft.Sql/servers/elasticPools | physical_data_read_percent | 数据 IO 百分比 | 百分比 | 平均值
 是 | Microsoft.Sql/servers/elasticPools | sessions_percent | 会话百分比 | 百分比 | 平均值
-是 | Microsoft.Sql/servers/elasticPools | storage_limit | 数据的最大大小 | 字节 | 平均值
+是 | Microsoft.Sql/servers/elasticPools | storage_limit | 数据最大大小 | 字节 | 平均值
 是 | Microsoft.Sql/servers/elasticPools | storage_percent | 已用数据空间百分比 | 百分比 | 平均值
 是 | Microsoft.Sql/servers/elasticPools | storage_used | 已用数据空间 | 字节 | 平均值
 是 | Microsoft.Sql/servers/elasticPools | tempdb_data_size | Tempdb 数据文件大小（Kb） | 计数 | 最大值
