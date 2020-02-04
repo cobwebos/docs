@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: 排查错误
       href: troubleshoot-errors.md
+    - name: 为主题启用诊断日志
+      href: enable-diagnostic-logs-topic.md
 - name: 参考
   items:
     - name: Azure CLI

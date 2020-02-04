@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: 使用 Azure CLI
           href: how-to-manage-workspace-cli.md
+        - name: 使用 REST
+          href: how-to-manage-rest.md
         - name: 使用 Resource Manager 模板
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: 创建带标签的数据集
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: 用于数据引入的 DevOps
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: 训练模型
       items:
         - name: 使用设计器

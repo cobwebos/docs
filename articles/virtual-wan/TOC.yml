@@ -47,6 +47,7 @@
     - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证（预览版）
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: 配置自动化（虚拟 WAN 合作伙伴）
+    - name: 下载全局 VPN 配置文件和基于中心的 VPN 配置文件
       href: virtual-wan-configure-automation-providers.md
     - name: 配置路由
       items:

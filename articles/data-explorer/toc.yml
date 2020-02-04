@@ -174,12 +174,28 @@
               href: manage-cluster-vertical-scaling.md
             - name: 检查群集运行状况
               href: check-cluster-health.md
+            - name: 添加群集主体
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure 资源管理器模板
+                  href: cluster-principal-resource-manager.md
         - name: 数据库
           items:
             - name: 后继数据库
               href: follower.md
             - name: 管理数据库权限
               href: manage-database-permissions.md
+            - name: 添加数据库主体
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure 资源管理器模板
+                  href: database-principal-resource-manager.md
             - name: 策略
               items:
                 - name: 'C#'

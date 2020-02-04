@@ -517,6 +517,8 @@
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
             - name: 启动服务时存在端口冲突
               href: ./hadoop/troubleshoot-port-conflict.md
+            - name: 失去密钥保管库访问权限
+              href: ./hadoop/troubleshoot-lost-key-vault-access.md
 - name: Apache Kafka
   items:
     - name: 概述

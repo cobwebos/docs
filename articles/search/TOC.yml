@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: 条件逻辑
               href: cognitive-search-skill-conditional.md
+            - name: 自定义实体查找
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: 文档提取
               href: cognitive-search-skill-document-extraction.md
             - name: 实体识别

@@ -64,8 +64,6 @@
         - name: 使用 Azure Pipelines 进行持续集成
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: 将 VS 部署脚本更新到 Az Powershell
-          href: update-visual-studio-deployment-script.md
         - name: 使用安全部署实践
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -145,6 +143,8 @@
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: 将 VS 部署脚本更新到 Az 模块
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: 部署模板
