@@ -75,7 +75,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government | 美国弗吉尼亚州政府
+Azure Government | US Gov 弗吉尼亚州
 亚太 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部

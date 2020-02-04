@@ -160,7 +160,7 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 | 云   | Redis 的 Dns 后缀            |
 |---------|---------------------------------|
 | 公共  | *.redis.cache.windows.net       |
-| 美国政府  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | 德国 | *.redis.cache.cloudapi.de       |
 | 中国   | *.redis.cache.chinacloudapi.cn  |
 

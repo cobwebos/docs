@@ -150,7 +150,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
      - 无子字符串的起始字符是字符串中的第一个字符。
      - 负值：子字符串的起始字符是从字符串中的最后一个字符计算的。
 
-- 子字符串的长度由 Length  术语确定：
+- 子字符串的长度由 Length 术语确定：
 
      - 去掉省略 Length 术语后, 子字符串将允许子字符串包含起始字符和字符串末尾之间的所有字符。
      - 测量确定子字符串在右侧起始字符的长度。
@@ -181,7 +181,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 #### <a name="example"></a>例如：
 
-在此示例方案中，request_uri  变量设置为：
+在此示例方案中，request_uri 变量设置为：
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 
@@ -245,6 +245,6 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
      - `^`：指示只捕获以指定模式开头的文本。
      - `$`：指示仅捕获以指定模式结尾的文本。
  
-- 如果省略 /Rewrite  值，则会删除与模式匹配的文本。
+- 如果省略 /Rewrite 值，则会删除与模式匹配的文本。
 
 

@@ -60,7 +60,7 @@ AKS 群集资源或 Log Analytics 工作区可以位于其他区域，下表显�
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
-|美国弗吉尼亚州政府 |美国弗吉尼亚州政府 |
+|US Gov 弗吉尼亚州 |US Gov 弗吉尼亚州 |
 
 <sup>1</sup>由于容量限制，区域在创建新资源时不可用。 这包括 Log Analytics 工作区。 但是，区域中预先存在的链接资源应该继续工作。
 

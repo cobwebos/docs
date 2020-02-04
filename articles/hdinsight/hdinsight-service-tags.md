@@ -74,7 +74,7 @@ ms.locfileid: "75435422"
 | 法国 | 法国中部| FranceCentral |
 | 英国 | 英国南部 | UKSouth |
 | Azure Government | USDoD 中部   | USDoDCentral |
-| &nbsp; | 美国德克萨斯州政府 | USGovTexas |
+| &nbsp; | US Gov 德克萨斯州 | USGovTexas |
 | &nbsp; | UsDoD 东部 | USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域服务标记
@@ -104,7 +104,7 @@ ms.locfileid: "75435422"
 | 日本 | 日本东部 | JapanEast |
 | 欧洲 | 欧洲北部 | NorthEurope |
 | &nbsp; | 欧洲西部| WestEurope |
-| 亚洲 | 亚洲东部 | EastAsia |
+| 亚洲 | 东亚 | EastAsia |
 | &nbsp; | 亚洲东南部 | SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | AustraliaEast |
 

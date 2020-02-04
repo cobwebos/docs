@@ -99,11 +99,11 @@ ms.locfileid: "74034236"
 |    uksouth               |    英国南部                              |
 |    UKSouth2              |    英国南部 2                            |
 |    ukwest                |    英国西部                               |
-|    USDoDCentral          |    美国 DoD 中部                        |
-|    USDoDEast             |    美国 DoD 东部                           |
-|    USGovArizona          |    美国亚利桑那州政府                         |
+|    USDoDCentral          |    US DoD 中部                        |
+|    USDoDEast             |    US DoD 东部                           |
+|    USGovArizona          |    US Gov 亚利桑那州                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    美国德克萨斯州政府                           |
+|    USGovTexas            |    US Gov 德克萨斯州                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    美国中西部                       |
 |    westeurope            |    西欧                           |

@@ -42,7 +42,7 @@ ms.locfileid: "74816662"
 | 美国中北部 | `northcentralus`     | https://northcentralus.cris.ai |
 | 美国中南部 | `southcentralus`     | https://southcentralus.cris.ai |
 | 印度中部    | `centralindia`       | https://centralindia.cris.ai   |
-| 亚洲东部        | `eastasia`           | https://eastasia.cris.ai       |
+| 东亚        | `eastasia`           | https://eastasia.cris.ai       |
 | 亚洲东南部   | `southeastasia`      | https://southeastasia.cris.ai  |
 | 日本东部       | `japaneast`          | https://japaneast.cris.ai      |
 | 韩国中部    | `koreacentral`       | https://koreacentral.cris.ai   |
@@ -59,7 +59,7 @@ ms.locfileid: "74816662"
 
 | 全球区域 | 地区           | 语音 SDK 参数 |
 | ------------- | ---------------- | -------------------- |
-| 亚洲          | 亚洲东部        | `eastasia`           |
+| 亚洲          | 东亚        | `eastasia`           |
 | 亚洲          | 亚洲东南部   | `southeastasia`      |
 | 澳大利亚     | 澳大利亚东部   | `australiaeast`      |
 | 欧洲        | 北欧     | `northeurope`        |
@@ -70,7 +70,7 @@ ms.locfileid: "74816662"
 | 北美 | 美国中西部  | `westcentralus`      |
 | 北美 | 美国西部          | `westus`             |
 | 北美 | 美国西部 2        | `westus2`            |
-| 南美 | 巴西南部     | `brazilsouth`        |
+| 南美洲 | 巴西南部     | `brazilsouth`        |
 
 这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 

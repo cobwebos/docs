@@ -81,7 +81,7 @@ ms.locfileid: "75982262"
 |    centralus             |    美国中部                            |
 |    chinaeast             |    中国东部                            |
 |    chinanorth            |    中国北部                           |
-|    eastasia              |    亚洲东部                             |
+|    eastasia              |    东亚                             |
 |    eastus                |    美国东部                               |
 |    eastus2               |    美国东部 2                             |
 |    GermanyCentral        |    德国中部                            |
@@ -101,9 +101,9 @@ ms.locfileid: "75982262"
 |    ukwest                |    英国西部                               |
 |    USDoDCentral          |    US DoD 中部                        |
 |    USDoDEast             |    US DoD 东部                           |
-|    USGovArizona          |    美国亚利桑那州政府                         |
+|    USGovArizona          |    US Gov 亚利桑那州                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    美国德克萨斯州政府                           |
+|    USGovTexas            |    US Gov 德克萨斯州                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    美国中西部                       |
 |    westeurope            |    欧洲西部                           |

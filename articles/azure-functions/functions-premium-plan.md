@@ -107,7 +107,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
-|亚洲东部| ✔ |  |
+|东亚| ✔ |  |
 |美国东部 | ✔ | ✔<sup>1</sup> |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |

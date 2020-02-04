@@ -47,7 +47,7 @@ ms.locfileid: "74975816"
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 加拿大中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 亚洲东部 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 东亚 | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国东部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |

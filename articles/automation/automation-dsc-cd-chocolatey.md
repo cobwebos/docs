@@ -65,7 +65,7 @@ New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-
 New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-可以将自动化帐户放入以下任何区域（即位置）：美国东部 2、美国中南部、美国弗吉尼亚州政府、西欧、东南亚、日本东部、印度中部和澳大利亚东南部、加拿大中部、北欧。
+可以将自动化帐户放入以下任何区域（即位置）：美国东部 2、美国中南部、US Gov 弗吉尼亚州、西欧、东南亚、日本东部、印度中部和澳大利亚东南部、加拿大中部、北欧。
 
 ## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>步骤 2：VM 扩展根据资源管理器模板调整
 
