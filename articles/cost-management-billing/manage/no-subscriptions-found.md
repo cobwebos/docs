@@ -17,10 +17,10 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988105"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误
@@ -37,7 +37,7 @@ ms.locfileid: "75988105"
 
 ## <a name="solution"></a>解决方案
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>场景 1：[Azure 门户](https://portal.azure.com)收到错误消息
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>应用场景 1：[Azure 门户](https://portal.azure.com)收到错误消息
 
 解决此问题：
 
@@ -46,14 +46,14 @@ ms.locfileid: "75988105"
   ![选择 Azure 门户右上角的目录](./media/no-subscriptions-found/directory-switch.png)
 * 如果已选择正确的 Azure 目录，但仍收到错误消息，[请将所有者角色分配给帐户](../../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>场景 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>应用场景 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
 
 请检查使用的帐户是否是帐户管理员。 要验证谁是帐户管理员，请执行下列步骤：
 
 1. 登录到 [Azure 门户中的订阅视图](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择要检查的订阅，并关注“设置”下的信息。
-1. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。  
+1. 选择要检查的订阅，并关注“设置”  下的信息。
+1. 选择“属性”  。 订阅的帐户管理员会显示在“帐户管理员”框中。   
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

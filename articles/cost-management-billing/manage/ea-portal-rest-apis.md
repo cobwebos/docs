@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992135"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
@@ -37,7 +37,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 ### <a name="enable-api-data-access"></a>启用 API 数据访问
 
-角色所有者可在 Azure EA 门户中执行以下步骤。 导航到“报告” > “下载使用情况” > “API 访问密钥”。 然后，他们可以：
+角色所有者可在 Azure EA 门户中执行以下步骤。 导航到“报告” > “下载使用情况” > “API 访问密钥”。    然后，他们可以：
 
 - 生成主要和辅助访问密钥。
 - 禁用访问密钥。
@@ -46,21 +46,21 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 ### <a name="generate-or-retrieve-the-api-key"></a>生成或检索 API 密钥
 
 1. 以企业管理员的身份登录。
-2. 在左侧导航窗口中单击“报告”，然后单击“下载使用情况”选项卡。
-3. 单击“API 访问密钥”。
-4. 在“注册访问密钥”下，选择“生成密钥”符号生成主要或辅助密钥。
-5. 选择“展开密钥”以查看生成的整个 API 访问密钥。
-6. 选择“复制”获取立即可供使用的 API 访问密钥。
+2. 在左侧导航窗口中单击“报告”，然后单击“下载使用情况”选项卡。  
+3. 单击“API 访问密钥”。 
+4. 在“注册访问密钥”下，选择“生成密钥”符号生成主要或辅助密钥。 
+5. 选择“展开密钥”以查看生成的整个 API 访问密钥。 
+6. 选择“复制”获取立即可供使用的 API 访问密钥。 
 
 ![显示“API 访问密钥”页的示例](./media/ea-portal-rest-apis/ea-create-generate-or-retrieve-the-api-key.png)
 
 若要为注册中的非企业管理员用户提供 API 访问密钥，请执行以下步骤：
 
-1. 在左侧导航窗口中单击“管理”。
-2. 单击“DA 查看费用”（部门管理员查看费用）旁边的铅笔符号。
-3. 选择“启用”，然后单击“保存”。
-4. 单击“AO 查看费用”（帐户所有者查看费用）旁边的铅笔符号。
-5. 选择“启用”，然后单击“保存”。
+1. 在左侧导航窗口中单击“管理”。 
+2. 单击“DA 查看费用”（部门管理员查看费用）旁边的铅笔符号。 
+3. 选择“启用”，然后单击“保存”。  
+4. 单击“AO 查看费用”（帐户所有者查看费用）旁边的铅笔符号。 
+5. 选择“启用”，然后单击“保存”。  
 
 ![显示已启用 DA 和 AO 查看费用的示例](./media/ea-portal-rest-apis/create-ea-generate-or-retrieve-api-key-enable-ao-do-view.png)上述步骤为 API 访问密钥持有者授予对使用情况报告中的成本和定价信息的访问权限。
 
@@ -81,9 +81,9 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 使用 API 时，会显示响应状态代码。 下表描述了这些代码。
 
-| 响应状态代码 | 消息 | Description |
+| 响应状态代码 | 消息 | 说明 |
 | --- | --- | --- |
-| 200 | 确定 | 无错误 |
+| 200 | OK | 无错误 |
 | 401 | 未授权 | API 密钥找不到、无效、已过期等。 |
 | 404 | 不可用 | 找不到报表终结点 |
 | 400 | 错误的请求 | 参数无效 – 日期范围、EA 号等。 |
@@ -122,15 +122,15 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | 订阅名称 | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | 显示服务目录报告的运行日期。 格式是不带时间戳的日期字符串。 |
-| 月 | 月 | 月 |   |
-| 天 | 天 | 天 |   |
-| 年 | 年 | 年 |   |
-| 产品 | BillableItemName | 产品 |   |
+| 月份 | 月份 | 月份 |   |
+| 日期 | 日期 | 日期 |   |
+| 年龄 | 年龄 | 年龄 |   |
+| Products | BillableItemName | Products |   |
 | 测定仪 ID | ResourceGUID | 计量 ID |   |
-| 计量类别 | 服务 | MeterCategory | 有助于查找服务。 与具有多个 ServiceType 的服务相关。 例如“虚拟机”。 |
-| 计量子类别 | ServiceType | MeterSubCategory | 提供服务的另一种详细级别。 例如“A1 VM (非 Windows)”。  |
+| 测定仪类别 | 服务 | MeterCategory | 有助于查找服务。 与具有多个 ServiceType 的服务相关。 例如“虚拟机”。 |
+| 测定仪子类别 | ServiceType | MeterSubCategory | 提供服务的另一种详细级别。 例如“A1 VM (非 Windows)”。  |
 | 测定仪区域 | ServiceRegion | MeterRegion | 服务所需的第三种详细级别。 查找 ResourceGUID 的区域上下文时非常有用。 |
-| 计量名称 | ServiceResource | MeterName | 服务的名称。 |
+| 测定仪名称 | ServiceResource | MeterName | 服务的名称。 |
 | 已耗用数量 | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
@@ -140,11 +140,11 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
-| 标记 | 标记 | 标记 |   |
+| Tags | Tags | Tags |   |
 | 应用商店服务标识符   | OrderNumber | StoreServiceIdentifier   |   |
 | 部门名称 | DepartmentName | DepartmentName |   |
 | 成本中心 | CostCenter | CostCenter |   |
-| 计量单位 | UnitOfMeasure | UnitOfMeasure | 示例值：小时，GB，事件，推送，单位，单位小时，MB，每日单位 |
+| 计量单位 | UnitOfMeasure | UnitOfMeasure | 示例值：小时、GB、事件、推送、单位、单位小时、MB、日单位 |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure 市场报告
@@ -157,12 +157,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | 订阅名称 | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  日期（仅限日期字符串。 不带时间戳）
-| 月 | 月 |  月 |
-| 天 | 天 |  天 |
-| 年 | 年 |  年 |
+| 月份 | 月份 |  月份 |
+| 日期 | 日期 |  日期 |
+| 年龄 | 年龄 |  年龄 |
 | 测定仪 ID | MeterResourceId |  计量 ID |
 | 发布者名称 | PublisherFriendlyName |  PublisherName |
-| 产品/服务名称 | OfferFriendlyName |  OfferName |
+| 产品名称 | OfferFriendlyName |  OfferName |
 | 计划名称 | PlanFriendlyName |  PlanName |
 | 已耗用数量 | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
@@ -170,7 +170,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | 计量单位 | UnitOfMeasure | UnitOfMeasure |
 | 实例 ID | InstanceId | InstanceId |
 | 其他信息 | AdditionalInfo | AdditionalInfo |
-| 标记 | 标记 | 标记 |
+| Tags | Tags | Tags |
 | 订单编号 | OrderNumber | OrderNumber |
 | 部门名称 | DepartmentNames | DepartmentName |
 | 成本中心 | CostCenters |  CostCenter |

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992837"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡
@@ -33,12 +33,12 @@ ms.locfileid: "75992837"
 ## <a name="add-a-new-credit-card-to-an-azure-subscription"></a>为 Azure 订阅添加新信用卡
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 
     ![显示搜索的屏幕截图](./media/change-credit-card/search.png)
 
 1. 选择要向其添加信用卡的订阅。
-1. 选择“付款方式”。
+1. 选择“付款方式”。 
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/change-credit-card/payment-methods-blade-x.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "75992837"
 
     ![屏幕截图，显示添加新卡。](./media/change-credit-card/sub-add-new-x.png)
 
-1. 若要将该卡设置为有效付款方式，请勾选窗体上方“将此设置为我的可用付款方式”旁边的框。 对于所使用的卡与所选订阅的卡相同的所有订阅，此卡将成为有效付款方式。
+1. 若要将该卡设置为有效付款方式，请勾选窗体上方“将此设置为我的可用付款方式”旁边的框。  对于所使用的卡与所选订阅的卡相同的所有订阅，此卡将成为有效付款方式。
 
 1. 选择“**下一页**”。
 
@@ -58,11 +58,11 @@ ms.locfileid: "75992837"
 如果更换了信用卡，但号码保持不变，请更新现有信用卡的详细信息（例如到期日）。 如果信用卡号码由于卡丢失、失窃或过期而更改，则需要按照[将信用卡添加为支付方式](#addcard)中的步骤操作。 无需更新 CVV。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 
     ![显示搜索的屏幕截图](./media/change-credit-card/search.png)
 
-1. 选择“付款方式”。
+1. 选择“付款方式”。 
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/change-credit-card/payment-methods-blade-x.png)
 
@@ -71,34 +71,34 @@ ms.locfileid: "75992837"
     ![屏幕截图，显示所选信用卡。](./media/change-credit-card/edit-card-x.png)
 
 1. 更新信用卡的详细信息。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ## <a name="use-a-different-credit-card"></a>使用其他信用卡
 
 如果多个订阅具有同一有效付款方式，则在其中一个订阅上更改有效付款方式时，也会更新其他订阅上的有效付款方式。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 
     ![显示搜索的屏幕截图](./media/change-credit-card/search.png)
 
 1. 选择要向其添加信用卡的订阅。
-1. 选择“付款方式”。
+1. 选择“付款方式”。 
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/change-credit-card/payment-methods-blade-x.png)
 
 1. 选择要将其设置为有效付款方式的卡旁边的框。
-1. 单击“设置为可用”。
+1. 单击“设置为可用”。 
     ![屏幕截图，显示信用卡已选中且设置为有效。](./media/change-credit-card/sub-change-active-x.png)
 
 ## <a name="remove-a-credit-card-from-the-account"></a>从帐户中删除信用卡
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在页面左侧，选择“成本管理 + 计费”。
+1. 在页面左侧，选择“成本管理 + 计费”  。
 
     ![显示搜索的屏幕截图](./media/change-credit-card/search.png)
 
-1. 在“账单”下，选择“付款方式”。
+1. 在“账单”下，选择“付款方式”。  
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/change-credit-card/payment-methods-blade-x.png)
 
@@ -114,17 +114,17 @@ ms.locfileid: "75992837"
 若要将默认付款方式转换为支票/电汇，请了解如何[将计费对象信息转换为支票/电汇](pay-by-invoice.md)。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
-1. 在左侧菜单中，单击“计费对象信息”。
+1. 在“成本管理 + 计费”  中进行搜索。
+1. 在左侧菜单中，单击“计费对象信息”。 
 
     ![屏幕截图，显示菜单中的计费对象信息](./media/change-credit-card/billing-profile.png)
 
 1. 选择计费对象信息。
-1. 在左侧菜单中选择“付款方式”。
+1. 在左侧菜单中选择“付款方式”  。
 
    ![屏幕截图，显示菜单中的付款方式](./media/change-credit-card/billing-profile-payment-methods.png)
 
-1. 在默认付款方式上方，单击“更改”。
+1. 在默认付款方式上方，单击“更改”。 
 
     ![显示更改按钮的屏幕截图](./media/change-credit-card/customer-led-switch-credit-card.png)
 
@@ -158,12 +158,12 @@ ms.locfileid: "75992837"
 
 ### <a name="how-do-i-change-the-tax-id"></a>如何更改税务 ID？
 
-若要添加或更新税务 ID，请在 [Azure 帐户中心](https://account.azure.com/Profile)更新个人资料，然后选择“税务记录”。 此税务 ID 用于免税计算，并且会显示在发票上。
+若要添加或更新税务 ID，请在 [Azure 帐户中心](https://account.azure.com/Profile)更新个人资料，然后选择“税务记录”。  此税务 ID 用于免税计算，并且会显示在发票上。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

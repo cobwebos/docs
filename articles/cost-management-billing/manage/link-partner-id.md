@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991914"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
@@ -28,11 +28,11 @@ Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实�
 
 在你链接合作伙伴 ID 之前，客户必须使用以下选项之一，授权你访问其 Azure 资源：
 
-- **Guest 用户**：你的客户可以将你添加为来宾用户，并分配任何基于角色的访问控制（RBAC）角色。 有关详细信息，请参阅[添加另一个目录中的来宾用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
+- **来宾用户**：客户可将你添加为来宾用户并分配任何基于角色的访问控制 (RBAC) 角色。 有关详细信息，请参阅[添加另一个目录中的来宾用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
 
-- **目录帐户**：客户可在其自己的目录中创建用户帐户并分配任何 RBAC 角色。
+- **目录帐户**：客户可以为你在其自己的目录中创建用户帐户，并分配任何 RBAC 角色。
 
-- **服务主体**：你的客户可以在其目录中添加应用或脚本，并分配任何 RBAC 角色。 该应用或脚本的标识称为服务主体。
+- **服务主体**：客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 RBAC 角色。 该应用或脚本的标识称为服务主体。
 
 ## <a name="link-to-a-partner-id"></a>链接到合作伙伴 ID
 
@@ -48,7 +48,7 @@ Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实�
 
    ![显示链接到合作伙伴 ID 的屏幕截图](./media/link-partner-id/link-partner-id01.png)
 
-4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录。
+4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录  。
 
    ![显示“切换”目录的屏幕截图](./media/link-partner-id/directory-switcher.png)
 
@@ -128,7 +128,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **链接合作伙伴 ID 后，是否可以更改？**
 
-可以。 可以更改、添加或删除已链接的合作伙伴 ID。
+是的。 可以更改、添加或删除已链接的合作伙伴 ID。
 
 **如果某个用户在多个客户租户中具有帐户怎么办？**
 

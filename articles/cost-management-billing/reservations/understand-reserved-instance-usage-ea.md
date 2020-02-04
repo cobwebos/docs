@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 06/30/2019
 ms.author: banders
 ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995411"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议预留成本和使用情况
@@ -33,7 +33,7 @@ ms.locfileid: "75995411"
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Azure 使用情况数据中的预留费用
 
-数据分为两个不同的数据集：_实际成本_和_摊销成本_。 这两个数据集的差别如下：
+数据划分为两个不同的数据集：“实际成本”和“摊销成本”。   这两个数据集的差别如下：
 
 **实际成本** - 提供要与每月帐单对帐的数据。 此数据包括预留项购买成本和预留项应用详细信息。 使用此数据可以知道哪个订阅、资源组或资源在特定的日期收到了预留折扣。 收到预留折扣的用途的 EffectivePrice 为零。
 
@@ -65,7 +65,7 @@ Azure 使用情况数据中提供的其他信息已更改：
 
 调用[使用情况详细信息 API](/rest/api/consumption/usagedetails/list) 以获取新数据。 有关术语的详细信息，请参阅[使用情况中的术语](../understand/understand-usage.md)。 调用方应是企业协议的企业管理员，并使用 [EA 门户](https://ea.azure.com)。 只读企业管理员也可以获取数据。
 
-请注意，此数据不适[用于企业客户的报告 api-使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)。
+请注意，该数据不会在[面向企业客户的报告 API - 使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)中提供。
 
 下面是对使用情况详细信息 API 的示例调用：
 
@@ -89,15 +89,15 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>下载包含新数据的使用情况 CSV 文件
 
-如果你是 EA 管理员，可以从 Azure 门户下载包含新使用情况数据的 CSV 文件。 此数据在 EA 门户（ea.azure.com）中不可用，您必须从 Azure 门户（portal.azure.com）中下载使用情况文件才能看到新数据。
+如果你是 EA 管理员，可以从 Azure 门户下载包含新使用情况数据的 CSV 文件。 此数据不会在 EA 门户 (ea.azure.com) 中提供，必须从 Azure 门户 (portal.azure.com) 下载使用情况文件才能看到新数据。
 
 在 Azure 门户中，导航到[“成本管理 + 计费”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)。
 
 1. 选择计费帐户。
-2. 单击“使用情况 + 费用”。
-3. 单击“下载”。  
+2. 单击“使用情况 + 费用”。 
+3. 单击“下载”  。  
 ![该示例显示可在 Azure 门户中的哪个位置下载 CSV 使用情况数据文件](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. 在“下载使用情况 + 费用”中的“使用情况详细信息版本 2”下，选择“所有费用(使用情况和购买项目)”，然后单击“下载”。 针对“摊销费用(使用情况和购买项目)”重复上述步骤。
+4. 在“下载使用情况 + 费用”中的“使用情况详细信息版本 2”下，选择“所有费用(使用情况和购买项目)”，然后单击“下载”。    针对“摊销费用(使用情况和购买项目)”重复上述步骤。 
 
 下载的 CSV 文件包含实际成本和摊销成本。
 
@@ -111,7 +111,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>获取未充分利用的预留项的数量和成本
 
-获取摊销成本数据并筛选_ChargeType_ _= UnusedReservation_。 你将获得每日未使用的预留项数量和成本。 可以分别使用 _ReservationId_ 和 _ProductOrderId_ 字段来筛选预留项或预留订单的数据。 如果预留项的利用率为 100%，则记录中包含数量 0。
+获取摊销成本数据，并根据 ChargeType = UnusedReservation 进行筛选   。 你将获得每日未使用的预留项数量和成本。 可以分别使用 _ReservationId_ 和 _ProductOrderId_ 字段来筛选预留项或预留订单的数据。 如果预留项的利用率为 100%，则记录中包含数量 0。
 
 ### <a name="amortize-reservation-costs"></a>摊销预留成本
 
@@ -123,7 +123,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - 资源（例如 VM）
 - 资源组
-- 标记
+- Tags
 - 订阅
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>获取费用分摊的混合费率
@@ -144,13 +144,13 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>成本分析中的预留项购买和摊销
 
-[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。 若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”：
+[成本分析](https://aka.ms/costanalysis)中提供预留成本。 默认情况下，成本分析会显示“实际成本”，即帐单上显示的成本。  若要查看已细分的并与使用权益的资源关联的预留购买项目，请切换到“摊销成本”： 
 
 ![该示例显示可在成本分析中的哪个位置选择摊销成本](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-按费用类型分组可以查看使用情况、购买项目和退款的细目；按预留项分组可以查看预留项和按需成本的细目。 请记住，查看实际成本时你会看到的唯一预订成本是购买的，但是成本将分配给在查看分期成本时使用该权益的单个资源。 查看摊销成本时，还会看到新的 **UnusedReservation** 费用类型。
+按费用类型分组可以查看使用情况、购买项目和退款的细目；按预留项分组可以查看预留项和按需成本的细目。 请记住，在查看实际成本时，只能看到购买项目的预留成本；但查看摊销成本时，成本将分配到使用权益的各个资源。 查看摊销成本时，还会看到新的 **UnusedReservation** 费用类型。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

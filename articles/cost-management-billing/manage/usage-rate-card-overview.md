@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76121091"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
@@ -30,7 +30,7 @@ ms.locfileid: "76121091"
 [完成选择加入](manage-billing-access.md#opt-in)后，请使用[发票 API](/rest/api/billing) 预览版下载发票。 具体功能包括：
 
 * **Azure 基于角色的访问控制** - 在 [Azure 门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](/powershell/azure/overview) 配置访问策略，指定哪些用户或应用程序有权访问订阅的用量数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。
-* 日期筛选 - 使用 `$filter` 参数，在发票周期结束日期前按倒序顺序获取所有发票。
+* 日期筛选  - 使用 `$filter` 参数，在发票周期结束日期前按倒序顺序获取所有发票。
 
 > [!NOTE]
 > 此功能在初始预览版中推出，可能需进行无法向后兼容的更改。 目前，它不适用于某些订阅套餐（不支持 EA、CSP、AIO）和 Azure Germany。

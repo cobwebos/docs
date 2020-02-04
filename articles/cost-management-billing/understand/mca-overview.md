@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客户协议计费入门-Azure
+title: Microsoft 客户协议计费入门 - Azure
 description: 了解 Microsoft 客户协议计费帐户
 author: bandersmsft
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995112"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 客户协议计费帐户入门
@@ -65,7 +65,7 @@ Microsoft 客户协议的计费帐户包含一个或多个计费对象信息，�
 
 Azure 计划决定了 Azure 订阅的定价和服务级别协议。 它们是在你创建计费对象信息时自动启用的。 所有与计费对象信息关联的发票科目都可以使用这些计划。 可以访问此发票科目的用户使用这些计划来创建 Azure 订阅。 Microsoft 客户协议的计费帐户支持以下 Azure 计划：
 
-| 套餐             | 定义  |
+| 计划             | 定义  |
 |------------------|-------------|
 |Microsoft Azure 计划   | 允许用户创建能够运行任何工作负荷的订阅。  |
 |适用于开发/测试的 Microsoft Azure 计划 | 允许 Visual Studio 订户创建局限于开发或测试工作负荷的订阅。 这些订阅可以获得多种权益，例如费率较低，并且能够访问 Azure 门户中的专用虚拟机映像。 |

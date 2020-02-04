@@ -1,21 +1,20 @@
 ---
 title: Azure 中的 Cloudyn 培训视频 | Microsoft Docs
 description: Cloudyn 培训视频介绍如何入门和使用其功能。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 9cb075791e57889279ecbd3505792bddbecbb139
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: b6605f160ded47d134588d637cbd7e6a14eb3525
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993929"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774014"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn 演练培训视频
 

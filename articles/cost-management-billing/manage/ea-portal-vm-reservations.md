@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992070"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
@@ -48,13 +48,13 @@ ms.locfileid: "75992070"
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>如何购买虚拟机预留实例
 
-要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须在 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中启用“预留实例”购买选项。
+要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须在 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中启用“预留实例”购买选项    。
 
 一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](https://go.microsoft.com/fwlink/?linkid=861721)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何查看预留实例购买详细信息
 
-可通过 [Azure 门户](https://aka.ms/reservations)左侧的“预留”菜单或从 [Azure EA 门户](https://ea.azure.com/)查看预留实例购买详细信息。 从左侧菜单中选择 "**报表**"，并向下滚动到 "_使用情况摘要_" 选项卡上的 "_按服务_列出的费用" 部分。滚动到该部分的底部，并按服务名称旁边的 "1 年" 或 "3 年" 指定，将在结尾处列出（例如： Standard_DS1_v2 eastus 1 年或 Standard_D2s_v3 eastus2 3 年）。
+可通过 [Azure 门户](https://aka.ms/reservations)左侧的“预留”菜单或从 [Azure EA 门户](https://ea.azure.com/)查看预留实例购买详细信息  。 从左侧菜单选择“报表”，然后在“使用情况摘要”选项卡上向下滚动到“按服务收费”部分    。滚动到该部分的底部，该部分末尾列出预留实例的购买和使用情况（在服务名称旁指定“1 年”或“3 年”），例如：Standard_DS1_v2 eastus 1 年或者 Standard_D2s_v3 eastus2 3 年。
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>如何更改与我的预留实例关联的订阅或者将预留实例权益转让给同一帐户下的某个订阅？
 
@@ -65,9 +65,9 @@ ms.locfileid: "75992070"
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>如何查看预留实例使用情况详细信息
 
-你可以在 [Azure 门户](https://aka.ms/reservations)或 [Azure EA 门户](https://ea.azure.com/)中，通过“报表” > “使用情况摘要” > “按服务收费”查看预留实例使用情况详细信息（对于有权查看账单信息的 EA 客户而言）。 你的保留实例可以标识为包含 "保留" 的服务名称，例如：预留-基础 VM 或虚拟机保留-Windows Svr （1核心）。
+你可以在 [Azure 门户](https://aka.ms/reservations)或 [Azure EA 门户](https://ea.azure.com/)中，通过“报表” > “使用情况摘要” > “按服务收费”查看预留实例使用情况详细信息（对于有权查看账单信息的 EA 客户而言）    。 可通过含“预留”一词的服务名称标识预留实例，例如：“预留-基础 VM”或“虚拟机预留-Windows Svr（1 核心）”。
 
-使用情况详细信息和高级报表下载 CSV 包含额外的预留实例使用情况信息。 “附加信息”字段有助于标识预留实例使用情况。
+使用情况详细信息和高级报表下载 CSV 包含额外的预留实例使用情况信息。 “附加信息”字段有助于标识预留实例使用情况  。
 
 如果未使用 Azure 混合权益购买 Azure 虚拟机预留实例，预留实例将有两个计价器（硬件和软件）。 如果使用了 Azure 混合权益来购买预留实例，则在预留实例使用情况详细信息中不会出现软件计价器。
 

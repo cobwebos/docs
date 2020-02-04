@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989288"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>排查 Azure 注册问题
@@ -32,13 +32,13 @@ ms.locfileid: "75989288"
 
 若要解决错误，请选择你尝试注册 Azure 时遇到的问题。
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>错误：*由于你的帐户存在问题，我们无法继续注册。请联系计费支持人员。*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>错误：“由于你的帐户存在问题，我们无法处理注册。  请联系计费支持人员。”
 
 若要解决该问题，请执行以下步骤：
 
 1. 使用帐户管理员凭据登录到 [Azure 帐户中心](https://account.azure.com/Profile)。
 
-2. 选择“编辑详细信息”。
+2. 选择“编辑详细信息”  。
 
 3. 确保所有地址字段都已完成并且有效。
 
@@ -46,7 +46,7 @@ ms.locfileid: "75989288"
 
 如果继续收到错误消息，请尝试使用其他浏览器注册。
 
-### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>“使用卡进行身份验证”部分中的进度条挂起。
+### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>“使用卡进行身份验证”部分中的进度条挂起。 
 
 要通过卡完成身份验证，则浏览器必须允许第三方 cookie。
 
@@ -54,9 +54,9 @@ ms.locfileid: "75989288"
 
 使用以下步骤更新浏览器的 cookie 设置。
 
-1. 如果使用的是 Chrome，请选择“设置” > “显示高级设置” > “隐私” > “内容设置”。 清除“阻止第三方 Cookie 和站点数据”。
+1. 如果使用的是 Chrome，请选择“设置”   > “显示高级设置”   > “隐私”   > “内容设置”  。 清除“阻止第三方 Cookie 和站点数据”  。
 
-2. 如果使用的是 Microsoft Edge，请选择“设置” > “查看高级设置” > “Cookie” > “不阻止 Cookie”。
+2. 如果使用的是 Microsoft Edge，请选择“设置”   > “查看高级设置”   > “Cookie”   > “不阻止 Cookie”  。
 
 3. 刷新 Azure 注册页，然后检查问题是否得以解决。
 
@@ -64,7 +64,7 @@ ms.locfileid: "75989288"
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>信用卡窗体不支持我的帐单地址
 
-你的账单地址必须位于你在“关于你”部分中选择的国家/地区内。 确保选择了正确的国家/地区。
+你的账单地址必须位于你在“关于你”部分中选择的国家/地区内。  确保选择了正确的国家/地区。
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>注册帐户验证过程中没有收到短信或电话
 
@@ -74,7 +74,7 @@ ms.locfileid: "75989288"
 
 - 电话验证过程中不能使用基于 IP 的语音 (VoiP) 电话号码。
 - 再次确认输入的电话号码，包括在下拉菜单中选择的国家/地区代码。
-- 如果你的手机未收到短信 (SMS)，请尝试使用“呼叫我”选项。
+- 如果你的手机未收到短信 (SMS)，请尝试使用“呼叫我”  选项。
 - 确保你的手机可以收到从基于美国的电话号码打来的电话或发来的短信消息。
 
 收到短信或电话呼叫时，在文本框中输入你收到的代码。
@@ -109,7 +109,7 @@ ms.locfileid: "75989288"
 
 若要创建 Azure 开放许可订阅，必须具备有效的在线服务激活 (OSA) 密钥，该密钥至少有一个与之关联的 Azure 开放许可令牌。 如果没有 OSA 密钥，请联系 [Microsoft Pinpoint](https://pinpoint.microsoft.com/) 中列出的其中一个 Microsoft 合作伙伴。
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>错误：*你没有资格使用 Azure 订阅*
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>错误：你不符合 Azure 订阅资格 
 
 若要解决这一问题，请仔细检查以下项是否属实：
 
@@ -117,7 +117,7 @@ ms.locfileid: "75989288"
 - 信用卡信息正确无误。
 - 尚未拥有使用相同信息的 Microsoft 帐户。
 
-### <a name="error-your-current-account-type-is-not-supported"></a>错误：*当前的帐户类型不受支持*
+### <a name="error-your-current-account-type-is-not-supported"></a>错误：你当前的帐户类型不受支持 
 
 如果帐户注册在[非托管 Azure AD 目录](../../active-directory/users-groups-roles/directory-self-service-signup.md)中，不在组织的 Azure AD 目录中，则可能出现此问题。
 

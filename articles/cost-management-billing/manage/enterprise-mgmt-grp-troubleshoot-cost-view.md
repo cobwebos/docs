@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 3abfac5f915b5c1c6020701feaa356d7a043ef8d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991823"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
@@ -24,22 +24,22 @@ ms.locfileid: "75991823"
 
 ## <a name="enable-access-to-costs"></a>启用成本访问
 
-你是否看到消息“未经授权”，或“在注册中已禁用成本查看”。 在寻找成本信息？
+你是否看到消息“未经授权”，或“在注册中已禁用成本查看”  。 在寻找成本信息？
 ![显示订阅当前成本字段中“未经授权”的屏幕截图。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/unauthorized.png)
 
 这可能是以下原因之一造成的：
 
 1. 通过企业合作伙伴购买的 Azure，而该合作伙伴尚未发布定价信息。 请与合作伙伴联系，以在[企业门户](https://ea.azure.com)中更新定价设置。
 2. 如果你是 EA Direct 客户，则有以下几种可能性：
-    * 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  
-    * 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。
+    * 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置  。  
+    * 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置  。
     * 请联系你的注册管理员以获取访问权限。 注册管理员可以在[企业门户](https://ea.azure.com/manage/enrollment)中更新设置。
 
       ![显示 Enterprise Portal 设置以供查看费用的屏幕截图。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
 
 ## <a name="asset-is-unavailable"></a>资产不可用
 
-如果在尝试访问订阅或管理组时收到错误消息指出“此资产不可用”，则不具有正确角色来查看此项目。  
+如果在尝试访问订阅或管理组时收到错误消息指出“此资产不可用”  ，则不具有正确角色来查看此项目。  
 
 ![显示“资产不可用”消息的屏幕截图。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客户协议的计费角色-Azure
+title: Microsoft 客户协议的计费角色 - Azure
 description: 了解 Azure 中 Microsoft 客户协议中计费帐户的计费角色。
 author: amberbhargava
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987936"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客户协议管理角色
@@ -27,7 +27,7 @@ ms.locfileid: "75987936"
 
 下表描述了用来管理计费帐户、计费配置文件和发票科目的计费角色。
 
-|角色|Description|
+|角色|说明|
 |---|---|
 |计费帐户所有者|管理计费帐户的所有内容|
 |计费帐户参与者|管理计费帐户的所有内容，但权限除外|
@@ -182,17 +182,17 @@ ms.locfileid: "75987936"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
-3. 在要其授予访问权限的范围（例如计费帐户、计费配置文件或发票科目）选择“访问控制(IAM)”。
+3. 在要其授予访问权限的范围（例如计费帐户、计费配置文件或发票科目）选择“访问控制(IAM)”。 
 
 4. “访问控制(IAM)”页将列出已在该范围分配到每个角色的用户和组。
 
    ![显示计费帐户的管理员列表的屏幕截图](./media/understand-mca-roles/billing-list-admins.png)
 
-5. 若要向用户授予访问权限，请在页面顶部选择“添加”。 在“角色”下拉列表中选择一个角色。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。
+5. 若要向用户授予访问权限，请在页面顶部选择“添加”。  在“角色”下拉列表中选择一个角色。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。 
 
    ![显示如何将管理员添加到计费帐户的屏幕截图](./media/understand-mca-roles/billing-add-admin.png)
 

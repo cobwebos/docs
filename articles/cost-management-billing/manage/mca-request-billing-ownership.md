@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991108"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
@@ -31,39 +31,39 @@ ms.locfileid: "75991108"
 
 1. 以 Microsoft 客户协议计费帐户的发票科目所有者或参与者身份登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
     ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 在 "计费范围" 页上，选择计费帐户，该帐户将用于支付订阅的使用费用。 计费帐户的类型应为 " **Microsoft 客户协议**"。
+3. 在计费范围页中，选择用于订阅使用情况付款的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。
 
     ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure 门户会记住你访问的最后一个计费范围，并在下一次转到 "成本管理 + 计费" 页时显示范围。 如果你之前访问过成本管理 + 计费，你将看不到 "计费范围" 页。 如果是这样，请检查您是否在[正确的范围内](#check-for-access)。 如果没有，请[切换此范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，为 Microsoft 客户协议选择计费帐户。
+    > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-for-access)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
 
-4. 选择左侧的 "**计费配置文件**"。
+4. 在左侧选择“计费对象信息”。 
 
-    ![显示选择计费配置文件的屏幕截图](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![屏幕截图，显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
     > [!Note]
     >
-    > 如果看不到 "计费配置文件"，则不会处于正确的计费范围。 需要为 Microsoft 客户协议选择计费帐户，然后选择 "计费配置文件"。 若要了解如何更改作用域，请参阅[在 Azure 门户中切换计费范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
+    > 如果看不到“计费对象信息”，则表明你未处于正确的计费范围。 需要为 Microsoft 客户协议选择计费帐户，然后选择“计费对象信息”。 若要了解如何更改范围，请参阅[在 Azure 门户中切换计费范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
 
-5. 从列表中选择一个**计费配置文件**。 一旦你接管订阅的所有权，就会按此计费配置文件对其使用计费。
+5. 从列表中选择“计费对象信息”。  在你接管订阅所有权后，系统会根据此计费对象信息计收订阅使用费用。
 
-6. 在左侧选择“发票科目”。
+6. 在左侧选择“发票科目”。 
 
     ![显示选择发票科目的屏幕截图](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. 从列表中选择一个发票科目。 接管订阅的所有权后，其使用情况将分配给计费配置文件的此部分。
+7. 从列表中选择一个发票科目。 在你接管订阅的所有权后，系统会将其使用情况分配到计费对象信息的发票的此部分。
 
-8. 选择左下角的“转移请求”，然后选择“添加新请求”。
+8. 选择左下角的“转移请求”，然后选择“添加新请求”。  
 
     ![显示选择转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-9. 输入要从其请求计费所有权的用户的电子邮件地址。 该用户必须是 Microsoft 在线服务计划计费帐户的帐户管理员，或企业协议中的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。 选择“发送转移请求”。
+9. 输入要从其请求计费所有权的用户的电子邮件地址。 该用户必须是 Microsoft 在线服务计划计费帐户的帐户管理员，或企业协议中的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。 选择“发送转移请求”。 
 
     ![显示发送转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)
 
@@ -79,29 +79,29 @@ ms.locfileid: "75991108"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
     ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 在 "计费范围" 页上，选择向其发送传输请求的计费帐户。
+3. 在计费范围页中，选择已发送其转账请求的计费帐户。
 
-4. 选择左侧的 "**计费配置文件**"。
+4. 在左侧选择“计费对象信息”。 
 
-    ![显示选择计费配置文件的屏幕截图](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![屏幕截图，显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
-5. 选择向其发送传输请求的**计费配置文件**。
+5. 选择已发送其转账请求的**计费对象信息**。
 
-6. 在左侧选择“发票科目”。
+6. 在左侧选择“发票科目”。 
 
     ![显示选择发票科目的屏幕截图](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. 从为其发送传输请求的列表中选择 "发票" 部分。
+7. 从列表中选择已发送其转账请求的发票科目。
 
-8. 选择左下角的“转移请求”。 “转移请求”页将显示以下信息：
+8. 选择左下角的“转移请求”。  “转移请求”页将显示以下信息：
 
     ![显示转移请求列表的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
-   |柱形图​​|定义|
+   |列|定义|
    |---------|---------|
    |请求日期|发送转移请求的日期|
    |Recipient|已向其发送转移计费所有权请求的用户的电子邮件地址|
@@ -124,7 +124,7 @@ ms.locfileid: "75991108"
 
     ![显示已转移订阅列表的屏幕截图](./media/mca-request-billing-ownership/mca-transfer-completed.png)
 
-   |柱形图​​  |定义|
+   |列  |定义|
    |---------|---------|
    |转移请求 ID|转移请求的唯一 ID。 提交支持请求时，请与 Azure 支持人员共享该 ID，以加速支持请求的处理|
    |转移请求日期|发送转移请求的日期|

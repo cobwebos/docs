@@ -1,21 +1,20 @@
 ---
 title: 教程 - 使用 Azure 中的 Cloudyn 分配访问权限 | Microsoft Docs
 description: 本教程介绍如何使用定义实体访问级别的用户帐户分配对 Cloudyn 数据的访问权限。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75983522"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774006"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>教程：分配对 Cloudyn 数据的访问权限
 

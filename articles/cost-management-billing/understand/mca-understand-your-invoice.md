@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 793caae31841c0ea744a80a811c86aa4af63f60a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990965"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 客户协议发票中的术语
@@ -24,9 +24,9 @@ ms.locfileid: "75990965"
 
 发票提供了收费摘要和有关付款的说明。 可以从 [Azure 门户](https://portal.azure.com/)下载可移植文档格式 (.pdf) 的发票，也可通过电子邮件获取。 有关详细信息，请参阅[查看和下载 Microsoft Azure 发票](download-azure-invoice.md)。
 
-## <a name="billing-period"></a>计费期间
+## <a name="billing-period"></a>计费周期
 
-每月开票一次。 若要了解你在每月的哪一天接收发票，可在 [Azure 门户](https://portal.azure.com/)的计费对象信息属性下查看“发票日期”。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。
+每月开票一次。 若要了解你在每月的哪一天接收发票，可在 [Azure 门户](https://portal.azure.com/)的计费对象信息属性下查看“发票日期”。  在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。 
 
 ## <a name="invoice-terms-and-descriptions"></a>发票的术语和说明
 
@@ -34,30 +34,30 @@ ms.locfileid: "75990965"
 
 ### <a name="invoice-summary"></a>发票摘要
 
-“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。
+“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。 
 
 ![发票摘要部分](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | 买方 |法律实体的地址，位于计费帐户属性中|
-| 付款方 |接收发票的计费对象信息的帐单地址，位于计费对象信息属性中|
+| 帐单邮寄地址 |接收发票的计费对象信息的帐单地址，位于计费对象信息属性中|
 | 计费对象信息 |接收发票的计费对象信息的名称 |
 | P.O. 数字 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
 | 发票日期 |生成发票的日期，通常是计费周期截止后的 5 到 12 天。 可以在计费对象信息属性中查看发票日期。|
-| 付款条款 |如何支付 Microsoft 账单。 “净 30 天”是指在开票日期后的 30 天内付款。 |
+| 付款条款 |如何支付 Microsoft 账单。 “净 30 天”是指在开票日期后的 30 天内付款。  |
 
 ### <a name="billing-summary"></a>计费摘要
 
-“计费摘要”显示自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
+“计费摘要”显示  自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
 
 ![计费摘要部分](./media/mca-understand-your-invoice/billingsummary.png)
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | Charges|自上次计费周期以来针对此计费对象信息收取的 Microsoft 费用总数目 |
-| 额度 |从退货收到的额度 |
+| 致谢 |从退货收到的额度 |
 | 已应用的 Azure 额度 | 每个计费周期自动应用到 Azure 费用的 Azure 额度 |
 | 小计 |应付的税前金额 |
 | 税款 |需支付的税款的类型和金额，具体取决于计费对象信息的国家/地区。 如果不需缴税，则发票上看不到税款。 |
@@ -73,12 +73,12 @@ ms.locfileid: "75990965"
 
 详细信息显示按产品订单细分的每个发票科目的成本。 在每个产品订单内，成本按服务类型细分。 可以在 Azure 门户和 Azure 使用情况与费用 CSV 中找到产品和服务的每日费用。 若要了解详细信息，请参阅[了解 Microsoft 客户协议发票中的费用](review-customer-agreement-bill.md)。
 
-每个服务系列的应付总金额在计算时，请从“额度/费用”中减去“Azure 额度”，然后添加“税款”：
+每个服务系列的应付总金额在计算时，请从“额度/费用”中减去“Azure 额度”，然后添加“税款”：   
 
 
 ![按发票科目列出的详细信息](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| 条款 |Description |
+| 术语 |说明 |
 | --- | --- |
 | 单价 | 服务的有效单价（按定价货币衡量），用于按使用量计价。 这取决于产品、服务系列、计量和套餐。 |
 | Qty | 在计费期间购买或消耗的量 |
@@ -99,7 +99,7 @@ ms.locfileid: "75990965"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

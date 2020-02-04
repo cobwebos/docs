@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994046"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
@@ -28,11 +28,11 @@ ms.locfileid: "75994046"
 
 ## <a name="reservation-order-and-reservation"></a>预留订单和预留
 
-购买预订时，会创建两个对象：**预留订单**和**预留**。
+购买预留时，会创建两个对象：**预留订单**和**预留**。
 
-在购买时，预留订单下有一个预留。 拆分、合并、部分退款或交换之类的操作会在“预留订单”下创建新的预留。
+在购买时，预留订单下有一个预留。 拆分、合并、部分退款或交换之类的操作会在“预留订单”下创建新的预留。 
 
-若要查看预留订单，请转到“预留”，选择预留，然后单击“预留订单 ID”。
+若要查看预留订单，请转到“预留”，  选择预留，然后单击“预留订单 ID”。 
 
 ![预留订单详细信息的示例，显示预留订单 ID ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -45,9 +45,9 @@ ms.locfileid: "75994046"
 若要更新预订范围，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
+2. 选择“所有服务”   > “预订”  。
 3. 选择该预订。
-4. 选择“设置” > “配置”。
+4. 选择“设置”   > “配置”  。
 5. 更改范围。
 
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
@@ -66,12 +66,12 @@ ms.locfileid: "75994046"
 若要委托预订的访问管理，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”以列出自己有权访问的预订。
+2. 选择“所有服务”   > “预订”  以列出自己有权访问的预订。
 3. 选择要将访问权限委托给其他用户的预订。
-4. 选择“访问控制 (IAM)”。
-5. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
+4. 选择“访问控制 (IAM)”  。
+5. 选择“添加角色分配”   > “角色”   > “所有者”  。 或者，如果希望提供有限的访问权限，请选择其他角色。
 6. 键入要添加为“所有者”的用户的电子邮件地址。
-7. 选择用户，再选择“保存”。
+7. 选择用户，再选择“保存”  。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -121,10 +121,10 @@ ms.locfileid: "75994046"
 若要更新预留的优化设置，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
+2. 选择“所有服务”   > “预订”  。
 3. 选择该预订。
-4. 选择“设置” > “配置”。
-5. 更改“优化对象”设置。
+4. 选择“设置”   > “配置”  。
+5. 更改“优化对象”  设置。
 
 ## <a name="optimize-reservation-use"></a>优化预留的使用
 
@@ -135,7 +135,7 @@ ms.locfileid: "75994046"
 查看预留使用的一种方式是使用 Azure 门户。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择“所有服务” > [ **“预留”** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。  
+2. 选择“所有服务” > [ **“预留”** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。    
   ![显示预留列表的图像](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 选择一个预留。
 4. 查看一段时间的预留使用趋势。  
@@ -153,11 +153,11 @@ ms.locfileid: "75994046"
 
 - 确保组织创建的虚拟机数与预留的 VM 大小相匹配。
 - 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](#change-optimize-setting-for-reserved-vm-instances)。
-- 将预留范围更改为“共享”，使其应用得更广。 有关详细信息，请参阅[更改预留的范围](#change-the-reservation-scope)。
+- 将预留范围更改为“共享”，使其应用得更广。  有关详细信息，请参阅[更改预留的范围](#change-the-reservation-scope)。
 - 考虑交换未使用的数量。 有关详细信息，请参阅[取消和交换](#cancel-exchange-or-refund-reservations)。
 
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure App Service 的预订折扣
+title: Azure 应用服务的预留折扣
 description: 了解预留折扣如何应用于 Azure 应用服务独立印花。
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995788"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>预留折扣如何应用于 Azure 应用服务独立印花
@@ -33,16 +33,16 @@ ms.locfileid: "75995788"
 
 因此，印花计量可以在印花生存期中在 Windows 和 Linux 之间来回变换。 另外，预留特定于操作系统。 需要购买一个支持计划部署到印花的辅助角色的预留。 仅限 Windows 的印花和混合印花使用 Windows 预留。 只包含 Linux 辅助角色的印花使用 Linux 预留。
 
-只购买 Linux 预留的前提是计划只在印花中部署 Linux 辅助角色。
+只购买 Linux 预留的前提是计划只  在印花中部署 Linux 辅助角色。
 
 ## <a name="discount-examples"></a>折扣示例
 
 以下示例演示了如何根据部署应用独立印花费预留实例折扣。
 
-- **示例 1**：在没有独立应用服务戳记的区域中购买一个独立的保留戳记容量实例。 将一个新的印花部署到该区域，为该印花按预留费率付款。
-- **示例 2**：在已部署了独立应用服务戳记的区域中购买一个独立的保留戳记容量实例。 开始收到已部署印花的预留费率。
-- **示例 3**：在已部署独立应用服务戳记的区域中，你购买了一个独立的保留戳记容量实例。 开始收到已部署印花的预留费率。 稍后，删除该印花并部署新印花。 收到新印花的预留费率。 对于没有部署印花的时段，折扣不会结转。
-- **示例 4**：在某个区域中购买一个独立 Linux 保留戳记容量的实例，然后将新的 Stamp 部署到该区域。 印花一开始部署时没有辅助角色，它发出 Windows 印花计量。 未收到任何折扣。 当第一个 Linux 辅助角色部署到印花时，它发出 Linux 印花计量，此时会应用预留折扣。 如果随后将 Windows 辅助角色部署到印花，印花计量会恢复为 Windows。 你不再收到独立 Linux 预留印花预留项的折扣。
+- **示例 1**：在没有应用服务独立印花的区域中购买独立预留印花容量的一个实例。 将一个新的印花部署到该区域，为该印花按预留费率付款。
+- **示例 2**：在已经部署应用服务独立印花的区域中购买独立预留印花容量的一个实例。 开始收到已部署印花的预留费率。
+- **示例 3**：在已经部署应用服务独立印花的区域中购买独立预留印花容量的一个实例。 开始收到已部署印花的预留费率。 稍后，删除该印花并部署新印花。 收到新印花的预留费率。 对于没有部署印花的时段，折扣不会结转。
+- **示例 4**：在某个区域中购买独立 Linux 预留印花容量的一个实例，然后向该区域部署新印花。 印花一开始部署时没有辅助角色，它发出 Windows 印花计量。 未收到任何折扣。 当第一个 Linux 辅助角色部署到印花时，它发出 Linux 印花计量，此时会应用预留折扣。 如果随后将 Windows 辅助角色部署到印花，印花计量会恢复为 Windows。 你不再收到独立 Linux 预留印花预留项的折扣。
 
 ## <a name="next-steps"></a>后续步骤
 

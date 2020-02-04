@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992122"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>排查 Azure EA 门户访问问题
@@ -37,9 +37,9 @@ ms.locfileid: "75992122"
 若要更新“身份验证级别”，请执行以下操作：
 
 1. 以企业管理员身份登录到 Azure EA 门户。
-2. 单击左侧导航面板上的“管理”。
-3. 单击“许可登记表”选项卡。
-4. 在“许可登记表详细信息”下，选择“身份验证级别”。
+2. 单击左侧导航面板上的“管理”  。
+3. 单击“许可登记表”选项卡  。
+4. 在“许可登记表详细信息”  下，选择“身份验证级别”。 
 5. 单击铅笔符号。
 6. 单击“ **保存**”。
 
@@ -60,14 +60,14 @@ Microsoft 帐户必须有一个在 [https://signup.live.com](https://signup.live
   - 如果使用工作帐户，请输入工作电子邮件和工作密码。 工作密码由组织提供。 如果密码存在问题，可以联系 IT 部门，了解如何重置密码。
   - 如果使用 Microsoft 帐户，请输入 Microsoft 帐户电子邮件地址和密码。 如果忘记了 Microsoft 帐户密码，可以在 [https://account.live.com/password/reset](https://account.live.com/password/reset) 重置它。
 - 使用 InPrivate 或 Incognito 浏览器会话登录，这样系统就不会保留以前的或现有的会话的 Cookie 或缓存信息。 清除浏览器的缓存，使用 InPrivate 或 Incognito 窗口打开 https://ea.azure.com 。
-- 如果在使用 Microsoft 帐户时出现“用户无效”错误，则可能是因为你有多个 Microsoft 帐户， 而你尝试登录时使用的帐户不是主电子邮件地址。
-另外，出现“用户无效”错误还可能是因为在将用户添加到许可登记表时使用了错误的帐户类型。 例如，使用了工作或学校帐户而不是 Microsoft 帐户。 在此示例中，可以让另一位 EA 管理员添加正确的帐户，或者需要联系[支持部门](https://support.microsoft.com/supportforbusiness/productselection?sapId=cf791efa-485b-95a3-6fad-3daf9cd4027c)。
-  - 如需查看主别名，请访问 [https://account.live.com](https://account.live.com)。 然后单击“你的信息”，再单击“管理登录 Microsoft 的方式”。 按提示验证备用电子邮件地址，获取一个访问敏感信息的代码。 输入安全代码。 如果不希望设置双重身份验证，请选择“稍后设置”。
-  - 此时会出现“管理登录 Microsoft 的方式”页，可在其中查看你的帐户别名。 检查主别名是否是用来登录 Azure EA 门户的别名。 如果不是，可将其设置为主别名。 也可改用 Azure EA 门户的主别名。
+- 如果在使用 Microsoft 帐户时出现“用户无效”错误，则可能是因为你有多个 Microsoft 帐户，  而你尝试登录时使用的帐户不是主电子邮件地址。
+另外，出现“用户无效”错误还可能是因为在将用户添加到许可登记表时使用了错误的帐户类型。  例如，使用了工作或学校帐户而不是 Microsoft 帐户。 在此示例中，可以让另一位 EA 管理员添加正确的帐户，或者需要联系[支持部门](https://support.microsoft.com/supportforbusiness/productselection?sapId=cf791efa-485b-95a3-6fad-3daf9cd4027c)。
+  - 如需查看主别名，请访问 [https://account.live.com](https://account.live.com)。 然后单击“你的信息”，再单击“管理登录 Microsoft 的方式”   。 按提示验证备用电子邮件地址，获取一个访问敏感信息的代码。 输入安全代码。 如果不希望设置双重身份验证，请选择“稍后设置”。 
+  - 此时会出现“管理登录 Microsoft 的方式”页，可在其中查看你的帐户别名  。 检查主别名是否是用来登录 Azure EA 门户的别名。 如果不是，可将其设置为主别名。 也可改用 Azure EA 门户的主别名。
 
 ## <a name="no-activation-email-received"></a>没有收到激活电子邮件
 
-Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果没有收到激活电子邮件，请查看垃圾邮件文件夹中是否有该电子邮件。 该电子邮件发送时的 service_subject 为“邀请查看/管理 Microsoft Azure”。 它发送到每位新添加的 EA 管理员。
+Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果没有收到激活电子邮件，请查看垃圾邮件文件夹中是否有该电子邮件。 该电子邮件发送时的 service_subject 为“邀请查看/管理 Microsoft Azure”。  它发送到每位新添加的 EA 管理员。
 
 如果确定自己已被设置为 EA 管理员，则不需等着接收激活电子邮件来登录 Azure EA 门户。 可以访问 https://ea.azure.com ，然后使用电子邮件地址（工作帐户、学校帐户或 Microsoft 帐户）和密码登录。
 
@@ -77,7 +77,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>我想向自己的合约添加新的 EA 管理员
 
-现有的企业管理员可以添加新的企业管理员。 如果你是 EA 管理员，请登录 EA 门户 > 单击“管理”> 在右上角单击“+ 添加管理员”，以添加新的 EA 管理员。 请确保拥有用户的电子邮件地址和首选登录方法（例如工作/学校身份验证或 Microsoft Live ID），以便添加用户。
+现有的企业管理员可以添加新的企业管理员。 如果你是 EA 管理员，请登录 EA 门户 > 单击“管理”> 在右上角单击“+ 添加管理员”，以添加新的 EA 管理员   。 请确保拥有用户的电子邮件地址和首选登录方法（例如工作/学校身份验证或 Microsoft Live ID），以便添加用户。
 
 如果你不是 EA 管理员，请联系公司的 EA 管理员，请求他们将你添加到合约中。 在他们将你添加到合约后，你会收到一封激活电子邮件。
 
@@ -93,7 +93,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 可以通过更新门户上的通知联系人和联机管理员的方式，在批量许可服务中心中更新第一个 EA 管理员。 EA 门户大约需要 24 小时才能完成此更新。 更新后，新的 EA 管理员将收到激活电子邮件。
 
 如果你没有 VLSC 门户的访问权限，或者如果你的初始 EA 管理员无法再管理合约并且无权访问 EA 门户，请在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交请求，请求更新并提供以下信息：
-- 注册号
+- 注册编号
 - 要添加的电子邮件地址和身份验证类型（工作/学校/MS）
 - 更改初始 EA 管理员的原因
 - 来自初始 EA 管理员的批准电子邮件
@@ -101,7 +101,7 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 ### <a name="my-current-ea-admin-is-no-longer-with-the-company"></a>我当前的 EA 管理员已不在公司任职
 
 一个 EA 合约可以有多个 EA 管理员，你可以与其他 EA 管理员联系，请他们添加新的 EA 管理员/帐户所有者/部门管理员。 但是，如果你不知道公司内 EA 管理员的身份或合约上没有其他可用的 EA 管理员，请与我们联系并提供以下信息：
-- 注册号
+- 注册编号
 - 要添加的电子邮件地址和身份验证类型（工作/学校/MS）
 - 提供信息表明当前的 EA 管理员已不在公司任职
 
@@ -137,18 +137,18 @@ Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果
 - 此外，日志文件会有所帮助。 下面是使用以下信息捕获网络痕迹的步骤：
   1. 打开 Internet Explorer。
   1. 按 F12 在 IE 底部打开一个框。
-  1. 选择“网络”选项卡。
-  1. 单击“开始捕获”。
+  1. 选择“网络”选项卡  。
+  1. 单击“开始捕获”  。
   1. 执行导致错误的操作。
-  1. 出现错误后，单击“停止捕获”。
+  1. 出现错误后，单击“停止捕获”  。
   1. 保存该文件，并在支持请求中包含该信息。
   1. 确保在支持请求中提供合约编号和电子邮件地址。
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>“工作/学校帐户”和“Microsoft 帐户”有什么不同？
 
-**Microsoft 帐户：** 已与[https://signup.live.com](https://signup.live.com)上的 Live ID 关联的帐户。
+**Microsoft 帐户**：已与 [https://signup.live.com](https://signup.live.com) 上的 Live ID 关联的帐户。
 
-**工作/学校帐户：** 仅适用于已设置 active directory 与云联合的公司，所有帐户都位于单个租户上。 如果公司的内部 Active Directory 与云联合，则可以使用工作或学校帐户这种身份验证类型来添加用户。
+**工作/学校帐户：** 仅适用于已设置与云联合的 Active Directory 且所有帐户都在一个租户上的公司。 如果公司的内部 Active Directory 与云联合，则可以使用工作或学校帐户这种身份验证类型来添加用户。
 
   从 2016 年 9 月起，Microsoft 不再允许将工作或学校电子邮件地址注册为 Microsoft 帐户。 有关更多详细信息，请参阅以下材料： [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)。
 

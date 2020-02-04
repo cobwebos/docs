@@ -1,5 +1,5 @@
 ---
-title: 用 Azure 保留容量节省 SQL 数据仓库费用
+title: 通过 Azure 预留容量节省 SQL 数据仓库费用
 description: 了解如何通过省钱的预留容量节省 SQL 数据仓库的费用成本。
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995840"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>通过预留容量节省 SQL 数据仓库的费用成本
@@ -30,7 +30,7 @@ ms.locfileid: "75995840"
 可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中购买 Azure SQL 数据仓库预留容量。 通过[提前付款或按月付款](monthly-payments-reservations.md)的方式为预留付款。 购买预留容量：
 
 - 你必须拥有至少一个企业或即用即付订阅的“所有者”角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项。 如果禁用了该设置，则必须是 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 如果禁用了该设置，则必须是 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据仓库预留容量。
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](understand-reserved-instance-usage.md)。
@@ -44,8 +44,8 @@ SQL 数据仓库预留大小应该基于所消耗的计算数据仓库单位 (cD
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>购买 SQL 数据仓库预留容量
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择“所有服务” > “预订”。
-3. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。 将向订阅的付款方式收取预留容量的费用。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或即用即付（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-Bc-op-nt-azr）。
+2. 选择“所有服务”   > “预订”  。
+3. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。 将向订阅的付款方式收取预留容量的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。
    - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
    - 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。
 4. 选择一个范围。 使用“范围”列表来选择订阅范围。
@@ -57,9 +57,9 @@ SQL 数据仓库预留大小应该基于所消耗的计算数据仓库单位 (cD
 5. 选择“区域”，以便选择一个预留容量涵盖的 Azure 区域。
 6. 选择数量。 输入数量 100，作为要购买的数据仓库单位数 (cDWU)。    
    例如，数量为 30 时，会为你提供每小时 3,000 cDWU 的预留容量。
-7. 在“成本”部分查看 SQL 数据仓库预留容量的预留成本。
-8. 选择“购买”。
-9. 选择“查看此预留”以查看购买状态。
+7. 在“成本”  部分查看 SQL 数据仓库预留容量的预留成本。
+8. 选择“购买”。 
+9. 选择“查看此预留”  以查看购买状态。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 

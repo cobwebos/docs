@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
 ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995944"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>通过按月付款的方式购买预留
@@ -24,27 +24,27 @@ ms.locfileid: "75995944"
 每月付款适用于：
 
 - 虚拟机
-- Azure 存储器
-- SQL Database
+- Azure 存储
+- SQL 数据库
 - SQL 数据仓库
-- Azure Cosmos DB
+- Cosmos DB
 - 应用服务印花费
 
 在 [Azure 门户](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade)中购买预留。
 
 ![显示预留购买的示例](./media/monthly-payments-reservations/purchase-reservation.png)
 
-进行预留购买时，可以查看付款计划。 单击“查看完整的付款计划”。
+进行预留购买时，可以查看付款计划。 单击“查看完整的付款计划”。 
 
 ![显示预留付款计划的示例](./media/monthly-payments-reservations/prepurchase-schedule.png)
 
-若要在购买后查看付款计划，请选择一个预留，单击“预留订单 ID”，然后单击“付款”选项卡。
+若要在购买后查看付款计划，请选择一个预留，单击“预留订单 ID”，  然后单击“付款”选项卡。 
 
 ## <a name="view-payments-made"></a>查看已进行的付款
 
-可以查看通过 API、使用数据和成本分析进行的付款。 对于按月付款的预留，频率值在使用数据和预留费用 API 中显示为“定期”。 对于提前付款的预留，该值显示为“一次性”。
+可以查看通过 API、使用数据和成本分析进行的付款。 对于按月付款的预留，频率值在使用数据和预留费用 API 中显示为“定期”。  对于提前付款的预留，该值显示为“一次性”。 
 
-成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。 若只查看预留，请应用“预留”筛选器。
+成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。     若只查看预留，请应用“预留”筛选器。 
 
 ![在成本分析中显示预留购买成本的示例](./media/monthly-payments-reservations/cost-analysis.png)
 

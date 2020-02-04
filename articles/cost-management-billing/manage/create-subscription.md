@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
 ms.openlocfilehash: 33fa553e9148a1ac838e6bf53fc83cf7eadd7499
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992577"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
@@ -36,12 +36,12 @@ ms.locfileid: "75992577"
 |---------|---------|
 |企业协议 (EA) |  企业协议许可登记表上的“帐户所有者”角色。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](understand-ea-roles.md)。    |
 |Microsoft 客户协议 (MCA) |  发票科目、计费对象信息或计费帐户上的所有者或参与者角色。 或发票科目上的 Azure 订阅创建者角色。  有关详细信息，请参阅[订阅计费角色和任务](understand-mca-roles.md#subscription-billing-roles-and-tasks)。    |
-|Microsoft 合作伙伴协议 (MPA) |   CSP 合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。  用户需要登录合作伙伴租户才能创建 Azure 订阅。   |
+|Microsoft 合作伙伴协议 (MPA) |   CSP 合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。  用户需登录到合作伙伴租户才能创建 Azure 订阅。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 门户中创建订阅
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“订阅”。
+1. 搜索“订阅”。 
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/create-subscription/billing-search-subscription-portal.png)
 
@@ -51,14 +51,14 @@ ms.locfileid: "75992577"
 
 1. 如果有权访问多个计费帐户，请选择要为其创建订阅的计费帐户。
 
-1. 填充表单，并单击“创建”。 下面的表列出了表单上每种计费帐户的字段。
+1. 填充表单，并单击“创建”  。 下面的表列出了表单上每种计费帐户的字段。
 
 **企业协议**
 
 |字段  |定义  |
 |---------|---------|
 |名称     | 该显示名称可帮助你轻松识别 Azure 门户中的订阅。  |
-|产品     | 如果计划将此订阅用于开发或测试工作负荷，请选择“EA 开发/测试”，否则请使用“Microsoft Azure 企业”。 DevTest 套餐必须处于启用状态，否则注册帐户无法创建 EA 开发/测试订阅。|
+|产品/服务     | 如果计划将此订阅用于开发或测试工作负荷，请选择“EA 开发/测试”，否则请使用“Microsoft Azure 企业”。 DevTest 套餐必须处于启用状态，否则注册帐户无法创建 EA 开发/测试订阅。|
 
 **Microsoft 客户协议**
 
@@ -66,7 +66,7 @@ ms.locfileid: "75992577"
 |---------|---------|
 |计费配置文件     | 订阅费用将计入所选计费对象信息。 如果只能访问一个计费对象信息，则选项将灰显。     |
 |发票科目     | 订阅费用会显示在计费对象信息发票的此科目中。 如果只能访问一个发票科目，则选项将灰显。  |
-|套餐     | 如果你计划将此订阅用于开发或测试工作负荷，请选择 Microsoft Azure 开发测试计划，否则请使用 Microsoft Azure 计划。 如果只为计费对象信息启用了一个计划，则选项将灰显。  |
+|计划     | 如果你计划将此订阅用于开发或测试工作负荷，请选择 Microsoft Azure 开发测试计划，否则请使用 Microsoft Azure 计划。 如果只为计费对象信息启用了一个计划，则选项将灰显。  |
 |名称     | 该显示名称可帮助你轻松识别 Azure 门户中的订阅。  |
 
 **Microsoft 合作伙伴协议**
@@ -88,6 +88,6 @@ ms.locfileid: "75992577"
 - [创建用来组织和管理资源的管理组](../../governance/management-groups/create.md)
 - [取消针对 Azure 的订阅](cancel-azure-subscription.md)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

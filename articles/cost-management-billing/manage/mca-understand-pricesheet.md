@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客户协议价目表中的条款-Azure
+title: Microsoft 客户协议价目表中的术语 - Azure
 description: 了解如何阅读并理解 Microsoft 客户协议的使用情况和账单。
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994475"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 客户协议价目表中的术语
@@ -43,24 +43,24 @@ ms.locfileid: "75994475"
 | includedQuantity | 客户有权在不增加费用的情况下使用的特定服务的数量。 |
 | marketPrice | 给定服务的当前流行市场价格。 |
 | meterId  | 计量的唯一标识符。 |
-| meterCategory  | 计量的分类类别的名称。 例如，“云服务”、“网络”等。 |
+| meterCategory  | 计量的分类类别的名称。 例如，“云服务”、“网络”等。   |
 | meterName  | 计量的名称。 此计量表示 Azure 服务的可部署资源。 |
 | meterSubCategory  | 计量子分类类别的名称。  |
 | meterType  |  计量类型的名称。 |
 | meterRegion  | 提供服务计量的区域的名称。 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。    |
-| 产品  | 产品名称支付费用。Ex：基本 SQL DB 与标准 SQL DB  |
+| Products  | 产生费用的产品的名称。例如：基本 SQL DB 与标准 SQL DB  |
 | productId  | 其计量已消耗的产品的唯一标识符。 |
 | productOrderName  | 购买的产品计划的名称。 |
-| serviceFamily  | Azure 服务的类型。Ex：计算、分析、安全性 |
+| serviceFamily  | Azure 服务的类型。例如：计算、分析、安全性 |
 | tierMinimumUnits  | 定义层级范围的下限，这是定义价格的依据。 例如，如果范围为 0 到 100，则 tierMinimumUnits 为 0。  |
 | unitOfMeasure  | 确定用于服务计费的度量单位。 例如，计算服务按小时计费。 |
-| unitPrice  | 计费时的单价（不是有效的混合价），特定于计量和产品订单名称。  注意：单位价格与使用情况详细信息下载中的有效价格不同，因为在各层之间具有不同价格的服务。  如果服务使用多层级定价，则有效价格是不同层级的混合费率，不显示特定于层级的单价。 混合价格或有效价格是针对多个层级（其中的每个层级有具体的单价）消耗的数量得出的净价格。 |
+| unitPrice  | 计费时的单价（不是有效的混合价），特定于计量和产品订单名称。  注意：如果服务的不同层级中存在价格差异，则单价不同于使用情况详细信息下载内容中的有效价格。  如果服务使用多层级定价，则有效价格是不同层级的混合费率，不显示特定于层级的单价。 混合价格或有效价格是针对多个层级（其中的每个层级有具体的单价）消耗的数量得出的净价格。 |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

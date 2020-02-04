@@ -1,5 +1,5 @@
 ---
-title: 设置 Microsoft 客户协议的帐单-Azure
+title: 为 Microsoft 客户协议设置计费 - Azure
 description: 了解如何设置 Microsoft 客户协议的计费帐户。
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994631"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
@@ -69,7 +69,7 @@ ms.locfileid: "75994631"
 
    ![显示邀请企业管理员的屏幕截图](./media/mca-setup-account/ea-mca-invite-admins.png)
 
-4. 选择“发送请求”。
+4. 选择“发送请求”。 
 
    管理员将收到一封电子邮件，其中包含有关完成设置的说明。
 
@@ -132,7 +132,7 @@ ms.locfileid: "75994631"
 
 ### <a name="no-service-downtime"></a>服务不会中断
 
-订阅内的 Azure 服务保持正常运行，不会中断。 我们只转换 Azure 订阅的计费关系。 这不会对现有的资源、资源组或管理组产生影响。
+订阅中的 Azure 服务将保持正常运行，而不会中断。 我们只会转换 Azure 订阅的计费关系。 这不会对现有的资源、资源组或管理组产生影响。
 
 ### <a name="user-access-to-azure-resources"></a>用户对 Azure 资源的访问权限
 
@@ -140,7 +140,7 @@ ms.locfileid: "75994631"
 
 ### <a name="azure-reservations"></a>Azure 预留
 
-企业协议注册中的任何 Azure 预留项将转移到新计费帐户。 在转换期间，对订阅应用的预留折扣不会有任何更改。
+企业协议注册中的任何 Azure 预留项将转移到新计费帐户。 在转换过程中，对订阅应用的预留折扣不会有任何变化。
 
 ### <a name="azure-marketplace-products"></a>Azure 市场产品
 
@@ -168,7 +168,7 @@ ms.locfileid: "75994631"
 
 ### <a name="closing-your-browser-during-setup"></a>在设置期间关闭浏览器
 
-在单击“开始转换”之前，可以关闭浏览器。 可以使用电子邮件中收到的链接返回到设置，并开始转换。 开始转换后，如果关闭浏览器，转换过程仍会继续运行。 返回到转换状态页可以监视转换过程的最新状态。 转换完成后，你会收到一封电子邮件。
+在单击“开始转换”之前，可以关闭浏览器。  可以使用电子邮件中收到的链接返回到设置，并开始转换。 开始转换后，如果关闭浏览器，转换过程仍会继续运行。 返回到转换状态页可以监视转换过程的最新状态。 转换完成后，你会收到一封电子邮件。
 
 ## <a name="complete-the-setup-in-the-azure-portal"></a>在 Azure 门户中完成设置
 
@@ -180,16 +180,16 @@ ms.locfileid: "75994631"
 
    `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
 
-3. 在设置过程的最后一个步骤中选择“开始转换”。 选择“开始转换”后：
+3. 在设置过程的最后一个步骤中选择“开始转换”。  选择“开始转换”后：
 
     ![显示设置向导的屏幕截图](./media/mca-setup-account/ea-mca-set-up-wizard.png)
 
     - 将在新计费帐户中创建对应于企业协议层次结构的计费层次结构。 有关详细信息，请参阅[了解计费层次结构的变化](#understand-changes-to-your-billing-hierarchy)。
     - 企业协议注册中的管理员有权访问新计费帐户，因此他们可以继续管理组织的计费。
-    - Azure 订阅的计费将转换到新帐户。 在**此转换过程中不会对 Azure 服务产生任何影响。它们将继续运行，而不会造成任何中断**。
+    - Azure 订阅的计费将转换到新帐户。 **在此转换过程中，Azure 服务不会受到任何影响。它们将保持正常运行，而不会出现任何中断。**
     - 如果你购买了 Azure 预留项，它们将移到新的计费帐户，而不会更改权益或条款。
 
-4. 可以在“转换状态”页上监视转换状态。
+4. 可以在“转换状态”页上监视转换状态。 
 
    ![显示转换状态的屏幕截图](./media/mca-setup-account/ea-mca-set-up-status.png)
 
@@ -201,19 +201,19 @@ ms.locfileid: "75994631"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
 3. 选择计费帐户。 计费帐户的类型为 **Microsoft 客户协议**。
 
-4. 在左侧选择“Azure 订阅”。
+4. 在左侧选择“Azure 订阅”。 
 
    ![显示订阅列表的屏幕截图](./media/mca-setup-account/mca-subscriptions-post-transition.png)
 
 从企业协议注册转换为新计费帐户的 Azure 订阅将显示在 Azure 订阅页上。 如果你认为缺少了任何订阅，请在 Azure 门户中手动转换订阅的计费。 有关详细信息，请参阅[从其他用户获取 Azure 订阅的计费所有权](mca-request-billing-ownership.md)
 
-### <a name="azure-reservations"></a>Azure 预订
+### <a name="azure-reservations"></a>Azure 预留项
 
 企业协议注册中的任何 Azure 预留项将移到新的计费帐户，而不会更改权益或条款。 在转换之前完成的事务不会出现在新的计费帐户中。 但是，可以通过访问[“Azure 预留项”页](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)来验证预留项权益是否应用于订阅。
 
@@ -221,13 +221,13 @@ ms.locfileid: "75994631"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
 3. 选择 **Microsoft 客户协议**的计费帐户。
 
-4. 在左侧选择“访问控制(IAM)”。
+4. 在左侧选择“访问控制(IAM)”。 
 
    ![显示转换后企业管理员访问权限的屏幕截图](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
@@ -237,13 +237,13 @@ ms.locfileid: "75994631"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
 3. 选择为注册创建的计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在该计费帐户中，选择“计费对象信息”，然后选择计费对象信息。
 
-4. 在左侧选择“访问控制(IAM)”。
+4. 在左侧选择“访问控制(IAM)”。 
 
    ![显示转换后企业管理员访问权限的屏幕截图](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
@@ -253,19 +253,19 @@ ms.locfileid: "75994631"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)。
 
-3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在计费帐户中，选择“计费对象信息”，然后选择“发票科目”。 从发票科目列表中，选择一个发票科目。
+3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在计费帐户中，选择“计费对象信息”  ，然后选择“发票科目”  。 从发票科目列表中，选择一个发票科目。
 
    ![显示转换后的发票科目列表的屏幕截图](./media/mca-setup-account/mca-invoice-sections-post-transition.png)
 
-4. 在左侧选择“访问控制(IAM)”。
+4. 在左侧选择“访问控制(IAM)”。 
 
     ![显示转换后部门和帐户管理员的访问权限的屏幕截图](./media/mca-setup-account/mca-department-account-admins-access-post-transition.png)
 
-企业管理员和部门管理员将作为发票科目所有者或发票科目读取者列出，而部门中的帐户所有者将作为 Azure 订阅创建者列出。 针对所有发票科目重复该步骤，以检查对企业协议注册中所有部门的访问权限。 不属于任何部门的帐户所有者将会获得对名为“默认发票科目”的发票科目的权限。 如果你认为缺少了任何管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
+企业管理员和部门管理员将作为发票科目所有者或发票科目读取者列出，而部门中的帐户所有者将作为 Azure 订阅创建者列出。 针对所有发票科目重复该步骤，以检查对企业协议注册中所有部门的访问权限。 不属于任何部门的帐户所有者将会获得对名为“默认发票科目”的发票科目的权限。  如果你认为缺少了任何管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

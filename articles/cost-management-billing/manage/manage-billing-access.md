@@ -17,10 +17,10 @@ ms.date: 12/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991433"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
@@ -57,19 +57,19 @@ ms.locfileid: "75991433"
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”。
+1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
 
     ![显示选择订阅的屏幕截图](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 选择“发票”，然后选择“访问发票”。
+1. 选择“发票”  ，然后选择“访问发票”  。
 
     ![显示如何委托对发票的访问权限的屏幕截图](./media/manage-billing-access/aa-optin01.png)
 
-1. 选择“启用”，然后进行保存。
+1. 选择“启用”  ，然后进行保存。
 
     ![屏幕截图，显示用于委托对发票的访问权限的开关](./media/manage-billing-access/aa-optinallow01.png)
 
@@ -83,28 +83,28 @@ ms.locfileid: "75991433"
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”。
+1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
 
     ![显示选择订阅的屏幕截图](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. 选择“访问控制 (IAM)”。
-1. 从页面顶部选择“添加”。
+1. 选择“访问控制 (IAM)”  。
+1. 从页面顶部选择“添加”。 
 
     ![显示单击“添加角色分配”的屏幕截图](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. 在“角色”下拉列表中，选择“账单读取者”。
-1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。
+1. 在“角色”  下拉列表中，选择“账单读取者”  。
+1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。 
 1. 选择用户。
-1. 选择“保存”。
+1. 选择“保存”。 
     ![显示单击“添加角色分配”的屏幕截图](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. 片刻之后，为用户分配了订阅的“账单读取者”角色。
 
-如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。
+如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。  
 
 ## <a name="check-the-type-of-your-billing-account"></a>检查计费帐户的类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
@@ -114,6 +114,6 @@ ms.locfileid: "75991433"
 - 其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 有关角色的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

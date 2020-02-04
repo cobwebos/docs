@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: andalmia
 ms.openlocfilehash: 741e7cf0869e36b5788d0a883a4e982caf041512
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995931"
 ---
 # <a name="azure-subscription-states"></a>Azure 订阅状态
 本文描述 Azure 订阅可能具有的各种状态。 在订阅边栏选项卡下，这些状态显示为“状态”。
 
-| 订阅状态 | Description |
+| 订阅状态 | 说明 |
 |-------------| ----------------|
 | **活动** | Azure 订阅处于活动状态。 可以使用此订阅来部署新资源及管理现有资源。|
 | **逾期未付** | Azure 订阅有未结付款。 订阅仍处于活动状态，但如果不支付逾期费用，订阅可能会被禁用。 [处理 Azure 订阅的逾期未付余款。](https://docs.microsoft.com/azure/billing/billing-azure-subscription-past-due-balance) |

@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989418"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解 Azure 外部服务收费
@@ -55,9 +55,9 @@ You can view a list of the external services that are on each subscription withi
 如果你未签订 MCA 或 MPA，则会收到单独的第三方费用发票。 可以按照以下步骤从 Azure 门户查看和下载 Azure 市场发票：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。
-1. 在左侧菜单中，选择“发票”。
-1. 单击 " **Azure Marketplace 和预订**" 选项卡。 ![Azure marketplace 和预订选项卡的图片](./media/understand-azure-marketplace-charges/invoice-tabs.png)
+1. 搜索“成本管理 + 计费”。 
+1. 在左侧菜单中，选择“发票”  。
+1. 单击“Azure 市场和预留”  选项卡。![“Azure 市场和预留”选项卡的图片](./media/understand-azure-marketplace-charges/invoice-tabs.png)
 1. 在“订阅”下拉列表中，选择包含要查看其发票的外部服务的订阅。
 
 ## <a name="external-spending-for-ea-customers"></a>EA 客户的外部支出
@@ -69,10 +69,10 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 购买外部服务时，需要为资源选择 Azure 订阅。 所选 Azure 订阅的付款方式将成为外部服务的付款方式。 若要更改外部服务的付款方式，必须[更改绑定到该外部服务的 Azure 订阅的付款方式](../manage/change-credit-card.md)。 可以通过执行以下步骤来确定外部服务订单所绑定到的订阅：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 单击左侧导航菜单中的“所有资源”。
+1. 单击左侧导航菜单中的“所有资源”  。
      ![“所有资源”菜单项的屏幕截图](./media/understand-azure-marketplace-charges/all-resources.png)
 1. 搜索外部服务。
-1. 在“订阅”列中查找订阅的名称。
+1. 在“订阅”  列中查找订阅的名称。
     ![资源的订阅名称屏幕截图](./media/understand-azure-marketplace-charges/sub-selected.png)
 1. 单击订阅名称，并[更新有效付款方式](../manage/change-credit-card.md)。
 
@@ -98,20 +98,20 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 若要取消外部服务订单，请在 [Azure 门户](https://portal.azure.com)中删除资源。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 单击左侧导航菜单中的“所有资源”。
+1. 单击左侧导航菜单中的“所有资源”  。
     ![“所有资源”菜单项的屏幕截图](./media/understand-azure-marketplace-charges/all-resources.png)
 1. 搜索外部服务。
 1. 选中要删除的资源旁边的框。
-1. 在命令栏中，选择“删除”。
+1. 在命令栏中，选择“删除”  。
     ![“删除”按钮的屏幕截图](./media/understand-azure-marketplace-charges/delete-button.png)
-1. 在“确认”边栏选项卡中键入“是”。
+1. 在“确认”边栏选项卡中键入“是”  。
     ![删除资源](./media/understand-azure-marketplace-charges/delete-resource.PNG)
 1. 单击 **“删除”** 。
 
 ## <a name="check-billing-account-type"></a>检查计费帐户类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

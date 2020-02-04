@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989704"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帐单
@@ -34,18 +34,18 @@ ms.locfileid: "75989704"
 必须是计费对象信息所有者、参与者或发票管理者才能在 Azure 门户中支付账单。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
-1. 在“概述”边栏选项卡中，单击“摘要”选项卡。
+1. 在“成本管理 + 计费”  中进行搜索。
+1. 在“概述”边栏选项卡中，单击“摘要”选项卡。  
 
     ![显示“摘要”选项卡的屏幕截图](./media/pay-bill/billing-account-overview.png)
 
 1. 如果你有到期或逾期未付账单，则会看到应付总金额。
-1. 单击蓝色“立即付款”按钮。
+1. 单击蓝色“立即付款”  按钮。
 
     ![显示“立即付款”按钮的屏幕截图](./media/pay-bill/paynow-button-overview.png)
 
-1. 在新边栏选项卡中，单击“选择付款方式”以选择现有信用卡或添加新信用卡。<!-- screenshot of select payment method link -->
-1. 选择付款方式后，单击“立即付款”。
+1. 在新边栏选项卡中，单击“选择付款方式”  以选择现有信用卡或添加新信用卡。<!-- screenshot of select payment method link -->
+1. 选择付款方式后，单击“立即付款”  。
 
 “账单”边栏选项卡中账单的状态将更新为“已支付”。
 

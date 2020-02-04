@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993045"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>更改 Azure 帐户的个人资料信息
@@ -29,7 +29,7 @@ Microsoft 使用不是帐户管理员的帐户用户的个人资料中的电子�
 ## <a name="change-your-profile-information"></a>更改个人资料信息
 
 1. 登录到 [Azure 帐户中心](https://account.azure.com/subscriptions)。
-1. 选择“编辑详细信息”按钮，并更新“个人资料”信息。
+1. 选择“编辑详细信息”按钮，并更新“个人资料”信息。  
 
    ![Azure 个人资料信息示例](./media/change-azure-account-profile/profile.png)
 
@@ -72,11 +72,11 @@ Microsoft 使用不是帐户管理员的帐户用户的个人资料中的电子�
 
 可以使用以下任一方法更改联系人电子邮件地址：
 
-* 登录到 [Azure 帐户中心](https://account.azure.com/subscriptions)。 选择“编辑详细信息”，然后更新个人资料电子邮件地址。 更新个人资料电子邮件不会更新登录电子邮件地址。
+* 登录到 [Azure 帐户中心](https://account.azure.com/subscriptions)。 选择“编辑详细信息”，然后更新个人资料电子邮件地址。  更新个人资料电子邮件不会更新登录电子邮件地址。
 
 * 转到 Azure 门户中的[联系人信息](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)区域，然后输入电子邮件地址。 你提供的地址用于接收服务和营销通信。 Azure 帐户中心个人资料中的电子邮件地址会更新，以便自动进行匹配。 更新个人资料电子邮件不会更新登录电子邮件地址。
 
-* 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，选择带有你的姓名缩写或图像的图标。 然后，选择上下文菜单（ **...** ）。接下来，从菜单中选择 **"我的联系人信息**"，并输入电子邮件地址。 你提供的地址用于接收服务和营销通信。 Azure 帐户中心个人资料中的电子邮件地址会更新，以便自动进行匹配。 更新个人资料电子邮件不会更新登录电子邮件地址。
+* 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，选择带有你的姓名缩写或图像的图标。 然后，选择上下文菜单 ( **...** )。接下来，从菜单中选择“我的联系人信息”，然后输入电子邮件地址。  你提供的地址用于接收服务和营销通信。 Azure 帐户中心个人资料中的电子邮件地址会更新，以便自动进行匹配。 更新个人资料电子邮件不会更新登录电子邮件地址。
 
 ![在 Azure 中更新电子邮件地址的示例](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -85,7 +85,7 @@ Microsoft 使用不是帐户管理员的帐户用户的个人资料中的电子�
 如果不希望接收营销电子邮件，请执行以下操作：
 
 1. 转到[请求表单](https://account.microsoft.com/profile/permissions-link-request)，使用个人资料电子邮件地址提交一项请求。 你会收到电子邮件发送的链接，可以通过它更新首选项。
-2. 选择该链接，打开“管理通信权限”页。 该页显示电子邮件地址选择加入的营销通信类型。 清除要选择退出的任何主题，然后选择“保存”。
+2. 选择该链接，打开“管理通信权限”页。  该页显示电子邮件地址选择加入的营销通信类型。 清除要选择退出的任何主题，然后选择“保存”。 
 
 ![用于管理通信权限的页面的示例](./media/change-azure-account-profile/manage-communication-permissions.png)
 
@@ -93,12 +93,12 @@ Microsoft 使用不是帐户管理员的帐户用户的个人资料中的电子�
 
 ## <a name="change-the-subscription-name"></a>更改订阅名称
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在左窗格中选择“订阅”，然后选择要重命名的订阅。
-1. 选择“概览”，然后从命令栏中选择“重命名”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在左窗格中选择“订阅”，  然后选择要重命名的订阅。
+1. 选择“概览”，然后从命令栏中选择“重命名”。  
     ![重命名 Azure 订阅的示例](./media/change-azure-account-profile/rename-sub.png)
-1. 更改名称之后，请选择“保存”。
+1. 更改名称之后，请选择“保存”。 
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

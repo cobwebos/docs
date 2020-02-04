@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995723"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>如何应用 Azure Databricks 预购折扣
@@ -31,19 +31,19 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 | --- | --- | --- |
 | 数据分析 | 0.4 | 0.55 |
 | 数据工程 | 0.15 | 0.30 |
-| 数据工程轻量 | 0.07 | 0.22 |
+| 轻量数据工程 | 0.07 | 0.22 |
 
 例如，当使用一定数量的“数据分析 - 标准层”时，预购的 Databricks 提交单位将扣除 0.4 个单位。 例如，当使用一定数量的“轻量数据工程 - 标准层”时，预购的 Databricks 提交单位将扣除 0.07 个单位
 
 ## <a name="determine-plan-use"></a>确定计划使用情况
 
-若要确定 DBCU 计划的使用情况，请转到 Azure 门户>“预留”并单击已购买的 Databricks 计划。 到目前为止的利用率将与任何剩余的单位一起显示。 有关确定预留使用情况的详细信息，请参阅[查看预留使用情况](reservation-apis.md#see-reservation-usage)一文。
+若要确定 DBCU 计划的使用情况，请转到 Azure 门户>“预留”  并单击已购买的 Databricks 计划。 到目前为止的利用率将与任何剩余的单位一起显示。 有关确定预留使用情况的详细信息，请参阅[查看预留使用情况](reservation-apis.md#see-reservation-usage)一文。
 
 ## <a name="how-discount-application-shows-in-usage-data"></a>折扣应用在使用情况数据中的显示方式
 
 当预购折扣应用于 Databricks 使用量时，按需费用在使用情况数据中显示为零。 有关预留成本和使用情况的详细信息，请参阅[获取企业协议预留成本和使用情况](understand-reserved-instance-usage-ea.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

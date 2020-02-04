@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure 发票 | Microsoft Docs
-description: 了解如何阅读并理解 Azure 订阅的用法和计费
+description: 了解如何阅读并理解 Azure 订阅的使用情况和计费
 services: ''
 documentationcenter: ''
 author: bandersmsft
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: e6858d51eec1bbcb100f71418337d74d19d6db5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994722"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
@@ -44,19 +44,19 @@ ms.locfileid: "75994722"
 
 ![发票的帐户信息部分](./media/understand-invoice/account-information-section.png)
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | 客户 PO 号 |可选采购订单号，由你分配用于跟踪 |
-| 发票编号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
+| 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
 | 计费周期 |此发票涵盖的日期范围 |
 | 发票日期 |生成发票的日期，通常是计费周期截止的后一天 |
 | 付款方式 |在帐户中使用的付款类型（“发票”或“信用卡”） |
-| 付款方 |列出的帐户的帐单地址 |
+| 帐单邮寄地址 |列出的帐户的帐单地址 |
 | 订阅套餐（“即用即付”） |购买的订阅套餐的类型（即用即付、BizSpark Plus、Azure Pass 等）。 有关详细信息，请参阅 [Azure 套餐类型](https://azure.microsoft.com/support/legal/offer-details/)。 |
 | 帐户所有者电子邮件地址 | 注册 Microsoft Azure 帐户时使用的帐户电子邮件地址。 <br /><br />如何更改电子邮件地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](../manage/change-azure-account-profile.md)。 |
 
 ### <a name="understand-the-invoice-summary"></a>了解发票汇总
-发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费。
+发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费  。
 
 ![发票摘要部分](./media/understand-invoice/invoice-summary-section.png)
 
@@ -65,16 +65,16 @@ ms.locfileid: "75994722"
 #### <a name="understand-the-previous-charges"></a>了解过去的收费
 发票的前期结余、付款和未付余额部分汇总了上次计费周期之后的交易。
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
-| 上期余额 |上次计费周期中结余的总金额 |
+| 前期结余 |上次计费周期中结余的总金额 |
 | 付款 |应用到上次计费周期的总付款金额和信用额度 |
-| 未清余额（来自上一帐期） |自上个计费周期起帐户中的任何信用额度或剩余余额 |
+| 未付余额（从上一计费周期） |自上个计费周期起帐户中的任何信用额度或剩余余额 |
 
 #### <a name="understand-the-current-charges"></a>了解当前费用
 发票的“当前费用”部分显示有关当前计费周期中每月费用的详细信息。
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | 使用费 |使用费是当前计费周期中，对订阅收取的每月总费用|
 | 折扣 |应用到当前计费周期的服务折扣|
@@ -84,7 +84,7 @@ ms.locfileid: "75994722"
 
 下表介绍发票第二页中显示的买方和付款说明。
 
-| 条款 |Description |
+| 术语 |说明 |
 | --- | --- |
 | 买方 |该帐户上的配置文件地址。 <br/><br/>如果需要更改地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](../manage/change-azure-account-profile.md)。|
 | 付款说明 |关于付款方式的说明（例如通过信用卡或通过发票付款）。 |
@@ -97,14 +97,14 @@ ms.locfileid: "75994722"
 
 下表介绍了显示在发票中的使用费列标题。
 
-| 条款 |Description |
+| 术语 |说明 |
 | --- | --- |
 | 名称 |标识该次使用的最上层服务 |
 | 类型 |定义 Azure 服务类型，该类型可能会影响费率 |
 | 资源 |标识已使用计量的度量单位 |
-| 地区 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
-| 已使用 |计费周期期间使用的计量的量 |
-| 包含 |当前计费周期中免费附送的计量的量 |
+| 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
+| 已耗用 |计费周期期间使用的计量的量 |
+| 附送 |当前计费周期中免费附送的计量的量 |
 | 可计费 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同 |
 | 费率 |为每个可付费单位支付的费率 |
 | 值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
@@ -114,6 +114,6 @@ ms.locfileid: "75994722"
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>如何确定发票中的费用是正确的？
 如果想要更详细地了解发票上的费用，请参阅[了解你的 Microsoft Azure 帐单](review-individual-bill.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

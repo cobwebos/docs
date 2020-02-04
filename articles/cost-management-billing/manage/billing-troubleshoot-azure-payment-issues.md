@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989990"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>排查 Azure 付款问题
@@ -38,7 +38,7 @@ ms.locfileid: "75989990"
 
 若要排查卡被拒绝的问题，请参阅[如何排查卡在进行 Azure 注册时被拒绝的问题](troubleshoot-declined-card.md)。
 
-## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>因存在“无法删除付款方式”错误，无法删除付款方式
+## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>因存在“无法删除付款方式”错误，无法删除付款方式 
 
 发生此错误是由于存在未清余额。 请在删除付款方式之前结清任何未清余额。
 
@@ -50,7 +50,7 @@ ms.locfileid: "75989990"
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>无法为订阅付款
 
-如果收到错误消息： "*付款已过期"。你的付款方式存在问题* *，或者我们很抱歉，无法保存该信息。关闭浏览器并再试一次。* 这张卡上有一个挂起的付款，因为你的金融机构拒绝了该卡。
+如果收到错误消息：“付款已过期。  你的付款方式有问题”或“很抱歉，无法保存信息。  请关闭浏览器，然后再试。”则可能是因为卡上仍有待付款，因为卡被金融机构拒绝过。
 
 请验证信用卡是否有足够的余额来付款。 如果没有足够的余额，请使用其他卡来付款，或者联系你的金融机构解决此问题。
 

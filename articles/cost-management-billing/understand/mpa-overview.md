@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
 ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76122145"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft 合作伙伴协议计费帐户入门
@@ -31,7 +31,7 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 ![显示 Microsoft 合作伙伴协议计费层次结构的关系图](./media/mpa-overview/mpa-hierarchy.svg)
 
-在组织中具有“全局管理员”和“管理员代理”角色的用户可以管理计费帐户、计费对象信息和客户。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
+在组织中具有“全局管理员”和“管理员代理”角色的用户可以管理计费帐户、计费对象信息和客户。   若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 ## <a name="billing-profiles"></a>计费对象信息
 
@@ -55,19 +55,19 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mpa-overview/search-cmb.png)
 
-1. 在左侧选择“客户”，然后从列表中选择一位客户。
+1. 在左侧选择“客户”，然后从列表中选择一位客户。 
 
    ![屏幕截图，显示正在选择客户](./media/mpa-overview/mpa-customers.png)
 
-1. 在左侧选择“策略”。
+1. 在左侧选择“策略”。 
 
    ![显示策略的屏幕截图](./media/mpa-overview/mpa-change-policy.png)
 
-1. 请选择“是”。
+1. 请选择“是”。 
 
 ## <a name="resellers"></a>经销商
 

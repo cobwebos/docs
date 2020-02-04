@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: dfff02c554c94daf1dd7fd844cea461fd76589d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995710"
 ---
 # <a name="automatically-renew-reservations"></a>自动续订预留
@@ -27,11 +27,11 @@ ms.locfileid: "75995710"
 
 ## <a name="set-up-renewal"></a>设置续订
 
-转到 Azure 门户 >“预留”。
+转到 Azure 门户 >“预留”。 
 
 1. 选择该预订。
-2. 单击“续订”。
-3. 选择“在过期后自动购买新预留”。  
+2. 单击“续订”。 
+3. 选择“在过期后自动购买新预留”  。  
   ![显示预留续订的示例](./media/reservation-renew/reservation-renewal.png)
 
 ## <a name="if-you-dont-renew"></a>如果不续订

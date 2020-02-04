@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f3d0c123fcbd16f3a4125ad74f0502863b6ce6d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995255"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 软件计划折扣
@@ -29,9 +29,9 @@ ms.locfileid: "75995255"
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
 ## <a name="review-redhat-vm-usage-before-you-buy"></a>在购买前查看 RedHat VM 使用情况
 
@@ -73,7 +73,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID| 比率| 示例 VM 大小|
 | -------| ------------------------| --- |--- |
-|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|第|D2s_v3|
+|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU|4edcd5a5-8510-49a8-a9fc-c9721f501913|2.6|D8s_v3|
 
@@ -85,7 +85,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- | --- | ------------------------| --- |
-|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|第|D2s_v3|
+|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU |907a85de-024f-4dd6-969c-347d47a1bdff|2.92308|D8s_v3|
 
@@ -99,7 +99,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- | --- |
-|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|第|D2s_v3|
+|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |SLES for SAP Priority 3-4 个 vCPU |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority 5 个及以上的 vCPU |18ae79cd-dfce-48c9-897b-ebd3053c6058|2.41176|D8s_v3|
 
@@ -113,7 +113,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|第|B1ms|
+|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
 |SLES 2-4 个 vCPU |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
 |SLES 2-4 个 vCPU |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
 |SLES 6 个 vCPU |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
@@ -139,7 +139,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|第|D2s_v3|
+|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES 3-4 核 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 个及以上的 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 

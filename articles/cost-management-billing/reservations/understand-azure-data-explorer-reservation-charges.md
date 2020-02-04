@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995619"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解如何将预留折扣应用于 Azure 数据资源管理器
@@ -21,22 +21,22 @@ ms.locfileid: "75995619"
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
 ## <a name="reservation-discount-applied-to-azure-data-explorer-clusters"></a>预留折扣应用于 Azure 数据资源管理器群集
 
 预留折扣按小时应用于 Azure 数据资源管理器加价使用量。 对于非整小时运行的 Azure 数据资源管理器资源，预留折扣会自动应用到与预留属性匹配的其他数据资源管理器资源。 折扣可以应用到同时运行的 Azure 数据资源管理器资源。 如果与预留属性匹配的 Azure 数据资源管理器资源不是整小时运行，则无法获得该小时的完整预留折扣权益。
 
 > [!NOTE]
-> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/windows/prepay-reserved-vm-instances.md)。
+> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/windows/prepay-reserved-vm-instances.md)  。
 > * 购买预留会向所有区域应用折扣。
 
 ## <a name="examples"></a>示例
 
 以下示例演示如何根据购买的加价单位及其运行时间来应用 Azure 数据资源管理器预留容量折扣。
-例如，对于引擎群集大小： **2 D11_v2 vm**，按需计费的总费用为每小时 Azure 数据资源管理器标记计量的四个单位。 
+例如，引擎群集大小为2 个 D11_v2 VM 时，按需计费的总费用为每小时四个单位的 Azure 数据资源管理器加价计价器  。 
 
 **应用场景 1** 
 

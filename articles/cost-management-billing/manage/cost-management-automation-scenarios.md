@@ -14,10 +14,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c9de7d5f7661e4083d3a2f5b53368616d0e6655a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992811"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
@@ -28,17 +28,17 @@ ms.locfileid: "75992811"
 
 可以在多种方案中使用计费和成本管理 API 来解答与费用和使用情况相关的问题。 下面概述了常见方案：
 
-- **发票对帐**： Microsoft 是否会向我收取正确的金额？  我的帐单情况如何？能否自行计算？
+- **发票对帐**：Microsoft 对我的收费是否正确？  我的帐单情况如何？能否自行计算？
 
-- **交叉费用**：现在，我知道我要支付多少费用，我组织中的哪些人需要支付？
+- **交叉记帐**：既然我已知道费用有多少，需由组织中的谁来付费？
 
-- **成本优化**：我知道我已经收费了多少。 如何才能更充分地利用我的 Azure 投资？
+- **成本优化**：我已知道自己的费用。 如何才能更充分地利用我的 Azure 投资？
 
-- **成本跟踪**：我想要查看我在一段时间内的支出和使用量。 其趋势如何？ 如何才能改进？
+- **成本跟踪**：我想要了解自己在一段时间内的支出情况和 Azure 使用情况。 其趋势如何？ 如何才能改进？
 
-- **每月的 Azure 支出**：目前本月的支出支出是多少？ 我是否需要对自己的 Azure 开销和/或使用情况进行更改？ 这个月的哪个时间我使用 Azure 最多？
+- **本月 Azure 支出**：我的本月至今累计支出是多少？ 我是否需要对自己的 Azure 开销和/或使用情况进行更改？ 这个月的哪个时间我使用 Azure 最多？
 
-- **警报**：如何设置基于资源的消耗或基于资金的警报？
+- **警报**：如何设置基于资源的消耗警报或基于资金的警报？
 
 ## <a name="scenario-to-api-mapping"></a>方案到 API 的映射
 
@@ -64,43 +64,43 @@ ms.locfileid: "75992811"
 ### <a name="consumption"></a>消耗
 除非另有说明，否则 Web 直连客户和企业客户可使用下面的所有 API：
 
--   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets) （*仅适用于企业客户*）：创建资源、资源组或计费计量的成本或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
+-   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets)（仅限企业客户  ）：创建资源、资源组或计费计量的成本预算或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
 
--   [Marketplace 费用 API](https://docs.microsoft.com/rest/api/consumption/marketplaces)：获取所有 azure Marketplace 资源的费用和使用情况数据（azure 合作伙伴产品/服务）。 使用此数据，可以计算所有市场资源的费用总和，也可以调查特定资源的费用/使用情况。
+-   [市场费用 API](https://docs.microsoft.com/rest/api/consumption/marketplaces)：获取所有 Azure 市场资源（Azure 合作伙伴产品/服务）的费用和使用情况数据。 使用此数据，可以计算所有市场资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) （*仅适用于企业客户*）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。
+-   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet)（仅限企业客户  ）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。
 
--   [预订建议 API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)：获取有关采购保留 VM 实例的建议。 建议有助于分析预期费用节省情况和购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
+-   [预留建议 API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)：获取与购买虚拟机预留实例相关的建议。 建议有助于分析预期费用节省情况和购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
 
--   [预订详细信息 API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails)：查看以前购买的 VM 预留信息，例如保留的消耗量与使用量。 可以按 VM 级别详细程度查看数据。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
+-   [预留详细信息 API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails)：查看以前购买的虚拟机预留实例的相关信息，如预留消耗与实际使用量。 可以按 VM 级别详细程度查看数据。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
 
--   [预订摘要 API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries)：有关组织购买的 VM 预留的聚合信息，如保留的消耗量与聚合中使用的量相同。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
+-   [预留摘要 API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries)：查看组织购买的虚拟机预留实例的汇总信息，如汇总形式的预留消耗与实际使用量。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
 
--   [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails)：从 Microsoft 获取有关所有 Azure 资源的费用和使用情况信息。 信息采用使用情况详细信息记录的形式，这些记录目前会每天按计量发出。 使用此信息，可以计算所有资源的费用总和，也可以调查特定资源的费用/使用情况。
+-   [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails)：从 Microsoft 获取所有 Azure 资源的费用和使用情况信息。 信息采用使用情况详细信息记录的形式，这些记录目前会每天按计量发出。 使用此信息，可以计算所有资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--   [RATECARD API](/previous-versions/azure/reference/mt219005(v=azure.100))：获得计量速率（如果你是 Web 直销客户）。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100))：如果你是 Web 直连客户，可获取计量费率。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。
 
--   未[分级的使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100))： Azure 执行任何计量/充电之前，获取原始使用情况信息。
+-   [未计费的使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100))：获取在 Azure 进行任何计量/计费前的原始使用情况信息。
 
 ### <a name="billing"></a>计费
--   [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：确定要分析的计费周期，以及该时间段的发票 id。 可以将发票 ID 与发票 API 结合使用。
+-   [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：确定要分析的计费周期，以及此周期的发票 ID。 可以将发票 ID 与发票 API 结合使用。
 
--   [发票 API](/rest/api/billing/2019-10-01-preview/invoices)：以 PDF 格式获取计费期间发票的下载 URL。
+-   [发票 API](/rest/api/billing/2019-10-01-preview/invoices)：获取计费周期的发票（PDF 格式）的下载 URL。
 
 ### <a name="enterprise-consumption"></a>企业使用情况
 以下 API 仅适用于企业：
 
--   [余额摘要 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)：获取有关余额、新购买、Azure Marketplace 服务费用、调整和超额费用信息的每月摘要。 可以获取当前计费周期或过去的任何计费周期的此信息。 企业可以使用此数据，与手动计算的汇总费用进行比较。 此 API 不提供特定于资源的信息或成本的聚合视图。
+-   [余额摘要 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)：获取关于余额、新购买、Azure 市场服务费用、调整和超额费用的每月信息摘要。 可以获取当前计费周期或过去的任何计费周期的此信息。 企业可以使用此数据，与手动计算的汇总费用进行比较。 此 API 不提供特定于资源的信息或成本的聚合视图。
 
--   [使用情况详细信息 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)：获取当前月、特定计费周期或自定义日期段的 Azure 使用情况（Microsoft 产品/服务）的相关信息。 使用此数据，企业可以根据费率和消耗来手动计算帐单。 企业还可以使用部门/组织信息来跨组织确定费用出处。 可以根据这些数据按资源查看使用情况/成本。
+-   [使用情况详细信息 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)：获取当前月份、特定计费周期或自定义日期段的（Microsoft 产品/服务）Azure 使用情况相关信息。 使用此数据，企业可以根据费率和消耗来手动计算帐单。 企业还可以使用部门/组织信息来跨组织确定费用出处。 可以根据这些数据按资源查看使用情况/成本。
 
--   [Marketplace 应用商店费用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)：获取有关当前月、特定计费周期或自定义日期段的 Azure 使用情况（合作伙伴产品/服务）的信息。 使用此数据，企业可以根据费率和消耗来手动计算帐单。 企业还可以使用部门/组织信息来跨组织确定费用出处。 此 API 提供资源专用使用情况/费用视图。
+-   [市场存储费用 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)：获取当前月份、特定计费周期或自定义日期段的（合作伙伴产品/服务）Azure 使用情况相关信息。 使用此数据，企业可以根据费率和消耗来手动计算帐单。 企业还可以使用部门/组织信息来跨组织确定费用出处。 此 API 提供资源专用使用情况/费用视图。
 
 -   [价目表 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)：获取给定注册和计费周期的每个计量的适用费率。 可以将此费率信息与使用情况详细信息和市场使用情况信息相结合，从而手动计算预期帐单。
 
--   [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：获取计费周期列表。 该 API 还提供了一个属性，该属性指向适用于计费周期的四个企业 API 数据集的 API 路由： BalanceSummary、UsageDetails、Marketplace 费用和价目表。
+-   [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：获取一系列计费周期。 此 API 还提供一个属性，指向四组与计费周期相关的企业 API 数据的 API 路由：BalanceSummary、UsageDetails、MarketplaceCharges 和 PriceSheet。
 
--   [保留实例建议 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)：查看7天、30天或60天的虚拟机使用率，并获得单个和共享的购买建议。 使用此 API，可以分析预期费用节省情况和建议的购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
+-   [预留实例建议 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)：查看 7 天、30 天或 60 天的虚拟机使用情况，并获取单一购买和共享购买建议。 使用此 API，可以分析预期费用节省情况和建议的购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -114,7 +114,7 @@ ms.locfileid: "75992811"
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>使用情况详细信息 API 与使用情况 API 有何区别？
 这些 API 提供本质不同的数据：
 
-- [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails)提供每个计量实例的 Azure 使用情况和成本信息。 提供的数据已通过 Azure 成本计量系统进行传递，其中已应用费用和其他可能的更改：
+- [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails) 提供每个计量实例的 Azure 使用情况和成本信息。 提供的数据已通过 Azure 成本计量系统进行传递，其中已应用费用和其他可能的更改：
 
    - 用于预付货币承诺款项的帐户的更改
    - Azure 发现的用量差异帐户的更改

@@ -1,5 +1,5 @@
 ---
-title: Microsoft 客户协议中的 EA 任务-Azure
+title: Microsoft 客户协议中的 EA 任务 - Azure
 description: 了解如何在新的计费帐户中完成企业协议任务。
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991238"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>完成 Microsoft 客户协议计费帐户中的企业协议任务
@@ -80,7 +80,7 @@ ms.locfileid: "75991238"
 
 ### <a name="add-an-additional-enterprise-administrator"></a>添加其他企业管理员
 
-为用户授予对计费配置文件的访问权限可让他们查看和管理组织的帐单。 可以使用 Azure 门户中的“访问控制(IAM)”页来授予访问权限。  若要详细了解计费配置文件角色，请参阅[计费配置文件角色和任务](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+为用户授予对计费配置文件的访问权限可让他们查看和管理组织的帐单。 可以使用 Azure 门户中的“访问控制(IAM)”页来授予访问权限。   若要详细了解计费配置文件角色，请参阅[计费配置文件角色和任务](understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 若要了解如何提供对计费配置文件的访问权限，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "75991238"
 
 ### <a name="add-an-additional-department-administrator"></a>添加其他部门管理员
 
-将为企业协议中的每个部门创建一个发票科目。 可以使用 Azure 门户中的“访问控制(IAM)”页为其他人授予查看和管理发票科目的访问权限。 若要详细了解发票科目角色，请参阅[发票科目角色和任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+将为企业协议中的每个部门创建一个发票科目。 可以使用 Azure 门户中的“访问控制(IAM)”页为其他人授予查看和管理发票科目的访问权限。  若要详细了解发票科目角色，请参阅[发票科目角色和任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
 若要了解如何提供对发票科目的访问权限，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 

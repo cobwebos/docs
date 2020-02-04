@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 8e083391a04188345143f8fdf9a5a945abcd9eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994280"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>将 Azure 订阅更改为其他套餐
 
 作为拥有[采用即用即付费率的个人订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)的客户，你可以在[帐户中心](https://account.windowsazure.com/Subscriptions)将 Azure 订阅切换到其他套餐。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
-只想从免费试用版升级？ 请参阅[升级订阅](upgrade-azure-subscription.md)。
+只想从免费试用版升级  ？ 请参阅[升级订阅](upgrade-azure-subscription.md)。
 
 ## <a name="whats-supported"></a>支持的操作：
 
@@ -48,7 +48,7 @@ ms.locfileid: "75994280"
 
 1. 在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)登录。
 1. 选择采用即用即付费率的个人订阅。
-1. 单击“切换到其他套餐”。 仅当具有采用即用即付费率的的个人订阅并已完成第一个计费周期时，此选项才可用。
+1. 单击“切换到其他套餐”  。 仅当具有采用即用即付费率的的个人订阅并已完成第一个计费周期时，此选项才可用。
 
    ![请注意页面右侧的“切换套餐”按钮](./media/switch-azure-offer/switchbutton.png)
 1. 从订阅可以切换到的套餐的列表中**选择所需套餐**。 此列表因帐户的关联成员资格而异。 如果没有任何可用的产品/服务，请检查 [可以切换到的可用产品/服务的列表](#whats-supported)，并确保具有合适的成员身份。
@@ -57,7 +57,7 @@ ms.locfileid: "75994280"
 1. 根据要切换到的产品/服务，可能会看到一条有关切换所造成的影响的备注。 继续操作之前，请仔细查看此列表并遵循相关说明。
 
    ![查看说明](./media/switch-azure-offer/thingstonote.png)
-1. 可以重命名订阅。 默认设置为新的产品/服务名称。 单击“切换套餐”以完成该过程。
+1. 可以重命名订阅。 默认设置为新的产品/服务名称。 单击“切换套餐”  以完成该过程。
 
    ![单击绿色按钮](./media/switch-azure-offer/confirmpage.png)
 1. 成功！ 订阅现在已经切换到新的套餐。
@@ -73,7 +73,7 @@ Azure 套餐是用户拥有的 Azure 订阅*类型*。 例如，[采用即用即
 
 ### <a name="why-dont-i-see-the-button"></a>为什么我看不到按钮？
 
-在以下情况下，可能看不到“切换到其他套餐”选项：
+在以下情况下，可能看不到“切换到其他套餐”选项： 
 
 * 你没有[采用即用即付费率的订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。 目前，只有采用即用即付费率的订阅才能转换为其他套餐。
   * 如果使用的是[免费试用版](https://azure.microsoft.com/free/)，请了解如何[升级到即用即付](upgrade-azure-subscription.md)。
@@ -111,7 +111,7 @@ Azure 套餐是用户拥有的 Azure 订阅*类型*。 例如，[采用即用即
 * 可以迁移直接将资源迁移到新订阅，具体请参阅[将资源移到新资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 * 要将 Azure 订阅的所有权及其包含的所有内容转让给其他某人，请参阅[转让 Azure 订阅的所有权](billing-subscription-transfer.md)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

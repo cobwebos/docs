@@ -12,17 +12,17 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991329"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>跟踪 Microsoft 客户协议的 Azure 额度余额
 
-可以在 Azure 门户中或通过 REST Api 查看计费帐户的 Azure 信用额度。
+可以通过 Azure 门户或 REST API 查看 Microsoft 客户协议的计费帐户的 Azure 额度余额。
 
-在 Microsoft 客户协议的计费帐户中，额度分配给计费对象信息。 每个计费配置文件都有自己的信用额度，自动应用于发票上的费用。 若要查看计费对象信息的 Azure 额度余额，你必须在计费对象信息上有所有者、参与者、读者或发票管理者角色，或者必须在计费帐户上有所有者、参与者或读者角色。 若要详细了解这些角色，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](understand-mca-roles.md)。
+在 Microsoft 客户协议的计费帐户中，额度分配给计费对象信息。 每个计费对象信息都有其自己的额度，这些额度自动应用到其发票上的费用。 若要查看计费对象信息的 Azure 额度余额，你必须在计费对象信息上有所有者、参与者、读者或发票管理者角色，或者必须在计费帐户上有所有者、参与者或读者角色。 若要详细了解这些角色，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](understand-mca-roles.md)。
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -32,44 +32,44 @@ ms.locfileid: "75991329"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
     ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. 在 "计费范围" 页上，选择要跟踪其信用余额的计费帐户。 计费帐户的类型应为 " **Microsoft 客户协议**"。
+3. 在计费范围页中，选择要跟踪其额度余额的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。
 
     ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure 门户会记住你访问的最后一个计费范围，并在下一次转到 "成本管理 + 计费" 页时显示范围。 如果你之前访问过成本管理 + 计费，你将看不到 "计费范围" 页。 如果是这样，请检查您是否在[正确的范围内](#check-access-to-a-microsoft-customer-agreement)。 如果没有，请[切换此范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，为 Microsoft 客户协议选择计费帐户。
+    > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-access-to-a-microsoft-customer-agreement)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
 
-3. 选择左侧的 "**付款方式**"，然后选择 " **Azure 额度**"。
+3. 在左侧选择“付款方式”，然后选择“Azure 额度”。  
 
-   ![计费配置文件的信用余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![计费对象信息的额度余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
-4. Azure 信用额度页包含以下部分：
+4. “Azure 额度”页包含以下部分：
 
    #### <a name="balance"></a>Balance
 
-   "余额" 部分显示 Azure 信用余额的摘要。
+   余额部分显示 Azure 额度余额的摘要。
 
-   ![计费配置文件的信用余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
+   ![计费对象信息的额度余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
 
-   | 条款               | 定义                           |
+   | 术语               | 定义                           |
    |--------------------|--------------------------------------------------------|
    | 估计余额  | 在考虑所有计费交易和挂起交易后估算出的额度金额 |
    | 当前余额    | 自上次发票以来的额度金额。 它不包括任何挂起交易。 |
 
    当预估的余额降到 0 时，所有使用量都收费，包括对符合额度要求的产品收费。
 
-   #### <a name="credits-list"></a>信用额度列表
+   #### <a name="credits-list"></a>额度列表
 
-   信用额度列表部分显示 Azure 额度列表。
+   额度列表部分显示 Azure 额度的列表。
 
    ![计费对象信息的额度列表的屏幕截图](./media/mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | 条款 | 定义 |
+   | 术语 | 定义 |
    |---|---|
    | 源 | 额度的获取源 |
    | 开始日期 | 获得额度的日期 |
@@ -80,24 +80,24 @@ ms.locfileid: "75991329"
 
    #### <a name="transactions"></a>事务
 
-   "事务" 部分显示影响信用额度的所有事务。
+   交易部分显示影响额度余额的所有交易。
 
-   ![计费配置文件的信用交易的屏幕截图](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
+   ![计费对象信息的额度交易的屏幕截图](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
 
-   | 条款 | 定义 |
+   | 术语 | 定义 |
    |---|---|
-   | 交易日期 | 事务发生的日期 |
-   | Description | 事务的说明 |
-   | 总量| 交易额 |
+   | 交易日期 | 交易发生日期 |
+   | 说明 | 交易说明 |
+   | 金额| 交易额 |
    | Balance | 交易后的余额 |
 
     > [!NOTE]
     >
-    > 如果在 "付款方式" 页中看不到 "Azure 信用额度"，则可能是因为没有信用额度或未选择正确的作用域。 选择包含贷方或其某个计费配置文件的计费帐户。 若要了解如何更改作用域，请参阅[在 Azure 门户中切换计费范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
+    > 如果在付款方式页中看不到 Azure 额度，则可能是因为没有额度或未选择正确的范围。 选择包含额度或包含其计费对象信息之一的计费帐户。 若要了解如何更改范围，请参阅[在 Azure 门户中切换计费范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
 
-5. 如果正在帐单帐户范围内查看 Azure 信用额度，而计费帐户包含多个计费配置文件，则 "Azure 信用额度" 页将显示一个表，其中包含每个计费配置文件的 Azure 信用额度。 从列表中选择一个计费配置文件，选择 "付款方式"，然后选择 "Azure 额度" 查看计费配置文件的详细信息。
+5. 如果在计费帐户范围内查看 Azure 额度，而计费帐户包含多个计费对象信息，则“Azure 额度”页会显示一个表，其中汇总了每个计费对象信息的 Azure 额度。 从列表中选择一个计费对象信息，选择付款方式，然后选择 Azure 额度，以便查看计费对象信息的详细信息。
 
-    ![计费帐户的信用列表的屏幕截图](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
+    ![计费帐户的额度列表的屏幕截图](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
 ### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
 
@@ -154,11 +154,11 @@ API 响应返回一个列表，其中包含计费帐户及其计费对象信息�
 }
 ```
 
-使用计费配置文件的 `displayName` 属性来标识要检查其信用额度的计费配置文件。 复制计费对象信息的 `id`。 例如，如果需要检查“开发”计费对象信息的额度余额，可复制 ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```。 将该值粘贴到某个位置，以便在下一步使用它。
+使用计费对象信息的 `displayName` 属性来标识需要检查其额度余额的计费对象信息。 复制计费对象信息的 `id`。 例如，如果需要检查“开发”  计费对象信息的额度余额，可复制 ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```。 将该值粘贴到某个位置，以便在下一步使用它。
 
 ### <a name="get-azure-credit-balance"></a>获取 Azure 额度余额
 
-发出以下请求，将 `<billingProfileId>` 替换为在第一个步骤中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```）。
+发出以下请求，将 `<billingProfileId>` 替换为在第一步复制的 `id` (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```)。
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -199,7 +199,7 @@ API 响应返回计费对象信息的估算余额和当前余额。
 }
 ```
 
-| 元素名称  | Description                                                                           |
+| 元素名称  | 说明                                                                           |
 |---------------|---------------------------------------------------------------------------------------|
 | `estimatedBalance` | 在考虑所有计费交易和挂起交易后估算出的额度金额。 |
 | `currentBalance`   | 自上次发票以来的额度金额。 它不包括任何挂起交易。    |
@@ -209,7 +209,7 @@ API 响应返回计费对象信息的估算余额和当前余额。
 
 ### <a name="get-list-of-credits"></a>获取额度列表
 
-发出以下请求，将 `<billingProfileId>` 替换为在第一个步骤中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```）。
+发出以下请求，将 `<billingProfileId>` 替换为在第一步复制的 `id` (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```)。
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -262,7 +262,7 @@ API 响应返回计费对象信息的 Azure 额度列表。
   ]
 }
 ```
-| 元素名称  | Description                                                                                               |
+| 元素名称  | 说明                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `originalAmount` | 原始额度金额。 |
 | `closedBalance`   | 自上次发票以来的余额。    |
@@ -273,7 +273,7 @@ API 响应返回计费对象信息的 Azure 额度列表。
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>获取影响了额度余额的交易
 
-发出以下请求，将 `<billingProfileId>` 替换为在第一个步骤中复制的 `id` （```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```）。 需传递 **startDate** 和 **endDate** 才能获取所需期间的交易。
+发出以下请求，将 `<billingProfileId>` 替换为在第一步复制的 `id` (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```)。 需传递 **startDate** 和 **endDate** 才能获取所需期间的交易。
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
@@ -350,7 +350,7 @@ API 响应返回影响了计费对象信息的额度余额的所有交易。
   ]
 }
 ```
-| 元素名称  | Description                                                                                               |
+| 元素名称  | 说明                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `transactionDate` | 交易发生日期。 |
 | `description` | 交易说明。 |

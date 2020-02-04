@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989743"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft 合作伙伴协议发票中的术语
@@ -26,36 +26,36 @@ ms.locfileid: "75989743"
 
 下列部分列出了发票上显示的重要术语，并提供了每个术语的说明。
 
-## <a name="billing-period"></a>计费期间
+## <a name="billing-period"></a>计费周期
 
-每月开票一次。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。
+每月开票一次。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。 
 
 ## <a name="invoice-summary"></a>发票摘要
 
-“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。
+“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。 
 
 <!-- add screenshot -->
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | 买方 |法律实体的地址，位于计费帐户属性中|
-| 付款方 |接收发票的计费对象信息的帐单地址，位于计费对象信息属性中|
+| 帐单邮寄地址 |接收发票的计费对象信息的帐单地址，位于计费对象信息属性中|
 | 计费对象信息 |接收发票的计费对象信息的名称 |
 | P.O. 数字 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
 | 发票日期 |生成发票的日期，通常是计费周期截止后的 5 到 12 天。 可以在计费对象信息属性中查看发票日期。|
-| 付款条款 |如何支付 Microsoft 账单。 “净 60 天”是指在开票日期后的 60 天内付款。 |
+| 付款条款 |如何支付 Microsoft 账单。 “净 60 天”是指在开票日期后的 60 天内付款。  |
 
 ## <a name="billing-summary"></a>计费摘要
 
-“计费摘要”显示自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
+“计费摘要”显示  自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
 
 <!-- add screenshot -->
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | Charges|自上次计费周期以来针对此计费对象信息收取的 Microsoft 费用总数目 |
-| 额度 |从退货收到的额度 |
+| 致谢 |从退货收到的额度 |
 | 已应用的 Azure 额度 | 每个计费周期自动应用到 Azure 费用的 Azure 额度 |
 | 小计 |应付的税前金额 |
 | 税款 |需支付的税款的类型和金额，具体取决于计费对象信息的国家/地区。 如果不需缴税，则发票上看不到税款。 |
@@ -77,7 +77,7 @@ ms.locfileid: "75989743"
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>检查对 Microsoft 合作伙伴协议的访问权限
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

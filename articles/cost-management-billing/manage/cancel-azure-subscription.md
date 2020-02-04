@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e4ce97b69250d8af4c94e8eed8df9c9497e0bb46
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993071"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
@@ -36,7 +36,7 @@ ms.locfileid: "75993071"
 
 1. 从 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。
 2. 选择要取消的订阅。
-3. 选择“概述”，然后选择“取消订阅”。
+3. 选择“概述”，然后选择“取消订阅”   。
     ![显示“取消”按钮的屏幕截图](./media/cancel-azure-subscription/cancel_ibiza.png)
 3. 按照提示进行操作并完成取消。
 
@@ -66,6 +66,6 @@ ms.locfileid: "75993071"
 
 如果你的订阅不是采用即用即付费率的订阅，可在取消后的 90 天内联系支持人员来重新激活订阅。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

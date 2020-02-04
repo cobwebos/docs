@@ -1,5 +1,5 @@
 ---
-title: 为具有保留容量的 Azure App Service 保存
+title: 通过预留容量为 Azure 应用服务节省费用
 description: 了解如何通过预留容量节省 Azure 独立应用服务印花费。
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995879"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>通过预留容量节省 Azure 独立应用服务印花费
@@ -35,30 +35,30 @@ ms.locfileid: "75995879"
 
 因此，印花计量可以在印花生存期中在 Windows 和 Linux 之间来回变换。
 
-如果印花上有一个或多个 Windows 辅助角色，请购买 Windows 印花预留。 只购买 Linux 印花预留的前提是计划只在印花上部署 Linux 辅助角色。
+如果印花上有一个或多个 Windows 辅助角色，请购买 Windows 印花预留。 只购买 Linux 印花预留的前提是计划只  在印花上部署 Linux 辅助角色。
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>购买独立印花预留容量
 
 可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)中购买独立印花预留容量。 通过[提前付款或按月付款](monthly-payments-reservations.md)的方式为预留付款。 若要购买预留容量，你必须拥有至少一个企业订阅的所有者角色，或者拥有使用即用即付费率的单个订阅的所有者角色。
 
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项。 或者，如果禁用了该设置，则必须是 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 或者，如果禁用了该设置，则必须是 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据仓库预留容量。
 
 **若要进行购买，请执行以下操作：**
 
 1. 转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)。
-1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。 将向订阅的付款方式收取预留容量的费用。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或即用即付（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 MS-bc-op-nt-azr-0023P）或 CSP 订阅。
+1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）或 CSP 订阅。
     - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
     - 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。
-1. 选择“范围”，以便选择订阅范围。
+1. 选择“范围”，以便选择订阅范围。 
     - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
     - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
     - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
-1. 选择“区域”，以便选择一个预留容量涵盖的 Azure 区域，然后将预留添加到购物车。
-1. 选择一个独立计划类型，然后单击“选择”。  
+1. 选择“区域”，以便选择一个  预留容量涵盖的 Azure 区域，然后将预留添加到购物车。
+1. 选择一个独立计划类型，然后单击“选择”。   
     ![示例 ](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. 输入要预留的独立应用服务印花的数量。 例如，输入数量 3 即可每个区域获得 3 个预留印花。 单击 "**下一步：查看 + 购买**"。
-1. 检查信息，并单击“立即购买”。
+1. 输入要预留的独立应用服务印花的数量。 例如，输入数量 3 即可每个区域获得 3 个预留印花。 单击“下一步:  查看 + 购买”。
+1. 检查信息，并单击“立即购买”。 
 
 购买后，转到[预留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，查看购买状态并随时对其进行监视。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995866"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
@@ -31,7 +31,7 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 | --- | --- | --- |
 | 数据分析 | 0.4 | 0.55 |
 | 数据工程 | 0.15 | 0.30 |
-| 数据工程轻量 | 0.07 | 0.22 |
+| 轻量数据工程 | 0.07 | 0.22 |
 
 例如，当使用一定数量的“数据分析 - 标准层”时，预购的 Databricks 提交单位将扣除 0.4 个单位。
 
@@ -41,15 +41,15 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 
 可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)中购买 Databricks 计划。 若要购买预留容量，你必须拥有至少一个企业订阅的“所有者”角色。
 
-- 对于至少一个企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或 Microsoft 客户协议，或者使用即用即付费率（产品/服务，-bc-op-nt-azr 或-ms-azr-0003p），必须拥有一个所有者角色。
-- 对于 EA 订阅，必须在 EA 门户中启用 "添加保留实例" 选项。 或者，如果禁用此设置，则必须是订阅的 EA 管理员。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 你必须在至少一个企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）或 Microsoft 客户协议或采用即用即付费率的个人订阅中担任所有者角色（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）。
+- 对于 EA 订阅，必须在 EA 门户中启用“添加预留实例”选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 
 **若要进行购买，请执行以下操作：**
 
 1. 转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。
-1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。 将向订阅的付款方式收取预留容量的前期成本。 从注册的货币承诺余额中扣除费用或作为超额收取费用。
-1. 选择一个范围。 使用“范围”列表来选择订阅范围：
+1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的前期成本。 从注册的货币承诺余额中扣除费用或作为超额收取费用。
+1. 选择一个范围。 使用“范围”列表来选择订阅范围： 
     - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
     - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
     - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。
@@ -71,7 +71,7 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 
 Databricks 预购计划不支持取消和交换操作。 所有购买都是最终购买。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

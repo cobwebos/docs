@@ -13,10 +13,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990016"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure for Students 订阅？如何重新激活它？
@@ -34,15 +34,15 @@ Azure for Students 帐户提供 100 美元的信用额度，以及 12 个月的�
 
     ![屏幕截图，显示 Azure for Students 订阅的信用额度信息](./media/azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”，然后选择 Azure for Students 订阅。
+3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”  ，然后选择 Azure for Students 订阅。
 
     ![屏幕截图，显示 Azure for Students 信用额度的使用情况信息](./media/azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 
 该表包含以下列：
 
-* **服务名称：** 使用 Azure 信用额度的服务。
+* **服务名称：** 使用 Azure 额度的服务。
 * **服务资源：** 所使用的服务的度量单位。
-* **花费：** 服务所用的信用额度量（以美元 ($) 为单位）。
+* **花费：** 服务所用的额度量（以美元 ($) 为单位）。
 
 ## <a name="your-credit-has-expired"></a>信用额度已过期
 
@@ -52,6 +52,6 @@ Azure for Students 信用额度在 12 个月末到期。 信用额度到期后�
 
 如果已意外取消了面向学生的 Azure 订阅，可以通过联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)重新激活它。 重新激活后，仍可以使用剩余的信用额度和 12 个月的免费服务（从注册日期算起）。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

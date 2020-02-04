@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990055"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
@@ -43,7 +43,7 @@ ms.locfileid: "75990055"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧的导航区域中，选择“所有服务”。
+2. 在左侧的导航区域中，选择“所有服务”  。
 
 3.  选择 **订阅**。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75990055"
 
 免费服务及用量到期后，会按即用即付费率对所有使用中的服务收取费用。 Azure 门户可用于删除未使用的服务的资源。 如果不打算使用任何 Azure 服务，则可以[取消订阅](cancel-azure-subscription.md)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

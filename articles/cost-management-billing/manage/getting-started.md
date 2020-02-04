@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991472"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
@@ -76,13 +76,13 @@ ms.locfileid: "75991472"
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
-2. 单击屏幕左侧的“成本分析”，按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](../costs/understand-work-scopes.md#scopes)
+2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](../costs/understand-work-scopes.md#scopes)
 
     ![Azure 门户中成本分析视图的屏幕截图](./media/getting-started/cost-analysis.png)
 
-4. 可按各种属性（例如标记、资源类型和时间跨度）进行筛选。 单击“添加筛选器”，添加某个属性的筛选器，然后选择要筛选的值。 选择“导出”，将视图导出为逗号分隔值 (.csv) 文件。
+4. 可按各种属性（例如标记、资源类型和时间跨度）进行筛选。 单击“添加筛选器”，添加某个属性的筛选器，然后选择要筛选的值。  选择“导出”  ，将视图导出为逗号分隔值 (.csv) 文件。
 
-5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 对于 ex：在下面的屏幕截图中，单击 "虚拟机" 将显示运行 Vm 的每日费用。
+5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 例如：在下面的屏幕截图中，单击虚拟机将显示运行 VM 的每日成本。
 
     ![Azure 门户中费用历史记录视图的屏幕截图](./media/getting-started/costhistory.png)
 
@@ -103,11 +103,11 @@ ms.locfileid: "75991472"
 
 ### <a name="turn-on-and-review-azure-advisor-recommendations"></a>启用和查看 Azure 顾问建议
 
-[Azure 顾问](../../advisor/advisor-overview.md)可帮助你识别很少使用的资源，以此降低成本。 在 Azure 门户中搜索“顾问”：
+[Azure 顾问](../../advisor/advisor-overview.md)可帮助你识别很少使用的资源，以此降低成本。 在 Azure 门户中搜索“顾问”  ：
 
 ![Azure 门户中的 Azure 顾问按钮的屏幕截图](./media/getting-started/advisor-button.png)
 
-在左侧选择“成本”。 此时会在“成本”选项卡中显示可行的建议：
+在左侧选择“成本”。  此时会在“成本”选项卡中显示可行的建议： 
 
 ![顾问成本建议示例的屏幕截图](./media/getting-started/advisor-action.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "75991472"
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA、CSP 和赞助客户
 请咨询帐户管理员或 Azure 合作伙伴以开始使用。
 
-| 产品 | 资源 |
+| 产品/服务 | 资源 |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | 企业协议 (EA) | [EA 门户](https://ea.azure.com/)、[帮助文档](https://ea.azure.com/helpdocs)和[ Power BI 报表](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | 云解决方案提供商 (CSP) | 咨询提供商 |
@@ -145,7 +145,7 @@ ms.locfileid: "75991472"
 - 如果未看到成本，可能是以下几种原因之一所致：
     - 你在订阅级别没有权限。 若要查看企业成本视图，必须在订阅级别是账单读者、读者、参与者或所有者。
     - 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  请联系你的注册管理员以获取费用访问权限。
-    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。  请联系你的注册管理员以获取访问权限。
+    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。   请联系你的注册管理员以获取访问权限。
     - 你是从某个渠道合作伙伴购买的 Azure，而该合作伙伴未发布定价信息。  
 - 如果在企业门户中更新与成本、访问相关的设置，则更改过几分钟后才会显示在 Azure 门户中。
 - 支出限制和发票指南不适用于 EA 订阅。
@@ -162,16 +162,16 @@ ms.locfileid: "75991472"
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>请求服务事件的服务级别协议额度
 
-服务级别协议 (SLA) 描述 Microsoft 关于运行时间和连接性方面的承诺。 当 Azure 服务遇到影响运行时间或连接的问题（通常称为“服务中断”）时，会报告一个服务事件。 如果我们未达到并保持 SLA 中所述的每个服务的服务级别，则你有权请求扣除每月服务费的一部分。
+服务级别协议 (SLA) 描述 Microsoft 关于运行时间和连接性方面的承诺。 当 Azure 服务遇到影响运行时间或连接的问题（通常称为“服务中断”）时，会报告一个服务事件。  如果我们未达到并保持 SLA 中所述的每个服务的服务级别，则你有权请求扣除每月服务费的一部分。
 
 若要请求额度：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。 如果你有多个帐户，请确保使用受 Azure 停机影响的帐户。
 2. 创建新的支持请求。
-3. 在“问题类型”下，选择“计费”。
-4. 在“问题类型”下，选择“退款请求”。
+3. 在“问题类型”下，选择“计费”。  
+4. 在“问题类型”下，选择“退款请求”。  
 5. 添加详细信息，指出你要请求 SLA 额度，并指定日期/时间/时区以及受影响的服务（VM、网站等）
-6. 确认你的联系详细信息，然后选择“创建”以提交请求。
+6. 确认你的联系详细信息，然后选择“创建”以提交请求。 
 
 SLA 阈值因服务而异。 例如，SQL Web 层的 SLA 为 99.9%，VM 的 SLA 为 99.95%，SQL 标准层的 SLA 为 99.99%。
 
@@ -179,7 +179,7 @@ SLA 阈值因服务而异。 例如，SQL Web 层的 SLA 为 99.9%，VM 的 SLA 
 
 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)和 [Azure 服务的 SLA 摘要](https://azure.microsoft.com/support/legal/sla/summary/)文档。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
