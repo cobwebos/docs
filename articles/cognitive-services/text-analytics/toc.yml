@@ -14,10 +14,8 @@
   items:
     - name: 客户端库
       items:
-        - name: 使用 v3.0-preview 分析文本
+        - name: 使用客户端库分析文本
           href: quickstarts/text-analytics-sdk.md
-        - name: 使用 v2 分析文本
-          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: 使用 Java

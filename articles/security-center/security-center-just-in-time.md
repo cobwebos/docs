@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 69a5452134e290f2072a9316ce1f067296ed2320
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156754"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939402"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
-实时 (JIT) 虚拟机 (VM) 访问可用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还可轻松连接到 VM。
+实时（JIT）虚拟机（VM）访问可用于锁定到 Azure Vm 的入站流量，降低攻击的风险，同时提供在需要时轻松连接到 Vm 的权限。
 
 > [!NOTE]
 > 实时功能在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "76156754"
 
 | 使用户能够： | 要设置的权限|
 | --- | --- |
-| 为 VM 配置或编辑 JIT 策略 | *将这些操作分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在订阅或资源组或 VM 的作用域中： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+| 为 VM 配置或编辑 JIT 策略 | *将这些操作分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在虚拟机的订阅或资源组的作用域中： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |请求 JIT 对 VM 的访问权限 | *将这些操作分配给用户：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 

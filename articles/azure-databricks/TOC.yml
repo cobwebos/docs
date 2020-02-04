@@ -1150,6 +1150,9 @@
             - name: 分析用户界面性能问题
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: 作业未在工作区中进行
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: 群集
           items:
             - name: 计算群集中的核心数
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: 无法读取 WASB 中的文件
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: 优化从 JDBC 数据源进行读取的性能
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:
