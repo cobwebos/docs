@@ -117,13 +117,13 @@
       href: concept-recognizing-text.md
     - name: 成人内容检测
       href: concept-detecting-adult-content.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 调用计算机视觉 API
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: 使用容器
       items:
-        - name: 安装并运行容器
+        - name: 安装和运行容器
           href: computer-vision-how-to-install-containers.md
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: 配置容器
@@ -135,11 +135,9 @@
         - name: 使用容器实例
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: 使用计算机视觉连接服务
-      href: vs-computer-vision-connected-service.md
     - name: 分析实时视频
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'

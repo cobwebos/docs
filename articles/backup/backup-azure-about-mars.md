@@ -4,12 +4,12 @@ description: 了解 MARS 代理如何支持备份方案
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902863"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023950"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>关于 Microsoft Azure 恢复服务（MARS）代理
 
@@ -58,8 +58,7 @@ MARS 代理支持以下还原方案：
 ### <a name="additional-scenarios"></a>其他方案
 -   **备份 azure 虚拟机中的特定文件和文件夹**：备份 azure 虚拟机（vm）的主要方法是在 VM 上使用 azure 备份扩展。 此扩展将备份整个 VM。 如果要备份 VM 内的特定文件和文件夹，可以在 Azure Vm 中安装 MARS 代理。 有关详细信息，请参阅[体系结构：内置 AZURE VM 备份](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)。
 
--   **脱机播种**：对 Azure 进行的初始完整备份通常会传输大量数据，并且需要更多的网络带宽。 后续备份仅传输增量数据量或增量数据量。 Azure 备份可压缩初始备份。 通过*脱机种子设定*，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。 有关详细信息，请参阅[DPM 和 Azure 备份服务器的脱机备份工作流](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)。
-
+-   **脱机播种**：对 Azure 进行的初始完整备份通常会传输大量数据，并且需要更多的网络带宽。 后续备份仅传输增量数据量或增量数据量。 Azure 备份可压缩初始备份。 通过*脱机种子设定*，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。 有关详细信息，请参阅[Azure 备份使用 Azure Data Box 进行脱机备份](offline-backup-azure-data-box.md)。
 
 ## <a name="next-steps"></a>后续步骤
 [MARS 代理支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

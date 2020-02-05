@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中的 VMware 上运行时确保应用程序的高可用性
-description: 介绍 CloudSimple 的高可用性功能，以解决 CloudSimple 私有云中运行的应用程序的常见应用程序故障方案
+description: 介绍 AVS 高可用性功能，以解决在 AVS 私有云中运行的应用程序的常见应用程序故障方案
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206530"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025344"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>在 Azure 中的 VMware 上运行时确保应用程序的高可用性
 
-CloudSimple 解决方案为在 Azure 环境中运行的应用程序提供高可用性。 下表列出了故障方案和关联的高可用性功能。
+AVS 解决方案为在 Azure 环境中运行的应用程序提供高可用性。 下表列出了故障方案和关联的高可用性功能。
 
 | 故障方案 | 受保护的应用程序？ | 平台 HA 功能 | VMware HA 功能 | Azure HA 功能 |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| 磁盘故障 | 是 | 快速替换失败的节点 | [关于 vSAN 默认存储策略](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| 风扇故障 | 是 | 冗余风扇，快速更换故障节点 |  |  |
-| NIC 故障 | 是 | 冗余 NIC，快速替换失败的节点
-| 主机电源故障 | 是 | 冗余电源 |  |  |
-| ESXi 主机故障 | 是 | 快速替换失败的节点 | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM 故障 | 是 | [负载均衡器](load-balancers.md)  | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) | 无状态 VMware Vm 的 Azure 负载均衡器 |
-| 叶交换机端口故障 | 是 | 冗余 NIC |  |  |
-| 叶交换机故障 | 是 | 冗余叶交换机 |  |  |
-| 机架故障 | 是 | 放置组 |  |  |
-| 到本地 DC 的网络连接 | 是  | 冗余网络服务 |  | 冗余的 ER 线路 |
-| 与 Azure 的网络连接 | 是 | |  | 冗余的 ER 线路 |
-| 数据中心故障 | 是 |  |  | 可用性区域 |
-| 区域故障 | 是  |  |  | Azure 区域 |
+| 磁盘故障 | YES | 快速替换失败的节点 | [关于 vSAN 默认存储策略](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| 风扇故障 | YES | 冗余风扇，快速更换故障节点 |  |  |
+| NIC 故障 | YES | 冗余 NIC，快速替换失败的节点
+| 主机电源故障 | YES | 冗余电源 |  |  |
+| ESXi 主机故障 | YES | 快速替换失败的节点 | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM 故障 | YES | [负载均衡器](load-balancers.md)  | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) | 无状态 VMware Vm 的 Azure 负载均衡器 |
+| 叶交换机端口故障 | YES | 冗余 NIC |  |  |
+| 叶交换机故障 | YES | 冗余叶交换机 |  |  |
+| 机架故障 | YES | 放置组 |  |  |
+| 到本地 DC 的网络连接 | YES  | 冗余网络服务 |  | 冗余的 ER 线路 |
+| 与 Azure 的网络连接 | YES | |  | 冗余的 ER 线路 |
+| 数据中心故障 | YES |  |  | 可用性区域 |
+| 区域故障 | YES  |  |  | Azure 区域 |
 
-Azure VMware 解决方案 by CloudSimple 提供以下高可用性功能。
+Azure VMware 解决方案（由 AVS 提供）提供以下高可用性功能。
 
 ## <a name="fast-replacement-of-failed-node"></a>快速替换失败的节点
 
-CloudSimple 控制平面软件持续监视 VMware 群集的运行状况，并在 ESXi 节点出现故障时进行检测。 然后，它会自动将新的 ESXi 主机从其可供使用的节点池中添加到受影响的 VMware 群集，并将失败的节点移出群集。 此功能可确保快速还原 VMware 群集中的备用容量，以便还原 vSAN 和 VMware HA 提供的群集复原能力。
+AVS 控制平面软件持续监视 VMware 群集的运行状况，并在 ESXi 节点出现故障时进行检测。 然后，它会自动将新的 ESXi 主机从其可供使用的节点池中添加到受影响的 VMware 群集，并将失败的节点移出群集。 此功能可确保快速还原 VMware 群集中的备用容量，以便还原 vSAN 和 VMware HA 提供的群集复原能力。
 
 ## <a name="placement-groups"></a>放置组
 
-创建私有云的用户可以在所选区域中选择一个 Azure 区域和一个放置组。 放置组是分布在多个机架上但位于同一书脊网络段内的一组节点。 同一放置组中的节点可以彼此联系，最多可以有两个额外的开关跃点。 放置组始终位于单个 Azure 可用性区域内，并跨多个机架。 CloudSimple 控制平面根据最大努力将私有云的节点分布到多个机架中。 可以保证不同位置组中的节点放置在不同的机架中。
+创建 AVS 私有云的用户可以在所选区域中选择一个 Azure 区域和一个放置组。 放置组是分布在多个机架上但位于同一书脊网络段内的一组节点。 同一放置组中的节点可以彼此联系，最多可以有两个额外的开关跃点。 放置组始终位于单个 Azure 可用性区域内，并跨多个机架。 AVS 控制面根据最大努力在多个机架上分布 AVS 私有云的节点。 可以保证不同位置组中的节点放置在不同的机架中。
 
 ## <a name="availability-zones"></a>可用性区域
 
@@ -55,7 +55,7 @@ CloudSimple 控制平面软件持续监视 VMware 群集的运行状况，并在
 
 ## <a name="redundant-networking-services"></a>冗余网络服务
 
-私有云的所有 CloudSimple 网络服务（包括 VLAN、防火墙、公共 IP 地址、Internet 和 VPN）均设计为具有高可用性，并且能够支持服务 SLA。
+AVS 私有云的所有 AVS 网络服务（包括 VLAN、防火墙、公共 IP 地址、Internet 和 VPN）均设计为高度可用，并能够支持服务 SLA。
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>无状态 VMware Vm 的 Azure 第7层负载均衡器
 

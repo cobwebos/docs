@@ -2,19 +2,19 @@
 title: 针对任务和节点进行状态计数 - Azure Batch | Microsoft Docs
 description: 对 Azure Batch 任务和计算节点的状态进行计数，以便管理和监视 Batch 解决方案。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5e90045b7863968e8c61c3cbc382434bc8be415a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a7b58e96918d26851812aa96c18043121c081e94
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029705"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023916"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 

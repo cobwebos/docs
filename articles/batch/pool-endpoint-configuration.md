@@ -2,18 +2,18 @@
 title: 在 Azure Batch 池中配置节点终结点 | Microsoft Docs
 description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: jushiman
-ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029465"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017218"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 

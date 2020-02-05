@@ -8,14 +8,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310852"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024018"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
+
+## <a name="active-issues"></a>活动问题
+
+* 尚不支持针对 ASP.NET Core 1.x 应用程序进行分析。
+  * 如果您必须有探查器，则解决方法是使用[ASP.NET Core 的 Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore)。 探查器标记为适用于 Linux，但它还适用于 Windows 上的 .NET Core 3.0 + 应用程序。 有关详细信息，请参阅[支持的版本](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)。
 
 ## <a id="troubleshooting"></a>常规故障排除
 

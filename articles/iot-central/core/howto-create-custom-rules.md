@@ -3,20 +3,22 @@ title: 通过自定义规则和通知扩展 Azure IoT Central |Microsoft Docs
 description: 作为解决方案开发人员，配置一个 IoT Central 应用程序，以便在设备停止发送遥测数据时发送电子邮件通知。 此解决方案使用 Azure 流分析、Azure Functions 和 SendGrid。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987588"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022437"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
+
+
 
 本操作方法指南为解决方案开发人员提供了如何使用自定义规则和通知扩展 IoT Central 应用程序。 该示例显示了在设备停止发送遥测数据时向操作员发送通知。 解决方案使用[Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)查询来检测设备何时停止发送遥测数据。 流分析作业使用[Azure Functions](https://docs.microsoft.com/azure/azure-functions/)通过[SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)发送通知电子邮件。
 
@@ -41,14 +43,16 @@ ms.locfileid: "76987588"
 | 设置 | 值 |
 | ------- | ----- |
 | 定价计划 | 标准 |
-| 应用程序模板 | 旧应用程序 |
+| 应用程序模板 | 应用商店内分析-条件监视 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 地区 | 美国 |
+| 地区 | 最近的区域 |
 
 本文中的示例和屏幕截图使用**美国**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
+
+此应用程序模板包含两个用于发送遥测的模拟恒温器设备。
 
 ### <a name="resource-group"></a>资源组
 
@@ -307,7 +311,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分中，将配置应用程序，以便将遥测从其模拟设备流式传输到事件中心。 若要配置导出：
 
-1. 导航到 "**连续数据导出**" 页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
+1. 导航到**数据导出**页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出，然后选择 "**保存**"：
 
     | 设置 | 值 |
@@ -328,15 +332,15 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 若要测试该解决方案，可以禁用从 IoT Central 到模拟停止设备的连续数据导出：
 
-1. 在 IoT Central 应用程序中，导航到 "**连续数据导出**" 页，选择 "**导出到事件中心**导出配置"。
+1. 在 IoT Central 应用程序中，导航到 "**数据导出**" 页，并选择 "**导出到事件中心**导出配置"。
 1. 将 "**启用**" 设置为 "**关闭**" 并选择 "**保存**"。
 1. 在至少两分钟后，**收件人**电子邮件地址会接收一个或多个类似于以下示例内容的电子邮件：
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>整理

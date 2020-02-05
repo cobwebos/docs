@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-设置防火墙表和规则
-description: 描述如何设置私有云防火墙表和规则，以限制子网和 Vlan 上的流量。
+title: Azure VMware 解决方案（AVS）-设置防火墙表和规则
+description: 介绍如何设置 AVS 私有云防火墙表和规则，以限制子网和 Vlan 上的流量。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606456"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025276"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>为私有云设置防火墙表和规则
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>设置适用于 AVS 私有云的防火墙表和规则
 
 防火墙表和关联的规则允许你指定要应用于特定子网和 Vlan 的流量限制。
 
@@ -24,7 +24,7 @@ ms.locfileid: "73606456"
 
 ## <a name="add-a-new-firewall-table"></a>添加新的防火墙表
 
-1. [访问 CloudSimple 门户](access-cloudsimple-portal.md)，并在侧菜单中选择 "**网络**"。
+1. [访问 AVS 门户](access-cloudsimple-portal.md)，并在侧菜单中选择 "**网络**"。
 2. 选择 "**防火墙表**"。
 3. 选择 "**创建防火墙表**"。
 
@@ -51,7 +51,7 @@ ms.locfileid: "73606456"
 2. 按如下所示设置规则：
     * **名称**。 为规则指定名称。
     * **优先级**。 为规则分配优先级。 首先执行具有较小数字的规则。
-    * **流量类型**。 选择规则是用于私有云、Internet 还是 VPN 流量（无状态），或用于公共 IP 地址（有状态）。
+    * **流量类型**。 选择规则是用于 AVS 私有云、Internet 还是 VPN 流量（无状态），或用于公共 IP 地址（有状态）。
     * **协议**。 选择规则涵盖的协议（TCP、UDP 或任意协议）。
     * **方向**。 选择规则是用于入站或出站流量。 必须为入站和出站流量定义单独的规则。
     * **操作**。 选择规则匹配（"允许" 或 "拒绝"）时要执行的操作。
@@ -75,5 +75,5 @@ ms.locfileid: "73606456"
 1. 在 "**网络** > **防火墙表**" 页上，选择一个防火墙表。
 2. 打开 "**附加的 vlan/子网**" 选项卡。
 3. 单击 "**附加到 VLAN/子网**"。
-4. 选择私有云和 VLAN。 显示关联的子网名称和 CIDR 块。
+4. 选择 "AVS 私有云和 VLAN"。 显示关联的子网名称和 CIDR 块。
 5. 单击“提交”。

@@ -16,6 +16,8 @@
           href: create-private-endpoint-powershell.md
     - name: 创建专用链接服务
       items:
+        - name: Azure 门户
+          href: create-private-link-service-portal.md
         - name: Azure PowerShell
           href: create-private-link-service-powershell.md
         - name: Azure CLI
@@ -38,7 +40,7 @@
       href: disable-private-link-service-network-policy.md
     - name: 管理专用终结点
       href: manage-private-endpoint.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/network

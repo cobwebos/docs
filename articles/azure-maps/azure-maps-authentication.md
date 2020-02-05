@@ -1,49 +1,48 @@
 ---
 title: 身份验证方法 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure Maps 服务 Azure Active Directory （Azure AD）或共享密钥身份验证。 了解如何获取 Azure Maps 订阅密钥。
+description: 在本文中，你将了解 Azure Active Directory （Azure AD）和共享密钥身份验证。 两者均用于 Microsoft Azure Maps 服务。 了解如何获取 Azure Maps 订阅密钥。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/30/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911825"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025616"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
-Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥和 Azure Active Directory （Azure AD）。 本文将会解释这些身份验证方法，以引导你实现身份验证。
+Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和 Azure Active Directory 身份验证。 本文将会解释这些身份验证方法，以引导你实现身份验证。
 
 ## <a name="shared-key-authentication"></a>共享密钥身份验证
 
-共享密钥身份验证将 Azure Maps 帐户生成的密钥传递到 Azure Maps 的每个请求。 对于每个 Azure Maps 服务请求，需要将*订阅密钥*作为参数添加到 URL。 创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 建议你在使用共享密钥身份验证调用 Azure Maps 时，将主密钥用作订阅密钥。 辅助密钥可用于应用滚动密钥更改等方案。  
+共享密钥身份验证将 Azure Maps 帐户生成的密钥传递到 Azure Maps 的每个请求。 对于每个 Azure Maps 服务请求，需要将*订阅密钥*作为参数添加到 URL。 创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 当使用共享密钥身份验证调用 Azure Maps 时，建议使用主密钥作为订阅密钥。 辅助密钥可用于应用滚动密钥更改等方案。  
 
 有关在 Azure 门户中查看密钥的信息，请参阅[管理身份验证](https://aka.ms/amauthdetails)。
 
 > [!Tip]
-> 我们建议定期重新生成密钥。 你有两个密钥，因此，在重新生成其中的一个密钥时，可以使用另一个密钥来保持连接。 重新生成密钥时，需要将访问该帐户的所有应用程序更新为使用新密钥。
+> 我们建议定期重新生成密钥。 提供了两个密钥，因此可以在重新生成其他密钥的同时保持与一个密钥的连接。 重新生成密钥时，需要使用新密钥更新访问你的帐户的所有应用程序。
 
 
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>使用 Azure Active Directory 进行身份验证（预览）
 
-Azure Maps 现在提供 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 集成用于对 Azure Maps 服务的请求进行身份验证。 Azure AD 提供基于身份的身份验证，包括[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)，以授予对 Azure Maps 资源的用户级别、组级和应用程序级访问权限。 后续部分可以帮助你了解与 Azure AD 集成的 Azure Maps 的概念和组件。
-
+Azure Maps 现在为使用[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)的 Azure Maps 服务提供请求身份验证。 Azure AD 提供基于身份的身份验证，包括[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)。 RBAC 用于授予对 Azure Maps 资源的用户级别、组级别或应用程序级别的访问权限。 以下各节可帮助你了解与 Azure AD Azure Maps 集成的概念和组件。
 ## <a name="authentication-with-oauth-access-tokens"></a>使用 OAuth 访问令牌进行身份验证
 
 对于与包含 Azure Maps 帐户的 Azure 订阅相关联的 Azure AD 租户，Azure Maps 接受 **OAuth 2.0** 访问令牌。 Azure Maps 接受以下对象的令牌：
 
-* Azure AD 用户。 
-* 使用用户委托权限的合作伙伴应用程序。
-* Azure 资源的托管标识。
+* Azure AD 用户
+* 使用用户委派的权限的合作伙伴应用程序
+* Azure 资源的托管标识
 
-Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端 ID）。 将此客户端 ID 与其他参数组合使用时，可以根据 Azure 环境指定下表中的值，从 Azure AD 请求令牌。
+Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端 ID）。 当你将此客户端 ID 与其他参数组合时，你可以从 Azure AD 请求令牌。 要请求令牌，需要根据 Azure 环境指定下表中的值。
 
 | Azure 环境   | Azure AD 令牌终结点 |
 | --------------------|-------------------------|
@@ -57,7 +56,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>使用 OAuth 令牌请求 Azure Maps 资源
 
-从 Azure AD 收到令牌后，可以使用以下两个必需的请求标头集将请求发送到 Azure Maps：
+从 Azure AD 收到令牌后，将使用以下所需的请求标头集向 Azure Maps 发送请求：
 
 | 请求标头    |    值    |
 |:------------------|:------------|
@@ -80,9 +79,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>使用 RBAC 控制访问
 
-Azure AD 允许使用 RBAC 控制对受保护资源的访问。 创建 Azure Maps 帐户并在 Azure AD 租户中注册 Azure Maps Azure AD 应用程序后，可以在 "Azure Maps 帐户门户" 页上为用户、组、应用程序或 Azure 资源设置 RBAC。
-
-Azure Maps 通过 Azure 资源的托管标识，支持单个 Azure AD 用户、组、应用程序和 Azure 服务的读取访问控制。
+在 Azure AD 中，使用 RBAC 控制对受保护资源的访问权限。 设置 Azure Maps 帐户，并向 Azure AD 租户注册 Azure Maps。 Azure Maps 通过 Azure 资源的托管标识，支持单个 Azure AD 用户、组、应用程序、Azure 资源和 Azure 服务的读取访问控制。 在 Azure Maps 门户 "页上，可以为所需角色设置 RBAC。
 
 ![Azure Maps 数据读取器(预览版)](./media/azure-maps-authentication/concept.png)
 
@@ -90,7 +87,7 @@ Azure Maps 通过 Azure 资源的托管标识，支持单个 Azure AD 用户、�
 
 ## <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 资源和 Azure Maps 的托管标识
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)为 Azure 服务（Azure 应用服务、Azure Functions、Azure 虚拟机等）提供一个自动管理的标识，可以授权该标识访问 Azure Maps 服务。  
+[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)为 azure 服务提供自动管理的标识，该标识可以获得访问 Azure Maps 服务的授权。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894593"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023865"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -272,7 +272,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic 文档。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana 集成。"
 [influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor 流入 data Telegraf integration。"
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor 文档。"
+[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"

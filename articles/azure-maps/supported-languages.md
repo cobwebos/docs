@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910434"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025429"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
 
@@ -30,7 +30,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | af-ZA      | 南非荷兰语              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | 阿拉伯语                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | bn-BD      | 孟加拉语（孟加拉国）    |       |       |         |     ✓    |                   |                |
-| bn-IN      | 孟加拉语(印度)         |       |       |         |     ✓    |                   |                |
+| bn-IN      | 孟加拉语（印度）         |       |       |         |     ✓    |                   |                |
 | bs.1770-BA      | 波斯尼亚语                 |       |       |         |     ✓    |                   |                |
 | eu-ES      | 巴斯克语                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | 保加利亚语              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
@@ -59,7 +59,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | he-IL      | 希伯来语                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | 匈牙利语              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| is-IS      | 冰岛语              |       |       |         |     ✓    |                   |                |
+| 为-IS      | 冰岛语              |       |       |         |     ✓    |                   |                |
 | id-ID      | 印度尼西亚语             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | 意大利语                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | 日语               |       |        |         |     ✓    |                   |                |
@@ -71,7 +71,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | lt-LT      | 立陶宛语             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | mk-MK      | 马其顿语             |       |       |         |     ✓    |                   |                |
 | ms-MY      | 马来语(拉丁语系)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| mr-IN      | 马拉地语                 |       |       |         |     ✓    |                   |                |
+| mr      | 马拉地语                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | 书面挪威语       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | 非特定真实语言 - 本地脚本中所有区域的官方语言（如果可用） |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | 非特定真实语言 - 拉丁语外来语。 将使用拉丁语脚本（如果可用） |   ✓     |        |         |         |                |        ✓         |
@@ -101,13 +101,15 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 ## <a name="azure-maps-supported-views"></a>Azure Maps 支持的视图
 
 > [!Note]
-> 2019年8月1日在以下国家/地区发布 Azure Maps：
+> 2019年8月1日，Azure Maps 已在以下国家/地区发布：
 >  * 阿根廷
 >  * 印度
 >  * 摩洛哥
 >  * 巴基斯坦
 >
-> 2019年8月1日之后，**查看**参数设置将为上面列出的新区域/国家/地区定义返回的映射内容。 建议确保已根据服务所使用的 REST Api 和 Sdk 的需要设置视图参数。
+> 2019年8月1日之后， **View**参数将为上面列出的新区域/国家/地区定义返回的映射内容。 Azure Maps **View**参数（也称为 "用户区域参数"）是一个由两个3166字母组成的国家/地区代码，它将显示该国家/地区的正确地图，其中指定通过 Azure Maps 服务返回的 geopolitically 争议内容集，包括地图上显示的边框和标签。 
+
+确保已根据服务所使用的 REST Api 和 Sdk 设置了 "**查看**" 参数。
 >  
 >
 >  **Rest Api：**
@@ -135,15 +137,12 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 >    
 >  **Sdk**
 >
->  确保已根据需要设置了 "查看" 参数，并且具有最新版本的 Web SDK 和 Android SDK。 受影响的 Sdk：
+>  确保已根据需要设置了 "**查看**" 参数，并且具有最新版本的 Web SDK 和 Android SDK。 受影响的 Sdk：
 >
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-
-Azure Maps **View**参数（也称为 "用户区域参数"）是一个由两个3166字母组成的国家/地区代码，它将显示该国家/地区的正确地图，其中指定通过 Azure Maps 服务返回的 geopolitically 争议内容集，包括地图上显示的边框和标签。 
-
-默认情况下，View 参数设置为**统一**，即使你未在请求中定义它也是如此。 您负责确定用户的位置，然后为该位置正确设置 "查看" 参数。 或者，你可以选择设置 "View = Auto"，它将基于请求的 IP 地址返回映射数据。  Azure Maps 中的 View 参数必须符合适用法律，包括与该国家/地区的映射相关的问题，其中的地图、图像和其他数据以及你有权通过 Azure Maps 进行访问的第三方内容将提供。
+默认情况下，即使未在请求中定义 View 参数，也会将其设置为**统一**。 确定用户的位置，然后为该位置正确设置 "**查看**" 参数。 或者，您可以设置 "View = Auto"，它将基于请求的 IP 地址返回映射数据。  Azure Maps 中的**View**参数必须遵循适用的法律，其中包括有关如何映射国家/地区的法律，其中的地图、图像和其他数据和第三方内容可以通过 Azure Maps 提供。
 
 
 下表提供了支持的视图。

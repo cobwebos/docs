@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760821"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026143"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 
@@ -132,6 +132,8 @@ JSON 对象可以包括嵌套的 JSON 对象和简单的属性/值。 仅当数�
 可以通过编辑特征集，使其变得更大、更多或更稀疏，来改善特征集。
 
 例如，精度为秒的时间戳是非常稀疏的特征。 可以通过将时间分类为“上午”、“中午”、“下午”等，来提高此特征的密度（更有效）。
+
+位置信息通常还得益于创建更广泛的分类。 例如，纬度-经度坐标（如 Lat：47.67402 ° N，Long：122.12154 ° W）太精确，并强制模型将纬度和经度作为不同维度来学习。 尝试基于位置信息进行个性化设置时，它有助于将位置信息分组到大扇区中。 要执行此操作，一种简单的方法是为 Lat 长数字选择适当的舍入精度，并通过将纬度和经度转换为一个字符串来将它们合并到 "区域" 中。 例如，在区域大约有几千米的情况下，一种表示47.67402 ° N，Long：122.12154 ° W 的好方法是 "位置"： "34.3，12.1"。
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>使用推理出的信息扩展特征集

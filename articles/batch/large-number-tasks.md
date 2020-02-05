@@ -3,8 +3,8 @@ title: 提交大量的任务 - Azure Batch | Microsoft Docs
 description: 如何有效地将巨量的任务提交到单个 Azure Batch 作业中
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/24/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: ''
-ms.openlocfilehash: 29d5ca378f13e047773c4e036c5e43f944fd08e3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c3857e512da5fe4fceefa5f735ddc65f73e11623
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029513"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026041"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 

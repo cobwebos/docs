@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961552"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024273"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -36,8 +36,8 @@ ms.locfileid: "73961552"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 域的访问权限，该域可能被拒绝，可阻止对 Cloud Shell 的 s 的任何访问权限，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
-- **解决方案**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用 `ux.console.azure.com` 域的访问权限，该域可能被拒绝，可阻止对 Cloud Shell 的 s 的任何访问权限，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。 在美国政府版云中，入口点 `ux.console.azure.us`;没有相应的 shell.azure.us。
+- **解决方法**：通过网络设置限制对环境的 `ux.console.azure.com` 或 `ux.console.azure.us` 的访问。 Azure 门户中仍然存在 Cloud Shell 图标，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 

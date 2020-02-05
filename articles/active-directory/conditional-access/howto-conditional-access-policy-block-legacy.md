@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aca5019f4f7fca47195fb8fb821b1af1ae9ec77
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424921"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024239"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件性访问：阻止旧身份验证
 
 由于与旧身份验证协议关联的风险增加，Microsoft 建议组织阻止使用这些协议的身份验证请求，并要求新式身份验证。
 
-## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
+## <a name="create-a-conditional-access-policy"></a>创建条件性访问策略
 
 以下步骤将帮助创建条件性访问策略来阻止旧式身份验证请求。
 
 1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
 1. 为策略指定一个名称。 建议组织为其策略名称创建有意义的标准。
 1. 在 "**分配**" 下，选择 "**用户和组**"
    1. 在 "**包括**" 下，选择 "**所有用户**"。
-   1. 在 "**排除**" 下，选择 "**用户和组**"，然后选择必须保留使用旧身份验证的功能的任何帐户。 
+   1. 在 "**排除**" 下，选择 "**用户和组**"，然后选择必须保留使用旧身份验证的功能的任何帐户。 必须排除至少一个帐户，以防锁定。如果不排除任何帐户，则将无法创建此策略。
    1. 选择“完成”。
 1. 在 "**云应用" 或 "操作**" 下选择 "**所有云应用**"。
    1. 选择“完成”。

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440265"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020040"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -52,6 +52,12 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 与选择转换类似，在接收器的 "**映射**" 选项卡中，您可以决定写入哪些传入列。 默认情况下，映射所有输入列，包括偏移列。 这就是所谓的**自动映射**。
 
 关闭自动映射时，可以选择添加基于列的固定映射或基于规则的映射。 基于规则的映射允许您编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。 有关基于规则的映射的详细信息，请参阅[映射数据流中的列模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
+
+## <a name="custom-sink-ordering"></a>自定义接收器排序
+
+默认情况下，数据按非确定性顺序写入多个接收器。 当转换逻辑完成并且接收顺序可能因每次运行而异时，执行引擎将并行写入数据。 若要指定和确切的接收顺序，请在数据流的 "常规" 选项卡中启用**自定义接收器排序**。 启用后，将按递增顺序写入接收器。
+
+![自定义接收器排序](media/data-flow/custom-sink-ordering.png "自定义接收器排序")
 
 ## <a name="data-preview-in-sink"></a>接收器中的数据预览
 

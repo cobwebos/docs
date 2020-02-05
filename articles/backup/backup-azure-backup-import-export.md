@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997354"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022607"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -75,6 +75,15 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ![导入屏幕](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. 选择 "**使用我自己的磁盘传输**" 选项。
+
+    >[!NOTE]
+    >建议使用 Azure Data Box 选项脱机传输初始备份数据。 此选项通过提供 Microsoft 专用的、安全且防篡改的 Azure Data box 设备（可通过 MARS 代理直接向其写入备份数据）来节省购买你自己的 Azure 兼容磁盘所需的工作量。
+
+3. 单击 "**下一步**"，并仔细填写输入：
+
+    ![输入磁盘详细信息](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    输入的说明如下：
 
     * **暂存位置** — 初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
@@ -85,15 +94,15 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
   
    在屏幕上提供输入，然后单击“下一步”。 保存提供的“暂存位置”和“Azure 导入作业名称”值，因为准备磁盘时需要使用这些信息。
 
-2. 根据提示登录到 Azure 订阅。 只有在登录后，Azure 备份才能创建 Azure Active Directory 应用程序，并提供所需的权限来访问 Azure 导入服务。
+4. 根据提示登录到 Azure 订阅。 只有在登录后，Azure 备份才能创建 Azure Active Directory 应用程序，并提供所需的权限来访问 Azure 导入服务。
 
-    ![立即备份](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![立即备份](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. 完成工作流，然后在 Azure 备份代理控制台中单击“立即备份”。
+5. 完成工作流，然后在 Azure 备份代理控制台中单击“立即备份”。
 
     ![立即备份](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. 在向导的“确认”页上，单击“备份”。 初始备份将写入到设置过程中指定的暂存区域。
+6. 在向导的“确认”页上，单击“备份”。 初始备份将写入到设置过程中指定的暂存区域。
 
    ![确认你现在已准备好进行备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -122,9 +131,9 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 参数 | 描述 |
+    | 参数 | Description |
     | --- | --- |
-    | s:&lt;&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
+    | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
     | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
 
     运行该命令时，该实用工具将请求选择需要准备的驱动器对应的 Azure 导入作业。 如果只有一个与提供的暂存位置关联的导入作业，会显示如下所示的屏幕。
@@ -206,4 +215,3 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 ## <a name="next-steps"></a>后续步骤
 
 * 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/common/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
-

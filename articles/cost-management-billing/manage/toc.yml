@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: 排查 Azure EA 门户访问问题
           href: ea-portal-troubleshoot.md
-        - name: Microsoft 客户协议中的 EA 任务
-          href: mca-enterprise-operations.md
 - name: 故障排除
   items:
     - name: 找不到任何订阅

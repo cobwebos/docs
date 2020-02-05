@@ -4,22 +4,20 @@ description: 从单个 IoT Central 规则运行多个操作，并创建可从多
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7c60728ab501d03e9c40928e730225575e76efbc
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990804"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023814"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>将多个操作分组，以从一个或多个规则运行
 
 *本文适用于构建者和管理员。*
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
 在 Azure IoT Central 中，可以创建规则以在满足条件时运行操作。 规则基于设备遥测或事件。 例如，当设备温度超过阈值时，可以通知操作员。 本文介绍如何使用[Azure Monitor](../../azure-monitor/overview.md) *操作组*将多个操作附加到 IoT Central 规则。 可以将操作组附加到多个规则。 [操作组](../../azure-monitor/platform/action-groups.md)是 Azure 订阅的所有者定义的通知首选项的集合。
 
@@ -45,7 +43,7 @@ ms.locfileid: "76990804"
 
 ## <a name="use-an-action-group"></a>使用操作组
 
-若要在 IoT Central 应用程序中使用操作组，请首先创建遥测或事件规则。 向规则添加操作时，请选择**Azure Monitor 操作组**：
+若要在 IoT Central 应用程序中使用操作组，请先创建一个规则。 向规则添加操作时，请选择**Azure Monitor 操作组**：
 
 ![选择操作](media/howto-use-action-groups/chooseaction.png)
 
@@ -64,52 +62,11 @@ ms.locfileid: "76990804"
 | 电子邮件       | 标准 IoT Central 电子邮件模板 |
 | 短信         | Azure IoT Central 警报： $ {applicationName}-"$ {ruleName}" 在 $ {triggerDate} $ {triggerTime} 的 "$ {deviceName}" 上触发 |
 | 语音       | Azure i-o Central 警报：在应用程序 $ {applicationName} 的 $ {triggerDate} $ {triggerTime} 上，在设备 "$ {deviceName}" 上触发的规则 "$ {ruleName}" |
-| Webhook     | {"schemaId"： "AzureIoTCentralRuleWebhook"，"data"： {[regular webhook 负载](#payload)}} |
+| Webhook     | {"schemaId"： "AzureIoTCentralRuleWebhook"，"data"： {[regular webhook 负载](howto-create-webhooks.md#payload)}} |
 
 以下文本是操作组中的一个示例 SMS 消息：
 
-`iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
-
-<a id="payload"></a>以下 JSON 显示了一个示例 webhook 操作有效负载：
-
-```json
-{
-  "schemaId":"AzureIoTCentralRuleWebhook",
-  "data":{
-    "id":"97ae27c4-17c5-4e13-9248-65c7a2c57a1b",
-    "timestamp":"2019-03-20T10:53:17.059Z",
-    "rule":{
-      "id":"031b660e-528d-47bb-b33d-f1158d7e31bf",
-      "name":"Low pressure alert",
-      "enabled":true,
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      }
-    },
-    "device":{
-      "id":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "name":"Refrigerator 2",
-      "simulated":true,
-      "deviceId":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      },
-      "measurements":{
-        "telemetry":{
-           "pressure":343.269190673549
-        }
-      }
-    },
-    "application":{
-      "id":"8e70742b-0d5c-4a1d-84f1-4dfd42e61c7b",
-      "name":"Sample Contoso",
-      "subdomain":"sample-contoso"
-    }
-  }
-}
-```
+`iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
 ## <a name="next-steps"></a>后续步骤
 

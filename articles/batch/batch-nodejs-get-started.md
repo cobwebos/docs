@@ -3,7 +3,7 @@ title: 教程 - 使用用于 Node.js 的 Azure Batch 客户端库 | Microsoft Do
 description: 了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。
 services: batch
 author: shwetams
-manager: gwallace
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323408"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023644"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的批处理 SDK 入门
 
-了解使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个 Batch 应用程序的方案，然后通过 Node.js 客户端设置该方案。  
+了解使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，并通过 Node.js 客户端设置该方案。  
 
-## <a name="prerequisites"></a>先决条件
-本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设你已设置 Azure 帐户并具有创建 Batch 和存储服务所需的访问权限。
+## <a name="prerequisites"></a>必备组件
+本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设已设置 Azure 帐户并具有创建批处理和存储服务所需的访问权限。
 
-我们建议你在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
+我们建议在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
 
 ## <a name="the-tutorial-scenario"></a>教程方案
-让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 若要并行处理多个存储帐户容器，可将脚本部署为 Azure Batch 作业。
+让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 要并行处理多个存储帐户容器，可将脚本部署为 Azure Batch 作业。
 
 ## <a name="azure-batch-architecture"></a>Azure Batch 体系结构
 下图描绘了如何使用 Azure Batch 和 Node.js 客户端来伸缩 Python 脚本。
@@ -67,11 +67,11 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 ### <a name="step-2-create-an-azure-batch-account"></a>步骤 2：创建 Azure Batch 帐户
 
-可以通过 [Azure 门户](batch-account-create-portal.md)或命令行 ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) 创建该帐户。
+你可以从[Azure 门户](batch-account-create-portal.md)或从命令行（[PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)）创建它。
 
 下面是通过 Azure CLI 创建该帐户的命令。
 
-创建一个资源组。如果你已经有一个需要在其中创建 Batch 帐户的资源组，则请跳过此步骤：
+创建一个资源组。如果已经有一个需要在其中创建批处理帐户的资源组，则请跳过此步骤：
 
 `az group create -n "<resource-group-name>" -l "<location>"`
 
@@ -166,7 +166,7 @@ var pool = batch_client.pool.add(poolConfig,function(error,result){
 });
 ```
 
-你可以检查所创建池的状态，确保状态为“活动”，然后再继续操作，将作业提交到该池。
+可以检查所创建池的状态，确保状态为“活动”，再继续操作，将作业提交到该池。
 
 ```nodejs
 var cloudPool = batch_client.pool.get(poolid,function(error,result,request,response){
@@ -254,7 +254,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>步骤 4：提交 Azure Batch 作业
+### <a name="step-4-submit-an-azure-batch-job"></a>步骤 5：提交 Azure Batch 作业
 Azure Batch 作业是包含相似任务的逻辑组。 在我们的方案中，它是指“将 csv 处理成 JSON”。 这里的每个任务可能都在处理每个 Azure 存储容器中存在的 csv 文件。
 
 这些任务会并行运行，并且跨多个节点部署，由 Azure Batch 服务进行协调。
@@ -311,14 +311,14 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 5：为作业提交 Azure Batch 任务
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 6：为作业提交 Azure Batch 任务
 
 创建“process csv”作业以后，让我们创建该作业的任务。 假设我们有四个容器，则必须创建四个任务，一个容器一个任务。
 
 如果我们查看 [Python 脚本](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)，可以看到它接受两个参数：
 
-* 容器名称：要从其中下载文件的存储容器
-* 模式：文件名称模式的可选参数
+* container name：要从其中下载文件的存储容器
+* pattern：文件名称模式的可选参数
 
 假设我们有四个容器，分别为“con1”、“con2”、“con3”、“con4”。以下代码显示了如何将任务提交到我们此前创建的 Azure Batch 作业“process csv”。
 

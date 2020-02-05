@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988696"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024664"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host json 引用 
 
@@ -74,10 +74,10 @@ ms.locfileid: "76988696"
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
               "maxSamplingPercentage": 0.1,
-              "movingAverageRatio": 1.0
+              "movingAverageRatio": 1.0,
+              "excludedTypes" : "Dependency;Event",
+              "includedTypes" : "PageView;Trace"
             },
-            "samplingExcludedTypes" : "Dependency;Event",
-            "samplingIncludedTypes" : "PageView;Trace",
             "enableLiveMetrics": true,
             "enableDependencyTracking": true,
             "enablePerformanceCountersCollection": true,            

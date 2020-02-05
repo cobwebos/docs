@@ -3,8 +3,8 @@ title: 服务配额和限制 - Azure Batch | Microsoft Docs
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 001ea77874153e7ce5ca4a69217c9c149d81b60c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029689"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022964"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 

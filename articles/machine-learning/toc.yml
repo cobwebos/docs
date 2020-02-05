@@ -284,7 +284,7 @@
         - name: 记录训练运行的指标
           href: how-to-track-experiments.md
         - name: 使用 MLflow 对试验进行跟踪
-          displayName: 'log, monitor, metrics'
+          displayName: 'log, monitor, metrics, Databricks'
           href: how-to-use-mlflow.md
         - name: 使用 TensorBoard 将运行可视化
           displayName: 'log, monitor, metrics'

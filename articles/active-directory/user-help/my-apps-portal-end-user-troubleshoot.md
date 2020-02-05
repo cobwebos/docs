@@ -2,22 +2,22 @@
 title: 获取有关 "我的应用" 门户的帮助-Azure Active Directory |Microsoft Docs
 description: 获取有关在 "我的应用" 门户中登录和执行常见任务的帮助。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704827"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022335"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>"我的应用" 门户问题疑难解答
 

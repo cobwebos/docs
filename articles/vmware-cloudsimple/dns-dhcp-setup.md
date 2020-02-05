@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-设置私有云的工作负荷 DNS 和 DHCP
-description: 描述如何为 CloudSimple 私有云环境中运行的应用程序和工作负荷设置 DNS 和 DHCP
+title: Azure VMware 解决方案（AVS）-设置适用于 AVS 私有云的工作负荷 DNS 和 DHCP
+description: 描述如何为你的 AVS 私有云环境中运行的应用程序和工作负荷设置 DNS 和 DHCP
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f2a5cae868f2d8f3689f05dd9d466715ab2008a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121856"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024681"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>在 CloudSimple 私有云中设置 DNS 和 DHCP 应用程序和工作负荷
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-avs-private-cloud"></a>在 AVS 私有云中设置 DNS 和 DHCP 应用程序和工作负荷
 
-在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。  需要适当的 DHCP 和 DNS 基础结构才能提供这些服务。  你可以配置虚拟机以在私有云环境中提供这些服务。  
+在 AVS 私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需要适当的 DHCP 和 DNS 基础结构才能提供这些服务。 你可以配置虚拟机以在你的 AVS 私有云环境中提供这些服务。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -27,7 +27,7 @@ ms.locfileid: "76121856"
 
 ## <a name="linux-based-dns-server-setup"></a>基于 Linux 的 DNS 服务器设置
 
-Linux 提供了用于设置 DNS 服务器的各种包。  下面是[DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)，说明了如何设置开源绑定 DNS 服务器。
+Linux 提供了用于设置 DNS 服务器的各种包。 下面是[DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)，说明了如何设置开源绑定 DNS 服务器。
 
 ## <a name="windows-based-setup"></a>基于 Windows 的安装
 

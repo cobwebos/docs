@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988645"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024137"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存简介
 
@@ -26,7 +26,7 @@ ms.locfileid: "76988645"
 
 增量扩充将缓存添加到扩充管道。 索引器将从文档破解和每个文档的每项技能的输出中缓存结果。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，并在搜索索引或知识库中更新文档。
 
-在物理上，缓存存储在 Azure 存储帐户中的 blob 容器中。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器分配一个唯一且不可变的缓存标识符到它所使用的容器。
+在物理上，缓存存储在 Azure 存储帐户中的 blob 容器中。 缓存还使用表存储来处理更新的内部记录。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器分配一个唯一且不可变的缓存标识符到它所使用的容器。
 
 ## <a name="cache-configuration"></a>缓存配置
 

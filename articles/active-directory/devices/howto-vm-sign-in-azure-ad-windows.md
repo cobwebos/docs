@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293447"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016028"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -239,9 +239,9 @@ az role assignment create \
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | 更正有关 Azure VM 的信息 |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | 与 Azure 订阅关联的有效租户 ID |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | 更正有关 Azure VM 的信息 |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | 与 Azure 订阅关联的有效租户 ID |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
 
    > [!NOTE]
    > 使用[http://calebb.net/](http://calebb.net/)之类的工具可以对访问令牌进行解码。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。

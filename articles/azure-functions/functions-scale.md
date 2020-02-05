@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921919"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024647"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -26,7 +26,7 @@ ms.locfileid: "75921919"
 
 高级计划提供了额外的功能，如高级计算实例、使实例始终处于热热和 VNet 连接的能力。
 
-应用服务计划可让你充分利用管理的专用基础结构。 函数应用不会基于事件缩放，这意味着从不缩小到零。 （要求启用[Always on](#always-on) 。）
+应用服务计划可让你充分利用管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着从不会缩放到零。 （要求启用[Always on](#always-on) 。）
 
 ## <a name="hosting-plan-support"></a>托管计划支持
 
@@ -152,7 +152,7 @@ Azure Functions 的小数位数是 function app。 横向扩展函数应用时�
 
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 需要注意以下几个复杂的缩放行为：
 
-* 单个函数应用最多只能纵向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
+* 单函数应用仅可扩大到最多200个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
 * 对于 HTTP 触发器，将每隔1秒至少分配一次新实例。
 * 对于非 HTTP 触发器，每隔30秒一次最多只能分配一个新实例。
 

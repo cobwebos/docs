@@ -2,31 +2,38 @@
 title: 从 "我的应用" 门户更新配置文件 & 帐户信息-Azure AD
 description: 了解如何更新配置文件和工作或学校帐户信息，包括更改密码、启用密码重置、更新安全验证方法、查看组织的使用条款声明和注销使用工作或学校帐户登录的任何位置。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704861"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022273"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>在 "我的应用" 门户上更新配置文件和工作或学校帐户信息
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>更新 "我的应用" 门户中的配置文件和帐户信息
 
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以通过基于 web 的 **"我的应用**" 门户使用工作或学校帐户来 
+
+- 查看和启动组织的多个基于云的应用
+- 更新部分配置文件和帐户信息
+- 查看**组**信息
+- 为应用和组执行**访问评审**。 
+
+如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
+> [!Important]
+> 此内容适用于 **"我的应用"** 用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="view-your-organization-related-profile-information"></a>查看与组织相关的个人资料信息
 

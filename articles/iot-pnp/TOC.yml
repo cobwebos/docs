@@ -26,7 +26,7 @@
         - name: Node.js
           href: quickstart-connect-pnp-device-node.md
     - name: 将设备连接到 IoT Central
-      href: ../iot-central/preview/tutorial-connect-pnp-device.md
+      href: ../iot-central/core/tutorial-connect-pnp-device.md
     - name: 连接到解决方案中的设备
       items:
         - name: 'C#'

@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 门户中管理你的 Azure Maps 帐户 |Microsoft Azure 映射
+title: 在 Azure 门户中管理 Azure Maps 帐户 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Azure 门户管理 Microsoft Azure Maps 帐户。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911505"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025599"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
@@ -31,13 +31,13 @@ ms.locfileid: "75911505"
 
 4. 输入新帐户的信息。
 
-![在 Azure 门户中输入 Azure Maps 帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)
+[![在 Azure 门户中输入 Azure Maps 帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>删除帐户
 
 可以通过 Azure 门户删除帐户。 导航到帐户概览页并选择“删除”。
 
-![删除 Azure 门户中的 Azure Maps 帐户](./media/how-to-manage-account-keys/account-delete-portal.png)
+[![将 Azure Maps 帐户删除 Azure 门户](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 将显示确认页面。 可以通过键入帐户名称来确认删除帐户。
 

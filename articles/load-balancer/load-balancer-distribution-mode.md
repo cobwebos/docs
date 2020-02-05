@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225375"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023525"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
 
@@ -51,7 +51,7 @@ Azure 负载均衡器的默认分发模式是5元组哈希。
 
 另一个用例方案是媒体上传。 数据上传通过 UDP 进行，但控制平面通过 TCP 实现：
 
-* 客户端启动与负载均衡公共地址的 TCP 会话，并定向到特定 DIP。 通道将保持活动状态以监视连接运行状况。
+* 客户端启动与负载平衡公用地址的 TCP 会话，并定向到特定 DIP。 通道将保持活动状态以监视连接运行状况。
 * 来自同一客户端计算机的新 UDP 会话启动到相同的负载均衡公共终结点。 连接像前面的 TCP 连接一样定向到同一个 DIP 终结点。 能够以较高的吞吐量执行媒体上传，同时通过 TCP 维护控制通道。
 
 > [!NOTE]
@@ -61,22 +61,22 @@ Azure 负载均衡器的默认分发模式是5元组哈希。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以通过修改门户中的负载均衡规则来更改分发模式的配置。
+可以通过在门户中修改负载均衡规则来更改分发模式的配置。
 
-1. 登录 Azure 门户并通过单击“资源组”找到包含要更改的负载均衡器的资源组。
+1. 登录到 Azure 门户，并通过单击 "**资源组**" 找到包含要更改的负载均衡器的资源组。
 2. 在 "负载均衡器概述" 屏幕上，单击 "**设置**" 下的 "**负载均衡规则**"。
 3. 在 "负载均衡规则" 屏幕中，单击要更改分发模式的负载均衡规则。
-4. 在规则下，通过更改“会话持续性”下拉框来更改分发模式。  你可使用以下选项：
+4. 在规则下，通过更改 "**会话持久性**" 下拉框更改分发模式。  提供了以下选项：
     
-    * **无(基于哈希)** - 指定任何虚拟机可能处理来自同一客户端的后续请求。
-    * **客户端 IP (源 IP 关联 2 元组)** - 指定来自同一客户端 IP 地址的后续请求将由同一虚拟机处理。
-    * **客户端 IP 和协议(源 IP 关联 3 元组)** - 指定来自同一客户端 IP 地址和协议组合的连续请求将由同一虚拟机处理。
+    * **无（基于哈希）** -指定任何虚拟机可能会处理来自同一客户端的后续请求。
+    * **客户端 ip （源 IP 关联2元组）** -指定同一虚拟机将处理来自同一客户端 ip 地址的后续请求。
+    * **客户端 ip 和协议（源 IP 关联3元组）** -指定相同的虚拟机将处理来自同一客户端 ip 地址和协议组合的后续请求。
 
-5. 选择分发模式，然后单击“保存”。
+5. 选择分发模式，然后单击 "**保存**"。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-对于使用资源管理器部署的虚拟机，请使用 PowerShell 更改现有负载均衡规则上的负载均衡器分发设置。 以下命令将更新分发模式： 
+对于使用资源管理器部署的虚拟机，请使用 PowerShell 更改现有负载均衡规则的负载均衡器分发设置。 以下命令将更新分发模式： 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -194,5 +194,5 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 内部负载均衡器概述](load-balancer-internal-overview.md)
-* [配置面向 Internet 的负载均衡器入门](load-balancer-get-started-internet-arm-ps.md)
+* [开始配置面向 Internet 的负载均衡器](quickstart-create-standard-load-balancer-powershell.md)
 * [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)

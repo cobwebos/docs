@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549374"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022488"
 ---
 # <a name="understand-the-azure-ad-schema"></a>了解 Azure AD 架构
 Azure Active Directory （Azure AD）中的对象（如任意目录）是一个编程的高级数据构造，它表示用户、组和联系人等。 在 Azure AD 中创建新用户或联系人时，将创建该对象的新实例。 这些实例可根据其属性进行区分。
@@ -72,7 +72,7 @@ Azure AD 具有两种类型的属性：
 1.  请参阅[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 1.  用全局管理员帐户登录。
 1.  在左侧，选择 "**修改权限**"，并确保 "**所有**" 都*同意*。
-1.  运行查询 https://graph.microsoft.com/beta/serviceprincipals/ 。 此查询返回服务主体的列表。
+1.  运行查询 https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith （Displayname，"Active"）。 此查询返回已筛选的服务主体列表。
 1.  找到 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 并记下 `"id"`的值。
     ```
     "value": [

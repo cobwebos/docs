@@ -2,22 +2,22 @@
 title: 更新 "我的应用" 门户上的组信息-Azure AD
 description: 了解如何查看和更新与组相关的信息，包括查看你拥有的组、创建新组、查看已是其成员的组，以及联接你还不属于的所有组。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704946"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022290"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>更新 "我的应用" 门户上的组信息
 
@@ -98,8 +98,6 @@ ms.locfileid: "76704946"
 
 创建组后，可以编辑其详细信息，包括更新任何现有信息。
 
-### <a name="to-edit-your-details"></a>编辑详细信息
-
 1. 从 "**组**" 页中选择要编辑的组，然后在 " *&lt;group_name&gt;* " 页上选择 "**编辑详细信息**"。
 
     此时将显示 "**编辑详细信息**" 框，您可以在最初创建组时更新所添加的信息。
@@ -108,9 +106,7 @@ ms.locfileid: "76704946"
 
 ## <a name="add-or-remove-a-member"></a>添加或删除成员
 
-你可以为自己的任何组添加或删除成员。
-
-### <a name="to-add-or-remove-a-member"></a>添加或删除成员
+你可以添加或删除任何你拥有的组的成员。
 
 1. 选择要向其中添加成员的组，然后在 " *&lt;group_name&gt;* " 页上选择 " **+** "。
 
@@ -130,8 +126,6 @@ ms.locfileid: "76704946"
 
 如果你的组织允许，你可以续订 Office 365 组，延长你的到期日期。
 
-### <a name="to-renew-a-group"></a>续订组
-
 1. 选择要续订的 Office 365 组，然后选择 "**续订组**"。
 
     ![续订 Office 365 组，延长过期日期](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ ms.locfileid: "76704946"
 
 你可以随时删除任何自己的组。 但是，如果你错误地删除了某个组，则必须创建它并再次添加成员。
 
-### <a name="to-delete-the-group"></a>删除组
-
 1. 选择要永久删除的组，然后在 " *&lt;group_name"&gt;* "页上选择"**删除组**"。
 
     ![突出显示 "删除组" 链接 < Group_name > "页](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ ms.locfileid: "76704946"
 
 ## <a name="join-an-existing-group"></a>加入现有组
 
-你可以从 "**组**" 页加入现有组。
-
-### <a name="to-join-or-leave-a-group"></a>加入或离开组
+你可以在 "**组**" 页中加入或离开现有组。
 
 1. 在 "**组**" 页上，从 "**我所在的组**" 区域中选择 "**加入组**"。
 
@@ -172,7 +162,7 @@ ms.locfileid: "76704946"
 
 3. 如果错误地加入了组，或者不再需要作为组的一部分，则可以从 "**联接组**" 页中选择组名称，然后选择 "**离开组**"。
 
-    !["加入组" 页，突出显示 "退出组" 按钮](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    !["加入组" 页，突出显示 "退出组" 按钮](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>后续步骤
 
