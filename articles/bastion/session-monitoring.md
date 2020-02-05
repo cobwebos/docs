@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512998"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981083"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure 堡垒的会话监视和管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "73512998"
    ![查看会话](./media/session-monitoring/view-session.png)
 3. 选择 "**刷新**" 以查看更新后的远程会话列表。 选择 "刷新" 时，Azure 堡垒将提取最新的监视信息并在门户中刷新它。
 
-   ![刷新](./media/session-monitoring/refresh.png)
+   ![refresh](./media/session-monitoring/refresh.png)
 
 >[!IMPORTANT]
 > 为从网关管理器到会话监视的入站流量启用端口4443以进行工作。
@@ -46,7 +46,7 @@ ms.locfileid: "73512998"
    ![列出会话](./media/session-monitoring/list.png)
 3. 选择特定的远程会话，然后选择 "会话" 行右端的三个省略号，然后选择 "**删除**"。
 
-   ![删除](./media/session-monitoring/delete.png)
+   ![delete](./media/session-monitoring/delete.png)
 4. 选择 "删除" 时，远程会话将断开连接，并且用户将在远程会话中显示 "已断开连接" 消息。
 
    ![取消](./media/session-monitoring/disconnect.png)

@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934692"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988339"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>通过 Azure 媒体服务分析视频和音频文件
 
@@ -30,7 +30,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ## <a name="compliance-privacy-and-security"></a>合规性、隐私性和安全性
 
-作为一项重要提醒，你必须遵守对你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何其他 Azure 服务，可能会对其他人造成损害。 在将任何视频（包括任何生物识别数据）上传到视频索引器服务进行处理和存储之前，你必须拥有所有正确的权限，包括来自视频中个人的所有适当的同意。 若要了解 Microsoft[认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)，请参阅有关视频索引器的隐私和安全性。 若要获得 Microsoft 的隐私义务并处理数据，请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款（"OST"）](https://www.microsoft.com/licensing/product-licensing/products)和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 其他隐私信息（包括数据保留、删除/销毁）在 OST 和[此处](../video-indexer/faq.md)提供。 通过使用视频索引器，你同意遵守认知服务条款、OST、DPA 和隐私声明。
+作为一项重要提醒，你必须遵守对你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何其他 Azure 服务，可能会对其他人造成损害。 在将任何视频（包括任何生物识别数据）上传到视频索引器服务进行处理和存储之前，你必须拥有所有正确的权限，包括来自视频中个人的所有适当的同意。 若要了解 Microsoft[认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)，请参阅有关视频索引器的隐私和安全性。 若要获得 Microsoft 的隐私义务并处理数据，请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 其他隐私信息（包括数据保留、删除/销毁）在 OST 和[此处](../video-indexer/faq.md)提供。 通过使用视频索引器，你同意遵守认知服务条款、OST、DPA 和隐私声明。
 
 ## <a name="built-in-presets"></a>内置预设
 

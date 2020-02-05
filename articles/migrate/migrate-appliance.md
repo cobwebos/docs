@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028828"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990736"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -32,7 +32,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载链接** | https://aka.ms/migrate/appliance/vmware 
 **下载大小** | 11.2 GB
 **许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> 设备需要直接或通过代理访问 internet。<br/> 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 设备可以连接到单个 vCenter Server。
+**部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/> 设备需要直接或通过代理访问 internet。<br/> 设备可以连接到单个 vCenter Server。
 **硬件** | VCenter 上的资源，用于分配含 32 GB RAM 8 个 vcpu 的 VM、大约 80 GB 的磁盘存储和外部虚拟交换机。 
 **哈希值** | MD5： c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256：4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter 服务器/主机** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行5.5、6.0、6.5 或 6.7 vCenter Server。
@@ -66,14 +66,12 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载格式** | 压缩文件夹（包含 PowerShell 安装程序脚本）
 **下载链接** | [下载链接](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下载大小** | 59.7 MB
-**硬件** | 专用物理计算机或 VM。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/><br/> 设备需要静态或动态 IP 地址以及 internet 访问。
-**哈希值** | MD5：96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256： f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+**硬件** | 专用物理计算机或 VM。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
+**哈希值** | MD5：1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256： a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 **软件** | 设备计算机应运行 Windows Server 2016。 
 **设备部署**   |  设备安装程序脚本是从门户下载的（在压缩文件夹中）。 <br/> 解压文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）。
 **发现** | 一个设备最多可以发现250个物理服务器。
 **设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
-**端口访问** | 在配置了设备后，在 TCP 端口3389上进行入站连接，以允许与设备建立远程桌面连接。<br/><br/> 端口44368上的入站连接，可使用以下 URL 远程访问设备管理应用： "https：//< 设备-ip 或名称 >：44368。<br/><br/> 端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
-
 
 
 ## <a name="url-access"></a>URL 访问
@@ -86,16 +84,16 @@ Azure Migrate 设备需要连接到 internet。
 **URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 通信。
 management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 aka.ms/* | 允许访问称为 "链接"。 用于 Azure Migrate 设备更新。
 download.microsoft.com/download | 允许从 Microsoft 下载下载。
-*.servicebus.windows.net | 用于 VMware 无代理迁移。<br/><br/> 设备与 Azure Migrate 服务之间的通信。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | 用于 VMware 无代理迁移。<br/><br/> 连接到 Azure Migrate 服务 Url。
-\* .blob.core.windows.net |  用于 VMware 无代理迁移。<br/><br/>将数据上传到存储。
+*.servicebus.windows.net | **用于 VMware 无代理迁移**<br/><br/> 设备与 Azure Migrate 服务之间的通信。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **用于 VMware 无代理迁移**<br/><br/> 连接到 Azure Migrate 服务 Url。
+\* .blob.core.windows.net |  **用于 VMware 无代理迁移**<br/><br/>将数据上传到存储。
 
 
 
@@ -136,7 +134,7 @@ VM 说明 | vm.Summary.Config.Annotation
 操作系统类型 | vm.SummaryConfig.GuestFullName
 启动类型 | vm.Config.Firmware
 核心数 | vm.Config.Hardware.NumCPU
-内存(MB) | vm.Config.Hardware.MemoryMB
+内存（MB） | vm.Config.Hardware.MemoryMB
 磁盘数 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
 磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
@@ -185,8 +183,8 @@ Hyper-v 虚拟机监控程序虚拟处理器 | % Guest 运行时间 | 建议的 
 Hyper-v 动态内存 VM | 当前压力（%）<br/> 来宾可见物理内存（MB） | 建议的 VM 大小/成本
 Hyper-v 虚拟存储设备 | 每秒读取的字节数 | 磁盘大小、存储成本、VM 大小的计算
 Hyper-v 虚拟存储设备 | 每秒写入的字节数 | 磁盘大小、存储成本、VM 大小的计算
-Hyper-V 虚拟网络适配器 | 每秒接收的字节数 | VM 大小的计算
-Hyper-V 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
+Hyper-v 虚拟网络适配器 | 每秒接收的字节数 | VM 大小的计算
+Hyper-v 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
 
 - "CPU 使用率" 是所有附加到 VM 的虚拟处理器的所有使用量之和。
 - 内存使用率为（当前压力 * 来宾可见物理内存）/100。

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 13e4923bc5d49843710c9df4523992f541f1d343
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964866"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988016"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>预览：控制包含维护控制的更新和 Azure CLI
 
@@ -183,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>专用主机
 
-检查专用主机的挂起更新（ADH）。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
+检查专用主机的挂起更新。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
 
 ```azurecli-interactive
 az maintenance update list \

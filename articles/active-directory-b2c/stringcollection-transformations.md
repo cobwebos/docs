@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950997"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982288"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "74950997"
 
 将字符串声明添加到新的 stringCollection 声明。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
@@ -62,7 +62,7 @@ ms.locfileid: "74950997"
 
 将字符串参数添加到新的 stringCollection 声明。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | InputParameter | item | 字符串 | 要添加到输出声明的值。 |
@@ -97,7 +97,7 @@ ms.locfileid: "74950997"
 
 从提供的字符串集合中获取第一项。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
 | OutputClaim | extractedItem | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
@@ -121,4 +121,42 @@ ms.locfileid: "74950997"
   - **collection**: ["someone@outlook.com", "someone@contoso.com"]
 - 输出声明：
   - **extractedItem**: "someone@outlook.com"
+
+
+## <a name="stringcollectioncontains"></a>StringCollectionContains
+
+检查 StringCollection 声明类型是否包含元素
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | 要搜索的声明类型。 |
+|InputParameter|item|字符串|要搜索的值。|
+|InputParameter|ignoreCase|字符串|指定此比较是否应忽略所比较字符串的大小写。|
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 如果集合包含这样的字符串，则为布尔型指示器 |
+
+下面的示例检查 `roles` stringCollection 声明类型是否包含**admin**的值。
+
+```XML
+<ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="item" DataType="string" Value="Admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+- 输入声明：
+    - **inputClaim**： ["reader"、"author"、"admin"]
+- 输入参数：
+    - **项**： "Admin"
+    - **regexoptions.ignorecase**： "true"
+- 输出声明：
+    - **outputClaim**： "true"
+
 

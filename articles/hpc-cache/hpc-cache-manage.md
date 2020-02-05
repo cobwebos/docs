@@ -4,18 +4,18 @@ description: 如何使用 Azure 门户管理和更新 Azure HPC 缓存
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867084"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988825"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>从 Azure 门户管理缓存
 
-Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存状态和基本统计信息。 它还包含用于删除缓存、将数据刷新到长期存储或更新软件的控件。
+Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存状态和基本统计信息。 它还包含用于停止或启动缓存、删除缓存、将数据刷新到长期存储和更新软件的控件。
 
 若要打开 "概述" 页，请在 Azure 门户中选择缓存资源。 例如，加载 "**所有资源**" 页，然后单击缓存名称。
 
@@ -23,12 +23,29 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 
 页面顶部的按钮可帮助你管理缓存：
 
+* **启动**和[**停止**](#stop-the-cache)-暂停缓存操作
 * [**刷新**](#flush-cached-data)-将更改的数据写入存储目标
 * [**升级**](#upgrade-cache-software)-更新缓存软件
 * **刷新**-重新加载 "概述" 页
 * [**删除**](#delete-the-cache)-永久销毁缓存
 
 阅读以下有关这些选项的详细信息。
+
+## <a name="stop-the-cache"></a>停止缓存
+
+可以停止缓存，降低非活动期间的成本。 停止缓存后，不会向你收费，但会向你收取缓存分配的磁盘存储费用。 （有关详细信息，请参阅[定价](https://aka.ms/hpc-cache-pricing)页。）
+
+停止的缓存不响应客户端请求。 应在停止缓存之前卸载客户端。
+
+"**停止**" 按钮可挂起活动缓存。 当缓存的状态为 "**正常**" 或 "已**降级**" 时，"**停止**" 按钮可用。
+
+![已突出显示 "停止" 操作并显示一条弹出消息，其中显示 "停止" 操作并询问 "是否要继续？" 的顶部按钮的屏幕截图 具有 "是" （默认值）和 "无" 按钮](media/stop-cache.png)
+
+单击 "是" 确认停止缓存后，缓存会自动将其内容刷新到存储目标。 此过程可能需要一段时间，但它可以确保数据的一致性。 最后，缓存状态将更改为 "**已停止**"。
+
+若要重新激活停止的缓存，请单击 "**开始**" 按钮。 不需要确认。
+
+![突出显示启动的顶部按钮的屏幕截图](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>刷新缓存的数据
 
@@ -68,13 +85,14 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 > [!NOTE]
 > 在删除缓存之前，Azure HPC 缓存不会自动将已更改的数据从缓存写入后端存储系统。
 >
-> 若要确保缓存中的所有数据都已写入到长期存储中，请按照以下步骤进行操作：
+> 若要确保缓存中的所有数据都已写入到长期存储，请在删除之前[停止缓存](#stop-the-cache)。 在单击 "删除" 按钮之前，请确保它显示 "**已停止**" 状态。
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. 使用 "存储目标" 页上的 "删除" 按钮，从 Azure HPC 缓存中[删除](hpc-cache-edit-storage.md#remove-a-storage-target)每个存储目标。 在删除目标之前，系统会自动将任何已更改的数据从缓存写入后端存储系统。
-> 1. 等待存储目标被完全删除。 如果要从缓存中写入大量数据，则该过程可能需要一小时或更长时间。 完成后，门户通知会显示 "删除" 操作已成功，并且存储目标将从列表中消失。
-> 1. 删除所有受影响的存储目标后，可以安全地删除缓存。
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> 或者，您可以使用[flush](#flush-cached-data)选项来保存缓存的数据，但是如果客户端在刷新完成之后但在销毁缓存实例之前将更改写入缓存，则会丢失工作。
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>缓存指标和监视
 

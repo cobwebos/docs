@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps Android SDK 设置地图样式 |Microsoft Azure 映射
-description: 本文介绍 Android SDK Microsoft Azure 地图样式的相关功能。
+description: 在本文中，你将了解有关 Android SDK 的 Microsoft Azure 地图样式相关功能的信息。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fe0aa662234166249433634ccb45d1931d176319
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910490"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988951"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>使用 Azure Maps Android SDK 设置地图样式
 
@@ -59,7 +59,7 @@ ms.locfileid: "75910490"
 
 ## <a name="set-map-style-in-the-activity-class"></a>在活动类中设置地图样式
 
-可以在 activity 类中设置地图样式。 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。 这会将地图样式设置为**satellite_road_labels**。
+可以在 activity 类中设置地图样式。 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。 此代码会将地图样式设置为**satellite_road_labels**。
 
 ```Java
 mapControl.onReady(map -> {

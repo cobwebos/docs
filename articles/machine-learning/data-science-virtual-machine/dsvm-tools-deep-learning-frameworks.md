@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615497"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984704"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和 AI 框架
 下面列出了 DSVM 上的深度学习框架。
@@ -75,7 +75,7 @@ ms.locfileid: "75615497"
 | 如何在 DSVM 上配置/安装它？  | Keras 安装在 Windows 上的 Python 3.6 和 Linux 的 Python 3.5 中 |
 | 如何运行      | 在终端激活正确的环境，然后运行 Python。 |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit （CNTK）](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -107,7 +107,7 @@ ms.locfileid: "75615497"
 | ------------- | ------------- |
 | 支持的版本 |  |
 | 支持的 DSVM 版本      | Windows 和 Linux   |
-| 它是用作什么的？ | 用于查询 GPU 活动的 NVIDIA 工具 |
+| 它的作用是什么？ | 用于查询 GPU 活动的 NVIDIA 工具 |
 | 如何在 DSVM 上配置/安装它？  | `nvidia-smi` 在系统路径上。 |
 | 如何运行      | 在**具有 GPU 的**虚拟机上，打开命令提示符（在 Windows 上）或终端（在 Linux 上），然后运行 `nvidia-smi`。 |
 
@@ -115,7 +115,7 @@ ms.locfileid: "75615497"
 
 |    |           |
 | ------------- | ------------- |
-| 支持的版本 | 1.2.0 |
+| 支持的版本 | 1.2.0 （ubuntu 16.04、Windows 2016、Windows 2019）、1.4.0 （Ubuntu 18.04） |
 | 支持的 DSVM 版本      | Linux |
 | 如何在 DSVM 上配置/安装它？  | 在[Python 3.5](dsvm-tools-languages.md#python-linux-edition)中安装。 包含 Jupyter 笔记本示例，其中的示例位于/dsvm/samples/pytorch。 |
 | 如何运行      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)： Connect，然后打开 PyTorch 目录以获取示例。  |
@@ -129,7 +129,7 @@ ms.locfileid: "75615497"
 | 如何在 DSVM 上配置/安装它？  | 在[Linux](dsvm-tools-languages.md#python-linux-edition)上的 python 3.5 中安装，在[Windows](dsvm-tools-languages.md#python-windows-server-2016-edition)上安装 python 3.6 2016 |
 | 如何运行      | 终端：激活正确的环境，然后运行 Python。 <br/> * Jupyter：连接到[Jupyter](provision-vm.md)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开示例的 TensorFlow 目录。   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow 服务](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |

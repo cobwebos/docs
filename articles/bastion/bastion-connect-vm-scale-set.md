@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 446784155cf6f72cfaa80523ed3913eacc7e5cfc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513128"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988084"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>使用 Azure 堡垒连接到虚拟机规模集
 
@@ -35,7 +35,7 @@ ms.locfileid: "73513128"
    ![堡垒选项卡](./media/bastion-connect-vm-scale-set/3.png)
 4. 在 "堡垒" 选项卡上，为虚拟机规模集输入用户名和密码，然后选择 "**连接**"。
 
-   ![与](./media/bastion-connect-vm-scale-set/4.png)
+   ![连接](./media/bastion-connect-vm-scale-set/4.png)
 5. 通过堡垒连接到此虚拟机的 RDP 将直接在 Azure 门户（通过 HTML5）中使用端口443和堡垒服务打开。
 
 ## <a name="next-steps"></a>后续步骤

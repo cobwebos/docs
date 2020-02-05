@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845196"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990345"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>使用 VS Code 远程在 Azure 机器学习计算实例上交互式调试
 
 在本文中，你将了解如何在 Azure 机器学习计算实例上设置 Visual Studio Code 远程，以便可以从 VS Code**以交互方式调试你的代码**。 
 
 > [!NOTE]
-> 计算实例仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
+> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 
 + [Azure 机器学习计算实例](concept-compute-instance.md)是一种完全托管的基于云的数据科学家工作站，为 IT 管理员提供管理和企业就绪能力。 
 

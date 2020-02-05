@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911315"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988730"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -31,7 +31,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
 
     - 或者，通过使用[Azure Maps-rest](https://www.npmjs.com/package/azure-maps-rest) npm 包在本地加载 AZURE MAPS Web SDK 源代码的服务模块，然后将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
-        > npm install azure-maps-rest
+        > **npm 安装 azure-地图-rest**
     
         然后，将脚本引用添加到该文件的 `<head>` 元素：
 

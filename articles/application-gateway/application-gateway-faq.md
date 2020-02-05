@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770078"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985996"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -68,7 +68,9 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>保持活动超时和 TCP 空闲超时的设置有哪些？
 
- 在应用程序网关 v1 SKU 中，keep-alive 超时为120秒。 V2 SKU 的 keep-alive 超时为75秒。 在应用程序网关的前端虚拟 IP （VIP）上，TCP 空闲超时值为4分钟。
+*保持活动状态的超时*控制应用程序网关在重新使用或关闭之前等待客户端向持久连接发送其他 HTTP 请求的时间长度。 *Tcp 空闲超时*控制在没有活动的情况下，tcp 连接保持打开状态的时间。 
+
+应用程序网关 v1 SKU 中的 keep-alive*超时*为120秒，v2 sku 为75秒。 在应用程序网关的 v1 和 v2 SKU 的前端虚拟 IP （VIP）上， *TCP 空闲超时*值为4分钟。 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>IP 或 DNS 名称是否在应用程序网关的生存期内发生更改？
 

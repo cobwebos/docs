@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435036"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987622"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
@@ -39,8 +39,8 @@ ms.locfileid: "75435036"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 付款计划 | 现用现付 |
-| 应用程序模板 | 旧版应用程序 |
+| 定价计划 | 标准 |
+| 应用程序模板 | 旧应用程序 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |
@@ -136,9 +136,9 @@ ms.locfileid: "75435036"
 | Python 版本 | 3 |
 | 启用自动缩放 | 否 |
 | 在处于非活动状态分钟后终止 | 30 |
-| 辅助进程类型 | Standard_DS3_v2 |
+| 辅助角色类型 | Standard_DS3_v2 |
 | 工作节点 | 第 |
-| 驱动程序类型 | 与辅助进程相同 |
+| 驱动程序类型 | 与辅助角色相同 |
 
 创建群集可能需要几分钟时间，请等待群集创建完成，然后再继续。
 

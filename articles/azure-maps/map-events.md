@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911078"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985911"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
 
-本文介绍如何使用[map class events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)属性突出显示地图上以及地图的不同层上的事件。 它还展示了在与 HTML 标记进行交互时如何使用 map 类 events 属性来突出显示事件。
+本文介绍如何使用[map events 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)。 属性突出显示地图上以及地图的不同层上的事件。 您还可以在与 HTML 标记交互时突出显示事件。
 
 ## <a name="interact-with-the-map"></a>与地图交互
 
-观看下面的地图，查看右侧突出显示的相应鼠标事件。 可以单击 JS 选项卡，查看和编辑 JavaScript 代码。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 上的代码。
+观看下面的地图，查看右侧突出显示的相应鼠标事件。 可以单击 JS 选项卡，查看和编辑 JavaScript 代码。 还可以单击 CodePen 上的 "**编辑**" 来修改 CodePen 上的代码。
 
 <br/>
 
@@ -31,7 +31,7 @@ ms.locfileid: "75911078"
 
 ## <a name="interact-with-map-layers"></a>与地图层交互
 
-下面的代码重点介绍当您与符号层交互时触发的事件的名称。 符号、气泡图、线条和多边形层都支持相同的一组事件。 热度地图和图块层不支持这些事件中的任何一个。
+当你与符号层交互时，以下代码将突出显示激发的事件。 符号、气泡图、线条和多边形层都支持相同的一组事件。 热度地图和图块层不支持这些事件中的任何一个。
 
 <br/>
 

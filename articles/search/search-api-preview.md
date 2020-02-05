@@ -7,38 +7,51 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 02/03/2020
+ms.openlocfilehash: fd21a4b821e1911e94d542a0922e5269786c365d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935098"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991059"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 认知搜索中的预览功能
 
 本文列出了当前预览版中的功能。 从此列表中删除了从预览版转换为公开发行版本的功能。 可以查看[服务更新](https://azure.microsoft.com/updates/?product=search)或有关公开上市的公告的[新增功能](whats-new.md)。
 
-虽然门户和 .NET SDK 中可能提供某些预览功能，但 REST API 始终具有预览功能。 当前预览 API 版本为 `2019-05-06-Preview`。
+虽然门户和 .NET SDK 中可能提供某些预览功能，但 REST API 始终具有预览功能。 
+
++ 对于搜索操作，当前预览 API 版本是[`2019-05-06-Preview`](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)
++ 对于管理操作，当前预览版本是[`2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)
 
 > [!IMPORTANT]
 > 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="features-in-public-preview"></a>公共预览版中的功能
+## <a name="ai-enrichment-features"></a>AI 扩充功能
 
-+ [自定义实体查找（预览）](cognitive-search-skill-custom-entity-lookup.md )从自定义的、用户定义的单词和短语列表中查找文本。 使用此列表，它将标记具有任何匹配实体的所有文档。 该技能还支持一定程度的模糊匹配，可用于查找类似但不完全完全相同的匹配项。 
+通过[预览版搜索 API](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)探索 AI 扩充的最新增强功能。
 
-+ [PII 检测（预览版）](cognitive-search-skill-pii-detection.md)是在编制索引期间使用的一项认知技能，可从输入文本中提取个人身份信息，并使你能够以各种方式从该文本中屏蔽它。
++ [自定义实体查找技术（预览版）](cognitive-search-skill-custom-entity-lookup.md )是一项认知技能，可从自定义的用户定义的单词和短语列表中查找文本。 使用此列表，它将标记具有任何匹配实体的所有文档。 该技能还支持一定程度的模糊匹配，可用于查找类似但不完全完全相同的匹配项。 
+
++ [PII 检测技能（预览版）](cognitive-search-skill-pii-detection.md)是在编制索引期间使用的一项认知技能，可从输入文本中提取个人身份信息，并使你能够以各种方式从该文本中屏蔽它。
 
 + [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)将缓存添加到扩充管道，这样，如果目标修改（如对技能组合或其他对象的更新）不更改内容，则可以重复使用现有输出。 缓存仅适用于技能组合生成的丰富文档。
+
++ [知识 store （预览版）](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 物理数据结构存在于 Azure Blob 存储和 Azure 表存储中，并在运行具有附加认知技能组合的索引器时创建并填充。 在技能组合定义内指定知识存储本身的定义。 在知识存储定义中，通过确定数据的形状、数据是否存储在表存储或 Blob 存储中，以及是否有多个视图的*投影*元素来控制数据的物理结构。
+
+## <a name="indexing-and-query-features"></a>索引和查询功能
+
+预览搜索 API 中提供了索引器预览功能。 
 
 + [Cosmos DB 索引器](search-howto-index-cosmosdb.md)支持 MongoDB api （预览）、Gremlin api （预览）和 Cassandra API （预览）。
 
 + [Azure Data Lake Storage Gen2 索引器（预览版）](search-howto-index-azure-data-lake-storage.md)可通过 Data Lake Storage Gen2 为内容和元数据编制索引。
 
-+ [知识 store （预览版）](knowledge-store-concept-intro.md)是基于 AI 的扩充管道的新目标。 物理数据结构存在于 Azure Blob 存储和 Azure 表存储中，并在运行具有附加认知技能组合的索引器时创建并填充。 在技能组合定义内指定知识存储本身的定义。 在知识存储定义中，通过确定数据的形状、数据是否存储在表存储或 Blob 存储中，以及是否有多个视图的*投影*元素来控制数据的物理结构。
-
 + [moreLikeThis 查询参数（预览）](search-more-like-this.md)查找与特定文档相关的文档。 早期预览版中已有此功能。 
+
+## <a name="management-features"></a>管理功能
+
++ 通过管理 REST API [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)的[专用终结点支持](service-create-private-endpoint.md)。 你可以创建对终结点的访问方式有限制的服务。
 
 ## <a name="earlier-preview-features"></a>更早的预览功能
 

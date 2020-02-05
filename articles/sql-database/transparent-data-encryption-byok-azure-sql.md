@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981888"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990974"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明数据加密与客户托管的密钥
 
@@ -124,7 +124,7 @@ Key vault 管理员还可以[对 key vault 审核事件启用日志记录](https
 
 - 如果在8小时内还原密钥访问，数据库将在接下来的一小时内自动修复。
 
-- 如果在超过8小时后恢复密钥访问权限，则无法进行自动修复，并使数据库恢复工作可能需要很长时间，具体取决于数据库的大小，需要打开支持票证。 数据库重新联机后，以前配置的服务器级别设置（如[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)配置、时间点还原历史记录和标记）将丢失。 因此，建议实施通知系统，以便在8小时内确定并解决基础密钥访问问题。
+- 如果在超过8小时后恢复密钥访问权限，则无法进行自动修复，并使数据库恢复需要门户上的其他步骤，并且可能需要很长时间，具体取决于数据库的大小。 数据库重新联机后，以前配置的服务器级别设置（如[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)配置、时间点还原历史记录和标记）**将丢失**。 因此，建议实施通知系统，以便在8小时内确定并解决基础密钥访问问题。
 
 ### <a name="accidental-tde-protector-access-revocation"></a>意外的 TDE 保护程序访问吊销
 

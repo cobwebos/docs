@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/28/2020
+ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840462"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989818"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -121,6 +121,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 ## <a name="change-log"></a>更改日志
 
+- 02/03/2020：在 sles 上针对 sap 应用程序的[Azure vm 上的 SAP nw 进行高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)更改，并在[SLES 上使用和 for sap 应用程序的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)与 sap nw 的高可用性一起消除有关在 sles 上的群集节点的主机名中使用破折号的警告
 - 01/28/2020：在[RHEL 上的 Azure vm 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)，以将 SAP HANA 群集资源超时调整为 Red Hat 超时建议
 - 01/17/2020：更改[Azure 邻近位置组以获得最佳网络延迟，以便 SAP 应用程序](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)更改将现有 vm 移到邻近位置组的部分
 - 01/17/2020：在[SAP 工作负荷配置中更改，并提供 Azure 可用性区域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)以指向在可用性区域之间自动测定延迟的过程

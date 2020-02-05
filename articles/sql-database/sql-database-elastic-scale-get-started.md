@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823662"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987016"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 
@@ -24,7 +24,7 @@ ms.locfileid: "73823662"
 
 ## <a name="elastic-database-tools-for-java"></a>适用于 Java 的弹性数据库工具
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * Java 开发人员工具包 (JDK) 1.8 或更高版本
 * [Maven](https://maven.apache.org/download.cgi)
@@ -32,7 +32,7 @@ ms.locfileid: "73823662"
 
 ### <a name="download-and-run-the-sample-app"></a>下载并运行示例应用
 
-若要生成 JAR 文件并开始使用示例项目，请执行以下操作： 
+要生成 JAR 文件并开始使用示例项目，请按照以下步骤操作： 
 1. 克隆包含客户端库以及示例应用的 [GitHub 存储库](https://github.com/Microsoft/elastic-db-tools-for-java)。 
 
 2. 编辑 _./sample/src/main/resources/resource.properties_ 文件以设置以下内容：
@@ -70,7 +70,7 @@ ms.locfileid: "73823662"
 
 ## <a name="elastic-database-tools-for-net"></a>适用于 .NET 的弹性数据库工具
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * 使用 C# 的 Visual Studio 2012 或更高版本。 可以从 [Visual Studio 下载页面](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)下载免费版本。
 * NuGet 2.7 或更高版本。 若要获取最新版本，请参阅[安装 NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
@@ -81,13 +81,13 @@ ms.locfileid: "73823662"
 
 若要下载并运行该示例，请遵循以下步骤： 
 
-1. 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
+1. 下载[适用于 AZURE SQL 的弹性数据库工具-入门示例](https://github.com/Azure/elastic-db-tools)。 将示例解压缩到所选位置。
 
 2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
 
 3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
-4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
 
 5. 要深入了解客户端库功能，请尝试使用不同的选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    
@@ -114,7 +114,7 @@ ms.locfileid: "73823662"
 
 * 合并现有分片：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>费用
 
 弹性数据库工具库免费。 使用弹性数据库工具时，除 Azure 使用成本外，无需支付其他任何费用。 
 
@@ -127,7 +127,7 @@ ms.locfileid: "73823662"
 有关弹性数据库工具的详细信息，请参阅以下文章：
 
 * 代码示例： 
-  * 弹性数据库工具（[.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
+  * 弹性数据库工具（[.NET](https://github.com/Azure/elastic-db-tools)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
   * [Elastic Database Tools for Azure SQL - Entity Framework Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)（Azure SQL 的弹性数据库工具 – 实体框架集成）
   * [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 博客：[弹性缩放通告](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

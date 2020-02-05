@@ -3,17 +3,17 @@ title: 管理身份验证 |Microsoft Azure 映射
 description: 您可以使用 Azure 门户在 Microsoft Azure 映射中管理身份验证。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/16/2020
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f856aebe5e3acaca142e460d18ec8c6498b18787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766062"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989164"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -21,40 +21,40 @@ ms.locfileid: "76766062"
 
 ## <a name="view-authentication-details"></a>查看身份验证详细信息
 
-创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 使用主密钥作为订阅密钥，有时这些名称可互换使用。 辅助密钥可用于诸如滚动密钥更改这样的方案。 无论采用哪种方式，都需要使用密钥才能调用 Azure Maps。 此过程称为[共享密钥身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)。 若要详细了解共享密钥和 Azure AD 身份验证，请参阅[通过 Azure Maps 进行身份验证](https://aka.ms/amauth)。
+创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 当使用[共享密钥身份验证](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)调用 Azure Maps 时，建议使用主密钥作为订阅密钥。 辅助密钥可用于诸如滚动密钥更改这样的方案。 若要了解详细信息，请参阅[Azure Maps 的身份验证](https://aka.ms/amauth)。
 
 你可以在 Azure 门户上查看身份验证详细信息。 请在 "**设置**" 菜单中转到你的帐户并选择 "**身份验证**"。
 
 ![身份验证详细信息](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 
-## <a name="set-up-azure-ad-app-registration"></a>设置 Azure AD 应用注册
+## <a name="configure-azure-ad-app-registration"></a>配置 Azure AD 应用注册
 
-创建 Azure Maps 帐户后，需要在 Azure AD 租户与 Azure Maps 资源之间建立链接。
-
-1. 从门户菜单中选择 " **Azure Active Directory** "。 提供注册的名称。 单击 "**应用注册**"，然后单击 "**新建注册**"。 在 "**重定向 URI** " 框中，提供 web 应用的主页。 例如， https://localhost/ 。 如果已注册应用，请执行步骤2。
+1. 从 Azure 门户中的 Azure 服务列表中选择**Azure Active Directory** 。  选择**应用注册**并单击 "**新注册**"。  接下来， 输入**名称**，选择 "**支持帐户类型**"，然后单击 "**注册**"。  如果已注册应用，请继续执行步骤2。 
 
     ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
     ![应用注册详细信息](./media/how-to-manage-authentication/app-create.png)
 
-2. 若要将委派的 API 权限分配到 Azure Maps，请在 "**应用注册**下访问应用程序，然后选择" **API 权限**"。 选择 "**添加权限**"。 搜索并选择 "**选择 API**" 下的**Azure Maps** 。
+2. 若要将委派的 API 权限分配到 Azure Maps，请在 "**应用注册**下访问应用程序。 然后，选择 " **API 权限**"，然后选择 "**添加权限**"。 在**我的组织使用的 api**下搜索和选择**Azure Maps** 。
 
     ![应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
 
-3. 在 "**选择权限**" 下，选中 "**用户模拟**" 框，然后单击底部的 "**选择**" 按钮。
+3. 检查**访问 Azure Maps** ，然后单击 "**添加权限**"。
 
     ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. 根据身份验证方法完成步骤 a 或 b。
+4. 根据身份验证方法完成步骤 a 或 b。 
 
-    1. 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，请启用 `oauth2AllowImplicitFlow`，方法是在你的应用注册的清单部分中将其设置为 true。
+    1. 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，请启用 `oauth2AllowImplicitFlow`。 若要启用 `oauth2AllowImplicitFlow`，请在应用注册的清单部分中将其设置为 true。 
     
        ![应用部件清单](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. 如果你的应用程序使用服务器/应用程序身份验证，请在应用注册中中转到 "**证书" & 机密**"边栏选项卡，并创建密码或将公钥证书上传到应用注册。 如果创建密码，请安全地存储它以供以后使用。 你将使用此密码从 Azure AD 获取令牌。
+    2. 如果你的应用程序使用服务器/应用程序身份验证，请在应用注册页中转到 "**证书" & 机密**"边栏选项卡，然后单击"**新建客户端密钥**"或" 将公钥证书上传到应用注册 "来创建密码。 如果创建密码，请在单击 "**添加**" 后，复制该密码以供稍后使用，并将其安全地存储。 你将使用此密码从 Azure AD 获取令牌。
 
        ![应用密钥](./media/how-to-manage-authentication/app-keys.png)
+
+       ![添加密钥](./media/how-to-manage-authentication/add-key.png)
 
 
 ## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>向 Azure Maps 授予基于角色的访问控制（RBAC）

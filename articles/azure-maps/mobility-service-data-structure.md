@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910724"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989002"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps 移动服务中的数据结构
 
-本文介绍了[Azure Maps 移动服务](https://aka.ms/AzureMapsMobilityService)中的大都市区域的概念，以及通过服务返回的一些公共字段，以便在对公共传输停止和线路进行查询时。 建议在开始使用移动服务 Api 之前完成本文。 下面将讨论这些公共字段。
+本文介绍了[Azure Maps 移动服务](https://aka.ms/AzureMapsMobilityService)中的大都市区域的概念。 我们讨论了在为公共传输停止和行查询此服务时返回的一些公共字段。 建议在开发移动服务 Api 之前阅读本文。
 
 ## <a name="metro-area"></a>地铁区域
 
-移动服务数据拆分为支持的地铁区域。 大都市区不遵循 city 边界，大都市区可以包含多个城市，例如，密集填充的城市和周围的城市;并且国家/地区可以是一个大都市区。 
+移动服务数据按受支持的大都市区域分组。 地铁区域不遵循城市界限。 地铁区域可包含多个城市、密集填充的城市和周围的城市。 事实上，国家/地区可以是一个大都市区。 
 
-`metroID` 是一种大都市区的 ID，可用于调用[获取地铁区域信息 API](https://aka.ms/AzureMapsMobilityMetroAreaInfo)来请求支持的传输类型，并为地铁区域（如转口机构和活动警报）提供其他详细信息。 你可以使用 Azure Maps 获取地铁 API 来请求支持的地铁区域和 metroIDs。 地铁区域 Id 可能会更改。
+`metroID` 是一种大都市区的 ID，可用于调用[获取地铁区域信息 API](https://aka.ms/AzureMapsMobilityMetroAreaInfo)。 使用 Azure Maps "获取地铁" API 来请求传输类型、传输机构、活动警报，以及所选地铁的其他详细信息。 你还可以请求支持的地铁区域和 metroIDs。 地铁区域 Id 可能会更改。
 
 **metroID：** 522 **Name：** Tacoma-Bellevue
 
@@ -31,25 +31,25 @@ ms.locfileid: "75910724"
 
 ## <a name="stop-ids"></a>停止 Id
 
-传输停止可以通过两种类型的 Id （[一般传输源规范（GFTS）](https://gtfs.org/) id （称为 stopKey）和 AZURE MAPS 停止 id （称为 stopId）来引用。 当引用在一段时间后停止时，建议使用 Azure Maps stop ID，因为此 ID 更稳定，只要物理停止存在，就不会发生更改。 例如，GTFS stop ID 会更频繁地进行更新，例如，当 GTFS 提供程序需要更改它或发布新的 GTFS 版本时，尽管物理停止没有变化。
+传输停止可由两种类型的 Id （[一般传输源规范（GFTS）](https://gtfs.org/) id 和 AZURE MAPS 停止 id）引用。 GFTS ID 称为 stopKey，而 Azure Maps stop ID 称为 stopID。 当经常提到传输停止时，建议使用 Azure Maps 停止 ID。 只要物理停止存在，stopID 就会更稳定，并且可能会保持不变。 GTFS stop ID 会更频繁地更新。 例如，可以根据 GTFS 提供程序请求或发布新的 GTFS 版本时，更新 GTFS stop ID。 尽管物理停止没有变化，但 GTFS 停止 ID 可能会更改。
 
 若要开始，可以使用 "[获取附近的传输 API](https://aka.ms/AzureMapsMobilityNearbyTransit)" 请求附近的传输停止。
 
 ## <a name="line-groups-and-lines"></a>行组和线条
 
-移动服务为行组和行组使用并行数据模型，以便更好地处理从[GTFS](https://gtfs.org/)路由和行程数据模型继承的更改。
+移动服务为行组和行组使用并行数据模型。 此模型用于更好地处理从[GTFS](https://gtfs.org/)路由和行程数据继承的更改。
 
 
 ### <a name="line-groups"></a>行组
 
-"行组" 是一个实体，它将逻辑上属于同一组的所有行组合在一起。 通常，线条组将包含两个行，一条从 A 到 B，另一个从点 B 返回到 A，两者都属于同一公共传输机构并且具有相同的行号。 但是，在某些情况下，线条组具有两行以上的行或其中只有一行。
+"行组" 是一个实体，它将逻辑上属于同一组的所有行组合在一起。 通常，线条组包含两行，一个从点 A 到 B，另一个从点 B 返回到。这两行都属于同一公共传输机构，并且具有相同的行号。 但是，在某些情况下，线条组具有两行以上的行或其中只有一行。
 
 
 ### <a name="lines"></a>线条
 
-如上所述，每个行组都由一组行组成。 通常，每行描述一个方向，每个行组由两行组成。 但是，在某些情况下，行组中包含的行有更多的行，例如，有时会 detour 一条直线，有时不会在同一行号下进行操作，并且在其他情况下，行 gr) 由一行组成，例如一个方向为的圆。
+如上所述，每个行组都由一组行组成。 每个行组都由两行组成，每行描述一个方向。  但是，在某些情况下，多个行组成了一个线条组。 例如，有一条线有时 detour 某个邻近，有时不会。 在这两种情况下，它在相同的行号下运行。 此外，线条组可以由单个行组成。 具有单个方向的圆线是一个具有一行的 ling 组。
 
-若要开始，可以通过使用 "[获取传输行" API](https://aka.ms/AzureMapsMobilityTransitLine)请求行组，稍后向下钻取到 "行"。
+首先，可以使用[获取传输线路 API](https://aka.ms/AzureMapsMobilityTransitLine)请求行组。
 
 
 ## <a name="next-steps"></a>后续步骤

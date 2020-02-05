@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712851"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982751"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "76712851"
 
 比较两个声明，如果根据指定的比较 inputClaim1、inputClaim2 和 stringComparison 它们不相等，将引发异常。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明的类型。 |
 | InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
@@ -89,7 +89,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 将所提供的声明更改为小写或大写，具体要取决于运算符。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要更改的 ClaimType。 |
 | InputParameter | toCase | 字符串 | 以下值之一：`LOWER` 或 `UPPER`。 |
@@ -124,7 +124,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 基于策略中提供的输入参数创建字符串声明。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
 | InputParameter | 值 | 字符串 | 要设置的字符串 |
 | OutputClaim | createdClaim | 字符串 | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
@@ -153,7 +153,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 确定一个字符串声明是否等于另一个字符串声明。 结果是新布尔型 ClaimType，值为 `true` 或 `false`。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明类型。 |
 | InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明类型。 |
@@ -194,7 +194,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 确定声明值是否等于输入参数值。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的声明类型。 |
 | InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
@@ -234,7 +234,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用随机数生成器创建随机字符串。 如果随机数生成器是 `integer` 类型，则可以选择提供种子参数和最大数。 可选字符串格式参数允许使用它来格式化输出，可选的 base64 参数指定输出是否为 base64 编码的 encoded randomGeneratorType [guid, integer] outputClaim（字符串）。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | 字符串 | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
 | InputParameter | stringFormat | 字符串 | [可选]格式化随机值。 |
@@ -293,7 +293,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 根据提供的格式字符串格式化声明。 此转换将使用 C# `String.Format` 方法。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 |作为字符串格式 {0} 参数的 ClaimType。 |
 | InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 |
@@ -328,7 +328,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 根据提供的格式字符串格式化两个声明。 此转换将使用 C# String.Format 方法。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 | 作为字符串格式 {0} 参数的 ClaimType。 |
 | InputClaim | inputClaim | 字符串 | 作为字符串格式 {1} 参数的 ClaimType。 |
@@ -366,7 +366,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 从声明 Restriction 集合中查找项。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | 字符串 | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
 | OutputClaim | restrictionValueClaim | 字符串 | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
@@ -409,7 +409,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 基于另一个声明的值从值列表中查找声明值。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | 字符串 | 包含查找值的声明 |
 | InputParameter | |字符串 | inputParameters 集合。 |
@@ -451,7 +451,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 清除给定声明的值。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | claim_to_null | 字符串 | 其值为 NULL 的声明。 |
 
@@ -474,7 +474,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 获取电子邮件地址的域部分。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | 字符串 | 包含电子邮件地址的 ClaimType。 |
 | OutputClaim | 域 | 字符串 | 调用此声明转换后生成的 ClaimType - 域。 |
@@ -499,11 +499,52 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输出声明：
     - domain: outlook.com
 
+## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
+
+检查 `claimToMatch` 和 `matchTo` 输入参数的字符串声明是否相等，并使用 `outputClaimIfMatched` input 参数中存在的值来设置输出声明，并使用比较结果输出声明，该声明根据比较结果设置为 `true` 或 `false`。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
+| InputParameter | matchTo | 字符串 | 要匹配的正则表达式。 |
+| InputParameter | outputClaimIfMatched | 字符串 | 字符串相等情况下要设置的值。 |
+| OutputClaim | outputClaim | 字符串 | 如果正则表达式匹配，此输出声明将包含 `outputClaimIfMatched` 输入参数的值。 如果没有匹配项，则为 null。 |
+| OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，该类型根据匹配结果设置为 `true` 或 `false`。 |
+
+例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。  
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **claimToMatch**： "64854114520"
+- 输入参数：
+    - **matchTo**： "^ [0-9]{4,16}$"
+    - **outputClaimIfMatched**： "isPhone"
+- 输出声明：
+    - **outputClaim**： "isPhone"
+    - **regexCompareResultClaim**： true
+
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `stringMatchMsg` 和 `stringMatchMsgCode` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 要比较的声明类型。 |
 | InputParameter | matchTo | 字符串 | 要与 `inputClaim` 进行比较的字符串。 |
@@ -552,7 +593,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `outputClaimIfMatched` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
 | InputParameter | matchTo | 字符串 | 要与 inputClaim 进行比较的字符串。 |
@@ -592,3 +633,188 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - isMinorResponseCode: B2C_V1_90001
     - isMinor: true
 
+
+## <a name="stringcontains"></a>StringContains
+
+确定指定的子字符串是否出现在输入声明中。 结果是新布尔型 ClaimType，值为 `true` 或 `false`。 如果值参数出现在此字符串中，则 `true`; 否则 `false`。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | 字符串 | 要搜索的声明类型。 |
+|InputParameter|contains|字符串|要搜索的值。|
+|InputParameter|ignoreCase|字符串|指定此比较是否应忽略所比较的字符串的大小写。|
+| OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 如果子字符串出现在输入声明中，则为布尔型指示器。 |
+
+使用此声明转换来检查字符串声明类型是否包含子字符串。 下面的示例检查 `roles` 字符串声明类型是否包含**admin**的值。
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**： "管理员、审批者、编辑器"
+- 输入参数：
+    - **包含**： "admin"
+    - ignoreCase: true
+- 输出声明：
+    - **outputClaim**: true 
+
+## <a name="stringsubstring"></a>StringSubstring
+
+从位于指定位置处的字符开始，提取字符串声明类型的各个部分，并返回指定数目的字符。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | 字符串 | 声明类型，它包含字符串。 |
+| InputParameter | startIndex | int | 此实例中子字符串的从零开始的起始字符位置。 |
+| InputParameter | 长度 | int | 子字符串中的字符数。 |
+| OutputClaim | outputClaim | boolean | 一个字符串，该字符串等效于在此实例中以 startIndex 开头的长度为的子字符串; 如果 startIndex 等于此实例的长度，并且 length 为零，则为空。 |
+
+例如，获取电话号码的国家/地区前缀。  
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**： "+ 1644114520"
+- 输入参数：
+    - **startIndex**：0
+    - **长度**：2
+- 输出声明：
+    - **outputClaim**： "+ 1"
+
+## <a name="stringreplace"></a>StringReplace
+
+在声明类型字符串中搜索指定的值，并返回一个新的声明类型字符串，其中，当前字符串中出现的所有指定字符串都替换为另一个指定的字符串。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | 字符串 | 声明类型，它包含字符串。 |
+| InputParameter | oldValue | 字符串 | 要搜索的字符串。 |
+| InputParameter | newValue | 字符串 | 用于替换所有出现的 `oldValue` 的字符串 |
+| OutputClaim | outputClaim | boolean | 一个字符串，该字符串等效于当前字符串，只不过 oldValue 的所有实例都将替换为 newValue。 如果在当前实例中找不到 oldValue，则方法返回未更改的当前实例。 |
+
+例如，通过删除 `-` 字符来标准化电话号码  
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**： "+ 164-411-452-054"
+- 输入参数：
+    - **oldValue**： "-"
+    - **长度**： ""
+- 输出声明：
+    - **outputClaim**： "+ 164411452054"
+
+## <a name="stringjoin"></a>StringJoin
+
+通过在每个元素或成员之间使用指定的分隔符，连接指定字符串集合声明类型的元素。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | 一个包含要串联的字符串的集合。 |
+| InputParameter | delimiter | 字符串 | 要用作分隔符的字符串，如逗号 `,`。 |
+| OutputClaim | outputClaim | 字符串 | 由 `inputClaim` 字符串集合的成员组成的字符串，由 `delimiter` 输入参数分隔。 |
+  
+下面的示例使用用户角色的字符串集合，并将其转换为逗号分隔符字符串。 用户可以使用此方法在 Azure AD 用户帐户中存储字符串集合。 稍后，当你从目录中读取帐户时，使用 `StringSplit` 将逗号分隔符字符串转换回字符串集合。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **inputClaim**： ["Admin"、"Author"、"Reader"]
+- 输入参数：
+  - **分隔符**： "，"
+- 输出声明：
+  - **outputClaim**： "Admin，Author，Reader"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+返回一个字符串数组，该字符串数组包含此实例中的子字符串（由指定字符串的元素分隔）。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | 字符串 | 一个字符串声明类型，其中包含要拆分的子字符串。 |
+| InputParameter | delimiter | 字符串 | 要用作分隔符的字符串，如逗号 `,`。 |
+| OutputClaim | outputClaim | stringCollection | 一个字符串集合，其元素包含此字符串中的子字符串，这些子字符串由 `delimiter` 输入参数分隔。 |
+  
+下面的示例使用用户角色的逗号分隔符字符串，并将其转换为字符串集合。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **inputClaim**： "Admin，Author，Reader"
+- 输入参数：
+  - **分隔符**： "，"
+- 输出声明：
+  - **outputClaim**： ["Admin"、"Author"、"Reader"]

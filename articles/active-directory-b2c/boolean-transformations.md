@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949885"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983072"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "74949885"
 
 执行两个布尔型 inputClaims 的 And 运算并使用运算结果设置 outputClaim。
 
-| Item  | TransformationClaimType  | 数据类型  | 说明 |
+| 项目  | TransformationClaimType  | 数据类型  | 说明 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
@@ -61,7 +61,7 @@ ms.locfileid: "74949885"
 
 检查两个声明的布尔值是否相等，如果不等，将引发异常。
 
-| Item | TransformationClaimType  | 数据类型  | 说明 |
+| 项目 | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
@@ -114,11 +114,49 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
     - **valueToCompareTo**: true
 - 结果：引发错误
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩的结果。 
+
+| 项目 | TransformationClaimType  | 数据类型  | 说明 |
+| ---- | ------------------------ | ---------- | ----- |
+| inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
+| InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
+| OutputClaim | inputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+
+
+以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则 `false`。
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**: false
+- 输入参数：
+    - **valueToCompareTo**: true
+- 输出声明：
+    - **compareResult**： false 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 执行布尔型 inputClaim 的 Not 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要运算的声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
@@ -140,13 +178,13 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 - 输入声明：
     - **inputClaim**: false
 - 输出声明：
-    - outputClaim: true
+    - **outputClaim**: true
 
 ## <a name="orclaims"></a>OrClaims
 
 执行两个布尔型 inputClaims 的 Or 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 第二个要评估的 ClaimType。 |
@@ -173,5 +211,4 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
     - **inputClaim1**: true
     - **inputClaim2**: false
 - 输出声明：
-    - outputClaim: true
-
+    - **outputClaim**: true

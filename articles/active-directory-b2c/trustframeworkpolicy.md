@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840173"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982409"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ ms.locfileid: "76840173"
 | TenantId | 是 | 此策略所属的租户的唯一标识符。 |
 | PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
-| DeploymentMode | 否 | 可能的值：`Production`、`Debugging` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
+| DeploymentMode | 否 | 可能的值： `Production`或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
 | UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
 
 

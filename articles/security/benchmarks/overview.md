@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934749"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990583"
 ---
 # <a name="overview-of-azure-security-controls"></a>Azure 安全控制概述
 
@@ -51,4 +51,5 @@ Azure 安全基准中使用以下控件：
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅第一个安全控制：[网络安全](security-control-network-security.md)
+- 阅读[Azure 安全性基准简介](introduction.md)
 - 下载[Azure Security 基准 v1 excel 电子表格](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)

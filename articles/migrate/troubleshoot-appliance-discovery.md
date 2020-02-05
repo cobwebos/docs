@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772031"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990702"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -39,14 +39,7 @@ ms.locfileid: "76772031"
 如果设备计算机位于代理后面，则会发生这种情况。
 
 - 如果代理需要，请确保提供身份验证凭据。
-- 如果使用基于 URL 的防火墙代理控制出站连接，请将这些 Url 添加到允许列表中：
-
-    - [用于 VMware 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-v 评估的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [用于 VMware 无代理迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [基于 VMware 代理的迁移的 URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-v 迁移的 Url](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- 如果使用基于 URL 的防火墙代理控制出站连接，请将[这些 url](migrate-appliance.md#url-access)添加到允许列表中。
 - 如果使用截取代理连接到 internet，请使用[以下步骤](https://docs.microsoft.com/azure/migrate/concepts-collector)将代理证书导入到设备 VM。
 
 ##  <a name="datetime-synchronization-error"></a>日期/时间同步错误

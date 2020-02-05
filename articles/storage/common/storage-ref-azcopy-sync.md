@@ -8,18 +8,18 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457461"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988237"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
 将源位置复制到目标位置。
 
-## <a name="synopsis"></a>摘要
+## <a name="synopsis"></a>概要
 
 上次修改时间用于比较。 如果目标中的上次修改时间较新，则将跳过该文件。
 
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--排除-路径**字符串在复制时排除这些路径。 此选项不支持通配符（*）。 检查相对路径前缀（例如： myFolder; myFolder/subDirName/file .pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
 
-**--排除模式**字符串排除名称与模式列表匹配的文件。 例如： *.jpg;* 。pdf; exactName
+**--排除模式**字符串排除名称与模式列表匹配的文件。 例如： \*.jpg;\*.pdf; exactName
 
 **-h，--帮助**帮助进行同步
 
 **--include-** attribute string （仅限 Windows）仅包括属性与属性列表匹配的文件。 例如： A;些迅驰
 
-**--include-模式**字符串仅包含名称与模式列表匹配的文件。 例如： *.jpg;* 。pdf; exactName
+**--include-模式**字符串仅包含名称与模式列表匹配的文件。 例如： \*.jpg;\*.pdf; exactName
 
 **--日志级别**字符串定义日志文件的日志详细级别，可用级别：信息（所有请求和响应）、警告（响应缓慢）、错误（仅失败的请求）和 NONE （无输出日志）。 （默认信息）。 （默认值为 "INFO"）
 

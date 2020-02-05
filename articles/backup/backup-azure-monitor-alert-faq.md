@@ -4,50 +4,49 @@ description: 本文介绍有关 Azure 备份监视警报和 Azure 备份报表�
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172915"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989563"
 ---
-# <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
+# <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报-常见问题
 
-本文解答有关 Azure 备份监视警报的常见问题。
+本文解答了有关 Azure 备份监视和报告的常见问题。
 
 ## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>如何确定报表数据是否已开始流向存储帐户？
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何实现检查报告数据是否已开始流入 Log Analytics （LA）工作区？
 
-转到配置的存储帐户，并选择容器。 如果容器包含 insights-logs-azurebackupreport 条目，则表示报表数据已开始流向存储帐户。
+导航到已配置的 "LA" 工作区，导航到 "**日志**" 菜单项，然后运行查询 CoreAzureBackup |请使用1。 如果看到返回的记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达24小时。
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>数据多久向存储帐户和 Power BI 中的 Azure 备份内容包推送一次？
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>向 LA 工作区推送数据的频率如何？
 
-  在用户配置存储帐户当天，数据大约需要 24 小时才能推送到存储帐户。 在这一次初始推送完成后，将按下图中所示频率刷新数据。
+保管库中的诊断数据会抽取到 Log Analytics 工作区，但有一些延迟。 每个事件从恢复服务保管库推送到 Log Analytics 工作区20到30分钟。 下面是有关延迟的更多详细信息：
 
-* 与“作业”、“警报”、“备份项”、“保管库”、“受保护的服务器”和“策略”相关的数据：在客户登录时推送到客户存储帐户。
+* 在所有解决方案中，备份服务的内置警报会在创建后立即推送。 因此，它们通常会在20到30分钟后显示在 Log Analytics 的工作区中。
+* 在所有解决方案中，按需备份作业和还原作业将在完成后立即推送。
+* 对于除 SQL 备份之外的所有解决方案，计划的备份作业在完成后立即推送。
+* 对于 SQL 备份，因为日志备份每15分钟发生一次，所有已完成的计划备份作业（包括日志）的信息每隔6小时进行批处理和推送。
+* 在所有解决方案中，其他信息（如备份项、策略、恢复点、存储等）每日推送至少一次。
+* 备份配置中的更改（例如更改策略或编辑策略）触发了所有相关备份信息的推送。
 
-* 与“存储”相关的数据：每 24 小时推送到客户存储帐户一次。
+### <a name="how-long-can-i-retain-reporting-data"></a>报告数据可以保留多长时间？
 
-    ![Azure 备份报表数据推送频率](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+创建 LA 工作区后，可以选择保留最多2年的数据。 默认情况下，LA 工作区会将数据保留31天。
 
-* Power BI [计划每天刷新一次](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)。 对于内容包，可以在 Power BI 中手动刷新数据。
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>配置 LA 工作区后，是否会在报表中看到所有数据？
 
-### <a name="how-long-can-i-retain-reports"></a>报表可以保留多长时间？
-
-配置存储帐户时，可以在存储帐户中选择报表数据的保留期。 请按照[配置报表的存储帐户](backup-azure-configure-reports.md#configure-storage-account-for-reports)部分中的步骤 6 执行操作。 此外，还可以[在 Excel 中分析报表](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/)，并保存报表以根据需要延长保持期。
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>配置存储帐户后，报表中是否会显示我的所有数据？
-
- 配置存储帐户后生成的所有数据都会推送到存储帐户，并会显示在报表中。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报表。
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>如果我已配置存储帐户来查看报表，能否更改配置以使用其他存储帐户？
-
-能，可以将配置更改为指向不同的存储帐户。 连接到 Azure 备份内容包时，可使用新配置的存储帐户。 此外，配置其他存储帐户后，新数据便会流向此存储帐户。 更改配置前的旧数据仍会保留在旧存储帐户中。
+ 配置诊断设置后生成的所有数据都将推送到 "LA" 工作区，并在报表中提供。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报告。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报表？
 
-能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报表。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报表。 所选存储帐户必须位于与恢复服务保管库相同的区域。
+是的，你可以查看跨保管库和订阅以及区域的报表。 你的数据可能驻留在单 LA 工作区或一组 LA 工作区中。
+
+### <a name="can-i-view-reports-across-tenants"></a>能否跨租户查看报表？
+
+如果你是有权访问客户订阅或 LA 工作区的[Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)用户，则可以使用备份报表查看所有租户中的数据。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
 

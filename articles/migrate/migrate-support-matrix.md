@@ -4,12 +4,12 @@ description: 概述 Azure Migrate 服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 81939292885e33ec6397eb4a437bef63b4ad0787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846562"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990719"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -67,7 +67,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
 --- | --- | ---
 创建 Azure Migrate 项目 | Azure 帐户需要创建项目的权限。 | 为[VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-create-project)进行设置。
 注册 Azure Migrate 设备 | Azure Migrate 使用轻型[Azure Migrate 设备](migrate-appliance.md)通过 Azure Migrate 服务器评估来评估 vmware vm，并使用 Azure Migrate 服务器迁移运行 vmware vm 的[无代理迁移](server-migrate-overview.md)。 此设备发现 VM，并将 VM 元数据和性能数据发送到 Azure Migrate。<br/><br/> 在注册过程中，Azure Migrate 将创建两个 Azure Active Directory 域服务 (Azure AD) 应用用于唯一标识设备，并需要权限来创建这些应用。<br/><br/> - 第一个应用将与 Azure Migrate 服务终结点通信。<br/><br/> - 第二个应用访问注册期间创建的 Azure Key Vault，以存储 Azure AD 应用信息和设备配置设置。 | 为[VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、 [hyper-v](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)进行设置。
-创建用于 VMware 无代理迁移的密钥保管库 | 若要使用无代理 Azure Migrate 服务器迁移迁移 VMware Vm，Azure Migrate 创建 Key Vault，以管理订阅中复制存储帐户的访问密钥。 若要创建保管库，请在 Azure Migrate 项目所在的资源组上设置权限（所有者或参与者和用户访问管理员）。 | [设置](tutorial-prepare-vmware.md#assign-role-assignment-permissions)权限。
+创建用于 VMware 无代理迁移的密钥保管库 | 若要使用无代理 Azure Migrate 服务器迁移迁移 VMware Vm，Azure Migrate 创建 Key Vault，以管理订阅中复制存储帐户的访问密钥。 若要创建保管库，请在 Azure Migrate 项目所在的资源组上设置权限（所有者或参与者和用户访问管理员）。 | [设置](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)权限。
 
 ## <a name="supported-geographies"></a>支持的地理位置
 
@@ -75,7 +75,7 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government | US Gov 弗吉尼亚州
+Azure Government | 美国弗吉尼亚州政府
 亚太 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部

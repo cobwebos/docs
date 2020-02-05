@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949469"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990498"
 ---
 # <a name="manage-multiple-tenants"></a>管理多个租户
 
@@ -45,7 +45,7 @@ ms.locfileid: "65949469"
 * 由于每个租户有多个视频索引器（和关联的媒体服务）帐户，因此更难管理。
 
 > [!TIP]
-> 在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中创建系统的管理员用户，并使用授权 API 为租户提供相关的[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)。
+> 在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中创建系统的管理员用户，并使用授权 API 为租户提供相关的[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>所有用户使用单个视频索引器帐户
 
@@ -68,7 +68,7 @@ ms.locfileid: "65949469"
 
 ## <a name="azure-subscription-per-tenant"></a>每个租户都有 Azure 订阅 
 
-在使用此体系结构，每个租户将具有其自己的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
+使用此体系结构时，每个租户都有自己的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
 
 ![每个租户都有 Azure 订阅](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435006"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987588"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
@@ -40,8 +40,8 @@ ms.locfileid: "75435006"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 付款计划 | 现用现付 |
-| 应用程序模板 | 旧版应用程序 |
+| 定价计划 | 标准 |
+| 应用程序模板 | 旧应用程序 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |

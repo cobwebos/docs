@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949110"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982902"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -27,7 +27,7 @@ ms.locfileid: "74949110"
 
 检查一个日期和时间声明（字符串数据类型）是否晚于另一个日期和时间声明（字符串数据类型），然后引发异常。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | 字符串 | 第一个声明的类型，应晚于第二个声明。 |
 | InputClaim | rightOperand | 字符串 | 第二个声明的类型，应早于第一个声明。 |
@@ -89,7 +89,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 
 将 Date ClaimType 转换为 DateTime ClaimType。 该声明转换会转换时间格式并向日期添加 12:00:00 AM。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | date | 要转换的 ClaimType。 |
 | OutputClaim | outputClaim | dateTime | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -114,11 +114,40 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 - 输出声明：
     - outputClaim：1559347200（2019 年 6 月 1 日中午 12:00:00）
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+将日期**时间**ClaimType 转换为**日期**claimtype。 声明转换从日期中删除时间格式。
+
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | dateTime | 要转换的 ClaimType。 |
+| OutputClaim | outputClaim | date | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+
+下面的示例演示如何将声明 `systemDateTime` （日期时间数据类型）转换为另一个声明 `systemDate` （date 数据类型）。
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **inputClaim**：1559347200（6月1日，2019 12:00:00 AM）
+- 输出声明：
+  - **outputClaim**：2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 获取当前 UTC 日期和时间，并将值添加到 ClaimType。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
@@ -139,13 +168,13 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 
 确定一个日期/时间是晚于、早于还是等于另一个日期/时间。 结果是值为 `true` 或 `false` 的新布尔 ClaimType 布尔值。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 第一个日期/时间，用于比较它是在第二个日期/时间之前还是之后。 Null 值会引发异常。 |
 | InputClaim | secondDateTime | dateTime | 第二个日期/时间，用于比较它是在第一个日期/时间之前还是之后。 NULL 值被视为当前日期/时间。 |
 | InputParameter | operator | 字符串 | 以下值之一：same、later than 或 earlier than。 |
 | InputParameter | timeSpanInSeconds | int | 向第一个日期/时间添加的时间范围。 |
-| OutputClaim | 结果 | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | result | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 使用此声明转换可确定两个 ClaimType 之间是相等、晚于还是早于。 例如，可能会存储用户接受服务条款 (TOS) 的上次时间。 3 个月后，可以要求用户再次访问 TOS。
 若要运行声明转换，首先需要获取当前日期/时间，以及用户接受 TOS 的上次时间。

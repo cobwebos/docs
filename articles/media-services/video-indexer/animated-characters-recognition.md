@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327485"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989903"
 ---
 # <a name="animated-character-detection-preview"></a>动画字符检测（预览）
 
@@ -40,7 +40,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 
 ### <a name="trial-vs-paid"></a>试用版和付费版
 
-|功能|试用|付费|
+|功能|试用版|付费|
 |---|---|---|
 |自定义视觉帐户|由视频索引器在后台进行管理。 |自定义视觉帐户已连接到视频索引器。|
 |动画模型的数目|一种|每个帐户最多100个型号（自定义视觉限制）。|
@@ -81,7 +81,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 1. 选择 "**连接自定义视觉帐户（预览）** "，然后单击 "**试用**"。
 1. 填写必填字段以及访问令牌，然后单击 "**发送**"。 
 
-    有关如何获取视频索引器访问令牌的详细信息，请转到[开发人员门户](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)，查看[相关文档](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)。  
+    有关如何获取视频索引器访问令牌的详细信息，请转到[开发人员门户](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)，查看[相关文档](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)。  
 1. 调用返回 200 OK 响应后，你的帐户已连接。
 1. 通过浏览到[视频索引器](https://vi.microsoft.com/)门户验证连接：
 1. 单击右上角的 "**内容模型自定义**" 按钮。
@@ -208,7 +208,7 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 
 ## <a name="limitations"></a>限制
 
-* 目前，亚洲地区不支持 "动画标识" 功能。
+* 目前，远东地区不支持 "动画标识" 功能。
 * 如果视频质量较差，可能无法正确识别在视频中显示较小或更多的字符。
 * 建议为每组经过动画处理的字符使用一个模型（例如，根据动画系列）。
 

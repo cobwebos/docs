@@ -3,8 +3,8 @@ title: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的 A
 description: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839613"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985511"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -58,7 +58,7 @@ ms.locfileid: "73839613"
 请先阅读以下 SAP 说明和文档
 
 * SAP 说明 [1928533][1928533]，其中包含：
-  * SAP 软件部署支持的 Azure VM 大小列表
+  * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
@@ -96,17 +96,17 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620<strong>nr&lt;&gt;</strong>
+  * 端口 620&lt;nr&gt;
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32<strong>nr&lt; TCP&gt;</strong>
-    * 36<strong>nr&lt; TCP&gt;</strong>
-    * 39<strong>nr&lt; TCP&gt;</strong>
-    * 81<strong>nr&lt; TCP&gt;</strong>
-    * 5<strong>nr&lt;13 TCP&gt;</strong>
-    * 5<strong>nr&lt;14 TCP&gt;</strong>
-    * 5<strong>nr&lt;16 TCP&gt;</strong>
+    * 32&lt;nr&gt; TCP
+    * 36&lt;nr&gt; TCP
+    * 39&lt;nr&gt; TCP
+    * 81&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -115,15 +115,15 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621<strong>nr&lt;&gt;</strong>
+  * 端口 621&lt;nr&gt;
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32<strong>nr&lt; TCP&gt;</strong>
-    * 33<strong>nr&lt; TCP&gt;</strong>
-    * 5<strong>nr&lt;13 TCP&gt;</strong>
-    * 5<strong>nr&lt;14 TCP&gt;</strong>
-    * 5<strong>nr&lt;16 TCP&gt;</strong>
+    * 32&lt;nr&gt; TCP
+    * 33&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
@@ -159,7 +159,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    9. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    10. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/**订阅 ID&lt;/resourceGroups/&gt;资源组名称**/providers/Microsoft.Network/virtualNetworks/**虚拟网络名称&lt;/subnets/&gt;子网名称** **&lt;&gt;** **&lt;&gt;**
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -277,7 +277,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    </code></pre>
 
    > [!NOTE]
-   > 请勿在群集节点的主机名中使用短划线。 否则群集无法正常使用。 这是一个已知限制，SUSE 正在努力修复。 修复程序将作为 sap-suse-cloud-connector 包的修补程序发布。
+   > 使用主机名中的短划线的已知问题与包**sap-** 3.1.1 的版本已修复。 如果将群集节点用于主机名中的短划线，请确保至少使用版本3.1.1 的 "包 sap-群集-连接器"。 否则群集无法正常使用。 
 
    请确保安装 SAP SUSE 群集连接器的新版本。 旧版本称为 sap_suse_cluster_connector，新版本称为 **sap-suse-cluster-connector**。
 
@@ -808,7 +808,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>测试群集设置
+## <a name="test-the-cluster-setup"></a>测试群集设
 
 以下测试为 SUSE 最佳做法指南中的测试用例。 为方便起见，已复制于下方。 此外，请务必阅读最佳做法指南，并执行可能已经添加的所有其他测试。
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840292"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982834"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ SingleSignOn 元素包含在以下属性中：
 | --------- | -------- | ----------- |
 | 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值指示已取消行为。 例如，在单一登录会话的情况下，不会为用户维护会话，并且始终提示用户选择标识提供者。 `TrustFramework` 值指示该行为适用于信任框架中的所有策略。 例如，不会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
 | KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](custom-policy-keep-me-signed-in.md)。 |
+|EnforceIdTokenHintOnLogout| 否|  强制将以前颁发的 ID 令牌作为有关最终用户当前通过身份验证的会话与客户端的提示传递到注销终结点。 可能的值为 `false`（默认）或 `true`。 有关详细信息，请参阅[通过 OpenID connect 进行 Web 登录](openid-connect.md)。  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -176,12 +178,12 @@ ContentDefinitionParameters 元素包含以下属性：
 
 | 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的名称。 |
-| Description | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的说明。 |
+| DisplayName | 1:1 | 包含技术配置文件的名称的字符串。 |
+| Description | 0:1 | 包含技术配置文件的说明的字符串。 |
 | 协议 | 1:1 | 用于联合的协议。 |
 | 元数据 | 0:1 | 一个键/值对项集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
-| OutputClaims | 0:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
-| SubjectNamingInfo | 0:1 | 在令牌中使用的使用者名称。 |
+| OutputClaims | 1:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
+| SubjectNamingInfo | 1:1 | 在令牌中使用的使用者名称。 |
 
 Protocol 元素包含以下属性：
 

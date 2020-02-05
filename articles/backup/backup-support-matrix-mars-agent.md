@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文总结了备份运行 Microsoft Azure 恢复服务（MARS）代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281268"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988067"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -95,8 +95,6 @@ Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是 
 Windows Server 2016（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012 R2（Standard、Datacenter、Foundation、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012（Standard、Datacenter、Foundation） | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE）
-Windows Server 2008 R2（Standard、Enterprise、Datacenter、Foundation） | 是 | 是 | -.NET 3.5，.Net 4。5 <br> -Windows PowerShell <br> 兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE）
-Windows Server 2008 SP2（Standard、Datacenter、Foundation） | 是 | 否 | -.NET 3.5，.Net 4。5 <br> -Windows PowerShell <br> 兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE） <br> -Virtual Server 2005 base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 （标准版、工作组版） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 

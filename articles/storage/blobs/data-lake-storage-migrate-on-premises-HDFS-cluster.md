@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327602"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990957"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "74327602"
 > * 将设备寄回给 Microsoft。
 > * 将数据移动到 Data Lake Storage Gen2。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成迁移需要执行以下任务。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74327602"
 
     若要确定这些文件是否存在，请使用以下命令： `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 将 `<hadoop_install_dir>` 占位符替换为已安装 Hadoop 的目录的路径。 请确保使用完全限定的路径。
 
-    例如：
+    示例：
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -282,7 +282,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
    sudo apt-get install jq
    ```
 
-3. 安装[请求](http://docs.python-requests.org/en/master/)python 包。
+3. 安装[请求](https://2.python-requests.org/en/master/)python 包。
 
    ```bash
    
@@ -345,7 +345,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 在计划启动 DistCp 作业的本地 Hadoop 群集上，创建一个文件来指定要排除的目录列表。
 
-以下是一个示例：
+下面是一个示例：
 
 ```
 .*ranger/audit.*

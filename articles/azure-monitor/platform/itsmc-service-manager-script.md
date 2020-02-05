@@ -4,15 +4,15 @@ description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a97ea4d505d17d1d5fb2f2035fb23f3fce94aebe
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932249"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990923"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932249"
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: 1268dc0d78bf64e0a4b79592c28a9c1e70db7bf3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/28/2020
+ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892921"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990993"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -140,7 +140,7 @@ Azure SQL 数据库链接服务支持以下属性：
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 向服务主体授予对 SQL 用户或其他用户通常所需的权限。 运行下面的代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
+4. 向服务主体授予对 SQL 用户或其他用户通常所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
@@ -187,7 +187,7 @@ Azure SQL 数据库链接服务支持以下属性：
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行下面的代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
+3. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your Data Factory name];
@@ -589,6 +589,10 @@ END
 特定于 Azure SQL 数据库的设置可在接收器转换的 "**设置**" 选项卡中找到。
 
 **更新方法：** 确定对数据库目标允许哪些操作。 默认值为仅允许插入。 若要更新、upsert 或删除行，需要更改行转换才能标记这些操作的行。 对于更新、upsert 和删除，必须设置一个或多个键列，以确定要更改的行。
+
+![键列](media/data-flow/keycolumn.png "键列")
+
+ADF 将使用在此处选取为密钥的列名作为后续更新 upsert （删除）的一部分。 因此，你必须选择存在于接收器映射中的列。 如果您不希望将该值写入此键列，请单击 "跳过写入键列"。
 
 **表操作：** 确定在写入之前是否在目标表中重新创建或删除所有行。
 * None：不会对表执行任何操作。

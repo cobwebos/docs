@@ -15,94 +15,156 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996929"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985149"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
-本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Workplace by Facebook 以及取消其预配而需要在 Workplace by Facebook 和 Azure AD 中执行的步骤。
+本教程介绍了需要在 Workplace by Facebook 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到[Workplace By Facebook](https://work.workplace.com/)并取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+
+> [!NOTE]
+> 已批准 Workplace by Facebook 中的 Azure AD 第三方应用程序。 客户在12月16日不会出现服务中断。 当你需要过渡到新应用程序时，将在 Workplace by Facebook 管理员控制台中看到一个说明截止时间为 28-2-2020 的截止时间。 我们正在努力保持过渡尽可能简单，并在此处提供有关转换的更新。
+
+## <a name="capabilities-supported"></a>支持的功能
+> [!div class="checklist"]
+> * 在 Workplace by Facebook 中创建用户
+> * 不需要访问权限时，在 Workplace by Facebook 中删除用户
+> * 使用户属性在 Azure AD 和 Workplace by Facebook 之间保持同步
+> * 针对 Workplace by Facebook 的[单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)（建议）
 
 ## <a name="prerequisites"></a>必备组件
 
-若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
+本教程中概述的方案假定你已具有以下先决条件：
 
-- 一个 Azure AD 订阅
-- 已启用 Workplace by Facebook 单一登录的订阅
+* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 有[权](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)配置预配的用户帐户（例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）
+* 已启用 Workplace by Facebook 单一登录的订阅
 
 > [!NOTE]
-> 测试本教程中的步骤时，建议不要使用生产环境。
+> 不建议使用生产环境测试本教程中的步骤。
 
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>将用户分配到 Workplace by Facebook
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 确定将处于[预配范围内的](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)用户。
+3. 确定要[在 Azure AD 和 Workplace By Facebook 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Workplace by Facebook 以支持使用 Azure AD 进行预配
 
 在配置和启用预配服务前，需确定 Azure AD 中哪些用户和/或组表示需要访问 Workplace by Facebook 应用的用户。 确定后，可按照此处的说明将这些用户分配到你的 Workplace by Facebook 应用：
-
-[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
-
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>将用户分配到 Workplace by Facebook 的重要提示
 
 *   建议将单个 Azure AD 用户分配到 Workplace by Facebook 以测试预配配置。 其他用户和/或组可以稍后分配。
 
 *   将用户分配到 Workplace by Facebook 时，必须选择有效的用户角色。 “默认访问权限”角色不可用于预配。
 
-## <a name="enable-user-provisioning"></a>启用用户预配
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 Workplace by Facebook
 
-本部分介绍如何将你的 Azure AD 连接到 Workplace by Facebook 的用户帐户预配 API 并配置预配服务，以在 Workplace by Facebook 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
+从 Azure AD 应用程序库中添加 Workplace by Facebook，开始管理到 Workplace by Facebook 的预配。 如果以前已通过 Facebook 为 SSO 设置了 Workplace，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。
 
->[!Tip]
->还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Workplace by Facebook 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义将在设置范围内的人员 
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>若要在 Azure AD 中为 Workplace by Facebook 配置用户帐户预配，请执行以下操作：
+Azure AD 预配服务允许你确定将根据分配给应用程序的人员，或基于用户/组属性进行预配的用户的范围。 如果选择将根据分配预配到你的应用的用户的范围，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性设置的作用域，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-本部分旨在概述如何对 Workplace by Facebook 启用 Active Directory 用户帐户的预配。
+* 将用户和组分配到 Workplace by Facebook 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有默认访问角色的用户将从预配中排除，并在预配日志中被标记为不有效。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)来添加其他角色。 
 
-Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workplace by Facebook。 此自动同步使 Workplace by Facebook 能够在用户首次尝试登录之前获取对用户进行访问授权所需的数据。 在 Azure AD 中撤销访问权限后，它还可以从 Workplace by Facebook 取消预配用户。
+* 从小开始。 在向所有人推出之前，请使用少量的用户和组进行测试。 如果设置的作用域设置为 "分配的用户和组"，则可以通过将一个或两个用户或组分配到应用来对此进行控制。 当作用域设置为 "所有用户和组" 时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” > “企业应用” > “所有应用程序”部分。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
 
-2. 如果已为 Workplace by Facebook 配置单一登录，请使用搜索字段搜索 Workplace by Facebook 实例。 否则，请选择“添加”并在应用程序库中搜索“Workplace by Facebook”。 从搜索结果中选择 Workplace by Facebook，并将其添加到应用程序列表。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 选择 Workplace by Facebook 实例，并选择“预配”选项卡。
+2. 在应用程序列表中，选择“Workplace by Facebook”。
 
-4. 将“预配模式”设置为“自动”。 
+    ![应用程序列表中的 Workplace by Facebook 链接](common/all-applications.png)
+
+3. 选择“预配”选项卡。
+
+    ![设置选项卡](common/provisioning.png)
+
+4. 将“预配模式”设置为“自动”。
+
+    ![设置选项卡](common/provisioning-automatic.png)
+
+5. 在 "**管理员凭据**" 部分中，单击 "**授权**"。 你将被重定向到 Workplace by Facebook 的授权页。 输入 Workplace by Facebook 用户名，并单击 "**继续**" 按钮。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Workplace by Facebook。 如果连接失败，请确保 Workplace by Facebook 帐户具有管理员权限，然后重试。
 
     ![预配](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. 在“管理员凭据”部分下，输入 Workplace by Facebook 管理员的“访问令牌”并将“租户 URL”值设为 `https://www.facebook.com/scim/v1/`。 请参阅这些[说明](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps)为 Workplace 创建访问令牌。 
+    ![授权](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Workplace by Facebook 应用。 如果连接失败，请确保 Workplace by Facebook 帐户具有团队管理员权限。
+6. 在 "**通知电子邮件**" 字段中，输入应接收预配错误通知的人员或组的电子邮件地址，并选中 "**发生故障时发送电子邮件通知**" 复选框。
 
-7. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
+    ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存”。
+7. 选择“保存”。
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Workplace by Facebook”。
+8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Workplace by Facebook**"。
 
-10. 在“属性映射”部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Workplace BY Facebook API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-11. 若要为 Workplace by Facebook 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+   |Attribute|类型|
+   |---|---|
+   |userName|String|
+   |displayName|String|
+   |活动|Boolean|
+   |title|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |名称。已设置格式|String|
+   |地址 [类型 eq "work"]。格式|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |地址 [类型 eq "work"]。位置|String|
+   |地址 [类型 eq "work"]。区域|String|
+   |地址 [类型 eq "work"]。国家/地区|String|
+   |addresses[type eq "work"].postalCode|String|
+   |地址 [type eq "other"]。格式|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |preferredLanguage|String|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： manager|String|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User：部门|String|
 
-12. 单击“保存”。
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-有关如何配置自动预配的详细信息，请参阅 [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+11. 若要为 Workplace by Facebook 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-现可创建测试帐户。 等待最多 20 分钟即可验证该帐户是否已同步到 Workplace by Facebook。
+    ![预配状态已打开](common/provisioning-toggle-on.png)
 
-> [!NOTE]
-> 已批准 Workplace by Facebook 中的 Azure AD 第三方应用程序。 客户在12月16日不会出现服务中断。 当你需要过渡到新应用程序时，将在 Workplace by Facebook 管理员控制台中看到一个说明截止时间为 28-2-2020 的截止时间。 我们正在努力保持过渡尽可能简单，并在此处提供有关转换的更新。
+12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Workplace by Facebook 的用户和/或组。
+
+    ![预配范围](common/provisioning-scope.png)
+
+13. 已准备好预配时，单击“保存”。
+
+    ![保存预配配置](common/provisioning-configuration-save.png)
+
+此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户和组的初始同步循环。 初始周期比后续循环长，只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次。 
+
+## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
+配置预配后，请使用以下资源来监视部署：
+
+1. 使用[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已成功设置或失败
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)，查看设置周期的状态以及完成操作的方式
+3. 如果预配配置似乎处于不正常状态，则应用程序将进入隔离区。 [在此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+
+## <a name="troubleshooting-tips"></a>故障排除提示
+*  如果你看到某个用户未成功创建，并且存在代码为 "1789003" 的审核日志事件，则表示该用户来自未经验证的域。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-* [配置单一登录](workplacebyfacebook-tutorial.md)
+* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="next-steps"></a>后续步骤
+
+* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)

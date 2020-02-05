@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933587"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986234"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,14 +108,12 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 > [!TIP]
 > 在数据源上启用群集功能时，彼此接近的点将作为一个聚集点组合在一起。 可以使用每个分类的点计数作为热度地图的权重表达式。 这可以显著减少要呈现的点数。 群集的点计数存储在点功能的 `point_count` 属性中： 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
-> 如果聚类分析 radius 只是几个像素，则呈现中的视觉对象将会很小。 更大的 radius 将更多的点分组到每个群集中，并提高热度地图的性能。
+> 如果聚类分析 radius 只是几个像素，则呈现中会有一个较小的视觉差别。 更大的 radius 将更多的点分组到每个群集中，并提高热度地图的性能。
 
 ## <a name="next-steps"></a>后续步骤
 

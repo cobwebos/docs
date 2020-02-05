@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910614"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988934"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
 
-本文提供了有关 Azure Maps 路由的覆盖区域信息。 搜索从位置 A 到 B 的最佳路线时，Azure Maps 可以提供高度准确的旅行时间、实时更新的旅行信息和路线说明。 路由将考虑其他搜索词，例如当前流量、车辆类型和要避免的条件。 优化路由的能力取决于区域，因为 Azure Maps 包含不同区域的不同级别的信息和准确性。 下表列出了可为其请求的区域和信息类型。
+本文提供了有关 Azure Maps 路由的覆盖区域信息。 搜索查询时，Azure Maps 返回从位置 A 到位置 B 的最佳路由。提供准确的旅行时间、旅行信息的实时更新以及路线说明。 你还可以添加其他搜索参数，如当前流量、车辆类型和条件，以避免。 路由的优化取决于区域。 这是因为，Azure Maps 具有不同区域的不同级别的信息和准确性。 下表列出了可为其请求的区域和信息类型。
  
 查看[**地理编码**](geocoding-coverage.md)的覆盖区域。       
 查看[**流量**](traffic-coverage.md)的覆盖区域。  
@@ -115,7 +115,7 @@ ms.locfileid: "75910614"
 | 圣卢西亚                      |        ✓       |                      |             |
 | 圣文森特 & 格林纳丁斯       |        ✓       |                      |             |
 | 苏里南                       |        ✓       |                      |             |
-| 特立尼达和多巴哥              |        ✓       |                      |             |
+| 特立尼达 & 多巴哥              |        ✓       |                      |             |
 | 美国                  |        ✓       |         ✓            |     ✓      | 
 | \+ 美国萨摩亚                |        ✓       |                      |             |
 | \+ 北马里亚纳群岛      |        ✓       |                      |             |

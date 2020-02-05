@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842914"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986506"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 以及完全准备好的 ML 环境。
 
 > [!NOTE]
-> 计算实例仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
+> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。
 
 对于计算实例，无需安装或配置任何内容。  随时从 Azure 机器学习工作区中创建一个。 仅提供名称并指定 Azure VM 类型。 请通过本教程立即试用[：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。

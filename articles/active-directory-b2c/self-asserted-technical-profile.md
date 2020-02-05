@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425622"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982732"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -189,15 +189,16 @@ ms.locfileid: "75425622"
 
 | Attribute | 需要 | Description |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.operatingMode | 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
+| AllowGenerationOfClaimsWithNullValues| 否| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
 | EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.showSignupLink | 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
 | SignUpTarget | 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
-
+| setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showSignupLink | 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置。 forgotPasswordLinkLocation| 否| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 不使用“CryptographicKeys”元素。

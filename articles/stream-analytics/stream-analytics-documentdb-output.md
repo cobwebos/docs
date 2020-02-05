@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426281"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986982"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 Azure 流分析可将[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)用于 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
@@ -97,7 +97,7 @@ Azure Cosmos DB 会根据工作负荷自动缩放分区。 因此，建议[不�
 
 使用1.2，流分析更智能地利用了 Azure Cosmos DB 的可用吞吐量的100%，resubmissions 限制或速率限制极少。 这为在容器中运行的查询提供了更好的体验。 若要查看流分析如何使用 Azure Cosmos DB 作为每秒1000到10000消息的接收器进行扩展，请尝试[此 Azure 示例项目](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)。
 
-Azure Cosmos DB 输出的吞吐量与1.0 和1.1 完全相同。 由于1.2 当前不是默认值，因此可以通过使用门户或使用[Create Stream Analytics job REST API 调用](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)来设置流分析作业[的兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。 *强烈建议*在流分析中将兼容性级别1.2 与 Azure Cosmos DB 结合使用。
+Azure Cosmos DB 输出的吞吐量与1.0 和1.1 完全相同。 *强烈建议*在流分析中将兼容性级别1.2 与 Azure Cosmos DB 结合使用。
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON 输出的 Azure Cosmos DB 设置
 

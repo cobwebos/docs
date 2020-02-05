@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8584a77eaf9f8db13c948051c34b18236e2cc1a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968662"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986370"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -55,6 +55,9 @@ ms.locfileid: "75968662"
     模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
 
 * **工作区名称**：Azure 机器学习工作区的友好名称。
+
+    > [!NOTE]
+    > 工作区名称不区分大小写。
 
     其他服务的名称将随机生成。
 

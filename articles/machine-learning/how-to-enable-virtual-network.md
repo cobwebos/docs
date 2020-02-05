@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937863"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988205"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,8 +180,8 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 - 使用 NSG 规则拒绝出站 internet 连接。
 
 - 对于__计算实例__或__计算群集__，请将出站流量限制为以下各项：
-   - Azure 存储空间，通过使用__存储__的__服务标记__
-   - Azure 容器注册表，使用__AzureContainerRegistry__的__服务标记__
+   - Azure 存储，使用__RegionName__的__服务标记__。 其中 `{RegionName}` 是 Azure 区域的名称。
+   - Azure 容器注册表，使用__AzureContainerRegistry. RegionName__的__服务标记__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 机器学习，使用__AzureMachineLearning__的__服务标记__
    
 - 对于__计算实例__，还应添加以下项：

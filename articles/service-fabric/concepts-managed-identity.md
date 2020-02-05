@@ -4,12 +4,12 @@ description: 了解如何通过 Service Fabric 使用 Azure 的托管标识。
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934965"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986744"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>将 Azure 托管标识与 Service Fabric （预览版）配合使用
 

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863472"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984510"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -93,9 +93,9 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
-* 或者，开发人员可以选择使用 MSAL 进行身份验证。 有关[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的信息，请参阅了解详细信息。 
+* 或者，开发人员可以选择使用 MSAL 进行身份验证。 阅读有关[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的详细信息，请参阅[ C#使用文章管理 Azure 时序见解环境的 GA 引用数据一](time-series-insights-manage-reference-data-csharp.md)文了解详细信息。 
 
-## <a name="common-headers-and-parameters"></a>常见标头和参数
+## <a name="common-headers-and-parameters"></a>常用标头和参数
 
 本部分介绍常见的 HTTP 请求标头和参数，用于针对时序见解 GA 和预览 Api 进行查询。 [时序见解 REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/)中更详细地介绍了特定于 API 的要求。
 
@@ -136,7 +136,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 | 响应标头 | Description |
 | --- | --- |
 | Content-type | 仅支持 `application/json`。 |
-| x-ms-request-id | 服务器生成的请求 ID。 可用于与 Microsoft 联系以调查请求。 |
+| x-请求 id | 服务器生成的请求 ID。 可用于与 Microsoft 联系以调查请求。 |
 | x-ms-找不到的行为 | GA API 可选的响应标头。 可能的值为 `ThrowError` （默认值）或 `UseNull`。 |
 
 ### <a name="http-parameters"></a>HTTP 参数

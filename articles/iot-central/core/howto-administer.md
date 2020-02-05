@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954586"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990787"
 ---
 # <a name="manage-your-iot-central-application"></a>管理你的 IoT Central 应用程序
 
@@ -40,9 +40,9 @@ ms.locfileid: "72954586"
 
 ## <a name="copy-an-application"></a>复制应用程序
 
-可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 该副本是将向你收费的即用即付应用程序。 不能以这种方式创建试用版应用程序。
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 该副本使用您将对其进行计费的标准定价计划。 不能创建以这种方式使用免费定价计划的应用程序。
 
-选择 "**复制**"。 在对话框中，输入新的即用即付应用程序的详细信息。 然后选择 "**复制**"，确认是否要继续。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
+选择 "**复制**"。 在 "" 对话框中，输入新应用程序的详细信息。 然后选择 "**复制**"，确认是否要继续。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
 
 ![“应用程序设置”页](media/howto-administer/appcopy2.png)
 

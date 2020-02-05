@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368029"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991025"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -31,13 +31,13 @@ ms.locfileid: "75368029"
 使用的名称解析类型取决于资源需要以怎样的方式进行相互通信。 下表说明了各种方案及相应的名称解析解决方案：
 
 > [!NOTE]
-> 根据具体的场景，可能需要使用目前以公共预览版提供的 Azure DNS 专用区域功能。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
+> 根据你的方案，你可能想要使用 Azure DNS 专用区域。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
 >
 
 | **方案** | **解决方案** | **后缀** |
 | --- | --- | --- |
-| 位于相同虚拟网络的 VM 或位于相同云服务的 Azure 云服务角色实例之间的名称解析。 | [Azure DNS 专用区域](../dns/private-dns-overview.md)或 [Azure 提供的名称解析](#azure-provided-name-resolution) |主机名或 FQDN |
-| 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
+| 位于相同虚拟网络的 VM 或位于相同云服务的 Azure 云服务角色实例之间的名称解析。 | [Azure DNS 专用区域](../dns/private-dns-overview.md)或[Azure 提供的名称解析](#azure-provided-name-resolution) |主机名或 FQDN |
+| 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或，客户托管的 DNS 服务器在虚拟网络之间转发查询，以供 AZURE （DNS 代理）解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 通过 Azure 应用服务（Web 应用、函数或自动程序）实现的名称解析：对同一虚拟网络中的角色实例或 VM 使用虚拟网络集成。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 从应用服务 Web 应用到同一虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |

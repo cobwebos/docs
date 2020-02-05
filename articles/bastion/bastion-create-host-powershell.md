@@ -5,18 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6cae6d258da2ddf0c3bfaade65ae74f1201b67b7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121074"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990430"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure 堡垒主机
 
-本文介绍如何创建 Azure 堡垒主机。 在虚拟网络中预配 Azure 堡垒服务后，同一虚拟网络中的所有 Vm 都可以使用无缝 RDP/SSH 体验。 此部署是按每个虚拟网络执行的，不是按每个订阅/帐户或虚拟机操作的。
+本文介绍如何使用 PowerShell 创建 Azure 堡垒主机。 在虚拟网络中预配 Azure 堡垒服务后，同一虚拟网络中的所有 Vm 都可以使用无缝的 RDP/SSH 体验。 Azure 堡垒部署按虚拟网络，而不是按订阅/帐户或虚拟机。
+
+还可以选择使用[Azure 门户](bastion-create-host-portal.md)创建 Azure 堡垒主机。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -28,7 +30,7 @@ ms.locfileid: "74121074"
 
 本部分帮助你使用 Azure PowerShell 创建新的 Azure 堡垒资源。
 
-1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。 必须至少使用一个/27 或更大的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 在**AzureBastionSubnet**上使用网络安全组时，请参阅[使用 nsg](bastion-nsg.md)。
+1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。 必须使用至少/27 或更大子网的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 如果在**AzureBastionSubnet**上使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)一文。
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -50,4 +52,6 @@ ms.locfileid: "74121074"
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读[堡垒常见问题解答](bastion-faq.md)。
+* 有关其他信息，请参阅[堡垒常见问题解答](bastion-faq.md)。
+
+* 若要在 Azure 堡垒子网中使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)。

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430858"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984942"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -178,9 +178,9 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. 然后更新 AllowAddGuests 设置
+4. 然后更新 AllowToAddGuests 设置
    ```powershell
-   $Setting["AllowAddGuests"] = $False
+   $Setting["AllowToAddGuests"] = $False
    ```  
 5. 然后应用该设置：
   
@@ -234,7 +234,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowAddGuests              True
+   AllowToAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -271,7 +271,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 4. 将设置设为所需的值：
    ```powershell
-   $SettingCopy["AllowAddGuests"]=$False
+   $SettingCopy["AllowToAddGuests"]=$False
    ```
 5. 获取要对其应用此设置的组的 ID：
    ```powershell
@@ -297,7 +297,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
 3. 根据需要更新组的设置，例如
    ```powershell
-   $Setting["AllowAddGuests"] = $True
+   $Setting["AllowToAddGuests"] = $True
    ```
 4. 然后获取此特定组的设置 ID：
    ```powershell

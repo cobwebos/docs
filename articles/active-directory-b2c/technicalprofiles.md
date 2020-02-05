@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773434"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982273"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ ms.locfileid: "76773434"
 | 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | 域 | 0:1 | 技术配置文件的域名。 例如，如果技术配置文件指定 Facebook 标识提供者，则域名是 Facebook.com。 |
-| DisplayName | 0:1 | 可向用户显示的技术配置文件名称。 |
+| DisplayName | 1:1 | 可向用户显示的技术配置文件名称。 |
 | Description | 0:1 | 可向用户显示的技术配置文件说明。 |
 | 协议 | 0:1 | 用来与另一方通信的协议。 |
 | 元数据 | 0:1 | 在事务处理过程中，协议用来与终结点通信的键/值对集合。 |

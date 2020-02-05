@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715929"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986812"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "76715929"
 从 Azure 门户中的 "**监视**" 菜单访问所有 Azure Monitor 功能和数据。 对于不同的 Azure 服务，菜单的 "**监视**" 部分提供对相同工具的访问权限，并将数据筛选到特定资源。 使用 CLI、PowerShell 和 REST API 的各种情况下，也可以访问 Azure Monitor 数据。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure Monitor 的本地版本？
-不是。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
+不。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>能否 Azure Monitor 监视本地资源？
 是的，除了收集 Azure 资源的监视数据以外，Azure Monitor 还可以从其他云和本地的虚拟机和应用程序中收集数据。 请参阅[Azure Monitor 的监视数据源](platform/data-sources.md)。
@@ -169,7 +169,7 @@ WireData
 ```
 
 ### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>将数据发送到 Azure Monitor 时，Microsoft 管理代理（MMA）使用多少网络带宽？
-带宽是有关发送的数据量的函数。 数据通过网络发送时会被压缩。
+带宽是已发送数据量的一个函数。 数据通过网络发送时会被压缩。
 
 
 ### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>当 Log Analytics 代理中的数据收集停止时，如何收到通知？
@@ -240,7 +240,7 @@ WireData
 
 [阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="how-much-does-it-cost"></a>成本是多少？
+### <a name="how-much-does-it-cost"></a>费用是多少？
 
 * 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
@@ -326,6 +326,11 @@ WireData
 
 ### <a name="data"></a>数据在门户中保留多长时间？ 是否安全？
 查看[数据保留和隐私][data]。
+
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>当服务器或设备失去 Azure 连接时，应用程序见解的遥测会发生什么情况？
+
+所有 Sdk （包括 web SDK）都包含 "可靠传输" 或 "可靠传输"。 当服务器或设备失去与 Azure 的连接时，遥测数据将以[本地方式存储在文件系统](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage)（服务器 sdk）或 HTML5 会话存储（Web SDK）中。 SDK 会定期重试发送此遥测数据，直到引入服务将其视为 "过时" （48小时的日志，指标为30分钟）。 将删除过时的遥测。 在某些情况下，例如本地存储已满时，将不会重试。
+
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>是否可能会在遥测中发送个人数据？
 
@@ -543,7 +548,7 @@ ContainerLog
 
 ```
 
-#### <a name="option-2"></a>方法 2
+#### <a name="option-2"></a>选项 2
 
 为每个容器日志行的这些属性重新启用收集。
 
@@ -673,7 +678,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 不会，Windows 不包含单个处理器和逻辑处理器级别运行状况条件，仅默认监视 CPU 的总使用率，以根据 Azure VM 可用的逻辑 CPU 总数评估 CPU 压力。 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>是否所有运行状况条件阈值均可配置？  
-针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 *LessThan* 或 **GreaterThan** 的 **comparisonOperator** 值，以及阈值 *4*：
+针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**：
    - DNS 客户端服务运行状况 - 服务未运行。 
    - DHCP 客户端服务运行状况 - 服务未运行。 
    - RPC 服务运行状况 - 服务未运行。 
@@ -683,7 +688,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
    - Windows 远程管理服务运行状况 - 服务未运行。 
    - 文件系统错误或损坏 - 逻辑磁盘不可用。
 
-以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 *LessThan* 的 **comparisonOperator** 以及阈值 *1*，具体取决于上下文：
+以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文：
    - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
    - 磁盘状态 - 磁盘未联机/不可用
    - 网络适配器状态 - 网络适配器已禁用

@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843525"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988407"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> 计算实例（预览版）仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
+> 计算实例（预览版）仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。  可以使用本文中的步骤，将模型部署到计算实例或笔记本 VM。
 
 了解如何使用 Azure 机器学习将模型作为 web 服务部署到 Azure 机器学习计算实例上。 如果满足以下条件之一，请使用计算实例：

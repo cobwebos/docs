@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 963572e19be71bf572357aadeee443696210a262
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546344"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984959"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -936,7 +936,7 @@ Azure 机器学习现在是事件网格的资源提供程序，您可以通过 A
 
 ## <a name="2019-07-09"></a>2019-07-09
 
-### <a name="visual-interface"></a>可视界面
+### <a name="visual-interface"></a>视觉对象接口
 + **预览功能**
   + 在可视界面中添加了 "执行 R 脚本" 模块。
 
@@ -1236,7 +1236,7 @@ Azure 机器学习 SDK for Python v 1.0.30 已发布。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure 机器学习数据准备 SDK 1.1。2
 
-注意：数据准备 Python SDK 将不再安装 `numpy` 和 `pandas` 包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
+注意：数据准备 Python SDK 将不再安装 `numpy` 和 `pandas` 包。 请参阅[更新的安装说明](https://github.com/Microsoft/AMLDataPrepDocs)。
 
 + **新功能**
   + 现在可以使用透视转换。

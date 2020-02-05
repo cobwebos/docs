@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899075"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989971"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -347,12 +347,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>为 OpenCensus Python 应用程序配置固定速率采样
 
-1. 通过最新的[OpenCensus Azure Monitor 导出程序](../../azure-monitor/app/opencensus-python.md)检测你的应用程序。
+通过最新的[OpenCensus Azure Monitor 导出程序](../../azure-monitor/app/opencensus-python.md)检测你的应用程序。
 
 > [!NOTE]
-> 只有使用跟踪导出程序才能使用固定速率采样。 这意味着传入和传出的请求是可以配置采样的唯一遥测类型。
+> 固定速率采样不适用于指标导出程序。 这意味着自定义度量值是唯一不能配置采样的遥测类型。 度量值导出程序将发送它跟踪的所有遥测数据。
 
-2. 可以在 `Tracer` 配置中指定 `sampler`。 如果未提供显式采样器，则默认情况下将使用 `ProbabilitySampler`。 默认情况下，`ProbabilitySampler` 使用的速率为1/10000，这意味着每个10000请求中的一个将发送到 Application Insights。 如需指定采样率，请参阅下文。
+#### <a name="fixed-rate-sampling-for-tracing"></a>用于跟踪的固定速率采样 ####
+可以在 `Tracer` 配置中指定 `sampler`。 如果未提供显式采样器，则默认情况下将使用 `ProbabilitySampler`。 默认情况下，`ProbabilitySampler` 使用的速率为1/10000，这意味着每个10000请求中的一个将发送到 Application Insights。 如需指定采样率，请参阅下文。
 
 若要指定采样率，请确保您的 `Tracer` 指定采样速率介于0.0 和1.0 之间（含这两个值）。 采样率1.0 表示100%，这意味着所有请求都将作为遥测发送到 Application Insights。
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>日志的固定速率采样 ####
+可以通过修改 `logging_sampling_rate` 的可选参数，为 `AzureLogHandler` 配置固定速率采样。 如果未提供任何参数，将使用采样速率1.0。 采样率1.0 表示100%，这意味着所有请求都将作为遥测发送到 Application Insights。
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

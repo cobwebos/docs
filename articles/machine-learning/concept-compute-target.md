@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844086"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984806"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标？ 
 
@@ -58,7 +58,7 @@ Azure 机器学习在不同的计算资源中具有不同的支持。  你还可
 创建这些计算资源时，会自动将工作区的一部分与其他类型的计算目标相同。
 
 > [!NOTE]
-> 计算实例仅适用于包含**美国中北部**、* * 美国东部 2 * *、**北欧**或**英国南部**的工作区。
+> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 ### <a name="compute-clusters"></a>计算群集

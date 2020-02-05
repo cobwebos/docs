@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 49c86f3e6c654ecbfcd07809f42a1b038ca3f8ab
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911107"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988577"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911107"
 
 ## <a name="loading-a-map"></a>加载映射
 
-若要加载地图，请创建[map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新实例。 初始化映射时，会传入一个 DIV 元素 ID，用于呈现映射和在加载映射时要使用的一组选项。 如果未在 `atlas` 命名空间上指定默认身份验证信息，则在加载地图时，需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此，在创建地图实例之后，将 `ready` 或 `load` 事件附加到映射，然后添加与该事件处理程序中的映射进行交互的任何其他代码。 当映射的资源足以以编程方式交互时，就会激发 `ready` 事件。 完全加载初始映射视图后，将触发 `load` 事件。 
+若要加载地图，请创建[map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新实例。 初始化映射时，传递 DIV 元素 ID 以呈现映射，并传递一组要在加载映射时使用的选项。 如果未在 `atlas` 命名空间上指定默认身份验证信息，则在加载地图时，需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此，在创建映射实例之后，将 `ready` 或 `load` 事件附加到映射，然后将与映射交互的任何其他代码添加到事件处理程序。 当映射的资源足以以编程方式交互时，就会激发 `ready` 事件。 完全加载初始映射视图后，将触发 `load` 事件。 
 
 <br/>
 
@@ -31,11 +31,11 @@ ms.locfileid: "75911107"
 </iframe>
 
 > [!TIP]
-> 可以在同一页上加载多个映射，每个映射可以使用相同或不同的身份验证和语言设置。
+> 您可以在同一页上加载多个映射。 同一页面上的多个映射可能使用相同或不同的身份验证和语言设置。
 
 ## <a name="show-a-single-copy-of-the-world"></a>显示世界上单个副本
 
-当在宽屏幕上缩小地图时，多个世界副本将水平显示。 这在大多数情况下非常有用，但对于某些应用程序，可能只需要查看单个副本。 为此，可以将 maps `renderWorldCopies` 选项设置为 `false`。
+当在宽屏幕上缩小地图时，多个世界副本将水平显示。 此选项在某些情况下非常有用，但对于其他应用程序，则需要查看单一副本。 此行为是通过将 maps `renderWorldCopies` 选项设置为 `false`来实现的。
 
 <br/>
 
@@ -45,13 +45,13 @@ ms.locfileid: "75911107"
 
 ## <a name="controlling-the-map-camera"></a>控制地图相机
 
-可以通过两种方式使用照相机来设置显示的地图区域。 可以在加载地图时设置相机选项（如中心和缩放），或在映射加载后随时调用 `setCamera` 选项，以编程方式更新地图视图。  
+可以通过两种方法使用地图的照相机来设置显示的地图区域。 可以在加载地图时设置相机选项。 或者，您可以在映射加载后随时调用 `setCamera` 选项，以编程方式更新映射视图。  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>设置相机
 
-在下面的代码中，将创建一个[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并设置中心和缩放选项。 地图属性（如中心）和缩放级别是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+在下面的代码中，将创建一个[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并设置中心和缩放选项。 地图属性（如中心和缩放级别）是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
 
 <br/>
 
@@ -71,7 +71,7 @@ ms.locfileid: "75911107"
 
 ### <a name="animate-map-view"></a>将地图视图制成动画
 
-在下面的代码中，第一个代码块创建地图并设置地图样式、中心和缩放值。 在第二个代码块中，为 "动画" 按钮创建一个 click 事件处理程序。 当单击此按钮时，将调用 setCamera 函数，其中包含[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)， [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)的一些随机值。
+在下面的代码中，第一个代码块创建地图并设置 "输入" 和 "缩放" 地图样式。 在第二个代码块中，为 "动画" 按钮创建一个 click 事件处理程序。 单击此按钮时，将调用 `setCamera` 函数，其中包含[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)和[AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)的一些随机值。
 
 <br/>
 
@@ -80,7 +80,7 @@ ms.locfileid: "75911107"
 
 ## <a name="try-out-the-code"></a>试用代码
 
-查看上面的示例代码。 可以在左侧的“JS”选项卡上编辑 JavaScript 代码，在右侧的“结果”选项卡上查看地图视图变化。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 中的代码。
+查看代码示例。 您可以在 " **JS" 选项卡**中编辑 JavaScript 代码，然后在 "结果"**选项卡**上查看地图视图更改。还可以单击右上角的**CodePen 上**的 "编辑"，并在 CodePen 中修改代码。
 
 <a id="relatedReference"></a>
 

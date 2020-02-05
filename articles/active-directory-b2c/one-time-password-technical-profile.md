@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480198"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982783"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -77,6 +77,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | CodeLength | 否 | 代码的长度。 默认值是 `6`。 |
 | CharacterSet | 否 | 代码的字符集，格式设置为在正则表达式中使用。 例如，`a-z0-9A-Z` 。 默认值是 `0-9`。 字符集必须在指定的集中至少包含10个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值是 `5`。 |
+| 操作 | 是 | 要执行的操作。 可能的值： `GenerateCode`或 `VerifyCode`。 |
 | ReuseSameCode | 否 | 当给定代码未过期且仍然有效时，是否应提供重复的代码，而不是生成新代码。 默认值是 `false`。 |
 
 ### <a name="returning-error-message"></a>返回错误消息

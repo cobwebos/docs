@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418825"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986098"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 
@@ -18,7 +18,7 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 ## <a name="considerations"></a>注意事项
 
-在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都可能导致[启动/停止](automation-solution-vm-management.md)解决方案不良。 建议不要更改包含任何解决方案的自动化帐户中的模块和 runbook。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
+在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都可能对[启动/停止](automation-solution-vm-management.md)解决方案产生负面影响。 不建议在包含任何解决方案的自动化帐户中更改模块和 runbook。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
 
 在自动化帐户中导入 `Az` 模块的行为不会在 runbook 使用的 PowerShell 会话中自动导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
 

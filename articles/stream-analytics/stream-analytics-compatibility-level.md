@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925640"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989852"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -27,7 +27,7 @@ Azure 流分析目前支持三种兼容性级别：
 
 * 1.0-以前的行为
 * 1.1-默认行为
-* 1.2 （预览版）-评估最新改进的行为
+* 1.2-最新的行为和最新的改进
 
 在过去几年前，Azure 流分析的公开上市期间引入了原始1.0 兼容性级别。
 
@@ -47,9 +47,9 @@ Azure 流分析目前支持三种兼容性级别：
 
 ![Azure 门户中的流分析兼容性级别](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-在更新兼容性级别时，T-SQL 编译器会使用与所选兼容性级别相对应的语法来验证作业。
+当你更新兼容级别时，T-sql 编译器将用与所选兼容级别对应的语法来验证作业。
 
-## <a name="compatibility-level-12-preview"></a>兼容性级别1.2 （预览版）
+## <a name="compatibility-level-12"></a>兼容级别 1.2
 
 兼容级别1.2 中引入了以下主要更改：
 

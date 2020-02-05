@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476439"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986030"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
@@ -22,8 +22,10 @@ ms.locfileid: "73476439"
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何实现在 Microsoft 基因组学上运行 GATK4 工作流？
-在 Microsoft 基因组学服务的 config.xml 文件中，将 process_name 指定为 `gatk4`。 请注意，将按定期计费费率计费。
+在 Microsoft 基因组学服务的 config.xml 文件中，指定要 `gatk4`的 process_name。 请注意，将按定期计费费率计费。
 
+## <a name="how-do-i-enable-output-compression"></a>如何实现启用输出压缩？
+可以使用可选的输出压缩参数压缩输出的 .vcf 或 gvcf。 这等效于运行 `-bgzip` 然后 `-tabix` .vcf 或 gvcf 输出上，以生成 `.gz` （bgzip 输出）和 `.tbi` （tabix 输出）文件。 `bgzip` 压缩 .vcf 或 gvcf 文件，并且 `tabix` 为压缩文件创建索引。 参数是一个布尔值，默认情况下，它设置为默认 `false` 用于默认值以 `true` 用于 gcvf 输出。 若要在命令行中使用，请将 `-bz` 或 `--bgzip-output` 指定为 `true` （运行 bgzip 和 tabix）或 `false`。 若要在 config.xml 文件中使用此参数，请将 `bgzip_output: true` 或 `bgzip_output: false` 添加到该文件中。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
 我们保证 Microsoft 基因组学服务 99.9% 的时间均可用于接收工作流 API 请求。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -36,7 +38,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 通过运行 `msgen help` 可获得可用命令和参数的完整列表。 如果未提供进一步的参数，它会显示可用帮助部分的列表，每个 `submit`、`list`、`cancel` 和 `status` 各有一个列表。 若要获取有关特定命令的帮助，请键入 `msgen help command`；例如，`msgen help submit` 会列出所有提交选项。
 
 ## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>`msgen` 客户端最常用的命令有哪些？
-`msgen` 客户端最常用的命令参数包括： 
+最常用的命令是 `msgen` 客户端的参数，包括： 
 
  |**命令**          |  **字段说明** |
  |:--------------------|:-------------         |
@@ -78,13 +80,13 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
+  |`-u/--api-url-base https://url`  | api_url_base: https://url    |
   |`-k/--access-key KEY`            | access_key:KEY              |      
   |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
 
 ## <a name="next-steps"></a>后续步骤
 
-使用以下资源来开始使用 Microsoft 基因组学：
+使用以下资源进行 Microsoft 基因组学入门：
 - 通过 Microsoft 基因组学服务开始运行第一个工作流。 [通过 Microsoft 基因组学服务运行工作流](quickstart-run-genomics-workflow-portal.md)
 - 提交自己的数据并通过以下 Microsoft 基因组学服务进行处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM ](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
 

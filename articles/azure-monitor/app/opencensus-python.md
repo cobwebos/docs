@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846129"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989512"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -336,9 +336,9 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
         main()
     ```
 
-6. 你还可以将自定义维度添加到日志中。 它们将显示为 Azure Monitor 中 `customDimensions` 的键值对。
+6. 你还可以使用 "custom_dimensions" 字段将自定义属性添加到*额外*关键字参数中的日志消息。 它们将显示为 Azure Monitor 中 `customDimensions` 的键值对。
 > [!NOTE]
-> 要使此功能正常工作，需要将字典作为参数传递给日志，将忽略任何其他数据结构。 若要维护字符串格式，请将其存储在字典中，并将它们作为参数传递。
+> 要使此功能正常工作，需要将字典传递到 custom_dimensions 字段。 如果传递任何其他类型的参数，则记录器将忽略它们。
 
     ```python
     import logging
@@ -350,7 +350,17 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. 有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。

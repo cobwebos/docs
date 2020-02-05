@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647200"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990600"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -38,8 +38,6 @@ ms.locfileid: "75647200"
 要定义 Azure Blob 容器，请输入此信息。
 
 !["添加存储目标" 页的屏幕截图，其中填充了新的 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
-
-<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **存储目标名称**-设置在 Azure HPC 缓存中标识此存储目标的名称。
 * **目标类型**-选择 " **Blob**"。

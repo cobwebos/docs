@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072741"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983106"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>从门户调用必应自定义搜索实例
 
@@ -31,7 +31,7 @@ ms.locfileid: "74072741"
 一些重要参数如下所述：
 
 
-|参数  |说明  |
+|参数  |Description  |
 |---------|---------|
 |查询     | 要搜索的搜索词。 仅适用于 Web 终结点、图像终结点、视频终结点和自动建议终结点 |
 |自定义配置 ID | 所选自定义搜索实例的配置 ID。 该字段是只读字段。 |
@@ -40,11 +40,11 @@ ms.locfileid: "74072741"
 
 单击“其他参数”可显示以下参数：  
 
-|参数  |说明  |
+|参数  |Description  |
 |---------|---------|
-|安全搜索     | 用于筛选成人内容网页的筛选器。 仅适用于 Web 终结点、图像终结点、视频终结点和托管 UI 终结点。        |
+|安全搜索     | 用于筛选成人内容网页的筛选器。 仅适用于 Web 终结点、图像终结点、视频终结点和托管 UI 终结点。 请注意，必应自定义视频搜索仅支持两个值： `moderate` 和 `strict`。        |
 |用户界面语言    | 用于用户界面字符串的语言。 例如，如果你在托管 UI 中启用图像和视频，“图像”和“视频”选项卡使用指定的语言。        |
-|Count     | 要在响应中返回的搜索结果数。 仅适用于 Web 终结点、图像终结点和视频终结点。         |
+|计数     | 要在响应中返回的搜索结果数。 仅适用于 Web 终结点、图像终结点和视频终结点。         |
 |Offset    | 返回结果前要跳过的搜索结果数。 仅适用于 Web 终结点、图像终结点和视频终结点。        |
     
 指定所有必需选项后，单击“调用”即可在右侧窗格中查看 JSON 响应。 如果选择“托管 UI”终结点，可以在底部窗格中测试搜索体验。

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887115"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990935"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 
@@ -341,7 +341,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    </code></pre>
 
    > [!NOTE]
-   > 请勿在群集节点的主机名中使用短划线。 否则群集无法正常使用。 这是一个已知限制，SUSE 正在努力修复。 修复程序将作为 sap-suse-cloud-connector 包的修补程序发布。
+   > 使用主机名中的短划线的已知问题与包**sap-** 3.1.1 的版本已修复。 如果将群集节点用于主机名中的短划线，请确保至少使用版本3.1.1 的 "包 sap-群集-连接器"。 否则群集无法正常使用。 
 
    请确保安装 SAP SUSE 群集连接器的新版本。 旧版本称为 sap_suse_cluster_connector，新版本称为 **sap-suse-cluster-connector**。
 

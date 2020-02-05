@@ -3,12 +3,12 @@ title: Azure 服务的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644301"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984364"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "75644301"
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | 核心 |
 | Microsoft.Batch | [批处理](../../batch/index.yml) |
-| Microsoft.Billing | [Billing](/azure/billing/) |
+| Microsoft.Billing | [成本管理和计费](/azure/billing/) |
 | Microsoft.BingMaps | [必应地图](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Azure 区块链服务](/azure/blockchain/workbench/) |
 | Microsoft.Blueprint | [Azure 蓝图](/azure/governance/blueprints/) |

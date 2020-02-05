@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896354"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988414"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux Vm 的 Azure 磁盘加密 
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与符合性方面作出的承诺。 它使用 Linux 的[DM dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为 Azure 虚拟机（vm）的 OS 和数据磁盘提供卷加密，并与[Azure Key Vault](../../key-vault/index.yml)集成，以帮助你控制和管理磁盘加密密钥和机密。 
+Azure 磁盘加密有助于保护和保护数据，以满足组织的安全性和符合性承诺。 它使用 Linux 的[DM dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为 Azure 虚拟机（vm）的 OS 和数据磁盘提供卷加密，并与[Azure Key Vault](../../key-vault/index.yml)集成，以帮助你控制和管理磁盘加密密钥和机密。 
 
 如果你使用的是[Azure 安全中心](../../security-center/index.yml)，则如果你有未加密的 vm，系统会发出警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
@@ -78,7 +78,9 @@ Azure[认可的 linux 分发](endorsed-distros.md)的一个子集上支持 Azure
 | SLES | 12-SP3 | 数据磁盘 |
 
 > [!NOTE]
-> RHEL OS 和用于 RHEL7 即用即付映像的数据磁盘支持新的 ADE 实现。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 
+> RHEL OS 和用于 RHEL7 即用即付映像的数据磁盘支持新的 Azure 磁盘加密。  
+>
+> RHEL 自带订阅金牌映像也支持 ADE，但仅在注册订阅**后**才支持。 有关详细信息，请参阅[在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 

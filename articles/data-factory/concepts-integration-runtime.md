@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927152"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990515"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -141,9 +141,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS IR 位置
 为你的 Azure-SSIS IR 选择正确的位置对在提取-转换-加载 (ETL) 工作流中实现高性能至关重要。
 
-- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的需要托管 SSISDB 的 Azure SQL 数据库/托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
-- 如果没有托管 SSISDB 的现有 Azure SQL 数据库/托管实例服务器，但有本地数据源/目标，则应在连接到本地网络的虚拟网络所在位置中创建新的 Azure SQL 数据库/托管实例服务器。  这样，即可使用新的 Azure SQL 数据库/托管实例服务器并加入该虚拟网络来创建 Azure-SSIS IR，从而将不同位置间的数据移动降至最低 - 所有操作在同一位置进行。
-- 如果托管 SSISDB 的现有 Azure SQL 数据库/托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有 Azure SQL 数据库/托管实例服务器并在同一位置加入其他虚拟网络来创建 Azure-SSIS IR，然后配置不同位置之间的虚拟网络到虚拟网络连接。
+- Azure-SSIS IR 的位置不需要与数据工厂的位置相同，但它应该与你自己的 Azure SQL 数据库的位置或要托管 SSISDB 的托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
+- 如果没有现有的 Azure SQL 数据库或托管实例服务器来托管 SSISDB，但有本地数据源/目标，应在连接到本地网络的虚拟网络的同一位置中创建新的 Azure SQL 数据库或托管实例服务器。  这样，你便可以使用新的 Azure SQL 数据库或托管实例服务器创建 Azure-SSIS IR，并将该虚拟网络加入同一位置，从而有效地最大限度地减少了跨不同位置的数据移动。
+- 如果你的现有 Azure SQL 数据库或用于托管 SSISDB 的托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请首先使用现有 Azure SQL 数据库创建 Azure-SSIS IR 或在同一位置托管实例服务器和加入另一个虚拟网络，然后将虚拟网络配置为不同位置之间的虚拟网络连接。
 
 下图显示了数据工厂及其集成运行时的位置设置：
 
@@ -163,13 +163,13 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 查找和 GetMetadata 活动在关联到数据存储链接服务的集成运行时上执行。
 
-### <a name="transformation-activity"></a>转换活动
+### <a name="external-transformation-activity"></a>外部转换活动
 
-每个转换活动都有一个目标计算链接服务，该服务指向集成运行时。 该集成运行时实例是分派转换活动的实例。
+利用外部计算引擎的每个外部转换活动都具有指向集成运行时的目标计算链接服务。 此集成运行时实例确定从中调度外部手动编码转换活动的位置。
 
 ### <a name="data-flow-activity"></a>数据流活动
 
-数据流活动在与其关联的集成运行时上执行。 
+数据流活动在与其关联的 Azure 集成运行时上执行。 数据流所利用的 Spark 计算由 Azure Integration Runtime 中的数据流属性决定，由 ADF 完全管理。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

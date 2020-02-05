@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754107"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988628"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -133,147 +133,11 @@ ms.locfileid: "75754107"
 
 ## <a name="api-reference"></a>API 参考
 
-本部分是[Create 技能组合（REST API）](https://docs.microsoft.com/rest/api/searchservice/create-skillset)参考文档的一个版本，已修改为包括 `knowledgeStore` 定义。 
+REST API 版本 `2019-05-06-Preview` 通过技能集上的其他定义提供知识库。 除引用外，有关如何调用 Api 的详细信息，请参阅[使用 Postman 创建知识库](knowledge-store-create-rest.md)。
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>示例-嵌入在技能组合中的 knowledgeStore
++ [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Update 技能组合（api 版本 = 2019-05-06-01.5.1）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-下面的示例演示技能组合定义底部的 `knowledgeStore`。 
-
-* 使用**POST**或**PUT**来表述请求。
-* 使用 REST API 的 `api-version=2019-05-06-Preview` 版本来访问知识存储功能。 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-请求正文是一个 JSON 文档，用于定义技能组合，其中包括 `knowledgeStore`。
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>请求正文语法  
-
-下面的 JSON 指定 `knowledgeStore`，它是由 `indexer` （未显示）调用[`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)的一部分。 如果已熟悉 AI 扩充，则技能组合会确定已扩充文档的构成。 技能集必须至少包含一个技能，如果调制的是数据结构，则该技能很可能是整形程序技能。
-
-构造请求负载的语法如下。
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-`knowledgeStore` 有两个属性： Azure 存储帐户 `storageConnectionString` 和定义物理存储的 `projections`。 你可以使用任何存储帐户，但在同一区域中使用服务是经济高效的。
-
-`projections` 集合包含投影对象。 每个投影对象都必须具有 `tables`、`objects``files` （每个都是指定的或 null）。 上述语法显示了两个对象，一个完全指定，另一个完全为空。 在投影对象中，在存储后，数据中的任何关系（如果检测到）都将保留。 
-
-根据需要创建任意数量的投影对象，以支持隔离和特定方案（例如，用于浏览的数据结构，与数据科学工作负荷中所需的相同）。 你可以通过将 `source` 和 `storageContainer` 或 `table` 设置为对象中的不同值，来针对特定方案获取隔离和自定义。 有关详细信息和示例，请参阅[在知识存储中使用投影](knowledge-store-projection-overview.md)。
-
-|属性      | 适用于 | Description|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | 必需。 采用以下格式： `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | 必需。 由 `tables`、`objects`、`files` 及其各自的属性组成的属性对象的集合。 未使用的投影可以设置为 null。|  
-|`source`| 所有投影| 扩充树的节点的路径，该节点是投影的根。 此节点是技能组合中任何技能的输出。 路径从 `/document/`开始，表示扩充的文档，但可扩展到 `/document/content/` 或文档树中的节点。 示例： `/document/countries/*` （所有国家/地区）或 `/document/countries/*/states/*` （所有国家/地区中的所有州）。 有关文档路径的详细信息，请参阅[技能组合概念和组合](cognitive-search-working-with-skillsets.md)。|
-|`tableName`| `tables`| 要在 Azure 表存储中创建的表。 |
-|`storageContainer`| `objects`，`files`| 要在 Azure Blob 存储中创建的容器的名称。 |
-|`generatedKeyName`| `tables`| 在表中创建的、用于唯一标识文档的列。 扩充管道用生成的值填充此列。|
-
-
-### <a name="response"></a>响应  
-
- 对于成功的请求，应看到状态代码“201 Created”。 默认情况下，响应正文将包含已创建的技能组合定义的 JSON。 请注意，在调用引用此技能组合的索引器之前，不会创建知识库。
 
 ## <a name="next-steps"></a>后续步骤
 

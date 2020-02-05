@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702515"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983089"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
 
 "重定向 URI" 或 "回复 URL" 是授权服务器将用户发送到的位置，一旦应用成功获得授权，并获得授权代码或访问令牌即可。 代码或令牌包含在重定向 URI 或回复令牌中，因此在应用注册过程中注册正确的位置非常重要。
 
+ 以下限制适用于回复 Url：
+
+    * 回复 URL 必须以方案 `https`开头。
+    * 回复 URL 区分大小写。 它的大小写必须与正在运行的应用程序的 URL 路径匹配。 例如，如果你的应用程序将作为其路径 `.../abc/response-oidc`的一部分包含，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 web 浏览器将路径视为区分大小写，因此在重定向到不匹配的 `.../ABC/response-oidc` URL 时，可能会排除与 `.../abc/response-oidc` 关联的 cookie。
+    
 ## <a name="maximum-number-of-redirect-uris"></a>重定向 Uri 的最大数目
 
 下表显示了在注册应用程序时可添加的重定向 Uri 的最大数目。

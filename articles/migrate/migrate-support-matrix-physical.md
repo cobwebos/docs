@@ -3,12 +3,12 @@ title: 支持 Azure Migrate 的物理服务器评估
 description: 了解支持 Azure Migrate 的物理服务器评估。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846571"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990328"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -38,7 +38,7 @@ ms.locfileid: "76846571"
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
-| **权限**           | **Windows：** 在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。 需要将用户帐户添加到这些组-远程桌面用户、性能监视器用户和性能日志用户。 <br/> **Linux：** 需要在要发现的 Linux 服务器上使用根帐户。 |
+| **权限**           | **Windows：** 在要包括在发现中的所有 Windows 服务器上设置本地用户帐户或域用户帐户。 需要将用户帐户添加到这些组-远程桌面用户、性能监视器用户和性能日志用户。 <br/> **Linux：** 需要在要发现的 Linux 服务器上使用根帐户。 |
 | **操作系统** | 支持所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统，但以下情况除外：<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

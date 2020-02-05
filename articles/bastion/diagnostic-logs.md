@@ -1,22 +1,22 @@
 ---
-title: 启用和使用 Azure 堡垒诊断日志 |Microsoft Docs
+title: 启用和使用 Azure 堡垒诊断日志
 description: 本文介绍如何启用和使用 Azure 堡垒诊断日志。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512400"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989444"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>启用并使用堡垒诊断日志
 
-当用户使用 Azure 堡垒连接到工作负荷时，堡垒可以记录远程会话的诊断。 然后，可以使用诊断来查看哪些用户连接到哪些工作负荷，以及在何处以及其他此类相关日志记录信息。 若要使用诊断，必须在 Azure 堡垒上启用诊断日志。 本文将帮助您启用诊断日志，然后查看日志。
+当用户使用 Azure 堡垒连接到工作负荷时，堡垒可以记录远程会话的诊断。 然后，你可以使用诊断来查看哪些用户连接到哪些工作负荷、在何处以及其他此类相关日志记录信息。 若要使用诊断，必须在 Azure 堡垒上启用诊断日志。 本文将帮助您启用诊断日志，然后查看日志。
 
 ## <a name="enable"></a>启用诊断日志
 

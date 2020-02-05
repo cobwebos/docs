@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545885"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988713"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
 
@@ -86,9 +86,9 @@ ms.locfileid: "76545885"
     
 若要获取认知见解小组件内容，请使用以下项之一：<br/>
 - [获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)API。<br/>
-- [获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)。 将其作为查询参数添加到 URL。 指定此 URL 作为 iframe 的**src**值，如前面所示。
+- [获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 将其作为查询参数添加到 URL。 指定此 URL 作为 iframe 的**src**值，如前面所示。
 
-若要在嵌入的小组件中提供编辑见解功能，必须传递包含编辑权限的访问令牌。 使用 "[获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)" 或 "[获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)" `&allowEdit=true`。 
+若要在嵌入的小组件中提供编辑见解功能，必须传递包含编辑权限的访问令牌。 使用 "[获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)" 或 "[获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?)" `&allowEdit=true`。 
 
 ## <a name="widgets-interaction"></a>小组件交互
 
@@ -262,8 +262,25 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 若要禁用标题，可以将 `captions` 参数值作为 `false`传递。
 
-#### <a name="autoplay"></a>自动播放
+#### <a name="autoplay"></a>功能
 默认情况下，播放机将开始播放视频。 你可以选择不通过将 `&autoplay=false` 传递到前面的嵌入 URL。
+
+## <a name="code-samples"></a>代码示例
+
+请参阅包含视频索引器 API 和小组件示例的[代码示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)存储库：
+
+| 文件/文件夹                       | Description                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | 在自定义 Azure Media Player 中加载视频索引器视频                        |
+| `azure-media-player-vi-insights`  | 使用自定义 Azure Media Player 嵌入 VI Insights                             |
+| `control-vi-embedded-player`      | 嵌入 VI 播放器并从外部控制                                    |
+| `custom-index-location`           | 嵌入自定义外部位置的 VI Insights （可以是客户 a blob）     |
+| `embed-both-insights`             | 使用机会和见解的 VI Insights 基本用法                            |
+| `embed-insights-with-AMP`         | 使用自定义 Azure Media Player 嵌入 VI Insights 小组件                      |
+| `customize-the-widgets`           | 使用自定义选项嵌入 VI 小组件                                     |
+| `embed-both-widgets`              | 嵌入 VI 播放器和见解并在它们之间进行通信                      |
+| `url-generator`                   | 基于用户指定的选项生成小组件自定义嵌入 url             |
+| `html5-player`                    | 使用默认 HTML5 视频播放器嵌入 VI Insights                            |
 
 ## <a name="next-steps"></a>后续步骤
 

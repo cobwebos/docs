@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289452"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989342"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -62,14 +62,14 @@ Azure Migrate 提供了一个集中式中心，用于评估和迁移到 Azure。
 - 每个工具中都有一个用于连接到 Azure Migrate 的选项。 按照工具说明和文档操作，将该工具与 Azure Migrate 连接起来。
 可以在 Azure Migrate 项目中跨 Azure 和其他工具集中跟踪迁移历程。
 
-### <a name="how-do-i-delete-a-project"></a>如何实现删除项目？
+## <a name="how-do-i-delete-a-project"></a>如何实现删除项目？
 
 [了解如何](how-to-delete-project.md)删除项目。 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>迁移后是否保留域标识？
 
-
-
+假定域服务已[集成到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/)中，则迁移后会保留域中的域成员身份和计算机标识。 
 
 ## <a name="next-steps"></a>后续步骤
 阅读[Azure Migrate 概述](migrate-services-overview.md)。

@@ -3,21 +3,21 @@ title: 绘图工具模块 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 设置绘图选项数据
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910586"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988917"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用绘图工具模块
 
-Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块可以轻松地使用输入设备（例如鼠标的触摸屏幕）在地图上绘制和编辑形状。 此模块的核心类是[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)，它提供了在地图上绘制和编辑形状所需的所有功能。 可以直接使用绘图管理器并将其与自定义工具栏 UI 集成，也可以使用内置的 "绘图"[工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)类。 
+Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的所有功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的 "绘图"[工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)类。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>在网页中加载绘图工具模块
 
@@ -30,7 +30,7 @@ Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块可
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - 或者，通过[使用 npm 包在本地](https://www.npmjs.com/package/azure-maps-drawing-tools)加载 AZURE MAPS Web SDK 源代码的 "绘图工具" 模块，然后将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
+    - 或者，你可以使用 npm 包在本地加载 Azure Maps Web SDK 源代码的 "绘图工具" 模块，[然后将其](https://www.npmjs.com/package/azure-maps-drawing-tools)托管到你的应用程序。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
         > **npm 安装 azure 地图-绘图工具**
     
@@ -43,7 +43,7 @@ Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块可
 
 ## <a name="use-the-drawing-manager-directly"></a>直接使用绘图管理器
 
-现在，已将 "绘图工具" 模块加载到应用程序中，可以使用 "[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)" 启用图中的绘图和编辑功能。 可以在对其进行实例化时为绘图管理器指定选项，也可以使用 `drawingManager.setOptions()` 函数。
+在应用程序中加载 "绘图工具" 模块后，可以使用 "[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)" 启用绘图和编辑功能。 可以在对其进行实例化时为绘图管理器指定选项，也可以使用 `drawingManager.setOptions()` 函数。
 
 ### <a name="set-the-drawing-mode"></a>设置绘制模式
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-下面是实现功能的代码示例，使用该功能可以自由地在地图上绘制多边形，同时按住鼠标左键并拖动它。 
+ 此代码示例实现了在地图上绘制多边形的功能。 只需按住鼠标左键并随意拖动即可。
 
 <br/>
 

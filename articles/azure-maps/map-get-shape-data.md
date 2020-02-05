@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911016"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988543"
 ---
 # <a name="get-shape-data"></a>获取形状数据
 
-本文介绍如何使用[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) **drawingManager getSource （）** 函数获取在地图上绘制的形状数据。 在某些情况下，可能需要提取绘制形状的 geojson 数据，并在其他位置使用它。  
+本文介绍如何获取在地图上绘制的形状的数据。 我们在 "[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)" 中使用**getSource （）** 函数。 当您想要提取绘制形状的 geojson 数据并将其用于其他位置时，有多种方案。  
 
 
 ## <a name="get-data-from-drawn-shape"></a>从绘制的形状获取数据

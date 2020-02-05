@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1051ea91378cc2e2facec7e34f6d303297b91ce8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7d31966241e352583ee4338faff8aae7e1a09c6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454064"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990243"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -44,7 +44,7 @@ az group create --location "East US" \
 az iotcentral app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku S1 --template "iotc-demo@1.0.0" \
+  --sku ST1 --template "iotc-demo@1.0.0" \
   --display-name "My Custom Display Name"
 ```
 
@@ -56,7 +56,7 @@ az iotcentral app create \
 | location          | 默认情况下，此命令使用来自资源组的位置。 目前，可以在**美国**、**澳大利亚**、**亚太**或**欧洲**位置创建 IoT Central 应用程序。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
 | 域名         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
-| sku               | 目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+| sku               | 目前，可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 | template          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 | display-name      | UI 中显示的应用程序名称。 |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769099"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984840"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -27,7 +27,7 @@ Azure 机器学习计算实例（预览版）是一种完全托管的基于云�
 计算实例通常用作开发环境。  它们还可用作定型和推断的计算目标，以进行开发和测试。  对于大型任务，具有多节点缩放功能的[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
 > [!NOTE]
-> 当前，计算实例仅适用于区域为**美国中北部**或**英国南部**的工作区，并对即将推出的其他区域提供支持。
+> 当前，计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 ## <a name="why-use-a-compute-instance"></a>为什么使用计算实例？

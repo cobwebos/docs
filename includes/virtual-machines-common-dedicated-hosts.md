@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833890"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013693"
 ---
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 支持以下 VM 系列： DSv3 和 ESv3。 
+- 支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="benefits"></a>优势 
 
@@ -73,7 +73,7 @@ ms.locfileid: "75833890"
 **维护控制**向客户提供一个选项，用于跳过在其专用主机上计划的定期平台更新，并在35天滚动窗口中进行选择时应用。
 
 > [!NOTE]
->  维护控制目前处于有限的预览阶段，需要载入过程。 提交[提名调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)，申请此预览版。
+>  维护控制目前为公共预览版。 有关详细信息，请参阅**使用[CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)或[PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)控制使用维护控制的更新**。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 

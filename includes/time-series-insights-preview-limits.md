@@ -4,17 +4,17 @@ description: include 文件
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 02/03/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75616183"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013744"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>公开上市和预览比较
 
@@ -28,7 +28,7 @@ ms.locfileid: "75616183"
 | 计算逻辑存储 | 否 | 存储在模型的类型变量中 |
 | 存储和访问控制 | 否 | 已通过模型启用 |
 | 聚合/采样 | 否 | 事件加权和时间加权 |
-| 信号重建 | 否 | 插值 |
+| 信号重建 | 否 | 评估 |
 | 衍生时序的生产 | 否 | 是，合并和联接 |
 | 语言灵活性 | 不可组合 | 组合 |
 | 表达式语言 | 谓词字符串 | 时序表达式（谓词字符串、值、表达式和函数） |

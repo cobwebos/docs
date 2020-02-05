@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980140"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989835"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
+
 Red Hat Enterprise Linux （RHEL）映像可通过即用即付（PAYG）或自带订阅（Red Hat 黄金图）模型在 Azure 中使用。 本文档概述了 Azure 中的 Red Hat 黄金映像。
 
 ## <a name="important-points-to-consider"></a>需要考虑的要点
@@ -170,25 +171,41 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付（PAYG）或自�
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>加密 Red Hat Enterprise Linux 自带订阅金牌映像
+
+Red Hat Enterprise Linux 自带订阅金牌映像可通过使用[Azure 磁盘加密](../../linux/disk-encryption-overview.md)进行保护。 但是，**必须**先注册订阅，然后才能启用加密。  有关注册 RHEL BYOS 黄金映像的详细信息，请访问 Red Hat 网站。 请参阅[如何使用 Red Hat 订阅管理器将系统注册和订阅 Red Hat 客户门户](https://access.redhat.com/solutions/253273);如果有活动的 Red Hat 订阅，还可以阅读[创建 Red Hat 客户门户激活密钥](https://access.redhat.com/articles/1378093)。
+
+[Red Hat 自定义映像](/linux/redhat-create-upload-vhd)不支持 Azure 磁盘加密。 [适用于 Linux vm 的 Azure 磁盘加密](../../linux/disk-encryption-overview.md#additional-vm-requirements)中介绍了其他 ADE 要求和先决条件。
+
+Linux Vm 和相关文章[上的 Azure 磁盘加密方案](../../linux/disk-encryption-linux.md)中提供了应用 Azure 磁盘加密的步骤。  
+
 ## <a name="additional-information"></a>其他信息
-- 如果尝试在未针对此产品/服务启用的订阅上预配 VM，你将收到以下错误，你应与 Microsoft 或 Red Hat 联系以启用你的订阅。
+
+- 如果你尝试在未针对此产品/服务启用的订阅上预配 VM，你将收到以下错误：
+
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
+    
+    在这种情况下，请与 Microsoft 或 Red Hat 联系以启用你的订阅。
 
-- 如果从 RHEL BYOS 映像创建快照并在[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)中发布映像，则需要提供与快照原始源匹配的计划信息。 例如，命令可能如下所示（请注意最后一行中的计划参数）：
+- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
+
     ```azurecli
     az vm create –image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+    请注意上面最后一行中的计划参数。
 
-- 如果使用自动化从 RHEL BYOS 映像预配 Vm，则需要提供类似于上面所示内容的计划参数。 例如，如果使用的是 Terraform，则应在[计划块](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)中提供计划信息。
+    自定义映像不支持[Azure 磁盘加密](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)。
+
+- 如果使用自动化从 RHEL BYOS 映像预配 Vm，则必须提供类似于上面所示内容的计划参数。 例如，如果使用的是 Terraform，则应在[计划块](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)中提供计划信息。
 
 ## <a name="next-steps"></a>后续步骤
-* [Red Hat 云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)中提供了云访问的分步指南和程序详细信息。
-* 了解有关[Azure Red Hat 更新基础结构](./redhat-rhui.md)的详细信息。
-* 若要了解有关 Azure 中所有 Red Hat 映像的详细信息，请参阅[文档页](./redhat-images.md)。
-* 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
-* 有关 RHEL 黄金映像的其他文档，可参阅[Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。
+- [Red Hat 云访问文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)中提供了云访问的分步指南和程序详细信息。
+- 了解有关[Azure Red Hat 更新基础结构](./redhat-rhui.md)的详细信息。
+- 若要了解有关 Azure 中所有 Red Hat 映像的详细信息，请参阅[文档页](./redhat-images.md)。
+- 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
+- 有关 RHEL 黄金映像的其他文档，可参阅[Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。

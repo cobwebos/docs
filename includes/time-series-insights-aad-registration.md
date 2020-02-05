@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 12/06/2019
-ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460421"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984509"
 ---
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
@@ -34,18 +34,30 @@ ms.locfileid: "75460421"
 
 1. “身份验证”边栏选项卡可指定重要的身份验证配置设置。 
 
+    1. 添加**重定向 uri**并通过选择 " **+ 添加平台**" 来配置**访问令牌**。
+
+    1. 选择 **"是" 或 "** **否**"，确定应用是否为**公共客户端**。
+
+    1. 验证支持的帐户和租户。
+
+    [![配置隐式授权](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+
+1. 选择适当的平台后，在用户界面右侧的侧面板中配置**重定向 uri**和**访问令牌**。
+
     1. “重定向 URI”必须与身份验证请求所提供的地址相匹配：
 
-        * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”。 确保将“默认客户端类型”设置为“是”。
-        * 对于 Azure 应用服务上托管的单页应用，请选择“Web”。
+        * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”。 请确保将 "**公用客户端**" 设置为 **"是"** 。
+        * 对于托管在 Azure App Service 上的单页面应用，请选择 " **Web**"。
+
+    1. 确定**注销 URL**是否合适。
 
     1. 通过检查**访问令牌**或**ID 令牌**来启用隐式授权流。
 
-   [![创建重定向 Uri 和配置隐式授权](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![创建重定向 Uri](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-   单击“ **保存**”。
+    单击 "**配置**"，然后单击 "**保存**"。
 
-1. 选择“证书和机密”，然后选择“新建客户端机密”来创建客户端可用来证明其身份的应用程序密码。
+1. 选择 "**证书" &** "密码"，然后选择 "**新建客户端**密码" 来创建客户端应用程序可用于证明其身份的应用程序密码。
 
    [![创建新客户端机密](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 

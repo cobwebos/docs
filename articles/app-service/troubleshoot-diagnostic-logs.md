@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121352"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985928"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -188,7 +188,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
 | AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 的登录活动 |
-| AppServiceFileAuditLogs | TBA | TBA | 通过 FTP 和 Kudu 进行的文件更改 |
+| AppServiceFileAuditLogs | TBA | 是 | 通过 FTP 和 Kudu 进行的文件更改 |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | 应用程序日志 |
 
 ## <a name="nextsteps"></a> 后续步骤

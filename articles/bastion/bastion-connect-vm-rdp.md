@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dad6a517341f83f693e1e7e1f7d27e899e00f7e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498358"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990481"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure 堡垒连接到 Windows 虚拟机
 
@@ -20,13 +20,22 @@ ms.locfileid: "73498358"
 
 ## <a name="before-you-begin"></a>开始之前
 
-请确保已为 VM 所在的虚拟网络设置了 Azure 堡垒主机。 有关详细信息，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。 在虚拟网络中设置并部署堡垒服务后，可以使用它连接到此虚拟网络中的任何 VM。 堡垒假设你使用 RDP 连接到 Windows VM，使用 SSH 连接到 Linux Vm。 有关连接到 Linux VM 的信息，请参阅[连接到 VM-Linux](bastion-connect-vm-ssh.md)。
+请确保已为 VM 所在的虚拟网络设置了 Azure 堡垒主机。 有关详细信息，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。 在虚拟网络中设置并部署堡垒服务后，可以使用它连接到此虚拟网络中的任何 VM。
 
+堡垒假设你使用 RDP 连接到 Windows VM，使用 SSH 连接到 Linux Vm。 有关连接到 Linux VM 的信息，请参阅[连接到 VM-Linux](bastion-connect-vm-ssh.md)。
+
+### <a name="required-roles"></a>必需的角色
 需要使用以下角色进行连接：
 
 * 虚拟机上的读者角色
 * NIC 上的读者角色（使用虚拟机的专用 IP）
 * Azure Bastion 资源上的读者角色
+
+### <a name="ports"></a>端口
+
+若要通过 RDP 连接到 Windows VM，必须在 Windows VM 上打开以下端口：
+
+* 入站端口： RDP （3389）
 
 ## <a name="rdp"></a>使用 RDP 进行连接
 
