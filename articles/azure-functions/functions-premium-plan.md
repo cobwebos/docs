@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561948"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024630"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -37,7 +37,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 ### <a name="pre-warmed-instances"></a>准备好实例
 
-如果在消耗计划中今天没有发生事件和执行，则应用可能会缩小到零实例。 当出现新事件时，需要使用在其上运行的应用程序来专用化新的实例。  专用化新实例可能需要一些时间，具体取决于应用程序。  第一次调用的额外延迟通常称为应用冷启动。
+如果当前在消耗计划中未发生任何事件和执行，则应用可能会向零个实例进行缩放。 当出现新事件时，需要使用在其上运行的应用程序来专用化新的实例。  专用化新实例可能需要一些时间，具体取决于应用程序。  第一次调用的额外延迟通常称为应用冷启动。
 
 在高级计划中，你可以将应用预先准备好指定数量的实例，最小计划大小。  使用准备好实例，还可以在高负载之前预缩放应用。 在应用程序扩展时，它首先扩展到准备好实例。 其他实例将继续为下一个缩放操作做好缓冲并使其立即预热。 通过使用准备好实例的缓冲区，可以有效地避免冷启动延迟。  准备好实例是高级计划的一项功能，需要在计划处于活动状态时至少保持一个实例处于运行状态且可用。
 
@@ -107,7 +107,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
-|东亚| ✔ |  |
+|亚洲东部| ✔ |  |
 |美国东部 | ✔ | ✔<sup>1</sup> |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |

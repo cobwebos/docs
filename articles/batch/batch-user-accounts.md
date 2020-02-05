@@ -2,8 +2,8 @@
 title: 在用户帐户下运行任务-Azure Batch
 description: 能够配置要在其下运行任务的用户帐户是非常有用的。 了解用户帐户的类型以及如何配置它们。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/18/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937961"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022777"
 ---
 > [!NOTE] 
 > 出于安全原因，本文中所述的用户帐户不同于用于远程桌面协议（RDP）或安全外壳（SSH）的用户帐户。 

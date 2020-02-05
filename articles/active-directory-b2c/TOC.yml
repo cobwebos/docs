@@ -348,6 +348,9 @@
           displayName: 'migrate, b2clogin, owin'
     - name: 自动化
       items:
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events'
         - name: 导出使用情况报表
           href: view-usage-reports.md
         - name: 帐户管理

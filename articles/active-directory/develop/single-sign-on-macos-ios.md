@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701376"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022624"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 
@@ -71,7 +71,9 @@ MSAL 支持通过 iOS 密钥链访问组进行 SSO 共享。
 
 Microsoft 标识平台告诉使用同一个应用程序 ID 的应用程序的**重定向 uri**。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
 
-App1 重定向 URI： `msauth.com.contoso.mytestapp1://auth` App2 重定向 uri： `msauth.com.contoso.mytestapp2://auth` App3 重定向 URI： `msauth.com.contoso.mytestapp3://auth`
+App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`  
+App2 重定向 URI：`msauth.com.contoso.mytestapp2://auth`  
+App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > 重定向 uri 的格式必须兼容 MSAL 支持的格式，如[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中所述。
@@ -96,6 +98,18 @@ App1 重定向 URI： `msauth.com.contoso.mytestapp1://auth` App2 重定向 uri�
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>添加新的密钥链组
+
+向项目**功能**添加新的密钥链组。 密钥链组应为：
+* iOS 上的 `com.microsoft.adalcache` 
+* macOS 上的 `com.microsoft.identity.universalstorage`。
+
+![密钥链示例](media/single-sign-on-macos-ios/keychain-example.png)
+
+有关详细信息，请参阅[密钥链组](howto-v2-keychain-objc.md)。
+
+## <a name="configure-the-application-object"></a>配置应用程序对象
+
 在每个应用程序中启用密钥链授权，并准备好使用 SSO 后，请使用密钥链访问组配置 `MSALPublicClientApplication`，如以下示例中所示：
 
 Objective-C：
@@ -113,16 +127,14 @@ Swift：
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > 在应用程序之间共享密钥链时，任何应用程序都可以删除应用程序中的用户或甚至所有令牌。
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)

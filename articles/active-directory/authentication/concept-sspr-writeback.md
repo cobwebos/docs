@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544015"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023117"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -164,7 +164,7 @@ ms.locfileid: "76544015"
    * 管理员从[Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置
 
 > [!WARNING]
-> 使用 "用户在下次登录时必须更改密码" 复选框在本地 Active Directory 管理工具（如 Active Directory 用户和计算机）或 Active Directory 管理中心支持为 Azure AD Connect 的预览功能。 有关详细信息，请参阅[Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)一文。
+> 使用 "用户在下次登录时必须更改密码" 复选框在本地 Active Directory 管理工具（如 Active Directory 用户和计算机）或 Active Directory 管理中心支持为 Azure AD Connect 的预览功能。 有关详细信息，请参阅[Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

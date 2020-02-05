@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（通过 CloudSimple）将本地第2层网络延伸到私有云
-description: 介绍如何在 CloudSimple 私有云和本地独立的 NSX 边缘客户端上的 NSX 之间设置第2层 VPN
+title: Azure VMware 解决方案（AVS）-将本地第2层网络延伸到 AVS 私有云
+description: 介绍如何在 AVS 私有云和本地独立的 NSX 边缘客户端上的 NSX 之间设置第2层 VPN
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232382"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019819"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
-在本指南中，你将了解如何使用第2层 VPN （L2VPN）将第2层网络从本地环境延伸到 CloudSimple 私有云。 此解决方案可在同一子网地址空间内将本地 VMware 环境中运行的工作负荷迁移到 Azure 中的私有云，而无需重新对工作负荷进行 IP 处理。
+在本指南中，你将了解如何使用第2层 VPN （L2VPN）将第2层网络从本地环境延伸到 AVS 私有云。 此解决方案可在同一子网地址空间内将本地 VMware 环境中运行的工作负荷迁移到 Azure 中的 AVS 私有云，而无需重新对工作负荷进行 IP 处理。
 
 基于 L2VPN 的第2层网络可在本地 VMware 环境中使用或不使用基于 NSX 的网络。 如果没有基于 NSX 的网络用于本地工作负荷，则可以使用独立的 NSX Edge 服务网关。
 
 > [!NOTE]
-> 本指南介绍了本地和私有云数据中心通过站点到站点 VPN 连接的情况。
+> 本指南介绍了本地和 AVS 私有云数据中心通过站点到站点 VPN 连接的情况。
 
 ## <a name="deployment-scenario"></a>部署方案
 
-若要使用 L2VPN 拉伸本地网络，必须配置 L2VPN 服务器（目标 NSX-T Tier0 路由器）和 L2VPN 客户端（源独立客户端）。  
+若要使用 L2VPN 拉伸本地网络，必须配置 L2VPN 服务器（目标 NSX-T Tier0 路由器）和 L2VPN 客户端（源独立客户端）。 
 
-在此部署方案中，私有云是通过站点到站点 VPN 隧道连接到本地环境的，该隧道允许本地管理和 vMotion 子网与私有云管理和 vMotion 子网通信。 这种排列对于跨 vCenter vMotion （xVC）是必需的。 在私有云中，Tier0 路由器部署为 L2VPN 服务器。
+在此部署方案中，你的 AVS 私有云通过站点到站点 VPN 隧道连接到你的本地环境，这允许本地管理和 vMotion 子网与 AVS 私有云管理和 vMotion 子网通信。 这种排列对于跨 vCenter vMotion （xVC）是必需的。 在 AVS 私有云中，Tier0 路由器部署为 L2VPN 服务器。
 
-独立的 NSX 边缘部署在本地环境中作为 L2VPN 客户端，随后与 L2VPN 服务器配对。 每一端都会创建一个 GRE 隧道终结点，并将其配置为将本地第2层网络 "拉伸" 到私有云。 下图描述了此配置。
+独立的 NSX 边缘部署在本地环境中作为 L2VPN 客户端，随后与 L2VPN 服务器配对。 每一端都会创建一个 GRE 隧道终结点，并将其配置为将本地第2层网络 "拉伸" 到 AVS 私有云。 下图描述了此配置。
 
 ![部署方案](media/l2vpn-deployment-scenario.png)
 
@@ -42,29 +42,29 @@ ms.locfileid: "74232382"
 
 * 本地 vSphere 版本为 6.7 U1 + 或 6.5 P03 +。
 * 本地 vSphere 许可证位于企业 Plus 级别（适用于 vSphere 分布式交换机）。
-* 确定要延伸到私有云的工作负荷第2层网络。
+* 确定要延伸到 AVS 私有云的工作负荷第2层网络。
 * 确定本地环境中用于部署 L2VPN 客户端设备的第2层网络。
-* [已创建私有云](create-private-cloud.md)。
-* 独立的 NSX-T 边缘设备版本与在私有云环境中使用的 NSX-T 管理器版本（NSX-T 2.3.0）兼容。
+* [已创建一个 AVS 私有云](create-private-cloud.md)。
+* 独立的 NSX-T 边缘设备版本与你的 AVS 私有云环境中使用的 NSX-T 管理器版本（NSX-T 2.3.0）兼容。
 * 已在本地 vCenter 中创建了一个已启用伪造传输的中继端口组。
 * 已保留一个公共 IP 地址用于 NSX-T 独立客户端上行 IP 地址，1:1 NAT 可用于在两个地址之间进行转换。
-* 将 az.cloudsimple.io 域的本地 DNS 服务器上的 DNS 转发设置为指向私有云 DNS 服务器。
+* 在 az 的本地 DNS 服务器上设置 DNS 转发。要指向 AVS 私有云 DNS 服务器的 AVS.io 域。
 * RTT 延迟小于或等于 150 ms，这是因为 vMotion 需要在两个站点间工作。
 
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
-下表列出了支持的 vSphere 版本和网络适配器类型。  
+下表列出了支持的 vSphere 版本和网络适配器类型。 
 
 | vSphere 版本 | 源 vSwitch 类型 | 虚拟 NIC 驱动程序 | 目标 vSwitch 类型 | 受? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| All | DVS | All | DVS | 是 |
+| 所有 | DVS | 所有 | DVS | 是 |
 | vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | 是 |
 | vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | E1000 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI 或 6.5 P03，NSX-V 或低于 NSX-T 2.2、6.5 P03 或更高版本的版本 | All | All | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI 或 6.5 P03，NSX-V 或低于 NSX-T 2.2、6.5 P03 或更高版本的版本 | 所有 | 所有 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
 
 从 VMware NSX 到2.3 版本：
 
-* 私有云端上通过 L2VPN 延伸到本地的逻辑交换机不能同时路由。 延伸逻辑交换机无法连接到逻辑路由器。
+* 无法同时路由通过 L2VPN 延伸到本地的 AVS 私有云端上的逻辑交换机。 延伸逻辑交换机无法连接到逻辑路由器。
 * 仅可使用 API 调用配置 L2VPN 和基于路由的 IPSEC Vpn。
 
 有关详细信息，请参阅 VMware 文档中的[虚拟专用网络](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)。
@@ -73,7 +73,7 @@ ms.locfileid: "74232382"
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>部署独立 ESG （L2 VPN 客户端）的本地网络
 
-| **Item** | **值** |
+| **项** | **值** |
 |------------|-----------------|
 | 网络名称 | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,23 +83,23 @@ ms.locfileid: "74232382"
 
 ### <a name="on-premises-network-to-be-stretched"></a>要扩展的本地网络
 
-| **Item** | **值** |
+| **项** | **值** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>用于 NSX 的私有云 IP 架构-T Tier0 路由器（L2 VPN 服务）
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>用于 NSX 的 AVS 私有云 IP 架构-T Tier0 路由器（L2 VPN 服务）
 
-| **Item** | **值** |
+| **项** | **值** |
 |------------|-----------------|
 | 环回接口 | 192.168.254.254/32 |
 | 隧道接口 | 5.5.5.1/29 |
 | 逻辑交换机（延伸） | Stretch_LS |
 | 环回接口（NAT IP 地址） | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要映射到延伸网络的私有云网络
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要映射到延伸网络的 AVS 私有云网络
 
-| **Item** | **值** |
+| **项** | **值** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -116,7 +116,7 @@ ms.locfileid: "74232382"
 
     ![注意管理 IP](media/l2vpn-fetch02.png)
 
-3. 打开与边缘 VM 的管理 IP 地址的 SSH 会话。 用用户名**admin**和 password **CloudSimple 123！** 运行 ```get logical-router``` 命令。
+3. 打开与边缘 VM 的管理 IP 地址的 SSH 会话。 用用户名**管理员**和密码**AVS 123！** 运行 ```get logical-router``` 命令。
 
     ![获取逻辑路由器输出](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "74232382"
 
     ![创建逻辑交换机](media/l2vpn-fetch04.png)
 
-6. 使用链接本地 IP 地址或从本地或私有云中的任何非重叠子网，将虚拟交换机附加到 Tier1 路由器。 请参阅 VMware 文档中的在[第1层逻辑路由器上添加下行端口](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)。
+6. 将虚拟交换机附加到 Tier1 路由器，其中包含链接本地 IP 地址或来自本地或 AVS 私有云的任何非重叠子网。 请参阅 VMware 文档中的在[第1层逻辑路由器上添加下行端口](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)。
 
     ![附加虚拟交换机](media/l2vpn-fetch05.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "74232382"
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑交换机 ID
 
 1. 登录到 " [NSX-T 管理器](https://nsx-t-manager-ip-address)"。
-2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。 > 
+2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。
 3. 记下 stretch 逻辑交换机的 UUID，在配置 L2VPN 时需要用到它。
 
     ![获取逻辑路由器输出](media/l2vpn-fetch-switch01.png)
@@ -148,7 +148,7 @@ ms.locfileid: "74232382"
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>允许 UDP 500/4500 for IPsec
 
-1. 在 CloudSimple 门户中创建 Tier0 环回接口的[公共 IP 地址](public-ips.md)。
+1. 在 AVS 门户中创建 Tier0 环回接口的[公共 IP 地址](public-ips.md)。
 
 2. 创建具有允许 UDP 500/4500 入站流量并将防火墙表附加到 NSX-T HostTransport 子网的有状态规则的[防火墙表](firewall.md)。
 
@@ -173,9 +173,9 @@ ms.locfileid: "74232382"
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>在 Tier0 路由器上配置基于路由的 VPN
 
-使用以下模板填写在 Tier0 路由器上配置基于路由的 VPN 的所有详细信息。 后续的 POST 调用中需要每个 POST 调用中的 Uuid。 L2VPN 环回和隧道接口的 IP 地址必须唯一，并且不与本地或私有云网络重叠。
+使用以下模板填写在 Tier0 路由器上配置基于路由的 VPN 的所有详细信息。 后续的 POST 调用中需要每个 POST 调用中的 Uuid。 L2VPN 环回和隧道接口的 IP 地址必须唯一，并且不与本地或 AVS 私有云网络重叠。
 
-为用于 L2VPN 的环回和隧道接口选择的 IP 地址必须是唯一的，且不能与本地或私有云网络重叠。 环回接口网络必须始终为/32。
+为用于 L2VPN 的环回和隧道接口选择的 IP 地址必须是唯一的，且不能与本地或 AVS 私有云网络重叠。 环回接口网络必须始终为/32。
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,7 +422,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>部署 NSX-T 独立客户端（本地）
 
-在部署之前，请验证本地防火墙规则是否允许入站和出站 UDP 500/4500 流量发送到之前为 CloudSimple 公共 IP 地址，该地址已为 NSX-T T0 路由器环回接口预留。 
+在部署之前，请验证本地防火墙规则是否允许入站和出站 UDP 500/4500 流量发往之前为 NSX-T T0 路由器环回接口预留的 AVS 公共 IP 地址。 
 
 1. [下载独立的 NSX 边缘客户端](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230)OVF 并将下载的捆绑包中的文件提取到文件夹中。
 
@@ -448,14 +448,14 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     展开 L2T：
 
-    * **对等地址**。 输入用于 NSX-T Tier0 环回接口的 Azure CloudSimple 门户上保留的 IP 地址。
+    * **对等地址**。 输入用于 NSX 的 Azure AVS 门户上保留的 IP 地址-T Tier0 环回接口。
     * **对等代码**。 粘贴从 L2VPN Server 部署的最后一个步骤中获取的对等代码。
     * **子接口 VLAN （隧道 ID）** 。 输入要拉伸的 VLAN ID。 在括号（）中，输入以前配置的隧道 ID。
 
     展开上行接口：
 
     * **DNS IP 地址**。 输入本地 DNS IP 地址。
-    * **默认网关**。  输入 VLAN 的默认网关，该网关将充当此客户端的默认网关。
+    * **默认网关**。 输入 VLAN 的默认网关，该网关将充当此客户端的默认网关。
     * **IP 地址**。 输入独立客户端的上行 IP 地址。
     * **前缀长度**。 输入上行 VLAN/子网的前缀长度。
     * **CLI 管理员/启用/根用户密码**。 设置管理员/enable/root 帐户的密码。

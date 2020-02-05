@@ -3,24 +3,24 @@ title: 通过自定义分析扩展 Azure IoT Central |Microsoft Docs
 description: 作为解决方案开发人员，配置一个 IoT Central 应用程序以执行自定义分析和可视化。 此解决方案使用 Azure Databricks。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987622"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023831"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
 本操作方法指南向解决方案开发人员展示了如何使用自定义分析和可视化功能扩展 IoT Central 应用程序。 该示例使用[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)工作区来分析 IoT Central 遥测流，并生成可视化对象（如[框](https://wikipedia.org/wiki/Box_plot)图）。
 
-本操作方法指南介绍了如何将 IoT Central 扩展到其对[内置分析工具](howto-create-analytics.md)的功能。
+本操作方法指南介绍了如何将 IoT Central 扩展到其对[内置分析工具](./howto-create-custom-analytics.md)的功能。
 
 本操作方法指南介绍如何执行以下操作：
 
@@ -40,14 +40,16 @@ ms.locfileid: "76987622"
 | 设置 | 值 |
 | ------- | ----- |
 | 定价计划 | 标准 |
-| 应用程序模板 | 旧应用程序 |
+| 应用程序模板 | 应用商店内分析-条件监视 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 地区 | 美国 |
+| 地区 | 最近的区域 |
 
 本文中的示例和屏幕截图使用**美国**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
+
+此应用程序模板包含两个用于发送遥测的模拟恒温器设备。
 
 ### <a name="resource-group"></a>资源组
 
@@ -101,7 +103,7 @@ ms.locfileid: "76987622"
 
 在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分中，将配置应用程序，以便将遥测从其模拟设备流式传输到事件中心。 若要配置导出：
 
-1. 导航到 "**连续数据导出**" 页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
+1. 导航到**数据导出**页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出，然后选择 "**保存**"：
 
     | 设置 | 值 |
@@ -114,7 +116,7 @@ ms.locfileid: "76987622"
     | 设备 | 关闭 |
     | 设备模板 | 关闭 |
 
-![连续数据导出配置](media/howto-create-custom-analytics/cde-configuration.png)
+![数据导出配置](media/howto-create-custom-analytics/cde-configuration.png)
 
 继续之前，请等待导出状态为 "**正在运行**"。
 
@@ -132,7 +134,7 @@ ms.locfileid: "76987622"
 | ------- | ----- |
 | 群集名称 | centralanalysis |
 | 群集模式 | 标准 |
-| Databricks Runtime 版本 | 5.3 （Scala 2.11，Spark 2.4.0） |
+| Databricks Runtime 版本 | 5.5 LTS （Scala 2.11，Spark 2.4.3） |
 | Python 版本 | 3 |
 | 启用自动缩放 | 否 |
 | 在处于非活动状态分钟后终止 | 30 |
@@ -229,4 +231,4 @@ ms.locfileid: "76987622"
 * 使用*连续数据导出*从 IoT Central 应用程序流式传输遥测数据。
 * 创建用于分析和绘制遥测数据的 Azure Databricks 环境。
 
-了解如何创建自定义分析后，建议下一步是了解如何[在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据](howto-connect-powerbi.md)。
+了解如何创建自定义分析后，建议下一步是了解如何[管理应用程序](howto-administer.md)。

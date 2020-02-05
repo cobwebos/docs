@@ -3,12 +3,12 @@ title: 系统状态和裸机恢复保护
 description: 使用 Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172263"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025497"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并还原为裸机
 
@@ -140,7 +140,7 @@ Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 
 12. 在“指定联机保留策略”页上，选择如何在 Azure 中保留通过每天、每周、每月和每年备份创建的恢复点。
 
-13. 在“选择联机复制”页上，选择如何进行数据的初始完整复制。 可以通过网络复制，也可以执行脱机备份（脱机设定种子）。 脱机备份使用 Azure 导入功能。 有关详细信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。
+13. 在“选择联机复制”页上，选择如何进行数据的初始完整复制。 可以通过网络复制，也可以执行脱机备份（脱机设定种子）。 脱机备份使用 Azure 导入功能。 有关详细信息，请参阅 [Azure 备份中的脱机备份工作流](offline-backup-azure-data-box.md)。
 
 14. 在“摘要”页上，检查设置。 选择“创建组”之后，进行数据的初始复制。 数据复制完成后，在“状态”页上，保护组状态是“正常”。 备份随后会按照保护组设置进行。
 

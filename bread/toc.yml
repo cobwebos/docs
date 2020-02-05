@@ -174,7 +174,7 @@
     - name: Azure NetApp 文件
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: CloudSimple 提供的 Azure VMware 解决方案
+    - name: Azure VMware Solution by CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
     - name: Azure 门户文档
@@ -194,19 +194,16 @@
             - name: IoT Central
               tocHref: /azure/iot-central/core/
               topicHref: /azure/iot-central/core/
-            - name: IoT Central（预览功能）
-              tocHref: /azure/iot-central/preview/
-              topicHref: /azure/iot-central/preview/
-            - name: 能源行业用 IoT Central（预览功能）
+            - name: 能源行业用 IoT Central
               tocHref: /azure/iot-central/energy/
               topicHref: /azure/iot-central/energy/
-            - name: 政府用 IoT Central（预览功能）
+            - name: 政府用 IoT Central
               tocHref: /azure/iot-central/government/
               topicHref: /azure/iot-central/government/
-            - name: 医疗保健业用 IoT Central（预览功能）
+            - name: 医疗保健业用 IoT Central
               tocHref: /azure/iot-central/healthcare/
               topicHref: /azure/iot-central/healthcare/
-            - name: 零售业用 IoT Central（预览功能）
+            - name: 零售业用 IoT Central
               tocHref: /azure/iot-central/retail/
               topicHref: /azure/iot-central/retail/
         - name: IoT Edge

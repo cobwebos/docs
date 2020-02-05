@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: f7d31966241e352583ee4338faff8aae7e1a09c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990243"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019020"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -48,30 +48,24 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-这些命令首先在 "美国东部" 位置为应用程序创建一个资源组。 下表描述了用于**az iotcentral app create**命令的参数：
+这些命令首先在 "美国东部" 区域中为应用程序创建一个资源组。 下表描述了用于**az iotcentral app create**命令的参数：
 
 | 参数         | Description |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-| location          | 默认情况下，此命令使用来自资源组的位置。 目前，可以在**美国**、**澳大利亚**、**亚太**或**欧洲**位置创建 IoT Central 应用程序。 |
+| location          | 默认情况下，此命令使用来自资源组的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
 | 域名         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
 | sku               | 目前，可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 | template          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 | display-name      | UI 中显示的应用程序名称。 |
 
-**具有正式可用功能的应用程序模板**
+**应用程序模板**
 
 | 模板名            | Description |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。
-
-
-**具有公共预览功能的应用程序模板**
-
-| 模板名            | Description |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | 创建一个空的即插即用预览应用程序，以使用自己的设备模板和设备进行填充。 |
+| iotc-pnp-preview@1.0.0   | 创建一个空的即插即用（预览版）应用程序，以便使用自己的设备模板和设备进行填充。 |
 | iotc-condition@1.0.0     | 使用 "存储内分析-条件监视" 模板创建应用程序。 使用此模板来连接和监视存储环境。 |
 | iotc-consumption@1.0.0   | 使用水消耗监视模板创建应用程序。 使用此模板来监视和控制水源。 |
 | iotc-distribution@1.0.0  | 使用数字分发模板创建应用程序。 使用此模板可以通过 digitalizing 密钥资产和操作来改善仓库输出效率。 |
@@ -83,9 +77,6 @@ az iotcentral app create \
 | iotc-quality@1.0.0       | 使用水源质量监视模板创建应用程序。 使用此模板以数字方式监视水源质量。|
 | iotc-store@1.0.0         | 使用 "应用商店内分析–签出" 模板创建应用程序。 使用此模板来监视和管理你的商店内的结帐流。 |
 | iotc-waste@1.0.0         | 使用连接垃圾桶管理模板创建应用程序。 使用此模板监视废箱和调度字段运算符。 |
-
-> [!NOTE]
-> 预览应用程序模板当前仅在**欧洲**和**美国**位置提供。
 
 ## <a name="view-your-applications"></a>查看应用程序
 

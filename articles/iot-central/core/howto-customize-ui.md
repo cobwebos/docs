@@ -3,23 +3,23 @@ title: 自定义 Azure IoT Central UI |Microsoft Docs
 description: 如何自定义 Azure IoT 中心应用程序的主题和帮助链接
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953585"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018425"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+本文介绍如何以管理员身份通过应用自定义主题和修改帮助链接来自定义应用程序的 UI，以指向你自己的自定义帮助资源。 
 
-本文介绍如何以管理员身份通过应用自定义主题和修改帮助链接来自定义应用程序的 UI，以指向你自己的自定义帮助资源。
+
 
 以下屏幕截图显示了使用标准主题的页面：
 
@@ -41,7 +41,7 @@ ms.locfileid: "72953585"
 
 不超过 1 MB 且带有透明背景的 PNG 图像。 此徽标显示在 IoT Central 应用程序标题栏的左侧。
 
-如果你的徽标图像包含你的应用程序的名称，你可以隐藏应用程序名称文本。 有关详细信息，请参阅[管理应用程序](./howto-administer.md#change-application-name-and-url)。
+如果你的徽标图像包含你的应用程序的名称，你可以隐藏应用程序名称文本。 有关详细信息，请参阅[管理应用程序](howto-administer.md#change-application-name-and-url)。
 
 ### <a name="browser-icon-favicon"></a>浏览器图标（favicon）
 
@@ -78,4 +78,4 @@ ms.locfileid: "72953585"
 现在，你已了解如何在 IoT Central 应用程序中自定义 UI，下面是一些建议的后续步骤：
 
 - [管理应用程序](./howto-administer.md)
-- [将磁贴添加到仪表板](./howto-add-tiles-to-your-dashboard.md)
+- [将磁贴添加到仪表板](howto-add-tiles-to-your-dashboard.md)

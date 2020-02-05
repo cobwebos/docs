@@ -3,8 +3,8 @@ title: 通过 Azure Active Directory 对 Azure Batch 服务进行身份验证
 description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了解如何通过以下两种方式之一进行身份验证。
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 01/28/2020
-ms.author: jushiman
-ms.openlocfilehash: c855293a64ed63fdcb8a5ce797497dec428ab5ae
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: f56c05f64086ac2e98e69d6b21fae7a0a63b5006
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935297"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019513"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 

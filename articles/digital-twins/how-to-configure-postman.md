@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765400"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023304"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -33,45 +33,15 @@ ms.locfileid: "76765400"
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>配置 Azure Active Directory 以使用 OAuth 2.0 隐式授权流
 
-配置 Azure Active Directory 应用以使用 OAuth 2.0 隐式授权流。
-
-1. 打开用于应用注册的“API 权限”窗格。 选择“添加权限”按钮。 在“请求 API 权限”窗格中，选择“我的组织使用的 API”选项卡，然后搜索：
-    
-    1. `Azure Digital Twins`。 选择 **Azure 数字孪生** API。
-
-        [![搜索“API”或“Azure 数字孪生”](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. 或者，搜索 `Azure Smart Spaces Service`。 选择“Azure 智能空间服务”API。
-
-        [![搜索 Azure 智能空间的 API](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > 将显示的 Azure AD API 名称和 ID 取决于租户：
-    > * 测试租户和客户帐户应搜索 `Azure Digital Twins`。
-    > * 其他 Microsoft 帐户应搜索 `Azure Smart Spaces Service`。
-
-1. 所选的 API 在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”。 选择“读取 (1)”下拉列表，然后选中“Read.Write”复选框。 选择“添加权限”按钮。
-
-    [![为 Azure 数字孪生添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. 根据组织的设置，可能需要执行其他步骤才能授予对此 API 的管理员访问权限。 请联系管理员以了解详细信息。 在该管理员访问权限得到批准后，API 的“API 权限”窗格中的“需要管理员同意”列将如下所示：
-
-    [![配置管理员同意批准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. 配置要 `https://www.getpostman.com/oauth2/callback`的第二个**重定向 URI** 。
+1. 按照[快速入门](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)中的步骤创建和配置 Azure Active Directory 应用程序。 或者，你可以重复使用现有的应用注册。
 
     [![配置新 Postman 重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. 若要确保[将应用注册为“公共客户端”](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，请打开用于应用注册的“身份验证”窗格，然后在该窗格中向下滚动。 在“默认客户端类型”部分中，为“将应用程序视为公共客户端”选择“是”，然后点击“保存”。
+1. 现在，将**重定向 URI**添加到 `https://www.getpostman.com/oauth2/callback`。
 
-    选中“访问令牌”以启用 Manifest.json 中的“oauth2AllowImplicitFlow”设置。
+1. 选中 "**隐式授权** > **访问令牌**" 复选框，以允许使用 OAuth 2.0 隐式授权流。 选择 "**配置**"，然后单击 "**保存**"。
 
-    [![公共客户端配置设置](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
-
-   [![Azure Active Directory 应用程序 ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. 复制 Azure Active Directory 应用的**客户端 ID** 。
 
 ## <a name="obtain-an-oauth-20-token"></a>获取 OAuth 2.0 令牌
 
@@ -91,15 +61,13 @@ ms.locfileid: "76765400"
 
 1. 前往 [www.getpostman.com](https://www.getpostman.com/) 下载应用。
 
-1. 打开 Postman 应用，单击“新建”>“新建”并选择“请求”。 输入请求名称。 选择要保存到的集合或文件夹，然后单击 "保存"。 
-
 1. 我们想要发出 GET 请求。 选择 "**授权**" 选项卡，选择 "OAuth 2.0"，然后选择 "**获取新的访问令牌**"。
 
     | 字段  | 值 |
     |---------|---------|
     | 授权类型 | `Implicit` |
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
-    | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
+    | 身份验证 URL | 使用**步骤 1**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
     | 范围 | 留空 |
     | 状况 | 留空 |

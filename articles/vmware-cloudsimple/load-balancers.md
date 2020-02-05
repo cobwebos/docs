@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-为 CloudSimple 私有云选择负载平衡解决方案
-description: 描述在私有云中部署应用程序的负载平衡选项
+title: Azure VMware 解决方案（AVS）-选择适用于 AVS 私有云的负载平衡解决方案
+description: 描述在 AVS 私有云中部署应用程序的负载平衡选项
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045729"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014872"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>为 CloudSimple 私有云选择负载平衡解决方案
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>选择适用于 AVS 私有云的负载平衡解决方案
 
-在 CloudSimple 私有云中部署应用程序时，可以选择多个选项进行负载平衡。
+在 AVS 私有云中部署应用程序时，可以选择多个用于负载平衡的选项。
 
-你可以选择 CloudSimple 私有云中的虚拟或基于软件的负载均衡器，甚至可以使用 Azure 订阅中运行的 Azure L7 负载均衡器在 CloudSimple 私有云中运行的 web 层 Vm。 此处列出了几个选项：
+你可以在你的 AVS 私有云中选择虚拟或基于软件的负载均衡器，甚至可以使用 Azure 订阅中运行的 Azure L7 负载均衡器在 AVS 私有云中运行的 web 层 Vm。 此处列出了几个选项：
 
 ## <a name="virtual-load-balancers"></a>虚拟负载均衡器
 
@@ -29,13 +29,13 @@ ms.locfileid: "76045729"
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7 负载均衡器
 
-将 Azure 应用程序网关用作在私有云中运行的应用程序的 L7 负载均衡器时，无需管理负载均衡器软件。 负载平衡器软件由 Azure 管理。 私有云中的所有 web 层 Vm 均使用专用 IP 地址，并且不需要其他 NAT 规则或公共 Ip 地址来解析名称。 Web 层 Vm 通过专用、低延迟、高带宽连接与 Azure 应用程序网关进行通信。
+使用 Azure 应用程序网关作为在 AVS 私有云中运行的应用程序的 L7 负载均衡器时，无需管理负载均衡器软件。 负载平衡器软件由 Azure 管理。 AVS 私有云中的所有 web 层 Vm 均使用专用 IP 地址，并且不需要其他 NAT 规则或公共 Ip 地址来解析名称。 Web 层 Vm 通过专用、低延迟、高带宽连接与 Azure 应用程序网关进行通信。
 
 若要了解有关如何配置此解决方案的详细信息，请参阅使用 Azure 应用程序关作为 L7 负载均衡器的解决方案指南。
 
 ## <a name="azure-internal-load-balancer"></a>Azure 内部负载均衡器
 
-如果你选择在混合部署中运行你的应用程序，其中 web 前端层在 Azure 订阅中的 Azure vNet 中运行，并且该应用程序的数据库层在 CloudSimple 私有云的 VMware Vm 中运行，则可以使用 Azure 内部负载用于流量管理的 DB 层 Vm 前面的均衡器（L4 负载均衡器）。
+如果你选择在混合部署中运行你的应用程序，其中 web 前端层在 Azure 订阅中的 Azure vNet 中运行，并且应用程序的数据库层正在 azure vNet 的 azure vNet 中运行，则可以使用 Azure 内部负载均衡器（L）4个负载均衡器），用于流量管理的 DB 层虚拟机。
 
 若要了解详细信息，请参阅 Azure[内部负载均衡器](../load-balancer/concepts-limitations.md#internalloadbalancer)文档。
 

@@ -3,12 +3,12 @@ title: 通过 MARS 代理备份 Windows 计算机
 description: 使用 Azure 备份 Microsoft 恢复服务（MARS）代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290863"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025531"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>使用 Azure 备份 MARS 代理备份 Windows 计算机
 
@@ -215,10 +215,10 @@ Azure 备份会自动处理保管库的存储。 你需要指定如何复制该�
         -   在每月的第一周的午夜和 6:00 PM 进行的备份保留12个月。
         -   在三月份的最后一周在星期六进行的备份保留10年。
 
-    ![保留示例](./media/backup-configure-vault/retention-example.png)
+        ![保留示例](./media/backup-configure-vault/retention-example.png)
 
 
-11. 在 "**选择初始备份类型**" 中，决定是要通过网络进行初始备份还是使用脱机备份（有关脱机备份的详细信息，请参阅此[文](backup-azure-backup-import-export.md)）。 若要通过网络进行初始备份，请选择 "**自动通过网络**"，然后单击 "**下一步**"。
+11. 在 "**选择初始备份类型**" 中，决定是要通过网络进行初始备份还是使用脱机备份（有关脱机备份的详细信息，请参阅此[文](offline-backup-azure-data-box.md)）。 若要通过网络进行初始备份，请选择 "**自动通过网络**"，然后单击 "**下一步**"。
 
     ![初始备份类型](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Azure 备份会自动处理保管库的存储。 你需要指定如何复制该�
 5. 在数据中心，磁盘数据将复制到 Azure 存储帐户。
 6. Azure 备份将数据从存储帐户复制到保管库，并计划增量备份。
 
-[详细了解](backup-azure-backup-import-export.md)脱机种子设定。
+[详细了解](offline-backup-azure-data-box.md)脱机种子设定。
 
 ### <a name="enable-network-throttling"></a>启用网络限制
 

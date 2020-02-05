@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: 使用容器实例
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: 使用“人脸连接服务”
-      href: vs-face-connected-service.md
 - name: 参考
   items:
     - name: 人脸 API

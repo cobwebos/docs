@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-分配公共 IP 地址
-description: 描述如何在私有云环境中为虚拟机分配公共 IP 地址
+title: Azure VMware 解决方案（AVS）-分配公共 IP 地址
+description: 描述如何在 AVS 私有云环境中为虚拟机分配公共 IP 地址
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773804"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024290"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>为私有云环境分配公共 IP 地址
+# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>为 AVS 私有云环境分配公共 IP 地址
 
-打开 "网络" 页上的 "公共 ip" 选项卡，为私有云环境中的虚拟机分配公共 IP 地址。
+打开 "网络" 页上的 "公共 ip" 选项卡，为你的 AVS 私有云环境中的虚拟机分配公共 IP 地址。
 
-1. [访问 CloudSimple 门户](access-cloudsimple-portal.md)，并在侧菜单中选择 "**网络**"。
+1. [访问 AVS 门户](access-cloudsimple-portal.md)，并在侧菜单中选择 "**网络**"。
 2. 选择 "**公共 ip**"。
 3. 单击 "**新建公共 IP**"。
 

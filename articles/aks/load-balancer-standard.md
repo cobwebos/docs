@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045054"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025701"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 
@@ -26,7 +26,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 默�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.0.74 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.0.81 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>显示负载均衡器的出站规则
+## <a name="configure-outbound-ports-and-idle-timeout"></a>配置出站端口和空闲超时
 
-若要显示在负载均衡器中创建的出站规则，请使用[az network lb list list][az-network-lb-outbound-rule-list]并指定 AKS 群集的节点资源组：
+> [!WARNING]
+> 以下部分适用于较大规模网络的高级方案，或用于解决具有默认配置的 SNAT 消耗问题。 在将*AllocatedOutboundPorts*或*IdleTimeoutInMinutes*更改为默认值之前，必须准确列出 vm 和 IP 地址的可用配额，才能维护正常的群集。
+> 
+> 更改*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的值可能会显著更改负载均衡器的出站规则的行为。 更新这些值之前，请查看[负载均衡器出站规则][azure-lb-outbound-rules-overview]、[负载均衡器出][azure-lb-outbound-rules]站规则和[Azure 中的出站连接][azure-lb-outbound-connections]，以充分了解更改的影响。
+
+向[SNAT][azure-lb-outbound-connections]使用出站分配端口及其空闲超时。 默认情况下，*标准*SKU 负载均衡器对[基于后端池大小的出站端口数使用自动分配][azure-lb-outbound-preallocatedports]，并为每个端口使用30分钟的空闲超时。 若要查看这些值，请使用[az network lb rule list][az-network-lb-outbound-rule-list]显示负载均衡器的出站规则：
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-在示例输出中， *AllocatedOutboundPorts*为0。 *AllocatedOutboundPorts*的值表示 SNAT 端口分配会根据后端池大小恢复为自动分配。 有关更多详细信息，请参阅 Azure 中的[负载均衡器出站规则][azure-lb-outbound-rules]和[出站连接][azure-lb-outbound-connections]。
+示例输出显示了*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的默认值。 如果*AllocatedOutboundPorts*的值为0，则会根据后端池大小使用自动分配来设置出站端口的数量。 例如，如果群集具有50个或更少的节点，则会为每个节点分配1024个端口。
+
+如果希望基于以上默认配置面对 SNAT 消耗，请考虑更改*allocatedOutboundPorts*或*IdleTimeoutInMinutes*的设置。 每个额外的 IP 地址会启用64000个额外端口用于分配，但 Azure 标准负载均衡器不会在添加更多 IP 地址时自动增加每个节点的端口数。 可以通过设置*负载均衡器-出站端口*和*负载均衡器空闲超时*参数来更改这些值。 例如：
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> 在自定义*allocatedOutboundPorts*之前，必须[计算所需的配额][calculate-required-quota]，以避免连接或缩放问题。 为*allocatedOutboundPorts*指定的值也必须是8的倍数。
+
+你还可以在创建群集时使用*负载均衡器出站端口*和*负载均衡器空闲超时*参数，但你还必须指定*负载平衡器管理的出站 ip 计数*、*负载均衡器-* 出站 ip 或*负载平衡器--ip 前缀*。  例如：
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+在将*负载均衡器出站端口*和*负载均衡器的空闲超时*参数更改为其默认值时，它会影响负载平衡器配置文件的行为，这会影响整个群集。
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自定义 allocatedOutboundPorts 所需的配额
+你必须有足够的出站 IP 容量，取决于节点 Vm 的数量和所需的分配出站端口。 若要验证是否有足够的出站 IP 容量，请使用以下公式： 
+ 
+*outboundIPs* \* 64000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*。
+ 
+例如，如果有3个*nodeVMs*和 50000 *desiredAllocatedOutboundPorts*，则至少需要3个*outboundIPs*。 建议你将额外的出站 IP 容量合并到所需的范围之外。 此外，还必须考虑群集自动缩放程序，以及在计算出站 IP 容量时可能会升级节点池。 对于群集自动缩放程序，查看当前节点计数和最大节点计数，并使用较高的值。 对于升级，将为每个允许升级的节点池提供其他节点 VM 的帐户。
+ 
+将*IdleTimeoutInMinutes*设置为不同于默认30分钟的值时，请考虑工作负荷将需要出站连接的时间长度。 还应考虑在 AKS 之外使用的*标准*SKU 负载均衡器的默认超时值为4分钟。 更准确地反映你的特定 AKS 工作负载的*IdleTimeoutInMinutes*值有助于减少由于连接不再使用而导致的 SNAT 消耗。
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>限制对特定 IP 范围的访问
 
@@ -239,9 +283,12 @@ spec:
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

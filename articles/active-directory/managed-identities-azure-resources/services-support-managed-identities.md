@@ -1,5 +1,5 @@
 ---
-title: 支持托管标识的 Azure 服务-Azure AD
+title: Azure Services that support managed identities - Azure AD
 description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务列表
 services: active-directory
 author: MarkusVi
@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b91d3bdf2ba4b6b30e7b3d5b748fd90921e2025
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a0b79a27526054f76d9d44e277c401e93214ec3c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841159"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018697"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -79,10 +79,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 可用 | 可用 | 不可用 | 不可用 |
 | 用户分配 | 可用 | 可用 | 不可用 | 不可用 |
 
-请参阅以下列表，以将托管标识用于[Azure 蓝图](../../governance/blueprints/overview.md)：
+Refer to the following list to use a managed identity with [Azure Blueprints](../../governance/blueprints/overview.md):
 
-- [Azure 门户-蓝图分配](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST API-蓝图分配](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+- [Azure portal - blueprint assignment](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST API - blueprint assignment](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 ### <a name="azure-functions"></a>Azure Functions
 
@@ -107,7 +107,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
 
-- [Azure 门户](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure 门户](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager 模板](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
@@ -155,19 +155,19 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表，为 Azure 容器注册表任务配置托管标识（在可用区域中）：
+Refer to the following list to configure managed identity for Azure Container Registry Tasks (in regions where available):
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
-[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)处于预览阶段，并且可在所有区域中使用。
+[Managed Identity for Service Fabric Applications](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) is in Preview and available in all regions.
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure Germany | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
-| 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 可用 | 不可用 | 不可用 | not Available |
 | 用户分配 | 可用 | 不可用 | 不可用 |不可用 |
 
-请参阅以下列表，在所有区域中为 Azure Service Fabric 应用程序配置托管标识：
+Refer to the following list to configure managed identity for Azure Service Fabric applications in all regions:
 - [Azure Resource Manager 模板](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
@@ -176,12 +176,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-请参阅以下列表，配置对 Azure 资源管理器的访问权限：
+Refer to the following list to configure access to Azure Resource Manager:
 
-- [通过 Azure 门户分配访问权限](howto-assign-access-portal.md)
-- [通过 Powershell 分配访问权限](howto-assign-access-powershell.md)
-- [通过 Azure CLI 分配访问权限](howto-assign-access-CLI.md)
-- [通过 Azure 资源管理器模板分配访问权限](../../role-based-access-control/role-assignments-template.md)
+- [Assign access via Azure portal](howto-assign-access-portal.md)
+- [Assign access via Powershell](howto-assign-access-powershell.md)
+- [Assign access via Azure CLI](howto-assign-access-CLI.md)
+- [Assign access via Azure Resource Manager template](../../role-based-access-control/role-assignments-template.md)
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -243,7 +243,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 
-### <a name="azure-storage-blobs-and-queues"></a>Azure 存储 blob 和队列
+### <a name="azure-storage-blobs-and-queues"></a>Azure Storage blobs and queues
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440220"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023508"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换 
 
@@ -44,6 +44,8 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 
 ![源设置选项卡](media/data-flow/source1.png "源设置选项卡")
 
+**测试连接：** 测试数据流的 spark 服务是否可以成功连接到源数据集中使用的链接服务。 要启用此功能，调试模式必须为 on。
+
 **架构偏差：** [架构偏差](concepts-data-flow-schema-drift.md)是指数据工厂本机处理数据流中的灵活架构的能力，无需显式定义列更改。
 
 * 如果源列经常更改，请选中 "**允许架构偏差**" 框。 此设置允许所有传入的源字段流过到接收器的转换。
@@ -69,13 +71,17 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 
 !["投影" 选项卡上的设置](media/data-flow/source3.png "投影")
 
-如果文本文件没有定义的架构，请选择 "**检测数据类型**"，以便数据工厂将采样并推断数据类型。 选择 "**定义默认格式**" 以自动检测默认数据格式。 
+如果文本文件没有定义的架构，请选择 "**检测数据类型**"，以便数据工厂将采样并推断数据类型。 选择 "**定义默认格式**" 以自动检测默认数据格式。
+
+**Reset schema**将投影重置为在引用的数据集中定义的内容。
 
 可以在流下派生列转换中修改列数据类型。 使用 select 转换来修改列名称。
 
 ### <a name="import-schema"></a>导入架构
 
-支持复杂数据结构的 Avro 和 CosmosDB 之类的数据集不需要架构定义存在于数据集中。 因此，你将能够在这些类型的源的 "**投影**" 选项卡上单击 "**导入架构**" 按钮。
+使用 "**投影**" 选项卡上的 "**导入架构**" 按钮，可以使用活动调试群集创建架构投影。 在每个源类型中提供，在此处导入架构将覆盖数据集中定义的投影。 数据集对象将不会更改。
+
+这在支持复杂数据结构的数据集中很有用，因为这些数据集不需要架构定义存在于数据集中。
 
 ## <a name="optimize-the-source-transformation"></a>优化源转换
 

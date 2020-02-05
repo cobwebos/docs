@@ -3,12 +3,12 @@ title: 将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 description: 使用 Azure 备份服务备份 SQL Server 数据库简介
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173265"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025395"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
@@ -28,11 +28,11 @@ ms.locfileid: "74173265"
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>创建备份策略以保护要备份到 Azure 的 SQL Server 数据库
 
-1. 在 DPM 服务器上，单击“保护”工作区。
+1. 单击“**保护**”工作区。
 2. 单击“**新建**”创建新的保护组。
 
     ![创建保护组](./media/backup-azure-backup-sql/protection-group.png)
-3. DPM 会显示开始屏幕，其中包含有关如何创建“保护组”的指南。 单击“下一步”。
+3. DPM 会显示开始屏幕，其中包含有关如何创建“**保护组**”的指南。 单击“下一步”。
 4. 选择“**服务器**”。
 
     ![选择保护组类型 -“服务器”](./media/backup-azure-backup-sql/pg-servers.png)
@@ -53,7 +53,7 @@ ms.locfileid: "74173265"
    >
    >
 
-8. 单击“下一步”
+8. 点击“下一步”
 
     DPM 会显示可用的总存储空间以及能够使用的磁盘空间。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74173265"
 
     默认情况下，DPM 将针对每个数据源（SQL Server 数据库）创建一个用于初始备份副本的卷。 使用此方法时，逻辑磁盘管理器 (LDM) 会限制 DPM 最多只能保护 300 个数据源（SQL Server 数据库）。 若要解决此限制，请选择“**在 DPM 存储池中共置数据**”选项。 如果使用此选项，DPM 对多个数据源使用单个卷，这可以让 DPM 保护多达 2000 个 SQL 数据库。
 
-    如果选择了“自动增大卷”选项，则在生产数据增长时，DPM 可以相应地增加备份卷的大小。 如果未选择“自动增大卷”选项，则 DPM 会限制保护组中用于备份数据源的备份存储的大小。
+    如果选择了“**自动增大卷**”选项，则在生产数据增长时，DPM 可以相应地增加备份卷的大小。 如果取消选择“**自动增大卷**”选项，则 DPM 会限制保护组中用于备份数据源的备份存储的大小。
 9. 管理员可以选择手动传输此初始备份（脱离网络），以免网络出现带宽拥塞现象。 管理员还可以配置初始传输发生的时间。 单击“下一步”。
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
@@ -73,8 +73,8 @@ ms.locfileid: "74173265"
 
     ![一致性检查](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    DPM 可以通过执行一致性检查来检查备份点的完整性。 它会计算生产服务器（在本方案中为 SQL Server 计算机）上备份文件和 DPM 上该文件已备份数据的校验和。 如果发生冲突，则会假定 DPM 上的备份文件受损。 DPM 会发送与校验和不匹配部分相对应的块，纠正备份的数据。 由于一致性检查是对性能影响很大的操作，因此管理员可以选择是按计划来运行还是自动运行一致性检查。
-11. 如果要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
+    DPM 可以通过执行一致性检查来检查备份点的完整性。 它会计算生产服务器（在本方案中为 SQL Server 计算机）上的备份文件和 DPM 上该文件的已备份数据的校验和。 如果发生冲突，则会假定 DPM 上的备份文件受损。 DPM 会发送与校验和不匹配部分相对应的块以纠正备份的数据。 由于一致性检查是对性能影响很大的操作，因此管理员可以选择是按计划来运行还是自动运行一致性检查。
+11. 要指定对数据源进行在线保护，请选择要通过 Azure 进行保护的数据库，并单击“**下一步**”。
 
     ![选择数据源](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 12. 管理员可以选择适合组织策略的备份计划和保留策略。
@@ -103,9 +103,9 @@ ms.locfileid: "74173265"
 14. 单击“**下一步**”，选择相应的选项将初始备份副本传输到 Azure。 可以选择“**自动通过网络**”或“**脱机备份**”。
 
     * “**自动通过网络**”会根据为备份选择的计划将备份数据传输到 Azure。
-    * “**脱机备份**”的工作原理详见 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。
+    * 脱机备份[的概述](offline-backup-overview.md)说明了**脱机备份**的工作原理。
 
-    选择将初始备份副本发送到 Azure 的相关传输机制，并单击“**下一步**”。
+    选择将初始备份副本发送到 Azure 的相关传输机制，然后单击“**下一步**”。
 15. 在“**摘要**”屏幕中查看策略详细信息以后，单击“**创建组**”按钮即可完成工作流的操作。 可以单击“**关闭**”按钮，然后即可在“监视”工作区中监视作业进度。
 
     ![保护组创建进度](./media/backup-azure-backup-sql/pg-summary.png)

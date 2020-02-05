@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996742"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026109"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -96,7 +96,7 @@ New Supported Version List
 * 适用于 Kubernetes 的新**次要**版本
   * 所有用户都将被公开通知新版本，并将删除哪个版本。
   * 发布新的修补程序版本时，会同时删除最旧的修补程序版本。
-  * 客户从公共通知日期**60 天**，升级到受支持的次要版本。
+  * 客户从公共通知日期起**30 天**后，升级到受支持的次要版本。
 * 对于新的**修补程序**版本 Kubernetes
   * 所有用户都将收到新修补程序版本的通知，并将其升级到最新的修补程序版本。
   * 用户有**30 天**的时间可升级到支持的更新版本。 删除最旧的之前，用户有**30 天**的时间升级到受支持的修补程序版本。
@@ -135,7 +135,7 @@ AKS 保留了添加或删除新的/现有版本的权利，这些新版本已被
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 客户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
 

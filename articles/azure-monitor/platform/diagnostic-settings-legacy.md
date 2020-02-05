@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715837"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016249"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>更新到 Azure 活动日志收集和导出
 [Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)或[Log Analytics 工作区](activity-log-collect.md)的方法已更改为使用[诊断设置](diagnostic-settings.md)。 本文介绍方法之间的差异，以及如何在准备更改为诊断设置时清除旧设置。
@@ -53,6 +53,9 @@ ms.locfileid: "76715837"
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> 在某些情况下，这些列中的值可能全部大写。 如果有包含这些列的查询，则应使用[= ~ 运算符](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)来执行不区分大小写的比较。
 
 ## <a name="work-with-legacy-settings"></a>使用旧设置
 如果未选择使用诊断设置替换，则收集活动日志的旧设置将继续工作。 使用以下方法来管理订阅的日志配置文件。

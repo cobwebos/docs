@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732631"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024528"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -33,7 +33,7 @@ ms.locfileid: "75732631"
 
 对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。 在命名实体识别 v2 中，对完整的[实体类型](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)集的支持当前限制为以下语言： 
 * 英语
-* 简体中文
+* 中文-简体
 * 法语
 * 德语
 * 西班牙语
@@ -51,8 +51,8 @@ ms.locfileid: "75732631"
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | 阿拉伯语                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | 捷克语                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| 简体中文    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| 繁体中文   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| 中文-简体    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| 中文-繁体   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | 丹麦语                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 荷兰语                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 英语               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
@@ -63,7 +63,7 @@ ms.locfileid: "75732631"
 | 匈牙利语             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | 意大利语               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 日语              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| 韩语                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| 韩语                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
 | 挪威语(博克马尔语)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 波兰语                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` 也接受 |

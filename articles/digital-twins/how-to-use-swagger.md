@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934614"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023287"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -93,11 +93,11 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授权
 
 > [!NOTE]
-> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够为其他用户创建其他角色分配。 此类用户及其角色可以获得调用 Api 的权限。
+> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够为其他用户创建其他角色分配。 可以授权这些用户及其角色调用 Api。
 
-1. 按照[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)中的步骤创建和配置 Azure AD 应用程序。 或者，你可以重复使用现有的应用注册。
+1. 按照[快速入门](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)中的步骤创建和配置 Azure Active Directory 应用程序。 或者，你可以重复使用现有的应用注册。
 
-1. 将以下**重定向 url**添加到 Azure AD 应用注册：
+1. 将以下**重定向 URI**添加到 Azure Active Directory 应用注册：
 
     [![在 AAD 中注册 Swagger 重定向 url](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | 你的管理 REST API 在门户中找到的文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. 复制 Azure AD 应用的**客户端 ID** 。
+1. 选中 "**隐式授权** > **访问令牌**" 复选框，以允许使用 OAuth 2.0 隐式授权流。 选择 "**配置**"，然后单击 "**保存**"。
+
+1. 复制 Azure Active Directory 应用的**客户端 ID** 。
 
 完成 Azure Active Directory 注册后：
 

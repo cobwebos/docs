@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021852"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025990"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -38,7 +38,7 @@ Azure AD Privileged Identity Management 可帮助你跨 Azure AD、Azure 资源�
 
 ### <a name="business-value-of-privileged-identity-management"></a>Privileged Identity Management 的业务价值
 
-管理风险 - 通过强制实施**最低访问权限**和实时访问权限原则来保护组织[](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)。 通过最大限度地减少永久分配有特权角色的用户数量并强制执行针对提升目的的批准操作和 MFA，可以极大降低与组织中特权访问相关的安全风险。 通过强制实施最低权限和实时访问权限，还能够查看对特权角色的访问历史记录以及在发生安全问题时进行跟踪。
+管理风险 - 通过强制实施[最低访问权限](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)和实时访问权限原则来保护组织。 通过最大限度地减少永久分配有特权角色的用户数量并强制执行针对提升目的的批准操作和 MFA，可以极大降低与组织中特权访问相关的安全风险。 通过强制实施最低权限和实时访问权限，还能够查看对特权角色的访问历史记录以及在发生安全问题时进行跟踪。
 
 **解决法规遵从性和监管**-部署 Privileged Identity Management 为日常标识治理创建环境。 特权标识的实时提升为 Privileged Identity Management 提供了一种方法，用于跟踪组织中的特权访问活动。 还可以查看和接收有关组织内所有永久和有效角色分配的通知。 通过访问评审，可以定期审核并删除不必要的特权标识并确保组织符合最严苛的标识、访问和安全标准。
 
@@ -58,7 +58,7 @@ Azure AD Privileged Identity Management 可帮助你跨 Azure AD、Azure 资源�
 
 ### <a name="key-terminology"></a>关键术语
 
-| 术语或概念 | 说明 |
+| 术语或概念 | Description |
 | --- | --- |
 | 符合条件 | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
 | 激活 | 合格用户在使用角色之前执行一项或多项操作的过程。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 |
@@ -85,7 +85,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 有关详细信息，请参阅[Privileged Identity Management 中无法管理的角色](pim-roles.md)。
 
-## <a name="plan-your-deployment"></a>规划部署
+## <a name="plan-your-deployment"></a>计划部署
 
 本部分重点介绍在组织中部署 Privileged Identity Management 之前需要执行的操作。 请务必按照说明操作并理解本部分中的概念，这有助于为组织的特权标识制定最合适、最好的计划。
 
@@ -99,7 +99,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>利益干系人： Azure AD 角色的 Privileged Identity Management
 
-| 名称 | 角色 | 操作 |
+| 名称 | 角色 | 行动 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **标识架构师或 Azure 全局管理员**<br/>标识管理团队的一位代表，负责定义如何根据组织中的核心标识管理基础结构实施此更改。 | SO/R/I |
 | 姓名和电子邮件 | **服务所有者/线路管理器**<br/>某项服务或一组服务的 IT 所有者的代表。 它们是制定决策和帮助为其团队推出 Privileged Identity Management 的关键所在。 | SO/R/I |
@@ -109,7 +109,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>利益干系人： Azure 资源角色的 Privileged Identity Management
 
-| 名称 | 角色 | 操作 |
+| 名称 | 角色 | 行动 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **订阅/资源所有者**<br/>要为其部署 Privileged Identity Management 的每个订阅或资源的 IT 所有者的代表 | SO/R/I |
 | 姓名和电子邮件 | **安全所有者**<br/>安全团队的代表，可以签署确认计划符合组织的安全要求。 | SO/R |
@@ -120,7 +120,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 在规划过程中，必须首先同意并启用 Privileged Identity Management，方法是[使用 Privileged Identity Management](pim-getting-started.md)文章。 启用 Privileged Identity Management 使你能够访问专门设计用于帮助你的部署的某些功能。
 
-如果你的目标是部署适用于 Azure 资源的 Privileged Identity Management，则应遵循我们的[发现 azure 资源来管理 Privileged Identity Management](pim-resource-roles-discover-resources.md)文章。 只有每个资源、资源组和订阅的所有者才能在 Privileged Identity Management 中发现这些资源。 如果你是尝试为 Azure 资源部署 Privileged Identity Management 的全局管理员，则可以[提升访问权限，以管理所有 azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，使你能够在目录中访问所有 azure 资源，以便发现。 但是，我们建议你先从每个订阅所有者处获得批准，然后才能 Privileged Identity Management 管理其资源。
+如果你的目标是部署适用于 Azure 资源的 Privileged Identity Management，则应遵循我们的[发现 azure 资源来管理 Privileged Identity Management](pim-resource-roles-discover-resources.md)文章。 只有订阅和管理组的所有者可以在 Privileged Identity Management 上发现并载入这些资源。 载入后，PIM 功能可用于所有级别的所有者，包括管理组、订阅、资源组和资源。 如果你是尝试为 Azure 资源部署 Privileged Identity Management 的全局管理员，则可以[提升访问权限，以管理所有 azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，使你能够在目录中访问所有 azure 资源，以便发现。 但是，我们建议你先从每个订阅所有者处获得批准，然后才能 Privileged Identity Management 管理其资源。
 
 ### <a name="enforce-principle-of-least-privilege"></a>强制执行最低权限原则
 
@@ -143,7 +143,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 1. 列出组织中有特权角色的人员。 您可以使用[Privileged Identity Management 向导](pim-security-wizard.md#run-the-wizard)来访问类似于下面的页面。
 
-    ![“发现特权角色”窗格，其中显示具有特权角色的人员](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![发现显示有特权角色的用户的特权角色窗格](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. 对于组织中的所有全局管理员，找出他们需要该角色的原因。 根据阅读前面的文档，如果用户的作业可以通过一个或多个粒度的管理员角色执行，则应将其从全局管理员角色中删除，并在 Azure Active Directory 中做出相应的分配（作为参考：Microsoft 目前只有大约10个具有全局管理员角色的管理员。 了解[Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)）的详细信息。
 
@@ -151,7 +151,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 若要自动执行最后两个步骤，可以在 Privileged Identity Management 中使用访问评审。 按照在 Privileged Identity Management 中[开始 Azure AD 角色的访问评审](pim-how-to-start-security-review.md)中的步骤进行操作，可以为具有一个或多个成员的每个 Azure AD 角色设置访问评审。
 
-![“为 Azure AD 角色创建访问评审”窗格](./media/pim-deployment-plan/create-access-review.png)
+![为 Azure AD 角色创建访问评审窗格](./media/pim-deployment-plan/create-access-review.png)
 
 应将审阅者设置为“成员(自我)”。 执行此操作后，系统会向该角色中的所有成员发送一封电子邮件，确认其是否需要相关访问权限。 还应在高级设置中启用“需提供批准理由”，以便用户可以描述其需要该角色的原因。 基于此信息，可将用户从不必要的角色中删除，如果该角色是全局管理员，则可以委派更细化的管理员角色。
 
@@ -198,7 +198,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 > [!TIP]
 > ： heavy_check_mark： **Microsoft 建议**你使用 Privileged Identity Management 管理具有来宾用户的所有角色，以降低与受攻击的来宾用户帐户关联的风险。
 
-有时人们会认为目录读取者、消息中心读取者和安全读取者等读取者角色相比其他角色来说不那么重要，因为这些角色没有写入权限。 但我们已经了解到，某些客户也会保护这些角色，因为获得这些帐户访问权限的攻击者可能读取敏感数据，例如个人身份信息 (PII)。 确定组织中的读者角色是否需要使用 Privileged Identity Management 进行管理时，应考虑到这一点。
+有时人们会认为目录读取者、消息中心读取者和安全读取者等读取者角色相比其他角色来说不那么重要，因为这些角色没有写入权限。 但是，我们已了解到某些客户也会保护这些角色，因为已获得对这些帐户的访问权限的攻击者可能能够读取敏感数据，如个人数据。 确定组织中的读者角色是否需要使用 Privileged Identity Management 进行管理时，应考虑到这一点。
 
 #### <a name="azure-resource-roles"></a>Azure 资源角色
 
@@ -256,7 +256,7 @@ Azure 资源 Privileged Identity Management 支持时间限制的服务帐户。
 
 下表说明了每个设置。
 
-| 设置 | 说明 |
+| 设置 | Description |
 | --- | --- |
 | 角色 | 要为其定义设置的角色的名称。 |
 | 要求 MFA | 符合条件的用户是否需要在激活角色之前执行 MFA。<br/><br/> ： heavy_check_mark： **Microsoft 建议**你为所有管理员角色强制实施 MFA，尤其是在角色具有来宾用户的情况下。 |
@@ -294,7 +294,7 @@ Azure 资源 Privileged Identity Management 支持时间限制的服务帐户。
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>为 Azure AD 角色配置 Privileged Identity Management
 
-1. 基于计划[配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)。
+1. 基于你计划[的内容配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)。
 
 1. 导航到“Azure AD 角色”，单击“角色”，然后选择刚配置的角色。
 
@@ -350,7 +350,7 @@ Azure 资源 Privileged Identity Management 支持时间限制的服务帐户。
 
 #### <a name="azure-ad-roles"></a>Azure AD 角色
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。
 1. 单击“Azure AD 角色”，然后单击“角色”。
 1. 对于每个已配置的角色，为所有拥有合格角色的用户单击省略号 (…)。
@@ -358,7 +358,7 @@ Azure 资源 Privileged Identity Management 支持时间限制的服务帐户。
 
 #### <a name="azure-resource-roles"></a>Azure 资源角色
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。
 1. 单击“Azure 资源”，然后单击想要回滚的订阅或资源。
 1. 单击“角色”。
@@ -373,7 +373,7 @@ Azure 资源 Privileged Identity Management 支持时间限制的服务帐户。
 
 你应利用 Privileged Identity Management 的内置警报功能来更好地保护你的租户。 有关详细信息，请参阅[安全警报](pim-how-to-configure-security-alerts.md#security-alerts)。 这些警报包括：管理员未使用特权角色、在 Privileged Identity Management 之外分配角色、角色激活过于频繁等。 若要充分保护组织，应定期查看警报列表，并解决问题。 可以使用以下方法查看和解决警报问题：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。
 1. 单击“Azure AD 角色”，然后单击“警报”。
 

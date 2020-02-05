@@ -64,8 +64,6 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: 使用 Kubernetes 服务 (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-    - name: 使用文本分析连接服务
-      href: vs-text-connected-service.md
 - name: 参考
   items:
     - name: CLI 参考

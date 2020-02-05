@@ -44,7 +44,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 处理搜索词突出显示
       href: ../Bing-Web-Search/hit-highlighting.md
@@ -56,17 +56,13 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 从 API 的 v5 升级到 v7
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: 使用 Visual Studio
-      items:
-        - name: 使用必应新闻搜索连接服务
-          href: vs-bing-news-search-connected-service.md
 - name: 概念
   items:
     - name: 发送搜索查询
       href: concepts/send-search-queries.md
     - name: 搜索新闻
       href: concepts/search-for-news.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应新闻搜索 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference'

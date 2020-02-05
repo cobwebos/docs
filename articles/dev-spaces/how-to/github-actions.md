@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes 服务 & GitHub 操作
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771115"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026092"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
@@ -58,14 +58,13 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 保存 JSON 输出，因为后面的步骤中会用到它。
 
-
-使用[az aks show][az-aks-show]显示 aks 群集的*id* ：
+使用[az aks show][az-aks-show]显示 aks 群集的*ID* ：
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-使用[az acr show][az-acr-show]显示 acr 的*id* ：
+使用[az acr show][az-acr-show]显示 Acr 的*ID* ：
 
 ```cmd
 az acr show --name <acrName> --query id
@@ -93,7 +92,6 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 1. *CLUSTER_NAME*： AKS 群集的名称，此示例中为*MyAKS*。
 1. *CONTAINER_REGISTRY*： ACR 的*loginServer* 。
 1. *Host*：开发人员空间的主机，其形式 *< MASTER_SPACE > <* APP_NAME > < HOST_SUFFIX >。
-1. *HOST_SUFFIX*：开发人员空间的主机后缀，在本例中为*fedcab0987.eus.azds.io*。
 1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如*演示密钥*。
 1. *MASTER_SPACE*：父 dev 空间的名称，在本示例中为*dev*。
 1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出的*clientId* 。
@@ -101,6 +99,8 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 > [!NOTE]
 > GitHub 操作使用所有这些机密，并在[github/工作流/docker-compose.override.yml][github-action-yaml]中进行配置。
+
+（可选）如果你想要在合并 PR 后更新主空间，请添加*GATEWAY_HOST*密钥，该密钥 *< 采用 MASTER_SPACE >* < HOST_SUFFIX > （在本示例中为*dev.gateway.fedcab0987.eus.azds.io*）。 将所做的更改合并到分支中的主分支后，将运行另一个操作来重建和运行主开发人员空间中的整个应用程序。 在此示例中，主空间为*dev*。 此操作在[github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>为代码更改创建新分支
 

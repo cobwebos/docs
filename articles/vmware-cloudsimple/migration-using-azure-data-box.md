@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552905"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019751"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>使用 Azure Data Box 将数据迁移到 Azure VMware 解决方案
 
 利用 Microsoft Azure Data Box 云解决方案，你可以快速、廉价和可靠的方式向 Azure 发送 tb （Tb）的数据。 通过向你发送专有的 Data Box 存储设备来加速安全数据传输。 每个存储设备具有 80 TB 的最大可用存储容量，并由区域运营商传输到你的数据中心。 该设备具有坚固的外壳，可在运输过程中保护数据。
 
-通过使用 Data Box，你可以将 VMware 数据大容量迁移到私有云。 通过网络文件系统（NFS）协议将本地 VMware vSphere 环境中的数据复制到 Data Box。 大容量数据迁移涉及将虚拟机、配置和关联数据的时间点副本保存到 Data Box，然后手动将其传送到 Azure。
+通过使用 Data Box，你可以将 VMware 数据大容量迁移到 AVS 私有云。 通过网络文件系统（NFS）协议将本地 VMware vSphere 环境中的数据复制到 Data Box。 大容量数据迁移涉及将虚拟机、配置和关联数据的时间点副本保存到 Data Box，然后手动将其传送到 Azure。
 
 本文介绍以下内容：
 
@@ -27,7 +27,7 @@ ms.locfileid: "72552905"
 * 通过 NFS 将数据从本地 VMware 环境复制到 Data Box。
 * 准备 Data Box 的返回。
 * 准备 blob 数据以复制到 Azure VMware 解决方案。
-* 将数据从 Azure 复制到私有云。
+* 将数据从 Azure 复制到 AVS 私有云。
 
 ## <a name="scenarios"></a>方案
 
@@ -44,11 +44,11 @@ ms.locfileid: "72552905"
 
 * 在预配 Azure VMware 解决方案的同一区域中创建虚拟网络和存储帐户。
 
-* 按照[使用 ExpressRoute 将 azure 虚拟网络连接到 CloudSimple](virtual-network-connection.md)中的步骤，创建从私有云到虚拟网络的[Azure 虚拟网络连接](cloudsimple-azure-network-connection.md)。
+* 按照[使用 ExpressRoute 将 azure 虚拟网络连接到 AVS](virtual-network-connection.md)中的步骤，创建从 AVS 私有云到虚拟网络的[Azure 虚拟网络连接](cloudsimple-azure-network-connection.md)。
 
 ## <a name="set-up-data-box-for-nfs"></a>设置 NFS Data Box
 
-按照[教程：电缆和连接到你的 Azure Data Box](../databox/data-box-deploy-set-up.md)中 "连接到你的设备" 一节中的步骤操作，连接到 Data Box 本地 web UI。  配置 Data Box 以允许访问 NFS 客户端：
+按照[教程：电缆和连接到你的 Azure Data Box](../databox/data-box-deploy-set-up.md)中 "连接到你的设备" 一节中的步骤操作，连接到 Data Box 本地 web UI。 配置 Data Box 以允许访问 NFS 客户端：
 
 1. 在本地 web UI 中，请切换到 "**连接和复制**" 页面。 在 " **nfs 设置**" 下，选择 " **nfs 客户端访问**"。 
 
@@ -95,7 +95,7 @@ ms.locfileid: "72552905"
 
    ![添加新的数据存储-NFS 配置](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. 在向导的步骤4中，选择要将数据存储装载到的 ESXi 主机，然后选择 "**下一步**"。  在群集中，选择 "所有主机"，以确保虚拟机的迁移。
+6. 在向导的步骤4中，选择要将数据存储装载到的 ESXi 主机，然后选择 "**下一步**"。 在群集中，选择 "所有主机"，以确保虚拟机的迁移。
 
    ![添加新的数据存储-选择主机](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "72552905"
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>将数据复制到 Data Box NFS 数据存储
 
-可以将虚拟机迁移或克隆到新的数据存储。  要迁移的任何未使用的虚拟机都可以通过使用**Storage vMotion**选项迁移到 Data Box NFS 数据存储。 可以将活动虚拟机克隆到 Data Box NFS 数据存储。
+可以将虚拟机迁移或克隆到新的数据存储。 要迁移的任何未使用的虚拟机都可以通过使用**Storage vMotion**选项迁移到 Data Box NFS 数据存储。 可以将活动虚拟机克隆到 Data Box NFS 数据存储。
 
 * 标识并列出可**移动**的虚拟机。
 * 标识并列出必须**克隆**的虚拟机。
@@ -157,7 +157,7 @@ ms.locfileid: "72552905"
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>将 ISO 文件复制到 Data Box 数据存储
 
-1. 从本地 vCenter web UI 中转到 "**存储**"。  选择**Databox-数据存储**，然后选择**文件**。 创建一个用于存储 ISO 文件的新文件夹。
+1. 从本地 vCenter web UI 中转到 "**存储**"。 选择**Databox-数据存储**，然后选择**文件**。 创建一个用于存储 ISO 文件的新文件夹。
 
     ![Copy ISO-新建文件夹](media/databox-migration-create-folder.png)
 
@@ -213,28 +213,28 @@ ms.locfileid: "72552905"
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>将数据从 Azure 存储复制到 Azure VMware 解决方案
 
-Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中提供已复制到 Data Box 设备的数据。 现在可以将数据复制到 Azure VMware 解决方案。 必须使用 NFS 协议将存储帐户中的数据复制到私有云的 vSAN 数据存储。 
+Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中提供已复制到 Data Box 设备的数据。 现在可以将数据复制到 Azure VMware 解决方案。 必须使用 NFS 协议将存储帐户中的数据复制到 AVS 私有云的 vSAN 数据存储。 
 
-首先，使用**AzCopy**将 Blob 存储数据复制到 Azure 中 Linux 虚拟机上的托管磁盘。 使托管磁盘可通过 NFS 提供，在私有云上以数据存储的形式装载 NFS 共享，然后复制数据。 此方法可以更快地将数据复制到私有云。
+首先，使用**AzCopy**将 Blob 存储数据复制到 Azure 中 Linux 虚拟机上的托管磁盘。 使托管磁盘可通过 NFS 提供，在你的 AVS 私有云上以数据存储的形式装载 NFS 共享，然后复制数据。 此方法可以更快地将数据复制到 AVS 私有云。
 
-### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>使用 Linux 虚拟机和托管磁盘将数据复制到私有云，然后将其作为 NFS 共享导出
+### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>使用 Linux 虚拟机和托管磁盘将数据复制到 AVS 私有云，然后将其作为 NFS 共享导出
 
-1. 在 Azure 中创建[Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)，在该区域中创建存储帐户并将 Azure 虚拟网络连接到私有云。
+1. 在 Azure 中创建[Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)，在该区域中创建存储帐户，并将 Azure 虚拟网络连接到 AVS 私有云。
 
-2. 创建一个托管磁盘，其存储容量大于 blob 数据量，并[将其附加到 Linux 虚拟机](../virtual-machines/linux/attach-disk-portal.md)。  如果 blob 数据量大于可用的最大托管磁盘容量，则必须通过多个步骤或使用多个托管磁盘复制数据。
+2. 创建一个托管磁盘，其存储容量大于 blob 数据量，并[将其附加到 Linux 虚拟机](../virtual-machines/linux/attach-disk-portal.md)。 如果 blob 数据量大于可用的最大托管磁盘容量，则必须通过多个步骤或使用多个托管磁盘复制数据。
 
 3. 连接到 Linux 虚拟机并装载托管磁盘。
 
 4. [在 Linux 虚拟机上安装 AzCopy](../storage/common/storage-use-azcopy-v10.md)。
 
-5. 使用 AzCopy 将数据从 Azure Blob 存储下载到托管磁盘。  命令语法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。  将 `<storage-account-name>` 替换为 Azure 存储帐户名称，并使用保存通过 Data Box 复制的数据的容器 `<container-name>`。
+5. 使用 AzCopy 将数据从 Azure Blob 存储下载到托管磁盘。 命令语法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。 将 `<storage-account-name>` 替换为 Azure 存储帐户名称，并使用保存通过 Data Box 复制的数据的容器 `<container-name>`。
 
 6. 在 Linux 虚拟机上安装 NFS 服务器：
 
     - 在 Ubuntu/Debian 分发上： `sudo apt install nfs-kernel-server`。
     - 在企业 Linux 发行版上： `sudo yum install nfs-utils`。
 
-7. 更改已复制 Azure Blob 存储中的数据的托管磁盘上文件夹的权限。  更改要作为 NFS 共享导出的所有文件夹的权限。
+7. 更改已复制 Azure Blob 存储中的数据的托管磁盘上文件夹的权限。 更改要作为 NFS 共享导出的所有文件夹的权限。
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
@@ -247,7 +247,7 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
     sudo vi /etc/exports
     ```
     
-    为私有云的每个 ESXi 主机 IP 输入文件中的以下行。  如果要为多个文件夹创建共享，请添加所有文件夹。
+    在文件中为你的 AVS 私有云的每个 ESXi 主机 IP 输入以下行。 如果要为多个文件夹创建共享，请添加所有文件夹。
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -261,11 +261,11 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 10. 使用 `sudo systemctl restart nfs-kernel-server` 命令重启 NFS 内核服务器。
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>在私有云 vCenter 群集上装载 Linux 虚拟机 NFS 共享作为数据存储，然后复制数据
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>在 AVS 私有云 vCenter 群集上装载 Linux 虚拟机 NFS 共享作为数据存储，然后复制数据
 
-你的 Linux 虚拟机中的 NFS 共享必须装载为私有云 vCenter 群集上的数据存储。 装载后，可以将数据从 NFS 数据存储复制到私有云 vSAN 数据存储。
+你的 Linux 虚拟机中的 NFS 共享必须装载为你的 AVS 私有云 vCenter 群集上的数据存储。 装载后，可以将数据从 NFS 数据存储复制到 AVS 私有云 vSAN 数据存储。
 
-1. 登录到你的私有云 vCenter 服务器。
+1. 登录到你的 AVS 私有云 vCenter 服务器。
 
 2. 右键单击**数据中心**，选择 **"存储**"，选择 "**新建数据存储**"，然后选择 "**下一步**"。
 
@@ -279,11 +279,11 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 
    ![添加新的数据存储-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。  你可以为服务器使用 Linux 虚拟机的 IP 地址。  文件夹路径将采用 `/<folder>/<subfolder>/` 格式。
+5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。 你可以为服务器使用 Linux 虚拟机的 IP 地址。 文件夹路径将采用 `/<folder>/<subfolder>/` 格式。
 
    ![添加新的数据存储-NFS 配置](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. 在向导的步骤4中，选择要将数据存储装载到的 ESXi 主机，然后选择 "**下一步**"。  在群集中，选择 "所有主机"，以确保虚拟机的迁移。
+6. 在向导的步骤4中，选择要将数据存储装载到的 ESXi 主机，然后选择 "**下一步**"。 在群集中，选择 "所有主机"，以确保虚拟机的迁移。
 
    ![添加新的数据存储-选择主机](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>将 NFS 数据存储中的虚拟机和虚拟机模板添加到清单
 
-1. 从私有云 vCenter web UI 中转到 "**存储**"。  选择 Linux 虚拟机 NFS 数据存储，然后选择 "**文件**"。
+1. 从 AVS 私有云 vCenter web UI 中转到 "**存储**"。 选择 Linux 虚拟机 NFS 数据存储，然后选择 "**文件**"。
 
     ![从 NFS 数据存储中选择文件](media/databox-migration-datastore-select-files.png)
 
-2. 选择包含虚拟机或虚拟机模板的文件夹。  在详细信息窗格中，选择虚拟机的 .vmx 文件或虚拟机模板的 .vmtx 文件。
+2. 选择包含虚拟机或虚拟机模板的文件夹。 在详细信息窗格中，选择虚拟机的 .vmx 文件或虚拟机模板的 .vmtx 文件。
 
-3. 选择 "**注册 VM** " 以在私有云 vCenter 上注册虚拟机。
+3. 选择 "**注册 VM** " 以在你的 AVS 私有云 vCenter 上注册虚拟机。
 
     ![注册虚拟机](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 
 4. 对所有虚拟机和虚拟机模板重复步骤3和4。
 
-5. 中转到包含 ISO 文件的文件夹。  选择 ISO 文件，并选择 "**复制到**"，将文件复制到 vSAN 数据存储上的文件夹中。
+5. 中转到包含 ISO 文件的文件夹。 选择 ISO 文件，并选择 "**复制到**"，将文件复制到 vSAN 数据存储上的文件夹中。
 
-虚拟机和虚拟机模板现在在私有云 vCenter 上可用。 必须先将这些虚拟机从 NFS 数据存储移动到 vSAN 数据存储，然后再将其打开。 可以使用**Storage vMotion**选项，并选择 vSAN 数据存储作为虚拟机的目标。
+虚拟机和虚拟机模板现在在你的 AVS 私有云 vCenter 上可用。 必须先将这些虚拟机从 NFS 数据存储移动到 vSAN 数据存储，然后再将其打开。 可以使用**Storage vMotion**选项，并选择 vSAN 数据存储作为虚拟机的目标。
 
 必须将虚拟机模板从 Linux 虚拟机 NFS 数据存储克隆到 vSAN 数据存储。
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>清理 Linux 虚拟机
 
-将所有数据复制到私有云后，可以从私有云中删除 NFS 数据存储：
+将所有数据复制到 AVS 私有云后，可以从 AVS 私有云中删除 NFS 数据存储：
 
 1. 请确保所有虚拟机和模板都已移动并克隆到 vSAN 数据存储。
 
 2. 从 NFS 数据存储中删除所有虚拟机模板。
 
-3. 从私有云 vCenter 卸载 Linux 虚拟机数据存储。
+3. 从 AVS 私有云 vCenter 卸载 Linux 虚拟机数据存储。
 
 4. 从 Azure 中删除虚拟机和托管磁盘。
 
-5. 如果你不希望将 Data Box 传输的数据保留在存储帐户中，则删除 Azure 存储帐户。  
+5. 如果你不希望将 Data Box 传输的数据保留在存储帐户中，则删除 Azure 存储帐户。 
     
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[Data Box](../databox/data-box-overview.md)。
-* 详细了解[将工作负载迁移到私有云](migrate-workloads.md)的不同选项。
+* 详细了解[将工作负载迁移到 AVS 私有云](migrate-workloads.md)的不同选项。

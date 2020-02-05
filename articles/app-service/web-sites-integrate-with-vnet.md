@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688290"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016963"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure App Service 虚拟网络集成功能，以及如何在[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)中对应用进行设置。 使用[Azure 虚拟网络][VNETOverview]（vnet）可以将多个 Azure 资源置于非 internet 可路由网络中。  
@@ -74,7 +74,7 @@ VNet 集成不支持某些功能，其中包括：
 * 只能访问 RFC 1918 范围内的地址。 它们是 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 地址块中的地址。
 * 不能跨全局对等连接访问资源
 * 不能将来自应用的流量的路由设置到 VNet 中
-* 此功能仅适用于支持 PremiumV2 应用服务计划的更新的应用服务缩放单位。
+* 此功能仅适用于支持 PremiumV2 应用服务计划的更新的应用服务缩放单位。 请注意，这并不意味着你的应用程序必须在 PremiumV2 SKU 上运行，只是它必须在 PremiumV2 选项可用的应用服务计划上运行（这表示它是一个更新的缩放单元，其中也提供此 VNet 集成功能）。
 * 集成子网仅可由一个应用服务计划使用
 * 此功能不能由处于应用服务环境中的独立计划应用使用
 * 此功能要求使用的子网为/27，其中包含32地址或更大的资源管理器 VNet 中

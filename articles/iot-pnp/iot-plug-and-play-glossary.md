@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531195"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025633"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -117,7 +117,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="device-provisioning-service"></a>设备预配服务
 
-[Azure IoT Central](#azure-iot-central)使用设备预配服务来管理所有设备注册和连接。 有关详细信息，请参阅[Azure IoT Central 中的设备连接](../iot-central/preview/overview-iot-central-get-connected.md)。 你还可以使用设备预配服务管理设备注册并连接到基于 IoT 中心的 IoT 解决方案。 有关详细信息，请参阅[通过 Azure IoT 中心设备预配服务预配设备](../iot-dps/about-iot-dps.md)。
+[Azure IoT Central](#azure-iot-central)使用设备预配服务来管理所有设备注册和连接。 有关详细信息，请参阅[Azure IoT Central 中的设备连接](../iot-central/core/concepts-get-connected.md)。 你还可以使用设备预配服务管理设备注册并连接到基于 IoT 中心的 IoT 解决方案。 有关详细信息，请参阅[通过 Azure IoT 中心设备预配服务预配设备](../iot-dps/about-iot-dps.md)。
 
 ## <a name="device-registration"></a>设备注册
 

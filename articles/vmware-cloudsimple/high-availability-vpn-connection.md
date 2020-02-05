@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-配置从本地到 CloudSimple VPN 网关的高可用性
-description: 介绍如何配置从本地环境到启用了高可用性的 CloudSimple VPN 网关的高可用性连接
+title: Azure VMware 解决方案（AVS）-配置从本地到 AVS VPN 网关的高可用性
+description: 介绍如何配置从本地环境到支持高可用性的 AVS VPN 网关的高可用性连接
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b6dc309c1405a07cf192301208a97975ca9ce256
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927295"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025259"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple 的 VPN 网关的高可用性连接
+# <a name="configure-a-high-availability-connection-from-on-premises-to-an-avs-vpn-gateway"></a>配置从本地到 AVS VPN 网关的高可用性连接
 
-网络管理员可以配置从其本地环境到 CloudSimple VPN 网关的高可用性 IPsec 站点到站点 VPN 连接。
+网络管理员可以配置从其本地环境到 AVS VPN 网关的高可用性 IPsec 站点到站点 VPN 连接。
 
 本指南介绍为 IPsec 站点到站点 VPN 高可用性连接配置本地防火墙的步骤。 详细步骤特定于本地防火墙的类型。 作为示例，本指南提供了两种类型的防火墙的步骤： Cisco ASA 和 Palo Alto 网络。
 
@@ -25,8 +25,8 @@ ms.locfileid: "73927295"
 
 在配置本地防火墙之前，请完成以下任务。
 
-1. 验证你的组织是否已[预配](create-nodes.md)必需的节点并创建至少一个 CloudSimple 私有云。
-2. 在本地网络与 CloudSimple 私有云之间[配置站点到站点 VPN 网关](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
+1. 验证你的组织是否已[预配](create-nodes.md)必需的节点并创建至少一个 AVS 私有云。
+2. 配置本地网络与 AVS 私有云之间[的站点到站点 VPN 网关](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
 
 请参阅[VPN 网关概述](cloudsimple-vpn-gateways.md)，了解支持的阶段1和阶段2方案。
 
@@ -34,7 +34,7 @@ ms.locfileid: "73927295"
 
 本部分中的说明适用于 Cisco ASA 版本8.4 及更高版本。 在配置示例中，将在 IKEv1 模式下部署和配置 Cisco 自适应安全设备软件版本9.10。
 
-要使站点到站点 VPN 正常工作，必须在本地 Cisco ASA VPN 网关的外部接口上允许 CloudSimple 主和辅助公共 IP （对等 IP）的 UDP 500/4500 和 ESP （IP 协议50）。
+要使站点到站点 VPN 正常工作，必须在本地 Cisco ASA VPN 网关的外部接口上允许来自 AVS 主要和辅助公共 IP （对等 IP）的 UDP 500/4500 和 ESP （IP 协议50）。
 
 ### <a name="1-configure-phase-1-ikev1"></a>1. 配置阶段1（IKEv1）
 
@@ -71,7 +71,7 @@ ikev1 pre-shared-key *****
 
 ### <a name="4-configure-phase-2-ipsec"></a>4. 配置阶段2（IPsec）
 
-若要配置阶段2（IPsec），请创建一个访问控制列表（ACL），该列表定义要加密和隧道的流量。 在以下示例中，感兴趣的流量来自从本地本地子网（10.16.1.0/24）到私有云远程子网（192.168.0.0/24）的隧道。 如果站点之间存在多个子网，则 ACL 可包含多个条目。
+若要配置阶段2（IPsec），请创建一个访问控制列表（ACL），该列表定义要加密和隧道的流量。 在以下示例中，感兴趣的流量来自从本地本地子网（10.16.1.0/24）来源到 AVS 私有云远程子网（192.168.0.0/24）的隧道。 如果站点之间存在多个子网，则 ACL 可包含多个条目。
 
 在 Cisco ASA 版本8.4 及更高版本中，可以创建可用作网络、子网、主机 IP 地址或多个对象的容器的对象或对象组。 为本地和远程子网创建一个对象，并将其用于加密 ACL 和 NAT 语句。
 
@@ -82,7 +82,7 @@ object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>将 CloudSimple 远程子网定义为对象
+#### <a name="define-the-avs-remote-subnet-as-an-object"></a>将 AVS 远程子网定义为对象
 
 ```
 object network CS_inside
@@ -97,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. 配置转换集
 
-配置转换集（TS），其中必须包含关键字 ```ikev1```。 TS 中指定的加密和哈希属性必须与[CLOUDSIMPLE VPN 网关的默认配置](cloudsimple-vpn-gateways.md)中列出的参数匹配。
+配置转换集（TS），其中必须包含关键字 ```ikev1```。 TS 中指定的加密和哈希属性必须与[AVS VPN 网关的默认配置](cloudsimple-vpn-gateways.md#cryptographic-parameters)中列出的参数匹配。
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -143,13 +143,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 本部分中的说明适用于 Palo Alto Networks 版本7.1 及更高版本。 在此配置示例中，将在 IKEv1 模式下部署并配置 Palo Alto Networks VM 系列软件版本8.1.0。
 
-要使站点到站点 VPN 正常工作，必须在本地 Palo Alto 网络网关的外部接口上允许 CloudSimple 主和辅助公共 IP （对等 IP）的 UDP 500/4500 和 ESP （IP 协议50）。
+要使站点到站点 VPN 正常工作，必须在本地 Palo Alto 网络网关的外部接口上允许来自 AVS 主要和次要公共 IP （对等 IP）的 UDP 500/4500 和 ESP （IP 协议50）。
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 创建主要和辅助隧道接口
 
 登录到 Palo Alto 防火墙，选择 "**网络** > **接口**" > **隧道**" > "**添加**"，配置以下字段，然后单击 **" 确定 "** 。
 
-* 接口名称。 第一个字段为会自动填充，关键字为 "隧道"。 在相邻字段中输入介于1到9999之间的任意数字。 此接口将用作主隧道接口，用于在本地数据中心和私有云之间传输站点到站点通信。
+* 接口名称。 第一个字段为会自动填充，关键字为 "隧道"。 在相邻字段中输入介于1到9999之间的任意数字。 此接口将用作主隧道接口，用于在本地数据中心和 AVS 私有云之间传输站点到站点通信。
 * 条. 输入注释以方便识别隧道的用途
 * Netflow 配置文件。 保留默认值。
 * Config.xml.将接口分配到：虚拟路由器：选择**默认值**。 
@@ -158,14 +158,16 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 由于此配置适用于高可用性 VPN，因此需要两个隧道接口：一个主接口和一个辅助节点。 重复前面的步骤以创建辅助隧道接口。 选择其他隧道 ID 和其他未使用的/32 的 ip 地址。
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. 为要通过站点到站点 VPN 访问的私有云子网设置静态路由
+### <a name="2-set-up-static-routes-for-avs-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. 设置可通过站点到站点 VPN 访问的 AVS 私有云子网的静态路由
 
-若要访问 CloudSimple 私有云子网，需要路由到本地子网。
+要使本地子网访问 AVS 私有云子网，需要路由。
 
-选择 "**网络** > **虚拟路由器** > *默认*  > 静态路由 > " "添加"，配置以下字段，然后单击 **"确定"。**
+选择 "**网络** > **虚拟路由器** > *默认* **静态路由**" "添加"，配置以下字段，然后单击 **"确定"。**  >  > 
 
-* 路径名. 输入任意名称，以便轻松识别路由的用途。
-* 目标。 指定要从本地通过 S2S 隧道接口访问的 CloudSimple 私有云子网
+* 名称： 输入任意名称，以便轻松识别路由的用途。
+
+* 目标。 指定要从本地从 S2S 隧道接口访问的 AVS 私有云子网
+
 * 交互. 从下拉列表中选择在步骤1中创建的主隧道接口（第2部分）。 在此示例中，它是隧道。
 * 下一个跃点。 选择“无”。
 * 管理距离。 保留默认值。
@@ -174,7 +176,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 * BFD 配置文件。 保留默认值。
 * 路径监视。 保持未选中状态。
 
-重复前面的步骤，为私有云子网创建另一个路由，以便通过辅助隧道接口用作辅助/备份路由。 这一次，请为主路由选择不同的隧道 ID 和更高的指标。
+重复前面的步骤，为 AVS 私有云子网创建另一个路由，以便通过辅助隧道接口用作辅助/备份路由。 这一次，请为主路由选择不同的隧道 ID 和更高的指标。
 
 ### <a name="3-define-the-cryptographic-profile"></a>3. 定义加密配置文件
 
@@ -182,7 +184,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 选择 **"网络** > **展开** **"**  >  ** > "** **" "" "" "" "" "" "" "" "" "**
 
-* 路径名. 输入任何 IKE 加密配置文件的名称。
+* 名称： 输入任何 IKE 加密配置文件的名称。
 * DH 组。 单击 "**添加**"，然后选择相应的 DH 组。
 * 加密。 单击 "**添加**"，然后选择相应的加密方法。
 * 身份验证。 单击 "**添加**"，然后选择相应的身份验证方法。
@@ -197,17 +199,17 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 常规选项卡：
 
-* 路径名. 输入要与主 CloudSimple VPN 对等机对等互连的 IKE 网关的名称。
+* 名称： 输入要与主 AVS VPN 对等机对等互连的 IKE 网关的名称。
 * 版本。 选择 "**仅限 IKEv1" 模式**。
 * 地址类型。 选择 " **IPv4**"。
 * 交互. 选择面向公众的或外部接口。
 * 本地 IP 地址。 保留默认值。
 * 对等 IP 地址类型。 选择**IP**。
-* 对等地址。 输入主 CloudSimple VPN 对等节点 IP 地址。
+* 对等地址。 输入主 AVS VPN 对等节点 IP 地址。
 * 身份验证。 选择 "**预共享密钥**"。
-* 预共享密钥/确认预共享密钥。 输入预共享密钥，使其与 CloudSimple VPN 网关密钥匹配。
+* 预共享密钥/确认预共享密钥。 输入预共享密钥以匹配 AVS VPN 网关密钥。
 * 本地标识。 输入本地 Palo Alto 防火墙的公共 IP 地址。
-* 对等标识。 输入主 CloudSimple VPN 对等节点 IP 地址。
+* 对等标识。 输入主 AVS VPN 对等节点 IP 地址。
 
 高级选项选项卡：
 
@@ -226,7 +228,7 @@ IKEv1
 
 选择 "**网络** > 展开" > **IPSEC 加密** > 的**网络配置文件** **"，** 然后单击 **" 确定 "** 。
 
-* 路径名. 输入 IPsec 加密配置文件的名称。
+* 名称： 输入 IPsec 加密配置文件的名称。
 * IPsec 协议。 选择 " **ESP**"。
 * 加密。 单击 "**添加**"，然后选择相应的加密方法。
 * 身份验证。 单击 "**添加**"，然后选择相应的身份验证方法。
@@ -234,13 +236,13 @@ IKEv1
 * 生存期. 设置为30分钟。
 * 可. 保持该框处于未选中状态。
 
-重复前面的步骤以创建另一个 IPsec 加密配置文件，该配置文件将用作辅助 CloudSimple VPN 对等机。 同一 IPSEC 加密配置文件还可用于主和辅助 IPsec 隧道（请参阅以下过程）。
+重复前面的步骤以创建另一个 IPsec 加密配置文件，该配置文件将用作辅助 AVS VPN 对等机。 同一 IPSEC 加密配置文件还可用于主和辅助 IPsec 隧道（请参阅以下过程）。
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. 为隧道监视定义监视器配置文件
 
 选择 "**网络** > **展开" 网络配置文件**" > **监视器** > "**添加**"，配置以下字段，然后单击 **" 确定 "** 。
 
-* 路径名. 输入要用于隧道监视的监视配置文件的任何名称，以主动反应故障。
+* 名称： 输入要用于隧道监视的监视配置文件的任何名称，以主动反应故障。
 * 采取. 选择 "**故障转移**"。
 * 间隔. 输入值**3**。
 * 阀. 输入值**7**。
@@ -251,7 +253,7 @@ IKEv1
 
 常规选项卡：
 
-* 路径名. 输入要与 primary CloudSimple VPN 对等节点对等互连的主 IPSEC 隧道的名称。
+* 名称： 输入要与主 AVS VPN 对等对等互连的主 IPSEC 隧道的名称。
 * 隧道接口。 选择主隧道接口。
 * 类别. 保留默认值。
 * 地址类型。 选择 " **IPv4**"。
@@ -260,17 +262,17 @@ IKEv1
 * 启用重放保护。 保留默认值。
 * 复制 TOS 标头。 保持该框处于未选中状态。
 * 隧道监视。 选中该框。
-* 目标 IP。 输入任意 IP 地址，该地址属于允许通过站点到站点连接的 CloudSimple 私有云子网。 请确保允许在 Palo Alto 上的隧道接口（如 10.64.5.2/32 和 10.64.6.2/32）通过站点到站点 VPN 访问 CloudSimple 私有云 IP 地址（例如）。 请参阅以下配置以获取代理 Id。
-* 个人资料。 选择监视配置文件。
+* 目标 IP。 输入任意 IP 地址，该地址属于可通过站点到站点连接进行使用的 AVS 私有云子网。 请确保 Palo Alto 上的隧道接口（如 10.64.5.2/32 和 10.64.6.2/32）可以通过站点到站点 VPN 访问 AVS 私有云 IP 地址，这是允许的。 请参阅以下配置以获取代理 Id。
+* 简介. 选择监视配置文件。
 
 "代理 Id" 选项卡：单击 " **IPv4** > **添加**并配置以下各项：
 
 * 代理 ID。 为感兴趣的流量输入任意名称。 一个 IPsec 隧道内可能会有多个代理 Id。
-* Local。 指定允许通过站点到站点 VPN 与私有云子网通信的本地本地子网。
-* 远程. 指定允许与本地子网通信的私有云远程子网。
+* Local。 指定允许通过站点到站点 VPN 与 AVS 私有云子网通信的本地本地子网。
+* 远程. 指定允许与本地子网通信的 AVS 私有云远程子网。
 * 协议. 选择 "**任意**"。
 
-重复前面的步骤以创建另一个 IPsec 隧道，用于辅助 CloudSimple VPN 对等互连。
+重复前面的步骤以创建另一个 IPsec 隧道，用于辅助 AVS VPN 对等机。
 
 ## <a name="references"></a>参考
 
