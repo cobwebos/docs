@@ -102,10 +102,10 @@ ms.locfileid: "75435422"
 | &nbsp; | 美国东部 | EastUS |
 | &nbsp; | 美国西部 | WestUS |
 | 日本 | 日本东部 | JapanEast |
-| 欧洲 | 欧洲北部 | NorthEurope |
-| &nbsp; | 欧洲西部| WestEurope |
+| 欧洲 | 北欧 | NorthEurope |
+| &nbsp; | 西欧| WestEurope |
 | 亚洲 | 东亚 | EastAsia |
-| &nbsp; | 亚洲东南部 | SoutheastAsia |
+| &nbsp; | 东南亚 | SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | AustraliaEast |
 
 #### <a name="group-2"></a>组 2

@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: 使用 Azure 托管标识部署环境
           href: use-managed-identities-environments.md
+        - name: 环境的安全警报
+          href: environment-security-alerts.md
     - name: 管理可重用模板
       items:
         - name: 自定义映像和公式

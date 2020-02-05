@@ -1,77 +1,77 @@
 ---
-title: 设计器：预测信用风险示例
+title: 设计器：预测信用风险的示例
 titleSuffix: Azure Machine Learning
-description: 生成分类器并使用自定义 Python 脚本，使用 Azure 机器学习设计器预测信用风险。
+description: 使用 Azure 机器学习设计器生成分类器，并通过自定义 Python 脚本预测信用风险。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.openlocfilehash: ed8ee9b1c711ee0056377154379b8df56e0785df
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311081"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964594"
 ---
-# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器 & 使用 Python 脚本预测信用风险
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器并通过 Python 脚本预测信用风险
 
-**设计器示例4**
+**设计器（预览版）示例 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-本文介绍如何使用设计器构建复杂的机器学习管道。 你将了解如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
+本文介绍如何使用设计器（预览版）生成复杂的机器学习管道。 其中介绍了如何使用 Python 脚本实现自定义逻辑，并比较多个模型以选择最佳选项。
 
-此示例训练一个分类器，以使用信用历史记录、年龄和信用卡号等信用额度预测信用风险。 不过，你可以应用本文中的概念，以解决你自己的机器学习问题。
+本示例将训练一个分类器，以使用信用历史记录、年龄和信用卡数目等信贷申请信息来预测信用风险。 但是，你也可以运用本文中的概念来解决自己的机器学习问题。
 
-下面是此管道的完成关系图：
+下面是此管道的已完成图形：
 
-[管道 ![图](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png)](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png#lightbox)
+[![管道图形](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png)](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
-4. 单击 "示例 4" 将其打开。
+4. 单击示例 4 将其打开。
 
 ## <a name="data"></a>数据
 
-此示例使用 UC Irvine 存储库中的德国信用卡数据集。 它包含1000个包含20个功能的样本和一个标签。 每个示例表示一个人。 20种功能包括数字和分类功能。 有关数据集的详细信息，请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)。 最后一列是标签，表示信用风险，只有两个可能的值：高信用风险 = 2 和低信用风险 = 1。
+本示例使用 UC Irvine 存储库中的“德国信用卡”数据集。 其中包含 1,000 个样本，这些样本带有 20 个特征和 1 个标签。 每个样本代表一人。 20 个特征包括数字和分类特征。 有关该数据集的详细信息，请参阅 [UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)。 最后一列是标签，它表示信用风险，只有两个可能的值：高信用风险 = 2，低信用风险 = 1。
 
 ## <a name="pipeline-summary"></a>管道摘要
 
-在此管道中，你比较两种不同的方法来生成模型，以解决此问题：
+在此管道中，你将比较两种不同的生成模型来解决此问题的方法：
 
-- 对原始数据集进行训练。
+- 使用原始数据集进行训练。
 - 使用复制的数据集进行训练。
 
-对于这两种方法，通过使用带有复制的测试数据集来评估模型，以确保结果与 cost 函数对齐。 用这两种方法测试两个分类器：**双类支持向量机**和**双类提升决策树**。
+将通过这两种方法使用支持复制的测试数据集来评估模型，以确保结果与代价函数相符。 使用两种方法测试两个分类器：“双类支持向量机”和“双类提升决策树”。  
 
-错误分类低风险示例的成本为1，而错误分类高风险示例的成本为5。 我们使用**执行 Python 脚本**模块来考虑此错误分类成本。
+错误地将低风险示例分类为高的代价为 1，错误地将高风险示例分类为低的代价是 5。 我们使用“执行 Python 脚本”模块来分析此错误分类代价。 
 
-下面是管道的关系图：
+下面是管道图形：
 
-[管道 ![图](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png)](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png#lightbox)
+[![管道图形](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png)](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>数据处理
 
-首先，使用**元数据编辑器**模块添加列名称，以使用更有意义的名称替换默认列名，该名称从 UCI 网站上的数据集说明获得。 在 "**元数据编辑器**" 的 "**新列名**" 字段中提供以逗号分隔的值的新列名称。
+首先，使用“元数据编辑器”模块来添加列名，以使用更有意义的名称（从 UCI 网站上的数据集说明中获取）来替换默认列名。  在“元数据编辑器”的“新建列”名称字段中，以逗号分隔值的形式提供新列名。  
 
-接下来，生成用于开发风险预测模型的定型集和测试集。 使用**拆分数据**模块将原始数据集拆分为相同大小的定型集和测试集。 若要创建相等大小的集，请将**第一个输出数据集选项中的行部分**设置为0.7。
+接下来，生成用于开发风险预测模型的训练集和测试集。 使用“拆分数据”模块将原始数据集拆分为相同大小的训练集和测试集。  若要创建相同大小的集，请将“第一个输出数据集中的行小数”选项设置为 0.7。 
 
-### <a name="generate-the-new-dataset"></a>生成新的数据集
+### <a name="generate-the-new-dataset"></a>生成新数据集
 
-由于低估风险的代价很高，因此，请设置错误分类的成本，如下所示：
+由于低估风险的代价较高，因此，请按如下所示设置错误分类的代价：
 
-- 对于高风险的情况，分类不当为低风险：5
-- 对于低风险情况，分类不当为高风险：1
+- 对于错误分类为低风险的高风险案例：5
+- 对于错误分类为高风险的低风险案例：1
 
-若要反映此成本函数，请生成新的数据集。 在新数据集中，每个高风险示例复制了五次，但低风险示例的数目不会改变。 在复制前将数据拆分为定型和测试数据集，以防止在两个集中都有相同的行。
+若要反映此代价函数，请生成新数据集。 在新数据集中，每个高风险示例将复制五次，但低风险示例的数目不会更改。 在复制之前，请将数据拆分为训练和测试数据集，以防止两个集中出现相同的行。
 
-若要复制高风险数据，请将此 Python 代码置于**执行 Python 脚本**模块中：
+若要复制高风险数据，请将此 Python 代码输入“执行 Python 脚本”模块： 
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-**执行 Python 脚本**模块会同时复制定型和测试数据集。
+“执行 Python 脚本”模块同时复制训练和测试数据集。 
 
 ### <a name="feature-engineering"></a>特性工程
 
-**双类支持向量机**算法需要规范化的数据。 因此，请使用**规范化数据**模块将所有数值特征的范围标准化 `tanh` 转换。 `tanh` 转换将所有数字功能转换为0到1范围内的值，同时保留值的总体分布。
+“双类支持向量机”算法需要规范化的数据。  因此，请使用“规范化数据”模块通过 `tanh` 转换来规范化所有数字特征的范围。  `tanh` 转换将所有数字特征转换为 0 到 1 范围内的值，同时保留值的总体分布。
 
-**双类支持向量机**模块处理字符串功能，将它们转换为分类特征，然后转换为值为零或一的二元特征。 因此，您不需要对这些功能进行规范化。
+“双类支持向量机”模块处理字符串特征，依次将其转换为分类特征，以及值为 0 或 1 的二元特征。  因此，无需规范化这些特征。
 
-## <a name="models"></a>模型
+## <a name="models"></a>Models
 
-由于您应用了两个分类器、**双类支持向量机**（SVM）和**双类提升决策树**，以及两个数据集，因此总共生成四个模型：
+模型由于应用了两个分类器（“两类支持向量机”(SVM) 和“双类提升决策树”）和两个数据集，因此总共会生成四个模型：  
 
-- SVM 对原始数据进行定型。
-- SVM 培训了复制的数据。
-- 用原始数据训练的提升决策树。
-- 针对复制的数据训练的提升决策树。
+- 使用原始数据训练的 SVM。
+- 使用复制的数据训练的 SVM。
+- 使用原始数据训练的提升决策树。
+- 使用复制的数据训练的提升决策树。
 
-此示例使用标准数据科学工作流来创建、定型和测试模型：
+本示例使用标准数据科学工作流来创建、训练和测试模型：
 
-1. 使用**双类支持向量机**和**双类提升决策树**初始化学习算法。
-1. 使用**训练模型**将算法应用于数据并创建实际模型。
-1. 使用**评分模型**，通过使用测试示例生成分数。
+1. 使用“双类支持向量机”和“双类提升决策树”初始化学习算法。  
+1. 使用“训练模型”将算法应用于数据并创建实际模型。 
+1. 使用“评分模型”通过测试示例生成评分。 
 
-下图显示了此管道的一部分，在此管道中，原始和复制的定型集用于训练两种不同的 SVM 模型。 **训练模型**连接到定型集，**评分模型**连接到测试集。
+下图显示了此管道的一部分，其中使用了原始训练集和复制的训练集来训练两个不同的 SVM 模型。 “训练模型”连接到训练集，“评分模型”连接到测试集。  
 
 ![管道图形](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/score-part.png)
 
-在管道的评估阶段，你计算四个模型中每个模型的准确性。 对于此管道，使用 "**评估模型**" 来比较具有相同错误分类成本的示例。
+在管道的评估阶段，将计算每个模型（共四个）的准确度。 对于此管道，请使用“评估模型”来比较错误分类代价相同的示例。 
 
-"**评估模型**" 模块可以计算多达两个评分模型的性能指标。 因此，您可以使用一个 "**评估模型**" 实例来计算两个 SVM 模型，并使用另一个 "**评估模型**" 实例来计算两个提升决策树模型。
+“评估模型”模块最多可以计算两个评分模型的性能指标。  因此，可以使用“评估模型”的一个实例来计算两个 SVM 模型，并使用“评估模型”的另一个实例来评估两个提升决策树模型。  
 
-请注意，复制的测试数据集用作**评分模型**的输入。 换句话说，最终的准确性分数包括使标签出现错误的成本。
+请注意，复制的测试数据集用作“评分模型”的输入。  换言之，最终的准确度评分包括用错标签的代价。
 
 ## <a name="combine-multiple-results"></a>合并多个结果
 
-"**评估模型**" 模块生成一个表，该表包含包含各种指标的单个行。 若要创建一组准确性结果，我们首先使用 "**添加行**" 将结果合并到单个表中。 然后，在 "**执行 Python 脚本**" 模块中使用以下 Python 脚本，为结果表中的每一行添加模型名称和定型方法：
+“评估模型”模块将生成一个表，其中有一行包含各项指标。  为了创建一组准确度结果，我们先使用“添加行”将结果合并到单个表中。  然后，在“执行 Python 脚本”模块中使用以下 Python 脚本为结果表中的每一行添加模型名称和训练方法： 
 
 ```Python
 import pandas as pd
@@ -142,17 +142,17 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>结果
 
-若要查看管道的结果，可以右键单击 "数据集" 模块中最后一个 "**选择列**" 的 "可视化输出"。
+若要查看管道的结果，可以右键单击最后一个“选择数据集中的列”模块的“可视化输出”。 
 
 ![可视化输出](media/how-to-designer-sample-classification-credit-risk-cost-sensitive/sample4-lastselect-1225.png)
 
 第一列列出用于生成模型的机器学习算法。
 
-第二列指示定型集的类型。
+第二列指示训练集的类型。
 
-第三列包含与成本相关的精度值。
+第三列包含代价敏感型准确度值。
 
-根据这些结果，您可以看到，通过**双类支持向量机**创建并在复制的定型数据集上训练的模型提供了最佳准确性。
+从这些结果中可以看到，使用“双类支持向量机”创建的，并基于复制的训练数据集训练的模型所提供的准确度最高。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -162,9 +162,9 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 浏览可用于设计器的其他示例：
 
-- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
-- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
-- [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)
+- [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 5 - 分类：预测流失率](how-to-designer-sample-classification-churn.md)
+- [示例 6 - 分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)
+- [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

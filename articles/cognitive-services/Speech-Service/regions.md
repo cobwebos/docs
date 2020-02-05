@@ -43,13 +43,13 @@ ms.locfileid: "74816662"
 | 美国中南部 | `southcentralus`     | https://southcentralus.cris.ai |
 | 印度中部    | `centralindia`       | https://centralindia.cris.ai   |
 | 东亚        | `eastasia`           | https://eastasia.cris.ai       |
-| 亚洲东南部   | `southeastasia`      | https://southeastasia.cris.ai  |
+| 东南亚   | `southeastasia`      | https://southeastasia.cris.ai  |
 | 日本东部       | `japaneast`          | https://japaneast.cris.ai      |
 | 韩国中部    | `koreacentral`       | https://koreacentral.cris.ai   |
 | 澳大利亚东部   | `australiaeast`      | https://australiaeast.cris.ai  |
 | 加拿大中部   | `canadacentral`      | https://canadacentral.cris.ai  |
 | 北欧     | `northeurope`        | https://northeurope.cris.ai    |
-| 欧洲西部      | `westeurope`         | https://westeurope.cris.ai     |
+| 西欧      | `westeurope`         | https://westeurope.cris.ai     |
 | 英国南部         | `uksouth`            | https://uksouth.cris.ai        |
 | 法国中部   | `francecentral`      | https://francecentral.cris.ai  |
 
@@ -60,10 +60,10 @@ ms.locfileid: "74816662"
 | 全球区域 | 地区           | 语音 SDK 参数 |
 | ------------- | ---------------- | -------------------- |
 | 亚洲          | 东亚        | `eastasia`           |
-| 亚洲          | 亚洲东南部   | `southeastasia`      |
+| 亚洲          | 东南亚   | `southeastasia`      |
 | 澳大利亚     | 澳大利亚东部   | `australiaeast`      |
 | 欧洲        | 北欧     | `northeurope`        |
-| 欧洲        | 欧洲西部      | `westeurope`         |
+| 欧洲        | 西欧      | `westeurope`         |
 | 北美 | 美国东部          | `eastus`             |
 | 北美 | 美国东部 2        | `eastus2`            |
 | 北美 | 美国中南部 | `southcentralus`     |
@@ -84,9 +84,9 @@ ms.locfileid: "74816662"
 | 美国西部 2      | `westus2`            |
 | 美国东部        | `eastus`             |
 | 美国东部 2      | `eastus2`            |
-| 欧洲西部    | `westeurope`         |
+| 西欧    | `westeurope`         |
 | 北欧   | `northeurope`        |
-| 亚洲东南部 | `southeastasia`      |
+| 东南亚 | `southeastasia`      |
 
 ## <a name="rest-apis"></a>REST API
 

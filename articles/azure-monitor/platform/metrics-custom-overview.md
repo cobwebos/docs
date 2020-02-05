@@ -180,7 +180,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国东部| https：\//eastus.monitoring.azure.com/ |
 | **欧洲** | |
 |北欧    | https：\//northeurope.monitoring.azure.com/ |
-|欧洲西部     | https：\//westeurope.monitoring.azure.com/ |
+|西欧     | https：\//westeurope.monitoring.azure.com/ |
 |英国南部 | https：\//uksouth.monitoring.azure.com
 |法国中部 | https：\//francecentral.monitoring.azure.com |
 | **非洲** | |

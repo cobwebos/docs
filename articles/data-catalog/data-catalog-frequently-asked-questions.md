@@ -35,10 +35,10 @@ ms.locfileid: "73152056"
 
 * 美国西部
 * 美国东部
-* 欧洲西部
+* 西欧
 * 北欧
 * 澳大利亚东部
-* 亚洲东南部
+* 东南亚
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>数据资产的数量限制是多少？
 数据目录的免费版仅限 5,000 个已注册数据资产。

@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure 数据资源管理器文档
 metadata:
-  title: Azure 数据资源管理器文档 - 快速入门、教程、语言和 API 参考
+  title: 快速入门、教程和语言/API 文档 - Azure 数据资源管理器
   description: Azure 数据资源管理器是针对临时大数据查询进行了优化的日志分析云平台。
   author: orspod
   ms.author: orspodek
@@ -67,7 +67,7 @@ sections:
             image:
               src: /azure/data-explorer/media/index/logo-pluralsight.svg
               href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

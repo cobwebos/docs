@@ -79,7 +79,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 - 英国南部
 
-- 亚洲东南部
+- 东南亚
 
 - 美国东部
 
@@ -87,7 +87,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 - 美国中部
 
-- 欧洲西部
+- 西欧
 
 - 美国西部 2
 

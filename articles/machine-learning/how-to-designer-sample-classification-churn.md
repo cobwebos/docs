@@ -1,77 +1,77 @@
 ---
-title: 设计器：预测改动示例
+title: 设计器：预测客户流失示例
 titleSuffix: Azure Machine Learning
-description: 按照此分类示例预测 Azure 机器学习设计器 & 提升决策树的变动。
+description: 按照此分类示例使用 Azure 机器学习设计器和提升决策树来预测客户流失。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311104"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963354"
 ---
-# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>使用提升决策树预测 Azure 机器学习设计器的变动
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>通过 Azure 机器学习设计器使用提升决策树来预测客户流失
 
-**设计器示例5**
+**设计器（预览版）示例 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-了解如何在不编写代码的情况下使用设计器生成复杂的机器学习管道。
+了解如何使用设计器（预览版）在不编写代码的情况下生成复杂的机器学习管道。
 
-此管道培训 2**个双类提升决策树**分类器，用于预测客户关系管理（CRM）系统的常见任务-客户流失。 数据值和标签跨多个数据源进行拆分，并打乱编码为匿名的客户信息，但我们仍可以使用该设计器组合数据集，并使用这些模糊值来训练模型。
+此管道训练 2 个“双类提升决策树”分类器来预测客户管理 (CRM) 系统的常见任务 - 客户流失  。 数据值和标签被分成多个数据源，并被无序收集以匿名化客户信息，但是，我们仍然可以使用设计器来组合数据集，并使用模糊值来训练模型。
 
-因为你要尝试回答问题 "哪一个？" 这称为分类问题，但你可以应用此示例中所示的相同逻辑来处理任何类型的机器学习问题，无论是回归、分类、群集等。
+因为你尝试回答问题“哪一个？”， 因此这称为分类问题，但是，你可以应用此示例中显示的同一逻辑来解决任何类型的机器学习问题，无论是回归、分类还是聚类，等等。
 
-下面是此管道的完成关系图：
+下面是此管道的已完成图形：
 
 ![管道图形](./media/how-to-designer-sample-classification-churn/pipeline-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
-4. 单击 "示例 5" 将其打开。 
+4. 单击示例 5 将其打开。 
 
 ## <a name="data"></a>数据
 
-此管道的数据来自 KDD 杯2009。 它包含50000行和230功能列。 该任务旨在预测使用这些功能的客户的变动量、亲和力和向上销售情况。 有关数据和任务的详细信息，请参阅[KDD 网站](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)。
+此管道的数据来自 KDD Cup 2009。 它有 50,000 行和 230 个特征列。 任务是为使用这些特征的客户预测客户流失、购买欲和追加销售。 有关数据和任务的详细信息，请参阅 [KDD 网站](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)。
 
 ## <a name="pipeline-summary"></a>管道摘要
 
-设计器中的此示例管道显示了对变动、亲和力和向上销售的二元分类器预测，这是客户关系管理（CRM）的常见任务。
+设计器中的此示例管道显示了客户流失、购买欲和追加销售的二元分类器预测，这是客户关系管理 (CRM) 的一个常见任务。
 
-首先，一些简单的数据处理。
+首先完成一些简单的数据处理。
 
-- 原始数据集具有多个缺失值。 使用 "**清理缺失数据**" 模块将缺失值替换为0。
+- 原始数据集有许多缺失值。 使用“清理缺失数据”模块将缺失值替换为 0  。
 
     ![清理数据集](media/how-to-designer-sample-classification-churn/sample5-dataset-1225.png)
 
-- 功能和相应的改动在不同的数据集中。 使用 "**添加列**" 模块将标签列追加到特征列。 第一列**Col1**是标签列。 从可视化结果中可以看到，数据集不均衡。 有比正示例更多的负数（-1）示例（+ 1）。 稍后，我们将使用**SMOTE**模块增加常见情况。
+- 特征和对应的客户流失位于不同的数据集中。 使用“添加列”模块将标签列追加到特征列  。 第一个列“Col1”是标签列  。 从可视化结果中，我们可以看到数据集不平衡。 负示例 (-1) 比正示例 (+1) 要多。 稍后我们将使用“SMOTE”模块来增加未被充分代表的案例  。
 
     ![添加列数据集](./media/how-to-designer-sample-classification-churn/sample5-addcol-1225.png)
 
 
 
-- 使用 "**拆分数据**" 模块将数据集拆分为定型集和测试集。
+- 使用“拆分数据”模块将数据集拆分为训练集和测试集  。
 
-- 然后，将提升决策树二进制分类器与默认参数一起使用，以生成预测模型。 为每个任务生成一个模型，即每个模型预测向上销售、亲和力和变动。
+- 然后，使用提升决策树二元分类器生成预测模型。 为每个任务生成一个模型，也就是说，各个模型分别预测追加销售、购买欲和客户流失。
 
-- 在管道的右侧，我们使用**SMOTE**模块来增加正示例的百分比。 SMOTE 百分比设置为100，表示正的示例。 详细了解 SMOTE 模块如何与[SMOTE module reference0](algorithm-module-reference/smote.md)一起使用。
+- 在管道的右侧部分，使用“SMOTE”模块来增加正示例的百分比  。 SMOTE 百分比设置为 100 以使正示例加倍。 通过 [SMOTE 模块参考](algorithm-module-reference/smote.md)详细了解 SMOTE 模块的工作原理。
 
 ## <a name="results"></a>结果
 
-可视化 "**评估模型**" 模块的输出，以查看该模型在测试集上的性能。 
+将“评估模型”模块的输出可视化来查看模型处理测试集时的性能  。 
 
 ![评估结果](./media/how-to-designer-sample-classification-churn/sample5-evaluate-1225.png)
 
- 可以移动 "**阈值**" 滑块，并查看二元分类任务的指标变化。 
+ 可以移动“阈值”滑块并查看二元分类任务的指标变化  。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -81,9 +81,9 @@ ms.locfileid: "76311104"
 
 浏览可用于设计器的其他示例：
 
-- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
-- [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)
+- [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 4 - 分类：预测信用风险（代价敏感）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 6 - 分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)
+- [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

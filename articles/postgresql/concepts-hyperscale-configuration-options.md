@@ -40,11 +40,11 @@ ms.locfileid: "74975629"
     * 美国西部 2
 * 亚太：
     * 澳大利亚东部 *
-    * 亚洲东南部
+    * 东南亚
 * 东欧
     * 北欧
     * 英国南部
-    * 欧洲西部
+    * 西欧
 
 带有星号（\*）的区域尚不支持[高可用性](concepts-hyperscale-high-availability.md)。
 

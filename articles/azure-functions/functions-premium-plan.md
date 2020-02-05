@@ -116,13 +116,13 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |日本西部| ✔ | |
 |韩国中部| ✔ |  |
 |美国中北部| ✔ |  |
-|欧洲北部| ✔ | ✔<sup>1</sup> |
+|北欧| ✔ | ✔<sup>1</sup> |
 |美国中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
-|亚洲东南部| ✔ | ✔<sup>1</sup> |
+|东南亚| ✔ | ✔<sup>1</sup> |
 |英国南部| ✔ | |
 |英国西部| ✔ |  |
-|欧洲西部| ✔ | ✔<sup>1</sup> |
+|西欧| ✔ | ✔<sup>1</sup> |
 |印度西部| ✔ |  |
 |美国西部| ✔ | ✔<sup>1</sup> |
 |美国西部 2| ✔ |  |

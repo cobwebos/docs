@@ -258,6 +258,8 @@
           href: backup-azure-backup-server-import-export-.md
     - name: 监视和警报
       items:
+        - name: 使用备份资源管理器
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: 使用 Azure 门户
           href: backup-azure-monitoring-built-in-monitor.md
         - name: 使用 Azure Monitor

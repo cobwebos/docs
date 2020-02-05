@@ -45,8 +45,8 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 | 主 | 辅助副本 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
-| 欧洲北部 |欧洲西部 |
-| 亚洲东南部 |东亚 |
+| 北欧 |西欧 |
+| 东南亚 |东亚 |
 
 可以在[此处](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)查看完整的区域对列表。
 

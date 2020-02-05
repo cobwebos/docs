@@ -35,8 +35,8 @@ ms.locfileid: "76932593"
 * 美国西部 2
 * 美国东部 2
 * 加拿大中部
-* 欧洲北部
-* 欧洲西部
+* 北欧
+* 西欧
 * 澳大利亚东部
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安装最新 Azure CLI AKS 预览版扩展
