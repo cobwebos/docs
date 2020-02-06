@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215796"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030944"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
 在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。
 
-例如，选择“交互式查询”群集类型可以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+例如，选择 "**交互式查询**群集类型" 以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
 
 默认情况下，Hadoop 群集类型的 HDInsight 群集未针对性能进行优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
@@ -29,11 +29,11 @@ ms.locfileid: "74215796"
 
 * 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
-    ![Azure 门户群集大小节点](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Azure 门户群集大小节点](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * 创建后，还可以通过编辑工作节点的数目来进一步横向扩展群集，而无需重新创建：
 
-    ![Azure 门户缩放群集大小](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure 门户缩放群集大小](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
@@ -187,7 +187,7 @@ set hive.vectorized.execution.enabled = true;
 
 ## <a name="other-optimization-methods"></a>其他优化方法
 
-还可以考虑使用其他一些高级优化方法，例如：
+你还可以考虑使用其他一些高级优化方法，例如：
 
 * **Hive 存储桶：** 将大型数据集群集化或分段以优化查询性能的技术。
 * **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅[联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
@@ -195,7 +195,7 @@ set hive.vectorized.execution.enabled = true;
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
+在本文中，你已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
 * [使用 HDInsight 中的交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

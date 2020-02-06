@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646891"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031623"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 
@@ -70,7 +70,7 @@ Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体
 
 "配置" 窗格显示以下 Azure Repos 代码存储库设置：
 
-| 设置 | Description | 值 |
+| 设置 | 说明 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
@@ -141,7 +141,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。 | GitHub |
 | **使用 GitHub Enterprise** | 用于选择 GitHub Enterprise 的复选框 | 未选择（默认值） |
-| **GitHub Enterprise URL** | GitHub Enterprise 根 URL。 例如： https://github.mydomain.com 。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise URL** | GitHub Enterprise 根 URL。 例如： https://github.mydomain.com。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
 | **GitHub 帐户** | GitHub 帐户名。 可从 https：\//github.com/{account name}/{repository name} 中找到此名称。 导航到此页时，系统会提示输入 GitHub 帐户的 GitHub OAuth 凭据。 | `<your GitHub account name>` |
 | **存储库名称**  | GitHub 代码存储库名称。 GitHub 帐户包含用于管理源代码的 Git 存储库。 可以创建新存储库，或使用帐户中现有的存储库。 | `<your repository name>` |
 | **协作分支** | 将用于发布的 GitHub 协作分支。 默认情况下，它是 master。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch>` |
@@ -157,7 +157,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 - 与数据工厂视觉创作工具的 GitHub 集成仅适用于数据工厂的公开版本。
 
-- 每个资源类型（如管道和数据集）最多可以从单个 GitHub 分支提取1000个实体。 如果达到此限制，则建议将资源拆分为单独的工厂。
+- 每个资源类型（如管道和数据集）最多可以从单个 GitHub 分支提取1000个实体。 如果达到此限制，则建议将资源拆分为单独的工厂。 Azure DevOps Git 没有此限制。
 
 ## <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
 
@@ -249,8 +249,13 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 1. 删除当前的 Git 存储库
 1. 用相同的设置重新配置 Git，但请确保已选择 "**将现有的数据工厂资源导入存储库**"，然后选择 "**新建分支**"
-1. 从协作分支中删除所有资源
 1. 创建用于将更改合并到协作分支的拉取请求 
+
+下面是可能导致过时发布分支的一些情况示例：
+- 用户有多个分支。 在一个功能分支中，它们删除了未 AKV 关联的链接服务（不会立即发布非 AKV 链接服务，而不考虑它们是否在 Git 中），并且永远不会将该功能分支合并到协作 brnach 中。
+- 用户使用 SDK 或 PowerShell 修改了数据工厂
+- 用户将所有资源移至新的分支，并尝试第一次发布。 导入资源时应手动创建链接服务。
+- 用户手动上传非 AKV 链接服务或 Integration Runtime JSON。 它们从另一个资源（例如数据集、链接服务或管道）引用资源。 通过 UX 创建的非 AKV 链接服务立即发布，因为需要对凭据进行加密。 如果上传引用此链接服务的数据集，并尝试发布，则 UX 将允许其，因为它存在于 git 环境中。 它将在发布时被拒绝，因为它在数据工厂服务中不存在。
 
 ## <a name="provide-feedback"></a>提供反馈
 选择“反馈”可发表有关功能的看法，或者告知 Microsoft 出现了工具问题：

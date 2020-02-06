@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 575f3ed1a692087cc99881798f7f0ca74c5d3a66
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0f9489cd702eab6038689f6ac710c32427665093
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024443"
+ms.locfileid: "77031112"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Java 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
@@ -24,10 +24,10 @@ ms.locfileid: "77024443"
 
 [包（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 到 Gen2 映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 > * 已启用分层命名空间（HNS）的存储帐户。 按照[以下](data-lake-storage-quickstart-create-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
@@ -258,8 +258,6 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 ## <a name="download-from-a-directory"></a>从目录下载
 
 首先，创建表示要下载的文件的**DataLakeFileClient**实例。 使用**DataLakeFileClient**方法读取该文件。 使用任何 .NET 文件处理 API 将字节从流保存到文件。 
-
-请确保通过调用**DataLakeFileClient**方法完成下载。
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668151"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031554"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -37,12 +37,12 @@ ms.locfileid: "74668151"
 
 Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中南部、美国西部、美国西部2、美国东部、美国东部2、美国中部、北欧、西欧、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、东亚、韩国中部、韩国南部、英国南部、印度中部、印度西部、印度南部、印度西部、印度南部、印度西部、印度南部。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 使用 v2 SKU，定价模型由消耗驱动，不再附加到实例计数或大小。 V2 SKU 定价有两个组件：
 
 - **固定价格**-预配 Standard_v2 或 WAF_v2 网关需要按小时（或部分小时）价格。 请注意，0个额外的最小实例仍可确保服务的高可用性，该服务始终附带固定价格。
-- **容量单位价格**-这是一种基于消耗的成本，除固定成本之外，还需要支付费用。 容量单位费用也按小时或部分按小时计算。 容量单位有 3 个维度：计算单位、持久连接和吞吐量。 计算单位测量的是所使用的处理器容量。 影响计算单元的因素包括 TLS 连接数/秒、URL 重写计算和 WAF 规则处理。 永久性连接是指按照给定计费间隔，与应用程序网关建立的 TCP 连接的度量。 吞吐量是系统在给定计费间隔内处理的平均兆位/秒。  对于超出保留实例计数的任何内容，将在容量单元级别完成计费。
+- **容量单位价格**-这是一种基于消耗的成本，除固定成本之外，还需要支付费用。 容量单位费用也按每小时或每小时部分计算。 容量单元计算单元、持续连接和吞吐量有三个维度。 计算单位是使用的处理器容量度量值。 影响计算单元的因素包括 TLS 连接数/秒、URL 重写计算和 WAF 规则处理。 永久性连接是指按照给定计费间隔，与应用程序网关建立的 TCP 连接的度量。 吞吐量是系统在给定计费间隔内处理的平均兆位/秒。  对于超出保留实例计数的任何内容，将在容量单元级别完成计费。
 
 每个容量单位的最大数目为：1个计算单元、2500持续连接或 2.22-Mbps 吞吐量。
 
@@ -64,7 +64,7 @@ Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中�
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-有关定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)。 计费计划为在2019年7月1日开始。
+有关定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)。 
 
 **示例 1**
 
@@ -165,17 +165,17 @@ Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中�
 
 ## <a name="differences-with-v1-sku"></a>与 v1 SKU 之间的差异
 
-|效果|详细信息|
+|差别|详细信息|
 |--|--|
-|身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
+|身份验证证书|不受支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
 |应用程序网关子网上的用户定义路由 (UDR)|不支持|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
-|Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
+|Azure 诊断中的性能日志|不受支持。<br>应当使用 Azure 指标。|
 |计费|计费计划于2019年7月1日开始。|
 |FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
-|Netwatcher 集成|不支持。|
+|Netwatcher 集成|不受支持。|
 |Azure 安全中心集成|尚不可用。
 
 ## <a name="migrate-from-v1-to-v2"></a>从 v1 迁移到 v2

@@ -1,17 +1,17 @@
 ---
 title: Azure Functions 中的部署技术
 description: 了解将代码部署到 Azure Functions 的不同方式。
-author: ColbyTresness
+author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: cotresne
-ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.author: gwallace
+ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714812"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029854"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -114,7 +114,7 @@ Azure Functions 中提供了以下部署方法。
 
 你可以部署包含 function app 的 Linux 容器映像。
 
->__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可通过两种方式实现此目的：
+>__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可以采取两种方式来实现此目的：
 >
 >* 在 Azure 门户中的 Azure App Service 计划上创建 Linux 函数应用。 对于 "**发布**"，选择 " **Docker 映像**"，然后配置容器。 输入托管图像的位置。
 >* 使用 Azure CLI 在应用服务计划中创建 Linux 函数应用。 若要了解如何操作，请参阅[在 Linux 上使用自定义映像创建函数](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)。

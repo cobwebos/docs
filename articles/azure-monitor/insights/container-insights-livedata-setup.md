@@ -3,12 +3,12 @@ title: 设置 Azure Monitor 容器实时数据（预览版） |Microsoft Docs
 description: 本文介绍如何设置容器日志（stdout/stderr）和事件的实时视图，而无需将 kubectl 与 Azure Monitor for 容器一起使用。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404700"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030659"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>如何设置实时数据（预览）功能
 
@@ -101,7 +101,7 @@ Azure AD 客户端注册必须重新配置为允许 Azure 门户将授权页面�
 有关 Kubernetes 中的高级安全设置的详细信息，请参阅[Kubernetes 文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。 
 
 >[!NOTE]
->如果要创建新的启用 RBAC 的群集，请参阅将[Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)，然后按照步骤配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，此部分中的注释突出显示了需要为容器 Azure Monitor 创建的两个重定向 Url。 
+>如果要创建新的启用 RBAC 的群集，请参阅将[Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)，然后按照步骤配置 Azure AD 身份验证。 在创建客户端应用程序的步骤中，此部分中的说明将突出显示需要为与下面的步骤3中指定的容器 Azure Monitor 匹配的两个重定向 Url。
 
 ### <a name="client-registration-reconfiguration"></a>重新配置客户端注册
 

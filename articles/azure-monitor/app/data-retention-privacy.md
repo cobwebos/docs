@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513450"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031674"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -52,7 +52,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？
 主要类别如下：
 
-* [Web 服务器遥测数据](../../azure-monitor/app/asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id`。
+* [Web 服务器遥测数据](../../azure-monitor/app/asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id` 列中的一个值匹配。
 * [网页](../../azure-monitor/app/javascript.md) - 页面、用户和会话计数。 页面加载时间。 异常。 Ajax 调用。
 * 性能计数器 - 内存、CPU、IO、网络占用量。
 * 客户端和服务器上下文 - OS、区域性、设备类型、浏览器和屏幕分辨率。
@@ -98,7 +98,7 @@ Microsoft 只使用这些数据来向你提供服务。
 * 创建新的 Application Insights 资源时，可以选择存储位置。 [在此处](https://azure.microsoft.com/global-infrastructure/services/?products=all)了解有关每个区域 Application Insights 可用性的详细信息。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着应用必须托管在美国、欧洲或东南亚？
-* 不。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
+* No。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
@@ -161,7 +161,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
 
-下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
+下面的代码片段展示了如何在 `ServerTelemetryChannel.StorageFolder` 类的 `ConfigureServices()` 方法中设置 `Startup.cs`：
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -173,9 +173,20 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 默认情况下，`%TEMP%/appInsights-node{INSTRUMENTATION KEY}` 用于暂留数据。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts)。）
 
-可更改 [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) 中的静态变量 `Sender.TEMPDIR_PREFIX` 的运行时值，以替代文件夹前缀 `appInsights-node`。
+可更改 `appInsights-node`Sender.ts`Sender.TEMPDIR_PREFIX` 中的静态变量 [ 的运行时值，以替代文件夹前缀 ](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)。
 
+### <a name="opencensus-python"></a>OpenCensus Python
 
+默认情况下，OpenCensus Python SDK 使用当前用户文件夹 `%username%/.opencensus/.azure/`。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)。）包含持久数据的文件夹将在生成遥测的 Python 文件后命名。
+
+你可以通过在所使用的导出程序的构造函数中传入 `storage_path` 参数来更改存储文件的位置。
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>如何使用 TLS 1.2 将数据发送到 Application Insights？
 
@@ -187,7 +198,7 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="platformlanguage-specific-guidance"></a>特定于平台/语言的指导
 
-|平台/语言 | 支持 | 详细信息 |
+|平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
 | Azure 应用服务  | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。  |
 | Azure 函数应用 | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。 |
@@ -200,7 +211,7 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 | Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 | Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
-|Windows Vista | 不提供支持。 | N/A
+|Windows Vista | 不提供支持。 | 不可用
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>检查 Linux 分发版正在运行哪个 OpenSSL 版本
 
@@ -256,8 +267,8 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 | 会话 |`session id` |
 | ServerContext |计算机名称、区域性、OS、设备、用户会话、用户上下文、操作 |
 | 推断 |IP 地址中的地理位置、时间戳、OS、浏览器 |
-| 指标 |指标名称和值 |
-| 活动 |事件名称和值 |
+| 度量值 |指标名称和值 |
+| Events |事件名称和值 |
 | PageViews |URL 和页面名称或屏幕名称 |
 | 客户端性能 |URL/页面名称、浏览器加载时间 |
 | Ajax |从网页到服务器的 HTTP 调用 |
@@ -275,7 +286,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 > [!NOTE]
 > 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[ip 地址收集一文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)将指导你完成选择。
 
-## <a name="credits"></a>额度
+## <a name="credits"></a>学分
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [https://www.maxmind.com](https://www.maxmind.com) 获取。
 
 

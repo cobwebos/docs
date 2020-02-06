@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 71344f954990952856f031829f13273e062b62c5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933170"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031742"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -56,7 +56,7 @@ Run Login-AzureRMAccount to login.
 * 不同版本的 AzureRM 模块。
 * 你正在尝试访问单独订阅中的资源。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果在更新一个 AzureRM 模块后收到此错误，则应将所有 AzureRM 模块更新为同一版本。
 
@@ -106,14 +106,14 @@ The subscription named <subscription name> cannot be found.
 
 * 尝试获取订阅详细信息的 Azure Active Directory 用户未配置为订阅的管理员。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 执行以下步骤以确定是否已正确向 Azure 进行身份验证并有权访问尝试选择的订阅：
 
 1. 在 Azure 自动化之外测试脚本，以确保它独立运行。
-2. 请确保在运行 `Select-AzureSubscription` cmdlet 之前运行 `Add-AzureAccount` cmdlet。
+2. 请确保在运行 `Add-AzureAccount` cmdlet 之前运行 `Select-AzureSubscription` cmdlet。
 3. 将 `Disable-AzureRmContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
-4. 如果仍然看到此错误消息，可通过在 `Add-AzureAccount` cmdlet 后添加 **AzureRmContext** 参数来修改代码，然后执行代码。
+4. 如果仍然看到此错误消息，可通过在 **cmdlet 后添加**AzureRmContext`Add-AzureAccount` 参数来修改代码，然后执行代码。
 
    ```powershell
    Disable-AzureRmContextAutosave –Scope Process
@@ -140,7 +140,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 如果对 Azure 帐户设置了多重身份验证，则不能使用 Azure Active Directory 用户向 Azure 进行身份验证。 而只能使用证书或服务主体向 Azure 进行身份验证。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 若要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建和添加证书以管理 azure 服务](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)，并使用[azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
@@ -164,9 +164,9 @@ At line:16 char:1
 
 ### <a name="cause"></a>原因
 
-此错误是因为在同一 runbook 中同时使用 AzureRM 和 Az cmdlet 而导致的。 在导入 `AzureRM` 之前导入 `Az` 会出现此错误。
+此错误是因为在同一 runbook 中同时使用 AzureRM 和 Az cmdlet 而导致的。 在导入 `Az` 之前导入 `AzureRM` 会出现此错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 不能在同一 runbook 中导入和使用 Az 和 AzureRM cmdlet。 若要了解有关 Azure 自动化中 Az cmdlet 的详细信息，请参阅[Azure 自动化中的 az module 支持](../az-modules.md)。
 
@@ -184,7 +184,7 @@ Exception: A task was canceled.
 
 使用过时的 Azure 模块会导致此错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可以通过将 Azure 模块更新到最新版本来解决此错误。
 
@@ -200,7 +200,7 @@ Exception: A task was canceled.
 
 Runbook 在运行时没有使用正确的上下文。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果使用多个订阅，则调用 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给 Runbook，请将 `AzureRmContext` 参数添加到 cmdlet 并将上下文传递给它。 还建议将 `Disable-AzureRmContextAutosave` cmdlet 与 **Process** 范围配合使用来确保你使用的凭据仅用于当前 runbook。
 
@@ -248,7 +248,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 * 包含该 cmdlet 的模块不会导入到自动化帐户中。
 * 包含 cmdlet 的模块已导入，但已过时。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可通过完成以下任务之一来解决此错误：
 
@@ -280,7 +280,7 @@ The job was tried three times but it failed
 
 * 异常数据太多。 Runbook 尝试将过多的异常数据写入输出流。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 * 内存限制，网络套接字。 在内存限制内工作的建议方法是在多个 runbook 之间拆分工作负荷，在内存中处理较少的数据，避免从 runbook 写入不必要的输出，并考虑将多少个检查点写入 PowerShell 工作流runbook. 使用 clear 方法（如 `$myVar.clear`）清除变量并使用 `[GC]::Collect` 立即运行垃圾回收。 这将减少运行时期间 runbook 的内存占用情况。
 
@@ -310,11 +310,11 @@ No certificate was found in the certificate store with thumbprint
 
 如果凭据资产名称无效，将发生此错误。 如果用于设置自动化凭据资产的用户名和密码无效，也可能会出现此错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 要确定具体错误，请执行以下步骤：
 
-1. 请确保没有包含任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的 \@ 字符。
+1. 请确保没有包含任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的  **字符\@** 。
 2. 查看你是否能够在本地 PowerShell ISE 编辑器中使用存储在 Azure 自动化凭据中的用户名和密码。 可以通过在 PowerShell ISE 中运行以下 cmdlet 来检查用户名和密码是否正确：
 
    ```powershell
@@ -363,9 +363,9 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-存在一个已知问题，即 Start-azurermautomationrunbook 不会正确处理输出流（如果它包含对象）。
+存在一个已知问题，即 Start-azurermautomationrunbook 在包含对象的情况下不会正确处理输出流。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 若要解决此问题，建议你实现轮询逻辑，并使用[get-azurermautomationjoboutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 来检索输出。 下面的示例中定义了此逻辑的示例。
 
@@ -407,7 +407,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 如果 runbook 为 PowerShell 工作流，它会将复杂对象以反序列化格式进行存储，以便在工作流暂停的情况下保留 runbook 状态。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 下述三种解决方案中的任何一种都可以解决此问题：
 
@@ -429,7 +429,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 作业执行时间超过帐户的 500 分钟免费配额时，就会出现此错误。 此配额适用于所有类型的作业执行任务。 其中一些任务可能是测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 门户或数据中心计划要执行的作业。 若要详细了解自动化的定价，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果想要每月使用 500 分钟以上的处理时间，则需将订阅从免费层改为基本层。 可以通过下述步骤升级到基本层：
 
@@ -452,7 +452,7 @@ Runbook 作业失败并显示错误：
 
 当 PowerShell 引擎找不到要在 runbook 中使用的 cmdlet 时，则会导致此错误。 此错误可能是因为，帐户中缺少包含该 cmdlet 的模块、与 Runbook 名称冲突，或者该 cmdlet 也存在于其他模块中，而自动化无法解析该名称。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
@@ -477,7 +477,7 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 建议的解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。
 
@@ -505,7 +505,7 @@ Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
 尝试调用的 Webhook 已禁用，或者已过期。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用 Webhook。 如果 Webhook 已过期，需要删除并重新创建 Webhook。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#renew-webhook)。
 
@@ -523,12 +523,12 @@ Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
 从具有多个[详细流](../automation-runbook-output-and-messages.md#verbose-stream)的 Runbook 中检索作业输出时，可能发生此错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可通过两种方法来解决此错误：
 
 * 编辑 Runbook，并减少它发出的作业流数量。
-* 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以为 `Get-AzureRmAutomationJobOutput` cmdlet 指定 `-Stream Output` 参数以仅检索输出流。 
+* 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以为 `-Stream Output` cmdlet 指定 `Get-AzureRmAutomationJobOutput` 参数以仅检索输出流。 
 
 ## <a name="cannot-invoke-method"></a>方案： PowerShell 作业失败并出现错误：无法调用方法
 
@@ -544,7 +544,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 当你在 Azure 中运行的 runbook 中启动 PowerShell 作业时，可能会发生此错误。 发生此行为的原因是，在 Azure 沙盒中运行的 runbook 可能无法以[完整语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)运行。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可通过两种方法来解决此错误：
 
@@ -552,6 +552,22 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 * 如果 runbook 有此错误消息，请在混合 Runbook 辅助角色上运行它
 
 若要了解有关此行为以及 Azure 自动化 Runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
+
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>方案： Linux 混合 Runbook 辅助角色在对 Runbook 进行签名时接收密码提示
+
+### <a name="issue"></a>问题
+
+为 Linux 混合 Runbook 辅助角色运行**sudo**命令将检索意外的密码提示。
+
+### <a name="cause"></a>原因
+
+未在 sudoers 文件中正确配置适用于 Linux 的 Log Analytics 代理的 nxautomationuser 帐户。 混合 Runbook 辅助角色需要对帐户权限和其他数据进行适当的配置，以便能够对 Linux Runbook 辅助角色上的 runbook 进行签名。
+
+### <a name="resolution"></a>解决方法
+
+* 确保混合 Runbook 辅助角色在计算机上具有 GnuPG （GPG）可执行文件。
+
+* 验证 nxautomationuser 帐户在 sudoers 文件中的配置。 请参阅[在混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)
 
 ## <a name="other"></a>我的问题未在上面列出
 

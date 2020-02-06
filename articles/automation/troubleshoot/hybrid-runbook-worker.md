@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988033"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030721"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -28,41 +28,39 @@ ms.locfileid: "76988033"
 
 #### <a name="issue"></a>问题
 
-Runbook 执行失败，你收到以下错误：
+Runbook 执行失败，你将收到以下错误。
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Runbook 在尝试执行三次后会立即挂起。 存在可能会阻止 runbook 完成的情况。 相关错误消息不能包含任何其他信息。
+Runbook 在尝试执行三次后会立即挂起。 存在可中断 runbook 完成的条件。 相关错误消息可能不包括任何其他信息。
 
 #### <a name="cause"></a>原因
 
-可能的原因如下：
+下面是可能的原因：
 
-* runbook 无法使用本地资源进行身份验证
+* Runbook 无法通过本地资源进行身份验证。
 
-* 混合辅助角色在代理或防火墙后面
-
-* runbook 无法使用本地资源进行身份验证
+* 混合辅助角色在代理或防火墙后面。
 
 * 配置为运行混合 Runbook 辅助角色功能的计算机不满足最低硬件要求。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
-确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+验证计算机是否在端口443上具有对 *. azure-automation.net 的出站访问权限。
 
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，然后才能将辅助角色配置为承载此功能。 Runbook 及其使用的后台进程可能会导致系统过度使用，并导致 runbook 作业延迟或超时。
 
-确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 任何内存或 CPU 压力都可能表明需要升级资源。 也可以选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
+确认运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 任何内存或 CPU 压力都可能表明需要升级资源。 你还可以选择支持最低要求的其他计算资源，并在工作负荷需求指示需要增加时进行缩放。
 
-检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 此错误的原因是尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 请查看 [Runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
+检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 导致此错误的原因是，你尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 查看[runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
 
 ### <a name="no-cert-found"></a>方案：混合 Runbook 辅助角色上的证书存储中找不到证书
 
 #### <a name="issue"></a>问题
 
-混合 Runbook 辅助角色上运行的 runbook 失败并显示以下错误消息：
+混合 Runbook 辅助角色上运行的 runbook 失败，并出现以下错误消息。
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -74,11 +72,11 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>原因
 
-尝试在混合 Runbook 辅助角色上运行的 Runbook 中使用[运行方式帐户](../manage-runas-account.md)时，如果运行方式帐户证书不存在，则会发生此错误。 默认情况下，混合 Runbook 辅助角色没有本地证书资产，而运行方式帐户需有证书才能正常运行。
+当你尝试在运行方式帐户证书不存在的混合 Runbook 辅助角色上运行的 runbook 中尝试使用[运行方式帐户](../manage-runas-account.md)时，会发生此错误。 混合 Runbook 辅助角色在默认情况下没有本地证书资产，运行方式帐户需要此证书才能正常运行。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
-如果你的混合 Runbook 辅助角色是 Azure VM，则可以改用[azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM （而不是运行方式帐户）的托管标识对 Azure 资源进行身份验证，从而简化了身份验证。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅在[混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)中运行 PowerShell runbook export-runascertificatetohybridworker 的步骤。
+如果你的混合 Runbook 辅助角色是 Azure VM，则可以改用[azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM （而不是运行方式帐户）的托管标识对 Azure 资源进行身份验证，从而简化了身份验证。 当混合 Runbook 辅助角色为本地计算机时，需要在计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅在[混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)中运行 PowerShell runbook export-runascertificatetohybridworker 的步骤。
 
 ### <a name="error-403-on-registration"></a>方案：在混合 Runbook 辅助角色的注册过程中出现错误403
 
@@ -92,11 +90,11 @@ At line:3 char:1
 
 #### <a name="cause"></a>原因
 
-可能的原因如下：
+下面是可能的原因：
 * 代理设置中的工作区 ID 或工作区密钥（主）有误。 
 * 混合 Runbook 辅助角色无法下载配置，导致帐户链接错误。 当 Azure 启用解决方案时，它仅支持特定的区域以链接 Log Analytics 工作区和自动化帐户。 还可能在计算机上设置了不正确的日期和/或时间。 如果从当前时间开始的时间为 +/-15 分钟，则载入失败。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 ##### <a name="mistyped-workspace-idkey"></a>工作区 ID/密钥错误键入
 若要验证代理的工作区 ID 或工作区密钥是否已键入错误，请参阅[添加或删除工作区–](../../azure-monitor/platform/agent-manage.md#windows-agent) windows 代理的 windows 代理或[添加或删除工作区–](../../azure-monitor/platform/agent-manage.md#linux-agent) linux 代理的 linux 代理。  请确保从 Azure 门户中选择完整的字符串，并仔细复制并粘贴。
@@ -121,7 +119,7 @@ Linux 混合 Runbook 辅助角色依赖于[适用于 Linux 的 Log Analytics 代
 
 如果代理未运行，则它会阻止 Linux 混合 Runbook 辅助角色与 Azure Automation 通信。 代理可能由于各种原因而无法运行。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
  输入以下命令，验证代理是否正在运行：`ps -ef | grep python`。 你应该看到类似如下的输出，即使用 **nxautomation** 用户帐户的 python 进程。 如果未启用更新管理或 Azure 自动化解决方案，则以下任何进程都不会运行。
 
@@ -133,10 +131,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 以下列表显示针对 Linux 混合 Runbook 辅助角色启动的进程。 这些进程全都位于 `/var/opt/microsoft/omsagent/state/automationworker/` 目录中。
 
-
 * **oms** -worker 管理器进程。 它直接从 DSC 启动。
 
-* **worker. 会议**-自动注册的混合工作进程，由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 如果未在计算机上启用更新管理解决方案，则不会显示此进程。
+* **worker. 会议**-自动注册的混合工作进程。 它由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 如果未在计算机上启用更新管理解决方案，则不会显示此进程。
 
 * **diy/** diy 混合辅助进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 它只与自动注册混合辅助进程在使用不同配置的关键细节中不同。 如果 Azure 自动化解决方案已禁用并且 DIY Linux 混合辅助角色未注册，则此过程不存在。
 
@@ -164,7 +161,7 @@ Windows 混合 Runbook 辅助角色依赖于[windows 的 Log Analytics 代理](.
 
 如果 Microsoft Monitoring Agent Microsoft 服务未运行，则此状态会阻止混合 Runbook 辅助角色与 Azure Automation 通信。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 在 PowerShell 中输入以下命令，验证代理是否正在运行：`Get-Service healthservice`。 如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`Start-Service healthservice`。
 
@@ -178,7 +175,7 @@ Windows 混合 Runbook 辅助角色依赖于[windows 的 Log Analytics 代理](.
 
 这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。 确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。 
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 你可以验证**Application And service Logs\Microsoft-SMA\Operations** and **application And service Logs\Operations Manager**事件日志中是否存在任何警告或错误事件，这些事件指明了影响角色加入 Azure 自动化或在正常操作中出现的问题。 有关排查 Log Analytics 代理问题的详细信息，请参阅[Log Analytics Windows 代理解决问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
@@ -202,7 +199,7 @@ Heartbeat
 
 此问题可能是由于混合 Runbook 辅助角色上的高速缓存损坏导致的。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 若要解决此问题，请登录到混合 Runbook 辅助角色并运行以下脚本。 此脚本将停止 Microsoft Monitoring Agent，删除其高速缓存并重启该服务。 此操作强制混合 Runbook 辅助角色从 Azure 自动化重新下载其配置。
 
@@ -228,7 +225,7 @@ Machine is already registered
 
 如果已使用不同的自动化帐户注册了计算机，或者在从计算机中删除了混合 Runbook 辅助角色之后尝试重新添加，则可能会导致此问题。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 若要解决此问题，请删除以下注册表项并重启 `HealthService`，然后再次尝试 `Add-HybridRunbookWorker` cmdlet：
 

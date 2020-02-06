@@ -2,17 +2,17 @@
 title: 教程：托管域和子域 - Azure DNS
 description: 本文介绍如何配置 Azure DNS 来托管 DNS 区域。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212198"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937323"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教程：在 Azure DNS 中托管域
 
@@ -21,7 +21,7 @@ ms.locfileid: "74212198"
 例如，假设你从某个域名注册机构购买了域 contoso.net，然后在 Azure DNS 中创建了名为 contoso.net 的区域。 由于你是域的所有者，因此，注册机构将为你提供选项来配置域的名称服务器 (NS) 记录。 注册机构将这些 NS 记录存储在 .net 父区域中。 然后，世界各地的 Internet 用户在尝试解析 contoso.net 中的 DNS 记录时，会被定向到 Azure DNS 区域中的域。
 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 DNS 区域。
@@ -32,7 +32,7 @@ ms.locfileid: "74212198"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须有一个可以用来测试的域名，可以在 Azure DNS 中托管该域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 

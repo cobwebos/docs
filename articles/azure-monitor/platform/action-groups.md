@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901469"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030738"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -62,7 +62,7 @@ ms.locfileid: "76901469"
 
 ## <a name="manage-your-action-groups"></a>管理操作组
 
-创建操作组之后，它将显示在 "**监视**" 窗格的 "**操作组**" 部分中。 选择要管理的操作组：
+创建操作组之后，可以通过在 "**监视**" 窗格的 "**警报**" 登陆页中选择 "**管理操作**" 来查看**操作组**。 选择要管理的操作组：
 
 * 添加、编辑或删除操作。
 * 删除操作组。
@@ -103,7 +103,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
 
 操作组中可能包含有限数量的 ITSM 操作。 
 
-### <a name="logic-app"></a>逻辑应用程序
+### <a name="logic-app"></a>逻辑应用
 操作组中可能包含有限数量的逻辑应用操作。
 
 ### <a name="secure-webhook"></a>安全 Webhook
@@ -111,7 +111,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
 
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组与受保护的 web API （Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅[Microsoft 标识平台（v2.0）概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-1. 为受保护的 web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
+1. 为受保护的 web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview。
     - 配置要由后台程序应用调用的受保护 API。
     
 1. 允许操作组使用您的 Azure AD 应用程序。
@@ -197,7 +197,7 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
 
-### <a name="sms"></a>短信
+### <a name="sms"></a>SMS
 有关其他重要信息，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)和[SMS 警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。
 
 操作组中的短信操作数可能有限。  

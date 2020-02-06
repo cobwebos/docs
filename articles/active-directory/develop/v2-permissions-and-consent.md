@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e673c2dfd9b3bef6d443498fc96a8c71e0737851
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833340"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030753"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -49,7 +49,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 * 读取用户的日历
 * 写入用户的日历
-* 以用户身份发送邮件
+* 作为用户发送电子邮件
 
 通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切了解应用有权访问的数据，并且可以更有把握地确保它不会受到恶意攻击。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
@@ -59,7 +59,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 * 使用 `Calendars.ReadWrite` 写入用户的日历
 * 使用 `Mail.Send` 以用户身份发送邮件
 
-应用最常通过在 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高权限权限只能通过管理员同意授予，并使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)请求/授予。 继续阅读，了解详细信息。
+应用最常通过在 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高权限权限只能通过管理员同意授予，并使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)请求/授予。 请继续阅读了解更多信息。
 
 ## <a name="permission-types"></a>权限类型
 
@@ -89,7 +89,7 @@ OpenID Connect 的 Microsoft 标识平台实现具有几个明确定义的作用
 
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 仅当电子邮件地址与用户帐户相关联时，才会在令牌中包含 `email` 声明，这种情况并非总是如此。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
 
-### <a name="profile"></a>个人资料
+### <a name="profile"></a>配置文件 (profile)
 
 `profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 它可以访问的信息包括但不限于用户的名字、姓氏、首选用户名和对象 ID。 有关指定用户的 id_token 参数中可用配置文件声明的完整列表，请参阅 [`id_tokens` 参考](id-tokens.md)。
 
@@ -202,13 +202,13 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 ```
 
 
-| 参数     | 条件     | Description                                                                               |
+| 参数     | 条件     | 说明                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 需要 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
-| `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
-| `redirect_uri` | 需要 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
-| `state` | 推荐 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
-|`scope`        | 需要      | 定义应用程序请求的权限集。 这可以是静态的（使用[`/.default`](#the-default-scope)）或动态作用域。  这可能包括 OIDC 范围（`openid`、`profile``email`）。 如果需要应用程序权限，则必须使用 `/.default` 来请求静态配置的权限列表。  | 
+| `tenant` | 必需 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供，也可以像本示例中所示，以常规方式引用组织。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `client_id` | 必需 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
+| `redirect_uri` | 必需 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
+| `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
+|`scope`        | 必需      | 定义应用程序请求的权限集。 这可以是静态的（使用[`/.default`](#the-default-scope)）或动态作用域。  这可能包括 OIDC 范围（`openid`、`profile``email`）。 如果需要应用程序权限，则必须使用 `/.default` 来请求静态配置的权限列表。  | 
 
 
 此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在 `scope` 参数中请求的所有权限。  如果使用了静态（`/.default`）值，则它的作用类似于1.0 版管理员同意终结点，并请求为在应用所需的权限中找到的所有范围请求许可。
@@ -221,7 +221,7 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
 | `state` | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
@@ -235,7 +235,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 帮助开发人员识别错误根本原因的具体错误消息。 |

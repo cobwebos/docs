@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753381"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029463"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 编制索引
 
@@ -21,17 +21,100 @@ Azure Cosmos DB 的 API for MongoDB 可利用 Cosmos DB 的自动索引管理功
 
 ## <a name="indexing-for-version-36"></a>版本3.6 的索引
 
-提供线路协议版本3.6 的帐户提供与早期版本提供的策略不同的默认索引策略。 默认情况下，仅对 _id 字段进行索引。 若要为其他字段编制索引，用户必须应用 MongoDB 索引管理命令。 若要对查询应用排序，当前必须为排序操作中使用的字段创建索引。
+提供线路协议版本3.6 的帐户提供与早期版本提供的策略不同的默认索引策略。 默认情况下，仅索引 _id 字段。 若要为其他字段编制索引，用户必须应用 MongoDB 索引管理命令。 若要对查询应用排序，当前必须为排序操作中使用的字段创建索引。
 
 ### <a name="dropping-the-default-indexes-36"></a>删除默认索引（3.6）
 
-对于提供线路协议版本3.6 的帐户，唯一的默认索引为 _id，无法删除。
+对于提供线路协议版本3.6 的帐户，只 _id 默认索引，不能将其删除。
 
 ### <a name="creating-a-compound-index-36"></a>创建复合索引（3.6）
 
 使用3.6 线路协议的帐户支持真正的复合索引。 以下命令将对字段 "a" 和 "b" 创建复合索引： `db.coll.createIndex({a:1,b:1})`
 
 复合索引可用于一次对多个字段进行有效排序，如： `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>跟踪索引进度
+
+Azure Cosmos DB 的 MongoDB API 的3.6 版本支持 `currentOp()` 命令来跟踪数据库实例上的索引进度。 此命令返回一个文档，该文档包含有关数据库实例的正在进行的操作的信息。 `currentOp` 命令用于跟踪本机 MongoDB 中的所有正在进行的操作，而在 Azure Cosmos DB 的 API for MongoDB 中，此命令仅支持跟踪索引操作。
+
+下面的示例演示如何使用 `currentOp` 命令来跟踪索引进度：
+
+•获取集合的索引进度：
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+•获取数据库中所有集合的索引进度：
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+•获取 Azure Cosmos 帐户中所有数据库和集合的索引进度：
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+索引进度详细信息包含当前索引操作的进度百分比。 下面的示例显示了索引进度的不同阶段的输出文档格式：
+
+1. 如果 "foo" 集合和 "bar" 数据库上的索引操作完成了60% 的索引编制，则将具有以下输出文档。 `Inprog[0].progress.total` 显示100作为目标完成。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. 对于刚在 "foo" 集合和 "bar" 数据库上启动的索引操作，输出文档在达到可度量的级别之前，可能会显示0% 的进度。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. 正在进行的索引操作完成后，输出文档显示空的 inprog 操作。
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>版本3.2 的索引
 

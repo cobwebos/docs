@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, desired state configuration, 更新�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421949"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930402"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -75,6 +75,8 @@ Azure 自动化可以在基础结构和应用程序的整个生命周期中进�
 * **监视** - 确定计算机上那些导致问题的更改，进行相应的补救，或者将其升级到管理系统。
 * **保护** - 在已引发安全警报的情况下隔离 VM。 设置来宾内要求。
 * **管控** - 为团队设置基于角色的访问控制。 恢复未使用的资源。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>自动化定价
 

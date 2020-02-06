@@ -10,22 +10,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926763"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031486"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
 
 可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中将其用于传递到活动。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于数据工厂托管的标识。  了解它如何从[用于数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)进行工作，并确保你的数据工厂有一个关联的。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 1. 打开数据工厂的属性，然后复制 "托管标识应用程序 ID" 值。
 
@@ -47,12 +47,12 @@ ms.locfileid: "74926763"
 
 4. 在数据工厂管道中，添加新的 Web 活动，并按如下所示对其进行配置。  
 
-    |properties  |Value  |
+    |属性  |值  |
     |---------|---------|
-    |安全输出     |正确         |
+    |安全输出     |True         |
     |URL     |[机密 URI 值]？ api 版本 = 7。0         |
     |方法     |GET         |
-    |Authentication     |MSI         |
+    |身份验证     |MSI         |
     |资源        |https://vault.azure.net       |
 
     ![Web 活动](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

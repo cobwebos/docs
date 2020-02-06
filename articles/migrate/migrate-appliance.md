@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990736"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031657"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -26,7 +26,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 
 ## <a name="appliance---vmware"></a>设备-VMware 
 
-要求 | **VMware** 
+**要求** | **VMware** 
 --- | ---
 **下载格式** | ..OVA 
 **下载链接** | https://aka.ms/migrate/appliance/vmware 
@@ -44,7 +44,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 
 ## <a name="appliance---hyper-v"></a>设备-Hyper-v
 
-要求 | **Hyper-V** 
+**要求** | **Hyper-V** 
 --- | ---
 **下载格式** | 压缩文件夹（包含 VHD）
 **下载链接** | https://aka.ms/migrate/appliance/hyperv 
@@ -61,14 +61,14 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 
 ## <a name="appliance---physical"></a>设备-物理
 
-要求 | **物理** 
+**要求** | **物理** 
 --- | ---
-**下载格式** | 压缩文件夹（包含 PowerShell 安装程序脚本）
+**下载格式** | 压缩文件夹（包含基于 PowerShell 的安装程序脚本）
 **下载链接** | [下载链接](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下载大小** | 59.7 MB
-**硬件** | 专用物理计算机或 VM。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
+**硬件** | 专用物理计算机，或使用虚拟机。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 **哈希值** | MD5：1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256： a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**软件** | 设备计算机应运行 Windows Server 2016。 
+**操作系统** | 设备计算机应运行 Windows Server 2016。 
 **设备部署**   |  设备安装程序脚本是从门户下载的（在压缩文件夹中）。 <br/> 解压文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）。
 **发现** | 一个设备最多可以发现250个物理服务器。
 **设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
@@ -84,16 +84,17 @@ Azure Migrate 设备需要连接到 internet。
 **URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | 登录到 Azure 订阅。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 通信。
 management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 aka.ms/* | 允许访问称为 "链接"。 用于 Azure Migrate 设备更新。
 download.microsoft.com/download | 允许从 Microsoft 下载下载。
-*.servicebus.windows.net | **用于 VMware 无代理迁移**<br/><br/> 设备与 Azure Migrate 服务之间的通信。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **用于 VMware 无代理迁移**<br/><br/> 连接到 Azure Migrate 服务 Url。
-\* .blob.core.windows.net |  **用于 VMware 无代理迁移**<br/><br/>将数据上传到存储。
+*.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 连接到 Azure Migrate 服务 Url。
+*.hypervrecoverymanager.windowsazure.com | **用于 VMware 无代理迁移**<br/><br/> 连接到 Azure Migrate 服务 Url。
+\* .blob.core.windows.net |  **用于 VMware 无代理迁移**<br/><br/>将数据上传到存储进行迁移。
 
 
 
@@ -107,7 +108,7 @@ download.microsoft.com/download | 允许从 Microsoft 下载下载。
 **数据** | **计数器** | **评估影响**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建议的 VM 大小/成本
-内存利用率 | mem.usage.average | 建议的 VM 大小/成本
+内存使用率 | mem.usage.average | 建议的 VM 大小/成本
 磁盘读取吞吐量（MB/秒） | virtualDisk.read.average | 磁盘大小、存储成本、VM 大小的计算
 磁盘写入吞吐量（MB/秒） | virtualDisk.write.average | 磁盘大小、存储成本、VM 大小的计算
 每秒磁盘读取操作数 | virtualDisk.numberReadAveraged.average | 磁盘大小、存储成本、VM 大小的计算
@@ -133,13 +134,13 @@ VM 说明 | vm.Summary.Config.Annotation
 许可证产品名称 | vm.Client.ServiceContent.About.LicenseProductName
 操作系统类型 | vm.SummaryConfig.GuestFullName
 启动类型 | vm.Config.Firmware
-核心数 | vm.Config.Hardware.NumCPU
-内存（MB） | vm.Config.Hardware.MemoryMB
-磁盘数 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
+内核数 | vm.Config.Hardware.NumCPU
+内存(MB) | vm.Config.Hardware.MemoryMB
+磁盘数目 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
 磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
 CPU 使用率 | cpu.usage.average
-内存利用率 |mem.usage.average
+内存使用率 |mem.usage.average
 **每磁盘详细信息** | 
 磁盘密钥值 | disk.Key
 Dikunit 号 | disk.UnitNumber
@@ -183,8 +184,8 @@ Hyper-v 虚拟机监控程序虚拟处理器 | % Guest 运行时间 | 建议的 
 Hyper-v 动态内存 VM | 当前压力（%）<br/> 来宾可见物理内存（MB） | 建议的 VM 大小/成本
 Hyper-v 虚拟存储设备 | 每秒读取的字节数 | 磁盘大小、存储成本、VM 大小的计算
 Hyper-v 虚拟存储设备 | 每秒写入的字节数 | 磁盘大小、存储成本、VM 大小的计算
-Hyper-v 虚拟网络适配器 | 每秒接收的字节数 | VM 大小的计算
-Hyper-v 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
+Hyper-V 虚拟网络适配器 | 每秒接收的字节数 | VM 大小的计算
+Hyper-V 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
 
 - "CPU 使用率" 是所有附加到 VM 的虚拟处理器的所有使用量之和。
 - 内存使用率为（当前压力 * 来宾可见物理内存）/100。
@@ -215,9 +216,9 @@ VM 电源状态 | Msvm_ComputerSystem | EnabledState
 IP 地址（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP 已启用（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC ID （合成 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 地址（合成 Nic） | Msvm_SyntheticEthernetPortSettingData | 地址
+NIC MAC 地址（合成 Nic） | Msvm_SyntheticEthernetPortSettingData | Address
 NIC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | InstanceID
-NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
+NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | Address
 
 
 

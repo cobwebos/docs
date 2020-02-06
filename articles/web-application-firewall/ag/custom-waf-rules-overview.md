@@ -7,16 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935001"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031725"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上的 Web 应用程序防火墙 v2 的自定义规则
 
-Azure 应用程序网关 Web 应用程序防火墙（WAF） v2 附带了一个预配置的平台托管的规则集，它可提供对多种不同类型的攻击的保护。 这些攻击包括跨站点脚本、SQL 注入和其他攻击。 如果你是 WAF 管理员，则可能想要编写自己的规则来补充核心规则集（CRS）规则。 规则可以根据匹配条件阻止或允许请求的流量。
+Azure 应用程序网关 Web 应用程序防火墙（WAF） v2 附带了一个预配置的平台托管的规则集，它可提供对多种不同类型的攻击的保护。 这些攻击包括跨站点脚本、SQL 注入和其他攻击。 如果你是 WAF 管理员，则可能想要编写自己的规则以增加核心规则集（CRS）规则。 规则可以根据匹配条件阻止或允许请求的流量。
 
 自定义规则允许您创建自己的规则，这些规则将为通过 WAF 的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则包含规则名称、规则优先级和匹配条件的数组。 如果满足这些条件，则执行操作（允许或阻止）。
 
@@ -133,7 +133,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 - GreaterThanOrEqual
 - BeginsWith
 - EndsWith
-- 正则表达式
+- Regex
 - Geomatch （预览版）
 
 ### <a name="negate-condition-optional"></a>否定条件 [可选]

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: ace9794bd72aa124137a6b543c79979e8f5ca7c0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780056"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031234"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -28,14 +28,14 @@ Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的�
 
 | 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| 不带 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不带 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| HDInsight 3.6 与 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| HDInsight 4.0 与 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不带 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 是 | 是 | 是 |
+| 不带 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 是 | 是 | 是 |
+| HDInsight 3.6 与 ESP | 是 | 是 | 是 | 是* | 是 | 是 | 是 |
+| HDInsight 4.0 与 ESP | 是 | 是 | 是 | 是* | 是 | 是 | 是 |
 
 \* HBase 群集只能配置为基于计划的缩放，而不能配置为基于加载的。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 可以为 HDInsight 群集选择基于负载的缩放或基于计划的缩放。 基于负载的缩放更改群集中的节点数（在你设置的范围内），以确保 CPU 的最佳利用率并最大程度地降低运行成本。
 
@@ -72,7 +72,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
 根据每个节点的 AM 容器数以及当前的 CPU 和内存需求，自动缩放会发出删除一定数量节点的请求。 服务还会根据当前作业执行情况，检测哪些节点是候选删除。 缩小操作首先 add-on 节点，然后将其从群集中删除。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>使用基于负载的自动缩放创建群集
 
@@ -90,7 +90,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
     ![启用辅助节点基于负载的自动缩放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义群集创建时的初始大小。 辅助角色节点的最小数目应设置为三个或更多。 。 将群集缩放到小于三个节点可能导致其在安全模式下停滞，因为文件复制不足。 有关详细信息，请参阅[进入安全模式停滞]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)状态。
+工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义群集创建时的初始大小。 辅助角色节点的最小数目应设置为三个或更多。 . 将群集缩放到小于三个节点可能导致其在安全模式下停滞，因为文件复制不足。 有关详细信息，请参阅[进入安全模式停滞]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)状态。
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>使用基于计划的自动缩放创建群集
 
@@ -192,7 +192,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
 若要在运行的群集上启用自动缩放，请在 "**设置**" 下选择 "**群集大小**" 然后单击 "**启用自动缩放**"。 选择所需的自动缩放类型，并输入基于负载或计划的缩放的选项。 最后，单击“保存”。
 
-![启用基于工作节点计划的基于计划的自动缩放运行群集](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![启用基于工作节点计划的基于计划的自动缩放运行群集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
 #### <a name="using-the-rest-api"></a>使用 REST API
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 请参阅上一节，了解如何[启用基于负载的自动缩放](#load-based-autoscaling)以获取所有负载参数的完整说明。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或计划的缩放
 
@@ -248,7 +248,7 @@ Azure 门户中列出的群集状态有助于监视自动缩放活动。
 | 群集状态 | 说明 |
 |---|---|
 | 正在运行 | 群集正常运行。 先前的所有自动缩放活动已成功完成。 |
-| 正在更新…  | 正在更新群集自动缩放配置。  |
+| 更新  | 正在更新群集自动缩放配置。  |
 | HDInsight 配置  | 群集向上缩放或向下缩放操作正在进行。  |
 | 正在更新错误  | HDInsight 在自动缩放配置更新过程中遇到问题。 客户可选择重试更新或禁用自动缩放。  |
 | 错误  | 群集出现问题，无法使用。 删除此群集并创建一个新群集。  |

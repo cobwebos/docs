@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6ccc04ccdaf92764da8f45af1e5dda98af822587
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3d16c1950cbae0bcc7dd858e5520eb8bfc6e496d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690844"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030772"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动执行管理任务
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上运行，�
 ## <a name="supported-services"></a>支持的服务
 SQL Server IaaS 代理扩展支持以下管理任务：
 
-| 管理功能 | Description |
+| 管理功能 | 说明 |
 | --- | --- |
 | **SQL Server 自动备份** |为虚拟机上的默认实例或[正确安装](virtual-machines-windows-sql-server-iaas-faq.md#administration)的 SQL Server 的命名实例自动执行备份计划。 有关详细信息，请参阅[Azure 虚拟机中 SQL Server 的自动备份（资源管理器）](virtual-machines-windows-sql-automated-backup.md)。 |
 | **SQL Server 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息，请参阅[在 Azure 虚拟机中自动修补 SQL Server （资源管理器）](virtual-machines-windows-sql-automated-patching.md)。 |
@@ -50,7 +50,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 * 在 Azure 门户的虚拟机的 SQL Server 面板中，通过 Azure Marketplace 上的 SQL Server 映像 Azure PowerShell。
 * 通过 Azure PowerShell 扩展的手动安装。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 下面是在 VM 上使用 SQL Server IaaS 代理扩展的要求：
 
 **操作系统**：
@@ -65,7 +65,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 
 * SQL Server 2008 
 * SQL Server 2008 R2
-* SQL Server 2012
+* SQL 2012 Server
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
@@ -82,10 +82,9 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 当你向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)注册你的 SQL Server VM 时，会安装 SQL Server IaaS 扩展。 如有必要，可以使用以下 PowerShell 命令手动安装 SQL Server IaaS 代理： 
 
   ```powershell-interactive
-    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
-    -Location "<VMLocation>" -VMName "<VMName>" `
-    -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
-    -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
+    Set-AzVMSqlServerExtension -VMName "sql2017" `
+    -ResourceGroupName "LabsqlIAASagent" -Name "SQLIaasExtension" `
+    -Version "2.0" -Location "Central US";  
   ```
 
 > [!NOTE]

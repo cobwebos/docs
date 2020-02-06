@@ -40,6 +40,12 @@
       href: disable-private-link-service-network-policy.md
     - name: 管理专用终结点
       href: manage-private-endpoint.md
+    - name: 故障排除
+      items:
+        - name: 排查专用终结点连接问题
+          href: troubleshoot-private-endpoint-connectivity.md
+        - name: 排查专用链接服务连接问题
+          href: troubleshoot-private-link-connectivity.md
 - name: 参考
   items:
     - name: Azure CLI

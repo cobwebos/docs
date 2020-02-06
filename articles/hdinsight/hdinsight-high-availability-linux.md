@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747874"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030858"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -46,7 +46,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 [ZooKeeper](https://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
 
-### <a name="worker-nodes"></a>工作器节点
+### <a name="worker-nodes"></a>辅助角色节点
 
 将作业提交到群集时，辅助角色节点执行实际的数据分析。 如果辅助角色节点发生故障，它执行的任务将提交到另一个辅助角色节点。 默认情况下，HDInsight 创建四个辅助角色节点。 可以在群集创建过程中以及之后根据需要更改此数字。
 
@@ -64,7 +64,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 通过公共网关进行访问仅限端口443（HTTPS）、22和23。
 
-|Port |Description |
+|端口 |说明 |
 |---|---|
 |443|用于访问托管在头节点上的 Ambari 和其他 web UI 或 REST Api。|
 |22|用于通过 SSH 访问主头节点或边缘节点。|
@@ -97,7 +97,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 你可以使用以下方法连接到无法通过 internet 直接访问的节点：
 
-|方法 |Description |
+|方法 |说明 |
 |---|---|
 |SSH|使用 SSH 连接到头节点后，可以从头节点使用 SSH 连接到群集中的其他节点。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。|
 |SSH 隧道|如果需要访问在未向 internet 公开的某个节点上托管的 web 服务，则必须使用 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。|
@@ -119,7 +119,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 以下警报有助于监视群集的可用性：
 
-| 警报名称                               | Description                                                                                                                                                                                  |
+| 警报名称                               | 说明                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 指标监视器状态                    | 此警报指示指标监视器进程的状态，它由监视器状态脚本确定。                                                                                   |
 | Ambari 代理检测信号                   | 如果服务器与代理失去联系，则会触发此警报。                                                                                                                        |
@@ -158,7 +158,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | HiveServer2 交互进程          | 如果无法确定 HiveServerInteractive 是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                             |
 | LLAP 应用程序                         | 如果无法确定 LLAP 应用程序是否已启动并响应请求，则会触发此警报。                                                                                    |
 
-可以选择每个服务来查看其详细信息。
+你可以选择每个服务以查看其详细信息。
 
 尽管服务页提供了有关每个服务的状态和配置的信息，但它并不提供有关运行服务的头节点的信息。 若要查看此信息，请使用页面顶部的“主机”链接。 此页会显示群集内的主机，包括头节点。
 
@@ -217,7 +217,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 #### <a name="service-components"></a>服务组件
 
-服务可能包含想要单独检查其状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
+服务可能包含你想要单独检查状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
@@ -235,7 +235,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 通过 SSH 连接到头节点时，可以在 **/var/log** 中找到日志文件。 例如， **/var/log/hadoop-yarn/yarn** 包含 YARN 的日志。
 
-每个头节点可能具有唯一的日志条目，因此应该检查两个头节点上的日志。
+每个头节点可能具有唯一的日志条目，因此你应该检查两个头节点上的日志。
 
 ### <a name="sftp"></a>SFTP
 
@@ -248,7 +248,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
     cd /var/log/hadoop/hdfs
     get *
 
-有关可用命令的列表，请在 `sftp>` 提示符下输入 `help`。
+有关可用命令的列表，请在 `help` 提示符下输入 `sftp>`。
 
 > [!NOTE]  
 > 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](https://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
@@ -270,7 +270,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
-    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令时，可以使用 `--headnode-size`、`--workernode-size`和 `--zookeepernode-size` 参数设置头节点、辅助角色节点和 ZooKeeper 节点的大小。
 

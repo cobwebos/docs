@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 10/02/2019
-ms.openlocfilehash: 01de2173ee5d55f24f97e1d057e96d93a56c2af0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435974"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031132"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中企业安全性套餐配置与 Azure Active Directory 域服务
 
@@ -127,7 +127,7 @@ HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和
 
 创建新群集时，可以从 "**用户分配的托管标识**" 下拉列表中选择你创建的托管标识。
 
-![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png)。
+![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>后续步骤
 

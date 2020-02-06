@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720259"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029485"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
@@ -54,17 +54,29 @@ ms.locfileid: "76720259"
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>哪些区域是支持的网络观察程序/哪些区域可用？
 可以在[Azure 服务可用性页](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的区域可用性
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>什么是网络观察程序的资源限制？
-有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)页。  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用网络观察程序需要哪些权限？
+请参阅[使用网络观察程序所需的 RBAC 权限](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)列表。 若要部署资源，需要具有对 NetworkWatcherRG 的参与者权限（请参阅下文）。
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？
-仅需为订阅启用一次网络观察程序，才能使用它的功能，这并不是服务限制。
+### <a name="how-do-i-enable-network-watcher"></a>如何启用网络观察程序？
+为每个订阅[自动启用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)网络观察程序服务。
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>什么是网络观察程序部署模型？
+网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式： NetworkWatcher_RegionName。 示例： NetworkWatcher_centralus 是 "美国中部" 区域的网络观察程序资源。
+
+### <a name="what-is-the-networkwatcherrg"></a>什么是 NetworkWatcherRG？
+网络观察程序资源位于自动创建的隐藏**NetworkWatcherRG**资源组中。 例如，NSG Flow 日志资源是网络观察程序的子资源，在 NetworkWatcherRG 中启用。
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>为什么需要安装网络观察程序扩展？ 
 需要生成或拦截来自 VM 的流量的任何功能都需要网络观察程序扩展。 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>哪些功能需要网络观察程序扩展？
-只有数据包捕获、连接故障排除和连接监视器需要网络观察程序扩展。
+数据包捕获、连接故障排除和连接监视器功能都需要提供网络观察程序扩展。
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>什么是网络观察程序的资源限制？
+有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)页。  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？
+仅需为订阅启用一次网络观察程序，才能使用它的功能，这并不是服务限制。
 
 ## <a name="nsg-flow-logs"></a>NSG 流日志
 
@@ -85,7 +97,7 @@ ms.locfileid: "76720259"
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>如何实现将 NSG 流日志用于服务终结点后面的存储帐户？
 
-NSG 流日志 compantible 服务终结点，无需任何额外的配置。 请参阅教程，了解如何在虚拟网络中[启用服务终结点](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。
+NSG 流日志与服务终结点兼容，无需任何额外的配置。 请参阅教程，了解如何在虚拟网络中[启用服务终结点](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流日志版本 1 & 2 之间有何区别？

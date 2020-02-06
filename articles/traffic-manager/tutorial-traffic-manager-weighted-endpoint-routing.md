@@ -2,24 +2,24 @@
 title: 教程：将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037921"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939483"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
 本教程介绍如何通过 Azure 流量管理器使用加权路由方法控制用户流量在终结点之间的路由。 在此路由方法中，需要为流量管理器配置文件配置中的每个终结点分配权重。 然后，系统会根据分配给每个终结点的权重进行用户流量路由。 该权重是从 1 到 1,000 的整数。 分配给终结点的权重值越高，其优先级就越高。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 IIS 上创建两个运行基本网站的 VM。
@@ -31,7 +31,7 @@ ms.locfileid: "74037921"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 为了查看流量管理器的运作方式，请为本教程部署以下各项：
 
@@ -40,7 +40,7 @@ ms.locfileid: "74037921"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="create-websites"></a>创建网站
 
@@ -139,10 +139,10 @@ ms.locfileid: "74037921"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Name                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
+    | 名称                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
     | 路由方法          | 选择**权重**路由方法。                                       |
-    | Subscription            | 选择订阅。                          |
-    | Resource group          | 选择“使用现有”，然后选择“myResourceGroupTM1”   。 |
+    | 订阅            | 选择订阅。                          |
+    | 资源组          | 选择“使用现有”，然后选择“myResourceGroupTM1”   。 |
     |        |   |
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-weighted-endpoint-routing/create-traffic-manager-profile.png)
@@ -158,7 +158,7 @@ ms.locfileid: "74037921"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | 输入 Azure 终结点。                                   |
-    | Name           | 输入 **myEastUSEndpoint**。                                        |
+    | 名称           | 输入 **myEastUSEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                           |
     | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMEastUS-ip** 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  重量      | 输入 **100**。        |

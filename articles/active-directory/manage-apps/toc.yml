@@ -331,6 +331,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: 发布演练
               items:
+                - name: 与 NDES 服务器上的应用程序代理集成
+                  href: active-directory-app-proxy-protect-ndes.md
                 - name: 与 Azure AD 域服务集成
                   href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
                 - name: 与 Power BI 集成
