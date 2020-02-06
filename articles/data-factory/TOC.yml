@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: 调试模式
               href: concepts-data-flow-debug-mode.md
-            - name: JSON 处理
-              href: concepts-data-flow-json.md
             - name: 架构偏差
               href: concepts-data-flow-schema-drift.md
             - name: 列模式
@@ -501,7 +499,7 @@
           href: data-flow-new-branch.md
         - name: 透视
           href: data-flow-pivot.md
-        - name: Select
+        - name: 选择
           href: data-flow-select.md
         - name: 接收器
           href: data-flow-sink.md

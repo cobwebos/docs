@@ -4,12 +4,12 @@ description: 本文介绍如何在 azure 虚拟机上备份 SQL Server 数据库
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773117"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029565"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -29,7 +29,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 >Azure vm**中的 SQL Server 软删除和 AZURE vm 工作负荷中 SAP HANA 的软删除**现已在预览版中提供。<br>
 >若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
@@ -59,7 +59,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
   1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
   2. 在“设置”下，选择“出站安全规则”。
-  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
+  3. 选择“添加”。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
   4. 单击“添加”，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
@@ -110,6 +110,9 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
 别名可用于不支持的字符，但建议避免使用。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)（了解表服务数据模型）。
 
+>[!NOTE]
+>不支持为名称中包含特殊字符（如 "+" 或 "&"）的数据库**配置保护**操作。 可以更改数据库名称，也可以启用**自动保护**，这样可以成功保护这些数据库。
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>发现 SQL Server 数据库
@@ -128,7 +131,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
     ![选择“Azure VM 中的 SQL Server”进行备份](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. 在“备份目标” > “发现 VM 中的数据库”中，选择“开始发现”以搜索订阅中不受保护的 VM。 此搜索可能需要一些时间，具体取决于订阅中未受保护的 Vm 的数量。
+5. 在“备份目标” **“发现 VM 中的数据库”中，选择“开始发现”以搜索订阅中不受保护的 VM。**  >  此搜索可能需要一些时间，具体取决于订阅中未受保护的 Vm 的数量。
 
    * 发现后，未受保护的 VM 应会按名称和资源组列在列表中。
    * 如果未按预期列出某个 VM，请查看它是否已在保管库中备份。
@@ -251,7 +254,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
     ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在 "**备份策略**" 菜单上，选择是否启用**SQL 备份压缩**。 默认情况下，此选项处于禁用状态。 如果启用，SQL Server 会将压缩的备份流发送到 VDI。  请注意，Azure 备份会根据此控件的值，用 COMPRESSION/NO_COMPRESSION 子句覆盖实例级别的默认值。
+13. 在 "**备份策略**" 菜单上，选择是否启用**SQL 备份压缩**。 默认情况下该选项处于禁用状态。 如果启用，SQL Server 会将压缩的备份流发送到 VDI。  请注意，Azure 备份会根据此控件的值，用 COMPRESSION/NO_COMPRESSION 子句覆盖实例级别的默认值。
 
 14. 完成备份策略的编辑后，选择“确定”。
 
