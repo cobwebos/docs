@@ -2,7 +2,7 @@
 title: 教程 - 使用 Azure 流量管理器改善网站响应
 description: 本教程文章介绍如何创建流量管理器配置文件，以生成具有高响应能力的网站。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,19 +10,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 3686e9a7d82f8134b44cd40468c5e430eb2e72f3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422855"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938398"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
 
 本教程介绍如何使用流量管理器创建具有高响应能力的网站，并以较低的延迟将用户流量定向到该网站。 通常，地理距离最短的数据中心的延迟最低。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 IIS 上创建两个运行基本网站的 VM
@@ -34,7 +34,7 @@ ms.locfileid: "74422855"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 为了查看流量管理器的运作方式，本教程要求部署以下各项：
 
@@ -141,10 +141,10 @@ ms.locfileid: "74422855"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Name                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
+    | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“性能”  路由方法。                                       |
-    | Subscription            | 选择订阅。                          |
-    | Resource group          | 选择资源组 *myResourceGroupTM1*。 |
+    | 订阅            | 选择订阅。                          |
+    | 资源组          | 选择资源组 *myResourceGroupTM1*。 |
     | 位置                | 选择“美国东部”  。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
     |
 
@@ -161,7 +161,7 @@ ms.locfileid: "74422855"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
-    | Name           | myEastUSEndpoint                                        |
+    | 名称           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |        |           |
